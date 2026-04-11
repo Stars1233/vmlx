@@ -359,6 +359,10 @@
 | 42 | Mistral-Small-4-119B-A6B-JANG_2L garbage output on v1.3.25 | closed 2026-04-07 | v1.3.31 | MLA + JANG fix. Mistral 4 119B JANG_2L must remain in the pre-release matrix. |
 | 38 | TypeError: TurboQuantKVCache not subscriptable | closed 2026-04-04 | v1.3.28 | TQ + paged cache subscript. **MUST stay green** — covered by §9.1 partially; full coverage needs the test in `tests/test_cache_bypass.py`. |
 | 24 | Automatic model unload | closed 2026-03-25 | v1.3.0+ | Idle-timer fix. |
+| 43 | Another Gemma 4 issue (mlx-community/gemma-4-31b-8bit chat_template missing) | closed | v1.3.28+ | Reported on v1.3.26 — `tokenizer.chat_template is not set`. mlx-community quants don't bake the template. Comment thread also reports `ModuleNotFoundError: mlx_vlm.models.gemma4` which has been resolved. |
+| 40 | Gemma 31b 8bit model server start error | closed | v1.3.28+ | Same chat_template issue family as #43. |
+| 37 | Roadmap / ETA + benchmarks request | open | n/a | Feature request, not a bug. |
+| 64 | server api crash for multiple models (state_machine KeyError None on Nemotron-3-Super + tool calls + cache hit) | closed 2026-04-11 | v1.3.39 | Stack trace points at `state_machine.py:160 KeyError: None`. The current source has the `if s is None: return` guard at line 164 — verified. v1.3.39 ships the guard. **Verify on next user run with Nemotron-3-Super-120B-JANG_2L + tool calls + multi-turn.** |
 
 **User-reported regressions still pending verification**:
 - "still getting forced cache miss errors" with v1.35 + Gemma 4 31B JANG_4M-CRACK — likely cured by §2.1/§2.2 (mixed-attention auto-bypass) and §3.1/§3.2 (RotatingKVCache meta_state preservation). Re-verify on next Gemma 4 load.
