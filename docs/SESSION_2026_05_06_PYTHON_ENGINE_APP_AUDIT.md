@@ -988,6 +988,13 @@ not as broad claims that every untested variant is cleared.
   Chat/Responses/Anthropic/Ollama long-context multi-turn with full output read,
   capture speed and cache stats, then compare against an F32/control or direct
   rail before deciding whether a re-quantization is needed.
+- Upload boundary: the closest local DSV4 Flash JANGTQ candidate is
+  `/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-V3-F32-MIXED`. It has the
+  fixed F32 critical-control contract, prestacked routed layout, DSV4 native
+  cache contract, and limited-SwiGLU load guards. It is still not public-upload
+  clean until it passes a fresh full-tail quality gate. Do not upload the old
+  `/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ` bundle or the partial
+  `JANGTQ2-F32` rebuild.
 
 ### SSM / path-dependent cache families
 
@@ -1001,3 +1008,21 @@ not as broad claims that every untested variant is cleared.
 - Hy3 JANGTQ2 remains Low/High reasoning effort with Hunyuan tools and qwen3
   extraction. Hy3 JANGTQ_K should be treated as unproven until a local live row
   exists; do not infer its quality from ZAYA.
+
+### L2 cache lifecycle after app/runtime updates
+
+- The reported "process lifecycle" gap was real in spirit, but a PID stamp is
+  the wrong fix for this codebase: same-version fresh-process restore is an
+  intentional release feature and is covered by existing SSM/block-disk tests.
+- Current source now adds a runtime cache fingerprint to cache namespaces and
+  records. The fingerprint includes `vmlx_engine`, `jang`, `mlx`, `mlx-lm`, and
+  `mlx-vlm` versions.
+- Default block-L2 and prompt-L2 directories now include that fingerprint in
+  their model/scope hashes, so app/runtime updates miss cleanly instead of
+  reading stale records under the same model path.
+- Explicit cache directories are also protected: block-L2 records, prompt/TQ
+  disk records, and SSM companion sidecars stamp the runtime fingerprint and
+  reject mismatches as cache misses.
+- Preserved behavior: same-version restart/wake still restores L2 for matching
+  model/cache keys. The new guard targets package/runtime drift, not process
+  boundaries.
