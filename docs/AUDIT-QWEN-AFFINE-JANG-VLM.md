@@ -22,6 +22,11 @@
   and pass `--is-mllm`; Python then honored `force_mllm=True` before reaching
   the Qwen text-only policy. Source now overrides forced MLLM for this exact
   affine-JANG class and panel detection mirrors the same policy.
+- 2026-05-11 release recheck reproduced this exact regression in the installed
+  app/source path: the server launched with `--is-mllm`, routed through the
+  unsafe VLM language path, and produced reasoning-only/token-garbage output.
+  Current source restores the forced-MLLM override, panel `forceTextOnly`
+  propagation, and loader defense-in-depth fallback.
 
 ## Root cause
 
@@ -80,12 +85,19 @@ Confirmed not yet performed (requires loading the bundle via both paths and comp
 
 ## Decision for this audit cycle
 
-- The fallback at `_load_jang_v2_vlm:1518–1526`, the `is_mllm_model` short-circuit, and the panel-side `resolveJangMultimodal` override **stay in place for now** with a clear pointer to this audit doc and a follow-up issue.
+- The fallback in `_load_jang_v2_vlm`, the `is_mllm_model` short-circuit, and
+  the panel-side `resolveJangMultimodal` / `forceTextOnly` override **stay in
+  place for now** with a clear pointer to this audit doc and a follow-up issue.
 - Regression coverage now pins all three routing layers:
   `is_mllm_model(..., force_mllm=True)` returns `False` for affine-JANG Qwen
   hybrid, `_load_jang_v2_vlm` delegates affine-JANG to `_load_jang_v2`, and
   panel detection does not pass `--is-mllm` for affine-JANG while keeping
   MXTQ/JANGTQ Qwen VLM multimodal.
+- Live proof after the 2026-05-11 fix intentionally passed `--is-mllm` for the
+  exact local bundle and still loaded `model_type=llm`, `mllm=False`; a
+  `enable_thinking=false`, `temperature=0` Chat Completions prompt returned
+  visible `BLUE.` with no reasoning content. Artifact:
+  `docs/internal/release-gates/20260511_qwen36_jang4m_force_text_fix/`.
 - Real fix path (1) is queued for the next cycle.
 - The fallback is no longer "guard hiding a mystery"; it is a documented stopgap with a known root cause and a fix path.
 
