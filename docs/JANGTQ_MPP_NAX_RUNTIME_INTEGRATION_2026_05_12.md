@@ -547,3 +547,42 @@ Current boundaries:
 - DSV4 K is tracked separately in `docs/DSV4_RUNTIME_PROGRESS_LOG.md`.
 - GUI operation, model download UI, and live edit-capable image output still
   require app-level manual verification after the next unsigned build.
+
+## Unsigned Build And Product-Path Boundary After `7cf50544`
+
+After pushing `7cf50544`, the unsigned build lane was rerun:
+
+```sh
+cd /Users/eric/mlx/vllm-mlx/panel
+npm run build
+CSC_IDENTITY_AUTO_DISCOVERY=false npm run package
+```
+
+Results:
+
+- `npm run build` passed.
+- Bundled Python was rebuilt from source and reported `vmlx_engine 1.5.32`.
+- The bundled verifier passed and checked source-matching critical
+  `vmlx_engine` files, source-matching critical `jang_tools` files, mflux,
+  mlx-vlm Qwen/Gemma modules, Kimi patches, `hadamard_kernel`,
+  `fused_gate_up_kernel`, `gather_tq_kernel`, and
+  `jang_tools.turboquant.mpp_nax_kernel`.
+- `npm run package` passed with `CSC_IDENTITY_AUTO_DISCOVERY=false`, producing
+  `panel/release/mac-arm64/vMLX.app`.
+- Focused panel source tests passed:
+  - settings/chat/image/download slice: 295 passed;
+  - API gateway/chat UI/image system/secret startup slice: 279 passed.
+- Rebuilt `panel/bundled-python` image runtime probe generated one Z-Image
+  Turbo PNG and the shutdown log had no `resource_tracker` / leaked semaphore
+  warning:
+  `/tmp/vmlx_family_audit/z_image_turbo_rebuilt_bundle_after_resource_tracker_fix.log`.
+
+Intentional boundary:
+
+- `panel/scripts/release-gate-python-app.py --skip-sleep-wake --skip-gui`
+  fails on the packaged app because packaged Python cannot load unsigned
+  `libpython3.12.dylib`. This is the expected macOS library-validation failure
+  for an unsigned packaged bundle, not an engine/runtime import failure.
+- Signing/notarization were intentionally skipped in this pass. Actual GUI
+  launch of the packaged app requires the signing/ad-hoc-sign lane before
+  packaged Python can execute.
