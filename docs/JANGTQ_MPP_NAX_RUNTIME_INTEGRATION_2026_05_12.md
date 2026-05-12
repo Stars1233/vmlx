@@ -451,3 +451,34 @@ Result:
 - No blocking runtime log findings and no listener remained on port `8142`.
 
 Signing/notarization were intentionally not run for this source-runtime pass.
+
+## Ling Follow-Up Boundary
+
+The first bundled-source Ling row after the app-wide toggle patch failed
+`ling_multilingual_loop_trigger` with a false loop score. The response was a
+coherent Cyrillic list, but the old loop scorer treated normal high-frequency
+Cyrillic characters as dominant-character repetition.
+
+The loop scorer was hardened so dominant-character evidence now requires a real
+same-character run, and periodic evidence only counts when the tail closely
+matches an actual repeated pattern. Focused regression now covers both sides:
+
+- exact no-space CJK phrase repetition, emoji runs, and repeated English words
+  still score above the loop threshold;
+- a coherent Cyrillic five-item list scores below the loop threshold.
+
+After that fix, the bundled-source Ling row no longer failed from loop score
+(`loop_score=0.09375`) but it still did not clear the quality row: the Russian
+prompt produced mixed Russian/English/Chinese text. Cache and API plumbing
+remained healthy in the same run:
+
+- OpenAI Chat Completions, Responses, Anthropic Messages, Ollama chat,
+  streaming disconnect, and cache-repeat checks passed.
+- Hybrid SSM cache was detected as `paged+ssm`; repeat requests reported
+  `cached_tokens=26`.
+- Server logs showed SSM companion deferred re-derive and clean companion-store
+  for 28 SSM layers.
+
+This means the current Ling finding is a multilingual output-quality boundary,
+not evidence that MPP/NAX, prefix/paged cache, block-L2, or the hybrid SSM
+companion path regressed.
