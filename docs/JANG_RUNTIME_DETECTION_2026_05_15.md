@@ -49,6 +49,25 @@ The engine reads:
 - JANGTQ top-k override is not emitted by the app. Runtime routing uses the
   model's trained `num_experts_per_tok`/equivalent config value.
 
+## Sampling Defaults
+
+The source of truth for omitted sampling parameters is the bundle metadata,
+not hidden family guards:
+
+- Request values win when explicitly provided by the API/UI caller.
+- Explicit CLI/session defaults win next.
+- Bundle defaults are read from `jang_config.chat.sampling_defaults` and then
+  `generation_config.json`.
+- Generic fallback is only used when no request, CLI/session, or bundle default
+  exists.
+
+All live API routes must pass the request model into the resolver helpers for
+temperature, top-p, top-k, min-p, repetition penalty, and max tokens. This keeps
+`/v1/messages`, `/api/chat`, `/v1/completions`, `/v1/chat/completions`, and
+`/v1/responses` aligned with the same model-scoped bundle defaults. Do not add
+sampling floors, repetition blockers, forced EOS, or hidden reasoning demotions
+as compensating controls for runtime bugs.
+
 ## Verification
 
 Fresh source gates after the detection fix:
@@ -62,6 +81,11 @@ Fresh source gates after the detection fix:
 - Panel typecheck -> passed.
 - Packaged bundled Python verifier -> passed with vMLX `1.5.33`,
   JANG `2.5.30`, and MLX `0.31.2`.
+- Model-scoped sampling resolver regression:
+  `pytest -q tests/test_engine_audit.py::TestServerSamplingResolution tests/test_reasoning_modes.py`
+  -> `45 passed`.
+- Cache bypass propagation after the sampling resolver fix:
+  `pytest -q tests/test_cache_bypass.py` -> `58 passed`.
 
 Packaged live gate:
 
