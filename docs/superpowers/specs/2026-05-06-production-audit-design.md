@@ -78,7 +78,7 @@ For each arch, the audit confirms the following cells are **functionally correct
 | DSV4-Flash | `deepseek_v4` | composite (MLA + SWA + CSA + HSA) | yes (native) | yes (native) | yes (native) | n/a (native owns) | n/a | n/a |
 | ZAYA-1-8B | `zaya` | hybrid (CCA + Mamba) | yes (after runtime) | yes (after runtime) | yes (after runtime) | yes (after runtime) | yes (Mamba state) | yes (after runtime) |
 | Ling-2.6 | `bailing_hybrid` | hybrid SSM (KV + GLA recurrent) | yes (gpl-strip) | yes (with companion) | yes (with companion) | yes (after hybrid TQ codec) | required | required for thinking models |
-| MiniMax-M2.7 | `qwen3_moe` | KV | yes | yes | yes | yes | n/a | n/a |
+| MiniMax-M2.7 | `minimax_m2` | KV | yes | yes | yes | yes | n/a | n/a |
 | Kimi-K2.6 | `kimi_k25` | MLA (`CacheList(KVCache, KVCache)`) | yes | conditional | yes | NO (MLA shape) | n/a | n/a |
 | Gemma-4-26B | `gemma4` | rotating_kv (mixed sliding+full) | yes (with rotating metadata) | yes | yes | yes | n/a | n/a |
 | Qwen3.6-27B | `qwen3_5` (hybrid) | hybrid SSM | yes | yes | yes | yes (after hybrid TQ codec) | required | required for thinking |
