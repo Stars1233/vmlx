@@ -2352,6 +2352,68 @@ No runtime behavior changed and no hidden output cap was added. This only makes
 the existing server-default versus per-chat/API override boundary mandatory in
 the release proof.
 
+## 2026-05-22 10:20 PDT - Request Output Caps Cannot Mutate Later Auto Defaults
+
+Added the edge Eric asked us to keep questioning after release: a per-chat/API
+output cap below or above the server startup default must not become the new
+server default for the next Auto request.
+
+New required marker:
+
+- `test_request_output_caps_do_not_mutate_server_default_across_later_omitted_requests`
+
+Red:
+
+- `.venv/bin/python tests/cross_matrix/run_max_output_context_contract.py --out build/current-max-output-context-contract-20260522-request-default-mutation-red.json`
+  -> `status=fail`, `failed=[]`,
+  `missing_markers=["test_request_output_caps_do_not_mutate_server_default_across_later_omitted_requests"]`.
+
+Green:
+
+- focused route/gate test:
+  `.venv/bin/python -m pytest -q tests/test_engine_audit.py::TestServerSamplingResolution::test_request_output_caps_do_not_mutate_server_default_across_later_omitted_requests tests/test_max_output_context_contract.py`
+  -> `2 passed`;
+- max-output/context gate:
+  `build/current-max-output-context-contract-20260522-request-default-mutation.json`
+  -> `status=pass`, `failed=[]`, `missing_markers=[]`,
+  engine `21 passed`, panel `39 passed / 293 skipped`.
+
+This is still no-heavy route-level proof. It does not add a hidden cap, clamp,
+or sampler default. It proves Chat Completions and Responses explicit output
+caps stay request-scoped and the later omitted requests still resolve to the
+server startup default.
+
+## 2026-05-22 10:22 PDT - Release Surface Gate Handles Post-Release Updater State
+
+The umbrella suite exposed a real contract drift after the release shipped:
+`run_release_surface_contract.py` still required `latest.json` to be behind the
+source version. That was correct for pre-release staging, but false once
+`latest.json` legitimately equals the source version after publication.
+
+Red:
+
+- umbrella suite:
+  `build/current-regression-suite-20260522-request-default-mutation.json`
+  -> `failed_steps=["release_surface_contracts"]`;
+- focused new post-release updater test:
+  `.venv/bin/python -m pytest -q tests/test_release_surface_contract.py::test_release_surface_contract_allows_complete_post_release_updater`
+  -> failed because artifact status was `fail`.
+
+Green:
+
+- release-surface unit tests:
+  `.venv/bin/python -m pytest -q tests/test_release_surface_contract.py`
+  -> `4 passed`;
+- release-surface artifact:
+  `build/current-release-surface-contract-20260522-post-release-updater.json`
+  -> `status=pass`, with `local_updater_release_state_valid=true` and
+  `staged_source_version_not_public=false`.
+
+The gate now accepts both safe pre-release state (`latest.json` behind source)
+and complete post-release state (`latest.json` equals source with matching URL,
+SHA256, and notes). It still rejects updater-ahead and incomplete bumped
+manifests.
+
 ## 2026-05-22 09:05 PDT - Family Gate Requires ZAYA/Hy3/Qwen VL Profile Rows
 
 Strengthened `run_model_family_detection_contract.py` so existing high-risk
