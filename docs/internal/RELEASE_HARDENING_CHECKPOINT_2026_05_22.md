@@ -3332,6 +3332,63 @@ Release read:
 - This does not clear the separate DSV4 long-output/code/file-generation
   quality row.
 
+## 2026-05-22 15:34 PDT - Server/Chat Output Compatibility Recheck Pinned
+
+Scope:
+
+- Rechecked Eric's specific concern that a separate per-chat/API Max Output
+  Tokens override could conflict with Server Settings Max Output Tokens.
+- Inspected the current gate before editing: it already covers Chat
+  Completions, Responses, legacy Completions, Anthropic, Ollama, panel request
+  builders, chat override persistence, session launch args, stale `32768`
+  migration, wake/reload explicitness, and DSV4 request-budget paths.
+
+Changes:
+
+- `tests/test_release_regression_manifest.py`
+  - added a red-first guard requiring the current server/chat output
+    compatibility artifact and explicit edge-case text.
+- `tests/cross_matrix/release_regression_manifest.py`
+  - updated the max-output/context row to point at
+    `build/current-max-output-context-contract-20260522-recheck-server-chat-output-compat.json`;
+  - explicitly names the above/below server-default override cases, later Auto
+    request default preservation, and wake/reload plus CLI startup explicitness.
+
+Red:
+
+- `tests/test_release_regression_manifest.py::test_release_regression_manifest_tracks_current_server_chat_output_compat_recheck`
+  failed until the release manifest named the current artifact and edge-case
+  proof text.
+
+Green:
+
+- max-output/context contract:
+  `build/current-max-output-context-contract-20260522-recheck-server-chat-output-compat.json`
+  -> `status=pass`, `failed=[]`, `missing_markers=[]`, all `checks` true,
+  engine `22 passed`, panel `45 passed / 295 skipped`;
+- focused manifest/contract tests:
+  `tests/test_release_regression_manifest.py::{max_output_context_with_runner_artifact,current_server_chat_output_compat_recheck}` plus
+  `tests/test_max_output_context_contract.py`
+  -> `3 passed`;
+- release manifest:
+  `build/current-release-regression-manifest-20260522-recheck-server-chat-output-compat.json`
+  -> `18 rows`;
+- umbrella with fixed JANG source:
+  `build/current-regression-suite-20260522-recheck-server-chat-output-compat.json`
+  -> `status=pass`, `failed_steps=[]`, open requirement exactly:
+  `DSV4 long-output/code/file-generation quality is release-cleared`.
+
+Release read:
+
+- Server Max Output Tokens remains an omitted-request startup default.
+- Explicit Chat/Responses output caps remain per-request overrides and can be
+  lower or higher than that server default.
+- Later Auto Chat/Responses requests still use the original server startup
+  default; request overrides do not mutate it.
+- Max Context Tokens remains prompt/context-only and maps separately.
+- This does not clear the separate DSV4 long-output/code/file-generation
+  quality row.
+
 ## 2026-05-22 15:16 PDT - MCP And VL/Media Recheck Pinned
 
 Scope:
