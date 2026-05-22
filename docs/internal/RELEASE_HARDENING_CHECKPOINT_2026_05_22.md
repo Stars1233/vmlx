@@ -110,6 +110,9 @@ Key artifacts:
   cap. The test preserves model-owned `maxTokens` already derived for a new
   chat while refusing inherited `maxTokens=32768` and other sampler/prompt
   overrides from the previous chat.
+- Updated the durable release-regression manifest so the
+  `chat-settings-max-output-context-ui` row points at the current max-output
+  proof artifact and explicitly names the new-chat model-owned maxTokens guard.
 
 Key artifacts:
 
@@ -128,6 +131,8 @@ Key artifacts:
 - `build/current-max-output-context-contract-20260522-new-chat-max-output.json`
 - `build/current-regression-suite-20260522-new-chat-max-output.json`
 - `build/current-release-surface-contract-20260522-post-new-chat-max-output.json`
+- `build/current-release-regression-manifest-20260522-new-chat-max-output.json`
+- `build/current-regression-suite-20260522-new-chat-manifest.json`
 
 ## Latest Verification
 
@@ -166,6 +171,9 @@ uv run --extra dev python tests/cross_matrix/run_release_regression_manifest.py 
 
 uv run --extra dev python tests/cross_matrix/run_max_output_context_contract.py \
   --out build/current-max-output-context-contract-20260522-new-chat-max-output.json
+
+uv run --extra dev python tests/cross_matrix/run_release_regression_manifest.py \
+  --out build/current-release-regression-manifest-20260522-new-chat-max-output.json
 
 uv run --extra dev python tests/cross_matrix/run_max_output_context_contract.py \
   --out build/current-max-output-context-contract-20260522-chat-server-boundary.json
@@ -207,6 +215,9 @@ Observed results:
 - focused max-output/manifest/current-suite tests after new-chat guard:
   `55 passed`;
 - umbrella suite after new-chat guard: `status=pass`, `failed_steps=[]`;
+- manifest/current-suite tests after manifest row update: `55 passed`;
+- release manifest artifact after row update: 17 rows;
+- umbrella suite after manifest row update: `status=pass`, `failed_steps=[]`;
 - umbrella suite: `status=pass`, `failed_steps=[]`;
 - release surface contract after pushing `cdb7d0f0`: `status=pass`;
 - release surface contract after pushing `177b9cd4`: `status=pass`;
