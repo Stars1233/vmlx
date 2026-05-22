@@ -2139,3 +2139,60 @@ Green:
 
 This is a wiring/compatibility fix only. It does not clear DSV4
 long-output/code/file-generation quality.
+
+## 2026-05-22 08:38 PDT - Release Gates Use Clean JANG Source
+
+Fixed a release-harness false failure where the umbrella suite and packaged
+integrity wrapper could compare bundled `jang_tools` against dirty
+`/Users/eric/jang` instead of the clean release worktree. The bundled runtime
+already matched:
+
+- `/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed/jang-tools`
+
+but the wrapper call lacked explicit `VMLX_JANG_TOOLS_SOURCE` /
+`VMLINUX_JANG_TOOLS_SOURCE` propagation, so unrelated dirty tracked JANG files
+could make the release suite look broken.
+
+New behavior:
+
+- `tests/cross_matrix/run_packaged_integrity_contract.py` accepts
+  `--jang-tools-source`;
+- `tests/cross_matrix/run_current_regression_suite.py` accepts
+  `--jang-tools-source`;
+- each wrapper scopes both env vars while running child gates;
+- no runtime code, sampler behavior, cache behavior, model config, or bundle
+  contents were changed.
+
+Red:
+
+- `test_current_regression_suite_sets_clean_jang_source_env_for_release_children`
+  failed because `build_suite_artifact()` had no `jang_tools_source` argument.
+- `test_packaged_integrity_sets_clean_jang_source_env_for_bundle_checks` failed
+  because `build_artifact()` had no `jang_tools_source` argument.
+
+Green:
+
+- focused harness tests:
+  `.venv/bin/python -m pytest -q tests/test_current_regression_suite.py::test_current_regression_suite_sets_clean_jang_source_env_for_release_children tests/test_packaged_integrity_contract.py::test_packaged_integrity_sets_clean_jang_source_env_for_bundle_checks`
+  -> `2 passed`;
+- full harness tests:
+  `.venv/bin/python -m pytest -q tests/test_current_regression_suite.py tests/test_packaged_integrity_contract.py`
+  -> `32 passed`;
+- packaged integrity gate with clean JANG source:
+  `build/current-packaged-integrity-contract-20260522-clean-jang-source-env.json`
+  -> `status=pass`, `failed=[]`;
+- umbrella suite with clean JANG source:
+  `build/current-regression-suite-20260522-clean-jang-source-env.json`
+  -> `status=pass`, `failed_steps=[]`, with the only known open requirement:
+  `DSV4 long-output/code/file-generation quality is release-cleared`;
+- release surface:
+  `build/current-release-surface-contract-20260522-release-finalization-refresh.json`
+  -> `status=pass`;
+- max-output/context audit:
+  `build/current-max-output-context-contract-20260522-request-output-isolation-audit.json`
+  -> `status=pass`, `missing_markers=[]`.
+
+Release implication: packaging/source parity is no longer blocked by incidental
+dirty JANG working state. A production release is still not cleared until the
+DSV4 long-output/code/file-generation quality objective is closed or Eric
+explicitly decides to ship with that limitation documented.
