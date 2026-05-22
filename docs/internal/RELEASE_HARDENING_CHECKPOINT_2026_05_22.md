@@ -3389,6 +3389,61 @@ Release read:
 - This does not clear the separate DSV4 long-output/code/file-generation
   quality row.
 
+## 2026-05-22 15:39 PDT - JANG/MXFP/MTP Loader Recheck Pinned
+
+Scope:
+
+- Rechecked the no-heavy artifact-format gate for the loader/autodetect
+  families Eric called out: JANG, JANGTQ/MXTQ, MXFP4, MXFP8, plain MLX 4bit,
+  Ling/Bailing hybrid repairs, dropped/preserved MTP, and native-MTP
+  detection from real indexed weights.
+- This is source/static loader and registry coverage. It does not load model
+  weights or claim live output quality.
+
+Changes:
+
+- `tests/test_release_regression_manifest.py`
+  - added a red-first guard requiring the current JANG/MXFP/MTP loader artifact
+    and explicit edge-case proof text.
+- `tests/cross_matrix/release_regression_manifest.py`
+  - model-artifact-format row now points at
+    `build/current-model-artifact-format-contract-20260522-recheck-jang-mxfp-mtp-loaders.json`;
+  - explicitly names JANGTQ_K mixed routed-bit `gather_dn`, Ling/Bailing
+    `switch_mlp` repair/no-op, Qwen plain MLX 4bit separation, and native-MTP
+    indexed-weight detection.
+
+Red:
+
+- `tests/test_release_regression_manifest.py::test_release_regression_manifest_tracks_current_jang_mxfp_mtp_loader_recheck`
+  failed until the release manifest named the current artifact and edge-case
+  proof text.
+
+Green:
+
+- model artifact format:
+  `build/current-model-artifact-format-contract-20260522-recheck-jang-mxfp-mtp-loaders.json`
+  -> `status=pass`, `failed=[]`, `missing_markers=[]`, checks all true,
+  `132 passed / 174 deselected`;
+- focused manifest/contract tests:
+  `tests/test_release_regression_manifest.py::{current_jang_mxfp_mtp_loader_recheck,model_artifact_detection_with_runner_artifact,mxfp_vlm_loader_quant_mode,affine_jang_loader_acceptance}` plus
+  `tests/test_model_artifact_format_contract.py`
+  -> `5 passed`;
+- release manifest:
+  `build/current-release-regression-manifest-20260522-recheck-jang-mxfp-mtp-loaders.json`
+  -> `18 rows`;
+- umbrella with fixed JANG source:
+  `build/current-regression-suite-20260522-recheck-jang-mxfp-mtp-loaders.json`
+  -> `status=pass`, `failed_steps=[]`, open requirement exactly:
+  `DSV4 long-output/code/file-generation quality is release-cleared`.
+
+Release read:
+
+- JANG/JANGTQ/MXTQ, MXFP4/8, plain MLX 4bit, and native-MTP loader
+  classification are pinned to current source and cannot silently fall back to
+  path-name-only detection.
+- Ling/Bailing 2D/3D hybrid shape handling remains covered.
+- DSV4 long-output/code/file-generation quality remains separate and open.
+
 ## 2026-05-22 15:16 PDT - MCP And VL/Media Recheck Pinned
 
 Scope:
