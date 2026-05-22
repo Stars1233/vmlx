@@ -3669,6 +3669,62 @@ Release read:
 - Qwen/JANG live decode is not the DSV4 2-3 tok/s decode issue, but its
   prefill speed is still under the current target and should remain review.
 
+## 2026-05-22 16:14 PDT - SingleBatch Prefill Keep-Alloc Wiring
+
+Scope:
+
+- Followed up on the Qwen/JANG PP review row by checking the explicit
+  prefill allocator reuse flag from PR #163.
+- Root cause found: the existing `--prefill-keep-alloc` flag reached the
+  environment, but only the MLLM batch generator honored it. The
+  `qwen27_jang4m` speed row runs `SingleBatchGenerator` because
+  `max_num_seqs=1`, so single-sequence JANG rows still cleared the allocator
+  cache after every prefill chunk.
+
+Change:
+
+- `SingleBatchGenerator._prefill()` now honors
+  `VMLINUX_PREFILL_KEEP_ALLOC=1` / `VMLX_PREFILL_KEEP_ALLOC=1`.
+- Default behavior is unchanged: if the env/CLI flag is omitted, the prefill
+  loop still calls `mx.clear_cache()` after each chunk.
+- This is not a hidden sampler, max-token, cache-policy, or generation-default
+  change.
+
+Source proof:
+
+- Red/green guard:
+  `tests/test_perf_prefill_loop.py::test_single_batch_prefill_loop_env_gates_clear_cache`
+  failed before the source change and passes after it.
+- Harness guard:
+  `tests/test_model_family_detection_contract.py::test_decode_speed_gate_extra_serve_arg_is_opt_in_without_mutating_row_defaults`
+  failed red before `row_with_extra_serve_args()` existed, then passed after
+  adding an explicit `--serve-extra-arg=...` harness path.
+- Source live Qwen run with explicit `--prefill-keep-alloc`:
+  `build/current-decode-speed-live-qwen27-jang4m-source-keepalloc-20260522.json`
+  -> `status=pass`, decode `22.87 tok/s`, no notes.
+
+Release read:
+
+- This proves the source single-batch path now honors the explicit keep-alloc
+  flag. It does not prove the currently packaged app has absorbed the source
+  change until bundled Python is rebuilt and parity-checked.
+- It does not clear the earlier packaged Qwen PP review row because the source
+  artifact did not record the same PP measurements. Keep the release manifest
+  row in review.
+- Fresh max-output/context contract after this change:
+  `build/current-max-output-context-contract-20260522-after-singlebatch-keepalloc.json`
+  -> `status=pass`, `failed=[]`, `missing_markers=[]`. This rechecks the
+  server startup max-output default vs per-chat/API output-cap edge cases after
+  the prefill change.
+- Fresh model-family detection contract after this change:
+  `build/current-model-family-detection-contract-20260522-singlebatch-keepalloc.json`
+  -> `status=pass`, `failed=[]`, `missing_rows=[]`.
+- Fresh umbrella suite with clean JANG source:
+  `build/current-regression-suite-20260522-singlebatch-keepalloc.json`
+  -> `status=pass`, `failed_steps=[]`, open requirement exactly
+  `DSV4 long-output/code/file-generation quality is release-cleared`.
+- DSV4 long-output/code/file-generation quality remains open.
+
 Verification:
 
 - Focused red/green guard:
