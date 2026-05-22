@@ -237,6 +237,12 @@ uv run --extra dev python tests/cross_matrix/run_release_regression_manifest.py 
 uv run --extra dev python tests/cross_matrix/run_model_family_detection_contract.py \
   --out build/current-model-family-detection-contract-20260522-artifact-format-matrix.json
 
+uv run --extra dev python tests/cross_matrix/run_model_family_detection_contract.py \
+  --out build/current-model-family-detection-contract-20260522-command-policy.json
+
+uv run --extra dev python tests/cross_matrix/run_release_regression_manifest.py \
+  --out build/current-release-regression-manifest-20260522-command-policy.json
+
 uv run --extra dev python tests/cross_matrix/run_release_regression_manifest.py \
   --out build/current-release-regression-manifest-20260522-artifact-format-matrix.json
 
@@ -383,6 +389,22 @@ Observed results:
 - release manifest artifact after artifact-format matrix guard: 18 rows;
 - umbrella suite after artifact-format matrix guard: `status=pass`,
   `failed_steps=[]`;
+- red proof for decode-speed command policy:
+  `build/current-model-family-detection-contract-20260522-command-policy-red.json`
+  failed only with
+  `missing_rows=["decode_speed_build_command_parser_modality_policy"]`;
+- focused decode-speed command policy test:
+  `test_decode_speed_gate_build_command_preserves_row_parser_modality_policy`
+  passed;
+- model-family gate after command policy guard: `status=pass`,
+  `missing_rows=[]`, engine `36 passed`, panel `40 passed / 12 skipped`;
+- release manifest artifact after command policy guard: 18 rows;
+- focused family/manifest/current-suite tests after command policy guard:
+  `62 passed`;
+- py-compile and `git diff --check` after command policy guard: pass;
+- umbrella suite after command policy guard: `status=pass`,
+  `failed_steps=[]`, open requirement remains
+  `DSV4 long-output/code/file-generation quality is release-cleared`;
 - max-output gate after legacy `/v1/completions` output-cap guard:
   `status=pass`, `missing_markers=[]`, engine `15 passed`, panel
   `34 passed / 1 skipped`;
