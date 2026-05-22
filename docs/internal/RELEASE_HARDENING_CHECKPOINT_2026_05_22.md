@@ -2016,3 +2016,42 @@ Verification:
 This is no-heavy launch-policy and speed-row coverage. It does not claim live
 JANG speed output quality or DSV4 quality clearance. No release build/signing
 started.
+
+## 2026-05-22 07:45 PDT - Release Gate Now Enforces Objective Digest
+
+Found a release-preflight gap while preparing for the build step: the umbrella
+suite caught the open DSV4 quality row, but a direct
+`panel/scripts/release-gate-python-app.py --skip-app --skip-gui` run could
+return success because the script did not refresh/read the objective-proof
+digest itself.
+
+Fix:
+
+- added `check_objective_proof_digest()` to the release gate;
+- the gate now runs
+  `tests/cross_matrix/summarize_objective_proof.py --out build/current-objective-proof-audit-20260521.json`;
+- if any digest requirement is not `pass`, the release gate records
+  `[FAIL] objective proof digest: ...`;
+- added tests proving the DSV4 open row blocks direct release-gate runs;
+- indexed the enforced packaged-integrity artifact in the release manifest.
+
+Red:
+
+- `tests/test_release_gate_python_app.py::test_release_gate_objective_digest_fails_on_open_requirement`
+  and `tests/test_release_gate_python_app.py::test_release_gate_static_runs_objective_digest_gate`
+  failed before the function/call existed;
+- `tests/test_release_regression_manifest.py::test_release_regression_manifest_tracks_packaged_integrity_with_runner_artifact`
+  failed before the objective-gate-enforced artifact was indexed.
+
+Green:
+
+- `.venv/bin/python -m pytest -q tests/test_release_gate_python_app.py`
+  -> `36 passed`;
+- with clean JANG source:
+  `VMLINUX_JANG_TOOLS_SOURCE=/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed/jang-tools VMLX_JANG_TOOLS_SOURCE=/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed/jang-tools .venv/bin/python tests/cross_matrix/run_packaged_integrity_contract.py --out build/current-packaged-integrity-contract-20260522-objective-gate-enforced.json`
+  -> `status=pass`, `failed=[]`, `release_gate_skip_app: rc=1`;
+- the release-gate tail now shows:
+  `[FAIL] objective proof digest: DSV4 long-output/code/file-generation quality is release-cleared`.
+
+This is a release-safety fix. It does not clear the DSV4 model-quality row or
+start build/signing.
