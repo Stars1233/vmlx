@@ -211,6 +211,12 @@ uv run --extra dev python tests/cross_matrix/run_release_regression_manifest.py 
 uv run --extra dev python tests/cross_matrix/run_max_output_context_contract.py \
   --out build/current-max-output-context-contract-20260522-chat-server-boundary.json
 
+uv run --extra dev python tests/cross_matrix/run_max_output_context_contract.py \
+  --out build/current-max-output-context-contract-20260522-server-chat-boundary.json
+
+uv run --extra dev python tests/cross_matrix/run_release_regression_manifest.py \
+  --out build/current-release-regression-manifest-20260522-server-chat-boundary.json
+
 VMLINUX_JANG_TOOLS_SOURCE=/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed/jang-tools \
 VMLX_JANG_TOOLS_SOURCE=/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed/jang-tools \
 uv run --extra dev python tests/cross_matrix/run_current_regression_suite.py \
@@ -248,9 +254,15 @@ Observed results:
   `failed_steps=[]`;
 - max-output gate after new-chat inheritance guard: `status=pass`,
   `missing_markers=[]`, engine `14 passed`, panel `33 passed / 1 skipped`;
+- max-output gate after server/chat boundary guard: `status=pass`,
+  `missing_markers=[]`, engine `14 passed`, panel `34 passed / 1 skipped`;
 - focused max-output/manifest/current-suite tests after new-chat guard:
   `55 passed`;
+- focused max-output/manifest/current-suite tests after server/chat boundary
+  guard: `58 passed`;
 - umbrella suite after new-chat guard: `status=pass`, `failed_steps=[]`;
+- umbrella suite after server/chat boundary guard: `status=pass`,
+  `failed_steps=[]`;
 - manifest/current-suite tests after manifest row update: `55 passed`;
 - release manifest artifact after row update: 17 rows;
 - umbrella suite after manifest row update: `status=pass`, `failed_steps=[]`;
