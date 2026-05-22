@@ -2196,3 +2196,53 @@ Release implication: packaging/source parity is no longer blocked by incidental
 dirty JANG working state. A production release is still not cleared until the
 DSV4 long-output/code/file-generation quality objective is closed or Eric
 explicitly decides to ship with that limitation documented.
+
+## 2026-05-22 08:49 PDT - Family Contract Pins Panel Launch Wiring
+
+Added a no-heavy family-detection row that ties registry/decode-speed policy
+back to the actual app launch builder. This closes the gap where
+`run_model_family_detection_contract.py` could pass on registry and
+decode-speed rows without directly exercising the `sessions.ts` launch-preview
+boundary.
+
+New required row:
+
+- `panel_session_launch_parser_modality_policy`
+
+What it pins:
+
+- MiniMax launches with `--tool-call-parser minimax` and
+  `--reasoning-parser minimax_m2`;
+- Qwen3.6 hybrid cache forces paged cache over stale saved `usePagedCache=false`;
+- ZAYA keeps the `qwen3` reasoning parser while startup thinking defaults stay
+  model-owned, not emitted as hidden `--default-enable-thinking`;
+- DSV4 stale cache config and additional args cannot reenable generic cache,
+  native MTP, deterministic MTP sampling, hidden sampler defaults, or startup
+  max-token overrides;
+- native-MTP-capable rows launch with measured D3 policy through the panel path.
+
+Red:
+
+- `test_family_detection_contract_pins_named_release_rows` failed because the
+  new row did not exist;
+- `test_family_detection_contract_hashes_app_and_engine_sources` failed because
+  `panel/src/main/sessions.ts` and `panel/tests/settings-flow.test.ts` were not
+  hashed by the family contract;
+- `test_family_detection_contract_runs_verbose_engine_and_panel_rows` failed
+  because no focused `panel_session_launch_wiring` command existed;
+- release manifest boundary test failed before the new proof artifact and
+  scope were indexed.
+
+Green:
+
+- targeted family-contract tests:
+  `.venv/bin/python -m pytest -q tests/test_model_family_detection_contract.py::test_family_detection_contract_pins_named_release_rows tests/test_model_family_detection_contract.py::test_family_detection_contract_hashes_app_and_engine_sources tests/test_model_family_detection_contract.py::test_family_detection_contract_runs_verbose_engine_and_panel_rows`
+  -> `3 passed`;
+- family detection gate:
+  `.venv/bin/python tests/cross_matrix/run_model_family_detection_contract.py --out build/current-model-family-detection-contract-20260522-panel-launch-wiring.json`
+  -> `status=pass`, `missing_rows=[]`, engine `42 passed / 111 deselected`,
+  panel registry `41 passed / 12 skipped`, panel launch wiring
+  `6 passed / 228 skipped`.
+
+This is launch-wiring compatibility proof only. It does not change runtime
+behavior or clear live model output quality.
