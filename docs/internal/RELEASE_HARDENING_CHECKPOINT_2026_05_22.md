@@ -891,6 +891,60 @@ Green proof:
   `build/current-release-surface-contract-20260522-post-reasoning-dropdown.json`
   -> `status=pass`, with updater/source consistency checks green.
 
+## 2026-05-22 04:59 PDT - Plain KV Cache Health Guard
+
+Closed another no-heavy cache-regression edge for non-DSV4 families:
+
+- Previous live-health mismatch checks caught DSV4 native composite and ZAYA
+  typed CCA rows, but plain KV rows did not reject a bad health report claiming
+  `native_composite` or `typed_cca`.
+- This matters because DSV4 native cache work must not bleed into normal
+  JANG/JANGTQ/MXFP/KV rows or let a bad live health report appear compatible.
+- The new check does not force TurboQuant KV off for plain KV rows; it only
+  rejects the wrong cache architecture.
+
+Red proof:
+
+- `uv run --extra dev python -m pytest -q tests/test_model_family_detection_contract.py::test_decode_speed_gate_detects_plain_kv_cache_health_mismatches`
+  initially failed because `cache_health_mismatches()` returned `[]` for a
+  plain KV row with health `cache_type=native_composite`.
+
+Fix:
+
+- `tests/cross_matrix/run_decode_speed_gate.py`
+  - plain `cache_type=kv` rows now accept only health `cache_type=kv` or
+    `cache_type=paged_kv`;
+  - they reject DSV4 native composite and ZAYA typed CCA live-health reports.
+- `tests/cross_matrix/run_model_family_detection_contract.py`
+  - added required row
+    `decode_speed_plain_kv_cache_health_not_native`.
+- `tests/test_model_family_detection_contract.py`
+  - added focused regression coverage for plain KV health mismatch detection.
+- `tests/cross_matrix/release_regression_manifest.py`
+  - model-family row now records:
+    `Decode-speed health checks reject DSV4 native or ZAYA typed cache health for plain KV JANG/JANGTQ/MXFP rows`.
+
+Green proof:
+
+- focused regression:
+  `uv run --extra dev python -m pytest -q tests/test_model_family_detection_contract.py::test_decode_speed_gate_detects_plain_kv_cache_health_mismatches`
+  -> `1 passed`;
+- family detection contract:
+  `uv run --extra dev python tests/cross_matrix/run_model_family_detection_contract.py --out build/current-model-family-detection-contract-20260522-plain-kv-cache-health.json`
+  -> `status=pass`, `missing_rows=[]`, engine `39 passed`, panel
+  `40 passed / 12 skipped`;
+- release manifest:
+  `uv run --extra dev python tests/cross_matrix/run_release_regression_manifest.py --out build/current-release-regression-manifest-20260522-plain-kv-cache-health.json`
+  -> 18 rows;
+- focused pytest:
+  `uv run --extra dev python -m pytest -q tests/test_model_family_detection_contract.py tests/test_release_regression_manifest.py tests/test_current_regression_suite.py`
+  -> `82 passed`;
+- py-compile for changed runners and `git diff --check` -> pass;
+- umbrella suite:
+  `VMLINUX_JANG_TOOLS_SOURCE=/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed/jang-tools VMLX_JANG_TOOLS_SOURCE=/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed/jang-tools uv run --extra dev python tests/cross_matrix/run_current_regression_suite.py --out build/current-regression-suite-20260522-plain-kv-cache-health.json`
+  -> `status=pass`, `failed_steps=[]`, open requirement remains
+  `DSV4 long-output/code/file-generation quality is release-cleared`.
+
 ## Release Decision
 
 No release build has been started from this checkpoint. The next release action
