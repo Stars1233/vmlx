@@ -2304,3 +2304,50 @@ Green:
 This is no-heavy launch-policy proof. It does not force sampler defaults,
 change cache behavior, or clear DSV4 live long-output/code/file-generation
 quality.
+
+## 2026-05-22 08:59 PDT - Responses Output Boundary Is Required In Max-Token Gate
+
+Tightened the max-output/context gate around the exact concern that a separate
+per-chat output cap could interfere with server startup `--max-tokens`.
+
+The existing panel tests already covered these behaviors, but the release gate
+did not require their exact marker names. That made the proof too broad: the
+gate could pass without proving the Responses-specific edge where per-chat
+`maxTokens` maps to `max_output_tokens`, stays request-scoped above/below the
+server default, and Auto omits output-budget fields so the server/model default
+can apply.
+
+New required markers:
+
+- `per-chat maxTokens below or above the server startup default remain request scoped for Responses`
+- `does not invent Responses sampler or output-budget values when chat overrides are absent`
+
+Red:
+
+- `tests/test_max_output_context_contract.py` failed because those markers were
+  not required by `run_max_output_context_contract.py`;
+- release-manifest boundary test failed because the
+  `chat-settings-max-output-context-ui` row still referenced older artifacts.
+
+Green:
+
+- max-output contract unit:
+  `.venv/bin/python -m pytest -q tests/test_max_output_context_contract.py`
+  -> `1 passed`;
+- max-output/context gate:
+  `build/current-max-output-context-contract-20260522-responses-output-boundary.json`
+  -> `status=pass`, `failed=[]`, `missing_markers=[]`,
+  engine `20 passed`, panel `39 passed / 293 skipped`;
+- focused manifest/max-output tests:
+  `38 passed`;
+- release manifest:
+  `build/current-release-regression-manifest-20260522-responses-output-boundary.json`
+  -> `18 rows`;
+- umbrella suite with clean JANG source:
+  `build/current-regression-suite-20260522-responses-output-boundary.json`
+  -> `status=pass`, `failed_steps=[]`, open requirement exactly:
+  `DSV4 long-output/code/file-generation quality is release-cleared`.
+
+No runtime behavior changed and no hidden output cap was added. This only makes
+the existing server-default versus per-chat/API override boundary mandatory in
+the release proof.
