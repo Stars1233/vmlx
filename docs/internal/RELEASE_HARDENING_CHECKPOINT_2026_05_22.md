@@ -1485,3 +1485,54 @@ Verification:
 
 This is source/static panel routing coverage. It does not claim live Qwen
 indexed-MTP VLM output quality.
+
+## 2026-05-22 06:25 PDT - Nemotron-H Stale Omni Engine Routing Pinned
+
+Extended the model-family detection gate so Nemotron-H stale Omni sidecars are
+proved in both engine and panel routing, not only in the panel test. This keeps
+text-only Nemotron-H/Nemotron-H v2 extracts from being routed through MLLM just
+because a stale `jang_config.json` says `capabilities.modality=omni` or a
+`preprocessor_config.json` sidecar exists.
+
+Required engine marker:
+
+- `test_nemotron_h_stale_omni_stamp_without_media_stays_text_hybrid`
+
+What it pins:
+
+- `config.json` with `model_type=nemotron_h_v2` and no real media config stays
+  text-only even when `jang_config.json` says `modality=omni`;
+- `preprocessor_config.json` alone is not enough to enable MLLM routing;
+- hybrid SSM/attention cache routing remains `hybrid`;
+- parser policy remains `tool_parser=nemotron` and
+  `reasoning_parser=deepseek_r1`.
+
+Verification:
+
+- red:
+  `.venv/bin/python tests/cross_matrix/run_model_family_detection_contract.py --out build/current-model-family-detection-contract-20260522-nemotron-stale-omni-red.json`
+  -> `status=fail`, `missing_rows=["nemotron_h_hybrid_text_not_stale_omni"]`;
+- focused green:
+  `.venv/bin/python -m pytest -q tests/test_model_config_registry.py::TestModelConfigs::test_nemotron_h_stale_omni_stamp_without_media_stays_text_hybrid`
+  -> `1 passed`;
+- family gate:
+  `.venv/bin/python tests/cross_matrix/run_model_family_detection_contract.py --out build/current-model-family-detection-contract-20260522-nemotron-stale-omni.json`
+  -> `status=pass`, `missing_rows=[]`, engine `41 passed`, panel
+  `41 passed / 12 skipped`;
+- release manifest:
+  `.venv/bin/python tests/cross_matrix/run_release_regression_manifest.py --out build/current-release-regression-manifest-20260522-nemotron-stale-omni.json`
+  -> 18 rows;
+- focused release tests:
+  `.venv/bin/python -m pytest -q tests/test_model_family_detection_contract.py tests/test_release_regression_manifest.py tests/test_current_regression_suite.py`
+  -> `84 passed`;
+- py-compile and `git diff --check` -> pass;
+- umbrella:
+  `VMLINUX_JANG_TOOLS_SOURCE=/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed/jang-tools VMLX_JANG_TOOLS_SOURCE=/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed/jang-tools .venv/bin/python tests/cross_matrix/run_current_regression_suite.py --out build/current-regression-suite-20260522-nemotron-stale-omni.json`
+  -> `status=pass`, `failed_steps=[]`, open requirement remains
+  `DSV4 long-output/code/file-generation quality is release-cleared`;
+- release surface:
+  `.venv/bin/python tests/cross_matrix/run_release_surface_contract.py --out build/current-release-surface-contract-20260522-nemotron-stale-omni.json`
+  -> `status=pass`.
+
+This is no-heavy engine/panel routing coverage. It does not claim live
+Nemotron-H output quality.
