@@ -239,6 +239,15 @@ uv run --extra dev python tests/cross_matrix/run_model_family_detection_contract
 
 uv run --extra dev python tests/cross_matrix/run_release_regression_manifest.py \
   --out build/current-release-regression-manifest-20260522-artifact-format-matrix.json
+
+uv run --extra dev python tests/cross_matrix/run_max_output_context_contract.py \
+  --out build/current-max-output-context-contract-20260522-legacy-completions.json
+
+uv run --extra dev python tests/cross_matrix/run_api_surface_contract.py \
+  --out build/current-api-surface-contract-20260522-legacy-completions.json
+
+uv run --extra dev python tests/cross_matrix/run_release_regression_manifest.py \
+  --out build/current-release-regression-manifest-20260522-legacy-completions.json
 ```
 
 Observed results:
@@ -312,6 +321,17 @@ Observed results:
   `77 passed`;
 - release manifest artifact after artifact-format matrix guard: 18 rows;
 - umbrella suite after artifact-format matrix guard: `status=pass`,
+  `failed_steps=[]`;
+- max-output gate after legacy `/v1/completions` output-cap guard:
+  `status=pass`, `missing_markers=[]`, engine `15 passed`, panel
+  `34 passed / 1 skipped`;
+- API/cache surface after legacy `/v1/completions` output-cap guard:
+  `status=pass`, `missing_markers=[]`, API route contracts `16 passed`;
+- API surface after legacy `/v1/completions` output-cap guard:
+  `status=pass`, `missing_nested_checks=[]`, `missing_panel_markers=[]`;
+- release manifest artifact after legacy `/v1/completions` guard: 18 rows;
+- focused legacy completions/API/manifest/current-suite tests: `64 passed`;
+- umbrella suite after legacy `/v1/completions` guard: `status=pass`,
   `failed_steps=[]`;
 - umbrella suite: `status=pass`, `failed_steps=[]`;
 - release surface contract after pushing `cdb7d0f0`: `status=pass`;
