@@ -1069,6 +1069,59 @@ Green proof:
   -> `status=pass`, `failed_steps=[]`, open requirement remains
   `DSV4 long-output/code/file-generation quality is release-cleared`.
 
+## 2026-05-22 05:23 PDT - VL Panel Family Detection Added To Media Gate
+
+Strengthened the VL/media release gate so it covers panel-side family routing
+for the user-called-out VL/video/Omni rows, not only engine media serialization
+and tool follow-up:
+
+- Qwen VL/video/hybrid panel detection is now part of the VL/media contract.
+- ZAYA1-VL stale text stamps staying multimodal is now part of the contract.
+- MXFP4/MXFP8 Qwen VLM panel detection is now part of the contract.
+- Nemotron-H stale Omni sidecars not forcing text rows through MLLM is now part
+  of the contract.
+
+Red proof:
+
+- `uv run --extra dev python tests/cross_matrix/run_vl_media_cache_contract.py --out build/current-vl-media-cache-contract-20260522-panel-family-red.json`
+  first reported the new panel markers as missing while status still passed;
+- `build/current-vl-media-cache-contract-20260522-panel-family-status-red.json`
+  then failed top-level status after adding
+  `all_required_panel_markers_present`.
+
+Fix:
+
+- `tests/cross_matrix/run_vl_media_cache_contract.py`
+  - added panel model-config registry source hashing;
+  - added required markers for ZAYA1-VL, Qwen JANGTQ/MXFP4/MXFP8 VLM,
+    Qwen video metadata, and Nemotron stale-Omni sidecars;
+  - added `panel_vlm_family_detection` command;
+  - added `all_required_panel_markers_present`.
+- `tests/test_vl_media_cache_contract.py`
+  - pins the new markers and command.
+- `tests/cross_matrix/release_regression_manifest.py`
+  - VL row now records panel family detection coverage and points at
+    `build/current-vl-media-cache-contract-20260522-panel-family.json`.
+
+Green proof:
+
+- VL/media contract:
+  `uv run --extra dev python tests/cross_matrix/run_vl_media_cache_contract.py --out build/current-vl-media-cache-contract-20260522-panel-family.json`
+  -> `status=pass`, no missing markers, engine `32 passed`,
+  panel media `12 passed`, panel VLM settings `11 passed / 222 skipped`,
+  panel family detection `11 passed / 42 skipped`;
+- release manifest:
+  `uv run --extra dev python tests/cross_matrix/run_release_regression_manifest.py --out build/current-release-regression-manifest-20260522-vl-panel-family.json`
+  -> 18 rows;
+- focused pytest:
+  `uv run --extra dev python -m pytest -q tests/test_vl_media_cache_contract.py tests/test_release_regression_manifest.py tests/test_current_regression_suite.py`
+  -> `63 passed`;
+- py-compile and `git diff --check` -> pass;
+- umbrella suite:
+  `VMLINUX_JANG_TOOLS_SOURCE=/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed/jang-tools VMLX_JANG_TOOLS_SOURCE=/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed/jang-tools uv run --extra dev python tests/cross_matrix/run_current_regression_suite.py --out build/current-regression-suite-20260522-vl-panel-family.json`
+  -> `status=pass`, `failed_steps=[]`, open requirement remains
+  `DSV4 long-output/code/file-generation quality is release-cleared`.
+
 ## Release Decision
 
 No release build has been started from this checkpoint. The next release action
