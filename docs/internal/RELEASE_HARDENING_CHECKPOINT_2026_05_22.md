@@ -289,6 +289,9 @@ VMLINUX_JANG_TOOLS_SOURCE=/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed
 VMLX_JANG_TOOLS_SOURCE=/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed/jang-tools \
 uv run --extra dev python tests/cross_matrix/run_current_regression_suite.py \
   --out build/current-regression-suite-20260522-ollama-streaming.json
+
+uv run --extra dev python tests/cross_matrix/run_release_surface_contract.py \
+  --out build/current-release-surface-contract-20260522-post-streaming-ollama.json
 ```
 
 Observed results:
@@ -423,6 +426,8 @@ Observed results:
 - umbrella suite after streaming Ollama guard: `status=pass`,
   `failed_steps=[]`, open requirement remains
   `DSV4 long-output/code/file-generation quality is release-cleared`;
+- pushed `204cf38c test: pin streaming ollama output caps` to `origin/main`;
+- release surface contract after pushing `204cf38c`: `status=pass`;
 - umbrella suite: `status=pass`, `failed_steps=[]`;
 - release surface contract after pushing `cdb7d0f0`: `status=pass`;
 - release surface contract after pushing `177b9cd4`: `status=pass`;
