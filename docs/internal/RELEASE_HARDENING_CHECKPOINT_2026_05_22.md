@@ -3775,6 +3775,50 @@ Release read:
   source fix and future release gates will fail if this file drifts.
 - This still does not clear DSV4 long-output/code/file-generation quality.
 
+## 2026-05-22 16:37 PDT - Qwen/JANG PP Wheel-Flavor Split
+
+Scope:
+
+- Rechecked the Qwen/JANG PP review after the bundled Python refresh and
+  single-batch keep-alloc parity fix.
+- Added wheel-tag recording to `run_decode_speed_gate.py` so speed artifacts
+  report the actual MLX and MLX-metal wheel tags used by the runtime.
+
+Finding:
+
+- Source `.venv` keep-alloc artifact:
+  `build/current-decode-speed-live-qwen27-jang4m-source-keepalloc-20260522.json`
+  -> `status=pass`, PP `910.10`, `914.55`, `779.47 tok/s`.
+- Refreshed bundled Python keep-alloc artifact:
+  `build/current-decode-speed-live-qwen27-jang4m-packaged-keepalloc-20260522.json`
+  -> `status=review`, PP `294.83`, `288.07`, `249.49 tok/s`.
+- The refreshed bundled artifact now records:
+  - `mlx`: `cp312-cp312-macosx_14_0_arm64`;
+  - `mlx-metal`: `py3-none-macosx_14_0_arm64`.
+- The source `.venv` MLX wheel tags are native/Tahoe:
+  - `mlx`: `cp313-cp313-macosx_26_0_arm64`;
+  - `mlx-metal`: `py3-none-macosx_26_0_arm64`.
+
+Release read:
+
+- The single-batch keep-alloc source and bundled parity fixes are real, but
+  packaged compat-wheel PP is still under the current 600 tok/s target.
+- The performance gap is now split from cache/parser/max-token behavior:
+  compat MLX wheels remain slower on this M5/Tahoe machine, while native
+  wheels clear the Qwen/JANG PP target in the source run.
+- Keep `qwen-jang-mx-live-speed-review` in review for compat packaged builds.
+  A native-wheel packaged/dev build needs its own live speed artifact before
+  claiming M5/Tahoe release speed clearance.
+
+Verification:
+
+- Focused tests:
+  `.venv/bin/python -m pytest -q tests/test_model_family_detection_contract.py::test_decode_speed_gate_records_runtime_mlx_wheel_tags tests/test_release_regression_manifest.py::test_release_regression_manifest_tracks_qwen_jang_live_speed_review`
+  -> `2 passed`.
+- Release manifest:
+  `build/current-release-regression-manifest-20260522-qwen-wheel-tags.json`
+  -> `rows=19`, includes the performance row and wheel-tag requirement.
+
 Verification:
 
 - Focused red/green guard:
