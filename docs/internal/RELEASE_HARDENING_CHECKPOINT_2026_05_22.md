@@ -507,6 +507,63 @@ Observed results:
   `1.5.46`, and GitHub `jjang-ai/vmlx` release `v1.5.47` is not published;
 - known open objective remains only DSV4 long-output/code quality.
 
+## 2026-05-22 03:57 PDT - Large External Decode-Speed Rows
+
+Added the no-heavy model-family row:
+
+- `decode_speed_large_external_jangtq_mxfp_gptoss_rows`
+
+This pins the large external rows that are too expensive to rely on for every
+quick gate, but risky enough that their launch policy must not drift:
+
+- `mistral_medium_jangtq_ext`
+  - path:
+    `/Volumes/EricsLLMDrive/jangq-ai/Mistral-Medium-3.5-128B-JANGTQ`
+  - parser policy: `--tool-call-parser mistral`,
+    `--reasoning-parser mistral`, `--is-mllm`
+  - no startup `--max-tokens`
+- `mistral_medium_mxfp4_ext`
+  - path:
+    `/Volumes/EricsLLMDrive/jangq-ai/Mistral-Medium-3.5-128B-mxfp4`
+  - parser policy: `--tool-call-parser mistral`,
+    `--reasoning-parser mistral`, `--is-mllm`
+  - no startup `--max-tokens`
+- `gpt_oss_ext`
+  - path:
+    `/Volumes/EricsLLMDrive/dealignai/GPT-OSS-120B-MLX-CRACK`
+  - parser policy: `--tool-call-parser glm47`,
+    `--reasoning-parser openai_gptoss`
+  - no `--is-mllm`, no startup `--max-tokens`
+
+Red proof:
+
+- `uv run --extra dev python tests/cross_matrix/run_model_family_detection_contract.py --out build/current-model-family-detection-contract-20260522-large-external-red.json`
+- result: `status=fail`, `failed=[]`,
+  `missing_rows=["decode_speed_large_external_jangtq_mxfp_gptoss_rows"]`;
+  existing engine/panel commands stayed green with engine `36 passed`, panel
+  `40 passed / 12 skipped`.
+
+Green proof:
+
+- focused row test:
+  `uv run --extra dev python -m pytest -q tests/test_model_family_detection_contract.py::test_decode_speed_gate_has_large_external_mistral_gptoss_rows`
+  -> `1 passed`;
+- model-family gate:
+  `uv run --extra dev python tests/cross_matrix/run_model_family_detection_contract.py --out build/current-model-family-detection-contract-20260522-large-external.json`
+  -> `status=pass`, `missing_rows=[]`, engine `37 passed`, panel
+  `40 passed / 12 skipped`;
+- release manifest:
+  `uv run --extra dev python tests/cross_matrix/run_release_regression_manifest.py --out build/current-release-regression-manifest-20260522-large-external.json`
+  -> 18 rows;
+- focused family/manifest/current-suite tests:
+  `uv run --extra dev python -m pytest -q tests/test_model_family_detection_contract.py::test_decode_speed_gate_has_large_external_mistral_gptoss_rows tests/test_model_family_detection_contract.py::test_family_detection_contract_pins_named_release_rows tests/test_release_regression_manifest.py tests/test_current_regression_suite.py`
+  -> `62 passed`;
+- py-compile for changed Python runners and `git diff --check` -> pass;
+- umbrella suite:
+  `VMLINUX_JANG_TOOLS_SOURCE=/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed/jang-tools VMLX_JANG_TOOLS_SOURCE=/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed/jang-tools uv run --extra dev python tests/cross_matrix/run_current_regression_suite.py --out build/current-regression-suite-20260522-large-external.json`
+  -> `status=pass`, `failed_steps=[]`, open requirement remains
+  `DSV4 long-output/code/file-generation quality is release-cleared`.
+
 ## Release Decision
 
 No release build has been started from this checkpoint. The next release action
