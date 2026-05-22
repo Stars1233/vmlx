@@ -1789,3 +1789,51 @@ Verification:
 
 This is no-heavy loader/artifact coverage. It does not claim live affine-JANG
 model output quality.
+
+## 2026-05-22 07:10 PDT - ZAYA Stale-Stamp Reasoning Policy Pinned
+
+Extended the model-family-detection gate with a required row for stale ZAYA
+converter stamps.
+
+Required row:
+
+- `zaya_stale_stamp_reasoning_policy`
+
+Required marker:
+
+- `test_zaya_stale_stamp_cannot_disable_reasoning_or_reenable_think_seed`
+
+What it pins:
+
+- stale `jang_config.json` capability stamps cannot disable ZAYA reasoning;
+- stale stamps cannot swap ZAYA off the `qwen3` reasoning parser;
+- stale stamps cannot reenable `think_in_template=True`;
+- ZAYA keeps `zaya_xml` tools, `zaya_cca` cache subtype, and default
+  thinking-off policy.
+
+Verification:
+
+- red:
+  `.venv/bin/python -m pytest -q tests/test_model_family_detection_contract.py::test_family_detection_contract_pins_named_release_rows`
+  -> failed before the required row existed;
+- focused release tests:
+  `.venv/bin/python -m pytest -q tests/test_model_family_detection_contract.py tests/test_release_regression_manifest.py tests/test_current_regression_suite.py`
+  -> `87 passed`;
+- py-compile and `git diff --check` -> pass;
+- family gate:
+  `.venv/bin/python tests/cross_matrix/run_model_family_detection_contract.py --out build/current-model-family-detection-contract-20260522-zaya-stale-stamp.json`
+  -> `status=pass`, `missing_rows=[]`, engine `41 passed`, panel
+  `41 passed / 12 skipped`;
+- release manifest:
+  `.venv/bin/python tests/cross_matrix/run_release_regression_manifest.py --out build/current-release-regression-manifest-20260522-zaya-stale-stamp.json`
+  -> 18 rows;
+- umbrella:
+  `VMLINUX_JANG_TOOLS_SOURCE=/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed/jang-tools VMLX_JANG_TOOLS_SOURCE=/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed/jang-tools .venv/bin/python tests/cross_matrix/run_current_regression_suite.py --out build/current-regression-suite-20260522-zaya-stale-stamp.json`
+  -> `status=pass`, `failed_steps=[]`, open requirement remains
+  `DSV4 long-output/code/file-generation quality is release-cleared`;
+- release surface:
+  `.venv/bin/python tests/cross_matrix/run_release_surface_contract.py --out build/current-release-surface-contract-20260522-zaya-stale-stamp.json`
+  -> `status=pass`.
+
+This is no-heavy registry/family-policy coverage. It does not claim live ZAYA
+output quality.
