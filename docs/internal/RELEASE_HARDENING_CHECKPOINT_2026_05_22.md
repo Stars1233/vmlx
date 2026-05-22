@@ -1337,3 +1337,52 @@ Verification:
 
 This is source/static launch-policy and matrix coverage. It does not claim live
 output quality for the plain MLX 4-bit row.
+
+## 2026-05-22 06:06 PDT - Plain MLX 4bit Artifact Detection Pinned
+
+Extended the no-heavy model-artifact gate so plain MLX 4-bit Qwen artifacts are
+explicitly covered alongside JANG, JANGTQ/MXTQ, MXFP4, MXFP8, dropped-MTP, and
+preserved-MTP artifacts.
+
+New artifact marker:
+
+- `test_qwen36_plain_mlx_4bit_keeps_hybrid_cache_without_jang_or_mxfp`
+
+What it pins:
+
+- a `Qwen3.6-35B-A3B-4bit` artifact with config-declared
+  `linear_attention`/`full_attention` uses hybrid cache;
+- multimodal routing comes from `vision_config`;
+- tool parser stays `qwen`;
+- reasoning parser stays `qwen3`;
+- the row does not require `jang_config.json`, JANGTQ/MXTQ, or MXFP metadata
+  to pick the correct cache/parser/modality policy.
+
+Verification:
+
+- red:
+  `.venv/bin/python tests/cross_matrix/run_model_artifact_format_contract.py --out build/current-model-artifact-format-contract-20260522-plain-mlx-4bit-red.json`
+  -> `status=fail`, missing the new marker;
+- focused registry marker:
+  `.venv/bin/python -m pytest -q tests/test_model_config_registry.py -k qwen36_plain_mlx_4bit`
+  -> `1 passed`;
+- artifact gate:
+  `.venv/bin/python tests/cross_matrix/run_model_artifact_format_contract.py --out build/current-model-artifact-format-contract-20260522-plain-mlx-artifact.json`
+  -> `status=pass`, `missing_markers=[]`, `130 passed`;
+- focused release tests:
+  `.venv/bin/python -m pytest -q tests/test_model_artifact_format_contract.py tests/test_model_family_detection_contract.py tests/test_release_regression_manifest.py tests/test_current_regression_suite.py`
+  -> `85 passed`;
+- release manifest:
+  `.venv/bin/python tests/cross_matrix/run_release_regression_manifest.py --out build/current-release-regression-manifest-20260522-plain-mlx-artifact-final.json`
+  -> 18 rows;
+- py-compile and `git diff --check` -> pass;
+- umbrella:
+  `VMLINUX_JANG_TOOLS_SOURCE=/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed/jang-tools VMLX_JANG_TOOLS_SOURCE=/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed/jang-tools .venv/bin/python tests/cross_matrix/run_current_regression_suite.py --out build/current-regression-suite-20260522-plain-mlx-artifact.json`
+  -> `status=pass`, `failed_steps=[]`, open requirement remains
+  `DSV4 long-output/code/file-generation quality is release-cleared`;
+- release surface:
+  `.venv/bin/python tests/cross_matrix/run_release_surface_contract.py --out build/current-release-surface-contract-20260522-plain-mlx-artifact.json`
+  -> `status=pass`.
+
+This is still source/static artifact detection proof. It does not claim live
+output quality for the plain MLX 4-bit row.
