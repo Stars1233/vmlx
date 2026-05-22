@@ -1536,3 +1536,56 @@ Verification:
 
 This is no-heavy engine/panel routing coverage. It does not claim live
 Nemotron-H output quality.
+
+## 2026-05-22 06:33 PDT - Chat Output Cap vs Server Startup Default Edge Pinned
+
+Extended the max-output/context gate for Eric's concern that separating
+per-chat Max Tokens from Server Default Max Output Tokens could accidentally
+turn the server startup value into a ceiling or rewrite prompt/context caps.
+
+Required panel marker:
+
+- `per-chat maxTokens below or above the server startup default remain request scoped`
+
+What it pins:
+
+- Chat Completions request building keeps a per-chat `maxTokens=512` below a
+  hypothetical `4096` server startup default as `max_tokens=512`;
+- Chat Completions request building keeps `maxTokens=8192` above that default
+  as `max_tokens=8192`;
+- Responses request building keeps the same values as `max_output_tokens`;
+- neither path writes `max_prompt_tokens`, `max_context_tokens`, or
+  `max_context` from per-chat output settings;
+- the existing engine-side gate still proves server startup `--max-tokens` is
+  an omitted-request default, not a hard ceiling.
+
+Verification:
+
+- red:
+  `.venv/bin/python tests/cross_matrix/run_max_output_context_contract.py --out build/current-max-output-context-contract-20260522-chat-cap-startup-red.json`
+  -> `status=fail`,
+  `missing_markers=["per-chat maxTokens below or above the server startup default remain request scoped"]`;
+- focused panel:
+  `cd panel && npx vitest run tests/request-builder.test.ts --testNamePattern "per-chat maxTokens below or above" --reporter=verbose`
+  -> `2 passed / 52 skipped`;
+- max-output/context gate:
+  `.venv/bin/python tests/cross_matrix/run_max_output_context_contract.py --out build/current-max-output-context-contract-20260522-chat-cap-startup.json`
+  -> `status=pass`, `missing_markers=[]`, engine `20 passed`, panel
+  `38 passed / 292 skipped`;
+- release manifest:
+  `.venv/bin/python tests/cross_matrix/run_release_regression_manifest.py --out build/current-release-regression-manifest-20260522-chat-cap-startup.json`
+  -> 18 rows;
+- focused release tests:
+  `.venv/bin/python -m pytest -q tests/test_max_output_context_contract.py tests/test_release_regression_manifest.py tests/test_current_regression_suite.py`
+  -> `62 passed`;
+- py-compile and `git diff --check` -> pass;
+- umbrella:
+  `VMLINUX_JANG_TOOLS_SOURCE=/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed/jang-tools VMLX_JANG_TOOLS_SOURCE=/Users/eric/jang/.worktrees/vmlx-release-clean-7f643ed/jang-tools .venv/bin/python tests/cross_matrix/run_current_regression_suite.py --out build/current-regression-suite-20260522-chat-cap-startup.json`
+  -> `status=pass`, `failed_steps=[]`, open requirement remains
+  `DSV4 long-output/code/file-generation quality is release-cleared`;
+- release surface:
+  `.venv/bin/python tests/cross_matrix/run_release_surface_contract.py --out build/current-release-surface-contract-20260522-chat-cap-startup.json`
+  -> `status=pass`.
+
+This is no-heavy request-builder/API-contract coverage. It does not claim live
+model output quality.
