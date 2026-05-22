@@ -248,6 +248,15 @@ uv run --extra dev python tests/cross_matrix/run_api_surface_contract.py \
 
 uv run --extra dev python tests/cross_matrix/run_release_regression_manifest.py \
   --out build/current-release-regression-manifest-20260522-legacy-completions.json
+
+uv run --extra dev python tests/cross_matrix/run_max_output_context_contract.py \
+  --out build/current-max-output-context-contract-20260522-legacy-completions-streaming.json
+
+uv run --extra dev python tests/cross_matrix/run_api_surface_contract.py \
+  --out build/current-api-surface-contract-20260522-legacy-completions-streaming.json
+
+uv run --extra dev python tests/cross_matrix/run_release_regression_manifest.py \
+  --out build/current-release-regression-manifest-20260522-legacy-completions-streaming.json
 ```
 
 Observed results:
@@ -333,6 +342,17 @@ Observed results:
 - focused legacy completions/API/manifest/current-suite tests: `64 passed`;
 - umbrella suite after legacy `/v1/completions` guard: `status=pass`,
   `failed_steps=[]`;
+- max-output gate after streaming legacy `/v1/completions` output-cap guard:
+  `status=pass`, `missing_markers=[]`, engine `16 passed`, panel
+  `34 passed / 1 skipped`;
+- API surface after streaming legacy `/v1/completions` output-cap guard:
+  `status=pass`, server API surface `17 passed`;
+- release manifest artifact after streaming legacy `/v1/completions` guard:
+  18 rows;
+- focused streaming legacy completions/API/manifest/current-suite tests:
+  `65 passed`;
+- umbrella suite after streaming legacy `/v1/completions` guard:
+  `status=pass`, `failed_steps=[]`;
 - umbrella suite: `status=pass`, `failed_steps=[]`;
 - release surface contract after pushing `cdb7d0f0`: `status=pass`;
 - release surface contract after pushing `177b9cd4`: `status=pass`;
