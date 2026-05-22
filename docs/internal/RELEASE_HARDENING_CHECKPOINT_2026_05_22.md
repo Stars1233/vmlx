@@ -78,6 +78,22 @@ Key artifacts:
 - `build/current-regression-suite-20260522-mcp-marker-hardening.json`
 - `build/current-release-surface-contract-20260522-post-mcp-marker-hardening.json`
 
+### Release Manifest Hygiene
+
+- Added a manifest invariant that every relative Python entrypoint named in a
+  release-gate command must exist in the tracked checkout.
+- Fixed the DSV4 live-quality row so it no longer points at missing generated
+  `build/run_dsv4_identifier_count_ablation.py` code. The row now points at
+  the tracked production-family live runner:
+  `tests/cross_matrix/run_production_family_audit.py --rows dsv4_jang_local --live`.
+- This does not clear DSV4 quality; it makes the remaining live gate
+  reproducible and keeps release docs from referencing zombie scripts.
+
+Key artifacts:
+
+- `build/current-release-regression-manifest-20260522-live-entrypoint.json`
+- `build/current-regression-suite-20260522-live-entrypoint.json`
+
 ## Latest Verification
 
 ```sh
@@ -94,6 +110,9 @@ uv run --extra dev python -m pytest -q \
   tests/test_mcp_policy_contract.py \
   tests/test_release_regression_manifest.py \
   tests/test_current_regression_suite.py
+
+uv run --extra dev python tests/cross_matrix/release_regression_manifest.py \
+  > build/current-release-regression-manifest-20260522-live-entrypoint.json
 
 uv run --extra dev python tests/cross_matrix/run_max_output_context_contract.py \
   --out build/current-max-output-context-contract-20260522-chat-server-boundary.json
@@ -112,6 +131,8 @@ Observed results:
 - max-output gate: `status=pass`, `missing_markers=[]`, engine `14 passed`,
   panel `32 passed / 1 skipped`;
 - focused max-output/current-suite/manifest tests: `49 passed`;
+- manifest/current-suite tests after entrypoint hardening: `49 passed`;
+- umbrella suite after entrypoint hardening: `status=pass`, `failed_steps=[]`;
 - umbrella suite: `status=pass`, `failed_steps=[]`;
 - release surface contract: `status=pass`;
 - public updater primary/fallback remain `1.5.46`, PyPI `vmlx` remains
