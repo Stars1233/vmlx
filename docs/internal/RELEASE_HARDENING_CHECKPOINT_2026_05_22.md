@@ -2823,3 +2823,75 @@ Green:
   `build/current-regression-suite-20260522-gateway-dsv4-budget-hash.json`
   -> `status=pass`, `failed_steps=[]`, open requirement exactly:
   `DSV4 long-output/code/file-generation quality is release-cleared`.
+
+## 2026-05-22 13:53 PDT - DSV4 Pool-On Speed And Live Write File Tool Loop
+
+Root-cause split:
+
+- DSV4 pool-on slowdown was in JANG `PoolQuantizedV4Cache`: reading
+  `state["pooled"]` dequantized and concatenated every historical CSA/HCA pool
+  segment on every attention read.
+- The live `write_file` failure was separate: raw DSV4 output contained the
+  correct DSML path/content in a degraded
+  `<｜DSML｜inv><｜DSML｜name>write_file</｜DSML｜>` form, but the canonical
+  encoder parse returned bogus `" string="` argument values and blocked the
+  regex repair path.
+
+Changes:
+
+- JANG commit pushed:
+  `/Users/eric/jang/jang-tools` at
+  `b5f66a7 fix: cache materialized dsv4 pool reads`.
+- JANG pool cache now appends only newly produced quantized pool rows, reuses
+  a materialized pooled view between appends, and includes that materialized
+  live pool in `nbytes`.
+- vMLX `DSMLToolParser` now repairs degraded named-invoke DSML and short DSML
+  parameter close tags schema-safely.
+- `run_cache_architecture_contract.py` now prepends
+  `VMLX_JANG_TOOLS_SOURCE` / `VMLINUX_JANG_TOOLS_SOURCE` to child
+  `PYTHONPATH`, so the cache gate cannot silently test installed stale
+  `jang_tools` while a clean source path was requested.
+- Release manifest now tracks:
+  - `build/current-cache-architecture-contract-20260522-dsv4-pool-materialized-cache.json`;
+  - `build/current-tool-call-contract-20260522-dsv4-live-write-file-repair.json`;
+  - `build/current-dsv4-default-cache-tool-loop-poolon-materialized-parserfix-20260522/result.json`.
+
+Green:
+
+- JANG pool tests -> `3 passed`;
+- focused vMLX DSV4 pool tests -> `2 passed`;
+- cache architecture:
+  `build/current-cache-architecture-contract-20260522-dsv4-pool-materialized-cache.json`
+  -> `status=pass`, cache-family `109 passed`, panel `88 passed`;
+- tool-call contract:
+  `build/current-tool-call-contract-20260522-dsv4-live-write-file-repair.json`
+  -> `status=pass`, engine DSML/tool `22 passed`, panel tool loop/security
+  `11 passed`;
+- live DSV4 default-cache pool-on tool loop:
+  `build/current-dsv4-default-cache-tool-loop-poolon-materialized-parserfix-20260522/result.json`
+  -> `status=pass`;
+- packaged integrity after rebundling Python from clean JANG source:
+  `build/current-packaged-integrity-contract-20260522-dsv4-pool-parserfix.json`
+  -> `status=pass`;
+- umbrella:
+  `build/current-regression-suite-20260522-dsv4-pool-parserfix-bundled.json`
+  -> `status=pass`, `failed_steps=[]`, open requirement exactly:
+  `DSV4 long-output/code/file-generation quality is release-cleared`.
+
+Live DSV4 evidence:
+
+- `DSV4_POOL_QUANT=1`;
+- native prefix/paged/L2 true;
+- generic TQ KV off;
+- cached tokens and `cache_detail=paged+dsv4` seen;
+- ordered tool loop: `list_directory -> write_file -> DONE`;
+- `write_file` args parsed correctly:
+  `landing-p/proof.html`,
+  `<html><body>dsv4-default-cache-tool-ok</body></html>`;
+- round 1 generated 83 output tokens in 4.573s, about 18.2 tok/s.
+
+Remaining limitation:
+
+- This clears DSV4 default-cache/pool-on multi-tool execution and the pool-on
+  speed regression. It does not clear the separate DSV4 long-output/code/file
+  generation quality row.
