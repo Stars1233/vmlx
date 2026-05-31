@@ -88,7 +88,7 @@ release artifact is rebuilt through the final release lane.
   into bundled Python and rewriting console-script shebangs.
 - A fresh packaged-app MiniMax JANGTQ row from the repo-local build returned
   coherent number-sequence output with no loop. Health reported
-  `turboquant_codebook_accelerated`, `JANGTQ_MPP_NAX=auto`,
+  `turboquant_codebook_mpp_nax`, `JANGTQ_MPP_NAX=auto`,
   `SingleBatchGenerator`, and `TurboQuantKVCache`. Wall-clock token/s was
   `38.33` with bundle sampling and `40.30` with greedy/top-k-off, so the row is
   recorded as `review` against the strict 40 tok/s bundle-sampling threshold,
