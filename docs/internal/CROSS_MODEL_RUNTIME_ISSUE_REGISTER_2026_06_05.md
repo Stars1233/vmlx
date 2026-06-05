@@ -12,6 +12,8 @@ Current known release state:
 - `jjang-ai/vmlx` main after 1.5.56: `fa9f455b` includes structured JSON repair and DSV4 completions rail fix.
 - PyPI is not current: PyPI latest remains `1.5.49`; `1.5.56` upload blocked by PyPI trusted-publisher/API-token config.
 - Full cross-family runtime matrix remains open. Do not claim all model families production-cleared.
+- Current regression suite proof: `build/current-regression-suite-20260605.json` is `status=pass` with `failed_steps=[]`, but keeps 17 exact release requirements open. This is not a release-ready signal.
+- MiniMax #117/#179 proof boundary: current root-cause audit is `open`, memory-preflight artifact exists and did not launch the huge model, and live Responses cancel/reporter parity proof is still absent. This must stay open; do not classify screenshot/output corruption as model artifact or runtime until reporter parity proof exists.
 
 ## Status Legend
 
