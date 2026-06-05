@@ -8,7 +8,7 @@ Do not use: `/Users/eric/vmlx` for active app/runtime work.
 
 Current shipped app release: `v1.5.56`
 
-Current known `main` state from release work: `a404cd442329dbd3f6435da67625569b929e6e14`
+Current known `main` state from release work: `7de5debd8f631c267c5b99c4dea924f1817a9be5`
 
 Release posture: `v1.5.56` is shipped, signed, notarized, and publicly surfaced, but broad production clearance remains open until the cross-family runtime matrix is green.
 
@@ -68,7 +68,9 @@ Commits:
 - [x] `510174e6` - Release vMLX 1.5.56 Gemma4 VLM hotfix.
 - [x] `fa9f455b` - Add structured output repair and restore DSV4 completions rail.
 - [x] `a404cd44` - Document cross-model runtime issue matrix.
-- [ ] CM-001 source guard implemented - Step3p7 advertised-vision metadata now routes text-only by default; live media recovery proof still pending.
+- [x] `50ad9225` - Guard Step3p7 advertised VLM routing.
+- [x] `7de5debd` - Prove Step3p7 media rejection recovers.
+- [x] CM-001 source/live proof completed for the local Step3p7 artifact; packaged installed-app release proof still pending.
 
 Docs:
 
@@ -89,7 +91,12 @@ GitHub issues:
 
 ### CM-001: Unsupported advertised modality routes into unsafe runtime
 
-Status: source guard implemented; live Step3p7 media/post-error proof still pending.
+Status: source guard implemented and live-source proven; packaged installed-app proof still pending.
+
+Classification:
+
+- Model-side hazard: CRACK-style Step3p7 artifacts advertise vision through `vision_config` and JANG `architecture.has_vision=true`, while the vMLX Step3p7 VLM path is not production-cleared. Model uploads should ship a vMLX text-only metadata view or explicit vMLX card guidance until Step3p7 VLM support lands.
+- Runtime issue: vMLX must not trust unsupported advertised modality and route into an unsafe MLLM path that can crash the server. The engine must fail closed, explain the guard, reject media cleanly, and recover later text requests.
 
 Observed Step3p7 shape:
 
@@ -104,17 +111,27 @@ Required behavior:
 - [x] `force_mllm=True` does not bypass the safety guard accidentally.
 - [x] Text-only override remains honored.
 - [x] Route-level media request against text-only Step3p7 route returns controlled unsupported-media error, not generation/crash.
-- [ ] Logs must explain why advertised modality was refused or ignored.
+- [x] Logs must explain why advertised modality was refused or ignored.
 
 Proof checklist:
 
 - [x] Unit test CRACK-style metadata with `model_type=step3p7`, `vision_config`, and `has_vision=true`.
 - [x] Unit test text-only view with `has_vision=false`.
 - [x] Unit test force behavior: `force_mllm=True` still routes text-only by default.
-- [ ] Live Step 3.7 Chat text smoke.
-- [ ] Live Step 3.7 Responses text smoke.
-- [x] Server route-level media request returns controlled text-only unsupported-media rejection; live installed-model proof still pending.
+- [x] Live Step 3.7 Chat text smoke.
+- [x] Live Step 3.7 Responses text smoke.
+- [x] Live Step 3.7 Chat media request returns controlled text-only unsupported-media rejection.
+- [x] Live Step 3.7 Responses media request returns controlled text-only unsupported-media rejection.
+- [x] Server route-level media request returns controlled text-only unsupported-media rejection.
 - [x] Server route-level post-media text request still works after rejection.
+- [x] Live post-media text request still works after rejection.
+- [ ] Packaged installed-app proof for the same Step3p7 guard and recovery.
+
+Live proof artifact:
+
+- `build/step3p7-live-proof-20260605/proof.json`: `pass=true`.
+- Passed assertions: Chat text before media HTTP 200, Chat media rejected HTTP 400, rejection mentions text-only, Chat text after media HTTP 200, Responses media rejected HTTP 400, rejection mentions text-only, Responses text after media HTTP 200, `/health` HTTP 200.
+- Server log evidence: `tier=step3p7_advertised_vlm_text_only result=False` and `SimpleEngine loaded ... (MLLM=False)`.
 
 ### CM-002: Native crash without Python traceback
 
