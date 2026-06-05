@@ -274,6 +274,17 @@ Cache architecture proof source-list refresh:
 - [x] Regenerated `build/current-regression-suite-after-mimo-scope-removal-20260604.json`; suite reports `status=pass`, `failed_steps=[]`, and 18 open requirements.
 - [ ] This is still no-heavy/static cache architecture proof. It does not clear live DSV4 cache/tool/code-quality rows, Qwen speed/equivalence rows, multilingual/model-quality rows, or real Electron UI cross-family live rows.
 
+App maxToolIterations proof stale-evidence refresh:
+
+- [x] Root-caused the app max-tool-iteration objective row staying open to a stale proof dependency on missing `build/v1546-dsv4-app-tool-cap-nocache-proof-20260521090706/summary.json`.
+- [x] Current evidence lives in `build/current-tool-call-contract-20260528-tool-parser-loop-matrix.json`; that artifact reports `checks.panel_max_tool_iterations_caps_tool_loops=true`, `failed=[]`, `missing_markers=[]`, and current source hashes.
+- [x] Updated objective digest to use the current tool-call contract for the app cap row, while preserving `open_proof_gaps=["live_default_cache_dsv4_tool_loop"]` in details so nobody confuses app-loop cap proof with live DSV4 default-cache tool-loop clearance.
+- [x] Regression proof was TDD: new tests failed first when the digest required the legacy artifact and ignored the current contract; after the fix they pass.
+- [x] Focused verification passed: new objective tests, current-suite known-open tests, and `tests/test_tool_call_contract.py` -> `8 passed`.
+- [x] Regenerated `build/current-objective-proof-audit-gemma4-release-boundary-20260604.json`; app maxToolIterations row is now `status=pass`, evidence only `build/current-tool-call-contract-20260528-tool-parser-loop-matrix.json`, `missing_evidence=[]`, `stale_source_hashes=[]`.
+- [x] Regenerated `build/current-regression-suite-after-mimo-scope-removal-20260604.json`; suite reports `status=pass`, `failed_steps=[]`, and 17 open requirements.
+- [ ] This is not DSV4 live tool-loop clearance. DSV4 Responses one-tool, multi-tool, default-cache multi-tool, and cache/code-quality rows remain open until live proof artifacts pass.
+
 ### CM-002: Native crash without Python traceback
 
 Status: open.
