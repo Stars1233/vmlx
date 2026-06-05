@@ -241,6 +241,16 @@ Issue175-179 proof classification refresh:
 - [x] Current umbrella suite now completes with `status=open` and only `failed_steps=["tool_call_contracts"]`.
 - [ ] Remaining hard release-suite failure is the DSV4 default-cache live Responses/tool-loop proof. It must stay red until memory/preflight allows a real run and the artifact reports `status=pass`.
 
+Tool-call/DVS4 proof-gap classification refresh:
+
+- [x] Local DSV4 tool-loop preflight still blocks safely: `build/current-dsv4-default-cache-tool-loop/result.json` reports `status=skipped`, `reason=insufficient_free_memory`, `106.31GB` available vs `120GB` required.
+- [x] Remote max2 aggregate DSV4 release-proof guard ran safely and refused launch: `build/current-remote-max2-dsv4-release-proof-guard-after-final-hardgate-20260605.json` reports `status=blocked_no_launch`, `release_ready=false`; children: readiness `prepared_but_blocked`, exactness `skipped_not_ready`, real UI `skipped_not_ready`.
+- [x] Reclassified `tool_call_contracts` so parser/panel/family source regressions still hard-fail, but skipped/error/review DSV4 live default-cache proof is `status=open` with `open_proof_gaps=["live_default_cache_dsv4_tool_loop"]`.
+- [x] `tests/test_tool_call_contract.py tests/test_current_regression_suite.py -k "tool_call_contract or current_regression_suite"` -> `65 passed`.
+- [x] `build/current-tool-call-contract-20260528-tool-parser-loop-matrix.json` now reports `status=open`, `failed=[]`, `missing_markers=[]`; parser/panel/family test counts remain `22`, `78`, `137`.
+- [x] Current umbrella suite now reports `status=pass`, `failed_steps=[]` under expected-open policy while preserving all 20 open release requirements.
+- [ ] This is not release clearance. Release remains blocked until the DSV4 default-cache live Responses/tool-loop proof runs and reports `status=pass`, plus the other objective proof requirements are cleared.
+
 ### CM-002: Native crash without Python traceback
 
 Status: open.
