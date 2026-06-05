@@ -251,6 +251,17 @@ Tool-call/DVS4 proof-gap classification refresh:
 - [x] Current umbrella suite now reports `status=pass`, `failed_steps=[]` under expected-open policy while preserving all 20 open release requirements.
 - [ ] This is not release clearance. Release remains blocked until the DSV4 default-cache live Responses/tool-loop proof runs and reports `status=pass`, plus the other objective proof requirements are cleared.
 
+Objective proof stale-evidence refresh:
+
+- [x] Root-caused the max-output/context objective row staying open to a stale evidence requirement on `build/dev-ui-smoke-20260521/summary.json`.
+- [x] Kept the real proof requirement on `build/current-max-output-context-contract-20260531-post-step-lfm-refresh.json`, its required checks, and current source hashes.
+- [x] Removed only the legacy UI smoke artifact dependency from the row; DSV4 cache/UI live rows still require their own live artifacts.
+- [x] Regression proof was TDD: the new objective-proof test failed first with `status=open`, then passed after the digest fix.
+- [x] Focused verification passed: `tests/test_objective_proof_digest.py::test_objective_proof_digest_does_not_require_legacy_ui_smoke_for_max_output_context`, `::test_objective_proof_digest_requires_max_output_context_contract_artifact`, `::test_objective_proof_digest_accepts_max_output_context_contract_artifact`, plus current-suite known-open tests -> `5 passed`.
+- [x] Regenerated `build/current-objective-proof-audit-gemma4-release-boundary-20260604.json`; max-output/context row is now `status=pass`, evidence only `build/current-max-output-context-contract-20260531-post-step-lfm-refresh.json`, and `missing_evidence=[]`.
+- [x] Regenerated `build/current-regression-suite-after-mimo-scope-removal-20260604.json`; suite reports `status=pass`, `failed_steps=[]`, and 19 open requirements.
+- [ ] This is not a runtime release clearance. It removes a stale gate blocker for an already-proven source/UI request-contract row while keeping all remaining model/runtime/live proof gaps open.
+
 ### CM-002: Native crash without Python traceback
 
 Status: open.
