@@ -43,6 +43,9 @@ Status: shipped.
 - [x] Gatekeeper accepts installed app as notarized Developer ID.
 - [ ] Installed `/Applications/vMLX.app` is stale for CM-001 Step3p7 guard: neutral-cwd packaged proof routed Step3p7 as `MLLM=True` and accepted media instead of failing closed.
 - [x] Clean staged app from `3782f817` passes CM-001 Step3p7 guard proof from neutral cwd, but is not notarized.
+- [x] Clean staged app release-gate packaged checks pass when the gate is pointed at `/tmp/vmlx-clean-step37-3782f817/panel/release/mac-arm64/vMLX.app`.
+- [ ] Notarization is blocked: no Apple/ASC/CSC/NOTAR environment credentials are present, `xcrun notarytool history --keychain-profile vmlx-notary` reports default keychain locked, and `security find-generic-password` did not expose `vmlx-notary` while locked.
+- [ ] Public DMG build is blocked by `--require-prepackage-ready`; current proof sweep is still open and must not be bypassed for production release.
 - [x] `mlx.studio/update/latest.json` serves `1.5.56` with no-store cache policy.
 - [x] `mlx.studio/download/` serves `1.5.56` links, not stale `1.5.55` links.
 - [x] `vmlx.net/update/latest.json` and `/download/` resolve to `1.5.56`.
@@ -141,6 +144,8 @@ Packaged proof artifacts:
 - Stale installed app failure: `build/step3p7-installed-app-proof-20260605/proof.json`: `pass=false`. `/Applications/vMLX.app` launched from `/tmp` routed Step3p7 as `MLLM=True`, accepted image requests, returned `White background`, and stayed healthy. This proves the public installed app is not fixed for CM-001.
 - Clean staged app pass: `build/step3p7-clean-staged-app-proof-20260605/proof.json`: `pass=true`. `/tmp/vmlx-clean-step37-3782f817/panel/release/mac-arm64/vMLX.app` launched from `/tmp` routed Step3p7 as text-only, rejected Chat and Responses media with HTTP 400, recovered later text requests, and logged `tier=step3p7_advertised_vlm_text_only result=False` plus `MLLM=False`.
 - Clean staged app signing status: `codesign --verify --deep --strict --verbose=2` passed; `spctl --assess --type execute --verbose=2` rejected it as `Unnotarized Developer ID`.
+- Clean staged release-gate app check: `docs/internal/release-gates/20260605_142643/SUMMARY.md` shows packaged app exists/version/imports/source hashes/JANG hashes/Developer ID signature/codesign strict verify all `PASS`; gate remains `FAIL` overall because dist artifacts are absent, active bundled app is stale, objective proof digest has open requirements, and notarization is absent.
+- Step3p7 crash-falsification contract updated to accept the packaged text-only guard proof as the current supported behavior. `build/current-step37-crash-falsification-contract-20260604.json`: `status=pass`.
 
 Expanded no-heavy route audit:
 
@@ -148,6 +153,12 @@ Expanded no-heavy route audit:
 - Step3p7 rows flagged as intentionally guarded text-only despite advertised vision: `Step-3.7-Flash-JANG_2L-CRACK`, `Step-3.7-Flash-JANG_K-CRACK`, `Step-3.7-Flash-JANG_2L`, `Step-3.7-Flash-JANG_K`.
 - Advertised-VL rows that still route MLLM and therefore require live media proof, not metadata suppression: Gemma4 12B MXFP4/MXFP8/JANG_4M, Gemma4 31B JANG_4M-MTP, Qwen3.6 27B/35B MTP MXFP rows, ZAYA1-VL JANGTQ4/MXFP4.
 - Omni rows route through dispatcher rather than generic MLLM and remain covered by separate omni media proof rows.
+
+Current regression-suite refresh:
+
+- `tests/cross_matrix/summarize_objective_proof.py --out build/current-objective-proof-audit-gemma4-release-boundary-20260604.json` regenerated the objective digest and still reports open requirements for DSV4 cache/tool/code quality, Qwen MTP speed/equivalence, Ling/Gemma4 quality, cross-family live smoke, MiniMax reporter parity, real Electron UI, and DSV4 long-output/code/file-generation quality.
+- `tests/cross_matrix/run_current_regression_suite.py` regenerated the missing no-heavy artifacts, but the run remained `status=open`; after the Step3p7 contract fix, `step37_crash_falsification_contract` is no longer in `failed_steps`.
+- Remaining failed suite steps in the stopped refresh artifact: `tool_call_contracts`, `packaged_integrity_contracts`, `issue175_179_release_boundary_audit`, `public_app_issue_audit`.
 
 ### CM-002: Native crash without Python traceback
 
