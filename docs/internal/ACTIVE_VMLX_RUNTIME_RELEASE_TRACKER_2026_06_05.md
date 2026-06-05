@@ -24,6 +24,7 @@ Release posture: `v1.5.56` is shipped, signed, notarized, and publicly surfaced,
 - [ ] Never present MTP as a speed win unless active runtime proof, stable streaming, and comparable output behavior exist.
 - [ ] Never pack or publish dirty untracked runtime/vendor material.
 - [ ] Never use deprecated `/Users/eric/vmlx` notes as current guidance.
+- [ ] Never convert a runtime/decode/kernel/cache/model-loop bug into a fake success by silently forcing a feature off. Fail-closed unsupported-route guards are allowed only when the user-visible behavior is an explicit unsupported-media/runtime rejection and the tracker keeps the real implementation work open.
 
 ---
 
@@ -211,6 +212,21 @@ Umbrella suite continuation:
 - [x] Partial artifact `build/current-regression-suite-after-mimo-scope-removal-20260604.json` now shows `status=open`, `completed_steps=26`, `failed_steps=["tool_call_contracts", "issue175_179_release_boundary_audit"]`, and `current_step=public_app_issue_audit`.
 - [x] This confirms `packaged_integrity_contracts` is no longer in the umbrella failed-step list.
 - [ ] Rework or isolate the public-app issue audit if it continues to stall inside the umbrella runner; focused public audit still exits with `status=fail` and the issue breakdown above.
+
+No-fake-fix gate hygiene update:
+
+- [x] Added current-suite progress logging and post-step partial artifact rewrites so a long or stuck gate cannot be misattributed to the previous step.
+- [x] Confirmed `public_app_issue_audit` completes under the umbrella runner; the prior apparent stall was a harness visibility/artifact problem.
+- [x] Synced the release-gate objective digest path to `build/current-objective-proof-audit-gemma4-release-boundary-20260604.json`.
+- [x] Kept all 20 objective rows visible in the umbrella suite while explicitly treating the release gate's two deferred broad rows (`Real Electron UI cross-family live model matrix` and `DSV4 long-output/code/file-generation quality`) as deferred only for packaging-mechanics checks.
+- [x] Reclassified missing installed/live public-issue proof artifacts as `open`, not `pass`; source/parser regressions still hard-fail.
+- [x] Removed Gemma4 issue115 overclaiming language from the release manifest: missing installed-app speed proof now remains a tracked open proof gap and does not supersede older sub-floor rows.
+- [x] Focused policy/unit proof passed: `160 passed`.
+- [x] Full focused regression selection passed: `579 passed, 203 deselected`.
+- [x] Public app issue audit regenerated as `status=open`.
+- [x] Packaged integrity regenerated as `status=pass`, `failed=[]`.
+- [x] Current umbrella suite completes with `status=open` and only `failed_steps=["tool_call_contracts", "issue175_179_release_boundary_audit"]`.
+- [ ] Remaining release blockers are real proof/runtime blockers, not harness failures: DSV4 default-cache live Responses/tool-loop proof and issue175-179 installed-app memory/cache/MiniMax reporter parity proofs.
 
 ### CM-002: Native crash without Python traceback
 
