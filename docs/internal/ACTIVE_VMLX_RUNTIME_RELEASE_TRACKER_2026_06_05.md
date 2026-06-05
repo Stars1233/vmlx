@@ -262,6 +262,18 @@ Objective proof stale-evidence refresh:
 - [x] Regenerated `build/current-regression-suite-after-mimo-scope-removal-20260604.json`; suite reports `status=pass`, `failed_steps=[]`, and 19 open requirements.
 - [ ] This is not a runtime release clearance. It removes a stale gate blocker for an already-proven source/UI request-contract row while keeping all remaining model/runtime/live proof gaps open.
 
+Cache architecture proof source-list refresh:
+
+- [x] Root-caused the cross-family cache architecture objective row staying open to the current contract hashing a removed/stale source path: `vmlx_engine/tq_disk_cache.py`.
+- [x] The real TurboQuant disk implementation is `vmlx_engine/tq_disk_store.py`, and `tests/test_tq_disk_cache.py` imports that module throughout.
+- [x] Fixed `tests/cross_matrix/run_cache_architecture_contract.py` to hash `vmlx_engine/tq_disk_store.py`.
+- [x] Added regression test requiring the current cache architecture contract to hash the real TQ disk store source and reject the stale filename.
+- [x] Updated objective proof digest to use `build/current-cache-architecture-contract-20260602-v1554-attention-matmul-refresh.json` plus required checks, family matrix rows, no missing markers, and current source hashes instead of stale `build/current-static-cache-architecture-audit-full-qwen-hybrid-20260521.json`.
+- [x] Regenerated cache architecture contract: `status=pass`, `failed=[]`, `missing_markers=[]`, `missing_api_checks=[]`, `missing_api_command_markers=[]`, `missing_panel_markers=[]`; child coverage included engine/cache pytest `400`, panel cache launch `102`, and API cache contract checks.
+- [x] Regenerated `build/current-objective-proof-audit-gemma4-release-boundary-20260604.json`; cross-family cache architecture row is now `status=pass`, evidence only `build/current-cache-architecture-contract-20260602-v1554-attention-matmul-refresh.json`, with no missing/stale source hashes.
+- [x] Regenerated `build/current-regression-suite-after-mimo-scope-removal-20260604.json`; suite reports `status=pass`, `failed_steps=[]`, and 18 open requirements.
+- [ ] This is still no-heavy/static cache architecture proof. It does not clear live DSV4 cache/tool/code-quality rows, Qwen speed/equivalence rows, multilingual/model-quality rows, or real Electron UI cross-family live rows.
+
 ### CM-002: Native crash without Python traceback
 
 Status: open.
