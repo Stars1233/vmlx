@@ -187,6 +187,31 @@ Packaged-integrity continuation:
 - [x] Regenerated `build/current-packaged-integrity-contract-gemma4-release-boundary-after-ui-e2e-fixes-dmg-build-20260604.json`; it now reports `status=pass`, `failed=[]`.
 - [ ] Do not notarize or release from this state; objective-proof closure is still required.
 
+Issue-audit continuation:
+
+- [x] Refreshed `build/current-issue175-179-release-boundary-audit-20260531-post-install-sync.json`; it remains `status=fail`.
+- [x] Current issue175-179 focused failures: `175`, `176`, `177`, `179`.
+- [x] Issue `175` false checks: installed-app memory-clear runtime proof and installed-app live memory-stress proof.
+- [x] Issue `176` false checks: installed-app promoted block cleanup proof and installed-app live memory-pressure proof.
+- [x] Issue `177` false checks: installed-app cache-selection telemetry proof and installed live TTFT/cold paged-TurboQuant proof.
+- [x] Issue `179` false checks: root-cause audit pass, reporter cancel 404 record, local installed live cancel probe, reporter parity, and local reporter-prompt clean reproduction.
+- [x] Refreshed `build/current-public-app-issue-audit-gemma4-release-boundary-after-install-20260604.json`; it remains `status=fail`.
+- [x] Current public issue focused failures: `115`, `117`, `119`, `165`; focused open: `111`.
+- [x] Issue `165` false checks: `tool_call_contract_passes=false` because the live DSV4 default-cache tool-loop proof is still skipped, and installed-app DSML parser hash is not guarded by the currently installed app.
+- [x] Issue `117` false checks: issue179 audit is neither pass nor acceptable open, and cancel probe is missing.
+- [x] Issue `111` open check: installed-app MLLM hash guard missing from current installed app.
+- [x] Issue `115` false checks: Gemma4 current installed UI speed gate, Gemma4 cold-wall TTFT tracking, and Qwen35 installed-app speed gate.
+- [x] Issue `119` false check: Gemma26 memory-stress artifact missing.
+- [ ] These are not model-upload corruption claims. They are runtime/proof/release-surface gaps until live installed-app and model-family proofs say otherwise.
+
+Umbrella suite continuation:
+
+- [x] Reran `tests/cross_matrix/run_current_regression_suite.py` after the tool-call and packaged-integrity fixes.
+- [x] The umbrella run was terminated after it stayed silent with only the parent process visible for several minutes; do not treat this as a completed suite pass.
+- [x] Partial artifact `build/current-regression-suite-after-mimo-scope-removal-20260604.json` now shows `status=open`, `completed_steps=26`, `failed_steps=["tool_call_contracts", "issue175_179_release_boundary_audit"]`, and `current_step=public_app_issue_audit`.
+- [x] This confirms `packaged_integrity_contracts` is no longer in the umbrella failed-step list.
+- [ ] Rework or isolate the public-app issue audit if it continues to stall inside the umbrella runner; focused public audit still exits with `status=fail` and the issue breakdown above.
+
 ### CM-002: Native crash without Python traceback
 
 Status: open.
