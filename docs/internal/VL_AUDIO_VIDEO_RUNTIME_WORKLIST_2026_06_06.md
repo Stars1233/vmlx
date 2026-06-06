@@ -222,7 +222,7 @@ Current blockers to build, not guard away:
 - MiMo V2.5 JANG_2L needs real multimodal runtime implementation in JANG tools/vMLX before VL/audio/video can be advertised. The current text compatibility shell and typed unsupported-media error are not a VL pass.
 - MiMo text quality still needs source-vs-quant first-divergence tracing and speed proof. The source-side XML-function tool parser/template contract is fixed and live-proven for `record_fact`, but broader loop behavior and packaged/UI parity remain open. Do not force hidden prompts, fake tool-call conversion, or cache disablement as a production fix.
 - ZAYA/ZAYA1-VL needs exact-instruction, reasoning-visible-output, multi-turn recall, and red-image semantic fixes while preserving the CCA/path-dependent cache constraints.
-- DSV4 needs a safe-memory live host for long-output/code/file-generation and restart/L2 exactness proof.
+- DSV4 now has current user-RAM-override live exactness proof. It is not memory-blocked for this narrow local slice, but it is still release-red: `thinking_closed` direct/off rails corrupt exact code identifiers while `thinking_open` rails produce exact output.
 - Real Electron UI still needs the same family matrix from installed app settings through spawned server args, `/health`, cache stats, media upload, max output tokens, streaming/non-streaming, and post-error recovery.
 
 Release sequencing remains:
@@ -258,6 +258,35 @@ ZAYA-VL remains open:
 
 1. Text-only exact cache prompt in the VL wrapper returns the wrong token.
 2. Multi-turn text recall is broken in the VL wrapper.
+
+## 2026-06-06 DSV4 route-mode code exactness split
+
+Current live artifacts:
+
+- `build/current-dsv4-route-mode-code-exactness-chat-off-user-ram-override-20260606.json`
+- `build/current-dsv4-route-mode-code-exactness-chat-on-user-ram-override-20260606.json`
+- `build/current-dsv4-route-mode-code-exactness-ab-route-user-ram-override-20260606.json`
+
+What is proven:
+
+- Chat Completions with `enable_thinking=false` returns HTTP 200 and stops normally, but corrupts exact code. The first row produced `THREE.WebWebGLRenderer()` instead of `THREE.WebGLRenderer()`.
+- Chat Completions with `enable_thinking=true` returns exact required code under the same model and route family.
+- Responses API with `enable_thinking=false` reproduces the same `THREE.WebWebGLRenderer()` corruption, so this is not isolated to the Chat endpoint.
+- Removing punctuation and using repetition-penalty mitigation did not solve the off-rail issue. `chat_off_no_punct_rep1` produced `THREE.ScScene()`.
+- Responses API with `enable_thinking=true` returns exact required code.
+
+Current classification:
+
+- `decode_loop`: the failure tracks the DSV4 assistant suffix rail, `thinking_closed` (`<|Assistant|></think>`) versus `thinking_open` (`<|Assistant|><think>`), and affects exact identifier fidelity.
+- `model_artifact`: not proven yet. The same uploaded artifact can produce exact output on the thinking-open rail, so corrupt weights are not the first explanation.
+- `runtime_dispatch`: not proven as the root cause yet. The encoder currently treats the `</think>` off suffix as an explicit DSV4 contract; do not change it without a source/model-card trace and broader route tests.
+
+Required next DSV4 checks:
+
+1. Trace DSV4 template/model documentation for whether `enable_thinking=false` should end with `</think>` or a different chat suffix.
+2. Run direct raw prompt or model-native reference generation, if available, to separate runtime prompt construction from model behavior.
+3. Run exact-code rows across Chat, Responses, legacy completions, streaming, restart-L2, and UI-spawned installed app.
+4. Do not ship a hidden force-thinking-on fix. If off-rail exact code is weak by model design, document that as a model behavior/artifact limitation; if the suffix is wrong, fix the encoder/runtime contract.
 
 ## 2026-06-06 MiMo prompt-shape and speed split
 
