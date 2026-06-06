@@ -17,7 +17,8 @@ Current package/proof state, refreshed 2026-06-06:
 - Bundled Python was rebuilt from current source and `npm run verify-bundled` passed.
 - Staged Sequoia app was rebuilt and Developer ID signed.
 - `build/current-packaged-integrity-contract-after-unsupported-media-staged-app-20260606.json` is `status=pass`.
-- `build/current-regression-suite-after-packaged-integrity-pointer-fix-20260606.json` is `status=open` only because the release manifest still blocks seven live/model rows.
+- `build/current-objective-proof-after-gemma26-installed-speed-visible-20260606.json` closes the two Gemma4 26B CRACK rows for installed-app Responses visible-content/language and mixed-SWA speed.
+- `build/current-regression-suite-after-gemma26-installed-speed-visible-20260606.json` is `status=open` with `failed_steps=["release_regression_manifest"]`; source/package/parity/contracts pass, and five live/model rows remain.
 - No release tag, notarized DMG, public download update, or installed-app replacement has been produced from this continuation.
 
 The app can currently serve several text and some VLM paths, but full VL/audio/video support is not release-cleared across all model families. The remaining work must be classified as either:
@@ -83,7 +84,7 @@ Every advertised media-capable family must have these functions working through 
 | Family / bundle | Current state | Open blockers | Required proof |
 |---|---|---|---|
 | Gemma4 12B JANG_4M | Source and installed text/image/video smoke and speed rows have passed; image prefill rejection recovers cleanly. | Full audio/video depth, larger media prompts, multi-turn media+tools, UI settings parity across all cache modes. | Live source and installed rows: image, video, audio, text-after-media, media-after-error, tools after media, streaming and non-streaming. |
-| Gemma4 26B CRACK | Source-server smoke passed on 2026-06-06 for exact text, cache hit, multi-turn recall, reasoning, tool call, image/video color, and text-after-media. | Installed-app Responses visible-content/language quality and mixed-SWA app-engine speed floor remain open. | Installed full-output tails, installed speed gate, and packaged media/tool parity rows. |
+| Gemma4 26B CRACK | Source-server smoke passed on 2026-06-06 for exact text, cache hit, multi-turn recall, reasoning, tool call, image/video color, and text-after-media. Installed-app Responses visible-content and mixed-SWA speed rows now pass in the refreshed objective digest. | Broader packaged media/tool parity remains open. | Installed full-output tails, installed speed gate, and packaged media/tool parity rows. |
 | Qwen3.6 35B MXFP8 MTP | Current source and local installed 1.5.56 do not reproduce `gdn_sink` crash; 35B live MTP proof exists. | If user sees traceback on older app, classify stale packaged runtime; if on fresh app, find bypassing route. Need broader VL/video/tool rows. | Installed packaged Qwen35 MTP with chat/responses/streaming, image/video if advertised, MTP active, no `gdn_sink` crash. |
 | Qwen3.6 27B JANG_4M MTP | Native MTP speed/equivalence rows pass under deterministic policy. | Broader media/tool/multi-turn matrix and packaged UI parity remain open. | Live source and installed app across cache modes, MTP on/off A/B, image/video if advertised. |
 | LFM2.5 | Text/cache/tool UI rows have passed for known bundles. | VL/audio/video only if artifact advertises it; hybrid SSM path-dependent cache rows must stay architecture-aware. | Live media row for any VL-advertised LFM artifact, otherwise capability must remain text-only. |
@@ -199,10 +200,9 @@ For each row below, capture full output tails and server logs:
 
 ## Immediate next build order
 
-1. Close Gemma4 26B CRACK installed-app Responses visible-content/language and mixed-SWA speed rows.
-2. Build MiMo media bridge in JANG tools first (`mimo_v2_multimodal.py` or equivalent), then update vMLX registration to use the real media model instead of the text-only compatibility shell.
-3. Prove or falsify MiMo model-artifact quality from the actual Max2 bundle: source-vs-quant long-prompt trace, routed expert parity, tool-argument exactness, and speed target.
-4. Add shared structured-output repair/validation to the video/catalog benchmark layer and report raw-vs-repaired score separately.
-5. Re-run live media matrix for Gemma4 12B/26B, Qwen27/35 MTP, LFM, Step3.7 text-only, MiMo, Nemotron Omni, ZAYA-VL, DSV4, MiniMax, Hy3.
-6. Close cross-family multi-turn and real Electron UI live model matrix rows.
-7. Only after live rows pass: rebuild app, sign, notarize, staple, install, and repeat installed-app proofs before release/tag/public download update.
+1. Build MiMo media bridge in JANG tools first (`mimo_v2_multimodal.py` or equivalent), then update vMLX registration to use the real media model instead of the text-only compatibility shell.
+2. Prove or falsify MiMo model-artifact quality from the actual Max2 bundle: source-vs-quant long-prompt trace, routed expert parity, tool-argument exactness, and speed target.
+3. Add shared structured-output repair/validation to the video/catalog benchmark layer and report raw-vs-repaired score separately.
+4. Re-run live media matrix for Gemma4 12B/26B, Qwen27/35 MTP, LFM, Step3.7 text-only, MiMo, Nemotron Omni, ZAYA-VL, DSV4, MiniMax, Hy3.
+5. Close cross-family multi-turn and real Electron UI live model matrix rows.
+6. Only after live rows pass: rebuild app, sign, notarize, staple, install, and repeat installed-app proofs before release/tag/public download update.
