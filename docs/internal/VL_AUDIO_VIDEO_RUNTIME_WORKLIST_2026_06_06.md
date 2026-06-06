@@ -12,6 +12,14 @@ Reporter credit for relevant release notes: GitHub `@Hornsan1`
 
 Do not tag, notarize, or publish a new vMLX / mlxstudio release from this workstream until the live rows below are green. Static contracts, load-only proofs, and single-turn smoke rows are not sufficient.
 
+Current package/proof state, refreshed 2026-06-06:
+
+- Bundled Python was rebuilt from current source and `npm run verify-bundled` passed.
+- Staged Sequoia app was rebuilt and Developer ID signed.
+- `build/current-packaged-integrity-contract-after-unsupported-media-staged-app-20260606.json` is `status=pass`.
+- `build/current-regression-suite-after-packaged-integrity-pointer-fix-20260606.json` is `status=open` only because the release manifest still blocks seven live/model rows.
+- No release tag, notarized DMG, public download update, or installed-app replacement has been produced from this continuation.
+
 The app can currently serve several text and some VLM paths, but full VL/audio/video support is not release-cleared across all model families. The remaining work must be classified as either:
 
 - `runtime`: engine, processor, cache, scheduler, parser, UI/settings, or packaged-runtime bug.
@@ -106,6 +114,7 @@ installed-app proof where the product advertises the capability.
 | ZAYA/ZAYA1-VL media cache | Typed CCA cache contract exists; media routing rows exist in no-heavy contracts. | Live image/video rows proving media salt plus safe CCA/path-dependent restore and post-media recovery. | `kernel_cache` if partial restore fails; otherwise `unknown_pending_repro` until live. |
 | MiniMax / Hy3 / Kimi media advertised variants | Text/tool/cache rows exist for selected bundles; media proof is not current in this slice. | Per-family advertised-modality audit: processor path, special tokens, cache policy, tools after media, installed-app parity. | `unknown_pending_repro`. |
 | Shared structured-output repair | Register requires parse/repair/validate/retry while reporting raw parse failure. | Centralize benchmark/catalog repair for JSON/XML-ish outputs and prove raw-vs-repaired scoring rows. | `decode_loop` for native malformed output; caller-side repair is not guided decoding. |
+| Release pointer/package parity | Source package pointers now track current 2026-06-06 artifacts and packaged integrity passes on the rebuilt staged app. | Full release still needs the seven live/model blockers closed, then notarized/stapled DMGs, install proof, public update manifest proof, and mlx.studio/vmlx.net download freshness proof. | `gateway_ui` until public release artifacts are current and verified. |
 
 1. MiMo multimodal bridge
 
@@ -190,9 +199,10 @@ For each row below, capture full output tails and server logs:
 
 ## Immediate next build order
 
-1. Re-run Gemma4 installed-app image guard/recovery with the dynamic budget and record whether any 128GB machine still reports an 8GB default. If yes, classify as stale installed app or packaged-runtime drift.
+1. Close Gemma4 26B CRACK installed-app Responses visible-content/language and mixed-SWA speed rows.
 2. Build MiMo media bridge in JANG tools first (`mimo_v2_multimodal.py` or equivalent), then update vMLX registration to use the real media model instead of the text-only compatibility shell.
 3. Prove or falsify MiMo model-artifact quality from the actual Max2 bundle: source-vs-quant long-prompt trace, routed expert parity, tool-argument exactness, and speed target.
 4. Add shared structured-output repair/validation to the video/catalog benchmark layer and report raw-vs-repaired score separately.
-5. Re-run live media matrix for Gemma4 12B, Qwen27/35 MTP, LFM, Step3.7 text-only, MiMo, Nemotron Omni, ZAYA-VL, DSV4, MiniMax, Hy3.
-6. Only after live rows pass: rebuild app, sign, notarize, staple, install, and repeat installed-app proofs before release/tag/public download update.
+5. Re-run live media matrix for Gemma4 12B/26B, Qwen27/35 MTP, LFM, Step3.7 text-only, MiMo, Nemotron Omni, ZAYA-VL, DSV4, MiniMax, Hy3.
+6. Close cross-family multi-turn and real Electron UI live model matrix rows.
+7. Only after live rows pass: rebuild app, sign, notarize, staple, install, and repeat installed-app proofs before release/tag/public download update.
