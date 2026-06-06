@@ -1303,3 +1303,16 @@ Current classification: local quant is tool-broken independent of CB/q4, but mod
 - Current live artifact: `build/current-mimo-v2-jang2l-cb-cache-after-native-thinking-off-live-20260606.json`; repeated exact CB cache rows now both return `ACK-CB-742`, no think tags, `cache_detail=paged`, `cached_tokens=33`, q8 storage quantization, native `mixed_swa_kv_v1`, and `l2_tokens_on_disk=33`.
 - Still open: cold speed about `0.4 tok/s`, cache-hit speed about `1.5 tok/s`, third system row still rejected at Metal working-set pressure `98.5%/107.5GB`, MiMo tools remain unproven, source-vs-quant first divergence is still missing, and VL/audio/video forward remains unbuilt.
 - Release rule: this clears the old visible reasoning leak on the short CB cache row only. It does not clear MiMo release readiness, 40 tok/s, media support, installed-app parity, or signed/notarized release.
+
+## 2026-06-06 MiMo audit pointer after native thinking-off proof
+
+- Current MiMo audit artifact: `build/current-mimo-v2-jang2l-current-audit-after-native-thinking-off-20260606.json`.
+- The audit now consumes the native-thinking-off CB proof and no longer reports exact cache prompt following or first-token system stop as current blockers. Those are replaced by the live working-set pressure blocker observed on the third CB system row.
+- Stale local MiMo HF dynamic module cache was removed again; current audit reports stale local state absent.
+- Release remains blocked by MiMo long-prompt coherence, tool protocol, speed, CB working-set pressure, source-vs-quant classification, and unbuilt VL/audio/video runtime.
+
+## 2026-06-06 Release state after MiMo native thinking-off audit
+
+- Current regression suite artifact: `build/current-regression-suite-after-mimo-native-thinking-off-audit-20260606.json`; status remains `open`.
+- Release manifest artifact: `build/current-release-regression-manifest-after-mimo-native-thinking-off-audit-20260606.json`; `prepackage_ready=false` and `release_ready=false`.
+- This is a hard release blocker state, not a sign/notarize state. MiMo exact short cache prompting improved, but cross-family runtime/UI/model-quality blockers remain open.
