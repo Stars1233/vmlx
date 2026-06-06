@@ -371,3 +371,9 @@ Primary note: `docs/internal/agent-notes/current-gemma4-12b-release-boundary-and
 - MiMo V2 fixtures with vision/image/video/audio sidecars now report those media types as `preserved_unwired` while top-level `modalities` stays `["text"]`; this prevents UI/release probes from scheduling fake media support while preserving evidence that sidecars exist.
 - Focused validation passed: selected MiMo runtime/capability rows in `tests/test_engine_audit.py` (`2 passed`), `py_compile` for touched files, and `git diff --check`.
 - This is not a MiMo VL/audio/video forward implementation. The real bridge remains open in JANG tools/vMLX until image/video/audio tensors route through a proven multimodal model module.
+
+## 2026-06-06 Codex | all-local smoke consumes runtime media contract
+- Patched `bench/all_local_model_smoke.py` so media probe scheduling prefers `/capabilities.media.runtime_modalities` and treats flat `modalities` as fallback only.
+- Added focused coverage proving preserved/unwired MiMo sidecars do not schedule image/video probes when runtime modalities are `["text"]`.
+- Focused validation passed: selected all-local smoke probe-option rows (`3 passed`), `py_compile`, and `git diff --check`.
+- Remaining consumer work: panel/settings and real Electron UI matrix still need to consume the nested `media` contract before packaged UI parity can be called current.
