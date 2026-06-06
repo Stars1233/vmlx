@@ -253,3 +253,19 @@ Scope: local vMLX Python engine and MLXStudio/panel release path only. No adlab,
   - `.venv/bin/python -m py_compile vmlx_engine/engine/simple.py tests/test_mllm_message_serialization.py` -> pass.
   - `.venv/bin/python -m pytest -q tests/test_mllm_message_serialization.py -k 'mimo_v2_thinking_false_uses_plain_template_prefix or simple_engine_routes_mimo_text_only_chat_through_language_model or simple_engine_mimo_llm_path_uses_plain_template_prefix or batched_engine_mimo_text_only_uses_plain_template_prefix'` -> `4 passed, 67 deselected`.
 - Release boundary unchanged: this is a source regression fix for one prompt-rendering gap. It does not clear MiMo live long-prompt coherence, tool protocol, source-vs-quant classification, decode speed, cache/L2, or VL/audio/video runtime support.
+
+## 2026-06-06 MiMo SimpleEngine thinking-off decode policy fix
+
+- Artifact: `build/current-mimo-simple-thinking-off-decode-fix-live-red-20260606.json`.
+- Fixed a second concrete SimpleEngine MiMo text-only gap: when the effective API rail is `enable_thinking=false`, the decode loop now suppresses the native MiMo `<think>` and `</think>` token IDs at the logits boundary.
+- This is not synthetic output injection and does not fold prompts. It enforces the requested thinking-off API contract after the prompt-rendering fix switched MiMo to the stable plain assistant prefix.
+- Verification:
+  - `.venv/bin/python -m py_compile vmlx_engine/engine/simple.py tests/test_mllm_message_serialization.py` -> pass.
+  - `.venv/bin/python -m pytest -q tests/test_mllm_message_serialization.py -k 'mimo_v2_thinking_false_uses_plain_template_prefix or simple_engine_routes_mimo_text_only_chat_through_language_model or simple_engine_mimo_text_only_generate_suppresses_think_tags or simple_engine_mimo_llm_path_uses_plain_template_prefix or batched_engine_mimo_text_only_uses_plain_template_prefix'` -> `5 passed, 67 deselected`.
+- Live source-server proof on `127.0.0.1:8898`, conservative SimpleEngine/no-continuous-batching/no KV quant:
+  - `exact_ack`: passed short visible answer, returned `ACK-MIMO-742`, no `<think>` tag leak.
+  - `longish_no_think_explicit_system`: failed, empty visible output with `completion_tokens=0`.
+  - `sentinel_no_explicit_system`: failed exact instruction following, produced explanatory text instead of the requested sentinel.
+  - `sentinel_explicit_system_thinking_true`: failed, empty visible output with `completion_tokens=40`.
+- Classification: the visible `<think>` leak is improved in the SimpleEngine MiMo text-only path, but MiMo remains release-red. Current remaining blockers are exact instruction following, explicit-system visible output, tool protocol, source-vs-quant first divergence, decode speed, cache/L2 matrix, and VL/audio/video runtime wiring.
+- Release boundary unchanged: do not package, sign, notarize, tag, upload, or update downloads from this state.
