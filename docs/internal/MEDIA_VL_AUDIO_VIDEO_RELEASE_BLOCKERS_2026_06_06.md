@@ -57,7 +57,7 @@ Load-only, health-only, text-only, or fail-closed unsupported-route proof does n
 | LFM 2.5 | Installed UI text/cache/tools proof exists. | Any VL/audio/video advertised variants still need full capability audit and media proof. |
 | Nemotron Omni | Static/source rows partial. | Omni audio/image/video processor bridge, cache safety, streaming, tool/JSON, UI and packaged proof. |
 | DSV4 / JANGTQ | Text/cache smoke exists; exact long-output/code/file-generation remains red. | Do not expand claims to media until exact text/cache quality and memory-gated UI rows are resolved. |
-| MiniMax / JANGTQ_K | Reporter parity/root cause still open. | Installed reporter route, cancel lifecycle, media if advertised, tool/JSON parity. |
+| MiniMax / JANGTQ_K | Local installed-app Python live cancel probe refreshed on 2026-06-06: model loads, TurboQuant KV is active across 62 layers, q4 KV round-trip validation passes, block disk cache initializes, Responses stream starts, cancel route returns HTTP `200`, and bad text is captured in reasoning summary rather than final visible output. Reporter-machine parity/root cause still open. | Reporter parity artifact and reporter installed hash provenance remain missing; reporter session/settings/model-file parity is not proven. Media if advertised, tool/JSON parity, and broader UI proof remain open. |
 | ZAYA VL/text | Text/VL smoke partial; reasoning-on visible output still red in one row. | Reasoning/template/media/cache/tool matrix. |
 
 ## MiMo source-vs-quant gate
@@ -193,6 +193,34 @@ What this does not prove:
 - No live Step3p7 image/video/audio request has passed.
 - No Step3p7 media cache, streaming, tool-call, or UI/settings row is release-cleared.
 - Packaged installed apps older than this source may still show the crash behavior reported by users.
+
+## MiniMax issue179 current local refresh
+
+Artifacts:
+
+```text
+build/current-issue179-minimax-k-model-manifest-20260606-local-refresh.json
+build/current-issue179-minimax-k-responses-cancel-probe-20260606-live-refresh.json
+build/current-issue179-minimax-k-root-cause-audit-after-live-refresh-20260606.json
+```
+
+What passed locally:
+
+- MiniMax-K model manifest sidecars passed.
+- Installed app bundled Python served `/Users/eric/models/JANGQ/MiniMax-M2.7-JANGTQ_K`.
+- JANGTQ loaded with 186 TurboQuant groups and 186 replaced modules.
+- Runtime cache layout reported `TurboQuantKVCache` for all 62 layers.
+- KV cache quantization round-trip validation passed: bits `4`, group size `64`, test shape `(1, 4, 8, 128)`.
+- Block disk cache initialized with a 10GB max directory.
+- Responses stream started and produced response id `resp_3572b630aaa1`.
+- Cancel route returned HTTP `200` with `{"success":true,"message":"Response resp_3572b630aaa1 cancelled"}`.
+
+What remains open:
+
+- The controlled probe captured bad text in `raw_reasoning_text`, including Chinese system-text leakage, while `raw_content_text` was empty at cancel time.
+- The root-cause audit remains `open` because reporter-machine parity/provenance is still missing:
+  reporter model shard/codebook hash parity, reporter installed server hash, reporter chat/session/settings parity, reporter response active-at-cancel, and reporter raw SSE lifecycle are not proven.
+- This is not enough to close issue179 or release-clear MiniMax-K; it only updates the local installed-app cancel/runtime boundary.
 
 ## Current execution order
 

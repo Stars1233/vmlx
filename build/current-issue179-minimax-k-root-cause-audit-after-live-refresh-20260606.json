@@ -1,0 +1,583 @@
+{
+  "bundle_hash_parity": {
+    "latest_public_server_sha256": "0be1c30c44da2a57e4a3e89bf87c803d2ae00a86140ff81f7c39e58f5bc3c4f5",
+    "local_installed_matches_latest_public": true,
+    "local_installed_matches_public_v1549_tahoe": false,
+    "local_installed_server_sha256": "0be1c30c44da2a57e4a3e89bf87c803d2ae00a86140ff81f7c39e58f5bc3c4f5",
+    "public_v1549_tahoe_server_sha256": null,
+    "source_matches_latest_public": false,
+    "source_matches_local_installed": false,
+    "source_matches_public_v1549_tahoe": false,
+    "source_server_sha256": "03fc77c49f0066109d5b0f9d0973cdc05b0805415ccc65cf051c2bf800900a56"
+  },
+  "issue": {
+    "id": 179,
+    "model": "JANGQ-AI/MiniMax-M2.7-JANGTQ_K",
+    "title": "MiniMax-M2.7-JANGTQ_K produces gabage"
+  },
+  "latest_public_release_dmg_contract": {
+    "asset": "vMLX-1.5.56-tahoe-arm64.dmg",
+    "asset_size_bytes": 495269296,
+    "boundary": "Public v1.5.56 vMLX-1.5.56-tahoe-arm64.dmg DMG route/hash contract for issue #179 reporter bundle provenance; this does not load the model.",
+    "exists": true,
+    "path": "build/issue-179/public-v1.5.56-tahoe-dmg-contract.json",
+    "release_tag": "v1.5.56",
+    "server_cancel_calls_engine_abort": true,
+    "server_has_responses_cancel_route": true,
+    "server_sha256": "0be1c30c44da2a57e4a3e89bf87c803d2ae00a86140ff81f7c39e58f5bc3c4f5",
+    "sha256": "cd4266254979def0ca6728d559fe7735dbace9f6097da26eb017ca518b343944"
+  },
+  "live_probe_memory_preflight": {
+    "active_heavy_process_count": 0,
+    "available_for_gate_gb": 95.64,
+    "exists": true,
+    "free_plus_speculative_purgeable_gb": 95.64,
+    "launch_allowed": true,
+    "launch_decision": "launch_allowed",
+    "memory_gap_gb": 0.0,
+    "model_path": "/Users/eric/models/JANGQ/MiniMax-M2.7-JANGTQ_K",
+    "model_size_gb": 73.96,
+    "path": "build/current-issue179-minimax-k-responses-cancel-probe-memory-preflight-20260602-local-ready-check.json",
+    "preflight_captured_at": "2026-06-06T07:04:48-0700",
+    "preflight_memory_source": "vm_stat_free_plus_speculative_purgeable",
+    "reason": "memory_preflight_floor_met",
+    "required_free_gb": 81.96,
+    "sha256": "7f085369b8c57aecd0436f8f77c623edc8af5b40a7873e05ef658ee081dad28d",
+    "status": "ready_to_launch"
+  },
+  "local_installed_bundle_contract": {
+    "exists": true,
+    "server_cancel_calls_engine_abort": true,
+    "server_has_responses_cancel_route": true,
+    "server_path": "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/server.py",
+    "sha256": "0be1c30c44da2a57e4a3e89bf87c803d2ae00a86140ff81f7c39e58f5bc3c4f5"
+  },
+  "local_model_manifest": {
+    "checks": {},
+    "exists": false,
+    "hash_shards": null,
+    "hashed_file_count": null,
+    "local_full_k_artifact_shape_recorded": false,
+    "model_file_hashes": [],
+    "model_path": null,
+    "model_shard_count": null,
+    "path": "build/current-issue179-minimax-k-local-model-manifest-20260527.json",
+    "sha256": null,
+    "status": null,
+    "total_bytes": null,
+    "total_file_count": null,
+    "unhashed_safetensors_count": null
+  },
+  "local_real_ui": {
+    "all_required_clean": true,
+    "clean_count": 5,
+    "installed_session_settings_parity": {
+      "all_installed_disable_builtin_tools": true,
+      "all_installed_have_cache_flags": true,
+      "all_installed_server_cache_controls_disabled": true,
+      "all_installed_use_bundled_python": true,
+      "all_installed_use_responses": true,
+      "has_hi_auto_clean_repeat": true,
+      "has_thinking_512_code_clean": true,
+      "installed_proof_count": 4
+    },
+    "proofs": [
+      {
+        "assistant_count": 2,
+        "cache_hit_tokens": 135,
+        "chat_overrides": {
+          "builtinToolsEnabled": false,
+          "enableThinking": true,
+          "maxTokens": 192,
+          "toolResultMaxChars": 12345,
+          "wireApi": "responses"
+        },
+        "clean": true,
+        "exists": true,
+        "final_visible_text": "```python\ndef add_one(x):\n    return x + 1\n```",
+        "installed_app_path": null,
+        "model": "MiniMax-M2.7-JANGTQ_K",
+        "path": "docs/internal/agent-notes/diagnostic-real-ui-live-model-minimax-m27-jangtq-k-issue179-20260527-proof.json",
+        "python": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/.venv/bin/python",
+        "reasoning_leaks": {
+          "cjk": 0,
+          "korean": 0,
+          "numeric": 0,
+          "raw": false
+        },
+        "renderer_builtin_tools_enabled": false,
+        "renderer_enable_thinking": true,
+        "renderer_wire_api": "responses",
+        "requested_builtin_tools": false,
+        "requested_enable_thinking": true,
+        "server_cache_controls": {
+          "requested": false,
+          "verified": false
+        },
+        "server_command_has_cache_flags": true,
+        "sha256": "b4462049d89ac0f3cd4f5002db88d7fa798f46c392b15d8f9bd48580294d0a3b",
+        "surfaces": [
+          "cache_hit_telemetry",
+          "chat_completions",
+          "current_electron_dev_build",
+          "language_leak_check",
+          "parser_leak_check",
+          "real_loaded_model",
+          "reasoning_display",
+          "responses_api",
+          "settings_persistence"
+        ],
+        "ui_launch_mode": "dev",
+        "wire_api": "responses"
+      },
+      {
+        "assistant_count": 2,
+        "cache_hit_tokens": 135,
+        "chat_overrides": {
+          "builtinToolsEnabled": false,
+          "enableThinking": true,
+          "maxTokens": 192,
+          "toolResultMaxChars": 12345,
+          "wireApi": "responses"
+        },
+        "clean": true,
+        "exists": true,
+        "final_visible_text": "4",
+        "installed_app_path": "/Applications/vMLX.app",
+        "model": "MiniMax-M2.7-JANGTQ_K",
+        "path": "docs/internal/agent-notes/diagnostic-installed-ui-live-model-minimax-m27-jangtq-k-issue179-20260527-proof.json",
+        "python": "/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3",
+        "reasoning_leaks": {
+          "cjk": 0,
+          "korean": 0,
+          "numeric": 0,
+          "raw": false
+        },
+        "renderer_builtin_tools_enabled": false,
+        "renderer_enable_thinking": true,
+        "renderer_wire_api": "responses",
+        "requested_builtin_tools": false,
+        "requested_enable_thinking": true,
+        "server_cache_controls": {
+          "requested": false,
+          "verified": false
+        },
+        "server_command_has_cache_flags": true,
+        "sha256": "1f61c70e4a2d0de2b6c4668d46fe46baf8b48b8e2086ffcbac97bbac5dacc64e",
+        "surfaces": [
+          "cache_hit_telemetry",
+          "chat_completions",
+          "installed_app_ui",
+          "language_leak_check",
+          "parser_leak_check",
+          "real_loaded_model",
+          "reasoning_display",
+          "responses_api",
+          "settings_persistence"
+        ],
+        "ui_launch_mode": "installed-app",
+        "wire_api": "responses"
+      },
+      {
+        "assistant_count": 2,
+        "cache_hit_tokens": 97,
+        "chat_overrides": {
+          "builtinToolsEnabled": false,
+          "maxTokens": 512,
+          "toolResultMaxChars": 12345,
+          "wireApi": "responses"
+        },
+        "clean": true,
+        "exists": true,
+        "final_visible_text": "Hi there! \ud83d\udc4b How can I help you today?",
+        "installed_app_path": "/Applications/vMLX.app",
+        "model": "MiniMax-M2.7-JANGTQ_K",
+        "path": "docs/internal/agent-notes/diagnostic-installed-ui-live-model-minimax-m27-jangtq-k-issue179-hi-auto-20260527-proof.json",
+        "python": "/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3",
+        "reasoning_leaks": {
+          "cjk": 0,
+          "korean": 0,
+          "numeric": 0,
+          "raw": false
+        },
+        "renderer_builtin_tools_enabled": false,
+        "renderer_enable_thinking": null,
+        "renderer_wire_api": "responses",
+        "requested_builtin_tools": false,
+        "requested_enable_thinking": null,
+        "server_cache_controls": {
+          "requested": false,
+          "verified": false
+        },
+        "server_command_has_cache_flags": true,
+        "sha256": "469fc39c1f33feb74ca39817ff4ae729e1ce82e2621608aa6cbbeb4be89aedac",
+        "surfaces": [
+          "cache_hit_telemetry",
+          "chat_completions",
+          "installed_app_ui",
+          "language_leak_check",
+          "parser_leak_check",
+          "real_loaded_model",
+          "responses_api",
+          "settings_persistence"
+        ],
+        "ui_launch_mode": "installed-app",
+        "wire_api": "responses"
+      },
+      {
+        "assistant_count": 2,
+        "cache_hit_tokens": 86,
+        "chat_overrides": {
+          "builtinToolsEnabled": false,
+          "enableThinking": true,
+          "maxTokens": 512,
+          "toolResultMaxChars": 12345,
+          "wireApi": "responses"
+        },
+        "clean": true,
+        "exists": true,
+        "final_visible_text": "Hello again! I'm ready to help you with any questions or tasks you might have. What would you like to work on today?",
+        "installed_app_path": "/Applications/vMLX.app",
+        "model": "MiniMax-M2.7-JANGTQ_K",
+        "path": "docs/internal/agent-notes/diagnostic-installed-ui-live-model-minimax-m27-jangtq-k-issue179-hi-thinking-20260527-proof.json",
+        "python": "/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3",
+        "reasoning_leaks": {
+          "cjk": 0,
+          "korean": 0,
+          "numeric": 0,
+          "raw": false
+        },
+        "renderer_builtin_tools_enabled": false,
+        "renderer_enable_thinking": true,
+        "renderer_wire_api": "responses",
+        "requested_builtin_tools": false,
+        "requested_enable_thinking": true,
+        "server_cache_controls": {
+          "requested": false,
+          "verified": false
+        },
+        "server_command_has_cache_flags": true,
+        "sha256": "6ae801ae36e6c4672fb8f13fa3130afee008b9bc83508184d366c3655c097cb5",
+        "surfaces": [
+          "cache_hit_telemetry",
+          "chat_completions",
+          "installed_app_ui",
+          "language_leak_check",
+          "parser_leak_check",
+          "real_loaded_model",
+          "reasoning_display",
+          "responses_api",
+          "settings_persistence"
+        ],
+        "ui_launch_mode": "installed-app",
+        "wire_api": "responses"
+      },
+      {
+        "assistant_count": 2,
+        "cache_hit_tokens": 140,
+        "chat_overrides": {
+          "builtinToolsEnabled": false,
+          "enableThinking": true,
+          "maxTokens": 512,
+          "toolResultMaxChars": 12345,
+          "wireApi": "responses"
+        },
+        "clean": true,
+        "exists": true,
+        "final_visible_text": "def add_one(x):\n    return x + 1",
+        "installed_app_path": "/Applications/vMLX.app",
+        "model": "MiniMax-M2.7-JANGTQ_K",
+        "path": "docs/internal/agent-notes/diagnostic-installed-ui-live-model-minimax-m27-jangtq-k-issue179-512-20260527-proof.json",
+        "python": "/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3",
+        "reasoning_leaks": {
+          "cjk": 0,
+          "korean": 0,
+          "numeric": 0,
+          "raw": false
+        },
+        "renderer_builtin_tools_enabled": false,
+        "renderer_enable_thinking": true,
+        "renderer_wire_api": "responses",
+        "requested_builtin_tools": false,
+        "requested_enable_thinking": true,
+        "server_cache_controls": {
+          "requested": false,
+          "verified": false
+        },
+        "server_command_has_cache_flags": true,
+        "sha256": "3698b64fa5681cb3c5891634bbaba8da639ac6abcea6abfe929ddb7f940fafb0",
+        "surfaces": [
+          "cache_hit_telemetry",
+          "chat_completions",
+          "installed_app_ui",
+          "language_leak_check",
+          "parser_leak_check",
+          "real_loaded_model",
+          "reasoning_display",
+          "responses_api",
+          "settings_persistence"
+        ],
+        "ui_launch_mode": "installed-app",
+        "wire_api": "responses"
+      }
+    ],
+    "required_count": 5
+  },
+  "local_reporter_prompt_reproduction": {
+    "bad_text_captured": null,
+    "bad_text_counts": {
+      "cjk": 0,
+      "korean": 0,
+      "numeric": 0,
+      "raw_parser_tag": false
+    },
+    "cancel_status": null,
+    "cancel_trigger": null,
+    "clean": false,
+    "content_text": "",
+    "exists": false,
+    "path": "build/current-issue179-minimax-k-responses-cancel-probe-installed-badtext-20260528.json",
+    "reasoning_text": "",
+    "request_matches_reporter": false,
+    "response_id_seen": false,
+    "sha256": null,
+    "status": null,
+    "stream_started": null
+  },
+  "local_responses_cancel_probe": {
+    "cancel_status": null,
+    "exists": false,
+    "max_output_tokens": null,
+    "model": null,
+    "path": "build/current-issue179-minimax-k-responses-cancel-probe-20260602-local-ready-live.json",
+    "probe": {},
+    "prompt": null,
+    "response_id_seen": false,
+    "sha256": null,
+    "status": null
+  },
+  "not_proven": [
+    "reporter model shard/codebook hashes match local full K artifact",
+    "reporter model artifact manifest is available for direct local comparison",
+    "reporter installed app bundle hash matches public/local server.py route proof",
+    "reporter response id was still active when the cancel request was sent",
+    "reporter chat/session/settings database state matches local diagnostic state",
+    "a concrete prompt reproduces screenshot-shaped wrong-language or numeric garbage",
+    "the 404 cancel response caused the screenshot rather than followed the stream abort"
+  ],
+  "proven": {
+    "current_source_responses_cancel_contract_proven": true,
+    "current_source_responses_cancel_inactive_404_contract_proven": true,
+    "latest_public_dmg_has_responses_cancel_route": true,
+    "local_installed_bundle_has_responses_cancel_route": true,
+    "local_installed_issue179_session_settings_parity": true,
+    "local_installed_responses_cancel_live_probe": false,
+    "local_real_ui_diagnostics_clean": true,
+    "local_reporter_prompt_reproduction_clean": false,
+    "public_v1549_tahoe_dmg_has_responses_cancel_route": false,
+    "reporter_cancel_404_after_econnreset_same_response_id_proven": false,
+    "reporter_cancel_404_after_stream_abort_order_proven": false,
+    "reporter_log_has_abort_before_visible_content": false,
+    "reporter_log_has_responses_cancel_404": false,
+    "reporter_log_installed_app_bundled_python_seen": false,
+    "reporter_log_launch_parser_cache_flags_seen": false,
+    "reporter_log_request_shape_and_sampling_kwargs_seen": false
+  },
+  "public_release_dmg_contract": {
+    "asset": null,
+    "asset_size_bytes": null,
+    "boundary": null,
+    "exists": false,
+    "path": "build/issue-179/public-v1.5.49-tahoe-dmg-contract.json",
+    "release_tag": null,
+    "server_cancel_calls_engine_abort": false,
+    "server_has_responses_cancel_route": false,
+    "server_sha256": null,
+    "sha256": null
+  },
+  "public_release_dmg_contracts": [
+    {
+      "asset": "vMLX-1.5.56-sequoia-arm64.dmg",
+      "asset_size_bytes": 479506057,
+      "boundary": "Public v1.5.56 vMLX-1.5.56-sequoia-arm64.dmg DMG route/hash contract for issue #179 reporter bundle provenance; this does not load the model.",
+      "exists": true,
+      "path": "build/issue-179/public-v1.5.56-sequoia-dmg-contract.json",
+      "release_tag": "v1.5.56",
+      "server_cancel_calls_engine_abort": true,
+      "server_has_responses_cancel_route": true,
+      "server_sha256": "0be1c30c44da2a57e4a3e89bf87c803d2ae00a86140ff81f7c39e58f5bc3c4f5",
+      "sha256": "321978fb84369d2374df47b79743c23a3ef834eef8a9e516b59010566b1bbef7"
+    },
+    {
+      "asset": "vMLX-1.5.56-tahoe-arm64.dmg",
+      "asset_size_bytes": 495269296,
+      "boundary": "Public v1.5.56 vMLX-1.5.56-tahoe-arm64.dmg DMG route/hash contract for issue #179 reporter bundle provenance; this does not load the model.",
+      "exists": true,
+      "path": "build/issue-179/public-v1.5.56-tahoe-dmg-contract.json",
+      "release_tag": "v1.5.56",
+      "server_cancel_calls_engine_abort": true,
+      "server_has_responses_cancel_route": true,
+      "server_sha256": "0be1c30c44da2a57e4a3e89bf87c803d2ae00a86140ff81f7c39e58f5bc3c4f5",
+      "sha256": "cd4266254979def0ca6728d559fe7735dbace9f6097da26eb017ca518b343944"
+    }
+  ],
+  "release_boundary": "#179 remains open: local dev UI and installed app UI diagnostics are clean, but the reporter log proves abort-before-visible-content plus Responses cancel 404 and does not contain the bad text shown in the screenshot. The reporter screenshot garbage is an interrupted reasoning-panel stream, not proven final visible answer text.",
+  "reporter": {
+    "bad_text_captured_in_log": false,
+    "block_disk_cache_seen": false,
+    "econnreset_seen": false,
+    "exists": false,
+    "installed_bundled_python_seen": false,
+    "launch_config": {},
+    "model_config": {},
+    "model_path_seen": false,
+    "paged_cache_seen": false,
+    "path": "build/issue-179/vmlx-logs-490f58c0-2026-05-27.log",
+    "prompt_chars": null,
+    "reasoning_parser_seen": false,
+    "request_error": {},
+    "request_error_before_visible_content": false,
+    "request_error_line": null,
+    "request_error_response_id": null,
+    "request_shape": {},
+    "resolved_sampling_kwargs": {},
+    "response_ids": [],
+    "responses_cancel_404_after_econnreset_same_response_id": false,
+    "responses_cancel_404_after_request_error": false,
+    "responses_cancel_404_line": null,
+    "responses_cancel_404_response_id": null,
+    "responses_cancel_404_seen": false,
+    "responses_stream_request_seen": false,
+    "runtime_config": {},
+    "sha256": null,
+    "tool_parser_seen": false,
+    "turboquant_runtime_seen": false
+  },
+  "reporter_parity_artifact": {
+    "comparison_status": "missing_reporter_parity_artifact",
+    "exists": false,
+    "path": "build/issue-179/reporter-parity-metadata-20260527.json",
+    "required_fields": [
+      "capture_provenance",
+      "installed_server_sha256",
+      "server_has_responses_cancel_route",
+      "server_cancel_calls_engine_abort",
+      "model_manifest_sha256",
+      "model_file_hashes",
+      "chat_id",
+      "session_settings",
+      "response_id",
+      "response_active_at_cancel",
+      "raw_sse_cancel_lifecycle"
+    ],
+    "status": "missing"
+  },
+  "reporter_parity_comparison": {
+    "failures": [
+      "missing_reporter_parity_artifact"
+    ],
+    "status": "open"
+  },
+  "reporter_screenshot": {
+    "exists": false,
+    "manual_observation": {
+      "interrupted": null,
+      "looks_like_numeric_sequence_garbage": null,
+      "note": null,
+      "source": "manual_visual_inspection",
+      "surface": null
+    },
+    "path": "build/issue-179/minimax-garbage-screenshot.png",
+    "sha256": null
+  },
+  "reporter_server_hash_parity": {
+    "failure": "reporter_installed_server_hash_drift",
+    "latest_public_server_sha256": "0be1c30c44da2a57e4a3e89bf87c803d2ae00a86140ff81f7c39e58f5bc3c4f5",
+    "local_installed_server_sha256": "0be1c30c44da2a57e4a3e89bf87c803d2ae00a86140ff81f7c39e58f5bc3c4f5",
+    "provenance": {
+      "checked_sources": [],
+      "failure": "missing_reporter_server_sha256",
+      "status": "missing"
+    },
+    "public_v1549_tahoe_server_sha256": null,
+    "reporter_installed_server_sha256": null,
+    "reporter_matches_latest_public": false,
+    "reporter_matches_local_installed": false,
+    "reporter_matches_public_v1549_tahoe": false,
+    "reporter_matches_source": false,
+    "route_markers_match": false,
+    "source_server_sha256": "03fc77c49f0066109d5b0f9d0973cdc05b0805415ccc65cf051c2bf800900a56",
+    "status": "open"
+  },
+  "root_cause_discriminators": [
+    {
+      "id": "reporter_bundle_cancel_route_parity",
+      "next_proof": "Compare reporter installed bundle server.py hash/routes and request lifecycle against the local rebuilt bundle and public v1.5.49 Tahoe DMG. The public DMG has the route, so the reporter 404 is more likely an inactive/already-finished response id after stream abort than a missing route.",
+      "observed": [
+        "reporter_cancel_route_unknown",
+        "local_installed_cancel_route_present",
+        "public_v1549_tahoe_dmg_cancel_route_unproven",
+        "local_installed_live_cancel_unproven",
+        "source_proves_inactive_response_cancel_404_after_lookup",
+        "local_installed_hash_differs_from_public_v1549_tahoe",
+        "missing_reporter_parity_artifact"
+      ],
+      "status": "open"
+    },
+    {
+      "id": "reporter_stream_abort_vs_model_text",
+      "next_proof": "Run the same raw SSE/cancel capture on the reporter bundle/session; local synced installed app already captured the controlled interrupt boundary without screenshot-shaped garbage.",
+      "observed": [
+        "visible_content_seen",
+        "reporter_cancel_404_order_unproven",
+        "bad_text_not_captured_in_log",
+        "local_controlled_cancel_bad_text_unproven"
+      ],
+      "status": "open"
+    },
+    {
+      "id": "local_runtime_cache_math_parity",
+      "next_proof": "Run the reporter exact prompt/session after bundle parity is proven; if garbage reproduces, A/B paged cache, L2, TurboQuant KV, and single-active scheduling without changing sampler defaults.",
+      "observed": [
+        "single_active_scheduler",
+        "paged_prefix_cache_hits",
+        "block_disk_l2_writes_and_hits",
+        "turboquant_kv_live_decode"
+      ],
+      "status": "partially_proven"
+    },
+    {
+      "id": "prompt_template_parser_parity",
+      "next_proof": "Capture rendered prompt, template flags, thinking setting, parser selection, and persisted session settings from reporter and local runs.",
+      "observed": [
+        "reporter_reasoning_parser_unknown",
+        "reporter_tool_parser_unknown",
+        "source_routes_response_cancel"
+      ],
+      "status": "open"
+    },
+    {
+      "id": "model_artifact_hash_parity",
+      "next_proof": "Compare reporter and local model safetensor/codebook/tokenizer/generation_config hashes before attributing output to runtime math.",
+      "observed": [
+        "reporter_model_path_missing",
+        "local_full_k_artifact_manifest_missing",
+        "local_full_k_shard_hashes_not_recorded"
+      ],
+      "status": "open"
+    }
+  ],
+  "source_contract": {
+    "panel_routes_resp_ids_to_responses_cancel": true,
+    "server_cancel_calls_engine_abort": true,
+    "server_has_responses_cancel_route": true,
+    "source_hashes": {
+      "panel/src/main/ipc/chat.ts": "4840c8e2d25a08259fddefe6ba38828c08fef73e72c4f11e99d67caa9a693341",
+      "tests/test_cancellation.py": "b12eec9c30cfadcefa330be1224a55e4115ec96bbbd417cfca52928c0359f2a2",
+      "vmlx_engine/server.py": "03fc77c49f0066109d5b0f9d0973cdc05b0805415ccc65cf051c2bf800900a56"
+    },
+    "test_proves_inactive_responses_cancel_404_after_engine_lookup": true,
+    "test_proves_successful_responses_cancel_route": true
+  },
+  "status": "open"
+}
