@@ -671,6 +671,66 @@ Do not close with:
 
 ## Required Evidence Template Per Run
 
+## MiMo V2.5 JANG_2L Follow-up Evidence - 2026-06-06
+
+Current local bundle:
+
+- `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L`
+- `model_type=mimo_v2`
+- `attention_projection_layout=fused_qkv`
+- `hidden_size=4096`, `layers=48`, `full/SWA pattern=9/39`
+- full attention KV heads `4`, SWA KV heads `8`
+- q/k head dim `192`, v head dim `128`
+- SWA window `128`, SWA sink bias present
+- `attention_value_scale=0.707`
+- `routed_expert_bits={gate_proj:3, up_proj:2, down_proj:2}`
+- `routed_expert_group_size=128`
+- `jang_config.json` is absent; runtime facts are currently embedded in `config.json`
+
+New evidence:
+
+- Direct `mlx_lm` with `JANG_MIMO_DISABLE_SINK=1` did not fix coherence. All tested prompt lengths produced punctuation-heavy corrupt output. Artifact: `build/current-mimo-v2-jang2l-direct-length-sweep-sinkoff-20260606.json`.
+- Direct `mlx_lm` next-token prefill with `cache=None` and with `model.make_cache()` produced identical top-10 logits for a 125-token prompt. Artifact: `build/current-mimo-v2-jang2l-cache-vs-nocache-next-token-20260606.json`.
+- This rules out the simple "prefill cache changes logits" explanation for that prompt. It does not rule out deeper forward/runtime math or quantization quality.
+- RoPE convention check matched the bundled PyTorch reference: MLX `mx.fast.rope(..., traditional=False)` matches source-style `rotate_half` within float tolerance.
+- `SwitchGLU` activation order matches the source MoE formula: MLX calls `silu(gate) * up`.
+- Quantized `SwitchGLU` selected-expert parity passed against manual selected-expert dequantized math for layer 1. Max absolute diff was `0.0007556`, mean absolute diff was `0.0000971`. Artifact: `build/current-mimo-v2-jang2l-quantized-switchglu-parity-20260606.json`.
+- Local JANG runtime patch changed SWA sink attention to use MLX native `scaled_dot_product_attention(..., sinks=attention_sink_bias)` by default, matching the Max2 dirty runtime direction while retaining manual sink only behind explicit `JANG_MIMO_MANUAL_SINK_SDPA`.
+- Native `sinks=` improved short/medium failure shape from punctuation/CJK to English prompt-copying for 92/125-token prompts, but it did not clear coherence. At 152+ prompt tokens output still degraded into CJK/punctuation. Artifact: `build/current-mimo-v2-jang2l-direct-length-sweep-native-sinks-20260606.json`.
+
+Max2 contrast evidence:
+
+- `erics-m5-max2.local` has a separate MiMo TP4 Swift/JACCL proof under `~/adlab/docs/mimo-v25-tp4-live-proof.md`.
+- That proof is not the local Python `JANG_2L` bundle. It uses Swift `TPRankWorker`, TP4 source shards, `TP_QUANTIZE_EXPERTS=1`, `TP_MIMO_ROUTED_EXPERT_BITS=4`, group size `64`, cache coordinator, and L2 disk cache.
+- Max2 proof reports chat, multi-turn, Responses, streaming, cache reuse, L2 disk restore, rank agreement, and `39.2284 tok/s` decode throughput passing.
+- Therefore "MiMo architecture is inherently impossible" is false. The local blocker is specific to the Python/MLX local `JANG_2L` runtime/profile/artifact path.
+
+Current classification:
+
+- `runtime/server parser only`: unlikely. Direct `mlx_lm` reproduces prompt-length and tool failures outside vMLX server.
+- `simple cache/prefix bug`: unlikely for the tested prefill row. Cache and no-cache logits matched.
+- `SWA sink-only bug`: unlikely. Sink-off made output worse, not better.
+- `RoPE convention bug`: unlikely. Numeric convention check matched reference.
+- `MoE activation-order bug`: unlikely. `SwitchGLU` order matches reference.
+- `selected-expert quantized SwitchGLU kernel bug`: unlikely for the tested layer and selected experts; manual dequant parity passed.
+- `quantized routed-expert quality, low-bit profile, or deeper full-forward mismatch`: still plausible and now the leading local hypothesis.
+- `model upload corrupt`: not proven. Structural verifier passes, but quality evidence is red; compare against source or a higher-quality MiMo profile before public claims.
+
+Required next checks:
+
+- [x] Run a valid quantized `SwitchGLU` parity check against manual dequantized selected-expert math for actual MiMo layer weights.
+- [ ] Compare local Python `JANG_2L` against a higher-quality local/Max2 MiMo profile if disk allows, especially 4-bit routed-expert or source-shard path.
+- [ ] Add a source-vs-quant first-divergence probe for the first MoE layer that can run without loading the full 294 GB source into local memory.
+- [ ] Keep MiMo out of release-clear claims until long prompt, tools, cache, and API rows pass through the actual vMLX source/packaged runtime.
+
+Do not close with:
+
+- Short exact text smoke only.
+- Disabling sink.
+- Forcing parser fallback.
+- Claiming Max2 TP4 Swift proof clears local Python `JANG_2L`.
+- Re-uploading the same local `JANG_2L` as fixed without forward-quality proof.
+
 Every model-family proof should record:
 
 ```json
