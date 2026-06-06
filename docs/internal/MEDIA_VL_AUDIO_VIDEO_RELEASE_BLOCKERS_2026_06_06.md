@@ -260,3 +260,17 @@ Interpretation:
 6. Reproduce Step3p7 unsupported VLM fail-closed guard and keep real VLM implementation open.
 7. Run full UI/settings/cache/media matrix from source and installed app.
 8. Only then rebuild, sign, notarize, tag, and publish.
+
+## 2026-06-06 MiMo source-vs-quant preflight refresh
+
+Fresh artifact: `build/current-mimo-v2-jang2l-source-vs-quant-first-divergence-20260606.json`.
+
+Current proof boundary:
+
+- Local quant endpoint `http://127.0.0.1:8897` is live and healthy on `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L`.
+- Max2 source bundle path `/Volumes/EricsLLMDrive/jangq-ai/sources/MiMo-V2.5` exists and is the correct source metadata path for the audit.
+- Source endpoint `http://erics-m5-max2.local:8126` is not listening, so the source-vs-quant prompt rows have not run.
+- Pod1 cannot be honestly relaunched for MiMo source without disrupting current Qwen TP4 workers: `8124` is serving Qwen and the resident rank workers report `TP_MODEL_PATH=/opt/adlab/models/qwen36-27b-mxfp8-mtp`, `TP_SHARDING_PLAN=qwen35`.
+- Pod1 MiMo TP4 source materialization is still incomplete on rank1: rank0/rank2/rank3 have `108` source files under `/opt/adlab/models/tp4-source/MiMo-V2.5`, while rank1 has `97`.
+
+Classification remains unresolved: MiMo long-prompt/tool/speed failures are still `decode_loop` or `model_artifact` until a real source endpoint runs the comparison rows. Do not replace this with prompt folding, parser fabrication, or cache disabling.
