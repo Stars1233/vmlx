@@ -75,6 +75,13 @@ Current state:
 - Local text proof verdict: `PASS`.
 - Local proof rows: health, models, capabilities, chat France, chat math, and Responses basic passed with no parser leaks or loop flags.
 - Local speed is not acceptable for release: the France row took `46.814s` for a short 32-token-capped answer, confirming this is not the 40+ tok/s route.
+- Local synced long/tool/cache proof artifact: `build/current-mimo-v25-jang2l-synced-long-tool-cache-proof-20260606.json`.
+- Local synced long/tool/cache proof verdict: `FAIL`.
+- Fresh failure after Max2 checksum sync:
+  - `long_prompt_recall`: HTTP `200`, 584 prompt tokens, `54.256s`, expected `FINAL alpha17 alpha63` missing, output starts `FINAL the the` then repeated punctuation.
+  - `cache_repeat_1` and `cache_repeat_2`: HTTP `200`, exact `ACK-CACHE-742` passed for a short prompt.
+  - `tool_required`: HTTP `200`, `48.192s`, no `tool_calls`, emitted repeated CJK/punctuation text instead of the forced `record_fact` call.
+- This rules out stale local `config.json` drift as the cause of MiMo long/tool failure. Current likely boundary remains artifact/full-forward quality and/or runtime tool-template compatibility, not missing sidecars.
 - Local image proof artifact: `build/current-mimo-v25-jang2l-local-sync-image-proof-20260606.json`.
 - Local image proof verdict: `PASS_FAIL_CLOSED`.
 - Local image result: HTTP `400` with `/v1/chat/completions received unsupported media modality image because the loaded runtime is text-only. Supported modalities: text.`
