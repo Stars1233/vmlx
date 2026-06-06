@@ -19,7 +19,7 @@ Current known release state:
 - DSV4 same-process cache-hit/TTFT row is now proven from `build/current-dsv4-responses-cache-gate-20260606.json`: previous-response follow-up hit `5195` cached tokens with `paged+dsv4`, streaming follow-up recorded TTFT `0.3339s`, and explicit no-cache full prompt stayed uncached and took `22.17s` wall. Still open: app-launch default wiring, restart L2 proof, and DSV4 exact code/file generation quality.
 - DSV4 one-tool-after-result row is now proven from `build/current-dsv4-responses-one-tool-stop-20260606.json`: round 1 emitted exactly one structured `list_directory` call, round 2 used `previous_response_id`, kept `tools=TOOLS` with `tool_choice=auto`, emitted no function calls, and returned exactly `DONE` with native prefix+paged+block-disk L2 enabled.
 - DSV4 restart-L2 row is still open. Current artifact `build/current-dsv4-responses-restart-l2-gate-20260606.json` is `status=review`: before restart it wrote 21 DSV4 block-disk L2 blocks; after restart it read 21 disk hits from the same isolated cache dir and survived with visible `STORED`, but `restart_dsv4_cache_hit=false` and no `paged+dsv4` usage detail. Earlier exact terminal restore before the fail-closed guard hit 21 blocks / 5195 cached tokens and then crashed in Metal with `kIOGPUCommandBufferCallbackErrorTimeout`. Classification: `kernel_cache` runtime issue, not model artifact corruption.
-- Packaged release row is blocked as of 2026-06-06. A stale staged `vMLX.app` can still verify as Developer ID signed, but a fresh Developer ID signing probe fails non-interactively with `errSecInternalComponent` / keychain user-interaction denial. That means the current source and bundled runtime cannot be honestly resealed or notarized until signing access is fixed. Classification: `gateway_ui` packaging/release issue, not model artifact corruption.
+- Packaged release signing/parity row was repaired on 2026-06-06. Fresh Developer ID signing now works non-interactively, `panel/release/sequoia-app/mac-arm64/vMLX.app` was rebuilt from current source, and `build/current-packaged-integrity-contract-gemma4-release-boundary-after-ui-e2e-fixes-dmg-build-20260604.json` is `status=pass` with staged app engine hash parity, source hash parity, hardened runtime, and signature preflight all green. This does not mean the public release is clear: DMG notarization was not produced in this pass, and live/model objective rows still block release readiness.
 
 ## Status Legend
 
@@ -533,7 +533,7 @@ Required:
 
 ### CM-REL-001 Fresh Developer ID signing blocked while stale app verifies
 
-Status: `[!]` Known blocker on 2026-06-06.
+Status: `[x]` Repaired on 2026-06-06 for the staged Sequoia app path. Keep as a regression row.
 
 Classification: `gateway_ui`.
 
@@ -551,13 +551,16 @@ Concrete evidence:
 - `security show-keychain-info` for signing keychains reported `User interaction is not allowed`.
 - `npm run build && npm run package` failed during Electron signing on bundled scipy extension signing, consistent with signer/keychain access rather than a specific model/runtime file.
 - Packaged integrity now reports release blocker `packaged_app_developer_id_signing_blocked` instead of treating the old staged app as sufficient proof.
+- Repair evidence: unlocking `vmlx-build.keychain-db` and restoring the codesign partition list made fresh Developer ID signing pass on a copied bundled scipy `.so`.
+- Repair evidence: `npx electron-builder --mac --dir --config.directories.output=release/sequoia-app` rebuilt and signed `panel/release/sequoia-app/mac-arm64/vMLX.app`.
+- Repair evidence: `build/current-packaged-integrity-contract-gemma4-release-boundary-after-ui-e2e-fixes-dmg-build-20260604.json` is `status=pass`; `package_signing_preflight.status=pass`; `staged_app_engine_hash_parity=true`; `staged_app_engine_source_hash_parity=true`.
 
 Required checks before closing:
 
-- [ ] Fresh Developer ID signing probe passes on a copied binary in the current non-interactive release environment.
-- [ ] `npm run build && npm run package` produces a new staged `vMLX.app` from current source and bundled Python.
-- [ ] New staged app passes strict Developer ID signature verification.
-- [ ] Staged app engine hash parity and engine source hash parity pass against current source.
+- [x] Fresh Developer ID signing probe passes on a copied binary in the current non-interactive release environment.
+- [x] `npx electron-builder --mac --dir --config.directories.output=release/sequoia-app` produces a new staged `vMLX.app` from current source and bundled Python.
+- [x] New staged app passes strict Developer ID signature verification.
+- [x] Staged app engine hash parity and engine source hash parity pass against current source.
 - [ ] Notarization submit, wait, staple, and `stapler validate` pass for the newly built artifact.
 - [ ] Public updater/download manifests point to the newly notarized artifact only after the above checks pass.
 
@@ -641,7 +644,7 @@ Every model-family proof should record:
 5. `[~]` Finish structured output retry/guided decoding work after `fa9f455b` repair layer.
 6. `[!]` Fix PyPI trusted publisher or token so Python package release is not stale.
 7. `[D]` Re-run DSV4 long-output/code exactness and real UI proof when memory/model state allows.
-8. `[!]` Fix Developer ID keychain access and rebuild/sign/notarize a fresh app; old signed staged app verification is not proof.
+8. `[~]` Complete DMG notarization/stapling/public manifest work after live/model objective rows are green; staged Sequoia app signing/parity is fixed, notarized DMG is not.
 9. `[ ]` Execute per-family matrix for Gemma4, Qwen, LFM, Step, DSV4, Nemotron, Zaya/MiMo/Kimi, JANG/JANGTQ/MXFP.
 
 ## Non-Negotiable Release Notes
