@@ -17,8 +17,8 @@ Current package/proof state, refreshed 2026-06-06:
 - Bundled Python was rebuilt from current source and `npm run verify-bundled` passed.
 - Staged Sequoia app was rebuilt and Developer ID signed.
 - `build/current-packaged-integrity-contract-after-unsupported-media-staged-app-20260606.json` is `status=pass`.
-- `build/current-objective-proof-after-cross-family-smoke-refresh-20260606.json` closes the two Gemma4 26B CRACK rows for installed-app Responses visible-content/language and mixed-SWA speed.
-- `build/current-regression-suite-after-cross-family-smoke-refresh-20260606.json` is `status=open` with `failed_steps=["release_regression_manifest"]`; source/package/parity/contracts pass, and five live/model rows remain.
+- `build/current-objective-proof-after-zaya-cache-contract-refresh-20260606.json` closes the two Gemma4 26B CRACK rows for installed-app Responses visible-content/language and mixed-SWA speed.
+- `build/current-regression-suite-after-zaya-cache-contract-refresh-20260606.json` is `status=open` with `failed_steps=["release_regression_manifest"]`; source/package/parity/contracts pass, and five live/model rows remain.
 - No release tag, notarized DMG, public download update, or installed-app replacement has been produced from this continuation.
 
 The app can currently serve several text and some VLM paths, but full VL/audio/video support is not release-cleared across all model families. The remaining work must be classified as either:
@@ -231,3 +231,17 @@ Release sequencing remains:
 2. Rebuild bundled Python/app from that source.
 3. Sign, notarize, staple, install, and rerun installed-app proofs.
 4. Publish release/tag/downloads only after public vmlx.net and mlx.studio download freshness is proven current.
+
+## 2026-06-06 ZAYA media/cache blocker split
+
+Updated ZAYA evidence:
+
+- `build/current-all-local-model-smoke-zaya-text-vl-tools-media-after-cache-contract-20260606/summary.json` is now the active ZAYA smoke artifact.
+- ZAYA text proves typed CCA prefix/paged/L2 cache behavior and tool protocol, but reasoning-on is still unusable because output remains in reasoning with no visible final answer.
+- ZAYA-VL proves typed CCA cache telemetry and blue-image handling, but text exactness, multi-turn recall, reasoning visible output, and red-image recognition are still red.
+
+Required next ZAYA work:
+
+1. Trace ZAYA reasoning-on prompt/template/parser behavior from rendered prompt through raw generated text and decide whether the model truly supports visible thinking mode. If it cannot close the qwen3 rail reliably, metadata/capabilities must be corrected rather than forcing hidden defaults.
+2. Trace ZAYA-VL text-only prompt rendering separately from image rendering; current text cache exact prompt produces the wrong visible token while image blue works.
+3. Debug red image path for ZAYA-VL: blue image and repeat pass, red image returns `white`, so this is media semantic/model-forward behavior, not attachment carryover.
