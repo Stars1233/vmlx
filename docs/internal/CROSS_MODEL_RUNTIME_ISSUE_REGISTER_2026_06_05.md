@@ -460,12 +460,13 @@ Proofs present:
 - [x] 2026-06-06 focused source regression passed: `.venv/bin/python -m pytest -q tests/test_engine_audit.py -k qwen35_dense_mtp_patch_accepts_gdn_sink_kwarg` -> `1 passed, 503 deselected`.
 - [x] 2026-06-06 local installed-app signature check: `/Applications/vMLX.app` reports `1.5.56`, and its bundled `vmlx_engine/patches/mlx_lm_mtp/qwen35_model.py` has `gdn_sink` in the patched dense GatedDeltaNet and DecoderLayer signatures.
 - [x] 2026-06-06 real source-server Qwen35 MXFP8 MTP repro passed: artifact `build/current-qwen35-mxfp8-mtp-gdn-sink-live-qwen3parser-20260606.json`. Model `/Users/eric/models/JANGQ/Qwen3.6-35B-A3B-MXFP8-MTP` loaded as `native_mtp_vl_artifact`, native MTP reported `READY D3`, short exact returned HTTP 200 with `qwen mtp ok`, 160-token decode returned HTTP 200, no `gdn_sink` crash, and server logged `77.4 tok/s` for the 160-token row.
+- [x] 2026-06-06 real source-server Qwen27 MXFP8 MTP repro passed: artifact `build/current-qwen27-mxfp8-mtp-live-20260606.json`. Model `/Users/eric/models/JANGQ/Qwen3.6-27B-MXFP8-MTP` loaded as `native_mtp_vl_artifact`, native MTP reported `READY D3`, short exact returned HTTP 200 with `qwen27 mtp ok`, 160-token decode returned HTTP 200, no `gdn_sink` crash, and server logged `18.0 tok/s` for the 160-token row. This clears only source no-crash/functionality, not speed.
 - [!] Reporter/user traceback `TypeError: _patch_gated_delta_net.<locals>.__call__() got an unexpected keyword argument 'gdn_sink'` is therefore not explained by current source or the local 1.5.56 bundle signature. If the reporter was on 1.5.55 or an older app, classify as stale packaged runtime. If it reproduces on a fresh 1.5.56+ app, open a separate live-model route bug because another Qwen patch path is bypassing the fixed signature.
 
 Still needed:
 
 - [ ] Full packaged app Qwen35 MTP live model proof after install/download parity, including real generation, speed, output equivalence, and no `gdn_sink` crash. Source-server proof exists; packaged proof still open.
-- [ ] Qwen27 MTP proof.
+- [~] Qwen27 MTP packaged/speed proof. Source no-crash proof exists; packaged app parity and speed/equivalence proof remain open.
 - [ ] Qwen VL image/video proof.
 - [ ] Tool dialect and loop proof.
 - [ ] Structured JSON repair benchmark proof.
