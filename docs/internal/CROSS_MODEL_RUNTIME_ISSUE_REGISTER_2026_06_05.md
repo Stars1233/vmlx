@@ -9,7 +9,8 @@ Related narrative document: `docs/internal/CROSS_MODEL_RUNTIME_FAILURE_CLASSES_2
 Current known release state:
 
 - vMLX 1.5.56 DMG hotfix shipped, signed, notarized, stapled, public updater/download current.
-- `jjang-ai/vmlx` main after 1.5.56: `fa9f455b` includes structured JSON repair and DSV4 completions rail fix.
+- `jjang-ai/vmlx` main after 1.5.56: `dc3e7205` includes structured JSON repair, DSV4 completions rail fix, MiMo JANG_2L load/MLLM adapter work, and the current Qwen35 dense MTP `gdn_sink` signature contract.
+- No post-1.5.56 tag/DMG/notarization/public release has been produced from `dc3e7205`; treat these post-release fixes as source/main only until packaged proof exists.
 - PyPI is not current: PyPI latest remains `1.5.49`; `1.5.56` upload blocked by PyPI trusted-publisher/API-token config.
 - Full cross-family runtime matrix remains open. Do not claim all model families production-cleared.
 - Current regression suite proof after DSV4 app-launch default-cache clearance: `build/current-regression-suite-after-mimo-scope-removal-20260604.json` is `status=pass` with `failed_steps=[]` and 11 open objective rows. This is the active systematic list; it is still not a release-ready signal.
@@ -456,6 +457,9 @@ Proofs present:
 - [x] Qwen3.6 35B MXFP8 MTP source Chat/Responses/160-token decode no `gdn_sink` crash.
 - [x] MTP accepted-token logging observed.
 - [x] Fresh bundled Python probe reports `gdn_sink` accepted on dense GatedDeltaNet, dense DecoderLayer, VLM GatedDeltaNet, VLM DecoderLayer, and VLM Model.
+- [x] 2026-06-06 focused source regression passed: `.venv/bin/python -m pytest -q tests/test_engine_audit.py -k qwen35_dense_mtp_patch_accepts_gdn_sink_kwarg` -> `1 passed, 503 deselected`.
+- [x] 2026-06-06 local installed-app signature check: `/Applications/vMLX.app` reports `1.5.56`, and its bundled `vmlx_engine/patches/mlx_lm_mtp/qwen35_model.py` has `gdn_sink` in the patched dense GatedDeltaNet and DecoderLayer signatures.
+- [!] Reporter/user traceback `TypeError: _patch_gated_delta_net.<locals>.__call__() got an unexpected keyword argument 'gdn_sink'` is therefore not explained by current source or the local 1.5.56 bundle signature. If the reporter was on 1.5.55 or an older app, classify as stale packaged runtime. If it reproduces on a fresh 1.5.56+ app, open a separate live-model route bug because another Qwen patch path is bypassing the fixed signature.
 
 Still needed:
 
@@ -729,6 +733,21 @@ Required next checks:
 - [ ] Compare local Python `JANG_2L` against a higher-quality local/Max2 MiMo profile if disk allows, especially 4-bit routed-expert or source-shard path.
 - [ ] Add a source-vs-quant first-divergence probe for the first MoE layer that can run without loading the full 294 GB source into local memory.
 - [ ] Keep MiMo out of release-clear claims until long prompt, tools, cache, and API rows pass through the actual vMLX source/packaged runtime.
+
+## Adjacent MLLM Language-Model Interface Checks - 2026-06-06
+
+Status: `[~]` Focused source contracts passed for Step/Zaya/MiMo call-shape compatibility; live packaged model-family proof remains open.
+
+Proof:
+
+- Step3.7 focused source test passed: `.venv/bin/python -m pytest -q tests/test_step37_mlx_vlm_runtime.py::test_step37_language_model_returns_logits_object_for_mlx_vlm_generate` -> passed.
+- Zaya focused source test passed: `.venv/bin/python -m pytest -q tests/test_zaya_runtime.py::test_zaya1_vl_language_model_accepts_mlx_vlm_inputs_embeds_keyword` -> passed.
+- MiMo focused source contracts passed earlier in the current pass: `6 passed, 498 deselected` for registration, load-side quantization/sanitization, and MLLM `inputs_embeds`/`.logits` adapter behavior.
+
+Release interpretation:
+
+- These are no-heavy source interface contracts only. They prevent obvious `mlx_vlm.generate` call-shape regressions, but do not clear media quality, long-output decode quality, cache behavior, packaged-app parity, or speed.
+- If a family advertises MLLM/VL, it still needs live supported-media and unsupported-media recovery rows before release claims.
 
 Do not close with:
 
