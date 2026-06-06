@@ -1,0 +1,40 @@
+{
+  "status": "open",
+  "fix_status": "partial",
+  "model": "mimo-v2-jang2l",
+  "source_change": "SimpleEngine routes text-only MiMo chat through the loaded language_model instead of mlx_vlm.generate; media requests remain on the honest unsupported/unwired MLLM path.",
+  "focused_tests": {
+    "command": ".venv/bin/python -m pytest -q tests/test_mllm_message_serialization.py -k 'mimo_v2_thinking_false_uses_plain_template_prefix or simple_engine_routes_mimo_text_only_chat'",
+    "result": "2 passed, 67 deselected"
+  },
+  "live_rows": {
+    "long_prompt_first_request": {
+      "before": "RemoteDisconnected plus Metal OOM kIOGPUCommandBufferCallbackErrorOutOfMemory on first request",
+      "after": "HTTP 200, content=BLUE-CAT-742., prompt_tokens=1743, completion_tokens=23, elapsed_s=37.278, server healthy afterward",
+      "oom_cleared": true,
+      "sentinel_recall_pass": true
+    },
+    "cache_repeat_1": {
+      "after": "HTTP 200, content=ACK, prompt_tokens=75, completion_tokens=1, elapsed_s=3.02",
+      "empty_visible_cleared": true,
+      "exact_expected_ack_cache_742": false
+    },
+    "cache_repeat_2": {
+      "after": "HTTP 200, content=ACK, prompt_tokens=75, completion_tokens=1, elapsed_s=2.278",
+      "empty_visible_cleared": true,
+      "exact_expected_ack_cache_742": false
+    },
+    "tool_required": {
+      "after": "HTTP 200, parsed tool_call record_fact({value: blue-cat}), prompt_tokens=265, completion_tokens=55, elapsed_s=35.372",
+      "tool_call_pass": true
+    }
+  },
+  "remaining_blockers": [
+    "decode_speed_below_release_target",
+    "exact_cache_prompt_following_still_returns_ACK_not_ACK_CACHE_742",
+    "prefix_paged_l2_cache_hit_not_reproved_on_continuous_batching_route",
+    "source_vs_quant_first_divergence_missing",
+    "mimo_vl_audio_video_unwired"
+  ],
+  "release_boundary": "Text-only MiMo runtime is materially improved but not release-cleared. Long-prompt OOM and tool parse are fixed for this focused simple-engine route; speed, exactness, cache/L2 proof, source-vs-quant, packaged/UI parity, and media remain open."
+}

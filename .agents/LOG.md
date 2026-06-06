@@ -4728,3 +4728,11 @@ Detailed note: `docs/internal/agent-notes/current-gemma4-12b-release-boundary-an
 - Result: `RemoteDisconnected`; `/health` refused afterward; server log ended `kIOGPUCommandBufferCallbackErrorOutOfMemory`.
 - Artifact: `build/current-mimo-v2-jang2l-long-prompt-first-request-oom-20260606.json`.
 - This rules out cache residue; long-prompt MiMo OOM is intrinsic to the current Python MLLM path.
+
+# 2026-06-06 MiMo text-only language-model route
+
+- Patched `SimpleEngine.chat` to route text-only MiMo through `model.language_model` instead of `mlx_vlm.generate`.
+- Focused tests passed: `2 passed, 67 deselected`.
+- Live first-request long prompt now returns HTTP 200 with `BLUE-CAT-742.` and server remains healthy; previous path OOMed.
+- Live tool row returns parsed `record_fact({"value":"blue-cat"})`.
+- Still open: speed, exact cache prompt-following, continuous-batching cache/L2 proof, source-vs-quant, UI parity, and MiMo media.

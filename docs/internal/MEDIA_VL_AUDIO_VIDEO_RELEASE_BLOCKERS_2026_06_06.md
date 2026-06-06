@@ -332,3 +332,9 @@ The local MiMo endpoint was down immediately after the synced long/tool/cache pr
 Artifact: `build/current-mimo-v2-jang2l-thinking-off-template-fix-live-20260606.json`.
 
 The MiMo closed-think prompt rail is partially fixed for text cache prompts: thinking-off rows now produce visible `ACK` instead of `content=null`. This does not clear MiMo release because exactness, long-prompt OOM, tool proof, speed, source-vs-quant, and VL/audio/video are still open.
+
+## 2026-06-06 MiMo text-only route does not clear media
+
+Artifact: `build/current-mimo-v2-jang2l-text-route-live-proof-20260606.json`.
+
+MiMo text-only stability improved: long prompt no longer OOMs and tool calls parse on the simple-engine text route. MiMo media is still not wired; this patch must not be described as VL/audio/video support.

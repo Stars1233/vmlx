@@ -557,3 +557,21 @@ Still blocked:
 Artifact: `build/current-mimo-v2-jang2l-long-prompt-first-request-oom-20260606.json`.
 
 Fresh patched server plus first-request long prompt still exits through Metal OOM. This rules out cache residue and keeps MiMo long-context runtime work open.
+
+## 2026-06-06 MiMo text-only route improvement
+
+Artifact: `build/current-mimo-v2-jang2l-text-route-live-proof-20260606.json`.
+
+Fixed for text-only simple-engine route:
+
+- Long-prompt OOM is cleared by routing text-only MiMo through the language model rather than `mlx_vlm.generate`.
+- Required XML tool call is parsed as `record_fact({"value":"blue-cat"})`.
+- Cache exact rows produce visible text instead of empty/null output.
+
+Still open before release:
+
+- Speed is still far below target.
+- Exact prompt-following still misses `ACK-CACHE-742`.
+- Continuous-batching prefix/paged/L2 cache proof is not refreshed.
+- MiMo source-vs-quant is still blocked by no source endpoint.
+- MiMo VL/audio/video remains unwired.

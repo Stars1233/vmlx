@@ -1199,3 +1199,31 @@ Release boundary:
 Artifact: `build/current-mimo-v2-jang2l-long-prompt-first-request-oom-20260606.json`.
 
 After the thinking-off template fix, a fresh server was restarted and the long prompt was sent as the first request after load. It still killed the process with `RemoteDisconnected` client-side and server log `kIOGPUCommandBufferCallbackErrorOutOfMemory`. This rules out prior cache-row memory residue. The remaining long-prompt blocker is intrinsic to the current Python MLLM MiMo memory path on this 128GB host.
+
+## 2026-06-06 MiMo text-only language-model route
+
+Artifact: `build/current-mimo-v2-jang2l-text-route-live-proof-20260606.json`.
+
+Source change:
+
+- `SimpleEngine.chat` now routes text-only MiMo V2.5 requests through the loaded `language_model` rather than `mlx_vlm.generate`.
+- This is not a fake media-off claim: non-text/media requests remain on the MLLM path and MiMo media is still preserved-unwired until a real forward path exists.
+
+Live proof:
+
+- First-request long prompt no longer crashes: HTTP 200, visible `BLUE-CAT-742.`, `1743` prompt tokens, `23` completion tokens, `37.278s`, server healthy afterward.
+- Cache repeat rows now return visible `ACK` instead of null/empty and server stays healthy.
+- Required tool row returns parsed OpenAI tool call `record_fact({"value":"blue-cat"})`.
+
+Remaining blockers:
+
+- Decode speed remains far below release target: long prompt roughly `0.6 tok/s`, tool row roughly `1.6 tok/s`.
+- Exact cache prompt-following is still incomplete: rows return `ACK`, not exact `ACK-CACHE-742`.
+- Prefix/paged/L2 cache-hit proof is not reproved on the continuous-batching release route.
+- Source-vs-quant first divergence remains missing because Max2 MiMo source endpoint is not live.
+- MiMo VL/audio/video remains unbuilt in Python/vMLX.
+
+Release boundary:
+
+- This is a real runtime fix and materially improves text-only MiMo stability.
+- It does not clear MiMo for full release, speed, cache/L2, source-vs-quant, UI, or media.
