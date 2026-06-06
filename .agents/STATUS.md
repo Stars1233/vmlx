@@ -326,3 +326,15 @@ Primary note: `docs/internal/agent-notes/current-gemma4-12b-release-boundary-and
 - Current suite: `build/current-regression-suite-after-zaya-vl-thinking-capability-truth-20260606.json` -> `status=open`, failed step only `release_regression_manifest`.
 - Remaining release blockers: cross-family live multi-turn smoke, MiMo V2.5 JANG_2L runtime/tool/long-prompt, MiniMax-M2.7-JANGTQ_K reporter parity/root cause, real Electron UI cross-family live model matrix, and DSV4 long-output/code/file-generation.
 - No tag, notarized DMG, public download, updater manifest, `mlx.studio`, or `vmlx.net` update was made. Future release notes must credit GitHub `@Hornsan1`.
+
+## 2026-06-06 Codex | Qwen36 TP4 gateway/rank response blocker narrowed
+- Updated `tests/cross_matrix/run_qwen36_tp4_gateway_probe.py` so rank directory snapshots SSH through `erics-m5-max2.local` as the jump host and match recent request IDs to expected per-rank response filenames.
+- Focused validation passed: `tests/test_qwen36_tp4_gateway_probe.py` selected `7 passed`, Python compile passed, and `git diff --check` passed.
+- Live artifact: `build/current-qwen36-27b-tp4-gateway-bounded-probe-20260606.json`.
+- Current result: `status=open`, `classification=rank_response_missing_timeout`.
+- Gateway `/health` and `/v1/models` work from Max2 localhost, with 4 reachable/ready ADLab ranks, cache coordinator enabled, L2 disk cache enabled, and native MTP depth `0`.
+- Deterministic exact-output chat still times out at 15s. Rank snapshots show 9 request files and 2 stale response files per rank, but zero matched recent `<request_id>-rankN.json` response files across all 4 ranks.
+- Classification: remote TP4 gateway/rank worker response production blocker. This is not local vMLX client parsing, not a model download-corruption proof, and not Qwen TP4 MTP/cache/L2 release clearance.
+- Updated trackers:
+  - `docs/internal/VL_AUDIO_VIDEO_RUNTIME_WORKLIST_2026_06_06.md`
+  - `docs/internal/CROSS_MODEL_RUNTIME_ISSUE_REGISTER_2026_06_05.md`
