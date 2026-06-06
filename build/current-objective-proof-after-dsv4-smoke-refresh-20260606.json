@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-06T06:40:29-0700",
+  "created_at": "2026-06-06T07:08:39-0700",
   "requirements": [
     {
       "requirement": "DSV4 Flash prefix/paged/L2 cache is enabled by default from app launch",
@@ -706,7 +706,7 @@
               "tests/load-progress-honesty.test.ts"
             ],
             "returncode": 0,
-            "elapsed_sec": 0.54,
+            "elapsed_sec": 0.536,
             "counts": {
               "test_files_passed": 6,
               "tests_passed": 313,
@@ -716,17 +716,17 @@
               "",
               " RUN  v4.0.18 /Users/eric/mlx/vllm-mlx-finite-launch-guard/panel",
               "",
-              " ✓ tests/load-progress-honesty.test.ts (5 tests) 2ms",
+              " ✓ tests/load-progress-honesty.test.ts (5 tests) 3ms",
               " ✓ tests/cache-control-policy.test.ts (12 tests) 2ms",
               " ✓ tests/dsv4-env.test.ts (25 tests) 5ms",
-              " ✓ tests/i18n-consistency.test.ts (7 tests) 23ms",
+              " ✓ tests/i18n-consistency.test.ts (7 tests) 24ms",
               " ✓ tests/settings-flow.test.ts (253 tests) 31ms",
-              " ✓ tests/generation-defaults.test.ts (11 tests) 9ms",
+              " ✓ tests/generation-defaults.test.ts (11 tests) 11ms",
               "",
               " Test Files  6 passed (6)",
               "      Tests  313 passed (313)",
-              "   Start at  06:37:07",
-              "   Duration  262ms (transform 420ms, setup 0ms, import 483ms, tests 73ms, environment 0ms)",
+              "   Start at  07:02:41",
+              "   Duration  197ms (transform 400ms, setup 0ms, import 466ms, tests 75ms, environment 0ms)",
               ""
             ]
           },
@@ -738,7 +738,7 @@
               "typecheck"
             ],
             "returncode": 0,
-            "elapsed_sec": 2.1,
+            "elapsed_sec": 2.148,
             "counts": {
               "test_files_passed": null,
               "tests_passed": null,
@@ -760,7 +760,7 @@
               "tests/model-config-registry.test.ts"
             ],
             "returncode": 0,
-            "elapsed_sec": 0.436,
+            "elapsed_sec": 0.431,
             "counts": {
               "test_files_passed": 1,
               "tests_passed": 63,
@@ -770,12 +770,12 @@
               "",
               " RUN  v4.0.18 /Users/eric/mlx/vllm-mlx-finite-launch-guard/panel",
               "",
-              " ✓ tests/model-config-registry.test.ts (63 tests) 34ms",
+              " ✓ tests/model-config-registry.test.ts (63 tests) 42ms",
               "",
               " Test Files  1 passed (1)",
               "      Tests  63 passed (63)",
-              "   Start at  06:37:09",
-              "   Duration  189ms (transform 39ms, setup 0ms, import 46ms, tests 34ms, environment 0ms)",
+              "   Start at  07:02:44",
+              "   Duration  134ms (transform 39ms, setup 0ms, import 46ms, tests 42ms, environment 0ms)",
               ""
             ]
           },
@@ -789,7 +789,7 @@
               "../tests/test_model_config_registry.py"
             ],
             "returncode": 0,
-            "elapsed_sec": 3.009,
+            "elapsed_sec": 2.97,
             "counts": {
               "test_files_passed": null,
               "tests_passed": 138,
@@ -808,7 +808,7 @@
               "........................................................................ [ 76%]",
               ".................................                                        [100%]",
               "",
-              "============================= 138 passed in 2.45s =============================="
+              "============================= 138 passed in 2.42s =============================="
             ]
           },
           "engine_panel_cli_flag_contract": {
@@ -2031,7 +2031,7 @@
               "chat_and_responses_log_and_forward_supported_sampling_kwargs or anthropic_messages_omitted_max_tokens_uses_bundle_default or request_output_caps_override_server_default_without_touching_context_cap or chat_and_responses_streaming_output_caps_override_server_default_without_touching_context_cap or legacy_completions_output_cap_overrides_server_default_without_touching_context_cap or legacy_completions_streaming_output_cap_overrides_server_default_without_touching_context_cap or anthropic_messages_streaming_max_tokens_overrides_server_default_without_touching_context_cap or prompt_context_aliases_clamp_without_rewriting_output_caps or ollama_streaming_num_predict_overrides_server_default_without_touching_context_cap or responses_request_has_sampling_fields or media_diag_hooks_cover_anthropic_and_ollama_streaming_ingress or responses_nonstreaming_forwards_tc_id or chat_completions_nonstreaming or responses_nonstreaming or chat_completions_streaming or responses_streaming or chat_stream_tracks_cache_detail_alongside_cached_tokens or chat_stream_finish_chunks_emit_cache_detail or responses_stream_tracks_cache_detail_alongside_cached or responses_stream_finish_emits_cache_detail or usage_builders_preserve_cache_detail_without_cached_tokens or chat_stream_usage_preserves_cache_detail_without_cached_tokens or responses_stream_usage_preserves_cache_detail_without_cached_tokens or generic_turboquant_patcher_skips_hybrid_ssm or ollama_streaming_suppresses_duplicate_done_chunks or cache_stats_endpoint_projects_cache_reuse_skip_telemetry or cache_entries_endpoint_lists_paged_prefix_blocks or cache_warm_endpoint_prefills_and_stores_block_cache or clear_cache_prefix_clears_prefix_l2_without_multimodal or native_cache_status_reports_dsv4_separately_from_tq_kv or native_cache_status_reports_zaya_typed_cca or native_cache_status_reports_plain_attention_kv or acceleration_status_reports_internal_jangtq_acceleration_when_enabled"
             ],
             "returncode": 0,
-            "elapsed_sec": 3.001,
+            "elapsed_sec": 2.779,
             "counts": {
               "passed": 35,
               "deselected": 476
@@ -2076,7 +2076,7 @@
               "tests/test_engine_audit.py::TestStreamUsagePropagatesCacheDetail::test_chat_stream_usage_preserves_cache_detail_without_cached_tokens PASSED [ 97%]",
               "tests/test_engine_audit.py::TestStreamUsagePropagatesCacheDetail::test_responses_stream_usage_preserves_cache_detail_without_cached_tokens PASSED [100%]",
               "",
-              "====================== 35 passed, 476 deselected in 2.35s ======================"
+              "====================== 35 passed, 476 deselected in 2.14s ======================"
             ]
           },
           "scheduler_cache_contracts": {
@@ -2092,7 +2092,7 @@
               "dsv4 or hybrid_ssm or cache_detail or prompt_disk_l2"
             ],
             "returncode": 0,
-            "elapsed_sec": 2.308,
+            "elapsed_sec": 2.257,
             "counts": {
               "passed": 8,
               "deselected": 63
@@ -2116,7 +2116,7 @@
               "tests/test_batching.py::TestSchedulerBasic::test_hybrid_ssm_checkpoint_alignment_rejects_misaligned_state_without_exact PASSED [ 87%]",
               "tests/test_batching.py::TestSchedulerCacheResilience::test_dsv4_cache_hit_repetition_processor_sees_generated_context_only PASSED [100%]",
               "",
-              "======================= 8 passed, 63 deselected in 1.76s ======================="
+              "======================= 8 passed, 63 deselected in 1.71s ======================="
             ]
           },
           "tq_and_mllm_cache_contracts": {
@@ -2133,7 +2133,7 @@
               "TurboQuant or turboquant or hybrid_ssm or TQ"
             ],
             "returncode": 0,
-            "elapsed_sec": 8.312,
+            "elapsed_sec": 7.782,
             "counts": {
               "passed": 32,
               "deselected": 71
@@ -2178,7 +2178,7 @@
               "tests/test_tq_disk_cache.py::TestErrorHandling::test_is_tq_compressed_with_empty_list PASSED [ 96%]",
               "tests/test_tq_disk_cache.py::TestErrorHandling::test_is_tq_compressed_with_none_elements PASSED [100%]",
               "",
-              "====================== 32 passed, 71 deselected in 7.76s ======================="
+              "====================== 32 passed, 71 deselected in 7.23s ======================="
             ]
           },
           "dsv4_dsml_tool_contracts": {
@@ -2196,7 +2196,7 @@
               "visible_text_around_invoke_preserved_no_dsml_leak or tools_called_implies_no_dsml_in_content or repairs_dsml_invoke_with_plain_param_tags or repairs_dsml_tool_calls_wrapper_with_truncated_plain_param_invokes or streaming_buffers_dsml_tool_calls_wrapper_before_invoke or server_buffers_dsml_wrapper_marker_before_invoke or dsml_parser_repairs_schema_gated_malformed_old_dsv4_tool_call or dsml_parser_repairs_partial_canonical_invoke or dsml_parser_repairs_dsv4_live_degraded_dsml_params or dsml_parser_repairs_partial_invoke_with_malformed_value_attr or dsml_parser_repairs_htmlish_invoke_degradation or server_repairs_dsv4_partial_tool_intent_from_request_args or dsv4_encoder_keeps_function_arguments_as_dsml_params or dsv4_encoder_preserves_code_identifiers_on_direct_chat_rail or dsml_issue_165_server_tool_call_arguments_are_not_empty_or_raw or dsv4_fallback_tool_prompt_uses_canonical_tool_calls_wrapper or dsv4_native_schema_prompt_with_only_generic_examples_gets_concrete_fallback or tool_markup_residue_strips_all_registered_marker_families or tool_markup_residue_strips_interrupted_non_dsml_fragments or responses_api_no_fallback_on_suppressed_reasoning or responses_extracts_suppressed_reasoning_tool_calls_before_finalize"
             ],
             "returncode": 0,
-            "elapsed_sec": 2.408,
+            "elapsed_sec": 2.38,
             "counts": {
               "passed": 21,
               "deselected": 619
@@ -2233,7 +2233,7 @@
               "tests/test_engine_audit.py::TestV3SuppressReasoningNoFallback::test_responses_api_no_fallback_on_suppressed_reasoning PASSED [ 95%]",
               "tests/test_engine_audit.py::TestResponsesSuppressedReasoningToolCalls::test_responses_extracts_suppressed_reasoning_tool_calls_before_finalize PASSED [100%]",
               "",
-              "====================== 21 passed, 619 deselected in 1.81s ======================"
+              "====================== 21 passed, 619 deselected in 1.79s ======================"
             ]
           },
           "responses_history_contracts": {
@@ -2249,7 +2249,7 @@
               "responses_streaming_stores_history_for_previous_response_id or responses_streaming_reasoning_only_stores_placeholder_and_marker or chained_response_helper_emits_warning_for_reasoning_only_predecessor"
             ],
             "returncode": 0,
-            "elapsed_sec": 2.229,
+            "elapsed_sec": 2.208,
             "counts": {
               "passed": 3,
               "deselected": 25
@@ -2268,7 +2268,7 @@
               "tests/test_responses_history.py::test_responses_streaming_reasoning_only_stores_placeholder_and_marker PASSED [ 66%]",
               "tests/test_responses_history.py::test_chained_response_helper_emits_warning_for_reasoning_only_predecessor PASSED [100%]",
               "",
-              "======================= 3 passed, 25 deselected in 1.65s ======================="
+              "======================= 3 passed, 25 deselected in 1.63s ======================="
             ]
           }
         },
@@ -3319,10 +3319,10 @@
         "build/current-mimo-v2-jang2l-quantized-switchglu-parity-20260606.json",
         "build/current-mimo-v2-jang2l-direct-length-sweep-20260606.json",
         "build/current-mimo-v2-jang2l-tool-dialect-failure-20260606.json",
-        "build/current-mimo-v2-jang2l-current-audit-20260606.json",
-        "build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-after-harness-tighten-20260606/summary.json"
+        "build/current-mimo-v2-jang2l-current-audit-after-xml-function-template-fix-20260606.json",
+        "build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-after-xml-function-template-fix-20260606/summary.json"
       ],
-      "caveat": "MiMo V2.5 JANG_2L has current structural, narrow text/cache, and selected-expert parity evidence, but current local artifacts still show long-prompt corruption and tool protocol failure. Do not release-clear MiMo from short smokes.",
+      "caveat": "MiMo V2.5 JANG_2L has current structural, narrow text/cache, selected-expert parity, and source XML tool-call evidence, but current local artifacts still show long-prompt corruption, exact-cache prompt-following failure, and decode speed below target. Do not release-clear MiMo from short smokes.",
       "details": {
         "artifacts": {
           "structural_verify": "build/current-mimo-jang2l-local-structural-verify-20260606.json",
@@ -3330,9 +3330,9 @@
           "switchglu_parity": "build/current-mimo-v2-jang2l-quantized-switchglu-parity-20260606.json",
           "length_sweep": "build/current-mimo-v2-jang2l-direct-length-sweep-20260606.json",
           "tool_dialect": "build/current-mimo-v2-jang2l-tool-dialect-failure-20260606.json",
-          "current_audit": "build/current-mimo-v2-jang2l-current-audit-20260606.json",
+          "current_audit": "build/current-mimo-v2-jang2l-current-audit-after-xml-function-template-fix-20260606.json",
           "conservative_diagnostic": "build/current-mimo-conservative-diagnostic-20260606/summary.json",
-          "nomedia_tool_cache": "build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-after-harness-tighten-20260606/summary.json"
+          "nomedia_tool_cache": "build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-after-xml-function-template-fix-20260606/summary.json"
         },
         "missing": [],
         "current_audit_status": "open",
@@ -3366,7 +3366,8 @@
             "output": "。   。。 。一。的 先先先先先的  one one one    。 先先……"
           }
         ],
-        "tool_protocol_blocked": true,
+        "tool_protocol_blocked": false,
+        "decode_speed_blocked": true,
         "conservative_tool_failures": [
           {
             "name": "tool_required_thinking_on",
@@ -3386,7 +3387,7 @@
         "nomedia_cache_hit": true,
         "nomedia_recall_pass": true,
         "nomedia_reasoning_pass": true,
-        "nomedia_tool_pass": false,
+        "nomedia_tool_pass": true,
         "nomedia_failures": [
           {
             "label": "text_cache_repeat_1",
@@ -3399,20 +3400,6 @@
             "reason": "expected_exact_ack_missing",
             "expected": "ACK",
             "content_head": "The user says the a specific instruction: \"Cache probe fixed prefix. Read Read to the stable word the the response theword list to alpha beta gamma beta delta,psilon zeta eta",
-            "reasoning_chars": 0
-          },
-          {
-            "label": "tool_required",
-            "reason": "http_status",
-            "code": 0,
-            "content_head": "",
-            "reasoning_chars": 0
-          },
-          {
-            "label": "tool_required",
-            "reason": "expected_tool_call_missing",
-            "expected_tool": "record_fact",
-            "content_head": "",
             "reasoning_chars": 0
           }
         ],
@@ -3450,8 +3437,8 @@
           "build/current-mimo-v2-jang2l-quantized-switchglu-parity-20260606.json": true,
           "build/current-mimo-v2-jang2l-direct-length-sweep-20260606.json": true,
           "build/current-mimo-v2-jang2l-tool-dialect-failure-20260606.json": true,
-          "build/current-mimo-v2-jang2l-current-audit-20260606.json": true,
-          "build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-after-harness-tighten-20260606/summary.json": true
+          "build/current-mimo-v2-jang2l-current-audit-after-xml-function-template-fix-20260606.json": true,
+          "build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-after-xml-function-template-fix-20260606/summary.json": true
         },
         "missing_evidence": []
       }
@@ -3460,7 +3447,7 @@
       "requirement": "MiniMax-M2.7-JANGTQ_K reporter parity/root cause is release-cleared",
       "status": "open",
       "evidence": [
-        "build/current-release-regression-manifest-after-dsv4-smoke-refresh-20260606.json",
+        "build/current-release-regression-manifest-after-mimo-xml-function-template-fix-20260606.json",
         "build/current-issue179-minimax-k-root-cause-audit-20260602-post-v1552-public-dmg-scan.json"
       ],
       "caveat": "MiniMax #179 remains open while reporter model shard/codebook hashes match local full K artifact; reporter model artifact manifest is available for direct local comparison; reporter installed app bundle hash matches public/local server.py route proof; reporter response id was still active when the cancel request was sent; reporter chat/session/settings database state matches local diagnostic state; a concrete prompt reproduces screenshot-shaped wrong-language or numeric garbage; the 404 cancel response caused the screenshot rather than followed the stream abort.",
@@ -3515,8 +3502,8 @@
               "model_size_gb": 73.96,
               "required_free_gb": 81.96,
               "min_free_gb": 81.96,
-              "available_for_gate_gb": 92.03,
-              "free_plus_speculative_purgeable_gb": 92.03,
+              "available_for_gate_gb": 95.64,
+              "free_plus_speculative_purgeable_gb": 95.64,
               "memory_gap_gb": 0.0,
               "preflight_memory_source": "vm_stat_free_plus_speculative_purgeable",
               "launch_decision": "launch_allowed",
@@ -3536,7 +3523,7 @@
         ],
         "release_boundary": "#179 remains open: local dev UI and installed app UI diagnostics are clean, but the reporter log proves abort-before-visible-content plus Responses cancel 404 and does not contain the bad text shown in the screenshot. The reporter screenshot garbage is an interrupted reasoning-panel stream, not proven final visible answer text.",
         "evidence_files_present": {
-          "build/current-release-regression-manifest-after-dsv4-smoke-refresh-20260606.json": true,
+          "build/current-release-regression-manifest-after-mimo-xml-function-template-fix-20260606.json": true,
           "build/current-issue179-minimax-k-root-cause-audit-20260602-post-v1552-public-dmg-scan.json": true
         },
         "missing_evidence": []
@@ -3546,7 +3533,7 @@
       "requirement": "Real Electron UI unblocked non-MiMo live model matrix is proven",
       "status": "pass",
       "evidence": [
-        "build/current-release-regression-manifest-after-dsv4-smoke-refresh-20260606.json",
+        "build/current-release-regression-manifest-after-mimo-xml-function-template-fix-20260606.json",
         "docs/internal/agent-notes/current-real-ui-live-model-gemma4-cachecontrols-l2storage-20260531-proof.json",
         "docs/internal/agent-notes/current-real-ui-live-model-hy3-jangtq2-responses-tools-filesemantic-20260530-proof.json",
         "docs/internal/agent-notes/current-real-ui-live-model-lfm25-moe-a1b-jang2l-stricttools-responses-post-epipe-20260531-proof.json",
@@ -5404,8 +5391,8 @@
               "reason": "insufficient_memory",
               "model_path": "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K",
               "required_available_gb": 120.0,
-              "free_plus_speculative_purgeable_gb": 92.23,
-              "memory_gap_gb": 27.77
+              "free_plus_speculative_purgeable_gb": 107.95,
+              "memory_gap_gb": 12.05
             }
           },
           "unblocked_non_mimo_status": "pass",
@@ -5416,7 +5403,7 @@
           ]
         },
         "evidence_files_present": {
-          "build/current-release-regression-manifest-after-dsv4-smoke-refresh-20260606.json": true,
+          "build/current-release-regression-manifest-after-mimo-xml-function-template-fix-20260606.json": true,
           "docs/internal/agent-notes/current-real-ui-live-model-gemma4-cachecontrols-l2storage-20260531-proof.json": true,
           "docs/internal/agent-notes/current-real-ui-live-model-hy3-jangtq2-responses-tools-filesemantic-20260530-proof.json": true,
           "docs/internal/agent-notes/current-real-ui-live-model-lfm25-moe-a1b-jang2l-stricttools-responses-post-epipe-20260531-proof.json": true,
@@ -5435,7 +5422,7 @@
       "requirement": "Real Electron UI cross-family live model matrix is release-cleared",
       "status": "open",
       "evidence": [
-        "build/current-release-regression-manifest-after-dsv4-smoke-refresh-20260606.json",
+        "build/current-release-regression-manifest-after-mimo-xml-function-template-fix-20260606.json",
         "docs/internal/agent-notes/2026-05-26-live-chat-tools-reasoning-proof.json",
         "docs/internal/agent-notes/2026-05-26-live-chat-tools-reasoning-chat-settings.png",
         "docs/internal/agent-notes/2026-05-26-live-chat-tools-reasoning-server-cache-settings.png",
@@ -7280,8 +7267,8 @@
               "reason": "insufficient_memory",
               "model_path": "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K",
               "required_available_gb": 120.0,
-              "free_plus_speculative_purgeable_gb": 92.23,
-              "memory_gap_gb": 27.77
+              "free_plus_speculative_purgeable_gb": 107.95,
+              "memory_gap_gb": 12.05
             }
           },
           "unblocked_non_mimo_status": "pass",
@@ -7352,7 +7339,7 @@
           "no raw parser or reasoning tag leakage"
         ],
         "evidence_files_present": {
-          "build/current-release-regression-manifest-after-dsv4-smoke-refresh-20260606.json": true,
+          "build/current-release-regression-manifest-after-mimo-xml-function-template-fix-20260606.json": true,
           "docs/internal/agent-notes/2026-05-26-live-chat-tools-reasoning-proof.json": true,
           "docs/internal/agent-notes/2026-05-26-live-chat-tools-reasoning-chat-settings.png": true,
           "docs/internal/agent-notes/2026-05-26-live-chat-tools-reasoning-server-cache-settings.png": true,

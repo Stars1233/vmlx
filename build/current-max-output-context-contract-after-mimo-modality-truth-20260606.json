@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-06T06:37:16-0700",
+  "created_at": "2026-06-06T07:02:50-0700",
   "status": "pass",
   "checks": {
     "server_default_output_cap_uses_max_tokens": true,
@@ -95,7 +95,7 @@
       ],
       "cwd": ".",
       "returncode": 0,
-      "elapsed_sec": 2.559,
+      "elapsed_sec": 2.486,
       "counts": {
         "passed": 26,
         "skipped": null,
@@ -138,7 +138,7 @@
         "tests/test_max_output_context_contract.py::test_max_output_context_contract_covers_all_public_api_surfaces PASSED [ 96%]",
         "tests/test_engine_audit.py::TestAPIModels::test_public_api_models_reject_non_positive_output_caps PASSED [100%]",
         "",
-        "============================== 26 passed in 1.99s =============================="
+        "============================== 26 passed in 1.91s =============================="
       ]
     },
     "panel_output_context_wiring": {
@@ -163,7 +163,7 @@
       ],
       "cwd": "panel",
       "returncode": 0,
-      "elapsed_sec": 0.595,
+      "elapsed_sec": 0.583,
       "counts": {
         "passed": 54,
         "skipped": 333,
@@ -218,7 +218,7 @@
         " \u2193 tests/settings-flow.test.ts > Settings \u2192 CLI Round-Trip Completeness > prefix cache disabled suppresses all cache sub-flags",
         " \u2193 tests/settings-flow.test.ts > Settings \u2192 CLI Round-Trip Completeness > cache TTL only emitted without paged cache",
         "stdout | tests/api-gateway-ollama-behavior.test.ts > Ollama gateway request translation behavior > omits malformed Ollama num_predict values instead of poisoning max_tokens",
-        "[gateway] Listening on 127.0.0.1:57872",
+        "[gateway] Listening on 127.0.0.1:58234",
         "",
         " \u2193 tests/generation-defaults.test.ts > readGenerationDefaults generation_config defaults > uses standard MLX generation_config.json for non-JANG and VLM bundles",
         " \u2193 tests/generation-defaults.test.ts > readGenerationDefaults generation_config defaults > normalizes disabled top_k sentinels to Off/0 for UI and requests",
@@ -235,7 +235,7 @@
         "[gateway] Stopped",
         "",
         " \u2193 tests/api-gateway-ollama-behavior.test.ts > Ollama gateway request translation behavior > omits unset and disabled sampling sentinels without dropping explicit overrides",
-        " \u2713 tests/api-gateway-ollama-behavior.test.ts > Ollama gateway request translation behavior > omits malformed Ollama num_predict values instead of poisoning max_tokens 79ms",
+        " \u2713 tests/api-gateway-ollama-behavior.test.ts > Ollama gateway request translation behavior > omits malformed Ollama num_predict values instead of poisoning max_tokens 76ms",
         " \u2193 tests/api-gateway-ollama-behavior.test.ts > Ollama gateway request translation behavior > omits malformed Ollama context values instead of poisoning max_prompt_tokens",
         " \u2193 tests/api-gateway-ollama-behavior.test.ts > Ollama gateway request translation behavior > does not coerce string false enable_thinking into reasoning on",
         " \u2193 tests/api-gateway-ollama-behavior.test.ts > Ollama gateway request translation behavior > auto-switches by model id in single-model mode before preserving streaming deltas",
@@ -247,8 +247,8 @@
         "",
         " Test Files  10 passed (10)",
         "      Tests  54 passed | 333 skipped (387)",
-        "   Start at  06:37:16",
-        "   Duration  312ms (transform 974ms, setup 0ms, import 1.04s, tests 130ms, environment 1ms)",
+        "   Start at  07:02:50",
+        "   Duration  304ms (transform 925ms, setup 0ms, import 980ms, tests 127ms, environment 0ms)",
         ""
       ]
     }

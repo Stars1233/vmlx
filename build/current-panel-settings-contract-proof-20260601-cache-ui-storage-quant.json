@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-06T06:37:13-0700",
+  "created_at": "2026-06-06T07:02:47-0700",
   "status": "pass",
   "checks": {
     "panel_settings_contract_count": true,
@@ -66,7 +66,7 @@
         "tests/load-progress-honesty.test.ts"
       ],
       "returncode": 0,
-      "elapsed_sec": 0.54,
+      "elapsed_sec": 0.536,
       "counts": {
         "test_files_passed": 6,
         "tests_passed": 313,
@@ -76,17 +76,17 @@
         "",
         " RUN  v4.0.18 /Users/eric/mlx/vllm-mlx-finite-launch-guard/panel",
         "",
-        " \u2713 tests/load-progress-honesty.test.ts (5 tests) 2ms",
+        " \u2713 tests/load-progress-honesty.test.ts (5 tests) 3ms",
         " \u2713 tests/cache-control-policy.test.ts (12 tests) 2ms",
         " \u2713 tests/dsv4-env.test.ts (25 tests) 5ms",
-        " \u2713 tests/i18n-consistency.test.ts (7 tests) 23ms",
+        " \u2713 tests/i18n-consistency.test.ts (7 tests) 24ms",
         " \u2713 tests/settings-flow.test.ts (253 tests) 31ms",
-        " \u2713 tests/generation-defaults.test.ts (11 tests) 9ms",
+        " \u2713 tests/generation-defaults.test.ts (11 tests) 11ms",
         "",
         " Test Files  6 passed (6)",
         "      Tests  313 passed (313)",
-        "   Start at  06:37:07",
-        "   Duration  262ms (transform 420ms, setup 0ms, import 483ms, tests 73ms, environment 0ms)",
+        "   Start at  07:02:41",
+        "   Duration  197ms (transform 400ms, setup 0ms, import 466ms, tests 75ms, environment 0ms)",
         ""
       ]
     },
@@ -98,7 +98,7 @@
         "typecheck"
       ],
       "returncode": 0,
-      "elapsed_sec": 2.1,
+      "elapsed_sec": 2.148,
       "counts": {
         "test_files_passed": null,
         "tests_passed": null,
@@ -120,7 +120,7 @@
         "tests/model-config-registry.test.ts"
       ],
       "returncode": 0,
-      "elapsed_sec": 0.436,
+      "elapsed_sec": 0.431,
       "counts": {
         "test_files_passed": 1,
         "tests_passed": 63,
@@ -130,12 +130,12 @@
         "",
         " RUN  v4.0.18 /Users/eric/mlx/vllm-mlx-finite-launch-guard/panel",
         "",
-        " \u2713 tests/model-config-registry.test.ts (63 tests) 34ms",
+        " \u2713 tests/model-config-registry.test.ts (63 tests) 42ms",
         "",
         " Test Files  1 passed (1)",
         "      Tests  63 passed (63)",
-        "   Start at  06:37:09",
-        "   Duration  189ms (transform 39ms, setup 0ms, import 46ms, tests 34ms, environment 0ms)",
+        "   Start at  07:02:44",
+        "   Duration  134ms (transform 39ms, setup 0ms, import 46ms, tests 42ms, environment 0ms)",
         ""
       ]
     },
@@ -149,7 +149,7 @@
         "../tests/test_model_config_registry.py"
       ],
       "returncode": 0,
-      "elapsed_sec": 3.009,
+      "elapsed_sec": 2.97,
       "counts": {
         "test_files_passed": null,
         "tests_passed": 138,
@@ -168,7 +168,7 @@
         "........................................................................ [ 76%]",
         ".................................                                        [100%]",
         "",
-        "============================= 138 passed in 2.45s =============================="
+        "============================= 138 passed in 2.42s =============================="
       ]
     },
     "engine_panel_cli_flag_contract": {

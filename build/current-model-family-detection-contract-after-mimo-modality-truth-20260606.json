@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-06T06:38:11-0700",
+  "created_at": "2026-06-06T07:03:45-0700",
   "status": "pass",
   "checks": {
     "dsv4_deepseek_v4_native_cache_and_parser": true,
@@ -121,7 +121,7 @@
       ],
       "cwd": ".",
       "returncode": 0,
-      "elapsed_sec": 2.398,
+      "elapsed_sec": 2.373,
       "counts": {
         "passed": 56,
         "skipped": null,
@@ -194,7 +194,7 @@
         "tests/test_model_family_detection_contract.py::test_decode_speed_gate_treats_generation_failed_text_as_hard_failure PASSED [ 98%]",
         "tests/test_model_family_detection_contract.py::test_decode_speed_gate_detects_plain_kv_cache_health_mismatches PASSED [100%]",
         "",
-        "====================== 56 passed, 117 deselected in 1.85s ======================"
+        "====================== 56 passed, 117 deselected in 1.82s ======================"
       ]
     },
     "panel_family_detection": {
@@ -211,7 +211,7 @@
       ],
       "cwd": "panel",
       "returncode": 0,
-      "elapsed_sec": 0.439,
+      "elapsed_sec": 0.441,
       "counts": {
         "passed": 48,
         "skipped": 15,
@@ -287,8 +287,8 @@
         "",
         " Test Files  1 passed (1)",
         "      Tests  48 passed | 15 skipped (63)",
-        "   Start at  06:38:10",
-        "   Duration  122ms (transform 39ms, setup 0ms, import 46ms, tests 28ms, environment 0ms)",
+        "   Start at  07:03:44",
+        "   Duration  182ms (transform 39ms, setup 0ms, import 46ms, tests 28ms, environment 0ms)",
         ""
       ]
     },
@@ -306,7 +306,7 @@
       ],
       "cwd": "panel",
       "returncode": 0,
-      "elapsed_sec": 0.469,
+      "elapsed_sec": 0.462,
       "counts": {
         "passed": 6,
         "skipped": 247,
@@ -430,8 +430,8 @@
         "",
         " Test Files  1 passed (1)",
         "      Tests  6 passed | 247 skipped (253)",
-        "   Start at  06:38:10",
-        "   Duration  187ms (transform 61ms, setup 0ms, import 73ms, tests 3ms, environment 0ms)",
+        "   Start at  07:03:44",
+        "   Duration  184ms (transform 60ms, setup 0ms, import 71ms, tests 3ms, environment 0ms)",
         ""
       ]
     }

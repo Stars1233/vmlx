@@ -639,7 +639,7 @@ Required runtime work:
 - [ ] Verify TurboQuant/JANG kernels or explicitly classify unsupported kernel paths.
 - [ ] Verify thinking/template/parser behavior from model-owned metadata.
 - [!] Verify prompt-length coherence. Direct `mlx_lm` sweep passes around `93` prompt tokens but corrupts by `148` prompt tokens and above; this is a release blocker independent of tools.
-- [!] Verify tool-call protocol and loop behavior. Current tool probes fail across fallback, native-template, thinking-enabled, plain XML control, and `tool_choice=required`; no API `tool_calls` produced.
+- [~] Verify tool-call protocol and loop behavior. Source XML-function parser/template fallback now passes the all-local `record_fact` `tool_choice=required` probe with parsed API `tool_calls`; broader loop behavior and packaged/UI parity remain open.
 - [ ] Verify Chat Completions, Responses, Anthropic, and Ollama surfaces where supported.
 - [ ] Verify streaming and non-streaming full visible outputs, including tail review.
 - [ ] Verify sleep/wake/unload/reload lifecycle.
@@ -884,7 +884,7 @@ Every model-family proof should record:
 - Raw tool dialect leaks, tool loops, thinking-template mismatch: https://github.com/jjang-ai/vmlx/issues/190
 - Structured JSON/XML repair follow-up: https://github.com/jjang-ai/vmlx/issues/187
 
-- MiMo current audit `build/current-mimo-v2-jang2l-current-audit-20260606.json` proves the canonical local bundle matches the TB5/HTTP manifest (`173/173` files, 113.93GB payload by manifest, zero missing/mismatch) and stale MiMo backup/cache directories were removed. It does not release-clear MiMo: long-prompt coherence and API tool protocol remain blocked without fake parser injection, forced fallback, or cache disabling.
+- MiMo current audit `build/current-mimo-v2-jang2l-current-audit-20260606.json` proves the canonical local bundle matches the TB5/HTTP manifest (`173/173` files, 113.93GB payload by manifest, zero missing/mismatch) and stale MiMo backup/cache directories were removed. It does not release-clear MiMo: long-prompt coherence, exact-cache prompt-following, and decode speed remain blocked without fake parser injection, forced fallback, or cache disabling. Source XML-function tool protocol is now fixed for the all-local `record_fact` probe, but packaged/UI loop behavior remains open.
 
 ## 2026-06-06 VL/audio/video runtime worklist
 
@@ -916,8 +916,8 @@ Fresh MiMo rerun:
 MiMo classification:
 
 - Current source no longer shows the old MiMo cache-head shape crash. The optimized run loaded MiMo as MLLM, exposed `mimo_v2/mixed_swa_kv_v1` with `mimo_v2_asymmetric_swa`, paged prefix cache, block-disk L2, and TurboQuant/storage quantization telemetry.
-- MiMo remains release-red: first exact-cache request produced empty visible output, cached repeat hit `cached_tokens=54` / `cache_detail=paged` but rambled instead of exact `ACK`, and `tool_choice=required` returned a typed 400 because the model produced no parsed tool calls.
-- Conservative simple-mode diagnostic with no prefix cache and no KV quantization proved this is not only paged cache/TurboQuant corruption: exact `ACK` passes, but required tool calls fail with no tool calls both thinking-on and thinking-off, each around 96 seconds. MiMo is blocked by tool protocol/output quality and speed, with VL/audio/video still not implemented/cleared.
+- MiMo remains release-red: first exact-cache request produced empty visible output and cached repeat hit `cached_tokens=54` / `cache_detail=paged` but rambled instead of exact `ACK`.
+- Follow-up source fix for the MiMo XML-function prompt/parser contract clears the narrow `tool_choice=required` all-local probe: `build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-after-xml-function-template-fix-20260606/summary.json` emits parsed `record_fact({"value":"blue-cat"})`. The same artifact still fails exact-cache prompt-following and runs around `1.78 tok/s`, so MiMo is blocked by output quality and speed, with VL/audio/video still not implemented/cleared.
 
 Proof-pointer refresh:
 
@@ -945,7 +945,7 @@ Current cross-family source-smoke state:
 Remaining release blockers from the current objective digest:
 
 - Cross-family live multi-turn smoke matrix is still open because DSV4 is memory-preflight blocked, MiMo remains red, and ZAYA text/VL quality rows are red.
-- MiMo V2.5 JANG_2L runtime/tool/long-prompt quality remains open. Do not paper over this with fake parser injection, cache disablement, or hidden prompt/default forcing.
+- MiMo V2.5 JANG_2L runtime/long-prompt/speed quality remains open. The source XML-function tool contract is fixed for the narrow all-local probe, but do not paper over remaining quality with fake parser injection, cache disablement, or hidden prompt/default forcing.
 - MiniMax-M2.7-JANGTQ_K reporter parity/root cause remains open.
 - Real Electron UI cross-family live model matrix remains open.
 - DSV4 long-output/code/file-generation quality remains open; latest local exactness preflight refused launch with `available_gb=107.91` vs `required_available_gb=120.0`.
@@ -1014,7 +1014,7 @@ Do not mark ZAYA-VL release-cleared. Next work should trace the ZAYA-VL text tem
 - New diagnostics: `build/current-mimo-v2-jang2l-sink-mode-length-diagnostic-20260606.json` and `build/current-mimo-v2-jang2l-disable-sink-length-diagnostic-20260606.json`.
 - Refreshed audit: `build/current-mimo-v2-jang2l-current-audit-20260606.json` -> `status=open`, `local_release_clearance=false`.
 - Cleared/falsified sub-hypotheses: local artifact manifest matches, stale local state absent, structural verify passes, narrow text cache passes, selected-expert SwitchGLU parity passes, and cache-prefill vs no-cache next-token top-10 logits match. Manual sink SDPA and disabling SWA sink do not clear generation quality.
-- Remaining MiMo blockers: long-prompt coherence and tool protocol. The current blocker should not be described as cache-only or sink-kernel-only.
+- Remaining MiMo blockers: long-prompt coherence, exact-cache prompt-following, decode speed, packaged/UI parity, and media bridge. The current blocker should not be described as cache-only or sink-kernel-only. The narrow source XML-function tool probe is fixed.
 - MiMo VL/audio/video remains not implemented in Python; typed unsupported-media errors are fail-closed recovery only.
 
 ## 2026-06-06 DSV4 cross-family smoke refresh
@@ -1056,7 +1056,7 @@ Observed live result:
 
 Classification:
 
-- `decode_loop` or `model_artifact` remains unresolved for MiMo text quality, tool protocol, and speed.
+- `decode_loop` or `model_artifact` remains unresolved for MiMo text quality and speed; the narrow source XML-function tool contract is fixed but broader loop behavior remains unproven.
 - `runtime_dispatch` remains open for MiMo VL/audio/video because the available JANG tools MiMo module is text-only.
 - This is not a cache release-clearance and not a media release-clearance.
 

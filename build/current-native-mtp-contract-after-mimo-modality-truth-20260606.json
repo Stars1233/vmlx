@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-06T06:38:16-0700",
+  "created_at": "2026-06-06T07:03:50-0700",
   "status": "pass",
   "checks": {
     "native_mtp_d3_default_policy": true,
@@ -49,7 +49,7 @@
       ],
       "cwd": ".",
       "returncode": 0,
-      "elapsed_sec": 4.584,
+      "elapsed_sec": 4.606,
       "counts": {
         "passed": 123,
         "skipped": null,
@@ -135,7 +135,7 @@
         "tests/test_mtp_telemetry_edge_cases.py::TestMtpTelemetryEdgeCases::test_drop_mtp_false_strict_bool_still_works PASSED [ 99%]",
         "tests/test_mtp_telemetry_edge_cases.py::TestMtpTelemetryEdgeCases::test_bundle_index_mtp_layer_count_helper PASSED [100%]",
         "",
-        "============================= 123 passed in 3.93s =============================="
+        "============================= 123 passed in 3.95s =============================="
       ]
     },
     "panel_native_mtp_controls": {
@@ -151,7 +151,7 @@
       ],
       "cwd": "panel",
       "returncode": 0,
-      "elapsed_sec": 0.466,
+      "elapsed_sec": 0.465,
       "counts": {
         "passed": 16,
         "skipped": 237,
@@ -235,8 +235,8 @@
         "",
         " Test Files  1 passed (1)",
         "      Tests  16 passed | 237 skipped (253)",
-        "   Start at  06:38:15",
-        "   Duration  188ms (transform 61ms, setup 0ms, import 72ms, tests 6ms, environment 0ms)",
+        "   Start at  07:03:50",
+        "   Duration  127ms (transform 61ms, setup 0ms, import 72ms, tests 6ms, environment 0ms)",
         ""
       ]
     },
@@ -253,7 +253,7 @@
       ],
       "cwd": "panel",
       "returncode": 0,
-      "elapsed_sec": 0.441,
+      "elapsed_sec": 0.438,
       "counts": {
         "passed": 8,
         "skipped": 55,
@@ -268,7 +268,7 @@
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > does not expose Native MTP when model-local tuning blocks the runtime 1ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > does not expose Native MTP for config-only bundles without indexed mtp tensors 1ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > does not expose Native MTP for Ling/Bailing config-only bundles without indexed mtp tensors 1ms",
-        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps JANG_2K Native MTP blocked by default to match Python runtime policy 0ms",
+        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps JANG_2K Native MTP blocked by default to match Python runtime policy 1ms",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects text ZAYA as CCA hybrid with opt-in qwen3 reasoning parser",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects ZAYA1-VL as multimodal CCA hybrid without a reasoning claim",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps ZAYA1-VL JANGTQ_K multimodal while suppressing the stale reasoning rail",
@@ -329,8 +329,8 @@
         "",
         " Test Files  1 passed (1)",
         "      Tests  8 passed | 55 skipped (63)",
-        "   Start at  06:38:16",
-        "   Duration  102ms (transform 39ms, setup 0ms, import 47ms, tests 7ms, environment 0ms)",
+        "   Start at  07:03:50",
+        "   Duration  161ms (transform 39ms, setup 0ms, import 46ms, tests 7ms, environment 0ms)",
         ""
       ]
     }

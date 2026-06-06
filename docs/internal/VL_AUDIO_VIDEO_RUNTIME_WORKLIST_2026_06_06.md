@@ -89,7 +89,7 @@ Every advertised media-capable family must have these functions working through 
 | Qwen3.6 27B JANG_4M MTP | Native MTP speed/equivalence rows pass under deterministic policy. | Broader media/tool/multi-turn matrix and packaged UI parity remain open. | Live source and installed app across cache modes, MTP on/off A/B, image/video if advertised. |
 | LFM2.5 | Text/cache/tool UI rows have passed for known bundles. | VL/audio/video only if artifact advertises it; hybrid SSM path-dependent cache rows must stay architecture-aware. | Live media row for any VL-advertised LFM artifact, otherwise capability must remain text-only. |
 | Step3.7 Flash JANG_2L | Text-only route is stable; VLM route remains unsupported unless implemented. | Do not advertise Step3.7 VLM in vMLX until real processor/model forward path passes. Tool dialect and loop discipline remain model-behavior blockers. | Text-only live rows plus explicit unsupported-VLM guard row, or real Step3.7 VLM implementation with image/video proof. |
-| MiMo V2.5 JANG_2L | Fresh Max2 bundle copied locally and manifest verified; cache head crash fixed; optimized rerun shows paged/L2/TurboQuant telemetry. Conservative no-cache/no-TQ diagnostic can answer exact `ACK`. | Release-red: optimized exact-cache row can be empty or rambling; required tool calls fail both optimized and conservative modes; speed is around 1-2 tok/s or worse; no release-cleared VL/audio/video path. | Implement/fix tool protocol and decode quality, prove speed target, then implement processor/model bridge for image/video/audio and prove media rows. |
+| MiMo V2.5 JANG_2L | Fresh Max2 bundle copied locally and manifest verified; cache head crash fixed; optimized rerun shows paged/L2/TurboQuant telemetry. Conservative no-cache/no-TQ diagnostic can answer exact `ACK`. XML-function prompt/parser fallback is fixed in source and live all-local smoke now emits parsed `record_fact` with `{"value":"blue-cat"}`. | Release-red: optimized exact-cache row can be empty or rambling; speed is around 1-2 tok/s; long-prompt coherence remains red; no release-cleared VL/audio/video path. | Fix decode quality and speed target, compare source-vs-quant first divergence, then implement processor/model bridge for image/video/audio and prove media rows. |
 | Nemotron Omni | Prior rows exist but not current release-cleared. | Audio/image/video carryover and no-media prompt contamination need current-source and installed reproof. | Omni live matrix with text-only before/after media, audio/image/video, no hidden media carryover. |
 | ZAYA / ZAYA1-VL | Typed CCA/path-dependent cache constraints are special. | VL rows must prove media cache salting and no unsafe partial CCA restore. | Live ZAYA-VL image/video rows with CCA cache stats and post-media recovery. |
 | DSV4 Flash | Native composite cache is separate from generic TurboQuant KV; app-launch default-cache row cleared. | Long-output/code/file-generation quality and exactness remain open; media only if artifact advertises sidecars. | DSV4 long-output/code/file generation, restart-L2, exact-copy, tool loops, no generic TQ-KV substitution. |
@@ -109,7 +109,7 @@ installed-app proof where the product advertises the capability.
 | Qwen VL/video processor bridge | Qwen video path has native processor wiring in source contracts: `videos=...`, `pixel_values_videos`, and `video_grid_thw` rows exist. | Current packaged Qwen27/35 MTP media matrix with MTP on/off, tools, streaming, and post-video text recovery. | `unknown_pending_repro` for broad media proof; stale `gdn_sink` crash is `gateway_ui` if only old app reproduces. |
 | MiMo text runtime bridge | vMLX registers `mlx_vlm.models.mimo_v2` around `jang_tools.mimo_v2.mlx_model`; text/cache narrow proof exists. Missing media forward now raises typed `unsupported_media_modality` instead of a generic generation failure. | Real multimodal model module: vision encoder, audio encoder/tokenizer bridge, media projector/merger, `get_input_embeddings(pixel_values=...)`, `__call__(pixel_values=...)`, video/audio token expansion, and cache salt proof. | `runtime_dispatch` plus `model_artifact` pending source-vs-quant quality comparison. |
 | MiMo JANG tools model forward | `/Users/eric/jang/jang-tools/jang_tools/mimo_v2/mlx_model.py` is explicitly text-only; its docstring says visual/audio towers are preserved but not wired. | Implement `mimo_v2_multimodal.py` or equivalent in JANG tools, then make vMLX register that module instead of a text-only compatibility shell. | `runtime_dispatch`; do not advertise VL/audio/video or force a parser/cache workaround. |
-| MiMo long-prompt/tool quality | Cache classification and narrow text repeat work; conservative no-cache exact ACK can work. | First-divergence trace against source/higher-quality profile; tool protocol repair at model/template/runtime boundary; speed target proof. | `decode_loop` or `model_artifact` still unresolved. |
+| MiMo long-prompt/tool quality | Cache classification and narrow text repeat work; conservative no-cache exact ACK can work. XML-function fallback now respects MiMo's native parser dialect and live `tool_choice=required` emits parsed OpenAI `tool_calls`. | First-divergence trace against source/higher-quality profile for exact-cache/long-prompt corruption; speed target proof; broader loop behavior and packaged/UI parity. | `decode_loop` or `model_artifact` still unresolved for quality/speed; parser dialect mismatch fixed in source. |
 | Step3.7 VLM bridge | Source registration/no-heavy guards exist; text-only route is stable. | Real Step3.7 image/video processor, projector, forward, media cache salt, and live proof, or an explicit unsupported-VLM product row. | `runtime_dispatch`; text-only metadata view is not a VLM fix. |
 | Nemotron Omni audio/video | Prior source rows exist for text/image/video/audio but are not current release-cleared. | Current source and installed app matrix for text-before/after media, audio/image/video carryover, tools, streaming, and L2. | `unknown_pending_repro`. |
 | ZAYA/ZAYA1-VL media cache | Typed CCA cache contract exists; media routing rows exist in no-heavy contracts. | Live image/video rows proving media salt plus safe CCA/path-dependent restore and post-media recovery. | `kernel_cache` if partial restore fails; otherwise `unknown_pending_repro` until live. |
@@ -121,7 +121,7 @@ installed-app proof where the product advertises the capability.
 
 - `jang_tools.mimo_v2.mlx_model` is text-oriented; multimodal runtime is not release-proven.
 - vMLX MiMo MLLM path must accept and correctly route image/video/audio tensors, not just load an MLLM wrapper.
-- Tool parser must handle MiMo's template dialect without fabricating tool calls from malformed raw XML.
+- Tool parser must handle MiMo's template dialect without fabricating tool calls from malformed raw XML. Source now distinguishes MiMo `xml_function` from Qwen/Step template fallbacks and live-proves parsed `record_fact`; broader loop behavior still needs proof.
 - Current fail-closed behavior is typed: unwired MiMo vision forward raises `UnsupportedMediaModalityError` / API code `unsupported_media_modality`. This is not a pass for MiMo vision; it is only correct failure classification and recovery.
 
 2. Step3.7 VLM bridge
@@ -220,7 +220,7 @@ Current proof artifacts now wired into the release gates:
 Current blockers to build, not guard away:
 
 - MiMo V2.5 JANG_2L needs real multimodal runtime implementation in JANG tools/vMLX before VL/audio/video can be advertised. The current text compatibility shell and typed unsupported-media error are not a VL pass.
-- MiMo text/tool quality still needs source-vs-quant first-divergence tracing, tool protocol repair at the real template/parser boundary, and speed proof. Do not force hidden prompts, fake tool-call conversion, or cache disablement as a production fix.
+- MiMo text quality still needs source-vs-quant first-divergence tracing and speed proof. The source-side XML-function tool parser/template contract is fixed and live-proven for `record_fact`, but broader loop behavior and packaged/UI parity remain open. Do not force hidden prompts, fake tool-call conversion, or cache disablement as a production fix.
 - ZAYA/ZAYA1-VL needs exact-instruction, reasoning-visible-output, multi-turn recall, and red-image semantic fixes while preserving the CCA/path-dependent cache constraints.
 - DSV4 needs a safe-memory live host for long-output/code/file-generation and restart/L2 exactness proof.
 - Real Electron UI still needs the same family matrix from installed app settings through spawned server args, `/health`, cache stats, media upload, max output tokens, streaming/non-streaming, and post-error recovery.
@@ -293,7 +293,7 @@ Findings:
 1. MiMo local artifact integrity is clean: TB5 manifest matches 173 files / 113,926,313,468 bytes, stale local backups/caches are absent, structural verify passes, text-cache narrow proof passes, selected-expert SwitchGLU parity passes, and cache-prefill vs no-cache next-token top-10 logits match at 125 prompt tokens.
 2. Manual sink SDPA does not clear length generation. Native sink and manual sink both fail the focused length prompts; this is not proven to be an MLX native sink-kernel-only issue.
 3. Disabling SWA sink is worse: tested lengths emit repeated punctuation. Do not ship a sink-disable workaround.
-4. MiMo remains release-red for local runtime quality: long-prompt coherence and OpenAI tool protocol both fail. The current evidence points beyond cache store/reconstruct and beyond sink toggles toward model/runtime weight mapping, template/defaults, or quantized forward quality.
+4. MiMo remains release-red for local runtime quality: long-prompt coherence, exact-cache prompt-following, and speed fail. The earlier OpenAI tool protocol failure is narrowed by the XML-function parser/template fix and current live smoke now emits parsed `record_fact`; this does not clear broader loop behavior or packaged/UI parity. The remaining evidence points beyond cache store/reconstruct and beyond sink toggles toward model/runtime weight mapping, template/defaults, or quantized forward quality.
 5. MiMo media remains unimplemented in Python: the bundle has vision/audio metadata and weights, but vMLX still registers the text-only compatibility shell and raises typed unsupported-media errors for pixel input. This is correct fail-closed behavior, not VL/audio support.
 
 Next MiMo work:
@@ -368,15 +368,38 @@ Live proof result:
 - Multi-turn recall passed with visible `blue cat`.
 - Reasoning-on passed with visible `FINAL=OK`.
 - Exact cache repeat failed: first repeat was empty visible output, second repeat rambled instead of exact `ACK`, even though cached tokens were reported.
-- Required tool call failed: server generated but returned no parsed `record_fact` tool call under `tool_choice=required`.
+- Required tool call failed in this artifact: server generated but returned no parsed `record_fact` tool call under `tool_choice=required`. This was narrowed later to a runtime prompt/parser dialect bug and fixed in the XML-function follow-up below.
 
 Current classification:
 
 - `kernel_cache`: not currently proven as the primary MiMo blocker because cache telemetry is live, but exact cached decode output is still wrong and must stay under proof.
-- `decode_loop` or `model_artifact`: still unresolved for exact prompt-following, tool protocol, and speed.
+- `decode_loop` or `model_artifact`: still unresolved for exact prompt-following and speed.
 - `runtime_dispatch`: still open for VL/audio/video because JANG tools MiMo forward is text-only and vMLX has no release-proven MiMo image/video/audio bridge.
 
 Do not resolve this with fake parser injection, forced text-only metadata, or synthetic tool calls. The next proof must compare source/high-quality MiMo against the JANG_2L artifact and trace where the decoded tokens diverge.
+
+## 2026-06-06 MiMo XML-function parser/template fix
+
+Artifact: `build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-after-xml-function-template-fix-20260606/summary.json`
+
+Source/runtime change:
+
+- vMLX no longer misclassifies explicit MiMo `xml_function` parser prompts as Qwen/Step-style native tool prompts just because they contain `<|im_start|>`, `<tools>`, and `<function=example_function_name>`.
+- Fallback for MiMo XML tools now emits native XML-function instructions compatible with `xml_function` / `mimo_xml_function`, not JSON inside `<tool_call>`.
+- Focused parser/fallback tests passed: `tests/test_tool_fallback_injection.py`, `tests/test_xml_function_tool_parser.py`, and selected XML/fallback/tool-format rows, `74 passed`.
+
+Live proof result:
+
+- `tool_required` now passes with a parsed OpenAI function call: `record_fact({"value":"blue-cat"})`.
+- Multi-turn recall and reasoning visible-output probes pass.
+- Cache infrastructure remains active: `mixed_swa_kv_v1`, `mimo_v2_asymmetric_swa`, prefix cache, paged cache, block disk L2, and TurboQuant q4 storage-boundary telemetry.
+- Smoke still fails because `text_cache_repeat_1` is empty visible output and `text_cache_repeat_2` rambles instead of exact `ACK`.
+- Decode speed remains about `1.78 tok/s`, not the 40 tok/s release target.
+
+Current MiMo boundary:
+
+- Tool parser/runtime contract: fixed in source for the all-local `record_fact` probe.
+- Release clearance: still blocked by exact-cache prompt following, long-prompt coherence, speed, packaged/UI parity, and unimplemented VL/audio/video bridge.
 
 ## 2026-06-06 ZAYA1-VL reasoning capability truth and packaged app refresh
 

@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-06T06:37:25-0700",
+  "created_at": "2026-06-06T07:02:59-0700",
   "status": "pass",
   "checks": {
     "generation_config_defaults_are_surfaced": true,
@@ -120,7 +120,7 @@
       ],
       "cwd": "panel",
       "returncode": 0,
-      "elapsed_sec": 0.518,
+      "elapsed_sec": 0.512,
       "counts": {
         "passed": 26,
         "skipped": 238,
@@ -200,12 +200,12 @@
         " \u2193 tests/generation-defaults.test.ts > readGenerationDefaults JANG sampling defaults > uses Ling CRACK bundle startup defaults without hidden temperature override",
         " \u2713 tests/generation-defaults.test.ts > readGenerationDefaults JANG sampling defaults > uses chat repetition penalty when bundle default reasoning mode is not thinking 1ms",
         " \u2713 tests/generation-defaults.test.ts > readGenerationDefaults JANG sampling defaults > uses neutral generic repetition penalty for DSV4 direct chat defaults 1ms",
-        " \u2713 tests/generation-defaults.test.ts > readGenerationDefaults JANG sampling defaults > uses thinking repetition penalty when bundle default reasoning mode is thinking 1ms",
+        " \u2713 tests/generation-defaults.test.ts > readGenerationDefaults JANG sampling defaults > uses thinking repetition penalty when bundle default reasoning mode is thinking 0ms",
         "",
         " Test Files  2 passed (2)",
         "      Tests  26 passed | 238 skipped (264)",
-        "   Start at  06:37:20",
-        "   Duration  239ms (transform 149ms, setup 0ms, import 199ms, tests 16ms, environment 0ms)",
+        "   Start at  07:02:54",
+        "   Duration  236ms (transform 147ms, setup 0ms, import 197ms, tests 17ms, environment 0ms)",
         ""
       ]
     },
@@ -223,7 +223,7 @@
       ],
       "cwd": ".",
       "returncode": 0,
-      "elapsed_sec": 2.628,
+      "elapsed_sec": 2.58,
       "counts": {
         "passed": 49,
         "skipped": null,
@@ -289,7 +289,7 @@
         "tests/test_engine_audit.py::TestTurboQuantKVTelemetry::test_session_command_preview_mirrors_runtime_default_flags PASSED [ 97%]",
         "tests/test_engine_audit.py::TestTurboQuantKVTelemetry::test_vlm_video_sampling_is_request_scoped_not_restart_required PASSED [100%]",
         "",
-        "====================== 49 passed, 462 deselected in 2.03s ======================"
+        "====================== 49 passed, 462 deselected in 1.98s ======================"
       ]
     },
     "local_generation_metadata_audit": {
@@ -304,7 +304,7 @@
       ],
       "cwd": ".",
       "returncode": 0,
-      "elapsed_sec": 2.26,
+      "elapsed_sec": 2.259,
       "counts": {
         "passed": 5,
         "skipped": null,
@@ -326,7 +326,7 @@
         "tests/test_local_generation_metadata_audit.py::test_local_generation_metadata_audit_accepts_template_budget_support PASSED [ 80%]",
         "tests/test_local_generation_metadata_audit.py::test_local_generation_metadata_audit_reports_step3p7_advertised_media_guard PASSED [100%]",
         "",
-        "============================== 5 passed in 1.67s ==============================="
+        "============================== 5 passed in 1.65s ==============================="
       ]
     }
   }

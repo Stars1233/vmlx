@@ -1,0 +1,104 @@
+{
+  "artifacts": {
+    "all_local_smoke": "build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-after-xml-function-template-fix-20260606/summary.json",
+    "cache_vs_nocache": "build/current-mimo-v2-jang2l-cache-vs-nocache-next-token-20260606.json",
+    "disable_sink_length_diagnostic": "build/current-mimo-v2-jang2l-disable-sink-length-diagnostic-20260606.json",
+    "length_sweep": "build/current-mimo-v2-jang2l-direct-length-sweep-20260606.json",
+    "sink_mode_length_diagnostic": "build/current-mimo-v2-jang2l-sink-mode-length-diagnostic-20260606.json",
+    "structural": "build/current-mimo-jang2l-local-structural-verify-20260606.json",
+    "switchglu": "build/current-mimo-v2-jang2l-quantized-switchglu-parity-20260606.json",
+    "text_cache": "build/current-mimo-jang2l-live-text-cache-smoke-20260606.json",
+    "tool_failure": "build/current-mimo-v2-jang2l-tool-dialect-failure-20260606.json"
+  },
+  "blockers": [
+    "mimo_long_prompt_coherence_blocked",
+    "mimo_exact_cache_prompt_following_blocked",
+    "mimo_decode_speed_below_release_target"
+  ],
+  "component_ok": {
+    "cache_vs_nocache_next_token": true,
+    "decode_speed_target": false,
+    "disable_sink_does_not_clear_length_generation": true,
+    "exact_cache_prompt_following": false,
+    "long_prompt_coherence": false,
+    "manifest_integrity": true,
+    "manual_sink_does_not_clear_length_generation": true,
+    "stale_local_state_absent": true,
+    "structural_verify": true,
+    "switchglu_selected_expert_parity": true,
+    "text_cache_narrow": true,
+    "tool_protocol": true
+  },
+  "diagnostics": {
+    "all_local_smoke": {
+      "exact_cache_blocked": true,
+      "exists": true,
+      "failures": [
+        {
+          "content_head": "",
+          "label": "text_cache_repeat_1",
+          "reason": "empty_visible",
+          "reasoning_chars": 0
+        },
+        {
+          "content_head": "The user says the a specific instruction: \"Cache probe fixed prefix. Read Read to the stable word the the response theword list to alpha beta gamma beta delta,psilon zeta eta",
+          "expected": "ACK",
+          "label": "text_cache_repeat_2",
+          "reason": "expected_exact_ack_missing",
+          "reasoning_chars": 0
+        }
+      ],
+      "generation_tps": 1.7838736312670764,
+      "speed_blocked": true,
+      "tool_protocol_pass": true
+    },
+    "cache_vs_nocache_next_token_match": true,
+    "disable_sink_clears_length_generation": false,
+    "manual_sink_sdpa_clears_length_generation": false,
+    "sink_boundary": "Manual sink SDPA and disabling SWA sink do not clear the current MiMo length-generation failures; do not classify the blocker as an MLX sink-kernel-only issue."
+  },
+  "local_release_clearance": false,
+  "manifest_integrity": {
+    "manifest": "build/current-mimo-http-tb5-manifest-20260606.tsv",
+    "mismatched_files": [],
+    "missing_files": [],
+    "model_parent": "/Users/eric/.mlxstudio/models/JANGQ-AI",
+    "ok_files": 173,
+    "rows": 173,
+    "status": "pass",
+    "total_bytes": 113926313468
+  },
+  "model_path": "/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L",
+  "release_boundary": "MiMo local artifact integrity is clean, but release remains blocked until long-prompt coherence, exact cache prompt-following, and decode speed pass without fake parser injection, forced fallback, or cache disabling.",
+  "stale_local_state": {
+    "all_stale_targets_absent": true,
+    "cleanup_log": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-mimo-stale-local-cleanup-20260606.txt",
+    "targets": [
+      {
+        "exists": false,
+        "path": "/Users/eric/vmlx-sync-backups/local-installed-mimo-v2-mlx-model-20260527-swa-mask"
+      },
+      {
+        "exists": false,
+        "path": "/Users/eric/.cache/huggingface/modules/transformers_modules/MiMo_hyphen_V2_dot_5_hyphen_JANG_2L"
+      },
+      {
+        "exists": false,
+        "path": "build/mimo-block-cache"
+      },
+      {
+        "exists": false,
+        "path": "build/current-mimo-jang2l-block-cache-20260606"
+      },
+      {
+        "exists": false,
+        "path": "build/current-mimo-jang2l-tool-block-cache-20260606"
+      },
+      {
+        "exists": false,
+        "path": "build/current-mimo-jang2l-block-cache-after-head-fix-20260606"
+      }
+    ]
+  },
+  "status": "open"
+}

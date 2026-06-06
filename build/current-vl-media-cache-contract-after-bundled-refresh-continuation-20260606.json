@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-06T06:38:23-0700",
+  "created_at": "2026-06-06T07:03:57-0700",
   "status": "pass",
   "checks": {
     "video_url_request_schema": true,
@@ -57,7 +57,7 @@
       ],
       "cwd": ".",
       "returncode": 0,
-      "elapsed_sec": 5.091,
+      "elapsed_sec": 5.659,
       "counts": {
         "passed": 45,
         "skipped": 5,
@@ -125,7 +125,7 @@
         "tests/test_model_config_registry.py::TestModelConfigComprehensiveChecks::test_zaya1_vl_registered_with_full_contract PASSED [ 98%]",
         "tests/test_model_config_registry.py::TestModelConfigComprehensiveChecks::test_zaya_stale_stamp_cannot_disable_reasoning_or_reenable_think_seed PASSED [100%]",
         "",
-        "================ 45 passed, 5 skipped, 712 deselected in 4.34s ================="
+        "================ 45 passed, 5 skipped, 712 deselected in 4.90s ================="
       ]
     },
     "panel_vl_media_followup_contracts": {
@@ -140,7 +140,7 @@
       ],
       "cwd": "panel",
       "returncode": 0,
-      "elapsed_sec": 0.421,
+      "elapsed_sec": 0.417,
       "counts": {
         "passed": 13,
         "skipped": null,
@@ -166,8 +166,8 @@
         "",
         " Test Files  2 passed (2)",
         "      Tests  13 passed (13)",
-        "   Start at  06:38:22",
-        "   Duration  72ms (transform 29ms, setup 0ms, import 39ms, tests 4ms, environment 0ms)",
+        "   Start at  07:03:56",
+        "   Duration  134ms (transform 28ms, setup 0ms, import 38ms, tests 4ms, environment 0ms)",
         ""
       ]
     },
@@ -184,7 +184,7 @@
       ],
       "cwd": "panel",
       "returncode": 0,
-      "elapsed_sec": 0.467,
+      "elapsed_sec": 0.466,
       "counts": {
         "passed": 12,
         "skipped": 241,
@@ -308,8 +308,8 @@
         "",
         " Test Files  1 passed (1)",
         "      Tests  12 passed | 241 skipped (253)",
-        "   Start at  06:38:22",
-        "   Duration  185ms (transform 59ms, setup 0ms, import 71ms, tests 2ms, environment 0ms)",
+        "   Start at  07:03:57",
+        "   Duration  187ms (transform 61ms, setup 0ms, import 73ms, tests 3ms, environment 0ms)",
         ""
       ]
     },
@@ -326,7 +326,7 @@
       ],
       "cwd": "panel",
       "returncode": 0,
-      "elapsed_sec": 0.442,
+      "elapsed_sec": 0.439,
       "counts": {
         "passed": 14,
         "skipped": 49,
@@ -346,7 +346,7 @@
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects ZAYA1-VL as multimodal CCA hybrid without a reasoning claim 1ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps ZAYA1-VL JANGTQ_K multimodal while suppressing the stale reasoning rail 1ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps ZAYA1-VL JANGTQ2 multimodal without a reasoning rail 1ms",
-        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps ZAYA1-VL JANGTQ4 multimodal without a reasoning rail 0ms",
+        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps ZAYA1-VL JANGTQ4 multimodal without a reasoning rail 1ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps ZAYA1-VL multimodal when a stale stamp says text 0ms",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects Ling/Bailing hybrid with tools and no reasoning parser",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps Ling/Bailing non-reasoning even without a JANG capability stamp",
@@ -402,8 +402,8 @@
         "",
         " Test Files  1 passed (1)",
         "      Tests  14 passed | 49 skipped (63)",
-        "   Start at  06:38:22",
-        "   Duration  167ms (transform 39ms, setup 0ms, import 46ms, tests 9ms, environment 0ms)",
+        "   Start at  07:03:57",
+        "   Duration  165ms (transform 39ms, setup 0ms, import 46ms, tests 9ms, environment 0ms)",
         ""
       ]
     }
