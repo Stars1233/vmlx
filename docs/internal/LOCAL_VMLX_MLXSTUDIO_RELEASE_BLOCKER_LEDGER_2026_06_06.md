@@ -189,3 +189,12 @@ Scope: local vMLX Python engine and MLXStudio/panel release path only. No adlab,
   - `.venv/bin/python -m pytest -q tests/test_engine_audit.py -k 'qwen35_dense_mtp_patch'` -> `2 passed`.
   - `.venv/bin/python -m pytest -q tests/test_native_mtp_autodetect.py -k 'qwen36_vlm_runtime_patch_installs_native_mtp or gated_delta'` -> `3 passed`.
 - Release boundary unchanged: this is a source runtime fix, not a full installed-app/live Qwen 27B/35B MTP E2E clearance.
+
+## 2026-06-06 VLM image prefill high-memory guard proof
+
+- Artifact: `build/current-vlm-image-prefill-high-memory-guard-proof-20260606.json`.
+- Source behavior is memory-aware: without explicit `VMLINUX_VLM_IMAGE_PREFILL_BUFFER_GB`, the single-buffer guard scales with Metal working set and preserves an 8GB floor.
+- The Gemma-class high-memory case modeled in source uses `seq_len=12953`, `num_attention_heads=32`, `predicted_attention=10.0GB`, `max_working_set=96GB`; source decision is `should_reject=false`.
+- Explicit `VMLINUX_VLM_IMAGE_PREFILL_BUFFER_GB=8` still preserves the old 8GB cap intentionally.
+- Verification: `.venv/bin/python -m pytest -q tests/test_vl_video_regression.py -k 'vlm_image_prefill_default_single_buffer_guard_scales_on_high_memory or vlm_image_prefill_explicit_single_buffer_guard_preserves_old_limit or vmlx156_simple_mllm_guard_uses_media_expanded_input_ids or simple_mllm_guard'` -> `4 passed`.
+- Release boundary: this proves the source guard policy, not installed-app parity or full Gemma 4 VL quality. A signed/notarized app must be rebuilt from current source for affected users to stop seeing old fixed-8GB behavior.

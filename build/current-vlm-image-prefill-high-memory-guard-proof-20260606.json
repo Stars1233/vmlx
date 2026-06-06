@@ -1,0 +1,33 @@
+{
+  "created_at": "2026-06-06T22:15:00Z",
+  "family": "VLM/Gemma4-class image prefill guard",
+  "release_boundary": {
+    "installed_app_cleared": false,
+    "notes": [
+      "source has memory-aware guard; explicit VMLX_VLM_IMAGE_PREFILL_BUFFER_GB=8 still preserves old low cap by user choice",
+      "installed app must be rebuilt/released from this source before affected users stop seeing the old fixed 8GB behavior",
+      "this proof covers guard policy only, not full Gemma 4 VL answer quality"
+    ]
+  },
+  "reported_failure": "Gemma 4 12B image prompt rejected because predicted attention buffer 10.0GB exceeded fixed 8.0GB guard on a 128GB M5 Max",
+  "scope": "local vMLX Python engine source",
+  "source_behavior": {
+    "active_memory_gb": 20,
+    "default_single_buffer_limit_gb": 15.36,
+    "detail": "VLM image prefill budget ok: seq_len=12953, heads=32, predicted_attention=10.0GB",
+    "max_working_set_gb": 96,
+    "num_attention_heads": 32,
+    "predicted_attention_gb": 10.0,
+    "reject_pct": 98.0,
+    "seq_len": 12953,
+    "should_reject": false
+  },
+  "status": "pass",
+  "verification": [
+    {
+      "command": ".venv/bin/python -m pytest -q tests/test_vl_video_regression.py -k 'vlm_image_prefill_default_single_buffer_guard_scales_on_high_memory or vlm_image_prefill_explicit_single_buffer_guard_preserves_old_limit or vmlx156_simple_mllm_guard_uses_media_expanded_input_ids or simple_mllm_guard'",
+      "result": "4 passed",
+      "status": "pass"
+    }
+  ]
+}
