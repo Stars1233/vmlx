@@ -418,6 +418,7 @@ Proofs present:
 - [x] 12B MXFP8 image source proof.
 - [x] Packaged installed 1.5.56 Gemma4 JANG_4M API/cache/sleep proof.
 - [x] 2026-06-06 source speed gate for `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-JANG_4M` passed: artifact `build/current-gemma4-12b-speed-gate-20260606-live.json`, target `45.0 tok/s`, default median `46.695 tok/s`, temp0/topk0 median `47.171 tok/s`, temp1/topk0 median `46.391 tok/s`, temp1/topk64 median `46.601 tok/s`, `top_k_is_primary_cause=false`, speed-row cache hits `0`, native cache `gemma4` / `mixed_swa_kv_v1`.
+- [x] 2026-06-06 installed-app packaged speed gate passed through `/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3.12`: artifact `build/current-gemma4-12b-speed-gate-installed-app-20260606-live.json`, target `45.0 tok/s`, default median `46.665 tok/s`, temp0/topk0 median `47.006 tok/s`, temp1/topk0 median `45.81 tok/s`, temp1/topk64 median `41.934 tok/s`, `top_k_is_primary_cause=false`, speed-row cache hits `0`, native cache `gemma4` / `mixed_swa_kv_v1`. Nuance: topk64 median missed the 45 tok/s target in the installed-app row, but the configured top-k primary-regression threshold did not fire.
 
 Still needed:
 
@@ -425,7 +426,6 @@ Still needed:
 - [ ] Video path.
 - [ ] Audio path if advertised.
 - [ ] Full UI settings panel proof.
-- [ ] Packaged installed-app speed parity for Gemma4 12B after the post-1.5.56 main changes.
 - [ ] Structured JSON/schema live proof after repair.
 - [ ] Tool-call proof.
 - [ ] MTP variants if present.
@@ -463,12 +463,14 @@ Proofs present:
 - [x] 2026-06-06 local installed-app signature check: `/Applications/vMLX.app` reports `1.5.56`, and its bundled `vmlx_engine/patches/mlx_lm_mtp/qwen35_model.py` has `gdn_sink` in the patched dense GatedDeltaNet and DecoderLayer signatures.
 - [x] 2026-06-06 real source-server Qwen35 MXFP8 MTP repro passed: artifact `build/current-qwen35-mxfp8-mtp-gdn-sink-live-qwen3parser-20260606.json`. Model `/Users/eric/models/JANGQ/Qwen3.6-35B-A3B-MXFP8-MTP` loaded as `native_mtp_vl_artifact`, native MTP reported `READY D3`, short exact returned HTTP 200 with `qwen mtp ok`, 160-token decode returned HTTP 200, no `gdn_sink` crash, and server logged `77.4 tok/s` for the 160-token row.
 - [x] 2026-06-06 real source-server Qwen27 MXFP8 MTP repro passed: artifact `build/current-qwen27-mxfp8-mtp-live-20260606.json`. Model `/Users/eric/models/JANGQ/Qwen3.6-27B-MXFP8-MTP` loaded as `native_mtp_vl_artifact`, native MTP reported `READY D3`, short exact returned HTTP 200 with `qwen27 mtp ok`, 160-token decode returned HTTP 200, no `gdn_sink` crash, and server logged `18.0 tok/s` for the 160-token row. This clears only source no-crash/functionality, not speed.
+- [x] 2026-06-06 installed-app packaged Qwen35 MXFP8 MTP repro passed: artifact `build/current-qwen35-mxfp8-mtp-installed-app-live-20260606.json`. Bundled Python `/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3.12` loaded the model as `native_mtp_vl_artifact`, native MTP reported `READY D3`, short exact returned HTTP 200 with `qwen35 installed mtp ok`, 160-token decode returned HTTP 200, no `gdn_sink` crash, and server logged `77.3 tok/s`.
+- [x] 2026-06-06 installed-app packaged Qwen27 MXFP8 MTP repro passed for no-crash/functionality: artifact `build/current-qwen27-mxfp8-mtp-installed-app-live-20260606.json`. Bundled Python loaded the model as `native_mtp_vl_artifact`, native MTP reported `READY D3`, short exact returned HTTP 200 with `qwen27 installed mtp ok`, 160-token decode returned HTTP 200, no `gdn_sink` crash, and server logged `18.0 tok/s`. This still leaves Qwen27 speed/equivalence open.
 - [!] Reporter/user traceback `TypeError: _patch_gated_delta_net.<locals>.__call__() got an unexpected keyword argument 'gdn_sink'` is therefore not explained by current source or the local 1.5.56 bundle signature. If the reporter was on 1.5.55 or an older app, classify as stale packaged runtime. If it reproduces on a fresh 1.5.56+ app, open a separate live-model route bug because another Qwen patch path is bypassing the fixed signature.
 
 Still needed:
 
-- [ ] Full packaged app Qwen35 MTP live model proof after install/download parity, including real generation, speed, output equivalence, and no `gdn_sink` crash. Source-server proof exists; packaged proof still open.
-- [~] Qwen27 MTP packaged/speed proof. Source no-crash proof exists; packaged app parity and speed/equivalence proof remain open.
+- [~] Qwen35 MTP output-equivalence proof. Source and packaged no-crash/speed smokes exist; exact native-MTP equivalence remains open.
+- [~] Qwen27 MTP speed/equivalence proof. Source and packaged no-crash proof exists, but both 160-token rows logged only `18.0 tok/s`.
 - [ ] Qwen VL image/video proof.
 - [ ] Tool dialect and loop proof.
 - [ ] Structured JSON repair benchmark proof.
