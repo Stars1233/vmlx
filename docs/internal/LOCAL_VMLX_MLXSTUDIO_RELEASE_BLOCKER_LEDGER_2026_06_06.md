@@ -111,3 +111,13 @@ Scope: local vMLX Python engine and MLXStudio/panel release path only. No adlab,
 - Resolve MiniMax issue179 reporter provenance or mark release boundary honestly.
 - Refresh missing/open installed-app/public-app audits locally.
 - Only after release manifest prepackage_ready/release_ready passes, build/sign/notarize MLXStudio/vMLX 1.5.56 artifacts.
+
+## 2026-06-06 parser repair update
+
+- Added schema-gated `xml_function` parser repair for MiMo-style output that contains a complete `<function=...><parameter=...></function></tool_call>` block but dropped the opening `<tool_call>` wrapper.
+- This is not fake tool injection: repair only runs when the request tool schema contains the function name. Unknown functions and bare incomplete `<tool_call>` still fail closed.
+- Verification:
+  - `.venv/bin/python -m py_compile vmlx_engine/tool_parsers/xml_function_tool_parser.py tests/test_xml_function_tool_parser.py`
+  - `.venv/bin/python -m pytest -q tests/test_xml_function_tool_parser.py` -> `10 passed`
+  - `.venv/bin/python tests/cross_matrix/run_tool_call_contract.py --out build/current-tool-call-contract-after-xml-function-repair-20260606.json` -> `status=pass`
+- Release boundary unchanged: MiMo live tool protocol, long-prompt coherence/OOM, decode speed, source-vs-quant classification, and real VL/audio/video wiring remain open.

@@ -4777,3 +4777,10 @@ Detailed note: `docs/internal/agent-notes/current-gemma4-12b-release-boundary-an
 - Current manifest source: `build/current-release-regression-manifest-after-noheavy-pointer-refresh-20260606.json`.
 - Current release state remains `status=fail`, `prepackage_ready=false`, `release_ready=false`.
 - Explicit release blockers remain MiMo V2.5 JANG_2L runtime quality and MiniMax issue179 reporter/root-cause provenance; installed/public app audits and live UI/tool/smoke rows are also open/non-pass.
+
+## 2026-06-06 - XML function parser repair for MiMo degraded wrapper shape
+
+- Patched `vmlx_engine/tool_parsers/xml_function_tool_parser.py` to repair a complete MiMo-style `<function=...>` block that dropped only the opening `<tool_call>` wrapper, schema-gated by request tool names.
+- Added focused tests in `tests/test_xml_function_tool_parser.py` for repaired allowed function, rejected unknown function, and bare `<tool_call>` fail-closed.
+- Verification passed: py_compile, focused parser pytest (`10 passed`), and `run_tool_call_contract.py` (`status=pass`).
+- Boundary: this is a local parser robustness fix only; MiMo runtime quality and release clearance remain open.

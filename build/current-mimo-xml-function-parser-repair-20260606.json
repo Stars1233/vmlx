@@ -1,0 +1,20 @@
+{
+  "schema": "vmlx.mimo_xml_function_parser_repair.v1",
+  "created_at": "2026-06-06T21:10:00Z",
+  "status": "pass",
+  "classification": "local_parser_robustness_fix_not_mimo_release_clearance",
+  "fixed_path": "vmlx_engine/tool_parsers/xml_function_tool_parser.py",
+  "tests": {
+    "py_compile": "pass",
+    "focused_pytest": "tests/test_xml_function_tool_parser.py: 10 passed",
+    "tool_call_contract": "build/current-tool-call-contract-after-xml-function-repair-20260606.json status=pass"
+  },
+  "behavior": {
+    "repairs": "Complete MiMo XML function blocks that dropped the opening <tool_call> wrapper, only when the request schema allows the function name.",
+    "fails_closed": [
+      "bare incomplete <tool_call>",
+      "unknown function names not present in request tools"
+    ]
+  },
+  "release_boundary": "This does not clear MiMo runtime quality. Live MiMo tool protocol, long prompt coherence/OOM, speed, source-vs-quant classification, and real media wiring remain open."
+}
