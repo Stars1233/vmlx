@@ -445,7 +445,7 @@ Still needed:
 
 ### Step / Step3p7
 
-Current status: `[!]` Text-only stable for CRACK view; unsupported VLM route crash class open.
+Current status: `[~]` Text-only CRACK view is stable, Step3p7 VLM/source-runtime registration and crash-falsification contracts pass, but full live Step3.7 VLM media proof remains open.
 
 Proofs present from review:
 
@@ -455,8 +455,8 @@ Proofs present from review:
 
 Still needed:
 
-- [ ] Implement vMLX unsupported Step3p7 VLM guard.
-- [ ] Reproduce on local vMLX 1.5.56/HEAD.
+- [x] Current source Step3p7 MLLM detection/source-runtime/crash-falsification contracts passed on 2026-06-06: `tests/test_step3p7_mllm_detection_guard.py`, `tests/test_step37_crash_falsification_contract.py`, and `tests/test_step37_vlm_runtime_audit.py` -> `14 passed`.
+- [~] Reproduce on local vMLX HEAD: no-heavy guard/falsification contracts pass; full live Step3.7 media request proof remains open.
 - [ ] Test Step 3.7 Flash JANG_2L non-CRACK and CRACK metadata variants.
 - [ ] Tool dialect leak tests.
 - [ ] Tool-loop eval rows.
