@@ -16,6 +16,8 @@ Active worktree: `/Users/eric/mlx/vllm-mlx-finite-launch-guard`.
   - `build/current-mimo-v2-jang2l-simple-conservative-cacheprompt-probe-20260606.json`
   - `build/current-mimo-v2-jang2l-mllm-conservative-probe-20260606.json`
 - Rendered prompt comparison: `build/current-mimo-v2-jang2l-rendered-prompt-compare-20260606.json` proves the failing separate-system prompt renders as valid ChatML and ends with the same `<|im_start|>assistant\n<think></think>` generation prefix as working prompts.
+- Direct first-token proof: `build/current-mimo-v2-jang2l-first-token-probe-registered-20260606.json` imports `jang_tools.mimo_v2.mlx_register`, loads through the registered runtime, and shows the failing separate-system prompt ranks `<|im_end|>` first while the working folded-user and short-system prompts rank `ACK` first.
+- Active audit: `build/current-mimo-v2-jang2l-current-audit-after-first-token-stop-20260606.json`; stale HF MiMo module cache was deleted and the audit now has `stale_local_state_absent=true`.
 - A source patch normalized MiMo text-only MLLM rich content lists to plain processor strings and focused tests passed, but the live MLLM failure persisted. Treat that as a partial adapter correctness patch, not the root-cause fix.
 - Max2 docs confirm this JANG_2L Python bundle was historically coherent but slow (`~1.97-2.64 tok/s` canonical cached generation). The current artifact is not `40+ tok/s` proven; speed target needs a different quant/kernel/speculative/runtime path plus full quality proof.
 - Trackers updated:

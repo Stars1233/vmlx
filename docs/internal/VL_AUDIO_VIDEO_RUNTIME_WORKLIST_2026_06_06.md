@@ -273,10 +273,12 @@ Fresh local evidence:
   - `normal_chat_short`: coherent one-sentence answer, `19` completion tokens in `11.526s`, about `1.65 tok/s`.
   - `speed_120_words`: timed out at `90s`.
 - `build/current-mimo-v2-jang2l-rendered-prompt-compare-20260606.json` shows the failing separate-system prompt renders as valid ChatML and ends with the same generation prefix as the working prompts: `<|im_start|>assistant\n<think></think>`. Token counts: failing `long_cache_system_exact=60`, working folded-user `long_cache_no_system_exact=66`, working `short_system_exact=23`.
+- `build/current-mimo-v2-jang2l-first-token-probe-registered-20260606.json` registers `jang_tools.mimo_v2.mlx_register` and probes direct first-token logits. The failing separate-system prompt ranks `<|im_end|>` first (`token_id=151645`, logprob `-0.8347`) and `ACK` fourth. The folded-user and short-system prompts rank `ACK` first with high confidence.
+- `build/current-mimo-v2-jang2l-current-audit-after-first-token-stop-20260606.json` is the active MiMo audit. It confirms stale MiMo local state is absent after deleting the stale Hugging Face `transformers_modules/MiMo_hyphen_V2_dot_5_hyphen_JANG_2L` cache, while keeping MiMo release open.
 
 Current interpretation:
 
-- The immediate-empty row is triggered by the combination of the model's own first-system-message semantics plus longer exact cache-style user content. The no-system equivalent works, and rendered prompts are valid, so the issue is not just prompt length or malformed ChatML rendering.
+- The immediate-empty row is triggered by the combination of the model's own first-system-message semantics plus longer exact cache-style user content. The no-system equivalent works, rendered prompts are valid, and direct logits show the model selects `<|im_end|>` as the first token, so this is not just prompt length, malformed ChatML rendering, or cache corruption.
 - This cannot be closed by folding system prompts into user prompts as a hidden production behavior. If MiMo system-role handling is model-artifact-sensitive, the artifact metadata/template must be corrected or documented. If the runtime is misapplying the template/defaults, the runtime path must be fixed.
 - Max2 docs confirm the promoted JANG_2L bundle was historically coherent but slow: canonical cached generation was about `1.97 tok/s` on France and `2.64 tok/s` on arithmetic. That means the current Python JANG_2L artifact is not a `40+ tok/s` release candidate. A `40 tok/s` target requires a different quant/kernel/runtime path, not a release note.
 
