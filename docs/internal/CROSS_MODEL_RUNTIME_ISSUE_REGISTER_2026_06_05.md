@@ -12,9 +12,10 @@ Current known release state:
 - `jjang-ai/vmlx` main after 1.5.56: `fa9f455b` includes structured JSON repair and DSV4 completions rail fix.
 - PyPI is not current: PyPI latest remains `1.5.49`; `1.5.56` upload blocked by PyPI trusted-publisher/API-token config.
 - Full cross-family runtime matrix remains open. Do not claim all model families production-cleared.
-- Current regression suite proof: `build/current-regression-suite-after-mimo-scope-removal-20260604.json` is `status=pass` with `failed_steps=[]`, but keeps 16 exact release requirements open. This is not a release-ready signal.
+- Current regression suite proof: `build/current-regression-suite-after-mimo-scope-removal-20260604.json` is `status=pass` with `failed_steps=[]`, but keeps 14 exact release requirements open. This is not a release-ready signal.
 - MiniMax #117/#179 proof boundary: current root-cause audit is `open`, memory-preflight artifact exists and did not launch the huge model, and live Responses cancel/reporter parity proof is still absent. This must stay open; do not classify screenshot/output corruption as model artifact or runtime until reporter parity proof exists.
 - DSV4 default-cache tool loop boundary: `build/current-dsv4-default-cache-tool-loop/result.json` was run live with native prefix+paged+block-disk L2 enabled and `status=review`. Runtime/tool/cache checks pass: DSML tools executed `list_directory -> write_file -> write_file`, final answer was `DONE`, cached tokens were seen with `paged+dsv4`, native cache was `native_composite`, and generic TurboQuant KV stayed off. The remaining review cause is generated code exactness (`THREE.ScScene()` and `THREE.BBoxGeometry()`), so this is tracked under DSV4 code/file-generation quality, not as a default-cache/tool-loop runtime failure.
+- DSV4 rows now proven from the current live default-cache artifact: `DSV4 cache is native SWA+CSA/HCA composite, not generic KV/TurboQuant KV`, `DSV4 can perform multiple tool iterations then final answer`, and `DSV4 default-cache multi-tool agent loop is proven`. Still open: app-launch default wiring, same-process TTFT/latency proof, restart L2 proof, one-tool-after-result proof, and DSV4 exact code/file generation quality.
 
 ## Status Legend
 
