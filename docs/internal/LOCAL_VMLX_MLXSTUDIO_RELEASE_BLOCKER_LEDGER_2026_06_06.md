@@ -269,3 +269,20 @@ Scope: local vMLX Python engine and MLXStudio/panel release path only. No adlab,
   - `sentinel_explicit_system_thinking_true`: failed, empty visible output with `completion_tokens=40`.
 - Classification: the visible `<think>` leak is improved in the SimpleEngine MiMo text-only path, but MiMo remains release-red. Current remaining blockers are exact instruction following, explicit-system visible output, tool protocol, source-vs-quant first divergence, decode speed, cache/L2 matrix, and VL/audio/video runtime wiring.
 - Release boundary unchanged: do not package, sign, notarize, tag, upload, or update downloads from this state.
+
+## 2026-06-06 MiMo SimpleEngine first-token EOS decode policy fix
+
+- Artifact: `build/current-mimo-simple-thinking-off-first-token-eos-live-red-20260606.json`.
+- Extended the SimpleEngine MiMo thinking-off logits policy so the MiMo EOS marker is suppressed only on the first generated token. This targets the proven `failing_system_long` first-token `<|im_end|>` stop without globally disabling natural EOS later in the answer.
+- This is still a runtime decode policy, not prompt folding and not synthetic output. The forbidden workaround remains forbidden: do not fold system prompts into user prompts to hide this bug.
+- Verification:
+  - `.venv/bin/python -m py_compile vmlx_engine/engine/simple.py tests/test_mllm_message_serialization.py` -> pass.
+  - `.venv/bin/python -m pytest -q tests/test_mllm_message_serialization.py -k 'mimo_v2_thinking_false_uses_plain_template_prefix or simple_engine_routes_mimo_text_only_chat_through_language_model or simple_engine_mimo_text_only_generate_suppresses_think_tags or simple_engine_mimo_llm_path_uses_plain_template_prefix or batched_engine_mimo_text_only_uses_plain_template_prefix'` -> `5 passed, 67 deselected`.
+- Live source-server proof on `127.0.0.1:8898`, conservative SimpleEngine/no-continuous-batching/no KV quant:
+  - `exact_ack`: passed short visible answer, returned `ACK-MIMO-742`, no `<think>` tag leak.
+  - `longish_no_think_explicit_system`: improved from empty output to visible output, but still failed instruction following and hit `finish_reason=length`.
+  - `first_token_probe_shape_ack`: improved from first-token stop to starting with `ACK`, but still continued with extra text: `ACKThe user wants...`.
+  - `sentinel_no_explicit_system`: still failed exact instruction following.
+  - `sentinel_explicit_system_thinking_true`: still produced empty visible output.
+- Classification: first-token stop is improved in the conservative SimpleEngine MiMo path. MiMo remains release-red because exact instruction following, long-output coherence, speed, tools, cache/L2, source-vs-quant classification, and VL/audio/video runtime wiring remain open.
+- Release boundary unchanged: do not package, sign, notarize, tag, upload, or update downloads from this state.

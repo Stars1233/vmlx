@@ -1,0 +1,96 @@
+{
+  "status": "partial_fix_live_red",
+  "date": "2026-06-06",
+  "model": "/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L",
+  "served_model": "mimo-v2-jang2l-current",
+  "source_commit_before_changes": "358523a8",
+  "fix": "SimpleEngine MiMo text-only path suppresses native <think>/<\/think> token IDs for enable_thinking=false and suppresses the MiMo EOS marker only on the first generated token to avoid the proven first-token <|im_end|> stop.",
+  "verification": [
+    {
+      "kind": "py_compile",
+      "command": ".venv/bin/python -m py_compile vmlx_engine/engine/simple.py tests/test_mllm_message_serialization.py",
+      "status": "pass"
+    },
+    {
+      "kind": "pytest",
+      "command": ".venv/bin/python -m pytest -q tests/test_mllm_message_serialization.py -k 'mimo_v2_thinking_false_uses_plain_template_prefix or simple_engine_routes_mimo_text_only_chat_through_language_model or simple_engine_mimo_text_only_generate_suppresses_think_tags or simple_engine_mimo_llm_path_uses_plain_template_prefix or batched_engine_mimo_text_only_uses_plain_template_prefix'",
+      "status": "pass",
+      "result": "5 passed, 67 deselected"
+    }
+  ],
+  "live_server": {
+    "command": ".venv/bin/python -m vmlx_engine.cli serve /Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L --host 127.0.0.1 --port 8898 --served-model-name mimo-v2-jang2l-current --max-tokens 64 --max-num-seqs 1 --no-continuous-batching --kv-cache-quantization none --default-enable-thinking false --tool-call-parser xml_function --reasoning-parser think_xml --enable-auto-tool-choice --log-level INFO",
+    "engine_type": "simple",
+    "loaded_as": "mllm_text_only_wrapper",
+    "metal_active_mb_after_load": 106103,
+    "quantization_codec": "affine_quantized_matmul"
+  },
+  "live_rows": [
+    {
+      "name": "exact_ack",
+      "status": 200,
+      "elapsed_s": 26.343,
+      "finish_reason": "stop",
+      "content": "ACK-MIMO-742",
+      "prompt_tokens": 38,
+      "completion_tokens": 7,
+      "has_think_tag": false,
+      "verdict": "pass_short_exact_no_tag_leak"
+    },
+    {
+      "name": "longish_no_think_explicit_system",
+      "status": 200,
+      "elapsed_s": 24.472,
+      "finish_reason": "length",
+      "content": "The user is asking me to \"sentinel a FINAL alpha17 alpha63. This seems no context provided, so I need to interpret the to what any meaning information. The user \"",
+      "prompt_tokens": 38,
+      "completion_tokens": 40,
+      "has_think_tag": false,
+      "verdict": "fail_visible_but_not_instruction_following"
+    },
+    {
+      "name": "sentinel_no_explicit_system",
+      "status": 200,
+      "elapsed_s": 24.971,
+      "finish_reason": "length",
+      "content": "The user is asking me to \"sentinel FINAL alpha17 alpha63\". This seems no clear context or meaning. It could no known reference in any standard domain, language, or system.",
+      "prompt_tokens": 40,
+      "completion_tokens": 40,
+      "has_think_tag": false,
+      "verdict": "fail_instruction_following"
+    },
+    {
+      "name": "sentinel_explicit_system_thinking_true",
+      "status": 200,
+      "elapsed_s": 25.182,
+      "finish_reason": "length",
+      "content": "",
+      "prompt_tokens": 38,
+      "completion_tokens": 40,
+      "has_think_tag": false,
+      "verdict": "fail_empty_visible_output_or_hidden_reasoning_only"
+    },
+    {
+      "name": "first_token_probe_shape_ack",
+      "status": 200,
+      "elapsed_s": 11.414,
+      "finish_reason": "length",
+      "content": "ACKThe user wants me to to outputThe a fixed prefix. and the response",
+      "prompt_tokens": 58,
+      "completion_tokens": 16,
+      "has_think_tag": false,
+      "verdict": "partial_first_token_ack_restored_but_exact_output_still_fails"
+    }
+  ],
+  "remaining_blockers": [
+    "mimo_exact_instruction_following_not_cleared",
+    "mimo_long_output_coherence_not_cleared",
+    "mimo_speed_far_below_40_tok_s",
+    "mimo_tool_protocol_not_retested_or_cleared_after_eos_fix",
+    "mimo_prefix_paged_l2_cache_not_reproved_after_eos_fix",
+    "mimo_vl_audio_video_unwired",
+    "mimo_source_vs_quant_first_divergence_missing"
+  ],
+  "classification": "runtime decode policy improved first-token stop and think-tag leakage, but remaining failures still require source-vs-quant classification or deeper runtime/model fix",
+  "release_boundary": "not_release_ready; do not package/sign/notarize/tag from this state"
+}
