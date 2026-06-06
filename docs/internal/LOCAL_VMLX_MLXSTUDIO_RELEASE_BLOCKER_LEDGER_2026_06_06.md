@@ -198,3 +198,13 @@ Scope: local vMLX Python engine and MLXStudio/panel release path only. No adlab,
 - Explicit `VMLINUX_VLM_IMAGE_PREFILL_BUFFER_GB=8` still preserves the old 8GB cap intentionally.
 - Verification: `.venv/bin/python -m pytest -q tests/test_vl_video_regression.py -k 'vlm_image_prefill_default_single_buffer_guard_scales_on_high_memory or vlm_image_prefill_explicit_single_buffer_guard_preserves_old_limit or vmlx156_simple_mllm_guard_uses_media_expanded_input_ids or simple_mllm_guard'` -> `4 passed`.
 - Release boundary: this proves the source guard policy, not installed-app parity or full Gemma 4 VL quality. A signed/notarized app must be rebuilt from current source for affected users to stop seeing old fixed-8GB behavior.
+
+## 2026-06-06 Step3.7 advertised VLM text-only routing proof
+
+- Artifact: `build/current-step37-advertised-vlm-text-only-routing-proof-20260606.json`.
+- Current source behavior: Step3p7 bundles that advertise VLM through `vision_config` and/or `jang_config.architecture.has_vision=true` route text-only by default to avoid unsupported MLLM crashes.
+- `force_mllm=True` is also overridden for this unsafe Step3p7 advertised-VLM path.
+- Verification:
+  - `.venv/bin/python -m pytest -q tests/test_step3p7_mllm_detection_guard.py tests/test_step37_vlm_runtime_audit.py` -> `10 passed`.
+  - `.venv/bin/python -m pytest -q tests/test_engine_audit.py -k 'step3p7 and mllm'` -> `1 passed`.
+- Release boundary: source text-runtime guard is covered; real Step3.7 image/video VLM runtime and installed-app parity are not release-cleared.

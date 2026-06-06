@@ -1,0 +1,36 @@
+{
+  "created_at": "2026-06-06T22:30:00Z",
+  "scope": "local vMLX Python engine source",
+  "family": "step3p7 / Step 3.7 Flash JANG",
+  "status": "pass",
+  "reported_failure": "Step-3.7 JANG metadata with vision_config and jang_config.architecture.has_vision=true can route into unsupported MLLM/VLM path and crash mid-request",
+  "source_behavior": {
+    "advertised_vlm_metadata_routes_text_only": true,
+    "force_mllm_overridden_for_step3p7_advertised_vlm": true,
+    "explicit_jang_has_vision_false_routes_text_only": true,
+    "detection_function": "vmlx_engine.api.utils.is_mllm_model",
+    "guard_function": "vmlx_engine.api.utils._is_step3p7_advertised_vlm_path"
+  },
+  "verification": [
+    {
+      "command": ".venv/bin/python -m pytest -q tests/test_step3p7_mllm_detection_guard.py tests/test_step37_vlm_runtime_audit.py",
+      "status": "pass",
+      "result": "10 passed"
+    },
+    {
+      "command": ".venv/bin/python -m pytest -q tests/test_engine_audit.py -k 'step3p7 and mllm'",
+      "status": "pass",
+      "result": "1 passed"
+    }
+  ],
+  "release_boundary": {
+    "step37_text_runtime_guard_cleared_in_source": true,
+    "step37_vlm_runtime_release_cleared": false,
+    "installed_app_cleared": false,
+    "notes": [
+      "source avoids unsupported Step3p7 VLM auto-routing by default",
+      "real Step3p7 image/video VLM runtime still requires separate full runtime proof",
+      "installed app must be rebuilt from current source before stale apps stop routing incorrectly"
+    ]
+  }
+}
