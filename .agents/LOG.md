@@ -4668,3 +4668,15 @@ Detailed note: `docs/internal/agent-notes/current-gemma4-12b-release-boundary-an
 - Positive proof: cache infra active (`mixed_swa_kv_v1`, `mimo_v2_asymmetric_swa`, prefix, paged, L2, TurboQuant q4 storage-boundary), recall passed, reasoning passed.
 - Blockers preserved: exact cache output empty/rambling, required OpenAI tool call missing, speed still not release-grade, VL/audio/video bridge still unbuilt.
 - Refreshed objective digest: `build/current-objective-proof-after-mimo-harness-tool-tighten-20260606.json` keeps MiMo open.
+
+# 2026-06-06 ZAYA1-VL capability truth and package parity refresh
+
+- Stayed in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; deprecated `/Users/eric/vmlx` was not used.
+- Fixed stale ZAYA1-VL reasoning exposure: current plain-template ZAYA1-VL bundles now resolve as non-reasoning in runtime, smoke harness, panel registry, session launch comments, contracts, and release-facing docs.
+- Live ZAYA1-VL MXFP4 proof passes at `build/current-all-local-model-smoke-zaya-vl-mxfp4-after-thinking-capability-truth-20260606/summary.json`; VL/tools/typed CCA cache remain enabled, reasoning is not advertised.
+- Refreshed current no-heavy contracts and objective proof. `build/current-objective-proof-after-zaya-vl-thinking-capability-truth-20260606.json` keeps exactly five release blockers open.
+- Rebuilt bundled Python from source plus local `/Users/eric/jang/jang-tools`; bundled verifier passes current vMLX, JANG tools, TurboQuant kernels, VL/audio imports, Step3p7 VLM registration, and Gemma4 unified registration.
+- Rebuilt the signed sequoia staged app at `panel/release/sequoia-app/mac-arm64/vMLX.app`; notarization was skipped by builder because notarize options were not generated.
+- Packaged integrity now passes: `build/current-packaged-integrity-contract-after-zaya-vl-thinking-capability-truth-20260606.json`.
+- Current suite now fails only on release readiness: `build/current-regression-suite-after-zaya-vl-thinking-capability-truth-20260606.json` -> `status=open`, failed step `release_regression_manifest`.
+- No release tag, notarized DMG, public download, updater manifest, `mlx.studio`, or `vmlx.net` update was performed. Release notes must credit GitHub `@Hornsan1`.

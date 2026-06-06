@@ -143,7 +143,7 @@ Non-generic explicit chat settings are preserved.
 
 Session startup does not pass server-level `enable_thinking`. The engine resolves model defaults, and explicit chat/API requests carry `enable_thinking` only for that request.
 
-ZAYA/ZAYA1-VL explicit reasoning-on now opens a qwen3 `<think>` rail when the VLM processor template is plain and the registry declares qwen3 reasoning support. Auto/off behavior remains request-dependent.
+ZAYA text explicit reasoning-on opens a qwen3 `<think>` rail when the registry declares qwen3 reasoning support. Current ZAYA1-VL uploaded bundles use a plain VLM template and live proof showed hidden-only output, so runtime and panel capability resolution suppress ZAYA1-VL reasoning until the model upload ships a real VLM thinking template and passes live visible-output proof.
 
 ## Parser Fix
 

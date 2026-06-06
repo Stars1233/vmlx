@@ -1059,3 +1059,32 @@ Classification:
 - `decode_loop` or `model_artifact` remains unresolved for MiMo text quality, tool protocol, and speed.
 - `runtime_dispatch` remains open for MiMo VL/audio/video because the available JANG tools MiMo module is text-only.
 - This is not a cache release-clearance and not a media release-clearance.
+
+## 2026-06-06 ZAYA1-VL plain-template reasoning overclaim
+
+Classification:
+
+- `model_artifact_metadata`: uploaded ZAYA1-VL bundle metadata can declare `supports_thinking=true` / `reasoning_parser=qwen3`.
+- `runtime_capability_truth`: current vMLX must not expose reasoning for those bundles because the VLM template has no thinking control and live reasoning-on proof produced hidden-only output.
+- `runtime_dispatch`: ZAYA1-VL text/vision/tool/cache paths are now proven for MXFP4 after demotion.
+
+What changed:
+
+- Runtime and panel now keep ZAYA1-VL multimodal and typed CCA cache policy while suppressing reasoning parser exposure.
+- All-local smoke classification checks the bundle template for thinking controls before scheduling ZAYA1-VL reasoning probes.
+- Family-detection contracts now require `zaya1_vl_jangtq_profiles_no_reasoning_capability_truth`, not stale qwen3 reasoning rails.
+- Release docs/changelog were corrected so we do not publish a false ZAYA1-VL reasoning claim.
+
+Proof artifacts:
+
+- `build/current-all-local-model-smoke-zaya-vl-mxfp4-after-thinking-capability-truth-20260606/summary.json` -> pass.
+- `build/current-model-family-detection-contract-after-mimo-modality-truth-20260606.json` -> pass, `missing_rows=[]`.
+- `build/current-objective-proof-after-zaya-vl-thinking-capability-truth-20260606.json` -> non-live no-heavy gates pass; release remains open on five live/model rows.
+- `build/current-packaged-integrity-contract-after-zaya-vl-thinking-capability-truth-20260606.json` -> pass after rebundling Python and rebuilding the sequoia staged app.
+- `build/current-regression-suite-after-zaya-vl-thinking-capability-truth-20260606.json` -> status open with failed step only `release_regression_manifest`.
+
+Model-upload guidance:
+
+- If ZAYA1-VL is intended to be non-reasoning, publish metadata with `supports_thinking=false` and no `reasoning_parser`.
+- If ZAYA1-VL is intended to support reasoning, publish a real VLM thinking template or equivalent model behavior and provide live visible-output proof before re-enabling the parser in runtime/panel.
+- Do not fake-clear by injecting visible text, coercing hidden reasoning into content, or treating hidden-only output as a valid user response.

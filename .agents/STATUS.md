@@ -292,3 +292,13 @@ Primary note: `docs/internal/agent-notes/current-gemma4-12b-release-boundary-and
 - Red evidence: exact cache repeat produced empty/rambling visible output, and `tool_choice=required` produced no parsed `record_fact` tool call.
 - Objective digest refreshed at `build/current-objective-proof-after-mimo-harness-tool-tighten-20260606.json`; MiMo remains open with `tool_protocol_blocked=true` and `prompt_length_coherence_blocked=true`.
 - No release/tag/notarization/public update was performed.
+
+## CODEX 2026-06-06 ZAYA1-VL capability truth and staged app refresh
+
+- Source patch: ZAYA1-VL now keeps VL/tools/typed CCA cache while suppressing stale reasoning capability for current plain-template bundles; text ZAYA remains `qwen3` reasoning-capable.
+- Live proof: `build/current-all-local-model-smoke-zaya-vl-mxfp4-after-thinking-capability-truth-20260606/summary.json` -> pass, including text cache repeat, `paged+zaya_cca`, multi-turn recall, required tool call, blue/red image checks, and no-media-after-image.
+- No-heavy proof refreshes pass for max-output/context, panel settings, cache architecture, parser registry, generation defaults, native MTP, VL media, model artifact format, and family detection.
+- Packaged proof: rebundled Python from current vMLX source and local `/Users/eric/jang/jang-tools`; rebuilt signed sequoia staged app; `build/current-packaged-integrity-contract-after-zaya-vl-thinking-capability-truth-20260606.json` -> pass.
+- Current suite: `build/current-regression-suite-after-zaya-vl-thinking-capability-truth-20260606.json` -> `status=open`, failed step only `release_regression_manifest`.
+- Remaining release blockers: cross-family live multi-turn smoke, MiMo V2.5 JANG_2L runtime/tool/long-prompt, MiniMax-M2.7-JANGTQ_K reporter parity/root cause, real Electron UI cross-family live model matrix, and DSV4 long-output/code/file-generation.
+- No tag, notarized DMG, public download, updater manifest, `mlx.studio`, or `vmlx.net` update was made. Future release notes must credit GitHub `@Hornsan1`.

@@ -377,3 +377,41 @@ Current classification:
 - `runtime_dispatch`: still open for VL/audio/video because JANG tools MiMo forward is text-only and vMLX has no release-proven MiMo image/video/audio bridge.
 
 Do not resolve this with fake parser injection, forced text-only metadata, or synthetic tool calls. The next proof must compare source/high-quality MiMo against the JANG_2L artifact and trace where the decoded tokens diverge.
+
+## 2026-06-06 ZAYA1-VL reasoning capability truth and packaged app refresh
+
+Source/runtime change:
+
+- ZAYA text remains reasoning-capable with `qwen3` extraction.
+- Current uploaded ZAYA1-VL MXFP/JANGTQ bundles are treated as vision/tool/cache-capable but not reasoning-capable because the VLM chat template has no thinking control and live proof showed hidden-only output.
+- Runtime, smoke harness, panel family registry, session comments, and release-facing docs now suppress ZAYA1-VL reasoning rather than opening a fake synthetic `<think>` rail.
+- This is not a model-quality fix. It is capability truth. To restore ZAYA1-VL reasoning, the model upload must ship a real VLM thinking template or otherwise produce visible-output proof under reasoning-on.
+
+Live proof:
+
+- `build/current-all-local-model-smoke-zaya-vl-mxfp4-after-thinking-capability-truth-20260606/summary.json` -> pass.
+- Proven lanes: exact text cache repeat, `paged+zaya_cca` cache hit, multi-turn recall, required `record_fact` tool call, blue image, no-media-after-image, repeated blue image, and changed red image.
+- Reported capability truth: `supports_thinking=false`, `reasoning_parser=null`, modalities `[text, vision]`, tool parser `zaya_xml`, native cache `zaya_cca_v1` with prefix, paged cache, and block disk L2.
+
+Packaging proof:
+
+- Rebuilt bundled Python from current source and local `/Users/eric/jang/jang-tools`; bundled verifier passed for vMLX, JANG tools, TurboQuant kernels, Step3p7 VLM registration, Gemma4 unified registration, VL modules, and audio dependencies.
+- Rebuilt the sequoia staged app at `panel/release/sequoia-app/mac-arm64/vMLX.app`; app was Developer ID signed by electron-builder.
+- `build/current-packaged-integrity-contract-after-zaya-vl-thinking-capability-truth-20260606.json` -> pass.
+- `build/current-regression-suite-after-zaya-vl-thinking-capability-truth-20260606.json` -> status open only because release readiness is still blocked by the five live/model requirements.
+
+Still blocked before release:
+
+1. Cross-family live multi-turn smoke matrix is not release-cleared.
+2. MiMo V2.5 JANG_2L runtime/tool/long-prompt quality is not release-cleared.
+3. MiniMax-M2.7-JANGTQ_K reporter parity/root cause is not release-cleared.
+4. Real Electron UI cross-family live model matrix is not release-cleared.
+5. DSV4 long-output/code/file-generation quality is not release-cleared.
+
+Release boundary:
+
+- No release tag was created.
+- No DMG was produced through the gated public `dist` path.
+- No notarization was completed; `electron-builder --dir` explicitly skipped notarization because notarize options were not generated.
+- No `mlx.studio`, `vmlx.net`, updater manifest, or public download was updated.
+- Future release notes must credit GitHub `@Hornsan1` for the reported runtime/media/cache issues.
