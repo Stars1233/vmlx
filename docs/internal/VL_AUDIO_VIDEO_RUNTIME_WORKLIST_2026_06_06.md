@@ -114,7 +114,7 @@ installed-app proof where the product advertises the capability.
 | Nemotron Omni audio/video | Prior source rows exist for text/image/video/audio but are not current release-cleared. | Current source and installed app matrix for text-before/after media, audio/image/video carryover, tools, streaming, and L2. | `unknown_pending_repro`. |
 | ZAYA/ZAYA1-VL media cache | Typed CCA cache contract exists; media routing rows exist in no-heavy contracts. | Live image/video rows proving media salt plus safe CCA/path-dependent restore and post-media recovery. | `kernel_cache` if partial restore fails; otherwise `unknown_pending_repro` until live. |
 | MiniMax / Hy3 / Kimi media advertised variants | Text/tool/cache rows exist for selected bundles; media proof is not current in this slice. | Per-family advertised-modality audit: processor path, special tokens, cache policy, tools after media, installed-app parity. | `unknown_pending_repro`. |
-| Shared structured-output repair | Source utility now exposes post-generation JSON repair diagnostics with `raw_json_ok`, `raw_schema_ok`, `repair_needed`, `repair_actions`, parsed object, and schema validity while preserving the legacy tuple API. | Wire this report into video/catalog benchmark scoring, persist raw-vs-repaired fields, and add retry-on-invalid rows. XML repair remains conservative extraction only. | `decode_loop` for native malformed output; caller-side repair is not guided decoding. |
+| Shared structured-output repair | Source utility now exposes post-generation JSON repair diagnostics with `raw_json_ok`, `raw_schema_ok`, `repair_needed`, `repair_actions`, parsed object, and schema validity while preserving the legacy tuple API. Repo-native adapter `bench/structured_output_repair_report.py` applies it to benchmark/catalog JSONL and writes repaired JSONL plus summary counts. | Wire any external video/catalog runner to call the adapter directly, persist raw-vs-repaired fields in benchmark result artifacts, and add retry-on-invalid rows. XML repair remains conservative extraction only. | `decode_loop` for native malformed output; caller-side repair is not guided decoding. |
 | Release pointer/package parity | Source package pointers now track current 2026-06-06 artifacts and packaged integrity passes on the rebuilt staged app. | Full release still needs the seven live/model blockers closed, then notarized/stapled DMGs, install proof, public update manifest proof, and mlx.studio/vmlx.net download freshness proof. | `gateway_ui` until public release artifacts are current and verified. |
 
 1. MiMo multimodal bridge
@@ -136,7 +136,7 @@ installed-app proof where the product advertises the capability.
 
 4. JSON/XML structured-output repair
 
-- Bench/catalog tooling must consume the shared JSON repair report and store raw-vs-repaired parse status.
+- Bench/catalog tooling must consume the shared JSON repair report and store raw-vs-repaired parse status. A repo-native JSONL adapter exists; external runners still need to call it.
 - vMLX should not claim hard constrained JSON/schema decoding unless a runtime option is implemented and live-proven.
 
 5. Packaged parity
@@ -202,7 +202,7 @@ For each row below, capture full output tails and server logs:
 
 1. Build MiMo media bridge in JANG tools first (`mimo_v2_multimodal.py` or equivalent), then update vMLX registration to use the real media model instead of the text-only compatibility shell.
 2. Prove or falsify MiMo model-artifact quality from the actual Max2 bundle: source-vs-quant long-prompt trace, routed expert parity, tool-argument exactness, and speed target.
-3. Wire shared structured-output repair/validation into the video/catalog benchmark layer and report raw-vs-repaired score separately.
+3. Wire shared structured-output repair/validation into any external video/catalog benchmark layer and report raw-vs-repaired score separately.
 4. Re-run live media matrix for Gemma4 12B/26B, Qwen27/35 MTP, LFM, Step3.7 text-only, MiMo, Nemotron Omni, ZAYA-VL, DSV4, MiniMax, Hy3.
 5. Close cross-family multi-turn and real Electron UI live model matrix rows.
 6. Only after live rows pass: rebuild app, sign, notarize, staple, install, and repeat installed-app proofs before release/tag/public download update.
