@@ -274,3 +274,25 @@ Current proof boundary:
 - Pod1 MiMo TP4 source materialization is still incomplete on rank1: rank0/rank2/rank3 have `108` source files under `/opt/adlab/models/tp4-source/MiMo-V2.5`, while rank1 has `97`.
 
 Classification remains unresolved: MiMo long-prompt/tool/speed failures are still `decode_loop` or `model_artifact` until a real source endpoint runs the comparison rows. Do not replace this with prompt folding, parser fabrication, or cache disabling.
+
+## 2026-06-06 MiMo source launch guard refresh
+
+Fresh artifacts:
+
+```text
+build/current-mimo-v2-jang2l-source-vs-quant-first-divergence-20260606.json
+build/current-mimo-v2-jang2l-quant-exact-ack-after-source-preflight-refresh-20260606.json
+build/current-mimo-v2-jang2l-source-launch-active-worker-guard-20260606.json
+```
+
+Current facts:
+
+- Local quant endpoint `http://127.0.0.1:8897` is healthy and passes three narrow exact `ACK` rows under conservative simple-engine flags.
+- Max2 source bundle exists at `/Volumes/EricsLLMDrive/jangq-ai/sources/MiMo-V2.5`.
+- Pod1 rank-local source bundle indices match across ranks: `72766` keys and `79988899808` total bytes per rank. Rank1 has fewer physical shard files (`81`) than ranks 0/2/3 (`93`), but key-set comparison shows no missing rank1 keys.
+- Source endpoint `http://erics-m5-max2.local:8126` is still down, so source-vs-quant rows have not run.
+- A guarded launch attempt now fails before worker launch with `rc=78` because resident Qwen `TPRankWorker` processes are active on all four ranks. This is intentional after patching the remote AdLab preflight to detect `TPRankWorker` by command-line substring.
+
+Next required action:
+
+- Decide whether to temporarily stop/restart the active Qwen TP4 workers or move MiMo source to a separate Pod. Then launch source on `8126`, run source-vs-quant prompt rows, and classify failures as `source_and_quant_match`, `source_also_fails`, or `quant_diverges_from_source`.

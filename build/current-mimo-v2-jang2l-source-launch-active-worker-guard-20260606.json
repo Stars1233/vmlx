@@ -1,0 +1,56 @@
+{
+  "created_at": "2026-06-06T11:54:13-0700",
+  "quant_endpoint": {
+    "base_url": "http://127.0.0.1:8897",
+    "exact_ack_artifact": "build/current-mimo-v2-jang2l-quant-exact-ack-after-source-preflight-refresh-20260606.json",
+    "health": "pass",
+    "model": "mimo-v2-jang2l"
+  },
+  "rank_bundle_keyset_check": {
+    "key_sets_match_rank0": true,
+    "note": "Rank1 has fewer physical shard files, but index key set and total_size match other ranks; do not treat file count alone as missing keys.",
+    "rank_shard_counts": {
+      "rank0": 93,
+      "rank1": 81,
+      "rank2": 93,
+      "rank3": 93
+    },
+    "status": "pass",
+    "total_size_bytes_per_rank": 79988899808,
+    "weights_per_rank": 72766
+  },
+  "rank_model_paths": [
+    "/opt/adlab/models/tp4-source/MiMo-V2.5/rank0",
+    "/opt/adlab/models/tp4-source/MiMo-V2.5/rank1",
+    "/opt/adlab/models/tp4-source/MiMo-V2.5/rank2",
+    "/opt/adlab/models/tp4-source/MiMo-V2.5/rank3"
+  ],
+  "release_boundary": "This does not clear MiMo. It proves quant side is currently healthy for narrow ACK probes and source launch is blocked until resident Qwen TP workers are intentionally stopped/replaced or a separate Pod is used.",
+  "remote_adlab_patch": {
+    "change": "preflight now treats any command containing TPRankWorker as an active TP worker, preventing silent stacked launches over Qwen workers",
+    "file": "~/adlab/scripts/adlab-tp4-resident-serve-launch.sh",
+    "status": "applied_uncommitted_on_erics_m5_max2",
+    "syntax_check": "bash -n passed"
+  },
+  "run_id": "codex-mimo-v25-source-8126-activeworker-guard-20260606T185153Z",
+  "source_base_url": "http://erics-m5-max2.local:8126",
+  "source_launch_attempt": {
+    "active_worker_rss_kib": {
+      "rank0": 25675232,
+      "rank1": 25651168,
+      "rank2": 25669584,
+      "rank3": 25676816
+    },
+    "logs": [
+      "/opt/adlab/logs/qwen36-tp4-resident-codex-mimo-v25-source-8126-activeworker-guard-20260606T185153Z-preflight-r0-M5M128GODE1sMBP.log",
+      "/opt/adlab/logs/qwen36-tp4-resident-codex-mimo-v25-source-8126-activeworker-guard-20260606T185153Z-preflight-r1-mac-apt-02.log",
+      "/opt/adlab/logs/qwen36-tp4-resident-codex-mimo-v25-source-8126-activeworker-guard-20260606T185153Z-preflight-r2-M5M128GBNODE3.log",
+      "/opt/adlab/logs/qwen36-tp4-resident-codex-mimo-v25-source-8126-activeworker-guard-20260606T185153Z-preflight-r3-M5M128GBNODE4.log"
+    ],
+    "reason": "active resident TPRankWorker processes already occupy all four Pod1 ranks",
+    "returncode": 78,
+    "status": "preflight_failed_safely"
+  },
+  "source_model_path": "/Volumes/EricsLLMDrive/jangq-ai/sources/MiMo-V2.5",
+  "status": "blocked_by_active_tp_workers"
+}

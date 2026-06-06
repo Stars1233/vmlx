@@ -25,15 +25,12 @@
           },
           "reason": null
         },
-        "engine_type": "batched",
-        "kv_cache_quantization": {
-          "enabled": false
-        },
-        "last_request_time": null,
+        "engine_type": "simple",
+        "last_request_time": 1780771570.243166,
         "mcp": null,
         "memory": {
-          "active_mb": 106103.0,
-          "cache_mb": 2176.0,
+          "active_mb": 106810.1,
+          "cache_mb": 0.0,
           "peak_mb": 108279.0
         },
         "model_loaded": true,
@@ -68,32 +65,6 @@
           "status": "not_configured",
           "vision_tensor_count": 364,
           "vl_runtime_available": false
-        },
-        "native_cache": {
-          "block_disk_l2": false,
-          "cache_subtype": "mimo_v2_asymmetric_swa",
-          "cache_type": "mixed_swa_kv",
-          "components": [
-            "full_attention_kv",
-            "sliding_window_kv",
-            "rotating_window_metadata"
-          ],
-          "family": "mimo_v2",
-          "generic_turboquant_kv": {
-            "enabled": false,
-            "reason": "not_active"
-          },
-          "paged": false,
-          "prefix": false,
-          "schema": "mixed_swa_kv_v1",
-          "storage_quantization": {
-            "applies_to": "full_and_sliding_attention_kv",
-            "bits": null,
-            "enabled": false,
-            "group_size": null,
-            "metadata_policy": "preserve_rotating_window_metadata",
-            "mode": "storage_boundary"
-          }
         },
         "quantization": {
           "codec": "affine_quantized_matmul",
@@ -140,32 +111,13 @@
           "trained_active_experts": 8,
           "trained_active_experts_source": "config.num_experts_per_tok"
         },
-        "scheduler": {
-          "batch_generator": {},
-          "cache_hit_requests": 0,
-          "cache_hit_tokens": 0,
-          "cache_hit_tokens_by_detail": {},
-          "cache_reuse_partial_downgrades": 0,
-          "cache_reuse_partial_tokens": 0,
-          "cache_reuse_skip_tokens": 0,
-          "cache_reuse_skips": 0,
-          "engine_path": null,
-          "ewma_ttft_seconds": 0,
-          "hybrid_kv_without_ssm_hits": 0,
-          "hybrid_kv_without_ssm_tokens": 0,
-          "last_cache_execution": null,
-          "last_cache_reuse_partial": null,
-          "last_cache_reuse_skip": null,
-          "last_cache_selection": null,
-          "last_hybrid_kv_without_ssm": null,
-          "num_running": 0,
-          "num_waiting": 0,
-          "single_active_decode": false
-        },
         "speculative_decoding": "not_configured",
         "status": "healthy",
         "turboquant_kv_cache": {
-          "enabled": false
+          "critical_bits": 4,
+          "critical_layers": "first 3 + last 3",
+          "default_bits": 3,
+          "enabled": true
         }
       },
       "health_http_status": 200,
