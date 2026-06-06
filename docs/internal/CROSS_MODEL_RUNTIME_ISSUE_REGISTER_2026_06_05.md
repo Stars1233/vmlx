@@ -930,7 +930,7 @@ MiMo classification:
 
 - Current source no longer shows the old MiMo cache-head shape crash. The optimized run loaded MiMo as MLLM, exposed `mimo_v2/mixed_swa_kv_v1` with `mimo_v2_asymmetric_swa`, paged prefix cache, block-disk L2, and TurboQuant/storage quantization telemetry.
 - MiMo remains release-red: first exact-cache request produced empty visible output and cached repeat hit `cached_tokens=54` / `cache_detail=paged` but rambled instead of exact `ACK`.
-- Follow-up source fix for the MiMo XML-function prompt/parser contract clears the narrow `tool_choice=required` all-local probe: `build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-after-metadata-truth-20260606/summary.json` emits parsed `record_fact({"value":"blue-cat"})`. The same artifact still fails exact-cache prompt-following and runs around `1.78 tok/s`, so MiMo is blocked by output quality and speed, with VL/audio/video still not implemented/cleared.
+- Follow-up source fix for the MiMo XML-function prompt/parser contract clears the narrow `tool_choice=required` all-local probe: `build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-after-stop-token-cache-fix-20260606/summary.json` emits parsed `record_fact({"value":"blue-cat"})`. The same artifact still fails exact-cache prompt-following and runs around `1.78 tok/s`, so MiMo is blocked by output quality and speed, with VL/audio/video still not implemented/cleared.
 
 Proof-pointer refresh:
 
@@ -1306,7 +1306,7 @@ Current classification: local quant is tool-broken independent of CB/q4, but mod
 
 ## 2026-06-06 MiMo audit pointer after native thinking-off proof
 
-- Current MiMo audit artifact: `build/current-mimo-v2-jang2l-current-audit-after-native-thinking-off-20260606.json`.
+- Current MiMo audit artifact: `build/current-mimo-v2-jang2l-current-audit-after-system-fold-cache-proof-20260606.json`.
 - The audit now consumes the native-thinking-off CB proof and no longer reports exact cache prompt following or first-token system stop as current blockers. Those are replaced by the live working-set pressure blocker observed on the third CB system row.
 - Stale local MiMo HF dynamic module cache was removed again; current audit reports stale local state absent.
 - Release remains blocked by MiMo long-prompt coherence, tool protocol, speed, CB working-set pressure, source-vs-quant classification, and unbuilt VL/audio/video runtime.
@@ -1372,3 +1372,11 @@ Current classification: local quant is tool-broken independent of CB/q4, but mod
 - Latest release manifest: `build/current-release-regression-manifest-after-issue179-reporter-hash-refresh-20260606.json`.
 - MiniMax #179 is more specific now: reporter installed `server.py` hash is known from issue comments, but the release blocker stays open until reporter parity and model/session/cancel lifecycle evidence exist.
 - Release remains blocked; no public release or notarization should be performed from this state.
+
+## 2026-06-06 MiMo text/system prompt fold and cache blocker refresh
+
+- vMLX source now folds leading MiMo text-only system/developer instructions into the first user turn in both direct MLLM and continuous-batching renderers. This matches the proven working MiMo prompt shape without touching media turns or other families.
+- Focused unit tests passed for direct MiMo normalization, batched MiMo template rendering, typed unsupported media, and first-token stop-token suppression.
+- Latest live MiMo no-media tool/cache proof: `build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-after-stop-token-cache-fix-20260606/summary.json`.
+- Live result remains `probe_failed`: uncached `ACK`, multi-turn recall, and required tool call pass; cached repeat still returns empty visible output on a paged/L2 cache hit. This keeps MiMo cache/runtime release blocked.
+- MiMo VL/audio/video remains a model/runtime-package gap, not a vMLX flag flip: current installed `jang_tools.mimo_v2.mlx_model` is explicitly text-only and references future `mimo_v2_multimodal.py` for visual/audio towers.

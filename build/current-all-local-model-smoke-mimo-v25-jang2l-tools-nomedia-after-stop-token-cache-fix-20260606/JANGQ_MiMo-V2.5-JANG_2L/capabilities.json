@@ -1,0 +1,186 @@
+{
+  "code": 200,
+  "body": {
+    "id": "mimo-v2.5-jang_2l",
+    "loaded_model": "mimo-v2.5-jang_2l",
+    "model_path": "/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L",
+    "family": "mimo_v2",
+    "compat_warnings": [],
+    "supports_tools": true,
+    "tool_parser": "xml_function",
+    "supports_thinking": true,
+    "reasoning_parser": "think_xml",
+    "think_in_template": false,
+    "supported_modes": [
+      "instruct",
+      "reasoning"
+    ],
+    "experimental_modes": [],
+    "reasoning_efforts": [],
+    "modalities": [
+      "text"
+    ],
+    "media": {
+      "runtime_modalities": [
+        "text"
+      ],
+      "declared_modalities": [
+        "text",
+        "vision",
+        "image",
+        "video",
+        "audio"
+      ],
+      "preserved_modalities": [
+        "vision",
+        "image",
+        "video",
+        "audio"
+      ],
+      "unwired_modalities": [
+        "vision",
+        "image",
+        "video",
+        "audio"
+      ],
+      "status_by_modality": {
+        "audio": "preserved_unwired",
+        "image": "preserved_unwired",
+        "text": "runtime_supported",
+        "video": "preserved_unwired",
+        "vision": "preserved_unwired"
+      }
+    },
+    "cache": {
+      "prefix": true,
+      "type": "paged",
+      "paged": true,
+      "block_disk_l2": true,
+      "dsv4_composite_state": false,
+      "native": {
+        "family": "mimo_v2",
+        "schema": "mixed_swa_kv_v1",
+        "cache_type": "mixed_swa_kv",
+        "cache_subtype": "mimo_v2_asymmetric_swa",
+        "components": [
+          "full_attention_kv",
+          "sliding_window_kv",
+          "rotating_window_metadata"
+        ],
+        "generic_turboquant_kv": {
+          "enabled": true,
+          "reason": "live_tq_kv"
+        },
+        "storage_quantization": {
+          "enabled": true,
+          "mode": "storage_boundary",
+          "bits": 4,
+          "group_size": 64,
+          "applies_to": "full_and_sliding_attention_kv",
+          "metadata_policy": "preserve_rotating_window_metadata"
+        },
+        "prefix": true,
+        "paged": true,
+        "block_disk_l2": true
+      }
+    },
+    "quantization": {
+      "codec": "affine_quantized_matmul",
+      "mxtq_bits_by_role": {
+        "gate_proj": 3,
+        "up_proj": 2,
+        "down_proj": 2
+      },
+      "target_bits": 8,
+      "config_bits": 8,
+      "group_size": 64,
+      "weight_index": {
+        "index_file": "/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L/model.safetensors.index.json",
+        "total_tensors": 109180,
+        "suffix_counts": {
+          "biases": 36147,
+          "scales": 36147,
+          "weight": 36618
+        },
+        "tq_target_counts": {},
+        "routed_layout_counts": {
+          "prestacked_switch": 0,
+          "split_expert": 108288
+        },
+        "mtp_tensor_count": 0
+      },
+      "weight_matmul_dispatch": {
+        "primary": "mlx_affine_quantized_matmul",
+        "uses_mlx_quantized_matmul": true,
+        "metal_na_eligible": true,
+        "reason": null
+      },
+      "sidecar": {
+        "jang_config": false,
+        "jangtq_runtime": false,
+        "prestacked_bundle": false
+      }
+    },
+    "acceleration": {
+      "kernel_type": "affine_quantized_matmul",
+      "metal_na_capable": true,
+      "metal_na_active_on_host": true,
+      "reason": null,
+      "metal_na_symbols": {
+        "available": true,
+        "nax_symbols": 4668,
+        "naxtile_symbols": 4154,
+        "affine_qmm_symbols": 4212,
+        "affine_gather_qmm_symbols": 3456
+      },
+      "host": {
+        "supported": true,
+        "brand": "Apple M5 Max",
+        "reason": null
+      }
+    },
+    "mtp": {
+      "config_num_nextn_predict_layers": null,
+      "config_mtp_layer_source": null,
+      "jang_mtp_layers": null,
+      "jang_drop_mtp": null,
+      "index_has_mtp_tensors": false,
+      "index_mtp_layer_count": null,
+      "mtp_tensor_count": 0,
+      "artifact_available": false,
+      "family": "mimo_v2",
+      "has_vision_config": true,
+      "has_vision_weights": true,
+      "vision_tensor_count": 364,
+      "cache_type": null,
+      "runtime_supported": false,
+      "runtime_available": false,
+      "runtime_active": false,
+      "runtime_validation_blocked": false,
+      "effective_depth": null,
+      "effective_depth_source": null,
+      "runtime_scope": null,
+      "vl_runtime_available": false,
+      "runtime_bundle_has_mtp": null,
+      "runtime_mtp_mode": null,
+      "runtime_reason": "config does not request MTP",
+      "status": "not_configured",
+      "issues": [],
+      "request_policy": "compatible-only",
+      "request_gate": "temperature=0,repetition_penalty=1.0"
+    },
+    "routing": {
+      "trained_active_experts": 8,
+      "trained_active_experts_source": "config.num_experts_per_tok",
+      "n_routed_experts": 256,
+      "override_env": null,
+      "effective_active_experts": 8,
+      "effective_active_experts_source": "trained_default"
+    },
+    "sampling_defaults": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "max_new_tokens": 2048.0
+    }
+  }
+}

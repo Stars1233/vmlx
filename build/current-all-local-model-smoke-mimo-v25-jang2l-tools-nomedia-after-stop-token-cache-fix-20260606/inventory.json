@@ -1,0 +1,45 @@
+{
+  "created_at": "20260606_164305",
+  "models_root": "/Users/eric/.mlxstudio/models",
+  "row_count": 1,
+  "rows": [
+    {
+      "path": "/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L",
+      "served_name": "mimo-v2.5-jang_2l",
+      "name": "MiMo-V2.5-JANG_2L",
+      "relative_path": "/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L",
+      "model_type": "mimo_v2",
+      "is_mllm": true,
+      "supports_video": false,
+      "supports_thinking": true,
+      "supports_tools": true,
+      "has_mtp": false,
+      "cache_family": "mimo_v2_hybrid_swa",
+      "capabilities": {
+        "family": "mimo_v2",
+        "modalities": [
+          "text",
+          "vision",
+          "audio"
+        ],
+        "cache_type": "kv",
+        "attention": {
+          "full": true,
+          "sliding_window": true,
+          "sliding_window_size": 128
+        },
+        "reasoning": {
+          "supported": true,
+          "default": true,
+          "parser": "think_xml"
+        },
+        "tools": {
+          "supported": true,
+          "parser": "xml_function"
+        }
+      },
+      "has_jang_config": false,
+      "namespace": "JANGQ"
+    }
+  ]
+}

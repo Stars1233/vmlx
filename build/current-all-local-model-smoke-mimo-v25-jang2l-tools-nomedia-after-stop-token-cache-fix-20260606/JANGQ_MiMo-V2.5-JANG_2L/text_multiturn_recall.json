@@ -1,0 +1,262 @@
+{
+  "request": {
+    "model": "mimo-v2.5-jang_2l",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Remember color=blue and animal=cat. Reply exactly: noted."
+      },
+      {
+        "role": "assistant",
+        "content": "noted"
+      },
+      {
+        "role": "user",
+        "content": "What color and animal did I ask you to remember? Reply with exactly the remembered color word, a space, then the remembered animal word."
+      }
+    ],
+    "temperature": 0,
+    "max_tokens": 48,
+    "stream": false,
+    "enable_thinking": false
+  },
+  "response": {
+    "id": "chatcmpl-fc210ffa",
+    "object": "chat.completion",
+    "created": 1780789429,
+    "model": "mimo-v2.5-jang_2l",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "blue cat",
+          "tool_calls": null,
+          "reasoning_content": null
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 75,
+      "completion_tokens": 3,
+      "total_tokens": 78,
+      "prompt_tokens_details": null
+    },
+    "warnings": null
+  },
+  "request_record": {
+    "label": "text_multiturn_recall",
+    "code": 200,
+    "elapsed_sec": 2.531861957977526,
+    "content": "blue cat",
+    "content_head": "blue cat",
+    "reasoning_head": "",
+    "reasoning_chars": 0,
+    "tool_calls": [],
+    "usage": {
+      "prompt_tokens": 75,
+      "completion_tokens": 3,
+      "total_tokens": 78,
+      "prompt_tokens_details": null
+    },
+    "cache_stats_code": 200,
+    "cache_summary": {
+      "cache_hit_tokens": 67,
+      "cache_hits": 4,
+      "disk_hits": 6,
+      "hybrid_kv_without_ssm_hits": 0,
+      "hybrid_kv_without_ssm_tokens": 0,
+      "has_cache_hit": true,
+      "mentions_turboquant": true,
+      "mentions_ssm": true,
+      "mentions_media_salt": true,
+      "mentions_rotating": true,
+      "has_hybrid_kv_without_ssm": false
+    },
+    "validation_failures": []
+  },
+  "cache_stats": {
+    "scheduler_cache": {
+      "pixel_cache_hits": 0,
+      "pixel_cache_misses": 0,
+      "pixel_hit_rate": 0.0,
+      "total_time_saved": 0.0,
+      "total_images_processed": 0,
+      "pixel_cache_size": 0,
+      "hits": 1,
+      "misses": 2,
+      "hit_rate": 0.3333333333333333,
+      "tokens_saved": 67,
+      "active_requests": 0,
+      "entries_by_type": {
+        "assistant": 2,
+        "user": 0,
+        "system": 0
+      },
+      "block_size": 64,
+      "max_blocks": 1000,
+      "allocated_blocks": 5,
+      "free_blocks": 995,
+      "shared_blocks": 2,
+      "total_tokens_cached": 141,
+      "utilization": 0.005,
+      "cache_hit_rate": 0.3333333333333333,
+      "cache_hits": 4,
+      "cache_misses": 8,
+      "disk_hits": 0,
+      "disk_misses": 4,
+      "cow_copies": 0,
+      "evictions": 0
+    },
+    "scheduler_stats": {
+      "num_waiting": 0,
+      "num_running": 0,
+      "engine_path": null,
+      "batch_generator": {
+        "prompt_tokens": 154,
+        "prompt_time": 20.667361291009,
+        "prompt_tps": 7.451362456560683,
+        "generation_tokens": 6,
+        "generation_time": 1.7726906249590684,
+        "generation_tps": 3.384685356554272,
+        "vision_encoding_time": 0,
+        "num_images_processed": 0,
+        "peak_memory": 114.499353834,
+        "hybrid_kv_without_ssm_hits": 0,
+        "hybrid_kv_without_ssm_tokens": 0,
+        "last_hybrid_kv_without_ssm": null,
+        "last_cache_execution": {
+          "request_id": "chatcmpl-5bb5415e",
+          "cache_detail": "paged",
+          "cached_tokens": 67,
+          "blocks": 0,
+          "selection": "paged",
+          "disk_hit": false,
+          "reconstructed": true,
+          "dequantized": true,
+          "reconstruction_seconds": 0.017967,
+          "dequantization_seconds": 1e-05,
+          "total_worker_cache_seconds": 0.018147,
+          "reconstruction_ok": true,
+          "dequantization_ok": true
+        },
+        "last_native_mtp": null,
+        "last_prefill_trace": null
+      },
+      "single_active_decode": false,
+      "num_requests_processed": 3,
+      "total_prompt_tokens": 211,
+      "total_completion_tokens": 6,
+      "ewma_ttft_seconds": 0,
+      "cache_hit_requests": 1,
+      "cache_hit_tokens": 67,
+      "cache_hit_tokens_by_detail": {
+        "paged": 67
+      },
+      "hybrid_kv_without_ssm_hits": 0,
+      "hybrid_kv_without_ssm_tokens": 0,
+      "last_hybrid_kv_without_ssm": null,
+      "cache_reuse_skips": 0,
+      "cache_reuse_skip_tokens": 0,
+      "last_cache_reuse_skip": null,
+      "cache_reuse_partial_downgrades": 0,
+      "cache_reuse_partial_tokens": 0,
+      "last_cache_reuse_partial": null,
+      "last_cache_selection": null,
+      "last_cache_execution": {
+        "request_id": "chatcmpl-5bb5415e",
+        "cache_detail": "paged",
+        "cached_tokens": 67,
+        "blocks": 0,
+        "selection": "paged",
+        "disk_hit": false,
+        "reconstructed": true,
+        "dequantized": true,
+        "reconstruction_seconds": 0.017967,
+        "dequantization_seconds": 1e-05,
+        "total_worker_cache_seconds": 0.018147,
+        "reconstruction_ok": true,
+        "dequantization_ok": true
+      }
+    },
+    "kv_cache_quantization": {
+      "enabled": true,
+      "bits": 4,
+      "group_size": 64
+    },
+    "turboquant_kv_cache": {
+      "enabled": true,
+      "default_bits": 3,
+      "critical_bits": 4,
+      "critical_layers": "first 3 + last 3",
+      "batch_api": "turboquant_kv_v1",
+      "single_sequence_only": false,
+      "effective_max_num_seqs": 1,
+      "effective_prefill_batch_size": 512,
+      "effective_completion_batch_size": 256
+    },
+    "native_cache": {
+      "family": "mimo_v2",
+      "schema": "mixed_swa_kv_v1",
+      "cache_type": "mixed_swa_kv",
+      "cache_subtype": "mimo_v2_asymmetric_swa",
+      "components": [
+        "full_attention_kv",
+        "sliding_window_kv",
+        "rotating_window_metadata"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": true,
+        "reason": "live_tq_kv"
+      },
+      "storage_quantization": {
+        "enabled": true,
+        "mode": "storage_boundary",
+        "bits": 4,
+        "group_size": 64,
+        "applies_to": "full_and_sliding_attention_kv",
+        "metadata_policy": "preserve_rotating_window_metadata"
+      },
+      "prefix": true,
+      "paged": true,
+      "block_disk_l2": true
+    },
+    "block_disk_cache": {
+      "blocks_on_disk": 4,
+      "disk_size_bytes": 62846948,
+      "disk_size_gb": 0.059,
+      "total_accesses": 6,
+      "total_tokens_on_disk": 141,
+      "total_cached_tokens": 141,
+      "disk_hits": 6,
+      "disk_misses": 5,
+      "disk_writes": 4,
+      "disk_evictions": 0
+    },
+    "cache_totals": {
+      "ram_tokens_cached": 141,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 141,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 141,
+      "l2_tokens_on_disk_store_sum": 141,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    },
+    "ssm_companion": {
+      "entries": 0,
+      "max_entries": 8,
+      "nbytes": 0,
+      "nbytes_mb": 0.0,
+      "disk_enabled": false,
+      "disk_directory": null
+    },
+    "memory": {
+      "active_mb": 106103.0,
+      "peak_mb": 109195.1,
+      "cache_mb": 41.9
+    }
+  }
+}

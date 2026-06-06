@@ -41,7 +41,7 @@ Scope: local vMLX Python engine and MLXStudio/panel release path only. No adlab,
 ## Explicit release blockers from current manifest
 
 - `mimo_v2_jang2l_runtime_quality_open`: `open`
-  Evidence: `build/current-mimo-jang2l-local-structural-verify-20260606.json,build/current-mimo-jang2l-live-text-cache-smoke-20260606.json,build/current-mimo-v2-jang2l-quantized-switchglu-parity-20260606.json,build/current-mimo-v2-jang2l-direct-length-sweep-20260606.json,build/current-mimo-v2-jang2l-tool-dialect-failure-20260606.json,build/current-mimo-v2-jang2l-current-audit-after-native-thinking-off-20260606.json,build/current-mimo-v25-jang2l-local-metadata-truth-patch-20260606.json,build/current-mimo-v2-jang2l-source-vs-quant-first-divergence-20260606.json,build/current-mimo-batched-thinking-off-decode-policy-source-20260606.json,build/current-mimo-v2-jang2l-cb-cache-after-batched-policy-live-20260606.json,build/current-mimo-v2-jang2l-cb-cache-after-native-thinking-off-live-20260606.json`
+  Evidence: `build/current-mimo-jang2l-local-structural-verify-20260606.json,build/current-mimo-jang2l-live-text-cache-smoke-20260606.json,build/current-mimo-v2-jang2l-quantized-switchglu-parity-20260606.json,build/current-mimo-v2-jang2l-direct-length-sweep-20260606.json,build/current-mimo-v2-jang2l-tool-dialect-failure-20260606.json,build/current-mimo-v2-jang2l-current-audit-after-system-fold-cache-proof-20260606.json,build/current-mimo-v25-jang2l-local-metadata-truth-patch-20260606.json,build/current-mimo-v2-jang2l-source-vs-quant-first-divergence-20260606.json,build/current-mimo-batched-thinking-off-decode-policy-source-20260606.json,build/current-mimo-v2-jang2l-cb-cache-after-batched-policy-live-20260606.json,build/current-mimo-v2-jang2l-cb-cache-after-native-thinking-off-live-20260606.json`
   Next proof: Pass current local MiMo JANG_2L tool protocol/continuation, long/system prompt behavior without working-set rejection, source-vs-quant classification, speed target, and media honesty/API/UI proof before including MiMo in a production release.
 - `issue179_minimax_k_root_cause_audit`: `open`
   Evidence: `build/current-issue179-minimax-k-root-cause-audit-after-reporter-hash-refresh-20260606.json`
@@ -83,7 +83,7 @@ Scope: local vMLX Python engine and MLXStudio/panel release path only. No adlab,
 - Not proven/failed: decode speed below target
 - Not proven/failed: source-vs-quant first divergence missing
 - Not proven/failed: real vision/audio/video forward path not wired/proven
-- Artifact: `build/current-mimo-v2-jang2l-current-audit-after-native-thinking-off-20260606.json`
+- Artifact: `build/current-mimo-v2-jang2l-current-audit-after-system-fold-cache-proof-20260606.json`
 - Artifact: `build/current-mimo-v2-jang2l-tool-dialect-failure-20260606.json`
 - Artifact: `build/current-mimo-v25-jang2l-local-metadata-truth-patch-20260606.json`
 - Artifact: `build/current-mimo-v25-jang2l-local-sync-image-proof-20260606.json`
@@ -315,7 +315,7 @@ plain-prefix assumption forward as a release contract.
 
 ## 2026-06-06 MiMo current audit after native thinking-off proof
 
-- Artifact: `build/current-mimo-v2-jang2l-current-audit-after-native-thinking-off-20260606.json`.
+- Artifact: `build/current-mimo-v2-jang2l-current-audit-after-system-fold-cache-proof-20260606.json`.
 - Audit pointer update: MiMo current-audit runners and release/objective proof consumers now target the native-thinking-off audit artifact instead of `after-mllm-inputs-embeds-fix`.
 - Cleanup: removed stale `/Users/eric/.cache/huggingface/modules/transformers_modules/MiMo_hyphen_V2_dot_5_hyphen_JANG_2L`; current audit reports `stale_local_state_absent=true`.
 - Newly green in current audit: `exact_cache_prompt_following=true`, `prefix_paged_l2_cache_reproved=true`, `system_prompt_first_token_stop=true`, structural/text-cache/SwitchGLU/cache-vs-nocache/inputs-embeds remain green.
@@ -441,3 +441,12 @@ plain-prefix assumption forward as a release contract.
 - Release manifest refreshed to `build/current-release-regression-manifest-after-issue179-reporter-hash-refresh-20260606.json`.
 - Gate state remains red: cross-family live multi-turn, MiMo V2.5 JANG_2L runtime/tool/long-prompt quality, MiniMax-M2.7-JANGTQ_K reporter parity/root cause, real Electron UI cross-family matrix, and DSV4 long-output/code/file-generation quality remain open.
 - No signing, notarization, release tag, public download update, or installed-app replacement is allowed from this proof state.
+
+## 2026-06-06 MiMo text/system prompt fold and cache blocker refresh
+
+- Source changes: MiMo text-only system/developer instructions are folded into the first user turn in both direct MLLM and continuous-batching renderers.
+- Unit proof: focused MiMo prompt/render/first-token tests passed (`5 passed, 582 deselected`).
+- Live proof: `build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-after-stop-token-cache-fix-20260606/summary.json` remains `fail` with one blocker.
+- Improvement: uncached exact `ACK` now passes; multi-turn recall returns `blue cat`; required OpenAI `record_fact` tool call parses with `{"value":"blue-cat"}`.
+- Still blocked: cached repeat hits paged/L2 cache (`cached_tokens=67`, `cache_detail=paged`) but returns empty visible output after one completion token. Decode speed remains far below release target. MiMo VL/audio/video remains unwired because installed `jang_tools.mimo_v2.mlx_model` is text-only and says multimodal runtime belongs in future `mimo_v2_multimodal.py`.
+- Release classification: runtime partially improved, MiMo not release-cleared, no signing/notarization/release.
