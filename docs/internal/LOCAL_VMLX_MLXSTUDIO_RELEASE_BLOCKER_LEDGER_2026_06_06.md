@@ -330,3 +330,12 @@ plain-prefix assumption forward as a release contract.
 - Release manifest: `build/current-release-regression-manifest-after-mimo-native-thinking-off-audit-20260606.json`.
 - Release manifest status: `current_proof_sweep=fail`, `prepackage_ready=false`, `release_ready=false`.
 - Release action: do not package, sign, notarize, or publish MLXStudio/vMLX from this state.
+
+## 2026-06-06 Qwen 3.6 GatedDelta MTP `gdn_sink` regression proof
+
+- Artifact: `build/current-qwen36-mtp-gdn-sink-source-proof-20260606.json`.
+- Classification: runtime source compatibility issue, not model-download corruption.
+- Source state: current source includes commit `525ccedf Fix Qwen dense MTP gdn_sink propagation`.
+- Focused proof: `py_compile` passed for Qwen MTP patch/test files; focused pytest passed `3 passed, 587 deselected` for dense `gdn_sink` signature/propagation and VL Qwen3.5/3.6 pre-load activation.
+- Covered: dense GatedDeltaNet accepts `gdn_sink`; dense decoder/backbone/text/outer path propagates it; VL Qwen language runtime exposes `n_confirmed` and `gdn_sink` across patched runtime methods.
+- Still not release-cleared: live 27B/35B model-server native-MTP generation, packaged `/Applications/vMLX.app` parity, long multi-turn tool/caching stress, signing, notarization, and public download update.

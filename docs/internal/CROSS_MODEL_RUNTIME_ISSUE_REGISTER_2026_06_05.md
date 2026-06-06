@@ -1316,3 +1316,10 @@ Current classification: local quant is tool-broken independent of CB/q4, but mod
 - Current regression suite artifact: `build/current-regression-suite-after-mimo-native-thinking-off-audit-20260606.json`; status remains `open`.
 - Release manifest artifact: `build/current-release-regression-manifest-after-mimo-native-thinking-off-audit-20260606.json`; `prepackage_ready=false` and `release_ready=false`.
 - This is a hard release blocker state, not a sign/notarize state. MiMo exact short cache prompting improved, but cross-family runtime/UI/model-quality blockers remain open.
+
+## 2026-06-06 Qwen 3.6/3.5 MTP `gdn_sink` regression classification
+
+- User-facing symptom from installed app logs: `_patch_gated_delta_net.<locals>.__call__() got an unexpected keyword argument 'gdn_sink'` while using Qwen MXFP8 35B with MTP.
+- Current source classification: runtime compatibility issue fixed in source by Qwen GatedDelta MTP `gdn_sink` propagation, not evidence of model download corruption.
+- Proof artifact: `build/current-qwen36-mtp-gdn-sink-source-proof-20260606.json`.
+- Release boundary: source proof does not clear installed app or release. Need packaged app parity and live Qwen 27B/35B native-MTP generation before claiming user downloads are fixed.
