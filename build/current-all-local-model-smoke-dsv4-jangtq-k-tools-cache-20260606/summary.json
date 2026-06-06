@@ -1,0 +1,3355 @@
+{
+  "created_at": "20260606_053711",
+  "status": "pass",
+  "completed": 2,
+  "row_count": 2,
+  "failed": 0,
+  "results": [
+    {
+      "row": {
+        "path": "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K",
+        "served_name": "deepseek-v4-flash-jangtq-k",
+        "name": "DeepSeek-V4-Flash-JANGTQ-K",
+        "relative_path": "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K",
+        "model_type": "deepseek_v4",
+        "is_mllm": false,
+        "supports_video": false,
+        "supports_thinking": true,
+        "supports_tools": true,
+        "has_mtp": false,
+        "cache_family": "deepseek_v4_composite",
+        "has_jang_config": true,
+        "namespace": "JANGQ"
+      },
+      "port": 8891,
+      "command": [
+        "/Users/eric/mlx/vllm-mlx-finite-launch-guard/panel/bundled-python/python/bin/python3.12",
+        "-B",
+        "-s",
+        "-m",
+        "vmlx_engine.cli",
+        "serve",
+        "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8891",
+        "--served-model-name",
+        "deepseek-v4-flash-jangtq-k",
+        "--timeout",
+        "240",
+        "--max-num-seqs",
+        "1",
+        "--prefill-batch-size",
+        "512",
+        "--prefill-step-size",
+        "1024",
+        "--completion-batch-size",
+        "256",
+        "--continuous-batching",
+        "--use-paged-cache",
+        "--paged-cache-block-size",
+        "256",
+        "--max-cache-blocks",
+        "1000",
+        "--enable-block-disk-cache",
+        "--block-disk-cache-dir",
+        "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-dsv4-jangtq-k-tools-cache-20260606/JANGQ_DeepSeek-V4-Flash-JANGTQ-K/block_cache",
+        "--block-disk-cache-max-gb",
+        "2",
+        "--ssm-state-cache-mb",
+        "1024",
+        "--max-tokens",
+        "512",
+        "--log-level",
+        "INFO",
+        "--default-enable-thinking",
+        "false",
+        "--dsv4-enable-prefix-cache"
+      ],
+      "server_cwd": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-dsv4-jangtq-k-tools-cache-20260606/JANGQ_DeepSeek-V4-Flash-JANGTQ-K",
+      "started_at": "2026-06-06T05:37:12-0700",
+      "requests": [
+        {
+          "label": "text_cache_repeat_1",
+          "code": 200,
+          "elapsed_sec": 30.04238645802252,
+          "content": "ACK",
+          "content_head": "ACK",
+          "reasoning_head": "",
+          "reasoning_chars": 0,
+          "tool_calls": [],
+          "usage": {
+            "prompt_tokens": 3640,
+            "completion_tokens": 2,
+            "total_tokens": 3642,
+            "prompt_tokens_details": null
+          },
+          "cache_stats_code": 200,
+          "cache_summary": {
+            "cache_hit_tokens": 0,
+            "cache_hits": 0,
+            "disk_hits": 0,
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "has_cache_hit": false,
+            "mentions_turboquant": true,
+            "mentions_ssm": true,
+            "mentions_media_salt": false,
+            "mentions_rotating": true,
+            "has_hybrid_kv_without_ssm": false
+          },
+          "expected_content": "ACK",
+          "validation_failures": []
+        },
+        {
+          "label": "text_cache_repeat_2",
+          "code": 200,
+          "elapsed_sec": 0.20150729198940098,
+          "content": "ACK",
+          "content_head": "ACK",
+          "reasoning_head": "",
+          "reasoning_chars": 0,
+          "tool_calls": [],
+          "usage": {
+            "prompt_tokens": 3640,
+            "completion_tokens": 2,
+            "total_tokens": 3642,
+            "prompt_tokens_details": {
+              "cached_tokens": 3639,
+              "cache_detail": "paged+dsv4"
+            }
+          },
+          "cache_stats_code": 200,
+          "cache_summary": {
+            "cache_hit_tokens": 3639,
+            "cache_hits": 30,
+            "disk_hits": 0,
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "has_cache_hit": true,
+            "mentions_turboquant": true,
+            "mentions_ssm": true,
+            "mentions_media_salt": false,
+            "mentions_rotating": true,
+            "has_hybrid_kv_without_ssm": false
+          },
+          "expected_content": "ACK",
+          "validation_failures": []
+        },
+        {
+          "label": "text_multiturn_recall",
+          "code": 200,
+          "elapsed_sec": 0.5477403749828227,
+          "content": "blue cat",
+          "content_head": "blue cat",
+          "reasoning_head": "",
+          "reasoning_chars": 0,
+          "tool_calls": [],
+          "usage": {
+            "prompt_tokens": 52,
+            "completion_tokens": 3,
+            "total_tokens": 55,
+            "prompt_tokens_details": null
+          },
+          "cache_stats_code": 200,
+          "cache_summary": {
+            "cache_hit_tokens": 3639,
+            "cache_hits": 30,
+            "disk_hits": 0,
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "has_cache_hit": true,
+            "mentions_turboquant": true,
+            "mentions_ssm": true,
+            "mentions_media_salt": false,
+            "mentions_rotating": true,
+            "has_hybrid_kv_without_ssm": false
+          },
+          "validation_failures": []
+        },
+        {
+          "label": "reasoning_on",
+          "code": 200,
+          "elapsed_sec": 3.637666916998569,
+          "content": "FINAL=OK",
+          "content_head": "FINAL=OK",
+          "reasoning_head": "We need to answer with exactly \"FINAL=OK\" after brief thinking. The instruction says \"Think briefly, then answer visibly with exactly: FINAL=OK\". So we just need to output that string. No additional reasoning or explanation. So the response should be just: FINAL=OK",
+          "reasoning_chars": 265,
+          "tool_calls": [],
+          "usage": {
+            "prompt_tokens": 17,
+            "completion_tokens": 66,
+            "total_tokens": 83,
+            "prompt_tokens_details": null
+          },
+          "cache_stats_code": 200,
+          "cache_summary": {
+            "cache_hit_tokens": 3639,
+            "cache_hits": 30,
+            "disk_hits": 0,
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "has_cache_hit": true,
+            "mentions_turboquant": true,
+            "mentions_ssm": true,
+            "mentions_media_salt": false,
+            "mentions_rotating": true,
+            "has_hybrid_kv_without_ssm": false
+          },
+          "validation_failures": []
+        },
+        {
+          "label": "tool_required",
+          "code": 200,
+          "elapsed_sec": 3.4693083750025835,
+          "content": "",
+          "content_head": "",
+          "reasoning_head": "",
+          "reasoning_chars": 0,
+          "tool_calls": [
+            {
+              "id": "call_d86bcc4b",
+              "type": "function",
+              "function": {
+                "name": "record_fact",
+                "arguments": "{\"value\": \"blue-cat\"}"
+              }
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 206,
+            "completion_tokens": 42,
+            "total_tokens": 248
+          },
+          "cache_stats_code": 200,
+          "cache_summary": {
+            "cache_hit_tokens": 3639,
+            "cache_hits": 30,
+            "disk_hits": 0,
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "has_cache_hit": true,
+            "mentions_turboquant": true,
+            "mentions_ssm": true,
+            "mentions_media_salt": false,
+            "mentions_rotating": true,
+            "has_hybrid_kv_without_ssm": false
+          },
+          "validation_failures": []
+        }
+      ],
+      "status": "pass",
+      "health_before": {
+        "status": "healthy",
+        "model_loaded": true,
+        "model_name": "JANGQ/DeepSeek-V4-Flash-JANGTQ-K",
+        "model_type": "llm",
+        "engine_type": "batched",
+        "last_request_time": null,
+        "mcp": null,
+        "memory": {
+          "active_mb": 0.0,
+          "peak_mb": 0.0,
+          "cache_mb": 0.0
+        },
+        "kv_cache_quantization": {
+          "enabled": false
+        },
+        "speculative_decoding": "not_configured",
+        "scheduler": {
+          "num_waiting": 0,
+          "num_running": 0,
+          "engine_path": "none",
+          "batch_generator": {
+            "class": null,
+            "path": "none",
+            "single_active_decode": false,
+            "max_num_seqs": 1
+          },
+          "single_active_decode": false,
+          "ewma_ttft_seconds": 0.0,
+          "cache_hit_requests": 0,
+          "cache_hit_tokens": 0,
+          "cache_hit_tokens_by_detail": {},
+          "hybrid_kv_without_ssm_hits": 0,
+          "hybrid_kv_without_ssm_tokens": 0,
+          "last_hybrid_kv_without_ssm": null,
+          "cache_reuse_skips": 0,
+          "cache_reuse_skip_tokens": 0,
+          "last_cache_reuse_skip": null,
+          "cache_reuse_partial_downgrades": 0,
+          "cache_reuse_partial_tokens": 0,
+          "last_cache_reuse_partial": null,
+          "last_cache_selection": null,
+          "last_cache_execution": null
+        },
+        "cache": {
+          "scheduler_cache": {
+            "hits": 0,
+            "misses": 0,
+            "hit_rate": 0,
+            "tokens_saved": 0,
+            "active_requests": 0,
+            "entries_by_type": {
+              "assistant": 0,
+              "user": 0,
+              "system": 0
+            },
+            "block_size": 256,
+            "max_blocks": 1000,
+            "allocated_blocks": 1,
+            "free_blocks": 999,
+            "shared_blocks": 0,
+            "total_tokens_cached": 0,
+            "utilization": 0.001,
+            "cache_hit_rate": 0,
+            "cache_hits": 0,
+            "cache_misses": 0,
+            "disk_hits": 0,
+            "disk_misses": 0,
+            "cow_copies": 0,
+            "evictions": 0,
+            "engine_path": "none",
+            "batch_generator": {
+              "class": null,
+              "path": "none",
+              "single_active_decode": false,
+              "max_num_seqs": 1
+            }
+          },
+          "block_disk_cache": {
+            "blocks_on_disk": 0,
+            "disk_size_bytes": 0,
+            "disk_size_gb": 0.0,
+            "total_accesses": 0,
+            "total_tokens_on_disk": 0,
+            "total_cached_tokens": 0,
+            "disk_hits": 0,
+            "disk_misses": 0,
+            "disk_writes": 0,
+            "disk_evictions": 0
+          },
+          "totals": {
+            "ram_tokens_cached": 0,
+            "l2_prompt_tokens_on_disk": 0,
+            "l2_block_tokens_on_disk": 0,
+            "l2_ssm_tokens_on_disk": 0,
+            "ssm_tokens_on_disk": 0,
+            "l2_tokens_on_disk": 0,
+            "l2_tokens_on_disk_store_sum": 0,
+            "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+          }
+        },
+        "quantization_format": {
+          "type": "jang",
+          "target_bits": null,
+          "actual_bits": null,
+          "block_size": 64
+        },
+        "quantization": {
+          "codec": "turboquant_codebook",
+          "weight_format": "mxtq",
+          "profile": "JANGTQ_K",
+          "mxtq_bits_by_role": {
+            "routed_expert": 2,
+            "attention": 8,
+            "shared_expert": 8,
+            "compressor": 8,
+            "indexer": 8,
+            "embed_tokens": 8,
+            "lm_head": 8,
+            "norms_router_hc": 16
+          },
+          "routed_expert_bits": 2,
+          "target_bits": 2,
+          "config_bits": 8,
+          "group_size": 32,
+          "routed_layer_bits": {
+            "0": 2,
+            "1": 2,
+            "2": 2,
+            "23": 4,
+            "25": 4,
+            "28": 4,
+            "34": 4,
+            "36": 4
+          },
+          "routed_layer_bits_source": "jang_config.quantization.routed_experts.bit_plan.routed_layer_bits",
+          "weight_index": {
+            "index_file": "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K/model.safetensors.index.json",
+            "total_tensors": 2610,
+            "suffix_counts": {
+              "biases": 512,
+              "scales": 512,
+              "tq_bits": 129,
+              "tq_norms": 129,
+              "tq_packed": 129,
+              "weight": 790
+            },
+            "tq_target_counts": {
+              "routed_expert": 387
+            },
+            "routed_layout_counts": {
+              "prestacked_switch": 387,
+              "split_expert": 0
+            },
+            "mtp_tensor_count": 0,
+            "sample_tq_packed_targets": [
+              "layers.0.mlp.switch_mlp.down_proj",
+              "layers.0.mlp.switch_mlp.gate_proj",
+              "layers.0.mlp.switch_mlp.up_proj",
+              "layers.1.mlp.switch_mlp.down_proj",
+              "layers.1.mlp.switch_mlp.gate_proj",
+              "layers.1.mlp.switch_mlp.up_proj",
+              "layers.10.mlp.switch_mlp.down_proj",
+              "layers.10.mlp.switch_mlp.gate_proj",
+              "layers.10.mlp.switch_mlp.up_proj",
+              "layers.11.mlp.switch_mlp.down_proj",
+              "layers.11.mlp.switch_mlp.gate_proj",
+              "layers.11.mlp.switch_mlp.up_proj"
+            ]
+          },
+          "weight_matmul_dispatch": {
+            "primary": "jang_tools_turboquant_custom_kernels",
+            "uses_mlx_quantized_matmul": false,
+            "metal_na_eligible": false,
+            "reason": "turboquant_codebook_uses_custom_tq_kernels"
+          },
+          "sidecar": {
+            "jang_config": true,
+            "jangtq_runtime": true,
+            "prestacked_bundle": true
+          }
+        },
+        "acceleration": {
+          "kernel_type": "turboquant_codebook",
+          "metal_na_capable": false,
+          "metal_na_active_on_host": false,
+          "reason": "turboquant_custom_kernels_do_not_use_mlx_na",
+          "metal_na_symbols": {
+            "available": true,
+            "nax_symbols": 0,
+            "naxtile_symbols": 0,
+            "affine_qmm_symbols": 2592,
+            "affine_gather_qmm_symbols": 1620
+          },
+          "host": {
+            "supported": true,
+            "brand": "Apple M5 Max",
+            "reason": null
+          },
+          "jangtq_acceleration": {
+            "mode": "off",
+            "requested": false,
+            "available": false,
+            "active": false,
+            "uses_mlx_quantized_matmul": false,
+            "reason": "disabled"
+          }
+        },
+        "mtp": {
+          "config_num_nextn_predict_layers": 0,
+          "config_mtp_layer_source": "config.num_nextn_predict_layers",
+          "jang_mtp_layers": null,
+          "jang_drop_mtp": true,
+          "index_has_mtp_tensors": false,
+          "index_mtp_layer_count": null,
+          "mtp_tensor_count": 0,
+          "artifact_available": false,
+          "family": "deepseek_v4",
+          "has_vision_config": false,
+          "has_vision_weights": false,
+          "vision_tensor_count": 0,
+          "cache_type": null,
+          "runtime_supported": false,
+          "runtime_available": false,
+          "runtime_active": false,
+          "runtime_validation_blocked": false,
+          "effective_depth": null,
+          "effective_depth_source": null,
+          "runtime_scope": null,
+          "vl_runtime_available": false,
+          "runtime_bundle_has_mtp": null,
+          "runtime_mtp_mode": null,
+          "runtime_reason": "jang_config.drop_mtp=true",
+          "status": "dropped",
+          "issues": [],
+          "request_policy": "compatible-only",
+          "request_gate": "temperature=0,repetition_penalty=1.0"
+        },
+        "routing": {
+          "trained_active_experts": 6,
+          "trained_active_experts_source": "config.num_experts_per_tok",
+          "n_routed_experts": 256,
+          "override_env": null,
+          "effective_active_experts": 6,
+          "effective_active_experts_source": "trained_default"
+        },
+        "turboquant_kv_cache": {
+          "enabled": false
+        },
+        "native_cache": {
+          "family": "deepseek_v4",
+          "schema": "deepseek_v4_v7",
+          "cache_type": "native_composite",
+          "components": [
+            "swa_local",
+            "csa_compressed_pool",
+            "hca_compressed_pool",
+            "incomplete_tail_state"
+          ],
+          "generic_turboquant_kv": {
+            "enabled": false,
+            "reason": "native_dsv4_composite"
+          },
+          "pool_quant": {
+            "enabled": true,
+            "env": "1"
+          },
+          "layer_cache_roles": {
+            "ratio_0": "swa_local_only",
+            "ratio_4": "csa_overlap_compressed_pool_plus_indexer",
+            "ratio_128": "hca_compressed_pool"
+          },
+          "cache_store_policy": {
+            "prompt_boundary_snapshot": "preferred",
+            "post_generation_trim": "disabled_unless_explicit_unsafe_override",
+            "generic_kv_quantization": "forced_off"
+          },
+          "decode_activation_order": [
+            "make_cache_builds_per_layer_swa_or_composite_cache",
+            "prefill_updates_local_swa_and_compressor_indexer_pools",
+            "prompt_boundary_snapshot_or_clean_reprefill_is_stored_for_prefix",
+            "decode_appends_new_tokens_to_live_composite_cache",
+            "cache_hit_restores_full_nested_state_and_refeeds_last_prompt_token"
+          ],
+          "prefix": true,
+          "paged": true,
+          "block_disk_l2": true,
+          "layers": 43,
+          "compress_ratios": [
+            "unknown",
+            "unknown",
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4
+          ],
+          "compress_ratio_counts": {
+            "unknown": 2,
+            "4": 21,
+            "128": 20
+          },
+          "sliding_window": 128
+        }
+      },
+      "capabilities": {
+        "code": 200,
+        "body": {
+          "id": "deepseek-v4-flash-jangtq-k",
+          "loaded_model": "deepseek-v4-flash-jangtq-k",
+          "model_path": "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K",
+          "family": "deepseek_v4",
+          "compat_warnings": [],
+          "supports_tools": true,
+          "tool_parser": "dsml",
+          "supports_thinking": true,
+          "reasoning_parser": "deepseek_r1",
+          "think_in_template": true,
+          "supported_modes": [
+            "instruct",
+            "reasoning"
+          ],
+          "experimental_modes": [],
+          "reasoning_efforts": [
+            "high",
+            "max"
+          ],
+          "modalities": [
+            "text"
+          ],
+          "cache": {
+            "prefix": true,
+            "type": "paged",
+            "paged": true,
+            "block_disk_l2": true,
+            "dsv4_composite_state": true,
+            "native": {
+              "family": "deepseek_v4",
+              "schema": "deepseek_v4_v7",
+              "cache_type": "native_composite",
+              "components": [
+                "swa_local",
+                "csa_compressed_pool",
+                "hca_compressed_pool",
+                "incomplete_tail_state"
+              ],
+              "generic_turboquant_kv": {
+                "enabled": false,
+                "reason": "native_dsv4_composite"
+              },
+              "pool_quant": {
+                "enabled": true,
+                "env": "1"
+              },
+              "layer_cache_roles": {
+                "ratio_0": "swa_local_only",
+                "ratio_4": "csa_overlap_compressed_pool_plus_indexer",
+                "ratio_128": "hca_compressed_pool"
+              },
+              "cache_store_policy": {
+                "prompt_boundary_snapshot": "preferred",
+                "post_generation_trim": "disabled_unless_explicit_unsafe_override",
+                "generic_kv_quantization": "forced_off"
+              },
+              "decode_activation_order": [
+                "make_cache_builds_per_layer_swa_or_composite_cache",
+                "prefill_updates_local_swa_and_compressor_indexer_pools",
+                "prompt_boundary_snapshot_or_clean_reprefill_is_stored_for_prefix",
+                "decode_appends_new_tokens_to_live_composite_cache",
+                "cache_hit_restores_full_nested_state_and_refeeds_last_prompt_token"
+              ],
+              "prefix": true,
+              "paged": true,
+              "block_disk_l2": true,
+              "layers": 43,
+              "compress_ratios": [
+                "unknown",
+                "unknown",
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4
+              ],
+              "compress_ratio_counts": {
+                "unknown": 2,
+                "4": 21,
+                "128": 20
+              },
+              "sliding_window": 128
+            }
+          },
+          "quantization": {
+            "codec": "turboquant_codebook",
+            "weight_format": "mxtq",
+            "profile": "JANGTQ_K",
+            "mxtq_bits_by_role": {
+              "routed_expert": 2,
+              "attention": 8,
+              "shared_expert": 8,
+              "compressor": 8,
+              "indexer": 8,
+              "embed_tokens": 8,
+              "lm_head": 8,
+              "norms_router_hc": 16
+            },
+            "routed_expert_bits": 2,
+            "target_bits": 2,
+            "config_bits": 8,
+            "group_size": 32,
+            "routed_layer_bits": {
+              "0": 2,
+              "1": 2,
+              "2": 2,
+              "23": 4,
+              "25": 4,
+              "28": 4,
+              "34": 4,
+              "36": 4
+            },
+            "routed_layer_bits_source": "jang_config.quantization.routed_experts.bit_plan.routed_layer_bits",
+            "weight_index": {
+              "index_file": "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K/model.safetensors.index.json",
+              "total_tensors": 2610,
+              "suffix_counts": {
+                "biases": 512,
+                "scales": 512,
+                "tq_bits": 129,
+                "tq_norms": 129,
+                "tq_packed": 129,
+                "weight": 790
+              },
+              "tq_target_counts": {
+                "routed_expert": 387
+              },
+              "routed_layout_counts": {
+                "prestacked_switch": 387,
+                "split_expert": 0
+              },
+              "mtp_tensor_count": 0,
+              "sample_tq_packed_targets": [
+                "layers.0.mlp.switch_mlp.down_proj",
+                "layers.0.mlp.switch_mlp.gate_proj",
+                "layers.0.mlp.switch_mlp.up_proj",
+                "layers.1.mlp.switch_mlp.down_proj",
+                "layers.1.mlp.switch_mlp.gate_proj",
+                "layers.1.mlp.switch_mlp.up_proj",
+                "layers.10.mlp.switch_mlp.down_proj",
+                "layers.10.mlp.switch_mlp.gate_proj",
+                "layers.10.mlp.switch_mlp.up_proj",
+                "layers.11.mlp.switch_mlp.down_proj",
+                "layers.11.mlp.switch_mlp.gate_proj",
+                "layers.11.mlp.switch_mlp.up_proj"
+              ]
+            },
+            "weight_matmul_dispatch": {
+              "primary": "jang_tools_turboquant_custom_kernels",
+              "uses_mlx_quantized_matmul": false,
+              "metal_na_eligible": false,
+              "reason": "turboquant_codebook_uses_custom_tq_kernels"
+            },
+            "sidecar": {
+              "jang_config": true,
+              "jangtq_runtime": true,
+              "prestacked_bundle": true
+            }
+          },
+          "acceleration": {
+            "kernel_type": "turboquant_codebook",
+            "metal_na_capable": false,
+            "metal_na_active_on_host": false,
+            "reason": "turboquant_custom_kernels_do_not_use_mlx_na",
+            "metal_na_symbols": {
+              "available": true,
+              "nax_symbols": 0,
+              "naxtile_symbols": 0,
+              "affine_qmm_symbols": 2592,
+              "affine_gather_qmm_symbols": 1620
+            },
+            "host": {
+              "supported": true,
+              "brand": "Apple M5 Max",
+              "reason": null
+            },
+            "jangtq_acceleration": {
+              "mode": "off",
+              "requested": false,
+              "available": false,
+              "active": false,
+              "uses_mlx_quantized_matmul": false,
+              "reason": "disabled"
+            }
+          },
+          "mtp": {
+            "config_num_nextn_predict_layers": 0,
+            "config_mtp_layer_source": "config.num_nextn_predict_layers",
+            "jang_mtp_layers": null,
+            "jang_drop_mtp": true,
+            "index_has_mtp_tensors": false,
+            "index_mtp_layer_count": null,
+            "mtp_tensor_count": 0,
+            "artifact_available": false,
+            "family": "deepseek_v4",
+            "has_vision_config": false,
+            "has_vision_weights": false,
+            "vision_tensor_count": 0,
+            "cache_type": null,
+            "runtime_supported": false,
+            "runtime_available": false,
+            "runtime_active": false,
+            "runtime_validation_blocked": false,
+            "effective_depth": null,
+            "effective_depth_source": null,
+            "runtime_scope": null,
+            "vl_runtime_available": false,
+            "runtime_bundle_has_mtp": null,
+            "runtime_mtp_mode": null,
+            "runtime_reason": "jang_config.drop_mtp=true",
+            "status": "dropped",
+            "issues": [],
+            "request_policy": "compatible-only",
+            "request_gate": "temperature=0,repetition_penalty=1.0"
+          },
+          "routing": {
+            "trained_active_experts": 6,
+            "trained_active_experts_source": "config.num_experts_per_tok",
+            "n_routed_experts": 256,
+            "override_env": null,
+            "effective_active_experts": 6,
+            "effective_active_experts_source": "trained_default"
+          },
+          "sampling_defaults": {
+            "temperature": 0.6,
+            "top_p": 0.95,
+            "max_new_tokens": 4096.0,
+            "repetition_penalty": 1.0,
+            "repetition_penalty_chat": 1.05,
+            "repetition_penalty_thinking": 1.0
+          }
+        }
+      },
+      "cache_before": {
+        "code": 200,
+        "body": {
+          "scheduler_cache": {
+            "hits": 0,
+            "misses": 0,
+            "hit_rate": 0,
+            "tokens_saved": 0,
+            "active_requests": 0,
+            "entries_by_type": {
+              "assistant": 0,
+              "user": 0,
+              "system": 0
+            },
+            "block_size": 256,
+            "max_blocks": 1000,
+            "allocated_blocks": 1,
+            "free_blocks": 999,
+            "shared_blocks": 0,
+            "total_tokens_cached": 0,
+            "utilization": 0.001,
+            "cache_hit_rate": 0,
+            "cache_hits": 0,
+            "cache_misses": 0,
+            "disk_hits": 0,
+            "disk_misses": 0,
+            "cow_copies": 0,
+            "evictions": 0,
+            "engine_path": "none",
+            "batch_generator": {
+              "class": null,
+              "path": "none",
+              "single_active_decode": false,
+              "max_num_seqs": 1
+            }
+          },
+          "scheduler_stats": {
+            "num_waiting": 0,
+            "num_running": 0,
+            "engine_path": "none",
+            "batch_generator": {
+              "class": null,
+              "path": "none",
+              "single_active_decode": false,
+              "max_num_seqs": 1
+            },
+            "single_active_decode": false,
+            "num_requests_processed": 0,
+            "total_prompt_tokens": 0,
+            "total_completion_tokens": 0,
+            "ewma_ttft_seconds": 0.0,
+            "cache_hit_requests": 0,
+            "cache_hit_tokens": 0,
+            "cache_hit_tokens_by_detail": {},
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "last_hybrid_kv_without_ssm": null,
+            "cache_reuse_skips": 0,
+            "cache_reuse_skip_tokens": 0,
+            "last_cache_reuse_skip": null,
+            "cache_reuse_partial_downgrades": 0,
+            "cache_reuse_partial_tokens": 0,
+            "last_cache_reuse_partial": null,
+            "last_cache_selection": null,
+            "last_cache_execution": null
+          },
+          "kv_cache_quantization": {
+            "enabled": false
+          },
+          "turboquant_kv_cache": {
+            "enabled": false
+          },
+          "native_cache": {
+            "family": "deepseek_v4",
+            "schema": "deepseek_v4_v7",
+            "cache_type": "native_composite",
+            "components": [
+              "swa_local",
+              "csa_compressed_pool",
+              "hca_compressed_pool",
+              "incomplete_tail_state"
+            ],
+            "generic_turboquant_kv": {
+              "enabled": false,
+              "reason": "native_dsv4_composite"
+            },
+            "pool_quant": {
+              "enabled": true,
+              "env": "1"
+            },
+            "layer_cache_roles": {
+              "ratio_0": "swa_local_only",
+              "ratio_4": "csa_overlap_compressed_pool_plus_indexer",
+              "ratio_128": "hca_compressed_pool"
+            },
+            "cache_store_policy": {
+              "prompt_boundary_snapshot": "preferred",
+              "post_generation_trim": "disabled_unless_explicit_unsafe_override",
+              "generic_kv_quantization": "forced_off"
+            },
+            "decode_activation_order": [
+              "make_cache_builds_per_layer_swa_or_composite_cache",
+              "prefill_updates_local_swa_and_compressor_indexer_pools",
+              "prompt_boundary_snapshot_or_clean_reprefill_is_stored_for_prefix",
+              "decode_appends_new_tokens_to_live_composite_cache",
+              "cache_hit_restores_full_nested_state_and_refeeds_last_prompt_token"
+            ],
+            "prefix": true,
+            "paged": true,
+            "block_disk_l2": true,
+            "layers": 43,
+            "compress_ratios": [
+              "unknown",
+              "unknown",
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4
+            ],
+            "compress_ratio_counts": {
+              "unknown": 2,
+              "4": 21,
+              "128": 20
+            },
+            "sliding_window": 128
+          },
+          "block_disk_cache": {
+            "blocks_on_disk": 0,
+            "disk_size_bytes": 0,
+            "disk_size_gb": 0.0,
+            "total_accesses": 0,
+            "total_tokens_on_disk": 0,
+            "total_cached_tokens": 0,
+            "disk_hits": 0,
+            "disk_misses": 0,
+            "disk_writes": 0,
+            "disk_evictions": 0
+          },
+          "cache_totals": {
+            "ram_tokens_cached": 0,
+            "l2_prompt_tokens_on_disk": 0,
+            "l2_block_tokens_on_disk": 0,
+            "l2_ssm_tokens_on_disk": 0,
+            "ssm_tokens_on_disk": 0,
+            "l2_tokens_on_disk": 0,
+            "l2_tokens_on_disk_store_sum": 0,
+            "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+          },
+          "memory": {
+            "active_mb": 0.0,
+            "peak_mb": 0.0,
+            "cache_mb": 0.0
+          }
+        },
+        "summary": {
+          "cache_hit_tokens": 0,
+          "cache_hits": 0,
+          "disk_hits": 0,
+          "hybrid_kv_without_ssm_hits": 0,
+          "hybrid_kv_without_ssm_tokens": 0,
+          "has_cache_hit": false,
+          "mentions_turboquant": true,
+          "mentions_ssm": true,
+          "mentions_media_salt": false,
+          "mentions_rotating": true,
+          "has_hybrid_kv_without_ssm": false
+        }
+      },
+      "probe_options": {
+        "include_media": false,
+        "include_video": false
+      },
+      "health_after": {
+        "code": 200,
+        "body": {
+          "status": "healthy",
+          "model_loaded": true,
+          "model_name": "JANGQ/DeepSeek-V4-Flash-JANGTQ-K",
+          "model_type": "llm",
+          "engine_type": "batched",
+          "last_request_time": 1780749470.837158,
+          "mcp": null,
+          "memory": {
+            "active_mb": 82032.2,
+            "peak_mb": 86990.7,
+            "cache_mb": 0.0
+          },
+          "kv_cache_quantization": {
+            "enabled": false
+          },
+          "speculative_decoding": "not_configured",
+          "scheduler": {
+            "num_waiting": 0,
+            "num_running": 0,
+            "engine_path": "dsv4",
+            "batch_generator": {
+              "class": "DSV4BatchGenerator",
+              "path": "dsv4",
+              "single_active_decode": false,
+              "max_num_seqs": 1
+            },
+            "single_active_decode": false,
+            "ewma_ttft_seconds": 2.142,
+            "cache_hit_requests": 1,
+            "cache_hit_tokens": 3639,
+            "cache_hit_tokens_by_detail": {
+              "paged+dsv4": 3639
+            },
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "last_hybrid_kv_without_ssm": null,
+            "cache_reuse_skips": 0,
+            "cache_reuse_skip_tokens": 0,
+            "last_cache_reuse_skip": null,
+            "cache_reuse_partial_downgrades": 0,
+            "cache_reuse_partial_tokens": 0,
+            "last_cache_reuse_partial": null,
+            "last_cache_selection": {
+              "paged_cached_tokens": 3639,
+              "paged_cold_tokens": 0,
+              "warm_cached_tokens": 0,
+              "hot_advantage_tokens": 3639,
+              "hot_advantage_threshold_tokens": 64,
+              "selected": "paged",
+              "rejected": null,
+              "reason": "no_warm_prefix_alternative"
+            },
+            "last_cache_execution": {
+              "request_id": "chatcmpl-416e0bc7",
+              "cache_detail": "paged+dsv4",
+              "cached_tokens": 3639,
+              "blocks": 15,
+              "selection": {
+                "paged_cached_tokens": 3639,
+                "paged_cold_tokens": 0,
+                "warm_cached_tokens": 0,
+                "hot_advantage_tokens": 3639,
+                "hot_advantage_threshold_tokens": 64,
+                "selected": "paged",
+                "rejected": null,
+                "reason": "no_warm_prefix_alternative"
+              },
+              "reconstructed": true,
+              "dequantized": false,
+              "reconstruction_seconds": 0.014746,
+              "dequantization_seconds": 0.0,
+              "total_worker_cache_seconds": 0.015674,
+              "reconstruction_ok": true
+            }
+          },
+          "cache": {
+            "scheduler_cache": {
+              "hits": 1,
+              "misses": 4,
+              "hit_rate": 0.2,
+              "tokens_saved": 3639,
+              "active_requests": 1,
+              "entries_by_type": {
+                "assistant": 0,
+                "user": 0,
+                "system": 1
+              },
+              "block_size": 256,
+              "max_blocks": 1000,
+              "allocated_blocks": 16,
+              "free_blocks": 984,
+              "shared_blocks": 15,
+              "total_tokens_cached": 3639,
+              "utilization": 0.016,
+              "cache_hit_rate": 0.6382978723404256,
+              "cache_hits": 30,
+              "cache_misses": 17,
+              "disk_hits": 0,
+              "disk_misses": 2,
+              "cow_copies": 0,
+              "evictions": 0,
+              "engine_path": "dsv4",
+              "batch_generator": {
+                "class": "DSV4BatchGenerator",
+                "path": "dsv4",
+                "single_active_decode": false,
+                "max_num_seqs": 1
+              }
+            },
+            "block_disk_cache": {
+              "blocks_on_disk": 15,
+              "disk_size_bytes": 98647516,
+              "disk_size_gb": 0.092,
+              "total_accesses": 0,
+              "total_tokens_on_disk": 3639,
+              "total_cached_tokens": 3639,
+              "disk_hits": 0,
+              "disk_misses": 11,
+              "disk_writes": 15,
+              "disk_evictions": 0
+            },
+            "totals": {
+              "ram_tokens_cached": 3639,
+              "l2_prompt_tokens_on_disk": 0,
+              "l2_block_tokens_on_disk": 3639,
+              "l2_ssm_tokens_on_disk": 0,
+              "ssm_tokens_on_disk": 0,
+              "l2_tokens_on_disk": 3639,
+              "l2_tokens_on_disk_store_sum": 3639,
+              "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+            }
+          },
+          "quantization_format": {
+            "type": "jang",
+            "target_bits": null,
+            "actual_bits": null,
+            "block_size": 64
+          },
+          "quantization": {
+            "codec": "turboquant_codebook",
+            "weight_format": "mxtq",
+            "profile": "JANGTQ_K",
+            "mxtq_bits_by_role": {
+              "routed_expert": 2,
+              "attention": 8,
+              "shared_expert": 8,
+              "compressor": 8,
+              "indexer": 8,
+              "embed_tokens": 8,
+              "lm_head": 8,
+              "norms_router_hc": 16
+            },
+            "routed_expert_bits": 2,
+            "target_bits": 2,
+            "config_bits": 8,
+            "group_size": 32,
+            "routed_layer_bits": {
+              "0": 2,
+              "1": 2,
+              "2": 2,
+              "23": 4,
+              "25": 4,
+              "28": 4,
+              "34": 4,
+              "36": 4
+            },
+            "routed_layer_bits_source": "jang_config.quantization.routed_experts.bit_plan.routed_layer_bits",
+            "weight_index": {
+              "index_file": "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K/model.safetensors.index.json",
+              "total_tensors": 2610,
+              "suffix_counts": {
+                "biases": 512,
+                "scales": 512,
+                "tq_bits": 129,
+                "tq_norms": 129,
+                "tq_packed": 129,
+                "weight": 790
+              },
+              "tq_target_counts": {
+                "routed_expert": 387
+              },
+              "routed_layout_counts": {
+                "prestacked_switch": 387,
+                "split_expert": 0
+              },
+              "mtp_tensor_count": 0,
+              "sample_tq_packed_targets": [
+                "layers.0.mlp.switch_mlp.down_proj",
+                "layers.0.mlp.switch_mlp.gate_proj",
+                "layers.0.mlp.switch_mlp.up_proj",
+                "layers.1.mlp.switch_mlp.down_proj",
+                "layers.1.mlp.switch_mlp.gate_proj",
+                "layers.1.mlp.switch_mlp.up_proj",
+                "layers.10.mlp.switch_mlp.down_proj",
+                "layers.10.mlp.switch_mlp.gate_proj",
+                "layers.10.mlp.switch_mlp.up_proj",
+                "layers.11.mlp.switch_mlp.down_proj",
+                "layers.11.mlp.switch_mlp.gate_proj",
+                "layers.11.mlp.switch_mlp.up_proj"
+              ]
+            },
+            "weight_matmul_dispatch": {
+              "primary": "jang_tools_turboquant_custom_kernels",
+              "uses_mlx_quantized_matmul": false,
+              "metal_na_eligible": false,
+              "reason": "turboquant_codebook_uses_custom_tq_kernels"
+            },
+            "sidecar": {
+              "jang_config": true,
+              "jangtq_runtime": true,
+              "prestacked_bundle": true
+            }
+          },
+          "acceleration": {
+            "kernel_type": "turboquant_codebook",
+            "metal_na_capable": false,
+            "metal_na_active_on_host": false,
+            "reason": "turboquant_custom_kernels_do_not_use_mlx_na",
+            "metal_na_symbols": {
+              "available": true,
+              "nax_symbols": 0,
+              "naxtile_symbols": 0,
+              "affine_qmm_symbols": 2592,
+              "affine_gather_qmm_symbols": 1620
+            },
+            "host": {
+              "supported": true,
+              "brand": "Apple M5 Max",
+              "reason": null
+            },
+            "jangtq_acceleration": {
+              "mode": "off",
+              "requested": false,
+              "available": false,
+              "active": false,
+              "uses_mlx_quantized_matmul": false,
+              "reason": "disabled"
+            }
+          },
+          "mtp": {
+            "config_num_nextn_predict_layers": 0,
+            "config_mtp_layer_source": "config.num_nextn_predict_layers",
+            "jang_mtp_layers": null,
+            "jang_drop_mtp": true,
+            "index_has_mtp_tensors": false,
+            "index_mtp_layer_count": null,
+            "mtp_tensor_count": 0,
+            "artifact_available": false,
+            "family": "deepseek_v4",
+            "has_vision_config": false,
+            "has_vision_weights": false,
+            "vision_tensor_count": 0,
+            "cache_type": null,
+            "runtime_supported": false,
+            "runtime_available": false,
+            "runtime_active": false,
+            "runtime_validation_blocked": false,
+            "effective_depth": null,
+            "effective_depth_source": null,
+            "runtime_scope": null,
+            "vl_runtime_available": false,
+            "runtime_bundle_has_mtp": null,
+            "runtime_mtp_mode": null,
+            "runtime_reason": "jang_config.drop_mtp=true",
+            "status": "dropped",
+            "issues": [],
+            "request_policy": "compatible-only",
+            "request_gate": "temperature=0,repetition_penalty=1.0"
+          },
+          "routing": {
+            "trained_active_experts": 6,
+            "trained_active_experts_source": "config.num_experts_per_tok",
+            "n_routed_experts": 256,
+            "override_env": null,
+            "effective_active_experts": 6,
+            "effective_active_experts_source": "trained_default"
+          },
+          "turboquant_kv_cache": {
+            "enabled": false
+          },
+          "native_cache": {
+            "family": "deepseek_v4",
+            "schema": "deepseek_v4_v7",
+            "cache_type": "native_composite",
+            "components": [
+              "swa_local",
+              "csa_compressed_pool",
+              "hca_compressed_pool",
+              "incomplete_tail_state"
+            ],
+            "generic_turboquant_kv": {
+              "enabled": false,
+              "reason": "native_dsv4_composite"
+            },
+            "pool_quant": {
+              "enabled": true,
+              "env": "1"
+            },
+            "layer_cache_roles": {
+              "ratio_0": "swa_local_only",
+              "ratio_4": "csa_overlap_compressed_pool_plus_indexer",
+              "ratio_128": "hca_compressed_pool"
+            },
+            "cache_store_policy": {
+              "prompt_boundary_snapshot": "preferred",
+              "post_generation_trim": "disabled_unless_explicit_unsafe_override",
+              "generic_kv_quantization": "forced_off"
+            },
+            "decode_activation_order": [
+              "make_cache_builds_per_layer_swa_or_composite_cache",
+              "prefill_updates_local_swa_and_compressor_indexer_pools",
+              "prompt_boundary_snapshot_or_clean_reprefill_is_stored_for_prefix",
+              "decode_appends_new_tokens_to_live_composite_cache",
+              "cache_hit_restores_full_nested_state_and_refeeds_last_prompt_token"
+            ],
+            "prefix": true,
+            "paged": true,
+            "block_disk_l2": true,
+            "layers": 43,
+            "compress_ratios": [
+              "unknown",
+              "unknown",
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4
+            ],
+            "compress_ratio_counts": {
+              "unknown": 2,
+              "4": 21,
+              "128": 20
+            },
+            "sliding_window": 128
+          }
+        }
+      },
+      "cache_after": {
+        "code": 200,
+        "body": {
+          "scheduler_cache": {
+            "hits": 1,
+            "misses": 4,
+            "hit_rate": 0.2,
+            "tokens_saved": 3639,
+            "active_requests": 1,
+            "entries_by_type": {
+              "assistant": 0,
+              "user": 0,
+              "system": 1
+            },
+            "block_size": 256,
+            "max_blocks": 1000,
+            "allocated_blocks": 16,
+            "free_blocks": 984,
+            "shared_blocks": 15,
+            "total_tokens_cached": 3639,
+            "utilization": 0.016,
+            "cache_hit_rate": 0.6382978723404256,
+            "cache_hits": 30,
+            "cache_misses": 17,
+            "disk_hits": 0,
+            "disk_misses": 2,
+            "cow_copies": 0,
+            "evictions": 0,
+            "engine_path": "dsv4",
+            "batch_generator": {
+              "class": "DSV4BatchGenerator",
+              "path": "dsv4",
+              "single_active_decode": false,
+              "max_num_seqs": 1
+            }
+          },
+          "scheduler_stats": {
+            "num_waiting": 0,
+            "num_running": 0,
+            "engine_path": "dsv4",
+            "batch_generator": {
+              "class": "DSV4BatchGenerator",
+              "path": "dsv4",
+              "single_active_decode": false,
+              "max_num_seqs": 1
+            },
+            "single_active_decode": false,
+            "num_requests_processed": 5,
+            "total_prompt_tokens": 7555,
+            "total_completion_tokens": 115,
+            "ewma_ttft_seconds": 2.142,
+            "cache_hit_requests": 1,
+            "cache_hit_tokens": 3639,
+            "cache_hit_tokens_by_detail": {
+              "paged+dsv4": 3639
+            },
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "last_hybrid_kv_without_ssm": null,
+            "cache_reuse_skips": 0,
+            "cache_reuse_skip_tokens": 0,
+            "last_cache_reuse_skip": null,
+            "cache_reuse_partial_downgrades": 0,
+            "cache_reuse_partial_tokens": 0,
+            "last_cache_reuse_partial": null,
+            "last_cache_selection": {
+              "paged_cached_tokens": 3639,
+              "paged_cold_tokens": 0,
+              "warm_cached_tokens": 0,
+              "hot_advantage_tokens": 3639,
+              "hot_advantage_threshold_tokens": 64,
+              "selected": "paged",
+              "rejected": null,
+              "reason": "no_warm_prefix_alternative"
+            },
+            "last_cache_execution": {
+              "request_id": "chatcmpl-416e0bc7",
+              "cache_detail": "paged+dsv4",
+              "cached_tokens": 3639,
+              "blocks": 15,
+              "selection": {
+                "paged_cached_tokens": 3639,
+                "paged_cold_tokens": 0,
+                "warm_cached_tokens": 0,
+                "hot_advantage_tokens": 3639,
+                "hot_advantage_threshold_tokens": 64,
+                "selected": "paged",
+                "rejected": null,
+                "reason": "no_warm_prefix_alternative"
+              },
+              "reconstructed": true,
+              "dequantized": false,
+              "reconstruction_seconds": 0.014746,
+              "dequantization_seconds": 0.0,
+              "total_worker_cache_seconds": 0.015674,
+              "reconstruction_ok": true
+            }
+          },
+          "kv_cache_quantization": {
+            "enabled": false
+          },
+          "turboquant_kv_cache": {
+            "enabled": false
+          },
+          "native_cache": {
+            "family": "deepseek_v4",
+            "schema": "deepseek_v4_v7",
+            "cache_type": "native_composite",
+            "components": [
+              "swa_local",
+              "csa_compressed_pool",
+              "hca_compressed_pool",
+              "incomplete_tail_state"
+            ],
+            "generic_turboquant_kv": {
+              "enabled": false,
+              "reason": "native_dsv4_composite"
+            },
+            "pool_quant": {
+              "enabled": true,
+              "env": "1"
+            },
+            "layer_cache_roles": {
+              "ratio_0": "swa_local_only",
+              "ratio_4": "csa_overlap_compressed_pool_plus_indexer",
+              "ratio_128": "hca_compressed_pool"
+            },
+            "cache_store_policy": {
+              "prompt_boundary_snapshot": "preferred",
+              "post_generation_trim": "disabled_unless_explicit_unsafe_override",
+              "generic_kv_quantization": "forced_off"
+            },
+            "decode_activation_order": [
+              "make_cache_builds_per_layer_swa_or_composite_cache",
+              "prefill_updates_local_swa_and_compressor_indexer_pools",
+              "prompt_boundary_snapshot_or_clean_reprefill_is_stored_for_prefix",
+              "decode_appends_new_tokens_to_live_composite_cache",
+              "cache_hit_restores_full_nested_state_and_refeeds_last_prompt_token"
+            ],
+            "prefix": true,
+            "paged": true,
+            "block_disk_l2": true,
+            "layers": 43,
+            "compress_ratios": [
+              "unknown",
+              "unknown",
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4
+            ],
+            "compress_ratio_counts": {
+              "unknown": 2,
+              "4": 21,
+              "128": 20
+            },
+            "sliding_window": 128
+          },
+          "block_disk_cache": {
+            "blocks_on_disk": 15,
+            "disk_size_bytes": 98647516,
+            "disk_size_gb": 0.092,
+            "total_accesses": 0,
+            "total_tokens_on_disk": 3639,
+            "total_cached_tokens": 3639,
+            "disk_hits": 0,
+            "disk_misses": 11,
+            "disk_writes": 15,
+            "disk_evictions": 0
+          },
+          "cache_totals": {
+            "ram_tokens_cached": 3639,
+            "l2_prompt_tokens_on_disk": 0,
+            "l2_block_tokens_on_disk": 3639,
+            "l2_ssm_tokens_on_disk": 0,
+            "ssm_tokens_on_disk": 0,
+            "l2_tokens_on_disk": 3639,
+            "l2_tokens_on_disk_store_sum": 3639,
+            "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+          },
+          "memory": {
+            "active_mb": 82032.2,
+            "peak_mb": 86990.7,
+            "cache_mb": 0.0
+          }
+        },
+        "summary": {
+          "cache_hit_tokens": 3639,
+          "cache_hits": 30,
+          "disk_hits": 0,
+          "hybrid_kv_without_ssm_hits": 0,
+          "hybrid_kv_without_ssm_tokens": 0,
+          "has_cache_hit": true,
+          "mentions_turboquant": true,
+          "mentions_ssm": true,
+          "mentions_media_salt": false,
+          "mentions_rotating": true,
+          "has_hybrid_kv_without_ssm": false
+        }
+      },
+      "failures": [],
+      "server_log_tail": ":Block disk: queuing write for block 1 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 2 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 3 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 4 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 5 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 6 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 7 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 8 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 9 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 10 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 11 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 12 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 13 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 14 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 15 (2 kv layers, deepseek_v4=41, 55 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: writing 15 blocks to SSD\nINFO:vmlx_engine.scheduler:Stored paged cache for request chatcmpl-7a98eda5 (3639 cache-key tokens from 3640 prompt tokens, 43 layers, cache truncated to 3639 tokens)\nINFO:vmlx_engine.server:Chat completion: 2 tokens in 30.04s (0.1 tok/s)\nINFO:     127.0.0.1:56946 - \"POST /v1/chat/completions HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56949 - \"GET /v1/cache/stats HTTP/1.1\" 200 OK\nINFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K kwargs={'temperature': 0.0, 'top_p': 0.95, 'repetition_penalty': 1.0, 'max_tokens': 48, 'enable_thinking': False}\nINFO:vmlx_engine.prefix_cache:Paged cache hit for chatcmpl-416e0bc7: 15 blocks, 3639 tokens\nINFO:vmlx_engine.scheduler:Request chatcmpl-416e0bc7: paged cache hit, 3639 tokens in 15 blocks, 1 remaining to process (worker reconstruct pending)\nINFO:vmlx_engine.scheduler:DSV4 prefix cache store skipped for cache-hit request chatcmpl-416e0bc7 (cached_tokens=3639, prompt_len=3640): avoiding synchronous full prompt-boundary re-prefill.\nINFO:vmlx_engine.server:Chat completion: 2 tokens in 0.20s (10.0 tok/s)\nINFO:     127.0.0.1:56950 - \"POST /v1/chat/completions HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56951 - \"GET /v1/cache/stats HTTP/1.1\" 200 OK\nINFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K kwargs={'temperature': 0.0, 'top_p': 0.95, 'repetition_penalty': 1.0, 'max_tokens': 48, 'enable_thinking': False}\nINFO:vmlx_engine.scheduler:Request chatcmpl-b3ba7cab: paged cache miss, processing all 52 tokens\nINFO:vmlx_engine.scheduler:DSV4 prefix cache store skipped for request chatcmpl-b3ba7cab: prompt below snapshot/store threshold (cache_key_tokens=51 < 256).\nWARNING:vmlx_engine.scheduler:Cannot produce prompt-only cache for chatcmpl-b3ba7cab, skipping paged cache store\nINFO:vmlx_engine.server:Chat completion: 3 tokens in 0.55s (5.5 tok/s)\nINFO:     127.0.0.1:56952 - \"POST /v1/chat/completions HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56953 - \"GET /v1/cache/stats HTTP/1.1\" 200 OK\nINFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K kwargs={'temperature': 0.0, 'top_p': 0.95, 'repetition_penalty': 1.0, 'max_tokens': 256, 'enable_thinking': True}\nINFO:vmlx_engine.scheduler:Request chatcmpl-35731166: paged cache miss, processing all 17 tokens\nINFO:vmlx_engine.scheduler:DSV4 prefix cache store skipped for request chatcmpl-35731166: prompt below snapshot/store threshold (cache_key_tokens=16 < 256).\nWARNING:vmlx_engine.scheduler:Cannot produce prompt-only cache for chatcmpl-35731166, skipping paged cache store\nINFO:vmlx_engine.server:Chat completion: 66 tokens in 3.64s (18.2 tok/s)\nINFO:     127.0.0.1:56954 - \"POST /v1/chat/completions HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56955 - \"GET /v1/cache/stats HTTP/1.1\" 200 OK\nINFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K kwargs={'temperature': 0.0, 'top_p': 0.95, 'repetition_penalty': 1.0, 'max_tokens': 96, 'enable_thinking': False}\nWARNING:vmlx_engine.api.tool_calling:Chat template needs fallback tool schema injection.\nWARNING:vmlx_engine.api.tool_calling:Chat template needs fallback tool schema injection.\nINFO:vmlx_engine.scheduler:Request chatcmpl-4f75722e: paged cache miss, processing all 206 tokens\nINFO:vmlx_engine.scheduler:DSV4 prefix cache store skipped for request chatcmpl-4f75722e: prompt below snapshot/store threshold (cache_key_tokens=205 < 256).\nWARNING:vmlx_engine.scheduler:Cannot produce prompt-only cache for chatcmpl-4f75722e, skipping paged cache store\nINFO:vmlx_engine.server:Chat completion: 42 tokens in 3.46s (12.1 tok/s)\nINFO:vmlx_engine.loaders.dsv4_chat_encoder:DSV4 encoding loaded from /Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K/encoding/encoding_dsv4.py\nINFO:     127.0.0.1:56956 - \"POST /v1/chat/completions HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56957 - \"GET /v1/cache/stats HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56958 - \"GET /health HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56959 - \"GET /v1/cache/stats HTTP/1.1\" 200 OK\n"
+    },
+    {
+      "row": {
+        "path": "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K-HeadBF16-Probe-20260520",
+        "served_name": "deepseek-v4-flash-jangtq-k-headbf16-probe-20260520",
+        "name": "DeepSeek-V4-Flash-JANGTQ-K-HeadBF16-Probe-20260520",
+        "relative_path": "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K-HeadBF16-Probe-20260520",
+        "model_type": "deepseek_v4",
+        "is_mllm": false,
+        "supports_video": false,
+        "supports_thinking": true,
+        "supports_tools": true,
+        "has_mtp": false,
+        "cache_family": "deepseek_v4_composite",
+        "has_jang_config": true,
+        "namespace": "JANGQ"
+      },
+      "port": 8891,
+      "command": [
+        "/Users/eric/mlx/vllm-mlx-finite-launch-guard/panel/bundled-python/python/bin/python3.12",
+        "-B",
+        "-s",
+        "-m",
+        "vmlx_engine.cli",
+        "serve",
+        "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K-HeadBF16-Probe-20260520",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8891",
+        "--served-model-name",
+        "deepseek-v4-flash-jangtq-k-headbf16-probe-20260520",
+        "--timeout",
+        "240",
+        "--max-num-seqs",
+        "1",
+        "--prefill-batch-size",
+        "512",
+        "--prefill-step-size",
+        "1024",
+        "--completion-batch-size",
+        "256",
+        "--continuous-batching",
+        "--use-paged-cache",
+        "--paged-cache-block-size",
+        "256",
+        "--max-cache-blocks",
+        "1000",
+        "--enable-block-disk-cache",
+        "--block-disk-cache-dir",
+        "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-dsv4-jangtq-k-tools-cache-20260606/JANGQ_DeepSeek-V4-Flash-JANGTQ-K-HeadBF16-Probe-20260520/block_cache",
+        "--block-disk-cache-max-gb",
+        "2",
+        "--ssm-state-cache-mb",
+        "1024",
+        "--max-tokens",
+        "512",
+        "--log-level",
+        "INFO",
+        "--default-enable-thinking",
+        "false",
+        "--dsv4-enable-prefix-cache"
+      ],
+      "server_cwd": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-dsv4-jangtq-k-tools-cache-20260606/JANGQ_DeepSeek-V4-Flash-JANGTQ-K-HeadBF16-Probe-20260520",
+      "started_at": "2026-06-06T05:37:55-0700",
+      "requests": [
+        {
+          "label": "text_cache_repeat_1",
+          "code": 200,
+          "elapsed_sec": 31.44054337500711,
+          "content": "ACK",
+          "content_head": "ACK",
+          "reasoning_head": "",
+          "reasoning_chars": 0,
+          "tool_calls": [],
+          "usage": {
+            "prompt_tokens": 3640,
+            "completion_tokens": 2,
+            "total_tokens": 3642,
+            "prompt_tokens_details": null
+          },
+          "cache_stats_code": 200,
+          "cache_summary": {
+            "cache_hit_tokens": 0,
+            "cache_hits": 0,
+            "disk_hits": 0,
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "has_cache_hit": false,
+            "mentions_turboquant": true,
+            "mentions_ssm": true,
+            "mentions_media_salt": false,
+            "mentions_rotating": true,
+            "has_hybrid_kv_without_ssm": false
+          },
+          "expected_content": "ACK",
+          "validation_failures": []
+        },
+        {
+          "label": "text_cache_repeat_2",
+          "code": 200,
+          "elapsed_sec": 0.1898016669729259,
+          "content": "ACK",
+          "content_head": "ACK",
+          "reasoning_head": "",
+          "reasoning_chars": 0,
+          "tool_calls": [],
+          "usage": {
+            "prompt_tokens": 3640,
+            "completion_tokens": 2,
+            "total_tokens": 3642,
+            "prompt_tokens_details": {
+              "cached_tokens": 3639,
+              "cache_detail": "paged+dsv4"
+            }
+          },
+          "cache_stats_code": 200,
+          "cache_summary": {
+            "cache_hit_tokens": 3639,
+            "cache_hits": 30,
+            "disk_hits": 0,
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "has_cache_hit": true,
+            "mentions_turboquant": true,
+            "mentions_ssm": true,
+            "mentions_media_salt": false,
+            "mentions_rotating": true,
+            "has_hybrid_kv_without_ssm": false
+          },
+          "expected_content": "ACK",
+          "validation_failures": []
+        },
+        {
+          "label": "text_multiturn_recall",
+          "code": 200,
+          "elapsed_sec": 0.5561481250042561,
+          "content": "blue cat",
+          "content_head": "blue cat",
+          "reasoning_head": "",
+          "reasoning_chars": 0,
+          "tool_calls": [],
+          "usage": {
+            "prompt_tokens": 52,
+            "completion_tokens": 3,
+            "total_tokens": 55,
+            "prompt_tokens_details": null
+          },
+          "cache_stats_code": 200,
+          "cache_summary": {
+            "cache_hit_tokens": 3639,
+            "cache_hits": 30,
+            "disk_hits": 0,
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "has_cache_hit": true,
+            "mentions_turboquant": true,
+            "mentions_ssm": true,
+            "mentions_media_salt": false,
+            "mentions_rotating": true,
+            "has_hybrid_kv_without_ssm": false
+          },
+          "validation_failures": []
+        },
+        {
+          "label": "reasoning_on",
+          "code": 200,
+          "elapsed_sec": 4.141899584006751,
+          "content": "FINAL=OK",
+          "content_head": "FINAL=OK",
+          "reasoning_head": "We need to answer with exactly \"FINAL=OK\" after brief thinking. The instruction says \"Think briefly, then answer visibly with exactly: FINAL=OK\". So we just need to output that string. No additional reasoning or explanation. So the response should be: FINAL=OK",
+          "reasoning_chars": 260,
+          "tool_calls": [],
+          "usage": {
+            "prompt_tokens": 17,
+            "completion_tokens": 65,
+            "total_tokens": 82,
+            "prompt_tokens_details": null
+          },
+          "cache_stats_code": 200,
+          "cache_summary": {
+            "cache_hit_tokens": 3639,
+            "cache_hits": 30,
+            "disk_hits": 0,
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "has_cache_hit": true,
+            "mentions_turboquant": true,
+            "mentions_ssm": true,
+            "mentions_media_salt": false,
+            "mentions_rotating": true,
+            "has_hybrid_kv_without_ssm": false
+          },
+          "validation_failures": []
+        },
+        {
+          "label": "tool_required",
+          "code": 200,
+          "elapsed_sec": 4.245625542011112,
+          "content": "",
+          "content_head": "",
+          "reasoning_head": "",
+          "reasoning_chars": 0,
+          "tool_calls": [
+            {
+              "id": "call_41b32e9c",
+              "type": "function",
+              "function": {
+                "name": "record_fact",
+                "arguments": "{\"value\": \"blue-cat\"}"
+              }
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 206,
+            "completion_tokens": 42,
+            "total_tokens": 248
+          },
+          "cache_stats_code": 200,
+          "cache_summary": {
+            "cache_hit_tokens": 3639,
+            "cache_hits": 30,
+            "disk_hits": 0,
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "has_cache_hit": true,
+            "mentions_turboquant": true,
+            "mentions_ssm": true,
+            "mentions_media_salt": false,
+            "mentions_rotating": true,
+            "has_hybrid_kv_without_ssm": false
+          },
+          "validation_failures": []
+        }
+      ],
+      "status": "pass",
+      "health_before": {
+        "status": "healthy",
+        "model_loaded": true,
+        "model_name": "JANGQ/DeepSeek-V4-Flash-JANGTQ-K-HeadBF16-Probe-20260520",
+        "model_type": "llm",
+        "engine_type": "batched",
+        "last_request_time": null,
+        "mcp": null,
+        "memory": {
+          "active_mb": 0.0,
+          "peak_mb": 0.0,
+          "cache_mb": 0.0
+        },
+        "kv_cache_quantization": {
+          "enabled": false
+        },
+        "speculative_decoding": "not_configured",
+        "scheduler": {
+          "num_waiting": 0,
+          "num_running": 0,
+          "engine_path": "none",
+          "batch_generator": {
+            "class": null,
+            "path": "none",
+            "single_active_decode": false,
+            "max_num_seqs": 1
+          },
+          "single_active_decode": false,
+          "ewma_ttft_seconds": 0.0,
+          "cache_hit_requests": 0,
+          "cache_hit_tokens": 0,
+          "cache_hit_tokens_by_detail": {},
+          "hybrid_kv_without_ssm_hits": 0,
+          "hybrid_kv_without_ssm_tokens": 0,
+          "last_hybrid_kv_without_ssm": null,
+          "cache_reuse_skips": 0,
+          "cache_reuse_skip_tokens": 0,
+          "last_cache_reuse_skip": null,
+          "cache_reuse_partial_downgrades": 0,
+          "cache_reuse_partial_tokens": 0,
+          "last_cache_reuse_partial": null,
+          "last_cache_selection": null,
+          "last_cache_execution": null
+        },
+        "cache": {
+          "scheduler_cache": {
+            "hits": 0,
+            "misses": 0,
+            "hit_rate": 0,
+            "tokens_saved": 0,
+            "active_requests": 0,
+            "entries_by_type": {
+              "assistant": 0,
+              "user": 0,
+              "system": 0
+            },
+            "block_size": 256,
+            "max_blocks": 1000,
+            "allocated_blocks": 1,
+            "free_blocks": 999,
+            "shared_blocks": 0,
+            "total_tokens_cached": 0,
+            "utilization": 0.001,
+            "cache_hit_rate": 0,
+            "cache_hits": 0,
+            "cache_misses": 0,
+            "disk_hits": 0,
+            "disk_misses": 0,
+            "cow_copies": 0,
+            "evictions": 0,
+            "engine_path": "none",
+            "batch_generator": {
+              "class": null,
+              "path": "none",
+              "single_active_decode": false,
+              "max_num_seqs": 1
+            }
+          },
+          "block_disk_cache": {
+            "blocks_on_disk": 0,
+            "disk_size_bytes": 0,
+            "disk_size_gb": 0.0,
+            "total_accesses": 0,
+            "total_tokens_on_disk": 0,
+            "total_cached_tokens": 0,
+            "disk_hits": 0,
+            "disk_misses": 0,
+            "disk_writes": 0,
+            "disk_evictions": 0
+          },
+          "totals": {
+            "ram_tokens_cached": 0,
+            "l2_prompt_tokens_on_disk": 0,
+            "l2_block_tokens_on_disk": 0,
+            "l2_ssm_tokens_on_disk": 0,
+            "ssm_tokens_on_disk": 0,
+            "l2_tokens_on_disk": 0,
+            "l2_tokens_on_disk_store_sum": 0,
+            "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+          }
+        },
+        "quantization_format": {
+          "type": "jang",
+          "target_bits": null,
+          "actual_bits": null,
+          "block_size": 64
+        },
+        "quantization": {
+          "codec": "turboquant_codebook",
+          "weight_format": "mxtq",
+          "profile": "JANGTQ_K",
+          "mxtq_bits_by_role": {
+            "routed_expert": 2,
+            "attention": 8,
+            "shared_expert": 8,
+            "compressor": 8,
+            "indexer": 8,
+            "embed_tokens": 8,
+            "lm_head": 8,
+            "norms_router_hc": 16
+          },
+          "routed_expert_bits": 2,
+          "target_bits": 2,
+          "config_bits": 8,
+          "group_size": 32,
+          "routed_layer_bits": {
+            "0": 2,
+            "1": 2,
+            "2": 2,
+            "23": 4,
+            "25": 4,
+            "28": 4,
+            "34": 4,
+            "36": 4
+          },
+          "routed_layer_bits_source": "jang_config.quantization.routed_experts.bit_plan.routed_layer_bits",
+          "weight_index": {
+            "index_file": "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K-HeadBF16-Probe-20260520/model.safetensors.index.json",
+            "total_tensors": 2608,
+            "suffix_counts": {
+              "biases": 511,
+              "scales": 511,
+              "tq_bits": 129,
+              "tq_norms": 129,
+              "tq_packed": 129,
+              "weight": 790
+            },
+            "tq_target_counts": {
+              "routed_expert": 387
+            },
+            "routed_layout_counts": {
+              "prestacked_switch": 387,
+              "split_expert": 0
+            },
+            "mtp_tensor_count": 0,
+            "sample_tq_packed_targets": [
+              "layers.0.mlp.switch_mlp.down_proj",
+              "layers.0.mlp.switch_mlp.gate_proj",
+              "layers.0.mlp.switch_mlp.up_proj",
+              "layers.1.mlp.switch_mlp.down_proj",
+              "layers.1.mlp.switch_mlp.gate_proj",
+              "layers.1.mlp.switch_mlp.up_proj",
+              "layers.10.mlp.switch_mlp.down_proj",
+              "layers.10.mlp.switch_mlp.gate_proj",
+              "layers.10.mlp.switch_mlp.up_proj",
+              "layers.11.mlp.switch_mlp.down_proj",
+              "layers.11.mlp.switch_mlp.gate_proj",
+              "layers.11.mlp.switch_mlp.up_proj"
+            ]
+          },
+          "weight_matmul_dispatch": {
+            "primary": "jang_tools_turboquant_custom_kernels",
+            "uses_mlx_quantized_matmul": false,
+            "metal_na_eligible": false,
+            "reason": "turboquant_codebook_uses_custom_tq_kernels"
+          },
+          "sidecar": {
+            "jang_config": true,
+            "jangtq_runtime": true,
+            "prestacked_bundle": true
+          }
+        },
+        "acceleration": {
+          "kernel_type": "turboquant_codebook",
+          "metal_na_capable": false,
+          "metal_na_active_on_host": false,
+          "reason": "turboquant_custom_kernels_do_not_use_mlx_na",
+          "metal_na_symbols": {
+            "available": true,
+            "nax_symbols": 0,
+            "naxtile_symbols": 0,
+            "affine_qmm_symbols": 2592,
+            "affine_gather_qmm_symbols": 1620
+          },
+          "host": {
+            "supported": true,
+            "brand": "Apple M5 Max",
+            "reason": null
+          },
+          "jangtq_acceleration": {
+            "mode": "off",
+            "requested": false,
+            "available": false,
+            "active": false,
+            "uses_mlx_quantized_matmul": false,
+            "reason": "disabled"
+          }
+        },
+        "mtp": {
+          "config_num_nextn_predict_layers": 0,
+          "config_mtp_layer_source": "config.num_nextn_predict_layers",
+          "jang_mtp_layers": null,
+          "jang_drop_mtp": true,
+          "index_has_mtp_tensors": false,
+          "index_mtp_layer_count": null,
+          "mtp_tensor_count": 0,
+          "artifact_available": false,
+          "family": "deepseek_v4",
+          "has_vision_config": false,
+          "has_vision_weights": false,
+          "vision_tensor_count": 0,
+          "cache_type": null,
+          "runtime_supported": false,
+          "runtime_available": false,
+          "runtime_active": false,
+          "runtime_validation_blocked": false,
+          "effective_depth": null,
+          "effective_depth_source": null,
+          "runtime_scope": null,
+          "vl_runtime_available": false,
+          "runtime_bundle_has_mtp": null,
+          "runtime_mtp_mode": null,
+          "runtime_reason": "jang_config.drop_mtp=true",
+          "status": "dropped",
+          "issues": [],
+          "request_policy": "compatible-only",
+          "request_gate": "temperature=0,repetition_penalty=1.0"
+        },
+        "routing": {
+          "trained_active_experts": 6,
+          "trained_active_experts_source": "config.num_experts_per_tok",
+          "n_routed_experts": 256,
+          "override_env": null,
+          "effective_active_experts": 6,
+          "effective_active_experts_source": "trained_default"
+        },
+        "turboquant_kv_cache": {
+          "enabled": false
+        },
+        "native_cache": {
+          "family": "deepseek_v4",
+          "schema": "deepseek_v4_v7",
+          "cache_type": "native_composite",
+          "components": [
+            "swa_local",
+            "csa_compressed_pool",
+            "hca_compressed_pool",
+            "incomplete_tail_state"
+          ],
+          "generic_turboquant_kv": {
+            "enabled": false,
+            "reason": "native_dsv4_composite"
+          },
+          "pool_quant": {
+            "enabled": true,
+            "env": "1"
+          },
+          "layer_cache_roles": {
+            "ratio_0": "swa_local_only",
+            "ratio_4": "csa_overlap_compressed_pool_plus_indexer",
+            "ratio_128": "hca_compressed_pool"
+          },
+          "cache_store_policy": {
+            "prompt_boundary_snapshot": "preferred",
+            "post_generation_trim": "disabled_unless_explicit_unsafe_override",
+            "generic_kv_quantization": "forced_off"
+          },
+          "decode_activation_order": [
+            "make_cache_builds_per_layer_swa_or_composite_cache",
+            "prefill_updates_local_swa_and_compressor_indexer_pools",
+            "prompt_boundary_snapshot_or_clean_reprefill_is_stored_for_prefix",
+            "decode_appends_new_tokens_to_live_composite_cache",
+            "cache_hit_restores_full_nested_state_and_refeeds_last_prompt_token"
+          ],
+          "prefix": true,
+          "paged": true,
+          "block_disk_l2": true,
+          "layers": 43,
+          "compress_ratios": [
+            "unknown",
+            "unknown",
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4,
+            128,
+            4
+          ],
+          "compress_ratio_counts": {
+            "unknown": 2,
+            "4": 21,
+            "128": 20
+          },
+          "sliding_window": 128
+        }
+      },
+      "capabilities": {
+        "code": 200,
+        "body": {
+          "id": "deepseek-v4-flash-jangtq-k-headbf16-probe-20260520",
+          "loaded_model": "deepseek-v4-flash-jangtq-k-headbf16-probe-20260520",
+          "model_path": "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K-HeadBF16-Probe-20260520",
+          "family": "deepseek_v4",
+          "compat_warnings": [],
+          "supports_tools": true,
+          "tool_parser": "dsml",
+          "supports_thinking": true,
+          "reasoning_parser": "deepseek_r1",
+          "think_in_template": true,
+          "supported_modes": [
+            "instruct",
+            "reasoning"
+          ],
+          "experimental_modes": [],
+          "reasoning_efforts": [
+            "high",
+            "max"
+          ],
+          "modalities": [
+            "text"
+          ],
+          "cache": {
+            "prefix": true,
+            "type": "paged",
+            "paged": true,
+            "block_disk_l2": true,
+            "dsv4_composite_state": true,
+            "native": {
+              "family": "deepseek_v4",
+              "schema": "deepseek_v4_v7",
+              "cache_type": "native_composite",
+              "components": [
+                "swa_local",
+                "csa_compressed_pool",
+                "hca_compressed_pool",
+                "incomplete_tail_state"
+              ],
+              "generic_turboquant_kv": {
+                "enabled": false,
+                "reason": "native_dsv4_composite"
+              },
+              "pool_quant": {
+                "enabled": true,
+                "env": "1"
+              },
+              "layer_cache_roles": {
+                "ratio_0": "swa_local_only",
+                "ratio_4": "csa_overlap_compressed_pool_plus_indexer",
+                "ratio_128": "hca_compressed_pool"
+              },
+              "cache_store_policy": {
+                "prompt_boundary_snapshot": "preferred",
+                "post_generation_trim": "disabled_unless_explicit_unsafe_override",
+                "generic_kv_quantization": "forced_off"
+              },
+              "decode_activation_order": [
+                "make_cache_builds_per_layer_swa_or_composite_cache",
+                "prefill_updates_local_swa_and_compressor_indexer_pools",
+                "prompt_boundary_snapshot_or_clean_reprefill_is_stored_for_prefix",
+                "decode_appends_new_tokens_to_live_composite_cache",
+                "cache_hit_restores_full_nested_state_and_refeeds_last_prompt_token"
+              ],
+              "prefix": true,
+              "paged": true,
+              "block_disk_l2": true,
+              "layers": 43,
+              "compress_ratios": [
+                "unknown",
+                "unknown",
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4,
+                128,
+                4
+              ],
+              "compress_ratio_counts": {
+                "unknown": 2,
+                "4": 21,
+                "128": 20
+              },
+              "sliding_window": 128
+            }
+          },
+          "quantization": {
+            "codec": "turboquant_codebook",
+            "weight_format": "mxtq",
+            "profile": "JANGTQ_K",
+            "mxtq_bits_by_role": {
+              "routed_expert": 2,
+              "attention": 8,
+              "shared_expert": 8,
+              "compressor": 8,
+              "indexer": 8,
+              "embed_tokens": 8,
+              "lm_head": 8,
+              "norms_router_hc": 16
+            },
+            "routed_expert_bits": 2,
+            "target_bits": 2,
+            "config_bits": 8,
+            "group_size": 32,
+            "routed_layer_bits": {
+              "0": 2,
+              "1": 2,
+              "2": 2,
+              "23": 4,
+              "25": 4,
+              "28": 4,
+              "34": 4,
+              "36": 4
+            },
+            "routed_layer_bits_source": "jang_config.quantization.routed_experts.bit_plan.routed_layer_bits",
+            "weight_index": {
+              "index_file": "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K-HeadBF16-Probe-20260520/model.safetensors.index.json",
+              "total_tensors": 2608,
+              "suffix_counts": {
+                "biases": 511,
+                "scales": 511,
+                "tq_bits": 129,
+                "tq_norms": 129,
+                "tq_packed": 129,
+                "weight": 790
+              },
+              "tq_target_counts": {
+                "routed_expert": 387
+              },
+              "routed_layout_counts": {
+                "prestacked_switch": 387,
+                "split_expert": 0
+              },
+              "mtp_tensor_count": 0,
+              "sample_tq_packed_targets": [
+                "layers.0.mlp.switch_mlp.down_proj",
+                "layers.0.mlp.switch_mlp.gate_proj",
+                "layers.0.mlp.switch_mlp.up_proj",
+                "layers.1.mlp.switch_mlp.down_proj",
+                "layers.1.mlp.switch_mlp.gate_proj",
+                "layers.1.mlp.switch_mlp.up_proj",
+                "layers.10.mlp.switch_mlp.down_proj",
+                "layers.10.mlp.switch_mlp.gate_proj",
+                "layers.10.mlp.switch_mlp.up_proj",
+                "layers.11.mlp.switch_mlp.down_proj",
+                "layers.11.mlp.switch_mlp.gate_proj",
+                "layers.11.mlp.switch_mlp.up_proj"
+              ]
+            },
+            "weight_matmul_dispatch": {
+              "primary": "jang_tools_turboquant_custom_kernels",
+              "uses_mlx_quantized_matmul": false,
+              "metal_na_eligible": false,
+              "reason": "turboquant_codebook_uses_custom_tq_kernels"
+            },
+            "sidecar": {
+              "jang_config": true,
+              "jangtq_runtime": true,
+              "prestacked_bundle": true
+            }
+          },
+          "acceleration": {
+            "kernel_type": "turboquant_codebook",
+            "metal_na_capable": false,
+            "metal_na_active_on_host": false,
+            "reason": "turboquant_custom_kernels_do_not_use_mlx_na",
+            "metal_na_symbols": {
+              "available": true,
+              "nax_symbols": 0,
+              "naxtile_symbols": 0,
+              "affine_qmm_symbols": 2592,
+              "affine_gather_qmm_symbols": 1620
+            },
+            "host": {
+              "supported": true,
+              "brand": "Apple M5 Max",
+              "reason": null
+            },
+            "jangtq_acceleration": {
+              "mode": "off",
+              "requested": false,
+              "available": false,
+              "active": false,
+              "uses_mlx_quantized_matmul": false,
+              "reason": "disabled"
+            }
+          },
+          "mtp": {
+            "config_num_nextn_predict_layers": 0,
+            "config_mtp_layer_source": "config.num_nextn_predict_layers",
+            "jang_mtp_layers": null,
+            "jang_drop_mtp": true,
+            "index_has_mtp_tensors": false,
+            "index_mtp_layer_count": null,
+            "mtp_tensor_count": 0,
+            "artifact_available": false,
+            "family": "deepseek_v4",
+            "has_vision_config": false,
+            "has_vision_weights": false,
+            "vision_tensor_count": 0,
+            "cache_type": null,
+            "runtime_supported": false,
+            "runtime_available": false,
+            "runtime_active": false,
+            "runtime_validation_blocked": false,
+            "effective_depth": null,
+            "effective_depth_source": null,
+            "runtime_scope": null,
+            "vl_runtime_available": false,
+            "runtime_bundle_has_mtp": null,
+            "runtime_mtp_mode": null,
+            "runtime_reason": "jang_config.drop_mtp=true",
+            "status": "dropped",
+            "issues": [],
+            "request_policy": "compatible-only",
+            "request_gate": "temperature=0,repetition_penalty=1.0"
+          },
+          "routing": {
+            "trained_active_experts": 6,
+            "trained_active_experts_source": "config.num_experts_per_tok",
+            "n_routed_experts": 256,
+            "override_env": null,
+            "effective_active_experts": 6,
+            "effective_active_experts_source": "trained_default"
+          },
+          "sampling_defaults": {
+            "temperature": 0.6,
+            "top_p": 0.95,
+            "max_new_tokens": 4096.0,
+            "repetition_penalty": 1.0,
+            "repetition_penalty_chat": 1.05,
+            "repetition_penalty_thinking": 1.0
+          }
+        }
+      },
+      "cache_before": {
+        "code": 200,
+        "body": {
+          "scheduler_cache": {
+            "hits": 0,
+            "misses": 0,
+            "hit_rate": 0,
+            "tokens_saved": 0,
+            "active_requests": 0,
+            "entries_by_type": {
+              "assistant": 0,
+              "user": 0,
+              "system": 0
+            },
+            "block_size": 256,
+            "max_blocks": 1000,
+            "allocated_blocks": 1,
+            "free_blocks": 999,
+            "shared_blocks": 0,
+            "total_tokens_cached": 0,
+            "utilization": 0.001,
+            "cache_hit_rate": 0,
+            "cache_hits": 0,
+            "cache_misses": 0,
+            "disk_hits": 0,
+            "disk_misses": 0,
+            "cow_copies": 0,
+            "evictions": 0,
+            "engine_path": "none",
+            "batch_generator": {
+              "class": null,
+              "path": "none",
+              "single_active_decode": false,
+              "max_num_seqs": 1
+            }
+          },
+          "scheduler_stats": {
+            "num_waiting": 0,
+            "num_running": 0,
+            "engine_path": "none",
+            "batch_generator": {
+              "class": null,
+              "path": "none",
+              "single_active_decode": false,
+              "max_num_seqs": 1
+            },
+            "single_active_decode": false,
+            "num_requests_processed": 0,
+            "total_prompt_tokens": 0,
+            "total_completion_tokens": 0,
+            "ewma_ttft_seconds": 0.0,
+            "cache_hit_requests": 0,
+            "cache_hit_tokens": 0,
+            "cache_hit_tokens_by_detail": {},
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "last_hybrid_kv_without_ssm": null,
+            "cache_reuse_skips": 0,
+            "cache_reuse_skip_tokens": 0,
+            "last_cache_reuse_skip": null,
+            "cache_reuse_partial_downgrades": 0,
+            "cache_reuse_partial_tokens": 0,
+            "last_cache_reuse_partial": null,
+            "last_cache_selection": null,
+            "last_cache_execution": null
+          },
+          "kv_cache_quantization": {
+            "enabled": false
+          },
+          "turboquant_kv_cache": {
+            "enabled": false
+          },
+          "native_cache": {
+            "family": "deepseek_v4",
+            "schema": "deepseek_v4_v7",
+            "cache_type": "native_composite",
+            "components": [
+              "swa_local",
+              "csa_compressed_pool",
+              "hca_compressed_pool",
+              "incomplete_tail_state"
+            ],
+            "generic_turboquant_kv": {
+              "enabled": false,
+              "reason": "native_dsv4_composite"
+            },
+            "pool_quant": {
+              "enabled": true,
+              "env": "1"
+            },
+            "layer_cache_roles": {
+              "ratio_0": "swa_local_only",
+              "ratio_4": "csa_overlap_compressed_pool_plus_indexer",
+              "ratio_128": "hca_compressed_pool"
+            },
+            "cache_store_policy": {
+              "prompt_boundary_snapshot": "preferred",
+              "post_generation_trim": "disabled_unless_explicit_unsafe_override",
+              "generic_kv_quantization": "forced_off"
+            },
+            "decode_activation_order": [
+              "make_cache_builds_per_layer_swa_or_composite_cache",
+              "prefill_updates_local_swa_and_compressor_indexer_pools",
+              "prompt_boundary_snapshot_or_clean_reprefill_is_stored_for_prefix",
+              "decode_appends_new_tokens_to_live_composite_cache",
+              "cache_hit_restores_full_nested_state_and_refeeds_last_prompt_token"
+            ],
+            "prefix": true,
+            "paged": true,
+            "block_disk_l2": true,
+            "layers": 43,
+            "compress_ratios": [
+              "unknown",
+              "unknown",
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4
+            ],
+            "compress_ratio_counts": {
+              "unknown": 2,
+              "4": 21,
+              "128": 20
+            },
+            "sliding_window": 128
+          },
+          "block_disk_cache": {
+            "blocks_on_disk": 0,
+            "disk_size_bytes": 0,
+            "disk_size_gb": 0.0,
+            "total_accesses": 0,
+            "total_tokens_on_disk": 0,
+            "total_cached_tokens": 0,
+            "disk_hits": 0,
+            "disk_misses": 0,
+            "disk_writes": 0,
+            "disk_evictions": 0
+          },
+          "cache_totals": {
+            "ram_tokens_cached": 0,
+            "l2_prompt_tokens_on_disk": 0,
+            "l2_block_tokens_on_disk": 0,
+            "l2_ssm_tokens_on_disk": 0,
+            "ssm_tokens_on_disk": 0,
+            "l2_tokens_on_disk": 0,
+            "l2_tokens_on_disk_store_sum": 0,
+            "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+          },
+          "memory": {
+            "active_mb": 0.0,
+            "peak_mb": 0.0,
+            "cache_mb": 0.0
+          }
+        },
+        "summary": {
+          "cache_hit_tokens": 0,
+          "cache_hits": 0,
+          "disk_hits": 0,
+          "hybrid_kv_without_ssm_hits": 0,
+          "hybrid_kv_without_ssm_tokens": 0,
+          "has_cache_hit": false,
+          "mentions_turboquant": true,
+          "mentions_ssm": true,
+          "mentions_media_salt": false,
+          "mentions_rotating": true,
+          "has_hybrid_kv_without_ssm": false
+        }
+      },
+      "probe_options": {
+        "include_media": false,
+        "include_video": false
+      },
+      "health_after": {
+        "code": 200,
+        "body": {
+          "status": "healthy",
+          "model_loaded": true,
+          "model_name": "JANGQ/DeepSeek-V4-Flash-JANGTQ-K-HeadBF16-Probe-20260520",
+          "model_type": "llm",
+          "engine_type": "batched",
+          "last_request_time": 1780749516.9912682,
+          "mcp": null,
+          "memory": {
+            "active_mb": 82474.0,
+            "peak_mb": 86510.8,
+            "cache_mb": 0.0
+          },
+          "kv_cache_quantization": {
+            "enabled": false
+          },
+          "speculative_decoding": "not_configured",
+          "scheduler": {
+            "num_waiting": 0,
+            "num_running": 0,
+            "engine_path": "dsv4",
+            "batch_generator": {
+              "class": "DSV4BatchGenerator",
+              "path": "dsv4",
+              "single_active_decode": false,
+              "max_num_seqs": 1
+            },
+            "single_active_decode": false,
+            "ewma_ttft_seconds": 2.274,
+            "cache_hit_requests": 1,
+            "cache_hit_tokens": 3639,
+            "cache_hit_tokens_by_detail": {
+              "paged+dsv4": 3639
+            },
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "last_hybrid_kv_without_ssm": null,
+            "cache_reuse_skips": 0,
+            "cache_reuse_skip_tokens": 0,
+            "last_cache_reuse_skip": null,
+            "cache_reuse_partial_downgrades": 0,
+            "cache_reuse_partial_tokens": 0,
+            "last_cache_reuse_partial": null,
+            "last_cache_selection": {
+              "paged_cached_tokens": 3639,
+              "paged_cold_tokens": 0,
+              "warm_cached_tokens": 0,
+              "hot_advantage_tokens": 3639,
+              "hot_advantage_threshold_tokens": 64,
+              "selected": "paged",
+              "rejected": null,
+              "reason": "no_warm_prefix_alternative"
+            },
+            "last_cache_execution": {
+              "request_id": "chatcmpl-99c077c8",
+              "cache_detail": "paged+dsv4",
+              "cached_tokens": 3639,
+              "blocks": 15,
+              "selection": {
+                "paged_cached_tokens": 3639,
+                "paged_cold_tokens": 0,
+                "warm_cached_tokens": 0,
+                "hot_advantage_tokens": 3639,
+                "hot_advantage_threshold_tokens": 64,
+                "selected": "paged",
+                "rejected": null,
+                "reason": "no_warm_prefix_alternative"
+              },
+              "reconstructed": true,
+              "dequantized": false,
+              "reconstruction_seconds": 0.013048,
+              "dequantization_seconds": 0.0,
+              "total_worker_cache_seconds": 0.014074,
+              "reconstruction_ok": true
+            }
+          },
+          "cache": {
+            "scheduler_cache": {
+              "hits": 1,
+              "misses": 4,
+              "hit_rate": 0.2,
+              "tokens_saved": 3639,
+              "active_requests": 1,
+              "entries_by_type": {
+                "assistant": 0,
+                "user": 0,
+                "system": 1
+              },
+              "block_size": 256,
+              "max_blocks": 1000,
+              "allocated_blocks": 16,
+              "free_blocks": 984,
+              "shared_blocks": 15,
+              "total_tokens_cached": 3639,
+              "utilization": 0.016,
+              "cache_hit_rate": 0.6382978723404256,
+              "cache_hits": 30,
+              "cache_misses": 17,
+              "disk_hits": 0,
+              "disk_misses": 2,
+              "cow_copies": 0,
+              "evictions": 0,
+              "engine_path": "dsv4",
+              "batch_generator": {
+                "class": "DSV4BatchGenerator",
+                "path": "dsv4",
+                "single_active_decode": false,
+                "max_num_seqs": 1
+              }
+            },
+            "block_disk_cache": {
+              "blocks_on_disk": 15,
+              "disk_size_bytes": 98647516,
+              "disk_size_gb": 0.092,
+              "total_accesses": 0,
+              "total_tokens_on_disk": 3639,
+              "total_cached_tokens": 3639,
+              "disk_hits": 0,
+              "disk_misses": 11,
+              "disk_writes": 15,
+              "disk_evictions": 0
+            },
+            "totals": {
+              "ram_tokens_cached": 3639,
+              "l2_prompt_tokens_on_disk": 0,
+              "l2_block_tokens_on_disk": 3639,
+              "l2_ssm_tokens_on_disk": 0,
+              "ssm_tokens_on_disk": 0,
+              "l2_tokens_on_disk": 3639,
+              "l2_tokens_on_disk_store_sum": 3639,
+              "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+            }
+          },
+          "quantization_format": {
+            "type": "jang",
+            "target_bits": null,
+            "actual_bits": null,
+            "block_size": 64
+          },
+          "quantization": {
+            "codec": "turboquant_codebook",
+            "weight_format": "mxtq",
+            "profile": "JANGTQ_K",
+            "mxtq_bits_by_role": {
+              "routed_expert": 2,
+              "attention": 8,
+              "shared_expert": 8,
+              "compressor": 8,
+              "indexer": 8,
+              "embed_tokens": 8,
+              "lm_head": 8,
+              "norms_router_hc": 16
+            },
+            "routed_expert_bits": 2,
+            "target_bits": 2,
+            "config_bits": 8,
+            "group_size": 32,
+            "routed_layer_bits": {
+              "0": 2,
+              "1": 2,
+              "2": 2,
+              "23": 4,
+              "25": 4,
+              "28": 4,
+              "34": 4,
+              "36": 4
+            },
+            "routed_layer_bits_source": "jang_config.quantization.routed_experts.bit_plan.routed_layer_bits",
+            "weight_index": {
+              "index_file": "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K-HeadBF16-Probe-20260520/model.safetensors.index.json",
+              "total_tensors": 2608,
+              "suffix_counts": {
+                "biases": 511,
+                "scales": 511,
+                "tq_bits": 129,
+                "tq_norms": 129,
+                "tq_packed": 129,
+                "weight": 790
+              },
+              "tq_target_counts": {
+                "routed_expert": 387
+              },
+              "routed_layout_counts": {
+                "prestacked_switch": 387,
+                "split_expert": 0
+              },
+              "mtp_tensor_count": 0,
+              "sample_tq_packed_targets": [
+                "layers.0.mlp.switch_mlp.down_proj",
+                "layers.0.mlp.switch_mlp.gate_proj",
+                "layers.0.mlp.switch_mlp.up_proj",
+                "layers.1.mlp.switch_mlp.down_proj",
+                "layers.1.mlp.switch_mlp.gate_proj",
+                "layers.1.mlp.switch_mlp.up_proj",
+                "layers.10.mlp.switch_mlp.down_proj",
+                "layers.10.mlp.switch_mlp.gate_proj",
+                "layers.10.mlp.switch_mlp.up_proj",
+                "layers.11.mlp.switch_mlp.down_proj",
+                "layers.11.mlp.switch_mlp.gate_proj",
+                "layers.11.mlp.switch_mlp.up_proj"
+              ]
+            },
+            "weight_matmul_dispatch": {
+              "primary": "jang_tools_turboquant_custom_kernels",
+              "uses_mlx_quantized_matmul": false,
+              "metal_na_eligible": false,
+              "reason": "turboquant_codebook_uses_custom_tq_kernels"
+            },
+            "sidecar": {
+              "jang_config": true,
+              "jangtq_runtime": true,
+              "prestacked_bundle": true
+            }
+          },
+          "acceleration": {
+            "kernel_type": "turboquant_codebook",
+            "metal_na_capable": false,
+            "metal_na_active_on_host": false,
+            "reason": "turboquant_custom_kernels_do_not_use_mlx_na",
+            "metal_na_symbols": {
+              "available": true,
+              "nax_symbols": 0,
+              "naxtile_symbols": 0,
+              "affine_qmm_symbols": 2592,
+              "affine_gather_qmm_symbols": 1620
+            },
+            "host": {
+              "supported": true,
+              "brand": "Apple M5 Max",
+              "reason": null
+            },
+            "jangtq_acceleration": {
+              "mode": "off",
+              "requested": false,
+              "available": false,
+              "active": false,
+              "uses_mlx_quantized_matmul": false,
+              "reason": "disabled"
+            }
+          },
+          "mtp": {
+            "config_num_nextn_predict_layers": 0,
+            "config_mtp_layer_source": "config.num_nextn_predict_layers",
+            "jang_mtp_layers": null,
+            "jang_drop_mtp": true,
+            "index_has_mtp_tensors": false,
+            "index_mtp_layer_count": null,
+            "mtp_tensor_count": 0,
+            "artifact_available": false,
+            "family": "deepseek_v4",
+            "has_vision_config": false,
+            "has_vision_weights": false,
+            "vision_tensor_count": 0,
+            "cache_type": null,
+            "runtime_supported": false,
+            "runtime_available": false,
+            "runtime_active": false,
+            "runtime_validation_blocked": false,
+            "effective_depth": null,
+            "effective_depth_source": null,
+            "runtime_scope": null,
+            "vl_runtime_available": false,
+            "runtime_bundle_has_mtp": null,
+            "runtime_mtp_mode": null,
+            "runtime_reason": "jang_config.drop_mtp=true",
+            "status": "dropped",
+            "issues": [],
+            "request_policy": "compatible-only",
+            "request_gate": "temperature=0,repetition_penalty=1.0"
+          },
+          "routing": {
+            "trained_active_experts": 6,
+            "trained_active_experts_source": "config.num_experts_per_tok",
+            "n_routed_experts": 256,
+            "override_env": null,
+            "effective_active_experts": 6,
+            "effective_active_experts_source": "trained_default"
+          },
+          "turboquant_kv_cache": {
+            "enabled": false
+          },
+          "native_cache": {
+            "family": "deepseek_v4",
+            "schema": "deepseek_v4_v7",
+            "cache_type": "native_composite",
+            "components": [
+              "swa_local",
+              "csa_compressed_pool",
+              "hca_compressed_pool",
+              "incomplete_tail_state"
+            ],
+            "generic_turboquant_kv": {
+              "enabled": false,
+              "reason": "native_dsv4_composite"
+            },
+            "pool_quant": {
+              "enabled": true,
+              "env": "1"
+            },
+            "layer_cache_roles": {
+              "ratio_0": "swa_local_only",
+              "ratio_4": "csa_overlap_compressed_pool_plus_indexer",
+              "ratio_128": "hca_compressed_pool"
+            },
+            "cache_store_policy": {
+              "prompt_boundary_snapshot": "preferred",
+              "post_generation_trim": "disabled_unless_explicit_unsafe_override",
+              "generic_kv_quantization": "forced_off"
+            },
+            "decode_activation_order": [
+              "make_cache_builds_per_layer_swa_or_composite_cache",
+              "prefill_updates_local_swa_and_compressor_indexer_pools",
+              "prompt_boundary_snapshot_or_clean_reprefill_is_stored_for_prefix",
+              "decode_appends_new_tokens_to_live_composite_cache",
+              "cache_hit_restores_full_nested_state_and_refeeds_last_prompt_token"
+            ],
+            "prefix": true,
+            "paged": true,
+            "block_disk_l2": true,
+            "layers": 43,
+            "compress_ratios": [
+              "unknown",
+              "unknown",
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4
+            ],
+            "compress_ratio_counts": {
+              "unknown": 2,
+              "4": 21,
+              "128": 20
+            },
+            "sliding_window": 128
+          }
+        }
+      },
+      "cache_after": {
+        "code": 200,
+        "body": {
+          "scheduler_cache": {
+            "hits": 1,
+            "misses": 4,
+            "hit_rate": 0.2,
+            "tokens_saved": 3639,
+            "active_requests": 1,
+            "entries_by_type": {
+              "assistant": 0,
+              "user": 0,
+              "system": 1
+            },
+            "block_size": 256,
+            "max_blocks": 1000,
+            "allocated_blocks": 16,
+            "free_blocks": 984,
+            "shared_blocks": 15,
+            "total_tokens_cached": 3639,
+            "utilization": 0.016,
+            "cache_hit_rate": 0.6382978723404256,
+            "cache_hits": 30,
+            "cache_misses": 17,
+            "disk_hits": 0,
+            "disk_misses": 2,
+            "cow_copies": 0,
+            "evictions": 0,
+            "engine_path": "dsv4",
+            "batch_generator": {
+              "class": "DSV4BatchGenerator",
+              "path": "dsv4",
+              "single_active_decode": false,
+              "max_num_seqs": 1
+            }
+          },
+          "scheduler_stats": {
+            "num_waiting": 0,
+            "num_running": 0,
+            "engine_path": "dsv4",
+            "batch_generator": {
+              "class": "DSV4BatchGenerator",
+              "path": "dsv4",
+              "single_active_decode": false,
+              "max_num_seqs": 1
+            },
+            "single_active_decode": false,
+            "num_requests_processed": 5,
+            "total_prompt_tokens": 7555,
+            "total_completion_tokens": 114,
+            "ewma_ttft_seconds": 2.274,
+            "cache_hit_requests": 1,
+            "cache_hit_tokens": 3639,
+            "cache_hit_tokens_by_detail": {
+              "paged+dsv4": 3639
+            },
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "last_hybrid_kv_without_ssm": null,
+            "cache_reuse_skips": 0,
+            "cache_reuse_skip_tokens": 0,
+            "last_cache_reuse_skip": null,
+            "cache_reuse_partial_downgrades": 0,
+            "cache_reuse_partial_tokens": 0,
+            "last_cache_reuse_partial": null,
+            "last_cache_selection": {
+              "paged_cached_tokens": 3639,
+              "paged_cold_tokens": 0,
+              "warm_cached_tokens": 0,
+              "hot_advantage_tokens": 3639,
+              "hot_advantage_threshold_tokens": 64,
+              "selected": "paged",
+              "rejected": null,
+              "reason": "no_warm_prefix_alternative"
+            },
+            "last_cache_execution": {
+              "request_id": "chatcmpl-99c077c8",
+              "cache_detail": "paged+dsv4",
+              "cached_tokens": 3639,
+              "blocks": 15,
+              "selection": {
+                "paged_cached_tokens": 3639,
+                "paged_cold_tokens": 0,
+                "warm_cached_tokens": 0,
+                "hot_advantage_tokens": 3639,
+                "hot_advantage_threshold_tokens": 64,
+                "selected": "paged",
+                "rejected": null,
+                "reason": "no_warm_prefix_alternative"
+              },
+              "reconstructed": true,
+              "dequantized": false,
+              "reconstruction_seconds": 0.013048,
+              "dequantization_seconds": 0.0,
+              "total_worker_cache_seconds": 0.014074,
+              "reconstruction_ok": true
+            }
+          },
+          "kv_cache_quantization": {
+            "enabled": false
+          },
+          "turboquant_kv_cache": {
+            "enabled": false
+          },
+          "native_cache": {
+            "family": "deepseek_v4",
+            "schema": "deepseek_v4_v7",
+            "cache_type": "native_composite",
+            "components": [
+              "swa_local",
+              "csa_compressed_pool",
+              "hca_compressed_pool",
+              "incomplete_tail_state"
+            ],
+            "generic_turboquant_kv": {
+              "enabled": false,
+              "reason": "native_dsv4_composite"
+            },
+            "pool_quant": {
+              "enabled": true,
+              "env": "1"
+            },
+            "layer_cache_roles": {
+              "ratio_0": "swa_local_only",
+              "ratio_4": "csa_overlap_compressed_pool_plus_indexer",
+              "ratio_128": "hca_compressed_pool"
+            },
+            "cache_store_policy": {
+              "prompt_boundary_snapshot": "preferred",
+              "post_generation_trim": "disabled_unless_explicit_unsafe_override",
+              "generic_kv_quantization": "forced_off"
+            },
+            "decode_activation_order": [
+              "make_cache_builds_per_layer_swa_or_composite_cache",
+              "prefill_updates_local_swa_and_compressor_indexer_pools",
+              "prompt_boundary_snapshot_or_clean_reprefill_is_stored_for_prefix",
+              "decode_appends_new_tokens_to_live_composite_cache",
+              "cache_hit_restores_full_nested_state_and_refeeds_last_prompt_token"
+            ],
+            "prefix": true,
+            "paged": true,
+            "block_disk_l2": true,
+            "layers": 43,
+            "compress_ratios": [
+              "unknown",
+              "unknown",
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4,
+              128,
+              4
+            ],
+            "compress_ratio_counts": {
+              "unknown": 2,
+              "4": 21,
+              "128": 20
+            },
+            "sliding_window": 128
+          },
+          "block_disk_cache": {
+            "blocks_on_disk": 15,
+            "disk_size_bytes": 98647516,
+            "disk_size_gb": 0.092,
+            "total_accesses": 0,
+            "total_tokens_on_disk": 3639,
+            "total_cached_tokens": 3639,
+            "disk_hits": 0,
+            "disk_misses": 11,
+            "disk_writes": 15,
+            "disk_evictions": 0
+          },
+          "cache_totals": {
+            "ram_tokens_cached": 3639,
+            "l2_prompt_tokens_on_disk": 0,
+            "l2_block_tokens_on_disk": 3639,
+            "l2_ssm_tokens_on_disk": 0,
+            "ssm_tokens_on_disk": 0,
+            "l2_tokens_on_disk": 3639,
+            "l2_tokens_on_disk_store_sum": 3639,
+            "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+          },
+          "memory": {
+            "active_mb": 82474.0,
+            "peak_mb": 86510.8,
+            "cache_mb": 0.0
+          }
+        },
+        "summary": {
+          "cache_hit_tokens": 3639,
+          "cache_hits": 30,
+          "disk_hits": 0,
+          "hybrid_kv_without_ssm_hits": 0,
+          "hybrid_kv_without_ssm_tokens": 0,
+          "has_cache_hit": true,
+          "mentions_turboquant": true,
+          "mentions_ssm": true,
+          "mentions_media_salt": false,
+          "mentions_rotating": true,
+          "has_hybrid_kv_without_ssm": false
+        }
+      },
+      "failures": [],
+      "server_log_tail": "Block disk: queuing write for block 2 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 3 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 4 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 5 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 6 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 7 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 8 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 9 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 10 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 11 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 12 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 13 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 14 (2 kv layers, deepseek_v4_pending=41, 256 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 15 (2 kv layers, deepseek_v4=41, 55 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: writing 15 blocks to SSD\nINFO:vmlx_engine.scheduler:Stored paged cache for request chatcmpl-d407c2a0 (3639 cache-key tokens from 3640 prompt tokens, 43 layers, cache truncated to 3639 tokens)\nINFO:vmlx_engine.server:Chat completion: 2 tokens in 31.44s (0.1 tok/s)\nINFO:     127.0.0.1:56970 - \"POST /v1/chat/completions HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56972 - \"GET /v1/cache/stats HTTP/1.1\" 200 OK\nINFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K-HeadBF16-Probe-20260520 kwargs={'temperature': 0.0, 'top_p': 0.95, 'repetition_penalty': 1.0, 'max_tokens': 48, 'enable_thinking': False}\nINFO:vmlx_engine.prefix_cache:Paged cache hit for chatcmpl-99c077c8: 15 blocks, 3639 tokens\nINFO:vmlx_engine.scheduler:Request chatcmpl-99c077c8: paged cache hit, 3639 tokens in 15 blocks, 1 remaining to process (worker reconstruct pending)\nINFO:vmlx_engine.scheduler:DSV4 prefix cache store skipped for cache-hit request chatcmpl-99c077c8 (cached_tokens=3639, prompt_len=3640): avoiding synchronous full prompt-boundary re-prefill.\nINFO:vmlx_engine.server:Chat completion: 2 tokens in 0.19s (10.7 tok/s)\nINFO:     127.0.0.1:56973 - \"POST /v1/chat/completions HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56974 - \"GET /v1/cache/stats HTTP/1.1\" 200 OK\nINFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K-HeadBF16-Probe-20260520 kwargs={'temperature': 0.0, 'top_p': 0.95, 'repetition_penalty': 1.0, 'max_tokens': 48, 'enable_thinking': False}\nINFO:vmlx_engine.scheduler:Request chatcmpl-202f90fd: paged cache miss, processing all 52 tokens\nINFO:vmlx_engine.scheduler:DSV4 prefix cache store skipped for request chatcmpl-202f90fd: prompt below snapshot/store threshold (cache_key_tokens=51 < 256).\nWARNING:vmlx_engine.scheduler:Cannot produce prompt-only cache for chatcmpl-202f90fd, skipping paged cache store\nINFO:vmlx_engine.server:Chat completion: 3 tokens in 0.55s (5.4 tok/s)\nINFO:     127.0.0.1:56975 - \"POST /v1/chat/completions HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56976 - \"GET /v1/cache/stats HTTP/1.1\" 200 OK\nINFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K-HeadBF16-Probe-20260520 kwargs={'temperature': 0.0, 'top_p': 0.95, 'repetition_penalty': 1.0, 'max_tokens': 256, 'enable_thinking': True}\nINFO:vmlx_engine.scheduler:Request chatcmpl-df3a1033: paged cache miss, processing all 17 tokens\nINFO:vmlx_engine.scheduler:DSV4 prefix cache store skipped for request chatcmpl-df3a1033: prompt below snapshot/store threshold (cache_key_tokens=16 < 256).\nWARNING:vmlx_engine.scheduler:Cannot produce prompt-only cache for chatcmpl-df3a1033, skipping paged cache store\nINFO:vmlx_engine.server:Chat completion: 65 tokens in 4.14s (15.7 tok/s)\nINFO:     127.0.0.1:56977 - \"POST /v1/chat/completions HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56979 - \"GET /v1/cache/stats HTTP/1.1\" 200 OK\nINFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K-HeadBF16-Probe-20260520 kwargs={'temperature': 0.0, 'top_p': 0.95, 'repetition_penalty': 1.0, 'max_tokens': 96, 'enable_thinking': False}\nWARNING:vmlx_engine.api.tool_calling:Chat template needs fallback tool schema injection.\nWARNING:vmlx_engine.api.tool_calling:Chat template needs fallback tool schema injection.\nINFO:vmlx_engine.scheduler:Request chatcmpl-21c38147: paged cache miss, processing all 206 tokens\nINFO:vmlx_engine.scheduler:DSV4 prefix cache store skipped for request chatcmpl-21c38147: prompt below snapshot/store threshold (cache_key_tokens=205 < 256).\nWARNING:vmlx_engine.scheduler:Cannot produce prompt-only cache for chatcmpl-21c38147, skipping paged cache store\nINFO:vmlx_engine.server:Chat completion: 42 tokens in 4.24s (9.9 tok/s)\nINFO:vmlx_engine.loaders.dsv4_chat_encoder:DSV4 encoding loaded from /Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K-HeadBF16-Probe-20260520/encoding/encoding_dsv4.py\nINFO:     127.0.0.1:56980 - \"POST /v1/chat/completions HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56981 - \"GET /v1/cache/stats HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56982 - \"GET /health HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56983 - \"GET /v1/cache/stats HTTP/1.1\" 200 OK\n"
+    }
+  ]
+}

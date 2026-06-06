@@ -17,8 +17,8 @@ Current package/proof state, refreshed 2026-06-06:
 - Bundled Python was rebuilt from current source and `npm run verify-bundled` passed.
 - Staged Sequoia app was rebuilt and Developer ID signed.
 - `build/current-packaged-integrity-contract-after-unsupported-media-staged-app-20260606.json` is `status=pass`.
-- `build/current-objective-proof-after-mimo-sink-falsification-20260606.json` closes the two Gemma4 26B CRACK rows for installed-app Responses visible-content/language and mixed-SWA speed.
-- `build/current-regression-suite-after-mimo-sink-falsification-20260606.json` is `status=open` with `failed_steps=["release_regression_manifest"]`; source/package/parity/contracts pass, and five live/model rows remain.
+- `build/current-objective-proof-after-dsv4-smoke-refresh-20260606.json` closes the two Gemma4 26B CRACK rows for installed-app Responses visible-content/language and mixed-SWA speed.
+- `build/current-regression-suite-after-dsv4-smoke-refresh-20260606.json` is `status=open` with `failed_steps=["release_regression_manifest"]`; source/package/parity/contracts pass, and five live/model rows remain.
 - No release tag, notarized DMG, public download update, or installed-app replacement has been produced from this continuation.
 
 The app can currently serve several text and some VLM paths, but full VL/audio/video support is not release-cleared across all model families. The remaining work must be classified as either:
@@ -301,3 +301,18 @@ Next MiMo work:
 1. Run source-vs-quant first-divergence against a known-good source/higher-quality MiMo profile, including rendered prompt, first bad token, router top-k, attention logits, and final-norm/lm-head logits.
 2. Compare vMLX server generation against direct `jang_tools.mimo_v2` generation with identical prompt tokens and sampling to separate API/template/parser problems from model forward problems.
 3. Do not fake-clear MiMo by disabling sinks, disabling tools, converting incomplete `<tool_call>` into a synthetic call, or suppressing MiMo media advertisement without implementing the actual media bridge.
+
+## 2026-06-06 DSV4 cross-family smoke refresh
+
+Fresh DSV4 smoke artifact:
+
+- `build/current-all-local-model-smoke-dsv4-jangtq-k-tools-cache-20260606/summary.json`.
+
+Findings:
+
+1. Both matching local DSV4 rows passed the focused all-local smoke: `DeepSeek-V4-Flash-JANGTQ-K` and `DeepSeek-V4-Flash-JANGTQ-K-HeadBF16-Probe-20260520`.
+2. Primary JANGTQ-K row proved exact `ACK` cache repeat, multi-turn recall `blue cat`, visible reasoning answer `FINAL=OK`, and required `record_fact` tool call with `{"value":"blue-cat"}`.
+3. Cache repeat proved native DSV4 cache reuse: first prompt `prompt_tokens=3640`, second repeat reported `cached_tokens=3639` and `cache_detail=paged+dsv4`.
+4. This clears the missing DSV4 cross-family smoke artifact only. It does not clear DSV4 long-output/code/file-generation exactness, which still requires the larger explicit code-quality suite and memory-safe host conditions.
+
+Release boundary remains: do not use this smoke to claim DSV4 exact-code or full release readiness.

@@ -235,8 +235,8 @@ Primary note: `docs/internal/agent-notes/current-gemma4-12b-release-boundary-and
 - Fresh ZAYA artifact: `build/current-all-local-model-smoke-zaya-text-vl-tools-media-after-reasoning-budget-20260606/summary.json`.
 - ZAYA text is narrowed: text cache exact output, paged `zaya_cca` hit, multi-turn recall, and required tool call pass; reasoning-on remains red with reasoning-only empty visible output.
 - ZAYA-VL remains red: text cache exact output, multi-turn recall, reasoning visible output, and red-image recognition fail; blue image and tool call pass; CCA cache hit telemetry exists.
-- Current objective digest: `build/current-objective-proof-after-mimo-sink-falsification-20260606.json`.
-- Current suite: `build/current-regression-suite-after-mimo-sink-falsification-20260606.json` -> `status=open`, failed step only `release_regression_manifest`.
+- Current objective digest: `build/current-objective-proof-after-dsv4-smoke-refresh-20260606.json`.
+- Current suite: `build/current-regression-suite-after-dsv4-smoke-refresh-20260606.json` -> `status=open`, failed step only `release_regression_manifest`.
 - Release remains blocked by cross-family smoke, MiMo, MiniMax reporter parity, real Electron UI matrix, and DSV4 long-output/code quality. No tag/notarized/public release was made.
 
 ## CODEX 2026-06-06 ZAYA text reasoning budget closure
@@ -245,8 +245,8 @@ Primary note: `docs/internal/agent-notes/current-gemma4-12b-release-boundary-and
 - Patched all-local smoke to give ZAYA reasoning probes at least 512 tokens, with strict visible final-answer validation unchanged.
 - Fresh smoke: `build/current-all-local-model-smoke-zaya-text-vl-tools-media-after-reasoning-budget-20260606/summary.json` -> ZAYA text pass, ZAYA-VL still red.
 - Patched objective digest to evaluate mixed artifacts per family, so ZAYA text can be covered while ZAYA-VL remains a blocker.
-- Current digest: `build/current-objective-proof-after-mimo-sink-falsification-20260606.json` covers `zaya_text`; cross-family smoke still misses `dsv4`, `mimo_v2`, and `zaya_vl`.
-- Current suite: `build/current-regression-suite-after-mimo-sink-falsification-20260606.json` -> `status=open`, failed step only `release_regression_manifest`.
+- Current digest: `build/current-objective-proof-after-dsv4-smoke-refresh-20260606.json` covers `zaya_text`; cross-family smoke still misses `dsv4`, `mimo_v2`, and `zaya_vl`.
+- Current suite: `build/current-regression-suite-after-dsv4-smoke-refresh-20260606.json` -> `status=open`, failed step only `release_regression_manifest`.
 - No release tag/notarization/public download update was made.
 
 ## CODEX 2026-06-06 ZAYA-VL no-media contract refresh
@@ -254,8 +254,8 @@ Primary note: `docs/internal/agent-notes/current-gemma4-12b-release-boundary-and
 - Patched all-local smoke so only ZAYA/ZAYA-VL no-media followups use the family-native `ATTACHED/NONE` current-message attachment contract. Generic VLM families keep the stronger system-scoped `answer exactly NONE/IMAGE/VIDEO` contract.
 - Fresh MXFP4 proof: `build/current-all-local-model-smoke-zaya-vl-mxfp4-after-no-media-contract-20260606/summary.json` -> one remaining failure: `reasoning_on` empty visible output with `reasoning_chars=17`.
 - Prior no-media carryover is falsified for MXFP4 by `build/current-zaya-vl-mxfp4-focused-repro-20260606/summary.json`; direct current-message attachment prompts return `NONE` before and after image turns.
-- Current objective digest: `build/current-objective-proof-after-mimo-sink-falsification-20260606.json`.
-- Current suite: `build/current-regression-suite-after-mimo-sink-falsification-20260606.json` -> `status=open`, failed step only `release_regression_manifest`.
+- Current objective digest: `build/current-objective-proof-after-dsv4-smoke-refresh-20260606.json`.
+- Current suite: `build/current-regression-suite-after-dsv4-smoke-refresh-20260606.json` -> `status=open`, failed step only `release_regression_manifest`.
 - Remaining blockers: cross-family live multi-turn smoke, MiMo V2.5 JANG_2L runtime/tool/long-prompt, MiniMax-M2.7-JANGTQ_K reporter parity/root cause, real Electron UI cross-family matrix, DSV4 long-output/code/file-generation. ZAYA-VL reasoning remains a live smoke blocker inside the cross-family row.
 
 ## CODEX 2026-06-06 MiMo sink/cache falsification refresh
@@ -265,3 +265,10 @@ Primary note: `docs/internal/agent-notes/current-gemma4-12b-release-boundary-and
 - `build/current-mimo-v2-jang2l-disable-sink-length-diagnostic-20260606.json`: disabling SWA sink emits repeated punctuation and does not clear quality.
 - Refreshed `build/current-mimo-v2-jang2l-current-audit-20260606.json`: manifest/structural/text-cache/SwitchGLU/cache-vs-no-cache pass; long-prompt coherence and tool protocol remain blocked.
 - MiMo remains release-red; do not classify it as cache-only or sink-kernel-only, and do not ship sink-disable/tool-parser fake fixes.
+
+## CODEX 2026-06-06 DSV4 cross-family smoke refresh
+
+- Ran focused DSV4 all-local smoke despite strict exactness preflight still being below the 120 GB release floor.
+- Artifact: `build/current-all-local-model-smoke-dsv4-jangtq-k-tools-cache-20260606/summary.json` -> pass, 2/2 rows complete.
+- Primary DSV4 row passed exact cache repeat, `paged+dsv4` cache hit with `cached_tokens=3639`, multi-turn recall, visible reasoning, and required tool call.
+- This should remove DSV4 from the cross-family smoke missing list after objective refresh, but DSV4 long-output/code/file-generation remains open.

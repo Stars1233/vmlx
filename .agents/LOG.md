@@ -104,7 +104,7 @@
   (`--dsv4-enable-prefix-cache`, paged block size `256`) and a deterministic
   long repeat-cache prefix while generic smoke rows keep the short prompt.
 - Reran bundled DSV4 smoke:
-  `build/current-all-local-model-smoke-dsv4-jangtq-k-bundled-cachehit-20260524/summary.json`
+  `build/current-all-local-model-smoke-dsv4-jangtq-k-tools-cache-20260606/summary.json`
   -> `pass`, exact ACK repeat, second repeat `cache_hit_tokens=3639` and
   `cache_hits=30`, recall, and `reasoning_on` visible `FINAL=OK`.
 - Updated objective proof so every cross-family smoke family must show a cache
@@ -4642,3 +4642,10 @@ Detailed note: `docs/internal/agent-notes/current-gemma4-12b-release-boundary-an
 - Ran direct MiMo disable-sink length diagnostic: `build/current-mimo-v2-jang2l-disable-sink-length-diagnostic-20260606.json`.
 - Patched `tests/cross_matrix/run_mimo_v2_jang2l_current_audit.py` and `tests/test_mimo_v2_current_audit.py` so current audit preserves the sink/cache falsification boundary.
 - Focused validation passed: py_compile plus `tests/test_mimo_v2_current_audit.py` and MiMo root-cause/release-blocker tests.
+
+# 2026-06-06 DSV4 cross-family smoke refresh
+
+- Coordinated heavy DSV4 smoke in `.agents/MAIL.md`.
+- Ran `bench/all_local_model_smoke.py --only DeepSeek-V4-Flash-JANGTQ-K --include-tools` into `build/current-all-local-model-smoke-dsv4-jangtq-k-tools-cache-20260606`.
+- Both matching rows passed. Primary row proved exact ACK, `paged+dsv4` cached repeat with `cached_tokens=3639`, multi-turn recall, visible reasoning output, and `record_fact` tool call.
+- Updated current proof pointers from `after-mimo-sink-falsification-20260606` to `after-dsv4-smoke-refresh-20260606`.
