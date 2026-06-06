@@ -1351,3 +1351,10 @@ Current classification: local quant is tool-broken independent of CB/q4, but mod
 - Direct `npm run verify-bundled` passed, including Step3p7 VLM runtime, Gemma 4 unified runtime, MiMo registration, and TurboQuant kernel imports.
 - Current packaged integrity artifact: `build/current-packaged-integrity-contract-after-bundle-refresh-20260606.json`.
 - Release boundary: bundled verifier drift is cleared, but release remains blocked by objective/model/UI quality rows and must not be signed/notarized yet.
+
+## 2026-06-06 DSV4 bundled exact-code rerun after bundled Python refresh
+
+- Current bundled exactness artifact: `build/current-dsv4-route-mode-code-exactness-bundled-after-bundle-refresh-20260606.json`.
+- Direct/off still fails: `chat_off_no_punct_rep1` emitted `THREE.ScScene` instead of `THREE.Scene`.
+- Requested thinking still passes: `responses_on` emitted the exact required Three.js snippet.
+- Classification: this remains a DSV4 direct/off rail visible-token reliability blocker, not bundled-source drift and not generic cache corruption.

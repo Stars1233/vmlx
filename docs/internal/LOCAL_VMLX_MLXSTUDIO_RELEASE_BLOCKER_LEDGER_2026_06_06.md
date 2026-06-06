@@ -408,3 +408,22 @@ plain-prefix assumption forward as a release contract.
 - Improvement: bundled Python verifier now passes; critical source/hash/import drift is cleared.
 - Release status remains red: `current_proof_sweep=fail`, `prepackage_ready=false`, `release_ready=false`.
 - Remaining open objective rows: cross-family live multi-turn smoke matrix, MiMo V2.5 JANG_2L runtime/tool/long-prompt quality, MiniMax-M2.7-JANGTQ_K reporter parity/root cause, real Electron UI cross-family live model matrix, and DSV4 long-output/code/file-generation quality.
+
+## 2026-06-06 DSV4 bundled direct/off exactness rerun after bundle refresh
+
+- Artifact: `build/current-dsv4-route-mode-code-exactness-bundled-after-bundle-refresh-20260606.json`.
+- Runtime: `panel/bundled-python/python/bin/python3` with `/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANGTQ-K`.
+- Cases: `chat_off_no_punct_rep1`, `responses_on`.
+- Result: `status=fail`.
+- Direct/off row: `chat_off_no_punct_rep1` failed exactness by corrupting `THREE.Scene` into `THREE.ScScene` under `enable_thinking=false`.
+- Requested-thinking row: `responses_on` passed exact code under `enable_thinking=true`.
+- Classification: current bundled source still reproduces the DSV4 direct/off visible-token reliability blocker. This is not cleared by cache settings, packaged Python refresh, parser routing, or silently forcing thinking on.
+- Release boundary: DSV4 long-output/code/file-generation quality remains open.
+
+## 2026-06-06 Objective/manifest refresh after DSV4 bundled exactness rerun
+
+- Objective proof: `build/current-objective-proof-after-dsv4-bundled-exactness-refresh-20260606.json`.
+- Release manifest: `build/current-release-regression-manifest-after-dsv4-bundled-exactness-refresh-20260606.json`.
+- DSV4 bundled exactness artifact: `build/current-dsv4-route-mode-code-exactness-bundled-after-bundle-refresh-20260606.json`.
+- Current DSV4 status remains open: direct/off exact-code quality fails with `THREE.ScScene`; requested-thinking exactness is diagnostic only and does not clear direct/off.
+- Release status remains red: `current_proof_sweep=fail`, `prepackage_ready=false`, `release_ready=false`.
