@@ -208,3 +208,12 @@ Scope: local vMLX Python engine and MLXStudio/panel release path only. No adlab,
   - `.venv/bin/python -m pytest -q tests/test_step3p7_mllm_detection_guard.py tests/test_step37_vlm_runtime_audit.py` -> `10 passed`.
   - `.venv/bin/python -m pytest -q tests/test_engine_audit.py -k 'step3p7 and mllm'` -> `1 passed`.
 - Release boundary: source text-runtime guard is covered; real Step3.7 image/video VLM runtime and installed-app parity are not release-cleared.
+
+## 2026-06-06 structured-output JSON repair proof
+
+- Artifact: `build/current-structured-output-json-repair-proof-20260606.json`.
+- Current source includes post-generation JSON repair and schema normalization in `vmlx_engine/api/tool_calling.py`, plus benchmark reporting in `bench/structured_output_repair_report.py`.
+- Covered cases include markdown fences, trailing commas, Python literals, missing closing braces, prose around JSON, adjacent string fragments for schema array fields, scalar-to-array schema coercion, and raw-vs-repaired diagnostics.
+- The Qwen-style malformed case `{"visible_text": "CLIPFARM STRESS STREAM", "0-15 M00 ALERT START"}` repairs to `{"visible_text": ["CLIPFARM STRESS STREAM", "0-15 M00 ALERT START"]}` when the schema declares `visible_text` as an array.
+- Verification: `.venv/bin/python -m pytest -q tests/test_structured_output.py tests/test_structured_output_repair_report.py` -> `44 passed, 2 skipped`.
+- Release boundary: this is post-generation repair/validation, not hard constrained JSON decoding.
