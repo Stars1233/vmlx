@@ -1,38 +1,24 @@
 {
-  "classification": "source_vs_quant_blocked_current_source_endpoint_unavailable",
-  "local_quant_observations": {
-    "cb_kv_none_tool": "HTTP 200 but same punctuation garbage/no tool_calls; q4 KV not causal",
-    "cb_q4_tool": "HTTP 200 but punctuation garbage/no tool_calls; generation_tps about 1.79",
-    "literal_xml_copy_simple": "failed to copy valid XML; emitted repetition/malformed function_call",
-    "simple_kv_none_tool": "HTTP 200 but punctuation garbage/no tool_calls; CB not uniquely causal"
-  },
-  "max2_current_8124": {
-    "evidence": "/health and /v1/models on erics-m5-max2.local:8124 report qwen36, sharding_plan=qwen35, model_path=/opt/adlab/models/qwen36-27b-mxfp8-mtp",
-    "model_name": "qwen36-27b-mxfp8-tp4-pod1-shardedvocab",
-    "not_mimo": true
-  },
-  "mimo_source_state": {
-    "old_mimo_rank_dirs_have_requests_responses_but_no_ready_json": true,
-    "rank_dirs_not_attachable_as_live_workers": true,
-    "rank_metadata": {
-      "rank0": {
-        "index_file_count": 93,
-        "missing_file_count": 0,
-        "missing_files_head": [],
-        "present_file_count": 93,
-        "present_total_files_on_disk": 108
-      },
-      "rank1": {
-        "index_file_count": 81,
-        "missing_file_count": 0,
-        "missing_files_head": [],
-        "present_file_count": 81,
-        "present_total_files_on_disk": 97
-      }
+  "status": "open",
+  "timestamp": "2026-06-06T21:40:00Z",
+  "scope": "local vMLX Python engine only",
+  "classification": "source_vs_quant_blocked_local_source_bundle_missing",
+  "local_paths": {
+    "source_model_path": {
+      "path": "/Users/eric/models/MiMo-V2.5-source",
+      "exists": false
+    },
+    "quant_model_path": {
+      "path": "/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L",
+      "exists": true
     }
   },
-  "next_required_action": "repair/relaunch MiMo TP4 source endpoint on a free port or intentionally displace current Qwen TP4 workers, then run source-vs-quant rows for exact cache, tool XML, literal XML copy, and long prompt.",
-  "release_boundary": "Do not call MiMo runtime/model issue resolved until source and quant are compared. Current evidence says local quant is tool-broken independent of CB/q4, but source endpoint is unavailable so model-upload vs runtime cannot be finally classified.",
-  "status": "open",
-  "timestamp": 1780777985.193772
+  "local_quant_observations": {
+    "simple_text_exactness": "latest live artifacts show text-only exact prompt failures such as empty visible output or 'The user said' instead of requested exact token",
+    "tool_protocol": "latest live artifacts show punctuation/CJK-style garbage or missing tool_calls under xml_function parser",
+    "cache": "narrow exact cache proof exists, but broad exact cache prompt following and long prompt rows remain blocked",
+    "speed": "latest live artifacts report generation_tps around 1.7-1.8, below the 40 tok/s target"
+  },
+  "next_required_action": "obtain or restore a local source MiMo-V2.5 endpoint/bundle, then run source-vs-quant rows for exact short text, long prompt, XML tool call, literal XML copy, and cache repeat",
+  "release_boundary": "Do not classify MiMo as model-upload issue or runtime issue conclusively until source and quant are compared locally or an equivalent local source proof exists. Current local quant path remains release-blocked. No remote/adlab state is part of this proof."
 }

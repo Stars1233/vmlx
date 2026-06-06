@@ -1,132 +1,19 @@
 {
   "blockers": [
-    "missing_or_unhealthy_source_endpoint"
+    "missing_or_unhealthy_source_endpoint",
+    "missing_or_unhealthy_quant_endpoint",
+    "missing_source_model_path"
   ],
   "endpoints": {
     "quant": {
-      "base_url": "http://127.0.0.1:8897",
-      "error": null,
-      "health": {
-        "acceleration": {
-          "host": {
-            "brand": "Apple M5 Max",
-            "reason": null,
-            "supported": true
-          },
-          "kernel_type": "affine_quantized_matmul",
-          "metal_na_active_on_host": true,
-          "metal_na_capable": true,
-          "metal_na_symbols": {
-            "affine_gather_qmm_symbols": 3456,
-            "affine_qmm_symbols": 4212,
-            "available": true,
-            "nax_symbols": 4668,
-            "naxtile_symbols": 4154
-          },
-          "reason": null
-        },
-        "engine_type": "simple",
-        "last_request_time": 1780771570.243166,
-        "mcp": null,
-        "memory": {
-          "active_mb": 106810.1,
-          "cache_mb": 0.0,
-          "peak_mb": 108279.0
-        },
-        "model_loaded": true,
-        "model_name": "JANGQ-AI/MiMo-V2.5-JANG_2L",
-        "model_type": "mllm",
-        "mtp": {
-          "artifact_available": false,
-          "cache_type": null,
-          "config_mtp_layer_source": null,
-          "config_num_nextn_predict_layers": null,
-          "effective_depth": null,
-          "effective_depth_source": null,
-          "family": "mimo_v2",
-          "has_vision_config": true,
-          "has_vision_weights": true,
-          "index_has_mtp_tensors": false,
-          "index_mtp_layer_count": null,
-          "issues": [],
-          "jang_drop_mtp": null,
-          "jang_mtp_layers": null,
-          "mtp_tensor_count": 0,
-          "request_gate": "temperature=0,repetition_penalty=1.0",
-          "request_policy": "disabled",
-          "runtime_active": false,
-          "runtime_available": false,
-          "runtime_bundle_has_mtp": null,
-          "runtime_mtp_mode": null,
-          "runtime_reason": "config does not request MTP",
-          "runtime_scope": null,
-          "runtime_supported": false,
-          "runtime_validation_blocked": false,
-          "status": "not_configured",
-          "vision_tensor_count": 364,
-          "vl_runtime_available": false
-        },
-        "quantization": {
-          "codec": "affine_quantized_matmul",
-          "config_bits": 8,
-          "group_size": 64,
-          "mxtq_bits_by_role": {
-            "down_proj": 2,
-            "gate_proj": 3,
-            "up_proj": 2
-          },
-          "sidecar": {
-            "jang_config": false,
-            "jangtq_runtime": false,
-            "prestacked_bundle": false
-          },
-          "target_bits": 8,
-          "weight_index": {
-            "index_file": "/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L/model.safetensors.index.json",
-            "mtp_tensor_count": 0,
-            "routed_layout_counts": {
-              "prestacked_switch": 0,
-              "split_expert": 108288
-            },
-            "suffix_counts": {
-              "biases": 36147,
-              "scales": 36147,
-              "weight": 36618
-            },
-            "total_tensors": 109180,
-            "tq_target_counts": {}
-          },
-          "weight_matmul_dispatch": {
-            "metal_na_eligible": true,
-            "primary": "mlx_affine_quantized_matmul",
-            "reason": null,
-            "uses_mlx_quantized_matmul": true
-          }
-        },
-        "routing": {
-          "effective_active_experts": 8,
-          "effective_active_experts_source": "trained_default",
-          "n_routed_experts": 256,
-          "override_env": null,
-          "trained_active_experts": 8,
-          "trained_active_experts_source": "config.num_experts_per_tok"
-        },
-        "speculative_decoding": "not_configured",
-        "status": "healthy",
-        "turboquant_kv_cache": {
-          "critical_bits": 4,
-          "critical_layers": "first 3 + last 3",
-          "default_bits": 3,
-          "enabled": true
-        }
-      },
-      "health_http_status": 200,
-      "healthy": true
+      "base_url": null,
+      "error": "missing_base_url",
+      "health_http_status": null,
+      "healthy": false
     },
     "source": {
-      "base_url": "http://erics-m5-max2.local:8126",
-      "error": "URLError: <urlopen error [Errno 61] Connection refused>",
-      "health": null,
+      "base_url": null,
+      "error": "missing_base_url",
       "health_http_status": null,
       "healthy": false
     }
@@ -140,22 +27,22 @@
       "remote": false
     },
     "source": {
-      "exists": true,
-      "host": "erics-m5-max2.local",
-      "is_dir": true,
-      "path": "/Volumes/EricsLLMDrive/jangq-ai/sources/MiMo-V2.5",
-      "remote": true
+      "exists": false,
+      "host": null,
+      "is_dir": false,
+      "path": "/Users/eric/models/MiMo-V2.5-source",
+      "remote": false
     }
   },
-  "quant_base_url": "http://127.0.0.1:8897",
+  "quant_base_url": null,
   "quant_host": null,
   "quant_model_path": "/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L",
   "release_boundary": "This is preflight evidence only. It cannot clear MiMo release until source and quant endpoints both run and prompt rows execute.",
   "remote_evidence_only": false,
   "rows": [],
-  "source_base_url": "http://erics-m5-max2.local:8126",
-  "source_host": "erics-m5-max2.local",
-  "source_model_path": "/Volumes/EricsLLMDrive/jangq-ai/sources/MiMo-V2.5",
+  "source_base_url": null,
+  "source_host": null,
+  "source_model_path": "/Users/eric/models/MiMo-V2.5-source",
   "status": "missing_prerequisites",
   "summary": {
     "quant_diverges_from_source": 0,

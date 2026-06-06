@@ -168,3 +168,13 @@ Scope: local vMLX Python engine and MLXStudio/panel release path only. No adlab,
 - Result: manifest runner exited nonzero because release is still blocked.
 - Current release state remains: `current_proof_sweep=fail`, `prepackage_ready=false`, `release_ready=false`.
 - MiMo current audit now includes `mllm_inputs_embeds_interface=true`, but still blocks on long-prompt coherence, tool protocol, decode speed, source-vs-quant proof, and VL/audio/video media wiring.
+
+## 2026-06-06 local-only MiMo source-vs-quant preflight refresh
+
+- Artifact: `build/current-mimo-v2-jang2l-source-vs-quant-first-divergence-20260606.json`.
+- Artifact: `build/current-mimo-v2-jang2l-tool-source-preflight-20260606.json`.
+- Updated current MiMo source-vs-quant and tool-source preflight evidence to local-only scope.
+- Local source bundle `/Users/eric/models/MiMo-V2.5-source` is missing; local quant bundle `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L` exists.
+- No remote/adlab/Max2 endpoint is part of the current proof boundary.
+- Release manifest after this refresh: `build/current-release-regression-manifest-after-mimo-local-only-preflight-20260606.json`.
+- Current release state remains: `current_proof_sweep=fail`, `prepackage_ready=false`, `release_ready=false`.
