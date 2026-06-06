@@ -1,0 +1,23 @@
+{
+  "status": "pass_source_regression_only",
+  "created_at": "2026-06-06T00:00:00-07:00",
+  "scope": "MiMo V2.5 JANG_2L SimpleEngine non-MLLM text prompt rendering",
+  "fixed_files": [
+    "vmlx_engine/engine/simple.py",
+    "tests/test_mllm_message_serialization.py"
+  ],
+  "bug_class": "MiMo native tokenizer renders enable_thinking=false as a closed <think></think> assistant rail; current failure artifacts show this prompt shape can first-token-stop or produce empty visible output on long/cache/tool rows.",
+  "fix": "When SimpleEngine is using the non-MLLM text path for family mimo_v2 and the API request asks enable_thinking=false, render the chat template with enable_thinking=true so the native template emits the plain assistant prefix. The API-level thinking-off contract remains requested_enable_thinking=false; only the prompt render kwarg changes for MiMo.",
+  "verification": [
+    {
+      "command": ".venv/bin/python -m py_compile vmlx_engine/engine/simple.py tests/test_mllm_message_serialization.py",
+      "status": "pass"
+    },
+    {
+      "command": ".venv/bin/python -m pytest -q tests/test_mllm_message_serialization.py -k 'mimo_v2_thinking_false_uses_plain_template_prefix or simple_engine_routes_mimo_text_only_chat_through_language_model or simple_engine_mimo_llm_path_uses_plain_template_prefix or batched_engine_mimo_text_only_uses_plain_template_prefix'",
+      "status": "pass",
+      "result": "4 passed, 67 deselected"
+    }
+  ],
+  "release_boundary": "This is not live MiMo clearance. Long-prompt coherence, tool protocol, source-vs-quant classification, speed, cache/L2, and VL/audio/video remain open."
+}

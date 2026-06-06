@@ -243,3 +243,13 @@ Scope: local vMLX Python engine and MLXStudio/panel release path only. No adlab,
 - The Qwen-style malformed case `{"visible_text": "CLIPFARM STRESS STREAM", "0-15 M00 ALERT START"}` repairs to `{"visible_text": ["CLIPFARM STRESS STREAM", "0-15 M00 ALERT START"]}` when the schema declares `visible_text` as an array.
 - Verification: `.venv/bin/python -m pytest -q tests/test_structured_output.py tests/test_structured_output_repair_report.py` -> `44 passed, 2 skipped`.
 - Release boundary: this is post-generation repair/validation, not hard constrained JSON decoding.
+
+## 2026-06-06 MiMo SimpleEngine non-MLLM prompt-shape fix
+
+- Artifact: `build/current-mimo-simple-engine-llm-template-fix-20260606.json`.
+- Fixed a concrete prompt-rendering gap in `vmlx_engine/engine/simple.py`: the non-MLLM SimpleEngine text path for `mimo_v2` now renders the native MiMo template with `enable_thinking=true` when the API request asks `enable_thinking=false`, matching the existing MLLM and batched MiMo text-only plain-prefix contract.
+- Root issue: MiMo's native `enable_thinking=false` template emits `<think></think>` after the assistant prefix. Current MiMo artifacts already showed that closed rail can produce `<|im_end|>` first-token stop, empty visible output, or garbage on long/cache/tool rows.
+- Verification:
+  - `.venv/bin/python -m py_compile vmlx_engine/engine/simple.py tests/test_mllm_message_serialization.py` -> pass.
+  - `.venv/bin/python -m pytest -q tests/test_mllm_message_serialization.py -k 'mimo_v2_thinking_false_uses_plain_template_prefix or simple_engine_routes_mimo_text_only_chat_through_language_model or simple_engine_mimo_llm_path_uses_plain_template_prefix or batched_engine_mimo_text_only_uses_plain_template_prefix'` -> `4 passed, 67 deselected`.
+- Release boundary unchanged: this is a source regression fix for one prompt-rendering gap. It does not clear MiMo live long-prompt coherence, tool protocol, source-vs-quant classification, decode speed, cache/L2, or VL/audio/video runtime support.
