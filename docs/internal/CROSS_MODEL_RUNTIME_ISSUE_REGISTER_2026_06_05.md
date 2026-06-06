@@ -12,14 +12,14 @@ Current known release state:
 - `jjang-ai/vmlx` main after 1.5.56: `fa9f455b` includes structured JSON repair and DSV4 completions rail fix.
 - PyPI is not current: PyPI latest remains `1.5.49`; `1.5.56` upload blocked by PyPI trusted-publisher/API-token config.
 - Full cross-family runtime matrix remains open. Do not claim all model families production-cleared.
-- Current regression suite proof: `build/current-regression-suite-after-mimo-scope-removal-20260604.json` is `status=pass` with `failed_steps=[]`, but keeps 12 exact release requirements open. This is not a release-ready signal.
+- Current regression suite proof after DSV4 app-launch default-cache clearance: `build/current-regression-suite-after-mimo-scope-removal-20260604.json` is `status=pass` with `failed_steps=[]` and 11 open objective rows. This is the active systematic list; it is still not a release-ready signal.
 - MiniMax #117/#179 proof boundary: current root-cause audit is `open`, memory-preflight artifact exists and did not launch the huge model, and live Responses cancel/reporter parity proof is still absent. This must stay open; do not classify screenshot/output corruption as model artifact or runtime until reporter parity proof exists.
 - DSV4 default-cache tool loop boundary: `build/current-dsv4-default-cache-tool-loop/result.json` was run live with native prefix+paged+block-disk L2 enabled and `status=review`. Runtime/tool/cache checks pass: DSML tools executed `list_directory -> write_file -> write_file`, final answer was `DONE`, cached tokens were seen with `paged+dsv4`, native cache was `native_composite`, and generic TurboQuant KV stayed off. The remaining review cause is generated code exactness (`THREE.ScScene()` and `THREE.BBoxGeometry()`), so this is tracked under DSV4 code/file-generation quality, not as a default-cache/tool-loop runtime failure.
-- DSV4 rows now proven from the current live default-cache artifact: `DSV4 cache is native SWA+CSA/HCA composite, not generic KV/TurboQuant KV`, `DSV4 can perform multiple tool iterations then final answer`, and `DSV4 default-cache multi-tool agent loop is proven`. Still open: app-launch default wiring, same-process TTFT/latency proof, restart L2 proof, and DSV4 exact code/file generation quality.
-- DSV4 same-process cache-hit/TTFT row is now proven from `build/current-dsv4-responses-cache-gate-20260606.json`: previous-response follow-up hit `5195` cached tokens with `paged+dsv4`, streaming follow-up recorded TTFT `0.3339s`, and explicit no-cache full prompt stayed uncached and took `22.17s` wall. Still open: app-launch default wiring, restart L2 proof, and DSV4 exact code/file generation quality.
+- DSV4 rows now proven from current artifacts: app-launch default native prefix/paged/L2 wiring is proven by `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json` plus `build/current-dsv4-default-cache-tool-loop/result.json`; native SWA+CSA/HCA composite cache is proven; same-process TTFT/cache-hit is proven from `build/current-dsv4-responses-cache-gate-20260606.json`; one-tool stop and multi-tool default-cache loop are proven. Still open: restart L2 proof and DSV4 exact code/file generation quality.
 - DSV4 one-tool-after-result row is now proven from `build/current-dsv4-responses-one-tool-stop-20260606.json`: round 1 emitted exactly one structured `list_directory` call, round 2 used `previous_response_id`, kept `tools=TOOLS` with `tool_choice=auto`, emitted no function calls, and returned exactly `DONE` with native prefix+paged+block-disk L2 enabled.
 - DSV4 restart-L2 row is still open. Current artifact `build/current-dsv4-responses-restart-l2-gate-20260606.json` is `status=review`: before restart it wrote 21 DSV4 block-disk L2 blocks; after restart it read 21 disk hits from the same isolated cache dir and survived with visible `STORED`, but `restart_dsv4_cache_hit=false` and no `paged+dsv4` usage detail. Earlier exact terminal restore before the fail-closed guard hit 21 blocks / 5195 cached tokens and then crashed in Metal with `kIOGPUCommandBufferCallbackErrorTimeout`. Classification: `kernel_cache` runtime issue, not model artifact corruption.
 - Packaged release signing/parity row was repaired on 2026-06-06. Fresh Developer ID signing now works non-interactively, `panel/release/sequoia-app/mac-arm64/vMLX.app` was rebuilt from current source, and `build/current-packaged-integrity-contract-gemma4-release-boundary-after-ui-e2e-fixes-dmg-build-20260604.json` is `status=pass` with staged app engine hash parity, source hash parity, hardened runtime, and signature preflight all green. This does not mean the public release is clear: DMG notarization was not produced in this pass, and live/model objective rows still block release readiness.
+- MiMo is explicitly back in scope as of 2026-06-06. Eric requested: delete all past local MiMo model copies on this machine because they are bad; HTTP-download the MiMo JANG_2L artifact referenced in `erics-m5-max2.local:~/jang` docs; then implement/fix the new MiMo JANG_2L runtime path with real live proof. Do not reuse older local MiMo artifacts as evidence.
 
 ## Status Legend
 
@@ -530,6 +530,49 @@ Required:
 - [ ] Metadata mixed-precision/config consistency proof.
 - [ ] TurboQuant kernel import and runtime proof.
 
+### MiMo
+
+Current status: `[!]` Re-entered active scope on 2026-06-06. Existing local MiMo models are considered bad until removed and replaced from the Max2-documented JANG_2L source.
+
+Required cleanup/intake:
+
+- [ ] Inventory local MiMo model directories on this machine.
+- [ ] Delete all past local MiMo model copies after recording paths removed.
+- [ ] SSH or otherwise access `erics-m5-max2.local:~/jang` docs and locate the HTTP download source for the MiMo JANG_2L artifact.
+- [ ] Download the documented MiMo JANG_2L artifact over HTTP, not by silently reusing stale local copies.
+- [ ] Verify artifact integrity: config, `jang_config.json`, tokenizer/chat template, sidecars, quant metadata, shard count, and expected JANG_2L precision.
+
+Required runtime work:
+
+- [ ] Implement/fix MiMo JANG_2L model-family detection without directory-name regex.
+- [ ] Route MiMo JANG_2L through the correct loader/runtime, not generic fallback if architecture-specific code is required.
+- [ ] Verify cache policy: prefix, paged, L2 disk, and any hybrid/SSM/architecture-specific state handling.
+- [ ] Verify TurboQuant/JANG kernels or explicitly classify unsupported kernel paths.
+- [ ] Verify thinking/template/parser behavior from model-owned metadata.
+- [ ] Verify tool-call protocol and loop behavior.
+- [ ] Verify Chat Completions, Responses, Anthropic, and Ollama surfaces where supported.
+- [ ] Verify streaming and non-streaming full visible outputs, including tail review.
+- [ ] Verify sleep/wake/unload/reload lifecycle.
+- [ ] Verify panel settings reflection and launch flags.
+
+Proof required before closing:
+
+```text
+removed_bad_local_paths
+download_url
+downloaded_artifact_path
+artifact_hash_or_shard_manifest
+config/jang_config/tokenizer/template summary
+vMLX load classification
+live server commands
+API surface results
+cache/scheduler telemetry
+tool/multi-turn outputs
+UI/settings evidence
+post-error recovery
+release-gate artifact path
+```
+
 ## Release-Surface Blockers
 
 ### CM-REL-001 Fresh Developer ID signing blocked while stale app verifies
@@ -646,7 +689,8 @@ Every model-family proof should record:
 6. `[!]` Fix PyPI trusted publisher or token so Python package release is not stale.
 7. `[D]` Re-run DSV4 long-output/code exactness and real UI proof when memory/model state allows.
 8. `[~]` Complete DMG notarization/stapling/public manifest work after live/model objective rows are green; staged Sequoia app signing/parity is fixed, notarized DMG is not.
-9. `[ ]` Execute per-family matrix for Gemma4, Qwen, LFM, Step, DSV4, Nemotron, Zaya/MiMo/Kimi, JANG/JANGTQ/MXFP.
+9. `[!]` MiMo cleanup/intake/runtime: delete bad local MiMo models, download documented MiMo JANG_2L from Max2 docs, then implement/fix and live-prove MiMo JANG_2L runtime.
+10. `[ ]` Execute per-family matrix for Gemma4, Qwen, LFM, Step, DSV4, Nemotron, Zaya/MiMo/Kimi, JANG/JANGTQ/MXFP.
 
 ## Non-Negotiable Release Notes
 
