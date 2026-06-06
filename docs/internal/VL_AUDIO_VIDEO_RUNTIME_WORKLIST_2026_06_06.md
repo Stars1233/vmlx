@@ -277,14 +277,14 @@ What is proven:
 
 Current classification:
 
-- `decode_loop`: the failure tracks the DSV4 assistant suffix rail, `thinking_closed` (`<|Assistant|></think>`) versus `thinking_open` (`<|Assistant|><think>`), and affects exact identifier fidelity.
-- `model_artifact`: not proven yet. The same uploaded artifact can produce exact output on the thinking-open rail, so corrupt weights are not the first explanation.
-- `runtime_dispatch`: not proven as the root cause yet. The encoder currently treats the `</think>` off suffix as an explicit DSV4 contract; do not change it without a source/model-card trace and broader route tests.
+- `decode_loop` / `model behavior`: the failure tracks the DSV4 assistant suffix rail, `thinking_closed` (`<|Assistant|></think>`) versus `thinking_open` (`<|Assistant|><think>`), and affects exact identifier fidelity.
+- `model_artifact`: not proven yet. The same uploaded artifact can produce exact output on the thinking-open rail, so corrupt weights are not the first explanation; a source-vs-quant or higher-precision comparison is still needed.
+- `runtime_dispatch`: not the current leading root cause for the suffix itself. The local model `encoding/README.md`, `encoding_dsv4.py`, and `chat_template.jinja` all declare that chat/non-think mode appends `</think>` after `<|Assistant|>`.
 
 Required next DSV4 checks:
 
-1. Trace DSV4 template/model documentation for whether `enable_thinking=false` should end with `</think>` or a different chat suffix.
-2. Run direct raw prompt or model-native reference generation, if available, to separate runtime prompt construction from model behavior.
+1. Run source or higher-precision reference generation, if available, to separate JANGTQ/model behavior from quantization artifact behavior on the official chat rail.
+2. Run direct raw prompt/model-native reference generation to separate runtime prompt construction from model behavior, but keep the official chat suffix unchanged unless the artifact metadata changes.
 3. Run exact-code rows across Chat, Responses, legacy completions, streaming, restart-L2, and UI-spawned installed app.
 4. Do not ship a hidden force-thinking-on fix. If off-rail exact code is weak by model design, document that as a model behavior/artifact limitation; if the suffix is wrong, fix the encoder/runtime contract.
 
