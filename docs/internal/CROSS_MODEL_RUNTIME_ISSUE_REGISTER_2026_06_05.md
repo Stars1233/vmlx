@@ -890,3 +890,35 @@ Durable media-runtime worklist added:
 - `docs/internal/VL_AUDIO_VIDEO_RUNTIME_WORKLIST_2026_06_06.md`
 
 This is the active checklist for the remaining VL/audio/video release blockers. It lists the required runtime functions, per-family blocker state, missing implementation areas, and live proof rows needed before a public release/tag/notarized build can be claimed.
+
+## 2026-06-06 live smoke continuation: Gemma26, MiniMax K, MiMo
+
+Fresh source-server smoke:
+
+- Combined source run: `build/current-all-local-model-smoke-gemma26-minimaxk-tools-media-continuation-20260606/summary.json`
+- Split Gemma26 proof: `build/current-all-local-model-smoke-gemma26-jang4m-tools-media-continuation-20260606/summary.json`
+- Split MiniMax K proof: `build/current-all-local-model-smoke-minimaxk-tools-continuation-20260606/summary.json`
+
+Results:
+
+- Gemma4 26B JANG_4M CRACK source smoke passed: exact `ACK`, paged mixed-SWA cache hit, multi-turn recall, reasoning-on final answer, required OpenAI tool call, image color, video color, and text-after-media recovery all returned HTTP 200. Health reported native `gemma4/mixed_swa_kv_v1`, full/sliding KV, rotating metadata, and storage quantization.
+- MiniMax-M2.7-JANGTQ_K CRACK source smoke passed: exact `ACK`, paged cache hit with `cache_detail=paged+tq`, generic TurboQuant KV enabled for plain attention KV, block-disk L2 present, multi-turn recall, reasoning-on final answer, and required OpenAI `record_fact` tool call all returned HTTP 200.
+- These source smokes update cross-family live evidence, but they do not close Gemma4 26B installed-app Responses visible-content, Gemma4 26B installed mixed-SWA speed floor, or MiniMax K reporter parity/root-cause rows.
+
+Fresh MiMo rerun:
+
+- Optimized rerun: `build/current-all-local-model-smoke-mimo-v25-jang2l-tools-media-rerun-20260606/summary.json`
+- Conservative diagnostic: `build/current-mimo-conservative-diagnostic-20260606/summary.json`
+
+MiMo classification:
+
+- Current source no longer shows the old MiMo cache-head shape crash. The optimized run loaded MiMo as MLLM, exposed `mimo_v2/mixed_swa_kv_v1` with `mimo_v2_asymmetric_swa`, paged prefix cache, block-disk L2, and TurboQuant/storage quantization telemetry.
+- MiMo remains release-red: first exact-cache request produced empty visible output, cached repeat hit `cached_tokens=54` / `cache_detail=paged` but rambled instead of exact `ACK`, and `tool_choice=required` returned a typed 400 because the model produced no parsed tool calls.
+- Conservative simple-mode diagnostic with no prefix cache and no KV quantization proved this is not only paged cache/TurboQuant corruption: exact `ACK` passes, but required tool calls fail with no tool calls both thinking-on and thinking-off, each around 96 seconds. MiMo is blocked by tool protocol/output quality and speed, with VL/audio/video still not implemented/cleared.
+
+Proof-pointer refresh:
+
+- `tests/cross_matrix/summarize_objective_proof.py`, current-suite defaults, release-manifest proof pointers, and exact-pointer tests now use the 2026-06-06 Gemma26/MiniMax/MiMo artifacts.
+- Focused proof-pointer regression: `254 passed, 270 deselected`.
+- Current suite: `build/current-regression-suite-after-gemma26-minimaxk-mimo-rerun-final-20260606.json` is `status=open`. All no-heavy/static/API/cache/tool/defaults/parser/model-family/VL-media/focused pytest gates pass. Remaining failed steps are `packaged_integrity_contracts`, `release_regression_manifest`, and `release_gate_skip_app`.
+- Remaining open objective rows: Gemma4 26B Responses visible-content/language quality, Gemma4 26B mixed-SWA app-engine speed, cross-family live multi-turn smoke matrix, MiMo runtime/tool/long-prompt quality, MiniMax K reporter parity/root cause, real Electron UI cross-family matrix, and DSV4 long-output/code/file-generation quality.
