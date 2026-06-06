@@ -345,16 +345,20 @@
     "stream_started": null
   },
   "local_responses_cancel_probe": {
-    "cancel_status": null,
-    "exists": false,
-    "max_output_tokens": null,
-    "model": null,
-    "path": "build/current-issue179-minimax-k-responses-cancel-probe-20260602-local-ready-live.json",
-    "probe": {},
-    "prompt": null,
-    "response_id_seen": false,
-    "sha256": null,
-    "status": null
+    "cancel_status": 200,
+    "exists": true,
+    "max_output_tokens": 4096,
+    "model": "models/MiniMax-M2.7-JANGTQ_K",
+    "path": "build/current-issue179-minimax-k-responses-cancel-probe-20260606-live-refresh.json",
+    "probe": {
+      "abort_boundary": "controlled_cancel_after_response_id",
+      "bad_text_captured": true,
+      "cancel_route_present": true
+    },
+    "prompt": "Hi",
+    "response_id_seen": true,
+    "sha256": "e37b83700710b79b9f0df59c82582c9452a02c13a6975c08e759dd94c5d88ad3",
+    "status": "pass"
   },
   "not_proven": [
     "reporter model shard/codebook hashes match local full K artifact",
@@ -517,7 +521,7 @@
         "reporter_cancel_route_unknown",
         "local_installed_cancel_route_present",
         "public_v1549_tahoe_dmg_cancel_route_unproven",
-        "local_installed_live_cancel_unproven",
+        "local_installed_live_cancel_200",
         "source_proves_inactive_response_cancel_404_after_lookup",
         "local_installed_hash_differs_from_public_v1549_tahoe",
         "missing_reporter_parity_artifact"

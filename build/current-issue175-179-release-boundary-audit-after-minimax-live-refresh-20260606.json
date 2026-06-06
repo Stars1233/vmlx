@@ -1,0 +1,101 @@
+{
+  "artifact": "build/current-issue175-179-release-boundary-audit-after-minimax-live-refresh-20260606.json",
+  "focused_failures": [],
+  "issues": {
+    "175": {
+      "checks": {
+        "falls_back_to_top_level_clear_cache": true,
+        "helper_exists": true,
+        "installed_app_live_memory_stress_proven": false,
+        "installed_app_memory_clear_runtime_proven": false,
+        "no_raw_removed_api_in_runtime_paths": true,
+        "prefers_metal_clear_cache": true
+      },
+      "focused_source_slice": "open",
+      "release_clearance": "open_live_app_runtime_memory_proof_required",
+      "title": "`mx.clear_memory_cache()` silently fails on MLX 0.31+"
+    },
+    "176": {
+      "checks": {
+        "drops_disk_mirror_after_reconstruct": true,
+        "installed_app_live_memory_pressure_proven": false,
+        "installed_app_promoted_block_cleanup_proven": false,
+        "l2_readable_write_through_regression_test_present": true,
+        "marks_promoted_disk_blocks": true,
+        "regression_test_present": true
+      },
+      "focused_source_slice": "open",
+      "release_clearance": "open_live_memory_pressure_proof_required",
+      "title": "Promoted paged-cache blocks can retain parent KV buffers"
+    },
+    "177": {
+      "checks": {
+        "cold_paged_reason_present": true,
+        "focused_regression_test_present": true,
+        "installed_app_cache_selection_telemetry_proven": false,
+        "installed_live_ttft_and_cold_paged_tq_proven": false,
+        "selection_telemetry_in_health": true,
+        "selection_telemetry_in_scheduler": true,
+        "worker_timing_regression_test_present": true
+      },
+      "focused_source_slice": "open",
+      "release_clearance": "open_live_ttft_proof_required",
+      "title": "Cache path selection can regress TTFT with paged/TurboQuant caches"
+    },
+    "178": {
+      "checks": {
+        "focused_regression_test_present": true,
+        "image_load_lora_signature_guard": true,
+        "installed_app_lora_surface_proven": true,
+        "serve_cli_lora_paths": true,
+        "serve_cli_lora_scales": true,
+        "text_lora_flags_rejected": true
+      },
+      "focused_source_slice": "pass",
+      "release_clearance": "packaged_app_lora_surface_proven",
+      "title": "Expose LoRA paths through vmlx serve"
+    },
+    "179": {
+      "checks": {
+        "audit_artifact_pass": false,
+        "local_installed_live_cancel_probe_proven": false,
+        "local_reporter_prompt_reproduction_clean": false,
+        "not_proven_empty": false,
+        "reporter_cancel_404_recorded": false,
+        "reporter_parity_proven": false,
+        "responses_cancel_route_tested": true
+      },
+      "focused_source_slice": "open",
+      "release_clearance": "open_reporter_parity_required",
+      "title": "MiniMax-M2.7-JANGTQ_K produces gabage"
+    }
+  },
+  "open_packaged_proofs": [
+    "175",
+    "176",
+    "177",
+    "179"
+  ],
+  "open_release_rows": [
+    "Real Electron UI cross-family live model matrix is release-cleared",
+    "DSV4 long-output/code/file-generation quality is release-cleared"
+  ],
+  "release_boundary": "Issue #175-#179 source/runtime guardrails are present, but installed/live runtime proof gaps remain. Issue #179 is release-cleared only when the root-cause audit proves the reporter hash is stale/unknown, current/public route markers are present, local reproduction is clean, and no proof gaps remain. The broader release still requires the live model matrix, real Electron UI matrix, and DSV4 exactness rows.",
+  "required_live_proof_axes": [
+    "real_app_parameters",
+    "multi_turn_chat",
+    "openai_responses_streaming",
+    "tool_parser_detection_and_execution",
+    "reasoning_parser_display_boundary",
+    "prefix_cache_reuse",
+    "paged_cache_reuse",
+    "l2_disk_cache_reconstruct",
+    "turboquant_encode_decode",
+    "hybrid_ssm_cca_swa_hsa_csa_attention",
+    "metal_matmul_runtime_path",
+    "jang_and_jangtq_metadata",
+    "vl_image_video_paths",
+    "wrong_language_and_parser_tag_leak_check"
+  ],
+  "status": "open"
+}
