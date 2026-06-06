@@ -136,6 +136,9 @@ Remote AdLab fixes applied during this run:
 - `scripts/adlab-qwen36-tp4-api-proof.py` now reports `bad_rows` for rank agreement failures.
 - `scripts/engine-patches/adlab-tp-hotpath-timing-patch.py` was fixed so worker sampler timing is optional/idempotent when the sampler layout has already been transformed by send/recv/direct-decode patches.
 - Direct Max2 regression: `python3 scripts/test-adlab-tp-hotpath-timing-patch.py` passed.
+- `scripts/adlab-qwen36-tp4-resident-api-proof.sh` now supports `TP_PROOF_BASE_URL` and validates that `/health` resolves the expected served model and current run-id rank targets before running proof.
+- Direct Max2 regression: `bash -n scripts/adlab-qwen36-tp4-resident-api-proof.sh` passed.
+- Direct Max2 regression: `python3 scripts/test-adlab-qwen36-tp4-resident-api-proof.py` passed.
 
 Current classification:
 
