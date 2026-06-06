@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-06T11:34:17-0700",
+  "created_at": "2026-06-06T12:29:15-0700",
   "status": "pass",
   "checks": {
     "native_mtp_d3_default_policy": true,
@@ -49,7 +49,7 @@
       ],
       "cwd": ".",
       "returncode": 0,
-      "elapsed_sec": 4.635,
+      "elapsed_sec": 4.628,
       "counts": {
         "passed": 123,
         "skipped": null,
@@ -151,7 +151,7 @@
       ],
       "cwd": "panel",
       "returncode": 0,
-      "elapsed_sec": 0.469,
+      "elapsed_sec": 0.472,
       "counts": {
         "passed": 16,
         "skipped": 238,
@@ -235,8 +235,8 @@
         "",
         " Test Files  1 passed (1)",
         "      Tests  16 passed | 238 skipped (254)",
-        "   Start at  11:34:16",
-        "   Duration  130ms (transform 62ms, setup 0ms, import 73ms, tests 6ms, environment 0ms)",
+        "   Start at  12:29:15",
+        "   Duration  193ms (transform 62ms, setup 0ms, import 74ms, tests 6ms, environment 0ms)",
         ""
       ]
     },
@@ -253,7 +253,7 @@
       ],
       "cwd": "panel",
       "returncode": 0,
-      "elapsed_sec": 0.445,
+      "elapsed_sec": 0.444,
       "counts": {
         "passed": 8,
         "skipped": 56,
@@ -278,7 +278,7 @@
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects Ling/Bailing hybrid with tools and no reasoning parser",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps Ling/Bailing non-reasoning even without a JANG capability stamp",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects Hy3 as text-only KV with Hunyuan tools and qwen3 reasoning",
-        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > does not expose Native MTP for Hy3 config-only bundles without indexed mtp tensors 1ms",
+        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > does not expose Native MTP for Hy3 config-only bundles without indexed mtp tensors 0ms",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps Hy3 JANGTQ2 Low/High reasoning contract despite 2-bit routed experts",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps Hy3 JANGTQ_K Low/High reasoning contract",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects Gemma 3 tool_code parser without reasoning extraction",
@@ -330,8 +330,8 @@
         "",
         " Test Files  1 passed (1)",
         "      Tests  8 passed | 56 skipped (64)",
-        "   Start at  11:34:16",
-        "   Duration  104ms (transform 40ms, setup 0ms, import 48ms, tests 8ms, environment 0ms)",
+        "   Start at  12:29:15",
+        "   Duration  104ms (transform 41ms, setup 0ms, import 49ms, tests 7ms, environment 0ms)",
         ""
       ]
     }

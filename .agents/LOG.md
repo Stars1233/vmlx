@@ -4691,3 +4691,12 @@ Detailed note: `docs/internal/agent-notes/current-gemma4-12b-release-boundary-an
 - Current suite: `build/current-regression-suite-after-mimo-xml-function-template-fix-20260606.json` -> `status=open`, failed steps `packaged_integrity_contracts`, `release_regression_manifest`, `release_gate_skip_app`; packaged integrity has no package/hash failed rows after rebundle, but release gate still fails because objective blockers remain.
 - Commit pushed to `origin/main`: `20070fd4 Fix MiMo XML tool fallback contract`.
 - No tag, notarized DMG, public download, mlx.studio/vmlx.net update, or release claim was made.
+
+## 2026-06-06 Codex | no-heavy/package pointer refresh after C-RADIO bytecode fix
+
+- Fixed Nemotron Omni vendored C-RADIO installer to ignore/remove `__pycache__` and `.pyc` files when populating the HF dynamic-module cache.
+- Refreshed stale no-heavy pointers; cache architecture, parser registry, generation defaults, VL/media, packaged integrity, runtime parity, public issue audit, and focused regression rows now pass in the current suite.
+- Rebuilt bundled Python from current vMLX source and local jang-tools; `npm run verify-bundled` passed.
+- Rebuilt and Developer-ID signed the staged Sequoia app. Notarization was not run; builder skipped notarize option generation.
+- Canonical suite: `build/current-regression-suite-after-noheavy-pointer-refresh-20260606.json` -> `status=open`, `failed_steps=["release_regression_manifest"]` only.
+- Release remains blocked by five live/model rows: cross-family live multi-turn, MiMo V2.5 JANG_2L quality, MiniMax reporter/root cause, real Electron UI matrix, and DSV4 long-output/code/file-generation quality.

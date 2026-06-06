@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-06T11:34:11-0700",
+  "created_at": "2026-06-06T12:29:10-0700",
   "status": "pass",
   "checks": {
     "dsv4_deepseek_v4_native_cache_and_parser": true,
@@ -121,7 +121,7 @@
       ],
       "cwd": ".",
       "returncode": 0,
-      "elapsed_sec": 2.439,
+      "elapsed_sec": 2.492,
       "counts": {
         "passed": 56,
         "skipped": null,
@@ -194,7 +194,7 @@
         "tests/test_model_family_detection_contract.py::test_decode_speed_gate_treats_generation_failed_text_as_hard_failure PASSED [ 98%]",
         "tests/test_model_family_detection_contract.py::test_decode_speed_gate_detects_plain_kv_cache_health_mismatches PASSED [100%]",
         "",
-        "====================== 56 passed, 117 deselected in 1.88s ======================"
+        "====================== 56 passed, 117 deselected in 1.93s ======================"
       ]
     },
     "panel_family_detection": {
@@ -211,7 +211,7 @@
       ],
       "cwd": "panel",
       "returncode": 0,
-      "elapsed_sec": 0.443,
+      "elapsed_sec": 0.446,
       "counts": {
         "passed": 48,
         "skipped": 16,
@@ -235,7 +235,7 @@
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps ZAYA1-VL multimodal when a stale stamp says text 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects Ling/Bailing hybrid with tools and no reasoning parser 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps Ling/Bailing non-reasoning even without a JANG capability stamp 0ms",
-        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects Hy3 as text-only KV with Hunyuan tools and qwen3 reasoning 0ms",
+        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects Hy3 as text-only KV with Hunyuan tools and qwen3 reasoning 1ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > does not expose Native MTP for Hy3 config-only bundles without indexed mtp tensors 1ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps Hy3 JANGTQ2 Low/High reasoning contract despite 2-bit routed experts 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps Hy3 JANGTQ_K Low/High reasoning contract 0ms",
@@ -245,7 +245,7 @@
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps Gemma 4 VLM wrapper multimodal instead of demoting to gemma4-text",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > marks Gemma 4 mixed-SWA wrappers as rotating KV so cache UI cannot treat them as plain KV",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps JANG VLM enabled from capabilities.modality=vision when architecture.has_vision is absent",
-        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > routes Step3.7 JANG bridge through the source VLM runtime when available 0ms",
+        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > routes Step3.7 JANG bridge through the source VLM runtime when available 1ms",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > falls back to config.json vision_config when jang_config has no vision stamp",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects top-level JANG has_vision without relying on registry family defaults",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps MiMo V2 JANG text-only when capabilities say media sidecars are unwired",
@@ -266,7 +266,7 @@
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > uses JANG capabilities cache and parser stamps for Qwen3.6 hybrid bundles 0ms",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > does not classify text_config-only MoE models as VLMs",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps Mistral Small 4 VLM multimodal while inheriting Mistral 4 reasoning defaults",
-        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir backend parity coverage > detects backend-covered model_type=deepseek_v32 0ms",
+        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir backend parity coverage > detects backend-covered model_type=deepseek_v32 1ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir backend parity coverage > detects backend-covered model_type=falcon_h1 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir backend parity coverage > detects backend-covered model_type=glm_moe_dsa 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir backend parity coverage > detects backend-covered model_type=got_ocr2 0ms",
@@ -288,8 +288,8 @@
         "",
         " Test Files  1 passed (1)",
         "      Tests  48 passed | 16 skipped (64)",
-        "   Start at  11:34:10",
-        "   Duration  187ms (transform 41ms, setup 0ms, import 48ms, tests 29ms, environment 0ms)",
+        "   Start at  12:29:09",
+        "   Duration  188ms (transform 41ms, setup 0ms, import 48ms, tests 29ms, environment 0ms)",
         ""
       ]
     },
@@ -307,7 +307,7 @@
       ],
       "cwd": "panel",
       "returncode": 0,
-      "elapsed_sec": 0.471,
+      "elapsed_sec": 0.473,
       "counts": {
         "passed": 6,
         "skipped": 248,
@@ -431,8 +431,8 @@
         "",
         " Test Files  1 passed (1)",
         "      Tests  6 passed | 248 skipped (254)",
-        "   Start at  11:34:11",
-        "   Duration  189ms (transform 61ms, setup 0ms, import 73ms, tests 3ms, environment 0ms)",
+        "   Start at  12:29:09",
+        "   Duration  192ms (transform 63ms, setup 0ms, import 75ms, tests 3ms, environment 0ms)",
         ""
       ]
     }

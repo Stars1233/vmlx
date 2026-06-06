@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-06T11:34:23-0700",
+  "created_at": "2026-06-06T12:29:22-0700",
   "status": "pass",
   "checks": {
     "video_url_request_schema": true,
@@ -57,7 +57,7 @@
       ],
       "cwd": ".",
       "returncode": 0,
-      "elapsed_sec": 5.144,
+      "elapsed_sec": 5.312,
       "counts": {
         "passed": 45,
         "skipped": 5,
@@ -125,7 +125,7 @@
         "tests/test_model_config_registry.py::TestModelConfigComprehensiveChecks::test_zaya1_vl_registered_with_full_contract PASSED [ 98%]",
         "tests/test_model_config_registry.py::TestModelConfigComprehensiveChecks::test_zaya_stale_stamp_cannot_disable_reasoning_or_reenable_think_seed PASSED [100%]",
         "",
-        "================ 45 passed, 5 skipped, 712 deselected in 4.38s ================="
+        "================ 45 passed, 5 skipped, 712 deselected in 4.54s ================="
       ]
     },
     "panel_vl_media_followup_contracts": {
@@ -140,7 +140,7 @@
       ],
       "cwd": "panel",
       "returncode": 0,
-      "elapsed_sec": 0.424,
+      "elapsed_sec": 0.428,
       "counts": {
         "passed": 13,
         "skipped": null,
@@ -166,8 +166,8 @@
         "",
         " Test Files  2 passed (2)",
         "      Tests  13 passed (13)",
-        "   Start at  11:34:22",
-        "   Duration  73ms (transform 29ms, setup 0ms, import 38ms, tests 4ms, environment 0ms)",
+        "   Start at  12:29:21",
+        "   Duration  72ms (transform 28ms, setup 0ms, import 38ms, tests 4ms, environment 0ms)",
         ""
       ]
     },
@@ -184,7 +184,7 @@
       ],
       "cwd": "panel",
       "returncode": 0,
-      "elapsed_sec": 0.473,
+      "elapsed_sec": 0.474,
       "counts": {
         "passed": 12,
         "skipped": 242,
@@ -308,8 +308,8 @@
         "",
         " Test Files  1 passed (1)",
         "      Tests  12 passed | 242 skipped (254)",
-        "   Start at  11:34:23",
-        "   Duration  126ms (transform 62ms, setup 0ms, import 74ms, tests 2ms, environment 0ms)",
+        "   Start at  12:29:21",
+        "   Duration  189ms (transform 63ms, setup 0ms, import 75ms, tests 2ms, environment 0ms)",
         ""
       ]
     },
@@ -326,7 +326,7 @@
       ],
       "cwd": "panel",
       "returncode": 0,
-      "elapsed_sec": 0.446,
+      "elapsed_sec": 0.448,
       "counts": {
         "passed": 14,
         "skipped": 50,
@@ -346,7 +346,7 @@
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects ZAYA1-VL as multimodal CCA hybrid without a reasoning claim 1ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps ZAYA1-VL JANGTQ_K multimodal while suppressing the stale reasoning rail 1ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps ZAYA1-VL JANGTQ2 multimodal without a reasoning rail 1ms",
-        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps ZAYA1-VL JANGTQ4 multimodal without a reasoning rail 1ms",
+        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps ZAYA1-VL JANGTQ4 multimodal without a reasoning rail 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps ZAYA1-VL multimodal when a stale stamp says text 0ms",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects Ling/Bailing hybrid with tools and no reasoning parser",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps Ling/Bailing non-reasoning even without a JANG capability stamp",
@@ -373,7 +373,7 @@
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps mxfp8 Qwen hybrid VLM multimodal 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > marks non-JANG Qwen 3.6 MoE bundles with vision/video metadata as multimodal 0ms",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > documents Qwen 3.6 release rows intentionally use qwen3.5 family aliases",
-        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > does not route Nemotron-H text extracts through MLLM from stale sidecars 0ms",
+        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > does not route Nemotron-H text extracts through MLLM from stale sidecars 1ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps MXTQ/JANGTQ Qwen hybrid VLM multimodal 0ms",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects TurboQuant from config.json weight_format when jang_config is absent",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > uses the registered MiniMax reasoning parser even when bundle sidecars say qwen3",
@@ -403,8 +403,8 @@
         "",
         " Test Files  1 passed (1)",
         "      Tests  14 passed | 50 skipped (64)",
-        "   Start at  11:34:23",
-        "   Duration  169ms (transform 41ms, setup 0ms, import 48ms, tests 10ms, environment 0ms)",
+        "   Start at  12:29:22",
+        "   Duration  171ms (transform 42ms, setup 0ms, import 50ms, tests 10ms, environment 0ms)",
         ""
       ]
     }
