@@ -15,7 +15,7 @@ Scope: local vMLX Python engine and MLXStudio/panel release path only. No adlab,
 ## Explicit release blockers from current manifest
 
 - `mimo_v2_jang2l_runtime_quality_open`: `open`
-  Evidence: `build/current-mimo-jang2l-local-structural-verify-20260606.json,build/current-mimo-jang2l-live-text-cache-smoke-20260606.json,build/current-mimo-v2-jang2l-quantized-switchglu-parity-20260606.json,build/current-mimo-v2-jang2l-direct-length-sweep-20260606.json,build/current-mimo-v2-jang2l-tool-dialect-failure-20260606.json,build/current-mimo-v2-jang2l-current-audit-after-source-preflight-refresh-20260606.json,build/current-mimo-v25-jang2l-local-metadata-truth-patch-20260606.json,build/current-mimo-v2-jang2l-source-vs-quant-first-divergence-20260606.json`
+  Evidence: `build/current-mimo-jang2l-local-structural-verify-20260606.json,build/current-mimo-jang2l-live-text-cache-smoke-20260606.json,build/current-mimo-v2-jang2l-quantized-switchglu-parity-20260606.json,build/current-mimo-v2-jang2l-direct-length-sweep-20260606.json,build/current-mimo-v2-jang2l-tool-dialect-failure-20260606.json,build/current-mimo-v2-jang2l-current-audit-after-mllm-inputs-embeds-fix-20260606.json,build/current-mimo-v25-jang2l-local-metadata-truth-patch-20260606.json,build/current-mimo-v2-jang2l-source-vs-quant-first-divergence-20260606.json`
   Next proof: Pass current local MiMo JANG_2L long-prompt coherence, tool protocol/continuation, cache, and API proof before including MiMo in a production release.
 - `issue179_minimax_k_root_cause_audit`: `open`
   Evidence: `build/current-issue179-minimax-k-root-cause-audit-after-public-v1556-scan-20260606.json`
@@ -57,7 +57,7 @@ Scope: local vMLX Python engine and MLXStudio/panel release path only. No adlab,
 - Not proven/failed: decode speed below target
 - Not proven/failed: source-vs-quant first divergence missing
 - Not proven/failed: real vision/audio/video forward path not wired/proven
-- Artifact: `build/current-mimo-v2-jang2l-current-audit-after-cb-oneshot-prefill-20260606.json`
+- Artifact: `build/current-mimo-v2-jang2l-current-audit-after-mllm-inputs-embeds-fix-20260606.json`
 - Artifact: `build/current-mimo-v2-jang2l-tool-dialect-failure-20260606.json`
 - Artifact: `build/current-mimo-v25-jang2l-local-metadata-truth-patch-20260606.json`
 - Artifact: `build/current-mimo-v25-jang2l-local-sync-image-proof-20260606.json`
@@ -151,3 +151,20 @@ Scope: local vMLX Python engine and MLXStudio/panel release path only. No adlab,
 - Auto tool request failed: punctuation/CJK-style garbage, no `tool_calls`.
 - Post-tool exact text also failed: returned `The user said`.
 - Classification update: MiMo live failure is broader than parser strictness or missing `--enable-auto-tool-choice`; this local bundle/runtime path is failing baseline exact instruction following at about 0.5-1.5 tok/s in simple/no-KV-quant mode.
+
+## 2026-06-06 MiMo MLLM `inputs_embeds` interface fix
+
+- Artifact: `build/current-mimo-v2-mllm-inputs-embeds-interface-fix-20260606.json`.
+- Fixed a concrete runtime-interface bug: the registered `mlx_vlm.models.mimo_v2.Model.__call__` accepted `inputs_embeds` through `**kwargs` but dropped it before calling the language model.
+- The wrapper now forwards `inputs_embeds`, `cache`, `mask`, and remaining kwargs to the MiMo language model for MLLM-style calls.
+- Verification:
+  - `.venv/bin/python -m py_compile vmlx_engine/models/mllm.py tests/test_mimo_v2_mllm_runtime_registration.py` -> pass.
+  - `.venv/bin/python -m pytest -q tests/test_mimo_v2_mllm_runtime_registration.py` -> `1 passed`.
+- Release boundary unchanged: this is required MLLM/VL interface plumbing, but it does not wire MiMo vision/audio/video towers and does not clear current live text/tool generation quality failures.
+
+## 2026-06-06 release manifest after MiMo MLLM interface fix
+
+- Artifact: `build/current-release-regression-manifest-after-mimo-mllm-inputs-embeds-fix-20260606.json`.
+- Result: manifest runner exited nonzero because release is still blocked.
+- Current release state remains: `current_proof_sweep=fail`, `prepackage_ready=false`, `release_ready=false`.
+- MiMo current audit now includes `mllm_inputs_embeds_interface=true`, but still blocks on long-prompt coherence, tool protocol, decode speed, source-vs-quant proof, and VL/audio/video media wiring.
