@@ -17,8 +17,8 @@ Current package/proof state, refreshed 2026-06-06:
 - Bundled Python was rebuilt from current source and `npm run verify-bundled` passed.
 - Staged Sequoia app was rebuilt and Developer ID signed.
 - `build/current-packaged-integrity-contract-after-unsupported-media-staged-app-20260606.json` is `status=pass`.
-- `build/current-objective-proof-after-zaya-reasoning-budget-refresh-20260606.json` closes the two Gemma4 26B CRACK rows for installed-app Responses visible-content/language and mixed-SWA speed.
-- `build/current-regression-suite-after-zaya-reasoning-budget-refresh-20260606.json` is `status=open` with `failed_steps=["release_regression_manifest"]`; source/package/parity/contracts pass, and five live/model rows remain.
+- `build/current-objective-proof-after-zaya-vl-no-media-refresh-20260606.json` closes the two Gemma4 26B CRACK rows for installed-app Responses visible-content/language and mixed-SWA speed.
+- `build/current-regression-suite-after-zaya-vl-no-media-refresh-20260606.json` is `status=open` with `failed_steps=["release_regression_manifest"]`; source/package/parity/contracts pass, and five live/model rows remain.
 - No release tag, notarized DMG, public download update, or installed-app replacement has been produced from this continuation.
 
 The app can currently serve several text and some VLM paths, but full VL/audio/video support is not release-cleared across all model families. The remaining work must be classified as either:
@@ -261,3 +261,21 @@ ZAYA-VL remains open:
 3. Reasoning visible final answer is still empty.
 4. Red image is misclassified as white while blue image passes.
 5. Cache telemetry is present, so current evidence points at VL text/template/model-forward semantics rather than a CCA cache crash.
+
+## 2026-06-06 ZAYA-VL no-media contract refresh
+
+Fresh ZAYA-VL evidence:
+
+- All-quant comparison: `build/current-all-local-model-smoke-zaya-vl-all-quants-tools-media-20260606/summary.json`.
+- Focused prompt repro: `build/current-zaya-vl-mxfp4-focused-repro-20260606/summary.json`.
+- Current smoke proof: `build/current-all-local-model-smoke-zaya-vl-mxfp4-after-no-media-contract-20260606/summary.json`.
+
+Findings:
+
+1. ZAYA1-VL-8B-MXFP4 is the healthiest local VL bundle: blue image, red image, text cache exact, recall, required tool, and no-media-after-image now pass under the family-native `ATTACHED/NONE` no-media contract.
+2. The earlier no-media failure was prompt-contract incompatibility, not proven media carryover. A direct current-message attachment question returns `NONE` before and after image turns.
+3. ZAYA-VL MXFP4 still fails reasoning-on: visible content is empty while the answer appears in the reasoning channel (`reasoning_chars=17`) even with larger budgets in focused repro.
+4. ZAYA-VL JANGTQ4 and JANGTQ_K remain weaker than MXFP4 in smoke: JANGTQ4 adds exact-text/reasoning/no-media failures; JANGTQ_K adds exact-text, recall, reasoning, and red-image failures.
+5. Cache telemetry is not the blocker for the MXFP4 no-media path: native typed CCA cache reports `zaya_cca_v1`, prefix/paged/L2 enabled, and generic TurboQuant KV disabled for path-dependent CCA state.
+
+Next ZAYA-VL blocker is reasoning-visible compatibility, not the no-media guard. Do not fake-clear it by disabling thinking silently; trace rendered prompt, parser split, and model capability metadata first.
