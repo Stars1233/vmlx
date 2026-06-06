@@ -52,7 +52,7 @@ Load-only, health-only, text-only, or fail-closed unsupported-route proof does n
 | Gemma4 26B/31B | Source smoke and installed visible/speed rows have partial proof. | Broader packaged media/tool/cache parity and long media-depth matrix. |
 | Qwen3.6 35B MXFP8 MTP | `gdn_sink` dense MTP crash does not reproduce on current source/installed 1.5.56 proof. | If a user sees it on older app, it is stale packaged runtime; if on fresh app, reproduce the exact bypass route. Media/VL/MTP matrix remains open. |
 | Qwen3.6 27B MXFP8/JANG_4M MTP | Local installed decode works; deterministic policy improves decode speed. Fresh Pod1 TP4 `batchfix3` host-IP proof now passes native MTP autodetect depth 2, rank agreement, streaming, multiturn, Responses chain cache, L2 disk cache/restore, paged-incompatible hybrid SSM/L2 attention evidence, and batch rank correctness. | TP4 remains release-open because single-row decode speed is still low, localhost can hit a stale depth-0 gateway, and media/VL proof plus UI/app policy parity remain open. |
-| Step3.7 Flash JANG_2L CRACK | Text-only vMLX route is stable when metadata marks `has_vision=false`; default advertised VLM path can crash. | Runtime must fail closed for unsupported Step3p7 VLM and real Step3p7 VLM implementation remains open. Tool loops/raw dialect leaks remain model/runtime compatibility blockers. |
+| Step3.7 Flash JANG_2L CRACK | Current source has Step3p7 advertised-VLM fail-closed/text-only routing and loader normalization pinned by focused tests; text-only vMLX route is stable when metadata marks `has_vision=false`. | Real Step3p7 VLM/media implementation and live media proof remain open. Tool loops/raw dialect leaks remain model/runtime compatibility blockers. Older installed runtimes may still crash if they predate the fail-closed routing. |
 | MiMo V2.5 JANG_2L | Local quant bundle checksum-synced from Max2; local Python/vMLX text API proof passes; image route fails closed as text-only and text recovery passes; historical Swift TP4 source proof has chat/Responses/streaming/cache/L2/rank agreement around 39 tok/s. | Python media processor/embedding bridge unbuilt, current source endpoint displaced by Qwen TP4 workers, local Python speed far below 40 tok/s, long prompt/system-role stop, tool args/continuation quality, restart-L2, full cache matrix. |
 | LFM 2.5 | Installed UI text/cache/tools proof exists. | Any VL/audio/video advertised variants still need full capability audit and media proof. |
 | Nemotron Omni | Static/source rows partial. | Omni audio/image/video processor bridge, cache safety, streaming, tool/JSON, UI and packaged proof. |
@@ -169,9 +169,30 @@ Current classification:
 - Do not fold system prompts into user prompts to hide MiMo first-token `<|im_end|>`.
 - Do not mark MiMo media supported because vision/audio weights are preserved.
 - Do not disable prefix cache, paged cache, L2 disk cache, TurboQuant KV, MTP, thinking, or tools and call the model release-cleared unless that disabled mode is the documented release behavior.
-- Do not call Step3p7 VLM fixed because text-only metadata avoids the crash.
+- Do not call Step3p7 VLM fixed because current source routes advertised VLM metadata text-only/fail-closed. That closes the crash-avoidance row only; real Step3p7 VLM remains open until media forward, cache, streaming, tool, and UI rows pass.
 - Do not count JSON repair as native guided decoding.
 - Do not count historical Swift TP4 proof as current vMLX packaged release proof.
+
+## Step3.7 current source audit
+
+Focused verification:
+
+```text
+.venv/bin/python -m pytest -q tests/test_step37_vlm_runtime_audit.py tests/test_jang_loader.py -k 'step3p7 or step37'
+14 passed, 47 deselected
+```
+
+What this proves:
+
+- Current source recognizes Step3p7 advertised VLM metadata and routes text-only instead of entering the unsafe VLM path.
+- Loader normalization and JANG Step3p7 remaps are pinned.
+- Step3p7 VLM runtime audit artifacts/tests still distinguish missing or incomplete `mlx_vlm.models.step3p7` implementations from a complete runtime.
+
+What this does not prove:
+
+- No live Step3p7 image/video/audio request has passed.
+- No Step3p7 media cache, streaming, tool-call, or UI/settings row is release-cleared.
+- Packaged installed apps older than this source may still show the crash behavior reported by users.
 
 ## Current execution order
 
