@@ -47,7 +47,7 @@ No source-only, load-only, health-only, or one-prompt text smoke may clear a bro
 |---|---:|---|---|---|
 | MiMo V2.5 JANG_2L | Red | Current Python path returns text `ACK`; paged cache hit `cached_tokens=67`; L2 block write; multiturn `blue cat`; native mixed full/SWA cache detected; generic flat TQ-KV skipped for rotating cache; current source preserves tool metadata into MLLM decode; keep=0 SWA cache patch fixes required-tool cache decode; narrow live required-tool row returns `record_fact({"value":"blue-cat"})`; tool-result continuation row returns exact `STORED blue-cat` with no second tool call and no raw markup after MiMo template tool-argument normalization; strict JSON row parses exactly; exact code/whitespace row preserves indentation and punctuation; 64-word long-prefix MLLM row passes with `cached_tokens=435`, `cache_detail=paged`, and 7 block-disk writes after tight-memory drain plus live `RotatingKVCache` mixed-SWA detection; expanded no-media source gate now passes 8/8 rows with 16 L2 block writes / 797 L2 tokens | Speed remains about 1-2 tok/s in current MiMo source gates, far below target; reasoning output remains low quality/repetitive; broader auto-tool/adversarial loop-stop/full multi-turn tool matrix not cleared; VL/audio/video unwired; full UI/installed-app matrix incomplete; no local `jang_config.json` in current bundle | Run broader MiMo auto-tool/loop-stop/cache/L2/restart/largest-context/UI smoke; then fix speed/kernel path; then implement/prove media bridge or keep capabilities text-only |
 | Qwen 3.6 35B MXFP8 MTP | Partial | Bundled-engine smoke passes text/cache, multiturn, reasoning, required tool, image, video, post-media text recovery; native MTP active D3; paged+SSM hit; block + SSM L2 evidence; deterministic long Responses row activates MTP D3 and writes block/SSM L2; no `gdn_sink` TypeError; saved deterministic required-tool request now passes with configured D3 available, request-local D1 cap logged, and real `function_call` returned; full deterministic long Responses/tool/cache gate passes strict tool-call, tool-evidence, cache-hit, no-loop, and no-raw-markup criteria; expanded no-media Chat Completions gate now passes after the reasoning probe budget was corrected from 256 to 512 for Qwen3.6 MoE MTP: visible `FINAL=OK`, required tool, tool-result continuation, strict JSON, exact code, native MTP D3, paged+SSM cache, block/SSM L2, and no `gdn_sink` crash | The 256-token diagnostic failed by stopping during hidden reasoning before visible final text; this remains a max-output-token UX/settings nuance, not a runtime crash. Anthropic/Ollama, streaming parity, real Electron UI settings, largest-context cache, restart/L2 restore, cancellation/recovery, media rows, and installed-app parity incomplete | Keep Qwen35 release-partial; run missing API/UI/restart/largest-context/media rows and ensure UI max-output-token behavior makes this budget boundary visible |
-| Qwen 3.6 27B MXFP4/MXFP8/JANG_4M MTP | Partial | MXFP4-MTP live slice passes text/cache, multiturn, reasoning, required tool, image, video, post-media recovery; Responses text/tool, Anthropic, Ollama, and Chat streaming pass; restart/L2 restore hits paged+SSM+disk; deterministic Responses cancellation/recovery passes with native MTP active D2; paged+SSM and block+SSM L2 evidence; JANG_4M installed-app MTP A/B reaches about 50.65 tok/s and 1.70x over AR; expanded no-media Chat Completions gate passes MXFP4-MTP and MXFP8-MTP across text cache, multiturn, reasoning-on, required tool, tool-result continuation, strict JSON, exact code, native MTP, paged+SSM cache, and block/SSM L2 | JANG_4M expanded no-media parity not rerun in the 2026-06-07 Qwen36 MTP gate; MXFP8 deterministic policy/UI parity, largest-context cache, TP4 route rank/speed evidence, media rows, installed-app parity, and full release API matrix remain open | Run Qwen27 JANG_4M expanded gate, UI/largest-context/media rows, and verify MXFP8 deterministic policy in UI/session |
+| Qwen 3.6 27B MXFP4/MXFP8/JANG_4M MTP | Partial | MXFP4-MTP live slice passes text/cache, multiturn, reasoning, required tool, image, video, post-media recovery; Responses text/tool, Anthropic, Ollama, and Chat streaming pass; restart/L2 restore hits paged+SSM+disk; deterministic Responses cancellation/recovery passes with native MTP active D2; paged+SSM and block+SSM L2 evidence; JANG_4M installed-app MTP A/B reaches about 50.65 tok/s and 1.70x over AR; expanded no-media Chat Completions gate now passes MXFP4-MTP, MXFP8-MTP, and JANG_4M-MTP across text cache, multiturn, reasoning-on, required tool, tool-result continuation, strict JSON, exact code, native MTP, paged+SSM cache, and block/SSM L2 | MXFP8 deterministic policy/UI parity, largest-context cache, TP4 route rank/speed evidence, media rows, installed-app parity, and full release API matrix remain open | Run UI/largest-context/media rows, restart/L2 restore for all variants, and verify MXFP8 deterministic policy in UI/session |
 | Nemo / Nemotron Omni | Red | Some source rows exist in older matrix | Omni audio/video processor bridge, tool dialect, cache/media salt, UI proof incomplete | Build live Omni text/audio/video/tool/cache smoke |
 | LFM / LFM2.5 | Red | Expanded installed-source no-media gate confirms all three local LFM2.5 variants still pass required tool and tool-result continuation; MXFP4 and MXFP8 pass strict JSON parsing; hybrid SSM/paged cache telemetry remains present | Expanded structured-output gate is red: JANG_2L wraps JSON in markdown fences and emits `def add(a, b:`; MXFP4/MXFP8 emit `print(add(2, 3)` missing the final `)`; all exact-code failures ended with `finish_reason=stop`, so this is not a max-token false positive; installed-app/UI/API/media/largest-context rows remain incomplete | Keep LFM release-red; add JSON repair diagnostics where appropriate, but do not claim exact-code/codegen green until exact syntax/whitespace passes without runtime fabrication |
 | MiniMax / MiniMax-M2.7 / JANGTQ_K | Red | Public/local route drift narrowed; public DMG cancel route present | Reporter parity/root cause still open; JANGTQ/runtime/speed/tool/cancel recovery not fully cleared | Finish reporter provenance and live MiniMax model proof |
@@ -324,6 +324,55 @@ Classification:
 - Do not hide the 256-token diagnostic by disabling thinking as a release fix.
   It is now recorded as a max-output-token budget boundary that must be exposed
   and tested through API/UI settings.
+
+## 2026-06-07 Qwen 3.6 27B JANG_4M-MTP expanded no-media parity gate
+
+Artifact:
+
+`build/current-all-local-model-smoke-qwen36-27b-jang4m-mtp-json-code-tools-nomedia-20260607/summary.json`
+
+Command scope:
+
+- Models root: `/Users/eric/models`
+- Model: `Qwen3.6-27B-JANG_4M-MTP`
+- Media disabled.
+- Tools enabled.
+- Current source `vmlx_engine.cli serve`.
+
+Result:
+
+- Overall status: `pass`, `failed=0`.
+- Text cache repeat passed; second request reported `cached_tokens=56` and
+  `cache_detail=paged+ssm`.
+- Multiturn recall returned `blue cat`.
+- Reasoning-on returned visible `FINAL=OK` with `reasoning_chars=735`.
+- Required tool returned real OpenAI tool call
+  `record_fact({"value":"blue-cat"})`.
+- Tool-result continuation returned exact `STORED blue-cat` with no second tool
+  call.
+- Strict JSON passed with exact
+  `{"status":"ok","value":"blue-cat","count":3}`.
+- Exact code/whitespace passed exactly:
+  `def add(a, b):\n    return a + b\nprint(add(2, 3))`.
+- Runtime loaded as Qwen3.6 native-MTP VL artifact with native MTP `READY D3`,
+  hybrid cache, 16 attention layers and 48 SSM layers.
+- Cache path was architecture-aware: attention KV used stored q4
+  TurboQuant-compatible cache boundaries while SSM/GatedDelta companion state
+  stayed native full precision. Server logs showed VLM hybrid cache hit
+  `(KV+SSM)`, block L2 writes, and SSM companion L2 enabled.
+- No `gdn_sink` TypeError, stream generator crash, raw XML tool leak, required
+  tool failure, strict JSON failure, or exact-code failure occurred.
+
+Classification:
+
+- Qwen27 JANG_4M-MTP now has the same no-media source structured-output,
+  tool, native-MTP, paged+SSM cache, and block/SSM L2 evidence as the MXFP4 and
+  MXFP8 Qwen27 variants.
+- This does not clear Qwen27 release readiness. Missing rows remain:
+  installed-app parity, real Electron UI settings reflection, media rows,
+  restart/L2 restore across variants, largest-context cache, cancellation and
+  timeout cleanup across variants, TP4 route rank/speed evidence, and full
+  API/streaming parity where not already proven.
 
 ### MEDIA-001: VL/audio/video runtime incomplete
 

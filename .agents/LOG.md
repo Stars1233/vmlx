@@ -4966,3 +4966,13 @@ Detailed note: `docs/internal/agent-notes/current-gemma4-12b-release-boundary-an
 - Reasoning row changed from empty-visible at 256 tokens to visible `FINAL=OK` at 512-token budget, with `reasoning_chars=1038`, `completion_tokens=274`, native MTP D3, and no validation failures.
 - Other Qwen35 rows in the follow-up passed: text cache `ACK`, paged+SSM hit `cached_tokens=56`, multiturn `blue cat`, required tool `record_fact({"value":"blue-cat"})`, tool-result continuation `STORED blue-cat`, strict JSON, exact code/whitespace, block L2 and SSM companion L2.
 - Classification updated: Qwen35 no-media source gate is green after budget correction, but release remains partial for UI/API/media/restart-L2/largest-context/installed-app parity and explicit max-output-token UX behavior.
+
+## 2026-06-07 local - Qwen27 JANG_4M-MTP expanded no-media parity gate
+
+- Scope stayed in active Python engine worktree; no deprecated wrapper, Swift, ADLab/TB/RDMA work, package, signing, notarization, tag, upload, or public release action.
+- Ran expanded no-media source gate:
+  `build/current-all-local-model-smoke-qwen36-27b-jang4m-mtp-json-code-tools-nomedia-20260607/`, `status=pass`, `failed=0`.
+- Rows passed: text cache `ACK`, paged+SSM hit `cached_tokens=56`, multiturn `blue cat`, reasoning-on visible `FINAL=OK` with `reasoning_chars=735`, required tool `record_fact({"value":"blue-cat"})`, tool-result continuation `STORED blue-cat`, strict JSON, exact code/whitespace.
+- Runtime evidence: native MTP `READY D3`; Qwen3.6 VL artifact path; hybrid model with 16 attention and 48 SSM layers; q4 attention-KV storage for cache boundaries; SSM/GatedDelta companion state native full precision; block L2 and SSM companion L2 enabled; VLM hybrid cache HIT `(KV+SSM)`.
+- No `gdn_sink` TypeError, stream generator crash, raw XML tool leak, required-tool failure, strict JSON failure, or exact-code failure occurred.
+- Classification: Qwen27 JANG_4M-MTP is now no-media source green for structured output/tools/native-MTP/cache alongside MXFP4/MXFP8. Qwen27 remains release-partial for installed-app/UI/media/restart-L2/largest-context/cancel-timeout/TP4/API parity.
