@@ -4987,3 +4987,17 @@ Detailed note: `docs/internal/agent-notes/current-gemma4-12b-release-boundary-an
 - Cache stats after restart: block disk `disk_hits=1`; SSM companion disk `hits=1`; scheduler `last_cache_execution` had `disk_hit=true`, `reconstructed=true`, `reconstruction_ok=true`, `dequantized=true`, and `dequantization_ok=true`.
 - Runtime evidence: native MTP `READY D3`; hybrid model with 16 attention and 48 SSM layers; q4 attention-KV storage boundaries; SSM disk HIT; VLM hybrid cache HIT `(KV+SSM)`; clean SSM re-derive after restore.
 - Classification: Qwen27 JANG_4M-MTP restart/L2 restore is source-green for typed hybrid SSM cache. Qwen27 remains release-partial for installed-app UI, media, largest-context, cancellation/timeout cleanup, TP4 route rank/speed, API parity, packaging, signing, notarization, and public download updates.
+
+## 2026-06-07 local - Qwen27 JANG_4M-MTP long-context cache gate
+
+- Scope stayed in active Python engine worktree; no package/sign/notarize/tag/upload/release action.
+- 2,048-word gate artifact:
+  `build/current-local-long-context-cache-qwen36-27b-jang4m-mtp-2048w-20260607/`, `status=fail`, both turns HTTP 413 `prompt_too_long`, prompt about 8,918 tokens against explicit 8,192 cap.
+- 1,800-word gate artifact:
+  `build/current-local-long-context-cache-qwen36-27b-jang4m-mtp-1800w-20260607/`, `status=fail`, both turns HTTP 413 `prompt_too_long`, VLM text prompt about 10,843 tokens against explicit 8,192 cap.
+- 1,200-word gate artifact:
+  `build/current-local-long-context-cache-qwen36-27b-jang4m-mtp-1200w-20260607/`, `status=pass`.
+- Passing 1,200-word row: first and second turns returned exact `LONGCTX-OK`; prompt tokens `7236`; second turn `cached_tokens=7235`, `cache_detail=paged+ssm`; output status pass.
+- Cache/runtime evidence: native MTP `READY D3`; q4 KV quant round-trip passed; 16 attention layers use `TurboQuantKVCache`; 48 SSM companion layers remain native; first turn wrote 114 block L2 blocks; cache totals included `l2_block_tokens_on_disk=7235` and `l2_ssm_tokens_on_disk=14467`; second turn VLM hybrid cache HIT `(KV+SSM)`, re-compressed 16 KV layers to TurboQuant, and clean SSM re-derive stored companion state.
+- Scheduler evidence: `last_cache_execution.cached_tokens=7235`, `dequantized=true`, `dequantization_ok=true`, `reconstructed=true`, `reconstruction_ok=true`.
+- Classification: Qwen27 JANG_4M-MTP is source-green for a 7,236-token long-prefix cache reuse near the explicit 8k cap. Still release-partial for UI max-context/settings behavior, contexts above 8k if required, installed-app parity, media, API parity, cancellation/timeout cleanup, packaging, signing, notarization, and public download updates.
