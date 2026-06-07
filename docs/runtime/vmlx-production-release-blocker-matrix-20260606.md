@@ -47,7 +47,7 @@ No source-only, load-only, health-only, or one-prompt text smoke may clear a bro
 |---|---:|---|---|---|
 | MiMo V2.5 JANG_2L | Red | Text `ACK`; paged cache hit `cached_tokens=67`; L2 block write; multiturn `blue cat`; native mixed full/SWA cache detected; generic flat TQ-KV skipped for rotating cache | Required XML tool call corrupts output; speed around 1-2 tok/s; long/system prompt quality not cleared; VL/audio/video unwired | Source-vs-quant first divergence or replacement artifact proof; then tool decode/template/runtime fix; then full cache+tool+media matrix |
 | Qwen 3.6 35B MXFP8 MTP | Partial | Bundled-engine smoke passes text/cache, multiturn, reasoning, required tool, image, video, post-media text recovery; native MTP active D3; paged+SSM hit; block + SSM L2 evidence; no `gdn_sink` TypeError | Responses/Anthropic/Ollama, streaming parity, real Electron UI settings, largest-context cache, restart/L2 restore, cancellation/recovery, and 27B parity incomplete | Run missing API/UI/restart/largest-context rows and then 27B parity |
-| Qwen 3.6 27B MXFP8/JANG_4M MTP | Partial | Native MTP READY D3; deterministic policy can clear decode floor for MXFP8; JANG_4M decode better than MXFP8 | MXFP8 stochastic defaults slow; PP rows low; TP4 route rank/speed evidence remains red; full UI/cache/tool matrix open | Prove deterministic policy in UI/session; PP root cause; multiturn/tool/L2 proof |
+| Qwen 3.6 27B MXFP4/MXFP8/JANG_4M MTP | Partial | MXFP4-MTP live slice passes text/cache, multiturn, reasoning, required tool, image, video, post-media recovery; native MTP active D2; paged+SSM and block+SSM L2 evidence; JANG_4M installed-app MTP A/B reaches about 50.65 tok/s and 1.70x over AR | MXFP8 deterministic policy/UI parity, Responses/Anthropic/Ollama, streaming parity, largest-context cache, restart/L2 restore, cancellation/recovery, TP4 route rank/speed evidence remain open | Run missing API/UI/restart/largest-context rows; verify MXFP8 deterministic policy in UI/session |
 | Nemo / Nemotron Omni | Red | Some source rows exist in older matrix | Omni audio/video processor bridge, tool dialect, cache/media salt, UI proof incomplete | Build live Omni text/audio/video/tool/cache smoke |
 | LFM / LFM2.5 | Partial | Source rows exist in older cross-family matrix | Full installed-app multiturn/tool/cache/UI proof incomplete | Run installed-app LFM matrix with loop stop and structured output |
 | MiniMax / MiniMax-M2.7 / JANGTQ_K | Red | Public/local route drift narrowed; public DMG cancel route present | Reporter parity/root cause still open; JANGTQ/runtime/speed/tool/cancel recovery not fully cleared | Finish reporter provenance and live MiniMax model proof |
@@ -261,6 +261,64 @@ Nuance / still open:
 - Missing rows: `/v1/responses`, Anthropic `/v1/messages`, Ollama, streaming/non-streaming equivalence, installed Electron UI settings, largest-context cache, restart/L2 restore, cancellation/recovery, and 27B parity.
 - MTP acceptance is prompt-dependent: some short rows finish from seed/init emits with no draft cycles, while multiturn/reasoning/tool rows do exercise MTP differently.
 - Keep Qwen 3.6 family status `Partial` until the missing API/UI/largest-context/restart rows are current.
+
+## 2026-06-06 Qwen3.6 27B MTP live slice and installed-app speed proof
+
+Live slice artifact:
+
+`build/current-all-local-model-smoke-live-slice-tools-media-continuation-20260606/JANGQ_Qwen3.6-27B-MXFP4-MTP/result.json`
+
+Speed A/B artifact:
+
+`build/current-native-mtp-speed-ab-qwen27-jang4m-mtp-installed-app-20260606/result.json`
+
+Live slice result:
+
+- Overall row: `pass`, zero failures.
+- Model: `/Users/eric/models/JANGQ/Qwen3.6-27B-MXFP4-MTP`.
+- Model type: `qwen3_5`.
+- `is_mllm=true`, supports video, thinking, tools, and MTP.
+- Native MTP: `runtime_active=true`, `effective_depth=2`, source `vmlx_mtp_tuning.json:native_mtp.best_depth`, runtime scope `text+vl`, artifact tensors present (`mtp_tensor_count=23`).
+- `text_cache_repeat_1`: HTTP 200, visible `ACK`.
+- `text_cache_repeat_2`: HTTP 200, visible `ACK`, `cached_tokens=56`, `cache_detail=paged+ssm`.
+- `text_multiturn_recall`: HTTP 200, visible `blue cat`.
+- `reasoning_on`: HTTP 200, visible `FINAL=OK`, reasoning chars `829`.
+- `tool_required`: HTTP 200, visible content empty, OpenAI `tool_calls[0].function.name=record_fact`, arguments `{"value": "blue-cat"}`.
+- `vl_blue_image`: HTTP 200, visible `blue`.
+- `vl_blue_image_repeat`: HTTP 200, visible `blue`.
+- `vl_red_image_changed`: HTTP 200, visible `red`.
+- `vl_blue_video`: HTTP 200, visible `Blue.`.
+- `text_no_media_after_image`: HTTP 200, visible `NONE`.
+- `text_no_media_after_video`: HTTP 200, visible `NONE`.
+- Logs show native MTP path activated at depth 2 and real acceptance rows including `accepted=2/2 (100.0%)`, reasoning `accepted=101/139 (72.7%)`, and tool `accepted=16/22 (72.7%)`.
+- Logs show no `gdn_sink` `TypeError`.
+
+Cache / L2 / architecture evidence:
+
+- Native cache: `qwen3_5` / `hybrid_ssm_v1` / `hybrid_ssm_typed`.
+- Components: `attention_kv`, `ssm_companion_state`, `async_rederive`.
+- Generic TurboQuant KV is enabled only for hybrid attention KV with reason `hybrid_attention_kv_only`.
+- Live attention TQ-KV is active for attention KV layers only; SSM companion state stays native full precision.
+- Storage-boundary attention KV quantization is q4, group size 64, attention layers only.
+- Block disk L2 after run: 10 blocks, 431 block tokens on disk, 3 disk hits.
+- SSM companion L2 after run: 9 disk entries, 687 SSM tokens on disk, about 1321 MB.
+- Cache totals report 1118 total L2 tokens across block and SSM stores.
+- Media requests correctly skip VLM prefix cache store because media embeddings are path-dependent.
+
+Installed-app native MTP speed A/B:
+
+- Model: `/Users/eric/models/JANGQ/Qwen3.6-27B-JANG_4M-MTP`.
+- Baseline AR row: 320 completion tokens at about `30.62 generation tok/s`.
+- Native MTP row: 320 completion tokens, wall speed about `50.65 tok/s`, scheduler generation about `53.17 tok/s`.
+- Speedup vs baseline: `1.7046857277044767`.
+- Native MTP totals: 102 cycles, 218 accepted tokens, 228 drafted tokens, acceptance rate about `95.6%`.
+- Depth acceptance: d1 about `99.0%`, d2 about `95.1%`, d3 about `83.3%`.
+
+Nuance / still open:
+
+- This strengthens Qwen27 MXFP4 and JANG_4M evidence, but the family remains `Partial`.
+- Missing rows: MXFP8 deterministic policy through UI/session, `/v1/responses`, Anthropic `/v1/messages`, Ollama, streaming/non-streaming equivalence, real Electron UI settings, largest-context cache, restart/L2 restore, cancellation/recovery, and TP4 route rank/speed evidence.
+- The speed A/B was cache-off and text-only; it does not by itself clear media/cache/UI release rows.
 
 ## 2026-06-06 LFM2.5 MXFP4 focused source smoke
 
