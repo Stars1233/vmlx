@@ -49,7 +49,7 @@ No source-only, load-only, health-only, or one-prompt text smoke may clear a bro
 | Qwen 3.6 35B MXFP8 MTP | Partial | Bundled-engine smoke passes text/cache, multiturn, reasoning, required tool, image, video, post-media text recovery; native MTP active D3; paged+SSM hit; block + SSM L2 evidence; deterministic long Responses row activates MTP D3 and writes block/SSM L2; no `gdn_sink` TypeError; saved deterministic required-tool request now passes with configured D3 available, request-local D1 cap logged, and real `function_call` returned; full deterministic long Responses/tool/cache gate now passes strict tool-call, tool-evidence, cache-hit, no-loop, and no-raw-markup criteria | Anthropic/Ollama, streaming parity, real Electron UI settings, largest-context cache, restart/L2 restore, cancellation/recovery, and 27B parity incomplete | Run missing API/UI/restart/largest-context rows and 27B parity |
 | Qwen 3.6 27B MXFP4/MXFP8/JANG_4M MTP | Partial | MXFP4-MTP live slice passes text/cache, multiturn, reasoning, required tool, image, video, post-media recovery; Responses text/tool, Anthropic, Ollama, and Chat streaming pass; restart/L2 restore hits paged+SSM+disk; deterministic Responses cancellation/recovery passes with native MTP active D2; paged+SSM and block+SSM L2 evidence; JANG_4M installed-app MTP A/B reaches about 50.65 tok/s and 1.70x over AR | MXFP8 deterministic policy/UI parity, largest-context cache, TP4 route rank/speed evidence remain open | Run UI/largest-context rows; verify MXFP8 deterministic policy in UI/session |
 | Nemo / Nemotron Omni | Red | Some source rows exist in older matrix | Omni audio/video processor bridge, tool dialect, cache/media salt, UI proof incomplete | Build live Omni text/audio/video/tool/cache smoke |
-| LFM / LFM2.5 | Partial | Source rows exist in older cross-family matrix | Full installed-app multiturn/tool/cache/UI proof incomplete | Run installed-app LFM matrix with loop stop and structured output |
+| LFM / LFM2.5 | Red | Expanded installed-source no-media gate confirms all three local LFM2.5 variants still pass required tool and tool-result continuation; MXFP4 and MXFP8 pass strict JSON parsing; hybrid SSM/paged cache telemetry remains present | Expanded structured-output gate is red: JANG_2L wraps JSON in markdown fences and emits `def add(a, b:`; MXFP4/MXFP8 emit `print(add(2, 3)` missing the final `)`; all exact-code failures ended with `finish_reason=stop`, so this is not a max-token false positive; installed-app/UI/API/media/largest-context rows remain incomplete | Keep LFM release-red; add JSON repair diagnostics where appropriate, but do not claim exact-code/codegen green until exact syntax/whitespace passes without runtime fabrication |
 | MiniMax / MiniMax-M2.7 / JANGTQ_K | Red | Public/local route drift narrowed; public DMG cancel route present | Reporter parity/root cause still open; JANGTQ/runtime/speed/tool/cancel recovery not fully cleared | Finish reporter provenance and live MiniMax model proof |
 | DSV4 Flash / DeepSeek-V4-Flash-JANGTQ-K | Red | Native composite cache smoke passed; required tool row passed in focused smoke | Long-output/code/file-generation exactness red; thinking-closed rail corrupts identifiers; memory-gated UI rows open | Fix/diagnose exact-code rail and rerun long/code/file-generation proof |
 | Step 3.7 Flash | Partial | Text-only guard prevents unsupported advertised-VLM crash; source/staged proof of media rejection and text recovery exists | Real VLM not implemented/proven; tool loops/raw XML and multiturn synthesis still open; installed/public parity depends on release | Live installed-app text/tool/multiturn matrix; keep VLM fail-closed until real support lands |
@@ -96,9 +96,46 @@ Required:
 - Exact code, syntax, indentation, punctuation, and whitespace preservation.
 
 Current status: red. The smoke harness now includes strict JSON and exact
-code/whitespace rows, and MiMo passes those no-media source rows. Cross-family
-JSON/code/XML parity, JSON repair integration, Responses/Anthropic/Ollama
-parity, streaming, and installed-app UI proof remain incomplete.
+code/whitespace rows. MiMo passes those no-media source rows, but the current
+LFM2.5 installed source gate is red: JANG_2L fails fenced JSON plus exact-code
+syntax, and MXFP4/MXFP8 fail exact-code syntax. Cross-family JSON/code/XML
+parity, JSON repair integration, Responses/Anthropic/Ollama parity, streaming,
+and installed-app UI proof remain incomplete.
+
+## 2026-06-07 LFM2.5 expanded no-media structured-output gate
+
+Artifact:
+
+`build/current-all-local-model-smoke-lfm25-installed-json-code-tools-nomedia-20260607/summary.json`
+
+Command scope:
+
+- Models root: `/Users/eric/.mlxstudio/models`
+- Filter: `LFM2.5-8B-A1B`
+- Media disabled.
+- Tools enabled.
+- Current source `vmlx_engine.cli serve`.
+
+Results:
+
+- Overall status: `fail`, `failed=3`, `row_count=3`.
+- `LFM2.5-8B-A1B-JANG_2L`: required tool passed, tool-result continuation
+  passed, strict JSON failed because the model wrapped the correct object in
+  markdown fences, exact code failed as `def add(a, b:`.
+- `LFM2.5-8B-A1B-MXFP4`: required tool passed, tool-result continuation
+  passed, strict JSON passed, exact code failed as `print(add(2, 3)`.
+- `LFM2.5-8B-A1B-MXFP8`: required tool passed, tool-result continuation
+  passed, strict JSON passed, exact code failed as `print(add(2, 3)`.
+- All exact-code failures returned `finish_reason=stop`, not `length`.
+
+Classification:
+
+- Tools/tool-result continuation are not the current LFM failure in this gate.
+- JANG_2L fenced JSON is repairable by a JSON-repair pipeline, but the strict
+  JSON row intentionally stays red because raw output is not parseable.
+- Exact-code failures are model/output quality blockers unless a real guided
+  decoding or syntax-constrained mode is implemented and proven; silently
+  repairing chat code output would be a fake fix for release claims.
 
 ### MEDIA-001: VL/audio/video runtime incomplete
 
