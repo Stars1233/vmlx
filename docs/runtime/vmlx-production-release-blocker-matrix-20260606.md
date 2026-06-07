@@ -237,3 +237,46 @@ Nuance / still open:
 
 - Same as MXFP4: visible output is exact, but short exact rows report high completion-token counts (`156`, `229`, `128`). Follow-up needed for parser/stop-token/accounting before full LFM clearance.
 - This is source-runtime no-media proof only. Installed-app parity, streaming, Responses/Anthropic/Ollama, largest-context cache, restart/L2 restore, and UI settings remain open.
+
+## 2026-06-06 Step3.7 Flash JANG_2L CRACK focused source smoke
+
+Initial artifact:
+
+`build/current-all-local-model-smoke-step37-jang2l-crack-tools-nomedia-20260606/other_Step-3.7-Flash-JANG_2L-CRACK/result.json`
+
+Initial result:
+
+- Overall row passed, but the smoke harness incorrectly classified the advertised-vision Step3.7 artifact as `is_mllm=true` and passed `--is-mllm`.
+- Server correctly overrode the advertised VLM route to text-only, but future proof should not depend on that override.
+
+Harness fix:
+
+- Step3p7 advertised media is classified text-only for the smoke launcher.
+- Step3p7 cache family is classified as mixed SWA/full KV (`swa_rotating` in harness terms), not hybrid SSM.
+
+Passing artifact after harness fix:
+
+`build/current-all-local-model-smoke-step37-jang2l-crack-tools-nomedia-textonly-harness-20260606/other_Step-3.7-Flash-JANG_2L-CRACK/result.json`
+
+Result:
+
+- Overall row: `pass`.
+- Served command did not include `--is-mllm`.
+- Server loaded `BatchedEngine ... (mllm=False)`.
+- Server log shows `tier=step3p7_advertised_vlm_text_only result=False`.
+- Model type: `step3p7`.
+- Runtime media: `text` only.
+- Declared media: `vision`, `image`, `video` are declared but not runtime supported.
+- Native cache: `step3p7` / `mixed_swa_kv_v1` / `step3p7_full_sliding_kv`.
+- Storage-boundary KV quantization active: q4, group size 64.
+- `text_cache_repeat_1`: HTTP 200, visible `ACK`.
+- `text_cache_repeat_2`: HTTP 200, visible `ACK`, `cached_tokens=61`, `cache_detail=paged`.
+- `text_multiturn_recall`: HTTP 200, visible `blue cat`.
+- `reasoning_on`: HTTP 200, visible `FINAL=OK`, reasoning chars `390`.
+- `tool_required`: HTTP 200, OpenAI `tool_calls[0].function.name=record_fact`, arguments `{"value":"blue-cat"}`.
+
+Nuance / still open:
+
+- This proves the current text-only guard and text/tool/cache route, not Step3.7 VLM.
+- The bundle still advertises vision/image/video while runtime support is intentionally text-only. Model upload metadata should be clarified or vMLX-specific metadata supplied.
+- Source-runtime no-media proof only. Installed-app parity, streaming, Responses/Anthropic/Ollama, largest-context cache, restart/L2 restore, real Step3.7 VLM, and UI settings remain open.
