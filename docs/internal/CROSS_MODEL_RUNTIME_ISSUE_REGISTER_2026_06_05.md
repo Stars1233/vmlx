@@ -897,7 +897,7 @@ Every model-family proof should record:
 - Raw tool dialect leaks, tool loops, thinking-template mismatch: https://github.com/jjang-ai/vmlx/issues/190
 - Structured JSON/XML repair follow-up: https://github.com/jjang-ai/vmlx/issues/187
 
-- MiMo current audit `build/current-mimo-v2-jang2l-current-audit-20260606.json` proves the canonical local bundle matches the TB5/HTTP manifest (`173/173` files, 113.93GB payload by manifest, zero missing/mismatch) and stale MiMo backup/cache directories were removed. It does not release-clear MiMo: long-prompt coherence, exact-cache prompt-following, and decode speed remain blocked without fake parser injection, forced fallback, or cache disabling. Source XML-function tool protocol is now fixed for the all-local `record_fact` probe, but packaged/UI loop behavior remains open.
+- MiMo current audit `build/current-mimo-v2-jang2l-current-audit-20260606.json` proves the canonical local bundle matches the TB5/HTTP manifest (`173/173` files, 113.93GB payload by manifest, zero missing/mismatch) and stale MiMo backup/cache directories were removed. It does not release-clear MiMo: long-prompt coherence, exact-cache prompt-following, and decode speed remain blocked without fake parser injection, forced fallback, or cache disabling. Older narrow XML-function tool probe was superseded by the current normal-engine refresh: required `record_fact` now fails with no parsed tool calls and raw XML/punctuation; packaged/UI loop behavior remains open.
 
 ## 2026-06-06 VL/audio/video runtime worklist
 
@@ -930,7 +930,7 @@ MiMo classification:
 
 - Current source no longer shows the old MiMo cache-head shape crash. The optimized run loaded MiMo as MLLM, exposed `mimo_v2/mixed_swa_kv_v1` with `mimo_v2_asymmetric_swa`, paged prefix cache, block-disk L2, and TurboQuant/storage quantization telemetry.
 - MiMo remains release-red: first exact-cache request produced empty visible output and cached repeat hit `cached_tokens=54` / `cache_detail=paged` but rambled instead of exact `ACK`.
-- Follow-up source fix for the MiMo XML-function prompt/parser contract clears the narrow `tool_choice=required` all-local probe: `build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-after-stop-token-cache-fix-20260606/summary.json` emits parsed `record_fact({"value":"blue-cat"})`. The same artifact still fails exact-cache prompt-following and runs around `1.78 tok/s`, so MiMo is blocked by output quality and speed, with VL/audio/video still not implemented/cleared.
+- Superseded narrow MiMo XML-function prompt/parser proof emitted parsed `record_fact`, but the current normal-engine refresh `build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-refresh-after-qwen35-20260607/JANGQ_MiMo-V2.5-JANG_2L/result.json` fails required `record_fact` with no parsed tool calls and raw XML/punctuation. MiMo remains blocked by tool quality, output quality, speed, and unimplemented VL/audio/video.
 
 Proof-pointer refresh:
 
@@ -958,7 +958,7 @@ Current cross-family source-smoke state:
 Remaining release blockers from the current objective digest:
 
 - Cross-family live multi-turn smoke matrix is still open because DSV4 is memory-preflight blocked, MiMo remains red, and ZAYA text/VL quality rows are red.
-- MiMo V2.5 JANG_2L runtime/long-prompt/speed quality remains open. The source XML-function tool contract is fixed for the narrow all-local probe, but do not paper over remaining quality with fake parser injection, cache disablement, or hidden prompt/default forcing.
+- MiMo V2.5 JANG_2L runtime/long-prompt/speed quality remains open. The source XML-function fallback placement is fixed, but the current normal-engine required-tool probe is red. Do not paper over this with fake parser injection, cache disablement, or hidden prompt/default forcing.
 - MiniMax-M2.7-JANGTQ_K reporter parity/root cause remains open.
 - Real Electron UI cross-family live model matrix remains open.
 - DSV4 long-output/code/file-generation quality remains open; latest local exactness preflight refused launch with `available_gb=107.91` vs `required_available_gb=120.0`.
@@ -1027,7 +1027,7 @@ Do not mark ZAYA-VL release-cleared. Next work should trace the ZAYA-VL text tem
 - New diagnostics: `build/current-mimo-v2-jang2l-sink-mode-length-diagnostic-20260606.json` and `build/current-mimo-v2-jang2l-disable-sink-length-diagnostic-20260606.json`.
 - Refreshed audit: `build/current-mimo-v2-jang2l-current-audit-20260606.json` -> `status=open`, `local_release_clearance=false`.
 - Cleared/falsified sub-hypotheses: local artifact manifest matches, stale local state absent, structural verify passes, narrow text cache passes, selected-expert SwitchGLU parity passes, and cache-prefill vs no-cache next-token top-10 logits match. Manual sink SDPA and disabling SWA sink do not clear generation quality.
-- Remaining MiMo blockers: long-prompt coherence, exact-cache prompt-following, decode speed, packaged/UI parity, and media bridge. The current blocker should not be described as cache-only or sink-kernel-only. The narrow source XML-function tool probe is fixed.
+- Remaining MiMo blockers: required XML tool calls, long-prompt coherence, exact-cache prompt-following, decode speed, packaged/UI parity, and media bridge. The current blocker should not be described as cache-only or sink-kernel-only. Older narrow XML-function proof is superseded by the current required-tool failure.
 - MiMo VL/audio/video remains not implemented in Python; typed unsupported-media errors are fail-closed recovery only.
 
 ## 2026-06-06 DSV4 cross-family smoke refresh
@@ -1380,3 +1380,12 @@ Current classification: local quant is tool-broken independent of CB/q4, but mod
 - Latest live MiMo no-media tool/cache proof: `build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-after-stop-token-cache-fix-20260606/summary.json`.
 - Live result remains `probe_failed`: uncached `ACK`, multi-turn recall, and required tool call pass; cached repeat still returns empty visible output on a paged/L2 cache hit. This keeps MiMo cache/runtime release blocked.
 - MiMo VL/audio/video remains a model/runtime-package gap, not a vMLX flag flip: current installed `jang_tools.mimo_v2.mlx_model` is explicitly text-only and references future `mimo_v2_multimodal.py` for visual/audio towers.
+
+### 2026-06-07 MiMo current normal-engine correction after Qwen35 work
+
+- Current artifact: `build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-refresh-after-qwen35-20260607/JANGQ_MiMo-V2.5-JANG_2L/result.json`.
+- Current normal Python MLLM path passes narrow text/cache/multiturn: `ACK`, paged cache hit `cached_tokens=67`, block-disk L2 write, and `blue cat` recall.
+- Current required XML tool row fails: HTTP 400, zero parsed `tool_calls`, raw preview starts `<tool_call>\n\n：，，，。...`, and server log says `tool_choice='required' but model produced no tool calls`.
+- Current bundle has `model_type=mimo_v2`, native XML tool template, media sidecars, and no `jang_config.json`; vMLX classification must come from config/tokenizer/template/registry rather than missing JANG metadata.
+- This supersedes older narrow rows that said MiMo `record_fact` was parsed. MiMo tool protocol is red again under the current normal-engine proof.
+- Classification: unresolved `decode_loop` versus `model_artifact`, not cache-only, not parser-only, and not missing schema injection. Source-vs-quant first divergence remains required before blaming upload versus runtime.

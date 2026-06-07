@@ -45,7 +45,7 @@ No source-only, load-only, health-only, or one-prompt text smoke may clear a bro
 
 | Family / artifact lane | Current status | Proven current positives | Current blockers | Next proof/fix |
 |---|---:|---|---|---|
-| MiMo V2.5 JANG_2L | Red | Text `ACK`; paged cache hit `cached_tokens=67`; L2 block write; multiturn `blue cat`; native mixed full/SWA cache detected; generic flat TQ-KV skipped for rotating cache | Required XML tool call corrupts output; speed around 1-2 tok/s; long/system prompt quality not cleared; VL/audio/video unwired | Source-vs-quant first divergence or replacement artifact proof; then tool decode/template/runtime fix; then full cache+tool+media matrix |
+| MiMo V2.5 JANG_2L | Red | Current Python path returns text `ACK`; paged cache hit `cached_tokens=67`; L2 block write; multiturn `blue cat`; native mixed full/SWA cache detected; generic flat TQ-KV skipped for rotating cache | Required XML tool call corrupts output into raw `<tool_call>` plus punctuation/fullwidth-comma garbage; speed around 1-2 tok/s after prefill; long/system prompt quality not cleared; VL/audio/video unwired; no local `jang_config.json` in current bundle | Source-vs-quant first divergence or replacement artifact proof; then tool decode/template/runtime fix; then full cache+tool+media matrix |
 | Qwen 3.6 35B MXFP8 MTP | Partial | Bundled-engine smoke passes text/cache, multiturn, reasoning, required tool, image, video, post-media text recovery; native MTP active D3; paged+SSM hit; block + SSM L2 evidence; deterministic long Responses row activates MTP D3 and writes block/SSM L2; no `gdn_sink` TypeError; saved deterministic required-tool request now passes with configured D3 available, request-local D1 cap logged, and real `function_call` returned; full deterministic long Responses/tool/cache gate now passes strict tool-call, tool-evidence, cache-hit, no-loop, and no-raw-markup criteria | Anthropic/Ollama, streaming parity, real Electron UI settings, largest-context cache, restart/L2 restore, cancellation/recovery, and 27B parity incomplete | Run missing API/UI/restart/largest-context rows and 27B parity |
 | Qwen 3.6 27B MXFP4/MXFP8/JANG_4M MTP | Partial | MXFP4-MTP live slice passes text/cache, multiturn, reasoning, required tool, image, video, post-media recovery; Responses text/tool, Anthropic, Ollama, and Chat streaming pass; restart/L2 restore hits paged+SSM+disk; deterministic Responses cancellation/recovery passes with native MTP active D2; paged+SSM and block+SSM L2 evidence; JANG_4M installed-app MTP A/B reaches about 50.65 tok/s and 1.70x over AR | MXFP8 deterministic policy/UI parity, largest-context cache, TP4 route rank/speed evidence remain open | Run UI/largest-context rows; verify MXFP8 deterministic policy in UI/session |
 | Nemo / Nemotron Omni | Red | Some source rows exist in older matrix | Omni audio/video processor bridge, tool dialect, cache/media salt, UI proof incomplete | Build live Omni text/audio/video/tool/cache smoke |
@@ -119,9 +119,9 @@ Current status: red. No release action allowed.
 
 ## Current next actions
 
-1. Keep MiMo red; direct continuation proof now shows the current installed JANG_2L path cannot naturally continue valid XML tools even outside Chat tool parsing.
+1. Keep MiMo red; current normal Python engine proof shows text/cache/multiturn work, but `tool_choice=required` still emits malformed raw XML/punctuation and returns HTTP 400.
 2. Obtain a corrected MiMo artifact or build a real constrained/guided XML decoder; do not synthesize fake tool calls from `tool_choice=required`.
-3. Only delete old/local MiMo copies after a replacement artifact is proven better and exact paths are enumerated.
+3. Enumerate all old/local MiMo copies before deleting anything. Delete bad past MiMo copies only after a replacement/current artifact is proven better by the same tool/cache/long-prompt/speed rows.
 4. Add harness knobs for per-family cache/TQ/L2 diagnostics so A/B rows are reproducible instead of manual one-off commands.
 5. Refresh cross-family smoke matrix after the harness can record runtime modalities and architecture-specific cache evidence.
 6. Commit/push only proven source/test/docs/proof artifacts, excluding `.agents/`, local AGENTS override, vendor noise, binary cache dirs, and release outputs.
@@ -971,3 +971,34 @@ Nuance / still open:
 - It does not yet prove real image/audio/video quality, VLM image prefill guard behavior, media cache salting under live media requests, or video/audio processing.
 - It does not yet prove installed-app parity, MLXStudio UI settings, max-output-token settings, streaming, Responses/Anthropic/Ollama parity, largest-context cache, restart/L2 restore, or notarized app behavior.
 - Runtime reports media as supported, but that remains release-red until real VL/audio/video E2E probes pass with visible semantic proof.
+
+## 2026-06-07 MiMo current normal-engine refresh after Qwen35 work
+
+Artifact:
+
+`build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-refresh-after-qwen35-20260607/JANGQ_MiMo-V2.5-JANG_2L/result.json`
+
+Finding:
+
+- Current local model path is `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L`.
+- Current bundle has `model_type=mimo_v2`, full plus SWA rotating attention, media sidecars, and native XML tool grammar in the chat template.
+- Current bundle does not have `jang_config.json`; runtime classification comes from `config.json`, tokenizer/template metadata, and vMLX registry/runtime detection.
+- Normal Python MLLM path with continuous batching, paged prefix cache, block-disk L2, native mixed full/SWA cache, and no media/video proves text/cache/multiturn positives:
+  - first repeat: HTTP 200, visible `ACK`;
+  - second repeat: HTTP 200, visible `ACK`, `cached_tokens=67`, `cache_detail=paged`;
+  - multiturn recall: HTTP 200, visible `blue cat`;
+  - block-disk L2 wrote 4 blocks / 141 tokens;
+  - native cache reports `mimo_v2` / `mixed_swa_kv_v1` / `mimo_v2_asymmetric_swa`.
+- Required tool row is still red:
+  - request: `tool_choice=required`, tool `record_fact`, expected value `blue-cat`;
+  - HTTP 400 after 96 generated tokens;
+  - no parsed `tool_calls`;
+  - raw preview starts `<tool_call>\n\n：，，，。...`;
+  - server log explicitly reports `tool_choice='required' but model produced no tool calls`;
+  - generation speed in the failing tool row is about `1.6 tok/s`.
+
+Classification:
+
+- This is not a cache-only failure: the same class had already reproduced with cache disabled, and the current run proves cache can work while tools fail.
+- This is not missing schema injection: fallback/schema placement has been fixed and current template already contains native XML tool instructions.
+- This is not release-cleared MiMo. The remaining blocker is model artifact versus runtime decode/tool-grammar compatibility, pending source-vs-quant first divergence or a real constrained/guided XML decoder.

@@ -440,3 +440,40 @@ Conclusion:
 - It is not sufficient to clear `MIMO-TOOL-001`.
 - It is not sufficient to clear `MIMO-SPEED-001`.
 - Do not call MiMo fixed until either a better artifact is proven or a real constrained/guided XML decoder plus optimized routed-expert decode path is implemented and E2E-proven.
+
+## 2026-06-07 current normal-engine refresh after Qwen35 work
+
+Artifact:
+
+`build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-refresh-after-qwen35-20260607/JANGQ_MiMo-V2.5-JANG_2L/result.json`
+
+Bundle/runtime facts checked:
+
+- Local path: `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L`.
+- `config.json` has `model_type=mimo_v2`, full plus SWA rotating attention, media sidecars, and native XML tool grammar in the chat template.
+- No local `jang_config.json` exists in this bundle; vMLX must not rely on missing JANG metadata to classify tools/media/cache.
+- `generation_config.json` has `do_sample=false`, `top_p=0.95`, and EOS ids `[151643, 151645, 151672]`.
+
+Live positives in current Python engine:
+
+- MLLM path loaded with continuous batching, paged prefix cache, block-disk L2, and native mixed full/SWA cache.
+- `text_cache_repeat_1`: HTTP 200, visible `ACK`.
+- `text_cache_repeat_2`: HTTP 200, visible `ACK`, `cached_tokens=67`, `cache_detail=paged`.
+- `text_multiturn_recall`: HTTP 200, visible `blue cat`.
+- Block-disk L2 wrote 4 blocks / 141 tokens.
+- Native cache reports `mimo_v2` / `mixed_swa_kv_v1` / `mimo_v2_asymmetric_swa`.
+
+Still failing:
+
+- `tool_required`: HTTP 400 after 96 generated tokens.
+- Expected: `record_fact({"value":"blue-cat"})`.
+- Actual: zero parsed tool calls; raw preview starts `<tool_call>\n\n：，，，。...`.
+- Server log explicitly says `tool_choice='required' but model produced no tool calls`.
+- Failing tool row speed is about `1.6 tok/s`; this remains far below the requested 40+ tok/s release target.
+
+Classification update:
+
+- Cache is not the sole cause: current cache/L2/multiturn rows pass while tools fail, and earlier KV-none/no-cache probes failed the same tool grammar.
+- Schema placement is not the sole cause: ChatML fallback placement is fixed and the current template already has native XML tool instructions.
+- Current blocker is unresolved `decode_loop` versus `model_artifact` for XML tool grammar and speed until source-vs-quant first divergence runs against a live source endpoint or a replacement artifact passes the same rows.
+- Do not delete current/local MiMo copies until all old paths are enumerated and a replacement artifact is proven better by text/cache/tool/long-prompt/speed rows.
