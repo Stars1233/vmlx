@@ -1,0 +1,646 @@
+{
+  "health_after": {
+    "acceleration": {
+      "host": {
+        "brand": "Apple M5 Max",
+        "reason": null,
+        "supported": true
+      },
+      "jangtq_acceleration": {
+        "active": false,
+        "available": false,
+        "mode": "off",
+        "reason": "disabled",
+        "requested": false,
+        "uses_mlx_quantized_matmul": false
+      },
+      "kernel_type": "turboquant_codebook",
+      "metal_na_active_on_host": false,
+      "metal_na_capable": false,
+      "metal_na_symbols": {
+        "affine_gather_qmm_symbols": 3456,
+        "affine_qmm_symbols": 4212,
+        "available": true,
+        "nax_symbols": 4668,
+        "naxtile_symbols": 4154
+      },
+      "reason": "turboquant_custom_kernels_do_not_use_mlx_na"
+    },
+    "cache": {
+      "block_disk_cache": {
+        "blocks_on_disk": 0,
+        "disk_evictions": 0,
+        "disk_hits": 0,
+        "disk_misses": 2,
+        "disk_size_bytes": 0,
+        "disk_size_gb": 0.0,
+        "disk_writes": 0,
+        "total_accesses": 0,
+        "total_cached_tokens": 0,
+        "total_tokens_on_disk": 0
+      },
+      "scheduler_cache": {
+        "active_requests": 0,
+        "allocated_blocks": 1,
+        "batch_generator": {
+          "class": "SingleBatchGenerator",
+          "max_num_seqs": 1,
+          "path": "single_active",
+          "single_active_decode": true
+        },
+        "block_size": 64,
+        "cache_hit_rate": 0,
+        "cache_hits": 0,
+        "cache_misses": 0,
+        "cow_copies": 0,
+        "disk_hits": 0,
+        "disk_misses": 0,
+        "engine_path": "single_active",
+        "entries_by_type": {
+          "assistant": 0,
+          "system": 0,
+          "user": 0
+        },
+        "evictions": 0,
+        "free_blocks": 999,
+        "hit_rate": 0.0,
+        "hits": 0,
+        "max_blocks": 1000,
+        "misses": 1,
+        "shared_blocks": 0,
+        "tokens_saved": 0,
+        "total_tokens_cached": 0,
+        "utilization": 0.001
+      },
+      "totals": {
+        "l2_block_tokens_on_disk": 0,
+        "l2_prompt_tokens_on_disk": 0,
+        "l2_ssm_tokens_on_disk": 0,
+        "l2_tokens_on_disk": 0,
+        "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap",
+        "l2_tokens_on_disk_store_sum": 0,
+        "ram_tokens_cached": 0,
+        "ssm_tokens_on_disk": 0
+      }
+    },
+    "engine_type": "batched",
+    "kv_cache_quantization": {
+      "bits": 4,
+      "enabled": true,
+      "group_size": 64
+    },
+    "last_request_time": 1780816649.165518,
+    "mcp": null,
+    "memory": {
+      "active_mb": 77381.8,
+      "cache_mb": 0.0,
+      "peak_mb": 77489.5
+    },
+    "model_loaded": true,
+    "model_name": "JANGQ/MiniMax-M2.7-JANGTQ_K",
+    "model_type": "llm",
+    "mtp": {
+      "artifact_available": false,
+      "cache_type": "kv",
+      "config_mtp_layer_source": null,
+      "config_num_nextn_predict_layers": null,
+      "effective_depth": null,
+      "effective_depth_source": null,
+      "family": "minimax_m2",
+      "has_vision_config": false,
+      "has_vision_weights": false,
+      "index_has_mtp_tensors": false,
+      "index_mtp_layer_count": null,
+      "issues": [],
+      "jang_drop_mtp": null,
+      "jang_mtp_layers": null,
+      "mtp_tensor_count": 0,
+      "request_gate": "temperature=0,repetition_penalty=1.0",
+      "request_policy": "compatible-only",
+      "runtime_active": false,
+      "runtime_available": false,
+      "runtime_bundle_has_mtp": null,
+      "runtime_mtp_mode": null,
+      "runtime_reason": "config does not request MTP",
+      "runtime_scope": null,
+      "runtime_supported": false,
+      "runtime_validation_blocked": false,
+      "status": "not_configured",
+      "vision_tensor_count": 0,
+      "vl_runtime_available": false
+    },
+    "native_cache": {
+      "block_disk_l2": true,
+      "cache_type": "paged_kv",
+      "components": [
+        "attention_kv"
+      ],
+      "family": "minimax",
+      "generic_turboquant_kv": {
+        "enabled": true,
+        "reason": "plain_attention_kv"
+      },
+      "paged": true,
+      "prefix": true,
+      "schema": "plain_kv_v1",
+      "storage_quantization": {
+        "bits": 4,
+        "enabled": true,
+        "group_size": 64
+      }
+    },
+    "quantization": {
+      "codec": "turboquant_codebook",
+      "config_bits": 8,
+      "group_size": 64,
+      "mxtq_bits_by_role": {
+        "attention": 8,
+        "embed_tokens": 8,
+        "lm_head": 8,
+        "norms_router_biases": 16,
+        "routed_expert": {
+          "down_proj": 4,
+          "gate_proj": 2,
+          "up_proj": 2
+        },
+        "shared_expert": 8
+      },
+      "profile": "JANGTQ_K",
+      "routed_expert_bits_by_projection": {
+        "down_proj": 4,
+        "gate_proj": 2,
+        "up_proj": 2
+      },
+      "routed_expert_bits_label": "gate=2/up=2/down=4-bit",
+      "sidecar": {
+        "jang_config": true,
+        "jangtq_runtime": true,
+        "prestacked_bundle": true
+      },
+      "target_bits": 2,
+      "weight_format": "mxtq",
+      "weight_index": {
+        "index_file": "/Users/eric/models/JANGQ/MiniMax-M2.7-JANGTQ_K/model.safetensors.index.json",
+        "mtp_tensor_count": 0,
+        "routed_layout_counts": {
+          "prestacked_switch": 558,
+          "split_expert": 0
+        },
+        "sample_tq_packed_targets": [
+          "model.layers.0.block_sparse_moe.switch_mlp.down_proj",
+          "model.layers.0.block_sparse_moe.switch_mlp.gate_proj",
+          "model.layers.0.block_sparse_moe.switch_mlp.up_proj",
+          "model.layers.1.block_sparse_moe.switch_mlp.down_proj",
+          "model.layers.1.block_sparse_moe.switch_mlp.gate_proj",
+          "model.layers.1.block_sparse_moe.switch_mlp.up_proj",
+          "model.layers.10.block_sparse_moe.switch_mlp.down_proj",
+          "model.layers.10.block_sparse_moe.switch_mlp.gate_proj",
+          "model.layers.10.block_sparse_moe.switch_mlp.up_proj",
+          "model.layers.11.block_sparse_moe.switch_mlp.down_proj",
+          "model.layers.11.block_sparse_moe.switch_mlp.gate_proj",
+          "model.layers.11.block_sparse_moe.switch_mlp.up_proj"
+        ],
+        "suffix_counts": {
+          "biases": 250,
+          "scales": 250,
+          "tq_bits": 186,
+          "tq_norms": 186,
+          "tq_packed": 186,
+          "weight": 561
+        },
+        "total_tensors": 1681,
+        "tq_target_counts": {
+          "routed_expert": 558
+        }
+      },
+      "weight_matmul_dispatch": {
+        "metal_na_eligible": false,
+        "primary": "jang_tools_turboquant_custom_kernels",
+        "reason": "turboquant_codebook_uses_custom_tq_kernels",
+        "uses_mlx_quantized_matmul": false
+      }
+    },
+    "quantization_format": {
+      "actual_bits": null,
+      "block_size": 64,
+      "target_bits": null,
+      "type": "jang"
+    },
+    "routing": {
+      "effective_active_experts": 8,
+      "effective_active_experts_source": "trained_default",
+      "n_routed_experts": 256,
+      "override_env": null,
+      "trained_active_experts": 8,
+      "trained_active_experts_source": "config.num_experts_per_tok"
+    },
+    "scheduler": {
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "max_num_seqs": 1,
+        "path": "single_active",
+        "single_active_decode": true
+      },
+      "cache_hit_requests": 0,
+      "cache_hit_tokens": 0,
+      "cache_hit_tokens_by_detail": {},
+      "cache_reuse_partial_downgrades": 0,
+      "cache_reuse_partial_tokens": 0,
+      "cache_reuse_skip_tokens": 0,
+      "cache_reuse_skips": 0,
+      "engine_path": "single_active",
+      "ewma_ttft_seconds": 0.032,
+      "hybrid_kv_without_ssm_hits": 0,
+      "hybrid_kv_without_ssm_tokens": 0,
+      "last_cache_execution": null,
+      "last_cache_reuse_partial": null,
+      "last_cache_reuse_skip": null,
+      "last_cache_selection": null,
+      "last_hybrid_kv_without_ssm": null,
+      "num_running": 0,
+      "num_waiting": 0,
+      "single_active_decode": true
+    },
+    "speculative_decoding": "not_configured",
+    "status": "healthy",
+    "turboquant_kv_cache": {
+      "batch_api": "turboquant_kv_v1",
+      "critical_bits": 4,
+      "critical_layers": "first 3 + last 3",
+      "default_bits": 3,
+      "effective_completion_batch_size": 512,
+      "effective_max_num_seqs": 1,
+      "effective_prefill_batch_size": 512,
+      "enabled": true,
+      "single_sequence_only": false
+    }
+  },
+  "health_before": {
+    "acceleration": {
+      "host": {
+        "brand": "Apple M5 Max",
+        "reason": null,
+        "supported": true
+      },
+      "jangtq_acceleration": {
+        "active": false,
+        "available": false,
+        "mode": "off",
+        "reason": "disabled",
+        "requested": false,
+        "uses_mlx_quantized_matmul": false
+      },
+      "kernel_type": "turboquant_codebook",
+      "metal_na_active_on_host": false,
+      "metal_na_capable": false,
+      "metal_na_symbols": {
+        "affine_gather_qmm_symbols": 3456,
+        "affine_qmm_symbols": 4212,
+        "available": true,
+        "nax_symbols": 4668,
+        "naxtile_symbols": 4154
+      },
+      "reason": "turboquant_custom_kernels_do_not_use_mlx_na"
+    },
+    "cache": {
+      "block_disk_cache": {
+        "blocks_on_disk": 0,
+        "disk_evictions": 0,
+        "disk_hits": 0,
+        "disk_misses": 0,
+        "disk_size_bytes": 0,
+        "disk_size_gb": 0.0,
+        "disk_writes": 0,
+        "total_accesses": 0,
+        "total_cached_tokens": 0,
+        "total_tokens_on_disk": 0
+      },
+      "scheduler_cache": {
+        "active_requests": 0,
+        "allocated_blocks": 1,
+        "batch_generator": {
+          "class": null,
+          "max_num_seqs": 1,
+          "path": "none",
+          "single_active_decode": false
+        },
+        "block_size": 64,
+        "cache_hit_rate": 0,
+        "cache_hits": 0,
+        "cache_misses": 0,
+        "cow_copies": 0,
+        "disk_hits": 0,
+        "disk_misses": 0,
+        "engine_path": "none",
+        "entries_by_type": {
+          "assistant": 0,
+          "system": 0,
+          "user": 0
+        },
+        "evictions": 0,
+        "free_blocks": 999,
+        "hit_rate": 0,
+        "hits": 0,
+        "max_blocks": 1000,
+        "misses": 0,
+        "shared_blocks": 0,
+        "tokens_saved": 0,
+        "total_tokens_cached": 0,
+        "utilization": 0.001
+      },
+      "totals": {
+        "l2_block_tokens_on_disk": 0,
+        "l2_prompt_tokens_on_disk": 0,
+        "l2_ssm_tokens_on_disk": 0,
+        "l2_tokens_on_disk": 0,
+        "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap",
+        "l2_tokens_on_disk_store_sum": 0,
+        "ram_tokens_cached": 0,
+        "ssm_tokens_on_disk": 0
+      }
+    },
+    "engine_type": "batched",
+    "kv_cache_quantization": {
+      "bits": 4,
+      "enabled": true,
+      "group_size": 64
+    },
+    "last_request_time": null,
+    "mcp": null,
+    "memory": {
+      "active_mb": 77298.7,
+      "cache_mb": 230.7,
+      "peak_mb": 77447.6
+    },
+    "model_loaded": true,
+    "model_name": "JANGQ/MiniMax-M2.7-JANGTQ_K",
+    "model_type": "llm",
+    "mtp": {
+      "artifact_available": false,
+      "cache_type": "kv",
+      "config_mtp_layer_source": null,
+      "config_num_nextn_predict_layers": null,
+      "effective_depth": null,
+      "effective_depth_source": null,
+      "family": "minimax_m2",
+      "has_vision_config": false,
+      "has_vision_weights": false,
+      "index_has_mtp_tensors": false,
+      "index_mtp_layer_count": null,
+      "issues": [],
+      "jang_drop_mtp": null,
+      "jang_mtp_layers": null,
+      "mtp_tensor_count": 0,
+      "request_gate": "temperature=0,repetition_penalty=1.0",
+      "request_policy": "compatible-only",
+      "runtime_active": false,
+      "runtime_available": false,
+      "runtime_bundle_has_mtp": null,
+      "runtime_mtp_mode": null,
+      "runtime_reason": "config does not request MTP",
+      "runtime_scope": null,
+      "runtime_supported": false,
+      "runtime_validation_blocked": false,
+      "status": "not_configured",
+      "vision_tensor_count": 0,
+      "vl_runtime_available": false
+    },
+    "native_cache": {
+      "block_disk_l2": true,
+      "cache_type": "paged_kv",
+      "components": [
+        "attention_kv"
+      ],
+      "family": "minimax",
+      "generic_turboquant_kv": {
+        "enabled": true,
+        "reason": "plain_attention_kv"
+      },
+      "paged": true,
+      "prefix": true,
+      "schema": "plain_kv_v1",
+      "storage_quantization": {
+        "bits": 4,
+        "enabled": true,
+        "group_size": 64
+      }
+    },
+    "quantization": {
+      "codec": "turboquant_codebook",
+      "config_bits": 8,
+      "group_size": 64,
+      "mxtq_bits_by_role": {
+        "attention": 8,
+        "embed_tokens": 8,
+        "lm_head": 8,
+        "norms_router_biases": 16,
+        "routed_expert": {
+          "down_proj": 4,
+          "gate_proj": 2,
+          "up_proj": 2
+        },
+        "shared_expert": 8
+      },
+      "profile": "JANGTQ_K",
+      "routed_expert_bits_by_projection": {
+        "down_proj": 4,
+        "gate_proj": 2,
+        "up_proj": 2
+      },
+      "routed_expert_bits_label": "gate=2/up=2/down=4-bit",
+      "sidecar": {
+        "jang_config": true,
+        "jangtq_runtime": true,
+        "prestacked_bundle": true
+      },
+      "target_bits": 2,
+      "weight_format": "mxtq",
+      "weight_index": {
+        "index_file": "/Users/eric/models/JANGQ/MiniMax-M2.7-JANGTQ_K/model.safetensors.index.json",
+        "mtp_tensor_count": 0,
+        "routed_layout_counts": {
+          "prestacked_switch": 558,
+          "split_expert": 0
+        },
+        "sample_tq_packed_targets": [
+          "model.layers.0.block_sparse_moe.switch_mlp.down_proj",
+          "model.layers.0.block_sparse_moe.switch_mlp.gate_proj",
+          "model.layers.0.block_sparse_moe.switch_mlp.up_proj",
+          "model.layers.1.block_sparse_moe.switch_mlp.down_proj",
+          "model.layers.1.block_sparse_moe.switch_mlp.gate_proj",
+          "model.layers.1.block_sparse_moe.switch_mlp.up_proj",
+          "model.layers.10.block_sparse_moe.switch_mlp.down_proj",
+          "model.layers.10.block_sparse_moe.switch_mlp.gate_proj",
+          "model.layers.10.block_sparse_moe.switch_mlp.up_proj",
+          "model.layers.11.block_sparse_moe.switch_mlp.down_proj",
+          "model.layers.11.block_sparse_moe.switch_mlp.gate_proj",
+          "model.layers.11.block_sparse_moe.switch_mlp.up_proj"
+        ],
+        "suffix_counts": {
+          "biases": 250,
+          "scales": 250,
+          "tq_bits": 186,
+          "tq_norms": 186,
+          "tq_packed": 186,
+          "weight": 561
+        },
+        "total_tensors": 1681,
+        "tq_target_counts": {
+          "routed_expert": 558
+        }
+      },
+      "weight_matmul_dispatch": {
+        "metal_na_eligible": false,
+        "primary": "jang_tools_turboquant_custom_kernels",
+        "reason": "turboquant_codebook_uses_custom_tq_kernels",
+        "uses_mlx_quantized_matmul": false
+      }
+    },
+    "quantization_format": {
+      "actual_bits": null,
+      "block_size": 64,
+      "target_bits": null,
+      "type": "jang"
+    },
+    "routing": {
+      "effective_active_experts": 8,
+      "effective_active_experts_source": "trained_default",
+      "n_routed_experts": 256,
+      "override_env": null,
+      "trained_active_experts": 8,
+      "trained_active_experts_source": "config.num_experts_per_tok"
+    },
+    "scheduler": {
+      "batch_generator": {
+        "class": null,
+        "max_num_seqs": 1,
+        "path": "none",
+        "single_active_decode": false
+      },
+      "cache_hit_requests": 0,
+      "cache_hit_tokens": 0,
+      "cache_hit_tokens_by_detail": {},
+      "cache_reuse_partial_downgrades": 0,
+      "cache_reuse_partial_tokens": 0,
+      "cache_reuse_skip_tokens": 0,
+      "cache_reuse_skips": 0,
+      "engine_path": "none",
+      "ewma_ttft_seconds": 0.0,
+      "hybrid_kv_without_ssm_hits": 0,
+      "hybrid_kv_without_ssm_tokens": 0,
+      "last_cache_execution": null,
+      "last_cache_reuse_partial": null,
+      "last_cache_reuse_skip": null,
+      "last_cache_selection": null,
+      "last_hybrid_kv_without_ssm": null,
+      "num_running": 0,
+      "num_waiting": 0,
+      "single_active_decode": false
+    },
+    "speculative_decoding": "not_configured",
+    "status": "healthy",
+    "turboquant_kv_cache": {
+      "batch_api": "turboquant_kv_v1",
+      "critical_bits": 4,
+      "critical_layers": "first 3 + last 3",
+      "default_bits": 3,
+      "effective_completion_batch_size": 512,
+      "effective_max_num_seqs": 1,
+      "effective_prefill_batch_size": 512,
+      "enabled": true,
+      "single_sequence_only": false
+    }
+  },
+  "preflight_captured_at": "2026-06-07T00:17:30-0700",
+  "probe": {
+    "abort_boundary": "controlled_cancel_after_response_id",
+    "bad_text_captured": false,
+    "cancel_route_present": true
+  },
+  "raw": {
+    "cancel_body": "{\"success\":true,\"message\":\"Response resp_9ea3b407ec69 cancelled\"}",
+    "cancel_status": 200,
+    "cancel_trigger": "delay_elapsed",
+    "raw_content_text": "",
+    "raw_reasoning_text": "The",
+    "response_id": "resp_9ea3b407ec69",
+    "stream_error": null,
+    "stream_started": true
+  },
+  "raw_sse_head": [
+    "event: response.created",
+    "data: {\"type\": \"response.created\", \"response\": {\"id\": \"resp_9ea3b407ec69\", \"object\": \"response\", \"created_at\": 1780816649, \"status\": \"in_progress\", \"model\": \"JANGQ/MiniMax-M2.7-JANGTQ_K\", \"output\": []}, \"sequence_number\": 0}",
+    "",
+    "event: response.output_item.added",
+    "data: {\"type\": \"response.output_item.added\", \"output_index\": 0, \"item\": {\"id\": \"item_51a64d99b618\", \"type\": \"message\", \"status\": \"in_progress\", \"role\": \"assistant\", \"content\": []}, \"sequence_number\": 1}",
+    "",
+    "event: response.content_part.added",
+    "data: {\"type\": \"response.content_part.added\", \"item_id\": \"item_51a64d99b618\", \"output_index\": 0, \"content_index\": 0, \"part\": {\"type\": \"output_text\", \"text\": \"\", \"annotations\": []}, \"sequence_number\": 2}",
+    "",
+    "event: response.reasoning_summary_text.delta",
+    "data: {\"type\": \"response.reasoning_summary_text.delta\", \"item_id\": \"item_51a64d99b618\", \"output_index\": 0, \"summary_index\": 0, \"delta\": \"The\", \"sequence_number\": 3}",
+    "",
+    "event: response.reasoning_summary_text.done",
+    "data: {\"type\": \"response.reasoning_summary_text.done\", \"item_id\": \"item_51a64d99b618\", \"output_index\": 0, \"summary_index\": 0, \"text\": \"The\", \"sequence_number\": 4}",
+    "",
+    "event: response.output_text.done",
+    "data: {\"type\": \"response.output_text.done\", \"item_id\": \"item_51a64d99b618\", \"output_index\": 0, \"content_index\": 0, \"text\": \"\", \"sequence_number\": 5}",
+    "",
+    "event: response.content_part.done",
+    "data: {\"type\": \"response.content_part.done\", \"item_id\": \"item_51a64d99b618\", \"output_index\": 0, \"content_index\": 0, \"part\": {\"type\": \"output_text\", \"text\": \"\", \"annotations\": []}, \"sequence_number\": 6}"
+  ],
+  "request": {
+    "input": "Hi",
+    "max_output_tokens": 4096,
+    "model": "models/MiniMax-M2.7-JANGTQ_K",
+    "stream": true,
+    "temperature": 1.0,
+    "top_k": 40,
+    "top_p": 0.95
+  },
+  "server": {
+    "cmd": [
+      ".venv/bin/python",
+      "-B",
+      "-s",
+      "-m",
+      "vmlx_engine.cli",
+      "serve",
+      "/Users/eric/models/JANGQ/MiniMax-M2.7-JANGTQ_K",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "8897",
+      "--timeout",
+      "300",
+      "--max-num-seqs",
+      "1",
+      "--prefill-batch-size",
+      "512",
+      "--prefill-step-size",
+      "2048",
+      "--completion-batch-size",
+      "512",
+      "--continuous-batching",
+      "--tool-call-parser",
+      "minimax",
+      "--enable-auto-tool-choice",
+      "--reasoning-parser",
+      "minimax_m2",
+      "--use-paged-cache",
+      "--paged-cache-block-size",
+      "64",
+      "--max-cache-blocks",
+      "1000",
+      "--enable-block-disk-cache",
+      "--block-disk-cache-max-gb",
+      "10",
+      "--stream-interval",
+      "1"
+    ],
+    "log": "build/current-issue179-minimax-k-responses-cancel-probe-after-mimo-dsv4-ledger-20260607.server.log",
+    "port": 8897,
+    "returncode_before_terminate": null
+  },
+  "status": "pass"
+}
