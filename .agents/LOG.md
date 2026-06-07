@@ -5067,3 +5067,16 @@ Detailed note: `docs/internal/agent-notes/current-gemma4-12b-release-boundary-an
   `cd panel && npm test -- --run tests/responses-warnings.test.ts`
   -> `19 passed`.
 - Classification: this fixes UI/history recovery after media guard failures. It does not clear full VL/audio/video support for Gemma4, MiMo, Step3.7, Nemo Omni, or any other family.
+
+## 2026-06-07 local - Structured-output repair warning surfaced
+
+- Scope stayed in active Python engine worktree; no deprecated wrapper, Swift, ADLab/TB/RDMA work, package, signing, notarization, tag, upload, appcast, or public release action.
+- Patched `vmlx_engine/server.py` so Chat Completions and Responses non-streaming paths add a `warnings` entry when JSON was repaired or schema-coerced after generation.
+- Returned content remains the repaired canonical JSON when repair succeeds, but clients and benchmark/catalog pipelines can now tell raw model JSON from post-generation repair.
+- Warning text explicitly says the behavior is post-generation repair, not guided or constrained decoding.
+- Focused validation:
+  `.venv/bin/python -B -m py_compile vmlx_engine/server.py tests/test_structured_output.py`
+  and
+  `.venv/bin/python -m pytest -q tests/test_structured_output.py -k 'repair or structured or chat_completion_repairs'`
+  -> `43 passed, 2 skipped`.
+- Classification: this improves structured-output diagnostics and scoring integrity. It does not clear exact code/whitespace failures, raw JSON drift, or hard constrained decoding for LFM, Gemma4, MiMo, Step, or other model families.

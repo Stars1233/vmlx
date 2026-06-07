@@ -111,6 +111,29 @@ tools/tool-result continuation and cache telemetry, but strict exact-code
 formatting is red for every quant and MXFP4/MXFP8 also fail exact JSON value
 equality.
 
+2026-06-07 structured repair warning update:
+
+- Chat Completions and Responses non-streaming paths now surface a `warnings`
+  entry when structured JSON had to be repaired or schema-coerced after
+  generation.
+- The returned content remains the repaired canonical JSON when repair succeeds,
+  but clients and benchmark/catalog pipelines can distinguish raw model JSON
+  from post-generation repair.
+- The warning explicitly says this is post-generation repair, not guided or
+  constrained decoding.
+- Focused validation:
+  `.venv/bin/python -B -m py_compile vmlx_engine/server.py tests/test_structured_output.py`
+  and
+  `.venv/bin/python -m pytest -q tests/test_structured_output.py -k 'repair or structured or chat_completion_repairs'`
+  -> `43 passed, 2 skipped`.
+
+Classification:
+
+- JSON repair diagnostics are improved for API clients and scoring integrity.
+- This does not clear exact code/whitespace failures, raw model JSON drift, or
+  hard constrained decoding. LFM and Gemma4 remain release-red where their raw
+  outputs fail strict rows.
+
 ## 2026-06-07 LFM2.5 expanded no-media structured-output gate
 
 Artifact:
