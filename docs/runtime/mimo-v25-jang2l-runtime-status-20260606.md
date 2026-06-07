@@ -11,10 +11,10 @@ Do not use `/Users/eric/vmlx`, ADLab, TB/RDMA workflows, or Swift-only paths for
 MiMo V2.5 JANG_2L is not release-green.
 
 Working pieces are real and live-proven, including repeated text cache,
-multiturn recall, required-tool parsing after prior turns, and the 64-word
-long-prefix cache row. Remaining red items are speed, full tool-result and
-loop-stop matrix, media/VL/audio/video, UI parity, and release
-packaging/signing/notarization.
+multiturn recall, required-tool parsing after prior turns, tool-result
+continuation, and the 64-word long-prefix cache row. Remaining red items are
+speed, broader auto-tool/loop-stop/raw-markup matrix, media/VL/audio/video, UI
+parity, and release packaging/signing/notarization.
 
 ## Live proofs completed
 
@@ -255,6 +255,66 @@ Remaining red items from this run:
 - This run does not prove tool-result continuation, auto-tool loop stopping,
   Anthropic/Ollama/Responses parity, UI settings parity, installed packaged app,
   or release notarization.
+
+## 2026-06-07 tool-result continuation after template argument normalization
+
+Artifacts:
+
+- Failing pre-fix gate:
+  `build/current-all-local-model-smoke-mimo-v25-jang2l-tools-continuation-nomedia-20260607/JANGQ_MiMo-V2.5-JANG_2L/result.json`
+- Passing post-fix gate:
+  `build/current-all-local-model-smoke-mimo-v25-jang2l-tools-continuation-after-template-args-fix-20260607/JANGQ_MiMo-V2.5-JANG_2L/result.json`
+
+Runtime bug found:
+
+- OpenAI Chat Completions assistant history stores
+  `tool_calls[].function.arguments` as a JSON string.
+- MiMo's text-only MLLM processor-template path bypassed the generic tokenizer
+  normalization that converts those strings to dicts.
+- The MiMo Jinja template then attempted `arguments|items` and failed before
+  generation with:
+  `TypeError: Can only get item pairs from a mapping.`
+
+Runtime fix:
+
+- `BatchedEngine._mimo_text_only_chat_template()` now normalizes a shallow copy
+  of assistant tool-call arguments before processor template rendering.
+- The request object is not mutated.
+- This is a real API/tool-history compatibility fix, not prompt-only behavior
+  forcing or synthetic tool-call fabrication.
+
+Expanded harness proof:
+
+- `bench/all_local_model_smoke.py --include-tools` now adds
+  `tool_result_continuation` after `tool_required`.
+- The continuation row supplies an assistant tool call, a matching `role=tool`
+  result, then requires exact final visible text `STORED blue-cat`.
+- Validation fails on a second tool call, raw tool markup, empty visible text,
+  or non-exact final synthesis.
+
+Post-fix live result:
+
+- Runner summary: `status=pass`, `row_count=1`, `failed=0`.
+- Six requests completed: text cache repeat, cache hit repeat, multiturn recall,
+  reasoning-on, required tool, and tool-result continuation.
+- `tool_required`: real parsed tool call
+  `record_fact({"value":"blue-cat"})`, no visible text.
+- `tool_result_continuation`: HTTP 200, visible `STORED blue-cat`,
+  `tool_calls=[]`, no reasoning text, no raw markup.
+- Paged cache hit remains `cached_tokens=67`.
+- Block-disk L2 wrote `14` blocks / `690` tokens.
+- Native cache remains `mimo_v2` / `mixed_swa_kv_v1` /
+  `mimo_v2_asymmetric_swa`; generic TurboQuant KV remains disabled.
+
+Remaining red items from this run:
+
+- Speed remains far below target: aggregate generation `117` tokens in
+  `66.33s`, about `1.76 tok/s`.
+- Reasoning-on output remains low quality/repetitive despite no validation
+  failure in this narrow row.
+- No-media only: image/video/audio are still unwired.
+- This does not prove auto-tool behavior, adversarial loop-stop, Responses /
+  Anthropic / Ollama parity, streaming, installed-app UI, or release packaging.
 
 ## 2026-06-07 no-media source smoke after keep=0 cache fix
 
