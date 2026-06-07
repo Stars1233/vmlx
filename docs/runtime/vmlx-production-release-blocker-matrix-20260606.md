@@ -119,10 +119,12 @@ Current status: red. No release action allowed.
 
 ## Current next actions
 
-1. Keep MiMo red and classify tool corruption with source-vs-quant or artifact replacement proof.
-2. Add harness knobs for per-family cache/TQ/L2 diagnostics so A/B rows are reproducible instead of manual one-off commands.
-3. Refresh cross-family smoke matrix after the harness can record runtime modalities and architecture-specific cache evidence.
-4. Commit/push only proven source/test/docs/proof artifacts, excluding `.agents/`, local AGENTS override, vendor noise, binary cache dirs, and release outputs.
+1. Keep MiMo red; direct continuation proof now shows the current installed JANG_2L path cannot naturally continue valid XML tools even outside Chat tool parsing.
+2. Obtain a corrected MiMo artifact or build a real constrained/guided XML decoder; do not synthesize fake tool calls from `tool_choice=required`.
+3. Only delete old/local MiMo copies after a replacement artifact is proven better and exact paths are enumerated.
+4. Add harness knobs for per-family cache/TQ/L2 diagnostics so A/B rows are reproducible instead of manual one-off commands.
+5. Refresh cross-family smoke matrix after the harness can record runtime modalities and architecture-specific cache evidence.
+6. Commit/push only proven source/test/docs/proof artifacts, excluding `.agents/`, local AGENTS override, vendor noise, binary cache dirs, and release outputs.
 
 ## 2026-06-06 MiMo KV-none harness update
 
@@ -142,6 +144,34 @@ Matrix impact:
 - `MiMo V2.5 JANG_2L` remains red.
 - `CACHE-001` improves for MiMo text cache evidence but remains red for largest-context, restart/L2 restore, and cross-family rows.
 - `TOOL-001` remains red.
+
+## 2026-06-06 MiMo direct XML continuation probe
+
+Artifact:
+
+`build/current-mimo-v25-tool-continuation-probe-20260606`
+
+Command boundary:
+
+- Installed model: `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L`.
+- Runtime: SimpleEngine, no continuous batching, prefix cache disabled, `--kv-cache-quantization none`.
+- API: `/v1/completions`, not Chat Completions tool parsing.
+- Prompt: real MiMo chat template plus concrete `mimo_xml_function` fallback example.
+
+Results:
+
+- Base prompt generated repeated `<think>` plus punctuation/fullwidth-comma garbage.
+- Prompt prefilled through `<tool_call>\n<function=record_fact>\n<parameter=value>\n` generated only `blue` and then punctuation/newline garbage, not `blue-cat` and not closing XML.
+- Base probe speed: 48 completion tokens in 50.42s, about `1.0 tok/s`.
+- Prefilled-function probe speed: 48 completion tokens in 29.52s, about `1.6 tok/s`.
+
+Updated classification:
+
+- MiMo tool failure is not parser-only and not caused solely by Chat `tool_choice=required`.
+- It reproduces outside tool parsing and after the runtime supplies the concrete function/parameter prefix.
+- Do not implement a fake runtime tool-call synthesis as a release fix.
+- Valid paths remain either a corrected MiMo artifact that naturally emits the XML tool grammar, or a real constrained/guided XML tool decoder proven end-to-end without fabricating arguments.
+- MiMo speed remains red until an optimized routed-expert decode path is implemented/proven; current generic path is around 1-2 tok/s on this 106GB bundle.
 
 ## 2026-06-06 LFM2.5 MXFP4 focused source smoke
 

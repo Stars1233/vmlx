@@ -159,14 +159,16 @@ Latest result:
 
 ## Next required checks
 
-1. Obtain the intended/current MiMo V2.5 JANG_2L artifact without using ADLab work as implementation guidance.
-2. Compare artifact metadata and hashes against the installed `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L` copy.
-3. Run the same required-tool SimpleEngine test on the replacement/current artifact.
-4. If replacement works, classify installed local model as corrupt/bad and replace/delete the old MiMo copies.
-5. If replacement fails identically, classify this as runtime/template/decode compatibility and continue in vMLX Python engine.
-6. Only after required tools pass, run full smoke with paged cache, L2 block cache, native rotating cache, and no generic TQ-KV.
-7. Only after text/tools pass, implement/prove MiMo image/video/audio runtime. Current MiMo media is preserved but unwired.
-8. Only after all relevant families pass E2E should release/sign/notarize proceed.
+1. Obtain a corrected/current MiMo V2.5 JANG_2L artifact without using ADLab work as implementation guidance.
+2. Prefer HTTP/local network transfer only for the model artifact itself; do not pull implementation guidance from ADLab/TB/RDMA notes.
+3. Compare artifact metadata and hashes against the installed `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L` copy.
+4. Run the same direct XML continuation probe and required-tool SimpleEngine test on the replacement/current artifact.
+5. If replacement works, classify the installed local model as corrupt/bad, enumerate exact old MiMo paths, then replace/delete the old MiMo copies.
+6. If replacement fails identically, classify this as model/tool-template/decode compatibility and continue in vMLX Python engine only with legitimate fixes such as constrained/guided XML decoding.
+7. Do not synthesize fake tool calls from `tool_choice=required` or user text as a release fix.
+8. Only after required tools pass, run full smoke with paged cache, L2 block cache, native rotating cache, and no generic TQ-KV.
+9. Only after text/tools pass, implement/prove MiMo image/video/audio runtime. Current MiMo media is preserved but unwired.
+10. Only after all relevant families pass E2E should release/sign/notarize proceed.
 
 ## Release gate
 
@@ -231,3 +233,34 @@ Conclusion:
 
 - MiMo tool corruption is not caused by q4 KV cache storage or generic TurboQuant KV.
 - The failure persists with cache storage quantization disabled while the intended prefix/paged/L2 cache stack remains active.
+
+## Direct continuation probe
+
+Artifact:
+
+`build/current-mimo-v25-tool-continuation-probe-20260606`
+
+Command boundary:
+
+- Served installed `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L`.
+- Used SimpleEngine: `--no-continuous-batching --disable-prefix-cache --kv-cache-quantization none`.
+- Used `/v1/completions`, not Chat Completions tool parsing.
+- Prompt was rendered with the real MiMo chat template plus concrete `mimo_xml_function` fallback example.
+- No OpenAI tool parser, no `tool_choice=required`, no paged prefix cache, and no generic TurboQuant KV participated in this probe.
+
+Results:
+
+- Base rendered prompt output:
+- `<think><think><think>。，，，。。。，，，，，。。，，，，，，。。，，，。。，。，。。。。，，，。，。，，。。。`
+- Assistant-prefilled prompt ending in `<tool_call>\n<function=record_fact>\n<parameter=value>\n` output:
+- `blue\n\n\n\n\n，，\n\n。，，，，，。，，，，。，。，，，，，，。，，。。。。。。。。。。。。。。。`
+- Base probe speed: 48 completion tokens in 50.42s, about `1.0 tok/s`.
+- Prefilled-function probe speed: 48 completion tokens in 29.52s, about `1.6 tok/s`.
+
+Conclusion:
+
+- The current installed MiMo JANG_2L path cannot reliably continue the native XML tool grammar even when the runtime has already supplied the `<function=record_fact>` and `<parameter=value>` prefix.
+- This rules out parser-only failure, `tool_choice=required` response wrapping, continuous batching, prefix cache, paged L2, q4 KV storage, and generic TurboQuant KV as sole causes.
+- Remaining likely causes are model/artifact/tool-template training incompatibility or missing optimized MiMo/JANG_2L decode support for this bundle.
+- A runtime-side fake tool-call synthesis would be incorrect and must not be used as a release fix.
+- A legitimate future runtime fix would need constrained/guided XML tool decoding or a proven better MiMo artifact that naturally emits valid XML tools.
