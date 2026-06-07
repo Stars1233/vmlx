@@ -4805,3 +4805,149 @@ Detailed note: `docs/internal/agent-notes/current-gemma4-12b-release-boundary-an
 - Probe artifact: `build/current-mimo-live-auto-tool-enabled-probe-20260606.json`.
 - Result: fail. Baseline `Reply exactly READY.` before any tool call returned `The user said`; auto tool still returned punctuation garbage/no tool calls; post-tool exact text also returned `The user said`.
 - Classification strengthened: current MiMo blocker is broader local generation/runtime quality, not just parser strictness or missing auto-tool flag.
+
+## 2026-06-06 - Codex MiMo MLLM interface fix, release still blocked
+
+- Scope stayed local in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no adlab/Max2/TP4/RDMA/TB work.
+- Fixed registered MiMo `mlx_vlm` wrapper dropping `inputs_embeds` in `Model.__call__`.
+- Added `tests/test_mimo_v2_mllm_runtime_registration.py` proving `inputs_embeds`, `cache`, `mask`, and kwargs are forwarded.
+- Regenerated MiMo current audit at `build/current-mimo-v2-jang2l-current-audit-after-mllm-inputs-embeds-fix-20260606.json`.
+- Regenerated release manifest at `build/current-release-regression-manifest-after-mimo-mllm-inputs-embeds-fix-20260606.json`; still red: `current_proof_sweep=fail`, `prepackage_ready=false`, `release_ready=false`.
+- Remaining MiMo blockers: long prompt, tool protocol, decode speed, source-vs-quant, media wiring.
+
+## 2026-06-06 — Codex: MiMo SimpleEngine thinking-off decode partial fix
+- Scope: active Python worktree `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, no adlab, no packaging/signing/release.
+- Fixed SimpleEngine MiMo text-only decode policy so effective `enable_thinking=false` suppresses native `<think>` and `</think>` token IDs at logits boundary.
+- Focused verification passed: py_compile and `tests/test_mllm_message_serialization.py` MiMo slice (`5 passed, 67 deselected`).
+- Live conservative source server row improved short exact output: `ACK-MIMO-742`, no think-tag leak.
+- Live rows still red: explicit-system no-think returned empty visible output, no-system sentinel ignored exact instruction, thinking-true explicit-system returned empty visible output. MiMo remains not release-cleared.
+- Artifact: `build/current-mimo-simple-thinking-off-decode-fix-live-red-20260606.json`.
+
+## 2026-06-06 — Codex: MiMo SimpleEngine first-token EOS partial fix
+- Scope: active Python worktree only; no deprecated `/Users/eric/vmlx`, no adlab, no packaging/signing/release.
+- Added MiMo thinking-off first-token-only EOS suppression in SimpleEngine. This targets the proven `failing_system_long` top-token `<|im_end|>` without suppressing natural EOS after generation begins.
+- Focused verification passed: py_compile and MiMo `test_mllm_message_serialization.py` slice (`5 passed, 67 deselected`).
+- Live conservative source server now changes first-token-probe shape from empty stop to starting with `ACK`, but still continues with extra text and fails exact output. Sentinel rows still fail instruction following and speed is still far below target.
+- Artifact: `build/current-mimo-simple-thinking-off-first-token-eos-live-red-20260606.json`.
+- MiMo remains release-red. Do not package, sign, notarize, tag, or call release-ready.
+
+## 2026-06-06 — Codex: MiMo source-vs-quant preflight refreshed
+- Scope: active Python worktree only; no source launch, no worker disruption, no release action.
+- Refreshed `build/current-mimo-v2-jang2l-source-vs-quant-first-divergence-20260606.json` with local quant endpoint healthy on `127.0.0.1:8897` under current source and remote Max2 source path present at `/Volumes/EricsLLMDrive/jangq-ai/sources/MiMo-V2.5`.
+- Remaining blocker is source endpoint down: `http://erics-m5-max2.local:8126` connection refused. Rows did not execute; status remains `missing_prerequisites` and cannot classify model artifact vs runtime.
+
+## 2026-06-06 — Codex: MiMo batched thinking-off decode policy source fix
+- Scope: active Python worktree only; no model release/signing/packaging.
+- Threaded effective `enable_thinking` into MLLM scheduler/batch requests and added MiMo-only batched logits policy: suppress `<think>`/`</think>` under thinking-off and suppress `<|im_end|>` only before first generated token.
+- Focused verification passed: py_compile and `tests/test_mllm_continuous_batching.py` MiMo sampler slice (`2 passed, 37 deselected`).
+- Artifact: `build/current-mimo-batched-thinking-off-decode-policy-source-20260606.json`.
+- Boundary: source regression only; live continuous-batching cache/L2, tools, speed, source-vs-quant, and media rows remain red.
+
+## 2026-06-06 — Codex: Qwen MTP gdn_sink source proof and local guardrail refresh
+
+- Scope: Python engine/MLXStudio release lane only in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no ADLab/TB/RDMA/Swift/deprecated wrapper work.
+- Verified current source already contains Qwen GatedDelta MTP `gdn_sink` fix at `525ccedf`.
+- Focused proof passed: py_compile for Qwen MTP patch/test files and pytest filter for dense `gdn_sink` propagation plus VL Qwen3.5/3.6 pre-load activation (`3 passed, 587 deselected`).
+- Added proof artifact `build/current-qwen36-mtp-gdn-sink-source-proof-20260606.json` and ledger entries classifying this as runtime source fixed but not packaged/release-proven.
+- Updated local AGENTS.md with model-family/cache/VL/release guardrails; this AGENTS change remains local-only and must not be committed under Eric's instruction.
+
+## 2026-06-07 - Qwen27 MXFP4-MTP deterministic Responses cancel/recovery proof
+
+- Scope stayed in active Python worktree `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated wrapper, ADLab, TB/RDMA, Swift, package, signing, notarization, tag, or release action.
+- Patched `tests/cross_matrix/run_issue179_responses_cancel_probe.py` to expose parser/sampling knobs while preserving MiniMax issue #179 defaults.
+- Focused no-heavy validation passed: py_compile clean; `tests/test_issue179_responses_cancel_probe.py` -> 11 passed.
+- Live artifact: `build/current-qwen27-mxfp4-mtp-responses-cancel-mtp-deterministic-20260607.json`.
+- Result: pass. Request used `/v1/responses` streaming with `temperature=0.0`, `top_p=1.0`, `top_k=0`, `--tool-call-parser qwen`, `--reasoning-parser qwen3`; cancel returned HTTP 200 for `resp_76a19f72835c`.
+- Server log confirms native MTP `READY D2` and `MLLM native MTP path activated ... depth=2`; no `gdn_sink` TypeError or stream generator error.
+- Matrix impact: Qwen27 MXFP4-MTP deterministic cancel/recovery row is closed; Qwen27 remains partial for real Electron UI, largest-context cache, MXFP8 deterministic policy/session, TP4 route rank/speed, and full media/UI release rows.
+
+## 2026-06-07 - Qwen35 MXFP8-MTP long Responses/tool/cache diagnostic
+
+- Scope stayed in active Python worktree `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no wrapper/Swift/ADLab/package/sign/release action.
+- Added deterministic sampling knobs to `tests/cross_matrix/run_responses_long_tool_cache_gate.py` so Qwen native-MTP rows can pass `temperature=0`, `top_p=1`, `top_k=0`, `repetition_penalty=1` instead of silently skipping MTP.
+- Focused no-heavy validation passed: py_compile clean; `tests/test_engine_audit.py -k responses_long_context_tool_cache_gate` -> 19 passed, 504 deselected.
+- Stochastic artifact `build/current-qwen35-mxfp8-mtp-responses-long-tool-cache-20260607` is red: cache hits observed on turns 2/3, required tools produced calls, no tool markup leak or loops, but native MTP skipped because sampling resolved to temperature=1.0/top_k=20; strict tool evidence also failed.
+- Deterministic artifact `build/current-qwen35-mxfp8-mtp-responses-long-tool-cache-deterministic-20260607` is red: native MTP activated at D3, accepted 97/189 drafted tokens, block disk and SSM L2 active, but `/v1/responses` returned HTTP 400 because `tool_choice=required` produced no tool calls.
+- Classification: Qwen35 native MTP/cache activation is real, but deterministic MTP plus required-tool behavior is not release-cleared. Do not use stochastic cache hits as MTP proof or deterministic MTP activation as tool proof.
+
+## 2026-06-07 - Codex MiMo current normal-engine proof correction
+
+- Scope stayed in active Python worktree `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated wrapper, Swift, ADLab, TB/RDMA, package, signing, notarization, tag, or release action.
+- Inspected current MiMo normal-engine artifact `build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-refresh-after-qwen35-20260607/JANGQ_MiMo-V2.5-JANG_2L/result.json` and server log.
+- Current positives: text `ACK`, repeat cache hit `cached_tokens=67` / `cache_detail=paged`, block-disk L2 wrote 4 blocks / 141 tokens, multiturn `blue cat`, native cache `mimo_v2` / `mixed_swa_kv_v1` / `mimo_v2_asymmetric_swa`.
+- Current blocker: `tool_choice=required` returns HTTP 400 after 96 generated tokens, no parsed `tool_calls`, raw preview starts `<tool_call>` plus punctuation/fullwidth comma garbage, speed about `1.6 tok/s`.
+- Updated runtime matrix, MiMo status, media worklist, cross-model issue register, and local AGENTS to supersede stale claims that current MiMo `record_fact` was parsed.
+- Release remains red; no signing/notarization/public update allowed.
+
+## 2026-06-07 — Codex: MiMo tight-memory + mixed-SWA MLLM cache fix
+- Scope: active Python engine worktree `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, no ADLab/TB/RDMA implementation work, no signing/notarization/release.
+- Fixed MiMo MLLM tight-memory lifecycle by draining MLX allocator state around prefills when Metal working-set headroom is tight.
+- Fixed MiMo MLLM long-prefix cache by detecting live `RotatingKVCache` in extracted cache objects and routing through clean mixed-SWA prompt-boundary store when wrappers hide metadata.
+- Live proof: `build/current-local-long-context-cache-mimo-v25-installed-64w-after-tight-memory-rotating-store-20260607` passed with `cached_tokens=435`, `cache_detail=paged`, 7 block-disk writes, `LONGCTX-OK`, and no Metal OOM/server disconnect.
+- Remaining red: speed, full tool-result/multiturn tool matrix, VL/audio/video, UI/installed-app parity, release packaging.
+
+## 2026-06-06 21:29 local - MiMo tight-memory tool prefill OOM fixed in source gate
+
+- Patched text-only MLLM tight-memory prefill to chunk shorter fallback-tool-schema prompts instead of using one-shot language-model prefill under low Metal working-set margin.
+- Focused compile/unit checks passed: `py_compile` for `vmlx_engine/mllm_batch_generator.py` and `tests/test_mllm_scheduler_cache.py`; 3 focused scheduler/cache tests passed.
+- Live MiMo no-media source gate passed: `build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-after-tight-tool-prefill-chunk-20260607/summary.json` reported `status=pass`, `failed=0`.
+- Required-tool row returned real `record_fact({"value":"blue-cat"})`; prior native Metal OOM did not recur.
+- Still red for release: MiMo speed around 1-2 tok/s, reasoning quality poor, media/VL/audio/video unwired, UI/installed-app/tool-continuation matrix incomplete.
+
+## 2026-06-06 21:36 local - MiMo tool-result continuation gate added and fixed
+
+- Extended `bench/all_local_model_smoke.py --include-tools` with `tool_result_continuation`: assistant tool-call history + role=tool result + exact final answer, rejecting second tool calls and raw tool markup.
+- First expanded MiMo gate failed before generation with template 500: `TypeError: Can only get item pairs from a mapping.` Artifact: `build/current-all-local-model-smoke-mimo-v25-jang2l-tools-continuation-nomedia-20260607/`.
+- Fixed MiMo text-only MLLM template path to normalize OpenAI string `function.arguments` to mapping copies before Jinja rendering.
+- Post-fix expanded MiMo gate passed: `build/current-all-local-model-smoke-mimo-v25-jang2l-tools-continuation-after-template-args-fix-20260607/`, `status=pass`, `failed=0`.
+- Tool continuation proof: visible `STORED blue-cat`, no tool calls, no raw markup; required-tool row still returns `record_fact({"value":"blue-cat"})`.
+- Still release red: speed about 1.76 tok/s, reasoning quality poor, media/VL/audio/video unwired, UI/installed-app broader API matrix incomplete.
+
+## 2026-06-06 21:41 local - MiMo strict JSON and exact code rows added
+
+- Extended `bench/all_local_model_smoke.py` with always-on `structured_json_exact` and `exact_code_whitespace` probes.
+- Live MiMo no-media source gate passed with tools + JSON + code rows: `build/current-all-local-model-smoke-mimo-v25-jang2l-json-code-tools-nomedia-20260607/`, `status=pass`, `failed=0`.
+- JSON row produced exactly `{\"status\":\"ok\",\"value\":\"blue-cat\",\"count\":3}` and parsed equal to expected object.
+- Code row produced exactly `def add(a, b):\n    return a + b\nprint(add(2, 3))` with indentation/newlines preserved.
+- Cache proof remained present: paged cache hit `cached_tokens=67`, block L2 wrote 16 blocks / 797 tokens.
+- Still release red: MiMo speed about 1.76 tok/s, reasoning quality poor, media/VL/audio/video unwired, UI/app/API parity incomplete.
+
+## 2026-06-06 21:47 local - LFM expanded structured-output gate red
+
+- Ran expanded no-media source gate on installed LFM2.5 variants: `build/current-all-local-model-smoke-lfm25-installed-json-code-tools-nomedia-20260607/`, `status=fail`, `failed=3`.
+- All three LFM variants passed required tool and tool-result continuation.
+- JANG_2L failed strict JSON because it wrapped the correct object in markdown fences, and failed exact code as `def add(a, b:`.
+- MXFP4 and MXFP8 passed strict JSON but failed exact code as `print(add(2, 3)` missing the final `)`.
+- Exact-code failures ended with `finish_reason=stop`, not `length`, so not a max-token false positive.
+- Classification: LFM structured-output/code exactness remains release-red; do not silently repair code output as a release fix.
+
+## 2026-06-06 21:49 local - Step 3.7 expanded no-media structured-output gate pass
+
+- Correct installed model path is `/Users/eric/.mlxstudio/models/JANGQ-AI/Step-3.7-Flash-JANG_2L`; older CRACK suffix filter returned zero rows.
+- Ran expanded no-media source gate: `build/current-all-local-model-smoke-step37-jang2l-json-code-tools-nomedia-20260607/`, `status=pass`, `failed=0`.
+- Passed text cache repeat with paged hit `cached_tokens=61`, multiturn recall, reasoning-on, required tool, tool-result continuation, strict JSON, and exact code/whitespace.
+- Tool required returned real `record_fact({"value":"blue-cat"})`; tool-result continuation returned exact `STORED blue-cat` with no second tool call.
+- Native cache reported `step3p7` / `mixed_swa_kv_v1` / `step3p7_full_sliding_kv`; block L2 wrote 10 blocks / 472 tokens.
+- Still release red: text/no-media only, no real Step VLM proof, MTP metadata inconsistent (config expects nextn layers but no mtp tensors), API/UI/restart-L2/loop-stop/public parity incomplete.
+
+## 2026-06-06 21:57 local - Gemma4 12B expanded no-media structured-output gates mixed/red
+
+- Gemma4 12B bundles are under `/Users/eric/models`, not `~/.mlxstudio/models`.
+- Ran JANG_4M gate: `build/current-all-local-model-smoke-gemma4-12b-jang4m-json-code-tools-nomedia-20260607/`, `status=fail`, `failed=1`.
+- Ran MXFP4/MXFP8 gate with candidates skipped: `build/current-all-local-model-smoke-gemma4-12b-mxfp-json-code-tools-nomedia-20260607/`, `status=fail`, `failed=2`.
+- Positives: all three pass required tool and tool-result continuation; all report paged+mixed-SWA cache hit `cached_tokens=56` and block L2 writes 9 blocks / 402 tokens.
+- Speeds: JANG_4M about 49.4 tok/s, MXFP4 about 59.9 tok/s, MXFP8 about 39.1 tok/s aggregate generation in these no-media rows.
+- Failures: all three insert a leading space before `print(add(2, 3))` in exact code; MXFP4/MXFP8 also produce JSON value `" blue-cat"`; MXFP4 exact ACK cache rows echo the prefix instead of ACK.
+- Classification: Gemma4 tools/cache/speed evidence is useful, but structured-output exactness remains red; no media/UI/API/release claim.
+
+## 2026-06-07 local - Qwen3.6 MTP expanded no-media structured-output gate
+
+- Scope stayed in active Python engine worktree `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, no Swift, no ADLab/TB/RDMA implementation work, no package/sign/notarize/tag/release action.
+- Ran expanded no-media source gate:
+  `build/current-all-local-model-smoke-qwen36-mtp-json-code-tools-nomedia-20260607/`, overall `status=fail`, `failed=1`.
+- `Qwen3.6-27B-MXFP4-MTP` passed text cache, paged+SSM hit `cached_tokens=56`, multiturn recall, reasoning-on, required tool, tool-result continuation, strict JSON, and exact code/whitespace.
+- `Qwen3.6-27B-MXFP8-MTP` passed the same rows with paged+SSM hit `cached_tokens=56`.
+- `Qwen3.6-35B-A3B-MXFP8-MTP` passed text cache, multiturn recall, required tool, tool-result continuation, strict JSON, and exact code/whitespace, but failed `reasoning_on`: HTTP 200, hidden reasoning present, visible content empty, request-level `reasoning_chars=986`, `completion_tokens=256`, server `finish=length`.
+- Runtime evidence: 27B MXFP4 native MTP `READY D2`; 27B MXFP8 and 35B MXFP8 native MTP `READY D3`; all three used hybrid attention-KV q4 plus native SSM/GatedDelta companion state, paged cache, block L2, and SSM companion L2.
+- No `gdn_sink` TypeError, stream crash, raw XML tool leak, required-tool failure, strict JSON failure, or exact-code failure occurred in this Qwen gate.
+- Classification: Qwen27 MXFP4/MXFP8 MTP are source no-media tool/structured/cache green but release-partial; Qwen35 MXFP8 MTP remains red for thinking-mode visible-finalization under native MTP/MoE plus missing UI/API/media/restart/largest-context rows. Do not disable thinking as a fake release fix.
