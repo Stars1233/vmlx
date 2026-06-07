@@ -1279,3 +1279,101 @@ Release boundary:
 - It does not clear largest-context restore, UI-launched restore, media-salted
   restore, cancellation cleanup, sleep/wake, unload/reload, streaming/API
   parity, output exactness, or any release packaging/signing/notarization row.
+
+## 2026-06-07 local long-context cache gate and mixed-SWA store fix
+
+Runner:
+
+`bench/local_long_context_cache_gate.py`
+
+Purpose:
+
+- Launch each installed local model with paged cache plus block-disk L2.
+- Send the same long prompt twice in one process.
+- Require the second request to report a large positive `cached_tokens` count.
+- Report output exactness separately from cache correctness.
+
+Initial failure:
+
+`build/current-local-long-context-cache-lfm-step-installed-2048w-20260607/summary.json`
+
+- 2048-word prompts were rejected with HTTP 413 for LFM and Step even with
+  explicit `--max-prompt-tokens 8192`; this is not yet a largest-context pass.
+
+Accepted long-context gate before the Step fix:
+
+`build/current-local-long-context-cache-lfm-step-installed-512w-20260607/summary.json`
+
+- LFM JANG_2L/MXFP4/MXFP8 cache hits passed at 512 words.
+- Step returned correct `LONGCTX-OK` but reported `cached_tokens=0` on the
+  repeat at `1582` prompt tokens.
+- Step also failed cache reuse at 256 words / `814` prompt tokens.
+- Step still passed at 128 words / `430` prompt tokens.
+
+Root cause:
+
+- Step uses mixed full/sliding-window attention with `RotatingKVCache` layers.
+- The generic scheduler path tried to trim live post-decode cache back to the
+  prompt boundary.
+- At longer prompts, rotating metadata could not be safely rewound and
+  `_extracted_cache` was never set.
+- New telemetry made the skip explicit:
+  `Skipping paged cache store ... no extracted cache (prompt_tokens=814, gen_prompt_len=8, block_cache_enabled=True)`.
+
+Fix:
+
+- `vmlx_engine/scheduler.py` now uses clean prompt-boundary re-prefill for
+  generic mixed-SWA cache families, keyed to the same N-1 prompt-prefix contract
+  used by paged cache hits.
+- This avoids unsafe live-cache rewind for Step/Gemma/MiMo-style full plus
+  sliding-window attention models in the standard text scheduler.
+- The patch also logs skipped paged-cache store reasons instead of silently
+  dropping cache stores.
+
+Post-fix proof:
+
+`build/current-local-long-context-cache-step37-installed-256w-after-mixed-swa-prefill-20260607/summary.json`
+
+- Step 256 words / `814` prompt tokens: pass.
+- Repeat reported `cached_tokens=805`, `cache_detail=paged`, visible
+  `LONGCTX-OK`.
+
+`build/current-local-long-context-cache-step37-installed-512w-after-mixed-swa-prefill-20260607/summary.json`
+
+- Step 512 words / `1582` prompt tokens: pass.
+- Repeat reported `cached_tokens=1573`, `cache_detail=paged`, visible
+  `LONGCTX-OK`.
+- Server log confirms `Mixed-SWA prefix cache store using clean prompt-boundary
+  re-prefill (1573 cache-key tokens from 1574 prompt tokens)`.
+- Server log confirms block-disk write-through of `25` blocks.
+
+Combined post-fix artifact:
+
+`build/current-local-long-context-cache-lfm-step-installed-512w-after-mixed-swa-prefill-20260607/summary.json`
+
+- Summary `status=pass`, `row_count=4`.
+- LFM JANG_2L: `cached_tokens=2604`, `cache_detail=paged+ssm`,
+  output exactness review.
+- LFM MXFP4: `cached_tokens=1580`, `cache_detail=paged+ssm`,
+  output exactness pass.
+- LFM MXFP8: `cached_tokens=1580`, `cache_detail=paged+ssm`,
+  output exactness review.
+- Step 3.7 Flash: `cached_tokens=1573`, `cache_detail=paged`,
+  output exactness pass.
+
+MiMo long-context result:
+
+`build/current-local-long-context-cache-mimo-v25-installed-64w-after-mixed-swa-prefill-20260607/summary.json`
+
+- MiMo 64-word long-context probe errored on the second request.
+- Server log shows the first request completed in `28.17s` at about `0.2 tok/s`.
+- The second request terminated the process with Metal OOM:
+  `Command buffer execution failed: Insufficient Memory`.
+- This is an MLLM scheduler/runtime memory blocker, not cleared by the text
+  scheduler mixed-SWA fix.
+
+Release boundary:
+
+- This improves the Step/LFM long-prefix cache lane and adds a reusable gate.
+- It does not clear largest possible context, MiMo long-context, Gemma4 media,
+  UI launch parity, restart at long context, or release packaging.

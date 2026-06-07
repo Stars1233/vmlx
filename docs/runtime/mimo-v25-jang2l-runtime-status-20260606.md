@@ -308,6 +308,39 @@ Remaining blockers:
 - Largest-context, UI-launched restore, media-salted restore, cancellation,
   sleep/wake, unload/reload, and full API parity remain unproven.
 
+## 2026-06-07 long-context cache probe
+
+Runner:
+
+`bench/local_long_context_cache_gate.py`
+
+Artifact:
+
+`build/current-local-long-context-cache-mimo-v25-installed-64w-after-mixed-swa-prefill-20260607/summary.json`
+
+Result:
+
+- MiMo selected as one model row after auxiliary sidecar filtering.
+- First request completed with HTTP 200.
+- First request took `28.17s` for `5` completion tokens, about `0.2 tok/s`.
+- Second request crashed the server before returning a response.
+
+Failure:
+
+```text
+libc++abi: terminating due to uncaught exception of type std::runtime_error:
+[METAL] Command buffer execution failed: Insufficient Memory
+```
+
+Classification:
+
+- MiMo long-context/cache reuse remains red.
+- This failure is on the MLLM scheduler path and is separate from the text
+  scheduler mixed-SWA clean-prefill fix that repaired Step long-prefix cache
+  storage.
+- Current MiMo can pass narrow no-media tools/cache/restart rows, but long
+  prompt reuse still runs into speed, output, and memory failures.
+
 Current release status: red.
 
 ## 2026-06-07 required-tool metadata propagation and decode proof
