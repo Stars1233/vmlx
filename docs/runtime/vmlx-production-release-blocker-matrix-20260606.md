@@ -53,7 +53,7 @@ No source-only, load-only, health-only, or one-prompt text smoke may clear a bro
 | MiniMax / MiniMax-M2.7 / JANGTQ_K | Red | Public/local route drift narrowed; public DMG cancel route present | Reporter parity/root cause still open; JANGTQ/runtime/speed/tool/cancel recovery not fully cleared | Finish reporter provenance and live MiniMax model proof |
 | DSV4 Flash / DeepSeek-V4-Flash-JANGTQ-K | Red | Native composite cache smoke passed; required tool row passed in focused smoke | Long-output/code/file-generation exactness red; thinking-closed rail corrupts identifiers; memory-gated UI rows open | Fix/diagnose exact-code rail and rerun long/code/file-generation proof |
 | Step 3.7 Flash | Partial | Text-only guard prevents unsupported advertised-VLM crash; expanded installed-source no-media gate passes text cache, paged cache hit, multiturn recall, reasoning-on, required tool, tool-result continuation, strict JSON, and exact code/whitespace; native cache reports `step3p7` / `mixed_swa_kv_v1` / `step3p7_full_sliding_kv`; block L2 writes present | Real VLM not implemented/proven; metadata still advertises MTP next-token layers while bundle index has no `mtp.*` tensors; adversarial loop-stop, streaming, Responses/Anthropic/Ollama, installed-app UI, media rejection/recovery, restart/L2 restore, and public parity remain incomplete | Keep Step text lane partial-green but release-red; keep VLM fail-closed until real support lands; run missing API/UI/restart/L2/loop-stop rows |
-| Gemma 4 12B MXFP4/MXFP8/JANG_4M | Partial | JANG_4M source/installed speed around 46 tok/s; image small/reject text recovery proof exists | Full VL/audio/video/tools/cache/UI matrix incomplete; speed rows per quant not all cleared | Run per-quant media/tool/cache/UI matrix; verify image prefill guard on installed app |
+| Gemma 4 12B MXFP4/MXFP8/JANG_4M | Red | Expanded no-media source gates prove all three 12B quants can serve tools and tool-result continuation; JANG_4M passes strict JSON, reaches about `49.4 tok/s`, and reports paged+mixed-SWA cache hit `cached_tokens=56`; MXFP4 reaches about `59.9 tok/s`; MXFP8 reaches about `39.1 tok/s`; all three report native `gemma4` / `mixed_swa_kv_v1` cache and block L2 writes | Expanded structured-output rows are red: all three emit an extra leading space before `print(...)` in exact code; MXFP4/MXFP8 also emit JSON value `" blue-cat"` with a leading space; MXFP4 text cache exact-ACK row echoes the prompt instead of `ACK`; full VL/audio/video/tools/cache/UI matrix incomplete | Keep Gemma4 release-red; run media/tool/cache/UI matrix after deciding whether exact-code/JSON value drift is model artifact or runtime sampling/template issue; verify image prefill guard and post-error recovery on installed app |
 | ZAYA/ZAYA-VL | Partial | ZAYA text pass; ZAYA-VL capability truth and some media/tool/cache rows pass | Reasoning/media/UI matrix needs current installed-app proof | Refresh installed-app ZAYA/ZAYA-VL live matrix |
 | Hybrid SSM / nonstandard cache families | Red | Some native cache contracts exist | Async rederive/companion state/L2 restore not exhaustively proven per family | Add architecture-specific cache matrix rows and prove no plain-KV substitution |
 
@@ -105,6 +105,11 @@ and installed-app UI proof remain incomplete.
 Step 3.7 installed source no-media now also passes the strict JSON and exact
 code/whitespace rows, but that does not clear Step VLM, API parity, UI, restart
 L2, adversarial loop-stop, or release readiness.
+
+Gemma4 12B no-media source gates are mixed: all three quants pass
+tools/tool-result continuation and cache telemetry, but strict exact-code
+formatting is red for every quant and MXFP4/MXFP8 also fail exact JSON value
+equality.
 
 ## 2026-06-07 LFM2.5 expanded no-media structured-output gate
 
@@ -181,6 +186,56 @@ Remaining blockers:
 - It does not prove adversarial loop-stop, streaming, Responses / Anthropic /
   Ollama parity, installed-app UI, media rejection/recovery, restart/L2 restore,
   public release parity, signing, or notarization.
+
+## 2026-06-07 Gemma4 12B expanded no-media structured-output gates
+
+Artifacts:
+
+- JANG_4M:
+  `build/current-all-local-model-smoke-gemma4-12b-jang4m-json-code-tools-nomedia-20260607/summary.json`
+- MXFP4/MXFP8:
+  `build/current-all-local-model-smoke-gemma4-12b-mxfp-json-code-tools-nomedia-20260607/summary.json`
+
+Command scope:
+
+- Models root: `/Users/eric/models`
+- Media disabled.
+- Tools enabled.
+- Current source `vmlx_engine.cli serve`.
+- MXFP candidate folders skipped for the MXFP run.
+
+Positive evidence:
+
+- `gemma-4-12B-it-JANG_4M`: required tool passed, tool-result continuation
+  passed, strict JSON passed, paged+mixed-SWA cache hit `cached_tokens=56`,
+  block L2 wrote `9` blocks / `402` tokens, aggregate generation about
+  `49.4 tok/s`.
+- `gemma-4-12B-it-MXFP4`: required tool passed, tool-result continuation
+  passed, paged+mixed-SWA cache hit `cached_tokens=56`, block L2 wrote `9`
+  blocks / `402` tokens, aggregate generation about `59.9 tok/s`.
+- `gemma-4-12B-it-MXFP8`: required tool passed, tool-result continuation
+  passed, paged+mixed-SWA cache hit `cached_tokens=56`, block L2 wrote `9`
+  blocks / `402` tokens, aggregate generation about `39.1 tok/s`.
+
+Failures:
+
+- `gemma-4-12B-it-JANG_4M`: exact code/whitespace failed by inserting one
+  leading space before `print(add(2, 3))`; finish reason was `stop`.
+- `gemma-4-12B-it-MXFP4`: exact cache `ACK` rows failed by echoing the stable
+  prefix, strict JSON failed with `"value":" blue-cat"`, and exact code failed
+  with the same leading-space-before-`print` drift.
+- `gemma-4-12B-it-MXFP8`: strict JSON failed with `"value":" blue-cat"`, and
+  exact code failed with the same leading-space-before-`print` drift.
+
+Classification:
+
+- Current Gemma4 12B no-media tools/cache/speed evidence is good enough to
+  keep testing, but the family is not structured-output green.
+- The exact code/JSON value drift is raw model output under current runtime and
+  should not be silently repaired for release claims.
+- These gates are no-media only and do not prove image/audio/video, media
+  prefill/recovery, streaming, Responses / Anthropic / Ollama, installed-app UI,
+  restart/L2 restore, signing, or notarization.
 
 ### MEDIA-001: VL/audio/video runtime incomplete
 
