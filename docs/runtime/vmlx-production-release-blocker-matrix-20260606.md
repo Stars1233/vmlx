@@ -47,7 +47,7 @@ No source-only, load-only, health-only, or one-prompt text smoke may clear a bro
 |---|---:|---|---|---|
 | MiMo V2.5 JANG_2L | Red | Text `ACK`; paged cache hit `cached_tokens=67`; L2 block write; multiturn `blue cat`; native mixed full/SWA cache detected; generic flat TQ-KV skipped for rotating cache | Required XML tool call corrupts output; speed around 1-2 tok/s; long/system prompt quality not cleared; VL/audio/video unwired | Source-vs-quant first divergence or replacement artifact proof; then tool decode/template/runtime fix; then full cache+tool+media matrix |
 | Qwen 3.6 35B MXFP8 MTP | Partial | Bundled-engine smoke passes text/cache, multiturn, reasoning, required tool, image, video, post-media text recovery; native MTP active D3; paged+SSM hit; block + SSM L2 evidence; no `gdn_sink` TypeError | Responses/Anthropic/Ollama, streaming parity, real Electron UI settings, largest-context cache, restart/L2 restore, cancellation/recovery, and 27B parity incomplete | Run missing API/UI/restart/largest-context rows and then 27B parity |
-| Qwen 3.6 27B MXFP4/MXFP8/JANG_4M MTP | Partial | MXFP4-MTP live slice passes text/cache, multiturn, reasoning, required tool, image, video, post-media recovery; Responses text/tool, Anthropic, Ollama, and Chat streaming pass; restart/L2 restore hits paged+SSM+disk; native MTP active D2; paged+SSM and block+SSM L2 evidence; JANG_4M installed-app MTP A/B reaches about 50.65 tok/s and 1.70x over AR | MXFP8 deterministic policy/UI parity, largest-context cache, cancellation/recovery, TP4 route rank/speed evidence remain open | Run UI/largest-context/cancel rows; verify MXFP8 deterministic policy in UI/session |
+| Qwen 3.6 27B MXFP4/MXFP8/JANG_4M MTP | Partial | MXFP4-MTP live slice passes text/cache, multiturn, reasoning, required tool, image, video, post-media recovery; Responses text/tool, Anthropic, Ollama, and Chat streaming pass; restart/L2 restore hits paged+SSM+disk; deterministic Responses cancellation/recovery passes with native MTP active D2; paged+SSM and block+SSM L2 evidence; JANG_4M installed-app MTP A/B reaches about 50.65 tok/s and 1.70x over AR | MXFP8 deterministic policy/UI parity, largest-context cache, TP4 route rank/speed evidence remain open | Run UI/largest-context rows; verify MXFP8 deterministic policy in UI/session |
 | Nemo / Nemotron Omni | Red | Some source rows exist in older matrix | Omni audio/video processor bridge, tool dialect, cache/media salt, UI proof incomplete | Build live Omni text/audio/video/tool/cache smoke |
 | LFM / LFM2.5 | Partial | Source rows exist in older cross-family matrix | Full installed-app multiturn/tool/cache/UI proof incomplete | Run installed-app LFM matrix with loop stop and structured output |
 | MiniMax / MiniMax-M2.7 / JANGTQ_K | Red | Public/local route drift narrowed; public DMG cancel route present | Reporter parity/root cause still open; JANGTQ/runtime/speed/tool/cancel recovery not fully cleared | Finish reporter provenance and live MiniMax model proof |
@@ -462,7 +462,7 @@ Cache / L2 / architecture evidence:
 Nuance / still open:
 
 - This clears current Qwen27 MXFP4-MTP non-Chat API parity for short text/tool rows, not the whole family.
-- Missing Qwen27 rows remain: real Electron UI settings, largest-context cache hit, cancellation/recovery, MXFP8 deterministic policy through UI/session, and TP4 route rank/speed evidence.
+- Missing Qwen27 rows remain: real Electron UI settings, largest-context cache hit, MXFP8 deterministic policy through UI/session, and TP4 route rank/speed evidence.
 
 ## 2026-06-07 Qwen3.6 27B MXFP4-MTP restart/L2 restore proof
 
@@ -522,10 +522,52 @@ Matrix impact:
 - This clears the current Qwen27 MXFP4-MTP restart/L2 restore row for the short
   text path with hybrid attention KV plus SSM companion state.
 - Qwen27 remains `Partial`, not green, because real Electron UI settings,
-  largest-context cache, cancellation/recovery, MXFP8 deterministic
-  policy/session parity, TP4 route rank/speed, and full media/UI release rows
-  remain open.
+  largest-context cache, MXFP8 deterministic policy/session parity, TP4 route
+  rank/speed, and full media/UI release rows remain open.
 - Responses streaming and tool-result continuation were not covered in this probe.
+
+## 2026-06-07 Qwen3.6 27B MXFP4-MTP deterministic Responses cancel/recovery proof
+
+Artifact:
+
+`build/current-qwen27-mxfp4-mtp-responses-cancel-mtp-deterministic-20260607.json`
+
+Harness change:
+
+- `tests/cross_matrix/run_issue179_responses_cancel_probe.py` now accepts
+  per-family parser and sampling knobs while preserving the original MiniMax
+  defaults.
+- Focused no-heavy validation passed: `py_compile` clean and
+  `tests/test_issue179_responses_cancel_probe.py` passed 11 tests.
+
+Live proof:
+
+- Model: `/Users/eric/models/JANGQ/Qwen3.6-27B-MXFP4-MTP`.
+- Request used `/v1/responses`, streaming, `max_output_tokens=1024`,
+  `temperature=0.0`, `top_p=1.0`, `top_k=0`, `--tool-call-parser qwen`,
+  and `--reasoning-parser qwen3`.
+- Server log reports native MTP `READY D2` and
+  `MLLM native MTP path activated for request=resp_76a19f72835c depth=2`.
+- Cancel route returned HTTP 200 with response id `resp_76a19f72835c`.
+- No `gdn_sink` TypeError, stream generator error, or bad-text capture was
+  observed in this row.
+
+Cache / L2 / architecture evidence:
+
+- Health before the request reports native cache family `qwen3_5`, schema
+  `hybrid_ssm_v1`, cache type `hybrid_ssm_typed`, prefix and paged cache
+  enabled, block-disk L2 enabled, generic TurboQuant KV enabled only for
+  attention KV layers, and native full-precision SSM companion state.
+- Server log reports VLM block disk cache and SSM companion L2 enabled, paged
+  cache enabled, and q4 attention-KV storage boundary active.
+
+Matrix impact:
+
+- This clears the current Qwen27 MXFP4-MTP deterministic Responses
+  cancel/recovery row.
+- Qwen27 remains `Partial`, not green, because real Electron UI settings,
+  largest-context cache, MXFP8 deterministic policy/session, TP4 route
+  rank/speed evidence, and full media/UI release rows remain open.
 
 ## 2026-06-06 LFM2.5 MXFP4 focused source smoke
 
