@@ -46,7 +46,7 @@ No source-only, load-only, health-only, or one-prompt text smoke may clear a bro
 | Family / artifact lane | Current status | Proven current positives | Current blockers | Next proof/fix |
 |---|---:|---|---|---|
 | MiMo V2.5 JANG_2L | Red | Text `ACK`; paged cache hit `cached_tokens=67`; L2 block write; multiturn `blue cat`; native mixed full/SWA cache detected; generic flat TQ-KV skipped for rotating cache | Required XML tool call corrupts output; speed around 1-2 tok/s; long/system prompt quality not cleared; VL/audio/video unwired | Source-vs-quant first divergence or replacement artifact proof; then tool decode/template/runtime fix; then full cache+tool+media matrix |
-| Qwen 3.6 35B MXFP8 MTP | Partial | Bundled-engine smoke passes text/cache, multiturn, reasoning, required tool, image, video, post-media text recovery; native MTP active D3; paged+SSM hit; block + SSM L2 evidence; no `gdn_sink` TypeError | Responses/Anthropic/Ollama, streaming parity, real Electron UI settings, largest-context cache, restart/L2 restore, cancellation/recovery, and 27B parity incomplete | Run missing API/UI/restart/largest-context rows and then 27B parity |
+| Qwen 3.6 35B MXFP8 MTP | Partial | Bundled-engine smoke passes text/cache, multiturn, reasoning, required tool, image, video, post-media text recovery; native MTP active D3; paged+SSM hit; block + SSM L2 evidence; deterministic long Responses row activates MTP D3 and writes block/SSM L2; no `gdn_sink` TypeError | Deterministic long Responses required-tool row returns HTTP 400 because no tool call is produced; stochastic long row has cache hits but skips MTP and fails strict tool-evidence grounding; Responses/Anthropic/Ollama, streaming parity, real Electron UI settings, largest-context cache, restart/L2 restore, cancellation/recovery, and 27B parity incomplete | Fix deterministic MTP+required-tool behavior or parser/template path; then rerun missing API/UI/restart/largest-context rows and 27B parity |
 | Qwen 3.6 27B MXFP4/MXFP8/JANG_4M MTP | Partial | MXFP4-MTP live slice passes text/cache, multiturn, reasoning, required tool, image, video, post-media recovery; Responses text/tool, Anthropic, Ollama, and Chat streaming pass; restart/L2 restore hits paged+SSM+disk; deterministic Responses cancellation/recovery passes with native MTP active D2; paged+SSM and block+SSM L2 evidence; JANG_4M installed-app MTP A/B reaches about 50.65 tok/s and 1.70x over AR | MXFP8 deterministic policy/UI parity, largest-context cache, TP4 route rank/speed evidence remain open | Run UI/largest-context rows; verify MXFP8 deterministic policy in UI/session |
 | Nemo / Nemotron Omni | Red | Some source rows exist in older matrix | Omni audio/video processor bridge, tool dialect, cache/media salt, UI proof incomplete | Build live Omni text/audio/video/tool/cache smoke |
 | LFM / LFM2.5 | Partial | Source rows exist in older cross-family matrix | Full installed-app multiturn/tool/cache/UI proof incomplete | Run installed-app LFM matrix with loop stop and structured output |
@@ -366,6 +366,62 @@ Nuance / still open:
 - Missing rows: `/v1/responses`, Anthropic `/v1/messages`, Ollama, streaming/non-streaming equivalence, installed Electron UI settings, largest-context cache, restart/L2 restore, cancellation/recovery, and 27B parity.
 - MTP acceptance is prompt-dependent: some short rows finish from seed/init emits with no draft cycles, while multiturn/reasoning/tool rows do exercise MTP differently.
 - Keep Qwen 3.6 family status `Partial` until the missing API/UI/largest-context/restart rows are current.
+
+## 2026-06-07 Qwen3.6 35B MXFP8-MTP long Responses/tool/cache diagnostic
+
+Artifacts:
+
+- `build/current-qwen35-mxfp8-mtp-responses-long-tool-cache-20260607`
+- `build/current-qwen35-mxfp8-mtp-responses-long-tool-cache-deterministic-20260607`
+
+Harness change:
+
+- `tests/cross_matrix/run_responses_long_tool_cache_gate.py` now accepts
+  explicit `--temperature`, `--top-p`, `--top-k`, and
+  `--repetition-penalty` request overrides.
+- Defaults remain omitted so normal rows still use model/server metadata; Qwen
+  MTP rows can now request deterministic sampling to avoid silently skipping
+  native MTP.
+- Focused no-heavy validation passed: `py_compile` clean and
+  `tests/test_engine_audit.py -k responses_long_context_tool_cache_gate`
+  passed 19 selected tests.
+
+Stochastic row:
+
+- Model: `/Users/eric/models/JANGQ/Qwen3.6-35B-A3B-MXFP8-MTP`.
+- `/v1/responses`, 3 turns, `previous_response_id`, required tools on turns 1
+  and 2, final no-tools/no-thinking turn.
+- Cache hits were observed on turns 2 and 3: `cached_tokens=128` and `256`.
+- No raw tool markup leak and no loop-like tail.
+- Row failed strict grounding: turn 1 called `inspect_symbol` with nonexistent
+  `vmlx_engine/engine.py`; turn 2 received real file-line tool output but did
+  not cite an exact marker in the visible answer.
+- Server log shows native MTP skipped because default stochastic sampling
+  resolved to `temperature=1.0`, `top_p=0.95`, `top_k=20`.
+
+Deterministic row:
+
+- Same model and server settings, but request sampling used
+  `temperature=0.0`, `top_p=1.0`, `top_k=0`, and `repetition_penalty=1.0`.
+- Server log reports native MTP `READY D3` and
+  `MLLM native MTP path activated for request=resp_f19cad9242db depth=3`.
+- MTP ran for 165 cycles, accepted 97 of 189 drafted tokens, and adapted from
+  D3 to D1 after low deeper-depth acceptance.
+- Block-disk cache and SSM companion L2 were active; the log queued block-disk
+  writes and stored inline-captured clean SSM state.
+- The row failed before summary completion because `/v1/responses` returned
+  HTTP 400: `tool_choice='required'` was set but the model produced no tool
+  calls.
+- No `gdn_sink` TypeError or stream-generator crash was observed.
+
+Current classification:
+
+- Qwen35 MTP runtime activation and hybrid cache are working in this row.
+- Qwen35 deterministic MTP plus required-tool behavior is not cleared.
+- Do not count the stochastic cache/tool row as MTP proof, because the server
+  explicitly skipped MTP for that request.
+- Do not count the deterministic row as tool proof, because it failed required
+  tool generation.
 
 ## 2026-06-06 Qwen3.6 27B MTP live slice and installed-app speed proof
 
