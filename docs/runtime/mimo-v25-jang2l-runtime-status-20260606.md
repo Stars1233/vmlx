@@ -263,6 +263,51 @@ Decision:
 - The compiled-MoE patch was removed and must not be treated as a speed fix.
 - MiMo's speed blocker likely requires a real optimized routed-expert/gather-qmm path or a different artifact/runtime class, not simply wrapping the generic `SwitchGLU` call in `mx.compile`.
 
+## 2026-06-07 restart/L2 restore proof
+
+Runner:
+
+`bench/local_restart_l2_gate.py`
+
+Artifact:
+
+`build/current-local-restart-l2-mimo-v25-installed-cache-status-weighted-only-20260607/summary.json`
+
+Result:
+
+- `MiMo-V2.5-JANG_2L`: cache restore pass.
+- Output exactness remains review/red.
+- Auxiliary `audio_tokenizer` was incorrectly discovered by an earlier runner
+  version; the runner now skips auxiliary weighted component directories.
+
+Cache evidence:
+
+- First process wrote block-disk L2 for the fixed prompt.
+- Second fresh server process used the same block-disk cache directory.
+- Second process reported `cached_tokens=43`.
+- Second process reported `cache_detail=paged+disk`.
+- Second process reported block-disk hits `1`.
+- `last_cache_execution.disk_hit=true`.
+- Native cache reports `mimo_v2` / `mixed_swa_kv_v1` /
+  `mimo_v2_asymmetric_swa`.
+- Generic TurboQuant KV remains disabled; storage-boundary q4 KV is active for
+  full and sliding attention KV with rotating metadata preserved.
+
+Runtime evidence:
+
+- Server log confirms `Installed vMLX fallback compiled MiMo-V2 decode router`.
+- Server log confirms `Installed vMLX MiMo-V2 keep=0 rotating-cache patch`.
+
+Remaining blockers:
+
+- L2 restore reconstruction took about `19.43s`; this is functionally correct
+  but not performance-cleared.
+- The first process produced Chinese explanatory text instead of exact `ACK`.
+- The second process produced punctuation instead of exact `ACK`.
+- Generation remains far below the target.
+- Largest-context, UI-launched restore, media-salted restore, cancellation,
+  sleep/wake, unload/reload, and full API parity remain unproven.
+
 Current release status: red.
 
 ## 2026-06-07 required-tool metadata propagation and decode proof

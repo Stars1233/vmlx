@@ -1193,3 +1193,89 @@ Important blockers:
 - VLM remains not production-cleared for Step3.7. The successful row is text-only.
 - MTP metadata is inconsistent for this bundle: config advertises `num_nextn_predict_layers=3`, but the bundle index has no `mtp.*` tensors.
 - The run proves short no-media tools/cache/multiturn only, not full loop-stop, long context, streaming/API parity, media, UI, or restart/L2 restore.
+
+## 2026-06-07 local restart/L2 restore gate
+
+Runner:
+
+`bench/local_restart_l2_gate.py`
+
+Purpose:
+
+- Launch each installed local model once with paged cache plus block-disk L2.
+- Send a fixed short prompt and shut the server down.
+- Launch a fresh server process against the same block-disk cache directory.
+- Send the same prompt and require the second process to report positive cached
+  tokens plus disk-backed restore evidence.
+- Report cache-restore status separately from visible-output exactness so cache
+  durability is not hidden by model instruction-following quality.
+
+Runner fixes made during this gate:
+
+- Preserve the venv Python executable instead of resolving it to the base
+  interpreter; otherwise `-s` hid `uvicorn`.
+- Skip auxiliary weighted config directories such as `audio_tokenizer` so media
+  sidecars are not treated as serveable model roots.
+
+Artifact:
+
+`build/current-local-restart-l2-lfm-step-installed-cache-status-20260607/summary.json`
+
+LFM / Step cache restore results:
+
+- `LFM2.5-8B-A1B-JANG_2L`: cache restore pass, output exactness review.
+- `LFM2.5-8B-A1B-MXFP4`: cache restore pass, output exactness pass.
+- `LFM2.5-8B-A1B-MXFP8`: cache restore pass, output exactness review.
+- `Step-3.7-Flash-JANG_2L`: cache restore pass, output exactness pass.
+
+Evidence:
+
+- LFM JANG_2L second process: `cached_tokens=35`, `cache_detail=paged+ssm+disk`,
+  block-disk hits `1`, native cache `lfm2` / `hybrid_ssm_v1`.
+- LFM MXFP4 second process: `cached_tokens=30`, `cache_detail=paged+ssm+disk`,
+  block-disk hits `1`, native cache `lfm2` / `hybrid_ssm_v1`.
+- LFM MXFP8 second process: `cached_tokens=30`, `cache_detail=paged+ssm+disk`,
+  block-disk hits `1`, native cache `lfm2` / `hybrid_ssm_v1`.
+- Step second process: `cached_tokens=25`, `cache_detail=paged+disk`,
+  block-disk hits `1`, native cache `step3p7` / `mixed_swa_kv_v1`.
+
+Output-quality notes:
+
+- LFM JANG_2L and MXFP8 restored cache correctly, but did not follow the exact
+  visible `ACK` formatting probe.
+- LFM MXFP4 included `ACK` but still produced explanatory text; treat as
+  output-review for stricter exact-format tasks even though the runner's
+  substring rail passes.
+- Step returned exact `ACK` in both processes.
+
+MiMo artifact:
+
+`build/current-local-restart-l2-mimo-v25-installed-cache-status-weighted-only-20260607/summary.json`
+
+MiMo cache restore result:
+
+- `MiMo-V2.5-JANG_2L`: cache restore pass, output exactness review.
+- Second process reported `cached_tokens=43`, `cache_detail=paged+disk`,
+  block-disk hits `1`, and `last_cache_execution.disk_hit=true`.
+- Native cache reports `mimo_v2` / `mixed_swa_kv_v1` /
+  `mimo_v2_asymmetric_swa`; generic TurboQuant KV remains disabled and
+  storage-boundary q4 is active for full/sliding KV while preserving rotating
+  metadata.
+- Server log confirms the MiMo compiled-router fallback and keep=0 rotating
+  cache patch are active.
+
+MiMo blockers exposed by restart/L2:
+
+- Second-process cache reconstruction took about `19.43s`, so restart/L2 is
+  functionally present but not performance-cleared.
+- Visible output was not the requested `ACK`; first process emitted Chinese
+  explanatory text and second process emitted punctuation.
+- Generation remains far below the release target.
+
+Release boundary:
+
+- This clears short restart/L2 cache-restore evidence for the named installed
+  local LFM, Step, and MiMo rows.
+- It does not clear largest-context restore, UI-launched restore, media-salted
+  restore, cancellation cleanup, sleep/wake, unload/reload, streaming/API
+  parity, output exactness, or any release packaging/signing/notarization row.
