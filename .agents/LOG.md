@@ -5052,3 +5052,18 @@ Detailed note: `docs/internal/agent-notes/current-gemma4-12b-release-boundary-an
 - Partial evidence preserved: warm row completed at about `0.2 tok/s`; deterministic coherency row returned exact `READY\n17+28=45\nCERULEAN` at `1.58 tok/s`.
 - `/health` before crash reported MiMo native cache `mixed_swa_kv_v1`, q4 storage-boundary KV, prefix cache, paged cache, block disk L2, and generic flat TurboQuant KV disabled.
 - Classification: MiMo remains release-red for speed and PP/largest-context cache. This is not a model replacement proof and not a release clearance.
+
+## 2026-06-07 local - Media empty-warning rollback for VLM guard failures
+
+- Scope stayed in active Python engine/panel worktree; no deprecated wrapper, Swift, ADLab/TB/RDMA work, package, signing, notarization, tag, upload, appcast, or public release action.
+- Patched `panel/src/main/ipc/chat.ts` normal completion path so media requests that finish with response warnings but no visible content, no reasoning, and no tool activity delete the just-added media user message.
+- This covers the non-throw path for VLM image prefill guard failures where the UI previously could persist a failed image turn and replay it into the next text-only prompt.
+- The path logs `rolled_back_empty_warning_media_user_message` and throws `Media request failed before visible output: ...` so the renderer reloads clean DB state and shows an actionable failure.
+- Existing thrown-error media rollback remains unchanged for crash/disconnect paths.
+- Focused validation:
+  `cd panel && npm test -- --run tests/media-rollback-source.test.ts`
+  -> `2 passed`.
+- Responses warning regression:
+  `cd panel && npm test -- --run tests/responses-warnings.test.ts`
+  -> `19 passed`.
+- Classification: this fixes UI/history recovery after media guard failures. It does not clear full VL/audio/video support for Gemma4, MiMo, Step3.7, Nemo Omni, or any other family.

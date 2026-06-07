@@ -571,6 +571,43 @@ Nuance:
   media/VL/audio/video rows, broader API parity, cancellation/recovery, and any
   required above-8k context behavior are proven.
 
+## 2026-06-07 Media empty-warning rollback for VLM guard failures
+
+Problem:
+
+- Some VLM media failures do not throw through the chat IPC catch path. The
+  server can complete with a warning such as "The model produced no visible
+  response" after an image prefill guard rejection.
+- If the UI persists that failed media user turn, the next text-only prompt
+  replays the same image-bearing history and hits the same guard until the user
+  manually rolls back.
+
+Fix:
+
+- `panel/src/main/ipc/chat.ts` now rolls back media user messages in the normal
+  completion path when a media request has no visible content, no reasoning, no
+  tool activity, and response warnings.
+- The code logs `rolled_back_empty_warning_media_user_message` and throws a
+  clear `Media request failed before visible output: ...` error so the renderer
+  reloads clean DB history and shows the failure instead of poisoning future
+  turns.
+- Existing thrown-error media rollback remains in place for crash/disconnect
+  paths.
+
+Validation:
+
+- `cd panel && npm test -- --run tests/media-rollback-source.test.ts`
+  -> `2 passed`.
+- `cd panel && npm test -- --run tests/responses-warnings.test.ts`
+  -> `19 passed`.
+
+Classification:
+
+- This fixes a UI/history recovery bug for media guard failures.
+- This does not make Gemma4, MiMo, Step3.7, Nemo Omni, or any other VL/audio/video
+  model family media-green. It only prevents a failed media turn from being
+  replayed into later text-only turns.
+
 ### MEDIA-001: VL/audio/video runtime incomplete
 
 Required:
