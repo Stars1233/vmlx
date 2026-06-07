@@ -4976,3 +4976,14 @@ Detailed note: `docs/internal/agent-notes/current-gemma4-12b-release-boundary-an
 - Runtime evidence: native MTP `READY D3`; Qwen3.6 VL artifact path; hybrid model with 16 attention and 48 SSM layers; q4 attention-KV storage for cache boundaries; SSM/GatedDelta companion state native full precision; block L2 and SSM companion L2 enabled; VLM hybrid cache HIT `(KV+SSM)`.
 - No `gdn_sink` TypeError, stream generator crash, raw XML tool leak, required-tool failure, strict JSON failure, or exact-code failure occurred.
 - Classification: Qwen27 JANG_4M-MTP is now no-media source green for structured output/tools/native-MTP/cache alongside MXFP4/MXFP8. Qwen27 remains release-partial for installed-app/UI/media/restart-L2/largest-context/cancel-timeout/TP4/API parity.
+
+## 2026-06-07 local - Qwen27 JANG_4M-MTP restart/L2 restore gate
+
+- Scope stayed in active Python engine worktree; no package/sign/notarize/tag/upload/release action.
+- Ran restart/L2 source gate:
+  `build/current-local-restart-l2-qwen36-27b-jang4m-mtp-20260607/`, model `Qwen3.6-27B-JANG_4M-MTP`, `status=pass`.
+- First process returned exact `ACK`, wrote block L2 (`disk_writes=1`, `total_tokens_on_disk=27`) and SSM companion L2 (`stores=1`, `total_tokens_on_disk=27`).
+- Second process restarted against the same shared block cache and returned exact `ACK` with API usage `cached_tokens=27`, `cache_detail=paged+ssm+disk`.
+- Cache stats after restart: block disk `disk_hits=1`; SSM companion disk `hits=1`; scheduler `last_cache_execution` had `disk_hit=true`, `reconstructed=true`, `reconstruction_ok=true`, `dequantized=true`, and `dequantization_ok=true`.
+- Runtime evidence: native MTP `READY D3`; hybrid model with 16 attention and 48 SSM layers; q4 attention-KV storage boundaries; SSM disk HIT; VLM hybrid cache HIT `(KV+SSM)`; clean SSM re-derive after restore.
+- Classification: Qwen27 JANG_4M-MTP restart/L2 restore is source-green for typed hybrid SSM cache. Qwen27 remains release-partial for installed-app UI, media, largest-context, cancellation/timeout cleanup, TP4 route rank/speed, API parity, packaging, signing, notarization, and public download updates.
