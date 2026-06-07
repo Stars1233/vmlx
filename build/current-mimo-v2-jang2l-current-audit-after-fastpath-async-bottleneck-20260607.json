@@ -1,0 +1,494 @@
+{
+  "artifacts": {
+    "all_local_smoke": "build/current-all-local-model-smoke-mimo-v25-jang2l-tools-nomedia-after-stop-token-cache-fix-20260606/summary.json",
+    "cache_vs_nocache": "build/current-mimo-v2-jang2l-cache-vs-nocache-next-token-20260606.json",
+    "cb_native_thinking_off_live_proof": "build/current-mimo-v2-jang2l-cb-cache-after-native-thinking-off-live-20260606.json",
+    "cb_oneshot_prefill_live_proof": "build/current-mimo-v2-jang2l-cb-cache-after-mimo-oneshot-prefill-20260606.json",
+    "disable_sink_length_diagnostic": "build/current-mimo-v2-jang2l-disable-sink-length-diagnostic-20260606.json",
+    "first_token_probe": "build/current-mimo-v2-jang2l-first-token-probe-registered-20260606.json",
+    "latest_decode_speed": "build/current-decode-speed-live-mimo-v25-jang2l-source-after-fastpath-counters-20260607.json",
+    "length_sweep": "build/current-mimo-v2-jang2l-direct-length-sweep-20260606.json",
+    "mllm_inputs_embeds_interface": "build/current-mimo-v2-mllm-inputs-embeds-interface-fix-20260606.json",
+    "prompt_shape_sweep": "build/current-mimo-v2-jang2l-prompt-shape-sweep-20260606.json",
+    "rendered_prompt_compare": "build/current-mimo-v2-jang2l-rendered-prompt-compare-20260606.json",
+    "sink_mode_length_diagnostic": "build/current-mimo-v2-jang2l-sink-mode-length-diagnostic-20260606.json",
+    "source_vs_quant_first_divergence": "build/current-mimo-v2-jang2l-source-vs-quant-first-divergence-after-tool-row-20260607.json",
+    "structural": "build/current-mimo-jang2l-local-structural-verify-20260606.json",
+    "switchglu": "build/current-mimo-v2-jang2l-quantized-switchglu-parity-20260606.json",
+    "synced_long_tool_cache": "build/current-mimo-v25-jang2l-synced-long-tool-cache-proof-20260606.json",
+    "text_cache": "build/current-mimo-jang2l-live-text-cache-smoke-20260606.json",
+    "text_route_live_proof": "build/current-mimo-v2-jang2l-text-route-live-proof-20260606.json",
+    "tool_failure": "build/current-mimo-v2-jang2l-tool-dialect-failure-20260606.json",
+    "tool_source_preflight": "build/current-mimo-v2-jang2l-tool-source-preflight-20260606.json"
+  },
+  "blockers": [
+    "mimo_long_prompt_coherence_blocked",
+    "mimo_tool_protocol_blocked",
+    "mimo_decode_speed_below_release_target",
+    "mimo_cb_system_prompt_working_set_pressure_blocked",
+    "mimo_source_vs_quant_first_divergence_missing_or_failed",
+    "mimo_vl_audio_video_unwired"
+  ],
+  "component_ok": {
+    "cache_vs_nocache_next_token": true,
+    "cb_system_prompt_working_set_pressure": false,
+    "decode_speed_target": false,
+    "disable_sink_does_not_clear_length_generation": true,
+    "exact_cache_prompt_following": true,
+    "long_prompt_coherence": false,
+    "manifest_integrity": true,
+    "manual_sink_does_not_clear_length_generation": true,
+    "mimo_media_wired": false,
+    "mllm_inputs_embeds_interface": true,
+    "prefix_paged_l2_cache_reproved": true,
+    "source_vs_quant_first_divergence": false,
+    "stale_local_state_absent": true,
+    "structural_verify": true,
+    "switchglu_selected_expert_parity": true,
+    "system_prompt_first_token_stop": true,
+    "text_cache_narrow": true,
+    "text_route_long_prompt": true,
+    "text_route_tool_call": true,
+    "tool_protocol": false
+  },
+  "diagnostics": {
+    "all_local_smoke": {
+      "exact_cache_blocked": true,
+      "exists": true,
+      "failures": [
+        {
+          "content_head": "",
+          "label": "text_cache_repeat_2",
+          "reason": "empty_visible",
+          "reasoning_chars": 0
+        }
+      ],
+      "generation_tps": 1.9594795609135782,
+      "speed_blocked": true,
+      "tool_protocol_pass": true
+    },
+    "cache_vs_nocache_next_token_match": true,
+    "cb_native_thinking_off": {
+      "cache_exact_pass": true,
+      "cache_hit_tokens": 33,
+      "exists": true,
+      "finish_reasons": {
+        "exact_repeat_1": "stop",
+        "exact_repeat_2": "stop",
+        "first_token_system_probe": null
+      },
+      "l2_tokens_on_disk": 33,
+      "memory_pressure_blocked": true,
+      "mixed_swa_native_cache": true,
+      "no_think_tags": true,
+      "prefix_paged_l2_cache_reproved": true,
+      "speed_blocked": true,
+      "speed_max_tps": 1.5203344735841886,
+      "status": "open",
+      "storage_quantization_q8": true,
+      "texts": {
+        "exact_repeat_1": "ACK-CB-742",
+        "exact_repeat_2": "ACK-CB-742",
+        "first_token_system_probe": ""
+      }
+    },
+    "cb_oneshot_prefill": {
+      "cache1_elapsed_s": 22.552,
+      "cache2_elapsed_s": 5.263,
+      "cache_exact_pass": true,
+      "exists": true,
+      "generation_tps": 1.7935474741903232,
+      "long_prompt_crashed": true,
+      "long_prompt_error": "RemoteDisconnected('Remote end closed connection without response')",
+      "prefix_paged_l2_cache_reproved": true,
+      "speed_blocked": true,
+      "tool_content_head": "\uff0c\uff0c\u7684\uff0c\n\n\n\uff0c\uff0c\uff0c\n\n\n\n\uff0c\uff0c\uff0c\uff0c\n\n\uff0c\uff0c\uff0c\uff0c\n\n\n\n\n\n\uff0c\uff0c\uff0c\n\n\n\n\n\n\uff0c\uff0c\uff0c\uff0c\n\n\n\n\uff0c\uff0c\n\n\n\n\n\n:\uff0c\uff0c\n\n\n\n\n\n\n\uff0c",
+      "tool_protocol_blocked": true
+    },
+    "disable_sink_clears_length_generation": false,
+    "manual_sink_sdpa_clears_length_generation": false,
+    "mllm_inputs_embeds_interface": {
+      "changed_files": [
+        "vmlx_engine/models/mllm.py",
+        "tests/test_mimo_v2_mllm_runtime_registration.py"
+      ],
+      "created_at": "2026-06-06T21:25:00Z",
+      "family": "mimo_v2",
+      "fixed_issue": "registered mlx_vlm MiMo wrapper dropped inputs_embeds passed to Model.__call__",
+      "model": "MiMo-V2.5-JANG_2L",
+      "release_boundary": {
+        "mimo_release_cleared": false,
+        "remaining_blockers": [
+          "baseline live text quality is still not cleared",
+          "tool protocol/continuation is still not cleared",
+          "decode speed is still below target in latest live probes",
+          "real vision/audio/video media forward paths remain unwired/unproven",
+          "source-vs-quant first divergence remains missing"
+        ]
+      },
+      "runtime_boundary": "required for correct MiMo MLLM/VL prefill interface; does not wire vision/audio/video media towers and does not clear live text/tool generation quality",
+      "scope": "local vMLX Python engine only",
+      "status": "pass",
+      "verification": [
+        {
+          "command": ".venv/bin/python -m py_compile vmlx_engine/models/mllm.py tests/test_mimo_v2_mllm_runtime_registration.py",
+          "status": "pass"
+        },
+        {
+          "command": ".venv/bin/python -m pytest -q tests/test_mimo_v2_mllm_runtime_registration.py",
+          "result": "1 passed",
+          "status": "pass"
+        }
+      ]
+    },
+    "prompt_shape_first_token": {
+      "ack_rank_in_failing_prompt": 4,
+      "blocked": true,
+      "classification": "decode_loop_or_model_artifact_first_token_stop",
+      "failing_empty_stop": true,
+      "failing_prompt_tokens": 60,
+      "failing_top_token": {
+        "is_special": true,
+        "logprob": -0.8347,
+        "text": "<|im_end|>",
+        "token_id": 151645
+      },
+      "folded_prompt_tokens": 66,
+      "folded_user_ack": true,
+      "rendered_valid_generation_prefix": true,
+      "short_system_ack": true,
+      "working_folded_top_token": {
+        "is_special": false,
+        "logprob": -0.0186,
+        "text": "ACK",
+        "token_id": 4032
+      },
+      "working_short_system_top_token": {
+        "is_special": false,
+        "logprob": -0.0026,
+        "text": "ACK",
+        "token_id": 4032
+      }
+    },
+    "sink_boundary": "Manual sink SDPA and disabling SWA sink do not clear the current MiMo length-generation failures; do not classify the blocker as an MLX sink-kernel-only issue.",
+    "source_vs_quant_first_divergence": {
+      "blockers": [
+        "missing_or_unhealthy_source_endpoint",
+        "missing_or_unhealthy_quant_endpoint"
+      ],
+      "endpoints": {
+        "quant": {
+          "base_url": "http://127.0.0.1:8897",
+          "error": "URLError: <urlopen error [Errno 61] Connection refused>",
+          "health": null,
+          "health_http_status": null,
+          "healthy": false
+        },
+        "source": {
+          "base_url": "http://erics-m5-max2.local:8126",
+          "error": "URLError: <urlopen error [Errno 61] Connection refused>",
+          "health": null,
+          "health_http_status": null,
+          "healthy": false
+        }
+      },
+      "paths": {
+        "quant": {
+          "exists": true,
+          "host": null,
+          "is_dir": true,
+          "path": "/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L",
+          "remote": false
+        },
+        "source": {
+          "exists": true,
+          "host": "erics-m5-max2.local",
+          "is_dir": true,
+          "path": "/Volumes/EricsLLMDrive/jangq-ai/sources/MiMo-V2.5",
+          "remote": true
+        }
+      },
+      "quant_base_url": "http://127.0.0.1:8897",
+      "quant_host": null,
+      "quant_model_path": "/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L",
+      "release_boundary": "This is preflight evidence only. It cannot clear MiMo release until source and quant endpoints both run and prompt rows execute.",
+      "remote_evidence_only": false,
+      "rows": [],
+      "source_base_url": "http://erics-m5-max2.local:8126",
+      "source_host": "erics-m5-max2.local",
+      "source_model_path": "/Volumes/EricsLLMDrive/jangq-ai/sources/MiMo-V2.5",
+      "status": "missing_prerequisites",
+      "summary": {
+        "quant_diverges_from_source": 0,
+        "request_failed": 0,
+        "source_also_fails": 0,
+        "source_and_quant_match": 0
+      }
+    },
+    "synced_long_tool_cache": {
+      "exists": true,
+      "failed_checks": [
+        {
+          "failure": "expected_exact_text_missing",
+          "label": "cache_repeat_1",
+          "text_head": ""
+        },
+        {
+          "failure": "expected_exact_text_missing",
+          "label": "cache_repeat_2",
+          "text_head": ""
+        },
+        {
+          "failure": "long_prompt_recall_missing_or_empty",
+          "label": "long_prompt_recall",
+          "text_head": ""
+        },
+        {
+          "failure": "expected_tool_call_missing",
+          "label": "tool_required",
+          "text_head": ""
+        },
+        {
+          "failure": "decode_speed_below_30_tok_s_or_short_generation",
+          "label": "speed_80_words",
+          "text_head": ""
+        }
+      ],
+      "long_prompt_blocked": true,
+      "long_prompt_elapsed_s": 4.281,
+      "long_prompt_text_head": "",
+      "short_cache_exact_pass": false,
+      "tool_elapsed_s": 0.0,
+      "tool_protocol_blocked": true,
+      "tool_text_head": "",
+      "verdict": "blocked"
+    },
+    "text_route": {
+      "cache_l2_not_reproved": false,
+      "cache_release_exact_pass": false,
+      "cache_visible_pass": true,
+      "exists": true,
+      "fix_status": "partial",
+      "long_prompt_oom_cleared": true,
+      "long_prompt_recall_pass": true,
+      "media_unwired": true,
+      "release_boundary": "Text-only MiMo runtime is materially improved but not release-cleared. Long-prompt OOM and tool parse are fixed for this focused simple-engine route; speed, exactness, cache/L2 proof, source-vs-quant, packaged/UI parity, and media remain open.",
+      "remaining_blockers": [
+        "decode_speed_below_release_target",
+        "exact_cache_prompt_following_still_returns_ACK_not_ACK_CACHE_742",
+        "prefix_paged_l2_cache_hit_not_reproved_on_continuous_batching_route",
+        "source_vs_quant_first_divergence_missing",
+        "mimo_vl_audio_video_unwired"
+      ],
+      "source_vs_quant_missing": true,
+      "speed_blocked": true,
+      "status": "open",
+      "tool_call_pass": true
+    },
+    "tool_source_preflight": {
+      "classification": "source_vs_quant_blocked_local_source_bundle_missing",
+      "local_paths": {
+        "quant_model_path": {
+          "exists": true,
+          "path": "/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L"
+        },
+        "source_model_path": {
+          "exists": false,
+          "path": "/Users/eric/models/MiMo-V2.5-source"
+        }
+      },
+      "local_quant_observations": {
+        "cache": "narrow exact cache proof exists, but broad exact cache prompt following and long prompt rows remain blocked",
+        "simple_text_exactness": "latest live artifacts show text-only exact prompt failures such as empty visible output or 'The user said' instead of requested exact token",
+        "speed": "latest live artifacts report generation_tps around 1.7-1.8, below the 40 tok/s target",
+        "tool_protocol": "latest live artifacts show punctuation/CJK-style garbage or missing tool_calls under xml_function parser"
+      },
+      "next_required_action": "obtain or restore a local source MiMo-V2.5 endpoint/bundle, then run source-vs-quant rows for exact short text, long prompt, XML tool call, literal XML copy, and cache repeat",
+      "release_boundary": "Do not classify MiMo as model-upload issue or runtime issue conclusively until source and quant are compared locally or an equivalent local source proof exists. Current local quant path remains release-blocked. No remote/adlab state is part of this proof.",
+      "scope": "local vMLX Python engine only",
+      "status": "open",
+      "timestamp": "2026-06-06T21:40:00Z"
+    }
+  },
+  "latest_decode_speed_evidence": {
+    "async_decode_wait_dominates": true,
+    "avg_model_ms": [
+      2.26,
+      2.22,
+      2.24,
+      2.27,
+      2.29,
+      2.29,
+      2.29,
+      2.29,
+      2.28,
+      2.28,
+      2.28,
+      2.28,
+      2.28,
+      2.28
+    ],
+    "avg_sample_ms": [
+      0.27,
+      0.17,
+      0.25,
+      0.31,
+      0.35,
+      0.38,
+      0.4,
+      0.41,
+      0.38,
+      0.35,
+      0.33,
+      0.31,
+      0.29,
+      0.27
+    ],
+    "bundle_decode_tps": 1.7918401308284642,
+    "coherency_exact": true,
+    "decode_bottleneck_classification": "switchglu_fastpath_active_but_metal_async_wait_dominates",
+    "decode_next_last_async_ms": [
+      536.8,
+      567.99,
+      597.49,
+      568.59,
+      582.75,
+      503.95,
+      531.44,
+      528.33,
+      510.2,
+      536.49,
+      546.81,
+      523.8,
+      535.75,
+      540.68
+    ],
+    "decode_next_last_materialize_ms": [
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.0,
+      0.0,
+      0.01,
+      0.01
+    ],
+    "decode_next_last_step_ms": [
+      2.36,
+      2.37,
+      3.05,
+      2.95,
+      3.06,
+      2.93,
+      2.83,
+      2.75,
+      2.44,
+      2.43,
+      2.41,
+      2.43,
+      2.45,
+      2.32
+    ],
+    "decode_next_last_total_ms": [
+      539.17,
+      570.37,
+      600.55,
+      571.55,
+      585.83,
+      506.89,
+      534.29,
+      531.1,
+      512.65,
+      538.93,
+      549.23,
+      526.24,
+      538.2,
+      543.01
+    ],
+    "exists": true,
+    "generic_turboquant_kv_enabled": false,
+    "greedy_decode_tps": 1.8323440504618207,
+    "log_path": "build/decode-speed-logs/mimo_v25_jang2l-1780815673.log",
+    "log_trace_present": true,
+    "max_avg_model_ms": 2.29,
+    "max_decode_next_last_async_ms": 597.49,
+    "max_decode_next_last_total_ms": 600.55,
+    "native_cache_type": "mixed_swa_kv",
+    "notes": [
+      "PP below expected 400.00: 78.41, 106.43",
+      "bundle decode 1.79 < expected 40.00"
+    ],
+    "pp_wall_tok_s": [
+      78.40799686640976,
+      106.42618574304493
+    ],
+    "speed_blocked": true,
+    "status": "review",
+    "switchglu_fastpath_active": true,
+    "switchglu_fastpath_call_markers": [
+      1,
+      64,
+      512,
+      4096
+    ],
+    "switchglu_fastpath_compiled_shapes": [
+      1,
+      2,
+      2,
+      2
+    ],
+    "switchglu_fastpath_max_calls": 4096,
+    "switchglu_fastpath_max_compiled_shapes": 2,
+    "tight_memory_allocator_drains": 12
+  },
+  "local_release_clearance": false,
+  "manifest_integrity": {
+    "manifest": "build/current-mimo-http-manifest-20260606.tsv",
+    "mismatched_files": [],
+    "missing_files": [],
+    "model_parent": "/Users/eric/.mlxstudio/models/JANGQ-AI",
+    "ok_files": 173,
+    "rows": 173,
+    "status": "pass",
+    "total_bytes": 113926313468
+  },
+  "model_path": "/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L",
+  "release_boundary": "MiMo local artifact integrity is clean, but release remains blocked until long-prompt coherence, tool protocol, decode speed, CB system prompt working-set pressure, local source-vs-quant first-divergence, and media wiring proof pass without fake parser injection, hidden thinking-mode rewrites, forced fallback, or cache disabling.",
+  "stale_local_state": {
+    "all_stale_targets_absent": true,
+    "cleanup_log": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-mimo-stale-local-cleanup-20260606.txt",
+    "targets": [
+      {
+        "exists": false,
+        "path": "/Users/eric/vmlx-sync-backups/local-installed-mimo-v2-mlx-model-20260527-swa-mask"
+      },
+      {
+        "exists": false,
+        "path": "/Users/eric/.cache/huggingface/modules/transformers_modules/MiMo_hyphen_V2_dot_5_hyphen_JANG_2L"
+      },
+      {
+        "exists": false,
+        "path": "build/mimo-block-cache"
+      },
+      {
+        "exists": false,
+        "path": "build/current-mimo-jang2l-block-cache-20260606"
+      },
+      {
+        "exists": false,
+        "path": "build/current-mimo-jang2l-tool-block-cache-20260606"
+      },
+      {
+        "exists": false,
+        "path": "build/current-mimo-jang2l-block-cache-after-head-fix-20260606"
+      }
+    ]
+  },
+  "status": "open"
+}

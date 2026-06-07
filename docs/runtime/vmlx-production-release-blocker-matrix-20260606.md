@@ -327,7 +327,7 @@ Artifact:
 
 Current audit:
 
-`build/current-mimo-v2-jang2l-current-audit-after-fastpath-speed-proof-stale-clean-20260607.json`
+`build/current-mimo-v2-jang2l-current-audit-after-fastpath-async-bottleneck-20260607.json`
 
 Live command scope:
 
