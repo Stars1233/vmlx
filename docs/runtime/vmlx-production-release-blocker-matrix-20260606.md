@@ -263,6 +263,55 @@ Matrix impact:
   constrained/guided XML decoder is live-proven without synthetic tool-call
   fabrication.
 
+## 2026-06-07 MiMo source-vs-quant harness tool row and local cleanup
+
+Source/test changes:
+
+- `tests/cross_matrix/run_mimo_v2_source_vs_quant_first_divergence.py` now
+  includes the release-blocking XML tool row:
+  `xml_tool_required_record_fact`.
+- The runner now records source/quant OpenAI `tool_calls` signatures and
+  classifies tool divergence separately from visible-text divergence.
+- MiMo current-audit and release-manifest proof pointers now use:
+  `build/current-mimo-v2-jang2l-source-vs-quant-first-divergence-after-tool-row-20260607.json`.
+- `tests/test_mimo_v2_source_vs_quant_probe.py` covers the new tool-row
+  classification.
+
+Validation:
+
+- `py_compile` passed for the edited source-vs-quant runner, current-audit
+  runner, release manifest, and tests.
+- `tests/test_mimo_v2_source_vs_quant_probe.py`: 8 passed.
+
+Current source-vs-quant preflight:
+
+`build/current-mimo-v2-jang2l-source-vs-quant-first-divergence-after-tool-row-20260607.json`
+
+- `status=missing_prerequisites`.
+- Max2 source path exists:
+  `/Volumes/EricsLLMDrive/jangq-ai/sources/MiMo-V2.5`.
+- Local quant path exists:
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L`.
+- Source endpoint `http://erics-m5-max2.local:8126` is not healthy.
+- Quant endpoint `http://127.0.0.1:8897` is not currently running.
+
+Current audit:
+
+`build/current-mimo-v2-jang2l-current-audit-after-tool-row-source-quant-preflight-stale-clean-20260607.json`
+
+- `status=open`.
+- Stale MiMo HF remote-code cache was deleted:
+  `/Users/eric/.cache/huggingface/modules/transformers_modules/MiMo_hyphen_V2_dot_5_hyphen_JANG_2L`.
+- Audit now reports `stale_local_state_absent=true`.
+
+Matrix impact:
+
+- MiMo local stale-state blocker is cleared again.
+- MiMo source-vs-quant classification is still missing because endpoints are
+  not running.
+- MiMo remains red for long-prompt coherence, tool protocol, speed, CB system
+  prompt pressure, source-vs-quant first divergence, and media wiring.
+
 ## 2026-06-06 Qwen3.6 35B MXFP8-MTP bundled smoke proof
 
 Artifact:

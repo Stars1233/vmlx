@@ -257,6 +257,55 @@ Classification:
   or a real constrained/guided XML decoder is implemented and live-proven
   without synthetic tool-call fabrication.
 
+## 2026-06-07 source-vs-quant harness tool row and stale-cache cleanup
+
+Source change:
+
+- `tests/cross_matrix/run_mimo_v2_source_vs_quant_first_divergence.py` now
+  includes the current release-blocking XML tool row:
+  `xml_tool_required_record_fact`.
+- The runner now extracts OpenAI `tool_calls`, records source/quant tool-call
+  signatures, and classifies tool divergence separately from visible-text
+  divergence.
+- Proof pointers in the MiMo current-audit runner and release-regression
+  manifest now point at:
+  `build/current-mimo-v2-jang2l-source-vs-quant-first-divergence-after-tool-row-20260607.json`.
+
+Focused validation:
+
+- `py_compile` passed for the source-vs-quant runner, MiMo current audit,
+  release manifest, and source-vs-quant tests.
+- `tests/test_mimo_v2_source_vs_quant_probe.py`: 8 passed.
+
+Current preflight:
+
+`build/current-mimo-v2-jang2l-source-vs-quant-first-divergence-after-tool-row-20260607.json`
+
+- `status=missing_prerequisites`.
+- Source path exists on Max2:
+  `/Volumes/EricsLLMDrive/jangq-ai/sources/MiMo-V2.5`.
+- Quant path exists locally:
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L`.
+- Source endpoint `http://erics-m5-max2.local:8126` is not healthy.
+- Quant endpoint `http://127.0.0.1:8897` is not currently running.
+- This is preflight evidence only; it cannot classify model-upload vs runtime
+  until both endpoints run and rows execute.
+
+Current audit:
+
+`build/current-mimo-v2-jang2l-current-audit-after-tool-row-source-quant-preflight-stale-clean-20260607.json`
+
+- `status=open`.
+- `stale_local_state_absent=true` after deleting the stale HF remote-code cache:
+  `/Users/eric/.cache/huggingface/modules/transformers_modules/MiMo_hyphen_V2_dot_5_hyphen_JANG_2L`.
+- Remaining blockers:
+  `mimo_long_prompt_coherence_blocked`,
+  `mimo_tool_protocol_blocked`,
+  `mimo_decode_speed_below_release_target`,
+  `mimo_cb_system_prompt_working_set_pressure_blocked`,
+  `mimo_source_vs_quant_first_divergence_missing_or_failed`,
+  `mimo_vl_audio_video_unwired`.
+
 ## Remote canonical artifact comparison
 
 Checked `erics-m5-max2.local` on 2026-06-06.
