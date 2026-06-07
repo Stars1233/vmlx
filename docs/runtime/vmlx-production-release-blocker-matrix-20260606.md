@@ -155,6 +155,19 @@ Classification:
 - It does not by itself clear LFM/Gemma4 raw JSON/code failures; those gates
   must be rerun under the patched route.
 
+Post-fix rerun evidence:
+
+- LFM2.5 rerun artifact:
+  `build/current-all-local-model-smoke-lfm25-installed-json-code-tools-nomedia-after-deterministic-sampling-20260607/summary.json`
+  remains `status=fail`, `failed=3`.
+- Gemma4 12B rerun artifact:
+  `build/current-all-local-model-smoke-gemma4-12b-json-code-tools-nomedia-after-deterministic-sampling-20260607/summary.json`
+  remains `status=fail`, `failed=3`.
+- Classification: inherited stochastic filters were a runtime bug and are now
+  patched, but the remaining raw output failures reproduce after the fix. Treat
+  the remaining LFM/Gemma exactness rows as model/template/decode-quality
+  blockers until a narrower runtime decoder or template root cause is proven.
+
 ## 2026-06-07 LFM2.5 expanded no-media structured-output gate
 
 Artifact:
@@ -180,6 +193,18 @@ Results:
 - `LFM2.5-8B-A1B-MXFP8`: required tool passed, tool-result continuation
   passed, strict JSON passed, exact code failed as `print(add(2, 3)`.
 - All exact-code failures returned `finish_reason=stop`, not `length`.
+
+Post deterministic-sampling-fix rerun:
+
+- Artifact:
+  `build/current-all-local-model-smoke-lfm25-installed-json-code-tools-nomedia-after-deterministic-sampling-20260607/summary.json`
+- Status: `fail`, `completed=3`, `failed=3`.
+- `LFM2.5-8B-A1B-JANG_2L`: still wraps the correct JSON object in markdown
+  fences and still emits `def add(a, b:`.
+- `LFM2.5-8B-A1B-MXFP4`: still emits `print(add(2, 3)` without the final
+  closing parenthesis.
+- `LFM2.5-8B-A1B-MXFP8`: still emits `print(add(2, 3)` without the final
+  closing parenthesis.
 
 Classification:
 
@@ -270,6 +295,19 @@ Failures:
   with the same leading-space-before-`print` drift.
 - `gemma-4-12B-it-MXFP8`: strict JSON failed with `"value":" blue-cat"`, and
   exact code failed with the same leading-space-before-`print` drift.
+
+Post deterministic-sampling-fix rerun:
+
+- Artifact:
+  `build/current-all-local-model-smoke-gemma4-12b-json-code-tools-nomedia-after-deterministic-sampling-20260607/summary.json`
+- Status: `fail`, `completed=3`, `failed=3`.
+- `gemma-4-12B-it-JANG_4M`: exact code still has one leading space before
+  `print(add(2, 3))`.
+- `gemma-4-12B-it-MXFP4`: exact cache `ACK` rows still echo the stable prefix;
+  strict JSON still returns `"value":" blue-cat"`; exact code still has one
+  leading space before `print(add(2, 3))`.
+- `gemma-4-12B-it-MXFP8`: strict JSON still returns `"value":" blue-cat"`;
+  exact code still has one leading space before `print(add(2, 3))`.
 
 Classification:
 

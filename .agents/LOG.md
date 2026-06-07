@@ -5094,3 +5094,15 @@ Detailed note: `docs/internal/agent-notes/current-gemma4-12b-release-boundary-an
   `.venv/bin/python -m pytest -q tests/test_engine_audit.py -k 'deterministic_filters or temperature_zero_omits or temperature_zero_preserves or log_and_forward_supported_sampling_kwargs'`
   -> `4 passed`.
 - Classification: real runtime-default fix. It improves deterministic exact-output proof hygiene, but LFM/Gemma4 remain release-red until their raw JSON/code gates are rerun and pass under the patched route.
+
+## 2026-06-07 local - LFM/Gemma exact-output rerun after deterministic sampling fix
+
+- Reran LFM2.5 installed no-media JSON/code/tools gate after `74a213b8`:
+  `build/current-all-local-model-smoke-lfm25-installed-json-code-tools-nomedia-after-deterministic-sampling-20260607/summary.json`
+  -> `status=fail`, `completed=3`, `failed=3`.
+- LFM residuals after the runtime-default fix: JANG_2L still wraps the correct JSON object in markdown fences and emits `def add(a, b:`; MXFP4/MXFP8 still emit `print(add(2, 3)` without the final closing parenthesis.
+- Reran Gemma4 12B no-media JSON/code/tools gate after `74a213b8`:
+  `build/current-all-local-model-smoke-gemma4-12b-json-code-tools-nomedia-after-deterministic-sampling-20260607/summary.json`
+  -> `status=fail`, `completed=3`, `failed=3`.
+- Gemma residuals after the runtime-default fix: JANG_4M still inserts one leading space before `print(add(2, 3))`; MXFP4 still echoes the cache prefix instead of exact `ACK`, returns JSON value `" blue-cat"`, and inserts the leading code space; MXFP8 still returns JSON value `" blue-cat"` and inserts the leading code space.
+- Classification: inherited bundle `top_p/top_k` on greedy requests was a runtime bug and is fixed/pushed. The remaining LFM/Gemma exact-output failures reproduce after that fix, so they stay release-red as model/template/decode-quality blockers unless a narrower runtime decoder/template cause is proven.
