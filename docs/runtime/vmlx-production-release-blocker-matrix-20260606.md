@@ -312,6 +312,51 @@ Matrix impact:
 - MiMo remains red for long-prompt coherence, tool protocol, speed, CB system
   prompt pressure, source-vs-quant first divergence, and media wiring.
 
+## 2026-06-07 MiMo source-vs-quant default preflight refresh
+
+Source/test change:
+
+- `tests/cross_matrix/run_mimo_v2_source_vs_quant_first_divergence.py` now has
+  current defaults for the known source and quant endpoints/paths:
+  `http://erics-m5-max2.local:8126`,
+  `http://127.0.0.1:8897`,
+  `/Volumes/EricsLLMDrive/jangq-ai/sources/MiMo-V2.5`, and
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L`.
+- This prevents future agents from creating null-path/null-endpoint preflight
+  artifacts when they run the systematic MiMo checklist.
+
+Validation:
+
+- `py_compile` passed for the source-vs-quant runner and test.
+- `tests/test_mimo_v2_source_vs_quant_probe.py`: 9 passed.
+
+Fresh preflight:
+
+`build/current-mimo-v2-jang2l-source-vs-quant-first-divergence-refresh-defaults-after-qwen35-20260607.json`
+
+- `status=missing_prerequisites`.
+- Quant model path exists locally.
+- Source model path exists on `erics-m5-max2.local`.
+- Quant endpoint `http://127.0.0.1:8897` is not listening.
+- Source endpoint `http://erics-m5-max2.local:8126` is not listening.
+- Rows did not execute; this still cannot classify model upload/artifact issue
+  versus runtime/decode-loop issue.
+
+Current MiMo audit refresh:
+
+`build/current-mimo-v2-jang2l-current-audit-refresh-after-qwen35-20260607.json`
+
+- `status=open`.
+- Artifact integrity remains clean.
+- Stale local state remains absent.
+- Blockers remain:
+  `mimo_long_prompt_coherence_blocked`,
+  `mimo_tool_protocol_blocked`,
+  `mimo_decode_speed_below_release_target`,
+  `mimo_cb_system_prompt_working_set_pressure_blocked`,
+  `mimo_source_vs_quant_first_divergence_missing_or_failed`, and
+  `mimo_vl_audio_video_unwired`.
+
 ## 2026-06-06 Qwen3.6 35B MXFP8-MTP bundled smoke proof
 
 Artifact:
