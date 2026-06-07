@@ -2056,3 +2056,36 @@ Release boundary:
 - This improves the Step/LFM long-prefix cache lane and adds a reusable gate.
 - It does not clear largest possible context, MiMo long-context, Gemma4 media,
   UI launch parity, restart at long context, or release packaging.
+
+## 2026-06-07 MiMo-V2.5 JANG_2L source-runtime progress and blockers
+
+Status: release-red, source progress only.
+
+Fixed in source:
+
+- MLLM MiMo load now skips generic TurboQuant KV before the tokenizer helper. Proof: source log contains `TurboQuant skipped for MiMo-V2 MLLM load`; `/health` reports `turboquant_kv_cache.enabled=false` and native cache `mixed_swa_kv_v1` / `mimo_v2_asymmetric_swa`.
+- MiMo decoder layers stored in Python lists are now quantized explicitly. Proof: source log contains `MiMo-V2 load quantized 192 runtime modules`; unit test proves `QuantizedLinear` and `QuantizedSwitchLinear` conversion for list-held layers.
+- Tight-memory text prefill no longer one-shot OOMs on 512/1024-token PP rows. Proof: `current-decode-speed-live-mimo-v25-jang2l-source-after-cache-policy-fix-20260607.json` completes PP rows instead of crashing.
+- Decode-speed gate now accepts MiMo native `mixed_swa_kv` cache health instead of falsely expecting plain `kv-or-paged_kv`.
+
+Current source live proof:
+
+- Artifact: `build/current-decode-speed-live-mimo-v25-jang2l-source-after-cache-policy-fix-20260607.json`.
+- Status: `review`.
+- Coherency: exact `READY\n17+28=45\nCERULEAN`.
+- PP: `76.39` and `104.60` tok/s, below `400.00` target.
+- Decode: `1.63` tok/s, below `40.00` target.
+- Generic TurboQuant KV: disabled.
+- Native cache: `mixed_swa_kv_v1`, full attention KV plus sliding-window rotating KV, q4 storage-boundary KV, prefix/paged/block L2 enabled.
+
+A/B evidence:
+
+- `build/current-decode-speed-live-mimo-v25-jang2l-source-no-continuous-after-tight-prefill-20260607.json` improved PP to `106.35` / `171.98` tok/s, but decode remained about `1.63` tok/s. Decode bottleneck is therefore not primarily continuous batching.
+
+Remaining blockers:
+
+- MiMo decode speed is still about `1.6 tok/s`, far below the `40 tok/s` target.
+- MiMo PP speed is still below target even after OOM fix.
+- MiMo VL/audio/video remain not wired in Python runtime; current MiMo support is text-only despite preserved media weights.
+- Installed app / packaged Python still uses stale bundled code until rebuilt; packaged-app gate earlier continued to show generic TQ-KV active.
+- Do not sign, notarize, tag, upload, or mark release-ready until installed-app live gates prove these source fixes and the decode/kernel speed blocker is resolved or explicitly scoped out by Eric.
