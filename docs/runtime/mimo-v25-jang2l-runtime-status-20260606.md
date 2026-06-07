@@ -195,6 +195,101 @@ Do not release, sign, notarize, or call MiMo/MLXStudio/vMLX green yet.
 
 Current release status: red.
 
+## 2026-06-07 required-tool metadata propagation and decode proof
+
+Source changes under test:
+
+- `vmlx_engine/engine/batched.py` now preserves tool metadata from chat render
+  into MLLM scheduler requests.
+- `vmlx_engine/server.py` now forwards `tool_choice` into chat kwargs for Chat
+  Completions and Responses routes.
+- `vmlx_engine/mllm_batch_generator.py` now keeps small request-policy metadata
+  after media prefill cleanup instead of clearing all `extra_kwargs`.
+- `vmlx_engine/mllm_batch_generator.py` now has a MiMo-only
+  `tool_choice=required` XML prefix logits processor for the structural prefix:
+  `<tool_call>\n<function=record_fact>\n<parameter=value>`.
+- The prefix processor does not infer user arguments or synthesize final tool
+  calls. It only constrains the XML opening structure, then releases logits to
+  the model.
+
+Focused source proof:
+
+- `py_compile` passed for `vmlx_engine/mllm_batch_generator.py`,
+  `vmlx_engine/engine/batched.py`, `vmlx_engine/server.py`, and
+  `tests/test_mllm_continuous_batching.py`.
+- Focused tests passed: `3 passed, 39 deselected` for
+  `mimo_required_tool_sampler`, `mimo_auto_tool_sampler`, and
+  `prefill_keeps_extra_kwargs`.
+
+Live artifact:
+
+`build/current-mimo-v25-required-tool-prefix-toolonly-pending-token-20260607`
+
+Live positives:
+
+- The request reached the decode-time sampler with
+  `_vmlx_template_tools`, `_vmlx_tool_choice`, and `_vmlx_tools_present`.
+- The MiMo required XML prefix constraint activated.
+- Raw output no longer stopped immediately after bare `<tool_call>`.
+- Raw preview began with the intended structural prefix:
+  `<tool_call>\n<function=record_fact>\n<parameter=value>`.
+
+Live failure:
+
+- HTTP 400 remained because no parsed tool call was produced.
+- After the structural prefix, the model generated punctuation/fullwidth comma
+  garbage instead of `blue-cat</parameter></function></tool_call>`.
+- Measured server speed: 96 tokens in 82.43s, about `1.2 tok/s`.
+
+Auto-tool flag check:
+
+`build/current-mimo-v25-required-tool-prefix-toolonly-auto-tool-20260607`
+
+- `--enable-auto-tool-choice` did not change the failure.
+- Tool calling was reported enabled with parser `xml_function`.
+- Raw preview was the same malformed XML prefix plus punctuation.
+- Measured server speed: 96 tokens in 75.97s, about `1.3 tok/s`.
+
+Plain XML classification check:
+
+`build/current-mimo-v25-xml-classification-default-cache-20260607`
+
+- With no Tool API and a plain exact-copy XML prompt, MiMo did not print the
+  requested XML. It returned only `Print exactly this text and nothing else:`.
+- A simple non-XML text prompt still returned coherent text: `The sky is blue.`
+- Default cache mode still skipped generic TurboQuant KV because MiMo has a
+  mixed full/SWA `RotatingKVCache` layout.
+- Speeds remained red: exact XML 9 tokens in 26.90s (`0.3 tok/s`) and simple
+  text 6 tokens in 4.18s (`1.4 tok/s`).
+
+Updated classification:
+
+- Runtime metadata propagation was a real bug and is now fixed at source-test
+  level.
+- The live model/runtime path still fails required tool E2E because the model
+  does not generate the argument value or closing XML after the valid prefix.
+- This is not solved by enabling auto tools, disabling/enabling generic KV
+  quantization, or parser repair.
+- Generic TurboQuant KV is still correctly skipped for MiMo's mixed
+  full/sliding cache contract. The speed issue needs a real MiMo-specific
+  routed-expert/cache/kernel optimization, not a flat TQ-KV substitution.
+- MiMo remains release-red for tools, speed, long-prompt quality, and all
+  VL/audio/video rows.
+
+Source-vs-quant preflight:
+
+`build/current-mimo-v2-jang2l-source-vs-quant-first-divergence-prefix-preflight-20260607.json`
+
+- Status: `missing_prerequisites`.
+- Source model path exists on `erics-m5-max2.local`:
+  `/Volumes/EricsLLMDrive/jangq-ai/sources/MiMo-V2.5`.
+- Quant model path exists locally:
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L`.
+- Source endpoint `http://erics-m5-max2.local:8126` is down.
+- Quant endpoint `http://127.0.0.1:8897` is down.
+- No source-vs-quant classification can be claimed until both endpoints are
+  intentionally launched and the prompt rows execute.
+
 ## 2026-06-07 ChatML tool-fallback framing fix and live result
 
 Source change:

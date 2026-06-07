@@ -45,7 +45,7 @@ No source-only, load-only, health-only, or one-prompt text smoke may clear a bro
 
 | Family / artifact lane | Current status | Proven current positives | Current blockers | Next proof/fix |
 |---|---:|---|---|---|
-| MiMo V2.5 JANG_2L | Red | Current Python path returns text `ACK`; paged cache hit `cached_tokens=67`; L2 block write; multiturn `blue cat`; native mixed full/SWA cache detected; generic flat TQ-KV skipped for rotating cache | Required XML tool call corrupts output into raw `<tool_call>` plus punctuation/fullwidth-comma garbage; speed around 1-2 tok/s after prefill; long/system prompt quality not cleared; VL/audio/video unwired; no local `jang_config.json` in current bundle | Source-vs-quant first divergence or replacement artifact proof; then tool decode/template/runtime fix; then full cache+tool+media matrix |
+| MiMo V2.5 JANG_2L | Red | Current Python path returns text `ACK`; paged cache hit `cached_tokens=67`; L2 block write; multiturn `blue cat`; native mixed full/SWA cache detected; generic flat TQ-KV skipped for rotating cache; current source preserves tool metadata into MLLM decode and can force the required XML structural prefix | Required XML tool call still returns HTTP 400 because after `<tool_call>\n<function=record_fact>\n<parameter=value>` the model emits punctuation/fullwidth-comma garbage instead of the argument value and closing XML; exact plain XML copying also fails; speed remains about 0.3-1.4 tok/s in latest narrow probes; long/system prompt quality not cleared; VL/audio/video unwired; no local `jang_config.json` in current bundle | Source-vs-quant first divergence or replacement artifact proof; then real guided XML decode or model/template/artifact fix that preserves model-provided arguments; then MiMo-specific speed/cache/kernel work; then full cache+tool+media matrix |
 | Qwen 3.6 35B MXFP8 MTP | Partial | Bundled-engine smoke passes text/cache, multiturn, reasoning, required tool, image, video, post-media text recovery; native MTP active D3; paged+SSM hit; block + SSM L2 evidence; deterministic long Responses row activates MTP D3 and writes block/SSM L2; no `gdn_sink` TypeError; saved deterministic required-tool request now passes with configured D3 available, request-local D1 cap logged, and real `function_call` returned; full deterministic long Responses/tool/cache gate now passes strict tool-call, tool-evidence, cache-hit, no-loop, and no-raw-markup criteria | Anthropic/Ollama, streaming parity, real Electron UI settings, largest-context cache, restart/L2 restore, cancellation/recovery, and 27B parity incomplete | Run missing API/UI/restart/largest-context rows and 27B parity |
 | Qwen 3.6 27B MXFP4/MXFP8/JANG_4M MTP | Partial | MXFP4-MTP live slice passes text/cache, multiturn, reasoning, required tool, image, video, post-media recovery; Responses text/tool, Anthropic, Ollama, and Chat streaming pass; restart/L2 restore hits paged+SSM+disk; deterministic Responses cancellation/recovery passes with native MTP active D2; paged+SSM and block+SSM L2 evidence; JANG_4M installed-app MTP A/B reaches about 50.65 tok/s and 1.70x over AR | MXFP8 deterministic policy/UI parity, largest-context cache, TP4 route rank/speed evidence remain open | Run UI/largest-context rows; verify MXFP8 deterministic policy in UI/session |
 | Nemo / Nemotron Omni | Red | Some source rows exist in older matrix | Omni audio/video processor bridge, tool dialect, cache/media salt, UI proof incomplete | Build live Omni text/audio/video/tool/cache smoke |
@@ -258,9 +258,46 @@ Matrix impact:
 
 - `MIMO-TEMPLATE-001` for outside-ChatML fallback placement is fixed.
 - `MIMO-TOOL-001` remains red.
+
+## 2026-06-07 MiMo required-tool prefix propagation proof
+
+Source changes under test:
+
+- Chat/Responses request paths now forward `tool_choice` into the engine kwargs.
+- Batched MLLM requests now preserve `_vmlx_template_tools` and
+  `_vmlx_tool_choice` through prefill into decode-time sampler construction.
+- A MiMo-only required-tool XML prefix logits processor constrains the opening
+  structure for known request tools, without inventing argument values or
+  fabricating `tool_calls`.
+
+Focused source proof:
+
+- `py_compile` passed for the edited source/test files.
+- Focused MiMo decode tests passed: `3 passed, 39 deselected`.
+
+Live proof:
+
+- `build/current-mimo-v25-required-tool-prefix-toolonly-pending-token-20260607`
+  proves the prefix processor activates and raw output starts with
+  `<tool_call>\n<function=record_fact>\n<parameter=value>`.
+- The same live row remains a failure because the model then emits punctuation
+  instead of `blue-cat</parameter></function></tool_call>`.
+- `build/current-mimo-v25-required-tool-prefix-toolonly-auto-tool-20260607`
+  proves `--enable-auto-tool-choice` does not fix the malformed generation.
+- `build/current-mimo-v25-xml-classification-default-cache-20260607` proves
+  simple text can be coherent, but exact XML copying and speed remain red.
+- `build/current-mimo-v2-jang2l-source-vs-quant-first-divergence-prefix-preflight-20260607.json`
+  proves current source-vs-quant classification is still blocked by missing
+  endpoints, not missing model paths.
+
+Matrix impact:
+
+- `MIMO-TOOL-METADATA-001` is improved at source-test level.
+- `MIMO-TOOL-001` remains red.
 - `MIMO-SPEED-001` remains red.
-- MiMo remains red until corrected artifact/source-vs-quant fix or a real
-  constrained/guided XML decoder is live-proven without synthetic tool-call
+- `MIMO-SOURCE-VS-QUANT-001` remains red until source and quant endpoints are
+  intentionally running and prompt rows execute.
+- `RELEASE-001` remains red.
   fabrication.
 
 ## 2026-06-07 MiMo source-vs-quant harness tool row and local cleanup
