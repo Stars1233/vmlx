@@ -46,7 +46,7 @@ No source-only, load-only, health-only, or one-prompt text smoke may clear a bro
 | Family / artifact lane | Current status | Proven current positives | Current blockers | Next proof/fix |
 |---|---:|---|---|---|
 | MiMo V2.5 JANG_2L | Red | Text `ACK`; paged cache hit `cached_tokens=67`; L2 block write; multiturn `blue cat`; native mixed full/SWA cache detected; generic flat TQ-KV skipped for rotating cache | Required XML tool call corrupts output; speed around 1-2 tok/s; long/system prompt quality not cleared; VL/audio/video unwired | Source-vs-quant first divergence or replacement artifact proof; then tool decode/template/runtime fix; then full cache+tool+media matrix |
-| Qwen 3.6 35B MXFP8 MTP | Partial | Bundled-engine smoke passes text/cache, multiturn, reasoning, required tool, image, video, post-media text recovery; native MTP active D3; paged+SSM hit; block + SSM L2 evidence; deterministic long Responses row activates MTP D3 and writes block/SSM L2; no `gdn_sink` TypeError | Deterministic long Responses required-tool row returns HTTP 400 because no tool call is produced; stochastic long row has cache hits but skips MTP and fails strict tool-evidence grounding; Responses/Anthropic/Ollama, streaming parity, real Electron UI settings, largest-context cache, restart/L2 restore, cancellation/recovery, and 27B parity incomplete | Fix deterministic MTP+required-tool behavior or parser/template path; then rerun missing API/UI/restart/largest-context rows and 27B parity |
+| Qwen 3.6 35B MXFP8 MTP | Partial | Bundled-engine smoke passes text/cache, multiturn, reasoning, required tool, image, video, post-media text recovery; native MTP active D3; paged+SSM hit; block + SSM L2 evidence; deterministic long Responses row activates MTP D3 and writes block/SSM L2; no `gdn_sink` TypeError; saved deterministic required-tool request now passes with configured D3 available, request-local D1 cap logged, and real `function_call` returned; full deterministic long gate now completes required tools and cache-hit criteria without HTTP 400 | Full deterministic long gate still fails strict tool-evidence grounding on turn 1; stochastic long row has cache hits but skips MTP and fails strict tool-evidence grounding; Anthropic/Ollama, streaming parity, real Electron UI settings, largest-context cache, restart/L2 restore, cancellation/recovery, and 27B parity incomplete | Fix/retune strict tool-grounding behavior or harness prompt, then rerun missing API/UI/restart/largest-context rows and 27B parity |
 | Qwen 3.6 27B MXFP4/MXFP8/JANG_4M MTP | Partial | MXFP4-MTP live slice passes text/cache, multiturn, reasoning, required tool, image, video, post-media recovery; Responses text/tool, Anthropic, Ollama, and Chat streaming pass; restart/L2 restore hits paged+SSM+disk; deterministic Responses cancellation/recovery passes with native MTP active D2; paged+SSM and block+SSM L2 evidence; JANG_4M installed-app MTP A/B reaches about 50.65 tok/s and 1.70x over AR | MXFP8 deterministic policy/UI parity, largest-context cache, TP4 route rank/speed evidence remain open | Run UI/largest-context rows; verify MXFP8 deterministic policy in UI/session |
 | Nemo / Nemotron Omni | Red | Some source rows exist in older matrix | Omni audio/video processor bridge, tool dialect, cache/media salt, UI proof incomplete | Build live Omni text/audio/video/tool/cache smoke |
 | LFM / LFM2.5 | Partial | Source rows exist in older cross-family matrix | Full installed-app multiturn/tool/cache/UI proof incomplete | Run installed-app LFM matrix with loop stop and structured output |
@@ -422,6 +422,78 @@ Current classification:
   explicitly skipped MTP for that request.
 - Do not count the deterministic row as tool proof, because it failed required
   tool generation.
+
+## 2026-06-07 Qwen3.6 35B MXFP8-MTP tool-request native-MTP depth cap
+
+Source change:
+
+- `vmlx_engine/mllm_batch_generator.py` now selects native-MTP depth per
+  request instead of using only the configured global depth at seed time.
+- Tool-bearing MLLM requests are capped to D1 when the configured depth is
+  greater than 1.
+- Plain non-tool requests still keep the configured depth, including D3.
+- The runtime logs the cap explicitly:
+  `MLLM native MTP depth capped to D1 ... because tools are present`.
+
+Reason:
+
+- A deterministic Qwen35 required-tool request with native MTP disabled returned
+  HTTP 200 and produced a real `function_call`.
+- The same deterministic request with native MTP D1 returned HTTP 200 and
+  produced a real `function_call`.
+- The same deterministic request with native MTP D3 returned HTTP 400 because
+  no tool call was produced, while logs showed D3 MTP activated and then adapted
+  down only after generation was already off the tool-call path.
+
+Boundary:
+
+- This is not a parser repair, prompt rewrite, or synthetic tool-call fallback.
+- It does not claim D2/D3 tool-bearing MTP is safe.
+- It keeps native MTP enabled for tool requests at the proven-safe D1 boundary
+  until deeper-depth tool equivalence is fixed and live-proven.
+
+Validation:
+
+- `py_compile` passed for `server.py`, `mllm_batch_generator.py`,
+  `engine/batched.py`, `mllm_scheduler.py`, and the native-MTP test file.
+- Focused native-MTP depth tests passed: 5 selected tests.
+- Live saved deterministic request proof:
+  `build/current-qwen35-mxfp8-mtp-required-tool-deterministic-tool-depth-cap-20260607`.
+- Startup health still reports native MTP active with effective depth D3 from
+  `vmlx_mtp_tuning.json:native_mtp.best_depth`.
+- Server log records:
+  `MLLM native MTP depth capped to D1 ... because tools are present
+  (configured D3)`.
+- Server log records:
+  `MLLM native MTP path activated ... depth=1`.
+- `/v1/responses` returned HTTP 200 with output types `message` and
+  `function_call`.
+- The returned function call was real API output:
+  `inspect_symbol({"path":"vmlx_engine/server.py","symbol":"get_engine",
+  "context_lines":10})`.
+- No `gdn_sink` TypeError or stream-generator crash was observed.
+
+Full deterministic long gate after cap:
+
+- Artifact:
+  `build/current-qwen35-mxfp8-mtp-responses-long-tool-cache-deterministic-after-tool-depth-cap-20260607`.
+- Overall result remains `FAIL`, but for the expected reason: strict
+  tool-evidence grounding failed on turn 1.
+- The prior runtime blocker is cleared in this row: no HTTP 400 from
+  `tool_choice=required`.
+- Tool calls were observed on each required tool turn.
+- Post-first cache reuse passed strict mode: turn 2 `cached_tokens=128`, turn 3
+  `cached_tokens=256`.
+- Final turn had tools disabled and returned visible text.
+- Acceptance flags true: `tool_call_each_required_turn`,
+  `cache_reuse_each_turn_after_first`, `final_turn_visible_output`,
+  `no_loop_like_tail`, and `no_tool_markup_leak`.
+- Acceptance flag false: `tool_evidence_each_required_turn`.
+- Native MTP health still reports configured effective depth D3, while every
+  tool-context generation logs the request-local D1 cap and activates native
+  MTP at depth 1.
+- Scheduler telemetry shows native MTP D1 acceptance in the final row:
+  `116/189` drafted tokens accepted, about `61.4%`.
 
 ## 2026-06-06 Qwen3.6 27B MTP live slice and installed-app speed proof
 
