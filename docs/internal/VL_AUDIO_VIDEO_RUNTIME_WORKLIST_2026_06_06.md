@@ -628,3 +628,12 @@ Correction:
 - Conservative launch used MiMo JANGTQ2 only, with prefix cache disabled, paged cache/L2 absent, and `--kv-cache-quantization none`; no source-vs-quant comparison was run.
 - Literal corruption still reproduced in both Chat Completions and `/v1/completions`: examples include `B7-CAT-09` -> `B7CATT-09`, tool argument `B7-CAT-09` -> `B7CAT-09`, and copy prompt `B7-CAT-09` -> `B7C9099`.
 - Current classification: prefix cache, paged cache, block-disk L2, runtime KV quantization, media path, and tool parser are not the primary exactness cause. Remaining likely causes are MiMo JANGTQ2 decode/runtime kernel behavior or quant artifact quality; do not repair this by rewriting JSON/tool arguments.
+
+## 2026-06-08 MiMo JANG_2L exactness and tool-choice update
+
+- Artifact: `build/current-mimo-v25-jang2l-exactness-isolation-20260608`.
+- JANG_2L loaded under conservative no-prefix/no-paged/no-L2/no-KV-quant settings and became healthy, but left only `6.9GB` system memory available after a `105.96GB` Metal load.
+- Raw `/v1/completions` exact copy preserved `B7-CAT-09`, so JANG_2L does not show the same raw-completion literal corruption as JANGTQ2.
+- Chat JSON/tool behavior remains red: chat JSON wrapped/malformed the object, and a specific `tool_choice` request produced prose instead of a parsed tool call.
+- Runtime fix: specific function `tool_choice` dicts now count as required for API enforcement. Live artifact `build/current-mimo-v25-jang2l-toolchoice-dict-enforcement-20260608` returns HTTP 400 with a raw preview instead of fake HTTP 200/prose when no tool call is parsed.
+- Release boundary: this prevents false pass accounting only. MiMo tool generation quality, literal exactness, speed, cache/L2, UI/API, and audio/media depth remain open.
