@@ -10,11 +10,11 @@ Do not sign, notarize, tag, or publish downloads unless the full release checkli
 
 | Surface | Artifact | Current result |
 | --- | --- | --- |
-| Full release checklist | `build/current-full-release-objective-checklist-after-mimo-audio-waveform-smoke-wiring-20260608.json` | `status=open`, `failed_count=16`; consumes the stricter MiMo audio waveform smoke-wiring release manifest, MiMo no-source exactness classifier rows, Qwen restart/L2/video/long-context checks, and MiniMax #179 refreshed audit |
-| Objective proof digest | `build/current-objective-proof-after-mimo-audio-waveform-smoke-wiring-20260608.json` | 15 PASS / 11 OPEN; cache architecture remains PASS, while current-source hash drift and live/runtime rows remain open |
-| Release regression manifest | `build/current-release-regression-manifest-after-mimo-audio-waveform-smoke-wiring-20260608.json` | `current_proof_sweep=fail`, `prepackage_ready=false`, `release_ready=false`; MiMo root-cause evidence includes the no-source exactness classifier plus object image/video E2E and audio waveform smoke wiring, with live MiMo audio waveform E2E still open |
-| MiMo current audit | `build/current-mimo-v2-jang2l-current-audit-after-audio-waveform-smoke-wiring-20260608.json` | `status=open`, `local_release_clearance=false`; image/video object E2E is green, audio waveform rows are now explicit and missing in the current smoke artifact; exactness/long-prompt/CB/source-vs-quant remain blocked |
-| MiMo no-source exactness classifier | `build/current-mimo-v2-no-source-exactness-classifier-after-audio-waveform-smoke-wiring-20260608.json` | `status=open`; classifies current sentinel failures as `jangtq2_literal_corruption_persists_without_cache_fastpath_router_and_tq_kernel_parity_passes`. Current evidence excludes parser argument rewrite, cache/KV/L2, SwitchGLU fast path, compiled router, and TQ gather kernel as primary cause; source-vs-quant remains missing. |
+| Full release checklist | `build/current-full-release-objective-checklist-after-mimo-audios-signature-filter-20260608.json` | `status=open`, `failed_count=16`; consumes the stricter MiMo audios signature filtering release manifest, MiMo no-source exactness classifier rows, Qwen restart/L2/video/long-context checks, and MiniMax #179 refreshed audit |
+| Objective proof digest | `build/current-objective-proof-after-mimo-audios-signature-filter-20260608.json` | 15 PASS / 11 OPEN; cache architecture remains PASS, while current-source hash drift and live/runtime rows remain open |
+| Release regression manifest | `build/current-release-regression-manifest-after-mimo-audios-signature-filter-20260608.json` | `current_proof_sweep=fail`, `prepackage_ready=false`, `release_ready=false`; MiMo root-cause evidence includes the no-source exactness classifier plus object image/video E2E and audios signature filtering, with live MiMo audio waveform E2E still open |
+| MiMo current audit | `build/current-mimo-v2-jang2l-current-audit-after-audios-signature-filter-20260608.json` | `status=open`, `local_release_clearance=false`; image/video object E2E is green, audio waveform rows are now explicit and missing in the current smoke artifact; exactness/long-prompt/CB/source-vs-quant remain blocked |
+| MiMo no-source exactness classifier | `build/current-mimo-v2-no-source-exactness-classifier-after-audios-signature-filter-20260608.json` | `status=open`; classifies current sentinel failures as `jangtq2_literal_corruption_persists_without_cache_fastpath_router_and_tq_kernel_parity_passes`. Current evidence excludes parser argument rewrite, cache/KV/L2, SwitchGLU fast path, compiled router, and TQ gather kernel as primary cause; source-vs-quant remains missing. |
 | MiniMax #179 current audit | `build/current-issue179-minimax-k-root-cause-audit-after-qwen-installed-video-wiring-20260607.json` | `status=open`; local source/installed app diagnostics and cancel route are clean, but reporter parity metadata is missing, reporter server hash drifts from local/public artifacts, and reporter-side session/log/cancel lifecycle proof is still absent |
 | LFM real UI current proof | `docs/internal/agent-notes/current-real-ui-live-model-lfm25-mxfp4-responses-tools-cachecontrols-20260607-proof.json` | `status=pass`; `lfm25-mxfp4-responses-tools-cachecontrols-20260607` refresh clears LFM mixed-identity matrix partial |
 | Qwen 3.6 27B MTP real UI current proof | `docs/internal/agent-notes/current-real-ui-live-model-qwen36-27b-jang4m-mtp-responses-tools-image-reasoning-cachecontrols-max256-20260607-proof.json` | `status=pass`; current model identity, Responses streaming, built-in tool loop, reasoning display, image answer `Red.`, settings overrides, MTP-compatible deterministic sampling, native MTP activation, hybrid SSM cache, TurboQuant attention KV, L2 block disk, SSM companion disk, and server cache controls are proven. The same combined reasoning/tools/image row failed at `max_tokens=96`, so thinking-mode UI proofs need a realistic output budget. |
@@ -53,7 +53,7 @@ Current local model path:
 Current MiMo audit:
 
 ```text
-build/current-mimo-v2-jang2l-current-audit-after-audio-waveform-smoke-wiring-20260608.json
+build/current-mimo-v2-jang2l-current-audit-after-audios-signature-filter-20260608.json
 ```
 
 Current green MiMo subproofs:
@@ -249,24 +249,24 @@ Focused validation:
 - `.venv/bin/python -m pytest -q tests/test_release_regression_manifest.py tests/test_current_regression_suite.py -k "focused_pytest_gate_source_hashes or current_suite_source_hash_files"` passed (`1 passed`, `386 deselected`).
 - `tests/test_mimo_v2_no_source_exactness_classifier.py` is now wired into the current regression suite focused pytest gate and source-hash list, and the release manifest source-hash expectation.
 - `.venv/bin/python -m pytest -q tests/test_mimo_v2_no_source_exactness_classifier.py tests/test_current_regression_suite.py tests/test_release_regression_manifest.py -k "mimo_v2_no_source_exactness_classifier or focused_pytest_gate_source_hashes or focused_pytest_gate_sources"` passed (`4 passed`, `385 deselected`).
-- The release manifest MiMo root-cause validator now consumes `build/current-mimo-v2-no-source-exactness-classifier-after-audio-waveform-smoke-wiring-20260608.json`.
+- The release manifest MiMo root-cause validator now consumes `build/current-mimo-v2-no-source-exactness-classifier-after-audios-signature-filter-20260608.json`.
 - `.venv/bin/python -m pytest -q tests/test_release_regression_manifest.py -k "mimo_v2_root_cause or current_mimo_v2_proof_artifact_constants or current_proof_sweep_tracks_mimo"` passed (`5 passed`, `308 deselected`).
-- `.venv/bin/python tests/cross_matrix/run_release_regression_manifest.py --out build/current-release-regression-manifest-after-mimo-audio-waveform-smoke-wiring-20260608.json` regenerated the manifest and correctly remained `current_proof_sweep=fail`, `prepackage_ready=false`, `release_ready=false`.
-- `.venv/bin/python tests/cross_matrix/run_full_release_objective_checklist.py --out build/current-full-release-objective-checklist-after-mimo-audio-waveform-smoke-wiring-20260608.json` regenerated the checklist and correctly remained `status=open`, `failed_count=16`.
-- The full checklist now consumes `build/current-mimo-v2-no-source-exactness-classifier-after-audio-waveform-smoke-wiring-20260608.json` in the MiMo group.
+- `.venv/bin/python tests/cross_matrix/run_release_regression_manifest.py --out build/current-release-regression-manifest-after-mimo-audios-signature-filter-20260608.json` regenerated the manifest and correctly remained `current_proof_sweep=fail`, `prepackage_ready=false`, `release_ready=false`.
+- `.venv/bin/python tests/cross_matrix/run_full_release_objective_checklist.py --out build/current-full-release-objective-checklist-after-mimo-audios-signature-filter-20260608.json` regenerated the checklist and correctly remained `status=open`, `failed_count=16`.
+- The full checklist now consumes `build/current-mimo-v2-no-source-exactness-classifier-after-audios-signature-filter-20260608.json` in the MiMo group.
 - `.venv/bin/python -m pytest -q tests/test_full_release_objective_checklist.py` passed (`2 passed`).
-- `.venv/bin/python tests/cross_matrix/run_full_release_objective_checklist.py --out build/current-full-release-objective-checklist-after-mimo-audio-waveform-smoke-wiring-20260608.json` regenerated the checklist and correctly remained `status=open`, `failed_count=16`.
-- `tests/cross_matrix/run_full_release_objective_checklist.py` default output and `tests/cross_matrix/run_current_regression_suite.py` full-checklist command now point at `build/current-full-release-objective-checklist-after-mimo-audio-waveform-smoke-wiring-20260608.json`.
+- `.venv/bin/python tests/cross_matrix/run_full_release_objective_checklist.py --out build/current-full-release-objective-checklist-after-mimo-audios-signature-filter-20260608.json` regenerated the checklist and correctly remained `status=open`, `failed_count=16`.
+- `tests/cross_matrix/run_full_release_objective_checklist.py` default output and `tests/cross_matrix/run_current_regression_suite.py` full-checklist command now point at `build/current-full-release-objective-checklist-after-mimo-audios-signature-filter-20260608.json`.
 - `.venv/bin/python -m pytest -q tests/test_agents_release_control_plane.py tests/test_current_regression_suite.py -k "agents_release_control_plane or full_release_objective_checklist"` passed (`5 passed`, `72 deselected`).
 
 ## Manifest/checklist sync update - 2026-06-07
 
-The full checklist now consumes `build/current-release-regression-manifest-after-mimo-audio-waveform-smoke-wiring-20260608.json` as its release-manifest input.
+The full checklist now consumes `build/current-release-regression-manifest-after-mimo-audios-signature-filter-20260608.json` as its release-manifest input.
 
 Fresh generated checklist:
 
 ```text
-build/current-full-release-objective-checklist-after-mimo-audio-waveform-smoke-wiring-20260608.json
+build/current-full-release-objective-checklist-after-mimo-audios-signature-filter-20260608.json
 ```
 
 Result remains `status=open`, `failed_count=16`.
@@ -297,7 +297,7 @@ Refreshed no-heavy contract artifacts in place for current source hashes:
 Fresh objective proof:
 
 ```text
-build/current-objective-proof-after-mimo-audio-waveform-smoke-wiring-20260608.json
+build/current-objective-proof-after-mimo-audios-signature-filter-20260608.json
 ```
 
 Current digest result is 15 PASS / 11 OPEN. The remaining open rows are:
