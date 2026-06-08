@@ -621,3 +621,10 @@ Correction:
 - Failure count moved from `8` to `4`; remaining failures are exact literal/tool mutation rows, not image/video runtime transport rows.
 - Caveat: solid full-frame dominant-color prompts remain a model-behavior caveat and must not be used to claim broad visual reasoning quality. The current pass only proves media processor/token splice/vision/video bridge/post-media recovery for object-color rows.
 - Release boundary: MiMo remains unreleased/un-cleared until JANG_2L and JANGTQ2 exactness, long-prompt, cache/prefix/L2, audio waveform E2E, UI/API settings parity, and cross-family gates are current-green.
+
+## 2026-06-08 MiMo exactness isolation update
+
+- Artifact: `build/current-mimo-v25-jangtq2-exactness-isolation-20260608`.
+- Conservative launch used MiMo JANGTQ2 only, with prefix cache disabled, paged cache/L2 absent, and `--kv-cache-quantization none`; no source-vs-quant comparison was run.
+- Literal corruption still reproduced in both Chat Completions and `/v1/completions`: examples include `B7-CAT-09` -> `B7CATT-09`, tool argument `B7-CAT-09` -> `B7CAT-09`, and copy prompt `B7-CAT-09` -> `B7C9099`.
+- Current classification: prefix cache, paged cache, block-disk L2, runtime KV quantization, media path, and tool parser are not the primary exactness cause. Remaining likely causes are MiMo JANGTQ2 decode/runtime kernel behavior or quant artifact quality; do not repair this by rewriting JSON/tool arguments.
