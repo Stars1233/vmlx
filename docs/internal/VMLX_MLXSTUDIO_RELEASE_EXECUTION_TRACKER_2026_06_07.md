@@ -10,7 +10,7 @@ Do not sign, notarize, tag, or publish downloads unless the full release checkli
 
 | Surface | Artifact | Current result |
 | --- | --- | --- |
-| Full release checklist | `build/current-full-release-objective-checklist-after-mimo-media-runtime-stamp-gate-20260608.json` | `status=open`, `failed_count=18`; consumes the MiMo media runtime stamp-gate audit, no-source exactness classifier rows, Qwen restart/L2/video/long-context checks, and MiniMax #179 refreshed audit. The increase from 16 to 18 is intentional release honesty: current MiMo bundles fail closed as text runtime instead of over-advertising media support. |
+| Full release checklist | `build/current-full-release-objective-checklist-after-jangtq2-live-release-smoke-20260608.json` | `status=open`, `failed_count=18`; consumes the MiMo media runtime stamp-gate audit, no-source exactness classifier rows, Qwen restart/L2/video/long-context checks, and MiniMax #179 refreshed audit. The increase from 16 to 18 is intentional release honesty: current MiMo bundles fail closed as text runtime instead of over-advertising media support. |
 | Objective proof digest | `build/current-objective-proof-after-mimo-media-runtime-stamp-gate-20260608.json` | status remains open; cache architecture remains PASS, while MiMo, MiniMax, full UI matrix, DSV4, and current-source proof rows remain open |
 | Release regression manifest | `build/current-release-regression-manifest-after-mimo-media-runtime-stamp-gate-20260608.json` | `current_proof_sweep=fail`, `prepackage_ready=false`, `release_ready=false`; MiMo root-cause evidence now includes the media runtime stamp gate, stale-cache cleanup, no-source exactness classifier, object image/video E2E, audio waveform E2E pass, and L2 restart restore. |
 | MiMo current audit | `build/current-mimo-v2-jang2l-current-audit-after-media-runtime-stamp-gate-clean-stale-20260608.json` | `status=open`, `local_release_clearance=false`; stale local state is absent; MiMo media capabilities now fail closed for current `weights_preserved_text_runtime` bundles without importing/registering the media runtime; image/video object E2E, audio waveform E2E, decode speed, and fresh-process block-disk L2 restore are green; exactness/long-prompt/CB/source-vs-quant/media-wiring remain blocked |
@@ -258,11 +258,11 @@ Focused validation:
 - The release manifest MiMo root-cause validator now consumes `build/current-mimo-v2-no-source-exactness-classifier-after-audio-expanded-token-l2-restart-20260608.json`.
 - `.venv/bin/python -m pytest -q tests/test_release_regression_manifest.py -k "mimo_v2_root_cause or current_mimo_v2_proof_artifact_constants or current_proof_sweep_tracks_mimo"` passed (`5 passed`, `308 deselected`).
 - `.venv/bin/python tests/cross_matrix/run_release_regression_manifest.py --out build/current-release-regression-manifest-after-mimo-audio-expanded-token-l2-restart-20260608.json` regenerated the manifest and correctly remained `current_proof_sweep=fail`, `prepackage_ready=false`, `release_ready=false`.
-- `.venv/bin/python tests/cross_matrix/run_full_release_objective_checklist.py --out build/current-full-release-objective-checklist-after-mimo-audio-expanded-token-l2-restart-20260608.json` regenerated the checklist and correctly remained `status=open`, `failed_count=16`.
+- `.venv/bin/python tests/cross_matrix/run_full_release_objective_checklist.py --out build/current-full-release-objective-checklist-after-jangtq2-live-release-smoke-20260608.json` regenerated the checklist and correctly remained `status=open`, `failed_count=14`.
 - The full checklist now consumes `build/current-mimo-v2-no-source-exactness-classifier-after-audio-expanded-token-l2-restart-20260608.json` in the MiMo group.
 - `.venv/bin/python -m pytest -q tests/test_full_release_objective_checklist.py` passed (`2 passed`).
-- `.venv/bin/python tests/cross_matrix/run_full_release_objective_checklist.py --out build/current-full-release-objective-checklist-after-mimo-audio-expanded-token-l2-restart-20260608.json` regenerated the checklist and correctly remained `status=open`, `failed_count=16`.
-- `tests/cross_matrix/run_full_release_objective_checklist.py` default output and `tests/cross_matrix/run_current_regression_suite.py` full-checklist command now point at `build/current-full-release-objective-checklist-after-mimo-audio-expanded-token-l2-restart-20260608.json`.
+- `.venv/bin/python tests/cross_matrix/run_full_release_objective_checklist.py --out build/current-full-release-objective-checklist-after-jangtq2-live-release-smoke-20260608.json` regenerated the checklist and correctly remained `status=open`, `failed_count=14`.
+- `tests/cross_matrix/run_full_release_objective_checklist.py` default output and `tests/cross_matrix/run_current_regression_suite.py` full-checklist command now point at `build/current-full-release-objective-checklist-after-jangtq2-live-release-smoke-20260608.json`.
 - `.venv/bin/python -m pytest -q tests/test_agents_release_control_plane.py tests/test_current_regression_suite.py -k "agents_release_control_plane or full_release_objective_checklist"` passed (`5 passed`, `72 deselected`).
 
 ## Manifest/checklist sync update - 2026-06-07
@@ -272,10 +272,10 @@ The full checklist now consumes `build/current-release-regression-manifest-after
 Fresh generated checklist:
 
 ```text
-build/current-full-release-objective-checklist-after-mimo-audio-expanded-token-l2-restart-20260608.json
+build/current-full-release-objective-checklist-after-jangtq2-live-release-smoke-20260608.json
 ```
 
-Result remains `status=open`, `failed_count=16`.
+Result remains `status=open`, `failed_count=14`.
 
 Focused validation:
 
@@ -325,7 +325,7 @@ Focused validation passed:
 - Updated local-only `AGENTS.md` to make CLI `vmlx serve` startup and MLXStudio generated startup independent release gates.
 - A CLI proof does not clear UI-generated launch/settings/session behavior; a MLXStudio proof does not clear CLI/API startup, request override, `/health`, or capabilities reflection.
 - Current no-heavy guardrail test passed: `tests/test_agents_release_control_plane.py` -> `3 passed`.
-- Regenerated current manifest/checklist/objective artifacts after the source-hash change; release remains locked with `prepackage_ready=false`, `release_ready=false`, checklist `status=open`, `failed_count=16`, and objective proof 15 PASS / 11 OPEN.
+- Regenerated current manifest/checklist/objective artifacts after the source-hash change; release remains locked with `prepackage_ready=false`, `release_ready=false`, checklist `status=open`, `failed_count=14`, and objective proof 15 PASS / 11 OPEN.
 
 ## Generation defaults startup-parity gate refresh - 2026-06-07
 
@@ -334,7 +334,7 @@ Focused validation passed:
 - Regenerated artifact: `build/current-generation-defaults-contract-after-do-sample-false-mimo-20260607.json`.
 - Artifact result: `status=pass`; `panel_generation_defaults` 27 passed, `engine_generation_defaults` 60 passed, `local_generation_metadata_audit` 5 passed, `panel_cli_startup_contract` 9 passed; `missing_markers=[]`.
 - Focused validation: `tests/test_generation_defaults_contract.py`, `tests/test_panel_cli_flag_contract.py`, current-suite/release-manifest/objective proof selectors -> `128 passed`, `368 deselected`.
-- Regenerated current release manifest, full checklist, and objective proof. Release remains locked: `prepackage_ready=false`, `release_ready=false`, checklist `status=open`, `failed_count=16`, objective proof 15 PASS / 11 OPEN.
+- Regenerated current release manifest, full checklist, and objective proof. Release remains locked: `prepackage_ready=false`, `release_ready=false`, checklist `status=open`, `failed_count=14`, objective proof 15 PASS / 11 OPEN.
 
 ## Real-UI unblocked non-MiMo classifier refresh - 2026-06-07
 
@@ -343,7 +343,7 @@ Focused validation passed:
 - Added exact allowed variant handling for Qwen36 real-UI matrix: the family can pass with exactly `Qwen3.6-27B-JANG_4M-MTP` and `Qwen3.6-35B-A3B-MXFP8-MTP`; unexpected or missing variants still remain partial.
 - Updated test fixtures for current Qwen36 and LFM25 20260607 proof filenames so synthetic matrix tests cover the same Responses/tools/cache/media surfaces as the current proof rows.
 - Regenerated current manifest/checklist/objective artifacts. `Real Electron UI unblocked non-MiMo live model matrix is proven` is now PASS in objective proof.
-- Current release state remains blocked: manifest `current_proof_sweep=fail`, `prepackage_ready=false`, `release_ready=false`; checklist `status=open`, `failed_count=16`.
+- Current release state remains blocked: manifest `current_proof_sweep=fail`, `prepackage_ready=false`, `release_ready=false`; checklist `status=open`, `failed_count=14`.
 - Remaining objective OPEN rows: cross-family live multi-turn smoke matrix, MiMo V2.5 runtime/tool/long-prompt quality, MiniMax reporter parity/root cause, Real Electron UI cross-family live model matrix, and DSV4 long-output/code/file-generation quality.
 - Focused validation: real-UI matrix/current-suite/objective selectors -> `143 passed`, `350 deselected`; py_compile passed for edited Python files.
 
@@ -352,7 +352,7 @@ Focused validation passed:
 - Fixed `tests/cross_matrix/summarize_objective_proof.py` to use current filtered ZAYA text smoke proof `build/current-filtered-live-smoke-zaya-text-mxfp4-20260607/summary.json` instead of the older combined ZAYA text+VL failure artifact.
 - Current objective proof now classifies cross-family live smoke as non-MiMo green and MiMo-only deferred: `non_mimo_status=pass`, `non_mimo_missing_required_family_keys=[]`, `non_mimo_not_pass_artifacts=[]`, `missing_required_family_keys=[mimo_v2]`, `release_boundary=non_mimo_live_smoke_clear_mimo_v2_deferred`.
 - This does not clear the cross-family smoke requirement because MiMo V2.5 remains a required family and still fails exact tool/JSON literal rows.
-- Regenerated current objective proof, release manifest, and full checklist. Release remains locked: manifest `current_proof_sweep=fail`, `prepackage_ready=false`, `release_ready=false`; checklist `status=open`, `failed_count=16`.
+- Regenerated current objective proof, release manifest, and full checklist. Release remains locked: manifest `current_proof_sweep=fail`, `prepackage_ready=false`, `release_ready=false`; checklist `status=open`, `failed_count=14`.
 - Focused validation: objective/current-suite/manifest selectors -> `108 passed`, `385 deselected`; py_compile passed for edited objective proof files.
 
 ## MiMo local JANG_2L/JANGTQ_2 metadata honesty contract - 2026-06-07
