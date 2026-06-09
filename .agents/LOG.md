@@ -7042,3 +7042,26 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Covered rows: chat no-cache/warm/cache-hit all returned `ACK`; chat cache hit reported `cached_tokens=8`, `cache_detail=paged+ssm`; Responses required tool returned `function_call_arguments=[{"query":"alpha"}]`; Responses tool follow-up returned visible `DONE`; streaming Responses required tool returned `function_call_arguments=[{"query":"alpha"}]`, `argument_delta_text_by_item={...: "{\"query\": \"alpha\"}"}`, `cached_tokens=192`, `cache_detail=paged+ssm`.
 - Runtime evidence in server log: model family `qwen3_5_moe`, `reasoning_parser=qwen3`, `tool_parser=qwen`, JANGTQ VLM fast path, P3/P15/P17/P18 kernels, TurboQuant enabled, runtime cache layout with TurboQuantKVCache attention layers and native SSM companion state, VLM paged cache, VLM block-disk cache, hybrid SSM L2, q4 KV storage, paged cache hits, KV+SSM cache hits, and TurboQuant recompression before cache reuse.
 - Boundary: this clears the current-source N2 JANGTQ2 narrow live cache/tool/Responses row. It does not clear installed-app UI parity, media/VL semantic rows, same-model public tunnel parity, DSV4, MiMo, package integrity, signing, notarization, or release readiness.
+
+# 2026-06-09 - Qwen3-VL chunked-prefill deepstack alignment
+
+- Upstream intake implemented: `mlx-vlm` PR #1332 for Qwen3-VL / Qwen3-VL-MoE chunked-prefill visual detail loss.
+- Local pinned gap: `LanguageModel.__call__` sliced `visual_pos_masks` from `n_to_process` but forwarded the full `deepstack_visual_embeds` list to every chunk, and left the mask longer than the current input window.
+- Source fix: `vmlx_engine/runtime_patches/mlx_vlm_compat.py` now realigns both `visual_pos_masks` and `deepstack_visual_embeds` to the current single-sequence chunk window for Qwen3-VL and Qwen3-VL-MoE.
+- Proof: `.venv/bin/python -m pytest -q tests/test_mlx_lm_runtime_patches.py -k qwen3_vl_chunked_prefill` passed `1/1`.
+- Boundary: source/no-heavy runtime shim only. This does not clear live Qwen VL OCR/video quality, batched continuous prefill, installed-app/UI parity, package/sign/notarize/tag/download, or release readiness.
+
+# 2026-06-09 - Gemma QAT inventory refresh after N2 proof
+
+- Refreshed the no-heavy Gemma QAT/native MXFP4 inventory gate: `.venv/bin/python tests/cross_matrix/run_gemma_qat_native_mxfp4_inventory_gate.py --out build/current-gemma-qat-native-mxfp4-local-inventory-after-n2-proof-20260609.json`.
+- Result: `status=open`, `count=16`, `missing_required_rows=[]`, required open rows remain `gemma4_e2b_qat_native_mxfp4`, `gemma4_e4b_qat_native_mxfp4`, `gemma4_12b_native_mxfp4`, `gemma4_26b_vl`, and `gemma4_31v_or_31b_vl`.
+- Boundary: inventory coverage is current and complete for required local Gemma QAT rows, but the row intentionally remains open until live media/cache/tool/UI/release proofs cover the full release matrix.
+
+# 2026-06-09 - MiMo JANGTQ2 exactness isolation
+
+- Ran current-source MiMo JANGTQ2 all-local smoke with tools and L2 restart: `VMLINUX_BENCH_ISOLATED=1 .venv/bin/python bench/all_local_model_smoke.py --models-root /Users/eric/.mlxstudio/models --only MiMo-V2.5-JANGTQ_2 --max-models 1 --port 8896 --load-timeout-s 600 --request-timeout-s 240 --include-tools --include-l2-restart --out build/current-all-local-model-smoke-mimo-v25-jangtq2-tools-l2-after-responses-n2-20260609`.
+- Result: `status=probe_failed`, `failures=5`. Failures are exact sentinel mutation, not load/cache infrastructure: `tool_required` returned `blue-1` instead of `blue-cat`; `mimo_tool_required_sentinel` returned `B7CAT-09` instead of `B7-CAT-09`; tool-result continuation returned `STORED blue cat.`; JSON returned `blue-3` or `B7CAT-09` instead of exact expected values.
+- Runtime infrastructure evidence from logs: JANGTQ native TurboQuant fast path loaded; MiMo affine SwitchGLU decode fast path installed; native mixed-SWA cache schema selected; generic TurboQuant KV skipped by design; paged cache and block-disk L2 write-through active; L2 restart server loaded existing disk blocks.
+- Isolation run: served `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2` conservatively with `--no-continuous-batching --disable-prefix-cache --kv-cache-quantization none --disable-native-mtp`; artifact `build/current-mimo-v25-jangtq2-nocache-exactness-isolation-20260609.json`.
+- Isolation result: exact prompt `blue-cat` -> `blue cat`; exact prompt `B7-CAT-09` -> `B7ACAT-09`; JSON expected `blue-cat` -> `blue`; required tool argument `blue-cat` -> `blue cat`. This reproduces exactness failure with prefix/paged/L2/KV quantization disabled.
+- Classification: MiMo JANGTQ2 current-source cache and runtime infrastructure are not the immediate cause of sentinel mutation. Exactness/tool-argument failures persist in conservative no-cache decode, so release remains blocked for MiMo exact/tool rows. Do not fake-clear with JSON repair, parser rewriting, prompt folding, or cache guards.

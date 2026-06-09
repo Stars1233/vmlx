@@ -70,6 +70,18 @@ signing, notarization, tags, downloads, or release actions.
      K/V weights in both outer and language sanitize paths.
    - Proof: `tests/test_mlx_lm_runtime_patches.py::test_mlx_vlm_gemma4_shared_kv_layers_drop_unused_kv_modules_and_weights`.
 
+9. `mlx-vlm` PR #1332, Qwen3-VL / Qwen3-VL-MoE deepstack visual embeds during
+   chunked prefill.
+   - Local pinned `mlx_vlm.models.qwen3_vl*.language.LanguageModel.__call__`
+     sliced `visual_pos_masks` from `n_to_process` but still forwarded the full
+     `deepstack_visual_embeds` list to every chunk. It also left the sliced mask
+     longer than the current input window.
+   - vMLX fix: runtime patch realigns both `visual_pos_masks` and
+     `deepstack_visual_embeds` to the current chunk window for single-sequence
+     chunked prefill, using the number of visual tokens before the chunk to slice
+     the deepstack rows.
+   - Proof: `tests/test_mlx_lm_runtime_patches.py::test_qwen3_vl_chunked_prefill_slices_deepstack_embeds_to_visual_window`.
+
 ## Upstream items checked but not blindly ported
 
 - `mlx-lm` PR #1167 (think-token `None` property guard): already present in the
@@ -98,10 +110,9 @@ signing, notarization, tags, downloads, or release actions.
   `utils/mlx_vlm_compat.py` and current Qwen VLM language source before port.
 - `mlx-lm` PR #1377 (top-k interval wording): documentation/error-message-only
   upstream fix. No runtime behavior to port.
-- `mlx-vlm` PR #1332 (Qwen3-VL deepstack visual embeds alignment during chunked
-  prefill): likely relevant to Qwen3.5/3.6 VL long-image/OCR recall and mRoPE
-  rows. Do not port blindly; map against the vendored/patches Qwen VLM language
-  path and add a chunked-prefill visual-mask regression first.
+- `mlx-vlm` PR #1325 (Qwen3-VL visual masks during chunked prefill): covered by
+  the local PR #1332 backport above for the single-sequence source path; batched
+  continuous prefill remains a separate proof row if a local regression appears.
 - `mlx-vlm` PR #1328 (LFM2.5 VL loading): relevant to LFM25 VL/media rows.
   Needs local model-type/load-weight mapping before patching because the current
   LFM25 live text/tools proof is partial and the VL path is separately scoped.
