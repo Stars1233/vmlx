@@ -1,6 +1,6 @@
 {
   "boundary": "No-heavy checklist only. A pass here would mean current evidence claims every listed gate is green; it still must be backed by the live artifacts referenced by each row. Open rows are release blockers.",
-  "created_at": "2026-06-09T15:17:10-0700",
+  "created_at": "2026-06-09T15:20:39-0700",
   "failed": [
     {
       "detail": false,
@@ -325,37 +325,6 @@
     {
       "evidence": "build/current-mimo-v2-jang2l-current-audit-after-cache-vs-nocache-logprobs-20260609.json",
       "name": "mimo_mimo_media_wired",
-      "ok": false
-    },
-    {
-      "detail": "missing",
-      "evidence": "build/current-qwen35-mxfp8-mtp-responses-long-tool-cache-deterministic-20260607/00_startup.json",
-      "name": "qwen35_startup_artifact_exists",
-      "ok": false
-    },
-    {
-      "evidence": "build/current-qwen35-mxfp8-mtp-responses-long-tool-cache-deterministic-20260607/00_startup.json",
-      "name": "qwen35_startup_model_loaded",
-      "ok": false
-    },
-    {
-      "evidence": "build/current-qwen35-mxfp8-mtp-responses-long-tool-cache-deterministic-20260607/00_startup.json",
-      "name": "qwen35_startup_mtp_runtime_active",
-      "ok": false
-    },
-    {
-      "evidence": "build/current-qwen35-mxfp8-mtp-responses-long-tool-cache-deterministic-20260607/00_startup.json",
-      "name": "qwen35_startup_mtp_depth_three",
-      "ok": false
-    },
-    {
-      "evidence": "build/current-qwen35-mxfp8-mtp-responses-long-tool-cache-deterministic-20260607/00_startup.json",
-      "name": "qwen35_startup_hybrid_cache_policy",
-      "ok": false
-    },
-    {
-      "evidence": "build/current-qwen35-mxfp8-mtp-responses-long-tool-cache-deterministic-20260607/00_startup.json",
-      "name": "qwen35_startup_trained_k_preserved",
       "ok": false
     },
     {
@@ -900,7 +869,7 @@
       "ok": false
     }
   ],
-  "failed_count": 90,
+  "failed_count": 84,
   "groups": {
     "api_cache_responses_contract": [
       {
@@ -3739,35 +3708,36 @@
         "ok": true
       },
       {
-        "detail": "missing",
+        "detail": "pass",
         "evidence": "build/current-qwen35-mxfp8-mtp-responses-long-tool-cache-deterministic-20260607/00_startup.json",
         "name": "qwen35_startup_artifact_exists",
-        "ok": false
+        "ok": true
       },
       {
         "evidence": "build/current-qwen35-mxfp8-mtp-responses-long-tool-cache-deterministic-20260607/00_startup.json",
         "name": "qwen35_startup_model_loaded",
-        "ok": false
+        "ok": true
       },
       {
         "evidence": "build/current-qwen35-mxfp8-mtp-responses-long-tool-cache-deterministic-20260607/00_startup.json",
         "name": "qwen35_startup_mtp_runtime_active",
-        "ok": false
+        "ok": true
       },
       {
+        "detail": 3,
         "evidence": "build/current-qwen35-mxfp8-mtp-responses-long-tool-cache-deterministic-20260607/00_startup.json",
         "name": "qwen35_startup_mtp_depth_three",
-        "ok": false
+        "ok": true
       },
       {
         "evidence": "build/current-qwen35-mxfp8-mtp-responses-long-tool-cache-deterministic-20260607/00_startup.json",
         "name": "qwen35_startup_hybrid_cache_policy",
-        "ok": false
+        "ok": true
       },
       {
         "evidence": "build/current-qwen35-mxfp8-mtp-responses-long-tool-cache-deterministic-20260607/00_startup.json",
         "name": "qwen35_startup_trained_k_preserved",
-        "ok": false
+        "ok": true
       },
       {
         "detail": "missing",

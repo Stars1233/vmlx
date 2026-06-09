@@ -7569,6 +7569,15 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 
 # 2026-06-09 - N2 JANG_1L live-gate headroom guard
 
+# 2026-06-09 - Qwen35 MXFP8-MTP startup proof
+
+- Reduced blocker: Qwen35 startup rows were missing `build/current-qwen35-mxfp8-mtp-responses-long-tool-cache-deterministic-20260607/00_startup.json`.
+- Source/proof harness: added `tests/cross_matrix/run_qwen35_mxfp8_mtp_startup.py` and focused tests. The harness only launches `/Users/eric/models/JANGQ/Qwen3.6-35B-A3B-MXFP8-MTP`, waits for `/health`, records `/v1/cache/stats`, and exits; it does not claim the long-tool cache or restart/L2 rows.
+- Live proof: `build/current-qwen35-mxfp8-mtp-responses-long-tool-cache-deterministic-20260607/00_startup.json` is `status=pass`; health reports `model_loaded=true`, model name `JANGQ/Qwen3.6-35B-A3B-MXFP8-MTP`, MTP `native_runtime_active` depth 3, native hybrid SSM cache, TurboQuant attention KV enabled, and routed experts preserved at trained/effective `8`.
+- Checklist: regenerated `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json`; release remains `status=open`, `failed_count=84`, down from 90 after Qwen35 startup rows turned green.
+- Validation: `tests/test_qwen35_mxfp8_mtp_startup.py` passed `3/3`; `py_compile` passed; live startup gate passed.
+- Boundary: Qwen35 long-tool cache, previous_response_id, tool evidence, restart/L2 restore, installed UI/media rows remain open. No package/sign/notarize/tag/download/release action.
+
 # 2026-06-09 - Qwen27 JANG_4M-MTP long-context cache/L2 proof
 
 - Reduced blocker: Qwen27 long-context/cache-tail rows were missing `build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json`.
