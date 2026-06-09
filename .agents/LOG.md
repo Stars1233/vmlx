@@ -1,3 +1,12 @@
+# 2026-06-09 - MiniMax #179 local generation config fallback
+
+- Stayed in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, no release package/sign/notarize/tag/download work.
+- Reduced blocker class: `parser/template` + `generation config` proof classification for MiniMax #179 wrong-language/planning isolation.
+- Source/proof gate fix: `tests/cross_matrix/run_issue179_minimax_k_root_cause_audit.py` now falls back to direct local MiniMax artifact metadata when the old manifest JSON is absent. It hashes only small metadata/config files and intentionally does not hash 67 large safetensor shards.
+- Refreshed artifact: `build/current-issue179-minimax-k-root-cause-audit-after-parser-settings-parity-20260608.json`, `status=open`. Local fallback found `/Users/eric/models/dealign.ai/MiniMax-M2.7-JANGTQ_K-CRACK`, `generation_config.json`, `jang_config.json`, tokenizer/config/index metadata, and 67 model shards. `generation_config.json` hash is `2c24fe5507e260bb081727e2a14693d9a982942e721b28720c184d201bffb9dd`.
+- The `generation_config_and_sampling` isolation row moved from `open` to `partial` because local generation config is present and local/reporter sampling shape is seen.
+- Boundary: this does not clear #179. Reporter-machine generation config hash parity, resolved sampling kwargs parity, reporter raw SSE/session/cancel lifecycle, and full model shard/codebook hash parity remain open.
+
 # 2026-06-09 - Responses raw-SSE reasoning-disable boundary split
 
 - Stayed in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, no release package/sign/notarize/tag/download work.
