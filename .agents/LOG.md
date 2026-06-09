@@ -7372,6 +7372,15 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Validation: `tests/test_mimo_v2_cache_vs_nocache_next_token.py` passed `5/5`; `py_compile` passed; `git diff --check` passed.
 - Boundary: this is proof-harness correctness only. It does not clear MiMo exactness, media, JANG_2L/JANGTQ2 runtime quality, installed-app parity, package/sign/notarize, or release readiness.
 
+# 2026-06-09 - MiMo proof-pointer refresh to cache/logprob classifier set
+
+- Blocker reduced: MiMo release/objective/checklist gates no longer consume the older structured-schema audit by default.
+- Source/pointer fix: `run_mimo_v2_jang2l_current_audit.py`, `release_regression_manifest.py`, `summarize_objective_proof.py`, and `run_full_release_objective_checklist.py` now point at `build/current-mimo-v2-jang2l-current-audit-after-cache-vs-nocache-logprobs-20260609.json` and `build/current-mimo-v2-no-source-exactness-classifier-after-lossless-token-trace-20260609.json`.
+- Follow-up source fix: `run_mimo_v2_no_source_exactness_classifier.py` now uses the current cache-vs-nocache audit as its default input instead of the older singlebatch token-buffer speed-rerun audit.
+- Red/green proof: added exact-pointer coverage in `tests/test_release_regression_manifest.py`; it failed before the source update on the stale structured-schema audit pointer, then passed after the update.
+- Validation: focused MiMo/release/objective/current-suite tests passed `23/23`; `py_compile` and `git diff --check` passed.
+- Boundary: pointer freshness only. MiMo JANGTQ2 literal/tool/JSON exactness, strict decode speed, media E2E, JANGTQ2/JANG_2L media/L2, UI, installed-app parity, package/sign/notarize, and release rows remain open.
+
 # 2026-06-09 - Gemma4 vision runtime-bootstrap guard
 
 - Blocker reduced: Gemma4 mlxstudio#88 mixed `pixel_values` list coercion proof now follows the actual vMLX source bootstrap path.
