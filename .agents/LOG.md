@@ -7154,3 +7154,58 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - N2 chat/cache gate now records which optional probes were requested for skipped runs and adds an explicit `--include-l2-restart-probe` path requiring a fresh-process cache hit with `cache_detail` containing `disk`, block-disk hits, and SSM companion disk hits.
 - Validation: `py_compile` passed for the changed gate/checklist files; focused pytest `tests/test_n2_chat_cache_gate.py tests/test_gemma_qat_native_mxfp4_inventory_gate.py tests/test_full_release_objective_checklist.py` passed `21/21`; `git diff --check` passed.
 - Boundaries: no package, signing, notarization, tag, download, or release action. MiMo exactness/media, N2 JANG_1L memory-safe live proof, Gemma full installed-app/UI/Responses/media matrix, DSV4 memory-gated live proof, MiniMax random-language/cache isolation, and package/sign/notarize remain open.
+
+# 2026-06-09 - MiMo cache/no-cache memory telemetry and live refresh
+
+- Blocker reduced: MiMo JANGTQ2 cache-vs-no-cache proof interpretation and stale status wording.
+- Source/proof-harness fix: `tests/cross_matrix/run_mimo_v2_cache_vs_nocache_next_token.py` now labels psutil memory snapshots and preflight skip artifacts with `unit="GiB"`, `available_gib`, `total_gib`, `required_available_gib`, and `memory_gap_gib`, while preserving legacy `*_gb` fields. Intentional preflight skips now exit 0 like the N2 cache gate.
+- Live proof refreshed: `build/current-mimo-v2-jangtq2-cache-vs-nocache-next-token-logprobs-after-unit-label-20260609.json`, `status=pass`; no-cache, warm-store, and cache-hit rows all emitted `ACK`; top10/logprob signatures matched; cache hit reported `cached_tokens=31`, `cache_detail=paged`; telemetry showed `before_launch 113.39 GiB`, `after_health 38.64 GiB`, `after_requests 38.52 GiB`.
+- Runtime evidence: server log shows JANGTQ native TurboQuant fast path, MiMo affine SwitchGLU decode fast path, native mixed full/SWA cache layout, paged cache, block-disk write-through, and a paged cache hit for 31 tokens.
+- Coordination boundary: this clears the current paged-cache/no-cache next-token proof row only. It does not clear MiMo literal/tool/JSON exactness, media E2E, JANG_2L full live media/L2, installed-app UI, or release readiness. Full JANG_2L launch was not attempted because the local bundle is about 105G on a 128 GiB host and still needs a separate safe memory gate.
+
+# 2026-06-09 - N2 JANG_1L RAM boundary clarification
+
+- User clarified that N2/JANG_1L should fit if RAM is handled carefully.
+- Treat the N2/JANG_1L row as a careful-RAM live launch/proof scheduling problem, not as an impossible or permanently memory-blocked model.
+- Do not do source-vs-quant or extra-heavy comparisons unless explicitly allowed; focus on one controlled live runtime proof with conservative settings, memory preflight, prefix/cache/tool/Responses/parser coverage, and clean shutdown.
+- Current release boundary remains open until the actual JANG_1L live proof exists. Prior memory preflight artifacts are a launch-safety warning, not a final model infeasibility claim.
+
+# 2026-06-09 - Responses raw-SSE release parity tracked in objective checklist
+
+- Pushed `c27f1024` (`Track Responses raw SSE release parity`) to `origin/main` and `origin/codex/pr-intake-manifest` on top of current remote tip `fb3bc58a`.
+- Added `RESPONSES_RAW_SSE_PARITY` to the full release objective checklist, pointing at `build/current-responses-raw-sse-parity-direct-gateway-gemma4-e2b-after-parser-20260609.json`.
+- New checklist group `responses_raw_sse_parity` explicitly checks direct, gateway, and tunnel captures; expected function name; expected authoritative arguments; parse cleanliness; cross-surface argument equality; and required reasoning events.
+- Refreshed checklist artifact: `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json` has `status=open`, `failed_count=119`.
+- Current raw-SSE blocker is now visible in the objective checklist: direct and gateway Gemma4 E2B captures are green, but `responses_raw_sse_parity_tunnel_capture_present=false` and `responses_raw_sse_parity_all_required_surfaces_present` is red with `missing_captures=["tunnel"]`.
+- Validation: new checklist tests failed before implementation, then focused raw-SSE/checklist tests passed `16/16`; `py_compile` passed; `git diff --check` passed.
+- Boundary: this is a proof-map/release-gate visibility fix. It does not claim public tunnel parity, installed-app parity, package/sign/notarize/tag/download, or release readiness.
+
+# 2026-06-09 - Current-suite pointer moved to raw-SSE-aware checklist
+
+- Pushed `66ef200c` (`Use raw SSE checklist in current suite`) to `origin/main` and `origin/codex/pr-intake-manifest`.
+- Moved `run_full_release_objective_checklist.DEFAULT_OUT` and the current regression suite command/allow-open path from `current-full-release-objective-checklist-after-pr-intake-matrix-refresh-20260609.json` to `current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json`.
+- Validation: focused current-suite/checklist pointer tests passed `11/11`; `py_compile` passed; `git diff --check` passed.
+- Boundary: this is proof-pointer sync only. It ensures umbrella gates consume the raw-SSE-aware checklist; it does not clear the missing public tunnel capture or release blockers.
+
+# 2026-06-09 - MiMo cache proof memory-unit harness fix
+
+- Pushed `8141929e` (`Label MiMo cache proof memory units`) to `origin/main` and `origin/codex/pr-intake-manifest`.
+- MiMo cache-vs-no-cache next-token proof harness now reports memory in explicit binary units: `unit="GiB"`, `total_gib`, `available_gib`, `required_available_gib`, and `memory_gap_gib`, while preserving legacy `*_gb` aliases.
+- Memory preflight `skipped` is now a successful harness exit so RAM-discipline skip artifacts do not look like behavioral failures in umbrella proof runs.
+- Validation: `tests/test_mimo_v2_cache_vs_nocache_next_token.py` passed `5/5`; `py_compile` passed; `git diff --check` passed.
+- Boundary: this is proof-harness correctness only. It does not clear MiMo exactness, media, JANG_2L/JANGTQ2 runtime quality, installed-app parity, package/sign/notarize, or release readiness.
+
+# 2026-06-09 - Current-suite Gemma QAT inventory pointer sync
+
+- Pushed `8c1d9222` (`Use Gemma QAT source smoke inventory`) to `origin/main` and `origin/codex/pr-intake-manifest`.
+- Moved `run_gemma_qat_native_mxfp4_inventory_gate.DEFAULT_OUT` and the current regression suite command from `build/current-gemma-qat-native-mxfp4-local-inventory-20260609.json` to `build/current-gemma-qat-native-mxfp4-local-inventory-after-source-smoke-map-20260609.json`.
+- This keeps umbrella gates aligned with the inventory artifact that records all five Gemma QAT/native MXFP4 source-smoke proof paths.
+- Validation: `tests/test_current_regression_suite.py::test_current_regression_suite_runs_gemma_qat_inventory_gate` plus `tests/test_gemma_qat_native_mxfp4_inventory_gate.py` passed `5/5`; `py_compile` passed; `git diff --check` passed.
+- Boundary: proof-pointer sync only. Full Gemma installed-app/UI/Responses/tunnel/media release proof remains open.
+
+# 2026-06-09 - MiMo audit consumes unit-labeled cache proof
+
+- Pushed `3bd1d7f4` (`Use unit-labeled MiMo cache proof`) to `origin/main` and `origin/codex/pr-intake-manifest`.
+- Moved the MiMo cache-vs-no-cache default artifact and MiMo current audit pointer to `build/current-mimo-v2-jangtq2-cache-vs-nocache-next-token-logprobs-after-unit-label-20260609.json`.
+- Validation: `tests/test_mimo_v2_cache_vs_nocache_next_token.py tests/test_mimo_v2_current_audit.py -k "cache_vs_nocache or cache or current_audit"` passed `26/26`; `py_compile` passed; `git diff --check` passed.
+- Boundary: pointer sync only. MiMo exactness, media, JANG_2L/JANGTQ2 runtime quality, installed-app parity, signing, and release remain open.
