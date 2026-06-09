@@ -7051,6 +7051,14 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Proof: `.venv/bin/python -m pytest -q tests/test_mlx_lm_runtime_patches.py -k qwen3_vl_chunked_prefill` passed `1/1`.
 - Boundary: source/no-heavy runtime shim only. This does not clear live Qwen VL OCR/video quality, batched continuous prefill, installed-app/UI parity, package/sign/notarize/tag/download, or release readiness.
 
+# 2026-06-09 - LFM2.5 VL projector layernorm loading
+
+- Upstream intake implemented: `mlx-vlm` PR #1328 for LFM2.5-VL mlx-format projector loading.
+- Local pinned gap: disabled projector layernorm was represented as `nn.Identity`, so checkpoints with `multi_modal_projector.layer_norm.*` keys can miss/unexpected-load those weights even though `projector_use_layernorm` should control use, not module materialization.
+- Source fix: `vmlx_engine/runtime_patches/mlx_vlm_compat.py` now always materializes the projector `LayerNorm` for LFM2.5-VL load compatibility and skips applying it when `projector_use_layernorm=false`.
+- Proof: `.venv/bin/python -m pytest -q tests/test_mlx_lm_runtime_patches.py -k lfm25_vl_projector` passed `1/1`.
+- Boundary: source/no-heavy load shim only. This does not clear live LFM2.5 VL media quality, text/tool exactness, installed-app/UI parity, package/sign/notarize/tag/download, or release readiness.
+
 # 2026-06-09 - Gemma QAT inventory refresh after N2 proof
 
 - Refreshed the no-heavy Gemma QAT/native MXFP4 inventory gate: `.venv/bin/python tests/cross_matrix/run_gemma_qat_native_mxfp4_inventory_gate.py --out build/current-gemma-qat-native-mxfp4-local-inventory-after-n2-proof-20260609.json`.
@@ -7065,3 +7073,11 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Isolation run: served `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2` conservatively with `--no-continuous-batching --disable-prefix-cache --kv-cache-quantization none --disable-native-mtp`; artifact `build/current-mimo-v25-jangtq2-nocache-exactness-isolation-20260609.json`.
 - Isolation result: exact prompt `blue-cat` -> `blue cat`; exact prompt `B7-CAT-09` -> `B7ACAT-09`; JSON expected `blue-cat` -> `blue`; required tool argument `blue-cat` -> `blue cat`. This reproduces exactness failure with prefix/paged/L2/KV quantization disabled.
 - Classification: MiMo JANGTQ2 current-source cache and runtime infrastructure are not the immediate cause of sentinel mutation. Exactness/tool-argument failures persist in conservative no-cache decode, so release remains blocked for MiMo exact/tool rows. Do not fake-clear with JSON repair, parser rewriting, prompt folding, or cache guards.
+
+# 2026-06-09 - Qwen3-VL chunked deepstack runtime patch accepted
+
+- Inspected other-agent runtime patch and committed `2e989f81` (`Align Qwen3 VL chunked deepstack prefill`) to `origin/main` and `origin/codex/pr-intake-manifest`.
+- Runtime fix: `vmlx_engine/runtime_patches/mlx_vlm_compat.py` now patches `mlx_vlm.models.qwen3_vl.language.LanguageModel.__call__` and `mlx_vlm.models.qwen3_vl_moe.language.LanguageModel.__call__` so chunked prefill slices both `visual_pos_masks` and `deepstack_visual_embeds` to the current visual-token window.
+- Scope: Qwen3-VL / Qwen3-VL-MoE visual/mRoPE chunked prefill compatibility. This is not a fake model behavior guard and does not synthesize outputs.
+- Validation: `.venv/bin/python -m py_compile vmlx_engine/runtime_patches/mlx_vlm_compat.py tests/test_mlx_lm_runtime_patches.py` passed; focused patch tests passed `3/3`; full runtime patch suite passed `9/9`; focused current-suite pointer/hash row passed.
+- Boundary: source/unit compatibility proof only. Full Qwen/N2/Gemma/MiMo media/UI installed-app matrix remains open until live model/UI proofs cover it.

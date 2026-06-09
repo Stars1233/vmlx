@@ -82,6 +82,17 @@ signing, notarization, tags, downloads, or release actions.
      the deepstack rows.
    - Proof: `tests/test_mlx_lm_runtime_patches.py::test_qwen3_vl_chunked_prefill_slices_deepstack_embeds_to_visual_window`.
 
+10. `mlx-vlm` PR #1328, LFM2.5-VL projector layernorm loading.
+    - Local pinned `Lfm2VlMultiModalProjector` replaced disabled projector
+      layernorm with `nn.Identity`, so mlx-format checkpoints carrying
+      `multi_modal_projector.layer_norm.*` weights can have unexpected/load-missed
+      projector keys even though the flag should only control whether the
+      layernorm is applied.
+    - vMLX fix: runtime patch always materializes a `LayerNorm` module for
+      loading, records `projector_use_layernorm`, and skips applying the layernorm
+      when the config disables it.
+    - Proof: `tests/test_mlx_lm_runtime_patches.py::test_lfm25_vl_projector_materializes_layernorm_without_applying_when_disabled`.
+
 ## Upstream items checked but not blindly ported
 
 - `mlx-lm` PR #1167 (think-token `None` property guard): already present in the
@@ -113,9 +124,9 @@ signing, notarization, tags, downloads, or release actions.
 - `mlx-vlm` PR #1325 (Qwen3-VL visual masks during chunked prefill): covered by
   the local PR #1332 backport above for the single-sequence source path; batched
   continuous prefill remains a separate proof row if a local regression appears.
-- `mlx-vlm` PR #1328 (LFM2.5 VL loading): relevant to LFM25 VL/media rows.
-  Needs local model-type/load-weight mapping before patching because the current
-  LFM25 live text/tools proof is partial and the VL path is separately scoped.
+- LFM2.5 VL live media rows still need real model proof after the PR #1328
+  load shim. The implemented no-load patch only proves projector key/materialized
+  module compatibility.
 
 ## Other-agent reminders
 
