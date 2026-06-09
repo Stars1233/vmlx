@@ -644,3 +644,10 @@
 - inventory result: `status=open`, `missing_required_rows=[]`, `open_required_rows` includes `gemma4_12b_qat_jang4m`, E2B/E4B/12B native MXFP4, 26B VL, and 31V/31B VL.
 - boundary: Gemma4 QAT JANG_4M remains open. The existing no-media source smoke is `probe_failed`; release proof still requires autodetect, model-owned `generation_config`, Gemma4 tool/reasoning parser, mixed-SWA/prefix cache, TurboQuant KV boundary where valid, block-disk L2, Responses streaming args/content deltas, media honesty, UI/CLI parity, and installed-app parity.
 - focused validation: `uv run pytest tests/test_gemma_qat_native_mxfp4_inventory_gate.py tests/test_objective_proof_digest.py::test_objective_proof_digest_tracks_gemma_qat_native_mxfp4_release_blocker tests/test_full_release_objective_checklist.py::test_full_release_objective_checklist_blocks_open_gemma_qat_jang4m_row -q` passed `10/10`.
+
+## CODEX - 2026-06-09 Gemma4 E2B QAT JANG_4M source smoke
+- blocker reduced: Gemma4 QAT JANG_4M source-live text/tool/cache/L2 coverage for the smallest downloaded bundle.
+- proof: `build/current-all-local-model-smoke-gemma4-e2b-qat-jang4m-tools-nomedia-l2-20260609/JANGQ_gemma-4-E2B-it-qat-JANG_4M/result.json`, `status=pass`; summary at `build/current-all-local-model-smoke-gemma4-e2b-qat-jang4m-tools-nomedia-l2-20260609/summary.json`.
+- proven surfaces: autodetect `model_type=gemma4`, tool/reasoning parser `gemma4`, model-owned launch defaults with `--default-enable-thinking false`, visible ACK repeat, multi-turn `blue cat`, reasoning separation, required `record_fact({"value":"blue-cat"})`, tool-result continuation `STORED blue-cat.`, exact JSON/code probes, mixed-SWA cache hit `cached_tokens=56` with `cache_detail=paged+mixed_swa`, block-disk writes, and fresh-process L2 restart `pass`.
+- updated artifacts: Gemma inventory/objective/checklist now consume the E2B QAT JANG_4M source smoke; `source_live_smoke_open_rows` still lists E4B, 12B, 26B, and 31B QAT JANG_4M.
+- boundary: no Gemma4 QAT JANG_4M release clearance. E2B media/video, Responses raw SSE args/content deltas, UI/CLI parity, installed-app parity, and larger QAT JANG_4M bundles remain open.

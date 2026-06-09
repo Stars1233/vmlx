@@ -1,0 +1,41 @@
+{
+  "created_at": "20260609_154640",
+  "models_root": "/Users/eric/models/JANGQ-AI",
+  "row_count": 1,
+  "rows": [
+    {
+      "path": "/Users/eric/models/JANGQ-AI/gemma-4-E2B-it-qat-JANG_4M",
+      "served_name": "gemma-4-e2b-it-qat-jang_4m",
+      "name": "gemma-4-E2B-it-qat-JANG_4M",
+      "relative_path": "/Users/eric/models/JANGQ-AI/gemma-4-E2B-it-qat-JANG_4M",
+      "model_type": "gemma4",
+      "is_mllm": true,
+      "supports_video": false,
+      "supports_thinking": true,
+      "supports_tools": true,
+      "has_mtp": false,
+      "cache_family": "swa_rotating",
+      "capabilities": {
+        "reasoning_parser": "gemma4",
+        "tool_parser": "gemma4",
+        "think_in_template": false,
+        "supports_tools": true,
+        "supports_thinking": true,
+        "family": "gemma4",
+        "modality": "multimodal",
+        "modalities": {
+          "text": true,
+          "vision": true,
+          "audio": true,
+          "video": false
+        },
+        "has_vision": true,
+        "has_audio": true,
+        "has_video": false,
+        "cache_type": "kv"
+      },
+      "has_jang_config": true,
+      "namespace": "JANGQ"
+    }
+  ]
+}

@@ -833,3 +833,9 @@ Classification:
   - `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json`, `status=open`, `failed_count=75`.
 - Boundary: the existing Gemma4 12B JANG_4M no-media source smoke is still `probe_failed`; this row is not release clearance. Required proof remains autodetect, model-owned `generation_config` defaults, Gemma4 tool/reasoning parser, mixed-SWA/prefix cache, TurboQuant KV boundary where valid, block-disk L2, Responses streaming args/content deltas, media honesty, UI/CLI parity, and installed-app parity.
 - Focused validation: `uv run pytest tests/test_gemma_qat_native_mxfp4_inventory_gate.py tests/test_objective_proof_digest.py::test_objective_proof_digest_tracks_gemma_qat_native_mxfp4_release_blocker tests/test_full_release_objective_checklist.py::test_full_release_objective_checklist_blocks_open_gemma_qat_jang4m_row -q` passed `10/10`.
+
+## 2026-06-09 Gemma4 E2B QAT JANG_4M source smoke
+
+- Proof: `build/current-all-local-model-smoke-gemma4-e2b-qat-jang4m-tools-nomedia-l2-20260609/JANGQ_gemma-4-E2B-it-qat-JANG_4M/result.json`, `status=pass`.
+- Covered source surfaces: Gemma4 autodetect/parser selection, visible text, reasoning separation, required tool call, tool-result continuation, JSON/code exactness, mixed-SWA cache hit telemetry, block-disk writes, and fresh-process L2 restart for E2B QAT JANG_4M.
+- Release boundary: source no-media E2B proof only. Gemma4 QAT JANG_4M remains open for media/video, Responses raw SSE args/content deltas, UI/CLI parity, installed-app parity, larger QAT JANG_4M bundles, and release packaging/signing/notarization.

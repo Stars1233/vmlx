@@ -1,6 +1,6 @@
 {
   "boundary": "No-heavy checklist only. A pass here would mean current evidence claims every listed gate is green; it still must be backed by the live artifacts referenced by each row. Open rows are release blockers.",
-  "created_at": "2026-06-09T15:42:57-0700",
+  "created_at": "2026-06-09T15:47:54-0700",
   "failed": [
     {
       "detail": false,
@@ -167,7 +167,8 @@
         "mimo_image_video_live_e2e_missing",
         "mimo_audio_waveform_live_e2e_missing",
         "mimo_jangtq2_live_media_l2_missing",
-        "mimo_jang2l_live_media_l2_missing"
+        "mimo_jang2l_live_media_l2_missing",
+        "mimo_media_runtime_implementation_missing"
       ],
       "evidence": "build/current-mimo-v2-jang2l-current-audit-after-cache-vs-nocache-logprobs-20260609.json",
       "name": "mimo_local_release_clearance",
@@ -187,7 +188,8 @@
           "mimo_image_video_live_e2e_missing",
           "mimo_audio_waveform_live_e2e_missing",
           "mimo_jangtq2_live_media_l2_missing",
-          "mimo_jang2l_live_media_l2_missing"
+          "mimo_jang2l_live_media_l2_missing",
+          "mimo_media_runtime_implementation_missing"
         ],
         "classifier": {
           "classification": "jangtq2_plain_literal_copy_fails_before_parser_or_json_repair",
@@ -320,6 +322,11 @@
       },
       "evidence": "build/current-mimo-v2-jang2l-current-audit-after-cache-vs-nocache-logprobs-20260609.json",
       "name": "mimo_artifact_exactness",
+      "ok": false
+    },
+    {
+      "evidence": "build/current-mimo-v2-jang2l-current-audit-after-cache-vs-nocache-logprobs-20260609.json",
+      "name": "mimo_media_runtime_implementation",
       "ok": false
     },
     {
@@ -500,8 +507,14 @@
           "video"
         ],
         "source_live_smoke": {
-          "artifact": null,
-          "status": "missing"
+          "artifact": "build/current-all-local-model-smoke-gemma4-e2b-qat-jang4m-tools-nomedia-l2-20260609/JANGQ_gemma-4-E2B-it-qat-JANG_4M/result.json",
+          "completed": null,
+          "failed": null,
+          "post_video_text_recovery_proven": false,
+          "row_count": null,
+          "status": "pass",
+          "summary_status": "pass",
+          "video_runtime_proven": false
         },
         "status": "open",
         "tool_parser": "gemma4",
@@ -944,7 +957,6 @@
           "gemma4_31v_or_31b_vl"
         ],
         "source_live_smoke_open_rows": [
-          "gemma4_e2b_qat_jang4m",
           "gemma4_e4b_qat_jang4m",
           "gemma4_12b_qat_jang4m",
           "gemma4_26b_qat_jang4m",
@@ -971,7 +983,6 @@
           "gemma4_31v_or_31b_vl"
         ],
         "source_live_smoke_open_rows": [
-          "gemma4_e2b_qat_jang4m",
           "gemma4_e4b_qat_jang4m",
           "gemma4_12b_qat_jang4m",
           "gemma4_26b_qat_jang4m",
@@ -1327,7 +1338,7 @@
       "ok": false
     }
   ],
-  "failed_count": 71,
+  "failed_count": 72,
   "groups": {
     "api_cache_responses_contract": [
       {
@@ -1906,8 +1917,14 @@
             "video"
           ],
           "source_live_smoke": {
-            "artifact": null,
-            "status": "missing"
+            "artifact": "build/current-all-local-model-smoke-gemma4-e2b-qat-jang4m-tools-nomedia-l2-20260609/JANGQ_gemma-4-E2B-it-qat-JANG_4M/result.json",
+            "completed": null,
+            "failed": null,
+            "post_video_text_recovery_proven": false,
+            "row_count": null,
+            "status": "pass",
+            "summary_status": "pass",
+            "video_runtime_proven": false
           },
           "status": "open",
           "tool_parser": "gemma4",
@@ -2009,8 +2026,14 @@
             "video"
           ],
           "source_live_smoke": {
-            "artifact": null,
-            "status": "missing"
+            "artifact": "build/current-all-local-model-smoke-gemma4-e2b-qat-jang4m-tools-nomedia-l2-20260609/JANGQ_gemma-4-E2B-it-qat-JANG_4M/result.json",
+            "completed": null,
+            "failed": null,
+            "post_video_text_recovery_proven": false,
+            "row_count": null,
+            "status": "pass",
+            "summary_status": "pass",
+            "video_runtime_proven": false
           },
           "status": "open",
           "tool_parser": "gemma4",
@@ -3549,7 +3572,6 @@
             "gemma4_31v_or_31b_vl"
           ],
           "source_live_smoke_open_rows": [
-            "gemma4_e2b_qat_jang4m",
             "gemma4_e4b_qat_jang4m",
             "gemma4_12b_qat_jang4m",
             "gemma4_26b_qat_jang4m",
@@ -3576,7 +3598,6 @@
             "gemma4_31v_or_31b_vl"
           ],
           "source_live_smoke_open_rows": [
-            "gemma4_e2b_qat_jang4m",
             "gemma4_e4b_qat_jang4m",
             "gemma4_12b_qat_jang4m",
             "gemma4_26b_qat_jang4m",
@@ -3883,7 +3904,8 @@
           "mimo_image_video_live_e2e_missing",
           "mimo_audio_waveform_live_e2e_missing",
           "mimo_jangtq2_live_media_l2_missing",
-          "mimo_jang2l_live_media_l2_missing"
+          "mimo_jang2l_live_media_l2_missing",
+          "mimo_media_runtime_implementation_missing"
         ],
         "evidence": "build/current-mimo-v2-jang2l-current-audit-after-cache-vs-nocache-logprobs-20260609.json",
         "name": "mimo_local_release_clearance",
@@ -3928,7 +3950,8 @@
             "mimo_image_video_live_e2e_missing",
             "mimo_audio_waveform_live_e2e_missing",
             "mimo_jangtq2_live_media_l2_missing",
-            "mimo_jang2l_live_media_l2_missing"
+            "mimo_jang2l_live_media_l2_missing",
+            "mimo_media_runtime_implementation_missing"
           ],
           "classifier": {
             "classification": "jangtq2_plain_literal_copy_fails_before_parser_or_json_repair",
@@ -4091,7 +4114,7 @@
       {
         "evidence": "build/current-mimo-v2-jang2l-current-audit-after-cache-vs-nocache-logprobs-20260609.json",
         "name": "mimo_media_runtime_implementation",
-        "ok": true
+        "ok": false
       },
       {
         "evidence": "build/current-mimo-v2-jang2l-current-audit-after-cache-vs-nocache-logprobs-20260609.json",

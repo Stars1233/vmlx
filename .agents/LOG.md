@@ -7701,3 +7701,12 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Added explicit no-heavy inventory/objective/checklist tracking for `gemma4_12b_qat_jang4m`, separate from native MXFP4 QAT rows.
 - Regenerated current Gemma inventory, objective digest, and full checklist artifacts. Full checklist remains `status=open`; no release/sign/notarize/download action.
 - Validation: focused Gemma inventory/objective/checklist pytest passed `10/10` via `uv run pytest ... -q`.
+
+# 2026-06-09 - Gemma4 E2B QAT JANG_4M source smoke
+
+- Stayed in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, Swift, ADLab, Max2, or transport lane.
+- Download lane is separate; Gemma4 QAT JANG_4M HF downloads are running under session `41037`.
+- Live proof run: `VMLINUX_BENCH_ISOLATED=1 .venv/bin/python bench/all_local_model_smoke.py --models-root /Users/eric/models/JANGQ-AI --only gemma-4-E2B-it-qat-JANG_4M --max-models 1 --include-tools --include-l2-restart --no-media --port 8921 --load-timeout-s 420 --request-timeout-s 240 --out build/current-all-local-model-smoke-gemma4-e2b-qat-jang4m-tools-nomedia-l2-20260609`.
+- Result: `status=pass`; required tool, tool-result continuation, JSON/code exactness, mixed-SWA prefix hit, block-disk writes, and L2 restart passed. Cache repeat hit showed `cached_tokens=56`, `cache_detail=paged+mixed_swa`.
+- Proof-map update: `build/current-gemma-qat-native-mxfp4-local-inventory-after-source-smoke-map-20260609.json`, `build/current-objective-proof-after-n2-jang1l-memory-refresh-20260609.json`, and `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json` now consume the E2B QAT JANG_4M source smoke.
+- Boundary: E2B source text/tool/cache proof only. It does not clear Gemma media/video, Responses raw SSE tunnel parity, UI/CLI parity, installed-app parity, package/signing/notarization, or E4B/12B/26B/31B QAT JANG_4M rows.
