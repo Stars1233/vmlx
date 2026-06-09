@@ -623,3 +623,11 @@ Classification:
 - Artifact: `build/current-all-local-model-smoke-gemma4-e4b-qat-mxfp4-tools-image-after-native-mxfp-scale-preserve-20260609/JANGQ_gemma-4-E4B-it-qat-MXFP4/result.json`, `status=probe_failed`, one failure.
 - Positive boundary: E4B loads and serves; no PLE dequant load failure and no runtime `quantized_matmul` failure. Server log records packed Gemma4 PLE preservation for `embed_tokens_per_layer` and `per_layer_model_projection` with `mode=mxfp4`, `bits=4`, `gs=32`.
 - Remaining boundary: same exact tool-result punctuation failure as E2B (`STORED blue-cat` vs expected `STORED blue-cat.`). This is not release clearance, and E4B still needs full API/UI/cache/media/installed-app proof.
+
+## 2026-06-09 Gemma4 MoE MXFP expert split and 26B memory boundary
+
+- Reduced source blocker: Gemma4 A4B QAT/native MXFP4 MoE expert tensors can be stored as fused packed `experts.gate_up_proj` and `experts.down_proj`, while the runtime expects `experts.switch_glu.{gate,up,down}_proj.weight`.
+- Source fix: loader now dequantizes native-MXFP fused expert tensors and maps them to SwitchGLU float weights before load, instead of leaving packed keys that `strict=False` could ignore.
+- No-heavy proof: `build/current-model-artifact-format-contract-after-gemma4-moe-mxfp-expert-split-20260609.json`, `status=pass`, `missing_markers=[]`, `model_artifact_format_pytest rc=0 passed=177 deselected=192`.
+- Live 26B boundary: `build/current-all-local-model-smoke-gemma4-26b-a4b-qat-mxfp4-tools-image-after-moe-mxfp-expert-split-20260609/JANGQ_gemma-4-26B-A4B-it-qat-MXFP4/result.json`, `status=probe_failed`, `failures=24`. The model loaded, but the first text prefill terminated with Metal OOM (`Command buffer execution failed: Insufficient Memory`) after a tight-memory allocator drain at about `53.8GB` active baseline.
+- Remaining boundary: 26B remains open for memory-safe live proof; this run does not clear text/tool/cache/media/UI/installed-app rows.
