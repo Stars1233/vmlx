@@ -1,3 +1,29 @@
+# 2026-06-09 - N2 JANG_1L careful-RAM preflight and blocker ledger refresh
+
+- Stayed in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, no Max2/adlab/transport lane.
+- Reduced blocker class: `runtime/kernel` + `cache/storage` proof scheduling for N2 Pro JANG_1L.
+- User boundary recorded: JANG_1L should fit with careful RAM discipline; treat this as a careful live-proof scheduling problem, not permanent infeasibility. Do not run source-vs-quant or extra-heavy comparisons unless Eric explicitly allows.
+- Observed runtime fact from current status: conservative N2 JANG_1L launch on port `8899` reached server startup and then aborted with Metal OOM after `Wired limit set to 115 GB (model 119 GB)`.
+- Source/proof-harness fixes landed in current tip `8caefd24` (`Tighten N2 JANG1L memory proof gate`):
+  - `tests/cross_matrix/run_n2_jang1l_memory_preflight.py` now uses `DEFAULT_REQUIRED_EXTRA_HEADROOM_GIB = 8.0` and labels the threshold as Metal/runtime headroom.
+  - `tests/cross_matrix/run_n2_chat_cache_gate.py` now returns a structured `status=fail` artifact on early server exit/startup abort instead of losing OOM evidence.
+- Refreshed artifact: `build/current-n2-pro-jang1l-local-memory-preflight-20260609.json`, `status=open`, `decision=do_not_launch`, `indexed_payload_gib=110.57`, `available_gib=114.64`, `required_available_gib=118.57`, `required_extra_headroom_gib=8.0`, `memory_gap_gib=3.93`.
+- Validation passed:
+  - `.venv/bin/python -m pytest -q tests/test_n2_jang1l_memory_preflight.py tests/test_n2_chat_cache_gate.py tests/test_objective_proof_digest.py::test_objective_proof_digest_tracks_n2_pro_397b_release_blocker tests/test_current_regression_suite.py::test_current_regression_suite_hashes_focused_pytest_gate_sources` -> `18 passed`.
+  - `py_compile` passed for changed N2 runner/test/objective files.
+  - `git diff --check` passed for changed N2 runner/test/objective files.
+- Current release blocker ledger kept active:
+  1. Responses streaming tool args: still need same-model raw SSE local vs gateway vs tunnel comparison with reasoning events; do not fix by disabling reasoning. Current source/no-heavy path preserves argument deltas/done and rejects empty required XML args, but tunnel same-model proof remains open.
+  2. MiniMax random Chinese / visible planning: not cleared; no sampling clamp or fake sentinel. Isolate cache-on/off, TQ KV vs none, L2 vs no L2, parser/template boundary, and model-owned generation config.
+  3. MiMo V2.5: JANGTQ2 speed/cache partial; JANG_2L plus exact tool/JSON/loop/VL/audio/video/UI proof remain open; no source-vs-quant if RAM-blocked unless Eric explicitly allows.
+  4. N2 / Qwen-family JANG/JANGTQ: needs memory-safe live tool/reasoning/parser/cache proof, especially `gdn_sink`, MTP, hybrid cache, args streaming, and parser-leak rows.
+  5. DSV4: memory-unit harness fixes landed; still needs live default-cache tool-loop proof above memory gate using native SWA/CSA/HCA cache, not generic fake KV.
+  6. Gemma 4 / QAT native MXFP4: source startup/smokes exist, but full MXFP4/MXFP8/JANG_4M/QAT media/cache/UI/tunnel/installed-app matrix remains open, including VLM/image prefill recovery and post-error text recovery.
+  7. Step 3.7: metadata/runtime route matrix improved; do not fake `has_vision=false` as release-wide VLM clearance. Tool dialect loops/raw XML leaks remain to prove per path.
+  8. Structured JSON/XML: repair/validation is app/benchmark hygiene, not a substitute for runtime coherence. Guided/schema decoding only counts if real runtime support exists.
+  9. UI/CLI parity: parser, reasoning, cache, max output/context, generation defaults must match CLI, API, panel settings, and installed app launch.
+  10. Release: package gate/signing/notarization/tag/download remain blocked until runtime/model/UI/cache blockers are actually green or Eric explicitly overrides.
+
 # 2026-06-09 - N2 JANGTQ2 Responses streaming SSE proof
 
 - Scope: Python source server/live N2 JANGTQ2 proof in `/Users/eric/mlx/vllm-mlx`; no release packaging, signing, notarization, tag, download, deprecated `/Users/eric/vmlx`, Max2, ADLab, or Swift work.

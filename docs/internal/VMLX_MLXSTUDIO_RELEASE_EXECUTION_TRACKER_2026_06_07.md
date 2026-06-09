@@ -487,9 +487,9 @@ Classification:
 - API/cache proof: `build/current-noheavy-api-cache-contract-after-mimo-n2-runtime-refresh-20260609.json`, `status=pass`.
 - Cache architecture proof: `build/current-cache-architecture-contract-after-mimo-n2-runtime-refresh-20260609.json`, `status=pass`.
 - Family detection proof: `build/current-model-family-detection-contract-after-mimo-n2-runtime-refresh-20260609.json`, `status=pass`.
-- N2 JANG_1L memory preflight: `build/current-n2-pro-jang1l-local-memory-preflight-20260609.json`, decision `do_not_launch`.
+- N2 JANG_1L memory preflight: `build/current-n2-pro-jang1l-local-memory-preflight-20260609.json`, decision `do_not_launch` with `8.0 GiB` Metal/runtime headroom.
 - Covered by no-heavy contracts: Chat/Responses sampling kwargs, max-output/max-context separation, JSON schema preservation, streaming cache-detail usage, Responses `previous_response_id`, cache stats/reuse endpoints, TurboQuant KV runtime contract, TurboQuant disk roundtrip, hybrid/native cache matrix, parser registration, CLI parser choices, panel launch policy, and JANG/JANGTQ/MXFP row distinctions.
-- JANG_1L live boundary: payload is `118.73GB`; preflight host is `128GB`; free+speculative memory was `94.26GiB`; required extra headroom is `20GiB`. No live load was attempted, and this row remains release-open until tested with sufficient headroom or a smaller runtime strategy.
+- JANG_1L live boundary: payload is `118.73GB` decimal / `110.57GiB`; preflight host is `128GiB`; current available memory is `114.64GiB`; required available memory is `118.57GiB` with `8.0GiB` Metal/runtime headroom. A conservative live attempt reached startup and then aborted with Metal OOM, so the row remains release-open until tested with sufficient headroom or a smaller runtime strategy. This is careful-RAM scheduling, not permanent infeasibility.
 
 ### 2026-06-09 N2 explicit autodetect/startup policy row
 - Source coverage added: Python model registry, MLXStudio panel detector, and no-heavy family detection contract now include `n2_pro_qwen35_moe_hybrid_vl_policy`.
