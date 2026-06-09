@@ -6928,6 +6928,16 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
   - `build/current-all-local-model-smoke-gemma4-12b-qat-mxfp4-fullmedia-tools-l2-after-tool-result-quoted-target-20260609/summary.json` => `status=pass`, `failures=0`.
 - Boundary: no installed-app/UI/tunnel/package/sign/notarize/release claim. 26B/31B, Responses raw SSE parity, MiniMax language/cache issue, MiMo/N2/DSV4 rows, and UI/CLI parity remain open.
 
+## CODEX - 2026-06-09 Gemma4 QAT 26B/31B audio capability gate and source smoke pass
+- Blocker reduced: old Gemma4 26B QAT incoherent multilingual/token-soup report plus 26B/31B stale audio scheduling.
+- Source fix: `_bundle_declares_native_audio()` no longer treats Gemma4 `audio_token_id` as runtime audio support. Native Gemma4 audio now requires `config.audio_config` plus `audio_tower.*` weights. This keeps 26B/31B honest because their local indexes have zero audio tower keys.
+- Capability proof: 26B and 31B `/capabilities` now report `modalities=["text","vision","video"]` and `media.status_by_modality.audio="not_advertised"`.
+- Live proof:
+  - `build/current-all-local-model-smoke-gemma4-26b-qat-mxfp4-tools-l2-after-audio-capability-gate-20260609/summary.json` => `status=pass`, `failed=0`.
+  - `build/current-all-local-model-smoke-gemma4-31b-qat-mxfp4-tools-l2-after-audio-capability-gate-20260609/summary.json` => `status=pass`, `failed=0`.
+- Cleared source surfaces: text coherency, reasoning-on visible final, multi-turn recall, required tool call, tool-result continuation, structured JSON, exact code whitespace, image, video, post-media text recovery, and block-disk L2 restart path.
+- Boundary: no installed-app/UI/tunnel/package/sign/notarize/release claim. Responses raw SSE parity, MiniMax language/cache isolation, MiMo/N2/DSV4 rows, and UI/CLI parity remain open.
+
 ## CODEX - 2026-06-09 Responses raw SSE parity strict expected-args gate
 - Blocker reduced: #190/#192 Responses direct/gateway/tunnel raw SSE proof quality.
 - Source fix: `tests/cross_matrix/run_responses_raw_sse_parity_contract.py` now supports expected function name, expected authoritative arguments, parse-clean checks, and `--require-reasoning-events`.
