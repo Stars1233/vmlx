@@ -1,6 +1,6 @@
 {
   "boundary": "No-heavy checklist only. A pass here would mean current evidence claims every listed gate is green; it still must be backed by the live artifacts referenced by each row. Open rows are release blockers.",
-  "created_at": "2026-06-09T16:06:47-0700",
+  "created_at": "2026-06-09T16:16:08-0700",
   "failed": [
     {
       "detail": false,
@@ -4342,6 +4342,30 @@
         },
         "evidence": "build/current-issue179-minimax-k-root-cause-audit-after-parser-settings-parity-20260608.json",
         "name": "issue179_reporter_prompt_reproduction_or_log_proof",
+        "ok": true
+      },
+      {
+        "detail": {
+          "checks": {
+            "block_disk_l2_restart_restore": true,
+            "cache_second_hit_tq": true,
+            "exact_code_whitespace": true,
+            "model_family_minimax": true,
+            "native_cache_reports_tq_l2": true,
+            "reasoning_parser_minimax_m2": true,
+            "reasoning_separated": true,
+            "required_tool_call_parsed": true,
+            "status_pass": true,
+            "structured_json_exact": true,
+            "tool_parser_minimax": true,
+            "tool_result_continuation_exact": true
+          },
+          "path": "build/current-all-local-model-smoke-minimax-small-jangtq-cache-language-after-bare-invoke-tool-20260609/summary.json",
+          "release_boundary": "Current-source MiniMax Small JANGTQ proof only. This validates the parser/cache/L2 path used by source smokes, but it does not prove reporter MiniMax-K artifact/session parity or close #179.",
+          "status": "pass"
+        },
+        "evidence": "build/current-issue179-minimax-k-root-cause-audit-after-parser-settings-parity-20260608.json",
+        "name": "issue179_current_source_minimax_small_smoke",
         "ok": true
       }
     ],

@@ -7759,6 +7759,15 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Proof-map update: QAT JANG_4M source-smoke open rows are now only `gemma4_12b_qat_jang4m`, blocked by visible `<audio|>` leak. E2B/E4B/26B/31B source no-media smokes are present and pass.
 - Boundary: source no-media 31B proof only. Media/Responses/UI/installed-app/release remain open.
 
+# 2026-06-09 - MiniMax #179 current-source smoke audit boundary
+
+- Source/proof-map fix: `tests/cross_matrix/run_issue179_minimax_k_root_cause_audit.py` now consumes `build/current-all-local-model-smoke-minimax-small-jangtq-cache-language-after-bare-invoke-tool-20260609/summary.json` as current-source MiniMax Small evidence.
+- Recorded green source checks: MiniMax family detection, `minimax` tool parser, `minimax_m2` reasoning parser, reasoning separation, required `record_fact({"value":"blue-cat"})`, exact tool-result continuation, exact JSON/code rows, `paged+tq` second-hit cache, `paged+disk+tq` fresh-process L2 restart restore, and native TurboQuant/L2 cache capability.
+- Refreshed audit: `build/current-issue179-minimax-k-root-cause-audit-after-parser-settings-parity-20260608.json`, `status=open`; the `language_planning_leak_isolation` matrix now lists the current-source MiniMax Small evidence while preserving reporter-machine blockers.
+- Refreshed checklist: `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json`, `status=open`, `failed_count=73`; new row `issue179_current_source_minimax_small_smoke=true`.
+- Remaining #179 blockers: reporter parity artifact missing, reporter server hash drift, reporter generation-config/sampling parity, reporter session/log/cancel lifecycle, and same-prompt reporter-machine raw SSE/visible/reasoning capture.
+- Validation passed: `tests/test_issue179_minimax_k_root_cause_audit.py` + `tests/test_full_release_objective_checklist.py` passed `37/37`; `py_compile` passed. No release, package, sign, notarize, tag, or download action.
+
 # 2026-06-09 - Gemma4 12B QAT JANG_4M tool sentinel source fix
 
 - Source fix: final Chat/Responses assembly now drops exact singleton Gemma modality sentinels from visible content only when valid structured tool calls are present. Covered sentinels are `<audio|>`, `<|audio|>`, image variants, and video variants; real prose around a tool call and no-tool outputs remain visible.

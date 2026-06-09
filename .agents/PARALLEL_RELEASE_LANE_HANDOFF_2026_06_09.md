@@ -31,8 +31,10 @@ that path in the current turn.
   only when available RAM is at or above the preflight requirement or a real
   smaller-runtime strategy exists.
 - DSV4 still needs memory-gated default-cache tool-loop proof.
-- MiniMax Chinese/planning leak still needs cache/TQ KV/L2/parser/template and
-  generation-config isolation.
+- MiniMax current-source Small JANGTQ tool/reasoning/cache/L2/TQ smoke is now
+  audit-consumed and green, but #179 remains open for reporter K artifact,
+  reporter generation-config/sampling, reporter bundle hash drift, and
+  reporter-machine same-prompt raw SSE/visible/reasoning capture.
 - No package, sign, notarize, tag, appcast, or public download update until
   runtime/model/UI/cache blockers are green or Eric explicitly overrides.
 
@@ -56,6 +58,10 @@ that path in the current turn.
    runtime truth separate from preserved-but-unwired media weights.
 5. Recheck N2 `JANG_1L` memory preflight before any launch. If still below the
    guard, update status with the skip artifact rather than forcing a load.
+6. For MiniMax #179, do not rerun the already-green MiniMax Small source smoke
+   unless source changes. Best help is reporter-machine K parity: model file
+   manifest/hash, rendered prompt/template flags, resolved sampling kwargs, raw
+   SSE visible/reasoning capture, and cancel lifecycle for the same response id.
 
 ## Current Dirty Files To Avoid Unless Owning That Lane
 
