@@ -573,3 +573,10 @@
 - refreshed proof: `build/current-gemma-qat-native-mxfp4-local-inventory-after-source-smoke-map-20260609.json`, `status=open`, `missing_required_rows=[]`, `source_live_smoke_open_rows=[]`, and `gemma4_{12b,26b,31v_or_31b}_video_runtime_source_proven=true`.
 - checklist: `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json`, `status=open`, `failed_count=120`; the three Gemma video-runtime subrows moved green, but `gemma_qat_native_mxfp4_all_live_proofs_present` remains red.
 - boundary: current-source video smoke proof only. This does not clear installed-app/UI/tunnel parity, full Responses stream/tool-argument proof, broader API/cache release proof, package, signing, notarization, tag, or downloads.
+
+## CODEX - 2026-06-09 MiMo cache-vs-no-cache classifier consumption
+- blocker reduced: MiMo no-source exactness classifier proof-map accuracy for cache/KV/L2 exclusion.
+- source/proof-map fix: `tests/cross_matrix/run_mimo_v2_no_source_exactness_classifier.py` now consumes `build/current-mimo-v2-jangtq2-cache-vs-nocache-next-token-logprobs-after-unit-label-20260609.json`. It only excludes cache/KV/L2 as primary when no-cache, warm-store, and cache-hit modes are HTTP 200, top-10 logprobs match, cache-hit tokens are present, and cache detail is paged.
+- refreshed classifier: `build/current-mimo-v2-no-source-exactness-classifier-after-lossless-token-trace-20260609.json`, `status=open`, `classification=jangtq2_plain_literal_copy_fails_before_parser_or_json_repair`, `excluded_surfaces.prefix_paged_l2_or_kv_quant_primary_cause=true`.
+- checklist: `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json`, `status=open`, `failed_count=119`; `mimo_no_source_classifier_excludes_parser_cache_sampling` moved green.
+- boundary: MiMo remains release-open. Do not chase parser/cache/L2/sampling as primary for the current JANGTQ2 literal exactness failure without new contrary logits; remaining action is artifact/logit diagnosis, corrected quantization contract, or runtime decode proof.

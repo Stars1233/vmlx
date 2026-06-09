@@ -7584,3 +7584,13 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Refreshed objective/checklist: `build/current-objective-proof-after-n2-jangtq2-l2-live-proof-20260609.json` remains open; `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json` remains `status=open`, `failed_count=120`.
 - Validation: Gemma inventory/checklist/objective focused tests passed `11/11`; `py_compile` passed.
 - Boundary: this is current-source proof consumption only. Gemma QAT/native still needs installed-app/UI/tunnel parity, full Responses stream/tool args, broader API/cache release proof, and package parity before release clearance.
+
+# 2026-06-09 - MiMo cache-vs-no-cache classifier consumption
+
+- Reduced blocker: MiMo no-source exactness classifier and checklist proof-map accuracy.
+- Root cause: the classifier did not consume the current live cache-vs-no-cache logprob artifact, so `prefix_paged_l2_or_kv_quant_primary_cause` stayed false even though the live proof showed no-cache, warm-store, and paged-hit top-10 distributions match.
+- Source/proof-map fix: `tests/cross_matrix/run_mimo_v2_no_source_exactness_classifier.py` now loads `build/current-mimo-v2-jangtq2-cache-vs-nocache-next-token-logprobs-after-unit-label-20260609.json` and sets the cache/KV/L2 exclusion only when all three modes are HTTP 200, `top10_match=true`, `cache_hit_cached_tokens>0`, and `cache_hit_cache_detail` starts with `paged`.
+- Refreshed classifier: `build/current-mimo-v2-no-source-exactness-classifier-after-lossless-token-trace-20260609.json`, `status=open`, `excluded_surfaces.prefix_paged_l2_or_kv_quant_primary_cause=true`.
+- Refreshed checklist: `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json`, `status=open`, `failed_count=119`; `mimo_no_source_classifier_excludes_parser_cache_sampling` is green.
+- Validation: focused classifier regression passed; broader focused verification passed; `py_compile` and `git diff --check` passed.
+- Boundary: no MiMo release clearance. Current JANGTQ2 still fails literal exactness before parser/JSON repair; remaining work is artifact/logit diagnosis, corrected quantization contract, or runtime decode proof, plus media/L2/UI rows.

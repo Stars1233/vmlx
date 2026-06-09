@@ -1,6 +1,6 @@
 {
   "boundary": "No-heavy checklist only. A pass here would mean current evidence claims every listed gate is green; it still must be backed by the live artifacts referenced by each row. Open rows are release blockers.",
-  "created_at": "2026-06-09T14:28:17-0700",
+  "created_at": "2026-06-09T14:33:38-0700",
   "failed": [
     {
       "detail": false,
@@ -325,25 +325,6 @@
     {
       "evidence": "build/current-mimo-v2-jang2l-current-audit-after-cache-vs-nocache-logprobs-20260609.json",
       "name": "mimo_mimo_media_wired",
-      "ok": false
-    },
-    {
-      "detail": {
-        "api_cache_responses_plumbing": true,
-        "api_sampler_non_top1_selection": false,
-        "chat_template_only_primary_cause": false,
-        "continuous_batching_primary_cause": false,
-        "decode_speed_target": false,
-        "hidden_stochastic_sampling_primary_cause": true,
-        "parser_argument_rewrite": true,
-        "prefix_cache_primary_cause": false,
-        "prefix_paged_l2_or_kv_quant_primary_cause": false,
-        "prompt_template_literal_corruption": false,
-        "tokenizer_roundtrip_primary_cause": false,
-        "tool_protocol_structure": true
-      },
-      "evidence": "build/current-mimo-v2-no-source-exactness-classifier-after-lossless-token-trace-20260609.json",
-      "name": "mimo_no_source_classifier_excludes_parser_cache_sampling",
       "ok": false
     },
     {
@@ -1049,7 +1030,7 @@
       "ok": false
     }
   ],
-  "failed_count": 120,
+  "failed_count": 119,
   "groups": {
     "api_cache_responses_contract": [
       {
@@ -2695,14 +2676,14 @@
           "hidden_stochastic_sampling_primary_cause": true,
           "parser_argument_rewrite": true,
           "prefix_cache_primary_cause": false,
-          "prefix_paged_l2_or_kv_quant_primary_cause": false,
+          "prefix_paged_l2_or_kv_quant_primary_cause": true,
           "prompt_template_literal_corruption": false,
           "tokenizer_roundtrip_primary_cause": false,
           "tool_protocol_structure": true
         },
         "evidence": "build/current-mimo-v2-no-source-exactness-classifier-after-lossless-token-trace-20260609.json",
         "name": "mimo_no_source_classifier_excludes_parser_cache_sampling",
-        "ok": false
+        "ok": true
       },
       {
         "detail": {
