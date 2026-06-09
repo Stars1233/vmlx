@@ -64,6 +64,12 @@ that path in the current turn.
   verify with `panel/scripts/verify-release-dmgs.sh`. Only redo the documented
   unlock plus `codesign` partition-list sequence if a fresh signing/notary probe
   regresses.
+- Current official DMG build attempt:
+  `VMLINUX_PREPACKAGE_READY_MANIFEST_OUT=build/current-release-regression-manifest-pre-dmg-release-build-after-keychain-unlock-20260609.json panel/scripts/build-release-dmgs.sh sequoia`
+  stopped at `--require-prepackage-ready` before packaging. The manifest reports
+  `status=fail`, `prepackage_ready=false`, `release_ready=false`, while
+  `packaged_app_developer_id_signing=true`. Treat the next blocker as release
+  proof scope/model/API/UI rows, not signing access.
 
 ## Best Parallel Work Items
 

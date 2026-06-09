@@ -7820,3 +7820,12 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Source fix: `tests/cross_matrix/run_signed_checkpoint_dmg_audit.py` now emits conditional `required_next_steps`, so green signing/notary access no longer tells the next agent to redo keychain repair.
 - Regenerated `build/current-signed-checkpoint-dmg-readiness-20260609.json`: `status=open`, `existing_dmgs_signed_and_stapled=true`, `fresh_signing_probe=pass`, `notarization=pass`, required next steps `rebuild_current_source_dmg_flavors` and `notarize_staple_and_verify_current_dmgs`.
 - Boundary: no current-source DMG was rebuilt in this entry, and no tag/upload/appcast/public release was performed. The next release action is current-source DMG build, notarize, staple, and verify after the checkpoint scope is explicit.
+
+# 2026-06-09 - Official DMG build gate after keychain unlock
+
+- Ran the official DMG build entrypoint for Sequoia with
+  `VMLINUX_PREPACKAGE_READY_MANIFEST_OUT=build/current-release-regression-manifest-pre-dmg-release-build-after-keychain-unlock-20260609.json panel/scripts/build-release-dmgs.sh sequoia`.
+- Result: the script stopped at `--require-prepackage-ready` before building a DMG. Artifact `build/current-release-regression-manifest-pre-dmg-release-build-after-keychain-unlock-20260609.json` reports `status=fail`, `prepackage_ready=false`, `release_ready=false`.
+- Important narrowing: `current_proof_sweep.component_ok.packaged_app_developer_id_signing=true`, so the current DMG build stop is not Apple signing/keychain/notary access.
+- Current prepackage blockers include MiMo JANG_2L runtime quality, MiniMax #179 reporter parity/root cause, Gemma26 installed-app memory stress, real UI matrix rows, N2 JANG_1L runtime/cache/API/UI, Responses raw-SSE parity, and DSV4 memory-safe live proof.
+- Boundary: no DMG was produced, no notarization/stapling was run, and no tag/upload/appcast/public release happened.
