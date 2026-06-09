@@ -609,3 +609,10 @@ Classification:
 - No-heavy proof: `build/current-model-artifact-format-contract-after-gemma4-qat-mxfp4-ple-preserve-20260609.json`, `status=pass`, `missing_markers=[]`, `model_artifact_format_pytest rc=0 passed=175 deselected=192`.
 - Live E2B proof boundary: `build/current-all-local-model-smoke-gemma4-e2b-qat-mxfp4-tools-image-after-quantized-ple-preserve-20260609/JANGQ_gemma-4-E2B-it-qat-MXFP4/result.json` loads and serves with the PLE runtime crash gone. The run is still `probe_failed` with one remaining exactness failure: `tool_result_continuation` returned `STORED blue-cat` while the harness expected `STORED blue-cat.`.
 - Remaining Gemma QAT/native release rows: E2B exact tool-result punctuation; E4B/12B/26B/31B live runtime rows; full Responses streaming/tool-argument rows; mixed-SWA/paged/L2 cache proof; advertised media or honest modality gates; CLI/UI/installed-app parity. No release/signing/notarization/download action was taken.
+
+## 2026-06-09 native MXFP post-load scale guard
+
+- Reduced blocker: native MXFP4/MXFP8 quantized modules with `uint8` scales could still be reinterpreted by the generic post-load affine bit/group-size heuristic.
+- Source fix: `_fix_quantized_bits()` now detects `uint8` MXFP scales on quantized modules, sets `mode=mxfp4` or `mode=mxfp8` from the packed/scales shape relationship, forces `group_size=32`, and removes affine biases before continuing.
+- No-heavy proof: `build/current-model-artifact-format-contract-after-native-mxfp-scale-preserve-20260609.json`, `status=pass`, `missing_markers=[]`, `model_artifact_format_pytest rc=0 passed=176 deselected=192`.
+- Boundary: this is source/proof-map hardening only. Gemma QAT/native live rows remain open as listed above; no release/signing/notarization/download action was taken.

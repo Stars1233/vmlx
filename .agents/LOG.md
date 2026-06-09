@@ -6821,3 +6821,10 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Proof artifact: `build/current-model-artifact-format-contract-after-gemma4-qat-mxfp4-ple-preserve-20260609.json`, `status=pass`, `missing_markers=[]`, `model_artifact_format_pytest rc=0 passed=175 deselected=192`.
 - Live E2B rerun: `build/current-all-local-model-smoke-gemma4-e2b-qat-mxfp4-tools-image-after-quantized-ple-preserve-20260609/JANGQ_gemma-4-E2B-it-qat-MXFP4/result.json` now loads and serves; text cache, multiturn, reasoning, required tool, JSON/code, and image probes run HTTP 200. Remaining single failure is `tool_result_continuation` exact expected summary: model returned `STORED blue-cat` while harness expected `STORED blue-cat.`.
 - Boundary: no installed-app/UI proof, no E4B/12B/26B/31B live proof, no release/sign/notarize/package action. Gemma QAT rows remain open until the remaining exactness row plus full API/UI/cache/media/installed-app surfaces are green or honestly scoped.
+
+## CODEX - 2026-06-09 native MXFP post-load scale guard
+- Continued from a concurrent loader edit without reverting it.
+- Source fix: `_fix_quantized_bits()` now treats `uint8` scales on quantized modules as native MXFP scale metadata and sets `mode=mxfp4/mxfp8`, `bits`, and `group_size=32` before the affine shape heuristic can reinterpret the module.
+- Regression added: `test_native_mxfp_uint8_scales_select_mxfp_kernel`; model-artifact-format contract now requires this marker.
+- Proof artifact: `build/current-model-artifact-format-contract-after-native-mxfp-scale-preserve-20260609.json`, `status=pass`, `missing_markers=[]`, `model_artifact_format_pytest rc=0 passed=176 deselected=192`.
+- Boundary: source/no-heavy guard only. No new Gemma live row was cleared beyond the E2B partial smoke above; no release/sign/notarize/package action.
