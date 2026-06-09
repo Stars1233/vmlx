@@ -382,3 +382,55 @@ Focused validation passed:
 | Objective proof digest | `build/current-objective-proof-after-mimo-safe-headroom-contract-refresh-20260608.json` | Cache architecture, generation defaults/Native MTP/VL media, current-source API/cache, and real UI unblocked non-MiMo rows are now PASS. Release remains OPEN on live/model-quality rows. |
 
 Remaining release blockers: cross-family live multi-turn smoke, MiMo V2.5 JANG_2L runtime/tool/long-prompt quality, MiniMax-M2.7-JANGTQ_K reporter parity, real Electron UI full cross-family matrix, and DSV4 long-output/code/file-generation quality. No signing/notarization/tag/download update from this proof.
+
+## 2026-06-09 MiMo/N2 runtime-cache-parser refresh
+
+Scope: active Python/Electron worktree only. No deprecated `/Users/eric/vmlx`, ADLab, Max2, Swift, source-vs-quant, or heavy model launch.
+
+Artifacts refreshed:
+
+- `build/current-noheavy-api-cache-contract-after-mimo-n2-runtime-refresh-20260609.json` - status `pass`.
+- `build/current-cache-architecture-contract-after-mimo-n2-runtime-refresh-20260609.json` - status `pass`.
+- `build/current-model-family-detection-contract-after-mimo-n2-runtime-refresh-20260609.json` - status `pass`.
+- `build/current-n2-pro-jang1l-local-memory-preflight-20260609.json` - decision `do_not_launch`; indexed payload `118.73GB`, free+speculative memory `94.26GiB`.
+- `docs/internal/release-gates/20260608_190041/SUMMARY.md` - skip-app release gate: package/type/bundled import checks pass; objective digest remains fail.
+
+Current classification:
+
+- Built/plumbed: prefix/paged/block-L2 API contracts, hybrid SSM companion cache contracts, generic TurboQuant skip for hybrid SSM, MiMo asymmetric SWA cache status, model-family detection, panel session launch wiring, parser/reasoning CLI startup surfaces, bundled JANGTQ kernels, and MiMo registration.
+- N2 JANGTQ2: narrow local proof remains green for text/tool/Responses/cache/small-image and the later clean repeat-image row is pass.
+- N2 JANG_1L: not locally proven; blocked by memory preflight, not cleared.
+- MiMo JANGTQ_2: runtime/cache/speed path is active but exact literal and tool-argument fidelity fails; not cleared.
+- MiMo JANG_2L: not release-cleared; exactness/media/L2 restart rows remain open or missing.
+
+Release boundary: do not sign, notarize, tag, or update downloads from this state. The blocker is no longer missing no-heavy plumbing; it is live model/output/resource/UI proof.
+
+MiMo exactness refinement:
+
+- Existing live proof separates into two blockers.
+- No-cache deterministic rows already normalize or mutate literals (`BLUE-CAT` -> `BLUE CAT`, `CERULEAN-472` -> `CERULEAN472`), so this portion is not a detokenizer/parser/cache-only bug.
+- The repeated cache row changes from `MIMO-CUTER-17` to `MIMO-CUTR-17` with `cached_tokens=31`, `cache_detail=paged`, and `temperature=0`; this is a live MiMo mixed-SWA paged-cache semantic-fidelity blocker.
+- Do not clear MiMo cache from shape/unit tests alone. Next proof needs live no-cache vs paged-hit token trace or a cache-disabled A/B on the same exact prompt to isolate runtime cache from artifact/logit quality.
+
+## 2026-06-09 MiMo lossless auto-cache policy
+
+Change:
+
+- `vmlx_engine/cli.py`: omitted `--kv-cache-quantization` now resolves MiMo V2 asymmetric mixed-SWA to stored-cache `none` instead of q4/q8. Prefix cache, paged cache, and block-disk L2 remain enabled; only lossy storage-boundary quantization is removed from the default path.
+- `vmlx_engine/mllm_scheduler.py`: defensive guard disables auto q4/q8 stored-cache quantization for mixed-SWA VLM caches when callers bypass CLI detection.
+- `tests/test_turboquant_cache_contract.py`: added MiMo regression while keeping Qwen3.5/N2 hybrid selective live TQ plus stored q4 behavior covered.
+
+Proof:
+
+- Focused pytest passed: MiMo auto lossless row, Qwen3.5 hybrid stored q4 row, and plain Qwen MoE auto-TQ row.
+- `build/current-noheavy-api-cache-contract-after-mimo-lossless-auto-kv-20260609.json` - `pass`.
+- `build/current-cache-architecture-contract-after-mimo-lossless-auto-kv-20260609.json` - `pass`.
+- `build/current-model-family-detection-contract-after-mimo-lossless-auto-kv-20260609.json` - `pass`.
+- Bundled Python rebuilt from current source and `panel/npm run verify-bundled` passed.
+- `docs/internal/release-gates/20260608_190852/SUMMARY.md` - package/type/bundled import checks pass; objective digest remains fail.
+
+Boundary:
+
+- This fixes the unsafe default policy that allowed lossy q4/q8 stored cache on MiMo mixed-SWA without semantic parity proof.
+- This does not yet clear MiMo release. A live repeat-cache exactness run under the new lossless default is still required.
+- Explicit MiMo q4/q8 stored-cache quantization remains diagnostic-only until family-specific semantic parity is proven.
