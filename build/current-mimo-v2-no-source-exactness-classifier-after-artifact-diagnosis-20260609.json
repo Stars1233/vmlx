@@ -1,0 +1,413 @@
+{
+  "audit_artifact": "build/current-mimo-v2-jang2l-current-audit-after-cache-vs-nocache-logprobs-20260609.json",
+  "classification": "jangtq2_plain_literal_copy_fails_before_parser_or_json_repair",
+  "exactness_failures": [
+    {
+      "actual": {
+        "value": "blue-1"
+      },
+      "content_head": "",
+      "expected": {
+        "value": "blue-cat"
+      },
+      "label": "tool_required",
+      "reason": "expected_tool_argument_missing",
+      "reasoning_chars": 0
+    },
+    {
+      "actual": {
+        "value": "B7CAT-09"
+      },
+      "content_head": "",
+      "expected": {
+        "value": "B7-CAT-09"
+      },
+      "label": "mimo_tool_required_sentinel",
+      "reason": "expected_tool_argument_missing",
+      "reasoning_chars": 0
+    },
+    {
+      "actual": {
+        "count": 3,
+        "status": "ok",
+        "value": "bluecat"
+      },
+      "content_head": "{\"status\":\"ok\",\"value\":\"bluecat\",\"count\":3}",
+      "expected": {
+        "count": 3,
+        "status": "ok",
+        "value": "blue-cat"
+      },
+      "label": "structured_json_exact",
+      "reason": "json_exact_object_mismatch",
+      "reasoning_chars": 0
+    },
+    {
+      "actual": {
+        "count": 3,
+        "status": "ok",
+        "value": "B7CCAT-09"
+      },
+      "content_head": "{\"status\":\"ok\",\"value\":\"B7CCAT-09\",\"count\":3}",
+      "expected": {
+        "count": 3,
+        "status": "ok",
+        "value": "B7-CAT-09"
+      },
+      "label": "mimo_structured_json_sentinel",
+      "reason": "json_exact_object_mismatch",
+      "reasoning_chars": 0
+    }
+  ],
+  "excluded_surfaces": {
+    "api_cache_responses_plumbing": true,
+    "api_sampler_non_top1_selection": false,
+    "chat_template_only_primary_cause": false,
+    "continuous_batching_primary_cause": false,
+    "decode_speed_target": false,
+    "hidden_stochastic_sampling_primary_cause": true,
+    "parser_argument_rewrite": true,
+    "prefix_cache_primary_cause": false,
+    "prefix_paged_l2_or_kv_quant_primary_cause": true,
+    "prompt_template_literal_corruption": false,
+    "tokenizer_roundtrip_primary_cause": false,
+    "tool_protocol_structure": true
+  },
+  "jang2l_exactness_artifact": "build/current-mimo-v25-jang2l-exactness-isolation-20260608/result.json",
+  "jang2l_json_sentinel_artifact": "build/current-all-local-model-smoke-mimo-v25-jang2l-live-refresh-20260608/summary.json",
+  "jang2l_json_sentinel_summary": {
+    "empty_output_labels": [],
+    "exact_json_pass": null,
+    "exists": false,
+    "failed_labels": [],
+    "failures": [],
+    "schema_mutation_labels": [],
+    "semantic_mismatch_labels": []
+  },
+  "jang2l_literal_variant_artifact": "build/current-mimo-v25-jang2l-exactness-variant-probe-live-20260608/result.json",
+  "jang2l_literal_variant_summary": {
+    "exists": false,
+    "failed_labels": [],
+    "failures": [],
+    "plain_chat_literal_copy_pass": null,
+    "plain_completion_literal_copy_pass": null,
+    "plain_literal_copy_pass": null,
+    "plain_literal_no_cache_reuse_failed": null,
+    "structured_literal_pass": null,
+    "tool_literal_pass": null
+  },
+  "jangtq2_cache_vs_nocache_artifact": "build/current-mimo-v2-jangtq2-cache-vs-nocache-next-token-logprobs-after-unit-label-20260609.json",
+  "jangtq2_cache_vs_nocache_summary": {
+    "all_modes_http_ok": true,
+    "cache_hit_cache_detail": "paged",
+    "cache_hit_cached_tokens": 31,
+    "exists": true,
+    "modes": [
+      "no_cache_bypass",
+      "cache_warm_store",
+      "cache_hit"
+    ],
+    "status": "pass",
+    "top10_match": true
+  },
+  "jangtq2_conservative_no_cb_no_prefix_artifact": "build/current-mimo-v25-jangtq2-conservative-no-cb-no-prefix-exactness-20260608/summary.json",
+  "jangtq2_conservative_no_cb_no_prefix_summary": {
+    "continuous_batching_disabled": null,
+    "exists": false,
+    "failed_labels": [],
+    "launch": null,
+    "literal_exactness_failed": null,
+    "prefix_cache_disabled": null,
+    "status": null
+  },
+  "jangtq2_current_all_local_artifact": "build/current-all-local-model-smoke-mimo-v25-jangtq2-current-source-textonly-l2-after-capability-fix-20260609/JANGQ_MiMo-V2.5-JANGTQ_2/result.json",
+  "jangtq2_current_all_local_summary": {
+    "cache_l2_transport_green": true,
+    "context_recall_failure_labels": [],
+    "exists": true,
+    "literal_mutation_failures": [
+      {
+        "content": "",
+        "failures": [
+          {
+            "actual": {
+              "value": "blue-1"
+            },
+            "expected": {
+              "value": "blue-cat"
+            },
+            "label": "tool_required",
+            "reason": "expected_tool_argument_missing"
+          }
+        ],
+        "label": "tool_required",
+        "tool_calls": [
+          {
+            "function": {
+              "arguments": "{\"value\": \"blue-1\"}",
+              "name": "record_fact"
+            },
+            "id": "call_69212b0e",
+            "type": "function"
+          }
+        ]
+      },
+      {
+        "content": "",
+        "failures": [
+          {
+            "actual": {
+              "value": "B7CAT-09"
+            },
+            "expected": {
+              "value": "B7-CAT-09"
+            },
+            "label": "mimo_tool_required_sentinel",
+            "reason": "expected_tool_argument_missing"
+          }
+        ],
+        "label": "mimo_tool_required_sentinel",
+        "tool_calls": [
+          {
+            "function": {
+              "arguments": "{\"value\": \"B7CAT-09\"}",
+              "name": "record_fact"
+            },
+            "id": "call_f02bba8d",
+            "type": "function"
+          }
+        ]
+      },
+      {
+        "content": "{\"status\":\"ok\",\"value\":\"bluecat\",\"count\":3}",
+        "failures": [
+          {
+            "actual": {
+              "count": 3,
+              "status": "ok",
+              "value": "bluecat"
+            },
+            "expected": {
+              "count": 3,
+              "status": "ok",
+              "value": "blue-cat"
+            },
+            "label": "structured_json_exact",
+            "reason": "json_exact_object_mismatch"
+          }
+        ],
+        "label": "structured_json_exact",
+        "tool_calls": []
+      },
+      {
+        "content": "{\"status\":\"ok\",\"value\":\"B7CCAT-09\",\"count\":3}",
+        "failures": [
+          {
+            "actual": {
+              "count": 3,
+              "status": "ok",
+              "value": "B7CCAT-09"
+            },
+            "expected": {
+              "count": 3,
+              "status": "ok",
+              "value": "B7-CAT-09"
+            },
+            "label": "mimo_structured_json_sentinel",
+            "reason": "json_exact_object_mismatch"
+          }
+        ],
+        "label": "mimo_structured_json_sentinel",
+        "tool_calls": []
+      }
+    ],
+    "literal_mutation_labels": [
+      "tool_required",
+      "mimo_tool_required_sentinel",
+      "structured_json_exact",
+      "mimo_structured_json_sentinel"
+    ],
+    "media_transport_green": false,
+    "native_storage_quantization_disabled": true,
+    "runtime_kv_quantization_disabled": true,
+    "status": "probe_failed"
+  },
+  "jangtq2_exactness_artifact": "build/current-mimo-v25-jangtq2-exactness-isolation-20260608/result.json",
+  "jangtq2_hyphen_distribution_artifact": "build/current-mimo-v25-jangtq2-exactness-classification-20260608.json",
+  "jangtq2_hyphen_distribution_summary": {
+    "chat_compact_hyphen_fails": null,
+    "classification": null,
+    "completion_compact_hyphen_fails": null,
+    "exists": false,
+    "not_caused_by": [],
+    "spaced_hyphen_preserved": null
+  },
+  "jangtq2_literal_variant_artifact": "build/current-mimo-v25-jangtq2-exactness-variant-probe-live-after-lossless-token-trace-20260609/result.json",
+  "jangtq2_logprob_diagnostic_artifact": "build/current-mimo-v25-jangtq2-logprob-literal-diagnostic-20260608.json",
+  "jangtq2_logprob_summary": {
+    "exists": false,
+    "failed_literal_cases": [],
+    "generated_tokens_are_top1": null,
+    "wrong_literal_outputs_are_top1": null
+  },
+  "jangtq2_no_router_no_switchglu_fastpath_artifact": "build/current-mimo-v25-jangtq2-exactness-no-router-no-switchglu-fastpath-diagnostic-20260608/result.json",
+  "jangtq2_no_switchglu_fastpath_artifact": "build/current-mimo-v25-jangtq2-exactness-no-switchglu-fastpath-diagnostic-20260608/result.json",
+  "jangtq2_template_diagnostic_artifact": "build/current-mimo-v25-jangtq2-tokenizer-template-literal-diagnostic-20260608.json",
+  "jangtq2_template_summary": {
+    "exists": false,
+    "failed_literals": [],
+    "literal_preserved_in_chat_template": null,
+    "literal_preserved_in_raw_prompt": null
+  },
+  "jangtq2_tq_kernel_parity_artifact": "build/current-mimo-v25-jangtq2-tq-kernel-parity-no-source-20260608.json",
+  "literal_variant_summary": {
+    "exists": true,
+    "failed_labels": [
+      "plain_exact_blue_cat",
+      "plain_exact_sentinel",
+      "plain_exact_chat_blue_cat",
+      "plain_exact_chat_sentinel",
+      "json_blue_cat",
+      "json_sentinel",
+      "tool_blue_cat",
+      "tool_sentinel_json_call"
+    ],
+    "failures": [
+      {
+        "content": "blue cat",
+        "expected": "blue-cat",
+        "label": "plain_exact_blue_cat",
+        "parsed": null
+      },
+      {
+        "content": "B7 CAT-09",
+        "expected": "B7-CAT-09",
+        "label": "plain_exact_sentinel",
+        "parsed": null
+      },
+      {
+        "content": "blue grass",
+        "expected": "blue-cat",
+        "label": "plain_exact_chat_blue_cat",
+        "parsed": null
+      },
+      {
+        "content": "B7 CAT-09",
+        "expected": "B7-CAT-09",
+        "label": "plain_exact_chat_sentinel",
+        "parsed": null
+      },
+      {
+        "content": "{\"status\":\"ok\",\"value\":\"blue\",\"count\":3}",
+        "expected": {
+          "count": 3,
+          "status": "ok",
+          "value": "blue-cat"
+        },
+        "label": "json_blue_cat",
+        "parsed": {
+          "count": 3,
+          "status": "ok",
+          "value": "blue"
+        }
+      },
+      {
+        "content": "{\"status\":\"ok\",\"value\":\"B7CAT-09\",\"count\":3}",
+        "expected": {
+          "count": 3,
+          "status": "ok",
+          "value": "B7-CAT-09"
+        },
+        "label": "json_sentinel",
+        "parsed": {
+          "count": 3,
+          "status": "ok",
+          "value": "B7CAT-09"
+        }
+      },
+      {
+        "content": "",
+        "expected": {
+          "value": "blue-cat"
+        },
+        "label": "tool_blue_cat",
+        "parsed": {
+          "value": "blue"
+        }
+      },
+      {
+        "content": "",
+        "expected": {
+          "value": "B7-CAT-09"
+        },
+        "label": "tool_sentinel_json_call",
+        "parsed": {
+          "value": "B7CAT-09"
+        }
+      }
+    ],
+    "plain_chat_literal_copy_pass": false,
+    "plain_completion_literal_copy_pass": false,
+    "plain_literal_copy_pass": false,
+    "plain_literal_no_cache_reuse_failed": true,
+    "status": "open",
+    "structured_literal_pass": false,
+    "tool_literal_pass": false
+  },
+  "model_upload_action_reasons": [
+    "JANGTQ_2 current artifact fails plain, structured JSON, and parsed tool-argument literal exactness before parser or JSON repair; rebuild/reupload with a less lossy literal-safe profile unless source-vs-quant proves a runtime decode bug"
+  ],
+  "model_upload_action_required": true,
+  "no_source_exactness": {
+    "expected_literal": "B7-CAT-09",
+    "jang2l_raw_completion_literal_preserved": false,
+    "jang2l_raw_completion_text": "",
+    "jang2l_tool_arguments": "",
+    "jang2l_tool_call_parsed": false,
+    "jang2l_tool_content_head": "",
+    "jangtq2_raw_completion_literal_preserved": false,
+    "jangtq2_raw_completion_text": "",
+    "jangtq2_tool_arguments": "",
+    "jangtq2_tool_literal_preserved": false
+  },
+  "no_source_runtime_diagnostics": {
+    "jangtq2_compiled_router_primary_cause_excluded": false,
+    "jangtq2_no_router_no_switchglu_fastpath_literal_preserved": null,
+    "jangtq2_no_switchglu_fastpath_literal_preserved": null,
+    "jangtq2_switchglu_fastpath_primary_cause_excluded": false,
+    "jangtq2_tq_gather_kernel_primary_cause_excluded": false,
+    "jangtq2_tq_kernel_parity_passed": null
+  },
+  "release_ready": false,
+  "required_next_evidence": [
+    "do not repair semantic values in parser or JSON repair layer",
+    "either rerun source-vs-quant when RAM is authorized or provide a stronger artifact-only logits/quantization diagnosis",
+    "conservative live JANGTQ_2 proof with continuous batching off and prefix cache disabled still fails literal exactness; do not keep chasing cache/CB as the primary exactness cause without contrary logits evidence",
+    "if artifact/quantization is confirmed, rebuild or reupload MiMo with a corrected quantization contract",
+    "if runtime decode is confirmed, fix the decode/kernel path and rerun the exact tool/JSON sentinel rows",
+    "MiMo media remains unwired until real VL/audio/video runtime and cache proof exist"
+  ],
+  "secondary_classification": null,
+  "smoke_artifact": "build/current-all-local-model-smoke-mimo-v25-jangtq2-current-source-textonly-l2-after-capability-fix-20260609/summary.json",
+  "source_vs_quant_load_performed": false,
+  "source_vs_quant_load_skipped_reason": "user_disallowed_source_vs_quant_due_ram",
+  "status": "open",
+  "unresolved_surfaces": {
+    "artifact_quantization_or_decode_logits_quality": true,
+    "continuous_batching_system_prompt_pressure": false,
+    "jang2l_chat_tool_quality": false,
+    "jang2l_json_sentinel_exactness": false,
+    "jang2l_tool_memory_or_protocol": false,
+    "jangtq2_compact_hyphen_decode_quality": false,
+    "jangtq2_compiled_router": true,
+    "jangtq2_conservative_no_cb_no_prefix_literal_mutation": false,
+    "jangtq2_current_all_local_literal_mutation": true,
+    "jangtq2_plain_literal_copy": true,
+    "jangtq2_raw_decode_or_artifact_quality": false,
+    "jangtq2_switchglu_fastpath": true,
+    "jangtq2_tq_gather_kernel": true,
+    "long_prompt_coherence": false,
+    "mimo_media_runtime": true,
+    "source_vs_quant_first_divergence": true
+  }
+}

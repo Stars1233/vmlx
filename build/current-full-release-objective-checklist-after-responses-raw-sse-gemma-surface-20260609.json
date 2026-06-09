@@ -1,6 +1,6 @@
 {
   "boundary": "No-heavy checklist only. A pass here would mean current evidence claims every listed gate is green; it still must be backed by the live artifacts referenced by each row. Open rows are release blockers.",
-  "created_at": "2026-06-09T14:49:01-0700",
+  "created_at": "2026-06-09T14:56:27-0700",
   "failed": [
     {
       "detail": false,
@@ -2703,13 +2703,13 @@
       },
       {
         "detail": "open",
-        "evidence": "build/current-mimo-v2-no-source-exactness-classifier-after-lossless-token-trace-20260609.json",
+        "evidence": "build/current-mimo-v2-no-source-exactness-classifier-after-artifact-diagnosis-20260609.json",
         "name": "mimo_no_source_exactness_classifier_exists",
         "ok": true
       },
       {
         "detail": "user_disallowed_source_vs_quant_due_ram",
-        "evidence": "build/current-mimo-v2-no-source-exactness-classifier-after-lossless-token-trace-20260609.json",
+        "evidence": "build/current-mimo-v2-no-source-exactness-classifier-after-artifact-diagnosis-20260609.json",
         "name": "mimo_no_source_classifier_no_source_load",
         "ok": true
       },
@@ -2728,7 +2728,7 @@
           "tokenizer_roundtrip_primary_cause": false,
           "tool_protocol_structure": true
         },
-        "evidence": "build/current-mimo-v2-no-source-exactness-classifier-after-lossless-token-trace-20260609.json",
+        "evidence": "build/current-mimo-v2-no-source-exactness-classifier-after-artifact-diagnosis-20260609.json",
         "name": "mimo_no_source_classifier_excludes_parser_cache_sampling",
         "ok": true
       },
@@ -2761,7 +2761,7 @@
             "source_vs_quant_first_divergence": true
           }
         },
-        "evidence": "build/current-mimo-v2-no-source-exactness-classifier-after-lossless-token-trace-20260609.json",
+        "evidence": "build/current-mimo-v2-no-source-exactness-classifier-after-artifact-diagnosis-20260609.json",
         "name": "mimo_no_source_classifier_tracks_exactness_boundary",
         "ok": true
       }

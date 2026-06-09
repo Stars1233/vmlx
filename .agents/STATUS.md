@@ -600,3 +600,10 @@
 - source fix: `vmlx_engine/api/tool_calling.py` now requires at least one `<parameter=...>` entry before accepting Nemotron XML function blocks; valid parameterized XML still parses normally.
 - validation: new generic parser regressions passed, existing Responses streaming guards passed for argument buffering, required-tool empty XML rejection, no `arguments:"{}"` emission, output-index ordering, and reasoning-channel tool args; Nemotron/Step parser coverage passed.
 - boundary: this is a source parser fix/proof only. Same-model deployed direct/gateway/tunnel raw SSE remains open for #190/#192, and no package/sign/notarize/tag/download/release was run.
+
+## CODEX - 2026-06-09 MiMo artifact-diagnosis classifier pointer
+- blocker reduced: MiMo proof-map drift between the active release board and the artifact/logit/quant diagnosis lane.
+- source/proof-map fix: MiMo no-source classifier, current audit, objective digest, checklist, and release-manifest pointers now use `build/current-mimo-v2-no-source-exactness-classifier-after-artifact-diagnosis-20260609.json`.
+- refreshed outputs: `build/current-mimo-v2-jang2l-current-audit-after-cache-vs-nocache-logprobs-20260609.json`, `build/current-objective-proof-after-n2-jang1l-memory-refresh-20260609.json`, and the full checklist. Checklist remains `status=open`, `failed_count=112`.
+- current MiMo finding: `model_upload_action_required=true`; parsed tool structure is valid but literals mutate (`blue-cat`, `B7-CAT-09`, JSON sentinel, tool-result punctuation), so do not chase parser/cache/L2/sampling as primary without contrary logits.
+- boundary: no MiMo release clearance. Remaining work is corrected artifact/quantization contract, runtime decode/logit fix, media proof, speed, UI/installed-app parity, and release packaging only after explicit release action.

@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-09T14:49:01-0700",
+  "created_at": "2026-06-09T14:56:27-0700",
   "requirements": [
     {
       "requirement": "DSV4 Flash prefix/paged/L2 cache is enabled by default from app launch",
@@ -3361,7 +3361,7 @@
       "evidence": [
         "build/current-mimo-jang2l-local-structural-verify-20260606.json",
         "build/current-mimo-v2-jang2l-current-audit-after-cache-vs-nocache-logprobs-20260609.json",
-        "build/current-mimo-v2-no-source-exactness-classifier-after-lossless-token-trace-20260609.json",
+        "build/current-mimo-v2-no-source-exactness-classifier-after-artifact-diagnosis-20260609.json",
         "build/current-mimo-v2-jangtq2-cache-vs-nocache-next-token-logprobs-after-unit-label-20260609.json"
       ],
       "caveat": "MiMo V2.5 JANG_2L has current structural, narrow text/cache, selected-expert parity, exact CB cache/L2 proof, native thinking-off prompt proof, and the current JANGTQ2 packaged decode-speed floor when the audit reports it. Remaining open items: corrected MiMo artifact/upload or runtime decode proof, tool/JSON literal exactness, decode speed, VL/audio/video wiring. Do not release-clear MiMo from short smokes or speed-only proof.",
@@ -3376,13 +3376,13 @@
           "metadata_truth": "build/current-mimo-v25-jang2l-local-metadata-truth-patch-20260606.json",
           "conservative_diagnostic": "build/current-mimo-conservative-diagnostic-20260606/summary.json",
           "nomedia_tool_cache": "build/current-all-local-model-smoke-mimo-v25-jangtq2-live-refresh-20260608/summary.json",
-          "no_source_exactness_classifier": "build/current-mimo-v2-no-source-exactness-classifier-after-lossless-token-trace-20260609.json",
+          "no_source_exactness_classifier": "build/current-mimo-v2-no-source-exactness-classifier-after-artifact-diagnosis-20260609.json",
           "cache_vs_nocache": "build/current-mimo-v2-jangtq2-cache-vs-nocache-next-token-logprobs-after-unit-label-20260609.json"
         },
         "current_evidence_artifacts": {
           "structural_verify": "build/current-mimo-jang2l-local-structural-verify-20260606.json",
           "current_audit": "build/current-mimo-v2-jang2l-current-audit-after-cache-vs-nocache-logprobs-20260609.json",
-          "no_source_exactness_classifier": "build/current-mimo-v2-no-source-exactness-classifier-after-lossless-token-trace-20260609.json",
+          "no_source_exactness_classifier": "build/current-mimo-v2-no-source-exactness-classifier-after-artifact-diagnosis-20260609.json",
           "cache_vs_nocache": "build/current-mimo-v2-jangtq2-cache-vs-nocache-next-token-logprobs-after-unit-label-20260609.json"
         },
         "missing": [],
@@ -3448,7 +3448,7 @@
         "evidence_files_present": {
           "build/current-mimo-jang2l-local-structural-verify-20260606.json": true,
           "build/current-mimo-v2-jang2l-current-audit-after-cache-vs-nocache-logprobs-20260609.json": true,
-          "build/current-mimo-v2-no-source-exactness-classifier-after-lossless-token-trace-20260609.json": true,
+          "build/current-mimo-v2-no-source-exactness-classifier-after-artifact-diagnosis-20260609.json": true,
           "build/current-mimo-v2-jangtq2-cache-vs-nocache-next-token-logprobs-after-unit-label-20260609.json": true
         },
         "missing_evidence": []

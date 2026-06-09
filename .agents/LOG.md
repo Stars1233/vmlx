@@ -7640,3 +7640,12 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Preserved valid behavior: parameterized XML such as `<parameter=cmd>ls /tmp</parameter>` still parses to `{"cmd":"ls /tmp"}`; canonical JSON tool-call dialects remain unaffected.
 - Validation passed: generic parser regressions `2/2`, Responses streaming guards `5/5`, Nemotron/Step parser coverage `19/19`, plus `py_compile`.
 - Boundary: this is source parser behavior only. The same-model deployed direct/gateway/tunnel raw SSE capture for #190/#192 remains required before closing the live issue or clearing release rows. No package, signing, notarization, tag, download, or release step was run.
+
+# 2026-06-09 - MiMo artifact-diagnosis classifier pointer
+
+- Reduced blocker: MiMo release-board drift between the current audit/checklist and the artifact/logit/quant diagnosis lane.
+- Source/proof-map fix: moved active MiMo no-source classifier, current audit, objective digest, checklist, and release-manifest pointers from `build/current-mimo-v2-no-source-exactness-classifier-after-lossless-token-trace-20260609.json` to `build/current-mimo-v2-no-source-exactness-classifier-after-artifact-diagnosis-20260609.json`.
+- Regenerated classifier/audit/objective/checklist through the runners. Current audit uses the artifact-diagnosis classifier, objective digest remains `build/current-objective-proof-after-n2-jang1l-memory-refresh-20260609.json`, and full checklist remains `status=open`, `failed_count=112`.
+- Current MiMo boundary surfaced in checklist: `model_upload_action_required=true`; valid parsed tool/JSON structures still mutate `blue-cat`, `B7-CAT-09`, and the tool-result continuation period. Do not mask this in parser, JSON repair, sampling defaults, cache, or L2.
+- Validation passed: MiMo classifier/audit/objective/checklist focused tests `19/19`, release-manifest pointer test `1/1`, `py_compile`, and `git diff --check`.
+- Boundary: MiMo is not release-cleared. Remaining path is corrected artifact/quantization contract or runtime decode/logit fix, plus media/speed/UI/installed-app proof.
