@@ -1,3 +1,13 @@
+# 2026-06-09 - Gemma4 Unified packaged parity hash coverage
+
+- Stayed in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, no release package/sign/notarize/tag/download work.
+- Reduced blocker class: Gemma4 packaged/bundled runtime parity for `ModuleNotFoundError: No module named 'mlx_vlm.models.gemma4_unified'`.
+- Root cause found: source already resolves `mlx_vlm.models.gemma4_unified` after `import vmlx_engine`, and `panel/scripts/verify-bundled-python.sh` already hash-gates and import-gates the Gemma4 Unified vendored runtime. The stale gap was that installed-app parity and packaged-integrity hash lists did not include `models/gemma4_unified_register.py` or `models/gemma4_unified/*`, so a rebuilt package could miss or stale those files without the parity audits naming the exact drift.
+- Source fix: added Gemma4 Unified register/config/runtime/processor files to `panel/scripts/release-gate-python-app.py`, `tests/cross_matrix/run_installed_app_runtime_parity_audit.py`, and `tests/cross_matrix/run_packaged_integrity_contract.py`.
+- Regression: added assertions in `tests/test_installed_app_runtime_parity_audit.py`, `tests/test_packaged_integrity_contract.py`, and `tests/test_release_gate_python_app.py` so the package/parity gates must keep these Gemma4 Unified files covered.
+- Red/green proof: the focused test set failed before the manifest fix on missing `models/gemma4_unified_register.py`, then passed after the fix (`4 passed`).
+- Boundary: source/package-gate coverage only. It prevents silent omission after rebuild, but does not rebuild the app, does not prove installed-app parity green, and does not clear Gemma media/cache/UI/tunnel release rows.
+
 # 2026-06-09 - Single-active cache max_kv_size hybrid guard
 
 - Stayed in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, no release package/sign/notarize/tag/download work.
