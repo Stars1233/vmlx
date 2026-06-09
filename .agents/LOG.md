@@ -6906,3 +6906,24 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Result: 31B loads and serves; text/cache/tool/image probes run HTTP 200. No loader crash, Metal OOM, or `quantized_matmul` runtime crash reproduced in this narrow row.
 - Remaining failure matches E2B/E4B/12B: `tool_result_continuation` returned `STORED blue-cat` while the harness expected `STORED blue-cat.`.
 - Boundary: 31B remains not release-cleared; this is partial live proof only. No release/sign/notarize/package action.
+
+## CODEX - 2026-06-09 04:58 PDT Gemma4 upstream video processor kwargs patch
+- Blocker reduced: #191/#188 Gemma4 QAT/native MXFP4 `media` loader/processor path.
+- Upstream mapped: `mlx-vlm` PR #1321, where real HF `video_processor` config keys can make Gemma4 processor construction fail before image/video inputs are handled.
+- Local repro: pinned `mlx_vlm.models.gemma4.processing_gemma4.Gemma4VideoProcessor.__init__` has no `**kwargs`; the new regression failed before a vMLX `mlx_vlm_compat` installer existed.
+- Source fix: added `vmlx_engine/runtime_patches/mlx_vlm_compat.py` and bootstrapped it from `runtime_patches/__init__.py`; the patch filters unknown HF video processor keys such as `do_convert_rgb`, `do_sample_frames`, `resample`, and `return_metadata` while preserving accepted Gemma4 video settings.
+- Proof-map fix: `mlx_vlm_compat.py` is included in current-suite, installed-app parity, packaged-integrity, JANG compatibility, release-gate, and bundled-python source-hash boundaries.
+- Verification: `tests/test_mlx_lm_runtime_patches.py` passed `5/5`; focused current-suite/install/release hash guard set passed `10/10`.
+- Latest upstream checked for handoff: `mlx-lm` #1377 is error-message-only; `mlx-lm` #1327 short-prompt think-token clamp needs local tokenizer/server repro; `mlx-vlm` #1332 Qwen3-VL deepstack chunked-prefill alignment and `mlx-vlm` #1328 LFM2.5 VL loading are relevant candidates but must be locally mapped before porting.
+- Boundary: no live Gemma media row, installed-app proof, package, signing, notarization, tag, download, or release claim from this slice.
+
+## CODEX - 2026-06-09 Gemma4 QAT E2B/E4B/12B smoke harness exact-target proof
+- Blocker reduced: Gemma4 QAT/native MXFP4 source live smokes for E2B, E4B, and 12B.
+- Root cause: the tool-result continuation prompt left `STORED blue-cat.` unquoted, so Gemma4 could treat the final dot as sentence punctuation. Direct A/B showed quoted literal targets preserve the period.
+- Source/proof-harness fix: `bench/all_local_model_smoke.py` now quotes the exact target string and explicitly says the final period is part of the literal. `validate_probe_response` still requires `STORED blue-cat.` exactly.
+- Regression: `tests/test_all_local_model_smoke.py::test_tool_result_continuation_payload_quotes_exact_target_sentence`.
+- Live proof:
+  - `build/current-all-local-model-smoke-gemma4-e2b-qat-mxfp4-fullmedia-tools-l2-after-tool-result-quoted-target-20260609/summary.json` => `status=pass`, `failures=0`.
+  - `build/current-all-local-model-smoke-gemma4-e4b-qat-mxfp4-fullmedia-tools-l2-after-tool-result-quoted-target-20260609/summary.json` => `status=pass`, `failures=0`.
+  - `build/current-all-local-model-smoke-gemma4-12b-qat-mxfp4-fullmedia-tools-l2-after-tool-result-quoted-target-20260609/summary.json` => `status=pass`, `failures=0`.
+- Boundary: no installed-app/UI/tunnel/package/sign/notarize/release claim. 26B/31B, Responses raw SSE parity, MiniMax language/cache issue, MiMo/N2/DSV4 rows, and UI/CLI parity remain open.
