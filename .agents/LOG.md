@@ -1,3 +1,25 @@
+# 2026-06-09 - Gemma4 12B JANG4M no-media current proof pointer
+
+- Stayed in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, no package/sign/notarize/tag/download release action.
+- Reduced blocker class: Gemma4 12B JANG_4M source no-media tools/cache/L2 proof freshness.
+- Live command: `VMLINUX_BENCH_ISOLATED=1 .venv/bin/python bench/all_local_model_smoke.py --models-root /Users/eric/models --only gemma-4-12B-it-JANG_4M --max-models 1 --include-tools --include-l2-restart --no-media --no-video --no-audio --port 8876 --load-timeout-s 600 --request-timeout-s 240 --out build/current-all-local-model-smoke-gemma4-12b-jang4m-tools-nomedia-current-20260609`.
+- Fresh artifact: `build/current-all-local-model-smoke-gemma4-12b-jang4m-tools-nomedia-current-20260609/summary.json` is `status=fail`, `failed=1`; result JSON is `build/current-all-local-model-smoke-gemma4-12b-jang4m-tools-nomedia-current-20260609/JANGQ_gemma-4-12B-it-JANG_4M/result.json`.
+- Green in that proof: visible `ACK`, paged+mixed_swa second-hit cache telemetry (`cached_tokens=56`), multiturn recall, reasoning visible finalization, required `record_fact({"value":"blue-cat"})`, tool-result continuation `STORED blue-cat.`, JSON exactness, mixed-SWA prefix/paged/block-L2 active, and block-disk L2 writes.
+- Remaining current blockers: exact code whitespace emits a leading space before `print(add(2, 3))`; native mixed-SWA storage quantization is disabled for safety, so the checklist keeps that row open; media artifact remains missing separately.
+- Refreshed checklist: `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json` remains `status=open`, `failed_count=112` instead of 119.
+- Verification: focused checklist pointer tests passed `2/2`; `py_compile` passed for changed checklist/test files; `git diff --check` passed.
+- Boundary: this is current partial source proof, not Gemma release clearance, installed-app/UI proof, package, signing, notarization, tag, or download.
+
+# 2026-06-09 - Responses raw-SSE local guard split
+
+- Stayed in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, no package/sign/notarize/tag/download release action.
+- Reduced blocker class: Responses/API tool-call streaming proof classification for Qwen/N2/Gemma-family tool reliability.
+- Source/proof fix: `tests/cross_matrix/run_responses_raw_sse_parity_contract.py` now consumes the current no-heavy Responses streaming contract and records local source guard booleans for empty XML fail-closed behavior, output-index ordering, gateway argument passthrough, and stale Responses port rejection.
+- Refreshed artifact: `build/current-responses-raw-sse-parity-direct-gateway-tunnel-gemma4-e2b-after-parser-20260609.json` remains `status=fail`, but `local_responses_streaming_guards_pass=true`, `local_empty_xml_arguments_fail_closed=true`, `local_output_index_ordering_guard=true`, and `gateway_argument_stream_passthrough_guard=true`.
+- Refreshed full checklist: `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json` remains `status=open`, `failed_count=119`; the open Responses rows are now same-model tunnel availability/arguments and missing actual reasoning events, not local `arguments:{}` or duplicate output-index source guards.
+- Verification: focused pytest passed `22/22`; `py_compile` passed for changed Python/test files; `git diff --check` passed.
+- Boundary: this does not clear same-model direct/gateway/tunnel raw-SSE parity, Gemma/N2/MiMo live runtime media/cache/UI rows, installed-app parity, signing, notarization, tag, or download rows.
+
 # 2026-06-09 - Runtime patch package parity coverage
 
 - Stayed in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, no release package/sign/notarize/tag/download work.
@@ -7600,3 +7622,13 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Added explicit tracking note for Gemma 4 QAT `JANG_4M` bundles.
 - Boundary recorded: Gemma4 QAT `JANG_4M` and native `MXFP4` are separate runtime/quantization paths. Do not release-clear one from the other.
 - Required proof remains the full matrix: autodetect, loader/sidecars, generation defaults, parsers, tools, Responses streaming args/content deltas, mixed-SWA/prefix/cache/TurboQuant/L2, media honesty, UI/CLI, and installed-app parity.
+
+# 2026-06-09 - N2 JANG_1L memory proof refresh
+
+- Continued the one-at-a-time N2 JANG_1L slice against `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANG_1L`.
+- Refreshed `build/current-n2-pro-jang1l-local-memory-preflight-20260609.json`: `decision=do_not_launch`, `indexed_payload_gib=110.57`, `required_available_gib=118.57`, `available_gib=111.12`, `memory_gap_gib=7.45`.
+- Ran the intended chat/cache gate with tool, Responses, Responses stream, and L2 restart probes requested. It skipped before server launch and wrote `build/current-n2-jang1l-chat-cache-proof-20260609.json`: `status=skipped`, `reason=n2_jang1l_insufficient_available_memory`, `available_gib=111.25`, `memory_gap_gib=7.32`.
+- Updated objective digest, current regression suite, full checklist, and release manifest pointers to `build/current-objective-proof-after-n2-jang1l-memory-refresh-20260609.json`.
+- Regenerated `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json`: `status=open`, `failed_count=112`.
+- Validation passed: focused objective/checklist/current-suite/release-manifest tests passed `6/6`; `py_compile` and `git diff --check` passed.
+- Boundary: this is a memory-safe skip/proof-map refresh, not N2 JANG_1L runtime clearance. No package, signing, notarization, tag, download, or release step was run.

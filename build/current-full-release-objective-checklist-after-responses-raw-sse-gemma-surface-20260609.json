@@ -1,6 +1,6 @@
 {
   "boundary": "No-heavy checklist only. A pass here would mean current evidence claims every listed gate is green; it still must be backed by the live artifacts referenced by each row. Open rows are release blockers.",
-  "created_at": "2026-06-09T14:45:20-0700",
+  "created_at": "2026-06-09T14:49:01-0700",
   "failed": [
     {
       "detail": false,
@@ -83,7 +83,7 @@
       "detail": {
         "evidence": [
           "build/current-release-regression-manifest-after-pr-intake-matrix-refresh-20260609.json",
-          "build/current-objective-proof-after-n2-jangtq2-l2-live-proof-20260609.json",
+          "build/current-objective-proof-after-n2-jang1l-memory-refresh-20260609.json",
           "build/current-n2-pro-jang1l-local-memory-preflight-20260609.json",
           "build/current-n2-jang1l-chat-cache-proof-20260609.json",
           "build/current-n2-jangtq2-chat-cache-responses-proof-after-responses-parser-20260609.json",
@@ -94,17 +94,17 @@
         ],
         "jang1l_live_gate": {
           "artifact": "build/current-n2-jang1l-chat-cache-proof-20260609.json",
-          "available_gib": 111.61,
+          "available_gib": 111.25,
           "indexed_payload_gib": 110.57,
-          "memory_gap_gib": 6.96,
+          "memory_gap_gib": 7.32,
           "model": "/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANG_1L",
           "reason": "n2_jang1l_insufficient_available_memory",
           "release_boundary": "N2 JANG_1L live proof was not launched because the indexed payload plus Metal/runtime headroom exceeds current available memory. 128 GiB total RAM is not sufficient evidence without current available headroom.",
           "requested_probes": {
-            "l2_restart": false,
-            "responses": false,
-            "responses_stream": false,
-            "tool": false
+            "l2_restart": true,
+            "responses": true,
+            "responses_stream": true,
+            "tool": true
           },
           "required_available_gib": 118.57,
           "required_extra_headroom_gib": 8.0,
@@ -113,14 +113,14 @@
         "local_artifact_probe": {
           "artifact_present": true,
           "artifact_profile": "JANG_1L",
-          "available_gib": 111.54,
+          "available_gib": 111.12,
           "boundary": "The local N2 JANG_1L artifact/index is registered, but the current memory preflight is only a launch-safety warning. JANG_1L should be treated as careful-RAM live-proof work, not permanent infeasibility; this is not live runtime proof.",
           "classification": "careful_ram_live_proof_pending",
           "index_exists": true,
           "indexed_payload_gb_decimal": 118.73,
           "indexed_payload_gib": 110.57,
           "launch_safe": false,
-          "memory_gap_gib": 7.03,
+          "memory_gap_gib": 7.45,
           "memory_preflight_decision": "do_not_launch",
           "model_path": "/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANG_1L",
           "model_type": "qwen3_5_moe",
@@ -155,7 +155,7 @@
         "requirement": "N2 Pro 397B JANG1L/JANGTQ runtime/cache/API/UI quality is release-cleared",
         "status": "open"
       },
-      "evidence": "build/current-objective-proof-after-n2-jangtq2-l2-live-proof-20260609.json",
+      "evidence": "build/current-objective-proof-after-n2-jang1l-memory-refresh-20260609.json",
       "name": "n2_pro_397b_release_clearance",
       "ok": false
     },
@@ -2889,7 +2889,7 @@
     ],
     "n2_pro_397b": [
       {
-        "evidence": "build/current-objective-proof-after-n2-jangtq2-l2-live-proof-20260609.json",
+        "evidence": "build/current-objective-proof-after-n2-jang1l-memory-refresh-20260609.json",
         "name": "n2_pro_397b_objective_row_exists",
         "ok": true
       },
@@ -2897,7 +2897,7 @@
         "detail": {
           "evidence": [
             "build/current-release-regression-manifest-after-pr-intake-matrix-refresh-20260609.json",
-            "build/current-objective-proof-after-n2-jangtq2-l2-live-proof-20260609.json",
+            "build/current-objective-proof-after-n2-jang1l-memory-refresh-20260609.json",
             "build/current-n2-pro-jang1l-local-memory-preflight-20260609.json",
             "build/current-n2-jang1l-chat-cache-proof-20260609.json",
             "build/current-n2-jangtq2-chat-cache-responses-proof-after-responses-parser-20260609.json",
@@ -2908,17 +2908,17 @@
           ],
           "jang1l_live_gate": {
             "artifact": "build/current-n2-jang1l-chat-cache-proof-20260609.json",
-            "available_gib": 111.61,
+            "available_gib": 111.25,
             "indexed_payload_gib": 110.57,
-            "memory_gap_gib": 6.96,
+            "memory_gap_gib": 7.32,
             "model": "/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANG_1L",
             "reason": "n2_jang1l_insufficient_available_memory",
             "release_boundary": "N2 JANG_1L live proof was not launched because the indexed payload plus Metal/runtime headroom exceeds current available memory. 128 GiB total RAM is not sufficient evidence without current available headroom.",
             "requested_probes": {
-              "l2_restart": false,
-              "responses": false,
-              "responses_stream": false,
-              "tool": false
+              "l2_restart": true,
+              "responses": true,
+              "responses_stream": true,
+              "tool": true
             },
             "required_available_gib": 118.57,
             "required_extra_headroom_gib": 8.0,
@@ -2927,14 +2927,14 @@
           "local_artifact_probe": {
             "artifact_present": true,
             "artifact_profile": "JANG_1L",
-            "available_gib": 111.54,
+            "available_gib": 111.12,
             "boundary": "The local N2 JANG_1L artifact/index is registered, but the current memory preflight is only a launch-safety warning. JANG_1L should be treated as careful-RAM live-proof work, not permanent infeasibility; this is not live runtime proof.",
             "classification": "careful_ram_live_proof_pending",
             "index_exists": true,
             "indexed_payload_gb_decimal": 118.73,
             "indexed_payload_gib": 110.57,
             "launch_safe": false,
-            "memory_gap_gib": 7.03,
+            "memory_gap_gib": 7.45,
             "memory_preflight_decision": "do_not_launch",
             "model_path": "/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANG_1L",
             "model_type": "qwen3_5_moe",
@@ -2969,7 +2969,7 @@
           "requirement": "N2 Pro 397B JANG1L/JANGTQ runtime/cache/API/UI quality is release-cleared",
           "status": "open"
         },
-        "evidence": "build/current-objective-proof-after-n2-jangtq2-l2-live-proof-20260609.json",
+        "evidence": "build/current-objective-proof-after-n2-jang1l-memory-refresh-20260609.json",
         "name": "n2_pro_397b_release_clearance",
         "ok": false
       }
