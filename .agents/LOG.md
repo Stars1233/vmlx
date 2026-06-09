@@ -1,3 +1,16 @@
+# 2026-06-09 - Gemma4 shared-KV mlx-format load fix
+
+- Stayed in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, no release package/sign/notarize/tag/download work.
+- Reduced blocker class: Gemma4 QAT/native MXFP4 and mlx-community Gemma4 mlx-format load compatibility.
+- Upstream intake checked: `Blaizzy/mlx-vlm` PR #1336 (`Fix gemma4 load for mlx-format checkpoints that materialize KV-shared k/v`, opened 2026-06-09). The upstream root cause is that `load_model` can skip `sanitize` for mlx-format checkpoints, so materialized shared-layer k/v tensors reach strict `load_weights` even after shared-KV modules are correctly omitted.
+- Source fix: `vmlx_engine/runtime_patches/mlx_vlm_compat.py` now uses a shared Gemma4 unused shared-KV filter for `Model.sanitize`, `LanguageModel.sanitize`, and `Model.load_weights`. The load-weight wrapper filters known-unused materialized `k_proj`/`v_proj`/`k_norm`/`v_norm` tensors on shared-KV layers before strict load, while unrelated missing/extra weights still fail.
+- Regression: `tests/test_mlx_lm_runtime_patches.py::test_mlx_vlm_gemma4_shared_kv_load_weights_drops_mlx_format_materialized_kv` builds a tiny Gemma4 shared-KV model and proves strict `load_weights` accepts a full parameter list plus one materialized shared-layer k/v tensor.
+- Validation passed:
+  - `.venv/bin/python -m pytest -q tests/test_mlx_lm_runtime_patches.py` -> `11 passed`.
+  - `.venv/bin/python -m pytest -q tests/test_current_regression_suite.py::test_current_regression_suite_hashes_mlx_lm_runtime_patch_sources tests/test_current_regression_suite.py::test_current_regression_suite_hashes_focused_pytest_gate_sources tests/test_current_regression_suite.py::test_current_regression_suite_source_hash_list_matches_release_manifest` -> `3 passed`.
+  - `py_compile` and `git diff --check` passed for the changed runtime patch/test files.
+- Boundary: source/no-heavy Gemma4 load compatibility only. This does not clear Gemma live media, installed-app/UI/tunnel, N2, MiMo exactness, DSV4, package, signing, notarization, tag, or download rows.
+
 # 2026-06-09 - Step3.7 VLM audit proof refresh
 
 - Stayed in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, no release package/sign/notarize/tag/download work.
