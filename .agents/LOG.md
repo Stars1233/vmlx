@@ -6821,6 +6821,18 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Live 26B QAT proof after sidecar fix: `build/current-all-local-model-smoke-gemma4-26b-qat-mxfp4-tools-l2-nomedia-after-cross-shard-expert-sidecars-20260609b/summary.json`, `status=fail` only for two narrow rows. Cleared incoherence: exact `ACK`, mixed-SWA cache hit `cached_tokens=56` / `cache_detail=paged+mixed_swa`, multi-turn `blue cat`, required tool `record_fact({"value":"blue-cat"})`, JSON exact, code exact whitespace, image `Blue`/`Red`, video fallback `Blue`, and block-disk L2 restart `disk_hits=2`.
 - Remaining boundary: tool-result continuation omits final period (`STORED blue-cat` vs `STORED blue-cat.`), and Gemma4 QAT audio still fails honestly because the processor returns no supported audio feature payload. No installed-app proof and no release/sign/package action.
 
+# 2026-06-09 04:37 PDT - Gemma4 audio input_features forwarding and #192 empty XML recheck
+
+- Blocker reduced: #191/#188 `media` source path after the 26B QAT audio row failed with `audio_processor_payload_missing`.
+- Continued from the existing in-flight MLLM audio diff without reverting it.
+- Source fix: Gemma4/Gemma4 Unified processor-returned `input_features` and `input_features_mask` are promoted out of `extra_kwargs`, included in media cache salting, and forwarded to the model as `input_features`/`input_features_mask` instead of being discarded or mis-aliased as MiMo `audio_embeds`.
+- Source fix: Gemma4 audio prompts missing native audio placeholders now append the processor audio token once per audio input before processor execution.
+- Compatibility fix: `_run_vision_encoding_inner` now reads optional `audio_input_features` fields with `getattr`, so older request-like probes without the new attributes still take the correct audio/model-wrapper path.
+- Focused proof: `tests/test_mllm_scheduler_cache.py -k "audio or processor_direct"` plus explicit Gemma4 `input_features` and placeholder tests passed `9/9`; `tests/test_gemma4_audio_waveform_decode.py` passed `1/1`; `py_compile` and `git diff --check` passed.
+- #192 recheck: reran the exact server regressions for `output_index`, required empty XML rejection, and streamed preamble plus empty XML. They passed `3/3`. Current source fails the empty-args shape closed with `tool_calls_required`; it does not emit executable `arguments:"{}"` for the required `cmd` schema.
+- Other-agent reminder: keep the #192 list item as a verified fail-closed server/source boundary, not a proven current-source parser leak. Do not invent `cmd` from preamble text. Still require rebuilt/installed app and raw direct/gateway/tunnel SSE proof before public closure.
+- Boundary: source/unit proof only. Gemma4 QAT audio semantic live proof, installed-app/UI parity, full Responses streaming parity, and release readiness remain open.
+
 # 2026-06-09 03:42 PDT - Gemma QAT downloads and inventory row correction
 
 - Blocker reduced: Gemma QAT/native MXFP4 model availability and release-gate accuracy for later live multiturn/tool/cache/media proof.
