@@ -7569,6 +7569,16 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 
 # 2026-06-09 - N2 JANG_1L live-gate headroom guard
 
+# 2026-06-09 - Qwen27 JANG_4M-MTP long-context cache/L2 proof
+
+- Reduced blocker: Qwen27 long-context/cache-tail rows were missing `build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json`.
+- Source/proof harness: added `tests/cross_matrix/run_qwen27_jang4m_mtp_long_context_cache_tail.py` and focused tests. The harness runs `/Users/eric/models/JANGQ/Qwen3.6-27B-JANG_4M-MTP`, sends a 52k-token cold prompt, stops the server, restarts against the same block/SSM cache directory, and validates warm disk restore.
+- Contract fix: the checklist now accepts `cache_detail=paged+ssm+disk` for restart-backed L2 restore. The harness preserves raw warm stats under `cache_stats_raw` and aggregates cold writes/stores plus warm hits in `phases.warm.cache_stats`, matching what the release checklist needs without hiding the phase boundary.
+- Live proof: `build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json` is `status=pass`; cold/warm visible `LONGCTX-OK`, cold input tokens `52035`, warm cached tokens `52034`, block L2 `disk_writes=814` / `disk_hits=814`, SSM L2 `stores=2` / `hits=1` / `total_tokens_on_disk=104066`, TurboQuant KV enabled, native MTP active at depth 3.
+- Checklist: regenerated `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json`; release remains `status=open`, `failed_count=90`, down from 101 after Qwen27 long-context rows turned green.
+- Validation: focused long-context/checklist tests passed `5/5`; `py_compile` passed; live gate passed. First live attempt failed honestly with HTTP 413 because the synthetic prompt tokenized to about 228k tokens; the committed harness now targets the required 30k+ range without exceeding the 65,536 prompt cap and does not force `--kv-cache-quantization q4`.
+- Boundary: this is current-source live proof, not installed-app rebuild/parity despite the historical artifact filename. Qwen35, N2 JANG_1L, MiMo, Gemma, Responses tunnel/reasoning, installed-app/package/sign/notarize/tag/download/release remain open.
+
 # 2026-06-09 - Qwen27 MXFP4-MTP API parity live proof
 
 - Reduced blocker: Qwen27 MXFP4-MTP API/cache checklist rows were missing `build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json`.

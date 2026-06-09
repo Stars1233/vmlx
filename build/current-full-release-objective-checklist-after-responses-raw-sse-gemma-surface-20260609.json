@@ -1,6 +1,6 @@
 {
   "boundary": "No-heavy checklist only. A pass here would mean current evidence claims every listed gate is green; it still must be backed by the live artifacts referenced by each row. Open rows are release blockers.",
-  "created_at": "2026-06-09T15:05:53-0700",
+  "created_at": "2026-06-09T15:17:10-0700",
   "failed": [
     {
       "detail": false,
@@ -325,78 +325,6 @@
     {
       "evidence": "build/current-mimo-v2-jang2l-current-audit-after-cache-vs-nocache-logprobs-20260609.json",
       "name": "mimo_mimo_media_wired",
-      "ok": false
-    },
-    {
-      "detail": "missing",
-      "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
-      "name": "qwen27_long_context_artifact_exists",
-      "ok": false
-    },
-    {
-      "detail": "missing",
-      "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
-      "name": "qwen27_long_context_status_pass",
-      "ok": false
-    },
-    {
-      "detail": {
-        "cold": {},
-        "warm": {}
-      },
-      "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
-      "name": "qwen27_long_context_prompt_large",
-      "ok": false
-    },
-    {
-      "detail": {},
-      "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
-      "name": "qwen27_long_context_tail_markers",
-      "ok": false
-    },
-    {
-      "detail": {},
-      "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
-      "name": "qwen27_long_context_warm_cache_hit",
-      "ok": false
-    },
-    {
-      "detail": {},
-      "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
-      "name": "qwen27_long_context_block_l2_written",
-      "ok": false
-    },
-    {
-      "detail": {},
-      "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
-      "name": "qwen27_long_context_block_l2_hits",
-      "ok": false
-    },
-    {
-      "detail": {},
-      "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
-      "name": "qwen27_long_context_ssm_l2_written",
-      "ok": false
-    },
-    {
-      "detail": {},
-      "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
-      "name": "qwen27_long_context_native_hybrid_cache",
-      "ok": false
-    },
-    {
-      "detail": {
-        "native": {},
-        "tq": {}
-      },
-      "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
-      "name": "qwen27_long_context_turboquant_attention_kv",
-      "ok": false
-    },
-    {
-      "detail": {},
-      "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
-      "name": "qwen27_long_context_mtp_active",
       "ok": false
     },
     {
@@ -972,7 +900,7 @@
       "ok": false
     }
   ],
-  "failed_count": 101,
+  "failed_count": 90,
   "groups": {
     "api_cache_responses_contract": [
       {
@@ -3433,76 +3361,382 @@
         "ok": true
       },
       {
-        "detail": "missing",
+        "detail": "pass",
         "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
         "name": "qwen27_long_context_artifact_exists",
-        "ok": false
+        "ok": true
       },
       {
-        "detail": "missing",
+        "detail": "pass",
         "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
         "name": "qwen27_long_context_status_pass",
-        "ok": false
+        "ok": true
       },
       {
         "detail": {
-          "cold": {},
-          "warm": {}
+          "cold": {
+            "completion_tokens": 5,
+            "input_tokens": 52035,
+            "prompt_tokens": 52035,
+            "prompt_tokens_details": null,
+            "total_tokens": 52040
+          },
+          "warm": {
+            "completion_tokens": 5,
+            "input_tokens": 52035,
+            "prompt_tokens": 52035,
+            "prompt_tokens_details": {
+              "cache_detail": "paged+ssm+disk",
+              "cached_tokens": 52034
+            },
+            "total_tokens": 52040
+          }
         },
         "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
         "name": "qwen27_long_context_prompt_large",
-        "ok": false
-      },
-      {
-        "detail": {},
-        "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
-        "name": "qwen27_long_context_tail_markers",
-        "ok": false
-      },
-      {
-        "detail": {},
-        "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
-        "name": "qwen27_long_context_warm_cache_hit",
-        "ok": false
-      },
-      {
-        "detail": {},
-        "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
-        "name": "qwen27_long_context_block_l2_written",
-        "ok": false
-      },
-      {
-        "detail": {},
-        "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
-        "name": "qwen27_long_context_block_l2_hits",
-        "ok": false
-      },
-      {
-        "detail": {},
-        "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
-        "name": "qwen27_long_context_ssm_l2_written",
-        "ok": false
-      },
-      {
-        "detail": {},
-        "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
-        "name": "qwen27_long_context_native_hybrid_cache",
-        "ok": false
+        "ok": true
       },
       {
         "detail": {
-          "native": {},
-          "tq": {}
+          "block_l2_hits": true,
+          "block_l2_written": true,
+          "cold_visible_tail_markers": true,
+          "mtp_active": true,
+          "native_hybrid_cache": true,
+          "prompt_large": true,
+          "ssm_l2_written": true,
+          "turboquant_attention_kv": true,
+          "warm_cache_hit": true,
+          "warm_visible_tail_markers": true
+        },
+        "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
+        "name": "qwen27_long_context_tail_markers",
+        "ok": true
+      },
+      {
+        "detail": {
+          "cache_detail": "paged+ssm+disk",
+          "cached_tokens": 52034
+        },
+        "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
+        "name": "qwen27_long_context_warm_cache_hit",
+        "ok": true
+      },
+      {
+        "detail": {
+          "blocks_on_disk": 814,
+          "disk_evictions": 0,
+          "disk_hits": 814,
+          "disk_misses": 1,
+          "disk_size_bytes": 3566918127,
+          "disk_size_gb": 3.322,
+          "disk_writes": 814,
+          "total_accesses": 814,
+          "total_cached_tokens": 52034,
+          "total_tokens_on_disk": 52034
+        },
+        "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
+        "name": "qwen27_long_context_block_l2_written",
+        "ok": true
+      },
+      {
+        "detail": {
+          "blocks_on_disk": 814,
+          "disk_evictions": 0,
+          "disk_hits": 814,
+          "disk_misses": 1,
+          "disk_size_bytes": 3566918127,
+          "disk_size_gb": 3.322,
+          "disk_writes": 814,
+          "total_accesses": 814,
+          "total_cached_tokens": 52034,
+          "total_tokens_on_disk": 52034
+        },
+        "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
+        "name": "qwen27_long_context_block_l2_hits",
+        "ok": true
+      },
+      {
+        "detail": {
+          "budget_bytes": 68719476736,
+          "budget_gb": 64.0,
+          "bytes": 307916670,
+          "bytes_mb": 293.65,
+          "directory": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607-cache/ssm_companion",
+          "enabled": true,
+          "entries": 2,
+          "hit_rate": 1.0,
+          "hits": 1,
+          "misses": 0,
+          "stores": 2,
+          "total_cached_tokens": 104066,
+          "total_tokens_on_disk": 104066
+        },
+        "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
+        "name": "qwen27_long_context_ssm_l2_written",
+        "ok": true
+      },
+      {
+        "detail": {
+          "attention_kv_storage_quantization": {
+            "applies_to": "attention_kv_layers_only",
+            "bits": 4,
+            "enabled": true,
+            "group_size": 64,
+            "mode": "storage_boundary",
+            "rederive": "async_clean_prefill_on_miss_or_warm_pass",
+            "ssm_policy": "native_companion_state"
+          },
+          "block_disk_l2": true,
+          "cache_type": "hybrid_ssm_typed",
+          "components": [
+            "attention_kv",
+            "ssm_companion_state",
+            "async_rederive"
+          ],
+          "family": "qwen3_5",
+          "generic_turboquant_kv": {
+            "enabled": true,
+            "reason": "hybrid_attention_kv_only"
+          },
+          "kv_layer_indices": [],
+          "live_attention_tq_kv": {
+            "applies_to": "attention_kv_layers_only",
+            "attention_layers": [
+              3,
+              7,
+              11,
+              15,
+              19,
+              23,
+              27,
+              31,
+              35,
+              39,
+              43,
+              47,
+              51,
+              55,
+              59,
+              63
+            ],
+            "companion_layers": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              8,
+              9,
+              10,
+              12,
+              13,
+              14,
+              16,
+              17,
+              18,
+              20,
+              21,
+              22,
+              24,
+              25,
+              26,
+              28,
+              29,
+              30,
+              32,
+              33,
+              34,
+              36,
+              37,
+              38,
+              40,
+              41,
+              42,
+              44,
+              45,
+              46,
+              48,
+              49,
+              50,
+              52,
+              53,
+              54,
+              56,
+              57,
+              58,
+              60,
+              61,
+              62
+            ],
+            "enabled": true,
+            "mode": "live_decode",
+            "ssm_policy": "native_full_precision_companion_state"
+          },
+          "paged": true,
+          "prefix": true,
+          "schema": "hybrid_ssm_v1",
+          "ssm_entries": 0
+        },
+        "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
+        "name": "qwen27_long_context_native_hybrid_cache",
+        "ok": true
+      },
+      {
+        "detail": {
+          "native": {
+            "attention_kv_storage_quantization": {
+              "applies_to": "attention_kv_layers_only",
+              "bits": 4,
+              "enabled": true,
+              "group_size": 64,
+              "mode": "storage_boundary",
+              "rederive": "async_clean_prefill_on_miss_or_warm_pass",
+              "ssm_policy": "native_companion_state"
+            },
+            "block_disk_l2": true,
+            "cache_type": "hybrid_ssm_typed",
+            "components": [
+              "attention_kv",
+              "ssm_companion_state",
+              "async_rederive"
+            ],
+            "family": "qwen3_5",
+            "generic_turboquant_kv": {
+              "enabled": true,
+              "reason": "hybrid_attention_kv_only"
+            },
+            "kv_layer_indices": [],
+            "live_attention_tq_kv": {
+              "applies_to": "attention_kv_layers_only",
+              "attention_layers": [
+                3,
+                7,
+                11,
+                15,
+                19,
+                23,
+                27,
+                31,
+                35,
+                39,
+                43,
+                47,
+                51,
+                55,
+                59,
+                63
+              ],
+              "companion_layers": [
+                0,
+                1,
+                2,
+                4,
+                5,
+                6,
+                8,
+                9,
+                10,
+                12,
+                13,
+                14,
+                16,
+                17,
+                18,
+                20,
+                21,
+                22,
+                24,
+                25,
+                26,
+                28,
+                29,
+                30,
+                32,
+                33,
+                34,
+                36,
+                37,
+                38,
+                40,
+                41,
+                42,
+                44,
+                45,
+                46,
+                48,
+                49,
+                50,
+                52,
+                53,
+                54,
+                56,
+                57,
+                58,
+                60,
+                61,
+                62
+              ],
+              "enabled": true,
+              "mode": "live_decode",
+              "ssm_policy": "native_full_precision_companion_state"
+            },
+            "paged": true,
+            "prefix": true,
+            "schema": "hybrid_ssm_v1",
+            "ssm_entries": 0
+          },
+          "tq": {
+            "batch_api": "turboquant_kv_v1",
+            "critical_bits": 4,
+            "critical_layers": "first 3 + last 3",
+            "default_bits": 3,
+            "effective_completion_batch_size": 128,
+            "effective_max_num_seqs": 1,
+            "effective_prefill_batch_size": 512,
+            "enabled": true,
+            "single_sequence_only": false
+          }
         },
         "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
         "name": "qwen27_long_context_turboquant_attention_kv",
-        "ok": false
+        "ok": true
       },
       {
-        "detail": {},
+        "detail": {
+          "artifact_available": true,
+          "cache_type": "hybrid",
+          "config_mtp_layer_source": "config.text_config.mtp_num_hidden_layers",
+          "config_num_nextn_predict_layers": 1,
+          "effective_depth": 3,
+          "effective_depth_source": "vmlx_mtp_tuning.json:native_mtp.best_depth",
+          "family": "qwen3_5",
+          "has_vision_config": true,
+          "has_vision_weights": true,
+          "index_has_mtp_tensors": true,
+          "index_mtp_layer_count": 1,
+          "issues": [],
+          "jang_drop_mtp": null,
+          "jang_mtp_layers": 1,
+          "mtp_tensor_count": 31,
+          "request_gate": "temperature=0,repetition_penalty=1.0",
+          "request_policy": "compatible-only",
+          "runtime_active": true,
+          "runtime_available": true,
+          "runtime_bundle_has_mtp": true,
+          "runtime_mtp_mode": "preserved_enabled",
+          "runtime_reason": "native MTP runtime is active for text+vl",
+          "runtime_scope": "text+vl",
+          "runtime_supported": true,
+          "runtime_validation_blocked": false,
+          "status": "native_runtime_active",
+          "vision_tensor_count": 333,
+          "vl_runtime_available": true
+        },
         "evidence": "build/current-qwen27-jang4m-mtp-installed-long-context-cache-tail-20260607.json",
         "name": "qwen27_long_context_mtp_active",
-        "ok": false
+        "ok": true
       },
       {
         "detail": "missing",
