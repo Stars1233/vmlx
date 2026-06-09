@@ -7531,3 +7531,10 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - The guard also pins honest media-backing details: E2B/E4B have audio tower backing, while 12B is audio-embed-only, vision-backed, and still requires video runtime proof.
 - Validation: focused objective digest test passed `1/1`; `py_compile` and `git diff --check` passed for the touched files.
 - Boundary: this is proof-map coverage only. It does not clear Gemma QAT live runtime/media/cache/API/UI/installed-app/tunnel rows and does not authorize package/sign/notarize/tag/download.
+
+# 2026-06-09 - Responses reasoning tool-args source boundary
+
+- Traced the current `stream_responses_api` finalization around the `tc_args` branch.
+- Current source already tries parser candidates from content, reasoning, stripped full text, and full text, then chooses a tool call with non-empty arguments when one is available. This is the intended non-fake behavior: no reasoning-disable workaround and no argument synthesis.
+- Validation passed: `tests/test_server.py -k "streaming_responses_tool_call_arguments_survive_buffering or streaming_responses_reasoning_tool_call_keeps_arguments"` passed `2/2`; `py_compile` passed for `vmlx_engine/server.py`, `tests/test_server.py`, and `tests/test_responses_raw_sse_parity_contract.py`.
+- Boundary: this does not close the deployed/tunnel report. The next required proof is same-model direct/gateway/tunnel raw SSE using the reported request/model to separate engine parser behavior from gateway/model availability/wake/session routing.

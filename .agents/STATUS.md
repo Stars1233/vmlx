@@ -546,3 +546,9 @@
 - guard now asserts the objective details expose exact source-smoke artifacts for all five rows and media-backing truth: E2B/E4B audio tower backed, 12B audio embed-only with vision backed and video proof required.
 - validation: `tests/test_objective_proof_digest.py::test_objective_proof_digest_tracks_gemma_qat_native_mxfp4_release_blocker` passed; `py_compile` and `git diff --check` passed for the touched test/source surfaces.
 - boundary: proof-map/coverage only. No Gemma QAT release clearance, no model launch, no installed-app/UI/tunnel proof, no package/sign/notarize/tag/download.
+
+## CODEX - 2026-06-09 Responses reasoning tool-args source boundary
+- blocker checked: reported Responses SSE heartbeat/tool_call_generating path where `tc_args` is empty when reasoning is enabled.
+- current source behavior: `stream_responses_api` parses accumulated content, accumulated reasoning, stripped full text, and full text, then prefers parsed tool calls with non-empty arguments. It does not synthesize missing args and does not rely on disabling reasoning.
+- validation: focused source tests passed for heartbeat buffering preserving final tool args and reasoning-channel tool calls preserving args: `tests/test_server.py -k "streaming_responses_tool_call_arguments_survive_buffering or streaming_responses_reasoning_tool_call_keeps_arguments"`; `py_compile` passed for `vmlx_engine/server.py` and related tests.
+- boundary: this is source-unit evidence only. Same-model direct/gateway/tunnel raw SSE capture with the reported model/request is still required before closing #190/#192 or calling deployed app/API fixed.
