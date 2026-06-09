@@ -483,3 +483,9 @@ Classification:
 - N2 JANG_1L memory preflight: `build/current-n2-pro-jang1l-local-memory-preflight-20260609.json`, decision `do_not_launch`.
 - Covered by no-heavy contracts: Chat/Responses sampling kwargs, max-output/max-context separation, JSON schema preservation, streaming cache-detail usage, Responses `previous_response_id`, cache stats/reuse endpoints, TurboQuant KV runtime contract, TurboQuant disk roundtrip, hybrid/native cache matrix, parser registration, CLI parser choices, panel launch policy, and JANG/JANGTQ/MXFP row distinctions.
 - JANG_1L live boundary: payload is `118.73GB`; preflight host is `128GB`; free+speculative memory was `94.26GiB`; required extra headroom is `20GiB`. No live load was attempted, and this row remains release-open until tested with sufficient headroom or a smaller runtime strategy.
+
+### 2026-06-09 N2 explicit autodetect/startup policy row
+- Source coverage added: Python model registry, MLXStudio panel detector, and no-heavy family detection contract now include `n2_pro_qwen35_moe_hybrid_vl_policy`.
+- Proof: `build/current-model-family-detection-contract-after-n2-policy-row-20260609.json`, `status=pass`, `missing_rows=[]`, `n2_pro_qwen35_moe_hybrid_vl_policy=true`.
+- Policy pinned: N2 Pro JANG_1L-style metadata resolves as Qwen3.5-MoE hybrid cache with Qwen tool parser, Qwen3 reasoning parser, thinking support, and paged-cache requirement. Because this affine JANG VL-shaped bundle lacks indexed MTP/VL-ready tensors, Python routes it text-only and panel marks `forceTextOnly=true` until real VL support is implemented and live-proven.
+- Boundary: this is autodetect/startup/UI-policy coverage only. N2 live runtime, N2 JANG_1L memory-safe load, VL/audio/video, L2 restart restore, installed-app UI proof, and release clearance remain open.
