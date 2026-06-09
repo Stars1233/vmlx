@@ -7594,3 +7594,9 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Refreshed checklist: `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json`, `status=open`, `failed_count=119`; `mimo_no_source_classifier_excludes_parser_cache_sampling` is green.
 - Validation: focused classifier regression passed; broader focused verification passed; `py_compile` and `git diff --check` passed.
 - Boundary: no MiMo release clearance. Current JANGTQ2 still fails literal exactness before parser/JSON repair; remaining work is artifact/logit diagnosis, corrected quantization contract, or runtime decode proof, plus media/L2/UI rows.
+
+# 2026-06-09 - Gemma4 QAT JANG_4M coverage note
+
+- Added explicit tracking note for Gemma 4 QAT `JANG_4M` bundles.
+- Boundary recorded: Gemma4 QAT `JANG_4M` and native `MXFP4` are separate runtime/quantization paths. Do not release-clear one from the other.
+- Required proof remains the full matrix: autodetect, loader/sidecars, generation defaults, parsers, tools, Responses streaming args/content deltas, mixed-SWA/prefix/cache/TurboQuant/L2, media honesty, UI/CLI, and installed-app parity.

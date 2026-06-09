@@ -580,3 +580,8 @@
 - refreshed classifier: `build/current-mimo-v2-no-source-exactness-classifier-after-lossless-token-trace-20260609.json`, `status=open`, `classification=jangtq2_plain_literal_copy_fails_before_parser_or_json_repair`, `excluded_surfaces.prefix_paged_l2_or_kv_quant_primary_cause=true`.
 - checklist: `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json`, `status=open`, `failed_count=119`; `mimo_no_source_classifier_excludes_parser_cache_sampling` moved green.
 - boundary: MiMo remains release-open. Do not chase parser/cache/L2/sampling as primary for the current JANGTQ2 literal exactness failure without new contrary logits; remaining action is artifact/logit diagnosis, corrected quantization contract, or runtime decode proof.
+
+## CODEX - 2026-06-09 Gemma4 QAT JANG_4M coverage note
+- added release-scope requirement: Gemma 4 QAT `JANG_4M` bundles are separate from native `MXFP4` QAT bundles and must be proven separately.
+- required coverage for QAT `JANG_4M`: runtime autodetect, loader/sidecar handling, model-owned generation defaults, Gemma4 tool/reasoning parser selection, mixed-SWA cache, prefix cache, TurboQuant KV boundary where valid, block-disk L2 restore, Responses streaming/content delta/tool args, chat multi-turn, image/video/audio capability honesty, UI/CLI settings parity, and installed-app parity.
+- boundary: MXFP4 QAT source smokes do not clear QAT `JANG_4M`; QAT `JANG_4M` source/load proof does not clear MXFP4. Both need explicit live proof before release.
