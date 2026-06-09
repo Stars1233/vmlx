@@ -31,6 +31,18 @@ signing, notarization, tags, downloads, or release actions.
      `<turn|>` as well as `<end_of_turn>`, `<|im_end|>`, and `</s>`.
    - Proof: `tests/test_mllm_scheduler_cache.py::test_gemma4_audio_processor_prompt_uses_turn_pipe_terminator`.
 
+5. `mlx-vlm` PR #1321, Gemma4 video processor tolerance for standard HF config
+   keys.
+   - Local venv reproduced the upstream gap: pinned
+     `mlx_vlm.models.gemma4.processing_gemma4.Gemma4VideoProcessor.__init__`
+     has no `**kwargs`, so real `processor_config.json` keys such as
+     `do_convert_rgb`, `do_sample_frames`, `resample`, and `return_metadata`
+     can reject processor construction before image/video inputs are wired.
+   - vMLX fix: `vmlx_engine/runtime_patches/mlx_vlm_compat.py` filters unknown
+     HF video processor keys for this pinned constructor while preserving all
+     accepted Gemma4 video settings.
+   - Proof: `tests/test_mlx_lm_runtime_patches.py::test_gemma4_video_processor_accepts_hf_config_kwargs`.
+
 ## Upstream items checked but not blindly ported
 
 - `mlx-lm` PR #1336 (`<tool_call` marker without closing `>`): vMLX streaming
@@ -51,6 +63,19 @@ signing, notarization, tags, downloads, or release actions.
 - `mlx-vlm` PR #1313/#1334 (Qwen3.5/3.6 quantized KV and MTP prefill): relevant
   to Qwen3.6/MTP/gdn_sink lanes, but requires local mapping against
   `utils/mlx_vlm_compat.py` and current Qwen VLM language source before port.
+- `mlx-lm` PR #1377 (top-k interval wording): documentation/error-message-only
+  upstream fix. No runtime behavior to port.
+- `mlx-lm` PR #1327 (short-prompt think-token search clamp): relevant to
+  one-token/short-prompt server failures. Needs a local repro against the
+  vMLX tokenizer/server path before adding a patch because vMLX already has
+  separate reasoning/template finalization logic.
+- `mlx-vlm` PR #1332 (Qwen3-VL deepstack visual embeds alignment during chunked
+  prefill): likely relevant to Qwen3.5/3.6 VL long-image/OCR recall and mRoPE
+  rows. Do not port blindly; map against the vendored/patches Qwen VLM language
+  path and add a chunked-prefill visual-mask regression first.
+- `mlx-vlm` PR #1328 (LFM2.5 VL loading): relevant to LFM25 VL/media rows.
+  Needs local model-type/load-weight mapping before patching because the current
+  LFM25 live text/tools proof is partial and the VL path is separately scoped.
 
 ## Other-agent reminders
 
