@@ -1,3 +1,14 @@
+# 2026-06-09 - Qwen/N2 native-MTP package parity coverage
+
+- Stayed in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, no release package/sign/notarize/tag/download work.
+- Upstream context checked: `ml-explore/mlx-swift-lm` PR #323 calls out Qwen3.6/`qwen3_5` hybrid linear-attention/GatedDelta cache behavior, contiguous convolution state, cache metadata advancement, and padded-generation stability.
+- Reduced blocker class: N2/Qwen3.6 native-MTP activation and text-side MTP patch package parity, including the prior `gdn_sink`/GatedDelta patch surface.
+- Root cause found: package hash gates covered `patches/mlx_vlm_mtp/qwen35_vl.py` but not `native_mtp.py` or `patches/mlx_lm_mtp/*`. Runtime activation imports `native_mtp.py`, `patches/mlx_lm_mtp/__init__.py`, `batch_generator.py`, `cache_rollback.py`, `deepseek_v4_model.py`, and `qwen35_model.py`; a stale packaged Python could silently drift on Qwen/N2 native-MTP detection, GatedDelta patching, rollback state, or BatchGenerator draft/verify dispatch while source tests stayed green.
+- Source/proof fix: added those native-MTP files to `panel/scripts/verify-bundled-python.sh`, `panel/scripts/release-gate-python-app.py`, `tests/cross_matrix/run_packaged_integrity_contract.py`, and `tests/cross_matrix/run_installed_app_runtime_parity_audit.py`.
+- Regression: package/parity tests now assert the native-MTP activation module and `mlx_lm_mtp` patch files are covered in the release gate, bundled verifier, staged app integrity gate, and installed-app runtime parity audit.
+- Red/green proof: the focused package/parity test set failed before the manifest fix on missing `native_mtp.py` / `patches/mlx_lm_mtp/*`, then passed after the fix (`4 passed`).
+- Boundary: package/parity coverage only. This does not run or clear live N2 JANG_1L/JANGTQ cache/API/UI, Qwen/N2 MTP quality, MiMo exactness/media, Gemma installed-app/UI/tunnel, signing, notarization, tag, or download rows.
+
 # 2026-06-09 - TQ-native disk cache package parity coverage
 
 - Stayed in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, no release package/sign/notarize/tag/download work.
