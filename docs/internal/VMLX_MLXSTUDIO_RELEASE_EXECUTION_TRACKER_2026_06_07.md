@@ -822,3 +822,14 @@ Classification:
 - Fix: all top-level `vmlx_engine/reasoning/*.py` files are now in bundled-python, release-gate, packaged-integrity, installed-app parity, and current-suite source hash lists.
 - Proof: focused guard tests failed before wiring on missing reasoning files, then passed `5/5`; engine audit assertion passed `1/1`; `bash -n`, `py_compile`, and `git diff --check` passed.
 - Boundary: parity guard only. It does not prove live Gemma/N2/MiMo behavior, installed-app/UI/tunnel parity, or release readiness.
+
+## 2026-06-09 Gemma4 QAT JANG_4M proof-map lane
+
+- Reduced blocker: Gemma4 QAT JANG_4M inventory/objective/checklist visibility without launching a heavy model.
+- Source fix: `tests/cross_matrix/run_gemma_qat_native_mxfp4_inventory_gate.py` now emits `gemma4_12b_qat_jang4m` as a separate release row from native MXFP4 QAT rows.
+- No-heavy artifacts refreshed:
+  - `build/current-gemma-qat-native-mxfp4-local-inventory-after-source-smoke-map-20260609.json`, `status=open`, `missing_required_rows=[]`, `open_required_rows` includes `gemma4_12b_qat_jang4m`.
+  - `build/current-objective-proof-after-n2-jang1l-memory-refresh-20260609.json`, `status=open` with the QAT JANG_4M row exposed in Gemma QAT details.
+  - `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json`, `status=open`, `failed_count=75`.
+- Boundary: the existing Gemma4 12B JANG_4M no-media source smoke is still `probe_failed`; this row is not release clearance. Required proof remains autodetect, model-owned `generation_config` defaults, Gemma4 tool/reasoning parser, mixed-SWA/prefix cache, TurboQuant KV boundary where valid, block-disk L2, Responses streaming args/content deltas, media honesty, UI/CLI parity, and installed-app parity.
+- Focused validation: `uv run pytest tests/test_gemma_qat_native_mxfp4_inventory_gate.py tests/test_objective_proof_digest.py::test_objective_proof_digest_tracks_gemma_qat_native_mxfp4_release_blocker tests/test_full_release_objective_checklist.py::test_full_release_objective_checklist_blocks_open_gemma_qat_jang4m_row -q` passed `10/10`.

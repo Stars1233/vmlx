@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-09T14:56:27-0700",
+  "created_at": "2026-06-09T15:42:57-0700",
   "requirements": [
     {
       "requirement": "DSV4 Flash prefix/paged/L2 cache is enabled by default from app launch",
@@ -415,7 +415,7 @@
         },
         "source_hashes_current": {
           "tests/cross_matrix/run_tool_call_contract.py": "f4e09ec189d43c71f8e38473c213592e4372256f47e045ad61126be87b1217ba",
-          "vmlx_engine/server.py": "ca045d9df8cab304b315c4357a159457bbd1b56a23b43546b4f0bda3192720e1",
+          "vmlx_engine/server.py": "b663e20e912161c5c508f36e3901208584f80a7f756cb665b42f58240fdcfe08",
           "vmlx_engine/tool_parsers/abstract_tool_parser.py": "ba766e6193d67e64613a28af17ed336e875e7b209ac974ebbc7499a06b158bd3",
           "vmlx_engine/tool_parsers/qwen_tool_parser.py": "a6b6c4429efaca07fd50db5da35c0e103119c89a4c29579a7b98b259b7fb3acb",
           "vmlx_engine/tool_parsers/auto_tool_parser.py": "63849fcd759ab609dae1514e6b8dce67d78f8016211a3e11fcb6e1115a650dba",
@@ -429,7 +429,7 @@
           "tests/test_granite_tool_parser.py": "27ec8d06e830a38b28e4d1e3599019236bce566e09acd2f9704d1cee7839061f",
           "tests/test_hunyuan_tool_parser.py": "21acf81ce2965beb487e856a441bd987ab238061fb6928c3a215e5e02925c971",
           "tests/test_xml_function_tool_parser.py": "7105232d4c26628c7dc0fac71d2c2f85f87fad6bf06b0a3944345c78c1756a79",
-          "tests/test_engine_audit.py": "bed1456b992ad90cd0868dbf756967cfb5b668c2e1e3da3c89cf28aa7ebd18d1",
+          "tests/test_engine_audit.py": "2c70f4d8370732ce39136b9962a983447c63706c2fddd071a6450f5c4953ded4",
           "panel/src/main/ipc/coding-tools.ts": "42937f7253b2e483d905693a5911c9072368b47bb338e70a86230f02f9d848e1",
           "panel/src/main/tools/executor.ts": "89f0869f819912d339aabbd2b3cd080f5a47b7ebb8c15fceeefc3b711b5b2fd5",
           "panel/src/main/ipc/chat.ts": "1d147559881dabf7b50bc003ba98ad352307799b915feb3163c8328d38ec5504",
@@ -439,6 +439,7 @@
         },
         "missing_source_hashes": [],
         "stale_source_hashes": [
+          "vmlx_engine/server.py",
           "tests/test_engine_audit.py"
         ],
         "missing_source_files": [],
@@ -511,11 +512,11 @@
           "tests/cross_matrix/run_max_output_context_contract.py": "9e4b06cfbae9357a49ce09b13103c125d6c127b34862cb42d54815a9bb96b9b2"
         },
         "source_hashes_current": {
-          "vmlx_engine/server.py": "ca045d9df8cab304b315c4357a159457bbd1b56a23b43546b4f0bda3192720e1",
+          "vmlx_engine/server.py": "b663e20e912161c5c508f36e3901208584f80a7f756cb665b42f58240fdcfe08",
           "vmlx_engine/api/models.py": "d5a34040c6e8ce37c588e71062f2835ece4dd803f10f7928fc1c2e0db85a26e0",
           "vmlx_engine/api/anthropic_adapter.py": "52efb1b488786362638ef0bd9ba1e5889377e6aa9b73879a9c26091388d47914",
           "vmlx_engine/api/ollama_adapter.py": "88a0c2f3034758a82db82c1936505cc61773974e824d774a463019abb76cb2cd",
-          "tests/test_engine_audit.py": "bed1456b992ad90cd0868dbf756967cfb5b668c2e1e3da3c89cf28aa7ebd18d1",
+          "tests/test_engine_audit.py": "2c70f4d8370732ce39136b9962a983447c63706c2fddd071a6450f5c4953ded4",
           "tests/test_ollama_adapter.py": "6ee0a7e3e9f46893795d95fcaed6e594bbb3a8017a5a065663c8e90cbde380d8",
           "tests/test_max_output_context_contract.py": "fc0f95e12fc5c7a0b5cdc3bc805e7e57a2bbdd746e4bfda0f33f16fb1ae9a678",
           "panel/src/main/api-gateway.ts": "18baf6b7c26369b59dce23b0dc6721cb9dbc581935416d6e757499bc8a8a1093",
@@ -545,6 +546,7 @@
         },
         "missing_source_hashes": [],
         "stale_source_hashes": [
+          "vmlx_engine/server.py",
           "tests/test_engine_audit.py"
         ],
         "missing_source_files": [],
@@ -1209,7 +1211,7 @@
           "panel/tests/cache-control-policy.test.ts": "91169afdcd88c2b3aa14bac6649da65e45a7d26ce60551525b89d71963976d6d"
         },
         "source_hashes_current": {
-          "vmlx_engine/server.py": "ca045d9df8cab304b315c4357a159457bbd1b56a23b43546b4f0bda3192720e1",
+          "vmlx_engine/server.py": "b663e20e912161c5c508f36e3901208584f80a7f756cb665b42f58240fdcfe08",
           "vmlx_engine/scheduler.py": "2a8ba0c6fa514fa70e654d95937bab9656901ee5ce114d2485dbd7f836737c58",
           "vmlx_engine/prefix_cache.py": "51b4f24af39f94572972b58b05ad84048c261a25b81e25bb61ec487f139e1942",
           "vmlx_engine/paged_cache.py": "b9c67a5a4921378fd7098ae64e1364725db6e609ba67212661848cc05b988da2",
@@ -1220,7 +1222,7 @@
           "vmlx_engine/tq_disk_store.py": "32592de18d85e645827b077f32c9eee459ccdb40a0c226ae800925b1f6437b5a",
           "tests/cross_matrix/run_noheavy_api_cache_contract.py": "e7aeb94d50589293da3c05a8e3f1ffab27ce845422b5e80ae3ac8685f024a2b8",
           "tests/cross_matrix/run_cache_architecture_contract.py": "544d5ba106a2414b8c14da5b841ecefdb4a8c351fb78440c0765582f6892e660",
-          "tests/test_engine_audit.py": "bed1456b992ad90cd0868dbf756967cfb5b668c2e1e3da3c89cf28aa7ebd18d1",
+          "tests/test_engine_audit.py": "2c70f4d8370732ce39136b9962a983447c63706c2fddd071a6450f5c4953ded4",
           "tests/test_batching.py": "56fa5cb4d01cc64e9ab2d4f599e7e7f06a84dd42ed1607f352f27f77eedb6b38",
           "tests/test_hybrid_batching.py": "c55c4b78201dbfec4a5ee353cecb4cf8561b769ef382e57d3191548033071663",
           "tests/test_hybrid_prefix_cache.py": "9feda129f63acca197dac1b735fc207bef6cf9667c97a5182ba1e36d113b8afa",
@@ -1242,6 +1244,7 @@
         },
         "missing_source_hashes": [],
         "stale_source_hashes": [
+          "vmlx_engine/server.py",
           "tests/test_engine_audit.py"
         ],
         "missing_source_files": [],
@@ -1398,7 +1401,7 @@
             "panel/tests/settings-flow.test.ts": "07825d0f16a63d48786d6ebcfee2d9d151269b352cd4fc3648c2b0479addce2f",
             "tests/cross_matrix/run_decode_speed_gate.py": "5e74644dfe06dacec75600423d5c49026c502dd05f9b97930923a8a5ef8ace04",
             "tests/cross_matrix/run_parser_registry_contract.py": "aa4947a7c85be548fe77656e9aee6a8147ee5749da532e600d3cef391888d774",
-            "tests/test_engine_audit.py": "bed1456b992ad90cd0868dbf756967cfb5b668c2e1e3da3c89cf28aa7ebd18d1",
+            "tests/test_engine_audit.py": "2c70f4d8370732ce39136b9962a983447c63706c2fddd071a6450f5c4953ded4",
             "tests/test_model_config_registry.py": "4c1667b9a20f476b478f3444176fd763ba8cb4d8bb47babec126b84e8674e121",
             "tests/test_parser_registry_contract.py": "0288a672c0efdb993d9d39dd0053e94e1fa00d1f7d15410bdc5ce51463f8f3a2"
           },
@@ -1448,7 +1451,7 @@
             "vmlx_engine/model_config_registry.py": "eb9bb35a04d1cec9728d38968e980ccbc828120c95ea042a44a9a78f7c89e862",
             "vmlx_engine/model_configs.py": "9eb67271ae4125079578714d1b20171f889119cd7e85426bf8ec085516a2f5aa",
             "vmlx_engine/native_mtp.py": "80c7c5a9afe85e42f951f85df064bb57c993c667b94d509d614ea651bfafd612",
-            "vmlx_engine/server.py": "ca045d9df8cab304b315c4357a159457bbd1b56a23b43546b4f0bda3192720e1",
+            "vmlx_engine/server.py": "b663e20e912161c5c508f36e3901208584f80a7f756cb665b42f58240fdcfe08",
             "vmlx_engine/utils/jang_loader.py": "85601d82207df39d620cd39fa6037be8ea0af2bf5ed995a4923408bf08934bca",
             "vmlx_engine/loaders/load_jangtq.py": "f2172554585b5a3a1a172dc86ae71acd48366de5fc48da0dbed859ab7d7ef7ba",
             "vmlx_engine/loaders/load_jangtq_vlm.py": "0f20adc007a06489784e3d3767137d0cb0bbaa94407e27a99edce1c6c518c903",
@@ -1463,7 +1466,9 @@
             "tests/test_cross_matrix_audit_runner.py": "7032fef23e9962ea3d5d8590bc3215e89db8f44af7c883748fe6ac7640dea7a4"
           },
           "missing_source_hashes": [],
-          "stale_source_hashes": [],
+          "stale_source_hashes": [
+            "vmlx_engine/server.py"
+          ],
           "missing_source_files": []
         },
         "evidence_files_present": {
@@ -1530,9 +1535,9 @@
             "tests/test_local_generation_metadata_audit.py": "a50acc4c18bd51f95e2ef94d515cd8f4e6e067d2ab49f504cee5c33fcfa3ee68"
           },
           "source_hashes_current": {
-            "vmlx_engine/server.py": "ca045d9df8cab304b315c4357a159457bbd1b56a23b43546b4f0bda3192720e1",
+            "vmlx_engine/server.py": "b663e20e912161c5c508f36e3901208584f80a7f756cb665b42f58240fdcfe08",
             "vmlx_engine/cli.py": "011707af57328e79065a0196f02cc2593016b23c53780e1e698654144b93c3c7",
-            "tests/test_engine_audit.py": "bed1456b992ad90cd0868dbf756967cfb5b668c2e1e3da3c89cf28aa7ebd18d1",
+            "tests/test_engine_audit.py": "2c70f4d8370732ce39136b9962a983447c63706c2fddd071a6450f5c4953ded4",
             "tests/test_reasoning_modes.py": "ee5ede8146d3311c5c96c64f24399897c32ab7fa3f00ad505a88068fac11ace2",
             "panel/src/main/ipc/models.ts": "3054fcbcdf411ee4943c93ff16ac92a2bd71704333f88bfdade73530e0a5eab0",
             "panel/src/main/sessions.ts": "c832d3c116dcc71cedaa44d1017dc006cc1c24a9624d51156cb669cbde8cd4e8",
@@ -1553,6 +1558,7 @@
           },
           "missing_source_hashes": [],
           "stale_source_hashes": [
+            "vmlx_engine/server.py",
             "tests/test_engine_audit.py"
           ],
           "missing_source_files": []
@@ -1596,7 +1602,7 @@
           "source_hashes_current": {
             "vmlx_engine/native_mtp.py": "80c7c5a9afe85e42f951f85df064bb57c993c667b94d509d614ea651bfafd612",
             "vmlx_engine/mllm_batch_generator.py": "7aef5095206b19d980bea7afee87a7f635d7ef6ad8632f23c51bf8d4be11efcc",
-            "vmlx_engine/server.py": "ca045d9df8cab304b315c4357a159457bbd1b56a23b43546b4f0bda3192720e1",
+            "vmlx_engine/server.py": "b663e20e912161c5c508f36e3901208584f80a7f756cb665b42f58240fdcfe08",
             "vmlx_engine/native_mtp_policy_suite.py": "774ba75e99ee473a0430310f84e707dc946b2cb238fd9f0444d2ee2d83d4d31c",
             "panel/src/main/sessions.ts": "c832d3c116dcc71cedaa44d1017dc006cc1c24a9624d51156cb669cbde8cd4e8",
             "panel/src/main/model-config-registry.ts": "9e1364c67b61955b46f7bf07510f6b71d47b4f3ef23264bdc88eb48b9a3c794e",
@@ -1611,7 +1617,9 @@
             "tests/test_native_mtp_contract.py": "3a6a6eef8a297150acc493d5bcf88a6940ce2150e64276a2e156d62118edf268"
           },
           "missing_source_hashes": [],
-          "stale_source_hashes": [],
+          "stale_source_hashes": [
+            "vmlx_engine/server.py"
+          ],
           "missing_source_files": []
         },
         "vl_media": {
@@ -2455,9 +2463,9 @@
           "tests/cross_matrix/run_noheavy_api_cache_contract.py": "e7aeb94d50589293da3c05a8e3f1ffab27ce845422b5e80ae3ac8685f024a2b8"
         },
         "source_hashes_current": {
-          "vmlx_engine/server.py": "ca045d9df8cab304b315c4357a159457bbd1b56a23b43546b4f0bda3192720e1",
+          "vmlx_engine/server.py": "b663e20e912161c5c508f36e3901208584f80a7f756cb665b42f58240fdcfe08",
           "vmlx_engine/tool_parsers/dsml_tool_parser.py": "7c9c0d983f479d1ab6dff39253d4636d608a7fe3653bb5f64051e75f30c7e9f8",
-          "tests/test_engine_audit.py": "bed1456b992ad90cd0868dbf756967cfb5b668c2e1e3da3c89cf28aa7ebd18d1",
+          "tests/test_engine_audit.py": "2c70f4d8370732ce39136b9962a983447c63706c2fddd071a6450f5c4953ded4",
           "tests/test_batching.py": "56fa5cb4d01cc64e9ab2d4f599e7e7f06a84dd42ed1607f352f27f77eedb6b38",
           "tests/test_mllm_scheduler_cache.py": "5681927d449836af3cb148e9aa196b8155da253dd423469344e36955b05e3840",
           "tests/test_tq_disk_cache.py": "3a9138e972d247867191b9f1e42aeb25ddb6182aa9b6a29debbd107d374746b0",
@@ -2467,6 +2475,7 @@
         },
         "missing_source_hashes": [],
         "stale_source_hashes": [
+          "vmlx_engine/server.py",
           "tests/test_engine_audit.py"
         ],
         "missing_source_files": [],
@@ -3280,14 +3289,26 @@
         "inventory_status": "open",
         "missing_required_rows": [],
         "open_required_rows": [
+          "gemma4_e2b_qat_jang4m",
+          "gemma4_e4b_qat_jang4m",
+          "gemma4_12b_qat_jang4m",
+          "gemma4_26b_qat_jang4m",
+          "gemma4_31b_qat_jang4m",
           "gemma4_e2b_qat_native_mxfp4",
           "gemma4_e4b_qat_native_mxfp4",
           "gemma4_12b_native_mxfp4",
           "gemma4_26b_vl",
           "gemma4_31v_or_31b_vl"
         ],
-        "source_live_smoke_open_rows": [],
+        "source_live_smoke_open_rows": [
+          "gemma4_e2b_qat_jang4m",
+          "gemma4_e4b_qat_jang4m",
+          "gemma4_12b_qat_jang4m",
+          "gemma4_26b_qat_jang4m",
+          "gemma4_31b_qat_jang4m"
+        ],
         "source_live_smoke_artifacts": {
+          "gemma4_12b_qat_jang4m": "build/current-all-local-model-smoke-gemma4-12b-jang4m-tools-nomedia-current-20260609/JANGQ_gemma-4-12B-it-JANG_4M/result.json",
           "gemma4_e2b_qat_native_mxfp4": "build/current-all-local-model-smoke-gemma4-e2b-qat-mxfp4-fullmedia-tools-l2-after-tool-result-quoted-target-20260609/summary.json",
           "gemma4_e4b_qat_native_mxfp4": "build/current-all-local-model-smoke-gemma4-e4b-qat-mxfp4-fullmedia-tools-l2-after-tool-result-quoted-target-20260609/summary.json",
           "gemma4_12b_native_mxfp4": "build/current-all-local-model-smoke-gemma4-12b-qat-mxfp4-fullmedia-tools-l2-after-tool-result-quoted-target-20260609/summary.json",
@@ -3295,6 +3316,46 @@
           "gemma4_31v_or_31b_vl": "build/current-all-local-model-smoke-gemma4-31b-qat-mxfp4-tools-l2-after-audio-capability-gate-20260609/summary.json"
         },
         "media_backing": {
+          "gemma4_e2b_qat_jang4m": {
+            "audio_weight_backed": true,
+            "audio_embed_only": false,
+            "vision_weight_backed": true,
+            "video_runtime_proof_required": true,
+            "video_runtime_source_proven": null,
+            "post_video_text_recovery_source_proven": null
+          },
+          "gemma4_e4b_qat_jang4m": {
+            "audio_weight_backed": true,
+            "audio_embed_only": false,
+            "vision_weight_backed": true,
+            "video_runtime_proof_required": true,
+            "video_runtime_source_proven": null,
+            "post_video_text_recovery_source_proven": null
+          },
+          "gemma4_12b_qat_jang4m": {
+            "audio_weight_backed": false,
+            "audio_embed_only": true,
+            "vision_weight_backed": true,
+            "video_runtime_proof_required": true,
+            "video_runtime_source_proven": false,
+            "post_video_text_recovery_source_proven": false
+          },
+          "gemma4_26b_qat_jang4m": {
+            "audio_weight_backed": false,
+            "audio_embed_only": false,
+            "vision_weight_backed": true,
+            "video_runtime_proof_required": true,
+            "video_runtime_source_proven": null,
+            "post_video_text_recovery_source_proven": null
+          },
+          "gemma4_31b_qat_jang4m": {
+            "audio_weight_backed": false,
+            "audio_embed_only": false,
+            "vision_weight_backed": true,
+            "video_runtime_proof_required": true,
+            "video_runtime_source_proven": null,
+            "post_video_text_recovery_source_proven": null
+          },
           "gemma4_e2b_qat_native_mxfp4": {
             "audio_weight_backed": true,
             "audio_embed_only": false,
@@ -3336,8 +3397,505 @@
             "post_video_text_recovery_source_proven": true
           }
         },
+        "qat_jang4m_rows": {
+          "gemma4_e2b_qat_jang4m": {
+            "display": "Gemma 4 E2B QAT JANG_4M",
+            "status": "open",
+            "variant": "qat_jang4m",
+            "expected_model_type": "gemma4",
+            "tool_parser": "gemma4",
+            "reasoning_parser": "gemma4",
+            "required_modalities": [
+              "text",
+              "vision",
+              "audio",
+              "video"
+            ],
+            "matching_paths": [
+              "/Users/eric/models/JANGQ-AI/gemma-4-E2B-it-qat-JANG_4M"
+            ],
+            "matching_rows": [
+              {
+                "path": "/Users/eric/models/JANGQ-AI/gemma-4-E2B-it-qat-JANG_4M",
+                "name": "gemma-4-E2B-it-qat-JANG_4M",
+                "model_type": "gemma4",
+                "text_model_type": "gemma4_text",
+                "vision": true,
+                "audio": true,
+                "video": true,
+                "modality_backing": {
+                  "weight_map_present": true,
+                  "audio_advertised_by_config": true,
+                  "audio_weight_backed": true,
+                  "audio_tower_weight_count": 751,
+                  "audio_embed_only": false,
+                  "audio_embed_weight_count": 1,
+                  "vision_advertised_by_config": true,
+                  "vision_weight_backed": true,
+                  "vision_weight_count": 659,
+                  "video_advertised_by_config": true,
+                  "video_weight_backed": false,
+                  "video_weight_count": 0,
+                  "video_runtime_proof_required": true
+                },
+                "weight_format": "jang_affine",
+                "format": null,
+                "quantization_mode": "affine",
+                "quantization_method": null,
+                "quantization_bits": 8,
+                "quantization_group_size": 32,
+                "jang_has_vision": true,
+                "jang_has_audio": true,
+                "has_generation_config": true,
+                "has_tokenizer_config": true,
+                "has_processor_config": true,
+                "has_jang_config": true
+              }
+            ],
+            "notes": [
+              "gemma-4-E2B-it-qat-JANG_4M: video metadata requires live frame-through-vision proof"
+            ],
+            "live_proof_required": [
+              "autodetect_model_family_and_qat_jang4m_variant",
+              "model_owned_generation_config_defaults",
+              "chat_completions_nonstream_visible",
+              "chat_completions_stream_content_delta",
+              "responses_nonstream_visible",
+              "responses_stream_content_delta",
+              "responses_streaming_args_and_content_deltas",
+              "responses_function_call_arguments_delta_done_output_item",
+              "required_tool_call",
+              "auto_tool_call",
+              "tool_result_continuation",
+              "no_tool_plain_answer",
+              "multi_turn_recall",
+              "raw_tool_markup_leak_check",
+              "hidden_reasoning_leak_check",
+              "json_xml_code_whitespace_exactness",
+              "vision_if_advertised",
+              "audio_if_advertised_or_honestly_gated",
+              "video_if_advertised_or_honestly_gated",
+              "post_media_text_recovery",
+              "media_salted_cache_no_cross_reuse",
+              "prefix_cache_first_miss_second_hit",
+              "mixed_swa_prefix_cache_first_miss_second_hit",
+              "paged_or_native_cache_telemetry",
+              "mixed_swa_component_state",
+              "turboquant_kv_encode_decode_boundary_where_valid",
+              "block_disk_l2_write",
+              "fresh_process_l2_restore",
+              "async_rederive_or_clean_partial_hit_policy",
+              "cli_ui_parser_reasoning_cache_max_token_parity",
+              "installed_app_startup_and_settings_parity",
+              "ui_cli_parity",
+              "installed_app_parity"
+            ],
+            "live_proof_status": "missing",
+            "source_live_smoke": {
+              "status": "missing",
+              "artifact": null
+            }
+          },
+          "gemma4_e4b_qat_jang4m": {
+            "display": "Gemma 4 E4B QAT JANG_4M",
+            "status": "open",
+            "variant": "qat_jang4m",
+            "expected_model_type": "gemma4",
+            "tool_parser": "gemma4",
+            "reasoning_parser": "gemma4",
+            "required_modalities": [
+              "text",
+              "vision",
+              "audio",
+              "video"
+            ],
+            "matching_paths": [
+              "/Users/eric/models/JANGQ-AI/gemma-4-E4B-it-qat-JANG_4M"
+            ],
+            "matching_rows": [
+              {
+                "path": "/Users/eric/models/JANGQ-AI/gemma-4-E4B-it-qat-JANG_4M",
+                "name": "gemma-4-E4B-it-qat-JANG_4M",
+                "model_type": "gemma4",
+                "text_model_type": "gemma4_text",
+                "vision": true,
+                "audio": true,
+                "video": true,
+                "modality_backing": {
+                  "weight_map_present": true,
+                  "audio_advertised_by_config": true,
+                  "audio_weight_backed": true,
+                  "audio_tower_weight_count": 751,
+                  "audio_embed_only": false,
+                  "audio_embed_weight_count": 1,
+                  "vision_advertised_by_config": true,
+                  "vision_weight_backed": true,
+                  "vision_weight_count": 659,
+                  "video_advertised_by_config": true,
+                  "video_weight_backed": false,
+                  "video_weight_count": 0,
+                  "video_runtime_proof_required": true
+                },
+                "weight_format": "jang_affine",
+                "format": null,
+                "quantization_mode": "affine",
+                "quantization_method": null,
+                "quantization_bits": 8,
+                "quantization_group_size": 32,
+                "jang_has_vision": true,
+                "jang_has_audio": true,
+                "has_generation_config": true,
+                "has_tokenizer_config": true,
+                "has_processor_config": true,
+                "has_jang_config": true
+              }
+            ],
+            "notes": [
+              "gemma-4-E4B-it-qat-JANG_4M: video metadata requires live frame-through-vision proof"
+            ],
+            "live_proof_required": [
+              "autodetect_model_family_and_qat_jang4m_variant",
+              "model_owned_generation_config_defaults",
+              "chat_completions_nonstream_visible",
+              "chat_completions_stream_content_delta",
+              "responses_nonstream_visible",
+              "responses_stream_content_delta",
+              "responses_streaming_args_and_content_deltas",
+              "responses_function_call_arguments_delta_done_output_item",
+              "required_tool_call",
+              "auto_tool_call",
+              "tool_result_continuation",
+              "no_tool_plain_answer",
+              "multi_turn_recall",
+              "raw_tool_markup_leak_check",
+              "hidden_reasoning_leak_check",
+              "json_xml_code_whitespace_exactness",
+              "vision_if_advertised",
+              "audio_if_advertised_or_honestly_gated",
+              "video_if_advertised_or_honestly_gated",
+              "post_media_text_recovery",
+              "media_salted_cache_no_cross_reuse",
+              "prefix_cache_first_miss_second_hit",
+              "mixed_swa_prefix_cache_first_miss_second_hit",
+              "paged_or_native_cache_telemetry",
+              "mixed_swa_component_state",
+              "turboquant_kv_encode_decode_boundary_where_valid",
+              "block_disk_l2_write",
+              "fresh_process_l2_restore",
+              "async_rederive_or_clean_partial_hit_policy",
+              "cli_ui_parser_reasoning_cache_max_token_parity",
+              "installed_app_startup_and_settings_parity",
+              "ui_cli_parity",
+              "installed_app_parity"
+            ],
+            "live_proof_status": "missing",
+            "source_live_smoke": {
+              "status": "missing",
+              "artifact": null
+            }
+          },
+          "gemma4_12b_qat_jang4m": {
+            "display": "Gemma 4 12B QAT JANG_4M",
+            "status": "open",
+            "variant": "qat_jang4m",
+            "expected_model_type": "gemma4_unified",
+            "tool_parser": "gemma4",
+            "reasoning_parser": "gemma4",
+            "required_modalities": [
+              "text",
+              "vision",
+              "audio",
+              "video"
+            ],
+            "matching_paths": [
+              "/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-JANG_4M"
+            ],
+            "matching_rows": [
+              {
+                "path": "/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-JANG_4M",
+                "name": "gemma-4-12B-it-qat-JANG_4M",
+                "model_type": "gemma4_unified",
+                "text_model_type": "gemma4_unified_text",
+                "vision": true,
+                "audio": true,
+                "video": true,
+                "modality_backing": {
+                  "weight_map_present": true,
+                  "audio_advertised_by_config": true,
+                  "audio_weight_backed": false,
+                  "audio_tower_weight_count": 0,
+                  "audio_embed_only": true,
+                  "audio_embed_weight_count": 1,
+                  "vision_advertised_by_config": true,
+                  "vision_weight_backed": true,
+                  "vision_weight_count": 10,
+                  "video_advertised_by_config": true,
+                  "video_weight_backed": false,
+                  "video_weight_count": 0,
+                  "video_runtime_proof_required": true
+                },
+                "weight_format": "jang_affine",
+                "format": null,
+                "quantization_mode": "affine",
+                "quantization_method": null,
+                "quantization_bits": 8,
+                "quantization_group_size": 32,
+                "jang_has_vision": true,
+                "jang_has_audio": true,
+                "has_generation_config": true,
+                "has_tokenizer_config": true,
+                "has_processor_config": true,
+                "has_jang_config": true
+              }
+            ],
+            "notes": [
+              "gemma-4-12B-it-qat-JANG_4M: audio metadata present without audio_tower weights",
+              "gemma-4-12B-it-qat-JANG_4M: video metadata requires live frame-through-vision proof"
+            ],
+            "live_proof_required": [
+              "autodetect_model_family_and_qat_jang4m_variant",
+              "model_owned_generation_config_defaults",
+              "chat_completions_nonstream_visible",
+              "chat_completions_stream_content_delta",
+              "responses_nonstream_visible",
+              "responses_stream_content_delta",
+              "responses_streaming_args_and_content_deltas",
+              "responses_function_call_arguments_delta_done_output_item",
+              "required_tool_call",
+              "auto_tool_call",
+              "tool_result_continuation",
+              "no_tool_plain_answer",
+              "multi_turn_recall",
+              "raw_tool_markup_leak_check",
+              "hidden_reasoning_leak_check",
+              "json_xml_code_whitespace_exactness",
+              "vision_if_advertised",
+              "audio_if_advertised_or_honestly_gated",
+              "video_if_advertised_or_honestly_gated",
+              "post_media_text_recovery",
+              "media_salted_cache_no_cross_reuse",
+              "prefix_cache_first_miss_second_hit",
+              "mixed_swa_prefix_cache_first_miss_second_hit",
+              "paged_or_native_cache_telemetry",
+              "mixed_swa_component_state",
+              "turboquant_kv_encode_decode_boundary_where_valid",
+              "block_disk_l2_write",
+              "fresh_process_l2_restore",
+              "async_rederive_or_clean_partial_hit_policy",
+              "cli_ui_parser_reasoning_cache_max_token_parity",
+              "installed_app_startup_and_settings_parity",
+              "ui_cli_parity",
+              "installed_app_parity"
+            ],
+            "live_proof_status": "missing",
+            "source_live_smoke": {
+              "status": "open",
+              "artifact": "build/current-all-local-model-smoke-gemma4-12b-jang4m-tools-nomedia-current-20260609/JANGQ_gemma-4-12B-it-JANG_4M/result.json",
+              "summary_status": "probe_failed",
+              "failed": null,
+              "completed": null,
+              "row_count": null,
+              "video_runtime_proven": false,
+              "post_video_text_recovery_proven": false
+            }
+          },
+          "gemma4_26b_qat_jang4m": {
+            "display": "Gemma 4 26B QAT JANG_4M",
+            "status": "open",
+            "variant": "qat_jang4m",
+            "expected_model_type": "gemma4",
+            "tool_parser": "gemma4",
+            "reasoning_parser": "gemma4",
+            "required_modalities": [
+              "text",
+              "vision",
+              "video"
+            ],
+            "matching_paths": [
+              "/Users/eric/models/JANGQ-AI/gemma-4-26B-A4B-it-qat-JANG_4M"
+            ],
+            "matching_rows": [
+              {
+                "path": "/Users/eric/models/JANGQ-AI/gemma-4-26B-A4B-it-qat-JANG_4M",
+                "name": "gemma-4-26B-A4B-it-qat-JANG_4M",
+                "model_type": "gemma4",
+                "text_model_type": "gemma4_text",
+                "vision": true,
+                "audio": true,
+                "video": true,
+                "modality_backing": {
+                  "weight_map_present": true,
+                  "audio_advertised_by_config": true,
+                  "audio_weight_backed": false,
+                  "audio_tower_weight_count": 0,
+                  "audio_embed_only": false,
+                  "audio_embed_weight_count": 0,
+                  "vision_advertised_by_config": true,
+                  "vision_weight_backed": true,
+                  "vision_weight_count": 356,
+                  "video_advertised_by_config": true,
+                  "video_weight_backed": false,
+                  "video_weight_count": 0,
+                  "video_runtime_proof_required": true
+                },
+                "weight_format": "jang_affine",
+                "format": null,
+                "quantization_mode": "affine",
+                "quantization_method": null,
+                "quantization_bits": 8,
+                "quantization_group_size": 32,
+                "jang_has_vision": true,
+                "jang_has_audio": false,
+                "has_generation_config": true,
+                "has_tokenizer_config": true,
+                "has_processor_config": true,
+                "has_jang_config": true
+              }
+            ],
+            "notes": [
+              "gemma-4-26B-A4B-it-qat-JANG_4M: video metadata requires live frame-through-vision proof"
+            ],
+            "live_proof_required": [
+              "autodetect_model_family_and_qat_jang4m_variant",
+              "model_owned_generation_config_defaults",
+              "chat_completions_nonstream_visible",
+              "chat_completions_stream_content_delta",
+              "responses_nonstream_visible",
+              "responses_stream_content_delta",
+              "responses_streaming_args_and_content_deltas",
+              "responses_function_call_arguments_delta_done_output_item",
+              "required_tool_call",
+              "auto_tool_call",
+              "tool_result_continuation",
+              "no_tool_plain_answer",
+              "multi_turn_recall",
+              "raw_tool_markup_leak_check",
+              "hidden_reasoning_leak_check",
+              "json_xml_code_whitespace_exactness",
+              "vision_if_advertised",
+              "audio_if_advertised_or_honestly_gated",
+              "video_if_advertised_or_honestly_gated",
+              "post_media_text_recovery",
+              "media_salted_cache_no_cross_reuse",
+              "prefix_cache_first_miss_second_hit",
+              "mixed_swa_prefix_cache_first_miss_second_hit",
+              "paged_or_native_cache_telemetry",
+              "mixed_swa_component_state",
+              "turboquant_kv_encode_decode_boundary_where_valid",
+              "block_disk_l2_write",
+              "fresh_process_l2_restore",
+              "async_rederive_or_clean_partial_hit_policy",
+              "cli_ui_parser_reasoning_cache_max_token_parity",
+              "installed_app_startup_and_settings_parity",
+              "ui_cli_parity",
+              "installed_app_parity"
+            ],
+            "live_proof_status": "missing",
+            "source_live_smoke": {
+              "status": "missing",
+              "artifact": null
+            }
+          },
+          "gemma4_31b_qat_jang4m": {
+            "display": "Gemma 4 31B QAT JANG_4M",
+            "status": "open",
+            "variant": "qat_jang4m",
+            "expected_model_type": "gemma4",
+            "tool_parser": "gemma4",
+            "reasoning_parser": "gemma4",
+            "required_modalities": [
+              "text",
+              "vision",
+              "video"
+            ],
+            "matching_paths": [
+              "/Users/eric/models/JANGQ-AI/gemma-4-31B-it-qat-JANG_4M"
+            ],
+            "matching_rows": [
+              {
+                "path": "/Users/eric/models/JANGQ-AI/gemma-4-31B-it-qat-JANG_4M",
+                "name": "gemma-4-31B-it-qat-JANG_4M",
+                "model_type": "gemma4",
+                "text_model_type": "gemma4_text",
+                "vision": true,
+                "audio": true,
+                "video": true,
+                "modality_backing": {
+                  "weight_map_present": true,
+                  "audio_advertised_by_config": true,
+                  "audio_weight_backed": false,
+                  "audio_tower_weight_count": 0,
+                  "audio_embed_only": false,
+                  "audio_embed_weight_count": 0,
+                  "vision_advertised_by_config": true,
+                  "vision_weight_backed": true,
+                  "vision_weight_count": 356,
+                  "video_advertised_by_config": true,
+                  "video_weight_backed": false,
+                  "video_weight_count": 0,
+                  "video_runtime_proof_required": true
+                },
+                "weight_format": "jang_affine",
+                "format": null,
+                "quantization_mode": "affine",
+                "quantization_method": null,
+                "quantization_bits": 8,
+                "quantization_group_size": 32,
+                "jang_has_vision": true,
+                "jang_has_audio": false,
+                "has_generation_config": true,
+                "has_tokenizer_config": true,
+                "has_processor_config": true,
+                "has_jang_config": true
+              }
+            ],
+            "notes": [
+              "gemma-4-31B-it-qat-JANG_4M: video metadata requires live frame-through-vision proof"
+            ],
+            "live_proof_required": [
+              "autodetect_model_family_and_qat_jang4m_variant",
+              "model_owned_generation_config_defaults",
+              "chat_completions_nonstream_visible",
+              "chat_completions_stream_content_delta",
+              "responses_nonstream_visible",
+              "responses_stream_content_delta",
+              "responses_streaming_args_and_content_deltas",
+              "responses_function_call_arguments_delta_done_output_item",
+              "required_tool_call",
+              "auto_tool_call",
+              "tool_result_continuation",
+              "no_tool_plain_answer",
+              "multi_turn_recall",
+              "raw_tool_markup_leak_check",
+              "hidden_reasoning_leak_check",
+              "json_xml_code_whitespace_exactness",
+              "vision_if_advertised",
+              "audio_if_advertised_or_honestly_gated",
+              "video_if_advertised_or_honestly_gated",
+              "post_media_text_recovery",
+              "media_salted_cache_no_cross_reuse",
+              "prefix_cache_first_miss_second_hit",
+              "mixed_swa_prefix_cache_first_miss_second_hit",
+              "paged_or_native_cache_telemetry",
+              "mixed_swa_component_state",
+              "turboquant_kv_encode_decode_boundary_where_valid",
+              "block_disk_l2_write",
+              "fresh_process_l2_restore",
+              "async_rederive_or_clean_partial_hit_policy",
+              "cli_ui_parser_reasoning_cache_max_token_parity",
+              "installed_app_startup_and_settings_parity",
+              "ui_cli_parity",
+              "installed_app_parity"
+            ],
+            "live_proof_status": "missing",
+            "source_live_smoke": {
+              "status": "missing",
+              "artifact": null
+            }
+          }
+        },
         "checks": {
-          "all_required_source_live_smokes_present": true,
+          "all_required_source_live_smokes_present": false,
           "all_required_live_proofs_present": false
         },
         "required_next_evidence": [
@@ -3345,7 +3903,8 @@
           "installed-app startup and UI settings parity",
           "visual/audio/video live proof for each advertised bundle modality",
           "mixed-SWA cache telemetry, TurboQuant KV boundaries, and L2 restart restore",
-          "model-owned generation defaults plus parser/reasoning/tool behavior"
+          "model-owned generation defaults plus parser/reasoning/tool behavior",
+          "Gemma4 QAT JANG_4M autodetect, Responses streaming args/content deltas, media honesty, UI/CLI, and installed-app parity"
         ],
         "evidence_files_present": {
           "build/current-gemma-qat-native-mxfp4-local-inventory-after-source-smoke-map-20260609.json": true,
