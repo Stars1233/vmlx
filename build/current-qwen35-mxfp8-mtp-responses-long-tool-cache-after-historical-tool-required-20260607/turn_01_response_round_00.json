@@ -1,0 +1,27 @@
+{
+  "id": "resp_e2533f459dd3",
+  "object": "response",
+  "created_at": 1781044378,
+  "status": "completed",
+  "model": "qwen3.6-35b-a3b-mxfp8-mtp-long-tool",
+  "output": [
+    {
+      "type": "function_call",
+      "id": "fc_97aa1e9c590d",
+      "call_id": "call_27331cba",
+      "name": "grep_repo",
+      "arguments": "{\"pattern\": \"cache.*reuse|prefix.*cache|l2.*cache|ssm.*cache\", \"path\": \"vmlx_engine\", \"max_matches\": 10}",
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 2025,
+    "output_tokens": 69,
+    "total_tokens": 2094,
+    "input_tokens_details": null
+  },
+  "previous_response_id": null,
+  "error": null,
+  "warnings": null,
+  "output_text": null
+}

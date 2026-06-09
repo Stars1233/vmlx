@@ -1,0 +1,30 @@
+{
+  "id": "resp_fa6289f198d7",
+  "object": "response",
+  "created_at": 1781044385,
+  "status": "completed",
+  "model": "qwen3.6-35b-a3b-mxfp8-mtp-long-tool",
+  "output": [
+    {
+      "type": "function_call",
+      "id": "fc_8bd5a43f2496",
+      "call_id": "call_dd829f9b",
+      "name": "grep_repo",
+      "arguments": "{\"path\": \"vmlx_engine\", \"pattern\": \"def _rebuild_meta_state_after_truncation\", \"max_matches\": 1}",
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 4468,
+    "output_tokens": 61,
+    "total_tokens": 4529,
+    "input_tokens_details": {
+      "cached_tokens": 64,
+      "cache_detail": "paged+ssm"
+    }
+  },
+  "previous_response_id": "resp_6dc4bf833a8d",
+  "error": null,
+  "warnings": null,
+  "output_text": null
+}

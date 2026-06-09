@@ -1,0 +1,24 @@
+{
+  "model": "qwen3.6-35b-a3b-mxfp8-mtp-long-tool",
+  "input": [
+    {
+      "type": "function_call_output",
+      "call_id": "call_dd829f9b",
+      "output": "vmlx_engine/scheduler.py:92: def _rebuild_meta_state_after_truncation("
+    },
+    {
+      "role": "user",
+      "content": "Use the tool result above. Produce the final visible answer now and include TOOL_EVIDENCE: <exact path:line> copied from the function_call_output. Do not call another tool."
+    }
+  ],
+  "instructions": "You are doing a real coding review of vMLX cache behavior. When tools are available, you must call exactly one provided tool before final output. When tools are not available, answer directly. When a tool result is provided, cite one exact file:line marker from that result as TOOL_EVIDENCE: <path:line>. Keep final output concise and do not loop. Tool results are provided. Produce a visible answer now with TOOL_EVIDENCE copied from the result; do not call another tool in this resolution round.",
+  "store": true,
+  "stream": false,
+  "max_output_tokens": 768,
+  "enable_thinking": false,
+  "previous_response_id": "resp_fa6289f198d7",
+  "temperature": 0.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "tool_choice": "none"
+}

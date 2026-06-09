@@ -7677,3 +7677,13 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Current MiMo boundary surfaced in checklist: `model_upload_action_required=true`; valid parsed tool/JSON structures still mutate `blue-cat`, `B7-CAT-09`, and the tool-result continuation period. Do not mask this in parser, JSON repair, sampling defaults, cache, or L2.
 - Validation passed: MiMo classifier/audit/objective/checklist focused tests `19/19`, release-manifest pointer test `1/1`, `py_compile`, and `git diff --check`.
 - Boundary: MiMo is not release-cleared. Remaining path is corrected artifact/quantization contract or runtime decode/logit fix, plus media/speed/UI/installed-app proof.
+
+# 2026-06-09 - Qwen35 required-tool/cache proof
+
+- Reduced blocker: Qwen3.6 35B MXFP8-MTP Responses required-tool + historical tool-result + hybrid cache proof.
+- Source fix: added one bounded nonstream required-tool retry in `vmlx_engine/server.py` for Chat Completions and Responses. It retries only after `tool_choice=required` emitted prose/no tool call, preserves the real tool schema and required choice, disables thinking for the correction turn, and still returns the existing 400 if no tool call is produced.
+- Gate fix: strengthened `tests/cross_matrix/run_responses_long_tool_cache_gate.py` so tools-enabled turns ask for a tool call as the first assistant output, and tool-result resolution appends a user continuation requiring `TOOL_EVIDENCE: <exact path:line>` copied from the function output.
+- Live proof passed against fresh Qwen35 server: `build/current-qwen35-mxfp8-mtp-responses-long-tool-cache-after-historical-tool-required-20260607/SUMMARY.json`, `overall_pass=true`, required calls on turns 1/2, grounded tool evidence on turns 1/2, cached tokens `128` then `256`, cache detail `paged+ssm`, block+SSM L2 present, final no-tools visible answer, no HTTP errors, no markup leaks, no loop tail.
+- Checklist refreshed: `build/current-full-release-objective-checklist-after-qwen35-long-tool-cache-20260609.json`, `status=open`, `failed_count=73`; all `qwen35_long_tool_cache_*` checks are green.
+- Validation passed: `tests/test_engine_audit.py -k "required_tool or responses_long_context_tool_cache_gate"` passed `21/21`; `tests/test_tool_format.py -k required` passed `5/5`; `py_compile` passed for `vmlx_engine/server.py`, the Qwen35 gate, and audit tests; live gate passed.
+- Boundary: no release, no package/sign/notarize/tag/download. Still open: same-model direct/gateway/tunnel raw SSE for #190/#192, Qwen35 restart/installed-video rows, N2 JANG_1L live clearance, MiMo exactness/media, Gemma full live/UI/installed-app, and package parity.
