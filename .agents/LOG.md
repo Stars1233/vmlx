@@ -7254,3 +7254,25 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
   - `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json`: `status=open`, `failed_count=121`, now explicitly includes `responses_raw_sse_parity_no_reasoning_disable_workaround=false`.
 - Validation: `tests/test_responses_raw_sse_parity_contract.py tests/test_full_release_objective_checklist.py -k "raw_sse_parity or responses_tunnel_capture or reasoning_disable_workaround"` passed `12/12`; `py_compile` passed.
 - Boundary: stricter classification only. Direct/gateway tool args are not enough to close #190/#192 until same-model direct/gateway/tunnel raw SSE proves authoritative args, valid output indices, and no reasoning-disable workaround.
+
+# 2026-06-09 - N2 JANG_1L Metal-OOM live attempt and safer preflight
+
+- Blocker reduced: `N2/Qwen-family: JANG/JANGTQ parser/cache/MTP/gdn_sink/L2 proof`.
+- Attempted one conservative N2 JANG_1L live chat/cache proof after no-heavy preflight temporarily returned `schedule_live_proof` (`available_gib=115.7`, old `required_available_gib=114.57`). Command used `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANG_1L`, served name `n2-pro-jang1l-chat-proof`, port `8899`, max output `4`, reduced prefill/completion batch sizes, and no tool/Responses/L2 probes.
+- Result: server exited `-6` before `/health`; log `build/current-n2-jang1l-chat-cache-proof-20260609.server.log` shows loader startup, `Model loaded (batched mode)`, then `Wired limit set to 115 GB (model 119 GB)` followed by `Insufficient Memory (00000008:kIOGPUCommandBufferCallbackErrorOutOfMemory)`.
+- Source/proof-harness fixes:
+  - `tests/cross_matrix/run_n2_jang1l_memory_preflight.py` now defaults to `DEFAULT_REQUIRED_EXTRA_HEADROOM_GIB=8.0` and labels it Metal/runtime headroom, so the observed `115.7 GiB` margin no longer schedules a live proof.
+  - `tests/cross_matrix/run_n2_chat_cache_gate.py` now catches startup/request exceptions and returns a structured `status=fail` artifact with phase, error, server log, exit code, telemetry, and requested probes instead of raising before writing evidence.
+- Refreshed artifacts:
+  - `build/current-n2-pro-jang1l-local-memory-preflight-20260609.json`: `status=open`, `decision=do_not_launch`, `required_available_gib=118.57`, `available_gib=114.8`, `memory_gap_gib=3.77`, `required_extra_headroom_gib=8.0`.
+  - `build/current-n2-jang1l-chat-cache-proof-20260609.json`: `status=skipped`, `reason=insufficient_available_memory`, `required_available_gib=118.5`, `available_gib=114.8`, `memory_gap_gib=3.7`.
+  - `build/current-objective-proof-after-pr-intake-matrix-refresh-20260609.json` and `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json` now show N2 `do_not_launch` with the 8 GiB headroom boundary.
+- Validation: N2 focused tests passed `21/21`; `py_compile` passed. Boundary: not live runtime/cache/API/UI proof; next N2 JANG_1L attempt needs materially more free memory or a real smaller-runtime strategy, not a lower preflight threshold.
+
+# 2026-06-09 - N2 preflight schedule decision accepted in objective test
+
+- Current suite refresh showed N2 JANG_1L no-heavy preflight now returns `schedule_live_proof` on this host (`available_gib=116.15`, `required_available_gib=114.57`) instead of the older `do_not_launch` state.
+- Pushed `dc6eda78` (`Allow N2 preflight schedule decision`) to `origin/main` and `origin/codex/pr-intake-manifest`, on top of the other agent's current tip `a9cebad3`.
+- The N2 objective digest test now accepts either `do_not_launch` or `schedule_live_proof` while still requiring `status=open`, `classification=careful_ram_live_proof_pending`, `no_load=true`, and live runtime/cache/API/UI proof as next evidence.
+- Validation: `tests/test_objective_proof_digest.py::test_objective_proof_digest_tracks_n2_pro_397b_release_blocker`, `tests/test_n2_jang1l_memory_preflight.py`, and `tests/test_current_regression_suite.py::test_current_regression_suite_hashes_focused_pytest_gate_sources` passed `4/4`; `py_compile` and `git diff --check` passed.
+- Boundary: this does not launch N2 JANG_1L or clear N2 release support. It only keeps the no-heavy objective gate correct across changing available RAM.
