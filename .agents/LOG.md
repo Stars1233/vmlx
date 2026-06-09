@@ -7751,3 +7751,10 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Positive evidence: the tunnel capture has reasoning summary events, `response.function_call_arguments.delta`, `response.function_call_arguments.done`, expected tool `record_fact`, and authoritative arguments `{"value": "blue-cat"}` for `models/Qwen3.6-35B-A3B-MXFP8-CRACK-MTP`.
 - Failure boundary: the capture reuses `output_index=0` for both the initial message item and the later `function_call` item. The contract fails only `all_present_surfaces_have_valid_output_item_indices`; it is not the empty-args bug and not a reasoning-disable workaround.
 - Next proof required: same-model Qwen35 direct local and gateway raw SSE captures, plus tunnel recapture after deployed output-index fix. Keep Gemma E2B tunnel wrong-model availability separate from Qwen35 output-index validity.
+
+# 2026-06-09 - Gemma4 31B QAT JANG_4M source smoke
+
+- Live proof run: `VMLINUX_BENCH_ISOLATED=1 .venv/bin/python bench/all_local_model_smoke.py --models-root /Users/eric/models/JANGQ-AI --only gemma-4-31B-it-qat-JANG_4M --max-models 1 --include-tools --include-l2-restart --no-media --port 8925 --load-timeout-s 600 --request-timeout-s 360 --out build/current-all-local-model-smoke-gemma4-31b-qat-jang4m-tools-nomedia-l2-20260609`.
+- Result: `status=pass`; required tool, tool-result continuation, JSON/code exactness, mixed-SWA prefix hit, block-disk writes, and L2 restart passed. Cache repeat hit showed `cached_tokens=56`, `cache_detail=paged+mixed_swa`; L2 restart summary showed `disk_hits=2`.
+- Proof-map update: QAT JANG_4M source-smoke open rows are now only `gemma4_12b_qat_jang4m`, blocked by visible `<audio|>` leak. E2B/E4B/26B/31B source no-media smokes are present and pass.
+- Boundary: source no-media 31B proof only. Media/Responses/UI/installed-app/release remain open.

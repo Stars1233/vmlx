@@ -691,3 +691,10 @@
 - failure boundary: the same tunnel capture emits both `message` and `function_call` at `output_index=0`, so `all_present_surfaces_have_valid_output_item_indices=false`. This is not an `arguments:{}` failure and not a reasoning-disable workaround.
 - next proof: capture Qwen35 direct local and gateway raw SSE for the same served model and prove `message:0`, `function_call:1` or no message item before function-call. Keep Gemma E2B tunnel wrong-model and Qwen35 tunnel output-index as separate blockers.
 - release boundary: no release/sign/package action. Responses raw SSE remains open for same-model direct/gateway/tunnel parity, required reasoning events, valid output indices, content/tool arg delta/done, and tool-result continuation across Gemma, Qwen/N2, MiMo, and installed app surfaces.
+
+## CODEX - 2026-06-09 Gemma4 31B QAT JANG_4M source smoke
+- blocker reduced: Gemma4 QAT JANG_4M source-live text/tool/cache/L2 coverage for 31B.
+- proof: `build/current-all-local-model-smoke-gemma4-31b-qat-jang4m-tools-nomedia-l2-20260609/JANGQ_gemma-4-31B-it-qat-JANG_4M/result.json`, `status=pass`; summary at `build/current-all-local-model-smoke-gemma4-31b-qat-jang4m-tools-nomedia-l2-20260609/summary.json`.
+- proven surfaces: visible ACK repeat, multi-turn recall, reasoning separation, required tool call, tool-result continuation, exact JSON/code probes, mixed-SWA cache hit `cached_tokens=56` with `cache_detail=paged+mixed_swa`, block-disk writes, and L2 restart with `disk_hits=2`.
+- updated artifacts: Gemma inventory/objective/checklist now consume E2B, E4B, 26B, and 31B QAT JANG_4M source smokes; the only QAT JANG_4M source-smoke open row is 12B due visible `<audio|>` leak in required-tool output.
+- boundary: no release clearance; media/video, Responses raw SSE args/content deltas, UI/CLI parity, installed-app parity, and the 12B unified leak remain open.

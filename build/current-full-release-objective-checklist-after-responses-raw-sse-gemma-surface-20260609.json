@@ -1,6 +1,6 @@
 {
   "boundary": "No-heavy checklist only. A pass here would mean current evidence claims every listed gate is green; it still must be backed by the live artifacts referenced by each row. Open rows are release blockers.",
-  "created_at": "2026-06-09T15:54:13-0700",
+  "created_at": "2026-06-09T15:56:18-0700",
   "failed": [
     {
       "detail": false,
@@ -942,8 +942,14 @@
           "video"
         ],
         "source_live_smoke": {
-          "artifact": null,
-          "status": "missing"
+          "artifact": "build/current-all-local-model-smoke-gemma4-31b-qat-jang4m-tools-nomedia-l2-20260609/JANGQ_gemma-4-31B-it-qat-JANG_4M/result.json",
+          "completed": null,
+          "failed": null,
+          "post_video_text_recovery_proven": false,
+          "row_count": null,
+          "status": "pass",
+          "summary_status": "pass",
+          "video_runtime_proven": false
         },
         "status": "open",
         "tool_parser": "gemma4",
@@ -969,8 +975,7 @@
           "gemma4_31v_or_31b_vl"
         ],
         "source_live_smoke_open_rows": [
-          "gemma4_12b_qat_jang4m",
-          "gemma4_31b_qat_jang4m"
+          "gemma4_12b_qat_jang4m"
         ]
       },
       "evidence": "build/current-gemma-qat-native-mxfp4-local-inventory-after-source-smoke-map-20260609.json",
@@ -993,8 +998,7 @@
           "gemma4_31v_or_31b_vl"
         ],
         "source_live_smoke_open_rows": [
-          "gemma4_12b_qat_jang4m",
-          "gemma4_31b_qat_jang4m"
+          "gemma4_12b_qat_jang4m"
         ]
       },
       "evidence": "build/current-gemma-qat-native-mxfp4-local-inventory-after-source-smoke-map-20260609.json",
@@ -2796,8 +2800,14 @@
             "video"
           ],
           "source_live_smoke": {
-            "artifact": null,
-            "status": "missing"
+            "artifact": "build/current-all-local-model-smoke-gemma4-31b-qat-jang4m-tools-nomedia-l2-20260609/JANGQ_gemma-4-31B-it-qat-JANG_4M/result.json",
+            "completed": null,
+            "failed": null,
+            "post_video_text_recovery_proven": false,
+            "row_count": null,
+            "status": "pass",
+            "summary_status": "pass",
+            "video_runtime_proven": false
           },
           "status": "open",
           "tool_parser": "gemma4",
@@ -2898,8 +2908,14 @@
             "video"
           ],
           "source_live_smoke": {
-            "artifact": null,
-            "status": "missing"
+            "artifact": "build/current-all-local-model-smoke-gemma4-31b-qat-jang4m-tools-nomedia-l2-20260609/JANGQ_gemma-4-31B-it-qat-JANG_4M/result.json",
+            "completed": null,
+            "failed": null,
+            "post_video_text_recovery_proven": false,
+            "row_count": null,
+            "status": "pass",
+            "summary_status": "pass",
+            "video_runtime_proven": false
           },
           "status": "open",
           "tool_parser": "gemma4",
@@ -3604,8 +3620,7 @@
             "gemma4_31v_or_31b_vl"
           ],
           "source_live_smoke_open_rows": [
-            "gemma4_12b_qat_jang4m",
-            "gemma4_31b_qat_jang4m"
+            "gemma4_12b_qat_jang4m"
           ]
         },
         "evidence": "build/current-gemma-qat-native-mxfp4-local-inventory-after-source-smoke-map-20260609.json",
@@ -3628,8 +3643,7 @@
             "gemma4_31v_or_31b_vl"
           ],
           "source_live_smoke_open_rows": [
-            "gemma4_12b_qat_jang4m",
-            "gemma4_31b_qat_jang4m"
+            "gemma4_12b_qat_jang4m"
           ]
         },
         "evidence": "build/current-gemma-qat-native-mxfp4-local-inventory-after-source-smoke-map-20260609.json",
