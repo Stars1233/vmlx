@@ -6985,3 +6985,29 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
   - `.venv/bin/python -m pytest -q tests/test_tool_parsers.py -k MiniMax` -> `20 passed`.
   - Live source smoke: `build/current-all-local-model-smoke-minimax-small-jangtq-cache-language-after-bare-invoke-tool-20260609/summary.json` -> `status=pass`, `failures=0` for `MiniMax-M2.7-Small-JANGTQ` with tools, cache repeat, multiturn recall, reasoning, structured JSON, exact code whitespace, and L2 restart enabled.
 - Boundary: this clears the current-source MiniMax Small JANGTQ bare-invoke tool parser failure. It does not clear reporter parity, public installed/downloaded app parity, or the broader random Chinese/visible planning isolation row; those remain active release blockers.
+
+## CODEX - 2026-06-09 Gemma4 upstream unified/shared-KV runtime intake
+- Blocker reduced: #188/#191 Gemma4 loader/runtime compatibility for upstream MLX Gemma4 Unified and KV-shared checkpoint shapes.
+- Upstream mapped from current repos:
+  - `mlx-lm` PR #1349: `gemma4_unified` text-runtime remap plus `vision_embedder.*` sanitize skip.
+  - `mlx-vlm` PR #1301: Gemma4 `num_kv_shared_layers` must avoid allocating unused K/V modules and must filter stale shared-layer K/V weights.
+- Source fix:
+  - `vmlx_engine/runtime_patches/mlx_lm_compat.py` maps `gemma4_unified` to `gemma4` and strips encoder-free `vision_embedder.*` weights before Gemma4 text sanitize.
+  - `vmlx_engine/runtime_patches/mlx_vlm_compat.py` marks Gemma4 shared-KV layers as `kv_shared_only`, removes unused `k_proj`/`v_proj`/`k_norm`/`v_norm` modules, and filters stale shared K/V weights in both outer and language sanitize paths.
+- Handoff doc updated: `docs/internal/UPSTREAM_MLX_RUNTIME_INTAKE_2026_06_09.md` now lists those two implemented backports and records checked/no-patch items for `mlx-lm` PR #1167 and PR #1347.
+- Verification:
+  - `.venv/bin/python -m pytest -q tests/test_mlx_lm_runtime_patches.py` -> `8 passed`.
+  - Current-suite source-hash/release-manifest mirror slice -> `2 passed`.
+  - `py_compile` and `git diff --check` -> pass.
+- Boundary: source/no-heavy compatibility only. No heavy Gemma live rerun, no installed-app/UI proof, no package/sign/notarize/tag/download/release action. Keep full Gemma4 QAT/native MXFP4 matrix and installed-app parity open.
+
+# 2026-06-09 05:34 PDT - Responses public tunnel available-model SSE proof
+
+- Endpoint probed: `https://testapi.adlabus.dev/v1/responses`.
+- Same-model Gemma4 E2B parity is still open because the tunnel does not advertise `gemma4-e2b-sse` and returned `model_not_found` with its current available model list.
+- Available Gemma4 12B MXFP8 capture is also not usable yet because the tunnel returned `model_load_timeout` before streaming.
+- Available-model tunnel proof: `models/Qwen3.6-35B-A3B-MXFP8-CRACK-MTP` streamed a required `record_fact` Responses tool call through the public tunnel with reasoning enabled.
+- Raw SSE: `build/responses-sse-captures-20260609/tunnel-qwen35-mxfp8-mtp-tool-20260609.sse`.
+- Classifier artifact: `build/current-responses-public-tunnel-available-model-sse-proof-20260609.json`.
+- Result: `argument_delta_count=2`, `argument_done_count=1`, `authoritative_arguments={"value": "blue-cat"}`, `parse_errors=0`, and visible tunnel heartbeats/reasoning did not prevent argument streaming.
+- Boundary: this proves the public tunnel is not generally stripping `response.function_call_arguments.delta/done` events. It does not close same-model direct/gateway/tunnel parity because the tunnel model set differs from the local Gemma4 E2B proof model.

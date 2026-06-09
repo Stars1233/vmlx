@@ -51,8 +51,32 @@ signing, notarization, tags, downloads, or release actions.
      `-1` for empty sequences or windows shorter than the searched sequence.
    - Proof: `tests/test_mlx_lm_runtime_patches.py::test_tokenizer_wrapper_find_clamps_negative_reverse_start`.
 
+7. `mlx-lm` PR #1349, Gemma4 Unified text-runtime mapping and encoder-free
+   vision-weight sanitizing.
+   - Local pinned `mlx_lm.utils.MODEL_REMAPPING` had no `gemma4_unified` entry,
+     and `mlx_lm.models.gemma4.Model.sanitize()` did not skip
+     `vision_embedder.*` weights.
+   - vMLX fix: runtime patch maps `gemma4_unified` to `gemma4` and strips
+     `vision_embedder.*` before delegating to the existing Gemma4 sanitize path.
+   - Proof: `tests/test_mlx_lm_runtime_patches.py::test_mlx_lm_gemma4_unified_maps_to_text_runtime_and_strips_vision_embedder`.
+
+8. `mlx-vlm` PR #1301, Gemma4 shared-KV layer loading.
+   - Local pinned `mlx_vlm.models.gemma4.language.Gemma4TextModel.__init__`
+     still instantiated unused K/V projections for layers covered by
+     `num_kv_shared_layers`, and the language sanitize path did not remove stale
+     K/V weights from shared layers.
+   - vMLX fix: runtime patch marks shared-KV layers as `kv_shared_only`, removes
+     unused `k_proj`/`v_proj`/`k_norm`/`v_norm` modules, and filters stale shared
+     K/V weights in both outer and language sanitize paths.
+   - Proof: `tests/test_mlx_lm_runtime_patches.py::test_mlx_vlm_gemma4_shared_kv_layers_drop_unused_kv_modules_and_weights`.
+
 ## Upstream items checked but not blindly ported
 
+- `mlx-lm` PR #1167 (think-token `None` property guard): already present in the
+  local pinned wheel; no vMLX patch needed.
+- `mlx-lm` PR #1347 (BPE cleanup-space streaming decode mismatch): inspected,
+  but needs a local streaming-vs-final decode mismatch repro before changing
+  vMLX detokenization behavior.
 - `mlx-lm` PR #1336 (`<tool_call` marker without closing `>`): vMLX streaming
   marker list already contains `<tool_call`; parser/final extraction remains
   guarded by required-schema filtering. Keep testing #192 direct/gateway/tunnel
@@ -65,9 +89,10 @@ signing, notarization, tags, downloads, or release actions.
 - `mlx-vlm` PR #1324 (APC disk hit promotion): vMLX already has L2-to-L1
   promotion in scheduler/prefix-cache paths; treat as covered unless a focused
   second-hit disk latency regression proves otherwise.
-- `mlx-vlm` PR #1336 (Gemma4 materialized unused shared-KV weights): likely
-  relevant to mlx-format Gemma4 checkpoints, but local Gemma4 text/vendored
-  model shape differs. Needs a load-weight key regression before patching.
+- `mlx-vlm` PR #1336 (Gemma4 materialized unused shared-KV weights): separate
+  from the implemented #1301 shared-KV module/sanitize fix. Keep mapped as a
+  future load-key regression candidate before changing materialized weight
+  handling.
 - `mlx-vlm` PR #1313/#1334 (Qwen3.5/3.6 quantized KV and MTP prefill): relevant
   to Qwen3.6/MTP/gdn_sink lanes, but requires local mapping against
   `utils/mlx_vlm_compat.py` and current Qwen VLM language source before port.
