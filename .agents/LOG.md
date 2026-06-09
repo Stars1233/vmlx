@@ -6833,6 +6833,16 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Other-agent reminder: keep the #192 list item as a verified fail-closed server/source boundary, not a proven current-source parser leak. Do not invent `cmd` from preamble text. Still require rebuilt/installed app and raw direct/gateway/tunnel SSE proof before public closure.
 - Boundary: source/unit proof only. Gemma4 QAT audio semantic live proof, installed-app/UI parity, full Responses streaming parity, and release readiness remain open.
 
+# 2026-06-09 upstream MLX runtime intake and pinned compatibility patches
+
+- Blockers reduced: #190/#191/#192 cross-model runtime/tool/cache/template issues and LFM/Gemma4 source compatibility.
+- Upstream checked: recent `mlx-lm` and `mlx-vlm` PRs for BatchRotatingKVCache meta-state, LFM2 MoE routing, Gemma4 thinking detection, `<tool_call` marker merge, EOS-closed tools, OpenAI argument strings, APC disk promotion, Gemma4 shared-KV load, Qwen quantized KV, and MTP prefill.
+- Source fix: added `vmlx_engine/runtime_patches/mlx_lm_compat.py`, auto-installed from `runtime_patches/__init__.py`, to backport three confirmed local `mlx_lm` gaps: BatchRotatingKVCache string-bool `meta_state`, LFM2 sigmoid MoE routing with `routed_scaling_factor`, and Gemma4 channel-thinking detection skip when `<|think|>` is present.
+- Source fix carried from in-flight audio edit: Gemma4 audio placeholders are inserted before `<turn|>` as well as the older turn terminators.
+- Proof-map fix: runtime patch source and tests are now included in current-suite, packaged-integrity, installed-app parity, release-gate, and JANG compatibility source-hash boundaries; focused current-suite pytest includes `tests/test_mlx_lm_runtime_patches.py`.
+- Handoff doc: `docs/internal/UPSTREAM_MLX_RUNTIME_INTAKE_2026_06_09.md` lists implemented patches, checked-but-not-ported upstream PRs, and other-agent warnings.
+- Boundary: source/no-heavy only. No package, signing, notarization, tag, download, or release action. LFM/Gemma4/Qwen/DSV4/Responses still need their live and installed-app proof rows before closure.
+
 # 2026-06-09 03:42 PDT - Gemma QAT downloads and inventory row correction
 
 - Blocker reduced: Gemma QAT/native MXFP4 model availability and release-gate accuracy for later live multiturn/tool/cache/media proof.
