@@ -570,3 +570,13 @@ Classification:
 - Current no-heavy truth: API/cache contract, cache architecture contract, model-family detection, N2 family policy, TurboQuant runtime contract, TurboQuant disk roundtrip, and hybrid cache policy are all represented as pass in the N2 row.
 - Release boundary: N2 remains open until memory-safe live runtime/API/UI/cache/media proof exists for the relevant JANG_1L/JANGTQ profiles. This is not release clearance.
 - Focused verification: objective N2 row test and full checklist N2 row test passed `2/2`; py_compile passed for the edited runners.
+
+## 2026-06-09 N2 JANGTQ2 Responses streaming SSE proof
+
+- Reduced blocker: N2/Qwen-family local source API proof for streaming Responses function-call arguments.
+- Source/proof harness: `tests/cross_matrix/run_n2_chat_cache_gate.py` now has `--include-responses-stream-probe`, raw SSE parsing, event-type capture, heartbeat count, argument delta/done/final-item extraction, completed status, and cache telemetry capture.
+- Live artifact: `build/current-n2-jangtq2-responses-stream-tool-cache-proof-20260609.json`, `status=pass`.
+- Live result: local source server with `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2` passed chat cache/tool, non-stream Responses tool plus `previous_response_id` follow-up, and streaming Responses required-tool SSE.
+- Streaming row details: `heartbeat_count=24`; function call `lookup`; parsed args `{"query":"alpha"}`; `response.function_call_arguments.delta`, `response.function_call_arguments.done`, and final `response.output_item.done` all carried non-empty argument text; `cached_tokens=192`; `cache_detail=paged+ssm`.
+- Verification: `tests/test_n2_chat_cache_gate.py` passed `8/8`; `py_compile` passed; `git diff --check` passed for the runner/test slice.
+- Boundary: N2 remains open. This is local source N2 JANGTQ2 API proof only; it does not clear JANG_1L memory-gated live path, tunnel/gateway SSE parity, installed app/UI execution, L2 restart restore, reasoning/parser leak checks, MTP/`gdn_sink` edge cases, media/VL/audio/video, or release readiness.
