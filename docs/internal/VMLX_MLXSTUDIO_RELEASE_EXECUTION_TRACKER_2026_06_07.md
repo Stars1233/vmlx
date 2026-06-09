@@ -504,3 +504,14 @@ Classification:
 - Updated current model-family release pointers to `build/current-model-family-detection-contract-after-n2-policy-row-20260609.json`; this is the authoritative no-heavy contract for MiMo/N2 autodetect, parser/cache metadata, and the explicit N2 text-only-until-VL-proven policy row.
 - Historical `docs/internal/release-gates/*/release-ready-manifest.json` snapshots were intentionally left unchanged.
 - Release remains blocked until live MiMo/N2 installed-app and media E2E rows are green; this pointer refresh prevents stale no-heavy proof from being treated as current.
+
+## 2026-06-09 MiMo local structural proof refresh
+
+- Reduced blocker: MiMo local manifest/structural proof integrity for the two retained local bundles, without loading the 79G/105G models and without source-vs-quant comparison.
+- Updated `tests/cross_matrix/run_mimo_v2_local_bundle_metadata_contract.py` so it now writes:
+  - `build/current-mimo-v2-local-bundle-metadata-contract-20260607.json`
+  - `build/current-mimo-jangtq2-local-manifest-20260607.tsv`
+  - `build/current-mimo-jang2l-local-structural-verify-20260606.json`
+- Structural proof now checks both `MiMo-V2.5-JANGTQ_2` and `MiMo-V2.5-JANG_2L` for config/index/sidecar/layout metadata: model-owned `generation_config.json`, `xml_function` tool parser, `think_xml` reasoning parser, hybrid full/SWA cache topology, prefix cache, L2 disk cache, TurboQuant-KV boundary, affine bookend sidecars, stacked `switch_mlp` layout, and absence of legacy `.mlp.experts.*` layout.
+- Current audit: `build/current-mimo-v2-jang2l-current-audit-after-local-structural-proof-20260609.json`, `status=open`, `manifest_integrity=true`, `structural_verify=true`.
+- Objective digest remains open. This does not clear live text/tool/exactness/speed/media/L2/UI rows.
