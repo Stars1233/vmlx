@@ -1,3 +1,13 @@
+# 2026-06-09 - Runtime patch package parity coverage
+
+- Stayed in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, no release package/sign/notarize/tag/download work.
+- Reduced blocker class: packaged/runtime parity for auto-installed upstream runtime patch shims spanning Gemma4 image recovery, Kimi MLA decode stability, DSV4 model registration, and MLX/MLX-VLM compatibility fixes.
+- Root cause found: `vmlx_engine/runtime_patches/__init__.py` auto-installs `deepseek_v4_register`, `gemma4_processing`, `gemma4_vision`, `kimi_k25_mla`, `mlx_lm_compat`, and `mlx_vlm_compat`, but package hash gates only covered `gemma4_processing`, `mlx_lm_compat`, and `mlx_vlm_compat`. A rebuilt package could silently omit or stale Gemma4 mixed pixel-value list coercion, Kimi fp32 MLA patch install, or DSV4 model-type registration while source tests stayed green.
+- Source/proof fix: added `runtime_patches/deepseek_v4_register.py`, `runtime_patches/gemma4_vision.py`, and `runtime_patches/kimi_k25_mla.py` to bundled-python, release-gate, packaged-integrity, and installed-app parity hash surfaces. Added all auto-installed runtime patch modules plus `tests/test_kimi_k25_mla_patch.py` to current-suite source hashes.
+- Regression: package/parity and current-suite tests now assert that every auto-installed runtime patch module is hash-covered.
+- Red/green proof: the focused package/current-suite test set failed before the manifest fix on missing runtime patch files, then passed after the fix (`6 passed`).
+- Boundary: package/parity/source-hash coverage only. This protects rebuild drift but does not clear live Gemma full media/UI/tunnel, Kimi live quality, DSV4 memory-gated tool-loop, N2/MiMo rows, signing, notarization, tag, or download rows.
+
 # 2026-06-09 - Qwen/N2 native-MTP package parity coverage
 
 - Stayed in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, no release package/sign/notarize/tag/download work.
