@@ -7759,6 +7759,13 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Proof-map update: QAT JANG_4M source-smoke open rows are now only `gemma4_12b_qat_jang4m`, blocked by visible `<audio|>` leak. E2B/E4B/26B/31B source no-media smokes are present and pass.
 - Boundary: source no-media 31B proof only. Media/Responses/UI/installed-app/release remain open.
 
+# 2026-06-09 - Gemma4 12B QAT JANG_4M tool sentinel source fix
+
+- Source fix: final Chat/Responses assembly now drops exact singleton Gemma modality sentinels from visible content only when valid structured tool calls are present. Covered sentinels are `<audio|>`, `<|audio|>`, image variants, and video variants; real prose around a tool call and no-tool outputs remain visible.
+- Root-cause note: the Gemma4 parser already strips these tokens during native tool parsing, so this guard covers response-assembly/parser-selection residue without hiding arbitrary visible text leaks.
+- Validation passed: Gemma4 parser tests `11/11`; engine audit guard tests `2/2`; all-local smoke validator leak test `1/1`; `py_compile` for touched Python files.
+- Boundary: the parser-fix entry below carries the live 12B rerun and proof-map refresh; this source guard is additional response-assembly defense against parser-selection residue. No release, package, sign, notarize, tag, or download action.
+
 # 2026-06-09 - Gemma4 modality sentinel tool-leak fix
 
 - Root cause surface: Gemma4 parser stripped tool/channel sentinels but not exact modality sentinels left as residual content after a valid native tool call. 12B QAT JANG_4M generated a valid `record_fact({"value":"blue-cat"})` call plus visible `<audio|>`, failing `tool_visible_text_leak`.

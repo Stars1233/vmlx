@@ -704,7 +704,7 @@
 - source fix: `vmlx_engine/server.py` now drops exact singleton Gemma modality sentinels (`<audio|>`, `<|audio|>`, image/video variants) from the final visible assistant content only when a structured tool call is present. This extends the existing `thought`/`analysis` channel-marker guard and does not suppress real prose around a tool call or any no-tool response.
 - root-cause boundary: `Gemma4ToolParser` already strips the same sentinel family during structural extraction; the server guard covers response-assembly/parser-selection bypass residue without accepting arbitrary visible text as normal.
 - validation: `tests/test_gemma4_tool_parser.py` passed `11/11`; `tests/test_engine_audit.py -k 'tool_visible_channel_marker or xml_function_tool_fallback_accepts_native_mimo_schema'` passed `2/2`; `tests/test_all_local_model_smoke.py -k tool_visible_text_leak` passed `1/1`; `py_compile` passed for the touched Python files.
-- next proof: rerun the 12B QAT JANG_4M no-media tool/cache/L2 smoke and refresh Gemma inventory/objective/checklist only if the live artifact turns green. No package, sign, notarize, tag, download, or release action was run.
+- proof boundary: the parser-fix entry below carries the live 12B rerun that turns the no-media source row green; this server guard is additional source defense against parser-selection/assembly residue. No package, sign, notarize, tag, download, or release action was run.
 
 ## CODEX - 2026-06-09 Gemma4 modality sentinel tool-leak fix
 - runtime/parser fix: `vmlx_engine/tool_parsers/gemma4_tool_parser.py` now strips exact Gemma4 modality sentinels `<|image|>`, `<image|>`, `<|audio|>`, `<audio|>`, `<|video|>`, and `<video|>` from parser residual content after tool-call extraction.

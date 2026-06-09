@@ -880,6 +880,13 @@ Classification:
 - Covered source surfaces: Gemma4 parser/runtime autodetect, visible text, reasoning separation, required tool call, tool-result continuation, JSON/code exactness, mixed-SWA cache hit telemetry, block-disk writes, and fresh-process L2 restart for 31B QAT JANG_4M.
 - Release boundary: source no-media 31B proof only. The remaining QAT JANG_4M source-smoke blocker is 12B visible `<audio|>` leak; media/video, Responses raw SSE args/content deltas, UI/CLI parity, installed-app parity, packaging/signing/notarization remain open.
 
+## 2026-06-09 Gemma4 12B QAT JANG_4M tool sentinel source fix
+
+- Source fix: final response assembly now treats exact singleton Gemma modality sentinels as non-visible channel residue when a valid structured tool call exists.
+- Scope: drops only exact `<audio|>`, `<|audio|>`, image, and video sentinel-only content in tool-call responses. It does not hide prose, arbitrary text leaks, or no-tool responses.
+- Validation: Gemma4 parser tests `11/11`, focused engine guard tests `2/2`, all-local smoke visible-leak validator `1/1`, and `py_compile` passed.
+- Boundary: the parser-fix entry below carries the live 12B rerun and proof-map refresh; this source guard is additional response-assembly defense against parser-selection residue. No release, package, signing, notarization, tag, or download action was run.
+
 ## 2026-06-09 Gemma4 modality sentinel tool-leak fix
 
 - Fix: `Gemma4ToolParser._clean_special_tokens` now removes exact Gemma4 modality sentinel residue (`<|image|>`, `<image|>`, `<|audio|>`, `<audio|>`, `<|video|>`, `<video|>`) after native tool-call extraction.
