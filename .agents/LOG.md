@@ -6935,3 +6935,9 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Regenerated artifact: `build/current-responses-raw-sse-parity-20260609.json`, still `status=open`, `missing_captures=[direct,gateway,tunnel]`, with the stricter expected block recorded.
 - Validation: parity classifier tests plus current-suite marker guard passed `7/7`; no live vMLX model/gateway/tunnel listeners were available in this slice.
 - Boundary: not issue closure. Need real raw SSE captures across direct local server, panel gateway, and tunnel with matching expected args and reasoning events.
+
+## CODEX - 2026-06-09 Gemma4 audio capability requires tower weights
+- Blocker reduced: Gemma4 QAT/native MXFP4 advertised `media` honesty for 12B/26B/31B-style bundles.
+- Source fix: `_bundle_declares_native_audio()` now requires `model_type=gemma4` bundles to have both `audio_config` and actual `audio_tower.*` entries in `model.safetensors.index.json` before advertising audio. Token-only `audio_token_id` metadata no longer exposes audio capability for this family.
+- Proof: focused runtime modality tests passed `3/3`; `py_compile` and `git diff --check` passed.
+- Boundary: capability honesty only. This does not claim live Gemma4 audio semantic quality, installed-app parity, package, signing, notarization, tag, download, or release readiness.
