@@ -6802,6 +6802,14 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Proof artifact: `build/current-noheavy-api-cache-contract-after-responses-reasoning-empty-final-args-gateway-20260609.json`, `status=pass`, `missing_markers=[]`, `panel_gateway_contracts rc=0 passed=5`, `responses_streaming_tool_contracts rc=0 passed=5`.
 - Other-agent reminder: keep the server fail-closed rule for missing required XML args; do not synthesize tool args from preamble text. This gateway row proves local pass-through/recovery only, not public tunnel parity, rebuilt installed-app behavior, or release readiness.
 
+# 2026-06-09 05:06 PDT - Responses raw SSE parity capture harness
+
+- Blocker reduced: #190/#192 raw direct-vs-gateway-vs-tunnel SSE proof classification.
+- Source/proof-map fix: added `tests/cross_matrix/run_responses_raw_sse_parity_contract.py` plus unit tests. The classifier reconstructs authoritative function-call args from `response.function_call_arguments.delta/done` and detects lost gateway/tunnel args separately from an empty final `output_item.done.item.arguments`.
+- Current artifact: `build/current-responses-raw-sse-parity-20260609.json`, `status=open`, `missing_captures=[direct,gateway,tunnel]`; this is intentional because no live raw captures were supplied in this slice.
+- Validation: parity classifier tests passed `4/4`; current-suite source-hash guard passed; release-manifest source-hash mirror passed; py_compile and `git diff --check` passed.
+- Boundary: not a live tunnel proof and not issue closure. Pass requires direct local server, panel gateway, and tunnel raw SSE captures with matching authoritative arguments.
+
 # 2026-06-09 04:38 PDT - Gemma4 cross-shard MoE sidecars and audio waveform source fix
 
 - Continued from concurrent edits without reverting them.
