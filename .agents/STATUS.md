@@ -683,3 +683,11 @@
 - proven surfaces: visible ACK repeat, multi-turn recall, reasoning separation, required tool call, tool-result continuation, exact JSON/code probes, mixed-SWA cache hit `cached_tokens=56` with `cache_detail=paged+mixed_swa`, block-disk writes, and L2 restart with `disk_hits=2`.
 - updated artifacts: Gemma inventory/objective/checklist now consume E2B, E4B, and 26B QAT JANG_4M source smokes; source-smoke open rows are 12B and 31B.
 - boundary: no release clearance; 12B has current `<audio|>` tool-visible leak, 31B still needs source smoke, and all media/UI/installed-app/Responses raw SSE release rows remain open.
+
+## CODEX - 2026-06-09 Qwen35 tunnel raw SSE output-index proof
+- blocker classified: Responses raw SSE same-model/tool/reasoning parity for Qwen35 tunnel.
+- proof: `build/current-responses-raw-sse-parity-qwen35-tunnel-output-index-20260609.json`, `status=fail`.
+- positive evidence: existing tunnel capture `build/responses-sse-captures-20260609/tunnel-qwen35-mxfp8-mtp-tool-20260609.sse` has reasoning events (`8`), function-call argument deltas (`2`), function-call arguments done (`1`), expected tool `record_fact`, and authoritative args `{"value": "blue-cat"}` for model `models/Qwen3.6-35B-A3B-MXFP8-CRACK-MTP`.
+- failure boundary: the same tunnel capture emits both `message` and `function_call` at `output_index=0`, so `all_present_surfaces_have_valid_output_item_indices=false`. This is not an `arguments:{}` failure and not a reasoning-disable workaround.
+- next proof: capture Qwen35 direct local and gateway raw SSE for the same served model and prove `message:0`, `function_call:1` or no message item before function-call. Keep Gemma E2B tunnel wrong-model and Qwen35 tunnel output-index as separate blockers.
+- release boundary: no release/sign/package action. Responses raw SSE remains open for same-model direct/gateway/tunnel parity, required reasoning events, valid output indices, content/tool arg delta/done, and tool-result continuation across Gemma, Qwen/N2, MiMo, and installed app surfaces.

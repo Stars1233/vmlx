@@ -866,3 +866,10 @@ Classification:
 - Proof: `build/current-all-local-model-smoke-gemma4-26b-qat-jang4m-tools-nomedia-l2-20260609/JANGQ_gemma-4-26B-A4B-it-qat-JANG_4M/result.json`, `status=pass`.
 - Covered source surfaces: Gemma4 parser/runtime autodetect, visible text, reasoning separation, required tool call, tool-result continuation, JSON/code exactness, mixed-SWA cache hit telemetry, block-disk writes, and fresh-process L2 restart for 26B QAT JANG_4M.
 - Release boundary: source no-media 26B proof only. 12B remains blocked by visible `<audio|>` leak, 31B source smoke remains open, and media/video, Responses raw SSE args/content deltas, UI/CLI parity, installed-app parity, packaging/signing/notarization remain open.
+
+## 2026-06-09 Qwen35 tunnel raw SSE output-index proof
+
+- Proof: `build/current-responses-raw-sse-parity-qwen35-tunnel-output-index-20260609.json`, `status=fail`.
+- Positive boundary: Qwen35 tunnel raw SSE has reasoning events and complete `record_fact({"value": "blue-cat"})` argument delta/done/final item payloads.
+- Failure boundary: the same capture reuses `output_index=0` for both `message` and `function_call`, so output-index validity remains a Responses release blocker.
+- Next proof: same-model Qwen35 direct/gateway/tunnel raw SSE after fixing the deployed output-index path. Gemma E2B tunnel wrong-model routing remains a separate Responses blocker.

@@ -7743,3 +7743,11 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Result: `status=pass`; required tool, tool-result continuation, JSON/code exactness, mixed-SWA prefix hit, block-disk writes, and L2 restart passed. Cache repeat hit showed `cached_tokens=56`, `cache_detail=paged+mixed_swa`; L2 restart summary showed `disk_hits=2`.
 - Proof-map update: `build/current-gemma-qat-native-mxfp4-local-inventory-after-source-smoke-map-20260609.json`, `build/current-objective-proof-after-n2-jang1l-memory-refresh-20260609.json`, and `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json` now consume E2B, E4B, and 26B QAT JANG_4M source smokes.
 - Boundary: source no-media 26B proof only. 12B remains blocked by visible `<audio|>` leak, 31B remains unproven, and media/Responses/UI/installed-app/release remain open.
+
+# 2026-06-09 - Qwen35 tunnel raw SSE output-index proof
+
+- Reduced blocker: Responses raw SSE parity classification for the Qwen/Qwen3.6 tunnel surface.
+- Proof artifact: `build/current-responses-raw-sse-parity-qwen35-tunnel-output-index-20260609.json`, generated from the existing raw capture `build/responses-sse-captures-20260609/tunnel-qwen35-mxfp8-mtp-tool-20260609.sse`.
+- Positive evidence: the tunnel capture has reasoning summary events, `response.function_call_arguments.delta`, `response.function_call_arguments.done`, expected tool `record_fact`, and authoritative arguments `{"value": "blue-cat"}` for `models/Qwen3.6-35B-A3B-MXFP8-CRACK-MTP`.
+- Failure boundary: the capture reuses `output_index=0` for both the initial message item and the later `function_call` item. The contract fails only `all_present_surfaces_have_valid_output_item_indices`; it is not the empty-args bug and not a reasoning-disable workaround.
+- Next proof required: same-model Qwen35 direct local and gateway raw SSE captures, plus tunnel recapture after deployed output-index fix. Keep Gemma E2B tunnel wrong-model availability separate from Qwen35 output-index validity.
