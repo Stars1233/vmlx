@@ -6802,6 +6802,16 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Proof artifact: `build/current-noheavy-api-cache-contract-after-responses-reasoning-empty-final-args-gateway-20260609.json`, `status=pass`, `missing_markers=[]`, `panel_gateway_contracts rc=0 passed=5`, `responses_streaming_tool_contracts rc=0 passed=5`.
 - Other-agent reminder: keep the server fail-closed rule for missing required XML args; do not synthesize tool args from preamble text. This gateway row proves local pass-through/recovery only, not public tunnel parity, rebuilt installed-app behavior, or release readiness.
 
+# 2026-06-09 04:38 PDT - Gemma4 cross-shard MoE sidecars and audio waveform source fix
+
+- Continued from concurrent edits without reverting them.
+- Blocker reduced: #191/#188 Gemma4 QAT/native MXFP4 loader/media source correctness for MoE bundles and Gemma4 audio inputs.
+- Source fix: Gemma4 MoE native-MXFP expert sidecars now hydrate `.scales`/`.biases` from the safetensors index when packed expert weights and sidecars land in different shards, then split/dequant into runtime `experts.switch_glu.{gate,up,down}_proj.weight`.
+- Source fix: Gemma4/Gemma4 Unified audio requests now decode temp WAV paths into float32 waveform arrays before calling processors that expect raw waveform arrays.
+- Source fix: `_run_vision_encoding_inner` now uses a fallback request id for request-like internal test/probe objects that do not expose `request_id`, preserving MiMo/media prefill guard telemetry without crashing unit fixtures.
+- Regressions/proof: `test_gemma4_moe_mxfp_expert_cross_shard_sidecars_are_hydrated`, `test_gemma4_moe_mxfp_vlm_loader_initializes_sidecar_weight_map`, `test_gemma4_audio_waveforms_from_paths_decodes_wav_to_float32`; model-artifact-format proof `build/current-model-artifact-format-contract-after-gemma4-cross-shard-sidecars-audio-waveform-20260609.json`, `status=pass`, `missing_markers=[]`, `model_artifact_format_pytest rc=0 passed=179 deselected=192`.
+- Boundary: source/no-heavy and unit decode only. No Gemma4 26B live memory-safe proof, no audio semantic live proof, no installed-app proof, and no release/sign/package action.
+
 # 2026-06-09 03:42 PDT - Gemma QAT downloads and inventory row correction
 
 - Blocker reduced: Gemma QAT/native MXFP4 model availability and release-gate accuracy for later live multiturn/tool/cache/media proof.
