@@ -434,3 +434,27 @@ Boundary:
 - This fixes the unsafe default policy that allowed lossy q4/q8 stored cache on MiMo mixed-SWA without semantic parity proof.
 - This does not yet clear MiMo release. A live repeat-cache exactness run under the new lossless default is still required.
 - Explicit MiMo q4/q8 stored-cache quantization remains diagnostic-only until family-specific semantic parity is proven.
+
+## 2026-06-09 MiMo lossless-cache live proof
+
+Artifact:
+
+- `build/current-mimo-v2-jangtq2-cb-cache-lossless-auto-live-20260609.json`
+
+Result:
+
+- Server loaded `MiMo-V2.5-JANGTQ_2` and exited cleanly after the probe.
+- Native cache: `mixed_swa_kv_v1`, `cache_subtype=mimo_v2_asymmetric_swa`.
+- Prefix cache, paged cache, and block-disk L2 were enabled.
+- Stored-cache quantization was disabled: `storage_quantization.enabled=false`, `bits=null`.
+- Repeated prompt hit paged cache: `cached_tokens=46`, `cache_detail=paged`.
+- Block L2 wrote `78` tokens.
+- Repeat output was stable across uncached and cached runs: both returned `ACKCB-742`.
+- No hidden `<think>` tags and no 503/working-set rejection.
+- Final health generation throughput reported about `58.8 tok/s` for the short run.
+
+Classification:
+
+- The previous MiMo repeat-cache drift under lossy q4/q8 storage is no longer the active default-path blocker under the new lossless policy.
+- MiMo is still not release-cleared because literal exactness remains failed before and after cache: expected `ACK-CB-742`, actual `ACKCB-742`.
+- Current audit pointer updated to this artifact; refreshed audit is `build/current-mimo-v2-jang2l-current-audit-after-lossless-cache-live-20260609.json`.
