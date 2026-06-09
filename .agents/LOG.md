@@ -7011,3 +7011,34 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Classifier artifact: `build/current-responses-public-tunnel-available-model-sse-proof-20260609.json`.
 - Result: `argument_delta_count=2`, `argument_done_count=1`, `authoritative_arguments={"value": "blue-cat"}`, `parse_errors=0`, and visible tunnel heartbeats/reasoning did not prevent argument streaming.
 - Boundary: this proves the public tunnel is not generally stripping `response.function_call_arguments.delta/done` events. It does not close same-model direct/gateway/tunnel parity because the tunnel model set differs from the local Gemma4 E2B proof model.
+
+# 2026-06-09 - Responses tool parser candidate preference
+
+- Component fix in `vmlx_engine/server.py`: Responses finalization now tries separated content, separated reasoning, stripped full text, and full text as real parser candidates, then prefers the first parsed tool call set with non-empty arguments.
+- Root issue addressed: reasoning-enabled models can accumulate native tool syntax outside the content candidate; parsing only content first can miss real arguments or let an empty-argument candidate win.
+- Boundary: no arguments are synthesized from visible text or reasoning prose. Missing required XML/JSON args still fail closed through the existing required-tool path.
+- Validation: `.venv/bin/python -m py_compile vmlx_engine/server.py` passed; `.venv/bin/python -m pytest -q tests/test_server.py -k "Responses and function_call_arguments or streaming_responses_tool_call"` passed `2/2`; `git diff --check -- vmlx_engine/server.py` passed.
+
+# 2026-06-09 - Responses output-index parity contract and current-source boundary
+
+- Preserved and committed the Responses raw-SSE parity classifier update as `50923a7d` (`Track Responses output item index parity`) on `origin/main` and `origin/codex/pr-intake-manifest`.
+- Contract now flags any surface where `function_call` output items reuse a message/reasoning `output_index`; this matches the public tunnel Qwen35 capture shape where args streamed but the function item reused index `0`.
+- Validation: `.venv/bin/python -m py_compile tests/cross_matrix/run_responses_raw_sse_parity_contract.py tests/test_responses_raw_sse_parity_contract.py` passed; `.venv/bin/python -m pytest -q tests/test_responses_raw_sse_parity_contract.py` passed `8/8`.
+- Current source server boundary: `.venv/bin/python -m pytest -q tests/test_server.py -k "streaming_responses_tool_call_uses_next_output_index_without_text or streaming_responses_reasoning_tool_call_keeps_arguments"` passed `2/2`, proving current source emits function-call and argument events on the next output index for the focused unit path and keeps reasoning-channel tool arguments.
+- Boundary: same-model direct/gateway/tunnel parity still needs a comparable deployed tunnel model. The public tunnel available-model proof shows argument events are not generally stripped, but it also exposes stale/deployed output-index behavior that current source already guards against.
+
+# 2026-06-09 - Responses raw SSE same-model parity guard
+
+- Preserved and committed the follow-up classifier update as `56e9750e` (`Require same model for Responses SSE parity`) on `origin/main` and `origin/codex/pr-intake-manifest`.
+- Contract now requires all supplied direct/gateway/tunnel raw SSE surfaces to report the same model before a parity artifact can pass; this prevents a Qwen tunnel proof from closing a Gemma4 direct/gateway row.
+- Diagnostic artifact: `build/current-responses-raw-sse-parity-mixed-model-tunnel-output-index-20260609.json`, `status=fail`.
+- Evidence: direct/gateway Gemma4 E2B captures preserve `record_fact` args and valid output indices; public tunnel Qwen35 MXFP8 MTP preserves `{"value":"blue-cat"}` args, but is not the same model and reuses `output_index=0` for both message and function_call.
+- Boundary: not issue closure. Need same-model direct local, panel gateway, and tunnel raw SSE captures with matching args, reasoning events, parse-clean SSE, and valid output item indices.
+
+# 2026-06-09 - N2 JANGTQ2 live chat/cache/Responses proof
+
+- Ran existing live gate, no source-vs-quant comparison: `.venv/bin/python tests/cross_matrix/run_n2_chat_cache_gate.py --port 8894 --include-responses-probe --include-responses-stream-probe --out build/current-n2-jangtq2-chat-cache-responses-proof-after-responses-parser-20260609.json --cache-dir build/current-n2-jangtq2-chat-cache-responses-proof-block-cache-20260609`.
+- Result: artifact `status=pass` for `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2`.
+- Covered rows: chat no-cache/warm/cache-hit all returned `ACK`; chat cache hit reported `cached_tokens=8`, `cache_detail=paged+ssm`; Responses required tool returned `function_call_arguments=[{"query":"alpha"}]`; Responses tool follow-up returned visible `DONE`; streaming Responses required tool returned `function_call_arguments=[{"query":"alpha"}]`, `argument_delta_text_by_item={...: "{\"query\": \"alpha\"}"}`, `cached_tokens=192`, `cache_detail=paged+ssm`.
+- Runtime evidence in server log: model family `qwen3_5_moe`, `reasoning_parser=qwen3`, `tool_parser=qwen`, JANGTQ VLM fast path, P3/P15/P17/P18 kernels, TurboQuant enabled, runtime cache layout with TurboQuantKVCache attention layers and native SSM companion state, VLM paged cache, VLM block-disk cache, hybrid SSM L2, q4 KV storage, paged cache hits, KV+SSM cache hits, and TurboQuant recompression before cache reuse.
+- Boundary: this clears the current-source N2 JANGTQ2 narrow live cache/tool/Responses row. It does not clear installed-app UI parity, media/VL semantic rows, same-model public tunnel parity, DSV4, MiMo, package integrity, signing, notarization, or release readiness.
