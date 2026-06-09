@@ -535,3 +535,11 @@ Classification:
 - Remaining LFM blockers: exact-code whitespace failed by missing final `)`, block-L2 write/hit checklist remains open, and MXFP8 no-media tools artifact is still missing.
 - Fixed a harness false negative: `tool_result_continuation` now expects the exact prompt sentence `STORED blue-cat.`.
 - Focused validation: `tests/test_all_local_model_smoke.py` and `tests/test_full_release_objective_checklist.py` passed `75/75`.
+
+## 2026-06-09 LFM25 MXFP8 live smoke refresh
+
+- Ran current bundled-engine live smoke for `LFM2.5-8B-A1B-MXFP8` with tools enabled and media/video disabled.
+- Current artifact: `build/current-all-local-model-smoke-lfm25-mxfp8-tools-nomedia-20260609/JANGQ_LFM2.5-8B-A1B-MXFP8/result.json`.
+- Passed surfaces: visible cache repeat, multi-turn recall, required tool call, tool-result continuation, structured JSON exactness, parser metadata (`tool_parser=lfm2`, `reasoning_parser=qwen3`), typed `hybrid_ssm_v1` cache, and `paged+ssm` cache telemetry.
+- Remaining LFM MXFP8 blocker: exact-code whitespace failed by missing final `)`.
+- Full checklist refreshed as `build/current-full-release-objective-checklist-after-lfm25-mxfp8-live-smoke-20260609.json`; it remains open with LFM artifacts current rather than missing.
