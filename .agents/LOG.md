@@ -6844,3 +6844,10 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Live 26B A4B QAT smoke: `build/current-all-local-model-smoke-gemma4-26b-a4b-qat-mxfp4-tools-image-after-moe-mxfp-expert-split-20260609/JANGQ_gemma-4-26B-A4B-it-qat-MXFP4/result.json`, `status=probe_failed`, `failures=24`.
 - 26B boundary: model loaded, then first text prefill terminated the server with Metal OOM: `[METAL] Command buffer execution failed: Insufficient Memory`; server baseline was about `53.8GB` active with tight-memory allocator drain. Treat this as memory/preflight boundary, not release clearance.
 - Boundary: no release/sign/notarize/package action. 26B remains open for memory-safe live proof.
+
+## CODEX - 2026-06-09 Gemma4 12B QAT partial live proof
+- Ran narrow current-source smoke for `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-MXFP4` after native MXFP loader fixes.
+- Artifact: `build/current-all-local-model-smoke-gemma4-12b-qat-mxfp4-tools-image-after-native-mxfp-fixes-20260609/JANGQ_gemma-4-12B-it-qat-MXFP4/result.json`, `status=probe_failed`, one failure.
+- Result: 12B loads and serves as `gemma4_unified`; text/cache/tool/image probes run HTTP 200. No direct-import startup failure, PLE crash, or `quantized_matmul` runtime crash reproduced.
+- Remaining failure matches E2B/E4B: `tool_result_continuation` returned `STORED blue-cat` while the harness expected `STORED blue-cat.`.
+- Boundary: 12B remains not release-cleared; this is partial live proof only. No release/sign/notarize/package action.
