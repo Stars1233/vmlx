@@ -6716,3 +6716,27 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Proven surfaces include `installed_app_ui`, `responses_api`, `responses_delta_streaming`, `responses_cache_detail_usage`, `server_cache_controls`, `cache_hit_telemetry`, `l2_disk_storage`, `long_tool_loop`, `tool_l2_cache_integrated`, `parser_leak_check`, and `language_leak_check`.
 - Public audit artifact: `build/current-public-app-issue-audit-after-minimax-stricttools-proof-20260609.json`, overall `status=fail`; #180 is `pass`, #117 now has `minimax_live_ui_artifacts_indexed=true` but remains `open_minimax_k_issue179_reporter_parity_required`; #119 still fails and #115 remains open.
 - Boundary: do not claim MiniMax defaults are universally clean; default sampling produced visible Chinese leakage. The release-safe strict-tools proof is deterministic sampling through the installed UI.
+
+# 2026-06-09 03:14 PDT - Gemma4 unified direct import startup fix
+
+- Stayed in active repo `/Users/eric/mlx/vllm-mlx`; did not use deprecated `/Users/eric/vmlx`.
+- Reported failure: `Process exited before becoming ready: ModuleNotFoundError: No module named 'mlx_vlm.models.gemma4_unified'`.
+- Reproduced source state: `importlib.util.find_spec('mlx_vlm.models.gemma4_unified')` returned `None` before vMLX registration; explicit `register_gemma4_unified_runtime()` worked, proving the vendored runtime existed but the direct namespace was not resolvable early enough.
+- Added regression: `tests/test_engine_audit.py::TestStartupCompatibilityGuards::test_gemma4_unified_runtime_import_hook_resolves_direct_mlx_vlm_path`.
+- Fix: extended the existing no-eager-mlx-vlm registry import hook in `vmlx_engine/__init__.py` so `mlx_vlm.models.gemma4_unified` and its submodules resolve to `vmlx_engine/models/gemma4_unified` under the exact upstream namespace.
+- Verification:
+  - regression failed before fix with the reported `ModuleNotFoundError`.
+  - `.venv/bin/python -m pytest -q tests/test_engine_audit.py -k "gemma4_unified_runtime_import_hook or bundled_python_import_gate_covers_gemma4_unified_runtime"` -> 2 passed.
+  - direct import proof after `import vmlx_engine`: `mlx_vlm.models.gemma4_unified` resolved to vendored `vmlx_engine/models/gemma4_unified/__init__.py`; `Model` and `Gemma4UnifiedProcessor` present.
+  - `.venv/bin/python -m py_compile vmlx_engine/__init__.py tests/test_engine_audit.py` -> pass.
+  - `git diff --check -- vmlx_engine/__init__.py tests/test_engine_audit.py` -> pass.
+- Boundary: not release-cleared. This fixes only the direct startup import class. Remaining open items still include all model/parser/cache/media/UI/release blockers in STATUS.
+
+# 2026-06-09 03:18 PDT - Gemma QAT/native MXFP4 release matrix scope
+
+- Stayed in active repo `/Users/eric/mlx/vllm-mlx`; no deprecated `/Users/eric/vmlx`, Max2, ADLab, transport, signing, notarization, tag, or download work.
+- Added explicit Gemma QAT/native MXFP4 rows to `.agents/RELEASE_BLOCKER_LEDGER_20260609.md` and `docs/internal/VMLX_MLXSTUDIO_RELEASE_EXECUTION_TRACKER_2026_06_07.md`.
+- New rows cover Gemma 3n E2B/E4B QAT/native 4-bit, Gemma4 12B native MXFP4/QAT-style bundles, and Gemma4 26B/31V VL/video-capable bundles where present.
+- Required proof now explicitly includes: model-owned generation defaults, visual/audio/video where advertised, Gemma3/Gemma4 parser selection, required/auto/no-tool/tool-result continuation, multi-turn recall, raw parser/reasoning leak checks, JSON/XML/code exactness, content-delta and Responses function-call-argument streaming, prefix/paged/mixed-SWA/native cache telemetry, TurboQuant KV encode/decode boundaries where valid, block-disk L2 write, fresh-process L2 restore, CLI/UI parser/cache/max-output/max-context parity, and installed-app startup parity.
+- Added registry regression for Gemma3n E2B/E4B QAT/native rows so they cannot drift to `unknown` or lose the `gemma3` tool parser.
+- Boundary: this is matrix/proof-scope plus registry coverage only. It does not live-clear any Gemma QAT/native MXFP4 media/cache/UI row and does not release/sign/notarize.
