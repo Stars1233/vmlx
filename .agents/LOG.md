@@ -6775,3 +6775,12 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Verified server tests cover: buffered args, reasoning-channel args without reasoning-disable workaround, tool-only `output_index` ordering, and fail-closed missing required XML args.
 - Focused validation: current-suite no-heavy slice `6/6`; release-manifest API/current-suite slice `3/3`; server Responses tool stream slice `4/4`; py_compile passed; `git diff --check` passed.
 - Boundary: this tracks current-source server proof only. Raw SSE local-vs-gateway-vs-tunnel proof, installed-app/UI execution, N2 JANG_1L memory-safe live path, DSV4, MiniMax, MiMo, Gemma media/cache/UI, and release readiness remain open.
+
+# 2026-06-09 03:31 PDT - Gemma QAT rows in full release checklist
+
+- Added full release checklist support for `GEMMA_QAT_NATIVE_MXFP4_INVENTORY` and new group `gemma_qat_native_mxfp4`.
+- TDD: `test_full_release_objective_checklist_blocks_open_gemma_qat_inventory` failed first because the checklist runner had no `GEMMA_QAT_NATIVE_MXFP4_INVENTORY` constant.
+- Implemented strict checks: inventory artifact exists/status pass, E2B present, E4B present, Gemma4 12B native MXFP4 present, Gemma4 26B present, Gemma4 31V-or-31B present, and all live proofs present with no missing/open rows.
+- Refreshed local full checklist; Gemma QAT group is open with expected failures for status pass, missing E2B/E4B, and live proofs.
+- Validation: `tests/test_full_release_objective_checklist.py` -> 5 passed; focused current-suite and release-manifest source-list tests passed; `py_compile` and `git diff --check` passed.
+- Boundary: proof/checklist integration only. No model download/load, no package/sign/notarize/release.
