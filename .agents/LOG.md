@@ -6784,3 +6784,13 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Refreshed local full checklist; Gemma QAT group is open with expected failures for status pass, missing E2B/E4B, and live proofs.
 - Validation: `tests/test_full_release_objective_checklist.py` -> 5 passed; focused current-suite and release-manifest source-list tests passed; `py_compile` and `git diff --check` passed.
 - Boundary: proof/checklist integration only. No model download/load, no package/sign/notarize/release.
+
+# 2026-06-09 03:55 PDT - Responses preamble empty-XML tool-call boundary
+
+- Stayed in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, package, signing, notarization, tag, or release work.
+- Blocker reduced: #192/#190 `parser/template` + `api/ui` proof tracking for Qwen/Qwen-Coder-style streamed preamble followed by `<tool_call><function=exec_command></function></tool_call>`.
+- Verified the pasted root-cause claim against current source instead of trusting it: the XML-function parser can produce `{}`, but server request-schema filtering drops the tool call when required `cmd` is missing/empty. Streaming Responses emits `tool_calls_required`; it does not emit an executable `function_call` with `{}`.
+- Added explicit regression `test_streaming_responses_preamble_empty_xml_tool_call_never_emits_empty_arguments`; it asserts visible preamble preservation, no `function_call` item, no `response.function_call_arguments.*` events, and no serialized `"arguments": "{}"` payload.
+- Proof-map update: no-heavy API/cache contract now includes that marker in `responses_streaming_tool_contracts`.
+- Refreshed proof: `build/current-noheavy-api-cache-contract-after-xml-docs-boundary-20260609.json`, `status=pass`, `missing_markers=[]`, `responses_streaming_tool_contracts rc=0 passed=5`.
+- Boundary: do not implement a fallback that invents `cmd` from the preamble; missing required args must fail closed. Do not close #192 publicly until rebuilt/installed app proof exists; #190 remains open for live DSV4/default-cache/tool-loop and broader cross-family rows.
