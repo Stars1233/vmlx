@@ -1,5 +1,5 @@
 {
-  "status": "pass",
+  "status": "open",
   "claim": "current bundled Step-3.7 JANG_2L serve path does not crash mid-request and unsupported Step3p7 media fails closed",
   "artifacts": {
     "bundled_smoke_summary": "build/current-step37-crash-falsification-bundled-20260604/summary.json",
@@ -9,19 +9,9 @@
   "evidence": {
     "bundled_smoke": {},
     "bundled_endpoint": {},
-    "packaged_textonly_guard": {
-      "pass": true,
-      "assertions": {
-        "chat_text_before_media_http_200": true,
-        "chat_media_rejected_http_400": true,
-        "chat_media_rejection_mentions_text_only": true,
-        "chat_text_after_media_http_200": true,
-        "responses_media_rejected_http_400": true,
-        "responses_media_rejection_mentions_text_only": true,
-        "responses_text_after_media_http_200": true,
-        "server_health_after_http_200": true
-      }
-    }
+    "packaged_textonly_guard": {}
   },
-  "failures": []
+  "failures": [
+    "missing:/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/step3p7-clean-staged-app-proof-20260605/proof.json"
+  ]
 }
