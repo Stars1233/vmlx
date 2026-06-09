@@ -7632,3 +7632,11 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Regenerated `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json`: `status=open`, `failed_count=112`.
 - Validation passed: focused objective/checklist/current-suite/release-manifest tests passed `6/6`; `py_compile` and `git diff --check` passed.
 - Boundary: this is a memory-safe skip/proof-map refresh, not N2 JANG_1L runtime clearance. No package, signing, notarization, tag, download, or release step was run.
+
+# 2026-06-09 - empty XML tool-call parser fail-closed
+
+- Reduced blocker: reported Qwen/Qwen-coder raw XML tool call failure where the model emitted a preamble followed by `<tool_call><function=exec_command></function></tool_call>` and downstream clients saw `arguments={}`.
+- Source fix: `vmlx_engine/api/tool_calling.py` now refuses Nemotron-style XML function blocks that contain no `<parameter=...>` entries. It does not infer arguments from the preamble and does not synthesize `{}` for missing required parameters.
+- Preserved valid behavior: parameterized XML such as `<parameter=cmd>ls /tmp</parameter>` still parses to `{"cmd":"ls /tmp"}`; canonical JSON tool-call dialects remain unaffected.
+- Validation passed: generic parser regressions `2/2`, Responses streaming guards `5/5`, Nemotron/Step parser coverage `19/19`, plus `py_compile`.
+- Boundary: this is source parser behavior only. The same-model deployed direct/gateway/tunnel raw SSE capture for #190/#192 remains required before closing the live issue or clearing release rows. No package, signing, notarization, tag, download, or release step was run.

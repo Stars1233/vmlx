@@ -594,3 +594,9 @@
 - current live-gate attempt: `build/current-n2-jang1l-chat-cache-proof-20260609.json`, `status=skipped`, `reason=n2_jang1l_insufficient_available_memory`, `available_gib=111.25`, `memory_gap_gib=7.32`; requested tool, Responses, Responses stream, and L2 restart probes are recorded but skipped before launch.
 - proof-map fix: objective digest/checklist/current-suite/release-manifest pointers now use `build/current-objective-proof-after-n2-jang1l-memory-refresh-20260609.json`; full checklist remains `status=open`, `failed_count=112`.
 - boundary: no N2 JANG_1L live clearance and no release action. Next safe launch needs available memory at or above `118.57 GiB` or a smaller-runtime strategy; do not lower the JANG_1L guard just to force a run.
+
+## CODEX - 2026-06-09 empty XML tool-call parser fail-closed
+- blocker reduced: Qwen/Nemotron-style raw XML tool dialect no longer turns `<tool_call><function=exec_command></function></tool_call>` into executable `arguments={}` in the generic parser.
+- source fix: `vmlx_engine/api/tool_calling.py` now requires at least one `<parameter=...>` entry before accepting Nemotron XML function blocks; valid parameterized XML still parses normally.
+- validation: new generic parser regressions passed, existing Responses streaming guards passed for argument buffering, required-tool empty XML rejection, no `arguments:"{}"` emission, output-index ordering, and reasoning-channel tool args; Nemotron/Step parser coverage passed.
+- boundary: this is a source parser fix/proof only. Same-model deployed direct/gateway/tunnel raw SSE remains open for #190/#192, and no package/sign/notarize/tag/download/release was run.
