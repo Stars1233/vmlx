@@ -7209,3 +7209,36 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Moved the MiMo cache-vs-no-cache default artifact and MiMo current audit pointer to `build/current-mimo-v2-jangtq2-cache-vs-nocache-next-token-logprobs-after-unit-label-20260609.json`.
 - Validation: `tests/test_mimo_v2_cache_vs_nocache_next_token.py tests/test_mimo_v2_current_audit.py -k "cache_vs_nocache or cache or current_audit"` passed `26/26`; `py_compile` passed; `git diff --check` passed.
 - Boundary: pointer sync only. MiMo exactness, media, JANG_2L/JANGTQ2 runtime quality, installed-app parity, signing, and release remain open.
+
+# 2026-06-09 - Gemma QAT tracker artifact sync
+
+- Pushed `7ef4aa15` (`Update Gemma QAT inventory tracker`) to `origin/main` and `origin/codex/pr-intake-manifest`.
+- Updated `docs/internal/VMLX_MLXSTUDIO_RELEASE_EXECUTION_TRACKER_2026_06_07.md` so the Gemma local QAT/native MXFP4 inventory row points at `build/current-gemma-qat-native-mxfp4-local-inventory-after-source-smoke-map-20260609.json`.
+- Tracker now records `missing_required_rows=[]` and `source_live_smoke_open_rows=[]`, while keeping all five Gemma QAT release rows open for full live/installed-app/UI/tunnel/media proof.
+- Validation: `git diff --check` passed for the tracker diff. No package/sign/notarize/tag/download action.
+
+# 2026-06-09 - N2 JANG_1L careful-RAM objective wording
+
+- Pushed `f0386693` (`Clarify N2 JANG1L RAM boundary`) to `origin/main` and `origin/codex/pr-intake-manifest`.
+- Updated `tests/cross_matrix/summarize_objective_proof.py` so the N2 Pro 397B JANG1L/JANGTQ objective row treats JANG_1L as careful-RAM live-proof scheduling, not permanent infeasibility.
+- The local memory preflight remains a launch-safety warning and not live runtime proof. Release remains blocked until JANG_1L/JANGTQ have runtime/cache/API/UI proof.
+- Validation: exact N2 objective digest test passed `1/1`; `py_compile` passed; `git diff --check` passed. The earlier malformed pytest `-k` selector ran no tests and was corrected with the node-id run.
+
+# 2026-06-09 - N2 JANG_1L generated no-heavy memory/index preflight
+
+- Added `tests/cross_matrix/run_n2_jang1l_memory_preflight.py` so the N2 JANG_1L local preflight is generated from the actual `model.safetensors.index.json`, `config.json`, and `jang_config.json` without loading weights.
+- Refreshed artifact: `build/current-n2-pro-jang1l-local-memory-preflight-20260609.json`, `status=open`, `decision=do_not_launch`, `classification=careful_ram_live_proof_pending`, `no_load=true`, `model_type=qwen3_5_moe`, `artifact_profile=JANG_1L`, `indexed_payload_gib=110.57`, `required_available_gib=114.57`, `available_gib=113.5`, `memory_gap_gib=1.07`.
+- Structural no-load evidence from the index: `total_tensors=2845`, `vision_tensors=333`, `linear_attention_tensors=855`, `expert_tensors=720`, `audio_tensors=0`, `mtp_tensors=0`.
+- Objective digest now surfaces the richer N2 preflight fields, and current-suite source hashes/commands include the new N2 runner and tests.
+- Validation: `tests/test_n2_jang1l_memory_preflight.py tests/test_objective_proof_digest.py tests/test_current_regression_suite.py tests/test_release_regression_manifest.py -k "n2_jang1l_memory_preflight or tracks_n2_pro_397b or hashes_focused_pytest_gate_sources or source_hash_list_matches_release_manifest"` passed `7/7`; `py_compile` passed; `git diff --check` passed.
+- Boundary: this does not launch N2 JANG_1L. The next live proof should retry after freeing roughly 1-2 GiB more memory, then run one conservative server proof with clean shutdown, not source-vs-quant or extra-heavy comparisons.
+
+# 2026-06-09 - Gemma QAT objective blocker and N2 JANG_1L preflight coverage
+
+- Pushed `bb2e4cb7` (`Track Gemma QAT objective blocker`) to `origin/main` and `origin/codex/pr-intake-manifest`.
+- Added a top-level objective digest requirement for `Gemma QAT/native MXFP4 E2B/E4B/12B/26B/31B runtime/media/cache/API/UI quality is release-cleared`.
+- The new Gemma objective row consumes `build/current-gemma-qat-native-mxfp4-local-inventory-after-source-smoke-map-20260609.json`, records source smokes green (`all_required_source_live_smokes_present=true`), and keeps full live proofs red (`all_required_live_proofs_present=false`).
+- Added N2 JANG_1L careful-RAM preflight regression coverage to the current suite hash/focused pytest boundary.
+- Follow-up pushed `ac66181f` (`Add N2 JANG1L memory preflight runner`) because the runner file was still untracked after `bb2e4cb7`; main now has both the test and runner.
+- Validation: Gemma objective/N2 objective/current-suite focused tests passed `6/6`; N2 preflight/current-suite follow-up tests passed `4/4`; `py_compile` and `git diff --check` passed.
+- Boundary: no live N2 JANG_1L launch, no Gemma installed-app/UI/tunnel proof, no package/sign/notarize/tag/download action.
