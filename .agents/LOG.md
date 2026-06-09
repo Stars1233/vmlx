@@ -6803,3 +6803,12 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Tightened 12B/26B/31B QAT matching to require `qat` + `mxfp4`, so older JANG/MTP or non-QAT MXFP rows cannot satisfy the new QAT release rows.
 - Refreshed inventory artifact: `build/current-gemma-qat-native-mxfp4-local-inventory-20260609.json`, `status=open`, `missing_required_rows=[]`, open rows are exactly the five downloaded QAT rows.
 - Boundary: no model load and no release claim in this slice. Next proof must live-test coherency, multiturn recall, required/auto tools, parser leaks, Responses streaming/content/tool-arg events, generation defaults, mixed-SWA cache telemetry, block L2/fresh restore, vision/audio/video as advertised, UI/CLI parity, and installed-app startup.
+
+## CODEX - 2026-06-09 Gemma QAT inventory row normalization verification
+- Continued from the other-agent Gemma QAT inventory edit without reverting it.
+- Added regression `test_gate_uses_gemma4_e2b_e4b_row_ids_for_gemma4_qat_bundles`; it failed first against stale `gemma3n_*` row IDs, then passed after normalizing row/check names.
+- Full checklist consumers now check `gemma_qat_native_mxfp4_gemma4_e2b_present` and `gemma_qat_native_mxfp4_gemma4_e4b_present`; stale Gemma3n failure names are gone from the Gemma QAT gate.
+- Refreshed inventory artifact: `build/current-gemma-qat-native-mxfp4-local-inventory-20260609.json`, `status=open`, `count=16`, `missing_required_rows=[]`, open rows exactly `gemma4_e2b_qat_native_mxfp4`, `gemma4_e4b_qat_native_mxfp4`, `gemma4_12b_native_mxfp4`, `gemma4_26b_vl`, and `gemma4_31v_or_31b_vl`.
+- Full checklist runner generated `build/current-full-release-objective-checklist-after-gemma-qat-inventory-row-correction-20260609.json`, still `status=open`, `failed_count=130`; this is expected and is not release clearance.
+- Verification: Gemma inventory/checklist focused tests passed `4/4`; current-suite Gemma proof-map tests passed `3/3`; release-manifest source-hash mirror tests passed `2/2`; py_compile and `git diff --check` passed.
+- Boundary: no Gemma model load, no installed-app proof, no package/sign/notarize/release. These rows remain open until live model/API/UI/cache/media proof exists.
