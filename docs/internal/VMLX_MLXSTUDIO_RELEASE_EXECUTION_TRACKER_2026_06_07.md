@@ -489,3 +489,11 @@ Classification:
 - Proof: `build/current-model-family-detection-contract-after-n2-policy-row-20260609.json`, `status=pass`, `missing_rows=[]`, `n2_pro_qwen35_moe_hybrid_vl_policy=true`.
 - Policy pinned: N2 Pro JANG_1L-style metadata resolves as Qwen3.5-MoE hybrid cache with Qwen tool parser, Qwen3 reasoning parser, thinking support, and paged-cache requirement. Because this affine JANG VL-shaped bundle lacks indexed MTP/VL-ready tensors, Python routes it text-only and panel marks `forceTextOnly=true` until real VL support is implemented and live-proven.
 - Boundary: this is autodetect/startup/UI-policy coverage only. N2 live runtime, N2 JANG_1L memory-safe load, VL/audio/video, L2 restart restore, installed-app UI proof, and release clearance remain open.
+
+### 2026-06-09 gateway stale-port and standby wake routing contract
+- Source fix: `panel/src/main/api-gateway.ts` now treats only active local sessions (`running`, `loading`, `standby`) as gateway-port conflicts. Stopped/error local sessions and remote sessions can keep stale DB ports after restart/sleep without blocking gateway startup.
+- Test added: `panel/tests/api-gateway-single-model.behavior.test.ts` -> `allows gateway startup on ports used only by stopped or remote saved sessions`.
+- Existing wake path covered: `auto-switches to a standby model by waking it before direct OpenAI streaming`.
+- Release gate updated: `tests/cross_matrix/run_noheavy_api_cache_contract.py` now runs `panel_gateway_contracts` and records `gateway_stale_port_startup` plus `gateway_standby_wake_routing`.
+- Proof: `build/current-noheavy-api-cache-contract-after-gateway-stale-port-20260609.json`, `status=pass`, `missing_markers=[]`, `gateway_stale_port_startup=true`, `gateway_standby_wake_routing=true`, `panel_gateway_contracts rc=0 passed=2`.
+- Boundary: source/panel no-heavy proof only. Installed-app parity, live model routing, model cache/media rows, notarization, and public release remain blocked by the broader objective gates.
