@@ -44,6 +44,11 @@ that path in the current turn.
    valid output indices, and tool-result continuation.
 2. Fix or recapture the Qwen35 tunnel output-index path. Current failing proof:
    `build/current-responses-raw-sse-parity-qwen35-tunnel-output-index-20260609.json`.
+   Follow-up source recheck `build/current-noheavy-api-cache-contract-after-qwen35-output-index-recheck-20260609.json`
+   is `status=pass`, including source Responses streaming tool args/indexes and
+   gateway argument passthrough. Treat the next Qwen35 action as live recapture
+   or deployed/tunnel freshness unless a same-model current-source capture
+   contradicts that.
 3. Run Gemma4 media/UI/installed-app parity from current source only after
    verifying bundled Python includes the parser, response guard, cache, and
    model-register changes.
