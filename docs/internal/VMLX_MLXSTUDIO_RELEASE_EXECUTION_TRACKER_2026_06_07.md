@@ -458,3 +458,20 @@ Classification:
 - The previous MiMo repeat-cache drift under lossy q4/q8 storage is no longer the active default-path blocker under the new lossless policy.
 - MiMo is still not release-cleared because literal exactness remains failed before and after cache: expected `ACK-CB-742`, actual `ACKCB-742`.
 - Current audit pointer updated to this artifact; refreshed audit is `build/current-mimo-v2-jang2l-current-audit-after-lossless-cache-live-20260609.json`.
+
+### 2026-06-09 MiMo JANGTQ2 token-trace exactness classification
+- Proof: `build/current-mimo-v2-jangtq2-cb-cache-lossless-token-trace-live-20260609.json`.
+- Server trace: `build/current-mimo-v2-jangtq2-cb-cache-lossless-token-trace-live-20260609.server.log`.
+- Status: run passed for process stability, visible output, native cache telemetry, warm cache hit, and L2 write; exact literal row remains failed.
+- Cache evidence: `mixed_swa_kv_v1` / `mimo_v2_asymmetric_swa`, prefix enabled, paged enabled, block-disk L2 enabled, storage quantization disabled, warm cache hit `cached_tokens=46` with `cache_detail=paged`, L2 `78` tokens.
+- Token evidence: cold and warm trace generated `ACK`, `CB`, `-`, `7`, `4`, `2`, then stop. Visible output is still `ACKCB-742`; the hyphen before the digits is preserved, while the delimiter between `ACK` and `CB` was not generated.
+- Classification: not a prefix/paged/L2/cache-quantization issue and not a parser rewrite. Cache/storage is cleared for this row, but the remaining exactness failure is at token choice / prompt-template / artifact behavior around the second token, not proven text assembly.
+
+### 2026-06-09 MiMo no-source exactness classifier refresh
+- Source updated: `tests/cross_matrix/run_mimo_v2_no_source_exactness_classifier.py` now accepts current list-shaped exactness probe artifacts and does not crash when a stale all-local smoke artifact is absent.
+- Audit pointer updated: `tests/cross_matrix/run_mimo_v2_jang2l_current_audit.py` now uses `build/current-mimo-v2-no-source-exactness-classifier-after-lossless-token-trace-20260609.json`.
+- Live exactness proof: `build/current-mimo-v25-jangtq2-exactness-variant-probe-live-after-lossless-token-trace-20260609/result.json`.
+- Classifier proof: `build/current-mimo-v2-no-source-exactness-classifier-after-lossless-token-trace-20260609.json`, `status=open`, classification `jangtq2_plain_literal_copy_fails_before_parser_or_json_repair`.
+- Current audit proof: `build/current-mimo-v2-jang2l-current-audit-after-lossless-token-trace-classifier-20260609.json`, `status=open`.
+- Key failures: completions `blue-cat -> blue cat`, completions/chat `B7-CAT-09 -> B7 CAT-09`, JSON `B7-CAT-09 -> B7CAT-09`, tool args `B7-CAT-09 -> B7CAT-09`.
+- Boundary: tool parser/protocol works in this run, but exact argument literals are wrong. This is not JSON repair, not raw XML fallback, not cache quantization, and not prefix/paged/L2 reuse. Source-vs-quant remains skipped by user RAM policy, so the remaining action is either runtime/logit-path root cause with no-source diagnostics or a model rebuild contract if artifact quality is confirmed as the cause.
