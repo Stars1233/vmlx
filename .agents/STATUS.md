@@ -668,3 +668,11 @@
 - proven surfaces: visible ACK repeat, multi-turn recall, reasoning separation, required `record_fact({"value":"blue-cat"})`, tool-result continuation, exact JSON/code probes, mixed-SWA cache hit `cached_tokens=56` with `cache_detail=paged+mixed_swa`, block-disk writes, and L2 restart with `disk_hits=2`.
 - updated artifacts: Gemma inventory/objective/checklist now consume E2B and E4B QAT JANG_4M source smokes; `source_live_smoke_open_rows` is now 12B, 26B, and 31B QAT JANG_4M.
 - boundary: no Gemma4 QAT JANG_4M release clearance. Media/video, Responses raw SSE args/content deltas, UI/CLI parity, installed-app parity, and remaining larger QAT JANG_4M bundles remain open.
+
+## CODEX - 2026-06-09 Gemma4 12B QAT JANG_4M source smoke blocker
+- blocker classified: Gemma4 12B QAT JANG_4M tool-call visible sentinel leak.
+- proof: `build/current-all-local-model-smoke-gemma4-12b-qat-jang4m-tools-nomedia-l2-20260609/JANGQ_gemma-4-12B-it-qat-JANG_4M/result.json`, `status=probe_failed`.
+- concrete failure: `tool_required` returned a valid native `record_fact({"value":"blue-cat"})` call but also visible content `<audio|>`, so the gate failed `tool_visible_text_leak`.
+- non-failing surfaces in same run: mixed-SWA cache hit and L2 restart passed; L2 summary had `disk_hits=2`, `cache_hit_tokens=56`.
+- initial classification: parser/template/special-token leak on `gemma4_unified`; not a cache/L2 failure and not missing generation config. Do not hide by accepting visible `<audio|>` as normal text.
+- updated artifacts: Gemma inventory/objective/checklist now point 12B QAT JANG_4M at this current failure artifact instead of the older non-QAT 12B JANG_4M proof.

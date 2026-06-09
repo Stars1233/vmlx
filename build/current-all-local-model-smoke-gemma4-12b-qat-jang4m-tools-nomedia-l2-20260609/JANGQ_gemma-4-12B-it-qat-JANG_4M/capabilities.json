@@ -1,0 +1,181 @@
+{
+  "code": 200,
+  "body": {
+    "id": "gemma-4-12b-it-qat-jang_4m",
+    "loaded_model": "gemma-4-12b-it-qat-jang_4m",
+    "model_path": "/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-JANG_4M",
+    "family": "gemma4",
+    "compat_warnings": [],
+    "supports_tools": true,
+    "tool_parser": "gemma4",
+    "supports_thinking": true,
+    "reasoning_parser": "gemma4",
+    "think_in_template": false,
+    "supported_modes": [
+      "instruct",
+      "reasoning"
+    ],
+    "experimental_modes": [],
+    "reasoning_efforts": [],
+    "modalities": [
+      "text",
+      "vision",
+      "audio",
+      "video"
+    ],
+    "media": {
+      "runtime_modalities": [
+        "text",
+        "vision",
+        "audio",
+        "video"
+      ],
+      "declared_modalities": [
+        "text",
+        "vision",
+        "image",
+        "video",
+        "audio",
+        "multimodal"
+      ],
+      "preserved_modalities": [],
+      "unwired_modalities": [],
+      "memory_gate": {
+        "applicable": false,
+        "safe": true,
+        "reason": "not_mimo_v2"
+      },
+      "status_by_modality": {
+        "audio": "runtime_supported",
+        "image": "runtime_supported",
+        "multimodal": "declared_not_runtime_supported",
+        "text": "runtime_supported",
+        "video": "runtime_supported",
+        "vision": "runtime_supported"
+      }
+    },
+    "cache": {
+      "prefix": true,
+      "type": "paged",
+      "paged": true,
+      "block_disk_l2": true,
+      "dsv4_composite_state": false,
+      "native": {
+        "family": "gemma4",
+        "schema": "mixed_swa_kv_v1",
+        "cache_type": "mixed_swa_kv",
+        "cache_subtype": "mixed_swa_kv",
+        "components": [
+          "full_attention_kv",
+          "sliding_window_kv",
+          "rotating_window_metadata"
+        ],
+        "generic_turboquant_kv": {
+          "enabled": false,
+          "reason": "not_active"
+        },
+        "storage_quantization": {
+          "enabled": false,
+          "mode": "storage_boundary",
+          "bits": null,
+          "group_size": null,
+          "applies_to": "full_and_sliding_attention_kv",
+          "metadata_policy": "preserve_rotating_window_metadata"
+        },
+        "prefix": true,
+        "paged": true,
+        "block_disk_l2": true
+      }
+    },
+    "quantization": {
+      "codec": "affine_quantized_matmul",
+      "weight_format": "jang_affine",
+      "backend": "mx.quantize",
+      "profile": "JANG_4M",
+      "target_bits": 8,
+      "config_bits": 8,
+      "group_size": 32,
+      "passthrough_tensor_count": 349,
+      "weight_index": {
+        "index_file": "/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-JANG_4M/model.safetensors.index.json",
+        "total_tensors": 1333,
+        "suffix_counts": {
+          "biases": 328,
+          "scales": 328,
+          "weight": 624
+        },
+        "tq_target_counts": {},
+        "routed_layout_counts": {
+          "prestacked_switch": 0,
+          "split_expert": 0
+        },
+        "mtp_tensor_count": 0
+      },
+      "weight_matmul_dispatch": {
+        "primary": "mlx_affine_quantized_matmul",
+        "uses_mlx_quantized_matmul": true,
+        "metal_na_eligible": true,
+        "reason": null
+      },
+      "sidecar": {
+        "jang_config": true,
+        "jangtq_runtime": false,
+        "prestacked_bundle": false
+      }
+    },
+    "acceleration": {
+      "kernel_type": "affine_quantized_matmul",
+      "metal_na_capable": true,
+      "metal_na_active_on_host": true,
+      "reason": null,
+      "metal_na_symbols": {
+        "available": true,
+        "nax_symbols": 4668,
+        "naxtile_symbols": 4154,
+        "affine_qmm_symbols": 4212,
+        "affine_gather_qmm_symbols": 3456
+      },
+      "host": {
+        "supported": true,
+        "brand": "Apple M5 Max",
+        "reason": null
+      }
+    },
+    "mtp": {
+      "config_num_nextn_predict_layers": null,
+      "config_mtp_layer_source": null,
+      "jang_mtp_layers": null,
+      "jang_drop_mtp": null,
+      "index_has_mtp_tensors": false,
+      "index_mtp_layer_count": null,
+      "mtp_tensor_count": 0,
+      "artifact_available": false,
+      "family": "gemma4",
+      "has_vision_config": true,
+      "has_vision_weights": false,
+      "vision_tensor_count": 0,
+      "cache_type": "kv",
+      "runtime_supported": false,
+      "runtime_available": false,
+      "runtime_active": false,
+      "runtime_validation_blocked": false,
+      "effective_depth": null,
+      "effective_depth_source": null,
+      "runtime_scope": null,
+      "vl_runtime_available": false,
+      "runtime_bundle_has_mtp": null,
+      "runtime_mtp_mode": null,
+      "runtime_reason": "config does not request MTP",
+      "status": "not_configured",
+      "issues": [],
+      "request_policy": "compatible-only",
+      "request_gate": "temperature=0,repetition_penalty=1.0"
+    },
+    "routing": null,
+    "sampling_defaults": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 64.0
+    }
+  }
+}

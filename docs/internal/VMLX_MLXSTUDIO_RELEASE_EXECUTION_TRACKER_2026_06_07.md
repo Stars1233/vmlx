@@ -854,3 +854,9 @@ Classification:
 - Proof: `build/current-all-local-model-smoke-gemma4-e4b-qat-jang4m-tools-nomedia-l2-20260609/JANGQ_gemma-4-E4B-it-qat-JANG_4M/result.json`, `status=pass`.
 - Covered source surfaces: Gemma4 parser/runtime autodetect, visible text, reasoning separation, required tool call, tool-result continuation, JSON/code exactness, mixed-SWA cache hit telemetry, block-disk writes, and fresh-process L2 restart for E4B QAT JANG_4M.
 - Release boundary: source no-media E4B proof only. Gemma4 QAT JANG_4M remains open for media/video, Responses raw SSE args/content deltas, UI/CLI parity, installed-app parity, 12B/26B/31B QAT JANG_4M source smokes, and release packaging/signing/notarization.
+
+## 2026-06-09 Gemma4 12B QAT JANG_4M source smoke blocker
+
+- Proof: `build/current-all-local-model-smoke-gemma4-12b-qat-jang4m-tools-nomedia-l2-20260609/JANGQ_gemma-4-12B-it-qat-JANG_4M/result.json`, `status=probe_failed`.
+- Failure: required tool call parsed valid `record_fact({"value":"blue-cat"})`, but visible `<audio|>` leaked in the same assistant turn, failing `tool_visible_text_leak`.
+- Boundary: mixed-SWA cache and L2 restart passed in the same run, so do not classify this as cache/L2. Treat as Gemma4 unified parser/template/special-token leak until traced and fixed honestly.
