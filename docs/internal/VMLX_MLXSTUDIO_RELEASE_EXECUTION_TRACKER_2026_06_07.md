@@ -513,7 +513,7 @@ Classification:
   - `build/current-mimo-jangtq2-local-manifest-20260607.tsv`
   - `build/current-mimo-jang2l-local-structural-verify-20260606.json`
 - Structural proof now checks both `MiMo-V2.5-JANGTQ_2` and `MiMo-V2.5-JANG_2L` for config/index/sidecar/layout metadata: model-owned `generation_config.json`, `xml_function` tool parser, `think_xml` reasoning parser, hybrid full/SWA cache topology, prefix cache, L2 disk cache, TurboQuant-KV boundary, affine bookend sidecars, stacked `switch_mlp` layout, and absence of legacy `.mlp.experts.*` layout.
-- Current audit: `build/current-mimo-v2-jang2l-current-audit-after-local-structural-proof-20260609.json`, `status=open`, `manifest_integrity=true`, `structural_verify=true`.
+- Current audit: `build/current-mimo-v2-jang2l-current-audit-after-mimo-n2-runtime-refresh-20260609.json`, `status=open`, `manifest_integrity=true`, `structural_verify=true`.
 - Objective digest remains open. This does not clear live text/tool/exactness/speed/media/L2/UI rows.
 
 ## 2026-06-09 no-heavy objective gate refresh
@@ -543,3 +543,16 @@ Classification:
 - Passed surfaces: visible cache repeat, multi-turn recall, required tool call, tool-result continuation, structured JSON exactness, parser metadata (`tool_parser=lfm2`, `reasoning_parser=qwen3`), typed `hybrid_ssm_v1` cache, and `paged+ssm` cache telemetry.
 - Remaining LFM MXFP8 blocker: exact-code whitespace failed by missing final `)`.
 - Full checklist refreshed as `build/current-full-release-objective-checklist-after-lfm25-mxfp8-live-smoke-20260609.json`; it remains open with LFM artifacts current rather than missing.
+
+## 2026-06-09 MiMo/N2 runtime-cache-parser pointer refresh
+
+- Reduced blocker: MiMo/N2 release-gate freshness for prefix/cache/parser/TurboQuant evidence without launching the 79G/105G/118G-class models on an unsafe memory state.
+- Regenerated MiMo structural artifacts:
+  - `build/current-mimo-v2-local-bundle-metadata-contract-20260607.json`, `status=pass`.
+  - `build/current-mimo-jang2l-local-structural-verify-20260606.json`, `status=pass`.
+  - `build/current-mimo-jangtq2-local-manifest-20260607.tsv`, verified by the refreshed audit.
+- Current MiMo audit is now `build/current-mimo-v2-jang2l-current-audit-after-mimo-n2-runtime-refresh-20260609.json`, `status=open`, with `manifest_integrity=true`, `structural_verify=true`, and `prefix_paged_l2_cache_reproved=true`.
+- Current MiMo blockers are still real live rows: text-cache narrow proof, SwitchGLU selected-expert parity, cache-vs-no-cache next-token match, tool protocol/exact arguments, decode speed target, source-vs-quant or accepted no-source equivalent, MLLM inputs-embeds interface proof, block-disk L2 restart restore, image/video E2E, audio waveform E2E, and per-bundle media/L2 rows.
+- N2 no-heavy contracts remain green through `build/current-noheavy-api-cache-contract-after-mimo-n2-runtime-refresh-20260609.json`, `build/current-cache-architecture-contract-after-mimo-n2-runtime-refresh-20260609.json`, and `build/current-model-family-detection-contract-after-n2-policy-row-20260609.json`.
+- N2 JANG_1L live load remains blocked by memory preflight: `build/current-n2-pro-jang1l-local-memory-preflight-20260609.json`, decision `do_not_launch`. Current local free+speculative memory during this refresh was about 50.5 GiB, below the safe threshold for the indexed 118.73 GB payload plus headroom.
+- Updated release checklist, objective digest, and release regression manifest pointers to the current MiMo audit/classifier artifacts. This prevents stale proof from being treated as current, but does not clear any live MiMo/N2 release row.
