@@ -1,6 +1,6 @@
 {
   "boundary": "No-heavy checklist only. A pass here would mean current evidence claims every listed gate is green; it still must be backed by the live artifacts referenced by each row. Open rows are release blockers.",
-  "created_at": "2026-06-09T14:56:27-0700",
+  "created_at": "2026-06-09T15:05:53-0700",
   "failed": [
     {
       "detail": false,
@@ -325,62 +325,6 @@
     {
       "evidence": "build/current-mimo-v2-jang2l-current-audit-after-cache-vs-nocache-logprobs-20260609.json",
       "name": "mimo_mimo_media_wired",
-      "ok": false
-    },
-    {
-      "detail": "missing",
-      "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
-      "name": "qwen27_api_parity_artifact_exists",
-      "ok": false
-    },
-    {
-      "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
-      "name": "qwen27_api_responses_text",
-      "ok": false
-    },
-    {
-      "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
-      "name": "qwen27_api_responses_required_tool",
-      "ok": false
-    },
-    {
-      "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
-      "name": "qwen27_api_anthropic",
-      "ok": false
-    },
-    {
-      "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
-      "name": "qwen27_api_ollama",
-      "ok": false
-    },
-    {
-      "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
-      "name": "qwen27_api_chat_stream_sse",
-      "ok": false
-    },
-    {
-      "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
-      "name": "qwen27_api_mtp_runtime_active",
-      "ok": false
-    },
-    {
-      "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
-      "name": "qwen27_api_hybrid_cache_policy",
-      "ok": false
-    },
-    {
-      "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
-      "name": "qwen27_api_cache_hit_tokens",
-      "ok": false
-    },
-    {
-      "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
-      "name": "qwen27_api_block_l2_writes_hits",
-      "ok": false
-    },
-    {
-      "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
-      "name": "qwen27_api_ssm_l2_stores",
       "ok": false
     },
     {
@@ -1028,7 +972,7 @@
       "ok": false
     }
   ],
-  "failed_count": 112,
+  "failed_count": 101,
   "groups": {
     "api_cache_responses_contract": [
       {
@@ -3133,60 +3077,60 @@
         "ok": true
       },
       {
-        "detail": "missing",
+        "detail": "pass",
         "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
         "name": "qwen27_api_parity_artifact_exists",
-        "ok": false
+        "ok": true
       },
       {
         "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
         "name": "qwen27_api_responses_text",
-        "ok": false
+        "ok": true
       },
       {
         "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
         "name": "qwen27_api_responses_required_tool",
-        "ok": false
+        "ok": true
       },
       {
         "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
         "name": "qwen27_api_anthropic",
-        "ok": false
+        "ok": true
       },
       {
         "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
         "name": "qwen27_api_ollama",
-        "ok": false
+        "ok": true
       },
       {
         "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
         "name": "qwen27_api_chat_stream_sse",
-        "ok": false
+        "ok": true
       },
       {
         "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
         "name": "qwen27_api_mtp_runtime_active",
-        "ok": false
+        "ok": true
       },
       {
         "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
         "name": "qwen27_api_hybrid_cache_policy",
-        "ok": false
+        "ok": true
       },
       {
         "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
         "name": "qwen27_api_cache_hit_tokens",
-        "ok": false
+        "ok": true
       },
       {
         "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
         "name": "qwen27_api_block_l2_writes_hits",
-        "ok": false
+        "ok": true
       },
       {
         "evidence": "build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json",
         "name": "qwen27_api_ssm_l2_stores",
-        "ok": false
+        "ok": true
       },
       {
         "detail": "pass",

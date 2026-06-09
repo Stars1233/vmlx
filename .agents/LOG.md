@@ -7569,6 +7569,15 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 
 # 2026-06-09 - N2 JANG_1L live-gate headroom guard
 
+# 2026-06-09 - Qwen27 MXFP4-MTP API parity live proof
+
+- Reduced blocker: Qwen27 MXFP4-MTP API/cache checklist rows were missing `build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json`.
+- Source/proof harness: added `tests/cross_matrix/run_qwen27_mxfp4_mtp_api_parity.py` plus focused unit tests. The harness exercises Responses text, Responses required tool, Anthropic Messages, Ollama chat, Chat Completions SSE, prefix cache hit telemetry, native MTP health, hybrid SSM/TurboQuant cache policy, and a same-cache-dir restart to prove block/SSM L2 disk hits.
+- Live proof: `build/current-qwen27-mxfp4-mtp-api-parity-20260607/summary.json` is `status=pass` for `/Users/eric/models/JANGQ/Qwen3.6-27B-MXFP4-MTP`; API checks returned `ACK`/`record_fact`, MTP is native runtime active at effective depth 2, block L2 wrote 5 and hit 15, and SSM L2 stored 8 entries / 394 tokens on disk.
+- Checklist: regenerated `build/current-full-release-objective-checklist-after-responses-raw-sse-gemma-surface-20260609.json`; release remains `status=open`, `failed_count=101`, down from 112 after the Qwen27 API parity rows turned green.
+- Validation: focused harness tests passed `4/4`; `py_compile` passed. Initial live launch caught a stale `--mllm` flag assumption; the harness now uses the current `--is-mllm` CLI flag and tests that contract.
+- Boundary: Qwen27 API parity is not broad Qwen/N2 release clearance. Qwen27 long-context/UI/installed-app rows, Qwen35 rows, N2 JANG_1L, MiMo, Gemma, Responses tunnel/reasoning, installed-app parity, package/sign/notarize/tag/download remain open.
+
 - Reduced blocker: `runtime/kernel` proof safety for N2 JANG_1L one-at-a-time launch attempts.
 - User allowed N2 JANG_1L on the 128 GiB machine one at a time, so I reran the current preflight and then the real chat/cache gate against `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANG_1L`.
 - Current preflight: `build/current-n2-pro-jang1l-local-memory-preflight-20260609.json`, `decision=do_not_launch`, `indexed_payload_gib=110.57`, `required_available_gib=118.57`, current `available_gib=111.54`.
