@@ -119,6 +119,17 @@ signing, notarization, tags, downloads, or release actions.
 - `mlx-vlm` PR #1313/#1334 (Qwen3.5/3.6 quantized KV and MTP prefill): relevant
   to Qwen3.6/MTP/gdn_sink lanes, but requires local mapping against
   `utils/mlx_vlm_compat.py` and current Qwen VLM language source before port.
+- 2026-06-09 follow-up on `mlx-vlm` PR #1313/#1334: local pinned Qwen attention
+  still has the scalar `cache.offset` fallback from #1313, but vMLX also wraps
+  Qwen3.5/3.6 VLM attention/language for native MTP, gdn_sink, and text-only
+  1D RoPE in `vmlx_engine/patches/mlx_vlm_mtp/qwen35_vl.py`. Do not paste the
+  upstream patch over that path. Add a focused batched quantized-cache offset
+  regression against the vMLX patch before changing the attention implementation.
+- `mlx-vlm` PR #1316 (thinking enabled by default for chat templates): inspected
+  and not ported as a global default. vMLX intentionally keeps Auto/unset
+  thinking unresolved for Qwen3.6, MiniMax, and Gemma tool paths, with explicit
+  request/server controls winning. Do not convert Auto to a hidden thinking-off
+  rail to paper over template/runtime issues.
 - `mlx-lm` PR #1377 (top-k interval wording): documentation/error-message-only
   upstream fix. No runtime behavior to port.
 - `mlx-vlm` PR #1325 (Qwen3-VL visual masks during chunked prefill): covered by

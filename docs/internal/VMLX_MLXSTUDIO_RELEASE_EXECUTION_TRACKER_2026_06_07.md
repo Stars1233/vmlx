@@ -733,3 +733,10 @@ Classification:
 - Artifact: `build/current-all-local-model-smoke-gemma4-31b-qat-mxfp4-tools-image-after-native-mxfp-fixes-20260609/JANGQ_gemma-4-31B-it-qat-MXFP4/result.json`, `status=probe_failed`, one failure.
 - Positive boundary: 31B loads and serves; no loader crash, no Metal OOM, and no runtime `quantized_matmul` crash in the narrow row. Text/cache/tool/image probes all reached HTTP 200.
 - Remaining boundary: same exact tool-result punctuation failure as E2B/E4B/12B (`STORED blue-cat` vs expected `STORED blue-cat.`). This is not release clearance, and 31B still needs full API/UI/cache/media/installed-app proof.
+
+## 2026-06-09 Qwen3.6 27B MXFP4 MTP hybrid SSM L2 restart proof
+
+- Source fix: SSM companion disk restart prefix discovery plus SSM L2 budget policy for hybrid VLM models.
+- Proof artifact: `build/current-all-local-model-smoke-qwen36-27b-mxfp4-mtp-tools-l2-after-ssm-disk-budget-fix-20260609`.
+- Result: `status=pass`, `failures=0`; fresh restart response `ACK`; `prompt_tokens_details.cached_tokens=56`, `cache_detail=paged+ssm+disk`; block disk `disk_hits=1`; SSM disk `hits=1`, `misses=0`; no KV-without-SSM fallback.
+- Boundary: current-source Qwen27 MTP smoke/L2 row only. This does not clear installed app/UI parity, Qwen35 deployed parity, MiMo exactness/media, Gemma full matrix, DSV4 memory-gated proof, or release signing/notarization.

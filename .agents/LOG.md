@@ -7059,6 +7059,23 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Proof: `.venv/bin/python -m pytest -q tests/test_mlx_lm_runtime_patches.py -k lfm25_vl_projector` passed `1/1`.
 - Boundary: source/no-heavy load shim only. This does not clear live LFM2.5 VL media quality, text/tool exactness, installed-app/UI parity, package/sign/notarize/tag/download, or release readiness.
 
+# 2026-06-09 - N2 chat/cache memory preflight unit labels
+
+- Source/proof-harness fix: `tests/cross_matrix/run_n2_chat_cache_gate.py` now labels psutil memory snapshots and skip artifacts with `unit="GiB"`, `available_gib`, `total_gib`, `required_available_gib`, and `memory_gap_gib`, while preserving legacy `*_gb` aliases for existing consumers.
+- Refreshed no-launch artifact: `build/current-n2-chat-cache-memory-preflight-after-unit-label-20260609.json`.
+- Result: `status=skipped`, `reason=insufficient_available_memory`, `unit=GiB`, `available_gib=98.08`, `required_available_gib=120.0`, `memory_gap_gib=21.92`.
+- Validation: `.venv/bin/python -m pytest -q tests/test_n2_chat_cache_gate.py` passed `9/9`; focused current-suite source-hash row passed; `py_compile` and `git diff --check` passed.
+- Boundary: proof-harness/preflight interpretation only. No N2 model launch, no N2 JANG_1L clearance, no installed-app/UI parity, no package/sign/notarize/tag/download, and no release action.
+
+# 2026-06-09 - Hybrid SSM L2 prefix restore after restart
+
+- Other-agent edit inspected and preserved: restarted `SSMCompanionCache` instances can now discover persisted SSM checkpoint lengths from `SSMCompanionDiskStore` even when the in-memory length index is empty.
+- Source fix: `SSMCompanionDiskStore.candidate_lengths(max_len)` reads sidecar `num_tokens` metadata; `SSMCompanionCache.fetch_longest_prefix()` falls back to those persisted lengths and then delegates to normal `fetch()` so deep-copy and telemetry behavior stay uniform.
+- Regression: `tests/test_ssm_companion_cache.py::test_disk_store_restores_longest_prefix_after_cache_recreation`.
+- Proof artifact: `build/current-cache-architecture-contract-after-ssm-l2-prefix-restore-20260609.json`, `status=pass`, `failed=[]`, `missing_markers=[]`; cache-family pytest selected `429` rows.
+- Validation: full `tests/test_ssm_companion_cache.py` passed `52/52`; `tests/test_cache_architecture_contract.py -k "hybrid_ssm or cache_architecture"` passed `7/7`; focused current-suite cache/source-hash slice passed; `py_compile` and `git diff --check` passed.
+- Boundary: source/no-heavy hybrid SSM L2 restore proof only. It does not clear live N2 JANG_1L, DSV4, MiMo, installed-app/UI parity, package/sign/notarize/tag/download, or release readiness.
+
 # 2026-06-09 - Gemma QAT inventory refresh after N2 proof
 
 - Refreshed the no-heavy Gemma QAT/native MXFP4 inventory gate: `.venv/bin/python tests/cross_matrix/run_gemma_qat_native_mxfp4_inventory_gate.py --out build/current-gemma-qat-native-mxfp4-local-inventory-after-n2-proof-20260609.json`.
@@ -7081,3 +7098,13 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Scope: Qwen3-VL / Qwen3-VL-MoE visual/mRoPE chunked prefill compatibility. This is not a fake model behavior guard and does not synthesize outputs.
 - Validation: `.venv/bin/python -m py_compile vmlx_engine/runtime_patches/mlx_vlm_compat.py tests/test_mlx_lm_runtime_patches.py` passed; focused patch tests passed `3/3`; full runtime patch suite passed `9/9`; focused current-suite pointer/hash row passed.
 - Boundary: source/unit compatibility proof only. Full Qwen/N2/Gemma/MiMo media/UI installed-app matrix remains open until live model/UI proofs cover it.
+
+# 2026-06-09 - Qwen27 hybrid SSM L2 restart restore fix
+
+- Blocker reduced: `cache/storage` for Qwen3.6 27B/35B MTP hybrid SSM restart/L2 proof.
+- Root cause: after restart, block KV L2 could restore the 56-token prefix while SSM companion L2 either had no restart-time length index or had evicted the matching SSM sidecar under an independent 2GB budget. That created KV-without-SSM fallback and correctly blocked `paged+ssm+disk` claims.
+- Fix: `SSMCompanionDiskStore.candidate_lengths()` exposes persisted sidecar token lengths; `SSMCompanionCache.fetch_longest_prefix()` uses those lengths after restart while still requiring exact model/token/extra-key hashes; VLM scheduler now defaults SSM companion disk budget from configured SSM companion capacity when larger than block KV L2 budget, unless `VMLINUX_SSM_DISK_CACHE_MAX_GB` explicitly overrides.
+- No fake behavior: no cache-hit telemetry relaxation, no parser rewrite, no forced output, no generic KV substitution for hybrid SSM.
+- Unit proof: `.venv/bin/python -m pytest -q tests/test_n2_chat_cache_gate.py tests/test_ssm_companion_cache.py` -> `61 passed`.
+- Live proof: `build/current-all-local-model-smoke-qwen36-27b-mxfp4-mtp-tools-l2-after-ssm-disk-budget-fix-20260609`, status `pass`, failures `0`; restart usage has `cached_tokens=56`, `cache_detail=paged+ssm+disk`, block disk `disk_hits=1`, SSM disk `hits=1`, `misses=0`, and no `hybrid_kv_without_ssm` fallback.
+- Boundary: clears current-source Qwen3.6-27B MXFP4 MTP smoke/L2 row only. Installed-app UI parity, Qwen35 tunnel/deployed parity, and full release packaging remain open.
