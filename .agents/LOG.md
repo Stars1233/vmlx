@@ -6764,3 +6764,14 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Wired `tests/cross_matrix/run_current_regression_suite.py` to hash and execute `tests/cross_matrix/run_gemma_qat_native_mxfp4_inventory_gate.py`, include `tests/test_gemma_qat_native_mxfp4_inventory_gate.py`, and select `gemma_qat_inventory_gate` in focused pytest.
 - Validation: `.venv/bin/python -m pytest -q tests/test_current_regression_suite.py -k "gemma_qat_inventory_gate or source_hash_list_matches_release_manifest"` -> 3 passed; `.venv/bin/python -m pytest -q tests/test_release_regression_manifest.py -k "source_hash_list_matches_current_suite_runner or source_hashes_all_referenced_code_files"` -> 2 passed; `py_compile` and `git diff --check` passed.
 - Boundary: no live heavy model load and no release action. This only prevents proof-map drift for the already-open Gemma QAT/native MXFP4 rows.
+
+# 2026-06-09 03:40 PDT - Responses server SSE tool proof-map refresh
+
+- Stayed in active repo `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, signing, notarization, tag, package, or release work.
+- Blocker reduced: `api/ui` + `parser/template` source proof tracking for Responses streaming tool calls.
+- TDD red: `tests/test_current_regression_suite.py::test_noheavy_api_cache_contract_includes_server_responses_tool_streaming_order` failed before wiring because `run_noheavy_api_cache_contract.py` did not include the server Responses tool streaming markers/check.
+- Source/proof-map fix: `tests/cross_matrix/run_noheavy_api_cache_contract.py` now has `responses_streaming_tool_contracts` and check `responses_streaming_tool_call_arguments_and_indexes`; release manifest expected checks include the same row.
+- Regenerated proof: `build/current-noheavy-api-cache-contract-after-xml-docs-boundary-20260609.json`, `status=pass`, `missing_markers=[]`, `responses_streaming_tool_call_arguments_and_indexes=true`, command `responses_streaming_tool_contracts rc=0 passed=4`.
+- Verified server tests cover: buffered args, reasoning-channel args without reasoning-disable workaround, tool-only `output_index` ordering, and fail-closed missing required XML args.
+- Focused validation: current-suite no-heavy slice `6/6`; release-manifest API/current-suite slice `3/3`; server Responses tool stream slice `4/4`; py_compile passed; `git diff --check` passed.
+- Boundary: this tracks current-source server proof only. Raw SSE local-vs-gateway-vs-tunnel proof, installed-app/UI execution, N2 JANG_1L memory-safe live path, DSV4, MiniMax, MiMo, Gemma media/cache/UI, and release readiness remain open.

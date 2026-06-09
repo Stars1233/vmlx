@@ -584,3 +584,11 @@ Classification:
 - Streaming row details: `heartbeat_count=24`; function call `lookup`; parsed args `{"query":"alpha"}`; `response.function_call_arguments.delta`, `response.function_call_arguments.done`, and final `response.output_item.done` all carried non-empty argument text; `cached_tokens=192`; `cache_detail=paged+ssm`.
 - Verification: `tests/test_n2_chat_cache_gate.py` passed `8/8`; `py_compile` passed; `git diff --check` passed for the runner/test slice.
 - Boundary: N2 remains open. This is local source N2 JANGTQ2 API proof only; it does not clear JANG_1L memory-gated live path, tunnel/gateway SSE parity, installed app/UI execution, L2 restart restore, reasoning/parser leak checks, MTP/`gdn_sink` edge cases, media/VL/audio/video, or release readiness.
+
+## 2026-06-09 Responses server SSE tool proof-map refresh
+
+- Reduced blocker: server-side Responses SSE tool-call proof tracking for `api/ui` and `parser/template` release rows.
+- Source/proof-map change: `tests/cross_matrix/run_noheavy_api_cache_contract.py` now runs `responses_streaming_tool_contracts` against the four server regressions for buffered args, reasoning-channel args, output-index ordering, and empty required XML rejection.
+- Current proof artifact: `build/current-noheavy-api-cache-contract-after-xml-docs-boundary-20260609.json`, `status=pass`, `missing_markers=[]`, `responses_streaming_tool_call_arguments_and_indexes=true`, `responses_streaming_tool_contracts rc=0 passed=4`.
+- Release-manifest expected checks now include `responses_streaming_tool_call_arguments_and_indexes`, so current proof sweeps fail if this row is missing.
+- Boundary: this is source/no-heavy proof coverage only. It does not replace raw SSE local-vs-gateway-vs-tunnel capture, installed-app UI execution, N2 JANG_1L memory-safe live proof, or any model-family release clearance row.
