@@ -9038,3 +9038,42 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Remaining boundary: generic Gemma4 E2B raw SSE parity still fails in the same
   checklist; MiMo exactness/media, Gemma audio/live media, N2 JANG_1L,
   installed-app gaps, and full release readiness remain open.
+
+# 2026-06-10 - Raw SSE parity now requires previous_response_id history guard
+
+- Read `.agents/CODEX_ACTIVE_DIRECTIVES_20260610.md`; active lane stayed
+  Qwen/Gemma Responses raw SSE/tool/reasoning parity and agentic-loop coverage.
+  No release, signing, notarization, PyPI, or N2 JANG_1L action was taken.
+- Tightened `tests/cross_matrix/run_responses_raw_sse_parity_contract.py`:
+  `classify_noheavy_contract()` now consumes
+  `checks.responses_previous_response_history`, exposes
+  `responses_previous_response_history_guard`, and includes it in
+  `local_responses_streaming_guards_pass`.
+- Tightened `tests/cross_matrix/run_full_release_objective_checklist.py` so
+  raw SSE parity reports
+  `responses_raw_sse_parity_responses_previous_response_history_guard` when the
+  previous-response/tool-result history source guard is missing or false.
+- Added/updated focused tests in
+  `tests/test_responses_raw_sse_parity_contract.py` and
+  `tests/test_full_release_objective_checklist.py`.
+- Verification:
+  `.venv/bin/python -m pytest -q tests/test_responses_raw_sse_parity_contract.py tests/test_full_release_objective_checklist.py -k 'raw_sse or qwen35_raw_sse or responses_raw_sse_parity'`
+  passed with `24 passed`.
+- Regenerated Qwen35 parity artifact:
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-public-recapture-20260610.json`,
+  still `status=pass`, now with
+  `checks.responses_previous_response_history_guard=true`.
+- Regenerated Gemma4 E2B generic parity artifact:
+  `build/current-responses-raw-sse-parity-direct-gateway-tunnel-gemma4-e2b-after-parser-20260609.json`,
+  still `status=fail`, now with
+  `checks.responses_previous_response_history_guard=true`.
+- Regenerated full objective checklist:
+  `build/current-full-release-objective-checklist-after-qwen35-public-sse-recapture-20260610.json`,
+  still `status=open`, `release_ready=false`, `failed_count=71`.
+- Current result: Qwen35 raw SSE proof carries content/tool/reasoning/output
+  index coverage plus local previous-response history coverage. Gemma4 E2B
+  remains red because the public tunnel capture returns `model_not_found` for
+  `gemma4-e2b-sse` and does not advertise that expected model.
+- What not to claim: this is not a runtime model-family proof for MiMo/N2/Gemma
+  media, not installed-app parity, not full release readiness, and not a release
+  action.

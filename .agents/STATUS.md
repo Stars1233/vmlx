@@ -1449,3 +1449,16 @@
 - Verification: `.venv/bin/python -m pytest -q tests/test_full_release_objective_checklist.py -k 'qwen35_raw_sse or uses_current_qwen35_raw_sse_parity_contract'` passed (`2 passed`), Python JSON parse passed, and `git diff --check` passed.
 - Boundary: this does not clear the generic Gemma4 E2B direct/gateway/tunnel raw SSE gate, which still points at `build/current-responses-raw-sse-parity-direct-gateway-tunnel-gemma4-e2b-after-parser-20260609.json` and remains red. Full release readiness remains open.
 - Parallel-agent note: next Responses work should target the still-red generic/raw SSE family rows, especially tool-result continuation, kwargs passthrough, content/reasoning/function-call deltas, no raw XML leaks, final object consistency, and gateway/tunnel parity across Gemma/MiMo/N2/Qwen families.
+
+# 2026-06-10 - Raw SSE parity now requires previous_response_id history guard
+
+- Reduced blocker: Responses/API agentic-loop proof coverage for tool-result continuation.
+- Source edit: `tests/cross_matrix/run_responses_raw_sse_parity_contract.py` now requires the no-heavy source contract check `responses_previous_response_history=true`; the raw SSE parity artifact exposes this as `responses_previous_response_history_guard`.
+- Checklist edit: `tests/cross_matrix/run_full_release_objective_checklist.py` now fails raw SSE parity if the local previous-response history/tool-result continuation guard is missing or false.
+- Proof updates:
+  - `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-public-recapture-20260610.json` remains `status=pass` and now records `responses_previous_response_history_guard=true`.
+  - `build/current-responses-raw-sse-parity-direct-gateway-tunnel-gemma4-e2b-after-parser-20260609.json` remains `status=fail`, but local source guards are green, including `responses_previous_response_history_guard=true`.
+  - `build/current-full-release-objective-checklist-after-qwen35-public-sse-recapture-20260610.json` remains `status=open`, `release_ready=false`, `failed_count=71`.
+- Verification: `.venv/bin/python -m pytest -q tests/test_responses_raw_sse_parity_contract.py tests/test_full_release_objective_checklist.py -k 'raw_sse or qwen35_raw_sse or responses_raw_sse_parity'` passed (`24 passed`).
+- Boundary: no runtime workaround, parser argument synthesis, reasoning-disable workaround, release step, PyPI publish, or N2 JANG_1L action was taken. The remaining Gemma4 E2B raw SSE blocker is public tunnel/model availability (`gemma4-e2b-sse` not advertised/served by tunnel), not local source history/tool-result coverage.
+- Parallel-agent note: for the generic Gemma raw SSE row, redeploy/route the tunnel to the same `gemma4-e2b-sse` model or recapture against an actually advertised same Gemma model, then require content deltas, reasoning events, function-call args delta/done, final object consistency, valid output indices, and `responses_previous_response_history_guard=true`.

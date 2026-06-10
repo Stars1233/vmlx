@@ -1,6 +1,6 @@
 {
   "boundary": "No-heavy checklist only. A pass here would mean current evidence claims every listed gate is green; it still must be backed by the live artifacts referenced by each row. Open rows are release blockers.",
-  "created_at": "2026-06-10T03:31:53-0700",
+  "created_at": "2026-06-10T03:38:45-0700",
   "failed": [
     {
       "detail": false,
@@ -5898,6 +5898,12 @@
         "detail": true,
         "evidence": "build/current-responses-raw-sse-parity-direct-gateway-tunnel-gemma4-e2b-after-parser-20260609.json",
         "name": "responses_raw_sse_parity_gateway_argument_stream_passthrough_guard",
+        "ok": true
+      },
+      {
+        "detail": true,
+        "evidence": "build/current-responses-raw-sse-parity-direct-gateway-tunnel-gemma4-e2b-after-parser-20260609.json",
+        "name": "responses_raw_sse_parity_responses_previous_response_history_guard",
         "ok": true
       },
       {
