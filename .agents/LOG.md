@@ -12956,3 +12956,13 @@ Next action:
 - Updated the proof matrix to replace the stale "rerun live proof" note with
   the accepted current-source artifact and to keep installed-app bundled parity
   open. No new model run or release action was performed.
+
+# 2026-06-10 14:05 PDT - Gemma4 MXFP4 proof commit pushed
+
+- Commit `e13b40894` (`Record Gemma4 MXFP4 parser proof`) pushed to
+  `origin/codex/pr-intake-manifest` and `origin/main`.
+- Verification before commit: `jq -e` artifact invariant check, staged and
+  unstaged diff whitespace checks, and no proof-launched server/app process.
+- Current-source Gemma4 12B QAT MXFP4 Responses/tools visible-`thought` leak is
+  closed by committed evidence. Installed-app bundled-runtime parity remains
+  open for release packaging.

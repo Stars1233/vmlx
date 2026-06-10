@@ -5178,3 +5178,19 @@ Other-agent action:
 - No model relaunch was needed because the newer proof artifact already covered
   the current-source requirement more strongly than the stale
   `post-parser-autodetect` artifact.
+
+# 2026-06-10 14:05 PDT - Gemma4 MXFP4 proof committed and pushed
+
+- Commit `e13b40894` (`Record Gemma4 MXFP4 parser proof`) was created and
+  pushed to both `origin/codex/pr-intake-manifest` and `origin/main`.
+- Verification before commit:
+  - `jq -e` checked the proof status, final visible text, absence of leading
+    `thought`, parser leak flags, visible turn completion, `long_tool_loop`,
+    `responses_delta_streaming`, cache hits, and block-disk L2.
+  - `git diff --cached --check`
+  - `git diff --check`
+- Process cleanup verified: no matching proof server, `live-real-ui`, or
+  proof-launched `/Applications/vMLX.app` process was running.
+- Unrelated dirty state still left unstaged:
+  `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
+  and `node_modules/`.
