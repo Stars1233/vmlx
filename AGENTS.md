@@ -37,6 +37,12 @@ Every agent continuation must do these in order:
    objective row is open unless Eric explicitly overrides the lock in the
    current turn.
 
+Current constraint from Eric: do not use Python, local scripts, or any other
+wrapper to spawn subagents or delegate this lane's work to other agents. Use
+direct repo edits, direct shell commands, direct live proofs, and explicit
+handoff notes only. Python remains acceptable for ordinary local verification
+or artifact inspection when it is not spawning or managing subagents.
+
 If a turn is interrupted, resume by reading the current tracker/status and
 continuing the next blocker; do not restart from old memory, old `/Users/eric/vmlx`
 notes, old Swift notes, ADLab notes, transport notes, or model upload logs.

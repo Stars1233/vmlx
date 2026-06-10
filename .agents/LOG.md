@@ -17,6 +17,42 @@
   fidelity MiMo artifact. Do not mask with parser repair, JSON repair, cache
   changes, sampling clamps, or string post-processing.
 
+# 2026-06-10 - Gemma mixed-SWA storage quant runtime fix in progress
+
+- Directive check: working only the allowed Gemma JANG/MXFP/QAT cache lane; N2
+  JANG_1L remains out of scope.
+- Root cause found: CLI auto mode selected `q4`, then `MLLMScheduler` disabled
+  auto q4/q8 for all mixed-SWA VLMs. This made Gemma4 mixed-SWA health and
+  release checklist storage-quant rows red despite Gemma being the intended
+  release-cleared mixed-SWA q4 storage path.
+- Source fix in progress: allow Gemma4 mixed-SWA auto q4/q8 storage
+  compression; keep MiMo and Step3.7 explicit opt-in. Health contract now says
+  storage quantization applies to `full_attention_kv_only` and preserves
+  rotating-window metadata because upstream `RotatingKVCache.to_quantized()` is
+  NYI.
+- Verification: `py_compile` passed, focused MLLM rotating-cache preservation
+  test passed, focused native-cache telemetry tests passed, focused release
+  manifest mixed-SWA gate passed, and focused full-release checklist tests
+  passed.
+- Live proof completed: current source loaded
+  `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-JANG_4M` on port `8899` without
+  explicit `--kv-cache-quantization`, kept auto `q4`, detected a runtime cache
+  layout of `40` RotatingKVCache layers plus `8` KVCache layers, and initialized
+  `kv_quant=q4`.
+- Proof artifact:
+  `build/current-gemma4-12b-jang4m-autoq4-mixed-swa-cache-live-20260610.json`
+  is `status=pass`. It proves `mixed_swa_kv_v1`, q4 storage-boundary
+  quantization, `applies_to=full_attention_kv_only`, rotating metadata
+  preservation, generic TQ KV inactive, second-turn `cached_tokens=20` with
+  `cache_detail=paged+mixed_swa`, and block-disk L2 write/tokens `20`.
+- Regenerated checklist:
+  `build/current-full-release-objective-checklist-after-gemma12-autoq4-cache-20260610.json`
+  remains `status=open`, `failed_count=67`; the Gemma4 12B JANG4M no-media
+  cache reuse/native mixed-SWA/block-L2 rows are green from the new proof.
+- Still not proven: Gemma exact-code whitespace/status, Gemma installed-app
+  parity, fresh-process L2 restore, Gemma media/audio completeness, public
+  tunnel parity, package/sign/notarize/release, or N2 JANG_1L.
+
 # 2026-06-10 - MiMo JANGTQ_2 live exactness variant boundary
 
 - Launched real local MiMo V2.5 JANGTQ_2 on port `8897` with continuous

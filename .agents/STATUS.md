@@ -1501,3 +1501,48 @@
   notarization, media, MiMo, Gemma, or N2 JANG_1L action was taken.
 - Commit/push: `658c9ab3 Harden Qwen empty tool-call filtering` was pushed to
   `origin/codex/pr-intake-manifest` and fast-forwarded to `origin/main`.
+
+# 2026-06-10 - Gemma mixed-SWA storage quant runtime fix in progress
+
+- Directive check: allowed lane is Gemma JANG/MXFP/QAT cache/API proof. N2
+  JANG_1L remains Eric-owned and is not being touched.
+- Current constraint from Eric: do not use Python, local scripts, or wrappers
+  to spawn subagents or delegate this lane's work to other agents. Direct local
+  verification/artifact inspection is allowed when it is not subagent
+  orchestration.
+- Finding: CLI auto mode set stored prefix cache quantization to `q4`, but
+  `MLLMScheduler` disabled it for every mixed-SWA VLM family before startup.
+  That made Gemma4 12B JANG4M health report `storage_quantization.enabled=false`
+  and kept `gemma4_12b_jang4m_nomedia_native_mixed_swa_cache` red.
+- Source edit: keep auto q4/q8 storage quantization for Gemma4 mixed-SWA only;
+  MiMo V2.5 and Step3.7 mixed-SWA remain explicit opt-in until their semantic
+  parity rows are green.
+- Source edit: health now reports storage quantization as
+  `applies_to=full_attention_kv_only` with
+  `metadata_policy=preserve_rotating_window_metadata`, because
+  `RotatingKVCache` explicitly does not support quantization and must remain
+  native.
+- Verification: py_compile passed; focused MLLM rotating-cache preservation
+  test passed; focused native-cache telemetry tests passed; focused release
+  manifest mixed-SWA gate passed; focused full-release checklist tests passed.
+- Live proof: loaded `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-JANG_4M`
+  from current source on port `8899` without an explicit
+  `--kv-cache-quantization` flag. Startup kept auto `q4`, detected
+  `40` RotatingKVCache layers and `8` KVCache layers, and initialized
+  `kv_quant=q4`.
+- Proof artifact:
+  `build/current-gemma4-12b-jang4m-autoq4-mixed-swa-cache-live-20260610.json`,
+  `status=pass`. It proves `mixed_swa_kv_v1`, `storage_quantization.enabled`
+  true with `bits=4`, `applies_to=full_attention_kv_only`, rotating metadata
+  preservation, generic TurboQuant KV inactive, second-turn
+  `cached_tokens=20` with `cache_detail=paged+mixed_swa`, RAM cache tokens
+  `20`, and block-disk L2 write/tokens `20`.
+- Regenerated checklist:
+  `build/current-full-release-objective-checklist-after-gemma12-autoq4-cache-20260610.json`
+  remains `status=open`, but `failed_count` dropped to `67`; Gemma4 12B
+  JANG4M no-media cache reuse/native mixed-SWA/block-L2 rows are green from the
+  new cache proof.
+- Still red: Gemma4 12B JANG4M no-media exact-code whitespace/status rows,
+  Gemma QAT media/live rows, public Responses tunnel parity, MiMo exactness and
+  media/L2 rows, installed-app parity, and release clearance. No release,
+  signing, notarization, PyPI, or N2 JANG_1L action was taken.
