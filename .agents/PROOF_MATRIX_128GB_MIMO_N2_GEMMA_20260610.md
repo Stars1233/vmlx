@@ -316,6 +316,19 @@ Proven:
   `mixed_swa_kv_v1`, `cache_detail=paged+mixed_swa`,
   `cache_hit_tokens=29`, `l2_block_tokens_on_disk=81`,
   `l2_tokens_on_disk=81`, and block-disk `disk_writes=2`.
+- Current Electron dev-build Responses/tool/cache proof is green for Gemma 31B
+  JANG4M. The app used `/v1/responses`, executed built-in `run_command`,
+  followed up with `previous_response_id` plus `function_call_output`, completed
+  two visible assistant turns, and wrote exact probe files
+  `REAL_UI_LIVE_TOOL_ONE` and `REAL_UI_LIVE_TOOL_TWO`.
+- Dev-build Gemma 31B Responses/tool/cache evidence:
+  `build/current-real-ui-dev-app-gemma4-31b-jang4m-responses-tools-cache-20260610.json`
+  records active memory `28090.3 MB`, peak `34587.3 MB`,
+  `weight_format=jang_affine`, `profile=JANG_4M`, native
+  `mixed_swa_kv_v1`, `cache_detail=paged+mixed_swa`,
+  `cache_hit_tokens=320`, `l2_block_tokens_on_disk=1960`,
+  `l2_tokens_on_disk=1960`, block-disk `disk_writes=58`, and block-disk
+  evictions `26` inside the 2 GB L2 cap.
 - Local rebuilt installed app proof is now green for Gemma 12B JANG4M
   Responses/tool/cache. `/Applications/vMLX.app` launched as
   `uiLaunchMode=installed-app`, loaded
@@ -364,8 +377,7 @@ Not proven:
 - Installed packaged app JANG4M video at the default 4k prompt cap.
 - Gemma 26B JANG4M tools, Responses, image/video/audio, installed-app parity,
   and public tunnel SSE.
-- Gemma 31B tools, Responses, image/video/audio, installed-app parity, and
-  public tunnel SSE.
+- Gemma 31B image/video/audio, installed-app parity, and public tunnel SSE.
 - DMG package/sign/notarize/release readiness.
 - Local panel session manager starting this exact model from launch args; these
   app proofs used a remote session connected to the server started by the proof
