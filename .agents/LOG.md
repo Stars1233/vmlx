@@ -8619,6 +8619,30 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
   semantic drift, and source-vs-quant/no-source classification. No release,
   package, sign, notarize, tag, upload, or PyPI action was run.
 
+# 2026-06-10 - Gemma4 Unified audio capability gate fixed
+
+- Fixed Gemma4 Unified audio capability detection so config-only audio no
+  longer advertises runtime audio support. `_bundle_declares_native_audio()`
+  now requires `audio_tower.*` weights for both `gemma4` and
+  `gemma4_unified`; `audio_config` plus only
+  `embed_audio.embedding_projection.weight` is treated as not weight-backed.
+- Root cause evidence: current local Gemma4 12B JANG/QAT/MXFP bundles have
+  `audio_config` but only one audio tensor:
+  `embed_audio.embedding_projection.weight`. No `audio_tower.*` tensors are
+  present. Previous live audio proof reached generation but produced repetitive
+  non-semantic output, so routing audio was a false capability claim.
+- Verification:
+  - Focused Gemma modality gate tests passed `7/7`.
+  - `py_compile vmlx_engine/server.py tests/test_engine_audit.py` and
+    `git diff --check` passed.
+  - Direct local path check now reports `['text', 'vision', 'video']` for:
+    `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-JANG_4M`,
+    `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-JANG_4M`, and
+    `/Users/eric/models/OsaurusAI/gemma-4-12B-it-MXFP4`.
+- Boundary: this is an honest capability fix, not audio enablement. Gemma
+  audio remains unsupported until a bundle has real audio tower weights and
+  live semantic proof.
+
 # 2026-06-10 - Responses reasoning/tool SSE output-index source fix
 
 - Fixed `stream_responses_api()` reasoning/tool SSE bookkeeping. Streaming
