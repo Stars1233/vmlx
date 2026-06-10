@@ -118,6 +118,15 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   however it returned `ACKCB-742` for expected `ACK-CB-742` and only `{"` for
   expected `{"status":"ok","value":"blue-cat"}`. This matches installed app and
   confirms the blocker is not dev-vs-installed UI drift.
+- 2026-06-10 update: MiMo JANGTQ_2 current dev-build image/media is explicitly
+  red in `build/current-real-ui-dev-app-mimo-v25-jangtq2-image-proof-20260610.json`.
+  The `npm run dev` Electron app loaded the real 79 GiB bundle, completed two
+  visible text turns, sent one image attachment, and server `MEDIA_DIAG` saw
+  `image_url`; `/v1/chat/completions` returned `400`: `received unsupported
+  media modality image because the loaded runtime is text-only. Supported
+  modalities: text.` Runtime/cache stayed live with `cache_detail=paged`,
+  `cache_hit_tokens=39`, `l2_block_tokens_on_disk=132`, and block-disk writes
+  `3`. Do not claim MiMo JANGTQ_2 image/VL support.
 - 2026-06-10 update: MiMo JANGTQ_2 installed-app exact-output probe is still
   red in `build/current-real-ui-installed-app-mimo-v25-jangtq2-exact-output-proof-20260610.json`.
   The same rebuilt app loaded the real 79 GiB bundle, kept parser/reasoning
