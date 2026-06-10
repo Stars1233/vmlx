@@ -12966,3 +12966,19 @@ Next action:
 - Current-source Gemma4 12B QAT MXFP4 Responses/tools visible-`thought` leak is
   closed by committed evidence. Installed-app bundled-runtime parity remains
   open for release packaging.
+
+# 2026-06-10 14:06 PDT - MiMo JANGTQ2 media route state classified
+
+- Rechecked MiMo source endpoint `http://erics-m5-max2.local:8126/health`; it
+  timed out, so source-vs-quant exactness first-divergence still cannot run
+  from this lane.
+- Verified the tracked current-source MiMo media artifacts. They already prove
+  source image/video/audio transport after the media overlay fix:
+  `build/current-mimo-v25-jangtq2-media-runtime-source-proof-20260610.json`
+  and `build/current-mimo-v25-jangtq2-video-audio-source-proof-20260610.json`.
+- The release checklist is already wired correctly: source media route checks
+  pass, while `mimo_jangtq2_media_semantics_release_quality` remains red for
+  visual semantic errors, unverified audio semantics, installed-app parity,
+  fresh-process L2 restore, and exactness drift.
+- No source edit, model relaunch, release action, or fake capability claim was
+  made in this movement.

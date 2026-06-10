@@ -5194,3 +5194,27 @@ Other-agent action:
 - Unrelated dirty state still left unstaged:
   `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
   and `node_modules/`.
+
+# 2026-06-10 14:06 PDT - MiMo JANGTQ2 media route state classified
+
+- Rechecked MiMo source-vs-quant first-divergence availability:
+  `curl -fsS --max-time 5 http://erics-m5-max2.local:8126/health` timed out.
+  The MiMo JANGTQ_2 exactness row remains source/dequant/replacement-artifact
+  work; do not repeat parser/cache/fastpath/native-gather checks without new
+  evidence.
+- Verified current tracked MiMo source media artifacts:
+  - `build/current-mimo-v25-jangtq2-media-runtime-source-proof-20260610.json`
+  - `build/current-mimo-v25-jangtq2-video-audio-source-proof-20260610.json`
+- Classification: source media routing is green for current source. The proof
+  shows MiMo JANGTQ_2 loads as MLLM, binds preserved media weights
+  (`visual=364`, `audio_encoder=75`, `speech_embeddings=20`), clears the
+  previous source image `400`, returns HTTP `200` for image, video, and audio
+  routes, and keeps MiMo native asymmetric full/SWA cache behavior.
+- Still red: release semantic quality. The red video fixture is decoded as red
+  but the model answers black; solid red/green/blue/white images also answer
+  black; audio transport answers text but transcript correctness is not
+  independently verified; installed-app parity and fresh-process media L2
+  restore are not proven; exactness still mutates literals.
+- Checklist status is intentionally correct: current-source route rows pass,
+  `mimo_jangtq2_media_semantics_release_quality` remains open. No source patch
+  or model relaunch was needed in this step.

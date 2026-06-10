@@ -1185,6 +1185,21 @@ Proven:
   `server_cache_controls`, `native_cache_status`, and `l2_disk_storage`.
   Treat earlier dev-app media `400` rows as stale for current source, but do
   not clear installed-app parity from CLI/dev-app proof alone.
+- Current-source video/audio transport is also green after the media overlay
+  fix in
+  `build/current-mimo-v25-jangtq2-video-audio-source-proof-20260610.json`.
+  The source server loaded the real JANGTQ_2 bundle as MLLM, bound preserved
+  media weights, accepted a `video_url` red MP4 and OpenAI `input_audio`
+  base64 request, returned HTTP `200` for both, logged frame reader use for
+  the video fixture and base64 audio decode for the audio fixture, and kept the
+  native MiMo mixed full/SWA cache contract with generic TurboQuant KV skipped
+  by design.
+- Current-source media runtime routing proof in
+  `build/current-mimo-v25-jangtq2-media-runtime-source-proof-20260610.json`
+  also proves the previous source image `400` route is cleared: `api_routes_mllm`,
+  loader overlay, preserved media binding, and live image `200` are all true;
+  media binding counts are `visual=364`, `audio_encoder=75`, and
+  `speech_embeddings=20`.
 - The no-fastpath A/B boundary proves `VMLINUX_DISABLE_MIMO_V2_SWITCHGLU_FAST_PATH=1`
   leaves the same exactness mutations, so the vMLX MiMo SwitchGLU fast path is
   not the primary cause.
@@ -1214,12 +1229,17 @@ Red:
 - Hardened raw-harness exactness proof reproduced a complete JSON-value
   mutation: expected `{"status":"ok","value":"blue-cat"}` became
   `{"status":"ok","value":"blue"}`.
-- Dev-app image routing is green for current source after the overlay fix, but
-  dev-app video/audio semantic quality and installed-app media parity remain
-  open until rerun against the current bundled/runtime surface.
-- Source-vs-quant first divergence remains open: the source checkpoint exists on
-  `erics-m5-max2.local`, but `http://erics-m5-max2.local:8126/health` was still
-  connection-refused on 2026-06-10 after the native TQ all-projection proof.
+- Source image/video/audio transport is green for current source after the
+  overlay fix, but semantic quality and installed-app media parity remain open
+  until rerun against the current bundled/runtime surface.
+- Visual semantic quality is explicitly red in the current source
+  video/audio artifact: the red video fixture was decoded as red (`254,0,0`)
+  but the model answered black, and solid red/green/blue/white images all
+  returned `Black.`. Audio transport is green, but transcript correctness is
+  not independently verified by a labeled fixture.
+- Source-vs-quant first divergence remains open: the source checkpoint exists
+  on `erics-m5-max2.local`, but `http://erics-m5-max2.local:8126/health` timed
+  out again during the 2026-06-10 14:06 PDT recheck.
 
 Next implementation target:
 
