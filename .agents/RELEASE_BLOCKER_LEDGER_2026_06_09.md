@@ -437,6 +437,19 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   `58`, and block-disk evictions `26` inside the 2 GB L2 cap. This does not
   clear 31B media, installed-app parity, public tunnel SSE parity, 26B
   tools/media, package/sign/notarize/tag/upload, or release readiness.
+- 2026-06-10 Gemma 26B JANG4M dev-app Responses/tools update:
+  `build/current-real-ui-dev-app-gemma4-26b-jang4m-responses-tools-cache-20260610.json`
+  is green for the current Electron dev build and the 26B A4B JANG4M row. The
+  app used `/v1/responses`, executed built-in `run_command` on both turns, sent
+  tool-result continuations with `previous_response_id` and
+  `function_call_output`, completed visible assistant turns, and wrote exact
+  probe files `REAL_UI_LIVE_TOOL_ONE` and `REAL_UI_LIVE_TOOL_TWO`. Runtime
+  evidence recorded active memory `17782 MB`, peak `19943.9 MB`,
+  `cache_detail=paged+mixed_swa`, `cache_hit_tokens=3538`,
+  `l2_block_tokens_on_disk=3559`, `l2_tokens_on_disk=3559`, block-disk hits
+  `30`, and block-disk writes `58`. This does not clear 26B media,
+  installed-app parity, public tunnel SSE parity, package/sign/notarize/tag/
+  upload, or release readiness.
 - Proper release mechanics are documented in `/Users/eric/wiki/infra/apple-notarization.md`; do not invent an alternate path. The canonical keychain is `~/Library/Keychains/vmlx-build.keychain-db`, the Developer ID identity is `Developer ID Application: ShieldStack LLC (55KGF2S5AY)`, and notarization uses the `vmlx-notary` keychain profile.
 - If signing returns `errSecInternalComponent`, fix key access with the documented sequence and retry once after the partition-list grant settles:
 
