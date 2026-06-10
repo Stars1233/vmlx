@@ -54,22 +54,29 @@ that path in the current turn.
   audit-consumed and green, but #179 remains open for reporter K artifact,
   reporter generation-config/sampling, reporter bundle hash drift, and
   reporter-machine same-prompt raw SSE/visible/reasoning capture.
-- No package, sign, notarize, tag, appcast, or public download update until
-  runtime/model/UI/cache blockers are green or Eric explicitly overrides.
+- Eric explicitly overrode the red prepackage gate for a checkpoint DMG build.
+  Current-source vMLX 1.5.56 Sequoia/Tahoe DMGs are built, Developer ID signed,
+  Apple-notarized, stapled, blockmap-regenerated, and final-verified:
+  `panel/release/vMLX-1.5.56-sequoia-arm64.dmg` and
+  `panel/release/vMLX-1.5.56-tahoe-arm64.dmg`.
+- Checkpoint hashes: Sequoia
+  `014ef3a9d729bf6b63091e28c82cfe86a9921397aa3d27621cab5f0e0541652f`;
+  Tahoe `272f9c9551fa99332b66c0a686083d94d0b2bf7c5359d310d4983d322dd01686`.
+- Final verification passed for both DMGs with `Notarization Ticket=stapled`,
+  `TeamIdentifier=55KGF2S5AY`, `source=Notarized Developer ID`, and valid
+  `hdiutil` checksums. No tag, appcast/latest.json mutation, GitHub release
+  publish, public download update, or PyPI publish was performed.
 - The locally installed app is ad-hoc signed and valid on disk; do not call it a
   Developer ID signed or notarized checkpoint DMG.
-- To produce a real current-source signed checkpoint DMG from this state,
-  rebuild Sequoia/Tahoe DMGs, then run notarization with
-  `VMLINUX_NOTARY_KEYCHAIN=$HOME/Library/Keychains/vmlx-build.keychain-db` and
-  verify with `panel/scripts/verify-release-dmgs.sh`. Only redo the documented
-  unlock plus `codesign` partition-list sequence if a fresh signing/notary probe
-  regresses.
-- Current official DMG build attempt:
-  `VMLINUX_PREPACKAGE_READY_MANIFEST_OUT=build/current-release-regression-manifest-pre-dmg-release-build-after-keychain-unlock-20260609.json panel/scripts/build-release-dmgs.sh sequoia`
-  stopped at `--require-prepackage-ready` before packaging. The manifest reports
-  `status=fail`, `prepackage_ready=false`, `release_ready=false`, while
-  `packaged_app_developer_id_signing=true`. Treat the next blocker as release
-  proof scope/model/API/UI rows, not signing access.
+- The checkpoint build used local `/Users/eric/jang/jang-tools` and installed
+  `jang==2.5.30`; the other-agent `jang==2.5.31` PR is draft/unpublished and was
+  not consumed by this vMLX DMG build. Rotate the PyPI token pasted in chat
+  before any PyPI action.
+- The checkpoint override manifest is
+  `build/current-release-regression-manifest-checkpoint-dmg-override-20260609.json`
+  and remains `status=fail`, `prepackage_ready=false`, `release_ready=false`.
+  Treat the next blocker as release proof scope/model/API/UI rows, not signing
+  access.
 - Proper release mechanics are the documented path in
   `/Users/eric/wiki/infra/apple-notarization.md`; do not invent a GUI-only,
   ad-hoc-signing, cert-reimport, or verifier-weakening workaround. If signing
@@ -85,13 +92,16 @@ security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k vmlx-relea
   is green or Eric explicitly overrides it with listed open rows, is:
 
 ```sh
-VMLINUX_PREPACKAGE_READY_MANIFEST_OUT=build/current-release-regression-manifest-pre-dmg-release-build-<scope>.json panel/scripts/build-release-dmgs.sh all
+VMLINUX_CHECKPOINT_RELEASE_OVERRIDE=1 \
+  VMLX_PREPACKAGE_READY_MANIFEST_OUT=build/current-release-regression-manifest-checkpoint-dmg-override-<date>.json \
+  panel/scripts/build-release-dmgs.sh all
 VMLINUX_NOTARY_KEYCHAIN=$HOME/Library/Keychains/vmlx-build.keychain-db panel/scripts/notarize-release-dmgs.sh
 panel/scripts/verify-release-dmgs.sh
 ```
 
 - `build-release-dmgs.sh` creates both Sequoia and Tahoe flavors from the
-  current checkout and stops up front on `--require-prepackage-ready`;
+  current checkout and stops up front on `--require-prepackage-ready` unless the
+  explicit checkpoint override is set;
   `notarize-release-dmgs.sh` submits and staples both final DMGs and regenerates
   blockmaps; `verify-release-dmgs.sh` is the final post-staple verification.
 

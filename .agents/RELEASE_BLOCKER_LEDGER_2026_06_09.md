@@ -2,6 +2,32 @@
 
 Scope: active Python engine and Electron/panel app in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`.
 
+## 2026-06-09 18:00 PDT checkpoint DMGs
+
+Eric explicitly overrode the red prepackage gate for a checkpoint build. Current-source vMLX 1.5.56 Sequoia/Tahoe DMGs were built, Developer ID signed, notarized, stapled, blockmap-regenerated, and post-staple verified from `/Users/eric/mlx/vllm-mlx-finite-launch-guard`.
+
+- Sequoia: `panel/release/vMLX-1.5.56-sequoia-arm64.dmg`
+  - SHA-256: `014ef3a9d729bf6b63091e28c82cfe86a9921397aa3d27621cab5f0e0541652f`
+- Tahoe: `panel/release/vMLX-1.5.56-tahoe-arm64.dmg`
+  - SHA-256: `272f9c9551fa99332b66c0a686083d94d0b2bf7c5359d310d4983d322dd01686`
+
+Commands used:
+
+```sh
+security unlock-keychain -p vmlx-release ~/Library/Keychains/vmlx-build.keychain-db
+security set-keychain-settings ~/Library/Keychains/vmlx-build.keychain-db
+security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k vmlx-release ~/Library/Keychains/vmlx-build.keychain-db
+VMLINUX_CHECKPOINT_RELEASE_OVERRIDE=1 \
+  VMLX_PREPACKAGE_READY_MANIFEST_OUT=build/current-release-regression-manifest-checkpoint-dmg-override-20260609.json \
+  panel/scripts/build-release-dmgs.sh all
+VMLINUX_NOTARY_KEYCHAIN=$HOME/Library/Keychains/vmlx-build.keychain-db panel/scripts/notarize-release-dmgs.sh
+panel/scripts/verify-release-dmgs.sh
+```
+
+Final verify reported `Notarization Ticket=stapled`, `source=Notarized Developer ID`, `TeamIdentifier=55KGF2S5AY`, valid `hdiutil` checksums, and Developer ID signatures for both DMGs.
+
+Boundary: the override manifest remains `status=fail`, `prepackage_ready=false`, and `release_ready=false`. This is a checkpoint artifact only unless Eric explicitly publishes it as such. Do not claim full production clearance for N2/MiMo/Gemma/media/tool/UI/cache/runtime rows from notarization alone. No tag, appcast/latest.json mutation, GitHub release publish, public download update, or PyPI publish was performed.
+
 Hard boundary: no fake fixes, no forced sampling/parser/cache behavior to hide runtime/model bugs, and no signing/notarization/tag/download release until the runtime, cache, parser, UI, and installed-app rows are green or Eric explicitly overrides.
 
 Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/public acknowledgement for reported runtime/model/UI/API issues.
