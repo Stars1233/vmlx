@@ -1,3 +1,56 @@
+# 2026-06-10 - Qwen parser/API missing-args lane
+
+- Request: continue fixing blockers efficiently, with emphasis on auto tool
+  usage, content/reasoning/tool deltas, API/gateway usability, parser
+  correctness, and opencode/Codex-style harness loops.
+- Current lane: Qwen/Qwen-coder Responses/tool parser correctness for empty or
+  missing required tool arguments and final object consistency.
+- Constraints: no release/sign/notarize/PyPI/updater/download/site action, no
+  N2 JANG_1L, no subagents, no synthetic tool args, no disabling reasoning, and
+  no parser cleanup that hides raw protocol failure.
+- Planned movement: trace current parser-to-Responses behavior, find the
+  precise source boundary for `arguments: {}` when required params are missing,
+  and patch fail-closed validation only if current source still allows it.
+- Source trace result: `vmlx_engine/tool_parsers/xml_function_tool_parser.py`
+  rejects `<function=exec_command></function>` when the request schema requires
+  `cmd`; `vmlx_engine/server.py::_parse_tool_calls_with_parser()` also filters
+  any parsed call whose request-visible required args are missing or empty.
+  Responses streaming passes the full request into final buffered parsing.
+- Verification: focused source proof passed `10/10`:
+  `tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_responses_tool_call_arguments_survive_buffering`,
+  `...::test_streaming_responses_tool_call_uses_next_output_index_without_text`,
+  `...::test_streaming_responses_required_empty_xml_tool_call_is_rejected`,
+  `...::test_streaming_responses_preamble_empty_xml_tool_call_never_emits_empty_arguments`,
+  `...::test_streaming_responses_auto_empty_xml_tool_call_strips_final_markup`,
+  `...::test_tool_parser_drops_empty_xml_call_and_strips_markup_for_nonstream_paths`,
+  `...::test_streaming_chat_preamble_empty_xml_tool_call_never_emits_empty_arguments`,
+  `...::test_streaming_responses_reasoning_tool_call_keeps_arguments`,
+  plus the two XML parser missing-required tests.
+- Boundary: no runtime patch made in this movement because current source
+  already rejects the reported local failure shape. Remaining issue boundary is
+  current direct/gateway/tunnel raw SSE parity and any deployed/tunnel stale
+  path that still duplicates output indices or leaks `{}`.
+- Tunnel parity result: classifier regenerated
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-current-20260610.json`
+  from current direct/gateway captures plus
+  `build/responses-sse-captures-20260610/tunnel-qwen35-mxfp8-mtp-tool-recapture-after-strict-source-20260610.sse`.
+  Result is `status=pass`: same model
+  `models/Qwen3.6-35B-A3B-MXFP8-CRACK-MTP`, expected arguments
+  `{"value":"blue-cat"}`, required reasoning checks, valid output indices,
+  final object consistency, and previous-response history/source guards are
+  green. This supersedes the stale June 9 tunnel duplicate-index failure.
+- Checklist pointer movement: retargeted `QWEN35_RAW_SSE_PARITY` in
+  `tests/cross_matrix/run_full_release_objective_checklist.py` from the older
+  missing-required label to
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-public-recapture-20260610.json`.
+- Checklist regeneration:
+  `build/current-full-release-objective-checklist-after-qwen35-public-sse-pointer-20260610.json`
+  is still `status=open`, `failed_count=56`, `prepackage_ready=false`, and
+  `release_ready=false`. This movement clears the current Qwen35 raw-SSE
+  proof accounting boundary only; remaining blockers are still mainly N2
+  JANG_1L external lane, MiMo exactness/media, Gemma matrix rows,
+  installed-app/package parity, Step3.7/LFM/Nemotron rows, and release gates.
+
 # 2026-06-10 - AGENTS.md current-turn carry-forward
 
 - Request: Eric said "into agents.md" after instructing that every instruction,

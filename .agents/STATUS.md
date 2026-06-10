@@ -1,4 +1,31 @@
 ## CODEX
+- now: active lane is Qwen/Qwen-coder Responses/tool parser correctness for
+  empty or missing required tool arguments, output deltas, and final object
+  consistency. This is selected because it directly affects opencode/Codex-style
+  harness usability and does not require the external MiMo TP4 endpoint.
+- constraints: no release/sign/notarize/PyPI/updater/download/site action; no
+  N2 JANG_1L; no subagents; no synthetic tool args; no disabling reasoning; no
+  parser leak cleanup that hides a protocol failure.
+- action: traced current source parser/schema flow and ran focused source tests.
+  Current source already fails closed for the reported preamble plus empty XML
+  function shape when request tools include required args.
+- proof: `.venv/bin/python -m pytest -q` on 10 focused server/XML parser tests
+  passed, covering Responses required/auto modes, Chat streaming, reasoning
+  tool args, output indices, and XML required-schema rejection.
+- action: classified the current June 10 direct/gateway/tunnel Qwen35 raw SSE
+  captures; all surfaces now pass same-model argument/index/final-object checks.
+- proof: `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-current-20260610.json`
+  generated `status=pass`; existing public recapture artifact
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-public-recapture-20260610.json`
+  is also `status=pass`.
+- next action: retarget checklist pointer from the older missing-required label
+  to the public-recapture proof and verify focused checklist consumption.
+- checklist: regenerated
+  `build/current-full-release-objective-checklist-after-qwen35-public-sse-pointer-20260610.json`;
+  status remains `open`, failed_count is `56`, prepackage/release remain false.
+  Qwen35 raw SSE is no longer the current blocker in this lane.
+
+## CODEX
 - now: Eric explicitly asked to put the current carry-forward into `AGENTS.md`.
 - action: make only instruction/status documentation edits in the active Python
   worktree; do not launch models, run release/sign/notarize/PyPI steps, or
