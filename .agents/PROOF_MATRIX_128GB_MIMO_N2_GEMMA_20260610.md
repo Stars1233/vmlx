@@ -233,6 +233,7 @@ Artifact:
 - `build/current-mimo-v25-jang2l-chat-tool-boundary-fulltools-20260610.json`
 - `build/current-real-ui-live-model-mimo-v25-jang2l-dev-app-after-toolchoice-proof-20260610.json`
 - `build/current-real-ui-live-model-mimo-v25-jang2l-dev-app-followup-proof-20260610.json`
+- `build/current-real-ui-live-model-mimo-v25-jang2l-image-proof-20260610.json`
 
 Proven:
 
@@ -271,6 +272,21 @@ Proven:
   `persistedToolCount=135`, `eventCounts.stream=239`,
   `eventCounts.complete=2`, `cacheHitTokens=8072`, verified server cache
   controls, and `l2_block_tokens_on_disk=4580`.
+- Real Electron dev-app MiMo JANG_2L image/VL proof is now classified red by
+  an explicit runtime text-only guard. The run requested `--is-mllm`, loaded the
+  105 GiB artifact, completed text turns, and then the server `MEDIA_DIAG`
+  observed one `image_url`, but `/v1/chat/completions` returned `400`:
+  `received unsupported media modality image because the loaded runtime is
+  text-only. Supported modalities: text.`
+- The same image run proved MiMo JANG_2L runtime/cache surfaces in-app:
+  `model_type=llm`, `JANG_2L_322_D3E16`,
+  `mlx_affine_quantized_matmul`, Metal NA active, `mixed_swa_kv_v1`,
+  `mimo_v2_asymmetric_swa`, `cache_detail=paged`, `cached_tokens=39`,
+  `l2_block_tokens_on_disk=110`, and `l2_tokens_on_disk=110`.
+- The server log explains the boundary: MiMo V2 preserved media weights
+  override forced MLLM mode because bundle metadata marks vision/audio as
+  `unwired weights_preserved_text_runtime`; the runtime routes this artifact
+  text-only.
 
 Red / not proven:
 
@@ -290,7 +306,9 @@ Red / not proven:
   instead of the configured working-directory probe files.
 - Responses stream/nonstream tool path for JANG_2L.
 - Fresh-process L2 restore for JANG_2L.
-- VL/audio/video runtime, even though media assets/weights are present.
+- VL/audio/video runtime. Image/VL is now explicitly red by a text-only runtime
+  guard even when forced MLLM is requested; do not claim MiMo JANG_2L media
+  support from preserved media weights.
 - Long context usability beyond the short cache proof.
 
 Next implementation target:
@@ -301,8 +319,9 @@ Next implementation target:
 - Next MiMo work is model/artifact/decode/tool-argument exactness. Cache/L2 is
   not the current blocker: post-fix app attempts have paged cache hits and
   block-disk L2 writes.
-- Continue JANG_2L into Responses, fresh-process L2 restore, and media honesty
-  only after tool argument/visible-final exactness is understood.
+- Continue JANG_2L into Responses and fresh-process L2 restore. Media honesty is
+  now classified for image/VL: the current artifact is text-only at runtime
+  despite preserved media weights.
 
 ### Nex/N2 Pro JANGTQ2
 

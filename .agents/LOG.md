@@ -8135,3 +8135,11 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Boundary proved: app attempted an audio turn and server saw `input_audio`, but `/v1/chat/completions` rejected it with `400` unsupported media modality; supported modalities reported by the server are `text, vision, video`.
 - This is not a load/cache/L2 failure. Do not claim Gemma MXFP4 audio support.
 - No release action was run.
+
+# 2026-06-10 - MiMo JANG_2L dev-app image/VL gated
+
+- Ran real Electron dev-app MiMo V2.5 JANG_2L Chat Completions image proof with forced MLLM requested.
+- Added tracked summary `build/current-real-ui-live-model-mimo-v25-jang2l-image-proof-20260610.json`, `status=fail`.
+- Boundary proved: the 105 GiB artifact loaded and text/cache/L2 worked, but server `MEDIA_DIAG` saw `image_url` and then rejected image with `400` because the loaded runtime is text-only; supported modalities reported by the server are `text`.
+- This is not a load/cache/L2 failure. Do not claim MiMo JANG_2L media support from preserved media weights.
+- No release action was run.

@@ -933,3 +933,12 @@
 - Red evidence: app attempted an audio turn, server `MEDIA_DIAG` saw `input_audio`, and the API returned `400 - /v1/chat/completions received unsupported media modality audio. Supported modalities: text, vision, video.`
 - Boundary: this is an honest capability guard, not a crash or cache failure. Do not claim Gemma 12B QAT MXFP4 audio support in the checkpoint release.
 - No package/sign/notarize/tag/upload/release action was run.
+
+# 2026-06-10 - MiMo JANG_2L dev-app image/VL honestly gated
+
+- Ran real Electron dev-app MiMo V2.5 JANG_2L Chat Completions image proof with `--is-mllm` requested.
+- Added tracked proof summary `build/current-real-ui-live-model-mimo-v25-jang2l-image-proof-20260610.json`, `status=fail`.
+- Positive evidence before the image turn: 105 GiB artifact loaded, text chat turns completed, affine JANG_2L matmul and Metal NA were active, and MiMo native cache/L2 was green with `mixed_swa_kv_v1`, `mimo_v2_asymmetric_swa`, `cache_detail=paged`, `cached_tokens=39`, `l2_block_tokens_on_disk=110`, and `l2_tokens_on_disk=110`.
+- Red evidence: server `MEDIA_DIAG` saw one `image_url`, but the API returned `400 - /v1/chat/completions received unsupported media modality image because the loaded runtime is text-only. Supported modalities: text.`
+- Boundary: the bundle has preserved media weights, but runtime metadata marks them `unwired weights_preserved_text_runtime`; do not claim MiMo JANG_2L image/VL support in the checkpoint release.
+- No package/sign/notarize/tag/upload/release action was run.
