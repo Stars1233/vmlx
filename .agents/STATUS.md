@@ -2368,3 +2368,58 @@
   and rerun MiMo JANGTQ_2 UI video cache rows. For visual quality/exactness,
   continue artifact/logit/quant-contract diagnosis, not parser repair, sampling
   clamps, or cache/L2 chasing.
+
+# 2026-06-10 06:05 PDT - Continuation objective logged before MiMo exactness diagnosis
+
+- Request: continue the full checkpoint objective for N2 JANGTQ2, MiMo
+  JANG/JANGTQ, Gemma JANG/MXFP, VL/audio/cache/TurboQuant/reasoning/tool
+  parser/API/gateway/UI, with efficient build/fix phases and without broad new
+  test-suite detours or recursive subagent behavior.
+- Directive check: active lane remains
+  `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; N2 JANG_1L remains
+  Eric-owned/off-limits; no release/sign/notarize/PyPI/download action is
+  allowed in this step; no subagents are allowed.
+- Immediate blocker being reduced: MiMo V2.5 JANGTQ_2 literal/tool/JSON
+  exactness classification. The current evidence says cache, parser rewrite,
+  and JSON repair must not be chased as primary fixes; inspect current
+  artifacts, generation/template metadata, and decode/runtime path before any
+  source edit.
+- Must not claim: no MiMo release clearance, no visual-quality fix, no
+  exactness fix, and no installed-app parity unless live evidence proves it.
+
+# 2026-06-10 06:09 PDT - MiMo JANGTQ2 no-fastpath exactness classifier
+
+- Request: continue MiMo JANGTQ_2 exactness diagnosis without fake parser/JSON
+  semantic repair, hidden sampling changes, broad test-suite work, subagents,
+  release/signing actions, or N2 JANG_1L work.
+- Evidence gathered: no-load tokenizer/template check preserves exact literals
+  before generation. `AutoTokenizer` round-trips `MIMO-OK`, `blue-cat`,
+  `B7-CAT-09`, `ACK-CB-742`, and exact JSON; `apply_chat_template(...,
+  enable_thinking=False)` renders the exact literals into the prompt with
+  `<think></think>` and no literal corruption.
+- Live proof: relaunched real
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2` with
+  `VMLINUX_DISABLE_MIMO_V2_COMPILED_ROUTER=1` and
+  `VMLINUX_DISABLE_MIMO_V2_SWITCHGLU_FAST_PATH=1`. Startup confirmed both vMLX
+  fast paths disabled while native JANGTQ/TurboQuant remained active.
+- Result: exact text request still returned `MIMOOK` instead of `MIMO-OK`;
+  exact JSON still returned `{"status":"ok","value":"blue","count":3}`
+  instead of preserving `blue-cat`. Both requests were cold prompt misses
+  (`cache_hits=0`, `cache_misses=2`), so cache-hit reuse is not the cause.
+- Artifact:
+  `build/current-mimo-v25-jangtq2-exactness-classifier-after-no-fastpath-live-20260610.json`,
+  `status=open`.
+- Classification: current MiMo JANGTQ_2 literal exactness is not caused by
+  tokenizer roundtrip, chat template rendering, hidden stochastic sampling,
+  parser/JSON repair, cache-hit reuse, generic TurboQuant KV, vMLX compiled
+  router, or vMLX SwitchGLU decode fast path. Remaining target is native
+  JANGTQ/TurboQuant codebook artifact or kernel/logit quality, especially the
+  prestacked SwitchMLP routed-expert quant contract.
+- Must not claim: no MiMo exactness fix, no release clearance, no installed-app
+  parity, no source-vs-quant proof, and no visual/audio semantic clearance from
+  this classifier.
+- Other-agent action: stop chasing cache/parser/template/these vMLX fast paths
+  for MiMo JANGTQ_2 exactness. Next useful work is JANGTQ_2 native
+  TurboQuant/codebook logit comparison against JANG_2L or source/dequant for
+  the first divergent token, or rebuilding the artifact with a corrected
+  prestacked routed-expert quant contract.

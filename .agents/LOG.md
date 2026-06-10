@@ -10010,3 +10010,26 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
   `pixel_cache_size=1`.
 - Boundary: visual semantics remain red (`White.` for red video), literal
   exactness remains red, and release/installed-app/L2 rows remain open.
+
+# 2026-06-10 06:05 PDT - Continuation before MiMo exactness diagnosis
+
+- Request: continue full checkpoint objective without broad test-suite detours.
+- Current lane: MiMo V2.5 JANGTQ_2 literal/tool/JSON exactness classification
+  from current artifacts and runtime metadata first.
+- Constraints: no subagents, no N2 JANG_1L, no release/sign/notarize/PyPI/
+  download action, no parser/JSON semantic repair, no hidden sampling clamp.
+
+# 2026-06-10 06:09 PDT - MiMo no-fastpath exactness classifier
+
+- Done: no-load tokenizer/template check plus live MiMo JANGTQ_2 exactness run
+  with `VMLINUX_DISABLE_MIMO_V2_COMPILED_ROUTER=1` and
+  `VMLINUX_DISABLE_MIMO_V2_SWITCHGLU_FAST_PATH=1`.
+- Proof:
+  `build/current-mimo-v25-jangtq2-exactness-classifier-after-no-fastpath-live-20260610.json`.
+- Result: literals are preserved before generation, but live no-fastpath output
+  still mutates `MIMO-OK -> MIMOOK` and JSON `blue-cat -> blue`.
+- Boundary: excludes tokenizer/template/parser/cache/generic-TQ-KV/vMLX
+  compiled-router/vMLX-SwitchGLU-fastpath as primary causes; remaining target is
+  native JANGTQ/TurboQuant codebook artifact or kernel/logit quality.
+- Server stopped cleanly; no release, signing, PyPI, download, or N2 JANG_1L
+  action.
