@@ -1,3 +1,29 @@
+# 2026-06-10 - AGENTS.md current-turn carry-forward
+
+- Request: Eric said "into agents.md" after instructing that every instruction,
+  status movement, no-subagent constraint, parser/API/tool streaming priority,
+  and N2 JANG_1L boundary must be written down and checked.
+- Current lane: instruction/control-plane update only.
+- Constraints: no release/sign/notarize/package/PyPI/updater/download/site
+  action, no model launch, no subagents, no N2 JANG_1L, no synthetic tool args,
+  and no runtime-fix claims from a documentation edit.
+- Planned movement: update active `AGENTS.md` with a concise current-turn
+  hard-carry-forward that future continuations must check before work.
+
+# 2026-06-10 - N2 JANGTQ2 source API/cache/tools lane selected
+
+- Request: continue toward production-quality runtime proof for requested
+  model families without broad test-suite churn.
+- Current lane: Nex/N2 JANGTQ2 only. N2 JANG_1L remains Eric-owned/out of
+  scope and must not be loaded or claimed.
+- Constraints: no release/sign/notarize/package/PyPI/updater/download/site
+  work, no subagents, no synthetic tool args, no disabling reasoning to hide
+  parser/tool failures, and stop any server started in this lane before final
+  response.
+- Planned movement: inspect current N2 JANGTQ2 artifacts and model metadata,
+  then run one focused live source API/cache/tools/reasoning proof only if it
+  closes a real current gap.
+
 # 2026-06-10 - MiMo source-vs-quant endpoint launch attempt
 
 - Request: continue reducing MiMo exactness blockers with real E2E evidence,

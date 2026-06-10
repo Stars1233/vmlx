@@ -1,4 +1,17 @@
 ## CODEX
+- now: Eric explicitly asked to put the current carry-forward into `AGENTS.md`.
+- action: make only instruction/status documentation edits in the active Python
+  worktree; do not launch models, run release/sign/notarize/PyPI steps, or
+  change runtime code in this movement.
+- constraints: preserve the no-subagent rule, N2 JANG_1L off-limits boundary,
+  release-action lock, and parser/API/tool-streaming priority exactly.
+- boundary: this movement is documentation/control-plane only; it is not a
+  runtime proof or release readiness claim.
+
+## CODEX
+- now: switching to the next allowed lane: Nex/N2 JANGTQ2 source API/cache/tools/reasoning proof. N2 JANG_1L remains out of scope and must not be loaded or claimed.
+- constraints: no release/sign/notarize/package/PyPI/updater work; no subagents; no N2 JANG_1L; no synthetic tool args; no disabling reasoning to hide parser/tool failures; stop any server started in this lane before final response.
+- next action: inspect current N2 JANGTQ2 proof artifacts and model metadata, then run only one focused live source proof if it closes a real gap rather than duplicating already-green evidence.
 - now: attempting to move MiMo JANGTQ_2 source-vs-quant exactness from preflight to a live endpoint run. This is still the MiMo exactness lane only.
 - constraints: check memory/ports/repo paths before loading; no N2 JANG_1L; no release/sign/notarize/package/PyPI/updater work; no subagents; stop any server this lane starts before final response.
 - action: launched local MiMo JANGTQ_2 quant endpoint on `127.0.0.1:8897`, ran the updated first-divergence harness with source still absent, captured current quant outputs/cache health, and stopped the server cleanly; port `8897` is clear.

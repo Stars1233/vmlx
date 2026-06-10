@@ -210,6 +210,48 @@ Do not repair missing arguments from visible preambles, disable reasoning, or
 claim all model-family parser/API loops green until direct/gateway/tunnel and
 family-specific auto/required/no-tool/tool-result rows are live-proven.
 
+### 2026-06-10 current-turn hard carry-forward
+
+Eric explicitly asked that the current goal, every instruction, every status
+movement, and every no-claim boundary be written into `AGENTS.md` / `.agents`
+state so future continuations are forced to check it instead of relying on chat
+memory. This section is a standing carry-forward until a newer checked-in
+instruction supersedes it.
+
+- Keep the work on fixes and proof that move a signed checkpoint release
+  surface forward, but do not run release/sign/notarize/PyPI/updater/download/
+  website actions unless Eric explicitly asks for that action in the current
+  lane.
+- Do not use Python, shell wrappers, MCP tools, browser automation, or any other
+  mechanism to spawn, supervise, prompt, summarize, or delegate this lane to
+  subagents. Direct commands are allowed only for local inspection, proof,
+  tests, source maintenance, and app/runtime verification.
+- Do not work on Nex/N2 JANG_1L unless Eric explicitly reopens that lane in the
+  current turn. Treat it as Eric-owned and do not load, prove, fix, classify, or
+  claim it from prior partial artifacts.
+- Put parser/API/tool-loop correctness ahead of adjacent cleanup: auto tool
+  use, required/no-tool modes, tool-result continuation, content deltas,
+  reasoning deltas, interleaved reasoning/tool streaming, function-call
+  argument delta/done events, output indices, request kwargs, gateway/tunnel
+  passthrough, cache reuse telemetry, and final object consistency must be
+  traced and proven across Qwen/Qwen-coder, Gemma4, MiMo think-XML, MiniMax,
+  DeepSeek/R1-style, XML function-call parsers, and gateway/API routes.
+- Treat the Qwen3.6/Qwen-coder `arguments: {}` empty-tool-call failure as
+  release-critical for opencode/Codex-style harnesses, including 27B and 35B
+  family surfaces, but do not trust the proposed root cause without same-model
+  raw output. Missing required arguments must fail closed; do not synthesize
+  arguments from visible preambles, disable reasoning, silently drop tool calls,
+  or strip raw XML after parser failure as a fake fix.
+- For Gemma JANG/MXFP/QAT, MiMo JANG/JANGTQ, Nex/N2 JANGTQ/non-JANG_1L, Qwen
+  MTP/MXFP, VL/video/audio, JANG/JANGTQ/MXFP/MXTQ, cache/L2/TurboQuant, UI,
+  CLI, installed-app, and API rows, prefer real live loads and E2E proof over
+  metadata-only claims when RAM headroom allows. Watch memory/storage and stop
+  any server started by this lane before final response.
+- After every movement, update `.agents/STATUS.md` and `.agents/LOG.md` with
+  the request, action, command/proof/artifact, proven/not-proven state,
+  blockers, no-claims, and exactly what the other agent should or should not
+  pick up next.
+
 If a turn is interrupted, resume by reading the current tracker/status and
 continuing the next blocker; do not restart from old memory, old `/Users/eric/vmlx`
 notes, old Swift notes, ADLab notes, transport notes, or model upload logs.
