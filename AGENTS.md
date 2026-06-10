@@ -50,6 +50,21 @@ direct repo edits, direct shell commands, direct live proofs, and explicit
 handoff notes only. Python remains acceptable for ordinary local verification
 or artifact inspection when it is not spawning or managing subagents.
 
+### No subagent delegation
+
+This lane must be worked directly by the active Codex instance. Do not use
+Python, shell wrappers, MCP tools, orchestration scripts, or hidden helper
+processes to spawn agents, delegate implementation, delegate proof runs, or
+summarize another agent's work as if it were this lane's evidence. Coordination
+with the parallel agent is limited to explicit checked-in handoff notes and
+status/log entries that name what is proven, what is not proven, and what the
+other agent should do next.
+
+Allowed: ordinary Python or shell commands for direct local verification,
+artifact inspection, test execution, proof generation, and source maintenance.
+Not allowed: any command whose purpose is to create, manage, prompt, or monitor
+subagents for this lane's work.
+
 Current parser/API carry-forward from Eric: harshly prioritize auto tool usage,
 content deltas, reasoning deltas, interleaved reasoning/tool streaming, request
 kwargs, Chat/Responses API behavior, gateway passthrough, raw SSE ordering,

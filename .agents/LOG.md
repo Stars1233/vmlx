@@ -9661,3 +9661,18 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Other-agent action: continue with Gemma E4B/12B/26B/31B QAT JANG4M full-media
   source proofs or same-family Responses/UI installed-app proof; do not
   advertise full Gemma clearance from this E2B source proof alone.
+
+# 2026-06-10 - AGENTS.md no-subagent rule tightened
+
+- Request: put the no-Python-subagent constraint into `AGENTS.md`.
+- Action: added a dedicated `No subagent delegation` section to the active
+  worktree `AGENTS.md`.
+- Scope: control documentation only; no model load, no proof run, no release,
+  no signing, no notarization, no PyPI, no public download, and no N2 JANG_1L.
+- Proven: future continuations are explicitly told not to use Python, shell
+  wrappers, MCP tools, orchestration scripts, or hidden helper processes to
+  spawn, manage, prompt, or monitor subagents for this lane.
+- Not proven: no runtime/model/API/UI/cache blocker was changed.
+- Other-agent action: read `AGENTS.md` and
+  `.agents/CODEX_ACTIVE_DIRECTIVES_20260610.md` before touching model/runtime
+  work; continue direct handoff via checked-in notes/status only.

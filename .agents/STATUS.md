@@ -1876,3 +1876,24 @@
   release row remains open because Responses streaming/non-streaming, UI,
   installed-app parity, and the remaining Gemma QAT/JANG4M rows are not fully
   cleared by this single source smoke. Do not claim Gemma release clearance.
+
+# 2026-06-10 - AGENTS.md no-subagent rule tightened
+
+- User request: record the no-Python-subagent/no-delegation constraint in
+  `AGENTS.md` so future continuations do not use recursive agent behavior while
+  working the model/runtime/release lane.
+- Directive check: documentation/control-plane update only. N2 JANG_1L remains
+  Eric-owned/off-limits. No release, signing, notarization, PyPI, public
+  download, package, or model launch action was taken.
+- Edit: added a dedicated `No subagent delegation` section to `AGENTS.md`.
+  It forbids Python, shell wrappers, MCP tools, orchestration scripts, or
+  hidden helper processes from spawning, managing, prompting, or monitoring
+  subagents for this lane's work.
+- Allowed boundary recorded: ordinary Python or shell commands remain allowed
+  for direct local verification, artifact inspection, test execution, proof
+  generation, and source maintenance when they do not create or manage
+  subagents.
+- Proven: the active worktree control doc now contains the explicit
+  no-subagent rule.
+- Not proven: no runtime/model/API/UI/cache row changed or was exercised by
+  this documentation edit.
