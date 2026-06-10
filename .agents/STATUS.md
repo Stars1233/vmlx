@@ -5730,3 +5730,349 @@ Other-agent action:
 - Unrelated dirty state remains intentionally untouched:
   `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
   and `node_modules/`.
+
+# 2026-06-10 15:18 PDT - Gemma4 native MXFP4 reasoning-display root-cause trace
+
+- Current blocker class: `api/ui` + `parser/template`.
+- Continuing the Gemma4 26B/31B native MXFP4 installed-app reasoning-display
+  gap instead of starting release/signing or another broad test sweep.
+- Goal for this movement: compare passing native MXFP4 installed-app proofs
+  against the failed 26B/31B proofs, then trace whether missing
+  `reasoning_display` is caused by request plumbing, panel persistence,
+  server/parser extraction, or actual model behavior.
+- Boundaries: no release/sign/notarize/PyPI/updater/download/site action, no N2
+  JANG_1L, no subagents, and no weakening the gate without evidence.
+
+# 2026-06-10 14:56 PDT - AGENTS.md current goal lock updated
+
+- User request: put the current constraints into `AGENTS.md` so future
+  continuations do not ignore the goal, drift into subagents, or forget the
+  parser/API/release boundaries.
+- Edited `AGENTS.md` in the active worktree, not the deprecated
+  `/Users/eric/vmlx` wrapper checkout.
+- Added an active proof/release discipline block covering one-blocker-at-a-time
+  work, Gemma/MiMo/Qwen/N2-JANGTQ focus, N2 JANG_1L off-limits, 128GB live
+  proof expectations, parser/API/raw-SSE requirements, Qwen empty-args
+  fail-closed policy, proven/not-proven reporting, other-agent handoff
+  requirements, and the release/sign/notarize/PyPI/updater/download/site lock.
+- No runtime proof, test run, release, signing, notarization, PyPI, updater,
+  download, or website action was performed in this movement.
+
+# 2026-06-10 14:58 PDT - Gemma4 MXFP4 reasoning-display trace narrowed
+
+- Current blocker class: `api/ui` + `parser/template`.
+- Compared passing installed-app native MXFP4 proofs for E2B/E4B/12B against
+  failed 26B/31B proofs.
+- Evidence:
+  - E2B/E4B/12B pass with `enableThinking=true`, renderer
+    `enableThinking=true`, server `/v1/responses` kwargs
+    `enable_thinking=True`, reasoning events/persisted reasoning present, and
+    visible assistant turns complete.
+  - 26B and 31B explicit/strict-visible reruns have the same request/server
+    thinking plumbing, visible assistant turns complete, tool execution,
+    parser-leak checks, mixed-SWA cache and L2 proof, but
+    `reasoningDone=0` and `persistedReasoningCount=0`.
+  - 31B original strict prompt did emit and persist reasoning
+    (`persistedReasoningCount=5`) but failed first-turn visible finalization;
+    second turn visible finalization succeeded.
+- Root-cause narrowing: this is not currently proven to be panel persistence,
+  parser registration, or request plumbing. The remaining open condition is
+  model/tool-result finalization behavior for 26B/31B native MXFP4 under
+  reasoning-on installed-app proof prompts.
+- No code fix was applied in this movement because no runtime/parser bug has
+  been proven yet. Do not weaken the gate or register failed artifacts as pass.
+- Next useful proof: one memory-aware installed-app 31B/26B rerun using the
+  strict prompt that triggers reasoning, with a larger output budget and
+  exact-reply finalization constraints, to see if both reasoning display and
+  first-turn visible content can be made green without fake parser repairs.
+
+# 2026-06-10 14:58 PDT - Launching targeted Gemma4 31B proof variant
+
+- Current blocker class: `api/ui` + `parser/template`.
+- Launching one installed-app Gemma4 31B native MXFP4 Responses proof variant.
+- Purpose: preserve the strict prompt shape that previously produced persisted
+  reasoning, increase output budget, and require exact visible final text after
+  the tool result, without changing parser code or weakening the gate.
+- Preflight: no heavy model proof process was active; largest user process was
+  Codex/OpenClaw-scale, not a model server; filesystem has about 893GiB free.
+- Command surface: installed app `/Applications/vMLX.app`, bundled Python,
+  `/v1/responses`, built-in `run_command`, `enableThinking=true`, deterministic
+  sampling, `maxTokens=1536`, server cache controls, Gemma4 31B native MXFP4
+  model path `/Users/eric/models/JANGQ-AI/gemma-4-31B-it-qat-MXFP4`.
+- Boundaries: no release/sign/notarize/PyPI/updater/download/site action, no N2
+  JANG_1L, no fake parser repair.
+
+# 2026-06-10 15:04 PDT - Gemma4 exact-finalization source fix
+
+- Targeted 31B installed-app/bundled max1536 artifact:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-31b-mxfp4-responses-tools-cachecontrols-bundled-python-reasoning-strictfinal-max1536-20260610-proof.json`.
+- Result: `status=fail`; first visible assistant content still empty and
+  `reasoning_display` surface still not registered. Evidence showed
+  `reasoningDone=5`, `persistedReasoningCount=5`, tool events `416`,
+  mixed-SWA cache hit tokens `3351`, and block L2 tokens on disk `2197`.
+- Root cause found for this proof path: the existing Responses terminal
+  exact-reply finalization detector only recognized `reply exactly:` with a
+  narrow no-spaces target. The live Gemma proof uses
+  `send visible final text exactly:` and the second expected visible string has
+  spaces, so the intended finalization/suppression path did not engage.
+- Source fix applied:
+  - `vmlx_engine/server.py` exact-output detector now accepts
+    `reply exactly:`, `send visible final text exactly:`, and
+    `output visible final text exactly:` with line-tail targets including
+    spaces/punctuation.
+  - `panel/src/main/ipc/chat.ts` suppresses the generic agentic tool prompt for
+    the same exact-output phrasings.
+  - `panel/scripts/live-real-ui-model-proof.mjs` and
+    `tests/cross_matrix/release_regression_manifest.py` validate the same
+    exact-output contract.
+  - Added focused regressions in `tests/test_engine_audit.py` and
+    `tests/test_release_regression_manifest.py`.
+- Verification: py_compile passed for touched Python files; focused tests
+  passed (`7 passed`).
+- Boundary: this is source proof only so far. `/Applications/vMLX.app` bundled
+  Python will not include this fix until the app is rebuilt; do not claim
+  installed-app parity from the source edit.
+
+# 2026-06-10 15:11 PDT - Exact-output follow-up source panel fix
+
+- Source-Python + installed-app-panel proof after the server detector fix still
+  failed because the installed app panel does not include source panel changes
+  and Responses tool follow-ups send `previous_response_id` plus
+  `function_call_output` only.
+- Added source panel fix in `panel/src/main/ipc/chat.ts`: when the latest user
+  request contains an exact-output contract, Responses tool follow-up input now
+  carries that user instruction before the `function_call_output` item. This
+  lets the source server see the exact target while still classifying the turn
+  as post-tool synthesis.
+- Verification: panel typecheck passed (`npm --prefix panel run typecheck --
+  --pretty false`), py_compile passed, and focused exact-output tests passed
+  (`7 passed`).
+- Launching the next proof through source Electron plus source Python, because
+  `/Applications/vMLX.app` cannot use this panel fix until rebuilt.
+
+# 2026-06-10 15:24 PDT - Gemma4 31B source UI proof still red
+
+- Current blocker class: `api/ui` + `parser/template`.
+- Additional source fix applied in `vmlx_engine/server.py`: exact post-tool
+  Responses streaming finalization now detects exact-output targets from the
+  request or resolved message history and forces `enable_thinking=False` only
+  for the terminal synthesis turn.
+- Verification remained green: py_compile passed, panel typecheck passed, and
+  focused exact-output tests passed (`7 passed`).
+- Live proof artifact:
+  `docs/internal/agent-notes/current-real-ui-source-electron-gemma4-31b-mxfp4-responses-tools-cachecontrols-reasoning-strictfinal-exactvisible-max1536-after-history-target-terminal-thinking-off-20260610-proof.json`.
+- Result: `status=fail`; first assistant visible content is still empty,
+  second assistant visible content is exact, `reasoningDone=5`,
+  `persistedReasoningCount=5`, tool events `3350`, source Electron current
+  build is active, source Python is active, Responses/cache/L2/parser leak
+  surfaces are green, but `long_tool_loop` and `reasoning_display` are not
+  registered because first visible assistant content is empty.
+- Important finding: server logs still do not show
+  `Responses API streaming exact-reply finalization`, so the exact-output
+  target is still not present at the server decision point for the UI
+  `previous_response_id` tool follow-up path.
+- Stop condition for this loop: do not keep rerunning the same 31B proof. The
+  next implementation target is to carry exact-output intent through the
+  Responses previous-response continuation state in a way the server can read
+  before terminal synthesis, then recapture source Electron proof. Do not
+  weaken the proof gate or register the failed artifacts as pass.
+- Release boundary: no signing, notarization, PyPI, updater, download, website,
+  or public release action was performed.
+
+# 2026-06-10 15:27 PDT - Resuming exact-output intent carry-through
+
+- Continuing the Gemma4 31B native MXFP4 Responses/tool/reasoning blocker from
+  the failed source Electron/source Python proof:
+  `docs/internal/agent-notes/current-real-ui-source-electron-gemma4-31b-mxfp4-responses-tools-cachecontrols-reasoning-strictfinal-exactvisible-max1536-after-history-target-terminal-thinking-off-20260610-proof.json`.
+- Current evidence: tools and reasoning are persisted, cache/L2 and source app
+  surfaces are green, but the first assistant visible content is empty and the
+  server never logs the exact-reply finalization branch.
+- Next fix target: carry exact-output intent across the Responses
+  `previous_response_id` continuation state or make the terminal synthesis
+  predicate recognize the real merged history shape. No prompt/budget rerun
+  until that code path is proven.
+- Boundaries remain: no release/sign/notarize/PyPI/updater/download/site action,
+  no N2 JANG_1L, no subagents, no fake parser repair.
+
+# 2026-06-10 15:29 PDT - Exact-output continuation source checks green
+
+- Patched `vmlx_engine/server.py` so exact-output terminal synthesis uses a
+  target-aware helper that recognizes:
+  - exact target in the current request plus a current/restored tool result;
+  - exact target in restored `previous_response_id` history plus a current
+    `function_call_output`;
+  - stale exact targets are cleared by a later unrelated user turn.
+- Updated `tests/test_engine_audit.py` to pin the actual UI continuation shape.
+- Verification passed:
+  - `.venv/bin/python -m py_compile vmlx_engine/server.py tests/cross_matrix/release_regression_manifest.py tests/test_engine_audit.py tests/test_release_regression_manifest.py`
+  - `.venv/bin/python -m pytest -q tests/test_engine_audit.py::TestResponsesStreamingExactToolResult tests/test_release_regression_manifest.py -k 'exact_reply or visible_final_text'` (`7 passed`)
+  - `npm --prefix panel run typecheck -- --pretty false`
+  - `git diff --check`
+- Next: one source Electron/source Python Gemma4 31B native MXFP4 live proof.
+
+# 2026-06-10 15:31 PDT - Exact-output over-trigger fixed
+
+- Live source proof after target-aware continuation changed the failure shape:
+  `visibleAssistantTurnsComplete=true` and `reasoning_display` is now proven,
+  but the second turn leaked raw tool markup because exact finalization fired
+  before the fresh second-turn tool call executed.
+- Artifact:
+  `docs/internal/agent-notes/current-real-ui-source-electron-gemma4-31b-mxfp4-responses-tools-cachecontrols-reasoning-strictfinal-exactvisible-max1536-after-target-aware-continuation-20260610-proof.json`.
+- Server evidence from that artifact: exact-reply finalization logged for both
+  targets, proving the original empty-visible terminal synthesis path is fixed.
+- Follow-up patch: exact-output terminal finalization now refuses fresh
+  tool-eligible turns unless the current request contains
+  `function_call_output`. This preserves terminal synthesis while allowing the
+  model to make the next tool call normally.
+- Verification passed again: py_compile, focused exact-output pytest
+  (`7 passed`), panel typecheck, and `git diff --check`.
+
+# 2026-06-10 15:32 PDT - MiMo installed-app chat residue blocker added
+
+- User-provided installed-app evidence for
+  `/opt/adlab/models/dealignai/OsaurusAI/MiMo-V2.5-JANG_2L` on port 8010:
+  prompt `what are u`, then `speak`, produced visible residue
+  `The user is a question mark.The user`.
+- Launch/log evidence from the pasted app session:
+  - bundled Python from `/Applications/vMLX.app`;
+  - model config detected `mimo_v2`;
+  - `--tool-call-parser xml_function`, no tools in the actual request;
+  - server defaulted `enable_thinking=False`;
+  - no reasoning parser enabled;
+  - model loaded as text-only despite `--is-mllm` because preserved media
+    weights were marked `weights_preserved_text_runtime`;
+  - MiMo asymmetric mixed-SWA cache and block L2 were enabled and stored one
+    block after the bad generation.
+- Treat this as a real MiMo runtime/template/parser blocker, not a load proof.
+  Next inspection target: MiMo model registry, chat template/reasoning parser
+  default, Responses request assembly, and visible cleanup/parser residue.
+- Gemma proof after the terminal guard still failed only the proof surfaces
+  `responses_delta_streaming`, `responses_cache_detail_usage`, and
+  `long_tool_loop`; do not mark it green.
+
+# 2026-06-10 15:39 PDT - MiMo source proof improves structure but quality still open
+
+- Source changes applied for MiMo parser policy:
+  - Python registry/base config now resolves MiMo `reasoning_parser=think_xml`;
+  - panel detector resolves MiMo `reasoningParser=think_xml`;
+  - server parser factory allows `think_xml` as cleanup/separation even when
+    `supports_thinking=false`;
+  - bench classifier reports `reasoning.supported=false` with
+    `reasoning.parser=think_xml`;
+  - default thinking remains disabled and media remains honestly text-only
+    unless runtime media is wired.
+- Focused checks passed: py_compile, panel typecheck, `git diff --check`,
+  MiMo classifier tests (`3 passed`), and parser/exact-output audit tests.
+- Live source UI proof artifact:
+  `docs/internal/agent-notes/current-real-ui-source-electron-mimo-v25-jang2l-responses-chat-residue-after-thinkxml-parser-20260610-proof.json`.
+- Structural result: `status=pass`; local 105GB MiMo JANG_2L loaded in source
+  Electron/source Python, visible turns completed, Responses delta streaming
+  and cache-detail usage were recorded, native mixed-SWA cache/paged/L2 were
+  active, and second turn hit prefix cache (`23 cached` tokens).
+- Quality result: still open. First answer was normal:
+  `Hello! I'm MiMo, a large language model developed by Xiaomi's LLM Core Team.
+  How can I help you today?`; second answer to `speak` was bad:
+  `I need to to the user's been`.
+- Next fix target: MiMo thinking-off decode policy. Current suppression of
+  `<think>`/`</think>` tokens can leave untagged reasoning prose visible; do not
+  release-clear MiMo chat quality from this proof.
+
+# 2026-06-10 15:41 PDT - MiMo thinking-off decode policy patched
+
+- Patched MiMo thinking-off decode in both source paths:
+  - `vmlx_engine/mllm_batch_generator.py`
+  - `vmlx_engine/engine/simple.py`
+- Change: do not suppress literal `<think>` / `</think>` tokens for MiMo when
+  thinking is disabled. Keep only first-token EOS suppression. With
+  `think_xml` active, tagged reasoning can be separated instead of forcing
+  untagged reasoning prose into visible output.
+- Updated focused generator test expectations in `tests/test_mllm_scheduler_cache.py`.
+- Verification passed:
+  - py_compile for touched Python files;
+  - MiMo generator tests (`2 passed`);
+  - MiMo classifier tests (`3 passed`);
+  - audit exact-output/MiMo parser tests (`6 passed`);
+  - panel typecheck;
+  - `git diff --check`.
+- Next: rerun the same local 105GB MiMo JANG_2L source UI proof with
+  `what are u` / `speak`.
+
+# 2026-06-10 15:45 PDT - MiMo second source proof still quality-open
+
+- Live source UI proof artifact after narrowing MiMo thinking-off suppression:
+  `docs/internal/agent-notes/current-real-ui-source-electron-mimo-v25-jang2l-responses-chat-residue-after-thinkxml-no-think-suppression-20260610-proof.json`.
+- Structural result: `status=pass`; source Electron/source Python loaded the
+  local 105GB `MiMo-V2.5-JANG_2L`, Responses delta streaming and cache-detail
+  usage were green, native mixed-SWA cache/paged/block-L2 were green, second
+  turn hit prefix cache (`23 cached` tokens), and no raw parser tag leak was
+  recorded.
+- Quality result: improved but not release-cleared. First response remained
+  normal. Second response changed from untagged reasoning fragment to on-topic
+  MiMo self-description, but still ended with malformed/repeated text:
+  `How to to use   **Ask to me! you   ******`.
+- Current MiMo diagnosis: parser cleanup is now aligned, but the remaining
+  issue is likely generation defaults/stopping/sampling for MiMo chat turns
+  under `enable_thinking=false` and temperature/top_p override. Do not mark
+  MiMo chat quality green from this proof.
+
+# 2026-06-10 15:52 PDT - MiMo direct API root-cause split
+
+- Loaded local 105GB `MiMo-V2.5-JANG_2L` once on direct source server
+  `127.0.0.1:59931` to avoid repeated Electron reloads.
+- Direct server confirmed source parser policy:
+  `Auto-configured tool parser from registry: xml_function` and
+  `Auto-configured reasoning parser from registry: think_xml`.
+- Direct Responses reproduction:
+  - Forced greedy request (`temperature=0`, `top_p=1`, `enable_thinking=false`)
+    reproduced the malformed second-turn text outside UI:
+    `How to to use ... Ask to me! you ******`.
+  - A later no-override run resolved to the same greedy kwargs because
+    `generation_config.json` declares `do_sample=false`; with prefix-cache
+    pollution it produced a 3-token empty second response after an exact-partial
+    62-token cache hit.
+  - A `cache_salt` / cache-bypass second turn crashed the direct server with
+    Metal OOM during tight-memory MiMo text prefill:
+    `[METAL] Command buffer execution failed: Insufficient Memory`.
+- Current split:
+  - parser/tag residue: improved/fixed structurally in source;
+  - greedy MiMo chat quality: still open;
+  - cache-bypass/no-cache MiMo under tight memory: open crash;
+  - cache reuse can affect output shape and must be tested separately from
+    sampling quality.
+
+# 2026-06-10 16:25 PDT - MiMo text-runtime/defaults fixed; speed still red
+
+- Patched MiMo preserved-media text-runtime routing:
+  - `weights_preserved_text_runtime` MiMo bundles now stay text-only by default
+    even when source media classes and sidecars exist.
+  - Full MiMo media overlay is now explicit opt-in via
+    `VMLINUX_MIMO_V2_ENABLE_TEXT_RUNTIME_MEDIA_OVERLAY=1`.
+  - This prevents normal no-attachment chat from silently loading the 106GB
+    MLLM/media path that hard-crashed Metal during tiny text prefill.
+- Patched MiMo chat defaults:
+  - Server family fallback for `mimo_v2` is now `temperature=0.7`, `top_p=0.95`
+    unless request/CLI/session overrides are explicit.
+  - Panel generation defaults now show/use the same MiMo defaults instead of
+    mapping bundle `generation_config.do_sample=false` to `temperature=0`.
+  - Direct default request logs now resolve `{'temperature': 0.7, 'top_p': 0.95}`.
+- Added live quantization coverage logging for MiMo text runtime.
+  Fresh source load proved:
+  `lm_head=True embed_tokens=True qkv=48/48 switch_proj=141/141 dense_mlp=3/3`.
+  The 0.2-1.7 tok/s behavior is therefore not explained by those modules being
+  accidentally bf16/unquantized.
+- Live proof after patches:
+  - server routes `mllm=False`;
+  - `xml_function` and `think_xml` auto-configured;
+  - mixed full/SWA cache layout preserved;
+  - block L2 active;
+  - short default output was clean:
+    `I am MiMo, an AI assistant created by Xiaomi.`
+  - measured speed was still unacceptable:
+    `Response: 13 tokens in 53.60s (0.2 tok/s)`.
+- MiMo remains release-red for performance and second-turn robustness. Do not
+  call MiMo JANG_2L production-ready until decode speed is isolated/fixed and
+  the `what are u` / `speak` two-turn path is clean without weird spacing,
+  Markdown fragments, repeated tokens, or language drift.
+- Verification passed:
+  py_compile for touched Python files, panel typecheck, focused MiMo
+  engine-audit tests (`3 passed`), and MiMo media-capability tests (`3 passed`).

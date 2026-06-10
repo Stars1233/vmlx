@@ -2611,6 +2611,48 @@ not optional process advice; future continuations must check this before acting.
   or proof artifact, what is proven, what remains unproven, no-claim boundary,
   commit/push status, and what the other agent should do next.
 
+### 2026-06-10 active proof/release discipline
+
+This lane must keep the current user goal visible at the top of every
+continuation: reduce real blockers for a signed checkpoint release without
+starting release publication steps unless Eric explicitly asks for those steps
+in the current turn.
+
+- Work one blocker at a time. Before launching, editing, or testing, name the
+  exact blocker being reduced and record it in `.agents/STATUS.md` and
+  `.agents/LOG.md`.
+- Keep the active model focus on Gemma JANG/MXFP/QAT, MiMo V2.5 JANG/JANGTQ,
+  Qwen/Qwen-coder tool/reasoning streaming, and Nex/N2 JANGTQ or non-JANG_1L
+  surfaces. N2 JANG_1L stays off-limits unless Eric explicitly reopens it in
+  the current turn.
+- Do not avoid large models solely because they are memory-heavy on this
+  128GB host. Use memory-aware live proofs when the lane is in scope, watch RAM
+  and cache storage, and only kill clearly unrelated smaller processes when
+  needed.
+- Parser/API proof is not optional. Auto tools, required tools, no-tool mode,
+  tool-result continuation, content deltas, reasoning deltas, interleaved
+  reasoning/tool streaming, function-call argument delta/done, valid
+  `output_index`, request kwargs, gateway/tunnel/raw SSE parity, cache reuse
+  telemetry, and final response object consistency are release blockers for
+  opencode/Codex-style harnesses.
+- For the Qwen/Qwen-coder empty-arguments issue, prove behavior with same-model
+  raw output where possible. Missing required args must fail closed and must
+  not become `arguments: {}`. Never fabricate `cmd` or other required args from
+  visible preamble text, disable reasoning, silently drop the call as success,
+  or perform cosmetic XML/JSON cleanup that hides a real parser/runtime
+  failure.
+- Every result must explicitly list what is proven, what is not proven, and
+  what cannot be claimed. Evidence must identify whether it is source-only,
+  direct server, gateway/tunnel, dev app, installed app, packaged app, or public
+  release proof.
+- Other-agent coordination must be written as concrete handoff instructions:
+  what to implement, what to recapture, which artifact paths to trust or
+  reject, which model lanes not to touch, and which fake fixes are forbidden.
+- Do not perform signing, notarization, tagging, PyPI upload, updater JSON,
+  download-link/site updates, Cloudflare purge, or public release publication
+  unless Eric explicitly asks for that exact release action in the current turn
+  or a newer checked-in directive lifts the release lock.
+
 ## Current release blocker guard - 2026-06-07 local
 
 This section is local working guidance for the active release-hardening lane. Do not treat it as public release notes and do not commit it unless Eric explicitly asks.
