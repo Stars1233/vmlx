@@ -71,6 +71,19 @@
 - Red evidence: first assistant visible content was empty/whitespace (`8` streamed space tokens), and the second UI turn failed with HTTP `503`: Metal GPU working set too full at `102%` of the `107.5GB` cap. This means real dev-app load + one bounded request is proven, but visible quality and multi-turn/cache reuse remain red.
 - Boundary: this does not clear N2 JANG_1L tools, Responses, Responses stream, L2 restart, media, installed-app parity, public tunnel parity, package/sign/notarize/tag/upload, or release support. No release action was run.
 
+# 2026-06-10 - MiMo JANGTQ2 load-module contract after exactness red
+
+- Ran a current-source load-only MiMo V2.5 JANGTQ_2 module introspection after the dev-app exactness proof showed literal corruption (`ACK-CB-742` -> `ACKCB-742`, `blue-cat` -> `blue`).
+- First direct `mlx_vlm.load` failed because vanilla mlx-vlm has no MiMo registration: `No module named 'mlx_vlm.speculative.drafters.mimo_v2'`. Re-ran after calling vMLX `_register_mimo_v2_mlx_vlm_runtime()`, matching the server/app path.
+- Proof artifact: `build/current-mimo-v25-jangtq2-load-module-contract-20260610.json`, `status=pass`, load time about `7.0s`.
+- Loader contract proven: `text_config_has_quantization=true`; top-level `config.quantization` is visible through the MiMo text config as `language_model.*` paths.
+- Bookend proof: `lm_head` loaded as `mlx.nn.layers.quantized.QuantizedLinear`, bits `8`, group size `64`, uint32 weight `[152576,1024]`, fp16 scales/biases `[152576,64]`. `model.embed_tokens` loaded as `mlx.nn.layers.quantized.QuantizedEmbedding`, bits `8`, group size `64`, with matching uint32/fp16 sidecars.
+- Attention proof: sampled layers `0`, `1`, `2`, and `47` load `self_attn.qkv_proj` and `self_attn.o_proj` as q4 `QuantizedLinear` with fp16 scales/biases.
+- Routed expert proof: sampled routed layers `1`, `2`, and `47` load `mlp.switch_mlp.{gate,up,down}_proj` as `jang_tools.turboquant.tq_kernel.TurboQuantSwitchLinear`, bits `2`, with prestacked uint32 packed tensors and fp16 norms.
+- Classification: the obvious runtime sidecar-binding bug is excluded for MiMo JANGTQ_2. Current exactness failure remains artifact/logit/decode quality unless a deeper runtime kernel-vs-reference logit probe contradicts it.
+- Next action for parallel agent: do not repair semantic values in parser/JSON repair, do not clamp sampling, and do not chase cache/L2/CB as primary. Either run source-vs-quant first-divergence/logit proof or compare TurboQuantSwitchLinear selected-expert output/logits against dequant/reference; otherwise rebuild/reupload MiMo JANGTQ_2 with a literal-safe quantization contract.
+- Boundary: no runtime code patch, no model artifact mutation, and no release/package/sign/notarize/PyPI action was run.
+
 # 2026-06-10 - Qwen35 Responses source/gateway raw SSE recapture
 
 - Ran fresh same-model Qwen35 MXFP8-MTP Responses raw-SSE capture from current source after the reasoning output-item index fix.
