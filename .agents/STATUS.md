@@ -2034,3 +2034,50 @@
 - Not proven: 26B Responses streaming/non-streaming, UI, installed-app parity,
   audio runtime support, and full Gemma release clearance remain open. QAT
   JANG4M 31B still lacks current full-media source proof.
+
+# 2026-06-10 - Gemma 31B QAT JANG4M full-media honest-audio proof in progress
+
+- Directive check: allowed lane is Gemma JANG/MXFP/QAT VL/video/cache/API/UI
+  proof and honest modality gating. N2 JANG_1L remains off-limits. No release,
+  signing, notarization, PyPI, public download, or package action is being
+  taken.
+- Blocker being reduced: Gemma 31B QAT JANG4M is the remaining QAT JANG4M row
+  without current full-media source proof. Its local artifact has no audio
+  tower, so audio must stay honestly absent while text/vision/video/cache/tools
+  and L2 are proven.
+- Planned direct proof command:
+  `.venv/bin/python bench/all_local_model_smoke.py --models-root /Users/eric/models --out build/current-all-local-model-smoke-gemma4-31b-qat-jang4m-fullmedia-tools-l2-20260610 --port 8890 --only gemma-4-31B-it-qat-JANG_4M --include-tools --include-l2-restart --load-timeout-s 300 --request-timeout-s 300`
+- Boundary: this must not claim audio runtime support, Responses/UI parity, or
+  full Gemma release clearance.
+- Live proof result: real `/Users/eric/models/JANGQ-AI/gemma-4-31B-it-qat-JANG_4M`
+  loaded and passed with `status=pass`, `failures=0`.
+- Proof artifacts:
+  `build/current-all-local-model-smoke-gemma4-31b-qat-jang4m-fullmedia-tools-l2-20260610/summary.json`
+  and
+  `build/current-all-local-model-smoke-gemma4-31b-qat-jang4m-fullmedia-tools-l2-20260610/JANGQ_gemma-4-31B-it-qat-JANG_4M/result.json`.
+- Proven: visible output, cache first miss/second hit with
+  `cache_detail=paged+mixed_swa`, multi-turn recall, reasoning separation,
+  exact required tool args `{"value": "blue-cat"}`, tool-result continuation,
+  exact JSON, exact code whitespace, blue/red image, blue video through vision,
+  post-media text recovery, Gemma4 parser/reasoning parser, native mixed-SWA
+  cache with generic TurboQuant KV disabled, block L2 write, and fresh-process
+  L2 restore with `cache_detail=paged+mixed_swa+disk`.
+- Honest audio boundary: 31B has no audio tower. The proof did not include
+  `audio_blue`; the regenerated inventory records
+  `source_fullmedia_smoke.requires_audio=false` and `request_count=14`.
+- Source/proof pointer edit: Gemma QAT/native inventory now records
+  `source_fullmedia_smoke.status=pass` for all five QAT JANG4M rows:
+  E2B, E4B, 12B, 26B, and 31B. Full release checklist and current regression
+  suite consume
+  `build/current-gemma-qat-native-mxfp4-local-inventory-after-all-jang4m-fullmedia-20260610.json`.
+- Regenerated artifacts:
+  `build/current-gemma-qat-native-mxfp4-local-inventory-after-all-jang4m-fullmedia-20260610.json`
+  and
+  `build/current-full-release-objective-checklist-after-gemma-all-jang4m-fullmedia-20260610.json`.
+- Verification: `python3 -m py_compile` passed for touched gate files;
+  `.venv/bin/python -m pytest -q tests/test_gemma_qat_native_mxfp4_inventory_gate.py tests/test_full_release_objective_checklist.py -k 'gemma_qat or gemma4_31b or gemma4_26b or full_release_objective_checklist'`
+  passed `28 passed`; `git diff --check` passed. Full checklist remains
+  expected-open with `failed_count=56`.
+- Not proven: QAT JANG4M Responses streaming/non-streaming direct/gateway/tunnel
+  parity, UI, installed-app parity, full Gemma release clearance, and QAT/native
+  MXFP4 rows outside these QAT JANG4M source smokes remain open.

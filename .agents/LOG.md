@@ -9785,3 +9785,41 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Other-agent action: continue with 31B QAT JANG4M full-media source proof or
   same-family Responses/UI/installed-app proof; keep audio weight-backed and
   do not turn the 26B no-audio proof into an audio claim.
+
+# 2026-06-10 - Gemma 31B QAT JANG4M full-media honest-audio proof
+
+- Request: finish the remaining Gemma QAT JANG4M full-media source row without
+  release/signing/PyPI/download or N2 JANG_1L work.
+- Action: ran the existing all-local model smoke against real
+  `/Users/eric/models/JANGQ-AI/gemma-4-31B-it-qat-JANG_4M`.
+- Command:
+  `.venv/bin/python bench/all_local_model_smoke.py --models-root /Users/eric/models --out build/current-all-local-model-smoke-gemma4-31b-qat-jang4m-fullmedia-tools-l2-20260610 --port 8890 --only gemma-4-31B-it-qat-JANG_4M --include-tools --include-l2-restart --load-timeout-s 300 --request-timeout-s 300`
+- Proof artifacts:
+  - `build/current-all-local-model-smoke-gemma4-31b-qat-jang4m-fullmedia-tools-l2-20260610/summary.json`
+  - `build/current-all-local-model-smoke-gemma4-31b-qat-jang4m-fullmedia-tools-l2-20260610/JANGQ_gemma-4-31B-it-qat-JANG_4M/result.json`
+- Proven: `status=pass`, zero failures, visible output, multi-turn recall,
+  reasoning separation, exact required tool args `{"value": "blue-cat"}`,
+  tool-result continuation, exact JSON/code, image blue/red, video blue through
+  vision, post-media text recovery, Gemma4 parser/reasoning parser, native
+  mixed-SWA cache, generic TurboQuant KV disabled for Gemma mixed-SWA, block L2
+  write, and fresh-process restore with `paged+mixed_swa+disk`.
+- Honest audio boundary: 31B has no audio tower. The proof has no `audio_blue`
+  request; regenerated inventory records
+  `source_fullmedia_smoke.requires_audio=false` and `request_count=14`. This is
+  not audio runtime proof.
+- Source/proof accounting: added 31B to `SOURCE_FULLMEDIA_SMOKE_PROOFS`.
+  Regenerated
+  `build/current-gemma-qat-native-mxfp4-local-inventory-after-all-jang4m-fullmedia-20260610.json`,
+  which now records `source_fullmedia_smoke.status=pass` for all five QAT
+  JANG4M rows: E2B, E4B, 12B, 26B, and 31B. Regenerated
+  `build/current-full-release-objective-checklist-after-gemma-all-jang4m-fullmedia-20260610.json`.
+- Verification: touched gate files compile; focused Gemma/full-checklist tests
+  passed `28/28`; `git diff --check` passed; full checklist remains open with
+  `failed_count=56`.
+- Not proven: Gemma release clearance, Responses direct/gateway/tunnel
+  streaming parity, UI/installed-app parity, audio runtime support for
+  no-audio-tower rows, and QAT/native MXFP4 rows outside these QAT JANG4M
+  source smokes.
+- Other-agent action: move to same-family Responses streaming/direct/gateway/
+  tunnel and UI/installed-app parity, or continue QAT/native MXFP4 rows; do not
+  claim full Gemma clearance from source smokes alone.
