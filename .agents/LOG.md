@@ -12913,6 +12913,68 @@ Next action:
   not overwrite the registered narrow-prompt proof unless a stricter 31B
   installed-app proof is rerun and passes.
 
+# 2026-06-10 14:29 PDT - E4B native MXFP4 proof registered
+
+- Registered the accepted E4B strict-final proof for
+  `gemma4_e4b_qat_native_mxfp4`.
+- Generated
+  `build/current-gemma-qat-native-mxfp4-local-inventory-after-e4b-native-mxfp4-installed-app-bundled-reasoning-proof-20260610.json`;
+  `gemma4_e4b_qat_native_mxfp4` is now pass and removed from
+  `open_required_rows`.
+- Generated
+  `build/current-full-release-objective-checklist-after-gemma-e4b-native-mxfp4-installed-app-bundled-reasoning-proof-20260610.json`;
+  the checklist remains `status=open`, `failed_count=51`, with Gemma aggregate
+  open rows now only `gemma4_26b_vl` and `gemma4_31v_or_31b_vl`.
+- Verification: `.venv/bin/python -m py_compile` passed for the modified
+  gate/checklist scripts and focused tests; `.venv/bin/python -m pytest -q
+  tests/test_gemma_qat_native_mxfp4_inventory_gate.py
+  tests/test_full_release_objective_checklist.py -k 'gemma_qat_native_mxfp4 or
+  full_release_objective_checklist'` passed `28/28`; `git diff --check` passed.
+
+# 2026-06-10 14:28 PDT - E4B native MXFP4 strict-final proof passed
+
+- Reran E4B native MXFP4 installed-app proof with stricter visible-final
+  instruction, `temperature=0`, `top_p=1`, and larger output budget.
+- Accepted proof:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-e4b-mxfp4-responses-tools-cachecontrols-bundled-python-reasoning-strictfinal-20260610-proof.json`.
+- Screenshot:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-e4b-mxfp4-responses-tools-cachecontrols-bundled-python-reasoning-strictfinal-20260610-chat.png`.
+- Proven: bundled app/runtime, Responses API, built-in `run_command` long tool
+  loop, reasoning display, visible final `REAL_UI_LIVE_TOOL_TWO second UI turn.`,
+  Gemma4 mixed-SWA native cache, `cache_hit_tokens=6274`,
+  `l2_block_tokens_on_disk=3373`, and no lingering proof/server process.
+- The earlier E4B short-tool proof remains a failed/rejected artifact and
+  should not be registered.
+
+# 2026-06-10 14:27 PDT - E4B native MXFP4 short-tool proof failed visible synthesis
+
+- Ran E4B native MXFP4 installed-app bundled proof with the E2B short-tool
+  prompt shape.
+- Artifact:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-e4b-mxfp4-responses-tools-cachecontrols-bundled-python-reasoning-shorttool-20260610-proof.json`,
+  `status=fail`.
+- Classification: loader/runtime/cache/tool loop worked, but the second
+  post-tool final answer stayed reasoning-only. First visible assistant content
+  was `REAL_UI_LIVE_TOOL_ONE`; second assistant content was empty. The harness
+  withheld `reasoning_display` because every user turn did not have visible
+  assistant content.
+- Next: one stricter rerun with temperature 0, larger output budget, and a
+  direct visible-output instruction. If that still fails, keep E4B open and
+  commit the classification instead of weakening the gate.
+
+# 2026-06-10 14:25 PDT - E2B native MXFP4 proof pushed
+
+- Commit `71248ddd3` (`Prove Gemma4 E2B native MXFP4 installed app`) was pushed
+  to `origin/codex/pr-intake-manifest` and `origin/main`.
+- Current Gemma gate state after push: QAT JANG4M E2B/E4B/12B/26B/31B are
+  closed; native MXFP4 E2B and 12B are closed; remaining Gemma open rows are
+  `gemma4_e4b_qat_native_mxfp4`, `gemma4_26b_vl`, and
+  `gemma4_31v_or_31b_vl`.
+- Worktree after push still has only the pre-existing dirty panel settings JSON
+  and untracked `node_modules/` outside this lane's work.
+- Next: run E4B native MXFP4 installed-app bundled proof using the shorter
+  explicit `run_command` prompt shape that succeeded for E2B.
+
 # 2026-06-10 14:24 PDT - E2B native MXFP4 proof registered
 
 - Registered the accepted E2B short-tool proof for

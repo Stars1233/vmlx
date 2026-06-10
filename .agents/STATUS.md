@@ -1,4 +1,72 @@
 ## CODEX
+- verification: after registering E4B native MXFP4 proof, `.venv/bin/python -m
+  py_compile` passed for the modified gate/checklist scripts and focused tests;
+  `.venv/bin/python -m pytest -q
+  tests/test_gemma_qat_native_mxfp4_inventory_gate.py
+  tests/test_full_release_objective_checklist.py -k 'gemma_qat_native_mxfp4 or
+  full_release_objective_checklist'` passed `28/28`; `git diff --check` passed.
+
+## CODEX
+- now: E4B native MXFP4 accepted proof is registered and gates regenerated.
+- generated artifacts:
+  - `build/current-gemma-qat-native-mxfp4-local-inventory-after-e4b-native-mxfp4-installed-app-bundled-reasoning-proof-20260610.json`
+  - `build/current-full-release-objective-checklist-after-gemma-e4b-native-mxfp4-installed-app-bundled-reasoning-proof-20260610.json`
+- proven/closed: `gemma4_e4b_qat_native_mxfp4` now has `status=pass` and is
+  removed from Gemma `open_required_rows`.
+- still open: full checklist remains `status=open`, `failed_count=51`; Gemma
+  aggregate open rows are now only `gemma4_26b_vl` and
+  `gemma4_31v_or_31b_vl`.
+
+## CODEX
+- now: E4B native MXFP4 strict-final bundled installed-app proof passed.
+- accepted proof:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-e4b-mxfp4-responses-tools-cachecontrols-bundled-python-reasoning-strictfinal-20260610-proof.json`;
+  screenshot:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-e4b-mxfp4-responses-tools-cachecontrols-bundled-python-reasoning-strictfinal-20260610-chat.png`.
+- proven: status pass, real model
+  `/Users/eric/models/JANGQ-AI/gemma-4-E4B-it-qat-MXFP4`, installed app
+  `/Applications/vMLX.app`, bundled Python, visible chat screenshot, Responses
+  API, built-in `run_command` long tool loop, reasoning display, Gemma4
+  mixed-SWA native cache, cache hit tokens `6274`, block L2 tokens on disk
+  `3373`, deterministic sampling, and final visible text
+  `REAL_UI_LIVE_TOOL_TWO second UI turn.`
+- rejected proof kept for trace:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-e4b-mxfp4-responses-tools-cachecontrols-bundled-python-reasoning-shorttool-20260610-proof.json`
+  failed because the second post-tool synthesis stayed reasoning-only.
+- next movement: register accepted strict-final proof for
+  `gemma4_e4b_qat_native_mxfp4`, regenerate gates, verify, commit, push.
+
+## CODEX
+- now: E4B native MXFP4 short-tool proof failed the installed-app gate. It
+  loaded and executed tools, but the second post-tool answer stayed
+  reasoning-only, so the UI ended with empty visible content and the harness
+  did not count `reasoning_display`.
+- failed proof:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-e4b-mxfp4-responses-tools-cachecontrols-bundled-python-reasoning-shorttool-20260610-proof.json`.
+- evidence: first assistant visible `REAL_UI_LIVE_TOOL_ONE`, second assistant
+  empty; `provenSurfaces` includes long tool loop, installed app, Responses,
+  cache, L2, and parser checks but not `reasoning_display`; event counts show
+  reasoning events existed. This is a terminal visible-synthesis issue, not a
+  loader/cache crash.
+- next movement: rerun once with stricter second-turn visible-output
+  instruction, temperature 0, and larger output budget. If it still remains
+  reasoning-only, keep E4B open and commit the failure classification.
+
+## CODEX
+- now: commit `71248ddd3` (`Prove Gemma4 E2B native MXFP4 installed app`) pushed
+  to both `origin/codex/pr-intake-manifest` and `origin/main`.
+- current branch state after push: only pre-existing/unrelated
+  `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
+  remains dirty and `node_modules/` remains untracked.
+- current Gemma gate state: QAT JANG4M E2B/E4B/12B/26B/31B are closed; native
+  MXFP4 E2B and 12B are closed; remaining Gemma inventory open rows are
+  `gemma4_e4b_qat_native_mxfp4`, `gemma4_26b_vl`, and
+  `gemma4_31v_or_31b_vl`.
+- next movement: run `gemma4_e4b_qat_native_mxfp4` installed-app bundled proof
+  using the shorter explicit `run_command` prompt shape that succeeded for E2B,
+  while keeping reasoning enabled and gate requirements intact.
+
+## CODEX
 - verification: after registering E2B native MXFP4 proof, `.venv/bin/python -m
   py_compile` passed for the modified gate/checklist scripts and focused tests;
   `.venv/bin/python -m pytest -q
