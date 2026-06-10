@@ -8294,3 +8294,11 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Proven: installed-app UI, real `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-JANG_4M` load, two visible text turns before media, video attachment persistence, server `MEDIA_DIAG` video detection, base64 MP4 decode, `4` extracted frames from the 25 fps fixture, visible answer `The video shows a solid, static red screen with no movement or changes.`, server cache controls, no parser/reasoning leak, native mixed-SWA cache, and block L2.
 - Runtime/cache evidence: active memory `9890 MB`, peak `10430.4 MB`, JANG affine matmul with Metal NA active, `cache_detail=paged+mixed_swa`, `cache_hit_tokens=20`, `l2_block_tokens_on_disk=77`, and block-disk writes `2`.
 - Boundary: installed-app JANG4M audio, default-4k video, larger Gemma QAT rows, tunnel SSE, and release readiness remain open. No release action was run.
+
+# 2026-06-10 - Gemma 12B JANG4M installed-app audio red
+
+- Ran installed-app Gemma 12B JANG4M audio proof through `/Applications/vMLX.app` with Chat Completions, forced audio, cache controls, temperature `0`, top_p `1`, max tokens `96`, and the `audio-present.wav` fixture.
+- Proof summary `build/current-real-ui-installed-app-gemma4-12b-jang4m-audio-proof-20260610.json` is `status=fail`; raw proof is `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-12b-jang4m-audio-20260610-proof.json`.
+- Positive evidence: installed-app UI, real `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-JANG_4M` load, two visible text turns before audio, audio attachment persistence, server `MEDIA_DIAG` input_audio detection, base64 WAV decode, server cache controls, no parser/reasoning leak, native mixed-SWA cache, and block L2 before the media turn.
+- Red evidence: final audio turn had empty visible assistant content, `visibleAssistantTurnsComplete=false`, `audioSemanticVerified=false`, and no `audio_where_supported` surface.
+- Boundary: JANG4M installed-app audio is red. Do not claim audio support; text/tools/image/video rows remain separately green. No release action was run.

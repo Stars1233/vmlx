@@ -301,10 +301,18 @@ Proven:
   `mixed_swa_kv_v1`, `cache_detail=paged+mixed_swa`, `cache_hit_tokens=20`,
   `l2_block_tokens_on_disk=77`, `l2_tokens_on_disk=77`, and block-disk
   `disk_writes=2`.
+- Local rebuilt installed app audio proof is classified red for Gemma 12B
+  JANG4M. The app persisted an `input_audio` attachment, server `MEDIA_DIAG`
+  saw `input_audio`, and the server decoded the base64 WAV, but the audio turn
+  ended with empty visible assistant content and no `audio_where_supported`
+  surface. Runtime/cache stayed live before the failure with JANG affine Metal
+  NA, native `mixed_swa_kv_v1`, `cache_detail=paged+mixed_swa`, and block L2
+  writes; media cache correctly skipped storing the path-dependent audio request.
 
 Not proven:
 
-- Installed packaged app audio parity for JANG4M.
+- Installed packaged app audio support for JANG4M; current installed-app proof
+  is explicitly red.
 - Installed packaged app JANG4M video at the default 4k prompt cap.
 - DMG package/sign/notarize/release readiness.
 - Local panel session manager starting this exact model from launch args; these
