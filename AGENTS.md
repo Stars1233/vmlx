@@ -142,6 +142,17 @@ Eric-owned/off-limits; do not launch, fix, prove, classify, or claim it from
 partial prior runs. Allowed N2 work here is N2 JANGTQ/non-JANG_1L only when it
 does not overlap the JANG_1L lane.
 
+Current Gemma media boundary: do not infer Gemma audio support from
+`audio_config`, `audio_token_id`, tokenizer markers, processor placeholders, or
+`embed_audio.*` projection-only weights. Current 12B MXFP4/JANG4M and
+26B/31B JANG4M rows are audio-unsupported unless the bundle has real
+`audio_tower.*` weights and live audio E2E passes. Current source/bundled truth
+for those rows is runtime modalities `text`, `vision`, and `video`; audio is an
+honest unsupported-modality gate, not a crash. Older red audio artifacts that
+reached empty text or failed semantics must not be used as proof that audio is
+supported. Video claims still require actual frame-through-vision proof, not
+metadata alone.
+
 ### 2026-06-10 Eric correction - write every movement down
 
 Eric explicitly reinforced that this lane must not rely on chat context,

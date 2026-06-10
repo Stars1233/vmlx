@@ -761,9 +761,11 @@ Not proven:
 - Tunnel/gateway parity for these exact Gemma rows.
 - Gemma 12B QAT MXFP4 dev-app audio support. Image and video are green in the
   source dev app; audio is honestly gated as unsupported.
-- The second MXFP4 visible answer begins with the plain word `thought`; this is
-  not a raw `<think>` or parser markup leak and the leak gates passed, but do
-  not hide this visible-final style caveat.
+- Older MXFP4 Responses/tool artifacts where visible text began with `thought`
+  are superseded by
+  `docs/internal/agent-notes/current-real-ui-live-model-gemma4-12b-qat-mxfp4-responses-tools-request-parser-fallback-20260610-proof.json`.
+  Do not carry the old visible-`thought` caveat into current release notes for
+  the post-fix source row.
 
 ### Gemma 4 12B JANG4M Real Dev-App Proof
 
@@ -995,12 +997,14 @@ Proven:
   `l2_block_tokens_on_disk=77`, `l2_tokens_on_disk=77`, and block-disk
   `disk_writes=2`.
 - Local rebuilt installed app audio proof is classified red for Gemma 12B
-  JANG4M. The app persisted an `input_audio` attachment, server `MEDIA_DIAG`
-  saw `input_audio`, and the server decoded the base64 WAV, but the audio turn
-  ended with empty visible assistant content and no `audio_where_supported`
-  surface. Runtime/cache stayed live before the failure with JANG affine Metal
-  NA, native `mixed_swa_kv_v1`, `cache_detail=paged+mixed_swa`, and block L2
-  writes; media cache correctly skipped storing the path-dependent audio request.
+  JANG4M. That older installed-app artifact attempted an `input_audio`
+  attachment and recorded live runtime/cache state, but it did not prove audio
+  support. Current source/bundled capability evidence in
+  `build/current-gemma-jang-mxfp-audio-modality-current-state-20260610.json`
+  and `build/current-gemma-audio-modality-source-boundary-20260610.json`
+  supersedes the route classification: Gemma 12B JANG4M has `audio_config` and
+  projection-only audio metadata but no `audio_tower.*` weights, so current
+  runtime modalities are `text`, `vision`, and `video` only.
 
 Not proven:
 
@@ -1015,8 +1019,9 @@ Not proven:
 - Local panel session manager starting this exact model from launch args; these
   app proofs used a remote session connected to the server started by the proof
   harness.
-- Gemma audio semantic E2E. The current dev-app proof reaches runtime but
-  fails semantic verification, so do not claim audio support for this row.
+- Gemma audio semantic E2E. Current source/bundled capability evidence gates
+  this row as audio-unsupported before any semantic-support claim; do not treat
+  older empty-output or semantic-fail audio attempts as support evidence.
 - N2 or MiMo dev-app chat proof.
 - Same-model public tunnel raw SSE parity.
 

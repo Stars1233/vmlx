@@ -12629,3 +12629,18 @@ Next action:
   - `docs/internal/agent-notes/current-real-ui-installed-app-n2-jangtq2-audio-20260610-proof.json`
 - Classification: N2 JANGTQ2 audio is an honest unsupported-modality gate, not a crash. The app sent `input_audio`; server media diag saw `engine_is_mllm=true`, family `qwen3_5_moe`, and returned HTTP 400: supported modalities are `text, vision, video`. Do not claim N2 audio support until a real weight-backed audio path exists.
 - Still open: public tunnel N2 JANGTQ2 SSE parity is missing from current captures; N2 JANG_1L remains off-limits; no release readiness claim.
+
+# 2026-06-10 13:18 PDT - Gemma JANG/MXFP media/audio gating lane selected
+
+- Current objective continues: build/fix model runtime blockers, especially Gemma JANG/MXFP/QAT VL/video/audio/cache/API/UI, without release/sign/notarize actions.
+- Selected blocker: Gemma media capability truthfulness, especially audio. Audio must be weight-backed and live-proven, not inferred from config tokens; video must be runtime-proven frame-through-vision or honestly gated.
+- Next movement: inspect current Gemma media proof artifacts and source capability gates to see whether the engine or app advertises/routes unsupported audio/video incorrectly. No source edit before evidence.
+
+# 2026-06-10 13:21 PDT - Gemma JANG/MXFP audio gate classified
+
+- Used systematic debugging: checked current source gate, current source/bundled capability artifacts, and older installed/dev-app audio artifacts before deciding whether a patch was justified.
+- Source finding: `_bundle_declares_native_audio(...)` does not infer Gemma audio from `audio_config`, `audio_token_id`, tokenizer markers, or projection-only `embed_audio.*` weights. Gemma4/Gemma4 Unified audio requires real `audio_tower.*` weights; MXFP rows remain refused unless an explicit experimental repair flag is set.
+- Artifact finding: `build/current-gemma-jang-mxfp-audio-modality-current-state-20260610.json` and `build/current-gemma-audio-modality-source-boundary-20260610.json` prove source and bundled runtime agree on runtime modalities `text`, `vision`, and `video` for checked 12B MXFP4/JANG4M/QAT-JANG4M and 26B/31B QAT-JANG4M rows; audio is not runtime-supported.
+- Installed-app finding: `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-12b-mxfp4-audio-20260610-proof.json` proves the real app/server path fails closed with HTTP 400 and supported modalities `text, vision, video` when an audio attachment is sent.
+- Edited `AGENTS.md`, `.agents/STATUS.md`, and `.agents/PROOF_MATRIX_128GB_MIMO_N2_GEMMA_20260610.md` to record the current boundary and remove stale release-note caveats from older failed audio/visible-thought artifacts.
+- No source code patch was made: current behavior is already the desired honest unsupported-modality gate. Other agent should not advertise Gemma audio until a bundle has `audio_tower.*` weights and live audio E2E passes.

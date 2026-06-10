@@ -4862,3 +4862,23 @@ Other-agent action:
   - `docs/internal/agent-notes/current-real-ui-installed-app-n2-jangtq2-audio-20260610-proof.json`
 - Classification: N2 JANGTQ2 audio is an honest unsupported-modality gate, not a crash. The app sent `input_audio`; server media diag saw `engine_is_mllm=true`, family `qwen3_5_moe`, and returned HTTP 400: supported modalities are `text, vision, video`. Do not claim N2 audio support until a real weight-backed audio path exists.
 - Still open: public tunnel N2 JANGTQ2 SSE parity is missing from current captures; N2 JANG_1L remains off-limits; no release readiness claim.
+
+# 2026-06-10 13:18 PDT - Gemma JANG/MXFP media/audio gating lane selected
+
+- Current objective continues: build/fix model runtime blockers, especially Gemma JANG/MXFP/QAT VL/video/audio/cache/API/UI, without release/sign/notarize actions.
+- Selected blocker: Gemma media capability truthfulness, especially audio. Audio must be weight-backed and live-proven, not inferred from config tokens; video must be runtime-proven frame-through-vision or honestly gated.
+- Next movement: inspect current Gemma media proof artifacts and source capability gates to see whether the engine or app advertises/routes unsupported audio/video incorrectly. No source edit before evidence.
+
+# 2026-06-10 13:21 PDT - Gemma JANG/MXFP audio gate classified as honest unsupported
+
+- Source inspected: `vmlx_engine/server.py` gates Gemma audio through `_bundle_declares_native_audio(...)`; Gemma4/Gemma4 Unified rows require real `audio_tower.*` weights, and MXFP rows are refused unless an explicit experimental repair flag is set.
+- Current artifacts inspected:
+  - `build/current-gemma-jang-mxfp-audio-modality-current-state-20260610.json`
+  - `build/current-gemma-audio-modality-source-boundary-20260610.json`
+  - `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-12b-mxfp4-audio-20260610-proof.json`
+  - `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-12b-jang4m-audio-20260610-proof.json`
+  - `docs/internal/agent-notes/current-real-ui-live-model-gemma4-12b-jang4m-audio-cache-20260610-proof.json`
+- Proven: checked Gemma 12B MXFP4/JANG4M/QAT-JANG4M and 26B/31B QAT-JANG4M rows expose runtime modalities `text`, `vision`, and `video`; audio is not runtime-supported. 12B rows have `audio_config`, `audio_token_id`, and projection-only `embed_audio.*` metadata but no `audio_tower.*` weights. 26B/31B rows also have no `audio_tower.*` weights.
+- Proven: installed-app MXFP4 audio reached the real app/server path and failed closed with HTTP 400: supported modalities are `text, vision, video`; this is an honest unsupported-modality gate, not a crash or cache failure.
+- No source patch was made because no current false audio advertisement was found in the runtime capability gate. The proof matrix and `AGENTS.md` were updated so future lanes do not treat stale red audio attempts as audio support evidence.
+- Still open: Gemma audio remains unsupported until a weight-backed `audio_tower.*` artifact exists and passes live audio E2E. Larger installed-app parity, public tunnel parity, package/sign/notarize, MiMo, N2 non-JANG_1L, and parser-family live matrices remain separate blockers.
