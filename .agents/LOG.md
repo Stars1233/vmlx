@@ -8086,3 +8086,11 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Proven in app: image attachment persisted, server `model_type=mllm`, one `image_url` reached `MEDIA_DIAG`, runtime processed `num_images_processed=1`, and final visible answer was `Red`.
 - Runtime/cache: active about `103812.6 MB`, peak about `104874.6 MB`, hybrid SSM cache, attention-only TurboQuant KV, `cache_detail=paged+ssm`, `cached_tokens=18`, `l2_block_tokens_on_disk=50`, `l2_ssm_tokens_on_disk=68`, `l2_tokens_on_disk=118`.
 - Boundary: audio/video/installed app/tunnel/N2 JANG_1L remain open. No release action was run.
+
+# 2026-06-10 - N2 JANGTQ2 dev-app video/VL proof green
+
+- Generated `build/media-fixtures/red-64x64-1s.mp4` with `ffmpeg` and ran real Electron dev-app N2 JANGTQ2 Chat Completions video proof.
+- Added tracked summary `build/current-real-ui-live-model-n2-jangtq2-video-proof-20260610.json`, `status=pass`.
+- Proven in app: `video_url` persisted, server decoded the base64 MP4, extracted `4` frames from `25 total frames @ 25.0 fps`, processed `num_images_processed=4`, and final visible answer described a solid red screen.
+- Runtime/cache: active about `103824.4 MB`, peak about `105305.7 MB`, hybrid SSM cache, attention-only TurboQuant KV, `cache_detail=paged+ssm`, `cached_tokens=18`, `l2_block_tokens_on_disk=50`, `l2_ssm_tokens_on_disk=68`, `l2_tokens_on_disk=118`.
+- Boundary: audio/installed app/tunnel/N2 JANG_1L remain open. No release action was run.

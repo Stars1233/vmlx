@@ -304,6 +304,7 @@ Artifact:
 - `build/current-real-ui-live-model-n2-jangtq2-dev-app-delta-proof-20260610.json`
 - `build/current-real-ui-live-model-n2-jangtq2-dev-app-prevresp-proof-20260610.json`
 - `build/current-real-ui-live-model-n2-jangtq2-image-proof-20260610.json`
+- `build/current-real-ui-live-model-n2-jangtq2-video-proof-20260610.json`
 
 Raw ignored proof captures:
 
@@ -331,6 +332,16 @@ Proven:
 - For the media prompt itself, the server intentionally skipped prefix/paged
   cache store because media embeddings are path-dependent; this is the honest
   media cache boundary, not a cache failure.
+- Real Electron dev-app video/VL proof is also green for a 1-second 64x64
+  solid-red MP4. The app persisted a `video_url` attachment, the server decoded
+  the base64 MP4, reported `25 total frames @ 25.0 fps`, extracted `4 frames`,
+  processed `num_images_processed=4`, and the assistant answered
+  `The video shows a solid red screen with no visible movement or change.`
+- The N2 video proof showed the same hybrid cache/L2 shape as the image proof:
+  `cache_detail=paged+ssm`, `cached_tokens=18`,
+  `l2_block_tokens_on_disk=50`, `l2_ssm_tokens_on_disk=68`,
+  `l2_tokens_on_disk=118`, block-disk `disk_hits=3`, and SSM companion stores
+  `2`.
 - Responses UI rail reached `/v1/responses` and completed two turns.
 - Built-in `run_command` tool loop executed and wrote/read the expected probe
   files: `REAL_UI_LIVE_TOOL_ONE` and `REAL_UI_LIVE_TOOL_TWO`.

@@ -877,3 +877,13 @@
 - Honest media cache boundary: the server skipped prefix/paged cache store for the media prompt itself because media embeddings are path-dependent.
 - Still open: N2 audio, N2 video, installed-app parity, public tunnel parity, and N2 JANG_1L memory-safe startup.
 - No package/sign/notarize/tag/upload/release action was run.
+
+# 2026-06-10 - N2 JANGTQ2 dev-app video/VL proof green
+
+- Generated a 1-second 64x64 solid-red MP4 fixture with `ffmpeg` and ran real Electron dev-app Nex/N2 Pro JANGTQ2 Chat Completions video proof.
+- Added tracked proof summary `build/current-real-ui-live-model-n2-jangtq2-video-proof-20260610.json`, `status=pass`.
+- Proven: app persisted the `video_url` attachment, server decoded the base64 MP4, reported `25 total frames @ 25.0 fps`, extracted `4 frames`, processed `num_images_processed=4`, and the assistant answered `The video shows a solid red screen with no visible movement or change.`
+- Cache/runtime evidence in the same run: hybrid SSM cache, attention-only TurboQuant KV, server cache controls, `cache_detail=paged+ssm`, `cached_tokens=18`, `l2_block_tokens_on_disk=50`, `l2_ssm_tokens_on_disk=68`, `l2_tokens_on_disk=118`, block-disk `disk_hits=3`, and SSM companion stores `2`.
+- Honest media cache boundary: the server skipped prefix/paged cache store for the video prompt because media embeddings are path-dependent.
+- Still open: N2 audio, installed-app parity, public tunnel parity, and N2 JANG_1L memory-safe startup.
+- No package/sign/notarize/tag/upload/release action was run.
