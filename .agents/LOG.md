@@ -1,3 +1,22 @@
+# 2026-06-10 - MiMo JANGTQ_2 vMLX fast-path A/B excluded
+
+- Ran MiMo V2.5 JANGTQ_2 with `VMLINUX_DISABLE_MIMO_V2_SWITCHGLU_FAST_PATH=1`
+  and the same exactness variant probe:
+  `build/current-mimo-v25-jangtq2-exactness-variant-disable-vmlx-fastpath-20260610/result.json`.
+- Result stayed `status=open` with the same eight failed rows and identical
+  outputs to baseline. This excludes vMLX's MiMo SwitchGLU fast path as the
+  primary cause.
+- Tokenizer check round-tripped the key literals: `blue-cat`, `B7-CAT-09`, and
+  `ACK-CB-742`; tokenizer corruption is not the cause.
+- Source reference check: `erics-m5-max2.local` is reachable and
+  `/Volumes/EricsLLMDrive/jangq-ai/sources/MiMo-V2.5` exists at `294G`, but no
+  source server is listening on `127.0.0.1:8126`. Source-vs-quant remains
+  unproven.
+- Boundary: remaining class is JANGTQ codebook/artifact/model-quality. Next
+  useful action is source/dequant first-divergence or rebuilding a higher
+  fidelity MiMo artifact. Do not mask with parser repair, JSON repair, cache
+  changes, sampling clamps, or string post-processing.
+
 # 2026-06-10 - MiMo JANGTQ_2 live exactness variant boundary
 
 - Launched real local MiMo V2.5 JANGTQ_2 on port `8897` with continuous
