@@ -9342,3 +9342,36 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Commit/push: `09b42d5b` (`Gate Gemma QAT audio by runtime weights`) was pushed to `origin/codex/pr-intake-manifest` and `origin/main`.
 - Scope: Gemma QAT/native MXFP4 inventory/checklist honesty only. No release, signing, notarization, PyPI, public tunnel, MiMo, Qwen, or N2 JANG_1L action was included in this commit.
 - Unrelated local state left alone: `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json` remains modified from other work and `node_modules/` remains untracked.
+
+# 2026-06-10 - MiMo V2.5 vision head-dim source parity fix
+
+- User focus item: MiMo V2.5 JANG/JANGTQ media/exactness proof and real fixes,
+  without parser repair, cache blame, or N2 JANG_1L work.
+- Directive check passed: MiMo lane is allowed; N2 JANG_1L remains Eric-owned.
+- Finding:
+  - Current MiMo JANGTQ_2 media artifacts prove API/media routing and preserved
+    media tensor binding, but solid-color image/video semantics are still red.
+  - Patch-embed parity was checked directly: Torch Conv3d with real
+    `visual.patch_embed.proj.weight` vs vMLX flattened Linear bridge matched
+    within bf16 tolerance (`mean_abs_diff=0.0005843049730174243`), so
+    Conv3d flattening was not the color blocker.
+  - First-block parity initially exposed a source skeleton mismatch:
+    upstream defaults missing `qk_channels` to `64`, while vMLX defaulted to
+    `hidden_size / num_heads` (`40`) before qkv weight binding corrected it.
+- Source edit: `vmlx_engine/models/mllm.py` now uses upstream's MiMo vision
+  q/k head dim default of `64` when `qk_channels` is absent.
+- Regression edit: `tests/test_mimo_v2_media_runtime.py` now asserts the
+  upstream default for the current 1280-hidden/32-head bundle shape.
+- Proof artifact:
+  `build/current-mimo-v25-vision-head-dim-source-parity-20260610.json`.
+- Verification:
+  - `.venv/bin/python -m pytest -q tests/test_mimo_v2_media_runtime.py -k 'vision or jangtq_fast_path_binds_indexed_media_weights or model_splices_image_pixels'`
+    passed `7 passed`.
+  - `python3 -m py_compile vmlx_engine/models/mllm.py` passed.
+  - Direct Torch-vs-MLX first-block probe with real `visual.blocks.0.*`
+    weights now runs without manual head-dim correction and reports
+    `vision_head_dim=64`, `block_head_dim=64`,
+    `mean_abs_diff=0.000536009669303894`.
+- Boundary: this is source-parity hardening. It does not clear MiMo JANGTQ_2
+  visual semantic correctness, literal exactness, installed-app parity, UI
+  rows, or release clearance. Fresh live proof is still required.

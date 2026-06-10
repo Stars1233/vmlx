@@ -1589,3 +1589,27 @@
 - Commit/push: `09b42d5b` (`Gate Gemma QAT audio by runtime weights`) was pushed to `origin/codex/pr-intake-manifest` and `origin/main`.
 - Scope: Gemma QAT/native MXFP4 inventory/checklist honesty only. No release, signing, notarization, PyPI, public tunnel, MiMo, Qwen, or N2 JANG_1L action was included in this commit.
 - Unrelated local state left alone: `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json` remains modified from other work and `node_modules/` remains untracked.
+
+# 2026-06-10 - MiMo V2.5 vision head-dim parity fix in progress
+
+- Directive check: allowed lane is MiMo V2.5 JANG/JANGTQ exactness/media
+  proof. N2 JANG_1L remains Eric-owned and is not being touched.
+- Finding: upstream MiMo vision runtime defaults missing `qk_channels` to `64`;
+  vMLX defaulted to `hidden_size / num_heads`, which is `40` for the current
+  1280-hidden/32-head MiMo bundle. Live qkv weight binding later inferred the
+  correct value from real weights, but the source skeleton was not upstream
+  faithful before that rescue path.
+- Source edit: `vmlx_engine/models/mllm.py` now defaults MiMo vision q/k head
+  dim to `64` when `qk_channels` is absent.
+- Regression edit: `tests/test_mimo_v2_media_runtime.py` now asserts the
+  upstream default `vision_head_dim == 64` and `blocks[0].attn.head_dim == 64`.
+- Proof artifact:
+  `build/current-mimo-v25-vision-head-dim-source-parity-20260610.json`.
+- Verification: focused MiMo media runtime tests passed `7 passed`; py_compile
+  passed; direct Torch-vs-MLX first-block parity probe used real
+  `visual.blocks.0.*` weights and reported `vision_head_dim=64`,
+  `block_head_dim=64`, `mean_abs_diff=0.000536009669303894`.
+- Boundary: this is a real source-parity fix, but it does not claim the
+  existing MiMo JANGTQ_2 visual semantic failures, literal exactness failures,
+  installed-app rows, or release clearance are fixed. A fresh live media proof
+  is still required after this patch.
