@@ -1680,3 +1680,36 @@
 - Unrelated local state left alone:
   `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
   remains modified from other work and `node_modules/` remains untracked.
+
+# 2026-06-10 - Qwen Responses raw-SSE release gate refresh in progress
+
+- Directive check: allowed lane is Qwen/Qwen3.6 Responses/tool/reasoning
+  streaming parity and cross-family parser/API contract. N2 JANG_1L remains
+  off-limits and no release/sign/notarize/PyPI action is being taken.
+- Finding: the Qwen empty-args source boundary and Qwen35 same-model
+  direct/gateway/tunnel raw SSE proof are already present and green in current
+  source, but the generic full-release Responses raw-SSE gate still consumed
+  the older Gemma4 E2B tunnel-unavailable artifact.
+- Source edit: `tests/cross_matrix/run_full_release_objective_checklist.py`
+  now points `RESPONSES_RAW_SSE_PARITY` and `DEFAULT_OUT` at the current
+  Qwen35/Qwen empty-args refresh lane. `tests/test_full_release_objective_checklist.py`
+  was updated to pin that pointer.
+- Tracker edit: the release tracker now records the Qwen35 same-model raw-SSE
+  pass as the current Responses raw-SSE release-gate evidence and keeps Gemma4
+  E2B tunnel availability separate.
+- Regenerated artifact:
+  `build/current-full-release-objective-checklist-after-qwen-mimo-gemma-refresh-20260610.json`
+  is `status=open`, `failed_count=59`.
+- Verification:
+  - `.venv/bin/python tests/cross_matrix/run_full_release_objective_checklist.py --out build/current-full-release-objective-checklist-after-qwen-mimo-gemma-refresh-20260610.json`
+    completed with expected nonzero exit because release remains open and
+    printed `failed_count=59`.
+  - `.venv/bin/python -m pytest -q tests/test_full_release_objective_checklist.py -k 'responses_raw_sse_parity or qwen35_raw_sse_parity'`
+    passed `2 passed`.
+  - `python3 -m py_compile tests/cross_matrix/run_full_release_objective_checklist.py`
+    passed.
+- Current boundary: Qwen empty-args/direct-gateway-tunnel raw-SSE issue is
+  release-gate green for the current Qwen35 proof. Release remains blocked by
+  real open rows including MiMo exactness/media/L2, Gemma QAT full media/UI,
+  N2 JANG_1L (Eric-owned/off-limits here), Step/LFM/Nemotron/DSV4, package,
+  signing, notarization, and public release gates.

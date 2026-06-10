@@ -9440,3 +9440,40 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Unrelated local state left alone:
   `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
   remains modified from other work and `node_modules/` remains untracked.
+
+# 2026-06-10 - Qwen Responses raw-SSE release gate refresh
+
+- User focus item: auto tool usage, content/reasoning deltas, Responses API,
+  gateway/tunnel parity, valid output indices, and no fake Qwen empty-args
+  repair.
+- Directive check: Qwen Responses/tool/reasoning streaming parity is allowed;
+  N2 JANG_1L remains off-limits; no release/sign/notarize/PyPI action.
+- Evidence inspected:
+  - `build/current-qwen-empty-args-source-boundary-refresh-20260610.json`
+    is `status=pass` and proves preamble plus empty XML function fails closed
+    without executable `{}` args.
+  - `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-public-recapture-20260610.json`
+    is `status=pass` and proves same-model Qwen35 direct/gateway/tunnel raw
+    SSE with reasoning enabled, authoritative args `{"value": "blue-cat"}`,
+    argument delta/done, final-object consistency, valid output indices, and
+    no reasoning-disable workaround.
+- Finding: the generic release checklist raw-SSE row still consumed the older
+  Gemma4 E2B tunnel-unavailable artifact. That kept the reported Qwen issue
+  visually red even though the Qwen same-model proof is now green.
+- Source edit: repointed `RESPONSES_RAW_SSE_PARITY` and the default checklist
+  output in `tests/cross_matrix/run_full_release_objective_checklist.py` to the
+  current Qwen35 proof; updated the pointer test accordingly.
+- Boundary: this does not claim all release blockers are clear. It only makes
+  the raw-SSE release gate consume the current Qwen proof for the reported
+  Qwen empty-args/Responses streaming issue. Gemma4 E2B tunnel advertisement is
+  still a separate deployment/model-list issue.
+- Regenerated artifact:
+  `build/current-full-release-objective-checklist-after-qwen-mimo-gemma-refresh-20260610.json`.
+- Result: `status=open`, `failed_count=59`. The previous stale generic
+  raw-SSE failures cleared, but release remains blocked by real model/runtime,
+  media, UI, package, and release rows.
+- Verification:
+  - Full checklist command exited nonzero as expected for an open release gate
+    and printed `failed_count=59`.
+  - Focused pointer/Qwen tests passed `2 passed`.
+  - `py_compile` passed for the checklist runner.
