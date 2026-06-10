@@ -9627,3 +9627,37 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
   cache as primary MiMo exactness fixes without contrary logits evidence. Work
   next on artifact/logit/quant contract or runtime decode diagnosis, and on
   semantic media quality plus fresh-process L2/installed-app parity.
+
+# 2026-06-10 - Gemma E2B QAT JANG4M full-media source proof
+
+- Request: continue reducing real model/runtime blockers, focusing Gemma
+  JANG/MXFP/QAT media/cache/tools without release/signing or N2 JANG_1L.
+- Action: ran one real source full-media/tools/L2 smoke for the smallest Gemma
+  QAT JANG4M row instead of adding a new harness.
+- Command:
+  `.venv/bin/python bench/all_local_model_smoke.py --models-root /Users/eric/models --out build/current-all-local-model-smoke-gemma4-e2b-qat-jang4m-fullmedia-tools-l2-20260610 --port 8890 --only gemma-4-E2B-it-qat-JANG_4M --include-tools --include-l2-restart --load-timeout-s 240 --request-timeout-s 240`
+- Proof artifacts:
+  - `build/current-all-local-model-smoke-gemma4-e2b-qat-jang4m-fullmedia-tools-l2-20260610/summary.json`
+  - `build/current-all-local-model-smoke-gemma4-e2b-qat-jang4m-fullmedia-tools-l2-20260610/JANGQ_gemma-4-E2B-it-qat-JANG_4M/result.json`
+- Proven: real E2B QAT JANG4M source load; Gemma4 tool/reasoning parser;
+  exact required tool args; tool-result continuation; exact JSON/code; image,
+  video, and audio media responses; post-media text recovery; mixed-SWA native
+  cache; generic TurboQuant KV correctly disabled for Gemma mixed-SWA; block
+  L2 writes; fresh-process L2 restore with `paged+mixed_swa+disk`.
+- Source edit: `tests/cross_matrix/run_gemma_qat_native_mxfp4_inventory_gate.py`
+  now records a `source_fullmedia_smoke` field for current full-media source
+  evidence and can parse direct result artifacts with top-level `requests`.
+- Regenerated:
+  - `build/current-gemma-qat-native-mxfp4-local-inventory-after-e2b-jang4m-fullmedia-20260610.json`
+  - `build/current-full-release-objective-checklist-after-gemma-e2b-jang4m-fullmedia-20260610.json`
+- Verification:
+  - `python3 -m py_compile tests/cross_matrix/run_gemma_qat_native_mxfp4_inventory_gate.py tests/cross_matrix/run_full_release_objective_checklist.py tests/cross_matrix/run_current_regression_suite.py` passed.
+  - `.venv/bin/python -m pytest -q tests/test_gemma_qat_native_mxfp4_inventory_gate.py tests/test_full_release_objective_checklist.py -k 'gemma_qat or gemma4_e2b or full_release_objective_checklist'` passed `28/28`.
+  - Full checklist regenerated with expected nonzero exit because release is
+    still open; `failed_count=56`.
+- Not proven: E2B Responses streaming/non-streaming, UI, installed-app parity,
+  and the other Gemma QAT/JANG4M rows remain open. This does not clear Gemma
+  release readiness.
+- Other-agent action: continue with Gemma E4B/12B/26B/31B QAT JANG4M full-media
+  source proofs or same-family Responses/UI installed-app proof; do not
+  advertise full Gemma clearance from this E2B source proof alone.

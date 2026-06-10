@@ -1847,3 +1847,32 @@
   remains `status=open`, `failed_count=56`.
 - No release/sign/notarize/PyPI/download action, no model server launch, and no
   N2 JANG_1L action was included.
+
+# 2026-06-10 - Gemma E2B QAT JANG4M full-media source proof in progress
+
+- Directive check: allowed lane is Gemma JANG/MXFP/QAT VL/video/cache/API/UI
+  proof and honest modality gating. N2 JANG_1L remains off-limits. No release,
+  signing, notarization, PyPI, public download, or package action is being
+  done.
+- Live proof command:
+  `.venv/bin/python bench/all_local_model_smoke.py --models-root /Users/eric/models --out build/current-all-local-model-smoke-gemma4-e2b-qat-jang4m-fullmedia-tools-l2-20260610 --port 8890 --only gemma-4-E2B-it-qat-JANG_4M --include-tools --include-l2-restart --load-timeout-s 240 --request-timeout-s 240`
+- Live proof result: real `/Users/eric/models/JANGQ-AI/gemma-4-E2B-it-qat-JANG_4M`
+  loaded and passed `status=pass`, `failures=0`.
+- Proven: visible text, cache first miss/second hit, multi-turn recall,
+  reasoning separation, required tool call with exact `{"value": "blue-cat"}`,
+  tool-result continuation, exact JSON, exact code whitespace, image blue/red,
+  video blue through vision, audio blue, post-media text recovery, Gemma4
+  parser/reasoning parser, JANG affine Metal NA dispatch, native mixed-SWA
+  cache with generic TurboQuant KV disabled, block L2 writes, and fresh-process
+  L2 restore with `cache_detail=paged+mixed_swa+disk`.
+- Source edit: Gemma QAT/native inventory now records
+  `source_fullmedia_smoke` for `gemma4_e2b_qat_jang4m` and validates direct
+  result artifacts with top-level `requests`.
+- Regenerated artifacts:
+  `build/current-gemma-qat-native-mxfp4-local-inventory-after-e2b-jang4m-fullmedia-20260610.json`
+  and
+  `build/current-full-release-objective-checklist-after-gemma-e2b-jang4m-fullmedia-20260610.json`.
+- Boundary: E2B QAT JANG4M source full-media proof is green, but the Gemma
+  release row remains open because Responses streaming/non-streaming, UI,
+  installed-app parity, and the remaining Gemma QAT/JANG4M rows are not fully
+  cleared by this single source smoke. Do not claim Gemma release clearance.
