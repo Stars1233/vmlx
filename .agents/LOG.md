@@ -13706,3 +13706,31 @@ Next action:
   do not release-clear MiMo JANG_2L from this proof.
 - Verification passed: py_compile, panel typecheck, MiMo focused engine-audit
   tests (`3 passed`), and MiMo media-capability tests (`3 passed`).
+
+# 2026-06-10 continuation - choosing MiMo speed as next blocker
+
+- Re-read active directives and current status before new work.
+- Current user objective is broad production-quality model/runtime/API proof,
+  but the concrete live blocker with strongest current evidence is MiMo V2.5
+  JANG_2L performance and second-turn robustness.
+- Boundaries preserved:
+  - no release/sign/notarize/PyPI/updater/site action;
+  - no N2 JANG_1L work;
+  - no subagents or recursive delegation;
+  - prefer direct runtime fix/proof over broad test-suite churn.
+- Next action: inspect MiMo text decode timing path and isolate why a fully
+  quantized live load still reports `13 tokens in 53.60s (0.2 tok/s)`.
+
+# 2026-06-10 16:20 PDT
+- MiMo speed investigation found synchronous mixed-SWA clean prompt-boundary re-prefill/cache extraction/L2 store on request finish. Preparing runtime edit to queue that store for idle execution instead of blocking the final response. No release/N2/PyPI action.
+
+# 2026-06-10 16:34 PDT
+- Live MiMo proof split speed issue: cache store now deferred and idle L2 write completed, but sampling is the actual bottleneck (`avg_model_ms≈2`, `avg_sample_ms≈1462`). Preparing MiMo top_k=64 family fallback for compact sampler.
+
+# 2026-06-10 16:44 PDT
+- MiMo explicit top_k did not clear speed; compact sampler still full-vocab normalizes for top_p. Patching sampler to apply top_p inside selected top_k.
+
+# 2026-06-10 16:58 PDT
+- Patched MiMo mixed-SWA cache finalization to defer clean prompt-boundary paged/L2 store to scheduler idle time, added MiMo omitted-top_k=64 defaults in API/UI, and changed compact top-k top_p filtering to normalize inside selected top-k.
+- Live proof: source MiMo JANG_2L text runtime loaded with full quant coverage and native mixed-SWA paged/L2 cache. Deferred cache store queued and then wrote 48 layers / 28 tokens to block L2 in 0.70s. Fresh default request resolved `top_k: 64` and produced clean text.
+- Still red: speed is not solved. Model forward is ~2ms/token, but sampler remains ~624ms/token after warmup; `31 tokens in 47.94s`. A paged-cache hit/reconstruct request also timed out before decode. No release, signing, PyPI, N2 JANG_1L, or subagent action.

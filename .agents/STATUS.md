@@ -6076,3 +6076,91 @@ Other-agent action:
 - Verification passed:
   py_compile for touched Python files, panel typecheck, focused MiMo
   engine-audit tests (`3 passed`), and MiMo media-capability tests (`3 passed`).
+
+# 2026-06-10 continuation - active blocker selection
+
+- Current continuation goal from Eric: keep moving toward production-quality
+  runtime fixes/proofs for MiMo, Gemma, Qwen/Qwen-coder, and N2 JANGTQ/non-
+  JANG_1L without broad harness churn or recursive subagent behavior.
+- Active directive re-read before work:
+  `.agents/CODEX_ACTIVE_DIRECTIVES_20260610.md`.
+- N2 JANG_1L remains off-limits in this lane.
+- Release/sign/notarize/PyPI/updater/site actions remain locked unless Eric
+  explicitly unlocks them in the current turn.
+- Selected next blocker: MiMo V2.5 JANG_2L speed/quality red after the last
+  checkpoint. The live source load proved full quantized coverage, but a short
+  default Responses prompt still measured `13 tokens in 53.60s (0.2 tok/s)`.
+  This is the current concrete blocker to reduce before broader release proof.
+
+# 2026-06-10 16:20 PDT - MiMo mixed-SWA cache tail-latency root cause candidate
+
+- Re-read active directives before source edits.
+- Investigated the `13 tokens in 53.60s (0.2 tok/s)` MiMo V2.5 JANG_2L live proof.
+- Current code path shows mixed full/SWA models synchronously run `Mixed-SWA prefix cache store using clean prompt-boundary re-prefill` at finish, then extract 48 layer states and write paged/L2 cache before the response is complete.
+- This clean re-prefill is correctness-motivated because RotatingKVCache cannot be safely rewound after decode, but for a 112GB MiMo text load it is likely dominating short-turn wall time.
+- Next edit: defer mixed-SWA prompt-boundary cache store to scheduler idle time, reusing the existing idle rederive guard pattern, so response finalization is not blocked.
+- What will remain unproven until live run: actual tok/s improvement, cache write/hit after idle store, second-turn text quality, UI parity.
+
+# 2026-06-10 16:34 PDT - MiMo sampler bottleneck found
+
+- Live MiMo source request after deferred cache-store patch returned 64 tokens in 94.48s.
+- Decode trace proves the model forward path is not the bottleneck: `avg_model_ms≈2.1`, while sampling is `avg_sample_ms≈1462` after 64 steps and >4s/token early.
+- Root cause candidate: MiMo default path uses temperature/top_p with no top_k, so SingleBatchGenerator computes full-vocab logsoftmax/top-p/categorical on a very large vocabulary each token.
+- Cache-store patch worked structurally: finish queued `Mixed-SWA prefix cache store queued`, skipped inline paged store, then idle store wrote 48 layers/L2 in 0.70s.
+- Next edit: add MiMo family top_k fallback (`64`) so omitted top_k uses the compact top-k sampler; explicit request/CLI/bundle top_k still wins.
+- Still not proven: quality/speed after top_k fallback, second-turn behavior, UI parity.
+
+# 2026-06-10 16:44 PDT - MiMo top_k proof exposed compact sampler full-vocab normalization
+
+- Explicit `top_k=64` request was first contaminated by a paged-cache hit/reconstruct stall and timed out; server aborted it on disconnect.
+- Cache-bypassed `top_k=64` request showed decode trace still around `avg_sample_ms≈521` while model forward remained `avg_model_ms≈2.2`.
+- Root cause moved from unbounded top-p to compact top-k sampler internals: its top_p branch still computes `logsumexp(logits)` over full vocabulary after selecting top-k.
+- Next edit: make compact top-k sampler apply top_p inside the selected top-k logits (`top-k then top-p`) so it does not full-vocab normalize each token.
+
+# 2026-06-10 16:58 PDT - MiMo cache/default/sampler patch proof
+
+- Runtime edits made:
+  - `vmlx_engine/scheduler.py`: mixed-SWA prompt-boundary cache store now queues
+    paged/L2 clean re-prefill to scheduler idle time instead of blocking the
+    final response. Diagnostic override:
+    `VMLINUX_MIXED_SWA_SYNC_CACHE_STORE=1`.
+  - `vmlx_engine/server.py`: MiMo family omitted-`top_k` default is `64`, even
+    when its bundle `generation_config.json` says `do_sample=false`; explicit
+    request/CLI/bundle `top_k` still wins.
+  - `panel/src/main/sessions.ts` and `panel/src/main/ipc/models.ts`: UI/default
+    readers now agree with MiMo API defaults: temp 0.7, top_p 0.95, top_k 64.
+  - `vmlx_engine/sampling.py`: compact top-k sampler applies top_p inside the
+    selected top-k set instead of full-vocab normalizing after top-k.
+- Live proof artifacts:
+  - `build/current-mimo-jang2l-deferred-cache-store-20260610.server.log`
+  - `build/current-mimo-jang2l-deferred-cache-store-20260610.response.txt`
+  - `build/current-mimo-jang2l-topk64-no-cache-20260610.response.txt`
+  - `build/current-mimo-jang2l-topk-local-sampler-20260610.server.log`
+  - `build/current-mimo-jang2l-default-topk64-localtopP-20260610.response.txt`
+  - `build/current-mimo-jang2l-topk64-topp1-20260610.response.txt`
+- Proven:
+  - Fresh MiMo source load routes text-only (`mllm=False`) and auto-configures
+    `xml_function` + `think_xml`.
+  - MiMo quantized coverage remains intact:
+    `lm_head=True embed_tokens=True qkv=48/48 switch_proj=141/141 dense_mlp=3/3`.
+  - Native cache stack remains mixed full/SWA with paged cache and block L2.
+  - Deferred mixed-SWA store works structurally: first run queued the store,
+    skipped inline paged store, then idle store wrote 48 layers / 28 tokens to
+    block L2 in `0.70s`.
+  - Fresh server default resolution now logs omitted `top_k` as `top_k: 64`.
+  - Cache-bypassed default-output quality improved from repeated-token tails to:
+    `Hello! I'm MiMo, a large language model developed by Xiaomi's LLM Core Team. Is there anything I can help you with today?`
+- Still red / not proven:
+  - MiMo decode speed is not release-clear. After these patches, model forward
+    is still ~2ms/token but sampler remains the bottleneck:
+    `avg_sample_ms≈624` after warmup, `31 tokens in 47.94s (0.6 tok/s)`;
+    `top_p=1` still took `16 tokens in 11.09s (1.4 tok/s)`.
+  - A paged-cache hit against the deferred store stalled before decode and
+    timed out under curl; health later showed no running request after abort.
+    Cache hit/reconstruct path remains a separate MiMo red blocker.
+  - UI live chat was not rerun in this patch; only panel typecheck passed.
+  - Do not claim MiMo JANG_2L production-ready or release-clear from this.
+- Verification:
+  - `python3 -m py_compile vmlx_engine/scheduler.py vmlx_engine/server.py vmlx_engine/sampling.py`
+  - `npm --prefix panel run typecheck -- --pretty false`
+  - `git diff --check -- vmlx_engine/scheduler.py vmlx_engine/server.py vmlx_engine/sampling.py panel/src/main/sessions.ts panel/src/main/ipc/models.ts`
