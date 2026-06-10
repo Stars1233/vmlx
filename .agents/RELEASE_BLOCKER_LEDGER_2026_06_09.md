@@ -80,6 +80,12 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   Forced MLLM is intentionally overridden because media weights are preserved
   but unwired. Cache/L2 was positive, so do not claim media support or chase
   cache as the blocker.
+- 2026-06-10 update: MiMo JANGTQ_2 installed-app short text/cache is green in
+  `build/current-real-ui-installed-app-mimo-v25-jangtq2-text-cache-proof-20260610.json`.
+  The rebuilt app loaded the 79 GiB bundle, produced exact
+  `MIMO_JANGTQ2_TEXT_ONE` / `MIMO_JANGTQ2_TEXT_TWO`, hit paged cache with
+  `cache_hit_tokens=42`, and wrote block L2. This does not clear the broader
+  JANGTQ_2 artifact exactness/tool/media/source-vs-quant blockers.
 - Do not run source-vs-quant comparisons if RAM-blocked unless Eric explicitly allows.
 - Exactness failures must not be papered over by parser repair, sampling clamps, cache disabling, or JSON repair.
 - Confirm runtime dynamically reads artifact config for bit size, grouped experts, stacked vs legacy layout, JANG/JANGTQ/MXFP metadata, and model-owned generation defaults.

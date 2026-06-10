@@ -1059,3 +1059,11 @@
 - Launch-safe chat/cache gate: `build/current-n2-jang1l-chat-cache-launch-safe-20260610.json`, `status=skipped`, `reason=n2_jang1l_insufficient_available_memory`; observed available `114.22 GiB`, required available `118.57 GiB`, gap `4.35 GiB`.
 - Requested probes were preserved in the gate artifact: tool, Responses, Responses stream, and L2 restart. The model was not launched because the safe gate blocked before `Popen`.
 - Boundary: this is current safe scheduling evidence only. The previous explicit override OOM remains the live failure evidence; JANG_1L still needs a lower-peak runtime strategy before any support claim. No package/sign/notarize/tag/upload/release action was run.
+
+# 2026-06-10 - MiMo JANGTQ_2 installed-app short text/cache green
+
+- Reduced blocker: `api/ui` plus `cache/storage` for MiMo JANGTQ_2 installed-app short exact text/cache.
+- Proof summary: `build/current-real-ui-installed-app-mimo-v25-jangtq2-text-cache-proof-20260610.json`, `status=pass`; raw proof and screenshot are `docs/internal/agent-notes/current-real-ui-installed-app-mimo-v25-jangtq2-text-cache-20260610-proof.json` and `docs/internal/agent-notes/current-real-ui-installed-app-mimo-v25-jangtq2-text-cache-20260610-chat.png`.
+- Proven: local rebuilt `/Applications/vMLX.app` launched, real 79 GiB MiMo JANGTQ_2 loaded, Chat Completions produced exact visible turns `MIMO_JANGTQ2_TEXT_ONE` and `MIMO_JANGTQ2_TEXT_TWO`, server cache controls were visible, no parser/reasoning leak was recorded, and generation defaults were applied.
+- Runtime/cache evidence: active memory `76484.8 MB`, peak `77037.2 MB`, native TurboQuant codebook routed experts, `mixed_swa_kv_v1` with `mimo_v2_asymmetric_swa`, `cache_detail=paged`, `cache_hit_tokens=42`, `l2_block_tokens_on_disk=120`, `l2_tokens_on_disk=120`, and block-disk writes `3`.
+- Boundary: this clears only short installed-app text/cache for MiMo JANGTQ_2. It does not clear older broader JANGTQ_2 artifact exactness failures, tools, media, source-vs-quant, public tunnel, package/sign/notarize/tag/upload, or release readiness.

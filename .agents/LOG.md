@@ -8246,3 +8246,11 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Chat/cache gate artifact `build/current-n2-jang1l-chat-cache-launch-safe-20260610.json` is `status=skipped`, `reason=n2_jang1l_insufficient_available_memory`: observed available `114.22 GiB`, gap `4.35 GiB`.
 - Requested tool, Responses, Responses stream, and L2 restart probes were recorded, but the safe gate correctly skipped before launching the server.
 - Boundary: no new Metal OOM and no runtime clearance. The earlier override launch already proved forced below-gate startup aborts before health; current safe path remains queued until memory is high enough or a lower-peak JANG_1L loader/runtime path exists.
+
+# 2026-06-10 - MiMo JANGTQ_2 installed-app text/cache
+
+- Ran installed-app MiMo JANGTQ_2 short text/cache proof through `/Applications/vMLX.app` with Chat Completions, no tools, no media, cache controls, temperature `0`, top_p `1`, and max tokens `64`.
+- Proof summary `build/current-real-ui-installed-app-mimo-v25-jangtq2-text-cache-proof-20260610.json` is `status=pass`; raw proof is `docs/internal/agent-notes/current-real-ui-installed-app-mimo-v25-jangtq2-text-cache-20260610-proof.json`.
+- Proven: installed-app UI, real 79 GiB MiMo JANGTQ_2 load, exact visible text turns `MIMO_JANGTQ2_TEXT_ONE` and `MIMO_JANGTQ2_TEXT_TWO`, generation defaults, no parser/reasoning leak, native `mixed_swa_kv_v1` / `mimo_v2_asymmetric_swa`, paged cache hit, and block L2 writes.
+- Runtime/cache evidence: active memory `76484.8 MB`, peak `77037.2 MB`, cache hit tokens `42`, `cache_detail=paged`, `l2_block_tokens_on_disk=120`, and block-disk writes `3`.
+- Boundary: short installed-app text/cache is green, but broader MiMo JANGTQ_2 exactness/tool/media/source-vs-quant rows remain open. No release action was run.

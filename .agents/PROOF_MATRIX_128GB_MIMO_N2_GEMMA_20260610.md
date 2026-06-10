@@ -324,6 +324,7 @@ Artifact:
 - `build/current-real-ui-installed-app-mimo-v25-jang2l-text-cache-proof-20260610.json`
 - `build/current-real-ui-installed-app-mimo-v25-jang2l-tools-proof-20260610.json`
 - `build/current-real-ui-installed-app-mimo-v25-jang2l-image-proof-20260610.json`
+- `build/current-real-ui-installed-app-mimo-v25-jangtq2-text-cache-proof-20260610.json`
 
 Proven:
 
@@ -433,6 +434,14 @@ Proven:
   `mixed_swa_kv_v1` / `mimo_v2_asymmetric_swa`, `cache_detail=paged`,
   `cached_tokens=39`, `l2_block_tokens_on_disk=110`, and block-disk
   `disk_writes=3`.
+- MiMo JANGTQ_2 now has a green installed-app short exact text/cache row:
+  local rebuilt `/Applications/vMLX.app` loaded the 79 GiB bundle, Chat
+  Completions produced exact `MIMO_JANGTQ2_TEXT_ONE` and
+  `MIMO_JANGTQ2_TEXT_TWO`, server cache controls were visible, no
+  parser/reasoning leak was recorded, and the runtime stayed on native
+  `mixed_swa_kv_v1` / `mimo_v2_asymmetric_swa` with TurboQuant codebook routed
+  experts, `cache_detail=paged`, `cache_hit_tokens=42`,
+  `l2_block_tokens_on_disk=120`, and block-disk `disk_writes=3`.
 
 Red / not proven:
 
