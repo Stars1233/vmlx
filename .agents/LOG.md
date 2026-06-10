@@ -8619,6 +8619,52 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
   semantic drift, and source-vs-quant/no-source classification. No release,
   package, sign, notarize, tag, upload, or PyPI action was run.
 
+# 2026-06-10 - Fresh v1.5.57 checkpoint release
+
+- Bumped source/app package surfaces to `1.5.57` and committed
+  `52742f40 Release vMLX 1.5.57 checkpoint`; pushed to
+  `origin/main` and `origin/codex/pr-intake-manifest`; pushed tag
+  `v1.5.57`.
+- Built Sequoia and Tahoe arm64 checkpoint DMGs with explicit checkpoint
+  override:
+  `VMLINUX_CHECKPOINT_RELEASE_OVERRIDE=1 VMLX_PREPACKAGE_READY_MANIFEST_OUT=build/current-release-regression-manifest-checkpoint-dmg-override-1.5.57-20260610.json panel/scripts/build-release-dmgs.sh all`.
+  The manifest remained red, so the release is a user checkpoint, not a
+  production-green matrix claim.
+- Notarized with
+  `VMLINUX_NOTARY_KEYCHAIN=$HOME/Library/Keychains/vmlx-build.keychain-db panel/scripts/notarize-release-dmgs.sh`.
+  Sequoia notary id: `78aeae6b-14c1-4c14-8da5-d428908b2079`.
+  Tahoe notary id: `08e020a1-0b93-43c3-b3e9-9fd6bd83e723`.
+- `panel/scripts/verify-release-dmgs.sh` passed for both DMGs: valid image
+  checksums, Developer ID signatures, stapled tickets, stapler validation,
+  and Gatekeeper `source=Notarized Developer ID`.
+- Final hashes:
+  - Sequoia DMG:
+    `68bfea742acf991887d7cf6858a1300fd20c26b3cd49f0e6601d88506f379525`
+  - Tahoe DMG:
+    `bafe3e4329b341f993ee0c25e34c0bef78131e90066a8b72f3a5ead8b6160ef7`
+  - Sequoia blockmap:
+    `dedbbce28ee509210aa067345f5b3641ab9dbd7aa714247d9e595154e3ce89eb`
+  - Tahoe blockmap:
+    `533d5eccc4d829db018b514672a916232e46f2ddd0028030aaf5368081c8a019`
+- Created fresh GitHub releases with all four assets:
+  `https://github.com/jjang-ai/vmlx/releases/tag/v1.5.57` and
+  `https://github.com/jjang-ai/mlxstudio/releases/tag/v1.5.57`.
+- Updated updater metadata in `jjang-ai/mlxstudio@f1d7a5c`, copied
+  `latest.json` to `/var/www/mlx.studio/update/latest.json`, patched
+  `/var/www/mlx.studio/download/index.html` to `1.5.57`, and purged
+  Cloudflare for `mlx.studio`.
+- Public checks: live updater returns `version=1.5.57` with matching
+  Sequoia/Tahoe hashes; live download page displays `1.5.57` and matching
+  hashes. `build/current-release-surface-contract-after-1.5.57-release-20260610.json`
+  is red only on `public_pypi_has_release_files=false`.
+- PyPI: local wheel/sdist in `/tmp/vmlx-dist-1.5.57` built and
+  `twine check` passed. GitHub trusted publishing failed for both main and
+  tag dispatch because PyPI has no matching publisher for
+  `repo:jjang-ai/vmlx:environment:pypi`; direct upload through existing
+  `~/.pypirc` failed `403 Forbidden`. PyPI remains at `vmlx==1.5.56`.
+  Need a rotated/authorized token in `PYPI_API_TOKEN` or a matching PyPI
+  trusted-publisher entry before completing PyPI.
+
 # 2026-06-10 - Checkpoint DMG build/sign/notarize/verify complete
 
 - Followed the documented Apple release mechanics from
