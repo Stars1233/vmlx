@@ -524,6 +524,16 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   and video-turn media-prefix cache storage for `355` prompt tokens. This does
   not clear default-4k video behavior, 31B audio, installed-app parity, public
   tunnel SSE parity, package/sign/notarize/tag/upload, or release readiness.
+- 2026-06-10 Gemma 31B JANG4M dev-app audio update:
+  `build/current-real-ui-dev-app-gemma4-31b-jang4m-audio-proof-20260610.json`
+  is red by honest unsupported-modality guard. The app forced multimodal for
+  one audio file and server `MEDIA_DIAG` saw `input_audio`, but
+  `/v1/chat/completions` returned HTTP `400`: `unsupported media modality
+  audio. Supported modalities: text, vision, video.` Runtime/cache stayed
+  healthy before the guarded audio turn: active memory `25324.6 MB`, peak
+  `25728.6 MB`, native `mixed_swa_kv_v1`, `cache_detail=paged+mixed_swa`,
+  `cache_hit_tokens=20`, `l2_block_tokens_on_disk=62`, `l2_tokens_on_disk=62`,
+  and block-disk writes `2`. Do not claim 31B audio support.
 - Proper release mechanics are documented in `/Users/eric/wiki/infra/apple-notarization.md`; do not invent an alternate path. The canonical keychain is `~/Library/Keychains/vmlx-build.keychain-db`, the Developer ID identity is `Developer ID Application: ShieldStack LLC (55KGF2S5AY)`, and notarization uses the `vmlx-notary` keychain profile.
 - If signing returns `errSecInternalComponent`, fix key access with the documented sequence and retry once after the partition-list grant settles:
 

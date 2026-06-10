@@ -1,3 +1,12 @@
+# 2026-06-10 - Gemma 31B JANG4M dev-app audio boundary
+
+- Ran current Electron dev-build Gemma 4 31B QAT JANG4M audio proof with `npm run dev`, Chat Completions, one app audio attachment, server cache controls, temperature `0`, top_p `1`, max tokens `128`, and max prompt tokens `12000`.
+- Proof summary `build/current-real-ui-dev-app-gemma4-31b-jang4m-audio-proof-20260610.json` is `status=fail`; raw proof is `docs/internal/agent-notes/current-real-ui-dev-app-gemma4-31b-jang4m-audio-20260610-proof.json`.
+- Positive evidence: dev app launched, real `/Users/eric/models/JANGQ-AI/gemma-4-31B-it-qat-JANG_4M` loaded, two visible text turns completed before audio, the app forced multimodal for one audio file, server `MEDIA_DIAG` saw one `input_audio` content part, server cache controls were visible, and no raw parser/reasoning leak was recorded.
+- Red evidence: audio turn failed at `audio_send_message` with HTTP `400`: `/v1/chat/completions received unsupported media modality audio. Supported modalities: text, vision, video.`
+- Runtime/cache evidence before the audio guard: active memory `25324.6 MB`, peak `25728.6 MB`, `weight_format=jang_affine`, `profile=JANG_4M`, Metal NA active, native `mixed_swa_kv_v1`, `cache_detail=paged+mixed_swa`, `cache_hit_tokens=20`, `l2_block_tokens_on_disk=62`, `l2_tokens_on_disk=62`, and block-disk writes `2`.
+- Boundary: this classifies Gemma 31B JANG4M dev-app audio as honestly unsupported, not untested. It does not invalidate 31B text/tools/image/video/cache green rows, and it does not clear audio support, installed-app parity, public tunnel SSE, or release readiness. No release action was run.
+
 # 2026-06-10 - Gemma 26B JANG4M dev-app audio boundary
 
 - Ran current Electron dev-build Gemma 4 26B A4B QAT JANG4M audio proof with `npm run dev`, Chat Completions, one app audio attachment, server cache controls, temperature `0`, top_p `1`, max tokens `128`, and max prompt tokens `12000`.

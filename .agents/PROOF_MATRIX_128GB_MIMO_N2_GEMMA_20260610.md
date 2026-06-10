@@ -406,6 +406,18 @@ Proven:
   `cache_hit_tokens=20`, `l2_block_tokens_on_disk=62`,
   `l2_tokens_on_disk=62`, block-disk `disk_writes=2`, and video-turn media
   prefix cache storage for `355` prompt tokens.
+- Current Electron dev-build audio proof is red for Gemma 31B QAT JANG4M by
+  explicit unsupported-modality guard. The app forced multimodal for one audio
+  file and server `MEDIA_DIAG` saw `input_audio`, but `/v1/chat/completions`
+  returned HTTP `400`: `unsupported media modality audio. Supported
+  modalities: text, vision, video.`
+- Dev-build Gemma 31B audio boundary runtime/cache evidence:
+  `build/current-real-ui-dev-app-gemma4-31b-jang4m-audio-proof-20260610.json`
+  records active memory `25324.6 MB`, peak `25728.6 MB`,
+  `weight_format=jang_affine`, `profile=JANG_4M`, Metal NA active, native
+  `mixed_swa_kv_v1`, `cache_detail=paged+mixed_swa`,
+  `cache_hit_tokens=20`, `l2_block_tokens_on_disk=62`,
+  `l2_tokens_on_disk=62`, and block-disk `disk_writes=2`.
 - Local rebuilt installed app proof is now green for Gemma 12B JANG4M
   Responses/tool/cache. `/Applications/vMLX.app` launched as
   `uiLaunchMode=installed-app`, loaded
@@ -454,8 +466,8 @@ Not proven:
 - Installed packaged app JANG4M video at the default 4k prompt cap.
 - Gemma 26B JANG4M installed-app parity, public tunnel SSE, and default 4k
   video behavior. Dev-app audio is tested and red by honest unsupported guard.
-- Gemma 31B audio, installed-app parity, public tunnel SSE, and default 4k
-  video behavior.
+- Gemma 31B installed-app parity, public tunnel SSE, and default 4k video
+  behavior. Dev-app audio is tested and red by honest unsupported guard.
 - DMG package/sign/notarize/release readiness.
 - Local panel session manager starting this exact model from launch args; these
   app proofs used a remote session connected to the server started by the proof
