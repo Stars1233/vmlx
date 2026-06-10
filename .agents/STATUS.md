@@ -1583,3 +1583,9 @@
 - Other-agent action: keep E2B/E4B live audio rows active because they are
   weight-backed; do not claim 12B/26B/31B audio unless audio tower weights or a
   real runtime audio implementation is present and live-proven.
+
+# 2026-06-10 - Gemma QAT audio runtime gate pushed
+
+- Commit/push: `09b42d5b` (`Gate Gemma QAT audio by runtime weights`) was pushed to `origin/codex/pr-intake-manifest` and `origin/main`.
+- Scope: Gemma QAT/native MXFP4 inventory/checklist honesty only. No release, signing, notarization, PyPI, public tunnel, MiMo, Qwen, or N2 JANG_1L action was included in this commit.
+- Unrelated local state left alone: `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json` remains modified from other work and `node_modules/` remains untracked.
