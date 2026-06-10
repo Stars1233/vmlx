@@ -1,4 +1,65 @@
 ## CODEX
+- now: Qwen27 current-source panel gateway Responses required-tool and
+  tool-result continuation parity is live-proven green after the direct server
+  finalization fix. The live server was stopped cleanly after proof.
+- changed: extended `panel/tests/api-gateway-qwen35-live-capture.test.ts` so
+  the existing real `ApiGateway` live capture can optionally resolve the actual
+  `response.id` and `call_id` from the first raw SSE stream, then post a
+  `previous_response_id` + `function_call_output` continuation through the same
+  gateway route. Also made the live capture test timeout explicit at 300s.
+- proof:
+  - `build/current-qwen27-gateway-responses-tool-continuation-parity-after-visible-finalization-seed-fix-20260610.json`
+  - `build/responses-sse-captures-20260610/gateway-qwen27-jang4m-mtp-required-tool-after-visible-finalization-seed-fix-20260610.sse`
+  - `build/responses-sse-captures-20260610/gateway-qwen27-jang4m-mtp-tool-result-continuation-after-visible-finalization-seed-fix-20260610.sse`
+  - `build/responses-sse-captures-20260610/gateway-qwen27-jang4m-mtp-health-after-gateway-continuation-20260610.json`
+- proven: panel gateway preserved required-tool request kwargs, reasoning
+  request object, `tool_choice=required`, tool schema, and stream shape;
+  required-tool raw SSE had `record_fact`, two argument deltas, done/final args
+  `{"value": "blue-cat"}`, output indices message=0/reasoning=1/function=2,
+  and final response consistency; continuation used actual previous response
+  and call IDs, streamed visible text `The fact "blue-cat" has been recorded.`,
+  emitted no extra function call, and kept final object consistency.
+- cache/runtime proven for this run: Qwen27 JANG_4M-MTP loaded with native MTP
+  active (`effective_depth=3`), hybrid SSM cache, attention-only TurboQuant KV,
+  paged cache hit `202` tokens via `paged+ssm`, block L2 `276` tokens, SSM L2
+  `532` tokens, total L2 `808` tokens.
+- not proven: tunnel parity for Qwen27, Qwen-coder-next, all parser families,
+  installed-app bundle parity, media/VL/audio/video rows, or release readiness.
+- no-claims: no synthetic args, no reasoning-disable workaround for the
+  required-tool request, no release/sign/notarize/PyPI/updater/download/site
+  action, and no N2 JANG_1L work.
+- other-agent next: use the Qwen27 gateway artifact as current-source gateway
+  evidence, then continue with Qwen27 tunnel or Qwen-coder-next same-model raw
+  SSE if those surfaces are available. Do not remove the fail-closed required
+  args guard or replace it with argument synthesis.
+
+## CODEX
+- now: recorded the latest current-turn routing constraint. Eric provided the
+  deprecated `/Users/eric/vmlx` AGENTS guard and asked to keep the current
+  instructions in `AGENTS.md`; active work remains in this Python/Electron
+  worktree, and the active `AGENTS.md` already carries the no-subagent,
+  no-N2-JANG_1L, parser/API, release-lock, and write-every-movement rules.
+- constraints: do not work in `/Users/eric/vmlx` for active runtime/app tasks;
+  continue in `/Users/eric/mlx/vllm-mlx-finite-launch-guard` unless Eric names a
+  different current-turn path. No release/sign/notarize/PyPI/updater/download
+  action, no subagents, and no N2 JANG_1L work.
+- next movement: continue the already-selected Qwen27 gateway/API parity proof.
+
+## CODEX
+- now: continuing the persistent goal on the adjacent Qwen27 gateway/API parity
+  blocker after direct source SSE was fixed and proven. Selected lane is local
+  gateway/current-source Responses continuation parity for the same Qwen27
+  JANG_4M-MTP required-tool plus terminal tool-result flow.
+- constraints: no release/sign/notarize/PyPI/updater/download/site action, no
+  N2 JANG_1L, no subagents, no synthetic tool args, no disabling reasoning as
+  a workaround, no broad test-suite churn, and stop any live server/app process
+  started by this lane before final response.
+- planned movement: inspect existing gateway capture tooling, then run the
+  smallest live source+gateway proof that checks request kwargs, raw SSE deltas,
+  final object consistency, previous_response/tool-result continuation, and
+  cache telemetry. Patch gateway/request-builder only if evidence shows drift.
+
+## CODEX
 - now: continuing the persistent goal on the Qwen/Qwen-coder Responses
   tool-result continuation blocker. Current selected lane is Qwen27
   reasoning-enabled `previous_response_id` continuation after a tool result,

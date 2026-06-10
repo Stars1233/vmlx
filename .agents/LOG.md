@@ -1,3 +1,85 @@
+# 2026-06-10 - Qwen27 gateway/API continuation parity proven
+
+- Request: prove the adjacent local gateway/current-source Responses parity for
+  the same Qwen27 JANG_4M-MTP required-tool plus terminal tool-result
+  continuation flow that direct source now proves green.
+- Source change: extended
+  `panel/tests/api-gateway-qwen35-live-capture.test.ts` so the existing real
+  `ApiGateway` live capture can optionally parse `response.id` and `call_id`
+  from the first raw SSE stream, substitute them into a continuation payload,
+  and post `previous_response_id` + `function_call_output` through the same
+  gateway route. The test timeout is now explicit at 300s for live model proof.
+- Commands/proof:
+  - `cd panel && npm exec tsc -- --noEmit --pretty false` passed.
+  - launched `/Users/eric/models/JANGQ/Qwen3.6-27B-JANG_4M-MTP` on port 8894
+    as `qwen36-27b-jang4m-mtp-direct-sse-20260610` with paged cache, block L2,
+    SSM companion cache, and default thinking enabled.
+  - `cd panel && npm exec vitest -- run tests/api-gateway-qwen35-live-capture.test.ts`
+    passed after the live timeout was made explicit.
+  - raw SSE classifier over both gateway captures passed the expected shape.
+- Artifacts:
+  - `build/current-qwen27-gateway-responses-tool-continuation-parity-after-visible-finalization-seed-fix-20260610.json`
+  - `build/responses-sse-captures-20260610/gateway-qwen27-jang4m-mtp-required-tool-after-visible-finalization-seed-fix-20260610.sse`
+  - `build/responses-sse-captures-20260610/gateway-qwen27-jang4m-mtp-tool-result-continuation-after-visible-finalization-seed-fix-20260610.sse`
+  - `build/responses-sse-captures-20260610/gateway-qwen27-jang4m-mtp-health-after-gateway-continuation-20260610.json`
+- Proven:
+  - required-tool gateway raw SSE completed with `record_fact`,
+    `{"value": "blue-cat"}`, two argument deltas, one argument done event,
+    message/reasoning/function output indices `0/1/2`, and final response
+    consistency.
+  - gateway continuation used actual previous response/call IDs, streamed
+    visible output `The fact "blue-cat" has been recorded.`, emitted no extra
+    function call, and kept final object consistency.
+  - gateway logs preserved request kwargs: stream, max output tokens,
+    temperature, top_p, top_k, reasoning object, required tool choice, tool
+    schema, previous_response_id, and function_call_output call_id.
+  - runtime/cache health after proof showed native MTP active, hybrid SSM cache,
+    attention-only TurboQuant KV, `paged+ssm` cache hit of 202 tokens, block L2
+    276 tokens, SSM L2 532 tokens, and total L2 808 tokens.
+- Not proven:
+  - Qwen27 tunnel, Qwen-coder-next, all parser families, installed-app bundle
+    parity, media/VL/audio/video rows, and release readiness.
+- No-claims:
+  - no synthetic arguments, no reasoning-disable workaround for the required
+    tool request, no release/sign/notarize/PyPI/updater/download/site action,
+    and no N2 JANG_1L work.
+- Other-agent note:
+  - Treat this as current-source panel gateway evidence for Qwen27. Continue
+    with Qwen27 tunnel or Qwen-coder-next same-model raw SSE when available.
+    Keep missing-required-arg fail-closed behavior; do not infer args from a
+    visible preamble.
+
+# 2026-06-10 - Current-turn AGENTS routing note recorded
+
+- Request: keep the latest instruction set in `AGENTS.md` / agent state and do
+  not drift back into deprecated `/Users/eric/vmlx` app/runtime work.
+- Action: re-read the active worktree `AGENTS.md` and confirmed it already
+  carries the current no-subagent, no-N2-JANG_1L, parser/API priority,
+  release-lock, and write-every-movement rules. Recorded this current-turn
+  routing note here and in `.agents/STATUS.md`.
+- Proven: active work remains routed to
+  `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; `/Users/eric/vmlx` remains a
+  deprecated wrapper/history checkout for this task.
+- Not proven: no new runtime/model/API proof was run by this note alone.
+- Next: continue Qwen27 gateway/API parity proof from the active worktree.
+
+# 2026-06-10 - Qwen27 gateway/API continuation parity lane
+
+- Request: continue the persistent objective by moving from the direct Qwen27
+  Responses continuation fix to adjacent gateway/API proof, without broad test
+  churn or release action.
+- Current lane: local gateway/current-source Responses raw SSE parity for the
+  same Qwen27 JANG_4M-MTP required-tool plus terminal tool-result continuation
+  flow that direct source now proves green.
+- Constraints: no release/sign/notarize/PyPI/updater/download/site action, no
+  N2 JANG_1L, no subagents, no synthetic tool args, no disabling reasoning as
+  a workaround, and stop any live process started here before final response.
+- Planned movement: inspect existing gateway capture tooling, run the smallest
+  live source+gateway proof that checks request kwargs, raw SSE deltas, final
+  object consistency, previous_response/tool-result continuation, and cache
+  telemetry. Patch only if the gateway or request builder drops kwargs/history
+  or regresses streaming shape.
+
 # 2026-06-10 - Qwen27 reasoning tool-result continuation lane
 
 - Request: continue the persistent goal by fixing/proving current blockers
