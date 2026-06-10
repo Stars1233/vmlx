@@ -1,3 +1,36 @@
+# 2026-06-10 - MiMo JANGTQ_2 live exactness variant boundary
+
+- Launched real local MiMo V2.5 JANGTQ_2 on port `8897` with continuous
+  batching, native mixed-SWA cache, paged cache, and block L2:
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2`.
+- Source endpoint check for `http://erics-m5-max2.local:8126/health` timed out,
+  so this is not source-vs-quant proof.
+- Ran
+  `tests/cross_matrix/run_mimo_v2_exactness_variant_probe.py --base-url
+  http://127.0.0.1:8897 --model JANGQ-AI/MiMo-V2.5-JANGTQ_2 --out
+  build/current-mimo-v25-jangtq2-exactness-variant-live-20260610/result.json
+  --timeout 300 --max-tokens 64`.
+- Result: `status=open`, failed labels all eight exactness rows:
+  `plain_exact_blue_cat`, `plain_exact_sentinel`,
+  `plain_exact_chat_blue_cat`, `plain_exact_chat_sentinel`,
+  `json_blue_cat`, `json_sentinel`, `tool_blue_cat`,
+  `tool_sentinel_json_call`.
+- Exact failure shape: `blue-cat` becomes `blue` or `blue grass`;
+  `B7-CAT-09` becomes `B7 CAT-09` or `B7CAT-09`; JSON stays parseable but
+  value fields mutate; required tool calls return valid tool-call structure but
+  mutated arguments.
+- Runtime/cache proof: `codec=turboquant_codebook`, `profile=JANGTQ_2`, `423`
+  prestacked routed expert TQ targets, trained active experts `8/256`, native
+  `mixed_swa_kv_v1` / `mimo_v2_asymmetric_swa`, generic TurboQuant KV inactive
+  by design, paged cache and block L2 active, `807` RAM cached tokens, `807` L2
+  block tokens, `10` disk writes, active memory about `76812 MB`, peak about
+  `78038 MB`.
+- Boundary: this strengthens the artifact/logit/codebook/decode-quality
+  blocker. Do not fix by parser repair, JSON repair, forced string
+  post-processing, sampling clamps, or cache changes. Next useful action is
+  source/dequant reference first-divergence plus selected-expert/logit/codebook
+  comparison.
+
 # 2026-06-10 - Qwen35 strict Responses direct/gateway recapture
 
 - Ran current-source Qwen35 MXFP8-MTP same-model raw SSE recapture with the
