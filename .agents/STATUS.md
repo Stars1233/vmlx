@@ -1724,3 +1724,44 @@
 - Current checklist artifact:
   `build/current-full-release-objective-checklist-after-qwen-mimo-gemma-refresh-20260610.json`
   remains `status=open`, `failed_count=59`.
+
+# 2026-06-10 - Gemma 12B JANG_4M exact-code prompt fix in progress
+
+- Directive check: allowed lane is Gemma JANG/MXFP parser/runtime/cache/API
+  proof. N2 JANG_1L remains off-limits and no release/sign/notarize/PyPI
+  action is being taken.
+- Finding: the checklist Gemma4 12B JANG_4M no-media row was red from
+  `exact_code_whitespace`: output was
+  `def add(a, b):\n    return a + b\n print(add(2, 3))`.
+- Live isolation: served `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-JANG_4M`
+  on port `8890` with prefix/paged/block cache disabled and greedy defaults.
+  The old prompt reproduced the extra leading space; a clearer prompt requiring
+  the third line to start at column 1 returned exact code. This excludes cache
+  reuse as the cause and identifies an ambiguous prompt contract, not parser
+  rewriting.
+- Source edit: `bench/all_local_model_smoke.py` exact-code prompt now says the
+  third line must start at column 1 with no leading space. Validation remains
+  strict and no output repair was added.
+- Live proof: focused Gemma 12B JANG_4M no-media smoke with tools and L2 restart
+  wrote
+  `build/current-all-local-model-smoke-gemma4-12b-jang4m-tools-nomedia-after-code-column-prompt-20260610/`.
+  Both matching rows passed with `failures=0`; exact-code output is exactly
+  `def add(a, b):\n    return a + b\nprint(add(2, 3))`.
+- Source/proof pointer edit: full release checklist now consumes the fresh
+  passing Gemma 12B JANG_4M artifact.
+- Regenerated artifact:
+  `build/current-full-release-objective-checklist-after-gemma12-code-column-prompt-20260610.json`
+  is `status=open`, `failed_count=57`.
+- Verification:
+  - `.venv/bin/python bench/all_local_model_smoke.py --models-root /Users/eric/models --out build/current-all-local-model-smoke-gemma4-12b-jang4m-tools-nomedia-after-code-column-prompt-20260610 --port 8890 --only gemma-4-12B-it-JANG_4M --no-media --include-tools --include-l2-restart --load-timeout-s 240 --request-timeout-s 240`
+    exited `0`; both matching Gemma 12B JANG_4M rows passed.
+  - `.venv/bin/python tests/cross_matrix/run_full_release_objective_checklist.py --out build/current-full-release-objective-checklist-after-gemma12-code-column-prompt-20260610.json`
+    completed with expected nonzero exit because release remains open and
+    printed `failed_count=57`.
+  - `.venv/bin/python -m pytest -q tests/test_full_release_objective_checklist.py -k 'gemma4_12b_jang4m_nomedia or responses_raw_sse_parity or qwen35_raw_sse_parity'`
+    passed `3 passed`.
+  - `python3 -m py_compile bench/all_local_model_smoke.py tests/cross_matrix/run_full_release_objective_checklist.py`
+    passed.
+- Boundary: Gemma 12B JANG_4M no-media exact-code row is green from current
+  source. Gemma QAT/native MXFP4 full live media/UI/installed-app rows remain
+  open; this is not release clearance.

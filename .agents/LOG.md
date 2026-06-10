@@ -9488,3 +9488,38 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Current checklist artifact:
   `build/current-full-release-objective-checklist-after-qwen-mimo-gemma-refresh-20260610.json`
   remains `status=open`, `failed_count=59`.
+
+# 2026-06-10 - Gemma 12B JANG_4M exact-code prompt fix
+
+- User focus item: Gemma JANG/MXFP exact output, cache reuse, tools, and
+  release blockers without fake parser/output repair.
+- Directive check: Gemma lane allowed; N2 JANG_1L off-limits; no
+  release/sign/notarize/PyPI action.
+- Root-cause isolation:
+  - Old smoke artifact failed only `exact_code_whitespace` for Gemma4 12B
+    JANG_4M: the model inserted one leading space before top-level `print`.
+  - A live cache-disabled server on port `8890` reproduced the old prompt
+    failure, so this was not prefix/paged/L2 cache mutation.
+  - The same server returned exact code when the prompt explicitly said the
+    third line must start at column 1 with no leading space.
+- Source edit: `bench/all_local_model_smoke.py` exact-code prompt now uses the
+  unambiguous column-1 contract. The exact validator is unchanged; no generated
+  output is rewritten.
+- Live proof:
+  `build/current-all-local-model-smoke-gemma4-12b-jang4m-tools-nomedia-after-code-column-prompt-20260610/`.
+  `JANGQ_gemma-4-12B-it-JANG_4M` passed and
+  `other_Gemma-4-12B-it-JANG_4M-CRACK` also passed; both exact-code rows output
+  the required three lines with no validation failures.
+- Regenerated artifact:
+  `build/current-full-release-objective-checklist-after-gemma12-code-column-prompt-20260610.json`.
+- Result: `status=open`, `failed_count=57`. Gemma 12B JANG_4M no-media
+  exact-code/status failures cleared. Release remains blocked by MiMo
+  exactness/media/L2, Gemma QAT/native MXFP4 full live media/UI, N2 JANG_1L
+  (off-limits for this lane), Step/LFM/Nemotron/DSV4, package, signing,
+  notarization, and public release rows.
+- Verification:
+  - Focused Gemma smoke command exited `0`.
+  - Full checklist command exited nonzero as expected for open release gate and
+    printed `failed_count=57`.
+  - Focused pointer tests passed `3 passed`.
+  - `py_compile` passed for the edited Python files.
