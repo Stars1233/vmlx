@@ -155,6 +155,7 @@ Next implementation target:
 Artifact:
 
 - `build/current-mimo-v25-jang2l-live-cb-cache-text-20260610.json`
+- `build/current-real-ui-live-model-mimo-v25-jang2l-dev-app-proof-20260610.json`
 
 Proven:
 
@@ -172,7 +173,9 @@ Proven:
 
 Not proven:
 
-- Required/auto tool call exactness in the fresh 20260610 JANG_2L row.
+- Required/auto tool call exactness in the dev-app row. The real app proof
+  loaded the model and proved cache/L2, but failed the tool loop: no probe files
+  were created and the second assistant turn had empty visible content.
 - Responses stream/nonstream tool path for JANG_2L.
 - Fresh-process L2 restore for JANG_2L.
 - VL/audio/video runtime, even though media assets/weights are present.
@@ -183,6 +186,11 @@ Next implementation target:
 - Extend JANG_2L from the current passing short cache/text row into tool,
   Responses, fresh-process L2 restore, and media honesty. This is the best
   MiMo checkpoint candidate right now.
+- For the dev-app red row, do not chase cache/L2: the failed app proof still
+  showed `cached_tokens=3407`, `cache_detail=paged`,
+  `l2_block_tokens_on_disk=3544`, and `disk_writes=57`. Next compare raw
+  chat/tool output against panel dev-app chat trace to isolate parser/template
+  selection versus model output quality.
 
 ### Nex/N2 Pro JANGTQ2
 

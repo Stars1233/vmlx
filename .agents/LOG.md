@@ -8014,3 +8014,11 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Direct and panel gateway raw SSE both prove N2 Responses tool-call args plus tool-result continuation content deltas.
 - This narrows the remaining dev-app red row to renderer/chat tool-loop trace behavior, not server or gateway SSE transport.
 - No release action was run.
+
+# 2026-06-10 - MiMo JANG_2L dev-app proof classified red
+
+- Ran real Electron dev-app MiMo V2.5 JANG_2L Chat/tools/cache proof.
+- Added tracked summary `build/current-real-ui-live-model-mimo-v25-jang2l-dev-app-proof-20260610.json`, `status=fail`.
+- Load/cache/L2 surfaces are positive; app tool loop and visible output are red.
+- Next diagnostic is raw chat/tool output versus panel app trace, not cache/L2 work.
+- No release action was run.

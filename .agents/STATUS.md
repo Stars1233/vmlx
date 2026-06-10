@@ -827,3 +827,14 @@
 - Runtime/cache proof in same run: model loaded as `qwen3_5_moe`, `hybrid_ssm_v1`, attention-only TurboQuant KV, native SSM companion, async rederive, paged cache, block L2; final memory about `103804.1 MB` active and `105029.3 MB` peak.
 - Boundary: this clears direct/gateway raw SSE content-delta transport for N2 JANGTQ2, but it does not clear the earlier real dev-app chat proof. The dev-app red row is narrowed to renderer/chat tool-loop first post-tool visible trace behavior, where the first app answer collapsed to `Created`.
 - No package/sign/notarize/tag/upload/release action was run.
+
+# 2026-06-10 - MiMo JANG_2L real dev-app proof is red on tool/visible output
+
+- Reduced blocker class: `api/ui` for MiMo V2.5 JANG_2L dev-app proof.
+- Tracked proof summary: `build/current-real-ui-live-model-mimo-v25-jang2l-dev-app-proof-20260610.json`, `status=fail`.
+- Raw dev-app proof capture is under ignored `docs/internal/agent-notes/current-real-ui-live-model-mimo-v25-jang2l-chat-tools-cache-20260610-proof.json`.
+- Positive evidence: real Electron dev app launched; real vMLX server loaded `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L`; health was `healthy`, `model_type=llm`, quant dispatch `mlx_affine_quantized_matmul`; native MiMo mixed-SWA cache surfaced with prefix, paged cache, and block-disk L2.
+- Positive cache evidence: app proof observed `cached_tokens=3407`, `cache_detail=paged`, `l2_block_tokens_on_disk=3544`, `disk_writes=57`, and verified server cache controls.
+- Red evidence: proof failed `UI turn ended with empty visible assistant content` and `requested real built-in tools but proof did not record long_tool_loop surface`; no tool probe files were created. First assistant output was low-quality prose, not a valid tool call; second assistant streamed 24 tokens with empty visible content.
+- Boundary: MiMo JANG_2L remains the stronger checkpoint candidate than MiMo JANGTQ2, but dev-app tool/visible output is not green. Do not chase cache/L2 for this red row; compare raw chat/tool output against panel app trace next.
+- No package/sign/notarize/tag/upload/release action was run.
