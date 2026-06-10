@@ -5114,3 +5114,18 @@ Other-agent action:
 - Boundary retained: the standard long second-turn 31B installed-app artifact
   remains failed and documents prompt sensitivity. Do not claim that exact long
   prompt is green.
+
+# 2026-06-10 14:01 PDT - Gemma 31B installed-app proof committed and pushed
+
+- Commit `362db8f38` (`Prove Gemma4 31B installed app UI`) was created and
+  pushed to both `origin/codex/pr-intake-manifest` and `origin/main`.
+- Verification before commit:
+  - `.venv/bin/python -m py_compile tests/cross_matrix/run_gemma_qat_native_mxfp4_inventory_gate.py tests/cross_matrix/run_full_release_objective_checklist.py`
+  - `.venv/bin/python -m pytest -q tests/test_current_regression_suite.py -k 'gemma_qat_native_mxfp4 or full_release_objective_checklist'` -> `2 passed`
+  - `git diff --check`
+  - `git diff --cached --check`
+- Process cleanup verified: no `live-real-ui-model-proof`, Gemma31
+  `vmlx_engine.cli serve`, or proof-launched `/Applications/vMLX.app` process
+  remained after the proof.
+- Unrelated dirty state left unstaged: `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
+  and `node_modules/`.

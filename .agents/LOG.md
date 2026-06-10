@@ -12912,3 +12912,14 @@ Next action:
   sensitivity evidence, not as an app/bundled-runtime/cache failure, and should
   not overwrite the registered narrow-prompt proof unless a stricter 31B
   installed-app proof is rerun and passes.
+
+# 2026-06-10 14:01 PDT - Gemma 31B proof commit pushed
+
+- Commit `362db8f38` (`Prove Gemma4 31B installed app UI`) was pushed to
+  `origin/codex/pr-intake-manifest` and `origin/main`.
+- Verification was run before commit: py_compile for the two modified generator
+  scripts, focused current regression suite (`2 passed`), `git diff --check`,
+  and `git diff --cached --check`.
+- Confirmed no 31B proof server/app process remained running. Left unrelated
+  dirty `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
+  and `node_modules/` untouched.
