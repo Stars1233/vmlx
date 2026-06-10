@@ -11960,3 +11960,9 @@ Next action:
 - Direct turn 2 with panel agentic instructions plus auto tool mode: exactly one `run_command` call.
 - Direct turn 2 with panel agentic instructions plus required tool mode: failed closed with `tool_calls_required` and no calls.
 - Classification: direct API/server parser is still not reproducing the installed-app six-plus-six duplicate loop. Need panel raw request/SSE capture before source fix; do not blind-dedupe parser/server.
+
+# 2026-06-10 11:03 PDT - Panel Responses function-call identity logging added
+
+- Edited `panel/src/main/ipc/chat.ts` to log each Responses `function_call` item as it enters `receivedToolCalls`: output index, item id, call id, name, and argument length.
+- This is intentionally non-mutating; it is for the next installed-app raw panel proof of the Gemma 26B six-plus-six duplicate tool loop.
+- Verification passed: `npm run typecheck` from `panel/`; `git diff --check`.

@@ -4158,3 +4158,11 @@ Other-agent action:
   - Next required evidence is panel-captured outbound request body plus raw incoming SSE for the installed-app run, including call IDs and arguments for every function_call item, because current panel logs only summarize `receivedToolCalls.length`.
 - Other-agent action:
   - Add or enable a debug capture around `panel/src/main/ipc/chat.ts` request body and Responses SSE data lines for the installed-app proof harness. Confirm whether the six calls have distinct call IDs/arguments and whether they arrive from server SSE or are introduced by client aggregation.
+
+# 2026-06-10 11:03 PDT - Panel Responses function-call identity logging added
+
+- Source change: added a narrow panel log line in `panel/src/main/ipc/chat.ts` when a Responses `response.output_item.done` `function_call` item is accepted into `receivedToolCalls`.
+- Logged fields: `output_index`, `item_id`, `call_id`, tool `name`, and `arguments_len`.
+- Purpose: next installed-app proof can distinguish distinct server-emitted function-call items from client aggregation/replay without dropping, deduping, or rewriting calls.
+- Behavior boundary: this is observability only. It does not change execution policy, parser behavior, tool-choice behavior, or final object assembly.
+- Verification: `npm run typecheck` in `panel/` passed; `git diff --check` passed.
