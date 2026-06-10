@@ -924,3 +924,12 @@
 - Runtime/cache evidence: MXFP4 affine quantized matmul, Metal NA active, mixed-SWA cache, `cache_detail=paged+mixed_swa`, `cached_tokens=20`, `l2_block_tokens_on_disk=65`, and block-disk `disk_writes=2`.
 - Still open: Gemma 12B QAT MXFP4 audio, installed-app parity, public tunnel parity, and release signing/notarization.
 - No package/sign/notarize/tag/upload/release action was run.
+
+# 2026-06-10 - Gemma 12B QAT MXFP4 dev-app audio honestly gated
+
+- Ran real Electron dev-app Gemma 4 12B QAT MXFP4 Chat Completions audio proof with a 16 kHz mono WAV saying `audio present`.
+- Added tracked proof summary `build/current-real-ui-live-model-gemma4-12b-qat-mxfp4-audio-proof-20260610.json`, `status=fail`.
+- Positive evidence before the audio turn: real model loaded as `mllm`, text chat turns completed, mixed-SWA cache remained active, and cache/L2 was green with `cache_detail=paged+mixed_swa`, `cached_tokens=20`, `l2_block_tokens_on_disk=68`, `l2_tokens_on_disk=68`.
+- Red evidence: app attempted an audio turn, server `MEDIA_DIAG` saw `input_audio`, and the API returned `400 - /v1/chat/completions received unsupported media modality audio. Supported modalities: text, vision, video.`
+- Boundary: this is an honest capability guard, not a crash or cache failure. Do not claim Gemma 12B QAT MXFP4 audio support in the checkpoint release.
+- No package/sign/notarize/tag/upload/release action was run.

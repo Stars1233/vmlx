@@ -8127,3 +8127,11 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Proven in app: `video_url` persisted, server decoded the base64 MP4, extracted `4` frames from `25 total frames @ 25.0 fps`, and final visible answer described a solid red screen.
 - Runtime/cache: MXFP4 affine matmul with Metal NA active, mixed-SWA cache, `cache_detail=paged+mixed_swa`, `cached_tokens=20`, `l2_block_tokens_on_disk=65`, `disk_writes=2`.
 - Boundary: audio/installed app/tunnel/release remain open. No release action was run.
+
+# 2026-06-10 - Gemma 12B QAT MXFP4 dev-app audio gated
+
+- Ran real Electron dev-app Gemma 4 12B QAT MXFP4 Chat Completions audio proof.
+- Added tracked summary `build/current-real-ui-live-model-gemma4-12b-qat-mxfp4-audio-proof-20260610.json`, `status=fail`.
+- Boundary proved: app attempted an audio turn and server saw `input_audio`, but `/v1/chat/completions` rejected it with `400` unsupported media modality; supported modalities reported by the server are `text, vision, video`.
+- This is not a load/cache/L2 failure. Do not claim Gemma MXFP4 audio support.
+- No release action was run.

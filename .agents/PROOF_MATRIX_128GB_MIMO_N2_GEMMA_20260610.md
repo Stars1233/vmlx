@@ -61,6 +61,7 @@ Artifacts:
 - `build/current-real-ui-live-model-gemma4-12b-qat-mxfp4-dev-app-proof-20260610.json`
 - `build/current-real-ui-live-model-gemma4-12b-qat-mxfp4-image-proof-20260610.json`
 - `build/current-real-ui-live-model-gemma4-12b-qat-mxfp4-video-proof-20260610.json`
+- `build/current-real-ui-live-model-gemma4-12b-qat-mxfp4-audio-proof-20260610.json`
 
 Proven:
 
@@ -103,15 +104,21 @@ Proven:
 - The MXFP4 video proof also showed MXFP4 affine matmul with Metal NA active,
   mixed-SWA cache, `cache_detail=paged+mixed_swa`, `cached_tokens=20`,
   `l2_block_tokens_on_disk=65`, and block-disk `disk_writes=2`.
+- Real Electron dev-app Gemma 12B QAT MXFP4 audio proof is red by explicit
+  runtime guard, not by crash. The app attempted an audio turn, server
+  `MEDIA_DIAG` saw `input_audio`, and the API returned `400`:
+  `/v1/chat/completions received unsupported media modality audio. Supported
+  modalities: text, vision, video.`
 
 Not proven:
 
 - Installed-app parity for these exact new artifacts.
-- Audio weight-backed E2E for the MXFP4 dev-app row.
+- Audio weight-backed E2E for the MXFP4 dev-app row is red; current source
+  honestly rejects audio with supported modalities `text, vision, video`.
 - Full larger Gemma QAT matrix through UI/installed app.
 - Tunnel/gateway parity for these exact Gemma rows.
-- Gemma 12B QAT MXFP4 dev-app audio. Image and video are now green in the
-  source dev app.
+- Gemma 12B QAT MXFP4 dev-app audio support. Image and video are green in the
+  source dev app; audio is honestly gated as unsupported.
 - The second MXFP4 visible answer begins with the plain word `thought`; this is
   not a raw `<think>` or parser markup leak and the leak gates passed, but do
   not hide this visible-final style caveat.
