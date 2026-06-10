@@ -10144,3 +10144,24 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Boundary: no release/sign/notarize/PyPI/download action; no N2 JANG_1L action;
   Gemma full release rows remain open for live/API/UI/tunnel/installed-app
   parity.
+
+# 2026-06-10 06:48 PDT - Continuation before MiMo JANGTQ2 exactness/logit blocker work
+
+- Current lane: MiMo V2.5 JANGTQ_2 exactness/logit/artifact diagnosis.
+- Constraints: no subagents, no N2 JANG_1L, no release/sign/notarize/PyPI/
+  download action, no parser/JSON semantic repair, no hidden sampling clamp.
+
+# 2026-06-10 07:06 PDT - Current AGENTS/checklist state recorded
+
+- Checked `/Users/eric/vmlx/AGENTS.md` and active worktree `AGENTS.md`: both
+  already record routing away from deprecated `/Users/eric/vmlx` and the
+  no-subagent-spawn constraint. Continued only in
+  `/Users/eric/mlx/vllm-mlx-finite-launch-guard`.
+- Refreshed no-heavy full release objective checklist:
+  `build/current-full-release-objective-checklist-after-agents-constraint-refresh-20260610.json`.
+- Result: `status=open`, `failed_count=56`, `prepackage_ready=false`,
+  `release_ready=false`.
+- MiMo boundary: source media runtime, source video/audio transport, and dev-app
+  Responses/tools/cache are green; MiMo exactness, decode speed, media semantic
+  quality, installed-app parity, package readiness, and release readiness remain
+  red/open. No N2 JANG_1L action and no release action.

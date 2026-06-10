@@ -2635,3 +2635,46 @@
 - Other-agent action: do not re-run Gemma native MXFP4 source-fullmedia smokes
   just to fill inventory rows. Move to installed-app/UI/tunnel parity or a
   higher-value live release blocker.
+
+# 2026-06-10 06:48 PDT - Continuation before MiMo JANGTQ2 exactness/logit blocker work
+
+- Request: continue the active goal in concrete build/fix/proof blocks, avoid
+  broad test-suite churn, avoid recursive/subagent behavior, and keep docs
+  current for compaction safety.
+- Directive check: active worktree remains
+  `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; N2 JANG_1L remains
+  off-limits; no release/sign/notarize/PyPI/download action is allowed in this
+  step; no subagents are allowed.
+- Immediate blocker being reduced: MiMo V2.5 JANGTQ_2 literal exactness/logit/
+  artifact diagnosis after cache/parser/template/sidecar/gather-kernel causes
+  were excluded by current artifacts.
+- Must not claim: no MiMo exactness fix, media release clearance, installed-app
+  parity, package readiness, or release readiness unless current live evidence
+  proves it.
+
+# 2026-06-10 07:06 PDT - AGENTS constraint check and current checklist refresh
+
+- Request: write the active constraints into AGENTS.md and force this lane to
+  check them instead of drifting. Checked both the deprecated wrapper
+  `/Users/eric/vmlx/AGENTS.md` and this active worktree `AGENTS.md`; both
+  already contain the routing guard plus the no-subagent/subagent-spawn
+  constraint. This work remains in
+  `/Users/eric/mlx/vllm-mlx-finite-launch-guard`.
+- Action: refreshed the no-heavy full release objective checklist from current
+  source with
+  `tests/cross_matrix/run_full_release_objective_checklist.py --out build/current-full-release-objective-checklist-after-agents-constraint-refresh-20260610.json`.
+- Proof: the artifact exists and is current-source generated; `status=open`,
+  `failed_count=56`, `prepackage_ready=false`, `release_ready=false`.
+- Proven for MiMo JANGTQ_2 in that artifact: source media runtime wiring,
+  source video/audio transport routes, dev-app Responses/tools/cache with native
+  `mimo_v2_asymmetric_swa` cache, and no-source classifier boundary that keeps
+  exactness as a model/artifact/logit/decode-quality blocker instead of
+  parser/cache/sampling repair.
+- Still not proven: MiMo release clearance, decode speed target, artifact
+  exactness, media semantic quality, installed-app parity, package readiness,
+  or any N2 JANG_1L claim. N2 JANG_1L remains off-limits even though the
+  checklist still lists it as an open global release row.
+- Other-agent action: do not rerun stale MiMo cache/parser probes. The useful
+  next work is source/dequant/logit/codebook comparison or a corrected MiMo
+  artifact profile, plus installed-app/UI media parity once source quality is
+  worth packaging.
