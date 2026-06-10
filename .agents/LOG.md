@@ -1,3 +1,12 @@
+# 2026-06-10 - MiMo JANGTQ_2 dev-app video boundary
+
+- Ran current Electron dev-build MiMo V2.5 JANGTQ_2 video proof with `npm run dev`, Chat Completions, one app video attachment, server cache controls, temperature `0`, top_p `1`, max tokens `96`, and max prompt tokens `12000`.
+- Proof summary `build/current-real-ui-dev-app-mimo-v25-jangtq2-video-proof-20260610.json` is `status=fail`; raw proof is `docs/internal/agent-notes/current-real-ui-dev-app-mimo-v25-jangtq2-video-20260610-proof.json`.
+- Positive evidence: dev app launched, real `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2` loaded, two visible text turns completed before video, server `MEDIA_DIAG` saw one `video_url` content part, server cache controls were visible, and no raw parser/reasoning leak was recorded.
+- Red evidence: video turn failed at `video_send_message` with HTTP `400`: `/v1/chat/completions received unsupported media modality video because the loaded runtime is text-only. Supported modalities: text.`
+- Runtime/cache evidence before the video guard: active memory `76491.8 MB`, peak `77127.3 MB`, `codec=turboquant_codebook`, `profile=JANGTQ_2`, prestacked routed experts `423`, native `mixed_swa_kv_v1` / `mimo_v2_asymmetric_swa`, generic TurboQuant KV correctly inactive, `ram_tokens_cached=132`, `l2_block_tokens_on_disk=132`, `l2_tokens_on_disk=132`, and block-disk writes `3`.
+- Boundary: this classifies MiMo JANGTQ_2 dev-app video as honestly unsupported by the current text-only runtime despite preserved media metadata. It does not clear MiMo media support, installed-app parity, exactness, or release readiness. No release action was run.
+
 # 2026-06-10 - N2 JANG_1L dev-app bounded chat
 
 - Ran current Electron dev-build Nex/N2 Pro JANG_1L bounded Chat proof with `npm run dev`, Chat Completions, server cache controls, temperature `0`, top_p `1`, max tokens `8`, and max prompt tokens `4096`.
