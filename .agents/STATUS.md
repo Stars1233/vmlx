@@ -1431,3 +1431,11 @@
 - Proven: current source schema-filters parsed tool calls with missing required args; the exact preamble plus empty XML `exec_command` shape emits no function_call item, no `response.function_call_arguments.*` event, and no executable `"arguments":"{}"` payload. Required tool mode fails closed with `tool_calls_required`.
 - Boundary: do not claim deployed/public tunnel fixed from this. The known Qwen35 public tunnel blocker is still same-model raw SSE recapture/output-index freshness, not current-source empty-args parsing. Do not invent `cmd` from the preamble and do not disable reasoning.
 - Parallel-agent note: rebuild/redeploy the public tunnel/backend from current source, then recapture same-model Qwen35/Qwen3.6 direct/gateway/tunnel raw SSE with content deltas, reasoning events, function-call argument delta/done, final object consistency, valid output indices, and tool-result continuation.
+
+# 2026-06-10 - Qwen35 public tunnel raw SSE recapture green
+
+- Reduced blocker: #190/#192 same-model direct/gateway/tunnel Responses raw SSE parity for Qwen35/Qwen3.6 MXFP8-MTP.
+- Public tunnel recapture: `build/responses-sse-captures-20260610/tunnel-qwen35-mxfp8-mtp-tool-recapture-after-strict-source-20260610.sse` from `https://testapi.adlabus.dev/v1/responses`.
+- Parity proof: `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-public-recapture-20260610.json`, `status=pass`, `missing_captures=[]`.
+- Proven: direct, panel gateway, and public tunnel all report the same model `models/Qwen3.6-35B-A3B-MXFP8-CRACK-MTP`, preserve required `record_fact` args `{"value":"blue-cat"}`, include reasoning events with no reasoning-disable workaround, parse cleanly, have consistent final output, and have valid output item indices. Current direct/gateway use `message=[0]`, `reasoning=[1]`, `function_call=[2]`; fresh tunnel uses `message=[0]`, `function_call=[1]` with no conflict.
+- Boundary: this clears the stale Qwen35 public tunnel duplicate-index blocker for this request/model. It does not prove all Qwen3-coder/N2/MiMo/Gemma parser families, tool-result continuation, installed-app parity, media, or full release readiness.

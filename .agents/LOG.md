@@ -8993,3 +8993,24 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
   direct/gateway/tunnel raw SSE is recaptured from a rebuilt backend. Do not
   synthesize `cmd`, disable reasoning, or treat stale tunnel duplicate-index SSE
   as green.
+
+# 2026-06-10 - Qwen35 public tunnel raw SSE recapture green
+
+- Read `.agents/CODEX_ACTIVE_DIRECTIVES_20260610.md`; active lane stayed
+  Qwen/Qwen3.6 Responses raw SSE tunnel recapture/source-gateway parity. No
+  release/signing/notarization/PyPI/N2 JANG_1L action was taken.
+- Recaptured public tunnel directly:
+  `curl -sS -N --max-time 300 -H 'content-type: application/json' -H 'accept: text/event-stream' -X POST https://testapi.adlabus.dev/v1/responses ... > build/responses-sse-captures-20260610/tunnel-qwen35-mxfp8-mtp-tool-recapture-after-strict-source-20260610.sse`.
+- Classified against current-source direct and panel-gateway captures with:
+  `.venv/bin/python tests/cross_matrix/run_responses_raw_sse_parity_contract.py --direct-sse build/responses-sse-captures-20260610/direct-qwen35-mxfp8-mtp-tool-after-strict-parser-contract-20260610.sse --gateway-sse build/responses-sse-captures-20260610/gateway-qwen35-mxfp8-mtp-tool-after-strict-parser-contract-20260610.sse --tunnel-sse build/responses-sse-captures-20260610/tunnel-qwen35-mxfp8-mtp-tool-recapture-after-strict-source-20260610.sse --direct-log build/responses-sse-captures-20260610/direct-qwen35-mxfp8-mtp-after-strict-parser-contract-20260610.server.log --gateway-log build/responses-sse-captures-20260610/gateway-qwen35-mxfp8-mtp-after-strict-parser-contract-20260610.log --expected-function-name record_fact --expected-arguments '{"value": "blue-cat"}' --expected-model models/Qwen3.6-35B-A3B-MXFP8-CRACK-MTP --require-reasoning-events --require-same-model --out build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-public-recapture-20260610.json`.
+- Result: `status=pass`, `missing_captures=[]`. Direct, gateway, and tunnel
+  all preserve authoritative args `{"value":"blue-cat"}`, match the expected
+  model, include reasoning events, parse cleanly, and pass valid output item
+  index checks.
+- Fresh tunnel output-index split: `message=[0]`, `function_call=[1]`, no
+  conflicting output index. This replaces the stale 2026-06-09 tunnel capture
+  that reused `output_index=0`.
+- What not to claim: this clears Qwen35 same-request raw SSE parity only; it
+  does not clear tool-result continuation for every family, media rows,
+  installed-app parity, N2 JANG_1L, MiMo exactness/media, Gemma audio, or full
+  production readiness.
