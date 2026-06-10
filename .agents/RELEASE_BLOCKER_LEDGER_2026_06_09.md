@@ -239,6 +239,17 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   native SSM companion state, block L2, and SSM disk hit. It does not clear
   public tunnel SSE, N2 audio, N2 JANG_1L, stricter prompt quality, or
   Developer ID DMG package/sign/notarize/release readiness.
+- 2026-06-10 N2 dev-app exactness update:
+  `build/current-real-ui-dev-app-n2-jangtq2-exact-output-proof-20260610.json`
+  is green for the current Electron dev build and the same local JANGTQ2 row.
+  The app returned exact text `N2-ACK-742` and exact JSON
+  `{"status":"ok","value":"n2-blue"}`, with no parser/reasoning leak, while
+  recording `hybrid_ssm_v1`, attention-only TurboQuant KV,
+  `cache_detail=paged+ssm`, `cache_hit_tokens=21`,
+  `l2_block_tokens_on_disk=59`, `l2_ssm_tokens_on_disk=80`, block-disk hits
+  `3`, writes `2`, and SSM stores `2`. This does not clear the stricter custom
+  long-delta prompt, public tunnel SSE parity, N2 audio, N2 JANG_1L, or release
+  readiness.
 - 2026-06-10 N2 installed-app media update:
   `build/current-real-ui-installed-app-n2-jangtq2-image-proof-20260610.json`
   and `build/current-real-ui-installed-app-n2-jangtq2-video-proof-20260610.json`

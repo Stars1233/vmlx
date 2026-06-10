@@ -612,6 +612,7 @@ Artifact:
 - `build/current-n2-jangtq2-responses-stream-boundary-20260610.json`
 - `build/current-real-ui-live-model-n2-jangtq2-dev-app-delta-proof-20260610.json`
 - `build/current-real-ui-live-model-n2-jangtq2-dev-app-prevresp-proof-20260610.json`
+- `build/current-real-ui-dev-app-n2-jangtq2-exact-output-proof-20260610.json`
 - `build/current-real-ui-live-model-n2-jangtq2-image-proof-20260610.json`
 - `build/current-real-ui-live-model-n2-jangtq2-video-proof-20260610.json`
 - `build/current-real-ui-live-model-n2-jangtq2-audio-proof-20260610.json`
@@ -710,6 +711,15 @@ Proven:
   `cache_detail=paged+ssm`, `l2_block_tokens_on_disk=3579`,
   `l2_ssm_tokens_on_disk=17083`, `l2_tokens_on_disk=20662`,
   `block_disk_writes=59`, `block_disk_hits=110`, and `ssm_disk_hits=1`.
+- Current Electron dev-build exact-output proof is green for N2 JANGTQ2:
+  `N2-ACK-742` returned exactly, and
+  `{"status":"ok","value":"n2-blue"}` returned exactly. The same run recorded
+  no parser/reasoning leak, no persisted tools/reasoning, model-owned
+  generation defaults, `hybrid_ssm_v1`, attention-only TurboQuant KV, native
+  SSM companion state, `cache_detail=paged+ssm`, `cache_hit_tokens=21`,
+  `l2_block_tokens_on_disk=59`, `l2_ssm_tokens_on_disk=80`,
+  `l2_tokens_on_disk=139`, block-disk hits `3`, writes `2`, and SSM companion
+  stores `2`.
 - Local rebuilt installed app proof is now green for the same default N2
   JANGTQ2 checkpoint path. `/Applications/vMLX.app` launched as
   `uiLaunchMode=installed-app`, adopted the real N2 server, used

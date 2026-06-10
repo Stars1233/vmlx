@@ -8350,3 +8350,11 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Positive evidence: dev app launched as `uiLaunchMode=electron-dev`, real `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2` loaded, visible streamed Chat turns completed, server cache controls were visible, no parser/reasoning leak was recorded, no persisted tools/reasoning, native mixed-SWA cache, paged prefix hit, and block L2 writes.
 - Runtime/cache evidence: active memory `76483.5 MB`, peak `77024.8 MB`, TurboQuant codebook routed experts with prestacked layout, `cache_detail=paged`, `cache_hit_tokens=41`, `l2_block_tokens_on_disk=117`, and block-disk writes `3`.
 - Red evidence: expected `ACK-CB-742` but got `ACKCB-742`; expected `{"status":"ok","value":"blue-cat"}` but got `{"`. Boundary: the same exactness failure reproduces in dev app and installed app. No release action was run.
+
+# 2026-06-10 - N2 JANGTQ2 dev-app exact output
+
+- Ran current Electron dev-build Nex/N2 Pro JANGTQ2 exact-output proof with `npm run dev`, Chat Completions, no tools, server cache controls, temperature `0`, top_p `1`, and max tokens `64`.
+- Proof summary `build/current-real-ui-dev-app-n2-jangtq2-exact-output-proof-20260610.json` is `status=pass`; raw proof is `docs/internal/agent-notes/current-real-ui-dev-app-n2-jangtq2-exact-output-20260610-proof.json`.
+- Proven: dev app launched as `uiLaunchMode=electron-dev`, real `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2` loaded, exact text `N2-ACK-742` returned, exact JSON `{"status":"ok","value":"n2-blue"}` returned, server cache controls were visible, no parser/reasoning leak was recorded, no persisted tools/reasoning, hybrid SSM cache, attention-only TurboQuant KV, paged+SSM prefix hit, and block/SSM L2 writes.
+- Runtime/cache evidence: active memory `103805 MB`, peak `104441.4 MB`, `weight_format=mxtq`, `profile=JANGTQ2`, `hybrid_ssm_v1`, `cache_detail=paged+ssm`, `cache_hit_tokens=21`, `l2_block_tokens_on_disk=59`, `l2_ssm_tokens_on_disk=80`, `l2_tokens_on_disk=139`, block-disk hits `3`, block-disk writes `2`, and SSM companion stores `2`.
+- Boundary: this clears N2 JANGTQ2 dev-app exact text/JSON only. N2 JANG_1L, audio, public tunnel SSE parity, stricter custom long-delta prompt quality, and release readiness remain open. No release action was run.
