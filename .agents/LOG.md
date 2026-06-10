@@ -8205,3 +8205,11 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Boundary proved: installed-app UI launched, text chat worked first, the app attached one audio file, server `MEDIA_DIAG` saw `input_audio`, and `/v1/chat/completions` rejected it with `400` unsupported media modality. Supported modalities reported by the server are `text, vision, video`.
 - Runtime/cache stayed live before the gate: `hybrid_ssm_v1`, attention-only TurboQuant KV, paged+SSM cache, block L2, and SSM companion disk stores.
 - This is not a load/cache/L2 failure. Do not claim N2 installed-app audio support. No package/sign/notarize/tag/upload/release action was run.
+
+# 2026-06-10 - Gemma 12B MXFP4 installed-app audio gated
+
+- Ran real UI audio proof through `/Applications/vMLX.app` for `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-MXFP4` with Chat Completions, cache controls, `--is-mllm`, temperature `0`, top_p `1`, and max tokens `96`.
+- Proof summary `build/current-real-ui-installed-app-gemma4-12b-mxfp4-audio-proof-20260610.json` is `status=fail`; raw proof is `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-12b-mxfp4-audio-20260610-proof.json`.
+- Boundary proved: installed-app UI launched, text chat worked first, the app attached one audio file, server `MEDIA_DIAG` saw `input_audio`, and `/v1/chat/completions` rejected it with `400` unsupported media modality. Supported modalities reported by the server are `text, vision, video`.
+- Runtime/cache stayed live before the gate: MXFP4 affine matmul with Metal NA active, `mixed_swa_kv_v1`, generic TurboQuant KV correctly disabled, paged mixed-SWA cache, and block L2 writes.
+- This is not a load/cache/L2 failure. Do not claim Gemma installed-app audio support. No package/sign/notarize/tag/upload/release action was run.

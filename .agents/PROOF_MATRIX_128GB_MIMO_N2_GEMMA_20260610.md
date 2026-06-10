@@ -89,6 +89,7 @@ Artifacts:
 - `build/current-real-ui-installed-app-gemma4-12b-mxfp4-responses-tools-cache-20260610.json`
 - `build/current-real-ui-installed-app-gemma4-12b-mxfp4-image-proof-20260610.json`
 - `build/current-real-ui-installed-app-gemma4-12b-mxfp4-video-proof-20260610.json`
+- `build/current-real-ui-installed-app-gemma4-12b-mxfp4-audio-proof-20260610.json`
 
 Proven:
 
@@ -178,11 +179,25 @@ Proven:
   active, native `mixed_swa_kv_v1`, `cache_detail=paged+mixed_swa`,
   `cached_tokens=20`, `l2_block_tokens_on_disk=70`, `l2_tokens_on_disk=70`, and
   `disk_writes=2`.
+- Local rebuilt installed app audio proof is red by explicit runtime guard, not
+  by crash or cache failure. The installed app launched, completed two visible
+  text turns, forced multimodal for one attached audio file, server
+  `MEDIA_DIAG` saw one `input_audio`, and `/v1/chat/completions` returned
+  `400`: `/v1/chat/completions received unsupported media modality audio.
+  Supported modalities: text, vision, video.`
+- The installed-app audio boundary run still recorded the Gemma runtime/cache
+  surfaces before the failing audio turn: active memory about `7562.3 MB`, peak
+  about `7872.4 MB`, `weight_format=mxfp4`, Metal NA active, native
+  `mixed_swa_kv_v1`, `cache_detail=paged+mixed_swa`, `cached_tokens=20`,
+  `l2_block_tokens_on_disk=70`, `l2_tokens_on_disk=70`, and block-disk
+  `disk_writes=2`. Generic TurboQuant KV remained correctly disabled for this
+  mixed-SWA family.
 
 Not proven:
 
-- Installed-app audio parity for the MXFP4 row; installed-app image and video
-  are now green.
+- Installed-app audio support for the MXFP4 row. Installed-app image and video
+  are green; installed-app audio is classified red by honest unsupported
+  modality guard.
 - Audio weight-backed E2E for the MXFP4 dev-app row is red; current source
   honestly rejects audio with supported modalities `text, vision, video`.
 - Full larger Gemma QAT matrix through UI/installed app.

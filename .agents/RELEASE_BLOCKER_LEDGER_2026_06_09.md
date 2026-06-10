@@ -184,6 +184,19 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   NA active, native `mixed_swa_kv_v1`, paged mixed-SWA cache, and block L2
   write. It does not clear Gemma audio, public tunnel SSE, or Developer ID DMG
   package/sign/notarize/release readiness.
+- 2026-06-10 Gemma installed-app audio update:
+  `build/current-real-ui-installed-app-gemma4-12b-mxfp4-audio-proof-20260610.json`
+  is `status=fail` for the same local rebuilt `/Applications/vMLX.app` and
+  Gemma 12B QAT MXFP4 row. It proves installed-app audio attachment plumbing
+  reached the server boundary: the app completed two text turns first, forced
+  multimodal for one attached audio file, server `MEDIA_DIAG` saw
+  `input_audio`, and the API returned the honest guard `400 - unsupported media
+  modality audio; supported modalities: text, vision, video`. Runtime/cache
+  remained green before the gate with MXFP4 affine matmul, Metal NA active,
+  native `mixed_swa_kv_v1`, generic TurboQuant KV correctly disabled,
+  `cache_detail=paged+mixed_swa`, and block L2 writes. This does not clear
+  Gemma audio support, public tunnel SSE, or Developer ID DMG
+  package/sign/notarize/release readiness.
 - Proper release mechanics are documented in `/Users/eric/wiki/infra/apple-notarization.md`; do not invent an alternate path. The canonical keychain is `~/Library/Keychains/vmlx-build.keychain-db`, the Developer ID identity is `Developer ID Application: ShieldStack LLC (55KGF2S5AY)`, and notarization uses the `vmlx-notary` keychain profile.
 - If signing returns `errSecInternalComponent`, fix key access with the documented sequence and retry once after the partition-list grant settles:
 
