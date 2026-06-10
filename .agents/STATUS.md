@@ -3259,3 +3259,30 @@
   understanding green. It also does not clear MiMo JANGTQ2 literal/JSON/tool
   exactness, image color semantics, audio semantics, installed-app parity, or
   release readiness.
+
+# 2026-06-10 08:33 PDT - Continuation after MiMo video route proof
+
+- Current movement: continue from `97a6e73be`, pushed to both `main` and
+  `codex/pr-intake-manifest`. The last movement cleared MiMo JANGTQ2 current
+  dev-app video transport/frame-decode routing only; semantic quality and
+  exactness remain open.
+- Constraints rechecked: no release/sign/notarize/PyPI/download update, no N2
+  JANG_1L, no subagents, no fake parser/cache/sampling/semantic repair, and no
+  broad test-suite churn unless it directly proves a blocker.
+- Next action: audit the current open runtime rows and pick the next concrete
+  source/live blocker in Gemma, N2 JANGTQ, MiMo, or Qwen parser/API. Preference
+  is a real live proof or a source trace that reduces release risk without
+  inventing behavior.
+
+# 2026-06-10 08:46 PDT - AGENTS.md active-lane anchor requested
+
+- Current movement: Eric explicitly asked to put the current constraints into
+  `AGENTS.md`. Added a durable active-lane anchor covering one-blocker-at-a-
+  time proof work, no N2 JANG_1L, no subagents, no fake parser/cache/sampling/
+  semantic repairs, Qwen/Qwen-coder empty-args handling, cross-family
+  tool/reasoning/content-delta/gateway/API/cache requirements, required written
+  status/log discipline, and release/sign/notarize/PyPI/download lock.
+- Boundary: documentation/status guard only. No runtime source change, no
+  release action, and no model launch in this movement.
+- Next action: resume open-row audit and choose one concrete runtime/API/model
+  blocker for focused proof or source trace.

@@ -10673,3 +10673,53 @@ Next other-agent action: for MiMo media quality, compare source/dequant/
 reference visual embeddings/logits or rebuild the JANGTQ artifact. Do not
 mask the failure with prompt wording, parser repair, semantic post-processing,
 or color normalization.
+
+## 2026-06-10 08:33 PDT - Continuation after MiMo video route proof
+
+Request/action: continue the active goal from `97a6e73be` and keep reducing
+runtime/API/model blockers one at a time. The prior proof clears MiMo JANGTQ2
+current dev-app video route/transport only; it does not clear semantic video
+quality, image color semantics, audio, exactness, or release readiness.
+
+Constraint check: no release/sign/notarize/PyPI/download action; no N2
+JANG_1L; no subagents; no fake parser/cache/sampling/semantic repair; avoid
+broad test-suite churn unless it directly proves a blocker.
+
+Next action: inspect current proof/checklist artifacts for Gemma, N2 JANGTQ,
+MiMo, and Qwen parser/API rows, then choose one current blocker that can move
+with either a real live proof or a source trace.
+
+## 2026-06-10 08:46 PDT - AGENTS.md active-lane anchor requested
+
+Request/action: Eric asked to put the current constraints into `AGENTS.md` so
+future continuations are forced to check the active goal and not drift.
+
+Touched files:
+
+- `AGENTS.md`
+- `.agents/STATUS.md`
+- `.agents/LOG.md`
+
+Recorded in `AGENTS.md`:
+
+- work one blocker at a time on MiMo, Gemma, Qwen/Qwen-coder, and N2
+  JANGTQ/non-JANG_1L runtime/API/UI/cache/model proof;
+- keep N2 JANG_1L out of this lane unless Eric explicitly reopens it in the
+  current turn;
+- no Python/shell/MCP/wrapper subagent delegation;
+- harsh priority on auto/required/no-tool modes, tool-result continuation,
+  content deltas, reasoning deltas, interleaved reasoning/tool streaming,
+  request kwargs, parser selection, gateway/API/raw SSE parity, cache reuse,
+  and final response object consistency;
+- Qwen3.6/Qwen-coder empty `arguments: {}` handling for both 27B and 35B style
+  XML dialects must fail closed and must not synthesize args from visible
+  preambles or disable reasoning;
+- no fake parser/cache/sampling/semantic repairs;
+- every instruction, action, proof, blocker, no-claim boundary, commit, push,
+  and other-agent handoff must be written into `.agents/STATUS.md` and
+  `.agents/LOG.md`;
+- no signing/notarization/tagging/PyPI/updater/download/public release action
+  without explicit current-turn release instruction.
+
+Boundary: this is a durable instruction/status update only. It does not claim
+any model row green and it does not enter release work.

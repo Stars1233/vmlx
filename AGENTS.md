@@ -2372,6 +2372,39 @@ After every meaningful proof or fix, append `.agents/STATUS.md` and
 - whether the result is source-only, dev-Electron, installed-app, or packaged;
 - whether release/signing/notarization remains locked.
 
+### Current active-lane anchor - 2026-06-10
+
+Eric explicitly asked to keep the current constraints in `AGENTS.md` so every
+continuation is forced to check them before acting.
+
+Current active lane:
+
+- Work one blocker at a time on real runtime/API/UI/cache/model proof for
+  MiMo V2.5 JANG/JANGTQ, Gemma JANG/MXFP/QAT, Qwen/Qwen-coder tool/reasoning
+  streaming, and N2 JANGTQ/non-JANG_1L.
+- Keep N2 JANG_1L out of this lane unless Eric explicitly reopens it in the
+  current turn.
+- Do not use Python, shell wrappers, MCP tools, or any mechanism to spawn,
+  supervise, prompt, or summarize subagents. Direct Python/shell remains
+  allowed for local artifact inspection, proof scripts, tests, and source
+  maintenance that do not delegate work.
+- Prioritize opencode/Codex harness usability: auto/required/no-tool modes,
+  tool-result continuation, content deltas, reasoning deltas, interleaved
+  reasoning/tool streaming, request kwargs, parser selection, gateway/API/raw
+  SSE parity, cache reuse telemetry, and final response object consistency.
+- Treat Qwen3.6/Qwen-coder empty `arguments: {}` tool calls as
+  release-critical for both 27B and 35B style XML dialects, but do not trust a
+  proposed root cause until same-model raw output proves it.
+- Missing required tool arguments must fail closed. Do not synthesize args from
+  visible preambles, disable reasoning, silently drop tool calls, hide raw XML,
+  rewrite JSON/tool values, or patch parser output to mask model exactness.
+- Keep written state current: every instruction, action, proof, blocker,
+  no-claim boundary, commit, push, and other-agent handoff goes into
+  `.agents/STATUS.md` and `.agents/LOG.md` as work happens.
+- Do not enter signing, notarization, tagging, PyPI, updater JSON, download
+  link, or public release work unless Eric explicitly asks for that action in
+  the current turn.
+
 ## Current release blocker guard - 2026-06-07 local
 
 This section is local working guidance for the active release-hardening lane. Do not treat it as public release notes and do not commit it unless Eric explicitly asks.
