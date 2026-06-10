@@ -2844,3 +2844,10 @@
 - Proven now: source/dev app with `--is-mllm` loads MiMo JANGTQ_2 as `model_type=mllm`, server media diag reports `engine_is_mllm=true` and `registry_is_mllm=true`, preserved media runtime auto-enables, `visual=364`, `audio_encoder=75`, and `speech_embeddings=20` tensors bind, one image is processed, image attachment persists in the UI DB, and text-turn block L2 writes are present.
 - Still not proven/fixed: red image semantic correctness. Both the default 1x1 red PNG and a generated 128x128 solid red PNG returned visible `Blue.` and therefore fail `vl_image` semantic proof. This is not a release-clear MiMo media row.
 - Boundary for other agent: do not keep chasing the stale `tier=mimo_v2_preserved_text_runtime result=False` diagnosis for current source; next MiMo media work should target visual semantic/artifact/runtime quality or installed-app bundled parity after source rows are worth packaging.
+
+# 2026-06-10 continuation - MiMo JANGTQ2 direct color A/B classifier
+
+- Direct same-process API proof artifact: `docs/internal/agent-notes/current-mimo-v25-jangtq2-direct-color-ab-20260610.md`.
+- Server command used source `.venv`, `--is-mllm`, continuous batching, paged cache, block L2, and `VMLINUX_DISABLE_MIMO_V2_COMPILED_ROUTER=1` to avoid blaming the compiled decode router. Runtime still loaded as `mllm=True`, auto-enabled MiMo media, and bound `visual=364`, `audio_encoder=75`, `speech_embeddings=20`.
+- A/B result: text-only/no-image prompt returned `Blue.`; solid red, green, blue, white, and black 128x128 image prompts all returned `White.`.
+- Classification: image route and media tensors are active, but simple color semantics are not image-conditioned enough to clear `vl_image`. This is not a red-only channel swap. Do not fix with regex/prompt/parser/output rewrite; next useful work is Torch-vs-MLX first-logit/visual embedding/splice comparison against local `modeling_mimo_v2.py` or an artifact requant/runtime contract.

@@ -10268,3 +10268,7 @@ Direct `.venv` probe for `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGT
 ## 2026-06-10 continuation - MiMo JANGTQ2 dev-app image route refreshed
 
 Ran two focused dev-app image proofs for `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2` with `VMLINUX_REAL_UI_IS_MLLM=1`, one default red fixture and one 128x128 solid-red data URL. Both fresh runs got past the old text-only rejection: health reports `model_type=mllm`, media diag reports `engine_is_mllm=true`, the loader auto-enabled MiMo media from preserved sidecars, bound `visual=364`, `audio_encoder=75`, `speech_embeddings=20`, and processed one image. Both remain release-red because the assistant answered `Blue.` for red images, so `vl_image` semantic proof is still failed. Updated release tracker with the exact boundary.
+
+## 2026-06-10 continuation - MiMo JANGTQ2 direct color A/B classifier
+
+Started one direct source server for MiMo JANGTQ2 with `--is-mllm` and `VMLINUX_DISABLE_MIMO_V2_COMPILED_ROUTER=1`, sent text-only plus five solid-color image requests in one process, then shut the server down cleanly. Result: no-image prompt returned `Blue.`, every image color returned `White.`. This confirms current source routes and processes images but does not yet provide semantic `vl_image` correctness. Wrote classifier artifact `docs/internal/agent-notes/current-mimo-v25-jangtq2-direct-color-ab-20260610.md`.
