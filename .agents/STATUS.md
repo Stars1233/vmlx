@@ -2485,3 +2485,54 @@
   for the current MiMo JANGTQ_2 artifact. Next useful work is source-vs-quant
   first divergent token/logit with the source endpoint running, or a corrected
   artifact profile such as `gate=3/up=2/down=3` or `gate=3/up=3/down=3`.
+
+# 2026-06-10 06:38 PDT - Continuation before cross-family parser/API inspection
+
+- Request: keep focus on auto tool usage, content deltas, reasoning deltas,
+  interleaved reasoning/tool streaming, kwargs, Chat/Responses API behavior,
+  gateway passthrough, output indices, and final-object consistency for coding
+  harnesses such as opencode/Codex.
+- Directive check: active worktree remains
+  `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; N2 JANG_1L remains
+  off-limits; no release/sign/notarize/PyPI/download action is allowed in this
+  step; no subagents are allowed.
+- Immediate blocker being reduced: inspect current Qwen/Qwen-coder empty-args
+  fail-closed implementation and parser family coverage so cross-family
+  tool-loop behavior does not regress to executable `{}` arguments or raw
+  tool/reasoning leaks.
+- Must not claim: no cross-family parser release clearance, gateway/tunnel
+  clearance, installed-app parity, or release readiness unless current proof
+  covers it.
+
+# 2026-06-10 06:52 PDT - Cross-family required-argument parser fail-closed source fix
+
+- Request: harshly focus on auto tool usage, content/reasoning/tool streaming,
+  parser family behavior, and coding-harness usability without fake argument
+  synthesis or reasoning disablement.
+- Done: patched parser-level required-schema validation for Qwen bracket
+  syntax, Kimi/Moonshot, Hunyuan/Hy3, ZAYA/Zyphra, Gemma4 native/Hermes,
+  Gemma3 tool_code, and GLM-4.7 XML/JSON tool-call paths. These parser paths
+  now drop missing/empty required fields instead of returning executable `{}` or
+  otherwise schema-incomplete arguments.
+- Source files:
+  `vmlx_engine/tool_parsers/qwen_tool_parser.py`,
+  `vmlx_engine/tool_parsers/kimi_tool_parser.py`,
+  `vmlx_engine/tool_parsers/hunyuan_tool_parser.py`,
+  `vmlx_engine/tool_parsers/zaya_tool_parser.py`,
+  `vmlx_engine/tool_parsers/gemma4_tool_parser.py`,
+  `vmlx_engine/tool_parsers/gemma3_tool_parser.py`,
+  `vmlx_engine/tool_parsers/glm47_tool_parser.py`.
+- Regression test added:
+  `tests/test_tool_parser_required_args_fail_closed.py`.
+- Proof artifact:
+  `build/current-cross-family-tool-parser-required-args-failclosed-20260610.json`,
+  `status=pass`.
+- Verification: new focused test passed `7/7`; touched parser/test
+  `py_compile` passed; existing touched-family parser suites passed `52/52`.
+- Must not claim: this is parser-level source hardening only. It does not prove
+  live same-model direct/gateway/tunnel raw SSE for every family, installed-app
+  parity, Gemma media, MiMo exactness/media release clearance, N2 JANG_1L, or
+  checkpoint release readiness.
+- Other-agent action: consume this parser source fix in bundled Python/app
+  rebuilds and continue live direct/gateway/tunnel raw SSE proof per family
+  with reasoning enabled; do not add argument synthesis or semantic repair.

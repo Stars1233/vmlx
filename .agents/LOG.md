@@ -10067,3 +10067,28 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Boundary: this is a classifier, not a fix. MiMo JANGTQ_2 exactness remains
   artifact/logit/requant-profile blocked; do not clear MiMo, UI,
   installed-app, media semantics, package, signing, notarization, or release.
+
+# 2026-06-10 06:38 PDT - Continuation before cross-family parser/API inspection
+
+- Request: continue with the user-emphasized auto-tool/reasoning/content-delta
+  and gateway/API parser contract after committing the MiMo classifier.
+- Current lane: inspect existing Qwen/Qwen-coder empty-args fail-closed guard
+  and parser-family coverage for tool-loop safety.
+- Constraints: no subagents, no N2 JANG_1L, no release/sign/notarize/PyPI/
+  download action, no fake argument synthesis, no reasoning disablement, no
+  parser/JSON semantic repair to hide model failures.
+
+# 2026-06-10 06:52 PDT - Cross-family required-argument parser fail-closed fix
+
+- Done: added parser-level required-schema fail-closed checks to Qwen bracket,
+  Kimi, Hunyuan/Hy3, ZAYA, Gemma4, Gemma3, and GLM-4.7 parser paths.
+- Proof:
+  `build/current-cross-family-tool-parser-required-args-failclosed-20260610.json`.
+- Verification:
+  `.venv/bin/python -m pytest tests/test_tool_parser_required_args_fail_closed.py -q`
+  passed `7/7`;
+  parser/test `py_compile` passed; existing touched-family parser suites passed
+  `52/52`.
+- Boundary: source/parser hardening only. Live family direct/gateway/tunnel SSE,
+  UI/installed-app parity, Gemma media, MiMo exactness/media, N2 JANG_1L, and
+  release readiness remain unclaimed.
