@@ -262,6 +262,20 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   the first visible assistant content was whitespace/empty and the second UI
   turn returned HTTP `503` at `102%` of the `107.5GB` Metal working-set cap.
   Do not claim N2 JANG_1L dev-app usable support yet.
+- 2026-06-10 current dev-app one-turn visible-output update:
+  `build/current-real-ui-dev-app-n2-jang1l-one-turn-visible-proof-20260610.json`
+  adds a bounded one-turn diagnosis using the new proof-harness switch
+  `VMLINUX_REAL_UI_SECOND_TURN=0`. This run loaded the same real JANG_1L row
+  and completed one Chat request with no renderer send error or Metal 503, but
+  it still failed release assertions because the assistant streamed `16`
+  whitespace tokens and persisted empty visible content. Runtime/cache evidence
+  remained live: qwen3_5_moe/JANG_1L, qwen parser, qwen3 reasoning parser,
+  native `hybrid_ssm_v1`, attention-only live TurboQuant KV, SSM companion
+  state, async rederive, paged cache, block L2, SSM companion L2,
+  `l2_block_tokens_on_disk=19`, `l2_ssm_tokens_on_disk=19`, and
+  `l2_tokens_on_disk=38`. This separates first-turn whitespace decode/output
+  from the second-turn working-set guard; it does not clear cache reuse, tools,
+  Responses, L2 restart, media, installed-app parity, or release support.
 - N2 JANGTQ_2 proof does not clear N2 JANG_1L.
 - Keep architecture names explicit in every proof: base Qwen/Qwen35 MXFP8-MTP direct-source proof does not clear Nex/N2 Pro 397B JANG_1L, and N2 JANG_1L does not clear regular Qwen MTP/JANGTQ rows. Record `format`, `weight_format`, `artifact_profile`, MTP depth, `gdn_sink`, hybrid SSM/native-cache schema, TurboQuant KV state, and media weight backing from loaded health/config rather than inferred family names.
 

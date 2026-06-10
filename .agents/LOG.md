@@ -1,3 +1,13 @@
+# 2026-06-10 - N2 JANG_1L dev-app one-turn visible-output boundary
+
+- Added a scoped proof-harness switch `VMLINUX_REAL_UI_SECOND_TURN=0` in `panel/scripts/live-real-ui-model-proof.mjs`. It only disables the second UI message and relaxes only the two-turn/cache-hit assertions; it records `secondTurnEnabled=false` in proof artifacts and does not claim multi-turn/cache reuse.
+- Ran current Electron dev-build Nex/N2 Pro JANG_1L one-turn Chat proof with `npm run dev`, Chat Completions, server cache controls, prompt `Reply with exactly N2_JANG1L_VISIBLE and no other text.`, temperature `0`, top_p `1`, max tokens `16`, and max prompt tokens `1024`.
+- Proof summary `build/current-real-ui-dev-app-n2-jang1l-one-turn-visible-proof-20260610.json` is `status=fail`; raw proof is `docs/internal/agent-notes/current-real-ui-dev-app-n2-jang1l-one-turn-visible-20260610-proof.json`.
+- Positive evidence: dev app launched, real `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANG_1L` loaded, one Chat Completions request completed without renderer send errors or Metal 503, qwen3_5_moe/JANG_1L autodetect selected qwen tool parser and qwen3 reasoning parser, native `hybrid_ssm_v1` initialized, attention-only live TurboQuant KV and SSM companion state were active, async rederive ran, paged cache and block L2 wrote, and SSM companion L2 stored state.
+- Red evidence: the single assistant turn streamed `16` tokens but persisted empty visible content; stream trace went from one space to sixteen spaces, with no hidden reasoning or raw parser leak. This separates the first-turn whitespace decode/output blocker from the prior second-turn Metal working-set guard.
+- Runtime/cache evidence: active memory `112550.2 MB`, peak `112807.4 MB`, `actual_bits=2.13`, `profile=JANG_1L`, prestacked routed experts `540`, 15 attention TQ-KV layers, 45 SSM companion layers, `ram_tokens_cached=19`, `l2_block_tokens_on_disk=19`, `l2_ssm_tokens_on_disk=19`, `l2_tokens_on_disk=38`, block-disk writes `1`, SSM companion disk store `1`, TTFT `46.44s`, decode `0.8 tok/s`.
+- Boundary: this does not clear N2 JANG_1L visible quality, second-turn/cache reuse, tools, Responses, L2 restart, media, installed-app parity, package/sign/notarize, or release support. No release action was run.
+
 # 2026-06-10 - MiMo JANG_2L dev-app audio boundary
 
 - Ran current Electron dev-build MiMo V2.5 JANG_2L audio proof with `npm run dev`, Chat Completions, one app audio attachment, server cache controls, temperature `0`, top_p `1`, max tokens `96`, and max prompt tokens `12000`.

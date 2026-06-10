@@ -1048,6 +1048,7 @@ Artifact:
 - `build/current-n2-jang1l-live-chat-cache-deferred-eval-guard104-20260610.json`
 - `build/current-n2-jang1l-live-chat-cache-forced-after-gemma-video-20260610.json`
 - `build/current-real-ui-dev-app-n2-jang1l-bounded-chat-proof-20260610.json`
+- `build/current-real-ui-dev-app-n2-jang1l-one-turn-visible-proof-20260610.json`
 
 Observed:
 
@@ -1133,13 +1134,30 @@ Observed:
   rederive, paged cache, block L2, and SSM companion L2. The proof remains red:
   the first assistant content was whitespace/empty, and the second UI turn
   returned HTTP `503` at `102%` of the `107.5GB` Metal working-set cap.
+- Current Electron dev-app one-turn visible-output proof isolates the first
+  turn from the second-turn working-set guard. The proof harness now supports
+  `VMLINUX_REAL_UI_SECOND_TURN=0` and records `secondTurnEnabled=false` in the
+  artifact. With one turn only, the real app loaded JANG_1L, completed the Chat
+  request without renderer send errors or Metal `503`, emitted `16` stream
+  events and one completion event, but persisted empty visible assistant
+  content. The stream trace was whitespace only (`" "` through sixteen spaces),
+  with no hidden reasoning or raw parser leak.
+- The one-turn proof keeps the runtime/cache evidence live: qwen3_5_moe/JANG_1L
+  autodetect, qwen tool parser, qwen3 reasoning parser, native
+  `hybrid_ssm_v1`, attention-only live TurboQuant KV, SSM companion state,
+  async rederive, paged cache, block L2, SSM companion L2,
+  `ram_tokens_cached=19`, `l2_block_tokens_on_disk=19`,
+  `l2_ssm_tokens_on_disk=19`, `l2_tokens_on_disk=38`, active memory
+  `112550.2 MB`, peak `112807.4 MB`, TTFT `46.44s`, and decode about
+  `0.8 tok/s`.
 
 Conclusion:
 
 - JANG_1L is proven loadable on this 128GB host and can complete one bounded
-  Chat request through current source. It is not release-clear usable yet:
-  visible-output quality, cache warm/hit, tool, Responses, and L2 proof remain
-  red under working-set pressure.
+  Chat request through current source and through the dev app. It is not
+  release-clear usable yet: visible-output quality is red even in one-turn mode,
+  and cache warm/hit, tool, Responses, and L2 restart proof remain red under
+  working-set pressure.
 
 Next implementation target:
 
