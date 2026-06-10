@@ -12673,3 +12673,21 @@ Next action:
   - raw SSE parity contract: `20 passed`
   - `git diff --check`
 - No claims: no Qwen-coder-next live row, no all-family live matrix, no release/sign/notarize action. This is a current-source API/parser boundary fix that prevents missing-required-arg tool calls from leaking beyond the parser boundary when schemas are available.
+
+# 2026-06-10 14:24 PDT - MiMo exactness lane selected
+
+- Re-read active written state after continuation and confirmed the next allowed work order.
+- Selected blocker: MiMo V2.5 JANGTQ_2 exactness/tool-argument drift. The current matrix already classifies Gemma audio and N2 tunnel availability, while MiMo JANGTQ_2 still has artifact/quant/runtime exactness red rows.
+- Constraints retained: no N2 JANG_1L, no release/sign/notarize/PyPI/updater/download work, no subagents, no broad harness churn, and no parser/string repair to fake MiMo exactness.
+- Next action: inspect existing MiMo exactness artifacts and source/runtime paths to determine whether there is a vMLX runtime bug to fix or only an artifact/quant-profile blocker to hand off.
+
+# 2026-06-10 14:35 PDT - MiMo JANGTQ2 boundary corrected in proof matrix
+
+- Inspected the current MiMo JANGTQ_2 exactness artifacts and loader/kernel path. Existing evidence already excludes tokenizer/template, parser/JSON repair, cache/L2, hidden sampling, continuous batching-only behavior, vMLX compiled router, vMLX SwitchGLU fast path, sidecar table mismatch, sampled prestack shape mismatch, and native gather TQ selected-expert shape semantics.
+- Current source endpoint recheck failed: `http://erics-m5-max2.local:8126/health` is still not listening, so source-vs-quant first-divergence remains unavailable here.
+- Updated `.agents/PROOF_MATRIX_128GB_MIMO_N2_GEMMA_20260610.md` to add:
+  - `build/current-mimo-v25-jangtq2-disable-vmlx-fastpath-boundary-20260610.json`
+  - `build/current-mimo-v25-jangtq2-native-tq-allproj-contract-20260610.json`
+  - `build/current-mimo-v25-jangtq2-exactness-root-cause-boundary-20260610.json`
+- Corrected stale media wording: pre-overlay dev-app media `400` rows are no longer current-source image/video proof. Current-source CLI/dev-app image routing is green after the overlay fix, while video/audio semantic quality and installed-app media parity remain open.
+- Boundary: MiMo JANGTQ_2 exactness remains an artifact/logit/codebook/decode-quality or replacement-artifact blocker. Other agent should bring up source/dequant first-divergence or rebuild/lift the artifact profile; do not duplicate parser/cache/fastpath/native-gather checks without new contradictory evidence.

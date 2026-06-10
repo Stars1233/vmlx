@@ -4910,3 +4910,21 @@ Other-agent action:
   - `.venv/bin/python -m pytest -q tests/test_responses_raw_sse_parity_contract.py` -> `20 passed`
   - `git diff --check` passed
 - Boundary: this is a source/API fail-closed fix across parser families when request schemas are available. It does not live-prove Qwen-coder-next because no local Qwen-coder-next artifact was found, and it does not close every model-family auto/required/no-tool/tool-result live matrix.
+
+# 2026-06-10 14:24 PDT - continuation selected MiMo exactness lane
+
+- Continuation re-read `AGENTS.md`, `.agents/CODEX_ACTIVE_DIRECTIVES_20260610.md`, `.agents/STATUS.md`, `.agents/LOG.md`, and the proof matrix search results before acting.
+- Current user objective remains broad checkpoint readiness, but the next allowed work list ranks MiMo V2.5 JANGTQ_2 exactness/logit/artifact diagnosis first. N2 JANG_1L remains off-limits, release/sign/notarize/PyPI/updater/download actions remain locked, and subagent delegation remains forbidden.
+- Selected blocker: MiMo V2.5 JANGTQ_2 exactness and tool-argument drift. Existing proof matrix says media/L2 routing is now green but JANGTQ_2 exactness remains red while JANG_2L preserves the target literals.
+- Next movement: inspect existing MiMo exactness artifacts and runtime/tool parser/source code to find whether the remaining drift is artifact/quant-profile-only or whether a runtime decode/parser/cache bug is still fixable in vMLX. No broad new harness and no parser repair to mask artifact quality.
+
+# 2026-06-10 14:35 PDT - MiMo JANGTQ2 exactness boundary tightened
+
+- Inspected current MiMo JANGTQ_2 artifacts and runtime code instead of relaunching a broad harness. Current evidence already excludes tokenizer/template corruption, parser/JSON repair, prefix/paged/L2/KV cache, hidden sampling, continuous batching only, vMLX compiled router, vMLX SwitchGLU fast path, sidecar table mismatch, sampled prestacked shape mismatch, and native selected-expert gather shape semantics as primary causes.
+- Strongest current artifacts:
+  - `build/current-mimo-v25-jangtq2-disable-vmlx-fastpath-boundary-20260610.json`: same exactness mutations with `VMLINUX_DISABLE_MIMO_V2_SWITCHGLU_FAST_PATH=1`.
+  - `build/current-mimo-v25-jangtq2-native-tq-allproj-contract-20260610.json`: `24` real-tensor gate/up/down selected-expert gather cases across sampled early/mid/late routed layers match explicit dequant reference with max absolute diff about `1.49e-08`.
+  - `build/current-mimo-v25-jangtq2-exactness-root-cause-boundary-20260610.json`: exactness remains `artifact_logit_codebook_or_decode_quality_remaining`.
+- Rechecked source endpoint: `curl -fsS --max-time 5 http://erics-m5-max2.local:8126/health` still failed to connect, so source-vs-quant first-divergence cannot be completed from this lane right now.
+- Updated `.agents/PROOF_MATRIX_128GB_MIMO_N2_GEMMA_20260610.md` so the MiMo section no longer treats stale pre-overlay dev-app image/video/audio `400` rows as current-source media proof. Current-source CLI/dev-app image routing is green after the overlay fix; video/audio semantic quality and installed-app media parity remain open.
+- Boundary: do not keep chasing parser/cache/sampling/vMLX-fastpath/native-gather for MiMo JANGTQ_2 exactness without contrary logits evidence. Next useful action is source/dequant first-divergent logits or a corrected/lifted-precision artifact profile such as `gate=3/up=2/down=3` or `gate=3/up=3/down=3`, then rerun exactness/media/API/UI proof rows.

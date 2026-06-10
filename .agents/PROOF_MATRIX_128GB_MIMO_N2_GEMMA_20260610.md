@@ -1054,6 +1054,10 @@ Artifacts:
 - `build/current-real-ui-dev-app-mimo-v25-jangtq2-video-proof-20260610.json`
 - `build/current-real-ui-dev-app-mimo-v25-jangtq2-audio-proof-20260610.json`
 - `build/current-mimo-v25-jangtq2-cli-media-l2-after-overlay-fix-20260610.json`
+- `docs/internal/agent-notes/current-real-ui-dev-app-mimo-v25-jangtq2-icon-image-after-overlay-fix-20260610-proof.json`
+- `build/current-mimo-v25-jangtq2-disable-vmlx-fastpath-boundary-20260610.json`
+- `build/current-mimo-v25-jangtq2-native-tq-allproj-contract-20260610.json`
+- `build/current-mimo-v25-jangtq2-exactness-root-cause-boundary-20260610.json`
 
 Proven:
 
@@ -1092,32 +1096,11 @@ Proven:
   `mimo_v2_asymmetric_swa`, paged cache hit with `cache_hit_tokens=40`,
   `l2_block_tokens_on_disk=114`, `l2_tokens_on_disk=114`, and block-disk
   `disk_writes=3`.
-- Current Electron dev-build image/VL proof loaded the real bundle, completed
-  two visible text turns, attached one image, and server `MEDIA_DIAG` saw
-  `image_url`. The proof is red for media because the runtime returned HTTP
-  `400`: `received unsupported media modality image because the loaded runtime
-  is text-only. Supported modalities: text.`
-- The dev-app image run also proved the runtime/cache boundary before the media
-  guard: active memory `76491.8 MB`, peak `77127.2 MB`, TurboQuant codebook
-  routed experts, prestacked layout, native `mixed_swa_kv_v1` /
-  `mimo_v2_asymmetric_swa`, `cache_detail=paged`, `cache_hit_tokens=39`,
-  `l2_block_tokens_on_disk=132`, and block-disk `disk_writes=3`.
-- Current Electron dev-build video proof loaded the real bundle, completed two
-  visible text turns, sent one video attachment, and server `MEDIA_DIAG` saw
-  `video_url`. The proof is red for media because the runtime returned HTTP
-  `400`: `received unsupported media modality video because the loaded runtime
-  is text-only. Supported modalities: text.`
-- The dev-app video run also proved the runtime/cache boundary before the media
-  guard: active memory `76491.8 MB`, peak `77127.3 MB`, TurboQuant codebook
-  routed experts, prestacked layout, native `mixed_swa_kv_v1` /
-  `mimo_v2_asymmetric_swa`, generic TurboQuant KV correctly inactive,
-  `ram_tokens_cached=132`, `l2_block_tokens_on_disk=132`,
-  `l2_tokens_on_disk=132`, and block-disk `disk_writes=3`.
-- Current Electron dev-build audio proof loaded the real bundle, completed two
-  visible text turns, sent one audio attachment, and server `MEDIA_DIAG` saw
-  `input_audio`. The proof is red for media because the runtime returned HTTP
-  `400`: `received unsupported media modality audio because the loaded runtime
-  is text-only. Supported modalities: text.`
+- Older Electron dev-build image/VL, video, and audio proofs loaded the real
+  bundle and reached `MEDIA_DIAG`, but they predate the current preserved-media
+  overlay fix and returned text-only HTTP `400` guards. Treat those rows as
+  stale for current-source image/video routing and as still useful only for the
+  earlier runtime/cache boundary evidence.
 - Current-source CLI proof after the overlay fix loaded the same bundle as
   `mllm=True` and proved image routing with HTTP `200` / visible `vMLX`.
   It also proved block-disk L2 write and fresh-process restore for a text prompt
@@ -1127,6 +1110,14 @@ Proven:
   `server_cache_controls`, `native_cache_status`, and `l2_disk_storage`.
   Treat earlier dev-app media `400` rows as stale for current source, but do
   not clear installed-app parity from CLI/dev-app proof alone.
+- The no-fastpath A/B boundary proves `VMLINUX_DISABLE_MIMO_V2_SWITCHGLU_FAST_PATH=1`
+  leaves the same exactness mutations, so the vMLX MiMo SwitchGLU fast path is
+  not the primary cause.
+- The native TQ all-projection contract proves `24` real-tensor gate/up/down
+  selected-expert gather cases across sampled early/mid/late routed layers match
+  explicit dequant reference with max absolute diff about `1.49e-08`. This
+  closes the sampled native gather-shape/codebook/sign runtime gap for the
+  current artifact.
 - The dev-app audio run also proved the runtime/cache boundary before the media
   guard: active memory `76491.8 MB`, peak `77127.3 MB`, TurboQuant codebook
   routed experts, prestacked layout, native `mixed_swa_kv_v1` /
@@ -1148,16 +1139,22 @@ Red:
 - Hardened raw-harness exactness proof reproduced a complete JSON-value
   mutation: expected `{"status":"ok","value":"blue-cat"}` became
   `{"status":"ok","value":"blue"}`.
-- Dev-app image/VL, video, and audio are red by the same honest text-only
-  runtime guard as the installed app. Do not claim MiMo JANGTQ_2 media support
-  from preserved media weights.
+- Dev-app image routing is green for current source after the overlay fix, but
+  dev-app video/audio semantic quality and installed-app media parity remain
+  open until rerun against the current bundled/runtime surface.
+- Source-vs-quant first divergence remains open: the source checkpoint exists on
+  `erics-m5-max2.local`, but `http://erics-m5-max2.local:8126/health` was still
+  connection-refused on 2026-06-10 after the native TQ all-projection proof.
 
 Next implementation target:
 
-- Do not chase cache/parser/JSON repair for this red row. The current evidence
-  says MiMo JANGTQ_2 cache plumbing works, but decode/artifact/logit exactness
-  is wrong. Investigate artifact quant contract, codebook/decode path, or
-  runtime token/logit contract.
+- Do not chase cache/parser/JSON repair, sampling clamps, vMLX SwitchGLU
+  fast-path, or native gather shape for this red row. The current evidence says
+  MiMo JANGTQ_2 cache plumbing and sampled native TQ runtime binding work, but
+  decode/artifact/logit exactness is wrong. Next useful work is source/dequant
+  first-divergent logits or a corrected/lifted-precision artifact profile such
+  as `gate=3/up=2/down=3` or `gate=3/up=3/down=3`, followed by the same
+  exactness/media/API/UI proof rows.
 
 ### MiMo V2.5 JANG_2L
 
