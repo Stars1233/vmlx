@@ -1,3 +1,13 @@
+# 2026-06-09 - N2 JANG1L continuation preflight
+
+- Stayed in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, no package/sign/notarize/tag/download release action.
+- Reduced blocker class: `runtime/kernel` scheduling proof for Nex/N2 Pro 397B `JANG_1L`.
+- No-load command: `.venv/bin/python tests/cross_matrix/run_n2_jang1l_memory_preflight.py --model /Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANG_1L --out build/current-n2-pro-jang1l-local-memory-preflight-continuation-20260609.json`.
+- Result: `decision=do_not_launch`; model/index/config/jang_config exist; `artifact_profile=JANG_1L`, `format=jang`, `model_type=qwen3_5_moe`, `architecture=Qwen3_5MoeForConditionalGeneration`.
+- Memory math: indexed payload `110.57 GiB`, required extra Metal/runtime headroom `8.0 GiB`, required available `118.57 GiB`, current available `112.17 GiB`, gap `6.40 GiB`.
+- Artifact weight map summary: `linear_attention_tensors=855`, `vision_tensors=333`, `expert_tensors=720`, `total_tensors=2845`.
+- Boundary: no N2 weights were loaded. This is scheduling/artifact proof only, not live runtime/cache/API/UI release clearance. Do not lower the gate or force launch below the available-memory requirement.
+
 # 2026-06-09 - Responses Qwen35 tunnel output-index classification
 
 - Stayed in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, no package/sign/notarize/tag/download release action.

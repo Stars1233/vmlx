@@ -127,6 +127,12 @@ panel/scripts/verify-release-dmgs.sh
    runtime truth separate from preserved-but-unwired media weights.
 5. Recheck N2 `JANG_1L` memory preflight before any launch. If still below the
    guard, update status with the skip artifact rather than forcing a load.
+   Latest continuation refresh:
+   `build/current-n2-pro-jang1l-local-memory-preflight-continuation-20260609.json`
+   is `decision=do_not_launch`, indexed payload `110.57 GiB`, required
+   available `118.57 GiB`, current available `112.17 GiB`, gap `6.40 GiB`.
+   It proves the model/index/config are present and identifies
+   `qwen3_5_moe`/`JANG_1L`/`jang`, but no weights were loaded.
    Latest refresh after the DMG gate:
    `build/current-n2-pro-jang1l-local-memory-preflight-after-release-gate-20260609.json`
    is `do_not_launch` with payload `110.57 GiB`, required available `118.57 GiB`,
