@@ -9565,3 +9565,49 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
   and `node_modules/`.
 - Boundary: documentation/control-plane only; no release, signing,
   notarization, PyPI, public download, model launch, or N2 JANG_1L action.
+
+# 2026-06-10 - MiMo JANGTQ2 current media proof accounting
+
+- Request: continue toward release blockers without drifting; focus allowed
+  lanes and do not touch N2 JANG_1L or release signing.
+- Action: updated the full release checklist to consume current MiMo JANGTQ2
+  media/runtime/cache artifacts instead of leaving the media implementation
+  rows stuck on the older 20260609 audit.
+- Source edits:
+  - `tests/cross_matrix/run_full_release_objective_checklist.py` now points
+    `MIMO_NO_SOURCE_EXACTNESS_CLASSIFIER` at
+    `build/current-mimo-v2-no-source-exactness-classifier-after-devapp-jangtq2-exactness-20260610.json`.
+  - Added current MiMo proof inputs for source media runtime, source
+    video/audio routing, and dev-app Responses/tools/cache.
+  - `mimo_media_runtime_implementation` and `mimo_mimo_media_wired` can now be
+    green from current source proof while a separate
+    `mimo_jangtq2_media_semantics_release_quality` row remains red.
+  - Default checklist output now points at
+    `build/current-full-release-objective-checklist-after-mimo-current-media-accounting-20260610.json`.
+- Current regenerated checklist:
+  `build/current-full-release-objective-checklist-after-mimo-current-media-accounting-20260610.json`
+  is `status=open`, `failed_count=56`.
+- Proven:
+  - MiMo JANGTQ2 source media runtime is loaded/bound and image route no longer
+    returns the old unsupported-media 400.
+  - MiMo JANGTQ2 source video/audio requests reach runtime and return HTTP 200.
+  - MiMo JANGTQ2 dev-app Responses/tools/cache proof is green with
+    `mimo_v2_asymmetric_swa`, cache hits, L2 tokens on disk, and JANGTQ_2
+    runtime.
+- Not proven / still blocked:
+  - MiMo exactness is still red.
+  - MiMo video/solid-color visual semantic quality is still red.
+  - MiMo audio semantic/hygiene quality is still not release-green.
+  - Fresh-process L2 restore, installed-app media parity, decode speed target,
+    and release clearance remain open.
+- Verification:
+  - `python3 -m py_compile tests/cross_matrix/run_full_release_objective_checklist.py tests/test_full_release_objective_checklist.py` passed.
+  - `git diff --check -- tests/cross_matrix/run_full_release_objective_checklist.py tests/test_full_release_objective_checklist.py` passed.
+  - `.venv/bin/python -m pytest -q tests/test_full_release_objective_checklist.py` passed `19/19`.
+  - Full checklist regenerated with expected nonzero exit because release is
+    still open; artifact reports `failed_count=56` and MiMo failures are
+    `mimo_local_release_clearance`, `mimo_decode_speed_target`,
+    `mimo_artifact_exactness`, and
+    `mimo_jangtq2_media_semantics_release_quality`.
+- Boundary: no model server launch, no runtime code patch, no release,
+  no signing, no notarization, no PyPI, no public download, and no N2 JANG_1L.

@@ -1805,3 +1805,33 @@
 - Boundary: no release/sign/notarize/PyPI/download action, no model server
   launch, and no N2 JANG_1L action. Next work should resume from the latest
   checklist and reduce a live MiMo/Gemma/Qwen blocker.
+
+# 2026-06-10 - MiMo JANGTQ2 current media proof accounting in progress
+
+- Directive check: allowed lane is MiMo V2.5 JANGTQ_2 media/cache/API/UI proof
+  accounting from current artifacts. N2 JANG_1L remains off-limits. No release,
+  signing, notarization, PyPI, public download, or model launch is being done.
+- Source edit: `tests/cross_matrix/run_full_release_objective_checklist.py`
+  now consumes current MiMo JANGTQ2 media/runtime proof artifacts:
+  `build/current-mimo-v25-jangtq2-media-runtime-source-proof-20260610.json`,
+  `build/current-mimo-v25-jangtq2-video-audio-source-proof-20260610.json`,
+  `build/current-real-ui-dev-app-mimo-v25-jangtq2-responses-tools-cache-20260610.json`,
+  and the newer no-source exactness classifier
+  `build/current-mimo-v2-no-source-exactness-classifier-after-devapp-jangtq2-exactness-20260610.json`.
+- Proven by current checklist:
+  `mimo_media_runtime_implementation=true`, `mimo_mimo_media_wired=true`,
+  `mimo_jangtq2_current_source_media_runtime=true`,
+  `mimo_jangtq2_current_source_video_audio_routes=true`, and
+  `mimo_jangtq2_dev_app_responses_tools_cache=true`.
+- Still red by current checklist: `mimo_local_release_clearance`,
+  `mimo_decode_speed_target`, `mimo_artifact_exactness`, and
+  `mimo_jangtq2_media_semantics_release_quality`.
+- Regenerated artifact:
+  `build/current-full-release-objective-checklist-after-mimo-current-media-accounting-20260610.json`
+  is `status=open`, `failed_count=56`.
+- Boundary: this clears stale "media implementation missing/unwired" accounting
+  only. It does not claim MiMo exactness, visual semantic quality, audio
+  semantic quality, fresh-process L2 restore, installed-app parity, or release
+  readiness. Next other-agent action: focus MiMo on artifact/logit/quant
+  contract or runtime decode diagnosis and semantic media quality, not parser
+  repair, cache chasing, or release wording.
