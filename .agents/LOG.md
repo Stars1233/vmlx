@@ -8167,3 +8167,10 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Proof summary `build/current-real-ui-installed-app-n2-jangtq2-responses-tools-cache-20260610.json` is `status=pass`; raw proof is `docs/internal/agent-notes/current-real-ui-installed-app-n2-jangtq2-responses-tools-cache-20260610-proof.json`.
 - Proven surfaces: installed-app UI, visible two-turn Responses output, two `run_command` tool calls, tool-result continuation, content deltas, server cache controls, parser/reasoning leak checks, `hybrid_ssm_v1`, attention-only TurboQuant KV storage-boundary cache, native SSM companion state, block L2, and SSM disk restore hit.
 - Boundary: no public tunnel proof, no N2 audio support, no N2 JANG_1L clearance, no stricter prompt-quality clearance, and no package/sign/notarize/tag/upload/release action.
+
+# 2026-06-10 - Gemma 12B MXFP4 installed-app live proof
+
+- Ran real UI proof through `/Applications/vMLX.app` for `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-MXFP4` with Responses, built-in tools, cache controls, temperature `0`, top_p `1`, and max tokens `128`.
+- Proof summary `build/current-real-ui-installed-app-gemma4-12b-mxfp4-responses-tools-cache-20260610.json` is `status=pass`; raw proof is `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-12b-mxfp4-responses-tools-cache-20260610-proof.json`.
+- Proven surfaces: installed-app UI, visible two-turn Responses output, two `run_command` tool calls, tool-result continuation, content deltas, server cache controls, parser/reasoning leak checks, MXFP4 affine matmul with Metal NA active, `mixed_swa_kv_v1`, paged mixed-SWA cache, and block L2.
+- Boundary: no installed-app media proof in this run, no Gemma audio clearance, no public tunnel proof, and no package/sign/notarize/tag/upload/release action.

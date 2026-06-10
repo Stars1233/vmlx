@@ -86,6 +86,7 @@ Artifacts:
 - `build/current-real-ui-live-model-gemma4-12b-qat-mxfp4-image-proof-20260610.json`
 - `build/current-real-ui-live-model-gemma4-12b-qat-mxfp4-video-proof-20260610.json`
 - `build/current-real-ui-live-model-gemma4-12b-qat-mxfp4-audio-proof-20260610.json`
+- `build/current-real-ui-installed-app-gemma4-12b-mxfp4-responses-tools-cache-20260610.json`
 
 Proven:
 
@@ -133,10 +134,31 @@ Proven:
   `MEDIA_DIAG` saw `input_audio`, and the API returned `400`:
   `/v1/chat/completions received unsupported media modality audio. Supported
   modalities: text, vision, video.`
+- Local rebuilt installed app proof is now green for Gemma 12B QAT MXFP4
+  Responses/tool/cache. `/Applications/vMLX.app` launched as
+  `uiLaunchMode=installed-app`, adopted the real server for
+  `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-MXFP4`, used
+  `/v1/responses`, executed two built-in `run_command` calls, and produced
+  visible assistant turns containing `REAL_UI_LIVE_TOOL_ONE` and
+  `REAL_UI_LIVE_TOOL_TWO`.
+- The installed-app Gemma MXFP4 run verified the probe files exactly:
+  `real_ui_tool_probe_1.txt=REAL_UI_LIVE_TOOL_ONE\n` and
+  `real_ui_tool_probe_2.txt=REAL_UI_LIVE_TOOL_TWO\n`.
+- The installed-app run recorded renderer content deltas (`count=16` and
+  `count=24`), `eventCounts.tool=156`, `eventCounts.stream=40`,
+  `eventCounts.complete=2`, server cache controls, settings persistence, and
+  no raw parser/reasoning leak.
+- Installed-app Gemma MXFP4 runtime/cache evidence: `weight_format=mxfp4`,
+  `profile=MXFP4`, `weight_matmul_dispatch=mlx_affine_quantized_matmul`,
+  `metal_na_active_on_host=true`, active memory about `7772.4 MB`, peak memory
+  about `10512.9 MB`, native cache `mixed_swa_kv_v1`, `cache_detail=paged+mixed_swa`,
+  `cache_hit_tokens=3538`, `l2_block_tokens_on_disk=3584`,
+  `l2_tokens_on_disk=3584`, block-disk `disk_hits=30`, and
+  `disk_writes=58`.
 
 Not proven:
 
-- Installed-app parity for these exact new artifacts.
+- Installed-app media parity for image/video/audio in this exact MXFP4 run.
 - Audio weight-backed E2E for the MXFP4 dev-app row is red; current source
   honestly rejects audio with supported modalities `text, vision, video`.
 - Full larger Gemma QAT matrix through UI/installed app.

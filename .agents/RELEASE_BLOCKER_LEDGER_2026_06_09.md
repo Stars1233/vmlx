@@ -132,6 +132,16 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   native SSM companion state, block L2, and SSM disk hit. It does not clear
   public tunnel SSE, N2 audio, N2 JANG_1L, stricter prompt quality, or
   Developer ID DMG package/sign/notarize/release readiness.
+- 2026-06-10 Gemma installed-app update:
+  `build/current-real-ui-installed-app-gemma4-12b-mxfp4-responses-tools-cache-20260610.json`
+  is `status=pass` for the local rebuilt `/Applications/vMLX.app` plus
+  `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-MXFP4`. It proves
+  installed-app UI, `/v1/responses`, two built-in `run_command` calls,
+  tool-result continuation, visible content deltas, server cache controls,
+  no raw parser/reasoning leak, MXFP4 affine matmul with Metal NA active,
+  native `mixed_swa_kv_v1`, paged mixed-SWA cache, and block L2. It does not
+  clear Gemma installed-app media, Gemma audio, public tunnel SSE, or Developer
+  ID DMG package/sign/notarize/release readiness.
 - Proper release mechanics are documented in `/Users/eric/wiki/infra/apple-notarization.md`; do not invent an alternate path. The canonical keychain is `~/Library/Keychains/vmlx-build.keychain-db`, the Developer ID identity is `Developer ID Application: ShieldStack LLC (55KGF2S5AY)`, and notarization uses the `vmlx-notary` keychain profile.
 - If signing returns `errSecInternalComponent`, fix key access with the documented sequence and retry once after the partition-list grant settles:
 
