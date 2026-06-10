@@ -80,12 +80,14 @@ Artifact:
 
 - `build/current-real-ui-live-model-gemma4-12b-jang4m-dev-app-proof-20260610.json`
 - `build/current-real-ui-live-model-gemma4-12b-jang4m-video-proof-20260610.json`
+- `build/current-real-ui-live-model-gemma4-12b-jang4m-audio-proof-20260610.json`
 
 Raw ignored proof captures:
 
 - `docs/internal/agent-notes/current-real-ui-live-model-gemma4-12b-jang4m-responses-tools-cache-20260610-proof.json`
 - `docs/internal/agent-notes/current-real-ui-live-model-gemma4-12b-jang4m-image-cache-20260610-proof.json`
 - `docs/internal/agent-notes/current-real-ui-live-model-gemma4-12b-jang4m-video-cache-max12k-20260610-proof.json`
+- `docs/internal/agent-notes/current-real-ui-live-model-gemma4-12b-jang4m-audio-cache-20260610-proof.json`
 
 Proven:
 
@@ -119,6 +121,13 @@ Proven:
 - The video pass also showed mixed-SWA cache/L2 surfaces:
   `cache_detail=paged+mixed_swa`, `cached_tokens=20`,
   `l2_block_tokens_on_disk=84`, and `disk_writes=2`.
+- Real Electron dev-app audio attachment plumbing is now classified, but red:
+  the app persisted an `input_audio` part, the server decoded the base64 WAV,
+  and visible assistant output streamed, but the model did not transcribe the
+  generated phrase `audio present`. The failed audio proof still shows cache
+  and launch surfaces green: `cache_detail=paged+mixed_swa`,
+  `cacheHitTokens=67`, `l2_tokens_on_disk=67`, `disk_writes=2`, and server
+  cache controls verified.
 
 Not proven:
 
@@ -127,7 +136,8 @@ Not proven:
 - Local panel session manager starting this exact model from launch args; these
   app proofs used a remote session connected to the server started by the proof
   harness.
-- Gemma audio semantic E2E.
+- Gemma audio semantic E2E. The current dev-app proof reaches runtime but
+  fails semantic verification, so do not claim audio support for this row.
 - N2 or MiMo dev-app chat proof.
 - Same-model public tunnel raw SSE parity.
 

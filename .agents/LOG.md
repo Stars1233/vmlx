@@ -8050,3 +8050,12 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Load/cache/L2 surfaces are positive; app tool loop and visible output are red.
 - Next diagnostic is raw chat/tool output versus panel app trace, not cache/L2 work.
 - No release action was run.
+
+# 2026-06-10 - Gemma 12B JANG4M dev-app audio classified red
+
+- Extended `panel/scripts/live-real-ui-model-proof.mjs` with a real audio attachment gate (`VMLINUX_REAL_UI_CHECK_AUDIO`) and strict semantic verification.
+- Ran real Electron dev-app Gemma 12B JANG4M Chat Completions audio proof with a generated WAV saying `audio present`.
+- Added tracked summary `build/current-real-ui-live-model-gemma4-12b-jang4m-audio-proof-20260610.json`, `status=fail`.
+- Positive surfaces: app persisted `input_audio`, server decoded the base64 WAV, visible output streamed, server cache controls were verified, mixed-SWA cache hit/L2 were present (`cache_detail=paged+mixed_swa`, `cacheHitTokens=67`, `l2_tokens_on_disk=67`, `disk_writes=2`).
+- Red surface: audio semantic verification failed; final text did not transcribe `audio present`.
+- Boundary: not an attachment persistence or cache/L2 failure. Do not claim Gemma JANG4M audio support in a checkpoint release.
