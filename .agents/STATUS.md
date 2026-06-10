@@ -1713,3 +1713,14 @@
   real open rows including MiMo exactness/media/L2, Gemma QAT full media/UI,
   N2 JANG_1L (Eric-owned/off-limits here), Step/LFM/Nemotron/DSV4, package,
   signing, notarization, and public release gates.
+
+# 2026-06-10 - Qwen Responses SSE gate refresh pushed
+
+- Commit/push: `f199c893` (`Consume current Qwen Responses SSE proof`) was
+  pushed to `origin/codex/pr-intake-manifest` and `origin/main`.
+- Scope: release-gate proof pointer, refreshed checklist artifact, tracker,
+  and status notes only. No model server launch, release, signing,
+  notarization, PyPI, public download, or N2 JANG_1L action was included.
+- Current checklist artifact:
+  `build/current-full-release-objective-checklist-after-qwen-mimo-gemma-refresh-20260610.json`
+  remains `status=open`, `failed_count=59`.
