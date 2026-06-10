@@ -16,6 +16,8 @@
   by repo rules. The follow-up commit must force-add only `.agents/STATUS.md`
   and `.agents/LOG.md` plus `AGENTS.md`; do not stage unrelated dirty build or
   `node_modules` paths.
+- Commit/push: committed as `42979d90d Record active Codex lane guard` and
+  pushed to `origin/codex/pr-intake-manifest` and `origin/main`.
 - Boundary: this edit will not be claimed as a runtime proof or release
   readiness signal. It only makes future continuations check the right written
   state before resuming MiMo/Gemma/Qwen/N2-JANGTQ blocker work.

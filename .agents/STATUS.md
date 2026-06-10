@@ -13,6 +13,8 @@
 - commit movement: first `git add` attempt hit the repo ignore rule for
   `.agents`; next movement force-adds only `.agents/STATUS.md` and
   `.agents/LOG.md` with `AGENTS.md`.
+- commit/push: committed active guard as `42979d90d Record active Codex lane
+  guard` and pushed it to `origin/codex/pr-intake-manifest` and `origin/main`.
 - boundary: this does not prove or fix a runtime row by itself; it exists to
   prevent future drift before resuming MiMo/Gemma/Qwen/N2-JANGTQ proof work.
 
