@@ -289,6 +289,15 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   `l2_tokens_on_disk=38`. This separates first-turn whitespace decode/output
   from the second-turn working-set guard; it does not clear cache reuse, tools,
   Responses, L2 restart, media, installed-app parity, or release support.
+- 2026-06-10 gate-refresh update:
+  `build/current-objective-proof-after-mimo-n2-dev-app-proof-refresh-20260610.json`
+  is now the canonical objective digest. It includes the forced current-source
+  JANG_1L proof plus the real Electron dev-app bounded and one-turn proofs.
+  `build/current-full-release-objective-checklist-after-mimo-n2-dev-app-proof-refresh-20260610.json`
+  remains `status=open`, `failed_count=73`, and
+  `build/current-release-regression-manifest-after-mimo-n2-dev-app-proof-refresh-20260610.json`
+  remains `prepackage_ready=false`, `release_ready=false`. This is proof
+  pointer repair only; it does not clear N2 release support.
 - N2 JANGTQ_2 proof does not clear N2 JANG_1L.
 - Keep architecture names explicit in every proof: base Qwen/Qwen35 MXFP8-MTP direct-source proof does not clear Nex/N2 Pro 397B JANG_1L, and N2 JANG_1L does not clear regular Qwen MTP/JANGTQ rows. Record `format`, `weight_format`, `artifact_profile`, MTP depth, `gdn_sink`, hybrid SSM/native-cache schema, TurboQuant KV state, and media weight backing from loaded health/config rather than inferred family names.
 

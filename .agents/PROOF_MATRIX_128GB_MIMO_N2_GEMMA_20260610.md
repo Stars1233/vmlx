@@ -1065,6 +1065,9 @@ Artifact:
 - `build/current-n2-jang1l-live-chat-cache-forced-after-gemma-video-20260610.json`
 - `build/current-real-ui-dev-app-n2-jang1l-bounded-chat-proof-20260610.json`
 - `build/current-real-ui-dev-app-n2-jang1l-one-turn-visible-proof-20260610.json`
+- `build/current-objective-proof-after-mimo-n2-dev-app-proof-refresh-20260610.json`
+- `build/current-full-release-objective-checklist-after-mimo-n2-dev-app-proof-refresh-20260610.json`
+- `build/current-release-regression-manifest-after-mimo-n2-dev-app-proof-refresh-20260610.json`
 
 Observed:
 

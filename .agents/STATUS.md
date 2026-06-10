@@ -1,4 +1,9 @@
 ## CODEX
+- now: Release gate/checklist proof accounting is refreshed after the MiMo/N2 dev-app proofs; it still blocks release.
+- proof: canonical objective digest is now `build/current-objective-proof-after-mimo-n2-dev-app-proof-refresh-20260610.json`; full checklist is `build/current-full-release-objective-checklist-after-mimo-n2-dev-app-proof-refresh-20260610.json`; release manifest is `build/current-release-regression-manifest-after-mimo-n2-dev-app-proof-refresh-20260610.json`.
+- evidence: N2 Pro 397B row now includes current-source forced JANG_1L proof plus real Electron dev-app bounded/one-turn proofs instead of relying on the stale memory-only proof path.
+- result: objective digest remains `open`; checklist remains `status=open`, `failed_count=73`; release manifest remains `current_proof_sweep=fail`, `prepackage_ready=false`, `release_ready=false`.
+- boundary: proof-pointer/gate refresh only. No package, sign, notarize, tag, appcast, upload, PyPI, or public release action.
 - now: MiMo JANGTQ_2 current Electron dev-app exactness is red with raw harness assertions, not just compact post-classification.
 - proof: `build/current-real-ui-dev-app-mimo-v25-jangtq2-exact-output-harness-assert-proof-20260610.json`, `status=fail`; raw proof is `docs/internal/agent-notes/current-real-ui-dev-app-mimo-v25-jangtq2-exact-output-harness-assert-20260610-proof.json`, screenshot is `docs/internal/agent-notes/current-real-ui-dev-app-mimo-v25-jangtq2-exact-output-harness-assert-20260610-chat.png`.
 - harness: `panel/scripts/live-real-ui-model-proof.mjs` now supports `VMLINUX_REAL_UI_EXPECT_ASSISTANT_1` and `VMLINUX_REAL_UI_EXPECT_ASSISTANT_2`, and fails raw real-UI proofs on visible assistant exact mismatch.

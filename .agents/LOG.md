@@ -1,3 +1,11 @@
+# 2026-06-10 - Release gate refresh after MiMo/N2 dev-app proofs
+
+- Updated the canonical objective digest path from the stale N2 memory-only artifact to `build/current-objective-proof-after-mimo-n2-dev-app-proof-refresh-20260610.json`.
+- The N2 Pro 397B objective row now lists the real current-source forced proof and real Electron dev-app proofs: `build/current-n2-jang1l-live-chat-cache-forced-after-gemma-video-20260610.json`, `build/current-real-ui-dev-app-n2-jang1l-bounded-chat-proof-20260610.json`, and `build/current-real-ui-dev-app-n2-jang1l-one-turn-visible-proof-20260610.json`.
+- Regenerated `build/current-objective-proof-after-mimo-n2-dev-app-proof-refresh-20260610.json`, `build/current-full-release-objective-checklist-after-mimo-n2-dev-app-proof-refresh-20260610.json`, and `build/current-release-regression-manifest-after-mimo-n2-dev-app-proof-refresh-20260610.json`.
+- Result: release gate remains red: manifest `current_proof_sweep=fail`, `prepackage_ready=false`, `release_ready=false`; checklist `status=open`, `failed_count=73`.
+- Boundary: this is proof accounting and release-gate pointer repair only. No package, sign, notarize, tag, appcast, upload, or public release action was run.
+
 # 2026-06-10 - MiMo JANGTQ_2 dev-app exactness harness assertion
 
 - Added optional exact assistant-content assertions to `panel/scripts/live-real-ui-model-proof.mjs`: `VMLINUX_REAL_UI_EXPECT_ASSISTANT_1` and `VMLINUX_REAL_UI_EXPECT_ASSISTANT_2`. The raw proof artifact now records the expected strings and fails directly on visible assistant mismatches.
