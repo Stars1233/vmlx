@@ -7,6 +7,32 @@ separates what was actually loaded and proven from what remains red.
 
 ## Proven Live On 128GB Host
 
+### Current Release-Manifest Accounting
+
+Artifact:
+
+- `build/current-release-regression-manifest-after-mimo-jang2l-responses-l2-accounting-20260610.json`
+
+Proven:
+
+- The MiMo JANG_2L root-cause validator now points at current evidence for
+  text/cache, SwitchGLU parity, metadata honesty, long-prompt OOM, Chat tool
+  boundary, source-vs-quant preflight, fresh-process L2 restore, and Responses
+  tools rerun.
+- The MiMo row has `missing=[]`, so stale absent artifacts are no longer hiding
+  the current proof surface.
+- Green subchecks in that row: metadata truth, narrow text/cache,
+  SwitchGLU selected-expert parity, direct Chat tool protocol, fresh-process
+  block-disk L2 restore, and Responses transport/cache/L2.
+
+Still red:
+
+- `current_proof_sweep=fail`, `prepackage_ready=false`, `release_ready=false`.
+- MiMo remains blocked by long-prompt first-request Metal OOM, JANGTQ_2
+  artifact exactness, decode speed, media wiring, JANG_2L live media/L2,
+  JANG_2L Responses/tool semantic drift, and source-vs-quant/no-source
+  classification.
+
 ### Dev-App Detector and Settings Launch Parity
 
 Artifacts:

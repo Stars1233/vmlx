@@ -57,6 +57,21 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
 3. MiMo V2.5
 
 - JANGTQ_2 speed/cache is partially good, but release proof is not complete.
+- 2026-06-10 update: release-manifest root-cause accounting now consumes the
+  current MiMo JANG_2L proof set and no longer reports stale missing 20260606
+  evidence for the root-cause row. New manifest:
+  `build/current-release-regression-manifest-after-mimo-jang2l-responses-l2-accounting-20260610.json`.
+  The row has `missing=[]`, `metadata_truth_passed=true`,
+  `text_cache_narrow_pass=true`, `switchglu_selected_expert_parity_passed=true`,
+  `tool_protocol_blocked=false`,
+  `mimo_jang2l_l2_restart_cache_hit_passed=true`,
+  `mimo_jang2l_responses_transport_passed=true`, and
+  `mimo_jang2l_l2_restart_visible_output_blocked=false`.
+  It remains `status=open` for long-prompt first-request Metal OOM, current
+  JANGTQ_2 artifact exactness, decode speed, media wiring, JANG_2L live
+  media/L2, JANG_2L Responses/tool semantic drift, and source-vs-quant/no-source
+  classification. Release manifest still says `prepackage_ready=false` and
+  `release_ready=false`.
 - JANG_2L source fresh-process block-disk L2 restore is green in
   `build/current-mimo-v25-jang2l-restart-l2-restore-20260610-rerun/summary.json`;
   tool/JSON/loop, Responses semantics, media, UI parity, installed-app tool/media,
