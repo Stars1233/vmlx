@@ -1615,11 +1615,23 @@ Next implementation target:
   `status=pass`. Direct follow-up produced `16` output-text deltas and gateway
   follow-up produced `14` output-text deltas. Both completed on the same served
   model and returned `N2_DIRECT_DELTA_ONE` / `N2_DIRECT_DELTA_TWO`.
-- N2 JANGTQ2 now has a single green default dev-app proof for built-in tool
-  loop, Responses tool-result continuation, content-delta streaming,
-  hybrid-SSM/TurboQuant KV cache, and L2. Remaining N2 rows are installed-app
-  parity, audio, public tunnel parity, N2 JANG_1L memory strategy, and the
-  stricter custom prompt quality red row.
+- N2 JANGTQ2 now has green default dev-app and rebuilt installed-app proof for
+  built-in tool loop, Responses tool-result continuation, content-delta
+  streaming, hybrid-SSM/TurboQuant KV cache, L2, and image/video media.
+- 2026-06-10 13:14 PDT direct artifact inspection confirmed the direct/gateway
+  SSE captures themselves contain valid `lookup` function-call argument
+  delta/done events with `{"query": "alpha"}`, valid message/function output
+  indices, final response consistency, and follow-up visible content deltas.
+  Gateway cache telemetry shows `cache_detail=paged+ssm` with
+  `cached_tokens=192` on the first-tool repeat and `cached_tokens=96` on the
+  follow-up.
+- The same inspection confirmed audio remains a red-but-honest unsupported
+  modality row: current-source and installed-app audio artifacts reached the
+  server with `input_audio`, then failed closed with HTTP 400 and supported
+  modalities `text, vision, video`. Do not advertise N2 audio until a real
+  weight-backed audio path exists.
+- Remaining N2 rows are audio, public tunnel parity, N2 JANG_1L memory
+  strategy, and the stricter custom prompt quality red row.
 
 ## Red Live Attempts
 

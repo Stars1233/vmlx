@@ -12607,3 +12607,25 @@ Next action:
   - `.venv/bin/python -m pytest -q tests/test_responses_raw_sse_parity_contract.py` -> `20 passed`
   - `git diff --check` passed
 - Boundary: this is a current-source fail-closed guard. It does not replace same-model direct/gateway/tunnel recapture for Qwen35/Qwen-coder-next, and it does not prove every parser family or installed-app/package release readiness.
+
+# 2026-06-10 13:14 PDT - Nex/N2 JANGTQ2 artifact inspection lane selected
+
+- Current objective continues: focus on live runtime/API/cache/model blockers for 128GB users and avoid release/sign/notarize actions.
+- Selected blocker: Nex/N2 JANGTQ2/non-JANG_1L API/tool/cache proof status. N2 JANG_1L remains off-limits unless Eric explicitly reopens it.
+- Next movement: inspect current N2 JANGTQ2 direct/gateway SSE captures, logs, cache/proof artifacts, and release ledger rows to determine what is actually red. No launch or source edit before artifact evidence.
+- Cleanup note: killed stale non-server `/tmp` `tail`/shell process pair PIDs `83244` and `83223`; no vMLX proof server was listening.
+
+# 2026-06-10 13:14 PDT - Nex/N2 JANGTQ2 artifact inspection classified
+
+- Direct/gateway SSE artifacts inspected:
+  - `build/responses-sse-captures-20260610/direct-n2-jangtq2-first-tool-20260610.sse`
+  - `build/responses-sse-captures-20260610/gateway-n2-jangtq2-first-tool-20260610.sse`
+  - `build/responses-sse-captures-20260610/direct-n2-jangtq2-followup-20260610.sse`
+  - `build/responses-sse-captures-20260610/gateway-n2-jangtq2-followup-20260610.sse`
+- Proven by existing artifacts: direct and gateway required-tool Responses streams emit `lookup` with `{"query": "alpha"}`, valid `output_index` ordering, final object consistency, and follow-up content deltas. Gateway follow-up has `cached_tokens=96` and `cache_detail=paged+ssm`; gateway first-tool has `cached_tokens=192` and `cache_detail=paged+ssm`.
+- Server log `build/responses-sse-captures-20260610/direct-n2-jangtq2-stream-boundary.server.log` proves real `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2` load, JANGTQ VLM fast path, `qwen3_5_moe`, hybrid 15 attention + 45 SSM layers, attention-only live TurboQuant KV, SSM companion L2, block-disk L2 writes, and tight-memory allocator drains around 101 GiB active working set.
+- Audio artifacts inspected:
+  - `docs/internal/agent-notes/current-real-ui-live-model-n2-jangtq2-audio-20260610-proof.json`
+  - `docs/internal/agent-notes/current-real-ui-installed-app-n2-jangtq2-audio-20260610-proof.json`
+- Classification: N2 JANGTQ2 audio is an honest unsupported-modality gate, not a crash. The app sent `input_audio`; server media diag saw `engine_is_mllm=true`, family `qwen3_5_moe`, and returned HTTP 400: supported modalities are `text, vision, video`. Do not claim N2 audio support until a real weight-backed audio path exists.
+- Still open: public tunnel N2 JANGTQ2 SSE parity is missing from current captures; N2 JANG_1L remains off-limits; no release readiness claim.
