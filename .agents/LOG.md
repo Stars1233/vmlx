@@ -10165,3 +10165,22 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
   Responses/tools/cache are green; MiMo exactness, decode speed, media semantic
   quality, installed-app parity, package readiness, and release readiness remain
   red/open. No N2 JANG_1L action and no release action.
+
+# 2026-06-10 07:15 PDT - MiMo JANGTQ2 exactness lane resumed
+
+- Current lane: MiMo V2.5 JANGTQ_2 exactness/logit/artifact diagnosis.
+- Constraints: no subagents, no N2 JANG_1L, no release/sign/notarize/PyPI/
+  download action, no parser/JSON semantic repair, no hidden sampling clamp.
+- Next movement: inspect current exactness evidence and runtime TurboQuant /
+  prestacked SwitchMLP path for a real source fix or a stronger artifact/logit
+  boundary.
+
+# 2026-06-10 07:29 PDT - MiMo native TQ all-projection proof
+
+- Generated `build/current-mimo-v25-jangtq2-native-tq-allproj-contract-20260610.json`.
+- Result: `status=pass`, 24 real-tensor gate/up/down cases across layers
+  `1/2/23/47`, max abs diff `1.4901161193847656e-08`.
+- Boundary: closes the missing up-projection/multi-layer native gather evidence
+  gap. MiMo JANGTQ_2 exactness remains red and should move to
+  source/dequant/logit comparison or corrected artifact profile, not parser,
+  cache, sampling, or native gather shape chasing.

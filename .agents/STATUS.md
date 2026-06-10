@@ -2678,3 +2678,43 @@
   next work is source/dequant/logit/codebook comparison or a corrected MiMo
   artifact profile, plus installed-app/UI media parity once source quality is
   worth packaging.
+
+# 2026-06-10 07:15 PDT - Continuing MiMo JANGTQ2 exactness/root-cause lane
+
+- Request: continue the persistent objective, prioritize concrete fixes/proofs
+  for Nex N2 JANGTQ2, MiMo V2.5 JANG/JANGTQ, Gemma JANG/MXFP, cache reuse,
+  TurboQuant encode, reasoning/tool parser, and live content/tool delta
+  behavior; avoid broad test-suite churn and recursive/subagent behavior.
+- Directive check: current lane remains MiMo V2.5 JANGTQ_2 exactness/logit/
+  artifact diagnosis. N2 JANG_1L remains off-limits; no release/sign/notarize/
+  PyPI/download step; no subagents; no parser/JSON semantic repair; no hidden
+  sampling clamp.
+- Immediate action: inspect current MiMo exactness evidence and the runtime
+  TurboQuant/prestacked SwitchMLP path for a root-cause-aligned source fix or a
+  stronger artifact/logit boundary.
+
+# 2026-06-10 07:29 PDT - MiMo JANGTQ2 all-projection native TQ contract
+
+- Action: compared current vMLX MiMo SwitchGLU/TurboQuant path against the
+  reusable `jang_tools.jangrt.switchglu_decode` path and generated a focused
+  real-tensor parity artifact for MiMo JANGTQ_2 native TurboQuant routed
+  experts.
+- Proof artifact:
+  `build/current-mimo-v25-jangtq2-native-tq-allproj-contract-20260610.json`.
+- Result: `status=pass`; 24 real-tensor cases passed with maximum absolute
+  difference `1.4901161193847656e-08`. Coverage includes layers `1`, `2`, `23`,
+  and `47`; projections `gate_proj`, `up_proj`, and `down_proj`; broadcast,
+  sorted, and per-row shape contracts; real experts `[0, 3, 17, 251]`; real
+  local artifact `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2`.
+- Root-cause boundary: this closes the previously weak gap where only layer-1
+  gate/down gather parity had been recorded. The native gather/projection shape
+  path is not the current evidence-backed MiMo exactness culprit.
+- Still not proven/fixed: full source-vs-quant first divergent token/logit,
+  full-vocab generation exactness, corrected MiMo JANGTQ artifact profile,
+  installed-app parity, media semantic quality, or release clearance.
+- Must not claim: no MiMo exactness fix was made; do not repair semantic values
+  in parser/JSON/tool output; do not keep chasing native gather shape semantics
+  unless new contradictory evidence appears.
+- Other-agent action: next useful work is source/dequant first-divergent logit
+  for the literal probes, or build/try a corrected MiMo artifact profile such
+  as `gate=3/up=2/down=3` or `gate=3/up=3/down=3`.
