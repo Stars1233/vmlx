@@ -1,3 +1,90 @@
+# 2026-06-10 - Qwen27 reasoning tool-result continuation lane
+
+- Request: continue the persistent goal by fixing/proving current blockers
+  without drifting into broad test-suite work or recursive agent behavior.
+- Current lane: Qwen/Qwen-coder Responses API tool-result continuation with
+  reasoning enabled, focused on the Qwen27 JANG_4M-MTP live failure where a
+  required tool call is green but the follow-up `previous_response_id` response
+  stays reasoning-only and incomplete.
+- Constraints: no release/sign/notarize/PyPI/updater/download/site action, no
+  N2 JANG_1L, no subagents, no synthetic tool args, no disabling reasoning as
+  a workaround, no hidden reasoning leak, and no broad harness churn.
+- Planned movement: inspect current raw SSE artifacts and the Qwen
+  template/render/parser boundary, patch only a confirmed root cause, then
+  verify with focused source checks and one live same-model Qwen27 raw SSE
+  continuation proof including cache telemetry.
+- Root-cause result: Qwen terminal tool-result continuation was rendered with
+  the normal reasoning-enabled generation prompt `<|im_start|>assistant\n<think>\n`.
+  The model then generated no visible `</think>` boundary within the output
+  budget, and the Qwen parser correctly classified the whole output as
+  reasoning. The thinking-off diagnostic completing visibly is explained by
+  the template's closed empty think block, not by a parser-argument issue.
+- Source fix: for Responses terminal tool-result synthesis with Qwen3 parser,
+  `enable_thinking=True`, and no new request/engine tools, vMLX now skips the
+  normal generation prompt and appends a Qwen assistant prefix with an already
+  closed empty think block before visible final text. Streaming and nonstream
+  parser seed logic now treat that suffix as not starting inside reasoning.
+  Required-tool turns are unchanged, and no tool args are synthesized or
+  repaired.
+- Focused verification: `py_compile vmlx_engine/server.py
+  tests/test_engine_audit.py`, `git diff --check -- vmlx_engine/server.py
+  tests/test_engine_audit.py`, and focused pytest for
+  `TestResponsesQwenTerminalToolResultSynthesis` plus
+  `TestResponsesStreamingExactToolResult` all passed (`5/5` pytest).
+- Next movement: run same-model live Qwen27 direct raw SSE required-tool plus
+  reasoning-enabled tool-result continuation and record artifacts.
+- First live result: required-tool SSE stayed green, but the prompt-suffix
+  terminal-continuation attempt was red. Artifact
+  `build/responses-sse-captures-20260610/direct-qwen27-jang4m-mtp-tool-result-continuation-after-channel-fix-20260610.sse`
+  contains only response creation/content-part start plus keepalives before
+  abort; no output text, reasoning, function call, or completed event. Server
+  log confirmed the new suffix branch fired, so the branch selection is not the
+  blocker. That prompt-suffix approach is not sufficient and must not be
+  claimed green.
+- Next hypothesis: use Qwen's native closed-thinking template branch for this
+  terminal synthesis turn instead of a custom suffix. This is still scoped to
+  no-new-tool tool-result continuation and must not affect required tool turns
+  or synthesize arguments.
+- Second source result: the terminal no-new-tool synthesis branch now uses
+  Qwen's native `enable_thinking=False` template path for rendering only, with
+  a private `_vmlx_terminal_tool_result_visible_finalization` parser-seed flag
+  consumed before engine generation. This keeps required-tool reasoning turns
+  unchanged and prevents the private flag from leaking into engine kwargs.
+- Second focused verification: `py_compile`, `git diff --check`, and focused
+  pytest for the Qwen terminal synthesis/exact tool-result classes passed
+  (`5/5`). Next movement is a fresh live Qwen27 direct raw SSE proof.
+- Final live proof: fresh current-source server loaded
+  `/Users/eric/models/JANGQ/Qwen3.6-27B-JANG_4M-MTP` on port `8894` with native
+  MTP, hybrid SSM cache, attention-only TurboQuant KV, paged cache, block L2,
+  and SSM companion disk.
+- Required-tool artifact:
+  `build/responses-sse-captures-20260610/direct-qwen27-jang4m-mtp-required-tool-after-visible-finalization-seed-fix-20260610.sse`.
+  It is green: reasoning deltas at `output_index=1`, message at `0`, function
+  call at `2`, final function args `{"value": "blue-cat"}`, status completed,
+  no empty `{}` arguments.
+- Tool-result continuation artifact:
+  `build/responses-sse-captures-20260610/direct-qwen27-jang4m-mtp-tool-result-continuation-after-visible-finalization-seed-fix-20260610.sse`.
+  It is green: streamed visible `response.output_text.delta` chunks for
+  `The fact "blue-cat" has been recorded.`, final `output_text` matches,
+  `status=completed`, no reasoning-only warning, no additional function call,
+  and no hidden-reasoning-to-output copy.
+- Runtime/cache artifact:
+  `build/responses-sse-captures-20260610/direct-qwen27-jang4m-mtp-health-after-visible-finalization-seed-fix-20260610.json`.
+  It proves native MTP active, hybrid SSM cache, attention-only TurboQuant KV,
+  block L2 `disk_writes=7`, `l2_block_tokens_on_disk=292`, SSM companion
+  `l2_ssm_tokens_on_disk=548`, and total `l2_tokens_on_disk=840`.
+- Red intermediate artifacts: `...after-channel-fix...` only emitted
+  keepalives before abort, and the first `...after-visible-finalization-seed-fix...`
+  continuation was accidentally sent with placeholder IDs and was overwritten
+  by the real green continuation. Do not use those red attempts as proof.
+- Boundary: this clears current-source direct Qwen27 terminal tool-result
+  continuation. It does not by itself clear gateway/tunnel recapture, Qwen35
+  continuation, installed-app parity, MiMo exactness/media, Gemma remaining
+  media/UI rows, or release/PyPI actions.
+- Cleanup verification: patch review found two stray Chat Completions
+  parser-seed references from an earlier edit. They were removed; `py_compile`,
+  `git diff --check`, and focused pytest `5/5` passed after the cleanup.
+
 # 2026-06-10 - AGENTS.md hard carry-forward refresh
 
 - Request: Eric said "into agents.md" and reinforced that every instruction,

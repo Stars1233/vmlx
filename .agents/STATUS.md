@@ -1,4 +1,70 @@
 ## CODEX
+- now: continuing the persistent goal on the Qwen/Qwen-coder Responses
+  tool-result continuation blocker. Current selected lane is Qwen27
+  reasoning-enabled `previous_response_id` continuation after a tool result,
+  because required tool raw SSE is green but continuation previously stayed
+  reasoning-only and incomplete.
+- constraints: no release/sign/notarize/PyPI/updater/download/site action, no
+  N2 JANG_1L, no subagents, no synthetic tool args, no disabling reasoning as a
+  workaround, no broad test-suite churn, and stop any live server started by
+  this lane before final response.
+- planned movement: inspect the current Qwen template/render/parser boundary,
+  confirm whether the failure is a reasoning-channel finalization issue, patch
+  only the confirmed root cause, then run focused checks plus one live
+  same-model Qwen27 raw SSE continuation proof with cache telemetry.
+- source result: confirmed Qwen terminal tool-result continuation was rendered
+  with a fresh open `<think>` rail, so no-tag generated text was correctly
+  parsed as reasoning-only. Patched Responses to use a Qwen closed-thinking
+  assistant prefix only for terminal tool-result synthesis with no new tools,
+  plus parser seed handling for that suffix. This does not synthesize tool
+  arguments or disable required-tool reasoning turns.
+- focused checks: `py_compile` passed for `vmlx_engine/server.py` and
+  `tests/test_engine_audit.py`; `git diff --check` passed; focused pytest
+  `TestResponsesQwenTerminalToolResultSynthesis` and
+  `TestResponsesStreamingExactToolResult` passed `5/5`.
+- next movement: live same-model Qwen27 direct raw SSE proof on local server,
+  then stop the server and record pass/fail artifacts.
+- first live result: required-tool SSE stayed green, but the prompt-suffix
+  continuation attempt was red. It selected the new branch, then emitted only
+  keepalives before abort; no content/reasoning/tool/final event was produced.
+  Do not claim that artifact green. Next movement is to replace the suffix
+  route with Qwen's native closed-thinking template branch for terminal
+  no-new-tool synthesis only, then rerun focused checks and live proof.
+- second source result: replaced the custom suffix attempt with Qwen's native
+  `enable_thinking=False` template branch for terminal no-new-tool synthesis,
+  while keeping a private parser-seed flag so the output is parsed as visible
+  final text and the flag does not leak into engine kwargs. Required-tool turns
+  remain unchanged.
+- second focused checks: `py_compile`, `git diff --check`, and focused pytest
+  for Qwen terminal synthesis/exact tool-result finalization passed `5/5`.
+- final live proof: after a fresh server restart from current source,
+  Qwen27 JANG_4M-MTP direct raw SSE required-tool and terminal tool-result
+  continuation are green. Required-tool artifact:
+  `build/responses-sse-captures-20260610/direct-qwen27-jang4m-mtp-required-tool-after-visible-finalization-seed-fix-20260610.sse`;
+  continuation artifact:
+  `build/responses-sse-captures-20260610/direct-qwen27-jang4m-mtp-tool-result-continuation-after-visible-finalization-seed-fix-20260610.sse`;
+  health/cache artifact:
+  `build/responses-sse-captures-20260610/direct-qwen27-jang4m-mtp-health-after-visible-finalization-seed-fix-20260610.json`.
+- proven: required tool keeps reasoning enabled, emits reasoning deltas at
+  `output_index=1`, emits function call at `output_index=2`, and preserves
+  final args `{"value": "blue-cat"}`. The tool-result continuation with
+  reasoning requested now emits visible `response.output_text.delta` chunks and
+  final `output_text="The fact \"blue-cat\" has been recorded."` with
+  `status=completed`, no reasoning-only warning, no extra function call, and no
+  parser-side argument synthesis.
+- cache/runtime proof: live health after the run shows Qwen27 native MTP active,
+  hybrid SSM cache, attention-only TurboQuant KV, paged cache, block L2 with
+  `disk_writes=7` / `l2_block_tokens_on_disk=292`, and SSM companion disk with
+  `l2_ssm_tokens_on_disk=548` / total `l2_tokens_on_disk=840`.
+- red intermediate artifacts: the prompt-suffix attempt and the accidental
+  placeholder continuation were red and must not be used as proof. The real
+  green continuation artifact is the `...after-visible-finalization-seed-fix...`
+  file above.
+- cleanup verification: removed two stray Chat Completions parser-seed
+  references from the patch review; reran `py_compile`, `git diff --check`, and
+  focused pytest `5/5` after cleanup.
+
+## CODEX
 - now: Eric asked to put the current carry-forward "into agents.md" after
   reinforcing that every instruction, every status movement, and every action
   must be written down and checked. This movement is documentation/control-plane
