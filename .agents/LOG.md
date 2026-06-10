@@ -11966,3 +11966,25 @@ Next action:
 - Edited `panel/src/main/ipc/chat.ts` to log each Responses `function_call` item as it enters `receivedToolCalls`: output index, item id, call id, name, and argument length.
 - This is intentionally non-mutating; it is for the next installed-app raw panel proof of the Gemma 26B six-plus-six duplicate tool loop.
 - Verification passed: `npm run typecheck` from `panel/`; `git diff --check`.
+
+# 2026-06-10 11:06 PDT - Continuation objective rechecked; next panel evidence lane selected
+
+- Re-read active guards/status. The next useful blocker reduction is not another direct server curl; it is panel-side raw function-call identity capture for the Gemma 26B installed-app duplicate tool-loop proof.
+- Will use existing proof harness/dev-app route where possible; no broad test-suite churn, no release action, no subagents, no N2 JANG_1L.
+
+# 2026-06-10 11:11 PDT - Gemma 26B panel prompt-conflict root cause selected for narrow fix
+
+- Dev-app proof with function-call identity logging showed one extra same-turn `run_command` after tool output and a later reasoning-only visible-empty second turn.
+- The new evidence points to prompt/request construction: the generic agentic system prompt conflicts with explicit `tool exactly once` instructions. I am patching that prompt injection narrowly rather than touching parser/server dedupe.
+
+# 2026-06-10 11:19 PDT - Prompt fix partially proved; Gemma4 loopback tool_choice pin selected
+
+- The agentic prompt wording fix removed the extra same-turn tool call and produced a visible first answer, but second-turn Gemma4 still skipped the explicit tool call.
+- Next patch: scope the loopback `tool_choice` suppression so Gemma4 can pin explicit named tools; keep the N2-oriented suppression for other families.
+
+# 2026-06-10 11:27 PDT - Gemma 26B dev-app Responses tool loop proved after scoped request fixes
+
+- Fixed the panel request side instead of parser/server dedupe: agentic prompt now respects exact one-tool requests, and Gemma4 loopback vMLX sessions keep explicit named `tool_choice` pins.
+- Live proof passed: `docs/internal/agent-notes/current-real-ui-dev-app-gemma4-26b-qat-jang4m-responses-tools-cachecontrols-gemma4-identity-toolchoice-20260610-proof.json`.
+- Proof showed two visible assistant turns, one `run_command` per explicit user turn, correct probe files, Responses streaming, reasoning display, mixed-SWA paged cache hits, server cache controls, and block-disk L2 writes.
+- Boundaries: dev-app Gemma4 26B only; not installed-app bundle parity, not media, not gateway/tunnel, not Qwen empty-args, not MiMo exactness, and no release action.

@@ -4166,3 +4166,52 @@ Other-agent action:
 - Purpose: next installed-app proof can distinguish distinct server-emitted function-call items from client aggregation/replay without dropping, deduping, or rewriting calls.
 - Behavior boundary: this is observability only. It does not change execution policy, parser behavior, tool-choice behavior, or final object assembly.
 - Verification: `npm run typecheck` in `panel/` passed; `git diff --check` passed.
+
+# 2026-06-10 11:06 PDT - Continuation objective rechecked; next panel evidence lane selected
+
+- Continuation objective: keep building/fixing/proving runtime/API/UI/cache/parser blockers toward checkpoint release quality without broad test-suite churn or recursive/subagent behavior.
+- Current allowed lane selected: Gemma 26B installed-app/panel duplicate tool-loop root-cause evidence, because direct server SSE and direct multi-turn thinking-on reproductions did not emit duplicate calls while the installed-app proof did.
+- Next action: use the existing real-UI proof harness or dev-app route with the newly added panel `Responses function_call item` logging to capture per-call `output_index`, `item_id`, `call_id`, name, and argument length.
+- Decision boundary: if panel logs show six distinct function_call items entering from SSE, localize to server/model under the exact panel request; if they repeat or appear only after client aggregation, localize to panel stream aggregation/replay.
+- Constraints retained: no release/sign/notarize/PyPI/updater/download/site action; no Nex/N2 JANG_1L; no subagents; no blind dedupe/drop parser fix.
+
+# 2026-06-10 11:11 PDT - Gemma 26B panel prompt-conflict root cause selected for narrow fix
+
+- Dev-app proof artifact: `docs/internal/agent-notes/current-real-ui-dev-app-gemma4-26b-qat-jang4m-responses-tools-cachecontrols-functioncall-identity-20260610-proof.json`.
+- Evidence from new panel logging:
+  - First turn accepted one Responses `function_call` item, then after tool output accepted a second `run_command` in the same user turn.
+  - The second user turn produced reasoning-only output and no visible assistant answer.
+  - No six-call duplicate was reproduced with current dev source, but the tool-loop class remains red.
+- Root-cause direction: direct server requests without the panel generic agentic prompt produce bounded one-call behavior; panel dev proof includes the generic `AGENTIC_SYSTEM_PROMPT`, whose `Chain multiple tool calls as needed` instruction conflicts with prompts that explicitly say `tool exactly once`.
+- Fix selected: revise the generic agentic system prompt for explicit single-tool requests while keeping tool definitions, explicit tool_choice, parser behavior, tool-result continuation, and final-object handling unchanged.
+- Non-goals: no parser dedupe/drop, no disabling tools, no disabling reasoning globally, no release action.
+
+# 2026-06-10 11:19 PDT - Prompt fix partially proved; Gemma4 loopback tool_choice pin selected
+
+- After revising the generic agentic prompt, dev-app proof `current-real-ui-dev-app-gemma4-26b-qat-jang4m-responses-tools-cachecontrols-agenticprompt-exactonce-20260610-proof.json` improved first-turn behavior:
+  - exactly one `run_command` function_call item entered `receivedToolCalls`;
+  - tool loop completed after one iteration;
+  - visible first assistant answer included `REAL_UI_LIVE_TOOL_ONE`.
+- Remaining failure: second explicit `run_command exactly once` user turn produced reasoning-only output and no tool calls.
+- Current root-cause direction: loopback remote vMLX sessions suppress explicit pinned `tool_choice`; that was added for N2 required-tool failures but is too broad for Gemma4, whose direct server required-tool path worked.
+- Fix selected: allow Gemma4 loopback vMLX sessions to keep explicit tool_choice for a single named tool, while preserving loopback suppression for non-Gemma families such as N2.
+
+# 2026-06-10 11:27 PDT - Gemma 26B dev-app Responses tool loop proved after scoped request fixes
+
+- Source fixes:
+  - `panel/src/main/tools/registry.ts`: revised the generic agentic tool prompt so it still instructs tool use, but only chains multiple tool calls when the task actually requires multiple tool-backed steps. Explicit "exactly once" tool requests now instruct one tool call followed by final text after the result.
+  - `panel/src/main/ipc/chat.ts`: scoped loopback `tool_choice` suppression so Gemma4 loopback vMLX sessions keep explicit named tool pins; the N2-oriented suppression remains for non-Gemma loopback families.
+  - `panel/tests/request-builder.test.ts`: kept non-Gemma loopback suppression covered and added Gemma4 loopback pin coverage.
+- Proof artifact: `docs/internal/agent-notes/current-real-ui-dev-app-gemma4-26b-qat-jang4m-responses-tools-cachecontrols-gemma4-identity-toolchoice-20260610-proof.json`, `status=pass`.
+- Proven:
+  - real Electron dev app, current source, real `/Users/eric/models/JANGQ-AI/gemma-4-26B-A4B-it-qat-JANG_4M` load;
+  - `/v1/responses` streaming, reasoning display, two visible assistant turns, one `run_command` tool call per explicit user turn, and tool-result continuation;
+  - probe files match expected contents: `REAL_UI_LIVE_TOOL_ONE` and `REAL_UI_LIVE_TOOL_TWO`;
+  - generation defaults applied, `enable_thinking=true`, native `mixed_swa_kv_v1`, paged cache hits, server cache controls, and block-disk L2 writes.
+- Evidence:
+  - first turn app log accepted one `function_call` item at `output_index=2`, then completed one tool iteration and final visible answer `I have created the file. REAL_UI_LIVE_TOOL_ONE.`;
+  - second turn app log accepted one `function_call` item at `output_index=1`, then completed one tool iteration and final visible answer `REAL_UI_LIVE_TOOL_TWO. This is the second UI turn.`;
+  - cache hit telemetry included `384`, `549`, and `2688` cached tokens across turns/follow-ups with `paged+mixed_swa`; block disk queued/wrote new blocks.
+- Boundary:
+  - This proves the Gemma4 26B dev-app Responses/tool/cache loop for this exact two-turn file-tool contract. It does not claim installed-app bundle parity, media/audio/video, gateway/tunnel, Qwen empty-args, MiMo semantic exactness, or all Gemma rows green.
+  - No release/sign/notarize/PyPI/updater/download/site action was performed.
