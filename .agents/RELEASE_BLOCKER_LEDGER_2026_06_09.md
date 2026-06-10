@@ -450,6 +450,18 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   `30`, and block-disk writes `58`. This does not clear 26B media,
   installed-app parity, public tunnel SSE parity, package/sign/notarize/tag/
   upload, or release readiness.
+- 2026-06-10 Gemma 26B JANG4M dev-app image/VL update:
+  `build/current-real-ui-dev-app-gemma4-26b-jang4m-image-proof-20260610.json`
+  is green for the current Electron dev build and the 26B A4B JANG4M row. The
+  app persisted one image attachment, server `MEDIA_DIAG` saw `image_url`, the
+  Gemma media fallback ran with `1 image(s)`, and the assistant answered `Red`
+  with `imageSemanticVerified=true`. Runtime evidence recorded active memory
+  `17780.6 MB`, peak `18557.2 MB`, native `mixed_swa_kv_v1`,
+  `cache_detail=paged+mixed_swa`, `cache_hit_tokens=20`,
+  `l2_block_tokens_on_disk=64`, `l2_tokens_on_disk=64`, block-disk writes `2`,
+  and media-prefix cache storage for `367` prompt tokens. This does not clear
+  26B video/audio, installed-app parity, public tunnel SSE parity, package/
+  sign/notarize/tag/upload, or release readiness.
 - Proper release mechanics are documented in `/Users/eric/wiki/infra/apple-notarization.md`; do not invent an alternate path. The canonical keychain is `~/Library/Keychains/vmlx-build.keychain-db`, the Developer ID identity is `Developer ID Application: ShieldStack LLC (55KGF2S5AY)`, and notarization uses the `vmlx-notary` keychain profile.
 - If signing returns `errSecInternalComponent`, fix key access with the documented sequence and retry once after the partition-list grant settles:
 
