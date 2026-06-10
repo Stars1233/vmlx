@@ -1342,3 +1342,29 @@
 - Apple notary IDs: Sequoia `d29a3974-4674-4812-8fa2-5a7e0da69269`; Tahoe `27ff0109-e023-469d-a634-5c410f37ac3c`.
 - Verified status for both DMGs: `hdiutil verify` valid, `codesign --verify` valid, Developer ID authority `ShieldStack LLC (55KGF2S5AY)`, notarization ticket stapled, `xcrun stapler validate` worked, and Gatekeeper `spctl` accepted with `source=Notarized Developer ID`.
 - Boundary: no GitHub release, tag, latest manifest upload, public asset upload, or PyPI publish was performed in this lane. Checkpoint claims must stay limited to currently green rows: N2 JANGTQ2, Gemma 12B MXFP4/JANG4M text/tools/cache plus proven image/video rows where recorded, Gemma 26B/31B JANG4M dev image/video rows, and MiMo JANGTQ_2 tool/cache transport. N2 JANG_1L, MiMo exactness/media, DSV4, public tunnel SSE parity, audio support, and full `release_ready` remain open.
+
+# 2026-06-10 - Public checkpoint release surface patched
+
+- Replaced the public `v1.5.56` checkpoint assets on both GitHub release repos:
+  `jjang-ai/vmlx` and `jjang-ai/mlxstudio`.
+- Current GitHub release asset digests now match the notarized local checkpoint DMGs:
+  Sequoia `sha256=42c053cd2422e72ef74753cbc240a68a319d6c10ff60c105d5ed4c4c34f34a9c`,
+  Tahoe `sha256=b35e6cb55ca0f7e50a9a4a8733f111ea3df070ccf32caa87510c8027f16fb2f2`,
+  Sequoia blockmap `sha256=49f2cc135d52f2713cfb84d5bcfe0e6bd1becc7ad947a43ce4c896820be020f0`,
+  Tahoe blockmap `sha256=8ae7d7afd515f793ef639e3e73477329d701295e01c1feada04a3d92d9ad8546`.
+- Updated both GitHub release bodies with the same checkpoint SHA text.
+- Updated and pushed `latest.json`:
+  `jjang-ai/mlxstudio@d69d2d0` on `main`, and `jjang-ai/vmlx@8604edca` on both `main` and `codex/pr-intake-manifest`.
+- Force-moved the `jjang-ai/vmlx` `v1.5.56` source tag to `8604edca`, matching current `origin/main`.
+- Patched the live `mlx.studio` web root directly:
+  `/var/www/mlx.studio/update/latest.json` now matches committed `mlxstudio/latest.json`,
+  `/var/www/mlx.studio/download/index.html` now displays the checkpoint Sequoia/Tahoe SHA strings,
+  and Cloudflare purge for `mlx.studio` succeeded.
+- Public verification after purge:
+  `https://mlx.studio/update/latest.json` returns HTTP 200 with `cache-control: no-cache, no-store, must-revalidate`, `cf-cache-status: DYNAMIC`, and the checkpoint SHA values;
+  `https://mlx.studio/download/` displays the checkpoint SHA values;
+  PyPI reports `vmlx==1.5.56` and `jang==2.5.31`; no `jangtools` or `jang-tools` distribution exists.
+- Release-surface proof artifact:
+  `build/current-release-surface-contract-after-checkpoint-upload-20260610.json`.
+  It remains `status=fail` only because `https://raw.githubusercontent.com/jjang-ai/mlxstudio/main/latest.json` is still serving the pre-replacement hashes from GitHub raw CDN cache even though GitHub Contents API, `github.com/.../raw/refs/heads/main/latest.json`, jsDelivr, and the live site updater all show the checkpoint hashes.
+- Boundary: this is a public signed/notarized checkpoint release surface, not production-clear runtime release readiness. The manifest still records `release_ready=false` elsewhere for N2 JANG_1L, MiMo exactness/media, DSV4, public tunnel SSE parity, audio support, and full matrix gaps.

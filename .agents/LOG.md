@@ -8649,3 +8649,36 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
   `source=Notarized Developer ID`.
 - No GitHub release/tag/latest manifest upload/public asset upload/PyPI publish
   was done from this lane.
+
+# 2026-06-10 - Public checkpoint release surface updated
+
+- Replaced `v1.5.56` assets on `jjang-ai/vmlx` and `jjang-ai/mlxstudio` with
+  the signed/notarized checkpoint DMGs and blockmaps.
+- Verified GitHub release digests on both repos:
+  Sequoia DMG `42c053cd2422e72ef74753cbc240a68a319d6c10ff60c105d5ed4c4c34f34a9c`,
+  Tahoe DMG `b35e6cb55ca0f7e50a9a4a8733f111ea3df070ccf32caa87510c8027f16fb2f2`,
+  Sequoia blockmap `49f2cc135d52f2713cfb84d5bcfe0e6bd1becc7ad947a43ce4c896820be020f0`,
+  Tahoe blockmap `8ae7d7afd515f793ef639e3e73477329d701295e01c1feada04a3d92d9ad8546`.
+- Updated GitHub release notes on both repos with the checkpoint hashes.
+- Pushed updater metadata:
+  `jjang-ai/mlxstudio@d69d2d0` (`main`) and `jjang-ai/vmlx@8604edca`
+  (`main` and `codex/pr-intake-manifest`).
+- Moved `jjang-ai/vmlx` tag `v1.5.56` to `8604edca`, matching `origin/main`.
+- Patched live `mlx.studio` directly:
+  `/var/www/mlx.studio/update/latest.json` now has checkpoint hashes and
+  `/var/www/mlx.studio/download/index.html` no longer shows stale displayed
+  SHA strings. Cloudflare purge for `mlx.studio` returned success.
+- Public post-purge checks:
+  `mlx.studio/update/latest.json` matches local committed updater JSON and
+  carries no-store/no-cache headers; `mlx.studio/download/` displays matching
+  checkpoint SHA values; PyPI reports `vmlx==1.5.56` and `jang==2.5.31`.
+- Live release-surface proof:
+  `build/current-release-surface-contract-after-checkpoint-upload-20260610.json`
+  remains red only on `public_raw_updater_matches_local` because
+  `raw.githubusercontent.com/jjang-ai/mlxstudio/main/latest.json` is still
+  serving old hashes from GitHub raw CDN cache. Direct GitHub Contents API,
+  `github.com/.../raw/refs/heads/main/latest.json`, jsDelivr, and
+  `mlx.studio/update/latest.json` all show the checkpoint hashes.
+- Boundary: public checkpoint release surface is now updated, but this does not
+  change the broader runtime matrix state or production `release_ready=false`
+  blockers.
