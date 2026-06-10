@@ -2431,6 +2431,50 @@ After every meaningful proof or fix, append `.agents/STATUS.md` and
 Eric explicitly asked to keep the current constraints in `AGENTS.md` so every
 continuation is forced to check them before acting.
 
+Before any substantive movement, the agent must explicitly check and preserve
+all of these items:
+
+1. Current goal: keep moving toward a signed working checkpoint release surface
+   by reducing real MiMo/Gemma/Qwen/N2-JANGTQ runtime, API, UI, cache, parser,
+   and media blockers. Do not substitute stale pointer churn, broad test-suite
+   churn, or release-adjacent cleanup when a live blocker can be reduced.
+2. Written-state rule: write every user instruction, action, command, proof
+   artifact, status movement, blocker, no-claim boundary, commit/push result,
+   and other-agent handoff into `.agents/STATUS.md` and `.agents/LOG.md` as
+   work happens. If the written state and chat memory disagree, stop and update
+   the written state before continuing.
+3. No subagents: do not use Python, shell wrappers, MCP tools, browser tools,
+   or orchestration scripts to spawn, supervise, prompt, summarize, or delegate
+   work to agents. Direct Python/shell remains allowed only for local proof
+   scripts, artifact inspection, focused tests, and source maintenance.
+4. N2 JANG_1L boundary: do not load, fix, classify, prove, or claim Nex/N2
+   JANG_1L unless Eric explicitly reopens that lane in the current turn. N2
+   JANGTQ/non-JANG_1L work is allowed only when it does not overlap that lane.
+5. Parser/API priority: harshly focus on opencode/Codex harness usability:
+   auto tool usage, required tool usage, no-tool mode, tool-result
+   continuation, content deltas, reasoning deltas, interleaved reasoning/tool
+   streaming, request kwargs passthrough, parser selection, gateway/API/raw SSE
+   parity, cache reuse telemetry, and final response object consistency.
+6. Qwen empty-args policy: Qwen3.6/Qwen-coder empty `arguments: {}` failures
+   are release-critical for 27B and 35B XML tool-call dialects. Do not trust a
+   proposed root cause without same-model raw output. Missing required tool
+   arguments must fail closed; do not synthesize args from visible preambles,
+   disable reasoning, silently drop tool calls as a fake success, strip raw XML
+   after the fact, or rewrite JSON/tool values to hide model/runtime failures.
+7. Live-proof preference: for MiMo, Gemma JANG/MXFP/QAT, Qwen/Qwen-coder, and
+   N2 JANGTQ/non-JANG_1L, prefer real source/dev-app/installed-app/API/cache/UI
+   proofs over metadata-only claims. Large-model rows are valid on the 128GB
+   host when RAM headroom allows; watch memory/cache storage and kill only
+   clearly unrelated smaller processes if needed.
+8. Release lock: Eric wants a signed/notarized checkpoint release, but do not
+   sign, notarize, tag, publish PyPI, update updater JSON, update download
+   links, purge sites, or create public release assets unless Eric explicitly
+   asks for that action in the current turn or a newer checked-in directive
+   lifts the lock.
+9. Other-agent handoff: every proof or blocker classification must say what is
+   proven, what is not proven, what must not be claimed, and what the parallel
+   agent should implement, rebuild, recapture, or avoid.
+
 Current active lane:
 
 - Work one blocker at a time on real runtime/API/UI/cache/model proof for

@@ -1,4 +1,22 @@
 ## CODEX
+- now: Eric asked to put the current carry-forward "into agents.md" after
+  reinforcing that every instruction, every status movement, and every action
+  must be written down and checked. This movement is documentation/control-plane
+  only.
+- constraints: do not launch models, do not edit runtime code, do not sign/
+  notarize/release/PyPI/update downloads or sites, do not touch N2 JANG_1L, and
+  do not use subagents or recursive agent behavior.
+- action: tighten active `AGENTS.md` with an explicit continuation checklist
+  for current goal, written-state discipline, no-subagent rule, parser/API/
+  streaming priority, Qwen empty-args fail-closed policy, N2 JANG_1L boundary,
+  live-proof preference, release lock, and other-agent handoff requirements.
+- commit movement: first `git add` attempt hit the repo ignore rule for
+  `.agents`; next movement force-adds only `.agents/STATUS.md` and
+  `.agents/LOG.md` with `AGENTS.md`.
+- boundary: this does not prove or fix a runtime row by itself; it exists to
+  prevent future drift before resuming MiMo/Gemma/Qwen/N2-JANGTQ proof work.
+
+## CODEX
 - now: continuing the persistent objective to reduce current untested/unfixed
   blockers for Nex/N2 JANGTQ/non-JANG_1L, MiMo V2.5 JANG/JANGTQ, Gemma
   JANG/MXFP/QAT, VL/audio/video, cache/L2/TurboQuant, reasoning/tool parsers,

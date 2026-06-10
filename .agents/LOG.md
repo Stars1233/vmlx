@@ -1,3 +1,25 @@
+# 2026-06-10 - AGENTS.md hard carry-forward refresh
+
+- Request: Eric said "into agents.md" and reinforced that every instruction,
+  every status movement, every action, and every no-claim boundary must be
+  written down and checked.
+- Current lane: documentation/control-plane only.
+- Constraints: no model launch, no runtime code edit, no release/sign/
+  notarize/PyPI/updater/download/site action, no N2 JANG_1L work, no subagents,
+  and no fake parser/tool/cache/media claims.
+- Planned movement: update active `AGENTS.md` with an explicit continuation
+  checklist covering current-goal check, written-state logging, no-subagent
+  rule, parser/API/tool streaming priority, Qwen empty-args fail-closed policy,
+  N2 JANG_1L off-limits boundary, live-proof preference, release lock, and
+  other-agent handoff requirements.
+- Commit movement: first `git add` attempt failed because `.agents` is ignored
+  by repo rules. The follow-up commit must force-add only `.agents/STATUS.md`
+  and `.agents/LOG.md` plus `AGENTS.md`; do not stage unrelated dirty build or
+  `node_modules` paths.
+- Boundary: this edit will not be claimed as a runtime proof or release
+  readiness signal. It only makes future continuations check the right written
+  state before resuming MiMo/Gemma/Qwen/N2-JANGTQ blocker work.
+
 # 2026-06-10 - Continuation blocker selection
 
 - Request: continue the persistent objective to get current blockers fixed,
