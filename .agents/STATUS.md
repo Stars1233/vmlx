@@ -796,3 +796,23 @@
 - coordination: wrote `.agents/PARALLEL_RELEASE_LANE_HANDOFF_2026_06_09.md` so the parallel agent can pick up same-model Responses capture/fix work, Gemma media/UI, MiMo, N2, DSV4, and MiniMax without relying on chat context.
 - validation: focused full-checklist tests for Responses/Qwen35/Gemma green fixture passed `4/4`; `py_compile` passed. No package, sign, notarize, tag, download, or release action was run.
 - follow-up source recheck: `build/current-noheavy-api-cache-contract-after-qwen35-output-index-recheck-20260609.json`, `status=pass`; current source still passes `responses_streaming_tool_call_arguments_and_indexes`, gateway argument streaming, reasoning-empty final-args streaming, and stale-port rejection. This narrows the remaining Qwen35 raw-SSE blocker to live same-model direct/gateway/tunnel recapture or deployed/tunnel staleness, not parser/cache/sampling/generation defaults.
+
+# 2026-06-10 - Gemma 12B JANG4M real dev-app proof
+
+- Reduced blocker class: `api/ui` for Gemma 12B JANG4M source-to-dev-app chat proof.
+- Tracked proof summary: `build/current-real-ui-live-model-gemma4-12b-jang4m-dev-app-proof-20260610.json`, `status=pass`.
+- Raw dev-app proof captures are under ignored `docs/internal/agent-notes/`: Responses/tools/cache and Chat/image/cache both passed.
+- Responses app proof: real Electron dev app launched, real vMLX server loaded `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-JANG_4M`, built-in `run_command` tool loop executed twice, visible content streamed, and cache metrics showed `paged+mixed_swa` hits with cached tokens `2687` then `2901`.
+- Image app proof: Chat Completions UI path sent an image attachment to the Gemma MLLM path and returned visible `Red`; `media.imageSemanticVerified=true`.
+- Cache proof: server controls were visible, native mixed-SWA cache was active, and block-disk L2 writes were present.
+- Boundary: this is dev Electron app + remote session proof, not installed-app parity, not local session-manager launch proof, not audio/video, not public tunnel raw SSE, and not package/sign/notarize/tag/download/release clearance.
+
+# 2026-06-10 - N2 JANGTQ2 real dev-app proof remains red on Responses delta streaming
+
+- Reduced blocker class: `api/ui` for Nex/N2 Pro JANGTQ2 dev-app proof.
+- Tracked proof summary: `build/current-real-ui-live-model-n2-jangtq2-dev-app-proof-20260610.json`, `status=fail`.
+- Raw dev-app proof captures are under ignored `docs/internal/agent-notes/`: default prompt and longer-delta prompt both failed only the `responses_delta_streaming` required surface.
+- Positive evidence: real Electron dev app launched, real vMLX server loaded `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2`, `/v1/responses` completed two turns, built-in `run_command` executed, and probe files contained `REAL_UI_LIVE_TOOL_ONE` and `REAL_UI_LIVE_TOOL_TWO`.
+- Positive cache/runtime evidence: health reported `hybrid_ssm_v1` / `hybrid_ssm_typed`, attention-only TurboQuant KV, native SSM companion state, paged+SSM cache hits, block-disk L2 writes, and SSM companion disk stores. Longer attempt ended around `103807.6 MB` active, `108294.9 MB` peak, `l2_block_tokens_on_disk=4626`, `l2_ssm_tokens_on_disk=23454`.
+- Red evidence: both attempts failed `requested Responses API mode but proof did not record responses_delta_streaming surface`; first post-tool visible answer collapsed to `Created`, leaving only one multi-delta visible assistant trace in the longer run.
+- Boundary: N2 JANGTQ2 source/API/cache proof remains strong, but dev-app Responses delta streaming is not green. Do not package/sign/notarize/release on this row until raw server SSE vs gateway/dev-app stream trace is compared or fixed.

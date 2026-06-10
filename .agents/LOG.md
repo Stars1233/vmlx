@@ -7991,3 +7991,18 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - N2 JANGTQ2: `build/current-n2-jangtq2-live-chat-cache-responses-l2-20260610.json` passed. The 101 GiB bundle loaded and proved hybrid SSM cache (`hybrid_ssm_v1`), attention TurboQuant KV + native SSM companion, chat cache hit `paged+ssm`, required chat tool, Responses required tool, Responses tool-result continuation, Responses streaming tool args, and fresh-process L2 restore `paged+ssm+disk` with block disk and SSM companion disk hits.
 - N2 JANG_1L: `build/current-n2-jang1l-live-chat-cache-responses-20260610.json` failed during `server_startup`. This was a real launch attempt with `--jang1l-required-extra-headroom-gib 1`, not a preflight skip. Server log shows qwen3_5_moe/JANG_1L route, 482 quant-shape patches, 123 shards, bfloat16 for 512 experts, wired limit set to the Metal cap (`115 GB`, model `119 GB` decimal), then `[METAL] Command buffer execution failed: Insufficient Memory` and exit `-6`.
 - Boundary: checkpoint candidates are Gemma 12B MXFP4/JANG4M, MiMo JANG_2L, and N2 JANGTQ2. MiMo JANGTQ2 needs artifact/logit/decode exactness work. N2 JANG_1L needs a real 128GB loader/runtime memory strategy before any support claim. No package/sign/notarize/tag/download release action was run in this slice.
+
+# 2026-06-10 - Gemma 12B JANG4M dev-app Responses/tools and image proof
+
+- Added tracked summary `build/current-real-ui-live-model-gemma4-12b-jang4m-dev-app-proof-20260610.json` from two real Electron dev-app captures.
+- Proven in app: Responses streaming + built-in tool loop + cache/L2 telemetry, and Chat Completions image attachment + red semantic answer.
+- Updated `.agents/PROOF_MATRIX_128GB_MIMO_N2_GEMMA_20260610.md` with exact proven/not-proven boundaries.
+- No release action was run.
+
+# 2026-06-10 - N2 JANGTQ2 dev-app proof classified red
+
+- Ran two real Electron dev-app N2 JANGTQ2 Responses/tool/cache attempts.
+- Added tracked summary `build/current-real-ui-live-model-n2-jangtq2-dev-app-proof-20260610.json`, `status=fail`.
+- Runtime/cache/tool pieces are positive: model loaded, hybrid SSM/TQ/L2 visible, built-in tools executed, no parser leak.
+- Red surface is exact: `responses_delta_streaming` was not proven because first post-tool visible content collapsed to `Created`; compare raw server SSE with panel gateway/dev-app stream traces next.
+- No release action was run.

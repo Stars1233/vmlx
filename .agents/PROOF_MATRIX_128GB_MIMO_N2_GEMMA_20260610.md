@@ -74,6 +74,49 @@ Not proven:
 - Full larger Gemma QAT matrix through UI/installed app.
 - Tunnel/gateway parity for these exact Gemma rows.
 
+### Gemma 4 12B JANG4M Real Dev-App Proof
+
+Artifact:
+
+- `build/current-real-ui-live-model-gemma4-12b-jang4m-dev-app-proof-20260610.json`
+
+Raw ignored proof captures:
+
+- `docs/internal/agent-notes/current-real-ui-live-model-gemma4-12b-jang4m-responses-tools-cache-20260610-proof.json`
+- `docs/internal/agent-notes/current-real-ui-live-model-gemma4-12b-jang4m-image-cache-20260610-proof.json`
+
+Proven:
+
+- Real Electron dev app launched with `npm run dev`, connected to a real vMLX
+  server loading `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-JANG_4M`.
+- Responses UI rail passed with built-in `run_command` tools enabled.
+- Two-turn tool loop executed real commands, wrote/read
+  `REAL_UI_LIVE_TOOL_ONE`, wrote `REAL_UI_LIVE_TOOL_TWO`, and persisted tool
+  execution/result phases in the chat UI state.
+- Responses stream trace carried visible content deltas and server metrics.
+  The two turns ended with `cachedTokens=2687` and `cachedTokens=2901`,
+  `cacheDetail=paged+mixed_swa`, and live decode around `45 t/s`.
+- Chat Completions UI rail passed with image attachment enabled.
+- The attached red image reached the Gemma MLLM media path and returned visible
+  `Red`; `media.imageSemanticVerified=true`.
+- Server/cache controls were visible in the app session and matched the
+  expected cache labels.
+- Gemma native cache surfaced as mixed-SWA with prefix cache, paged cache, and
+  block-disk L2 writes.
+- No raw parser/tool markup leak and no hidden reasoning leak were observed in
+  either dev-app run.
+
+Not proven:
+
+- Installed packaged app parity.
+- DMG package/sign/notarize/release readiness.
+- Local panel session manager starting this exact model from launch args; these
+  app proofs used a remote session connected to the server started by the proof
+  harness.
+- Gemma audio/video semantic E2E.
+- N2 or MiMo dev-app chat proof.
+- Same-model public tunnel raw SSE parity.
+
 ### MiMo V2.5 JANGTQ_2
 
 Artifacts:
@@ -180,6 +223,56 @@ Next implementation target:
 
 - Treat JANGTQ2 as the N2 checkpoint candidate. It is the profile with real
   live 128GB cache/API/tool/L2 proof.
+
+### Nex/N2 Pro JANGTQ2 Real Dev-App Proof
+
+Artifact:
+
+- `build/current-real-ui-live-model-n2-jangtq2-dev-app-proof-20260610.json`
+
+Raw ignored proof captures:
+
+- `docs/internal/agent-notes/current-real-ui-live-model-n2-jangtq2-responses-tools-cache-20260610-proof.json`
+- `docs/internal/agent-notes/current-real-ui-live-model-n2-jangtq2-responses-tools-cache-longdelta-20260610-proof.json`
+
+Proven:
+
+- Real Electron dev app launched with `npm run dev`, connected to a real vMLX
+  server loading `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2`.
+- The 101 GiB N2 JANGTQ2 profile loaded in the app proof harness; final health
+  showed about `103807.6 MB` active and `108294.9 MB` peak in the longer
+  attempt.
+- Responses UI rail reached `/v1/responses` and completed two turns.
+- Built-in `run_command` tool loop executed and wrote/read the expected probe
+  files: `REAL_UI_LIVE_TOOL_ONE` and `REAL_UI_LIVE_TOOL_TWO`.
+- Native cache surfaced as `hybrid_ssm_v1` / `hybrid_ssm_typed` with
+  `attention_kv`, `ssm_companion_state`, and `async_rederive`.
+- TurboQuant KV was active for attention KV layers only; SSM companion state
+  stayed native.
+- App/cache endpoints showed `paged+ssm` cache hits, block-disk L2 writes, and
+  SSM companion disk stores. The longer attempt ended with
+  `l2_block_tokens_on_disk=4626`, `l2_ssm_tokens_on_disk=23454`, and
+  `l2_tokens_on_disk=28080`.
+- Server cache controls were visible and verified in the dev app.
+- No raw parser/tool markup leak and no hidden reasoning leak were observed.
+
+Red:
+
+- The dev-app proof did not clear `responses_delta_streaming`. Both attempts
+  failed with `requested Responses API mode but proof did not record
+  responses_delta_streaming surface`.
+- The rerun used longer post-tool prompts, but the first post-tool visible
+  answer still collapsed to `Created`; only the second assistant message
+  produced multi-delta visible content (`count=31` in the longer attempt).
+- The first prompted post-tool response did not include the requested
+  `REAL_UI_LIVE_TOOL_ONE` phrase in visible content, although the tool file was
+  written correctly.
+
+Next implementation target:
+
+- Compare raw server SSE for the same N2 request against panel gateway/dev-app
+  stream traces. Do not mark N2 dev-app Responses streaming green until the
+  missing first-turn content delta/aggregation behavior is traced and proven.
 
 ## Red Live Attempts
 
