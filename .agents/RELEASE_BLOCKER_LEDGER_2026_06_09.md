@@ -488,6 +488,16 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   and video-turn media-prefix cache storage for `357` prompt tokens. This does
   not clear default-4k video behavior, 26B audio, installed-app parity, public
   tunnel SSE parity, package/sign/notarize/tag/upload, or release readiness.
+- 2026-06-10 Gemma 26B JANG4M dev-app audio update:
+  `build/current-real-ui-dev-app-gemma4-26b-jang4m-audio-proof-20260610.json`
+  is red by honest unsupported-modality guard. The app forced multimodal for
+  one audio file and server `MEDIA_DIAG` saw `input_audio`, but
+  `/v1/chat/completions` returned HTTP `400`: `unsupported media modality
+  audio. Supported modalities: text, vision, video.` Runtime/cache stayed
+  healthy before the guarded audio turn: active memory `17648.7 MB`, peak
+  `17843.1 MB`, native `mixed_swa_kv_v1`, `cache_detail=paged+mixed_swa`,
+  `cache_hit_tokens=20`, `l2_block_tokens_on_disk=64`, `l2_tokens_on_disk=64`,
+  and block-disk writes `2`. Do not claim 26B audio support.
 - 2026-06-10 Gemma 31B JANG4M dev-app image/VL update:
   `build/current-real-ui-dev-app-gemma4-31b-jang4m-image-proof-20260610.json`
   is green for the current Electron dev build and the 31B JANG4M row. The app
