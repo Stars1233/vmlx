@@ -80,6 +80,17 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   Forced MLLM is intentionally overridden because media weights are preserved
   but unwired. Cache/L2 was positive, so do not claim media support or chase
   cache as the blocker.
+- 2026-06-10 update: MiMo JANG_2L current dev-build video/media is now
+  explicitly red in `build/current-real-ui-dev-app-mimo-v25-jang2l-video-proof-20260610.json`.
+  The Electron dev app loaded the real 105 GiB bundle, completed two visible
+  text turns, sent one video attachment, and server `MEDIA_DIAG` saw
+  `video_url`; `/v1/chat/completions` returned `400`: `received unsupported
+  media modality video because the loaded runtime is text-only. Supported
+  modalities: text.` Runtime/cache stayed live before the guard with active
+  memory `105016.1 MB`, peak `106152.4 MB`, native `mixed_swa_kv_v1` /
+  `mimo_v2_asymmetric_swa`, `l2_block_tokens_on_disk=110`, and block-disk
+  writes `3`. Do not claim MiMo JANG_2L video support from preserved media
+  metadata.
 - 2026-06-10 update: MiMo JANGTQ_2 installed-app short text/cache is green in
   `build/current-real-ui-installed-app-mimo-v25-jangtq2-text-cache-proof-20260610.json`.
   The rebuilt app loaded the 79 GiB bundle, produced exact

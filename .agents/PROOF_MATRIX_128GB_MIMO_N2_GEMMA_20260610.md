@@ -581,6 +581,7 @@ Artifact:
 - `build/current-real-ui-live-model-mimo-v25-jang2l-dev-app-after-toolchoice-proof-20260610.json`
 - `build/current-real-ui-live-model-mimo-v25-jang2l-dev-app-followup-proof-20260610.json`
 - `build/current-real-ui-live-model-mimo-v25-jang2l-image-proof-20260610.json`
+- `build/current-real-ui-dev-app-mimo-v25-jang2l-video-proof-20260610.json`
 - `build/current-real-ui-live-model-mimo-v25-jang2l-responses-tools-proof-20260610.json`
 - `build/current-real-ui-installed-app-mimo-v25-jang2l-text-cache-proof-20260610.json`
 - `build/current-real-ui-installed-app-mimo-v25-jang2l-tools-proof-20260610.json`
@@ -636,6 +637,19 @@ Proven:
   `mlx_affine_quantized_matmul`, Metal NA active, `mixed_swa_kv_v1`,
   `mimo_v2_asymmetric_swa`, `cache_detail=paged`, `cached_tokens=39`,
   `l2_block_tokens_on_disk=110`, and `l2_tokens_on_disk=110`.
+- Real Electron dev-app MiMo JANG_2L video proof is now classified red by the
+  same explicit runtime text-only guard. The run loaded the 105 GiB artifact,
+  completed two visible text turns, and then the server `MEDIA_DIAG` observed
+  one `video_url`, but `/v1/chat/completions` returned `400`: `received
+  unsupported media modality video because the loaded runtime is text-only.
+  Supported modalities: text.`
+- The video run also proved the 128GB runtime/cache boundary in-app: active
+  memory `105016.1 MB`, peak `106152.4 MB`, `JANG_2L_322_D3E16`,
+  `mlx_affine_quantized_matmul`, Metal NA eligible, native
+  `mixed_swa_kv_v1` / `mimo_v2_asymmetric_swa`, generic TurboQuant KV
+  correctly inactive, `ram_tokens_cached=110`,
+  `l2_block_tokens_on_disk=110`, `l2_tokens_on_disk=110`, and block-disk
+  `disk_writes=3`.
 - The server log explains the boundary: MiMo V2 preserved media weights
   override forced MLLM mode because bundle metadata marks vision/audio as
   `unwired weights_preserved_text_runtime`; the runtime routes this artifact
