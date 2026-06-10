@@ -137,6 +137,16 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   `mixed_swa_kv_v1` / `mimo_v2_asymmetric_swa`, `ram_tokens_cached=132`,
   `l2_block_tokens_on_disk=132`, `l2_tokens_on_disk=132`, and block-disk writes
   `3`. Do not claim MiMo JANGTQ_2 video support from preserved media metadata.
+- 2026-06-10 update: MiMo JANGTQ_2 current dev-build audio/media is explicitly
+  red in `build/current-real-ui-dev-app-mimo-v25-jangtq2-audio-proof-20260610.json`.
+  The same Electron dev-app path loaded the real bundle, completed two visible
+  text turns, sent one audio attachment, and server `MEDIA_DIAG` saw
+  `input_audio`; `/v1/chat/completions` returned `400`: `received unsupported
+  media modality audio because the loaded runtime is text-only. Supported
+  modalities: text.` Runtime/cache stayed live before the guard with native
+  `mixed_swa_kv_v1` / `mimo_v2_asymmetric_swa`, `ram_tokens_cached=132`,
+  `l2_block_tokens_on_disk=132`, `l2_tokens_on_disk=132`, and block-disk writes
+  `3`. Do not claim MiMo JANGTQ_2 audio support from preserved media metadata.
 - 2026-06-10 update: MiMo JANGTQ_2 installed-app exact-output probe is still
   red in `build/current-real-ui-installed-app-mimo-v25-jangtq2-exact-output-proof-20260610.json`.
   The same rebuilt app loaded the real 79 GiB bundle, kept parser/reasoning

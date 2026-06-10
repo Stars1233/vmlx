@@ -488,6 +488,7 @@ Artifacts:
 - `build/current-real-ui-dev-app-mimo-v25-jangtq2-exact-output-proof-20260610.json`
 - `build/current-real-ui-dev-app-mimo-v25-jangtq2-image-proof-20260610.json`
 - `build/current-real-ui-dev-app-mimo-v25-jangtq2-video-proof-20260610.json`
+- `build/current-real-ui-dev-app-mimo-v25-jangtq2-audio-proof-20260610.json`
 
 Proven:
 
@@ -535,6 +536,17 @@ Proven:
   `mimo_v2_asymmetric_swa`, generic TurboQuant KV correctly inactive,
   `ram_tokens_cached=132`, `l2_block_tokens_on_disk=132`,
   `l2_tokens_on_disk=132`, and block-disk `disk_writes=3`.
+- Current Electron dev-build audio proof loaded the real bundle, completed two
+  visible text turns, sent one audio attachment, and server `MEDIA_DIAG` saw
+  `input_audio`. The proof is red for media because the runtime returned HTTP
+  `400`: `received unsupported media modality audio because the loaded runtime
+  is text-only. Supported modalities: text.`
+- The dev-app audio run also proved the runtime/cache boundary before the media
+  guard: active memory `76491.8 MB`, peak `77127.3 MB`, TurboQuant codebook
+  routed experts, prestacked layout, native `mixed_swa_kv_v1` /
+  `mimo_v2_asymmetric_swa`, generic TurboQuant KV correctly inactive,
+  `ram_tokens_cached=132`, `l2_block_tokens_on_disk=132`,
+  `l2_tokens_on_disk=132`, and block-disk `disk_writes=3`.
 
 Red:
 
@@ -547,9 +559,9 @@ Red:
   `{"status":"ok","value":"blue-cat"}`.
 - Dev-app exact-output proof reproduced the same failure: `ACK-CB-742` became
   `ACKCB-742`, and the JSON probe stopped at `{"`.
-- Dev-app image/VL and video are red by the same honest text-only runtime guard
-  as the installed app. Do not claim MiMo JANGTQ_2 media support from preserved
-  media weights.
+- Dev-app image/VL, video, and audio are red by the same honest text-only
+  runtime guard as the installed app. Do not claim MiMo JANGTQ_2 media support
+  from preserved media weights.
 
 Next implementation target:
 
