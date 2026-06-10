@@ -7840,6 +7840,15 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Validation passed: focused full-checklist tests `4/4`, `py_compile`, and regenerated checklist. No release, package, sign, notarize, tag, or download action.
 - Follow-up no-heavy source recheck: `build/current-noheavy-api-cache-contract-after-qwen35-output-index-recheck-20260609.json`, `status=pass`; `responses_streaming_tool_call_arguments_and_indexes=true`, `gateway_responses_function_call_arguments_streaming=true`, `gateway_responses_reasoning_empty_final_arguments_streaming=true`, and `gateway_stale_responses_port_rejection=true`. Current source is not showing the output-index bug in synthetic/source contracts; next work is live same-model direct/gateway/tunnel capture or deployed route freshness.
 
+# 2026-06-09 18:38 PDT - Public app issue audit pointer refresh
+
+- Refreshed `tests/cross_matrix/run_public_app_issue_audit.py` after checkpoint app/package parity and wrote `build/current-public-app-issue-audit-after-checkpoint-packaged-integrity-20260609.json`.
+- Updated current-suite and release-manifest pointers to the refreshed public issue audit artifact.
+- Positive changes: stale installed-app hash failures for #111 and #165 are gone; #111 is now `focused_source_slice=pass`, and #165 has `installed_app_dsml_parser_hash_guarded=true` plus `tool_call_contract_source_checks_pass=true`.
+- Remaining intended blocker: `public_app_issue_audit` is still false in `build/current-release-regression-manifest-after-public-issue-audit-refresh-20260609.json` because #165 still has `tool_call_contract_passes=false`; the broader tool-call contract remains open on live default-cache DSV4 tool-loop proof. Do not weaken this validator unless release scope explicitly defers DSV4/DSML tool-call clearance.
+- Validation passed: focused pytest `9/9`, `py_compile`, public issue audit runner, release manifest regen, and `git diff --check`.
+- Boundary: no tag/upload/appcast/PyPI/public release action.
+
 # 2026-06-09 18:25 PDT - Checkpoint packaged integrity proof-map refresh
 
 - Fixed stale packaged-integrity/release-gate proof pointers after the checkpoint DMG app parity run. `panel/scripts/release-gate-python-app.py` now refreshes `build/current-objective-proof-after-n2-jang1l-memory-refresh-20260609.json`, matching the current suite/release manifest instead of the older PR-intake objective artifact.

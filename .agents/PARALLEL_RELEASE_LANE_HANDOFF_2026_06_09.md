@@ -94,6 +94,12 @@ that path in the current turn.
   It keeps Gemma QAT/native MXFP4 full runtime/media/cache/API/UI clearance in
   the expected-open set; do not remove that blocker just because source no-media
   QAT smokes are green.
+- Public app issue audit now points at
+  `build/current-public-app-issue-audit-after-checkpoint-packaged-integrity-20260609.json`.
+  This refreshed artifact clears stale installed-app hash failures for #111 and
+  #165, but release manifest still keeps `public_app_issue_audit=false` because
+  #165 has `tool_call_contract_passes=false`. Treat that as a real DSV4/DSML
+  tool-call matrix blocker, not stale packaging drift.
 - Proper release mechanics are the documented path in
   `/Users/eric/wiki/infra/apple-notarization.md`; do not invent a GUI-only,
   ad-hoc-signing, cert-reimport, or verifier-weakening workaround. If signing
