@@ -2240,3 +2240,46 @@
   source after commit `09bfe652` or newer, then recapture the same Qwen35
   request. Keep the stale tunnel boundary red until that capture has valid
   output indices and the separate reasoning item lifecycle.
+
+# 2026-06-10 - Qwen35 raw SSE artifact reclassified with current tunnel
+
+- Directive check: allowed lane is Qwen/Qwen3.6/Qwen-coder
+  Responses/tool/reasoning streaming parity and release-board proof accounting.
+  N2 JANG_1L remains off-limits. No model launch, release, signing,
+  notarization, PyPI, public download, or package action was taken.
+- Correction: the live recapture runner's default tunnel path still pointed at
+  the stale 2026-06-09 public tunnel SSE. The repo already had the fresh
+  2026-06-10 tunnel recapture
+  `build/responses-sse-captures-20260610/tunnel-qwen35-mxfp8-mtp-tool-recapture-after-strict-source-20260610.sse`.
+- Action: reclassified the new direct/gateway captures from the fail-closed fix
+  against the fresh tunnel capture without launching a model.
+- Artifact:
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-missing-required-args-failclosed-20260610.json`,
+  `status=pass`, `missing_captures=[]`.
+- Proven: direct, gateway, and current tunnel all report same model
+  `models/Qwen3.6-35B-A3B-MXFP8-CRACK-MTP`, preserve authoritative
+  `{"value": "blue-cat"}`, have argument delta/done events, keep reasoning
+  enabled without a reasoning-disable workaround, preserve final object
+  consistency, and have valid output item indices. Direct/gateway use
+  `message=0`, `reasoning=1`, `function_call=2`; tunnel uses `message=0`,
+  `function_call=1` with no conflict.
+- Checklist pointer update: `tests/cross_matrix/run_full_release_objective_checklist.py`
+  now points both `RESPONSES_RAW_SSE_PARITY` and `QWEN35_RAW_SSE_PARITY` at the
+  latest artifact. The guard tests were updated accordingly.
+- Release tracker update:
+  `docs/internal/VMLX_MLXSTUDIO_RELEASE_EXECUTION_TRACKER_2026_06_07.md`
+  now names the latest Qwen raw SSE artifact and source fix commit `09bfe652`.
+- Regenerated checklist:
+  `build/current-full-release-objective-checklist-after-qwen-missing-required-args-failclosed-20260610.json`
+  remains expected-open with `failed_count=56`, `prepackage_ready=false`, and
+  `release_ready=false`.
+- Verification: `.venv/bin/python tests/cross_matrix/run_responses_raw_sse_parity_contract.py ...` produced `status=pass`; `.venv/bin/python -m pytest -q tests/test_full_release_objective_checklist.py -k 'responses_raw_sse or qwen35_raw_sse or full_release_objective_checklist_uses_current'`
+  passed `8 passed`; `python3 -m py_compile tests/cross_matrix/run_full_release_objective_checklist.py`
+  passed.
+- Not proven: this does not clear MiMo exactness/media, Gemma installed-app/UI
+  parity, N2 JANG_1L, Step/LFM/Nemotron/DSV4 rows, full opencode harness loops,
+  or release readiness.
+- Other-agent action: treat Qwen35 raw SSE direct/gateway/tunnel for this
+  request as green after `09bfe652` plus the latest artifact, but continue
+  cross-family parser/API proof for Gemma/MiMo/N2/Qwen-coder and do not use the
+  Qwen artifact as proof for other families.

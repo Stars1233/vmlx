@@ -9942,3 +9942,35 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Other-agent action: rebuild/redeploy public tunnel/backend from current
   source after `09bfe652` or newer and recapture the same Qwen35 raw SSE
   request; do not claim tunnel parity from the stale capture.
+
+# 2026-06-10 - Qwen35 raw SSE artifact reclassified with current tunnel
+
+- Request: keep Qwen raw SSE release-board proof current after the missing
+  required-args fail-closed fix.
+- Correction: the live recapture runner used its stale default 2026-06-09
+  tunnel path. The fresh current tunnel capture already existed at
+  `build/responses-sse-captures-20260610/tunnel-qwen35-mxfp8-mtp-tool-recapture-after-strict-source-20260610.sse`.
+- Action: re-ran the existing no-load raw SSE classifier over the new
+  direct/gateway fail-closed captures plus the fresh tunnel capture.
+- Artifact:
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-missing-required-args-failclosed-20260610.json`,
+  `status=pass`, `missing_captures=[]`.
+- Proven: direct, gateway, and current tunnel are same-model, preserve exact
+  `{"value": "blue-cat"}` through argument delta/done/final object, keep
+  reasoning enabled, preserve final object consistency, and have valid output
+  item indices. Direct/gateway indices are `message=0/reasoning=1/function=2`;
+  tunnel indices are `message=0/function=1` with no conflict.
+- Source/proof accounting: full release checklist now points
+  `RESPONSES_RAW_SSE_PARITY` and `QWEN35_RAW_SSE_PARITY` at this latest
+  artifact. The release tracker row now names the latest artifact and source
+  fix `09bfe652`.
+- Regenerated checklist:
+  `build/current-full-release-objective-checklist-after-qwen-missing-required-args-failclosed-20260610.json`
+  remains `status=open`, `failed_count=56`, `prepackage_ready=false`,
+  `release_ready=false`.
+- Verification: raw SSE classifier returned `status=pass`; focused checklist
+  tests passed `8/8`; checklist runner py_compile passed.
+- Not proven: Qwen raw SSE proof does not clear MiMo, Gemma, N2, Step, LFM,
+  Nemotron, DSV4, installed-app, or release readiness.
+- Other-agent action: use the latest Qwen artifact for Qwen35 raw SSE rows and
+  keep working cross-family parser/API/tool-result/cache/UI proof.
