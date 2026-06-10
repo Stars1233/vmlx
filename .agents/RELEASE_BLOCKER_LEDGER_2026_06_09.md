@@ -410,6 +410,20 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   `2`. This does not clear 26B tools, Responses, media, installed-app parity,
   Gemma 31B, public tunnel SSE parity, package/sign/notarize/tag/upload, or
   release readiness.
+- 2026-06-10 Gemma 31B JANG4M dev-app exactness update:
+  `build/current-real-ui-dev-app-gemma4-31b-jang4m-exact-output-proof-20260610.json`
+  is green for the current Electron dev build and
+  `/Users/eric/models/JANGQ-AI/gemma-4-31B-it-qat-JANG_4M`. The app returned
+  exact text `GEMMA31-JANG4M-ACK-742` and exact JSON
+  `{"status":"ok","value":"gemma31-jang4m-blue"}`, with no parser/reasoning
+  leak and no persisted tools/reasoning, while using the Gemma4 parser family.
+  Runtime evidence recorded `weight_format=jang_affine`, `profile=JANG_4M`,
+  Metal NA eligibility, native `mixed_swa_kv_v1`,
+  `cache_detail=paged+mixed_swa`, `cache_hit_tokens=29`,
+  `l2_block_tokens_on_disk=81`, `l2_tokens_on_disk=81`, and block-disk writes
+  `2`. This does not clear 31B tools, Responses, media, installed-app parity,
+  public tunnel SSE parity, package/sign/notarize/tag/upload, or release
+  readiness.
 - Proper release mechanics are documented in `/Users/eric/wiki/infra/apple-notarization.md`; do not invent an alternate path. The canonical keychain is `~/Library/Keychains/vmlx-build.keychain-db`, the Developer ID identity is `Developer ID Application: ShieldStack LLC (55KGF2S5AY)`, and notarization uses the `vmlx-notary` keychain profile.
 - If signing returns `errSecInternalComponent`, fix key access with the documented sequence and retry once after the partition-list grant settles:
 
