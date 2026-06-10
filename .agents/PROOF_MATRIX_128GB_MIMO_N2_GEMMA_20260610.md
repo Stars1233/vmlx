@@ -865,7 +865,12 @@ Next implementation target:
   `run_command`, created both expected probe files exactly, completed visible
   turns, kept parser/reasoning leak checks clean, and recorded paged
   mixed-SWA/L2 evidence (`cache_hit_tokens=4548`,
-  `l2_block_tokens_on_disk=4225`, block-disk hits `36`, writes `68`). Continue
+  `l2_block_tokens_on_disk=4225`, block-disk hits `36`, writes `68`). Responses
+  tools are also green in
+  `build/current-real-ui-installed-app-mimo-v25-jangtq2-responses-tools-proof-20260610.json`:
+  `/v1/responses`, `previous_response_id` tool follow-ups,
+  `function_call_output`, response/content delta surfaces, exact probe files,
+  and the same paged mixed-SWA/L2 cache path are proven. Continue
   artifact/logit/decode diagnosis for literal/JSON/source-vs-quant exactness;
   do not reduce that to parser repair.
 - MiMo JANG_2L is the stronger MiMo checkpoint candidate for load/cache/text,

@@ -8310,3 +8310,11 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Proven: installed-app UI, real `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2` load, built-in `run_command` loop, exact probe files `REAL_UI_LIVE_TOOL_ONE` and `REAL_UI_LIVE_TOOL_TWO`, visible assistant turns, server cache controls, no parser/reasoning leak, native mixed-SWA cache, and block L2.
 - Runtime/cache evidence: active memory `76763.1 MB`, peak `81328.7 MB`, TurboQuant codebook routed experts with prestacked layout, `cache_detail=paged`, `cache_hit_tokens=4548`, `l2_block_tokens_on_disk=4225`, block-disk hits `36`, and block-disk writes `68`.
 - Boundary: this clears the default installed-app Chat Completions tool loop for MiMo JANGTQ_2 only. Broader exactness/source-vs-quant, Responses tools, media, JANG_2L tools, and release readiness remain open. No release action was run.
+
+# 2026-06-10 - MiMo JANGTQ_2 installed-app Responses tools
+
+- Ran installed-app MiMo V2.5 JANGTQ_2 Responses built-in tool proof through `/Applications/vMLX.app` with built-in tools, cache controls, temperature `0`, top_p `1`, and max tokens `256`.
+- Proof summary `build/current-real-ui-installed-app-mimo-v25-jangtq2-responses-tools-proof-20260610.json` is `status=pass`; raw proof is `docs/internal/agent-notes/current-real-ui-installed-app-mimo-v25-jangtq2-responses-tools-20260610-proof.json`.
+- Proven: installed-app UI, real `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2` load, `/v1/responses`, built-in `run_command`, `previous_response_id` tool follow-ups with `function_call_output`, Responses delta/cache-detail surfaces, exact probe files `REAL_UI_LIVE_TOOL_ONE` and `REAL_UI_LIVE_TOOL_TWO`, server cache controls, no parser/reasoning leak, native mixed-SWA cache, and block L2.
+- Runtime/cache evidence: active memory `76763.1 MB`, peak `81328.7 MB`, TurboQuant codebook routed experts with prestacked layout, `cache_detail=paged`, `cache_hit_tokens=4548`, `l2_block_tokens_on_disk=4225`, block-disk hits `36`, and block-disk writes `68`.
+- Boundary: this clears the default installed-app Responses tool loop for MiMo JANGTQ_2 only. Broader literal/JSON/source-vs-quant exactness, media, JANG_2L tools, and release readiness remain open. No release action was run.

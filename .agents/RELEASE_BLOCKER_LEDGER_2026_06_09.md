@@ -93,6 +93,14 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   `REAL_UI_LIVE_TOOL_TWO`), completed visible assistant turns, and recorded
   paged mixed-SWA cache/L2 evidence. This does not clear broader JANGTQ_2
   exactness/source-vs-quant, Responses tools, media, or MiMo JANG_2L tool rows.
+- 2026-06-10 update: MiMo JANGTQ_2 installed-app Responses built-in tool loop
+  is green in `build/current-real-ui-installed-app-mimo-v25-jangtq2-responses-tools-proof-20260610.json`.
+  The rebuilt app used `/v1/responses`, executed `run_command`, sent
+  `function_call_output` follow-ups with `previous_response_id`, recorded
+  Responses delta/cache-detail surfaces, created both expected probe files
+  exactly, and kept paged mixed-SWA cache/L2 evidence. This does not clear
+  broader JANGTQ_2 literal/JSON/source-vs-quant exactness, media, or MiMo
+  JANG_2L tool rows.
 - 2026-06-10 update: MiMo JANGTQ_2 installed-app image/media is now explicitly
   red in `build/current-real-ui-installed-app-mimo-v25-jangtq2-image-proof-20260610.json`.
   The app attached an image and server `MEDIA_DIAG` saw `image_url`, but the
