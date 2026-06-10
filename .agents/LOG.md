@@ -7913,6 +7913,31 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Positive evidence: authoritative args are preserved as `{"value": "blue-cat"}` in argument deltas, done event, and final function item; reasoning events are present; model matches; parse errors are `0`.
 - Remaining failure: tunnel still emits `message` and `function_call` at `output_index=0`, so `all_present_surfaces_have_valid_output_item_indices=false`.
 - Checklist pointer now consumes the recapture artifact, and focused raw-SSE/checklist validation passed `16/16`. Boundary: no package/sign/notarize/tag/download/release action.
+# 2026-06-10 - Panel exact local detector parity for Gemma/MiMo/N2
+
+- Reduced blocker class: `api/ui` launch/settings parity for the requested
+  checkpoint rows.
+- Source fix: panel now maps `gemma4_unified` and `gemma4_unified_text` to the
+  Gemma4 family, so exact local Gemma 12B MXFP4/JANG4M bundles get Gemma4
+  tool/reasoning parsers and rotating/paged mixed-SWA cache instead of
+  `unknown`.
+- Source fix: panel MiMo detection now matches Python registry policy:
+  `mimo_v2_asymmetric_swa` cache subtype, paged cache required for that
+  subtype, XML tools enabled, and no automatic MiMo reasoning claim until
+  visible-final thinking proof exists.
+- Proof: `build/current-panel-settings-contract-proof-20260610-mimo-n2-gemma-launch-parity.json`
+  is `status=pass`, `missing_source_markers=[]`.
+- Proof: `build/current-panel-exact-local-model-detect-mimo-n2-gemma-20260610.json`
+  is `status=pass`; exact local Gemma, MiMo, and N2 directories detect as
+  expected, with N2 JANG_1L honestly text-only/forceTextOnly.
+- Validation: `npx vitest run tests/model-config-registry.test.ts` passed
+  `66/66`; `npx vitest run tests/settings-flow.test.ts` passed `254/254`;
+  `.venv/bin/python -m pytest -q tests/test_panel_cli_flag_contract.py` passed
+  `9/9`; no-heavy panel settings contract regenerated green.
+- Boundary: no Electron-clicked chat transcript, no installed-app rebuild,
+  no N2 JANG_1L memory fix, no MiMo JANGTQ2 exactness fix, no Gemma audio/video
+  E2E, no package/sign/notarize/tag/download/release action.
+
 # 2026-06-09 16:59 PDT - documented signing/notarization path correction
 
 - Read the actual runbook `/Users/eric/wiki/infra/apple-notarization.md` and active scripts `panel/scripts/build-release-dmgs.sh`, `panel/scripts/notarize-release-dmgs.sh`, and `panel/scripts/verify-release-dmgs.sh`.

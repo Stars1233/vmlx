@@ -7,6 +7,51 @@ separates what was actually loaded and proven from what remains red.
 
 ## Proven Live On 128GB Host
 
+### Dev-App Detector and Settings Launch Parity
+
+Artifacts:
+
+- `build/current-panel-settings-contract-proof-20260610-mimo-n2-gemma-launch-parity.json`
+- `build/current-panel-exact-local-model-detect-mimo-n2-gemma-20260610.json`
+
+Proven:
+
+- Panel settings/launch contract is current-source green:
+  `status=pass`, `missing_source_markers=[]`, panel settings tests passed
+  `315`, model registry tests passed `66` in the contract artifact,
+  engine model registry passed `140`, and CLI flag contract passed `9`.
+- Exact local Gemma 12B MXFP4 and JANG4M directories now autodetect as
+  `family=gemma4`, `cacheType=rotating_kv`, `usePagedCache=true`,
+  `toolParser=gemma4`, `reasoningParser=gemma4`, and multimodal.
+- Exact local MiMo JANG_2L and JANGTQ_2 directories now autodetect as
+  `family=mimo_v2`, `cacheSubtype=mimo_v2_asymmetric_swa`,
+  `usePagedCache=true`, `toolParser=xml_function`, and no automatic reasoning
+  claim.
+- Exact local N2 JANGTQ2 directory autodetects as `qwen3.5-moe`,
+  `cacheType=hybrid`, paged, Qwen tools, Qwen3 reasoning, TurboQuant, and
+  multimodal.
+- Exact local N2 JANG_1L directory autodetects as `qwen3.5-moe`,
+  `cacheType=hybrid`, paged, Qwen tools, Qwen3 reasoning, but
+  `forceTextOnly=true` until VL and memory-safe runtime proof exist.
+
+Fixes made:
+
+- Added panel `gemma4_unified` and `gemma4_unified_text` model-type aliases so
+  Gemma 4 unified bundles do not fall to `unknown`.
+- Aligned panel MiMo detection with the Python registry: XML tools remain on,
+  `mimo_v2_asymmetric_swa` cache subtype is exposed, paged cache is forced for
+  that subtype, and MiMo reasoning is not auto-advertised without visible-final
+  thinking proof.
+
+Not proven:
+
+- Electron UI clicked chat transcript for these exact rows.
+- Installed-app packaged parity for these exact rows after this source change.
+- N2 JANG_1L memory-safe live startup.
+- MiMo JANGTQ_2 exactness.
+- Gemma audio/video semantic E2E.
+- Same-model direct/gateway/tunnel raw SSE deployed parity.
+
 ### Gemma 4 12B MXFP4 and JANG4M
 
 Artifacts:
@@ -188,5 +233,8 @@ Next implementation target:
   SSM/TQ/L2/tool/Responses proof.
 - N2 JANG_1L needs a real memory-strategy fix. The current failure is a Metal
   OOM during loader/eval, not lack of attempt.
+- Other agent should keep the new panel detector boundary: MiMo auto mode is
+  XML tools + asymmetric-SWA paged cache, not auto reasoning; Gemma unified
+  aliases must stay mapped to Gemma4 parsers and rotating mixed-SWA cache.
 - Keep signed DMG release notes honest: say which profiles are checkpoint
   supported and which are experimental/red.
