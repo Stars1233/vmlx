@@ -10723,3 +10723,98 @@ Recorded in `AGENTS.md`:
 
 Boundary: this is a durable instruction/status update only. It does not claim
 any model row green and it does not enter release work.
+
+## 2026-06-10 09:00 PDT - Goal continuation after AGENTS guard commit
+
+Request/action: continue the persistent objective after `dcd4f45d4` without
+changing the goal into a narrower task. The current turn should reduce real
+runtime/API/UI/cache/model blockers for MiMo, Gemma, Qwen, or N2
+JANGTQ/non-JANG_1L.
+
+Constraint check:
+
+- active worktree: `/Users/eric/mlx/vllm-mlx-finite-launch-guard`;
+- current branch/head: `codex/pr-intake-manifest` at `dcd4f45d4`, already
+  pushed to `origin/main` and `origin/codex/pr-intake-manifest`;
+- do not work N2 JANG_1L unless Eric explicitly reopens it;
+- do not use subagents or recursive wrapper delegation;
+- do not synthesize tool args, disable reasoning, rewrite parser values, hide
+  raw XML, or patch semantics/cache to fake green rows;
+- do not enter release/sign/notarize/PyPI/updater/download work in this
+  movement;
+- avoid broad test-suite churn unless a focused verifier directly proves a
+  changed blocker.
+
+Next action: inspect current open rows and choose one blocker with a clear
+root-cause/proof path. Source-only proof may reduce a source row but must not
+be counted as installed-app or release parity.
+
+## 2026-06-10 09:12 PDT - N2 JANGTQ2 metadata-only MTP classification fixed
+
+Request/action: reduce a real N2 JANGTQ2 autodetect/runtime metadata blocker
+without touching N2 JANG_1L, release packaging, or broad suite churn.
+
+Evidence before fix:
+
+- Current N2 JANGTQ2 dev/installed proofs show real
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2` rows passing for
+  Responses/tools/cache, image, and video, with native hybrid SSM cache and
+  JANGTQ2/TurboQuant codebook runtime.
+- The same proofs reported `mtp_status=metadata_inconsistent` with issue
+  `jang_config.drop_mtp=true but config declares 1 MTP layer(s)`.
+- Direct bundle metadata shows no top-level `num_nextn_predict_layers`, no
+  `mtp.*` tensors in the index, `jang_config.mtp.enabled=false`,
+  `jang_config.mtp.kept=false`, `runtime.bundle_has_mtp=false`, and
+  `runtime.mtp_mode=metadata_only_missing_weights`.
+
+Root cause:
+
+`vmlx_engine/native_mtp.py` treated only runtime MTP modes containing `drop` as
+intentional dropped-MTP declarations. N2 JANGTQ2 uses
+`metadata_only_missing_weights`, so the explicit no-MTP sidecar was classified
+as corrupt metadata. The `vmlx_engine/server.py` fallback had the same narrow
+classification.
+
+Touched files:
+
+- `vmlx_engine/native_mtp.py`
+- `vmlx_engine/server.py`
+- `tests/test_native_mtp_autodetect.py`
+- `build/current-n2-jangtq2-mtp-metadata-drop-classification-fix-20260610.json`
+
+Fix:
+
+- Treat `jang_config.mtp.enabled=false` or `jang_config.mtp.kept=false` as an
+  explicit dropped-MTP sidecar.
+- Treat `runtime.bundle_has_mtp=false` with `mtp_mode` containing
+  `metadata_only` or `missing_weight` as an explicit dropped-MTP declaration.
+- Preserve true corrupt metadata checks when MTP tensors remain indexed or no
+  explicit sidecar drop exists.
+
+Proof:
+
+- Direct real-bundle inspection now reports `status=dropped`,
+  `runtime_reason=jang_config.runtime.bundle_has_mtp=false`,
+  `index_has_mtp_tensors=false`, `mtp_tensor_count=0`, `runtime_active=false`,
+  and `issues=[]`.
+- Proof artifact:
+  `build/current-n2-jangtq2-mtp-metadata-drop-classification-fix-20260610.json`.
+- Verification commands:
+  - `.venv/bin/python -m py_compile vmlx_engine/native_mtp.py vmlx_engine/server.py tests/test_native_mtp_autodetect.py`
+  - `.venv/bin/python -m pytest -q tests/test_native_mtp_autodetect.py tests/test_mtp_telemetry_edge_cases.py tests/test_engine_audit.py -k 'runtime_metadata_can_explicitly_drop_configured_mtp or jang_mtp_sidecar_can_explicitly_drop_configured_metadata_only_mtp or drop_mtp_true_strict_bool_still_works or drop_mtp_false_strict_bool_still_works or mtp_status_reports_dropped_dsv4_artifact'`
+  - `git diff --check -- vmlx_engine/native_mtp.py vmlx_engine/server.py tests/test_native_mtp_autodetect.py .agents/STATUS.md .agents/LOG.md`
+
+Result:
+
+- Focused pytest passed `5/5`.
+- The real N2 JANGTQ2 bundle is now classified honestly as dropped-MTP rather
+  than metadata-inconsistent.
+
+Boundary:
+
+- This does not make native MTP active for N2 JANGTQ2; it records that this
+  artifact intentionally has metadata-only/no MTP weights.
+- This does not touch or clear N2 JANG_1L.
+- This does not clear N2 audio, MiMo exactness/media semantics, Gemma
+  installed-app parity, package/sign/notarize, PyPI, updater, download, or
+  public release rows.
