@@ -13746,3 +13746,11 @@ Next action:
 
 # 2026-06-10 17:04 PDT
 - MiMo short mixed-SWA paged-hit guard proved live: existing 28-token hit was ignored, reconstruct avoided, request completed. Remaining red is first-sample sampler/compile latency (`~29.7s` first sample), not tiny-prefix cache reconstruction.
+
+# 2026-06-10 16:46 PDT
+- Confirmed `4f9ca04c2` is pushed: `HEAD` and `origin/codex/pr-intake-manifest` both resolve to `4f9ca04c2a40926e0a5b717eaaf7f8f3f65b689a`.
+- Recording Eric's latest correction: next parser/API work must explicitly cover spacing, special characters, path characters, Unicode punctuation, XML/JSON escaping, interleaved reasoning/tool streaming, content deltas, function-call arg deltas, and empty-args failures. No release/sign/notarize/PyPI action.
+
+# 2026-06-10 17:13 PDT
+- Fixed XML tool argument preservation in generic XML fallback and `XMLFunctionToolParser`: plain string parameter values now keep leading/trailing spacing and decode XML entities, while JSON-looking values still parse as JSON.
+- Verification: new focused parser preservation tests passed `3/3`; existing empty-required/streaming guards passed `12/12`; py_compile and diff-check passed. This is source parser proof only, not live Qwen gateway/tunnel proof and not a release action.

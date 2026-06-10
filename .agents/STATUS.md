@@ -6198,3 +6198,64 @@ Other-agent action:
   - response completed with `Hello!`.
 - Still red: first sampled token remained very slow (`avg_sample_ms=29718.65` for first step, second sample ~521ms; 2 tokens in 31s). MiMo speed is now classified as first-sample sampler/compile latency plus ongoing sampler overhead, not the tiny-prefix paged reconstruct path.
 - CPU compact top-k sampler experiment was rejected and reverted; do not reintroduce it without a different first-sample strategy.
+
+# 2026-06-10 16:46 PDT - parser/API spacing and special-character lane
+
+- Pushed/confirmed current head: `4f9ca04c2 Guard short MiMo mixed-SWA paged hits`;
+  local and `origin/codex/pr-intake-manifest` match.
+- Current dirty state left alone:
+  - `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
+  - `node_modules/`
+- New user correction recorded: deeply inspect issues around spacing, special
+  characters, tokenizer/parser boundaries, and streamed Responses behavior.
+- Next allowed work: focus on Qwen/Qwen3.6/Qwen-coder and cross-family
+  auto-tool/reasoning parser correctness:
+  - empty tool-call args after text preambles;
+  - no raw XML/tool markup leaks;
+  - content delta, reasoning delta, function-call args delta/done ordering;
+  - output index correctness;
+  - whitespace, newline, Unicode punctuation, path characters, and XML/JSON
+    escaping in tool arguments;
+  - gateway/API parity without synthesizing fake tool arguments or disabling
+    reasoning.
+- MiMo remains red for speed after the short-hit guard; do not claim MiMo
+  release-clear.
+
+# 2026-06-10 17:13 PDT - XML tool argument spacing/entity fix
+
+- Reduced one concrete parser/API blocker from Eric's spacing/special-character
+  instruction.
+- Root cause proved by focused tests: generic XML tool parsing and
+  `XMLFunctionToolParser` stripped valid leading/trailing spaces from parameter
+  payloads and left XML entities such as `&amp;` / `&lt;` encoded in shell/code/path
+  arguments.
+- Runtime fix:
+  - `vmlx_engine/api/tool_calling.py`: generic Nemotron/XML fallback now
+    preserves plain-string parameter payload spacing, decodes XML entities, and
+    still JSON-parses JSON-looking parameter values after syntax trim.
+  - `vmlx_engine/tool_parsers/xml_function_tool_parser.py`: MiMo/XML function
+    parser now preserves plain-string payload spacing, decodes XML entities,
+    and keeps JSON value coercion for JSON-looking payloads.
+- Proof:
+  - First focused pytest failed before fix: 2 failures on spacing/entity
+    preservation.
+  - After fix:
+    `.venv/bin/python -m pytest -q tests/test_reasoning_tool_interaction.py -k 'generic_parser_preserves_xml_parameter_spacing_and_entities or XMLFunctionToolParserEdgeCases'`
+    passed `3/3`.
+  - Existing empty-args/tool-streaming guards still passed:
+    `.venv/bin/python -m pytest -q tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_responses_required_empty_xml_tool_call_is_rejected tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_responses_preamble_empty_xml_tool_call_never_emits_empty_arguments tests/test_server.py::TestOpenAILogprobsFormatting::test_tool_parser_drops_empty_xml_call_and_strips_markup_for_nonstream_paths tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_chat_preamble_empty_xml_tool_call_never_emits_empty_arguments tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_responses_reasoning_tool_call_keeps_arguments tests/test_tool_parser_required_args_fail_closed.py`
+    passed `12/12`.
+  - `.venv/bin/python -m py_compile vmlx_engine/api/tool_calling.py vmlx_engine/tool_parsers/xml_function_tool_parser.py tests/test_reasoning_tool_interaction.py`
+    passed.
+  - `git diff --check` passed for touched parser/test/log files.
+- Proven:
+  - Valid XML tool args can now carry leading/trailing spaces, Unicode paths,
+    shell metacharacters, `<`, `>`, `&`, and XML entity-escaped forms through
+    parser output.
+  - Whitespace-only required args still fail closed; the fix does not synthesize
+    missing `cmd` values or re-enable executable `{}` args.
+- Not proven:
+  - No live same-model Qwen direct/gateway/tunnel raw SSE recapture was run in
+    this movement.
+  - This does not clear broader MiMo speed, Gemma media/UI, N2 JANGTQ, or
+    installed-app/release rows.
