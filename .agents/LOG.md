@@ -9611,3 +9611,19 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
     `mimo_jangtq2_media_semantics_release_quality`.
 - Boundary: no model server launch, no runtime code patch, no release,
   no signing, no notarization, no PyPI, no public download, and no N2 JANG_1L.
+
+# 2026-06-10 - MiMo JANGTQ2 current media proof accounting pushed
+
+- Commit/push: `53771351` (`Consume current MiMo media proof`) was pushed to
+  both `origin/codex/pr-intake-manifest` and `origin/main`.
+- Dirty state intentionally left alone:
+  `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
+  and `node_modules/`.
+- Remaining MiMo blockers from current checklist:
+  `mimo_local_release_clearance`, `mimo_decode_speed_target`,
+  `mimo_artifact_exactness`, and
+  `mimo_jangtq2_media_semantics_release_quality`.
+- Next action for this or another agent: do not revisit parser/JSON repair or
+  cache as primary MiMo exactness fixes without contrary logits evidence. Work
+  next on artifact/logit/quant contract or runtime decode diagnosis, and on
+  semantic media quality plus fresh-process L2/installed-app parity.
