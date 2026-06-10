@@ -12913,6 +12913,21 @@ Next action:
   not overwrite the registered narrow-prompt proof unless a stricter 31B
   installed-app proof is rerun and passes.
 
+# 2026-06-10 14:13 PDT - Gemma QAT/JANG4M status closure pushed
+
+- Commit `d4622990b` (`Close proven Gemma QAT JANG4M gate rows`) was pushed to
+  `origin/codex/pr-intake-manifest` and `origin/main`.
+- Current release state after the push: full checklist artifact
+  `build/current-full-release-objective-checklist-after-gemma-jang4m-status-closure-20260610.json`
+  remains `status=open` with `failed_count=51`.
+- Closed by this commit: row-level QAT JANG4M `_open` failures for Gemma4 E2B,
+  E4B, 12B, 26B, and 31B, because both source full-media proof and
+  installed-app UI/API/cache proof are registered for each row.
+- Still open: aggregate Gemma status/live proof because native MXFP4/VL rows
+  `gemma4_e2b_qat_native_mxfp4`, `gemma4_e4b_qat_native_mxfp4`,
+  `gemma4_12b_native_mxfp4`, `gemma4_26b_vl`, and
+  `gemma4_31v_or_31b_vl` remain open.
+
 # 2026-06-10 14:10 PDT - Gemma QAT/JANG4M status closure generated
 
 - Patched `tests/cross_matrix/run_gemma_qat_native_mxfp4_inventory_gate.py` so

@@ -1,4 +1,18 @@
 ## CODEX
+- now: commit `d4622990b` (`Close proven Gemma QAT JANG4M gate rows`) pushed to
+  both `origin/codex/pr-intake-manifest` and `origin/main`.
+- current release state after this push: full checklist remains `status=open`
+  with `failed_count=51`. The QAT JANG4M E2B/E4B/12B/26B/31B row-level `_open`
+  failures are closed; remaining Gemma inventory failures are aggregate
+  `gemma_qat_native_mxfp4_status_pass` and
+  `gemma_qat_native_mxfp4_all_live_proofs_present` due to open native
+  MXFP4/VL installed-app/live rows.
+- next best lane for another agent: pick one of the remaining native MXFP4/VL
+  Gemma rows and obtain real installed-app/UI/API/cache proof, or continue MiMo
+  semantic/exactness/media installed-app proof. Do not reopen the closed QAT
+  JANG4M rows unless one of the referenced proof artifacts is invalidated.
+
+## CODEX
 - verification: `.venv/bin/python -m py_compile` passed for the two modified
   generators and their focused tests; `.venv/bin/python -m pytest -q
   tests/test_gemma_qat_native_mxfp4_inventory_gate.py
