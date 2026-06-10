@@ -2195,3 +2195,48 @@
   than `arguments: {}`. Keep content/reasoning deltas, args delta/done,
   output-index ordering, tool-result continuation, and cache telemetry in the
   recapture.
+
+# 2026-06-10 - Qwen35 direct/gateway raw SSE recaptured after fail-closed fix
+
+- Directive check: allowed lane is Qwen/Qwen3.6/Qwen-coder
+  Responses/tool/reasoning streaming parity. N2 JANG_1L remains off-limits. No
+  release, signing, notarization, PyPI, public download, or package action was
+  taken.
+- Blocker being reduced: prove current source direct server and panel gateway
+  still preserve tool args/reasoning/output-index/cache behavior after the
+  missing-required-args fail-closed parser fix.
+- Command:
+  `.venv/bin/python tests/cross_matrix/run_qwen35_responses_raw_sse_capture.py --out build/current-responses-raw-sse-parity-qwen35-direct-gateway-after-missing-required-args-failclosed-20260610.json --direct-sse build/responses-sse-captures-20260610/direct-qwen35-mxfp8-mtp-tool-after-missing-required-args-failclosed-20260610.sse --gateway-sse build/responses-sse-captures-20260610/gateway-qwen35-mxfp8-mtp-tool-after-missing-required-args-failclosed-20260610.sse --server-log build/responses-sse-captures-20260610/direct-qwen35-mxfp8-mtp-after-missing-required-args-failclosed.server.log --gateway-log build/responses-sse-captures-20260610/gateway-qwen35-mxfp8-mtp-after-missing-required-args-failclosed.log --cache-dir build/current-responses-raw-sse-qwen35-direct-source-cache-after-missing-required-args-failclosed-20260610 --port 8898 --load-timeout-s 600 --request-timeout-s 300 --gateway-timeout-s 300 --require-reasoning-events`
+- Overall artifact status: `fail`, because the classifier still includes the
+  stale public tunnel capture from 2026-06-09 and that tunnel capture has
+  invalid duplicate output index `0`.
+- Current-source direct proof: real
+  `/Users/eric/models/JANGQ/Qwen3.6-35B-A3B-MXFP8-MTP` loaded as
+  `models/Qwen3.6-35B-A3B-MXFP8-CRACK-MTP`; function args stayed exactly
+  `{"value": "blue-cat"}` through argument delta/done/final response;
+  reasoning lifecycle completed; final response output order is
+  `[message, reasoning, function_call]`; output indices are
+  `message=0`, `reasoning=1`, `function_call=2`.
+- Current-source gateway proof: panel gateway live capture passed with the same
+  exact function args, reasoning lifecycle, final object consistency, and
+  output indices `0/1/2`. Gateway request kwargs were preserved:
+  `stream=true`, `max_output_tokens=512`, `temperature=0`, `top_p=1`,
+  `top_k=0`, `enable_thinking=true`, `tool_choice=required`, `tool_count=1`,
+  `first_tool_name=record_fact`.
+- Runtime/cache proof from server log: native MTP active and capped to D1 for
+  tool requests; hybrid 10 attention + 30 SSM cache active; live TurboQuant KV
+  active for attention layers; block L2 wrote four blocks / 222 tokens; the
+  gateway request hit paged+hybrid cache with 222 cached tokens and clean SSM
+  rederive/companion storage.
+- Memory proof: before launch available memory was about `112.29 GiB`; after
+  health server RSS was about `35.872 GiB` with about `76.78 GiB` still
+  available.
+- Still red: public tunnel parity is not cleared. The stale tunnel SSE still
+  has `function_call=[0]`, `message=[0]`, no separate reasoning output item,
+  and `all_present_surfaces_have_valid_output_item_indices=false`.
+- Not claimed: no public tunnel rebuild/recapture, no live opencode full
+  harness loop, no Gemma/MiMo/N2 clearance, and no release readiness.
+- Other-agent action: rebuild/redeploy public tunnel/backend from current
+  source after commit `09bfe652` or newer, then recapture the same Qwen35
+  request. Keep the stale tunnel boundary red until that capture has valid
+  output indices and the separate reasoning item lifecycle.

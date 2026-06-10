@@ -9907,3 +9907,38 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
   and verify reasoning/content deltas, args delta/done, final object
   consistency, output indices, tool-result continuation, kwargs passthrough,
   and cache telemetry.
+
+# 2026-06-10 - Qwen35 direct/gateway raw SSE recaptured after fail-closed fix
+
+- Request: prove the Qwen/Qwen-coder parser/API fix did not regress live
+  Responses tool/reasoning streaming and keep the public tunnel boundary
+  honest.
+- Action: ran the existing Qwen35 raw SSE capture runner against current source
+  direct server and real panel gateway using the same model/request as the
+  tunnel comparison.
+- Artifact:
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-after-missing-required-args-failclosed-20260610.json`.
+- Raw captures:
+  `build/responses-sse-captures-20260610/direct-qwen35-mxfp8-mtp-tool-after-missing-required-args-failclosed-20260610.sse`
+  and
+  `build/responses-sse-captures-20260610/gateway-qwen35-mxfp8-mtp-tool-after-missing-required-args-failclosed-20260610.sse`.
+- Proven direct/gateway: same served model
+  `models/Qwen3.6-35B-A3B-MXFP8-CRACK-MTP`, exact
+  `{"value": "blue-cat"}` args through delta/done/final object, reasoning
+  enabled, complete reasoning lifecycle, final output order
+  `[message, reasoning, function_call]`, valid output indices
+  `message=0/reasoning=1/function_call=2`, gateway kwargs preserved, and no
+  reasoning-disable workaround.
+- Runtime/cache proof: native MTP active and tool-capped to D1, hybrid
+  attention+SSM cache active, TurboQuant KV active on attention layers, block
+  L2 wrote 4 blocks/222 tokens, and the gateway request hit paged+hybrid cache
+  with 222 cached tokens.
+- Overall artifact remains `status=fail` only because the reused public tunnel
+  SSE from 2026-06-09 is still stale and invalid: duplicate output index `0`,
+  no separate reasoning output item, and
+  `all_present_surfaces_have_valid_output_item_indices=false`.
+- Not proven: public tunnel parity, opencode full harness E2E, release
+  readiness, or any unrelated model family.
+- Other-agent action: rebuild/redeploy public tunnel/backend from current
+  source after `09bfe652` or newer and recapture the same Qwen35 raw SSE
+  request; do not claim tunnel parity from the stale capture.
