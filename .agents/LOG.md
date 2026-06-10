@@ -11777,3 +11777,60 @@ Other-agent action:
   logits, or rebuild the JANGTQ artifact. Do not mask visual/audio failures
   with prompt wording, parser repair, sampling clamps, color post-processing, or
   cache/L2 changes.
+
+## 2026-06-10 10:28 PDT - Gemma E4B installed-app proof lane selected
+
+Request:
+
+- Continue the persistent release-quality objective with concrete live model/
+  app proof and avoid broad test-suite churn or recursive subagent behavior.
+
+Selected lane:
+
+- Gemma 4 E4B QAT JANG_4M installed-app UI/API/cache parity. Source fullmedia
+  proof is already green, but the Gemma inventory/checklist still reports the
+  E4B installed-app proof as missing.
+
+Constraints:
+
+- No release/sign/notarize/package/PyPI/updater/download/website action.
+- No N2 JANG_1L.
+- No subagents.
+- No fake parser/cache/modality claim.
+- Use the real `/Applications/vMLX.app` installed-app route and inspect visible
+  chat proof before updating trackers.
+
+Next action:
+
+- Run the existing real UI proof harness against
+  `/Users/eric/models/JANGQ-AI/gemma-4-E4B-it-qat-JANG_4M`, then classify the
+  exact installed-app/API/cache surfaces proven or red.
+
+# 2026-06-10 10:32 PDT - Gemma E4B installed-app proof registered
+
+- First E4B installed-app proof used repo `.venv` as `python`, so the existing
+  installed-app gate correctly rejected it as not bundled-Python proof.
+- Reran the same Gemma 4 E4B QAT JANG_4M proof with
+  `VMLINUX_REAL_UI_PYTHON=/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3`.
+- Corrected proof:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-e4b-qat-jang4m-responses-tools-cachecontrols-visible-chat-20260610-proof.json`,
+  `status=pass`; screenshot:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-e4b-qat-jang4m-responses-tools-cachecontrols-visible-chat-20260610-chat.png`.
+- Proven surfaces: `/Applications/vMLX.app`, bundled Python server command,
+  Responses API, built-in tool loop, reasoning display, parser/language leak
+  checks, server cache controls, Gemma4 mixed-SWA native cache, storage-boundary
+  4-bit full-attention KV, `cache_hit_tokens=9317`, and
+  `l2_block_tokens_on_disk=3528`.
+- Updated inventory gate:
+  `build/current-gemma-qat-native-mxfp4-local-inventory-after-e4b-installed-app-ui-proof-20260610.json`
+  records E2B and E4B installed-app UI/API/cache checks true, while the
+  inventory remains `status=open` and E4B remains `live_proof_status=partial`.
+- Full checklist regenerated:
+  `build/current-full-release-objective-checklist-after-gemma-e4b-installed-app-ui-proof-20260610.json`;
+  it remains `status=open`, `release_ready=false`, `failed_count=56`.
+- Verification: py_compile passed for touched files; focused pytest selected
+  `32/32` passed; `git diff --check` passed; process cleanup check found no
+  lingering model/app/proof processes.
+- Boundary: no release/sign/notarize/package/PyPI/updater/download/website
+  action; no N2 JANG_1L; no parser/cache/modality fake fix. Gemma 12B/26B/31B
+  installed-app rows and full release parity remain open.

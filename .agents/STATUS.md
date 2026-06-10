@@ -3880,3 +3880,83 @@
   For MiMo media quality, compare source/dequant/reference visual embeddings or
   logits, or rebuild the JANGTQ artifact; do not mask with prompt wording,
   parser repair, sampling clamps, color post-processing, or cache/L2 changes.
+
+# 2026-06-10 10:28 PDT - Gemma E4B installed-app proof lane selected
+
+- Request: keep moving the checkpoint release surface forward with concrete
+  live proofs instead of broad test-suite churn.
+- Current allowed lane selected: Gemma 4 E4B QAT JANG_4M installed-app
+  UI/API/cache parity. Source fullmedia proof is already green, but the Gemma
+  inventory/checklist still reports `installed_app_ui_proof.status=missing` for
+  E4B.
+- Constraints rechecked: no release/sign/notarize/package/PyPI/updater/download/
+  website action; no N2 JANG_1L; no subagents; no fake parser/cache/modality
+  claim; use the real `/Applications/vMLX.app` installed-app route and inspect
+  visible chat proof before updating trackers.
+- Next action: run the existing real UI proof harness against
+  `/Users/eric/models/JANGQ-AI/gemma-4-E4B-it-qat-JANG_4M`, then classify the
+  exact installed-app/API/cache surfaces proven or red.
+
+# 2026-06-10 10:32 PDT - Gemma E4B installed-app proof registered
+
+- Request: continue one concrete release-blocker lane and write down every
+  movement.
+- Action: ran Gemma 4 E4B QAT JANG_4M real installed-app UI proof twice. The
+  first proof used the repo `.venv` server path and was not accepted by the
+  existing bundled-Python installed-app gate. Reran with
+  `VMLINUX_REAL_UI_PYTHON=/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3`.
+- Registered the corrected E4B proof in
+  `tests/cross_matrix/run_gemma_qat_native_mxfp4_inventory_gate.py`.
+- Updated current Gemma inventory/checklist/current-suite pointers to
+  `build/current-gemma-qat-native-mxfp4-local-inventory-after-e4b-installed-app-ui-proof-20260610.json`.
+- Added a full checklist row for
+  `gemma4_e4b_qat_jang4m_installed_app_ui_api_cache_proven`.
+- Updated the release tracker Gemma inventory row to the E4B installed-app
+  artifact.
+
+Proof artifacts:
+
+- `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-e4b-qat-jang4m-responses-tools-cachecontrols-visible-chat-20260610-proof.json`
+- `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-e4b-qat-jang4m-responses-tools-cachecontrols-visible-chat-20260610-chat.png`
+- `build/current-gemma-qat-native-mxfp4-local-inventory-after-e4b-installed-app-ui-proof-20260610.json`
+- `build/current-full-release-objective-checklist-after-gemma-e4b-installed-app-ui-proof-20260610.json`
+
+Proven:
+
+- Installed app route used `/Applications/vMLX.app`.
+- Server command used bundled Python:
+  `/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3`.
+- E4B loaded as `gemma-4-E4B-it-qat-JANG_4M` with Responses wire API,
+  built-in tool loop, reasoning display, no parser/language leak, server cache
+  controls, and visible chat screenshot.
+- Cache evidence: Gemma4 mixed-SWA native cache, storage-boundary 4-bit
+  full-attention KV, `cache_hit_tokens=9317`, and
+  `l2_block_tokens_on_disk=3528`.
+- Inventory checks now record both
+  `gemma4_e2b_qat_jang4m_installed_app_ui_api_cache_proven=true` and
+  `gemma4_e4b_qat_jang4m_installed_app_ui_api_cache_proven=true`.
+
+Not proven / boundary:
+
+- The Gemma inventory remains `status=open`; E2B/E4B JANG_4M rows are still
+  `live_proof_status=partial`, not full release-clear rows.
+- 12B/26B/31B installed-app rows remain missing.
+- Tunnel parity, full UI/CLI parity, full media matrix, package/sign/notarize,
+  PyPI/updater/download/website, N2 JANG_1L, and remaining MiMo rows are not
+  cleared by this proof.
+
+Verification:
+
+- `.venv/bin/python -m py_compile tests/cross_matrix/run_gemma_qat_native_mxfp4_inventory_gate.py tests/cross_matrix/run_full_release_objective_checklist.py tests/cross_matrix/run_current_regression_suite.py tests/test_current_regression_suite.py tests/test_full_release_objective_checklist.py`
+- `.venv/bin/pytest -q tests/test_gemma_qat_native_mxfp4_inventory_gate.py tests/test_full_release_objective_checklist.py tests/test_current_regression_suite.py -k 'gemma_qat_native_mxfp4 or gemma_qat_inventory_gate or full_release_objective_checklist'` -> `32 passed`.
+- `git diff --check` passed.
+- Process cleanup check found no live `vmlx_engine.cli serve`, `mlx_lm.server`,
+  `live-real-ui-model-proof`, installed `vMLX`, or `run_mimo` processes.
+
+Other-agent action:
+
+- Use the E4B installed-app inventory artifact as the current Gemma board
+  source. Next useful Gemma lanes are 12B/26B/31B installed-app UI/API/cache
+  proof, tunnel parity where deployment exposes the model, and full UI/CLI
+  settings parity. Do not mark Gemma release-clear from E2B/E4B partial
+  installed-app proof alone.
