@@ -1796,3 +1796,12 @@
 - Boundary: this is not a model/runtime proof and does not clear any release
   checklist row. It is a control-doc fix to prevent drift before the next live
   MiMo/Gemma/Qwen proof or fix.
+
+# 2026-06-10 - AGENTS.md control contract pushed
+
+- Commit/push: `c630b1d9` (`Record active agent control contract`) was pushed
+  to `origin/codex/pr-intake-manifest` and `origin/main`.
+- Scope: `AGENTS.md`, `.agents/STATUS.md`, and `.agents/LOG.md` only.
+- Boundary: no release/sign/notarize/PyPI/download action, no model server
+  launch, and no N2 JANG_1L action. Next work should resume from the latest
+  checklist and reduce a live MiMo/Gemma/Qwen blocker.

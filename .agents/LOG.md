@@ -9553,3 +9553,15 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Blocker boundary: release remains open from the last checklist; next useful
   work should be a focused MiMo/Gemma/Qwen live proof or source fix, not
   packaging or N2 JANG_1L.
+
+# 2026-06-10 - AGENTS.md control contract pushed
+
+- Commit/push: `c630b1d9` (`Record active agent control contract`) was pushed
+  to both `origin/codex/pr-intake-manifest` and `origin/main`.
+- Verification before push: `git diff --check -- AGENTS.md .agents/STATUS.md
+  .agents/LOG.md` exited clean.
+- Dirty state intentionally left alone:
+  `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
+  and `node_modules/`.
+- Boundary: documentation/control-plane only; no release, signing,
+  notarization, PyPI, public download, model launch, or N2 JANG_1L action.
