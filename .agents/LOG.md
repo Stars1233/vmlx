@@ -12913,6 +12913,82 @@ Next action:
   not overwrite the registered narrow-prompt proof unless a stricter 31B
   installed-app proof is rerun and passes.
 
+# 2026-06-10 14:19 PDT - Native MXFP4 reasoning proof registered
+
+- Updated `INSTALLED_APP_UI_PROOFS["gemma4_12b_native_mxfp4"]` to the
+  reasoning-enabled bundled installed-app proof.
+- Generated
+  `build/current-gemma-qat-native-mxfp4-local-inventory-after-12b-native-mxfp4-installed-app-bundled-reasoning-proof-20260610.json`.
+  It remains `status=open`, but `gemma4_12b_native_mxfp4` is now pass and was
+  removed from `open_required_rows`.
+- Generated
+  `build/current-full-release-objective-checklist-after-gemma-12b-native-mxfp4-installed-app-bundled-reasoning-proof-20260610.json`.
+  It remains `status=open` with `failed_count=51`; the Gemma aggregate open
+  rows are now `gemma4_e2b_qat_native_mxfp4`,
+  `gemma4_e4b_qat_native_mxfp4`, `gemma4_26b_vl`, and
+  `gemma4_31v_or_31b_vl`.
+- Verification: `.venv/bin/python -m py_compile` passed for the modified
+  gate/checklist scripts and focused tests; `.venv/bin/python -m pytest -q
+  tests/test_gemma_qat_native_mxfp4_inventory_gate.py
+  tests/test_full_release_objective_checklist.py -k 'gemma_qat_native_mxfp4 or
+  full_release_objective_checklist'` passed `28/28`; `git diff --check` passed.
+
+# 2026-06-10 14:18 PDT - Native MXFP4 no-reasoning proof rejected by gate
+
+- Registered the bundled 12B native MXFP4 proof path and regenerated
+  `build/current-gemma-qat-native-mxfp4-local-inventory-after-12b-native-mxfp4-installed-app-bundled-proof-20260610.json`.
+- Result: `gemma4_12b_native_mxfp4` remained open. The installed-app proof
+  checks passed for status/model/app/bundled Python/screenshot/cache/L2, but
+  failed `required_surfaces_present` because `reasoning_display` was missing.
+- Cause: the proof was run with `VMLINUX_REAL_UI_ENABLE_THINKING=0`.
+- Boundary: do not weaken the installed-app gate and do not claim the native
+  MXFP4 row green from the no-reasoning proof. Rerun with reasoning enabled.
+
+# 2026-06-10 14:17 PDT - Native MXFP4 bundled installed-app proof passed
+
+- Ran the 12B native MXFP4 installed-app proof with bundled Python.
+- Proof:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-12b-mxfp4-responses-tools-cachecontrols-bundled-python-20260610-proof.json`.
+- Screenshot:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-12b-mxfp4-responses-tools-cachecontrols-bundled-python-20260610-chat.png`.
+- Proven: real model `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-MXFP4`,
+  installed app `/Applications/vMLX.app`, bundled Python
+  `/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3`,
+  visible chat screenshot, Responses API delta streaming, built-in
+  `run_command` tool loop, server cache controls, Gemma4 mixed-SWA native cache,
+  `cache_hit_tokens=3538`, and `l2_block_tokens_on_disk=3532`.
+- Process cleanup: no `vmlx_engine`, proof harness, or `/Applications/vMLX.app`
+  proof process remained after the run.
+- Boundary: register this only for `gemma4_12b_native_mxfp4`; it does not clear
+  E2B/E4B native MXFP4 or 26B/31B VL installed-app parity.
+
+# 2026-06-10 14:16 PDT - Native MXFP4 bundled installed-app rerun selected
+
+- Selected a real rerun for `gemma4_12b_native_mxfp4` installed-app parity
+  using `panel/scripts/live-real-ui-model-proof.mjs`.
+- Planned settings: model
+  `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-MXFP4`, app
+  `/Applications/vMLX.app`, Python
+  `/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3`,
+  Responses wire API, built-in tools, thinking disabled, server cache controls,
+  max tokens 96, max prompt tokens 12000, max tool iterations 4.
+- Pass criteria: artifact must pass the existing installed-app UI proof checks
+  before it can be registered for the native MXFP4 row. If bundled Python or
+  screenshot activation is wrong, leave the row open.
+
+# 2026-06-10 14:15 PDT - Native MXFP4 installed-app proof rejected
+
+- Checked
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-12b-mxfp4-responses-tools-cache-20260610-proof.json`
+  against the Gemma inventory gate requirements for `gemma4_12b_native_mxfp4`.
+- Rejected for row closure: the proof has `uiLaunchMode=installed-app` and
+  `/Applications/vMLX.app`, but `python` is the repo `.venv` path instead of
+  `/Applications/vMLX.app/Contents/Resources/bundled-python/...`, and
+  `chatActivatedForScreenshot` is not `true`.
+- Boundary: do not register that artifact as installed-app bundled runtime
+  parity. A correct rerun must use the bundled app Python and satisfy the
+  existing installed-app UI proof checks.
+
 # 2026-06-10 14:13 PDT - Gemma QAT/JANG4M status closure pushed
 
 - Commit `d4622990b` (`Close proven Gemma QAT JANG4M gate rows`) was pushed to

@@ -1,4 +1,86 @@
 ## CODEX
+- verification: after registering the 12B native MXFP4 reasoning proof,
+  `.venv/bin/python -m py_compile` passed for the modified gate/checklist
+  scripts and focused tests; `.venv/bin/python -m pytest -q
+  tests/test_gemma_qat_native_mxfp4_inventory_gate.py
+  tests/test_full_release_objective_checklist.py -k 'gemma_qat_native_mxfp4 or
+  full_release_objective_checklist'` passed `28/28`; `git diff --check` passed.
+
+## CODEX
+- now: 12B native MXFP4 reasoning-enabled bundled installed-app proof is
+  registered and gates regenerated.
+- generated artifacts:
+  - `build/current-gemma-qat-native-mxfp4-local-inventory-after-12b-native-mxfp4-installed-app-bundled-reasoning-proof-20260610.json`
+  - `build/current-full-release-objective-checklist-after-gemma-12b-native-mxfp4-installed-app-bundled-reasoning-proof-20260610.json`
+- proven/closed: `gemma4_12b_native_mxfp4` now has `status=pass` and
+  `live_proof_status=pass`; it is removed from Gemma `open_required_rows`.
+- still open: full checklist remains `status=open` and `failed_count=51`
+  because aggregate Gemma status/live proof still fails on
+  `gemma4_e2b_qat_native_mxfp4`, `gemma4_e4b_qat_native_mxfp4`,
+  `gemma4_26b_vl`, and `gemma4_31v_or_31b_vl`, plus non-Gemma blockers.
+
+## CODEX
+- now: registered 12B native MXFP4 proof was rejected by the inventory gate
+  because `reasoning_display` was missing. This is correct: the previous rerun
+  used `VMLINUX_REAL_UI_ENABLE_THINKING=0`.
+- failed generated inventory:
+  `build/current-gemma-qat-native-mxfp4-local-inventory-after-12b-native-mxfp4-installed-app-bundled-proof-20260610.json`.
+- row state: `gemma4_12b_native_mxfp4.status=open`,
+  `live_proof_status=missing`, installed proof checks all pass except
+  `required_surfaces_present=false` with `missing_surfaces=["reasoning_display"]`.
+- next movement: rerun the same bundled installed-app Responses/tools/cache
+  proof with reasoning enabled. Do not weaken the gate or claim this row green
+  from the no-reasoning proof.
+
+## CODEX
+- now: the bundled installed-app rerun for `gemma4_12b_native_mxfp4` passed and
+  is eligible for registration.
+- proof:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-12b-mxfp4-responses-tools-cachecontrols-bundled-python-20260610-proof.json`;
+  screenshot:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-12b-mxfp4-responses-tools-cachecontrols-bundled-python-20260610-chat.png`.
+- proven in that artifact: status pass, real model
+  `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-MXFP4`, installed app
+  `/Applications/vMLX.app`, bundled Python under
+  `/Applications/vMLX.app/Contents/Resources/bundled-python`, Responses API
+  delta streaming, built-in `run_command` tool loop, visible screenshot,
+  Gemma4 mixed-SWA native cache, cache hit tokens `3538`, and block L2 tokens
+  on disk `3532`.
+- next movement: register this proof only for `gemma4_12b_native_mxfp4` in the
+  Gemma inventory gate and regenerate inventory/checklist artifacts. Do not
+  claim E2B/E4B native MXFP4 or 26B/31B VL installed-app parity from this 12B
+  proof.
+
+## CODEX
+- now: selected a real rerun for `gemma4_12b_native_mxfp4` installed-app
+  parity using the existing `panel/scripts/live-real-ui-model-proof.mjs`
+  harness with `/Applications/vMLX.app` and bundled Python
+  `/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3`.
+- intended proof basename:
+  `current-real-ui-installed-app-gemma4-12b-mxfp4-responses-tools-cachecontrols-bundled-python-20260610`.
+- pass criteria before any registration: proof must have `status=pass`, model
+  path `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-MXFP4`,
+  `uiLaunchMode=installed-app`, installed app path `/Applications/vMLX.app`,
+  bundled Python under `/Applications/vMLX.app/Contents/Resources/bundled-python`,
+  visible chat screenshot, required Responses/tool/cache/parser surfaces,
+  Gemma4 mixed-SWA native cache, and block L2 tokens on disk.
+- no-claims: this is not a release/sign/notarize action, not a package upload,
+  and not a synthetic proof registration. If the rerun fails, classify it and
+  leave the row open.
+
+## CODEX
+- now: checked whether the existing 12B native MXFP4 installed-app proof can
+  close `gemma4_12b_native_mxfp4`. It cannot be registered honestly in the
+  current gate.
+- rejected artifact:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-12b-mxfp4-responses-tools-cache-20260610-proof.json`.
+- reason: the proof uses `/Applications/vMLX.app` UI, but `python` is the repo
+  `.venv` path, not `/Applications/vMLX.app/Contents/Resources/bundled-python`;
+  `chatActivatedForScreenshot` is also not `true`. The gate requires real
+  installed-app bundled runtime parity. Do not register this proof for the
+  native MXFP4 row unless a correctly bundled rerun replaces it.
+
+## CODEX
 - now: commit `d4622990b` (`Close proven Gemma QAT JANG4M gate rows`) pushed to
   both `origin/codex/pr-intake-manifest` and `origin/main`.
 - current release state after this push: full checklist remains `status=open`
