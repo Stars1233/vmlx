@@ -15,6 +15,13 @@
   no release/sign/notarize/PyPI/updater/download/site actions without a
   current-turn override; write proven/not-proven status and other-agent handoff
   notes into active `.agents` files.
+- Commit/push state: active worktree `.agents` status/log was committed and
+  pushed as `c478fb100` to `origin/codex/pr-intake-manifest` and `origin/main`.
+  The deprecated wrapper `AGENTS.md` was committed locally in `/Users/eric/vmlx`
+  as `142adad`, but `git push origin main` failed because that checkout has no
+  `origin` remote configured. Do not claim the wrapper guard is pushed until a
+  remote is explicitly configured or the file is applied through a canonical
+  checkout.
 - Boundary: no runtime code was changed, no model was launched, no release
   action was taken, and no proof/readiness claim is made from this doc edit.
 

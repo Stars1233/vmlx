@@ -13,6 +13,12 @@
   `.agents` handoff notes.
 - boundary: this was an instruction/control-plane edit only. No runtime code,
   model load, parser fix, release action, or proof claim was made.
+- commit/push: active worktree status/log was committed as `c478fb100` and
+  pushed to `origin/codex/pr-intake-manifest` and `origin/main`. The deprecated
+  wrapper `/Users/eric/vmlx/AGENTS.md` was committed locally on wrapper `main`
+  as `142adad`, but push from that checkout failed because it has no `origin`
+  remote configured. Do not treat wrapper push as complete until a remote is
+  explicitly configured or the file is applied through the canonical repo.
 
 ## CODEX
 - now: Qwen35 raw-SSE parser/API proof accounting is committed and pushed as
