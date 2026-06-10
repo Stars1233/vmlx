@@ -2536,3 +2536,56 @@
 - Other-agent action: consume this parser source fix in bundled Python/app
   rebuilds and continue live direct/gateway/tunnel raw SSE proof per family
   with reasoning enabled; do not add argument synthesis or semantic repair.
+
+# 2026-06-10 07:01 PDT - Continuation before Gemma JANG/MXFP/QAT blocker work
+
+- Request: continue the full active goal in efficient build/fix/proof blocks,
+  avoid recursive/subagent behavior, avoid broad test-suite detours, and keep
+  every movement written down for compaction safety.
+- Directive check: active worktree remains
+  `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; N2 JANG_1L remains
+  off-limits; no release/sign/notarize/PyPI/download action is allowed in this
+  step; no subagents are allowed.
+- Immediate blocker being reduced: Gemma JANG/MXFP/QAT honest modality
+  detection plus live VL/video/cache/API/UI proof gaps. Qwen35 raw-SSE for the
+  reported empty-args issue is already green, and MiMo JANGTQ_2 exactness is
+  classified to artifact/logit/requant profile rather than sidecar/gather/cache.
+- Must not claim: no Gemma full release clearance, media clearance, installed
+  app parity, checkpoint release readiness, or audio support unless current
+  weight-backed live evidence proves it.
+
+# 2026-06-10 06:29 PDT - Gemma native MXFP4 full-media proof pointer sync
+
+- Request: put the current operating constraints into `AGENTS.md`, keep
+  release focus, avoid subagents, and continue concrete Gemma/MiMo/Qwen/N2
+  blocker reduction without release/sign/notarize/PyPI/download actions.
+- Source change: `AGENTS.md` now explicitly records the release-focus rule,
+  one-blocker-at-a-time proof rule, 128GB live-load proof target, memory/cache
+  watch requirement, and the standing N2 JANG_1L off-limits boundary.
+- Source change: `tests/cross_matrix/run_gemma_qat_native_mxfp4_inventory_gate.py`
+  now maps existing E2B/E4B/12B native MXFP4 per-row full-media result artifacts
+  into `SOURCE_FULLMEDIA_SMOKE_PROOFS`.
+- Proof artifact:
+  `build/current-gemma-qat-native-mxfp4-local-inventory-after-native-mxfp4-fullmedia-pointer-20260610.json`.
+- Result: native MXFP4 `source_fullmedia_smoke.status=pass` for
+  `gemma4_e2b_qat_native_mxfp4`, `gemma4_e4b_qat_native_mxfp4`, and
+  `gemma4_12b_native_mxfp4`; each has all required labels present, no validation
+  failures, Gemma4 parser/reasoning capability, exact `record_fact` args,
+  image/video checks, post-media text recovery, mixed-SWA native cache,
+  block-disk L2 write, and fresh-process L2 restore with `cached_tokens=56`,
+  `cache_detail=paged+mixed_swa+disk`, `disk_hits=1`.
+- Full checklist artifact:
+  `build/current-full-release-objective-checklist-after-gemma-native-mxfp4-fullmedia-pointer-20260610.json`,
+  `status=open`, `failed_count=56`.
+- Verification: inventory gate `py_compile` passed; focused
+  `tests/test_gemma_qat_native_mxfp4_inventory_gate.py` passed `9/9`.
+- Boundary: this is a proof-pointer/source-gate sync over existing live
+  artifacts, not a new heavy live run. Gemma release rows remain open for
+  full live/API/UI/tunnel/installed-app proof; 26B/31B native MXFP4 full-media
+  pointer rows remain missing while their narrower source live smokes pass.
+  No package, signing, notarization, PyPI, download, or N2 JANG_1L action.
+- Other-agent action: consume this current inventory/checklist artifact instead
+  of reclassifying E2B/E4B/12B native MXFP4 full-media source smokes as missing.
+  Next useful Gemma work is installed-app/UI/tunnel parity or 26B/31B native
+  MXFP4 full-media proof, not rerunning the already passing E2B/E4B/12B source
+  smokes.

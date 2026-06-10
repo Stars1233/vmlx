@@ -10092,3 +10092,31 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Boundary: source/parser hardening only. Live family direct/gateway/tunnel SSE,
   UI/installed-app parity, Gemma media, MiMo exactness/media, N2 JANG_1L, and
   release readiness remain unclaimed.
+
+# 2026-06-10 07:01 PDT - Continuation before Gemma blocker work
+
+- Request: continue the active goal through concrete runtime/API/media/cache
+  blockers, not release/signing or broad test-suite churn.
+- Current lane: inspect current Gemma JANG/MXFP/QAT proof state and reduce one
+  real Gemma modality/cache/API/UI gap.
+- Constraints: no subagents, no N2 JANG_1L, no release/sign/notarize/PyPI/
+  download action, no fake audio advertisement, no metadata-only media claims.
+
+# 2026-06-10 06:29 PDT - Gemma native MXFP4 full-media proof pointer sync
+
+- Added the latest release-focus and 128GB-live-proof operating constraints to
+  `AGENTS.md` as explicitly requested.
+- Added existing E2B/E4B/12B native MXFP4 full-media result artifacts to the
+  Gemma QAT/native MXFP4 inventory gate.
+- Wrote
+  `build/current-gemma-qat-native-mxfp4-local-inventory-after-native-mxfp4-fullmedia-pointer-20260610.json`:
+  `status=open`, `missing_required_rows=[]`, and native MXFP4 full-media source
+  smoke `pass` for E2B/E4B/12B.
+- Wrote
+  `build/current-full-release-objective-checklist-after-gemma-native-mxfp4-fullmedia-pointer-20260610.json`:
+  `status=open`, `failed_count=56`.
+- Verification passed: inventory gate `py_compile`; focused inventory test
+  `9/9`.
+- Boundary: no release/sign/notarize/PyPI/download action; no N2 JANG_1L action;
+  Gemma full release rows remain open for live/API/UI/tunnel/installed-app
+  parity and 26B/31B native MXFP4 full-media evidence.
