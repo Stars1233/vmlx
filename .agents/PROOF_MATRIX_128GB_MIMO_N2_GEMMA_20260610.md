@@ -970,6 +970,7 @@ Artifact:
 - `build/current-n2-pro-jang1l-local-memory-preflight-deferred-eval-live-attempt-20260610.json`
 - `build/current-n2-jang1l-live-chat-cache-deferred-eval-live-attempt-20260610.json`
 - `build/current-n2-jang1l-live-chat-cache-deferred-eval-guard104-20260610.json`
+- `build/current-n2-jang1l-live-chat-cache-forced-after-gemma-video-20260610.json`
 
 Observed:
 
@@ -1038,12 +1039,23 @@ Observed:
   follow-up with `VMLINUX_METAL_WS_REJECT_PCT=104` plus wired-limit setup
   reproduced first-request Metal OOM (`server_exit=-6`), proving that simply
   bypassing the guard is not the next fix.
+- Per Eric's direction, the after-Gemma-video proof forced JANG_1L again with
+  `--jang1l-required-extra-headroom-gib 0` and low batches. This run again
+  proves the 128GB host can load the model and serve one bounded Chat request:
+  `/health` reached, first Chat Completions request returned HTTP `200`,
+  native `hybrid_ssm_v1`, live attention TurboQuant KV, SSM companion state,
+  async rederive, paged cache, block L2, and SSM companion L2 initialized. It
+  still does not clear release use: cache warm and cache hit returned HTTP
+  `503` at `102%` of the `107.5GB` Metal working-set cap after the first
+  request, available memory fell to `6.41 GiB`, and the bounded first response
+  had empty visible text.
 
 Conclusion:
 
-- JANG_1L is not proven usable on this 128GB host. It now has a real
-  startup/first-chat improvement from deferred startup eval, but full cache,
-  tool, Responses, and L2 proof remains red under working-set pressure.
+- JANG_1L is proven loadable on this 128GB host and can complete one bounded
+  Chat request through current source. It is not release-clear usable yet:
+  visible-output quality, cache warm/hit, tool, Responses, and L2 proof remain
+  red under working-set pressure.
 
 Next implementation target:
 

@@ -197,6 +197,18 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   cap, and a guard-104/wired-limit experiment reproduced first-request Metal
   OOM. Do not clear JANG_1L cache/tool/Responses/L2/UI/media/release support
   from this partial fix.
+- 2026-06-10 forced after-Gemma-video update:
+  `build/current-n2-jang1l-live-chat-cache-forced-after-gemma-video-20260610.json`
+  was launched with `--jang1l-required-extra-headroom-gib 0` per Eric's
+  direction. It proves the 128GB Mac can load the real JANG_1L artifact and
+  serve one bounded Chat request: `/health` reached, first Chat Completions
+  request returned HTTP `200`, qwen3_5_moe/JANG_1L detection was correct,
+  native `hybrid_ssm_v1`, live attention TurboQuant KV, SSM companion state,
+  async rederive, paged cache, block L2, and SSM companion L2 initialized. The
+  row remains red because the cache-warm and cache-hit requests returned
+  HTTP `503` at `102%` of the `107.5GB` Metal working-set cap after the first
+  request, with available memory down to `6.41 GiB`. This clears load + one
+  bounded Chat request only, not cache/tool/Responses/L2/UI/media/release.
 - N2 JANGTQ_2 proof does not clear N2 JANG_1L.
 - Keep architecture names explicit in every proof: base Qwen/Qwen35 MXFP8-MTP direct-source proof does not clear Nex/N2 Pro 397B JANG_1L, and N2 JANG_1L does not clear regular Qwen MTP/JANGTQ rows. Record `format`, `weight_format`, `artifact_profile`, MTP depth, `gdn_sink`, hybrid SSM/native-cache schema, TurboQuant KV state, and media weight backing from loaded health/config rather than inferred family names.
 

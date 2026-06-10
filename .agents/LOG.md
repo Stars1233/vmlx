@@ -1,3 +1,12 @@
+# 2026-06-10 - N2 JANG_1L forced live load after Gemma video
+
+- Per Eric's direction, ran Nex/N2 Pro JANG_1L live gate anyway instead of stopping at the preflight skip. Command used `--jang1l-required-extra-headroom-gib 0`, low batches (`prefill=64`, `step=128`, `completion=32`), `ssm-state-cache-mb=128`, paged cache block size `64`, and block L2 max `2 GB`.
+- Artifact `build/current-n2-jang1l-live-chat-cache-forced-after-gemma-video-20260610.json` is `status=fail`, but it proves a real load and one bounded request: server reached `/health`, model loaded as `qwen3_5_moe` JANG_1L, first Chat Completions request returned HTTP `200`, then cache-warm/cache-hit requests returned HTTP `503` from the Metal working-set guard at `102%` of the `107.5GB` cap.
+- Runtime proof: `profile=JANG_1L`, `codec=affine_quantized_matmul`, `target_bits=1.0`, `actual_bits=2.13`, `prestacked_switch=540`, `trained_active_experts=10`, `n_routed_experts=512`, qwen parser, qwen3 reasoning parser, MTP metadata inconsistent because `jang_config.drop_mtp=true` while config declares one MTP layer and no MTP tensors.
+- Cache proof: native `hybrid_ssm_v1`, `attention_kv + ssm_companion_state + async_rederive`, live attention TurboQuant KV enabled for 15 attention layers, companion SSM state full precision for 45 layers, q4 storage-boundary attention KV, paged cache, block L2, and SSM companion L2 initialized.
+- Memory proof: before launch `114.03 GiB` available; after health `112.92 GiB`; after first request `6.41 GiB` available. Final health reported active Metal `112357.6 MB`, peak `112563.1 MB`, cache `0 MB`. Server exited cleanly after the harness terminated it; no model process remained.
+- Boundary: this clears "can load and answer one bounded Chat request on this 128GB Mac" only. It does not clear cache warm/hit, tool, Responses, Responses stream, L2 restart, media, UI installed-app, or release support for N2 JANG_1L. No release action was run.
+
 # 2026-06-09 - N2 JANG1L continuation preflight
 
 - Stayed in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; no deprecated `/Users/eric/vmlx`, no package/sign/notarize/tag/download release action.
