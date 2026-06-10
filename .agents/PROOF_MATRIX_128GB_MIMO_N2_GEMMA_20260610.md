@@ -995,6 +995,7 @@ Artifact:
 - `build/current-n2-jang1l-live-chat-cache-deferred-eval-live-attempt-20260610.json`
 - `build/current-n2-jang1l-live-chat-cache-deferred-eval-guard104-20260610.json`
 - `build/current-n2-jang1l-live-chat-cache-forced-after-gemma-video-20260610.json`
+- `build/current-real-ui-dev-app-n2-jang1l-bounded-chat-proof-20260610.json`
 
 Observed:
 
@@ -1073,6 +1074,13 @@ Observed:
   `503` at `102%` of the `107.5GB` Metal working-set cap after the first
   request, available memory fell to `6.41 GiB`, and the bounded first response
   had empty visible text.
+- Current Electron dev-app bounded Chat proof reproduces the same release
+  boundary in the user-facing app path. The app loaded the real JANG_1L row,
+  completed one Chat Completions request with HTTP `200`, initialized
+  `hybrid_ssm_v1`, live attention TurboQuant KV, SSM companion state, async
+  rederive, paged cache, block L2, and SSM companion L2. The proof remains red:
+  the first assistant content was whitespace/empty, and the second UI turn
+  returned HTTP `503` at `102%` of the `107.5GB` Metal working-set cap.
 
 Conclusion:
 

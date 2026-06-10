@@ -209,6 +209,17 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   HTTP `503` at `102%` of the `107.5GB` Metal working-set cap after the first
   request, with available memory down to `6.41 GiB`. This clears load + one
   bounded Chat request only, not cache/tool/Responses/L2/UI/media/release.
+- 2026-06-10 current dev-app bounded Chat update:
+  `build/current-real-ui-dev-app-n2-jang1l-bounded-chat-proof-20260610.json`
+  proves the same boundary through the real Electron dev app. The row loaded
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANG_1L`, reached
+  `/health`, completed one Chat Completions request with HTTP `200`, selected
+  qwen3_5_moe/JANG_1L, qwen tool parser, qwen3 reasoning parser, native
+  `hybrid_ssm_v1`, live attention TurboQuant KV, SSM companion state, async
+  rederive, paged cache, block L2, and SSM companion L2. It remains red because
+  the first visible assistant content was whitespace/empty and the second UI
+  turn returned HTTP `503` at `102%` of the `107.5GB` Metal working-set cap.
+  Do not claim N2 JANG_1L dev-app usable support yet.
 - N2 JANGTQ_2 proof does not clear N2 JANG_1L.
 - Keep architecture names explicit in every proof: base Qwen/Qwen35 MXFP8-MTP direct-source proof does not clear Nex/N2 Pro 397B JANG_1L, and N2 JANG_1L does not clear regular Qwen MTP/JANGTQ rows. Record `format`, `weight_format`, `artifact_profile`, MTP depth, `gdn_sink`, hybrid SSM/native-cache schema, TurboQuant KV state, and media weight backing from loaded health/config rather than inferred family names.
 

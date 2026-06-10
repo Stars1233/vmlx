@@ -1,3 +1,12 @@
+# 2026-06-10 - N2 JANG_1L dev-app bounded chat
+
+- Ran current Electron dev-build Nex/N2 Pro JANG_1L bounded Chat proof with `npm run dev`, Chat Completions, server cache controls, temperature `0`, top_p `1`, max tokens `8`, and max prompt tokens `4096`.
+- Proof summary `build/current-real-ui-dev-app-n2-jang1l-bounded-chat-proof-20260610.json` is `status=fail`; raw proof is `docs/internal/agent-notes/current-real-ui-dev-app-n2-jang1l-bounded-chat-20260610-proof.json`.
+- Proven: dev app launched, real `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANG_1L` loaded, `/health` reached, first Chat Completions request returned HTTP `200`, qwen3_5_moe/JANG_1L detection was correct, qwen tool parser and qwen3 reasoning parser auto-selected, native `hybrid_ssm_v1` cache initialized, live attention TurboQuant KV active, SSM companion state active, async rederive ran, paged cache active, block L2 wrote, and SSM companion L2 stored state.
+- Runtime/cache evidence: active memory `112548.8 MB`, peak `112803.4 MB`, `actual_bits=2.13`, `profile=JANG_1L`, `prestacked_switch=540`, `trained_active_experts=10`, 15 attention TQ-KV layers, 45 SSM companion layers, `ram_tokens_cached=18`, `l2_block_tokens_on_disk=18`, `l2_ssm_tokens_on_disk=18`, `l2_tokens_on_disk=36`, block-disk writes `1`, and SSM companion disk store `1`.
+- Red evidence: first assistant visible content was empty/whitespace (`8` streamed space tokens), and the second UI turn failed with HTTP `503`: Metal GPU working set too full at `102%` of the `107.5GB` cap. This means real dev-app load + one bounded request is proven, but visible quality and multi-turn/cache reuse remain red.
+- Boundary: this does not clear N2 JANG_1L tools, Responses, Responses stream, L2 restart, media, installed-app parity, public tunnel parity, package/sign/notarize/tag/upload, or release support. No release action was run.
+
 # 2026-06-10 - Gemma 31B JANG4M dev-app audio boundary
 
 - Ran current Electron dev-build Gemma 4 31B QAT JANG4M audio proof with `npm run dev`, Chat Completions, one app audio attachment, server cache controls, temperature `0`, top_p `1`, max tokens `128`, and max prompt tokens `12000`.
