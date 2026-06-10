@@ -414,6 +414,7 @@ Artifact:
 - `build/current-real-ui-live-model-n2-jangtq2-image-proof-20260610.json`
 - `build/current-real-ui-live-model-n2-jangtq2-video-proof-20260610.json`
 - `build/current-real-ui-live-model-n2-jangtq2-audio-proof-20260610.json`
+- `build/current-real-ui-installed-app-n2-jangtq2-responses-tools-cache-20260610.json`
 
 Raw ignored proof captures:
 
@@ -504,6 +505,29 @@ Proven:
   `cache_detail=paged+ssm`, `l2_block_tokens_on_disk=3579`,
   `l2_ssm_tokens_on_disk=17083`, `l2_tokens_on_disk=20662`,
   `block_disk_writes=59`, `block_disk_hits=110`, and `ssm_disk_hits=1`.
+- Local rebuilt installed app proof is now green for the same default N2
+  JANGTQ2 checkpoint path. `/Applications/vMLX.app` launched as
+  `uiLaunchMode=installed-app`, adopted the real N2 server, used
+  `/v1/responses`, executed two built-in `run_command` calls, and produced
+  visible assistant turns `Done. REAL_UI_LIVE_TOOL_ONE` and
+  `Done - this is the second UI turn. REAL_UI_LIVE_TOOL_TWO`.
+- The installed-app run verified the probe files exactly:
+  `real_ui_tool_probe_1.txt=REAL_UI_LIVE_TOOL_ONE` and
+  `real_ui_tool_probe_2.txt=REAL_UI_LIVE_TOOL_TWO`.
+- The installed-app run also recorded renderer content deltas (`count=8` and
+  `count=15`), `eventCounts.tool=106`, `eventCounts.stream=23`,
+  `eventCounts.complete=2`, server cache controls, settings persistence, and
+  no raw parser/reasoning leak.
+- Installed-app runtime/cache evidence stayed architecture-correct:
+  `hybrid_ssm_v1`, components `attention_kv`, `ssm_companion_state`,
+  `async_rederive`, attention-only TurboQuant KV storage boundary, native SSM
+  companion state, `cache_detail=paged+ssm`, `cached_tokens=384`,
+  `l2_block_tokens_on_disk=3582`, `l2_ssm_tokens_on_disk=17086`,
+  `l2_tokens_on_disk=20668`, `block_disk_writes=59`, `block_disk_hits=110`,
+  and `ssm_disk_hits=1`.
+- The installed-app proof also records the honest N2 MTP boundary:
+  `mtp_status=metadata_inconsistent`, `runtime_active=false`, because
+  `jang_config.drop_mtp=true` while config declares one MTP layer.
 
 Red:
 
@@ -512,9 +536,11 @@ Red:
   failed because the second turn did not create `real_ui_tool_probe_2.txt` and
   visible output degenerated into repeated `!` after a tool-choice-required
   error. Do not generalize the default checkpoint pass to that stricter prompt.
-- Installed-app packaged parity, audio, public tunnel SSE parity, and release
-  readiness remain open. Image and video are green in the source dev app; audio
-  is honestly gated as unsupported.
+- Audio, public tunnel SSE parity, N2 JANG_1L, stricter custom long-delta prompt
+  quality, and release readiness remain open. Image and video are green in the
+  source dev app; audio is honestly gated as unsupported. Installed-app
+  Responses/tool/cache parity is green for the default checkpoint N2 JANGTQ2
+  path only; it is not a Developer ID notarized public DMG release claim.
 
 Next implementation target:
 

@@ -122,6 +122,16 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   runtime/source parity blocker only; it is not a Developer ID notarized DMG
   release and does not clear model-specific installed-app chat proofs or the
   remaining runtime/model/UI/cache rows.
+- 2026-06-10 N2 installed-app update:
+  `build/current-real-ui-installed-app-n2-jangtq2-responses-tools-cache-20260610.json`
+  is `status=pass` for the local rebuilt `/Applications/vMLX.app` plus
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2`. It proves
+  installed-app UI, `/v1/responses`, two built-in `run_command` calls,
+  tool-result continuation, visible content deltas, server cache controls,
+  no raw parser/reasoning leak, `hybrid_ssm_v1`, attention-only TurboQuant KV,
+  native SSM companion state, block L2, and SSM disk hit. It does not clear
+  public tunnel SSE, N2 audio, N2 JANG_1L, stricter prompt quality, or
+  Developer ID DMG package/sign/notarize/release readiness.
 - Proper release mechanics are documented in `/Users/eric/wiki/infra/apple-notarization.md`; do not invent an alternate path. The canonical keychain is `~/Library/Keychains/vmlx-build.keychain-db`, the Developer ID identity is `Developer ID Application: ShieldStack LLC (55KGF2S5AY)`, and notarization uses the `vmlx-notary` keychain profile.
 - If signing returns `errSecInternalComponent`, fix key access with the documented sequence and retry once after the partition-list grant settles:
 

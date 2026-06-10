@@ -8160,3 +8160,10 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Reran audit: `build/current-installed-app-runtime-parity-audit-after-local-install-20260610.json`, `status=pass`, `missing_or_stale=[]`.
 - Verified `/Applications/vMLX.app` with `codesign --verify --deep --strict --verbose=2`; valid on disk. This is local installed-app parity, not a signed/notarized DMG release.
 - Regenerated `build/current-release-regression-manifest-after-local-installed-app-parity-20260610.json`; overall release manifest still fails (`prepackage_ready=false`, `release_ready=false`) while installed/staged app runtime parity components are green.
+
+# 2026-06-10 - N2 JANGTQ2 installed-app live proof
+
+- Ran real UI proof through `/Applications/vMLX.app` for `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2` with Responses, built-in tools, cache controls, `--is-mllm`, temperature `0`, top_p `1`, and max tokens `128`.
+- Proof summary `build/current-real-ui-installed-app-n2-jangtq2-responses-tools-cache-20260610.json` is `status=pass`; raw proof is `docs/internal/agent-notes/current-real-ui-installed-app-n2-jangtq2-responses-tools-cache-20260610-proof.json`.
+- Proven surfaces: installed-app UI, visible two-turn Responses output, two `run_command` tool calls, tool-result continuation, content deltas, server cache controls, parser/reasoning leak checks, `hybrid_ssm_v1`, attention-only TurboQuant KV storage-boundary cache, native SSM companion state, block L2, and SSM disk restore hit.
+- Boundary: no public tunnel proof, no N2 audio support, no N2 JANG_1L clearance, no stricter prompt-quality clearance, and no package/sign/notarize/tag/upload/release action.
