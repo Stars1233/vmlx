@@ -2081,3 +2081,70 @@
 - Not proven: QAT JANG4M Responses streaming/non-streaming direct/gateway/tunnel
   parity, UI, installed-app parity, full Gemma release clearance, and QAT/native
   MXFP4 rows outside these QAT JANG4M source smokes remain open.
+
+# 2026-06-10 - Qwen35 raw SSE parity recheck
+
+- Directive check: allowed lane is Qwen/Qwen3.6/Qwen-coder
+  Responses/tool/reasoning streaming parity. N2 JANG_1L remains off-limits. No
+  release, signing, notarization, PyPI, public download, package, or model
+  launch action is being taken.
+- Blocker being reduced: Qwen XML-tool empty-args / output-index /
+  reasoning-delta streaming correctness for opencode/Codex-style harnesses.
+- Current evidence read:
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-public-recapture-20260610.json`.
+- Proven by current artifact: direct local server, panel gateway, and tunnel
+  are same-model for `models/Qwen3.6-35B-A3B-MXFP8-CRACK-MTP`; all three have
+  authoritative function-call args `{"value": "blue-cat"}`, matching
+  `record_fact`, argument delta/done events, final response consistency,
+  required reasoning events, and no reasoning-disable workaround. Local source
+  guards report `local_empty_xml_arguments_fail_closed=true`,
+  `local_output_index_ordering_guard=true`, and gateway request kwargs preserve
+  `enable_thinking=true`, `tool_choice=required`, max output, top-p/top-k, and
+  tool count.
+- Boundary found during raw SSE inspection: direct and gateway emit a separate
+  reasoning output item at `output_index=1` and the function call at
+  `output_index=2`. The public tunnel capture still streams reasoning summary
+  deltas on the message item at `output_index=0` and does not emit a separate
+  reasoning output item before the function call at `output_index=1`, although
+  the final response includes a reasoning item and the function args are
+  correct. This is a tunnel/public parity boundary, not a direct/gateway source
+  parser failure from the current artifact.
+- Not claimed: full direct/gateway/tunnel reasoning-item shape parity is not
+  claimed from this artifact. Qwen35 direct/gateway source behavior is clean
+  for the reported empty-args failure; public tunnel reasoning item indexing
+  should be recaptured after the public route is confirmed to run the same
+  source.
+
+# 2026-06-10 - AGENTS guard updated for parser/API and no-subagent constraints
+
+- Directive check: allowed lane is documentation/status guard maintenance for
+  the active parser/API/runtime proof work. N2 JANG_1L remains off-limits. No
+  model launch, release, signing, notarization, PyPI, public download, package,
+  or source runtime fix is being taken in this movement.
+- Request: write the active instructions into `AGENTS.md`, including the
+  no-subagent constraint and the Qwen/Qwen-coder empty tool-arguments issue,
+  and force this lane to remember all parser/API/gateway/tool/reasoning
+  streaming work.
+- Action: updated active `AGENTS.md` in
+  `/Users/eric/mlx/vllm-mlx-finite-launch-guard`, not deprecated
+  `/Users/eric/vmlx`.
+- Written into guard: the Qwen3.6/Qwen-coder 27B/35B-style XML empty-arguments
+  report is an active fix/proof item, but the proposed root cause must not be
+  trusted without same-model raw output. Missing required tool args must fail
+  closed; do not synthesize `cmd`, infer args from visible preamble, disable
+  reasoning, silently drop tool calls, or patch semantic values after parser
+  failure.
+- Written into guard: cross-family parser/API proof must cover auto tool,
+  required tool, no-tool, tool-result continuation, content deltas, reasoning
+  deltas, function-call args delta/done, final response object consistency,
+  request kwargs passthrough, parser selection, cache reuse telemetry, gateway
+  and tunnel route parity, and raw leak checks across Qwen, Qwen-coder, Gemma4,
+  MiMo/think-XML, MiniMax, DeepSeek/R1-style think parsers, XML function-call
+  parsers, and other family-specific parser paths.
+- Not proven: this is guard/status documentation only. It does not itself prove
+  opencode/Codex harness usability, public tunnel parity, MiMo exactness,
+  Gemma UI/installed-app parity, N2 JANGTQ media, or release readiness.
+- Other-agent action: use `AGENTS.md` as the standing checklist before touching
+  parser/API/gateway work; keep public tunnel reasoning-item shape red until
+  recaptured from current source; keep MiMo exactness out of parser/JSON repair;
+  keep N2 JANG_1L out of this lane unless Eric explicitly reopens it.

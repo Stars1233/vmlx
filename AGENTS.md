@@ -81,6 +81,30 @@ deltas, argument delta/done events, final object consistency, valid
 `output_index` ordering, required/auto/no-tool modes, tool-result continuation,
 and cache reuse telemetry.
 
+Current explicit parser/runtime work item from Eric: add the Qwen3.6/Qwen-coder
+empty-arguments report to the active fix/proof list for both 27B and 35B style
+XML tool-call dialects, but do not trust the proposed root cause without live
+same-model raw output. The failure shape is: model emits visible text and then
+an XML tool call with `<function=...></function>` but no parameter tags, the
+parser returns `{}`, and clients such as Codex/opencode fail because required
+arguments like `cmd` are missing. Required behavior is fail-closed validation,
+clean raw SSE/content/reasoning/tool-call event shape, and usable harness
+behavior for opencode/Codex-style agent loops. Forbidden fixes include
+synthesizing arguments from a preamble, disabling reasoning, silently dropping
+the tool call, or repairing values after parser failure.
+
+Current cross-family parser/API proof target: test and fix every model
+reasoning/tool parser family that can affect agentic loops, including Qwen,
+Qwen-coder, Gemma4, MiMo/think-XML, MiniMax, DeepSeek/R1-style think parsers,
+XML function-call parsers, and any gateway/tunnel route that rewrites or
+streams the same events. Proof must include auto tool usage, required tool
+usage, no-tool mode, tool-result continuation, content deltas, reasoning
+deltas, function-call argument delta/done events, final response object
+consistency, request kwargs passthrough, parser selection, cache reuse telemetry,
+and raw leak checks. If a family-specific parser cannot honestly support a
+dialect, mark it unsupported or fail closed with evidence instead of pretending
+the dialect works.
+
 Current N2 boundary from Eric: do not work on Nex/N2 JANG_1L unless Eric
 explicitly reopens that lane in the current turn. Treat N2 JANG_1L as
 Eric-owned/off-limits; do not launch, fix, prove, classify, or claim it from

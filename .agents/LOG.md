@@ -9823,3 +9823,57 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Other-agent action: move to same-family Responses streaming/direct/gateway/
   tunnel and UI/installed-app parity, or continue QAT/native MXFP4 rows; do not
   claim full Gemma clearance from source smokes alone.
+
+# 2026-06-10 - Qwen35 raw SSE parity recheck
+
+- Request: continue the Qwen/Qwen-coder Responses/tool/reasoning streaming
+  blocker without guessing or hiding parser failures.
+- Action: inspected current raw SSE parity artifact and raw Qwen35 direct,
+  gateway, and tunnel captures from `build/responses-sse-captures-20260610/`.
+- Evidence:
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-public-recapture-20260610.json`.
+- Proven: direct local server, panel gateway, and tunnel all advertise
+  `models/Qwen3.6-35B-A3B-MXFP8-CRACK-MTP`; all three preserve authoritative
+  `record_fact` function-call args `{"value": "blue-cat"}` through argument
+  delta/done and final response; reasoning is enabled; no reasoning-disable
+  workaround is present; local source guards are green for empty XML arguments
+  fail-closed and output-index ordering.
+- Boundary: direct and gateway emit separate reasoning output items at
+  `output_index=1` and function calls at `output_index=2`. The public tunnel
+  capture streams reasoning summary deltas on the message item at
+  `output_index=0`, then emits the function call at `output_index=1`; the final
+  response includes a reasoning item, but there is no separate reasoning
+  `output_item.added` in the tunnel stream. Treat this as public tunnel
+  reasoning-item shape parity not fully proven, even though tool args are
+  correct.
+- Not claimed: full direct/gateway/tunnel reasoning-item shape parity. Do not
+  use the current public tunnel artifact to claim that stronger property.
+- Other-agent action: recapture the public tunnel after confirming it is
+  running the same source as direct/gateway, or update the release board to keep
+  the tunnel reasoning-item shape boundary explicit.
+
+# 2026-06-10 - AGENTS guard updated for parser/API and no-subagent constraints
+
+- Request: put the current instructions into `AGENTS.md` so this lane stops
+  forgetting parser/API/gateway/tool/reasoning streaming priorities and the
+  no-subagent constraint.
+- Action: edited active worktree guard
+  `/Users/eric/mlx/vllm-mlx-finite-launch-guard/AGENTS.md`.
+- Written: Qwen3.6/Qwen-coder 27B/35B-style XML empty-arguments report is an
+  active release-critical fix/proof item for opencode/Codex-style harnesses,
+  but the proposed root cause must not be trusted without same-model raw
+  output. Missing required arguments must fail closed. Forbidden fixes include
+  argument synthesis from preamble text, reasoning-disable workarounds, silent
+  tool-call dropping, and post-parser semantic repair.
+- Written: cross-family parser/API proof requires auto tool, required tool,
+  no-tool, tool-result continuation, content deltas, reasoning deltas,
+  function-call args delta/done, final-object consistency, request kwargs,
+  parser selection, cache telemetry, gateway/tunnel parity, and raw leak checks
+  across Qwen, Qwen-coder, Gemma4, MiMo/think-XML, MiniMax, DeepSeek/R1-style,
+  XML function-call, and other family parser paths.
+- Proven: the guard now explicitly records these constraints for future
+  continuations and other-agent handoff.
+- Not proven: no model/API/runtime behavior changed or ran in this movement.
+- Other-agent action: read `AGENTS.md` plus `.agents/STATUS.md` before parser,
+  gateway, tool, reasoning, or release work; do not claim public tunnel parity
+  from stale tunnel captures; do not touch N2 JANG_1L from this lane.
