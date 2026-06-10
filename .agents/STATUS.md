@@ -2148,3 +2148,50 @@
   parser/API/gateway work; keep public tunnel reasoning-item shape red until
   recaptured from current source; keep MiMo exactness out of parser/JSON repair;
   keep N2 JANG_1L out of this lane unless Eric explicitly reopens it.
+
+# 2026-06-10 - XML/Qwen required tool-argument fail-closed runtime fix
+
+- Directive check: allowed lane is Qwen/Qwen3.6/Qwen-coder and cross-family
+  parser/API/tool-reasoning correctness. N2 JANG_1L remains off-limits. No
+  model launch, release, signing, notarization, PyPI, public download, or
+  package action is being taken.
+- Blocker being reduced: opencode/Codex-style harnesses must not receive
+  `arguments: {}` when a model emits a tool marker/function name but omits
+  required parameters, including the reported text-preamble plus
+  `<tool_call><function=exec_command></function></tool_call>` shape.
+- Root cause found in source: XML-dialect parsers could emit structured tool
+  calls with empty `{}` arguments when a `<function=...>` block had no
+  `<parameter=...>` tags or JSON args. Affected direct parser surfaces included
+  `xml_function`, `nemotron`, and `step3p5`; Qwen JSON-in-XML could also accept
+  `{"arguments": {}}` before schema-required validation.
+- Fix: added shared parser helper
+  `_arguments_satisfy_required_schema()` and wired it into Qwen,
+  XMLFunction/MiMo, Nemotron, and Step3p5 parsers. If the request schema has
+  required parameters and the parsed arguments omit them or provide empty
+  strings, the parser now rejects the tool call instead of emitting `{}`.
+- Server boundary proof: added regression showing
+  `_parse_tool_calls_with_parser()` with `tool_call_parser="xml_function"` and
+  required `exec_command.cmd` returns `tool_calls is None` for the reported
+  empty-function output, not a `ToolCall(arguments="{}")`.
+- Verification:
+  `python3 -m py_compile vmlx_engine/tool_parsers/abstract_tool_parser.py vmlx_engine/tool_parsers/qwen_tool_parser.py vmlx_engine/tool_parsers/xml_function_tool_parser.py vmlx_engine/tool_parsers/nemotron_tool_parser.py vmlx_engine/tool_parsers/step3p5_tool_parser.py`
+  passed.
+- Verification:
+  `.venv/bin/python -m pytest -q tests/test_xml_function_tool_parser.py tests/test_step3p5_tool_parser.py tests/test_tool_parsers.py tests/test_engine_audit.py -k 'empty_arguments or empty_function or required_schema or qwen_issue_192 or xml_function_empty_required_args_fail_closed_at_server_boundary or QwenToolParser or NemotronToolParser or Step3p5ToolParser or XMLFunctionToolParser'`
+  passed `42 passed`.
+- Verification:
+  `.venv/bin/python -m pytest -q tests/test_xml_function_tool_parser.py tests/test_step3p5_tool_parser.py tests/test_tool_parsers.py`
+  passed `119 passed`; `git diff --check` passed.
+- Proven: parser and server boundary fail closed for schema-required missing
+  arguments across the affected XML/Qwen parser paths. Valid no-argument tools
+  remain allowed when the request schema has no required parameters.
+- Not proven: this is not a fresh same-model direct/gateway/tunnel raw SSE
+  model recapture, not public tunnel parity, not live opencode end-to-end, not
+  MiMo exactness/media proof, not Gemma UI/installed-app proof, and not release
+  readiness.
+- Other-agent action: recapture same-model Qwen/Qwen-coder direct, gateway, and
+  tunnel raw SSE with reasoning enabled after this commit lands; expected
+  behavior for truly missing required args is fail-closed/no tool call rather
+  than `arguments: {}`. Keep content/reasoning deltas, args delta/done,
+  output-index ordering, tool-result continuation, and cache telemetry in the
+  recapture.

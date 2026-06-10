@@ -9877,3 +9877,33 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Other-agent action: read `AGENTS.md` plus `.agents/STATUS.md` before parser,
   gateway, tool, reasoning, or release work; do not claim public tunnel parity
   from stale tunnel captures; do not touch N2 JANG_1L from this lane.
+
+# 2026-06-10 - XML/Qwen required tool-argument fail-closed runtime fix
+
+- Request: test and fix the Qwen/Qwen-coder empty tool-arguments issue without
+  trusting the proposed root cause or applying fake parser repair.
+- Action: traced parser/server flow for XML-style tool calls and implemented
+  required-schema validation in parser classes before they can emit structured
+  tool calls.
+- Fix: added `ToolParser._arguments_satisfy_required_schema()` and applied it
+  to `qwen`, `xml_function`/MiMo, `nemotron`, and `step3p5` parser paths.
+- Behavior: if request schema requires an argument such as `cmd`, outputs like
+  `<tool_call><function=exec_command></function></tool_call>` or
+  `{"name":"exec_command","arguments":{}}` now fail closed instead of emitting
+  `arguments: {}`. No arguments are synthesized from visible text or preambles.
+- Server proof: `_parse_tool_calls_with_parser()` with
+  `tool_call_parser="xml_function"`, `tool_choice="required"`, and required
+  `exec_command.cmd` returns no tool call for the reported empty-function
+  output.
+- Verification: py_compile passed for touched parser files; focused parser and
+  server-boundary pytest selection passed `42 passed`; full focused parser
+  files passed `119 passed`; `git diff --check` passed.
+- Proven: parser/server boundary fail closed for missing required args across
+  affected XML/Qwen parser surfaces while preserving valid no-required-arg tool
+  calls.
+- Not proven: no live model recapture, no public tunnel parity, no opencode E2E
+  harness proof, no release readiness claim.
+- Other-agent action: recapture direct/gateway/tunnel raw SSE after this commit
+  and verify reasoning/content deltas, args delta/done, final object
+  consistency, output indices, tool-result continuation, kwargs passthrough,
+  and cache telemetry.
