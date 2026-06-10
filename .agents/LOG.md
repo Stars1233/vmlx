@@ -10463,3 +10463,41 @@ parsers, XML function parsers, and gateway/tunnel routes.
 Parallel-agent handoff: prioritize public tunnel/backend rebuild and recapture
 for Qwen SSE parity plus Electron UI media rows. Do not duplicate this lane's
 MiMo JANGTQ_2 runtime inspection unless coordinating through `.agents`.
+
+## 2026-06-10 08:10 PDT - MiMo JANGTQ2 segmented media fix and live route proof
+
+Fixed a real MiMo media runtime drift from the upstream Torch implementation:
+vMLX's embedded MiMo vision attention now receives per-grid `cu_seqlens` and
+keeps separate image/video-frame segments isolated during vision attention.
+This matters for multi-image and video-frame routes; it is not a fake semantic
+repair and does not touch parser/string/color outputs.
+
+Validation:
+
+- `./.venv/bin/python -m pytest -q tests/test_mimo_v2_media_runtime.py`
+  passed `18/18`.
+- `./.venv/bin/python -m py_compile vmlx_engine/models/mllm.py tests/test_mimo_v2_media_runtime.py`
+  passed.
+- `build/current-mimo-v25-jangtq2-processor-splice-preflight-20260610.json`
+  proves the local artifact processor emits the expected image slots/tensors:
+  four `151655` image slots, pixel tensor `[16,1536]`, and grid `[[1,4,4]]`
+  for 64x64 images.
+- `build/current-mimo-v25-jangtq2-segmented-media-live-after-fix-20260610.json`
+  records a real local MiMo JANGTQ2 source-server proof on port `8912`.
+  The model loaded with preserved media weights bound (`visual=364`,
+  `audio_encoder=75`, `speech_embeddings=20`), native mixed full/SWA cache,
+  paged cache, and block L2. Multi-image and video Chat Completions returned
+  HTTP 200 and visible text; video decoded two frames through the numpy video
+  reader.
+
+Boundary: live semantic color is still red (`black/white` for red/green media)
+and MiMo JANGTQ2 text exactness remains red. Do not claim visual semantic
+quality, text exactness, installed-app parity, or release readiness from this
+fix. The server was stopped cleanly, port `8912` is clear, and the temporary
+block-cache directory was removed.
+
+Next other-agent action: rerun Electron dev-app MiMo JANGTQ2 image/video UI
+rows after this source commit is bundled. For semantic quality, compare
+source/dequant/reference visual logits or rebuild the JANGTQ artifact; do not
+mask with parser repair, string normalization, prompt hacks, or color
+post-processing.

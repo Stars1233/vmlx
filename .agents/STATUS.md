@@ -3103,3 +3103,43 @@
   unless Eric redirects. Parallel agent should prioritize tunnel/public
   gateway rebuild/recapture for Qwen SSE parity and Electron UI media rows; do
   not duplicate this lane's MiMo runtime inspection unless coordinating here.
+
+# 2026-06-10 08:10 PDT - MiMo JANGTQ2 segmented media fix and live route proof
+
+- Source fix: `vmlx_engine/models/mllm.py` now passes MiMo vision
+  `cu_seqlens` from `image_grid_thw` into the embedded MiMo vision attention
+  path. This aligns vMLX with the upstream MiMo Torch implementation so
+  separate images/video-frame grids do not attend across each other inside the
+  vision tower.
+- Regression: `tests/test_mimo_v2_media_runtime.py` adds a no-heavy
+  multi-grid isolation check proving that processing two image grids together
+  matches processing each grid independently. Focused validation passed:
+  `./.venv/bin/python -m pytest -q tests/test_mimo_v2_media_runtime.py`
+  (`18 passed`) and
+  `./.venv/bin/python -m py_compile vmlx_engine/models/mllm.py tests/test_mimo_v2_media_runtime.py`.
+- Processor preflight artifact:
+  `build/current-mimo-v25-jangtq2-processor-splice-preflight-20260610.json`.
+  It proves the local MiMo JANGTQ2 processor/template path emits four
+  `image_token_id=151655` slots for a 64x64 image, pixel tensor `[16,1536]`,
+  and `image_grid_thw=[[1,4,4]]`; no simple placeholder/drop mismatch was
+  found.
+- Live source proof artifact:
+  `build/current-mimo-v25-jangtq2-segmented-media-live-after-fix-20260610.json`.
+  Real `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2` loaded on
+  port `8912` with `visual=364`, `audio_encoder=75`, `speech_embeddings=20`,
+  native mixed full/SWA cache, paged cache, and block L2 enabled. Multi-image
+  and video Chat Completions both returned HTTP 200 with visible output; video
+  decoded two frames via the numpy video reader.
+- Boundary: MiMo media route/no-crash is improved, but semantic color quality
+  remains red. The live outputs still answered black/white for red/green
+  media, and MiMo JANGTQ2 text exactness remains red from prior artifacts. Do
+  not claim MiMo visual semantic quality, text exactness, installed-app
+  release clearance, or package readiness from this fix.
+- Runtime cleanup: the MiMo server was stopped cleanly, port `8912` is clear,
+  and the temporary block-cache directory was removed after compact proof
+  artifacts were written.
+- Next other-agent action: after this commit is merged into the app/runtime
+  bundle, rerun Electron dev-app MiMo JANGTQ2 image/video UI rows to confirm
+  route parity. For semantic quality, use source/dequant/reference
+  visual-logit comparison or a corrected JANGTQ artifact; do not patch parser,
+  strings, prompt wording, or color post-processing.
