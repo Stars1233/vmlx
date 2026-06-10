@@ -175,6 +175,19 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   before loading weights, preserved requested tool/Responses/Responses-stream/L2
   probes, and left the cache directory empty. This is current scheduling
   evidence, not live runtime clearance.
+- 2026-06-10 deferred-startup-eval update:
+  `vmlx_engine/utils/tokenizer.py` now applies a narrow qwen3_5_moe affine
+  `JANG_1L` policy that calls `load_jang_model(..., skip_eval=True)`, avoiding
+  eager all-parameter eval at startup. `build/current-n2-jang1l-deferred-eval-startup-proof-20260610.json`
+  records the live boundary: with `114.04 GiB` available and 3 GiB lower-peak
+  headroom, JANG_1L reached `/health`, loaded `123` shards, applied `482`
+  quant-shape repairs, initialized hybrid SSM/cache, attention TurboQuant KV,
+  paged cache, block L2, and SSM companion L2, and completed one bounded Chat
+  Completions request with HTTP `200`. Full support remains red: subsequent
+  cache/tool/Responses probes hit working-set guard at `102%` of the `107.5GB`
+  cap, and a guard-104/wired-limit experiment reproduced first-request Metal
+  OOM. Do not clear JANG_1L cache/tool/Responses/L2/UI/media/release support
+  from this partial fix.
 - N2 JANGTQ_2 proof does not clear N2 JANG_1L.
 - Keep architecture names explicit in every proof: base Qwen/Qwen35 MXFP8-MTP direct-source proof does not clear Nex/N2 Pro 397B JANG_1L, and N2 JANG_1L does not clear regular Qwen MTP/JANGTQ rows. Record `format`, `weight_format`, `artifact_profile`, MTP depth, `gdn_sink`, hybrid SSM/native-cache schema, TurboQuant KV state, and media weight backing from loaded health/config rather than inferred family names.
 

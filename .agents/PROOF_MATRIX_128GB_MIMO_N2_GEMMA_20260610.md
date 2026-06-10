@@ -844,6 +844,10 @@ Artifact:
 - `build/current-n2-jang1l-chat-cache-launch-safe-20260610.json`
 - `build/current-n2-pro-jang1l-local-memory-preflight-after-mimo-exact-20260610.json`
 - `build/current-n2-jang1l-chat-cache-after-mimo-exact-20260610.json`
+- `build/current-n2-jang1l-deferred-eval-startup-proof-20260610.json`
+- `build/current-n2-pro-jang1l-local-memory-preflight-deferred-eval-live-attempt-20260610.json`
+- `build/current-n2-jang1l-live-chat-cache-deferred-eval-live-attempt-20260610.json`
+- `build/current-n2-jang1l-live-chat-cache-deferred-eval-guard104-20260610.json`
 
 Observed:
 
@@ -898,24 +902,34 @@ Observed:
   chat/cache gate observed `available_gib=113.28`, required `118.57`, gap
   `5.29`, recorded requested tool, Responses, Responses stream, and L2 restart
   probes, and left the cache directory empty because no weights were loaded.
+- Deferred-startup-eval partial fix: qwen3_5_moe affine `JANG_1L` now defers
+  eager startup eval through `load_jang_model(..., skip_eval=True)`. This moves
+  the failure boundary from pre-health Metal OOM to post-first-request
+  working-set pressure. The deferred-eval live attempt reached `/health`,
+  loaded the real JANG_1L row in `6.7s`, initialized qwen parser, qwen3
+  reasoning, hybrid SSM/cache, attention TurboQuant KV, paged cache, block L2,
+  and SSM companion L2, then completed one bounded Chat Completions request
+  with HTTP `200`.
+- JANG_1L still is not a release-clear row: after that first bounded request,
+  active Metal working set reached `102%` of the `107.5GB` cap; cache warm/hit,
+  tool, Responses, Responses stream, and full L2 restart did not pass. A
+  follow-up with `VMLINUX_METAL_WS_REJECT_PCT=104` plus wired-limit setup
+  reproduced first-request Metal OOM (`server_exit=-6`), proving that simply
+  bypassing the guard is not the next fix.
 
 Conclusion:
 
-- JANG_1L is not proven usable on this 128GB host. It is not merely untested and
-  not merely skipped by a conservative gate; multiple live startup attempts,
-  including the latest high-free low-peak launch, crashed in Metal OOM before
-  health.
+- JANG_1L is not proven usable on this 128GB host. It now has a real
+  startup/first-chat improvement from deferred startup eval, but full cache,
+  tool, Responses, and L2 proof remains red under working-set pressure.
 
 Next implementation target:
 
-- Implement an actual 128GB runtime strategy for JANG_1L before claiming it:
-  lower peak loader/eval pressure, deferred/chunked eval that does not require
-  full model command-buffer residency, smaller prefill/eval staging, or a
-  JANG_1L-specific memory path. Do not claim N2 JANG_1L support from JANGTQ2.
-- Current after-MiMo launch-safe evidence still says JANG_1L is below the
-  required headroom. Do not spend more cycles forcing the same OOM path unless
-  the loader/runtime strategy changes or current available memory exceeds the
-  gate.
+- Implement the next 128GB runtime strategy for JANG_1L before claiming it:
+  keep deferred startup eval, then reduce post-first-request working-set
+  residency so cache warm/hit, tools, Responses, and L2 can run. Do not claim
+  N2 JANG_1L support from JANGTQ2, and do not bypass the Metal working-set
+  guard as a release fix.
 
 ## What To Tell The Other Agent
 
@@ -956,12 +970,13 @@ Next implementation target:
   exactness before claiming app tool support.
 - N2 JANGTQ2 is the stronger N2 checkpoint candidate; it has live hybrid
   SSM/TQ/L2/tool/Responses proof.
-- N2 JANG_1L needs a real memory-strategy fix. The current failure is a Metal
-  OOM during loader/eval, not lack of attempt. Latest after-MiMo refresh
-  artifacts are
-  `build/current-n2-pro-jang1l-local-memory-preflight-after-mimo-exact-20260610.json`
-  and `build/current-n2-jang1l-chat-cache-after-mimo-exact-20260610.json`;
-  both show current headroom below the gate and no weight load.
+- N2 JANG_1L has a real startup/first-chat improvement from deferred startup
+  eval, but the release blocker moved to post-first-request working-set
+  pressure. Latest deferred-eval artifacts are
+  `build/current-n2-jang1l-deferred-eval-startup-proof-20260610.json` and
+  `build/current-n2-jang1l-live-chat-cache-deferred-eval-live-attempt-20260610.json`;
+  they prove `/health` plus one bounded chat request, but full cache/tool/
+  Responses/L2 remains red.
 - Other agent should keep the new panel detector boundary: MiMo auto mode is
   XML tools + asymmetric-SWA paged cache, not auto reasoning; Gemma unified
   aliases must stay mapped to Gemma4 parsers and rotating mixed-SWA cache.
