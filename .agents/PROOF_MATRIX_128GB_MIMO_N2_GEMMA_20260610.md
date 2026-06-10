@@ -1323,7 +1323,19 @@ Next implementation target:
   plumbing. The matching dev-build exact-output proof
   `build/current-real-ui-dev-app-mimo-v25-jangtq2-exact-output-proof-20260610.json`
   reproduces the same exactness failure, so do not frame this as
-  installed-app-only drift.
+  installed-app-only drift. Current source now also has a real visual-runtime
+  contract fix: missing preserved visual sidecar biases
+  `visual.merger.ln_q.bias`, `visual.merger.mlp.0.bias`, and
+  `visual.merger.mlp.2.bias` are zero-filled instead of leaving initializer
+  values in the media path. Visual-only Torch-vs-MLX parity is green in
+  `docs/internal/agent-notes/current-mimo-v25-jangtq2-visual-torch-mlx-parity-20260610.json`
+  (`max_mean_abs_diff=0.0008475283`, `min_cosine=0.9999996424`), but live
+  patched-source color semantics remain red in
+  `docs/internal/agent-notes/current-mimo-v25-jangtq2-direct-color-after-zero-bias-20260610.json`
+  (`red -> Black`, `green -> White`, `blue -> Black`, `white -> Black`,
+  `black -> White...`). Do not re-chase the stale text-only media gate or
+  claim MiMo JANGTQ2 `vl_image` release clearance; next work is language-side
+  multimodal splice/first-logit or artifact/source quant contract.
 - MiMo JANG_2L is the stronger MiMo checkpoint candidate for load/cache/text,
   but post-fix app tool exactness is still red. The panel now pins
   `tool_choice` only for explicit single-tool user requests, and the app can

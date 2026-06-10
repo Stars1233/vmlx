@@ -10272,3 +10272,32 @@ Ran two focused dev-app image proofs for `/Users/eric/.mlxstudio/models/JANGQ-AI
 ## 2026-06-10 continuation - MiMo JANGTQ2 direct color A/B classifier
 
 Started one direct source server for MiMo JANGTQ2 with `--is-mllm` and `VMLINUX_DISABLE_MIMO_V2_COMPILED_ROUTER=1`, sent text-only plus five solid-color image requests in one process, then shut the server down cleanly. Result: no-image prompt returned `Blue.`, every image color returned `White.`. This confirms current source routes and processes images but does not yet provide semantic `vl_image` correctness. Wrote classifier artifact `docs/internal/agent-notes/current-mimo-v25-jangtq2-direct-color-ab-20260610.md`.
+
+## 2026-06-10 07:21 PDT - AGENTS.md instruction persistence
+
+Eric asked to put the written-state discipline into `AGENTS.md`: every
+instruction, every status, and every movement must be recorded and checked
+before acting. Updating the active worktree guard now. This is not a release,
+signing, notarization, PyPI, download, or N2 JANG_1L action.
+
+## 2026-06-10 07:29 PDT - MiMo JANGTQ2 visual bias contract fix and live boundary
+
+Compared the MiMo V2.5 JANGTQ_2 preserved visual tower against the local Torch
+`modeling_mimo_v2.py` reference without loading the full language model. The
+sidecar is missing `merger.ln_q.bias`, `merger.mlp.0.bias`, and
+`merger.mlp.2.bias`; after zero-filling those absent biases, Torch-vs-MLX
+visual parity passed (`max_mean_abs_diff=0.0008475283`,
+`min_cosine=0.9999996424`). Patched `vmlx_engine/models/mllm.py` so media
+runtime load zero-fills those exact missing visual biases instead of leaving
+initializer values in the path.
+
+Reran patched-source MiMo JANGTQ2 direct API color A/B on port `8877` with
+`--mllm`, paged cache, native mixed-SWA cache, and the compiled router disabled.
+The live server logged `MiMo-V2 media load zero-filled missing visual bias
+tensors...`, bound `459` media tensors, processed image data URLs, and skipped
+media prompt cache store. Semantic color proof is still red:
+text-only sky=`Blue.`, red=`Black`, green=`White`, blue=`Black`, white=`Black`,
+black=`White...`. Artifact:
+`docs/internal/agent-notes/current-mimo-v25-jangtq2-direct-color-after-zero-bias-20260610.json`.
+Do not claim MiMo JANGTQ2 `vl_image` release clearance; next work is
+language-side multimodal splice/first-logit or artifact/source quant contract.

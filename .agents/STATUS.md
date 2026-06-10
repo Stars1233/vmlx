@@ -2851,3 +2851,44 @@
 - Server command used source `.venv`, `--is-mllm`, continuous batching, paged cache, block L2, and `VMLINUX_DISABLE_MIMO_V2_COMPILED_ROUTER=1` to avoid blaming the compiled decode router. Runtime still loaded as `mllm=True`, auto-enabled MiMo media, and bound `visual=364`, `audio_encoder=75`, `speech_embeddings=20`.
 - A/B result: text-only/no-image prompt returned `Blue.`; solid red, green, blue, white, and black 128x128 image prompts all returned `White.`.
 - Classification: image route and media tensors are active, but simple color semantics are not image-conditioned enough to clear `vl_image`. This is not a red-only channel swap. Do not fix with regex/prompt/parser/output rewrite; next useful work is Torch-vs-MLX first-logit/visual embedding/splice comparison against local `modeling_mimo_v2.py` or an artifact requant/runtime contract.
+
+# 2026-06-10 continuation - AGENTS.md instruction persistence
+
+- Current user instruction: write down every current-turn instruction, every
+  status change, and every movement; force future continuations to re-check the
+  written state before acting.
+- Action: update active worktree `AGENTS.md` to make the write/check discipline
+  an explicit hard rule, alongside the existing no-subagent, no fake parser
+  repair, no release-without-override, and N2 JANG_1L off-limits constraints.
+- Boundary: this is documentation/control-plane work only. It does not sign,
+  notarize, publish, update PyPI, touch N2 JANG_1L, or claim any model/API row
+  is release-cleared.
+
+# 2026-06-10 07:29 PDT - MiMo JANGTQ2 visual bias contract fixed, color semantics still red
+
+- Blocker reduced: MiMo V2.5 JANGTQ_2 visual/media runtime contract.
+- Source fix: `vmlx_engine/models/mllm.py` now zero-fills missing preserved
+  visual sidecar bias tensors `visual.merger.ln_q.bias`,
+  `visual.merger.mlp.0.bias`, and `visual.merger.mlp.2.bias` when the media
+  runtime is enabled and the artifact does not provide them. This prevents
+  initializer values from leaking into the preserved visual path. It does not
+  rewrite prompts, parser output, logits, tool args, or visible text.
+- Visual-only parity proof:
+  `docs/internal/agent-notes/current-mimo-v25-jangtq2-visual-torch-mlx-parity-20260610.json`
+  is `status=pass` after zero-fill: 364 visual tensors loaded from shards
+  73-75, max Torch-vs-MLX mean abs diff `0.0008475283`, min cosine
+  `0.9999996424`, and red-vs-white visual embeddings differ in both Torch and
+  MLX (`mean_abs_diff≈0.065`). This proves the MLX visual tower matches the
+  local Torch reference for the tested synthetic color fixtures.
+- Live patched-source proof:
+  `docs/internal/agent-notes/current-mimo-v25-jangtq2-direct-color-after-zero-bias-20260610.json`
+  is `status=fail` for semantic `vl_image`: text-only sky control returned
+  `Blue.`, solid red returned `Black`, green `White`, blue `Black`, white
+  `Black`, and black `White...`. The server loaded the real 79 GiB MiMo
+  JANGTQ2 bundle as MLLM, auto-enabled media, bound `459` media tensors, logged
+  the zero-fill path, used native `mixed_swa_kv_v1`/`mimo_v2_asymmetric_swa`,
+  paged cache, and skipped media prompt cache store as intended.
+- Boundary: this is a real runtime fix and proof, but MiMo JANGTQ2 visual
+  semantic quality remains red and is not release-cleared. The next useful
+  diagnosis is language-side multimodal splice/first-logit or artifact/source
+  quant contract, not prompt/parser/regex repair and not cache/L2 chasing.

@@ -55,6 +55,20 @@ proofs, and explicit handoff notes only. Python remains acceptable for ordinary
 local verification, artifact inspection, proof scripts, and tests when it is
 not spawning, prompting, supervising, or summarizing subagents.
 
+### Written-state discipline
+
+Before each substantive action, re-check the current written state in
+`.agents/STATUS.md`, `.agents/LOG.md`, and this file. If Eric gives a new
+instruction, correction, stop, priority change, model boundary, release
+boundary, parser/API requirement, proof result, or coordination request, record
+it in `.agents/STATUS.md` and `.agents/LOG.md` before continuing.
+
+Every status movement must be written down as it happens: what was requested,
+what was done, which exact command/proof/artifact supports it, what is proven,
+what is not proven, what must not be claimed, and what the other agent should
+or should not pick up. Do not rely on memory, prior chat context, unstaged local
+notes, or implied intent when the written state disagrees or is incomplete.
+
 ### No subagent delegation
 
 This lane must be worked directly by the active Codex instance. Do not use
