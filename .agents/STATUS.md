@@ -1142,3 +1142,11 @@
 - Positive evidence: local rebuilt `/Applications/vMLX.app` launched, real `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2` loaded, Chat Completions streamed visible assistant turns, no raw parser/reasoning leak was recorded, no tools or reasoning were persisted, server cache controls were visible, and generation defaults were applied.
 - Runtime/cache evidence: active memory `76483.5 MB`, peak `77024.8 MB`, single-active decode, TurboQuant codebook routed experts (`profile=JANGTQ_2`), prestacked routed layout, native `mixed_swa_kv_v1` with `cache_subtype=mimo_v2_asymmetric_swa`, `cache_detail=paged`, `cache_hit_tokens=41`, `l2_block_tokens_on_disk=117`, `l2_tokens_on_disk=117`, and block-disk writes `3`.
 - Red evidence: the exact text probe expected `ACK-CB-742` but returned `ACKCB-742`; the exact JSON probe expected `{"status":"ok","value":"blue-cat"}` but returned only `{"`. This confirms MiMo JANGTQ_2 installed-app exactness remains red and should be investigated in artifact/logit/quant/decode contract, not parser repair or cache disabling.
+
+# 2026-06-10 - N2 JANG_1L after-MiMo launch-safe refresh still skipped
+
+- Reduced blocker: `runtime/kernel` plus careful-RAM scheduling for Nex/N2 Pro JANG_1L.
+- Fresh no-load preflight: `build/current-n2-pro-jang1l-local-memory-preflight-after-mimo-exact-20260610.json`, `status=open`, `decision=do_not_launch`; indexed payload `110.57 GiB`, required available `118.57 GiB`, observed available `113.29 GiB`, gap `5.28 GiB`.
+- Launch-safe chat/cache gate: `build/current-n2-jang1l-chat-cache-after-mimo-exact-20260610.json`, `status=skipped`, `reason=n2_jang1l_insufficient_available_memory`; observed available `113.28 GiB`, required available `118.57 GiB`, gap `5.29 GiB`.
+- Requested probes were preserved in the gate artifact: tool, Responses, Responses stream, and L2 restart. No weights were launched and the cache directory stayed empty.
+- Boundary: this is current no-load/scheduling evidence only. It does not prove N2 JANG_1L runtime/cache/API/UI and does not invalidate N2 JANGTQ2 as the current N2 checkpoint candidate. The earlier forced below-gate launch remains the live Metal OOM evidence.

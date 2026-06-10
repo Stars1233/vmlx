@@ -8326,3 +8326,11 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Positive evidence: installed-app UI, real `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2` load, visible streamed Chat turns, server cache controls, no parser/reasoning leak, no persisted tools/reasoning, native mixed-SWA cache, paged prefix hit, and block L2 writes.
 - Runtime/cache evidence: active memory `76483.5 MB`, peak `77024.8 MB`, TurboQuant codebook routed experts with prestacked layout, `cache_detail=paged`, `cache_hit_tokens=41`, `l2_block_tokens_on_disk=117`, and block-disk writes `3`.
 - Red evidence: expected `ACK-CB-742` but got `ACKCB-742`; expected `{"status":"ok","value":"blue-cat"}` but got `{"`. Boundary: exact literal/JSON output remains red for MiMo JANGTQ_2 and should stay assigned to artifact/logit/quant/decode diagnosis, not parser/cache work. No release action was run.
+
+# 2026-06-10 - N2 JANG_1L after-MiMo launch-safe refresh
+
+- Reran no-load Nex/N2 Pro JANG_1L preflight after the MiMo exact-output proof.
+- Preflight artifact `build/current-n2-pro-jang1l-local-memory-preflight-after-mimo-exact-20260610.json` is `status=open`, `decision=do_not_launch`: indexed payload `110.57 GiB`, required available `118.57 GiB`, observed available `113.29 GiB`, gap `5.28 GiB`.
+- Ran the launch-safe chat/cache gate with tool, Responses, Responses stream, and L2 restart probes requested. Artifact `build/current-n2-jang1l-chat-cache-after-mimo-exact-20260610.json` is `status=skipped`, `reason=n2_jang1l_insufficient_available_memory`: observed available `113.28 GiB`, gap `5.29 GiB`.
+- No weights were loaded and `build/current-n2-jang1l-after-mimo-exact-20260610-block-cache` stayed empty.
+- Boundary: current headroom still does not clear N2 JANG_1L. The correct release split remains N2 JANGTQ2 as checkpoint candidate, JANG_1L red until a lower-peak runtime/loader path or sufficient current headroom exists. No release action was run.

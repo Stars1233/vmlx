@@ -796,6 +796,8 @@ Artifact:
 - server log: `build/current-n2-jang1l-live-chat-cache-override-20260610.server.log`
 - `build/current-n2-pro-jang1l-local-memory-preflight-launch-safe-20260610.json`
 - `build/current-n2-jang1l-chat-cache-launch-safe-20260610.json`
+- `build/current-n2-pro-jang1l-local-memory-preflight-after-mimo-exact-20260610.json`
+- `build/current-n2-jang1l-chat-cache-after-mimo-exact-20260610.json`
 
 Observed:
 
@@ -845,6 +847,11 @@ Observed:
   attention-only TurboQuant KV plus native SSM companion state, mmap JANG
   loader, `482` quant-shape patches, `123` shards, bfloat16 for `512` experts,
   and the same Metal OOM before health.
+- Fresh after-MiMo exact-output refresh still skipped before launch: no-load
+  preflight observed `available_gib=113.29`, required `118.57`, gap `5.28`;
+  chat/cache gate observed `available_gib=113.28`, required `118.57`, gap
+  `5.29`, recorded requested tool, Responses, Responses stream, and L2 restart
+  probes, and left the cache directory empty because no weights were loaded.
 
 Conclusion:
 
@@ -859,6 +866,10 @@ Next implementation target:
   lower peak loader/eval pressure, deferred/chunked eval that does not require
   full model command-buffer residency, smaller prefill/eval staging, or a
   JANG_1L-specific memory path. Do not claim N2 JANG_1L support from JANGTQ2.
+- Current after-MiMo launch-safe evidence still says JANG_1L is below the
+  required headroom. Do not spend more cycles forcing the same OOM path unless
+  the loader/runtime strategy changes or current available memory exceeds the
+  gate.
 
 ## What To Tell The Other Agent
 
@@ -894,7 +905,11 @@ Next implementation target:
 - N2 JANGTQ2 is the stronger N2 checkpoint candidate; it has live hybrid
   SSM/TQ/L2/tool/Responses proof.
 - N2 JANG_1L needs a real memory-strategy fix. The current failure is a Metal
-  OOM during loader/eval, not lack of attempt.
+  OOM during loader/eval, not lack of attempt. Latest after-MiMo refresh
+  artifacts are
+  `build/current-n2-pro-jang1l-local-memory-preflight-after-mimo-exact-20260610.json`
+  and `build/current-n2-jang1l-chat-cache-after-mimo-exact-20260610.json`;
+  both show current headroom below the gate and no weight load.
 - Other agent should keep the new panel detector boundary: MiMo auto mode is
   XML tools + asymmetric-SWA paged cache, not auto reasoning; Gemma unified
   aliases must stay mapped to Gemma4 parsers and rotating mixed-SWA cache.

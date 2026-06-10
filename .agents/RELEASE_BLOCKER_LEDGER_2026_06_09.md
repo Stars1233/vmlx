@@ -150,6 +150,14 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   reasoning parser, hybrid cache, attention-only TurboQuant KV, native SSM
   companion state, mmap JANG loader, `123` shards, bfloat16 for `512` experts,
   `Wired limit set to 115 GB (model 119 GB)`, then Metal OOM before health.
+- 2026-06-10 after-MiMo refresh:
+  `build/current-n2-pro-jang1l-local-memory-preflight-after-mimo-exact-20260610.json`
+  still reports `decision=do_not_launch` with `available_gib=113.29`,
+  required `118.57`, gap `5.28`. The paired launch-safe gate
+  `build/current-n2-jang1l-chat-cache-after-mimo-exact-20260610.json` skipped
+  before loading weights, preserved requested tool/Responses/Responses-stream/L2
+  probes, and left the cache directory empty. This is current scheduling
+  evidence, not live runtime clearance.
 - N2 JANGTQ_2 proof does not clear N2 JANG_1L.
 - Keep architecture names explicit in every proof: base Qwen/Qwen35 MXFP8-MTP direct-source proof does not clear Nex/N2 Pro 397B JANG_1L, and N2 JANG_1L does not clear regular Qwen MTP/JANGTQ rows. Record `format`, `weight_format`, `artifact_profile`, MTP depth, `gdn_sink`, hybrid SSM/native-cache schema, TurboQuant KV state, and media weight backing from loaded health/config rather than inferred family names.
 
