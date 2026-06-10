@@ -3621,3 +3621,80 @@
   notes for Python engine/app work.
 - Boundary: docs-only routing update. No runtime source change, no release/
   sign/notarize/package/PyPI/updater/website action, and no N2 JANG_1L.
+
+# 2026-06-10 10:12 PDT - Continuation objective recorded
+
+- Request: continue reducing all blockers for Nex/N2 JANGTQ2, MiMo V2.5
+  JANG/JANGTQ, Gemma JANG/MXFP/QAT, Qwen/Responses tools/reasoning, media,
+  cache reuse, TurboQuant/JANG/JANGTQ/MXFP, UI/API, and agentic tool loops
+  without wasting time on broad test-suite churn or recursive subagent-style
+  scripting.
+- Current allowed lane selected: Qwen/Qwen3.6 Responses raw SSE tunnel/source/
+  gateway parity and tool/reasoning streaming contract, because it directly
+  affects opencode/Codex harness usability and the empty-args/output-index
+  issue.
+- Constraints rechecked: no N2 JANG_1L, no release/sign/notarize/package/PyPI/
+  updater/website action, no subagents, no synthetic tool args, no disabling
+  reasoning to hide failures, and no parser/JSON repair masking.
+- Next action: inspect current Qwen raw SSE artifacts, route code, and tunnel
+  recapture options. Patch only if the evidence points to current source; if
+  the blocker is stale deployed tunnel state, record exact rebuild/recapture
+  instructions for the parallel lane.
+
+# 2026-06-10 10:18 PDT - Responses lane pivot to Gemma tunnel availability
+
+- Finding: Qwen35 same-model direct/gateway/public-tunnel raw SSE parity is
+  already green in
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-public-recapture-20260610.json`.
+- Current allowed lane: remaining generic Gemma raw SSE parity, especially the
+  tunnel/model-availability row still pointing at
+  `build/current-responses-raw-sse-parity-direct-gateway-tunnel-gemma4-e2b-after-parser-20260609.json`.
+- Constraints rechecked: no release/sign/notarize/package/PyPI/updater/website
+  action, no N2 JANG_1L, no subagents, no synthetic tool args, no reasoning
+  disable workaround.
+- Next action: inspect the Gemma raw SSE artifact and current public tunnel
+  model availability. If the tunnel simply does not serve the same Gemma model,
+  record an exact route/redeploy/recapture boundary; if current source/gateway
+  is the cause, patch that source path.
+
+# 2026-06-10 10:31 PDT - Gemma same-model public Responses SSE parity green
+
+- Reduced blocker: generic Responses raw SSE direct/gateway/tunnel parity for
+  the Gemma family.
+- Live source model: `/Users/eric/models/dealignai/Gemma-4-12B-it-MXFP8-CRACK`
+  served as `models/Gemma-4-12B-it-MXFP8-CRACK` on port `8896`.
+- Public tunnel target: `https://testapi.adlabus.dev/v1/responses` with the
+  same advertised model id. Live `/v1/models` advertised
+  `models/Gemma-4-12B-it-MXFP8-CRACK`; it still does not advertise the old
+  `gemma4-e2b-sse` alias.
+- New raw captures:
+  - `build/responses-sse-captures-20260610/direct-gemma4-12b-mxfp8-crack-tool-20260610.sse`
+  - `build/responses-sse-captures-20260610/gateway-gemma4-12b-mxfp8-crack-tool-20260610.sse`
+  - `build/responses-sse-captures-20260610/tunnel-gemma4-12b-mxfp8-crack-tool-20260610.sse`
+- New parity artifact:
+  `build/current-responses-raw-sse-parity-direct-gateway-tunnel-gemma4-12b-mxfp8-crack-20260610.json`,
+  `status=pass`.
+- Proven: direct, panel gateway, and public tunnel all report the same Gemma
+  model, preserve required `record_fact` arguments `{"value":"blue-cat"}`,
+  emit reasoning events with no reasoning-disable workaround, parse cleanly,
+  preserve final-object consistency, and use valid output indices. Source and
+  gateway use `message=0`, `reasoning=1`, `function_call=2`; tunnel uses
+  `message=0`, `function_call=1` without conflict.
+- Source cache/runtime facts: local source load used Gemma mixed-SWA native
+  paged cache plus block-disk L2, wrote 2 blocks / 102 tokens, and the gateway
+  request hit paged cache with 102 cached tokens. Generic TurboQuant KV was
+  inactive because this launch explicitly used `--kv-cache-quantization none`.
+- Pointer update: generic `RESPONSES_RAW_SSE_PARITY` now points at the new
+  Gemma 12B MXFP8 CRACK same-model artifact; Qwen35 keeps its separate green
+  Qwen artifact.
+- Verification: `py_compile` for touched runners passed; focused
+  `tests/test_full_release_objective_checklist.py` and
+  `tests/test_current_regression_suite.py` selected `3/3` passed; regenerated
+  `build/current-full-release-objective-checklist-after-gemma12-mxfp8-public-sse-parity-20260610.json`
+  is still `status=open`, `release_ready=false`, `failed_count=56`, with no
+  failed rows containing `responses_raw_sse` or `qwen35_raw_sse`.
+- Boundary: this clears the generic Gemma/Qwen Responses raw SSE parity board
+  row for the advertised same-model proof. It does not clear all model-family
+  parser loops, MiMo exactness/media, Gemma QAT full release matrix,
+  installed-app parity, package/sign/notarize/PyPI/updater/website work, or
+  N2 JANG_1L.

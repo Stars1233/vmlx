@@ -7,6 +7,37 @@ separates what was actually loaded and proven from what remains red.
 
 ## Latest Proof Additions
 
+### Gemma 12B MXFP8 CRACK Same-Model Public Responses SSE
+
+Artifact:
+
+- `build/current-responses-raw-sse-parity-direct-gateway-tunnel-gemma4-12b-mxfp8-crack-20260610.json`
+
+Raw captures:
+
+- `build/responses-sse-captures-20260610/direct-gemma4-12b-mxfp8-crack-tool-20260610.sse`
+- `build/responses-sse-captures-20260610/gateway-gemma4-12b-mxfp8-crack-tool-20260610.sse`
+- `build/responses-sse-captures-20260610/tunnel-gemma4-12b-mxfp8-crack-tool-20260610.sse`
+
+Proven:
+
+- Same model across direct source, panel gateway, and public tunnel:
+  `models/Gemma-4-12B-it-MXFP8-CRACK`.
+- Required tool arguments preserved as `{"value":"blue-cat"}` with
+  `response.function_call_arguments.delta` and `.done`.
+- Reasoning events present with no reasoning-disable workaround.
+- Final response object is consistent with the stream.
+- Output indices are valid on all three surfaces.
+- Local source runtime used Gemma mixed-SWA paged cache plus block-disk L2 and
+  hit 102 cached tokens on the gateway request.
+
+Boundary:
+
+- This supersedes the old `gemma4-e2b-sse` public tunnel blocker for the
+  generic Responses raw SSE release row by targeting an actually advertised
+  same Gemma model. It does not prove every Gemma QAT row, MiMo exactness/media,
+  installed-app parity, release readiness, or N2 JANG_1L.
+
 ### Gemma JANG/MXFP Audio Modality Current State
 
 Artifact:
