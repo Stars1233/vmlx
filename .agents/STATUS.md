@@ -4891,3 +4891,22 @@ Other-agent action:
 - Result: no `Nex-N2-Pro-JANGTQ2`, `N2`, or equivalent N2 JANGTQ2 model alias is advertised by the tunnel. `/health` reports single-model gateway mode with Qwen27 standby and Qwen/Gemma/Step/Nemotron/LFM model set.
 - Classification: N2 JANGTQ2 public tunnel parity remains open because the deployed tunnel does not currently serve the N2 model. This is not a local source/runtime/cache blocker; local direct/gateway N2 JANGTQ2 SSE/tool/cache/media evidence is already green in the cited artifacts.
 - No local 101 GiB N2 relaunch was run for this row because it cannot prove a missing public tunnel model. Other agent should deploy/advertise N2 JANGTQ2 on the tunnel first, then recapture same-model raw SSE with required tool args, content deltas, final consistency, output indices, and cache telemetry.
+
+# 2026-06-10 13:25 PDT - continuation constraints rechecked
+
+- Current goal continues: reduce real runtime/API/model blockers for checkpoint readiness across MiMo, N2 non-JANG_1L, Gemma, Qwen/Qwen-coder, VL/video/audio, cache reuse, TurboQuant/JANG/JANGTQ/MXFP, reasoning, and tool parser behavior.
+- Current constraints rechecked: no N2 JANG_1L; no release/sign/notarize/PyPI/updater/download/site action; no subagents; do not build broad new test harnesses; do not use parser/string/JSON repair to hide model/artifact failures; write every movement here and in `.agents/LOG.md`.
+- Next selection rule: pick a current open lane where a real source/runtime fix or decisive proof is still plausible. Avoid relaunching large models for rows that are already classified as deployed availability or artifact/profile quality unless new evidence changes that boundary.
+
+# 2026-06-10 13:27 PDT - shared tool-parser required-arg guard fixed
+
+- Selected blocker: cross-family Chat/Responses parser/API usability for Codex/opencode-style tool loops, especially missing required arguments from XML/function parsers outside the Responses final SSE-only guard.
+- Source finding: `vmlx_engine/server.py` already dropped missing required args in the Responses final streaming emission path, but `_parse_tool_calls_with_parser(...)` could still return parser-produced tool calls to shared Chat/Responses code before that guard. This affected generic/auto/Llama/Hermes/Nemotron-style parser fallbacks and any family parser that returned `{}` before the final Responses emitter.
+- Source fix: `_parse_tool_calls_with_parser(...)` now applies `_drop_tool_calls_missing_required_args(...)` immediately after request-tool filtering for both generic parser output and configured parser output. Missing required args fail closed at the shared parser boundary; valid no-required tools remain valid; no argument synthesis or reasoning-disable workaround was added.
+- Regression added: `tests/test_engine_audit.py::test_generic_parser_empty_required_args_fail_closed_at_shared_boundary`.
+- Verification:
+  - `.venv/bin/python -m py_compile vmlx_engine/server.py tests/test_engine_audit.py`
+  - `.venv/bin/python -m pytest -q tests/test_engine_audit.py -k 'empty_required_args_fail_closed_at_server_boundary or generic_parser_empty_required_args_fail_closed_at_shared_boundary or responses_final_tool_emit_drops_empty_required_args or qwen_issue_192'` -> `5 passed`
+  - `.venv/bin/python -m pytest -q tests/test_responses_raw_sse_parity_contract.py` -> `20 passed`
+  - `git diff --check` passed
+- Boundary: this is a source/API fail-closed fix across parser families when request schemas are available. It does not live-prove Qwen-coder-next because no local Qwen-coder-next artifact was found, and it does not close every model-family auto/required/no-tool/tool-result live matrix.

@@ -387,6 +387,21 @@ Artifact:
 
 - `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-missing-required-args-failclosed-20260610.json`
 
+Follow-up source/API fix:
+
+- 2026-06-10 13:27 PDT: `vmlx_engine/server.py` now applies the missing-required
+  argument guard inside `_parse_tool_calls_with_parser(...)` after request-tool
+  filtering for both configured parser output and generic parser output. This
+  extends the Qwen empty-args fail-closed rule to shared Chat/Responses parser
+  paths, not only the Responses final SSE emitter.
+- Regression:
+  `tests/test_engine_audit.py::test_generic_parser_empty_required_args_fail_closed_at_shared_boundary`.
+- Verification: focused engine-audit parser tests passed `5/5`, raw SSE parity
+  contract passed `20/20`, py_compile passed, and `git diff --check` passed.
+- Boundary: no local Qwen-coder-next artifact was found, so Qwen-coder-next
+  remains not live-proven. This is a source fail-closed API/parser boundary fix,
+  not a claim that every parser family live matrix is green.
+
 Proven:
 
 - Current-source direct, real panel gateway, and current public tunnel all

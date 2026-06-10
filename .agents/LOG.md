@@ -12653,3 +12653,23 @@ Next action:
 - Finding: tunnel advertises Qwen27/Qwen35, Gemma 12B MXFP8, Step, Nemotron, and LFM aliases, but no `Nex-N2-Pro-JANGTQ2` / N2 JANGTQ2 alias. Health reports `single_model_mode=true` with Qwen27 standby.
 - Classification: N2 public tunnel parity is blocked on deployed tunnel model availability, not local N2 runtime proof. Local direct/gateway N2 JANGTQ2 raw SSE, tool-result continuation, cache/L2, image/video, and installed-app default checkpoint rows remain the current local proof base.
 - No N2 local relaunch was performed for this tunnel row because a local 101 GiB run cannot close a public tunnel endpoint that does not advertise the model. Other agent should add/serve N2 JANGTQ2 on `testapi.adlabus.dev`, then recapture same-model direct/gateway/tunnel raw SSE.
+
+# 2026-06-10 13:25 PDT - continuation constraints rechecked
+
+- Re-read active directives and current status after compaction/continuation.
+- Current task remains the full checkpoint-readiness objective: real fixes/proofs for MiMo, N2 non-JANG_1L, Gemma, Qwen/Qwen-coder, VL/video/audio, cache reuse, TurboQuant/JANG/JANGTQ/MXFP, reasoning, and tool parser behavior.
+- Constraints retained: no N2 JANG_1L, no release/sign/notarize/PyPI/updater/download/site action, no subagent behavior, no broad low-value harness building, and no fake parser/string/JSON repair for artifact quality failures.
+- Next action: choose the open lane with the highest chance of real source/runtime movement from current evidence, not rows already classified as deployed tunnel availability or artifact/profile quality.
+
+# 2026-06-10 13:27 PDT - shared parser required-arg fail-closed fix
+
+- Searched current local models for Qwen-coder-next; no local Qwen-coder-next artifact was found, so no fake live proof was claimed.
+- Source gap found in `vmlx_engine/server.py`: the Responses final SSE emitter had the required-arg drop guard, but `_parse_tool_calls_with_parser(...)` could still return configured/generic parser calls with `{}` to shared Chat/Responses paths before finalization.
+- Patch: apply `_drop_tool_calls_missing_required_args(...)` after `_filter_to_request_tools(...)` in both the generic parser branch and configured-parser branch.
+- Regression: `tests/test_engine_audit.py::test_generic_parser_empty_required_args_fail_closed_at_shared_boundary` covers an `auto`/Llama-style `<function=exec_command>{}</function>` call where `cmd` is required. The parsed call is dropped and visible markup is stripped rather than emitted as an executable `{}` call.
+- Verification passed:
+  - `.venv/bin/python -m py_compile vmlx_engine/server.py tests/test_engine_audit.py`
+  - focused engine audit parser selection: `5 passed`
+  - raw SSE parity contract: `20 passed`
+  - `git diff --check`
+- No claims: no Qwen-coder-next live row, no all-family live matrix, no release/sign/notarize action. This is a current-source API/parser boundary fix that prevents missing-required-arg tool calls from leaking beyond the parser boundary when schemas are available.
