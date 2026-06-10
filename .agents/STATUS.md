@@ -5129,3 +5129,52 @@ Other-agent action:
   remained after the proof.
 - Unrelated dirty state left unstaged: `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
   and `node_modules/`.
+
+# 2026-06-10 14:02 PDT - Gemma4 MXFP4 parser live proof selected
+
+- Re-read current checklist and proof matrix. MiMo JANGTQ_2 exactness remains
+  the top listed blocker, but the current lane already classifies it as
+  source/dequant/replacement-artifact work and the source endpoint was down in
+  the latest check. Do not duplicate parser/cache checks there without new
+  evidence.
+- Selected actionable local blocker: rerun the live Gemma4 MXFP4 Responses
+  tools proof after the parser auto-detect fix recorded in the proof matrix.
+  Required evidence: Gemma4 parser auto-detected from real loaded path,
+  Responses content/reasoning deltas separated, no visible `thought`/raw parser
+  leak, required tool call usable, final object consistency, cache telemetry,
+  and no fake stripping or reasoning-disable workaround.
+- Constraints: no release/sign/notarize/PyPI/download/site action; no
+  subagents; use existing proof surfaces/scripts where possible; if the proof
+  fails, record exact artifact/log evidence and do not mark the row green.
+
+# 2026-06-10 14:03 PDT - Gemma4 MXFP4 stale proof rejected
+
+- Existing artifact
+  `docs/internal/agent-notes/current-real-ui-live-model-gemma4-12b-qat-mxfp4-responses-tools-post-parser-autodetect-20260610-proof.json`
+  has `status=pass`, but its `chat.finalVisibleText` still begins with
+  `thought\n`. That does not satisfy the open requirement to prove no visible
+  `thought` leak after parser auto-detect.
+- Do not use that artifact as the final closure for the Gemma4 MXFP4 parser
+  leak. Next action is to inspect the newer request-parser fallback artifact
+  and otherwise rerun a fresh current-source proof with the existing harness.
+
+# 2026-06-10 14:04 PDT - Gemma4 MXFP4 current-source proof accepted
+
+- Accepted current-source proof artifact:
+  `docs/internal/agent-notes/current-real-ui-live-model-gemma4-12b-qat-mxfp4-responses-tools-request-parser-fallback-20260610-proof.json`.
+- Proven by that artifact: real
+  `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-MXFP4` load, `/v1/responses`,
+  built-in `run_command`, two visible tool-loop turns, exact probe files,
+  `rawParserTagLeak=false`, `reasoningRawParserTagLeak=false`, no reasoning
+  content when thinking is disabled, visible stream traces begin with `The`
+  rather than `thought`, final visible text
+  `The second UI turn is complete with REAL_UI_LIVE_TOOL_TWO.`, Gemma
+  `mixed_swa_kv`, `cache_detail=paged+mixed_swa`, `cache_hit_tokens=3619`,
+  and block-disk L2 `3518` tokens.
+- Updated the stale proof-matrix note so the current-source Gemma4 12B QAT
+  MXFP4 Responses/tools visible-`thought` leak row is closed by the fallback
+  proof, while installed-app bundled-runtime parity remains open until a
+  packaged/bundled app includes the patch and is rerun.
+- No model relaunch was needed because the newer proof artifact already covered
+  the current-source requirement more strongly than the stale
+  `post-parser-autodetect` artifact.

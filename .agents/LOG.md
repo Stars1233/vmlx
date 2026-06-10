@@ -12923,3 +12923,36 @@ Next action:
 - Confirmed no 31B proof server/app process remained running. Left unrelated
   dirty `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
   and `node_modules/` untouched.
+
+# 2026-06-10 14:02 PDT - Gemma4 MXFP4 parser live proof selected
+
+- Current checklist still has `failed_count=56`. The MiMo exactness lane is
+  still important but currently needs source/dequant or replacement-artifact
+  evidence; repeating parser/cache checks would not move it.
+- Selected the still-open Gemma4 MXFP4 post-parser-fix proof: rerun the live
+  Responses/tools/cache proof after the auto-detect fix and verify parser
+  selection, content/reasoning delta separation, no visible `thought` leak,
+  required tool behavior, final consistency, and cache telemetry.
+- No release/sign/notarize/PyPI/download/site action is part of this movement.
+
+# 2026-06-10 14:03 PDT - Gemma4 MXFP4 stale proof rejected
+
+- Inspected
+  `docs/internal/agent-notes/current-real-ui-live-model-gemma4-12b-qat-mxfp4-responses-tools-post-parser-autodetect-20260610-proof.json`.
+  It is marked `status=pass`, but visible final content is
+  `thought\nThe second UI turn is complete. REAL_UI_LIVE_TOOL_TWO`.
+- Because the live target is specifically no visible `thought` leak, this
+  artifact is stale/insufficient and must not close the row. Checking the newer
+  request-parser fallback artifact or rerunning the proof next.
+
+# 2026-06-10 14:04 PDT - Gemma4 MXFP4 current-source proof accepted
+
+- Inspected
+  `docs/internal/agent-notes/current-real-ui-live-model-gemma4-12b-qat-mxfp4-responses-tools-request-parser-fallback-20260610-proof.json`.
+  It is a valid current-source pass for the Gemma4 12B QAT MXFP4 Responses
+  tools leak: both assistant visible messages start with `The`, final visible
+  text has no `thought` prefix, parser leak flags are false, tool probes were
+  written exactly, and cache/L2 telemetry remained active.
+- Updated the proof matrix to replace the stale "rerun live proof" note with
+  the accepted current-source artifact and to keep installed-app bundled parity
+  open. No new model run or release action was performed.

@@ -2026,5 +2026,17 @@ Next implementation target:
   - `.venv/bin/python -m pytest -q tests/test_engine_audit.py -k 'loaded_gemma4_mxfp_sidecar_refreshes_auto_parsers or loaded_model_parser_refresh_preserves_explicit_disables or gemma4_supports_thinking_is_explicit_not_implicit'` -> `3 passed, 566 deselected`
   - `.venv/bin/python -m pytest -q tests/test_api_utils.py -k 'local_models_cache or existing_directory_returned_as_is or nonexistent_path_returned_as_is'` -> `3 passed, 55 deselected`
   - Direct local lookup: `JANGQ-AI/gemma-4-12B-it-qat-MXFP4` resolves to `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-MXFP4`, and registry returns `family=gemma4`, `tool=gemma4`, `reasoning=gemma4`.
-- Proven: source parser-selection path for Gemma4 MXFP/JANG sidecar launches from repo IDs, app aliases with real loaded paths, and direct local paths.
-- Still open: rerun the live Gemma4 MXFP4 Responses tools proof after this patch; verify health/capabilities show Gemma4 parsers, content/reasoning deltas are separated, final object has no visible `thought`, installed-app bundled runtime includes the patch, and packaged DMG parity is rebuilt if releasing another checkpoint.
+- Proven: source parser-selection path for Gemma4 MXFP/JANG sidecar launches
+  from repo IDs, app aliases with real loaded paths, and direct local paths.
+- Current-source live proof is also green in
+  `docs/internal/agent-notes/current-real-ui-live-model-gemma4-12b-qat-mxfp4-responses-tools-request-parser-fallback-20260610-proof.json`:
+  real Gemma4 12B QAT MXFP4 loaded from
+  `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-MXFP4`, Responses tools
+  completed two built-in `run_command` turns, both visible stream traces begin
+  with `The`, final visible text is
+  `The second UI turn is complete with REAL_UI_LIVE_TOOL_TWO.`, parser leak
+  flags are false, cache detail is `paged+mixed_swa`, and block-disk L2 stored
+  `3518` tokens.
+- Still open: installed-app bundled runtime must include this patch before a
+  packaged checkpoint can claim the same MXFP4 parser fix; packaged DMG parity
+  remains a release lane and was not performed here.
