@@ -12589,3 +12589,21 @@ Next action:
 - Result: current-source Gemma4 12B QAT MXFP4 dev-app Responses/tools visible `thought` leak row is green. Both assistant turns contain visible answer text without `thought`, parser leak flags are false, tool loop completed, and cache/L2 telemetry is present.
 - Cleanup: no matching proof server, dev-app, Electron, or checked proof-port listener remained after the run.
 - Boundary: this is not installed-app/package/release clearance and does not close Gemma media/audio/video, Qwen empty-args direct/gateway/tunnel, MiMo exactness, or N2 rows.
+
+# 2026-06-10 13:10 PDT - Qwen/Qwen-coder empty-args parser/API lane selected
+
+- Current objective continues: fix runtime/API/model blockers in efficient build/proof blocks, not broad harness churn or release actions.
+- Selected blocker: Qwen3.6/Qwen-coder XML tool-call dialect can emit completed tool markers with empty/missing required arguments, producing `arguments: {}` for Codex/opencode-style clients. This is release-critical for agentic loops and must fail closed without synthesizing arguments, disabling reasoning, dropping tool calls silently, or repairing from visible preambles.
+- Next movement: inspect current Qwen/XML tool parser source, Responses streaming/final full-output parse, and existing raw SSE captures to verify whether request tool schemas reach the final parse path. No source edit before root-cause evidence.
+
+# 2026-06-10 13:10 PDT - Qwen empty-args final Responses emit guard fixed
+
+- Source trace: Qwen/XML parsers already fail closed when they receive the request schema, but the Responses final function-call emitter still had a fallback branch that would stream an empty argument delta/done if a malformed parsed call with empty args reached emission.
+- Patch: `vmlx_engine/server.py` now has shared request-tool schema helpers and applies `_drop_tool_calls_missing_required_args(...)` before Responses emits function-call SSE output items. Missing required args now fall through to the existing `tool_choice=required` failed-response path instead of emitting `arguments: ""` or `{}`.
+- Regression: `tests/test_engine_audit.py::test_responses_final_tool_emit_drops_empty_required_args` proves an `exec_command` call with `{}` is dropped when `cmd` is required, while a no-required tool is not rejected just because its argument string is empty.
+- Verification:
+  - `.venv/bin/python -m py_compile vmlx_engine/server.py tests/test_engine_audit.py`
+  - `.venv/bin/python -m pytest -q tests/test_engine_audit.py -k 'qwen_issue_192 or xml_function_empty_required_args_fail_closed_at_server_boundary or responses_final_tool_emit_drops_empty_required_args'` -> `4 passed`
+  - `.venv/bin/python -m pytest -q tests/test_responses_raw_sse_parity_contract.py` -> `20 passed`
+  - `git diff --check` passed
+- Boundary: this is a current-source fail-closed guard. It does not replace same-model direct/gateway/tunnel recapture for Qwen35/Qwen-coder-next, and it does not prove every parser family or installed-app/package release readiness.

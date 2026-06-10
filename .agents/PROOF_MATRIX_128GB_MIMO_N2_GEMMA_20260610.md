@@ -7,6 +7,46 @@ separates what was actually loaded and proven from what remains red.
 
 ## Latest Proof Additions
 
+### Qwen/Qwen-Coder Empty Required Tool Args Fail-Closed Guard
+
+Source update:
+
+- `vmlx_engine/server.py`
+- `tests/test_engine_audit.py`
+
+Proven:
+
+- Current source now applies a final request-schema required-argument guard
+  before Responses emits `function_call` SSE items.
+- A malformed parsed call such as `exec_command` with `{}` is dropped when the
+  request schema requires `cmd`; it will fall through to the existing
+  `tool_choice=required` failed-response path rather than streaming
+  `arguments: ""` / `{}` to Codex/opencode-style clients.
+- Tools with no required arguments are not rejected merely because their
+  argument string is empty.
+- Existing Qwen parser cases still preserve valid schema-derived arguments for
+  XML string arguments and plain tool-line output.
+
+Verification:
+
+- `.venv/bin/python -m py_compile vmlx_engine/server.py tests/test_engine_audit.py`
+- `.venv/bin/python -m pytest -q tests/test_engine_audit.py -k 'qwen_issue_192 or xml_function_empty_required_args_fail_closed_at_server_boundary or responses_final_tool_emit_drops_empty_required_args'`
+  passed `4/4`.
+- `.venv/bin/python -m pytest -q tests/test_responses_raw_sse_parity_contract.py`
+  passed `20/20`.
+- `git diff --check` passed.
+
+Boundary:
+
+- This is a current-source parser/API fail-closed guard, not a new live model
+  recapture.
+- Direct/gateway/tunnel Qwen35 evidence still comes from existing artifacts
+  such as
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-missing-required-args-failclosed-20260610.json`.
+- Still open: fresh same-model Qwen-coder-next and Qwen35 live recapture after
+  this commit if release gating requires current-run artifacts, plus installed
+  app/package parity and broader parser-family proof.
+
 ### Gemma4 12B QAT MXFP4 Responses Tool/Cache Leak Fix
 
 Artifact:
