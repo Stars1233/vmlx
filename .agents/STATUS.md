@@ -1,4 +1,79 @@
 ## CODEX
+- verification: after registering E2B native MXFP4 proof, `.venv/bin/python -m
+  py_compile` passed for the modified gate/checklist scripts and focused tests;
+  `.venv/bin/python -m pytest -q
+  tests/test_gemma_qat_native_mxfp4_inventory_gate.py
+  tests/test_full_release_objective_checklist.py -k 'gemma_qat_native_mxfp4 or
+  full_release_objective_checklist'` passed `28/28`; `git diff --check` passed.
+
+## CODEX
+- now: E2B native MXFP4 accepted proof is registered and gates regenerated.
+- generated artifacts:
+  - `build/current-gemma-qat-native-mxfp4-local-inventory-after-e2b-native-mxfp4-installed-app-bundled-reasoning-proof-20260610.json`
+  - `build/current-full-release-objective-checklist-after-gemma-e2b-native-mxfp4-installed-app-bundled-reasoning-proof-20260610.json`
+- proven/closed: `gemma4_e2b_qat_native_mxfp4` now has `status=pass` and is
+  removed from Gemma `open_required_rows`.
+- still open: full checklist remains `status=open`, `failed_count=51`; Gemma
+  aggregate open rows are now `gemma4_e4b_qat_native_mxfp4`,
+  `gemma4_26b_vl`, and `gemma4_31v_or_31b_vl`.
+
+## CODEX
+- now: E2B native MXFP4 bundled installed-app short-tool proof passed.
+- accepted proof:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-e2b-mxfp4-responses-tools-cachecontrols-bundled-python-reasoning-shorttool-20260610-proof.json`;
+  screenshot:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-e2b-mxfp4-responses-tools-cachecontrols-bundled-python-reasoning-shorttool-20260610-chat.png`.
+- proven: status pass, real model
+  `/Users/eric/models/JANGQ-AI/gemma-4-E2B-it-qat-MXFP4`, installed app
+  `/Applications/vMLX.app`, bundled Python, visible chat screenshot, Responses
+  API, built-in `run_command` long tool loop, reasoning display, Gemma4
+  mixed-SWA native cache, cache hit tokens `9214`, block L2 tokens on disk
+  `3355`, and final visible text `REAL_UI_LIVE_TOOL_TWO second UI turn.`
+- rejected proof kept for trace:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-e2b-mxfp4-responses-tools-cachecontrols-bundled-python-reasoning-20260610-proof.json`
+  failed required-tool reliability with the default verbose prompt. Do not
+  register it.
+- next movement: register the accepted short-tool proof for
+  `gemma4_e2b_qat_native_mxfp4`, regenerate Gemma/full checklist gates, verify,
+  and commit.
+
+## CODEX
+- now: first E2B native MXFP4 bundled installed-app proof failed closed, not
+  crashed. Artifact
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-e2b-mxfp4-responses-tools-cachecontrols-bundled-python-reasoning-20260610-proof.json`
+  has `status=fail`.
+- failure classification: model loaded and cache/L2/runtime surfaces were
+  healthy, but required tool mode produced no tool calls. App log records
+  `tool_choice='required' was set but the model did not produce any tool calls`;
+  visible content stayed empty, reasoning-only chunks appeared, and the server
+  fail-closed with `tool_calls_required`.
+- positive evidence from failed run: installed app path and bundled Python were
+  correct, Gemma4 mixed-SWA native cache was active, cache hit tokens were
+  `532`, and block L2 wrote.
+- next movement: rerun E2B with a shorter explicit `run_command` prompt and
+  larger decode budget, while keeping reasoning enabled and required-tool
+  fail-closed behavior intact. Do not weaken the gate or synthesize a tool call.
+
+## CODEX
+- now: selected the next concrete Gemma release-gate blocker:
+  `gemma4_e2b_qat_native_mxfp4` bundled installed-app proof. This is one of
+  the four remaining Gemma inventory open rows after the 12B native MXFP4
+  closure.
+- planned proof shape: run the existing real UI harness directly against
+  `/Applications/vMLX.app` with bundled Python
+  `/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3`,
+  model `/Users/eric/models/JANGQ-AI/gemma-4-E2B-it-qat-MXFP4`, Responses API,
+  built-in tools, reasoning enabled, server cache controls, max tokens 128, max
+  prompt tokens 12000, and max tool iterations 4.
+- pass criteria before registration: `status=pass`, real model path match,
+  `uiLaunchMode=installed-app`, app path `/Applications/vMLX.app`, bundled
+  Python, visible chat screenshot, required Responses/tool/cache/parser/
+  `reasoning_display` surfaces, Gemma4 mixed-SWA native cache, cache-hit
+  telemetry, and block L2 tokens on disk.
+- no-claims: no release/sign/notarize/PyPI/updater/download/site action; no
+  weakening the gate; no claiming E4B/26B/31B from this E2B proof.
+
+## CODEX
 - now: commit `bdb262f65` (`Prove Gemma4 12B native MXFP4 installed app`) pushed
   to both `origin/codex/pr-intake-manifest` and `origin/main`.
 - current branch state after push: only pre-existing/unrelated

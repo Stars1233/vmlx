@@ -12913,6 +12913,72 @@ Next action:
   not overwrite the registered narrow-prompt proof unless a stricter 31B
   installed-app proof is rerun and passes.
 
+# 2026-06-10 14:24 PDT - E2B native MXFP4 proof registered
+
+- Registered the accepted E2B short-tool proof for
+  `gemma4_e2b_qat_native_mxfp4`.
+- Generated
+  `build/current-gemma-qat-native-mxfp4-local-inventory-after-e2b-native-mxfp4-installed-app-bundled-reasoning-proof-20260610.json`;
+  `gemma4_e2b_qat_native_mxfp4` is now pass and removed from
+  `open_required_rows`.
+- Generated
+  `build/current-full-release-objective-checklist-after-gemma-e2b-native-mxfp4-installed-app-bundled-reasoning-proof-20260610.json`;
+  the checklist remains `status=open`, `failed_count=51`, with Gemma aggregate
+  open rows now `gemma4_e4b_qat_native_mxfp4`, `gemma4_26b_vl`, and
+  `gemma4_31v_or_31b_vl`.
+- Verification: `.venv/bin/python -m py_compile` passed for the modified
+  gate/checklist scripts and focused tests; `.venv/bin/python -m pytest -q
+  tests/test_gemma_qat_native_mxfp4_inventory_gate.py
+  tests/test_full_release_objective_checklist.py -k 'gemma_qat_native_mxfp4 or
+  full_release_objective_checklist'` passed `28/28`; `git diff --check` passed.
+
+# 2026-06-10 14:23 PDT - E2B native MXFP4 short-tool proof passed
+
+- Reran E2B native MXFP4 installed-app proof with shorter explicit
+  `run_command` prompts and larger decode budget.
+- Accepted proof:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-e2b-mxfp4-responses-tools-cachecontrols-bundled-python-reasoning-shorttool-20260610-proof.json`.
+- Screenshot:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-e2b-mxfp4-responses-tools-cachecontrols-bundled-python-reasoning-shorttool-20260610-chat.png`.
+- Proven: bundled app/runtime, Responses API, built-in `run_command` long tool
+  loop, reasoning display, visible final `REAL_UI_LIVE_TOOL_TWO second UI turn.`,
+  Gemma4 mixed-SWA native cache, `cache_hit_tokens=9214`,
+  `l2_block_tokens_on_disk=3355`, and no lingering proof/server process.
+- The earlier default-prompt E2B proof remains a failed/rejected artifact and
+  should not be registered.
+
+# 2026-06-10 14:22 PDT - E2B native MXFP4 first proof failed closed
+
+- Ran bundled installed-app proof for
+  `/Users/eric/models/JANGQ-AI/gemma-4-E2B-it-qat-MXFP4` with Responses,
+  built-in tools, reasoning enabled, and server cache controls.
+- Artifact:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-e2b-mxfp4-responses-tools-cachecontrols-bundled-python-reasoning-20260610-proof.json`,
+  `status=fail`.
+- Classification: bundled app/runtime/cache worked, but required tool mode
+  produced no tool calls. The app log records `tool_choice='required' was set
+  but the model did not produce any tool calls`; the server fail-closed with
+  `tool_calls_required`.
+- Positive evidence: installed app and bundled Python were correct, Gemma4
+  mixed-SWA native cache was active, `cache_hit_tokens=532`, and block L2
+  wrote. This is a model/prompt/tool-reliability failure, not a parser repair
+  target.
+- Next: rerun E2B with a shorter explicit `run_command` prompt and larger
+  decode budget. Do not synthesize tool calls or weaken the gate.
+
+# 2026-06-10 14:21 PDT - E2B native MXFP4 installed-app proof selected
+
+- Selected `gemma4_e2b_qat_native_mxfp4` as the next Gemma release-gate row.
+- Planned direct proof: `/Applications/vMLX.app` plus bundled Python
+  `/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3`,
+  model `/Users/eric/models/JANGQ-AI/gemma-4-E2B-it-qat-MXFP4`, Responses API,
+  built-in tools, reasoning enabled, server cache controls, max tokens 128,
+  max prompt tokens 12000, max tool iterations 4.
+- Required before registration: the existing installed-app UI proof gate must
+  accept the artifact, including bundled Python and `reasoning_display`.
+- Boundary: this does not claim E4B/26B/31B rows and does not enter release,
+  signing, notarization, PyPI, updater, download, or website steps.
+
 # 2026-06-10 14:20 PDT - Native MXFP4 installed-app proof pushed
 
 - Commit `bdb262f65` (`Prove Gemma4 12B native MXFP4 installed app`) was pushed
