@@ -12264,6 +12264,20 @@ Next action:
 - Re-read active guards/status. The next useful blocker reduction is not another direct server curl; it is panel-side raw function-call identity capture for the Gemma 26B installed-app duplicate tool-loop proof.
 - Will use existing proof harness/dev-app route where possible; no broad test-suite churn, no release action, no subagents, no N2 JANG_1L.
 
+# 2026-06-10 12:26 PDT - MiMo no-thinking visible planning leak selected
+
+- After pushed commit `48372bd4c`, the current-source dev-app image route is
+  green but the proof artifact shows visible planning-style prose under
+  `enableThinking=false`: the assistant output started with "The user wants me
+  to return only..." before mentioning `vMLX`.
+- Selected next blocker: inspect MiMo `enableThinking=false` template/parser/
+  runtime handling. Do not patch by deleting arbitrary prose from outputs or
+  hiding semantic failures; only make a source change if the root cause is a
+  real request/template/parser mismatch.
+- Constraints remain: no release/sign/notarize/PyPI/download action, no N2
+  JANG_1L, no subagents, no broad harness work, no parser repair that masks
+  MiMo exactness.
+
 # 2026-06-10 12:22 PDT - MiMo panel/dev-app media parity lane selected
 
 - Continuing the active checkpoint-readiness goal after commit `51abb2953`.
@@ -12460,3 +12474,14 @@ Next action:
   - This is evidence of a reasoning-channel/final-synthesis issue, not an acceptable release workaround.
 - A local prompt-anchor source change was tried, failed to improve the live result, and was reverted before commit.
 - Other-agent note: do not claim Qwen27 Responses tool-result continuation green. Fix should target Qwen reasoning/template/channel finalization after tool outputs while preserving reasoning-enabled required-tool calls and fail-closed missing-arg validation.
+
+# 2026-06-10 12:29 PDT - Current proof boundaries written into AGENTS.md
+
+- Updated `AGENTS.md` because Eric asked that current goals, instructions, movement, and hard no-claims be written into agent guidance.
+- Added current proof carry-forward:
+  - Qwen35 direct/gateway/tunnel raw SSE is green only for the cited public recapture row.
+  - Qwen27 required-tool direct raw SSE is green for valid args, but reasoning-enabled tool-result continuation is red.
+  - Gemma4 QAT JANG_4M no-media smokes are green from the parallel lane; Gemma audio remains weight-backed-only and Gemma4 31B audio is an honest unsupported gate.
+  - MiMo V2.5 JANGTQ_2 CLI media/L2 and dev-app image route are green, but exactness, audio/video semantics, Responses continuation, installed-app parity, and no-thinking visible planning hygiene remain open.
+- No release/sign/notarize/PyPI/updater/download/site action was performed.
+- Other-agent handoff: future continuations must start from `AGENTS.md` plus `.agents` state and must not clear any release row from older chat memory or partial artifacts.

@@ -252,6 +252,43 @@ instruction supersedes it.
   blockers, no-claims, and exactly what the other agent should or should not
   pick up next.
 
+### 2026-06-10 current proof carry-forward
+
+This subsection is current live-state guidance for continuations. Re-check the
+named artifacts before repeating claims.
+
+- Qwen35 MXFP8 MTP direct/gateway/tunnel raw SSE is currently green from
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-public-recapture-20260610.json`
+  plus focused source guards. This does not clear Qwen27, Qwen-coder-next, or
+  non-Qwen parser families.
+- Qwen27 JANG_4M MTP direct required-tool raw SSE is green for valid
+  reasoning-enabled tool arguments: artifact
+  `build/responses-sse-captures-20260610/direct-qwen27-jang4m-mtp-required-tool-after-continuation-fix-20260610.sse`
+  has argument deltas, argument done, and final function-call arguments
+  matching `{"value":"blue-cat"}`.
+- Qwen27 JANG_4M MTP reasoning-enabled tool-result continuation is red:
+  `build/responses-sse-captures-20260610/direct-qwen27-jang4m-mtp-tool-result-continuation-after-fix-20260610.sse`
+  ended incomplete with reasoning-only output and no visible text. The
+  thinking-off diagnostic proves a workaround path, not a valid release fix.
+  Do not clear opencode/Codex-style Qwen27 agent loops until reasoning-enabled
+  post-tool final synthesis is fixed and re-proven.
+- Gemma4 QAT JANG_4M source no-media smokes are green across E2B/E4B/12B/26B/
+  31B from the parallel lane, and Gemma4 31B audio is currently classified as
+  an honest unsupported-modality gate for a vision-only artifact. Do not
+  advertise Gemma audio unless an audio tower is weight-backed and live-proven.
+- MiMo V2.5 JANGTQ_2 CLI media runtime overlay is green for icon image routing
+  and text L2 restart restore after the overlay gate fix:
+  `build/current-mimo-v25-jangtq2-cli-media-l2-after-overlay-fix-20260610.json`.
+  It proves route/load/cache behavior, not MiMo exactness, red-square color
+  semantics, audio hygiene, video semantics, Responses tool continuation, or
+  installed-app parity.
+- MiMo V2.5 JANGTQ_2 dev-app image route is green from
+  `docs/internal/agent-notes/current-real-ui-dev-app-mimo-v25-jangtq2-icon-image-after-overlay-fix-20260610-proof.json`,
+  but that same proof exposed visible planning-style prose with
+  `enableThinking=false`. Treat MiMo no-thinking output hygiene as open until
+  a neutral prompt or runtime/template fix is proven. Do not strip prose as a
+  fake parser fix.
+
 If a turn is interrupted, resume by reading the current tracker/status and
 continuing the next blocker; do not restart from old memory, old `/Users/eric/vmlx`
 notes, old Swift notes, ADLab notes, transport notes, or model upload logs.

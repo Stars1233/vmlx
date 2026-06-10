@@ -4465,6 +4465,21 @@ Other-agent action:
   - Do not claim MiMo JANGTQ_2 exactness is fixed or release-clear.
   - Do not patch parser/JSON/tool args/sampling/cache to hide literal mutations.
   - Next valid MiMo exactness movement is a real source/dequant first-divergent-logit comparison with the source endpoint running, or a corrected higher-fidelity JANGTQ artifact/profile rerun.
+# 2026-06-10 12:26 PDT - MiMo no-thinking visible planning leak selected
+
+- Current blocker: MiMo dev-app icon image proof passed for media routing, but
+  the visible assistant output included planning-style prose even though
+  `enableThinking=false`.
+- Required handling: inspect request/template/parser/runtime boundaries and fix
+  only a real mismatch. Do not add arbitrary prose deletion, parser semantic
+  repair, hidden reasoning stripping after failure, sampling clamps, or a fake
+  "clean" assertion.
+- Evidence source:
+  `docs/internal/agent-notes/current-real-ui-dev-app-mimo-v25-jangtq2-icon-image-after-overlay-fix-20260610-proof.json`.
+- Boundaries: media routing is green for current-source dev-app image; no-
+  thinking output hygiene remains open; installed-app parity and release remain
+  open.
+
 # 2026-06-10 12:22 PDT - MiMo panel/dev-app media parity lane selected
 
 - Current blocker being reduced: MiMo V2.5 JANGTQ_2 panel/dev-app media parity
@@ -4654,3 +4669,15 @@ Other-agent action:
   - Qwen27 direct reasoning-enabled tool-result continuation remains red for Codex/opencode-style harnesses because it can produce reasoning-only incomplete output after a successful tool call.
   - Next valid fix target is Qwen reasoning/template/channel finalization for post-tool continuations, not argument synthesis, parser repair, or global reasoning-disable.
 - No release/sign/notarize/PyPI/updater/download/site action was performed. The Qwen27 server was stopped after proof.
+
+# 2026-06-10 12:29 PDT - Current proof boundaries written into AGENTS.md
+
+- Eric asked that the current goal, every instruction, every status movement, and every hard constraint be written into agent guidance.
+- Action: updated `AGENTS.md` with the current live proof carry-forward:
+  - Qwen35 direct/gateway/tunnel raw SSE green from the public recapture artifact, scoped only to that model/surface.
+  - Qwen27 direct required-tool raw SSE green for valid argument delta/done/final consistency.
+  - Qwen27 reasoning-enabled tool-result continuation red; thinking-off continuation remains only diagnostic and is not a release fix.
+  - Gemma4 QAT JANG_4M no-media source smokes green from the parallel lane; Gemma4 31B audio remains honest unsupported gate unless weight-backed audio is proven.
+  - MiMo V2.5 JANGTQ_2 CLI media/L2 and dev-app image route green, but MiMo exactness, audio/video semantics, Responses continuation, installed-app parity, and no-thinking visible planning hygiene remain open.
+- No source runtime behavior, release/sign/notarize/PyPI/updater/download/site action was performed.
+- Other-agent handoff: use `AGENTS.md` as the forced continuation guard before claiming any green row; do not use older chat memory or partial proof artifacts to clear release gates.
