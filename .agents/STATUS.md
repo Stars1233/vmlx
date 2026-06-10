@@ -1,4 +1,9 @@
 ## CODEX
+- now: Gemma 4 31B QAT JANG4M current Electron dev-app image/VL row is green.
+- proof: `build/current-real-ui-dev-app-gemma4-31b-jang4m-image-proof-20260610.json`, `status=pass`; raw proof is `docs/internal/agent-notes/current-real-ui-dev-app-gemma4-31b-jang4m-image-20260610-proof.json`, screenshot is `docs/internal/agent-notes/current-real-ui-dev-app-gemma4-31b-jang4m-image-20260610-chat.png`.
+- proven: real dev app, real `/Users/eric/models/JANGQ-AI/gemma-4-31B-it-qat-JANG_4M` load, app-persisted image attachment, server `MEDIA_DIAG` with `image_url`, Gemma media fallback with `1 image(s)`, visible semantic answer `Red`, no raw parser/reasoning leak, no persisted tools/reasoning, mixed-SWA paged cache, and block L2 writes.
+- runtime/cache: active memory `25850.6 MB`, peak `26233.1 MB`, `weight_format=jang_affine`, `profile=JANG_4M`, `cache_detail=paged+mixed_swa`, `cache_hit_tokens=20`, `l2_block_tokens_on_disk=62`, `l2_tokens_on_disk=62`, block-disk writes `2`, image-turn media-prefix cache stored `365` prompt tokens.
+- boundary: this does not clear 31B video/audio, installed-app parity, public tunnel SSE, package/sign/notarize/tag/upload/download, or full release readiness. No release action.
 - now: Gemma 4 26B A4B QAT JANG4M current Electron dev-app image/VL row is green.
 - proof: `build/current-real-ui-dev-app-gemma4-26b-jang4m-image-proof-20260610.json`, `status=pass`; raw proof is `docs/internal/agent-notes/current-real-ui-dev-app-gemma4-26b-jang4m-image-20260610-proof.json`, screenshot is `docs/internal/agent-notes/current-real-ui-dev-app-gemma4-26b-jang4m-image-20260610-chat.png`.
 - proven: real dev app, real `/Users/eric/models/JANGQ-AI/gemma-4-26B-A4B-it-qat-JANG_4M` load, app-persisted image attachment, server `MEDIA_DIAG` with `image_url`, Gemma media fallback with `1 image(s)`, visible semantic answer `Red`, no raw parser/reasoning leak, no persisted tools/reasoning, mixed-SWA paged cache, and block L2 writes.
