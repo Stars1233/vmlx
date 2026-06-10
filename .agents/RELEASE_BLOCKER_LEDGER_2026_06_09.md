@@ -112,6 +112,16 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
 - Current release packaging is still blocked on rebuilding current-source DMGs, notarizing/stapling/verifying those current artifacts, and clearing or explicitly scoping the remaining runtime/model/UI/cache rows.
 - No signing, notarization, tag, public download update, or release announcement until runtime/model/UI/cache blockers are green or Eric explicitly overrides.
 - If a release is forced with known open rows, the release notes must list exact open rows and not imply full clearance.
+- 2026-06-10 update: `/Applications/vMLX.app` was rebuilt and locally installed
+  with `panel/scripts/build-and-install.sh` after a pre-rebuild audit found only
+  `vmlx_engine/utils/jang_loader.py` stale. The refreshed installed-app runtime
+  parity audit is
+  `build/current-installed-app-runtime-parity-audit-after-local-install-20260610.json`
+  with `status=pass`, `missing_or_stale=[]`, bundled engine hash parity true,
+  and packaged source hash parity true. This clears the local installed-app
+  runtime/source parity blocker only; it is not a Developer ID notarized DMG
+  release and does not clear model-specific installed-app chat proofs or the
+  remaining runtime/model/UI/cache rows.
 - Proper release mechanics are documented in `/Users/eric/wiki/infra/apple-notarization.md`; do not invent an alternate path. The canonical keychain is `~/Library/Keychains/vmlx-build.keychain-db`, the Developer ID identity is `Developer ID Application: ShieldStack LLC (55KGF2S5AY)`, and notarization uses the `vmlx-notary` keychain profile.
 - If signing returns `errSecInternalComponent`, fix key access with the documented sequence and retry once after the partition-list grant settles:
 

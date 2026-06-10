@@ -13,6 +13,9 @@ Artifacts:
 
 - `build/current-panel-settings-contract-proof-20260610-mimo-n2-gemma-launch-parity.json`
 - `build/current-panel-exact-local-model-detect-mimo-n2-gemma-20260610.json`
+- `build/current-installed-app-runtime-parity-audit-after-june10-devapp-proofs-20260610.json`
+- `build/current-installed-app-runtime-parity-audit-after-local-install-20260610.json`
+- `build/current-release-regression-manifest-after-local-installed-app-parity-20260610.json`
 
 Proven:
 
@@ -42,15 +45,36 @@ Fixes made:
   `mimo_v2_asymmetric_swa` cache subtype is exposed, paged cache is forced for
   that subtype, and MiMo reasoning is not auto-advertised without visible-final
   thinking proof.
+- Installed-app runtime parity was stale before the local rebuild: the June 10
+  audit found only `vmlx_engine/utils/jang_loader.py` mismatched in both bundled
+  Python and packaged source mirrors. `/Applications/vMLX.app` was rebuilt and
+  reinstalled with `panel/scripts/build-and-install.sh`; rerun audit
+  `build/current-installed-app-runtime-parity-audit-after-local-install-20260610.json`
+  is `status=pass`, `missing_or_stale=[]`, bundled engine hash parity true,
+  packaged source hash parity true, `serve_help_runs=true`,
+  `xml_function_tool_parser_cli=true`, parser/reasoning settings wired,
+  model-owned generation defaults wired, max-output/max-context settings wired,
+  Responses stream cache-detail metrics wired, and single-model gateway cache
+  endpoint routing wired.
+- The rebuilt `/Applications/vMLX.app` also passed
+  `codesign --verify --deep --strict --verbose=2`; this was a local app-dir
+  install, not a Developer ID notarized DMG release.
+- Regenerated no-heavy release manifest
+  `build/current-release-regression-manifest-after-local-installed-app-parity-20260610.json`
+  remains `status=fail`, `prepackage_ready=false`, and `release_ready=false`,
+  but its current proof sweep has `installed_app_runtime_parity_audit=true` and
+  `staged_app_runtime_parity_audit=true`.
 
 Not proven:
 
 - Electron UI clicked chat transcript for these exact rows.
-- Installed-app packaged parity for these exact rows after this source change.
+- Model-specific installed-app chat transcript parity for these exact rows.
 - N2 JANG_1L memory-safe live startup.
 - MiMo JANGTQ_2 exactness.
 - Gemma audio/video semantic E2E.
 - Same-model direct/gateway/tunnel raw SSE deployed parity.
+- Full release/prepackage readiness; the regenerated manifest still has open
+  blockers outside installed-app runtime parity.
 
 ### Gemma 4 12B MXFP4 and JANG4M
 

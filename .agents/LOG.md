@@ -8152,3 +8152,11 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Red boundary: full two-turn loop failed with `CDP timeout: Runtime.evaluate` while the second request was still active; no final tool probe file semantics were verified.
 - Cache/L2 remained real and positive: `cache_hit_tokens=1071`, `l2_block_tokens_on_disk=3784`, `disk_hits=18`, `disk_writes=60`.
 - No release action was run.
+
+# 2026-06-10 - Installed app runtime parity refreshed
+
+- Ran installed-app runtime parity audit before rebuild: `build/current-installed-app-runtime-parity-audit-after-june10-devapp-proofs-20260610.json`, `status=open`; only stale file was `vmlx_engine/utils/jang_loader.py` in bundled Python and packaged source mirrors.
+- Ran `panel/scripts/build-and-install.sh` to rebuild and locally install `/Applications/vMLX.app`.
+- Reran audit: `build/current-installed-app-runtime-parity-audit-after-local-install-20260610.json`, `status=pass`, `missing_or_stale=[]`.
+- Verified `/Applications/vMLX.app` with `codesign --verify --deep --strict --verbose=2`; valid on disk. This is local installed-app parity, not a signed/notarized DMG release.
+- Regenerated `build/current-release-regression-manifest-after-local-installed-app-parity-20260610.json`; overall release manifest still fails (`prepackage_ready=false`, `release_ready=false`) while installed/staged app runtime parity components are green.

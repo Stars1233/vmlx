@@ -951,3 +951,13 @@
 - Red evidence: full two-turn loop did not finish; harness failed with `CDP timeout: Runtime.evaluate` while the second Responses request was still active. No final probe-file semantics were verified.
 - Boundary: do not claim MiMo JANG_2L Responses/long-tool-loop support in the checkpoint release. Cache/L2 is not the blocker for this row.
 - No package/sign/notarize/tag/upload/release action was run.
+
+# 2026-06-10 - Installed app runtime parity green after local rebuild
+
+- Ran no-heavy installed-app runtime parity audit before rebuilding: `build/current-installed-app-runtime-parity-audit-after-june10-devapp-proofs-20260610.json`, `status=open`.
+- Pre-rebuild blocker was narrow: both bundled Python and packaged source mirrors mismatched current source only for `vmlx_engine/utils/jang_loader.py` (`jang>=2.5.29` in installed app versus `jang>=2.5.30` in current source).
+- Rebuilt and locally installed `/Applications/vMLX.app` with `panel/scripts/build-and-install.sh`. This is an ad-hoc/local app-dir install path, not a notarized release DMG.
+- Reran audit: `build/current-installed-app-runtime-parity-audit-after-local-install-20260610.json`, `status=pass`, `missing_or_stale=[]`, `installed_bundled_engine_hash_parity=true`, `installed_packaged_engine_source_hash_parity=true`, `serve_help_runs=true`, `xml_function_tool_parser_cli=true`, parser/reasoning settings wired, model-owned generation defaults wired, max-output/max-context settings wired, Responses stream cache-detail metrics wired, and single-model gateway cache endpoint routing wired.
+- Verified `/Applications/vMLX.app` with `codesign --verify --deep --strict --verbose=2`; result was valid on disk and satisfies its designated requirement.
+- Regenerated no-heavy release manifest as `build/current-release-regression-manifest-after-local-installed-app-parity-20260610.json`; it remains `status=fail`, `prepackage_ready=false`, and `release_ready=false`, but installed/staged app runtime parity components are both green.
+- Boundary: installed-app runtime/source parity is green, but this does not clear model-specific installed-app chat proofs, public tunnel parity, DMG package/sign/notarize, tag, upload, public release, or the remaining MiMo/N2/Gemma red rows.
