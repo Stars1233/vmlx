@@ -1422,3 +1422,12 @@
 - Test proof: `.venv/bin/python -m pytest -q tests/test_engine_audit.py -k 'gemma4_runtime_modalities or gemma4_unified' tests/test_gemma_qat_native_mxfp4_inventory_gate.py` passed (`16 passed`). The Gemma Unified loader test now explicitly simulates missing source runtime before expecting text-loader fallback, keeping it consistent with source-runtime-available tests.
 - Boundary: installed-app audio rows that reached an empty answer remain red/stale until rebuilt from current source and reproven. This does not prove audio generation for 12B/26B/31B, and video still requires live frame-through-vision evidence.
 - Parallel-agent note: only advertise Gemma audio when `audio_tower.*` weights exist and live E2E audio proof passes. For E2B/E4B bundles that do have audio tower weights, run real audio E2E separately; do not transfer that claim to 12B/26B/31B projection-only/no-audio bundles.
+
+# 2026-06-10 - Qwen empty-args source boundary refreshed
+
+- Reduced blocker: #192/#190 subcase for Qwen/Qwen3.6 Responses tool calls collapsing to `arguments:{}` after a visible preamble.
+- Source proof: `build/current-qwen-empty-args-source-boundary-refresh-20260610.json`.
+- Verification: `.venv/bin/python -m pytest -q tests/test_server.py -k 'streaming_responses_tool_call_arguments_survive_buffering or streaming_responses_reasoning_tool_call_keeps_arguments or streaming_responses_tool_call_uses_next_output_index_without_text or streaming_responses_required_empty_xml_tool_call_is_rejected or streaming_responses_preamble_empty_xml_tool_call_never_emits_empty_arguments'` passed (`5 passed`).
+- Proven: current source schema-filters parsed tool calls with missing required args; the exact preamble plus empty XML `exec_command` shape emits no function_call item, no `response.function_call_arguments.*` event, and no executable `"arguments":"{}"` payload. Required tool mode fails closed with `tool_calls_required`.
+- Boundary: do not claim deployed/public tunnel fixed from this. The known Qwen35 public tunnel blocker is still same-model raw SSE recapture/output-index freshness, not current-source empty-args parsing. Do not invent `cmd` from the preamble and do not disable reasoning.
+- Parallel-agent note: rebuild/redeploy the public tunnel/backend from current source, then recapture same-model Qwen35/Qwen3.6 direct/gateway/tunnel raw SSE with content deltas, reasoning events, function-call argument delta/done, final object consistency, valid output indices, and tool-result continuation.

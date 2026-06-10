@@ -8971,3 +8971,25 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - What not to claim: audio is not proven for checked 12B/26B/31B Gemma bundles;
   older installed-app audio rows remain red/stale until rebuilt from current
   source and reproven; video still needs live frame-through-vision proof.
+
+# 2026-06-10 - Qwen empty-args source boundary refreshed
+
+- Read `.agents/CODEX_ACTIVE_DIRECTIVES_20260610.md`; active lane switched to
+  Qwen/Qwen3.6 Responses/tool/reasoning streaming parity and kwargs. No release,
+  signing, notarization, PyPI, or N2 JANG_1L action was taken.
+- Rechecked source instead of trusting the pasted assessment. Current
+  `_parse_tool_calls_with_parser` filters parsed tool calls against the request
+  tools and drops calls whose schema-required args are missing or empty.
+- Focused verification command:
+  `.venv/bin/python -m pytest -q tests/test_server.py -k 'streaming_responses_tool_call_arguments_survive_buffering or streaming_responses_reasoning_tool_call_keeps_arguments or streaming_responses_tool_call_uses_next_output_index_without_text or streaming_responses_required_empty_xml_tool_call_is_rejected or streaming_responses_preamble_empty_xml_tool_call_never_emits_empty_arguments'`
+  passed with `5 passed`.
+- Wrote proof artifact
+  `build/current-qwen-empty-args-source-boundary-refresh-20260610.json`.
+- Current-source result: the exact preamble plus empty XML function shape is not
+  emitted as an executable function_call, does not emit
+  `response.function_call_arguments.delta`/`done`, does not serialize
+  `"arguments":"{}"`, and required mode returns `tool_calls_required`.
+- What not to claim: deployed/public tunnel parity remains open until same-model
+  direct/gateway/tunnel raw SSE is recaptured from a rebuilt backend. Do not
+  synthesize `cmd`, disable reasoning, or treat stale tunnel duplicate-index SSE
+  as green.
