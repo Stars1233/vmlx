@@ -229,6 +229,7 @@ Next implementation target:
 Artifact:
 
 - `build/current-real-ui-live-model-n2-jangtq2-dev-app-proof-20260610.json`
+- `build/current-n2-jangtq2-responses-stream-boundary-20260610.json`
 
 Raw ignored proof captures:
 
@@ -270,9 +271,16 @@ Red:
 
 Next implementation target:
 
-- Compare raw server SSE for the same N2 request against panel gateway/dev-app
-  stream traces. Do not mark N2 dev-app Responses streaming green until the
-  missing first-turn content delta/aggregation behavior is traced and proven.
+- Raw direct server and panel gateway SSE are now proven green for N2 Responses
+  tool plus tool-result continuation content deltas:
+  `build/current-n2-jangtq2-responses-stream-boundary-20260610.json` is
+  `status=pass`. Direct follow-up produced `16` output-text deltas and gateway
+  follow-up produced `14` output-text deltas. Both completed on the same served
+  model and returned `N2_DIRECT_DELTA_ONE` / `N2_DIRECT_DELTA_TWO`.
+- This narrows the still-red dev-app proof to the chat renderer/tool-loop
+  harness path or first post-tool answer behavior, not the core server or panel
+  gateway SSE transport. Do not mark N2 dev-app Responses streaming green until
+  the missing first-turn app stream trace is reproduced and fixed/proven.
 
 ## Red Live Attempts
 

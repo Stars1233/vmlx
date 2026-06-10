@@ -8006,3 +8006,11 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Runtime/cache/tool pieces are positive: model loaded, hybrid SSM/TQ/L2 visible, built-in tools executed, no parser leak.
 - Red surface is exact: `responses_delta_streaming` was not proven because first post-tool visible content collapsed to `Created`; compare raw server SSE with panel gateway/dev-app stream traces next.
 - No release action was run.
+
+# 2026-06-10 - N2 JANGTQ2 direct/gateway raw SSE delta proof
+
+- Added and ran `tests/cross_matrix/run_n2_responses_stream_boundary_probe.py`.
+- Artifact `build/current-n2-jangtq2-responses-stream-boundary-20260610.json` is `status=pass`.
+- Direct and panel gateway raw SSE both prove N2 Responses tool-call args plus tool-result continuation content deltas.
+- This narrows the remaining dev-app red row to renderer/chat tool-loop trace behavior, not server or gateway SSE transport.
+- No release action was run.

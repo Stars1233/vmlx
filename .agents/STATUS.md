@@ -816,3 +816,14 @@
 - Positive cache/runtime evidence: health reported `hybrid_ssm_v1` / `hybrid_ssm_typed`, attention-only TurboQuant KV, native SSM companion state, paged+SSM cache hits, block-disk L2 writes, and SSM companion disk stores. Longer attempt ended around `103807.6 MB` active, `108294.9 MB` peak, `l2_block_tokens_on_disk=4626`, `l2_ssm_tokens_on_disk=23454`.
 - Red evidence: both attempts failed `requested Responses API mode but proof did not record responses_delta_streaming surface`; first post-tool visible answer collapsed to `Created`, leaving only one multi-delta visible assistant trace in the longer run.
 - Boundary: N2 JANGTQ2 source/API/cache proof remains strong, but dev-app Responses delta streaming is not green. Do not package/sign/notarize/release on this row until raw server SSE vs gateway/dev-app stream trace is compared or fixed.
+
+# 2026-06-10 - N2 JANGTQ2 raw SSE boundary narrows dev-app streaming red row
+
+- Reduced blocker class: `api/ui` for Nex/N2 Pro JANGTQ2 Responses streaming.
+- Added focused runner `tests/cross_matrix/run_n2_responses_stream_boundary_probe.py` to launch N2 JANGTQ2 once and capture raw Responses SSE for direct server and panel `ApiGateway` tool + tool-result continuation.
+- Proof: `build/current-n2-jangtq2-responses-stream-boundary-20260610.json`, `status=pass`.
+- Direct server raw SSE: first request produced required `lookup({"query":"alpha"})`; follow-up completed with `16` output-text deltas and visible `N2_DIRECT_DELTA_ONE is confirmed. N2_DIRECT_DELTA_TWO is confirmed.`
+- Panel gateway raw SSE: first request produced required `lookup({"query":"alpha"})`; follow-up completed with `14` output-text deltas and visible `N2_DIRECT_DELTA_ONE confirmed. N2_DIRECT_DELTA_TWO confirmed.`
+- Runtime/cache proof in same run: model loaded as `qwen3_5_moe`, `hybrid_ssm_v1`, attention-only TurboQuant KV, native SSM companion, async rederive, paged cache, block L2; final memory about `103804.1 MB` active and `105029.3 MB` peak.
+- Boundary: this clears direct/gateway raw SSE content-delta transport for N2 JANGTQ2, but it does not clear the earlier real dev-app chat proof. The dev-app red row is narrowed to renderer/chat tool-loop first post-tool visible trace behavior, where the first app answer collapsed to `Created`.
+- No package/sign/notarize/tag/upload/release action was run.
