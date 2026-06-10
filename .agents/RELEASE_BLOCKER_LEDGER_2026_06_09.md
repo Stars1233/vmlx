@@ -101,6 +101,16 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
   exactly, and kept paged mixed-SWA cache/L2 evidence. This does not clear
   broader JANGTQ_2 literal/JSON/source-vs-quant exactness, media, or MiMo
   JANG_2L tool rows.
+- 2026-06-10 update: MiMo JANGTQ_2 current dev-build Responses built-in tool
+  loop is green in `build/current-real-ui-dev-app-mimo-v25-jangtq2-responses-tools-cache-20260610.json`.
+  The `npm run dev` Electron app loaded the real 79 GiB bundle, used
+  `/v1/responses`, executed `run_command`, sent `function_call_output`
+  follow-ups with `previous_response_id`, recorded Responses delta/cache-detail
+  surfaces, created both expected probe files exactly, and kept paged
+  mixed-SWA cache/L2 evidence (`cache_hit_tokens=4548`,
+  `l2_block_tokens_on_disk=4225`, block-disk hits `36`, writes `68`). This
+  does not clear broader JANGTQ_2 literal/JSON/source-vs-quant exactness or
+  media support.
 - 2026-06-10 update: MiMo JANGTQ_2 installed-app exact-output probe is still
   red in `build/current-real-ui-installed-app-mimo-v25-jangtq2-exact-output-proof-20260610.json`.
   The same rebuilt app loaded the real 79 GiB bundle, kept parser/reasoning

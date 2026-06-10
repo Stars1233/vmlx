@@ -330,6 +330,7 @@ Artifacts:
 - `build/current-mimo-v25-jangtq2-live-cb-cache-text-20260610.json`
 - `build/current-mimo-v25-jangtq2-exactness-variant-probe-live-20260610/result.json`
 - `build/current-real-ui-installed-app-mimo-v25-jangtq2-exact-output-proof-20260610.json`
+- `build/current-real-ui-dev-app-mimo-v25-jangtq2-responses-tools-cache-20260610.json`
 
 Proven:
 
@@ -346,6 +347,13 @@ Proven:
   `/Applications/vMLX.app`, streamed Chat Completions turns, kept parser and
   reasoning leak checks clean, recorded no persisted tools/reasoning, hit paged
   mixed-SWA cache with `cache_hit_tokens=41`, and wrote block L2.
+- Current Electron dev-build Responses/tool proof loaded the same real 79 GiB
+  bundle through `npm run dev`, used `/v1/responses`, executed built-in
+  `run_command`, sent `function_call_output` follow-ups with
+  `previous_response_id`, recorded Responses delta/cache-detail surfaces, wrote
+  exact probe files, hit paged mixed-SWA cache with `cache_hit_tokens=4548`,
+  and wrote/read block L2 (`l2_block_tokens_on_disk=4225`, hits `36`, writes
+  `68`).
 
 Red:
 
@@ -895,7 +903,10 @@ Next implementation target:
   proof `build/current-real-ui-installed-app-mimo-v25-jangtq2-exact-output-proof-20260610.json`
   is red: `ACK-CB-742` became `ACKCB-742`, and the JSON probe stopped at `{"`,
   while parser/reasoning leak checks, paged mixed-SWA cache, and block L2 were
-  clean.
+  clean. Current dev-build Responses tool/cache parity is also green in
+  `build/current-real-ui-dev-app-mimo-v25-jangtq2-responses-tools-cache-20260610.json`,
+  so the remaining MiMo JANGTQ2 blocker is not dev-app tool transport or cache
+  plumbing.
 - MiMo JANG_2L is the stronger MiMo checkpoint candidate for load/cache/text,
   but post-fix app tool exactness is still red. The panel now pins
   `tool_choice` only for explicit single-tool user requests, and the app can

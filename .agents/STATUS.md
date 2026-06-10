@@ -1150,3 +1150,11 @@
 - Launch-safe chat/cache gate: `build/current-n2-jang1l-chat-cache-after-mimo-exact-20260610.json`, `status=skipped`, `reason=n2_jang1l_insufficient_available_memory`; observed available `113.28 GiB`, required available `118.57 GiB`, gap `5.29 GiB`.
 - Requested probes were preserved in the gate artifact: tool, Responses, Responses stream, and L2 restart. No weights were launched and the cache directory stayed empty.
 - Boundary: this is current no-load/scheduling evidence only. It does not prove N2 JANG_1L runtime/cache/API/UI and does not invalidate N2 JANGTQ2 as the current N2 checkpoint candidate. The earlier forced below-gate launch remains the live Metal OOM evidence.
+
+# 2026-06-10 - MiMo JANGTQ_2 dev-app Responses tool/cache green
+
+- Reduced blocker: `api/ui` plus `responses` plus `cache/storage` for current Electron dev-build MiMo V2.5 JANGTQ_2.
+- Proof summary: `build/current-real-ui-dev-app-mimo-v25-jangtq2-responses-tools-cache-20260610.json`, `status=pass`; raw proof and screenshot are `docs/internal/agent-notes/current-real-ui-dev-app-mimo-v25-jangtq2-responses-tools-cache-20260610-proof.json` and `docs/internal/agent-notes/current-real-ui-dev-app-mimo-v25-jangtq2-responses-tools-cache-20260610-chat.png`.
+- Proven: `npm run dev` Electron app launched (`uiLaunchMode=electron-dev`), real `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2` loaded, `/v1/responses` used, built-in `run_command` executed in both turns, `previous_response_id` tool follow-ups with `function_call_output` were used, Responses delta/cache-detail surfaces were recorded, and exact probe files were created: `REAL_UI_LIVE_TOOL_ONE` and `REAL_UI_LIVE_TOOL_TWO`.
+- Runtime/cache evidence: active memory `76763.1 MB`, peak `81328.7 MB`, single-active decode, TurboQuant codebook routed experts (`profile=JANGTQ_2`), prestacked routed layout, native `mixed_swa_kv_v1` with `cache_subtype=mimo_v2_asymmetric_swa`, `cache_detail=paged`, `cache_hit_tokens=4548`, `l2_block_tokens_on_disk=4225`, `l2_tokens_on_disk=4225`, block-disk hits `36`, and block-disk writes `68`.
+- Boundary: this clears MiMo JANGTQ_2 current dev-build Responses/tool/cache parity only. It does not clear broader JANGTQ_2 literal/JSON/source-vs-quant exactness or media support.

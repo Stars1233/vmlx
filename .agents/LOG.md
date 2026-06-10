@@ -8334,3 +8334,11 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Ran the launch-safe chat/cache gate with tool, Responses, Responses stream, and L2 restart probes requested. Artifact `build/current-n2-jang1l-chat-cache-after-mimo-exact-20260610.json` is `status=skipped`, `reason=n2_jang1l_insufficient_available_memory`: observed available `113.28 GiB`, gap `5.29 GiB`.
 - No weights were loaded and `build/current-n2-jang1l-after-mimo-exact-20260610-block-cache` stayed empty.
 - Boundary: current headroom still does not clear N2 JANG_1L. The correct release split remains N2 JANGTQ2 as checkpoint candidate, JANG_1L red until a lower-peak runtime/loader path or sufficient current headroom exists. No release action was run.
+
+# 2026-06-10 - MiMo JANGTQ_2 dev-app Responses tools/cache
+
+- Ran current Electron dev-build MiMo V2.5 JANGTQ_2 proof with `npm run dev`, `/v1/responses`, built-in tools, server cache controls, temperature `0`, top_p `1`, and max tokens `256`.
+- Proof summary `build/current-real-ui-dev-app-mimo-v25-jangtq2-responses-tools-cache-20260610.json` is `status=pass`; raw proof is `docs/internal/agent-notes/current-real-ui-dev-app-mimo-v25-jangtq2-responses-tools-cache-20260610-proof.json`.
+- Proven: dev app launched as `uiLaunchMode=electron-dev`, real `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2` loaded, `/v1/responses` route used, built-in `run_command` executed, `previous_response_id` follow-ups sent `function_call_output`, Responses delta/cache-detail surfaces were recorded, and probe files contained `REAL_UI_LIVE_TOOL_ONE` and `REAL_UI_LIVE_TOOL_TWO` exactly.
+- Runtime/cache evidence: active memory `76763.1 MB`, peak `81328.7 MB`, TurboQuant codebook routed experts with prestacked layout, native `mixed_swa_kv_v1` / `mimo_v2_asymmetric_swa`, `cache_detail=paged`, `cache_hit_tokens=4548`, `l2_block_tokens_on_disk=4225`, block-disk hits `36`, and block-disk writes `68`.
+- Boundary: this clears dev-app Responses/tool/cache parity for MiMo JANGTQ_2 only. It does not clear MiMo JANGTQ_2 exact literal/JSON/source-vs-quant rows or media support. No release action was run.
