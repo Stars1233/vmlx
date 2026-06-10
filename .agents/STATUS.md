@@ -5719,3 +5719,14 @@ Other-agent action:
 - Release boundary: 26B and 31B native MXFP4 installed-app rows remain open;
   do not register these failed artifacts as passing proof and do not sign or
   release from this state.
+
+# 2026-06-10 15:14 PDT - Gemma4 31B reasoning gap commit pushed
+
+- Commit `998311117` (`Classify Gemma4 31B MXFP4 reasoning gap`) was pushed to
+  both `origin/codex/pr-intake-manifest` and `origin/main`.
+- Verification before commit: py_compile passed, focused Gemma/full checklist
+  tests passed (`28 passed`), `git diff --check` and `git diff --cached --check`
+  passed, and no Gemma 31B proof server/app process remained running.
+- Unrelated dirty state remains intentionally untouched:
+  `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
+  and `node_modules/`.

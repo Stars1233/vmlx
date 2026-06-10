@@ -13427,3 +13427,12 @@ Next action:
   native MXFP4 emits visible/tool/cache correctly with `enable_thinking=True`
   but produces no persisted reasoning display; do not weaken the proof gate or
   register these artifacts as pass.
+
+# 2026-06-10 15:14 PDT - Gemma4 31B reasoning gap push
+
+- Commit `998311117` (`Classify Gemma4 31B MXFP4 reasoning gap`) pushed to
+  `origin/codex/pr-intake-manifest` and `origin/main`.
+- Verification before push: py_compile, focused Gemma/full-checklist tests
+  (`28 passed`), unstaged/staged whitespace checks, and proof process cleanup.
+- Release remains locked: no signing, notarization, tag, PyPI, updater,
+  download, or website action was performed.
