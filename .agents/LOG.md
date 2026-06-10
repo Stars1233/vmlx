@@ -8572,6 +8572,27 @@ MiniMax #179, real UI matrix, and DSV4 blockers.
 - Runtime/cache evidence: active memory `105485.6 MB`, peak `110316.4 MB`, native `mixed_swa_kv_v1` / `mimo_v2_asymmetric_swa`, generic TurboQuant KV inactive, `cache_hit_tokens=4552`, last cache hit `paged` / `3481` tokens / `reconstruction_ok=true`, `l2_block_tokens_on_disk=4960`, block disk `disk_hits=36`, `disk_writes=80`, and block-disk size `1.487 GB`.
 - Red evidence: release assertion failed because the proof did not record `long_tool_loop`. Visible/tool semantics drifted: the first assistant content changed `REAL_UI_LIVE_TOOL_ONE` to `REAL_UI_LAND_TOOL_ONE`, the second assistant was only `The command executed successfully. The file`, and tool/file semantics did not satisfy the proof contract.
 - Boundary: this does not clear MiMo JANG_2L Responses/tool support for release. Cache/L2/Responses transport is not the current blocker; tool semantic drift remains the blocker. No release/sign/notarize/package/tag/upload action was run.
+# 2026-06-10 - N2 JANGTQ2 dev-app proof consumed by objective gate
+
+- Updated objective/checklist/release-manifest pointers so N2 JANGTQ2 no longer
+  relies only on older source chat/cache artifacts in the release objective row.
+- New objective digest:
+  `build/current-objective-proof-after-n2-jangtq2-devapp-prevresp-consumed-20260610.json`.
+  It includes `build/current-real-ui-live-model-n2-jangtq2-dev-app-prevresp-proof-20260610.json`
+  under `jangtq2_real_ui_prevresp_proof`.
+- Proven consumed surface: real Electron dev app, `/v1/responses`, built-in
+  tool loop, exact probe files `REAL_UI_LIVE_TOOL_ONE` and
+  `REAL_UI_LIVE_TOOL_TWO`, native `hybrid_ssm_v1`, live attention TurboQuant KV,
+  `cache_hit_tokens=17083`, `l2_tokens_on_disk=20662`, block L2 hits/writes,
+  and SSM disk hits/stores.
+- Regenerated checklist
+  `build/current-full-release-objective-checklist-after-n2-jangtq2-devapp-prevresp-consumed-20260610.json`
+  remains `status=open`, `failed_count=73`; regenerated manifest
+  `build/current-release-regression-manifest-after-n2-jangtq2-devapp-prevresp-consumed-20260610.json`
+  remains `current_proof_sweep=fail`, `prepackage_ready=false`,
+  `release_ready=false`. This is evidence plumbing for checkpoint release
+  accounting, not production clearance.
+
 # 2026-06-10 - MiMo JANG_2L release-manifest accounting refresh
 
 - Updated `tests/cross_matrix/release_regression_manifest.py` so the MiMo
