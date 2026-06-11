@@ -14150,3 +14150,14 @@ Other-agent action:
 - artifact: `build/current-gemma4-e2b-qat-jang4m-direct-gateway-responses-raw-sse-cache-20260611.json`, `status=pass`. Raw captures/logs under `build/responses-sse-captures-20260611/gemma-e2b-gateway/`.
 - proven: current source server plus real panel ApiGateway proxy, `enable_thinking=true`, required `record_fact`, direct and gateway both have complete reasoning output item lifecycle, function-call argument delta/done, valid output indices `message=0`, `reasoning=1`, `function_call=2`, exact args `{\"value\": \"blue-cat\"}`, final response consistency, native mixed-SWA cache, `cache_hit_tokens=162`, `cache_hit_requests=1`, `l2_block_tokens_on_disk=162`, and `disk_writes=3`.
 - boundary: no public tunnel, installed app, media, release package, N2, or MiMo claim.
+
+## CODEX
+- now: selected Gemma4 E4B QAT JANG_4M direct + panel ApiGateway raw SSE/cache proof. This extends the E2B proof to another Gemma QAT JANG size with the same required-tool Responses reasoning surface.
+- goal: prove current source server and real panel ApiGateway preserve reasoning lifecycle, function-call argument delta/done, exact args, output indices, final object consistency, native mixed-SWA cache, cache hits, and block L2 for E4B.
+- boundary: no public tunnel, installed app, release package, N2, or MiMo claim. No release/sign/notarize/PyPI/site/updater action.
+
+## CODEX
+- now: Gemma4 E4B QAT JANG_4M direct + panel ApiGateway raw SSE/cache proof is green.
+- artifact: `build/current-gemma4-e4b-qat-jang4m-direct-gateway-responses-raw-sse-cache-20260611.json`, `status=pass`. Raw captures/logs under `build/responses-sse-captures-20260611/gemma-e4b-gateway/`.
+- proven: current source server plus real panel ApiGateway proxy, `enable_thinking=true`, required `record_fact`, complete reasoning output item lifecycle on direct and gateway, function-call argument delta/done on both, valid output indices `message=0`, `reasoning=1`, `function_call=2`, exact args `{\"value\": \"blue-cat\"}`, final response consistency, native mixed-SWA cache, `cache_hit_tokens=162`, `cache_hit_requests=1`, `l2_block_tokens_on_disk=162`, and `disk_writes=3`.
+- boundary: no public tunnel, installed app, media, release package, N2, or MiMo claim.
