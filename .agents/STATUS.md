@@ -175,6 +175,35 @@
   remain red and must not be claimed green.
 
 ## CODEX
+- now: continuing source/proof fixes only after the user re-anchored the lane
+  to the vMLX Python engine and a future signed checkpoint release.
+- current-turn boundary: do not work in deprecated `/Users/eric/vmlx`; do not
+  run release/sign/notarize/PyPI/updater/site actions in this movement; do not
+  touch N2 JANG_1L; do not spawn subagents; keep every movement written.
+- next movement: reduce the current release checklist by consuming or rerunning
+  real local proof artifacts for open runtime/API/cache/media rows. Do not
+  pointer-refresh a row unless the referenced artifact actually proves the row.
+
+## CODEX
+- now: consumed current Nemotron Omni and Qwen35 raw-SSE proof into the release
+  checklist without running release actions.
+- changed proof pointers: Nemotron Omni now uses
+  `build/current-all-local-model-smoke-ling-hy3-nemotron-tools-media-20260606/dealign.ai_Nemotron-Omni-Nano-JANGTQ-CRACK/result.json`
+  for both no-media and media checks; Qwen35 raw SSE now uses
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-public-recapture-20260610.json`.
+- source change: `tests/cross_matrix/run_full_release_objective_checklist.py`
+  now accepts the current all-local smoke request labels/cache shape for
+  Nemotron media while still requiring pass status, clean validations,
+  image/video/audio blue outputs, blue-cat recall, paged+SSM cache reuse,
+  native hybrid SSM cache, block L2, SSM L2, and Chat Completions logs.
+- proof artifact:
+  `build/current-full-release-objective-checklist-after-nemotron-qwen35-proof-20260611.json`
+  is `status=open`, `failed_count=13`, with no Nemotron or Qwen35 failures.
+- remaining blockers: prepackage/release readiness, N2 JANG_1L release row
+  (off-limits here), MiMo exactness/media/speed, MiniMax issue179 reporter
+  parity/root cause, and DSV4 memory/exactness.
+
+## CODEX
 - now: Gemma4 required-tool source/proof checkpoint is committed and pushed.
 - commit: `2200598e9 Improve Gemma4 required tool streaming`, pushed to
   `origin/codex/pr-intake-manifest` and `origin/main`.
@@ -13418,3 +13447,8 @@ Other-agent action:
 - still open: release/prepackage gates, N2 broad row because JANG_1L remains off-limits/open, MiMo exactness/media/speed, Qwen35 public tunnel reasoning lifecycle, Nemotron Omni rows, MiniMax reporter parity, and DSV4 memory/exact-code proof.
 - verification passed: Step37 audit tests, focused full-checklist/current-suite/release-manifest/objective-digest/release-gate tests, stale-reference sweep for the old Step37/N2 artifact names, and `git diff --check`.
 - other-agent handoff: do not spend more source time on Step37 VLM/text/tool/cache unless a new same-artifact regression appears. Next local reds worth reducing are Nemotron Omni missing/current rows or, if deploy access exists, Qwen35 public tunnel rebuild/recapture. Do not touch N2 JANG_1L in this lane.
+
+## CODEX
+- now: selecting Nemotron Omni as the next local blocker from `build/current-full-release-objective-checklist-after-step37-bundled-vlm-proof-20260611.json` (`status=open`, `failed_count=32`).
+- reason: Nemotron accounts for 17 current failed rows with stale/missing no-media and media artifacts; local Nemotron artifacts exist. Qwen35 is a public tunnel deploy divergence, N2 broad is JANG_1L/off-limits, MiMo is artifact/remake-bound, and DSV4 is memory-preflight blocked.
+- boundary: inspect existing Nemotron proof first and consume only real current evidence. Do not infer audio/video/media support from metadata, do not fake hybrid-SSM/L2 cache rows, do not run release/sign/notarize/PyPI/site actions, and do not touch N2 JANG_1L.
