@@ -11763,3 +11763,48 @@ Other-agent action:
 - Boundary:
   this is proof refresh/bookkeeping plus current artifact evidence, not a
   release/sign/notarize action and not an N2 JANG_1L load/probe.
+
+# 2026-06-11 continuation PDT N2 JANGTQ2 runtime/API/cache lane
+
+- Current-turn scope:
+  keep moving toward the checkpoint release by reducing real runtime/API/cache
+  proof gaps for user-relevant model families, without release/sign/notarize/
+  PyPI/update-site actions and without N2 JANG_1L.
+- Allowed N2 target:
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2` only. Do not load,
+  classify, patch, or claim `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANG_1L`.
+- Immediate action:
+  find and use the existing N2 JANGTQ2 live/API/cache proof harness if present,
+  or inspect the current N2 JANGTQ2 artifacts to identify the smallest real
+  blocker to fix. Avoid broad suite churn unless a source/proof state changes.
+- Required evidence:
+  live generation or raw API proof with tool/reasoning/content delta behavior,
+  cache reuse telemetry, request kwargs, parser selection, final-object
+  consistency, and honest unsupported modality gating where relevant.
+
+# 2026-06-11 continuation PDT N2 JANGTQ2 objective evidence consumed
+
+- Source/proof movement:
+  `tests/cross_matrix/summarize_objective_proof.py` now consumes the current
+  N2 JANGTQ2 live 101 GiB source proof
+  `build/current-n2-jangtq2-live-chat-cache-responses-l2-20260610.json` and
+  the direct/gateway raw SSE stream-boundary proof
+  `build/current-n2-jangtq2-responses-stream-boundary-20260610.json` instead
+  of anchoring the N2 JANGTQ2 part of the objective digest on older 20260609
+  source artifacts.
+- Proven by consumed artifacts:
+  JANGTQ2 live runtime/API/cache/L2 proof is green for stable text, required
+  tool, Responses nonstream/stream required tool, cache hit `paged+ssm`, and
+  fresh-process L2 restore; direct and gateway raw SSE both preserve
+  `{"query":"alpha"}` for the first tool call, direct output-index ordering is
+  clean, and direct/gateway tool-result follow-up content-delta streaming is
+  green.
+- Still not proven:
+  public tunnel parity is still unavailable for N2 JANGTQ2, audio remains an
+  honest unsupported-modality row, stricter custom long-delta prompt quality
+  remains red, N2 JANG_1L is still off-limits/unclaimed, and the broad
+  model-family detection contract remains red.
+- Verification:
+  regenerated
+  `build/current-objective-proof-after-dsv4-real-ui-valid-preflight-20260611.json`;
+  focused objective digest tests passed `2 passed, 110 deselected`.

@@ -17126,3 +17126,44 @@ Next action:
 - Cleanup:
   restored unrelated generated artifacts from the suite run and kept the
   pre-existing panel settings artifact dirty/uncommitted.
+
+# 2026-06-11 continuation PDT - next lane N2 JANGTQ2 runtime/API/cache
+
+- Request carried forward:
+  focus on real fixes/proofs for N2 JANGTQ2, Gemma, Qwen/API/tool/reasoning,
+  cache reuse/TurboQuant/hybrid cache behavior, and release readiness without
+  wasting movement on broad harness churn.
+- Boundary:
+  N2 JANG_1L remains off-limits in this lane. Current allowed N2 target is
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2`.
+- Next action:
+  inspect existing N2 JANGTQ2 live/API/cache proof scripts and artifacts, then
+  run the most direct proof or fix a concrete source/runtime blocker it exposes.
+  No release/sign/notarize/PyPI/download-site action in this movement.
+
+# 2026-06-11 continuation PDT - N2 JANGTQ2 objective digest evidence refresh
+
+- Inspected existing N2 JANGTQ2 evidence:
+  `build/current-n2-jangtq2-live-chat-cache-responses-l2-20260610.json`,
+  `build/current-real-ui-live-model-n2-jangtq2-dev-app-prevresp-proof-20260610.json`,
+  and `build/current-n2-jangtq2-responses-stream-boundary-20260610.json`.
+- Source edit:
+  `tests/cross_matrix/summarize_objective_proof.py` now points the N2 JANGTQ2
+  source proof and L2 proof constants at
+  `build/current-n2-jangtq2-live-chat-cache-responses-l2-20260610.json`, adds
+  `N2_JANGTQ2_RESPONSES_STREAM_BOUNDARY_REL`, and records explicit booleans for
+  `n2_jangtq2_live_runtime_api_cache` and
+  `n2_jangtq2_direct_gateway_stream_boundary`.
+- Honest split:
+  broad `n2_family_policy` remains false because
+  `build/current-model-family-detection-contract-after-n2-policy-row-20260609.json`
+  is still a red broad registry artifact. The digest now separately records
+  that N2 JANGTQ2 live runtime/API/cache and direct/gateway SSE proof are green.
+- Regenerated:
+  `build/current-objective-proof-after-dsv4-real-ui-valid-preflight-20260611.json`.
+- Verification:
+  `.venv/bin/python -m pytest -q tests/test_objective_proof_digest.py -k 'default_out_tracks_current_release_proof_artifact or tracks_n2_pro_397b_release_blocker'`
+  -> `2 passed, 110 deselected`.
+- Not claimed:
+  no public tunnel parity, no audio support, no N2 JANG_1L proof, no release
+  readiness, and no signing/notarization action.

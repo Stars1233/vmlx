@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-11T04:35:36-0700",
+  "created_at": "2026-06-11T04:41:05-0700",
   "requirements": [
     {
       "requirement": "DSV4 Flash prefix/paged/L2 cache is enabled by default from app launch",
@@ -4316,9 +4316,10 @@
         "build/current-n2-jang1l-live-chat-cache-forced-after-gemma-video-20260610.json",
         "build/current-real-ui-dev-app-n2-jang1l-one-turn-visible-proof-20260610.json",
         "build/current-real-ui-dev-app-n2-jang1l-bounded-chat-proof-20260610.json",
-        "build/current-n2-jangtq2-chat-cache-responses-proof-after-responses-parser-20260609.json",
-        "build/current-n2-jangtq2-chat-cache-responses-l2-proof-20260609.json",
+        "build/current-n2-jangtq2-live-chat-cache-responses-l2-20260610.json",
+        "build/current-n2-jangtq2-live-chat-cache-responses-l2-20260610.json",
         "build/current-real-ui-live-model-n2-jangtq2-dev-app-prevresp-proof-20260610.json",
+        "build/current-n2-jangtq2-responses-stream-boundary-20260610.json",
         "build/current-noheavy-api-cache-contract-after-mimo-n2-runtime-refresh-20260609.json",
         "build/current-cache-architecture-contract-after-mimo-n2-runtime-refresh-20260609.json",
         "build/current-model-family-detection-contract-after-n2-policy-row-20260609.json"
@@ -4332,8 +4333,8 @@
           "indexed_payload_gb_decimal": 118.73,
           "indexed_payload_gib": 110.57,
           "required_available_gib": 118.57,
-          "available_gib": 106.95,
-          "memory_gap_gib": 11.62,
+          "available_gib": 111.12,
+          "memory_gap_gib": 7.45,
           "memory_preflight_decision": "do_not_launch",
           "launch_safe": false,
           "classification": "careful_ram_live_proof_pending",
@@ -4564,15 +4565,17 @@
           "cache_architecture": "pass",
           "model_family_detection": "fail",
           "n2_family_policy": false,
+          "n2_jangtq2_live_runtime_api_cache": true,
+          "n2_jangtq2_direct_gateway_stream_boundary": true,
           "turboquant_runtime_contract": true,
           "turboquant_disk_roundtrip": true,
           "hybrid_cache_policy": true
         },
         "jangtq2_live_proof": {
-          "artifact": "build/current-n2-jangtq2-chat-cache-responses-proof-after-responses-parser-20260609.json",
+          "artifact": "build/current-n2-jangtq2-live-chat-cache-responses-l2-20260610.json",
           "status": "pass",
           "model": "/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2",
-          "served_model_name": "n2-pro-jangtq2-chat-proof",
+          "served_model_name": "n2-pro-jangtq2-live-20260610",
           "stable_text": true,
           "tool_probe_pass": true,
           "responses_probe_pass": true,
@@ -4580,12 +4583,12 @@
           "cache_hit_cached_tokens": 8,
           "cache_hit_cache_detail": "paged+ssm",
           "block_disk_writes": 3,
-          "block_disk_hits": 6,
-          "ssm_disk_stores": 5,
+          "block_disk_hits": 9,
+          "ssm_disk_stores": 6,
           "boundary": "Current-source N2 JANGTQ2 chat/cache/Responses proof only. This does not clear N2 JANG_1L, installed-app/UI parity, media rows, or full release support."
         },
         "jangtq2_l2_restart_proof": {
-          "artifact": "build/current-n2-jangtq2-chat-cache-responses-l2-proof-20260609.json",
+          "artifact": "build/current-n2-jangtq2-live-chat-cache-responses-l2-20260610.json",
           "status": "pass",
           "l2_restart_probe_pass": true,
           "restart_cached_tokens": 8,
@@ -4660,6 +4663,32 @@
           },
           "boundary": "Current Electron dev-app N2 JANGTQ2 default Responses tool/cache proof with previous_response_id continuation. This supports the checkpoint candidate profile but does not clear stricter long-delta prompts, audio, public tunnel parity, N2 JANG_1L, or full release support."
         },
+        "jangtq2_responses_stream_boundary": {
+          "artifact": "build/current-n2-jangtq2-responses-stream-boundary-20260610.json",
+          "status": "pass",
+          "model": "/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2",
+          "served_model_name": "n2-jangtq2-stream-boundary-20260610",
+          "checks": {
+            "direct_first_output_index_clean": true,
+            "direct_followup_completed": true,
+            "direct_followup_content_delta_streaming": true,
+            "first_tool_call_present": true,
+            "gateway_followup_completed": true,
+            "gateway_followup_content_delta_streaming": true,
+            "release_boundary": "This proof captures direct/gateway raw SSE for N2 JANGTQ2 Responses tool + tool-result continuation. It does not prove installed app, public tunnel, media, or release readiness."
+          },
+          "direct_first_arguments": [
+            {
+              "query": "alpha"
+            }
+          ],
+          "gateway_first_arguments": [
+            {
+              "query": "alpha"
+            }
+          ],
+          "boundary": "Direct server and panel gateway raw SSE proof for N2 JANGTQ2 Responses required tool plus tool-result continuation. This does not clear public tunnel parity, audio, N2 JANG_1L, or full release support."
+        },
         "required_next_evidence": [
           "memory_safe_live_launch_or_smaller_runtime_strategy",
           "JANG_1L runtime/cache/API/UI live proof",
@@ -4681,9 +4710,9 @@
           "build/current-n2-jang1l-live-chat-cache-forced-after-gemma-video-20260610.json": true,
           "build/current-real-ui-dev-app-n2-jang1l-one-turn-visible-proof-20260610.json": true,
           "build/current-real-ui-dev-app-n2-jang1l-bounded-chat-proof-20260610.json": true,
-          "build/current-n2-jangtq2-chat-cache-responses-proof-after-responses-parser-20260609.json": true,
-          "build/current-n2-jangtq2-chat-cache-responses-l2-proof-20260609.json": true,
+          "build/current-n2-jangtq2-live-chat-cache-responses-l2-20260610.json": true,
           "build/current-real-ui-live-model-n2-jangtq2-dev-app-prevresp-proof-20260610.json": true,
+          "build/current-n2-jangtq2-responses-stream-boundary-20260610.json": true,
           "build/current-noheavy-api-cache-contract-after-mimo-n2-runtime-refresh-20260609.json": true,
           "build/current-cache-architecture-contract-after-mimo-n2-runtime-refresh-20260609.json": true,
           "build/current-model-family-detection-contract-after-n2-policy-row-20260609.json": true
@@ -4719,7 +4748,7 @@
             "reporter_server_hash_parity": {
               "failure": "reporter_installed_server_hash_drift",
               "latest_public_server_sha256": "0be1c30c44da2a57e4a3e89bf87c803d2ae00a86140ff81f7c39e58f5bc3c4f5",
-              "local_installed_server_sha256": "9e8cfed83d00bba9b7e59a22a1e80b3f897577ebd4e2e75ac099173ef79ca146",
+              "local_installed_server_sha256": "a93f5588c7334a0bf2f9d6eacc5ea31c054ec421b3285ea51326e551f3478bf1",
               "provenance": {
                 "checked_sources": [
                   "source_contract",
@@ -4746,33 +4775,23 @@
                 "local_app_bundle_checked": [
                   {
                     "matches_reporter": false,
-                    "path": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/panel/release/mac-arm64/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/server.py",
-                    "sha256": "792a22c944e61bf1a8bade26302e4aae50c62a9dcc1828c3437481fce5501909"
-                  },
-                  {
-                    "matches_reporter": false,
-                    "path": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/panel/release/mac-arm64/vMLX.app/Contents/Resources/vmlx-engine-source/vmlx_engine/server.py",
-                    "sha256": "792a22c944e61bf1a8bade26302e4aae50c62a9dcc1828c3437481fce5501909"
-                  },
-                  {
-                    "matches_reporter": false,
                     "path": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/panel/release/sequoia-app/mac-arm64/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/server.py",
-                    "sha256": "80b8c4f8ce0116f4fe8e6f7abdc3abb8a83e7c2adf3a5936457d73941ceb7117"
+                    "sha256": "eeac6e210485dd64839cc6eb334cfaad139c3e17b07a0f7e812c58fdb594971f"
                   },
                   {
                     "matches_reporter": false,
                     "path": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/panel/release/sequoia-app/mac-arm64/vMLX.app/Contents/Resources/vmlx-engine-source/vmlx_engine/server.py",
-                    "sha256": "80b8c4f8ce0116f4fe8e6f7abdc3abb8a83e7c2adf3a5936457d73941ceb7117"
+                    "sha256": "eeac6e210485dd64839cc6eb334cfaad139c3e17b07a0f7e812c58fdb594971f"
                   },
                   {
                     "matches_reporter": false,
                     "path": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/panel/release/tahoe-app/mac-arm64/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/server.py",
-                    "sha256": "0be1c30c44da2a57e4a3e89bf87c803d2ae00a86140ff81f7c39e58f5bc3c4f5"
+                    "sha256": "eeac6e210485dd64839cc6eb334cfaad139c3e17b07a0f7e812c58fdb594971f"
                   },
                   {
                     "matches_reporter": false,
                     "path": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/panel/release/tahoe-app/mac-arm64/vMLX.app/Contents/Resources/vmlx-engine-source/vmlx_engine/server.py",
-                    "sha256": "0be1c30c44da2a57e4a3e89bf87c803d2ae00a86140ff81f7c39e58f5bc3c4f5"
+                    "sha256": "eeac6e210485dd64839cc6eb334cfaad139c3e17b07a0f7e812c58fdb594971f"
                   },
                   {
                     "matches_reporter": false,
@@ -4875,7 +4894,7 @@
                     "sha256": "2d5733b3179eca7c74eb801026c2eb917482acfef36e89e9b44e154a1b7f9826"
                   }
                 ],
-                "local_app_bundle_checked_count": 26,
+                "local_app_bundle_checked_count": 24,
                 "local_app_bundle_matches": [],
                 "local_backup_checked_count": 0,
                 "local_backup_matches": [],
@@ -4941,7 +4960,7 @@
               "reporter_matches_public_v1549_tahoe": false,
               "reporter_matches_source": false,
               "route_markers_match": true,
-              "source_server_sha256": "b1f56da8f1415ebdf1d9c9fd6895e213e66ea563d986aec3ebf9fd77c88f0452",
+              "source_server_sha256": "eeac6e210485dd64839cc6eb334cfaad139c3e17b07a0f7e812c58fdb594971f",
               "status": "open"
             },
             "reporter_parity_comparison": {
