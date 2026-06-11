@@ -14607,3 +14607,39 @@ Other-agent action:
   (`Apple event error -1743`) and `screencapture` could not create an image from
   the display in this session. Use shell/app logs and explicit user-visible
   screenshots, or grant automation/screen permissions, for direct UI proof.
+
+## CODEX
+- now: tightened and reproved the local Responses reasoning/tool streaming
+  lifecycle guard for Qwen/Codex-style tool harnesses.
+- source regression strengthened:
+  `tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_responses_reasoning_tool_call_keeps_arguments`
+  now asserts that reasoning text preceding a tool call emits a distinct
+  `reasoning` output item at `output_index=1`, all
+  `response.reasoning_summary_text.*` events reference that reasoning item
+  rather than the message item, the reasoning item completes, and the function
+  call/argument delta/done events use `output_index=2`.
+- verification:
+  `.venv/bin/python -m pytest tests/test_full_release_objective_checklist.py
+  tests/test_responses_raw_sse_parity_contract.py
+  tests/test_qwen35_responses_raw_sse_capture.py
+  tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_responses_reasoning_tool_call_keeps_arguments
+  -q` passed (`49 passed`).
+- no-heavy API/cache proof regenerated:
+  `build/current-noheavy-api-cache-contract-after-reasoning-tool-lifecycle-guard-20260611.json`
+  is `status=pass`, `missing_markers=[]`; `responses_streaming_tool_contracts`
+  passed `7` tests and the aggregate
+  `responses_streaming_tool_call_arguments_and_indexes` check is true.
+- Qwen35 raw SSE parity artifact regenerated with the stronger local contract:
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-reasoning-tool-lifecycle-guard-20260611.json`
+  remains `status=fail`, but direct and gateway are lifecycle-clean
+  (`message=0`, `reasoning=1`, `function_call=2`, authoritative
+  `{"value":"blue-cat"}`), while the tunnel capture is still the blocker:
+  it emits reasoning summary deltas on the message item at `output_index=0`,
+  has `reasoning_output_item_count=0`, and therefore
+  `reasoning_lifecycle_complete=false`.
+- full checklist regenerated:
+  `build/current-full-release-objective-checklist-after-qwen35-reasoning-tool-lifecycle-guard-20260611.json`
+  remains `status=open`, `failed_count=16`. Qwen35 remains open because the
+  public/tunnel deployed stream is not current-source lifecycle clean; do not
+  mark this row green without a fresh same-model tunnel capture that emits a
+  completed reasoning output item.

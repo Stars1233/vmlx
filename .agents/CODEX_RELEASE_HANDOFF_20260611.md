@@ -138,7 +138,17 @@
   text-runtime speed proof.
 - Qwen35 raw SSE direct/gateway/tunnel parity remains open on public tunnel
   reasoning lifecycle, even though current direct/gateway source proof is
-  green.
+  green. Current source now has a focused regression proving reasoning text
+  before a tool call emits a separate reasoning output item (`output_index=1`)
+  and function calls advance to `output_index=2`; no-heavy API/cache proof
+  `build/current-noheavy-api-cache-contract-after-reasoning-tool-lifecycle-guard-20260611.json`
+  is `status=pass`. The current Qwen35 parity artifact is
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-reasoning-tool-lifecycle-guard-20260611.json`
+  and remains `status=fail` because the tunnel capture still attaches
+  `response.reasoning_summary_text.delta` to the message item at
+  `output_index=0` and emits no reasoning output item. Do not weaken this
+  check; recapture a same-model tunnel only after the deployed/tunnel runtime is
+  current enough to emit completed reasoning output items.
 - MiniMax issue179: current source and local installed probes are clean, but
   reporter parity is not proven. The current audit is intentionally open
   because reporter artifact/session evidence is missing and reporter installed
@@ -151,7 +161,11 @@
 - If deploy/tunnel access exists, refresh exact-served-model raw SSE parity
   artifacts only when the served route really advertises and serves the target
   model and emits complete streamed reasoning output item lifecycle; do not
-  pointer-refresh to a stale or partial capture.
+  pointer-refresh to a stale or partial capture. For Qwen35 specifically, the
+  tunnel recapture must show direct/gateway/tunnel all using
+  `models/Qwen3.6-35B-A3B-MXFP8-CRACK-MTP`, authoritative
+  `{"value":"blue-cat"}`, reasoning item lifecycle complete, and no shared
+  message/function output index.
 - For MiniMax issue179, collect reporter parity metadata/artifacts: reporter
   model shard/codebook hashes, installed app server hash, chat/session/settings
   DB state, response active-state at cancel time, raw SSE/cancel lifecycle, and

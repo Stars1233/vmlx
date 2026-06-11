@@ -19423,3 +19423,45 @@ automation permission (`Apple event error -1743`), and `screencapture` could
 not capture the display in this session. Direct UI screenshots/click-through
 proof still need either permissions or manual visible screenshots. Do not
 misrepresent shell parity as full live UI proof.
+
+# 2026-06-11 Qwen35 Responses reasoning/tool lifecycle guard tightened
+
+Inspected the current Qwen35 raw SSE release blocker. Direct local and panel
+gateway captures are clean: same model
+`models/Qwen3.6-35B-A3B-MXFP8-CRACK-MTP`, authoritative
+`{"value":"blue-cat"}`, reasoning lifecycle complete, and output indices
+`message=0`, `reasoning=1`, `function_call=2`. The remaining failure is the
+public/tunnel capture
+`build/responses-sse-captures-20260611/tunnel-qwen35-mxfp8-mtp-tool-strict-lifecycle-recapture-20260611.sse`:
+it emits `response.reasoning_summary_text.delta` on the message item at
+`output_index=0`, has `reasoning_output_item_count=0`, and therefore fails
+strict reasoning lifecycle even though tool arguments and final object
+consistency are clean.
+
+Strengthened
+`tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_responses_reasoning_tool_call_keeps_arguments`
+so source now explicitly guards the tunnel failure shape: reasoning text before
+a tool call must create a separate reasoning output item at `output_index=1`,
+reasoning deltas/done must reference that item instead of the message item, the
+reasoning item must complete, and function_call added/delta/done events must
+use `output_index=2`.
+
+Verification:
+`.venv/bin/python -m pytest tests/test_full_release_objective_checklist.py
+tests/test_responses_raw_sse_parity_contract.py
+tests/test_qwen35_responses_raw_sse_capture.py
+tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_responses_reasoning_tool_call_keeps_arguments
+-q` passed (`49 passed`).
+
+Regenerated no-heavy API/cache proof:
+`build/current-noheavy-api-cache-contract-after-reasoning-tool-lifecycle-guard-20260611.json`
+is `status=pass`, `missing_markers=[]`.
+
+Regenerated Qwen35 parity proof using the stronger no-heavy contract:
+`build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-reasoning-tool-lifecycle-guard-20260611.json`
+is still `status=fail` solely because the tunnel/deployed stream lacks a
+reasoning output item. Updated the full checklist pointer and regenerated
+`build/current-full-release-objective-checklist-after-qwen35-reasoning-tool-lifecycle-guard-20260611.json`;
+status remains `open`, `failed_count=16`. Boundary: do not weaken the strict
+lifecycle check or mark Qwen35 green without a fresh same-model tunnel capture
+that emits completed reasoning output items.
