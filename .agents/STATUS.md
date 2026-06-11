@@ -14063,3 +14063,10 @@ Other-agent action:
 - Patched Gemma video capability classification so explicit has_video=false / modalities.video=false prevents native video advertising, while Gemma video_processor + image/video token + vision_config still exposes video through sampled-frame fallback.
 - Local proof for /Users/eric/models/JANGQ-AI/gemma-4-E2B-it-qat-JANG_4M: native_video=False, frame_fallback=True, native_audio=True.
 - Focused proof passed: Gemma/Step3.7 video modality tests (6), Gemma QAT video proof-required inventory gate, release manifest effective runtime video capability, and all-local smoke video probe option test.
+
+## 2026-06-11 14:32 PDT - N2/Qwen JANG VL policy API fix
+- Patched vmlx_engine/server.py so Qwen3.5/Qwen3.5-MoE JANG/MXTQ bundles with vision-shaped metadata stay text-only unless native_mtp inspection proves a real text+VL runtime bundle with MTP and vision weights.
+- This fixes the API/runtime modality over-advertise path where a forced/legacy MLLM engine could report ["text", "vision", "video"] for an N2/Qwen JANG metadata-only VL artifact despite registry policy saying text-only.
+- This did not load, modify, prove, or classify N2 JANG_1L. It is limited to the non-JANG_1L Qwen/N2 JANG/JANGTQ policy surface.
+- Focused proof passed: engine audit N2/Qwen/Gemma media selection (6), exact N2 Pro Qwen35-MoE registry policy row (1), full model-family detection contract (34 passed, 1 skipped), py_compile, and git diff --check.
+- Still release-critical/open: live same-model direct/gateway/tunnel raw SSE for Qwen/Qwen-coder tool/content/reasoning deltas; N2 JANGTQ live API/cache/UI proof; Gemma media/cache/UI/installed-app parity; MiMo artifact/remake/exactness/media; signed checkpoint release lane after source rows are worth packaging.

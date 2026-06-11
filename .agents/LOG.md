@@ -19057,3 +19057,16 @@ Next action:
 - Preserved usable video via sampled-frame fallback when Gemma has vision_config, image/video tokens, and a video processor.
 - Local helper proof on E2B QAT JANG_4M: native_video=False, frame_fallback=True, native_audio=True.
 - Verification: targeted engine audit media tests passed (6); Gemma inventory/release manifest/all-local probe tests passed (3).
+
+## 2026-06-11 CODEX - N2/Qwen JANG VL policy API fix
+- Reproduced a source/API policy mismatch: Qwen3.5/Qwen3.5-MoE JANG metadata with vision_config could be reported as runtime text+vision+video when _engine.is_mllm was true, even though the N2 Pro hybrid VL registry row is text-only until real native MTP+VL is present.
+- Added _qwen_jang_vl_policy_text_only() in vmlx_engine/server.py. It only applies to Qwen3.5/Qwen3.5-MoE JANG/MXTQ bundles with vision_config, then releases the text-only gate only when native_mtp inspection proves artifact_available, vision config, vision weights, runtime MTP, and runtime_scope=text+vl.
+- Wired that policy through native video detection, video frame fallback, loaded MLLM modality reporting, and model_capabilities() legacy MLLM fallback.
+- Added regression coverage for N2/Qwen JANG metadata-only VL remaining text-only while preserving parser family metadata.
+- Verification:
+  - uv run pytest -q tests/test_engine_audit.py -k 'n2_qwen_jang_vl_metadata or qwen_vl_runtime_modalities or gemma4_runtime_modalities or gemma4_explicit_no_video' -> 6 passed.
+  - uv run pytest -q tests/test_model_config_registry.py -k 'n2_pro_qwen35_moe_hybrid_vl_metadata_routes_text_only_until_vl_ready' -> 1 passed.
+  - uv run pytest -q tests/test_model_family_detection_contract.py -> 34 passed, 1 skipped.
+  - uv run python -m py_compile vmlx_engine/server.py tests/test_engine_audit.py -> passed.
+  - git diff --check -> passed.
+- Boundary: no release/sign/notarize/PyPI/site/updater action; no subagents; no N2 JANG_1L work.
