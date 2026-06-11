@@ -18017,3 +18017,15 @@ Next action:
   cross-family smoke still lacks Hy3, LFM, Ling/Bailing smoke, MiniMax, MiMo,
   Nemotron, Step3.7, ZAYA text, and ZAYA-VL artifacts. N2 JANG_1L remains
   off-limits and MiMo artifact exactness remains remake-bound.
+
+# 2026-06-11 continuation PDT - Qwen35 smoke commit pushed
+
+- Commit:
+  `57908a6ce Prove Qwen35 smoke gate`.
+- Pushed:
+  `origin/codex/pr-intake-manifest` and `origin/main`.
+- Verification passed:
+  `.venv/bin/python -m pytest tests/test_model_artifact_format_contract.py tests/test_objective_proof_digest.py::test_objective_proof_digest_keeps_cross_family_live_smoke_open_on_non_mimo_gap tests/test_objective_proof_digest.py::test_objective_proof_digest_keeps_cross_family_live_smoke_open_when_only_mimo_is_red tests/test_release_regression_manifest.py::test_release_regression_manifest_tracks_decode_speed_artifact_format_matrix -q`.
+- Storage hygiene:
+  removed generated Qwen35 `block_cache` payloads before staging; committed
+  proof JSON/server-log artifacts only.

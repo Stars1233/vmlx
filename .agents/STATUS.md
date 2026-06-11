@@ -12828,3 +12828,17 @@ Other-agent action:
   `build/current-objective-proof-after-qwen35-smoke-live-refresh-20260611.json`
   marks high-risk parser/artifact/launch policy pass again and cross-family
   smoke now covers `dsv4`, `gemma4`, and `qwen36`.
+
+# 2026-06-11 continuation PDT - Qwen35 smoke commit pushed
+
+- Commit:
+  `57908a6ce Prove Qwen35 smoke gate`.
+- Pushed:
+  `origin/codex/pr-intake-manifest` and `origin/main`.
+- Verification:
+  `.venv/bin/python -m pytest tests/test_model_artifact_format_contract.py tests/test_objective_proof_digest.py::test_objective_proof_digest_keeps_cross_family_live_smoke_open_on_non_mimo_gap tests/test_objective_proof_digest.py::test_objective_proof_digest_keeps_cross_family_live_smoke_open_when_only_mimo_is_red tests/test_release_regression_manifest.py::test_release_regression_manifest_tracks_decode_speed_artifact_format_matrix -q`
+  passed, 5 selected.
+- Staging hygiene:
+  generated `block_cache` payloads were removed before commit; only JSON proof
+  files, server log, refreshed contract/aggregate artifacts, and `.agents`
+  notes were committed.
