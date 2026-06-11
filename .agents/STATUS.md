@@ -12125,3 +12125,35 @@ Other-agent action:
   this clears a direct local N2 JANGTQ2 Responses streaming tool/cache slice
   only. It does not clear N2 audio, N2 JANG_1L, tunnel/deployed raw SSE,
   full Electron UI matrix, package/sign/notarize, or release readiness.
+
+# 2026-06-11 continuation PDT Qwen empty-args/source contract recheck
+
+- Scope:
+  source-contract verification for the Qwen3.6/Qwen-coder empty-arguments
+  failure shape only; no new release/sign/notarize/PyPI/site action.
+- User-reported failure shape kept active:
+  model emits a visible preamble followed by
+  `<tool_call><function=exec_command></function></tool_call>` with no
+  `<parameter=cmd>` tag. Do not trust this as the sole root cause without
+  same-model raw output, and do not synthesize `cmd` from the preamble.
+- Current source behavior:
+  `_parse_tool_calls_with_parser()` filters parsed calls through the request
+  tool schema. Missing required args fail closed instead of becoming executable
+  `{}` arguments. Responses streaming reserves the message item at
+  `output_index=0`; tool-only function calls use the next output index.
+- Verification command:
+  `.venv/bin/python -m pytest -q tests/test_tool_parsers.py tests/test_server.py tests/test_responses_raw_sse_parity_contract.py -k 'empty_function_with_required_schema_fails_closed or streaming_responses_required_empty_xml_tool_call_is_rejected or streaming_responses_preamble_empty_xml_tool_call_never_emits_empty_arguments or streaming_chat_preamble_empty_xml_tool_call_never_emits_empty_arguments or streaming_responses_tool_call_uses_next_output_index_without_text or classifier_flags_function_call_reusing_message_output_index or raw_sse_parity_fails_when_surface_reuses_message_output_index_for_tool'`
+  passed `7 passed, 217 deselected`.
+- Existing live evidence still relevant:
+  `build/current-qwen-coder-next-live-responses-sse-20260611/SUMMARY.json` is
+  direct current-source pass for reasoning-enabled required `exec_command`,
+  continuation, adversarial empty XML fail-closed, and cache/L2 state.
+  `build/current-qwen-coder-next-gateway-responses-sse-20260610/SUMMARY.json`
+  is gateway pass for reasoning-enabled required `exec_command`, argument
+  delta/done/final consistency, sequential indices
+  `message=0, reasoning=1, function_call=2`, and no `{}` args.
+- Remaining boundary:
+  exact Qwen-coder-next public tunnel raw SSE remains unavailable/not
+  advertised by the current tunnel. Do not claim public deployment is fixed
+  until the deployed tunnel advertises the same served model and the same raw
+  SSE request passes with reasoning enabled.

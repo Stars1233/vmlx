@@ -45,6 +45,14 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
 - Current split: local no-heavy guards cover empty XML required-arg fail-closed behavior and output-index ordering. Gemma4 E2B direct/gateway captures preserve `record_fact` args and valid indices, but the public tunnel does not advertise `gemma4-e2b-sse`. Qwen35 public tunnel preserves args and reasoning events, but reuses `output_index=0` for both message and function_call. Treat Qwen35 as deployed/tunnel freshness unless current-source direct/gateway raw SSE reproduces the duplicate index.
 - Current same-model Qwen35 direct proof: `build/current-responses-raw-sse-parity-qwen35-direct-source-vs-tunnel-20260609.json` captures current source against `models/Qwen3.6-35B-A3B-MXFP8-CRACK-MTP`; direct source uses `message=[0]`, `function_call=[1]`, preserves `{"value": "blue-cat"}`, and keeps reasoning events on. The artifact still fails because gateway is missing and the tunnel still duplicates `output_index=0`.
 - Next proof: panel-gateway raw SSE with reasoning enabled and the exact Qwen35 tunnel request. If gateway uses output index `1`, rebuild/redeploy the tunnel backend and recapture; if it duplicates `0`, reopen the source streaming finalization path.
+- 2026-06-11 source recheck: focused regressions for empty XML required-arg
+  fail-closed, preamble+empty XML Responses/Chat streaming, output-index
+  separation, and raw-SSE duplicate-index classification passed
+  (`7 passed, 217 deselected`). Existing Qwen-coder-next direct/gateway live
+  artifacts prove reasoning-enabled `exec_command` args
+  `{"cmd": "ls /tmp"}` through argument delta/done/final consistency with no
+  `{}` args. Remaining exact Qwen-coder-next blocker is public tunnel model
+  availability/fresh deployment, not current-source fail-closed behavior.
 
 2. MiniMax random Chinese / visible planning
 

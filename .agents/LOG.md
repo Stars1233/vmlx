@@ -17453,3 +17453,31 @@ Next action:
   tunnel/deployed SSE availability, N2 audio, full UI matrix, and N2 JANG_1L
   remain open. Do not broaden this proof beyond direct local N2 JANGTQ2
   Responses streaming/tool/cache behavior.
+
+# 2026-06-11 continuation PDT - Qwen empty-args/source contract recheck
+
+- Action:
+  traced the Qwen3.6/Qwen-coder empty `arguments: {}` report against current
+  parser/server tests instead of accepting the proposed root cause. No source
+  edit was made in this pass.
+- Evidence:
+  `_parse_tool_calls_with_parser()` still validates parsed tool calls against
+  the request schema before streaming executable calls. The preamble plus empty
+  XML function shape fails closed when `cmd` is required; it does not produce
+  `response.function_call_arguments.*`, a function-call output item, or
+  executable `{}` args.
+- Verification:
+  `.venv/bin/python -m pytest -q tests/test_tool_parsers.py tests/test_server.py tests/test_responses_raw_sse_parity_contract.py -k 'empty_function_with_required_schema_fails_closed or streaming_responses_required_empty_xml_tool_call_is_rejected or streaming_responses_preamble_empty_xml_tool_call_never_emits_empty_arguments or streaming_chat_preamble_empty_xml_tool_call_never_emits_empty_arguments or streaming_responses_tool_call_uses_next_output_index_without_text or classifier_flags_function_call_reusing_message_output_index or raw_sse_parity_fails_when_surface_reuses_message_output_index_for_tool'`
+  passed with `7 passed, 217 deselected`.
+- Cross-check:
+  existing live artifacts
+  `build/current-qwen-coder-next-live-responses-sse-20260611/SUMMARY.json` and
+  `build/current-qwen-coder-next-gateway-responses-sse-20260610/SUMMARY.json`
+  already prove direct/gateway reasoning-enabled required `exec_command`
+  argument delta/done/final consistency and no `{}` args. Gateway also proves
+  sequential indices `message=0, reasoning=1, function_call=2`.
+- Remaining blocker:
+  public tunnel exact Qwen-coder-next raw SSE is still unavailable/not
+  advertised. Keep this as deployment/tunnel availability or stale-deploy work,
+  not a current-source parser fail, unless a new same-model direct/gateway
+  capture reproduces it.
