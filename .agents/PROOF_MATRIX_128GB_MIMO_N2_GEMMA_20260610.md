@@ -3523,3 +3523,42 @@ Next implementation target:
   do not synthesize `cmd` from visible preambles, do not disable reasoning to
   pass the harness, do not globally reject optional/no-arg tools, and do not
   close qwen-coder-next tunnel parity from a different Qwen alias.
+
+## MiMo V2.5 Speed/Exactness/Cache Boundary - 2026-06-11 Recheck
+
+- JANGTQ_2 installed-app tool/cache proof:
+  `docs/internal/agent-notes/current-real-ui-installed-app-mimo-v25-jangtq2-responses-tools-cache-deterministic-printf-bundled-python-20260611-proof.json`
+  is `status=pass`. It proves installed app bundled Python, `/v1/responses`,
+  deterministic required `run_command`, tool-result continuation, native
+  `mixed_swa_kv_v1`, paged cache hits, block-disk L2 writes, `10,463` cached
+  prompt tokens, active/peak memory about `76.6GB`/`81.5GB`, and about `34.2`
+  then `40.0` live t/s on the two tool turns.
+- JANG_2L speed proof:
+  `docs/internal/agent-notes/current-real-ui-installed-app-mimo-v25-jang2l-responses-tools-cache-warmup-bundled-python-20260611-proof.json`
+  is `status=fail` at release assertions. It still proves native cache/L2 and
+  `10,552` cached prompt tokens, but active/peak memory is about
+  `105.0GB`/`109.5GB` and live decode stays around `1.6-1.7` t/s. The simpler
+  JANG_2L text-cache proof passes functionally but only around `1.7-2.0`
+  live t/s.
+- Cache architecture:
+  MiMo cache is correctly native `mixed_swa_kv_v1` with full-attention KV,
+  sliding-window KV, and RotatingKVCache metadata. Generic TurboQuant KV is
+  disabled by design for MiMo and should not be forced for release.
+- Artifact/remake guidance:
+  `build/current-mimo-artifact-contract-inspection-20260611/CONCLUSIONS.json`
+  classifies classic JANG_2L as a slow affine stacked-expert layout, not a
+  malformed spacing/upcast artifact. JANGTQ_2 is smaller and faster through
+  prestacked TurboQuant routed experts. If remaking for a 128GB checkpoint,
+  prefer a JANGTQ_2-style prestacked artifact with more literal-safe routed
+  expert bits: `gate=3/up=2/down=3` or `gate=3/up=3/down=3`.
+- Remaining red:
+  `build/current-mimo-v25-jangtq2-exactness-root-cause-boundary-20260610.json`
+  is `status=open`; tokenizer/template/cache/parser isolation did not explain
+  literal drift. Current media/tool proof still shows `MIMO-OK -> MIMOOK`,
+  `blue-cat -> blue cat`, red video answered `White`, and audio exactness/
+  hygiene failures. This remains artifact/logit/codebook/decode quality or
+  replacement-artifact work.
+- Guardrail:
+  do not release-clear MiMo from cache/tool transport alone; do not rewrite
+  parser outputs, tool arguments, generated JSON values, sampling defaults, or
+  cache policy to hide the literal/media failures.

@@ -16521,3 +16521,28 @@ Next action:
 - Guardrail for other agents: no fake `cmd` inference from preambles, no
   reasoning-disable workaround, no global rejection of optional/no-arg tools,
   and no qwen-coder-next tunnel closure from a different Qwen alias.
+
+# 2026-06-11 02:45 PDT - MiMo speed/exactness/cache boundary classified
+
+- Inspected current MiMo artifacts instead of relaunching the large model.
+- JANGTQ_2 installed-app Responses tool/cache proof is green:
+  deterministic required `run_command`, tool-result continuation, native
+  `mixed_swa_kv_v1`, paged cache hits, block-disk L2 writes, 10,463 cached
+  prompt tokens, about `34.2` and `40.0` live t/s, active/peak memory about
+  `76.6GB`/`81.5GB`.
+- JANG_2L remains the slow path: installed-app tool/cache warmup artifact is
+  `status=fail` at release assertions with about `1.6-1.7` live t/s despite
+  native cache/L2 and 10,552 cached prompt tokens. Simpler text-cache proof is
+  functional but still only about `1.7-2.0` live t/s.
+- Cache conclusion: MiMo must keep native mixed full/SWA cache with
+  RotatingKVCache metadata. Generic TurboQuant KV is intentionally disabled and
+  should not be forced as a fake speed fix.
+- Artifact conclusion: JANG_2L is not corrupt, but it is a slow classic affine
+  stacked-expert layout. JANGTQ_2 is smaller/faster via prestacked TurboQuant
+  routed experts; for 128GB release, prefer/remake JANGTQ_2-style artifacts
+  with less lossy routed-expert bits (`gate=3/up=2/down=3` or
+  `gate=3/up=3/down=3`).
+- Exactness/media still red: current JANGTQ_2 proof has `MIMO-OK -> MIMOOK`,
+  `blue-cat -> blue cat`, red video answered `White`, and audio exactness/
+  hygiene failures. Treat as artifact/logit/codebook/decode quality, not
+  parser/cache/template repair.
