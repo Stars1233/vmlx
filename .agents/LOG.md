@@ -18945,3 +18945,41 @@ Next action:
   `git diff --check` passed.
 - No release/sign/notarize/PyPI/site/updater action was run. N2 JANG_1L was not
   touched. No subagents were used.
+
+## 2026-06-11 CODEX - Post N2 JANGTQ2 Split Continuation
+
+- Continuing after pushed commit `90e824708`.
+- Constraints retained: active Python/Electron worktree only, no deprecated
+  `/Users/eric/vmlx`, no subagents, no N2 JANG_1L, and no release/sign/
+  notarize/PyPI/site/updater actions without current-turn unlock.
+- Current known state: N2 JANGTQ2 is independently green; N2 JANG_1L remains
+  open/off-limits; Qwen35 local direct/gateway are green with public tunnel
+  deploy/recapture drift; Gemma rows are green; MiMo remains artifact/remake
+  pending unless Eric reopens it.
+- Next action: inspect remaining open checklist/objective rows for a genuine
+  source/runtime/API/cache bug. Avoid status-only changes and avoid broad new
+  harness work.
+
+## 2026-06-11 CODEX - Qwen XML Function Parser Hardening
+
+- Inspected remaining release blockers after `90e824708`: N2 JANGTQ2 is green,
+  N2 JANG_1L is off-limits, MiMo remains artifact/remake pending, and Qwen35
+  local direct/gateway SSE is green while public tunnel remains deploy/
+  recapture drift.
+- Source fix made in `vmlx_engine/tool_parsers/qwen_tool_parser.py`:
+  `QwenToolParser` now parses the XML function dialect used by
+  Qwen/Qwen-coder family outputs:
+  `<tool_call><function=name><parameter=arg>...</parameter></function></tool_call>`.
+- The parser preserves valid XML parameters and still rejects omitted/empty
+  required arguments. No args are synthesized from visible preambles, no
+  reasoning/tool mode is disabled, and invalid tool XML stays fail-closed.
+- Regression added to `tests/test_tool_parser_required_args_fail_closed.py` so
+  Qwen XML-function empty args and valid args are pinned at parser level in
+  addition to the existing server streaming/nonstream guards.
+- Verification passed: `uv run pytest -q tests/test_tool_parser_required_args_fail_closed.py
+  -k 'QwenToolParser or required_arguments_missing'` -> `20 passed`;
+  `uv run pytest -q tests/test_server.py -k ...empty_xml...output_index...` ->
+  `5 passed`; `uv run pytest -q tests/test_engine_audit.py -k ...` ->
+  `3 passed`.
+- No release/sign/notarize/PyPI/site/updater action was run. No subagents were
+  used. N2 JANG_1L was not touched.

@@ -13956,3 +13956,35 @@ Other-agent action:
 - verification passed: objective/checklist/release/current-suite tests
   (`551 passed`), focused N2 split selection (`95 passed, 130 deselected`),
   py_compile, and `git diff --check`.
+
+## CODEX
+- now: continuing after pushed commit `90e824708`.
+- scope lock remains: active vMLX Python/Electron worktree only; no deprecated
+  `/Users/eric/vmlx`; no subagents or recursive LLM delegation; no N2 JANG_1L;
+  no release/sign/notarize/PyPI/site/updater action unless Eric explicitly
+  unlocks it in the current turn.
+- current status entering this block: N2 JANGTQ2 has an independent `PASS`
+  objective row; combined N2 JANG_1L/JANGTQ remains open; Qwen35 local direct/
+  gateway are green and public tunnel remains deploy/recapture drift; Gemma
+  QAT/JANG/MXFP rows are green in current objective/checklist evidence.
+- next work policy: inspect remaining red rows for the nearest source-fixable
+  runtime/API/UI/cache issue. Do not change status labels to hide live/model
+  gaps. Prefer a direct source fix or a narrow evidence refresh only if stale
+  evidence is the actual root cause.
+
+## CODEX
+- now: 2026-06-11 13:09 PDT source fix block completed after inspecting the
+  remaining red rows.
+- source fix: `QwenToolParser` now natively handles the Qwen/Qwen-coder XML
+  function dialect
+  `<tool_call><function=name><parameter=arg>...</parameter></function></tool_call>`
+  with required-argument validation. Empty required arguments still fail closed;
+  valid XML parameter arguments are preserved. This narrows the reported
+  Qwen3.6/Qwen-coder-next `arguments: {}` failure surface without synthesizing
+  args or disabling reasoning/tools.
+- verification passed: required-arg parser matrix `20 passed`; Responses/Chat
+  streaming and nonstream empty XML/output-index selection `5 passed`; server
+  parser-boundary audit selection `3 passed`.
+- unchanged boundaries: no release/sign/notarize/PyPI/site/updater action was
+  run, no subagents were used, N2 JANG_1L was not touched, and public Qwen35
+  tunnel parity remains a deploy/recapture row rather than a local parser row.
