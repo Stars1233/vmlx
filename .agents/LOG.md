@@ -18432,3 +18432,21 @@ Next action:
 - Updated proof pointers in `run_issue179_minimax_k_root_cause_audit.py`, `run_full_release_objective_checklist.py`, `run_current_regression_suite.py`, `release_regression_manifest.py`, `run_issue175_179_release_boundary_audit.py`, and `run_public_app_issue_audit.py`, with tests adjusted to the new current artifacts.
 - Verification passed: `tests/test_public_app_issue_audit.py::test_public_app_issue_audit_uses_current_manifest_artifact`; combined focused pytest `27 passed, 433 deselected`; `git diff --check`.
 - Boundaries: no runtime parser rewrite, no synthetic cancel/tool/reasoning repair, no release/sign/notarize/PyPI/updater/site action, no N2 JANG_1L, no MiMo active debugging. Release is still not ready; next issue179 work is reporter artifact/hash/session/cancel-lifecycle parity.
+
+# 2026-06-11 11:00 PDT - selected Step3.7 stale checklist/live-proof blocker
+
+- Current checklist `build/current-full-release-objective-checklist-after-issue179-fullk-local-proof-20260611.json` remains `status=open`, `failed_count=45`.
+- Failed rows show N2 JANGTQ2 and Gemma are not the next local reds: N2 broad row is still JANG_1L dominated and off-limits, Gemma 12B/JANG4M and QAT/native MXFP4 groups are green, and Qwen35 is public tunnel stale/divergent.
+- Selected Step3.7 because current local source/bundled parser-fix artifacts exist from 2026-06-11, while the checklist still points at an older missing June 6 text-only result and VLM audit rows.
+- Next action: inspect current Step37 artifacts and source pointers, then either consume valid proof or rerun one direct Step37 proof. No release action, no N2 JANG_1L, no fake parser repair, and no VLM/media claim from text-only evidence.
+
+# 2026-06-11 11:00 PDT - Step3.7 bundled VLM proof consumed
+
+- Consumed existing bundled Step37 proof `build/current-all-local-model-smoke-step37-jangk-tool-newline-bundled-after-parser-fix-20260611/summary.json` and result `build/current-all-local-model-smoke-step37-jangk-tool-newline-bundled-after-parser-fix-20260611/JANGQ_Step-3.7-Flash-JANG_K/result.json`.
+- Regenerated VLM audit: `build/current-step37-vlm-runtime-audit-after-bundled-vlm-proof-20260611.json`, `status=pass`, `release_clearance=audit_does_not_block_release`, `live_media_proof.pass=true`.
+- Step37 proof surfaces now consumed: bundled Python, `--is-mllm`, parser `step3p5`, reasoning parser `qwen3`, required tool call with exact `blue-cat`, tool-result continuation, exact structured JSON and code whitespace, reasoning-on visible separation, image/video media rows, post-media text recovery, `paged+mixed_swa` cache hit, `step3p7_full_sliding_kv` native mixed-SWA cache, and block-disk L2 writes.
+- Source/checklist change: Step37 no longer uses the stale text-only JANG_2L result path; full checklist validates the current VLM-capable JANG_K bundled proof with `expected_mllm=true`, `cache_detail=paged+mixed_swa`, and Step37-specific native unquantized mixed-SWA KV storage (`storage_quantization.enabled=false`) instead of Gemma q4 storage quantization.
+- Regenerated aligned artifacts: `build/current-objective-proof-after-step37-bundled-vlm-proof-20260611.json`, `build/current-release-regression-manifest-after-step37-bundled-vlm-proof-20260611.json`, and `build/current-full-release-objective-checklist-after-step37-bundled-vlm-proof-20260611.json`.
+- Result: full checklist remains `status=open` but failed rows dropped to `failed_count=32`; all Step37 failed rows are gone.
+- Verification passed: `tests/test_step37_vlm_runtime_audit.py` (7 passed), focused full checklist (2 passed), current suite (4 passed), release manifest (16 passed), objective digest (1 passed), release-gate objective digest test (1 passed), stale-reference sweep, and `git diff --check`.
+- Boundaries: no release/sign/notarize/PyPI/updater/site action, no N2 JANG_1L, no synthetic tool/parser repair, no claim that overall release is ready. Remaining local red rows are mainly Nemotron Omni plus MiMo, while Qwen35 is public tunnel stale and N2 broad is JANG_1L dominated.
