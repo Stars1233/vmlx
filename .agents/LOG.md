@@ -14710,3 +14710,64 @@ Next action:
   or public release action was run. MiMo JANGTQ_2 exactness/media, Gemma
   media/UI rows, Qwen tunnel/deployed parity, and N2 JANGTQ/non-JANG_1L rows
   remain open.
+
+# 2026-06-11 MiMo JANGTQ_2 installed-app media proof selected
+- Current blocker being reduced: MiMo V2.5 JANGTQ_2 installed-app media/UI
+  proof after the local app rebuild. Prior current-source proof showed MiMo
+  JANGTQ_2 can route media and bind preserved media tensors, but installed-app
+  parity was stale/open then.
+- Planned proof: use the rebuilt `/Applications/vMLX.app`, installed bundled
+  Python, real `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2`,
+  `--is-mllm`, `/v1/responses`, and a focused image attachment row. Treat
+  transport/routing separately from semantic visual quality; do not claim
+  video/audio or exactness unless live evidence proves them.
+- Boundary: no parser repair, no sampling clamp, no release/sign/notarize/
+  PyPI/updater/site action, no N2 JANG_1L.
+
+# 2026-06-11 MiMo JANGTQ_2 media overlay root cause and scoped source fix
+- No-overlay installed-app image proof failed honestly: the app persisted an
+  image attachment, but panel detection kept
+  `modelForceTextOnly=true` / `chatIsMultimodal=false` because the bundle
+  metadata says `weights_preserved_text_runtime` with unwired vision/audio.
+  The server then loaded text-only even with `--is-mllm`; the image response
+  was not a real media route and must not be claimed as VL proof.
+- Overlay diagnostic with
+  `VMLINUX_MIMO_V2_ENABLE_TEXT_RUNTIME_MEDIA_OVERLAY=1` reached a real source
+  bug before health: `vmlx_engine/utils/jang_loader.py` used `os.environ` in
+  `_enable_mimo_v2_media_runtime_overlay` without importing `os`.
+- Source fix now in progress: add the missing Python import, and add a panel
+  detector overlay that honors the same explicit env flag only when local MiMo
+  metadata plus indexed media weights and processor/token files prove the
+  preserved media assets exist. Default preserved-text-runtime MiMo remains
+  text-only.
+- Focused verification already passed before rebuild: `.venv/bin/python -m
+  py_compile vmlx_engine/utils/jang_loader.py`; `npm --prefix panel test --
+  model-config-registry` (`71 passed`); `git diff --check`.
+- Next action: rebuild/reinstall `/Applications/vMLX.app` from this source,
+  then rerun the installed-app MiMo JANGTQ_2 overlay media proof. Do not claim
+  release signing/notarization, video, audio, or semantic image quality unless
+  the live proof demonstrates it.
+
+# 2026-06-11 MiMo JANGTQ_2 installed-app overlay proof classified
+- Rebuilt/reinstalled `/Applications/vMLX.app` with
+  `panel/scripts/build-and-install.sh`; local app seal verifies with
+  `codesign --verify --deep --strict`, but this was not Developer ID signing or
+  notarization.
+- Installed parity artifact
+  `build/current-installed-app-runtime-parity-audit-after-mimo-overlay-rebuild-20260611.json`
+  is `status=pass` with no stale/missing files.
+- Real UI overlay route artifact
+  `docs/internal/agent-notes/current-real-ui-installed-app-mimo-v25-jangtq2-image-overlay-red32-after-rebuild-20260611-proof.json`
+  is `status=fail` only on image semantics. It proves the route is real:
+  `modelForceTextOnly=false`, `chatIsMultimodal=true`, `image_url` request
+  body, server `engine_is_mllm=true`, MiMo preserved media weights bound
+  `visual=364 audio_encoder=75 speech_embeddings=20`, `num_images_processed=1`,
+  and `vision_encoding_time≈0.048s`.
+- Red/open: both red PNG fixtures returned visible `Blue.`. Keep MiMo JANGTQ_2
+  image semantics red; do not mark `vl_image`, video, or audio green from this.
+- Cache/runtime proof: native MiMo mixed-SWA cache stayed active, generic
+  TurboQuant KV stayed disabled, paged text cache hit saved `25` tokens, RAM
+  cached `61` tokens, and block-L2 stored `61` tokens. Media prompt cache store
+  was skipped by design because media embeddings are path-dependent.
+- Boundary: no release DMG, sign, notarize, tag, upload, PyPI, updater JSON,
+  website, or N2 JANG_1L action.

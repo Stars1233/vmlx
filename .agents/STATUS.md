@@ -8892,3 +8892,44 @@ Other-agent action:
   local bundled-runtime parity pass, not a committed app rebuild, installed-app
   replacement, DMG package, signing, notarization, PyPI upload, updater, or
   website release.
+
+# 2026-06-11 05:35 PDT MiMo JANGTQ_2 installed-app media overlay classified
+
+- Source fix:
+  `vmlx_engine/utils/jang_loader.py` now imports `os` for the existing
+  `VMLINUX_MIMO_V2_ENABLE_TEXT_RUNTIME_MEDIA_OVERLAY` path. The panel detector
+  now honors that same explicit env flag only when a local MiMo V2 bundle has
+  real indexed `visual.*` / audio tensors plus processor/token sidecars. The
+  default `weights_preserved_text_runtime` policy remains text-only.
+- Installed-app parity:
+  reran `panel/scripts/build-and-install.sh`; `/Applications/vMLX.app` was
+  rebuilt/reinstalled from current source and `codesign --verify --deep
+  --strict` passed for the local app seal. This was not Developer ID signing
+  or notarization.
+- Parity proof:
+  `build/current-installed-app-runtime-parity-audit-after-mimo-overlay-rebuild-20260611.json`
+  is `status=pass`, `missing_or_stale=[]`,
+  `installed_bundled_engine_hash_parity=true`, and
+  `installed_packaged_engine_source_hash_parity=true`.
+- Overlay route proof:
+  `docs/internal/agent-notes/current-real-ui-installed-app-mimo-v25-jangtq2-image-overlay-red32-after-rebuild-20260611-proof.json`
+  is `status=fail` only because image semantics failed. It still proves real
+  installed UI media transport: `modelForceTextOnly=false`,
+  `chatIsMultimodal=true`, request body carried `image_url`, server
+  `engine_is_mllm=true`, preserved media weights bound
+  `visual=364 audio_encoder=75 speech_embeddings=20`, `num_images_processed=1`,
+  `vision_encoding_time≈0.048s`, and media prefix-cache storage was skipped.
+- Red classification:
+  a solid red PNG returned visible answer `Blue.` for both the default 1x1 red
+  fixture and a generated 32x32 red fixture. MiMo JANGTQ_2 image semantics
+  remain release-red; do not mark `vl_image` green, do not weaken the regex,
+  and do not claim video/audio semantics from this proof.
+- Cache/speed evidence:
+  installed-app JANGTQ_2 text turns reached about `45.5 t/s` live after load,
+  with paged cache hit `25` tokens, `ram_tokens_cached=61`,
+  `l2_block_tokens_on_disk=61`, and block disk writes. The media turn had
+  `prompt_tokens=108`, `vision_encoding_time≈0.048s`, and intentionally did
+  not store media prompt cache.
+- Boundary:
+  no release DMG, Developer ID sign, notarization, tag, upload, PyPI, updater
+  JSON, website, or N2 JANG_1L action was performed in this movement.

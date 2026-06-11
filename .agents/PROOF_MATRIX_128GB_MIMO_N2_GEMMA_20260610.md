@@ -2953,3 +2953,40 @@ Next implementation target:
   thinking-on interleaved reasoning/tool rows, installed-app parity for this
   exact source commit, broader speed/long-output rows, and signed/notarized
   release publication.
+
+## MiMo JANGTQ_2 Installed-App Media Overlay - 2026-06-11
+
+- Green source/app rows:
+  the explicit MiMo V2 media overlay no longer crashes on load. Source fixed
+  the missing `os` import in `vmlx_engine/utils/jang_loader.py`, and the panel
+  now clears `forceTextOnly` only under
+  `VMLINUX_MIMO_V2_ENABLE_TEXT_RUNTIME_MEDIA_OVERLAY=1` when local indexed
+  media weights and processor/token sidecars are present.
+- Installed-app parity:
+  `/Applications/vMLX.app` was rebuilt/reinstalled with
+  `panel/scripts/build-and-install.sh`; local ad-hoc signature verification
+  passed. Runtime parity artifact
+  `build/current-installed-app-runtime-parity-audit-after-mimo-overlay-rebuild-20260611.json`
+  is `status=pass` with no stale/missing files.
+- Real UI route proof:
+  `docs/internal/agent-notes/current-real-ui-installed-app-mimo-v25-jangtq2-image-overlay-red32-after-rebuild-20260611-proof.json`
+  shows real installed app UI + Responses media transport for
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2`: panel
+  `modelForceTextOnly=false`, `chatIsMultimodal=true`, request body contains
+  `image_url`, server `engine_is_mllm=true`, media weights bound
+  `visual=364 audio_encoder=75 speech_embeddings=20`,
+  `num_images_processed=1`, and `vision_encoding_time≈0.048s`.
+- Cache proof:
+  native `mimo_v2_asymmetric_swa` / `mixed_swa_kv_v1` cache remains active,
+  generic TurboQuant KV remains disabled for MiMo, text turn paged cache hit
+  saved `25` tokens, RAM cached `61` tokens, and block-L2 held `61` tokens.
+  Media prompt cache storage was skipped by design because media embeddings
+  are path-dependent.
+- Red/open:
+  image semantics are still wrong. Both the default 1x1 red PNG and a generated
+  32x32 solid red PNG returned visible answer `Blue.`. Do not claim `vl_image`
+  semantic pass, video pass, or audio pass from this overlay route proof. Treat
+  MiMo JANGTQ_2 media semantics as an artifact/runtime visual-quality blocker.
+- Release boundary:
+  no DMG, Developer ID signing, notarization, tag, upload, PyPI, updater JSON,
+  website, or N2 JANG_1L work was performed for this row.
