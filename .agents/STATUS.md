@@ -7046,3 +7046,36 @@ Other-agent action:
   - this does not prove Gemma reasoning content will be generated in every
     tool-first prompt, only that the proof lane no longer suppresses or omits
     the parser needed to observe it.
+
+# 2026-06-11 Gemma installed-app proof rerun with parser detection
+
+- Action:
+  - launching the same Gemma4 26B QAT MXFP4 installed-app Responses/tools/cache
+    proof with the corrected `live-real-ui-model-proof.mjs` external-server
+    parser detection;
+  - using `/Applications/vMLX.app` and bundled Python;
+  - no release/sign/notarize/PyPI/updater/site action.
+- Expected proof focus:
+  - server command should now include `--reasoning-parser gemma4`;
+  - no hidden `--default-enable-thinking false`;
+  - verify whether `reasoning_display` is now recorded or whether the model
+    simply produces tool-first output without a reasoning rail for this prompt.
+- Result:
+  - artifact:
+    `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-26b-vl-mxfp4-responses-tools-cachecontrols-bundled-python-parser-detected-20260611-proof.json`;
+  - status: `fail`;
+  - server command now included `--tool-call-parser gemma4` and
+    `--reasoning-parser gemma4`;
+  - server command no longer included `--default-enable-thinking false`;
+  - request sampling resolved `enable_thinking: True`;
+  - still `eventCounts.reasoningDone=0`,
+    `persistedReasoningCount=0`, and empty stream `reasoningContent`.
+- Classification:
+  - parser-launch omission is fixed and live-proven in the failed rerun;
+  - remaining `reasoning_display` blocker is not the previous hidden
+    thinking-off/no-parser proof-script bug;
+  - for this tool-first prompt, Gemma4 produced no observable reasoning rail
+    even with the Gemma4 reasoning parser active.
+- Not proven:
+  - Gemma4 installed-app `reasoning_display` remains red;
+  - do not register this artifact as a pass.

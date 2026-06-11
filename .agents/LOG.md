@@ -13843,3 +13843,9 @@ Next action:
 
 # 2026-06-11 Gemma installed-app proof parser launch fix
 - Root-caused the failed Gemma4 26B installed-app reasoning display artifact to `panel/scripts/live-real-ui-model-proof.mjs`: the script starts an external Python server and connected the installed UI as remote, but hardcoded `--default-enable-thinking false` and only passed `--tool-call-parser auto`, so the server had no Gemma reasoning parser even when the UI request set `enable_thinking=true`. Fixed the script to remove hidden server-level thinking-off, accept explicit parser env overrides, and detect Gemma4/MiMo/Qwen/MiniMax/DeepSeek parser families from `config.json` for the external server. Verification: `node --check` passed and the focused release-regression script contract passed. The old Gemma artifact is still failed until rerun.
+
+# 2026-06-11 Gemma installed-app proof rerun launch
+- Launching corrected Gemma4 26B QAT MXFP4 installed-app proof with `/Applications/vMLX.app`, bundled Python, Responses API, built-in tools, enableThinking=true, cache controls, and parser-detected external server. This is a live proof rerun, not a release/sign/notarize/PyPI action.
+
+# 2026-06-11 Gemma installed-app parser-detected rerun failed reasoning surface
+- Rerun artifact `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-26b-vl-mxfp4-responses-tools-cachecontrols-bundled-python-parser-detected-20260611-proof.json` is still fail on `reasoning_display`. Important classification: server command now includes `--tool-call-parser gemma4` and `--reasoning-parser gemma4`, no `--default-enable-thinking false`, and requests resolved `enable_thinking=True`; nevertheless `reasoningDone=0` and persisted reasoning count stayed 0. The proof-script parser omission is fixed, but Gemma installed-app reasoning display remains red for this tool-first prompt. Do not register this artifact as pass.
