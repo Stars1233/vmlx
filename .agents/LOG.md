@@ -19018,3 +19018,20 @@ Next action:
   passed after refresh; full release remains open with `failed_count=16`.
 - No release/sign/notarize/PyPI/site/updater action was run. No subagents were
   used. N2 JANG_1L was not touched.
+
+## 2026-06-11 CODEX - Runtime Fix Continuation
+
+- Continuing after pushed commit `c13f415e9`.
+- Constraints retained: active Python/Electron worktree only, no deprecated
+  `/Users/eric/vmlx`, no subagents, no N2 JANG_1L, and no release/sign/
+  notarize/PyPI/site/updater actions in this block.
+- Current direction: inspect the remaining runtime/source surface for a
+  source-fixable issue rather than proof-only churn. Priority is MiMo decode/
+  exactness if evidence shows runtime rather than artifact, otherwise Qwen/N2/
+  Gemma parser/cache behavior not already covered green.
+
+## 2026-06-11 CODEX - MiMo processor media token parity
+- Fixed a source mismatch where MiMo overlay eligibility accepted processor_config image/video token IDs but runtime modality reporting only looked at top-level image/video token IDs.
+- Added regression coverage for processor_config-only image/video token metadata.
+- Verification: MiMo media/audio/rotating-cache focused suite passed (14 tests); MiMo/JANGTQ loader selection passed (17 tests).
+- Boundary: MiMo exactness/speed remains artifact/runtime-quality open; no fake parser/cache/generation clear.

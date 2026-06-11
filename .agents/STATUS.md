@@ -14025,3 +14025,21 @@ Other-agent action:
   `failed_count=16`; open rows are N2 JANG_1L/off-limits, MiMo
   artifact/remake/exactness/media, Qwen35 public tunnel recapture, MiniMax
   reporter parity/hash drift, and DSV4 memory-gated long-output.
+
+## CODEX
+- now: 2026-06-11 13:18 PDT continuing after pushed commit `c13f415e9`.
+- scope lock remains: active vMLX Python/Electron worktree only; no deprecated
+  `/Users/eric/vmlx`; no subagents or recursive LLM delegation; no N2 JANG_1L;
+  no release/sign/notarize/PyPI/site/updater actions in this block.
+- current objective focus: find and patch the next real source/runtime/API/cache
+  issue for Gemma JANG/MXFP/QAT, N2 JANGTQ2/non-JANG_1L, Qwen/Qwen-coder
+  Responses tools/reasoning/cache, or MiMo only where source evidence proves a
+  runtime bug instead of the known artifact/remake boundary.
+- next action: inspect current source and proof artifacts for the nearest
+  fixable runtime path, with priority on MiMo decode/exactness evidence and
+  Qwen/N2/Gemma parser/cache behavior that is not already green.
+
+## 2026-06-11 13:32 PDT - MiMo media token metadata fix
+- Patched vmlx_engine/server.py so MiMo V2 runtime modality detection accepts image/video token IDs from processor_config, matching the existing audio-token and overlay eligibility behavior.
+- This is an honest capability detection fix only: it does not claim MiMo artifact exactness/speed/media E2E is release-cleared.
+- Focused proof passed: tests/test_mimo_v2_media_capability_gate.py, tests/test_mimo_v2_audio_template.py, tests/test_mimo_v2_rotating_cache_patch.py, and tests/test_jang_loader.py -k "mimo or jangtq".
