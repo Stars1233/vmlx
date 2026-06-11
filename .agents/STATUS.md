@@ -9790,6 +9790,106 @@ Other-agent action:
   `.venv/bin/python -m pytest -q tests/test_mimo_v2_media_capability_gate.py`
   passed 9 tests.
 
+# 2026-06-11 00:37 PDT continuation after compaction
+
+- Current instruction:
+  continue systematically: trace, reproduce, understand, fix, and prove one
+  runtime/API/model/cache/UI blocker at a time. Do not drift into release,
+  notarization, PyPI, updater, website, or broad harness work unless Eric
+  explicitly unlocks that current-turn action.
+- Active boundaries:
+  stay in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; do not work from the
+  deprecated `/Users/eric/vmlx`; do not spawn subagents; keep N2 JANG_1L
+  off-limits; do not fake fixes by synthesizing tool args, parser-repairing
+  wrong literals, hiding reasoning, or claiming media/cache capability from
+  metadata alone.
+- Current repo state:
+  branch `codex/pr-intake-manifest` is aligned with origin except for the known
+  pre-existing dirty proof JSON
+  `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`.
+- Current next movement:
+  refresh the latest active directives/checklist, then choose the highest-impact
+  open user-priority row that can be moved with direct source/live evidence.
+  MiMo JANG/JANGTQ and Responses/Qwen live raw SSE remain the likely candidates;
+  any code change must be rooted in a reproduced source/runtime failure.
+
+# 2026-06-11 00:40 PDT selected MiMo runtime blocker
+
+- Checklist refresh:
+  `build/current-full-release-objective-checklist-after-qwen35-auto-tool-cache-proof-20260611.json`
+  is still open with `failed_count=49` and `release_ready=false`.
+- Selected blocker:
+  MiMo V2.5 JANG/JANGTQ exactness, speed/tool quality, media truth, and native
+  mixed-SWA/L2 cache behavior. This is an allowed active lane and directly
+  matches Eric's current focus on MiMo model usability for 128GB users.
+- Current evidence boundary:
+  JANGTQ2 live tool/SSE shape is structurally valid but wrong literals remain;
+  JANG_2L preserves JSON literals but required tools fail closed and speed is
+  weak; MiMo media remains text-only/preserved-unwired; source-vs-quant is
+  blocked until source endpoint/path is available.
+- Next action:
+  inspect MiMo runtime/loader/cache/quant code and existing proof logs for a
+  real root cause before making any fix or relaunching heavy models.
+
+# 2026-06-11 00:56 PDT MiMo JANGTQ2 runtime hypotheses narrowed
+
+- Inspected:
+  MiMo JANGTQ2 `config.json`, `jang_config.json`, `generation_config.json`,
+  chat template, packed TQ tensor shapes, `jangtq_runtime.safetensors`, vMLX
+  MiMo VLM shim, JANG loader patterns, and TurboQuant kernels.
+- Ruled out:
+  sidecar codebook/sign mismatch. The sidecar tensors exactly match
+  `jang_tools.turboquant` generated codebooks/signs for `2048/4096` with seed
+  `42`.
+- Ruled out:
+  obvious packed-dimension mismatch. Gate/up TQ modules have
+  `(256, 2048, 256)` at 2-bit -> logical input 4096, and down has
+  `(256, 4096, 128)` -> logical input 2048, matching MiMo dimensions.
+- Ruled out:
+  obvious fused TQ fast-path math corruption. A direct micro-check comparing
+  stock `TurboQuantSwitchLinear` composition with the fused MiMo TQ path matched
+  within float tolerance (`max_abs ~= 0.0025`) on deterministic synthetic TQ
+  tensors.
+- Current classification:
+  JANGTQ2 literal mutation still points to artifact/quant quality or deeper
+  source-vs-quant/logit evidence, not parser/cache/sidecar/fast-path mismatch.
+- New concrete investigation:
+  MiMo metadata and UI/API parser defaults. Both bundles advertise
+  `reasoning.parser=think_xml` and default reasoning, but observed UI launch
+  had no `--reasoning-parser`. Investigate panel/CLI/server parser selection
+  before changing generation behavior.
+
+# 2026-06-11 01:08 PDT MiMo parser/thinking UI fix
+
+- Root cause:
+  panel chat paths were treating `supportsThinking=false` as if the model had
+  no reasoning parser. That is wrong for MiMo: user-enabled thinking remains
+  unsupported, but `think_xml` parser/cleanup is still the correct family
+  parser and must survive auto detection for UI/API request shape and display
+  handling.
+- Code change:
+  `panel/src/main/ipc/chat.ts`,
+  `panel/src/renderer/src/components/sessions/SessionView.tsx`,
+  `panel/src/renderer/src/components/layout/ChatModeToolbar.tsx`, and
+  `panel/src/renderer/src/components/chat/ChatSettings.tsx` now suppress
+  reasoning parser only when no parser is detected. The existing
+  `thinkingSupported` / `effectiveEnableThinkingOverride` logic still keeps
+  thinking disabled for families that report `supportsThinking=false`.
+- Guard:
+  this is not a fake enable-thinking fix and does not alter generation
+  defaults. It keeps parser selection truthful while preserving MiMo
+  `supportsThinking=false`.
+- Verification:
+  panel targeted tests passed:
+  `chat-settings-compatibility` 13 tests,
+  `model-config-registry` 72 tests,
+  `reasoning-display` 103 tests, and
+  `request-builder` plus `audit-fixes` 214 tests.
+- Remaining open:
+  MiMo JANGTQ2 literal exactness, JANG_2L speed/required-tool quality, and
+  real media runtime E2E remain open. This fix only closes the parser/thinking
+  conflation found while investigating the MiMo UI launch evidence.
+
 # 2026-06-11 01:32 PDT Responses empty-args/output-index source proof
 
 - Checked:

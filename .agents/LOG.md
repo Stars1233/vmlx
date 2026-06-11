@@ -15667,6 +15667,51 @@ Next action:
   semantics, JANG_2L speed, JANGTQ2 exactness, package/sign/notarize, or any
   release row by itself.
 
+# 2026-06-11 00:37 PDT continuation after compaction
+
+- Re-read active worktree guard, latest STATUS/LOG tail, and current git state.
+- Continuing directly in `/Users/eric/mlx/vllm-mlx-finite-launch-guard` with no
+  subagents and no release/sign/notarize/PyPI/download/site actions.
+- Next action is checklist refresh and one concrete blocker selection. Current
+  known dirty file is unrelated proof JSON only; do not stage or revert it.
+
+# 2026-06-11 00:40 PDT selected MiMo runtime blocker
+
+- Refreshed active directives and release checklist.
+- Selected MiMo V2.5 exactness/speed/tool/media/cache lane over Qwen raw SSE for
+  this movement because it is the highest current allowed user-priority red row.
+- No code edits or model launch yet. Next step is root-cause inspection of
+  MiMo runtime/loader/cache/quant paths and prior live artifacts.
+
+# 2026-06-11 00:56 PDT MiMo JANGTQ2 runtime hypotheses narrowed
+
+- Checked JANGTQ2 sidecar keys from
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2/jangtq_runtime.safetensors`:
+  codebooks/signs match generated Python tables exactly.
+- Checked sample packed shapes for layer 1 and 47: gate/up/down dimensions and
+  2-bit logical widths match MiMo expected hidden/intermediate sizes.
+- Ran a direct stock-vs-fused TQ micro-check with `TurboQuantSwitchLinear`,
+  `make_fused_gate_up_swiglu_decode`, `make_gather_tq_decode_per_row`, and
+  `hadamard_rotate_metal`; max abs delta was about `0.0025`, so no obvious
+  fused fast-path corruption.
+- No source fix yet. Next investigation is MiMo reasoning/tool parser default
+  selection in CLI/panel/server because UI launch evidence lacked
+  `--reasoning-parser` despite model metadata declaring `think_xml`.
+
+# 2026-06-11 01:08 PDT patched MiMo parser/thinking conflation
+
+- Found a source bug in panel request/display plumbing: local detection dropped
+  the reasoning parser whenever `supportsThinking=false`.
+- Patched main IPC and renderer session/settings/toolbar paths so detected
+  `think_xml` remains active for MiMo parser cleanup/request shape while the
+  thinking toggle remains disabled through existing `thinkingSupported` and
+  `effectiveEnableThinkingOverride` guards.
+- Verified with targeted panel suites:
+  `chat-settings-compatibility`, `model-config-registry`,
+  `reasoning-display`, `request-builder`, and `audit-fixes`.
+- No release/signing/PyPI/updater action taken. MiMo exactness/media/speed
+  blockers remain open.
+
 # 2026-06-11 01:32 PDT Responses empty-args/output-index source proof
 
 - Source check:
