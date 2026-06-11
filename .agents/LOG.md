@@ -163,6 +163,32 @@
   rows. Remaining rows are prepackage/release readiness, N2 JANG_1L release
   clearance (off-limits in this lane), MiMo exactness/media/speed, MiniMax
   issue179 reporter parity/root cause, and DSV4 memory/exactness.
+- Verification passed: `tests/test_full_release_objective_checklist.py`
+  (`19 passed`), `py_compile` for
+  `tests/cross_matrix/run_full_release_objective_checklist.py` and
+  `tests/test_full_release_objective_checklist.py`, and `git diff --check`.
+- Commit/push: `21722eabd Consume Nemotron and Qwen35 release proof` was pushed
+  to `origin/codex/pr-intake-manifest` and `origin/main`.
+
+# 2026-06-11 continuation - MiniMax issue179 classified
+
+- Inspected
+  `build/current-issue179-minimax-k-root-cause-audit-after-fullk-local-cancel-proof-20260611.json`.
+- Current local/source proven state: current-source Responses cancel contract,
+  inactive 404 contract, latest public/local cancel route presence, local
+  installed cancel live probe, local installed issue179 session settings
+  parity, clean local UI diagnostics, clean local reporter prompt
+  reproduction, and MiniMax Small current source smoke.
+- Remaining not-proven items are reporter-side parity: reporter model
+  shard/codebook hashes, reporter model manifest, reporter installed
+  app/server hash parity, reporter response active-state at cancel time,
+  reporter chat/session/settings DB parity, and whether the cancel 404 caused
+  the screenshot rather than followed stream abort.
+- Classification: keep MiniMax #179 open unless reporter parity artifacts are
+  collected. Do not close this by source pointer edits or by claiming local
+  clean probes explain the reporter screenshot.
+- Added `.agents/CODEX_RELEASE_HANDOFF_20260611.md` with current commit,
+  hard boundaries, proven rows, still-open rows, and other-agent next work.
 - Boundary: no release/sign/notarize/PyPI/updater/site, no N2 JANG_1L, no
   audio claim, no all-Gemma-size claim, and no installed-app claim from this
   source proof.

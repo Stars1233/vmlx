@@ -204,6 +204,36 @@
   parity/root cause, and DSV4 memory/exactness.
 
 ## CODEX
+- now: committed and pushed the Nemotron/Qwen35 proof consumption.
+- commit: `21722eabd Consume Nemotron and Qwen35 release proof`, pushed to
+  `origin/codex/pr-intake-manifest` and `origin/main`.
+- verification: `tests/test_full_release_objective_checklist.py` passed
+  `19/19`; `py_compile` passed for the edited checker/test file;
+  `git diff --check` passed. The regenerated checklist remains
+  `status=open`, `failed_count=13`.
+- next candidate blocker: remaining non-release rows are MiMo
+  exactness/media/speed, MiniMax issue179 reporter/root-cause parity, and DSV4
+  memory/exactness; N2 JANG_1L remains off-limits here.
+
+## CODEX
+- now: inspected MiniMax issue179 remaining rows and wrote
+  `.agents/CODEX_RELEASE_HANDOFF_20260611.md`.
+- classification: not a source-side stale-pointer fix. Current source and
+  local installed proofs are clean, but #179 remains honestly open because
+  reporter parity metadata/artifacts are missing and reporter installed server
+  hash differs from latest public/local server hash.
+- proven locally by
+  `build/current-issue179-minimax-k-root-cause-audit-after-fullk-local-cancel-proof-20260611.json`:
+  current-source cancel contract, inactive 404 contract, latest public/local
+  cancel route presence, local installed cancel live probe, local installed
+  session settings parity, clean local UI diagnostics, clean local reporter
+  prompt reproduction, and MiniMax Small source smoke.
+- not proven: reporter model shard/codebook hashes, reporter model manifest,
+  reporter installed app bundle/server hash parity, reporter response-active
+  state at cancel time, reporter chat/session/settings DB parity, and whether
+  cancel 404 caused the screenshot rather than followed a stream abort.
+
+## CODEX
 - now: Gemma4 required-tool source/proof checkpoint is committed and pushed.
 - commit: `2200598e9 Improve Gemma4 required tool streaming`, pushed to
   `origin/codex/pr-intake-manifest` and `origin/main`.
