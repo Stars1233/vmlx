@@ -13840,3 +13840,48 @@ Other-agent action:
   `tests/cross_matrix/run_responses_raw_sse_parity_contract.py`, and
   `tests/cross_matrix/run_full_release_objective_checklist.py` passed; `git
   diff --check` passed.
+
+## CODEX
+- now: continuing the active goal after commit `1594749dc`.
+- current-turn scope: active vMLX Python/Electron worktree only; no deprecated
+  `/Users/eric/vmlx`, no subagents, no N2 JANG_1L, and no release/sign/
+  notarize/PyPI/site/updater actions.
+- current checklist state from the last verified artifact: Gemma groups and N2
+  JANGTQ2/non-JANG_1L rows are green; Qwen35 direct/gateway source is green and
+  public tunnel remains a recapture/deploy surface; MiMo is left for remade
+  artifacts unless Eric reopens it here.
+- selected next source-fixable blocker: issue179/MiniMax root-cause and
+  reporter parity rows, because they remain red on the release checklist and
+  touch parser/reasoning/cache/session isolation. Inspect evidence first and
+  patch only a confirmed source/runtime bug.
+
+## CODEX
+- completed: fixed stale issue179/MiniMax local-manifest and root-cause audit
+  pointers so current release/checklist evidence no longer depends on the
+  missing 2025 local manifest placeholder.
+- source changes: issue179 root-cause audit, reporter parity metadata, model
+  manifest default, issue175-179 boundary audit, public app issue audit,
+  current regression suite, release manifest, full release checklist test
+  fixtures, objective digest, and the no-heavy API/cache + cache-architecture
+  contract defaults were aligned to current artifact names.
+- current issue179 artifact:
+  `build/current-issue179-minimax-k-root-cause-audit-after-manifest-pointer-refresh-20260611.json`
+  remains `status=open`, but `local_model_manifest.exists=true`,
+  `local_model_manifest.status=pass`, and SHA256 is
+  `47496fe98db76dc467ab2ac79c74683807c8738899f2a83ffefaf3cab445a751`.
+- not proven / still open for issue179: reporter model shard/codebook parity,
+  reporter model artifact manifest, reporter installed server hash parity,
+  cancel response-id liveness, reporter chat/session/settings DB parity, and
+  whether the reporter 404 cancel caused the screenshot versus followed stream
+  abort.
+- regenerated objective/checklist artifacts:
+  `build/current-objective-proof-after-step37-bundled-vlm-proof-20260611.json`
+  and
+  `build/current-full-release-objective-checklist-after-issue179-manifest-pointer-refresh-20260611.json`.
+  Checklist remains `status=open`, `failed_count=16`; no release/sign/notarize
+  or packaging action was run.
+- verification passed:
+  `.venv/bin/python -m pytest -q tests/test_issue179_minimax_k_root_cause_audit.py tests/test_issue179_reporter_parity_metadata.py tests/test_full_release_objective_checklist.py tests/test_current_regression_suite.py tests/test_objective_proof_digest.py tests/test_cache_architecture_contract.py`
+  -> `257 passed`; selected release-manifest/objective/pointer subset -> `89
+  passed`; py_compile for touched audit/contract scripts passed; stale pointer
+  `rg` scan clean; `git diff --check` passed.

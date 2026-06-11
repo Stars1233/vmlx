@@ -18815,3 +18815,50 @@ Next action:
   `.venv/bin/python -m pytest -q tests/test_responses_raw_sse_parity_contract.py tests/test_qwen35_responses_raw_sse_capture.py tests/test_tool_parser_required_args_fail_closed.py tests/test_full_release_objective_checklist.py`
   -> `65 passed`; py_compile for the inspected Responses/checklist Python
   files passed; `git diff --check` passed.
+
+## 2026-06-11 CODEX - Issue179 Source-Fixable Blocker Selected
+
+- Continuing from pushed commit `1594749dc`.
+- Active constraints remain: active Python/Electron worktree only, no deprecated
+  `/Users/eric/vmlx`, no subagents, no N2 JANG_1L, and no release/sign/
+  notarize/PyPI/site/updater actions.
+- Current model-lane boundary: Gemma current groups and N2 JANGTQ2/non-JANG_1L
+  rows are green; Qwen35 local source/gateway is green and public tunnel is
+  recapture/deploy drift; MiMo is remade-artifact pending unless Eric reopens.
+- Selected next blocker: issue179/MiniMax root-cause and reporter parity rows
+  because they are still red and relate to parser/reasoning/cache/session
+  isolation. No fix will be applied until current evidence identifies a real
+  source/runtime fault.
+
+## 2026-06-11 CODEX - Issue179 Evidence Pointer Refresh
+
+- Fixed confirmed source/evidence drift for issue179: the root-cause audit and
+  reporter parity metadata still pointed at
+  `build/current-issue179-minimax-k-local-model-manifest-20260527.json`, which
+  no longer exists. They now use
+  `build/current-issue179-minimax-k-model-manifest-20260606-local-refresh.json`.
+- Updated downstream pointer consumers to the refreshed issue179 audit artifact:
+  `build/current-issue179-minimax-k-root-cause-audit-after-manifest-pointer-refresh-20260611.json`.
+- Also aligned no-heavy API/cache, cache-architecture, and objective-digest
+  artifact names where tests showed runner defaults had drifted from the
+  current regression suite/release manifest.
+- Regenerated:
+  `build/current-issue179-minimax-k-root-cause-audit-after-manifest-pointer-refresh-20260611.json`,
+  `build/current-objective-proof-after-step37-bundled-vlm-proof-20260611.json`,
+  and
+  `build/current-full-release-objective-checklist-after-issue179-manifest-pointer-refresh-20260611.json`.
+- Result: issue179 is still open, but not because local model manifest evidence
+  is missing anymore. Current local manifest proof is present/pass with SHA256
+  `47496fe98db76dc467ab2ac79c74683807c8738899f2a83ffefaf3cab445a751`.
+- Remaining issue179 blockers: missing reporter parity artifact, reporter
+  installed server hash drift, reporter model shard/codebook parity, reporter
+  DB/session/settings parity, response-id liveness at cancel, and screenshot
+  causality.
+- Verification:
+  `.venv/bin/python -m pytest -q tests/test_issue179_minimax_k_root_cause_audit.py tests/test_issue179_reporter_parity_metadata.py tests/test_full_release_objective_checklist.py tests/test_current_regression_suite.py tests/test_objective_proof_digest.py tests/test_cache_architecture_contract.py`
+  -> `257 passed`.
+- Additional verification: selected release-manifest/objective/pointer subset
+  -> `89 passed`; py_compile for touched audit/contract scripts passed; stale
+  pointer scan clean; `git diff --check` passed.
+- No release/sign/notarize/PyPI/site/updater action was run. N2 JANG_1L was not
+  touched. No subagents were used.
