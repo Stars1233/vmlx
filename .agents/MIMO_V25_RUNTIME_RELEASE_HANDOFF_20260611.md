@@ -54,6 +54,31 @@ MiMo media honesty:
 - Forced MLLM/media transport can reach parts of the runtime, but semantic
   media quality and release-capable image/video/audio are not proven.
 
+Current-source JANGTQ_2 image/media classification, 2026-06-11:
+
+- Default artifact:
+  `docs/internal/agent-notes/current-real-ui-source-mimo-v25-jangtq2-image-icon-current-source-20260611-proof.json`
+  is `status=fail`. It proves the default source/app path is still honestly
+  text-only for this artifact: `modelForceTextOnly=true`,
+  `chatIsMultimodal=false`, server `model_type=llm`, and image media stripped
+  before the API body because config metadata says
+  `weights_preserved_text_runtime`.
+- Overlay artifact:
+  `docs/internal/agent-notes/current-real-ui-source-mimo-v25-jangtq2-image-icon-media-overlay-20260611-proof.json`
+  is `status=pass` only with
+  `VMLINUX_MIMO_V2_ENABLE_TEXT_RUNTIME_MEDIA_OVERLAY=1`.
+- Overlay proof details: current Electron dev UI, source Python server,
+  `model_type=mllm`, image preserved in request body, server media diag saw one
+  `image_url`, loader auto-enabled MiMo media from preserved sidecars,
+  459 preserved media tensors assigned, one image processed,
+  `vision_encoding_time=0.1617s`, `generation_tps=50.8`,
+  `cache_hit_requests=1`, `cache_hit_tokens=34`, `ram_tokens_cached=88`,
+  `l2_block_tokens_on_disk=88`, `disk_writes=2`, and `vl_image` surface green.
+- Release meaning: the overlay proof shows current source can run the media
+  bridge, but default release behavior remains text-only until the artifact is
+  remade/promoted to an explicit multimodal runtime contract or the app/runtime
+  intentionally sets the overlay env for this model family.
+
 ## Not Proven
 
 - JANGTQ_2 exactness: current artifact evidence still shows literal mutation
@@ -97,4 +122,9 @@ The speed issue is split by artifact/runtime path:
    functional but slow unless someone implements and proves a deeper affine
    fused gate/up/down path or another real runtime acceleration.
 5. For media, keep default MiMo bundles text-only until live semantic
-   image/video/audio E2E and media L2/restart proof are green.
+   image/video/audio E2E and media L2/restart proof are green. If another lane
+   wants MiMo image in the checkpoint, it must either remake/promote metadata
+   from `weights_preserved_text_runtime` to an explicit media runtime after
+   E2E, or explicitly wire the overlay launch env and rerun source plus
+   installed-app UI media proof; do not claim default media from source-overlay
+   evidence alone.

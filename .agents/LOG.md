@@ -1,3 +1,59 @@
+# 2026-06-11 01:40 PDT - Continuation goal re-anchored
+
+- Current user directive carried forward: move runtime/model/API/cache blockers
+  toward checkpoint-release readiness, avoid broad test-suite churn, keep
+  `.agents` written state complete, and prioritize live E2E evidence for
+  Gemma, MiMo, Nex/N2 JANGTQ/non-JANG_1L, Qwen/Qwen-coder, VL/video/audio where
+  actually supported, cache reuse/L2/TurboQuant/native cache, and
+  reasoning/tool streaming.
+- Boundaries still active: no subagent delegation, no N2 JANG_1L unless Eric
+  explicitly reopens it, no release/sign/notarize/PyPI/updater/site action for
+  this movement, and no fake parser/cache/media claims.
+- Next action: inspect current MiMo/N2/Qwen proof state and pick one concrete
+  live blocker to reduce directly.
+
+# 2026-06-11 01:43 PDT - MiMo JANGTQ2 UI media source proof selected
+
+- Selected blocker: current-source MiMo V2.5 JANGTQ_2 UI image/media proof.
+- Selection basis: current artifacts already show N2 JANGTQ_2 source and
+  installed-app Responses/tool/cache passes, while MiMo JANGTQ_2 still has
+  media/UI ambiguity. Older installed-app image proof passed icon semantics,
+  but logs show `modelForceTextOnly=true`, `chatIsMultimodal=false`, and server
+  `mllm=False`; this is useful evidence but not a clean multimodal release
+  clearance.
+- Next command will launch the current Electron dev UI/source server for
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2` with image
+  attachment, `think_xml`, cache controls, and explicit MLLM launch.
+- Boundaries remain: no N2 JANG_1L, no release/sign/notarize/PyPI/updater/site,
+  no fake media claim, no parser/string repair, and no subagent delegation.
+
+# 2026-06-11 01:47 PDT - MiMo JANGTQ2 source UI media classified
+
+- Ran default current-source Electron dev UI proof:
+  `docs/internal/agent-notes/current-real-ui-source-mimo-v25-jangtq2-image-icon-current-source-20260611-proof.json`.
+- Result: `status=fail`, `failureStage=release_assertions`; no send errors,
+  but image media was not sent to the API because the bundle is honestly
+  stamped `weights_preserved_text_runtime`. Logs show
+  `modelForceTextOnly=true`, `chatIsMultimodal=false`, server `model_type=llm`,
+  and `mllm=False`. Text/cache were healthy: about `42.3-42.4` live tok/s,
+  `ram_tokens_cached=196`, `l2_block_tokens_on_disk=196`, `disk_writes=4`.
+- Ran explicit overlay current-source Electron dev UI proof with
+  `VMLINUX_MIMO_V2_ENABLE_TEXT_RUNTIME_MEDIA_OVERLAY=1`:
+  `docs/internal/agent-notes/current-real-ui-source-mimo-v25-jangtq2-image-icon-media-overlay-20260611-proof.json`.
+- Result: `status=pass`; source server loaded `model_type=mllm`,
+  panel preserved the image attachment, server `[MEDIA_DIAG]` saw one
+  `image_url`, VLM loader auto-enabled MiMo media from preserved sidecars,
+  bound/assigned `459` media tensors, processed one image, and proved
+  `vl_image`.
+- Overlay cache/speed evidence: `vision_encoding_time=0.1617s`,
+  `generation_tps=50.8`, `cache_hit_requests=1`, `cache_hit_tokens=34`,
+  `ram_tokens_cached=88`, `l2_block_tokens_on_disk=88`, `disk_writes=2`.
+- Release boundary/handoff: do not claim default MiMo media from this overlay
+  proof. Default media requires either a remade/promoted model metadata contract
+  (`mimo_v2_multimodal_runtime`) after media E2E, or a deliberate app/runtime
+  overlay launch decision. MiMo exactness, video/audio, installed-app overlay
+  parity, and signed checkpoint release remain open.
+
 # 2026-06-11 01:39 PDT - Gemma4 thinking-off tool/cache UI row green
 
 - Fixed proof-surface false red for tool-first Responses streams:
