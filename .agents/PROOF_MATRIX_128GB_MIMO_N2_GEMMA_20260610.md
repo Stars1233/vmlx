@@ -28,6 +28,42 @@ Boundary:
   semantic quality, JANGTQ literal exactness, media, or installed-app release
   readiness, and it does not fake-enable MiMo thinking.
 
+### MiMo JANG_2L Source Live Text/Cache + Shutdown Fix
+
+Artifacts:
+
+- `build/live-mimo-jang2l-after-thinkxml-20260611/chat_visible_what_are_u.json`
+- `build/live-mimo-jang2l-after-thinkxml-20260611/chat_visible_what_are_u_repeat.json`
+- `build/live-mimo-jang2l-after-thinkxml-20260611/responses_required_tool_bluecat.sse`
+- `build/live-mimo-jang2l-after-thinkxml-20260611/health_after_requests.json`
+
+Proven:
+
+- Real source server loaded
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L` with
+  `xml_function`, `think_xml`, native mixed-SWA paged cache, block-disk L2, and
+  generic KV quantization disabled for MiMo.
+- Screenshot-shape prompt `what are u? speak in one short sentence.` returned
+  clean visible text twice:
+  `I am an AI assistant created by Xiaomi's LLM Core Team.`
+- Cache telemetry after the repeat showed `tokens_saved=35`,
+  `ram_tokens_cached=300`, and `l2_block_tokens_on_disk=359`.
+- The repeated Python 3.13 shutdown fatal is fixed in source:
+  `vmlx_engine/scheduler.py` now shuts down the scheduler-owned
+  `_step_executor` after disk-cache flush. Verification included
+  `.venv/bin/python -m py_compile vmlx_engine/scheduler.py`, `git diff --check`,
+  and a second real MiMo JANG_2L source start/stop that logged
+  `Scheduler step executor shutdown complete` and exited without the prior
+  `PyThreadState_Get` fatal.
+
+Red / not proven:
+
+- MiMo JANG_2L required Responses tool call for exact `blue-cat` produced no
+  tool call and failed closed as `tool_calls_required`; no executable `{}` args
+  were emitted. Required-tool/agentic loop remains red.
+- This does not clear MiMo JANG_2L speed, long-run quality, media semantics,
+  JANGTQ literal exactness, installed-app parity, or release readiness.
+
 ### MiMo JANGTQ_2 Thinking-On Proof Red + Native Cache UI Guard
 
 Artifact:

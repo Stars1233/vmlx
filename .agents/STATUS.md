@@ -1,4 +1,33 @@
 ## CODEX
+- now: MiMo JANG_2L live source proof after the `think_xml` parser-launch fix
+  is complete, and a real shutdown fatal was fixed.
+- live artifacts:
+  `build/live-mimo-jang2l-after-thinkxml-20260611/chat_visible_what_are_u.json`,
+  `build/live-mimo-jang2l-after-thinkxml-20260611/chat_visible_what_are_u_repeat.json`,
+  `build/live-mimo-jang2l-after-thinkxml-20260611/responses_required_tool_bluecat.sse`,
+  and `build/live-mimo-jang2l-after-thinkxml-20260611/health_after_requests.json`.
+- proven green: real source server loaded
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L` with
+  `xml_function`, `think_xml`, native mixed-SWA paged cache, block-disk L2, and
+  no generic KV quantization. The screenshot-style prompt returned clean
+  visible text twice: `I am an AI assistant created by Xiaomi's LLM Core Team.`
+  Repeat telemetry recorded `tokens_saved=35`, `ram_tokens_cached=300`, and
+  `l2_block_tokens_on_disk=359`.
+- proven red: MiMo JANG_2L required Responses tool call for exact `blue-cat`
+  produced no tool call and failed closed as `tool_calls_required`; no
+  executable `{}` arguments were emitted. MiMo JANG_2L agentic required-tool
+  behavior remains release-red.
+- runtime fix: `vmlx_engine/scheduler.py` now shuts down the scheduler-owned
+  `_step_executor` after disk-cache flush. Verification: `.venv/bin/python -m
+  py_compile vmlx_engine/scheduler.py`, `git diff --check`, and a second real
+  MiMo JANG_2L source start/stop. The second shutdown logged
+  `Scheduler step executor shutdown complete` and exited without the prior
+  Python 3.13 `PyThreadState_Get` fatal.
+- boundary: this does not clear MiMo speed, tool calling, media semantics,
+  JANGTQ exactness, installed-app parity, or release readiness. No
+  release/sign/notarize/PyPI/updater/site action.
+
+## CODEX
 - now: MiMo panel launch/parser detection drift is fixed in source. MiMo keeps
   the `think_xml` reasoning parser for cleanup/separation while still reporting
   `supportsThinking=false`, `thinkInTemplate=false`, and

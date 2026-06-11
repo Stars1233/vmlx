@@ -14435,3 +14435,38 @@ Next action:
 - Boundary: this does not prove MiMo JANG_2L speed, semantic quality,
   JANGTQ literal exactness, media, or installed-app release readiness. It fixes
   the panel launch/config drift that omitted the MiMo cleanup parser.
+
+# 2026-06-11 MiMo JANG_2L live proof after parser-launch fix selected
+- Current blocker being reduced: MiMo V2.5 JANG_2L live visible-output and
+  parser/template behavior after the panel/source detection fix that preserves
+  `--reasoning-parser think_xml`. This directly targets the screenshot-class
+  odd answer and missing parser launch drift.
+- Boundaries: no N2 JANG_1L, no release/sign/notarize/PyPI/updater/site, no
+  fake parser repair, no synthetic tool args, no broad suite churn, and no
+  subagent delegation. Use a single direct source server/proof, watch RAM, then
+  stop the server.
+- Planned proof: launch real
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L` with
+  `xml_function`, `think_xml`, native mixed-SWA paged cache, block-disk L2, and
+  no generic KV quantization; send a small visible-output request plus one
+  Responses/tool/cached follow-up if the server is healthy.
+
+# 2026-06-11 MiMo JANG_2L live proof classified + shutdown fix selected
+- Live source server loaded real MiMo JANG_2L with `xml_function`,
+  `think_xml`, native mixed-SWA paged cache, and block-disk L2.
+- Green: visible prompt `what are u? speak in one short sentence.` returned
+  `I am an AI assistant created by Xiaomi's LLM Core Team.` twice with no
+  raw think/tool markup. Repeat request recorded cache hit telemetry:
+  `tokens_saved=35`, `ram_tokens_cached=300`, and `l2_block_tokens_on_disk=359`.
+- Red: required Responses tool call with exact `blue-cat` produced no tool call
+  and failed closed as `tool_calls_required`; no executable `{}` args were
+  emitted. MiMo JANG_2L required-tool/agentic loop remains red.
+- Runtime issue reproduced: after clean app-layer shutdown, Python 3.13 emitted
+  fatal `PyThreadState_Get... GIL ... current Python thread state is NULL`.
+  Source trace found the batched loader passes a scheduler-owned single-worker
+  `ThreadPoolExecutor` through `SchedulerConfig.step_executor`, but
+  `Scheduler.shutdown()` flushed caches without shutting that executor down.
+- Source fix selected: after disk-cache flush, `Scheduler.shutdown()` now
+  shuts down `_step_executor` with `wait=True, cancel_futures=True` and clears
+  the reference. This targets the shutdown fatal only; it does not alter
+  generation, parser output, cache semantics, or tool-call behavior.
