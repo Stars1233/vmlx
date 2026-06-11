@@ -1,8 +1,8 @@
 {
   "active_heavy_process_count": 0,
   "active_heavy_processes": [],
-  "available_for_gate_gb": 89.15,
-  "available_for_gate_gib": 89.15,
+  "available_for_gate_gb": 106.92,
+  "available_for_gate_gib": 106.92,
   "commands": {
     "active_heavy_processes": "pgrep -af 'vmlx_engine.cli serve|mlx_lm.server|run_runtime_memory_stress_probe|run_decode_speed_gate|live-real-ui-model-proof|run_dsv4_route_mode_code_exactness|run_dsv4_default_cache_tool_loop_gate'",
     "memory": "vm_stat",
@@ -12,49 +12,49 @@
   },
   "did_not_launch": true,
   "floor_valid": true,
-  "free_plus_speculative_purgeable_gb": 89.15,
-  "free_plus_speculative_purgeable_gib": 89.15,
-  "generated_at": "2026-06-11T11:31:53.587030+00:00",
-  "inactive_file_cache_gb": 14.9,
+  "free_plus_speculative_purgeable_gb": 106.92,
+  "free_plus_speculative_purgeable_gib": 106.92,
+  "generated_at": "2026-06-11T13:43:03.366680+00:00",
+  "inactive_file_cache_gb": 10.89,
   "launch_allowed": false,
   "launch_blockers": [
     "insufficient_memory"
   ],
   "launch_decision": "do_not_launch",
   "memory_breakdown": {
-    "free": 88.41,
-    "inactive": 14.9,
+    "free": 106.09,
+    "inactive": 10.89,
     "purgeable": 0.07,
-    "speculative": 0.67
+    "speculative": 0.76
   },
   "memory_breakdown_gb": {
-    "free": 88.41,
-    "inactive": 14.9,
+    "free": 106.09,
+    "inactive": 10.89,
     "purgeable": 0.07,
-    "speculative": 0.67
+    "speculative": 0.76
   },
-  "memory_gap_gb": 48.25,
-  "memory_gap_gib": 48.25,
+  "memory_gap_gb": 30.48,
+  "memory_gap_gib": 30.48,
   "memory_pressure_free_percent": 94,
   "memory_pressure_raw_tail": [
-    "Swapins: 98170442 ",
-    "Swapouts: 108252749 ",
+    "Swapins: 99961478 ",
+    "Swapouts: 110331948 ",
     "",
     "Page Q counts:",
-    "Pages active: 1021107 ",
-    "Pages inactive: 976602 ",
-    "Pages speculative: 43747 ",
+    "Pages active: 95791 ",
+    "Pages inactive: 713476 ",
+    "Pages speculative: 50045 ",
     "Pages throttled: 0 ",
-    "Pages wired down: 279598 ",
+    "Pages wired down: 288887 ",
     "",
     "Compressor Stats:",
-    "Pages used by compressor: 16480 ",
-    "Pages decompressed: 743067413 ",
-    "Pages compressed: 786137442 ",
+    "Pages used by compressor: 16300 ",
+    "Pages decompressed: 754497198 ",
+    "Pages compressed: 802727585 ",
     "",
     "File I/O:",
-    "Pageins: 1328896145 ",
-    "Pageouts: 88965 ",
+    "Pageins: 1341983654 ",
+    "Pageouts: 89595 ",
     "",
     "System-wide memory free percentage: 94%"
   ],
@@ -63,11 +63,11 @@
   "model_path": "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANG",
   "model_size_gb": 97.4,
   "preflight_memory_source": "vm_stat_free_plus_speculative_purgeable",
-  "psutil_available_gb": 103.98,
-  "psutil_available_gib": 103.98,
-  "psutil_memory_gap_gb": 33.42,
-  "psutil_memory_gap_gib": 33.42,
-  "psutil_memory_percent": 18.8,
+  "psutil_available_gb": 117.74,
+  "psutil_available_gib": 117.74,
+  "psutil_memory_gap_gb": 19.66,
+  "psutil_memory_gap_gib": 19.66,
+  "psutil_memory_percent": 8.0,
   "psutil_total_gb": 128.0,
   "psutil_total_gib": 128.0,
   "reason": "local memory below DSV4 real-UI preflight floor; leave matrix missing dsv4 until enough headroom is available",
@@ -87,7 +87,7 @@
     {
       "command": "/System/Applications/Utilities/Screen Sharing.app/Contents/MacOS/Screen Sharing",
       "pid": 438,
-      "rss_gb": 0.12
+      "rss_gb": 0.13
     },
     {
       "command": "/System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer -daemon",
@@ -95,24 +95,14 @@
       "rss_gb": 0.04
     },
     {
-      "command": ".venv/bin/python tests/cross_matrix/run_current_regression_suite.py --out build/current-regression-suite-after-dsv4-real-ui-valid-preflight-20260611.json",
-      "pid": 41944,
-      "rss_gb": 0.03
-    },
-    {
-      "command": "./Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient mcp",
-      "pid": 60924,
+      "command": ".venv/bin/python tests/cross_matrix/run_current_regression_suite.py --out build/current-regression-suite-after-staged-sequoia-parity-pass-20260611.json",
+      "pid": 19497,
       "rss_gb": 0.03
     },
     {
       "command": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/.venv/bin/python tests/cross_matrix/run_real_ui_dsv4_memory_preflight.py --out build/current-real-ui-dsv4-memory-preflight-dsv4-jang-valid-floor-20260611.json",
-      "pid": 42432,
+      "pid": 19966,
       "rss_gb": 0.02
-    },
-    {
-      "command": "/System/Library/CoreServices/launchservicesd",
-      "pid": 146,
-      "rss_gb": 0.01
     },
     {
       "command": "/System/Library/CoreServices/loginwindow.app/Contents/MacOS/loginwindow console",
@@ -120,8 +110,18 @@
       "rss_gb": 0.01
     },
     {
+      "command": "/System/Library/CoreServices/launchservicesd",
+      "pid": 146,
+      "rss_gb": 0.01
+    },
+    {
+      "command": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd",
+      "pid": 106,
+      "rss_gb": 0.01
+    },
+    {
       "command": "./Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient mcp",
-      "pid": 76122,
+      "pid": 42839,
       "rss_gb": 0.01
     },
     {

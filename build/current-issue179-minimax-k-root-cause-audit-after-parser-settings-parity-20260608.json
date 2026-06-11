@@ -3,12 +3,12 @@
     "latest_public_server_sha256": "0be1c30c44da2a57e4a3e89bf87c803d2ae00a86140ff81f7c39e58f5bc3c4f5",
     "local_installed_matches_latest_public": false,
     "local_installed_matches_public_v1549_tahoe": false,
-    "local_installed_server_sha256": "9e8cfed83d00bba9b7e59a22a1e80b3f897577ebd4e2e75ac099173ef79ca146",
+    "local_installed_server_sha256": "a93f5588c7334a0bf2f9d6eacc5ea31c054ec421b3285ea51326e551f3478bf1",
     "public_v1549_tahoe_server_sha256": null,
     "source_matches_latest_public": false,
     "source_matches_local_installed": false,
     "source_matches_public_v1549_tahoe": false,
-    "source_server_sha256": "b1f56da8f1415ebdf1d9c9fd6895e213e66ea563d986aec3ebf9fd77c88f0452"
+    "source_server_sha256": "e1b2c478df41c552e2a68adeb8c2e26584d4599eb5ca59d4353c4d9ee0f2c528"
   },
   "current_source_minimax_small_smoke": {
     "all_checks_pass": true,
@@ -198,11 +198,11 @@
     "model_path": "/Users/eric/models/JANGQ/MiniMax-M2.7-JANGTQ_K",
     "model_size_gb": null,
     "path": "build/current-issue179-minimax-k-responses-cancel-probe-memory-preflight-20260602-local-ready-check.json",
-    "preflight_captured_at": "2026-06-09T07:09:39-0700",
+    "preflight_captured_at": "2026-06-11T06:14:00-0700",
     "preflight_memory_source": null,
     "reason": "model_path_missing",
     "required_free_gb": null,
-    "sha256": "1afb5a87ba526a38e6c44ce03d6afd82715b337f975444072becc72c73bae917",
+    "sha256": "1c90489d942acd5fdde907fca8ceeea4cd7d1e0df29523c4fd89955e949636c0",
     "status": "skipped"
   },
   "local_installed_bundle_contract": {
@@ -210,7 +210,7 @@
     "server_cancel_calls_engine_abort": true,
     "server_has_responses_cancel_route": true,
     "server_path": "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/server.py",
-    "sha256": "9e8cfed83d00bba9b7e59a22a1e80b3f897577ebd4e2e75ac099173ef79ca146"
+    "sha256": "a93f5588c7334a0bf2f9d6eacc5ea31c054ec421b3285ea51326e551f3478bf1"
   },
   "local_model_manifest": {
     "checks": {
@@ -706,7 +706,7 @@
   "reporter_server_hash_parity": {
     "failure": "reporter_installed_server_hash_drift",
     "latest_public_server_sha256": "0be1c30c44da2a57e4a3e89bf87c803d2ae00a86140ff81f7c39e58f5bc3c4f5",
-    "local_installed_server_sha256": "9e8cfed83d00bba9b7e59a22a1e80b3f897577ebd4e2e75ac099173ef79ca146",
+    "local_installed_server_sha256": "a93f5588c7334a0bf2f9d6eacc5ea31c054ec421b3285ea51326e551f3478bf1",
     "provenance": {
       "checked_sources": [
         "source_contract",
@@ -733,33 +733,23 @@
       "local_app_bundle_checked": [
         {
           "matches_reporter": false,
-          "path": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/panel/release/mac-arm64/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/server.py",
-          "sha256": "792a22c944e61bf1a8bade26302e4aae50c62a9dcc1828c3437481fce5501909"
-        },
-        {
-          "matches_reporter": false,
-          "path": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/panel/release/mac-arm64/vMLX.app/Contents/Resources/vmlx-engine-source/vmlx_engine/server.py",
-          "sha256": "792a22c944e61bf1a8bade26302e4aae50c62a9dcc1828c3437481fce5501909"
-        },
-        {
-          "matches_reporter": false,
           "path": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/panel/release/sequoia-app/mac-arm64/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/server.py",
-          "sha256": "80b8c4f8ce0116f4fe8e6f7abdc3abb8a83e7c2adf3a5936457d73941ceb7117"
+          "sha256": "e1b2c478df41c552e2a68adeb8c2e26584d4599eb5ca59d4353c4d9ee0f2c528"
         },
         {
           "matches_reporter": false,
           "path": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/panel/release/sequoia-app/mac-arm64/vMLX.app/Contents/Resources/vmlx-engine-source/vmlx_engine/server.py",
-          "sha256": "80b8c4f8ce0116f4fe8e6f7abdc3abb8a83e7c2adf3a5936457d73941ceb7117"
+          "sha256": "e1b2c478df41c552e2a68adeb8c2e26584d4599eb5ca59d4353c4d9ee0f2c528"
         },
         {
           "matches_reporter": false,
           "path": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/panel/release/tahoe-app/mac-arm64/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/server.py",
-          "sha256": "0be1c30c44da2a57e4a3e89bf87c803d2ae00a86140ff81f7c39e58f5bc3c4f5"
+          "sha256": "eeac6e210485dd64839cc6eb334cfaad139c3e17b07a0f7e812c58fdb594971f"
         },
         {
           "matches_reporter": false,
           "path": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/panel/release/tahoe-app/mac-arm64/vMLX.app/Contents/Resources/vmlx-engine-source/vmlx_engine/server.py",
-          "sha256": "0be1c30c44da2a57e4a3e89bf87c803d2ae00a86140ff81f7c39e58f5bc3c4f5"
+          "sha256": "eeac6e210485dd64839cc6eb334cfaad139c3e17b07a0f7e812c58fdb594971f"
         },
         {
           "matches_reporter": false,
@@ -862,7 +852,7 @@
           "sha256": "2d5733b3179eca7c74eb801026c2eb917482acfef36e89e9b44e154a1b7f9826"
         }
       ],
-      "local_app_bundle_checked_count": 26,
+      "local_app_bundle_checked_count": 24,
       "local_app_bundle_matches": [],
       "local_backup_checked_count": 0,
       "local_backup_matches": [],
@@ -928,7 +918,7 @@
     "reporter_matches_public_v1549_tahoe": false,
     "reporter_matches_source": false,
     "route_markers_match": true,
-    "source_server_sha256": "b1f56da8f1415ebdf1d9c9fd6895e213e66ea563d986aec3ebf9fd77c88f0452",
+    "source_server_sha256": "e1b2c478df41c552e2a68adeb8c2e26584d4599eb5ca59d4353c4d9ee0f2c528",
     "status": "open"
   },
   "root_cause_discriminators": [
@@ -994,9 +984,9 @@
     "server_cancel_calls_engine_abort": true,
     "server_has_responses_cancel_route": true,
     "source_hashes": {
-      "panel/src/main/ipc/chat.ts": "1d147559881dabf7b50bc003ba98ad352307799b915feb3163c8328d38ec5504",
+      "panel/src/main/ipc/chat.ts": "2c9f69e8893e16dc3057164872983ec177dd2b4e0150902befbaae2ddd42e777",
       "tests/test_cancellation.py": "b12eec9c30cfadcefa330be1224a55e4115ec96bbbd417cfca52928c0359f2a2",
-      "vmlx_engine/server.py": "b1f56da8f1415ebdf1d9c9fd6895e213e66ea563d986aec3ebf9fd77c88f0452"
+      "vmlx_engine/server.py": "e1b2c478df41c552e2a68adeb8c2e26584d4599eb5ca59d4353c4d9ee0f2c528"
     },
     "test_proves_inactive_responses_cancel_404_after_engine_lookup": true,
     "test_proves_successful_responses_cancel_route": true

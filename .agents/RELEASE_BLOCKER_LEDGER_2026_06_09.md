@@ -374,6 +374,18 @@ Reporter credit: include GitHub `@Hornsan1` in next release notes/changelog/publ
 - Current release packaging is still blocked on rebuilding current-source DMGs, notarizing/stapling/verifying those current artifacts, and clearing or explicitly scoping the remaining runtime/model/UI/cache rows.
 - No signing, notarization, tag, public download update, or release announcement until runtime/model/UI/cache blockers are green or Eric explicitly overrides.
 - If a release is forced with known open rows, the release notes must list exact open rows and not imply full clearance.
+- 2026-06-11 staged Sequoia app parity update:
+  `panel/release/sequoia-app/mac-arm64/vMLX.app` was rebuilt from current
+  bundled Python/source with `electron-builder --dir` only. The staged app is
+  Developer ID signed and `codesign --verify --deep --strict` passes;
+  notarization was skipped and no DMG/tag/upload/PyPI/updater/site action was
+  run. `build/current-packaged-integrity-contract-after-staged-sequoia-rebuild-20260611.json`
+  is `status=pass`, `failed=[]`, with bundled engine and `jang_tools` parity,
+  no packaged pycache, `staged_app_engine_hash_parity=true`, and
+  `staged_app_engine_source_hash_parity=true`. Aggregate
+  `build/current-regression-suite-after-staged-sequoia-parity-pass-20260611.json`
+  now has failed steps only `release_regression_manifest` and
+  `release_gate_skip_app`; 15 runtime/model/UI/cache objective rows remain open.
 - 2026-06-10 update: `/Applications/vMLX.app` was rebuilt and locally installed
   with `panel/scripts/build-and-install.sh` after a pre-rebuild audit found only
   `vmlx_engine/utils/jang_loader.py` stale. The refreshed installed-app runtime

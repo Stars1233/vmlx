@@ -12212,3 +12212,80 @@ Other-agent action:
   `build/current-objective-proof-after-dsv4-real-ui-valid-preflight-20260611.json`
   with new timestamps and current RAM preflight values. Do not treat that as a
   new runtime proof.
+
+# 2026-06-11 continuation PDT staged-app parity rebuild scope
+
+- Current movement:
+  reduce the packaged-integrity blocker by identifying the intended staged-app
+  rebuild path for current bundled Python/source parity.
+- Boundary:
+  do not run public release, DMG notarization, PyPI publish, updater JSON,
+  website, or download mutations in this block. If the staged app build path
+  signs as part of `electron-builder --dir`, record it honestly as local staged
+  package parity only, not a public release.
+- Reason:
+  latest packaged integrity gate proves bundled Python and source parity are
+  current, while staged app engine/source hash parity is false. The next
+  package-readiness blocker is stale staged app output, not another source
+  parser/cache proof.
+
+# 2026-06-11 continuation PDT staged Sequoia app parity pass
+
+- Build command:
+  from `panel/`, ran `./scripts/verify-bundled-python.sh && npx electron-vite
+  build && rm -rf release/sequoia-app && npx electron-builder --mac --dir
+  --config.directories.output=release/sequoia-app`.
+- Build result:
+  staged app rebuilt at `panel/release/sequoia-app/mac-arm64/vMLX.app`.
+  `electron-builder --dir` signed it with Developer ID identity
+  `D4DBBCB52F666D03F0A5154BFFEA2227BEE8FC7C`; notarization was skipped and no
+  DMG, tag, upload, PyPI publish, updater JSON, website, or download mutation
+  was performed.
+- Verification artifact:
+  `build/current-packaged-integrity-contract-after-staged-sequoia-rebuild-20260611.json`
+  is `status=pass`, `failed=[]`.
+- Proven by gate:
+  release-gate unit contracts pass `49/49`; bundled Python verifier passes;
+  bundled engine/version/hash parity and bundled `jang_tools` parity are true;
+  packaged renderer guards are true; packaged Python has no `__pycache__`;
+  `staged_app_engine_hash_parity=true`;
+  `staged_app_engine_source_hash_parity=true`;
+  dry release gate fails only on known objective rows; dry gate uses current
+  objective digest.
+- Direct checks:
+  `codesign --verify --deep --strict --verbose=2
+  panel/release/sequoia-app/mac-arm64/vMLX.app` passed. Running the staged app
+  bundled Python from `/tmp` imports packaged `vmlx_engine 1.5.57` and
+  packaged `jang_tools` from the app `site-packages`.
+- Still not release ready:
+  13 objective rows remain open: DSV4 cache/tool/L2, packaged Qwen/JANG
+  speed/MTP, Ling/Bailing quality, Gemma4 26B CRACK quality/speed,
+  cross-family live multi-turn smoke, MiMo runtime/tool/long-prompt, N2 Pro
+  JANG1L/JANGTQ runtime/cache/API/UI, and MiniMax reporter parity.
+
+# 2026-06-11 continuation PDT aggregate after staged Sequoia parity
+
+- Command:
+  `.venv/bin/python tests/cross_matrix/run_current_regression_suite.py --out
+  build/current-regression-suite-after-staged-sequoia-parity-pass-20260611.json`.
+- Result:
+  aggregate remains `status=open`, but packaged integrity is now green inside
+  the suite. Failed steps are reduced to `release_regression_manifest` and
+  `release_gate_skip_app`.
+- Green in this aggregate:
+  no-heavy API/cache, cache architecture, panel settings, max output/context,
+  parser registry, generation defaults, reasoning template, API surface,
+  tool/security/MCP, DSV4 memory preflights, release surface, CLI release,
+  JANG model compatibility, model artifact/family detection, native MTP, VL
+  media cache, MiMo metadata, N2 JANG_1L memory preflight only, Step3.7 crash
+  falsification, packaged integrity, installed-app runtime parity, staged-app
+  runtime parity, issue audits, public app audit, Gemma QAT/native MXFP4
+  inventory, Responses raw-SSE parity contract, and focused regression pytest.
+- Still not release ready:
+  open requirements remain the 15 listed by the aggregate: DSV4 same-process
+  cache hit, DSV4 L2 restart, DSV4 one-tool stop, Qwen/JANG packaged speed,
+  Qwen native MTP speed/equivalence, Qwen27 prompt-processing speed,
+  Ling/Bailing quality, Gemma4 26B CRACK quality/speed, cross-family live
+  multi-turn smoke, MiMo V2.5 runtime/tool/long-prompt quality, N2 Pro
+  JANG1L/JANGTQ runtime/cache/API/UI quality, MiniMax reporter parity, real
+  Electron UI cross-family live matrix, and DSV4 long-output/code/file quality.
