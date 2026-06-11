@@ -13927,3 +13927,32 @@ Other-agent action:
   remains `status=open`, `failed_count=16`; focused pytest selection passed
   with `412 passed, 1 skipped, 200 deselected`; py_compile and `git diff
   --check` passed.
+
+## CODEX
+- now: continuing after pushed commit `0eb7964e7`.
+- scope lock remains: active vMLX Python/Electron worktree only; no deprecated
+  `/Users/eric/vmlx`; no subagents or recursive LLM delegation; no N2 JANG_1L;
+  no release/sign/notarize/PyPI/site/updater action unless Eric explicitly
+  unlocks that action in the current turn.
+- current work policy for this block: inspect the remaining red rows and choose
+  a source/runtime/API bug that moves N2 JANGTQ, Gemma JANG/MXFP/QAT, or Qwen/
+  Qwen-coder Responses tooling/reasoning/cache toward release readiness. Avoid
+  another proof-metadata-only refresh unless current evidence shows the red row
+  is only stale evidence.
+- completed: split N2 Pro release evidence so JANGTQ2 is independently tracked
+  and no longer masked by the off-limits JANG_1L lane.
+- result: `build/current-objective-proof-after-step37-bundled-vlm-proof-20260611.json`
+  now has `PASS N2 Pro 397B JANGTQ2 runtime/cache/API/UI quality is
+  release-cleared` and still has `OPEN N2 Pro 397B JANG1L/JANGTQ
+  runtime/cache/API/UI quality is release-cleared`.
+- checklist result:
+  `build/current-full-release-objective-checklist-after-n2-jangtq2-split-20260611.json`
+  remains `status=open`, `failed_count=16`; the only N2 failed row is
+  `n2_pro_397b_release_clearance` for the combined/off-limits JANG_1L boundary.
+- Qwen35 inspection: current direct and gateway SSE captures are green for
+  arguments, output indices, reasoning lifecycle, and same-model checks; the
+  remaining Qwen red is public tunnel recapture/deploy drift, not a local source
+  parser fix.
+- verification passed: objective/checklist/release/current-suite tests
+  (`551 passed`), focused N2 split selection (`95 passed, 130 deselected`),
+  py_compile, and `git diff --check`.

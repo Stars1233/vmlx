@@ -18907,3 +18907,41 @@ Next action:
   200 deselected`; py_compile passed; `git diff --check` passed.
 - No release/sign/notarize/PyPI/site/updater action was run. N2 JANG_1L was not
   touched. No subagents were used.
+
+## 2026-06-11 CODEX - Runtime/API Fix Block Started
+
+- Continuing after pushed commit `0eb7964e7`.
+- Constraints retained: active Python/Electron worktree only, no deprecated
+  `/Users/eric/vmlx`, no subagents, no N2 JANG_1L, and no release/sign/
+  notarize/PyPI/site/updater actions without current-turn unlock.
+- Goal for this block: pick a remaining source-fixable runtime/API blocker
+  affecting N2 JANGTQ, Gemma JANG/MXFP/QAT, or Qwen/Qwen-coder Responses
+  tools/reasoning/cache behavior. Avoid another artifact-only refresh unless
+  evidence proves the row is stale metadata only.
+
+## 2026-06-11 CODEX - N2 JANGTQ2 Release Row Split
+
+- Inspected Qwen35 raw SSE artifact:
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-public-recapture-still-stale-20260611.json`.
+  Direct and gateway are green for arguments, output indices, reasoning
+  lifecycle, and same-model checks; remaining red is public tunnel recapture/
+  deploy drift, so no local parser source patch was made for Qwen.
+- Fixed objective/checklist shape for N2: added a separate passed objective row
+  for `N2 Pro 397B JANGTQ2 runtime/cache/API/UI quality is release-cleared`
+  using the existing live chat/cache/Responses, fresh-process L2, real UI
+  previous_response_id tool/cache, strict loopback tool_choice=auto, direct/
+  gateway Responses stream boundary, and no-heavy cache/parser/family contract
+  evidence.
+- Kept the combined `N2 Pro 397B JANG1L/JANGTQ` row open. This does not clear
+  N2 JANG_1L, public tunnel parity, media/audio/video, packaging, signing,
+  notarization, or full release readiness.
+- Regenerated:
+  `build/current-objective-proof-after-step37-bundled-vlm-proof-20260611.json`,
+  `build/current-release-regression-manifest-after-step37-bundled-vlm-proof-20260611.json`,
+  and
+  `build/current-full-release-objective-checklist-after-n2-jangtq2-split-20260611.json`.
+- Verification: `551 passed` across objective/checklist/release/current-suite
+  tests; focused N2 split selection `95 passed, 130 deselected`; py_compile and
+  `git diff --check` passed.
+- No release/sign/notarize/PyPI/site/updater action was run. N2 JANG_1L was not
+  touched. No subagents were used.
