@@ -1,4 +1,28 @@
 ## CODEX
+- now: investigated Eric's MiMo JANG_2L screenshot regression directly against
+  current source and the installed app copy.
+- finding: `/Applications/vMLX.app/Contents/Resources/vmlx-engine-source` is
+  stale versus current source for `server.py`, `cli.py`, `tool_calling.py`,
+  and `scheduler.py`; the screenshot app run did not include the latest MiMo
+  tool-contract, shutdown, XML scalar, or JANG/JANGTQ envelope fixes.
+- source proof: current panel source detects
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L` as
+  `family=mimo_v2`, `cacheSubtype=mimo_v2_asymmetric_swa`,
+  `toolParser=xml_function`, `reasoningParser=think_xml`,
+  `supportsThinking=false`, `forceTextOnly=true`, and `isMultimodal=false`.
+  Current source should therefore not add `--is-mllm` for this preserved-media
+  text-runtime bundle.
+- added guard: `panel/tests/model-config-registry.test.ts` now pins the exact
+  local MiMo JANG_2L path to the source launch policy above.
+- verification: focused MiMo guard passed `1/1`; full
+  `model-config-registry.test.ts` passed `70/70`; `npm --prefix panel run
+  typecheck` passed; `git diff --check` passed.
+- boundary: MiMo JANG_2L decode speed/TTFT/user-visible quality remains open,
+  and installed-app rebuild/replacement plus real UI proof are still required
+  before any checkpoint DMG/sign/notarize claim. No release/sign/notarize/
+  PyPI/updater/site action was run.
+
+## CODEX
 - now: MiMo JANG_2L live source proof after the `think_xml` parser-launch fix
   is complete, and a real shutdown fatal was fixed.
 - live artifacts:

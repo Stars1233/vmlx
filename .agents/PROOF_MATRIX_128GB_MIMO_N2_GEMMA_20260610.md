@@ -7,6 +7,42 @@ separates what was actually loaded and proven from what remains red.
 
 ## Latest Proof Additions
 
+### MiMo JANG_2L Screenshot Regression Classification
+
+Proven:
+
+- The installed app used in the screenshot is stale versus current source:
+  `/Applications/vMLX.app/Contents/Resources/vmlx-engine-source` hashes differ
+  from current source for `vmlx_engine/server.py`, `vmlx_engine/cli.py`,
+  `vmlx_engine/api/tool_calling.py`, and `vmlx_engine/scheduler.py`.
+- Current panel source detects the exact local MiMo JANG_2L text-runtime
+  artifact `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L` as:
+  `family=mimo_v2`, `cacheSubtype=mimo_v2_asymmetric_swa`,
+  `toolParser=xml_function`, `reasoningParser=think_xml`,
+  `supportsThinking=false`, `forceTextOnly=true`, and
+  `isMultimodal=false`.
+- Therefore current source should not append `--is-mllm` for that preserved
+  media/text-runtime bundle. The screenshot's `--is-mllm` launch is an
+  installed-app/runtime parity problem, not current source launch-policy proof.
+- Added a focused panel regression guard for that exact local MiMo path in
+  `panel/tests/model-config-registry.test.ts`.
+
+Verification:
+
+- `npm --prefix panel test -- --run tests/model-config-registry.test.ts -t
+  "current local MiMo V2 JANG_2L"` -> `1 passed`.
+- `npm --prefix panel test -- --run tests/model-config-registry.test.ts` ->
+  `70 passed`.
+- `npm --prefix panel run typecheck` -> pass.
+- `git diff --check` -> pass.
+
+Red / not proven:
+
+- This does not solve MiMo JANG_2L decode speed, TTFT, user-visible quality, or
+  media semantics.
+- Installed app replacement/rebuild and real UI proof remain open before any
+  checkpoint DMG/sign/notarize claim.
+
 ### MiMo Panel `think_xml` Launch Parity Fix
 
 Proven:

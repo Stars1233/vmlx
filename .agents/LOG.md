@@ -14591,3 +14591,54 @@ Next action:
   bundled runtime files to commit from this sync. Installed app replacement,
   DMG package/sign/notarize, PyPI, updater, and website release remain separate
   explicit release actions.
+
+# 2026-06-11 MiMo screenshot regression selected
+- Current blocker being reduced: the exact MiMo V2.5 JANG_2L installed-app
+  screenshot shape Eric provided. The app launched
+  `/opt/adlab/models/dealignai/OsaurusAI/MiMo-V2.5-JANG_2L` through bundled
+  Python on port `8010` with `--is-mllm`, `xml_function`,
+  auto-tool choice, paged prefix cache, and block-disk L2. The runtime
+  correctly detected MiMo's native asymmetric full/SWA cache and disabled
+  generic TurboQuant KV, but visible chat answered `The user is a question
+  mark.The user` at about `2.0 t/s` with `31.84s` TTFT and user-observed
+  throughput as low as `0.3 tok/s`.
+- Required trace: inspect current source and installed-app launch/config
+  parity for MiMo JANG/JANGTQ, especially `--is-mllm` forcing versus preserved
+  media text-runtime gating, `think_xml` parser inclusion, tokenizer/chat
+  template spacing/special characters, decode/lm-head path, native mixed-SWA
+  prefix/L2 cache reconstruction, and whether the installed app is stale versus
+  the latest source fixes.
+- Boundaries: do not remake artifacts, claim media support, synthesize parser
+  output, force fake generation defaults, or enter sign/notarize/PyPI/updater/
+  site release work from this item. N2 JANG_1L remains off-limits. Direct
+  runtime inspection and source/app parity proof are allowed.
+
+# 2026-06-11 MiMo screenshot regression source/app classification
+- Installed app drift found: `/Applications/vMLX.app/Contents/Resources/
+  vmlx-engine-source` hashes differ from current source for
+  `vmlx_engine/server.py`, `vmlx_engine/cli.py`,
+  `vmlx_engine/api/tool_calling.py`, and `vmlx_engine/scheduler.py`. The
+  screenshot app run therefore did not contain the latest MiMo tool-contract,
+  shutdown, XML scalar, or JANG/JANGTQ envelope fixes.
+- Source panel launch policy checked for the exact local artifact path
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L`: current source
+  detects `family=mimo_v2`, `cacheType=kv`,
+  `cacheSubtype=mimo_v2_asymmetric_swa`, `toolParser=xml_function`,
+  `reasoningParser=think_xml`, `supportsThinking=false`,
+  `forceTextOnly=true`, and `isMultimodal=false`. This means current source
+  should not add `--is-mllm` for the preserved-media text-runtime MiMo JANG_2L
+  bundle; the screenshot `--is-mllm` launch is stale installed-app/runtime
+  parity, not current source launch policy.
+- Added a narrow panel regression guard:
+  `panel/tests/model-config-registry.test.ts` now covers the local MiMo
+  JANG_2L text-runtime bundle so future panel changes cannot silently relaunch
+  it as forced MLLM.
+- Verification:
+  - `npm --prefix panel test -- --run tests/model-config-registry.test.ts -t "current local MiMo V2 JANG_2L"` -> `1 passed`.
+  - `npm --prefix panel test -- --run tests/model-config-registry.test.ts` -> `70 passed`.
+  - `npm --prefix panel run typecheck` -> pass.
+  - `git diff --check` -> pass.
+- Boundary: this does not solve MiMo JANG_2L decode speed/TTFT or user-visible
+  quality by itself; it proves the current source launch policy will avoid the
+  stale app's bad `--is-mllm` path for this text-runtime bundle. Installed-app
+  rebuild/replacement and live UI proof are still required before release.
