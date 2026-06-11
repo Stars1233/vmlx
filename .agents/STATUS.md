@@ -13358,3 +13358,16 @@ Other-agent action:
 - proven by that artifact: real Electron dev-app, `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2`, Responses API, two-turn built-in `run_command` loop, both probe files created, 58 stream events, 106 tool events, cache detail `paged+ssm`, hybrid SSM cache schema, attention-only TurboQuant KV q4 storage boundary, block-disk L2 6947 tokens, SSM L2 23203 tokens.
 - new current artifacts: `build/current-objective-proof-after-n2-strict-loopback-consumed-20260611.json`, `build/current-full-release-objective-checklist-after-n2-strict-loopback-consumed-20260611.json`, and `build/current-release-regression-manifest-after-n2-strict-loopback-consumed-20260611.json`.
 - current release state: still not ready for signing/notarization; final regenerated checklist remains `status=open`, `failed_count=51`. Remaining opens include Qwen35 public tunnel raw-SSE strict lifecycle, MiMo exactness/media/speed, N2 broad row due JANG_1L off-limits/open, MiniMax reporter parity, Step3.7/LFM/Nemotron evidence gaps, packaged integrity/release readiness, and DSV4 long-output/code quality.
+
+## CODEX
+- now: continuing the same release-fix lane, selecting Qwen35/Qwen-coder raw Responses SSE lifecycle as the next source/API blocker because it affects opencode/Codex-style tool/reasoning streaming and remains red in `build/current-full-release-objective-checklist-after-n2-strict-loopback-consumed-20260611.json`.
+- target artifact: `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-missing-required-args-failclosed-strict-recheck-20260611.json`.
+- investigation boundary: direct/gateway current source were previously green while public tunnel was red for missing completed reasoning output item lifecycle; re-check raw evidence before assuming source, gateway, tunnel deployment, or classifier cause.
+- constraints: no argument synthesis from preambles, no disabling reasoning, no silently dropping tool calls, no release/sign/notarize/PyPI/site/updater action, and no N2 JANG_1L work.
+
+## CODEX
+- now: recaptured the public tunnel live from `https://testapi.adlabus.dev/v1/responses` for the same Qwen35 model/request with reasoning enabled and required `record_fact`.
+- fresh raw capture: `build/responses-sse-captures-20260611/tunnel-qwen35-mxfp8-mtp-tool-strict-lifecycle-recapture-20260611.sse`.
+- fresh classifier artifact: `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-public-recapture-still-stale-20260611.json`, `status=fail`.
+- result: public tunnel still preserves model, authoritative args `{"value":"blue-cat"}`, argument deltas/done, final response consistency, and valid message/function output indices, but it still emits reasoning summary deltas against the message item at `output_index=0` and never emits a streamed reasoning output item lifecycle (`reasoning_output_item_count=0`, `reasoning_lifecycle_complete=false`).
+- classification: current direct/gateway source is green; public tunnel remains deployed/stale or tunnel-runtime divergent. Release board now points at the 2026-06-11 fresh red artifact. Do not claim Qwen35 direct/gateway/tunnel raw-SSE parity green until the public tunnel is rebuilt/recaptured with a real reasoning output item lifecycle.

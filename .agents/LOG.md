@@ -18381,3 +18381,18 @@ Next action:
 - Source updates this movement: `tests/cross_matrix/summarize_objective_proof.py` now includes `jangtq2_strict_loopback_toolchoice_auto`; current objective/checklist/manifest/release-gate pointers now use `build/current-objective-proof-after-n2-strict-loopback-consumed-20260611.json`.
 - Verification passed: focused objective/checklist/current-suite/release-manifest/release-gate tests; regenerated objective digest; regenerated release checklist (`status=open`, `failed_count=51`); regenerated release regression manifest.
 - No claims: no N2 JANG_1L work, no MiMo remake, no package/sign/notarize/PyPI/site/updater actions. Release is still blocked; this only removes a stale N2 JANGTQ2 strict-loop red sub-blocker from the board.
+
+# 2026-06-11 10:32 PDT - selected Qwen35 raw SSE lifecycle blocker
+
+- Current checklist `build/current-full-release-objective-checklist-after-n2-strict-loopback-consumed-20260611.json` remains open. Selected the Qwen35/Qwen-coder raw SSE lifecycle row because it directly affects Responses API tool/reasoning streaming for opencode/Codex-style harnesses.
+- Artifact to inspect first: `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-missing-required-args-failclosed-strict-recheck-20260611.json`.
+- Known prior split to verify from current files: direct and local gateway source captures were green; public tunnel capture was red because it had reasoning events but no completed reasoning output item lifecycle.
+- Boundaries: do not synthesize missing tool args, disable reasoning, hide raw XML, or call release/sign/notarize/PyPI/site/updater actions.
+
+# 2026-06-11 10:37 PDT - Qwen35 public tunnel recapture still stale
+
+- Live public tunnel recapture command posted the same Qwen35 required `record_fact` Responses request with `enable_thinking=true` to `https://testapi.adlabus.dev/v1/responses`.
+- Raw capture: `build/responses-sse-captures-20260611/tunnel-qwen35-mxfp8-mtp-tool-strict-lifecycle-recapture-20260611.sse`.
+- Strict parity artifact: `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-public-recapture-still-stale-20260611.json`, `status=fail`.
+- Current split: direct and gateway source captures remain green; public tunnel still has `reasoning_events=8`, `reasoning_done_count=1`, `reasoning_output_item_count=0`, `reasoning_lifecycle_complete=false`, with reasoning deltas attached to the message item at `output_index=0`. It preserves `{"value":"blue-cat"}` and final function call consistency, so this is no longer the empty-args failure.
+- Release pointer: `QWEN35_RAW_SSE_PARITY` now references the fresh 2026-06-11 red artifact. Other agent should rebuild/redeploy the public tunnel/backend from current source and recapture; do not classify the tunnel green from the old public-recapture artifact.
