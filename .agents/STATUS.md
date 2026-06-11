@@ -13088,3 +13088,24 @@ Other-agent action:
 - Still not done:
   no packaged app, DMG, signing, notarization, PyPI, updater, website, or
   public release action has been run.
+
+# 2026-06-11 continuation PDT - Step3.7 bundled parser parity pushed
+
+- Commit:
+  `4ecee6d76 Prove Step3.7 bundled parser parity`.
+- Pushed:
+  `origin/codex/pr-intake-manifest` and `origin/main`.
+- Proven:
+  isolated bundled-Python Step3.7 smoke passed using
+  `panel/bundled-python/python/bin/python3.12 -B -s -m vmlx_engine.cli`; required
+  tool call emitted exact `{"value":"blue-cat"}`.
+- Aggregate:
+  `build/current-objective-proof-after-step37-bundled-parser-fix-20260611.json`
+  now includes bundled Step3.7 proof in the evidence list and reports covered
+  families `dsv4`, `gemma4`, `lfm`, `ling_bailing`, `minimax`, `nemotron`,
+  `qwen36`, and `step3p7`.
+- Still open:
+  cross-family live smoke remains open for `hy3`, `mimo_v2`, `zaya_text`, and
+  `zaya_vl`; broader N2, MiniMax reporter parity/root cause, real Electron UI
+  cross-family, DSV4 long-output/code, packaged app, DMG signing,
+  notarization, PyPI, updater, website, and public release remain not done.

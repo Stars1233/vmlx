@@ -18179,3 +18179,9 @@ Next action:
 - `panel/scripts/verify-bundled-python.sh` passed, including source/bundled
   hash parity for `vmlx_engine` and `jang_tools`.
 - Next proof is isolated bundled Step3.7 smoke.
+
+# 2026-06-11 continuation PDT - Step3.7 bundled parser parity pushed
+
+- Pushed `4ecee6d76 Prove Step3.7 bundled parser parity` to branch and main.
+- Bundled Step3.7 smoke passed with exact required-tool args and cache/media
+  rows; aggregate still open for Hy3, MiMo, ZAYA text, and ZAYA-VL.
