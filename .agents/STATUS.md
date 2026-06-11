@@ -7668,3 +7668,81 @@ Other-agent action:
     reasoning enabled, direct/gateway/tunnel, valid output indices,
     argument delta/done/final equality, fail-closed empty required args, and
     previous-response/tool-result continuation.
+
+# 2026-06-11 continuation - Gemma media/modality lane
+
+- Active lane:
+  - Gemma JANG/MXFP/QAT VL/video/cache/API/UI proof and honest modality
+    gating.
+- Why now:
+  - MiMo JANG_2L and JANGTQ_2 deterministic no-media installed-app
+    Responses/tool/cache rows are green;
+  - Qwen35/Qwen27 raw-SSE direct/gateway/tunnel parity is classified green
+    from current artifacts;
+  - Gemma4 26B no-media installed-app Responses/tool/reasoning/cache row is
+    green, but Gemma media/video/audio remains open.
+- Constraints:
+  - do not infer audio from config/token placeholders or projection-only
+    weights;
+  - video must be frame-through-vision proof, not metadata;
+  - no release/sign/notarize/PyPI/updater/site action.
+- Next action:
+  - inspect current Gemma media proof artifacts and capability classification,
+    then choose one live image/video/audio or honest-gate row to reduce.
+
+# 2026-06-11 Gemma media row selected
+
+- Inspection:
+  - prior installed-app Gemma4 12B QAT MXFP4 image and video rows were `pass`
+    for semantic media verification, but their server command used the repo
+    `.venv/bin/python`;
+  - prior installed-app Gemma4 12B QAT MXFP4 audio row was `fail`;
+  - inventory artifact
+    `build/current-gemma-qat-native-mxfp4-local-inventory-after-all-jang4m-fullmedia-20260610.json`
+    reports `gemma4_12b_audio_weight_backed=false`,
+    `gemma4_12b_audio_honestly_gated=true`, and video runtime proof required
+    and source-proven.
+- Selected next live proof:
+  - rerun Gemma4 12B QAT MXFP4 video in installed app with bundled Python,
+    using a generated red MP4 fixture and cache controls.
+- Boundary:
+  - this will prove or fail the current bundled installed-app video surface for
+    one smaller Gemma row;
+  - it will not prove audio, 26B/31B video, or release readiness.
+
+# 2026-06-11 Gemma4 12B bundled installed-app video proof passed
+
+- Artifact:
+  - `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-12b-qat-mxfp4-video-bundled-python-20260611-proof.json`.
+- Result:
+  - status `pass`;
+  - real installed `/Applications/vMLX.app` UI;
+  - external server launched with
+    `/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3`;
+  - model `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-MXFP4`;
+  - Chat Completions streaming with cache controls;
+  - video attachment persisted and semantic check passed for `red|solid`.
+- Runtime/media evidence:
+  - server decoded the base64 MP4, detected `25` frames at `25.0` fps, and
+    extracted `4` frames;
+  - Gemma4 media path converted the video row into the vision image path:
+    `Using simple MLLM media streaming fallback for gemma4 with 1 image(s), 0 video(s)`;
+  - chat template applied with `1 images, 0 audio`;
+  - vision prefix cache stored for `1 image(s)` and `359` prompt tokens.
+- Cache/runtime evidence:
+  - native Gemma4 cache schema `mixed_swa_kv_v1`;
+  - storage-boundary q4 quantization applied to full-attention KV only while
+    preserving rotating-window metadata;
+  - prefix, paged cache, and block-disk L2 enabled;
+  - cache-hit tokens `65`, L2 block tokens on disk `65`, disk writes `2`.
+- Quant/runtime evidence:
+  - MXFP4 sidecar detected:
+    `codec=affine_quantized_matmul`, `weight_format=mxfp4`,
+    `profile=MXFP4`, `target_bits=4`, `group_size=32`;
+  - server health memory for the 12B row was about `7.6GB` active and
+    `8.2GB` peak.
+- Still not proven:
+  - Gemma audio; inventory still marks the 12B audio surface as not
+    weight-backed and honestly gated;
+  - Gemma 26B/31B bundled installed-app video;
+  - release/sign/notarize readiness.
