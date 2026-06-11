@@ -263,6 +263,35 @@
   `3/3`; `py_compile` and `git diff --check` passed.
 
 ## CODEX
+- now: selecting N2 JANGTQ2 status separation as the next source/proof board
+  fix. Current checklist has one broad `n2_pro_397b_release_clearance` row that
+  stays red because JANG_1L is off-limits/open, but the objective digest already
+  carries strong JANGTQ2 evidence.
+- intended source change: add explicit N2 JANGTQ2 checklist rows from the
+  existing objective-digest details for source runtime/API/cache, L2 restart,
+  Electron UI previous_response_id/tool loop, strict loopback tool_choice=auto,
+  direct/gateway Responses stream boundary, and no-heavy policy/cache
+  contracts. Keep broad N2 JANG_1L/JANGTQ release clearance red.
+- boundary: no N2 JANG_1L launch/proof/claim, no release/sign/notarize/PyPI
+  action, and no fake media/audio claim. This is release-board precision for
+  the checkpoint JANGTQ2 profile.
+
+## CODEX
+- now: N2 JANGTQ2 status separation is implemented and verified.
+- source change: `tests/cross_matrix/run_full_release_objective_checklist.py`
+  now emits explicit passing rows for JANGTQ2 source runtime/API/cache,
+  fresh-process L2 restart, Electron UI previous_response_id/tool/cache,
+  strict loopback `tool_choice=auto`, direct/gateway Responses stream boundary,
+  and no-heavy policy/cache contracts.
+- regenerated checklist:
+  `build/current-full-release-objective-checklist-after-n2-jangtq2-status-split-20260611.json`
+  remains `status=open`, `failed_count=15`; six N2 JANGTQ2 rows are green and
+  the only N2 failed row is still broad `n2_pro_397b_release_clearance` due
+  JANG_1L.
+- verification: focused full-checklist tests for N2/full-pass fixture passed
+  `3/3`; `py_compile` and `git diff --check` passed.
+
+## CODEX
 - now: Gemma4 required-tool source/proof checkpoint is committed and pushed.
 - commit: `2200598e9 Improve Gemma4 required tool streaming`, pushed to
   `origin/codex/pr-intake-manifest` and `origin/main`.

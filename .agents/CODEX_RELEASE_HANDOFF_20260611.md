@@ -2,10 +2,10 @@
 
 ## Current Commit
 
-- Latest pushed commit: `2822fe994 Keep Qwen35 tunnel SSE gate red`
+- Latest pushed commit: `207c1e47d Refresh release handoff commit pointer`
 - Pushed to: `origin/codex/pr-intake-manifest` and `origin/main`
 - Latest checklist artifact:
-  `build/current-full-release-objective-checklist-after-qwen35-gate-correction-20260611.json`
+  `build/current-full-release-objective-checklist-after-n2-jangtq2-status-split-20260611.json`
 - Latest checklist state: `status=open`, `failed_count=15`
 
 ## Hard Boundaries
@@ -40,6 +40,11 @@
   response consistency, and valid message/function output indices, but it lacks
   complete streamed reasoning output item lifecycle. Keep this row red until
   the tunnel runtime is rebuilt and recaptured.
+- N2 JANGTQ2/non-JANG_1L checkpoint profile is now explicit in the checklist
+  and green for source runtime/API/cache, fresh-process L2 restore, Electron UI
+  previous_response_id/tool/cache, strict loopback `tool_choice=auto`,
+  direct/gateway Responses stream boundary, and no-heavy policy/cache
+  contracts. This does not clear N2 JANG_1L.
 
 ## Still Open
 
@@ -47,6 +52,8 @@
   rows remain open.
 - `n2_pro_397b_release_clearance`: dominated by N2 `JANG_1L`, which is
   Eric-owned/off-limits for this lane. Do not claim or launch it here.
+  The N2 JANGTQ2 profile has explicit green rows; keep broad release clearance
+  red until JANG_1L is reopened and proven.
 - MiMo: exactness/media/speed remain open. Current classification says
   JANGTQ_2 literal mutations happen after valid parser structure; do not clear
   by rewriting parsed tool arguments or repairing generated JSON.

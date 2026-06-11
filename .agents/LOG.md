@@ -210,6 +210,28 @@
   `qwen35_raw_sse_status_pass` and `qwen35_raw_sse_reasoning_events`.
 - Verification passed: focused checklist tests for Qwen35/full-pass fixture
   (`3 passed`), `py_compile`, and `git diff --check`.
+
+# 2026-06-11 continuation - N2 JANGTQ2 status separation selected
+
+- Current checklist has a single broad `n2_pro_397b_release_clearance` row.
+  That row must remain red because N2 JANG_1L is off-limits/open, but it hides
+  the fact that JANGTQ2/non-JANG_1L already has current proof across source,
+  Electron UI, cache/L2, strict tool loop, and direct/gateway Responses
+  streaming.
+- Selected source/proof-board update: add explicit checklist rows for the N2
+  JANGTQ2 checkpoint profile from existing objective-digest details, while
+  preserving the broad N2 release row as red until JANG_1L is explicitly
+  reopened and proven.
+- No model launch, no N2 JANG_1L action, no signing/notarization/PyPI/site
+  action, and no media/audio claim.
+- Implemented in `tests/cross_matrix/run_full_release_objective_checklist.py`
+  and guarded by `tests/test_full_release_objective_checklist.py`.
+- Regenerated
+  `build/current-full-release-objective-checklist-after-n2-jangtq2-status-split-20260611.json`.
+  Result: `status=open`, `failed_count=15`; six explicit N2 JANGTQ2 rows pass
+  and broad `n2_pro_397b_release_clearance` remains the only N2 failed row.
+- Verification passed: focused N2/full-pass checklist tests (`3 passed`),
+  `py_compile`, and `git diff --check`.
 - Boundary: no release/sign/notarize/PyPI/updater/site, no N2 JANG_1L, no
   audio claim, no all-Gemma-size claim, and no installed-app claim from this
   source proof.
