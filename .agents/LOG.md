@@ -16778,3 +16778,32 @@ Next action:
   PyPI publish/update was not performed; runtime/model proof rows remain governed
   by the pre-DMG manifest state (`release_ready=false`,
   `prepackage_ready=false`, `current_proof_sweep=fail`).
+
+# 2026-06-11 03:31 PDT - PyPI and live-public release-surface result
+
+- Built PyPI artifacts locally with `uvx --from build pyproject-build --sdist
+  --wheel`; produced `dist/vmlx-1.5.57-py3-none-any.whl` and
+  `dist/vmlx-1.5.57.tar.gz`.
+- `uv run --extra dev python -m twine check dist/*` passed for both files.
+- Local PyPI upload attempt using the existing local `.pypirc` credential failed:
+  `HTTPError: 403 Forbidden from https://upload.pypi.org/legacy/`.
+  The exposed token from chat was not written to disk, printed, or used.
+- Dispatched GitHub workflow `publish-pypi.yml` with `ref=v1.5.57`.
+  Run `27340572840` built and checked package metadata successfully, skipped
+  API-token publish because `PYPI_API_TOKEN_PRESENT=false`, then failed the
+  trusted-publishing step. PyPI still reports `vmlx==1.5.56`; `jang==2.5.31`
+  is current.
+- Live-public release-surface proof:
+  `build/current-release-surface-contract-live-public-after-checkpoint-refresh-20260611.json`
+  is red only on `public_pypi_has_release_files=false` and
+  `public_raw_updater_matches_local=false`.
+- Raw updater detail:
+  GitHub Contents API and
+  `https://github.com/jjang-ai/mlxstudio/raw/refs/heads/main/latest.json`
+  show the fresh hashes. `raw.githubusercontent.com/jjang-ai/mlxstudio/main/latest.json`
+  and `https://github.com/jjang-ai/mlxstudio/raw/main/latest.json` still serve
+  the old hashes from GitHub raw CDN cache. jsDelivr and live
+  `mlx.studio/update/latest.json` show the fresh hashes.
+- `uv.lock` was updated to reflect editable local package version `vmlx`
+  `1.5.57`; this is version-lock metadata for the release state, not a runtime
+  code change.

@@ -1,0 +1,123 @@
+{
+  "created_at": "2026-06-11T03:27:29-0700",
+  "status": "fail",
+  "checks": {
+    "source_version_consistent": true,
+    "local_updater_not_ahead_of_source": true,
+    "staged_source_version_not_public": false,
+    "local_updater_release_state_valid": true,
+    "local_updater_platform_downloads_valid": true,
+    "local_updater_has_required_fields": true,
+    "local_updater_url_matches_version": true,
+    "local_updater_sha256_valid": true,
+    "local_updater_notes_match_version": true,
+    "public_raw_updater_matches_local": false,
+    "public_site_updater_matches_local": true,
+    "public_site_updater_cache_headers_safe": true,
+    "public_pypi_has_release_files": false,
+    "public_github_release_published": true,
+    "public_github_release_has_updater_asset": true,
+    "public_github_release_has_all_manifest_download_assets": true,
+    "public_github_source_release_tag_matches_source_head": true
+  },
+  "status_failed_checks": [
+    "public_pypi_has_release_files",
+    "public_raw_updater_matches_local"
+  ],
+  "informational_false_checks": [
+    "staged_source_version_not_public"
+  ],
+  "source_versions": {
+    "pyproject": "1.5.57",
+    "panel_package": "1.5.57"
+  },
+  "local_latest": {
+    "version": "1.5.57",
+    "url": "https://github.com/jjang-ai/mlxstudio/releases/download/v1.5.57/vMLX-1.5.57-sequoia-arm64.dmg",
+    "sha256": "7bfa301b65d499dd51655b2c0aade4b8ffdf299ec798027be5a688d378885f1e",
+    "downloads": {
+      "sequoia": {
+        "url": "https://github.com/jjang-ai/mlxstudio/releases/download/v1.5.57/vMLX-1.5.57-sequoia-arm64.dmg",
+        "sha256": "7bfa301b65d499dd51655b2c0aade4b8ffdf299ec798027be5a688d378885f1e"
+      },
+      "tahoe": {
+        "url": "https://github.com/jjang-ai/mlxstudio/releases/download/v1.5.57/vMLX-1.5.57-tahoe-arm64.dmg",
+        "sha256": "bbebd29d8e9d9ad4de7fbcb460c58390a114f03b8f38dd66f8733601238e4eed"
+      }
+    },
+    "notes_head": [
+      "vMLX 1.5.57 checkpoint release",
+      "",
+      "Highlights:",
+      "- Fresh signed and notarized checkpoint build so GitHub, updater, download page, and PyPI can move past the stale 1.5.56 release surface.",
+      "- Carries the current vMLX Python engine runtime fixes for Gemma4 QAT/JANG_4M source smokes, Gemma4 tool-parser modality sentinel cleanup, Qwen/N2 Responses/tool-call tracing work, cache/L2 proof hooks, and current panel/runtime packaging surface.",
+      "- Keeps release manifest truth visible: this is a usable checkpoint release, not a claim that every open runtime/model-family row is production-green.",
+      "",
+      "Verification:"
+    ]
+  },
+  "live_public": true,
+  "public_surfaces": {
+    "raw_latest": {
+      "version": "1.5.57",
+      "url": "https://github.com/jjang-ai/mlxstudio/releases/download/v1.5.57/vMLX-1.5.57-sequoia-arm64.dmg",
+      "sha256": "68bfea742acf991887d7cf6858a1300fd20c26b3cd49f0e6601d88506f379525"
+    },
+    "site_latest": {
+      "version": "1.5.57",
+      "url": "https://github.com/jjang-ai/mlxstudio/releases/download/v1.5.57/vMLX-1.5.57-sequoia-arm64.dmg",
+      "sha256": "7bfa301b65d499dd51655b2c0aade4b8ffdf299ec798027be5a688d378885f1e"
+    },
+    "site_latest_headers": {
+      "cache-control": "no-cache, no-store, must-revalidate",
+      "pragma": "no-cache",
+      "expires": "0",
+      "cf-cache-status": "DYNAMIC",
+      "access-control-allow-origin": "*"
+    },
+    "pypi_error": "<HTTPError 404: 'Not Found'>",
+    "github_release": {
+      "draft": false,
+      "prerelease": false,
+      "assets": [
+        {
+          "name": "vMLX-1.5.57-sequoia-arm64.dmg",
+          "digest": "sha256:7bfa301b65d499dd51655b2c0aade4b8ffdf299ec798027be5a688d378885f1e",
+          "state": "uploaded"
+        },
+        {
+          "name": "vMLX-1.5.57-sequoia-arm64.dmg.blockmap",
+          "digest": "sha256:ca2ed0ce1a78299644ce8d5176b5a157eb27f6a210e7ad4fc583aecca10d2325",
+          "state": "uploaded"
+        },
+        {
+          "name": "vMLX-1.5.57-tahoe-arm64.dmg",
+          "digest": "sha256:bbebd29d8e9d9ad4de7fbcb460c58390a114f03b8f38dd66f8733601238e4eed",
+          "state": "uploaded"
+        },
+        {
+          "name": "vMLX-1.5.57-tahoe-arm64.dmg.blockmap",
+          "digest": "sha256:666cae4dbc2af789192bca1722fbeb5e99eaedb5d2e0e26ec7bda919d3bb8f90",
+          "state": "uploaded"
+        }
+      ]
+    },
+    "github_source_release_tag": {
+      "sha": "ca5c97242d48d91c51d4c41469360da670ac46c0",
+      "type": "commit",
+      "resolved_sha": "ca5c97242d48d91c51d4c41469360da670ac46c0",
+      "resolved_type": "commit",
+      "current_revision": "ca5c97242d48d91c51d4c41469360da670ac46c0"
+    }
+  },
+  "current_revision": "ca5c97242d48d91c51d4c41469360da670ac46c0",
+  "source_hashes": {
+    "latest.json": "56fb194cafc09b0a42f62644bd8d9207a26c543e4ac50bab8390781d2d3cd9c1",
+    "panel/package.json": "e26b6447bf48491f312df562367781eed4eb1ab8bcfda30fe1777fa59bb5fd4e",
+    "panel/src/main/update-checker.ts": "dd88dcf251d0ac69a83e7ffccca7a4929169150c23afc2135e5b045c49a72dbd",
+    "pyproject.toml": "76380972607657a1a89d13cf610def60be00f87edb64289f296b969ccc6a47bd",
+    ".github/workflows/publish-pypi.yml": "30a50b5f1b4b805c45b7f7ed7763f31d51698ba71544e9ec73f1f46f34df2b40",
+    "tests/cross_matrix/run_release_surface_contract.py": "7632bebe5025d37958d076fea13285bfa028181fa2960a6ff619a58b11832c97",
+    "tests/test_release_surface_contract.py": "45347877f112c40662919650a889e7e56433b850296d8f451ff8ed5745d4b704"
+  }
+}

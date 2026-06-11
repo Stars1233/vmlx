@@ -11414,3 +11414,24 @@ Other-agent action:
 - Boundary:
   this is a public signed/notarized checkpoint release surface, not a
   production-green runtime claim. PyPI was not published in this movement.
+
+# 2026-06-11 03:31 PDT PyPI/live-public release-surface state
+
+- Local PyPI package build/check:
+  `dist/vmlx-1.5.57-py3-none-any.whl` and `dist/vmlx-1.5.57.tar.gz` were built;
+  `twine check` passed.
+- PyPI publish status:
+  local `.pypirc` upload failed with `403 Forbidden`; GitHub workflow
+  `publish-pypi.yml` run `27340572840` built and checked successfully, skipped
+  token publish because no `PYPI_API_TOKEN` secret is configured, and failed
+  trusted publishing. Public PyPI still reports `vmlx==1.5.56`; `jang==2.5.31`
+  is current.
+- Live-public proof artifact:
+  `build/current-release-surface-contract-live-public-after-checkpoint-refresh-20260611.json`
+  fails only on `public_pypi_has_release_files=false` and
+  `public_raw_updater_matches_local=false`.
+- Raw updater caveat:
+  GitHub Contents API, `github.com/.../raw/refs/heads/main/latest.json`,
+  jsDelivr, and live `mlx.studio/update/latest.json` show fresh hashes; the
+  `raw.githubusercontent.com/jjang-ai/mlxstudio/main/latest.json` CDN endpoint
+  is still stale.

@@ -23,7 +23,11 @@
     "final_verify": "./panel/scripts/verify-release-dmgs.sh",
     "github_release_upload_mlxstudio": "gh release upload v1.5.57 panel/release/vMLX-1.5.57-sequoia-arm64.dmg panel/release/vMLX-1.5.57-sequoia-arm64.dmg.blockmap panel/release/vMLX-1.5.57-tahoe-arm64.dmg panel/release/vMLX-1.5.57-tahoe-arm64.dmg.blockmap --repo jjang-ai/mlxstudio --clobber",
     "github_release_upload_vmlx": "gh release upload v1.5.57 panel/release/vMLX-1.5.57-sequoia-arm64.dmg panel/release/vMLX-1.5.57-sequoia-arm64.dmg.blockmap panel/release/vMLX-1.5.57-tahoe-arm64.dmg panel/release/vMLX-1.5.57-tahoe-arm64.dmg.blockmap --repo jjang-ai/vmlx --clobber",
-    "github_release_notes": "gh release edit v1.5.57 --repo jjang-ai/vmlx --notes <latest notes>; gh release edit v1.5.57 --repo jjang-ai/mlxstudio --notes <latest notes>"
+    "github_release_notes": "gh release edit v1.5.57 --repo jjang-ai/vmlx --notes <latest notes>; gh release edit v1.5.57 --repo jjang-ai/mlxstudio --notes <latest notes>",
+    "release_surface_live_public": "uv run --extra dev python tests/cross_matrix/run_release_surface_contract.py --live-public --out build/current-release-surface-contract-live-public-after-checkpoint-refresh-20260611.json",
+    "pypi_build_check": "uvx --from build pyproject-build --sdist --wheel && uv run --extra dev python -m twine check dist/*",
+    "pypi_upload_attempt": "uv run --extra dev python -m twine upload --non-interactive dist/vmlx-1.5.57-py3-none-any.whl dist/vmlx-1.5.57.tar.gz",
+    "pypi_workflow_attempt": "gh workflow run publish-pypi.yml --repo jjang-ai/vmlx -f ref=v1.5.57"
   },
   "bundled_runtime": {
     "vmlx": "1.5.57",
@@ -154,7 +158,8 @@
   ],
   "no_claims": [
     "This does not make the full release objective production-green.",
-    "This does not publish to PyPI. Web-origin and CDN publication are tracked separately from GitHub release asset replacement.",
+    "This does not publish vmlx 1.5.57 to PyPI. Local .pypirc upload failed with HTTP 403, and GitHub workflow run 27340572840 failed trusted publishing after build and twine check passed.",
+    "GitHub raw CDN may lag the committed mlxstudio latest.json; Contents API, github.com raw refs URL, jsDelivr, and mlx.studio/update/latest.json were used to verify the fresh manifest.",
     "This does not close open model/runtime rows that remain red in the prepackage manifest."
   ]
 }
