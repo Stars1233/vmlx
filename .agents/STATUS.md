@@ -11426,7 +11426,7 @@ Other-agent action:
   token publish because no `PYPI_API_TOKEN` secret is configured, and failed
   trusted publishing. Public PyPI still reports `vmlx==1.5.56`; `jang==2.5.31`
   is current.
-- Live-public proof artifact:
+- Initial live-public proof artifact:
   `build/current-release-surface-contract-live-public-after-checkpoint-refresh-20260611.json`
   fails only on `public_pypi_has_release_files=false` and
   `public_raw_updater_matches_local=false`.
@@ -11435,3 +11435,7 @@ Other-agent action:
   jsDelivr, and live `mlx.studio/update/latest.json` show fresh hashes; the
   `raw.githubusercontent.com/jjang-ai/mlxstudio/main/latest.json` CDN endpoint
   is still stale.
+- Final live-public proof after the `v1.5.57` tag moved to commit `574d6fe6d`:
+  raw updater, live site updater, cache headers, GitHub release assets, and
+  source tag checks are green. Only PyPI remains red because `vmlx==1.5.57` is
+  not published.

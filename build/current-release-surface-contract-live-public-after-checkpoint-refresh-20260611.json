@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-11T03:27:29-0700",
+  "created_at": "2026-06-11T03:31:05-0700",
   "status": "fail",
   "checks": {
     "source_version_consistent": true,
@@ -11,7 +11,7 @@
     "local_updater_url_matches_version": true,
     "local_updater_sha256_valid": true,
     "local_updater_notes_match_version": true,
-    "public_raw_updater_matches_local": false,
+    "public_raw_updater_matches_local": true,
     "public_site_updater_matches_local": true,
     "public_site_updater_cache_headers_safe": true,
     "public_pypi_has_release_files": false,
@@ -21,8 +21,7 @@
     "public_github_source_release_tag_matches_source_head": true
   },
   "status_failed_checks": [
-    "public_pypi_has_release_files",
-    "public_raw_updater_matches_local"
+    "public_pypi_has_release_files"
   ],
   "informational_false_checks": [
     "staged_source_version_not_public"
@@ -61,7 +60,7 @@
     "raw_latest": {
       "version": "1.5.57",
       "url": "https://github.com/jjang-ai/mlxstudio/releases/download/v1.5.57/vMLX-1.5.57-sequoia-arm64.dmg",
-      "sha256": "68bfea742acf991887d7cf6858a1300fd20c26b3cd49f0e6601d88506f379525"
+      "sha256": "7bfa301b65d499dd51655b2c0aade4b8ffdf299ec798027be5a688d378885f1e"
     },
     "site_latest": {
       "version": "1.5.57",
@@ -103,14 +102,14 @@
       ]
     },
     "github_source_release_tag": {
-      "sha": "ca5c97242d48d91c51d4c41469360da670ac46c0",
+      "sha": "574d6fe6df6576c698879f2db47defd9fae65cf8",
       "type": "commit",
-      "resolved_sha": "ca5c97242d48d91c51d4c41469360da670ac46c0",
+      "resolved_sha": "574d6fe6df6576c698879f2db47defd9fae65cf8",
       "resolved_type": "commit",
-      "current_revision": "ca5c97242d48d91c51d4c41469360da670ac46c0"
+      "current_revision": "574d6fe6df6576c698879f2db47defd9fae65cf8"
     }
   },
-  "current_revision": "ca5c97242d48d91c51d4c41469360da670ac46c0",
+  "current_revision": "574d6fe6df6576c698879f2db47defd9fae65cf8",
   "source_hashes": {
     "latest.json": "56fb194cafc09b0a42f62644bd8d9207a26c543e4ac50bab8390781d2d3cd9c1",
     "panel/package.json": "e26b6447bf48491f312df562367781eed4eb1ab8bcfda30fe1777fa59bb5fd4e",

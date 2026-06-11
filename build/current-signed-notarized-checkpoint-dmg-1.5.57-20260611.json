@@ -159,7 +159,7 @@
   "no_claims": [
     "This does not make the full release objective production-green.",
     "This does not publish vmlx 1.5.57 to PyPI. Local .pypirc upload failed with HTTP 403, and GitHub workflow run 27340572840 failed trusted publishing after build and twine check passed.",
-    "GitHub raw CDN may lag the committed mlxstudio latest.json; Contents API, github.com raw refs URL, jsDelivr, and mlx.studio/update/latest.json were used to verify the fresh manifest.",
+    "Final live-public release-surface verification is green for raw updater, live site updater, cache headers, GitHub release assets, and source tag checks; only PyPI remains red.",
     "This does not close open model/runtime rows that remain red in the prepackage manifest."
   ]
 }

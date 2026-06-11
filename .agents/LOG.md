@@ -16793,7 +16793,7 @@ Next action:
   API-token publish because `PYPI_API_TOKEN_PRESENT=false`, then failed the
   trusted-publishing step. PyPI still reports `vmlx==1.5.56`; `jang==2.5.31`
   is current.
-- Live-public release-surface proof:
+- Initial live-public release-surface proof:
   `build/current-release-surface-contract-live-public-after-checkpoint-refresh-20260611.json`
   is red only on `public_pypi_has_release_files=false` and
   `public_raw_updater_matches_local=false`.
@@ -16804,6 +16804,15 @@ Next action:
   and `https://github.com/jjang-ai/mlxstudio/raw/main/latest.json` still serve
   the old hashes from GitHub raw CDN cache. jsDelivr and live
   `mlx.studio/update/latest.json` show the fresh hashes.
+- Final live-public release-surface proof after moving `jjang-ai/vmlx` tag
+  `v1.5.57` to commit `574d6fe6d`:
+  `public_raw_updater_matches_local=true`,
+  `public_site_updater_matches_local=true`,
+  `public_site_updater_cache_headers_safe=true`,
+  `public_github_release_published=true`,
+  `public_github_release_has_all_manifest_download_assets=true`,
+  `public_github_source_release_tag_matches_source_head=true`;
+  only `public_pypi_has_release_files=false` remains red.
 - `uv.lock` was updated to reflect editable local package version `vmlx`
   `1.5.57`; this is version-lock metadata for the release state, not a runtime
   code change.
