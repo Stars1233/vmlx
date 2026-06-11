@@ -1,0 +1,53 @@
+{
+  "app_path": "/Applications/vMLX.app",
+  "artifact": "current-installed-app-runtime-parity-after-responses-max-tokens-alias-20260610",
+  "checks": {
+    "codesign_verify_deep_strict": true,
+    "installed_app_exists": true,
+    "packaged_source_contains_endpoint_fallback": true,
+    "packaged_source_contains_max_tokens_alias": true,
+    "responses_request_import_alias_ok": true,
+    "site_packages_contains_endpoint_fallback": true,
+    "site_packages_contains_max_tokens_alias": true,
+    "spctl_not_notarized_expected_rejected": true
+  },
+  "commands": {
+    "build_install": "bash panel/scripts/build-and-install.sh",
+    "codesign": "codesign --verify --deep --strict --verbose=2 /Applications/vMLX.app",
+    "import_probe": "/Applications/vMLX.app/.../python3 -B -s import ResponsesRequest with max_tokens=24",
+    "spctl": "spctl --assess --type execute --verbose=4 /Applications/vMLX.app (expected rejected for ad-hoc local install)",
+    "verify_bundled_python": "panel/scripts/verify-bundled-python.sh"
+  },
+  "created_at": "2026-06-10T23:03:08-0700",
+  "files": {
+    "api/models.py": {
+      "packaged_matches_source": true,
+      "packaged_source_sha256": "a6d4fd3e319582d8db9be0ca9cf7df3327bf497eefd5ff1fbd1025ce7b750a39",
+      "site_packages_matches_source": true,
+      "site_packages_sha256": "a6d4fd3e319582d8db9be0ca9cf7df3327bf497eefd5ff1fbd1025ce7b750a39",
+      "source_sha256": "a6d4fd3e319582d8db9be0ca9cf7df3327bf497eefd5ff1fbd1025ce7b750a39"
+    },
+    "server.py": {
+      "packaged_matches_source": true,
+      "packaged_source_sha256": "a93f5588c7334a0bf2f9d6eacc5ea31c054ec421b3285ea51326e551f3478bf1",
+      "site_packages_matches_source": true,
+      "site_packages_sha256": "a93f5588c7334a0bf2f9d6eacc5ea31c054ec421b3285ea51326e551f3478bf1",
+      "source_sha256": "a93f5588c7334a0bf2f9d6eacc5ea31c054ec421b3285ea51326e551f3478bf1"
+    }
+  },
+  "not_proven": [
+    "No notarized Developer ID release artifact was produced.",
+    "No DMG, tag, updater JSON, PyPI, or website publish occurred.",
+    "No installed-app live model launch was run for this alias fix yet."
+  ],
+  "proven": [
+    "Installed /Applications/vMLX.app was rebuilt from current source after commit 9aec5d6a1.",
+    "Installed packaged source mirror and installed site-packages include ResponsesRequest.max_tokens.",
+    "Installed server source and site-packages include _responses_request_max_tokens fallback to request.max_tokens.",
+    "Bundled Python critical imports and vmlx/jang source parity verifier passed.",
+    "Local app code signature verifies with ad-hoc seal."
+  ],
+  "release_boundary": "Local app-dir install only. Ad-hoc signed; not notarized; no public release/upload/updater/PyPI action.",
+  "source_commit": "9aec5d6a1deff4415a7903abde88f1ecea7c97fb",
+  "status": "pass"
+}

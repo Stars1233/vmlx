@@ -1,3 +1,39 @@
+# 2026-06-10 23:05 PDT - Installed-app parity for Responses max_tokens alias selected
+
+- Current source fix `9aec5d6a1` is pushed to `origin/main` and
+  `origin/codex/pr-intake-manifest`, but `/Applications/vMLX.app` has not been
+  rebuilt after that commit.
+- Selected blocker: installed-app parity for the `/v1/responses` `max_tokens`
+  compatibility alias fix. The source fix is not checkpoint-useful until the
+  bundled app runtime contains it.
+- Planned movement: run the repo-owned non-release local installer
+  `panel/scripts/build-and-install.sh`, then verify the installed bundled
+  runtime/source mirror contains `ResponsesRequest.max_tokens` and endpoint
+  fallback to `request.max_tokens` when `max_output_tokens` is absent.
+- Boundaries: this is not a public release DMG, not notarization, not PyPI, not
+  updater/site work, and not N2 JANG_1L. The unrelated dirty
+  `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
+  remains unstaged.
+- Result: `bash panel/scripts/build-and-install.sh` completed. It rebuilt
+  bundled Python, packaged `release/mac-arm64/vMLX.app`, ad-hoc sealed it,
+  removed the prior `/Applications/vMLX.app`, copied the rebuilt app into
+  `/Applications`, and verified the local app signature.
+- Proof:
+  `build/current-installed-app-runtime-parity-after-responses-max-tokens-alias-20260610.json`
+  is `status=pass`.
+- Installed-app parity proven: installed packaged source mirror and installed
+  site-packages match current source hashes for `vmlx_engine/api/models.py`
+  and `vmlx_engine/server.py`; both include `ResponsesRequest.max_tokens` and
+  the `/v1/responses` `_responses_request_max_tokens` fallback to
+  `request.max_tokens` when `max_output_tokens` is absent.
+- Bundled Python import probe confirmed `ResponsesRequest(model='m',
+  input='hi', max_tokens=24)` preserves `max_tokens=24`, leaves
+  `max_output_tokens=None`, and has `max_tokens` in `model_fields`.
+- `panel/scripts/verify-bundled-python.sh` passed all critical imports/source
+  parity checks. `codesign --verify --deep --strict --verbose=2
+  /Applications/vMLX.app` passed. `spctl --assess` rejected the app as
+  expected for the ad-hoc local install, so this is not a notarized release.
+
 # 2026-06-10 22:46 PDT - MiMo exactness/speed/media diagnosis resumed
 
 - Current-turn guard rechecked directly from the deprecated `/Users/eric/vmlx`

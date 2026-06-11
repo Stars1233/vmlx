@@ -1,4 +1,45 @@
 ## CODEX
+- now: installed-app parity for the Responses `max_tokens` alias fix is
+  complete.
+- app action: ran `bash panel/scripts/build-and-install.sh`; it rebuilt
+  bundled Python, packaged the Electron app-dir, ad-hoc sealed it, removed the
+  prior `/Applications/vMLX.app`, and installed the rebuilt app.
+- proof artifact:
+  `build/current-installed-app-runtime-parity-after-responses-max-tokens-alias-20260610.json`
+  is `status=pass`.
+- proven: `/Applications/vMLX.app` packaged source mirror and installed
+  site-packages match current source for `vmlx_engine/api/models.py` and
+  `vmlx_engine/server.py`; both contain `ResponsesRequest.max_tokens` and the
+  `/v1/responses` fallback to `request.max_tokens` when
+  `max_output_tokens` is absent. Bundled Python import probe confirmed
+  `max_tokens=24`, `max_output_tokens=None`, and
+  `fields_has_max_tokens=True`.
+- verification: `panel/scripts/verify-bundled-python.sh` passed all critical
+  imports/source parity checks. `codesign --verify --deep --strict` passes for
+  `/Applications/vMLX.app`; `spctl` rejects as expected because this is not a
+  notarized Developer ID release artifact.
+- boundaries: no public DMG, no notarization, no tag/upload/PyPI/updater/site,
+  and no installed-app live model launch for this alias fix yet. The unrelated
+  panel settings proof JSON remains dirty and unstaged.
+
+## CODEX
+- now: selected installed-app parity for the just-pushed Responses
+  `max_tokens` alias fix. Source is proven and pushed at `9aec5d6a1`, but
+  `/Applications/vMLX.app` has not yet been rebuilt after that commit.
+- planned movement: use the repo-owned non-release local installer
+  `panel/scripts/build-and-install.sh`, then verify the installed bundled
+  runtime contains the `ResponsesRequest.max_tokens` field and the endpoint
+  resolution fallback. This is app parity for a source fix, not a public
+  release step.
+- current state: no vMLX server is running. The only known unrelated dirty
+  tracked file is
+  `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`;
+  do not stage or revert it.
+- boundaries: no release DMG, sign/notarize/tag/upload/PyPI/updater/site
+  action; no N2 JANG_1L; no broad harness rewrites; keep verification narrow
+  to installed-app parity for the API fix plus source/app hash drift.
+
+## CODEX
 - now: MiMo JANGTQ_2 live refresh and Responses `max_tokens` compatibility fix
   are complete; server was stopped cleanly.
 - artifacts:

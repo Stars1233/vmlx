@@ -7,6 +7,46 @@ separates what was actually loaded and proven from what remains red.
 
 ## Latest Proof Additions
 
+### Installed-App Parity After Responses `max_tokens` Alias Fix
+
+Artifact:
+
+- `build/current-installed-app-runtime-parity-after-responses-max-tokens-alias-20260610.json`
+
+Action:
+
+- Ran `bash panel/scripts/build-and-install.sh` from current source after
+  commit `9aec5d6a1`.
+- The script rebuilt bundled Python, ran the bundled Python verifier, packaged
+  `release/mac-arm64/vMLX.app`, ad-hoc sealed the app, replaced
+  `/Applications/vMLX.app`, and verified the local app signature.
+
+Proven:
+
+- Installed packaged source mirror and installed site-packages match current
+  source hashes for:
+  - `vmlx_engine/api/models.py`
+  - `vmlx_engine/server.py`
+- Both installed copies include `ResponsesRequest.max_tokens` and the
+  `/v1/responses` `_responses_request_max_tokens` fallback to
+  `request.max_tokens` when `max_output_tokens` is absent.
+- Bundled Python import probe confirmed:
+  `max_tokens=24`, `max_output_tokens=None`, and
+  `fields_has_max_tokens=True`.
+- `panel/scripts/verify-bundled-python.sh` passed all critical import and
+  source-parity checks.
+- `codesign --verify --deep --strict --verbose=2 /Applications/vMLX.app`
+  passed.
+
+Boundary:
+
+- This is installed-app parity for a source/API fix, not a public release.
+- `spctl --assess --type execute` rejects the local app as expected because it
+  is ad-hoc signed and not notarized.
+- No DMG, notarization, tag, upload, PyPI publish, updater JSON, or website
+  update was performed.
+- No installed-app live model launch was run for this alias fix yet.
+
 ### MiMo JANGTQ_2 Live Refresh + Responses `max_tokens` Alias Fix
 
 Artifacts:
