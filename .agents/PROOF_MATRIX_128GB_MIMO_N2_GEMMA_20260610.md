@@ -3387,3 +3387,32 @@ Next implementation target:
   media parity, or a fresh installed-app rerun after runtime changes. This does
   not clear N2 JANG_1L, audio, MTP, package/sign/notarize, PyPI, updater JSON,
   website, or public release rows.
+
+## Gemma4 12B QAT MXFP4 Installed-App Responses Video/Cache - 2026-06-11
+
+- Proof:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-12b-qat-mxfp4-responses-video-cache-bundled-python-20260611-proof.json`.
+- Status:
+  passed with installed `/Applications/vMLX.app`, bundled Python,
+  `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-MXFP4`,
+  `wireApi=responses`, deterministic sampling, MLLM enabled, video enabled,
+  audio disabled, and server cache controls enabled.
+- Proven:
+  installed app UI, bundled Python, real Gemma4 12B QAT MXFP4 load,
+  `/v1/responses`, Responses delta streaming, video attachment preservation,
+  `video_url` request body, base64 MP4 decode, 25-frame ingestion with 4
+  extracted frames, Gemma4 frame-through-vision path via image fallback,
+  semantic red/solid video answer, generation defaults, parser/language leak
+  checks, Responses cache-detail usage, native Gemma4 `mixed_swa_kv_v1` cache,
+  q4 storage-boundary KV quantization for full-attention KV only,
+  paged/prefix cache reuse, cache endpoint stats, and block-disk L2 writes.
+- Metrics:
+  cache-hit requests `1`, cache-hit tokens `20`, RAM cached tokens `70`, L2
+  block tokens on disk `70`, disk writes `2`, text decode about `55-56 tok/s`,
+  video prefill about `295 prompt tok/s`, memory about `7.8GB` active /
+  `8.4GB` peak.
+- No-claims:
+  this is not Gemma audio proof; runtime reports audio unavailable. This does
+  not clear 26B/31B Responses video, Qwen/N2/MiMo media, tunnel parity, full
+  reasoning/tool stress, release packaging, sign/notarize, PyPI, updater JSON,
+  or website release rows.

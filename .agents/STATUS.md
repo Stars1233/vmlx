@@ -10941,3 +10941,58 @@ Other-agent action:
 - No-claims:
   this does not prove N2 JANG_1L, audio, MTP, public tunnel parity, release
   packaging, sign/notarize, PyPI, updater JSON, or website release rows.
+
+# 2026-06-11 02:04 PDT next live row selected Gemma installed-app Responses video
+
+- Continuation objective:
+  continue closing concrete runtime/API/UI/cache/media rows toward checkpoint
+  readiness without repeating already-green heavy N2 loads or broad harness
+  work.
+- Selected blocker:
+  Gemma4 12B QAT MXFP4 installed-app `/v1/responses` video parity. The source
+  Electron dev Responses video row is green and installed-app Chat video is
+  green, but the exact installed-app Responses video row remains unproven in
+  the current written matrix.
+- Planned command:
+  run `panel/scripts/live-real-ui-model-proof.mjs` against
+  `/Applications/vMLX.app` with bundled Python, model
+  `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-MXFP4`,
+  `wireApi=responses`, deterministic sampling, MLLM enabled, red MP4 fixture,
+  and server cache controls.
+- Boundaries:
+  no release/sign/notarize/PyPI/updater/site action, no N2 JANG_1L, no Gemma
+  audio claim, and no source edit unless this proof identifies a real installed
+  runtime or UI routing defect.
+
+# 2026-06-11 02:06 PDT Gemma4 12B QAT MXFP4 installed-app Responses video pass
+
+- Command/proof:
+  ran `panel/scripts/live-real-ui-model-proof.mjs` against installed
+  `/Applications/vMLX.app` with bundled Python
+  `/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3`,
+  model `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-MXFP4`,
+  `wireApi=responses`, deterministic sampling, MLLM enabled, red MP4 video
+  fixture, and server cache controls.
+- Artifact:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-12b-qat-mxfp4-responses-video-cache-bundled-python-20260611-proof.json`
+  is `status=pass`.
+- Proven:
+  installed app UI, bundled Python, real Gemma4 12B QAT MXFP4 load,
+  `/v1/responses`, Responses delta streaming, video attachment preservation,
+  `video_url` request body, base64 MP4 decode, 25-frame video ingestion with 4
+  extracted frames, Gemma4 frame-through-vision path via image fallback,
+  semantic red/solid answer, settings persistence, generation defaults,
+  parser/language leak checks, server cache controls, cache endpoint stats,
+  native Gemma4 `mixed_swa_kv_v1` cache, q4 storage-boundary KV quantization
+  for full-attention KV only, paged/prefix reuse, and block-disk L2 writes.
+- Metrics:
+  cache-hit requests `1`, cache-hit tokens `20`, RAM cached tokens `70`, L2
+  block tokens `70`, disk writes `2`, text turns about `55-56 tok/s`, video
+  prompt prefill about `295 prompt tok/s`, installed memory around `7.8GB`
+  active / `8.4GB` peak.
+- No-claims:
+  this is not Gemma audio, not 26B/31B Responses video, not Qwen/N2/MiMo media
+  clearance, not tunnel parity, and not release/sign/notarize readiness.
+- Process hygiene:
+  proof runner cleaned up the server/app; post-run process check showed only
+  the Codex crashpad helper from the matched PID list.

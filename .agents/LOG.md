@@ -16397,3 +16397,37 @@ Next action:
   parity for N2 JANGTQ2, Responses media parity, or rerun after source/app
   changes. This does not prove N2 JANG_1L, audio, MTP, tunnel parity, or
   release readiness.
+
+# 2026-06-11 02:04 PDT - selected Gemma installed-app Responses video row
+
+- Next live row: Gemma4 12B QAT MXFP4 installed-app `/v1/responses` video
+  parity with bundled Python.
+- Rationale: source Electron dev Responses video is green and installed-app
+  Chat video is green, but the exact installed-app Responses video row is still
+  unproven in the current matrix.
+- Boundary: no release/sign/notarize/PyPI/updater/site action, no N2 JANG_1L,
+  no Gemma audio claim, and no source edit unless the proof shows a real
+  installed runtime/UI defect.
+
+# 2026-06-11 02:06 PDT - Gemma4 12B QAT MXFP4 installed-app Responses video pass
+
+- Ran installed-app bundled-Python proof for
+  `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-MXFP4` with
+  `/v1/responses`, deterministic sampling, MLLM enabled, red MP4 fixture, and
+  server cache controls.
+- Artifact:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-12b-qat-mxfp4-responses-video-cache-bundled-python-20260611-proof.json`.
+- Result: `status=pass`.
+- Proven: installed app UI, bundled Python, real Gemma4 12B QAT MXFP4 load,
+  Responses delta streaming, video attachment preservation, MP4 decode,
+  25-frame ingestion with 4 extracted frames, Gemma4 frame-through-vision path,
+  semantic red/solid answer, native Gemma4 mixed-SWA cache, q4
+  storage-boundary KV for full-attention KV only, paged/prefix reuse, block
+  disk L2 writes, settings persistence, generation defaults, parser/language
+  leak checks, and cache endpoint stats.
+- Metrics: cache-hit requests `1`, cache-hit tokens `20`, RAM cached tokens
+  `70`, L2 block tokens `70`, disk writes `2`, text turns about `55-56 tok/s`,
+  video prefill about `295 prompt tok/s`, memory about `7.8GB` active /
+  `8.4GB` peak.
+- Boundary: not audio, not 26B/31B Responses video, not Qwen/N2/MiMo media
+  clearance, not tunnel parity, and not release/sign/notarize readiness.
