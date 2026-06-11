@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-11T13:25:37-0700",
+  "created_at": "2026-06-11T13:56:28-0700",
   "status": "pass",
   "checks": {
     "openai_chat_sampling_kwargs": true,
@@ -33,6 +33,7 @@
     "gateway_responses_reasoning_empty_final_arguments_streaming": true,
     "gateway_stale_responses_port_rejection": true,
     "panel_tool_status_responses_argument_recovery": true,
+    "panel_qwen_gemma_reasoning_request_controls": true,
     "dsv4_native_cache_status": true,
     "dsv4_dsml_parser_residue_rejection": true,
     "dsv4_dsml_valid_tool_call_preserved": true,
@@ -48,7 +49,7 @@
   },
   "missing_markers": [],
   "source_hashes": {
-    "vmlx_engine/server.py": "231d008be4170b20c31174b93ca920bc58d44d116f7642784b6c786ba5f93409",
+    "vmlx_engine/server.py": "bd39ec13dc375dfcec258b91089a0409ffe8fa8367140d2658085c10e80cc733",
     "vmlx_engine/api/models.py": "a6d4fd3e319582d8db9be0ca9cf7df3327bf497eefd5ff1fbd1025ce7b750a39",
     "vmlx_engine/api/tool_calling.py": "30e03575d604d90ab0e5f5808ad1312ca48e04077a845867c8abb94a94e3924d",
     "vmlx_engine/tool_parsers/dsml_tool_parser.py": "9a20d362c64aa9e8f315da693712425a150535a57f1de1354452aa4ccdfbc5e2",
@@ -64,7 +65,7 @@
     "tests/test_structured_output_repair_report.py": "ca5ba0aa5330886b1c986e9dc47aef1fb9805a982fe75d8d3b0411936309d0ca",
     "tests/test_llm.py": "9f43287b8a9ad39a9bb5dbee41d42c757b984f2ff480df64453963ea57548414",
     "tests/test_server.py": "35835210cfa8f1b093a41307506d06e4a6ac704e2571d6cd584eed8328260d1e",
-    "tests/test_engine_audit.py": "b11d8ca00db8522d865b490883ea821e287ce11cc6338fe4981bb6b64a208892",
+    "tests/test_engine_audit.py": "42c692a2ef00230367c5f52bfa0317dc88a5d1c0af251ecb37c225958d7b67a8",
     "tests/test_batching.py": "56fa5cb4d01cc64e9ab2d4f599e7e7f06a84dd42ed1607f352f27f77eedb6b38",
     "tests/test_mllm_scheduler_cache.py": "a47b3b827f0f6d02061afc25ceaacef8681e72e658f925e3879f94e15aecac34",
     "tests/test_tq_disk_cache.py": "3a9138e972d247867191b9f1e42aeb25ddb6182aa9b6a29debbd107d374746b0",
@@ -73,11 +74,12 @@
     "tests/test_responses_history.py": "932ba47bac1aa8303989d06557ba279614bffbcd862ea2cb6f47899ec30b419f",
     "tests/test_tool_format.py": "2b4e5fe7804587398b64f6076645a577e73b0af580844ff2fb86c68afc44c91f",
     "panel/src/main/api-gateway.ts": "18baf6b7c26369b59dce23b0dc6721cb9dbc581935416d6e757499bc8a8a1093",
-    "panel/src/main/ipc/chat.ts": "d9588406cee240041ea4ee42fffb1891dac81b9e778f02126ee32bf97e187d4b",
+    "panel/src/main/ipc/chat.ts": "50247c71ff27ab6a844543716a7198f626e89407843ba196ea5fd45097c66e22",
     "panel/src/renderer/src/components/chat/ToolCallStatus.tsx": "eb7ed484ae70eb48e394c3450760774c4570c56edce0705deef0378119ebbbe2",
     "panel/tests/api-gateway-single-model.behavior.test.ts": "96a68ebe2f48cd637862d7dbdb7abb017a1ab93831e4fe1162479a14d70d602f",
+    "panel/tests/request-builder.test.ts": "c8784a60c8fa3994fac806e85d435c7933c740bb4b3140f4b1cb8b03d7309fb9",
     "panel/tests/tool-status-responsiveness.test.ts": "6b61bc1f5d63342b7463c84bdd8b82bc915eff3739d8262ec574fa6579b2d469",
-    "tests/cross_matrix/run_noheavy_api_cache_contract.py": "5a24acab1afb5d6c768cd3705a8ea0827d44b8ff6a5670ca7717305fe328317a"
+    "tests/cross_matrix/run_noheavy_api_cache_contract.py": "7cc8cc33b5ef19a57470f8ef5dc42d0d5bd28d22a60fa65f7f8462505b760546"
   },
   "commands": {
     "api_route_contracts": {
@@ -93,10 +95,10 @@
         "chat_and_responses_log_and_forward_supported_sampling_kwargs or anthropic_messages_omitted_max_tokens_uses_bundle_default or request_output_caps_override_server_default_without_touching_context_cap or chat_and_responses_streaming_output_caps_override_server_default_without_touching_context_cap or legacy_completions_output_cap_overrides_server_default_without_touching_context_cap or legacy_completions_streaming_output_cap_overrides_server_default_without_touching_context_cap or anthropic_messages_streaming_max_tokens_overrides_server_default_without_touching_context_cap or prompt_context_aliases_clamp_without_rewriting_output_caps or ollama_streaming_num_predict_overrides_server_default_without_touching_context_cap or responses_request_has_sampling_fields or media_diag_hooks_cover_anthropic_and_ollama_streaming_ingress or responses_nonstreaming_forwards_tc_id or chat_completion_streaming_validates_json or responses_api_streaming_validates_json or streaming_emits_error_on_strict_failure or server_docs_state_response_format_is_not_constrained_decoding or text_format_has_json_schema_field or text_format_preserves_schema_data or chat_completions_nonstreaming or responses_nonstreaming or chat_completions_streaming or responses_streaming or chat_stream_tracks_cache_detail_alongside_cached_tokens or chat_stream_finish_chunks_emit_cache_detail or responses_stream_tracks_cache_detail_alongside_cached or responses_stream_finish_emits_cache_detail or usage_builders_preserve_cache_detail_without_cached_tokens or chat_stream_usage_preserves_cache_detail_without_cached_tokens or responses_stream_usage_preserves_cache_detail_without_cached_tokens or generic_turboquant_patcher_skips_hybrid_ssm or ollama_streaming_suppresses_duplicate_done_chunks or cache_stats_endpoint_projects_cache_reuse_skip_telemetry or cache_entries_endpoint_lists_paged_prefix_blocks or cache_warm_endpoint_prefills_and_stores_block_cache or clear_cache_prefix_clears_prefix_l2_without_multimodal or native_cache_status_reports_dsv4_separately_from_tq_kv or native_cache_status_reports_zaya_typed_cca or native_cache_status_reports_plain_attention_kv or acceleration_status_reports_internal_jangtq_acceleration_when_enabled"
       ],
       "returncode": 0,
-      "elapsed_sec": 2.917,
+      "elapsed_sec": 4.533,
       "counts": {
         "passed": 42,
-        "deselected": 540
+        "deselected": 542
       },
       "stdout_tail": [
         "tests/test_engine_audit.py::TestServerSamplingResolution::test_legacy_completions_streaming_output_cap_overrides_server_default_without_touching_context_cap PASSED [ 11%]",
@@ -138,7 +140,7 @@
         "tests/test_engine_audit.py::TestStreamUsagePropagatesCacheDetail::test_chat_stream_usage_preserves_cache_detail_without_cached_tokens PASSED [ 97%]",
         "tests/test_engine_audit.py::TestStreamUsagePropagatesCacheDetail::test_responses_stream_usage_preserves_cache_detail_without_cached_tokens PASSED [100%]",
         "",
-        "====================== 42 passed, 540 deselected in 2.15s ======================"
+        "====================== 42 passed, 542 deselected in 3.74s ======================"
       ]
     },
     "scheduler_cache_contracts": {
@@ -154,7 +156,7 @@
         "dsv4 or hybrid_ssm or cache_detail or prompt_disk_l2"
       ],
       "returncode": 0,
-      "elapsed_sec": 2.599,
+      "elapsed_sec": 2.668,
       "counts": {
         "passed": 8,
         "deselected": 63
@@ -178,7 +180,7 @@
         "tests/test_batching.py::TestSchedulerBasic::test_hybrid_ssm_checkpoint_alignment_rejects_misaligned_state_without_exact PASSED [ 87%]",
         "tests/test_batching.py::TestSchedulerCacheResilience::test_dsv4_cache_hit_repetition_processor_sees_generated_context_only PASSED [100%]",
         "",
-        "======================= 8 passed, 63 deselected in 1.89s ======================="
+        "======================= 8 passed, 63 deselected in 1.99s ======================="
       ]
     },
     "tq_and_mllm_cache_contracts": {
@@ -195,7 +197,7 @@
         "TurboQuant or turboquant or hybrid_ssm or TQ"
       ],
       "returncode": 0,
-      "elapsed_sec": 8.679,
+      "elapsed_sec": 7.731,
       "counts": {
         "passed": 32,
         "deselected": 94
@@ -240,7 +242,7 @@
         "tests/test_tq_disk_cache.py::TestErrorHandling::test_is_tq_compressed_with_empty_list PASSED [ 96%]",
         "tests/test_tq_disk_cache.py::TestErrorHandling::test_is_tq_compressed_with_none_elements PASSED [100%]",
         "",
-        "====================== 32 passed, 94 deselected in 7.96s ======================="
+        "====================== 32 passed, 94 deselected in 7.08s ======================="
       ]
     },
     "dsv4_dsml_tool_contracts": {
@@ -258,10 +260,10 @@
         "visible_text_around_invoke_preserved_no_dsml_leak or tools_called_implies_no_dsml_in_content or repairs_dsml_invoke_with_plain_param_tags or repairs_dsml_tool_calls_wrapper_with_truncated_plain_param_invokes or streaming_buffers_dsml_tool_calls_wrapper_before_invoke or server_buffers_dsml_wrapper_marker_before_invoke or dsml_parser_repairs_schema_gated_malformed_old_dsv4_tool_call or dsml_parser_repairs_partial_canonical_invoke or dsml_parser_repairs_dsv4_live_degraded_dsml_params or dsml_parser_repairs_partial_invoke_with_malformed_value_attr or dsml_parser_repairs_htmlish_invoke_degradation or server_repairs_dsv4_partial_tool_intent_from_request_args or dsv4_encoder_keeps_function_arguments_as_dsml_params or dsv4_encoder_preserves_code_identifiers_on_direct_chat_rail or dsml_issue_165_server_tool_call_arguments_are_not_empty_or_raw or dsv4_fallback_tool_prompt_uses_canonical_tool_calls_wrapper or dsv4_native_schema_prompt_with_only_generic_examples_gets_concrete_fallback or tool_markup_residue_strips_all_registered_marker_families or tool_markup_residue_strips_interrupted_non_dsml_fragments or responses_api_no_fallback_on_suppressed_reasoning or responses_extracts_suppressed_reasoning_tool_calls_before_finalize"
       ],
       "returncode": 0,
-      "elapsed_sec": 2.784,
+      "elapsed_sec": 2.905,
       "counts": {
         "passed": 21,
-        "deselected": 702
+        "deselected": 704
       },
       "stdout_tail": [
         "============================= test session starts ==============================",
@@ -271,7 +273,7 @@
         "configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)",
         "plugins: asyncio-1.3.0, anyio-4.13.0",
         "asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function",
-        "collecting ... collected 723 items / 702 deselected / 21 selected",
+        "collecting ... collected 725 items / 704 deselected / 21 selected",
         "",
         "tests/test_dsml_tool_parser.py::TestDSMLToolParser::test_visible_text_around_invoke_preserved_no_dsml_leak PASSED [  4%]",
         "tests/test_dsml_tool_parser.py::TestDSMLToolParser::test_tools_called_implies_no_dsml_in_content PASSED [  9%]",
@@ -295,7 +297,7 @@
         "tests/test_engine_audit.py::TestV3SuppressReasoningNoFallback::test_responses_api_no_fallback_on_suppressed_reasoning PASSED [ 95%]",
         "tests/test_engine_audit.py::TestResponsesSuppressedReasoningToolCalls::test_responses_extracts_suppressed_reasoning_tool_calls_before_finalize PASSED [100%]",
         "",
-        "====================== 21 passed, 702 deselected in 2.02s ======================"
+        "====================== 21 passed, 704 deselected in 2.17s ======================"
       ]
     },
     "responses_history_contracts": {
@@ -311,7 +313,7 @@
         "responses_streaming_stores_history_for_previous_response_id or responses_streaming_tool_choice_none_strips_invalid_tool_markup or responses_streaming_reasoning_only_stores_placeholder_and_marker or chained_response_helper_emits_warning_for_reasoning_only_predecessor"
       ],
       "returncode": 0,
-      "elapsed_sec": 2.669,
+      "elapsed_sec": 2.705,
       "counts": {
         "passed": 4,
         "deselected": 25
@@ -331,7 +333,7 @@
         "tests/test_responses_history.py::test_responses_streaming_reasoning_only_stores_placeholder_and_marker PASSED [ 75%]",
         "tests/test_responses_history.py::test_chained_response_helper_emits_warning_for_reasoning_only_predecessor PASSED [100%]",
         "",
-        "======================= 4 passed, 25 deselected in 1.94s ======================="
+        "======================= 4 passed, 25 deselected in 2.00s ======================="
       ]
     },
     "structured_output_repair_contracts": {
@@ -348,7 +350,7 @@
         "json_schema_decodes_nested_object_string or reports_nested_object_json_string_schema_decode or json_schema_repairs_qwen_adjacent_string_array or json_schema_coerces_string_to_array or chat_completion_repairs_and_canonicalizes_schema_json or repair_records_preserves_raw_vs_repaired_counts or repair_records_reports_raw_and_repaired_rates or reports_markdown_extraction_as_repair_with_required_fields or repair_records_supports_xml_root_and_required_fields"
       ],
       "returncode": 0,
-      "elapsed_sec": 2.679,
+      "elapsed_sec": 2.716,
       "counts": {
         "passed": 9,
         "deselected": 49
@@ -373,7 +375,7 @@
         "tests/test_structured_output_repair_report.py::test_repair_records_reports_raw_and_repaired_rates PASSED [ 88%]",
         "tests/test_structured_output_repair_report.py::test_repair_records_supports_xml_root_and_required_fields PASSED [100%]",
         "",
-        "======================= 9 passed, 49 deselected in 1.95s ======================="
+        "======================= 9 passed, 49 deselected in 2.02s ======================="
       ]
     },
     "structured_output_retry_contracts": {
@@ -389,7 +391,7 @@
         "chat_response_format_strict_retries_failed_json_only or responses_text_format_strict_retries_failed_json_only or chat_response_format_strict_retries_failed_xml_only or responses_text_format_strict_retries_failed_xml_only or streaming_chat_strict_xml_validates_final_text or streaming_responses_strict_xml_validates_final_text"
       ],
       "returncode": 0,
-      "elapsed_sec": 2.692,
+      "elapsed_sec": 2.734,
       "counts": {
         "passed": 6,
         "deselected": 97
@@ -411,7 +413,7 @@
         "tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_chat_strict_xml_validates_final_text PASSED [ 83%]",
         "tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_responses_strict_xml_validates_final_text PASSED [100%]",
         "",
-        "======================= 6 passed, 97 deselected in 1.94s ======================="
+        "======================= 6 passed, 97 deselected in 2.02s ======================="
       ]
     },
     "responses_streaming_tool_contracts": {
@@ -427,7 +429,7 @@
         "streaming_responses_tool_call_arguments_survive_buffering or streaming_responses_reasoning_tool_call_keeps_arguments or streaming_responses_tool_call_uses_next_output_index_without_text or streaming_responses_required_empty_xml_tool_call_is_rejected or streaming_responses_preamble_empty_xml_tool_call_never_emits_empty_arguments or tool_parser_drops_empty_xml_call_and_strips_markup_for_nonstream_paths or streaming_chat_preamble_empty_xml_tool_call_never_emits_empty_arguments"
       ],
       "returncode": 0,
-      "elapsed_sec": 2.691,
+      "elapsed_sec": 2.723,
       "counts": {
         "passed": 7,
         "deselected": 96
@@ -450,7 +452,7 @@
         "tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_chat_preamble_empty_xml_tool_call_never_emits_empty_arguments PASSED [ 85%]",
         "tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_responses_reasoning_tool_call_keeps_arguments PASSED [100%]",
         "",
-        "======================= 7 passed, 96 deselected in 1.95s ======================="
+        "======================= 7 passed, 96 deselected in 2.01s ======================="
       ]
     },
     "qwen_xml_required_args_parser_contracts": {
@@ -466,7 +468,7 @@
         "QwenToolParser or required_arguments_missing"
       ],
       "returncode": 0,
-      "elapsed_sec": 2.43,
+      "elapsed_sec": 2.463,
       "counts": {
         "passed": 20,
         "deselected": null
@@ -502,7 +504,7 @@
         "tests/test_tool_parser_required_args_fail_closed.py::test_required_arguments_missing_fail_closed_but_valid_calls_survive[Step3p5ToolParser-<tool_call><function=record_fact></function></tool_call>-<tool_call><function=record_fact><parameter=value>blue-cat</parameter></function></tool_call>] PASSED [ 95%]",
         "tests/test_tool_parser_required_args_fail_closed.py::test_required_arguments_missing_fail_closed_but_valid_calls_survive[AutoToolParser-<tool_call><function=record_fact></function></tool_call>-<tool_call><function=record_fact><parameter=value>blue-cat</parameter></function></tool_call>] PASSED [100%]",
         "",
-        "============================== 20 passed in 1.76s =============================="
+        "============================== 20 passed in 1.82s =============================="
       ]
     },
     "structured_guided_decoding_contracts": {
@@ -520,7 +522,7 @@
         "json_schema_processor_masks_non_json_start_token or chat_response_format_forwards_guided_json_hint or responses_text_format_forwards_guided_json_hint or generate_installs_guided_json_logits_processor"
       ],
       "returncode": 0,
-      "elapsed_sec": 2.797,
+      "elapsed_sec": 2.805,
       "counts": {
         "passed": 4,
         "deselected": 159
@@ -540,7 +542,7 @@
         "tests/test_server.py::TestOpenAILogprobsFormatting::test_responses_text_format_forwards_guided_json_hint PASSED [ 75%]",
         "tests/test_llm.py::test_generate_installs_guided_json_logits_processor PASSED [100%]",
         "",
-        "====================== 4 passed, 159 deselected in 2.02s ======================="
+        "====================== 4 passed, 159 deselected in 2.09s ======================="
       ]
     },
     "structured_smoke_response_format_contracts": {
@@ -556,7 +558,7 @@
         "structured_json_probes_request_json_schema_response_format or mimo_structured_json_sentinel_requests_literal_schema_response_format"
       ],
       "returncode": 0,
-      "elapsed_sec": 0.152,
+      "elapsed_sec": 0.156,
       "counts": {
         "passed": 2,
         "deselected": 74
@@ -594,40 +596,40 @@
         "allows gateway startup on ports used only by stopped or remote saved sessions|auto-switches to a standby model by waking it before direct OpenAI streaming|passes Responses function-call argument SSE through unchanged|passes Responses argument SSE with reasoning and empty final item arguments|returns backend-unavailable for stale Responses session ports"
       ],
       "returncode": 0,
-      "elapsed_sec": 0.716,
+      "elapsed_sec": 0.914,
       "counts": {
         "passed": 5,
         "deselected": null
       },
       "stdout_tail": [
-        "",
-        "stdout | panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > passes Responses function-call argument SSE through unchanged",
-        "[gateway] Stopped",
-        "",
-        "stdout | panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > passes Responses argument SSE with reasoning and empty final item arguments",
-        "[gateway] Listening on 127.0.0.1:64357",
-        "",
-        "stdout | panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > passes Responses argument SSE with reasoning and empty final item arguments",
-        "[gateway] single-model mode: stopping session other before routing to target",
-        "",
-        "stdout | panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > passes Responses argument SSE with reasoning and empty final item arguments",
-        "[gateway] JIT loading session target",
-        "",
-        "stdout | panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > passes Responses argument SSE with reasoning and empty final item arguments",
-        "[gateway] Stopped",
-        "",
-        "stdout | panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > returns backend-unavailable for stale Responses session ports",
-        "[gateway] Listening on 127.0.0.1:64361",
-        "",
-        "stderr | panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > returns backend-unavailable for stale Responses session ports",
-        "[gateway] Proxy error \u2192 127.0.0.1:64360/v1/responses: connect ECONNREFUSED 127.0.0.1:64360",
-        "",
-        "stdout | panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > returns backend-unavailable for stale Responses session ports",
-        "[gateway] Stopped",
-        "",
-        " \u2713 panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > auto-switches to a standby model by waking it before direct OpenAI streaming 11ms",
+        " \u2193 panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > reports failure when another active local session cannot be unloaded",
+        " \u2193 panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > writes each streamed gateway response chunk once and treats EPIPE as disconnect",
+        " \u2193 panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > does not write gateway response chunks after the client socket is destroyed",
+        " \u2193 panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > does not write gateway response chunks after Node marks the response closed",
+        " \u2193 panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > does not write proxied request bodies after the backend socket is destroyed",
+        " \u2193 panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > does not write proxied request bodies after Node marks the request closed",
+        " \u2193 panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > treats top-level request handler EPIPE failures as client disconnects",
+        " \u2193 panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > treats nested broken-pipe stream errors as client disconnects",
+        " \u2193 panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > does not end proxied requests after the backend socket is destroyed",
+        " \u2193 panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > does not end proxied requests after Node marks the request closed",
+        " \u2193 panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > refuses auto-switch when previous local model cannot unload before starting target",
+        " \u2193 panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > auto-switches direct OpenAI streaming by model id without mutating payload or deltas",
+        " \u2193 panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > serializes concurrent single-model switches before starting a second target",
+        " \u2713 panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > auto-switches to a standby model by waking it before direct OpenAI streaming 12ms",
         " \u2193 panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > auto-switches Responses API streaming by model id while preserving output text deltas",
         " \u2713 panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > passes Responses function-call argument SSE through unchanged 4ms",
+        "stdout | panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > passes Responses argument SSE with reasoning and empty final item arguments",
+        "[gateway] Stopped",
+        "",
+        "stdout | panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > returns backend-unavailable for stale Responses session ports",
+        "[gateway] Listening on 127.0.0.1:65002",
+        "",
+        "stderr | panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > returns backend-unavailable for stale Responses session ports",
+        "[gateway] Proxy error \u2192 127.0.0.1:65001/v1/responses: connect ECONNREFUSED 127.0.0.1:65001",
+        "",
+        "stdout | panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > returns backend-unavailable for stale Responses session ports",
+        "[gateway] Stopped",
+        "",
         " \u2713 panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > passes Responses argument SSE with reasoning and empty final item arguments 3ms",
         " \u2713 panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > returns backend-unavailable for stale Responses session ports 2ms",
         " \u2193 panel/tests/api-gateway-single-model.behavior.test.ts > ApiGateway single-model mode behavior > auto-switches model capability requests by path model before proxying",
@@ -637,8 +639,8 @@
         "",
         " Test Files  1 passed (1)",
         "      Tests  5 passed | 20 skipped (25)",
-        "   Start at  13:25:36",
-        "   Duration  223ms (transform 130ms, setup 0ms, import 63ms, tests 111ms, environment 0ms)",
+        "   Start at  13:56:27",
+        "   Duration  233ms (transform 140ms, setup 0ms, import 81ms, tests 104ms, environment 0ms)",
         ""
       ]
     },
@@ -659,7 +661,7 @@
         "recovers Responses function-call arguments from argument delta and done events"
       ],
       "returncode": 0,
-      "elapsed_sec": 0.58,
+      "elapsed_sec": 0.576,
       "counts": {
         "passed": 1,
         "deselected": null
@@ -679,8 +681,73 @@
         "",
         " Test Files  1 passed (1)",
         "      Tests  1 passed | 7 skipped (8)",
-        "   Start at  13:25:37",
+        "   Start at  13:56:27",
         "   Duration  71ms (transform 17ms, setup 0ms, import 22ms, tests 1ms, environment 0ms)",
+        ""
+      ]
+    },
+    "panel_request_builder_contracts": {
+      "name": "panel_request_builder_contracts",
+      "command": [
+        "npm",
+        "--prefix",
+        "panel",
+        "exec",
+        "vitest",
+        "run",
+        "tests/request-builder.test.ts",
+        "--",
+        "--reporter",
+        "verbose",
+        "--testNamePattern",
+        "forwards Qwen-family reasoning controls from detected family when parser state is stale|forwards Gemma-family reasoning controls from detected family when parser state is stale|forwards Qwen-family Responses reasoning controls from detected family when parser state is stale|forwards Gemma-family Responses reasoning controls from detected family when parser state is stale"
+      ],
+      "returncode": 0,
+      "elapsed_sec": 0.603,
+      "counts": {
+        "passed": 4,
+        "deselected": null
+      },
+      "stdout_tail": [
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Responses API > omits invalid persisted maxTokens values instead of poisoning Responses",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Responses API > does not invent Responses sampler or output-budget values when chat overrides are absent",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Responses API > switching chats never carries a previous chat maxTokens into Auto Responses",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Responses API > uses input instead of messages",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Responses API > extracts system messages as instructions",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Responses API > prefers systemPrompt override for instructions",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Responses API > EXCLUDES chat_template_kwargs for remote",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Responses API > preserves DSV4 Responses max_output_tokens for Auto/On thinking",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Responses API > preserves DSV4 Responses max_output_tokens for Max thinking",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Responses API > keeps Responses maxThinkingTokens as thinking budget only and separate from output caps",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Responses API > suppresses stale maxThinkingTokens when thinking is explicitly off",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Responses API > suppresses stale Responses reasoning_effort when thinking is explicitly off",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Responses API > suppresses Responses enable_thinking when a plain local model has no reasoning parser",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Responses API > forwards explicit ZAYA-VL thinking override when registry detection provides qwen3 parser",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Responses API > Hy3 local Responses Auto omits enable_thinking and reasoning_effort",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Responses API > Hy3 local Responses Auto suppresses stale High effort",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Responses API > Hy3 local Responses Thinking Off sends explicit off and no High effort",
+        " \u2713 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Responses API > forwards Qwen-family Responses reasoning controls from detected family when parser state is stale 0ms",
+        " \u2713 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Responses API > forwards Gemma-family Responses reasoning controls from detected family when parser state is stale 0ms",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Tool format > Completions API: tools use OpenAI format with function wrapper",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Tool format > Responses API: tools use flat format WITHOUT function wrapper",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Tool format > Responses API preserves the augmented custom system prompt when built-in tools are enabled",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Tool format > pins Chat tool_choice when latest user explicitly names one available built-in tool",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Tool format > pins Responses tool_choice when latest user explicitly names one available built-in tool",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Tool format > downgrades explicit tool_choice to auto for non-Gemma loopback remote vMLX sessions",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Tool format > downgrades Chat explicit tool_choice to auto for non-Gemma loopback remote vMLX sessions",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Tool format > pins tool_choice for Gemma4 loopback remote vMLX sessions",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Tool format > does not pin Chat tool_choice when no available tool is explicitly named",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Tool format > does not pin tool_choice when the latest user names multiple available tools",
+        " \u2193 panel/tests/request-builder.test.ts > buildRequestBody \u2014 Tool format > agentic tool prompts do not override explicit exact-output user formats",
+        " \u2193 panel/tests/request-builder.test.ts > filterTools > returns all tools when no toggles disabled",
+        " \u2193 panel/tests/request-builder.test.ts > filterTools > disables file tools when fileToolsEnabled=false",
+        " \u2193 panel/tests/request-builder.test.ts > filterTools > disables shell tools when shellEnabled=false",
+        " \u2193 panel/tests/request-builder.test.ts > filterTools > ask_user is never disabled by any toggle",
+        "",
+        " Test Files  1 passed (1)",
+        "      Tests  4 passed | 75 skipped (79)",
+        "   Start at  13:56:28",
+        "   Duration  94ms (transform 36ms, setup 0ms, import 42ms, tests 2ms, environment 0ms)",
         ""
       ]
     }

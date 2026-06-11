@@ -14112,3 +14112,9 @@ Other-agent action:
 - Primary target families covered by this lane: Qwen3.5/Qwen3.5-MoE/Qwen3-next/Qwen3/Qwen3-VL and Gemma4/Gemma4-text. The helper also preserves existing DSV4 and other registry reasoning-family behavior.
 - Guardrails preserved: unknown/plain models still suppress stale local thinking controls, Hy3 still requires explicit Thinking On for effort, and explicit Thinking Off still suppresses reasoning effort and thinking budget.
 - Focused panel proof passed: request-builder, chat-settings compatibility, settings-flow, reasoning-display, and tool-auto-continue tests (459 total), `npm run typecheck`, plus `git diff --check`.
+
+## 2026-06-11 CODEX - Qwen/Gemma request-control proof wired into no-heavy contract
+- Added `panel_qwen_gemma_reasoning_request_controls` to the no-heavy API/cache contract and release-manifest expected check list.
+- The row runs `panel/tests/request-builder.test.ts` for four Qwen/Gemma Chat/Responses cases where detected family proves reasoning support but parser state is stale.
+- Refreshed `build/current-noheavy-api-cache-contract-after-dsv4-real-ui-valid-preflight-20260611.json`: `status=pass`, `missing_markers=[]`, `panel_request_builder_contracts rc=0`, `passed=4`, and `panel_qwen_gemma_reasoning_request_controls=true`.
+- Refreshed `build/current-release-regression-manifest-after-step37-bundled-vlm-proof-20260611.json`: no-heavy matrix is pass with no failed/missing expected checks, including the new panel Qwen/Gemma row. Overall manifest still reports `release_ready=false` and `prepackage_ready=false` because unrelated release blockers remain.

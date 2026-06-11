@@ -19102,3 +19102,17 @@ Next action:
   - `cd panel && npm test -- --run tests/request-builder.test.ts tests/chat-settings-compatibility.test.ts tests/settings-flow.test.ts tests/reasoning-display.test.ts tests/tool-auto-continue.test.ts` -> 459 passed.
   - `cd panel && npm run typecheck` -> passed.
   - `git diff --check` -> passed.
+
+## 2026-06-11 CODEX - Qwen/Gemma no-heavy proof row
+- Wired the panel Qwen/Gemma reasoning request-body fix into `tests/cross_matrix/run_noheavy_api_cache_contract.py` as `panel_qwen_gemma_reasoning_request_controls`.
+- Added `panel/tests/request-builder.test.ts` to no-heavy source hashes and added the new expected no-heavy check to `tests/cross_matrix/release_regression_manifest.py`.
+- Added meta-test coverage in `tests/test_current_regression_suite.py`.
+- Verification:
+  - `uv run pytest -q tests/test_current_regression_suite.py -k 'qwen_gemma_panel_reasoning_request_controls or noheavy_api_cache_contract_includes_panel_tool_status_responses_argument_recovery or noheavy_api_cache_contract_includes_responses_gateway_tool_and_stale_port_rows'` -> 3 passed.
+  - `npm --prefix panel exec vitest run tests/request-builder.test.ts -- --reporter verbose --testNamePattern 'forwards Qwen-family reasoning controls from detected family when parser state is stale|forwards Gemma-family reasoning controls from detected family when parser state is stale|forwards Qwen-family Responses reasoning controls from detected family when parser state is stale|forwards Gemma-family Responses reasoning controls from detected family when parser state is stale'` -> 4 passed.
+  - `uv run python -m py_compile tests/cross_matrix/run_noheavy_api_cache_contract.py tests/cross_matrix/release_regression_manifest.py tests/test_current_regression_suite.py` -> passed.
+  - `uv run python tests/cross_matrix/run_noheavy_api_cache_contract.py --out build/current-noheavy-api-cache-contract-after-dsv4-real-ui-valid-preflight-20260611.json` -> status=pass, missing_markers=[], panel_request_builder_contracts rc=0 passed=4.
+  - `uv run python tests/cross_matrix/run_release_regression_manifest.py --out build/current-release-regression-manifest-after-step37-bundled-vlm-proof-20260611.json` -> artifact written; command exits nonzero because release_ready=false/prepackage_ready=false remain true blockers.
+  - `uv run pytest -q tests/test_release_regression_manifest.py::test_release_regression_manifest_validates_current_proof_sweep_artifacts tests/test_release_regression_manifest.py::test_release_regression_manifest_tracks_current_post_budget_edge_proof_sweep` -> 2 passed.
+  - `uv run pytest -q tests/test_current_regression_suite.py::test_noheavy_api_cache_contract_includes_qwen_gemma_panel_reasoning_request_controls tests/test_current_regression_suite.py::test_noheavy_api_cache_contract_default_out_tracks_current_suite_artifact tests/test_current_regression_suite.py::test_current_regression_suite_runs_noheavy_api_cache_to_current_artifact` -> 3 passed.
+  - `git diff --check` -> passed.
