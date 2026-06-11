@@ -18365,3 +18365,19 @@ Next action:
   - `build/current-noheavy-api-cache-contract-after-zaya-vl-prompt-fix-20260611.json` pass.
 - Final digest: `build/current-objective-proof-after-policy-cache-final-refresh-20260611.json`.
 - Final digest pass rows now include all no-heavy cache/API/parser/model-family/artifact/generation/native-MTP/VL-media gates. Remaining opens are live/proof buckets only: Hy3 missing, MiMo, N2 broad row with JANG_1L off-limits, MiniMax reporter parity, Real Electron cross-family, and DSV4 long-output/code/file proof artifacts.
+
+# 2026-06-11 10:22 PDT - resumed on Python engine release-fix lane
+
+- Current instruction recorded: focus on active vMLX Python engine/panel fixes that move a signed checkpoint release closer, but do not run release/sign/notarize/PyPI/site/updater actions without an explicit current-turn unlock.
+- Active worktree confirmed: `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; deprecated `/Users/eric/vmlx` remains off-limits for implementation.
+- Selected next concrete blocker: N2 JANGTQ2/non-JANG_1L Responses/UI tool-loop strict behavior. Compare passing default UI proof against failed stricter longdelta proof before patching.
+- Boundaries: no N2 JANG_1L work, no subagents, no fake parser/tool/cache fixes, no release actions yet. Need root-cause evidence first.
+
+# 2026-06-11 10:34 PDT - N2 JANGTQ2 strict loopback proof consumed
+
+- Root-cause recheck: the strict N2 long-delta failure was already fixed in source by `2f2fd5219 Fix N2 loopback tool choice auto mode`. The stale objective digest still carried the older red `current-real-ui-live-model-n2-jangtq2-responses-tools-prevresp-longdelta-20260610-proof.json` follow-up.
+- Current green proof: `build/current-n2-jangtq2-loopback-toolchoice-auto-longdelta-pass-20260611.json`, backed by raw UI artifact `docs/internal/agent-notes/current-real-ui-live-model-n2-jangtq2-responses-tools-prevresp-longdelta-after-toolchoice-auto-20260611-proof.json`.
+- What is now consumed: strict Electron dev-app loopback Responses tool loop for N2 JANGTQ2, built-in `run_command`, previous_response_id continuation, two probe files created with exact sentinels, content deltas present, 58 stream events, 106 tool events, cache hit telemetry `paged+ssm`, hybrid SSM native cache, attention-only TurboQuant KV q4 storage boundary, block-disk L2, and SSM companion L2.
+- Source updates this movement: `tests/cross_matrix/summarize_objective_proof.py` now includes `jangtq2_strict_loopback_toolchoice_auto`; current objective/checklist/manifest/release-gate pointers now use `build/current-objective-proof-after-n2-strict-loopback-consumed-20260611.json`.
+- Verification passed: focused objective/checklist/current-suite/release-manifest/release-gate tests; regenerated objective digest; regenerated release checklist (`status=open`, `failed_count=51`); regenerated release regression manifest.
+- No claims: no N2 JANG_1L work, no MiMo remake, no package/sign/notarize/PyPI/site/updater actions. Release is still blocked; this only removes a stale N2 JANGTQ2 strict-loop red sub-blocker from the board.

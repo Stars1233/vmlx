@@ -13345,3 +13345,16 @@ Other-agent action:
 - final digest artifact: `build/current-objective-proof-after-policy-cache-final-refresh-20260611.json`.
 - newly green in final digest: cross-family cache architecture, high-risk model family/parser/artifact launch policy, generation defaults/native-MTP/VL media gates, and current-source API/cache contracts.
 - remaining digest opens: cross-family live smoke (`hy3`, `mimo_v2`), MiMo, N2 broad row with JANG_1L off-limits, MiniMax reporter parity, Real Electron cross-family (`hy3`, `mimo_v2`), and DSV4 long-output/code/file proof artifacts.
+
+## CODEX
+- now: resumed under Eric's current instruction to focus only on vMLX Python engine/panel fixes and checkpoint-release blockers from the active worktree, not deprecated `/Users/eric/vmlx` and not release/sign/notarize/PyPI/site/update actions unless explicitly unlocked in this turn.
+- selected blocker: N2 JANGTQ2/non-JANG_1L Responses/UI tool-loop strict prompt behavior, including previous_response_id, tool_choice, content/reasoning/function-call streaming, final object consistency, and cache reuse telemetry.
+- boundary: N2 JANG_1L remains Eric-owned/off-limits; MiMo is remake-bound unless reopened; Hy3 is missing locally; current signing/notarization remains locked while live/proof rows are open.
+- next movement: inspect the default passing N2 JANGTQ2 UI proof and the stricter failed longdelta artifact to determine whether this is a source/API bug, prompt/model quality issue, or missing proof file before editing anything.
+
+## CODEX
+- now: consumed the already-fixed N2 JANGTQ2 strict long-delta loopback tool-choice proof into the objective digest instead of leaving the stale red follow-up in the release board.
+- source/proof basis: existing commit `2f2fd5219 Fix N2 loopback tool choice auto mode` changed local non-Gemma loopback explicit-tool pressure from omitted `tool_choice` to non-required `tool_choice=auto`; current proof `build/current-n2-jangtq2-loopback-toolchoice-auto-longdelta-pass-20260611.json` is `status=pass`.
+- proven by that artifact: real Electron dev-app, `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2`, Responses API, two-turn built-in `run_command` loop, both probe files created, 58 stream events, 106 tool events, cache detail `paged+ssm`, hybrid SSM cache schema, attention-only TurboQuant KV q4 storage boundary, block-disk L2 6947 tokens, SSM L2 23203 tokens.
+- new current artifacts: `build/current-objective-proof-after-n2-strict-loopback-consumed-20260611.json`, `build/current-full-release-objective-checklist-after-n2-strict-loopback-consumed-20260611.json`, and `build/current-release-regression-manifest-after-n2-strict-loopback-consumed-20260611.json`.
+- current release state: still not ready for signing/notarization; final regenerated checklist remains `status=open`, `failed_count=51`. Remaining opens include Qwen35 public tunnel raw-SSE strict lifecycle, MiMo exactness/media/speed, N2 broad row due JANG_1L off-limits/open, MiniMax reporter parity, Step3.7/LFM/Nemotron evidence gaps, packaged integrity/release readiness, and DSV4 long-output/code quality.
