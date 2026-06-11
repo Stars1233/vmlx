@@ -15666,3 +15666,24 @@ Next action:
   this fixes UI/API capability truthfulness only. It does not clear MiMo media
   semantics, JANG_2L speed, JANGTQ2 exactness, package/sign/notarize, or any
   release row by itself.
+
+# 2026-06-11 01:32 PDT Responses empty-args/output-index source proof
+
+- Source check:
+  XML/Qwen-style `<tool_call><function=exec_command></function></tool_call>`
+  with required `cmd` now fails closed through parser and server boundaries. It
+  preserves the visible preamble/error path instead of emitting a function_call
+  with `arguments: {}`.
+- Source check:
+  Responses streaming output-index guards are present for text + reasoning +
+  function_call. Function_call items move after the message/reasoning indexes,
+  and raw-SSE classifiers catch duplicate-index regressions.
+- Verification:
+  required-args boundary set -> 23 passed.
+  raw SSE parity and Qwen35 capture contract -> 24 passed.
+  streaming Responses no-text tool output-index selector -> 1 passed.
+  source output-index guard selector -> 1 passed.
+- Boundary:
+  no new source patch was needed in this pass. Live same-model direct/gateway/
+  tunnel raw SSE capture is still open and must be run against the actual model
+  endpoint before claiming the deployed Responses issue is fully closed.

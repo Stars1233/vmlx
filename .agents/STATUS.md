@@ -9789,3 +9789,27 @@ Other-agent action:
   `.venv/bin/python -m pytest -q tests/test_engine_audit.py -k 'mimo_v2_runtime_modalities_stay_text_only or mimo_v2_capabilities_do_not_advertise_unwired_vl or mimo_v2_text_only_capabilities_do_not_fallback_to_vision_when_registry_misses'` passed 3 selected tests.
   `.venv/bin/python -m pytest -q tests/test_mimo_v2_media_capability_gate.py`
   passed 9 tests.
+
+# 2026-06-11 01:32 PDT Responses empty-args/output-index source proof
+
+- Checked:
+  current source already fails closed when XML/Qwen-style tool calls omit
+  required arguments after a visible preamble. The server drops malformed calls
+  instead of emitting `arguments: {}` to OpenCode/Codex-style clients.
+- Checked:
+  current Responses streaming source advances function_call output items beyond
+  the text message and reasoning item, and local raw-SSE classifiers reject the
+  duplicate-output-index shape.
+- Verification:
+  `.venv/bin/python -m pytest -q tests/test_engine_audit.py::TestToolParserConcurrency::test_xml_function_empty_required_args_fail_closed_at_server_boundary tests/test_engine_audit.py::TestToolParserConcurrency::test_generic_parser_empty_required_args_fail_closed_at_shared_boundary tests/test_engine_audit.py::TestToolParserConcurrency::test_responses_final_tool_emit_drops_empty_required_args tests/test_tool_parser_required_args_fail_closed.py tests/test_xml_function_tool_parser.py::TestXMLFunctionToolParser::test_empty_function_with_required_schema_fails_closed`
+  passed 23 tests.
+  `.venv/bin/python -m pytest -q tests/test_responses_raw_sse_parity_contract.py tests/test_qwen35_responses_raw_sse_capture.py`
+  passed 24 tests.
+  `.venv/bin/python -m pytest -q tests/test_server.py -k 'streaming_responses_tool_call_uses_next_output_index_without_text'`
+  passed 1 selected test.
+  `.venv/bin/python -m pytest -q tests/test_engine_audit.py -k 'reasoning_item_advances_function_call_output_index'`
+  passed 1 selected test.
+- Still open:
+  this is local source/no-heavy proof only. Same-model live direct/gateway/tunnel
+  raw SSE capture for the reporter's deployed Qwen/Qwen-coder path is still the
+  remaining release evidence item; do not claim it from these tests alone.
