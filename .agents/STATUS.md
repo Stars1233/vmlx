@@ -263,6 +263,62 @@
   semantic quality, audio/video release quality, prepackage/release readiness,
   or any N2 JANG_1L row. No release/sign/notarize/PyPI/updater/site action was
   run.
+
+## CODEX
+- now: continuing the active goal after MiMo JANGTQ warmup fix; no release/sign/
+  notarize/PyPI/site/updater action, no subagents, and no N2 JANG_1L.
+- selected blocker: the latest full release checklist still reports
+  `qwen35_raw_sse_status_pass` and `qwen35_raw_sse_reasoning_events` red even
+  though current written state names a same-model direct/gateway/tunnel raw SSE
+  proof from 2026-06-10. This is a release-critical API/tool/reasoning surface
+  for Codex/opencode harnesses.
+- next action: audit the Qwen35 raw SSE artifacts and checklist generator. Only
+  consume a proof pointer if the artifact itself proves direct, gateway, and
+  tunnel raw SSE with required/auto/no-tool/tool-result surfaces as applicable,
+  function-call argument deltas/done, final object consistency, valid
+  `output_index`, reasoning events, no reasoning-disable workaround, and no raw
+  XML/tool leak. If the artifact is stale or partial, leave the row red and
+  document the exact missing surface.
+
+## CODEX
+- now: Qwen35 raw SSE checklist mismatch is classified as a real tunnel
+  lifecycle gap, not a source pointer fix.
+- evidence: `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-public-recapture-still-stale-20260611.json`
+  has direct and gateway clean, but tunnel has
+  `has_required_reasoning_events=false` and
+  `reasoning_lifecycle_complete=false`.
+- raw tunnel shape:
+  `build/responses-sse-captures-20260611/tunnel-qwen35-mxfp8-mtp-tool-strict-lifecycle-recapture-20260611.sse`
+  streams `response.reasoning_summary_text.delta` and
+  `response.reasoning_summary_text.done` on the message item, then the final
+  completed response contains a `type=reasoning` output item, but the stream
+  never emits matching `response.output_item.added` / `.done` events for that
+  reasoning item. Function-call args, final object consistency, output indices,
+  and model/arguments are otherwise clean.
+- no-claim boundary: do not mark Qwen35 direct/gateway/tunnel release-green
+  until the public tunnel runtime is rebuilt/recaptured with reasoning output
+  item lifecycle events. Do not weaken the classifier to count final-object-only
+  reasoning as streamed reasoning lifecycle proof.
+
+## CODEX
+- now: checked Gemma audio capability detection after a proof log showed
+  `modelAudioRuntimeAvailable=true` for Gemma4 E2B QAT JANG4M.
+- classification: not a false audio claim for E2B. Local
+  `/Users/eric/models/JANGQ-AI/gemma-4-E2B-it-qat-JANG_4M` has 751
+  `audio_tower.*` indexed tensors, so the panel/engine audio runtime flag is
+  weight-backed there.
+- larger Gemma local rows remain audio-unsupported by weight evidence:
+  12B JANG4M, 12B QAT JANG4M, 12B QAT MXFP4, 26B QAT JANG4M, 26B QAT MXFP4,
+  31B QAT JANG4M, and 31B QAT MXFP4 all have zero `audio_tower.*` indexed
+  tensors in the checked local artifacts.
+- verification: Python audio gates passed
+  (`tests/test_engine_audit.py -k gemma4_runtime_modalities...audio...` 2
+  selected passed; `tests/test_gemma_qat_native_mxfp4_inventory_gate.py -k
+  audio` 1 selected passed). Panel focused detector guard passed with
+  `npm exec vitest -- run tests/model-config-registry.test.ts -t
+  'audioRuntimeAvailable|audio-unavailable|Gemma4'` (1 selected passed).
+- no source patch needed here; do not reopen Gemma E2B audio as a false-positive
+  issue unless a future artifact shows the audio_tower weights missing.
 - classification: not a source-side stale-pointer fix. Current source and
   local installed proofs are clean, but #179 remains honestly open because
   reporter parity metadata/artifacts are missing and reporter installed server
@@ -13644,3 +13700,67 @@ Other-agent action:
   confirms `stale_local_state_absent=true`.
 - verification so far: focused full-checklist pytest `20 passed, 326
   deselected`; focused release-manifest MiMo pytest `13 passed, 313 deselected`.
+
+## CODEX
+- now: resumed under Eric's current correction to focus on vMLX Python engine/panel
+  fixes and checkpoint-release blockers from the active worktree only.
+- current branch: `codex/pr-intake-manifest`; current source commit before this
+  movement is `de29e025d` from the MiMo JANGTQ input_ids warmup fix; worktree
+  has only `.agents/STATUS.md` modified plus untracked `node_modules/`.
+- active constraints restated: no deprecated `/Users/eric/vmlx` work, no
+  release/sign/notarize/PyPI/site/updater action in this turn, no subagents, no
+  N2 JANG_1L, and no fake parser/cache/media fixes.
+- selected next blocker: N2 JANGTQ2/non-JANG_1L current proof gaps because it is
+  a release-critical target Eric asked to keep focused, and current artifacts
+  include API/cache/Responses/UI/media rows that need exact classification.
+- next movement: inspect current N2 JANGTQ2 failed/proven artifacts against the
+  latest checklist before any source edit. If the failure is an honest unsupported
+  audio/media boundary or stale superseded proof, classify it; if current source
+  falsely advertises/streams/handles a capability, patch and prove the patch.
+
+## CODEX
+- now: N2 JANGTQ2/non-JANG_1L proof gaps are classified from current artifacts.
+- proven N2 JANGTQ2 surfaces already on the current board: source runtime/API/
+  cache, fresh-process L2 restart, real Electron dev-app previous_response_id
+  tool/cache/delta proof, strict loopback tool_choice auto proof, direct/gateway
+  Responses stream boundary, hybrid SSM native cache policy, attention-only
+  TurboQuant KV storage boundary, block-disk L2, SSM companion disk, and model
+  family/capability detection.
+- audio boundary: dev and installed-app audio artifacts are `fail` only because
+  N2 JANGTQ2 honestly rejects unsupported audio with 400 while reporting
+  supported modalities `text`, `vision`, and `video`; this is not a load/cache/
+  L2 crash and should not be made green as audio support.
+- stale-rollup boundary: older `build/current-real-ui-live-model-n2-jangtq2-dev-app-proof-20260610.json`
+  failed because it lacked a recorded `responses_delta_streaming` surface, but
+  newer pass artifacts `...dev-app-prevresp-proof-20260610.json` and
+  `...dev-app-delta-proof-20260610.json` plus
+  `build/current-n2-jangtq2-loopback-toolchoice-auto-longdelta-pass-20260611.json`
+  supersede that narrow rollup for JANGTQ2.
+- remaining N2 red row: `n2_pro_397b_release_clearance` is open because the
+  objective still includes N2 JANG_1L live proof, and that lane remains
+  Eric-owned/off-limits for this agent. Do not claim N2 397B fully release-clear
+  from JANGTQ2 proof alone.
+- next movement: switch to Qwen/Qwen-coder Responses raw SSE/tool/reasoning
+  harness usability because current local N2 JANGTQ2 source rows are green and
+  Qwen empty-arguments/output-index/reasoning lifecycle remains release-critical.
+
+## CODEX
+- now: Qwen/Qwen-coder raw SSE release-board traceability is tightened for the
+  actual public tunnel failure shape. No parser behavior was weakened and no
+  release/sign/notarize/PyPI/site/updater action was run.
+- source change: `tests/cross_matrix/run_full_release_objective_checklist.py`
+  now requires `all_present_surfaces_have_complete_reasoning_lifecycle` for
+  generic raw SSE parity and exposes a dedicated
+  `qwen35_raw_sse_reasoning_lifecycle` row for the Qwen35/Qwen3.6 family.
+- regression: `tests/test_full_release_objective_checklist.py` now proves that
+  a Qwen35 capture with reasoning deltas but no reasoning output-item lifecycle
+  fails `qwen35_raw_sse_reasoning_lifecycle` while keeping args and
+  output-index rows separate.
+- regenerated checklist:
+  `build/current-full-release-objective-checklist-after-qwen35-reasoning-lifecycle-row-20260611.json`.
+- result: checklist remains `status=open`; `failed_count=16` because the prior
+  Qwen35 red state is now split into `qwen35_raw_sse_reasoning_events` and
+  `qwen35_raw_sse_reasoning_lifecycle`. This is intentional and prevents a fake
+  green from final-object-only reasoning.
+- verification passed: focused Qwen/raw-SSE/parser/full-checklist tests
+  (`65 passed`) plus py_compile and `git diff --check`.

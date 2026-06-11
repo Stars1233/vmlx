@@ -18677,3 +18677,65 @@ Next action:
   clear MiMo exact literal quality, media semantic release quality, audio/video
   release quality, release readiness, or N2 JANG_1L. No release/sign/notarize/
   PyPI/site/updater action was run.
+
+## 2026-06-11 CODEX - N2 JANGTQ2 Current Proof Classification
+
+- Scope: active vMLX Python engine/panel proof classification only; no release/
+  sign/notarize/PyPI/site/updater action, no subagents, no N2 JANG_1L.
+- Current checklist inspected:
+  `build/current-full-release-objective-checklist-after-mimo-speed-root-cause-classification-20260611.json`.
+- N2 JANGTQ2 current green surfaces on that checklist:
+  `n2_jangtq2_source_runtime_api_cache`,
+  `n2_jangtq2_fresh_process_l2_restart`,
+  `n2_jangtq2_real_ui_prevresp_tool_cache`,
+  `n2_jangtq2_strict_loopback_toolchoice_auto`,
+  `n2_jangtq2_direct_gateway_responses_stream_boundary`, and
+  `n2_jangtq2_noheavy_policy_cache_contracts`.
+- Audio classification: `build/current-real-ui-live-model-n2-jangtq2-audio-proof-20260610.json`
+  and installed-app audio proof fail because runtime support is honestly
+  `text`, `vision`, `video`; audio is rejected with HTTP 400 before decode.
+  This must not be reclassified as audio support.
+- Stale proof boundary: the older failed dev-app rollup lacked a recorded
+  `responses_delta_streaming` surface; newer pass artifacts
+  `build/current-real-ui-live-model-n2-jangtq2-dev-app-prevresp-proof-20260610.json`,
+  `build/current-real-ui-live-model-n2-jangtq2-dev-app-delta-proof-20260610.json`,
+  and `build/current-n2-jangtq2-loopback-toolchoice-auto-longdelta-pass-20260611.json`
+  supersede that narrow JANGTQ2 proof gap.
+- Remaining N2 release blocker: `n2_pro_397b_release_clearance` remains open
+  because it still includes N2 JANG_1L live proof, which is Eric-owned/off-limits
+  in this lane. Do not claim full N2 397B release clearance from JANGTQ2 proof.
+- Next selected blocker: Qwen/Qwen-coder Responses raw SSE/tool/reasoning
+  harness usability, especially empty required arguments, output indices,
+  reasoning lifecycle, gateway/tunnel parity, and opencode/Codex-style loops.
+
+## 2026-06-11 CODEX - Qwen35 Raw SSE Reasoning Lifecycle Board Row
+
+- Scope: vMLX Python proof/checklist traceability for Qwen/Qwen-coder
+  Responses raw SSE; no release/sign/notarize/PyPI/site/updater action, no
+  subagents, no N2 JANG_1L.
+- Root-cause classification: current source direct/gateway Qwen35 raw SSE is
+  clean for required tool args, fail-closed empty XML args, output indices,
+  reasoning enabled, and final object consistency. The remaining red public
+  tunnel capture has reasoning summary deltas/done and a final reasoning item,
+  but lacks streamed reasoning `output_item.added` / `.done` lifecycle events.
+- Source change:
+  `tests/cross_matrix/run_full_release_objective_checklist.py` now requires
+  `all_present_surfaces_have_complete_reasoning_lifecycle` in raw SSE parity
+  and emits dedicated `qwen35_raw_sse_reasoning_lifecycle`.
+- Regression:
+  `tests/test_full_release_objective_checklist.py` now proves the Qwen35
+  lifecycle row fails separately from reasoning-disable, missing-args, and
+  duplicate-output-index rows.
+- Regenerated artifact:
+  `build/current-full-release-objective-checklist-after-qwen35-reasoning-lifecycle-row-20260611.json`.
+- Result: checklist remains `status=open`, `failed_count=16`; Qwen35 failed
+  rows are `qwen35_raw_sse_status_pass`, `qwen35_raw_sse_reasoning_events`, and
+  `qwen35_raw_sse_reasoning_lifecycle`.
+- Verification passed:
+  `.venv/bin/python -m pytest -q tests/test_full_release_objective_checklist.py tests/test_responses_raw_sse_parity_contract.py tests/test_qwen35_responses_raw_sse_capture.py tests/test_tool_parser_required_args_fail_closed.py`
+  -> `65 passed`; py_compile for touched Python files passed; `git diff --check`
+  passed.
+- Other-agent handoff: do not clear Qwen35 public tunnel by counting final
+  completed-response reasoning as streamed lifecycle. Rebuild/recapture the
+  public tunnel runtime so it emits reasoning output item lifecycle events, then
+  rerun the raw SSE parity artifact.
