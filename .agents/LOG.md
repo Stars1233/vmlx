@@ -15483,3 +15483,94 @@ Next action:
   choose artifact rebuild/reupload versus runtime decode/logit fix. For a
   checkpoint release, prefer JANGTQ_2 over JANG_2L unless deeper affine fusion
   is implemented and live-proven.
+
+# 2026-06-11 00:01 PDT MiMo JANG_2L speed root-cause lane
+
+- Request:
+  continue concrete runtime fixes/proof toward checkpoint readiness without
+  broad test-suite churn, recursive/subagent behavior, release actions, or N2
+  JANG_1L work.
+- Action:
+  selecting the MiMo V2.5 JANG_2L speed blocker for root-cause tracing. The
+  current installed-app proof is functionally pass for Responses/tools/cache/L2
+  but speed red at 1.6-1.7 live tok/s. Prior written notes say model forward is
+  fast while sampling/materialization can dominate.
+- Next check:
+  trace proof logs and decode/sampling source before edits; compare JANG_2L
+  affine path against JANGTQ_2 custom TurboQuant path and inspect whether
+  sampler/top-k/logit materialization is the live bottleneck.
+- Boundary:
+  no parser/JSON repair, no release/sign/notarize/PyPI/updater/site action, no
+  N2 JANG_1L, and no claim that speed is fixed until a real app/API proof shows
+  it.
+
+# 2026-06-11 00:15 PDT MiMo JANG_2L speed trace result
+
+- Source inspected:
+  `vmlx_engine/sampling.py`, `vmlx_engine/utils/single_batch_generator.py`,
+  `vmlx_engine/scheduler.py`, `vmlx_engine/models/mllm.py`,
+  `vmlx_engine/utils/jang_loader.py`.
+- Evidence inspected:
+  `docs/internal/agent-notes/current-real-ui-installed-app-mimo-v25-jang2l-responses-tools-cache-deterministic-printf-bundled-python-20260611-proof.json`,
+  `build/current-mimo-jang2l-trace-split-v2-20260611.server.log`,
+  `build/current-mimo-jang2l-singlebatch-warmup-20260611.server.log`, and
+  related `build/current-mimo-jang2l-*.server.log` traces.
+- Result:
+  this is not a log-softmax/full-logprobs sampler issue. The deterministic
+  sampler accepts logits and uses `mx.argmax` directly. Quantization coverage is
+  already green for affine text modules: `lm_head=True`,
+  `embed_tokens=True`, `qkv=48/48`, `switch_proj=141/141`,
+  `dense_mlp=3/3`.
+- Timings:
+  traces split the work into ~2-3 ms/token model forward and ~500-620 ms/token
+  logits/head materialization after first-token compile. SingleBatch warmup can
+  pay a one-time 30-45s compile before user traffic and reduce first user token
+  to ~2.5s, but it does not make steady JANG_2L decode fast.
+- Decision:
+  no source patch applied yet because the available Python/runtime fixes would
+  be fake speed fixes. JANG_2L speed remains red. For checkpoint release,
+  prefer MiMo JANGTQ_2 unless a real fused/top1 affine lm_head kernel or rebuilt
+  artifact lands and passes live UI/API proof. Continue exactness work via
+  source-vs-quant endpoints; do not chase cache/parser/L2 as primary speed or
+  exactness causes.
+
+# 2026-06-11 00:20 PDT Responses/tool-call API lane
+
+- Request carried forward:
+  prioritize auto tool usage, Responses content/function-call/reasoning delta
+  streaming, parser correctness, output indexes, gateway/API harness usability,
+  and model-family parser behavior. Do not fake tool args or paper over
+  malformed model output.
+- Starting target:
+  trace the reported Qwen/Qwen-coder XML tool-call failure:
+  text preamble streams first, `<tool_call><function=exec_command></function>`
+  contains no `<parameter=cmd>`, parser returns `{}`, and downstream Codex tool
+  deserialization fails because `cmd` is required.
+- Secondary target:
+  inspect Responses output item index assignment when reasoning-summary and
+  function-call items are emitted in one response; they must not both use
+  `output_index: 0`.
+- Next check:
+  inspect `vmlx_engine/server.py` buffering and tool parsers, then add a narrow
+  regression around malformed empty XML calls plus valid XML calls with text
+  preambles.
+
+# 2026-06-11 00:28 PDT Responses/tool-call API result
+
+- Trace result:
+  current runtime already fail-closes the reported malformed
+  `<tool_call><function=exec_command></function></tool_call>` when the request
+  schema requires `cmd`; it does not emit `arguments={}`. The parser family
+  contract also keeps valid required-arg calls working.
+- Test correction:
+  the stale test expected raw malformed XML to remain in cleaned text. Updated
+  it to assert the real desired behavior: no tool call is returned, the user
+  preamble remains, and raw `<tool_call>` / `<function=exec_command>` markup
+  does not leak.
+- Output-index regression:
+  added a focused source guard for Responses streaming so a reasoning item at
+  `reasoning_output_index = 1` forces subsequent function-call output items to
+  advance with `max(output_index, reasoning_output_index + 1)`.
+- Verification:
+  `.venv/bin/python -m pytest -q tests/test_engine_audit.py::TestToolParserConcurrency::test_xml_function_empty_required_args_fail_closed_at_server_boundary tests/test_engine_audit.py::TestToolParserConcurrency::test_responses_final_tool_emit_drops_empty_required_args tests/test_engine_audit.py::TestL2IncrementalDelta tests/test_tool_parser_required_args_fail_closed.py`
+  passed 23/23; `git diff --check` passed.
