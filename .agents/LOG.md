@@ -13754,3 +13754,24 @@ Next action:
 # 2026-06-10 17:13 PDT
 - Fixed XML tool argument preservation in generic XML fallback and `XMLFunctionToolParser`: plain string parameter values now keep leading/trailing spacing and decode XML entities, while JSON-looking values still parse as JSON.
 - Verification: new focused parser preservation tests passed `3/3`; existing empty-required/streaming guards passed `12/12`; py_compile and diff-check passed. This is source parser proof only, not live Qwen gateway/tunnel proof and not a release action.
+
+# 2026-06-10 16:51 PDT
+- Continuation recorded after `b42e8d581`. Current work focuses on the live Qwen/Qwen-coder Responses tool/reasoning SSE blocker, not release actions, N2 JANG_1L, or broad harness rewrites. Next movement is to inspect current raw-SSE proof runner/artifacts before any model launch.
+
+# 2026-06-10 16:57 PDT
+- Qwen35/Qwen27 direct/gateway/tunnel raw Responses SSE artifacts and the generic Gemma4 12B raw-SSE artifact are already green in current state. No rerun launched. Pivoting to the still-red MiMo speed/exactness runtime blocker.
+
+# 2026-06-10 17:08 PDT
+- MiMo allocator-clear-before-sample hypothesis rejected. Focused SingleBatch/sampler tests passed, but live MiMo JANG_2L 2-token request worsened to `57.506668s`; source edit was reverted and port `59937` cleared. Artifacts: `build/current-mimo-jang2l-clearcache-before-sample-20260610.server.log`, `.response.txt`.
+
+# 2026-06-10 17:15 PDT
+- MiMo max-num-seqs=2/standard BatchGenerator route hypothesis rejected. Live JANG_2L 2-token request still took `49.770499s`; port `59938` cleared. Do not change MiMo launch defaults to `max_num_seqs=2` based on this.
+
+# 2026-06-10 continuation
+- Recorded Eric's latest parser/API correction: deep-audit spacing, special characters, Unicode, XML entities, JSON escaping, newline payloads, raw delimiters, and streaming/final-object preservation across tool/reasoning parser families. Proceeding with parser/source inspection first; no release/N2 JANG_1L/PyPI/subagent action.
+
+# 2026-06-10 parser spacing/special-character fix
+- Reproduced XML-family parser trimming/entity bugs before fix: `XMLFamilyToolArgumentPreservation` failed `5/5` for Nemotron, Zaya, GLM, Hunyuan, and MiniMax.
+- Fixed shared XML argument serialization plus Nemotron, Auto/Nemotron fallback, Zaya, GLM, Hunyuan, MiniMax, Step3.5, and XMLFunction/Zaya `<value>` wrappers so non-JSON string arguments preserve leading/trailing spacing and decode XML entities while JSON-looking values still parse from trimmed syntax.
+- Verification passed: `tests/test_reasoning_tool_interaction.py` `74/74`; existing server empty-args/streaming required-tool guards `12/12`; parser `py_compile`; `git diff --check`.
+- No live gateway/tunnel recapture, release, notarization, PyPI, N2 JANG_1L, or subagent action was performed. Broader MiMo/Gemma/UI/installed-app rows remain open.

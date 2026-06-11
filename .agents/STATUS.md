@@ -6259,3 +6259,152 @@ Other-agent action:
     this movement.
   - This does not clear broader MiMo speed, Gemma media/UI, N2 JANGTQ, or
     installed-app/release rows.
+
+# 2026-06-10 16:51 PDT - continuation: live Responses/tool SSE blocker
+
+- Current user objective persists: fix/build toward production-quality
+  checkpoint readiness for Nex/N2 JANGTQ2, MiMo V2.5 JANG/JANGTQ, Gemma
+  JANG/MXFP/QAT, Qwen/Qwen-coder, VL/audio/cache/TurboQuant/reasoning/tool
+  parser behavior, while avoiding broad test-suite churn and recursive
+  subagent-style work.
+- Boundaries rechecked:
+  - no release/sign/notarize/PyPI/updater/site action in this lane;
+  - N2 JANG_1L remains off-limits;
+  - no subagents;
+  - do not claim source parser tests clear live API/gateway/tunnel behavior.
+- Current selected blocker: Qwen/Qwen3.6/Qwen-coder Responses tool/reasoning
+  raw SSE parity for opencode/Codex-style harnesses, including direct/gateway
+  surfaces, function-call argument delta/done, content/reasoning deltas,
+  output indices, final object consistency, kwargs/parser selection, and cache
+  telemetry.
+- Next action: inspect the existing Qwen raw-SSE runner/artifacts and only then
+  run the current direct/gateway proof if the model path and command are still
+  valid.
+
+# 2026-06-10 16:57 PDT - Qwen/generic raw SSE checked; pivot to MiMo speed
+
+- Inspected current Qwen raw-SSE artifacts instead of rerunning a green proof:
+  - `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-public-recapture-20260610.json`
+    is `status=pass`, no missing captures, valid output indices, required
+    reasoning, gateway capture present, tunnel capture present.
+  - `build/current-responses-raw-sse-parity-qwen27-mxfp8-direct-gateway-tunnel-20260610.json`
+    is also `status=pass`.
+- Inspected the generic Responses raw-SSE gate:
+  - `build/current-responses-raw-sse-parity-direct-gateway-tunnel-gemma4-12b-mxfp8-crack-20260610.json`
+    is `status=pass`.
+  - Current checklist source already points `RESPONSES_RAW_SSE_PARITY` at that
+    Gemma4 12B artifact and `QWEN35_RAW_SSE_PARITY` at the Qwen35 public
+    recapture pass artifact.
+- Conclusion: no source/runtime gap was reproduced in Qwen/generic raw-SSE in
+  this movement; rerunning it would be lower value.
+- Next selected live blocker: MiMo V2.5 JANG/JANGTQ speed/exactness. Current
+  evidence still shows first-sample/sampler latency and decode speed below
+  release target after the short-hit guard. Next action is inspect sampler and
+  generation timing paths for a root-cause runtime fix.
+
+# 2026-06-10 17:08 PDT - MiMo allocator-clear sampler hypothesis rejected
+
+- Investigated MiMo JANG_2L sampler/first-token bottleneck using current source
+  and prior live trace:
+  - previous proof: model forward ~3ms, first sample ~29.7s, second sample
+    ~522ms, 2 tokens in ~31s;
+  - local MLX microbench outside loaded MiMo state: `argmax`, `argpartition`,
+    `topk`, full categorical, gumbel argmax, and current compact top-k are all
+    sub-2ms on a 256k vector, so the bottleneck only manifests under the loaded
+    102GB MiMo working set.
+- Tried one narrow hypothesis in source, then rejected it:
+  - edited `SingleBatchGenerator` to materialize final logits, delete the full
+    logits tensor, and `mx.clear_cache()` before sampling for MiMo/heavy
+    single-batch paths;
+  - focused SingleBatch/sampler tests passed `25/25`;
+  - live MiMo JANG_2L 2-token proof on port `59937` got worse:
+    `TIME_TOTAL=57.506668`, output `Hello!`;
+  - server log artifact:
+    `build/current-mimo-jang2l-clearcache-before-sample-20260610.server.log`;
+    response artifact:
+    `build/current-mimo-jang2l-clearcache-before-sample-20260610.response.txt`.
+- The allocator-clear source edit was reverted immediately. `vmlx_engine/utils/single_batch_generator.py`
+  is clean after revert and `py_compile` passes. Port `59937` is clear.
+- Do not reintroduce the allocator-clear-before-sample change as a fix. It did
+  not improve MiMo speed.
+- Next MiMo speed hypothesis should focus on an alternate sampling policy or
+  loaded-state sampler allocation strategy that avoids the slow materialization
+  path, with per-token trace env spelled correctly:
+  `VMLINUX_DECODE_TRACE=1 VMLINUX_DECODE_TRACE_EVERY=1`.
+
+# 2026-06-10 17:15 PDT - MiMo BatchGenerator route hypothesis rejected
+
+- Tested whether MiMo JANG_2L is slow only because `max_num_seqs=1` selects
+  `SingleBatchGenerator`.
+- Live diagnostic:
+  - served `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L` on port
+    `59938` with `--max-num-seqs 2` so the scheduler uses the standard batched
+    generator route instead of `SingleBatchGenerator`;
+  - same Responses request: `input="what are u"`, `max_output_tokens=2`,
+    `enable_thinking=false`;
+  - response artifact:
+    `build/current-mimo-jang2l-batchgenerator-maxseq2-20260610.response.txt`;
+  - server log:
+    `build/current-mimo-jang2l-batchgenerator-maxseq2-20260610.server.log`.
+- Result: still slow, `TIME_TOTAL=49.770499`, output `Hello!`.
+- Conclusion: MiMo speed blocker is not solved by switching from single-active
+  generator to the default BatchGenerator. Port `59938` is clear.
+- Do not change MiMo launch defaults to `max_num_seqs=2` as a speed fix from
+  this proof.
+
+# 2026-06-10 continuation - parser spacing/special-character audit
+
+- Eric's latest correction is now recorded before action: deeply inspect all
+  tool/reasoning parser and Responses streaming paths for spacing, special
+  characters, Unicode punctuation/paths, XML entities, JSON escaping, newlines,
+  and raw delimiter edge cases.
+- Current selected blocker: opencode/Codex-style tool API usability across
+  Qwen/Qwen-coder, Gemma4, MiMo/think-XML, MiniMax, DeepSeek/R1, generic XML
+  function-call, direct API, gateway, and streaming/final object paths.
+- Boundaries preserved:
+  - no release/sign/notarize/PyPI/updater/site action;
+  - no N2 JANG_1L work;
+  - no subagents;
+  - do not synthesize tool arguments, disable reasoning, or hide parser leaks.
+- Next action: inspect parser implementations and focused tests for remaining
+  argument-preservation gaps beyond the already committed XML spacing/entity
+  fix.
+
+# 2026-06-10 parser spacing/special-character audit result
+
+- Found and fixed additional XML-family parser value-preservation bugs beyond
+  Qwen/XMLFunction:
+  - shared `ToolParser._serialize_tool_arguments` no longer strips raw XML
+    `<param>...</param>` string payloads before JSON-wrapping them;
+  - `NemotronToolParser`, `AutoToolParser` Nemotron fallback,
+    `ZayaToolParser`, `Glm47ToolParser`, `HunyuanToolParser`,
+    `MiniMaxToolParser`, and `Step3p5ToolParser` now parse JSON from a trimmed
+    syntax view but preserve non-JSON string payload spacing;
+  - XML-style dialects now decode XML entities such as `&lt;`, `&gt;`, and
+    `&amp;` in plain string arguments;
+  - `<value>...</value>` wrappers in XMLFunction/Zaya preserve inner payload
+    spacing instead of trimming it.
+- Reproduced before fix:
+  `.venv/bin/python -m pytest -q tests/test_reasoning_tool_interaction.py -k 'XMLFamilyToolArgumentPreservation'`
+  failed `5/5` for Nemotron, Zaya, GLM, Hunyuan, and MiniMax by stripping
+  command spacing and leaving XML entities escaped.
+- Proof after fix:
+  - `.venv/bin/python -m pytest -q tests/test_reasoning_tool_interaction.py`
+    passed `74/74`.
+  - Existing empty-args/streaming guards still passed:
+    `.venv/bin/python -m pytest -q tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_responses_required_empty_xml_tool_call_is_rejected tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_responses_preamble_empty_xml_tool_call_never_emits_empty_arguments tests/test_server.py::TestOpenAILogprobsFormatting::test_tool_parser_drops_empty_xml_call_and_strips_markup_for_nonstream_paths tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_chat_preamble_empty_xml_tool_call_never_emits_empty_arguments tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_responses_reasoning_tool_call_keeps_arguments tests/test_tool_parser_required_args_fail_closed.py`
+    passed `12/12`.
+  - `py_compile` passed for all touched parser files and the focused test file.
+  - `git diff --check` passed.
+- Proven:
+  - XML-style parser families preserve leading/trailing spaces, shell command
+    special characters, Unicode-capable strings, and XML entity forms in valid
+    string tool arguments.
+  - Whitespace-only required arguments still fail closed; this fix does not
+    synthesize missing arguments and does not make `{}` executable for required
+    tool schemas.
+- Not proven:
+  - No new live same-model Qwen/Gemma/MiMo gateway/tunnel SSE recapture was run
+    in this movement.
+  - This does not clear broader MiMo speed/exactness, Gemma media/UI,
+    installed-app, release, or N2 rows.
