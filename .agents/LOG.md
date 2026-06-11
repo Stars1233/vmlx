@@ -14502,3 +14502,22 @@ Next action:
     passed, and `git diff --check` passed.
 - Boundary: no generation, parser, cache-state, tool-arg, media, N2 JANG_1L,
   release/sign/notarize/PyPI/updater/site behavior was changed here.
+
+# 2026-06-11 Qwen/Responses empty-args proof refresh
+- Current blocker checked after MiMo detector commit: Qwen/Qwen-coder
+  Responses tool streaming for the reported preamble plus empty XML tool-call
+  shape, output-index ordering, and fail-closed behavior.
+- Local artifact check: no Qwen-coder-next artifact was found under
+  `/Users/eric/models`, `/Users/eric/.mlxstudio/models`, or `/opt/adlab/models`,
+  so live Qwen-coder-next proof remains open.
+- Existing focused source/API proof refreshed without adding harness code:
+  `.venv/bin/python -m pytest -q tests/test_tool_parsers.py tests/test_server.py
+  tests/test_responses_raw_sse_parity_contract.py -k "streaming_xml_empty_required_args_fail_closed or empty_function_with_required_schema_fails_closed or streaming_responses_preamble_empty_xml_tool_call_never_emits_empty_arguments or streaming_responses_tool_call_uses_next_output_index_without_text or classifier_flags_function_call_reusing_message_output_index or raw_sse_parity_fails_when_surface_reuses_message_output_index_for_tool"`
+  passed `6 passed, 218 deselected`.
+- Proven by this refresh: source parser/API guards still reject required empty
+  XML calls without emitting executable `{}` args, preserve no raw invalid XML
+  in the relevant Responses path, allocate function-call output indices after
+  the message item, and classify duplicate function-call/message output-index
+  reuse as invalid.
+- Boundary: this is not a new live same-model Qwen-coder-next proof and not a
+  release/sign/notarize/PyPI/updater/site action.

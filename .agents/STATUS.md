@@ -8758,3 +8758,19 @@ Other-agent action:
   this clears only the JANG-vs-JANGTQ runtime detector false positive. MiMo
   required-tool exactness, reasoning-on, media semantics, speed, installed-app
   parity, and release packaging remain separate rows.
+
+# 2026-06-11 00:55 PDT Qwen/Responses parser/API refresh
+
+- Current-source focused proof:
+  existing Qwen/Responses source/API slice passed `6 passed, 218 deselected`
+  across `tests/test_tool_parsers.py`, `tests/test_server.py`, and
+  `tests/test_responses_raw_sse_parity_contract.py`.
+- Covered:
+  streamed XML empty required args fail closed, empty XML function with required
+  schema fails closed, streamed preamble plus empty XML never emits executable
+  `{}` arguments, function-call output indices advance past the message item,
+  and duplicate output-index reuse is classified as invalid.
+- Still open:
+  no local Qwen-coder-next artifact was found under the checked model roots, so
+  this is not a live Qwen-coder-next proof. Keep same-model live proof open
+  until that artifact or a reachable deployment is available.
