@@ -7,6 +7,30 @@ separates what was actually loaded and proven from what remains red.
 
 ## Latest Proof Additions
 
+### MiniMax Legacy XML Raw Fallback Spacing Fix
+
+- Source fix:
+  `vmlx_engine/tool_parsers/minimax_tool_parser.py` no longer trims inner text
+  when the legacy `<func_name>...</func_name>` fallback cannot parse JSON and
+  serializes the schema-gated `{"raw": ...}` argument. It still uses trimmed
+  text only for JSON detection/parsing.
+- Regression:
+  `tests/test_tool_parsers.py::TestMiniMaxToolParser::test_xml_function_raw_fallback_preserves_spacing`
+  covers `<minimax:tool_call><legacy_raw>  alpha\nbeta  </legacy_raw>` with a
+  request schema requiring `raw`.
+- Audit correction:
+  `tests/test_engine_audit.py` now checks the current Responses streaming
+  invariants: parse candidates include `accumulated_content`,
+  `accumulated_reasoning`, stripped full text, raw full text, and the final
+  missing-required-args fail-closed guard.
+- Verification:
+  focused MiniMax slice passed `4 passed`; broad parser/Responses exactness
+  slice passed `361 passed`; changed-file `py_compile` and `git diff --check`
+  passed.
+- Boundary:
+  source/parser proof only. This is not a fresh MiniMax live model run and not
+  a release/notarization/PyPI action.
+
 ### Nex/N2 Pro JANGTQ2 Installed-App Responses Tool/Cache Proof
 
 Artifact:

@@ -8306,3 +8306,22 @@ Other-agent action:
 - Boundaries: no N2 JANG_1L, no media proof, no visible/interleaved reasoning
   proof because `enable_thinking=false`, and MTP remained unavailable because
   this bundle has metadata only and no MTP tensors.
+
+# 2026-06-10 20:32 PDT MiniMax legacy XML raw spacing fix
+
+- Reproduced another concrete parser exactness issue in the spacing/special-
+  character lane: MiniMax legacy `<func_name>...</func_name>` fallback stripped
+  inner raw content before emitting schema-gated `{"raw": ...}` arguments.
+- Fixed `vmlx_engine/tool_parsers/minimax_tool_parser.py` so JSON parsing still
+  uses trimmed text, but raw fallback preserves the original inner payload.
+- Added
+  `tests/test_tool_parsers.py::TestMiniMaxToolParser::test_xml_function_raw_fallback_preserves_spacing`.
+- Updated stale Responses streaming audit text in `tests/test_engine_audit.py`
+  to assert current streaming invariants: accumulated content/reasoning parse
+  candidates, stripped/full fallback, and missing-required-args fail-closed
+  guard.
+- Verification passed:
+  focused MiniMax slice `4 passed`; broad parser/Responses exactness slice
+  `361 passed`; changed-file `py_compile`; `git diff --check`.
+- Boundary: source/parser fix only; no release/sign/notarize/PyPI/updater/site
+  and no fresh live MiniMax model proof in this movement.

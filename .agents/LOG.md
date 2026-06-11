@@ -14121,3 +14121,10 @@ Next action:
 - Runtime/cache: `turboquant_codebook` MXTQ/JANGTQ2, 540 prestacked routed-expert TQ targets, hybrid SSM cache with attention-only TurboQuant KV, q4 storage-boundary KV, SSM companion cache, async clean-prefill rederive policy, `6833` L2 block tokens, `25265` SSM tokens on disk, `32098` total L2 tokens, and `109` disk writes.
 - Performance/memory: live decode samples `22.4` and `27.0 tok/s`; health memory about `103.8GB` active / `108.8GB` peak, generator peak `114.1GB`.
 - Boundaries: no N2 JANG_1L, no media proof, no reasoning-delta proof in this run (`enable_thinking=false`), and MTP stayed unavailable because this bundle reports metadata-only missing MTP weights.
+
+# 2026-06-10 20:32 PDT MiniMax raw XML fallback spacing fixed
+- Found a remaining MiniMax exactness gap: `<minimax:tool_call><legacy_raw>  alpha\nbeta  </legacy_raw></minimax:tool_call>` was stripping the raw payload before emitting `{"raw": ...}`.
+- Patched `vmlx_engine/tool_parsers/minimax_tool_parser.py` to keep `raw_content` for raw fallback while retaining trimmed JSON detection.
+- Added the focused MiniMax regression and corrected the stale Responses streaming audit to check accumulated-content/reasoning candidates plus required-args fail-closed behavior.
+- Verification: focused MiniMax slice `4 passed`; broad parser/Responses exactness slice `361 passed`; changed-file `py_compile`; `git diff --check`.
+- Boundary: no live MiniMax model run and no release/sign/notarize/PyPI/updater/site action.
