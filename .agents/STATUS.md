@@ -13371,3 +13371,15 @@ Other-agent action:
 - fresh classifier artifact: `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-public-recapture-still-stale-20260611.json`, `status=fail`.
 - result: public tunnel still preserves model, authoritative args `{"value":"blue-cat"}`, argument deltas/done, final response consistency, and valid message/function output indices, but it still emits reasoning summary deltas against the message item at `output_index=0` and never emits a streamed reasoning output item lifecycle (`reasoning_output_item_count=0`, `reasoning_lifecycle_complete=false`).
 - classification: current direct/gateway source is green; public tunnel remains deployed/stale or tunnel-runtime divergent. Release board now points at the 2026-06-11 fresh red artifact. Do not claim Qwen35 direct/gateway/tunnel raw-SSE parity green until the public tunnel is rebuilt/recaptured with a real reasoning output item lifecycle.
+
+## CODEX
+- now: Qwen35 public tunnel stale recapture committed and pushed as `145263eda` to `origin/codex/pr-intake-manifest` and `origin/main`; moving to a local source-fixable release blocker rather than reusing the stale public endpoint.
+- selected blocker: LFM2.5 MXFP4/MXFP8 no-media smoke exact-code whitespace failure, because the current checklist shows both variants fail only by truncating `print(add(2, 3))` to `print(add(2, 3)` while the rows otherwise have live local artifacts.
+- boundary: inspect artifact/probe/server logs before editing; do not hide exactness failures with parser/JSON repair, do not run release/sign/notarize/PyPI/site/updater actions, and do not touch N2 JANG_1L.
+
+## CODEX
+- now: LFM2.5 MXFP4 and MXFP8 no-media smoke rows are live-pass on current source after smoke prompt cleanup; no runtime parser rewrite, no JSON repair, and no hidden output fix was used.
+- source change: `bench/all_local_model_smoke.py` keeps exact validation but makes tool-result continuation prove exact stored-value continuation (`blue-cat.`) instead of an arbitrary `STORED` prefix, and keeps the exact-code prompt from the current harness.
+- passing artifacts: `build/current-all-local-model-smoke-lfm25-mxfp4-tools-nomedia-after-tool-result-value-prompt-20260611/summary.json` and `build/current-all-local-model-smoke-lfm25-mxfp8-tools-nomedia-after-tool-result-value-prompt-20260611/summary.json`.
+- checklist pointer: `build/current-full-release-objective-checklist-after-lfm25-live-smoke-refresh-20260611.json`, `status=open`, `failed_count=46`; no LFM rows remain open.
+- still open: package/release readiness, Qwen35 public tunnel reasoning lifecycle, MiMo exactness/media/speed, N2 JANG_1L boundary, Step3.7/Nemotron missing live artifacts, MiniMax issue179, and installed/real-UI matrix gaps.

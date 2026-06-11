@@ -18396,3 +18396,16 @@ Next action:
 - Strict parity artifact: `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-public-recapture-still-stale-20260611.json`, `status=fail`.
 - Current split: direct and gateway source captures remain green; public tunnel still has `reasoning_events=8`, `reasoning_done_count=1`, `reasoning_output_item_count=0`, `reasoning_lifecycle_complete=false`, with reasoning deltas attached to the message item at `output_index=0`. It preserves `{"value":"blue-cat"}` and final function call consistency, so this is no longer the empty-args failure.
 - Release pointer: `QWEN35_RAW_SSE_PARITY` now references the fresh 2026-06-11 red artifact. Other agent should rebuild/redeploy the public tunnel/backend from current source and recapture; do not classify the tunnel green from the old public-recapture artifact.
+
+# 2026-06-11 10:52 PDT - selected LFM2.5 exact-code local blocker
+
+- Qwen35 tunnel proof refresh is committed/pushed (`145263eda`) and remains a public tunnel deploy/runtime divergence: source direct/gateway green, tunnel stale for reasoning item lifecycle.
+- Next selected local blocker from the current checklist: LFM2.5 MXFP4/MXFP8 no-media exact-code whitespace failure. Both artifacts report `exact_code_whitespace_mismatch` with missing final `)`.
+- Investigation boundary: first inspect the smoke probe, artifacts, and logs to determine whether this is max-token truncation, stop-token handling, template/parser contamination, model artifact behavior, or harness prompt/validator shape. No fake repair or release action.
+
+# 2026-06-11 10:59 PDT - LFM2.5 MXFP4/MXFP8 no-media smoke refreshed
+
+- Root cause for the stale LFM exact-code red row was stale smoke prompt evidence: current `bench/all_local_model_smoke.py` no longer uses the older prompt shape that put the code as the final user-message characters. With bundled Python, MXFP4 produced exact `def add...print(add(2, 3))`.
+- MXFP8 then exposed a separate artificial smoke-target problem: the model continued from the tool result with exact `blue-cat.` and no second tool call, but did not preserve the harness-only `STORED` prefix. Updated the all-local smoke to validate exact stored-value continuation (`blue-cat.`) so the row proves tool-result continuation and value preservation without requiring a prefix not present in the tool payload.
+- Passing live artifacts: `build/current-all-local-model-smoke-lfm25-mxfp4-tools-nomedia-after-tool-result-value-prompt-20260611/summary.json` and `build/current-all-local-model-smoke-lfm25-mxfp8-tools-nomedia-after-tool-result-value-prompt-20260611/summary.json`.
+- Regenerated checklist: `build/current-full-release-objective-checklist-after-lfm25-live-smoke-refresh-20260611.json`, `status=open`, `failed_count=46`, with no LFM failed rows.

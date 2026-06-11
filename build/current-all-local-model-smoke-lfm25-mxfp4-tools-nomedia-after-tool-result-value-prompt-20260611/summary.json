@@ -1,0 +1,1550 @@
+{
+  "created_at": "20260611_104400",
+  "status": "pass",
+  "completed": 1,
+  "row_count": 1,
+  "failed": 0,
+  "results": [
+    {
+      "row": {
+        "path": "/Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4",
+        "served_name": "lfm2.5-8b-a1b-mxfp4",
+        "name": "LFM2.5-8B-A1B-MXFP4",
+        "relative_path": "/Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4",
+        "model_type": "lfm2_moe",
+        "is_mllm": false,
+        "supports_video": false,
+        "supports_thinking": false,
+        "supports_tools": true,
+        "has_mtp": false,
+        "cache_family": "hybrid_ssm",
+        "capabilities": {},
+        "has_jang_config": false,
+        "namespace": "JANGQ"
+      },
+      "port": 8898,
+      "command": [
+        "/Users/eric/mlx/vllm-mlx-finite-launch-guard/panel/bundled-python/python/bin/python3.12",
+        "-B",
+        "-s",
+        "-m",
+        "vmlx_engine.cli",
+        "serve",
+        "/Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8898",
+        "--served-model-name",
+        "lfm2.5-8b-a1b-mxfp4",
+        "--timeout",
+        "240",
+        "--max-num-seqs",
+        "1",
+        "--prefill-batch-size",
+        "512",
+        "--prefill-step-size",
+        "1024",
+        "--completion-batch-size",
+        "256",
+        "--continuous-batching",
+        "--use-paged-cache",
+        "--paged-cache-block-size",
+        "64",
+        "--max-cache-blocks",
+        "1000",
+        "--enable-block-disk-cache",
+        "--block-disk-cache-dir",
+        "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-lfm25-mxfp4-tools-nomedia-after-tool-result-value-prompt-20260611/JANGQ_LFM2.5-8B-A1B-MXFP4/block_cache",
+        "--block-disk-cache-max-gb",
+        "2",
+        "--ssm-state-cache-mb",
+        "1024",
+        "--max-tokens",
+        "512",
+        "--log-level",
+        "INFO",
+        "--default-enable-thinking",
+        "false"
+      ],
+      "server_cwd": "/Users/eric/mlx/vllm-mlx-finite-launch-guard",
+      "started_at": "2026-06-11T10:44:00-0700",
+      "requests": [
+        {
+          "label": "text_cache_repeat_1",
+          "code": 200,
+          "elapsed_sec": 1.348153667000588,
+          "content": "ACK",
+          "content_head": "ACK",
+          "reasoning_head": "",
+          "reasoning_chars": 0,
+          "tool_calls": [],
+          "usage": {
+            "prompt_tokens": 68,
+            "completion_tokens": 202,
+            "total_tokens": 270,
+            "prompt_tokens_details": null
+          },
+          "cache_stats_code": 200,
+          "cache_summary": {
+            "cache_hit_tokens": 0,
+            "cache_hits": 0,
+            "disk_hits": 0,
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "has_cache_hit": false,
+            "mentions_turboquant": true,
+            "mentions_ssm": true,
+            "mentions_media_salt": true,
+            "mentions_rotating": false,
+            "has_hybrid_kv_without_ssm": false
+          },
+          "expected_content": "ACK",
+          "validation_failures": []
+        },
+        {
+          "label": "text_cache_repeat_2",
+          "code": 200,
+          "elapsed_sec": 1.2638245830021333,
+          "content": "ACK",
+          "content_head": "ACK",
+          "reasoning_head": "",
+          "reasoning_chars": 0,
+          "tool_calls": [],
+          "usage": {
+            "prompt_tokens": 68,
+            "completion_tokens": 143,
+            "total_tokens": 211,
+            "prompt_tokens_details": {
+              "cached_tokens": 64,
+              "cache_detail": "paged+ssm"
+            }
+          },
+          "cache_stats_code": 200,
+          "cache_summary": {
+            "cache_hit_tokens": 64,
+            "cache_hits": 2,
+            "disk_hits": 3,
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "has_cache_hit": true,
+            "mentions_turboquant": true,
+            "mentions_ssm": true,
+            "mentions_media_salt": true,
+            "mentions_rotating": false,
+            "has_hybrid_kv_without_ssm": false
+          },
+          "expected_content": "ACK",
+          "validation_failures": []
+        },
+        {
+          "label": "text_multiturn_recall",
+          "code": 200,
+          "elapsed_sec": 0.35716666700318456,
+          "content": "blue cat",
+          "content_head": "blue cat",
+          "reasoning_head": "",
+          "reasoning_chars": 0,
+          "tool_calls": [],
+          "usage": {
+            "prompt_tokens": 69,
+            "completion_tokens": 3,
+            "total_tokens": 72,
+            "prompt_tokens_details": null
+          },
+          "cache_stats_code": 200,
+          "cache_summary": {
+            "cache_hit_tokens": 64,
+            "cache_hits": 2,
+            "disk_hits": 3,
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "has_cache_hit": true,
+            "mentions_turboquant": true,
+            "mentions_ssm": true,
+            "mentions_media_salt": true,
+            "mentions_rotating": false,
+            "has_hybrid_kv_without_ssm": false
+          },
+          "validation_failures": []
+        },
+        {
+          "label": "tool_required",
+          "code": 200,
+          "elapsed_sec": 1.161635665979702,
+          "content": "",
+          "content_head": "",
+          "reasoning_head": "",
+          "reasoning_chars": 0,
+          "tool_calls": [
+            {
+              "id": "call_cbc3bffd",
+              "type": "function",
+              "function": {
+                "name": "record_fact",
+                "arguments": "{\"value\": \"blue-cat\"}"
+              }
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 163,
+            "completion_tokens": 172,
+            "total_tokens": 335
+          },
+          "cache_stats_code": 200,
+          "cache_summary": {
+            "cache_hit_tokens": 64,
+            "cache_hits": 2,
+            "disk_hits": 3,
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "has_cache_hit": true,
+            "mentions_turboquant": true,
+            "mentions_ssm": true,
+            "mentions_media_salt": true,
+            "mentions_rotating": false,
+            "has_hybrid_kv_without_ssm": false
+          },
+          "validation_failures": []
+        },
+        {
+          "label": "tool_result_continuation",
+          "code": 200,
+          "elapsed_sec": 0.3076349580078386,
+          "content": "blue-cat.",
+          "content_head": "blue-cat.",
+          "reasoning_head": "",
+          "reasoning_chars": 0,
+          "tool_calls": [],
+          "usage": {
+            "prompt_tokens": 126,
+            "completion_tokens": 5,
+            "total_tokens": 131,
+            "prompt_tokens_details": null
+          },
+          "cache_stats_code": 200,
+          "cache_summary": {
+            "cache_hit_tokens": 64,
+            "cache_hits": 2,
+            "disk_hits": 3,
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "has_cache_hit": true,
+            "mentions_turboquant": true,
+            "mentions_ssm": true,
+            "mentions_media_salt": true,
+            "mentions_rotating": false,
+            "has_hybrid_kv_without_ssm": false
+          },
+          "validation_failures": []
+        },
+        {
+          "label": "structured_json_exact",
+          "code": 200,
+          "elapsed_sec": 0.4512839160161093,
+          "content": "{\"status\": \"ok\", \"value\": \"blue-cat\", \"count\": 3}",
+          "content_head": "{\"status\": \"ok\", \"value\": \"blue-cat\", \"count\": 3}",
+          "reasoning_head": "",
+          "reasoning_chars": 0,
+          "tool_calls": [],
+          "usage": {
+            "prompt_tokens": 212,
+            "completion_tokens": 26,
+            "total_tokens": 238,
+            "prompt_tokens_details": null
+          },
+          "cache_stats_code": 200,
+          "cache_summary": {
+            "cache_hit_tokens": 64,
+            "cache_hits": 2,
+            "disk_hits": 3,
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "has_cache_hit": true,
+            "mentions_turboquant": true,
+            "mentions_ssm": true,
+            "mentions_media_salt": true,
+            "mentions_rotating": false,
+            "has_hybrid_kv_without_ssm": false
+          },
+          "validation_failures": []
+        },
+        {
+          "label": "exact_code_whitespace",
+          "code": 200,
+          "elapsed_sec": 0.3457223330042325,
+          "content": "def add(a, b):\n    return a + b\nprint(add(2, 3))",
+          "content_head": "def add(a, b):\n    return a + b\nprint(add(2, 3))",
+          "reasoning_head": "",
+          "reasoning_chars": 0,
+          "tool_calls": [],
+          "usage": {
+            "prompt_tokens": 61,
+            "completion_tokens": 21,
+            "total_tokens": 82,
+            "prompt_tokens_details": null
+          },
+          "cache_stats_code": 200,
+          "cache_summary": {
+            "cache_hit_tokens": 64,
+            "cache_hits": 2,
+            "disk_hits": 3,
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "has_cache_hit": true,
+            "mentions_turboquant": true,
+            "mentions_ssm": true,
+            "mentions_media_salt": true,
+            "mentions_rotating": false,
+            "has_hybrid_kv_without_ssm": false
+          },
+          "validation_failures": []
+        }
+      ],
+      "status": "pass",
+      "health_before": {
+        "status": "healthy",
+        "model_loaded": true,
+        "model_name": "JANGQ-AI/LFM2.5-8B-A1B-MXFP4",
+        "model_type": "llm",
+        "engine_type": "batched",
+        "last_request_time": null,
+        "mcp": null,
+        "memory": {
+          "active_mb": 4291.2,
+          "peak_mb": 4291.2,
+          "cache_mb": 0.0
+        },
+        "kv_cache_quantization": {
+          "enabled": true,
+          "bits": 4,
+          "group_size": 64
+        },
+        "speculative_decoding": "not_configured",
+        "scheduler": {
+          "num_waiting": 0,
+          "num_running": 0,
+          "engine_path": "none",
+          "batch_generator": {
+            "class": null,
+            "path": "none",
+            "single_active_decode": false,
+            "max_num_seqs": 1
+          },
+          "single_active_decode": false,
+          "ewma_ttft_seconds": 0.0,
+          "cache_hit_requests": 0,
+          "cache_hit_tokens": 0,
+          "cache_hit_tokens_by_detail": {},
+          "hybrid_kv_without_ssm_hits": 0,
+          "hybrid_kv_without_ssm_tokens": 0,
+          "last_hybrid_kv_without_ssm": null,
+          "cache_reuse_skips": 0,
+          "cache_reuse_skip_tokens": 0,
+          "last_cache_reuse_skip": null,
+          "cache_reuse_partial_downgrades": 0,
+          "cache_reuse_partial_tokens": 0,
+          "last_cache_reuse_partial": null,
+          "last_cache_selection": null,
+          "last_cache_execution": null
+        },
+        "cache": {
+          "scheduler_cache": {
+            "hits": 0,
+            "misses": 0,
+            "hit_rate": 0,
+            "tokens_saved": 0,
+            "active_requests": 0,
+            "entries_by_type": {
+              "assistant": 0,
+              "user": 0,
+              "system": 0
+            },
+            "block_size": 64,
+            "max_blocks": 1000,
+            "allocated_blocks": 1,
+            "free_blocks": 999,
+            "shared_blocks": 0,
+            "total_tokens_cached": 0,
+            "utilization": 0.001,
+            "cache_hit_rate": 0,
+            "cache_hits": 0,
+            "cache_misses": 0,
+            "disk_hits": 0,
+            "disk_misses": 0,
+            "cow_copies": 0,
+            "evictions": 0,
+            "ssm_companion_cache": {
+              "entries": 0,
+              "max_entries": 8,
+              "max_bytes": 1073741824,
+              "max_bytes_mb": 1024.0,
+              "nbytes": 0,
+              "nbytes_mb": 0.0,
+              "disk_enabled": true,
+              "disk": {
+                "enabled": true,
+                "directory": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-lfm25-mxfp4-tools-nomedia-after-tool-result-value-prompt-20260611/JANGQ_LFM2.5-8B-A1B-MXFP4/block_cache/ssm_companion",
+                "entries": 0,
+                "total_tokens_on_disk": 0,
+                "total_cached_tokens": 0,
+                "bytes": 0,
+                "bytes_mb": 0.0,
+                "budget_bytes": 2147483648,
+                "budget_gb": 2.0,
+                "stores": 0,
+                "hits": 0,
+                "misses": 0,
+                "hit_rate": 0.0
+              }
+            },
+            "engine_path": "none",
+            "batch_generator": {
+              "class": null,
+              "path": "none",
+              "single_active_decode": false,
+              "max_num_seqs": 1
+            }
+          },
+          "block_disk_cache": {
+            "blocks_on_disk": 0,
+            "disk_size_bytes": 0,
+            "disk_size_gb": 0.0,
+            "total_accesses": 0,
+            "total_tokens_on_disk": 0,
+            "total_cached_tokens": 0,
+            "disk_hits": 0,
+            "disk_misses": 0,
+            "disk_writes": 0,
+            "disk_evictions": 0
+          },
+          "ssm_companion": {
+            "entries": 0,
+            "max_entries": 8,
+            "nbytes": 0,
+            "nbytes_mb": 0.0,
+            "disk_enabled": true,
+            "disk_directory": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-lfm25-mxfp4-tools-nomedia-after-tool-result-value-prompt-20260611/JANGQ_LFM2.5-8B-A1B-MXFP4/block_cache/ssm_companion",
+            "disk": {
+              "enabled": true,
+              "directory": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-lfm25-mxfp4-tools-nomedia-after-tool-result-value-prompt-20260611/JANGQ_LFM2.5-8B-A1B-MXFP4/block_cache/ssm_companion",
+              "entries": 0,
+              "total_tokens_on_disk": 0,
+              "total_cached_tokens": 0,
+              "bytes": 0,
+              "bytes_mb": 0.0,
+              "budget_bytes": 2147483648,
+              "budget_gb": 2.0,
+              "stores": 0,
+              "hits": 0,
+              "misses": 0,
+              "hit_rate": 0.0
+            }
+          },
+          "totals": {
+            "ram_tokens_cached": 0,
+            "l2_prompt_tokens_on_disk": 0,
+            "l2_block_tokens_on_disk": 0,
+            "l2_ssm_tokens_on_disk": 0,
+            "ssm_tokens_on_disk": 0,
+            "l2_tokens_on_disk": 0,
+            "l2_tokens_on_disk_store_sum": 0,
+            "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+          }
+        },
+        "quantization": {
+          "codec": "affine_quantized_matmul",
+          "target_bits": 4,
+          "config_bits": 4,
+          "group_size": 32,
+          "weight_index": {
+            "index_file": "/Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4/model.safetensors.index.json",
+            "total_tensors": 433,
+            "suffix_counts": {
+              "biases": 22,
+              "scales": 155,
+              "weight": 234
+            },
+            "tq_target_counts": {},
+            "routed_layout_counts": {
+              "prestacked_switch": 132,
+              "split_expert": 0
+            },
+            "mtp_tensor_count": 0
+          },
+          "weight_matmul_dispatch": {
+            "primary": "mlx_affine_quantized_matmul",
+            "uses_mlx_quantized_matmul": true,
+            "metal_na_eligible": true,
+            "reason": null
+          },
+          "sidecar": {
+            "jang_config": false,
+            "jangtq_runtime": false,
+            "prestacked_bundle": false
+          }
+        },
+        "acceleration": {
+          "kernel_type": "affine_quantized_matmul",
+          "metal_na_capable": true,
+          "metal_na_active_on_host": true,
+          "reason": null,
+          "metal_na_symbols": {
+            "available": true,
+            "nax_symbols": 0,
+            "naxtile_symbols": 0,
+            "affine_qmm_symbols": 2592,
+            "affine_gather_qmm_symbols": 1620
+          },
+          "host": {
+            "supported": true,
+            "brand": "Apple M5 Max",
+            "reason": null
+          }
+        },
+        "mtp": {
+          "config_num_nextn_predict_layers": null,
+          "config_mtp_layer_source": null,
+          "jang_mtp_layers": null,
+          "jang_drop_mtp": null,
+          "index_has_mtp_tensors": false,
+          "index_mtp_layer_count": null,
+          "mtp_tensor_count": 0,
+          "artifact_available": false,
+          "family": "lfm2_moe",
+          "has_vision_config": false,
+          "has_vision_weights": false,
+          "vision_tensor_count": 0,
+          "cache_type": null,
+          "runtime_supported": false,
+          "runtime_available": false,
+          "runtime_active": false,
+          "runtime_validation_blocked": false,
+          "effective_depth": null,
+          "effective_depth_source": null,
+          "runtime_scope": null,
+          "vl_runtime_available": false,
+          "runtime_bundle_has_mtp": null,
+          "runtime_mtp_mode": null,
+          "runtime_reason": "config does not request MTP",
+          "status": "not_configured",
+          "issues": [],
+          "request_policy": "compatible-only",
+          "request_gate": "temperature=0,repetition_penalty=1.0"
+        },
+        "routing": {
+          "trained_active_experts": 4,
+          "trained_active_experts_source": "config.num_experts_per_tok",
+          "n_routed_experts": 32,
+          "override_env": null,
+          "effective_active_experts": 4,
+          "effective_active_experts_source": "trained_default"
+        },
+        "turboquant_kv_cache": {
+          "enabled": false
+        },
+        "native_cache": {
+          "family": "lfm2",
+          "schema": "hybrid_ssm_v1",
+          "cache_type": "hybrid_ssm_typed",
+          "components": [
+            "attention_kv",
+            "ssm_companion_state",
+            "async_rederive"
+          ],
+          "generic_turboquant_kv": {
+            "enabled": false,
+            "reason": "hybrid_ssm_state"
+          },
+          "live_attention_tq_kv": {
+            "enabled": false,
+            "mode": null,
+            "applies_to": "attention_kv_layers_only",
+            "ssm_policy": "native_full_precision_companion_state",
+            "attention_layers": [],
+            "companion_layers": []
+          },
+          "attention_kv_storage_quantization": {
+            "enabled": true,
+            "mode": "storage_boundary",
+            "bits": 4,
+            "group_size": 64,
+            "applies_to": "attention_kv_layers_only",
+            "ssm_policy": "native_companion_state",
+            "rederive": "async_clean_prefill_on_miss_or_warm_pass"
+          },
+          "prefix": true,
+          "paged": true,
+          "block_disk_l2": true,
+          "ssm_entries": 0,
+          "kv_layer_indices": [
+            2,
+            6,
+            10,
+            14,
+            18,
+            21
+          ]
+        }
+      },
+      "capabilities": {
+        "code": 200,
+        "body": {
+          "id": "lfm2.5-8b-a1b-mxfp4",
+          "loaded_model": "lfm2.5-8b-a1b-mxfp4",
+          "model_path": "/Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4",
+          "family": "lfm2",
+          "compat_warnings": [],
+          "supports_tools": true,
+          "tool_parser": "lfm2",
+          "supports_thinking": true,
+          "reasoning_parser": "qwen3",
+          "think_in_template": false,
+          "supported_modes": [
+            "instruct",
+            "reasoning"
+          ],
+          "experimental_modes": [],
+          "reasoning_efforts": [],
+          "modalities": [
+            "text"
+          ],
+          "media": {
+            "runtime_modalities": [
+              "text"
+            ],
+            "declared_modalities": [
+              "text"
+            ],
+            "preserved_modalities": [],
+            "unwired_modalities": [],
+            "memory_gate": {
+              "applicable": false,
+              "safe": true,
+              "reason": "not_mimo_v2"
+            },
+            "status_by_modality": {
+              "audio": "not_advertised",
+              "image": "not_advertised",
+              "text": "runtime_supported",
+              "video": "not_advertised",
+              "vision": "not_advertised"
+            }
+          },
+          "cache": {
+            "prefix": true,
+            "type": "paged",
+            "paged": true,
+            "block_disk_l2": true,
+            "dsv4_composite_state": false,
+            "native": {
+              "family": "lfm2",
+              "schema": "hybrid_ssm_v1",
+              "cache_type": "hybrid_ssm_typed",
+              "components": [
+                "attention_kv",
+                "ssm_companion_state",
+                "async_rederive"
+              ],
+              "generic_turboquant_kv": {
+                "enabled": false,
+                "reason": "hybrid_ssm_state"
+              },
+              "live_attention_tq_kv": {
+                "enabled": false,
+                "mode": null,
+                "applies_to": "attention_kv_layers_only",
+                "ssm_policy": "native_full_precision_companion_state",
+                "attention_layers": [],
+                "companion_layers": []
+              },
+              "attention_kv_storage_quantization": {
+                "enabled": true,
+                "mode": "storage_boundary",
+                "bits": 4,
+                "group_size": 64,
+                "applies_to": "attention_kv_layers_only",
+                "ssm_policy": "native_companion_state",
+                "rederive": "async_clean_prefill_on_miss_or_warm_pass"
+              },
+              "prefix": true,
+              "paged": true,
+              "block_disk_l2": true,
+              "ssm_entries": 0,
+              "kv_layer_indices": [
+                2,
+                6,
+                10,
+                14,
+                18,
+                21
+              ]
+            }
+          },
+          "quantization": {
+            "codec": "affine_quantized_matmul",
+            "target_bits": 4,
+            "config_bits": 4,
+            "group_size": 32,
+            "weight_index": {
+              "index_file": "/Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4/model.safetensors.index.json",
+              "total_tensors": 433,
+              "suffix_counts": {
+                "biases": 22,
+                "scales": 155,
+                "weight": 234
+              },
+              "tq_target_counts": {},
+              "routed_layout_counts": {
+                "prestacked_switch": 132,
+                "split_expert": 0
+              },
+              "mtp_tensor_count": 0
+            },
+            "weight_matmul_dispatch": {
+              "primary": "mlx_affine_quantized_matmul",
+              "uses_mlx_quantized_matmul": true,
+              "metal_na_eligible": true,
+              "reason": null
+            },
+            "sidecar": {
+              "jang_config": false,
+              "jangtq_runtime": false,
+              "prestacked_bundle": false
+            }
+          },
+          "acceleration": {
+            "kernel_type": "affine_quantized_matmul",
+            "metal_na_capable": true,
+            "metal_na_active_on_host": true,
+            "reason": null,
+            "metal_na_symbols": {
+              "available": true,
+              "nax_symbols": 0,
+              "naxtile_symbols": 0,
+              "affine_qmm_symbols": 2592,
+              "affine_gather_qmm_symbols": 1620
+            },
+            "host": {
+              "supported": true,
+              "brand": "Apple M5 Max",
+              "reason": null
+            }
+          },
+          "mtp": {
+            "config_num_nextn_predict_layers": null,
+            "config_mtp_layer_source": null,
+            "jang_mtp_layers": null,
+            "jang_drop_mtp": null,
+            "index_has_mtp_tensors": false,
+            "index_mtp_layer_count": null,
+            "mtp_tensor_count": 0,
+            "artifact_available": false,
+            "family": "lfm2_moe",
+            "has_vision_config": false,
+            "has_vision_weights": false,
+            "vision_tensor_count": 0,
+            "cache_type": null,
+            "runtime_supported": false,
+            "runtime_available": false,
+            "runtime_active": false,
+            "runtime_validation_blocked": false,
+            "effective_depth": null,
+            "effective_depth_source": null,
+            "runtime_scope": null,
+            "vl_runtime_available": false,
+            "runtime_bundle_has_mtp": null,
+            "runtime_mtp_mode": null,
+            "runtime_reason": "config does not request MTP",
+            "status": "not_configured",
+            "issues": [],
+            "request_policy": "compatible-only",
+            "request_gate": "temperature=0,repetition_penalty=1.0"
+          },
+          "routing": {
+            "trained_active_experts": 4,
+            "trained_active_experts_source": "config.num_experts_per_tok",
+            "n_routed_experts": 32,
+            "override_env": null,
+            "effective_active_experts": 4,
+            "effective_active_experts_source": "trained_default"
+          },
+          "sampling_defaults": {}
+        }
+      },
+      "cache_before": {
+        "code": 200,
+        "body": {
+          "scheduler_cache": {
+            "hits": 0,
+            "misses": 0,
+            "hit_rate": 0,
+            "tokens_saved": 0,
+            "active_requests": 0,
+            "entries_by_type": {
+              "assistant": 0,
+              "user": 0,
+              "system": 0
+            },
+            "block_size": 64,
+            "max_blocks": 1000,
+            "allocated_blocks": 1,
+            "free_blocks": 999,
+            "shared_blocks": 0,
+            "total_tokens_cached": 0,
+            "utilization": 0.001,
+            "cache_hit_rate": 0,
+            "cache_hits": 0,
+            "cache_misses": 0,
+            "disk_hits": 0,
+            "disk_misses": 0,
+            "cow_copies": 0,
+            "evictions": 0,
+            "ssm_companion_cache": {
+              "entries": 0,
+              "max_entries": 8,
+              "max_bytes": 1073741824,
+              "max_bytes_mb": 1024.0,
+              "nbytes": 0,
+              "nbytes_mb": 0.0,
+              "disk_enabled": true,
+              "disk": {
+                "enabled": true,
+                "directory": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-lfm25-mxfp4-tools-nomedia-after-tool-result-value-prompt-20260611/JANGQ_LFM2.5-8B-A1B-MXFP4/block_cache/ssm_companion",
+                "entries": 0,
+                "total_tokens_on_disk": 0,
+                "total_cached_tokens": 0,
+                "bytes": 0,
+                "bytes_mb": 0.0,
+                "budget_bytes": 2147483648,
+                "budget_gb": 2.0,
+                "stores": 0,
+                "hits": 0,
+                "misses": 0,
+                "hit_rate": 0.0
+              }
+            },
+            "engine_path": "none",
+            "batch_generator": {
+              "class": null,
+              "path": "none",
+              "single_active_decode": false,
+              "max_num_seqs": 1
+            }
+          },
+          "scheduler_stats": {
+            "num_waiting": 0,
+            "num_running": 0,
+            "engine_path": "none",
+            "batch_generator": {
+              "class": null,
+              "path": "none",
+              "single_active_decode": false,
+              "max_num_seqs": 1
+            },
+            "single_active_decode": false,
+            "num_requests_processed": 0,
+            "total_prompt_tokens": 0,
+            "total_completion_tokens": 0,
+            "ewma_ttft_seconds": 0.0,
+            "cache_hit_requests": 0,
+            "cache_hit_tokens": 0,
+            "cache_hit_tokens_by_detail": {},
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "last_hybrid_kv_without_ssm": null,
+            "cache_reuse_skips": 0,
+            "cache_reuse_skip_tokens": 0,
+            "last_cache_reuse_skip": null,
+            "cache_reuse_partial_downgrades": 0,
+            "cache_reuse_partial_tokens": 0,
+            "last_cache_reuse_partial": null,
+            "last_cache_selection": null,
+            "last_cache_execution": null
+          },
+          "kv_cache_quantization": {
+            "enabled": true,
+            "bits": 4,
+            "group_size": 64
+          },
+          "turboquant_kv_cache": {
+            "enabled": false
+          },
+          "native_cache": {
+            "family": "lfm2",
+            "schema": "hybrid_ssm_v1",
+            "cache_type": "hybrid_ssm_typed",
+            "components": [
+              "attention_kv",
+              "ssm_companion_state",
+              "async_rederive"
+            ],
+            "generic_turboquant_kv": {
+              "enabled": false,
+              "reason": "hybrid_ssm_state"
+            },
+            "live_attention_tq_kv": {
+              "enabled": false,
+              "mode": null,
+              "applies_to": "attention_kv_layers_only",
+              "ssm_policy": "native_full_precision_companion_state",
+              "attention_layers": [],
+              "companion_layers": []
+            },
+            "attention_kv_storage_quantization": {
+              "enabled": true,
+              "mode": "storage_boundary",
+              "bits": 4,
+              "group_size": 64,
+              "applies_to": "attention_kv_layers_only",
+              "ssm_policy": "native_companion_state",
+              "rederive": "async_clean_prefill_on_miss_or_warm_pass"
+            },
+            "prefix": true,
+            "paged": true,
+            "block_disk_l2": true,
+            "ssm_entries": 0,
+            "kv_layer_indices": [
+              2,
+              6,
+              10,
+              14,
+              18,
+              21
+            ]
+          },
+          "block_disk_cache": {
+            "blocks_on_disk": 0,
+            "disk_size_bytes": 0,
+            "disk_size_gb": 0.0,
+            "total_accesses": 0,
+            "total_tokens_on_disk": 0,
+            "total_cached_tokens": 0,
+            "disk_hits": 0,
+            "disk_misses": 0,
+            "disk_writes": 0,
+            "disk_evictions": 0
+          },
+          "cache_totals": {
+            "ram_tokens_cached": 0,
+            "l2_prompt_tokens_on_disk": 0,
+            "l2_block_tokens_on_disk": 0,
+            "l2_ssm_tokens_on_disk": 0,
+            "ssm_tokens_on_disk": 0,
+            "l2_tokens_on_disk": 0,
+            "l2_tokens_on_disk_store_sum": 0,
+            "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+          },
+          "ssm_companion": {
+            "entries": 0,
+            "max_entries": 8,
+            "nbytes": 0,
+            "nbytes_mb": 0.0,
+            "disk_enabled": true,
+            "disk_directory": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-lfm25-mxfp4-tools-nomedia-after-tool-result-value-prompt-20260611/JANGQ_LFM2.5-8B-A1B-MXFP4/block_cache/ssm_companion",
+            "disk": {
+              "enabled": true,
+              "directory": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-lfm25-mxfp4-tools-nomedia-after-tool-result-value-prompt-20260611/JANGQ_LFM2.5-8B-A1B-MXFP4/block_cache/ssm_companion",
+              "entries": 0,
+              "total_tokens_on_disk": 0,
+              "total_cached_tokens": 0,
+              "bytes": 0,
+              "bytes_mb": 0.0,
+              "budget_bytes": 2147483648,
+              "budget_gb": 2.0,
+              "stores": 0,
+              "hits": 0,
+              "misses": 0,
+              "hit_rate": 0.0
+            }
+          },
+          "memory": {
+            "active_mb": 4291.2,
+            "peak_mb": 4291.2,
+            "cache_mb": 0.0
+          }
+        },
+        "summary": {
+          "cache_hit_tokens": 0,
+          "cache_hits": 0,
+          "disk_hits": 0,
+          "hybrid_kv_without_ssm_hits": 0,
+          "hybrid_kv_without_ssm_tokens": 0,
+          "has_cache_hit": false,
+          "mentions_turboquant": true,
+          "mentions_ssm": true,
+          "mentions_media_salt": true,
+          "mentions_rotating": false,
+          "has_hybrid_kv_without_ssm": false
+        }
+      },
+      "probe_options": {
+        "include_media": false,
+        "include_video": false,
+        "include_audio": false
+      },
+      "health_after": {
+        "code": 200,
+        "body": {
+          "status": "healthy",
+          "model_loaded": true,
+          "model_name": "JANGQ-AI/LFM2.5-8B-A1B-MXFP4",
+          "model_type": "llm",
+          "engine_type": "batched",
+          "last_request_time": 1781199853.859338,
+          "mcp": null,
+          "memory": {
+            "active_mb": 4299.4,
+            "peak_mb": 4574.0,
+            "cache_mb": 3.2
+          },
+          "kv_cache_quantization": {
+            "enabled": true,
+            "bits": 4,
+            "group_size": 64
+          },
+          "speculative_decoding": "not_configured",
+          "scheduler": {
+            "num_waiting": 0,
+            "num_running": 0,
+            "engine_path": "single_active",
+            "batch_generator": {
+              "class": "SingleBatchGenerator",
+              "path": "single_active",
+              "single_active_decode": true,
+              "max_num_seqs": 1
+            },
+            "single_active_decode": true,
+            "ewma_ttft_seconds": 0.033,
+            "cache_hit_requests": 1,
+            "cache_hit_tokens": 64,
+            "cache_hit_tokens_by_detail": {
+              "paged+ssm": 64
+            },
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "last_hybrid_kv_without_ssm": null,
+            "cache_reuse_skips": 0,
+            "cache_reuse_skip_tokens": 0,
+            "last_cache_reuse_skip": null,
+            "cache_reuse_partial_downgrades": 0,
+            "cache_reuse_partial_tokens": 0,
+            "last_cache_reuse_partial": null,
+            "last_cache_selection": {
+              "paged_cached_tokens": 64,
+              "paged_cold_tokens": 0,
+              "warm_cached_tokens": 0,
+              "hot_advantage_tokens": 64,
+              "hot_advantage_threshold_tokens": 64,
+              "selected": "paged",
+              "rejected": null,
+              "reason": "no_warm_prefix_alternative"
+            },
+            "last_cache_execution": {
+              "request_id": "chatcmpl-2cfb4a74",
+              "cache_detail": "paged+ssm",
+              "cached_tokens": 64,
+              "blocks": 1,
+              "selection": {
+                "paged_cached_tokens": 64,
+                "paged_cold_tokens": 0,
+                "warm_cached_tokens": 0,
+                "hot_advantage_tokens": 64,
+                "hot_advantage_threshold_tokens": 64,
+                "selected": "paged",
+                "rejected": null,
+                "reason": "no_warm_prefix_alternative"
+              },
+              "reconstructed": true,
+              "dequantized": true,
+              "reconstruction_seconds": 0.007081,
+              "dequantization_seconds": 1.8e-05,
+              "total_worker_cache_seconds": 0.007928,
+              "reconstruction_ok": true,
+              "dequantization_ok": true
+            }
+          },
+          "cache": {
+            "scheduler_cache": {
+              "hits": 1,
+              "misses": 6,
+              "hit_rate": 0.14285714285714285,
+              "tokens_saved": 64,
+              "active_requests": 7,
+              "entries_by_type": {
+                "assistant": 2,
+                "user": 2,
+                "system": 3
+              },
+              "block_size": 64,
+              "max_blocks": 1000,
+              "allocated_blocks": 14,
+              "free_blocks": 986,
+              "shared_blocks": 1,
+              "total_tokens_cached": 675,
+              "utilization": 0.014,
+              "cache_hit_rate": 0.08,
+              "cache_hits": 2,
+              "cache_misses": 23,
+              "disk_hits": 0,
+              "disk_misses": 10,
+              "cow_copies": 0,
+              "evictions": 0,
+              "ssm_companion_cache": {
+                "entries": 6,
+                "max_entries": 8,
+                "max_bytes": 1073741824,
+                "max_bytes_mb": 1024.0,
+                "nbytes": 884736,
+                "nbytes_mb": 0.84,
+                "disk_enabled": true,
+                "disk": {
+                  "enabled": true,
+                  "directory": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-lfm25-mxfp4-tools-nomedia-after-tool-result-value-prompt-20260611/JANGQ_LFM2.5-8B-A1B-MXFP4/block_cache/ssm_companion",
+                  "entries": 6,
+                  "total_tokens_on_disk": 675,
+                  "total_cached_tokens": 675,
+                  "bytes": 906968,
+                  "bytes_mb": 0.86,
+                  "budget_bytes": 2147483648,
+                  "budget_gb": 2.0,
+                  "stores": 7,
+                  "hits": 0,
+                  "misses": 0,
+                  "hit_rate": 0.0
+                }
+              },
+              "engine_path": "single_active",
+              "batch_generator": {
+                "class": "SingleBatchGenerator",
+                "path": "single_active",
+                "single_active_decode": true,
+                "max_num_seqs": 1
+              }
+            },
+            "block_disk_cache": {
+              "blocks_on_disk": 13,
+              "disk_size_bytes": 17509760,
+              "disk_size_gb": 0.016,
+              "total_accesses": 3,
+              "total_tokens_on_disk": 675,
+              "total_cached_tokens": 675,
+              "disk_hits": 3,
+              "disk_misses": 19,
+              "disk_writes": 13,
+              "disk_evictions": 0
+            },
+            "ssm_companion": {
+              "entries": 6,
+              "max_entries": 8,
+              "nbytes": 884736,
+              "nbytes_mb": 0.84,
+              "disk_enabled": true,
+              "disk_directory": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-lfm25-mxfp4-tools-nomedia-after-tool-result-value-prompt-20260611/JANGQ_LFM2.5-8B-A1B-MXFP4/block_cache/ssm_companion",
+              "disk": {
+                "enabled": true,
+                "directory": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-lfm25-mxfp4-tools-nomedia-after-tool-result-value-prompt-20260611/JANGQ_LFM2.5-8B-A1B-MXFP4/block_cache/ssm_companion",
+                "entries": 6,
+                "total_tokens_on_disk": 675,
+                "total_cached_tokens": 675,
+                "bytes": 906968,
+                "bytes_mb": 0.86,
+                "budget_bytes": 2147483648,
+                "budget_gb": 2.0,
+                "stores": 7,
+                "hits": 0,
+                "misses": 0,
+                "hit_rate": 0.0
+              }
+            },
+            "totals": {
+              "ram_tokens_cached": 675,
+              "l2_prompt_tokens_on_disk": 0,
+              "l2_block_tokens_on_disk": 675,
+              "l2_ssm_tokens_on_disk": 675,
+              "ssm_tokens_on_disk": 675,
+              "l2_tokens_on_disk": 1350,
+              "l2_tokens_on_disk_store_sum": 1350,
+              "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+            }
+          },
+          "quantization": {
+            "codec": "affine_quantized_matmul",
+            "target_bits": 4,
+            "config_bits": 4,
+            "group_size": 32,
+            "weight_index": {
+              "index_file": "/Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4/model.safetensors.index.json",
+              "total_tensors": 433,
+              "suffix_counts": {
+                "biases": 22,
+                "scales": 155,
+                "weight": 234
+              },
+              "tq_target_counts": {},
+              "routed_layout_counts": {
+                "prestacked_switch": 132,
+                "split_expert": 0
+              },
+              "mtp_tensor_count": 0
+            },
+            "weight_matmul_dispatch": {
+              "primary": "mlx_affine_quantized_matmul",
+              "uses_mlx_quantized_matmul": true,
+              "metal_na_eligible": true,
+              "reason": null
+            },
+            "sidecar": {
+              "jang_config": false,
+              "jangtq_runtime": false,
+              "prestacked_bundle": false
+            }
+          },
+          "acceleration": {
+            "kernel_type": "affine_quantized_matmul",
+            "metal_na_capable": true,
+            "metal_na_active_on_host": true,
+            "reason": null,
+            "metal_na_symbols": {
+              "available": true,
+              "nax_symbols": 0,
+              "naxtile_symbols": 0,
+              "affine_qmm_symbols": 2592,
+              "affine_gather_qmm_symbols": 1620
+            },
+            "host": {
+              "supported": true,
+              "brand": "Apple M5 Max",
+              "reason": null
+            }
+          },
+          "mtp": {
+            "config_num_nextn_predict_layers": null,
+            "config_mtp_layer_source": null,
+            "jang_mtp_layers": null,
+            "jang_drop_mtp": null,
+            "index_has_mtp_tensors": false,
+            "index_mtp_layer_count": null,
+            "mtp_tensor_count": 0,
+            "artifact_available": false,
+            "family": "lfm2_moe",
+            "has_vision_config": false,
+            "has_vision_weights": false,
+            "vision_tensor_count": 0,
+            "cache_type": null,
+            "runtime_supported": false,
+            "runtime_available": false,
+            "runtime_active": false,
+            "runtime_validation_blocked": false,
+            "effective_depth": null,
+            "effective_depth_source": null,
+            "runtime_scope": null,
+            "vl_runtime_available": false,
+            "runtime_bundle_has_mtp": null,
+            "runtime_mtp_mode": null,
+            "runtime_reason": "config does not request MTP",
+            "status": "not_configured",
+            "issues": [],
+            "request_policy": "compatible-only",
+            "request_gate": "temperature=0,repetition_penalty=1.0"
+          },
+          "routing": {
+            "trained_active_experts": 4,
+            "trained_active_experts_source": "config.num_experts_per_tok",
+            "n_routed_experts": 32,
+            "override_env": null,
+            "effective_active_experts": 4,
+            "effective_active_experts_source": "trained_default"
+          },
+          "turboquant_kv_cache": {
+            "enabled": false
+          },
+          "native_cache": {
+            "family": "lfm2",
+            "schema": "hybrid_ssm_v1",
+            "cache_type": "hybrid_ssm_typed",
+            "components": [
+              "attention_kv",
+              "ssm_companion_state",
+              "async_rederive"
+            ],
+            "generic_turboquant_kv": {
+              "enabled": false,
+              "reason": "hybrid_ssm_state"
+            },
+            "live_attention_tq_kv": {
+              "enabled": false,
+              "mode": null,
+              "applies_to": "attention_kv_layers_only",
+              "ssm_policy": "native_full_precision_companion_state",
+              "attention_layers": [],
+              "companion_layers": []
+            },
+            "attention_kv_storage_quantization": {
+              "enabled": true,
+              "mode": "storage_boundary",
+              "bits": 4,
+              "group_size": 64,
+              "applies_to": "attention_kv_layers_only",
+              "ssm_policy": "native_companion_state",
+              "rederive": "async_clean_prefill_on_miss_or_warm_pass"
+            },
+            "prefix": true,
+            "paged": true,
+            "block_disk_l2": true,
+            "ssm_entries": 6,
+            "kv_layer_indices": [
+              2,
+              6,
+              10,
+              14,
+              18,
+              21
+            ]
+          }
+        }
+      },
+      "cache_after": {
+        "code": 200,
+        "body": {
+          "scheduler_cache": {
+            "hits": 1,
+            "misses": 6,
+            "hit_rate": 0.14285714285714285,
+            "tokens_saved": 64,
+            "active_requests": 7,
+            "entries_by_type": {
+              "assistant": 2,
+              "user": 2,
+              "system": 3
+            },
+            "block_size": 64,
+            "max_blocks": 1000,
+            "allocated_blocks": 14,
+            "free_blocks": 986,
+            "shared_blocks": 1,
+            "total_tokens_cached": 675,
+            "utilization": 0.014,
+            "cache_hit_rate": 0.08,
+            "cache_hits": 2,
+            "cache_misses": 23,
+            "disk_hits": 0,
+            "disk_misses": 10,
+            "cow_copies": 0,
+            "evictions": 0,
+            "ssm_companion_cache": {
+              "entries": 6,
+              "max_entries": 8,
+              "max_bytes": 1073741824,
+              "max_bytes_mb": 1024.0,
+              "nbytes": 884736,
+              "nbytes_mb": 0.84,
+              "disk_enabled": true,
+              "disk": {
+                "enabled": true,
+                "directory": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-lfm25-mxfp4-tools-nomedia-after-tool-result-value-prompt-20260611/JANGQ_LFM2.5-8B-A1B-MXFP4/block_cache/ssm_companion",
+                "entries": 6,
+                "total_tokens_on_disk": 675,
+                "total_cached_tokens": 675,
+                "bytes": 906968,
+                "bytes_mb": 0.86,
+                "budget_bytes": 2147483648,
+                "budget_gb": 2.0,
+                "stores": 7,
+                "hits": 0,
+                "misses": 0,
+                "hit_rate": 0.0
+              }
+            },
+            "engine_path": "single_active",
+            "batch_generator": {
+              "class": "SingleBatchGenerator",
+              "path": "single_active",
+              "single_active_decode": true,
+              "max_num_seqs": 1
+            }
+          },
+          "scheduler_stats": {
+            "num_waiting": 0,
+            "num_running": 0,
+            "engine_path": "single_active",
+            "batch_generator": {
+              "class": "SingleBatchGenerator",
+              "path": "single_active",
+              "single_active_decode": true,
+              "max_num_seqs": 1
+            },
+            "single_active_decode": true,
+            "num_requests_processed": 7,
+            "total_prompt_tokens": 767,
+            "total_completion_tokens": 572,
+            "ewma_ttft_seconds": 0.033,
+            "cache_hit_requests": 1,
+            "cache_hit_tokens": 64,
+            "cache_hit_tokens_by_detail": {
+              "paged+ssm": 64
+            },
+            "hybrid_kv_without_ssm_hits": 0,
+            "hybrid_kv_without_ssm_tokens": 0,
+            "last_hybrid_kv_without_ssm": null,
+            "cache_reuse_skips": 0,
+            "cache_reuse_skip_tokens": 0,
+            "last_cache_reuse_skip": null,
+            "cache_reuse_partial_downgrades": 0,
+            "cache_reuse_partial_tokens": 0,
+            "last_cache_reuse_partial": null,
+            "last_cache_selection": {
+              "paged_cached_tokens": 64,
+              "paged_cold_tokens": 0,
+              "warm_cached_tokens": 0,
+              "hot_advantage_tokens": 64,
+              "hot_advantage_threshold_tokens": 64,
+              "selected": "paged",
+              "rejected": null,
+              "reason": "no_warm_prefix_alternative"
+            },
+            "last_cache_execution": {
+              "request_id": "chatcmpl-2cfb4a74",
+              "cache_detail": "paged+ssm",
+              "cached_tokens": 64,
+              "blocks": 1,
+              "selection": {
+                "paged_cached_tokens": 64,
+                "paged_cold_tokens": 0,
+                "warm_cached_tokens": 0,
+                "hot_advantage_tokens": 64,
+                "hot_advantage_threshold_tokens": 64,
+                "selected": "paged",
+                "rejected": null,
+                "reason": "no_warm_prefix_alternative"
+              },
+              "reconstructed": true,
+              "dequantized": true,
+              "reconstruction_seconds": 0.007081,
+              "dequantization_seconds": 1.8e-05,
+              "total_worker_cache_seconds": 0.007928,
+              "reconstruction_ok": true,
+              "dequantization_ok": true
+            }
+          },
+          "kv_cache_quantization": {
+            "enabled": true,
+            "bits": 4,
+            "group_size": 64
+          },
+          "turboquant_kv_cache": {
+            "enabled": false
+          },
+          "native_cache": {
+            "family": "lfm2",
+            "schema": "hybrid_ssm_v1",
+            "cache_type": "hybrid_ssm_typed",
+            "components": [
+              "attention_kv",
+              "ssm_companion_state",
+              "async_rederive"
+            ],
+            "generic_turboquant_kv": {
+              "enabled": false,
+              "reason": "hybrid_ssm_state"
+            },
+            "live_attention_tq_kv": {
+              "enabled": false,
+              "mode": null,
+              "applies_to": "attention_kv_layers_only",
+              "ssm_policy": "native_full_precision_companion_state",
+              "attention_layers": [],
+              "companion_layers": []
+            },
+            "attention_kv_storage_quantization": {
+              "enabled": true,
+              "mode": "storage_boundary",
+              "bits": 4,
+              "group_size": 64,
+              "applies_to": "attention_kv_layers_only",
+              "ssm_policy": "native_companion_state",
+              "rederive": "async_clean_prefill_on_miss_or_warm_pass"
+            },
+            "prefix": true,
+            "paged": true,
+            "block_disk_l2": true,
+            "ssm_entries": 6,
+            "kv_layer_indices": [
+              2,
+              6,
+              10,
+              14,
+              18,
+              21
+            ]
+          },
+          "block_disk_cache": {
+            "blocks_on_disk": 13,
+            "disk_size_bytes": 17509760,
+            "disk_size_gb": 0.016,
+            "total_accesses": 3,
+            "total_tokens_on_disk": 675,
+            "total_cached_tokens": 675,
+            "disk_hits": 3,
+            "disk_misses": 19,
+            "disk_writes": 13,
+            "disk_evictions": 0
+          },
+          "cache_totals": {
+            "ram_tokens_cached": 675,
+            "l2_prompt_tokens_on_disk": 0,
+            "l2_block_tokens_on_disk": 675,
+            "l2_ssm_tokens_on_disk": 675,
+            "ssm_tokens_on_disk": 675,
+            "l2_tokens_on_disk": 1350,
+            "l2_tokens_on_disk_store_sum": 1350,
+            "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+          },
+          "ssm_companion": {
+            "entries": 6,
+            "max_entries": 8,
+            "nbytes": 884736,
+            "nbytes_mb": 0.84,
+            "disk_enabled": true,
+            "disk_directory": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-lfm25-mxfp4-tools-nomedia-after-tool-result-value-prompt-20260611/JANGQ_LFM2.5-8B-A1B-MXFP4/block_cache/ssm_companion",
+            "disk": {
+              "enabled": true,
+              "directory": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-lfm25-mxfp4-tools-nomedia-after-tool-result-value-prompt-20260611/JANGQ_LFM2.5-8B-A1B-MXFP4/block_cache/ssm_companion",
+              "entries": 6,
+              "total_tokens_on_disk": 675,
+              "total_cached_tokens": 675,
+              "bytes": 906968,
+              "bytes_mb": 0.86,
+              "budget_bytes": 2147483648,
+              "budget_gb": 2.0,
+              "stores": 7,
+              "hits": 0,
+              "misses": 0,
+              "hit_rate": 0.0
+            }
+          },
+          "memory": {
+            "active_mb": 4299.4,
+            "peak_mb": 4574.0,
+            "cache_mb": 3.2
+          }
+        },
+        "summary": {
+          "cache_hit_tokens": 64,
+          "cache_hits": 2,
+          "disk_hits": 3,
+          "hybrid_kv_without_ssm_hits": 0,
+          "hybrid_kv_without_ssm_tokens": 0,
+          "has_cache_hit": true,
+          "mentions_turboquant": true,
+          "mentions_ssm": true,
+          "mentions_media_salt": true,
+          "mentions_rotating": false,
+          "has_hybrid_kv_without_ssm": false
+        }
+      },
+      "failures": [],
+      "server_log_tail": "e)\nINFO:vmlx_engine.scheduler:SSM re-derive: stored clean companion for chatcmpl-d4e60da1: 18 SSM layers, 159-token key (next fetch will hit)\nINFO:vmlx_engine.server:Chat completion: 172 tokens in 1.16s (148.3 tok/s)\nINFO:     127.0.0.1:62566 - \"POST /v1/chat/completions HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:62570 - \"GET /v1/cache/stats HTTP/1.1\" 200 OK\nINFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4 kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 512, 'enable_thinking': False}\nINFO:vmlx_engine.scheduler:Request chatcmpl-32746985: paged cache miss, processing all 126 tokens\nINFO:vmlx_engine.scheduler:Extracted 24 layer states for request chatcmpl-32746985\nINFO:vmlx_engine.scheduler:SSM companion: entering store for chatcmpl-32746985 (hybrid=True, has_cache=True)\nINFO:vmlx_engine.scheduler:SSM companion: queued deferred re-derive for chatcmpl-32746985 (gpl=3, 122 cache-key tokens, will run during next idle period)\nINFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=122, num_new_blocks=2, frugal=True\nINFO:vmlx_engine.prefix_cache:Block disk: np_sources has 6 positional layers (out of 24 total)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 7 (6 kv layers, 64 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 8 (6 kv layers, cumulative=18, 58 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: writing 2 blocks to SSD\nINFO:vmlx_engine.scheduler:Stored paged cache for request chatcmpl-32746985 (122 cache-key tokens from 123 prompt tokens, 24 layers, cache truncated to 122 tokens)\nINFO:vmlx_engine.scheduler:SSM re-derive: running deferred prefill for chatcmpl-32746985 (122 prompt tokens, 0 remaining in queue)\nINFO:vmlx_engine.scheduler:SSM re-derive: stored clean companion for chatcmpl-32746985: 18 SSM layers, 122-token key (next fetch will hit)\nINFO:vmlx_engine.server:Chat completion: 5 tokens in 0.31s (16.3 tok/s)\nINFO:     127.0.0.1:62571 - \"POST /v1/chat/completions HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:62573 - \"GET /v1/cache/stats HTTP/1.1\" 200 OK\nINFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4 kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 512, 'enable_thinking': False}\nINFO:vmlx_engine.scheduler:Request chatcmpl-0b33bf31: paged cache miss, processing all 212 tokens\nINFO:vmlx_engine.scheduler:Extracted 24 layer states for request chatcmpl-0b33bf31\nINFO:vmlx_engine.scheduler:SSM companion: entering store for chatcmpl-0b33bf31 (hybrid=True, has_cache=True)\nINFO:vmlx_engine.scheduler:SSM companion: queued deferred re-derive for chatcmpl-0b33bf31 (gpl=3, 208 cache-key tokens, will run during next idle period)\nINFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=208, num_new_blocks=4, frugal=True\nINFO:vmlx_engine.prefix_cache:Block disk: np_sources has 6 positional layers (out of 24 total)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 9 (6 kv layers, 64 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 10 (6 kv layers, 64 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 11 (6 kv layers, 64 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 12 (6 kv layers, cumulative=18, 16 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: writing 4 blocks to SSD\nINFO:vmlx_engine.scheduler:Stored paged cache for request chatcmpl-0b33bf31 (208 cache-key tokens from 209 prompt tokens, 24 layers, cache truncated to 208 tokens)\nINFO:vmlx_engine.scheduler:SSM re-derive: running deferred prefill for chatcmpl-0b33bf31 (208 prompt tokens, 0 remaining in queue)\nINFO:vmlx_engine.scheduler:SSM re-derive: stored clean companion for chatcmpl-0b33bf31: 18 SSM layers, 208-token key (next fetch will hit)\nINFO:vmlx_engine.server:Chat completion: 26 tokens in 0.45s (58.0 tok/s)\nINFO:     127.0.0.1:62574 - \"POST /v1/chat/completions HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:62575 - \"GET /v1/cache/stats HTTP/1.1\" 200 OK\nINFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4 kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 512, 'enable_thinking': False}\nINFO:vmlx_engine.scheduler:Request chatcmpl-07e4ab0b: paged cache miss, processing all 61 tokens\nINFO:vmlx_engine.scheduler:Extracted 24 layer states for request chatcmpl-07e4ab0b\nINFO:vmlx_engine.scheduler:SSM companion: entering store for chatcmpl-07e4ab0b (hybrid=True, has_cache=True)\nINFO:vmlx_engine.scheduler:SSM companion: queued deferred re-derive for chatcmpl-07e4ab0b (gpl=3, 57 cache-key tokens, will run during next idle period)\nINFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=57, num_new_blocks=1, frugal=True\nINFO:vmlx_engine.prefix_cache:Block disk: np_sources has 6 positional layers (out of 24 total)\nINFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 13 (6 kv layers, cumulative=18, 57 tokens)\nINFO:vmlx_engine.prefix_cache:Block disk: writing 1 blocks to SSD\nINFO:vmlx_engine.scheduler:Stored paged cache for request chatcmpl-07e4ab0b (57 cache-key tokens from 58 prompt tokens, 24 layers, cache truncated to 57 tokens)\nINFO:vmlx_engine.scheduler:SSM re-derive: running deferred prefill for chatcmpl-07e4ab0b (57 prompt tokens, 0 remaining in queue)\nINFO:vmlx_engine.scheduler:SSM re-derive: stored clean companion for chatcmpl-07e4ab0b: 18 SSM layers, 57-token key (next fetch will hit)\nINFO:vmlx_engine.server:Chat completion: 21 tokens in 0.34s (61.0 tok/s)\nINFO:     127.0.0.1:62576 - \"POST /v1/chat/completions HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:62577 - \"GET /v1/cache/stats HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:62578 - \"GET /health HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:62579 - \"GET /v1/cache/stats HTTP/1.1\" 200 OK\n"
+    }
+  ]
+}

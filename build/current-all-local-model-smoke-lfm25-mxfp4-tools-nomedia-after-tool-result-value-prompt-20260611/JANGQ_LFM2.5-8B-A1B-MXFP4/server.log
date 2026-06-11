@@ -1,0 +1,189 @@
+INFO:__main__:KV cache auto mode: TurboQuant enabled for compatible models; stored prefix cache quantization=q4
+INFO:__main__:Hybrid/path-dependent cache model detected — disabling live TurboQuant KV patch while preserving stored attention-KV quantization=q4 for prefix/paged/L2; SSM companions stay full precision with async clean-prefill rederive.
+INFO:__main__:Auto-configured tool parser from registry: lfm2
+INFO:__main__:Auto-configured reasoning parser from registry: qwen3
+============================================================
+SECURITY CONFIGURATION
+============================================================
+  Authentication: DISABLED - Use --api-key to enable
+  Rate limiting: DISABLED - Use --rate-limit to enable
+  Request timeout: 240.0s
+  Tool calling: Use --enable-auto-tool-choice to enable
+  Reasoning: ENABLED (parser: Qwen3ReasoningParser)
+  External speculative decoding: Use --speculative-model to enable
+============================================================
+Loading model: /Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4
+Served model name: lfm2.5-8b-a1b-mxfp4
+Default max tokens override: 512
+Mode: Continuous batching (for multiple concurrent users)
+Stream interval: 1 tokens
+Paged cache: block_size=64, max_blocks=1000
+Block disk cache: max=2.0GB
+KV cache quantization: q4 (group_size=64)
+INFO:vmlx_engine.server:Serving model as: lfm2.5-8b-a1b-mxfp4 (actual: JANGQ-AI/LFM2.5-8B-A1B-MXFP4)
+INFO:vmlx_engine.server:System memory before load: 111.4GB available / 128.0GB total (13.0% used)
+INFO:vmlx_engine.server:Loading model with BatchedEngine: /Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4
+INFO:vmlx_engine:is_mllm_model(/Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4): tier=registry_family_lfm2 result=False
+INFO:vmlx_engine.server:Model loaded (batched mode): /Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4
+INFO:vmlx_engine.server:Metal GPU memory after load: 0.00GB active, 0.00GB peak
+INFO:vmlx_engine.server:System memory after load: 111.4GB available (13.0% used)
+INFO:vmlx_engine.server:Native tool format enabled for parser: lfm2
+INFO:vmlx_engine.server:Default max tokens override: 512
+Starting server at http://127.0.0.1:8898
+INFO:     Started server process [68017]
+INFO:     Waiting for application startup.
+INFO:vmlx_engine.server:Started caffeinate system wake lock for PID 68017
+INFO:vmlx_engine.utils.tokenizer:  TurboQuant skipped: VMLX_DISABLE_TQ_KV=1; using native model cache
+INFO:vmlx_engine.engine.batched:BatchedEngine multi-eos hook: family=lfm2, registry eos_tokens=None, tokenizer_class=TokenizerWrapper, primary=124900
+INFO:vmlx_engine.scheduler:Runtime cache layout: model_type=unknown layers=24 layout=0:ArraysCache;1:ArraysCache;2:KVCache;3:ArraysCache;4:ArraysCache;5:ArraysCache;6:KVCache;7:ArraysCache;8:ArraysCache;9:ArraysCache;10:KVCache;11:ArraysCache;12:ArraysCache;13:ArraysCache;14:KVCache;15:ArraysCache;16:ArraysCache;17:ArraysCache;18:KVCache;19:ArraysCache;20:ArraysCache;21:KVCache;22:ArraysCache;23:ArraysCache
+INFO:vmlx_engine.scheduler:Hybrid/path-dependent cache model detected — using q4/q8 only at cache storage boundaries (attention KVCache layers). Hybrid non-KV state is preserved full precision and restored through the SSM companion cache or clean-prefill rederive (stored_kv_quantization=q4).
+INFO:vmlx_engine.scheduler:Hybrid SSM cache: 6/24 KV layers, SSM companion enabled (entries=8, max_mb=1024, model_key=2bcf96cf20ae)
+INFO:vmlx_engine.scheduler:KV cache quantization validated: cache_head_dims=(64,), group_size=64
+INFO:vmlx_engine.scheduler:KV cache quantization round-trip test passed: bits=4, group_size=64, test_shape=(1, 4, 8, 64)
+INFO:vmlx_engine.scheduler:KV cache quantization enabled: q4 (bits=4, group_size=64)
+INFO:vmlx_engine.scheduler:Prefix cache requires continuous batching — enabled automatically
+INFO:vmlx_engine.block_disk_store:BlockDiskStore initialized: dir=/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-lfm25-mxfp4-tools-nomedia-after-tool-result-value-prompt-20260611/JANGQ_LFM2.5-8B-A1B-MXFP4/block_cache, max_size=2.0GB, entries=0, size=0.00GB
+INFO:vmlx_engine.scheduler:Block disk cache enabled: dir=/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-lfm25-mxfp4-tools-nomedia-after-tool-result-value-prompt-20260611/JANGQ_LFM2.5-8B-A1B-MXFP4/block_cache, max=2.0GB, expected_layers=24
+INFO:vmlx_engine.scheduler:Hybrid SSM companion L2 enabled: dir=/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-lfm25-mxfp4-tools-nomedia-after-tool-result-value-prompt-20260611/JANGQ_LFM2.5-8B-A1B-MXFP4/block_cache/ssm_companion, max=2GB
+INFO:vmlx_engine.paged_cache:PagedCacheManager initialized: block_size=64, max_blocks=1000, max_tokens=64000
+INFO:vmlx_engine.scheduler:Paged cache enabled: block_size=64, max_blocks=1000
+INFO:vmlx_engine.engine_core:Engine started
+INFO:vmlx_engine.engine.batched:BatchedEngine loaded: /Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4 (mllm=False)
+INFO:vmlx_engine.server:Recorded Metal working-set model baseline: active=4.2GB max=107.5GB reason=lifespan_engine_start
+INFO:vmlx_engine.mcp.config:No MCP config file found, using empty config
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8898 (Press CTRL+C to quit)
+INFO:     127.0.0.1:62541 - "GET /health HTTP/1.1" 200 OK
+WARNING:vmlx_engine.server:SECURITY WARNING: Server running without API key authentication. Anyone can access the API. Use --api-key to enable authentication.
+INFO:     127.0.0.1:62543 - "GET /v1/models/lfm2.5-8b-a1b-mxfp4/capabilities HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62545 - "GET /v1/cache/stats HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4 kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 512, 'enable_thinking': False}
+INFO:vmlx_engine.scheduler:Request chatcmpl-aa3e7c77: paged cache miss, processing all 68 tokens
+INFO:vmlx_engine.scheduler:max_num_seqs=1 — using vMLX SingleBatchGenerator (raw native cache, scheduler-owned single-active path)
+INFO:vmlx_engine.scheduler:Extracted 24 layer states for request chatcmpl-aa3e7c77
+INFO:vmlx_engine.scheduler:SSM companion: entering store for chatcmpl-aa3e7c77 (hybrid=True, has_cache=True)
+INFO:vmlx_engine.scheduler:SSM companion: queued deferred re-derive for chatcmpl-aa3e7c77 (gpl=3, 64 cache-key tokens, will run during next idle period)
+INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=64, num_new_blocks=1, frugal=True
+INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 6 positional layers (out of 24 total)
+INFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 1 (6 kv layers, cumulative=18, 64 tokens)
+INFO:vmlx_engine.prefix_cache:Block disk: writing 1 blocks to SSD
+INFO:vmlx_engine.scheduler:Stored paged cache for request chatcmpl-aa3e7c77 (64 cache-key tokens from 65 prompt tokens, 24 layers, cache truncated to 64 tokens)
+INFO:vmlx_engine.scheduler:SSM re-derive: running deferred prefill for chatcmpl-aa3e7c77 (64 prompt tokens, 0 remaining in queue)
+INFO:vmlx_engine.scheduler:SSM re-derive: stored clean companion for chatcmpl-aa3e7c77: 18 SSM layers, 64-token key (next fetch will hit)
+INFO:vmlx_engine.server:Chat completion: 202 tokens in 1.34s (150.3 tok/s)
+INFO:     127.0.0.1:62546 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62553 - "GET /v1/cache/stats HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4 kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 512, 'enable_thinking': False}
+INFO:vmlx_engine.prefix_cache:Paged cache hit for chatcmpl-2cfb4a74: 1 blocks, 64 tokens
+INFO:vmlx_engine.scheduler:Request chatcmpl-2cfb4a74: paged cache hit, 64 tokens in 1 blocks, 4 remaining to process (worker reconstruct pending)
+INFO:vmlx_engine.scheduler:SSM companion worker fetch: req=chatcmpl-2cfb4a74 fetch_num=64 cache_size=1 tokens_tail=[93480, 45240, 22, 124900, 207, 124899, 63514, 207]
+INFO:vmlx_engine.scheduler:Request chatcmpl-2cfb4a74: hybrid paged HIT — 64 tokens (KV + 18 SSM layers)
+INFO:vmlx_engine.scheduler:Extracted 24 layer states for request chatcmpl-2cfb4a74
+INFO:vmlx_engine.scheduler:SSM companion: entering store for chatcmpl-2cfb4a74 (hybrid=True, has_cache=True)
+INFO:vmlx_engine.scheduler:SSM companion: queued deferred re-derive for chatcmpl-2cfb4a74 (gpl=3, 64 cache-key tokens, will run during next idle period)
+INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=64, num_new_blocks=1, frugal=True
+INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 6 positional layers (out of 24 total)
+INFO:vmlx_engine.scheduler:Stored paged cache for request chatcmpl-2cfb4a74 (64 cache-key tokens from 65 prompt tokens, 24 layers, cache truncated to 64 tokens)
+INFO:vmlx_engine.scheduler:SSM re-derive: running deferred prefill for chatcmpl-2cfb4a74 (64 prompt tokens, 0 remaining in queue)
+INFO:vmlx_engine.scheduler:SSM re-derive: stored clean companion for chatcmpl-2cfb4a74: 18 SSM layers, 64-token key (next fetch will hit)
+INFO:vmlx_engine.server:Chat completion: 143 tokens in 1.26s (113.3 tok/s)
+INFO:     127.0.0.1:62554 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62561 - "GET /v1/cache/stats HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4 kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 512, 'enable_thinking': False}
+INFO:vmlx_engine.scheduler:Request chatcmpl-a0b817bc: paged cache miss, processing all 69 tokens
+INFO:vmlx_engine.scheduler:Extracted 24 layer states for request chatcmpl-a0b817bc
+INFO:vmlx_engine.scheduler:SSM companion: entering store for chatcmpl-a0b817bc (hybrid=True, has_cache=True)
+INFO:vmlx_engine.scheduler:SSM companion: queued deferred re-derive for chatcmpl-a0b817bc (gpl=3, 65 cache-key tokens, will run during next idle period)
+INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=65, num_new_blocks=2, frugal=True
+INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 6 positional layers (out of 24 total)
+INFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 2 (6 kv layers, 64 tokens)
+INFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 3 (6 kv layers, cumulative=18, 1 tokens)
+INFO:vmlx_engine.prefix_cache:Block disk: writing 2 blocks to SSD
+INFO:vmlx_engine.scheduler:Stored paged cache for request chatcmpl-a0b817bc (65 cache-key tokens from 66 prompt tokens, 24 layers, cache truncated to 65 tokens)
+INFO:vmlx_engine.scheduler:SSM re-derive: running deferred prefill for chatcmpl-a0b817bc (65 prompt tokens, 0 remaining in queue)
+INFO:vmlx_engine.scheduler:SSM re-derive: stored clean companion for chatcmpl-a0b817bc: 18 SSM layers, 65-token key (next fetch will hit)
+INFO:vmlx_engine.server:Chat completion: 3 tokens in 0.36s (8.4 tok/s)
+INFO:     127.0.0.1:62562 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62565 - "GET /v1/cache/stats HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4 kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 512, 'enable_thinking': False}
+WARNING:vmlx_engine.api.tool_calling:Chat template needs fallback tool schema injection.
+WARNING:vmlx_engine.api.tool_calling:Chat template needs fallback tool schema injection.
+INFO:vmlx_engine.scheduler:Request chatcmpl-d4e60da1: paged cache miss, processing all 163 tokens
+INFO:vmlx_engine.scheduler:Extracted 24 layer states for request chatcmpl-d4e60da1
+INFO:vmlx_engine.scheduler:SSM companion: entering store for chatcmpl-d4e60da1 (hybrid=True, has_cache=True)
+INFO:vmlx_engine.scheduler:SSM companion: queued deferred re-derive for chatcmpl-d4e60da1 (gpl=3, 159 cache-key tokens, will run during next idle period)
+INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=159, num_new_blocks=3, frugal=True
+INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 6 positional layers (out of 24 total)
+INFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 4 (6 kv layers, 64 tokens)
+INFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 5 (6 kv layers, 64 tokens)
+INFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 6 (6 kv layers, cumulative=18, 31 tokens)
+INFO:vmlx_engine.prefix_cache:Block disk: writing 3 blocks to SSD
+INFO:vmlx_engine.scheduler:Stored paged cache for request chatcmpl-d4e60da1 (159 cache-key tokens from 160 prompt tokens, 24 layers, cache truncated to 159 tokens)
+INFO:vmlx_engine.scheduler:SSM re-derive: running deferred prefill for chatcmpl-d4e60da1 (159 prompt tokens, 0 remaining in queue)
+INFO:vmlx_engine.scheduler:SSM re-derive: stored clean companion for chatcmpl-d4e60da1: 18 SSM layers, 159-token key (next fetch will hit)
+INFO:vmlx_engine.server:Chat completion: 172 tokens in 1.16s (148.3 tok/s)
+INFO:     127.0.0.1:62566 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62570 - "GET /v1/cache/stats HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4 kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 512, 'enable_thinking': False}
+INFO:vmlx_engine.scheduler:Request chatcmpl-32746985: paged cache miss, processing all 126 tokens
+INFO:vmlx_engine.scheduler:Extracted 24 layer states for request chatcmpl-32746985
+INFO:vmlx_engine.scheduler:SSM companion: entering store for chatcmpl-32746985 (hybrid=True, has_cache=True)
+INFO:vmlx_engine.scheduler:SSM companion: queued deferred re-derive for chatcmpl-32746985 (gpl=3, 122 cache-key tokens, will run during next idle period)
+INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=122, num_new_blocks=2, frugal=True
+INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 6 positional layers (out of 24 total)
+INFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 7 (6 kv layers, 64 tokens)
+INFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 8 (6 kv layers, cumulative=18, 58 tokens)
+INFO:vmlx_engine.prefix_cache:Block disk: writing 2 blocks to SSD
+INFO:vmlx_engine.scheduler:Stored paged cache for request chatcmpl-32746985 (122 cache-key tokens from 123 prompt tokens, 24 layers, cache truncated to 122 tokens)
+INFO:vmlx_engine.scheduler:SSM re-derive: running deferred prefill for chatcmpl-32746985 (122 prompt tokens, 0 remaining in queue)
+INFO:vmlx_engine.scheduler:SSM re-derive: stored clean companion for chatcmpl-32746985: 18 SSM layers, 122-token key (next fetch will hit)
+INFO:vmlx_engine.server:Chat completion: 5 tokens in 0.31s (16.3 tok/s)
+INFO:     127.0.0.1:62571 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62573 - "GET /v1/cache/stats HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4 kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 512, 'enable_thinking': False}
+INFO:vmlx_engine.scheduler:Request chatcmpl-0b33bf31: paged cache miss, processing all 212 tokens
+INFO:vmlx_engine.scheduler:Extracted 24 layer states for request chatcmpl-0b33bf31
+INFO:vmlx_engine.scheduler:SSM companion: entering store for chatcmpl-0b33bf31 (hybrid=True, has_cache=True)
+INFO:vmlx_engine.scheduler:SSM companion: queued deferred re-derive for chatcmpl-0b33bf31 (gpl=3, 208 cache-key tokens, will run during next idle period)
+INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=208, num_new_blocks=4, frugal=True
+INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 6 positional layers (out of 24 total)
+INFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 9 (6 kv layers, 64 tokens)
+INFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 10 (6 kv layers, 64 tokens)
+INFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 11 (6 kv layers, 64 tokens)
+INFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 12 (6 kv layers, cumulative=18, 16 tokens)
+INFO:vmlx_engine.prefix_cache:Block disk: writing 4 blocks to SSD
+INFO:vmlx_engine.scheduler:Stored paged cache for request chatcmpl-0b33bf31 (208 cache-key tokens from 209 prompt tokens, 24 layers, cache truncated to 208 tokens)
+INFO:vmlx_engine.scheduler:SSM re-derive: running deferred prefill for chatcmpl-0b33bf31 (208 prompt tokens, 0 remaining in queue)
+INFO:vmlx_engine.scheduler:SSM re-derive: stored clean companion for chatcmpl-0b33bf31: 18 SSM layers, 208-token key (next fetch will hit)
+INFO:vmlx_engine.server:Chat completion: 26 tokens in 0.45s (58.0 tok/s)
+INFO:     127.0.0.1:62574 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62575 - "GET /v1/cache/stats HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4 kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 512, 'enable_thinking': False}
+INFO:vmlx_engine.scheduler:Request chatcmpl-07e4ab0b: paged cache miss, processing all 61 tokens
+INFO:vmlx_engine.scheduler:Extracted 24 layer states for request chatcmpl-07e4ab0b
+INFO:vmlx_engine.scheduler:SSM companion: entering store for chatcmpl-07e4ab0b (hybrid=True, has_cache=True)
+INFO:vmlx_engine.scheduler:SSM companion: queued deferred re-derive for chatcmpl-07e4ab0b (gpl=3, 57 cache-key tokens, will run during next idle period)
+INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=57, num_new_blocks=1, frugal=True
+INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 6 positional layers (out of 24 total)
+INFO:vmlx_engine.prefix_cache:Block disk: queuing write for block 13 (6 kv layers, cumulative=18, 57 tokens)
+INFO:vmlx_engine.prefix_cache:Block disk: writing 1 blocks to SSD
+INFO:vmlx_engine.scheduler:Stored paged cache for request chatcmpl-07e4ab0b (57 cache-key tokens from 58 prompt tokens, 24 layers, cache truncated to 57 tokens)
+INFO:vmlx_engine.scheduler:SSM re-derive: running deferred prefill for chatcmpl-07e4ab0b (57 prompt tokens, 0 remaining in queue)
+INFO:vmlx_engine.scheduler:SSM re-derive: stored clean companion for chatcmpl-07e4ab0b: 18 SSM layers, 57-token key (next fetch will hit)
+INFO:vmlx_engine.server:Chat completion: 21 tokens in 0.34s (61.0 tok/s)
+INFO:     127.0.0.1:62576 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62577 - "GET /v1/cache/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62578 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62579 - "GET /v1/cache/stats HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:vmlx_engine.scheduler:Shutting down block disk cache...
+INFO:vmlx_engine.scheduler:Block disk cache shutdown complete
+INFO:vmlx_engine.scheduler:Shutting down scheduler step executor...
+INFO:vmlx_engine.scheduler:Scheduler step executor shutdown complete
+INFO:vmlx_engine.engine_core:Engine stopped
+INFO:vmlx_engine.engine.batched:BatchedEngine stopped
+INFO:vmlx_engine.server:Engine stopped
+INFO:vmlx_engine.server:Caffeinate process terminated
+INFO:     Application shutdown complete.
+INFO:     Finished server process [68017]

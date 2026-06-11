@@ -1,0 +1,185 @@
+{
+  "code": 200,
+  "body": {
+    "id": "lfm2.5-8b-a1b-mxfp4",
+    "loaded_model": "lfm2.5-8b-a1b-mxfp4",
+    "model_path": "/Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4",
+    "family": "lfm2",
+    "compat_warnings": [],
+    "supports_tools": true,
+    "tool_parser": "lfm2",
+    "supports_thinking": true,
+    "reasoning_parser": "qwen3",
+    "think_in_template": false,
+    "supported_modes": [
+      "instruct",
+      "reasoning"
+    ],
+    "experimental_modes": [],
+    "reasoning_efforts": [],
+    "modalities": [
+      "text"
+    ],
+    "media": {
+      "runtime_modalities": [
+        "text"
+      ],
+      "declared_modalities": [
+        "text"
+      ],
+      "preserved_modalities": [],
+      "unwired_modalities": [],
+      "memory_gate": {
+        "applicable": false,
+        "safe": true,
+        "reason": "not_mimo_v2"
+      },
+      "status_by_modality": {
+        "audio": "not_advertised",
+        "image": "not_advertised",
+        "text": "runtime_supported",
+        "video": "not_advertised",
+        "vision": "not_advertised"
+      }
+    },
+    "cache": {
+      "prefix": true,
+      "type": "paged",
+      "paged": true,
+      "block_disk_l2": true,
+      "dsv4_composite_state": false,
+      "native": {
+        "family": "lfm2",
+        "schema": "hybrid_ssm_v1",
+        "cache_type": "hybrid_ssm_typed",
+        "components": [
+          "attention_kv",
+          "ssm_companion_state",
+          "async_rederive"
+        ],
+        "generic_turboquant_kv": {
+          "enabled": false,
+          "reason": "hybrid_ssm_state"
+        },
+        "live_attention_tq_kv": {
+          "enabled": false,
+          "mode": null,
+          "applies_to": "attention_kv_layers_only",
+          "ssm_policy": "native_full_precision_companion_state",
+          "attention_layers": [],
+          "companion_layers": []
+        },
+        "attention_kv_storage_quantization": {
+          "enabled": true,
+          "mode": "storage_boundary",
+          "bits": 4,
+          "group_size": 64,
+          "applies_to": "attention_kv_layers_only",
+          "ssm_policy": "native_companion_state",
+          "rederive": "async_clean_prefill_on_miss_or_warm_pass"
+        },
+        "prefix": true,
+        "paged": true,
+        "block_disk_l2": true,
+        "ssm_entries": 0,
+        "kv_layer_indices": [
+          2,
+          6,
+          10,
+          14,
+          18,
+          21
+        ]
+      }
+    },
+    "quantization": {
+      "codec": "affine_quantized_matmul",
+      "target_bits": 4,
+      "config_bits": 4,
+      "group_size": 32,
+      "weight_index": {
+        "index_file": "/Users/eric/models/JANGQ-AI/LFM2.5-8B-A1B-MXFP4/model.safetensors.index.json",
+        "total_tensors": 433,
+        "suffix_counts": {
+          "biases": 22,
+          "scales": 155,
+          "weight": 234
+        },
+        "tq_target_counts": {},
+        "routed_layout_counts": {
+          "prestacked_switch": 132,
+          "split_expert": 0
+        },
+        "mtp_tensor_count": 0
+      },
+      "weight_matmul_dispatch": {
+        "primary": "mlx_affine_quantized_matmul",
+        "uses_mlx_quantized_matmul": true,
+        "metal_na_eligible": true,
+        "reason": null
+      },
+      "sidecar": {
+        "jang_config": false,
+        "jangtq_runtime": false,
+        "prestacked_bundle": false
+      }
+    },
+    "acceleration": {
+      "kernel_type": "affine_quantized_matmul",
+      "metal_na_capable": true,
+      "metal_na_active_on_host": true,
+      "reason": null,
+      "metal_na_symbols": {
+        "available": true,
+        "nax_symbols": 0,
+        "naxtile_symbols": 0,
+        "affine_qmm_symbols": 2592,
+        "affine_gather_qmm_symbols": 1620
+      },
+      "host": {
+        "supported": true,
+        "brand": "Apple M5 Max",
+        "reason": null
+      }
+    },
+    "mtp": {
+      "config_num_nextn_predict_layers": null,
+      "config_mtp_layer_source": null,
+      "jang_mtp_layers": null,
+      "jang_drop_mtp": null,
+      "index_has_mtp_tensors": false,
+      "index_mtp_layer_count": null,
+      "mtp_tensor_count": 0,
+      "artifact_available": false,
+      "family": "lfm2_moe",
+      "has_vision_config": false,
+      "has_vision_weights": false,
+      "vision_tensor_count": 0,
+      "cache_type": null,
+      "runtime_supported": false,
+      "runtime_available": false,
+      "runtime_active": false,
+      "runtime_validation_blocked": false,
+      "effective_depth": null,
+      "effective_depth_source": null,
+      "runtime_scope": null,
+      "vl_runtime_available": false,
+      "runtime_bundle_has_mtp": null,
+      "runtime_mtp_mode": null,
+      "runtime_reason": "config does not request MTP",
+      "status": "not_configured",
+      "issues": [],
+      "request_policy": "compatible-only",
+      "request_gate": "temperature=0,repetition_penalty=1.0"
+    },
+    "routing": {
+      "trained_active_experts": 4,
+      "trained_active_experts_source": "config.num_experts_per_tok",
+      "n_routed_experts": 32,
+      "override_env": null,
+      "effective_active_experts": 4,
+      "effective_active_experts_source": "trained_default"
+    },
+    "sampling_defaults": {}
+  }
+}

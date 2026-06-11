@@ -1,0 +1,295 @@
+{
+  "request": {
+    "model": "lfm2.5-8b-a1b-mxfp8",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Return exactly the following code and nothing else. The third line must start at column 1 with no leading space. Do not use markdown.\n\ndef add(a, b):\n    return a + b\nprint(add(2, 3))"
+      }
+    ],
+    "temperature": 0,
+    "max_tokens": 512,
+    "stream": false,
+    "enable_thinking": false
+  },
+  "response": {
+    "id": "chatcmpl-83f34e9d",
+    "object": "chat.completion",
+    "created": 1781199852,
+    "model": "lfm2.5-8b-a1b-mxfp8",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "def add(a, b):\n    return a + b\nprint(add(2, 3))",
+          "tool_calls": null,
+          "reasoning_content": null
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 61,
+      "completion_tokens": 21,
+      "total_tokens": 82,
+      "prompt_tokens_details": null
+    },
+    "warnings": null
+  },
+  "request_record": {
+    "label": "exact_code_whitespace",
+    "code": 200,
+    "elapsed_sec": 0.4565246670099441,
+    "content": "def add(a, b):\n    return a + b\nprint(add(2, 3))",
+    "content_head": "def add(a, b):\n    return a + b\nprint(add(2, 3))",
+    "reasoning_head": "",
+    "reasoning_chars": 0,
+    "tool_calls": [],
+    "usage": {
+      "prompt_tokens": 61,
+      "completion_tokens": 21,
+      "total_tokens": 82,
+      "prompt_tokens_details": null
+    },
+    "cache_stats_code": 200,
+    "cache_summary": {
+      "cache_hit_tokens": 64,
+      "cache_hits": 2,
+      "disk_hits": 3,
+      "hybrid_kv_without_ssm_hits": 0,
+      "hybrid_kv_without_ssm_tokens": 0,
+      "has_cache_hit": true,
+      "mentions_turboquant": true,
+      "mentions_ssm": true,
+      "mentions_media_salt": true,
+      "mentions_rotating": false,
+      "has_hybrid_kv_without_ssm": false
+    },
+    "validation_failures": []
+  },
+  "cache_stats": {
+    "scheduler_cache": {
+      "hits": 1,
+      "misses": 6,
+      "hit_rate": 0.14285714285714285,
+      "tokens_saved": 64,
+      "active_requests": 7,
+      "entries_by_type": {
+        "assistant": 2,
+        "user": 2,
+        "system": 3
+      },
+      "block_size": 64,
+      "max_blocks": 1000,
+      "allocated_blocks": 14,
+      "free_blocks": 986,
+      "shared_blocks": 1,
+      "total_tokens_cached": 683,
+      "utilization": 0.014,
+      "cache_hit_rate": 0.08,
+      "cache_hits": 2,
+      "cache_misses": 23,
+      "disk_hits": 0,
+      "disk_misses": 10,
+      "cow_copies": 0,
+      "evictions": 0,
+      "ssm_companion_cache": {
+        "entries": 6,
+        "max_entries": 8,
+        "max_bytes": 1073741824,
+        "max_bytes_mb": 1024.0,
+        "nbytes": 884736,
+        "nbytes_mb": 0.84,
+        "disk_enabled": true,
+        "disk": {
+          "enabled": true,
+          "directory": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-lfm25-mxfp8-tools-nomedia-after-tool-result-value-prompt-20260611/JANGQ_LFM2.5-8B-A1B-MXFP8/block_cache/ssm_companion",
+          "entries": 6,
+          "total_tokens_on_disk": 683,
+          "total_cached_tokens": 683,
+          "bytes": 906967,
+          "bytes_mb": 0.86,
+          "budget_bytes": 2147483648,
+          "budget_gb": 2.0,
+          "stores": 7,
+          "hits": 0,
+          "misses": 0,
+          "hit_rate": 0.0
+        }
+      },
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1
+      }
+    },
+    "scheduler_stats": {
+      "num_waiting": 0,
+      "num_running": 0,
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1
+      },
+      "single_active_decode": true,
+      "num_requests_processed": 7,
+      "total_prompt_tokens": 775,
+      "total_completion_tokens": 57,
+      "ewma_ttft_seconds": 0.062,
+      "cache_hit_requests": 1,
+      "cache_hit_tokens": 64,
+      "cache_hit_tokens_by_detail": {
+        "paged+ssm": 64
+      },
+      "hybrid_kv_without_ssm_hits": 0,
+      "hybrid_kv_without_ssm_tokens": 0,
+      "last_hybrid_kv_without_ssm": null,
+      "cache_reuse_skips": 0,
+      "cache_reuse_skip_tokens": 0,
+      "last_cache_reuse_skip": null,
+      "cache_reuse_partial_downgrades": 0,
+      "cache_reuse_partial_tokens": 0,
+      "last_cache_reuse_partial": null,
+      "last_cache_selection": {
+        "paged_cached_tokens": 64,
+        "paged_cold_tokens": 0,
+        "warm_cached_tokens": 0,
+        "hot_advantage_tokens": 64,
+        "hot_advantage_threshold_tokens": 64,
+        "selected": "paged",
+        "rejected": null,
+        "reason": "no_warm_prefix_alternative"
+      },
+      "last_cache_execution": {
+        "request_id": "chatcmpl-96716993",
+        "cache_detail": "paged+ssm",
+        "cached_tokens": 64,
+        "blocks": 1,
+        "selection": {
+          "paged_cached_tokens": 64,
+          "paged_cold_tokens": 0,
+          "warm_cached_tokens": 0,
+          "hot_advantage_tokens": 64,
+          "hot_advantage_threshold_tokens": 64,
+          "selected": "paged",
+          "rejected": null,
+          "reason": "no_warm_prefix_alternative"
+        },
+        "reconstructed": true,
+        "dequantized": true,
+        "reconstruction_seconds": 0.006231,
+        "dequantization_seconds": 2.2e-05,
+        "total_worker_cache_seconds": 0.007171,
+        "reconstruction_ok": true,
+        "dequantization_ok": true
+      }
+    },
+    "kv_cache_quantization": {
+      "enabled": true,
+      "bits": 4,
+      "group_size": 64
+    },
+    "turboquant_kv_cache": {
+      "enabled": false
+    },
+    "native_cache": {
+      "family": "lfm2",
+      "schema": "hybrid_ssm_v1",
+      "cache_type": "hybrid_ssm_typed",
+      "components": [
+        "attention_kv",
+        "ssm_companion_state",
+        "async_rederive"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "hybrid_ssm_state"
+      },
+      "live_attention_tq_kv": {
+        "enabled": false,
+        "mode": null,
+        "applies_to": "attention_kv_layers_only",
+        "ssm_policy": "native_full_precision_companion_state",
+        "attention_layers": [],
+        "companion_layers": []
+      },
+      "attention_kv_storage_quantization": {
+        "enabled": true,
+        "mode": "storage_boundary",
+        "bits": 4,
+        "group_size": 64,
+        "applies_to": "attention_kv_layers_only",
+        "ssm_policy": "native_companion_state",
+        "rederive": "async_clean_prefill_on_miss_or_warm_pass"
+      },
+      "prefix": true,
+      "paged": true,
+      "block_disk_l2": true,
+      "ssm_entries": 6,
+      "kv_layer_indices": [
+        2,
+        6,
+        10,
+        14,
+        18,
+        21
+      ]
+    },
+    "block_disk_cache": {
+      "blocks_on_disk": 13,
+      "disk_size_bytes": 17706379,
+      "disk_size_gb": 0.016,
+      "total_accesses": 3,
+      "total_tokens_on_disk": 683,
+      "total_cached_tokens": 683,
+      "disk_hits": 3,
+      "disk_misses": 19,
+      "disk_writes": 13,
+      "disk_evictions": 0
+    },
+    "cache_totals": {
+      "ram_tokens_cached": 683,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 683,
+      "l2_ssm_tokens_on_disk": 683,
+      "ssm_tokens_on_disk": 683,
+      "l2_tokens_on_disk": 1366,
+      "l2_tokens_on_disk_store_sum": 1366,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    },
+    "ssm_companion": {
+      "entries": 6,
+      "max_entries": 8,
+      "nbytes": 884736,
+      "nbytes_mb": 0.84,
+      "disk_enabled": true,
+      "disk_directory": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-lfm25-mxfp8-tools-nomedia-after-tool-result-value-prompt-20260611/JANGQ_LFM2.5-8B-A1B-MXFP8/block_cache/ssm_companion",
+      "disk": {
+        "enabled": true,
+        "directory": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/build/current-all-local-model-smoke-lfm25-mxfp8-tools-nomedia-after-tool-result-value-prompt-20260611/JANGQ_LFM2.5-8B-A1B-MXFP8/block_cache/ssm_companion",
+        "entries": 6,
+        "total_tokens_on_disk": 683,
+        "total_cached_tokens": 683,
+        "bytes": 906967,
+        "bytes_mb": 0.86,
+        "budget_bytes": 2147483648,
+        "budget_gb": 2.0,
+        "stores": 7,
+        "hits": 0,
+        "misses": 0,
+        "hit_rate": 0.0
+      }
+    },
+    "memory": {
+      "active_mb": 8336.4,
+      "peak_mb": 8534.2,
+      "cache_mb": 3.2
+    }
+  }
+}
