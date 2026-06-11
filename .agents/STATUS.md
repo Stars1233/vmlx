@@ -14076,3 +14076,13 @@ Other-agent action:
 - Do not continue N2 or MiMo source, live-load, UI, cache, exactness, speed, media, or release-clearance work from this lane unless Eric reopens one of those lanes in a later current-turn instruction.
 - Active focus for this lane is now Qwen/Qwen-coder Responses API tool/reasoning/content streaming correctness, gateway/tunnel passthrough behavior, cache-reuse endpoint usability for agent harnesses, and Gemma JANG/MXFP/QAT runtime/API/cache/UI parity.
 - Historical N2/MiMo commits and proof remain recorded, but they are no longer next-work items.
+
+## 2026-06-11 15:00 PDT - Qwen/Gemma release-blocker continuation
+- Continuing with N2 and MiMo paused. Do not re-add them to active next-work until Eric explicitly reopens those lanes.
+- Current blocker being reduced: Qwen/Qwen-coder Responses API harness usability for opencode/Codex-style clients, especially raw SSE ordering, content deltas, reasoning deltas, function-call argument delta/done events, output_index correctness, required/auto/no-tool behavior, tool-result continuation, gateway/tunnel passthrough, cache telemetry, and final object consistency.
+- Secondary active blocker: Gemma JANG/MXFP/QAT runtime/API/cache/UI parity, including honest media gating and installed-app proof before any signing/notarization.
+- No release/sign/notarize/PyPI/site/updater action is being run in this block.
+- Source-local Qwen Responses stream parser checks passed for valid XML args, special-character string preservation, required empty XML fail-closed, auto invalid XML markup cleanup, output_index guards, and reasoning-channel tool arguments.
+- Current Qwen35 raw-SSE artifacts show direct and gateway have valid reasoning item lifecycle and function-call indexes; the current public tunnel artifact is stale/failing because reasoning deltas use the message item id/output_index 0 and never emit a reasoning output_item.done before final response.completed.
+- Bundled Python release gate was run and failed: panel/scripts/verify-bundled-python.sh reports bundled vmlx_engine/server.py drift (source sha bd39ec13..., bundled sha 6499bd48...). Running panel/scripts/bundle-python.sh is blocked by tracked dirty JANG source at /Users/eric/jang/jang-tools: jang_tools/__main__.py, allocate.py, capabilities.py, convert.py, convert_qwen35_jangtq.py.
+- Do not sign/notarize from this state. Clean/commit/point JANG source first, then rerun bundle-python and verify-bundled-python before installed-app proof.
