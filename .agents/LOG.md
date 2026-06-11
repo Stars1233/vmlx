@@ -34,6 +34,42 @@ Result:
   Qwen pointer/duplicate-index/missing-lifecycle tests passed; `py_compile`
   passed for the edited checker/test; `git diff --check` passed.
 
+# 2026-06-11 15:08 PDT - Bundled/installed-app parity movement selected
+
+Boundary: active Python/Electron worktree only; no release/sign/notarize/PyPI/
+updater/site action; no N2 JANG_1L; no MiMo remake/proof lane unless Eric
+reopens it.
+
+Current target is to run the bundled Python parity gate and inspect
+installed-app source-vs-bundle parity for the current engine/UI/API fixes.
+Source Electron proofs for Gemma/Qwen do not prove the installed app; this
+movement should either produce current parity evidence or identify the stale
+bundle/app blocker that must be rebuilt before signing.
+
+First result:
+
+- `./panel/scripts/verify-bundled-python.sh` failed with
+  `RELEASE BLOCKED — bundled vmlx_engine/server.py content drift`.
+- Source server.py sha256:
+  `bd39ec13dc375dfcec258b91089a0409ffe8fa8367140d2658085c10e80cc733`.
+- Bundled server.py sha256:
+  `6499bd4847f068aeb0b5c852cbcefeb0c5d6d3b278a6f68087758e119f1ab914`.
+- Next action is a local bundled-python refresh via `./scripts/bundle-python.sh`
+  from `panel/`, then verifier rerun. This is not a signing/notarization/tag/
+  upload action.
+
+Bundle refresh blocker:
+
+- `./scripts/bundle-python.sh` stopped because `/Users/eric/jang/jang-tools`
+  has tracked dirty files:
+  `jang_tools/__main__.py`, `jang_tools/allocate.py`,
+  `jang_tools/capabilities.py`, `jang_tools/convert.py`,
+  `jang_tools/convert_qwen35_jangtq.py`.
+- This is a release-grade bundle blocker. For this local parity movement only,
+  the next command may use `VMLINUX_ALLOW_DIRTY_JANG_SOURCE=1` to refresh
+  bundled Python for smoke verification, but that output must not be called
+  release-ready until JANG tools source is clean or explicitly selected.
+
 # 2026-06-11 01:40 PDT - Continuation goal re-anchored
 
 - Current user directive carried forward: move runtime/model/API/cache blockers
@@ -19282,3 +19318,44 @@ Added focused regression `test_gemma4_run_command_fallback_warns_against_outer_s
 Reran `panel/scripts/live-real-ui-model-proof.mjs` against `/Users/eric/models/JANGQ-AI/gemma-4-26B-A4B-it-qat-JANG_4M` with built-in tools enabled, `wireApi=responses`, `enable_thinking=true`, Gemma4 parsers, `max_tokens=512`, and server cache controls after the engine-side Gemma4 fallback guidance patch. Artifact `docs/internal/agent-notes/current-real-ui-live-model-gemma4-26b-qat-jang4m-responses-auto-tools-cache-after-engine-run-command-guidance-20260611-proof.json` is pass; screenshot `docs/internal/agent-notes/current-real-ui-live-model-gemma4-26b-qat-jang4m-responses-auto-tools-cache-after-engine-run-command-guidance-20260611-chat.png` was visually checked.
 
 Proven: real loaded 26B QAT JANG_4M model, Electron dev app UI, Responses wire API, thinking enabled, built-in tools enabled, Gemma4 tool/reasoning parsers, two successful `run_command` tool results, zero named `run_command` errors, reasoning display, Responses delta streaming, `long_tool_loop`, `tool_l2_cache_integrated`, cache detail usage, server cache controls, no raw parser/reasoning tag leak, visible assistant turns complete, and native `mixed_swa_kv_v1`. Metrics: `eventCounts.stream=58`, `eventCounts.tool=651`, `reasoningDone=2`, `complete=2`, `persistedToolCount=651`, `cacheHitTokens=3808`, scheduler `cache_hit_tokens=3584`, L2 block tokens `3808`, disk writes `63`, disk hits `54`. Screenshot shows valid shell commands without outer shell-literal quoting and `paged+mixed_swa cached` prompt metrics. Boundary: source Electron dev app only; no installed-app, public tunnel, media, package/sign/notarize/PyPI/site/updater, N2, or MiMo claim.
+
+# 2026-06-11 installed-app wiring/live-UI release gate status
+
+Eric asked what wiring and live UI checks remain. Confirmed local source bundled
+Python verifier passes with `./panel/scripts/verify-bundled-python.sh`, but the
+normal release-grade bundle path is still blocked until dirty
+`/Users/eric/jang/jang-tools` source is cleaned or replaced with a clean source.
+The passing local bundle used the dirty-source override for smoke/parity only.
+
+Installed app audit
+`build/current-installed-app-runtime-parity-audit-after-bundled-refresh-20260611.json`
+is still `status=open` for `/Applications/vMLX.app`. The app is stale in both
+bundled site-packages and packaged source for: `server.py`,
+`api/tool_calling.py`, `engine/batched.py`, `model_config_registry.py`,
+`models/mllm.py`, `native_mtp.py`, `tool_parsers/qwen_tool_parser.py`,
+`tool_parsers/step3p5_tool_parser.py`, `tool_parsers/zaya_tool_parser.py`, and
+`utils/jang_loader.py`.
+
+Live UI checks required after rebuild/reinstall: installed app launch, real
+model load, settings persistence, parser/reasoning/max-output/max-context
+controls, model-owned generation defaults, cache controls, native cache status,
+cache endpoint stats, Responses cache-detail metrics, content deltas, reasoning
+deltas/done, function-call argument delta/done, required tool, auto tool,
+no-tool mode, tool-result continuation, gateway kwargs passthrough, final object
+consistency, no raw XML/tool markup leaks, no hidden reasoning leaks, cache hit
+telemetry, block-disk L2 writes/hits, fresh-process restore where applicable,
+and screenshot-visible chat/tool/cache state.
+
+# 2026-06-11 continuation - JANG dirty source kept as release-grade bundle blocker
+
+Rechecked current state before the next movement. vMLX active worktree has only
+`.agents/STATUS.md` and `.agents/LOG.md` modified plus untracked
+`node_modules/`. `/Users/eric/jang/jang-tools` remains tracked-dirty in
+`jang_tools/__main__.py`, `allocate.py`, `capabilities.py`, `convert.py`, and
+`convert_qwen35_jangtq.py`, with many untracked runtime docs/examples/scripts.
+
+Classification: do not clean, stash, or overwrite JANG tools from this lane.
+Normal release-grade bundled Python remains blocked until JANG tools is clean
+or an explicit clean source is selected. Continue reducing source-side
+UI/API/cache/release-surface proof gaps that do not mutate JANG tools and do
+not perform signing/notarization/PyPI/site/updater/release upload actions.

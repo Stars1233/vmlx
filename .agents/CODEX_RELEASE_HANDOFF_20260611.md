@@ -85,6 +85,23 @@
 
 - `prepackage_ready` and `release_ready`: intentionally false while blocker
   rows remain open.
+- Installed app parity is now explicit in the full objective checklist via
+  `build/current-full-release-objective-checklist-after-installed-app-parity-row-20260611.json`,
+  which is `status=open`, `failed_count=20`. The current installed-app parity
+  audit is
+  `build/current-installed-app-runtime-parity-audit-after-bundled-refresh-20260611.json`
+  and remains `status=open` for `/Applications/vMLX.app`.
+- `/Applications/vMLX.app` is stale in both bundled Python site-packages and
+  packaged source for: `server.py`, `api/tool_calling.py`,
+  `engine/batched.py`, `model_config_registry.py`, `models/mllm.py`,
+  `native_mtp.py`, `tool_parsers/qwen_tool_parser.py`,
+  `tool_parsers/step3p5_tool_parser.py`, `tool_parsers/zaya_tool_parser.py`,
+  and `utils/jang_loader.py`. Do not claim installed-app release readiness
+  until the app is rebuilt/reinstalled and this audit passes.
+- Normal release-grade bundled Python is also blocked until
+  `/Users/eric/jang/jang-tools` is clean or a clean JANG source is selected.
+  The local bundled-python verifier pass after dirty-source override is only a
+  smoke/parity refresh, not a release-grade bundle.
 - `n2_pro_397b_release_clearance`: dominated by N2 `JANG_1L`, which is
   Eric-owned/off-limits for this lane. Do not claim or launch it here.
   The N2 JANGTQ2 profile has explicit green rows; keep broad release clearance
@@ -128,6 +145,11 @@
   JANGTQ2 tool/cache/L2, the fixed JANGTQ2 warmup signature handoff, or JANG_2L
   media/L2 rows.
 - For release packaging, first rerun the bundled Python parity gate and
-  installed-app source-vs-bundle checks after source rows are worth packaging;
-  then follow the documented signing/notarization workflow only after Eric
-  unlocks release actions.
+  installed-app source-vs-bundle checks after source rows are worth packaging.
+  Current next release-surface work is: clean or explicitly select JANG tools
+  source, rebuild bundled Python without dirty-source override, rebuild/install
+  `/Applications/vMLX.app`, rerun
+  `tests/cross_matrix/run_installed_app_runtime_parity_audit.py`, rerun the
+  full release objective checklist, and only then run installed-app live UI/API
+  proofs for content/reasoning/tool deltas/cache/L2. Follow the documented
+  signing/notarization workflow only after Eric unlocks release actions.

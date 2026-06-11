@@ -14333,3 +14333,133 @@ Other-agent action:
   `build/current-full-release-objective-checklist-after-qwen35-strict-lifecycle-recapture-20260611.json`
   is `status=open`, `failed_count=16`; Qwen35 failures now cite the strict
   lifecycle artifact. This did not enter release/sign/notarize actions.
+
+## CODEX
+- now: continuing on 2026-06-11 15:08 PDT with installed-app/release-surface
+  verification only, not packaging/signing/notarization.
+- current movement target: run the bundled Python parity gate and inspect
+  installed-app source-vs-bundle parity for the current engine/UI/API fixes
+  before any checkpoint release can be considered. This is necessary because
+  Gemma/Qwen source UI/API proofs do not prove `/Applications/vMLX.app`.
+- active boundaries: no N2 JANG_1L launch or claim; no MiMo remake/proof lane
+  unless Eric reopens it; no PyPI/site/updater/sign/notarize/tag action; no
+  fake release clearance while objective rows remain open.
+- expected outcome: either produce a current parity artifact/check result or
+  classify the exact stale bundled/app blocker and update handoff notes so the
+  release lane knows what must be rebuilt before signing.
+
+## CODEX
+- now: bundled Python verifier failed before installed-app proof.
+- command: `./panel/scripts/verify-bundled-python.sh`.
+- result: release-blocking source/bundle drift in
+  `vmlx_engine/server.py`; source sha256
+  `bd39ec13dc375dfcec258b91089a0409ffe8fa8367140d2658085c10e80cc733`,
+  bundled sha256
+  `6499bd4847f068aeb0b5c852cbcefeb0c5d6d3b278a6f68087758e119f1ab914`.
+- next action: rerun `./scripts/bundle-python.sh` from `panel/` to refresh the
+  local bundled Python content, then rerun `verify-bundled-python.sh`. This is
+  not signing/notarization/release upload; it is a local bundle parity fix
+  required before any installed-app or checkpoint release claim.
+
+## CODEX
+- now: `./scripts/bundle-python.sh` was blocked by dirty local JANG tools
+  source at `/Users/eric/jang/jang-tools`.
+- tracked dirty JANG files reported by the script:
+  `jang_tools/__main__.py`, `jang_tools/allocate.py`,
+  `jang_tools/capabilities.py`, `jang_tools/convert.py`,
+  `jang_tools/convert_qwen35_jangtq.py`.
+- release boundary: this must block a real release-grade bundle unless the
+  JANG tools checkout is committed/stashed/cleaned or `VMLINUX_JANG_TOOLS_SOURCE`
+  points to a clean checkout. Do not claim a release-ready bundle from a dirty
+  JANG source.
+- next action for this lane: use `VMLINUX_ALLOW_DIRTY_JANG_SOURCE=1` only for
+  a local smoke/parity bundle refresh so the vMLX bundled `server.py` drift can
+  be fixed and verified. This override is not a signing/notarization release
+  action and must remain documented as non-release-grade.
+
+## CODEX
+- now: clarified the installed-app wiring/live-UI release gate after Eric asked
+  what wiring and live UI checks remain.
+- local source bundled Python verifier now passes:
+  `./panel/scripts/verify-bundled-python.sh`. This proves local
+  `panel/bundled-python` matches current source for critical vMLX/JANG runtime
+  imports. Release caveat: the local bundle refresh used
+  `VMLINUX_ALLOW_DIRTY_JANG_SOURCE=1` after the normal bundle path blocked on
+  dirty `/Users/eric/jang/jang-tools`; do not treat that bundle as
+  release-grade until JANG tools is clean or a clean source is selected.
+- installed-app parity remains open:
+  `build/current-installed-app-runtime-parity-audit-after-bundled-refresh-20260611.json`
+  has `status=open` for `/Applications/vMLX.app`.
+- stale installed app files in both bundled site-packages and packaged source:
+  `server.py`, `api/tool_calling.py`, `engine/batched.py`,
+  `model_config_registry.py`, `models/mllm.py`, `native_mtp.py`,
+  `tool_parsers/qwen_tool_parser.py`, `tool_parsers/step3p5_tool_parser.py`,
+  `tool_parsers/zaya_tool_parser.py`, and `utils/jang_loader.py`.
+- required live UI checks after rebuild/reinstall: installed-app launch, real
+  model load, settings persistence, parser/reasoning/max-output/max-context
+  controls, model-owned generation defaults, cache controls, native cache
+  status, cache endpoint stats, Responses cache-detail metrics, content
+  deltas, reasoning deltas/done, function-call argument delta/done, required
+  tool, auto tool, no-tool mode, tool-result continuation, gateway kwargs
+  passthrough, final object consistency, no raw XML/tool markup leaks, no
+  hidden reasoning leaks, cache hit telemetry, block-disk L2 writes/hits,
+  fresh-process restore where applicable, and screenshot-visible chat/tool/cache
+  state.
+
+## CODEX
+- now: continuing the active checkpoint-release objective from the installed-app
+  parity blocker, not entering signing/notarization/release upload.
+- current evidence rechecked: vMLX worktree has only `.agents/STATUS.md` and
+  `.agents/LOG.md` modified plus untracked `node_modules/`. JANG tools source
+  remains tracked-dirty in `jang_tools/__main__.py`, `allocate.py`,
+  `capabilities.py`, `convert.py`, and `convert_qwen35_jangtq.py`, with many
+  untracked runtime docs/examples/scripts. Do not clean, stash, or overwrite
+  that checkout from this lane.
+- current blocker classification: the local vMLX bundled Python verifier passes
+  after smoke refresh, but a release-grade bundle is still blocked until JANG
+  tools is clean or an explicit clean source is selected. The installed app is
+  still stale across the 10 engine files listed above and must be rebuilt/
+  reinstalled before installed-app UI/API/cache proofs can clear.
+- next movement: reduce source-side release-surface proof/audit wiring that
+  does not mutate JANG tools or perform release actions. Prefer installed-app
+  parity/audit precision and current-source UI/API checks over broad harness
+  churn.
+
+## CODEX
+- now: patched the no-heavy full release objective checklist to make the
+  current `/Applications/vMLX.app` parity audit an explicit blocker group.
+- source change: `tests/cross_matrix/run_full_release_objective_checklist.py`
+  now reads
+  `build/current-installed-app-runtime-parity-audit-after-bundled-refresh-20260611.json`
+  and emits four rows for installed-app current parity status, bundled engine
+  hash parity, packaged engine source hash parity, and missing/stale runtime
+  rows.
+- regression added: `tests/test_full_release_objective_checklist.py` now checks
+  the current installed-app artifact pointer and verifies stale installed-app
+  hash mismatches fail explicitly.
+- no-claim boundary: this is release-surface proof wiring only. It does not
+  rebuild `/Applications/vMLX.app`, does not make the app current, and does not
+  enter signing/notarization/release/upload actions.
+
+## CODEX
+- now: verified and regenerated the full release objective checklist with the
+  new installed-app parity rows.
+- verification:
+  `.venv/bin/python -m pytest tests/test_full_release_objective_checklist.py -q`
+  passed (`23 passed`); `.venv/bin/python -m py_compile
+  tests/cross_matrix/run_full_release_objective_checklist.py
+  tests/test_full_release_objective_checklist.py` passed; `git diff --check`
+  passed.
+- regenerated artifact:
+  `build/current-full-release-objective-checklist-after-installed-app-parity-row-20260611.json`
+  is `status=open`, `failed_count=20`.
+- newly explicit open rows:
+  `installed_app_current_runtime_parity_status_pass`,
+  `installed_app_current_bundled_engine_hash_parity`,
+  `installed_app_current_packaged_engine_source_hash_parity`, and
+  `installed_app_current_no_missing_or_stale_runtime_rows`.
+- exact stale installed-app file list remains:
+  `server.py`, `api/tool_calling.py`, `engine/batched.py`,
+  `model_config_registry.py`, `models/mllm.py`, `native_mtp.py`,
+  `tool_parsers/qwen_tool_parser.py`, `tool_parsers/step3p5_tool_parser.py`,
+  `tool_parsers/zaya_tool_parser.py`, and `utils/jang_loader.py`.
