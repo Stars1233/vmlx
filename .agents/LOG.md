@@ -14287,3 +14287,46 @@ Next action:
   fast but literal required-tool special-character exactness remains red; MiMo
   preserved-media bundles are honestly text-only gated, not VL/audio/video
   semantic passes; no release/sign/notarize/PyPI/updater/site action.
+
+# 2026-06-10 21:09 PDT MiMo JANGTQ_2 thinking-on proof selected
+- Current blocker being reduced: MiMo V2.5 JANGTQ_2 with
+  `enable_thinking=true`, `xml_function` tools, `think_xml` reasoning parser,
+  Responses streaming, built-in tool auto-choice, cache controls, and
+  deterministic exact `printf` tool-result continuation. This targets the
+  remaining thinking/tool/content delta interleaving gap after the green
+  thinking-off deterministic installed-app row.
+- Worktree check before launch: only the known unrelated
+  `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
+  is dirty. `/Applications/vMLX.app`, bundled Python, and local
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2` exist.
+- Boundary: this is not release/sign/notarize/PyPI/updater/site, not N2
+  JANG_1L, not media semantics, and not a parser repair. If literal tool args
+  mutate, classify the model/artifact/template exactness failure instead of
+  synthesizing or post-repairing arguments.
+
+# 2026-06-10 21:16 PDT MiMo JANGTQ_2 thinking proof classified red
+- Live installed-app/bundled-Python proof artifact:
+  `docs/internal/agent-notes/current-real-ui-installed-app-mimo-v25-jangtq2-responses-thinking-tools-cache-deterministic-printf-bundled-python-20260610-proof.json`.
+- Result: failed only the requested reasoning display requirement. The UI sent
+  `enable_thinking=true`, but vmlx-engine resolved `enable_thinking=False`
+  because the current MiMo registry contract has `supports_thinking=False`.
+  This is an intentional compatibility clamp, not a panel override bug.
+- Positive evidence from the same artifact: real MiMo JANGTQ_2 installed-app
+  UI, bundled Python, Responses streaming, `xml_function` tools,
+  `think_xml` parser available at server launch, exact deterministic
+  `run_command` tool-result continuations, 3 cache hits, native
+  `mimo_v2_asymmetric_swa` / `mixed_swa_kv_v1` prefix cache, 48 stored layers
+  with 9 full-KV and 39 rotating-KV layers, block-disk L2, and `dequantized=false`
+  on cache reconstruction.
+- Classification: current MiMo artifacts remain thinking-on red. Do not fake
+  enable thinking in the engine. If MiMo needs reasoning display/interleaved
+  reasoning+tool deltas for release, rebuild/remake the MiMo artifact/template
+  contract and then remove the `supports_thinking=False` clamp only after live
+  visible-final proof passes.
+- Source fix selected from this investigation: panel launch/config could still
+  pass explicit generic `--kv-cache-quantization q4/q8` for
+  `mimo_v2_asymmetric_swa`, even though MiMo's native full/SWA/RotatingKVCache
+  prefix state is not release-cleared for generic stored KV quantization.
+  Patch panel launch, command preview, and settings UI to keep MiMo stored-cache
+  quantization engine-owned/Auto and require paged prefix cache for the MiMo
+  subtype.

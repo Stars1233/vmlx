@@ -7,6 +7,64 @@ separates what was actually loaded and proven from what remains red.
 
 ## Latest Proof Additions
 
+### MiMo JANGTQ_2 Thinking-On Proof Red + Native Cache UI Guard
+
+Artifact:
+
+- `docs/internal/agent-notes/current-real-ui-installed-app-mimo-v25-jangtq2-responses-thinking-tools-cache-deterministic-printf-bundled-python-20260610-proof.json`
+
+Live setup:
+
+- Installed app UI: `/Applications/vMLX.app`.
+- Bundled runtime:
+  `/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3`.
+- Real model:
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2`.
+- Responses streaming, built-in `run_command`, deterministic
+  `temperature=0`, `top_p=1`, `top_k=1`, server launched with
+  `--tool-call-parser xml_function --reasoning-parser think_xml`.
+
+Result:
+
+- Status `fail` for the requested reasoning-display row.
+- UI request logs sent `enable_thinking=true`.
+- vmlx-engine resolved `enable_thinking=False` because the current MiMo
+  registry contract has `supports_thinking=False`.
+- No reasoning deltas or persisted reasoning were recorded:
+  `eventCounts.reasoningDone=0`, `persistedReasoningCount=0`.
+
+Positive evidence:
+
+- Tool/cache/content still worked under the attempted thinking-on run:
+  exact visible outputs `MIMO_THINK_TOOL_ONE`,
+  `MIMO_THINK_TOOL_TWO second UI turn.`, and `FOUR`.
+- Native MiMo cache evidence stayed healthy:
+  `mimo_v2_asymmetric_swa` / `mixed_swa_kv_v1`, 48 stored layers,
+  9 full-KV layers, 39 rotating-KV layers, paged prefix cache, block-disk L2,
+  3 cache hits, and `dequantized=false` on cache reconstruction.
+
+Source fix:
+
+- `panel/src/main/sessions.ts`
+- `panel/src/renderer/src/components/sessions/SessionSettings.tsx`
+- `panel/src/renderer/src/components/sessions/SessionConfigForm.tsx`
+
+The panel now treats `mimo_v2_asymmetric_swa` as a native stored-prefix cache
+owner:
+
+- require paged prefix cache for the subtype;
+- force stored cache quantization display to Auto/disabled;
+- suppress generic `--kv-cache-quantization q4/q8` in launch args and command
+  preview for MiMo's native mixed full/SWA cache.
+
+Boundary:
+
+- This is not a MiMo reasoning success. Current artifacts remain thinking-on
+  red until a rebuilt/remade MiMo model/template proves visible final output
+  with reasoning/tool interleaving.
+- This is not a VL/audio/video semantic pass and not a release/sign/notarize/
+  PyPI/updater/site action.
+
 ### Qwen35 Responses Raw-SSE Direct/Gateway/Tunnel Proof After XML Scalar Trim
 
 Source fixes:

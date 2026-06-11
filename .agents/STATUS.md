@@ -8625,3 +8625,28 @@ Other-agent action:
 - Verification caveat:
   a stale Vitest command using `tests/main/...` paths failed with "No test files
   found"; the correct current file path is `panel/tests/model-config-registry.test.ts`.
+
+# 2026-06-10 21:16 PDT MiMo JANGTQ_2 thinking/cache update
+
+- Live attempted thinking-on proof:
+  `docs/internal/agent-notes/current-real-ui-installed-app-mimo-v25-jangtq2-responses-thinking-tools-cache-deterministic-printf-bundled-python-20260610-proof.json`.
+- Classification:
+  the UI sent `enable_thinking=true`, but vmlx-engine resolved
+  `enable_thinking=False` because the current MiMo registry contract clamps
+  `supports_thinking=False`. The row is red for reasoning display/interleaved
+  reasoning+tool deltas. Do not fake-enable thinking for MiMo until a remade or
+  fixed artifact/template proves visible final output with thinking on.
+- Positive evidence from the failed proof:
+  installed app, bundled Python, real MiMo JANGTQ_2, Responses streaming,
+  exact deterministic `run_command` continuations, cache hit telemetry,
+  block-disk L2, and native 48-layer MiMo mixed full/SWA cache still worked.
+- Source fix made:
+  panel launch/config now treats `mimo_v2_asymmetric_swa` as native stored
+  prefix-cache ownership. It requires paged prefix cache for the subtype,
+  disables the generic stored-cache quantization UI to Auto, and suppresses
+  explicit generic `--kv-cache-quantization q4/q8` from launch args/preview for
+  MiMo.
+- Still open:
+  MiMo JANGTQ_2 literal/special-character exactness, MiMo thinking-on, and
+  real media semantics. This supports the suspicion that current MiMo artifacts
+  may need to be rebuilt/remade rather than papered over in parser/runtime code.
