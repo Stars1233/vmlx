@@ -10356,3 +10356,51 @@ Other-agent action:
 - Release status:
   this reduces an honest Gemma media capability bug but does not clear Gemma
   media live proof, installed-app parity, or signing/notarization gates.
+
+# 2026-06-11 01:11 PDT next lane selected Responses SSE/API deltas
+
+- Commit status:
+  `b2c0a62f6 Gate Gemma unified audio by indexed weights` pushed to
+  `origin/codex/pr-intake-manifest` and `origin/main`.
+- Current dirty state:
+  only the pre-existing unrelated
+  `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
+  remains dirty.
+- Next selected blocker:
+  Responses streaming/API delta contract for opencode/Codex-style harnesses:
+  content delta, reasoning separation, function-call arguments delta/done,
+  failed lifecycle events, output index consistency, gateway/tunnel parity, and
+  no raw tool/reasoning leaks.
+- Current action:
+  inspect current Responses raw SSE/API artifacts and source tests to identify
+  a concrete unpatched source bug. Do not synthesize missing tool arguments and
+  do not disable reasoning to hide parser failures.
+
+# 2026-06-11 01:14 PDT Responses SSE/API source classified green, tunnel red
+
+- Checked:
+  `build/current-responses-raw-sse-qwen35-mxfp8-mtp-direct-gateway-source-20260610.json`.
+- Current-source/gateway proof:
+  direct and panel gateway captures use the same model
+  `models/Qwen3.6-35B-A3B-MXFP8-CRACK-MTP`, preserve authoritative
+  `record_fact` arguments `{"value": "blue-cat"}`, include required reasoning
+  events with no reasoning-disable workaround, keep final response consistent
+  with streamed argument delta/done events, and use valid output indices:
+  `message=[0]`, `reasoning=[1]`, `function_call=[2]`.
+- Remaining failure:
+  the tunnel capture is older (`20260609`) and still reuses
+  `output_index=0` for both message and function_call despite preserving args
+  and reasoning events. This is classified as public tunnel/deployed freshness
+  or tunnel backend mismatch unless a fresh current-source tunnel recapture
+  reproduces it.
+- Fresh verification:
+  `.venv/bin/python -m py_compile vmlx_engine/server.py
+  tests/cross_matrix/run_responses_raw_sse_parity_contract.py` passed.
+  `tests/test_server.py` focused Responses guard selection passed
+  `4 selected / 99 deselected`.
+  `tests/test_responses_raw_sse_parity_contract.py tests/test_hybrid_batching.py`
+  focused parity selection passed `20 selected / 67 deselected`.
+- Source action:
+  no source patch made in this lane because current local and panel gateway
+  source already satisfy the contract. Next required action is tunnel backend
+  rebuild/redeploy/recapture with the same model/request before release.

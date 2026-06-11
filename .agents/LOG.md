@@ -15983,3 +15983,30 @@ Next action:
   gemma4_unified_jang4m_runtime_modalities_gate_config_only_audio or
   gemma4_unified_jang4m_runtime_modalities_advertise_weight_backed_audio'`;
   `cd panel && npm test -- tests/model-config-registry.test.ts`.
+
+# 2026-06-11 01:11 PDT - moving to Responses SSE/API delta contract
+
+- Commit `b2c0a62f6 Gate Gemma unified audio by indexed weights` pushed to
+  `codex/pr-intake-manifest` and `main`.
+- Worktree still has only the unrelated dirty panel settings proof JSON.
+- Next source-facing lane is Responses streaming/API delta behavior for
+  reasoning+tool harnesses. Will inspect artifacts/source for a concrete bug,
+  not parser-argument synthesis.
+
+# 2026-06-11 01:14 PDT - Responses source/gateway green, tunnel remains stale
+
+- Opened
+  `build/current-responses-raw-sse-qwen35-mxfp8-mtp-direct-gateway-source-20260610.json`.
+- Direct current-source and panel gateway captures are green for same model,
+  reasoning events, function-call argument delta/done, final-object
+  consistency, and output index order `message=0`, `reasoning=1`,
+  `function_call=2`.
+- Tunnel capture remains red from an older 20260609 public capture:
+  `message=0` and `function_call=0`.
+- Fresh source/parity verification passed:
+  `py_compile` for `vmlx_engine/server.py` and the parity runner; 4 selected
+  `tests/test_server.py` Responses guards; 20 selected raw-SSE/hybrid parity
+  tests.
+- No source patch made. Other-agent/release action is a tunnel backend
+  rebuild/redeploy/recapture with this same model/request, not parser
+  synthesis or reasoning-disable workaround.
