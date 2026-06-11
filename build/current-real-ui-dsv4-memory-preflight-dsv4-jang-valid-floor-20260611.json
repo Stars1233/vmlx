@@ -1,8 +1,8 @@
 {
   "active_heavy_process_count": 0,
   "active_heavy_processes": [],
-  "available_for_gate_gb": 44.57,
-  "available_for_gate_gib": 44.57,
+  "available_for_gate_gb": 77.23,
+  "available_for_gate_gib": 77.23,
   "commands": {
     "active_heavy_processes": "pgrep -af 'vmlx_engine.cli serve|mlx_lm.server|run_runtime_memory_stress_probe|run_decode_speed_gate|live-real-ui-model-proof|run_dsv4_route_mode_code_exactness|run_dsv4_default_cache_tool_loop_gate'",
     "memory": "vm_stat",
@@ -12,49 +12,49 @@
   },
   "did_not_launch": true,
   "floor_valid": true,
-  "free_plus_speculative_purgeable_gb": 44.57,
-  "free_plus_speculative_purgeable_gib": 44.57,
-  "generated_at": "2026-06-11T14:18:47.092960+00:00",
-  "inactive_file_cache_gb": 42.81,
+  "free_plus_speculative_purgeable_gb": 77.23,
+  "free_plus_speculative_purgeable_gib": 77.23,
+  "generated_at": "2026-06-11T14:33:36.323931+00:00",
+  "inactive_file_cache_gb": 20.92,
   "launch_allowed": false,
   "launch_blockers": [
     "insufficient_memory"
   ],
   "launch_decision": "do_not_launch",
   "memory_breakdown": {
-    "free": 43.3,
-    "inactive": 42.81,
-    "purgeable": 0.11,
-    "speculative": 1.16
+    "free": 76.49,
+    "inactive": 20.92,
+    "purgeable": 0.05,
+    "speculative": 0.69
   },
   "memory_breakdown_gb": {
-    "free": 43.3,
-    "inactive": 42.81,
-    "purgeable": 0.11,
-    "speculative": 1.16
+    "free": 76.49,
+    "inactive": 20.92,
+    "purgeable": 0.05,
+    "speculative": 0.69
   },
-  "memory_gap_gb": 92.83,
-  "memory_gap_gib": 92.83,
+  "memory_gap_gb": 60.17,
+  "memory_gap_gib": 60.17,
   "memory_pressure_free_percent": 94,
   "memory_pressure_raw_tail": [
-    "Swapins: 99969285 ",
+    "Swapins: 99969963 ",
     "Swapouts: 110331948 ",
     "",
     "Page Q counts:",
-    "Pages active: 2109241 ",
-    "Pages inactive: 2805408 ",
-    "Pages speculative: 76178 ",
+    "Pages active: 1416785 ",
+    "Pages inactive: 1370995 ",
+    "Pages speculative: 45034 ",
     "Pages throttled: 0 ",
-    "Pages wired down: 289568 ",
+    "Pages wired down: 277125 ",
     "",
     "Compressor Stats:",
-    "Pages used by compressor: 15362 ",
-    "Pages decompressed: 754522464 ",
+    "Pages used by compressor: 11737 ",
+    "Pages decompressed: 754524829 ",
     "Pages compressed: 802727585 ",
     "",
     "File I/O:",
-    "Pageins: 1346576510 ",
-    "Pageouts: 89595 ",
+    "Pageins: 1349118329 ",
+    "Pageouts: 89680 ",
     "",
     "System-wide memory free percentage: 94%"
   ],
@@ -63,11 +63,11 @@
   "model_path": "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANG",
   "model_size_gb": 97.4,
   "preflight_memory_source": "vm_stat_free_plus_speculative_purgeable",
-  "psutil_available_gb": 87.26,
-  "psutil_available_gib": 87.26,
-  "psutil_memory_gap_gb": 50.14,
-  "psutil_memory_gap_gib": 50.14,
-  "psutil_memory_percent": 31.8,
+  "psutil_available_gb": 98.09,
+  "psutil_available_gib": 98.09,
+  "psutil_memory_gap_gb": 39.31,
+  "psutil_memory_gap_gib": 39.31,
+  "psutil_memory_percent": 23.4,
   "psutil_total_gb": 128.0,
   "psutil_total_gib": 128.0,
   "reason": "local memory below DSV4 real-UI preflight floor; leave matrix missing dsv4 until enough headroom is available",
@@ -82,7 +82,7 @@
     {
       "command": "codex --yolo resume",
       "pid": 60802,
-      "rss_gb": 0.24
+      "rss_gb": 0.25
     },
     {
       "command": "/System/Applications/Utilities/Screen Sharing.app/Contents/MacOS/Screen Sharing",
@@ -95,13 +95,23 @@
       "rss_gb": 0.05
     },
     {
-      "command": ".venv/bin/python tests/cross_matrix/run_current_regression_suite.py --out build/current-regression-suite-after-qwen27-mtp-pass-packaged-pp-open-20260611.json",
-      "pid": 29644,
+      "command": ".venv/bin/python tests/cross_matrix/run_current_regression_suite.py --out build/current-regression-suite-after-qwen27-tahoe-packaged-speed-clearance-20260611.json",
+      "pid": 34525,
       "rss_gb": 0.03
     },
     {
       "command": "/Users/eric/mlx/vllm-mlx-finite-launch-guard/.venv/bin/python tests/cross_matrix/run_real_ui_dsv4_memory_preflight.py --out build/current-real-ui-dsv4-memory-preflight-dsv4-jang-valid-floor-20260611.json",
-      "pid": 30139,
+      "pid": 35020,
+      "rss_gb": 0.02
+    },
+    {
+      "command": "/usr/libexec/dasd",
+      "pid": 155,
+      "rss_gb": 0.02
+    },
+    {
+      "command": "/System/Library/PrivateFrameworks/CoreAnalytics.framework/Support/analyticsd",
+      "pid": 200,
       "rss_gb": 0.02
     },
     {
@@ -110,18 +120,8 @@
       "rss_gb": 0.01
     },
     {
-      "command": "/System/Library/CoreServices/launchservicesd",
-      "pid": 146,
-      "rss_gb": 0.01
-    },
-    {
-      "command": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd",
-      "pid": 106,
-      "rss_gb": 0.01
-    },
-    {
-      "command": "./Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient mcp",
-      "pid": 42839,
+      "command": "/usr/sbin/cfprefsd daemon",
+      "pid": 178,
       "rss_gb": 0.01
     },
     {

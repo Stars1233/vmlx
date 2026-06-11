@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-11T07:17:43-0700",
+  "created_at": "2026-06-11T07:32:33-0700",
   "status": "pass",
   "checks": {
     "panel_settings_contract_count": true,
@@ -66,7 +66,7 @@
         "tests/load-progress-honesty.test.ts"
       ],
       "returncode": 0,
-      "elapsed_sec": 0.568,
+      "elapsed_sec": 0.562,
       "counts": {
         "test_files_passed": 6,
         "tests_passed": 315,
@@ -76,17 +76,17 @@
         "",
         " RUN  v4.0.18 /Users/eric/mlx/vllm-mlx-finite-launch-guard/panel",
         "",
-        " \u2713 tests/load-progress-honesty.test.ts (5 tests) 2ms",
-        " \u2713 tests/cache-control-policy.test.ts (12 tests) 3ms",
+        " \u2713 tests/load-progress-honesty.test.ts (5 tests) 3ms",
         " \u2713 tests/dsv4-env.test.ts (25 tests) 5ms",
-        " \u2713 tests/i18n-consistency.test.ts (7 tests) 24ms",
-        " \u2713 tests/settings-flow.test.ts (254 tests) 31ms",
-        " \u2713 tests/generation-defaults.test.ts (12 tests) 10ms",
+        " \u2713 tests/cache-control-policy.test.ts (12 tests) 2ms",
+        " \u2713 tests/i18n-consistency.test.ts (7 tests) 25ms",
+        " \u2713 tests/settings-flow.test.ts (254 tests) 29ms",
+        " \u2713 tests/generation-defaults.test.ts (12 tests) 11ms",
         "",
         " Test Files  6 passed (6)",
         "      Tests  315 passed (315)",
-        "   Start at  07:17:37",
-        "   Duration  264ms (transform 408ms, setup 0ms, import 469ms, tests 75ms, environment 0ms)",
+        "   Start at  07:32:27",
+        "   Duration  269ms (transform 301ms, setup 0ms, import 463ms, tests 75ms, environment 0ms)",
         ""
       ]
     },
@@ -98,7 +98,7 @@
         "typecheck"
       ],
       "returncode": 0,
-      "elapsed_sec": 2.309,
+      "elapsed_sec": 2.294,
       "counts": {
         "test_files_passed": null,
         "tests_passed": null,
@@ -120,7 +120,7 @@
         "tests/model-config-registry.test.ts"
       ],
       "returncode": 0,
-      "elapsed_sec": 0.466,
+      "elapsed_sec": 0.468,
       "counts": {
         "test_files_passed": 1,
         "tests_passed": 72,
@@ -134,8 +134,8 @@
         "",
         " Test Files  1 passed (1)",
         "      Tests  72 passed (72)",
-        "   Start at  07:17:40",
-        "   Duration  137ms (transform 47ms, setup 0ms, import 56ms, tests 31ms, environment 0ms)",
+        "   Start at  07:32:30",
+        "   Duration  205ms (transform 51ms, setup 0ms, import 60ms, tests 31ms, environment 0ms)",
         ""
       ]
     },
@@ -149,7 +149,7 @@
         "../tests/test_model_config_registry.py"
       ],
       "returncode": 0,
-      "elapsed_sec": 2.714,
+      "elapsed_sec": 2.701,
       "counts": {
         "test_files_passed": null,
         "tests_passed": 140,
@@ -168,7 +168,7 @@
         "........................................................................ [ 75%]",
         "...................................                                      [100%]",
         "",
-        "============================= 140 passed in 2.00s =============================="
+        "============================= 140 passed in 1.99s =============================="
       ]
     },
     "engine_panel_cli_flag_contract": {
@@ -181,7 +181,7 @@
         "../tests/test_panel_cli_flag_contract.py"
       ],
       "returncode": 0,
-      "elapsed_sec": 0.134,
+      "elapsed_sec": 0.133,
       "counts": {
         "test_files_passed": null,
         "tests_passed": 9,

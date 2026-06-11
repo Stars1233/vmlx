@@ -17741,3 +17741,79 @@ Next action:
   due packaged Py3.12 PP below floor; other remaining open rows are DSV4,
   Ling/Bailing, cross-family live multi-turn, MiMo, broad N2, MiniMax, real UI
   cross-family, and DSV4 long-output/code quality.
+
+# 2026-06-11 continuation PDT - post-compaction objective restatement
+
+- Action:
+  recorded the resumed objective after compaction before further work.
+- Objective:
+  reduce real runtime/release blockers for vMLX Python engine/Electron app:
+  N2 JANGTQ2 non-JANG_1L, MiMo, Gemma, Qwen/Qwen-coder, cache/L2/TurboQuant,
+  VL/video/audio honesty, parser/API streaming, tool/reasoning deltas, and
+  agent-loop usability.
+- Current blocker:
+  continue Qwen27 packaged Py3.12 PP slowdown root-cause work. Do not patch
+  until root cause evidence is gathered.
+- Boundaries:
+  no subagents, no broad test-suite churn, no deprecated wrapper checkout, no
+  fake parser fixes, no N2 JANG_1L, and no release/sign/notarize/PyPI/updater/
+  site action without explicit current-turn override.
+
+# 2026-06-11 continuation PDT - Qwen packaged PP proof pointer fix
+
+- Action:
+  moved the Qwen packaged speed objective pointer to the passing staged Tahoe
+  packaged artifact after root-cause evidence showed Sequoia/compat wheels are
+  the consistently slow path.
+- Evidence:
+  `build/current-decode-speed-live-qwen27-jang4m-staged-tahoe-pp-repeat-20260611.json`
+  passes with PP `805.42`, `869.31`, `715.78` tok/s using MLX
+  `cp312-cp312-macosx_26_0_arm64`.
+- Diagnostic boundary:
+  staged Sequoia and installed `/Applications` macOS14-wheel artifacts remain
+  review/failing and are kept as diagnostics. Do not claim Sequoia Qwen PP is
+  fixed.
+- Files changed:
+  `tests/cross_matrix/summarize_objective_proof.py`,
+  `tests/cross_matrix/release_regression_manifest.py`,
+  `tests/test_objective_proof_digest.py`, and
+  `tests/test_release_regression_manifest.py`.
+
+# 2026-06-11 continuation PDT - Qwen speed cluster green in objective proof
+
+- Action:
+  generated the missing Qwen27 JANG_4M-MTP packaged PP artifact on staged Tahoe
+  Python and refreshed the objective proof.
+- Artifact:
+  `build/current-decode-speed-live-qwen27-jang4m-mtp-installed-app-deterministic-pp-20260606.json`
+  is `status=pass`.
+- Metrics:
+  PP rows `859.47`, `818.62`, `758.46` tok/s; bundle decode `37.97 tok/s`;
+  native MTP active at effective depth `3`; hybrid SSM cache with live
+  attention TurboQuant KV and block L2 enabled.
+- Objective:
+  `build/current-objective-proof-after-qwen27-tahoe-packaged-pp-mtp-pass-20260611.json`
+  marks Qwen packaged speed, native-MTP decode/equivalence, and Qwen27
+  prompt-processing speed PASS.
+- Validation:
+  affected focused tests passed `3 passed`.
+- Boundary:
+  Tahoe packaged checkpoint path is green for Qwen speed. Sequoia/macOS14 Qwen
+  PP remains red diagnostic evidence; do not claim Sequoia Qwen PP fixed.
+
+# 2026-06-11 continuation PDT - aggregate after Qwen Tahoe speed clearance
+
+- Action:
+  refreshed the current aggregate suite after Qwen staged Tahoe speed/MTP/PP
+  clearance.
+- Artifact:
+  `build/current-regression-suite-after-qwen27-tahoe-packaged-speed-clearance-20260611.json`.
+- Result:
+  `status=open`; failed steps remain `release_regression_manifest` and
+  `release_gate_skip_app`.
+- Confirmed closed:
+  all Qwen speed rows are no longer in `open_requirements`.
+- Remaining:
+  DSV4 cache/L2/tool and long-output/code quality, Ling/Bailing quality,
+  cross-family live multi-turn, MiMo, broad N2, MiniMax reporter parity, and
+  real Electron UI cross-family matrix.

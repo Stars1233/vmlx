@@ -847,3 +847,31 @@ panel/scripts/verify-release-dmgs.sh
   quality, cross-family live multi-turn, MiMo, broad N2 row, MiniMax reporter
   parity, real Electron UI cross-family matrix, and DSV4 long-output/code
   quality.
+
+## 2026-06-11 Qwen Tahoe packaged speed cluster clearance
+
+- Qwen packaged speed now points at
+  `build/current-decode-speed-live-qwen27-jang4m-staged-tahoe-pp-repeat-20260611.json`,
+  which is `status=pass` with PP `805.42`, `869.31`, `715.78` tok/s on staged
+  Tahoe packaged Python / MLX macOS26 wheels.
+- Sequoia diagnostics remain red:
+  `/Applications` installed app PP `210.74`, `224.51`, `205.99` tok/s and
+  staged Sequoia PP `220.10`, `258.61`, `236.70` tok/s. Do not claim Sequoia
+  Qwen PP is fixed.
+- Qwen27 MTP packaged PP now has
+  `build/current-decode-speed-live-qwen27-jang4m-mtp-installed-app-deterministic-pp-20260606.json`,
+  `status=pass`, PP `859.47`, `818.62`, `758.46` tok/s, native MTP depth `3`.
+- `build/current-objective-proof-after-qwen27-tahoe-packaged-pp-mtp-pass-20260611.json`
+  marks all Qwen speed rows PASS.
+
+## 2026-06-11 aggregate after Qwen Tahoe speed clearance
+
+- `build/current-regression-suite-after-qwen27-tahoe-packaged-speed-clearance-20260611.json`
+  is `status=open`, failed on `release_regression_manifest` and
+  `release_gate_skip_app`.
+- All Qwen speed rows are now absent from `open_requirements`.
+- Remaining open rows: DSV4 same-process cache hit, DSV4 L2 restart hit, DSV4
+  one-tool stop, Ling/Bailing multilingual quality, cross-family live
+  multi-turn, MiMo V2.5 runtime/tool/long-prompt, broad N2 row, MiniMax
+  reporter parity, real Electron UI cross-family matrix, and DSV4
+  long-output/code quality.
