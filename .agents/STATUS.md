@@ -14086,3 +14086,10 @@ Other-agent action:
 - Current Qwen35 raw-SSE artifacts show direct and gateway have valid reasoning item lifecycle and function-call indexes; the current public tunnel artifact is stale/failing because reasoning deltas use the message item id/output_index 0 and never emit a reasoning output_item.done before final response.completed.
 - Bundled Python release gate was run and failed: panel/scripts/verify-bundled-python.sh reports bundled vmlx_engine/server.py drift (source sha bd39ec13..., bundled sha 6499bd48...). Running panel/scripts/bundle-python.sh is blocked by tracked dirty JANG source at /Users/eric/jang/jang-tools: jang_tools/__main__.py, allocate.py, capabilities.py, convert.py, convert_qwen35_jangtq.py.
 - Do not sign/notarize from this state. Clean/commit/point JANG source first, then rerun bundle-python and verify-bundled-python before installed-app proof.
+- Refreshed current-source no-heavy API/cache proof:
+  `build/current-noheavy-api-cache-contract-after-qwen-gemma-current-source-20260611.json`
+  passed with `missing_markers=[]`; it covers Qwen XML required-args fail-closed,
+  Responses function-call argument delta/done/indexes, gateway Responses argument
+  passthrough, previous_response_id history, cache reuse endpoints/telemetry,
+  TurboQuant disk roundtrip, hybrid SSM partial reuse, and structured JSON/XML
+  repair/validation.

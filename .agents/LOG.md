@@ -19077,3 +19077,7 @@ Next action:
 - Current Qwen35 direct/gateway/tunnel artifacts: direct and gateway have valid reasoning item lifecycle and function_call index ordering; public tunnel capture remains stale/bad because reasoning deltas use the message item id/output_index 0 and no reasoning output_item.done is emitted before completed.
 - Ran panel/scripts/verify-bundled-python.sh: failed on bundled vmlx_engine/server.py drift (source bd39ec13..., bundled 6499bd48...). Attempted panel/scripts/bundle-python.sh; it correctly refused release bundling because /Users/eric/jang/jang-tools has tracked dirty JANG source files.
 - Release boundary: do not sign/notarize from this state. Before packaging, clean/commit or redirect JANG source, rerun bundle-python, rerun verify-bundled-python, rebuild installed app, and repeat installed-app Responses/Gemma proof.
+- Refreshed no-heavy API/cache contract against current source:
+  build/current-noheavy-api-cache-contract-after-qwen-gemma-current-source-20260611.json
+  status=pass, missing_markers=[]; source hash for vmlx_engine/server.py is
+  bd39ec13dc375dfcec258b91089a0409ffe8fa8367140d2658085c10e80cc733.
