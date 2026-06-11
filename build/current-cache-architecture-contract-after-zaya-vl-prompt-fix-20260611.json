@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-11T10:13:26-0700",
+  "created_at": "2026-06-11T10:19:02-0700",
   "status": "pass",
   "checks": {
     "dsv4_native_composite_cache_status": true,
@@ -402,8 +402,8 @@
     "vmlx_engine/mllm_scheduler.py": "19d10924b9e240725d75cb329bae2cc8e5a074677af728b70fdd8dbbba500498",
     "vmlx_engine/model_config_registry.py": "47b67d23e4bf61450feb33a299bba2a9d6ae2d2962a6718bb27c33bda306c317",
     "vmlx_engine/tq_disk_store.py": "32592de18d85e645827b077f32c9eee459ccdb40a0c226ae800925b1f6437b5a",
-    "tests/cross_matrix/run_noheavy_api_cache_contract.py": "4cb890e9798f431ab692c5689c93447ef928cdf17fb6b55cea38d972212294f4",
-    "tests/cross_matrix/run_cache_architecture_contract.py": "544d5ba106a2414b8c14da5b841ecefdb4a8c351fb78440c0765582f6892e660",
+    "tests/cross_matrix/run_noheavy_api_cache_contract.py": "5ba38649ca3528b4bbfdd4b4104cd15d3d139f89e1e2d9d656521299aecfa50b",
+    "tests/cross_matrix/run_cache_architecture_contract.py": "d950362b60317ec49f0e840cc8375708e80a5eff481f66e30ee426d9315c44fa",
     "tests/test_engine_audit.py": "b11d8ca00db8522d865b490883ea821e287ce11cc6338fe4981bb6b64a208892",
     "tests/test_batching.py": "56fa5cb4d01cc64e9ab2d4f599e7e7f06a84dd42ed1607f352f27f77eedb6b38",
     "tests/test_hybrid_batching.py": "c55c4b78201dbfec4a5ee353cecb4cf8561b769ef382e57d3191548033071663",
@@ -435,7 +435,7 @@
       ],
       "cwd": ".",
       "returncode": 0,
-      "elapsed_sec": 33.729,
+      "elapsed_sec": 35.846,
       "counts": {
         "passed": 0,
         "skipped": null,
@@ -482,7 +482,7 @@
       ],
       "cwd": ".",
       "returncode": 0,
-      "elapsed_sec": 13.867,
+      "elapsed_sec": 12.797,
       "counts": {
         "passed": 438,
         "skipped": null,
@@ -568,7 +568,7 @@
         "tests/test_model_config_registry.py::TestModelConfigComprehensiveChecks::test_hy_v3_provisional_contract PASSED [ 99%]",
         "tests/test_model_config_registry.py::TestModelConfigComprehensiveChecks::test_hy_v3_stale_stamp_cannot_reenable_static_think_in_template PASSED [100%]",
         "",
-        "===================== 438 passed, 640 deselected in 12.89s ====================="
+        "===================== 438 passed, 640 deselected in 11.82s ====================="
       ]
     },
     "panel_cache_launch_policy": {
@@ -588,7 +588,7 @@
       ],
       "cwd": "panel",
       "returncode": 0,
-      "elapsed_sec": 0.674,
+      "elapsed_sec": 0.696,
       "counts": {
         "passed": 102,
         "skipped": 189,
@@ -605,10 +605,10 @@
         " \u2193 tests/settings-flow.test.ts > JIT Toggle > settings form surfaces multimodal JIT as effectively disabled",
         " \u2193 tests/settings-flow.test.ts > JIT Toggle > settings form surfaces ZAYA typed CCA JIT as effectively disabled",
         " \u2193 tests/settings-flow.test.ts > JIT Toggle > command preview gates Omni backend to detected Nemotron-H multimodal only",
-        " \u2713 tests/settings-flow.test.ts > JIT Toggle > settings form and launch code surface ZAYA typed CCA paged-cache requirement 1ms",
+        " \u2713 tests/settings-flow.test.ts > JIT Toggle > settings form and launch code surface ZAYA typed CCA paged-cache requirement 0ms",
         " \u2713 tests/settings-flow.test.ts > JIT Toggle > settings form treats Gemma4 mixed-SWA rotating KV as architecture-paged cache 0ms",
         " \u2713 tests/settings-flow.test.ts > JIT Toggle > settings form and launch code treat Step3.7 full/sliding KV subtype as architecture-paged cache 1ms",
-        " \u2713 tests/settings-flow.test.ts > JIT Toggle > settings form and launch code surface one DSV4 native composite cache switch 1ms",
+        " \u2713 tests/settings-flow.test.ts > JIT Toggle > settings form and launch code surface one DSV4 native composite cache switch 2ms",
         " \u2713 tests/settings-flow.test.ts > JIT Toggle > settings form keeps DSV4 native cache controls deduped and names generic controls distinctly 0ms",
         " \u2713 tests/settings-flow.test.ts > JIT Toggle > settings form hides generic paged-cache warnings for the DSV4 native cache path 0ms",
         " \u2193 tests/settings-flow.test.ts > JIT Toggle > enableJit does not affect other flags",
@@ -672,8 +672,8 @@
         "",
         " Test Files  3 passed (3)",
         "      Tests  102 passed | 189 skipped (291)",
-        "   Start at  10:13:25",
-        "   Duration  278ms (transform 114ms, setup 0ms, import 196ms, tests 23ms, environment 0ms)",
+        "   Start at  10:19:02",
+        "   Duration  274ms (transform 111ms, setup 0ms, import 189ms, tests 22ms, environment 0ms)",
         ""
       ]
     }

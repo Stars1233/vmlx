@@ -13332,3 +13332,16 @@ Other-agent action:
 - regenerated digest: `build/current-objective-proof-after-noheavy-cache-api-refresh-20260611.json`.
 - newly green in digest: app `maxToolIterations` cap, server max output/context CLI mapping, cross-family cache architecture, and current-source API/cache no-heavy contracts.
 - remaining open digest rows: high-risk parser/artifact launch policy, generation defaults/MTP/VL media gates, cross-family live smoke (`hy3`, `mimo_v2`), MiMo, N2 broad row with JANG_1L boundary, MiniMax reporter parity, Real Electron cross-family (`hy3`, `mimo_v2`), and DSV4 long-output/code proof files.
+
+## CODEX
+- now: selecting stale no-heavy policy/generation rows as next source-fixable blocker.
+- evidence: `build/current-objective-proof-after-noheavy-cache-api-refresh-20260611.json` shows model-family/parser/artifact gates and generation-defaults/native-MTP/VL-media gates have passing checks but stale source hashes from `panel/src/main/model-config-registry.ts`, `panel/tests/model-config-registry.test.ts`, `vmlx_engine/server.py`, `tests/test_engine_audit.py`, `panel/src/main/ipc/chat.ts`, and related panel media tests.
+- next movement: refresh the targeted no-heavy contract artifacts; no broad matrix, no model loads, no release action.
+
+## CODEX
+- now: refreshed model-family/parser/artifact/generation/native-MTP/VL-media no-heavy contracts and regenerated final digest.
+- new pass artifacts: `build/current-model-family-detection-contract-after-n2-audio-zaya-refresh-20260611.json`, `build/current-parser-registry-contract-after-n2-audio-zaya-refresh-20260611.json`, `build/current-model-artifact-format-contract-after-n2-audio-zaya-refresh-20260611.json`, `build/current-generation-defaults-contract-after-n2-audio-zaya-refresh-20260611.json`, `build/current-native-mtp-contract-after-n2-audio-zaya-refresh-20260611.json`, `build/current-vl-media-cache-contract-after-n2-audio-zaya-refresh-20260611.json`.
+- also reran cache/API contract artifacts after pointer/default changes to clear self-stale hashes.
+- final digest artifact: `build/current-objective-proof-after-policy-cache-final-refresh-20260611.json`.
+- newly green in final digest: cross-family cache architecture, high-risk model family/parser/artifact launch policy, generation defaults/native-MTP/VL media gates, and current-source API/cache contracts.
+- remaining digest opens: cross-family live smoke (`hy3`, `mimo_v2`), MiMo, N2 broad row with JANG_1L off-limits, MiniMax reporter parity, Real Electron cross-family (`hy3`, `mimo_v2`), and DSV4 long-output/code/file proof artifacts.

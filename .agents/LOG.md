@@ -18350,3 +18350,18 @@ Next action:
 - Regenerated objective digest `build/current-objective-proof-after-noheavy-cache-api-refresh-20260611.json`.
 - Rows newly green in digest: DSV4 app `maxToolIterations` cap, max-output/max-context separation, cross-family cache architecture, and current-source API/cache contracts.
 - Remaining digest open rows are not cleared by no-heavy refresh: high-risk parser/artifact launch policy, generation defaults/MTP/VL gates, Hy3 missing model artifact, MiMo, N2 broad row with JANG_1L off-limits, MiniMax reporter parity, Real Electron cross-family, and DSV4 long-output/code proof artifacts.
+
+# 2026-06-11 continuation PDT - policy/generation/media contracts refreshed
+
+- Refreshed current no-heavy policy/generation/media artifacts:
+  - `build/current-model-family-detection-contract-after-n2-audio-zaya-refresh-20260611.json` pass.
+  - `build/current-parser-registry-contract-after-n2-audio-zaya-refresh-20260611.json` pass.
+  - `build/current-model-artifact-format-contract-after-n2-audio-zaya-refresh-20260611.json` pass.
+  - `build/current-generation-defaults-contract-after-n2-audio-zaya-refresh-20260611.json` pass.
+  - `build/current-native-mtp-contract-after-n2-audio-zaya-refresh-20260611.json` pass.
+  - `build/current-vl-media-cache-contract-after-n2-audio-zaya-refresh-20260611.json` pass.
+- Updated `tests/cross_matrix/summarize_objective_proof.py` to consume these artifacts. Because the cache/API contract helper defaults changed in the previous commit, reran:
+  - `build/current-cache-architecture-contract-after-zaya-vl-prompt-fix-20260611.json` pass.
+  - `build/current-noheavy-api-cache-contract-after-zaya-vl-prompt-fix-20260611.json` pass.
+- Final digest: `build/current-objective-proof-after-policy-cache-final-refresh-20260611.json`.
+- Final digest pass rows now include all no-heavy cache/API/parser/model-family/artifact/generation/native-MTP/VL-media gates. Remaining opens are live/proof buckets only: Hy3 missing, MiMo, N2 broad row with JANG_1L off-limits, MiniMax reporter parity, Real Electron cross-family, and DSV4 long-output/code/file proof artifacts.
