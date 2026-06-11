@@ -6991,3 +6991,58 @@ Other-agent action:
 - Not proven:
   - this is not a fresh live same-model direct/gateway/tunnel SSE recapture;
   - it does not clear remaining model-family live API/UI/cache rows.
+
+# 2026-06-11 continuation - Gemma installed-app reasoning display blocker
+
+- Request:
+  - continue moving in efficient fix/proof blocks toward runtime/API/UI/cache
+    readiness for Nex/N2 JANGTQ2/non-JANG_1L, MiMo, Gemma JANG/MXFP/QAT, and
+    Qwen/Qwen-coder, without release/sign/notarize/PyPI/updater/site action and
+    without broad test-suite churn or subagent delegation.
+- Selected blocker:
+  - Gemma4 26B forced bundled-Python installed-app proof failed only on missing
+    `reasoning_display` despite positive visible output, tool persistence,
+    Responses deltas, cache controls, mixed-SWA cache hit, and L2 evidence.
+- Current action:
+  - inspect the failed proof artifact and the UI/Responses persistence path for
+    reasoning summary/delta/done handling before editing.
+- Boundaries:
+  - do not call the failed Gemma artifact a pass;
+  - no fake reasoning injection;
+  - no release/sign/notarize/PyPI/updater/site action;
+  - no N2 JANG_1L work;
+  - no subagents.
+- Root cause:
+  - `panel/scripts/live-real-ui-model-proof.mjs` starts the Python model server
+    itself and then connects the installed app as a remote session;
+  - that script hardcoded `--default-enable-thinking false` and, for built-in
+    tool runs, only passed `--tool-call-parser auto`;
+  - the failed Gemma4 26B artifact did request `enable_thinking=true`, and the
+    server resolved `enable_thinking: True`, but the external server had no
+    Gemma reasoning parser, so no `reasoning_display` surface could be
+    recorded.
+- Source change:
+  - the proof script no longer injects a hidden server-level
+    `--default-enable-thinking false`;
+  - it accepts `VMLINUX_REAL_UI_TOOL_PARSER` /
+    `VMLINUX_REAL_UI_REASONING_PARSER` env overrides;
+  - otherwise it detects parser families from `config.json` for Gemma4,
+    MiMo V2, Qwen3/Qwen3.6/Qwen-coder, MiniMax, and DeepSeek-style rows and
+    passes `--reasoning-parser` for rows that require reasoning display.
+- Verification:
+  - `node --check panel/scripts/live-real-ui-model-proof.mjs` passed;
+  - `tests/test_release_regression_manifest.py::test_release_regression_manifest_real_ui_live_model_script_exists_and_uses_real_session_path`
+    passed;
+  - installed `/Applications/vMLX.app` `app.asar` main bundle was extracted and
+    confirmed to match current `panel/dist/main/index.mjs`, so the stale launch
+    behavior was isolated to the proof script's external-server command, not
+    current app session launch source.
+- Proven:
+  - future Gemma4 installed-app remote proof runs from this script will launch
+    the external server with `--reasoning-parser gemma4` unless explicitly
+    overridden.
+- Not proven:
+  - the failed Gemma4 26B artifact remains failed until rerun;
+  - this does not prove Gemma reasoning content will be generated in every
+    tool-first prompt, only that the proof lane no longer suppresses or omits
+    the parser needed to observe it.
