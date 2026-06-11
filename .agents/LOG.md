@@ -19124,3 +19124,11 @@ Recorded current objective: progress toward extensive live stress testing of too
 # 2026-06-11 Qwen35 public tunnel current recapture
 
 Ran live public tunnel Responses SSE recapture against `https://testapi.adlabus.dev/v1/responses` for `models/Qwen3.6-35B-A3B-MXFP8-CRACK-MTP`, `enable_thinking=true`, `tool_choice=required`, and required `record_fact({value})`. Raw SSE saved to `build/responses-sse-captures-20260611/tunnel-qwen35-mxfp8-mtp-tool-current-recapture-20260611.sse` (588 lines). Classified with current direct/gateway captures into `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-current-recapture-still-stale-20260611.json`: status remains fail. Arguments/deltas/final object/model all match, but tunnel still lacks a completed reasoning output item lifecycle (`reasoning_output_item_count=0`, `reasoning_lifecycle_complete=false`) while direct/gateway are complete. Updated `QWEN35_RAW_SSE_PARITY` and its pointer test to the fresh red artifact. No release/sign/notarize action.
+
+# 2026-06-11 Gemma E2B direct raw SSE proof selected
+
+Selected a fast source-proveable Gemma API surface: launch `/Users/eric/models/JANGQ-AI/gemma-4-E2B-it-qat-JANG_4M` from current source with `--tool-call-parser gemma4`, `--reasoning-parser gemma4`, Responses streaming, `enable_thinking=true`, and required `record_fact`. Expected proof is raw SSE lifecycle and parser/API consistency, not release package parity.
+
+# 2026-06-11 Gemma E2B direct raw SSE/cache proof
+
+Launched `/Users/eric/models/JANGQ-AI/gemma-4-E2B-it-qat-JANG_4M` from current source on a local port with `--tool-call-parser gemma4`, `--reasoning-parser gemma4`, continuous batching, paged cache, and block-disk L2. Captured two identical required-tool `/v1/responses` streams with `enable_thinking=true`. Artifact `build/current-gemma4-e2b-qat-jang4m-direct-responses-raw-sse-cache-20260611.json` is pass: both streams have completed reasoning lifecycle, function-call arg delta/done, exact `{"value":"blue-cat"}` args, valid output indices, final consistency, native mixed-SWA cache, `cache_hit_tokens=162`, `cache_hit_requests=1`, `l2_block_tokens_on_disk=162`, and `disk_writes=3`. Boundary: direct source API only, not gateway/tunnel/installed-app/release parity.

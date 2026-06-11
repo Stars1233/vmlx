@@ -14129,3 +14129,14 @@ Other-agent action:
 - raw capture: `build/responses-sse-captures-20260611/tunnel-qwen35-mxfp8-mtp-tool-current-recapture-20260611.sse` (588 lines).
 - classifier artifact: `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-current-recapture-still-stale-20260611.json`, `status=fail`. Direct and gateway still have complete reasoning lifecycle and valid output indices; tunnel still has `reasoning_events=8`, `reasoning_done_count=1`, argument delta/done and exact `{"value":"blue-cat"}`, but `reasoning_output_item_count=0`, `reasoning_lifecycle_complete=false`, and reasoning summary deltas attached to the message item at output_index 0. This remains a deployed tunnel/runtime lifecycle blocker, not a current direct/gateway parser args bug.
 - source tracker edit: `QWEN35_RAW_SSE_PARITY` now points at the fresh current-recapture red artifact so release remains blocked until the public tunnel/backend is rebuilt from current source and recaptured green.
+
+## CODEX
+- now: selected next source-proveable proof: Gemma4 E2B QAT JANG_4M direct `/v1/responses` raw SSE with reasoning enabled and required `record_fact`, using source server parser `gemma4` and mixed-SWA cache controls.
+- goal: add API-level evidence for reasoning deltas, function-call argument delta/done, final response consistency, output_index ordering, and direct source parser behavior. This complements the existing Electron UI proof; it does not claim tunnel or installed-app parity.
+- boundaries: no N2/MiMo; no release/sign/notarize/PyPI/site/updater action; no parser argument synthesis or reasoning disablement.
+
+## CODEX
+- now: Gemma4 E2B QAT JANG_4M direct source `/v1/responses` raw SSE/cache proof is green.
+- artifact: `build/current-gemma4-e2b-qat-jang4m-direct-responses-raw-sse-cache-20260611.json`, `status=pass`. Raw SSE captures are under `build/responses-sse-captures-20260611/gemma-e2b-direct/`.
+- proven: current source server, `--tool-call-parser gemma4`, `--reasoning-parser gemma4`, `enable_thinking=true`, required `record_fact`, two identical streaming Responses requests, complete reasoning output item lifecycle for both requests, function-call argument delta/done for both requests, valid output indices `message=0`, `reasoning=1`, `function_call=2`, exact authoritative args `{\"value\": \"blue-cat\"}`, final response consistency, native `mixed_swa_kv` cache, cache hit telemetry (`cache_hit_tokens=162`, `cache_hit_requests=1`), and block L2 writes/tokens (`disk_writes=3`, `l2_block_tokens_on_disk=162`).
+- boundary: direct source API only; does not prove panel gateway, public tunnel, installed app, media, or release package parity.
