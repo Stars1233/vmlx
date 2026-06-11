@@ -14192,3 +14192,26 @@ Next action:
   `2` disk writes, text live speeds `87.3` and `88.2 tok/s`.
 - Boundary: Chat Completions video/VL only, not Responses media, not audio,
   not Gemma31B/MXFP, and no release action.
+
+# 2026-06-10 20:47 PDT Gemma4 31B QAT JANG_4M bundled video selected
+- Committed/pushed the 26B proof documentation as `f27c818e4` to
+  `origin/codex/pr-intake-manifest` and `origin/main`.
+- Selected Gemma4 31B QAT JANG_4M installed-app bundled-Python video proof
+  next, using the same red MP4 fixture and `max_prompt_tokens=12000`.
+- Boundary: no release/sign/notarize/PyPI/updater/site and no audio/MXFP claim.
+
+# 2026-06-10 20:48 PDT Gemma4 31B QAT JANG_4M bundled video proof passed
+- Artifact `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-31b-jang4m-video-bundled-python-20260610-proof.json` passed using `/Applications/vMLX.app` and bundled Python.
+- Evidence: `videoVerified=true`, `videoSemanticVerified=true`, persisted
+  video attachment, semantic `red|solid` match, visible answer described a
+  solid red square, base64 MP4 decoded, `25` frames at `25 fps`, and
+  `4` frames extracted.
+- Runtime/cache: JANG v2 VLM mmap load, vision tower upcast to `bfloat16`,
+  affine quantized matmul, `profile=JANG_4M`, `mixed_swa_kv_v1` native cache,
+  q4 storage-boundary quantization for full-attention KV, paged prefix cache,
+  and block-disk L2.
+- Metrics: `eventCounts.stream=27`, `complete=3`,
+  `cache_detail=paged+mixed_swa`, `cached_tokens=20`, `62` L2 block tokens,
+  `2` disk writes, text live speeds `19.5` and `19.6 tok/s`.
+- Boundary: Chat Completions video/VL only, not Responses media, not audio,
+  not MXFP, and no release action.

@@ -8489,3 +8489,44 @@ Other-agent action:
   in one stream update and the UI live-speed sample recorded `0.0 tok/s`, so do
   not cite that as a decode-speed regression without a dedicated streaming
   metrics repro.
+
+# 2026-06-10 20:47 PDT Gemma4 31B QAT JANG_4M bundled video row selected
+
+- The 26B QAT JANG_4M installed-app bundled video row is committed and pushed
+  as `f27c818e4`.
+- Next selected live row:
+  Gemma4 31B QAT JANG_4M installed-app bundled-Python video proof with the same
+  red MP4 fixture and explicit `max_prompt_tokens=12000`.
+- Boundary:
+  no release/sign/notarize/PyPI/updater/site, no audio claim, and no MXFP claim
+  from this row.
+
+# 2026-06-10 20:48 PDT Gemma4 31B QAT JANG_4M bundled video proof passed
+
+- Artifact:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-31b-jang4m-video-bundled-python-20260610-proof.json`.
+- Installed-app UI `/Applications/vMLX.app` and bundled Python served real
+  `/Users/eric/models/JANGQ-AI/gemma-4-31B-it-qat-JANG_4M`.
+- Video evidence:
+  `videoVerified=true`, `videoSemanticVerified=true`, persisted video
+  attachment, expected `red|solid` matched, visible answer described a
+  `solid red square`, base64 MP4 decoded, `25` frames at `25 fps`, and
+  `4` frames extracted.
+- Runtime/cache evidence:
+  JANG v2 VLM mmap load, Gemma vision tower upcast to `bfloat16`, wired limit
+  `44 GB` for the `27 GB` model, affine quantized matmul, `profile=JANG_4M`,
+  MLX affine qmm dispatch, Metal affine symbols active, `mixed_swa_kv_v1`
+  native cache, full/sliding KV plus rotating-window metadata, q4
+  storage-boundary quantization for full-attention KV, paged prefix cache, and
+  block-disk L2.
+- Metrics:
+  `eventCounts.stream=27`, `complete=3`, `cache_detail=paged+mixed_swa`,
+  `cached_tokens=20`, `ram_tokens_cached=62`, `l2_block_tokens_on_disk=62`,
+  `l2_tokens_on_disk=62`, `blocks_on_disk=2`, `disk_writes=2`, text live speeds
+  `19.5` and `19.6 tok/s`.
+- Boundary:
+  Chat Completions video/VL proof only; not Responses media, not audio, not
+  MXFP, not DMG/notarize/PyPI/updater/site. The video turn used Gemma's sampled
+  frame image path and completed in one stream update, so do not cite the UI
+  `0.0 tok/s` sample as a decode-speed regression without a dedicated metrics
+  repro.

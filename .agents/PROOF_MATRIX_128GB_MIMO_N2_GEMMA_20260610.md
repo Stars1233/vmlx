@@ -7,6 +7,65 @@ separates what was actually loaded and proven from what remains red.
 
 ## Latest Proof Additions
 
+### Gemma4 31B QAT JANG_4M Installed-App Bundled Video Proof
+
+Artifact:
+
+- `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-31b-jang4m-video-bundled-python-20260610-proof.json`
+- screenshot:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-31b-jang4m-video-bundled-python-20260610-chat.png`
+
+Live setup:
+
+- Installed app UI: `/Applications/vMLX.app`.
+- Bundled runtime:
+  `/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3`.
+- Real model:
+  `/Users/eric/models/JANGQ-AI/gemma-4-31B-it-qat-JANG_4M`.
+- Chat Completions streaming, `enable_thinking=false`, deterministic
+  `temperature=0`, `top_p=1`, `top_k=1`.
+- Explicit `max_prompt_tokens=12000`.
+- Media fixture: `build/media-fixtures/red-64x64-1s.mp4`, sent as base64
+  `video_url`.
+
+Proven:
+
+- Status `pass`; app route used installed-app UI and bundled Python.
+- Video attachment persisted and semantic check passed:
+  `videoVerified=true`, `videoSemanticVerified=true`, expected regex
+  `red|solid`.
+- Visible video answer:
+  `The provided image is a solid red square.`
+- Server media evidence:
+  request had `types={"video_url":1}`, base64 MP4 decoded, `25` total frames at
+  `25.0 fps`, `4` frames extracted, and the Gemma media fallback processed the
+  sampled video frames through the image-frame path.
+- Runtime stayed on Gemma4 QAT JANG_4M VLM path:
+  JANG v2 VLM mmap load, vision tower upcast to `bfloat16`, wired limit `44 GB`
+  for a `27 GB` model, `affine_quantized_matmul`, `weight_format=jang_affine`,
+  `profile=JANG_4M`, MLX affine quantized matmul dispatch, and Metal affine
+  symbols active on Apple M5 Max.
+- Native cache proof:
+  `mixed_swa_kv_v1` with full-attention KV, sliding-window KV, preserved
+  rotating-window metadata, prefix cache, paged cache, block-disk L2, and q4
+  storage-boundary quantization applying only to full-attention KV.
+- Cache/L2 metrics:
+  `cache_detail=paged+mixed_swa`, second text turn `cached_tokens=20`,
+  `ram_tokens_cached=62`, `l2_block_tokens_on_disk=62`,
+  `l2_tokens_on_disk=62`, `blocks_on_disk=2`, and `disk_writes=2`.
+- Live speed samples:
+  text turns reported `19.5 tok/s` and `19.6 tok/s`; the video turn completed
+  in `2.8s` with a single stream update, so the UI live-speed sample recorded
+  `0.0 tok/s` while the server generated the visible media answer.
+
+Boundary:
+
+- This is a Chat Completions video/VL row, not a Responses API media row.
+- This does not prove Gemma audio. Current Gemma QAT bundles still require
+  weight-backed audio proof or honest gating before any audio claim.
+- This is Gemma4 31B QAT JANG_4M only; MXFP variants remain separate rows.
+- This is not a release/sign/notarize/PyPI/updater/site action.
+
 ### Gemma4 26B QAT JANG_4M Installed-App Bundled Video Proof
 
 Artifact:
