@@ -13304,3 +13304,16 @@ Other-agent action:
 - now: correcting the same stale Qwen35 raw-SSE green claim inside `AGENTS.md` so continuations and parallel agents do not carry forward the older public-recapture artifact as release-cleared.
 - boundary: this is documentation/status hygiene for the current release gate only; no release/sign/notarize/PyPI/updater/site action is unlocked.
 - next movement after commit: inspect current objective artifacts and pick one source-fixable runtime/API blocker, with likely priority on ZAYA-VL no-media/cache contamination or a current gateway/tunnel recapture gap rather than broad suite churn.
+
+## CODEX
+- now: selected the current ZAYA-VL JANGTQ4 smoke failure because it is the newest local objective row with live runtime evidence and no external tunnel dependency.
+- evidence before edit: server log reports media only on image turns and skips VLM prefix cache store for media prompts; text-only no-media request itself had no media payload. Image blue/repeat/red, tools, tool-result continuation, JSON, code, and multiturn recall passed.
+- scoped edit: changed only the ZAYA all-local smoke probe wording so the typed CCA cache row explicitly says `Reply exactly: blue` and the post-image text-only row says `This is a text-only request. No image file is attached... Reply exactly: NONE`. Validation remains strict and still rejects affirmative media carryover.
+- boundary: this is proof-harness correction for a family-specific compliance trap, not a runtime parser/cache/media fix and not a release/sign/notarize action.
+
+## CODEX
+- now: ZAYA-VL JANGTQ4 bundled single-row proof is green after the prompt/validator correction.
+- artifact: `build/current-all-local-model-smoke-zaya-vl-jangtq4-bundled-after-smoke-prompt-fix2-20260611/summary.json`, `status=pass`, failures=0.
+- proven in row: text cache repeat first/second with second-hit `paged+zaya_cca` 36 cached tokens, multiturn recall, required tool call, tool-result continuation, structured JSON exactness, exact code whitespace, blue image, no-media-after-image, blue repeat image, and red changed image.
+- source pointer updates: objective digest and release-regression manifest current covered live smoke/tool smoke maps now reference the new passing ZAYA-VL JANGTQ4 artifact.
+- still not release-green overall: Qwen35 public tunnel raw SSE remains red/stale; MiMo is still Eric/remake-bound unless reopened; N2 JANG_1L remains off-limits; release/sign/notarize remains locked.

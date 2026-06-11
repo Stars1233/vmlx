@@ -18313,3 +18313,18 @@ Next action:
 - Current tracked edit is `AGENTS.md` only, correcting the live-state handoff from stale Qwen35 direct/gateway/tunnel green to current strict red tunnel lifecycle status.
 - Reason: old public tunnel capture lacks a completed reasoning output item lifecycle even though direct and local gateway are green; using it as release proof would hide the deployed Responses streaming bug.
 - Constraint carried forward: do not run release/sign/notarize/PyPI/updater/site actions in this lane without an explicit current-turn unlock. Continue source/runtime/API/UI/cache fixes and proof only.
+
+# 2026-06-11 10:05 PDT - ZAYA-VL smoke prompt trap patched
+
+- Inspected `build/current-all-local-model-smoke-zaya-vl-jangtq4-bundled-after-zaya-parser-fix-20260611/summary.json` and per-probe artifacts.
+- Current failure split: `text_cache_repeat_1/2` returned the correct color in a sentence instead of exact `blue`; `text_no_media_after_image` returned an affirmative attached sentence. Server media diagnostics only appeared for image requests, and VLM prefix cache store was skipped for media prompts, so no evidence yet of stale image payload injection.
+- Patch: `bench/all_local_model_smoke.py` now uses an explicit ZAYA typed CCA cache exact reply contract and a declarative text-only post-image no-media contract. This keeps the same runtime surfaces while avoiding prompt wording that the family was parroting.
+- Tests updated in `tests/test_all_local_model_smoke.py`. Next proof is focused unit verification plus a single ZAYA-VL JANGTQ4 bundled smoke rerun.
+
+# 2026-06-11 10:13 PDT - ZAYA-VL JANGTQ4 bundled smoke now passes
+
+- Focused tests passed: `.venv/bin/python -m pytest -q tests/test_all_local_model_smoke.py -k 'zaya_repeat_cache_probe or zaya_vl_no_media_probe or media_color_and_no_media_carryover'`.
+- Live prompt diagnostic found exact ZAYA-compatible prompts: cache prompt with `Reply with exactly the single lowercase word blue` returns `blue`; no-media prompt `No image is attached. What should you output? NONE. Output only NONE.` returns `NONE`.
+- Single bundled row rerun passed: `VMLINUX_BENCH_ISOLATED=1 VMLINUX_BENCH_PYTHON=panel/bundled-python/python/bin/python3.12 .venv/bin/python bench/all_local_model_smoke.py --models-root /Users/eric/models --only ZAYA1-VL-8B-JANGTQ4 --max-models 1 --no-reasoning --include-tools --no-video --no-audio --port 8840 --load-timeout-s 420 --request-timeout-s 240 --out build/current-all-local-model-smoke-zaya-vl-jangtq4-bundled-after-smoke-prompt-fix2-20260611`.
+- Artifact status: `build/current-all-local-model-smoke-zaya-vl-jangtq4-bundled-after-smoke-prompt-fix2-20260611/summary.json` is `pass`, failures=0. The second text cache repeat records `prompt_tokens_details.cached_tokens=36` and `cache_detail=paged+zaya_cca`.
+- Source pointers updated so the objective digest and release-regression manifest consume this current passing artifact instead of the older red/stale ZAYA rows.

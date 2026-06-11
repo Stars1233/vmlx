@@ -1,0 +1,202 @@
+{
+  "code": 200,
+  "body": {
+    "id": "zaya1-vl-8b-jangtq4",
+    "loaded_model": "zaya1-vl-8b-jangtq4",
+    "model_path": "/Users/eric/models/JANGQ/ZAYA1-VL-8B-JANGTQ4",
+    "family": "zaya1_vl",
+    "compat_warnings": [],
+    "supports_tools": true,
+    "tool_parser": "zaya_xml",
+    "supports_thinking": false,
+    "reasoning_parser": null,
+    "think_in_template": false,
+    "supported_modes": [
+      "instruct"
+    ],
+    "experimental_modes": [],
+    "reasoning_efforts": [],
+    "modalities": [
+      "text",
+      "vision"
+    ],
+    "media": {
+      "runtime_modalities": [
+        "text",
+        "vision"
+      ],
+      "declared_modalities": [
+        "text",
+        "vision",
+        "image"
+      ],
+      "preserved_modalities": [],
+      "unwired_modalities": [],
+      "memory_gate": {
+        "applicable": false,
+        "safe": true,
+        "reason": "not_mimo_v2"
+      },
+      "status_by_modality": {
+        "audio": "not_advertised",
+        "image": "runtime_supported",
+        "text": "runtime_supported",
+        "video": "not_advertised",
+        "vision": "runtime_supported"
+      }
+    },
+    "cache": {
+      "prefix": true,
+      "type": "paged",
+      "paged": true,
+      "block_disk_l2": true,
+      "dsv4_composite_state": false,
+      "native": {
+        "family": "zaya",
+        "schema": "zaya_cca_v1",
+        "cache_type": "typed_cca",
+        "components": [
+          "standard_kv",
+          "cca_conv_state",
+          "cca_prev_hidden",
+          "moe_no_state_slots"
+        ],
+        "generic_turboquant_kv": {
+          "enabled": false,
+          "reason": "cca_state_is_path_dependent"
+        },
+        "prefix": true,
+        "paged": true,
+        "block_disk_l2": true
+      }
+    },
+    "quantization": {
+      "codec": "turboquant_codebook",
+      "weight_format": "mxtq",
+      "profile": "JANGTQ4",
+      "mxtq_bits_by_role": {
+        "routed_expert": 4,
+        "attention": 8,
+        "router": 16,
+        "embed_tokens": 8,
+        "lm_head": 8,
+        "cca_conv": 16,
+        "norms_residual": 16
+      },
+      "routed_expert_bits": 4,
+      "target_bits": 4,
+      "config_bits": 8,
+      "group_size": 32,
+      "weight_index": {
+        "index_file": "/Users/eric/models/JANGQ/ZAYA1-VL-8B-JANGTQ4/model.safetensors.index.json",
+        "total_tensors": 5315,
+        "suffix_counts": {
+          "biases": 201,
+          "scales": 201,
+          "tq_bits": 120,
+          "tq_norms": 120,
+          "tq_packed": 120,
+          "weight": 3750
+        },
+        "tq_target_counts": {
+          "routed_expert": 360
+        },
+        "routed_layout_counts": {
+          "prestacked_switch": 360,
+          "split_expert": 0
+        },
+        "mtp_tensor_count": 0,
+        "sample_tq_packed_targets": [
+          "model.layers.0.zaya_block.experts.switch_mlp.gate_proj",
+          "model.layers.0.zaya_block.experts.switch_mlp.up_proj",
+          "model.layers.0.zaya_block.experts.switch_mlp.down_proj",
+          "model.layers.1.zaya_block.experts.switch_mlp.gate_proj",
+          "model.layers.1.zaya_block.experts.switch_mlp.up_proj",
+          "model.layers.1.zaya_block.experts.switch_mlp.down_proj",
+          "model.layers.2.zaya_block.experts.switch_mlp.gate_proj",
+          "model.layers.2.zaya_block.experts.switch_mlp.up_proj",
+          "model.layers.2.zaya_block.experts.switch_mlp.down_proj",
+          "model.layers.3.zaya_block.experts.switch_mlp.gate_proj",
+          "model.layers.3.zaya_block.experts.switch_mlp.up_proj",
+          "model.layers.3.zaya_block.experts.switch_mlp.down_proj"
+        ]
+      },
+      "weight_matmul_dispatch": {
+        "primary": "jang_tools_turboquant_custom_kernels",
+        "uses_mlx_quantized_matmul": false,
+        "metal_na_eligible": false,
+        "reason": "turboquant_codebook_uses_custom_tq_kernels"
+      },
+      "sidecar": {
+        "jang_config": true,
+        "jangtq_runtime": true,
+        "prestacked_bundle": true
+      }
+    },
+    "acceleration": {
+      "kernel_type": "turboquant_codebook",
+      "metal_na_capable": false,
+      "metal_na_active_on_host": false,
+      "reason": "turboquant_custom_kernels_do_not_use_mlx_na",
+      "metal_na_symbols": {
+        "available": true,
+        "nax_symbols": 0,
+        "naxtile_symbols": 0,
+        "affine_qmm_symbols": 2592,
+        "affine_gather_qmm_symbols": 1620
+      },
+      "host": {
+        "supported": true,
+        "brand": "Apple M5 Max",
+        "reason": null
+      },
+      "jangtq_acceleration": {
+        "mode": "off",
+        "requested": false,
+        "available": false,
+        "active": false,
+        "uses_mlx_quantized_matmul": false,
+        "reason": "disabled"
+      }
+    },
+    "mtp": {
+      "config_num_nextn_predict_layers": null,
+      "config_mtp_layer_source": null,
+      "jang_mtp_layers": null,
+      "jang_drop_mtp": null,
+      "index_has_mtp_tensors": false,
+      "index_mtp_layer_count": null,
+      "mtp_tensor_count": 0,
+      "artifact_available": false,
+      "family": "zaya1_vl",
+      "has_vision_config": true,
+      "has_vision_weights": true,
+      "vision_tensor_count": 390,
+      "cache_type": "hybrid",
+      "runtime_supported": false,
+      "runtime_available": false,
+      "runtime_active": false,
+      "runtime_validation_blocked": false,
+      "effective_depth": null,
+      "effective_depth_source": null,
+      "runtime_scope": null,
+      "vl_runtime_available": false,
+      "runtime_bundle_has_mtp": null,
+      "runtime_mtp_mode": null,
+      "runtime_reason": "config does not request MTP",
+      "status": "not_configured",
+      "issues": [],
+      "request_policy": "compatible-only",
+      "request_gate": "temperature=0,repetition_penalty=1.0"
+    },
+    "routing": {
+      "trained_active_experts": 1,
+      "trained_active_experts_source": "config.moe_router_topk",
+      "n_routed_experts": 16,
+      "override_env": null,
+      "effective_active_experts": 1,
+      "effective_active_experts_source": "trained_default"
+    },
+    "sampling_defaults": {}
+  }
+}
