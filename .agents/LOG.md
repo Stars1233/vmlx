@@ -18115,3 +18115,13 @@ Next action:
 - Aggregate refresh:
   `build/current-objective-proof-after-lfm-minimax-smoke-refresh-20260611.json`
   now covers `lfm` and `minimax`; Step3.7 remains open.
+
+# 2026-06-11 continuation PDT - LFM/MiniMax smoke commit pushed
+
+- Commit:
+  `2e1503bf6 Prove LFM MiniMax smoke gate`.
+- Pushed:
+  `origin/codex/pr-intake-manifest` and `origin/main`.
+- Working note:
+  Step3.7 tool-argument newline issue is still unresolved and should be treated
+  as the next real parser/API debugging target, not as fixed.

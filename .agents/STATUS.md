@@ -12964,3 +12964,13 @@ Other-agent action:
   cross-family smoke now covers `dsv4`, `gemma4`, `lfm`, `ling_bailing`,
   `minimax`, `nemotron`, and `qwen36`; still missing `hy3`, `mimo_v2`,
   `step3p7`, `zaya_text`, and `zaya_vl`.
+
+# 2026-06-11 continuation PDT - LFM/MiniMax smoke commit pushed
+
+- Commit:
+  `2e1503bf6 Prove LFM MiniMax smoke gate`.
+- Pushed:
+  `origin/codex/pr-intake-manifest` and `origin/main`.
+- Note:
+  Step3.7 remains open; the committed diagnostic is failure evidence, not a
+  pass claim. No source normalizer was committed for Step3.7.
