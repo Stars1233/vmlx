@@ -15328,3 +15328,42 @@ Next action:
   no release/sign/notarize/PyPI/updater/site action was performed. The
   pre-existing dirty `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
   was not staged.
+
+# 2026-06-10 23:50 PDT MiMo exactness lane selected
+
+- Request:
+  continue with concrete model/runtime blockers after Gemma, without subagents,
+  N2 JANG_1L, or release actions.
+- Action:
+  selecting MiMo V2.5 JANGTQ_2 exactness/root-cause evidence. Current board
+  still blocks MiMo on literal exactness, decode speed, media E2E, and L2/media
+  installed-app proof.
+- Next command:
+  run `tests/cross_matrix/run_mimo_v2_source_vs_quant_first_divergence.py`
+  with `--preflight-only` to determine whether the source and quant endpoints
+  required for first-divergence proof are actually available before launching
+  or patching anything.
+
+# 2026-06-10 23:54 PDT MiMo source-vs-quant preflight result
+
+- Command:
+  `.venv/bin/python tests/cross_matrix/run_mimo_v2_source_vs_quant_first_divergence.py --preflight-only --out build/current-mimo-v25-jangtq2-source-vs-quant-first-divergence-preflight-after-gemma-gate-20260611.json`
+- Result:
+  `status=missing_prerequisites`, blockers
+  `missing_or_unhealthy_source_endpoint` and
+  `missing_or_unhealthy_quant_endpoint`.
+- Path evidence:
+  source model path exists remotely at
+  `/Volumes/EricsLLMDrive/jangq-ai/sources/MiMo-V2.5`; quant model path exists
+  locally at `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2`.
+- Current classification:
+  source-vs-quant first divergence remains blocked by absent endpoints. Existing
+  quant-only exact probes show the local JANGTQ_2 artifact mutates
+  `blue-cat`, `B7-CAT-09`, JSON values, and tool args, but that is not enough
+  to decide source-also-fails versus quant-diverges.
+- Other-agent next action:
+  bring up the deliberate MiMo TP4/source endpoint on
+  `erics-m5-max2.local:8126` through the documented AdLab path, then rerun the
+  same first-divergence harness with local quant endpoint on `127.0.0.1:8897`.
+  Do not mask this with parser/JSON repair, string post-processing, cache
+  changes, or sampling clamps.

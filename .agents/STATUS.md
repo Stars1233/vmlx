@@ -9468,3 +9468,39 @@ Other-agent action:
   no Gemma failures remain in the current full checklist, but release is still
   blocked by prepackage/release readiness, N2 release clearance, MiMo exactness
   and media/L2 rows, Step3.7, LFM, Nemotron, MiniMax issue179 parity, and DSV4.
+
+# 2026-06-10 23:50 PDT MiMo exactness lane selected
+
+- Current action:
+  switch to MiMo V2.5 JANGTQ_2 exactness/root-cause evidence after Gemma native
+  MXFP4 gate closure.
+- Starting point:
+  current checklist still fails MiMo on local release clearance, decode speed,
+  artifact exactness, and media semantics. Existing evidence classifies the
+  exactness issue as model-generated literal mutation after valid parser
+  structure; parser/JSON/cache repair is explicitly forbidden as a fix.
+- Next check:
+  use `tests/cross_matrix/run_mimo_v2_source_vs_quant_first_divergence.py`
+  in preflight mode first. That runner compares already-running source and
+  quant endpoints and does not launch the 113GB quant bundle or source model by
+  itself.
+
+# 2026-06-10 23:54 PDT MiMo source-vs-quant preflight result
+
+- Proof artifact:
+  `build/current-mimo-v25-jangtq2-source-vs-quant-first-divergence-preflight-after-gemma-gate-20260611.json`.
+- Result:
+  `status=missing_prerequisites`; both model paths exist, but source endpoint
+  `http://erics-m5-max2.local:8126` and local quant endpoint
+  `http://127.0.0.1:8897` are not listening.
+- Evidence:
+  SSH to `erics-m5-max2.local` confirms the source model path exists at
+  `/Volumes/EricsLLMDrive/jangq-ai/sources/MiMo-V2.5`; local quant path exists
+  at `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2`.
+- Boundary:
+  no source-vs-quant classification can be claimed from this preflight. Existing
+  quant-only evidence still shows JANGTQ_2 mutates `blue-cat`, `B7-CAT-09`,
+  JSON values, and required tool args, but that does not prove whether source
+  also fails. Prior notes say the source endpoint should be a deliberate
+  AdLab/TP4 relaunch through `adlab-pair`; this lane did not start that
+  orchestration.
