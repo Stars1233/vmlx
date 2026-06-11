@@ -54,6 +54,47 @@
   overlay launch decision. MiMo exactness, video/audio, installed-app overlay
   parity, and signed checkpoint release remain open.
 
+# 2026-06-11 01:54 PDT - Qwen/Qwen-coder raw-SSE state inspected
+
+- Inspected Qwen35 current parity:
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-public-recapture-20260610.json`
+  is `status=pass`. Direct/gateway/tunnel preserve `{"value":"blue-cat"}`,
+  have required reasoning events, parse cleanly, keep final output consistent
+  with the stream, and have valid output indices.
+- Inspected Qwen-coder-next direct current-source proof:
+  `build/current-qwen-coder-next-live-responses-sse-20260611/SUMMARY.json`
+  is `status=pass`. Required `exec_command` emits reasoning events,
+  message/reasoning/function indices `0/1/2`, argument deltas/done/final
+  `{"cmd":"ls /tmp"}`, tool-result continuation returns `alpha.tmp` and
+  `beta.tmp`, and adversarial preamble plus empty XML fails closed with
+  `tool_calls_required` and no `{}` argument payload.
+- Inspected Qwen-coder-next gateway proof:
+  `build/current-qwen-coder-next-gateway-responses-sse-20260610/SUMMARY.json`
+  is `status=pass`. Panel ApiGateway preserves reasoning, function-call
+  argument deltas/done, final object args, output index ordering, no raw XML
+  leak, no executable empty args, and cache/L2 writes.
+- Inspected Qwen-coder-next tunnel availability:
+  `build/current-qwen-coder-next-tunnel-availability-20260611/SUMMARY.json`
+  is `status=open`; public tunnel is reachable but does not advertise exact
+  model `qwen3-coder-next`. Remaining exact-served-model tunnel parity is a
+  deployment/routing gap, not current-source parser/API failure.
+- Next action: run focused source guards for empty required args,
+  function-call argument delta/done, and output-index ordering. No model
+  launch, release/sign/notarize/PyPI/updater/site, or N2 JANG_1L action.
+
+# 2026-06-11 01:55 PDT - Qwen/Responses focused guards passed
+
+- Verification command:
+  `.venv/bin/python -m pytest -q tests/test_engine_audit.py tests/test_tool_parsers.py tests/test_server.py tests/test_responses_raw_sse_parity_contract.py -k 'qwen_issue_192 or empty_required_args or empty_function or function_call_arguments_delta or streaming_responses_preamble_empty_xml_tool_call_never_emits_empty_arguments or streaming_responses_tool_call_uses_next_output_index_without_text or classifier_flags_function_call_reusing_message_output_index or raw_sse_parity_fails_when_surface_reuses_message_output_index_for_tool'`
+- Result: `11 passed, 794 deselected in 2.65s`.
+- Current-source guard state remains green for Qwen/XML missing-required-arg
+  fail-closed behavior, no executable `{}` args in the covered Responses paths,
+  function-call argument delta/done surfaces, and output-index conflict
+  detection.
+- Boundary: no fresh model launch in this guard run. Existing live
+  Qwen-coder-next direct and gateway artifacts remain the live evidence; public
+  tunnel parity remains open until `qwen3-coder-next` is deployed or routed.
+
 # 2026-06-11 01:39 PDT - Gemma4 thinking-off tool/cache UI row green
 
 - Fixed proof-surface false red for tool-first Responses streams:

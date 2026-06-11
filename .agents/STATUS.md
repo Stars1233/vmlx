@@ -71,6 +71,56 @@
   from the overlay proof alone.
 
 ## CODEX
+- now: inspected current Qwen/Qwen-coder Responses empty-args and raw-SSE
+  artifacts after the MiMo media classification.
+- Qwen35 same-model direct/gateway/tunnel artifact:
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-public-recapture-20260610.json`
+  is `status=pass`. It proves direct, panel gateway, and public tunnel all
+  preserve `{"value":"blue-cat"}` arguments, have reasoning events with no
+  reasoning-disable workaround, parse cleanly, keep final response consistent
+  with stream, and use valid output indices (`direct/gateway` message=0,
+  reasoning=1, function_call=2; tunnel message=0, function_call=1).
+- Qwen-coder-next direct artifact:
+  `build/current-qwen-coder-next-live-responses-sse-20260611/SUMMARY.json`
+  is `status=pass` for current source serving
+  `/Users/eric/models/Qwen3.6-35B-A3B-4bit` as `qwen3-coder-next`. It proves
+  reasoning-enabled required `exec_command` raw SSE with deltas/done/final
+  arguments `{"cmd":"ls /tmp"}`, tool-result continuation via
+  `previous_response_id`, adversarial preamble plus empty XML fail-closed with
+  `tool_calls_required`, no `{}` argument payload, and cache/L2 state
+  (`ram_tokens_cached=277`, `l2_block_tokens_on_disk=277`,
+  `l2_ssm_tokens_on_disk=533`).
+- Qwen-coder-next local gateway artifact:
+  `build/current-qwen-coder-next-gateway-responses-sse-20260610/SUMMARY.json`
+  is `status=pass`. It proves panel ApiGateway raw SSE status 200,
+  reasoning events, function-call argument delta/done, final args
+  `{"cmd":"ls /tmp"}`, sequential indices message=0/reasoning=1/function=2,
+  no executable empty args, no raw XML leak, and gateway cache/L2 writes.
+- Qwen-coder-next public tunnel artifact:
+  `build/current-qwen-coder-next-tunnel-availability-20260611/SUMMARY.json`
+  is `status=open`; public tunnel `/v1/models` was reachable but did not
+  advertise exact served model `qwen3-coder-next`. Tunnel raw SSE parity for
+  this exact served model remains a deployment/routing gap, not a current-source
+  parser/API proof failure.
+- next verification: rerun a focused current-source parser/API guard slice for
+  empty required args, output-index ordering, and function-call arg deltas.
+
+## CODEX
+- now: Qwen/Responses focused current-source guard slice passed.
+- command:
+  `.venv/bin/python -m pytest -q tests/test_engine_audit.py tests/test_tool_parsers.py tests/test_server.py tests/test_responses_raw_sse_parity_contract.py -k 'qwen_issue_192 or empty_required_args or empty_function or function_call_arguments_delta or streaming_responses_preamble_empty_xml_tool_call_never_emits_empty_arguments or streaming_responses_tool_call_uses_next_output_index_without_text or classifier_flags_function_call_reusing_message_output_index or raw_sse_parity_fails_when_surface_reuses_message_output_index_for_tool'`
+- result: `11 passed, 794 deselected in 2.65s`.
+- proven by guard slice: current source still fails missing required Qwen/XML
+  tool args closed, does not emit executable `{}` args or raw invalid XML for
+  the covered Responses paths, preserves function-call argument delta/done
+  surfaces, and flags duplicate function-call/message `output_index` reuse as
+  invalid.
+- boundary: no new live model launch was run in this verification; live
+  Qwen-coder-next direct/gateway proof remains from the cited 2026-06-10/11
+  artifacts, and exact-served-model public tunnel parity remains open because
+  the tunnel does not advertise `qwen3-coder-next`.
+
+## CODEX
 - now: Gemma4 E2B QAT JANG4M thinking-off source UI Responses/tool/cache row
   is live green after fixing the proof surface for tool-first Responses
   streams.
