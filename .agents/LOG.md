@@ -14571,3 +14571,23 @@ Next action:
   MiMo JANGTQ_2 literal exactness, MiMo media semantics, thinking-on rows,
   installed-app parity for this commit, package/sign/notarize/PyPI/updater/site,
   or N2 JANG_1L.
+
+# 2026-06-11 bundled Python parity check after MiMo fix
+- Current blocker checked: installed-app/bundled runtime parity for the source
+  changes in `vmlx_engine/api/tool_calling.py` and `vmlx_engine/scheduler.py`.
+- `panel/scripts/verify-bundled-python.sh` failed before rebundling:
+  bundled `vmlx_engine/server.py` hash drifted from source. The verifier
+  instructed rerunning `./scripts/bundle-python.sh` from this checkout.
+- Boundary: this is bundled runtime sync/proof only, not package/sign/notarize/
+  PyPI/updater/site publication.
+
+# 2026-06-11 bundled Python parity green
+- Ran `panel/scripts/bundle-python.sh`; it installed local `vmlx 1.5.57` and
+  local `jang 2.5.30` into `panel/bundled-python` and completed verification.
+- Reran `panel/scripts/verify-bundled-python.sh`; result `pass`. Critical
+  vMLX engine files and critical `jang_tools` files match source, relocatable
+  console script shebangs are OK, and critical runtime imports passed.
+- Git boundary: `panel/bundled-python` is ignored/untracked, so there are no
+  bundled runtime files to commit from this sync. Installed app replacement,
+  DMG package/sign/notarize, PyPI, updater, and website release remain separate
+  explicit release actions.

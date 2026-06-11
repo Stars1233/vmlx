@@ -8803,3 +8803,24 @@ Other-agent action:
   MiMo JANGTQ_2 exactness/media, thinking-on reasoning/tool interleaving,
   installed-app parity for this source commit, and release packaging remain
   red/open.
+
+# 2026-06-11 01:50 PDT Bundled Python parity after MiMo fix
+
+- Precheck:
+  `panel/scripts/verify-bundled-python.sh` initially failed on bundled
+  `vmlx_engine/server.py` content drift.
+- Action:
+  reran `panel/scripts/bundle-python.sh` from this checkout. It built and
+  installed local `vmlx 1.5.57` and local `jang 2.5.30` into
+  `panel/bundled-python`, then applied bundled dependency patches.
+- Proof:
+  reran `panel/scripts/verify-bundled-python.sh`; it passed. Critical
+  `vmlx_engine` files match source, critical `jang_tools` files match source,
+  console-script shebangs are relocatable, and critical imports for MLX,
+  mlx-lm, mlx-vlm, Gemma4, MiMo, Step3.7, JANG/JANGTQ loaders, TurboQuant
+  kernels, audio, and vMLX runtime modules passed.
+- Boundary:
+  `panel/bundled-python` is ignored/untracked in this worktree, so this is a
+  local bundled-runtime parity pass, not a committed app rebuild, installed-app
+  replacement, DMG package, signing, notarization, PyPI upload, updater, or
+  website release.
