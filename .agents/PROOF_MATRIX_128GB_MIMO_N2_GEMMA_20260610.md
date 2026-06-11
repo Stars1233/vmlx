@@ -7,6 +7,66 @@ separates what was actually loaded and proven from what remains red.
 
 ## Latest Proof Additions
 
+### Nex/N2 Pro JANGTQ2 Installed-App Responses Reasoning/Tool/Cache Proof
+
+Artifact:
+
+- `docs/internal/agent-notes/current-real-ui-installed-app-n2-jangtq2-responses-reasoning-tools-cache-bundled-python-20260610-proof.json`
+- screenshot:
+  `docs/internal/agent-notes/current-real-ui-installed-app-n2-jangtq2-responses-reasoning-tools-cache-bundled-python-20260610-chat.png`
+
+Live setup:
+
+- Installed app UI: `/Applications/vMLX.app`.
+- Bundled runtime:
+  `/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3`.
+- Real model:
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2`.
+- Responses API streaming, `tool_choice=auto`, built-in `run_command`
+  tools, `qwen` tool parser, `qwen3` reasoning parser,
+  `enable_thinking=true`, deterministic `temperature=0`, `top_p=1`,
+  `top_k=1`.
+
+Proven:
+
+- Status `pass`; app route used installed-app UI and bundled Python.
+- Reasoning-enabled row produced `reasoning_display` in proven surfaces and
+  `eventCounts.reasoningDone=5`.
+- Built-in auto tool loop passed with `eventCounts.tool=124`, `stream=34`,
+  `complete=3`; both tool turns executed real `run_command` calls and
+  tool-result continuation.
+- A no-tool reasoning probe was sent in the same proof (`Think briefly, then
+  answer exactly: FOUR`) and final visible answer was `FOUR`.
+- Proven surfaces included installed app UI, real loaded model, Responses API,
+  Responses delta streaming/cache-detail usage, long tool loop,
+  parser/language leak checks, settings persistence, server cache controls,
+  cache endpoint stats, native cache status, L2 disk storage, and tool/L2 cache
+  integration.
+- Runtime/cache proof stayed on the N2 JANGTQ2 path:
+  `turboquant_codebook`, `weight_format=mxtq`, `profile=JANGTQ2`,
+  2-bit routed experts, group size 64, `540` prestacked routed-expert TQ
+  targets, hybrid SSM native cache, attention-only TurboQuant KV, q4
+  storage-boundary KV, SSM companion state, and async rederive policy.
+- Cache/L2 metrics at end of proof:
+  `ram_tokens_cached=7289`, `l2_block_tokens_on_disk=7289`,
+  `l2_ssm_tokens_on_disk=26169`, `l2_tokens_on_disk=33458`,
+  `blocks_on_disk=117`, `disk_writes=117`, `disk_hits=134`.
+- Live speed samples: `45.5 tok/s`, `23.7 tok/s`, and `34.9 tok/s`; health
+  memory about `103.8GB` active / `108.8GB` peak, generator peak `114.1GB`.
+
+Boundary:
+
+- This still excludes N2 JANG_1L.
+- This is a no-media row; it does not prove N2 image/video/audio semantics.
+- The artifact proves reasoning display/event behavior in the installed app
+  proof, but it does not retain full raw SSE objects for direct output-index
+  parity. Same-model raw SSE direct/gateway/tunnel output-index proof remains a
+  separate row.
+- `persistedReasoningCount=0` in this UI artifact, so it should not be cited
+  as proof that reasoning text is persisted in chat history.
+- MTP remains unavailable for this bundle because it reports
+  `bundle_has_mtp=false` / `metadata_only_missing_weights`.
+
 ### MiniMax Legacy XML Raw Fallback Spacing Fix
 
 - Source fix:

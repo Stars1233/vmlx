@@ -8325,3 +8325,47 @@ Other-agent action:
   `361 passed`; changed-file `py_compile`; `git diff --check`.
 - Boundary: source/parser fix only; no release/sign/notarize/PyPI/updater/site
   and no fresh live MiniMax model proof in this movement.
+
+# 2026-06-10 20:30 PDT continuation - N2 reasoning/tool/cache row selected
+
+- Continuing active goal from current repo state. Constraints remain: no
+  release/sign/notarize/PyPI/updater/site action, no N2 JANG_1L, no subagents,
+  no fake parser repairs, and no metadata-only media claims.
+- Next selected live row:
+  Nex/N2 Pro JANGTQ2 installed-app Responses streaming with bundled Python,
+  built-in auto tools, cache controls, and `enable_thinking=true`.
+- Reason:
+  the prior N2 installed-app row proved no-media auto tools/cache with
+  `enable_thinking=false`; it did not clear visible/interleaved reasoning
+  deltas, reasoning-summary output index behavior, or reasoning+tool parsing
+  under Responses.
+- Boundary:
+  this next row still excludes N2 JANG_1L and is not a media proof.
+
+# 2026-06-10 20:33 PDT N2 JANGTQ2 reasoning/tool/cache proof passed
+
+- Artifact:
+  `docs/internal/agent-notes/current-real-ui-installed-app-n2-jangtq2-responses-reasoning-tools-cache-bundled-python-20260610-proof.json`.
+- Installed-app UI `/Applications/vMLX.app` and bundled Python served real
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2`.
+- Responses streaming with `enable_thinking=true`, built-in auto tools, `qwen`
+  parser, and `qwen3` reasoning parser passed.
+- Event counts:
+  `stream=34`, `tool=124`, `reasoningDone=5`, `complete=3`.
+- Proven surfaces now include `reasoning_display` in addition to installed app
+  UI, real loaded model, Responses API, delta streaming, long tool loop,
+  parser/language leak checks, settings persistence, cache endpoint stats,
+  cache-hit telemetry, L2 disk storage, native cache status, and tool/L2 cache
+  integration.
+- Cache/runtime metrics:
+  `turboquant_codebook` MXTQ/JANGTQ2, 540 prestacked routed-expert TQ targets,
+  hybrid SSM cache, attention-only TurboQuant KV, q4 storage-boundary KV,
+  `7289` L2 block tokens, `26169` SSM tokens on disk, `33458` total L2 tokens,
+  and `117` disk writes.
+- Live speed samples:
+  `45.5`, `23.7`, and `34.9 tok/s`; health memory about `103.8GB` active /
+  `108.8GB` peak, generator peak `114.1GB`.
+- Boundaries:
+  no N2 JANG_1L, no media proof, no raw direct/gateway/tunnel SSE output-index
+  parity from this artifact, and no reasoning-history persistence proof because
+  `persistedReasoningCount=0`.

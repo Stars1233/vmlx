@@ -14128,3 +14128,16 @@ Next action:
 - Added the focused MiniMax regression and corrected the stale Responses streaming audit to check accumulated-content/reasoning candidates plus required-args fail-closed behavior.
 - Verification: focused MiniMax slice `4 passed`; broad parser/Responses exactness slice `361 passed`; changed-file `py_compile`; `git diff --check`.
 - Boundary: no live MiniMax model run and no release/sign/notarize/PyPI/updater/site action.
+
+# 2026-06-10 20:30 PDT continuation - N2 reasoning/tool/cache row selected
+- Current worktree rechecked: only pre-existing `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json` and untracked `node_modules/` are dirty.
+- Selected N2 JANGTQ2 installed-app Responses proof with `enable_thinking=true`, built-in auto tools, bundled Python, and cache controls. This targets reasoning/content/tool delta behavior left open by the prior thinking-off N2 row.
+- Boundary: no release/sign/notarize/PyPI/updater/site, no N2 JANG_1L, and no media claim from this row.
+
+# 2026-06-10 20:33 PDT N2 JANGTQ2 reasoning/tool/cache proof passed
+- Ran the selected installed-app proof with `enable_thinking=true`, built-in auto tools, bundled Python, and `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2`.
+- Artifact `docs/internal/agent-notes/current-real-ui-installed-app-n2-jangtq2-responses-reasoning-tools-cache-bundled-python-20260610-proof.json` passed.
+- Evidence: `eventCounts.stream=34`, `tool=124`, `reasoningDone=5`, `complete=3`; proven surfaces include `reasoning_display`, Responses API, delta streaming, long tool loop, cache-detail usage, parser/language leak checks, installed-app UI, bundled runtime, native cache, L2 disk storage, and tool/L2 integration.
+- Runtime/cache: MXTQ/JANGTQ2 `turboquant_codebook`, 540 prestacked routed-expert TQ targets, hybrid SSM cache, attention-only TurboQuant KV, q4 storage-boundary KV, `7289` L2 block tokens, `26169` SSM tokens on disk, `33458` total L2 tokens, and `117` disk writes.
+- Performance/memory: live decode samples `45.5`, `23.7`, and `34.9 tok/s`; health memory about `103.8GB` active / `108.8GB` peak, generator peak `114.1GB`.
+- Boundary: this is not N2 JANG_1L, not media proof, not raw SSE direct/gateway/tunnel output-index parity, and not reasoning-history persistence proof (`persistedReasoningCount=0`).
