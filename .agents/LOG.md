@@ -18307,3 +18307,9 @@ Next action:
 - Patch: `tests/cross_matrix/run_responses_raw_sse_parity_contract.py` now treats reasoning events without a completed reasoning output item as incomplete lifecycle and fails required-reasoning captures. `tests/test_responses_raw_sse_parity_contract.py` now has a red fixture for the stale tunnel shape.
 - Strict recheck command produced `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-missing-required-args-failclosed-strict-recheck-20260611.json`, `status=fail`. Direct and gateway have reasoning output items; tunnel does not.
 - Release pointer update: `tests/cross_matrix/run_full_release_objective_checklist.py` now uses the strict red artifact for `QWEN35_RAW_SSE_PARITY`, and the release tracker row was changed from green to blocked. Other agent should recapture public tunnel after deploying current source; do not claim tunnel parity from the older `after-public-recapture` artifact.
+
+# 2026-06-11 09:52 PDT - AGENTS Qwen raw-SSE boundary corrected
+
+- Current tracked edit is `AGENTS.md` only, correcting the live-state handoff from stale Qwen35 direct/gateway/tunnel green to current strict red tunnel lifecycle status.
+- Reason: old public tunnel capture lacks a completed reasoning output item lifecycle even though direct and local gateway are green; using it as release proof would hide the deployed Responses streaming bug.
+- Constraint carried forward: do not run release/sign/notarize/PyPI/updater/site actions in this lane without an explicit current-turn unlock. Continue source/runtime/API/UI/cache fixes and proof only.

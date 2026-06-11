@@ -13299,3 +13299,8 @@ Other-agent action:
 - strict recheck artifact: `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-missing-required-args-failclosed-strict-recheck-20260611.json`, `status=fail`.
 - failure boundary: the public tunnel capture `build/responses-sse-captures-20260610/tunnel-qwen35-mxfp8-mtp-tool-recapture-after-strict-source-20260610.sse` has reasoning events but no reasoning output item lifecycle (`reasoning_output_item_count=0`, `reasoning_lifecycle_complete=false`, `has_required_reasoning_events=false`). This is stale/deployed tunnel behavior, not current direct/gateway source behavior.
 - release gate update: `QWEN35_RAW_SSE_PARITY` now points at the strict red artifact so release remains blocked until public tunnel is rebuilt/recaptured from current source. Do not claim Qwen raw-SSE direct/gateway/tunnel parity green from the older public-recapture artifact.
+
+## CODEX
+- now: correcting the same stale Qwen35 raw-SSE green claim inside `AGENTS.md` so continuations and parallel agents do not carry forward the older public-recapture artifact as release-cleared.
+- boundary: this is documentation/status hygiene for the current release gate only; no release/sign/notarize/PyPI/updater/site action is unlocked.
+- next movement after commit: inspect current objective artifacts and pick one source-fixable runtime/API blocker, with likely priority on ZAYA-VL no-media/cache contamination or a current gateway/tunnel recapture gap rather than broad suite churn.

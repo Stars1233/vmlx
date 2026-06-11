@@ -283,9 +283,14 @@ JANGTQ_2 exactness, N2 rows, or release readiness.
 This subsection is current live-state guidance for continuations. Re-check the
 named artifacts before repeating claims.
 
-- Qwen35 MXFP8 MTP direct/gateway/tunnel raw SSE is currently green from
-  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-public-recapture-20260610.json`
-  plus focused source guards. This does not clear Qwen27, Qwen-coder-next, or
+- Qwen35 MXFP8 MTP direct/gateway/tunnel raw SSE is not currently release-green.
+  Current source/direct server and local gateway are green for authoritative
+  tool arguments, reasoning enabled, function-call argument delta/done, and
+  valid output item ordering, but the public tunnel capture is stale/malformed:
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-after-missing-required-args-failclosed-strict-recheck-20260611.json`
+  is `status=fail` because tunnel reasoning events have no completed reasoning
+  output item lifecycle. Do not use the older `after-public-recapture` artifact
+  as a green release gate. This does not clear Qwen27, Qwen-coder-next, or
   non-Qwen parser families.
 - Qwen27 JANG_4M MTP direct required-tool raw SSE is green for valid
   reasoning-enabled tool arguments: artifact
