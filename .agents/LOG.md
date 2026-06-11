@@ -17955,3 +17955,65 @@ Next action:
   and clean runtime logs.
 - Not proven:
   Ling MTP runtime remains not proven because indexed `mtp.*` tensors are absent.
+
+# 2026-06-11 continuation PDT - Ling/Bailing commit pushed
+
+- Commit:
+  `bc4f337d2 Prove Ling Bailing tool and cache gate`.
+- Pushed:
+  `origin/codex/pr-intake-manifest` and `origin/main`.
+- Verification passed:
+  `.venv/bin/python -m pytest tests/test_cross_matrix_audit_runner.py::test_ling_rows_expect_tools_but_not_reasoning tests/test_objective_proof_digest.py::test_objective_proof_digest_tracks_ling_multilingual_cjk_leakage tests/test_release_regression_manifest.py::test_release_regression_manifest_tracks_ling_multilingual_quality_clearance_boundary -q`.
+- Current release state:
+  Ling/Bailing row is closed in
+  `build/current-objective-proof-after-ling-bailing-live-tool-cache-refresh-20260611.json`.
+  Remaining open aggregate rows are cross-family live multi-turn smoke, MiMo,
+  broad N2 aggregate because of off-limits JANG_1L rows, MiniMax reporter
+  parity/root cause, real Electron UI cross-family live matrix, and DSV4
+  long-output/code quality.
+
+# 2026-06-11 continuation PDT - Qwen35 cross-family smoke selected
+
+- Selected blocker:
+  cross-family live multi-turn smoke matrix missing
+  `build/current-all-local-model-smoke-qwen35-mxfp8-mtp-tools-media-20260606/summary.json`.
+- Reason:
+  Qwen35 MXFP8 MTP is local, relevant to parser/API/tool/reasoning/cache
+  release priority, and does not overlap Eric-owned N2 JANG_1L or MiMo artifact
+  remake work.
+- Dry-run:
+  `VMLINUX_BENCH_ISOLATED=1 VMLINUX_BENCH_PYTHON=panel/bundled-python/python/bin/python3.12 .venv/bin/python bench/all_local_model_smoke.py --models-root /Users/eric/models --only Qwen3.6-35B-A3B-MXFP8-MTP --max-models 1 --include-tools --load-timeout-s 900 --request-timeout-s 300 --out build/current-all-local-model-smoke-qwen35-mxfp8-mtp-tools-media-20260606 --dry-run`.
+- Dry-run result:
+  one row selected.
+- Next movement:
+  run the single-model bundled-Python smoke live and classify any failure from
+  the generated row output/server log before touching source.
+
+# 2026-06-11 continuation PDT - Qwen35 smoke proof passed
+
+- Command:
+  `VMLINUX_BENCH_ISOLATED=1 VMLINUX_BENCH_PYTHON=panel/bundled-python/python/bin/python3.12 .venv/bin/python bench/all_local_model_smoke.py --models-root /Users/eric/models --only Qwen3.6-35B-A3B-MXFP8-MTP --max-models 1 --include-tools --load-timeout-s 900 --request-timeout-s 300 --out build/current-all-local-model-smoke-qwen35-mxfp8-mtp-tools-media-20260606`.
+- Result:
+  pass, one row completed, zero failures.
+- Artifact:
+  `build/current-all-local-model-smoke-qwen35-mxfp8-mtp-tools-media-20260606/summary.json`.
+- Proven:
+  Qwen3.6 35B MXFP8 MTP bundled-Python load, text cache repeat with
+  `paged+ssm`, multi-turn recall, reasoning-on visible answer with separated
+  reasoning, required tool call with exact `{"value":"blue-cat"}` arguments,
+  tool-result continuation, exact JSON/code/whitespace, image/video semantics,
+  post-media text recovery, native MTP path activation depth 3, SSM capture, and
+  block-disk cache writes. Media requests correctly skipped text-prefix cache.
+- Source-hash maintenance:
+  reran `run_model_artifact_format_contract.py` because the Ling test edit made
+  the artifact-format contract hash stale. Refreshed
+  `build/current-model-artifact-format-contract-after-mllm-tight-memory-guard-20260607.json`
+  is pass with 180 selected tests passing.
+- Aggregate:
+  `build/current-objective-proof-after-qwen35-smoke-live-refresh-20260611.json`
+  keeps high-risk policy pass and moves cross-family smoke covered families to
+  `dsv4`, `gemma4`, and `qwen36`.
+- Still open:
+  cross-family smoke still lacks Hy3, LFM, Ling/Bailing smoke, MiniMax, MiMo,
+  Nemotron, Step3.7, ZAYA text, and ZAYA-VL artifacts. N2 JANG_1L remains
+  off-limits and MiMo artifact exactness remains remake-bound.

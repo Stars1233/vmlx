@@ -12756,3 +12756,75 @@ Other-agent action:
 - No-claim:
   still do not claim Ling MTP runtime; current artifact records
   `metadata_inconsistent` because no `mtp.*` tensors are indexed.
+
+# 2026-06-11 continuation PDT - Ling/Bailing commit pushed
+
+- Commit:
+  `bc4f337d2 Prove Ling Bailing tool and cache gate`.
+- Pushed:
+  `origin/codex/pr-intake-manifest` and `origin/main`.
+- Verification:
+  `.venv/bin/python -m pytest tests/test_cross_matrix_audit_runner.py::test_ling_rows_expect_tools_but_not_reasoning tests/test_objective_proof_digest.py::test_objective_proof_digest_tracks_ling_multilingual_cjk_leakage tests/test_release_regression_manifest.py::test_release_regression_manifest_tracks_ling_multilingual_quality_clearance_boundary -q`
+  passed, 3 selected.
+- Remaining aggregate open rows after
+  `build/current-objective-proof-after-ling-bailing-live-tool-cache-refresh-20260611.json`:
+  cross-family live multi-turn smoke matrix, MiMo V2.5, broad N2 aggregate
+  because of JANG_1L off-limits rows, MiniMax reporter parity/root cause, real
+  Electron UI cross-family live model matrix, and DSV4 long-output/code quality.
+- Next selection:
+  inspect remaining aggregate rows and choose a source/proof blocker that does
+  not overlap Eric-owned N2 JANG_1L or MiMo artifact remake work.
+
+# 2026-06-11 continuation PDT - Qwen35 cross-family smoke selected
+
+- Selected next blocker:
+  cross-family live multi-turn smoke matrix missing the Qwen3.6 35B MXFP8 MTP
+  artifact `build/current-all-local-model-smoke-qwen35-mxfp8-mtp-tools-media-20260606/summary.json`.
+- Reason:
+  Gemma rows are aggregate-pass, N2 JANG_1L is off-limits, and MiMo artifact
+  exactness is Eric/remake-bound. Qwen35 overlaps the active parser/API/tool/
+  reasoning/cache priority without touching N2 JANG_1L.
+- Local model:
+  `/Users/eric/models/JANGQ/Qwen3.6-35B-A3B-MXFP8-MTP`.
+- Dry-run command:
+  `VMLINUX_BENCH_ISOLATED=1 VMLINUX_BENCH_PYTHON=panel/bundled-python/python/bin/python3.12 .venv/bin/python bench/all_local_model_smoke.py --models-root /Users/eric/models --only Qwen3.6-35B-A3B-MXFP8-MTP --max-models 1 --include-tools --load-timeout-s 900 --request-timeout-s 300 --out build/current-all-local-model-smoke-qwen35-mxfp8-mtp-tools-media-20260606 --dry-run`.
+- Dry-run result:
+  row_count `1`.
+- Next command:
+  run the same single-model smoke without `--dry-run` to prove text cache
+  repeats, multi-turn recall, reasoning if supported, required tools,
+  tool-result continuation, exact JSON/code/whitespace, and media honesty under
+  bundled Python.
+
+# 2026-06-11 continuation PDT - Qwen35 smoke proof passed
+
+- Live command:
+  `VMLINUX_BENCH_ISOLATED=1 VMLINUX_BENCH_PYTHON=panel/bundled-python/python/bin/python3.12 .venv/bin/python bench/all_local_model_smoke.py --models-root /Users/eric/models --only Qwen3.6-35B-A3B-MXFP8-MTP --max-models 1 --include-tools --load-timeout-s 900 --request-timeout-s 300 --out build/current-all-local-model-smoke-qwen35-mxfp8-mtp-tools-media-20260606`.
+- Result:
+  pass, completed `1`, failed `0`, row `Qwen3.6-35B-A3B-MXFP8-MTP`.
+- Proven surfaces:
+  text cache repeat, multi-turn recall, reasoning-on separation, required tool
+  call, tool-result continuation, exact JSON, exact code/whitespace, image
+  blue/repeat/red-change, video blue, and post-media text recovery after image
+  and video.
+- Key evidence:
+  `text_cache_repeat_2` returned `ACK` with `cached_tokens=56` and
+  `cache_detail=paged+ssm`; reasoning visible content was `FINAL=OK` with 937
+  reasoning chars separated; `tool_required` emitted `record_fact` with
+  exact arguments `{"value":"blue-cat"}`; tool-result continuation returned
+  `STORED blue-cat.`; video decoded and frame-through-vision answered `blue`.
+- Runtime/cache evidence:
+  server log shows MLLM native MTP path activated at depth 3, clean SSM captured
+  at prefill boundary, block-disk write-through, media requests skipping
+  text-prefix cache because media embeddings are path-dependent, and no
+  hybrid-KV-without-SSM hits.
+- Artifact:
+  `build/current-all-local-model-smoke-qwen35-mxfp8-mtp-tools-media-20260606/summary.json`.
+- Source-hash refresh:
+  because the Ling test edit changed `tests/test_cross_matrix_audit_runner.py`,
+  reran `.venv/bin/python tests/cross_matrix/run_model_artifact_format_contract.py --out build/current-model-artifact-format-contract-after-mllm-tight-memory-guard-20260607.json`;
+  result pass, failed `[]`, missing markers `[]`, pytest selected 180 passed.
+- Aggregate:
+  `build/current-objective-proof-after-qwen35-smoke-live-refresh-20260611.json`
+  marks high-risk parser/artifact/launch policy pass again and cross-family
+  smoke now covers `dsv4`, `gemma4`, and `qwen36`.
