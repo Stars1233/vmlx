@@ -15228,3 +15228,20 @@ Next action:
 - Still open:
   live direct/gateway/tunnel raw SSE for same-model Responses tool/reasoning
   streams, installed-app UI proof, media/VL/audio/video, and release gates.
+
+# 2026-06-10 23:31 PDT Qwen empty XML tool-call source contract re-proven
+
+- Investigation:
+  traced current `vmlx_engine/server.py` parser and Responses streaming paths
+  for the reported preamble + `<function=exec_command></function>` failure and
+  duplicate `output_index` concern. Current source already fail-closes missing
+  required arguments and reserves distinct message/reasoning/function_call
+  indices.
+- Verification:
+  `.venv/bin/python -m pytest -q` on the focused server/tool-parser/raw-SSE
+  contract selection passed `45/45`.
+- Proof artifact:
+  `build/current-qwen-empty-xml-tool-call-source-contract-20260610.json`.
+- Boundary:
+  no fake argument synthesis was added. Live same-model direct/gateway/tunnel
+  raw SSE remains open because deployed routing can still be stale or aliased.

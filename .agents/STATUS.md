@@ -9376,3 +9376,20 @@ Other-agent action:
 - Boundaries:
   no release/sign/notarize, PyPI, updater/site, N2 JANG_1L, or subagent action
   in this pass.
+
+# 2026-06-10 23:31 PDT Qwen empty XML tool-call source contract
+
+- Current source result:
+  the empty-args Qwen/XML class is protected in this checkout. Parsed tool
+  calls missing required schema args are dropped; tool markup is stripped for
+  display instead of emitted as executable `arguments={}`; Responses
+  output-index classifiers are green.
+- Verified:
+  focused pytest selection passed `45/45`.
+- Artifact:
+  `build/current-qwen-empty-xml-tool-call-source-contract-20260610.json`.
+- Other-agent next proof:
+  run same-model direct/gateway/tunnel raw SSE for the deployed Qwen/Qwen-coder
+  aliases and verify current source is actually deployed. If tunnel still emits
+  `{}`, check bundled/deployed `server.py` and parser file provenance before
+  changing parser semantics.
