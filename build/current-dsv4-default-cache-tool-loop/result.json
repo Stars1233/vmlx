@@ -1,0 +1,1321 @@
+{
+  "created_at": 1781175075.153697,
+  "status": "review",
+  "model": "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANG",
+  "cmd": [
+    "panel/bundled-python/python/bin/python3.12",
+    "-B",
+    "-s",
+    "-m",
+    "vmlx_engine.cli",
+    "serve",
+    "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANG",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8854",
+    "--timeout",
+    "900",
+    "--max-num-seqs",
+    "1",
+    "--continuous-batching",
+    "--tool-call-parser",
+    "dsml",
+    "--enable-auto-tool-choice",
+    "--reasoning-parser",
+    "deepseek_r1",
+    "--dsv4-enable-prefix-cache",
+    "--use-paged-cache",
+    "--paged-cache-block-size",
+    "256",
+    "--max-cache-blocks",
+    "1000",
+    "--enable-block-disk-cache",
+    "--block-disk-cache-max-gb",
+    "10",
+    "--stream-interval",
+    "1",
+    "--max-tokens",
+    "320",
+    "--served-model-name",
+    "dsv4-default-cache-tools"
+  ],
+  "env": {
+    "DSV4_LONG_CTX": "1",
+    "DSV4_POOL_QUANT": "0",
+    "PYTHONNOUSERSITE": "1"
+  },
+  "diagnostic_cache_mode": "default_native_prefix_paged_l2",
+  "request_max_output_tokens": 320,
+  "request_thinking_mode": {
+    "enable_thinking": false,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "diagnostic_code_prompt_variant": "exact_inline",
+  "code_round_request_controls": {
+    "round": 2,
+    "model": "dsv4-default-cache-tools",
+    "store": true,
+    "stream": false,
+    "max_output_tokens": 320,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.0,
+    "enable_thinking": false,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "tools_enabled": true,
+    "tool_choice": "auto"
+  },
+  "server_pid": 33356,
+  "log_path": "build/current-dsv4-default-cache-tool-loop/logs/dsv4-default-cache-tool-loop-1781174551.log",
+  "health": {
+    "status": "healthy",
+    "model_loaded": true,
+    "model_name": "JANGQ/DeepSeek-V4-Flash-JANG",
+    "model_type": "llm",
+    "engine_type": "batched",
+    "last_request_time": 1781175073.110558,
+    "mcp": null,
+    "memory": {
+      "active_mb": 99747.2,
+      "peak_mb": 103757.9,
+      "cache_mb": 0.0
+    },
+    "kv_cache_quantization": {
+      "enabled": false
+    },
+    "speculative_decoding": "not_configured",
+    "scheduler": {
+      "num_waiting": 0,
+      "num_running": 0,
+      "engine_path": "dsv4",
+      "batch_generator": {
+        "class": "DSV4BatchGenerator",
+        "path": "dsv4",
+        "single_active_decode": false,
+        "max_num_seqs": 1
+      },
+      "single_active_decode": false,
+      "ewma_ttft_seconds": 12.836,
+      "cache_hit_requests": 2,
+      "cache_hit_tokens": 528,
+      "cache_hit_tokens_by_detail": {
+        "paged+dsv4": 528
+      },
+      "hybrid_kv_without_ssm_hits": 0,
+      "hybrid_kv_without_ssm_tokens": 0,
+      "last_hybrid_kv_without_ssm": null,
+      "cache_reuse_skips": 0,
+      "cache_reuse_skip_tokens": 0,
+      "last_cache_reuse_skip": null,
+      "cache_reuse_partial_downgrades": 0,
+      "cache_reuse_partial_tokens": 0,
+      "last_cache_reuse_partial": null,
+      "last_cache_selection": {
+        "paged_cached_tokens": 264,
+        "paged_cold_tokens": 0,
+        "warm_cached_tokens": 0,
+        "hot_advantage_tokens": 264,
+        "hot_advantage_threshold_tokens": 64,
+        "selected": "paged",
+        "rejected": null,
+        "reason": "no_warm_prefix_alternative"
+      },
+      "last_cache_execution": {
+        "request_id": "resp_5d6628d2b585",
+        "cache_detail": "paged+dsv4",
+        "cached_tokens": 264,
+        "blocks": 2,
+        "selection": {
+          "paged_cached_tokens": 264,
+          "paged_cold_tokens": 0,
+          "warm_cached_tokens": 0,
+          "hot_advantage_tokens": 264,
+          "hot_advantage_threshold_tokens": 64,
+          "selected": "paged",
+          "rejected": null,
+          "reason": "no_warm_prefix_alternative"
+        },
+        "reconstructed": true,
+        "dequantized": false,
+        "reconstruction_seconds": 0.012183,
+        "dequantization_seconds": 0.0,
+        "total_worker_cache_seconds": 0.016115,
+        "reconstruction_ok": true
+      }
+    },
+    "cache": {
+      "scheduler_cache": {
+        "hits": 2,
+        "misses": 2,
+        "hit_rate": 0.5,
+        "tokens_saved": 528,
+        "active_requests": 2,
+        "entries_by_type": {
+          "assistant": 1,
+          "user": 1,
+          "system": 0
+        },
+        "block_size": 256,
+        "max_blocks": 1000,
+        "allocated_blocks": 5,
+        "free_blocks": 995,
+        "shared_blocks": 2,
+        "total_tokens_cached": 760,
+        "utilization": 0.005,
+        "cache_hit_rate": 0.375,
+        "cache_hits": 6,
+        "cache_misses": 10,
+        "disk_hits": 0,
+        "disk_misses": 6,
+        "cow_copies": 0,
+        "evictions": 0,
+        "engine_path": "dsv4",
+        "batch_generator": {
+          "class": "DSV4BatchGenerator",
+          "path": "dsv4",
+          "single_active_decode": false,
+          "max_num_seqs": 1
+        }
+      },
+      "block_disk_cache": {
+        "blocks_on_disk": 4,
+        "disk_size_bytes": 76846261,
+        "disk_size_gb": 0.072,
+        "total_accesses": 6,
+        "total_tokens_on_disk": 760,
+        "total_cached_tokens": 760,
+        "disk_hits": 6,
+        "disk_misses": 8,
+        "disk_writes": 4,
+        "disk_evictions": 0
+      },
+      "totals": {
+        "ram_tokens_cached": 760,
+        "l2_prompt_tokens_on_disk": 0,
+        "l2_block_tokens_on_disk": 760,
+        "l2_ssm_tokens_on_disk": 0,
+        "ssm_tokens_on_disk": 0,
+        "l2_tokens_on_disk": 760,
+        "l2_tokens_on_disk_store_sum": 760,
+        "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+      }
+    },
+    "quantization_format": {
+      "type": "jang",
+      "target_bits": null,
+      "actual_bits": null,
+      "block_size": 64
+    },
+    "quantization": {
+      "codec": "affine_quantized_matmul",
+      "weight_format": "affine",
+      "profile": "JANG_2L_GS64_ProjLayerBits_Ggs32-Dgs32-Ugs64_bk4_Tok8g64_NoMTP",
+      "affine_bits_by_role": {
+        "routed_expert": 2,
+        "attention": 4,
+        "shared_expert": 4,
+        "embed_tokens": 8,
+        "lm_head": 8,
+        "mtp_matmul": 4,
+        "norms_router_hc": 16
+      },
+      "routed_expert_bits": 2,
+      "target_bits": 2,
+      "config_bits": 4,
+      "group_size": 64,
+      "weight_index": {
+        "index_file": "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANG/model.safetensors.index.json",
+        "total_tensors": 2610,
+        "suffix_counts": {
+          "biases": 641,
+          "scales": 641,
+          "weight": 919
+        },
+        "tq_target_counts": {},
+        "routed_layout_counts": {
+          "prestacked_switch": 387,
+          "split_expert": 0
+        },
+        "mtp_tensor_count": 0
+      },
+      "weight_matmul_dispatch": {
+        "primary": "mlx_affine_quantized_matmul",
+        "uses_mlx_quantized_matmul": true,
+        "metal_na_eligible": true,
+        "reason": null
+      },
+      "sidecar": {
+        "jang_config": true,
+        "jangtq_runtime": false,
+        "prestacked_bundle": false
+      }
+    },
+    "acceleration": {
+      "kernel_type": "affine_quantized_matmul",
+      "metal_na_capable": true,
+      "metal_na_active_on_host": true,
+      "reason": null,
+      "metal_na_symbols": {
+        "available": true,
+        "nax_symbols": 4668,
+        "naxtile_symbols": 4154,
+        "affine_qmm_symbols": 4212,
+        "affine_gather_qmm_symbols": 3456
+      },
+      "host": {
+        "supported": true,
+        "brand": "Apple M5 Max",
+        "reason": null
+      }
+    },
+    "mtp": {
+      "config_num_nextn_predict_layers": 0,
+      "config_mtp_layer_source": "config.num_nextn_predict_layers",
+      "jang_mtp_layers": null,
+      "jang_drop_mtp": null,
+      "index_has_mtp_tensors": false,
+      "index_mtp_layer_count": null,
+      "mtp_tensor_count": 0,
+      "artifact_available": false,
+      "family": "deepseek_v4",
+      "has_vision_config": false,
+      "has_vision_weights": false,
+      "vision_tensor_count": 0,
+      "cache_type": null,
+      "runtime_supported": false,
+      "runtime_available": false,
+      "runtime_active": false,
+      "runtime_validation_blocked": false,
+      "effective_depth": null,
+      "effective_depth_source": null,
+      "runtime_scope": null,
+      "vl_runtime_available": false,
+      "runtime_bundle_has_mtp": null,
+      "runtime_mtp_mode": null,
+      "runtime_reason": "config does not request MTP",
+      "status": "not_configured",
+      "issues": [],
+      "request_policy": "compatible-only",
+      "request_gate": "temperature=0,repetition_penalty=1.0"
+    },
+    "routing": {
+      "trained_active_experts": 6,
+      "trained_active_experts_source": "config.num_experts_per_tok",
+      "n_routed_experts": 256,
+      "override_env": null,
+      "effective_active_experts": 6,
+      "effective_active_experts_source": "trained_default"
+    },
+    "turboquant_kv_cache": {
+      "enabled": false
+    },
+    "native_cache": {
+      "family": "deepseek_v4",
+      "schema": "deepseek_v4_v7",
+      "cache_type": "native_composite",
+      "components": [
+        "swa_local",
+        "csa_compressed_pool",
+        "hca_compressed_pool",
+        "incomplete_tail_state"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "native_dsv4_composite"
+      },
+      "pool_quant": {
+        "enabled": false,
+        "env": "0"
+      },
+      "layer_cache_roles": {
+        "ratio_0": "swa_local_only",
+        "ratio_4": "csa_overlap_compressed_pool_plus_indexer",
+        "ratio_128": "hca_compressed_pool"
+      },
+      "cache_store_policy": {
+        "prompt_boundary_snapshot": "preferred",
+        "post_generation_trim": "disabled_unless_explicit_unsafe_override",
+        "generic_kv_quantization": "forced_off"
+      },
+      "decode_activation_order": [
+        "make_cache_builds_per_layer_swa_or_composite_cache",
+        "prefill_updates_local_swa_and_compressor_indexer_pools",
+        "prompt_boundary_snapshot_or_clean_reprefill_is_stored_for_prefix",
+        "decode_appends_new_tokens_to_live_composite_cache",
+        "cache_hit_restores_full_nested_state_and_refeeds_last_prompt_token"
+      ],
+      "prefix": true,
+      "paged": true,
+      "block_disk_l2": true,
+      "layers": 43,
+      "compress_ratios": [
+        "unknown",
+        "unknown",
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4
+      ],
+      "compress_ratio_counts": {
+        "unknown": 2,
+        "4": 21,
+        "128": 20
+      },
+      "sliding_window": 128
+    }
+  },
+  "health_before": {
+    "status": "healthy",
+    "model_loaded": true,
+    "model_name": "JANGQ/DeepSeek-V4-Flash-JANG",
+    "model_type": "llm",
+    "engine_type": "batched",
+    "last_request_time": null,
+    "mcp": null,
+    "memory": {
+      "active_mb": 0.0,
+      "peak_mb": 0.0,
+      "cache_mb": 0.0
+    },
+    "kv_cache_quantization": {
+      "enabled": false
+    },
+    "speculative_decoding": "not_configured",
+    "scheduler": {
+      "num_waiting": 0,
+      "num_running": 0,
+      "engine_path": "none",
+      "batch_generator": {
+        "class": null,
+        "path": "none",
+        "single_active_decode": false,
+        "max_num_seqs": 1
+      },
+      "single_active_decode": false,
+      "ewma_ttft_seconds": 0.0,
+      "cache_hit_requests": 0,
+      "cache_hit_tokens": 0,
+      "cache_hit_tokens_by_detail": {},
+      "hybrid_kv_without_ssm_hits": 0,
+      "hybrid_kv_without_ssm_tokens": 0,
+      "last_hybrid_kv_without_ssm": null,
+      "cache_reuse_skips": 0,
+      "cache_reuse_skip_tokens": 0,
+      "last_cache_reuse_skip": null,
+      "cache_reuse_partial_downgrades": 0,
+      "cache_reuse_partial_tokens": 0,
+      "last_cache_reuse_partial": null,
+      "last_cache_selection": null,
+      "last_cache_execution": null
+    },
+    "cache": {
+      "scheduler_cache": {
+        "hits": 0,
+        "misses": 0,
+        "hit_rate": 0,
+        "tokens_saved": 0,
+        "active_requests": 0,
+        "entries_by_type": {
+          "assistant": 0,
+          "user": 0,
+          "system": 0
+        },
+        "block_size": 256,
+        "max_blocks": 1000,
+        "allocated_blocks": 1,
+        "free_blocks": 999,
+        "shared_blocks": 0,
+        "total_tokens_cached": 0,
+        "utilization": 0.001,
+        "cache_hit_rate": 0,
+        "cache_hits": 0,
+        "cache_misses": 0,
+        "disk_hits": 0,
+        "disk_misses": 0,
+        "cow_copies": 0,
+        "evictions": 0,
+        "engine_path": "none",
+        "batch_generator": {
+          "class": null,
+          "path": "none",
+          "single_active_decode": false,
+          "max_num_seqs": 1
+        }
+      },
+      "block_disk_cache": {
+        "blocks_on_disk": 0,
+        "disk_size_bytes": 0,
+        "disk_size_gb": 0.0,
+        "total_accesses": 0,
+        "total_tokens_on_disk": 0,
+        "total_cached_tokens": 0,
+        "disk_hits": 0,
+        "disk_misses": 0,
+        "disk_writes": 0,
+        "disk_evictions": 0
+      },
+      "totals": {
+        "ram_tokens_cached": 0,
+        "l2_prompt_tokens_on_disk": 0,
+        "l2_block_tokens_on_disk": 0,
+        "l2_ssm_tokens_on_disk": 0,
+        "ssm_tokens_on_disk": 0,
+        "l2_tokens_on_disk": 0,
+        "l2_tokens_on_disk_store_sum": 0,
+        "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+      }
+    },
+    "quantization_format": {
+      "type": "jang",
+      "target_bits": null,
+      "actual_bits": null,
+      "block_size": 64
+    },
+    "quantization": {
+      "codec": "affine_quantized_matmul",
+      "weight_format": "affine",
+      "profile": "JANG_2L_GS64_ProjLayerBits_Ggs32-Dgs32-Ugs64_bk4_Tok8g64_NoMTP",
+      "affine_bits_by_role": {
+        "routed_expert": 2,
+        "attention": 4,
+        "shared_expert": 4,
+        "embed_tokens": 8,
+        "lm_head": 8,
+        "mtp_matmul": 4,
+        "norms_router_hc": 16
+      },
+      "routed_expert_bits": 2,
+      "target_bits": 2,
+      "config_bits": 4,
+      "group_size": 64,
+      "weight_index": {
+        "index_file": "/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANG/model.safetensors.index.json",
+        "total_tensors": 2610,
+        "suffix_counts": {
+          "biases": 641,
+          "scales": 641,
+          "weight": 919
+        },
+        "tq_target_counts": {},
+        "routed_layout_counts": {
+          "prestacked_switch": 387,
+          "split_expert": 0
+        },
+        "mtp_tensor_count": 0
+      },
+      "weight_matmul_dispatch": {
+        "primary": "mlx_affine_quantized_matmul",
+        "uses_mlx_quantized_matmul": true,
+        "metal_na_eligible": true,
+        "reason": null
+      },
+      "sidecar": {
+        "jang_config": true,
+        "jangtq_runtime": false,
+        "prestacked_bundle": false
+      }
+    },
+    "acceleration": {
+      "kernel_type": "affine_quantized_matmul",
+      "metal_na_capable": true,
+      "metal_na_active_on_host": true,
+      "reason": null,
+      "metal_na_symbols": {
+        "available": true,
+        "nax_symbols": 4668,
+        "naxtile_symbols": 4154,
+        "affine_qmm_symbols": 4212,
+        "affine_gather_qmm_symbols": 3456
+      },
+      "host": {
+        "supported": true,
+        "brand": "Apple M5 Max",
+        "reason": null
+      }
+    },
+    "mtp": {
+      "config_num_nextn_predict_layers": 0,
+      "config_mtp_layer_source": "config.num_nextn_predict_layers",
+      "jang_mtp_layers": null,
+      "jang_drop_mtp": null,
+      "index_has_mtp_tensors": false,
+      "index_mtp_layer_count": null,
+      "mtp_tensor_count": 0,
+      "artifact_available": false,
+      "family": "deepseek_v4",
+      "has_vision_config": false,
+      "has_vision_weights": false,
+      "vision_tensor_count": 0,
+      "cache_type": null,
+      "runtime_supported": false,
+      "runtime_available": false,
+      "runtime_active": false,
+      "runtime_validation_blocked": false,
+      "effective_depth": null,
+      "effective_depth_source": null,
+      "runtime_scope": null,
+      "vl_runtime_available": false,
+      "runtime_bundle_has_mtp": null,
+      "runtime_mtp_mode": null,
+      "runtime_reason": "config does not request MTP",
+      "status": "not_configured",
+      "issues": [],
+      "request_policy": "compatible-only",
+      "request_gate": "temperature=0,repetition_penalty=1.0"
+    },
+    "routing": {
+      "trained_active_experts": 6,
+      "trained_active_experts_source": "config.num_experts_per_tok",
+      "n_routed_experts": 256,
+      "override_env": null,
+      "effective_active_experts": 6,
+      "effective_active_experts_source": "trained_default"
+    },
+    "turboquant_kv_cache": {
+      "enabled": false
+    },
+    "native_cache": {
+      "family": "deepseek_v4",
+      "schema": "deepseek_v4_v7",
+      "cache_type": "native_composite",
+      "components": [
+        "swa_local",
+        "csa_compressed_pool",
+        "hca_compressed_pool",
+        "incomplete_tail_state"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "native_dsv4_composite"
+      },
+      "pool_quant": {
+        "enabled": false,
+        "env": "0"
+      },
+      "layer_cache_roles": {
+        "ratio_0": "swa_local_only",
+        "ratio_4": "csa_overlap_compressed_pool_plus_indexer",
+        "ratio_128": "hca_compressed_pool"
+      },
+      "cache_store_policy": {
+        "prompt_boundary_snapshot": "preferred",
+        "post_generation_trim": "disabled_unless_explicit_unsafe_override",
+        "generic_kv_quantization": "forced_off"
+      },
+      "decode_activation_order": [
+        "make_cache_builds_per_layer_swa_or_composite_cache",
+        "prefill_updates_local_swa_and_compressor_indexer_pools",
+        "prompt_boundary_snapshot_or_clean_reprefill_is_stored_for_prefix",
+        "decode_appends_new_tokens_to_live_composite_cache",
+        "cache_hit_restores_full_nested_state_and_refeeds_last_prompt_token"
+      ],
+      "prefix": true,
+      "paged": true,
+      "block_disk_l2": true,
+      "layers": 43,
+      "compress_ratios": [
+        "unknown",
+        "unknown",
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4
+      ],
+      "compress_ratio_counts": {
+        "unknown": 2,
+        "4": 21,
+        "128": 20
+      },
+      "sliding_window": 128
+    }
+  },
+  "cache_stats": {
+    "scheduler_cache": {
+      "hits": 2,
+      "misses": 2,
+      "hit_rate": 0.5,
+      "tokens_saved": 528,
+      "active_requests": 2,
+      "entries_by_type": {
+        "assistant": 1,
+        "user": 1,
+        "system": 0
+      },
+      "block_size": 256,
+      "max_blocks": 1000,
+      "allocated_blocks": 5,
+      "free_blocks": 995,
+      "shared_blocks": 2,
+      "total_tokens_cached": 760,
+      "utilization": 0.005,
+      "cache_hit_rate": 0.375,
+      "cache_hits": 6,
+      "cache_misses": 10,
+      "disk_hits": 0,
+      "disk_misses": 6,
+      "cow_copies": 0,
+      "evictions": 0,
+      "engine_path": "dsv4",
+      "batch_generator": {
+        "class": "DSV4BatchGenerator",
+        "path": "dsv4",
+        "single_active_decode": false,
+        "max_num_seqs": 1
+      }
+    },
+    "scheduler_stats": {
+      "num_waiting": 0,
+      "num_running": 0,
+      "engine_path": "dsv4",
+      "batch_generator": {
+        "class": "DSV4BatchGenerator",
+        "path": "dsv4",
+        "single_active_decode": false,
+        "max_num_seqs": 1
+      },
+      "single_active_decode": false,
+      "num_requests_processed": 4,
+      "total_prompt_tokens": 1700,
+      "total_completion_tokens": 261,
+      "ewma_ttft_seconds": 12.836,
+      "cache_hit_requests": 2,
+      "cache_hit_tokens": 528,
+      "cache_hit_tokens_by_detail": {
+        "paged+dsv4": 528
+      },
+      "hybrid_kv_without_ssm_hits": 0,
+      "hybrid_kv_without_ssm_tokens": 0,
+      "last_hybrid_kv_without_ssm": null,
+      "cache_reuse_skips": 0,
+      "cache_reuse_skip_tokens": 0,
+      "last_cache_reuse_skip": null,
+      "cache_reuse_partial_downgrades": 0,
+      "cache_reuse_partial_tokens": 0,
+      "last_cache_reuse_partial": null,
+      "last_cache_selection": {
+        "paged_cached_tokens": 264,
+        "paged_cold_tokens": 0,
+        "warm_cached_tokens": 0,
+        "hot_advantage_tokens": 264,
+        "hot_advantage_threshold_tokens": 64,
+        "selected": "paged",
+        "rejected": null,
+        "reason": "no_warm_prefix_alternative"
+      },
+      "last_cache_execution": {
+        "request_id": "resp_5d6628d2b585",
+        "cache_detail": "paged+dsv4",
+        "cached_tokens": 264,
+        "blocks": 2,
+        "selection": {
+          "paged_cached_tokens": 264,
+          "paged_cold_tokens": 0,
+          "warm_cached_tokens": 0,
+          "hot_advantage_tokens": 264,
+          "hot_advantage_threshold_tokens": 64,
+          "selected": "paged",
+          "rejected": null,
+          "reason": "no_warm_prefix_alternative"
+        },
+        "reconstructed": true,
+        "dequantized": false,
+        "reconstruction_seconds": 0.012183,
+        "dequantization_seconds": 0.0,
+        "total_worker_cache_seconds": 0.016115,
+        "reconstruction_ok": true
+      }
+    },
+    "kv_cache_quantization": {
+      "enabled": false
+    },
+    "turboquant_kv_cache": {
+      "enabled": false
+    },
+    "native_cache": {
+      "family": "deepseek_v4",
+      "schema": "deepseek_v4_v7",
+      "cache_type": "native_composite",
+      "components": [
+        "swa_local",
+        "csa_compressed_pool",
+        "hca_compressed_pool",
+        "incomplete_tail_state"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "native_dsv4_composite"
+      },
+      "pool_quant": {
+        "enabled": false,
+        "env": "0"
+      },
+      "layer_cache_roles": {
+        "ratio_0": "swa_local_only",
+        "ratio_4": "csa_overlap_compressed_pool_plus_indexer",
+        "ratio_128": "hca_compressed_pool"
+      },
+      "cache_store_policy": {
+        "prompt_boundary_snapshot": "preferred",
+        "post_generation_trim": "disabled_unless_explicit_unsafe_override",
+        "generic_kv_quantization": "forced_off"
+      },
+      "decode_activation_order": [
+        "make_cache_builds_per_layer_swa_or_composite_cache",
+        "prefill_updates_local_swa_and_compressor_indexer_pools",
+        "prompt_boundary_snapshot_or_clean_reprefill_is_stored_for_prefix",
+        "decode_appends_new_tokens_to_live_composite_cache",
+        "cache_hit_restores_full_nested_state_and_refeeds_last_prompt_token"
+      ],
+      "prefix": true,
+      "paged": true,
+      "block_disk_l2": true,
+      "layers": 43,
+      "compress_ratios": [
+        "unknown",
+        "unknown",
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4,
+        128,
+        4
+      ],
+      "compress_ratio_counts": {
+        "unknown": 2,
+        "4": 21,
+        "128": 20
+      },
+      "sliding_window": 128
+    },
+    "block_disk_cache": {
+      "blocks_on_disk": 4,
+      "disk_size_bytes": 76846261,
+      "disk_size_gb": 0.072,
+      "total_accesses": 6,
+      "total_tokens_on_disk": 760,
+      "total_cached_tokens": 760,
+      "disk_hits": 6,
+      "disk_misses": 8,
+      "disk_writes": 4,
+      "disk_evictions": 0
+    },
+    "cache_totals": {
+      "ram_tokens_cached": 760,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 760,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 760,
+      "l2_tokens_on_disk_store_sum": 760,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    },
+    "memory": {
+      "active_mb": 99747.2,
+      "peak_mb": 103757.9,
+      "cache_mb": 0.0
+    }
+  },
+  "rounds": [
+    {
+      "round": 0,
+      "elapsed_sec": 495.626,
+      "response_id": "resp_8b71430639d8",
+      "previous_response_id": null,
+      "function_calls": [
+        {
+          "type": "function_call",
+          "id": "fc_f168b94d4016",
+          "call_id": "call_42a3b5ab",
+          "name": "list_directory",
+          "arguments": "{\"path\": \".\"}",
+          "status": "completed"
+        }
+      ],
+      "executed_tools": [
+        {
+          "name": "list_directory",
+          "args": {
+            "path": "."
+          },
+          "call_id": "call_42a3b5ab"
+        }
+      ],
+      "tool_outputs": [
+        {
+          "type": "function_call_output",
+          "call_id": "call_42a3b5ab",
+          "output": "README.md"
+        }
+      ],
+      "output_text": "",
+      "response_diagnostics": {
+        "response_status": "completed",
+        "incomplete_details": null,
+        "output_item_statuses": [
+          {
+            "type": "function_call",
+            "id": "fc_f168b94d4016",
+            "status": "completed",
+            "finish_reason": null,
+            "name": "list_directory"
+          }
+        ]
+      },
+      "request_thinking_mode": {
+        "enable_thinking": false,
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "request_controls": null,
+      "usage": {
+        "input_tokens": 265,
+        "output_tokens": 38,
+        "total_tokens": 303,
+        "input_tokens_details": null
+      }
+    },
+    {
+      "round": 1,
+      "elapsed_sec": 5.093,
+      "response_id": "resp_a0d75dad93ed",
+      "previous_response_id": "resp_8b71430639d8",
+      "function_calls": [
+        {
+          "type": "function_call",
+          "id": "fc_a8af18f93176",
+          "call_id": "call_7b272d07",
+          "name": "write_file",
+          "arguments": "{\"path\": \"landing-p/proof.html\", \"content\": \"<html><body>dsv4-default-cache-tool-ok</body></html>\"}",
+          "status": "completed"
+        }
+      ],
+      "executed_tools": [
+        {
+          "name": "write_file",
+          "args": {
+            "path": "landing-p/proof.html",
+            "content": "<html><body>dsv4-default-cache-tool-ok</body></html>"
+          },
+          "call_id": "call_7b272d07"
+        }
+      ],
+      "tool_outputs": [
+        {
+          "type": "function_call_output",
+          "call_id": "call_7b272d07",
+          "output": "Wrote landing-p/proof.html (52 chars)"
+        }
+      ],
+      "output_text": "",
+      "response_diagnostics": {
+        "response_status": "completed",
+        "incomplete_details": null,
+        "output_item_statuses": [
+          {
+            "type": "function_call",
+            "id": "fc_a8af18f93176",
+            "status": "completed",
+            "finish_reason": null,
+            "name": "write_file"
+          }
+        ]
+      },
+      "request_thinking_mode": {
+        "enable_thinking": false,
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "request_controls": null,
+      "usage": {
+        "input_tokens": 362,
+        "output_tokens": 81,
+        "total_tokens": 443,
+        "input_tokens_details": {
+          "cached_tokens": 264,
+          "cache_detail": "paged+dsv4"
+        }
+      }
+    },
+    {
+      "round": 2,
+      "elapsed_sec": 7.068,
+      "response_id": "resp_5d6628d2b585",
+      "previous_response_id": "resp_a0d75dad93ed",
+      "function_calls": [
+        {
+          "type": "function_call",
+          "id": "fc_306f00eeadbd",
+          "call_id": "call_c64a7d7f",
+          "name": "write_file",
+          "arguments": "{\"path\": \"landing-p/scene.js\", \"content\": \"const scene = new THREE.ScScene();\\nconst renderer = new THREE.WebGLRenderer();\\nconst camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);\\nconst cube = new THREE.Mesh(new THREE.BBoxGeometry(), new THREE.MeshBasicMaterial());\\nscene.add(cube);\\nrenderer.render(scene, camera);\"}",
+          "status": "completed"
+        }
+      ],
+      "executed_tools": [
+        {
+          "name": "write_file",
+          "args": {
+            "path": "landing-p/scene.js",
+            "content": "const scene = new THREE.ScScene();\nconst renderer = new THREE.WebGLRenderer();\nconst camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);\nconst cube = new THREE.Mesh(new THREE.BBoxGeometry(), new THREE.MeshBasicMaterial());\nscene.add(cube);\nrenderer.render(scene, camera);"
+          },
+          "call_id": "call_c64a7d7f"
+        }
+      ],
+      "tool_outputs": [
+        {
+          "type": "function_call_output",
+          "call_id": "call_c64a7d7f",
+          "output": "Wrote landing-p/scene.js (275 chars)"
+        }
+      ],
+      "output_text": "",
+      "response_diagnostics": {
+        "response_status": "completed",
+        "incomplete_details": null,
+        "output_item_statuses": [
+          {
+            "type": "function_call",
+            "id": "fc_306f00eeadbd",
+            "status": "completed",
+            "finish_reason": null,
+            "name": "write_file"
+          }
+        ]
+      },
+      "request_thinking_mode": {
+        "enable_thinking": false,
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "request_controls": {
+        "round": 2,
+        "model": "dsv4-default-cache-tools",
+        "store": true,
+        "stream": false,
+        "max_output_tokens": 320,
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "top_k": 0,
+        "repetition_penalty": 1.0,
+        "enable_thinking": false,
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "tools_enabled": true,
+        "tool_choice": "auto"
+      },
+      "usage": {
+        "input_tokens": 576,
+        "output_tokens": 139,
+        "total_tokens": 715,
+        "input_tokens_details": {
+          "cached_tokens": 264,
+          "cache_detail": "paged+dsv4"
+        }
+      }
+    },
+    {
+      "round": 3,
+      "elapsed_sec": 1.61,
+      "response_id": "resp_91b6fc8e5b12",
+      "previous_response_id": "resp_5d6628d2b585",
+      "function_calls": [],
+      "executed_tools": [],
+      "tool_outputs": [],
+      "output_text": "DONE",
+      "response_diagnostics": {
+        "response_status": "completed",
+        "incomplete_details": null,
+        "output_item_statuses": [
+          {
+            "type": "message",
+            "id": "item_6c118a9be52b",
+            "status": "completed",
+            "finish_reason": null,
+            "name": null
+          }
+        ]
+      },
+      "request_thinking_mode": {
+        "enable_thinking": false,
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "request_controls": null,
+      "usage": {
+        "input_tokens": 497,
+        "output_tokens": 3,
+        "total_tokens": 500,
+        "input_tokens_details": null
+      }
+    }
+  ],
+  "checks": {
+    "tool_sequence_ordered": true,
+    "final_done": true,
+    "file_written": true,
+    "code_file_written_exact": false,
+    "native_cache": true,
+    "native_prefix": true,
+    "native_paged": true,
+    "native_l2": true,
+    "generic_tq_kv_off": true,
+    "cached_tokens_seen": true,
+    "dsv4_cache_detail_seen": true
+  },
+  "code_tool_probe": {
+    "path": "landing-p/scene.js",
+    "expected_content": "const scene = new THREE.Scene();\nconst renderer = new THREE.WebGLRenderer();\nconst camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);\nconst cube = new THREE.Mesh(new THREE.BoxGeometry(), new THREE.MeshBasicMaterial());\nscene.add(cube);\nrenderer.render(scene, camera);",
+    "actual_content": "const scene = new THREE.ScScene();\nconst renderer = new THREE.WebGLRenderer();\nconst camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);\nconst cube = new THREE.Mesh(new THREE.BBoxGeometry(), new THREE.MeshBasicMaterial());\nscene.add(cube);\nrenderer.render(scene, camera);",
+    "exact": false,
+    "expected_length": 272,
+    "actual_length": 275,
+    "first_difference": {
+      "index": 26,
+      "expected_char": "e",
+      "actual_char": "S",
+      "expected_tail": "ene();\nconst renderer = new THREE.WebGLRenderer();\nconst camera = new THREE.Pers",
+      "actual_tail": "Scene();\nconst renderer = new THREE.WebGLRenderer();\nconst camera = new THREE.Pe"
+    },
+    "missing_expected_fragments": [],
+    "corrupt_identifier_patterns": [
+      "THREE.BBoxGeometry"
+    ]
+  },
+  "telemetry": [
+    {
+      "name": "server_spawned",
+      "time": "2026-06-11T03:42:31-0700",
+      "system_memory": {
+        "unit": "GiB",
+        "total_gib": 128.0,
+        "available_gib": 113.6,
+        "total_gb": 128.0,
+        "available_gb": 113.6,
+        "percent": 11.2
+      },
+      "process": {
+        "pid": 33356,
+        "rss_gb": 0.0,
+        "num_threads": 1,
+        "status": "running"
+      }
+    },
+    {
+      "name": "health_ready",
+      "time": "2026-06-11T03:42:45-0700",
+      "system_memory": {
+        "unit": "GiB",
+        "total_gib": 128.0,
+        "available_gib": 104.64,
+        "total_gb": 128.0,
+        "available_gb": 104.64,
+        "percent": 18.3
+      },
+      "process": {
+        "pid": 33356,
+        "rss_gb": 0.899,
+        "num_threads": 23,
+        "status": "running"
+      }
+    },
+    {
+      "name": "after_round_0",
+      "time": "2026-06-11T03:51:00-0700",
+      "system_memory": {
+        "unit": "GiB",
+        "total_gib": 128.0,
+        "available_gib": 30.33,
+        "total_gb": 128.0,
+        "available_gb": 30.33,
+        "percent": 76.3
+      },
+      "process": {
+        "pid": 33356,
+        "rss_gb": 0.441,
+        "num_threads": 34,
+        "status": "running"
+      }
+    },
+    {
+      "name": "after_round_1",
+      "time": "2026-06-11T03:51:06-0700",
+      "system_memory": {
+        "unit": "GiB",
+        "total_gib": 128.0,
+        "available_gib": 14.27,
+        "total_gb": 128.0,
+        "available_gb": 14.27,
+        "percent": 88.9
+      },
+      "process": {
+        "pid": 33356,
+        "rss_gb": 0.446,
+        "num_threads": 34,
+        "status": "running"
+      }
+    },
+    {
+      "name": "after_round_2",
+      "time": "2026-06-11T03:51:13-0700",
+      "system_memory": {
+        "unit": "GiB",
+        "total_gib": 128.0,
+        "available_gib": 12.23,
+        "total_gb": 128.0,
+        "available_gb": 12.23,
+        "percent": 90.4
+      },
+      "process": {
+        "pid": 33356,
+        "rss_gb": 0.463,
+        "num_threads": 34,
+        "status": "running"
+      }
+    },
+    {
+      "name": "after_round_3",
+      "time": "2026-06-11T03:51:14-0700",
+      "system_memory": {
+        "unit": "GiB",
+        "total_gib": 128.0,
+        "available_gib": 11.38,
+        "total_gb": 128.0,
+        "available_gb": 11.38,
+        "percent": 91.1
+      },
+      "process": {
+        "pid": 33356,
+        "rss_gb": 0.542,
+        "num_threads": 34,
+        "status": "running"
+      }
+    }
+  ],
+  "tool_loop_cached_tokens": 528,
+  "tool_loop_cache_details": [
+    "",
+    "paged+dsv4",
+    "paged+dsv4",
+    ""
+  ]
+}

@@ -16881,3 +16881,50 @@ Next action:
 - Boundary:
   this is current bundled-engine proof, not `/Applications/vMLX.app` parity;
   installed app server code is stale versus current source/panel bundled Python.
+
+# 2026-06-11 03:41 PDT - pushed Gemma4 proof; moving to issue165 parser/API
+
+- Commit:
+  `02760c438 Prove Gemma26 mixed-SWA memory cache`.
+- Pushes:
+  pushed to `origin/codex/pr-intake-manifest`, then fast-forwarded
+  `origin/main` because `origin/main` was an ancestor of the branch head.
+- Unstaged unrelated file left alone:
+  `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`.
+- Next work:
+  inspect issue 165 tool-call contract artifacts and the current Responses
+  streaming/parser implementation before changing code. Required boundaries:
+  no synthetic missing args, no reasoning-disable workaround, no raw XML
+  post-strip as a fake parser fix, preserve kwargs and event order, and prove
+  direct/gateway/tunnel behavior where possible.
+
+# 2026-06-11 03:53 PDT - issue165 DSV4 DSML/cache tool loop reduced
+
+- Ran live DSV4 default-cache tool-loop gate:
+  `VMLINUX_BENCH_ISOLATED=1 .venv/bin/python tests/cross_matrix/run_dsv4_default_cache_tool_loop_gate.py --python panel/bundled-python/python/bin/python3.12 --model /Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANG --port 8854 --timeout 600 --request-timeout 900 --min-free-gb 105 --out build/current-dsv4-default-cache-tool-loop/result.json`.
+- Fresh live artifact:
+  `build/current-dsv4-default-cache-tool-loop/result.json`; log:
+  `build/current-dsv4-default-cache-tool-loop/logs/dsv4-default-cache-tool-loop-1781174551.log`.
+- Live outcome:
+  `status=review`, not full pass. Passed checks: ordered tools, final DONE,
+  HTML file exact write, native DSV4 composite cache, prefix, paged, block-disk
+  L2, generic TQ KV off, cached tokens, and `paged+dsv4` cache detail. Failed
+  check: exact JS content, because DSV4 wrote `THREE.ScScene()` and
+  `THREE.BBoxGeometry()`.
+- Why issue165 is reduced:
+  issue165 is the DSML/tool argument empty-or-raw-markup contract, not the
+  already tracked DSV4 long-output exactness lane. The live artifact proves
+  non-empty parsed DSML function arguments across the default native cache loop:
+  `list_directory {"path":"."}`, `write_file proof.html`, and `write_file
+  scene.js`.
+- Refreshed no-heavy/live contract:
+  `.venv/bin/python tests/cross_matrix/run_tool_call_contract.py --out build/current-tool-call-contract-after-dsv4-live-cache-tool-loop-20260611.json`
+  passed with `status=pass`, `failed=[]`, `missing_markers=[]`;
+  engine DSML tests `25 passed`, panel loop/security `88 passed`, family parser
+  matrix `165 passed`.
+- Public audit and release manifest:
+  `build/current-public-app-issue-audit-after-issue165-dsv4-cache-tool-loop-20260611.json`
+  remains overall `open`, but issue165 has all checks true and
+  `focused_source_slice=pass`. `build/current-release-regression-manifest-after-issue165-dsv4-cache-tool-loop-20260611.json`
+  remains `release_ready=false`; blockers now exclude issue119 and issue165 and
+  are MiMo runtime quality, MiniMax issue179, and real-UI unblocked matrix gaps.

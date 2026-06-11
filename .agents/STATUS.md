@@ -11510,3 +11510,48 @@ Other-agent action:
   release manifest remains `release_ready=false` on other rows. This proof does
   not claim installed-app parity because `/Applications/vMLX.app` has stale
   engine content versus current source/panel bundled Python.
+
+# 2026-06-11 03:41 PDT Gemma4 proof committed; next issue165 parser/API
+
+- Committed and pushed:
+  `02760c438 Prove Gemma26 mixed-SWA memory cache` to
+  `origin/codex/pr-intake-manifest` and fast-forwarded `origin/main`.
+- Working tree caveat:
+  `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
+  remains an unrelated dirty file and was not staged.
+- Next focus:
+  issue 165 tool-call contract / Responses streaming contract. This is the
+  release-critical path for opencode/Codex-style harnesses: same-model raw SSE,
+  gateway/tunnel passthrough, content/reasoning deltas, function-call argument
+  deltas/done, output indices, final object consistency, kwargs preservation,
+  tool-result continuation, required/auto/no-tool modes, and fail-closed empty
+  arguments without synthesizing missing params.
+
+# 2026-06-11 03:53 PDT issue165 DSV4 DSML/cache tool loop reduced
+
+- Live DSV4 default-cache tool loop rerun:
+  `build/current-dsv4-default-cache-tool-loop/result.json` with current bundled
+  Python, `/Users/eric/models/JANGQ/DeepSeek-V4-Flash-JANG`, native
+  DeepseekV4Cache prefix/paged/block-disk L2, DSML parser, auto tools, and
+  `--min-free-gb 105` to allow the 128 GB host to attempt the 97 GB model.
+- Runtime result:
+  artifact status is `review`, not full pass, because DSV4 still misspelled
+  exact JavaScript identifiers (`THREE.ScScene`, `THREE.BBoxGeometry`). That
+  remains a DSV4 long-output/code-exactness issue.
+- Issue165 result:
+  the issue165 DSML/tool-argument/cache requirements passed. Tool sequence was
+  `list_directory`, `write_file`, `write_file`; arguments were non-empty,
+  parsed, and executed; first file exact write passed; final text was `DONE`;
+  native cache reported `deepseek_v4_v7`, `native_composite`, prefix/paged/L2
+  true, generic TurboQuant KV off, cached tokens >0, and `paged+dsv4` hits.
+- Refreshed contract:
+  `build/current-tool-call-contract-after-dsv4-live-cache-tool-loop-20260611.json`
+  is `status=pass` with parser/source, panel loop/security, family parser
+  matrix, and live DSV4 cache/tool-loop checks passing.
+- Public audit/manifest impact:
+  `build/current-public-app-issue-audit-after-issue165-dsv4-cache-tool-loop-20260611.json`
+  marks issue 165 `focused_source_slice=pass` and all issue165 checks true.
+  `build/current-release-regression-manifest-after-issue165-dsv4-cache-tool-loop-20260611.json`
+  removes issue165 and issue119 from blockers. Remaining blockers are
+  `mimo_v2_jang2l_runtime_quality_open`, `issue179_minimax_k_root_cause_audit`,
+  `real_ui_unblocked_non_mimo_missing`, and `real_ui_unblocked_non_mimo_partial`.
