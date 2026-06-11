@@ -14215,3 +14215,17 @@ Other-agent action:
 - cache proof from UI run: `cacheHitTokens=91`, scheduler `cache_hit_tokens=89`, L2 block tokens on disk `91`, disk writes `3`, cache detail `paged+mixed_swa` visible in screenshot.
 - visual check: screenshot shows two `CONTENT_OK zebra-17` assistant turns, reasoning accordions, and the second/third metric rows include `paged+mixed_swa cached`.
 - boundary: Electron dev app only; not installed-app parity, not public tunnel, not media, not auto-tool UI, not release/sign/notarize/PyPI/site/updater, not N2/MiMo.
+
+## CODEX
+- now: selecting Gemma4 12B QAT MXFP4 Electron dev-app Responses auto-tool proof.
+- target: run the real UI proof harness with `wireApi=responses`, `enable_thinking=true`, built-in tools enabled, Gemma4 tool/reasoning parser, server cache controls, and two-turn tool loop. Required evidence is real UI tool status, persisted tool calls/results, Responses function-call argument delta/done traces, visible assistant turns after tool results, cache telemetry, L2 disk storage, and no raw parser/tool markup leak.
+- reason: previous source/gateway auto-tool proof is green and previous UI proof covers no-tool content/reasoning/cache, but UI auto-tool loop remains unclaimed.
+- boundary: Electron dev app only; no installed-app parity, public tunnel, media, release/sign/notarize/PyPI/site/updater action, N2, or MiMo claim.
+
+## CODEX
+- now: Gemma4 12B QAT MXFP4 Electron dev-app Responses auto-tool proof is green.
+- artifact: `docs/internal/agent-notes/current-real-ui-live-model-gemma4-12b-qat-mxfp4-responses-auto-tools-cache-20260611-proof.json`, `status=pass`; screenshot: `docs/internal/agent-notes/current-real-ui-live-model-gemma4-12b-qat-mxfp4-responses-auto-tools-cache-20260611-chat.png`.
+- proven: real loaded Gemma4 12B QAT MXFP4 model, Electron dev app chat UI, `wireApi=responses`, `enable_thinking=true`, built-in tools enabled, Gemma4 tool/reasoning parsers, real UI `run_command` tool cards, two-turn tool loop, persisted tool calls/results, Responses function-call argument delta/done traces in app logs, visible assistant answers after tool results, reasoning display, `eventCounts.tool=610`, `reasoningDone=3`, `complete=2`, `visibleAssistantTurnsComplete=true`, `long_tool_loop`, `tool_l2_cache_integrated`, no raw parser/tool/reasoning markup leak, no language/numeric reasoning leak, generation defaults applied, settings persistence, native Gemma `mixed_swa_kv_v1`, cache endpoint stats, cache hit telemetry, and L2 disk storage.
+- tool semantics: created `real_ui_tool_probe_1.txt` with `REAL_UI_LIVE_TOOL_ONE`; second turn read it and created `real_ui_tool_probe_2.txt` with `REAL_UI_LIVE_TOOL_TWO`; final visible text included the second-turn marker.
+- cache proof from UI run: `cacheHitTokens=5580`, scheduler `cache_hit_tokens=5580`, L2 block tokens on disk `3486`, disk writes `57`, disk hits `147`, cache detail `paged+mixed_swa` visible in screenshot.
+- boundary: Electron dev app only; not installed-app parity, not public tunnel, not media, not release/sign/notarize/PyPI/site/updater, not N2/MiMo.
