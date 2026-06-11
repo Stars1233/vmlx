@@ -7310,3 +7310,133 @@ Other-agent action:
   - Keep MiMo, N2 non-JANG_1L/JANGTQ, Gemma media/video/audio, Qwen live
     gateway/tunnel recapture, and release packaging/sign/notarize gates
     separate.
+
+# 2026-06-11 continuation - MiMo installed-app runtime/cache proof
+
+- Request:
+  - continue the broad runtime/API/UI/cache objective without release,
+    notarize, PyPI, updater, website, N2 JANG_1L, synthetic parser args, or
+    subagent work;
+  - focus next on MiMo V2.5 JANG/JANGTQ runtime behavior because Gemma4 26B
+    no-media installed-app proof is now green.
+- Current evidence:
+  - MiMo JANG_2L source/runtime speed work previously identified the massive
+    first-user stall as quantized `lm_head`/logits graph materialization and
+    added a real SingleBatch startup decode warmup;
+  - the latest written proof says the warmup moved first real 2-token request
+    from 30s-70s-class first-token logits stalls to about 4s total with
+    first-token `logits_ms=2532.17` and second-token `logits_ms=606.22`;
+  - that does not yet clear installed-app UI/API/cache proof, MiMo media,
+    exactness, or steady-state logits speed.
+- Selected blocker:
+  - run a current installed-app MiMo JANG_2L no-media Responses/tool/cache
+    proof to determine whether the warmup/runtime is present in the installed
+    app and whether user-facing throughput/cache/tool behavior is release
+    usable.
+- Next action:
+  - verify installed app/bundled runtime contains the MiMo warmup code, locate
+    the local MiMo JANG_2L model path, then launch one real installed-app proof
+    with built-in tools, Responses streaming, cache controls, and session log
+    capture.
+
+# 2026-06-11 MiMo installed app runtime drift found
+
+- Evidence:
+  - source `vmlx_engine/utils/single_batch_generator.py` sha256
+    `a7baf05d33abba1efeb54352f105c6423b9970b81c414c6a9a767f1199b144da`
+    contains `MiMo-V2 SingleBatch decode graph warmup complete`;
+  - installed app bundled/source mirror
+    `/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/utils/single_batch_generator.py`
+    and `/Applications/vMLX.app/Contents/Resources/vmlx-engine-source/...`
+    both have sha256
+    `4985ed2cbf7e670d5eb5b4fa800c8a09d1e6cb76bb990db06c7f6a7a40d350fa`
+    and lack the MiMo warmup string;
+  - source `vmlx_engine/scheduler.py` has the MiMo warmup hook while the
+    installed app copies do not match it.
+- Classification:
+  - `/Applications/vMLX.app` is stale for the current MiMo speed/runtime fix.
+- Next action:
+  - refresh bundled Python and perform a local app build/install from this
+    checkout, then rerun the MiMo installed-app proof. This is local
+    install/parity work only, not release signing/notarization/publishing.
+
+# 2026-06-11 MiMo installed-app proof classified red
+
+- Artifact:
+  - `docs/internal/agent-notes/current-real-ui-installed-app-mimo-v25-jang2l-responses-tools-cache-warmup-bundled-python-20260611-proof.json`
+  - screenshot:
+    `docs/internal/agent-notes/current-real-ui-installed-app-mimo-v25-jang2l-responses-tools-cache-warmup-bundled-python-20260611-chat.png`
+- Result:
+  - status `fail`;
+  - installed app and bundled Python were current after local rebuild/install;
+  - real MiMo V2.5 JANG_2L loaded from
+    `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANG_2L`;
+  - server used `SingleBatchGenerator` and native MiMo mixed-SWA cache
+    schema `mixed_swa_kv_v1`;
+  - positive surfaces: installed app UI, real loaded model, Responses API,
+    Responses delta streaming, chat completions, settings persistence,
+    generation defaults, parser/language leak checks, server cache controls,
+    cache endpoint stats, cache hit telemetry, native cache status, L2 disk
+    storage, and Responses cache-detail usage;
+  - cache proof: 3 cache-hit requests, 10552 cached prompt tokens, 3815 RAM
+    cached tokens, 3815 L2 block tokens on disk, 61 disk writes, 321 disk hits;
+  - memory proof: about 105GB active after load and 109GB peak;
+  - speed samples: live decode about 1.6-1.7 tok/s with TTFT 1.85s and 2.31s
+    for the two UI turns.
+- Failure:
+  - first assistant included extra tool-result explanation before the expected
+    exact string;
+  - second assistant returned `MIMO_LIVE_TOOL_TWO second UI interaction`
+    instead of the expected `MIMO_LIVE_TOOL_TWO second UI turn.`;
+  - proof harness did not record `long_tool_loop` surface even though it
+    persisted 79 tool events.
+- Classification:
+  - MiMo JANG_2L installed app runtime/cache is partially proven but not green
+    for exact tool-result continuation or long-loop proof;
+  - this is not media proof, not exactness proof, and not release clearance.
+- Other-agent note:
+  - Do not claim MiMo installed-app row green from this artifact.
+  - Treat cache/load/UI as useful positive evidence, but continue MiMo work on
+    exact tool-follow-up behavior, long-loop surface capture, and media/runtime
+    rows separately.
+
+# 2026-06-11 spacing/special-character parser audit continuation
+
+- Current request:
+  - deep-check spacing, special characters, Unicode, XML entities, paths,
+    newlines, raw delimiters, content/reasoning/tool deltas, final object
+    consistency, and gateway/API behavior for tool parsers and Responses.
+- Current evidence before rerun:
+  - Qwen streaming parser passes the request schema into final full-output
+    parse, so completed empty `{}` required args fail closed;
+  - XML-function parser fails closed on
+    `<function=exec_command></function>` with required `cmd` and preserves the
+    original model output as content instead of emitting `arguments: {}`;
+  - existing tests include Qwen plain-line spacing/newline/Unicode preservation
+    and Responses output-index/final-arguments guards.
+- Next action:
+  - run the focused parser/Responses exactness guards now; patch only if a
+    concrete whitespace/entity/special-character/runtime fault appears.
+
+# 2026-06-11 spacing/special-character parser verification
+
+- Verification:
+  - `.venv/bin/python -m pytest -q tests/test_tool_parsers.py::TestQwenToolParser tests/test_xml_function_tool_parser.py tests/test_tool_parser_required_args_fail_closed.py tests/test_responses_raw_sse_parity_contract.py`
+    passed `62/62`;
+  - `git diff --check` passed.
+- Proven by this focused source/API verification:
+  - Qwen empty required arguments fail closed in streaming and nonstreaming
+    parser paths;
+  - Qwen valid required arguments survive streaming parse;
+  - Qwen plain tool-line fallback preserves leading/trailing spaces, embedded
+    newlines, quotes, shell snippets, and Unicode string payloads;
+  - XML-function parser rejects empty required parameters instead of emitting
+    `arguments: {}`;
+  - Responses raw SSE contract guards argument delta/done/final consistency,
+    content/reasoning deltas, local output-index ordering, and gateway argument
+    stream passthrough.
+- Not proven by this verification:
+  - fresh same-model Qwen direct/gateway/tunnel live recapture;
+  - MiMo exact tool-result continuation;
+  - media/video/audio rows;
+  - release/sign/notarize readiness.

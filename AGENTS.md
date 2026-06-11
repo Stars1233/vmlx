@@ -112,6 +112,13 @@ deltas, argument delta/done events, final object consistency, valid
 `output_index` ordering, required/auto/no-tool modes, tool-result continuation,
 and cache reuse telemetry.
 
+Current spacing/special-character carry-forward from Eric: treat whitespace,
+newlines, paths, shell snippets, XML entities, Unicode, quotes, JSON escaping,
+raw delimiter text, and visible preambles as first-class parser/API evidence.
+Accepted arguments must preserve user/model-provided string payloads exactly
+where the schema expects strings; rejected missing required arguments must fail
+closed without inventing values from nearby visible text.
+
 Current explicit parser/runtime work item from Eric: add the Qwen3.6/Qwen-coder
 empty-arguments report to the active fix/proof list for both 27B and 35B style
 XML tool-call dialects, but do not trust the proposed root cause without live
