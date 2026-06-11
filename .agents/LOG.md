@@ -14330,3 +14330,20 @@ Next action:
   Patch panel launch, command preview, and settings UI to keep MiMo stored-cache
   quantization engine-owned/Auto and require paged prefix cache for the MiMo
   subtype.
+
+# 2026-06-10 21:21 PDT MiMo CLI cache guard audit selected
+- Commit `dfe8c71d2` pushed the panel-side MiMo native cache guard to
+  `origin/codex/pr-intake-manifest` and `origin/main`.
+- New check: CLI still permits explicit `--kv-cache-quantization q4/q8` for
+  MiMo as a diagnostics path. For checkpoint release safety this can bypass
+  the native mixed full/SWA/RotatingKVCache policy outside the panel. Inspect
+  and, if appropriate, add a release-safe CLI guard with an explicit diagnostic
+  env escape hatch rather than leaving a silent footgun.
+- Implemented CLI guard: MiMo now ignores auto or explicit generic
+  `--kv-cache-quantization q4/q8` by default. Diagnostics can bypass only with
+  `VMLINUX_MIMO_ALLOW_GENERIC_KV_CACHE_QUANTIZATION=1`; this is not
+  release-cleared.
+- Verification passed: `.venv/bin/python -m py_compile vmlx_engine/cli.py`,
+  `npm --prefix panel run typecheck`, `npm --prefix panel test -- --run
+  tests/model-config-registry.test.ts` (`67 passed`), `git diff --check`, and
+  source probe for the CLI/panel MiMo guard strings.

@@ -8646,6 +8646,12 @@ Other-agent action:
   disables the generic stored-cache quantization UI to Auto, and suppresses
   explicit generic `--kv-cache-quantization q4/q8` from launch args/preview for
   MiMo.
+- Follow-up CLI guard:
+  `vmlx_engine.cli` now also ignores auto or explicit generic
+  `--kv-cache-quantization q4/q8` for MiMo by default. The only bypass is the
+  diagnostics-only env
+  `VMLINUX_MIMO_ALLOW_GENERIC_KV_CACHE_QUANTIZATION=1`; do not use it for
+  release proof or advertise it as production cache support.
 - Still open:
   MiMo JANGTQ_2 literal/special-character exactness, MiMo thinking-on, and
   real media semantics. This supports the suspicion that current MiMo artifacts

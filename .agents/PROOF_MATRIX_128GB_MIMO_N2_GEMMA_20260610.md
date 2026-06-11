@@ -45,17 +45,22 @@ Positive evidence:
 
 Source fix:
 
+- `vmlx_engine/cli.py`
 - `panel/src/main/sessions.ts`
 - `panel/src/renderer/src/components/sessions/SessionSettings.tsx`
 - `panel/src/renderer/src/components/sessions/SessionConfigForm.tsx`
 
-The panel now treats `mimo_v2_asymmetric_swa` as a native stored-prefix cache
-owner:
+The engine CLI and panel now treat `mimo_v2_asymmetric_swa` as a native
+stored-prefix cache owner:
 
 - require paged prefix cache for the subtype;
 - force stored cache quantization display to Auto/disabled;
 - suppress generic `--kv-cache-quantization q4/q8` in launch args and command
   preview for MiMo's native mixed full/SWA cache.
+- suppress auto or explicit generic CLI `--kv-cache-quantization q4/q8` for
+  MiMo by default. The only bypass is the diagnostics-only env
+  `VMLINUX_MIMO_ALLOW_GENERIC_KV_CACHE_QUANTIZATION=1`, which is not
+  release-cleared.
 
 Boundary:
 
