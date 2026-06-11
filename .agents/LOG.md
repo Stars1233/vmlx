@@ -19081,3 +19081,24 @@ Next action:
   build/current-noheavy-api-cache-contract-after-qwen-gemma-current-source-20260611.json
   status=pass, missing_markers=[]; source hash for vmlx_engine/server.py is
   bd39ec13dc375dfcec258b91089a0409ffe8fa8367140d2658085c10e80cc733.
+
+## 2026-06-11 CODEX - Wiring/live UI checklist recorded
+- User asked what wiring/live UI checks are needed. Recorded the active Qwen/Gemma-only release-critical wiring checklist in STATUS.
+- Panel boundaries inspected:
+  - `panel/src/main/sessions.ts` launch flag wiring for auto-detected tool parser, reasoning parser, VLM mode, continuous batching, prefix/paged/block-disk cache, and KV quantization policy.
+  - `panel/src/main/ipc/chat.ts` request body wiring for Responses vs Chat Completions, tools/tool_choice, reasoning controls, thinking budget, `previous_response_id`, stream usage, and video sampling fields.
+  - `panel/src/main/ipc/chat.ts` SSE parser wiring for reasoning deltas/done, content deltas/fallback final text, function-call args delta/done, function-call item done, usage/cache metrics, errors, and tool-result continuation.
+- Next source check: confirm whether Qwen/Gemma reasoning effort and thinking budget are incorrectly suppressed when UI session parser state is stale even though detected family/parser is known.
+
+## 2026-06-11 CODEX - Goal continuation started
+- Rechecked worktree before changing code: branch `codex/pr-intake-manifest`, only `.agents/STATUS.md` and `.agents/LOG.md` dirty from handoff updates; `node_modules/` remains untracked/pre-existing.
+- Continuing Qwen/Gemma-only panel/API wiring work. N2/MiMo remain paused/off-lane.
+
+## 2026-06-11 CODEX - Qwen/Gemma reasoning request wiring fix
+- Root cause found in panel request construction: fallback gating allowed explicit reasoning controls through when `sessionHasReasoningParser` was true or family was DSV4, but could drop Qwen/Gemma user-requested `enable_thinking`, `reasoning_effort`, and local thinking budget when parser state was stale despite detected family being reasoning-capable.
+- Patched `panel/src/main/ipc/chat.ts` with `familyAcceptsExplicitReasoningControls()` and used it for `shouldForwardReasoningEffort()`, `effectiveEnableThinkingOverride`, and `applyLocalThinkingBudget()`.
+- Added request-builder coverage for Qwen and Gemma Chat Completions and Responses when parser state is stale but detected family is known.
+- Verification:
+  - `cd panel && npm test -- --run tests/request-builder.test.ts tests/chat-settings-compatibility.test.ts tests/settings-flow.test.ts tests/reasoning-display.test.ts tests/tool-auto-continue.test.ts` -> 459 passed.
+  - `cd panel && npm run typecheck` -> passed.
+  - `git diff --check` -> passed.

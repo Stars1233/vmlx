@@ -14093,3 +14093,22 @@ Other-agent action:
   passthrough, previous_response_id history, cache reuse endpoints/telemetry,
   TurboQuant disk roundtrip, hybrid SSM partial reuse, and structured JSON/XML
   repair/validation.
+
+## 2026-06-11 CODEX - Current wiring/live UI check target
+- Active scope remains Qwen/Qwen-coder Responses/tool/reasoning/cache plus Gemma JANG/MXFP/QAT runtime/API/cache/UI. N2 and MiMo remain paused/off this lane while Eric remakes them elsewhere.
+- Wiring to verify before any signed checkpoint: panel session launch parser/cache flags, panel chat request body fields, local/gateway/tunnel SSE event passthrough, renderer chat/tool/reasoning display, cache metrics display, and bundled/installed-app parity.
+- Specific panel request fields to watch: `wireApi=responses`, `enable_thinking`, `reasoning_effort`, `max_thinking_tokens`, `chat_template_kwargs.thinking_budget`, `tools`, `tool_choice`, `stream_options.include_usage`, `previous_response_id`, `video_fps`, `video_max_frames`, and local-vs-remote filtering.
+- Specific SSE/UI events to prove live: `response.reasoning_summary_text.delta/done`, `response.output_text.delta/done`, `response.function_call_arguments.delta/done`, `response.output_item.done` for function calls, `response.usage`, `response.completed`, tool status cards, tool-result continuation, final message persistence, and cache telemetry (`cachedTokens`, `cacheDetail`).
+- Suspect under inspection: panel `shouldForwardReasoningEffort()`/thinking-budget gating may depend on stale `sessionHasReasoningParser`; verify Qwen/Gemma detected-family behavior before patching.
+- No release/sign/notarize/PyPI/site/updater action in this block.
+
+## 2026-06-11 CODEX - Goal continuation scope
+- Continuing the persistent objective: stress and harden Qwen/Gemma tool calling, reasoning high/auto, content/reasoning/function-call delta streaming, cache reuse, gateway/API/UI behavior, JANG/MXFP/JANGTQ metadata display, and release-readiness evidence.
+- N2 and MiMo remain out of this lane because Eric is remaking them on other machines. Do not reopen them here without a new explicit instruction.
+- Immediate action: patch only if the panel request builder provably drops user-requested reasoning controls for known Qwen/Gemma reasoning families.
+
+## 2026-06-11 CODEX - Qwen/Gemma reasoning request wiring fix
+- Patched panel request construction so explicit user reasoning controls (`enable_thinking`, `reasoning_effort`, `max_thinking_tokens`/`thinking_budget`) are forwarded for known reasoning-capable detected families even if transient session parser state is stale.
+- Primary target families covered by this lane: Qwen3.5/Qwen3.5-MoE/Qwen3-next/Qwen3/Qwen3-VL and Gemma4/Gemma4-text. The helper also preserves existing DSV4 and other registry reasoning-family behavior.
+- Guardrails preserved: unknown/plain models still suppress stale local thinking controls, Hy3 still requires explicit Thinking On for effort, and explicit Thinking Off still suppresses reasoning effort and thinking budget.
+- Focused panel proof passed: request-builder, chat-settings compatibility, settings-flow, reasoning-display, and tool-auto-continue tests (459 total), `npm run typecheck`, plus `git diff --check`.
