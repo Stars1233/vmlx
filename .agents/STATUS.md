@@ -14229,3 +14229,19 @@ Other-agent action:
 - tool semantics: created `real_ui_tool_probe_1.txt` with `REAL_UI_LIVE_TOOL_ONE`; second turn read it and created `real_ui_tool_probe_2.txt` with `REAL_UI_LIVE_TOOL_TWO`; final visible text included the second-turn marker.
 - cache proof from UI run: `cacheHitTokens=5580`, scheduler `cache_hit_tokens=5580`, L2 block tokens on disk `3486`, disk writes `57`, disk hits `147`, cache detail `paged+mixed_swa` visible in screenshot.
 - boundary: Electron dev app only; not installed-app parity, not public tunnel, not media, not release/sign/notarize/PyPI/site/updater, not N2/MiMo.
+
+## CODEX
+- now: selecting Gemma4 12B QAT JANG_4M Electron dev-app Responses auto-tool proof to extend the proven UI surface from MXFP4 into JANG_4M.
+- target: run the real UI proof harness with `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-JANG_4M`, `wireApi=responses`, `enable_thinking=true`, built-in tools enabled, Gemma4 tool/reasoning parsers, server cache controls, and the two-turn `run_command` tool loop.
+- reason: JANG_4M has current direct/gateway raw SSE required-tool/cache proof, but not current dev-app UI auto-tool/cache proof in this lane. This covers the JANG format requested by Eric without touching N2/MiMo or release actions.
+- boundary: Electron dev app only; no installed-app parity, public tunnel, media, release/sign/notarize/PyPI/site/updater action, N2, or MiMo claim.
+
+## CODEX
+- now: Gemma4 12B QAT JANG_4M Electron dev-app Responses auto-tool/cache proof is green.
+- artifact: `docs/internal/agent-notes/current-real-ui-live-model-gemma4-12b-qat-jang4m-responses-auto-tools-cache-20260611-proof.json`, `status=pass`; screenshot: `docs/internal/agent-notes/current-real-ui-live-model-gemma4-12b-qat-jang4m-responses-auto-tools-cache-20260611-chat.png`.
+- proven wiring/live UI checks: real loaded Gemma4 12B QAT JANG_4M model, Electron dev app chat UI, remote session through UI API, `wireApi=responses`, `enable_thinking=true`, built-in tools enabled, Gemma4 tool/reasoning parsers, server cache controls, real UI `run_command` tool cards, two visible assistant turns after tool results, persisted tool calls/results, Responses delta streaming, reasoning display, `long_tool_loop`, `tool_l2_cache_integrated`, parser/language leak checks, settings persistence, native cache status, cache endpoint stats, cache hit telemetry, and L2 disk storage.
+- tool/API details: `eventCounts.stream=54`, `eventCounts.tool=1105`, `reasoningDone=3`, `complete=2`, `persistedToolCount=1105`, `visibleAssistantTurnsComplete=true`, no raw parser/tool/reasoning tag leak, final visible text `I have completed the task. REAL_UI_LIVE_TOOL_TWO.`.
+- retry nuance: the second UI tool turn exercised the Responses required-tool retry path and server logs showed `Responses API streaming required tool retry: preserving enable_thinking=True`; this is positive coverage for the release-critical interleaved reasoning/tool loop path and is not a fake reasoning-disable workaround.
+- tool semantics: first tool created `real_ui_tool_probe_1.txt` with `REAL_UI_LIVE_TOOL_ONE`; second turn read it and created `real_ui_tool_probe_2.txt` with `REAL_UI_LIVE_TOOL_TWO`.
+- cache proof from UI run: `cacheHitTokens=11855`, scheduler `cache_hit_tokens=11855`, L2 block tokens on disk `3809`, disk writes `63`, disk hits `405`, native Gemma `mixed_swa_kv_v1`; storage quantization is q4 at the full-attention KV storage boundary while preserving rotating-window metadata.
+- boundary: Electron dev app only; not installed-app parity, not public tunnel, not media, not release/sign/notarize/PyPI/site/updater, not N2/MiMo.
