@@ -13556,3 +13556,15 @@ Other-agent action:
 - current checklist remains `status=open`, `failed_count=15`; stale `mimo_jangtq2_live_media_l2_missing` is removed from MiMo local-release detail, while MiMo remains red for exact literal quality, decode speed, media semantics/release quality, and JANG_2L live media L2.
 - verification passed: focused manifest/checklist pytest (`29 passed, 315 deselected`), full checklist pytest (`20 passed` earlier in the same edit loop), `py_compile` for touched Python files, and `git diff --check`.
 - other-agent handoff: do not spend time claiming MiMo JANGTQ2 tools/cache/L2 are missing; the current proof says they are present. Next useful MiMo work is artifact/logit/quant/decode diagnosis, visual semantics, audio/video semantics, and JANG_2L media L2 if that lane remains required.
+
+## CODEX
+- now: continuing after pushed commit `1649638f9`, still no release/sign/notarize/PyPI/site/updater actions and no N2 JANG_1L work.
+- selected blocker: MiMo JANG_2L live media/L2 requirement. Reason: the board still carries `mimo_jang2l_live_media_l2_missing`, but prior metadata says JANG_2L is text-runtime with preserved/unwired media. Need inspect current artifacts before deciding whether this is a real missing runtime proof or stale/bogus release requirement.
+- boundary: do not make JANG_2L media green from metadata. If media is unwired/text-only, the correct fix is to classify the requirement as not applicable and keep media claims honest; if media is wired, keep the row red until real live media/L2 proof exists.
+
+## CODEX
+- now: MiMo JANG_2L media/L2 boundary is implemented. The manifest/checklist now require live media/L2 only if JANG_2L is actually media-runtime capable; current metadata proves `weights_preserved_text_runtime`, so JANG_2L media/L2 is recorded as not applicable rather than missing.
+- regenerated artifacts: `build/current-release-regression-manifest-after-mimo-jang2l-media-boundary-20260611.json` and `build/current-full-release-objective-checklist-after-mimo-jang2l-media-boundary-20260611.json`.
+- current checklist remains `status=open`, `failed_count=15`, but MiMo local-release detail no longer contains `mimo_jang2l_live_media_l2_missing`; remaining MiMo blockers are JANGTQ2 artifact exactness, decode speed, unwired/semantic media quality, image/video live E2E, and audio waveform E2E.
+- verification passed: `pytest tests/test_release_regression_manifest.py -k mimo_v2_root_cause` (`8 passed, 317 deselected`) and `pytest tests/test_full_release_objective_checklist.py` (`20 passed`).
+- other-agent handoff: do not reopen JANG_2L media/L2 as a missing proof unless a new artifact/runtime changes JANG_2L from text-runtime preserved media to real media runtime. Focus remaining MiMo work on artifact/logit/quant/decode quality, visual/audio/video semantics, and speed.

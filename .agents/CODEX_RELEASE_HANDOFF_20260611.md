@@ -2,10 +2,11 @@
 
 ## Current Commit
 
-- Latest pushed commit: `478025a4a Expose N2 JANGTQ2 checkpoint proof`
+- Latest movement commit: `Classify MiMo JANG2L media boundary` (see `git log`
+  for the final pushed hash)
 - Pushed to: `origin/codex/pr-intake-manifest` and `origin/main`
 - Latest checklist artifact:
-  `build/current-full-release-objective-checklist-after-mimo-installed-proof-accounting-20260611.json`
+  `build/current-full-release-objective-checklist-after-mimo-jang2l-media-boundary-20260611.json`
 - Latest checklist state: `status=open`, `failed_count=15`
 
 ## Hard Boundaries
@@ -51,6 +52,10 @@
   checklist intentionally keeps MiMo red for exact literal quality, decode
   speed, media semantics, audio/video release quality, and JANG_2L live media
   L2.
+- MiMo JANG_2L media/L2 is now classified as not applicable when the metadata
+  contract proves `weights_preserved_text_runtime` with text-only runtime and
+  preserved/unwired media weights. Do not keep treating it as missing live media
+  proof unless a future artifact changes JANG_2L to a real media runtime.
 
 ## Still Open
 
@@ -64,9 +69,10 @@
   says JANGTQ_2 literal mutations happen after valid parser structure; do not
   clear by rewriting parsed tool arguments or repairing generated JSON. Do not
   keep chasing JANGTQ2 missing tool/cache/L2 as the primary blocker: the current
-  installed-app rows prove those surfaces separately. The remaining useful MiMo
+  installed-app rows prove those surfaces separately. JANG_2L media/L2 is not
+  applicable for the current text-runtime artifact. The remaining useful MiMo
   work is artifact/logit/quant/decode quality, visual semantics, audio/video
-  release semantics, and JANG_2L media L2 if still needed.
+  release semantics, and decode speed.
 - Qwen35 raw SSE direct/gateway/tunnel parity remains open on public tunnel
   reasoning lifecycle, even though current direct/gateway source proof is
   green.

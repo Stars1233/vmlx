@@ -18586,3 +18586,14 @@ Next action:
   - `build/current-full-release-objective-checklist-after-mimo-installed-proof-accounting-20260611.json`
 - Current board remains open (`failed_count=15`). MiMo JANGTQ2 tool/cache/L2 is no longer a missing-proof blocker, but MiMo exact literal quality, decode speed, visual/media semantics, audio/video release quality, and JANG_2L live media L2 remain open.
 - Verification: focused pytest `29 passed, 315 deselected`; full checklist pytest `20 passed`; touched-file `py_compile`; `git diff --check`.
+
+## 2026-06-11 CODEX - MiMo JANG_2L Media Boundary
+
+- Scope: vMLX Python proof accounting only; no release/sign/notarize/PyPI/site/updater action.
+- Fixed the MiMo manifest/checklist to classify JANG_2L media/L2 as not applicable when the metadata contract proves text-runtime `weights_preserved_text_runtime` with preserved/unwired media weights.
+- Regenerated board artifacts:
+  - `build/current-release-regression-manifest-after-mimo-jang2l-media-boundary-20260611.json`
+  - `build/current-full-release-objective-checklist-after-mimo-jang2l-media-boundary-20260611.json`
+- Current board remains open (`failed_count=15`), but MiMo local-release detail no longer lists `mimo_jang2l_live_media_l2_missing`.
+- Remaining MiMo blockers: JANGTQ2 artifact exactness/literal mutations, decode speed, media semantic quality, image/video live E2E, and audio waveform E2E.
+- Verification: `tests/test_release_regression_manifest.py -k mimo_v2_root_cause` (`8 passed, 317 deselected`) and `tests/test_full_release_objective_checklist.py` (`20 passed`).
