@@ -19148,3 +19148,11 @@ Selected `/Users/eric/models/JANGQ-AI/gemma-4-E4B-it-qat-JANG_4M` for the next s
 # 2026-06-11 Gemma E4B direct plus gateway raw SSE/cache proof
 
 Launched Gemma4 E4B QAT JANG_4M from current source and captured the same required-tool Responses stream directly and through the real panel ApiGateway proxy. Artifact `build/current-gemma4-e4b-qat-jang4m-direct-gateway-responses-raw-sse-cache-20260611.json` is pass. Direct and gateway both preserve completed reasoning item lifecycle, function-call argument delta/done, exact `{"value":"blue-cat"}`, output indices message=0/reasoning=1/function_call=2, and final response consistency. Cache proof remains native mixed-SWA with `cache_hit_tokens=162`, `cache_hit_requests=1`, `l2_block_tokens_on_disk=162`, `disk_writes=3`. Boundary: no public tunnel, installed app, media, release package, N2, or MiMo claim.
+
+# 2026-06-11 Gemma 12B direct plus gateway raw SSE proof selected
+
+Selected `/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-JANG_4M` for the next source proof: direct plus panel ApiGateway raw `/v1/responses` SSE with `enable_thinking=true`, required `record_fact`, `gemma4` tool/reasoning parsers, mixed-SWA cache, and block L2. Boundary: source/gateway only, no public tunnel, installed app, release package, N2, or MiMo claim.
+
+# 2026-06-11 Gemma 12B direct plus gateway raw SSE/cache proof
+
+Launched Gemma4 12B QAT JANG_4M from current source and captured the same required-tool Responses stream directly and through the real panel ApiGateway proxy. Artifact `build/current-gemma4-12b-qat-jang4m-direct-gateway-responses-raw-sse-cache-20260611.json` is pass. Direct and gateway both preserve completed reasoning item lifecycle, function-call argument delta/done, exact `{"value":"blue-cat"}`, output indices message=0/reasoning=1/function_call=2, and final response consistency. Cache proof remains native mixed-SWA with `cache_hit_tokens=162`, `cache_hit_requests=1`, `l2_block_tokens_on_disk=162`, `disk_writes=3`. Boundary: no public tunnel, installed app, media, release package, N2, or MiMo claim.
