@@ -12682,3 +12682,77 @@ Other-agent action:
 - New aggregate artifact:
   `build/current-objective-proof-after-dsv4-cache-l2-one-tool-refresh-20260611.json`
   now marks all three DSV4 cache/L2/one-tool rows pass.
+
+# 2026-06-11 continuation PDT - current lane reaffirmed
+
+- Eric's current instruction is to focus on the vMLX Python engine/panel release
+  blockers, not deprecated `/Users/eric/vmlx`, not Swift, and not adjacent
+  release chores.
+- Release/sign/notarize/PyPI/updater/site/download actions remain locked unless
+  Eric explicitly unlocks that action in the current turn. The immediate work is
+  source/runtime/API/UI/cache fixes and live proof that moves the checkpoint
+  release closer.
+- N2 JANG_1L remains Eric-owned/off-limits in this lane. Do not load, fix,
+  classify, or claim it here.
+- Current next blocker selected from
+  `build/current-objective-proof-after-dsv4-cache-l2-one-tool-refresh-20260611.json`:
+  `Ling/Bailing multilingual output quality is release-cleared`.
+- Evidence gap:
+  `build/current-production-family-live-ling-bundled-current-20260606.json` is
+  missing from the aggregate proof. Local model exists at
+  `/Users/eric/models/JANGQ/Ling-2.6-flash-JANGTQ`.
+- Next action:
+  inspect the current Ling/Bailing production-family runner and run the named
+  live gate if still valid. If it fails, inspect the real output and root cause
+  before touching source. Do not paper over CJK leakage or force fake sampling
+  defaults.
+
+# 2026-06-11 continuation PDT - Ling/Bailing live gate starting
+
+- Static precheck command:
+  `.venv/bin/python tests/cross_matrix/run_production_family_audit.py --rows ling_flash_tq --out /tmp/ling-static-check.json`.
+- Static result:
+  row exists, no static issues, model type `bailing_hybrid`, local path
+  `/Users/eric/models/JANGQ/Ling-2.6-flash-JANGTQ`, JANGTQ/MXTQ bit map present
+  (`routed_expert=2`, attention/shared/dense/embed/lm_head/mtp_eh_proj=8,
+  norms/router biases=16), registry family `ling`, no reasoning parser, tool
+  parser `deepseek`, hybrid cache.
+- Boundary:
+  static output records MTP metadata inconsistency because config advertises one
+  next-token prediction layer but the index has no `mtp.*` tensors. Do not claim
+  MTP runtime for this row.
+- Next command:
+  run the current live gate with installed app Python:
+  `.venv/bin/python tests/cross_matrix/run_production_family_audit.py --rows ling_flash_tq --live --py /Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3.12 --out build/current-production-family-live-ling-bundled-current-20260606.json`.
+
+# 2026-06-11 continuation PDT - Ling/Bailing live row cleared
+
+- First live run passed but exposed a proof-runner gap:
+  `responses_auto_tool_choice_structured` was marked OK by skip because the
+  Ling/Bailing row omitted `expect_tool_parser`, while the registry reports
+  `tool_parser=deepseek`.
+- Source fix:
+  `tests/cross_matrix/run_production_family_audit.py` now declares
+  `expect_tool_parser="deepseek"` for Ling/Bailing JANGTQ, JANGTQ2 CRACK, and
+  MXFP4 CRACK rows. `tests/test_cross_matrix_audit_runner.py` now guards that
+  Ling rows require tools while remaining non-reasoning.
+- Rerun command:
+  `.venv/bin/python tests/cross_matrix/run_production_family_audit.py --rows ling_flash_tq --live --py /Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3.12 --out build/current-production-family-live-ling-bundled-current-20260606.json`.
+- Rerun result:
+  live `PASS`, 14 checks OK, failures `0`. The auto-tool check is real now:
+  Responses emitted `list_directory` with `{"path":"."}` and no visible text.
+- Multilingual quality:
+  Russian/Three.js prompt passed with `cjk_chars=0`, `loop_score=0.0769`,
+  190 Cyrillic chars, 11 allowed Latin chars, 28 words, and no reasoning leak.
+- Cache/runtime proof:
+  native cache reports `hybrid_ssm_v1`, components `attention_kv`,
+  `ssm_companion_state`, `async_rederive`; generic TurboQuant KV disabled;
+  attention KV storage boundary q4 enabled; prefix/paged/block-disk L2 true.
+  Repeat request hit `paged+ssm` with 26 cached tokens, block disk wrote 12
+  blocks / 586 tokens, and SSM companion stored 586 tokens on disk.
+- Aggregate:
+  `build/current-objective-proof-after-ling-bailing-live-tool-cache-refresh-20260611.json`
+  now marks `Ling/Bailing multilingual output quality is release-cleared` pass.
+- No-claim:
+  still do not claim Ling MTP runtime; current artifact records
+  `metadata_inconsistent` because no `mtp.*` tensors are indexed.

@@ -17879,3 +17879,79 @@ Next action:
 - Aggregate:
   `build/current-objective-proof-after-dsv4-cache-l2-one-tool-refresh-20260611.json`
   marks all three DSV4 cache/L2/one-tool rows pass.
+
+# 2026-06-11 continuation PDT - Ling/Bailing blocker selected
+
+- Request carried forward:
+  focus on vMLX Python engine/panel fixes and real proof toward a checkpoint
+  release; do not drift into deprecated `/Users/eric/vmlx`, Swift, fake parser
+  guards, release uploads, or signing/notarization without current-turn unlock.
+- Checked:
+  active directives, `.agents` state, aggregate objective proof, and local model
+  availability.
+- Selected blocker:
+  `Ling/Bailing multilingual output quality is release-cleared`.
+- Current evidence:
+  aggregate proof is open because
+  `build/current-production-family-live-ling-bundled-current-20260606.json` is
+  missing. The local model path `/Users/eric/models/JANGQ/Ling-2.6-flash-JANGTQ`
+  exists.
+- Next movement:
+  inspect `run_production_family_audit.py`/manifest expectations and run the
+  current Ling/Bailing live gate if valid. Any failure must be classified from
+  real output before source edits; no fake CJK cleanup, hidden sampling floor,
+  or release claim.
+
+# 2026-06-11 continuation PDT - Ling/Bailing static precheck
+
+- Command:
+  `.venv/bin/python tests/cross_matrix/run_production_family_audit.py --rows ling_flash_tq --out /tmp/ling-static-check.json`.
+- Result:
+  static precheck passed the row existence/metadata stage with no issues.
+  The local bundle is `bailing_hybrid`, 30 safetensor shards, about 28.49 GB,
+  JANGTQ/MXTQ bit map present, registry family `ling`, no reasoning parser, and
+  hybrid cache.
+- Not proven:
+  live generation, multilingual CJK leakage rejection, tool/API behavior, cache
+  telemetry, and installed-app bundled runtime behavior are not proven by the
+  static precheck.
+- No-claim:
+  MTP is not runtime-proven for this row; the static audit reports metadata
+  inconsistency because the config advertises one next-token prediction layer
+  but no `mtp.*` tensors are indexed.
+- Next command:
+  run the manifest live audit with installed app Python and write
+  `build/current-production-family-live-ling-bundled-current-20260606.json`.
+
+# 2026-06-11 continuation PDT - Ling/Bailing live proof and runner fix
+
+- First live command:
+  `.venv/bin/python tests/cross_matrix/run_production_family_audit.py --rows ling_flash_tq --live --py /Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3.12 --out build/current-production-family-live-ling-bundled-current-20260606.json`.
+- Finding:
+  the row passed, but `responses_auto_tool_choice_structured` was skipped
+  because the production-family row did not declare its native tool parser even
+  though the registry reports `deepseek`.
+- Source fix:
+  added `expect_tool_parser="deepseek"` to Ling/Bailing JANGTQ, JANGTQ2 CRACK,
+  and MXFP4 CRACK rows in `tests/cross_matrix/run_production_family_audit.py`;
+  added a focused test assertion so Ling rows stay tool-required while
+  non-reasoning.
+- Rerun:
+  the same installed-app live command passed with 14 OK checks and zero
+  failures. The structured auto-tool check now emitted a real
+  `list_directory` function call with exact arguments `{"path":"."}` and empty
+  visible text.
+- Artifact:
+  `build/current-production-family-live-ling-bundled-current-20260606.json`.
+- Aggregate:
+  `build/current-objective-proof-after-ling-bailing-live-tool-cache-refresh-20260611.json`
+  marks `Ling/Bailing multilingual output quality is release-cleared` pass.
+- Proven:
+  installed-app bundled runtime load, Russian/non-CJK quality with zero CJK,
+  Responses tool-history continuation, Responses auto-tool structured call,
+  Anthropic/Ollama basic surfaces, stream disconnect/done handling,
+  hybrid-SSM native cache capabilities, q4 attention-KV storage boundary,
+  `paged+ssm` cache reuse, block-disk L2 writes, SSM companion disk storage,
+  and clean runtime logs.
+- Not proven:
+  Ling MTP runtime remains not proven because indexed `mtp.*` tensors are absent.
