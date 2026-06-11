@@ -16497,3 +16497,27 @@ Next action:
 - No source edit made: current evidence does not show a parser/output-index
   defect in direct/gateway. No N2 JANG_1L, no release action, no synthetic tool
   args, and no reasoning-disable workaround.
+
+# 2026-06-11 02:30 PDT - Qwen/Qwen-coder empty-args SSE lane reverified
+
+- Rechecked the Qwen/Qwen-coder Responses empty-arguments/tool/reasoning lane
+  after committing the N2 raw-SSE classification.
+- Focused source verification passed: `26 passed in 2.93s` for the current
+  Qwen/XML empty-required-args fail-closed, preamble empty-XML, auto empty-XML
+  markup stripping, Chat streaming empty-XML, reasoning-enabled tool-call
+  arguments, and raw-SSE parity classifier guards.
+- Current source still behaves correctly for the reported shape:
+  `<tool_call><function=exec_command></function></tool_call>` with required
+  `cmd` does not become executable `{}` arguments; required mode fails closed,
+  and valid calls preserve argument delta/done/final consistency.
+- Qwen35 current parity artifact is green for direct/gateway/tunnel same-model
+  raw SSE with reasoning events and `{"value": "blue-cat"}` preserved.
+- Qwen-coder-next direct and local panel-gateway artifacts are green for
+  required `exec_command`, reasoning events, output indexes, no executable empty
+  args, tool-result continuation, and cache writes.
+- Still open: qwen-coder-next public tunnel parity, because the public tunnel
+  does not advertise the exact `qwen3-coder-next` served model in
+  `build/current-qwen-coder-next-tunnel-availability-20260611/SUMMARY.json`.
+- Guardrail for other agents: no fake `cmd` inference from preambles, no
+  reasoning-disable workaround, no global rejection of optional/no-arg tools,
+  and no qwen-coder-next tunnel closure from a different Qwen alias.

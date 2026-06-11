@@ -11124,3 +11124,46 @@ Other-agent action:
   this does not prove public tunnel parity, strict long-delta required-tool
   adherence, N2 JANG_1L, audio, MTP, release packaging, sign/notarize, PyPI,
   updater JSON, or website release rows.
+
+# 2026-06-11 02:30 PDT Qwen/Qwen-coder empty-args SSE lane reverified
+
+- Current action:
+  rechecked the Qwen/Qwen-coder Responses tool/reasoning empty-arguments lane
+  after the N2 raw-SSE commit, without assuming the pasted root-cause
+  assessment and without launching a new large model.
+- Source verification:
+  ran `.venv/bin/python -m pytest -q tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_responses_required_empty_xml_tool_call_is_rejected tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_responses_preamble_empty_xml_tool_call_never_emits_empty_arguments tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_responses_auto_empty_xml_tool_call_strips_final_markup tests/test_server.py::TestOpenAILogprobsFormatting::test_tool_parser_drops_empty_xml_call_and_strips_markup_for_nonstream_paths tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_chat_preamble_empty_xml_tool_call_never_emits_empty_arguments tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_responses_reasoning_tool_call_keeps_arguments tests/test_responses_raw_sse_parity_contract.py -q`.
+  Result: `26 passed in 2.93s`.
+- Current-source behavior proven:
+  Qwen/XML required empty tool calls fail closed; the exact preamble plus empty
+  `<function=exec_command></function>` shape does not emit executable `{}` or
+  empty function-call arguments when the request schema requires `cmd`;
+  valid reasoning-enabled tool calls preserve argument delta/done/final item
+  consistency; output-index ordering remains guarded.
+- Qwen35 proof state:
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-current-20260610.json`
+  is `status=pass`: direct, gateway, and tunnel same-model captures preserve
+  `{"value": "blue-cat"}`, keep reasoning events enabled, and use valid
+  message/reasoning/function_call output indexes.
+- Qwen-coder-next proof state:
+  `build/current-qwen-coder-next-live-responses-sse-20260611/SUMMARY.json`
+  is `status=pass` for direct served-surface required `exec_command`,
+  reasoning events, argument delta/done/final `{"cmd": "ls /tmp"}`,
+  tool-result continuation, cache writes, and adversarial empty-XML
+  required-tool fail-closed behavior.
+  `build/current-qwen-coder-next-gateway-responses-sse-20260610/SUMMARY.json`
+  is `status=pass` for local panel gateway required `exec_command`, reasoning
+  events, sequential output indexes, no executable empty args, and block-disk
+  cache writes.
+- Still open:
+  `build/current-qwen-coder-next-tunnel-availability-20260611/SUMMARY.json`
+  is `status=open` because the public tunnel did not advertise the exact
+  `qwen3-coder-next` served model. Do not claim qwen-coder-next public tunnel
+  parity until that model is routed/advertised and recaptured. This also does
+  not prove every Qwen size, media mode, installed-app UI row, or release
+  packaging.
+- Other-agent guardrail:
+  do not add a fallback that fabricates `cmd` from visible preambles, do not
+  disable reasoning to pass the harness, do not reject optional/no-arg tools
+  globally, and do not close qwen-coder-next tunnel from Qwen35/Qwen27 aliases
+  unless the model identity mapping is intentionally documented.

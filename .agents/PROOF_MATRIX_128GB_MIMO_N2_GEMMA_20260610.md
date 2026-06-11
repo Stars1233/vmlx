@@ -3485,3 +3485,41 @@ Next implementation target:
   this does not prove public tunnel parity, strict long-delta required-tool
   adherence, N2 JANG_1L, audio, MTP, package/sign/notarize, PyPI, updater JSON,
   website, or public release rows.
+
+## Qwen/Qwen-Coder Responses Tool/Reasoning SSE - 2026-06-11 Recheck
+
+- Source verification:
+  focused Qwen/XML empty-required-args and raw-SSE guard slice passed
+  `26 passed in 2.93s`.
+- Proven current-source behavior:
+  required Qwen/XML tool calls with missing required parameters fail closed and
+  do not emit executable `{}` or empty function-call arguments. The preamble
+  plus empty `<function=exec_command></function>` shape is covered for
+  Responses streaming and Chat streaming; valid reasoning-enabled tool calls
+  preserve `response.function_call_arguments.delta`, `.done`, final function
+  item arguments, and output-index ordering.
+- Qwen35 direct/gateway/tunnel:
+  `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-current-20260610.json`
+  is `status=pass`; all three surfaces are same-model, preserve
+  `{"value": "blue-cat"}`, keep reasoning events enabled, and use valid output
+  indexes.
+- Qwen-coder-next direct:
+  `build/current-qwen-coder-next-live-responses-sse-20260611/SUMMARY.json` is
+  `status=pass`; required `exec_command` streams argument deltas joining to
+  `{"cmd": "ls /tmp"}`, done/final arguments match, reasoning events are
+  present, tool-result continuation produces visible content, adversarial empty
+  XML required-tool fails closed, and block/SSM cache writes are recorded.
+- Qwen-coder-next gateway:
+  `build/current-qwen-coder-next-gateway-responses-sse-20260610/SUMMARY.json`
+  is `status=pass`; local panel gateway preserves the same required tool args,
+  reasoning events, sequential output indexes, no raw XML leak, no executable
+  empty args, and block-disk cache writes.
+- Remaining open:
+  `build/current-qwen-coder-next-tunnel-availability-20260611/SUMMARY.json` is
+  `status=open` because the public tunnel does not advertise the exact
+  `qwen3-coder-next` served model. This row remains open until the public
+  tunnel routes that exact model and raw SSE is recaptured.
+- Guardrail:
+  do not synthesize `cmd` from visible preambles, do not disable reasoning to
+  pass the harness, do not globally reject optional/no-arg tools, and do not
+  close qwen-coder-next tunnel parity from a different Qwen alias.
