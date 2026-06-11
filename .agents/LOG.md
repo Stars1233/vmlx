@@ -18862,3 +18862,48 @@ Next action:
   pointer scan clean; `git diff --check` passed.
 - No release/sign/notarize/PyPI/site/updater action was run. N2 JANG_1L was not
   touched. No subagents were used.
+
+## 2026-06-11 CODEX - Next Source Fix Block Started
+
+- Continuing after pushed commit `33bc7fbd4`.
+- Constraints recorded before code work: active Python/Electron worktree only,
+  no deprecated `/Users/eric/vmlx`, no subagents, no N2 JANG_1L, and no
+  release/sign/notarize/PyPI/site/updater actions without a current-turn unlock.
+- Priority for this block: source/runtime/API fixes for N2 JANGTQ/non-JANG_1L,
+  Gemma JANG/MXFP/QAT, and Qwen/Qwen-coder Responses tool/reasoning/cache
+  surfaces. Avoid spending the block on broad test-suite construction.
+- Approach: inspect current open objective/checklist rows, select one
+  source-fixable blocker, trace root cause, apply one scoped source fix, then
+  run focused verification.
+- Inspection result: several objective rows are red because their proof
+  artifacts have stale source hashes while the underlying contract checks are
+  already `pass`. This covers app maxToolIterations, cross-family cache
+  architecture, current-source API/cache contracts, and high-risk
+  parser/artifact gates. Immediate action is a block refresh of existing proof
+  artifacts, not new test-suite construction and not source changes.
+
+## 2026-06-11 CODEX - Contract Source Freshness Refresh
+
+- Refreshed existing proof artifacts instead of creating new harnesses:
+  tool-call contract, no-heavy API/cache contract, cache architecture contract,
+  model-family detection contract, parser registry contract, model artifact
+  format contract, release regression manifest, and objective digest.
+- All six contract refresh commands reported `status=pass`.
+- Regenerated objective digest:
+  `build/current-objective-proof-after-step37-bundled-vlm-proof-20260611.json`.
+- Objective rows now cleared to `PASS`: App maxToolIterations cap for DSV4 tool
+  loop, cross-family cache architecture, high-risk parser/artifact/launch
+  policy gates, and current-source API adapters/non-DSV4 cache contracts.
+- Remaining objective open rows: cross-family live multi-turn smoke matrix,
+  MiMo V2.5 runtime/tool/long-prompt quality, N2 Pro combined JANG1L/JANGTQ
+  clearance, MiniMax #179 reporter parity/root cause, real Electron UI
+  cross-family live matrix, and DSV4 long-output/code/file quality.
+- Narrow test correction: `tests/test_api_surface_contract.py` now checks
+  `--reporter verbose` for panel Vitest commands and `-vv` for Python pytest
+  commands, instead of incorrectly forcing a pytest flag onto npm/vitest.
+- Verification:
+  focused pytest selection across tool/API/cache/model-family/parser/artifact/
+  objective/checklist/release/current-suite files -> `412 passed, 1 skipped,
+  200 deselected`; py_compile passed; `git diff --check` passed.
+- No release/sign/notarize/PyPI/site/updater action was run. N2 JANG_1L was not
+  touched. No subagents were used.

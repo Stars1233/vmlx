@@ -13885,3 +13885,45 @@ Other-agent action:
   -> `257 passed`; selected release-manifest/objective/pointer subset -> `89
   passed`; py_compile for touched audit/contract scripts passed; stale pointer
   `rg` scan clean; `git diff --check` passed.
+
+## CODEX
+- now: continuing the persistent checkpoint-readiness goal after commit
+  `33bc7fbd4`.
+- current scope lock: active vMLX Python/Electron worktree only; no deprecated
+  `/Users/eric/vmlx`; no subagents or recursive LLM delegation; no N2 JANG_1L;
+  no release/sign/notarize/PyPI/site/updater actions unless Eric explicitly
+  unlocks them in the current turn.
+- current priority: source/runtime/API fixes that move N2 JANGTQ/non-JANG_1L,
+  Gemma JANG/MXFP/QAT, and Qwen/Qwen-coder Responses tooling/reasoning/cache
+  toward checkpoint release readiness. Avoid broad new harness work unless it
+  is the minimal proof for a source fix.
+- method for this block: inspect current objective/checklist open rows, choose
+  a source-fixable blocker, trace root cause, patch the source, then run focused
+  verification. Do not fake-clear rows by changing checklist expectations,
+  parser repair of generated semantic values, disabling reasoning, or counting
+  final response objects as streamed lifecycle proof.
+- inspection finding: the nearest objective rows (`App maxToolIterations`,
+  cross-family cache architecture, current-source API/cache, and high-risk
+  parser/artifact gates) have passing underlying contract checks but remain
+  `open` because proof artifacts carry stale source hashes after recent source
+  changes. This is evidence freshness, not a runtime source bug. Next action is
+  to refresh existing contract artifacts in one block and rerun the objective/
+  checklist; do not create new harnesses or alter expectations.
+- completed: refreshed existing contract artifacts for tool-call/app tool cap,
+  no-heavy API/cache, cache architecture, model-family detection, parser
+  registry, model artifact format, release manifest, and objective digest.
+- result: `build/current-objective-proof-after-step37-bundled-vlm-proof-20260611.json`
+  now marks these rows `PASS`: App maxToolIterations cap, cross-family cache
+  architecture, high-risk parser/artifact/launch policy gates, and
+  current-source API adapters/non-DSV4 cache contracts.
+- remaining objective open rows are now narrowed to six: cross-family live
+  multi-turn smoke matrix, MiMo V2.5 runtime/tool/long-prompt quality, N2 Pro
+  combined JANG1L/JANGTQ clearance, MiniMax #179 reporter parity/root cause,
+  real Electron UI cross-family live matrix, and DSV4 long-output/code/file
+  quality. N2 JANG_1L remains off-limits here; MiMo remains remade-artifact
+  pending unless Eric reopens it.
+- verification passed: six refreshed contract commands all returned
+  `status=pass`; objective digest regenerated; full checklist regenerated and
+  remains `status=open`, `failed_count=16`; focused pytest selection passed
+  with `412 passed, 1 skipped, 200 deselected`; py_compile and `git diff
+  --check` passed.

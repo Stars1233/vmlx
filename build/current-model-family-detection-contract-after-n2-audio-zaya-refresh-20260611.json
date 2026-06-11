@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-11T10:16:57-0700",
+  "created_at": "2026-06-11T12:53:43-0700",
   "status": "pass",
   "checks": {
     "dsv4_deepseek_v4_native_cache_and_parser": true,
@@ -123,7 +123,7 @@
       ],
       "cwd": ".",
       "returncode": 0,
-      "elapsed_sec": 3.0,
+      "elapsed_sec": 4.861,
       "counts": {
         "passed": 56,
         "skipped": 1,
@@ -197,7 +197,7 @@
         "tests/test_model_family_detection_contract.py::test_decode_speed_gate_treats_generation_failed_text_as_hard_failure PASSED [ 98%]",
         "tests/test_model_family_detection_contract.py::test_decode_speed_gate_detects_plain_kv_cache_health_mismatches PASSED [100%]",
         "",
-        "================ 56 passed, 1 skipped, 118 deselected in 2.16s ================="
+        "================ 56 passed, 1 skipped, 118 deselected in 2.27s ================="
       ]
     },
     "panel_family_detection": {
@@ -214,7 +214,7 @@
       ],
       "cwd": "panel",
       "returncode": 0,
-      "elapsed_sec": 0.503,
+      "elapsed_sec": 0.897,
       "counts": {
         "passed": 51,
         "skipped": 22,
@@ -233,15 +233,15 @@
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects text ZAYA as CCA hybrid with opt-in qwen3 reasoning parser 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects ZAYA1-VL as multimodal CCA hybrid without a reasoning claim 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps ZAYA1-VL JANGTQ_K multimodal while suppressing the stale reasoning rail 1ms",
-        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps ZAYA1-VL JANGTQ2 multimodal without a reasoning rail 1ms",
+        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps ZAYA1-VL JANGTQ2 multimodal without a reasoning rail 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps ZAYA1-VL JANGTQ4 multimodal without a reasoning rail 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps ZAYA1-VL multimodal when a stale stamp says text 0ms",
-        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects Ling/Bailing hybrid with tools and no reasoning parser 0ms",
+        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects Ling/Bailing hybrid with tools and no reasoning parser 1ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps Ling/Bailing non-reasoning even without a JANG capability stamp 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects Hy3 as text-only KV with Hunyuan tools and qwen3 reasoning 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > does not expose Native MTP for Hy3 config-only bundles without indexed mtp tensors 1ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps Hy3 JANGTQ2 Low/High reasoning contract despite 2-bit routed experts 0ms",
-        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps Hy3 JANGTQ_K Low/High reasoning contract 0ms",
+        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps Hy3 JANGTQ_K Low/High reasoning contract 1ms",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects Gemma 3 tool_code parser without reasoning extraction",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects Gemma 3n as Gemma tool_code parser without reasoning extraction",
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps Gemma 3 text bundles text-only with Gemma tool_code parser",
@@ -263,15 +263,15 @@
         " \u2193 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > routes affine-JANG qwen3_vl_moe text-only until the mlx-vlm M-RoPE path is fixed",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > routes N2 Pro affine-JANG Qwen-MoE metadata text-only until VL is live-proven 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps affine-JANG Qwen native-MTP VL artifacts multimodal when indexed MTP and vision tensors exist 1ms",
-        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps MXTQ/JANGTQ Qwen hybrid VLM multimodal 0ms",
+        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps MXTQ/JANGTQ Qwen hybrid VLM multimodal 1ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps mxfp4 Qwen hybrid VLM multimodal 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps mxfp8 Qwen hybrid VLM multimodal 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > marks non-JANG Qwen 3.6 MoE bundles with vision/video metadata as multimodal 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > marks Qwen/N2 JANGTQ vision-video bundles audio-unavailable without weight-backed audio 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > documents Qwen 3.6 release rows intentionally use qwen3.5 family aliases 1ms",
-        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > does not route Nemotron-H text extracts through MLLM from stale sidecars 0ms",
+        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > does not route Nemotron-H text extracts through MLLM from stale sidecars 1ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > keeps MXTQ/JANGTQ Qwen hybrid VLM multimodal 0ms",
-        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects TurboQuant from config.json weight_format when jang_config is absent 1ms",
+        " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects TurboQuant from config.json weight_format when jang_config is absent 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > uses the registered MiniMax reasoning parser even when bundle sidecars say qwen3 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > detects TurboQuant from config.json quantization when jang_config is malformed 0ms",
         " \u2713 tests/model-config-registry.test.ts > detectModelConfigFromDir JANG multimodal detection > uses JANG capabilities cache and parser stamps for Qwen3.6 hybrid bundles 0ms",
@@ -300,8 +300,8 @@
         "",
         " Test Files  1 passed (1)",
         "      Tests  51 passed | 22 skipped (73)",
-        "   Start at  10:16:56",
-        "   Duration  137ms (transform 51ms, setup 0ms, import 60ms, tests 25ms, environment 0ms)",
+        "   Start at  12:53:42",
+        "   Duration  164ms (transform 57ms, setup 0ms, import 68ms, tests 26ms, environment 0ms)",
         ""
       ]
     },
@@ -319,7 +319,7 @@
       ],
       "cwd": "panel",
       "returncode": 0,
-      "elapsed_sec": 0.51,
+      "elapsed_sec": 0.499,
       "counts": {
         "passed": 6,
         "skipped": 248,
@@ -443,8 +443,8 @@
         "",
         " Test Files  1 passed (1)",
         "      Tests  6 passed | 248 skipped (254)",
-        "   Start at  10:16:57",
-        "   Duration  135ms (transform 66ms, setup 0ms, import 79ms, tests 3ms, environment 0ms)",
+        "   Start at  12:53:43",
+        "   Duration  174ms (transform 70ms, setup 0ms, import 83ms, tests 3ms, environment 0ms)",
         ""
       ]
     }
