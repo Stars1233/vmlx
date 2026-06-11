@@ -18211,3 +18211,8 @@ Next action:
   `build/current-tool-call-contract-after-zaya-parser-fix-20260611.json`.
 - Aggregate now covers `zaya_text`; remaining cross-family smoke gaps are Hy3,
   MiMo, and ZAYA-VL.
+
+# 2026-06-11 continuation PDT - ZAYA text parser fix pushed
+
+- Pushed `2d2431d76 Fix ZAYA tool argument newlines` to branch and main.
+- No release publishing action was run.

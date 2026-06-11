@@ -13183,3 +13183,20 @@ Other-agent action:
   `[gather_qmm] Last dimension of first input with shape (..., 2048) does not
   match the expanded quantized matrix (4096, 2048)` in
   `vmlx_engine.models.zaya1_vl`; this is not fixed by the text parser change.
+
+# 2026-06-11 continuation PDT - ZAYA text parser fix pushed
+
+- Commit:
+  `2d2431d76 Fix ZAYA tool argument newlines`.
+- Pushed:
+  `origin/codex/pr-intake-manifest` and `origin/main`.
+- Proven:
+  source and isolated bundled ZAYA text smokes pass with exact required-tool
+  args; refreshed tool-call contract and aggregate pass their focused checks.
+- Current cross-family live smoke status:
+  covered `dsv4`, `gemma4`, `lfm`, `ling_bailing`, `minimax`, `nemotron`,
+  `qwen36`, `step3p7`, and `zaya_text`; still missing `hy3`, `mimo_v2`, and
+  `zaya_vl`.
+- Release boundary:
+  no DMG build, signing, notarization, PyPI, updater, website, or public
+  release action was run.
