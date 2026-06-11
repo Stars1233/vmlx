@@ -7177,3 +7177,136 @@ Other-agent action:
     block;
   - this does not clear cache reuse, UI, installed-app, media, MiMo/N2/Gemma
     live rows, or release readiness.
+
+# 2026-06-11 continuation - live blocker phase after parser hardening
+
+- Request:
+  - keep the full production-readiness goal active and move in larger
+    efficient build/proof blocks for Nex/N2 JANGTQ2/non-JANG_1L, MiMo V2.5
+    JANG/JANGTQ, Gemma JANG/MXFP/QAT, VL/video/audio where honestly backed,
+    cache/TurboQuant/native-cache reuse, reasoning/tool parsers, and
+    Responses/Chat streaming deltas;
+  - avoid wasting time on broad test-suite churn or recursive/subagent
+    workflows.
+- Current action:
+  - inspect current objective/checklist/proof artifacts and select the next
+    highest-leverage live E2E blocker, prioritizing raw SSE/tool/reasoning
+    parity or model UI/cache failures over more unit coverage.
+- Boundaries:
+  - no release/sign/notarize/PyPI/updater/site action;
+  - no N2 JANG_1L work unless explicitly reopened;
+  - no subagents or recursive delegation;
+  - no fake parser repairs, synthetic tool args, or reasoning-disablement
+    workaround.
+- Selected blocker:
+  - Gemma4 26B QAT MXFP4 installed-app/bundled-Python proof still fails on
+    missing `reasoning_display` after parser launch detection was fixed, while
+    visible output, tool persistence, Responses deltas, cache controls,
+    mixed-SWA cache hit, and L2 evidence were positive.
+- Next action:
+  - inspect the failed artifact and current server/UI reasoning emission path
+    to determine whether raw reasoning exists but is dropped, or whether the
+    tool-first prompt produces no observable reasoning and the proof gate must
+    be split into a real separate reasoning probe.
+
+# 2026-06-11 Gemma4 26B installed-app reasoning probe artifact classified
+
+- Artifact:
+  - `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-26b-vl-mxfp4-responses-tools-cachecontrols-bundled-python-reasoning-probe-20260611-proof.json`
+- Result:
+  - status still failed because requested real reasoning display was not
+    recorded;
+  - the added no-tools reasoning probe did send
+    `Do not use tools. Think briefly, then answer exactly: FOUR`;
+  - server command used bundled Python with `--tool-call-parser gemma4` and
+    `--reasoning-parser gemma4`;
+  - resolved sampling kwargs on all Responses calls included
+    `enable_thinking: True`;
+  - event counts were `stream=23`, `tool=139`, `reasoningDone=0`,
+    `complete=3`;
+  - persisted reasoning count was `0` across all three assistant messages;
+  - visible outputs and tool loop were good, and mixed-SWA/paged/L2 cache
+    evidence was present.
+- Classification:
+  - current evidence does not support a UI-only dropped-reasoning conclusion;
+  - it shows no reasoning rail was emitted by the bundled server for this
+    exact installed-app 26B QAT MXFP4 prompt sequence.
+- Next action:
+  - run a same-model direct bundled-server raw SSE no-tools reasoning probe
+    before changing runtime or proof requirements. If raw SSE emits reasoning,
+    inspect UI/proof capture; if raw SSE emits none, keep the row red or split
+    the release gate as model-output behavior without faking reasoning.
+
+# 2026-06-11 Gemma4 26B direct raw SSE reasoning proof
+
+- Direct bundled-server raw SSE artifacts:
+  - `build/current-direct-bundled-gemma4-26b-mxfp4-no-tools-reasoning-sse-20260611.txt`
+  - `build/current-direct-bundled-gemma4-26b-mxfp4-tool-history-reasoning-sse-20260611.txt`
+- Result:
+  - same bundled Python/server/model emitted standard
+    `response.reasoning_summary_text.delta` and
+    `response.reasoning_summary_text.done` events with `enable_thinking:true`;
+  - final `response.completed` included both message output and reasoning
+    item with `output_index` 0/1 ordering;
+  - direct prompt-only output was `FOUR` with reasoning usage around 86 output
+    tokens;
+  - direct Responses-style tool-history input also emitted reasoning and
+    `FOUR`, so prior tool history alone does not explain the UI proof's
+    missing reasoning.
+- Classification:
+  - Gemma4 26B bundled engine/server reasoning parser is working for direct
+    raw SSE;
+  - installed-app proof failure is now localized to exact UI request body,
+    loopback remote app request path, or proof capture/persistence.
+- Next action:
+  - add session-log capture to the live UI proof artifact so the existing
+    `[CHAT_DIAG] request_shape=...` entries are retained. This is proof
+    instrumentation only, not a fake runtime fix.
+
+# 2026-06-11 Gemma4 26B installed-app proof passed with reasoning/cache/session logs
+
+- Source/proof edit:
+  - `panel/scripts/live-real-ui-model-proof.mjs` now captures
+    `window.api.sessions.getLogs(remote.session.id)` into `sessionLogTail`
+    so `[CHAT_DIAG] request_shape=...` survives in proof artifacts.
+  - This is proof instrumentation only; it does not synthesize reasoning,
+    rewrite request bodies, or weaken assertions.
+- Verification:
+  - `node --check panel/scripts/live-real-ui-model-proof.mjs` passed.
+  - `.venv/bin/python -m pytest tests/test_release_regression_manifest.py::test_release_regression_manifest_real_ui_live_model_script_exists_and_uses_real_session_path -q`
+    passed.
+- Live installed-app artifact:
+  - `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-26b-vl-mxfp4-responses-tools-cachecontrols-bundled-python-sessionlogs-reasoning-probe-20260611-proof.json`
+- Result:
+  - status `pass`;
+  - proven surfaces include installed app UI, real loaded model, Responses API,
+    Responses delta streaming, reasoning display, long tool loop,
+    settings persistence, generation defaults, parser leak check, language
+    leak check, server cache controls, cache endpoint stats, cache hit
+    telemetry, native cache status, L2 disk storage, Responses cache-detail
+    usage, and tool/L2 cache integration;
+  - event counts: `stream=61`, `tool=121`, `reasoningDone=1`,
+    `complete=3`;
+  - persisted reasoning count: `1`;
+  - no-tools reasoning probe request shape: `has_tools=false`,
+    `enable_thinking=true`, `max_tokens=1024`;
+  - app log recorded `content: 4 chars, reasoning: 155 chars` for the
+    no-tools probe;
+  - cache proof: 3 cache-hit requests, 3723 cache-hit tokens, 3723 L2 block
+    tokens on disk, q4 KV storage-boundary quantization for Gemma4 mixed-SWA
+    native cache, generic TurboQuant KV correctly not active for this native
+    mixed-SWA contract;
+  - live speeds in app logs were about 70.7, 71.0, and 71.3 tok/s for the
+    three assistant turns after prompt processing.
+- Other-agent note:
+  - Treat this Gemma4 26B QAT MXFP4 installed-app no-media row as green for
+    Responses/tool/reasoning/cache/UI/bundled-Python proof using the artifact
+    above.
+  - Do not claim Gemma media/video/audio from this artifact; this was a
+    no-media row.
+  - Do not use the older failed `...parser-detected...` or first
+    `...reasoning-probe...` artifacts as current status except as historical
+    failure breadcrumbs.
+  - Keep MiMo, N2 non-JANG_1L/JANGTQ, Gemma media/video/audio, Qwen live
+    gateway/tunnel recapture, and release packaging/sign/notarize gates
+    separate.
