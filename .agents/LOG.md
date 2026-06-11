@@ -13798,3 +13798,6 @@ Next action:
 
 # 2026-06-10 17:30 PDT
 - Reproduced and fixed compact XML fallback argument corruption in `vmlx_engine.api.tool_calling.parse_tool_calls`: `<arg_value>` no longer strips leading/trailing spaces or leaves XML entities escaped. New red/green test covers path spaces, shell specials, XML entities, and newline payloads. Verification passed: new test `1/1`, parser file py_compile, full `tests/test_reasoning_tool_interaction.py` `75/75`, empty-args/Responses streaming guard set `14/14`, and `git diff --check`. No live gateway/tunnel recapture, release, PyPI, N2 JANG_1L, or subagent action.
+
+# 2026-06-10 17:41 PDT
+- Reproduced and fixed DSML degraded/plain `<param>` string repair trimming in `vmlx_engine/tool_parsers/dsml_tool_parser.py`: string-schema values now preserve raw spaces/newlines while non-string JSON types still trim before parse and whitespace-only strings still fail closed. Verification passed: new DSML test `1/1`, DSML suite `24/24`, combined parser/Responses/required-args guards `89/89`, py_compile, and `git diff --check`. No DSV4 live recapture, release, PyPI, N2 JANG_1L, or subagent action.

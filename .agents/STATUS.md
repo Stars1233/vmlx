@@ -6597,3 +6597,39 @@ Other-agent action:
   - No new live same-model gateway/tunnel recapture was run in this movement.
   - This does not clear MiMo speed/exactness/media, Gemma media/installed-app,
     global release, or N2 JANG_1L rows.
+
+# 2026-06-10 DSML plain-param string repair spacing fix
+
+- Reproduced another concrete spacing bug in the DSV4/DSML malformed
+  plain-param repair path:
+  `DSMLToolParser._coerce_plain_param_value()` stripped string-schema payloads
+  recovered from degraded `<param name="...">...</param>` tags.
+- Reproduction:
+  `.venv/bin/python -m pytest -q tests/test_dsml_tool_parser.py::TestDSMLToolParser::test_plain_param_string_repair_preserves_spacing_entities_and_newlines`
+  failed before the fix because the recovered `content` argument lost leading
+  and trailing spaces around a multiline shell/code payload.
+- Source fix:
+  - `vmlx_engine/tool_parsers/dsml_tool_parser.py` now preserves raw string
+    values for schema type `string` in degraded/plain DSML repair.
+  - Numeric/boolean/array/object degraded values still trim before JSON parse.
+  - Whitespace-only string required values still fail closed via
+    `_plain_param_value_present`.
+- Verification:
+  - new DSML plain-param string preservation test passed `1/1`;
+  - `.venv/bin/python -m py_compile vmlx_engine/tool_parsers/dsml_tool_parser.py tests/test_dsml_tool_parser.py`
+    passed;
+  - `.venv/bin/python -m pytest -q tests/test_dsml_tool_parser.py`
+    passed `24/24`;
+  - combined parser/Responses/required-args guard set passed `89/89`;
+  - `git diff --check` passed.
+- Proven:
+  - Degraded DSML plain-param string repair no longer rewrites leading/trailing
+    spaces or newlines in string payloads.
+  - Canonical DSML, schema-keyed DSML repairs, compact XML fallback, XML
+    family parser preservation, empty-args fail-closed behavior, and Responses
+    tool-argument delta/final guards still pass.
+- Not proven:
+  - No new DSV4 live model proof or gateway/tunnel recapture was run in this
+    movement.
+  - This does not clear DSV4 exactness, MiMo, Gemma, N2 JANG_1L, installed-app,
+    or release rows.
