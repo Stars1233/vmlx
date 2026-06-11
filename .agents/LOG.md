@@ -15872,3 +15872,46 @@ Next action:
 - No claim that current JANGTQ_2 exactness is cleared; current artifact
   dimensions already matched, so the literal mutation remains artifact/profile
   or deeper source-vs-quant work.
+# 2026-06-11 00:55 PDT - runtime-sync movement recorded
+
+- Re-anchored in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; branch is
+  `codex/pr-intake-manifest`; only known unrelated dirty file is
+  `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`.
+- Next action is direct comparison against `/Users/eric/jang/jang-tools` runtime
+  files for safe vMLX source fixes. This is not a release/signing action and
+  not an N2 JANG_1L action.
+
+# 2026-06-11 00:55 PDT - runtime-sync comparison result
+
+- `quant_shape_inference.py`: vMLX is newer than local JANG tools for the
+  runtime-safe inference pieces relevant to Qwen hybrid, DeepSeek aliases,
+  MLX-supported model-weight group sizes, and VLM key-prefix normalization.
+- Reasoning parser registration/files: vMLX is newer than local JANG tools for
+  `minimax_m2`, `think_xml`, DeepSeek direct-rail handling, and Gemma4
+  streaming/orphan-close handling.
+- No patch made from local JANG tools because copying those files into vMLX
+  would remove current runtime fixes.
+- Next movement: inspect required-tool/API failure path for clean harness
+  usability without fake parser repair.
+
+# 2026-06-11 00:58 PDT - Responses required-tool stream lifecycle fix
+
+- Root cause found: Responses streaming required-tool fail-closed path had
+  `error` plus failed `response.completed`, but no `response.failed` lifecycle
+  event. This is a client/harness compatibility gap, not a parser-argument
+  repair issue.
+- Source changed:
+  `vmlx_engine/server.py` emits `response.failed` before the existing failed
+  `response.completed` object for the required-tool/no-valid-call streaming
+  path.
+- Test changed:
+  `tests/test_server.py` pins `response.failed` in the preamble + empty XML
+  required-tool regression.
+- Proof:
+  Python py_compile passed; 4 selected `tests/test_server.py` Responses stream
+  tests passed; 20 required-args/parser tests passed; panel Vitest targeted
+  suite passed 299 tests from `panel/`.
+- Non-proof command noise:
+  npm root command failed due missing root package.json; panel Vitest with
+  `--runInBand` failed because Vitest does not support that option; rerun
+  without the option passed.

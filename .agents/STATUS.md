@@ -10117,3 +10117,99 @@ Other-agent action:
   evidence already showed the present 2-bit artifact's packed dimensions match
   expected MiMo widths; the remaining literal mutation still likely requires
   source-vs-quant proof or a less lossy artifact profile.
+
+# 2026-06-11 00:55 PDT runtime-surface sync lane re-opened
+
+- Current-turn instruction:
+  be systematic in testing, understanding, and fixing. Continue reducing real
+  runtime/API/model blockers while writing each movement down.
+- Selected blocker:
+  runtime surface drift between vMLX and current JANG tooling that could affect
+  MiMo/N2/Gemma/Qwen loaders, reasoning parser registration, quant shape
+  inference, JANG/JANGTQ/MXFP detection, and agentic API correctness.
+- Current action:
+  compare current vMLX source with `/Users/eric/jang/jang-tools` runtime files
+  named in the prior handoff, especially `quant_shape_inference.py` and
+  reasoning parser registration. Patch only if there is a concrete runtime
+  difference that belongs in vMLX.
+- Boundaries:
+  do not spawn subagents; do not work N2 JANG_1L; do not sign, notarize, tag,
+  publish PyPI, update download JSON, or touch release websites in this lane;
+  do not claim release readiness from source-only sync.
+
+# 2026-06-11 00:55 PDT runtime-surface sync result
+
+- Compared:
+  `vmlx_engine/utils/quant_shape_inference.py` versus
+  `/Users/eric/jang/jang-tools/jang_tools/quant_shape_inference.py`.
+- Result:
+  vMLX is ahead of local JANG tools. vMLX has newer mixed-affine/Qwen hybrid
+  distrust handling, supported MLX runtime bits/group-size filtering,
+  DeepSeek-V4 sanitized alias overrides, CRACK VLM key-prefix normalization,
+  and top-level runtime override logic. Copying the local JANG file into vMLX
+  would remove runtime fixes.
+- Compared:
+  `vmlx_engine/reasoning/__init__.py`, `deepseek_r1_parser.py`,
+  `gemma4_parser.py`, and `think_parser.py` versus local JANG tools.
+- Result:
+  vMLX already registers `minimax_m2` and `think_xml`, has newer DeepSeek
+  direct-rail handling, and has newer Gemma4 short-content/orphan-close
+  streaming handling. No vMLX source patch is justified from these local JANG
+  files.
+- Boundary:
+  this only clears the specific local JANG-tools runtime-sync check. It does
+  not clear MiMo exactness, media semantics, live source-vs-quant, installed-app
+  parity, or release readiness.
+
+# 2026-06-11 00:55 PDT next parser/API usability lane selected
+
+- Selected blocker:
+  auto/required tool usage, Responses/Chat API usability, streaming deltas, and
+  reasoning parser behavior for agent harnesses when a model fails to produce a
+  valid tool call.
+- Reason:
+  current MiMo JANG_2L live proof preserved exact JSON but required-tool mode
+  failed closed with `tool_calls_required` and no malformed call. Qwen empty-arg
+  proof already shows missing required args fail closed, but harness usability
+  still depends on clean final error shape, no raw XML/reasoning leaks, cache
+  telemetry preservation, and consistent behavior across Chat/Responses.
+- Current action:
+  inspect the server failure path and existing tests/artifacts before changing
+  code. Do not synthesize missing arguments or force a fake tool call.
+
+# 2026-06-11 00:58 PDT Responses required-tool failed stream event fix
+
+- Finding:
+  the Responses streaming required-tool fail-closed path emitted a bare
+  `error` event and then `response.completed` with `status="failed"`, but it
+  did not emit the standard `response.failed` lifecycle event. The panel
+  already recognizes `response.failed`, and OpenAI's Responses streaming event
+  list includes `ResponseFailedEvent`, so missing it is an API compatibility
+  gap for harnesses that listen for lifecycle failures.
+- Patch:
+  `vmlx_engine/server.py` now emits `response.failed` with the same failed
+  response object before the existing backward-compatible
+  `response.completed` failed object. This does not synthesize missing tool
+  arguments, does not relax schema validation, does not hide parser failures,
+  and does not change tool-call acceptance.
+- Test pin:
+  `tests/test_server.py` now asserts that the empty XML required-tool streaming
+  regression emits no visible deltas, no function_call items, no argument
+  events, no `arguments: "{}"`, a `tool_calls_required` error, a
+  `response.failed` response with `status="failed"`, and the existing failed
+  final response object.
+- Verification:
+  `.venv/bin/python -m py_compile vmlx_engine/server.py` passed.
+  `.venv/bin/python -m pytest -q tests/test_server.py -k 'streaming_responses_preamble_empty_xml_tool_call_never_emits_empty_arguments or streaming_responses_required or reasoning_tool_call_keeps_arguments or streaming_responses_tool_call_uses_next_output_index_without_text or reasoning_item_advances_function_call_output_index'`
+  passed 4 selected tests.
+  `.venv/bin/python -m pytest -q tests/test_tool_parser_required_args_fail_closed.py tests/test_xml_function_tool_parser.py::TestXMLFunctionToolParser::test_empty_function_with_required_schema_fails_closed`
+  passed 20 tests.
+  `cd panel && npm test -- tests/chat-settings-compatibility.test.ts tests/request-builder.test.ts tests/model-config-registry.test.ts tests/audit-fixes.test.ts`
+  passed 299 tests.
+- Verification noise:
+  `npm test ...` from repo root failed because package.json is under `panel/`.
+  `cd panel && npm test ... --runInBand` failed because Vitest does not accept
+  that Jest option. Both were rerun correctly and passed as above.
+- Boundary:
+  this is source/API compatibility proof, not a live same-model direct/gateway/
+  tunnel recapture and not release readiness.
