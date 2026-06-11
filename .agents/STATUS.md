@@ -13024,3 +13024,16 @@ Other-agent action:
   isolated bundled-Python Step3.7 proof remains stale until bundled Python is
   rebuilt/synced from source. Do not claim installed/bundled parity from this
   source proof alone.
+
+# 2026-06-11 continuation PDT - Step3.7 source parser fix pushed
+
+- Commit:
+  `91d20408f Fix Step3.7 tool argument newlines`.
+- Pushed:
+  `origin/codex/pr-intake-manifest` and `origin/main`.
+- Proven in source:
+  Step3.7 required-tool scalar wrapper newlines are normalized by the parser, with focused regression tests and current-source live smoke proof.
+- Not yet claimed:
+  bundled Python, installed app, signed/notarized DMG, PyPI, updater JSON, website, or release parity.
+- Next work:
+  continue runtime/API proof gaps from the aggregate; keep N2 JANG_1L off-limits and no release/sign/notarize actions unless Eric explicitly unlocks them in the current turn.

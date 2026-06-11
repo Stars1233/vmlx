@@ -18154,3 +18154,8 @@ Next action:
 - Still open:
   bundled/installed Python parity must be rebuilt/proven separately; do not use
   this source proof as an installed-app release claim.
+
+# 2026-06-11 continuation PDT - Step3.7 push receipt
+
+- Pushed `91d20408f Fix Step3.7 tool argument newlines` to branch and main.
+- This is a source/runtime parser fix plus source smoke proof only; installed-app parity remains open.
