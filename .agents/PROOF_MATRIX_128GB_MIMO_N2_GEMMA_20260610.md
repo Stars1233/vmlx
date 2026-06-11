@@ -7,6 +7,54 @@ separates what was actually loaded and proven from what remains red.
 
 ## Latest Proof Additions
 
+### MiMo JANGTQ_2 Required Tool Raw SSE Exactness Red
+
+Artifact:
+
+- `build/current-mimo-jangtq2-required-tool-raw-sse-20260610.sse`
+
+Live setup:
+
+- Direct source server only; no gateway/tunnel.
+- MiMo JANGTQ_2 loaded from
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2`.
+- Responses API streaming, `tool_choice=required`, `xml_function` parser,
+  `think_xml` reasoning parser, native MiMo mixed full/SWA cache, paged cache,
+  block-disk L2, deterministic `temperature=0`, `top_p=1`.
+- Tool schema required one string field: `value`.
+- Prompt requested `record_fact` exactly once with value `blue-cat`.
+
+Green:
+
+- Structural raw SSE was valid.
+- Message item used `output_index=0`; function call item used
+  `output_index=1`.
+- `response.function_call_arguments.delta`,
+  `response.function_call_arguments.done`, final `response.output_item.done`,
+  and `response.completed` agreed on the same argument object.
+- No empty `{}` args, no parser exception, and no visible raw XML/tool-markup
+  leak.
+- Native JANGTQ/TurboQuant runtime remained active, and block-disk L2 wrote
+  5 blocks / `288` cache-key tokens for the prompt.
+
+Red:
+
+- Required string exactness failed. The request asked for `blue-cat`, but the
+  model/tool path streamed:
+  - delta 1: `{"value": "blue `
+  - delta 2: `cat"}`
+  - final: `{"value": "blue cat"}`
+- This is not the Qwen-style empty-arguments transport bug. It is a MiMo
+  spacing/special-character tool-argument exactness failure.
+
+Boundary:
+
+- Do not clear this row by post-parse string repair, schema coercion, prompt
+  wording only, or synthetic argument reconstruction.
+- Still open: tool-result continuation, auto-tool/no-tool comparison,
+  gateway/tunnel parity, installed-app parity, media semantics, and release
+  readiness.
+
 ### MiMo JANG_2L vs JANGTQ_2 Post-Warm Direct Speed Boundary
 
 Artifacts:

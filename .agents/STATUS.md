@@ -1,4 +1,33 @@
 ## CODEX
+- now: completed MiMo JANGTQ_2 direct raw Responses SSE required-tool capture.
+- artifact: `build/current-mimo-jangtq2-required-tool-raw-sse-20260610.sse`.
+- proven green surfaces: real JANGTQ_2 source server, native TurboQuant,
+  native mixed-SWA cache/L2, required-tool structural SSE, output indices
+  message=`0` and function_call=`1`, argument delta/done/final consistency,
+  no empty `{}` args, no raw XML leak in visible stream, and block-disk L2
+  write-through for `288` cache-key tokens.
+- red classification: MiMo JANGTQ_2 mutated required tool string
+  `blue-cat` into `blue cat` in the streamed argument deltas and final
+  function_call object. This is a parser/template/model exactness failure for
+  spacing/special-character tool arguments, not a transport/gateway empty-args
+  failure and not something to repair after parsing.
+- no-claim: this does not clear MiMo agentic-loop/tool exactness, tool-result
+  continuation, gateway parity, installed app parity, media semantics, or
+  release readiness.
+
+## CODEX
+- now: commit `ef872b5b9` (`Classify MiMo JANG speed boundary`) pushed to
+  `origin/codex/pr-intake-manifest` and `origin/main`. Only known unrelated
+  dirty panel proof JSON and untracked `node_modules/` remain.
+- next blocker being reduced: MiMo JANGTQ_2 `parser/template` and `api/ui`
+  raw Responses SSE behavior for agentic loops: required tool call, argument
+  delta/done/final consistency, visible content delta hygiene, reasoning parser
+  behavior, and cache telemetry. This is source/runtime proof only, not release.
+- planned action: relaunch MiMo JANGTQ_2 direct source server and capture one
+  required-tool streaming Responses request. Do not synthesize arguments or
+  repair output; if the model fails, classify the failure.
+
+## CODEX
 - now: completed direct source MiMo post-warm speed boundary proof, no release
   action and no server left running.
 - JANG_2L result: real

@@ -71,6 +71,34 @@
 - Matrix updated:
   `.agents/PROOF_MATRIX_128GB_MIMO_N2_GEMMA_20260610.md`.
 
+# 2026-06-10 20:15 PDT - MiMo JANGTQ_2 required-tool raw SSE red exactness
+
+- Ran direct source MiMo JANGTQ_2 Responses streaming request with required
+  `record_fact` tool and required `value` string. No gateway/tunnel involved.
+- Artifact:
+  `build/current-mimo-jangtq2-required-tool-raw-sse-20260610.sse`.
+- Request asked: use `record_fact` exactly once with value `blue-cat`, no text.
+- Green transport/parser surfaces:
+  - real JANGTQ_2 source server with native TurboQuant;
+  - native mixed full/SWA cache and block-disk L2 active;
+  - structural SSE was valid: message output index `0`, function_call output
+    index `1`;
+  - `response.function_call_arguments.delta`,
+    `response.function_call_arguments.done`, final
+    `response.output_item.done`, and `response.completed` all agreed;
+  - no empty `{}` args and no visible raw XML/tool-markup leak;
+  - block-disk L2 wrote 5 blocks / 288 cache-key tokens for the prompt.
+- Red exactness surface:
+  - streamed deltas were `{"value": "blue ` and `cat"}`;
+  - done/final arguments were `{"value": "blue cat"}`;
+  - expected exact value was `blue-cat`.
+- Classification: MiMo JANGTQ_2 required-tool transport is not the Qwen-style
+  empty-args bug, but it is still red for spacing/special-character argument
+  exactness. Do not fix by post-parse string repair, schema coercion, or
+  synthetic argument reconstruction.
+- No-claim: this does not clear tool-result continuation, gateway/tunnel parity,
+  installed-app parity, media semantics, or release readiness.
+
 # 2026-06-10 - MiMo local runtime/cache lane selected
 
 - Request: continue toward production readiness for the named model families
