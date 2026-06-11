@@ -1,3 +1,21 @@
+# 2026-06-11 01:39 PDT - Gemma4 required-tool checkpoint pushed
+
+- Commit `2200598e9 Improve Gemma4 required tool streaming` pushed to
+  `origin/codex/pr-intake-manifest` and `origin/main`.
+- Commit contains Gemma4 native required-tool prompt reinforcement, Gemma4
+  required-turn thought-channel close instruction, Responses streaming
+  required-tool retry that preserves request thinking, and focused regression
+  coverage.
+- Verification before push: focused parser/server audit selection passed `4/4`;
+  `.venv/bin/python -m py_compile vmlx_engine/server.py
+  vmlx_engine/api/tool_calling.py` passed; `git diff --check` passed.
+  `tests/test_server.py -k 'tool_calls_required or required_tool'` selected
+  no tests.
+- Release/proof boundary to hand off: Gemma4 E2B reasoning-on required tools
+  remain red; thinking-off tool execution is live-proven but needs the
+  tool-first Responses streaming proof assertion corrected before marking the
+  row pass. No release/sign/notarize/PyPI/updater/site action was run.
+
 # 2026-06-11 01:34 PDT - Gemma4 E2B required-tool live classification
 
 - Reran Gemma4 E2B QAT JANG4M source dev UI Responses/tool/cache row after

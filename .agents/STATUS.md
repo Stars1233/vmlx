@@ -1,4 +1,22 @@
 ## CODEX
+- now: Gemma4 required-tool source/proof checkpoint is committed and pushed.
+- commit: `2200598e9 Improve Gemma4 required tool streaming`, pushed to
+  `origin/codex/pr-intake-manifest` and `origin/main`.
+- included fixes: Gemma4 native required-tool prompt injection, Gemma4
+  thought-channel close instruction for required tool turns, and Responses
+  streaming required-tool retry that preserves request thinking and remains
+  fail-closed.
+- verification: focused parser/server audit selection passed `4/4`;
+  `.venv/bin/python -m py_compile vmlx_engine/server.py
+  vmlx_engine/api/tool_calling.py` passed; `git diff --check` passed.
+  `tests/test_server.py -k 'tool_calls_required or required_tool'` selected
+  `0` tests.
+- remaining boundary: Gemma4 E2B reasoning-on required tools are still red even
+  with retry; thinking-off tool execution is live-proven but the proof harness
+  still needs the tool-first Responses delta-surface assertion corrected before
+  it can be a green row.
+
+## CODEX
 - now: live Gemma4 E2B source UI reruns classified the required-tool blocker
   more narrowly.
 - source fixes added: Gemma4 native required-tool fallback/reminder injection in
