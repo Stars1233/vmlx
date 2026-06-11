@@ -9504,3 +9504,73 @@ Other-agent action:
   also fails. Prior notes say the source endpoint should be a deliberate
   AdLab/TP4 relaunch through `adlab-pair`; this lane did not start that
   orchestration.
+
+# 2026-06-11 continuation - Qwen Responses raw SSE/tool lane selected
+
+- Current-turn instruction:
+  continue the active objective by reducing real unblocked blockers in large
+  efficient blocks, not by broad harness churn. Keep N2 JANG_1L off-limits and
+  do not use subagents or release/sign/notarize/PyPI/updater/site actions.
+- Lane selection:
+  Qwen/Qwen-coder Responses raw SSE, reasoning/tool streaming, output index,
+  required/auto/no-tool behavior, gateway/tunnel parity, and exact tool
+  arguments. This is the next unblocked high-impact lane because MiMo
+  source-vs-quant requires absent source/quant endpoints.
+- Boundary:
+  do not synthesize tool arguments from preambles, disable reasoning, silently
+  drop required tool calls as a fake success, or claim deployed parity from
+  source-only parser tests. Direct/gateway/tunnel raw SSE or source/gateway
+  provenance must prove the actual serving surface.
+
+# 2026-06-10 23:51 PDT Qwen auto/no-tool/tool-result audit continuation
+
+- Current movement:
+  re-read active directives and current status after context transition, then
+  continue the Qwen Responses/tool lane.
+- First target:
+  inspect the existing Qwen35 MXFP8/MTP Responses `tool-result`, `auto`, and
+  `no-tool` proof artifact that reports `overall_pass=false`, because it maps
+  directly to Eric's concern about opencode/agent harness usability, auto tool
+  choice, content/reasoning deltas, tool-result continuation, kwargs, cache
+  reuse, and no raw XML/thinking leaks.
+- Boundary:
+  if the artifact is stale or superseded, record that with exact current
+  checklist evidence. If it reflects a real current runtime/API defect, fix the
+  runtime behavior directly and prove it; do not paper over it with parser
+  argument synthesis, hidden reasoning disablement, or broad test churn.
+
+# 2026-06-10 23:59 PDT Qwen35 auto/no-tool/tool-result proof traced
+
+- Finding:
+  the suspicious
+  `build/current-qwen35-mxfp8-mtp-responses-tool-result-auto-no-tool-final-thinking-off-20260610/SUMMARY.json`
+  failure was cache-only (`cache_reuse_each_turn_after_first=false`), not a
+  tool-call/parser/markup failure. It had required tool calls, grounded tool
+  evidence, final no-tools/no-thinking visible output, and no raw tool markup
+  leak, but hybrid SSM companion matches were missing on later turns.
+- Superseding proof:
+  `build/current-qwen35-mxfp8-mtp-responses-tool-result-auto-no-tool-after-ssm-size-scale-20260610/SUMMARY.json`
+  is `overall_pass=true` and proves three turns with `previous_response_id`,
+  required tool calls on turns 1/2, tool-result continuation, final no-tool
+  visible output with thinking off, reasoning chars on the tool turns, no
+  markup/loop leak, cached tokens `128`/`256`, cache detail `paged+ssm`, and
+  block+SSM L2 storage.
+- Source trace update:
+  `tests/cross_matrix/run_full_release_objective_checklist.py` now points the
+  Qwen35 long-tool/cache row at the superseding auto/no-tool/tool-result proof,
+  and `tests/cross_matrix/run_current_regression_suite.py` now runs/allows-open
+  the regenerated full checklist
+  `build/current-full-release-objective-checklist-after-qwen35-auto-tool-cache-proof-20260611.json`.
+- Regenerated board:
+  `build/current-full-release-objective-checklist-after-qwen35-auto-tool-cache-proof-20260611.json`
+  remains `status=open`, `failed_count=49`; there are no Qwen/raw-SSE failed
+  rows. This is not release readiness.
+- Verification:
+  `python3 -m py_compile tests/cross_matrix/run_full_release_objective_checklist.py tests/cross_matrix/run_current_regression_suite.py`
+  passed. `.venv/bin/python -m pytest -q tests/test_full_release_objective_checklist.py -k qwen35`
+  passed `2/2`. `.venv/bin/python -m pytest -q tests/test_current_regression_suite.py::test_current_regression_suite_runs_full_release_objective_checklist tests/test_current_regression_suite.py::test_current_regression_suite_allows_open_full_release_objective_checklist`
+  passed `2/2`. `git diff --check` passed.
+- Remaining blockers:
+  prepackage/release/package readiness, N2 JANG_1L clearance, MiMo exactness
+  and media/L2 rows, Step3.7/LFM/Nemotron/MiniMax/DSV4 rows, and installed app
+  parity remain open. N2 JANG_1L is still off-limits for this lane.

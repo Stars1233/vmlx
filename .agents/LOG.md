@@ -15367,3 +15367,75 @@ Next action:
   same first-divergence harness with local quant endpoint on `127.0.0.1:8897`.
   Do not mask this with parser/JSON repair, string post-processing, cache
   changes, or sampling clamps.
+
+# 2026-06-11 continuation - Qwen Responses raw SSE/tool lane
+
+- Request:
+  continue fixing/proving current blockers for N2/MiMo/Gemma/Qwen without
+  wasting time on unrelated test-suite work.
+- Action:
+  selecting Qwen/Qwen-coder Responses raw SSE/tool/reasoning parity as the
+  next unblocked lane after MiMo source-vs-quant preflight showed absent
+  endpoints.
+- Required evidence:
+  inspect current source and artifacts for same-model direct/gateway/tunnel raw
+  SSE, required/auto/no-tool tool modes, content and reasoning deltas,
+  arguments delta/done, final-object consistency, output_index ordering,
+  tool-result continuation, request kwargs, cache telemetry, and no XML/thinking
+  leaks.
+- No-claim:
+  source-only empty-args parser tests are not enough for deployed parity.
+
+# 2026-06-10 23:51 PDT Qwen auto/no-tool/tool-result audit continuation
+
+- Request:
+  stay systematic, focus on real Responses/tool/reasoning defects, keep the
+  status written down, and do not drift into release actions, subagents, or N2
+  JANG_1L.
+- Action:
+  after re-reading the active directives and current board, continue on the
+  Qwen lane by auditing the existing Qwen35 MXFP8/MTP Responses proof artifact
+  whose `overall_pass=false` conflicts with the otherwise green raw-SSE
+  checklist row.
+- What will be checked:
+  required/auto/no-tool modes, tool-result continuation, content delta and
+  reasoning delta behavior, arguments streaming, output index consistency,
+  final object consistency, request kwargs, cache telemetry, and raw
+  XML/thinking leakage.
+- Boundary:
+  no runtime claim will be made from stale proof names alone; no workaround will
+  synthesize missing tool args or disable reasoning to make the issue disappear.
+
+# 2026-06-10 23:59 PDT Qwen35 auto/no-tool/tool-result proof traced
+
+- Action:
+  audited the failing Qwen35 MXFP8/MTP auto/no-tool/tool-result proof and the
+  newer SSM-size-scale proof instead of rerunning already-green raw-SSE
+  captures.
+- Result:
+  the failing `final-thinking-off` artifact failed only because per-turn cache
+  reuse was not observed; tool calling itself was structurally clean. The newer
+  `build/current-qwen35-mxfp8-mtp-responses-tool-result-auto-no-tool-after-ssm-size-scale-20260610/SUMMARY.json`
+  supersedes it with `overall_pass=true`, required tool calls, tool-result
+  continuation, final no-tool/no-thinking visible output, reasoning-on tool
+  turns, `paged+ssm` hits, and block+SSM L2 storage.
+- Source edits:
+  updated `QWEN35_LONG_TOOL_CACHE` in
+  `tests/cross_matrix/run_full_release_objective_checklist.py` to the newer
+  proof, updated the fixture in `tests/test_full_release_objective_checklist.py`,
+  and moved the current regression suite full-checklist output/allow-open path
+  to
+  `build/current-full-release-objective-checklist-after-qwen35-auto-tool-cache-proof-20260611.json`.
+- Regenerated proof:
+  `build/current-full-release-objective-checklist-after-qwen35-auto-tool-cache-proof-20260611.json`
+  remains `status=open`, `failed_count=49`, and has no Qwen/raw-SSE failed
+  rows.
+- Verification:
+  `python3 -m py_compile tests/cross_matrix/run_full_release_objective_checklist.py tests/cross_matrix/run_current_regression_suite.py` passed;
+  `.venv/bin/python -m pytest -q tests/test_full_release_objective_checklist.py -k qwen35` passed `2/2`;
+  `.venv/bin/python -m pytest -q tests/test_current_regression_suite.py::test_current_regression_suite_runs_full_release_objective_checklist tests/test_current_regression_suite.py::test_current_regression_suite_allows_open_full_release_objective_checklist` passed `2/2`;
+  `git diff --check` passed.
+- Boundary:
+  no release/sign/notarize/PyPI/updater/site work was performed. This does not
+  clear MiMo, N2 JANG_1L, package readiness, Step3.7, LFM, Nemotron, MiniMax,
+  or DSV4.
