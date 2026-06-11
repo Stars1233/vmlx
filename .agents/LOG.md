@@ -15574,3 +15574,49 @@ Next action:
 - Verification:
   `.venv/bin/python -m pytest -q tests/test_engine_audit.py::TestToolParserConcurrency::test_xml_function_empty_required_args_fail_closed_at_server_boundary tests/test_engine_audit.py::TestToolParserConcurrency::test_responses_final_tool_emit_drops_empty_required_args tests/test_engine_audit.py::TestL2IncrementalDelta tests/test_tool_parser_required_args_fail_closed.py`
   passed 23/23; `git diff --check` passed.
+
+# 2026-06-11 00:42 PDT N2 JANGTQ2 runtime/API lane
+
+- Request carried forward:
+  focus on Nex/N2 Pro JANGTQ2 runtime/API/cache/UI proof and source fixes while
+  avoiding the wrong N2 JANG_1L heavy launch in this lane.
+- Boundary:
+  no N2 JANG_1L launch, no release/sign/notarize/PyPI/updater/site action, no
+  metadata-only media claims, and no parser/cache fake fixes. JANGTQ2 progress
+  must not be reported as full N2 release clearance while the checklist still
+  explicitly requires JANG_1L evidence.
+- Next check:
+  inspect the current N2 JANGTQ2 artifacts named by the objective checklist,
+  then compare them with runtime detection/cache/API source for concrete defects:
+  previous_response_id/history consumption, parser/reasoning defaults,
+  MTP/gdn_sink/hybrid SSM detection, Responses streaming/tool behavior, L2/cache
+  telemetry, and UI parity.
+
+# 2026-06-11 00:56 PDT N2 JANGTQ2 MTP boundary fix
+
+- Finding:
+  N2 JANGTQ2 already has green chat/cache/Responses/L2 and dev/installed-app
+  evidence, but health/capability metadata reported MTP as
+  `metadata_inconsistent` because the base config still declares one MTP layer
+  while `jang_config.drop_mtp=true` and the bundle indexes zero `mtp.*` tensors.
+- Root cause:
+  duplicated MTP policy in `vmlx_engine/native_mtp.py`,
+  `vmlx_engine/server.py`, and `tests/cross_matrix/run_production_family_audit.py`
+  treated a deliberate MTP drop as inconsistent when no newer runtime sidecar
+  was present. That is a false-negative capability boundary for converted N2
+  artifacts.
+- Fix:
+  if `drop_mtp=true` and no MTP tensors are indexed, report `status=dropped`.
+  Keep the hard inconsistency when `drop_mtp=true` but `mtp.*` tensors are still
+  present.
+- Real N2 no-load proof:
+  `_model_mtp_status("/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2")`
+  reports `status=dropped`, `issues=[]`, `runtime_available=false`,
+  `runtime_bundle_has_mtp=false`, `runtime_mtp_mode=metadata_only_missing_weights`,
+  `config_num_nextn_predict_layers=1`, `mtp_tensor_count=0`.
+- Verification:
+  `.venv/bin/python -m pytest -q tests/test_engine_audit.py::TestTurboQuantKVTelemetry::test_mtp_status_reports_dropped_dsv4_artifact tests/test_engine_audit.py::TestTurboQuantKVTelemetry::test_mtp_status_treats_dropped_jangtq_without_weights_as_dropped tests/test_engine_audit.py::TestTurboQuantKVTelemetry::test_mtp_status_flags_missing_weights_when_config_expects_mtp tests/test_engine_audit.py::TestTurboQuantKVTelemetry::test_mtp_status_flags_indexed_mtp_when_config_disables_runtime`
+  passed 4/4; `git diff --check` passed.
+- Remaining N2 boundaries:
+  N2 JANGTQ2 remains the checkpoint candidate. This does not clear N2 audio,
+  N2 JANG_1L, public tunnel SSE parity, or the full release row.
