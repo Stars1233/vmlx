@@ -7,6 +7,69 @@ separates what was actually loaded and proven from what remains red.
 
 ## Latest Proof Additions
 
+### Nex/N2 Pro JANGTQ2 Installed-App Responses Tool/Cache Proof
+
+Artifact:
+
+- `docs/internal/agent-notes/current-real-ui-installed-app-n2-jangtq2-responses-tools-cache-bundled-python-20260610-proof.json`
+- screenshot:
+  `docs/internal/agent-notes/current-real-ui-installed-app-n2-jangtq2-responses-tools-cache-bundled-python-20260610-chat.png`
+
+Live setup:
+
+- Installed app UI: `/Applications/vMLX.app`.
+- Bundled runtime:
+  `/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3`.
+- Real model:
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2`.
+- Responses API streaming, `tool_choice=auto`, built-in `run_command`
+  tools, `qwen` tool parser, `qwen3` reasoning parser, deterministic
+  `temperature=0`, `top_p=1`, `top_k=1`.
+- Native hybrid cache path: paged cache, block-disk L2, SSM companion cache,
+  and attention-only TurboQuant KV enabled.
+
+Proven:
+
+- Status `pass`; app route used installed-app UI and bundled Python, not the
+  repo venv.
+- Built-in auto tool loop executed both turns without empty `{}` arguments:
+  `eventCounts.tool=106`, `stream=23`, `complete=2`.
+- Tool-result continuation used `previous_response_id` with
+  `function_call_output` follow-up items.
+- Responses delta streaming, parser leak check, language leak check,
+  settings persistence, server cache controls, cache endpoint stats, cache hit
+  telemetry, L2 disk storage, and tool/L2 cache integration were all recorded
+  in `provenSurfaces`.
+- Runtime classified the bundle as `turboquant_codebook`, `weight_format=mxtq`,
+  `profile=JANGTQ2`, 2-bit routed experts, group size 64, with `540`
+  prestacked routed-expert TQ targets and custom TurboQuant kernels.
+- Native cache status reported `family=qwen3_5_moe`,
+  `schema=hybrid_ssm_v1`, components `attention_kv`,
+  `ssm_companion_state`, and `async_rederive`.
+- Attention KV TurboQuant was enabled for attention layers only; SSM companion
+  state stayed native/full precision. Storage-boundary KV quantization used
+  q4/group-64 with async clean-prefill rederive policy.
+- Cache/L2 metrics at end of proof:
+  `ram_tokens_cached=6833`, `l2_block_tokens_on_disk=6833`,
+  `l2_ssm_tokens_on_disk=25265`, `l2_tokens_on_disk=32098`,
+  `blocks_on_disk=109`, `disk_writes=109`, `disk_hits=134`.
+- Live speed samples: `22.4 tok/s` and `27.0 tok/s`; TTFT was
+  `18.35s`/`19.20s` while serving a 100GB-class model with hybrid cache.
+- Health memory: about `103.8GB` active, `108.8GB` peak, with generator peak
+  reported as `114.1GB`.
+
+Boundary:
+
+- This is not N2 JANG_1L proof; that row remains intentionally excluded here.
+- This run had `enable_thinking=false`, so it does not clear N2 visible
+  reasoning/interleaved reasoning-delta proof.
+- It is a no-media row; it does not prove N2 image/video/audio semantics.
+- MTP metadata was detected but runtime MTP was not available because the bundle
+  reports `bundle_has_mtp=false` / `metadata_only_missing_weights`.
+- Server logs still warn that the chat template needs fallback tool schema
+  injection; the proof shows the fallback is usable for this row, not that the
+  model artifact template is complete.
+
 ### DSML HTML-ish Repair Spacing Fix
 
 - Source fix:

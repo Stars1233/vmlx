@@ -8025,6 +8025,67 @@ Other-agent action:
     has current source, then rerun the MiMo JANGTQ_2 installed-app image proof
     to confirm it no longer forces multimodal routing from the UI.
 
+# 2026-06-10 20:11 PDT live E2E proof block continuation
+
+- current objective:
+  continue reducing actual production/checkpoint blockers for Nex/N2 JANGTQ
+  non-JANG_1L, MiMo V2.5 JANG/JANGTQ, Gemma JANG/MXFP/QAT, VL/video/audio
+  honesty, cache reuse/TurboQuant/native cache, reasoning/tool parsers, and
+  Responses streaming/API/UI behavior.
+- execution mode:
+  work in larger blocks: inspect current proof/model state, run or fix one
+  high-value live E2E row, then verify broadly enough and document. Avoid
+  building new harnesses or spending this block on low-value test-suite churn.
+- constraints:
+  no release/sign/notarize/PyPI/updater/site action; no N2 JANG_1L; no
+  subagents; no synthetic tool-arg repair; no fake modality advertisement; no
+  metadata-only media proof.
+- next movement:
+  inventory available target model paths and existing installed-app/API proof
+  command surfaces, then select the highest-value currently open row that can
+  be run from the current source/app without new harness creation.
+
+# 2026-06-10 20:12 PDT selected N2 JANGTQ2 installed-app tool/cache row
+
+- inventory:
+  local target models include `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2`,
+  MiMo JANG/JANGTQ, and Gemma 12B/26B/31B JANG/MXFP/QAT. N2 JANG_1L is also
+  present but remains off-limits.
+- selected row:
+  Nex/N2 Pro JANGTQ2 installed-app Responses auto-tool/cache proof, because
+  the existing N2 JANGTQ2 artifact is a delta-only row and does not clear
+  agentic auto-tool usage/tool-result continuation.
+- preflight:
+  `panel/scripts/verify-bundled-python.sh` failed on bundled
+  `vmlx_engine/tool_parsers/dsml_tool_parser.py` content drift after the parser
+  fixes, so installed-app proof must wait for a local bundled-Python refresh
+  and app build/install from this checkout.
+- boundary:
+  this is local build/proof preparation only; no release DMG, notarization,
+  tag, appcast, PyPI, updater, website, or N2 JANG_1L action.
+
+# 2026-06-10 20:18 PDT local app rebuild/install complete
+
+- bundled refresh:
+  `./panel/scripts/bundle-python.sh` completed and installed local
+  `vmlx==1.5.57` plus local `jang==2.5.30` into `panel/bundled-python`.
+- bundle verification:
+  `./panel/scripts/verify-bundled-python.sh` passed all critical content and
+  import checks, including current `vmlx_engine`, current `jang_tools`,
+  Gemma4 unified, MiMo, Step3.7, JANG/JANGTQ loaders, Kimi, TurboQuant kernels,
+  and audio feature imports.
+- app build/install:
+  `./panel/scripts/build-and-install.sh` completed, rebuilt bundled Python as
+  part of the app build, packaged Electron, signed 500 bundled Python native
+  files, installed `/Applications/vMLX.app`, and `codesign --verify` reported
+  valid on disk and satisfying designated requirement.
+- boundary:
+  local installed-app checkpoint only. No release DMG, notarization, tag,
+  appcast/latest.json, PyPI, updater, website, or GitHub release action.
+- next movement:
+  run the selected Nex/N2 Pro JANGTQ2 installed-app Responses auto-tool/cache
+  proof against this refreshed `/Applications/vMLX.app`.
+
 # 2026-06-10 20:04 PDT parser spacing/special-character deep audit continuation
 
 - current user correction: deep-look spacing, special characters, Unicode,
@@ -8207,3 +8268,41 @@ Other-agent action:
   - this is not a MiMo vision-success proof;
   - these local MiMo bundles still advertise preserved media weights that are
     runtime text-only, so honest gating is the cleared row here.
+
+# 2026-06-10 20:20 PDT parser/API spacing and special-character focus added
+
+- User explicitly re-emphasized deep parser/API issues around spacing, special
+  characters, entities, raw delimiters, content/reasoning/tool delta streaming,
+  interleaved reasoning, and auto tool usage.
+- Treat this as a release-critical proof lane across Qwen/Qwen-coder, Gemma,
+  MiMo, N2, DSML, MiniMax, XML-function, and generic AutoToolParser.
+- No synthetic missing arguments, no hidden reasoning disablement, and no fake
+  guard that rewrites model intent. Required-schema missing-argument behavior
+  must fail closed; valid whitespace and special-character payloads must be
+  preserved exactly.
+- Immediate next live row remains N2 JANGTQ2 installed-app Responses API
+  auto-tool/cache proof using bundled Python, not N2 JANG_1L.
+
+# 2026-06-10 20:25 PDT N2 JANGTQ2 installed-app tool/cache proof passed
+
+- Artifact:
+  `docs/internal/agent-notes/current-real-ui-installed-app-n2-jangtq2-responses-tools-cache-bundled-python-20260610-proof.json`.
+- Installed-app UI `/Applications/vMLX.app` and bundled Python served real
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/Nex-N2-Pro-JANGTQ2`.
+- Responses streaming with built-in auto tool loop passed:
+  `eventCounts.tool=106`, `stream=23`, `complete=2`; no empty `{}` tool-arg
+  failure in this row.
+- Proven surfaces include installed app UI, real loaded model, Responses API,
+  delta streaming, long tool loop, parser/language leak checks, settings
+  persistence, cache endpoint stats, cache-hit telemetry, L2 disk storage,
+  native cache status, and tool/L2 cache integration.
+- Runtime/cache proof: JANGTQ2 MXTQ `turboquant_codebook`, 540 prestacked
+  routed-expert TQ targets, hybrid SSM native cache, attention-only TurboQuant
+  KV, q4 storage-boundary KV, SSM companion state, async rederive policy,
+  `6833` L2 block tokens, `25265` SSM tokens on disk, `32098` total L2 tokens,
+  and `109` disk block writes.
+- Live speed samples: `22.4` and `27.0 tok/s`; memory roughly `103.8GB`
+  active / `108.8GB` peak in health, generator peak `114.1GB`.
+- Boundaries: no N2 JANG_1L, no media proof, no visible/interleaved reasoning
+  proof because `enable_thinking=false`, and MTP remained unavailable because
+  this bundle has metadata only and no MTP tensors.
