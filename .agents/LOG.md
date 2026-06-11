@@ -19035,3 +19035,9 @@ Next action:
 - Added regression coverage for processor_config-only image/video token metadata.
 - Verification: MiMo media/audio/rotating-cache focused suite passed (14 tests); MiMo/JANGTQ loader selection passed (17 tests).
 - Boundary: MiMo exactness/speed remains artifact/runtime-quality open; no fake parser/cache/generation clear.
+
+## 2026-06-11 CODEX - Responses no-tool raw markup leak fix
+- Fixed no-tool Responses streaming finalization so invalid native tool XML is stripped from final output even when no valid parsed tool call exists.
+- Added API-level regression for tool_choice=none with Qwen-style empty XML function markup.
+- Verification: targeted Responses history tests passed (2), required-args parser/XML/SSE contract checks passed (22).
+- Boundary: this does not synthesize missing args or hide required-tool failures; invalid required tool calls still fail closed.

@@ -14043,3 +14043,8 @@ Other-agent action:
 - Patched vmlx_engine/server.py so MiMo V2 runtime modality detection accepts image/video token IDs from processor_config, matching the existing audio-token and overlay eligibility behavior.
 - This is an honest capability detection fix only: it does not claim MiMo artifact exactness/speed/media E2E is release-cleared.
 - Focused proof passed: tests/test_mimo_v2_media_capability_gate.py, tests/test_mimo_v2_audio_template.py, tests/test_mimo_v2_rotating_cache_patch.py, and tests/test_jang_loader.py -k "mimo or jangtq".
+
+## 2026-06-11 13:48 PDT - Responses no-tool invalid markup cleanup
+- Patched /v1/responses streaming cleanup so tool_choice=none strips native tool-call residue even when the markup is invalid and parser validation returns no tool call.
+- Reproduces the Qwen-family empty XML shape in no-tool mode: text preamble plus <tool_call><function=exec_command></function></tool_call> must not leak into output_text.done or response.completed.
+- Focused proof passed: targeted Responses streaming regression, Qwen required-args parser matrix, XML required-schema empty function gate, and raw SSE local contract consumption.
