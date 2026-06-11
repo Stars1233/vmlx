@@ -1,4 +1,68 @@
 ## CODEX
+- now: MiMo JANGTQ_2 live refresh and Responses `max_tokens` compatibility fix
+  are complete; server was stopped cleanly.
+- artifacts:
+  `build/current-mimo-jangtq2-live-refresh-20260610/SUMMARY.json`,
+  `exact_b7_cat_09.json`, `required_tool_blue_cat.sse`,
+  `sustained_decode_260.json`, `sustained_decode_260.time`,
+  `max_tokens_alias_after_fix.json`, and
+  `health_after_max_tokens_alias.json`.
+- fixed: `/v1/responses` now accepts `max_tokens` as a compatibility alias
+  when `max_output_tokens` is absent. Root cause was
+  `ResponsesRequest.extra=ignore` dropping `max_tokens`, while
+  `create_response()` resolved only `request.max_output_tokens`, causing a
+  fallback to `2048` output tokens. Live pre-fix proof requested
+  `max_tokens=260` and got `output_tokens=2048`; patched live proof requested
+  `max_tokens=24`, logged resolved `max_tokens: 24`, and returned
+  `output_tokens=24`.
+- proven: direct current-source MiMo JANGTQ_2 loads with native TQ,
+  `mimo_v2_asymmetric_swa` / `mixed_swa_kv_v1`, generic TurboQuant KV disabled
+  by contract, and block-disk L2 write-through after the patched request
+  (`l2_block_tokens_on_disk=1092`, `disk_writes=1` in the final health
+  snapshot).
+- still red: MiMo JANGTQ_2 literal exactness remains red (`B7-CAT-09` became
+  `B7ACAT-09`) and required tool argument literal preservation remains red
+  (`blue-cat` became `blue cat`). Transport structure was green, but the
+  model/artifact/logit/codebook exactness blocker is not fixed. Source-vs-quant
+  remains blocked because the source endpoint is down. Installed-app parity for
+  this new API fix is not rebuilt/proven.
+- verification so far: `.venv/bin/python -m py_compile vmlx_engine/api/models.py
+  vmlx_engine/server.py` passed; focused `tests/test_api_models.py` selection
+  passed `2/2`.
+- boundaries: no release/sign/notarize/PyPI/updater/site action; no N2
+  JANG_1L; no media release claim; no source-vs-quant clearance.
+
+## CODEX
+- now: live proof action selected for the MiMo lane after artifact inspection.
+  Local source-vs-quant cannot run honestly because no local unquantized
+  MiMo-V2.5 source model is mounted and both prior endpoints are down
+  (`erics-m5-max2.local:8126` and local quant `8897` refused connections).
+- next command: launch one direct current-source server for
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2`, capture a narrow
+  Responses exactness row plus sustained decode/cache telemetry, then stop it.
+- boundary: this is not source-vs-quant clearance and not media release
+  clearance. It is a current live runtime refresh for MiMo JANGTQ_2 exactness,
+  speed, and native cache state.
+
+## CODEX
+- now: current-turn instruction rechecked from `/Users/eric/vmlx` guard and active
+  worktree guard. Work is in `/Users/eric/mlx/vllm-mlx-finite-launch-guard`,
+  not the deprecated wrapper checkout.
+- selected blocker: MiMo V2.5 JANGTQ_2/JANG_2L exactness, speed, media, and
+  cache/decode-loop diagnosis from the live screenshot/log evidence. The
+  latest direct issue is real MiMo JANG_2L installed-app/source loading with
+  native mixed-SWA cache and block L2, but very slow short decode and bad media
+  semantics on MiMo JANGTQ_2 solid-color probes.
+- planned movement: inspect existing MiMo proof artifacts and runtime/source
+  paths first, then choose the smallest direct proof or source fix. Do not
+  assume this is solved by parser repair, generic TurboQuant KV, sampling
+  clamps, or fake media gates.
+- boundaries: no subagents; no release/sign/notarize/PyPI/updater/site action;
+  no N2 JANG_1L action; no fake enforcement fixes; no parser rewrite to mask
+  MiMo exactness; do not claim media/video/audio/cache/speed green without
+  live proof.
+
+## CODEX
 - now: rebuilt and reinstalled `/Applications/vMLX.app` from current source
   with the repo-owned non-release path `panel/scripts/build-and-install.sh`.
 - parity proof: `build/current-installed-app-runtime-parity-audit-after-mimo-source-rebuild-20260611.json`

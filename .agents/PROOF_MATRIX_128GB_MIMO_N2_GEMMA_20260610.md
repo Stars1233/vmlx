@@ -7,6 +7,66 @@ separates what was actually loaded and proven from what remains red.
 
 ## Latest Proof Additions
 
+### MiMo JANGTQ_2 Live Refresh + Responses `max_tokens` Alias Fix
+
+Artifacts:
+
+- `build/current-mimo-jangtq2-live-refresh-20260610/SUMMARY.json`
+- `build/current-mimo-jangtq2-live-refresh-20260610/exact_b7_cat_09.json`
+- `build/current-mimo-jangtq2-live-refresh-20260610/required_tool_blue_cat.sse`
+- `build/current-mimo-jangtq2-live-refresh-20260610/sustained_decode_260.json`
+- `build/current-mimo-jangtq2-live-refresh-20260610/max_tokens_alias_after_fix.json`
+- `build/current-mimo-jangtq2-live-refresh-20260610/health_after_max_tokens_alias.json`
+
+Fixed:
+
+- `/v1/responses` now accepts `max_tokens` as a compatibility alias when
+  `max_output_tokens` is absent. Root cause was
+  `ResponsesRequest.model_config.extra="ignore"` dropping client-provided
+  `max_tokens`, while the Responses endpoint resolved only
+  `request.max_output_tokens`, falling back to the server default.
+- Live pre-fix proof requested `max_tokens=260` and generated
+  `output_tokens=2048`.
+- Live post-fix proof requested `max_tokens=24`; server logs resolved
+  `max_tokens: 24`, and response usage reported `output_tokens=24`.
+
+Proven:
+
+- Real local `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2`
+  loaded through current source with native TurboQuant text runtime,
+  `mllm=False`, `mimo_v2_asymmetric_swa` / `mixed_swa_kv_v1`, paged prefix
+  cache, block-disk L2, and generic TurboQuant KV disabled by contract.
+- Final health after the patched request recorded `ram_tokens_cached=41`,
+  `l2_block_tokens_on_disk=1092`, block-disk `disk_writes=1`, and active
+  memory about `76.5GB`.
+
+Red / not proven:
+
+- MiMo JANGTQ_2 literal exactness remains red:
+  `B7-CAT-09` generated as `B7ACAT-09`.
+- MiMo JANGTQ_2 required-tool argument literal preservation remains red:
+  `blue-cat` streamed/finalized as `blue cat`. The SSE transport shape was
+  structurally green, but the value is wrong.
+- Source-vs-quant first divergence remains blocked because the source endpoint
+  `erics-m5-max2.local:8126` and prior local quant endpoint refused
+  connections during this turn.
+- Installed-app parity for this new API fix is not rebuilt/proven.
+
+Verification:
+
+- `.venv/bin/python -m py_compile vmlx_engine/api/models.py vmlx_engine/server.py`
+  -> pass.
+- `.venv/bin/python -m pytest -q tests/test_api_models.py -k
+  'responses_max_output_tokens_rejected or responses_accepts_max_tokens_alias'`
+  -> `2 passed`.
+
+Boundary:
+
+- This is a real Responses API compatibility fix discovered during MiMo live
+  proof. It does not clear MiMo exactness, media, speed floor, installed-app
+  parity, release signing, notarization, PyPI, updater JSON, or website
+  release readiness.
+
 ### MiMo JANG_2L Screenshot Regression Classification
 
 Proven:

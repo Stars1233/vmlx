@@ -1,3 +1,60 @@
+# 2026-06-10 22:46 PDT - MiMo exactness/speed/media diagnosis resumed
+
+- Current-turn guard rechecked directly from the deprecated `/Users/eric/vmlx`
+  routing note and the active worktree guard. Work is in
+  `/Users/eric/mlx/vllm-mlx-finite-launch-guard`.
+- Selected blocker: MiMo V2.5 JANGTQ_2/JANG_2L exactness, speed, media, and
+  cache/decode-loop behavior from the latest live screenshot/log evidence.
+- Next movement: inspect existing MiMo proof artifacts and runtime/source paths
+  before changing code. Root-cause standard applies: artifact/runtime
+  provenance, cache/decode evidence, full-output behavior, and exact blocker
+  classification first.
+- Boundaries: no subagents; no release/sign/notarize/PyPI/updater/site action;
+  no N2 JANG_1L; no fake parser/JSON repair; no generic TurboQuant KV claim for
+  MiMo native asymmetric mixed-SWA cache; no media/speed/cache release claim
+  without live proof.
+- Artifact inspection result: existing MiMo JANGTQ_2 evidence already rules out
+  tokenizer/template literal loss, cache/L2 as the primary literal mutation
+  cause, parser structure failure, and the vMLX MiMo SwitchGLU fast path as a
+  sufficient root cause. Local source-vs-quant cannot honestly run from this
+  machine now because no local unquantized source model is mounted and both
+  expected endpoints refuse connections.
+- Next live action: launch one direct current-source
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/MiMo-V2.5-JANGTQ_2` server, capture
+  narrow Responses exactness plus sustained decode/cache telemetry, then stop
+  it. This is current runtime refresh only, not release or source-vs-quant
+  clearance.
+- Live result artifacts:
+  `build/current-mimo-jangtq2-live-refresh-20260610/SUMMARY.json`,
+  `exact_b7_cat_09.json`, `required_tool_blue_cat.sse`,
+  `sustained_decode_260.json`, `sustained_decode_260.time`,
+  `max_tokens_alias_after_fix.json`, and
+  `health_after_max_tokens_alias.json`.
+- Real API fix found during proof: `/v1/responses` ignored `max_tokens` because
+  `ResponsesRequest` did not define that field and `extra=ignore` dropped it.
+  `create_response()` then resolved only `request.max_output_tokens`, so
+  clients sending `max_tokens` fell back to the server default (`2048` in the
+  live MiMo proof). Source now accepts `max_tokens` as a compatibility alias
+  when `max_output_tokens` is absent; `max_output_tokens` remains canonical and
+  wins if present.
+- Live proof before patch: request sent `max_tokens=260`; output used
+  `2048` tokens and server logs resolved `max_tokens: 2048`.
+- Live proof after patch/restart: request sent `max_tokens=24`; server logs
+  resolved `max_tokens: 24`, response usage reported `output_tokens=24`, and
+  final health kept native MiMo cache with
+  `mimo_v2_asymmetric_swa` / `mixed_swa_kv_v1`, generic TurboQuant KV disabled,
+  `ram_tokens_cached=41`, `l2_block_tokens_on_disk=1092`, and block-disk
+  `disk_writes=1`.
+- MiMo red classification refreshed: plain exact string still mutates
+  `B7-CAT-09` -> `B7ACAT-09`; required tool argument still mutates
+  `blue-cat` -> `blue cat`. SSE transport is structurally green, but literal
+  exactness remains model/artifact/logit/codebook/decode-quality blocked. Do
+  not claim MiMo exactness/media/source-vs-quant/release green from this fix.
+- Verification so far:
+  `.venv/bin/python -m py_compile vmlx_engine/api/models.py vmlx_engine/server.py`
+  passed; focused `tests/test_api_models.py` selection passed `2/2`. Server
+  stopped cleanly after proof.
+
 # 2026-06-10 19:45 PDT - Codex MiMo runtime/API continuation
 
 - Boundary: active Python/Electron worktree
