@@ -17481,3 +17481,28 @@ Next action:
   advertised. Keep this as deployment/tunnel availability or stale-deploy work,
   not a current-source parser fail, unless a new same-model direct/gateway
   capture reproduces it.
+
+# 2026-06-11 continuation PDT - Gemma4 reasoning-on required-tool classification
+
+- Action:
+  inspected the existing Gemma4 E2B QAT JANG4M reasoning-on required-tool live
+  failure and compared `vmlx_engine/api/tool_calling.py` prompt examples
+  against `vmlx_engine/tool_parsers/gemma4_tool_parser.py`.
+- Evidence:
+  the rendered Gemma4-native exemplar dialect
+  `<|tool_call>call:name{arg:<|"|>value<|"|>}<tool_call|>` matches the parser's
+  native pattern, and the required-turn prompt includes the thought-channel
+  close instruction before the tool call.
+- Classification:
+  the live red artifact
+  `docs/internal/agent-notes/current-real-ui-source-gemma4-e2b-qat-jang4m-responses-tools-reasoning-cache-stress-after-streaming-required-retry-20260611-proof.json`
+  is a model/template generation boundary under `enable_thinking=true`, not an
+  empty-args parser bug. The model emitted reasoning and no native tool marker;
+  the preserve-thinking retry also emitted no valid call. The server failed
+  closed with `tool_calls_required`.
+- Release boundary:
+  do not ship a claim that Gemma4 reasoning-on required tools are green. The
+  thinking-off Gemma4 tool row is green from
+  `docs/internal/agent-notes/current-real-ui-source-gemma4-e2b-qat-jang4m-responses-tools-cache-thinking-off-pass-20260611-proof.json`;
+  reasoning-on should stay red until a real native tool call is produced under
+  `enable_thinking=true`.

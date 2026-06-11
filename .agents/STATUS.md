@@ -12157,3 +12157,30 @@ Other-agent action:
   advertised by the current tunnel. Do not claim public deployment is fixed
   until the deployed tunnel advertises the same served model and the same raw
   SSE request passes with reasoning enabled.
+
+# 2026-06-11 continuation PDT Gemma4 reasoning-on required-tool boundary
+
+- Scope:
+  source inspection/classification only after the existing live Gemma4 E2B QAT
+  JANG4M reasoning-on required-tool failure. No release/sign/notarize/PyPI/site
+  action.
+- Existing red artifact:
+  `docs/internal/agent-notes/current-real-ui-source-gemma4-e2b-qat-jang4m-responses-tools-reasoning-cache-stress-after-streaming-required-retry-20260611-proof.json`
+  remains the authoritative live failure for reasoning-on required tools.
+- Current source state:
+  `vmlx_engine/api/tool_calling.py` renders Gemma4-native examples in the same
+  dialect accepted by `Gemma4ToolParser`:
+  `<|tool_call>call:name{arg:<|"|>value<|"|>}<tool_call|>`. The required-turn
+  prompt also tells Gemma4 to close an open thought channel with `<channel|>`
+  before the tool call.
+- Classification:
+  this is not a Qwen-style empty-args/parser bug. With `enable_thinking=true`,
+  the live model produced reasoning but no native Gemma4 tool marker on the
+  first pass or the preserve-thinking retry; the server returned
+  `tool_calls_required` and did not synthesize or execute a fake tool call.
+- Release boundary:
+  Gemma4 thinking-off required tools are live-proven in
+  `docs/internal/agent-notes/current-real-ui-source-gemma4-e2b-qat-jang4m-responses-tools-cache-thinking-off-pass-20260611-proof.json`.
+  Gemma4 reasoning-on required tools must remain red unless a future model,
+  template, or runtime prompt change produces a real native tool call under
+  `enable_thinking=true`.
