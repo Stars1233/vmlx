@@ -473,6 +473,18 @@ schema-free raw-markup acceptance, forced tool calls, or release-manifest
 wording changes. Parser fixes must preserve the raw-leak checks and validate
 function names/arguments through the normal server filtering path.
 
+### Current Codex operating override - 2026-06-11
+
+- Do not spawn recursive Python subagents, agent harnesses, or autonomous worker
+  processes to perform this release-lane work. Use direct shell/runtime proof
+  commands and write the exact commands, artifacts, pass/fail state, and
+  remaining boundary into `.agents/STATUS.md` and `.agents/LOG.md`.
+- Treat whitespace, newlines, Unicode, XML/JSON entities, raw delimiters,
+  content deltas, reasoning deltas, function-call argument deltas/done events,
+  output-index ordering, and auto/required/no-tool behavior as first-class
+  parser/API proof criteria. Do not strip, normalize, repair, or hide these
+  details unless the model-family contract explicitly says to.
+
 The active objective is full Python vMLX engine plus MLXStudio release quality,
 not an isolated model upload or one-off benchmark. The required deliverable is:
 

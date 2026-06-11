@@ -14165,3 +14165,30 @@ Next action:
 - API returned HTTP 400: unsupported media modality audio; supported modalities are text, vision, video.
 - Classification: honest audio gate for N2 JANGTQ2; do not advertise audio from token/config metadata.
 - Runtime before rejection still loaded JANGTQ2 VLM fast path with hybrid SSM cache, attention-only TurboQuant KV, q4 storage-boundary KV, block-disk L2, and SSM companion L2.
+
+# 2026-06-10 20:43 PDT Gemma bundled-video proof selected
+- Updated `AGENTS.md` with the current no-recursive-subagents override and the
+  parser/API exactness criteria for spacing, special characters, raw
+  delimiters, content/reasoning/tool deltas, output-index ordering, and
+  auto/required/no-tool behavior.
+- Selected Gemma4 26B QAT JANG_4M installed-app bundled-Python video as the
+  next live row. This targets the open installed-app parity gap after prior
+  dev-app Gemma 26B/31B video proof.
+- Boundary: no release/sign/notarize/PyPI/updater/site action and no
+  metadata-only media claim.
+
+# 2026-06-10 20:45 PDT Gemma4 26B QAT JANG_4M bundled video proof passed
+- Artifact `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-26b-jang4m-video-bundled-python-20260610-proof.json` passed using `/Applications/vMLX.app` and bundled Python.
+- Evidence: `videoVerified=true`, `videoSemanticVerified=true`, persisted
+  video attachment, semantic `red|solid` match, visible answer described a
+  solid bright red square, base64 MP4 decoded, `25` frames at `25 fps`, and
+  `4` frames extracted.
+- Runtime/cache: JANG v2 VLM mmap load, vision tower upcast to `bfloat16`,
+  affine quantized matmul, `profile=JANG_4M`, `mixed_swa_kv_v1` native cache,
+  q4 storage-boundary quantization for full-attention KV, paged prefix cache,
+  and block-disk L2.
+- Metrics: `eventCounts.stream=37`, `complete=3`,
+  `cache_detail=paged+mixed_swa`, `cached_tokens=20`, `72` L2 block tokens,
+  `2` disk writes, text live speeds `87.3` and `88.2 tok/s`.
+- Boundary: Chat Completions video/VL only, not Responses media, not audio,
+  not Gemma31B/MXFP, and no release action.

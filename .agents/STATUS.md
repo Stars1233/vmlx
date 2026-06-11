@@ -8442,3 +8442,50 @@ Other-agent action:
 - Boundary:
   do not advertise audio for N2 JANGTQ2 from config/token metadata; no N2
   JANG_1L and no release action.
+
+# 2026-06-10 20:43 PDT parser exactness and Gemma bundled-video row selected
+
+- Recorded the current operating override in `AGENTS.md`: no recursive Python
+  subagents/worker agents for this release lane; use direct commands and write
+  every proof/fix movement into `.agents/STATUS.md` and `.agents/LOG.md`.
+- Parser/API proof criteria are explicitly first-class now: whitespace,
+  newlines, Unicode, XML/JSON entities, raw delimiters, content deltas,
+  reasoning deltas, function-call argument deltas/done events, output-index
+  ordering, and auto/required/no-tool behavior.
+- Next selected live row:
+  Gemma4 26B QAT JANG_4M installed-app bundled-Python video proof using the
+  existing red MP4 fixture and `max_prompt_tokens=12000`.
+- Boundary:
+  this is an installed-app/bundled media parity proof only. It is not a DMG,
+  notarization, PyPI, updater, website, GitHub release, N2 JANG_1L, or fake
+  metadata-only media claim.
+
+# 2026-06-10 20:45 PDT Gemma4 26B QAT JANG_4M bundled video proof passed
+
+- Artifact:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-26b-jang4m-video-bundled-python-20260610-proof.json`.
+- Installed-app UI `/Applications/vMLX.app` and bundled Python served real
+  `/Users/eric/models/JANGQ-AI/gemma-4-26B-A4B-it-qat-JANG_4M`.
+- Video evidence:
+  `videoVerified=true`, `videoSemanticVerified=true`, persisted video
+  attachment, expected `red|solid` matched, visible answer described a
+  `solid, bright red square`, base64 MP4 decoded, `25` frames at `25 fps`, and
+  `4` frames extracted.
+- Runtime/cache evidence:
+  JANG v2 VLM mmap load, Gemma vision tower upcast to `bfloat16`, wired limit
+  `36 GB` for the `18 GB` model, affine quantized matmul, `profile=JANG_4M`,
+  MLX affine qmm dispatch, Metal affine symbols active, `mixed_swa_kv_v1`
+  native cache, full/sliding KV plus rotating-window metadata, q4
+  storage-boundary quantization for full-attention KV, paged prefix cache, and
+  block-disk L2.
+- Metrics:
+  `eventCounts.stream=37`, `complete=3`, `cache_detail=paged+mixed_swa`,
+  `cached_tokens=20`, `ram_tokens_cached=72`, `l2_block_tokens_on_disk=72`,
+  `l2_tokens_on_disk=72`, `blocks_on_disk=2`, `disk_writes=2`, text live speeds
+  `87.3` and `88.2 tok/s`.
+- Boundary:
+  Chat Completions video/VL proof only; not Responses media, not audio, not
+  Gemma 31B/MXFP, not DMG/notarize/PyPI/updater/site. The video turn completed
+  in one stream update and the UI live-speed sample recorded `0.0 tok/s`, so do
+  not cite that as a decode-speed regression without a dedicated streaming
+  metrics repro.
