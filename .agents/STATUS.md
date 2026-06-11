@@ -11214,3 +11214,171 @@ Other-agent action:
   rewrite parser/tool arguments, clamp sampling, force generic TQ-KV, or hide
   media semantic failures. Next useful work is replacement artifact A/B or
   source/dequant/logit comparison for JANGTQ_2 literal and media semantics.
+
+# 2026-06-11 02:39 PDT continuation selected high-value missing proof row
+
+- Current user goal:
+  keep moving toward production-quality checkpoint readiness for Nex/N2
+  JANGTQ2, MiMo V2.5 JANG/JANGTQ, Gemma JANG/MXFP/QAT, VL/video/audio where
+  honestly supported, cache reuse/TurboQuant/native caches, reasoning/tool
+  parsers, Chat/Responses/gateway/raw SSE. Avoid broad test-suite churn,
+  recursive/subagent behavior, and fake parser/cache fixes.
+- Current known classification:
+  MiMo coherency/exactness is artifact/logit/codebook/decode quality or
+  replacement-artifact work; MiMo JANG_2L speed is artifact/layout-bound; N2
+  JANGTQ2 is green for installed-app Responses video and direct/gateway raw
+  SSE but still lacks public tunnel and some strict-tool/adherence coverage.
+- Next action:
+  inspect current release/checklist evidence for one missing high-value row and
+  either run a real proof or classify it from current artifacts. Preference is a
+  row that moves Gemma/N2/MiMo runtime/API/media/cache readiness, not a broad
+  unit-test or manifest-only update.
+- Boundaries:
+  no N2 JANG_1L, no signing/notarization/PyPI/updater/site action, no
+  subagents, no synthetic tool arguments, no reasoning-disable workaround, no
+  generic TurboQuant KV forced onto MiMo mixed-SWA cache, and no release-green
+  claim from metadata-only modality evidence.
+
+# 2026-06-11 02:42 PDT focus narrowed to N2 JANGTQ2 and Gemma
+
+- Current user correction:
+  Eric will remake MiMo, so this Codex lane should stop spending active cycles
+  on MiMo except to preserve the already-written handoff/boundary. Active focus
+  is now Nex/N2 JANGTQ2 and Gemma.
+- Immediate N2 target:
+  reduce remaining N2 JANGTQ2 gaps after the green installed-app Responses
+  video and direct/gateway raw SSE rows. Current likely gaps are public tunnel
+  raw SSE, strict long-delta/tool-adherence, audio/MTP no-claims, and any
+  installed-app/API/cache parity row not already proven.
+- Immediate Gemma target:
+  reduce Gemma JANG/MXFP/QAT gaps, especially larger 26B/31B installed-app
+  Responses video/media/API/cache rows and honest audio gating. Do not infer
+  audio from config or tokenizer; require weight-backed audio tower and live
+  audio proof, otherwise keep honest unsupported modality.
+- Boundaries:
+  no MiMo active debugging in this lane, no N2 JANG_1L, no release/sign/
+  notarize/PyPI/updater/site action, no subagents, no fake tool-arg repair, no
+  reasoning-disable workaround, and no metadata-only modality claims.
+
+# 2026-06-11 02:51 PDT deprecated wrapper correction
+
+- Current user correction:
+  `/Users/eric/vmlx` is not the active vMLX Python workspace. It is the
+  deprecated wrapper/history checkout and must not be edited, built, launched,
+  tested, probed, or used for active implementation notes.
+- Correct active worktree for this lane:
+  `/Users/eric/mlx/vllm-mlx-finite-launch-guard`, routed from the active
+  Python/Electron notes. Continue all current N2 JANGTQ2 and Gemma runtime/API/
+  cache/media proof work there unless Eric explicitly names another path in
+  the current turn.
+- Immediate handling:
+  the shell session may start with cwd `/Users/eric/vmlx`, but that is only a
+  deprecated launch context. Commands, edits, proof runs, and commits must
+  target the active Python worktree above.
+- Boundary:
+  no deprecated wrapper work, no Swift inference, no N2 JANG_1L, no MiMo active
+  debugging, no release/sign/notarize/PyPI/updater/site action, no subagents,
+  and no fake parser/cache fixes.
+
+# 2026-06-11 02:55 PDT checkpoint release lane explicitly reopened
+
+- Current user instruction:
+  focus on the active vMLX Python engine and get to a fixed, notarized,
+  working checkpoint release.
+- Active path:
+  `/Users/eric/mlx/vllm-mlx-finite-launch-guard` only. Do not work in
+  `/Users/eric/vmlx`.
+- Release handling:
+  this current turn explicitly reopens the release/sign/notarize lane, but the
+  work must use the repo's real packaging/signing/notarization procedure rather
+  than assumed commands. Immediate next actions are to locate/read the proper
+  release docs/scripts, run the bundled-Python/app parity gate, and only then
+  package/sign/notarize if the gate state allows it.
+- Model/runtime priorities that still matter for the checkpoint:
+  N2 JANGTQ2 and Gemma engine/API/cache/media proof are the active model lanes;
+  MiMo remains out because Eric will remake it; N2 JANG_1L remains off-limits.
+
+# 2026-06-11 02:58 PDT release gate blocked by stale bundled Python
+
+- Gate run:
+  `./panel/scripts/verify-bundled-python.sh`.
+- Result:
+  release is currently blocked because bundled Python does not match source.
+  The first drift is `vmlx_engine/server.py`:
+  source sha256
+  `eeac6e210485dd64839cc6eb334cfaad139c3e17b07a0f7e812c58fdb594971f`;
+  bundled sha256
+  `a93f5588c7334a0bf2f9d6eacc5ea31c054ec421b3285ea51326e551f3478bf1`.
+- Next action:
+  refresh bundled Python with the repo script, rerun the bundled parity gate,
+  then proceed to the documented DMG build/notarize path only if it passes.
+
+# 2026-06-11 03:02 PDT bundled Python parity gate green
+
+- Fixed release packaging blocker:
+  refreshed `panel/bundled-python` from the active checkout with
+  `./panel/scripts/bundle-python.sh`.
+- Verification:
+  `./panel/scripts/verify-bundled-python.sh` now passes. It verifies
+  `vmlx_engine` source parity, critical `jang_tools` parity, Gemma4 unified
+  runtime registration, Step3.7 runtime, JANGTQ/Kimi loaders, TurboQuant
+  kernels, MLX/MLX-LM/MLX-VLM imports, and bundled dependency patches.
+- Current release state:
+  bundled runtime parity is green for packaging. Next gate is Developer ID
+  signing/notary preflight and the documented checkpoint DMG build path.
+
+# 2026-06-11 03:05 PDT signing/notary preflight green
+
+- Developer ID identity:
+  `Developer ID Application: ShieldStack LLC (55KGF2S5AY)` is present.
+- Notary profile:
+  default-keychain access was locked, but the documented release keychain
+  `~/Library/Keychains/vmlx-build.keychain-db` with profile `vmlx-notary`
+  works after the repo's unlock/partition-list sequence. `notarytool history`
+  returned accepted prior vMLX submissions.
+- Current release action:
+  proceed with the documented checkpoint DMG build using
+  `VMLINUX_CHECKPOINT_RELEASE_OVERRIDE=1` because this is a checkpoint release
+  with open objective rows, not a production-green release.
+
+# 2026-06-11 03:22 PDT checkpoint DMGs built and signed
+
+- Built artifacts:
+  `panel/release/vMLX-1.5.57-sequoia-arm64.dmg` and
+  `panel/release/vMLX-1.5.57-tahoe-arm64.dmg`.
+- Build mode:
+  explicit checkpoint override. The regenerated pre-DMG manifest still reports
+  `prepackage_ready=false`, `release_ready=false`, and
+  `current_proof_sweep=fail`, so this is not a production-green release claim.
+- Signing:
+  both staged apps passed final Developer ID release seal and strict
+  `codesign --verify --deep --strict` before DMG creation.
+- Bundle content:
+  both DMGs include local `vmlx-1.5.57`; local `jang-tools` resolved to
+  package version `jang-2.5.30`.
+- Next gate:
+  verify the DMGs and then run notarization/staple with the documented
+  `vmlx-build.keychain-db`/`vmlx-notary` path.
+
+# 2026-06-11 03:30 PDT checkpoint DMGs notarized and verified
+
+- Final proof artifact:
+  `build/current-signed-notarized-checkpoint-dmg-1.5.57-20260611.json`.
+- Final verification:
+  `./panel/scripts/verify-release-dmgs.sh` passed after notarization/stapling.
+- Sequoia:
+  `panel/release/vMLX-1.5.57-sequoia-arm64.dmg`,
+  sha256 `7bfa301b65d499dd51655b2c0aade4b8ffdf299ec798027be5a688d378885f1e`,
+  notary id `c62866cf-b8f6-41eb-a6b6-f86b1e585377`, stapled,
+  Gatekeeper `accepted`, source `Notarized Developer ID`.
+- Tahoe:
+  `panel/release/vMLX-1.5.57-tahoe-arm64.dmg`,
+  sha256 `bbebd29d8e9d9ad4de7fbcb460c58390a114f03b8f38dd66f8733601238e4eed`,
+  notary id `49b40858-e795-4704-9578-b55a84fe6dfb`, stapled,
+  Gatekeeper `accepted`, source `Notarized Developer ID`.
+- No-claims:
+  these are signed/notarized checkpoint DMGs built with explicit checkpoint
+  override. The pre-DMG manifest still reports `prepackage_ready=false`,
+  `release_ready=false`, and `current_proof_sweep=fail`. No GitHub release,
+  updater JSON, website/CDN, PyPI, or public download mutation has been done in
+  this movement.

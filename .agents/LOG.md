@@ -16546,3 +16546,176 @@ Next action:
   `blue-cat -> blue cat`, red video answered `White`, and audio exactness/
   hygiene failures. Treat as artifact/logit/codebook/decode quality, not
   parser/cache/template repair.
+
+# 2026-06-11 02:39 PDT - continuation selected high-value missing proof row
+
+- Continuing the active checkpoint-readiness goal with current constraints:
+  no release/sign/notarize/PyPI/updater/site action, no N2 JANG_1L, no
+  subagents, no fake parser/cache fixes, and no broad test-suite churn.
+- Current classifications carried forward:
+  MiMo coherency/exactness is artifact/logit/codebook/decode or replacement
+  artifact work; MiMo JANG_2L speed is artifact/layout-bound; N2 JANGTQ2 is
+  green for installed-app Responses video and direct/gateway raw SSE, with
+  tunnel/strict-tool/adherence rows open.
+- Next movement: inspect latest current release/checklist artifacts for one
+  high-value missing Gemma/N2/MiMo runtime/API/media/cache row, then run or
+  classify that row with exact evidence.
+
+# 2026-06-11 02:42 PDT - focus narrowed to N2 JANGTQ2 and Gemma
+
+- Eric corrected scope: MiMo will be remade elsewhere; this lane should focus
+  on Nex/N2 JANGTQ2 and Gemma.
+- N2 next gap: refresh public tunnel/API raw SSE or strict tool/adherence
+  state after local installed-app Responses video and direct/gateway raw SSE
+  are already green.
+- Gemma next gap: reduce larger Gemma JANG/MXFP/QAT installed-app
+  Responses/media/API/cache rows and keep audio gating honest.
+- Boundaries remain: no MiMo active debugging, no N2 JANG_1L, no release/
+  signing/notarization/PyPI/updater/site action, no subagents, and no fake
+  parser/cache fixes.
+
+# 2026-06-11 02:51 PDT - deprecated wrapper correction recorded
+
+- Eric corrected the workspace boundary: `/Users/eric/vmlx` is not the active
+  vMLX Python workspace and must not be touched for active work.
+- Re-read the active worktree guard in
+  `/Users/eric/mlx/vllm-mlx-finite-launch-guard/AGENTS.md`; it confirms this
+  lane belongs in `/Users/eric/mlx/vllm-mlx-finite-launch-guard` and must not
+  edit/build/launch/test/probe the deprecated wrapper checkout.
+- Process check before continuing:
+  `pgrep -af 'vmlx_engine.cli serve|live-real-ui-model-proof|Electron|npm run dev'`
+  only left Codex crashpad as an active relevant-looking process after the
+  transient match exited; no vMLX server/proof run was left running from this
+  lane.
+- Continuing target remains N2 JANGTQ2 and Gemma runtime/API/cache/media proof
+  only, in the active Python worktree. No release action, no N2 JANG_1L, no
+  MiMo active debugging, no subagents, and no fake parser/cache fixes.
+
+# 2026-06-11 02:55 PDT - checkpoint release lane explicitly reopened
+
+- Eric explicitly redirected this lane back to the active vMLX Python engine
+  and a fixed/notarized working checkpoint release.
+- Current path remains `/Users/eric/mlx/vllm-mlx-finite-launch-guard`; the
+  deprecated `/Users/eric/vmlx` wrapper remains off-limits.
+- Next movement is release-procedure discovery and gate verification from the
+  actual repo docs/scripts, then package/sign/notarize only if those gates are
+  clear. Do not assume signing/notarization commands.
+- Runtime focus feeding the checkpoint remains N2 JANGTQ2 and Gemma; MiMo is
+  not active in this lane, and N2 JANG_1L remains off-limits.
+
+# 2026-06-11 02:58 PDT - bundled Python gate blocked release
+
+- Ran `./panel/scripts/verify-bundled-python.sh` from the active Python
+  worktree before any package/sign/notarize action.
+- Result: release blocked because bundled Python is stale versus source:
+  `vmlx_engine/server.py` source sha256
+  `eeac6e210485dd64839cc6eb334cfaad139c3e17b07a0f7e812c58fdb594971f`,
+  bundled sha256
+  `a93f5588c7334a0bf2f9d6eacc5ea31c054ec421b3285ea51326e551f3478bf1`.
+- Safe next action:
+  refresh bundled Python from this checkout with `./panel/scripts/bundle-python.sh`,
+  then rerun `./panel/scripts/verify-bundled-python.sh` before building DMGs.
+
+# 2026-06-11 03:02 PDT - bundled Python refreshed and release gate green
+
+- Ran `./panel/scripts/bundle-python.sh` from the active Python worktree.
+- Result: completed successfully, built/installed local `vmlx-1.5.57`, installed
+  local `jang` from `/Users/eric/jang/jang-tools`, applied bundled dependency
+  patches, verified CLI import, removed bytecode, and rewrote 95 console-script
+  shebangs to relocatable bundled Python.
+- Ran `./panel/scripts/verify-bundled-python.sh` again.
+- Result: passed. Verified package version parity, no removed DSV4 force-flips,
+  relocatable shebangs, critical `vmlx_engine` source parity, critical
+  `jang_tools` source parity, MLX/MLX-LM/MLX-VLM/Gemma4/Qwen3-VL/MiMo/Step3.7/
+  JANGTQ/TurboQuant imports, and bundled runtime patches.
+- Next action:
+  check Developer ID/notary preflight and then use
+  `panel/scripts/build-release-dmgs.sh` with explicit checkpoint override if
+  signing identity is available.
+
+# 2026-06-11 03:05 PDT - signing/notary preflight unblocked
+
+- Checked Developer ID identities:
+  `Developer ID Application: ShieldStack LLC (55KGF2S5AY)` is present.
+- Initial `notarytool history --keychain-profile vmlx-notary` failed because
+  the default keychain was locked.
+- Followed the documented release keychain path from the repo handoff:
+  `~/Library/Keychains/vmlx-build.keychain-db` with profile `vmlx-notary`.
+- After the documented unlock/partition-list sequence, `xcrun notarytool
+  history --keychain ~/Library/Keychains/vmlx-build.keychain-db
+  --keychain-profile vmlx-notary --output-format json` succeeded and showed
+  accepted prior `vMLX-1.5.57` and earlier submissions.
+- Next action:
+  run `panel/scripts/build-release-dmgs.sh all` with
+  `VMLINUX_CHECKPOINT_RELEASE_OVERRIDE=1` and
+  `VMLINUX_NOTARY_KEYCHAIN=$HOME/Library/Keychains/vmlx-build.keychain-db`.
+
+# 2026-06-11 03:22 PDT - checkpoint DMGs built and signed
+
+- Ran:
+  `VMLINUX_CHECKPOINT_RELEASE_OVERRIDE=1 VMLX_CHECKPOINT_RELEASE_OVERRIDE=1
+  VMLINUX_NOTARY_KEYCHAIN=$HOME/Library/Keychains/vmlx-build.keychain-db
+  VMLX_NOTARY_KEYCHAIN=$HOME/Library/Keychains/vmlx-build.keychain-db
+  ./panel/scripts/build-release-dmgs.sh all`.
+- The script regenerated
+  `build/current-release-regression-manifest-pre-dmg-release-build.json` and
+  correctly reported `prepackage_ready=false`, `release_ready=false`,
+  `current_proof_sweep=fail`; build continued only because checkpoint override
+  was explicit.
+- Sequoia flavor:
+  bundled Python verified, Electron build completed, `better-sqlite3` built
+  from source after prebuild 404, app signed with Developer ID
+  `Developer ID Application: ShieldStack LLC (55KGF2S5AY)`, final release app
+  seal passed `codesign --verify --deep --strict`, and
+  `release/vMLX-1.5.57-sequoia-arm64.dmg` plus blockmap were created.
+- Tahoe flavor:
+  bundled Python verified using `macosx_26_0_arm64` MLX/Metal wheels,
+  Electron build completed, `better-sqlite3` built from source after prebuild
+  404, app signed with the same Developer ID identity, final release app seal
+  passed `codesign --verify --deep --strict`, and
+  `release/vMLX-1.5.57-tahoe-arm64.dmg` plus blockmap were created.
+- Checkpoint content note:
+  both bundles installed local `vmlx-1.5.57` and local `jang` from
+  `/Users/eric/jang/jang-tools` as version `2.5.30`.
+- Next action:
+  run `panel/scripts/verify-release-dmgs.sh`, then notarize/staple with
+  `panel/scripts/notarize-release-dmgs.sh` if verification passes.
+
+# 2026-06-11 03:23 PDT - pre-notary DMG verification stopped at missing staple
+
+- Ran `./panel/scripts/verify-release-dmgs.sh`.
+- Result: Sequoia DMG checksum and Developer ID signature verified:
+  authority `Developer ID Application: ShieldStack LLC (55KGF2S5AY)`,
+  team `55KGF2S5AY`.
+- The script exited with code 65 because
+  `vMLX-1.5.57-sequoia-arm64.dmg does not have a ticket stapled to it`.
+- Interpretation:
+  this is expected before notarization/stapling. Proceed to
+  `panel/scripts/notarize-release-dmgs.sh` with
+  `VMLINUX_NOTARY_KEYCHAIN=$HOME/Library/Keychains/vmlx-build.keychain-db`.
+
+# 2026-06-11 03:30 PDT - checkpoint DMGs notarized/stapled/final verified
+
+- Ran:
+  `VMLINUX_NOTARY_KEYCHAIN=$HOME/Library/Keychains/vmlx-build.keychain-db
+  VMLX_NOTARY_KEYCHAIN=$HOME/Library/Keychains/vmlx-build.keychain-db
+  ./panel/scripts/notarize-release-dmgs.sh`.
+- Sequoia result:
+  Apple notary accepted id `c62866cf-b8f6-41eb-a6b6-f86b1e585377`, stapler
+  staple/validate worked, Gatekeeper accepted as `Notarized Developer ID`,
+  sha256 `7bfa301b65d499dd51655b2c0aade4b8ffdf299ec798027be5a688d378885f1e`,
+  sha512 `gao+6uwDSbqGrtEICdcdG4AhCyD15NNowIYVDPaK5zPT/HaQfZ+DZqGIJMDGxCjGHxf3ViFv8PcX2mTHKubpfg==`.
+- Tahoe result:
+  Apple notary accepted id `49b40858-e795-4704-9578-b55a84fe6dfb`, stapler
+  staple/validate worked, Gatekeeper accepted as `Notarized Developer ID`,
+  sha256 `bbebd29d8e9d9ad4de7fbcb460c58390a114f03b8f38dd66f8733601238e4eed`,
+  sha512 `rZJcFRrbwwyXgWSwYO//ISbJBZ5WhNZfW0MgaFCoEDsvYCychFNbTWd6L3hcV60csml+3wBSmmvBAT3D1J2Zvw==`.
+- Ran final `./panel/scripts/verify-release-dmgs.sh`.
+- Result: passed for both DMGs. Checksums valid, Developer ID authority and
+  team id present, notarization ticket stapled, stapler validate worked, and
+  Gatekeeper accepted both as `Notarized Developer ID`.
+- Wrote proof artifact:
+  `build/current-signed-notarized-checkpoint-dmg-1.5.57-20260611.json`.
+- No public publish actions were run: no GitHub release upload, no updater JSON,
+  no website/CDN, no PyPI. This is a local signed/notarized checkpoint build
+  with open objective rows still listed by the pre-DMG manifest.

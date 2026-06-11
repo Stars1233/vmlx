@@ -1,0 +1,89 @@
+{
+  "generated_at": "2026-06-11T03:30:00-07:00",
+  "status": "pass",
+  "release_kind": "checkpoint_override",
+  "version": "1.5.57",
+  "repo": "/Users/eric/mlx/vllm-mlx-finite-launch-guard",
+  "active_path_guard": "/Users/eric/mlx/vllm-mlx-finite-launch-guard",
+  "deprecated_wrapper_not_used": "/Users/eric/vmlx",
+  "prepackage_manifest": "build/current-release-regression-manifest-pre-dmg-release-build.json",
+  "prepackage_manifest_state": {
+    "current_proof_sweep": "fail",
+    "prepackage_ready": false,
+    "release_ready": false,
+    "rows": 26,
+    "note": "DMG build continued only because VMLX_CHECKPOINT_RELEASE_OVERRIDE=1 was explicitly used for a checkpoint release."
+  },
+  "commands": {
+    "bundle_verify_initial": "./panel/scripts/verify-bundled-python.sh",
+    "bundle_refresh": "./panel/scripts/bundle-python.sh",
+    "bundle_verify_after_refresh": "./panel/scripts/verify-bundled-python.sh",
+    "build": "VMLINUX_CHECKPOINT_RELEASE_OVERRIDE=1 VMLX_CHECKPOINT_RELEASE_OVERRIDE=1 VMLINUX_NOTARY_KEYCHAIN=$HOME/Library/Keychains/vmlx-build.keychain-db VMLX_NOTARY_KEYCHAIN=$HOME/Library/Keychains/vmlx-build.keychain-db ./panel/scripts/build-release-dmgs.sh all",
+    "notarize": "VMLINUX_NOTARY_KEYCHAIN=$HOME/Library/Keychains/vmlx-build.keychain-db VMLX_NOTARY_KEYCHAIN=$HOME/Library/Keychains/vmlx-build.keychain-db ./panel/scripts/notarize-release-dmgs.sh",
+    "final_verify": "./panel/scripts/verify-release-dmgs.sh"
+  },
+  "bundled_runtime": {
+    "vmlx": "1.5.57",
+    "jang": "2.5.30",
+    "verify_bundled_python": "pass",
+    "critical_vmlx_engine_source_parity": "pass",
+    "critical_jang_tools_source_parity": "pass",
+    "notable_imports_verified": [
+      "mlx",
+      "mlx_lm",
+      "mlx_vlm",
+      "mlx_vlm.models.gemma4",
+      "mlx_vlm.models.qwen3_vl",
+      "jang_tools",
+      "jang_tools.mimo_v2.mlx_register",
+      "jang_tools.step37.step3p7_mlx",
+      "jang_tools.load_jangtq",
+      "jang_tools.turboquant.tq_kernel",
+      "vmlx_engine.models.gemma4_unified_register",
+      "vmlx_engine.loaders.load_jangtq",
+      "vmlx_engine.loaders.load_jangtq_vlm",
+      "vmlx_engine.loaders.load_jangtq_kimi_vlm"
+    ]
+  },
+  "signing": {
+    "identity": "Developer ID Application: ShieldStack LLC (55KGF2S5AY)",
+    "team_identifier": "55KGF2S5AY",
+    "keychain": "~/Library/Keychains/vmlx-build.keychain-db",
+    "notary_profile": "vmlx-notary"
+  },
+  "artifacts": {
+    "sequoia": {
+      "path": "panel/release/vMLX-1.5.57-sequoia-arm64.dmg",
+      "size_bytes": 480111695,
+      "sha256": "7bfa301b65d499dd51655b2c0aade4b8ffdf299ec798027be5a688d378885f1e",
+      "sha512": "gao+6uwDSbqGrtEICdcdG4AhCyD15NNowIYVDPaK5zPT/HaQfZ+DZqGIJMDGxCjGHxf3ViFv8PcX2mTHKubpfg==",
+      "notary_id": "c62866cf-b8f6-41eb-a6b6-f86b1e585377",
+      "notary_status": "Accepted",
+      "stapled": true,
+      "gatekeeper": "accepted, source=Notarized Developer ID",
+      "blockmap": {
+        "path": "panel/release/vMLX-1.5.57-sequoia-arm64.dmg.blockmap",
+        "sha256": "ca2ed0ce1a78299644ce8d5176b5a157eb27f6a210e7ad4fc583aecca10d2325"
+      }
+    },
+    "tahoe": {
+      "path": "panel/release/vMLX-1.5.57-tahoe-arm64.dmg",
+      "size_bytes": 495965218,
+      "sha256": "bbebd29d8e9d9ad4de7fbcb460c58390a114f03b8f38dd66f8733601238e4eed",
+      "sha512": "rZJcFRrbwwyXgWSwYO//ISbJBZ5WhNZfW0MgaFCoEDsvYCychFNbTWd6L3hcV60csml+3wBSmmvBAT3D1J2Zvw==",
+      "notary_id": "49b40858-e795-4704-9578-b55a84fe6dfb",
+      "notary_status": "Accepted",
+      "stapled": true,
+      "gatekeeper": "accepted, source=Notarized Developer ID",
+      "blockmap": {
+        "path": "panel/release/vMLX-1.5.57-tahoe-arm64.dmg.blockmap",
+        "sha256": "666cae4dbc2af789192bca1722fbeb5e99eaedb5d2e0e26ec7bda919d3bb8f90"
+      }
+    }
+  },
+  "no_claims": [
+    "This does not make the full release objective production-green.",
+    "This does not upload to GitHub releases, PyPI, updater JSON, vmlx.net, mlx.studio, or Cloudflare.",
+    "This does not close open model/runtime rows that remain red in the prepackage manifest."
+  ]
+}
