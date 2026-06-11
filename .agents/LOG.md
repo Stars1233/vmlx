@@ -18597,3 +18597,29 @@ Next action:
 - Current board remains open (`failed_count=15`), but MiMo local-release detail no longer lists `mimo_jang2l_live_media_l2_missing`.
 - Remaining MiMo blockers: JANGTQ2 artifact exactness/literal mutations, decode speed, media semantic quality, image/video live E2E, and audio waveform E2E.
 - Verification: `tests/test_release_regression_manifest.py -k mimo_v2_root_cause` (`8 passed, 317 deselected`) and `tests/test_full_release_objective_checklist.py` (`20 passed`).
+
+## 2026-06-11 CODEX - MiMo Decode Speed Root-Cause Board Wiring
+
+- Scope: vMLX Python proof accounting and release-board traceability only; no release/sign/notarize/PyPI/site/updater action.
+- Added the current MiMo speed root-cause artifact to the MiMo audit:
+  `build/current-mimo-jang2l-speed-cache-root-cause-20260611/SUMMARY.json`.
+- Regenerated audit:
+  `build/current-mimo-v2-jang2l-current-audit-after-speed-root-cause-classification-20260611.json`.
+- Regenerated board artifacts:
+  `build/current-release-regression-manifest-after-mimo-speed-root-cause-classification-20260611.json` and
+  `build/current-full-release-objective-checklist-after-mimo-speed-root-cause-classification-20260611.json`.
+- Result: checklist remains `status=open`, `failed_count=15`; MiMo speed remains
+  red with `bundle_decode_tps=39.2`, `wall_decode_tps=39.12980168982385`.
+- Root-cause detail carried on the failed row: body decode/cache are not the
+  primary current speed bottleneck; classic JANG_2L is logits/lm_head
+  materialization-bound after warmup, with trace samples at about 3.1 ms body
+  model time and 2532.17 ms / 606.22 ms logits materialization on the first two
+  generated tokens.
+- Removed the stale HF dynamic module cache path that the existing cleanup log
+  marks as a delete target, then reran the audit and confirmed
+  `stale_local_state_absent=true`.
+- Other-agent boundary: do not chase parser, prefix cache, block L2, generic KV
+  TurboQuant, or JANGTQ2 tool/cache/L2 as the speed fix unless a new trace
+  contradicts the root-cause artifact. Next useful speed work is sustained
+  current-source/current-installed JANGTQ2 >40 tok/s proof or logits/lm_head
+  materialization optimization.

@@ -13568,3 +13568,34 @@ Other-agent action:
 - current checklist remains `status=open`, `failed_count=15`, but MiMo local-release detail no longer contains `mimo_jang2l_live_media_l2_missing`; remaining MiMo blockers are JANGTQ2 artifact exactness, decode speed, unwired/semantic media quality, image/video live E2E, and audio waveform E2E.
 - verification passed: `pytest tests/test_release_regression_manifest.py -k mimo_v2_root_cause` (`8 passed, 317 deselected`) and `pytest tests/test_full_release_objective_checklist.py` (`20 passed`).
 - other-agent handoff: do not reopen JANG_2L media/L2 as a missing proof unless a new artifact/runtime changes JANG_2L from text-runtime preserved media to real media runtime. Focus remaining MiMo work on artifact/logit/quant/decode quality, visual/audio/video semantics, and speed.
+
+## CODEX
+- now: selecting MiMo decode speed as the next local reducible blocker. Current board still shows `mimo_decode_speed_target` red with latest evidence near the threshold; inspect current speed artifacts before any source or manifest edit.
+- boundary: do not lower the release floor or reinterpret wall/stream metrics to fake a pass. If a newer current-source or installed-app artifact proves the speed target, consume it; otherwise keep speed red and record the exact bottleneck.
+
+## CODEX
+- now: MiMo decode speed root-cause classification is wired into the release
+  board. No release/sign/notarize/PyPI/site/updater action was run.
+- source changes: `run_mimo_v2_jang2l_current_audit.py` now consumes
+  `build/current-mimo-jang2l-speed-cache-root-cause-20260611/SUMMARY.json` and
+  carries the root-cause detail through `latest_decode_speed_evidence`;
+  `run_full_release_objective_checklist.py` now shows that detail directly on
+  the failed `mimo_decode_speed_target` row; release/full-checklist MiMo audit
+  pointers are aligned to
+  `build/current-mimo-v2-jang2l-current-audit-after-speed-root-cause-classification-20260611.json`.
+- regenerated artifacts:
+  `build/current-mimo-v2-jang2l-current-audit-after-speed-root-cause-classification-20260611.json`,
+  `build/current-release-regression-manifest-after-mimo-speed-root-cause-classification-20260611.json`,
+  and
+  `build/current-full-release-objective-checklist-after-mimo-speed-root-cause-classification-20260611.json`.
+- current board remains `status=open`, `failed_count=15`. MiMo speed remains
+  red: sustained current text-runtime JANGTQ2 is `39.2` server tok/s and
+  `39.12980168982385` wall tok/s, below the 40 tok/s floor. Root-cause evidence
+  says body decode/cache are not the primary bottleneck; classic JANG_2L is
+  logits/lm_head materialization-bound after warmup.
+- cleanup: removed the regenerated stale HF dynamic module cache
+  `/Users/eric/.cache/huggingface/modules/transformers_modules/MiMo_hyphen_V2_dot_5_hyphen_JANG_2L`
+  listed in `build/current-mimo-stale-local-cleanup-20260606.txt`; rerun audit
+  confirms `stale_local_state_absent=true`.
+- verification so far: focused full-checklist pytest `20 passed, 326
+  deselected`; focused release-manifest MiMo pytest `13 passed, 313 deselected`.

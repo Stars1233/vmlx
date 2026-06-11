@@ -2,11 +2,11 @@
 
 ## Current Commit
 
-- Latest movement commit: `Classify MiMo JANG2L media boundary` (see `git log`
+- Latest movement commit: `Classify MiMo speed root cause` (see `git log`
   for the final pushed hash)
 - Pushed to: `origin/codex/pr-intake-manifest` and `origin/main`
 - Latest checklist artifact:
-  `build/current-full-release-objective-checklist-after-mimo-jang2l-media-boundary-20260611.json`
+  `build/current-full-release-objective-checklist-after-mimo-speed-root-cause-classification-20260611.json`
 - Latest checklist state: `status=open`, `failed_count=15`
 
 ## Hard Boundaries
@@ -56,6 +56,18 @@
   contract proves `weights_preserved_text_runtime` with text-only runtime and
   preserved/unwired media weights. Do not keep treating it as missing live media
   proof unless a future artifact changes JANG_2L to a real media runtime.
+- MiMo decode-speed proof is now traced into the checklist instead of being a
+  generic red row. The current speed row is still red, but it now carries:
+  `build/current-mimo-v2-jang2l-current-audit-after-speed-root-cause-classification-20260611.json`
+  with `bundle_decode_tps=39.2`, `wall_decode_tps=39.12980168982385`, and root
+  cause evidence from
+  `build/current-mimo-jang2l-speed-cache-root-cause-20260611/SUMMARY.json`.
+  That root-cause summary says body decode/cache are not the primary current
+  bottleneck; classic JANG_2L is logits/lm_head materialization-bound, with
+  traced body model step around 3.1 ms and logits materialization around
+  2532.17 ms on token 1 / 606.22 ms on token 2 after warmup. Do not chase
+  prefix cache, L2, RotatingKVCache metadata, or parser/tool code as the MiMo
+  speed fix unless new traces contradict this.
 
 ## Still Open
 
@@ -72,7 +84,11 @@
   installed-app rows prove those surfaces separately. JANG_2L media/L2 is not
   applicable for the current text-runtime artifact. The remaining useful MiMo
   work is artifact/logit/quant/decode quality, visual semantics, audio/video
-  release semantics, and decode speed.
+  release semantics, and the specific speed path above. For speed, either prove
+  sustained current-source/current-installed JANGTQ_2 text runtime over the 40
+  tok/s floor, or optimize the logits/lm_head/materialization path. Do not lower
+  the speed floor or count short forced-MLLM overlay samples as the sustained
+  text-runtime speed proof.
 - Qwen35 raw SSE direct/gateway/tunnel parity remains open on public tunnel
   reasoning lifecycle, even though current direct/gateway source proof is
   green.
@@ -94,6 +110,9 @@
   original prompt/log ordering. Without that evidence, keep #179 open.
 - For MiMo, focus on artifact/logit/quant contract or runtime decode diagnosis.
   Current parser/cache/L2 evidence does not support a parser or cache-only fix.
+  If optimizing speed, start from the traced logits/lm_head materialization
+  bottleneck and the JANGTQ_2 39.2 tok/s near-miss; do not reopen already-green
+  JANGTQ2 tool/cache/L2 or JANG_2L media/L2 rows.
 - For release packaging, first rerun the bundled Python parity gate and
   installed-app source-vs-bundle checks after source rows are worth packaging;
   then follow the documented signing/notarization workflow only after Eric
