@@ -16816,3 +16816,68 @@ Next action:
 - `uv.lock` was updated to reflect editable local package version `vmlx`
   `1.5.57`; this is version-lock metadata for the release state, not a runtime
   code change.
+
+# 2026-06-11 03:32 PDT - runtime-fix continuation objective recorded
+
+- Eric's active goal is now back to runtime/model/API/cache fixing and proof:
+  build/fix in efficient blocks, then test extensively, and do not churn test
+  suite scaffolding or release-surface chores unless they directly unblock the
+  release objective.
+- Active model lanes for this Codex instance:
+  Nex/N2 JANGTQ2 and Gemma JANG/MXFP/QAT. MiMo is out of this lane for now
+  because Eric said he will remake it. N2 JANG_1L remains off-limits.
+- Parser/API requirements remain release-critical:
+  auto/required/no-tool modes, tool-result continuation, content/reasoning
+  deltas, function-call argument delta/done, output-index ordering, final
+  response consistency, request kwargs, gateway/tunnel passthrough, cache reuse
+  telemetry, and fail-closed required-argument handling with no fake argument
+  synthesis.
+- Next action:
+  inspect current N2 JANGTQ2 and Gemma proof artifacts and choose the highest
+  real red row that can be reduced directly.
+
+# 2026-06-11 03:34 PDT - selected Gemma4 26B memory-stress/cache row
+
+- Inspected N2 JANGTQ2 strict-tool artifacts:
+  `build/current-n2-jangtq2-loopback-toolchoice-required-error-reduced-20260610.json`
+  is superseded by pass artifact
+  `build/current-n2-jangtq2-loopback-toolchoice-auto-longdelta-pass-20260611.json`.
+- N2 JANGTQ2 installed-app Responses tools/cache and video rows are green; do
+  not spend this movement relaunching that reduced local strict-tool blocker.
+- Selected blocker:
+  Gemma4 26B QAT/JANG_4M memory-stress/cache row from the release manifest,
+  specifically `issue119_gemma26_memory_stress_open`.
+- Next action:
+  inspect the memory-stress runner row definitions and launch the Gemma4 26B
+  QAT/JANG_4M proof if the runner supports that exact row and RAM headroom is
+  acceptable.
+
+# 2026-06-11 03:39 PDT - Gemma4 26B memory-stress/cache row reduced
+
+- Ran current-bundled Gemma4 26B QAT/JANG_4M/CRACK memory stress with:
+  `VMLINUX_BENCH_ISOLATED=1 .venv/bin/python tests/cross_matrix/run_runtime_memory_stress_probe.py --row gemma4_26b_jang4m --python panel/bundled-python/python/bin/python3.12 --port 8891 --timeout 600 --request-timeout 420 --prompt-tokens 700,700,700 --prompt-mode speed_floor --max-tokens 256 --route chat --stream --disable-thinking --expect-visible-content --out build/current-runtime-memory-stress-gemma4-26b-jang4m-chat-thinkingoff-speed-floor-cachehit-256-bundled-triple-20260611.json`.
+- Result:
+  artifact `status=pass`; all three streamed chat stages returned visible
+  content and HTTP 200; native cache health stayed Gemma4
+  `mixed_swa_kv_v1` with full/sliding/rotating state, prefix/paged/L2 enabled,
+  block disk write/restore evidence, q4 storage quantization, and generic
+  TurboQuant KV correctly disabled for mixed-SWA.
+- Cache/speed specifics:
+  stage 1 had `paged+mixed_swa+disk` hit at 1160 cached tokens; stages 2 and 3
+  had `paged+mixed_swa` hits at 1160 cached tokens; decode remained around
+  90 wall tok/s and 99 stream tok/s.
+- Regenerated public audit:
+  `.venv/bin/python tests/cross_matrix/run_public_app_issue_audit.py --out build/current-public-app-issue-audit-after-gemma26-memory-stress-20260611.json`.
+  Issue 119 now has all Gemma26 memory/cache checks true and
+  `focused_source_slice=pass`.
+- Regenerated release manifest:
+  `.venv/bin/python tests/cross_matrix/run_release_regression_manifest.py --out build/current-release-regression-manifest-after-gemma26-memory-stress-20260611.json`.
+  The command exits 1 as expected because the manifest is still not release
+  ready, but `issue119_gemma26_memory_stress_open` is no longer a blocker.
+  Remaining public-audit failure is issue 165 tool-call contract.
+- Verification:
+  `.venv/bin/python -m pytest -q tests/test_public_app_issue_audit.py tests/test_release_regression_manifest.py -k 'public_app_issue_audit or gemma26_memory_stress or current_artifacts or runner_default_out_tracks_current_release_proof_artifact'`
+  passed with `8 passed, 321 deselected`.
+- Boundary:
+  this is current bundled-engine proof, not `/Applications/vMLX.app` parity;
+  installed app server code is stale versus current source/panel bundled Python.

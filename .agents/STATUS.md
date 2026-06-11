@@ -11439,3 +11439,74 @@ Other-agent action:
   raw updater, live site updater, cache headers, GitHub release assets, and
   source tag checks are green. Only PyPI remains red because `vmlx==1.5.57` is
   not published.
+
+# 2026-06-11 03:32 PDT runtime-fix continuation objective
+
+- Current continuation objective from Eric:
+  stop spending cycles on release-surface churn unless it directly unblocks a
+  real deliverable; move back to runtime/model/API/cache fixes and proof in
+  efficient blocks. Build/fix broadly where the defect is real, then test
+  extensively, loop only on real failures.
+- Active lane:
+  vMLX Python engine/Electron app in this worktree only. Runtime priorities are
+  Nex/N2 JANGTQ2 and Gemma JANG/MXFP/QAT. MiMo replacement/debugging remains
+  outside this lane after Eric said he will remake MiMo. N2 JANG_1L remains
+  off-limits.
+- Parser/API emphasis:
+  Responses/Chat streaming with reasoning and tools must preserve content
+  deltas, reasoning deltas, function-call argument delta/done events, final
+  object consistency, output indices, request kwargs, gateway/tunnel parity,
+  cache reuse telemetry, and fail-closed required-arg behavior. No synthetic
+  args, no reasoning-disable workaround, no raw-XML cleanup after a failed
+  parse as a fake fix.
+- Next blocker selection:
+  inspect current N2 JANGTQ2 and Gemma proof artifacts and reduce the highest
+  current red runtime row that can be worked without N2 JANG_1L or MiMo.
+
+# 2026-06-11 03:34 PDT selected Gemma4 26B memory-stress/cache row
+
+- Inspection result:
+  N2 JANGTQ2 strict loopback tool-choice row has a later pass artifact
+  `build/current-n2-jangtq2-loopback-toolchoice-auto-longdelta-pass-20260611.json`.
+  Installed-app N2 JANGTQ2 tools/cache/video rows are also green. Remaining N2
+  gaps are public tunnel or broader matrix, not the immediate reduced local
+  strict-tool blocker.
+- Selected next blocker:
+  Gemma4 26B QAT/JANG_4M memory-stress/cache quality row. The current release
+  manifest still lists `issue119_gemma26_memory_stress_open` with next proof:
+  refresh and pass current Gemma4 26B installed-app memory stress including
+  mixed-SWA cache telemetry and post-request health.
+- Boundary:
+  no Gemma audio claim, no MiMo work, no N2 JANG_1L, no release/sign/notarize/
+  PyPI/updater action. If the proof exposes a real runtime bug, fix the engine
+  path directly; do not hide it with test-only changes.
+
+# 2026-06-11 03:39 PDT Gemma4 26B memory-stress/cache proof reduced
+
+- Live proof completed with current bundled Python, not `/Applications` parity:
+  `build/current-runtime-memory-stress-gemma4-26b-jang4m-chat-thinkingoff-speed-floor-cachehit-256-bundled-triple-20260611.json`.
+- Model/proof shape:
+  `/Users/eric/models/dealign.ai/Gemma-4-26B-A4B-it-JANG_4M-CRACK`,
+  `panel/bundled-python/python/bin/python3.12`, chat streaming,
+  thinking off, three 700-token prompt stages, 256 max tokens, visible output
+  required.
+- Runtime/cache evidence:
+  all three stages returned HTTP 200 with visible numbered output; cache health
+  reports `family=gemma4`, `schema=mixed_swa_kv_v1`,
+  `cache_type=mixed_swa_kv`, full/sliding/rotating components, prefix/paged/L2
+  enabled, generic TurboQuant KV disabled, storage quantization q4,
+  full-attention-only write-through, and preserved rotating metadata.
+- Hit/speed evidence:
+  stage 1 used `paged+mixed_swa+disk` at 1160 cached tokens with disk hit;
+  stages 2 and 3 used `paged+mixed_swa` at 1160 cached tokens; decode stayed
+  about 90 wall tok/s and 99 stream tok/s with stable Metal/process memory.
+- Audit impact:
+  regenerated `build/current-public-app-issue-audit-after-gemma26-memory-stress-20260611.json`;
+  issue 119 focused source slice is now `pass` and all Gemma26 memory/cache
+  checks are true. Release manifest blocker `issue119_gemma26_memory_stress_open`
+  is removed.
+- Still red:
+  public app issue audit remains open on issue 165 tool-call contract, and the
+  release manifest remains `release_ready=false` on other rows. This proof does
+  not claim installed-app parity because `/Applications/vMLX.app` has stale
+  engine content versus current source/panel bundled Python.
