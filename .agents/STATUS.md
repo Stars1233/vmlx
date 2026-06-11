@@ -14140,3 +14140,13 @@ Other-agent action:
 - artifact: `build/current-gemma4-e2b-qat-jang4m-direct-responses-raw-sse-cache-20260611.json`, `status=pass`. Raw SSE captures are under `build/responses-sse-captures-20260611/gemma-e2b-direct/`.
 - proven: current source server, `--tool-call-parser gemma4`, `--reasoning-parser gemma4`, `enable_thinking=true`, required `record_fact`, two identical streaming Responses requests, complete reasoning output item lifecycle for both requests, function-call argument delta/done for both requests, valid output indices `message=0`, `reasoning=1`, `function_call=2`, exact authoritative args `{\"value\": \"blue-cat\"}`, final response consistency, native `mixed_swa_kv` cache, cache hit telemetry (`cache_hit_tokens=162`, `cache_hit_requests=1`), and block L2 writes/tokens (`disk_writes=3`, `l2_block_tokens_on_disk=162`).
 - boundary: direct source API only; does not prove panel gateway, public tunnel, installed app, media, or release package parity.
+
+## CODEX
+- now: selected Gemma4 E2B QAT JANG_4M panel ApiGateway raw SSE parity proof. This reuses the existing live gateway capture harness with Gemma served model/payload and classifies direct vs gateway output for reasoning lifecycle, function-call argument delta/done, exact args, output indices, and cache state.
+- boundary: source server plus panel ApiGateway only; no public tunnel, installed app, release packaging, N2, or MiMo.
+
+## CODEX
+- now: Gemma4 E2B QAT JANG_4M direct + panel ApiGateway raw SSE/cache proof is green.
+- artifact: `build/current-gemma4-e2b-qat-jang4m-direct-gateway-responses-raw-sse-cache-20260611.json`, `status=pass`. Raw captures/logs under `build/responses-sse-captures-20260611/gemma-e2b-gateway/`.
+- proven: current source server plus real panel ApiGateway proxy, `enable_thinking=true`, required `record_fact`, direct and gateway both have complete reasoning output item lifecycle, function-call argument delta/done, valid output indices `message=0`, `reasoning=1`, `function_call=2`, exact args `{\"value\": \"blue-cat\"}`, final response consistency, native mixed-SWA cache, `cache_hit_tokens=162`, `cache_hit_requests=1`, `l2_block_tokens_on_disk=162`, and `disk_writes=3`.
+- boundary: no public tunnel, installed app, media, release package, N2, or MiMo claim.
