@@ -19116,3 +19116,11 @@ Next action:
   - `uv run pytest -q tests/test_release_regression_manifest.py::test_release_regression_manifest_validates_current_proof_sweep_artifacts tests/test_release_regression_manifest.py::test_release_regression_manifest_tracks_current_post_budget_edge_proof_sweep` -> 2 passed.
   - `uv run pytest -q tests/test_current_regression_suite.py::test_noheavy_api_cache_contract_includes_qwen_gemma_panel_reasoning_request_controls tests/test_current_regression_suite.py::test_noheavy_api_cache_contract_default_out_tracks_current_suite_artifact tests/test_current_regression_suite.py::test_current_regression_suite_runs_noheavy_api_cache_to_current_artifact` -> 3 passed.
   - `git diff --check` -> passed.
+
+# 2026-06-11 Codex continuation - Qwen/Gemma stress-proof lane
+
+Recorded current objective: progress toward extensive live stress testing of tool calling, streaming, reasoning high/auto, Responses cache reuse, UI wiring, parser correctness, coherent text, and release readiness. Boundaries: N2 and MiMo off this lane while Eric remakes them elsewhere; no release/sign/notarize/PyPI/site/updater action; no subagents; no fake fixes. Next action is artifact inspection for Qwen/Gemma proof gaps, then one focused proof/fix.
+
+# 2026-06-11 Qwen35 public tunnel current recapture
+
+Ran live public tunnel Responses SSE recapture against `https://testapi.adlabus.dev/v1/responses` for `models/Qwen3.6-35B-A3B-MXFP8-CRACK-MTP`, `enable_thinking=true`, `tool_choice=required`, and required `record_fact({value})`. Raw SSE saved to `build/responses-sse-captures-20260611/tunnel-qwen35-mxfp8-mtp-tool-current-recapture-20260611.sse` (588 lines). Classified with current direct/gateway captures into `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-current-recapture-still-stale-20260611.json`: status remains fail. Arguments/deltas/final object/model all match, but tunnel still lacks a completed reasoning output item lifecycle (`reasoning_output_item_count=0`, `reasoning_lifecycle_complete=false`) while direct/gateway are complete. Updated `QWEN35_RAW_SSE_PARITY` and its pointer test to the fresh red artifact. No release/sign/notarize action.

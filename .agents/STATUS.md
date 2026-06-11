@@ -14118,3 +14118,14 @@ Other-agent action:
 - The row runs `panel/tests/request-builder.test.ts` for four Qwen/Gemma Chat/Responses cases where detected family proves reasoning support but parser state is stale.
 - Refreshed `build/current-noheavy-api-cache-contract-after-dsv4-real-ui-valid-preflight-20260611.json`: `status=pass`, `missing_markers=[]`, `panel_request_builder_contracts rc=0`, `passed=4`, and `panel_qwen_gemma_reasoning_request_controls=true`.
 - Refreshed `build/current-release-regression-manifest-after-step37-bundled-vlm-proof-20260611.json`: no-heavy matrix is pass with no failed/missing expected checks, including the new panel Qwen/Gemma row. Overall manifest still reports `release_ready=false` and `prepackage_ready=false` because unrelated release blockers remain.
+
+## CODEX
+- now: continuing the persistent model/API/UI/cache stress-proof goal. Current user objective is broad, but this lane must make concrete progress one blocker at a time: Qwen/Gemma reasoning/tool streaming, Responses cache reuse, content/reasoning/function-call deltas, parser correctness, UI wiring, and release-readiness evidence.
+- current boundaries: N2 and MiMo are off this lane while Eric remakes them on other machines; do not load, classify, or claim them here. No release/sign/notarize/PyPI/site/updater action in this movement. No subagents. No fake parser/cache/media guards.
+- next movement: inspect current artifacts for source-fixable Qwen/Gemma API/UI/cache gaps, then run or fix one focused proof for reasoning high/auto, required/auto tools, SSE deltas/final object, and cache reuse.
+
+## CODEX
+- now: fresh Qwen35 public tunnel raw SSE recapture completed against `https://testapi.adlabus.dev/v1/responses` for `models/Qwen3.6-35B-A3B-MXFP8-CRACK-MTP` with reasoning enabled and required `record_fact`.
+- raw capture: `build/responses-sse-captures-20260611/tunnel-qwen35-mxfp8-mtp-tool-current-recapture-20260611.sse` (588 lines).
+- classifier artifact: `build/current-responses-raw-sse-parity-qwen35-direct-gateway-tunnel-current-recapture-still-stale-20260611.json`, `status=fail`. Direct and gateway still have complete reasoning lifecycle and valid output indices; tunnel still has `reasoning_events=8`, `reasoning_done_count=1`, argument delta/done and exact `{"value":"blue-cat"}`, but `reasoning_output_item_count=0`, `reasoning_lifecycle_complete=false`, and reasoning summary deltas attached to the message item at output_index 0. This remains a deployed tunnel/runtime lifecycle blocker, not a current direct/gateway parser args bug.
+- source tracker edit: `QWEN35_RAW_SSE_PARITY` now points at the fresh current-recapture red artifact so release remains blocked until the public tunnel/backend is rebuilt from current source and recaptured green.
