@@ -2990,3 +2990,34 @@ Next implementation target:
 - Release boundary:
   no DMG, Developer ID signing, notarization, tag, upload, PyPI, updater JSON,
   website, or N2 JANG_1L work was performed for this row.
+
+## MiMo JANGTQ_2 Visual Trace And Video Segmentation - 2026-06-11
+
+- Green source fix:
+  MiMo-V2 local MLX vision `cu_seqlens` now matches the bundled PyTorch
+  reference by segmenting attention per temporal frame. Old behavior grouped
+  all frames in a media item into one segment, which can leak across video
+  frames. Still images are unchanged because their observed grid is
+  `grid_t=1`.
+- Proof:
+  `.venv/bin/python -m py_compile vmlx_engine/models/mllm.py` passed. A
+  focused parity probe showed patched source-equivalent `cu_seqlens` for
+  still image, multi-frame video, and mixed grids; old local behavior diverged
+  whenever `grid_t>1`.
+- Still-image semantic diagnosis:
+  current direct source and installed-app media routes really process images,
+  but solid-color semantics remain wrong. Processor trace ruled out RGB order
+  and token expansion: red image produced `pixel_values=(16,1536)`,
+  `image_grid_thw=[[1,4,4]]`, and four `<|image_pad|>` placeholders. Visual
+  tower comparison against the bundled PyTorch reference loaded the same 364
+  visual tensors and zeroed the same three missing merger biases; red-image
+  embeddings matched with max abs diff `0.0136404`, mean abs diff
+  `0.0004317`, cosine `0.99999964`.
+- Red/open:
+  do not claim MiMo JANGTQ_2 `vl_image`, video semantics, or audio green from
+  this. The remaining solid-color failure is now classified outside local
+  visual-tower math and should be investigated at artifact/model-quality,
+  quant/logit bridge, or language-bridge level.
+- Release boundary:
+  no DMG, Developer ID signing, notarization, tag, upload, PyPI, updater JSON,
+  website, or N2 JANG_1L work was performed for this row.

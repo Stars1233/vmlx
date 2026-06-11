@@ -14771,3 +14771,52 @@ Next action:
   was skipped by design because media embeddings are path-dependent.
 - Boundary: no release DMG, sign, notarize, tag, upload, PyPI, updater JSON,
   website, or N2 JANG_1L action.
+
+# 2026-06-11 MiMo JANGTQ_2 image semantics root-cause block selected
+- Current continuation goal: reduce real blockers toward checkpoint quality
+  without broad test-suite churn or recursive/subagent behavior. Work one
+  concrete runtime blocker at a time and write every movement down.
+- Selected blocker: MiMo V2.5 JANGTQ_2 media route is real but a solid red PNG
+  returns `Blue.`. Next work is to isolate whether this is processor input,
+  local MiMo visual runtime, patch-embed/weight layout, prompt/template, or
+  artifact quality. Do not weaken the proof regex or claim media semantics
+  green until the live answer is correct.
+- Boundaries: no release/sign/notarize/PyPI/updater/site action; no N2
+  JANG_1L; no fake parser fixes; no synthetic outputs; no subagents.
+
+# 2026-06-11 MiMo JANGTQ_2 visual-runtime trace and video segmentation fix
+- Direct source server proof reproduced the installed-app semantic failure with
+  the same local bundle and explicit media overlay. Real media route stayed
+  active (`engine_is_mllm=true`, `visual=364`, `num_images_processed`
+  increased), but unlabeled solid color prompts answered incorrectly:
+  red=`Black.`, blue=`Black.`, green=`Black.`/`White.` depending on content
+  part shape. Prompts that included the expected label answered the label and
+  are not valid visual-semantics proof.
+- Processor trace ruled out simple RGB channel reversal and placeholder
+  mismatch: Qwen2.5-VL processor emits `pixel_values=(16,1536)` and
+  `image_grid_thw=[[1,4,4]]`; it expands `<|image_pad|>` to four image tokens,
+  matching the four merged visual embeddings.
+- Artifact trace showed the bundle lacks exactly
+  `visual.merger.ln_q.bias`, `visual.merger.mlp.0.bias`, and
+  `visual.merger.mlp.2.bias`; the local zero-fill behavior mirrors the same
+  missing-key contract used for the PyTorch reference comparison.
+- PyTorch-reference-vs-local-MLX visual tower comparison on the same red image
+  is source-parity green: 364 visual tensors loaded from the artifact,
+  missing merger biases zeroed in both runtimes, output shape `(4,4096)`,
+  max abs diff `0.0136404`, mean abs diff `0.0004317`, cosine
+  `0.99999964`. The current solid-color semantic failure is therefore not
+  caused by local MLX visual-tower math, RGB order, token expansion, or UI
+  media routing.
+- Real runtime fix applied in `vmlx_engine/models/mllm.py`: MiMo-V2 visual
+  `cu_seqlens` now matches the bundled PyTorch reference by segmenting
+  attention per temporal frame (`grid_h * grid_w` repeated `grid_t`) instead
+  of one segment per media item (`grid_t * grid_h * grid_w`). This is neutral
+  for still images (`grid_t=1`) and fixes a real video-frame leakage bug.
+- Verification:
+  `.venv/bin/python -m py_compile vmlx_engine/models/mllm.py` passed. A focused
+  parity probe shows old local `cu_seqlens` diverged for `grid_t>1`, while the
+  patched formula matches the PyTorch source for still image, multi-frame
+  video, and mixed media grids.
+- Boundary: still do not claim MiMo JANGTQ_2 `vl_image`, video semantics,
+  audio, or release readiness green. No release DMG, sign, notarize, tag,
+  upload, PyPI, updater JSON, website, or N2 JANG_1L action was performed.

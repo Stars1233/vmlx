@@ -8933,3 +8933,33 @@ Other-agent action:
 - Boundary:
   no release DMG, Developer ID sign, notarization, tag, upload, PyPI, updater
   JSON, website, or N2 JANG_1L action was performed in this movement.
+
+# 2026-06-11 06:40 PDT MiMo JANGTQ_2 visual trace and video fix
+
+- Source fix:
+  `vmlx_engine/models/mllm.py` now builds MiMo-V2 vision `cu_seqlens` per
+  temporal frame (`grid_h * grid_w` repeated `grid_t`), matching the bundled
+  PyTorch reference. The old MLX path used one segment per media item
+  (`grid_t * grid_h * grid_w`), which is neutral for still images but wrong
+  for video grids.
+- Verification:
+  `.venv/bin/python -m py_compile vmlx_engine/models/mllm.py` passed. Focused
+  parity probe showed patched `cu_seqlens` matches source for `[[1,4,4]]`,
+  `[[2,4,4]]`, `[[3,2,6]]`, and mixed grids, while the old formula diverged
+  for `grid_t>1`.
+- Still-image root-cause trace:
+  direct source server reproduced wrong unlabeled color answers with real media
+  processing active. Processor/token trace shows RGB order is correct and
+  `image_grid_thw=[[1,4,4]]` expands to four `<|image_pad|>` placeholders.
+  PyTorch reference vs local MLX visual-tower comparison loaded the same 364
+  artifact visual tensors, zeroed the same three missing merger biases, and
+  produced matching red-image embeddings: shape `(4,4096)`, max abs diff
+  `0.0136404`, mean abs diff `0.0004317`, cosine `0.99999964`.
+- Classification:
+  MiMo JANGTQ_2 image semantics remain red, but the current evidence points
+  away from UI routing, processor RGB/order, token expansion, and local visual
+  tower math. Next useful work is artifact/model-quality or language-bridge
+  diagnosis, not a fake parser/media-route guard.
+- Boundary:
+  no release DMG, Developer ID sign, notarization, tag, upload, PyPI, updater
+  JSON, website, or N2 JANG_1L action was performed in this movement.
