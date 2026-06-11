@@ -14347,3 +14347,33 @@ Next action:
   `npm --prefix panel run typecheck`, `npm --prefix panel test -- --run
   tests/model-config-registry.test.ts` (`67 passed`), `git diff --check`, and
   source probe for the CLI/panel MiMo guard strings.
+
+# 2026-06-10 21:24 PDT Gemma audio capability gate selected
+- Current blocker being reduced: Gemma JANG/MXFP/QAT audio honesty. Video/VL
+  has live installed-app proof for 26B/31B JANG4M and multiple Gemma 12B
+  MXFP/JANG media boundaries, but audio must be weight-backed or explicitly
+  gated. Do not infer audio from `audio_config`, token ids, placeholders, or
+  projection-only weights.
+- Worktree check before action: only known unrelated
+  `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
+  is dirty. No release/sign/notarize/PyPI/updater/site action.
+- Next action: inspect current source and local Gemma model artifacts for actual
+  `audio_tower.*` weights/runtime modalities, then patch any remaining
+  false-advertise path instead of rerunning broad smokes.
+
+# 2026-06-10 21:31 PDT Gemma panel audio false-advertise root cause
+- Inspection result: backend `vmlx_engine.server` already gates Gemma audio on
+  real `audio_tower.*` weights and has focused rejection tests for
+  config/token-only audio. Local Gemma artifact inspection found 12B/26B/31B
+  style JANG/MXFP rows can carry `audio_config`/tokens or projection-only
+  `embed_audio.*` while lacking `audio_tower.*`.
+- Remaining false-advertise path: panel detection uses a coarse
+  `isMultimodal` flag and `chat.ts` preserves all JSON media parts when that
+  flag is true. A Gemma row that is valid for image/video but lacks audio tower
+  can therefore route `input_audio` to the server instead of gating it before
+  the request.
+- Source edit selected: stamp a Gemma `audioRuntimeAvailable` architecture hint
+  from `model.safetensors.index.json` and have local chat IPC omit only audio
+  parts for known-no-audio Gemma while preserving image/video routing. This is
+  an honest capability gate, not a parser repair, argument synthesis, sampling
+  change, release step, or metadata-only proof.

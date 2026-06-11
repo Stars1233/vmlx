@@ -1,4 +1,21 @@
 ## CODEX
+- now: Gemma panel-side audio false-advertisement is fixed in source for local
+  Gemma4/Gemma4-text rows. The panel now stamps
+  `architectureHints.audioRuntimeAvailable` from indexed `audio_tower.*`
+  weights and omits only `input_audio` parts for local Gemma bundles whose
+  config/token metadata declares audio but whose weights do not back audio.
+- proof: `npm --prefix panel run typecheck` passed; `npm --prefix panel test
+  -- --run tests/model-config-registry.test.ts` passed `69/69`. New registry
+  coverage proves config/projection-only Gemma audio stays multimodal for
+  vision while marking `audioRuntimeAvailable=false`, and real
+  `audio_tower.*` weights mark it true.
+- boundary: this does not make Gemma audio semantic E2E pass and does not alter
+  backend runtime claims; server still honestly rejects unsupported audio. It
+  prevents the app from falsely routing audio for no-audio Gemma artifacts while
+  preserving image/video routing. No release/sign/notarize/PyPI/updater/site
+  action.
+
+## CODEX
 - now: reverted the attempted XML-function required prompt injection source
   change after live MiMo JANGTQ_2 proof made the exactness failure worse.
 - failed-after-fix artifact:

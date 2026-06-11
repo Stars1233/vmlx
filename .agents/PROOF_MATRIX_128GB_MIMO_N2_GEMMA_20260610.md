@@ -1059,6 +1059,18 @@ Proven:
   and also have no `audio_tower.*` weights.
 - Current bundled runtime matches source for `_bundle_declares_native_audio` and
   `_loaded_runtime_modalities`.
+- Panel source now mirrors the same weight-backed audio boundary for local
+  Gemma4/Gemma4-text chats. `detectModelConfigFromDir()` stamps
+  `architectureHints.audioRuntimeAvailable=false` when a Gemma bundle has
+  `audio_config`/audio tokens or projection-only `embed_audio.*` but no indexed
+  `audio_tower.*` weights, while preserving `isMultimodal=true` for valid
+  image/video routing. `chat.ts` uses that hint to omit only `input_audio`
+  parts for known-no-audio local Gemma bundles instead of routing them to a
+  server-side 400.
+- Verification for the panel gate: `npm --prefix panel run typecheck` passed;
+  `npm --prefix panel test -- --run tests/model-config-registry.test.ts`
+  passed `69/69`, including config-only/projection-only audio false and
+  `audio_tower.*` true cases.
 
 Boundary:
 
