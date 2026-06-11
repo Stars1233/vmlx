@@ -6633,3 +6633,169 @@ Other-agent action:
     movement.
   - This does not clear DSV4 exactness, MiMo, Gemma, N2 JANG_1L, installed-app,
     or release rows.
+
+# 2026-06-10 selected blocker - installed-app bundled runtime drift
+
+- Current branch after parser fixes: `d702ebc7a` synced with
+  `origin/codex/pr-intake-manifest`; only pre-existing unrelated
+  `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
+  and ignored `node_modules/` remain dirty.
+- Selected blocker: installed-app bundled runtime drift. This directly affects
+  Gemma installed-app proofs where source Electron/runtime differs from
+  `/Applications/vMLX.app`.
+- Evidence:
+  - `./panel/scripts/verify-bundled-python.sh` initially failed with
+    `RELEASE BLOCKED — bundled vmlx_engine/server.py content drift`;
+  - source `server.py` sha256 was
+    `3fb4ea9832e6fd50edf9104519dc8826b828eebda5600658d8b44c48da9fd31b`;
+  - bundled `server.py` sha256 was
+    `f556e9a3093a7fb8ea92de73ba1d70cb56bb2a242536042dd9907098090bb84c`;
+  - Gemma installed-app 26B/31B failures are not loader/cache failures; the
+    recent source proofs have newer exact-reply/reasoning behavior while the
+    installed-app proof uses stale bundled runtime.
+- Action taken:
+  - local JANG source `/Users/eric/jang/jang-tools` was checked clean;
+  - `./panel/scripts/bundle-python.sh` was run from this checkout;
+  - bundler installed local `vmlx==1.5.57` and clean local `jang==2.5.30`;
+  - bundler completed successfully and produced
+    `panel/bundled-python` at about `1.3G`.
+- Verification after bundling:
+  - `./panel/scripts/verify-bundled-python.sh` passed all critical checks;
+  - bundled critical `vmlx_engine` files now match source content;
+  - bundled critical `jang_tools` files match local JANG source;
+  - critical imports passed for MLX, MLX-LM, MLX-VLM, Gemma4, MiMo, Step3.7,
+    JANGTQ, TurboQuant kernels, Kimi, vMLX loaders/runtime patches, and
+    bundled path isolation.
+- Boundary:
+  - No notarization, DMG release, GitHub release, PyPI upload, updater, or
+    website action was performed.
+  - `panel/bundled-python` is generated/ignored, so the source tree has no
+    tracked bundled-python diff after the rebuild.
+- Next action:
+  - run the local app build/install script to update `/Applications/vMLX.app`
+    with the refreshed bundled runtime, then rerun installed-app parity/proof
+    checks.
+
+# 2026-06-10 installed app rebuilt from current bundled runtime
+
+- Action:
+  - ran `./panel/scripts/build-and-install.sh`;
+  - pre-build checks passed: bundled Python present, panel typecheck passed,
+    Python syntax passed, registry sync sanity passed, no editable installs,
+    ResponsesRequest field parity passed;
+  - script rebuilt bundled Python during `npm run build`, verified bundled
+    critical `vmlx_engine` and `jang_tools` files, built Electron assets,
+    packaged `panel/release/mac-arm64/vMLX.app`, ad-hoc signed native bundled
+    Python files, copied to `/Applications/vMLX.app`, and ad-hoc sealed the
+    installed app.
+- Installed-app verification:
+  - `/Applications/vMLX.app` passes
+    `codesign --verify --deep --strict --verbose=2`;
+  - installed bundled Python imports report `vmlx_engine 1.5.57` and
+    `jang_tools 2.5.30`;
+  - installed app bundled `vmlx_engine/server.py` sha256 is
+    `3fb4ea9832e6fd50edf9104519dc8826b828eebda5600658d8b44c48da9fd31b`,
+    matching source `vmlx_engine/server.py`;
+  - installed bundled `vmlx --help` works.
+- Proven:
+  - Local `/Applications/vMLX.app` now contains the current source runtime
+    server file and a verified bundled Python runtime.
+  - The previous installed-app/source `server.py` drift is removed on this
+    machine.
+- Not proven:
+  - This is a local ad-hoc installed app, not a notarized release DMG.
+  - No GitHub release, PyPI upload, updater JSON, website, notarization, or
+    release DMG action was performed.
+  - Gemma/MiMo/N2 model behavior still needs live installed-app proof after the
+    rebuild.
+
+# 2026-06-11 continuation - exact parser and bundled proof caveat
+
+- Request: continue fixing/proving runtime blockers, do not release, and deeply
+  account for spacing, whitespace, special characters, Unicode, escaping, raw
+  delimiters, and exact argument preservation across parser/API streaming paths.
+- Current state:
+  - Existing parser commits already cover XML-family, compact XML fallback,
+    Responses SSE function-call argument deltas/done/final item, and DSML plain
+    parameter preservation:
+    `611a0cd06`, `abc2afd17`, `bde0bd7bf`, and `d702ebc7a`.
+  - Current branch is synced with `origin/codex/pr-intake-manifest`; only this
+    status/log update, the pre-existing unrelated panel settings JSON, and
+    ignored `node_modules/` are dirty.
+- Installed-app proof caveat:
+  - `current-real-ui-installed-app-gemma4-26b-vl-mxfp4-responses-tools-cachecontrols-bundled-python-after-runtime-rebuild-20260610-proof.json`
+    is `status=pass` for installed-app UI/API/tool/cache/reasoning surfaces,
+    but its `serverCommand` used this checkout's `.venv/bin/python`.
+  - Installed bundled Python was separately verified in `/Applications/vMLX.app`
+    and matches source `vmlx_engine/server.py`, but that artifact alone must not
+    be claimed as a model-serving bundled-Python proof.
+- Next action:
+  - rerun the same Gemma4 26B installed-app proof with
+    `VMLINUX_REAL_UI_PYTHON=/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3`
+    so the live model server itself uses the installed app bundled runtime.
+- Boundaries:
+  - no release/sign/notarize/PyPI/updater/site action;
+  - no N2 JANG_1L work;
+  - no subagents;
+  - no synthetic parser args or reasoning-disable workaround.
+
+# 2026-06-11 Gemma4 26B forced bundled-Python proof classified
+
+- Action:
+  - reran the Gemma4 26B VL/MXFP4 installed-app proof with
+    `VMLINUX_REAL_UI_PYTHON=/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3`.
+- Artifact:
+  - `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-26b-vl-mxfp4-responses-tools-cachecontrols-bundled-python-forced-20260611-proof.json`
+    has `status=fail`.
+  - Screenshot:
+    `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-26b-vl-mxfp4-responses-tools-cachecontrols-bundled-python-forced-20260611-chat.png`.
+- Proven in the failed artifact:
+  - live server command used installed bundled Python from `/Applications/vMLX.app`;
+  - real model path was `/Users/eric/models/JANGQ-AI/gemma-4-26B-A4B-it-qat-MXFP4`;
+  - installed app UI path was `/Applications/vMLX.app`;
+  - visible assistant turns completed with exact requested text:
+    `REAL_UI_LIVE_TOOL_ONE` and `REAL_UI_LIVE_TOOL_TWO second UI turn.`;
+  - built-in `run_command` tool loop persisted `120` tool items;
+  - Responses API and delta streaming were active;
+  - server cache controls were verified;
+  - native Gemma4 mixed-SWA cache was active with full/sliding/rotating
+    components;
+  - cache hit telemetry recorded `3609` tokens for `paged+mixed_swa`;
+  - block-disk L2 wrote `3337` tokens across `54` blocks and showed disk hits;
+  - parser/language leak checks were green.
+- Still failed / not proven:
+  - `reasoning_display` was missing: `eventCounts.reasoningDone=0` and
+    `persistedReasoningCount=0` even though `enable_thinking=true`;
+  - do not register this artifact as a Gemma4 26B pass;
+  - this does not clear Gemma4 26B installed-app reasoning, Gemma media,
+    MiMo, N2, or release rows.
+- Process state:
+  - no matching `vmlx_engine`, `vMLX.app`, Gemma4 26B, or proof process remained
+    after the failed proof inspection.
+- Next action:
+  - return to parser/API exactness verification or another allowed live blocker;
+    do not keep rerunning 26B blindly without a reasoning-template/parser
+    hypothesis.
+
+# 2026-06-11 parser exactness verification refresh
+
+- Action:
+  - reran focused parser/API exact-argument guards after Eric's renewed
+    spacing/special-character instruction.
+- Verification passed:
+  - `.venv/bin/python -m pytest -q tests/test_reasoning_tool_interaction.py -k 'XMLFamilyToolArgumentPreservation or preserves_compact_xml_arg_value_spacing or preserves_xml_parameter_spacing'`
+    selected/passed `9/9` XML-family/compact XML spacing/entity tests;
+  - `.venv/bin/python -m pytest -q tests/test_server.py::TestOpenAILogprobsFormatting::test_streaming_responses_xml_tool_call_preserves_special_arguments tests/test_dsml_tool_parser.py::TestDSMLToolParser::test_plain_param_string_repair_preserves_spacing_entities_and_newlines`
+    passed `2/2`;
+  - `.venv/bin/python -m pytest -q tests/test_tool_parser_required_args_fail_closed.py`
+    passed `7/7`;
+  - `git diff --check` passed.
+- Proven:
+  - current source preserves provided tool argument text for XML-family,
+    compact XML, Responses SSE argument delta/done/final item, and DSML
+    degraded/plain parameter paths covering leading/trailing spaces,
+    newlines/tabs, XML entities, Unicode, and shell/path special characters;
+  - missing/whitespace-only required args continue to fail closed.
+- Not proven:
+  - this is source/unit/API regression proof, not a fresh same-model live
+    gateway/tunnel recapture and not a release/notarization proof.
