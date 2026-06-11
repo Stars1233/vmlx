@@ -17670,3 +17670,56 @@ Next action:
   MiMo V2.5 runtime/tool/long-prompt; broad N2 Pro JANG1L/JANGTQ row with
   JANG_1L still off-limits for this lane; MiniMax reporter parity/root cause;
   real Electron UI cross-family live matrix.
+
+# 2026-06-11 continuation PDT - Qwen/JANG speed-MTP blocker selection
+
+- Action:
+  selected the Qwen/JANG packaged speed, native MTP speed/equivalence, and
+  Qwen27 prompt-processing speed rows as the next blocker cluster after Gemma4
+  26B rows turned green.
+- Boundary:
+  source/installed-app live proof only. No release, signing, notarization,
+  upload, PyPI, updater JSON, website, or download mutation.
+- Next:
+  inspect the Qwen artifact contracts and local model paths before launching
+  anything, then run the narrow proof needed to reduce the open rows.
+
+# 2026-06-11 continuation PDT - Qwen27 packaged PP blocker classified
+
+- Action:
+  ran `run_decode_speed_gate.py` for `qwen27_jang4m` against source Python,
+  installed app Python, staged Sequoia app Python, and staged Tahoe app Python.
+- Source:
+  `build/current-decode-speed-live-qwen27-jang4m-source-20260606.json`
+  passed on `.venv/bin/python` / MLX `cp313-cp313-macosx_26_0_arm64`; source
+  PP clears the 600 tok/s floor.
+- Installed `/Applications`:
+  `build/current-decode-speed-live-qwen27-jang4m-installed-app-deterministic-pp-20260606.json`
+  is `status=review`; PP below floor at `210.74`, `224.51`, `205.99` tok/s.
+- Staged Sequoia:
+  `build/current-decode-speed-live-qwen27-jang4m-staged-sequoia-pp-diagnostic-20260611.json`
+  is `status=review`; PP below floor at `220.10`, `258.61`, `236.70` tok/s.
+- Staged Tahoe:
+  `build/current-decode-speed-live-qwen27-jang4m-staged-tahoe-pp-diagnostic-20260611.json`
+  is `status=review`; PP improved but still below floor on one row at
+  `557.57` tok/s.
+- Classification:
+  source/native Py3.13 clears PP, but packaged Py3.12 app paths do not. The
+  Qwen/JANG packaged speed and Qwen27 prompt-processing rows remain open as a
+  real packaged runtime performance blocker.
+
+# 2026-06-11 continuation PDT - Qwen27 native-MTP A/B row green
+
+- Action:
+  ran `bench/native_mtp_speed_ab.py` against
+  `/Users/eric/models/JANGQ/Qwen3.6-27B-JANG_4M-MTP` with installed-app Python.
+- Artifact:
+  `build/current-native-mtp-speed-ab-qwen27-jang4m-mtp-installed-app-20260606/result.json`.
+- Result:
+  baseline no-MTP decode `27.83 tok/s`; native MTP decode `53.69 tok/s`;
+  speedup about `1.93x`; output equivalence reports all content/full text
+  equal.
+- Objective:
+  `build/current-objective-proof-after-qwen27-speed-mtp-classification-20260611.json`
+  marks the Qwen native-MTP decode/equivalence row PASS while leaving Qwen
+  packaged PP rows open.

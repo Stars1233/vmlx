@@ -12377,3 +12377,75 @@ Other-agent action:
   no release/sign/notarize/upload/PyPI/updater/site action. N2 JANG_1L remains
   off this lane except for existing preflight reporting; do not use the broad
   N2 row as permission to launch JANG_1L.
+
+# 2026-06-11 continuation PDT Qwen/JANG speed-MTP blocker selection
+
+- Selected next blocker:
+  Qwen/JANG packaged MX matmul speed, Qwen native MTP live decode speed/output
+  equivalence, and Qwen 27B JANG_4M prompt-processing speed floor.
+- Reason:
+  these rows remain open after Gemma4 26B clearance, and Qwen/Qwen-coder
+  runtime/API/tool behavior is a release-critical harness surface for Codex,
+  opencode, and Responses clients.
+- Boundary:
+  source/installed-app proof only. No release/sign/notarize/upload/PyPI/updater
+  or website/download mutation. Do not use this as permission to work on
+  N2 JANG_1L.
+- Next movement:
+  inspect the existing Qwen speed/MTP artifact contracts and local model paths,
+  then run or classify the smallest current live proof that can honestly reduce
+  the Qwen blocker cluster.
+
+# 2026-06-11 continuation PDT Qwen27 packaged PP blocker classified
+
+- Commands:
+  ran `tests/cross_matrix/run_decode_speed_gate.py` for `qwen27_jang4m` against
+  source Python, installed `/Applications/vMLX.app`, staged Sequoia app, and
+  staged Tahoe app.
+- Source proof:
+  `build/current-decode-speed-live-qwen27-jang4m-source-20260606.json` is
+  `status=pass` using `.venv/bin/python` with MLX
+  `cp313-cp313-macosx_26_0_arm64`; PP rows are above the 600 tok/s floor.
+- Installed-app result:
+  `build/current-decode-speed-live-qwen27-jang4m-installed-app-deterministic-pp-20260606.json`
+  is `status=review`; decode is fine, but PP is below the 600 tok/s floor:
+  `210.74`, `224.51`, `205.99` tok/s with MLX
+  `cp312-cp312-macosx_14_0_arm64`.
+- Staged Sequoia diagnostic:
+  `build/current-decode-speed-live-qwen27-jang4m-staged-sequoia-pp-diagnostic-20260611.json`
+  is `status=review`; PP is below floor at `220.10`, `258.61`, `236.70` tok/s
+  with the current staged Sequoia app and MLX `cp312-cp312-macosx_14_0_arm64`.
+- Staged Tahoe diagnostic:
+  `build/current-decode-speed-live-qwen27-jang4m-staged-tahoe-pp-diagnostic-20260611.json`
+  is `status=review`; Tahoe/macOS 26 wheels improve PP but still miss the
+  600 tok/s floor on one measured row at `557.57` tok/s with MLX
+  `cp312-cp312-macosx_26_0_arm64`.
+- Classification:
+  Qwen27 source/native Py3.13 path clears PP. Packaged Py3.12 app paths do not
+  currently clear the packaged PP floor, with Sequoia much slower and Tahoe
+  close but still below threshold. This is a real packaged runtime/performance
+  blocker, not a missing-artifact-only issue and not a model coherency/tool
+  parser issue.
+- Boundary:
+  do not mark the Qwen/JANG packaged speed or Qwen27 prompt-processing rows
+  green from these artifacts. No release/sign/notarize/upload/PyPI/updater/site
+  action was performed.
+
+# 2026-06-11 continuation PDT Qwen27 native-MTP A/B row green
+
+- Command:
+  `VMLINUX_BENCH_PYTHON=/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3.12 .venv/bin/python bench/native_mtp_speed_ab.py /Users/eric/models/JANGQ/Qwen3.6-27B-JANG_4M-MTP --served-name qwen27-jang4m-mtp-ab --port 8814 --cache off --max-num-seqs 1 --max-tokens 320 --repeats 1 --warmup 0 --load-timeout-s 600 --out build/current-native-mtp-speed-ab-qwen27-jang4m-mtp-installed-app-20260606 --disable-prompt-reuse`.
+- Proof:
+  `build/current-native-mtp-speed-ab-qwen27-jang4m-mtp-installed-app-20260606/result.json`.
+- Result:
+  baseline no-MTP decode was about `27.83 tok/s`; native MTP decode was about
+  `53.69 tok/s`; output equivalence reports `all_content_equal=true` and
+  `all_full_text_equal=true`.
+- Objective verification:
+  `build/current-objective-proof-after-qwen27-speed-mtp-classification-20260611.json`
+  marks `Qwen native MTP live decode speed and output equivalence is
+  release-cleared` as `PASS`.
+- Boundary:
+  Qwen native-MTP decode/equivalence is green. Qwen/JANG packaged MX matmul
+  speed and Qwen27 prompt-processing speed remain open because packaged Py3.12
+  PP is below floor. No release/sign/notarize/upload/PyPI/updater/site action.

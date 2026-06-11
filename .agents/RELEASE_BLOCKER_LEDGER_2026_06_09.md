@@ -804,3 +804,33 @@ panel/scripts/verify-release-dmgs.sh
   real Electron UI cross-family live matrix, and DSV4 long-output/code quality.
 - N2 JANG_1L remains off-limits in this lane except existing preflight
   accounting.
+
+## 2026-06-11 Qwen27 packaged PP blocker classification
+
+- `build/current-decode-speed-live-qwen27-jang4m-source-20260606.json` passes
+  on source Python with MLX `cp313-cp313-macosx_26_0_arm64`.
+- `build/current-decode-speed-live-qwen27-jang4m-installed-app-deterministic-pp-20260606.json`
+  is `status=review`; installed `/Applications` Py3.12/Sequoia MLX PP is
+  `210.74`, `224.51`, `205.99` tok/s, below the 600 tok/s floor.
+- `build/current-decode-speed-live-qwen27-jang4m-staged-sequoia-pp-diagnostic-20260611.json`
+  is `status=review`; current staged Sequoia app PP is `220.10`, `258.61`,
+  `236.70` tok/s.
+- `build/current-decode-speed-live-qwen27-jang4m-staged-tahoe-pp-diagnostic-20260611.json`
+  is `status=review`; current staged Tahoe app improves to one PP row at
+  `557.57` tok/s but still misses the 600 tok/s floor.
+- Keep Qwen/JANG packaged speed and Qwen27 prompt-processing rows open until a
+  packaged Python/runtime path clears PP honestly. Do not use source-only PP to
+  claim packaged release clearance.
+
+## 2026-06-11 Qwen27 native-MTP decode/equivalence clearance
+
+- `build/current-native-mtp-speed-ab-qwen27-jang4m-mtp-installed-app-20260606/result.json`
+  proves installed-app native-MTP decode/equivalence for
+  `/Users/eric/models/JANGQ/Qwen3.6-27B-JANG_4M-MTP`.
+- Baseline no-MTP decode was about `27.83 tok/s`; native MTP decode was about
+  `53.69 tok/s`; output equivalence has `all_content_equal=true` and
+  `all_full_text_equal=true`.
+- `build/current-objective-proof-after-qwen27-speed-mtp-classification-20260611.json`
+  marks `Qwen native MTP live decode speed and output equivalence` PASS.
+- This does not clear Qwen packaged PP speed. Keep the packaged speed and
+  prompt-processing rows open until packaged Py3.12 runtime clears PP.
