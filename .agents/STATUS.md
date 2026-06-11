@@ -9425,3 +9425,46 @@ Other-agent action:
   app rebuild/installed-app rerun, MiMo JANGTQ_2 literal exactness,
   source-vs-remade-artifact comparison, media semantic release quality, and
   release packaging gates.
+
+# 2026-06-11 continuation - Gemma proof-gate audit selected
+
+- Current-turn instruction:
+  continue systematically, keep every movement written down, and focus on real
+  fixes/proofs for Gemma/MiMo/N2/Qwen model-runtime/API/cache/media blockers
+  without release/sign/notarize/PyPI/updater/site actions, N2 JANG_1L, or
+  subagent delegation.
+- Lane selection:
+  inspect the latest Gemma JANG/MXFP/QAT installed-app/dev-app proof artifacts
+  against the current release checklist. The goal is to determine whether the
+  open Gemma rows are real runtime/media/API defects, stale gate wiring, or
+  unproven rows before making any source or tracker edit.
+- Boundary:
+  no pointer-only release claim unless the referenced proof artifact is current
+  and contains the exact required evidence. Do not infer audio support from
+  metadata/projection tokens, and do not claim video/VL/API/cache parity without
+  live proof fields.
+
+# 2026-06-10 23:45 PDT Gemma native MXFP4 gate closed
+
+- Live proof:
+  ran one current installed-app proof for
+  `/Users/eric/models/JANGQ-AI/gemma-4-31B-it-qat-MXFP4` using bundled Python,
+  Responses API, built-in tools, explicit Gemma4 reasoning parser, cache
+  controls, paged mixed-SWA cache, and L2 block cache.
+- New proof artifact:
+  `docs/internal/agent-notes/current-real-ui-installed-app-gemma4-31b-mxfp4-responses-tools-cachecontrols-bundled-python-sessionlogs-reasoning-probe-20260611-proof.json`
+  with `status=pass`, `reasoning_display`, `responses_delta_streaming`,
+  `long_tool_loop`, `server_cache_controls`, `native_cache_status`,
+  `l2_disk_storage`, no raw parser leak, and no reasoning raw parser leak.
+- Gate update:
+  Gemma QAT/native MXFP4 inventory now consumes current pass artifacts for
+  both `gemma4_26b_vl` and `gemma4_31v_or_31b_vl`.
+- Regenerated artifacts:
+  `build/current-gemma-qat-native-mxfp4-local-inventory-after-31b-sessionlogs-reasoning-proof-20260611.json`
+  is `status=pass`, `open_required_rows=[]`; full checklist
+  `build/current-full-release-objective-checklist-after-gemma-native-mxfp4-sessionlogs-reasoning-proof-20260611.json`
+  is still `status=open`, `failed_count=49`, with `gemma_failed=[]`.
+- Remaining release blockers:
+  no Gemma failures remain in the current full checklist, but release is still
+  blocked by prepackage/release readiness, N2 release clearance, MiMo exactness
+  and media/L2 rows, Step3.7, LFM, Nemotron, MiniMax issue179 parity, and DSV4.

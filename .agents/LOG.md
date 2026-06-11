@@ -15285,3 +15285,46 @@ Next action:
   this is not a MiMo reasoning-on success and does not fix JANGTQ_2 literal
   exactness or media semantics. It prevents a stale UI/API request from
   claiming unsupported MiMo thinking.
+
+# 2026-06-11 continuation - Gemma proof-gate audit
+
+- Request:
+  continue systematically toward checkpoint readiness, documenting every
+  instruction/status movement and focusing on real Gemma/MiMo/N2/Qwen
+  runtime/API/cache/media blockers without release actions or subagents.
+- Action:
+  selecting the Gemma proof-gate audit as the next non-duplicate block because
+  the current release checklist still shows Gemma rows open while multiple
+  installed-app/dev-app Gemma proof artifacts exist.
+- No-claim:
+  no Gemma row will be marked green unless a current artifact proves the exact
+  row; audio remains unsupported unless weight-backed and live-proven; video
+  and VL require actual frame/image-through-runtime evidence.
+
+# 2026-06-10 23:45 PDT Gemma native MXFP4 proof-gate movement
+
+- Live command:
+  `VMLINUX_REAL_UI_APP_PATH=/Applications/vMLX.app VMLINUX_REAL_UI_PYTHON=/Applications/vMLX.app/Contents/Resources/bundled-python/python/bin/python3 VMLINUX_REAL_UI_MODEL_PATH=/Users/eric/models/JANGQ-AI/gemma-4-31B-it-qat-MXFP4 VMLINUX_REAL_UI_SERVED_MODEL=gemma-4-31B-it-qat-MXFP4 VMLINUX_REAL_UI_PROOF_BASENAME=current-real-ui-installed-app-gemma4-31b-mxfp4-responses-tools-cachecontrols-bundled-python-sessionlogs-reasoning-probe-20260611 VMLINUX_REAL_UI_WIRE_API=responses VMLINUX_REAL_UI_BUILTIN_TOOLS=1 VMLINUX_REAL_UI_ENABLE_THINKING=1 VMLINUX_REAL_UI_MAX_TOKENS=1024 VMLINUX_REAL_UI_MAX_PROMPT_TOKENS=12000 VMLINUX_REAL_UI_MAX_TOOL_ITERATIONS=4 VMLINUX_REAL_UI_CHECK_SERVER_CACHE_CONTROLS=1 node panel/scripts/live-real-ui-model-proof.mjs`
+- Result:
+  pass. The proof records real installed app, bundled Python, loaded
+  `gemma-4-31B-it-qat-MXFP4`, Responses API, tool loop, reasoning display,
+  parser/leak checks, paged mixed-SWA cache reuse, and L2 block storage.
+- Source edit:
+  `tests/cross_matrix/run_gemma_qat_native_mxfp4_inventory_gate.py` now
+  consumes current pass installed-app proofs for `gemma4_26b_vl` and
+  `gemma4_31v_or_31b_vl`; full checklist and current-suite constants point to
+  the regenerated Gemma inventory.
+- Regenerated proof gates:
+  `build/current-gemma-qat-native-mxfp4-local-inventory-after-31b-sessionlogs-reasoning-proof-20260611.json`
+  reports `status=pass`, `open_required_rows=[]`.
+  `build/current-full-release-objective-checklist-after-gemma-native-mxfp4-sessionlogs-reasoning-proof-20260611.json`
+  reports `status=open`, `failed_count=49`, `gemma_failed=[]`.
+- Verification:
+  `python3 -m py_compile tests/cross_matrix/run_gemma_qat_native_mxfp4_inventory_gate.py tests/cross_matrix/run_full_release_objective_checklist.py tests/cross_matrix/run_current_regression_suite.py` passed.
+  `.venv/bin/python -m pytest -q tests/test_gemma_qat_native_mxfp4_inventory_gate.py tests/test_full_release_objective_checklist.py -k 'gemma_qat_native_mxfp4 or full_release_objective_checklist_blocks_open_gemma_qat_inventory'` passed `10/10`.
+  `.venv/bin/python -m pytest -q tests/test_current_regression_suite.py::test_current_regression_suite_runs_gemma_qat_inventory_gate tests/test_current_regression_suite.py::test_current_regression_suite_source_hash_list_matches_release_manifest` passed `2/2`.
+  `git diff --check` passed.
+- Boundary:
+  no release/sign/notarize/PyPI/updater/site action was performed. The
+  pre-existing dirty `build/current-panel-settings-contract-proof-20260601-cache-ui-storage-quant.json`
+  was not staged.
