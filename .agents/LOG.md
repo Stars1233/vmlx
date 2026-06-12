@@ -19796,3 +19796,39 @@ item lifecycle as direct and gateway.
   `source=Notarized Developer ID`.
 - No production release-clear claim: the checkpoint override manifest still
   reports open rows.
+
+# 2026-06-11 public 1.5.58 release/upload/updater state
+
+- Pushed commit `08d8fcc5d` to `origin/codex/pr-intake-manifest` and
+  `origin/main`.
+- Pushed tag `v1.5.58` to `jjang-ai/vmlx`.
+- Created public GitHub releases:
+  `https://github.com/jjang-ai/vmlx/releases/tag/v1.5.58` and
+  `https://github.com/jjang-ai/mlxstudio/releases/tag/v1.5.58`.
+- Verified release asset digests in both repos:
+  Sequoia DMG `sha256:71925fa21857a631c7fdddfd14b217cef8e076a3ce88fb82439672a0196bd7f4`;
+  Sequoia blockmap
+  `sha256:8fe211ba0060369b17594d5ba26176263ebf8f5d621187eaba461c4e78fc0d32`;
+  Tahoe DMG `sha256:ffa671547b0de037d9e5257589f29d8e29c5cebb7358c127ed0a90b6925040dc`;
+  Tahoe blockmap
+  `sha256:77f8fa7af53c960d790c9f52c8b6e3c0e6b4b9c357a2fd11d1a9e85f8a64d17e`.
+- Updated `/Users/eric/mlx/mlxstudio/latest.json`, committed
+  `a65870d` (`Update latest manifest for vMLX 1.5.58 checkpoint`), and pushed
+  to `jjang-ai/mlxstudio@main`. Raw GitHub `latest.json` now returns
+  `version=1.5.58` with the correct Sequoia/Tahoe URLs and hashes.
+- PyPI attempt:
+  `gh workflow run publish-pypi.yml --repo jjang-ai/vmlx -f ref=v1.5.58 --ref main`
+  started run `27386557308`; it built and checked the package but failed trusted
+  publishing with PyPI `invalid-publisher` for
+  `repo:jjang-ai/vmlx:environment:pypi`.
+- Local PyPI attempt:
+  `uv run --with build python -m build . --sdist --wheel --outdir /tmp/vmlx-pypi-1.5.58`
+  and `uv run --with twine twine check /tmp/vmlx-pypi-1.5.58/*` passed, but
+  `uv run --with twine twine upload --repository pypi /tmp/vmlx-pypi-1.5.58/*`
+  failed `403 Forbidden`.
+- Live website blocker:
+  `https://mlx.studio/download/` still emits hardcoded `v1.5.57` links and
+  schema `softwareVersion` `1.5.56`. Search found matching stale source only in
+  deprecated `/Users/eric/vmlx/website/index.html`, which is not a valid active
+  source of truth for this lane. Need real Cloudflare/site source or deploy
+  instructions to update/purge that page without touching deprecated repo state.

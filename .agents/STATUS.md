@@ -14910,3 +14910,31 @@ Other-agent action:
 - Boundary: this is still a checkpoint release with the prepackage ledger
   override; `build/current-release-regression-manifest-checkpoint-dmg-override-1.5.58-20260611.json`
   reports open rows. Do not claim production release-clear.
+
+## CODEX - 2026-06-11 public 1.5.58 release/upload/updater state
+- Source commit `08d8fcc5d` (`Release vMLX 1.5.58 checkpoint`) was pushed to
+  `origin/codex/pr-intake-manifest` and `origin/main`.
+- Tag `v1.5.58` was pushed to `jjang-ai/vmlx`.
+- GitHub releases created:
+  `https://github.com/jjang-ai/vmlx/releases/tag/v1.5.58` and
+  `https://github.com/jjang-ai/mlxstudio/releases/tag/v1.5.58`.
+- Verified uploaded asset digests in both repos match local `.58` hashes:
+  Sequoia DMG `71925fa21857a631c7fdddfd14b217cef8e076a3ce88fb82439672a0196bd7f4`,
+  Sequoia blockmap `8fe211ba0060369b17594d5ba26176263ebf8f5d621187eaba461c4e78fc0d32`,
+  Tahoe DMG `ffa671547b0de037d9e5257589f29d8e29c5cebb7358c127ed0a90b6925040dc`,
+  Tahoe blockmap `77f8fa7af53c960d790c9f52c8b6e3c0e6b4b9c357a2fd11d1a9e85f8a64d17e`.
+- `/Users/eric/mlx/mlxstudio/latest.json` was updated and pushed to
+  `jjang-ai/mlxstudio@a65870d`; raw GitHub `latest.json` now returns version
+  `1.5.58` and the correct Sequoia/Tahoe URLs and hashes.
+- PyPI remains blocked:
+  GitHub workflow run `27386557308` built and checked the package but failed
+  trusted publishing with `invalid-publisher` for
+  `repo:jjang-ai/vmlx:environment:pypi`. Local `uv run --with build` produced
+  `vmlx-1.5.58` wheel/sdist and `twine check` passed, but
+  `twine upload --repository pypi /tmp/vmlx-pypi-1.5.58/*` failed with
+  `403 Forbidden`.
+- Website blocker: live `https://mlx.studio/download/` still renders hardcoded
+  `v1.5.57` DMG links and schema `softwareVersion` `1.5.56`. The only local
+  matching source found is deprecated `/Users/eric/vmlx/website/index.html`,
+  which this lane must not use as current source of truth. Need the real
+  Cloudflare/site source or deployment path to update/purge that page.
