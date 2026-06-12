@@ -20133,3 +20133,24 @@ item lifecycle as direct and gateway.
 - Speed: 1 token in 37.97s.
 - Health after first token: active `98004.5 MB`, peak `98235.1 MB`, L2 block tokens `10`, L2 SSM tokens `10`.
 - Short decode was not run because first token was not sane. Proof summary written to `build/current-n2-pro-jang1l-prune15-logits-20260611/SUMMARY.md`; shared lane updated; port `8138` server stopped.
+
+# 2026-06-12 N2 JANGTQ2 proof intake
+
+- Read shared lane and JANG proof files for the completed source-vMLX N2 Pro
+  JANGTQ2 run.
+- Accepted as current working N2 Pro lane:
+  `/Volumes/EricsLLMDrive/jangq-ai/Nex-N2-Pro-JANGTQ2-20260611`.
+- Source runtime proof location:
+  `/Users/eric/jang/build/current-n2-jangtq2-self-runtime-20260612/`.
+- Proven behavior: exact `blue cat`, arithmetic `45`, exact JSON
+  `{"ok":true,"n":45}`, Responses no-tool sentinel, Responses arithmetic,
+  Responses auto-tool call with args `{"query":"n2-self-742"}`, and
+  `previous_response_id` continuation returning `N2_TOOL_OK_742`.
+- Runtime/cache facts: MLLM/VLM JANGTQ native TurboQuant fast path, no quant
+  repair warning, active/peak `103802.3 MB` / `104874.8 MB`, generation
+  throughput `34.27 tok/s`, hybrid paged+SSM cache reuse with `209` cached
+  continuation tokens.
+- Boundary: this is source-runtime proof only. Do not call UI, installed app,
+  public tunnel/gateway, release, signing, notarization, or updater state green
+  from this proof alone. Chat `logprobs/top_logprobs` returned HTTP 400 and
+  remains a diagnostics/API follow-up, not a coherence blocker.

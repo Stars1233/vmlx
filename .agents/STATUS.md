@@ -15194,3 +15194,27 @@ Other-agent action:
 - Active/peak after first token: `98004.5 MB` / `98235.1 MB`; L2 wrote 10 block tokens and 10 SSM companion tokens.
 - Short decode was not run because first-token path was not sane.
 - Shared lane updated; port `8138` server stopped.
+
+## CODEX - 2026-06-12 N2 JANGTQ2 proof intake
+- Imported the JANG agent's completed source-vMLX proof from:
+  `/Users/eric/jang/build/current-n2-jangtq2-self-runtime-20260612/SUMMARY.md`.
+- Working artifact is now:
+  `/Volumes/EricsLLMDrive/jangq-ai/Nex-N2-Pro-JANGTQ2-20260611`
+  (`101G`).
+- Classification: coherent working N2 Pro source-runtime lane. This supersedes
+  the failed affine JANG_1L/row-L2 prune15 production path; affine JANG_1L stays
+  research/debug only.
+- Proven through source vMLX on port `8140`: exact short text `blue cat`,
+  arithmetic, exact JSON, Responses no-tool, Responses auto-tool function call,
+  and `previous_response_id` tool-result continuation.
+- Runtime path: MLLM/VLM JANGTQ native TurboQuant fast path; 94 shards; 180 TQ
+  modules replaced; 60 fused SwitchGLU instances patched; no quant-shape repair
+  warning.
+- Cache/speed proof: final health active/peak `103802.3 MB` / `104874.8 MB`;
+  generation throughput `34.27 tok/s`; hybrid paged+SSM cache continuation reused
+  `209` cached tokens with `cache_detail=paged+ssm`; total cache-hit tokens `219`.
+- Cleanup: JANG stopped the port `8140` server after proof; no intentional N2
+  probe server remains.
+- Not proven by this intake: Chat `logprobs/top_logprobs` diagnostics on this
+  path, UI/installed-app parity, public tunnel/gateway, release packaging,
+  signing, notarization, upload, or updater/download state.
