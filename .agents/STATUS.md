@@ -15101,3 +15101,34 @@ Other-agent action:
   `STATUS.md`. Next ask: JANG source/high-bit first-token logits/top-k and
   inspection of 467 runtime quant-shape repairs. vMLX port `8135` server was
   stopped after proof.
+
+## CODEX - 2026-06-11 N2 shared-lane monitor mode
+- Eric asked vMLX runtime agent to stay updated with the other agent by waiting/sleeping and checking `/Users/eric/.agents/n2-jang-vmlx-sync` for tasking.
+- Current behavior: do not start another N2 load/probe unless the shared lane requests it and a pre-load note is written first. Poll shared `MAIL.md`, `STATUS.md`, `TASKS.md`, and `LOG.md` for updates; respond through shared notes and chat.
+
+## CODEX - 2026-06-11 N2 monitor update after wait
+- Shared lane polled after a 60s wait. New JANG update found: JANG agent acknowledged the linear4/out4 result and started a new no-prune `lm_head` 6-bit conversion at `/Users/eric/jangq-ai/Nex-N2-Pro-JANG_1L-full-runtimefit-lmhead6-20260611`.
+- JANG has not requested vMLX runtime load yet. Current instruction: wait for JANG validation/header/size results and a fresh vMLX probe request before loading anything.
+
+## CODEX - 2026-06-11 N2 monitor update live
+- Shared lane checked again after Eric asked whether vMLX is staying updated.
+- Latest JANG tasking remains: keep waiting. `lm_head` 6-bit conversion for `/Users/eric/jangq-ai/Nex-N2-Pro-JANG_1L-full-runtimefit-lmhead6-20260611` is still active and has not posted validation/header/size results.
+- Observed active process: `jang_tools convert` plus `caffeinate`; no vMLX N2 server/probe process is intentionally running.
+- Do not load/probe until shared `MAIL.md` or `STATUS.md` explicitly requests vMLX runtime work and a fresh pre-load notice is written first.
+
+## CODEX - 2026-06-11 N2 lmhead6 pre-load notice
+- JANG posted `VALID` artifact and explicit vMLX runtime request for `/Users/eric/jangq-ai/Nex-N2-Pro-JANG_1L-full-runtimefit-lmhead6-20260611`.
+- Artifact: `106.61 GiB` indexed, `107G` on disk, 123 shards, 2725 tensors, no expert pruning, `lm_head` 6-bit while embeddings remain 4-bit.
+- Pre-load notice posted to shared `MAIL.md` and `STATUS.md`.
+- Planned probe: source vMLX on port `8136`, live TQ auto enabled, reasoning disabled, deterministic prompt `Reply with exactly: blue cat`, capture raw generated token IDs/decode and final API fields, then stop server.
+
+## CODEX - 2026-06-11 N2 lmhead6 raw decode result
+- Proof summary:
+  `build/current-n2-pro-jang1l-lmhead6-raw-decode-20260611/SUMMARY.md`.
+- Runtime load passed for `/Users/eric/jangq-ai/Nex-N2-Pro-JANG_1L-full-runtimefit-lmhead6-20260611`.
+- Output quality remains failed. First Chat generated raw token ids `[220, 220, 220, 220, 220, 220, 220, 220]`; decode with specials kept/skipped is eight spaces.
+- Response surface: `message.content=null`, `completion_tokens=8`, `finish_reason=length`, blank-generation warning present.
+- First-miss speed: 8 tokens in 44.10s, `0.2 tok/s`.
+- Cache retry succeeded with `cached_tokens=10`, `cache_detail=paged+ssm+tq`, L2 block+SSM companion tokens on disk, but still generated eight `220` tokens at 8 tokens in 17.86s (`0.4 tok/s`).
+- Classification: `lm_head` 6-bit alone is not the fix; cache/API/parser/reasoning are not the visible-null cause for this artifact.
+- Shared lane updated; port `8136` server stopped.

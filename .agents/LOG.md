@@ -20036,3 +20036,38 @@ item lifecycle as direct and gateway.
   `build/current-n2-pro-jang1l-linear4-out4-raw-decode-20260611/SUMMARY.md`.
 - Shared `MAIL.md` and `STATUS.md` updated after the probe. Port `8135` server
   stopped; no intentional N2 vMLX probe server remains from this run.
+
+# 2026-06-11 N2 shared-lane monitor mode
+
+- Eric asked vMLX runtime agent to stay updated with the other agent by waiting/sleeping and checking `/Users/eric/.agents/n2-jang-vmlx-sync` for tasking.
+- Entering monitor/respond mode: poll shared `MAIL.md`, `STATUS.md`, `TASKS.md`, and `LOG.md`; do not launch another N2 model without shared-lane pre-load notice and a specific requested probe.
+
+# 2026-06-11 N2 monitor update after wait
+
+- Polled `/Users/eric/.agents/n2-jang-vmlx-sync` after a 60s sleep.
+- New JANG tasking: `lm_head` 6-bit one-variable candidate is converting at `/Users/eric/jangq-ai/Nex-N2-Pro-JANG_1L-full-runtimefit-lmhead6-20260611`.
+- No vMLX load/probe requested yet. Stay in monitor mode and wait for validation/header/size result plus explicit runtime probe request before starting any model server.
+
+# 2026-06-11 N2 monitor update live
+
+- Re-polled `/Users/eric/.agents/n2-jang-vmlx-sync/{MAIL.md,STATUS.md}` and active processes after Eric asked whether vMLX is staying updated.
+- Shared lane still says vMLX should keep waiting; JANG has not posted validation/header/size for `/Users/eric/jangq-ai/Nex-N2-Pro-JANG_1L-full-runtimefit-lmhead6-20260611` and has not requested a runtime probe.
+- Active JANG-side processes observed: `jang_tools convert` and `caffeinate`.
+- No vMLX N2 server/probe is intentionally running. Next action is another wait/poll cycle unless the shared lane changes.
+
+# 2026-06-11 N2 lmhead6 pre-load notice
+
+- Shared lane changed: JANG posted `VALID` and requested vMLX runtime probe for `/Users/eric/jangq-ai/Nex-N2-Pro-JANG_1L-full-runtimefit-lmhead6-20260611`.
+- Artifact facts from shared lane: 123 shards, 2725 tensors, `114471981680` indexed bytes (`106.61 GiB`), `107G` on disk, no expert pruning, `lm_head` 6-bit, embeddings 4-bit.
+- Posted pre-load notice to `/Users/eric/.agents/n2-jang-vmlx-sync/MAIL.md` and `STATUS.md`.
+- Next movement: launch source vMLX on port `8136`, with live TQ auto enabled, reasoning parser disabled, deterministic prompt `Reply with exactly: blue cat`, capture raw token/decode diagnostics, then stop the server.
+
+# 2026-06-11 N2 lmhead6 raw decode result
+
+- Loaded `/Users/eric/jangq-ai/Nex-N2-Pro-JANG_1L-full-runtimefit-lmhead6-20260611` with source vMLX on port `8136`.
+- Runtime path was correct for this probe: JANG_1L affine quantized matmul, Metal NA active, 15 attention KV layers with live TurboQuant KV, 45 SSM companion layers, q4 storage-boundary prefix/paged/L2 cache.
+- Loader reported 377 quant-shape metadata repairs.
+- First Chat Completions probe for `Reply with exactly: blue cat` returned HTTP 200 but `message.content=null`, `completion_tokens=8`, `finish_reason=length`; raw diagnostic showed `[220, 220, 220, 220, 220, 220, 220, 220]`, decode kept/skipped both eight spaces; speed 8 tokens in 44.10s (`0.2 tok/s`).
+- Cache retry returned HTTP 200 with `cached_tokens=10`, `cache_detail=paged+ssm+tq`; it still generated eight `220` tokens; speed 8 tokens in 17.86s (`0.4 tok/s`).
+- Health after retry: active `108494.8 MB`, peak `109629.5 MB`; L2 totals include 10 block tokens and 10 SSM companion tokens on disk.
+- Proof summary written to `build/current-n2-pro-jang1l-lmhead6-raw-decode-20260611/SUMMARY.md`; shared lane updated; port `8136` server stopped.
