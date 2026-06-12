@@ -15156,3 +15156,22 @@ Other-agent action:
 - Follow-up `max_tokens=8` decode was rejected by Metal working-set guard at `103%` of `107.5GB` cap; active memory after first-token proof was `113631.5 MB`.
 - Classification: metadata fix succeeded, but output failure remains in logits/token-selection path. Remaining candidates are routed `switch_mlp` 2-bit sensitivity or vMLX affine matmul/dequant/upcast bug on the N2 routed path.
 - Shared lane updated; port `8137` server stopped.
+
+## CODEX - 2026-06-11 N2 post-manifestfix gates
+- JANG shared lane now classifies the 112G manifestfix artifact as a one-token proof artifact only, not a viable steady runtime target under the current Metal working-set cap.
+- RAM facts to carry forward: physical RAM about 128GiB, vMLX observed cap about 107.5GB, manifestfix runtime weights about 111.63GiB/112G, first-token probe active `113631.5 MB`, follow-up rejected at `103%` of cap.
+- Do not run more full N2 server probes until small split tests are done.
+- Next vMLX work: no-full-load routed affine matmul/dequant/upcast parity probe using selected `switch_mlp` tensors from artifact plus source reference, and no-load prompt/VL/mRoPE runtime metadata audit.
+- Required prompt/VL assertions: exact rendered prompt ids after closed empty think block, effective EOS/stop ids, text-only vs MLLM/VL routing, mRoPE config consumption, `_rope_deltas`/position state reset, honest media capability advertisement.
+
+## CODEX - 2026-06-11 N2 no-load audit and affine parity
+- No full N2 server load was run for this step.
+- No-load runtime audit proof:
+  `build/current-n2-pro-jang1l-manifestfix-no-load-runtime-audit-20260611.md`
+  and JSON sidecar.
+- Audit result: source resolves MLLM/VL, manifestfix affine JANG resolves text-only (`affine_qwen_hybrid_jang_text_only`); source/artifact prompt ids and rendered `enable_thinking=false` template ids match; first token is scored after a closed empty think block; mRoPE/VL fields are preserved but not consumed by current text-only affine route.
+- Affine parity proof:
+  `build/current-n2-pro-jang1l-manifestfix-affine-parity-20260611.md`
+  and JSON sidecar.
+- Parity result: sampled routed `switch_mlp` expert slices across layers `0`, `1`, `30`, `59`, gate/up/down, float16/bfloat16 had `0` bad cases comparing MLX `mx.quantized_matmul` to explicit dequant+matmul. Worst relative max error about `0.00256`, cosine `0.9999967`.
+- Classification: generic vMLX affine primitive path looks sane for sampled slices. Remaining split is JANG routed 2-bit tensor quality/sensitivity versus full routed MoE gather/aggregation/speed under memory pressure.
