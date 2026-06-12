@@ -19914,3 +19914,51 @@ item lifecycle as direct and gateway.
   GitHub releases, website/download page, and updater JSON surfaces. Do not
   misstate this as a production-green full model matrix. PyPI remains blocked
   on owner-side credentials/trusted-publisher configuration.
+
+# 2026-06-11 N2/MiMo runtime prep reopened
+
+- Eric reopened N2/MiMo for vMLX runtime/engine preparation while the parallel
+  `jang` agent continues quantization/artifact diagnosis. Do not take over
+  converter/artifact remaking from this lane.
+- Consumed the current JANG handoff note
+  `/Users/eric/jang/docs/runtime/2026-06-11-mimo-v25-nex-n2-no-prune-rebuild-gate.md`.
+  Current N2 artifact
+  `/Users/eric/jangq-ai/Nex-N2-Pro-JANG_1L-full-runtimefit-20260611` is
+  full-expert/no-prune, 106.73 GiB indexed, static-valid, 123 shards, 2725
+  tensors, 512 experts, top-10 routing, and loaded in vMLX with hybrid cache
+  telemetry: `paged+ssm+tq`, TurboQuant KV for 15 KV layers, SSM companion hit
+  for 45 SSM layers.
+- Current failure boundary is generation health, not load/cache: both normal
+  Qwen reasoning parsing and `--reasoning-parser none` generated 32-64 tokens
+  but returned `message.content: null` and `finish_reason: length`.
+- vMLX runtime prep target: make this failure shape diagnosable and safe
+  without hiding it. Needed source work is raw token/text diagnostics,
+  parser-rail separation, blank-visible-output classification, accurate
+  finish/content fields, cache/TQ/SSM telemetry preservation, and focused tests.
+  Forbidden fixes remain: fake visible content, disabling reasoning as a
+  claimed fix, forced sampling/defaults, stripping evidence, or turning an
+  artifact decode failure into a green runtime claim.
+
+# 2026-06-11 blank visible generation diagnostic wired
+
+- Added `_blank_visible_generation_warning` in `vmlx_engine/server.py`.
+  Condition: generated completion tokens are nonzero, but visible content,
+  separated reasoning, and tool calls are all absent.
+- Wired the warning through non-stream Chat Completions, non-stream Responses,
+  streaming Chat Completions, and streaming Responses completed objects. This
+  is a diagnostic rail only; it does not synthesize text, rewrite parser output,
+  force sampling/defaults, or change cache behavior.
+- Intended use for N2/MiMo handoff: the next artifact probe can report
+  load/cache green and decode/logit/artifact-health red in one API response.
+  If content remains blank/null with `finish_reason=length`, the vMLX warning
+  should make that explicit for API/UI/harness consumers while preserving usage
+  and cache telemetry.
+- Verification:
+  `.venv/bin/python -m pytest -q tests/test_responses_history.py::test_blank_visible_generation_warning_for_nonzero_generated_tokens`
+  first failed on missing helper, then passed after the source change.
+  `.venv/bin/python -m pytest -q tests/test_responses_history.py -k 'warning or reasoning_only or blank_visible_generation'`
+  passed `13 passed, 17 deselected`.
+  `.venv/bin/python -m py_compile vmlx_engine/server.py tests/test_responses_history.py`
+  passed.
+  `git diff --check -- vmlx_engine/server.py tests/test_responses_history.py .agents/STATUS.md .agents/LOG.md`
+  passed.

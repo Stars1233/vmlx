@@ -14990,3 +14990,42 @@ Other-agent action:
   untracked `node_modules/`.
 - Boundary: PyPI remains outside the completed DMG/updater checkpoint objective
   until owner-side credentials/trusted-publisher config are fixed.
+
+## CODEX - 2026-06-11 N2/MiMo runtime prep reopened
+- Eric reopened N2/MiMo only for vMLX runtime/engine preparation while the
+  other agent continues artifact quantization/debugging in `jang`.
+- Current other-agent N2 boundary from
+  `/Users/eric/jang/docs/runtime/2026-06-11-mimo-v25-nex-n2-no-prune-rebuild-gate.md`:
+  `/Users/eric/jangq-ai/Nex-N2-Pro-JANG_1L-full-runtimefit-20260611` is a
+  full-expert/no-prune runtime-fit artifact, 106.73 GiB indexed size, static
+  validation pass, 123 shards, 2725 tensors, 512 experts, top-10 routing,
+  bfloat16/runtime-fit metadata, vMLX load/cache gate passed with
+  `cache_hit_cached_tokens=14`, `cache_hit_cache_detail=paged+ssm+tq`,
+  TurboQuant KV for 15 KV layers, and SSM companion hit for 45 SSM layers.
+- Not healthy: visible generation remains blank/null. Both normal Qwen
+  reasoning parser and `--reasoning-parser none` produced 32-64 generated
+  tokens with `message.content: null` and `finish_reason: length`.
+- This lane should not remake/quantize artifacts. Prepare vMLX runtime so the
+  next N2/MiMo artifacts can be diagnosed and used: raw generated token/text
+  diagnostics, reasoning/tool rail separation, fail-closed blank-visible-output
+  classification, cache/TurboQuant/SSM telemetry preservation, and no fake
+  parser/sampling/default fixes.
+
+## CODEX - 2026-06-11 blank visible generation diagnostic wired
+- Implemented a source-side diagnostic for the current N2/MiMo artifact-health
+  boundary: if a request generated nonzero completion tokens but produced no
+  visible message, no separated reasoning, and no tool calls, vMLX now returns a
+  non-fatal `warnings` entry instead of silently looking like an empty success.
+- Covered surfaces: non-stream Chat Completions, non-stream Responses,
+  streaming Chat Completions warning chunks, and streaming Responses
+  `response.completed.warnings`.
+- This is not a model-health fix and must not be claimed as N2/MiMo green. It
+  preserves `content: null`/empty output, usage, finish reason, and cache
+  telemetry so the parallel artifact agent can distinguish runtime load/cache
+  success from decode/logit/artifact failure.
+- Verification: red/green focused test
+  `tests/test_responses_history.py::test_blank_visible_generation_warning_for_nonzero_generated_tokens`;
+  then `tests/test_responses_history.py -k 'warning or reasoning_only or blank_visible_generation'`
+  passed `13 passed, 17 deselected`; `py_compile` passed for
+  `vmlx_engine/server.py` and `tests/test_responses_history.py`;
+  `git diff --check` passed for touched files.
