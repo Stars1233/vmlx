@@ -1,4 +1,0 @@
-er.py`) through the scheduler (`scheduler.py`) to the specific batch generation logic (`mllm_batch_generator.py`). The review identified risks in cache invalidation, truncation handling, and SSM state keying.
-Regarding `cached_tokens`: The code explicitly manages cache hits/misses (e.g., `req.prompt_cache = reconstructed KV cache`, `req.input_ids` trimmed). While specific counts of `cached_tokens` are not printed in these snippets, the logic clearly relies on and updates cached token states (KV caches, SSM states, vision embeddings). The system is designed to maximize cache reuse, so `cached_tokens` (in the sense of tokens served from cache) are a central part of the execution flow, though not explicitly counted in the provided lines.
-
-TOOL_EVIDENCE: vmlx_engine/mllm_batch_generator.py:189

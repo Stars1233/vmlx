@@ -4,7 +4,7 @@
     "/Users/eric/models",
     "/Users/eric/.mlxstudio/models"
   ],
-  "count": 16,
+  "count": 11,
   "rows": [
     {
       "path": "/Users/eric/models/JANGQ-AI/gemma-4-12B-it-JANG_4M",
@@ -19,111 +19,6 @@
       "quantization_mode": "affine",
       "quantization_method": null,
       "quantization_bits": 8,
-      "quantization_group_size": 32,
-      "jang_has_vision": true,
-      "jang_has_audio": true,
-      "has_generation_config": true,
-      "has_tokenizer_config": true,
-      "has_processor_config": true,
-      "has_jang_config": true
-    },
-    {
-      "path": "/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-MXFP4",
-      "name": "gemma-4-12B-it-qat-MXFP4",
-      "model_type": "gemma4_unified",
-      "text_model_type": "gemma4_unified_text",
-      "vision": true,
-      "audio": true,
-      "video": true,
-      "weight_format": "mxfp4",
-      "format": null,
-      "quantization_mode": "mxfp4",
-      "quantization_method": null,
-      "quantization_bits": 4,
-      "quantization_group_size": 32,
-      "jang_has_vision": true,
-      "jang_has_audio": true,
-      "has_generation_config": true,
-      "has_tokenizer_config": true,
-      "has_processor_config": true,
-      "has_jang_config": true
-    },
-    {
-      "path": "/Users/eric/models/JANGQ-AI/gemma-4-26B-A4B-it-qat-MXFP4",
-      "name": "gemma-4-26B-A4B-it-qat-MXFP4",
-      "model_type": "gemma4",
-      "text_model_type": "gemma4_text",
-      "vision": true,
-      "audio": true,
-      "video": true,
-      "weight_format": "mxfp4",
-      "format": null,
-      "quantization_mode": "mxfp4",
-      "quantization_method": null,
-      "quantization_bits": 4,
-      "quantization_group_size": 32,
-      "jang_has_vision": true,
-      "jang_has_audio": false,
-      "has_generation_config": true,
-      "has_tokenizer_config": true,
-      "has_processor_config": true,
-      "has_jang_config": true
-    },
-    {
-      "path": "/Users/eric/models/JANGQ-AI/gemma-4-31B-it-qat-MXFP4",
-      "name": "gemma-4-31B-it-qat-MXFP4",
-      "model_type": "gemma4",
-      "text_model_type": "gemma4_text",
-      "vision": true,
-      "audio": true,
-      "video": true,
-      "weight_format": "mxfp4",
-      "format": null,
-      "quantization_mode": "mxfp4",
-      "quantization_method": null,
-      "quantization_bits": 4,
-      "quantization_group_size": 32,
-      "jang_has_vision": true,
-      "jang_has_audio": false,
-      "has_generation_config": true,
-      "has_tokenizer_config": true,
-      "has_processor_config": true,
-      "has_jang_config": true
-    },
-    {
-      "path": "/Users/eric/models/JANGQ-AI/gemma-4-E2B-it-qat-MXFP4",
-      "name": "gemma-4-E2B-it-qat-MXFP4",
-      "model_type": "gemma4",
-      "text_model_type": "gemma4_text",
-      "vision": true,
-      "audio": true,
-      "video": true,
-      "weight_format": "mxfp4",
-      "format": null,
-      "quantization_mode": "mxfp4",
-      "quantization_method": null,
-      "quantization_bits": 4,
-      "quantization_group_size": 32,
-      "jang_has_vision": true,
-      "jang_has_audio": true,
-      "has_generation_config": true,
-      "has_tokenizer_config": true,
-      "has_processor_config": true,
-      "has_jang_config": true
-    },
-    {
-      "path": "/Users/eric/models/JANGQ-AI/gemma-4-E4B-it-qat-MXFP4",
-      "name": "gemma-4-E4B-it-qat-MXFP4",
-      "model_type": "gemma4",
-      "text_model_type": "gemma4_text",
-      "vision": true,
-      "audio": true,
-      "video": true,
-      "weight_format": "mxfp4",
-      "format": null,
-      "quantization_mode": "mxfp4",
-      "quantization_method": null,
-      "quantization_bits": 4,
       "quantization_group_size": 32,
       "jang_has_vision": true,
       "jang_has_audio": true,
@@ -344,21 +239,21 @@
     }
   ],
   "required_rows": {
-    "gemma4_e2b_qat_native_mxfp4": {
-      "display": "Gemma 4 E2B QAT/native MXFP4",
-      "status": "open",
-      "expected_model_type": "gemma4",
-      "tool_parser": "gemma4",
-      "reasoning_parser": "gemma4",
+    "gemma3n_e2b_qat_native4": {
+      "display": "Gemma 3n E2B QAT/native 4-bit",
+      "status": "missing",
+      "expected_model_type": "gemma3n",
+      "tool_parser": "gemma3",
+      "reasoning_parser": null,
       "required_modalities": [
         "text",
         "vision",
         "audio"
       ],
-      "matching_paths": [
-        "/Users/eric/models/JANGQ-AI/gemma-4-E2B-it-qat-MXFP4"
+      "matching_paths": [],
+      "notes": [
+        "bundle_not_present_in_local_model_roots"
       ],
-      "notes": [],
       "live_proof_required": [
         "model_owned_generation_config_defaults",
         "chat_completions_nonstream_visible",
@@ -391,21 +286,21 @@
       ],
       "live_proof_status": "missing"
     },
-    "gemma4_e4b_qat_native_mxfp4": {
-      "display": "Gemma 4 E4B QAT/native MXFP4",
-      "status": "open",
-      "expected_model_type": "gemma4",
-      "tool_parser": "gemma4",
-      "reasoning_parser": "gemma4",
+    "gemma3n_e4b_qat_native4": {
+      "display": "Gemma 3n E4B QAT/native 4-bit",
+      "status": "missing",
+      "expected_model_type": "gemma3n",
+      "tool_parser": "gemma3",
+      "reasoning_parser": null,
       "required_modalities": [
         "text",
         "vision",
         "audio"
       ],
-      "matching_paths": [
-        "/Users/eric/models/JANGQ-AI/gemma-4-E4B-it-qat-MXFP4"
+      "matching_paths": [],
+      "notes": [
+        "bundle_not_present_in_local_model_roots"
       ],
-      "notes": [],
       "live_proof_required": [
         "model_owned_generation_config_defaults",
         "chat_completions_nonstream_visible",
@@ -451,7 +346,8 @@
         "video"
       ],
       "matching_paths": [
-        "/Users/eric/models/JANGQ-AI/gemma-4-12B-it-qat-MXFP4"
+        "/Users/eric/models/OsaurusAI/gemma-4-12B-it-MXFP4",
+        "/Users/eric/models/dealignai/Gemma-4-12B-it-MXFP4-CRACK"
       ],
       "notes": [],
       "live_proof_required": [
@@ -487,7 +383,7 @@
       "live_proof_status": "missing"
     },
     "gemma4_26b_vl": {
-      "display": "Gemma 4 26B QAT/native MXFP4 VL/video",
+      "display": "Gemma 4 26B VL/video",
       "status": "open",
       "expected_model_type": "gemma4",
       "tool_parser": "gemma4",
@@ -498,7 +394,7 @@
         "video"
       ],
       "matching_paths": [
-        "/Users/eric/models/JANGQ-AI/gemma-4-26B-A4B-it-qat-MXFP4"
+        "/Users/eric/models/dealign.ai/Gemma-4-26B-A4B-it-JANG_4M-CRACK"
       ],
       "notes": [],
       "live_proof_required": [
@@ -534,7 +430,7 @@
       "live_proof_status": "missing"
     },
     "gemma4_31v_or_31b_vl": {
-      "display": "Gemma 4 31V/31B QAT/native MXFP4 VL/video",
+      "display": "Gemma 4 31V/31B VL/video",
       "status": "open",
       "expected_model_type": "gemma4",
       "tool_parser": "gemma4",
@@ -545,9 +441,13 @@
         "video"
       ],
       "matching_paths": [
-        "/Users/eric/models/JANGQ-AI/gemma-4-31B-it-qat-MXFP4"
+        "/Users/eric/models/JANGQ/Gemma-4-31B-it-JANG_4M-MTP",
+        "/Users/eric/models/JANGQ/Gemma-4-31B-it-JANG_4M-MTP/mtp_assistant"
       ],
-      "notes": [],
+      "notes": [
+        "mtp_assistant: model_type='gemma4_assistant' expected 'gemma4'",
+        "mtp_assistant: advertised video=false"
+      ],
       "live_proof_required": [
         "model_owned_generation_config_defaults",
         "chat_completions_nonstream_visible",
@@ -582,17 +482,18 @@
     }
   },
   "checks": {
-    "gemma4_e2b_qat_native_mxfp4_present": true,
-    "gemma4_e4b_qat_native_mxfp4_present": true,
+    "gemma3n_e2b_qat_present": false,
+    "gemma3n_e4b_qat_present": false,
     "gemma4_12b_native_mxfp4_present": true,
     "gemma4_26b_present": true,
     "gemma4_31v_or_31b_present": true,
     "all_required_live_proofs_present": false
   },
-  "missing_required_rows": [],
+  "missing_required_rows": [
+    "gemma3n_e2b_qat_native4",
+    "gemma3n_e4b_qat_native4"
+  ],
   "open_required_rows": [
-    "gemma4_e2b_qat_native_mxfp4",
-    "gemma4_e4b_qat_native_mxfp4",
     "gemma4_12b_native_mxfp4",
     "gemma4_26b_vl",
     "gemma4_31v_or_31b_vl"
