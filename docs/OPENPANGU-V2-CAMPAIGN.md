@@ -294,3 +294,5 @@ Full matrix (final proof — Responses API + UI live chat, per mandatory rules):
     (15+ turns) still open.
   - Remaining: M7 RAM soak, tool-call-in-chat UI row (M3 matrix turn3),
     scheduler paged-log reconciliation, notarize chain.
+
+- 2026-07-02 #47 resolved: the scheduler class-based hybrid detection routing OpenPanguV2LayerCache to the paged BACKEND is correct-by-design (memory-aware cache must never truncate conv-state caches; warm stores still skip via UNKNOWN cache type — live-proven stable). Fixed the cli transparency log to say paged_cache=structural-auto instead of OFF so the two startup lines no longer contradict. Remaining open: CreateSession "Launch Session" stall nit, M7 15+ turn soak, task #43 qwen/gemma video, notarize chain.
