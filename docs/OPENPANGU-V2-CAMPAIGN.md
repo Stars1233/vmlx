@@ -241,3 +241,5 @@ Full matrix (final proof — Responses API + UI live chat, per mandatory rules):
   identical at HEAD via stash-diff). Needs live re-verify on remote next.
 
 - 2026-07-02 M4 CLOSED LIVE: streaming tool call → finish_reason=["tool_calls"] only, get_weather parsed (START+data chunks, stable id), early-stop fired (wall 26.5s, no length overrun) on JANG_2L @ :8003 at abb8cc29f. Remaining rows: M5 batching, M6 UI argv parity + manual parser select, M7 RAM soak, UI live-chat matrix, notarize chain.
+
+- 2026-07-02 M5 PASS (concurrent batch: "cow"/"green", no cross-contamination). M6 panel gaps fixed: openpangu tool-parser option added to the manual dropdown (SessionConfigForm) + openpangu_v2 added to MODEL_FAMILY_OVERRIDE_NAMES for --model-family. Remaining: live UI argv round-trip proof, M7 RAM soak, UI live-chat matrix, notarize chain.
