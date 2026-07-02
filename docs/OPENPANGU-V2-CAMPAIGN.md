@@ -371,3 +371,48 @@ models/mllm.py:4012 process_video_input).
   fallback (batched.py:549); gemma4_unified additionally text-routes at
   api/utils.py `_is_gemma4_unified_text_runtime_path` when the vendored
   runtime is absent. Gemma live rows deferred to their own task.
+
+## GAP-A RESOLVED (2026-07-02, commit 1c7a79c4e)
+
+Affine-JANG qwen VL is now reachable in serve. Root cause of the original
+exclusion (commit 80a62555f "Route affine Qwen JANG text-only", 2026-05-11 +
+docs/AUDIT-QWEN-AFFINE-JANG-VLM.md): (1) upstream mlx_vlm qwen3_5
+`Qwen3_5RotaryEmbedding` M-RoPE diverges from mlx-lm 1D RoPE on the text
+path → garbage logits (live-reproduced 2026-05-11 in the installed app);
+(2) upstream `quant_predicate` force-quantizes float router gates →
+"weight matrix should be uint32" decode crash. Both are fixed by machinery
+that landed AFTER the gate: the vendored `models/qwen3_5_family` runtime
+(gates stay nn.Linear, 2026-06-30) and the `patches/mlx_vlm_mtp` suite
+(`_patch_attention_text_rope` + `_vmlx_force_text_rope_1d` 1D text-RoPE).
+
+Fix (engine, gemma4_unified-style availability gating):
+- `api/utils._is_affine_jang_qwen_hybrid_vlm_path` returns text-only ONLY
+  when `qwen3_5_family_runtime_available()` is false; `VMLX_QWEN_VL=1/0`
+  is an explicit override in both directions and part of the is_mllm
+  cache key. force_mllm-override warnings now state the real reason.
+- `utils/jang_loader._load_jang_v2_vlm`: registers the vendored runtime,
+  applies the mlx_vlm_mtp patch suite, and sets `_vmlx_force_text_rope_1d`
+  on the vendored/forced route; text fallback only on registration failure
+  or VMLX_QWEN_VL=0 (native-MTP artifacts keep their dedicated route).
+- `model_config_registry`: affine qwen VL `is_mllm` mirrors the policy
+  (env override > native-MTP artifact > vendored availability).
+- Tests: engine-audit + registry suites pin available→VLM,
+  missing→text-only+warning, env both directions; regression-manifest
+  proves-line updated. Suites green (only documented pre-existing
+  failures: step37_flash, manifest dsv4/max-output rows, panel-TSX/mimo
+  local-tree debt — all reproduced on HEAD before this change).
+
+Live proof (erics-m5-max.local, worktree @ 1c7a79c4e, :8005, killed after;
+openpangu dev engine pid 77507 untouched):
+- Ornith-1.0-9B-JANG_6M served WITHOUT --is-mllm → health
+  `model_type=mllm`; log: `is_mllm_model tier=jang_config_explicit_true
+  result=True` → "Registered vMLX-owned Qwen 3.5 VLM runtime" (both
+  modules) → "vMLX-owned qwen3_5_family VLM runtime registered — loading
+  via real mlx-vlm VLM loader (text-only fallback bypassed)" → "applied
+  mlx_vlm qwen35_vl patch suite (M-RoPE / text RoPE / GatedDeltaNet)".
+- IMAGE row: 64x64 solid-red PNG data-URI → content "Red", coherent
+  reasoning_content, finish=stop, 80 prompt tok. **PASS**
+- TEXT row on the SAME VLM-routed load (the exact path the old gate
+  guarded): "capital of France? One word." → "Paris", coherent
+  reasoning. **PASS** — M-RoPE text corruption does not reproduce with
+  the vendored runtime + text-RoPE patch.
