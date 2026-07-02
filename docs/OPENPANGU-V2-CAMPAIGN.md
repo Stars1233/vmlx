@@ -598,3 +598,97 @@ App left RUNNING: dev app on CDP :9333, session fc082690 healthy on
 127.0.0.1:8000 (engine pid 23065, fresh restart), post-fix chat sanity turn
 rendered "OK." Remaining campaign scope: release/publish chain (ship gate
 awaits Eric's explicit go) + the runaway-ceiling follow-up above.
+
+## Runaway ceiling SHIPPED + live-proven: in-stream hard ceilings for model-owned turns (2026-07-02, 54e0a78e8)
+
+Closes item (1)+(2) of the runaway follow-up task above. Commit 54e0a78e8
+on main (5 files, +789): the unbounded-reasoning gap is now covered by two
+IN-STREAM ceilings that cannot be starved by a never-ending stream.
+
+### Mechanism
+
+1. **THINK-BUDGET backstop (scheduler)** — generalization of the proven
+   MiniMax-M3 mechanism (b5af37d23; that M3 processor was dropped in the
+   v1.5.66 squash in favor of the first-pass-budget + post-stream answer
+   pass, so nothing M3-side changes). New `THINK_BUDGET_FAMILIES` table in
+   scheduler.py (openpangu_v2 only: `<think>`/`</think>`, default budget
+   8192; other families = one-line table addition). For MODEL-OWNED turns
+   (client sent no max_tokens/max_output_tokens and no CLI --max-tokens; new
+   `server._max_tokens_is_model_owned()` → `_model_owned_max_tokens` kwarg →
+   `SamplingParams.model_owned_max_tokens`) a per-request logits processor
+   counts generated tokens itself and, once the turn passes
+   min(VMLX_THINK_BUDGET, max(96, resolved_max_tokens//2)) thinking tokens
+   without closing the rail, masks the logits to force the close-think token
+   so generation transitions to the answer. Tags must encode to single ids
+   (openPangu: `<think>`=148905, `</think>`=148906 — verified on the JANG_2L
+   tokenizer); multi-token tags disable the backstop loudly.
+   VMLX_THINK_BUDGET=0 disables. Explicit client caps NEVER arm it.
+2. **MODEL-OWNED TURN CEILING (server stream loops)** — absolute outer wall
+   in `stream_chat_completion` AND `stream_responses_api`: model-owned turns
+   are force-ended at VMLX_MODEL_OWNED_MAX_TOKENS tokens (default 32768)
+   with finish_reason="length" + engine abort_request, counting tokens in
+   the stream loop itself (max of usage counter and a per-chunk fallback) —
+   deliberately independent of scheduler/generator length accounting because
+   the live runaway decoded 50k+ tokens despite an engine-resolved
+   max_tokens of 4096. The post-stream reasoning-only bounded answer pass
+   still runs after the wall fires. Bounded second passes (answer pass,
+   `_ns_kwargs`) strip the model-owned flag so they can't re-arm the guards.
+
+### Tests
+
+tests/test_unbounded_turn_ceilings.py — 20/20: close-token injected at
+budget (one-hot mask, argmax=close id), rail-closed/thinking-off/multi-token
+disarm, non-openpangu families unaffected, explicit max_tokens unaffected
+(scheduler + stream), env overrides + 0-disable, stream wall fires with
+finish_reason=length + abort while the explicit-cap stream runs untouched,
+plumbing contracts. Touched suites green: openpangu_v2 10/10,
+openpangu_tool_parser, streaming_reasoning, server (95), batching +
+continuous_batching (71), scheduler_repetition_context, llm, cancellation,
+chat_template_kwargs, api_models, deepseek_r1_no_leak.
+test_structured_output (1) + engine_audit (1) failures are pre-existing at
+HEAD (stash A/B proven — known local debt).
+
+### LIVE PROOF (erics-m5-max.local, worktree @ 54e0a78e8, :8005, JANG_2L)
+
+Worktree /Users/eric/mlx/vllm-mlx-openpangu fast-forwarded to 54e0a78e8;
+fresh engine on 127.0.0.1:8005 with the dev-app's exact argv shape
+(continuous-batching, max-num-seqs 1, --tool-call-parser openpangu
+--reasoning-parser deepseek_r1, disk-cache 10GB, cache 0.15); dev app +
+its :8000 engine left untouched throughout (verified after kill).
+
+- RUNAWAY REPRO SHAPE: streaming chat, NO max_tokens, thinking on, hard
+  prompt (Goldbach "reason exhaustively"). Engine resolved
+  `max_tokens: 4096` (model-owned fallback) — byte-identical resolution to
+  the 50-90+ min runaway turn.
+- **CEILING FIRED** (engine log, verbatim): `WARNING:vmlx_engine.scheduler:
+  THINK-BUDGET CEILING FIRED: family=openpangu_v2 model-owned turn passed
+  2048 thinking tokens without closing the reasoning rail — force-injecting
+  close-think token id=148906 (budget=2048, VMLX_THINK_BUDGET overrides)`
+  (2048 = min(8192, 4096//2) scaling, as designed).
+- **TURN TERMINATED: ELAPSED 229s** (vs 50-90+ min unbounded). SSE capture:
+  exactly 2047 reasoning chunks (rail closed at the budget), then visible
+  content deltas to the 4096 cap, final chunk finish_reason="length",
+  `data: [DONE]` delivered. 4096 data chunks total. The post-close visible
+  content was the documented model-side "And And And…" degeneration of this
+  no-AWQ 2-bit bundle (same signature as the M7 soak) — runtime transition
+  mechanically correct, bundle coherence is the standing --awq rebuild item.
+- CONTROL (explicit cap): same prompt with max_tokens=64 → ELAPSED 4s,
+  stopped at the cap, THINK-BUDGET fire-count still 1 (did NOT arm), and
+  the existing post-stream bounded thinking-off answer pass fired
+  ("reasoning_chars=265, answer_budget=64") — prior backstop intact.
+- Outer wall not reached in this proof (inner ceilings ended the turn at
+  4096 first, which is the design: the 32768 wall only catches turns whose
+  generator length accounting fails); its firing behavior is pinned by the
+  unit tests (abort + finish_reason=length on an endless fake stream).
+- :8005 killed after proof; :8000 dev-app engine still listening.
+
+### Out of scope / remaining
+
+- Panel-side engine log persistence across session Stop (runaway follow-up
+  item 3) is NOT a trivial buffer flag (panel logBuffers are cleared on
+  stop by design) — left on the backlog.
+- API-level repro of the ORIGINAL unbounded mechanism remains unconfirmed
+  (log buffer lost); the ceilings above are defense-in-depth that bound the
+  turn regardless of which lower layer misbehaves.
+- Arming other reasoning families (qwen3_5 etc.) = one line in
+  THINK_BUDGET_FAMILIES after their own live soak.
