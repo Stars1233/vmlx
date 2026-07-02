@@ -598,3 +598,51 @@ App left RUNNING: dev app on CDP :9333, session fc082690 healthy on
 127.0.0.1:8000 (engine pid 23065, fresh restart), post-fix chat sanity turn
 rendered "OK." Remaining campaign scope: release/publish chain (ship gate
 awaits Eric's explicit go) + the runaway-ceiling follow-up above.
+
+## 2026-07-02 (later) — runaway handled honestly: REVERTED the force-inject ceiling, fixed the real over-budget bugs
+
+Eric rejected the task #50 in-stream ceiling ("we cant fucking be forcing
+fucking behaviors or fake ass fixes"). The close-`</think>` force-injection
++ wall-clock ceiling were reverted (git revert d5b707c01 / ed6e47ff1 of
+54e0a78e8 / fe32b4fcc; pushed). No token forcing anywhere.
+
+Re-root-caused with the resolved cap as source of truth. The engine ALREADY
+resolves per-model generative defaults (max OUTPUT tokens, temp, top_p,
+top_k) from the bundle's generation_config.json→jang_config via
+`_resolve_*` (server.py:1408 …); openPangu resolves to temp 1.0 / top_p 0.8 /
+top_k 151552 and a bounded 4096 output fallback (no max_new_tokens stamped).
+So the runaway was never a missing default — the resolved cap simply was not
+enforced end-to-end. Two genuine over-budget gaps, both fixed by making the
+existing cap hold (commit d96e896b1):
+
+1. **Answer-pass budget doubling (confirmed, reproducible).** The
+   reasoning-only bounded thinking-off answer pass (chat completions +
+   responses) started a FRESH `_answer_budget` = full turn max_tokens,
+   ignoring first-pass spend → openPangu 4096 reasoning + 4096 answer = 8192
+   for a 4096 cap. Fix (server.py, both sites): draw down to
+   `max(1, _answer_budget - completion_tokens)`.
+   **LIVE-PROVEN** (remote :8005 @ d96e896b1, same `/v1/responses` Goldbach
+   repro that produced 8192): now `usage.output_tokens=4097` (4096 reasoning
+   + 1 floored answer), status=incomplete, 206s (was 8192 / 420s). Cap held.
+2. **Cache-error reschedule budget restart (latent).** `_reschedule_running_
+   requests` cleared `output_token_ids` and re-inserted the full max_tokens,
+   so a request hitting a recoverable cache error could stream past its cap
+   across restarts. Added `Request.total_output_tokens` (never reset) +
+   `remaining_output_budget`; both scheduler insert sites now use the
+   remaining budget; a restart on a request that already emitted tokens logs
+   loudly. Unit-tested (tests/test_output_budget_enforcement.py, 4 pass).
+   Not triggerable in the repro (no reschedule fired) — belt-and-suspenders.
+
+Config-param / UI-parity ask (Eric): investigation confirms it is ALREADY
+implemented correctly — the panel reads the SAME config-file defaults via
+`models:getGenerationDefaults` (ChatSettings falls back to `modelDefaults`;
+per-request sends a sampling param ONLY when the user overrides), and Max
+Output Tokens (`--max-tokens`) is cleanly separated from Max Context Tokens
+(`--max-prompt-tokens`). No duplicate settings; nothing to build — confirm
+live in the exhaustive matrix.
+
+Pre-existing (NOT this work): 4 stale test failures on main since before
+task #50 — 2× engine_audit source-structure pins, test_reasoning_modes
+`_strip_residual_think_markup_for_display` ("Visible tail"→"tail"),
+test_cross_matrix dsv4 right-rail. The reasoning-display one is on the live
+watch list.
