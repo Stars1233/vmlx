@@ -296,3 +296,78 @@ Full matrix (final proof — Responses API + UI live chat, per mandatory rules):
     scheduler paged-log reconciliation, notarize chain.
 
 - 2026-07-02 #47 resolved: the scheduler class-based hybrid detection routing OpenPanguV2LayerCache to the paged BACKEND is correct-by-design (memory-aware cache must never truncate conv-state caches; warm stores still skip via UNKNOWN cache type — live-proven stable). Fixed the cli transparency log to say paged_cache=structural-auto instead of OFF so the two startup lines no longer contradict. Remaining open: CreateSession "Launch Session" stall nit, M7 15+ turn soak, task #43 qwen/gemma video, notarize chain.
+
+## Task #43 qwen video/VL (2026-07-02)
+
+Live image (VL) + video verification for the qwen3.5/3.6 family (vendored
+runtime `vmlx_engine/models/qwen3_5_family/`). Remote erics-m5-max.local,
+worktree /Users/eric/mlx/vllm-mlx-openpangu @ ad94aa756 (latest main), port
+:8005, engine killed after the run; the openpangu dev app/engine untouched.
+
+### Live rows — JANGQ-AI/Qwen3.6-35B-A3B-JANGTQ (qwen3_5_moe VL, 11.7GB)
+
+JANGTQ bundle chosen because it is exempt from the affine-JANG text-only
+guard (see GAP-A). Loaded via the JANGTQ VLM fast path with BOTH vendored
+modules registered ("Registered vMLX-owned Qwen 3.5 VLM runtime under
+mlx_vlm.models.qwen3_5 / qwen3_5_moe"). health model_type=mllm.
+
+- IMAGE chat non-stream: **PASS** — 64x64 solid-red PNG as `image_url` data
+  URI → content "red", coherent reasoning_content, usage sane (82 prompt tok).
+- IMAGE chat stream: **PASS** — visible deltas "Red", 62 chunks,
+  reasoning_content deltas separated, finish=stop, NO think/tool tag leaks.
+- IMAGE /v1/responses (`input_image`): **PASS** — output_text "red".
+- VIDEO chat (`video_url` local path, 2s 64x64 mp4 red→blue, 16 frames):
+  **PASS** — "The first color is red and the second color is blue."
+  Engine log: "Video: 16 total frames @ 8.0 fps, extracting 4 frames";
+  reasoning shows the model saw the sampled frame images. The non-stream
+  answer was surfaced by the bounded thinking-off answer backstop
+  (reasoning-only first pass) — backstop fired and worked.
+- MULTITURN image→text recall: **PASS** — turn1 image "Red", turn2 text-only
+  "what color was the image?" → "Red" (VL/text cache mixing OK; prefix store
+  correctly skipped for media prompts: "media embeddings are path-dependent").
+
+### How qwen video works today (by design)
+
+Serve-path video for qwen3_5/qwen3_5_moe is a **deliberate frame-fallback**,
+not native video tensors: `engine/batched.py:525`
+`_video_frame_fallback_messages` (called at :1921 chat / :2087 stream)
+rewrites `video_url|video|input_video` parts into sampled frame `image_url`
+parts for families {qwen3_5, qwen3_5_moe, step3p7, gemma4, gemma4_unified}
+— docstring: native Qwen3.5/3.6 video tensors "can return coherent API
+responses while misreading simple colors … until native pixel_values_videos
+is proven coherent". API surface accepts video/video_url/input_video
+(api/models.py:83-88, api/utils.py:993-1005, server.py:1767-1823; local
+path, http(s) URL, and base64 data URI all supported via
+models/mllm.py:4012 process_video_input).
+
+### Gaps found (reported, NOT fixed this round)
+
+- **GAP-A — affine-JANG qwen VL is unreachable in serve.**
+  Ornith-1.0-9B-JANG_6M (and all affine JANG_x qwen VL bundles) are
+  hard-routed text-only by `api/utils.py:239`
+  `_is_affine_jang_qwen_hybrid_vlm_path` — it overrides `--is-mllm`
+  (warning at api/utils.py:630). The documented loader-level escape
+  `VMLX_QWEN_VL=1` (utils/jang_loader.py:3273) is NOT consulted by
+  is_mllm_model, so it is dead for serve: LIVE-CONFIRMED — relaunching
+  Ornith-9B with `VMLX_QWEN_VL=1 --is-mllm` still logs the override and
+  loads model_type=llm. Follow-up: honor VMLX_QWEN_VL (or the audit fix)
+  in api/utils.py, or resolve docs/AUDIT-QWEN-AFFINE-JANG-VLM.md.
+- **GAP-N — native qwen video path is a silent no-op if ever taken.**
+  mllm_batch_generator threads processor `pixel_values_videos` →
+  `request.video_pixel_values` (mllm_batch_generator.py:4359-4361) and
+  forwards it as `kwargs["video_pixel_values"]` (:4846-4847), but the
+  vendored qwen3_5 model only consumes `pixel_values`
+  (models/qwen3_5_family/qwen3_5/qwen3_5.py:24-44 get_input_embeddings);
+  only mimo_v2 consumes video_pixel_values (models/mllm.py:2932-2968).
+  Upstream mlx_vlm aliases pixel_values_videos→pixel_values
+  (mlx_vlm/video_generate.py:539); vmlx does not. Today this is masked by
+  the frame fallback, but the fallback's exception path ("video frame
+  fallback failed; using native video path", batched.py:~700) would fall
+  into a request whose video pixels never reach the vision tower →
+  text-only answer with no error. When native video is made coherent,
+  the fix is a pixel_values_videos→pixel_values alias (+ video_grid_thw
+  already threaded) or a model-side video_pixel_values kwarg.
+- Free gemma note: gemma4/gemma4_unified video rides the same frame
+  fallback (batched.py:549); gemma4_unified additionally text-routes at
+  api/utils.py `_is_gemma4_unified_text_runtime_path` when the vendored
+  runtime is absent. Gemma live rows deferred to their own task.
