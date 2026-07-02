@@ -211,3 +211,31 @@ Full matrix (final proof — Responses API + UI live chat, per mandatory rules):
   output to confirm model-behavior vs extraction before closing M4;
   (3) M5 batching, M6 argv parity (UI manual parser select), M7 RAM soak,
   TTFT formal rows, UI live-chat matrix, then notarize chain.
+
+- 2026-07-02 M4 follow-up (1) FIXED — streaming finish_reason="tool_calls":
+  root cause: no server convention existed for terminating the turn when a
+  complete tool call parses mid-stream (other families rely on the model
+  emitting EOS after the call; degraded 2-bit openPangu keeps narrating to
+  max_tokens → final chunk finish_reason="length", #46 finish path never
+  fires). FIX = family-agnostic opt-in: ToolParser.STREAM_STOPS_AFTER_
+  COMPLETE_CALL + stream_tool_calls_complete()/stream_tool_call_stop_
+  truncate() (abstract_tool_parser); openpangu parser opts in (closed
+  <|tool_call_start|>[...]<|tool_call_end|> pair IS the end of the turn by
+  format contract; a new/partial START after the last END resets the check
+  so multi-block turns are never cut). Server: stream_chat_completion +
+  stream_responses_api abort generation (engine.abort_request + break, same
+  convention as the disconnect path) after an 8-chunk grace window once the
+  active parser reports the turn complete, truncate post-call rambling
+  (channel-aware: content vs mid-reasoning), then the EXISTING post-stream
+  extraction emits the #46 tool_calls data + finish chunks
+  (finish_reason="tool_calls") + [DONE]. All other parsers keep default
+  False — zero behavior change for families with interleaved/sequential
+  post-call output. Non-stream path confirmed already correct
+  (finish_reason = "tool_calls" if tool_calls, family-agnostic) — untouched.
+  Tests: tests/test_openpangu_tool_parser.py +10 (parser contract, resolver,
+  e2e fake-engine stream regression: complete call + 40 ramble chunks →
+  abort fired, stream not drained, finish_reasons==["tool_calls"], START id
+  reused, no ramble leak, [DONE]) — 25/25; adjacent: tool parser suites +
+  streaming/reasoning/server/native-format/registry 600+ pass (pre-existing
+  only: test_step37_flash_jang_config + 12 test_engine_audit failures proven
+  identical at HEAD via stash-diff). Needs live re-verify on remote next.
