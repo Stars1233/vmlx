@@ -198,3 +198,16 @@ Full matrix (final proof — Responses API + UI live chat, per mandatory rules):
   parser-registry contract + CLI-choice coverage + panel registry vitest
   (69) green. M4 needs live re-verify on the remote box next (unit-proven
   only here; no model runs on max2).
+
+- 2026-07-02 M4 LIVE RETRY (post tool-parser db123a433..5f1b6aef0): startup log
+  shows "Auto-configured tool parser from registry: openpangu" (autodetect +
+  stamp-neutralization proven live). **STREAMING: tool call emitted after 165
+  reasoning deltas and parsed — 1 START chunk, 1 stable id (#219 contract),
+  TTFT 0.44s** → tool-calls-mid-reasoning WORKS live. OPEN FOLLOW-UPS:
+  (1) finish_reason was "length" not "tool_calls" on the streaming run —
+  verify the finish-reason mapping when calls were parsed + whether
+  generation should halt at <|tool_call_end|>; (2) non-stream sample emitted
+  no call within 700 toks (temp 1.0, 2-bit reasoning rambles) — inspect raw
+  output to confirm model-behavior vs extraction before closing M4;
+  (3) M5 batching, M6 argv parity (UI manual parser select), M7 RAM soak,
+  TTFT formal rows, UI live-chat matrix, then notarize chain.
