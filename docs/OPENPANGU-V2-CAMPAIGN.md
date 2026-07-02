@@ -183,3 +183,18 @@ Full matrix (final proof — Responses API + UI live chat, per mandatory rules):
   (task #44). Remaining after that: M3 UI live-chat matrix via dev-build
   (CDP), M5 batching, M6 argv parity, M7 RAM soak, then the release chain
   (rebuild+notarize DMGs with paged-off v7 — still pending from earlier scope).
+- 2026-07-02 task #44 LANDED (db123a433 + 73db720d2 + 6dbb27384): dedicated
+  `openpangu` tool parser (JSON-list-between-special-tokens; raw-output scan
+  so mid-reasoning calls survive think-strip; streaming buffer/emit with
+  stable per-call ids per #219; SUPPORTS_NATIVE_TOOL_FORMAT — template
+  handles role=tool + tool_calls natively). model_configs openpangu_v2
+  tool_parser qwen→openpangu; model_config_registry neutralizes the stale
+  sidecar stamp (tp=None next to ct/cst, block hoisted above the generic tp
+  application which had run first); panel applyJangCapabilities mirrors the
+  neutralization (panel passes --tool-call-parser explicitly, so the engine
+  fix alone was not enough for UI sessions). CLI choices +openpangu/
+  openpangu_v2. Tests: tests/test_openpangu_tool_parser.py (16) +
+  test_openpangu_v2 registry pin updated + VALID_TOOL_PARSERS — 29 pass;
+  parser-registry contract + CLI-choice coverage + panel registry vitest
+  (69) green. M4 needs live re-verify on the remote box next (unit-proven
+  only here; no model runs on max2).
