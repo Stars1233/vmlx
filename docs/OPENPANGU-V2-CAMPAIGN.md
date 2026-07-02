@@ -484,3 +484,5 @@ AudioEncoder; processing_gemma4_unified.py exposes the audio-capable
 `__call__`, added specifically because mlx-vlm prepare_inputs didn't
 advertise Gemma4 Unified's audio argument). Not live-verified this round —
 separate task if wanted.
+
+- 2026-07-02 #49 DMG CHAIN DONE: bundled-python synced, both flavors built on node@20, notarized (Accepted) + stapled + validated. sequoia sha256 c39620f4d5acb3da8a4be73f39858976e560a0d143677ab97d58fdb5e401a363, tahoe 96ad74753937c78acba3e482b4e30748d2dbf188d4b62ddc8ac865a28aa1ea9b. Release notes rewritten (/tmp/vmlx-160-release-notes.md) for v7 paged-off + openpangu + parsers + VL/video. SHIP GATE: publishing (gh release, latest.json, PyPI) awaits Eric explicit go.
