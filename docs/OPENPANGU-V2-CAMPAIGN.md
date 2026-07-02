@@ -416,3 +416,71 @@ openpangu dev engine pid 77507 untouched):
   guarded): "capital of France? One word." → "Paris", coherent
   reasoning. **PASS** — M-RoPE text corruption does not reproduce with
   the vendored runtime + text-RoPE patch.
+
+## Task #43 gemma4 video/VL (2026-07-02)
+
+Live image (VL) + video verification for gemma4/gemma4_unified (vendored
+runtime `vmlx_engine/models/gemma4_unified/`). Remote erics-m5-max.local,
+worktree /Users/eric/mlx/vllm-mlx-openpangu @ 913852bab (latest main), port
+:8005, engine killed after the run; the openpangu dev app/engine (pid 77507)
+untouched. Completes task #43 (qwen half above).
+
+### Routing map (Phase 1, static)
+
+- Smallest VL-capable gemma4 route = a JANG gemma4 VL bundle through the
+  FIX#3 promotion: `utils/jang_loader.py:3177` rewrites stamped
+  `model_type=gemma4` → `gemma4_unified` (+ text_config →
+  `gemma4_unified_text`) so the vendored unified Model resolves (upstream
+  mlx_vlm gemma4 graph is incoherent for JANG bundles).
+- `api/utils._is_gemma4_unified_text_runtime_path` only text-routes
+  unified-stamped bundles when `gemma4_unified_runtime_available()` is
+  false — vMLX vendors the runtime
+  (`models/gemma4_unified_register.py`), so serve routes VL.
+- Video = the same deliberate frame-fallback as qwen
+  (`engine/batched.py:549` family set includes gemma4/gemma4_unified);
+  gemma4 additionally DEDUPS near-identical frames (avg-color delta < 24,
+  batched.py:580-604) and passes kept frames as separate images (no
+  step3p7-style contact sheet).
+
+### Live rows — JANGQ-AI/gemma-4-E4B-it-qat-MXFP4 (5.5GB, smallest VL gemma4)
+
+Bundles live on /Volumes/EricsLLMDrive/jangq-ai/ on the remote box (the HF
+cache entries are empty ref-only stubs). E4B MXFP4: jang_config
+has_vision=True, modalities {text,vision,audio:True, video:False};
+config.json has vision_config + audio_config. Served WITHOUT --is-mllm →
+health model_type=mllm (`is_mllm_model tier=config_json_vision_config
+result=True`); startup log shows the FIX#3 promotion firing ("JANG Gemma-4
+VL promotion: model_type gemma4 -> gemma4_unified") AND the E4B PLE handled
+cleanly ("Dequantized Gemma4 PLE: language_model.model.
+per_layer_model_projection.weight (mode=mxfp4, bits=4, gs=32)") — the June
+E2B/E4B PLE open item did not reproduce on this bundle.
+
+- IMAGE chat non-stream: **PASS** — 64x64 solid-red PNG `image_url` data
+  URI → content "Red", finish=stop, 278 prompt tok.
+- IMAGE chat stream: **PASS** — content "Red", finish=stop, NO
+  think/tool/turn tag leaks (2 chunks total; 2-token answer arrives as one
+  content delta + finish chunk — expected for this length, not a buffering
+  bug).
+- IMAGE /v1/responses (`input_image`): **PASS** — status=completed,
+  output_text "Red".
+- VIDEO chat (`video_url` local path, 2s 64x64 mp4 red→blue, 16 frames):
+  **PASS** — "The first color is **Red**, and the second color is
+  **Blue**." Engine log: "Video: 16 total frames @ 8.0 fps, extracting 4
+  frames" → gemma4 frame-dedup collapsed to "2 image(s)" (one red, one
+  blue) → both colors identified. Frame-fallback + dedup working as
+  designed.
+- MULTITURN image→text recall: **PASS** — turn1 image "Red", turn2
+  text-only "What color was the image I showed you?" → "Red".
+- Engine log after all rows: zero error/traceback/exception lines.
+
+### Audio note (report only, no row built)
+
+gemma4 E4B has audio_config (gemma4_audio tower) and an audio row IS
+supported in serve end-to-end on paper: api/models.py accepts
+`input_audio`/`audio`/`audio_url` parts, `engine/batched.py`
+`_extract_audio_content` (:351) threads them into the media fallback, and
+the vendored runtime has the full path (gemma4_unified.py audio_tower =
+AudioEncoder; processing_gemma4_unified.py exposes the audio-capable
+`__call__`, added specifically because mlx-vlm prepare_inputs didn't
+advertise Gemma4 Unified's audio argument). Not live-verified this round —
+separate task if wanted.
