@@ -170,3 +170,16 @@ Full matrix (final proof — Responses API + UI live chat, per mandatory rules):
   native-kwarg parser-seed render, openpangu_v2 added to the reasoning-only
   bounded thinking-off answer backstop (chat+responses, stream+non-stream).
   Matrix round 2 running.
+- 2026-07-02 API matrix round 2 (post 6ff6ac4a5): **M1a PASS** (content "Tokyo."
+  + reasoning preserved, backstop fired), **M1b PASS** (thinking-off yields
+  visible content; 2-bit model narrates reasoning-style prose in content and
+  runs to cap — quant behavior, noted), **M1c PASS** (streaming: 250 reasoning
+  deltas + content deltas, NO think-tag leak, finish=stop), **M2 PASS**
+  (/v1/responses "sky" + reasoning block), **M1d PASS** (API multiturn recall
+  "Biscuit"). **M4 OPEN**: tool_calls never parse — ROOT CAUSE FOUND: openPangu
+  emits a JSON list inside <|tool_call_start|>/<|tool_call_end|> (ids
+  148903/148904); the stamped qwen parser cannot match. Next: dedicated
+  `openpangu` tool parser + registry entry switch + stamp neutralization
+  (task #44). Remaining after that: M3 UI live-chat matrix via dev-build
+  (CDP), M5 batching, M6 argv parity, M7 RAM soak, then the release chain
+  (rebuild+notarize DMGs with paged-off v7 — still pending from earlier scope).
