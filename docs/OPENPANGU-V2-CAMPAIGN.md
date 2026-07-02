@@ -133,3 +133,40 @@ Full matrix (final proof — Responses API + UI live chat, per mandatory rules):
   built (3 explorer agents). cache.py + openpangu_v2.py written (proven-math port
   from Swift + deepseek_v32 indexer + jang_tools Sinkhorn kernel). Register/loader/
   configs/cli/panel wiring next; then smoke on remote, then matrix.
+- 2026-07-02 (cont): ALL wiring landed + pushed (06d3b06af + 2716f9c9c):
+  register/__init__, model_configs entry, cli registration + policy/transparency
+  log, jang_loader manifest overrides + family-gate registration, panel defaults,
+  tests/test_openpangu_v2.py (10/10 green; prefill-vs-incremental equivalence
+  diff 0.005). Synthetic smoke: sanitize/prefill/14-step decode past SWA window
+  + DSA topk/state-roundtrip ALL PASS. Adjacent regressions: 227 pass, 1
+  pre-existing failure (step37 runtime_scope KeyError — fails at HEAD without
+  these changes, known debt). JANG_2L bundle rsynced to erics-m5-max.local
+  (~40GB, 5m10s). NOTE: remote /Users/eric/mlx/vllm-mlx working tree is DIRTY
+  (uncommitted iter-32/34/35 session fixes in server.py/adapters/cli.py —
+  tasks #29/#30); openpangu testing uses a DETACHED WORKTREE at
+  /Users/eric/mlx/vllm-mlx-openpangu instead — do not clobber the dirty tree.
+  G1/G2 (real-bundle load + first-token probe) launched on remote.
+- 2026-07-02 LIVE GATES: G1 PASS (JANG_2L loads in 5s via v2 mmap, 39.0GB peak,
+  after tokenizer trust_remote_code fix 4552d8ad5 — first live bug, found+fixed).
+  **G2 PASS: "The capital of France is" → top-1 " Paris"** (prefill 0.3s) — the
+  full forward (MLA+convs+sinks+mHC+MoE+manifest quant overrides) is
+  numerically correct on the real 92B bundle. G3/G5 (greedy coherence +
+  multiturn recall) running.
+- 2026-07-02 G3/G5: **G5 PASS (multiturn recall "Blue"), Tokyo/Mars PASS,
+  33.9 t/s decode** (vs Swift 0.5-1.5). Math collapses (2+2→"2",
+  17*23+thinking→zeros-loop) = the documented **no-AWQ 2-bit-expert quant
+  signature** (jang_config calibration_method=weights, switch_mlp up=2bit) —
+  NOT a runtime bug. Converter-side fix: rebuild with --awq; higher-bit A/B
+  is the definitive confirm. Template `thinking` kwarg verified (True→open
+  rail, False→pre-closed).
+- 2026-07-02 server launch findings (fixed, d1a588487): stamp cache_type=hybrid
+  overrode registry kv contract; generic affine-JIT default re-enabled JIT.
+  Startup log now shows cache_type=kv/openpangu_v2_composite, jit off. ✓
+- 2026-07-02 API matrix round 1: ALL surfaces returned content=None — root
+  cause: openPangu template keys on `thinking` not `enable_thinking`; the
+  parser-seed probe rendered with enable_thinking (jinja swallows unknown
+  kwargs) → always assumed open rail; + 2-bit reasoner never closes </think>.
+  FIX (6ff6ac4a5): _normalize_openpangu_thinking (M3 pattern, 3 call sites),
+  native-kwarg parser-seed render, openpangu_v2 added to the reasoning-only
+  bounded thinking-off answer backstop (chat+responses, stream+non-stream).
+  Matrix round 2 running.
