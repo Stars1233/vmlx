@@ -486,3 +486,115 @@ advertise Gemma4 Unified's audio argument). Not live-verified this round —
 separate task if wanted.
 
 - 2026-07-02 #49 DMG CHAIN DONE: bundled-python synced, both flavors built on node@20, notarized (Accepted) + stapled + validated. sequoia sha256 c39620f4d5acb3da8a4be73f39858976e560a0d143677ab97d58fdb5e401a363, tahoe 96ad74753937c78acba3e482b4e30748d2dbf188d4b62ddc8ac865a28aa1ea9b. Release notes rewritten (/tmp/vmlx-160-release-notes.md) for v7 paged-off + openpangu + parsers + VL/video. SHIP GATE: publishing (gh release, latest.json, PyPI) awaits Eric explicit go.
+
+## UI rows finale: tools-in-chat, M7 soak, CreateSession stall (2026-07-02)
+
+Dev-build over CDP :9333 (worktree panel `npm run dev`, userData
+~/.vmlx-dev-pangu, remote erics-m5-max). Engine RESTARTED via the
+Sessions-list Start button so it picked up the worktree at latest main
+(e3f9f4c80; code identical to 913852bab — abb8cc29f early-stop included and
+confirmed live below). Fresh spawn argv identical to the proven post-3bf6a674a
+shape (timeout 900, no JIT, no paged flags, --tool-call-parser openpangu
+--reasoning-parser deepseek_r1, disk-cache 10GB, cache-memory 0.15).
+
+### TOOLS-IN-UI-CHAT (M3 turn3) — runtime PASS / model-reliability FAIL
+
+- The old "native coding-tools-in-chat gated on Working Directory native
+  picker" gap is CLOSED: ChatSettings has "Enable Built-in Coding Tools"
+  (checkbox) + Working Directory (text field AND native Browse dialog) +
+  per-category toggles; enabled fully in-app, no external MCP config.
+  Tool registry: read_file/write_file/list_directory/run_command/web_search/
+  fetch_url/… (panel/src/main/tools/registry.ts).
+- END-TO-END PROOF (1 of 4 attempts): "Call the read_file tool with path
+  secret.txt immediately…" → engine openpangu parser parsed the streaming
+  call (panel saw the response.heartbeat tool_call_generating signal), the
+  abb8cc29f early-stop terminated the stream right after the closed call
+  (panel log "Stream ended — tool calls: 1"), panel EXECUTED read_file
+  ("Builtin tool: read_file"), chat UI rendered the call ("Read secret.txt")
+  AND the result block ("The magic word is PLUM-42."), and the model's
+  follow-up reasoning referenced the file content. Programmatic DOM check:
+  NO <|tool_call_start|>/<|tool_call_end|>/think-tag leaks.
+- HONEST FAILURES: the other 3 attempts (incl. thinking-off) the model
+  OPENED a tool call but never emitted the closing token within the token
+  budget (heartbeats fired, cap hit, reasoning-only completion, "Used 0
+  tools"); on the successful attempt the post-tool synthesis turn rambled
+  to the 900s request timeout → "[Generation interrupted]", no final
+  visible answer. This is the documented no-AWQ 2-bit expert-quant
+  signature (matches the M1b/M4 notes), NOT a runtime bug — the identical
+  runtime parsed/executed/rendered when the model did finish a call.
+
+### M7 RAM SOAK — RAM PASS / late-turn coherence FAIL (model-side)
+
+15+ live UI turns across two chats (thinking toggled On/Off via the real
+ChatSettings segment; off-turns constrained to one-word answers after the
+first open-ended off-turn looped). Engine pid 15673, `ps -o rss=` (KB):
+
+  39,233,296 base → T3 39,217,472 → T6 39,225,472 → post-loop-turn
+  39,016,576 → 38,905,424 → pass-2 base 38,908,128 → T3 38,918,592 →
+  T6 38,924,336 → T9 38,926,704 → during the runaway decode
+  38,965,888–39,198,448. health active_mb ~37.2–39.3GB, peak 44.8GB
+  (4.4k-token tool-schema prefills). **No monotonic growth — RAM PASS**,
+  including through a ~50–90 min runaway decode and repeated 4k-token loops.
+
+Coherence (spot-checks): turn 1 greeting acknowledged but garbled the fact
+("17"→"7" — and recall stayed consistent with its own garble); turn 8
+"Is 15 even or odd" → "Odd" PASS; turn 15 3-fact recall → "And And And…"
+loop FAIL. Reasoning-ON turns were correct early (6×7→"42", "Tokyo",
+"Odd"); thinking-OFF turns degrade (6×7→"4"; open-ended ack →
+oSoSoS… repetition to the 4096 cap) and once a looped answer re-enters the
+context the following turns loop too (both passes). Decode steady
+16.7–19.8 t/s throughout; engine logs zero error/traceback lines. Verdict:
+runtime/UI/RAM healthy; sustained-multiturn coherence on THIS bundle is
+model-side (rebuild with --awq per the standing directive).
+
+### RUNAWAY FINDING (first-class) + follow-up task
+
+Soak turn 10 ("What color is a clear daytime sky? One word.",
+reasoning-on, chat Max Tokens unset = model-owned) decoded for 50–90+
+minutes with no engine-side termination (~17 t/s ≈ 50k+ tokens; still
+decoding when checked at 09:16 PDT). Every logged request resolved
+max_tokens=4096 engine-side, yet this stream never ended; the openpangu
+reasoning-only bounded answer backstop runs POST-stream, so it can never
+fire if the stream doesn't end. Engine log buffer for the request was lost
+on session stop (panel logBuffers cleared on stop) — exact mechanism
+unconfirmed. Recovered via session Stop (which aborted the active chat) +
+Start. IMPORTANT COUNTERPOINT (parity works): when chat Max Tokens IS set,
+it lands end-to-end — maxTokens=64 → engine "Resolved sampling kwargs …
+max_tokens: 64" → turn stopped at 35 tokens; maxTokens=8192 honored on the
+tool turn (82 + 8192 tokens). FOLLOW-UP TASK: (1) hard token/wall-clock
+ceiling for openpangu UI turns enforced in-stream (not post-stream);
+(2) reproduce the unbounded stream at API level; (3) persist the session
+log buffer across stop for post-mortems.
+
+### CREATESESSION STALL — root-caused + FIXED (a304e0ff4)
+
+- Live repro (pre-fix): Launch Session → stuck at "Creating session..."
+  indefinitely; no error, no renderer console output (CDP console attached:
+  empty), log pane shows OTHER sessions' health lines (launchSessionIdRef
+  never set); main log shows doubled [MODELS] scan lines (StrictMode
+  double-invoke marker). Session row created/merged in the background.
+- ROOT CAUSE: CreateSession.tsx's unmount-cleanup effect sets
+  mountedRef.current=false; under React 18 StrictMode (dev) effects run
+  mount→cleanup→mount on the same instance and nothing re-armed the ref, so
+  every dev-build instance had mountedRef=false and handleLaunch silently
+  `return`ed right after `sessions.create` resolved. Dev-only (StrictMode
+  double-mount does not exist in production builds) — explains why it was a
+  dev-app nit.
+- FIX: re-arm `mountedRef.current = true` in the effect body (one line +
+  comment), commit a304e0ff4, pushed to main. Verified live post-fix: the
+  flow proceeds and surfaces the real result ("Session is already running"
+  error) instead of stalling. settings-flow vitest 265 passed / 2 failed —
+  both failures pre-existing at HEAD (stash A/B proven; sessions.ts
+  memory-warning + cache-stack tuple source pins).
+- SIDE FINDING (unfixed nit, logged): _createSessionInner's existing-session
+  merge overwrites the LIVE session's port with the form's auto-assigned
+  port (drifted 8000→8001 during the repro while the engine still listened
+  on 8000 → chat ECONNREFUSED; endpoint resolution reads the in-memory
+  session so sessions.update alone didn't heal it). Recovered via session
+  Stop/Start. Follow-up: existing-session merge should not clobber host/port
+  (or should be a no-op) while the session is running.
+
+App left RUNNING: dev app on CDP :9333, session fc082690 healthy on
+127.0.0.1:8000 (engine pid 23065, fresh restart), post-fix chat sanity turn
+rendered "OK." Remaining campaign scope: release/publish chain (ship gate
+awaits Eric's explicit go) + the runaway-ceiling follow-up above.
