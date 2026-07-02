@@ -243,3 +243,54 @@ Full matrix (final proof — Responses API + UI live chat, per mandatory rules):
 - 2026-07-02 M4 CLOSED LIVE: streaming tool call → finish_reason=["tool_calls"] only, get_weather parsed (START+data chunks, stable id), early-stop fired (wall 26.5s, no length overrun) on JANG_2L @ :8003 at abb8cc29f. Remaining rows: M5 batching, M6 UI argv parity + manual parser select, M7 RAM soak, UI live-chat matrix, notarize chain.
 
 - 2026-07-02 M5 PASS (concurrent batch: "cow"/"green", no cross-contamination). M6 panel gaps fixed: openpangu tool-parser option added to the manual dropdown (SessionConfigForm) + openpangu_v2 added to MODEL_FAMILY_OVERRIDE_NAMES for --model-family. Remaining: live UI argv round-trip proof, M7 RAM soak, UI live-chat matrix, notarize chain.
+
+- 2026-07-02 M3 UI LIVE-CHAT MATRIX + M6 ARGV PARITY (dev-build over CDP :9333,
+  worktree panel `npm run dev`, userData ~/.vmlx-dev-pangu, JANG_2L, remote
+  erics-m5-max):
+  - SETUP FINDING (would-be blocker, fixed): the dev app's findEnginePath
+    falls back to ~/.local/bin/vmlx-engine (uv tool, v1.5.0 — no openpangu)
+    because the worktree had no .venv (main-tree .venv is editable→dirty main
+    tree at 55070cd2b, also pre-openpangu). Fixed by giving the worktree a
+    .venv whose site-packages routes vmlx_engine→worktree via 00_worktree.pth
+    and borrows deps from the main venv via 10_maindeps.pth; dev-mode
+    findProjectVenvEngine then prefers it. Spawn PROVEN worktree: argv
+    `…openpangu/.venv/bin/python3 -B -s -m vmlx_engine.cli serve …`, startup
+    log "Registered vendored openpangu_v2 runtime (…openpangu/vmlx_engine/…)".
+  - UI-ARGV PARITY: FAIL on first run, two REAL panel bugs found + fixed
+    (3bf6a674a): (1) CONFIG_BY_FAMILY had NO openpangu_v2 entry → family
+    detection fell to generic → sessions.ts openpangu defaults never fired →
+    argv had --timeout 300 + --enable-jit (engine cli force-ignored JIT —
+    transparency log proved the backstop works) and the chat thinking toggle
+    was DISABLED; (2) after registering, applyJangCapabilities let the stamped
+    coarse cache_type=hybrid override registry kv → --use-paged-cache forced
+    (panel mirror of engine bug d1a588487) → neutralized. POST-FIX argv
+    (live): --timeout 900, NO --enable-jit, NO --use-paged-cache, NO
+    block-disk, --enable-disk-cache --disk-cache-max-gb 10,
+    --cache-memory-percent 0.15, --tool-call-parser openpangu
+    --reasoning-parser deepseek_r1. Startup log: "openPangu-2.0 AUTODETECTED
+    (openpangu_v2)", "cache_type=kv cache_subtype=openpangu_v2_composite",
+    "Auto-configured tool parser from registry: openpangu", jit=off. vitest
+    70/70 (new regression test pins the live stamp shape). OBSERVATION: the
+    engine scheduler then logs "Non-standard cache model detected … Auto-
+    switching to paged cache for correct cache reuse" — engine-internal paged
+    backend for the non-trimmable composite cache despite policy paged=OFF;
+    argv-level OFF respected, chat works, but the policy log vs scheduler
+    behavior mismatch should be reconciled (follow-up).
+  - UI-CHAT MULTITURN: PASS. Turn1 "cat named Mochi"→visible "Mochi", turn2
+    recall→"Mochi"; Reasoning collapsible (4543/4709 chars), NO think-tag or
+    tool-token leaks in DOM (programmatic check). ~4100 tok/turn (reasoning
+    runs to backstop cap — 2-bit no-AWQ behavior), 17.4-18.5 t/s decode.
+    Evidence: /tmp/pangu-ui-08-turn1.png, /tmp/pangu-ui-09-turn2.png (remote).
+  - REASONING TOGGLE: PASS after fix (was disabled — same root cause as argv
+    row). Off→"Capital of Italy? One word." rendered content-only, NO
+    reasoning box, 4 tokens/0.5s (answer "Italy." wrong — 2-bit quant
+    degradation on thinking-off, matches M1b note; NOT a runtime bug). On→
+    "Is 9 odd?" rendered Reasoning box (11689 chars) + correct visible "Odd".
+    Overrides persisted (enableThinking false↔true round-trip verified via
+    chat.getOverrides). Evidence: /tmp/pangu-ui-11-thinking-off.png,
+    /tmp/pangu-ui-12-thinking-on.png.
+  - RAM: engine RSS 37.2GB before chat rows → 36.8GB after (health
+    active_mb 37213 stable); no growth across 5 UI turns. Full M7 soak
+    (15+ turns) still open.
+  - Remaining: M7 RAM soak, tool-call-in-chat UI row (M3 matrix turn3),
+    scheduler paged-log reconciliation, notarize chain.
