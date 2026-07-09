@@ -28,6 +28,7 @@ Observed layouts:
 | gemma-4-12B-it-qat | 48 | 8 | 40 |
 | gemma-4-26B-A4B-it-qat (MoE) | 30 | 5 | 25 |
 | gemma-4-31B-it-qat | 60 | 10 | 50 |
+| Step-3.7-Flash-JANG_K | 45 | 12 | 33 |
 
 ### Guard
 
@@ -46,7 +47,7 @@ calls, and the earlier skip gates must not fire first.
 | gemma-4 12B / 26B-A4B / 31B | **yes** | verified live |
 | gemma-4 E2B / E4B | no | `is_mla_model` gate fires first (`gemma4_unified`), before the SWA gate |
 | Laguna-XS.2 (mxfp4, JANGTQ) | no | loads through `jang_tools/laguna/runtime.py`, which never calls the TQ patch |
-| Step-3.7-Flash | untested | declares 45 layer types (12 full / 33 sliding) and looks eligible; not yet exercised live |
+| Step-3.7-Flash | **yes** | verified live (12 full / 33 sliding) |
 
 ## Why it is not the default
 
@@ -57,26 +58,41 @@ and behaves like a `KVCache` with extra machinery. The only `.compress()` call i
 is `_recompress_to_tq`, reached from paged-cache and disk-L2 reconstruction — and the paged
 cache is off by default.
 
-Consequence: today the flag costs nothing and buys nothing in memory. Outputs are
+Consequence: today the flag costs nothing and buys nothing **in memory**. Outputs are
 byte-identical to baseline. Making the encode real means wiring `compress_after`
 end-to-end, which **will change decode numerics for every TQ family** (MiniMax-M2.7's 62
 TQ layers, Qwen3.6's every-4th, and these gemma slots) and therefore needs a per-family
 coherence gate before it can be turned on.
 
+It does buy one thing today, as a side effect rather than by design: on the models whose
+full-attention slots become TQ, the F1 cold≠warm divergence disappears (see Determinism).
+That is not a reason to default it on — it is a pointer at the real F1 fix, which is to
+stop the lossy q4 round-trip on stored `KVCache` prefixes (task #45).
+
 ## Determinism
 
 Verified live, A = default vs B = `VMLX_SWA_TQ=1`, greedy (`temperature=0`).
 
-| check | gemma-4-12B | gemma-4-26B-A4B (MoE) |
-|---|---|---|
-| decode determinism (3× cold, distinct salts) | PASS both | PASS both |
-| cross-flag equality (A ≡ B) | PASS (byte-equal) | PASS (byte-equal) |
-| prefix-cache pollution guard | PASS both | PASS both |
-| multiturn recall over prefix hits | PASS both | PASS both |
-| image / image-stream / image-multiturn | PASS both, byte-equal | PASS both, byte-equal |
-| audio (no audio tower) | rejected `400`, correct | rejected `400`, correct |
-| cold == warm | A: **F1**, B: **byte-faithful** | F1 on both |
-| co-batch equivalence (`max-num-seqs=2`) | PASS | **flaky on both** (A 6/12, B 9/12 mismatch) |
+| check | gemma-4-12B | gemma-4-26B-A4B (MoE) | Step-3.7-Flash |
+|---|---|---|---|
+| decode determinism (3× cold, distinct salts) | PASS both | PASS both | PASS both |
+| cross-flag equality (A ≡ B) | PASS (byte-equal) | PASS (byte-equal) | PASS (byte-equal) |
+| prefix-cache pollution guard | PASS both | PASS both | PASS both |
+| multiturn recall over prefix hits | PASS both | PASS both | PASS both |
+| image / image-stream / image-multiturn | PASS both, byte-equal | PASS both, byte-equal | n/a (text) |
+| audio (no audio tower) | rejected `400`, correct | rejected `400`, correct | n/a |
+| cold == warm | A: **F1**, B: **byte-faithful** | F1 on both | A: **F1**, B: **byte-faithful** |
+| co-batch equivalence (`max-num-seqs=2`) | PASS | **flaky on both** (A 6/12, B 9/12 mismatch) | not re-run (covered by F18) |
+
+Step-3.7's 74 GB bundle cannot host two servers on a 128 GB box, so A and B were run
+sequentially on one port each and their raw outputs diffed offline
+(`step_seq.py` → `step_cmp.py`) rather than side by side.
+
+Step-3.7 independently reproduces the gemma-4-12B signature: byte-equal to baseline, and
+`VMLX_SWA_TQ=1` *removes* F1. That is a third model confirming F1 is the q4 stored-prefix
+round-trip on `KVCache` slots — in both models the flag's warm answer equals the baseline's
+**cold** answer, i.e. the cold answer is the faithful one and baseline's warm answer is the
+q4-degraded one.
 
 Two pre-existing issues surfaced here. Neither is caused by this feature — both reproduce
 on the default path with the flag off:
