@@ -125,3 +125,24 @@ stop-set path).
   panel vitest 2176 pass / 3 documented stale.
 - Release commit `9bc8a3694`; DMGs building; notarize → staple → verify next.
 - UI↔engine parity dual-reviewer pass planned on the built app (CDP :9333).
+
+## Codex(gpt-5.6-sol) live UI QA — dev app, Hy3-JANG_2K-MTP (2026-07-10 evening)
+Engine contract ALL PASS: memory-aware prefix cache (paged off), TQ objects on
+80 layers, MTP depth-1 autodetected from tuning sidecar, bundle sampling
+defaults applied (0.90/0.90/min_p .05), reasoning rails + AUTO render clean,
+multiturn recall exact, streaming incremental, TTFT 1.61s -> 0.27s with 11
+cache hits (14.4k memory+tq cached tokens).
+FAILs (none are engine defects; classified):
+- Long-form word-level quant damage at temp 0.9 (no loops): stray CJK tokens
+  inside words/numbers, misspellings. 2-bit tail picks in high-entropy
+  positions. ACTION: tightened-sampling A/B (temp 0.8 / top_p 0.85 /
+  min_p 0.1) then restamp + regate before release.
+- Reasoning-ON long-form: reasoning consumed full token budget (3,858 tok,
+  inflated by the same rambling) -> empty content. Budget/product class,
+  aggravated by quant damage.
+- Built-in tool: "Working directory not set" — fresh isolated dev profile has
+  no coding-tools workdir; card rendered correctly (F9 previously proved the
+  loop). Config, not engine.
+- temp-0 fresh-chat divergence: run 2 warm (21 cached tokens) = documented F1
+  (#45), independently rediscovered by the second reviewer.
+RELEASE HELD until: sol audit verdict + tightened-sampling long-form regate.
