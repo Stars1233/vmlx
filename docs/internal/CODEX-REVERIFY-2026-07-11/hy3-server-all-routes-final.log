@@ -1,0 +1,378 @@
+  JANGTQ_WIRED_LIMIT_GB defaulted to 115 GB (from OS sysctl iogpu.wired_limit_mb; overrides external jang_tools 70% default)
+INFO:vmlx_engine:Registered vendored minimax_m3_vl runtime (/Users/eric/mlx/vllm-mlx/vmlx_engine/models/minimax_m3/minimax_m3.py)
+INFO:vmlx_engine:Registered vendored openpangu_v2 runtime (/Users/eric/mlx/vllm-mlx/vmlx_engine/models/openpangu_v2/openpangu_v2.py)
+INFO:vmlx_engine.model_config_registry:Model config: detection_source=jang_stamped family=hy_v3 reasoning_parser=qwen3 tool_parser=hunyuan think_in_template=False cache_type=kv cache_subtype=kv is_mllm=False
+INFO:vmlx_engine.cli:KV cache auto mode: TurboQuant enabled for compatible models; stored prefix cache quantization=q4
+INFO:vmlx_engine.cli:Auto-configured tool parser from registry: hunyuan
+INFO:vmlx_engine.cli:Auto-configured reasoning parser from registry: qwen3
+INFO:vmlx_engine.cli:JANG affine model detected (format=jang, family=hy_v3) — defaulting --enable-jit ON for mx.compile decode speedup. Disable with explicit --enable-jit=0 or env VMLX_DISABLE_JANG_AFFINE_JIT_DEFAULT=1.
+INFO:vmlx_engine.server:Serving model as: jangq-ai/Hy3-JANG_2K-MTP (actual: jangq-ai/Hy3-JANG_2K-MTP)
+INFO:vmlx_engine.server:System memory before load: 116.2GB available / 128.0GB total (9.2% used)
+INFO:vmlx_engine.server:Loading model with BatchedEngine: /Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP
+INFO:vmlx_engine:is_mllm_model(/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP): tier=jang_config_explicit_false result=False
+INFO:vmlx_engine.server:Model loaded (batched mode): /Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP
+INFO:vmlx_engine.server:Metal GPU memory after load: 0.00GB active, 0.00GB peak
+INFO:vmlx_engine.server:System memory after load: 116.2GB available (9.2% used)
+INFO:vmlx_engine.server:Native tool format enabled for parser: hunyuan
+INFO:vmlx_engine.server:Default max tokens fallback: 4096 (bundle max_new_tokens wins when present)
+INFO:     Started server process [42185]
+INFO:     Waiting for application startup.
+INFO:vmlx_engine.server:Started caffeinate system wake lock for PID 42185
+INFO:vmlx_engine.utils.tokenizer:Detected JANG model: /Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP
+INFO:vmlx_engine.utils.jang_loader:JANG v2 detected — loading via mmap (instant)
+INFO:vmlx_engine.patches.mlx_lm_mtp.qwen35_model:Qwen3.5/3.6 MTP model adapter applied
+INFO:vmlx_engine.patches.mlx_lm_mtp.hy_v3_model:hy_v3 native-MTP attach gate applied
+INFO:vmlx_engine.patches.mlx_lm_mtp:mlx-lm MTP adapters applied
+INFO:vmlx_engine.patches.mlx_vlm_mtp.qwen35_vl:mlx-vlm Qwen3.5/3.6 MTP language adapter applied
+INFO:vmlx_engine.patches.mlx_vlm_mtp:mlx-vlm native MTP adapters applied
+INFO:vmlx_engine.native_mtp:Native MTP runtime active for /Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP (family=hy_v3 layers=1 tensors=42 cache=kv depth=1/vmlx_mtp_tuning.json:native_mtp.best_depth)
+INFO:vmlx_engine.utils.jang_loader:  Loading 23 safetensors shards via mmap
+INFO:vmlx_engine.utils.jang_loader:  Wired limit set to 115 GB (model 105 GB)
+INFO:vmlx_engine.utils.jang_loader:  TurboQuant auto-enabled via VMLX_FORCE_TQ_AUTO=1
+INFO:vmlx_engine.utils.jang_loader:  TurboQuant objects active; live encode disabled; stored prefix q4 remains scheduler-owned (6 critical layers)
+INFO:vmlx_engine.utils.jang_loader:JANG v2 loaded in 41.2s: Hy3 (0.0-bit avg)
+INFO:vmlx_engine.engine.batched:BatchedEngine multi-eos hook: family=hy_v3, registry eos_tokens=['<｜hy_eos｜>', '<｜hy_User｜>', '<｜hy_Assistant｜>'], tokenizer_class=TokenizerWrapper, primary=120025
+INFO:vmlx_engine.engine.batched:hy_v3: BatchedEngine extended existing TokenizerWrapper; eos_token_ids={120025, 120006, 120007}
+INFO:vmlx_engine.scheduler:Runtime cache layout: model_type=hy_v3 layers=80 layout=0:TurboQuantKVCache;1:TurboQuantKVCache;2:TurboQuantKVCache;3:TurboQuantKVCache;4:TurboQuantKVCache;5:TurboQuantKVCache;6:TurboQuantKVCache;7:TurboQuantKVCache;8:TurboQuantKVCache;9:TurboQuantKVCache;10:TurboQuantKVCache;11:TurboQuantKVCache;12:TurboQuantKVCache;13:TurboQuantKVCache;14:TurboQuantKVCache;15:TurboQuantKVCache;16:TurboQuantKVCache;17:TurboQuantKVCache;18:TurboQuantKVCache;19:TurboQuantKVCache;20:TurboQuantKVCache;21:TurboQuantKVCache;22:TurboQuantKVCache;23:TurboQuantKVCache;24:TurboQuantKVCache;25:TurboQuantKVCache;26:TurboQuantKVCache;27:TurboQuantKVCache;28:TurboQuantKVCache;29:TurboQuantKVCache;30:TurboQuantKVCache;31:TurboQuantKVCache;32:TurboQuantKVCache;33:TurboQuantKVCache;34:TurboQuantKVCache;35:TurboQuantKVCache;36:TurboQuantKVCache;37:TurboQuantKVCache;38:TurboQuantKVCache;39:TurboQuantKVCache;40:TurboQuantKVCache;41:TurboQuantKVCache;42:TurboQuantKVCache;43:TurboQuantKVCache;44:TurboQuantKVCache;45:TurboQuantKVCache;46:TurboQuantKVCache;47:TurboQuantKVCache;48:TurboQuantKVCache;49:TurboQuantKVCache;50:TurboQuantKVCache;51:TurboQuantKVCache;52:TurboQuantKVCache;53:TurboQuantKVCache;54:TurboQuantKVCache;55:TurboQuantKVCache;56:TurboQuantKVCache;57:TurboQuantKVCache;58:TurboQuantKVCache;59:TurboQuantKVCache;60:TurboQuantKVCache;61:TurboQuantKVCache;62:TurboQuantKVCache;63:TurboQuantKVCache;64:TurboQuantKVCache;65:TurboQuantKVCache;66:TurboQuantKVCache;67:TurboQuantKVCache;68:TurboQuantKVCache;69:TurboQuantKVCache;70:TurboQuantKVCache;71:TurboQuantKVCache;72:TurboQuantKVCache;73:TurboQuantKVCache;74:TurboQuantKVCache;75:TurboQuantKVCache;76:TurboQuantKVCache;77:TurboQuantKVCache;78:TurboQuantKVCache;79:TurboQuantKVCache
+INFO:vmlx_engine.scheduler:TurboQuantKVCache live decode preserving configured batching (batch cache API=turboquant_kv_v1).
+INFO:vmlx_engine.scheduler:KV cache auto mode: TurboQuantKVCache is active for live decode; stored prefix/cache snapshots still use q4 when applicable.
+INFO:vmlx_engine.scheduler:KV cache quantization validated: cache_head_dims=(128,), group_size=64
+INFO:vmlx_engine.scheduler:KV cache quantization round-trip test passed: bits=4, group_size=64, test_shape=(1, 4, 8, 128)
+INFO:vmlx_engine.scheduler:KV cache quantization enabled: q4 (bits=4, group_size=64)
+INFO:vmlx_engine.scheduler:Prefix cache requires continuous batching — enabled automatically
+INFO:vmlx_engine.memory_cache:MemoryAwarePrefixCache initialized: max_memory=3412.1MB, max_entries=1000, ttl=disabled
+INFO:vmlx_engine.scheduler:Memory-aware cache enabled: limit=3412.1MB
+INFO:vmlx_engine.engine_core:Engine started
+INFO:vmlx_engine.engine.batched:BatchedEngine loaded: /Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP (mllm=False)
+INFO:vmlx_engine.server:Recorded Metal working-set model baseline: active=98.0GB max=107.5GB reason=lifespan_engine_start
+INFO:vmlx_engine.server:JIT: Skipping mx.compile — TurboQuantKVCache is active. mx.compile() cannot trace custom cache objects (issue #66). Use --kv-cache-quantization none if you need JIT for this model.
+INFO:vmlx_engine.mcp.config:No MCP config file found, using empty config
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8010 (Press CTRL+C to quit)
+WARNING:vmlx_engine.server:SECURITY WARNING: Server running without API key authentication. Anyone can access the API. Use --api-key to enable authentication.
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 384, 'enable_thinking': True, 'reasoning_effort': 'high', 'chat_template_kwargs': {'reasoning_effort': 'high'}}
+INFO:vmlx_engine.scheduler:Request chatcmpl-3c9123ce: cache miss, processing all 31 tokens
+INFO:vmlx_engine.scheduler:Native MTP head detected — using mlx_lm.BatchGenerator even with max_num_seqs=1 so the draft/verify runtime and SSM rollback path are active.
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=0 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[0] finish=stop depth=1 tokens=228 cycles=155 full-accept=71/155 (45.8%) draft-tokens=71/155 (45.8%) emits[init=2,draft=71,bonus=71,verify=84] timing[backbone=283.0ms mtp=307.6ms sample=6633.7ms cache=2.9ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-3c9123ce (28 cache-key tokens from 29 prompt tokens, KV truncated to 28)
+INFO:vmlx_engine.server:Chat completion: 228 tokens in 8.56s (26.6 tok/s)
+============================================================
+SECURITY CONFIGURATION
+============================================================
+  Authentication: DISABLED - Use --api-key to enable
+  Rate limiting: DISABLED - Use --rate-limit to enable
+  Request timeout: 300.0s
+  Tool calling: Use --enable-auto-tool-choice to enable
+  Reasoning: ENABLED (parser: Qwen3ReasoningParser)
+  External speculative decoding: Use --speculative-model to enable
+  Native MTP: READY D1 (scope: text, policy: compatible-only)
+    Request gate: greedy=identity-verify; stochastic=rejection-sampling acceptance
+============================================================
+Loading model: /Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP
+Served model name: jangq-ai/Hy3-JANG_2K-MTP
+Max output fallback: 4096 (bundle max_new_tokens wins when present)
+Mode: Continuous batching (for multiple concurrent users)
+Stream interval: 1 tokens
+Memory-aware cache: 20% of RAM
+KV cache quantization: q4 (group_size=64)
+Starting server at http://127.0.0.1:8010
+INFO:     127.0.0.1:52459 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 384, 'enable_thinking': True, 'reasoning_effort': 'high', 'chat_template_kwargs': {'reasoning_effort': 'high'}}
+INFO:vmlx_engine.scheduler:Request chatcmpl-0ff62108: cache hit, 28 tokens cached, 33 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=1 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[1] finish=length depth=1 tokens=384 cycles=249 full-accept=133/249 (53.4%) draft-tokens=133/249 (53.4%) emits[init=2,draft=133,bonus=133,verify=116] timing[backbone=469.6ms mtp=494.9ms sample=10788.8ms cache=3.4ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-0ff62108 (58 cache-key tokens from 59 prompt tokens, KV truncated to 58)
+INFO:vmlx_engine.server:Chat completion: 384 tokens in 12.17s (31.6 tok/s)
+INFO:vmlx_engine.server:hy_v3 non-stream chat produced no visible content; running bounded thinking-off answer pass (reasoning_chars=1109, cap=384, used=384, answer_budget=48)
+INFO:vmlx_engine.scheduler:Request chatcmpl-0ff62108:visible-answer: cache miss, processing all 438 tokens
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=2 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[2] finish=stop depth=1 tokens=12 cycles=7 full-accept=3/7 (42.9%) draft-tokens=3/7 (42.9%) emits[init=2,draft=3,bonus=3,verify=4] timing[backbone=13.6ms mtp=15.9ms sample=308.5ms cache=0.1ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-0ff62108:visible-answer (437 cache-key tokens from 438 prompt tokens, KV truncated to 437)
+INFO:     127.0.0.1:52461 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 384, 'enable_thinking': True, 'reasoning_effort': 'high', 'chat_template_kwargs': {'reasoning_effort': 'high'}}
+INFO:vmlx_engine.scheduler:Request chatcmpl-22a18b4f: cache hit, 58 tokens cached, 42 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=3 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[3] finish=length depth=1 tokens=384 cycles=250 full-accept=132/250 (52.8%) draft-tokens=132/250 (52.8%) emits[init=2,draft=132,bonus=132,verify=118] timing[backbone=478.6ms mtp=497.2ms sample=10950.2ms cache=3.4ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-22a18b4f (97 cache-key tokens from 98 prompt tokens, KV truncated to 97)
+INFO:vmlx_engine.server:Chat completion: 384 tokens in 12.42s (30.9 tok/s)
+INFO:vmlx_engine.server:hy_v3 non-stream chat produced no visible content; running bounded thinking-off answer pass (reasoning_chars=1115, cap=384, used=384, answer_budget=48)
+INFO:vmlx_engine.scheduler:Request chatcmpl-22a18b4f:visible-answer: cache miss, processing all 472 tokens
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=4 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[4] finish=stop depth=1 tokens=36 cycles=26 full-accept=9/26 (34.6%) draft-tokens=9/26 (34.6%) emits[init=2,draft=9,bonus=8,verify=17] timing[backbone=50.1ms mtp=56.5ms sample=1166.9ms cache=0.6ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-22a18b4f:visible-answer (471 cache-key tokens from 472 prompt tokens, KV truncated to 471)
+INFO:     127.0.0.1:52464 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 384, 'enable_thinking': True, 'reasoning_effort': 'high', 'chat_template_kwargs': {'reasoning_effort': 'high'}}
+INFO:     127.0.0.1:52467 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:vmlx_engine.scheduler:Request chatcmpl-99623c67: cache hit, 28 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=5 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[5] finish=length depth=1 tokens=384 cycles=260 full-accept=122/260 (46.9%) draft-tokens=122/260 (46.9%) emits[init=2,draft=122,bonus=122,verify=138] timing[backbone=526.6ms mtp=694.3ms sample=14246.4ms cache=3.9ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-99623c67 (28 cache-key tokens from 29 prompt tokens, KV truncated to 28)
+INFO:vmlx_engine.server:Hy3 Chat Completions stream produced no visible content; running bounded thinking-off answer pass (reasoning_chars=1397, answer_budget=384)
+INFO:vmlx_engine.scheduler:Request chatcmpl-99623c67: cache miss, processing all 408 tokens
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=6 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[6] finish=stop depth=1 tokens=9 cycles=7 full-accept=0/7 (0.0%) draft-tokens=0/7 (0.0%) emits[init=2,draft=0,bonus=0,verify=7] timing[backbone=14.2ms mtp=21.4ms sample=395.2ms cache=0.2ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-99623c67 (407 cache-key tokens from 408 prompt tokens, KV truncated to 407)
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 384, 'enable_thinking': True, 'reasoning_effort': 'high', 'chat_template_kwargs': {'reasoning_effort': 'high'}}
+INFO:     127.0.0.1:52473 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:vmlx_engine.scheduler:Request chatcmpl-d237ba69: cache hit, 58 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=7 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[7] finish=stop depth=1 tokens=300 cycles=195 full-accept=103/195 (52.8%) draft-tokens=103/195 (52.8%) emits[init=2,draft=103,bonus=103,verify=92] timing[backbone=395.2ms mtp=524.1ms sample=10917.0ms cache=2.9ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-d237ba69 (58 cache-key tokens from 59 prompt tokens, KV truncated to 58)
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 384, 'enable_thinking': True, 'reasoning_effort': 'high', 'chat_template_kwargs': {'reasoning_effort': 'high'}}
+INFO:     127.0.0.1:52475 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:vmlx_engine.scheduler:Request chatcmpl-9fc64c81: cache hit, 97 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=8 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[8] finish=length depth=1 tokens=384 cycles=250 full-accept=132/250 (52.8%) draft-tokens=132/250 (52.8%) emits[init=2,draft=132,bonus=132,verify=118] timing[backbone=509.2ms mtp=672.1ms sample=14104.8ms cache=3.9ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-9fc64c81 (97 cache-key tokens from 98 prompt tokens, KV truncated to 97)
+INFO:vmlx_engine.server:Hy3 Chat Completions stream produced no visible content; running bounded thinking-off answer pass (reasoning_chars=1106, answer_budget=384)
+INFO:vmlx_engine.scheduler:Request chatcmpl-9fc64c81: cache miss, processing all 480 tokens
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=9 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[9] finish=stop depth=1 tokens=36 cycles=27 full-accept=7/27 (25.9%) draft-tokens=7/27 (25.9%) emits[init=2,draft=7,bonus=7,verify=20] timing[backbone=54.4ms mtp=75.1ms sample=1556.0ms cache=0.7ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-9fc64c81 (479 cache-key tokens from 480 prompt tokens, KV truncated to 479)
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 384, 'enable_thinking': True, 'reasoning_effort': 'high', 'chat_template_kwargs': {'reasoning_effort': 'high'}}
+INFO:vmlx_engine.scheduler:Request resp_16c342f4cf0f: cache hit, 28 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=10 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[10] finish=length depth=1 tokens=384 cycles=260 full-accept=122/260 (46.9%) draft-tokens=122/260 (46.9%) emits[init=2,draft=122,bonus=122,verify=138] timing[backbone=494.7ms mtp=699.5ms sample=15044.7ms cache=3.9ms]
+INFO:vmlx_engine.scheduler:Stored cache for request resp_16c342f4cf0f (28 cache-key tokens from 29 prompt tokens, KV truncated to 28)
+INFO:vmlx_engine.server:Response: 384 tokens in 16.49s (23.3 tok/s)
+INFO:vmlx_engine.server:hy_v3 non-stream responses produced no visible content; running bounded thinking-off answer pass (reasoning_chars=1397, cap=384, used=384, answer_budget=48)
+INFO:vmlx_engine.scheduler:Request resp_16c342f4cf0f:visible-answer: cache hit, 407 tokens cached, 1 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=11 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[11] finish=stop depth=1 tokens=9 cycles=7 full-accept=0/7 (0.0%) draft-tokens=0/7 (0.0%) emits[init=2,draft=0,bonus=0,verify=7] timing[backbone=13.8ms mtp=20.7ms sample=395.8ms cache=0.1ms]
+INFO:vmlx_engine.scheduler:Stored cache for request resp_16c342f4cf0f:visible-answer (407 cache-key tokens from 408 prompt tokens, KV truncated to 407)
+INFO:     127.0.0.1:52479 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 384, 'enable_thinking': True, 'reasoning_effort': 'high', 'chat_template_kwargs': {'reasoning_effort': 'high'}}
+INFO:vmlx_engine.scheduler:Request resp_718f062da5fd: cache hit, 58 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=12 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[12] finish=stop depth=1 tokens=300 cycles=195 full-accept=103/195 (52.8%) draft-tokens=103/195 (52.8%) emits[init=2,draft=103,bonus=103,verify=92] timing[backbone=359.9ms mtp=527.1ms sample=11501.2ms cache=2.7ms]
+INFO:vmlx_engine.scheduler:Stored cache for request resp_718f062da5fd (58 cache-key tokens from 59 prompt tokens, KV truncated to 58)
+INFO:vmlx_engine.server:Response: 300 tokens in 12.63s (23.8 tok/s)
+INFO:     127.0.0.1:52483 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 384, 'enable_thinking': True, 'reasoning_effort': 'high', 'chat_template_kwargs': {'reasoning_effort': 'high'}}
+INFO:vmlx_engine.scheduler:Request resp_0e2473d4952c: cache hit, 97 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=13 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[13] finish=length depth=1 tokens=384 cycles=250 full-accept=132/250 (52.8%) draft-tokens=132/250 (52.8%) emits[init=2,draft=132,bonus=132,verify=118] timing[backbone=458.3ms mtp=578.5ms sample=13122.7ms cache=3.3ms]
+INFO:vmlx_engine.scheduler:Stored cache for request resp_0e2473d4952c (97 cache-key tokens from 98 prompt tokens, KV truncated to 97)
+INFO:vmlx_engine.server:Response: 384 tokens in 14.40s (26.7 tok/s)
+INFO:vmlx_engine.server:hy_v3 non-stream responses produced no visible content; running bounded thinking-off answer pass (reasoning_chars=1106, cap=384, used=384, answer_budget=48)
+INFO:vmlx_engine.scheduler:Request resp_0e2473d4952c:visible-answer: cache hit, 479 tokens cached, 1 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=14 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[14] finish=stop depth=1 tokens=36 cycles=27 full-accept=7/27 (25.9%) draft-tokens=7/27 (25.9%) emits[init=2,draft=7,bonus=7,verify=20] timing[backbone=50.1ms mtp=57.6ms sample=1359.4ms cache=0.4ms]
+INFO:vmlx_engine.scheduler:Stored cache for request resp_0e2473d4952c:visible-answer (479 cache-key tokens from 480 prompt tokens, KV truncated to 479)
+INFO:     127.0.0.1:52485 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 384, 'enable_thinking': True, 'reasoning_effort': 'high', 'chat_template_kwargs': {'reasoning_effort': 'high'}}
+INFO:     127.0.0.1:52489 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:vmlx_engine.scheduler:Request resp_8aae8b42b708: cache hit, 28 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=15 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[15] finish=length depth=1 tokens=384 cycles=260 full-accept=122/260 (46.9%) draft-tokens=122/260 (46.9%) emits[init=2,draft=122,bonus=122,verify=138] timing[backbone=483.5ms mtp=543.6ms sample=12945.7ms cache=3.6ms]
+INFO:vmlx_engine.scheduler:Stored cache for request resp_8aae8b42b708 (28 cache-key tokens from 29 prompt tokens, KV truncated to 28)
+INFO:vmlx_engine.server:Hy3 reasoning produced no visible content; running bounded thinking-off answer pass (reasoning_chars=1397, answer_budget=384)
+INFO:vmlx_engine.scheduler:Request resp_8aae8b42b708: cache hit, 407 tokens cached, 1 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=16 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[16] finish=stop depth=1 tokens=9 cycles=7 full-accept=0/7 (0.0%) draft-tokens=0/7 (0.0%) emits[init=2,draft=0,bonus=0,verify=7] timing[backbone=14.1ms mtp=16.5ms sample=340.4ms cache=0.2ms]
+INFO:vmlx_engine.scheduler:Stored cache for request resp_8aae8b42b708 (407 cache-key tokens from 408 prompt tokens, KV truncated to 407)
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 384, 'enable_thinking': True, 'reasoning_effort': 'high', 'chat_template_kwargs': {'reasoning_effort': 'high'}}
+INFO:     127.0.0.1:52493 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:vmlx_engine.scheduler:Request resp_3af000ef4299: cache hit, 58 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=17 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[17] finish=stop depth=1 tokens=300 cycles=195 full-accept=103/195 (52.8%) draft-tokens=103/195 (52.8%) emits[init=2,draft=103,bonus=103,verify=92] timing[backbone=359.4ms mtp=407.2ms sample=9677.2ms cache=2.4ms]
+INFO:vmlx_engine.scheduler:Stored cache for request resp_3af000ef4299 (58 cache-key tokens from 59 prompt tokens, KV truncated to 58)
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 384, 'enable_thinking': True, 'reasoning_effort': 'high', 'chat_template_kwargs': {'reasoning_effort': 'high'}}
+INFO:     127.0.0.1:52495 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:vmlx_engine.scheduler:Request resp_4f7be5807940: cache hit, 97 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=18 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[18] finish=length depth=1 tokens=384 cycles=250 full-accept=132/250 (52.8%) draft-tokens=132/250 (52.8%) emits[init=2,draft=132,bonus=132,verify=118] timing[backbone=465.1ms mtp=521.0ms sample=12468.5ms cache=3.2ms]
+INFO:vmlx_engine.scheduler:Stored cache for request resp_4f7be5807940 (97 cache-key tokens from 98 prompt tokens, KV truncated to 97)
+INFO:vmlx_engine.server:Hy3 reasoning produced no visible content; running bounded thinking-off answer pass (reasoning_chars=1106, answer_budget=384)
+INFO:vmlx_engine.scheduler:Request resp_4f7be5807940: cache hit, 479 tokens cached, 1 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=19 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[19] finish=stop depth=1 tokens=36 cycles=27 full-accept=7/27 (25.9%) draft-tokens=7/27 (25.9%) emits[init=2,draft=7,bonus=7,verify=20] timing[backbone=51.8ms mtp=58.5ms sample=1354.7ms cache=0.4ms]
+INFO:vmlx_engine.scheduler:Stored cache for request resp_4f7be5807940 (479 cache-key tokens from 480 prompt tokens, KV truncated to 479)
+INFO:vmlx_engine.scheduler:Request chatcmpl-30f538b9: cache hit, 28 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=20 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[20] finish=length depth=1 tokens=384 cycles=260 full-accept=122/260 (46.9%) draft-tokens=122/260 (46.9%) emits[init=2,draft=122,bonus=122,verify=138] timing[backbone=480.3ms mtp=541.0ms sample=12837.5ms cache=3.6ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-30f538b9 (28 cache-key tokens from 29 prompt tokens, KV truncated to 28)
+INFO:vmlx_engine.server:Hy3 Chat Completions stream produced no visible content; running bounded thinking-off answer pass (reasoning_chars=1397, answer_budget=384)
+INFO:vmlx_engine.scheduler:Request chatcmpl-30f538b9: cache hit, 407 tokens cached, 1 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=21 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[21] finish=stop depth=1 tokens=9 cycles=7 full-accept=0/7 (0.0%) draft-tokens=0/7 (0.0%) emits[init=2,draft=0,bonus=0,verify=7] timing[backbone=13.2ms mtp=16.6ms sample=348.6ms cache=0.2ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-30f538b9 (407 cache-key tokens from 408 prompt tokens, KV truncated to 407)
+INFO:     127.0.0.1:52499 - "POST /v1/messages HTTP/1.1" 200 OK
+INFO:vmlx_engine.scheduler:Request chatcmpl-cd93f78f: cache hit, 58 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=22 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[22] finish=stop depth=1 tokens=300 cycles=195 full-accept=103/195 (52.8%) draft-tokens=103/195 (52.8%) emits[init=2,draft=103,bonus=103,verify=92] timing[backbone=361.0ms mtp=405.9ms sample=9627.7ms cache=2.6ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-cd93f78f (58 cache-key tokens from 59 prompt tokens, KV truncated to 58)
+INFO:     127.0.0.1:52503 - "POST /v1/messages HTTP/1.1" 200 OK
+INFO:vmlx_engine.scheduler:Request chatcmpl-7dfbd0bb: cache hit, 97 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=23 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[23] finish=length depth=1 tokens=384 cycles=250 full-accept=132/250 (52.8%) draft-tokens=132/250 (52.8%) emits[init=2,draft=132,bonus=132,verify=118] timing[backbone=459.5ms mtp=520.5ms sample=12389.9ms cache=3.4ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-7dfbd0bb (97 cache-key tokens from 98 prompt tokens, KV truncated to 97)
+INFO:vmlx_engine.server:Hy3 Chat Completions stream produced no visible content; running bounded thinking-off answer pass (reasoning_chars=1106, answer_budget=384)
+INFO:vmlx_engine.scheduler:Request chatcmpl-7dfbd0bb: cache hit, 479 tokens cached, 1 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=24 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[24] finish=stop depth=1 tokens=36 cycles=27 full-accept=7/27 (25.9%) draft-tokens=7/27 (25.9%) emits[init=2,draft=7,bonus=7,verify=20] timing[backbone=49.4ms mtp=57.5ms sample=1356.2ms cache=0.5ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-7dfbd0bb (479 cache-key tokens from 480 prompt tokens, KV truncated to 479)
+INFO:     127.0.0.1:52506 - "POST /v1/messages HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52510 - "POST /v1/messages HTTP/1.1" 200 OK
+INFO:vmlx_engine.scheduler:Request chatcmpl-6ae2c6d1: cache hit, 28 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=25 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[25] finish=length depth=1 tokens=384 cycles=260 full-accept=122/260 (46.9%) draft-tokens=122/260 (46.9%) emits[init=2,draft=122,bonus=122,verify=138] timing[backbone=483.0ms mtp=541.3ms sample=12769.2ms cache=3.8ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-6ae2c6d1 (28 cache-key tokens from 29 prompt tokens, KV truncated to 28)
+INFO:vmlx_engine.server:Hy3 Chat Completions stream produced no visible content; running bounded thinking-off answer pass (reasoning_chars=1397, answer_budget=384)
+INFO:vmlx_engine.scheduler:Request chatcmpl-6ae2c6d1: cache hit, 407 tokens cached, 1 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=26 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[26] finish=stop depth=1 tokens=9 cycles=7 full-accept=0/7 (0.0%) draft-tokens=0/7 (0.0%) emits[init=2,draft=0,bonus=0,verify=7] timing[backbone=13.7ms mtp=16.5ms sample=341.1ms cache=0.2ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-6ae2c6d1 (407 cache-key tokens from 408 prompt tokens, KV truncated to 407)
+INFO:     127.0.0.1:52514 - "POST /v1/messages HTTP/1.1" 200 OK
+INFO:vmlx_engine.scheduler:Request chatcmpl-bfbc0697: cache hit, 58 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=27 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[27] finish=stop depth=1 tokens=300 cycles=195 full-accept=103/195 (52.8%) draft-tokens=103/195 (52.8%) emits[init=2,draft=103,bonus=103,verify=92] timing[backbone=366.0ms mtp=406.8ms sample=9579.7ms cache=2.7ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-bfbc0697 (58 cache-key tokens from 59 prompt tokens, KV truncated to 58)
+INFO:     127.0.0.1:52517 - "POST /v1/messages HTTP/1.1" 200 OK
+INFO:vmlx_engine.scheduler:Request chatcmpl-c691a2c6: cache hit, 97 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=28 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[28] finish=length depth=1 tokens=384 cycles=250 full-accept=132/250 (52.8%) draft-tokens=132/250 (52.8%) emits[init=2,draft=132,bonus=132,verify=118] timing[backbone=464.6ms mtp=520.5ms sample=12368.7ms cache=3.3ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-c691a2c6 (97 cache-key tokens from 98 prompt tokens, KV truncated to 97)
+INFO:vmlx_engine.server:Hy3 Chat Completions stream produced no visible content; running bounded thinking-off answer pass (reasoning_chars=1106, answer_budget=384)
+INFO:vmlx_engine.scheduler:Request chatcmpl-c691a2c6: cache hit, 479 tokens cached, 1 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=29 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[29] finish=stop depth=1 tokens=36 cycles=27 full-accept=7/27 (25.9%) draft-tokens=7/27 (25.9%) emits[init=2,draft=7,bonus=7,verify=20] timing[backbone=49.3ms mtp=57.8ms sample=1350.4ms cache=0.5ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-c691a2c6 (479 cache-key tokens from 480 prompt tokens, KV truncated to 479)
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 384, 'enable_thinking': True, 'reasoning_effort': 'high', 'chat_template_kwargs': {'reasoning_effort': 'high'}}
+INFO:vmlx_engine.scheduler:Request chatcmpl-f9f9f82f: cache hit, 28 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=30 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[30] finish=length depth=1 tokens=384 cycles=260 full-accept=122/260 (46.9%) draft-tokens=122/260 (46.9%) emits[init=2,draft=122,bonus=122,verify=138] timing[backbone=473.6ms mtp=537.5ms sample=12803.6ms cache=3.7ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-f9f9f82f (28 cache-key tokens from 29 prompt tokens, KV truncated to 28)
+INFO:vmlx_engine.server:Chat completion: 384 tokens in 14.04s (27.4 tok/s)
+INFO:vmlx_engine.server:hy_v3 non-stream chat produced no visible content; running bounded thinking-off answer pass (reasoning_chars=1397, cap=384, used=384, answer_budget=48)
+INFO:vmlx_engine.scheduler:Request chatcmpl-f9f9f82f:visible-answer: cache hit, 407 tokens cached, 1 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=31 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[31] finish=stop depth=1 tokens=9 cycles=7 full-accept=0/7 (0.0%) draft-tokens=0/7 (0.0%) emits[init=2,draft=0,bonus=0,verify=7] timing[backbone=13.0ms mtp=16.6ms sample=345.0ms cache=0.2ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-f9f9f82f:visible-answer (407 cache-key tokens from 408 prompt tokens, KV truncated to 407)
+INFO:     127.0.0.1:52520 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 384, 'enable_thinking': True, 'reasoning_effort': 'high', 'chat_template_kwargs': {'reasoning_effort': 'high'}}
+INFO:vmlx_engine.scheduler:Request chatcmpl-94d7a244: cache hit, 58 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=32 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[32] finish=stop depth=1 tokens=300 cycles=195 full-accept=103/195 (52.8%) draft-tokens=103/195 (52.8%) emits[init=2,draft=103,bonus=103,verify=92] timing[backbone=358.9ms mtp=403.3ms sample=9581.5ms cache=2.5ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-94d7a244 (58 cache-key tokens from 59 prompt tokens, KV truncated to 58)
+INFO:vmlx_engine.server:Chat completion: 300 tokens in 10.56s (28.4 tok/s)
+INFO:     127.0.0.1:52523 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 384, 'enable_thinking': True, 'reasoning_effort': 'high', 'chat_template_kwargs': {'reasoning_effort': 'high'}}
+INFO:vmlx_engine.scheduler:Request chatcmpl-c12584d3: cache hit, 97 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=33 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[33] finish=length depth=1 tokens=384 cycles=250 full-accept=132/250 (52.8%) draft-tokens=132/250 (52.8%) emits[init=2,draft=132,bonus=132,verify=118] timing[backbone=451.4ms mtp=516.7ms sample=12396.2ms cache=3.4ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-c12584d3 (97 cache-key tokens from 98 prompt tokens, KV truncated to 97)
+INFO:vmlx_engine.server:Chat completion: 384 tokens in 13.60s (28.2 tok/s)
+INFO:vmlx_engine.server:hy_v3 non-stream chat produced no visible content; running bounded thinking-off answer pass (reasoning_chars=1106, cap=384, used=384, answer_budget=48)
+INFO:vmlx_engine.scheduler:Request chatcmpl-c12584d3:visible-answer: cache hit, 479 tokens cached, 1 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=34 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[34] finish=stop depth=1 tokens=36 cycles=27 full-accept=7/27 (25.9%) draft-tokens=7/27 (25.9%) emits[init=2,draft=7,bonus=7,verify=20] timing[backbone=48.8ms mtp=57.3ms sample=1357.1ms cache=0.5ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-c12584d3:visible-answer (479 cache-key tokens from 480 prompt tokens, KV truncated to 479)
+INFO:     127.0.0.1:52530 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/api/chat model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 384, 'enable_thinking': True, 'reasoning_effort': 'high', 'chat_template_kwargs': {'reasoning_effort': 'high'}}
+INFO:     127.0.0.1:52533 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:vmlx_engine.scheduler:Request chatcmpl-45c38659: cache hit, 28 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=35 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[35] finish=length depth=1 tokens=384 cycles=260 full-accept=122/260 (46.9%) draft-tokens=122/260 (46.9%) emits[init=2,draft=122,bonus=122,verify=138] timing[backbone=487.5ms mtp=542.2ms sample=12811.8ms cache=4.0ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-45c38659 (28 cache-key tokens from 29 prompt tokens, KV truncated to 28)
+INFO:vmlx_engine.server:Hy3 Chat Completions stream produced no visible content; running bounded thinking-off answer pass (reasoning_chars=1397, answer_budget=384)
+INFO:vmlx_engine.scheduler:Request chatcmpl-45c38659: cache hit, 407 tokens cached, 1 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=36 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[36] finish=stop depth=1 tokens=9 cycles=7 full-accept=0/7 (0.0%) draft-tokens=0/7 (0.0%) emits[init=2,draft=0,bonus=0,verify=7] timing[backbone=13.3ms mtp=16.6ms sample=344.3ms cache=0.2ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-45c38659 (407 cache-key tokens from 408 prompt tokens, KV truncated to 407)
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/api/chat model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 384, 'enable_thinking': True, 'reasoning_effort': 'high', 'chat_template_kwargs': {'reasoning_effort': 'high'}}
+INFO:     127.0.0.1:52536 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:vmlx_engine.scheduler:Request chatcmpl-b4afc86e: cache hit, 58 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=37 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[37] finish=stop depth=1 tokens=300 cycles=195 full-accept=103/195 (52.8%) draft-tokens=103/195 (52.8%) emits[init=2,draft=103,bonus=103,verify=92] timing[backbone=361.7ms mtp=406.4ms sample=9616.3ms cache=2.6ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-b4afc86e (58 cache-key tokens from 59 prompt tokens, KV truncated to 58)
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/api/chat model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 384, 'enable_thinking': True, 'reasoning_effort': 'high', 'chat_template_kwargs': {'reasoning_effort': 'high'}}
+INFO:     127.0.0.1:52543 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:vmlx_engine.scheduler:Request chatcmpl-173782f7: cache hit, 97 tokens cached, 3 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=38 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[38] finish=length depth=1 tokens=384 cycles=250 full-accept=132/250 (52.8%) draft-tokens=132/250 (52.8%) emits[init=2,draft=132,bonus=132,verify=118] timing[backbone=461.3ms mtp=519.8ms sample=12436.7ms cache=3.4ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-173782f7 (97 cache-key tokens from 98 prompt tokens, KV truncated to 97)
+INFO:vmlx_engine.server:Hy3 Chat Completions stream produced no visible content; running bounded thinking-off answer pass (reasoning_chars=1106, answer_budget=384)
+INFO:vmlx_engine.scheduler:Request chatcmpl-173782f7: cache hit, 479 tokens cached, 1 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=39 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[39] finish=stop depth=1 tokens=36 cycles=27 full-accept=7/27 (25.9%) draft-tokens=7/27 (25.9%) emits[init=2,draft=7,bonus=7,verify=20] timing[backbone=52.2ms mtp=58.6ms sample=1349.1ms cache=0.5ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-173782f7 (479 cache-key tokens from 480 prompt tokens, KV truncated to 479)
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 48, 'enable_thinking': False, 'reasoning_effort': 'no_think', 'chat_template_kwargs': {'reasoning_effort': 'no_think'}}
+INFO:vmlx_engine.scheduler:Request chatcmpl-321ffff8: cache miss, processing all 22 tokens
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=40 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[40] finish=stop depth=1 tokens=4 cycles=2 full-accept=0/2 (0.0%) draft-tokens=0/2 (0.0%) emits[init=2,draft=0,bonus=0,verify=2] timing[backbone=3.9ms mtp=6.2ms sample=97.0ms cache=0.1ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-321ffff8 (18 cache-key tokens from 19 prompt tokens, KV truncated to 18)
+INFO:vmlx_engine.server:Chat completion: 4 tokens in 0.52s (7.7 tok/s)
+INFO:     127.0.0.1:52546 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 48, 'enable_thinking': False, 'reasoning_effort': 'no_think', 'chat_template_kwargs': {'reasoning_effort': 'no_think'}}
+INFO:vmlx_engine.scheduler:Request chatcmpl-3f901bfc: cache hit, 18 tokens cached, 4 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=41 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[41] finish=stop depth=1 tokens=4 cycles=2 full-accept=0/2 (0.0%) draft-tokens=0/2 (0.0%) emits[init=2,draft=0,bonus=0,verify=2] timing[backbone=3.9ms mtp=6.2ms sample=96.0ms cache=0.1ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-3f901bfc (18 cache-key tokens from 19 prompt tokens, KV truncated to 18)
+INFO:vmlx_engine.server:Chat completion: 4 tokens in 0.27s (14.7 tok/s)
+INFO:     127.0.0.1:52547 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 48, 'enable_thinking': False, 'reasoning_effort': 'no_think', 'chat_template_kwargs': {'reasoning_effort': 'no_think'}}
+INFO:vmlx_engine.scheduler:Request chatcmpl-49077702: cache hit, 18 tokens cached, 4 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=42 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[42] finish=stop depth=1 tokens=4 cycles=2 full-accept=0/2 (0.0%) draft-tokens=0/2 (0.0%) emits[init=2,draft=0,bonus=0,verify=2] timing[backbone=3.8ms mtp=6.3ms sample=95.5ms cache=0.0ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-49077702 (18 cache-key tokens from 19 prompt tokens, KV truncated to 18)
+INFO:vmlx_engine.server:Chat completion: 4 tokens in 0.27s (14.8 tok/s)
+INFO:     127.0.0.1:52548 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 48, 'enable_thinking': False, 'reasoning_effort': 'no_think', 'chat_template_kwargs': {'reasoning_effort': 'no_think'}}
+INFO:vmlx_engine.scheduler:Request resp_ae352656fabd: cache hit, 18 tokens cached, 4 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=43 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[43] finish=stop depth=1 tokens=4 cycles=2 full-accept=0/2 (0.0%) draft-tokens=0/2 (0.0%) emits[init=2,draft=0,bonus=0,verify=2] timing[backbone=3.9ms mtp=6.3ms sample=94.9ms cache=0.0ms]
+INFO:vmlx_engine.scheduler:Stored cache for request resp_ae352656fabd (18 cache-key tokens from 19 prompt tokens, KV truncated to 18)
+INFO:vmlx_engine.server:Response: 4 tokens in 0.27s (14.8 tok/s)
+INFO:     127.0.0.1:52549 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 48, 'enable_thinking': False, 'reasoning_effort': 'no_think', 'chat_template_kwargs': {'reasoning_effort': 'no_think'}}
+INFO:vmlx_engine.scheduler:Request resp_564c75d729bf: cache hit, 18 tokens cached, 4 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=44 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[44] finish=stop depth=1 tokens=4 cycles=2 full-accept=0/2 (0.0%) draft-tokens=0/2 (0.0%) emits[init=2,draft=0,bonus=0,verify=2] timing[backbone=3.9ms mtp=6.2ms sample=94.7ms cache=0.1ms]
+INFO:vmlx_engine.scheduler:Stored cache for request resp_564c75d729bf (18 cache-key tokens from 19 prompt tokens, KV truncated to 18)
+INFO:vmlx_engine.server:Response: 4 tokens in 0.27s (14.9 tok/s)
+INFO:     127.0.0.1:52550 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 48, 'enable_thinking': False, 'reasoning_effort': 'no_think', 'chat_template_kwargs': {'reasoning_effort': 'no_think'}}
+INFO:vmlx_engine.scheduler:Request resp_323728dfd8a1: cache hit, 18 tokens cached, 4 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=45 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[45] finish=stop depth=1 tokens=4 cycles=2 full-accept=0/2 (0.0%) draft-tokens=0/2 (0.0%) emits[init=2,draft=0,bonus=0,verify=2] timing[backbone=4.0ms mtp=6.2ms sample=93.6ms cache=0.0ms]
+INFO:vmlx_engine.scheduler:Stored cache for request resp_323728dfd8a1 (18 cache-key tokens from 19 prompt tokens, KV truncated to 18)
+INFO:vmlx_engine.server:Response: 4 tokens in 0.27s (14.8 tok/s)
+INFO:     127.0.0.1:52551 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:vmlx_engine.scheduler:Request chatcmpl-7d0e5236: cache hit, 18 tokens cached, 4 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=46 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[46] finish=stop depth=1 tokens=4 cycles=2 full-accept=0/2 (0.0%) draft-tokens=0/2 (0.0%) emits[init=2,draft=0,bonus=0,verify=2] timing[backbone=3.9ms mtp=6.2ms sample=93.9ms cache=0.0ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-7d0e5236 (18 cache-key tokens from 19 prompt tokens, KV truncated to 18)
+INFO:     127.0.0.1:52552 - "POST /v1/messages HTTP/1.1" 200 OK
+INFO:vmlx_engine.scheduler:Request chatcmpl-fd40d814: cache hit, 18 tokens cached, 4 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=47 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[47] finish=stop depth=1 tokens=4 cycles=2 full-accept=0/2 (0.0%) draft-tokens=0/2 (0.0%) emits[init=2,draft=0,bonus=0,verify=2] timing[backbone=3.9ms mtp=6.3ms sample=91.6ms cache=0.0ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-fd40d814 (18 cache-key tokens from 19 prompt tokens, KV truncated to 18)
+INFO:     127.0.0.1:52553 - "POST /v1/messages HTTP/1.1" 200 OK
+INFO:vmlx_engine.scheduler:Request chatcmpl-f9012c2a: cache hit, 18 tokens cached, 4 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=48 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[48] finish=stop depth=1 tokens=4 cycles=2 full-accept=0/2 (0.0%) draft-tokens=0/2 (0.0%) emits[init=2,draft=0,bonus=0,verify=2] timing[backbone=3.9ms mtp=6.3ms sample=94.9ms cache=0.1ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-f9012c2a (18 cache-key tokens from 19 prompt tokens, KV truncated to 18)
+INFO:     127.0.0.1:52554 - "POST /v1/messages HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 48, 'enable_thinking': False, 'reasoning_effort': 'no_think', 'chat_template_kwargs': {'reasoning_effort': 'no_think'}}
+INFO:vmlx_engine.scheduler:Request chatcmpl-52c0acd7: cache hit, 18 tokens cached, 4 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=49 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[49] finish=stop depth=1 tokens=4 cycles=2 full-accept=0/2 (0.0%) draft-tokens=0/2 (0.0%) emits[init=2,draft=0,bonus=0,verify=2] timing[backbone=3.9ms mtp=6.3ms sample=94.8ms cache=0.1ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-52c0acd7 (18 cache-key tokens from 19 prompt tokens, KV truncated to 18)
+INFO:vmlx_engine.server:Chat completion: 4 tokens in 0.27s (14.9 tok/s)
+INFO:     127.0.0.1:52555 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 48, 'enable_thinking': False, 'reasoning_effort': 'no_think', 'chat_template_kwargs': {'reasoning_effort': 'no_think'}}
+INFO:vmlx_engine.scheduler:Request chatcmpl-be77eb1a: cache hit, 18 tokens cached, 4 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=50 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[50] finish=stop depth=1 tokens=4 cycles=2 full-accept=0/2 (0.0%) draft-tokens=0/2 (0.0%) emits[init=2,draft=0,bonus=0,verify=2] timing[backbone=3.9ms mtp=6.3ms sample=94.8ms cache=0.1ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-be77eb1a (18 cache-key tokens from 19 prompt tokens, KV truncated to 18)
+INFO:vmlx_engine.server:Chat completion: 4 tokens in 0.27s (14.8 tok/s)
+INFO:     127.0.0.1:52556 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/Hy3-JANG_2K-MTP kwargs={'temperature': 0.0, 'top_p': 1.0, 'min_p': 0.05, 'max_tokens': 48, 'enable_thinking': False, 'reasoning_effort': 'no_think', 'chat_template_kwargs': {'reasoning_effort': 'no_think'}}
+INFO:vmlx_engine.scheduler:Request chatcmpl-2ad0dcc9: cache hit, 18 tokens cached, 4 remaining to process
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP path activated for uid=51 (model has mtp_forward, batch=1)
+INFO:vmlx_engine.patches.mlx_lm_mtp.batch_generator:MTP[51] finish=stop depth=1 tokens=4 cycles=2 full-accept=0/2 (0.0%) draft-tokens=0/2 (0.0%) emits[init=2,draft=0,bonus=0,verify=2] timing[backbone=3.9ms mtp=6.4ms sample=92.5ms cache=0.1ms]
+INFO:vmlx_engine.scheduler:Stored cache for request chatcmpl-2ad0dcc9 (18 cache-key tokens from 19 prompt tokens, KV truncated to 18)
+INFO:vmlx_engine.server:Chat completion: 4 tokens in 0.26s (15.2 tok/s)
+INFO:     127.0.0.1:52557 - "POST /api/chat HTTP/1.1" 200 OK
