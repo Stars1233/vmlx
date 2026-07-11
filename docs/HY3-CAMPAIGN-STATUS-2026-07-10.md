@@ -78,17 +78,45 @@ release lane. Updated as arms complete.
   memory-block vs lossy disk-block restore mismatch, F1-class. Opt-in path
   (requires paged + explicit L2 flag); not a v1.6.6 blocker.
 
-## Phase 3 — queued behind cache matrix
-- Arm E: withmtp-bak MTP autodetect + depths 1/2/3 byte-equal-vs-baseline
-  greedy + timing per depth.
-- Arm F: family regressions (Qwen3.6-27B hybrid, Zaya, gemma as discovered):
-  full battery + streaming-leak + tool round-trip + unresolved-eos audit
-  (dialect fix touches every family's stop-set path).
+## MTP — RESOLVED: depth-1 default, +10-14% measured win
+Two stale blocks had made every earlier "depth test" silently inert:
+withmtp-bak's bundle-declared stamp, and a legacy engine-side JANG_2K profile
+block from the 2026-05-17 six-variant gate on the Hy3 PREVIEW. Forced
+measurement on the final post-train Hy3-JANG_2K-MTP (greedy 600-tok x3/arm):
 
-## 2K-MTP chain — queued behind phase 3
-- Convert preserve-affine8 (first bundle born with the audited-defaults
-  converter), then MTP-off baseline vs d1/d2/d3 byte-equal + tok/s, then
-  loop gate at p0.95.
+| config | tok/s | acceptance | vs baseline |
+|---|---|---|---|
+| no MTP | 27.8 | — | — |
+| depth 1 | 30.6 | ~full | **+10%** |
+| depth 2 | 26.3 | 24.5% | -6% |
+| depth 3 | 19.1 | 1.9% | -31% |
+
+Fixes landed (all pushed):
+- Engine: legacy JANG_2K profile block DELETED (`2b770a3fd`); bundle-declared
+  measured stamps (+ FORCE override) are the only block source. 91 MTP tests
+  pass; 3 rewritten to pin the new contract.
+- Bundle: `vmlx_mtp_tuning.json` best_depth=1 stamped into Hy3-JANG_2K-MTP.
+- Converter: hy3 preserve builds stamp the sidecar automatically (jang
+  `3cace35`).
+- Live default-config proof: plain serve, no env/flags →
+  `runtime_active: True, effective_depth: 1
+  (vmlx_mtp_tuning.json:native_mtp.best_depth)`, 33.2/34.1/28.2 tok/s.
+
+Baseline-vs-MTP byte divergence is the inherent MoE multi-row verify routing
+fork (chunked-prefill class; divergent continuations verified coherent by
+inspection) — the MoE MTP gate is coherence + self-consistency, not cross-arm
+byte equality.
+
+## Bundle end state (single keeper)
+`Hy3-JANG_2K-MTP` (105.3 GB, routed 2/2/3, MTP depth-1 active by default,
+audited sampling stamp) is the ONLY Hy3 bundle on the drive. 2L,
+2L-withmtp-bak and 2K deleted after their gates were superseded (~167 GB
+reclaimed).
+
+## Arm F — family regressions (re-running after zsh `path` variable bug)
+Qwen3.6-27B hybrid, Zaya, gemma: full battery + streaming-leak + tool
+round-trip + unresolved-eos audit (dialect fix touches every family's
+stop-set path).
 
 ## Release v1.6.6 — staged pending publish word
 - Ships: hy_v3 runtime, tag dialect, multi-eos dialect fix, native MTP runtime.
