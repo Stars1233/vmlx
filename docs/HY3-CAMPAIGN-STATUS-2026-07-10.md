@@ -64,14 +64,19 @@ release lane. Updated as arms complete.
   min_p/top_p floors + the 3-bit down backbone are the three levers that could
   flip the earlier "MTP nets -3%" measurement; 2K-MTP chain measures it.
 
-## Cache-subsystem matrix (Hy3-JANG_2K) — in flight
+## Cache-subsystem matrix (Hy3-JANG_2K) — COMPLETE
 - M1 default (memory-aware prefix + TQ objects): **ALL PASS** — temp0 warm
-  stability, warm-vs-warm byte-equal, pollution guard, recall; 6 live cache
-  hits; 0 "not isolatable"; 0 tracebacks. Paged cache confirmed default OFF
-  (memory-aware selected).
-- M2 `--use-paged-cache`: running, first checks passing.
-- M3 paged + L2 block disk (`--enable-block-disk-cache`) incl. server restart
-  to prove disk reload: queued.
+  stability (runs 2-4 byte-equal), warm-vs-warm byte-equal, pollution guard,
+  recall; 6 live cache hits; 0 "not isolatable"; 0 tracebacks. **Paged cache
+  confirmed default OFF** (memory-aware auto-selected).
+- M2 `--use-paged-cache`: **ALL PASS** — paged path active (22 block lines,
+  11 hits), determinism identical to M1.
+- M3 paged + L2 block disk: storage + restart-reload **PROVEN** (49MB
+  content-addressed block safetensors; post-restart same prompt byte-identical
+  from disk). **One FAIL (filed as F21, task #79)**: consecutive warm greedy
+  requests diverged by a trailing period ('Paris.' vs 'Paris') — suspect
+  memory-block vs lossy disk-block restore mismatch, F1-class. Opt-in path
+  (requires paged + explicit L2 flag); not a v1.6.6 blocker.
 
 ## Phase 3 — queued behind cache matrix
 - Arm E: withmtp-bak MTP autodetect + depths 1/2/3 byte-equal-vs-baseline
