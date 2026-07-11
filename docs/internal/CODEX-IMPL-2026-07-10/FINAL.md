@@ -6,7 +6,7 @@ Branch: `reconcile/1.5.68`
 
 Base: `origin/main` at `0d4ac2b0e` (fast-forward pull reported current)
 
-Commit: this report is committed with the implementation; the resulting SHA is printed in the handoff.
+Implementation commit: `bdaee1d4f` (`Implement live cache reasoning and seed gates`).
 
 ## Result
 
