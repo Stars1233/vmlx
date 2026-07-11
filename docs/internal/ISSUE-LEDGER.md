@@ -72,7 +72,7 @@ Status: OPEN / FIXED / VERIFIED-LIVE / WONTFIX / NOT-A-DEFECT / BUNDLE / BASELIN
 |----|-----|-------|--------|----------|-------|
 | REASON-parity | H | reasoning_effort / reasoning="auto"|on|off must map to EACH family's own reasoning trigger across ALL surfaces (OpenAI chat, Anthropic /v1/messages, Ollama) + UI. gemma4 has its OWN reasoning kwarg; reasoning_effort alone doesn't fire it (live-proven). If a model supports reasoning it must engage via the standard param. | OPEN-PARTIAL | LIVE | Gemma 12/12 and Hy3 12/12 PASS after concrete effort->thinking mapping. MiniMax full artifact is 8/12; OpenAI greedy native-reasoning loops and the supplied Anthropic-off cell sends the same body as auto. UI live proof blocked by browser runtime. |
 | MM27-reason | M | MiniMax-M2.7 is a NATIVE always-reasoning model; vMLX has a CUSTOM reasoning-OFF path. Verify reasoning on(default)/off/auto all honored across UI+API and off actually suppresses thinking. | OPEN-PARTIAL | LIVE | Full artifact 8/12; custom off is correct on OpenAI/Ollama. OpenAI greedy on/auto/effort reaches token limit without final. No hidden sampling or output repair added. |
-| MTP-ui | M | After model load the UI must SHOW MTP settings (like Qwen MTP models) + engine native type. Verify Hy3-JANG_2K-MTP surfaces MTP depth/native-type in UI post-load. | OPEN | LIVE UI needed | compare to Qwen MTP model UI; capabilities.mtp + native cache type must render |
+| MTP-ui | M | After model load the UI must SHOW MTP settings (like Qwen MTP models) + engine native type. Verify Hy3-JANG_2K-MTP surfaces MTP depth/native-type in UI post-load. | VERIFIED-LIVE 2026-07-11 | LIVE dev-app screenshot | Performance→ENGINE panel renders post-load: MTP active D1 (text), MTP Depth D1, Scope text-only, Policy deterministic-defaults, Gate greedy=identity-verify/stochastic=rejection-sampling, MTP Tensors 42/0, Native Cache paged_kv, TQ-KV enabled, Attention KV L2 q4/g64. See HY3-UI-LIVE-PROOF-2026-07-11/. |
 
 ## Appended 2026-07-10 (Eric: per-arch cache policy — NO ASSUMPTIONS, live-verify each)
 | ID | Sev | Issue | Status | Evidence | Notes |
@@ -80,7 +80,7 @@ Status: OPEN / FIXED / VERIFIED-LIVE / WONTFIX / NOT-A-DEFECT / BUNDLE / BASELIN
 | CACHE-policy | H | Intended (Eric): new UI session starts WITH prefix cache; KV-component families get TQ ENCODE on their KV part — gemma rotating-SWA KV, qwen hybrid-SSM attention-KV (+ async-rederive SSM), hy3 plain-KV layers. Must LIVE-verify per family what ACTUALLY happens (cache layout, TQ objects, whether encode FIRES, async rederive) vs intended. DO NOT ASSUME what applies where. | VERIFIED-LIVE (encode defaults gated off) | LIVE per-family | Hy3 plain 80 TQ; Qwen hybrid 16 TQ + 48 native SSM and paged+ssm; Gemma 8 full TQ + 40 rotating. Prefix hits and exact outputs proven. Encode remains OFF because no family passed every coherence+memory gate. |
 | GRADE-rule | - | Every test cell must be graded PASS/FAIL by LIVE proof; each FAIL gets a fix. | POLICY | Eric directive | applies to reasoning parity + cache policy + MTP UI matrices |
 
-| PAGED-toggle | M | UI paged cache default OFF (correct); toggling it ON must actually work end-to-end (UI→gateway→engine spawn --use-paged-cache→paged blocks + TQ on KV). CLI arm M2 passed; UI-toggle path needs live proof. | OPEN | LIVE UI needed | verify spawned engine argv + paged path active + determinism |
+| PAGED-toggle | M | UI paged cache default OFF (correct); toggling it ON must actually work end-to-end (UI→gateway→engine spawn --use-paged-cache→paged blocks + TQ on KV). CLI arm M2 passed; UI-toggle path needs live proof. | VERIFIED-LIVE 2026-07-11 | LIVE dev-app session | Running Hy3 session saved config usePagedCache:true → spawned argv has --use-paged-cache --paged-cache-block-size 64 --max-cache-blocks 1000; live cache path = paged_kv with TQ on attention_kv (Native Cache paged_kv, 1295 paged+tq cached tokens reused). config→argv round-trip faithful. |
 
 ## Graded reasoning-parity matrix result (LIVE 2026-07-10)
 Hy3-JANG_2K-MTP: 12/12 PASS (all surfaces x off/auto/effort/enable).
@@ -144,3 +144,18 @@ never on SSM/companion. Same for gemma full-attn vs sliding slots.
 | ID | Sev | Issue | Status | Evidence | Notes |
 |----|-----|-------|--------|----------|-------|
 | SETTINGS-enforce | H | Worry: UI settings (esp. paged cache default-off; toggle on/off; session restart; model switch) may not be ENFORCED into the spawned engine. Mechanism EXISTS: RESTART_REQUIRED_KEYS covers all cache/MTP/kv/batch/parser keys; (re)start rebuilds argv from config via cacheLaunchPolicy w/ per-family overrides. But that's a CODE LEAD. | OPEN (needs LIVE) | code-only | LIVE-prove per model x per setting: toggle → spawned `pgrep -af vmlx-serve` argv changes, no stale engine, runtime honors it. See docs/internal/UI-CLI-PARITY-TQ-AWARENESS.md B2. RELEASE-GATING. |
+
+## Reasoning/streaming set — CLOSED, SHIP (LIVE 2026-07-11)
+Eric's UI-behavior worry was RIGHT: reasoning/streaming changes shifted behavior.
+Codex parallel proofread+stress caught reasoning-ON failing 7/8 rows (empty
+content; Ollama-stream answer misrouted to message.thinking). Fixes:
+- codex 0cde4f19e: sampler norm order, seeded-sampler sharing, answer-pass
+  double-emit, visible-prefix deletion, Ollama/Hy3 normalization (5 bugs).
+- Claude f2b7e8c12: bounded answer-pass floor (48) — runaway reasoning no
+  longer starves visible answer to empty; overage bounded (not audit-C1 2x).
+- codex 2a5c2d445: Ollama-stream answer -> message.content (misroute fixed),
+  Hy3 answer-marker holdback=0, family-label helper.
+RE-VERIFY (codex live, all 4 routes x stream/non-stream x 3-turn reasoning-on):
+24/24 PASS, every turn-3 non-empty+coherent, no leak/misroute, overage 36<=48,
+warm greedy byte-identical DET-731, full-suite zero new failures. SHIP.
+All pushed origin/main, both nodes synced. Author Jinho Jang throughout.
