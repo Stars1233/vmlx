@@ -35,13 +35,13 @@ release lane. Updated as arms complete.
 | 2K p0.95 | 0/10 |
 | 2K p1.0 | 0/10 |
 
-### Bundles
-| bundle | size | routed bits | MTP | loop gate |
-|---|---|---|---|---|
-| Hy3-JANG_2L | 89.5 GB | 2/2/2 | dropped | 0/30 post-stamp |
-| Hy3-JANG_2L-withmtp-bak | 93.3 GB | 2/2/2 | 42 tensors | phase-3 depth proof in flight |
-| Hy3-JANG_2K | 101.4 GB | 2/2/3 | dropped | 0/20 |
-| Hy3-JANG_2K-MTP | converting | 2/2/3 | preserve-affine8 | queued |
+### Bundles (Eric 2026-07-10: keep ONE — the 2K with working MTP)
+| bundle | size | routed bits | MTP | loop gate | disposition |
+|---|---|---|---|---|---|
+| Hy3-JANG_2L | 89.5 GB | 2/2/2 | dropped | 0/30 post-stamp | **DELETED** (superseded by 2K) |
+| Hy3-JANG_2L-withmtp-bak | 93.3 GB | 2/2/2 | 42 tensors | — | delete after Arm E depth proof |
+| Hy3-JANG_2K | 101.4 GB | 2/2/3 | dropped | 0/20 | delete after 2K-MTP passes gates |
+| Hy3-JANG_2K-MTP | converting | 2/2/3 | preserve-affine8 | queued | **KEEPER** (pending gates) |
 
 ### Engine facts established
 - Gen-config resolution: all six API surfaces share one resolver stack
