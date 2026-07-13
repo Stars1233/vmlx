@@ -159,3 +159,234 @@ RE-VERIFY (codex live, all 4 routes x stream/non-stream x 3-turn reasoning-on):
 24/24 PASS, every turn-3 non-empty+coherent, no leak/misroute, overage 36<=48,
 warm greedy byte-identical DET-731, full-suite zero new failures. SHIP.
 All pushed origin/main, both nodes synced. Author Jinho Jang throughout.
+
+## 2026-07-12 — ANSWER-PASS-DSV4-DEGEN: salvage context malformed for deepseek_v4/step3p7
+FOUND (Codex live-UI QA, DSV4-Flash-JANG-CRACK, Reasoning mode, maxTokens=64):
+never-empty salvage emitted degenerate looping "ans=BLUE-FALROON+37...+DERIV+DERIV"
+(turn 2 copied the garbage via history). Mechanics of the rail were CORRECT
+(112 = 64 + 48 floor; non-empty streamed; UI rendered reasoning box + perf line).
+ROOT CAUSE (proven by template-render A/B): answer pass appended
+{role:assistant, content:"", reasoning_content:trunc}; DSV4 template DROPS
+reasoning_content -> renders EMPTY assistant turn + EOS + SECOND generation
+prompt (<Assistant><eos><Assistant></think>) = OOD prompt -> degeneration.
+Direct API replay WITHOUT the appended turn on the same engine: clean
+"BLUE-FALCON, 37, Paris is capital of France", finish=stop (LIVE-PROVEN).
+step3p7 template: renders back-to-back assistant turns (also malformed);
+NOTE step3p7 direct rail is real — ensure_thinking_off_sentinel closes its
+always-open <think> in simple/batched/mllm prompt paths.
+FIX: _ANSWER_PASS_FRESH_CONTEXT_FAMILIES={deepseek_v4,step3p7} -> answer pass
+re-runs ORIGINAL messages at all 4 sites (chat/responses x stream/non-stream);
+legacy 9-family appended-reasoning behavior untouched.
+Commits: max2 e4b2f13f3 / box 6113241b7. Tests 5/5 + answer-pass suite 23/23.
+STATUS: OPEN until live re-proof on reloaded DSV4 (stream salvage clean at
+maxTokens=64) — box currently owned by Codex MM3 row. Author Jinho Jang.
+
+## 2026-07-12 — ANSWER-PASS-DSV4-DEGEN: LIVE RE-PROOF PASS (stream path)
+Reloaded DSV4 on fixed engine (box ba715c6b9 lineage). Same failing scenario
+(stream, thinking-on, max_tokens=64): reasoning 259 chars (budget exhausted)
+-> salvage "The 37th BLUE-FALCODE is 37-BLUE-FALCON. Paris is France's
+capital. Final: 37-BLUE-FALCON, Paris." finish=stop — coherent prose, zero
+looping (was "+DERIV+DERIV" garbage). Turn 2 multiturn: "codeword=BLUE-FALCON;
+sum=42; capital=Paris" — correct recall+arithmetic, 6s warm vs 69s cold
+(prefix reuse working engine-side). Codex UI pixel re-verify in flight.
+
+## 2026-07-12 — ANSWER-PASS-M2-DEAD-FAMILY: MM2.7 reasoning-only EMPTY root-caused + FIXED
+FOUND (Codex live-UI matrix): MM2.7-Small Thinking-On at tight budget streamed
+reasoning then EMPTY visible + "reasoning only" warning (graded release FAIL).
+REPRO (API stream, max_tokens=64): reasoning 278 chars, content "", finish=length.
+ROOT CAUSE: MiniMax-M2.x bundles resolve family_name "minimax";
+_REASONING_ANSWER_PASS_FAMILIES only contained "minimax_m2" — which is the
+family's REASONING PARSER name, never a family (registry grep: minimax_m2
+appears ONLY as reasoning_parser). Dead entry -> rail never armed for M2.x.
+Also minimax template renders the appended reasoning turn as back-to-back
+]~b]ai turns (same malformation class as deepseek_v4/step3p7; render-proven).
+FIX: arm "minimax" (+keep "minimax_m2") in families + label map; add both to
+_ANSWER_PASS_FRESH_CONTEXT_FAMILIES. Commits: max2 69d6cebe3 / box ba715c6b9.
+Tests 6/6 file, 31/31 selection. LIVE RE-PROOF PASS: same request now emits
+"BLUE-FALCON 37 Paris is the capital of France" finish=stop.
+Direct-rail sanity (fresh thinking-off 48tok): "BLUE-FALCON, 37, Paris is the
+capital of France." finish=stop. Author Jinho Jang.
+LESSON: family-set entries must be validated against what the registry
+actually emits as family_name — parser names are NOT family names.
+
+## 2026-07-12 — JANGTQ SUPPORT MATRIX (Eric: "forgotten jangtq support")
+Static: jang_tools fast path present in box venv; ALL 7 local JANGTQ bundles
+have dict mxtq_bits (no scalar slow-path trap); registry detects all 7
+correctly (families/parsers/cache: nemotron_h ssm_attention, qwen3_5_moe
+hybrid, laguna kv, minimax kv, mistral3 kv, step3p7 full_sliding_kv).
+LIVE ENGINE GATES (vmlx-serve, greedy, ports 8033-8036):
+- Nemotron-Omni-Nano-JANGTQ-CRACK: ALL PASS — coherent, recall sum=42,
+  nothink clean, warm==warm byte-equal, cache_detail paged+ssm+tq (24/31).
+  "JANGTQ v2 loaded 5.4s native TQ". NOTE cosmetic: "0.0-bit avg" in load line.
+- Nemotron-Omni-Nano-JANGTQ4-CRACK: ALL PASS (same profile).
+- Laguna-XS.2-JANGTQ: coherent+recall+nothink PASS; G4 flagged = COLD-vs-warm
+  whitespace diff (probe design compares cold run vs warm run; MoE inherent).
+  cache_detail memory 63/64. Needs warm-vs-warm re-gate for a clean verdict.
+- Qwen3.6-35B-A3B-JANGTQ-CRACK: ALL PASS — cache_detail paged+ssm (hybrid GDN,
+  TQ policy per autodetect matrix), 5 prefix HITs. NOTE minor deterministic
+  quant artifact: fib list rendered "0, 1, 1, , 2, 3, 5, 8, 13" (byte-stable).
+- MiniMax-M2.7-Small-JANGTQ: running in app :8003 — coherent (Rayleigh),
+  UI On/Off proven by Codex pixels (post minimax-arm fix).
+PENDING: Mistral-Medium-3.5-128B-JANGTQ (38G) + Step-3.7-Flash-JANGTQ_K (69G)
+big-2 round (needs DSV4 stopped); Laguna warm-vs-warm re-gate.
+HARNESS NOTE: first round false LOAD=FAILs were bind Errno48 on a reused port
+(TIME_WAIT) — per-model ports fixed it. pkill "vmlx-serve serve" does NOT
+match app engines (python -m vmlx_engine.cli serve) — app sessions unaffected.
+STACKED CODEBOOK (Eric flag): loader has codebook_vq path (_is_codebook_vq_model
++ guarded experimental import; models/codebook.py present BOTH nodes, tracked
+since v1.3.93). ZERO codebook_vq bundles on the external drive → cannot live-
+gate; needs a bundle to validate load+cache behavior. Author Jinho Jang.
+
+## 2026-07-12 — ENGINE-FATAL-METAL-CALLBACK: root cause of "DSV4 UI row" false FAILs
+Crash report python3.13-2026-07-12-161249.ips: SIGABRT via uncaught C++
+exception from mlx::core::gpu::check_error(MTL::CommandBuffer*) inside a Metal
+addCompletedHandler callback thread -> std::terminate -> whole engine process
+dies. Trigger = GPU oversubscription: I ran the JANGTQ probe fleet (CLI serve,
+12-19GB loads) CONCURRENTLY with the app DSV4 session (67GB) — both Codex's
+DSV4 UI row (15:59 session stop) and my 274s-TTFT "[Generation interrupted]"
+row (16:12 crash, victim was the Laguna probe server; DSV4 session -> error)
+were contention casualties, NOT the answer-pass fix (API-stream proven clean).
+SIDE FINDING: M2.7 session record went "stopped" while engine pid 41092 kept
+serving :8003 — session-state desync / orphaned engine under the same chaos
+window (cleaned up by kill; watch for recurrence under normal ops).
+RULES ADDED: (1) NEVER run probe engines concurrently with app sessions on the
+box — Metal errors under contention are FATAL (no catch possible on callback
+threads); serial only. (2) "Engine randomly died" под load => check
+DiagnosticReports python*.ips for check_error/MTLCommandBuffer first.
+UPSTREAM LEAD (non-blocking): MLX check_error throwing on completion-handler
+threads means any transient Metal error kills the server; a graceful
+degrade would need an upstream MLX change or process-level supervision.
+Author Jinho Jang.
+
+## 2026-07-12 — JANGTQ matrix addendum
+- Laguna-XS.2-JANGTQ: warm-vs-warm (W2==W3) byte-equal PASS — earlier G4 flag
+  confirmed cold-vs-warm MoE router-flip (inherent). ALL GATES PASS. 6/7 clean.
+- Mistral-Medium-3.5-128B-JANGTQ: LOAD=BLOCKED-BY-DESIGN — load_mistral3.py:98
+  NotImplementedError gate (JANGTQ2 2-bit dense TQ stalls full prefill,
+  degenerate text; points to mxfp4 bundle; VMLX_ALLOW_UNSTABLE_MISTRAL35_JANGTQ=1
+  debug hatch). Correct fail-closed behavior, NOT a regression.
+- Step-3.7-Flash-JANGTQ_K (69G) running last.
+
+## 2026-07-12 — JANGTQ MATRIX FINAL (7/7 verdicts, #101 CLOSED)
+| Bundle | Verdict |
+| Nemotron-Omni-Nano-JANGTQ-CRACK | ALL PASS (paged+ssm+tq) |
+| Nemotron-Omni-Nano-JANGTQ4-CRACK | ALL PASS |
+| Laguna-XS.2-JANGTQ | ALL PASS (warm==warm byte-equal re-gate) |
+| Qwen3.6-35B-A3B-JANGTQ-CRACK | ALL PASS (known ", ," deterministic quant artifact) |
+| MiniMax-M2.7-Small-JANGTQ | PASS (in-app; UI On/Off Codex-pixel-proven) |
+| Mistral-Medium-3.5-128B-JANGTQ | BLOCKED-BY-DESIGN (load_mistral3.py fail-closed gate; correct) |
+| Step-3.7-Flash-JANGTQ_K | LOADS after jang_tools audio_config fix; QUANT-DEFECTIVE (greedy soup all modes, deterministic; engine machinery sound: cache 19/20, warm==warm) — confirms 07-04 memory |
+NEW FIX (jang repo, both nodes): load_jangtq_vlm._mlx_vlm_skeleton forced
+audio_config={} into every bundle -> update_module_configs resolved
+model_class.AudioConfig -> AttributeError killed EVERY Step-3.7 JANGTQ VLM
+load. Fix = setdefault None (box jang 8260f88 / max2 jang a9a4fc1 + both venv
+copies). Regression: Qwen3.6-JANGTQ rows byte-identical pre/post.
+OPEN QUESTION for Eric: give Step-3.7-Flash-JANGTQ_K the same fail-closed
+production gate as Mistral-3.5-JANGTQ (clean error + escape hatch) instead of
+load-and-soup? Codebook-VQ: loader path present both nodes, ZERO bundles on
+drive to gate — needs a bundle. Author Jinho Jang.
+
+## 2026-07-12 — RECLASSIFY (Eric correction): Step-3.7-JANGTQ_K soup = ENGINE-SUSPECT, not "quant defect"
+Eric: models on the external drive were PROVEN coherent before landing there.
+Codex jang-repo memory confirms: "Step 3.7 JANGTQ runtime fix — runtime bug,
+COHERENT BUNDLE, upload prep" — the bundle validated coherent at build time
+and a RUNTIME fix existed. Precedent: openPangu 42->4 (blamed quant, was
+ENGINE positional bug), MXFP4 expert-scramble (RETRACTED), DSV4 "too big"
+(app bug). The 07-04 "greedy soup = quant" memory is UNPROVEN.
+Also re-examine: Mistral-3.5-JANGTQ fail-closed gate rationale ("2-bit dense
+stalls prefill, degenerate") may itself paper over the same engine-side
+JANGTQ hydration bug.
+NEXT: decisive A/B — jang_tools reference runtime vs vmlx engine on the SAME
+Step-3.7-Flash-JANGTQ_K bundle (queued after Codex UI lane; serial GPU rule).
+If reference is coherent -> vmlx step3p7 JANGTQ hydration path is guilty.
+RULE (standing, Eric): drive bundles are pre-proven — output damage defaults
+to ENGINE-SUSPECT until an A/B against the build-time reference says otherwise.
+
+## 2026-07-12 — Codex backlog lane verdicts (post minimax-arm fix)
+PASS: MiniMax-M2.7 On/Off/Auto at normal budget + UI==API parity per mode
+(reasoning presence On[t,t]/Off[f,f]/Auto[t,t]; all stream to [DONE], no
+leaks) — #82 MiniMax core CLOSED by re-grade.
+NEW FAILS (all ENGINE-SUSPECT per pre-proven-bundle rule, tasks #103/#104):
+- DSV4 UI normal budget (Auto, 2048): BOTH turns loop malformed "[verb]" text
+  to cap; 24 prompt tokens (no tools in prompt). Earlier On+64 UI turn was
+  coherent — deltas: Auto mode + 2048 budget. ALSO engine cache_hit_requests=0
+  in that run (dsv4PrefixCache:true) — hit accounting or engagement gap.
+- Zaya tools: <parameter=path> pseudo-markup + AppleScript register leaked as
+  visible content to 2048 cap, toolStatuses=[] (2890 prompt tokens — tools WERE
+  in prompt). Parser-dialect gap suspicion (zaya_xml vs qwen-style fragments).
+- Zaya think On: reasoning_len 0,0 at 2048 cap (known-open #91 remnant, now
+  confirmed at normal budget in UI).
+Lane A wave-1 committed both nodes (22a5823d2/199f37591): #233 deadlock,
+stop_token_ids crash + decode-loop stop fallback, lockless clear/reset_stats.
+NEXT QUEUE: #103 DSV4 loop repro (box free now) -> #104 Zaya -> Step-JANGTQ_K
+A/B vs jang_tools reference -> remaining triage (TQ "!" hole, convert path).
+
+## 2026-07-12 (later) — #103 RESOLVED environmental + paged-default campaign start
+#103 DSV4 "[verb] loop": ENGINE PROVEN HEALTHY. Full API matrix on :8005
+({cold,warm} x {stream,non-stream} x {Auto, reasoning.effort=high, EXACT panel
+fields enable_thinking+thinking_mode+chat_template_kwargs, +/-reasoning_effort}
+x short-exact-prompt x 2048) -> EVERY run clean "42" + reasoning captured
+(53-78 chars), no loop, no cap. UI turn-1 smoking gun = 55.4s TTFT / 0.4 pp-s
+on 24 tokens = GPU-contention/thrash starvation (env), not engine; turn-2
+inherited turn-1 garbage as context. Thread B (cache_hit=0) BENIGN: short
+prompts (<256 store threshold) never stored -> turn-1 uncacheable, turn-2 miss
+legit. REMAINING: one clean live-UI run under no contention to close.
+
+CAMPAIGN (Eric 2026-07-12): paged cache DEFAULT ON all autodetect + UI parity;
+Zaya tool+reasoning parser selectable; codebook stacked-vs-none awareness;
+reasoning->answer streaming continuity for agentic loops (no random stop);
+DSV4 ~20 t/s + large usable context (small cache footprint); dual-perspective
+(Codex proofreads every fix, both doubt everything). Codex diag (bzwixvdj6)
+delivered file:line change-map for all 3 engine/panel lanes.
+
+LANE 1 (paged default) ENGINE DONE (uncommitted, pending Codex proofread
+bm7adgc05): cli.py adds --no-paged-cache opt-out (serve+bench) + generic
+default-ON block (~1000-1017) for autodetected families EXCEPT
+{minimax_m3,minimax_m3_vl,openpangu_v2,gemma4}; DSV4/Zaya self-manage; hybrid
+SSM auto-switches. Requires continuous_batching. PANEL parity still TODO
+(sessions.ts migration bump v-next, SessionConfigForm default ON, launch must
+pass --no-paged-cache when OFF so stale saved-false != silent; plumb
+/v1/capabilities paged state; legacy-disk OFF + block-disk ON when paged).
+
+LANE 3 (streaming continuity) CONFIRMED at source: server.py:16350-16352 chat
+stream emits finish_reason=stop on reasoning-only final chunk BEFORE answer-pass
+runs (16821) -> agentic harness stops early. Fix = suppress first-pass stop when
+answer-pass will run (not content_was_emitted AND (m3_)reasoning_only_answer_
+enabled AND accumulated_reasoning) AND guarantee answer-pass path always emits a
+terminal finish (Risk B: empty-answer paths 17087-17182 must emit length/error,
+not bare stop). Non-stream + Responses variants analogous (Codex mapped).
+
+LANE 2 (Zaya) per Codex: zaya_xml tool + qwen3 reasoning ARE registered/
+selectable (engine zaya_tool_parser.py:19-20, registry:109-113). Real leak
+suspect = sessions.ts:1460-1466 preserves stale toolCallParser='' (None) for
+ZAYA -> launch omits parser -> raw <parameter=path> leaks. MUST live-confirm
+the session's actual saved parser value, not assume.
+
+## 2026-07-12 — PAGED-DEFAULT-ON (#86/#87): text families default paged ON + full UI↔engine parity
+DIRECTIVE (Eric, reverses prior paged-default-OFF): paged cache default ON for
+ALL autodetected text models at startup; Electron UI default toggles MUST match
+what the engine launches with (no drift).
+LANDED max2 282fe0b03 (7 files, +192/-19):
+- Engine cli.py serve: use_paged_cache defaults ON for autodetected text family
+  when continuous_batching + prefix cache active; skips MLLM/VL (is_mllm_model
+  force-aware), DSV4 (own composite paged), and paged-incompatible set
+  {minimax_m3, minimax_m3_vl, openpangu_v2, gemma4, gemma4_text}; honors explicit
+  --no-paged-cache / --use-paged-cache. Added --no-paged-cache (disable_paged_cache).
+- Panel parity: launch emits --use-paged-cache OR --no-paged-cache matching the
+  effective policy (NO silent OFF); CACHE_STACK_STARTUP_DEFAULTS_VERSION 7->8;
+  staleV7GenericPagedOff migration (full v7 default tuple) flips ONLY untouched v7
+  text sessions ON, preserves user-modified + detected-OFF families; migration runs
+  in updateSession() before markCurrent. Registry defaults paged ON text / OFF MM;
+  dense-KV VL forced OFF. detectedUsePagedCache threaded into SessionConfigForm +3
+  parents; native forced-paged gated on detectedUsePagedCache===true (Gemma
+  mixed-SWA now unchecked/enabled == launch OFF; hybrid/step-3.7 still forced ON);
+  renderer preview emits --no-paged-cache OFF branch. --no-paged-cache blocked from
+  additionalArgs (main + renderer).
+FAMILY PARITY (UI checkbox == launch flag == engine): generic text ON; dense VL
+OFF; hybrid VL/Zaya/mamba/nemotron/lfm2 ON; Gemma mixed-SWA OFF; M3 OFF; openPangu
+OFF; DSV4 opt-in/out; step-3.7 ON.
+VERIFY: tsc --noEmit clean; 4-pass Codex GPT-5.6 dual-review (13 issues found+fixed
+across passes; pass-4 GO-WITH-CHANGES → renderer OFF-branch added → GO).
+EXCLUDES pending #98 (MLLM paged byte-ceiling). Author Jinho Jang.
+STATUS: committed max2, push + box sync in flight; NEXT live Electron per-family
+matrix (UI toggle == /tmp/vmlx-dev.log launch flag).
