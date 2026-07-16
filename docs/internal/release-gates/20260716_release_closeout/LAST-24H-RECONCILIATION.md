@@ -3,16 +3,16 @@
 Status: `PARTIAL_NO_RELEASE`.
 
 This is a current-source reconciliation, not a replacement for the detailed
-artifacts. At source commit `7cb89185c`, the branch is 49 commits ahead and zero
+artifacts. At source commit `af7815f1a`, the branch is 51 commits ahead and zero
 behind `origin/main`, and zero ahead/behind the pushed closeout branch. There
-were 51 commits in the preceding 24 hours. The public release remains 1.6.10.
+were 53 commits in the preceding 24 hours. The public release remains 1.6.10.
 
 ## Workstream reconciliation
 
 | Workstream | Relevant commits | Current proof level | Still red |
 |---|---|---|---|
 | Typed model caches | `c5d713169`, `2bca8fde6`, `5cb6de1dc`, `cee23cec7`, `f85bafb64`, `f5a75d15a`, `9deb23483`, `b62955450`, `335c2f812`, `2f5b7786d` | ZAYA, MiniMax-M3, and openPangu have scoped source plus historical/current Electron rows recorded in the matrix | Current-release ZAYA eviction/stream row; M3/Pangu long/eviction/protocol rows |
-| Hybrid SSM/GDN and TQ storage | `51bd720fb`, `d524b631b`, `63512c555`, `103cb9e92`, `4b96bbe6c`, `7bb34fa0d`, `df945f065`, `133d8c8e9`, `7cb89185c` | Bonsai and Qwen 35B have native-TQ attention-block plus native SSM-disk restart evidence. Qwen 35B now has cold, RAM, restart, forced-eviction, post-eviction L2 reload, and safe KV-only-miss/full-prefill Electron rows; v8 block files contain no duplicate companion state | Same tier matrix per remaining family; Qwen 27 MTP cache rows; Bonsai forced eviction; Qwen 35B strict long-format reliability only |
+| Hybrid SSM/GDN and TQ storage | `51bd720fb`, `d524b631b`, `63512c555`, `103cb9e92`, `4b96bbe6c`, `7bb34fa0d`, `df945f065`, `133d8c8e9`, `7cb89185c`, `af7815f1a` | Bonsai and Qwen 35B have native-TQ attention-block plus native SSM-disk restart evidence. Qwen 35B now has cold, RAM, restart, forced-eviction, post-eviction L2 reload, and safe KV-only-miss/full-prefill Electron rows; v8 block files contain no duplicate companion state. The generic fetched-paged-hit ownership leak found with MiniMax M2.7 is repaired and live pressure-tested. | Same tier matrix per remaining family; Qwen 27 MTP cache rows; Bonsai forced eviction; Qwen 35B strict long-format reliability only |
 | MTP | `b5a47f62f`, `b0b21ed12` | HY3 depth-1 acceptance/speed is scoped; non-MTP Qwen 35B telemetry is now correctly inactive despite a nested architecture hint | HY3 depth-3/cache interaction; Qwen 27 MTP depth-1/depth-3 cache and loop rows |
 | Agent streaming/parsers | `26fb7cd54`, `292f99b28`, `ea89ff55d`, `7aae50003`, `969aff76a`, `b111197f8`, `048d3c16a`, `88857fe52`, `9b14fc66c`, `0cc2ee8f1`, `ea40a0a3e`, `50dedf1db`, `a593f0630`, `54a08fce8`, `8cfc9f269`, `7b45676ce` | Multiple named Electron exact-tool rows exist; MiniMax speculative zero-tool finalization and Laguna parser migration have focused tests and scoped live evidence | Full Chat/Responses/Anthropic/Ollama streaming assembly, disconnect/stop, long output, interleaved reasoning, and every remaining parser family |
 | Architecture/runtime | `289f45900`, `757c6e30e`, `3ddcf1349` | Step attention, DSV4 reasoning separation, and Laguna dtype/cache reconstruction have scoped source evidence | DSV4 quality/performance/eviction, Laguna unsolicited tool and latency, remaining model rows |
@@ -80,6 +80,45 @@ Live Electron evidence:
 The Qwen 35B cache tier is `PASS-LIVE`. The artifact remains `PARTIAL` only for
 its retained long strict-format/reliability miss; that is not hidden by the
 cache result.
+
+## Current MiniMax M2.7 cache and agent-loop repair
+
+Source trace:
+
+- The real bundle reports `model_type=minimax_m2`, 62 ordinary attention KV
+  layers, no hybrid companion state, and no MTP. The registry selects the
+  `minimax` tool parser and `minimax_m2` reasoning parser.
+- Auto resolves to storage-only TQ8 for all 62 compatible KV layers; explicit
+  None disables TQ while leaving prefix, paged, and block-disk L2 enabled.
+- `af7815f1a` registers both chain-hash and prefix-index fetched block tables in
+  `_request_tables`. Completion cleanup can now release the request refs instead
+  of leaving disk-promoted blocks permanently pinned after an agent iteration.
+- 90/90 focused paged-cache, byte-budget, TQ block, and hybrid-prefix tests pass.
+
+Live Electron evidence:
+
+- Rows 2187 and 2190 are one same-chat two-turn tool loop. Both execute one real
+  `file_info` and finish with exact visible markers; row 2190 restores 173 prompt
+  tokens from resident `paged+tq-native` state.
+- PID 63682 row 2193 restores 173/177 tokens from `paged+disk+tq-native` after a
+  visible Stop/Load Model cycle. A real full block contains 62
+  `turboquant_kv` layer records, 8-bit K/V metadata, and is indexed as
+  `dtype=turboquant_kv`.
+- Explicit None produced PID 64194 with `--kv-cache-quantization none`, zero TQ
+  telemetry, and raw `dtype=kv` files in a separate namespace. PID 64579 row
+  2199 restored 161/165 tokens as plain `paged+disk` and completed exactly.
+- Before the ownership fix, the UI-applied four-block ceiling left all three
+  usable blocks pinned and logged `Out of cache blocks`. After the fix, PID
+  65838 rows 2208 and 2211 both completed real tool loops; health returned to
+  `allocated_blocks=1`, `free_blocks=3`, `shared_blocks=0`, and live evictions
+  advanced from 3 to 9 while L2 hits/writes remained active.
+- The UI restored Auto and 1,000 blocks. PID 66306 row 2214 repeated the exact
+  173/177 disk hit; post-request health showed `free_blocks=999` and no shared
+  refs. Screenshots and the full evidence ledger are in `MM27-CACHE-AUDIT.md`.
+
+MiniMax M2.7 is `PASS-LIVE` for cache tiers, Auto/None parity, two-turn tools,
+restart, and forced eviction. It remains `PARTIAL` for the still-open long
+non-tool visible-answer/direct-stream soak.
 
 ## Explicit additions and exclusions
 
