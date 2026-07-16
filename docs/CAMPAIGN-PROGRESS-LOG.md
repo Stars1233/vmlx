@@ -305,3 +305,57 @@ feed, and release gates remain in force.
 - Evidence root:
   `docs/internal/release-gates/20260715_140235_hy3_dsv4_mm3_exhaustive_electron/`.
 - Campaign remains `PARTIAL_NO_RELEASE`; no release-adjacent command ran.
+
+## 2026-07-15 - Gemma4 mixed-SWA cache-default and restart-L2 proof
+
+- Source trace against the real 12B bundle found 40 `sliding_attention` and
+  eight `full_attention` layers. The registry and CLI intentionally reject the
+  generic paged serializer for this mixed-SWA layout; the compatible default is
+  memory-aware prefix cache plus legacy prompt-disk L2.
+- The existing volume-backed session had both disk tiers off. In the real
+  Electron Session Settings screen, `Reset all parameters to defaults`
+  visibly turned legacy Disk Cache on. CLI Preview showed
+  `--no-paged-cache --enable-disk-cache`; Save persisted prefix/paged/legacy/
+  block as `1/0/1/0`.
+- Starting the session through Electron enforced single-model mode, unloaded
+  Bonsai, and launched Gemma PID 44635 with the previewed flags. Health exposed
+  the prompt disk tier and `mixed_swa_kv_v1` with 4-bit storage-boundary KV.
+- Electron row 1385 cold-passed exactly one `file_info` and exact
+  `GEM4-L2-TOOL1-DONE`. Identical fresh-chat row 1388 restored 156/157 prompt
+  tokens from `memory` and stayed exact.
+- `Save & Restart` replaced the engine with PID 44896 without clearing L2.
+  The new process discovered two prompt-L2 entries (2,994 tokens). Identical
+  row 1391 restored 156/157 tokens with `cacheDetail:"disk"`, executed exactly
+  one tool, and returned the exact final. Health recorded two disk hits.
+- Evidence is under the current release-gate root, especially
+  `gemma4-cache-ui-db-argv-health-proof.json`,
+  `gemma-cli-preview-defaults.png`, `gemma-warm-memory-pass.png`, and
+  `gemma-l2-restart-disk-pass.png`.
+
+Gemma4 cache-default parity is `VERIFIED-LIVE`. Campaign remains
+`PARTIAL_NO_RELEASE` because Bonsai hybrid restart L2, Step JANGTQ_K,
+remaining model/parser/media rows, full tests, package integrity, signing,
+notary, feeds, and public release are still open.
+
+## 2026-07-15 - Post-direct-answer cross-model live rerun
+
+The Bonsai repair was rerun through three additional parser/runtime families
+on the rebuilt Electron app, rather than inferred from shared TypeScript:
+
+- Nemotron row 1394: exactly one `file_info`, one result, exact
+  `NEMO-DIRECT-RAIL1-DONE`, one reasoning segment, no warning, and
+  `paged+ssm+disk+tq` reuse.
+- MiniMax-M2.7 row 1397: exactly one slash-preserving
+  `file_info({"path":"panel/package.json"})`, one result, exact
+  `MM27-DIRECT-RAIL1-DONE`, one reasoning segment, no warning, and
+  `paged+disk+tq` reuse.
+- DSV4 rows 1400 and 1403: both produced exactly one tool/result and byte-exact
+  `DSV4-DIRECT-RAIL1-DONE`, with one short reasoning segment and no warning.
+  The identical warm row restored 619 tokens as `paged+dsv4`.
+
+This closes the Bonsai-style repeated-reasoning/missing-final symptom for these
+current explicit single-tool contracts. It does not erase older evidence that
+DSV4 can mutate constrained strings in other prompts, so its broader fidelity
+row remains partial. Evidence: `direct-answer-cross-model-current-rows.json`,
+`dsv4-direct-rail1-warm-pass.png`, and
+`dsv4-direct-rail1-warm-health.json` under the active release-gate root.
