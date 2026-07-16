@@ -228,6 +228,9 @@ families without a current visible Electron row as `PARTIAL` or `UNTESTED`.
 - Bonsai ternary live Electron row: exactly one `file_info`, one matching
   result, exact `BT-POSTTOOL1-DONE`, one reasoning segment, no warning, and a
   measured `31.3 t/s`. This replaces the prior API-only post-tool evidence.
+- Laguna live Electron row: exactly one `file_info`, one matching result,
+  exact `LAG-POSTTOOL1-DONE`, no warning, `16.0 t/s`, and `3,612 paged+tq`
+  cached tokens. Laguna decode-speed performance remains a separate open row.
 - DSV4 pre-fix live row: one tool/result and exact final content, but the stale
   `visible answer is empty` warning remained. Post-fix live row: one
   tool/result, visible final content, `warnings_json=null`, and `18.3 t/s`.
@@ -237,7 +240,7 @@ families without a current visible Electron row as `PARTIAL` or `UNTESTED`.
 - Screenshots and DB-derived evidence were preserved under
   `docs/internal/release-gates/20260715_140235_hy3_dsv4_mm3_exhaustive_electron/`.
 
-Campaign remains `PARTIAL_NO_RELEASE`. Laguna and the other untested
-model/parser families still need current Electron post-tool rows; all
+Campaign remains `PARTIAL_NO_RELEASE`. LFM and the other untested model/parser
+families still need current Electron post-tool rows; all
 previously listed model, settings, cache, media, package, signing, notary,
 feed, and release gates remain in force.

@@ -29,7 +29,7 @@ content, reasoning/status inspection, and timing/warning inspection.
 | DSV4 Flash CRACK (`deepseek_v4`, native composite cache) | Pre-fix exact-final row retained a stale empty-answer warning. Post-fix row removed the warning. | Each row executed exactly one `file_info` with one matching result | Pre-fix exact `DSV4-POSTTOOL1-DONE`; post-fix model misspelled the marker as `DSV4-PPOSTOLL2-DONE` | Two reasoning phases; post-fix `warnings_json=null`; `18.3 t/s`; no repeated tool | `PARTIAL`: warning lifecycle is `VERIFIED-LIVE`; strict output fidelity remains red. |
 | MiniMax-M3 Coder Small (`minimax_m3`) | Current genuine-tool Electron regression after M3 stream repair | Exactly one `file_info`; one matching result | Exact `MM3-TOOL-POSTFIX-DONE` | No completed zero-tool card; native M3 parsing retained | `VERIFIED-LIVE` for genuine-tool finalization. Exact image OCR remains open. |
 | Zaya (`openpangu_v2`) | Current specialized terminal AppleScript row | One native `run_applescript`; terminal one-call policy | Visible post-tool completion | Repeated successful action prevented | `VERIFIED-LIVE` for the specialized AppleScript route, not generic `file_info` parity. |
-| Laguna-M.1 (`laguna`) | No current Electron post-tool row after the shared fix | Untested | Untested | Untested | `UNTESTED`; cache/coherence is separately live-proven and decode speed remains open. |
+| Laguna-M.1 (`laguna`) | Current-source fresh Electron row | Exactly one `file_info`; one matching result | Exact `LAG-POSTTOOL1-DONE` | Two phase-appropriate reasoning passages in one reasoning record; normal tool lifecycle; no warning; `16.0 t/s`; `3,612 paged+tq` cached tokens | `VERIFIED-LIVE` for this row. Decode speed remains a separate open gate. |
 | LFM2.5 | Prior Electron tool-history row proved bounded prompt growth, but predates this current post-tool fix | Prior tool calls/results verified | Prior result only | Current repeated-reasoning/TPS behavior untested | `PARTIAL/STALE`; rerun on current source. |
 | Gemma4, Qwen3.6, MiniMax-M2.7, Step-3.7, Nemotron/Nemo, MiMo and other configured families | No current Electron row for this exact failure class | Untested | Untested | Untested | `UNTESTED`; do not infer parity from shared panel code or older API-only runs. |
 
@@ -37,6 +37,7 @@ Current evidence root:
 `docs/internal/release-gates/20260715_140235_hy3_dsv4_mm3_exhaustive_electron/`.
 Relevant screenshots include `hy3-posttool1-pass.png`,
 `bt-posttool1-pass.png`,
+`laguna-posttool1-pass.png`,
 `dsv4-posttool1-stale-warning.png`, and
 `dsv4-posttool2-warning-cleared-strict-partial.png`.
 
