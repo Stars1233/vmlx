@@ -395,3 +395,36 @@ Step JANGTQ_K coherence and this explicit post-tool contract are
 Campaign status stays `PARTIAL_NO_RELEASE`. MiMo and other configured parser
 families still need their own current Electron rows, and no package, signing,
 notary, feed, tag, or public-release action is cleared by this result.
+
+## 2026-07-15 - MiniMax-M3 REAP32 first-prefill host reboot
+
+The configured `jangq-ai/MiniMax-M3-REAP32-d3-Coder` row is a distinct live
+safety failure, not a pass inferred from MiniMax-M3 Coder Small.
+
+- Sessions UI single-model handoff stopped Step and loaded only REAP32. Health
+  reported `107939.9 active_mb`, correctly converted to 105.4 GiB, while the
+  M5 Max MLX ceiling is 107.52 GiB. MTP metadata declared one layer but the
+  bundle index had zero MTP tensors; `vl_runtime_available=false` was also
+  truthful despite present vision weights.
+- The first Electron `file_info` turn left a blank assistant row and the host
+  rebooted. The stale `running` session was reconciled to inactive when the
+  same dev profile restarted.
+- A controlled second load reproduced the same 105.4 GiB baseline. The
+  generic request guard allowed 98.0% occupancy under its 99% threshold and
+  projected output only clamped to 2,304 tokens. The second first request again
+  left a blank row and rebooted the host before UI Stop completed.
+- Current source now permits loaded-model baseline forgiveness only when the
+  baseline itself is below the configured threshold. It also rejects any
+  MiniMax-M3 request before the handler when less than 3 GiB of Metal headroom
+  remains. The error explicitly identifies first-prefill risk and the opt-out;
+  it does not synthesize output or silently change sampling.
+- Ten focused Metal-guard tests and five memory/audit checks pass. A third
+  REAP32 live load was deliberately not attempted, so the new 503 path remains
+  source-verified but live-unverified.
+- Evidence: `m3-reap32-host-reboot-fail.txt`,
+  `m3-reap32-second-host-reboot-fail.txt`, and
+  `m3-reap32-overlimit-health-before-guard.json` under the active gate root.
+
+Verdict: `FAIL-LIVE / PARTIAL-FIX`. Release lock remains active. The host must
+not be exposed to another unchanged REAP32 first prefill merely to obtain a
+green screenshot.

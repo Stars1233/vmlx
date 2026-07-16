@@ -35,6 +35,7 @@ content, reasoning/status inspection, and timing/warning inspection.
 | HY3 JANG 2K MTP (`hy_v3`, qwen3 reasoning parser) | Current-source fresh Electron row | Exactly one `file_info`; one matching result | Exact `HY3-POSTTOOL1-DONE` | One reasoning segment; normal generating/calling/executing/result/processing/done lifecycle; `19.0 t/s`; no warning | `VERIFIED-LIVE` for this row. MTP net speedup remains unverified. |
 | DSV4 Flash CRACK (`deepseek_v4`, native composite cache) | Earlier warning-fix row misspelled its final. Current direct-answer cold/warm rows 1400/1403 both passed. | Exactly one `file_info`; one matching result on both current rows | Exact `DSV4-DIRECT-RAIL1-DONE` twice | One short reasoning segment, no warning, no repeated tool; identical warm row restored 619 tokens as `paged+dsv4` | `VERIFIED-LIVE` for the current explicit single-tool post-tool contract. Broader non-tool constrained-string fidelity remains separately open because older rows mutated markers. |
 | MiniMax-M3 Coder Small (`minimax_m3`) | Current genuine-tool Electron regression after M3 stream repair | Exactly one `file_info`; one matching result | Exact `MM3-TOOL-POSTFIX-DONE` | No completed zero-tool card; native M3 parsing retained | `VERIFIED-LIVE` for genuine-tool finalization. Exact image OCR remains open. |
+| MiniMax-M3 REAP32 d3 Coder (`minimax_m3`) | The model loaded through Sessions at 105.4 GiB active against a 107.52 GiB Metal ceiling. Two separate first Electron tool requests left blank assistant rows and coincided with full host reboots. | No completed tool call; both rows remained empty | Empty | Generic 99% pressure guard allowed the 98.0% baseline and output projection only clamped to 2,304 tokens; fixed prefill workspace still exhausted the machine. Current source adds a 3 GiB M3 prefill-headroom reject and blocks baseline forgiveness when the baseline itself is over threshold; 15 focused tests pass. | `FAIL-LIVE / PARTIAL-FIX`: distinct bundle/runtime safety failure. Do not retry unchanged. The new 503 path is not live-verified because a third 105 GiB load was deliberately avoided. |
 | Zaya (`openpangu_v2`) | Current bundle is the AppleScript specialist despite its generic path. | One native `run_applescript` on the in-contract row. Generic `file_info` probes were filtered back to `run_applescript` and ended without a final. | Visible post-tool completion only on the in-contract AppleScript row. | Repeated successful action prevented; UI still misleadingly exposes unrelated File/Search categories. | `VERIFIED-LIVE` only for the specialized AppleScript contract. Generic tool parity is `OUT-OF-CONTRACT`; model-derived UI capability truth remains open. |
 | Laguna-M.1 (`laguna`) | Current-source fresh Electron row | Exactly one `file_info`; one matching result | Exact `LAG-POSTTOOL1-DONE` | Two phase-appropriate reasoning passages in one reasoning record; normal tool lifecycle; no warning; `16.0 t/s`; `3,612 paged+tq` cached tokens | `VERIFIED-LIVE` for this row. Decode speed remains a separate open gate. |
 | LFM2.5 (`lfm2_moe`, hybrid SSM) | Broad-tools and Search-only pre-fix rows emitted malformed `path=': '` calls and repeated tools. Current-source post-fix Search-only and broad File/Search/Shell Electron rows passed. | Exactly one `file_info` with exact `panel/package.json`; one matching result | Exact `LFM-POSTTOOL5-DONE` on the broad row | One persisted reasoning record; normal tool lifecycle; no warning; `189.9 t/s`; `paged+ssm` cache detail | `VERIFIED-LIVE` for the broad row after request-bound LFM native example repair. |
@@ -70,9 +71,13 @@ Nemotron, MiniMax-M2.7, and DSV4 are in
 Current Step JANGTQ_K evidence is in `step-jangtq-current-rows.json`,
 `step-jangtq-health.json`, `step-jangtq-coherence1-pass.png`,
 `step-jangtq-tool4-pass.png`, and `step-jangtq-attention-guard-log.png`.
+REAP32 crash evidence is in `m3-reap32-host-reboot-fail.txt`,
+`m3-reap32-second-host-reboot-fail.txt`, and
+`m3-reap32-overlimit-health-before-guard.json`.
 
 Release boundary: `PARTIAL_NO_RELEASE`. This matrix does not clear Laguna
 speed, HY3 measured MTP benefit, DSV4 exact-output fidelity, M3 exact image
-OCR, Step VL/media and restart-L2 behavior, Bonsai hybrid L2 restart reuse, remaining
+OCR, M3 REAP32 live-safe rejection, Step VL/media and restart-L2 behavior,
+Bonsai hybrid L2 restart reuse, remaining
 model-family post-tool rows, package integrity, signing,
 notarization, updater feeds, or public release.
