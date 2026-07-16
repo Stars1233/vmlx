@@ -10,8 +10,9 @@ superseded conclusions are called out here.
 
 ## Release truth
 
-- Working branch: `reconcile/1.5.68` at parent
-  `103cb9e92c36` plus the scoped Bonsai SSM L2 work described below.
+- Working branch: `reconcile/1.5.68` at `f67684e09156`; scoped Bonsai SSM
+  L2 source and ternary live-evidence commits are pushed to the closeout
+  branch described below.
 - Push target: `origin/codex/live-electron-gates-20260715`.
 - After fetching `origin`, the committed branch is 38 commits ahead of `origin/main` and
   zero behind.
@@ -57,6 +58,46 @@ superseded conclusions are called out here.
 | openPangu 2.0 Flash | Native typed MLA + DSA/SWA + mHC + sink composite; generic paged/block/TQ off | Typed prefix/prompt-L2 pass |
 | ZAYA/CCA | Typed CCA state; generic TQ off until typed parity exists | Historical live proof; current release regression row still required |
 | VLM/video/audio | Architecture cache plus canonical media salt and real media payload | M3/Qwen selected rows pass; advertised-family matrix open |
+
+## Mandatory current-source architecture rows
+
+These rows are release requirements, not load-only smoke tests. Each model
+must be loaded and operated through the current Electron dev build. A PASS
+requires a source trace plus persisted live artifacts for: cold generation,
+same-chat multi-turn continuation, a real tool result followed by a complete
+visible answer, process restart/L2 restore, cache accounting, and eviction or
+bounded-capacity behavior. API-only evidence is secondary and cannot replace
+the Electron row.
+
+| Model / family | Cache and runtime invariant | Required live proof | Status |
+|---|---|---|---|
+| Qwen 3.6 35B and 27B MXFP/JANG | Hybrid layout is derived from the real layer graph. TQ encode/decode applies only to eligible attention KV; GDN/SSM companions remain native and are cleanly rederived/restored. | MTP depth 3 launch/health, draft/accepted token counters, cold + two-turn + tool continuation, RAM hit, restart/L2 hit, and forced eviction/reload with coherent output. | OPEN |
+| HY3 MTP | Native MTP depth is the requested value and yields measured accepted draft tokens. Prompt/L2 records include the owning target-model cache state; speculative output is never treated as a substitute cache. | Depth 1 and depth 3 A/B, acceptance and latency counters, multi-turn tool loop, restart restore, and eviction/reload. | PARTIAL: depth-1 speed row exists; depth-3/cache interaction is open |
+| MiniMax M2.7 | Ordinary KV attention may use calibrated or correctness-safe TQ storage; parser/reasoning rails must survive multi-turn tool continuation. | Auto and None UI/argv/health A/B, two-turn tool loop, RAM/L2 restore, eviction, long visible answer, and streaming rail continuity. | OPEN |
+| ZAYA / CCA | Typed CCA state owns its cache. Generic TQ is forbidden unless a typed CCA codec has source and live parity. | Typed cold/warm/restart/eviction rows plus multi-turn tool and reasoning/content stream. | OPEN current release row |
+| Nemotron hybrid | Eligible attention KV may be TQ encoded; non-KV hybrid state remains native and is async clean-prefill rederived/restored. Family selection must come from config/layers, not a name match. | Auto/None A/B, cold + two-turn + tool continuation, L2 restart, eviction, long output, no reasoning leak. | OPEN |
+| DSV4 Flash | Native DSA/SWA/CSA/HCA composite and pool codec only; never generic TQ KV. | Composite cache health, cold/warm/restart/eviction, multi-turn agent loop, reasoning/content stream continuity and coherent constrained output. | PARTIAL |
+| MiniMax M3 / openPangu | Native typed architecture cache only; generic TQ remains off. | Existing scoped rows plus long-context, restart/eviction, and protocol/streaming completion. | PARTIAL |
+
+## Non-negotiable correctness invariants
+
+- No prompt coercion, hidden sampler clamps, forced thinking tags, synthetic
+  tool output, invented continuation, or arbitrary output cap may be used to
+  make a gate appear green. Fix the layer that owns the defect.
+- Cache keys and persisted records must cover model/runtime fingerprint,
+  architecture codec, quantization parameters, original KV dtype, media salt,
+  MTP mode/depth where relevant, and every state needed for exact restore.
+- Multi-turn means at least two user turns in the same chat. Agentic proof
+  additionally requires a schema-valid tool call, a real tool result, and a
+  complete post-tool answer. A one-turn exact marker is insufficient.
+- Streaming proof must persist and compare reasoning deltas, visible content
+  deltas, tool-call argument deltas, tool result continuation, finish reason,
+  and final assembled text. The stream must not silently end in an incomplete
+  tool call, unfinished reasoning rail, or missing visible answer.
+- Every cache row records configured capacity, resident blocks/bytes,
+  hits/misses/writes, TQ encode/decode counters where allowed, companion-state
+  rederive/restore counters for hybrids, disk reconstruction time, and an
+  eviction followed by a correct reload or safe full-prefill fallback.
 
 ## Closed rows that must remain regression-gated
 
