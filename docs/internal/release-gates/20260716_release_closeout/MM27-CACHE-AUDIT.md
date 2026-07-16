@@ -1,7 +1,7 @@
 # MiniMax M2.7 current-source cache and agent-loop audit
 
-Date: 2026-07-16  
-Source after repair: `af7815f1a`  
+Date: 2026-07-16
+Source after repair: `af7815f1a`
 Overall: `PASS-LIVE` cache/settings/tools/eviction; `PARTIAL` long direct stream.
 
 ## Source contract
