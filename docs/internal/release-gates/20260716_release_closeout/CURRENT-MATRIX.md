@@ -10,11 +10,11 @@ superseded conclusions are called out here.
 
 ## Release truth
 
-- Working branch: `reconcile/1.5.68` at `f67684e09156`; scoped Bonsai SSM
-  L2 source and ternary live-evidence commits are pushed to the closeout
-  branch described below.
+- Working branch: `reconcile/1.5.68` at `7bb34fa0d`; typed-settings,
+  non-MTP architecture-hint, and paged resident-accounting repairs plus their
+  focused tests are pushed to the closeout branch described below.
 - Push target: `origin/codex/live-electron-gates-20260715`.
-- After fetching `origin`, the committed branch is 38 commits ahead of `origin/main` and
+- After fetching `origin`, the committed branch is 45 commits ahead of `origin/main` and
   zero behind.
 - Source versions are `1.6.11` in `pyproject.toml`,
   `vmlx_engine/__init__.py`, and `panel/package.json`.
@@ -34,7 +34,7 @@ superseded conclusions are called out here.
 | Laguna cache/perf | PASS-LIVE correctness / PARTIAL latency | UI None left prefix/paged/L2 on and produced exact 3,549/3,612-token paged hits. Auto now uses uncalibrated TQ8 with codec-config namespace invalidation; exact 3,550/3,614-token native hits and a coherent 3,550-token disk restore were observed | TQ8 reconstruction costs 3.6-4.8s and warm TTFT ~5.1s versus 1.2-1.5s None; optimize/accept with measured release budget, plus long-context/eviction proof |
 | Bonsai hybrid restart | PASS-LIVE exact boundary / PARTIAL partial prefix | Two independent 1-bit PID replacements restored 160/168 tokens and ternary restored 153 tokens as `paged+ssm+disk`, with native-TQ plus SSM disk hits, ~0.10s reconstruction, one tool, and exact finals. A longer 64-token KV prefix without a companion safely full-prefilled and wrote the missing checkpoint | Repeat partial-prefix repair as a measured hit, then long-context/eviction |
 | Bonsai current-HEAD regression | PASS-LIVE scoped | Two default-temperature 1-bit cache-on chats produced four exact one-tool finals; ternary passed two turns plus restart. Ternary None preserved prefix/paged/L2 with zero TQ activity, and Auto was restored. Earlier 1-bit loop row 2028 remains retained | Quantify 1-bit sampling outlier rate and run long-context/eviction without forcing sampler defaults |
-| Mistral Medium 3.5 | PARTIAL-LIVE | Text load/cache works; broad tool prompt repeated `2026`, strict marker returned `I understand.` | Root-cause model/runtime/template/parser behavior; long output and reduced/broad tool parity |
+| Mistral Medium 3.5 | DEFERRED BY USER | Prior text load/cache observations are retained, but the user explicitly excluded further Mistral MXFP4 testing from this closeout run | Do not spend this campaign on Mistral MXFP4; it is not used to claim a current release pass |
 | DSV4 CRACK | PARTIAL-LIVE | Native composite cache and DSML separation pass; malformed row took 64.7s, restart tool row took 119.2s/1454 tokens | Constrained-string repeat matrix, reasoning/tail quality, quiet speed; exact JANGTQ bundle only if locally available |
 | MiniMax-M3 | PARTIAL-LIVE | Typed MSA cache, tools, OCR control, and video pass; two OCR formatting misses retained | Exact deterministic OCR repeat; live 503 guard for REAP32 only if it can be exercised without host-reboot risk |
 | openPangu | PARTIAL-LIVE | Exact typed cache/tools/restart and full 46-layer architecture pass; generic TQ correctly off | 512K/long-context soak, full protocol matrix; MTP remains unavailable for current artifact |
@@ -42,7 +42,7 @@ superseded conclusions are called out here.
 | Settings parity | PARTIAL | Cache defaults, Auto/None, gateway LAN, and single-model swap have scoped proof | Fix Min-P zero persistence, native-TQ Perf label, Laguna parser migration; rerun UI/DB/preview/argv/health matrix |
 | API/protocol parity | OPEN | Selected Responses/gateway rows pass | Streaming + non-stream Chat, Responses, Anthropic, Ollama; tools/result continuation; disconnect/stop/follow-up |
 | Gateway lifecycle | PARTIAL | Routable LAN address and localhost/LAN rebinding pass | Port conflict UX, cross-protocol streaming, single-model unload/reload state |
-| Full tests/build | OPEN | Current Bonsai/Qwen cache selection: 196/196 pass | Focused suites after each fix, full Python/panel suite, bundled-Python gate, clean release build |
+| Full tests/build | OPEN | Current resident-accounting repair: 595/595 engine-audit/byte-budget and 177/177 paged/disk/TQ/hybrid cache tests pass | Focused suites after each fix, full Python/panel suite, bundled-Python gate, clean release build |
 | Packaging/public release | BLOCKED | Public truth remains 1.6.10 | Build Sequoia/Tahoe, sign, notarize, staple, Gatekeeper verify, install-smoke, publish GitHub/PyPI/feed |
 
 ## Architecture-specific cache truth
@@ -50,9 +50,9 @@ superseded conclusions are called out here.
 | Architecture | Production cache contract | Current status |
 |---|---|---|
 | Plain full attention KV | Paged/prompt cache; uncalibrated Auto uses storage-only TQ8; lower bits require bundle-owned calibration; codec fields are part of the persisted namespace | Qwen full-KV and Laguna scoped pass; broader family regression matrix open |
-| Qwen3.5/Bonsai hybrid GDN/SSM | TQ only on the 16 attention KV slots; 48 companion states remain native; clean boundary capture/rederive plus fingerprinted SSM L2 | Two 1-bit and one ternary exact restart restores pass with native TQ8 + SSM disk; missing partial checkpoints safely full-prefill and repair; long-context partial |
+| Qwen/Bonsai hybrid GDN/SSM | Eligible slots come from the real layer graph, not a family-name constant. Qwen 35B has 10 attention KV plus 30 companion layers; tested Bonsai bundles have 16 attention KV plus 48 companion layers. Only attention KV is TQ encoded; companion state remains native with clean boundary capture/rederive plus fingerprinted SSM L2 | Qwen 35B and two 1-bit plus one ternary Bonsai restart restores pass with native TQ8 + SSM disk; missing partial checkpoints safely full-prefill and repair; forced eviction and broad long-context coverage remain partial |
 | Other hybrid SSM/GLA | Architecture allow-list plus native companion state and async clean-prefill rederive | Per-family proof required; no name-only Qwen inference |
-| Gemma mixed SWA | Native rotating cache for SWA, compatible full-attention lane only; legacy prompt L2 default | UI/DB/argv/warm/restart scoped pass |
+| Gemma 4 mixed rotating SWA | Rotating SWA state remains native; only compatible full-attention KV may be TQ encoded. Prefix lookup, resident paged blocks, L2 disk promotion, companion-state restore/rederive, and bounded eviction must agree on one valid boundary | Prior UI/DB/argv/warm/restart evidence is scoped only; current-source forced eviction and tier-fallback proof remain open |
 | DSV4 Flash | Native `deepseek_v4_v7` SWA + CSA/HCA composite and pool codec; never generic TQ KV | CRACK scoped cache pass; quality/performance partial |
 | MiniMax-M3 | Native `minimax_m3_msa_v1`, dense KV 0–2 plus sparse MSA/index state 3–59; generic TQ off | Cache/restart scoped pass |
 | openPangu 2.0 Flash | Native typed MLA + DSA/SWA + mHC + sink composite; generic paged/block/TQ off | Typed prefix/prompt-L2 pass |
@@ -71,12 +71,13 @@ the Electron row.
 
 | Model / family | Cache and runtime invariant | Required live proof | Status |
 |---|---|---|---|
-| Qwen 3.6 35B MXFP/JANG (name has no `MTP`) | Hybrid layout is derived from the real layer graph. TQ encode/decode applies only to eligible attention KV; GDN/SSM companions remain native and are cleanly rederived/restored. This artifact is not assigned an MTP gate. | Cold + two-turn + tool continuation, RAM hit, restart/L2 hit, and forced eviction/reload with coherent output. | OPEN |
+| Qwen 3.6 35B MXFP/JANG (name has no `MTP`) | Hybrid layout is derived from the real 10-attention/30-companion layer graph. TQ encode/decode applies only to eligible attention KV; GDN/SSM companions remain native and are cleanly rederived/restored. This artifact is not assigned an MTP gate. | Cold + two-turn + tool continuation, RAM hit, restart/L2 hit, and forced eviction/reload with coherent output. | PARTIAL: current Electron two-turn and exact tool rows pass; RAM restored 152/153 `paged+ssm` tokens and three process restarts restored the same 152 tokens as `paged+ssm+disk`; current health has seven native-TQ block hits and two SSM-disk hits. The latest restart proves 0 L1 resident bytes after reconstruction while retaining 152 indexed tokens. Forced block eviction/reload and the duplicate-companion-payload audit remain open; one ambiguously worded tools-on long row attempted an invalid `write_file`, while the clarified direct-display row streamed through its final marker with a minor period-format miss. |
 | Qwen 3.6 27B `...-MTP` | The same hybrid cache invariant applies, and MTP is eligible because the actual model/bundle name says `MTP`. | MTP depth 1 and 3 launch/health, real draft/accepted counters, cold + two-turn + tool continuation, RAM hit, restart/L2 hit, and forced eviction/reload with coherent output. | PARTIAL: typed D3 Save & Restart now has UI/DB/argv/health parity; tools-on D1-capped multi-turn passes; tools-off D1 and D3 both looped in reasoning; cache restart/eviction rows remain open |
 | HY3 MTP | Native MTP depth is the requested value and yields measured accepted draft tokens. Prompt/L2 records include the owning target-model cache state; speculative output is never treated as a substitute cache. | Depth 1 and depth 3 A/B, acceptance and latency counters, multi-turn tool loop, restart restore, and eviction/reload. | PARTIAL: depth-1 speed row exists; depth-3/cache interaction is open |
 | MiniMax M2.7 | Ordinary KV attention may use calibrated or correctness-safe TQ storage; parser/reasoning rails must survive multi-turn tool continuation. | Auto and None UI/argv/health A/B, two-turn tool loop, RAM/L2 restore, eviction, long visible answer, and streaming rail continuity. | OPEN |
 | ZAYA / CCA | Typed CCA state owns its cache. Generic TQ is forbidden unless a typed CCA codec has source and live parity. | Typed cold/warm/restart/eviction rows plus multi-turn tool and reasoning/content stream. | OPEN current release row |
 | Nemotron hybrid | Eligible attention KV may be TQ encoded; non-KV hybrid state remains native and is async clean-prefill rederived/restored. Family selection must come from config/layers, not a name match. | Auto/None A/B, cold + two-turn + tool continuation, L2 restart, eviction, long output, no reasoning leak. | OPEN |
+| Gemma 4 rotating SWA | TQ applies only to compatible full-attention KV. Rotating SWA cache remains native, and a prefix hit is valid only when both lanes share a restorable boundary; otherwise safely rederive/full-prefill. | Auto/None UI/argv/health A/B, cold + two-turn + tool continuation, resident paged hit, L2 restart promotion, forced eviction/reload, true-miss fallback, and coherent long output. | OPEN current-source tier/eviction row; older warm/restart settings evidence is retained only as scoped history |
 | DSV4 Flash | Native DSA/SWA/CSA/HCA composite and pool codec only; never generic TQ KV. | Composite cache health, cold/warm/restart/eviction, multi-turn agent loop, reasoning/content stream continuity and coherent constrained output. | PARTIAL |
 | MiniMax M3 / openPangu | Native typed architecture cache only; generic TQ remains off. | Existing scoped rows plus long-context, restart/eviction, and protocol/streaming completion. | PARTIAL |
 
@@ -87,6 +88,34 @@ Current Qwen 27 settings-parity evidence: the Electron number field published
 model, PID, Server Settings drawer, and depth. This proves the settings
 round-trip only; it does not clear the reasoning-loop or cache-behavior rows.
 
+Current Qwen 35 source-plus-live evidence: PID 55959 was the only active local
+engine after the Electron single-model swap. Rows 2139 and 2142 each made one
+schema-valid real `file_info` call and returned exact visible finals in the
+same chat. Fresh repeat row 2145 restored 152/153 prompt tokens as
+`paged+ssm`; Electron Save & Restart produced PID 56619 and row 2148 restored
+the same boundary as `paged+ssm+disk`. After the non-MTP telemetry repair,
+another Electron restart produced PID 57270 and row 2157 again restored
+152/153 tokens from disk, executed one real tool, and returned exact final
+text. Current health records seven native-TQ attention-block hits and two
+native SSM companion-disk hits. The UI visibly showed Prefix Cache on, required
+Paged KV on, 64-token blocks, 1,000 blocks, 15% L1 memory, Block Disk L2 on,
+and Stored Cache Quantization Auto. Commit `b0b21ed12` now reports the nested
+Qwen architecture field as an inactive hint (`mtp_declared=false`,
+`status=not_configured`, no issues) because this bundle name, JANG sidecar,
+and tensor index do not declare MTP; 96 focused MTP tests pass. Commit
+`7bb34fa0d` then fixed the owning paged-cache accounting bug: disk promotion
+released the arrays but left phantom resident bytes, and a reused block could
+inherit `keep_resident`. Electron Save & Restart produced PID 58213; row 2160
+again restored 152/153 `paged+ssm+disk` tokens, made one real tool call, and
+returned exact final text. Health and the visible Cache Management drawer now
+show 152 indexed tokens but 0 resident bytes, seven native-TQ block hits, and
+two SSM-disk hits. The repair passes 595/595 audit/byte-budget tests and 177/177
+paged/disk/TQ/hybrid cache tests. Screenshots are stored as
+`qwen36-35b-*.png` and `qwen35-*-postfix.png` in this evidence directory. The
+remaining Qwen row is forced block eviction/reload, a source audit of whether
+cumulative companion state is redundantly stored in generic block L2, and a
+stricter long-format repeat.
+
 ## Non-negotiable correctness invariants
 
 - No prompt coercion, hidden sampler clamps, forced thinking tags, synthetic
@@ -94,9 +123,19 @@ round-trip only; it does not clear the reasoning-loop or cache-behavior rows.
   make a gate appear green. Fix the layer that owns the defect.
 - Assign MTP gates only to actual model/bundle names containing `MTP`. Do not
   infer MTP eligibility from a Qwen, HY, Nemotron, or other family name alone.
+- Treat official JANGQ/dealignai quantized models as trusted artifacts. If a
+  live row loops, truncates, or emits incoherently, investigate vMLX
+  architecture dispatch, quantized layer utilization, cache state,
+  sampling/template behavior, parsers, streaming, and UI/API parity; do not
+  attribute the defect to the official quantized model.
 - Cache keys and persisted records must cover model/runtime fingerprint,
   architecture codec, quantization parameters, original KV dtype, media salt,
   MTP mode/depth where relevant, and every state needed for exact restore.
+- Prefix reuse is explicitly three-tiered: use a valid resident L1/paged block
+  first, otherwise promote a matching L2 disk record, and only full-prefill
+  when neither tier is usable. Hybrid hits are valid only when the attention
+  KV boundary and its companion state are both restorable; a partial component
+  must trigger safe rederive or full-prefill rather than a false hit.
 - Multi-turn means at least two user turns in the same chat. Agentic proof
   additionally requires a schema-valid tool call, a real tool result, and a
   complete post-tool answer. A one-turn exact marker is insufficient.
@@ -130,16 +169,21 @@ round-trip only; it does not clear the reasoning-loop or cache-behavior rows.
 
 ## Execution order
 
-1. Close the remaining Laguna unsolicited-tool/long-context/latency rows while
-   preserving the TQ3 failure and Auto/None/TQ8 A/B artifacts.
-2. Re-prove the repaired Bonsai partial-prefix boundary as an actual hit and
-   run long-context/eviction; retain the default-sampling loop outlier as a
-   reliability row.
-3. Close Mistral and DSV4 quality/performance rows, then M3/Pangu long/media
-   boundaries and remaining post-tool families.
-4. Run the complete settings and protocol matrix through the real Electron
-   app and gateway.
-5. Run focused and full tests, audit the dirty tree, commit/push only scoped
-   files, and merge/integrate the 37-commit branch deliberately.
-6. Build, sign, notarize, staple, verify, install-smoke, and publish 1.6.11 only
+1. Finish Qwen 35B cache closeout first: audit duplicate companion payloads,
+   make selective-TQ UI labels truthful, then force bounded L1 eviction and
+   prove L2 promotion plus safe miss fallback through Electron before restoring
+   the user's normal limits.
+2. Complete MiniMax M2.7 Auto/None, multi-turn tool, stream, RAM/L2, and
+   eviction rows; then ZAYA/CCA, Nemotron hybrid, and Gemma 4 rotating-SWA
+   tier/eviction rows.
+3. Close DSV4 native-composite quality/stream/eviction, HY3 D3/cache, and the
+   remaining M3/Pangu long/media boundaries. Do not test Mistral MXFP4 in this
+   campaign per the user's explicit instruction.
+4. Re-prove Bonsai and Qwen forced eviction/repair boundaries, retaining their
+   recorded sampling/strict-format misses as reliability evidence.
+5. Close the remaining Laguna unsolicited-tool/long-context/latency rows and
+   run the complete settings and protocol matrix through Electron/gateway.
+6. Run focused and full tests, audit the dirty tree, commit/push only scoped
+   files, and merge/integrate the closeout branch deliberately.
+7. Build, sign, notarize, staple, verify, install-smoke, and publish 1.6.11 only
    after every release-blocking row above is green.
