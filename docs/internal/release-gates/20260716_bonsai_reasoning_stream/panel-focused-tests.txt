@@ -1,0 +1,15 @@
+
+> vmlx@1.6.11 test
+> vitest run --run tests/interleaved-reasoning-segments.test.ts tests/responses-stream-recovery.test.ts tests/tool-status-responsiveness.test.ts
+
+
+[1m[46m RUN [49m[22m [36mv4.0.18 [39m[90m/Users/eric/mlx/vllm-mlx/panel[39m
+
+ [32m✓[39m tests/tool-status-responsiveness.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+ [32m✓[39m tests/responses-stream-recovery.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 2[2mms[22m[39m
+ [32m✓[39m tests/interleaved-reasoning-segments.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 2[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m3 passed[39m[22m[90m (3)[39m
+[2m      Tests [22m [1m[32m24 passed[39m[22m[90m (24)[39m
+[2m   Start at [22m 05:11:02
+[2m   Duration [22m 108ms[2m (transform 64ms, setup 0ms, import 80ms, tests 9ms, environment 0ms)[22m
