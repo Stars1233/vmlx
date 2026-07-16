@@ -1,0 +1,30 @@
+{
+  "date": "2026-07-16",
+  "model": "jangq-ai/Hy3-JANG_2K-MTP",
+  "prompt": "Output the integers from 1 through 100 in ascending order, separated by single spaces. Do not omit, repeat, explain, or add any other text.",
+  "controls": {
+    "temperature": 0,
+    "top_p": 1,
+    "max_tokens": 512,
+    "enable_thinking": false
+  },
+  "off": {
+    "wall_seconds": [23.496679, 17.986732, 21.234247],
+    "median_wall_seconds": 21.234247,
+    "exact_runs": 3,
+    "completion_tokens_each": 200
+  },
+  "d1": {
+    "wall_seconds": [22.627244, 16.006324, 16.081931],
+    "median_wall_seconds": 16.081931,
+    "exact_runs": 3,
+    "completion_tokens_each": 200,
+    "cycles": 414,
+    "drafted_tokens": 414,
+    "accepted_tokens": 180,
+    "acceptance_rate": 0.43478260869565216
+  },
+  "median_wall_reduction_percent": 24.264180406303076,
+  "off_completion_tokens_per_wall_second": 9.418746989238658,
+  "d1_completion_tokens_per_wall_second": 12.436317504409141
+}
