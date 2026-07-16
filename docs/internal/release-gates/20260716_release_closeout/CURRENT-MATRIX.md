@@ -71,7 +71,8 @@ the Electron row.
 
 | Model / family | Cache and runtime invariant | Required live proof | Status |
 |---|---|---|---|
-| Qwen 3.6 35B and 27B MXFP/JANG | Hybrid layout is derived from the real layer graph. TQ encode/decode applies only to eligible attention KV; GDN/SSM companions remain native and are cleanly rederived/restored. | MTP depth 3 launch/health, draft/accepted token counters, cold + two-turn + tool continuation, RAM hit, restart/L2 hit, and forced eviction/reload with coherent output. | OPEN |
+| Qwen 3.6 35B MXFP/JANG (name has no `MTP`) | Hybrid layout is derived from the real layer graph. TQ encode/decode applies only to eligible attention KV; GDN/SSM companions remain native and are cleanly rederived/restored. This artifact is not assigned an MTP gate. | Cold + two-turn + tool continuation, RAM hit, restart/L2 hit, and forced eviction/reload with coherent output. | OPEN |
+| Qwen 3.6 27B `...-MTP` | The same hybrid cache invariant applies, and MTP is eligible because the actual model/bundle name says `MTP`. | MTP depth 1 and 3 launch/health, real draft/accepted counters, cold + two-turn + tool continuation, RAM hit, restart/L2 hit, and forced eviction/reload with coherent output. | PARTIAL: typed D3 Save & Restart now has UI/DB/argv/health parity; tools-on D1-capped multi-turn passes; tools-off D1 and D3 both looped in reasoning; cache restart/eviction rows remain open |
 | HY3 MTP | Native MTP depth is the requested value and yields measured accepted draft tokens. Prompt/L2 records include the owning target-model cache state; speculative output is never treated as a substitute cache. | Depth 1 and depth 3 A/B, acceptance and latency counters, multi-turn tool loop, restart restore, and eviction/reload. | PARTIAL: depth-1 speed row exists; depth-3/cache interaction is open |
 | MiniMax M2.7 | Ordinary KV attention may use calibrated or correctness-safe TQ storage; parser/reasoning rails must survive multi-turn tool continuation. | Auto and None UI/argv/health A/B, two-turn tool loop, RAM/L2 restore, eviction, long visible answer, and streaming rail continuity. | OPEN |
 | ZAYA / CCA | Typed CCA state owns its cache. Generic TQ is forbidden unless a typed CCA codec has source and live parity. | Typed cold/warm/restart/eviction rows plus multi-turn tool and reasoning/content stream. | OPEN current release row |
@@ -79,11 +80,20 @@ the Electron row.
 | DSV4 Flash | Native DSA/SWA/CSA/HCA composite and pool codec only; never generic TQ KV. | Composite cache health, cold/warm/restart/eviction, multi-turn agent loop, reasoning/content stream continuity and coherent constrained output. | PARTIAL |
 | MiniMax M3 / openPangu | Native typed architecture cache only; generic TQ remains off. | Existing scoped rows plus long-context, restart/eviction, and protocol/streaming completion. | PARTIAL |
 
+Current Qwen 27 settings-parity evidence: the Electron number field published
+`3` before blur, SQLite persisted `nativeMtpDepth=3` with override enabled, PID
+52719 launched with `--native-mtp-depth 3`, `/health::mtp.effective_depth` was
+`3`, and `qwen36-27-mtp-d3-settings-parity.png` visibly records the current
+model, PID, Server Settings drawer, and depth. This proves the settings
+round-trip only; it does not clear the reasoning-loop or cache-behavior rows.
+
 ## Non-negotiable correctness invariants
 
 - No prompt coercion, hidden sampler clamps, forced thinking tags, synthetic
   tool output, invented continuation, or arbitrary output cap may be used to
   make a gate appear green. Fix the layer that owns the defect.
+- Assign MTP gates only to actual model/bundle names containing `MTP`. Do not
+  infer MTP eligibility from a Qwen, HY, Nemotron, or other family name alone.
 - Cache keys and persisted records must cover model/runtime fingerprint,
   architecture codec, quantization parameters, original KV dtype, media salt,
   MTP mode/depth where relevant, and every state needed for exact restore.
