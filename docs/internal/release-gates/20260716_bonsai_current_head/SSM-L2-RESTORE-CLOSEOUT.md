@@ -1,10 +1,11 @@
 # Bonsai hybrid SSM L2 restore closeout — 2026-07-16
 
-Status: `SCOPED_1BIT_EXACT_RESTART_PASS_PARTIAL_PREFIX_REPAIR_OPEN_RELEASE_LOCKED`.
+Status: `SCOPED_1BIT_TERNARY_EXACT_RESTART_PASS_PARTIAL_PREFIX_REPAIR_OPEN_RELEASE_LOCKED`.
 
-This row covers the current `jangq-ai/Bonsai-27b-1bit-JANG` Electron dev
-session only. It does not clear Bonsai ternary, other hybrid families, broad
-sampling reliability, long context, or the release.
+This row covers the current `jangq-ai/Bonsai-27b-1bit-JANG` and
+`jangq-ai/Bonsai-27b-Ternary-JANG` Electron dev sessions. It does not clear
+other hybrid families, broad sampling reliability, long context, or the
+release.
 
 ## Source trace
 
@@ -46,6 +47,18 @@ comparison, and UI Save & Restart process replacement.
 - The earlier row 2028 cache-on reasoning loop remains retained. Because two
   subsequent default-temperature cache-on chats passed, it is a real sampling
   reliability outlier rather than a deterministic cache-corruption proof.
+- Ternary rows 2073/2076 completed a fresh same-chat default-temperature
+  two-turn flow with one tool and exact final on each turn. A visible process
+  replacement then produced row 2079 with 153 `paged+ssm+disk` tokens, one
+  exact tool/final, 0.101-second reconstruction, three native-TQ block hits,
+  and two SSM disk hits.
+- Electron single-model switching stopped the 1-bit listener on 8030 and left
+  only ternary on 8020.
+- The ternary UI `None` row launched with
+  `--kv-cache-quantization none`, retained prefix/paged/block L2, completed one
+  exact tool/final, made ordinary disk hits/writes, and recorded zero
+  native-TQ hits/writes. Auto was visibly restored; final health again reports
+  attention-only native TQ8 and SSM disk restore enabled.
 
 ## Remaining partial boundary
 
@@ -71,5 +84,6 @@ comparison, and UI Save & Restart process replacement.
 - Evidence files in this directory include the DB rows, health snapshots,
   current argv, visible screenshots, and test outputs named above.
 
-Release remains locked pending ternary/current-family parity, long-context and
-eviction gates, protocol/settings matrix, full build, signing, and notarization.
+Release remains locked pending partial-prefix/long-context and eviction gates,
+other families, protocol/settings matrix, full build, signing, and
+notarization.
