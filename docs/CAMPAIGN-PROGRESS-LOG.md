@@ -240,6 +240,22 @@ families without a current visible Electron row as `PARTIAL` or `UNTESTED`.
   tests passed. After visible Stop/Start, Electron row 1322 persisted exactly
   one `file_info({"path":"panel/package.json"})`, one matching result, exact
   `LFM-POSTTOOL4-DONE`, no warning, and `paged+ssm+disk` cache detail.
+  A second post-fix row with broad File I/O, Search, and Shell all visibly
+  enabled also passed: row 1325 made exactly one correct call/result and exact
+  `LFM-POSTTOOL5-DONE`, with no warning.
+- Qwen3.6 27B MXFP4 CRACK MTP broad File/Search/Shell Electron row 1328
+  persisted exactly one `file_info({"path":"panel/package.json"})`, one
+  result, exact `Q36-POSTTOOL1-DONE`, two short reasoning fragments, no
+  warning, and `22.6 t/s`. Post-run health showed native MTP D3 active,
+  hybrid SSM cache, block-L2/SSM companion stores, and live attention TQ
+  telemetry. This is post-tool/cache telemetry, not measured MTP speedup proof.
+- Gemma4 12B broad File/Search/Shell Electron row 1331 persisted exactly one
+  `file_info({"path":"panel/package.json"})`, one result, exact
+  `G4-POSTTOOL1-DONE`, no reasoning, no warning, `38.2 t/s`, and a 3,204-token
+  memory-prefix hit. A separate cache-default red row was opened: the running
+  session config has prefix enabled but paged, prompt L2, and block L2 off;
+  argv contains `--no-paged-cache`; health reports effective native
+  prefix/paged/block-L2 all false and zero L2 tokens.
 - DSV4 pre-fix live row: one tool/result and exact final content, but the stale
   `visible answer is empty` warning remained. Post-fix live row: one
   tool/result, visible final content, `warnings_json=null`, and `18.3 t/s`.
