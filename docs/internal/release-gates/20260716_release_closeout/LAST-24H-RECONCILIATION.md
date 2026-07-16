@@ -116,9 +116,15 @@ Live Electron evidence:
   173/177 disk hit; post-request health showed `free_blocks=999` and no shared
   refs. Screenshots and the full evidence ledger are in `MM27-CACHE-AUDIT.md`.
 
-MiniMax M2.7 is `PASS-LIVE` for cache tiers, Auto/None parity, two-turn tools,
-restart, and forced eviction. It remains `PARTIAL` for the still-open long
-non-tool visible-answer/direct-stream soak.
+MiniMax M2.7 is `PASS-LIVE` current-source for cache tiers, Auto/None parity,
+two-turn tools, restart, forced eviction, long visible output, and direct
+Responses streaming. Electron row 2217 produced a coherent 582-token separated
+reasoning/content answer with its exact terminal marker. The 1,024-token direct
+stream emitted 711 reasoning deltas and 48 content deltas, matched the assembled
+text in `response.output_text.done`, retained the exact marker, and ended with
+`response.completed(status=completed)`. A controlled 512-token budget ended
+`status=incomplete` after reasoning consumed the cap, which is the correct
+harness-visible result rather than a false completed response.
 
 ## Explicit additions and exclusions
 

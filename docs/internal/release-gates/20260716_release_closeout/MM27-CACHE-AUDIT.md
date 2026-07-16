@@ -2,7 +2,7 @@
 
 Date: 2026-07-16
 Source after repair: `af7815f1a`
-Overall: `PASS-LIVE` cache/settings/tools/eviction; `PARTIAL` long direct stream.
+Overall: `PASS-LIVE` current source.
 
 ## Source contract
 
@@ -47,6 +47,22 @@ three blocks to the free queue.
 | 2208 / 65838 | Four-block Auto after repair | 173/177 `paged+disk+tq-native`; exact tool/final; health returned three free blocks and recorded three evictions | PASS |
 | 2211 / 65838 | Distinct pressured request | 64-token disk/TQ prefix; exact tool/final; refs free after completion; evictions rose to nine | PASS |
 | 2214 / 66306 | Restored normal Auto/1,000 blocks | 173/177 `paged+disk+tq-native`; exact tool/final; 999 free blocks after completion | PASS |
+| 2217 / 66306 | Long tools-available/no-tool Electron answer | 582 output tokens across separated reasoning/content; exactly eight coherent numbered sentences plus `MM27-LONG1-END` | PASS |
+
+## Direct Responses stream
+
+The same running PID was probed through `/v1/responses` only after the Electron
+row passed.
+
+- At `max_output_tokens=512`, the model emitted 506 reasoning deltas and five
+  content deltas before the explicit total-output budget was exhausted. The
+  server correctly returned `response.completed(status=incomplete)`; it did not
+  mislabel the truncated content as complete.
+- At `max_output_tokens=1024`, the identical request emitted 711 reasoning
+  deltas and 48 content deltas. The assembled content and
+  `response.output_text.done::text` matched exactly, the output contained
+  `MM27-SSE1-END`, and the final event was
+  `response.completed(status=completed)` with no parse errors.
 
 ## Persisted payload truth
 
@@ -78,9 +94,10 @@ None namespace: `/Users/eric/.cache/vmlx-engine/block-cache/b9f58de8797d`.
 - `mm27-auto-4blocks-before-restart.png`
 - `mm27-fixed-eviction-reuse-pass.png`
 - `mm27-restored-normal-disk-pass.png`
+- `mm27-long1-result.png`
+- `mm27-sse-summary.json`
 
-## Remaining gate
+## Closeout
 
-Do not promote this row to a full model/release pass until a long tools-off
-visible answer and a direct streaming/API rail soak prove complete reasoning
-deltas, content deltas, stop/final events, and no truncation or parser stall.
+The current-source M2.7 row is closed. This does not clear other model families,
+the cross-protocol matrix, full-suite/build gates, or release/notarization.
