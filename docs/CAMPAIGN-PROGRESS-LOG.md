@@ -470,3 +470,48 @@ Verdict: `VERIFIED-LIVE` for Bonsai's explicit exact-once tool/final contract;
 This does not close Bonsai VL (`vl_runtime_available=false`), hybrid SSM
 process-restart restore quarantine, cross-model parser rows, or the release
 gate. Campaign remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-16 - Bonsai ternary native TurboQuant paged/L2 preservation
+
+Source tracing found that the Qwen-hybrid Auto path was losing native
+TurboQuant identity at four storage boundaries: the disk writer could persist
+only the packed prefix while declaring the full cache offset, block L2 had no
+native TQ record tag, scheduler restore returned plain KV objects, and the
+MLLM storage path demoted TQ caches before paged/disk insertion. The generic
+q4/q8 storage pass could also overwrite a native TQ payload. Current source
+now keeps a complete, seeded `turboquant_kv` record through prefix extraction,
+block-disk validation, decode, and scheduler/MLLM rewrap; generic q4/q8 is
+suppressed when native TQ owns the attention-KV lane. Qwen hybrid Auto is a
+correctness-first TQ8 storage policy on its 16 attention layers, with live
+mid-decode compression disabled. The 48 SSM companions remain native and are
+not TurboQuant-encoded.
+
+Focused verification passed 38 native-TQ tests, 151 selected engine-audit/TQ
+tests, and a 244-test scheduler/cache slice. The running Electron dev app then
+proved the user control and the stored-codec boundary on
+`jangq-ai/Bonsai-27b-Ternary-JANG`:
+
+- `None` persisted in Server Settings, restarted with literal
+  `--kv-cache-quantization none`, logged `VMLX_DISABLE_TQ_KV=1`, exposed zero
+  native-TQ counters, and completed two fresh multi-turn exact-one-tool rows.
+- `Auto` omitted the disable flag and health reported storage-only TQ8 on the
+  16 attention positions with 48 native SSM companions. A fresh proof
+  namespace wrote seven native TQ blocks. After a process restart without
+  clearing that directory, block L2 decoded all seven records
+  (`disk_hits=7`, `tq_native_hits=7`), and fresh Electron rows again executed
+  exactly one `file_info` and returned their exact final markers.
+- Persistent SSM restore remains deliberately quarantined after earlier
+  numeric divergence. Therefore the restart row is proof of native TQ
+  serialization/decode plus correctness-safe full SSM rederive, not a claimed
+  restart speed/cache-token hit. Same-process hybrid reuse remains separate.
+- A clean two-turn Auto chat completed both tool/final contracts. It still
+  displayed a short second reasoning segment after the tool result, so
+  reasoning-card continuity remains `PARTIAL`. A retained old mixed-history
+  chat repeated `file_info` four times; fresh-namespace rows did not. The
+  general/stale-history multi-call gate is still open.
+
+Evidence is in
+`docs/internal/release-gates/20260716_bonsai_native_tq/`. This result is
+`VERIFIED-LIVE` only for the ternary Auto/None control, native attention-KV TQ
+store/decode, and the named fresh exact-one-tool rows. Bonsai 1-bit still
+requires a separate current matrix. Campaign remains `PARTIAL_NO_RELEASE`.

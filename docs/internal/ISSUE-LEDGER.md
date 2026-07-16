@@ -663,3 +663,33 @@ remain open. No public release/notarization/feed mutation performed.
   covered by current live rows and for long-soak/reasoning-card performance.
   The openPangu scoped recovery does not close Bonsai variance or other family
   gates. Release remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-16 - Bonsai ternary native TQ storage boundary
+
+- `BONSAI-TERNARY-TQ-AUTO`: VERIFIED-LIVE for storage only. Auto now resolves
+  to native TQ8 for the 16 attention-KV layers; mid-decode compression is off
+  and all 48 SSM companions remain native. Health and startup policy agree.
+- `BONSAI-TERNARY-TQ-NONE`: VERIFIED-LIVE. The visible None selection persisted,
+  restarted with `--kv-cache-quantization none`, set the hard-disable env, and
+  produced no native TQ writes/hits. Two fresh multi-turn exact-one-tool rows
+  completed coherently.
+- `BONSAI-TERNARY-PAGED-L2-NATIVE-TQ`: VERIFIED-LIVE for attention-KV record
+  integrity. Seven `turboquant_kv` blocks were written and all seven decoded
+  after process restart (`disk_hits=7`, `tq_native_hits=7`). The source path
+  preserves seed, complete offset, cache type, and native TQ rewrap through
+  prefix/paged/block-disk/scheduler/MLLM boundaries.
+- `BONSAI-HYBRID-SSM-RESTART`: PARTIAL by design. Persistent SSM restore stays
+  quarantined because prior live numeric comparison diverged. Restart uses the
+  decoded attention-KV record only as diagnostic evidence and full-prefills or
+  asynchronously rederives required SSM state. No restart acceleration claim.
+- `BONSAI-TERNARY-REASONING-CONTINUITY`: PARTIAL. Fresh exact-one-tool rows
+  finalize correctly, but one clean multi-turn row reopened a short reasoning
+  segment after the tool result. An older mixed-history chat repeated the same
+  tool four times; it is retained as a failure row pending stale-history and
+  ordinary multi-call soak coverage.
+- `BONSAI-1BIT-NATIVE-TQ-MATRIX`: OPEN. Do not infer 1-bit behavior from the
+  separately loaded ternary bundle. Auto/None, native TQ disk boundaries,
+  reasoning, exact tool finalization, and process restart need current Electron
+  evidence on `Bonsai-27b-1bit-JANG`.
+- `RELEASE`: `PARTIAL_NO_RELEASE`; no package, signature, notarization, tag,
+  feed, or upload is cleared by this scoped result.
