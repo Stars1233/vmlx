@@ -428,3 +428,45 @@ safety failure, not a pass inferred from MiniMax-M3 Coder Small.
 Verdict: `FAIL-LIVE / PARTIAL-FIX`. Release lock remains active. The host must
 not be exposed to another unchanged REAP32 first prefill merely to obtain a
 green screenshot.
+
+## 2026-07-16 - Bonsai exact-once Qwen stream bound
+
+The user-reported repeated Bonsai reasoning/tool state was reproduced through
+the running Electron dev app, then separated from cache quantization with a
+visible settings and process-argv A/B.
+
+- Pre-fix Responses/Electron traces generated 2,422, 4,335, and 6,316 tokens.
+  The 6,316-token row contained 24,443 raw characters and 46 `<tool_call>`
+  markers while the UI exposed only 57 reasoning characters and duplicate
+  speculative tool status. The final malformed call was correctly rejected.
+- Selecting `None (disable stored quant + live TQ-KV)` in Server Settings
+  produced a new PID with literal `--kv-cache-quantization none`; health showed
+  zero TQ objects/encoded layers. The same failure still took 4,335 tokens.
+  Its first fully canonical, schema-valid `file_info` call occurred at raw
+  character 3,092, followed by roughly 13.5K characters of repetition. This
+  falsifies TurboQuant and stale hybrid-cache reuse as the owning cause.
+- Qwen's parser-wide multi-call behavior remains unchanged. The server now
+  enables its complete-call detector only when the latest user request names
+  exactly one exposed tool and explicitly requires it exactly once. The first
+  closed call must contain every required non-empty argument before the engine
+  request can be stopped; the existing eight-chunk grace window remains.
+- The 423-test parser/server/reasoning/tool-format suite and all 578 engine
+  audit checks pass. The focused Responses regression covers schema
+  validation, truncation, engine abort, one emitted function item, no
+  post-call leak, and preservation of ordinary Qwen multi-call turns. The
+  release manifest is 319/320: one freshness row is blocked by an unrelated
+  pre-existing deletion of
+  `build/current-regression-suite-after-pr-intake-matrix-refresh-20260609.json`.
+- Live TQ-off Electron rows completed in 24.9s/1,195 tokens and 7.0s/279
+  tokens. After restoring the visible KV setting to Auto, the process argv no
+  longer carried the explicit `none` flag, health again showed TQ on the 16
+  attention layers with 48 native SSM companions, and six fresh Electron rows
+  completed in 4.2-7.0s/115-244 tokens. Every row persisted exactly one
+  `file_info({"path":"panel/package.json"})`, one result, and its exact final
+  marker.
+
+Verdict: `VERIFIED-LIVE` for Bonsai's explicit exact-once tool/final contract;
+`PARTIAL` for general reasoning latency and other Qwen multi-call patterns.
+This does not close Bonsai VL (`vl_runtime_available=false`), hybrid SSM
+process-restart restore quarantine, cross-model parser rows, or the release
+gate. Campaign remains `PARTIAL_NO_RELEASE`.
