@@ -515,3 +515,62 @@ Evidence is in
 `VERIFIED-LIVE` only for the ternary Auto/None control, native attention-KV TQ
 store/decode, and the named fresh exact-one-tool rows. Bonsai 1-bit still
 requires a separate current matrix. Campaign remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-16 - Bonsai 1-bit multi-turn exact-once and native TQ matrix
+
+The separate `jangq-ai/Bonsai-27b-1bit-JANG` bundle was inspected and loaded;
+its manifest declares `qwen3_5`, 64 layers, hybrid SSM, profile
+`JANG_AFFINE_1BIT`, storage bit width 1, lossless 2-bit runtime expansion, and
+`actual_bits=1.1128`. The Electron header independently displayed
+`JANG_AFFINE_1BIT (1.1128b)`.
+
+The user's same-chat repeated-tool failure reproduced under explicit UI None.
+The first turn finished in 4.5 seconds with one `file_info`, but the second
+prompt used the phrase `After the real tool result`. Panel source only matched
+the literal `after [the] tool result`, so it failed to activate the existing
+answer-only follow-up rail. Tools remained available on every automatic
+continuation. Row 1620 executed five calls, reopened six reasoning segments,
+generated 3,352 tokens over 92.3 seconds, and required a visible interrupt.
+This source/live A/B assigns the failure to the panel contract detector, not
+1-bit weights, cache quantization, or the Qwen native parser.
+
+The detector now accepts modifiers only within the same bounded `after ...
+tool result` clause while still requiring both `exactly once` and `reply
+exactly`. After the first successful tool result, the follow-up has no tool
+schemas and uses the direct-answer rail. Focused verification passed all 18
+tool-auto-continue tests, a 239-test panel tool/request/chat slice, typecheck,
+and 114 selected TurboQuant/engine-audit tests.
+
+Current Electron proof after rebuilding the main process:
+
+- None: DB, visible select, and PID argv agreed on `none`; the hard-disable
+  health surface had no native TQ storage. Rows 1623 and 1626 formed one clean
+  same-chat two-turn exchange. Each had one reasoning segment, one real
+  `file_info`, one result, and the exact requested final in 3.7-4.6 seconds.
+- Auto: DB and visible select agreed on `auto`; argv omitted the disable flag.
+  Health selected storage-only native TQ8 for the 16 attention-KV positions,
+  left all 48 SSM layers as native companions, and reported live mid-decode
+  encoding disabled. Row 1629 wrote three native TQ blocks.
+- Process restart: the identical fresh-chat row 1632 decoded three persisted
+  native records (`disk_hits=3`, `tq_native_hits=3`) and returned one tool plus
+  the exact final. SSM disk restore was suppressed, so this remains codec
+  correctness plus full/async SSM rederive, not a restart speed-hit claim.
+  Later current counters reached eight native TQ hits.
+- Auto multi-turn: row 1635 used the exact formerly failing `real tool result`
+  wording and finished in 4.2 seconds with one reasoning segment, one
+  `file_info(pyproject.toml)`, one result, and exact final content.
+- Telemetry truthfulness: `TurboQuantKVCache.compress()` is shared by storage
+  encoding and live transitions. Health no longer calls storage-only calls
+  `live_encode_telemetry`; row 1641 produced `storage_encode_telemetry` and
+  `codec_compress_telemetry` while `live_encode_enabled=false`.
+- Starting the 1-bit session through Sessions left exactly one model process.
+  The UI showed 1-bit ACTIVE and ternary INACTIVE; the process list contained
+  only PID 56175 for the 1-bit server. This is a current scoped proof of the
+  gateway single-model swap/unload behavior.
+
+Evidence is in
+`docs/internal/release-gates/20260716_bonsai_1bit_native_tq/`. The scoped
+1-bit Auto/None, exact-one-tool multi-turn, native attention-KV storage/decode,
+telemetry naming, and single-model swap rows are `VERIFIED-LIVE`. Persistent
+SSM restore remains quarantined, ordinary multi-call/long-soak behavior and VL
+remain open, and the campaign stays `PARTIAL_NO_RELEASE`.

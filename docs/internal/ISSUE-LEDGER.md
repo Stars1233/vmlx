@@ -693,3 +693,38 @@ remain open. No public release/notarization/feed mutation performed.
   evidence on `Bonsai-27b-1bit-JANG`.
 - `RELEASE`: `PARTIAL_NO_RELEASE`; no package, signature, notarization, tag,
   feed, or upload is cleared by this scoped result.
+
+## 2026-07-16 - Bonsai 1-bit exact-once continuation and native TQ
+
+- `BONSAI-1BIT-BUNDLE-IDENTITY`: VERIFIED-LIVE. Source manifest says
+  `JANG_AFFINE_1BIT`, storage bits 1, lossless runtime expansion bits 2, actual
+  bits 1.1128; the running Electron header showed the same profile/actual bits.
+- `BONSAI-1BIT-MULTITURN-EXACT-ONCE-PRE-FIX`: FAIL-LIVE. Row 1620 executed five
+  tools and six reasoning segments, generated 3,352 tokens/92.3 seconds, and
+  was interrupted. Source matched only `after [the] tool result`; the live
+  phrase `after the real tool result` therefore retained tool schemas across
+  follow-ups.
+- `BONSAI-1BIT-MULTITURN-EXACT-ONCE-CURRENT`: VERIFIED-LIVE for the bounded
+  contract. The matcher now allows same-clause modifiers but still requires
+  `exactly once` and `reply exactly`. None rows 1623/1626 and Auto rows
+  1632/1635 each persisted one reasoning segment, one named real tool, one
+  result, and exact final content. General multi-call work remains open.
+- `BONSAI-1BIT-TQ-NONE`: VERIFIED-LIVE. Visible select, DB, PID argv, and health
+  agreed on the hard disable; no native TQ counters were present.
+- `BONSAI-1BIT-TQ-AUTO`: VERIFIED-LIVE for storage only. Health resolved native
+  TQ8 on 16 attention layers, 48 native SSM companions, live encode disabled,
+  and persisted native block records.
+- `BONSAI-1BIT-TQ-RESTART`: VERIFIED-LIVE for record integrity. Row 1629 wrote
+  three native blocks; restart row 1632 decoded all three and finished exactly.
+  Current counters later reached `tq_native_hits=8`. SSM persistent restore is
+  still suppressed and receives no speed/cache-token credit.
+- `TQ-HEALTH-TELEMETRY-LABEL`: VERIFIED-LIVE. Storage-only compress calls now
+  surface as `storage_encode_telemetry` plus neutral
+  `codec_compress_telemetry`; `live_encode_telemetry` is absent while
+  `live_encode_enabled=false`.
+- `GATEWAY-SINGLE-MODEL-SWAP`: VERIFIED-LIVE for the ternary-to-1-bit switch.
+  Sessions displayed one ACTIVE 1-bit server and ternary INACTIVE, and the
+  process list contained one local model server.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`; ordinary multi-call soak, VL,
+  cross-family parser rows, all remaining models/protocols, packaging, signing,
+  notarization, feeds, and public release remain open.
