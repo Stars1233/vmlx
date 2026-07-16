@@ -359,3 +359,39 @@ DSV4 can mutate constrained strings in other prompts, so its broader fidelity
 row remains partial. Evidence: `direct-answer-cross-model-current-rows.json`,
 `dsv4-direct-rail1-warm-pass.png`, and
 `dsv4-direct-rail1-warm-health.json` under the active release-gate root.
+
+## 2026-07-15 - Step-3.7 JANGTQ_K attention and Electron tool recovery
+
+Historical Step JANGTQ_K soup is now traced to a current runtime regression,
+not reassigned to the pre-proven bundle. The installed/general JANGTQ P18 QKV
+patch replaced native `Step3p5Attention.__call__` but normalized q/k before the
+head reshape and omitted Step's head-wise `g_proj` sigmoid gate. The corrected
+implementation existed in historical JANG commit `44a3c55` but is not in the
+current JANG main lineage.
+
+- Current vMLX source adds a version-tolerant Step-only guard. It inspects the
+  installed P18 implementation and keeps it only when both post-reshape q/k
+  norm and head-wise gate semantics are present; otherwise it restores the
+  captured native Step attention after hydration. Routed TurboQuant expert
+  paths remain enabled.
+- Focused verification passed 129 tests across `test_jang_loader.py` and the
+  Step VLM/runtime/crash-audit suites.
+- The real Electron log visibly reports that the unsafe P18 patch was detected
+  and native Step attention was restored. Row 1406 then returned exact `4`
+  with coherent reasoning instead of soup.
+- Two subsequent narrated/no-tool probes were invalid setups: current request
+  diagnostics showed `has_tools:false`. After the Chat Settings tool toggle
+  was visibly enabled and the working directory was set to the repo, row 1418
+  executed exactly one `file_info({"path":"panel/package.json"})`, received the
+  real 5.2 KB file result, emitted one concise reasoning segment, and returned
+  exact `STEP-TQ-TOOL4-DONE`. Metrics were 41.5 t/s with 192
+  `paged+mixed_swa` cached tokens.
+- Evidence: `step-jangtq-current-rows.json`, `step-jangtq-health.json`,
+  `step-jangtq-coherence1-pass.png`, `step-jangtq-tool4-pass.png`, and
+  `step-jangtq-attention-guard-log.png` under the active release-gate root.
+
+Step JANGTQ_K coherence and this explicit post-tool contract are
+`VERIFIED-LIVE`; Step VL/media and restart-L2 behavior remain unverified.
+Campaign status stays `PARTIAL_NO_RELEASE`. MiMo and other configured parser
+families still need their own current Electron rows, and no package, signing,
+notary, feed, tag, or public-release action is cleared by this result.

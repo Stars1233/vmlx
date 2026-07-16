@@ -42,7 +42,7 @@ content, reasoning/status inspection, and timing/warning inspection.
 | Gemma4 12B JANG 4M (`gemma4`, mixed SWA/full KV) | Current-source cold/warm/restart Electron rows 1385/1388/1391 | Exactly one `file_info`; one matching result on every row | Exact `GEM4-L2-TOOL1-DONE` on every row | Cold row coherent; warm row restored 156/157 tokens from `memory`; post-restart row restored the same 156 tokens from `disk`. UI Reset Defaults visibly selected legacy Disk Cache, preview/argv emitted `--no-paged-cache --enable-disk-cache`, DB stored `1/0/1/0`, and health recorded 2 disk hits. | `VERIFIED-LIVE`: mixed-SWA correctly uses non-paged prompt L2, not incompatible generic paged blocks. Tool/final/cache persistence all passed. |
 | MiniMax-M2.7 Small JANGTQ (`minimax`, native reasoning) | Pre-fix broad row truncated `panel/package.json` to `panel`. Current-source post-fix broad row passed after slash-preserving native example repair. | Exactly one `file_info` with exact path; one matching result | Exact `MM27-POSTTOOL2-DONE` | Two phase-appropriate reasoning passages; normal tool lifecycle; no warning; `31.0 t/s`; `3,597 paged+tq` cached tokens | `VERIFIED-LIVE` for this row. Broader M2.7 reasoning-mode parity remains separate. |
 | Step-3.7 Flash JANG_K (`step3p7`, hybrid) | Current Electron control row 1355 | Exactly one `file_info`; one matching result | Exact `STEP-JANGK-POSTTOOL2-DONE` | Two coherent reasoning phases; `27.6 t/s`; `448 paged+mixed_swa` cached; no warning | `VERIFIED-LIVE` for the JANG_K control. |
-| Step-3.7 Flash JANGTQ_K (`step3p7`, hybrid) | Current Electron row 1349 ran away for 1,854 reasoning tokens dominated by repeated unrelated words and never reached the tool/final. | No valid completed tool row | Empty | Aborted after 51.4 s; internal docs already distinguish coherent JANG_K from historical 2-bit gate/up JANGTQ_K soup. | `FAIL`: bundle/quant runtime remains red; shared Step runtime is not exonerated solely by source. |
+| Step-3.7 Flash JANGTQ_K (`step3p7`, hybrid) | Historical row 1349 ran away for 1,854 reasoning tokens. Current source restores native Step attention when the installed generic P18 patch lacks post-reshape q/k norms and the head-wise gate. Electron row 1418 passed after tools and workspace were visibly enabled. | Exactly one `file_info` with exact `panel/package.json`; one real result | Exact `STEP-TQ-TOOL4-DONE` | One concise reasoning segment; normal tool lifecycle; no warning; `41.5 t/s`; 192 `paged+mixed_swa` cached. Electron Logs visibly record the native-attention correctness guard. | `VERIFIED-LIVE` for current coherence and this post-tool row. Rows 1409/1412 were invalid tool setups (`has_tools:false`), not parser failures. Broader Step VL/media and restart-L2 gates remain separate. |
 | Nemotron Omni Nano JANGTQ (`nemotron-h`, hybrid SSM) | Two pre-fix rows duplicated the requested final marker. The broad agent prompt repeated its final-response directive and exact-output suppression required a colon. Rebuilt Electron row 1364 passed. | Exactly one `file_info`; one matching result | Exact single `NEMO-POSTTOOL3-DONE` | Two coherent reasoning phases; `paged+ssm+disk+tq`; no warning | `VERIFIED-LIVE` after prompt dedup/exact-output detection repair. |
 | MiMo and other configured families | No current Electron row for this exact failure class | Untested | Untested | Untested | `UNTESTED`; do not infer parity from shared panel code or older API-only runs. |
 
@@ -67,9 +67,12 @@ Relevant screenshots include `hy3-posttool1-pass.png`,
 Nemotron, MiniMax-M2.7, and DSV4 are in
 `direct-answer-cross-model-current-rows.json`; DSV4 visual/health evidence is
 `dsv4-direct-rail1-warm-pass.png` and `dsv4-direct-rail1-warm-health.json`.
+Current Step JANGTQ_K evidence is in `step-jangtq-current-rows.json`,
+`step-jangtq-health.json`, `step-jangtq-coherence1-pass.png`,
+`step-jangtq-tool4-pass.png`, and `step-jangtq-attention-guard-log.png`.
 
 Release boundary: `PARTIAL_NO_RELEASE`. This matrix does not clear Laguna
 speed, HY3 measured MTP benefit, DSV4 exact-output fidelity, M3 exact image
-OCR, Step JANGTQ_K coherence, Bonsai hybrid L2 restart reuse, remaining
+OCR, Step VL/media and restart-L2 behavior, Bonsai hybrid L2 restart reuse, remaining
 model-family post-tool rows, package integrity, signing,
 notarization, updater feeds, or public release.
