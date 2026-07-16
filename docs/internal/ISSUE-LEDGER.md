@@ -555,3 +555,37 @@ remain open. No public release/notarization/feed mutation performed.
   call, no duplicate reasoning cards, visible final `content` delta/done,
   parser-family correctness, no generic fallback mispromotion, and cache detail
   truth. Release boundary remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-16 - OpenPangu follow-up: prompt/status fixed, live output still red
+
+- `OPENPANGU-PROMPT-FALLBACK`: SOURCE-PASS / LIVE-FAIL. Source now treats
+  `openpangu` / `openpangu_v2` as its own native fallback family, keeps the
+  template `tools` kwarg narrowed to explicitly requested tools, and injects a
+  request-bound JSON-list example in the real
+  `<|tool_call_start|> ... <|tool_call_end|>` format. Focused tests passed
+  41/41 selected (`tests/test_openpangu_v2.py`,
+  `tests/test_tool_prompt_fallback.py`, `tests/test_openpangu_tool_parser.py`).
+  Live Electron row `[PG2-UI-TOOL1]` still failed: Pangu emitted malformed
+  reasoning text, no `tool_calls_oai_json`, no tool result, and had to be
+  interrupted after 125.2s.
+- `OPENPANGU-MTP-HEALTH`: FIXED+VERIFIED-LIVE for status reporting only.
+  `native_mtp.inspect_native_mtp_bundle` now accepts openPangu's documented
+  included MTP layers stored as extra `model.layers.46-48` rather than `mtp.*`
+  keys and reports `weights_present_runtime_unwired` with
+  `runtime_mtp_mode=included_but_dropped_for_runtime`. After UI restart on PID
+  replacement, `/health` reported `issues: []`, `runtime_supported:false`, and
+  `runtime_available:false`.
+- `OPENPANGU-CACHE-ARCHITECTURE`: VERIFIED-LIVE as no generic reuse. Running
+  server argv includes `--disable-prefix-cache`; health reports
+  `openpangu_v2_composite_v1`, components `mla_latent_kv`,
+  `dsa_indexer_state`, `swa_rotating_window`, and
+  `path_dependent_conv_state`, with generic prefix/paged/prompt-L2/block-L2 all
+  false/unsupported. Do not enable generic paged/L2 for Pangu until a typed
+  composite prompt-boundary codec exists.
+- `OPENPANGU-RUNTIME-COHERENCE`: FAIL-LIVE. API diagnostics against the same
+  live server show the issue is below UI finalization: a simple
+  `Answer exactly: PANGU-SIMPLE-OK` prompt loops/corrupts the marker under both
+  thinking off and thinking on, and a tool prompt emits malformed native JSON
+  (`{"name: "file_info"...}`) that the strict parser correctly rejects. Treat
+  Pangu tool/parser rows as blocked by runtime/quant/template coherence until
+  the base generation row is coherent.
