@@ -462,3 +462,49 @@ Codex live-Electron pass returned NO_SHIP_LIVE_ELECTRON_UI with 10 defects API/c
 Campaign status remains `PARTIAL_NO_RELEASE`: Laguna decode speed, measured
 Hy3 MTP benefit, DSV4 exact-marker fidelity, and M3 image-character exactness
 remain open. No public release/notarization/feed mutation performed.
+
+## 2026-07-15 — CURRENT-ELECTRON-CROSS-MODEL-CONTINUATION
+
+- `BONSAI-REPEATED-REASONING`: VERIFIED-LIVE for the current single-tool loop.
+  The original row 1289 was a genuine failure: five reasoning fragments,
+  4,604 generated tokens, one completed tool, and empty visible content. Two
+  later probes exposed a second form: the post-tool model re-entered native
+  tool generation indefinitely. Source now recognizes only the explicit
+  `exactly once` + `after the tool result` + `reply exactly` contract and sends
+  its planned follow-up without tools on the direct-answer rail. Rebuilt rows
+  1373/1376/1379 each made one tool call and one exact final; row 1379 restored
+  158/159 prompt tokens from `paged+ssm`.
+- `BONSAI-HYBRID-L2-RESTART`: PARTIAL. Process-restart row 1382 remained
+  coherent/exact but restored zero cached prompt tokens. Qwen hybrid SSM L2
+  restore is intentionally quarantined after cross-restart numeric divergence;
+  block-L2 remains populated but the runtime full-prefills on the missing SSM
+  companion. Do not promote this to an L2 restart pass.
+- `NEMOTRON-DUPLICATE-FINAL`: VERIFIED-LIVE. The broad agent prompt contained
+  the final-response directive twice, and the exact-output suppression matched
+  only `reply exactly:`. Nemotron therefore emitted the marker twice in rows
+  1358/1361. Current source removes the duplicate directive and recognizes
+  ordinary `reply exactly MARKER`; rebuilt row 1364 produced one tool, one
+  marker, `paged+ssm+disk+tq`, and no warning.
+- `STEP-JANGTQ-K-COHERENCE`: FAIL. Row 1349 produced 1,854 runaway reasoning
+  tokens and no valid tool/final. The JANG_K control row 1355 passed exactly
+  one `file_info`, exact final content, two coherent reasoning phases, and
+  `paged+mixed_swa` cache. This narrows the failure toward the JANGTQ_K
+  bundle/quant path without declaring the shared runtime globally cleared.
+- `CACHE-TUPLE-NORMALIZATION`: VERIFIED-LIVE for mutual exclusion. Current
+  source normalizes persisted `paged=true + legacy-disk=true + block-L2=true`
+  sessions to `paged=true + legacy=false + block-L2=true` independent of
+  migration version. A rebuilt Electron constructor changed the stale Step
+  JANGTQ_K row in the real profile; 276 focused session/settings tests and
+  typecheck passed. Gemma's older all-off cache default remains a separate red
+  row.
+- `MANUAL-SINGLE-MODEL`: VERIFIED-LIVE. Starting Step JANG_K from Sessions
+  while Zaya was active logged the explicit stop-before-start transition and
+  the engine-process count stayed exactly one through loading. Later
+  Nemotron-to-Bonsai swap reproduced the same behavior.
+- `ZAYA-SPECIALIST-UI-TRUTH`: OPEN. The configured Zaya path is an AppleScript
+  specialist whose README defines only `run_applescript`; the main process
+  correctly filters generic tools, but Chat Settings still visually exposes
+  unrelated File/Search/Shell categories. Generic `file_info` probes are
+  out-of-contract and ended without final content.
+- Release boundary remains `PARTIAL_NO_RELEASE`. No package, sign, notarize,
+  tag, feed, or public-release mutation is authorized.

@@ -278,3 +278,30 @@ Campaign remains `PARTIAL_NO_RELEASE`. The remaining untested model/parser
 families still need current Electron post-tool rows; all
 previously listed model, settings, cache, media, package, signing, notary,
 feed, and release gates remain in force.
+
+## 2026-07-15 - Step, Nemotron, Bonsai and cache/settings continuation
+
+- Fresh Electron session creation for Nemotron and Step JANG_K visually showed
+  prefix on, paged on, block-L2 on, and legacy disk off; DB, argv, and health
+  matched. The stale Step JANGTQ_K impossible `1/1/1` cache tuple was normalized
+  to `1/0/1` on a rebuilt Electron constructor run.
+- Manual single-model mode is now enforced by `startSession`, not only gateway
+  routing. Live Zaya -> Step and Nemotron -> Bonsai swaps stopped the prior
+  process first and kept exactly one engine during load.
+- Step JANGTQ_K is red: 1,854 runaway reasoning tokens, no valid final. Step
+  JANG_K control passed one exact tool/final row with `paged+mixed_swa` reuse.
+- Nemotron initially duplicated its exact final twice. Source tracing found a
+  duplicated final-response rule and a colon-only exact-output detector.
+  After prompt repair, rebuilt row 1364 made one tool call and one exact final
+  with `paged+ssm+disk+tq` detail.
+- The current Bonsai exact-tool path no longer repeats reasoning or hangs in a
+  second tool prefix. Rebuilt rows 1373/1376/1379 made one tool call and one
+  exact final; identical warm row 1379 restored 158/159 tokens as
+  `paged+ssm`. A process restart remained exact but restored zero tokens, so
+  hybrid SSM L2 restart reuse remains PARTIAL under the current quarantine.
+- Focused verification passed: 97 prompt/tool tests, 276 session/settings
+  tests, 33 Zaya prompt tests, and TypeScript typecheck. Full-suite and release
+  gates remain pending.
+- Evidence root:
+  `docs/internal/release-gates/20260715_140235_hy3_dsv4_mm3_exhaustive_electron/`.
+- Campaign remains `PARTIAL_NO_RELEASE`; no release-adjacent command ran.
