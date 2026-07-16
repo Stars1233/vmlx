@@ -519,3 +519,39 @@ remain open. No public release/notarization/feed mutation performed.
   out-of-contract and ended without final content.
 - Release boundary remains `PARTIAL_NO_RELEASE`. No package, sign, notarize,
   tag, feed, or public-release mutation is authorized.
+
+## 2026-07-16 - OpenPangu and cross-model reasoning/tool finalization correction
+
+- `OPENPANGU-CACHE-PARITY`: VERIFIED-LIVE for settings/argv/health only.
+  Electron launched PID 15972 with `--tool-call-parser openpangu`,
+  `--enable-auto-tool-choice`, `--reasoning-parser deepseek_r1`, and
+  `--disable-prefix-cache`; health reported `openpangu_v2_composite_v1` with
+  prefix, paged, prompt-L2, and block-L2 all inactive and zero cache hits.
+- `OPENPANGU-STRICT-NATIVE-PARSER`: SOURCE-PASS / LIVE-PARTIAL. The parser now
+  declares strict native ownership so malformed `<|tool_call_start|>` debris is
+  not reinterpreted by generic repair as another executable tool family. Focused
+  parser/openPangu tests pass 38/38, and the added server regression reproduces
+  the live malformed `search_files` promotion and returns no call.
+- `OPENPANGU-AGENTIC-TOOLS`: FAIL-LIVE. Before the strict parser guard, Electron
+  row 1467 promoted gibberish into a wrong `search_files` call with malformed
+  args and executed it. After the guard, row 1470 no longer had
+  `tool_calls_oai_json` or tool results, but it still stalled in
+  "Generating tool call..." after 7 tokens/89.4s and had to be interrupted.
+  Do not claim openPangu tool/final completion works.
+- `BONSAI-B1-UI-TOOL3-REGRESSION`: REOPENED/UNVERIFIED-CURRENT. Earlier rows
+  1443/1446 and screenshots `b1-ui-tool10-*` remain valid evidence for that
+  exact prompt/settings state, but the user's later live `B1-UI-TOOL3` report
+  shows repeated reasoning cards, one `Info panel/package.json` result, and no
+  final content. Current HEAD rerun row 1473 did finish one real
+  `file_info` call and exact `B1-UI-TOOL3-RERUN-DONE` with one persisted
+  reasoning segment, so missing-final was not reproduced in that fresh chat.
+  However it generated 3,617 tokens over 103.2s before the tool closed, with
+  only 28 visible reasoning characters and the UI showing tool-call buffering.
+  Treat the user-visible repeated/stuck reasoning symptom as abnormal and keep
+  Bonsai `FUNCTIONAL PASS / PERF-HIDDEN-GEN PARTIAL`.
+- `CROSS-MODEL-POST-TOOL-FINALIZATION`: OPEN. Add Bonsai 1-bit, Bonsai
+  ternary, openPangu, MiniMax-M3, DSV4, HY3, Laguna, Step, Nemotron, Mistral,
+  Gemma, LFM, Qwen, and Zaya to the current retest matrix for: one real tool
+  call, no duplicate reasoning cards, visible final `content` delta/done,
+  parser-family correctness, no generic fallback mispromotion, and cache detail
+  truth. Release boundary remains `PARTIAL_NO_RELEASE`.
