@@ -589,3 +589,40 @@ remain open. No public release/notarization/feed mutation performed.
   (`{"name: "file_info"...}`) that the strict parser correctly rejects. Treat
   Pangu tool/parser rows as blocked by runtime/quant/template coherence until
   the base generation row is coherent.
+
+## 2026-07-16 - OpenPangu parser repair source/API partial, Electron still red
+
+- `OPENPANGU-NATIVE-PARSER-TRUNCATION`: SOURCE-PASS / API-PARTIAL. The
+  dedicated parser now accepts only bounded openPangu-native truncations: a
+  whole-turn native JSON-list payload, optionally detagged by tokenizer decode,
+  whose tool-call object is complete but whose closing list bracket or
+  `<|tool_call_end|>` sentinel is missing. It still rejects missing object
+  braces, embedded prose, and trailing commentary. Focused openPangu tests pass
+  47/47 selected across `tests/test_openpangu_tool_parser.py`,
+  `tests/test_tool_prompt_fallback.py`, and `tests/test_openpangu_v2.py`.
+- `OPENPANGU-RESPONSES-FIRST-CALL`: API-PASS for first-call extraction only.
+  After UI restart of `jangq-ai/openPangu-2.0-Flash-JANG_2L`, direct
+  `/v1/chat/completions` with `enable_thinking:false` returned
+  `finish_reason:"tool_calls"` and one `file_info` call with
+  `{"path":"panel/package.json"}`. Direct non-stream `/v1/responses` with
+  `enable_thinking:false` returned one `output[].type="function_call"` for the
+  same tool/path. This does not prove post-tool final content.
+- `OPENPANGU-POST-TOOL-FINAL`: LIVE-FAIL. Direct two-step API continuation
+  after a valid `file_info` result did not emit the exact requested marker; it
+  generated corrupted/repeated text such as `PG2-FINAL2-D-ONE-2000...` or
+  summaries and ended by length. Do not claim openPangu full agent loop works.
+- `OPENPANGU-ELECTRON-FRESH-TOOLS`: LIVE-FAIL. Fresh Electron chat
+  `d3e7ec71-3eba-4b36-ad88-24b8d586e138` with DB-verified
+  `chat_overrides.enable_thinking=0` and built-in tools enabled still failed:
+  `[PG2-UI-FRESH1]` hung in tool buffering and was interrupted after 77.7s with
+  zero tokens; after streaming parser repair and restart, `[PG2-UI-FRESH2]`
+  finished in 0.9s with the visible warning
+  `The 'openpangu' native tool parser did not produce a schema-valid function
+  call`, no `tool_calls_oai_json`, and no tool result. Screenshot:
+  `/tmp/pangu-ui-fresh2-zero-tool-red.png`.
+- `CHAT-SETTINGS-THINKING-OFF-PERSISTENCE`: VERIFIED-LIVE for the fresh Pangu
+  chat only. The first automated Off+Save attempt clicked the wrong `Save`
+  button and left `enable_thinking=NULL`; the correct Chat Settings Save button
+  at the inference panel persisted `enable_thinking=0` in
+  `chat_overrides`. This confirms the setting can persist, but the row above
+  proves it is not sufficient to make Pangu Electron tool use pass.
