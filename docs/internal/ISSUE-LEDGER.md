@@ -38,6 +38,20 @@ Status: OPEN / FIXED / VERIFIED-LIVE / WONTFIX / NOT-A-DEFECT / BUNDLE / BASELIN
 | A-lag | M | Laguna cannot reach documented SWA opt-in loader path | VERIFIED-LIVE | LIVE | Dedicated loader reached opt-in: 10 full-attention TQ + 30 RotatingKVCache; warm 601-token `memory+tq`, exact output. |
 | seed | L | text chat/completions ignore `seed` (image endpoints only) | VERIFIED-LIVE | LIVE | Request-local keyed sampling wired through chat/completions/Responses/Anthropic/Ollama and MTP. Fresh-cache same-seed completion byte-identical, different seed diverged; SSE produced visible `STREAM-SEED-OK`. |
 | #45 F1 | M | q4 stored-prefix cold != warm first-token divergence | OPEN (awaits Eric) | LIVE (3 models) | inherent to q4 store; needs per-family gate |
+| M3-stream-zero | H | MiniMax-M3 tools-enabled media turn could buffer invalid XML, erase the visible answer, and render a completed zero-tool card | VERIFIED-LIVE (current source) | LIVE Electron + focused tests | Finalizer hides invalid control suffix; renderer hides completed speculative zero-tool heartbeat; M3 late answer pass runs only after parser proves no valid call. Current image/video turns produce visible grounded output with no zero-tool card, and the genuine-tool post-fix row still executes exactly one `file_info`. |
+| M3-nonstream-parity | H | MiniMax-M3 non-stream Chat/Responses may skip its bounded visible-answer fallback whenever tools are merely available | VERIFIED-LIVE (current source) | 2 functional tests + live API after Electron restart | Non-stream Chat/Responses now late-arm the bounded M3 answer pass only when no schema-valid call exists. Live tools-available/no-call markers returned exactly `MM3-NONSTREAM-RESP-DONE` and `MM3-NONSTREAM-CHAT-DONE`. |
+| M3-cache-settings | M | M3 paged/block-L2 UI defaults and setting changes could diverge from spawned CLI/health | VERIFIED-LIVE (current source) | LIVE Electron settings + process argv + health | Default Session Settings matched CLI/health; `15% -> 12% -> 15%` Save & Restart cycle changed process argv and L1 ceiling while preserving native paged/block-L2. |
+| M3-image-exact-ocr | L | M3 grounded image response is character-inexact on deterministic marker (`1` read as `I`) | OPEN | LIVE Electron | Image transport and tool path passed; do not call exact visual extraction green until the marker is byte-exact. |
+| Bonsai-1bit-current | H | Bonsai 1-bit current-source runtime needed live quant/cache/coherence/parser proof | VERIFIED-LIVE (current source) | LIVE Electron + `/health` + Responses API | UI-selected `jangq-ai/Bonsai-27b-1bit-JANG` loaded as `JANG_AFFINE_1BIT` actual bits `1.1128`; exact marker and exact recall passed with `paged+ssm`; health showed block-L2 and SSM companion disk stores; Responses and Electron both executed exactly one `file_info`. |
+| Bonsai-ternary-current | H | Bonsai ternary current-source runtime needed live quant/cache/coherence/parser proof | VERIFIED-LIVE (current source) | LIVE Electron + `/health` + Responses API | UI-selected `jangq-ai/Bonsai-27b-Ternary-JANG` loaded as `JANG_AFFINE_TERNARY_2BIT` actual bits `2.0959`; exact marker and exact recall passed with `247 paged+ssm cached`; health showed block-L2 and SSM companion disk stores; Responses streaming tool parser emitted `file_info`. |
+| Bonsai-ui-tool-exec | M | Bonsai Electron built-in tool execution could complete the tool but end in repeated reasoning-only retries with no visible answer | VERIFIED-LIVE (current source) | LIVE Electron + DB row + focused tests | One bounded answer-only recovery replaces three generic retries. The live row persisted one `file_info`, one real result, exact `B1-UI-TOOL5-DONE`, two phase-appropriate reasoning segments, and a measured `41.9 t/s`. |
+| DSV4-crack-cache-current | H | DSV4 Flash CRACK current-source native composite cache needed live verification | VERIFIED-LIVE (current source) | LIVE Electron + `/health` | UI-selected configured DSV4 CRACK session loaded `deepseek_v4_v7` native composite cache with SWA/CSA/HCA pools, pool quant, generic TQ KV forced off, paged and block-L2 on. Arithmetic and recall passed with `paged+dsv4`; health showed DSV4BatchGenerator and block-L2 hits. |
+| DSV4-crack-exact-marker | M | DSV4 Flash CRACK exact marker fidelity is not byte-exact | OPEN/PARTIAL | LIVE Electron | Requested `DSV4-CURRENT-COHERENT-DONE`, returned `DSV4-CURRENT-COHERENT-DENDONE`. Coherence/cache rows pass, but exact-output harnesses should stay red. |
+| Laguna-current-cache | H | Laguna-M.1 current-source prompt/cache path needed live verification | VERIFIED-LIVE (current source) | LIVE Electron + `/health` | UI-selected `jangq-ai/Laguna-M.1-JANG_2L` loaded `laguna` `plain_kv_v1`, paged KV, q4 stored-prefix TQ, prefix+paged+block-L2 on. Exact marker and recall passed with `paged+tq`; block-L2 hits recorded. |
+| Laguna-speed | M | Laguna-M.1 remains far below expected decode speed | OPEN | LIVE Electron + prior dedicated bench | Current UI rows still around `24 tok/s`; correctness/cache is not a speed pass. |
+| HY3-mtp-depth1-active | H | HY3 MTP depth-1 must be actually present and active, not metadata-only | VERIFIED-LIVE (current source) | LIVE Electron + `/health` | UI-selected `jangq-ai/Hy3-JANG_2K-MTP`; config/jang/index all show one MTP layer, `42` tensors, `runtime_active=true`, `effective_depth=1`, text scope. Exact output and recall passed. |
+| HY3-mtp-speedup | M | HY3 MTP depth-1 may be active without measurable speedup | OPEN/PARTIAL | LIVE Electron + `/health` | Health says `speculative_decoding=not_configured` and exposes no acceptance/speedup counters. Current rows run `26-34 tok/s`; activation is proven, net speedup is not. |
+| cache-default-parity-current | H | Paged cache and block-L2 defaults must be on by default and match UI/session/CLI/health | PARTIAL-LIVE | Session DB + process argv + health + M3 visual UI | M3 visual settings and save/restart parity passed. Session DB for M3/Bonsai/DSV4/Laguna/HY3 has prefix+paged+block-L2 on, 1000 blocks, 10GB L2, 15% memory; active HY3 process argv matches. Non-M3 settings-panel visual toggle proof remains partial because the UI opened an older session detail. |
 
 ## OPEN — bundle / quant (NOT engine defects)
 | ID | Sev | Issue | Status | Evidence | Notes |
@@ -390,3 +404,54 @@ across passes; pass-4 GO-WITH-CHANGES → renderer OFF-branch added → GO).
 EXCLUDES pending #98 (MLLM paged byte-ceiling). Author Jinho Jang.
 STATUS: committed max2, push + box sync in flight; NEXT live Electron per-family
 matrix (UI toggle == /tmp/vmlx-dev.log launch flag).
+
+## Post-v1.6.8 live-Electron campaign (2026-07-13, Codex gpt-5.6-sol drove real dev app CDP :9333)
+Codex live-Electron pass returned NO_SHIP_LIVE_ELECTRON_UI with 10 defects API/curl testing missed. Dual-agent fix loop (Codex = live UI eyes, Claude = root-cause + fix). All results LIVE on the running dev app at commit 3e71d82e / dae7336f4.
+
+| ID | Sev | Issue | Status | Fix | Live proof |
+|----|-----|-------|--------|-----|-----------|
+| LE1 | H | existing-session cache edits not persisted — save clears dirty state but migration reset stored paged/L2/%/max-out to family defaults; engine launched --no-paged-cache --cache-memory-percent 0.15 no --max-tokens while UI showed paged/L2/19%/2048 | VERIFIED-LIVE | f0d0661bf (sessions.ts: migrate stored baseline first, merge user edits on top) | Codex A3: saved config + launched argv both show --cache-memory-percent 0.19 --use-paged-cache --enable-block-disk-cache --max-tokens 2048 |
+| LE2 | M | CLI preview omitted --cache-memory-mb/percent under paged (H1 regression: dropped guard in sessions.ts real emit but not preview copy) | VERIFIED-LIVE | f0d0661bf (SessionSettings.tsx) | Codex A2: preview shows --cache-memory-percent 0.17 + --cache-memory-mb 1024 under paged |
+| LE3 | L | paired number/range sliders off by one (Block 64/65, MaxBlocks 1000/1001, MaxOut 512/513, MaxCtx 1024/1025) — min=1 off-steps the range grid (1+k*step) | VERIFIED-LIVE | 3e71d82e9 (SliderField: anchor range track to step grid) | Codex A1: number==range for all 4 controls |
+| LE4 | M | Zaya double-wrapped tool args {"path":{"path":..,"offset":..}} -> tool rejects path-as-object -> model loops to iteration guard | FIXED (nested shape eliminated live); residual is model trait | dae7336f4 (zaya_tool_parser _unwrap_double_wrapped + 2 unit tests) | Codex Zaya restart PID 82010: nested {"path":{...}} NO LONGER occurs, 0 Dropping / 0 must-be-of-type-string lines |
+| LE5 | H | Zaya tool calls still fail — model emits AppleScript programs as path value + colon garbage, or no tool call (natural prompt) burns 2048 budget empty | NOT-A-DEFECT (model trait) | n/a — Zaya-8B-JANG_4M trained/quantized AppleScript persona; parser extracts faithfully | Codex Zaya: 3 calls all AppleScript/garbage path after double-wrap fix; parser not at fault |
+| LE6 | M | LFM2.5 multiturn "contamination" (T3 repeats stale CODEWORD STORED suffix) | NOT-A-DEFECT (model/transcript conditioning) | n/a | Codex cache-ON vs cache-OFF (--disable-prefix-cache, SSM companion disabled, 0 cache telemetry) IDENTICAL failure; arithmetic passes at 2048 |
+| LE7 | M | Gemma-4-12B-JANG_4M VL grounding unreliable (screenshot hallucinated, red->salmon) | NOT-A-DEFECT (4-bit VL quant quality; plumbing OK) | n/a | Codex red-square control: model saw uniform red field (vision wired); media.items=1 data_url=1 --is-mllm |
+| LE8 | L | Gemma "Reasoning Off not honored" (engine enable_thinking=True despite drawer Off) | NOT-A-DEFECT | n/a — stored chat_overrides.enable_thinking was NULL (Auto) for tested chat; another Gemma chat has 0 persisted fine | DB check: chat 0e455c49 enable_thinking NULL; d1a2c0b4 enable_thinking 0. Request builder correct. |
+| LE9 | L | chat model-selection reverts to stopped/other model after nav (composer disabled) — raw path-string match missed the chat model under an aliased path | VERIFIED-LIVE | e498912b5 (App.tsx handleChatSelect matches by shared modelIdentity/sessionMatchesModelPath) | Codex live: alias-backed LFM chat bound to running /Volumes LFM session (composer enabled), survived nav-away/reselect AND two-running-model (Zaya+LFM) test — did NOT fall back to Zaya |
+| LE10 | L | starting a session whose path is a dead symlink threw Model-not-found though the same model exists at a valid path | VERIFIED-LIVE | e498912b5 (sessions.ts re-resolve by identity, single-match only) + ccb31dfea (guard persist vs UNIQUE) | Live dev-app: log "re-resolved by identity to /Volumes/...", engine launched /Volumes path on :8001, 0 Model-not-found, 0 UNIQUE/persist errors |
+| LE11 | H | replayed prior tool calls/results were unioned into each new assistant row, causing super-linear prompt growth | VERIFIED-LIVE | a74d68b86 (`currentTurnToolStart` + current-turn-only harvest) | Existing Electron app over CDP :9333, external LFM2.5 Responses tools: controlled prompt `1465 -> 1641 -> 1817 -> 1946`, byte-identical resend at `1946`; chat DB and `[CHAT_DIAG]` show no prior-turn union. Verdict `/tmp/codex-toolhistory-verdict.md`. |
+
+## 2026-07-15 — LIVE-ELECTRON-GATEWAY-CACHE-TOOLS: scoped current-source continuation
+
+- `GATEWAY-BOUND-PORT`: VERIFIED-LIVE. With installed vMLX owning wildcard
+  `8080`, the dev gateway fell back to `*:8081`; the API UI and DB now display
+  the actual bound port, and LAN `/health` was reachable from the controlling
+  Mac. Restored to `127.0.0.1:8080` afterward.
+- `SINGLE-MODEL-SWAP`: VERIFIED-LIVE. Gateway Bonsai -> Hy3 -> Bonsai requests
+  killed the previous engine PID before loading the target; only one local
+  model remained resident. Responses deltas stayed incremental through swap.
+- `CACHE-SETTINGS-ENFORCE`: VERIFIED-LIVE on Hy3. Visible Max Blocks edit
+  changed UI/DB/argv/health `1000 -> 900`, then restored all four to `1000`.
+  Prefix, paged, block-L2, 15%, 64-block, 1000-block, 10GB, and KV-auto values
+  were visually expanded and matched the live process.
+- `I18N-ALL-SHIPPED`: VERIFIED-LIVE for zh/ko/ja/es/en API controls; all five
+  catalogs have the same 978 flattened keys. English was restored.
+- `BONSAI-UI-TOOLS`: VERIFIED-LIVE after correcting the old invalid setup
+  (that chat had builtin/file/search tools disabled). Fresh default-thinking
+  row persisted exactly one `file_info`, its real result, and exact
+  `B1-UI-TOOL5-DONE`.
+- `POST-TOOL-REASONING-RETRY`: FIXED+VERIFIED-LIVE. A valid pre-fix row made
+  one tool call, then four reasoning-only continuations and no content (five
+  fragment cards, 4,604 tokens). The panel now performs at most one explicit
+  answer-only recovery, removes tool schemas only for that retry, uses the
+  local direct rail, and surfaces an error if content remains empty. Live row
+  produced two phase-appropriate reasoning segments and exact final content.
+- `POST-TOOL-TPS`: FIXED+VERIFIED-LIVE. Final metrics retain the rolling
+  streamed rate when Responses buffering makes cumulative delta-arrival time
+  invalid. Live changed from impossible `261-565 t/s` to `41.9 t/s`, matching
+  the measured stream.
+
+Campaign status remains `PARTIAL_NO_RELEASE`: Laguna decode speed, measured
+Hy3 MTP benefit, DSV4 exact-marker fidelity, and M3 image-character exactness
+remain open. No public release/notarization/feed mutation performed.
