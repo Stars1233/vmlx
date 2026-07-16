@@ -1,5 +1,77 @@
 # openPangu-2.0-Flash (openpangu_v2) — vmlx Python integration campaign
 
+## Authoritative 2026-07-16 correction — JANG_3M runtime and typed cache
+
+Status: `SCOPED_OPENPANGU_3M_RUNTIME_TOOL_TYPED_CACHE_PASS_BROAD_RELEASE_GATE_OPEN`.
+
+This section supersedes the older integration table and the older conclusion
+that openPangu must run with all prefix reuse disabled. The production cache is
+not generic paged KV and it is not TurboQuant. It is an exact typed composite
+record containing MLA latent KV, DSA indexer state, rotating-SWA metadata, and
+all three path-dependent causal-convolution states. Memory reuse and prompt-
+level disk L2 are enabled; generic paged blocks, block L2, reverse truncation,
+generic q4/q8, and TurboQuant KV remain disabled.
+
+Current source trace:
+
+- `vmlx_engine/models/openpangu_v2/cache.py:45-209` owns typed
+  `from_state` and non-aliasing clone/restore of KV, DSA, SWA metadata, and
+  three convolution states.
+- `vmlx_engine/utils/single_batch_generator.py:749-785` captures the immutable
+  exact N-1 prompt boundary before the final prompt token mutates live state.
+- `vmlx_engine/scheduler.py:403-426` selects the exact memory/prompt-L2 lane
+  and rejects generic paged/block codecs; `vmlx_engine/cli.py:232-250` forces
+  generic q4/q8 and TurboQuant KV off for this family.
+- `vmlx_engine/models/openpangu_v2/openpangu_v2.py:230-235` logs real sparse
+  DSA activation and `:689-723` executes and reports the full model topology.
+- `vmlx_engine/utils/jang_loader.py:2773-3288` fails closed on incomplete
+  weight landing, including all causal convolution leaves.
+- `panel/src/main/sessions.ts:660-708,3322-3440` normalizes and launches the
+  same policy. `SessionConfigForm.tsx:798-825,1048-1119` displays the typed
+  policy and now says `TURBOQUANT OFF` explicitly for openPangu.
+
+Current live Electron evidence on `erics-m5-max.local`:
+
+- Bundle `/Volumes/EricsLLMDrive/jangq-ai/openPangu-2.0-Flash-JANG_3M`, current
+  dev app, model process PID 38511, port 8027.
+- Launch argv contains `--cache-memory-percent 0.15 --no-paged-cache
+  --enable-disk-cache`; it contains no q4/q8 or TurboQuant cache flag.
+- Startup logs report `2826/2826 parameter leaves`, all 46 decoder layers,
+  all 138 causal convolutions, and `VMLX_DISABLE_TQ_KV=1`.
+- The 2,104-token live forward crossed the DSA sparse threshold in every DSA
+  layer `0,3,...,45`. The same pass reported all 46 runtime layers,
+  `DSA=16`, `SWA=30`, `mHC_streams=4`, `attention_sinks=128`,
+  `MLA_kv_rank=512`, `SWA_windows=[512]`, and `max_context=524288`.
+- Electron row 1527 restored 2,075/2,076 prompt tokens from disk after a
+  process restart, executed exactly one
+  `file_info({"path":"panel/package.json"})`, and finalized only
+  `PG3M-CACHE-20260716-A-DONE`. Metrics: 17.0 tok/s, 0.40s TTFT, 28.8s total.
+- Post-run cache stats report disk hits 2/2 and 4,178 restored tokens,
+  `turboquant_kv_cache.enabled=false`, `kv_cache_quantization.enabled=false`,
+  no reconstruction, and no dequantization.
+- Electron Server Settings visibly shows `openPangu typed composite cache`,
+  `TURBOQUANT OFF`, stored quantization `None`, prefix on, prompt disk L2 on,
+  paged/block L2 off.
+- Current focused suites passed: 173 Python parser/server/runtime tests (three
+  intentional deselections), 287 panel settings/tool-status tests, and the
+  TypeScript typecheck. The broader engine audit passed 578/578 after its
+  block-cache scope assertion was re-anchored on the owning scope key and its
+  stale MiMo native-schema assertion was aligned with the current contract.
+
+Evidence root:
+`docs/internal/release-gates/20260716_openpangu_typed_cache_electron/`.
+
+Still open and therefore not release-cleared:
+
+- The configured three MTP layers are detected but dropped by this runtime;
+  no MTP speedup is claimed.
+- The architecture advertises 524,288 tokens, but this gate exercised 2,104
+  tokens, not a 512K context soak or needle test.
+- A current 15-turn soak, every API compatibility surface, concurrent-request
+  queueing, and the remaining cross-model reasoning/finalization matrix remain
+  open.
+- No package, signing, notarization, tag, feed, or public release was produced.
+
 **Started 2026-07-02.** Living status board — update as work lands. Scope set by Eric
 (verbatim intent): PR reviews #223/#218 grounded-commented (DONE, posted), then
 "analyze and read all about openpangu and start the integration for all autodetect

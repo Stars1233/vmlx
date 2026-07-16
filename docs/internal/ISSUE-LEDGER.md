@@ -626,3 +626,38 @@ remain open. No public release/notarization/feed mutation performed.
   at the inference panel persisted `enable_thinking=0` in
   `chat_overrides`. This confirms the setting can persist, but the row above
   proves it is not sufficient to make Pangu Electron tool use pass.
+
+## 2026-07-16 - openPangu JANG_3M correction after runtime and typed-cache repair
+
+- `OPENPANGU-RUNTIME-COHERENCE`: VERIFIED-LIVE for the current JANG_3M scoped
+  row, superseding the prior JANG_2L failure above. Source remaps all three
+  causal-convolution checkpoint names to the nested runtime modules, transposes
+  their tensors, uses the checkpoint-exact DSA RMSNorm, and fails closed on
+  incomplete landing. Live startup reported 2826/2826 leaves, 46 layers, and
+  138 causal convolutions.
+- `OPENPANGU-ARCHITECTURE-EXECUTION`: VERIFIED-LIVE at 2,104 tokens. Every one
+  of the 16 DSA layers logged real sparse activation above top-k=2048. The same
+  forward reported all 46 production layers, 30 SWA layers, four mHC streams,
+  128 attention sinks, MLA KV rank 512, and the 512-token SWA window.
+- `OPENPANGU-NO-TURBOQUANT`: VERIFIED-LIVE across UI, DB, argv, startup logs,
+  health, and cache stats. The UI says `TURBOQUANT OFF`; saved quantization is
+  `none`; no q4/q8/TQ flag appears in argv; logs set `VMLX_DISABLE_TQ_KV=1`;
+  health reports both generic KV quantization and TurboQuant disabled.
+- `OPENPANGU-EXACT-TYPED-CACHE`: VERIFIED-LIVE for cold, warm-memory, and
+  process-restart prompt-disk paths. The typed N-1 record owns MLA KV, DSA
+  indexer state, SWA rotation metadata, and all three convolution states.
+  Generic paged/block codecs remain off. Final row 1527 restored 2,075/2,076
+  prompt tokens from disk, then completed one exact tool call and final marker.
+- `OPENPANGU-AGENTIC-TOOLS`: VERIFIED-LIVE for the exact one-tool Electron row.
+  Row 1527 persisted one `file_info({"path":"panel/package.json"})`, one result,
+  and only `PG3M-CACHE-20260716-A-DONE` as visible final content; the earlier
+  false schema warning no longer appeared.
+- `OPENPANGU-MTP-RUNTIME`: OPEN. Three MTP layers are detected in config but
+  dropped by the current runtime. No active MTP or speedup claim is made.
+- `OPENPANGU-LONG-CONTEXT`: PARTIAL. Sparse DSA was live-proven at 2,104 tokens;
+  the advertised 524,288-token limit and long-context retrieval quality were
+  not exercised.
+- `CROSS-MODEL-POST-TOOL-FINALIZATION`: remains OPEN for all families not
+  covered by current live rows and for long-soak/reasoning-card performance.
+  The openPangu scoped recovery does not close Bonsai variance or other family
+  gates. Release remains `PARTIAL_NO_RELEASE`.
