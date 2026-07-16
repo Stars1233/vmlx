@@ -208,3 +208,36 @@ Campaign remains `PARTIAL_NO_RELEASE`. Open red/partial rows: Laguna decode
 speed around 24 tok/s, HY3 MTP net speedup without acceptance counters, DSV4
 exact-marker mutation, and M3 character-exact OCR. No tag, signing,
 notarization, updater-feed mutation, or public release was performed.
+
+## 2026-07-15 - Cross-model post-tool finalization continuation
+
+The Bonsai repeated-reasoning/empty-final/TPS defect is now tracked as a
+shared Electron gate rather than a Bonsai-only issue. The current matrix is
+`docs/POST-TOOL-CROSS-MODEL-MATRIX-2026-07-15.md` and deliberately leaves
+families without a current visible Electron row as `PARTIAL` or `UNTESTED`.
+
+- Current source adds narrow warning reconciliation after a successful
+  answer-only recovery. It removes only superseded current-response
+  empty-visible-answer diagnostics and preserves parser, schema, cache,
+  tool-drop, and previous-response warnings.
+- Focused source verification passed: 48/48 tests across responses warnings,
+  tool continuation, and tool status; TypeScript typecheck is clean.
+- HY3 live Electron row: exactly one `file_info`, one matching result, exact
+  `HY3-POSTTOOL1-DONE`, one reasoning segment, normal tool lifecycle, no
+  warning, `19.0 t/s`, and `3,626 paged+tq` cached tokens.
+- Bonsai ternary live Electron row: exactly one `file_info`, one matching
+  result, exact `BT-POSTTOOL1-DONE`, one reasoning segment, no warning, and a
+  measured `31.3 t/s`. This replaces the prior API-only post-tool evidence.
+- DSV4 pre-fix live row: one tool/result and exact final content, but the stale
+  `visible answer is empty` warning remained. Post-fix live row: one
+  tool/result, visible final content, `warnings_json=null`, and `18.3 t/s`.
+  The model returned `DSV4-PPOSTOLL2-DONE` instead of the requested exact
+  marker, so warning cleanup is live-verified while DSV4 strict fidelity stays
+  `PARTIAL`.
+- Screenshots and DB-derived evidence were preserved under
+  `docs/internal/release-gates/20260715_140235_hy3_dsv4_mm3_exhaustive_electron/`.
+
+Campaign remains `PARTIAL_NO_RELEASE`. Laguna and the other untested
+model/parser families still need current Electron post-tool rows; all
+previously listed model, settings, cache, media, package, signing, notary,
+feed, and release gates remain in force.

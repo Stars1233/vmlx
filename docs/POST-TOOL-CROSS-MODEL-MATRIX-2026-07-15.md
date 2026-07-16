@@ -1,0 +1,46 @@
+# Post-tool finalization cross-model matrix — 2026-07-15
+
+Scope: current-source Electron behavior after a real built-in tool result. This
+matrix tracks the user-visible failure class first observed on Bonsai 1-bit:
+repeated reasoning-only continuations, missing final content, speculative or
+stale warnings, false token-rate metrics, and duplicate tool execution.
+
+Source contract under test:
+
+- `panel/src/main/ipc/chat.ts` permits at most one answer-only recovery after a
+  completed tool result, removes tool schemas only for that recovery, resets
+  cross-request timing, and preserves the rolling streamed token rate.
+- `panel/src/shared/responsesWarnings.ts` removes only superseded
+  empty-visible-answer diagnostics after visible recovery content exists. It
+  preserves parser, schema, cache, tool-drop, and previous-response warnings.
+- Focused current-source verification: 48/48 tests passed across
+  `responses-warnings`, `tool-auto-continue`, and
+  `tool-status-responsiveness`; TypeScript typecheck passed.
+
+The shared source path is not sufficient to mark a model green. Each row needs
+a current Electron tool call, persisted call/result record, final rendered
+content, reasoning/status inspection, and timing/warning inspection.
+
+| Model/family | Current Electron post-tool result | Tool count/result | Final content | Reasoning/status/TPS | Verdict / remaining work |
+|---|---|---|---|---|---|
+| Bonsai 27B 1-bit (`qwen3_5`, hybrid SSM) | Current-source row after the bounded-recovery fix | Exactly one `file_info`; one matching result | Exact `B1-UI-TOOL5-DONE` | Two phase-appropriate reasoning segments; measured `41.9 t/s`; no empty final | `VERIFIED-LIVE` for this row. Broader model/release gates remain separate. |
+| Bonsai 27B ternary (`qwen3_5`, hybrid SSM) | Current-source fresh Electron row | Exactly one `file_info`; one matching result | Exact `BT-POSTTOOL1-DONE` | One reasoning segment; normal tool lifecycle; no warning; measured `31.3 t/s` | `VERIFIED-LIVE` for this row. Broader model/release gates remain separate. |
+| HY3 JANG 2K MTP (`hy_v3`, qwen3 reasoning parser) | Current-source fresh Electron row | Exactly one `file_info`; one matching result | Exact `HY3-POSTTOOL1-DONE` | One reasoning segment; normal generating/calling/executing/result/processing/done lifecycle; `19.0 t/s`; no warning | `VERIFIED-LIVE` for this row. MTP net speedup remains unverified. |
+| DSV4 Flash CRACK (`deepseek_v4`, native composite cache) | Pre-fix exact-final row retained a stale empty-answer warning. Post-fix row removed the warning. | Each row executed exactly one `file_info` with one matching result | Pre-fix exact `DSV4-POSTTOOL1-DONE`; post-fix model misspelled the marker as `DSV4-PPOSTOLL2-DONE` | Two reasoning phases; post-fix `warnings_json=null`; `18.3 t/s`; no repeated tool | `PARTIAL`: warning lifecycle is `VERIFIED-LIVE`; strict output fidelity remains red. |
+| MiniMax-M3 Coder Small (`minimax_m3`) | Current genuine-tool Electron regression after M3 stream repair | Exactly one `file_info`; one matching result | Exact `MM3-TOOL-POSTFIX-DONE` | No completed zero-tool card; native M3 parsing retained | `VERIFIED-LIVE` for genuine-tool finalization. Exact image OCR remains open. |
+| Zaya (`openpangu_v2`) | Current specialized terminal AppleScript row | One native `run_applescript`; terminal one-call policy | Visible post-tool completion | Repeated successful action prevented | `VERIFIED-LIVE` for the specialized AppleScript route, not generic `file_info` parity. |
+| Laguna-M.1 (`laguna`) | No current Electron post-tool row after the shared fix | Untested | Untested | Untested | `UNTESTED`; cache/coherence is separately live-proven and decode speed remains open. |
+| LFM2.5 | Prior Electron tool-history row proved bounded prompt growth, but predates this current post-tool fix | Prior tool calls/results verified | Prior result only | Current repeated-reasoning/TPS behavior untested | `PARTIAL/STALE`; rerun on current source. |
+| Gemma4, Qwen3.6, MiniMax-M2.7, Step-3.7, Nemotron/Nemo, MiMo and other configured families | No current Electron row for this exact failure class | Untested | Untested | Untested | `UNTESTED`; do not infer parity from shared panel code or older API-only runs. |
+
+Current evidence root:
+`docs/internal/release-gates/20260715_140235_hy3_dsv4_mm3_exhaustive_electron/`.
+Relevant screenshots include `hy3-posttool1-pass.png`,
+`bt-posttool1-pass.png`,
+`dsv4-posttool1-stale-warning.png`, and
+`dsv4-posttool2-warning-cleared-strict-partial.png`.
+
+Release boundary: `PARTIAL_NO_RELEASE`. This matrix does not clear Laguna
+speed, HY3 measured MTP benefit, DSV4 exact-output fidelity, M3 exact image
+OCR, remaining model-family post-tool rows, package integrity, signing,
+notarization, updater feeds, or public release.
