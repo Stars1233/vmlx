@@ -728,3 +728,26 @@ remain open. No public release/notarization/feed mutation performed.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`; ordinary multi-call soak, VL,
   cross-family parser rows, all remaining models/protocols, packaging, signing,
   notarization, feeds, and public release remain open.
+
+## 2026-07-16 - Gateway port/LAN address live correction
+
+- `GATEWAY-PORT-ASSIGNMENT`: VERIFIED-LIVE. UI change to 18080 persisted in
+  SQLite and moved the dev Electron listener to the selected port. Restoring
+  8080 moved the listener and UI URL back to localhost:8080; current health,
+  DB, and listener agree.
+- `GATEWAY-LAN-ADDRESS`: VERIFIED-LIVE after fix. Pre-fix wildcard binding was
+  correct but the dashboard advertised APIPA `169.254.62.28`. Source now
+  rejects unusable/link-local IPv4 and ranks RFC1918 before CGNAT/public.
+  Post-fix Electron advertised `192.168.1.110:18080`, actual listener was
+  `*:18080`, and the exact advertised health URL responded successfully.
+- `GATEWAY-LAN-SELECTOR-TESTS`: PASS. Three selector tests plus the gateway
+  Ollama and single-model suites passed 65/65; panel typecheck passed.
+- `GATEWAY-SINGLE-MODEL-STATE`: VERIFIED-LIVE for the current named swap. DB,
+  health, and UI report single-model mode enabled; the dashboard showed one
+  running Bonsai 1-bit server, matching the current Sessions/process proof
+  that starting 1-bit left ternary inactive and one model process.
+- `GATEWAY-PORT-CONFLICT-CAVEAT`: OPEN. The installed app separately owns
+  wildcard port 8080 and was intentionally left running. The dev app's exact
+  host/port behavior is proven, but machine-global conflict policy and the full
+  OpenAI/Anthropic/Ollama streaming matrix remain open.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.

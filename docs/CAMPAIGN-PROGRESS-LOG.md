@@ -574,3 +574,44 @@ Evidence is in
 telemetry naming, and single-model swap rows are `VERIFIED-LIVE`. Persistent
 SSM restore remains quarantined, ordinary multi-call/long-soak behavior and VL
 remain open, and the campaign stays `PARTIAL_NO_RELEASE`.
+
+## 2026-07-16 - Gateway port, LAN address, and single-model parity
+
+The live API dashboard exposed a real LAN-advertisement defect. Main-process
+source selected the first external IPv4 returned by macOS. With LAN enabled on
+an isolated test port, Electron bound `0.0.0.0:18080` correctly but advertised
+the inactive APIPA address `169.254.62.28`, while the default-route interface
+was `en9` at `192.168.1.110`.
+
+The main process now uses a pure ranked selector that rejects loopback,
+unspecified, multicast, and `169.254/16` addresses, prefers RFC1918 addresses,
+then CGNAT, then public IPv4. Three focused selector tests cover the live APIPA
+ordering, RFC1918 preference, and no-routable-address fallback. Together with
+the gateway Ollama and single-model suites, 65 tests pass; panel typecheck also
+passes.
+
+Current Electron proof after rebuilding the main process:
+
+- Changing the visible port to 18080 persisted in SQLite and moved the actual
+  dev Electron listener to `127.0.0.1:18080`.
+- Enabling LAN persisted `gateway_host=0.0.0.0`, moved the listener to
+  `*:18080`, and the dashboard advertised `http://192.168.1.110:18080` for
+  OpenAI, Anthropic, and Ollama. A request to that exact advertised health URL
+  returned `status=ok`, `gateway_port=18080`, and
+  `single_model_mode=true`.
+- Turning LAN off and restoring port 8080 through the UI persisted
+  `127.0.0.1:8080`; the actual dev Electron listener and dashboard both
+  returned to localhost. Current `/health` and SQLite agree on port 8080 and
+  single-model mode enabled.
+- The dashboard showed one running Bonsai 1-bit model. The separate current
+  Sessions proof already showed the ternary session becoming inactive and one
+  model-server process remaining when 1-bit was started.
+
+The installed `/Applications/vMLX.app` independently owns wildcard port 8080;
+it was not stopped. This gate proves the dev app's scoped listener/settings/UI
+contract, not machine-global port exclusivity or every gateway protocol stream.
+Evidence is in
+`docs/internal/release-gates/20260716_gateway_lan_port/`. Verdict:
+`VERIFIED-LIVE` for dev port assignment, LAN toggle/address truth, restored
+localhost state, and the named single-model swap; cross-protocol streaming and
+release remain `PARTIAL_NO_RELEASE`.
