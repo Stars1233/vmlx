@@ -10,9 +10,8 @@ superseded conclusions are called out here.
 
 ## Release truth
 
-- Working branch: `reconcile/1.5.68` at
-  `7b45676ce599ab7eb1ab0f58c38e9d826b04390d` plus the scoped Laguna TQ8
-  cache-safety work described below.
+- Working branch: `reconcile/1.5.68` at parent
+  `103cb9e92c36` plus the scoped Bonsai SSM L2 work described below.
 - Push target: `origin/codex/live-electron-gates-20260715`.
 - After fetching `origin`, the committed branch is 38 commits ahead of `origin/main` and
   zero behind.
@@ -32,8 +31,8 @@ superseded conclusions are called out here.
 | Laguna parser migration | PASS-LIVE / COMMITTED | Electron UI/DB/argv migrated to `glm47`; rows 1992/1995 each executed one `file_info` and exact final text; 94 parser/migration tests and panel typecheck passed | Keep as a release regression row |
 | Laguna reasoning | PARTIAL-LIVE | Cold row 1998 was exact. Auto's old uncalibrated TQ3 warm row 2001 restored 3,545 tokens, looped incoherently, and was stopped after 3,076 generated tokens. None rows 2004/2007/2010 and corrected Auto TQ8 rows 2013/2016/2019 were exact. Restart row 2022 stayed coherent but made an unsolicited `ask_user` call before exact post-skip completion | Repeat restart/disk row without unsolicited tool; long reasoning soak and strict byte-format closeout; no forced sampler or synthetic think tags |
 | Laguna cache/perf | PASS-LIVE correctness / PARTIAL latency | UI None left prefix/paged/L2 on and produced exact 3,549/3,612-token paged hits. Auto now uses uncalibrated TQ8 with codec-config namespace invalidation; exact 3,550/3,614-token native hits and a coherent 3,550-token disk restore were observed | TQ8 reconstruction costs 3.6-4.8s and warm TTFT ~5.1s versus 1.2-1.5s None; optimize/accept with measured release budget, plus long-context/eviction proof |
-| Bonsai hybrid restart | PARTIAL | Attention TQ8 disk restore passes; 48 SSM/GDN companions report `restore_enabled=false` and `restore_suppressed` | Prove clean async rederive/no deviation at restart, or document full rederive as the intentional production contract with latency evidence |
-| Bonsai current-HEAD regression | OPEN | Earlier 1-bit/ternary Auto/None/tool rows passed; later scheduler changes landed for Pangu/M3/Laguna | Fresh current-HEAD Electron 1-bit and ternary load, Auto write/restart decode, None replacement, multi-turn, exact tool final |
+| Bonsai hybrid restart | PASS-LIVE exact boundary / PARTIAL partial prefix | Two independent 1-bit PID replacements restored 160/168 tokens as `paged+ssm+disk` with native-TQ plus SSM disk hits, ~0.10s reconstruction, one tool, and exact finals. A longer 64-token KV prefix without a companion safely full-prefilled and wrote the missing checkpoint | Repeat partial-prefix repair as a measured hit, then long-context/eviction and ternary parity |
+| Bonsai current-HEAD regression | PASS-LIVE 1-bit / OPEN ternary | Two default-temperature cache-on chats produced four exact one-tool finals with RAM/disk/native-TQ hits; two deterministic SSM-L2 restart rows were exact. Earlier loop row 2028 remains a retained reliability outlier | Fresh current-HEAD ternary Auto/None/restart row; quantify 1-bit sampling outlier rate without forcing sampler defaults |
 | Mistral Medium 3.5 | PARTIAL-LIVE | Text load/cache works; broad tool prompt repeated `2026`, strict marker returned `I understand.` | Root-cause model/runtime/template/parser behavior; long output and reduced/broad tool parity |
 | DSV4 CRACK | PARTIAL-LIVE | Native composite cache and DSML separation pass; malformed row took 64.7s, restart tool row took 119.2s/1454 tokens | Constrained-string repeat matrix, reasoning/tail quality, quiet speed; exact JANGTQ bundle only if locally available |
 | MiniMax-M3 | PARTIAL-LIVE | Typed MSA cache, tools, OCR control, and video pass; two OCR formatting misses retained | Exact deterministic OCR repeat; live 503 guard for REAP32 only if it can be exercised without host-reboot risk |
@@ -50,7 +49,7 @@ superseded conclusions are called out here.
 | Architecture | Production cache contract | Current status |
 |---|---|---|
 | Plain full attention KV | Paged/prompt cache; uncalibrated Auto uses storage-only TQ8; lower bits require bundle-owned calibration; codec fields are part of the persisted namespace | Qwen full-KV and Laguna scoped pass; broader family regression matrix open |
-| Qwen3.5/Bonsai hybrid GDN/SSM | TQ only on the 16 attention KV slots; 48 companion states remain native; clean rederive at prompt boundary | Attention TQ Auto/None/L2 passes; restart companion rederive latency/no-deviation closeout open |
+| Qwen3.5/Bonsai hybrid GDN/SSM | TQ only on the 16 attention KV slots; 48 companion states remain native; clean boundary capture/rederive plus fingerprinted SSM L2 | Two exact 1-bit restart restores pass with native TQ8 + SSM disk; missing partial checkpoints safely full-prefill and repair; ternary/long-context partial |
 | Other hybrid SSM/GLA | Architecture allow-list plus native companion state and async clean-prefill rederive | Per-family proof required; no name-only Qwen inference |
 | Gemma mixed SWA | Native rotating cache for SWA, compatible full-attention lane only; legacy prompt L2 default | UI/DB/argv/warm/restart scoped pass |
 | DSV4 Flash | Native `deepseek_v4_v7` SWA + CSA/HCA composite and pool codec; never generic TQ KV | CRACK scoped cache pass; quality/performance partial |
@@ -82,8 +81,9 @@ superseded conclusions are called out here.
 
 1. Close the remaining Laguna unsolicited-tool/long-context/latency rows while
    preserving the TQ3 failure and Auto/None/TQ8 A/B artifacts.
-2. Rerun Bonsai 1-bit and ternary on current HEAD, including restart companion
-   rederive timing and exact cache-component telemetry.
+2. Finish Bonsai ternary on current HEAD and re-prove the repaired 1-bit
+   partial-prefix boundary as an actual hit; retain the default-sampling loop
+   outlier as a reliability row.
 3. Close Mistral and DSV4 quality/performance rows, then M3/Pangu long/media
    boundaries and remaining post-tool families.
 4. Run the complete settings and protocol matrix through the real Electron
