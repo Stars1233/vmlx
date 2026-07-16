@@ -1,0 +1,23 @@
+{
+  "model": "jangq-ai/Bonsai-27b-1bit-JANG",
+  "gateway": "http://127.0.0.1:8081",
+  "first_pass": {
+    "marker": "GW-B1-FIX1",
+    "status": 200,
+    "input_tokens": 221,
+    "output_tokens": 132,
+    "reasoning_summary_streamed": true,
+    "output_text_delta_count": 0,
+    "output_text_done": "",
+    "function_call_count": 1,
+    "function_name": "file_info",
+    "arguments": {"path": "panel/package.json"}
+  },
+  "function_output_pass": {
+    "status": 200,
+    "input_tokens": 139,
+    "output_tokens": 9,
+    "streamed_output_text": "GW-B1-FIX1-DONE",
+    "output_text_done": "GW-B1-FIX1-DONE"
+  }
+}

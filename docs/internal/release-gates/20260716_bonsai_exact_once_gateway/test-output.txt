@@ -1,0 +1,9 @@
+Focused selection:
+4 passed, 101 deselected in 1.90s
+
+Full tests/test_server.py selection:
+102 passed, 3 deselected in 1.95s
+
+Additional checks:
+python -m py_compile vmlx_engine/server.py: PASS
+git diff --check -- vmlx_engine/server.py tests/test_server.py: PASS

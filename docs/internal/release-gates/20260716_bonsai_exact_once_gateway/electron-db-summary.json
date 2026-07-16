@@ -1,0 +1,33 @@
+{
+  "chat_id": "a89d88d9-bed0-461e-b38f-dd68789b4265",
+  "model": "jangq-ai/Bonsai-27b-1bit-JANG",
+  "rows": [
+    {"rowid": 1839, "content": "B1-CURR1-DONE", "output_tokens": 96, "prompt_tokens": 150, "tool_calls": 1, "tool_results": 1},
+    {"rowid": 1842, "content": "B1-CURR2-DONE", "output_tokens": 167, "prompt_tokens": 317, "tool_calls": 1, "tool_results": 1},
+    {"rowid": 1845, "content": "B1-CURR3-RESTART-DONE", "output_tokens": 94, "prompt_tokens": 487, "tool_calls": 1, "tool_results": 1},
+    {"rowid": 1848, "content": "B1-FIX-UI1-DONE", "output_tokens": 98, "prompt_tokens": 656, "tool_calls": 1, "tool_results": 1}
+  ],
+  "running_session": {
+    "pid": 74596,
+    "host": "127.0.0.1",
+    "port": 8030,
+    "kv_cache_quantization": "auto",
+    "use_paged_cache": true,
+    "paged_cache_block_size": 64,
+    "max_cache_blocks": 1000,
+    "enable_block_disk_cache": true,
+    "block_disk_cache_max_gb": 10,
+    "reasoning_parser": "qwen3",
+    "tool_call_parser": "qwen"
+  },
+  "other_bonsai_session": {
+    "model": "jangq-ai/Bonsai-27b-Ternary-JANG",
+    "status": "stopped",
+    "pid": null
+  },
+  "gateway": {
+    "host": "127.0.0.1",
+    "port": 8081,
+    "single_model_mode": true
+  }
+}
