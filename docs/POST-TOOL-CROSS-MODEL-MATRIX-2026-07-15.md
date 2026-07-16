@@ -13,6 +13,9 @@ Source contract under test:
 - `panel/src/shared/responsesWarnings.ts` removes only superseded
   empty-visible-answer diagnostics after visible recovery content exists. It
   preserves parser, schema, cache, tool-drop, and previous-response warnings.
+- `vmlx_engine/api/tool_calling.py` forces explicitly named LFM2 tools past a
+  placeholder-bearing native-template shortcut and binds scalar request values
+  such as `file_info.path` into the native Python-call example.
 - Focused current-source verification: 48/48 tests passed across
   `responses-warnings`, `tool-auto-continue`, and
   `tool-status-responsiveness`; TypeScript typecheck passed.
@@ -30,7 +33,7 @@ content, reasoning/status inspection, and timing/warning inspection.
 | MiniMax-M3 Coder Small (`minimax_m3`) | Current genuine-tool Electron regression after M3 stream repair | Exactly one `file_info`; one matching result | Exact `MM3-TOOL-POSTFIX-DONE` | No completed zero-tool card; native M3 parsing retained | `VERIFIED-LIVE` for genuine-tool finalization. Exact image OCR remains open. |
 | Zaya (`openpangu_v2`) | Current specialized terminal AppleScript row | One native `run_applescript`; terminal one-call policy | Visible post-tool completion | Repeated successful action prevented | `VERIFIED-LIVE` for the specialized AppleScript route, not generic `file_info` parity. |
 | Laguna-M.1 (`laguna`) | Current-source fresh Electron row | Exactly one `file_info`; one matching result | Exact `LAG-POSTTOOL1-DONE` | Two phase-appropriate reasoning passages in one reasoning record; normal tool lifecycle; no warning; `16.0 t/s`; `3,612 paged+tq` cached tokens | `VERIFIED-LIVE` for this row. Decode speed remains a separate open gate. |
-| LFM2.5 | Prior Electron tool-history row proved bounded prompt growth, but predates this current post-tool fix | Prior tool calls/results verified | Prior result only | Current repeated-reasoning/TPS behavior untested | `PARTIAL/STALE`; rerun on current source. |
+| LFM2.5 (`lfm2_moe`, hybrid SSM) | Broad-tools and Search-only pre-fix rows emitted malformed `path=': '` calls and repeated tools. Current-source post-fix fresh Electron row passed. | Exactly one `file_info` with exact `panel/package.json`; one matching result | Exact `LFM-POSTTOOL4-DONE` | One persisted reasoning record; normal tool lifecycle; no warning; `184.0 t/s`; `paged+ssm+disk` cache detail | `VERIFIED-LIVE` for this row after request-bound LFM native example repair. |
 | Gemma4, Qwen3.6, MiniMax-M2.7, Step-3.7, Nemotron/Nemo, MiMo and other configured families | No current Electron row for this exact failure class | Untested | Untested | Untested | `UNTESTED`; do not infer parity from shared panel code or older API-only runs. |
 
 Current evidence root:
@@ -38,6 +41,7 @@ Current evidence root:
 Relevant screenshots include `hy3-posttool1-pass.png`,
 `bt-posttool1-pass.png`,
 `laguna-posttool1-pass.png`,
+`lfm-posttool1-fail.png`, `lfm-posttool4-pass.png`,
 `dsv4-posttool1-stale-warning.png`, and
 `dsv4-posttool2-warning-cleared-strict-partial.png`.
 

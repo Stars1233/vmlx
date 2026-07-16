@@ -231,6 +231,15 @@ families without a current visible Electron row as `PARTIAL` or `UNTESTED`.
 - Laguna live Electron row: exactly one `file_info`, one matching result,
   exact `LAG-POSTTOOL1-DONE`, no warning, `16.0 t/s`, and `3,612 paged+tq`
   cached tokens. Laguna decode-speed performance remains a separate open row.
+- LFM2.5 initially failed both broad-tools and Search-only Electron rows: its
+  placeholder-bearing native template produced malformed `path=': '` and up
+  to three calls. Direct single-schema Responses correctly parsed the exact
+  path, isolating prompt construction from the parser. Current source forces
+  explicitly named LFM tools through a request-bound native example and binds
+  scalar parameters instead of `VALUE_HERE`. Eight focused LFM prompt/parser
+  tests passed. After visible Stop/Start, Electron row 1322 persisted exactly
+  one `file_info({"path":"panel/package.json"})`, one matching result, exact
+  `LFM-POSTTOOL4-DONE`, no warning, and `paged+ssm+disk` cache detail.
 - DSV4 pre-fix live row: one tool/result and exact final content, but the stale
   `visible answer is empty` warning remained. Post-fix live row: one
   tool/result, visible final content, `warnings_json=null`, and `18.3 t/s`.
@@ -240,7 +249,7 @@ families without a current visible Electron row as `PARTIAL` or `UNTESTED`.
 - Screenshots and DB-derived evidence were preserved under
   `docs/internal/release-gates/20260715_140235_hy3_dsv4_mm3_exhaustive_electron/`.
 
-Campaign remains `PARTIAL_NO_RELEASE`. LFM and the other untested model/parser
+Campaign remains `PARTIAL_NO_RELEASE`. The remaining untested model/parser
 families still need current Electron post-tool rows; all
 previously listed model, settings, cache, media, package, signing, notary,
 feed, and release gates remain in force.
