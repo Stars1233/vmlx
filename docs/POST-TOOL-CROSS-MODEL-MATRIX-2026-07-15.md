@@ -36,7 +36,8 @@ content, reasoning/status inspection, and timing/warning inspection.
 | LFM2.5 (`lfm2_moe`, hybrid SSM) | Broad-tools and Search-only pre-fix rows emitted malformed `path=': '` calls and repeated tools. Current-source post-fix Search-only and broad File/Search/Shell Electron rows passed. | Exactly one `file_info` with exact `panel/package.json`; one matching result | Exact `LFM-POSTTOOL5-DONE` on the broad row | One persisted reasoning record; normal tool lifecycle; no warning; `189.9 t/s`; `paged+ssm` cache detail | `VERIFIED-LIVE` for the broad row after request-bound LFM native example repair. |
 | Qwen3.6 27B MXFP4 CRACK MTP (`qwen3_5`, hybrid SSM/VL) | Current-source broad File/Search/Shell Electron row | Exactly one `file_info`; one matching result | Exact `Q36-POSTTOOL1-DONE` | Two short phase-appropriate reasoning fragments; normal tool lifecycle; no warning; `22.6 t/s` | `VERIFIED-LIVE` for this row. Health also showed native MTP D3 and hybrid cache active, but this row does not prove MTP net speedup. |
 | Gemma4 12B JANG 4M (`gemma4`, mixed SWA/full KV) | Current-source broad File/Search/Shell Electron row | Exactly one `file_info`; one matching result | Exact `G4-POSTTOOL1-DONE` | No reasoning fragments; normal tool lifecycle; no warning; `38.2 t/s`; 3,204-token memory-prefix hit | `VERIFIED-LIVE` for this row. Separate cache-default parity is red: UI config says prefix on but paged/prompt-L2/block-L2 off and health reports all three effective tiers off. |
-| MiniMax-M2.7, Step-3.7, Nemotron/Nemo, MiMo and other configured families | No current Electron row for this exact failure class | Untested | Untested | Untested | `UNTESTED`; do not infer parity from shared panel code or older API-only runs. |
+| MiniMax-M2.7 Small JANGTQ (`minimax`, native reasoning) | Pre-fix broad row truncated `panel/package.json` to `panel`. Current-source post-fix broad row passed after slash-preserving native example repair. | Exactly one `file_info` with exact path; one matching result | Exact `MM27-POSTTOOL2-DONE` | Two phase-appropriate reasoning passages; normal tool lifecycle; no warning; `31.0 t/s`; `3,597 paged+tq` cached tokens | `VERIFIED-LIVE` for this row. Broader M2.7 reasoning-mode parity remains separate. |
+| Step-3.7, Nemotron/Nemo, MiMo and other configured families | No current Electron row for this exact failure class | Untested | Untested | Untested | `UNTESTED`; do not infer parity from shared panel code or older API-only runs. |
 
 Current evidence root:
 `docs/internal/release-gates/20260715_140235_hy3_dsv4_mm3_exhaustive_electron/`.
@@ -47,6 +48,7 @@ Relevant screenshots include `hy3-posttool1-pass.png`,
 `lfm-posttool5-broad-pass.png`,
 `q36-posttool1-pass.png`,
 `gemma4-posttool1-pass.png`,
+`mm27-posttool1-wrong-path-fail.png`, `mm27-posttool2-pass.png`,
 `dsv4-posttool1-stale-warning.png`, and
 `dsv4-posttool2-warning-cleared-strict-partial.png`.
 

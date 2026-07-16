@@ -256,6 +256,15 @@ families without a current visible Electron row as `PARTIAL` or `UNTESTED`.
   session config has prefix enabled but paged, prompt L2, and block L2 off;
   argv contains `--no-paged-cache`; health reports effective native
   prefix/paged/block-L2 all false and zero L2 tokens.
+- MiniMax-M2.7 broad Electron row 1334 exposed a semantic tool failure hidden
+  behind an exact final marker: the native fallback truncated
+  `panel/package.json` to `panel`. Source tracing found the generic scalar
+  regex excluded `/`. A path-specific slash-preserving extractor and focused
+  MiniMax regression were added; two fallback tests, five LFM regressions, and
+  19 MiniMax parser tests passed. After visible Stop/Start, row 1337 persisted
+  exactly one `file_info({"path":"panel/package.json"})`, one result, exact
+  `MM27-POSTTOOL2-DONE`, two reasoning passages, no warning, `31.0 t/s`, and
+  `3,597 paged+tq` cached tokens.
 - DSV4 pre-fix live row: one tool/result and exact final content, but the stale
   `visible answer is empty` warning remained. Post-fix live row: one
   tool/result, visible final content, `warnings_json=null`, and `18.3 t/s`.
