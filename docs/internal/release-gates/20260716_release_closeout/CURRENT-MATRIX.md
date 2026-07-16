@@ -11,16 +11,17 @@ superseded conclusions are called out here.
 ## Release truth
 
 - Working branch: `reconcile/1.5.68` at
-  `3ddcf1349995b7d3163b5d2e41b2f42ddc5d0553`.
+  `7b45676ce599ab7eb1ab0f58c38e9d826b04390d` plus the scoped Laguna TQ8
+  cache-safety work described below.
 - Push target: `origin/codex/live-electron-gates-20260715`.
-- After fetching `origin`, the branch is 37 commits ahead of `origin/main` and
+- After fetching `origin`, the committed branch is 38 commits ahead of `origin/main` and
   zero behind.
 - Source versions are `1.6.11` in `pyproject.toml`,
   `vmlx_engine/__init__.py`, and `panel/package.json`.
 - Public GitHub app release, PyPI, and `mlxstudio/latest.json` are all 1.6.10.
-- The Laguna parser-default migration is live-proven but not yet included in
-  this matrix's release commit: current Electron main launched PID 32806 with
-  `--tool-call-parser glm47`, and the session is stamped migration version 1.
+- The Laguna parser-default migration is committed and pushed as `7b45676ce`.
+  Current Electron main launched PID 32806 with `--tool-call-parser glm47`,
+  and the session is stamped migration version 1.
 - No package, version bump, tag, signing, notarization, feed update, PyPI
   upload, or GitHub release is allowed until the red rows below close.
 
@@ -28,9 +29,9 @@ superseded conclusions are called out here.
 
 | Area | Status | Current evidence | Required closeout |
 |---|---|---|---|
-| Laguna parser migration | PASS-LIVE / commit pending | Current Electron main migrated UI/DB/argv to `glm47`; same-chat row 1992 and fresh row 1995 each executed one `file_info` and exact final text | Commit scoped source/tests/evidence; keep Laguna reasoning as a separate blocker |
-| Laguna reasoning | FAIL-LIVE | Fresh Auto-thinking UI row looped in repetitive meta-reasoning and was interrupted after 726 tokens | Bundle/template/parser/runtime A/B with full tails; no forced sampler or synthetic think tags |
-| Laguna cache/perf | PARTIAL | Dtype repair restored 49 `paged+disk+tq-native` tokens at 25.1 tok/s; old broken warm path was ~8 tok/s | Auto vs None, JIT ownership, long context, multi-turn, and stable speed comparison |
+| Laguna parser migration | PASS-LIVE / COMMITTED | Electron UI/DB/argv migrated to `glm47`; rows 1992/1995 each executed one `file_info` and exact final text; 94 parser/migration tests and panel typecheck passed | Keep as a release regression row |
+| Laguna reasoning | PARTIAL-LIVE | Cold row 1998 was exact. Auto's old uncalibrated TQ3 warm row 2001 restored 3,545 tokens, looped incoherently, and was stopped after 3,076 generated tokens. None rows 2004/2007/2010 and corrected Auto TQ8 rows 2013/2016/2019 were exact. Restart row 2022 stayed coherent but made an unsolicited `ask_user` call before exact post-skip completion | Repeat restart/disk row without unsolicited tool; long reasoning soak and strict byte-format closeout; no forced sampler or synthetic think tags |
+| Laguna cache/perf | PASS-LIVE correctness / PARTIAL latency | UI None left prefix/paged/L2 on and produced exact 3,549/3,612-token paged hits. Auto now uses uncalibrated TQ8 with codec-config namespace invalidation; exact 3,550/3,614-token native hits and a coherent 3,550-token disk restore were observed | TQ8 reconstruction costs 3.6-4.8s and warm TTFT ~5.1s versus 1.2-1.5s None; optimize/accept with measured release budget, plus long-context/eviction proof |
 | Bonsai hybrid restart | PARTIAL | Attention TQ8 disk restore passes; 48 SSM/GDN companions report `restore_enabled=false` and `restore_suppressed` | Prove clean async rederive/no deviation at restart, or document full rederive as the intentional production contract with latency evidence |
 | Bonsai current-HEAD regression | OPEN | Earlier 1-bit/ternary Auto/None/tool rows passed; later scheduler changes landed for Pangu/M3/Laguna | Fresh current-HEAD Electron 1-bit and ternary load, Auto write/restart decode, None replacement, multi-turn, exact tool final |
 | Mistral Medium 3.5 | PARTIAL-LIVE | Text load/cache works; broad tool prompt repeated `2026`, strict marker returned `I understand.` | Root-cause model/runtime/template/parser behavior; long output and reduced/broad tool parity |
@@ -48,7 +49,7 @@ superseded conclusions are called out here.
 
 | Architecture | Production cache contract | Current status |
 |---|---|---|
-| Plain full attention KV | Paged/prompt cache; native TQ or stored q4/q8 only when encode/decode/dtype restore is proven | Qwen full-KV and Laguna scoped pass; broader family regression matrix open |
+| Plain full attention KV | Paged/prompt cache; uncalibrated Auto uses storage-only TQ8; lower bits require bundle-owned calibration; codec fields are part of the persisted namespace | Qwen full-KV and Laguna scoped pass; broader family regression matrix open |
 | Qwen3.5/Bonsai hybrid GDN/SSM | TQ only on the 16 attention KV slots; 48 companion states remain native; clean rederive at prompt boundary | Attention TQ Auto/None/L2 passes; restart companion rederive latency/no-deviation closeout open |
 | Other hybrid SSM/GLA | Architecture allow-list plus native companion state and async clean-prefill rederive | Per-family proof required; no name-only Qwen inference |
 | Gemma mixed SWA | Native rotating cache for SWA, compatible full-attention lane only; legacy prompt L2 default | UI/DB/argv/warm/restart scoped pass |
@@ -72,11 +73,15 @@ superseded conclusions are called out here.
 - Single-model mode visibly stops the old model and leaves one local server.
 - Laguna/JANG and vMLX preserve original float16/bfloat16 KV dtype through
   TQ encode, disk persistence, decode, and native cache rewrap.
+- Uncalibrated Auto TQ no longer silently assigns 3-bit storage to ordinary
+  full-KV families. The correctness-first default is TQ8, while calibrated
+  bundle policy remains authoritative. Every codec field participates in the
+  persisted cache namespace so old TQ3 blocks cannot replay after upgrade.
 
 ## Execution order
 
-1. Commit the live-proven Laguna parser migration, then resolve its independent
-   reasoning failure while the real Laguna process is loaded; preserve failed artifacts.
+1. Close the remaining Laguna unsolicited-tool/long-context/latency rows while
+   preserving the TQ3 failure and Auto/None/TQ8 A/B artifacts.
 2. Rerun Bonsai 1-bit and ternary on current HEAD, including restart companion
    rederive timing and exact cache-component telemetry.
 3. Close Mistral and DSV4 quality/performance rows, then M3/Pangu long/media
