@@ -10,12 +10,12 @@ superseded conclusions are called out here.
 
 ## Release truth
 
-- Working branch: `reconcile/1.5.68` at `70515c8b7`; typed-settings,
+- Working branch: `reconcile/1.5.68` at `4e13b19a7`; typed-settings,
   non-MTP architecture-hint, paged resident-accounting, typed hybrid-companion
   ownership, and v8 cache-namespace repairs plus their focused tests are pushed
   to the closeout branch described below.
 - Push target: `origin/codex/live-electron-gates-20260715`.
-- After fetching `origin`, the committed branch is 54 commits ahead of `origin/main` and
+- After fetching `origin`, the committed branch is 68 commits ahead of `origin/main` and
   zero behind.
 - Source versions are `1.6.11` in `pyproject.toml`,
   `vmlx_engine/__init__.py`, and `panel/package.json`.
@@ -40,11 +40,35 @@ superseded conclusions are called out here.
 | MiniMax-M3 | PARTIAL-LIVE | Typed MSA cache, tools, OCR control, and video pass; two OCR formatting misses retained | Exact deterministic OCR repeat; live 503 guard for REAP32 only if it can be exercised without host-reboot risk |
 | openPangu | PASS-LIVE scoped / PARTIAL long-context+protocol | Source policy `_apply_openpangu_cache_policy` forces paged/block/TQ off and preserves typed MLA KV, DSA indexer, rotating-SWA metadata, causal-conv state, 128 sinks, and mHC runtime. Electron-loaded 3M PID 86212/86842/87268 launched with `--no-paged-cache --enable-disk-cache`, no KV quantization, and no block L2; Bonsai was unloaded by the single-model swap. Rows 2310/2313 prove same-chat exact one-tool finals; row 2313 hit 152 memory tokens. PID 87268 exact first-turn replay row 2322 restored 152 tokens from prompt Disk L2 (`cacheDetail=disk`, TTFT 0.18s), executed one real tool, and returned exact final. Health reports `native_path_dependent_composite`, schema `openpangu_v2_composite_v2`, `generic_turboquant_kv.enabled=false`, paged false, prompt disk L2 true | 512K/long-context soak, full protocol matrix, and broader openPangu bit-variant coverage; MTP remains detection-only/unwired for this family |
 | Cross-model post-tool | PARTIAL | Many named families pass exact one-tool/final rows | MiMo and every remaining configured parser family need current Electron rows |
-| Settings parity | PARTIAL | Cache defaults, Auto/None, gateway LAN, single-model swap, typed-setting restart, and selective-TQ Cache/Perf labeling have scoped proof | Fix Min-P zero persistence; rerun UI/DB/preview/argv/health matrix including port conflict and LAN/gateway state |
+| Settings parity | PARTIAL | Cache defaults, Auto/None, gateway LAN, single-model swap, typed-setting restart, selective-TQ Cache/Perf labeling, and explicit Tool Parser None now have scoped source-plus-live proof. Commit `4e13b19a7` prevents request/model auto-detection and streaming marker buffering from silently re-enabling a disabled parser; Electron PID 99835 launched with literal `--tool-call-parser none`, and row 2358 persisted raw model text with no structured tool call/result. | Fix Min-P zero persistence; rerun UI/DB/preview/argv/health matrix including port conflict and LAN/gateway state; retain parser None as a regression row |
 | API/protocol parity | OPEN | Selected Responses/gateway rows pass | Streaming + non-stream Chat, Responses, Anthropic, Ollama; tools/result continuation; disconnect/stop/follow-up |
 | Gateway lifecycle | PARTIAL | Routable LAN address and localhost/LAN rebinding pass | Port conflict UX, cross-protocol streaming, single-model unload/reload state |
-| Full tests/build | OPEN | Current hybrid ownership/cache changes: 784/784 Python hybrid/cache/scheduler tests, 278/278 panel settings tests, and panel typecheck pass. The fetched-block ref-ownership repair adds 90/90 focused paged/TQ/hybrid tests. | Focused suites after each fix, full Python/panel suite, bundled-Python gate, clean release build |
+| Full tests/build | OPEN | Current hybrid ownership/cache changes: 784/784 Python hybrid/cache/scheduler tests, 278/278 panel settings tests, and panel typecheck pass. The fetched-block ref-ownership repair adds 90/90 focused paged/TQ/hybrid tests. Parser-None repair passed 106/106 `test_server.py`, plus 52 passed / 1 skipped across selected server/openPangu/VL parser coverage. | Focused suites after each fix, full Python/panel suite, bundled-Python gate, clean release build |
 | Packaging/public release | BLOCKED | Public truth remains 1.6.10 | Build Sequoia/Tahoe, sign, notarize, staple, Gatekeeper verify, install-smoke, publish GitHub/PyPI/feed |
+
+### Bonsai multi-turn argument and parser-off recheck — current source
+
+- The earlier one-turn proof was insufficient. Same-chat row 2352 requested
+  `README.md` but executed the stale prior argument `panel/package.json`; its
+  exact final marker does not make that turn correct. The red row is retained
+  as native/stream reliability evidence.
+- Source trace found a separate explicit-off contract bug:
+  `_parse_tool_calls_with_parser()` auto-detected a model parser even after the
+  UI launched literal `--tool-call-parser none`, and both streaming paths still
+  armed native marker buffering. Commit `4e13b19a7` gates final parsing and
+  Chat/Responses streaming on `_tool_call_parser_disabled_explicitly`.
+- Live Electron parser-off PID 99835 persisted row 2358 as raw model text with
+  no `tool_calls_oai_json` or tool result. The next parser-off turn generated
+  3,701 reasoning tokens until visibly stopped; parser-off is therefore an
+  actual opt-out, not a hidden fallback or proposed Bonsai workaround.
+- Electron restored production `qwen` on PID 864. Same-chat rows 2364, 2367,
+  and 2370 executed exactly `panel/package.json`, `README.md`, and
+  `pyproject.toml` respectively, once each, with exact finals. Row 2373 then
+  restored 258 tokens as `paged+ssm` and again executed the requested path
+  exactly. Screenshot: `/tmp/bonsai-qwen-3turn-current.png`.
+- Bonsai remains `PARTIAL` because row 2352 and the earlier 4,222-character
+  reasoning turn prove variability. No sampler clamp, prompt coercion, hidden
+  reasoning disable, or argument rewriting was added.
 
 ## Architecture-specific cache truth
 
