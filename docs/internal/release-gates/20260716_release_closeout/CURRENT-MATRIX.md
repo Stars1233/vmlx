@@ -10,11 +10,12 @@ superseded conclusions are called out here.
 
 ## Release truth
 
-- Working branch: `reconcile/1.5.68` at `7bb34fa0d`; typed-settings,
-  non-MTP architecture-hint, and paged resident-accounting repairs plus their
-  focused tests are pushed to the closeout branch described below.
+- Working branch: `reconcile/1.5.68` at `7cb89185c`; typed-settings,
+  non-MTP architecture-hint, paged resident-accounting, typed hybrid-companion
+  ownership, and v8 cache-namespace repairs plus their focused tests are pushed
+  to the closeout branch described below.
 - Push target: `origin/codex/live-electron-gates-20260715`.
-- After fetching `origin`, the committed branch is 45 commits ahead of `origin/main` and
+- After fetching `origin`, the committed branch is 49 commits ahead of `origin/main` and
   zero behind.
 - Source versions are `1.6.11` in `pyproject.toml`,
   `vmlx_engine/__init__.py`, and `panel/package.json`.
@@ -39,10 +40,10 @@ superseded conclusions are called out here.
 | MiniMax-M3 | PARTIAL-LIVE | Typed MSA cache, tools, OCR control, and video pass; two OCR formatting misses retained | Exact deterministic OCR repeat; live 503 guard for REAP32 only if it can be exercised without host-reboot risk |
 | openPangu | PARTIAL-LIVE | Exact typed cache/tools/restart and full 46-layer architecture pass; generic TQ correctly off | 512K/long-context soak, full protocol matrix; MTP remains unavailable for current artifact |
 | Cross-model post-tool | PARTIAL | Many named families pass exact one-tool/final rows | MiMo and every remaining configured parser family need current Electron rows |
-| Settings parity | PARTIAL | Cache defaults, Auto/None, gateway LAN, and single-model swap have scoped proof | Fix Min-P zero persistence, native-TQ Perf label, Laguna parser migration; rerun UI/DB/preview/argv/health matrix |
+| Settings parity | PARTIAL | Cache defaults, Auto/None, gateway LAN, single-model swap, typed-setting restart, and selective-TQ Cache/Perf labeling have scoped proof | Fix Min-P zero persistence; rerun UI/DB/preview/argv/health matrix including port conflict and LAN/gateway state |
 | API/protocol parity | OPEN | Selected Responses/gateway rows pass | Streaming + non-stream Chat, Responses, Anthropic, Ollama; tools/result continuation; disconnect/stop/follow-up |
 | Gateway lifecycle | PARTIAL | Routable LAN address and localhost/LAN rebinding pass | Port conflict UX, cross-protocol streaming, single-model unload/reload state |
-| Full tests/build | OPEN | Current resident-accounting repair: 595/595 engine-audit/byte-budget and 177/177 paged/disk/TQ/hybrid cache tests pass | Focused suites after each fix, full Python/panel suite, bundled-Python gate, clean release build |
+| Full tests/build | OPEN | Current hybrid ownership/cache changes: 784/784 Python hybrid/cache/scheduler tests, 278/278 panel settings tests, and panel typecheck pass | Focused suites after each fix, full Python/panel suite, bundled-Python gate, clean release build |
 | Packaging/public release | BLOCKED | Public truth remains 1.6.10 | Build Sequoia/Tahoe, sign, notarize, staple, Gatekeeper verify, install-smoke, publish GitHub/PyPI/feed |
 
 ## Architecture-specific cache truth
@@ -71,7 +72,7 @@ the Electron row.
 
 | Model / family | Cache and runtime invariant | Required live proof | Status |
 |---|---|---|---|
-| Qwen 3.6 35B MXFP/JANG (name has no `MTP`) | Hybrid layout is derived from the real 10-attention/30-companion layer graph. TQ encode/decode applies only to eligible attention KV; GDN/SSM companions remain native and are cleanly rederived/restored. This artifact is not assigned an MTP gate. | Cold + two-turn + tool continuation, RAM hit, restart/L2 hit, and forced eviction/reload with coherent output. | PARTIAL: current Electron two-turn and exact tool rows pass; RAM restored 152/153 `paged+ssm` tokens and three process restarts restored the same 152 tokens as `paged+ssm+disk`; current health has seven native-TQ block hits and two SSM-disk hits. The latest restart proves 0 L1 resident bytes after reconstruction while retaining 152 indexed tokens. Forced block eviction/reload and the duplicate-companion-payload audit remain open; one ambiguously worded tools-on long row attempted an invalid `write_file`, while the clarified direct-display row streamed through its final marker with a minor period-format miss. |
+| Qwen 3.6 35B MXFP/JANG (name has no `MTP`) | Hybrid layout is derived from the real 10-attention/30-companion layer graph. TQ encode/decode applies only to eligible attention KV; GDN/SSM companions remain native and are cleanly rederived/restored. This artifact is not assigned an MTP gate. | Cold + two-turn + tool continuation, RAM hit, restart/L2 hit, and forced eviction/reload with coherent output. | PASS-LIVE cache tiers / PARTIAL long strict format: rows 2169/2172/2175 prove cold, same-process `paged+ssm`, and restart `paged+ssm+disk`; v8 disk files contain exactly 10 `turboquant_kv` + 30 `skip` entries and no cumulative duplicates. UI-applied four-block rows 2178/2181 restored 154 tokens from L2 with exact tool/final output, forced nine L1 evictions, and safely full-prefilled when 192 KV tokens lacked a matching companion. PID 61919 restored the normal 1,000-block setting and row 2184 repeated the exact disk hit. The ambiguous long-tool row and clarified minor period-format miss remain retained. |
 | Qwen 3.6 27B `...-MTP` | The same hybrid cache invariant applies, and MTP is eligible because the actual model/bundle name says `MTP`. | MTP depth 1 and 3 launch/health, real draft/accepted counters, cold + two-turn + tool continuation, RAM hit, restart/L2 hit, and forced eviction/reload with coherent output. | PARTIAL: typed D3 Save & Restart now has UI/DB/argv/health parity; tools-on D1-capped multi-turn passes; tools-off D1 and D3 both looped in reasoning; cache restart/eviction rows remain open |
 | HY3 MTP | Native MTP depth is the requested value and yields measured accepted draft tokens. Prompt/L2 records include the owning target-model cache state; speculative output is never treated as a substitute cache. | Depth 1 and depth 3 A/B, acceptance and latency counters, multi-turn tool loop, restart restore, and eviction/reload. | PARTIAL: depth-1 speed row exists; depth-3/cache interaction is open |
 | MiniMax M2.7 | Ordinary KV attention may use calibrated or correctness-safe TQ storage; parser/reasoning rails must survive multi-turn tool continuation. | Auto and None UI/argv/health A/B, two-turn tool loop, RAM/L2 restore, eviction, long visible answer, and streaming rail continuity. | OPEN |
@@ -111,10 +112,22 @@ returned exact final text. Health and the visible Cache Management drawer now
 show 152 indexed tokens but 0 resident bytes, seven native-TQ block hits, and
 two SSM-disk hits. The repair passes 595/595 audit/byte-budget tests and 177/177
 paged/disk/TQ/hybrid cache tests. Screenshots are stored as
-`qwen36-35b-*.png` and `qwen35-*-postfix.png` in this evidence directory. The
-remaining Qwen row is forced block eviction/reload, a source audit of whether
-cumulative companion state is redundantly stored in generic block L2, and a
-stricter long-format repeat.
+`qwen36-35b-*.png` and `qwen35-*-postfix.png` in this evidence directory.
+Commits `df945f065`, `133d8c8e9`, and `7cb89185c` then moved generic hybrid
+cumulative state to the typed companion store, fixed the NumPy disk-writer
+branch found by live safetensor inspection, and invalidated malformed v7 files.
+The corrected v8 directory contains eight files whose tags are exactly 10
+`turboquant_kv` plus 30 `skip`; terminal partial files fell from roughly 64 MB
+in malformed v7 to 30 KB/295 KB in v8. Rows 2169/2172/2175 prove cold,
+same-process, and process-restart tiers. The Electron UI then set Max Cache
+Blocks to four and restarted PID 61405: rows 2178/2181 each restored 154/155
+`paged+ssm+disk` tokens, executed one real tool, and returned exact final text.
+The visible Cache drawer recorded nine L1 evictions and a safe full-prefill when
+192 KV-only tokens had no matching SSM companion. The UI restored 1,000 blocks,
+PID 61919 launched with that argv, and row 2184 repeated the exact disk hit.
+Python hybrid/cache/scheduler tests pass 784/784; panel settings tests pass
+278/278 plus typecheck. Only the stricter long-format/reliability row remains
+partial for this Qwen artifact.
 
 ## Non-negotiable correctness invariants
 
@@ -169,21 +182,18 @@ stricter long-format repeat.
 
 ## Execution order
 
-1. Finish Qwen 35B cache closeout first: audit duplicate companion payloads,
-   make selective-TQ UI labels truthful, then force bounded L1 eviction and
-   prove L2 promotion plus safe miss fallback through Electron before restoring
-   the user's normal limits.
-2. Complete MiniMax M2.7 Auto/None, multi-turn tool, stream, RAM/L2, and
+1. Complete MiniMax M2.7 Auto/None, multi-turn tool, stream, RAM/L2, and
    eviction rows; then ZAYA/CCA, Nemotron hybrid, and Gemma 4 rotating-SWA
    tier/eviction rows.
-3. Close DSV4 native-composite quality/stream/eviction, HY3 D3/cache, and the
+2. Close DSV4 native-composite quality/stream/eviction, HY3 D3/cache, and the
    remaining M3/Pangu long/media boundaries. Do not test Mistral MXFP4 in this
    campaign per the user's explicit instruction.
-4. Re-prove Bonsai and Qwen forced eviction/repair boundaries, retaining their
-   recorded sampling/strict-format misses as reliability evidence.
-5. Close the remaining Laguna unsolicited-tool/long-context/latency rows and
+3. Re-prove Bonsai forced eviction/repair boundaries, retaining its recorded
+   sampling miss as reliability evidence; keep Qwen 35B's long-format miss in
+   the reliability ledger without reopening its now-closed cache tier row.
+4. Close the remaining Laguna unsolicited-tool/long-context/latency rows and
    run the complete settings and protocol matrix through Electron/gateway.
-6. Run focused and full tests, audit the dirty tree, commit/push only scoped
+5. Run focused and full tests, audit the dirty tree, commit/push only scoped
    files, and merge/integrate the closeout branch deliberately.
-7. Build, sign, notarize, staple, verify, install-smoke, and publish 1.6.11 only
+6. Build, sign, notarize, staple, verify, install-smoke, and publish 1.6.11 only
    after every release-blocking row above is green.
