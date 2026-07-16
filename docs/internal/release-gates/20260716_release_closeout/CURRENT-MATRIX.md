@@ -10,13 +10,14 @@ superseded conclusions are called out here.
 
 ## Release truth
 
-- Working branch: `reconcile/1.5.68` at `4e13b19a7`; typed-settings,
+- Working branch: `reconcile/1.5.68`; current scoped code head `a36a5ea66`;
+  typed-settings,
   non-MTP architecture-hint, paged resident-accounting, typed hybrid-companion
   ownership, and v8 cache-namespace repairs plus their focused tests are pushed
   to the closeout branch described below.
 - Push target: `origin/codex/live-electron-gates-20260715`.
-- After fetching `origin`, the committed branch is 68 commits ahead of `origin/main` and
-  zero behind.
+- At scoped code head `a36a5ea66`, the branch is 70 commits ahead of
+  `origin/main` and zero behind. Matrix-only commits may follow that code head.
 - Source versions are `1.6.11` in `pyproject.toml`,
   `vmlx_engine/__init__.py`, and `panel/package.json`.
 - Public GitHub app release, PyPI, and `mlxstudio/latest.json` are all 1.6.10.
@@ -41,9 +42,9 @@ superseded conclusions are called out here.
 | openPangu | PASS-LIVE scoped / PARTIAL long-context+protocol | Source policy `_apply_openpangu_cache_policy` forces paged/block/TQ off and preserves typed MLA KV, DSA indexer, rotating-SWA metadata, causal-conv state, 128 sinks, and mHC runtime. Electron-loaded 3M PID 86212/86842/87268 launched with `--no-paged-cache --enable-disk-cache`, no KV quantization, and no block L2; Bonsai was unloaded by the single-model swap. Rows 2310/2313 prove same-chat exact one-tool finals; row 2313 hit 152 memory tokens. PID 87268 exact first-turn replay row 2322 restored 152 tokens from prompt Disk L2 (`cacheDetail=disk`, TTFT 0.18s), executed one real tool, and returned exact final. Health reports `native_path_dependent_composite`, schema `openpangu_v2_composite_v2`, `generic_turboquant_kv.enabled=false`, paged false, prompt disk L2 true | 512K/long-context soak, full protocol matrix, and broader openPangu bit-variant coverage; MTP remains detection-only/unwired for this family |
 | Cross-model post-tool | PARTIAL | Many named families pass exact one-tool/final rows | MiMo and every remaining configured parser family need current Electron rows |
 | Settings parity | PARTIAL | Cache defaults, Auto/None, gateway LAN, single-model swap, typed-setting restart, selective-TQ Cache/Perf labeling, and explicit Tool Parser None now have scoped source-plus-live proof. Commit `4e13b19a7` prevents request/model auto-detection and streaming marker buffering from silently re-enabling a disabled parser; Electron PID 99835 launched with literal `--tool-call-parser none`, and row 2358 persisted raw model text with no structured tool call/result. | Fix Min-P zero persistence; rerun UI/DB/preview/argv/health matrix including port conflict and LAN/gateway state; retain parser None as a regression row |
-| API/protocol parity | OPEN | Selected Responses/gateway rows pass | Streaming + non-stream Chat, Responses, Anthropic, Ollama; tools/result continuation; disconnect/stop/follow-up |
+| API/protocol parity | PARTIAL | Responses now emits the standards-matching `response.incomplete` terminal event for length-capped streams, and the Electron client consumes completed/incomplete final text, usage, warnings, and status symmetrically (`a36a5ea66`). Direct Bonsai Responses streamed reasoning and split function arguments; a controlled `tool_choice:none` result continuation completed once but repeated native tool markup to the cap on another run, so tool-result synthesis remains variable. | Streaming + non-stream Chat, Responses, Anthropic, Ollama; stable auto tool/result continuation; disconnect/stop/follow-up |
 | Gateway lifecycle | PARTIAL | Routable LAN address and localhost/LAN rebinding pass | Port conflict UX, cross-protocol streaming, single-model unload/reload state |
-| Full tests/build | OPEN | Current hybrid ownership/cache changes: 784/784 Python hybrid/cache/scheduler tests, 278/278 panel settings tests, and panel typecheck pass. The fetched-block ref-ownership repair adds 90/90 focused paged/TQ/hybrid tests. Parser-None repair passed 106/106 `test_server.py`, plus 52 passed / 1 skipped across selected server/openPangu/VL parser coverage. | Focused suites after each fix, full Python/panel suite, bundled-Python gate, clean release build |
+| Full tests/build | OPEN | Current hybrid ownership/cache changes: 784/784 Python hybrid/cache/scheduler tests, 278/278 panel settings tests, and panel typecheck pass. The fetched-block ref-ownership repair adds 90/90 focused paged/TQ/hybrid tests. Parser/Responses terminal coverage passed 135/135 Python, 50/50 panel, and panel typecheck. | Focused suites after each fix, full Python/panel suite, bundled-Python gate, clean release build |
 | Packaging/public release | BLOCKED | Public truth remains 1.6.10 | Build Sequoia/Tahoe, sign, notarize, staple, Gatekeeper verify, install-smoke, publish GitHub/PyPI/feed |
 
 ### Bonsai multi-turn argument and parser-off recheck — current source
@@ -66,9 +67,36 @@ superseded conclusions are called out here.
   `pyproject.toml` respectively, once each, with exact finals. Row 2373 then
   restored 258 tokens as `paged+ssm` and again executed the requested path
   exactly. Screenshot: `/tmp/bonsai-qwen-3turn-current.png`.
+- The same chat then completed four more correct single-tool turns: rows 2376,
+  2379, 2382, and 2385 used `tests/test_server.py`, `vmlx_engine/server.py`,
+  `panel/src/main/ipc/chat.ts`, and `vmlx_engine/engine/batched.py`. This gives
+  eight consecutive correct turns after the retained row-2352 failure, not a
+  claim that the earlier failure disappeared.
 - Bonsai remains `PARTIAL` because row 2352 and the earlier 4,222-character
   reasoning turn prove variability. No sampler clamp, prompt coercion, hidden
   reasoning disable, or argument rewriting was added.
+
+### Responses terminal-event correctness — current source
+
+- Official Responses streaming semantics define `response.incomplete` as the
+  terminal event for an incomplete response. Source previously emitted
+  `response.completed` with an inner `status=incomplete`; commit `a36a5ea66`
+  now makes the SSE event name and payload type match the final status, while
+  the Electron parser handles completed/incomplete terminal events uniformly.
+- Tests: 135/135 affected Python (`test_responses_history.py` plus
+  `test_server.py`), 50/50 affected panel tests, and panel typecheck.
+- Current-source server PID 2658 was restarted from the visible Electron Server
+  dialog. Direct Responses emitted one correct streamed `README.md` call with
+  split argument deltas. Its result continuation completed once with seven
+  output-text deltas and exact `B1-RESP2-DONE`; a repeat instead consumed 1,024
+  tokens, leaked repeated native tool markup under `tool_choice:none`, and now
+  truthfully terminated as `response.incomplete`. That variability is retained
+  as a Bonsai/model-template blocker rather than hidden by cleanup.
+- Electron Chat Settings then set Max Tokens to 32. Row 2388 visibly preserved
+  122 reasoning characters and the partial answer, reported exactly 32 output
+  tokens, and did not fabricate `TERM-UI1-END`. Screenshot:
+  `/tmp/bonsai-response-incomplete-ui.png`. Max Tokens was restored blank
+  (model default) and the system prompt remained blank.
 
 ## Architecture-specific cache truth
 
