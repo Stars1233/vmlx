@@ -1,0 +1,483 @@
+9982d9ae240da2fdc4dbc6ef7b1024216e9d8867
+  4868	
+  4869	    def _media_prefix_cache_allowed(
+  4870	        self,
+  4871	        request: "MLLMBatchRequest",
+  4872	        token_ids: Optional[List[int]] = None,
+  4873	    ) -> bool:
+  4874	        """Return True when media prompts may use media-keyed KV+SSM cache.
+  4875	
+  4876	        Qwen3.5/3.6 VL owns a clean media-conditioned N-1 prefill path and is
+  4877	        enabled by default. Other families retain the old double opt-in until
+  4878	        their cache topology has equivalent source and live proof. An explicit
+  4879	        false value is a kill switch even for Qwen.
+  4880	        """
+  4881	        enabled = os.environ.get("VMLINUX_MLLM_MEDIA_PREFIX_CACHE", "").strip().lower()
+  4882	        if enabled in ("0", "false", "no", "off"):
+  4883	            return False
+  4884	        model_type = str(getattr(self, "_model_type", "") or "").lower()
+  4885	        qwen_media_safe = model_type in {
+  4886	            "qwen3_5",
+  4887	            "qwen3_5_moe",
+  4888	            "qwen3_5_vl",
+  4889	        }
+  4890	        if not qwen_media_safe:
+  4891	            if enabled not in ("1", "true", "yes", "on"):
+  4892	                return False
+  4893	            unsafe_ack = os.environ.get(
+  4894	                "VMLINUX_MLLM_MEDIA_PREFIX_CACHE_UNSAFE_ACK", ""
+  4895	            ).strip().lower()
+  4896	            if unsafe_ack not in ("1", "true", "yes", "on"):
+  4897	                return False
+  4898	        if getattr(request, "_bypass_prefix_cache", False):
+  4899	            return False
+  4900	        if not getattr(request, "_cache_extra_keys", None):
+  4901	            return False
+  4902	        return self._request_has_media_cache_context(request, token_ids)
+  4903	
+  4904	    def _run_vision_encoding(self, request: MLLMBatchRequest, cache: Optional[List[Any]] = None) -> mx.array:
+  4905	        """
+  4906	        Run the initial VLM forward pass to encode vision and get first logits.
+  4907	
+  4908	        For image requests: runs full VLM model (vision + language) in one shot
+  4909	        (vision encoding cannot be chunked).
+  4910	
+  6355	                            "TurboQuant live telemetry: %s",
+  6356	                            self._stats.last_turboquant_cache,
+  6357	                        )
+  6358	                    if trace is not None:
+  6359	                        trace.stop("forward")
+  6360	                        if self._decode_trace:
+  6361	                            trace.set(
+  6362	                                cache_after_forward=_cache_layer_debug_summary(req_cache)
+  6363	                            )
+  6364	
+  6365	                    # A media prefix cannot be reconstructed later from token
+  6366	                    # ids alone. Build its clean N-1 cache now, while the
+  6367	                    # request still owns pixel/video tensors and grids. The
+  6368	                    # older deferred call ran after those fields were cleared,
+  6369	                    # silently turning the supposedly media-conditioned cache
+  6370	                    # into a text-only prefill. Do this only on a cold request;
+  6371	                    # a restored media prefix already owns the clean boundary.
+  6372	                    _media_tokens = list(
+  6373	                        getattr(req, "_original_token_ids", None) or []
+  6374	                    )
+  6375	                    if (
+  6376	                        int(getattr(req, "_cached_tokens", 0) or 0) == 0
+  6377	                        and len(_media_tokens) > 1
+  6378	                        and self._media_prefix_cache_allowed(req, _media_tokens)
+  6379	                    ):
+  6380	                        clean_media_cache = (
+  6381	                            self._prefill_for_clean_media_prefix_cache(
+  6382	                                req, _media_tokens[:-1]
+  6383	                            )
+  6384	                        )
+  6385	                        if clean_media_cache is not None:
+  6386	                            req._media_clean_prefix_cache = clean_media_cache  # type: ignore[attr-defined]
+  6387	                            logger.info(
+  6388	                                "MLLM media prefix cache: captured clean media "
+  6389	                                "N-1 boundary for %s (%d tokens) before tensor release",
+  6390	                                req.request_id,
+  6391	                                len(_media_tokens) - 1,
+  6392	                            )
+  6393	                except ValueError as ve:
+  6394	                    if trace is not None:
+  6395	                        trace.stop("forward")
+  6570	                    _tp = getattr(req, '_original_token_ids', None) or input_ids_list[i]
+  6571	                    _media_context_for_ssm = self._request_has_media_cache_context(
+  6572	                        req, _tp
+  6573	                    )
+  6574	                    _media_cache_allowed_for_ssm = (
+  6575	                        _media_context_for_ssm
+  6576	                        and self._media_prefix_cache_allowed(req, _tp)
+  6577	                    )
+  6578	                    if _media_context_for_ssm and not _media_cache_allowed_for_ssm:
+  6579	                        continue
+  6580	                    _ssm_extra_keys = (
+  6581	                        getattr(req, "_cache_extra_keys", None)
+  6582	                        if _media_cache_allowed_for_ssm
+  6583	                        else None
+  6584	                    )
+  6585	                    if _media_cache_allowed_for_ssm:
+  6586	                        # The clean N-1 media cache was captured immediately
+  6587	                        # after the real media forward, before pixel/grid tensor
+  6588	                        # release. Use that same boundary for both attention KV
+  6589	                        # and native SSM/GDN companion state. Never fall through
+  6590	                        # to text-only async rederive for a media prompt.
+  6591	                        clean_media_cache = getattr(
+  6592	                            req, "_media_clean_prefix_cache", None
+  6593	                        )
+  6594	                        if clean_media_cache is None:
+  6595	                            if int(getattr(req, "_cached_tokens", 0) or 0) > 0:
+  6596	                                logger.info(
+  6597	                                    "MLLM media prefix cache: restored media-keyed "
+  6598	                                    "KV+SSM boundary for %s; skipping redundant "
+  6599	                                    "clean-boundary store",
+  6600	                                    req.request_id,
+  6601	                                )
+  6602	                            else:
+  6603	                                logger.info(
+  6604	                                    "MLLM media prefix cache: no clean media boundary "
+  6605	                                    "for %s; full prefill will remain required",
+  6606	                                    req.request_id,
+  6607	                                )
+  6608	                            continue
+  6609	                        clean_ssm_layers: List[Any] = []
+  6610	                        kv_set = set(self._hybrid_kv_positions or [])
+  6611	                        for layer_idx, cache_obj in enumerate(clean_media_cache):
+  6612	                            if layer_idx in kv_set:
+  6613	                                continue
+  6614	                            if hasattr(cache_obj, "cache") and isinstance(
+  6615	                                cache_obj.cache, list
+  6616	                            ):
+  6617	                                from copy import deepcopy
+  6618	
+  6619	                                cloned = deepcopy(cache_obj)
+  6620	                                cloned.cache = [
+  6621	                                    mx.contiguous(arr) if arr is not None else None
+  6622	                                    for arr in cache_obj.cache
+  6623	                                ]
+  6624	                                clean_ssm_layers.append(cloned)
+  6625	                            else:
+  6626	                                clean_ssm_layers.append(cache_obj)
+  6627	                        all_tokens = list(
+  6628	                            getattr(req, "_original_token_ids", None)
+  6629	                            or input_ids_list[i]
+  6630	                        )
+  6631	                        prompt_len = (
+  6632	                            len(all_tokens) - 1
+  6633	                            if len(all_tokens) > 1
+  6634	                            else len(all_tokens)
+  6635	                        )
+  6636	                        if clean_ssm_layers and prompt_len > 0:
+  6637	                            self._ssm_state_cache.store(
+  6638	                                all_tokens[:prompt_len],
+  6639	                                prompt_len,
+  6640	                                clean_ssm_layers,
+  6641	                                is_complete=True,
+  6642	                                cache_extra_keys=_ssm_extra_keys,
+  6643	                            )
+  6644	                            logger.info(
+  6645	                                "MLLM media prefix cache: stored clean media SSM "
+  6646	                                "companion for %s (%d layers, %d-token key)",
+  6647	                                req.request_id,
+  6648	                                len(clean_ssm_layers),
+  6649	                                prompt_len,
+  6650	                            )
+  6651	                        continue
+  6652	                    # vmlx#109: if capture-during-prefill already snapshotted
+  6653	                    # a clean SSM state at the gpl boundary, store it now
+  6654	                    # with is_complete=True and skip the deferred re-derive
+  6655	                    # path entirely. The post-prefill cache is post-gpl and
+  6656	                    # would otherwise either be wrong (gpl>0) or queue a
+  6657	                    # second prefill pass.
+  6658	                    _inline_checkpoints = getattr(req, "_inline_ssm_checkpoints", None)
+  6659	                    if not _inline_checkpoints:
+  6660	                        _inline_layers = getattr(req, "_inline_ssm_layers", None)
+  8078	                    )
+  8079	                    self._stats.record_native_mtp(
+  8080	                        request_id=request_id,
+  8081	                        stats=mtp_state_for_finish.stats,
+  8082	                        finish_reason=finish_reason,
+  8083	                        final_depth=mtp_state_for_finish.depth,
+  8084	                        fallback_reason=mtp_state_for_finish.ar_fallback_reason,
+  8085	                    )
+  8086	                    try:
+  8087	                        delattr(req, "_native_mtp_state")
+  8088	                    except AttributeError:
+  8089	                        pass
+  8090	                # Extract cache NOW before batch.filter() invalidates indices.
+  8091	                # Do NOT TQ-compress here — the scheduler needs original float16
+  8092	                # for block extraction. TQ recompress happens on the fetch path.
+  8093	                captured_cache = getattr(req, "_media_clean_prefix_cache", None)
+  8094	                if captured_cache is None:
+  8095	                    captured_cache = batch.extract_cache(i)
+  8310	
+  8311	    def _prefill_for_clean_ssm(self, tokens: List[int]) -> Optional[List[Any]]:
+  8312	        """Compatibility alias for hybrid SSM callers."""
+  8313	        return self._prefill_for_clean_path_dependent_cache(tokens)
+  8314	
+  8315	    def _prefill_for_clean_media_prefix_cache(
+  8316	        self,
+  8317	        request: "MLLMBatchRequest",
+  8318	        tokens: List[int],
+  8319	    ) -> Optional[List[Any]]:
+  8320	        """Run a media-conditioned clean prefill for a media prefix key.
+  8321	
+  8322	        Unlike `_prefill_for_clean_path_dependent_cache`, this keeps the VLM
+  8323	        wrapper and pixel/video tensors in the forward path. It adds an extra
+  8324	        prefill on a cold request but is the minimal safe way to create SSM
+  8325	        state at the same media-keyed N-1 boundary as the paged KV blocks.
+  8326	        """
+  8327	        if not tokens or self.language_model is None:
+  8328	            return None
+  8329	        _saved_pos_state: Dict[str, Any] = {}
+  8330	        try:
+  8331	            # Qwen VL keeps request-local RoPE state on the language model.
+  8332	            # The auxiliary N-1 prefill must start clean, then restore the
+  8333	            # original full-prompt state so the active request's decode step
+  8334	            # continues from its real media prefill rather than the shorter
+  8335	            # cache-building pass.
+  8336	            for attr in ("_rope_deltas", "_position_ids"):
+  8337	                if hasattr(self.language_model, attr):
+  8338	                    _saved_pos_state[attr] = getattr(self.language_model, attr)
+  8339	                    setattr(self.language_model, attr, None)
+  8340	            fresh_cache = (
+  8341	                self.language_model.make_cache()
+  8342	                if hasattr(self.language_model, "make_cache")
+  8343	                else None
+  8344	            )
+  8345	            if fresh_cache is None:
+  8346	                from mlx_lm.models.cache import KVCache
+  8347	
+  8348	                fresh_cache = [
+  8349	                    KVCache() for _ in range(len(self.language_model.layers))
+  8350	                ]
+  8351	            from copy import copy
+  8352	
+  8353	            clean_req = copy(request)
+  8354	            clean_req.input_ids = mx.array([tokens])
+  8355	            if request.attention_mask is not None:
+  8356	                try:
+  8357	                    clean_req.attention_mask = request.attention_mask[:, : len(tokens)]
+  8358	                except Exception:
+  8359	                    clean_req.attention_mask = request.attention_mask
+  8360	            clean_req.vision_encoded = False
+  8361	            logits = self._run_vision_encoding(clean_req, cache=fresh_cache)
+  8362	            materialize: List[Any] = []
+  8363	
+  8364	            def _collect_cache_arrays(cache_obj: Any) -> None:
+  8365	                if hasattr(cache_obj, "keys") and cache_obj.keys is not None:
+  8366	                    if isinstance(cache_obj.keys, tuple):
+  8367	                        materialize.extend(cache_obj.keys)
+  8368	                        materialize.extend(cache_obj.values)
+  8369	                    else:
+  8370	                        materialize.extend([cache_obj.keys, cache_obj.values])
+  8371	                elif hasattr(cache_obj, "caches") and isinstance(
+  8372	                    getattr(cache_obj, "caches", None), (list, tuple)
+  8373	                ):
+  8374	                    for sub_cache in cache_obj.caches:
+  8375	                        _collect_cache_arrays(sub_cache)
+  8376	                elif hasattr(cache_obj, "cache") and isinstance(cache_obj.cache, list):
+  8377	                    for arr in cache_obj.cache:
+  8378	                        if hasattr(arr, "shape"):
+  8379	                            materialize.append(arr)
+  8380	
+  8381	            for c in fresh_cache:
+  8382	                _collect_cache_arrays(c)
+  8383	            if materialize:
+  8384	                try:
+  8385	                    mx.eval(materialize)
+  8386	                except RuntimeError as _eval_err:
+  8387	                    if "Stream" in str(_eval_err):
+  8388	                        mx.synchronize()
+  8389	                    else:
+  8390	                        raise
+  8391	            del logits
+  8392	            return fresh_cache
+  8393	        except Exception as ex:
+  8394	            logger.warning(
+  8395	                "MLLM clean media prefix prefill failed for %s (non-fatal): %s",
+  8396	                getattr(request, "request_id", "?"),
+  8397	                ex,
+  8398	            )
+  8399	            return None
+  8400	        finally:
+  8401	            for attr, value in _saved_pos_state.items():
+  8402	                try:
+  8403	                    setattr(self.language_model, attr, value)
+  8404	                except Exception:
+  8405	                    pass
+  8406	
+  8407	    def run_idle_rederive(self) -> bool:
+  8408	        """Process one SSM rederive task from the queue (scheduler idle tick).
+  8409	
+  8410	        Returns True if a task was processed, False if queue was empty.
+  1020	                and self.batch_generator._tokens_contain_media_placeholders(
+  1021	                    list(token_ids)
+  1022	                )
+  1023	            )
+  1024	            return bool(contains_placeholders)
+  1025	        except Exception:
+  1026	            return False
+  1027	
+  1028	    def _mllm_media_prefix_cache_allowed(
+  1029	        self,
+  1030	        request: Any,
+  1031	        token_ids: Optional[List[int]] = None,
+  1032	    ) -> bool:
+  1033	        """Return True when a media prompt may use media-keyed prefix cache.
+  1034	
+  1035	        Qwen3.5/3.6 VL has a clean media-conditioned N-1 cache producer and is
+  1036	        enabled by default. Other families retain the historical double opt-in
+  1037	        until they have equivalent typed-cache proof. ZAYA CCA remains
+  1038	        excluded because its current clean store path is text-only.
+  1039	        """
+  1040	        enabled = os.environ.get("VMLINUX_MLLM_MEDIA_PREFIX_CACHE", "").strip().lower()
+  1041	        if enabled in ("0", "false", "no", "off"):
+  1042	            return False
+  1043	        if request is None or getattr(request, "_bypass_prefix_cache", False):
+  1044	            return False
+  1045	        if getattr(self, "_uses_zaya_cache", False):
+  1046	            return False
+  1047	        model_type = str(
+  1048	            getattr(getattr(self, "batch_generator", None), "_model_type", "")
+  1049	            or getattr(self, "_model_type", "")
+  1050	            or ""
+  1051	        ).lower()
+  1052	        qwen_media_safe = model_type in {
+  1053	            "qwen3_5",
+  1054	            "qwen3_5_moe",
+  1055	            "qwen3_5_vl",
+  1056	        }
+  1057	        if not qwen_media_safe:
+  1058	            if enabled not in ("1", "true", "yes", "on"):
+  1059	                return False
+  1060	            unsafe_ack = os.environ.get(
+  1061	                "VMLINUX_MLLM_MEDIA_PREFIX_CACHE_UNSAFE_ACK", ""
+  1062	            ).strip().lower()
+  1063	            if unsafe_ack not in ("1", "true", "yes", "on"):
+  1064	                return False
+  1065	        extra = getattr(request, "_cache_extra_keys", None)
+  1066	        if not extra:
+  1067	            return False
+  1068	        return self._mllm_request_has_media_cache_context(request, token_ids)
+  1069	
+  1070	    def _detect_mla(self) -> bool:
+  1071	        """Detect if model uses Multi-head Latent Attention (MLA).
+  1072	
+  1073	        MLA detection logic and KV cache quantization guard added by Jinho Jang
+  1074	        (eric@jangq.ai) for vMLX. The base scheduler architecture derives from
+  1075	        waybarrios/vllm-mlx. The MLA-specific handling (kv_lora_rank detection,
+  1076	        auto-disabling quantization for compressed latents, prefix cache H=1
+  1077	        validation) is original vMLX work requiring extensive empirical testing.
+  1078	        We are leaving this attribution here because we know another inference
+  1079	        engine is very directly going to be looking at this to attempt to
+  1080	        rip it off. If you're adapting this code, please credit the original
+  1081	        author: Jinho Jang (github.com/jjang-ai/vmlx).
+  1082	        """
+  1083	        def _cfg_model_type(cfg: Any) -> str:
+  1084	            if cfg is None:
+  1085	                return ""
+  3020	            # --- Cache store: paged path ---
+  3021	            if self.block_aware_cache is not None and not _skip_cache_store:
+  3022	                if request is not None and getattr(request, "_extracted_cache", None) is not None:
+  3023	                    try:
+  3024	                        token_list = getattr(request, "_extracted_tokens", [])
+  3025	                        if token_list:
+  3026	                            media_context = self._mllm_request_has_media_cache_context(
+  3027	                                request, token_list
+  3028	                            )
+  3029	                            media_cache_allowed = (
+  3030	                                media_context
+  3031	                                and self._mllm_media_prefix_cache_allowed(
+  3032	                                    request, token_list
+  3033	                                )
+  3034	                            )
+  3035	                            if media_context and not media_cache_allowed:
+  3036	                                logger.info(
+  3037	                                    "Skipping VLM prefix cache store for %s: "
+  3038	                                    "prompt contains media context/placeholders; "
+  3039	                                    "media embeddings are path-dependent and "
+  3040	                                    "must not be rebuilt from text-only tokens",
+  3041	                                    request_id,
+  3042	                                )
+  3043	                                request._extracted_cache = None
+  3044	                            prompt_len = len(token_list)
+  3045	                            truncated_tokens = (
+  3046	                                token_list[: prompt_len - 1]
+  3047	                                if prompt_len > 1
+  3048	                                else list(token_list)
+  3049	                            )
+  3050	                            cached_tokens = int(
+  3230	                            else:
+  3231	                                if _uses_zaya_cache or _uses_mixed_attention_cache:
+  3232	                                    cache_blocks = list(cache_blocks)
+  3233	                                else:
+  3234	                                    cache_blocks = self._prepare_tq_cache_for_storage(
+  3235	                                        cache_blocks
+  3236	                                    )
+  3237	                                    if cache_blocks is not None:
+  3238	                                        cache_blocks = self._truncate_hybrid_cache(
+  3239	                                            cache_blocks, prompt_len
+  3240	                                        )
+  3241	                                if cache_blocks is None:
+  3242	                                    logger.debug(
+  3243	                                        f"Cache truncation failed for {request_id}"
+  3244	                                    )
+  3245	                                elif not self._validate_cache(
+  3246	                                    cache_blocks,
+  3247	                                    source=f"mllm-paged-store:{request_id}",
+  3248	                                ):
+  3249	                                    logger.warning(
+  3250	                                        f"VLM paged cache store rejected unsafe "
+  3251	                                        f"live cache for {request_id}"
+  3252	                                    )
+  3253	                                else:
+  3254	                                    # NOTE: gen_prompt_len is already stripped from _extracted_tokens
+  3255	                                    # by the batch generator (_original_token_ids at line 1411-1413).
+  3256	                                    # Do NOT strip again here — double stripping collapses the
+  3257	                                    # token list to near-zero length.
+  3258	                                    # L2: persist to disk before quantization.
+  3259	                                    # Skip for hybrid models — the prompt-level disk cache
+  3260	                                    # can't reconstruct SSM state on fetch (mllm_batch_generator
+  3261	                                    # guards with `if not self._is_hybrid`), so writing is
+  3262	                                    # wasted I/O. Block-level disk cache (block_disk_store)
+  3263	                                    # still works for hybrid via the paged path.
+  3264	                                    if (
+  3265	                                        self.disk_cache is not None
+  3266	                                        and not self._is_hybrid
+  3267	                                        and not media_context
+  3268	                                    ):
+  3269	                                        try:
+  3270	                                            self.disk_cache.store(token_list, cache_blocks)
+  3271	                                        except Exception as de:
+  3272	                                            logger.debug(f"VLM disk cache store failed for {request_id}: {de}")
+  3273	                                    if getattr(self, '_kv_cache_bits', 0):
+  3274	                                        cache_blocks = self._quantize_cache_for_storage(cache_blocks)
+  3275	                                        if not self._validate_cache(
+  3276	                                            cache_blocks,
+  3277	                                            source=f"mllm-paged-store-quant:{request_id}",
+  3278	                                        ):
+  3279	                                            logger.warning(
+  3280	                                                f"VLM paged cache store rejected unsafe "
+  3281	                                                f"quantized live cache for {request_id}"
+  3282	                                            )
+  3283	                                            cache_blocks = None
+  3284	                                    if cache_blocks is not None:
+  3285	                                        cache_states = self._extract_cache_states(cache_blocks)
+  3286	                                        if cache_states:
+  3287	                                            _paged_store_kwargs = {
+  3288	                                                "cache_extra_keys": (
+  3289	                                                    getattr(
+  3290	                                                        request,
+  3291	                                                        "_cache_extra_keys",
+  3292	                                                        None,
+  3293	                                                    )
+  3294	                                                    if media_cache_allowed
+  3295	                                                    else None
+  3296	                                                ),
+  3297	                                            }
+  3298	                                            if (
+  3299	                                                self._is_hybrid
+  3300	                                                and not self._uses_zaya_cache
+  3301	                                                and not _uses_mixed_attention_cache
+  3302	                                            ):
+  3303	                                                _paged_store_kwargs[
+  3304	                                                    "store_cumulative_state"
+  3305	                                                ] = False
+  3306	                                            self.block_aware_cache.store_cache(
+  3307	                                                request_id,
+  3308	                                                truncated_tokens,
+  3309	                                                cache_states,
+  3310	                                                **_paged_store_kwargs,
+  3311	                                            )
+  3312	                                            logger.info(
+  3313	                                                f"VLM Scheduler stored paged Prefix Cache for "
+  3314	                                                f"{request_id}: {len(cache_states)} layers, "
+  3315	                                                f"truncated to {len(truncated_tokens)} tokens"
+  3316	                                                f"{' with media side-key' if media_cache_allowed else ''}"
+  3317	                                            )
+  3318	                                        else:
+  3319	                                            logger.info(
+  3320	                                                "Skipping VLM paged cache store for %s: "
