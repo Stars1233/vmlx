@@ -1,0 +1,13 @@
+Laguna PID 76348 current health after Electron row 366
+
+- scheduler cache hits=1; misses=1; tokens_saved=4096.
+- Block Disk L2 disk_hits=64; disk_writes=3.
+- tq_native_enabled=true; tq_native_hits=64; tq_native_writes=3.
+- stored_prefix_quantization=turboquant-q4.
+- auto_policy=uncalibrated_full_kv_storage_tq4.
+- L2 block tokens on disk=15062.
+
+Current process arguments retain paged cache, 64-token blocks, 1,000 blocks,
+Block Disk L2, stream interval 1, GLM47 tool parser, Qwen3 reasoning parser,
+and JIT. TQ q4 was selected by the model-derived Auto policy and reported by
+health rather than an explicit CLI quantization override.

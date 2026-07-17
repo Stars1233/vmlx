@@ -1,5 +1,26 @@
 # Current Status
 
+## 2026-07-17 - Laguna cross-family post-reasoning stream regression
+
+Status: `SCOPED_LAGUNA_API_ELECTRON_STREAM_PASS_STRICT_FORMAT_LONG_RELEASE_GATES_OPEN`.
+
+- The visible Sessions UI stopped Bonsai PID 75463 and started Laguna PID
+  76348, leaving one active local engine. Health reached ready before a prompt
+  with `last_request_time=null`.
+- Raw `/v1/responses` emitted 201 reasoning deltas followed by 86 timed content
+  deltas and exactly one completed terminal.
+- Fresh Electron row 366 recorded one final reasoning snapshot followed by 369
+  incremental visible-content mutations over 4.208 seconds. The answer ended
+  with `LAG-UI-STREAM2-DONE` and persisted no warning.
+- Row 366 restored 4,096 `paged+disk+tq-native` tokens at 2.27s TTFT. Health
+  recorded 64 native-TQ q4 disk hits.
+- The model added an introductory sentence despite the requested format. That
+  is retained as a strict-format miss; only stream delivery and UI paint pass.
+- Evidence:
+  `docs/internal/release-gates/20260716_release_closeout/laguna-post-reasoning-stream-current/`.
+- Broader model-family, long-context, strict-format, and release rows remain
+  `PARTIAL_NO_RELEASE`.
+
 ## 2026-07-17 - Shared Electron content-delta paint after reasoning
 
 Status: `SCOPED_BONSAI_RESPONSES_ELECTRON_STREAM_PASS_CROSS_MODEL_REGRESSION_OPEN_RELEASE_GATE_OPEN`.
