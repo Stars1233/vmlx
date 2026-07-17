@@ -101,6 +101,45 @@ superseded conclusions are called out here.
   reasoning turn prove variability. No sampler clamp, prompt coercion, hidden
   reasoning disable, or argument rewriting was added.
 
+### Bonsai / Qwen-family bounded answer-pass streaming — current source
+
+- Root cause: the shared bounded visible-answer fallback still held back
+  `_ANS_MARKER_HOLDBACK=48` characters for non-Hy3 progressive families. A
+  short second-pass answer could therefore be fully withheld until the terminal
+  chunk even though the first reasoning pass streamed normally. This was a
+  server streaming-contract bug, not native Bonsai behavior and not only a
+  renderer paint issue.
+- Source fix: `vmlx_engine/server.py` now routes both Chat Completions and
+  Responses fallback emission through `_answer_pass_stream_holdback`. Known
+  direct-rail families `hy_v3`, `minimax_m3`, `qwen3_5`, and `qwen3_5_moe`
+  stream with zero tail holdback; marker-risk or buffered families retain the
+  48-character guard.
+- Source validation: 17 focused tests passed on the remote checkout:
+  `tests/test_answer_pass_streaming.py` plus the affected
+  `test_qwen35_tools_enabled_reasoning_only_rearms_visible_answer_pass`,
+  Gemma4, and MiniMax-M3 fallback rows in `tests/test_engine_audit.py`. The
+  Qwen-family regression now uses a deliberately short answer prefix, so the
+  previous 48-character holdback would batch and fail it.
+- Raw Responses proof after Electron Server `Save & Restart` loaded PID 58124:
+  `[B1-SSE-SHORT-FIX1]` produced 48 reasoning deltas and then 11 separate
+  `response.output_text.delta` events for `B1-SSE-SHORT-FIX1-OK`, from 2.893s
+  through 3.077s, followed by matching `response.output_text.done` and
+  `response.completed`.
+- Live Electron proof: selected the visible running
+  `jangq-ai/Bonsai-27b-1bit-JANG` session, sent
+  `[B1-ELECTRON-STREAM-FIX3]`, and instrumented the real preload
+  `api.chat.onStream` renderer event. The app emitted 53 reasoning updates and
+  seven content updates with content lengths `[2,4,6,10,11,12,13]`, growing
+  `UIRENDER-42` progressively before `chat:complete`. Screenshot:
+  `bonsai-current-head/b1-electron-stream-fix3.png`.
+- Persisted row 2618: content `UIRENDER-42`, reasoning 180 chars,
+  `cachedTokens=320`, `cacheDetail=paged+ssm`, `tokensPerSecond=49.3`,
+  `ttft=3.48`, `totalTime=4.8`.
+- Remaining status: streaming contract for this fallback path is PASS-LIVE for
+  Responses plus Electron renderer on Bonsai/Qwen-family direct rail. Displayed
+  TPS accounting remains PARTIAL because the UI metric still represents a
+  blended reasoning+answer-pass turn rather than separate phase speeds.
+
 ### Responses terminal-event correctness — current source
 
 - Official Responses streaming semantics define `response.incomplete` as the
