@@ -1,0 +1,171 @@
+{
+  "model": "jangq-ai/Laguna-M.1-JANG_2L",
+  "port": 8015,
+  "tag": "LAGUNA-SHARED1",
+  "chat_turn_1": {
+    "reasoning_delta_count": 512,
+    "content_delta_count": 12,
+    "first_reasoning_at": 1.123,
+    "first_content_at": 47.557,
+    "last_content_at": 48.071,
+    "content_times": [
+      47.557,
+      47.603,
+      47.649,
+      47.694,
+      47.74,
+      47.786,
+      47.833,
+      47.881,
+      47.928,
+      47.975,
+      48.022,
+      48.071
+    ],
+    "content_deltas": [
+      "LAG",
+      "UN",
+      "A",
+      "-SHA",
+      "RED",
+      "1",
+      "-CH",
+      "AT",
+      "-T",
+      "1",
+      "-",
+      "OK"
+    ],
+    "content": "LAGUNA-SHARED1-CHAT-T1-OK",
+    "finish_reasons": [
+      "length",
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 55,
+      "completion_tokens": 527,
+      "total_tokens": 582
+    }
+  },
+  "chat_turn_1_pass": true,
+  "chat_turn_2": {
+    "reasoning_delta_count": 324,
+    "content_delta_count": 23,
+    "first_reasoning_at": 1.375,
+    "first_content_at": 27.324,
+    "last_content_at": 29.056,
+    "content_times": [
+      27.324,
+      27.404,
+      27.484,
+      27.567,
+      27.646,
+      27.726,
+      27.805,
+      27.884,
+      27.961,
+      28.038,
+      28.115,
+      28.192,
+      28.273,
+      28.351,
+      28.43,
+      28.508,
+      28.587,
+      28.665,
+      28.743,
+      28.822,
+      28.9,
+      28.978,
+      29.056
+    ],
+    "content_deltas": [
+      "\n",
+      "LAG",
+      "UN",
+      "A",
+      "-SHA",
+      "RED",
+      "1",
+      "-CH",
+      "AT",
+      "-T",
+      "2",
+      "-M",
+      "EM",
+      "-L",
+      "AG",
+      "UN",
+      "A",
+      "-SHA",
+      "RED",
+      "1",
+      "-",
+      "OK",
+      "\n"
+    ],
+    "content": "\nLAGUNA-SHARED1-CHAT-T2-MEM-LAGUNA-SHARED1-OK\n",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 130,
+      "completion_tokens": 349,
+      "total_tokens": 479,
+      "prompt_tokens_details": {
+        "cached_tokens": 51,
+        "cache_detail": "paged+tq-native"
+      }
+    }
+  },
+  "chat_turn_2_pass": true,
+  "responses": {
+    "reasoning_delta_count": 346,
+    "content_delta_count": 12,
+    "first_reasoning_at": 0.929,
+    "first_content_at": 28.396,
+    "last_content_at": 29.261,
+    "content_times": [
+      28.396,
+      28.477,
+      28.555,
+      28.634,
+      28.711,
+      28.79,
+      28.87,
+      28.949,
+      29.029,
+      29.106,
+      29.184,
+      29.261
+    ],
+    "content_deltas": [
+      "\n",
+      "LAG",
+      "UN",
+      "A",
+      "-SHA",
+      "RED",
+      "1",
+      "-RE",
+      "SP",
+      "-",
+      "OK",
+      "\n"
+    ],
+    "content": "\nLAGUNA-SHARED1-RESP-OK\n",
+    "done_texts": [
+      "\nLAGUNA-SHARED1-RESP-OK\n"
+    ],
+    "terminals": [
+      "response.completed"
+    ],
+    "usage": {
+      "input_tokens": 41,
+      "output_tokens": 360,
+      "total_tokens": 401
+    }
+  },
+  "responses_pass": true,
+  "all_pass": true
+}

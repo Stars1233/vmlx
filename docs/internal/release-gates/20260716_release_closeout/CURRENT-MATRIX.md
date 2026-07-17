@@ -84,10 +84,27 @@ superseded conclusions are called out here.
   `HY3-ELECTRON-OWNER1-DONE`, and displayed 1,472
   `paged+disk+tq-native` cached tokens with 1.11s request TTFT. Screenshot and
   probe data are under `hy3-tq-ownerload/`.
-- Verdict: source correctness, API streaming, model-worker ownership, and the
-  Electron agent loop are current-source live passes. Q4 reconstruction cost
-  is still a release-blocking performance row; no cache-hit or release-ready
-  claim may hide the matched cold comparison.
+- Nemotron hybrid/SSM provides the counterexample needed to avoid calling TQ
+  globally slow. With thinking disabled, one exact 4,638-token prompt reached
+  first content in 7.5035s cold. The identical resident request restored 4,631
+  tokens as `paged+ssm+tq-native` in 0.4953s (15.149x), with 0.2048s worker
+  reconstruction. After Electron `Save & Restart` without clearing L2, the
+  first identical request restored 4,631 `paged+ssm+disk+tq-native` tokens in
+  0.3950s and the following RAM hit was 0.4817s. Both remained exact and
+  streamed 13 answer deltas. Evidence: `nemotron-stream-cache/nemo-tqfair1*.json`.
+- Laguna plain-attention KV used the same TQ4 storage boundary on an exact
+  4,635-token prompt. Cold first content was 13.7515s; 4,631 resident
+  `paged+tq-native` tokens reduced it to 2.6702s (5.15x). The no-clear restart
+  restored `paged+disk+tq-native` in 4.3248s, followed by a 2.6243s RAM hit.
+  Its 1.286-1.391s reconstruction is materially slower than Nemotron and
+  remains a performance target even though all four outputs were exact and
+  incremental. Evidence: `laguna-stream-cache/laguna-tqfair1*.json`.
+- Verdict: source correctness, API streaming, model-worker ownership, Electron
+  agent loops, and real RAM/L2 TQ TTFT speedups are `PASS-LIVE` for Nemotron and
+  Laguna. Hy3 remains `PARTIAL`: its matched prompt-L2 request was slower than
+  cold and its resident gain was only about 1.05x. TQ performance is therefore
+  cache-family specific, not globally green; no cache-hit or release-ready claim
+  may hide the matched cold comparisons.
 
 ### Qwen 3.6 27B post-tool progressive streaming — current source
 
@@ -184,12 +201,27 @@ superseded conclusions are called out here.
 - Prior Bonsai live proof remains valid: PID 58124 streamed raw Chat and
   Responses, while Electron `[B1-ELECTRON-STREAM-FIX3]` emitted 53 reasoning
   and seven progressive content updates before exact `UIRENDER-42`.
-- Verdict: source contract and live Step/Bonsai Chat, Responses, Electron, and
-  one-tool loop are `PASS-LIVE`. Cross-family release status remains `PARTIAL`:
-  Nemotron and Laguna need current raw+Electron rows, and DSV4 retains an
-  intentional full-pass re-entry guard pending its dedicated live matrix.
-  Displayed TPS accounting is also `PARTIAL` because the UI still blends
-  reasoning and any bounded answer-pass phase rather than reporting phase rates.
+- Nemotron current raw proof emitted 50/14 reasoning/content deltas on Chat
+  turn 1, 256/23 on the cached multi-turn recall, and 43/13 on Responses; every
+  terminal marker was exact and turn 2 used 53 `paged+ssm+tq-native` tokens.
+  Electron emitted 265 timed reasoning updates and 14 timed content updates,
+  executed one `file_info`, and returned exact `NEMO-ELECTRON-STREAM1-DONE`.
+  Evidence: `nemotron-stream-cache/nemo-shared1.json` and
+  `nemo-electron-stream1.{json,png}`.
+- Laguna current raw proof also streamed progressively and exactly: Chat turn 1
+  emitted 512 reasoning plus 12 answer deltas through the bounded direct pass;
+  cached turn 2 emitted 324/23 with 51 `paged+tq-native` tokens; Responses
+  emitted 346/12 and one completed terminal. Electron emitted 33 timed reasoning
+  and 13 timed content updates, executed one `file_info`, and exact-finaled.
+  This is a streaming pass but a reasoning/performance partial: raw turn 1 took
+  48.1s and the Electron tool loop 41.4s. Evidence under
+  `laguna-stream-cache/`.
+- Verdict: source contract and live Step, Bonsai, Nemotron, and Laguna Chat,
+  Responses, Electron, multi-turn, and one-tool loops are `PASS-LIVE` for
+  progressive emission. Cross-family release status remains `PARTIAL` because
+  DSV4 retains an intentional full-pass re-entry guard pending its dedicated
+  live matrix, Laguna reasoning latency is excessive, and displayed TPS still
+  blends reasoning with any bounded answer-pass phase.
 
 ### Responses terminal-event correctness — current source
 

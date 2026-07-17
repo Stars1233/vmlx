@@ -1,0 +1,113 @@
+{
+  "tag": "NEMO-TQFAIR1",
+  "expected": "NEMO-TQFAIR1-PREFIX-OK",
+  "cold": {
+    "first_content_seconds": 7.5035,
+    "last_content_seconds": 7.6494,
+    "content_delta_count": 13,
+    "content_times": [
+      7.5035,
+      7.5167,
+      7.5295,
+      7.5419,
+      7.5542,
+      7.566,
+      7.5786,
+      7.5902,
+      7.6021,
+      7.614,
+      7.6257,
+      7.6375,
+      7.6494
+    ],
+    "content": "\nNEMO-TQFAIR1-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 4638,
+      "completion_tokens": 14,
+      "total_tokens": 4652
+    }
+  },
+  "cold_cache_execution": {
+    "request_id": "chatcmpl-c9dc1acb",
+    "cache_detail": "paged+ssm+tq-native",
+    "cached_tokens": 53,
+    "blocks": 1,
+    "selection": {
+      "paged_cached_tokens": 53,
+      "paged_cold_tokens": 0,
+      "warm_cached_tokens": 0,
+      "hot_advantage_tokens": 53,
+      "hot_advantage_threshold_tokens": 64,
+      "selected": "paged",
+      "rejected": null,
+      "reason": "no_warm_prefix_alternative"
+    },
+    "reconstructed": true,
+    "dequantized": false,
+    "reconstruction_seconds": 0.010815,
+    "dequantization_seconds": 0.0,
+    "total_worker_cache_seconds": 0.012222,
+    "reconstruction_ok": true
+  },
+  "warm": {
+    "first_content_seconds": 0.4953,
+    "last_content_seconds": 0.6391,
+    "content_delta_count": 13,
+    "content_times": [
+      0.4953,
+      0.5078,
+      0.5196,
+      0.5315,
+      0.5432,
+      0.5553,
+      0.5674,
+      0.5792,
+      0.591,
+      0.603,
+      0.6152,
+      0.6271,
+      0.6391
+    ],
+    "content": "\nNEMO-TQFAIR1-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 4638,
+      "completion_tokens": 14,
+      "total_tokens": 4652,
+      "prompt_tokens_details": {
+        "cached_tokens": 4631,
+        "cache_detail": "paged+ssm+tq-native"
+      }
+    }
+  },
+  "warm_cache_execution": {
+    "request_id": "chatcmpl-3e6c31b0",
+    "cache_detail": "paged+ssm+tq-native",
+    "cached_tokens": 4631,
+    "blocks": 73,
+    "selection": {
+      "paged_cached_tokens": 4631,
+      "paged_cold_tokens": 0,
+      "warm_cached_tokens": 0,
+      "hot_advantage_tokens": 4631,
+      "hot_advantage_threshold_tokens": 64,
+      "selected": "paged",
+      "rejected": null,
+      "reason": "no_warm_prefix_alternative"
+    },
+    "reconstructed": true,
+    "dequantized": false,
+    "reconstruction_seconds": 0.200928,
+    "dequantization_seconds": 0.0,
+    "total_worker_cache_seconds": 0.20476,
+    "reconstruction_ok": true
+  },
+  "exact": true,
+  "warm_faster": true,
+  "ttft_speedup": 15.149
+}

@@ -1,0 +1,176 @@
+{
+  "model": "dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK",
+  "port": 8024,
+  "tag": "NEMO-SHARED1",
+  "chat_turn_1": {
+    "reasoning_delta_count": 50,
+    "content_delta_count": 14,
+    "first_reasoning_at": 0.253,
+    "first_content_at": 0.88,
+    "last_content_at": 1.039,
+    "content_times": [
+      0.88,
+      0.893,
+      0.905,
+      0.917,
+      0.93,
+      0.941,
+      0.953,
+      0.966,
+      0.978,
+      0.989,
+      1.002,
+      1.013,
+      1.026,
+      1.039
+    ],
+    "content_deltas": [
+      "\n",
+      "N",
+      "EM",
+      "O",
+      "-S",
+      "HA",
+      "RED",
+      "1",
+      "-CH",
+      "AT",
+      "-T",
+      "1",
+      "-",
+      "OK"
+    ],
+    "content": "\nNEMO-SHARED1-CHAT-T1-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 60,
+      "completion_tokens": 66,
+      "total_tokens": 126
+    }
+  },
+  "chat_turn_1_pass": true,
+  "chat_turn_2": {
+    "reasoning_delta_count": 256,
+    "content_delta_count": 23,
+    "first_reasoning_at": 0.212,
+    "first_content_at": 3.46,
+    "last_content_at": 3.73,
+    "content_times": [
+      3.46,
+      3.472,
+      3.484,
+      3.496,
+      3.509,
+      3.521,
+      3.534,
+      3.546,
+      3.558,
+      3.571,
+      3.583,
+      3.595,
+      3.607,
+      3.62,
+      3.632,
+      3.645,
+      3.657,
+      3.669,
+      3.681,
+      3.693,
+      3.705,
+      3.717,
+      3.73
+    ],
+    "content_deltas": [
+      "\n",
+      "N",
+      "EM",
+      "O",
+      "-S",
+      "HA",
+      "RED",
+      "1",
+      "-CH",
+      "AT",
+      "-T",
+      "2",
+      "-M",
+      "EM",
+      "-N",
+      "EM",
+      "O",
+      "-S",
+      "HA",
+      "RED",
+      "1",
+      "-",
+      "OK"
+    ],
+    "content": "\nNEMO-SHARED1-CHAT-T2-MEM-NEMO-SHARED1-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 137,
+      "completion_tokens": 281,
+      "total_tokens": 418,
+      "prompt_tokens_details": {
+        "cached_tokens": 53,
+        "cache_detail": "paged+ssm+tq-native"
+      }
+    }
+  },
+  "chat_turn_2_pass": true,
+  "responses": {
+    "reasoning_delta_count": 43,
+    "content_delta_count": 13,
+    "first_reasoning_at": 0.143,
+    "first_content_at": 0.688,
+    "last_content_at": 0.837,
+    "content_times": [
+      0.688,
+      0.701,
+      0.713,
+      0.726,
+      0.738,
+      0.75,
+      0.762,
+      0.775,
+      0.787,
+      0.8,
+      0.812,
+      0.825,
+      0.837
+    ],
+    "content_deltas": [
+      "\n",
+      "N",
+      "EM",
+      "O",
+      "-S",
+      "HA",
+      "RED",
+      "1",
+      "-",
+      "RE",
+      "SP",
+      "-",
+      "OK"
+    ],
+    "content": "\nNEMO-SHARED1-RESP-OK",
+    "done_texts": [
+      "\nNEMO-SHARED1-RESP-OK"
+    ],
+    "terminals": [
+      "response.completed"
+    ],
+    "usage": {
+      "input_tokens": 47,
+      "output_tokens": 58,
+      "total_tokens": 105
+    }
+  },
+  "responses_pass": true,
+  "all_pass": true
+}
