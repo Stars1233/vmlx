@@ -10,14 +10,16 @@ superseded conclusions are called out here.
 
 ## Release truth
 
-- Working branch: `reconcile/1.5.68`; current scoped code head `f16c51d18`;
+- Working branch: `reconcile/1.5.68`; current scoped code head `f16c51d18` and
+  current matrix/evidence head `383b967da`;
   typed-settings,
   non-MTP architecture-hint, paged resident-accounting, typed hybrid-companion
   ownership, and v8 cache-namespace repairs plus their focused tests are pushed
   to the closeout branch described below.
 - Push target: `origin/codex/live-electron-gates-20260715`.
-- At scoped code head `f16c51d18`, the branch is 104 commits ahead of
-  `origin/main` and zero behind. Matrix-only commits may follow that code head.
+- At matrix/evidence head `383b967da`, the branch is 105 commits ahead of
+  `origin/main` and zero behind. Matrix-only commits may follow the scoped code
+  head.
 - Source versions are `1.6.11` in `pyproject.toml`,
   `vmlx_engine/__init__.py`, and `panel/package.json`.
 - Public GitHub app release, PyPI, and `mlxstudio/latest.json` are all 1.6.10.
@@ -99,12 +101,23 @@ superseded conclusions are called out here.
   Its 1.286-1.391s reconstruction is materially slower than Nemotron and
   remains a performance target even though all four outputs were exact and
   incremental. Evidence: `laguna-stream-cache/laguna-tqfair1*.json`.
+- MiniMax M2.7 full-attention KV provides a second strong TQ4 control. On an
+  exact 3,760-token prompt, cold first content was 28.8343s; the resident
+  request restored 3,756 tokens as `paged+tq-native` in 1.7701s (16.29x), with
+  1.2560s worker reconstruction. Visible Electron `Save & Restart` changed the
+  engine PID from 82493 to 86185 without clearing L2. The first identical
+  request then restored all 3,756 tokens as `paged+disk+tq-native` in 1.4197s;
+  the following RAM hit used `paged+tq-native`. Post-run health records 59
+  disk-block hits for that first request, 236 native-TQ hits total, TQ4 key and
+  value storage, and zero hybrid-companion fallbacks. Evidence:
+  `mm27-current-stream-cache/mm27-tqfair1*.json` and
+  `mm27-health-after-l2.json`.
 - Verdict: source correctness, API streaming, model-worker ownership, Electron
-  agent loops, and real RAM/L2 TQ TTFT speedups are `PASS-LIVE` for Nemotron and
-  Laguna. Hy3 remains `PARTIAL`: its matched prompt-L2 request was slower than
-  cold and its resident gain was only about 1.05x. TQ performance is therefore
-  cache-family specific, not globally green; no cache-hit or release-ready claim
-  may hide the matched cold comparisons.
+  agent loops, and real RAM/L2 TQ TTFT speedups are `PASS-LIVE` for Nemotron,
+  Laguna, and MiniMax M2.7. Hy3 remains `PARTIAL`: its matched prompt-L2 request
+  was slower than cold and its resident gain was only about 1.05x. TQ
+  performance is therefore cache-family specific, not globally green; no
+  cache-hit or release-ready claim may hide the matched cold comparisons.
 
 ### Qwen 3.6 27B post-tool progressive streaming — current source
 
@@ -231,12 +244,26 @@ superseded conclusions are called out here.
   immediate fresh-chat `DYN2` restored 1,372 `paged+dsv4` tokens, executed one
   real `file_info`, emitted 11 timed content updates, and exact-finaled. Evidence:
   `dsv4-dynamic-streaming/`.
-- Verdict: source contract and live Step, Bonsai, Nemotron, Laguna, and DSV4 Chat,
-  Responses, Electron, multi-turn, and one-tool loops are `PASS-LIVE` for
-  progressive emission. Cross-family release status remains `PARTIAL` because
-  DSV4 produced one malformed native tool turn and one strict-format miss,
-  Laguna reasoning latency is excessive, and displayed TPS still blends
-  reasoning with any bounded answer-pass phase.
+- HY3 current-source raw proof emitted 301/12 reasoning/content deltas on Chat
+  turn 1, 399/21 on cached multi-turn recall, and 43/11 on Responses; all three
+  exact-finaled, and turn 2 reused 51 `paged+tq-native` tokens. Electron emitted
+  31 timed reasoning and 11 timed content updates, executed one `file_info`,
+  exact-finaled, and displayed 3,964 `paged+disk+tq-native` cached tokens.
+  Evidence: `hy3-current-streaming/`.
+- MiniMax M2.7 current-source raw proof emitted 194/13 reasoning/content deltas
+  on Chat turn 1, 292/21 on cached multi-turn recall, and 239/11 on Responses;
+  all three exact-finaled and turn 2 reused 72 `paged+tq-native` tokens. The
+  visible Electron tool row emitted 38 timed reasoning updates and 10 timed
+  content updates, executed exactly one `file_info(panel/package.json)`, and
+  exact-finaled. Evidence: `mm27-current-stream-cache/mm27-shared1.json` and
+  `mm27-electron-stream1.{json,png}`.
+- Verdict: source contract and live Step, Bonsai, Nemotron, Laguna, DSV4, HY3,
+  and MiniMax M2.7 Chat, Responses, Electron, multi-turn, and one-tool loops are
+  `PASS-LIVE` for progressive emission. Cross-family release status remains
+  `PARTIAL` because DSV4 produced one malformed native tool turn and one
+  strict-format miss, Laguna reasoning latency is excessive, Hy3 TQ TTFT is
+  still poor, and displayed TPS still blends reasoning with any bounded
+  answer-pass phase.
 
 ### Responses terminal-event correctness — current source
 
