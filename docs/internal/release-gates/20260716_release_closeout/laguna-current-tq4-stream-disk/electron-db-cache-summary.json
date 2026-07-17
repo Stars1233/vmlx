@@ -1,0 +1,53 @@
+{
+  "model": "jangq-ai/Laguna-M.1-JANG_2L",
+  "old_pid": 64431,
+  "restart_pid": 65648,
+  "l2_cleared": false,
+  "rows": [
+    {
+      "rowid": 327,
+      "content": "TQ8-COLD1=45",
+      "prompt_tokens": 4178,
+      "cached_tokens": 0,
+      "ttft_seconds": 7.87,
+      "total_seconds": 14.9,
+      "tool_calls": 0,
+      "warnings": null
+    },
+    {
+      "rowid": 330,
+      "content": "TQ8-COLD1=45",
+      "prompt_tokens": 4178,
+      "cached_tokens": 4174,
+      "cache_detail": "paged+tq-native",
+      "ttft_seconds": 2.5,
+      "total_seconds": 6.2,
+      "tool_calls": 0,
+      "warnings": null
+    },
+    {
+      "rowid": 333,
+      "content": "TQ8-COLD1=45",
+      "prompt_tokens": 4178,
+      "cached_tokens": 4174,
+      "cache_detail": "paged+disk+tq-native",
+      "ttft_seconds": 5.22,
+      "total_seconds": 8.9,
+      "tool_calls": 0,
+      "warnings": null
+    }
+  ],
+  "restart_cache_execution": {
+    "blocks": 66,
+    "reconstructed": true,
+    "reconstruction_seconds": 1.193189,
+    "tq_native_blocks": 4620,
+    "tq_rewrapped": true,
+    "tq_rewrap_seconds": 0.000369,
+    "stored_prefix_quantization": "turboquant-q4",
+    "storage_key_bits": 4,
+    "storage_value_bits": 4,
+    "disk_hits": 66,
+    "tq_native_hits": 66
+  }
+}
