@@ -64,3 +64,65 @@ visible `Load Model` control; PID 34438 launched with `--tool-call-parser qwen`,
 The earlier failed row is retained: before the wording detector was fixed, the
 same live form executed `file_info` twice and emitted one terminal content blob.
 That row is evidence for the harness root cause, not counted as a pass.
+
+## Current multi-tool continuation repair
+
+Status: `PASS-LIVE` for the explicit two-tool Bonsai/Qwen Responses contract;
+`PARTIAL` for unconstrained catalog selection and cross-model live coverage.
+
+Source trace:
+
+- Panel commit `a1a6591b9` recognizes explicit `call <name> exactly once`
+  sequences, retires each completed schema, and uses a bounded rolling decode
+  sample for final multi-iteration TPS instead of pairing cumulative tokens
+  with only the final tail.
+- Shared server commit `3d32b944b` separates a terminal Qwen tool-result
+  continuation from a client-narrowed or explicitly requested remaining-tool
+  continuation. The second case receives only the uncompleted schema instead
+  of the contradictory `Do not emit another <tool_call>` instruction.
+- `tests/test_tool_prompt_fallback.py` retains the single-tool duplicate guard
+  and adds the remaining-tool prompt contract. The complete prompt/format set
+  passed 139/139 at this commit (`b1-qwen-tool-tests.log`).
+
+Retained red controls:
+
+- Persisted row 309 executed only `file_info`, then the panel's old singular
+  direct-answer classifier removed `run_command` from the next request.
+- Row 315 used the repaired TPS accounting (52.8 t/s) but repeated completed
+  tools until the four-iteration ceiling and produced no final answer.
+- The pre-server-fix raw Responses replay produced a valid first `file_info`,
+  then spent 768 tokens on a truncated native tool marker because the shared
+  Qwen fallback called every post-result request terminal. These failures are
+  root-cause controls, not passes.
+
+Current live proof:
+
+- A real `/usr/bin/curl -N` Responses harness executed one
+  `file_info(panel/package.json)`, replayed its real output, executed one
+  `run_command({"command":"pwd"})`, replayed that output, and then sent a
+  tools-off final request. The final marker arrived in nine separately timed
+  `response.output_text.delta` events from 0.9265s through 1.0741s, matched
+  `response.output_text.done`, and ended once as `response.completed` with no
+  warnings (`b1-api-multi-current.json`).
+- The dev Electron model was visibly stopped and started so Python reloaded
+  commit `3d32b944b` without clearing L2. Fresh row 321 then executed exactly
+  one `file_info` followed by exactly one `run_command`, persisted both real
+  results, and displayed exact `B1-CURRENT-MULTI7-DONE`. It reported 464 output
+  tokens, 52.8 t/s, 0.56s TTFT, and 11.9s total. The 3s/7s/final screenshots
+  retain the progressive UI states.
+- Current health after the row distinguishes Bonsai's cache modes truthfully:
+  16 attention-KV layers use q8 TurboQuant at the paged/L2 storage boundary;
+  48 SSM/GDN companion layers remain native. Mid-request packing is disabled
+  (`compress_after=0`) and is not claimed as memory reduction. The process
+  recorded 10 native-TQ writes, 12 native-TQ hits, one `paged+ssm+disk`
+  execution with `dequantized=true`, and a real SSM disk hit. A separate
+  changed-prefix KV-only candidate safely full-prefilled because its SSM
+  fingerprint did not match.
+
+Remaining limits:
+
+- Bonsai still produces verbose/repetitive native reasoning on some exact-tool
+  prompts, and one post-repair row attempted a retired duplicate schema that
+  the server correctly dropped. Keep broader catalog reliability `PARTIAL`.
+- This proves the shared server change on Bonsai only. Other Qwen artifacts and
+  non-Qwen parser families need their own live rows before broad classification.

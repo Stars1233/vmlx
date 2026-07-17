@@ -1,0 +1,162 @@
+{
+  "rounds": [
+    {
+      "label": "tool_1",
+      "first_event_s": 0.0214,
+      "last_event_s": 4.5618,
+      "reasoning_delta_count": 141,
+      "content_delta_count": 1,
+      "content": "\n\n",
+      "content_timestamps": [
+        4.0463
+      ],
+      "done_text": "",
+      "calls": [
+        {
+          "call_id": "call_f9c3624b",
+          "name": "file_info",
+          "arguments": "{\"path\": \"panel/package.json\"}"
+        }
+      ],
+      "terminal": {
+        "event": "response.completed",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 384,
+          "output_tokens": 174,
+          "total_tokens": 558,
+          "input_tokens_details": {
+            "cached_tokens": 383,
+            "cache_detail": "paged+ssm+disk"
+          }
+        },
+        "output_text": ""
+      },
+      "warnings": [],
+      "event_counts": {
+        "response.created": 1,
+        "response.output_item.added": 2,
+        "response.content_part.added": 1,
+        "response.reasoning_summary_text.delta": 141,
+        "response.usage": 147,
+        "response.output_text.delta": 1,
+        "response.heartbeat": 26,
+        "response.reasoning_summary_text.done": 1,
+        "response.output_text.done": 1,
+        "response.content_part.done": 1,
+        "response.output_item.done": 2,
+        "response.function_call_arguments.delta": 2,
+        "response.function_call_arguments.done": 1,
+        "response.completed": 1
+      }
+    },
+    {
+      "label": "tool_2",
+      "first_event_s": 0.0208,
+      "last_event_s": 4.3039,
+      "reasoning_delta_count": 157,
+      "content_delta_count": 1,
+      "content": "\n\n",
+      "content_timestamps": [
+        3.8093
+      ],
+      "done_text": "",
+      "calls": [
+        {
+          "call_id": "call_d391e023",
+          "name": "run_command",
+          "arguments": "{\"command\": \"pwd\"}"
+        }
+      ],
+      "terminal": {
+        "event": "response.completed",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 487,
+          "output_tokens": 190,
+          "total_tokens": 677
+        },
+        "output_text": ""
+      },
+      "warnings": [],
+      "event_counts": {
+        "response.created": 1,
+        "response.output_item.added": 2,
+        "response.content_part.added": 1,
+        "response.reasoning_summary_text.delta": 157,
+        "response.usage": 163,
+        "response.output_text.delta": 1,
+        "response.heartbeat": 25,
+        "response.reasoning_summary_text.done": 1,
+        "response.output_text.done": 1,
+        "response.content_part.done": 1,
+        "response.output_item.done": 2,
+        "response.function_call_arguments.delta": 2,
+        "response.function_call_arguments.done": 1,
+        "response.completed": 1
+      }
+    },
+    {
+      "label": "final",
+      "first_event_s": 0.0199,
+      "last_event_s": 1.1011,
+      "reasoning_delta_count": 0,
+      "content_delta_count": 9,
+      "content": "B1-API-MULTI1-DONE",
+      "content_timestamps": [
+        0.9265,
+        0.9446,
+        0.9629,
+        0.982,
+        1.0001,
+        1.0189,
+        1.037,
+        1.0561,
+        1.0741
+      ],
+      "done_text": "B1-API-MULTI1-DONE",
+      "calls": [],
+      "terminal": {
+        "event": "response.completed",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 202,
+          "output_tokens": 10,
+          "total_tokens": 212
+        },
+        "output_text": "B1-API-MULTI1-DONE"
+      },
+      "warnings": [],
+      "event_counts": {
+        "response.created": 1,
+        "response.output_item.added": 1,
+        "response.content_part.added": 1,
+        "response.output_text.delta": 9,
+        "response.usage": 10,
+        "response.output_text.done": 1,
+        "response.content_part.done": 1,
+        "response.output_item.done": 1,
+        "response.completed": 1
+      }
+    }
+  ],
+  "verdict": {
+    "executed": [
+      "file_info",
+      "run_command"
+    ],
+    "final_content": "B1-API-MULTI1-DONE",
+    "final_done_text": "B1-API-MULTI1-DONE",
+    "final_terminal": {
+      "event": "response.completed",
+      "status": "completed",
+      "usage": {
+        "input_tokens": 202,
+        "output_tokens": 10,
+        "total_tokens": 212
+      },
+      "output_text": "B1-API-MULTI1-DONE"
+    },
+    "pass": true
+  }
+}

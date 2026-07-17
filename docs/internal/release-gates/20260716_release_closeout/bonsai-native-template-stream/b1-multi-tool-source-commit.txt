@@ -1,0 +1,4 @@
+3d32b944b (HEAD -> reconcile/1.5.68, origin/codex/live-electron-gates-20260715) fix(responses): preserve Qwen multi-tool continuation
+ tests/test_tool_prompt_fallback.py | 42 ++++++++++++++++++++++++
+ vmlx_engine/api/tool_calling.py    | 67 ++++++++++++++++++++++++++++++++++----
+ 2 files changed, 102 insertions(+), 7 deletions(-)
