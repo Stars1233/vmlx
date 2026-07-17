@@ -1,8 +1,10 @@
 # Step 3.7 image/video runtime and mixed-SWA cache proof
 
 Status: `PASS-LIVE` for the scoped Step 3.7 image and one-video cache path at
-commit `c305b18b5`; strict raw formatting, cold-store latency, alternate-video
-isolation, broader artifacts, and long-output reliability remain `PARTIAL`.
+commit `c305b18b5`; commit `8b0e23dc1` separately makes the native
+reasoning-only UI/API contract truthful. Strict raw formatting, cold-store
+latency, alternate-video isolation, stochastic reasoning reliability, broader
+artifacts, and long-output reliability remain `PARTIAL`.
 
 ## Root cause and source trace
 
@@ -24,8 +26,9 @@ fallback was added.
 
 `mllm_batch_generator.py:4891-4930` and
 `mllm_scheduler.py:1028-1074,3098-3120` then admit config-derived `step3p7`
-media under an explicit-off-capable canonical side-key and store the captured
-media-conditioned N-1 boundary directly. The 45-layer boundary keeps 33 native
+media under a canonical side-key, while retaining an explicit cache-policy-off
+escape hatch, and store the captured media-conditioned N-1 boundary directly.
+The 45-layer boundary keeps 33 native
 rotating-SWA layers plus 12 compatible full-attention TQ4 slots; rotating-SWA
 state is not TQ encoded.
 
@@ -44,9 +47,10 @@ At commit `c305b18b5`:
 205 passed, 6 skipped, 2 third-party warnings in 5.31s
 ```
 
-The contracts cover NumPy-to-MLX media normalization, Step default-on plus
-explicit-off media admission, and captured mixed-SWA storage without a
-text-only path-dependent re-prefill.
+The contracts cover NumPy-to-MLX media normalization, default-on plus explicit
+cache-policy-off media admission, and captured mixed-SWA storage without a
+text-only path-dependent re-prefill. “Off” here refers to the cache feature,
+not a model reasoning mode.
 
 ## Electron image proof
 
@@ -92,12 +96,28 @@ deltas, then one completed terminal. Usage reported 373 input tokens including
 372 cached. The raw final was `\nBANANA8426`; the leading newline is retained as
 a strict-format miss even though the Electron bubble persisted `BANANA8426`.
 
+## Current native reasoning contract
+
+The real template always opens `<think>` and has no `enable_thinking` branch.
+Commit `8b0e23dc1` therefore hides Thinking Off in Electron, advertises only the
+reasoning mode plus low/medium/high efforts, rejects API Off requests with HTTP
+400, and removes Step from the generic thinking-off answer retry. Live Electron
+row 300 again returned exact `BANANA8426` with 376/377
+`paged+mixed_swa+disk` tokens after process restart. A deterministic Responses
+cold/RAM/restart-disk sequence streamed both rails and returned the same exact
+marker every time. One temperature-0.6 disk-hit probe looped inside reasoning
+and ended incomplete, so broader Step output reliability remains `PARTIAL`.
+See `../step37-reasoning-mode-current/`.
+
 ## Remaining gates
 
 - Optimize or explicitly accept the measured double-prefill cold-store cost.
 - Prove a distinct-content video B miss/return-A isolation row.
 - Exercise larger/longer real video without exceeding the 70 GB model's Metal
   headroom.
+- Reproduce and trace the retained temperature-0.6 reasoning loop without
+  hidden sampler coercion; deterministic cache equivalence does not close that
+  stochastic reliability row.
 - The generic streamed-error surface is now closed at scoped source commit
   `57d5bcd0f`: both Chat Completions error chunks and Responses
   `response.failed` events visibly fail and leave no assistant success row.

@@ -1,0 +1,15 @@
+Python:
+.venv/bin/pytest -q tests/test_model_config_registry.py tests/test_reasoning_modes.py tests/test_thinking_template_render.py tests/test_answer_pass_families_dsv4_step37.py
+219 passed, 16 skipped, 6 deselected in 3.30s
+
+Panel registry/settings:
+npm test -- --run tests/model-config-registry.test.ts tests/chat-settings-compatibility.test.ts
+98 passed
+
+Panel i18n/settings:
+npm test -- --run tests/i18n-consistency.test.ts tests/chat-settings-compatibility.test.ts
+24 passed
+
+TypeScript:
+npm run typecheck
+passed
