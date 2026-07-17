@@ -1,0 +1,16 @@
+2026-07-17 current source commit: 012c1fe90
+
+pytest tests/test_tool_prompt_fallback.py
+22 passed
+
+pytest tests/test_tool_prompt_fallback.py tests/test_dsv4_contract_hardening.py
+40 passed
+
+panel vitest: tests/tool-auto-continue.test.ts + tests/chat-ui.test.ts
+162 passed
+
+panel tsc --noEmit
+passed
+
+git diff --check
+passed
