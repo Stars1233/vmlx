@@ -1,0 +1,108 @@
+{
+  "tag": "HY3-TQFAIR3",
+  "expected": "HY3-TQFAIR3-PREFIX-OK",
+  "cold": {
+    "first_content_seconds": 7.2035,
+    "last_content_seconds": 7.6394,
+    "content_delta_count": 11,
+    "content_times": [
+      7.2035,
+      7.2035,
+      7.2586,
+      7.313,
+      7.3666,
+      7.4211,
+      7.4754,
+      7.53,
+      7.5845,
+      7.5847,
+      7.6394
+    ],
+    "content": "HY3-TQFAIR3-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 3737,
+      "completion_tokens": 12,
+      "total_tokens": 3749,
+      "prompt_tokens_details": {
+        "cached_tokens": 3733,
+        "cache_detail": "disk+tq+tq-native"
+      }
+    }
+  },
+  "cold_cache_execution": {
+    "request_id": "chatcmpl-c74039b9",
+    "cache_detail": "disk+tq+tq-native",
+    "cached_tokens": 3733,
+    "blocks": 0,
+    "reconstructed": false,
+    "dequantized": false,
+    "reconstruction_seconds": 0.0,
+    "dequantization_seconds": 0.0,
+    "total_worker_cache_seconds": 0.000706,
+    "tq_disk_direct_restore": true,
+    "tq_rewrapped": true,
+    "tq_rewrap_seconds": 0.000352
+  },
+  "warm": {
+    "first_content_seconds": 6.0415,
+    "last_content_seconds": 6.4753,
+    "content_delta_count": 11,
+    "content_times": [
+      6.0415,
+      6.0417,
+      6.0958,
+      6.1503,
+      6.2047,
+      6.2592,
+      6.314,
+      6.3688,
+      6.3689,
+      6.4234,
+      6.4753
+    ],
+    "content": "HY3-TQFAIR3-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 3737,
+      "completion_tokens": 12,
+      "total_tokens": 3749,
+      "prompt_tokens_details": {
+        "cached_tokens": 3733,
+        "cache_detail": "paged+tq-native"
+      }
+    }
+  },
+  "warm_cache_execution": {
+    "request_id": "chatcmpl-714ab720",
+    "cache_detail": "paged+tq-native",
+    "cached_tokens": 3733,
+    "blocks": 59,
+    "selection": {
+      "paged_cached_tokens": 3733,
+      "paged_cold_tokens": 0,
+      "warm_cached_tokens": 0,
+      "hot_advantage_tokens": 3733,
+      "hot_advantage_threshold_tokens": 64,
+      "selected": "paged",
+      "rejected": null,
+      "reason": "no_warm_prefix_alternative"
+    },
+    "reconstructed": true,
+    "dequantized": false,
+    "reconstruction_seconds": 5.124541,
+    "dequantization_seconds": 0.0,
+    "total_worker_cache_seconds": 5.125475,
+    "reconstruction_ok": true,
+    "tq_native_blocks": 4720,
+    "tq_rewrapped": true,
+    "tq_rewrap_seconds": 0.000532
+  },
+  "exact": true,
+  "warm_faster": true,
+  "ttft_speedup": 1.192
+}

@@ -10,13 +10,13 @@ superseded conclusions are called out here.
 
 ## Release truth
 
-- Working branch: `reconcile/1.5.68`; current scoped code head `b33d80589`;
+- Working branch: `reconcile/1.5.68`; current scoped code head `db2d6d5fb`;
   typed-settings,
   non-MTP architecture-hint, paged resident-accounting, typed hybrid-companion
   ownership, and v8 cache-namespace repairs plus their focused tests are pushed
   to the closeout branch described below.
 - Push target: `origin/codex/live-electron-gates-20260715`.
-- At scoped code head `b33d80589`, the branch is 94 commits ahead of
+- At scoped code head `db2d6d5fb`, the branch is 99 commits ahead of
   `origin/main` and zero behind. Matrix-only commits may follow that code head.
 - Source versions are `1.6.11` in `pyproject.toml`,
   `vmlx_engine/__init__.py`, and `panel/package.json`.
@@ -46,6 +46,48 @@ superseded conclusions are called out here.
 | Gateway lifecycle | PASS-LIVE lifecycle+basic streams / PARTIAL agent protocols | Commit `e76cc5451` makes restart transactional: a rejected port change restores the prior listener and rethrows the original error. Through the current Electron API page, changing running gateway `127.0.0.1:8081` to DSV4's occupied `8012` first reproduced the old stopped-listener bug, then the fixed build rejected the conflict while health and SQLite remained running on 8081. LAN UI enable rebound to `0.0.0.0:8081`, displayed routable `192.168.1.110`, served `/health` over that LAN address, and rebound to localhost when disabled. With Single model mode enabled, the visible Bonsai Start control stopped DSV4 PID 10013 and launched Bonsai PID 10495; UI, SQLite, process listing, gateway discovery, and `[SESSIONS]` lifecycle log all showed exactly one running engine. Commit `a0aa81a94` waits for usage and `[DONE]` before emitting Ollama's empty-message terminal, preventing cumulative thinking duplication and premature loss of `eval_count`; current Electron PID 12046 / Bonsai PID 12114 proved the live stream above. | Agentic tool/result continuation per protocol, disconnect/error recovery, and repeated unload/reload swap soak |
 | Full tests/build | OPEN | Current hybrid ownership/cache changes: 784/784 Python hybrid/cache/scheduler tests, 278/278 panel settings tests, and panel typecheck pass. The fetched-block ref-ownership repair adds 90/90 focused paged/TQ/hybrid tests. Parser/Responses terminal coverage passed 135/135 Python, 50/50 panel, and panel typecheck. Typed DSV4 disk-tier telemetry passed 76/76 DSV4/paged-byte-budget tests, three focused scheduler assertions, 43/43 relevant panel tests, and panel typecheck. Explicit Min-P zero passed 213/213 affected panel tests plus typecheck. Gateway transactional restart and Ollama terminal behavior passed 76/76 focused panel tests plus typecheck. | Focused suites after each fix, full Python/panel suite, bundled-Python gate, clean release build |
 | Packaging/public release | BLOCKED | Public truth remains 1.6.10 | Build Sequoia/Tahoe, sign, notarize, staple, Gatekeeper verify, install-smoke, publish GitHub/PyPI/feed |
+
+### TQ prompt-L2 stream ownership and TTFT — current source
+
+- Commit `db2d6d5fb` fixes a shared prompt-disk ownership defect. Safetensors
+  load, TQ decode, and cache-class reconstruction now run on the same
+  single-worker executor that loaded and runs the model. A controlled direct
+  restore before this fix failed with `There is no Stream(gpu, 0) in current
+  thread`; the identical post-fix Hy3 request completed exactly.
+- The same commit permits legitimate long-context TQ packed vectors past the
+  generic safetensors axis guard only when both the native-TQ metadata marker
+  and an exact packed-field name are present. Decoded shapes, tensor bytes,
+  file bytes, offsets, layer count, dtype, and runtime fingerprint remain
+  independently validated.
+- Prompt TQ layers now share decoder/codebook state and batch compatible packed
+  layouts without merging layer boundaries. TQ prompt hits skip synchronous
+  decoded-to-plain paged backfill; the worker restores the model's native live
+  TQ cache class, and the normal completion path writes native-TQ paged blocks.
+  This applies by cache layout/codec, not by a Hy3 name check, and keeps scalar
+  fallback for mixed layouts.
+- Source validation: 75/75 validator, prompt-disk, and paged-TQ tests plus 4/4
+  scheduler ownership/direct-restore tests pass. A wider 211-test cache slice
+  has one unrelated pre-existing source-string assertion failure in
+  `test_streaming_tool_detection_requires_request_tools`; it is retained and
+  is not counted as a pass for this change.
+- Raw streamed Hy3 controls used one identical 3,737-token prompt. A clean cold
+  pass reached first content in 6.3663s. Worker-owned prompt L2 restored 3,733
+  tokens exactly with 11 content deltas in 7.2035-7.3279s; the following native
+  paged hit produced 11 deltas in 5.9512-6.0415s. Functionality and stream
+  ownership pass, but disk TTFT is slower than the matched cold reference and
+  remains `PARTIAL` rather than a performance pass.
+- Current Electron PID 72531 launched Hy3 through the visible Start control
+  with Prefix/Paged/Block-Disk enabled, Auto TQ, and the stale manual
+  `--enable-disk-cache` Additional Argument cleared. The current app row made
+  exactly one real `file_info(panel/package.json)` call, emitted 38 incremental
+  reasoning and 11 incremental content events, returned exact
+  `HY3-ELECTRON-OWNER1-DONE`, and displayed 1,472
+  `paged+disk+tq-native` cached tokens with 1.11s request TTFT. Screenshot and
+  probe data are under `hy3-tq-ownerload/`.
+- Verdict: source correctness, API streaming, model-worker ownership, and the
+  Electron agent loop are current-source live passes. Q4 reconstruction cost
+  is still a release-blocking performance row; no cache-hit or release-ready
+  claim may hide the matched cold comparison.
 
 ### Qwen 3.6 27B post-tool progressive streaming — current source
 
@@ -378,8 +420,10 @@ partial for this Qwen artifact.
    reasoning retained as PARTIAL. Gemma 4 cache/settings/tool/eviction rows are
    now closed; run its coherent constrained long-output row with the remaining
    reliability matrix rather than reopening its cache tier.
-2. Keep HY3 cache/settings/restart/eviction closed at its bundle-declared depth
-   1; close its long/streaming reliability rows. Close DSV4 long
+2. Keep HY3 cache/settings/restart/eviction functionally regression-gated at
+   its bundle-declared depth 1, but leave Q4 disk/paged TTFT `PARTIAL` until the
+   matched cold comparison improves; close its remaining long reliability row.
+   Close DSV4 long
    quality/performance and the remaining M3/Pangu long/media boundaries. Do
    not test Mistral MXFP4 in this campaign per the user's explicit instruction.
 3. Re-prove Bonsai forced eviction/repair boundaries, retaining its recorded
