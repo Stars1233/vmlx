@@ -1,0 +1,22 @@
+panel/src/main/ipc/chat.ts:2703-2720
+  Responses error, response.error, and response.failed events throw
+  ChatStreamServerEventError with the server-provided detail.
+
+panel/src/main/ipc/chat.ts:2812-2825
+  Chat Completions top-level error chunks throw the same typed error.
+
+panel/src/main/ipc/chat.ts:3024-3047
+  The shared per-SSE-line catch rethrows intentional server events and expected
+  disconnects before its malformed-line tolerance. Ordinary SyntaxError lines
+  remain skippable.
+
+panel/src/main/ipc/chat.ts:4298-4303,4362
+  The outer request catch deletes the pre-inserted assistant placeholder when
+  there was no visible activity, then rejects with the real failure.
+
+panel/src/shared/chatStreamErrors.ts:1-13
+  ChatStreamServerEventError is the explicit cross-protocol discriminator;
+  shouldRethrowChatStreamLineError keeps expected disconnect behavior.
+
+panel/tests/chat-stream-errors.test.ts
+  Pins the behavioral distinction and both protocol call sites.

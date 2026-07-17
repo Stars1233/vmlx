@@ -1,0 +1,38 @@
+{
+  "before_repaired_main": {
+    "rowid": 232,
+    "role": "assistant",
+    "content": "",
+    "metrics": {
+      "tokenCount": 0,
+      "tokensPerSecond": "0.0",
+      "ttft": "0.00",
+      "totalTime": "0.0"
+    },
+    "visible_ui": "No visible response was produced."
+  },
+  "after_repaired_main": [
+    {
+      "rowid": 233,
+      "chat_id": "25e6246b-a890-4623-bff6-7c32d0ce9ea9",
+      "role": "user",
+      "content": "[STREAM-ERROR-CHAT2] trigger streamed error chunk",
+      "wire_api": "completions",
+      "assistant_rows_for_request": 0,
+      "visible_ui": "Message failed: Server error: PROBE PREFILL FAILURE"
+    },
+    {
+      "rowid": 234,
+      "chat_id": "25e6246b-a890-4623-bff6-7c32d0ce9ea9",
+      "role": "user",
+      "content": "[STREAM-ERROR-RESPONSES1] trigger response.failed event",
+      "wire_api": "responses",
+      "assistant_rows_for_request": 0,
+      "visible_ui": "Message failed: Server error: PROBE PREFILL FAILURE"
+    }
+  ],
+  "saved_chat_override": {
+    "chat_id": "25e6246b-a890-4623-bff6-7c32d0ce9ea9",
+    "wire_api": "responses"
+  }
+}

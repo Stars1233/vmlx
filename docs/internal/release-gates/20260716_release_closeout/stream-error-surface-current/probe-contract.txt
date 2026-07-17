@@ -1,0 +1,14 @@
+The local scripted server on 127.0.0.1:8129 returned valid HTTP 200 SSE.
+
+Chat Completions event:
+  data: {"error":{"message":"PROBE PREFILL FAILURE"}}
+
+Responses events:
+  event: response.created
+  data: {"type":"response.created",...}
+
+  event: response.failed
+  data: {"type":"response.failed","error":{"message":"PROBE PREFILL FAILURE"},...}
+
+This fixture isolates the renderer/main-process protocol contract. It is not
+model-runtime, output-quality, cache, or packaged-app evidence.

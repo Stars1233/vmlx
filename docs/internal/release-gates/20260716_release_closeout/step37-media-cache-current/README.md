@@ -98,8 +98,10 @@ a strict-format miss even though the Electron bubble persisted `BANANA8426`.
 - Prove a distinct-content video B miss/return-A isolation row.
 - Exercise larger/longer real video without exceeding the 70 GB model's Metal
   headroom.
-- Preserve the prefill exception as a Responses/renderer error instead of only
-  a zero-token bubble; the model bug is repaired, but generic error-surface
-  truthfulness remains a separate release row.
+- The generic streamed-error surface is now closed at scoped source commit
+  `57d5bcd0f`: both Chat Completions error chunks and Responses
+  `response.failed` events visibly fail and leave no assistant success row.
+  See `../stream-error-surface-current/`. A signed packaged-app repeat remains
+  open.
 - Full-suite, packaged-app, signing, notarization, and public release remain
   open.
