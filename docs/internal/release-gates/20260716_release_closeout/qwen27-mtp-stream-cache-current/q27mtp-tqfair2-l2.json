@@ -1,0 +1,101 @@
+{
+  "tag": "Q27MTP-TQFAIR2",
+  "expected": "Q27MTP-TQFAIR2-PREFIX-OK",
+  "cold": {
+    "first_content_seconds": 0.9171,
+    "last_content_seconds": 2.43,
+    "content_delta_count": 12,
+    "content_times": [
+      0.9171,
+      0.9173,
+      1.0662,
+      1.2212,
+      1.3774,
+      1.5324,
+      1.6875,
+      1.842,
+      1.9972,
+      2.1531,
+      2.3128,
+      2.43
+    ],
+    "content": "Q27MTP-TQFAIR2-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 4629,
+      "completion_tokens": 15,
+      "total_tokens": 4644,
+      "prompt_tokens_details": {
+        "cached_tokens": 4628,
+        "cache_detail": "paged+ssm+disk"
+      }
+    }
+  },
+  "cold_cache_execution": {
+    "request_id": "chatcmpl-0f37380d",
+    "cache_detail": "paged+ssm+disk",
+    "cached_tokens": 4628,
+    "blocks": 0,
+    "selection": "paged",
+    "disk_hit": true,
+    "reconstructed": true,
+    "dequantized": true,
+    "reconstruction_seconds": 0.455832,
+    "dequantization_seconds": 1.6e-05,
+    "total_worker_cache_seconds": 0.456116,
+    "reconstruction_ok": true,
+    "dequantization_ok": true
+  },
+  "warm": {
+    "first_content_seconds": 0.8803,
+    "last_content_seconds": 2.3921,
+    "content_delta_count": 12,
+    "content_times": [
+      0.8803,
+      0.8805,
+      1.029,
+      1.1852,
+      1.3397,
+      1.4948,
+      1.6499,
+      1.8055,
+      1.9615,
+      2.1164,
+      2.2764,
+      2.3921
+    ],
+    "content": "Q27MTP-TQFAIR2-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 4629,
+      "completion_tokens": 15,
+      "total_tokens": 4644,
+      "prompt_tokens_details": {
+        "cached_tokens": 4628,
+        "cache_detail": "paged+ssm"
+      }
+    }
+  },
+  "warm_cache_execution": {
+    "request_id": "chatcmpl-c5f12e00",
+    "cache_detail": "paged+ssm",
+    "cached_tokens": 4628,
+    "blocks": 0,
+    "selection": "paged",
+    "disk_hit": false,
+    "reconstructed": true,
+    "dequantized": true,
+    "reconstruction_seconds": 0.36479,
+    "dequantization_seconds": 1.1e-05,
+    "total_worker_cache_seconds": 0.365068,
+    "reconstruction_ok": true,
+    "dequantization_ok": true
+  },
+  "exact": true,
+  "warm_faster": true,
+  "ttft_speedup": 1.042
+}

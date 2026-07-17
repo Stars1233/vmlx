@@ -1,0 +1,156 @@
+{
+  "model": "dealignai/Qwen3.6-27B-MXFP8-CRACK-MTP",
+  "port": 8032,
+  "tag": "Q27MTP-POSTDISPATCH1",
+  "chat_turn_1": {
+    "reasoning_delta_count": 334,
+    "content_delta_count": 10,
+    "first_reasoning_at": 0.556,
+    "first_content_at": 32.394,
+    "last_content_at": 33.935,
+    "content_times": [
+      32.394,
+      32.394,
+      32.564,
+      32.758,
+      32.951,
+      33.145,
+      33.34,
+      33.538,
+      33.737,
+      33.935
+    ],
+    "content_deltas": [
+      "Q",
+      "2",
+      "7M",
+      "TP",
+      "-",
+      "POSTDIS",
+      "PATCH1",
+      "-CHAT",
+      "-T1",
+      "-OK"
+    ],
+    "content": "Q27MTP-POSTDISPATCH1-CHAT-T1-OK",
+    "finish_reasons": [
+      "length",
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 53,
+      "completion_tokens": 529,
+      "total_tokens": 582
+    }
+  },
+  "chat_turn_1_pass": true,
+  "chat_turn_2": {
+    "reasoning_delta_count": 350,
+    "content_delta_count": 18,
+    "first_reasoning_at": 0.637,
+    "first_content_at": 46.702,
+    "last_content_at": 49.725,
+    "content_times": [
+      46.702,
+      46.702,
+      46.875,
+      47.086,
+      47.295,
+      47.507,
+      47.722,
+      47.937,
+      48.153,
+      48.391,
+      48.601,
+      48.814,
+      49.024,
+      49.225,
+      49.314,
+      49.472,
+      49.635,
+      49.725
+    ],
+    "content_deltas": [
+      "Q",
+      "2",
+      "7M",
+      "TP",
+      "-",
+      "POSTDIS",
+      "PATCH1",
+      "-CHAT",
+      "-T2",
+      "-MEM-Q",
+      "2",
+      "7M",
+      "TP",
+      "-",
+      "POSTDIS",
+      "PATCH",
+      "1",
+      "-OK"
+    ],
+    "content": "Q27MTP-POSTDISPATCH1-CHAT-T2-MEM-Q27MTP-POSTDISPATCH1-OK",
+    "finish_reasons": [
+      "length",
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 133,
+      "completion_tokens": 541,
+      "total_tokens": 674,
+      "prompt_tokens_details": {
+        "cached_tokens": 52,
+        "cache_detail": "paged+ssm"
+      }
+    }
+  },
+  "chat_turn_2_pass": true,
+  "responses": {
+    "reasoning_delta_count": 321,
+    "content_delta_count": 11,
+    "first_reasoning_at": 0.454,
+    "first_content_at": 38.692,
+    "last_content_at": 40.357,
+    "content_times": [
+      38.692,
+      38.692,
+      38.86,
+      39.042,
+      39.225,
+      39.413,
+      39.611,
+      39.816,
+      40.022,
+      40.213,
+      40.357
+    ],
+    "content_deltas": [
+      "Q",
+      "2",
+      "7",
+      "M",
+      "TP",
+      "-",
+      "POSTDIS",
+      "PATCH1",
+      "-RESP",
+      "-",
+      "OK"
+    ],
+    "content": "Q27MTP-POSTDISPATCH1-RESP-OK",
+    "done_texts": [
+      "Q27MTP-POSTDISPATCH1-RESP-OK"
+    ],
+    "terminals": [
+      "response.completed"
+    ],
+    "usage": {
+      "input_tokens": 36,
+      "output_tokens": 527,
+      "total_tokens": 563
+    }
+  },
+  "responses_pass": true,
+  "all_pass": true
+}

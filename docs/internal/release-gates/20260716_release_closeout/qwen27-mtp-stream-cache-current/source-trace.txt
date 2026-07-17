@@ -1,0 +1,259 @@
+aa6a3d2ef fix(streaming): dispatch terminal output before cache persistence
+ .../test_terminal_dispatch_before_cache_cleanup.py | 115 +++++++++++++++++++++
+ vmlx_engine/engine_core.py                         |  30 +++++-
+ vmlx_engine/mllm_scheduler.py                      |  48 +++++++--
+ vmlx_engine/scheduler.py                           |  12 ++-
+ 4 files changed, 193 insertions(+), 12 deletions(-)
+   160	        # Without this, DSV4-Flash + every JANGTQ LLM bundle crashes with
+   161	        # `RuntimeError: There is no Stream(gpu, N) in current thread.`
+   162	        _step_executor = getattr(self.scheduler, "_step_executor", None)
+   163	        _async_loop = asyncio.get_running_loop() if _step_executor is not None else None
+   164
+   165	        while self._running:
+   166	            try:
+   167	                if self.scheduler.has_requests():
+   168	                    # Run one generation step
+   169	                    if _step_executor is not None:
+   170	                        output = await _async_loop.run_in_executor(
+   171	                            _step_executor,
+   172	                            lambda: self.scheduler.step(defer_finished_cleanup=True),
+   173	                        )
+   174	                    else:
+   175	                        output = self.scheduler.step(defer_finished_cleanup=True)
+   176	                    self._steps_executed += 1
+   177
+   178	                    # Periodic ghost request detection: find requests in
+   179	                    # scheduler.running that have no output collector.
+   180	                    # These are "ghost" requests that will spin forever.
+   181	                    _ghost_check_counter += 1
+   182	                    if _ghost_check_counter >= _GHOST_CHECK_INTERVAL:
+   183	                        _ghost_check_counter = 0
+   184	                        ghost_ids = [
+   185	                            rid for rid in self.scheduler.running
+   186	                            if rid not in self._output_collectors
+   187	                        ]
+   188	                        for rid in ghost_ids:
+   189	                            logger.warning(
+   190	                                f"Aborting ghost request {rid}: in scheduler.running "
+   191	                                f"but no output collector"
+   192	                            )
+   193	                            self.scheduler.abort_request(rid)
+   194
+   195	                    # Fast path: distribute outputs to collectors
+   196	                    outputs = output.outputs
+   197	                    if outputs:
+   198	                        collectors = self._output_collectors
+   199	                        states = self._stream_states
+   200	                        events = self._finished_events
+   201
+   202	                        for req_output in outputs:
+   203	                            rid = req_output.request_id
+   204	                            collector = collectors.get(rid)
+   205
+   206	                            if collector is not None:
+   207	                                # Has a consumer — clear orphan tracking
+   208	                                orphan_counts.pop(rid, None)
+   209	                                orphan_first_seen.pop(rid, None)
+   210	                                # Optimized: skip stream_interval check when interval=1
+   211	                                if use_simple_streaming:
+   212	                                    collector.put(req_output)
+   213	                                else:
+   214	                                    state = states.get(rid)
+   215	                                    if state and state.should_send(
+   216	                                        req_output.completion_tokens,
+   217	                                        req_output.finished,
+   218	                                    ):
+   219	                                        # Merge any accumulated text from skipped tokens
+   220	                                        pending_text, pending_ids = state.drain_pending()
+   221	                                        if pending_text or pending_ids:
+   222	                                            req_output.new_text = pending_text + req_output.new_text
+   223	                                            req_output.new_token_ids = pending_ids + req_output.new_token_ids
+   224	                                        collector.put(req_output)
+   225	                                        state.mark_sent(req_output.completion_tokens)
+   226	                                    elif state:
+   227	                                        # Not sending yet — accumulate for next send
+   228	                                        state.accumulate(req_output.new_text, req_output.new_token_ids)
+   229	                            else:
+   230	                                # No collector — ghost/orphan request
+   231	                                count = orphan_counts.get(rid, 0) + 1
+   232	                                orphan_counts[rid] = count
+   233	                                # Track first-seen time for time-based reaping
+   234	                                if rid not in orphan_first_seen:
+   235	                                    orphan_first_seen[rid] = time.monotonic()
+   236	                                elapsed = time.monotonic() - orphan_first_seen[rid]
+   237	                                if count >= _ORPHAN_ABORT_THRESHOLD or elapsed > _ORPHAN_TIMEOUT_S:
+   238	                                    logger.warning(
+   239	                                        f"Aborting ghost request {rid}: "
+   240	                                        f"{count} outputs with no consumer "
+   241	                                        f"({elapsed:.1f}s elapsed)"
+   242	                                    )
+   243	                                    self.scheduler.abort_request(rid)
+   244	                                    orphan_counts.pop(rid, None)
+   245	                                    orphan_first_seen.pop(rid, None)
+   246
+   247	                            if req_output.finished:
+   248	                                orphan_counts.pop(rid, None)
+   249	                                orphan_first_seen.pop(rid, None)
+   250	                                event = events.get(rid)
+   251	                                if event:
+   252	                                    event.set()
+   253
+   254	                        # Always yield after distributing outputs so the
+   255	                        # event loop can flush SSE chunks per-token.
+   256	                        # Without this, the tight loop aggregates many tokens
+   257	                        # before the consumer gets a chance to read them.
+   258	                        await asyncio.sleep(0)
+   259
+   260	                    # Cache/TQ/SSM persistence for a long prompt can take
+   261	                    # seconds. The terminal token is already in the collector;
+   262	                    # only now perform cleanup, on the same model worker when
+   263	                    # one exists, before admitting the next scheduler step.
+   264	                    # This preserves cache ownership while preventing the final
+   265	                    # visible delta from being held behind disk persistence.
+   266	                    if output.finished_request_ids:
+   267	                        if not outputs:
+   268	                            await asyncio.sleep(0)
+   269	                        finished_ids = set(output.finished_request_ids)
+   270	                        if _step_executor is not None:
+   271	                            await _async_loop.run_in_executor(
+   272	                                _step_executor,
+   273	                                self.scheduler._cleanup_finished,
+   274	                                finished_ids,
+   275	                            )
+   276	                        else:
+   277	                            self.scheduler._cleanup_finished(finished_ids)
+   278	                else:
+   279	                    # No work, yield control
+   280	                    await asyncio.sleep(step_interval)
+  3624	                cleanup_trace.get("bookkeeping_s", 0.0) * 1000.0,
+  3625	                cleanup_trace.get("clear_memory_s", 0.0) * 1000.0,
+  3626	            )
+  3627
+  3628	    def _cleanup_finished_after_terminal_dispatch(
+  3629	        self, finished_ids: Set[str]
+  3630	    ) -> None:
+  3631	        """Run deferred terminal cleanup with the normal scheduler lock held."""
+  3632	        with self._queue_lock:
+  3633	            self._cleanup_finished(finished_ids)
+  3634
+  3635	    def step(self, *, defer_finished_cleanup: bool = False) -> MLLMSchedulerOutput:
+  3636	        """Execute one scheduling step -- the core generation loop tick.
+  3637
+  3638	        Called repeatedly by _step_and_dispatch() in the background thread.
+  3639	        Each call:
+  3640
+  3641	        1. _schedule_waiting() moves queued requests -> running (under lock)
+  3642	        2. batch_generator.next() generates one token for all active requests
+  3643	        3. _process_batch_responses() extracts tokens, detokenizes, checks stops
+  3644	        4. _cleanup_finished() stores cache, frees memory, removes state unless
+  3645	           the async streaming loop defers cleanup until after terminal dispatch
+  3646	        5. Periodic Metal GC every 60s during sustained traffic
+  3647
+  3648	        Error recovery: on GPU/cache errors, attempts retry (max 2) per request
+  3649	        by re-queueing. On persistent failure, finishes request with error.
+  3650
+  4000	    async def _process_loop(self) -> None:
+  4001	        """Main async processing loop."""
+  4002	        while self._running:
+  4003	            try:
+  4004	                if self.has_requests():
+  4005	                    # Run step on the dedicated single-worker executor
+  4006	                    # to keep all MLX ops on the SAME thread as model load.
+  4007	                    # See `_step_executor` field comment for the JANGTQ
+  4008	                    # Metal kernel stream-isolation rationale.
+  4009	                    loop = asyncio.get_running_loop()
+  4010	                    trace_enabled = _mllm_scheduler_trace_enabled()
+  4011	                    executor_t0 = time.perf_counter() if trace_enabled else 0.0
+  4012	                    step_output = await loop.run_in_executor(
+  4013	                        self._step_executor,
+  4014	                        lambda: self.step(defer_finished_cleanup=True),
+  4015	                    )
+  4016	                    executor_s = (
+  4017	                        time.perf_counter() - executor_t0 if trace_enabled else 0.0
+  4018	                    )
+  4019	                    # Dispatch outputs on the event loop (asyncio.Queue is not thread-safe)
+  4020	                    dispatch_t0 = time.perf_counter() if trace_enabled else 0.0
+  4021	                    self._dispatch_outputs(step_output)
+  4022	                    dispatch_s = (
+  4023	                        time.perf_counter() - dispatch_t0 if trace_enabled else 0.0
+  4024	                    )
+  4025	                    # Terminal cache persistence can take seconds for a long
+  4026	                    # paged/TQ/SSM prefix. Dispatch the finished output and its
+  4027	                    # sentinel first, then yield the event loop so SSE/WebSocket
+  4028	                    # consumers can flush the final visible delta. Cleanup still
+  4029	                    # runs on the model's single worker and completes before the
+  4030	                    # next scheduler step, preserving MLX stream ownership and
+  4031	                    # cache/bookkeeping ordering.
+  4032	                    if step_output.finished_request_ids:
+  4033	                        await asyncio.sleep(0)
+  4034	                        cleanup_t0 = time.perf_counter() if trace_enabled else 0.0
+  4035	                        await loop.run_in_executor(
+  4036	                            self._step_executor,
+  4037	                            self._cleanup_finished_after_terminal_dispatch,
+  4038	                            set(step_output.finished_request_ids),
+  4039	                        )
+  4040	                        if trace_enabled:
+  4041	                            cleanup_s = time.perf_counter() - cleanup_t0
+  4042	                            step_output.trace_timings["cleanup_finished_s"] = (
+  4043	                                step_output.trace_timings.get("cleanup_finished_s", 0.0)
+  4044	                                + cleanup_s
+  4045	                            )
+  4046	                            step_output.trace_timings["process_cleanup_s"] = (
+  4047	                                step_output.trace_timings.get("process_cleanup_s", 0.0)
+  4048	                                + cleanup_s
+  4049	                            )
+  4050	                    if trace_enabled and step_output.outputs:
+  4051	                        self._record_scheduler_trace(
+  4052	                            step_output,
+  4053	                            executor_s=executor_s,
+  4054	                            dispatch_s=dispatch_s,
+  4055	                        )
+  4056	                else:
+  4057	                    # No work, wait a bit
+  4058	                    await asyncio.sleep(0.01)
+  8790	                    )
+  8791	                    self.uid_to_request_id.pop(old_uid, None)
+  8792
+  8793	    def step(
+  8794	        self,
+  8795	        max_retries: int = 2,
+  8796	        *,
+  8797	        defer_finished_cleanup: bool = False,
+  8798	    ) -> SchedulerOutput:
+  8799	        """
+  8800	        Execute one scheduling step with automatic error recovery.
+  8801
+  8802	        This method:
+  8803	        1. Schedules waiting requests into the batch
+  8804	        2. Runs one generation step via BatchGenerator
+  8805	        3. Processes outputs and handles finished requests
+  8806	        4. Automatically recovers from cache/batch errors
+  8807
+  8808	        Cache error recovery only applies to BatchGenerator.next() and
+  8809	        response processing — scheduling errors propagate immediately.
+  8810
+  8811	        Args:
+  8812	            max_retries: Number of times to retry on cache errors (default 2)
+  8813	            defer_finished_cleanup: Return terminal outputs before synchronous
+  8814	                cache persistence. The async engine owns cleanup after dispatch.
+  8815
+  8816	        Returns:
+  8817	            SchedulerOutput with results of this step
+  8818	        """
+  8819	        output = SchedulerOutput()
+  8820
+  8872	                                elif r is not None:
+  8873	                                    flat_responses.append(r)
+  8874	                            responses = [
+  8875	                                r for r in flat_responses if hasattr(r, "token")
+  8876	                            ]
+  8877
+  8878	                        outputs, finished_ids = self._process_batch_responses(responses)
+  8879	                        output.outputs = outputs
+  8880	                        output.finished_request_ids = finished_ids
+  8881	                        if not defer_finished_cleanup:
+  8882	                            self._cleanup_finished(finished_ids)
+  8883
+  8884	                    # Success - break out of retry loop
+  8885	                    break
+  8886

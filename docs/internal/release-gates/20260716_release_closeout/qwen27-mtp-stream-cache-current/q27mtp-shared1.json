@@ -1,0 +1,148 @@
+{
+  "model": "dealignai/Qwen3.6-27B-MXFP8-CRACK-MTP",
+  "port": 8032,
+  "tag": "Q27MTP-SHARED1",
+  "chat_turn_1": {
+    "reasoning_delta_count": 507,
+    "content_delta_count": 9,
+    "first_reasoning_at": 0.574,
+    "first_content_at": 52.648,
+    "last_content_at": 54.057,
+    "content_times": [
+      52.648,
+      52.648,
+      52.834,
+      53.033,
+      53.233,
+      53.447,
+      53.651,
+      53.854,
+      54.057
+    ],
+    "content_deltas": [
+      "Q",
+      "2",
+      "7M",
+      "TP",
+      "-S",
+      "HARED1",
+      "-CHAT",
+      "-T1",
+      "-OK"
+    ],
+    "content": "Q27MTP-SHARED1-CHAT-T1-OK",
+    "finish_reasons": [
+      "length",
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 51,
+      "completion_tokens": 784,
+      "total_tokens": 835
+    }
+  },
+  "chat_turn_1_pass": true,
+  "chat_turn_2": {
+    "reasoning_delta_count": 538,
+    "content_delta_count": 17,
+    "first_reasoning_at": 0.682,
+    "first_content_at": 86.838,
+    "last_content_at": 89.413,
+    "content_times": [
+      86.838,
+      86.839,
+      86.989,
+      87.144,
+      87.301,
+      87.497,
+      87.694,
+      87.893,
+      88.11,
+      88.326,
+      88.524,
+      88.726,
+      88.921,
+      89.129,
+      89.205,
+      89.338,
+      89.413
+    ],
+    "content_deltas": [
+      "Q",
+      "2",
+      "7M",
+      "TP",
+      "-S",
+      "HARED1",
+      "-CHAT",
+      "-T",
+      "2-M",
+      "EM-Q",
+      "2",
+      "7M",
+      "TP",
+      "-S",
+      "HARED",
+      "1",
+      "-OK"
+    ],
+    "content": "Q27MTP-SHARED1-CHAT-T2-MEM-Q27MTP-SHARED1-OK",
+    "finish_reasons": [
+      "length",
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 128,
+      "completion_tokens": 795,
+      "total_tokens": 923,
+      "prompt_tokens_details": {
+        "cached_tokens": 50,
+        "cache_detail": "paged+ssm"
+      }
+    }
+  },
+  "chat_turn_2_pass": true,
+  "responses": {
+    "reasoning_delta_count": 458,
+    "content_delta_count": 9,
+    "first_reasoning_at": 0.451,
+    "first_content_at": 44.922,
+    "last_content_at": 46.385,
+    "content_times": [
+      44.922,
+      44.923,
+      45.095,
+      45.272,
+      45.453,
+      45.669,
+      45.867,
+      46.052,
+      46.385
+    ],
+    "content_deltas": [
+      "Q",
+      "2",
+      "7M",
+      "TP",
+      "-S",
+      "HARED1",
+      "-RESP",
+      "-",
+      "OK"
+    ],
+    "content": "Q27MTP-SHARED1-RESP-OK",
+    "done_texts": [
+      "Q27MTP-SHARED1-RESP-OK"
+    ],
+    "terminals": [
+      "response.completed"
+    ],
+    "usage": {
+      "input_tokens": 35,
+      "output_tokens": 782,
+      "total_tokens": 817
+    }
+  },
+  "responses_pass": true,
+  "all_pass": true
+}

@@ -1,0 +1,83 @@
+{
+  "tag": "Q27MTP-TQFAIR2",
+  "expected": "Q27MTP-TQFAIR2-PREFIX-OK",
+  "cold": {
+    "first_content_seconds": 7.742,
+    "last_content_seconds": 9.2557,
+    "content_delta_count": 12,
+    "content_times": [
+      7.742,
+      7.7421,
+      7.8918,
+      8.0457,
+      8.2005,
+      8.3555,
+      8.5114,
+      8.6672,
+      8.8235,
+      8.9803,
+      9.1408,
+      9.2557
+    ],
+    "content": "Q27MTP-TQFAIR2-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 4629,
+      "completion_tokens": 15,
+      "total_tokens": 4644
+    }
+  },
+  "cold_cache_execution": {},
+  "warm": {
+    "first_content_seconds": 1.0256,
+    "last_content_seconds": 2.5516,
+    "content_delta_count": 12,
+    "content_times": [
+      1.0256,
+      1.0257,
+      1.1747,
+      1.3297,
+      1.4857,
+      1.6414,
+      1.8086,
+      1.9633,
+      2.1184,
+      2.2742,
+      2.4352,
+      2.5516
+    ],
+    "content": "Q27MTP-TQFAIR2-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 4629,
+      "completion_tokens": 15,
+      "total_tokens": 4644,
+      "prompt_tokens_details": {
+        "cached_tokens": 4628,
+        "cache_detail": "paged+ssm"
+      }
+    }
+  },
+  "warm_cache_execution": {
+    "request_id": "chatcmpl-dcdd5945",
+    "cache_detail": "paged+ssm",
+    "cached_tokens": 4628,
+    "blocks": 0,
+    "selection": "paged",
+    "disk_hit": false,
+    "reconstructed": true,
+    "dequantized": true,
+    "reconstruction_seconds": 0.500882,
+    "dequantization_seconds": 1.6e-05,
+    "total_worker_cache_seconds": 0.501186,
+    "reconstruction_ok": true,
+    "dequantization_ok": true
+  },
+  "exact": true,
+  "warm_faster": true,
+  "ttft_speedup": 7.549
+}
