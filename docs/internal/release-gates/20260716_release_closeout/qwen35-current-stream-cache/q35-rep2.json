@@ -1,0 +1,162 @@
+{
+  "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+  "port": 8029,
+  "tag": "Q35-REP2",
+  "chat_turn_1": {
+    "reasoning_delta_count": 256,
+    "content_delta_count": 12,
+    "first_reasoning_at": 0.126,
+    "first_content_at": 2.939,
+    "last_content_at": 3.049,
+    "content_times": [
+      2.939,
+      2.949,
+      2.959,
+      2.969,
+      2.979,
+      2.989,
+      2.999,
+      3.009,
+      3.019,
+      3.029,
+      3.039,
+      3.049
+    ],
+    "content_deltas": [
+      "Q",
+      "3",
+      "5",
+      "-",
+      "REP",
+      "2",
+      "-",
+      "CHAT",
+      "-T",
+      "1",
+      "-",
+      "OK"
+    ],
+    "content": "Q35-REP2-CHAT-T1-OK",
+    "finish_reasons": [
+      "length",
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 45,
+      "completion_tokens": 269,
+      "total_tokens": 314
+    }
+  },
+  "chat_turn_1_pass": true,
+  "chat_turn_2": {
+    "reasoning_delta_count": 256,
+    "content_delta_count": 20,
+    "first_reasoning_at": 0.184,
+    "first_content_at": 2.945,
+    "last_content_at": 3.139,
+    "content_times": [
+      2.945,
+      2.957,
+      2.967,
+      2.977,
+      2.987,
+      2.997,
+      3.007,
+      3.017,
+      3.027,
+      3.038,
+      3.047,
+      3.058,
+      3.068,
+      3.078,
+      3.088,
+      3.098,
+      3.108,
+      3.119,
+      3.129,
+      3.139
+    ],
+    "content_deltas": [
+      "Q",
+      "3",
+      "5",
+      "-",
+      "REP",
+      "2",
+      "-",
+      "CHAT",
+      "-T",
+      "2",
+      "-M",
+      "EM",
+      "-Q",
+      "3",
+      "5",
+      "-",
+      "REP",
+      "2",
+      "-",
+      "OK"
+    ],
+    "content": "Q35-REP2-CHAT-T2-MEM-Q35-REP2-OK",
+    "finish_reasons": [
+      "length",
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 113,
+      "completion_tokens": 277,
+      "total_tokens": 390,
+      "prompt_tokens_details": {
+        "cached_tokens": 44,
+        "cache_detail": "paged+ssm"
+      }
+    }
+  },
+  "chat_turn_2_pass": true,
+  "responses": {
+    "reasoning_delta_count": 256,
+    "content_delta_count": 10,
+    "first_reasoning_at": 0.118,
+    "first_content_at": 2.941,
+    "last_content_at": 3.031,
+    "content_times": [
+      2.941,
+      2.951,
+      2.961,
+      2.971,
+      2.981,
+      2.991,
+      3.001,
+      3.011,
+      3.021,
+      3.031
+    ],
+    "content_deltas": [
+      "Q",
+      "3",
+      "5",
+      "-",
+      "REP",
+      "2",
+      "-",
+      "RESP",
+      "-",
+      "OK"
+    ],
+    "content": "Q35-REP2-RESP-OK",
+    "done_texts": [
+      "Q35-REP2-RESP-OK"
+    ],
+    "terminals": [
+      "response.completed"
+    ],
+    "usage": {
+      "input_tokens": 32,
+      "output_tokens": 267,
+      "total_tokens": 299
+    }
+  },
+  "responses_pass": true,
+  "all_pass": true
+}

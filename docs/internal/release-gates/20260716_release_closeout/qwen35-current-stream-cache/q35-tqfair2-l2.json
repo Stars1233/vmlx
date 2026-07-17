@@ -1,0 +1,101 @@
+{
+  "tag": "Q35-TQFAIR2",
+  "expected": "Q35-TQFAIR2-PREFIX-OK",
+  "cold": {
+    "first_content_seconds": 0.4785,
+    "last_content_seconds": 0.5904,
+    "content_delta_count": 12,
+    "content_times": [
+      0.4785,
+      0.4886,
+      0.4985,
+      0.5086,
+      0.5188,
+      0.5291,
+      0.5392,
+      0.5494,
+      0.5597,
+      0.5702,
+      0.5802,
+      0.5904
+    ],
+    "content": "Q35-TQFAIR2-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 4625,
+      "completion_tokens": 13,
+      "total_tokens": 4638,
+      "prompt_tokens_details": {
+        "cached_tokens": 4624,
+        "cache_detail": "paged+ssm+disk"
+      }
+    }
+  },
+  "cold_cache_execution": {
+    "request_id": "chatcmpl-9527e96f",
+    "cache_detail": "paged+ssm+disk",
+    "cached_tokens": 4624,
+    "blocks": 0,
+    "selection": "paged",
+    "disk_hit": true,
+    "reconstructed": true,
+    "dequantized": true,
+    "reconstruction_seconds": 0.240948,
+    "dequantization_seconds": 8e-06,
+    "total_worker_cache_seconds": 0.24115,
+    "reconstruction_ok": true,
+    "dequantization_ok": true
+  },
+  "warm": {
+    "first_content_seconds": 0.5596,
+    "last_content_seconds": 0.6713,
+    "content_delta_count": 12,
+    "content_times": [
+      0.5596,
+      0.5698,
+      0.5798,
+      0.59,
+      0.6001,
+      0.6105,
+      0.6205,
+      0.6307,
+      0.641,
+      0.6511,
+      0.661,
+      0.6713
+    ],
+    "content": "Q35-TQFAIR2-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 4625,
+      "completion_tokens": 13,
+      "total_tokens": 4638,
+      "prompt_tokens_details": {
+        "cached_tokens": 4624,
+        "cache_detail": "paged+ssm"
+      }
+    }
+  },
+  "warm_cache_execution": {
+    "request_id": "chatcmpl-dcb6997c",
+    "cache_detail": "paged+ssm",
+    "cached_tokens": 4624,
+    "blocks": 0,
+    "selection": "paged",
+    "disk_hit": false,
+    "reconstructed": true,
+    "dequantized": true,
+    "reconstruction_seconds": 0.278222,
+    "dequantization_seconds": 8e-06,
+    "total_worker_cache_seconds": 0.27842,
+    "reconstruction_ok": true,
+    "dequantization_ok": true
+  },
+  "exact": true,
+  "warm_faster": false,
+  "ttft_speedup": 0.855
+}
