@@ -111,3 +111,31 @@ tool-loop, RAM prefix, and restart-L2 rows. It does not close the full release:
 Qwen's long reasoning rail remains slow, the broader sampled reliability and
 cancel/soak matrix is open, and the full repository/panel/release suites have
 not yet passed on the final aggregate head.
+
+## Current shared two-tool continuation falsification
+
+- Server commit `3d32b944b` was first proved on Bonsai, then independently
+  falsified here on the official
+  `dealignai/Qwen3.6-27B-MXFP8-CRACK-MTP` artifact. It distinguishes terminal
+  post-result requests from an explicitly requested/client-narrowed remaining
+  Qwen tool instead of always injecting `Do not emit another <tool_call>`.
+- A real `/usr/bin/curl -N` three-round Responses harness executed exactly one
+  `file_info(panel/package.json)`, exactly one `run_command(pwd)`, then streamed
+  exact `Q27-API-MULTI-CURRENT-DONE` over eight timed content deltas and one
+  completed terminal with no warning (`q27-api-multi-current.json`).
+- A fresh Electron chat executed the same two tools once each and visibly
+  returned exact `Q27-UI-MULTI-CURRENT-DONE`. Persisted row 324 contains both
+  real calls/results, no warning, 371 output tokens, 18.5 t/s, 1.02s TTFT, and
+  25.5s total. The 3s/10s/final screenshots retain the visible progression.
+- Identical API replay restored 388 and 206 tokens as `paged+ssm`. A visible
+  Electron Stop/Start replaced PID 63193 with PID 63864 without clearing L2;
+  the next replay restored the same boundaries as `paged+ssm+disk`, kept the
+  exact tools/final, and streamed the final over eight timed deltas.
+- Post-restart health records 11 native-TQ q4 disk hits, two SSM-disk hits,
+  `disk_hit=true`, `reconstructed=true`, and `dequantized=true`. Auto TQ applies
+  only to 16 attention-KV layers; 48 companion layers remain native. MTP is
+  active with effective depth 3, but the short final used real draft/verify
+  counters only at depth 1; this row is not presented as a new D3 speed proof.
+- Electron's single-model swap stopped Bonsai before Qwen started; the saved
+  process snapshot contains only the Qwen serve process. The full long-context,
+  cancellation, and broader-sampler reliability gates remain `PARTIAL`.

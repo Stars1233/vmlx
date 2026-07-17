@@ -1,0 +1,163 @@
+{
+  "rounds": [
+    {
+      "label": "tool_1",
+      "first_event_s": 0.0106,
+      "last_event_s": 12.1817,
+      "reasoning_delta_count": 100,
+      "content_delta_count": 0,
+      "content": "",
+      "content_timestamps": [],
+      "done_text": "",
+      "calls": [
+        {
+          "call_id": "call_d51a3f08",
+          "name": "file_info",
+          "arguments": "{\"path\": \"panel/package.json\"}"
+        }
+      ],
+      "terminal": {
+        "event": "response.completed",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 389,
+          "output_tokens": 198,
+          "total_tokens": 587,
+          "input_tokens_details": {
+            "cached_tokens": 388,
+            "cache_detail": "paged+ssm"
+          }
+        },
+        "output_text": ""
+      },
+      "warnings": [],
+      "event_counts": {
+        "response.created": 1,
+        "response.output_item.added": 2,
+        "response.content_part.added": 1,
+        "response.reasoning_summary_text.delta": 100,
+        "response.usage": 104,
+        "response.heartbeat": 15,
+        "response.reasoning_summary_text.done": 1,
+        "response.output_text.done": 1,
+        "response.content_part.done": 1,
+        "response.output_item.done": 2,
+        "response.function_call_arguments.delta": 2,
+        "response.function_call_arguments.done": 1,
+        "response.completed": 1
+      }
+    },
+    {
+      "label": "tool_2",
+      "first_event_s": 0.0169,
+      "last_event_s": 11.7964,
+      "reasoning_delta_count": 83,
+      "content_delta_count": 0,
+      "content": "",
+      "content_timestamps": [],
+      "done_text": "",
+      "calls": [
+        {
+          "call_id": "call_4d893651",
+          "name": "run_command",
+          "arguments": "{\"command\": \"pwd\"}"
+        }
+      ],
+      "terminal": {
+        "event": "response.completed",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 534,
+          "output_tokens": 161,
+          "total_tokens": 695
+        },
+        "output_text": ""
+      },
+      "warnings": [],
+      "event_counts": {
+        "response.created": 1,
+        "response.output_item.added": 2,
+        "response.content_part.added": 1,
+        "response.reasoning_summary_text.delta": 83,
+        "response.usage": 84,
+        "response.heartbeat": 14,
+        "response.reasoning_summary_text.done": 1,
+        "response.output_text.done": 1,
+        "response.content_part.done": 1,
+        "response.output_item.done": 2,
+        "response.function_call_arguments.delta": 2,
+        "response.function_call_arguments.done": 1,
+        "response.completed": 1
+      }
+    },
+    {
+      "label": "final",
+      "first_event_s": 0.014,
+      "last_event_s": 2.2431,
+      "reasoning_delta_count": 0,
+      "content_delta_count": 8,
+      "content": "Q27-API-MULTI-CURRENT-DONE",
+      "content_timestamps": [
+        1.5815,
+        1.5829,
+        1.7008,
+        1.8247,
+        1.9501,
+        2.0226,
+        2.0924,
+        2.1629
+      ],
+      "done_text": "Q27-API-MULTI-CURRENT-DONE",
+      "calls": [],
+      "terminal": {
+        "event": "response.completed",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 207,
+          "output_tokens": 12,
+          "total_tokens": 219,
+          "input_tokens_details": {
+            "cached_tokens": 206,
+            "cache_detail": "paged+ssm"
+          }
+        },
+        "output_text": "Q27-API-MULTI-CURRENT-DONE"
+      },
+      "warnings": [],
+      "event_counts": {
+        "response.created": 1,
+        "response.output_item.added": 1,
+        "response.content_part.added": 1,
+        "response.output_text.delta": 8,
+        "response.usage": 9,
+        "response.output_text.done": 1,
+        "response.content_part.done": 1,
+        "response.output_item.done": 1,
+        "response.completed": 1
+      }
+    }
+  ],
+  "verdict": {
+    "executed": [
+      "file_info",
+      "run_command"
+    ],
+    "final_content": "Q27-API-MULTI-CURRENT-DONE",
+    "final_done_text": "Q27-API-MULTI-CURRENT-DONE",
+    "final_terminal": {
+      "event": "response.completed",
+      "status": "completed",
+      "usage": {
+        "input_tokens": 207,
+        "output_tokens": 12,
+        "total_tokens": 219,
+        "input_tokens_details": {
+          "cached_tokens": 206,
+          "cache_detail": "paged+ssm"
+        }
+      },
+      "output_text": "Q27-API-MULTI-CURRENT-DONE"
+    },
+    "pass": true
+  }
+}
