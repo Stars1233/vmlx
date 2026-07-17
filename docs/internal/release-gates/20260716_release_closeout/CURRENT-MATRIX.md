@@ -10,13 +10,13 @@ superseded conclusions are called out here.
 
 ## Release truth
 
-- Working branch: `reconcile/1.5.68`; current scoped code head `5e6a1f8a1`;
+- Working branch: `reconcile/1.5.68`; current scoped code head `b33d80589`;
   typed-settings,
   non-MTP architecture-hint, paged resident-accounting, typed hybrid-companion
   ownership, and v8 cache-namespace repairs plus their focused tests are pushed
   to the closeout branch described below.
 - Push target: `origin/codex/live-electron-gates-20260715`.
-- At scoped code head `5e6a1f8a1`, the branch is 84 commits ahead of
+- At scoped code head `b33d80589`, the branch is 94 commits ahead of
   `origin/main` and zero behind. Matrix-only commits may follow that code head.
 - Source versions are `1.6.11` in `pyproject.toml`,
   `vmlx_engine/__init__.py`, and `panel/package.json`.
@@ -46,6 +46,31 @@ superseded conclusions are called out here.
 | Gateway lifecycle | PASS-LIVE lifecycle+basic streams / PARTIAL agent protocols | Commit `e76cc5451` makes restart transactional: a rejected port change restores the prior listener and rethrows the original error. Through the current Electron API page, changing running gateway `127.0.0.1:8081` to DSV4's occupied `8012` first reproduced the old stopped-listener bug, then the fixed build rejected the conflict while health and SQLite remained running on 8081. LAN UI enable rebound to `0.0.0.0:8081`, displayed routable `192.168.1.110`, served `/health` over that LAN address, and rebound to localhost when disabled. With Single model mode enabled, the visible Bonsai Start control stopped DSV4 PID 10013 and launched Bonsai PID 10495; UI, SQLite, process listing, gateway discovery, and `[SESSIONS]` lifecycle log all showed exactly one running engine. Commit `a0aa81a94` waits for usage and `[DONE]` before emitting Ollama's empty-message terminal, preventing cumulative thinking duplication and premature loss of `eval_count`; current Electron PID 12046 / Bonsai PID 12114 proved the live stream above. | Agentic tool/result continuation per protocol, disconnect/error recovery, and repeated unload/reload swap soak |
 | Full tests/build | OPEN | Current hybrid ownership/cache changes: 784/784 Python hybrid/cache/scheduler tests, 278/278 panel settings tests, and panel typecheck pass. The fetched-block ref-ownership repair adds 90/90 focused paged/TQ/hybrid tests. Parser/Responses terminal coverage passed 135/135 Python, 50/50 panel, and panel typecheck. Typed DSV4 disk-tier telemetry passed 76/76 DSV4/paged-byte-budget tests, three focused scheduler assertions, 43/43 relevant panel tests, and panel typecheck. Explicit Min-P zero passed 213/213 affected panel tests plus typecheck. Gateway transactional restart and Ollama terminal behavior passed 76/76 focused panel tests plus typecheck. | Focused suites after each fix, full Python/panel suite, bundled-Python gate, clean release build |
 | Packaging/public release | BLOCKED | Public truth remains 1.6.10 | Build Sequoia/Tahoe, sign, notarize, staple, Gatekeeper verify, install-smoke, publish GitHub/PyPI/feed |
+
+### Qwen 3.6 27B post-tool progressive streaming — current source
+
+- Commit `b33d80589` fixes two owning-layer defects without synthesizing model
+  output. Native tool buffering now requires a distinctive partial marker
+  prefix and releases ambiguous one-to-three-character suffixes when they no
+  longer match. Explicit/Auto Qwen reasoning partitioning is enforced on the
+  post-tool continuation while the initial tool-selection turn remains native.
+- Current-source validation passed 832 tests with three deliberate deselections
+  across server, streaming-reasoning, engine-audit, output-budget, and answer
+  family suites. The nine focused marker/tool/Qwen continuation tests also pass.
+- Direct Responses SSE emitted 153 reasoning deltas and 113 visible-content
+  deltas, one matching `output_text.done`, exactly one completed terminal, no
+  incomplete terminal, no heartbeat/tool re-entry, and exact final marker
+  `Q27-API-POST-TOOL-PROGRESSIVE-FIX-DONE` under explicit
+  `max_thinking_tokens=256`.
+- Current Electron row 2606 executed exactly one real
+  `file_info(panel/package.json)` call. The visible answer grew while Stop was
+  active from 11 to 73 to 252 to 496 to 805 characters, then exact-finaled
+  `Q27-ELECTRON-TOOLSTREAM-FIX7-DONE`. It reused 512 tokens as
+  `paged+ssm+disk`, persisted one matching call/result pair, and recorded no
+  warning. Screenshots are in the Qwen evidence directory.
+- This closes the Qwen MXFP8 post-tool reasoning/content streaming defect on
+  the current head. It does not reclassify Bonsai or any other parser family;
+  each still requires its own post-`b33d80589` regression row.
 
 ### Bonsai multi-turn argument and parser-off recheck — current source
 
