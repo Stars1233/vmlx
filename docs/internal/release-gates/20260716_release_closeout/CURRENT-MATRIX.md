@@ -10,13 +10,13 @@ superseded conclusions are called out here.
 
 ## Release truth
 
-- Working branch: `reconcile/1.5.68`; current scoped code head `ba68f8fba`;
+- Working branch: `reconcile/1.5.68`; current scoped code head `5e6a1f8a1`;
   typed-settings,
   non-MTP architecture-hint, paged resident-accounting, typed hybrid-companion
   ownership, and v8 cache-namespace repairs plus their focused tests are pushed
   to the closeout branch described below.
 - Push target: `origin/codex/live-electron-gates-20260715`.
-- At scoped code head `ba68f8fba`, the branch is 81 commits ahead of
+- At scoped code head `5e6a1f8a1`, the branch is 84 commits ahead of
   `origin/main` and zero behind. Matrix-only commits may follow that code head.
 - Source versions are `1.6.11` in `pyproject.toml`,
   `vmlx_engine/__init__.py`, and `panel/package.json`.
@@ -126,7 +126,7 @@ the Electron row.
 |---|---|---|---|
 | Qwen 3.6 35B MXFP/JANG (name has no `MTP`) | Hybrid layout is derived from the real 10-attention/30-companion layer graph. TQ encode/decode applies only to eligible attention KV; GDN/SSM companions remain native and are cleanly rederived/restored. This artifact is not assigned an MTP gate. | Cold + two-turn + tool continuation, RAM hit, restart/L2 hit, and forced eviction/reload with coherent output. | PASS-LIVE cache tiers / PARTIAL long strict format: rows 2169/2172/2175 prove cold, same-process `paged+ssm`, and restart `paged+ssm+disk`; v8 disk files contain exactly 10 `turboquant_kv` + 30 `skip` entries and no cumulative duplicates. UI-applied four-block rows 2178/2181 restored 154 tokens from L2 with exact tool/final output, forced nine L1 evictions, and safely full-prefilled when 192 KV tokens lacked a matching companion. PID 61919 restored the normal 1,000-block setting and row 2184 repeated the exact disk hit. The ambiguous long-tool row and clarified minor period-format miss remain retained. |
 | Qwen 3.6 27B `...-MTP` | The same hybrid cache invariant applies, and MTP is eligible because the actual model/bundle name says `MTP`. | MTP depth 1 and 3 launch/health, real draft/accepted counters, cold + two-turn + tool continuation, RAM hit, restart/L2 hit, and forced eviction/reload with coherent output. | PARTIAL: typed D3 Save & Restart now has UI/DB/argv/health parity; tools-on D1-capped multi-turn passes; tools-off D1 and D3 both looped in reasoning; cache restart/eviction rows remain open |
-| HY3 MTP | Native MTP depth is the requested value and yields measured accepted draft tokens. Prompt/L2 records include the owning target-model cache state; speculative output is never treated as a substitute cache. | Depth 1 and depth 3 A/B, acceptance and latency counters, multi-turn tool loop, restart restore, and eviction/reload. | PARTIAL: depth-1 speed row exists; depth-3/cache interaction is open |
+| HY3 MTP | The exact `Hy3-JANG_2K-MTP` bundle declares one MTP layer and 42 MTP tensors, so the runtime must use depth 1 rather than inventing a depth-3 gate. HY3's plain attention KV may use the family-scoped TQ4 stored-prefix codec; live decode stays native, and MTP batch split/verify must own independent cache copies. | Depth-1 draft/accepted counters, same-chat multi-turn tool loop, process-restart L2 restore, forced eviction/reload, explicit None A/B, and coherent long/streaming output. | PASS-LIVE cache restart+eviction / PARTIAL reliability+None+long: commit `ab5d01e04` selects HY3 full-KV TQ4 and installs an independent `TurboQuantKVCache.__deepcopy__`, fixing the live `cannot pickle 'mlx.core.Dtype' object` scheduler retry loop; 19 focused TQ tests and 178 native-MTP tests passed. Commit `5e6a1f8a1` reports `Native HY3 KV + TQ4 stored prefixes / TQ4 AUTO` in settings; 282 settings tests and typecheck passed, and the label is visible in Electron. PID 22265 row 2483 survived UI process restart, restored 3,272 tokens as `paged+disk+tq-native`, executed one `file_info`, and exact-finaled. UI-applied four-block PID 23635 produced rows 2488/2489, 11 L1 evictions, five TQ-native L2 writes, and 18 TQ-native hits; older-prefix row 2492 restored the bounded 192 tokens as `paged+disk+tq-native`, executed exactly one tool, and returned exact `HY3-Q4-T1R-DONE`. UI restored 1,000 blocks on PID 25084. Same-chat rows 2474/2480 exact-finaled, but row 2477 emitted `HY3-Q4-T2-D-DE-DONE`; strict-format reliability therefore remains PARTIAL. |
 | MiniMax M2.7 | Ordinary KV attention may use calibrated or correctness-safe TQ storage; parser/reasoning rails must survive multi-turn tool continuation. | Auto and None UI/argv/health A/B, two-turn tool loop, RAM/L2 restore, eviction, long visible answer, and streaming rail continuity. | PASS-LIVE current source: rows 2187/2190 prove cold plus same-chat two-tool continuation and a 173-token resident `paged+tq-native` hit. PID 63682 row 2193 restored 173/177 as `paged+disk+tq-native`. None mode PID 64194 launched with explicit `--kv-cache-quantization none`, wrote raw `dtype=kv` blocks, and PID 64579 row 2199 restored 161/165 as `paged+disk` with zero TQ activity. Commit `af7815f1a` repairs fetched-block ref ownership; under the UI-applied four-block ceiling, PID 65838 rows 2208/2211 completed exact tool loops, returned all three usable blocks to the free queue, and raised L1 evictions from 3 to 9. Normal 1,000-block Auto was restored on PID 66306 and row 2214 repeated the exact 173-token disk hit. Electron row 2217 produced a coherent 582-token reasoning/content answer with the exact terminal marker. A direct Responses stream with a 1,024-token budget emitted 711 reasoning deltas, 48 content deltas, matching text-done, and `response.completed(status=completed)` with its exact marker. The controlled 512-token cap correctly reported `status=incomplete` instead of pretending completion. |
 | ZAYA / CCA | Typed CCA state owns its cache. Generic TQ is forbidden unless a typed CCA codec has source and live parity. | Typed cold/warm/restart/eviction rows plus multi-turn tool and reasoning/content stream. | BLOCKED current generic row: the external drive contains only the `AppleScript-8B-JANG_4M` single-tool specialist, which the user excluded from this campaign. This is a missing-artifact gate, not a runtime failure. |
 | Nemotron hybrid | Eligible attention KV may be TQ encoded; non-KV hybrid state remains native and is async clean-prefill rederived/restored. Family selection must come from config/layers, not a name match. | Auto/None A/B, cold + two-turn + tool continuation, L2 restart, eviction, long output, no reasoning leak. | PASS-LIVE cache/settings/tools/API / PARTIAL repeated long reasoning: rows 2223/2226 were exact cold and same-chat one-tool turns, with 162 tokens restored as `paged+ssm+tq-native`. PID 74652 row 2229 restored 192 tokens as `paged+ssm+disk+tq-native`. UI-applied four-block PID 75038 rows 2235/2238 stayed exact while evictions rose 3 to 9 and three usable blocks returned free. Explicit None PIDs 75398/75644 rows 2241/2244 wrote and restored raw `paged+ssm+disk` blocks with zero TQ activity. Auto/1,000 blocks is restored on PID 75939. Electron row 2247 completed a coherent marked answer but repeated 2,962 tokens of native reasoning before the real `</think>`; retained as reliability PARTIAL. Direct Responses emitted 424 reasoning deltas, 30 content deltas, matching done events, and `response.completed`. Focused source tests pass 25/25. |
@@ -279,8 +279,12 @@ partial for this Qwen artifact.
   `--kv-cache-quantization none` and cannot decode stale native-TQ records.
 - Exact-once Qwen/Bonsai requests stop after one schema-valid required tool
   without disabling general multi-tool/interleaved behavior.
-- HY3 MTP depth 1 is active and measured: controlled warm median improved
-  21.234247s to 16.081931s, with 180/414 draft tokens accepted.
+- HY3 MTP depth 1 is the bundle-declared runtime: health reports one configured
+  layer, one indexed layer, 42 MTP tensors, `runtime_active=true`, and
+  `effective_depth=1`. The earlier controlled warm median improved 21.234247s
+  to 16.081931s with 180/414 draft tokens accepted. Current TQ4 restart and
+  eviction rows additionally prove batch-copy ownership and L2 restore; the
+  retained T2 strict-marker miss keeps broad reliability PARTIAL.
 - Gateway LAN display selects a routable address rather than APIPA.
 - Single-model mode visibly stops the old model and leaves one local server.
 - Laguna/JANG and vMLX preserve original float16/bfloat16 KV dtype through
@@ -299,9 +303,10 @@ partial for this Qwen artifact.
    reasoning retained as PARTIAL. Gemma 4 cache/settings/tool/eviction rows are
    now closed; run its coherent constrained long-output row with the remaining
    reliability matrix rather than reopening its cache tier.
-2. Close DSV4 native-composite quality/stream/eviction, HY3 D3/cache, and the
-   remaining M3/Pangu long/media boundaries. Do not test Mistral MXFP4 in this
-   campaign per the user's explicit instruction.
+2. Keep HY3 cache restart/eviction closed at its bundle-declared depth 1; close
+   its explicit-None and long/streaming reliability rows. Close DSV4 long
+   quality/performance and the remaining M3/Pangu long/media boundaries. Do
+   not test Mistral MXFP4 in this campaign per the user's explicit instruction.
 3. Re-prove Bonsai forced eviction/repair boundaries, retaining its recorded
    sampling miss as reliability evidence; keep Qwen 35B's long-format miss in
    the reliability ledger without reopening its now-closed cache tier row.
