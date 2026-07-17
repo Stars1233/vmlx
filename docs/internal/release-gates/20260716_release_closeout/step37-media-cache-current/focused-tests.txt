@@ -1,0 +1,9 @@
+Command:
+  .venv/bin/python -m pytest -q tests/test_step37_mlx_vlm_runtime.py tests/test_step3p7_mllm_detection_guard.py tests/test_zaya_runtime.py tests/test_mllm_scheduler_cache.py
+
+Result at c305b18b5:
+  collected 211 items
+  205 passed, 6 skipped, 2 warnings in 5.31s
+
+Warnings:
+  Two existing librosa FutureWarning entries from raw-audio tests.

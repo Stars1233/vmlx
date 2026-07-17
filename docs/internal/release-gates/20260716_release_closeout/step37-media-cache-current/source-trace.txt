@@ -1,0 +1,26 @@
+Commit: c305b18b5
+
+vmlx_engine/models/step3p7_mlx_vlm.py:708-739
+- Converts NumPy pixel_values, patch_pixel_values, and image_embeds to MLX at
+  the model boundary.
+- Keeps existing MLX tensors unchanged.
+- The conversion occurs before _pixels_to_nhwc, transpose, flatten, or vision
+  execution.
+
+vmlx_engine/mllm_batch_generator.py:4891-4930
+- config-derived step3p7 joins the default-safe media family set.
+- Explicit off, bypass, canonical side-key, and actual media context remain
+  mandatory.
+
+vmlx_engine/mllm_scheduler.py:1028-1074,3098-3120
+- Scheduler admission mirrors generator admission.
+- The captured media-conditioned mixed-SWA N-1 list is stored directly.
+- The ordinary text-only path-dependent helper is not used for this media row.
+
+tests/test_step37_mlx_vlm_runtime.py
+- Pins NumPy media normalization at the Step model boundary.
+
+tests/test_zaya_runtime.py
+- Pins Qwen/Gemma/Step default-on and explicit-off policy.
+- Pins both Gemma and Step captured mixed-SWA storage and asserts that the
+  text-only helper is not called.
