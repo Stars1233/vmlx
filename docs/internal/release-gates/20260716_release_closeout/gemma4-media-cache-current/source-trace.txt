@@ -1,0 +1,23 @@
+Commit: cc1562a2b
+
+vmlx_engine/mllm_batch_generator.py:4891-4928
+- Explicit off remains the first gate.
+- gemma4 and gemma4_unified join the default-safe family set.
+- bypass, canonical side-key, and actual media-context checks remain required.
+
+vmlx_engine/mllm_scheduler.py:1028-1072
+- Scheduler admission mirrors the generator policy.
+- ZAYA CCA remains excluded from the Gemma-owned boundary.
+
+vmlx_engine/mllm_scheduler.py:3096-3118
+- If media admission is true and the extracted cache has a mixed-attention
+  layout, the captured list/tuple is stored directly as the N-1 boundary.
+- The ordinary mixed path remains below it for non-media text prefixes.
+- The media branch cannot call _prefill_for_clean_path_dependent_cache after
+  tensors were released.
+
+tests/test_zaya_runtime.py:1986-2117
+- Qwen and Gemma default-on/explicit-off contract.
+- Captured Gemma mixed-SWA boundary contract.
+- The text-only helper is asserted not called.
+- Stored tokens, typed states, and media side-key are asserted exact.
