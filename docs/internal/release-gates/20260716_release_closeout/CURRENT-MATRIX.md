@@ -10,14 +10,14 @@ superseded conclusions are called out here.
 
 ## Release truth
 
-- Working branch: `reconcile/1.5.68`; current scoped code head `aa6a3d2ef` and
-  prior matrix/evidence head `49c9b2993`;
+- Working branch: `reconcile/1.5.68`; current scoped code head `d9cef0b0c` and
+  prior matrix/evidence head `94757e38c`;
   typed-settings,
   non-MTP architecture-hint, paged resident-accounting, typed hybrid-companion
   ownership, and v8 cache-namespace repairs plus their focused tests are pushed
   to the closeout branch described below.
 - Push target: `origin/codex/live-electron-gates-20260715`.
-- At scoped code head `aa6a3d2ef`, the branch is 109 commits ahead of
+- At scoped code head `d9cef0b0c`, the branch is 111 commits ahead of
   `origin/main` and zero behind. Matrix-only commits may follow the scoped code
   head.
 - Source versions are `1.6.11` in `pyproject.toml`,
@@ -46,7 +46,7 @@ superseded conclusions are called out here.
 | Settings parity | PARTIAL | Cache defaults, Auto/None, typed-setting restart, selective-TQ Cache/Perf labeling, explicit Tool Parser None, explicit per-chat Min-P zero, gateway LAN/port persistence, and single-model swap now have scoped source-plus-live proof. Commit `d49f500a3` preserves slider zero in SQLite and both wire builders; clean current-source Electron PID 8935 displayed Min P `0.00`, DB stored `min_p=0.0`, and live `[CHAT_DIAG]` serialized `"min_p":0`. Commit `4e13b19a7` keeps parser None literal. Current-source Electron PID 9909 also exercised gateway conflict rollback, LAN rebind/restore, and the session-manager single-model swap below. | Complete remaining UI/DB/preview/argv/health rows across model-derived defaults and cache controls; retain parser None, Min-P zero, gateway rollback, and single-model swap as regression rows |
 | API/protocol parity | PARTIAL | Responses now emits the standards-matching `response.incomplete` terminal event for length-capped streams, and the Electron client consumes completed/incomplete final text, usage, warnings, and status symmetrically (`a36a5ea66`). Current Bonsai gateway controls streamed across all four requested surfaces: Chat Completions returned exact `OAI-GW1-DONE`; Responses emitted 151 reasoning, seven content deltas, matching done text, and `response.completed` (with two leading visible newlines retained as a strict-format miss); Anthropic emitted thinking plus exact `ANT-GW1-DONE` and one `message_stop`; Ollama's current-source `think:true` row emitted 193 reasoning deltas once, exact `OLL-GW4-DONE`, and a single empty-message terminal with usage. A controlled Responses `tool_choice:none` result continuation completed once but repeated native tool markup to the cap on another run, so tool-result synthesis remains variable. | Non-stream equivalents, stable auto tool/result continuation through each protocol, disconnect/stop/follow-up, and strict Responses formatting |
 | Gateway lifecycle | PASS-LIVE lifecycle+basic streams / PARTIAL agent protocols | Commit `e76cc5451` makes restart transactional: a rejected port change restores the prior listener and rethrows the original error. Through the current Electron API page, changing running gateway `127.0.0.1:8081` to DSV4's occupied `8012` first reproduced the old stopped-listener bug, then the fixed build rejected the conflict while health and SQLite remained running on 8081. LAN UI enable rebound to `0.0.0.0:8081`, displayed routable `192.168.1.110`, served `/health` over that LAN address, and rebound to localhost when disabled. With Single model mode enabled, the visible Bonsai Start control stopped DSV4 PID 10013 and launched Bonsai PID 10495; UI, SQLite, process listing, gateway discovery, and `[SESSIONS]` lifecycle log all showed exactly one running engine. Commit `a0aa81a94` waits for usage and `[DONE]` before emitting Ollama's empty-message terminal, preventing cumulative thinking duplication and premature loss of `eval_count`; current Electron PID 12046 / Bonsai PID 12114 proved the live stream above. | Agentic tool/result continuation per protocol, disconnect/error recovery, and repeated unload/reload swap soak |
-| Full tests/build | OPEN | Current hybrid ownership/cache changes: 784/784 Python hybrid/cache/scheduler tests, 278/278 panel settings tests, and panel typecheck pass. The fetched-block ref-ownership repair adds 90/90 focused paged/TQ/hybrid tests. Parser/Responses terminal coverage passed 135/135 Python, 50/50 panel, and panel typecheck. Typed DSV4 disk-tier telemetry passed 76/76 DSV4/paged-byte-budget tests, three focused scheduler assertions, 43/43 relevant panel tests, and panel typecheck. Explicit Min-P zero passed 213/213 affected panel tests plus typecheck. Gateway transactional restart and Ollama terminal behavior passed 76/76 focused panel tests plus typecheck. Shared terminal-dispatch ordering passed 4/4 behavioral contracts and 50/50 affected tests; the wider cache/batching slice passed 260/261 with one retained unrelated source-string assertion. | Focused suites after each fix, full Python/panel suite, bundled-Python gate, clean release build |
+| Full tests/build | OPEN | Current hybrid ownership/cache changes: 784/784 Python hybrid/cache/scheduler tests, 278/278 panel settings tests, and panel typecheck pass. The fetched-block ref-ownership repair adds 90/90 focused paged/TQ/hybrid tests. Parser/Responses terminal coverage passed 135/135 Python, 50/50 panel, and panel typecheck. Typed DSV4 disk-tier telemetry passed 76/76 DSV4/paged-byte-budget tests, three focused scheduler assertions, 43/43 relevant panel tests, and panel typecheck. Explicit Min-P zero passed 213/213 affected panel tests plus typecheck. Gateway transactional restart and Ollama terminal behavior passed 76/76 focused panel tests plus typecheck. Shared terminal-dispatch ordering passed 4/4 behavioral contracts and 50/50 affected tests; the wider cache/batching slice passed 260/261 with one retained unrelated source-string assertion. Cross-model tool inheritance passed 299/299 affected panel tests plus typecheck. | Focused suites after each fix, full Python/panel suite, bundled-Python gate, clean release build |
 | Packaging/public release | BLOCKED | Public truth remains 1.6.10 | Build Sequoia/Tahoe, sign, notarize, staple, Gatekeeper verify, install-smoke, publish GitHub/PyPI/feed |
 
 ### Shared terminal dispatch before cache persistence — current source
@@ -82,6 +82,45 @@ superseded conclusions are called out here.
   unrelated source-string assertion
   `test_streaming_tool_detection_requires_request_tools` failing. Evidence:
   `qwen27-mtp-stream-cache-current/`.
+
+### Bonsai post-dispatch q8 hybrid regression — current source
+
+- The exact family that exposed reasoning-then-batched-answer behavior now
+  passes the shared scheduler repair on raw and Electron surfaces. Chat turn 1
+  emitted 363 reasoning / 14 content deltas; same-conversation turn 2 emitted
+  512 / 22, recalled its codeword, and reused 46 `paged+ssm` tokens. Responses
+  emitted 512 / 11, matching done text, and one completed terminal. The first
+  Chat marker retained two leading newlines, so strict byte-format reliability
+  remains `PARTIAL` even though all three semantic markers completed.
+- Current Electron emitted 51 reasoning and 12 content paints, executed one
+  real `file_info(panel/package.json)`, persisted a matching call/result, and
+  exact-finaled. The visible answer arrived as distinct ~20ms paints rather
+  than a terminal blob.
+- On one identical 4,631-token prompt, cold first content was 40.3291s and the
+  4,630-token q8-attention/native-SSM RAM restore was 0.6969s (57.869x). Visible
+  restart PID 94843 to 95400 restored the same prefix as `paged+ssm+disk` in
+  1.5169s; the following RAM hit was 0.6716s. Health records 292 native-TQ q8
+  hits, one SSM disk hit, and zero unsafe KV-without-SSM reuse. Evidence:
+  `bonsai-postdispatch-current/`.
+
+### Cross-model tool-setting inheritance — current source
+
+- Live pre-fix inspection showed a Qwen chat with built-in tools and workspace
+  saved, followed by a fresh Bonsai chat with tools unchecked and no working
+  directory. `chat:create` searched only same-model siblings and stopped at the
+  newest sibling even when that row had no overrides, contradicting the visible
+  “last chat” contract.
+- Commit `d9cef0b0c` scans recent chats across model switches, skips the newly
+  inserted/override-less rows, and feeds the newest actual override through the
+  existing tool/workspace-only allow-list. It does not make sampling, prompt,
+  output/thinking caps, or reasoning mode sticky. The starred profile remains
+  higher priority. Affected validation passed 299/299 plus typecheck.
+- After full Electron-main restart, a visible Bonsai-to-Qwen switch and fresh
+  chat inherited built-in tools, allowed categories, and
+  `/Users/eric/mlx/vllm-mlx`. SQLite kept all model-owned generation/reasoning
+  fields NULL. That inherited chat executed one real `file_info(README.md)`,
+  emitted 298 reasoning / 10 content paints, persisted the call/result, and
+  exact-finaled. Evidence: `cross-model-tool-inheritance-current/`.
 
 ### TQ prompt-L2 stream ownership and TTFT — current source
 

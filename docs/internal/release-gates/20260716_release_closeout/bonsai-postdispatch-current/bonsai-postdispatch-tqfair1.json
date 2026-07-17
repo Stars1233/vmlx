@@ -1,0 +1,103 @@
+{
+  "tag": "B1-POSTDISPATCH-TQFAIR1",
+  "expected": "B1-POSTDISPATCH-TQFAIR1-PREFIX-OK",
+  "cold": {
+    "first_content_seconds": 40.3291,
+    "last_content_seconds": 40.634,
+    "content_delta_count": 15,
+    "content_times": [
+      40.3291,
+      40.3499,
+      40.3702,
+      40.3908,
+      40.4111,
+      40.4317,
+      40.4523,
+      40.4727,
+      40.5313,
+      40.5316,
+      40.5516,
+      40.5722,
+      40.5926,
+      40.6134,
+      40.634
+    ],
+    "content": "B1-POSTDISPATCH-TQFAIR1-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 4631,
+      "completion_tokens": 16,
+      "total_tokens": 4647
+    }
+  },
+  "cold_cache_execution": {
+    "request_id": "resp_e1df4ca91203:visible-answer",
+    "cache_detail": "paged+ssm",
+    "cached_tokens": 32,
+    "blocks": 0,
+    "selection": "paged",
+    "disk_hit": false,
+    "reconstructed": true,
+    "dequantized": true,
+    "reconstruction_seconds": 0.021159,
+    "dequantization_seconds": 8e-06,
+    "total_worker_cache_seconds": 0.021456,
+    "reconstruction_ok": true,
+    "dequantization_ok": true
+  },
+  "warm": {
+    "first_content_seconds": 0.6969,
+    "last_content_seconds": 0.9662,
+    "content_delta_count": 15,
+    "content_times": [
+      0.6969,
+      0.7164,
+      0.7358,
+      0.7551,
+      0.7743,
+      0.7933,
+      0.8125,
+      0.8315,
+      0.8507,
+      0.8698,
+      0.8891,
+      0.9081,
+      0.9277,
+      0.9465,
+      0.9662
+    ],
+    "content": "B1-POSTDISPATCH-TQFAIR1-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 4631,
+      "completion_tokens": 16,
+      "total_tokens": 4647,
+      "prompt_tokens_details": {
+        "cached_tokens": 4630,
+        "cache_detail": "paged+ssm"
+      }
+    }
+  },
+  "warm_cache_execution": {
+    "request_id": "chatcmpl-fe10facf",
+    "cache_detail": "paged+ssm",
+    "cached_tokens": 4630,
+    "blocks": 0,
+    "selection": "paged",
+    "disk_hit": false,
+    "reconstructed": true,
+    "dequantized": true,
+    "reconstruction_seconds": 0.281451,
+    "dequantization_seconds": 1e-05,
+    "total_worker_cache_seconds": 0.281767,
+    "reconstruction_ok": true,
+    "dequantization_ok": true
+  },
+  "exact": true,
+  "warm_faster": true,
+  "ttft_speedup": 57.869
+}

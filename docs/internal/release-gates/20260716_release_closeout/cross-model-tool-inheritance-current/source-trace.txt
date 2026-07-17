@@ -1,0 +1,135 @@
+d9cef0b0c fix(chat): inherit tool settings across model switches
+ panel/src/main/ipc/chat.ts               | 46 ++++++++++++++++++--------------
+ panel/tests/chat-override-policy.test.ts | 22 ++++++++++++++-
+ 2 files changed, 47 insertions(+), 21 deletions(-)
+   795	        createdAt: Date.now(),
+   796	        updatedAt: Date.now(),
+   797	        modelId,
+   798	        modelPath,
+   799	      };
+   800	      db.createChat(chat);
+   801
+   802	      // Do not seed new chats from per-model settings or sibling chats. A
+   803	      // clean chat starts with no overrides; the engine resolves bundle
+   804	      // defaults and explicit chat/API settings are stored only per chat.
+   805	      // Default profiles / sibling chats may carry tool and workspace
+   806	      // ergonomics into a clean chat, but sampling/reasoning/system prompts are
+   807	      // intentionally excluded so bundle generation defaults stay authoritative.
+   808	      try {
+   809	        const defaultProfile = db.getDefaultChatProfile();
+   810	        if (defaultProfile) {
+   811	          const existing = db.getChatOverrides(chat.id) || { chatId: chat.id };
+   812	          // Default profiles are auto-applied at chat creation time, so treat
+   813	          // them as coding/tool presets. Manual profile loads can still apply
+   814	          // full sampler/reasoning/prompt settings after the user chooses them.
+   815	          const merged = buildNewChatInheritedOverrides(
+   816	            existing as any,
+   817	            defaultProfile as any,
+   818	          );
+   819	          db.setChatOverrides(merged as any);
+   820	          console.log(
+   821	            `[CHAT] Applied default profile coding/tool settings to new chat ${chat.id}; generation/reasoning defaults stayed model-derived`,
+   822	          );
+   823	        } else {
+   824	          // No starred profile — honor the visible "last chat" contract across
+   825	          // model switches. Skip this newly inserted row and any older chat
+   826	          // without an override record instead of stopping at an empty sibling.
+   827	          // The inheritance policy still copies only tool/workspace ergonomics;
+   828	          // sampling, prompts, and reasoning remain model-derived.
+   829	          const lastInherited = db
+   830	            .getRecentChats(100)
+   831	            .filter((candidate) => candidate.id !== chat.id)
+   832	            .map((candidate) => ({
+   833	              chat: candidate,
+   834	              overrides: db.getChatOverrides(candidate.id),
+   835	            }))
+   836	            .find((candidate) => candidate.overrides !== undefined);
+   837	          if (lastInherited?.overrides) {
+   838	            const existing = db.getChatOverrides(chat.id) || {
+   839	              chatId: chat.id,
+   840	            };
+   841	            const merged = buildNewChatInheritedOverrides(
+   842	              existing as any,
+   843	              lastInherited.overrides as any,
+   844	            );
+   845	            db.setChatOverrides(merged);
+   846	            console.log(
+   847	              `[CHAT] Inherited coding/tool settings from last chat ${lastInherited.chat.id.slice(0, 8)}; generation/reasoning defaults stayed model-derived`,
+   848	            );
+   849	          }
+   850	        }
+   851	      } catch (e) {
+   852	        console.error("[CHAT] Failed to apply default profile:", e);
+   853	      }
+   854
+   855	      return chat;
+   856	    },
+   857	  );
+   858
+   859	  ipcMain.handle("chat:getByModel", async (_, modelPath: string) => {
+   860	    return db.getChatsByModelPath(modelPath);
+     1	export interface ChatOverridePolicyInput {
+     2	  chatId: string
+     3	  temperature?: number
+     4	  topP?: number
+     5	  topK?: number
+     6	  minP?: number
+     7	  maxTokens?: number
+     8	  maxThinkingTokens?: number
+     9	  repeatPenalty?: number
+    10	  systemPrompt?: string
+    11	  stopSequences?: string
+    12	  wireApi?: string
+    13	  maxToolIterations?: number
+    14	  builtinToolsEnabled?: boolean
+    15	  workingDirectory?: string
+    16	  enableThinking?: boolean
+    17	  reasoningEffort?: string
+    18	  hideToolStatus?: boolean
+    19	  webSearchEnabled?: boolean
+    20	  braveSearchEnabled?: boolean
+    21	  fetchUrlEnabled?: boolean
+    22	  fileToolsEnabled?: boolean
+    23	  searchToolsEnabled?: boolean
+    24	  shellEnabled?: boolean
+    25	  toolResultMaxChars?: number
+    26	  gitEnabled?: boolean
+    27	  utilityToolsEnabled?: boolean
+    28	}
+    29
+    30	const NEW_CHAT_TOOL_INHERIT_KEYS = [
+    31	  'builtinToolsEnabled',
+    32	  'webSearchEnabled',
+    33	  'braveSearchEnabled',
+    34	  'fetchUrlEnabled',
+    35	  'fileToolsEnabled',
+    36	  'searchToolsEnabled',
+    37	  'shellEnabled',
+    38	  'gitEnabled',
+    39	  'utilityToolsEnabled',
+    40	  'maxToolIterations',
+    41	  'workingDirectory',
+    42	  'hideToolStatus',
+    43	  'toolResultMaxChars',
+    44	] as const
+    45
+    46	export function buildNewChatInheritedOverrides<T extends ChatOverridePolicyInput>(
+    47	  existing: T,
+    48	  previous?: Partial<ChatOverridePolicyInput> | null,
+    49	): T {
+    50	  if (!previous) return existing
+    51
+    52	  const merged: ChatOverridePolicyInput = { ...existing }
+    53	  for (const key of NEW_CHAT_TOOL_INHERIT_KEYS) {
+    54	    const value = previous[key]
+    55	    if (value !== undefined) {
+    56	      ;(merged as any)[key] = value
+    57	    }
+    58	  }
+    59	  merged.chatId = existing.chatId
+    60	  return merged as T
+    61	}
+    62
+    63	const sanitizeFiniteNumber = (value: unknown, lo: number, hi: number): number | undefined => {
+    64	  if (typeof value !== 'number' || !Number.isFinite(value)) {
+    65	    return undefined

@@ -1,0 +1,107 @@
+{
+  "tag": "B1-POSTDISPATCH-TQFAIR1",
+  "expected": "B1-POSTDISPATCH-TQFAIR1-PREFIX-OK",
+  "cold": {
+    "first_content_seconds": 1.5169,
+    "last_content_seconds": 1.7855,
+    "content_delta_count": 15,
+    "content_times": [
+      1.5169,
+      1.5366,
+      1.5555,
+      1.5749,
+      1.5939,
+      1.6129,
+      1.6323,
+      1.6513,
+      1.6706,
+      1.6896,
+      1.7088,
+      1.7276,
+      1.7475,
+      1.7664,
+      1.7855
+    ],
+    "content": "B1-POSTDISPATCH-TQFAIR1-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 4631,
+      "completion_tokens": 16,
+      "total_tokens": 4647,
+      "prompt_tokens_details": {
+        "cached_tokens": 4630,
+        "cache_detail": "paged+ssm+disk"
+      }
+    }
+  },
+  "cold_cache_execution": {
+    "request_id": "chatcmpl-3f292c42",
+    "cache_detail": "paged+ssm+disk",
+    "cached_tokens": 4630,
+    "blocks": 0,
+    "selection": "paged",
+    "disk_hit": true,
+    "reconstructed": true,
+    "dequantized": true,
+    "reconstruction_seconds": 1.188752,
+    "dequantization_seconds": 9e-06,
+    "total_worker_cache_seconds": 1.189071,
+    "reconstruction_ok": true,
+    "dequantization_ok": true
+  },
+  "warm": {
+    "first_content_seconds": 0.6716,
+    "last_content_seconds": 0.939,
+    "content_delta_count": 15,
+    "content_times": [
+      0.6716,
+      0.6911,
+      0.71,
+      0.7291,
+      0.7479,
+      0.7673,
+      0.7864,
+      0.8058,
+      0.8247,
+      0.8438,
+      0.8627,
+      0.8822,
+      0.901,
+      0.9202,
+      0.939
+    ],
+    "content": "B1-POSTDISPATCH-TQFAIR1-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 4631,
+      "completion_tokens": 16,
+      "total_tokens": 4647,
+      "prompt_tokens_details": {
+        "cached_tokens": 4630,
+        "cache_detail": "paged+ssm"
+      }
+    }
+  },
+  "warm_cache_execution": {
+    "request_id": "chatcmpl-28d5ab0a",
+    "cache_detail": "paged+ssm",
+    "cached_tokens": 4630,
+    "blocks": 0,
+    "selection": "paged",
+    "disk_hit": false,
+    "reconstructed": true,
+    "dequantized": true,
+    "reconstruction_seconds": 0.269602,
+    "dequantization_seconds": 1.1e-05,
+    "total_worker_cache_seconds": 0.269919,
+    "reconstruction_ok": true,
+    "dequantization_ok": true
+  },
+  "exact": true,
+  "warm_faster": true,
+  "ttft_speedup": 2.259
+}

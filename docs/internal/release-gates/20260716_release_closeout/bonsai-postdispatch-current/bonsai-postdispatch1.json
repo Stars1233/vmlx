@@ -1,0 +1,171 @@
+{
+  "model": "jangq-ai/Bonsai-27b-1bit-JANG",
+  "port": 8030,
+  "tag": "B1-POSTDISPATCH1",
+  "chat_turn_1": {
+    "reasoning_delta_count": 363,
+    "content_delta_count": 14,
+    "first_reasoning_at": 0.346,
+    "first_content_at": 7.437,
+    "last_content_at": 7.687,
+    "content_times": [
+      7.437,
+      7.456,
+      7.476,
+      7.495,
+      7.514,
+      7.533,
+      7.553,
+      7.572,
+      7.591,
+      7.611,
+      7.63,
+      7.649,
+      7.668,
+      7.687
+    ],
+    "content_deltas": [
+      "\n\n",
+      "B",
+      "1",
+      "-",
+      "POST",
+      "DIS",
+      "PATCH",
+      "1",
+      "-",
+      "CHAT",
+      "-T",
+      "1",
+      "-",
+      "OK"
+    ],
+    "content": "\n\nB1-POSTDISPATCH1-CHAT-T1-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 47,
+      "completion_tokens": 379,
+      "total_tokens": 426
+    }
+  },
+  "chat_turn_1_pass": true,
+  "chat_turn_2": {
+    "reasoning_delta_count": 512,
+    "content_delta_count": 22,
+    "first_reasoning_at": 1.612,
+    "first_content_at": 11.974,
+    "last_content_at": 12.371,
+    "content_times": [
+      11.974,
+      11.993,
+      12.011,
+      12.03,
+      12.049,
+      12.067,
+      12.086,
+      12.105,
+      12.123,
+      12.142,
+      12.161,
+      12.179,
+      12.198,
+      12.216,
+      12.235,
+      12.253,
+      12.272,
+      12.291,
+      12.31,
+      12.328,
+      12.349,
+      12.371
+    ],
+    "content_deltas": [
+      "B",
+      "1",
+      "-",
+      "POST",
+      "DIS",
+      "PATCH",
+      "1",
+      "-",
+      "CHAT",
+      "-T",
+      "2",
+      "-M",
+      "EM",
+      "-B",
+      "1",
+      "-",
+      "POST",
+      "DIS",
+      "PATCH",
+      "1",
+      "-",
+      "OK"
+    ],
+    "content": "B1-POSTDISPATCH1-CHAT-T2-MEM-B1-POSTDISPATCH1-OK",
+    "finish_reasons": [
+      "length",
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 118,
+      "completion_tokens": 535,
+      "total_tokens": 653,
+      "prompt_tokens_details": {
+        "cached_tokens": 46,
+        "cache_detail": "paged+ssm"
+      }
+    }
+  },
+  "chat_turn_2_pass": true,
+  "responses": {
+    "reasoning_delta_count": 512,
+    "content_delta_count": 11,
+    "first_reasoning_at": 0.287,
+    "first_content_at": 16.529,
+    "last_content_at": 16.729,
+    "content_times": [
+      16.529,
+      16.549,
+      16.568,
+      16.588,
+      16.609,
+      16.629,
+      16.649,
+      16.668,
+      16.688,
+      16.708,
+      16.729
+    ],
+    "content_deltas": [
+      "B",
+      "1",
+      "-",
+      "POST",
+      "DIS",
+      "PATCH",
+      "1",
+      "-",
+      "RESP",
+      "-",
+      "OK"
+    ],
+    "content": "B1-POSTDISPATCH1-RESP-OK",
+    "done_texts": [
+      "B1-POSTDISPATCH1-RESP-OK"
+    ],
+    "terminals": [
+      "response.completed"
+    ],
+    "usage": {
+      "input_tokens": 33,
+      "output_tokens": 524,
+      "total_tokens": 557
+    }
+  },
+  "responses_pass": true,
+  "all_pass": true
+}
