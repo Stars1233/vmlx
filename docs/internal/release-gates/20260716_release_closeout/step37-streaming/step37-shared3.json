@@ -1,0 +1,176 @@
+{
+  "model": "jangq-ai/Step-3.7-Flash-JANGTQ_K",
+  "port": 8022,
+  "tag": "STEP37-SHARED3",
+  "chat_turn_1": {
+    "reasoning_delta_count": 244,
+    "content_delta_count": 14,
+    "first_reasoning_at": 0.739,
+    "first_content_at": 6.1,
+    "last_content_at": 6.386,
+    "content_times": [
+      6.1,
+      6.122,
+      6.143,
+      6.165,
+      6.187,
+      6.209,
+      6.231,
+      6.253,
+      6.275,
+      6.297,
+      6.32,
+      6.342,
+      6.363,
+      6.386
+    ],
+    "content_deltas": [
+      "\n",
+      "STEP",
+      "37",
+      "-S",
+      "H",
+      "AR",
+      "ED",
+      "3",
+      "-CH",
+      "AT",
+      "-T",
+      "1",
+      "-",
+      "OK"
+    ],
+    "content": "\nSTEP37-SHARED3-CHAT-T1-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 50,
+      "completion_tokens": 260,
+      "total_tokens": 310
+    }
+  },
+  "chat_turn_1_pass": true,
+  "chat_turn_2": {
+    "reasoning_delta_count": 110,
+    "content_delta_count": 24,
+    "first_reasoning_at": 0.475,
+    "first_content_at": 2.916,
+    "last_content_at": 3.419,
+    "content_times": [
+      2.916,
+      2.938,
+      2.959,
+      2.982,
+      3.003,
+      3.025,
+      3.047,
+      3.069,
+      3.091,
+      3.112,
+      3.134,
+      3.156,
+      3.178,
+      3.2,
+      3.222,
+      3.244,
+      3.266,
+      3.288,
+      3.31,
+      3.331,
+      3.353,
+      3.375,
+      3.397,
+      3.419
+    ],
+    "content_deltas": [
+      "\n",
+      "STEP",
+      "37",
+      "-S",
+      "H",
+      "AR",
+      "ED",
+      "3",
+      "-CH",
+      "AT",
+      "-T",
+      "2",
+      "-M",
+      "EM",
+      "-",
+      "STEP",
+      "37",
+      "-S",
+      "H",
+      "AR",
+      "ED",
+      "3",
+      "-",
+      "OK"
+    ],
+    "content": "\nSTEP37-SHARED3-CHAT-T2-MEM-STEP37-SHARED3-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 123,
+      "completion_tokens": 136,
+      "total_tokens": 259,
+      "prompt_tokens_details": {
+        "cached_tokens": 49,
+        "cache_detail": "paged+mixed_swa"
+      }
+    }
+  },
+  "chat_turn_2_pass": true,
+  "responses": {
+    "reasoning_delta_count": 111,
+    "content_delta_count": 12,
+    "first_reasoning_at": 0.282,
+    "first_content_at": 2.74,
+    "last_content_at": 2.98,
+    "content_times": [
+      2.74,
+      2.762,
+      2.784,
+      2.806,
+      2.827,
+      2.849,
+      2.871,
+      2.893,
+      2.915,
+      2.937,
+      2.959,
+      2.98
+    ],
+    "content_deltas": [
+      "\n",
+      "STEP",
+      "37",
+      "-S",
+      "H",
+      "AR",
+      "ED",
+      "3",
+      "-R",
+      "ESP",
+      "-",
+      "OK"
+    ],
+    "content": "\nSTEP37-SHARED3-RESP-OK",
+    "done_texts": [
+      "\nSTEP37-SHARED3-RESP-OK"
+    ],
+    "terminals": [
+      "response.completed"
+    ],
+    "usage": {
+      "input_tokens": 35,
+      "output_tokens": 125,
+      "total_tokens": 160
+    }
+  },
+  "responses_pass": true,
+  "all_pass": true
+}

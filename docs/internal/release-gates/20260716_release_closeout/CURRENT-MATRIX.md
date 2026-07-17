@@ -10,13 +10,13 @@ superseded conclusions are called out here.
 
 ## Release truth
 
-- Working branch: `reconcile/1.5.68`; current scoped code head `db2d6d5fb`;
+- Working branch: `reconcile/1.5.68`; current scoped code head `3fe331b8e`;
   typed-settings,
   non-MTP architecture-hint, paged resident-accounting, typed hybrid-companion
   ownership, and v8 cache-namespace repairs plus their focused tests are pushed
   to the closeout branch described below.
 - Push target: `origin/codex/live-electron-gates-20260715`.
-- At scoped code head `db2d6d5fb`, the branch is 99 commits ahead of
+- At scoped code head `3fe331b8e`, the branch is 101 commits ahead of
   `origin/main` and zero behind. Matrix-only commits may follow that code head.
 - Source versions are `1.6.11` in `pyproject.toml`,
   `vmlx_engine/__init__.py`, and `panel/package.json`.
@@ -143,55 +143,53 @@ superseded conclusions are called out here.
   reasoning turn prove variability. No sampler clamp, prompt coercion, hidden
   reasoning disable, or argument rewriting was added.
 
-### Bonsai / Qwen-family bounded answer-pass streaming — current source
+### Shared reasoning-to-content streaming — current source
 
-- Root cause: the shared bounded visible-answer fallback still held back
-  `_ANS_MARKER_HOLDBACK=48` characters for non-Hy3 progressive families. A
-  short second-pass answer could therefore be fully withheld until the terminal
-  chunk even though the first reasoning pass streamed normally. This was a
-  server streaming-contract bug, not native Bonsai behavior and not only a
-  renderer paint issue.
-- Source fix: `vmlx_engine/server.py` now routes both Chat Completions and
-  Responses fallback emission through `_answer_pass_stream_holdback`. Known
-  direct-rail families `hy_v3`, `minimax_m3`, `qwen3_5`, and `qwen3_5_moe`
-  stream with zero tail holdback; marker-risk or buffered families retain the
-  48-character guard.
-- Source validation: 17 focused tests passed on the remote checkout:
-  `tests/test_answer_pass_streaming.py` plus the affected
-  `test_qwen35_tools_enabled_reasoning_only_rearms_visible_answer_pass`,
-  Gemma4, and MiniMax-M3 fallback rows in `tests/test_engine_audit.py`. The
-  Qwen-family regression now uses a deliberately short answer prefix, so the
-  previous 48-character holdback would batch and fail it.
-- Raw Responses proof after Electron Server `Save & Restart` loaded PID 58124:
-  `[B1-SSE-SHORT-FIX1]` produced 48 reasoning deltas and then 11 separate
-  `response.output_text.delta` events for `B1-SSE-SHORT-FIX1-OK`, from 2.893s
-  through 3.077s, followed by matching `response.output_text.done` and
-  `response.completed`.
-- Raw Chat Completions proof on the same PID:
-  `[B1-CHAT-SHORT-FIX1]` produced 48 `reasoning_content` deltas and then 11
-  separate `delta.content` events from 1.922s through 2.106s, assembling exact
-  `B1-CHAT-SHORT-FIX1-OK`, followed by terminal `stop`. This proves the repair
-  is in the shared server fallback rather than only the Electron renderer or
-  only the Responses adapter.
-- Live Electron proof: selected the visible running
-  `jangq-ai/Bonsai-27b-1bit-JANG` session, sent
-  `[B1-ELECTRON-STREAM-FIX3]`, and instrumented the real preload
-  `api.chat.onStream` renderer event. The app emitted 53 reasoning updates and
-  seven content updates with content lengths `[2,4,6,10,11,12,13]`, growing
-  `UIRENDER-42` progressively before `chat:complete`. Screenshot:
-  `bonsai-current-head/b1-electron-stream-fix3.png`.
-- Persisted row 2618: content `UIRENDER-42`, reasoning 180 chars,
-  `cachedTokens=320`, `cacheDetail=paged+ssm`, `tokensPerSecond=49.3`,
-  `ttft=3.48`, `totalTime=4.8`.
-- Remaining status: streaming contract for this fallback path is PASS-LIVE for
-  Chat Completions, Responses, and the Electron renderer on the live
-  Bonsai/Qwen-family direct rail. This is a shared-path fix, not a universal
-  all-model proof: `hy_v3` and `minimax_m3` inherit the source policy but still
-  need current live rows, while Gemma4/Laguna/openPangu retain the marker tail
-  and DSV4/Step/M2 retain full leak-guard buffering. Those families require
-  separate reasoning-to-answer continuity probes before release. Displayed TPS
-  accounting remains PARTIAL because the UI metric still represents a blended
-  reasoning+answer-pass turn rather than separate phase speeds.
+- Two independent server buffers caused the visible freeze. The bounded direct
+  answer pass used a static 48-character tail and inherited full-pass buffering
+  from a broad family set. Separately, the main Chat reasoning-parser path put
+  every content delta from any answer-pass-capable family into
+  `deferred_reasoning_visible_content`, then emitted one terminal blob. The
+  Responses main path did not have that second buffer, which is why Step could
+  stream through Responses while batching through Chat on the same process.
+- Commit `3fe331b8e` replaces the direct-pass family allowlist with
+  `server.py::_answer_pass_safe_visible_raw`: ordinary prose is immediately
+  safe, while only an unresolved leading Gemma channel, split close-think token,
+  or re-opened reasoning rail is withheld. The only retained full-pass family
+  is `deepseek_v4`, backed by its deterministic live planning re-entry; Step,
+  MiniMax, Qwen, Gemma, Laguna, and Hy3 no longer inherit that DSV4 assumption.
+- The same commit removes `deferred_reasoning_visible_content` from
+  `stream_chat_completion`. Once the reasoning parser exposes content, Chat now
+  emits it progressively like Responses. If a cap is reached after visible
+  content, the client receives the honest streamed prefix and
+  `finish_reason=length`; the bounded replacement pass runs only when the first
+  pass produced no content, so it cannot duplicate unretractable output.
+- Focused validation is 239/239 across answer-pass family/marker handling,
+  terminal finish, streaming reasoning, reasoning/tool interaction, Gemma4
+  no-leak, and DeepSeek-R1 no-leak tests. The marker tests split `</think>` over
+  multiple chunks and verify that a re-opened think rail never becomes content.
+- Live Step raw proof after Electron `Save & Restart` loaded PID 76317:
+  `STEP37-SHARED3` Chat turn 1 emitted 244 reasoning plus 14 content deltas;
+  turn 2 emitted 110 reasoning plus 24 content deltas, recalled the exact
+  codeword, and reused 49 `paged+mixed_swa` tokens; Responses emitted 111
+  reasoning plus 12 content deltas. All three assembled exact markers and ended
+  cleanly (`stop` / `response.completed`). Evidence:
+  `step37-streaming/step37-shared3.json`.
+- Live Electron Step tool proof used the real renderer/preload stream:
+  53 progressively timed reasoning updates, 11 progressively timed content
+  updates, exactly one `file_info(panel/package.json)`, exact
+  `STEP37-ELECTRON-STREAM1-DONE`, and `finishReason=stop`. The screenshot visibly
+  shows the Step session header, reasoning rail, one Info result, exact final,
+  and metrics. Evidence: `step37-streaming/step37-electron-stream1.{json,png}`.
+- Prior Bonsai live proof remains valid: PID 58124 streamed raw Chat and
+  Responses, while Electron `[B1-ELECTRON-STREAM-FIX3]` emitted 53 reasoning
+  and seven progressive content updates before exact `UIRENDER-42`.
+- Verdict: source contract and live Step/Bonsai Chat, Responses, Electron, and
+  one-tool loop are `PASS-LIVE`. Cross-family release status remains `PARTIAL`:
+  Nemotron and Laguna need current raw+Electron rows, and DSV4 retains an
+  intentional full-pass re-entry guard pending its dedicated live matrix.
+  Displayed TPS accounting is also `PARTIAL` because the UI still blends
+  reasoning and any bounded answer-pass phase rather than reporting phase rates.
 
 ### Responses terminal-event correctness — current source
 
