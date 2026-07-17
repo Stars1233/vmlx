@@ -1,0 +1,87 @@
+{
+  "tag": "MM27-ADMISSION1",
+  "expected": "MM27-ADMISSION1-PREFIX-OK",
+  "cold": {
+    "first_content_seconds": 23.6206,
+    "last_content_seconds": 23.8577,
+    "content_delta_count": 9,
+    "content_times": [
+      23.6206,
+      23.6507,
+      23.6805,
+      23.7099,
+      23.7397,
+      23.7691,
+      23.7983,
+      23.8282,
+      23.8577
+    ],
+    "content": "MM27-ADMISSION1-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 3756,
+      "completion_tokens": 10,
+      "total_tokens": 3766
+    }
+  },
+  "cold_cache_execution": {},
+  "warm": {
+    "first_content_seconds": 7.4957,
+    "last_content_seconds": 7.7321,
+    "content_delta_count": 9,
+    "content_times": [
+      7.4957,
+      7.5249,
+      7.555,
+      7.5846,
+      7.6139,
+      7.6429,
+      7.6728,
+      7.7028,
+      7.7321
+    ],
+    "content": "MM27-ADMISSION1-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 3756,
+      "completion_tokens": 10,
+      "total_tokens": 3766,
+      "prompt_tokens_details": {
+        "cached_tokens": 3752,
+        "cache_detail": "paged+tq-native"
+      }
+    }
+  },
+  "warm_cache_execution": {
+    "request_id": "chatcmpl-99dbb970",
+    "cache_detail": "paged+tq-native",
+    "cached_tokens": 3752,
+    "blocks": 59,
+    "selection": {
+      "paged_cached_tokens": 3752,
+      "paged_cold_tokens": 0,
+      "warm_cached_tokens": 0,
+      "hot_advantage_tokens": 3752,
+      "hot_advantage_threshold_tokens": 64,
+      "selected": "paged",
+      "rejected": null,
+      "reason": "no_warm_prefix_alternative"
+    },
+    "reconstructed": true,
+    "dequantized": false,
+    "reconstruction_seconds": 1.268973,
+    "dequantization_seconds": 0.0,
+    "total_worker_cache_seconds": 1.269829,
+    "reconstruction_ok": true,
+    "tq_native_blocks": 3658,
+    "tq_rewrapped": true,
+    "tq_rewrap_seconds": 0.000388
+  },
+  "exact": true,
+  "warm_faster": true,
+  "ttft_speedup": 3.151
+}

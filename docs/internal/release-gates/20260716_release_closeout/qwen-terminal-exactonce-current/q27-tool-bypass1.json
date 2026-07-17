@@ -1,0 +1,141 @@
+{
+  "tag": "Q27-TOOL-BYPASS1",
+  "expected_after_tool": "Q27-TOOL-BYPASS1-AFTER-TOOL",
+  "skip_prefix_cache": true,
+  "curl_returncode": 0,
+  "stderr": "",
+  "function_call_done_count": 1,
+  "function_calls": [
+    {
+      "id": "fc_ca14c2dbf98f",
+      "type": "function_call",
+      "status": "completed",
+      "call_id": "call_c6bcdf33",
+      "name": "file_info",
+      "arguments": "{\"path\": \"panel/package.json\"}"
+    }
+  ],
+  "relevant_events": [
+    {
+      "at": 0.0088,
+      "type": "response.output_item.added",
+      "item": {
+        "id": "item_3bffde5135d4",
+        "type": "message",
+        "status": "in_progress",
+        "role": "assistant",
+        "content": []
+      },
+      "output_index": 0,
+      "delta": null,
+      "arguments": null,
+      "name": null,
+      "call_id": null,
+      "response_status": null
+    },
+    {
+      "at": 10.377,
+      "type": "response.output_item.done",
+      "item": {
+        "id": "item_3bffde5135d4",
+        "type": "message",
+        "status": "completed",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "output_text",
+            "text": "",
+            "annotations": []
+          }
+        ]
+      },
+      "output_index": 0,
+      "delta": null,
+      "arguments": null,
+      "name": null,
+      "call_id": null,
+      "response_status": null
+    },
+    {
+      "at": 10.3772,
+      "type": "response.output_item.added",
+      "item": {
+        "id": "fc_ca14c2dbf98f",
+        "type": "function_call",
+        "status": "in_progress",
+        "call_id": "call_c6bcdf33",
+        "name": "file_info",
+        "arguments": ""
+      },
+      "output_index": 1,
+      "delta": null,
+      "arguments": null,
+      "name": null,
+      "call_id": null,
+      "response_status": null
+    },
+    {
+      "at": 10.3773,
+      "type": "response.function_call_arguments.delta",
+      "item": null,
+      "output_index": 1,
+      "delta": "{\"path\": \"panel/",
+      "arguments": null,
+      "name": null,
+      "call_id": null,
+      "response_status": null
+    },
+    {
+      "at": 10.3774,
+      "type": "response.function_call_arguments.delta",
+      "item": null,
+      "output_index": 1,
+      "delta": "package.json\"}",
+      "arguments": null,
+      "name": null,
+      "call_id": null,
+      "response_status": null
+    },
+    {
+      "at": 10.3775,
+      "type": "response.function_call_arguments.done",
+      "item": null,
+      "output_index": 1,
+      "delta": null,
+      "arguments": "{\"path\": \"panel/package.json\"}",
+      "name": null,
+      "call_id": null,
+      "response_status": null
+    },
+    {
+      "at": 10.3778,
+      "type": "response.output_item.done",
+      "item": {
+        "id": "fc_ca14c2dbf98f",
+        "type": "function_call",
+        "status": "completed",
+        "call_id": "call_c6bcdf33",
+        "name": "file_info",
+        "arguments": "{\"path\": \"panel/package.json\"}"
+      },
+      "output_index": 1,
+      "delta": null,
+      "arguments": null,
+      "name": null,
+      "call_id": null,
+      "response_status": null
+    },
+    {
+      "at": 10.3778,
+      "type": "response.completed",
+      "item": null,
+      "output_index": null,
+      "delta": null,
+      "arguments": null,
+      "name": null,
+      "call_id": null,
+      "response_status": "completed"
+    }
+  ],
+  "exactly_one_call": true
+}

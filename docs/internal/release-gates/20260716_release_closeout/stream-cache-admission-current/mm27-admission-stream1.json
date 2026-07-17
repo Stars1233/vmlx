@@ -1,0 +1,174 @@
+{
+  "model": "jangq-ai/MiniMax-M2.7-Small-JANGTQ",
+  "port": 8014,
+  "tag": "MM27-ADMISSION-STREAM1",
+  "chat_turn_1": {
+    "reasoning_delta_count": 103,
+    "content_delta_count": 14,
+    "first_reasoning_at": 0.795,
+    "first_content_at": 3.408,
+    "last_content_at": 3.738,
+    "content_times": [
+      3.408,
+      3.434,
+      3.459,
+      3.484,
+      3.509,
+      3.535,
+      3.56,
+      3.585,
+      3.61,
+      3.636,
+      3.661,
+      3.687,
+      3.712,
+      3.738
+    ],
+    "content_deltas": [
+      "\n\n",
+      "MM",
+      "27",
+      "-AD",
+      "MISSION",
+      "-ST",
+      "REAM",
+      "1",
+      "-CH",
+      "AT",
+      "-T",
+      "1",
+      "-",
+      "OK"
+    ],
+    "content": "\n\nMM27-ADMISSION-STREAM1-CHAT-T1-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 80,
+      "completion_tokens": 119,
+      "total_tokens": 199
+    }
+  },
+  "chat_turn_1_pass": true,
+  "chat_turn_2": {
+    "reasoning_delta_count": 86,
+    "content_delta_count": 23,
+    "first_reasoning_at": 1.245,
+    "first_content_at": 3.464,
+    "last_content_at": 4.022,
+    "content_times": [
+      3.464,
+      3.489,
+      3.514,
+      3.54,
+      3.565,
+      3.591,
+      3.616,
+      3.641,
+      3.667,
+      3.691,
+      3.717,
+      3.742,
+      3.768,
+      3.794,
+      3.819,
+      3.844,
+      3.87,
+      3.896,
+      3.921,
+      3.946,
+      3.971,
+      3.996,
+      4.022
+    ],
+    "content_deltas": [
+      "\n\n",
+      "MM",
+      "27",
+      "-AD",
+      "MISSION",
+      "-ST",
+      "REAM",
+      "1",
+      "-CH",
+      "AT",
+      "-T",
+      "2",
+      "-M",
+      "EM",
+      "-MM",
+      "27",
+      "-AD",
+      "MISSION",
+      "-ST",
+      "REAM",
+      "1",
+      "-",
+      "OK"
+    ],
+    "content": "\n\nMM27-ADMISSION-STREAM1-CHAT-T2-MEM-MM27-ADMISSION-STREAM1-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 150,
+      "completion_tokens": 111,
+      "total_tokens": 261,
+      "prompt_tokens_details": {
+        "cached_tokens": 74,
+        "cache_detail": "paged+tq-native"
+      }
+    }
+  },
+  "chat_turn_2_pass": true,
+  "responses": {
+    "reasoning_delta_count": 115,
+    "content_delta_count": 12,
+    "first_reasoning_at": 0.804,
+    "first_content_at": 4.025,
+    "last_content_at": 4.304,
+    "content_times": [
+      4.025,
+      4.05,
+      4.076,
+      4.101,
+      4.127,
+      4.152,
+      4.177,
+      4.203,
+      4.228,
+      4.254,
+      4.279,
+      4.304
+    ],
+    "content_deltas": [
+      "\n\n",
+      "MM",
+      "27",
+      "-AD",
+      "MISSION",
+      "-ST",
+      "REAM",
+      "1",
+      "-R",
+      "ESP",
+      "-",
+      "OK"
+    ],
+    "content": "\n\nMM27-ADMISSION-STREAM1-RESP-OK",
+    "done_texts": [
+      "\n\nMM27-ADMISSION-STREAM1-RESP-OK"
+    ],
+    "terminals": [
+      "response.completed"
+    ],
+    "usage": {
+      "input_tokens": 66,
+      "output_tokens": 129,
+      "total_tokens": 195
+    }
+  },
+  "responses_pass": true,
+  "all_pass": true
+}

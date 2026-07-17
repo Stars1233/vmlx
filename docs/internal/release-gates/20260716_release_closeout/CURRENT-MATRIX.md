@@ -10,8 +10,8 @@ superseded conclusions are called out here.
 
 ## Release truth
 
-- Working branch: `reconcile/1.5.68`; current scoped code head `d9cef0b0c` and
-  prior matrix/evidence head `94757e38c`;
+- Working branch: `reconcile/1.5.68`; current scoped code head `9618e2e46` and
+  prior matrix/evidence head `d53efb1a9`;
   typed-settings,
   non-MTP architecture-hint, paged resident-accounting, typed hybrid-companion
   ownership, and v8 cache-namespace repairs plus their focused tests are pushed
@@ -46,7 +46,9 @@ superseded conclusions are called out here.
 | Settings parity | PARTIAL | Cache defaults, Auto/None, typed-setting restart, selective-TQ Cache/Perf labeling, explicit Tool Parser None, explicit per-chat Min-P zero, gateway LAN/port persistence, and single-model swap now have scoped source-plus-live proof. Commit `d49f500a3` preserves slider zero in SQLite and both wire builders; clean current-source Electron PID 8935 displayed Min P `0.00`, DB stored `min_p=0.0`, and live `[CHAT_DIAG]` serialized `"min_p":0`. Commit `4e13b19a7` keeps parser None literal. Current-source Electron PID 9909 also exercised gateway conflict rollback, LAN rebind/restore, and the session-manager single-model swap below. | Complete remaining UI/DB/preview/argv/health rows across model-derived defaults and cache controls; retain parser None, Min-P zero, gateway rollback, and single-model swap as regression rows |
 | API/protocol parity | PARTIAL | Responses now emits the standards-matching `response.incomplete` terminal event for length-capped streams, and the Electron client consumes completed/incomplete final text, usage, warnings, and status symmetrically (`a36a5ea66`). Current Bonsai gateway controls streamed across all four requested surfaces: Chat Completions returned exact `OAI-GW1-DONE`; Responses emitted 151 reasoning, seven content deltas, matching done text, and `response.completed` (with two leading visible newlines retained as a strict-format miss); Anthropic emitted thinking plus exact `ANT-GW1-DONE` and one `message_stop`; Ollama's current-source `think:true` row emitted 193 reasoning deltas once, exact `OLL-GW4-DONE`, and a single empty-message terminal with usage. A controlled Responses `tool_choice:none` result continuation completed once but repeated native tool markup to the cap on another run, so tool-result synthesis remains variable. | Non-stream equivalents, stable auto tool/result continuation through each protocol, disconnect/stop/follow-up, and strict Responses formatting |
 | Gateway lifecycle | PASS-LIVE lifecycle+basic streams / PARTIAL agent protocols | Commit `e76cc5451` makes restart transactional: a rejected port change restores the prior listener and rethrows the original error. Through the current Electron API page, changing running gateway `127.0.0.1:8081` to DSV4's occupied `8012` first reproduced the old stopped-listener bug, then the fixed build rejected the conflict while health and SQLite remained running on 8081. LAN UI enable rebound to `0.0.0.0:8081`, displayed routable `192.168.1.110`, served `/health` over that LAN address, and rebound to localhost when disabled. With Single model mode enabled, the visible Bonsai Start control stopped DSV4 PID 10013 and launched Bonsai PID 10495; UI, SQLite, process listing, gateway discovery, and `[SESSIONS]` lifecycle log all showed exactly one running engine. Commit `a0aa81a94` waits for usage and `[DONE]` before emitting Ollama's empty-message terminal, preventing cumulative thinking duplication and premature loss of `eval_count`; current Electron PID 12046 / Bonsai PID 12114 proved the live stream above. | Agentic tool/result continuation per protocol, disconnect/error recovery, and repeated unload/reload swap soak |
-| Full tests/build | OPEN | Current hybrid ownership/cache changes: 784/784 Python hybrid/cache/scheduler tests, 278/278 panel settings tests, and panel typecheck pass. The fetched-block ref-ownership repair adds 90/90 focused paged/TQ/hybrid tests. Parser/Responses terminal coverage passed 135/135 Python, 50/50 panel, and panel typecheck. Typed DSV4 disk-tier telemetry passed 76/76 DSV4/paged-byte-budget tests, three focused scheduler assertions, 43/43 relevant panel tests, and panel typecheck. Explicit Min-P zero passed 213/213 affected panel tests plus typecheck. Gateway transactional restart and Ollama terminal behavior passed 76/76 focused panel tests plus typecheck. Shared terminal-dispatch ordering passed 4/4 behavioral contracts and 50/50 affected tests; the wider cache/batching slice passed 260/261 with one retained unrelated source-string assertion. Cross-model tool inheritance passed 299/299 affected panel tests plus typecheck. | Focused suites after each fix, full Python/panel suite, bundled-Python gate, clean release build |
+| Full tests/build | OPEN | Current hybrid ownership/cache changes: 784/784 Python hybrid/cache/scheduler tests, 278/278 panel settings tests, and panel typecheck pass. The fetched-block ref-ownership repair adds 90/90 focused paged/TQ/hybrid tests. Parser/Responses terminal coverage passed 135/135 Python, 50/50 panel, and panel typecheck. Typed DSV4 disk-tier telemetry passed 76/76 DSV4/paged-byte-budget tests, three focused scheduler assertions, 43/43 relevant panel tests, and panel typecheck. Explicit Min-P zero passed 213/213 affected panel tests plus typecheck. Gateway transactional restart and Ollama terminal behavior passed 76/76 focused panel tests plus typecheck. Shared terminal-dispatch ordering passed 4/4 behavioral contracts and 50/50 affected tests; the wider cache/batching slice passed 260/261 with one retained unrelated source-string assertion. Cross-model tool inheritance passed 299/299 affected panel tests plus typecheck. Current pushed head `9618e2e46` passes 131/131 selected terminal-dispatch, answer-pass-streaming, and server tests (three intentional deselections). | Focused suites after each fix, full Python/panel suite, bundled-Python gate, clean release build |
+| Eager session materialization | OPEN | Some architecture routes, including the reported DSV4 case, can show a started session before first-message execution has actually materialized model weights into RAM. No current live before/after resident-memory proof exists. | Trace session-start/load ownership, then prove through Electron that starting the session completes materialization before a prompt while retaining truthful progress/failure UI |
+| Responsive Electron chrome | OPEN | The user reports top navigation/icons/text can compress or overlap at narrow window sizes. No current-source visual width matrix has been captured. | Resize the real Electron window through bounded widths, fix layout ownership, and retain before/after screenshots without hiding controls |
 | Packaging/public release | BLOCKED | Public truth remains 1.6.10 | Build Sequoia/Tahoe, sign, notarize, staple, Gatekeeper verify, install-smoke, publish GitHub/PyPI/feed |
 
 ### Shared terminal dispatch before cache persistence — current source
@@ -82,6 +84,62 @@ superseded conclusions are called out here.
   unrelated source-string assertion
   `test_streaming_tool_detection_requires_request_tools` failing. Evidence:
   `qwen27-mtp-stream-cache-current/`.
+
+### Terminal persistence admission and externally final stream contracts — current source
+
+- Commit `016d661ca` closes the race left after terminal output was deliberately
+  dispatched before slow paged/TQ/typed-companion persistence. Both async
+  schedulers now clear a terminal-cleanup event before dispatch, reopen it in a
+  `finally` after cache persistence, and wait on that event before admitting a
+  new request. Source trace: `vmlx_engine/engine_core.py:100-104,189-195,292-305,472-475`
+  and `vmlx_engine/mllm_scheduler.py:882-886,4026-4053,4074-4079,4180-4184`.
+  This preserves progressive terminal emission without allowing an immediate
+  identical request to select a partially persisted prefix.
+- MiniMax M2.7 live control: an identical 3,756-token request moved from cold
+  first content at 23.6206s to a full 3,752-token resident
+  `paged+tq-native` hit at 7.4957s. After Electron process restart without
+  clearing L2, the full 3,752-token prefix restored as
+  `paged+disk+tq-native` at 1.4364s. Logs show the full store completed before
+  the next prefix selection. Raw Chat/Responses and the Electron tool row all
+  completed with progressive reasoning/content; Electron executed one
+  `file_info(vmlx_engine/scheduler.py)` and exact-finaled. Two leading newlines
+  in raw strict-format controls remain retained as `PARTIAL`.
+- Qwen 3.6 27B MTP live control: an identical 4,623-token request moved from
+  cold first content at 14.8964s to a full 4,622-token resident `paged+ssm`
+  hit at 1.0513s (14.17x). Process restart restored all 4,622 tokens as
+  `paged+ssm+disk` at 0.9008s. Health records 292 q4 native-TQ hits, 73 block
+  disk hits, one native SSM companion disk hit, and zero unsafe
+  KV-without-companion reuse.
+- The first current Qwen raw stream exposed a second shared defect: Chat sent
+  public finish reasons `["length", "stop"]` because the internal
+  reasoning-only first pass leaked its `length` terminal before the bounded
+  visible-answer continuation. Commit `9618e2e46` adds the state-based
+  `server.py::_main_pass_finish_reason` in the shared Chat path. The matched
+  post-fix stream emitted only `stop` on both Chat turns, with 79/7 and 79/12
+  reasoning/content deltas, while Responses emitted 74/7 and one completed
+  terminal.
+- The first post-terminal-fix Electron Qwen exact-once row is deliberately
+  retained as a failure: it executed two identical
+  `file_info(panel/package.json)` calls. Cache-on and `skip_prefix_cache=true`
+  raw A/B controls each generated one call, isolating the defect from TQ/SSM
+  prefix restore. Source trace showed the Qwen exact-once stream-stop parser
+  reused an eight-chunk generic grace window, allowing a second call before
+  natural EOS. Commit `9618e2e46` scopes zero grace to explicit Qwen
+  exact-once requests and preserves the completed truncated candidate for both
+  Chat and Responses final parsing; ordinary Qwen multi-call behavior retains
+  the generic grace window.
+- After restart on the pushed head, Electron emitted 279 reasoning and ten
+  progressive content updates, executed exactly one
+  `file_info(panel/package.json)`, persisted one matching OpenAI call/result,
+  and returned exact `Q27-EXACTONCE-ELECTRON2-DONE`. The row restored 128
+  `paged+ssm+disk` tokens. This is a scoped exact-once PASS, not a blanket
+  parser-family pass.
+- Current validation at pushed head: 131/131 selected
+  `test_terminal_dispatch_before_cache_cleanup.py`,
+  `test_answer_pass_streaming.py`, and `test_server.py` tests pass, with three
+  intentional deselections. Evidence, including pre-fix failures and post-fix
+  Electron screenshots: `stream-cache-admission-current/` and
+  `qwen-terminal-exactonce-current/`.
 
 ### Bonsai post-dispatch q8 hybrid regression — current source
 

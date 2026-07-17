@@ -1,0 +1,128 @@
+{
+  "model": "dealignai/Qwen3.6-27B-MXFP8-CRACK-MTP",
+  "port": 8032,
+  "tag": "Q27-TERMINAL1",
+  "chat_turn_1": {
+    "reasoning_delta_count": 79,
+    "content_delta_count": 7,
+    "first_reasoning_at": 0.565,
+    "first_content_at": 8.316,
+    "last_content_at": 9.003,
+    "content_times": [
+      8.316,
+      8.317,
+      8.466,
+      8.564,
+      8.733,
+      8.891,
+      9.003
+    ],
+    "content_deltas": [
+      "Q",
+      "2",
+      "7-",
+      "TERMINAL1",
+      "-CHAT-T",
+      "1-",
+      "OK"
+    ],
+    "content": "Q27-TERMINAL1-CHAT-T1-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 49,
+      "completion_tokens": 143,
+      "total_tokens": 192
+    }
+  },
+  "chat_turn_1_pass": true,
+  "chat_turn_2": {
+    "reasoning_delta_count": 79,
+    "content_delta_count": 12,
+    "first_reasoning_at": 0.557,
+    "first_content_at": 8.777,
+    "last_content_at": 10.385,
+    "content_times": [
+      8.777,
+      8.777,
+      8.929,
+      9.03,
+      9.207,
+      9.372,
+      9.536,
+      9.693,
+      9.857,
+      10.034,
+      10.193,
+      10.385
+    ],
+    "content_deltas": [
+      "Q",
+      "2",
+      "7-",
+      "TERMINAL1",
+      "-CHAT-T",
+      "2-M",
+      "EM-Q",
+      "2",
+      "7-",
+      "TERMINAL",
+      "1",
+      "-OK"
+    ],
+    "content": "Q27-TERMINAL1-CHAT-T2-MEM-Q27-TERMINAL1-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 123,
+      "completion_tokens": 153,
+      "total_tokens": 276,
+      "prompt_tokens_details": {
+        "cached_tokens": 48,
+        "cache_detail": "paged+ssm"
+      }
+    }
+  },
+  "chat_turn_2_pass": true,
+  "responses": {
+    "reasoning_delta_count": 74,
+    "content_delta_count": 7,
+    "first_reasoning_at": 0.391,
+    "first_content_at": 7.584,
+    "last_content_at": 8.373,
+    "content_times": [
+      7.584,
+      7.584,
+      7.737,
+      7.917,
+      8.085,
+      8.253,
+      8.373
+    ],
+    "content_deltas": [
+      "Q",
+      "2",
+      "7-",
+      "TERMINAL",
+      "1-",
+      "RESP-",
+      "OK"
+    ],
+    "content": "Q27-TERMINAL1-RESP-OK",
+    "done_texts": [
+      "Q27-TERMINAL1-RESP-OK"
+    ],
+    "terminals": [
+      "response.completed"
+    ],
+    "usage": {
+      "input_tokens": 34,
+      "output_tokens": 141,
+      "total_tokens": 175
+    }
+  },
+  "responses_pass": true,
+  "all_pass": true
+}

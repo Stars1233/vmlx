@@ -1,0 +1,75 @@
+{
+  "tag": "Q27-ADMISSION1",
+  "expected": "Q27-ADMISSION1-PREFIX-OK",
+  "cold": {
+    "first_content_seconds": 14.8964,
+    "last_content_seconds": 16.2814,
+    "content_delta_count": 8,
+    "content_times": [
+      14.8964,
+      14.8965,
+      15.0942,
+      15.3035,
+      15.5492,
+      15.7866,
+      16.0701,
+      16.2814
+    ],
+    "content": "Q27-ADMISSION1-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 4623,
+      "completion_tokens": 12,
+      "total_tokens": 4635
+    }
+  },
+  "cold_cache_execution": {},
+  "warm": {
+    "first_content_seconds": 1.0513,
+    "last_content_seconds": 1.9507,
+    "content_delta_count": 8,
+    "content_times": [
+      1.0513,
+      1.0514,
+      1.201,
+      1.3574,
+      1.5187,
+      1.6741,
+      1.8352,
+      1.9507
+    ],
+    "content": "Q27-ADMISSION1-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 4623,
+      "completion_tokens": 12,
+      "total_tokens": 4635,
+      "prompt_tokens_details": {
+        "cached_tokens": 4622,
+        "cache_detail": "paged+ssm"
+      }
+    }
+  },
+  "warm_cache_execution": {
+    "request_id": "chatcmpl-020a2400",
+    "cache_detail": "paged+ssm",
+    "cached_tokens": 4622,
+    "blocks": 0,
+    "selection": "paged",
+    "disk_hit": false,
+    "reconstructed": true,
+    "dequantized": true,
+    "reconstruction_seconds": 0.509402,
+    "dequantization_seconds": 1.2e-05,
+    "total_worker_cache_seconds": 0.509692,
+    "reconstruction_ok": true,
+    "dequantization_ok": true
+  },
+  "exact": true,
+  "warm_faster": true,
+  "ttft_speedup": 14.17
+}
