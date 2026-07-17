@@ -10,13 +10,13 @@ superseded conclusions are called out here.
 
 ## Release truth
 
-- Working branch: `reconcile/1.5.68`; current scoped code head `3fe331b8e`;
+- Working branch: `reconcile/1.5.68`; current scoped code head `f16c51d18`;
   typed-settings,
   non-MTP architecture-hint, paged resident-accounting, typed hybrid-companion
   ownership, and v8 cache-namespace repairs plus their focused tests are pushed
   to the closeout branch described below.
 - Push target: `origin/codex/live-electron-gates-20260715`.
-- At scoped code head `3fe331b8e`, the branch is 101 commits ahead of
+- At scoped code head `f16c51d18`, the branch is 104 commits ahead of
   `origin/main` and zero behind. Matrix-only commits may follow that code head.
 - Source versions are `1.6.11` in `pyproject.toml`,
   `vmlx_engine/__init__.py`, and `panel/package.json`.
@@ -216,12 +216,27 @@ superseded conclusions are called out here.
   This is a streaming pass but a reasoning/performance partial: raw turn 1 took
   48.1s and the Electron tool loop 41.4s. Evidence under
   `laguna-stream-cache/`.
-- Verdict: source contract and live Step, Bonsai, Nemotron, and Laguna Chat,
+- Commit `f16c51d18` removes the last DSV4 family-name full-pass buffer. The
+  shared dynamic state already withholds DSV4's known `<thinking>...` variant,
+  split over arbitrary chunks, and hides a terminal unclosed rail. At
+  `max_tokens=64`, the live DSV4 history probe exhausted reasoning on both Chat
+  turns yet streamed 13 and 24 answer deltas; the second fallback consumed the
+  first fallback through history, recalled the codeword exactly, and did not
+  leak `<thinking>` or `+DERIV`. Responses streamed 12 answer deltas and exact
+  completion. Turn 1 abbreviated `CHAT` to `CH`, so strict-format quality is
+  still partial even though the stream contract passed.
+- DSV4 Electron tool behavior remains variable and is recorded, not hidden.
+  `DSV4-ELECTRON-DYN1` emitted an incomplete DSML suffix; the parser hid it and
+  surfaced a schema-validity warning with zero fake tool executions. The
+  immediate fresh-chat `DYN2` restored 1,372 `paged+dsv4` tokens, executed one
+  real `file_info`, emitted 11 timed content updates, and exact-finaled. Evidence:
+  `dsv4-dynamic-streaming/`.
+- Verdict: source contract and live Step, Bonsai, Nemotron, Laguna, and DSV4 Chat,
   Responses, Electron, multi-turn, and one-tool loops are `PASS-LIVE` for
   progressive emission. Cross-family release status remains `PARTIAL` because
-  DSV4 retains an intentional full-pass re-entry guard pending its dedicated
-  live matrix, Laguna reasoning latency is excessive, and displayed TPS still
-  blends reasoning with any bounded answer-pass phase.
+  DSV4 produced one malformed native tool turn and one strict-format miss,
+  Laguna reasoning latency is excessive, and displayed TPS still blends
+  reasoning with any bounded answer-pass phase.
 
 ### Responses terminal-event correctness — current source
 

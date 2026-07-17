@@ -1,0 +1,91 @@
+{
+  "chatId": "d0861188-0378-4056-9ad3-7a9047acb3eb",
+  "messageId": "c2651686-9e91-435a-8975-28ba574d313c",
+  "finalContent": "DSV4-ELECTRON-DYN2-DONE",
+  "expected": "DSV4-ELECTRON-DYN2-DONE",
+  "reasoningEvents": 2,
+  "contentEvents": 11,
+  "reasoningLengths": [
+    9,
+    11
+  ],
+  "contentLengths": [
+    2,
+    3,
+    4,
+    5,
+    10,
+    13,
+    15,
+    17,
+    18,
+    20,
+    23
+  ],
+  "reasoningTimesMs": [
+    1087,
+    1190
+  ],
+  "contentTimesMs": [
+    5909,
+    6019,
+    6067,
+    6115,
+    6158,
+    6221,
+    6269,
+    6317,
+    6359,
+    6420,
+    6467
+  ],
+  "toolEvents": [
+    {
+      "phase": "generating",
+      "toolName": "",
+      "iteration": 0
+    },
+    {
+      "phase": "calling",
+      "toolName": "file_info",
+      "iteration": 0,
+      "toolCallId": "call_e314d6d0"
+    },
+    {
+      "phase": "executing",
+      "toolName": "file_info",
+      "iteration": 1,
+      "toolCallId": "call_e314d6d0"
+    },
+    {
+      "phase": "result",
+      "toolName": "file_info",
+      "iteration": 1,
+      "toolCallId": "call_e314d6d0"
+    },
+    {
+      "phase": "processing",
+      "toolName": "",
+      "iteration": 1
+    },
+    {
+      "phase": "done",
+      "toolName": "",
+      "iteration": 1
+    }
+  ],
+  "finishReason": "stop",
+  "metrics": {
+    "tokenCount": 61,
+    "promptTokens": 971,
+    "cachedTokens": 1372,
+    "cacheDetail": "paged+dsv4",
+    "tokensPerSecond": "20.1",
+    "ppSpeed": "392.0",
+    "ttft": "2.48",
+    "totalTime": "6.6"
+  },
+  "requiredToolCallCount": 1,
+  "requiredToolErrorCount": 0,
+  "pass": true
+}
