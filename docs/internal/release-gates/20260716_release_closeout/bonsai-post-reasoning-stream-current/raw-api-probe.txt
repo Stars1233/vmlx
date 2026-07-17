@@ -1,0 +1,16 @@
+Raw /v1/responses timing summary, live Bonsai 1-bit engine
+
+0.640s reasoning#1
+2.503s reasoning#100
+4.422s reasoning#200
+6.305s reasoning#300
+8.203s reasoning#400
+8.355s content#1 '\n\n'
+9.244s content#46 'ONE'
+9.272s response.completed
+
+reasoning_deltas=406
+content_deltas=46
+
+Verdict: the server/API emitted timed content deltas; the pre-fix terminal
+paint was owned by the Electron main/renderer scheduling boundary.
