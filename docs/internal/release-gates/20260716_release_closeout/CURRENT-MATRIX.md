@@ -10,13 +10,13 @@ superseded conclusions are called out here.
 
 ## Release truth
 
-- Working branch: `reconcile/1.5.68`; current scoped code head `e76cc5451`;
+- Working branch: `reconcile/1.5.68`; current scoped code head `a0aa81a94`;
   typed-settings,
   non-MTP architecture-hint, paged resident-accounting, typed hybrid-companion
   ownership, and v8 cache-namespace repairs plus their focused tests are pushed
   to the closeout branch described below.
 - Push target: `origin/codex/live-electron-gates-20260715`.
-- At scoped code head `e76cc5451`, the branch is 76 commits ahead of
+- At scoped code head `a0aa81a94`, the branch is 78 commits ahead of
   `origin/main` and zero behind. Matrix-only commits may follow that code head.
 - Source versions are `1.6.11` in `pyproject.toml`,
   `vmlx_engine/__init__.py`, and `panel/package.json`.
@@ -42,9 +42,9 @@ superseded conclusions are called out here.
 | openPangu | PASS-LIVE scoped / PARTIAL long-context+protocol | Source policy `_apply_openpangu_cache_policy` forces paged/block/TQ off and preserves typed MLA KV, DSA indexer, rotating-SWA metadata, causal-conv state, 128 sinks, and mHC runtime. Electron-loaded 3M PID 86212/86842/87268 launched with `--no-paged-cache --enable-disk-cache`, no KV quantization, and no block L2; Bonsai was unloaded by the single-model swap. Rows 2310/2313 prove same-chat exact one-tool finals; row 2313 hit 152 memory tokens. PID 87268 exact first-turn replay row 2322 restored 152 tokens from prompt Disk L2 (`cacheDetail=disk`, TTFT 0.18s), executed one real tool, and returned exact final. Health reports `native_path_dependent_composite`, schema `openpangu_v2_composite_v2`, `generic_turboquant_kv.enabled=false`, paged false, prompt disk L2 true | 512K/long-context soak, full protocol matrix, and broader openPangu bit-variant coverage; MTP remains detection-only/unwired for this family |
 | Cross-model post-tool | PARTIAL | Many named families pass exact one-tool/final rows | MiMo and every remaining configured parser family need current Electron rows |
 | Settings parity | PARTIAL | Cache defaults, Auto/None, typed-setting restart, selective-TQ Cache/Perf labeling, explicit Tool Parser None, explicit per-chat Min-P zero, gateway LAN/port persistence, and single-model swap now have scoped source-plus-live proof. Commit `d49f500a3` preserves slider zero in SQLite and both wire builders; clean current-source Electron PID 8935 displayed Min P `0.00`, DB stored `min_p=0.0`, and live `[CHAT_DIAG]` serialized `"min_p":0`. Commit `4e13b19a7` keeps parser None literal. Current-source Electron PID 9909 also exercised gateway conflict rollback, LAN rebind/restore, and the session-manager single-model swap below. | Complete remaining UI/DB/preview/argv/health rows across model-derived defaults and cache controls; retain parser None, Min-P zero, gateway rollback, and single-model swap as regression rows |
-| API/protocol parity | PARTIAL | Responses now emits the standards-matching `response.incomplete` terminal event for length-capped streams, and the Electron client consumes completed/incomplete final text, usage, warnings, and status symmetrically (`a36a5ea66`). Direct Bonsai Responses streamed reasoning and split function arguments; a controlled `tool_choice:none` result continuation completed once but repeated native tool markup to the cap on another run, so tool-result synthesis remains variable. | Streaming + non-stream Chat, Responses, Anthropic, Ollama; stable auto tool/result continuation; disconnect/stop/follow-up |
-| Gateway lifecycle | PASS-LIVE lifecycle / PARTIAL protocols | Commit `e76cc5451` makes restart transactional: a rejected port change restores the prior listener and rethrows the original error. Through the current Electron API page, changing running gateway `127.0.0.1:8081` to DSV4's occupied `8012` first reproduced the old stopped-listener bug, then the fixed build rejected the conflict while health and SQLite remained running on 8081. LAN UI enable rebound to `0.0.0.0:8081`, displayed routable `192.168.1.110`, served `/health` over that LAN address, and rebound to localhost when disabled. With Single model mode enabled, the visible Bonsai Start control stopped DSV4 PID 10013 and launched Bonsai PID 10495; UI, SQLite, process listing, gateway discovery, and `[SESSIONS]` lifecycle log all showed exactly one running engine. | Cross-protocol streaming through gateway, disconnect/error recovery, and repeated unload/reload swap soak |
-| Full tests/build | OPEN | Current hybrid ownership/cache changes: 784/784 Python hybrid/cache/scheduler tests, 278/278 panel settings tests, and panel typecheck pass. The fetched-block ref-ownership repair adds 90/90 focused paged/TQ/hybrid tests. Parser/Responses terminal coverage passed 135/135 Python, 50/50 panel, and panel typecheck. Typed DSV4 disk-tier telemetry passed 76/76 DSV4/paged-byte-budget tests, three focused scheduler assertions, 43/43 relevant panel tests, and panel typecheck. Explicit Min-P zero passed 213/213 affected panel tests plus typecheck. Gateway transactional restart and protocol behavior passed 75/75 focused panel tests plus typecheck. | Focused suites after each fix, full Python/panel suite, bundled-Python gate, clean release build |
+| API/protocol parity | PARTIAL | Responses now emits the standards-matching `response.incomplete` terminal event for length-capped streams, and the Electron client consumes completed/incomplete final text, usage, warnings, and status symmetrically (`a36a5ea66`). Current Bonsai gateway controls streamed across all four requested surfaces: Chat Completions returned exact `OAI-GW1-DONE`; Responses emitted 151 reasoning, seven content deltas, matching done text, and `response.completed` (with two leading visible newlines retained as a strict-format miss); Anthropic emitted thinking plus exact `ANT-GW1-DONE` and one `message_stop`; Ollama's current-source `think:true` row emitted 193 reasoning deltas once, exact `OLL-GW4-DONE`, and a single empty-message terminal with usage. A controlled Responses `tool_choice:none` result continuation completed once but repeated native tool markup to the cap on another run, so tool-result synthesis remains variable. | Non-stream equivalents, stable auto tool/result continuation through each protocol, disconnect/stop/follow-up, and strict Responses formatting |
+| Gateway lifecycle | PASS-LIVE lifecycle+basic streams / PARTIAL agent protocols | Commit `e76cc5451` makes restart transactional: a rejected port change restores the prior listener and rethrows the original error. Through the current Electron API page, changing running gateway `127.0.0.1:8081` to DSV4's occupied `8012` first reproduced the old stopped-listener bug, then the fixed build rejected the conflict while health and SQLite remained running on 8081. LAN UI enable rebound to `0.0.0.0:8081`, displayed routable `192.168.1.110`, served `/health` over that LAN address, and rebound to localhost when disabled. With Single model mode enabled, the visible Bonsai Start control stopped DSV4 PID 10013 and launched Bonsai PID 10495; UI, SQLite, process listing, gateway discovery, and `[SESSIONS]` lifecycle log all showed exactly one running engine. Commit `a0aa81a94` waits for usage and `[DONE]` before emitting Ollama's empty-message terminal, preventing cumulative thinking duplication and premature loss of `eval_count`; current Electron PID 12046 / Bonsai PID 12114 proved the live stream above. | Agentic tool/result continuation per protocol, disconnect/error recovery, and repeated unload/reload swap soak |
+| Full tests/build | OPEN | Current hybrid ownership/cache changes: 784/784 Python hybrid/cache/scheduler tests, 278/278 panel settings tests, and panel typecheck pass. The fetched-block ref-ownership repair adds 90/90 focused paged/TQ/hybrid tests. Parser/Responses terminal coverage passed 135/135 Python, 50/50 panel, and panel typecheck. Typed DSV4 disk-tier telemetry passed 76/76 DSV4/paged-byte-budget tests, three focused scheduler assertions, 43/43 relevant panel tests, and panel typecheck. Explicit Min-P zero passed 213/213 affected panel tests plus typecheck. Gateway transactional restart and Ollama terminal behavior passed 76/76 focused panel tests plus typecheck. | Focused suites after each fix, full Python/panel suite, bundled-Python gate, clean release build |
 | Packaging/public release | BLOCKED | Public truth remains 1.6.10 | Build Sequoia/Tahoe, sign, notarize, staple, Gatekeeper verify, install-smoke, publish GitHub/PyPI/feed |
 
 ### Bonsai multi-turn argument and parser-off recheck — current source
@@ -211,6 +211,26 @@ partial for this Qwen artifact.
 - This row proves listener rollback/rebinding and one-engine session ownership.
   It does not by itself prove cross-protocol streaming or Bonsai output/cache
   correctness; those remain separate rows.
+- Basic gateway streaming controls then used that same UI-proven listener and
+  Bonsai backend. OpenAI Chat Completions streamed 233 events, 857 reasoning
+  characters, exact `OAI-GW1-DONE`, `finish_reason=stop`, and usage. Responses
+  streamed 151 reasoning and seven content deltas, matching output-text done,
+  and one completed terminal; its two leading newlines remain a strict-format
+  miss. Anthropic streamed 793 thinking characters, exact `ANT-GW1-DONE`, and
+  one `message_stop` with no error event.
+- The first Ollama `think:true` run exposed two gateway translation defects:
+  its final object repeated all already-streamed thinking, and it ended at the
+  finish-reason chunk before the later usage event. Commit `a0aa81a94` emits
+  the terminal only at `[DONE]`/backend end, carries the later usage, and leaves
+  the terminal message empty as Ollama's streaming contract requires. Focused
+  gateway tests pass 76/76 plus typecheck. After a clean Electron main-process
+  restart, Bonsai PID 12114 streamed 193 thinking deltas / 728 characters once,
+  exact `OLL-GW4-DONE`, and one empty-message terminal with
+  `eval_count=202`, `prompt_eval_count=18`, and `done_reason=stop`.
+- An earlier Ollama thinking run ended after native reasoning with no visible
+  content, while `think:false`, a direct-backend explicit-thinking control,
+  and the final current-source Ollama run all produced exact markers. That miss
+  is retained under Bonsai reliability; no synthetic continuation was added.
 
 ## Non-negotiable correctness invariants
 
