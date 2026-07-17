@@ -1,0 +1,610 @@
+ 13310	    if _tool_choice is not None:
+ 13311	        chat_kwargs["tool_choice"] = _tool_choice
+ 13312	        _ct_kwargs.setdefault("tool_choice", _tool_choice)
+ 13313	    _suppress_tools = _tool_choice == "none"
+ 13314
+ 13315	    # response_format = json_object / json_schema implies the output IS the
+ 13316	    # structured data — not a tool call. The generic tool-call parser runs
+ 13317	    # on any JSON-ish output and is happy to interpret `{"name":"alice",
+ 13318	    # "age":30}` as a tool call `alice()`. Suppress the tool parser when
+ 13319	    # the client asked for JSON output and didn't pass tools themselves.
+ 13320	    # If both tools AND response_format are present, tool parsing still
+ 13321	    # runs (structured tool-call arguments are allowed).
+ 13322	    if not request.tools and not _suppress_tools:
+ 13323	        _rf = request.response_format
+ 13324	        _rf_type = None
+ 13325	        if isinstance(_rf, dict):
+ 13326	            _rf_type = _rf.get("type")
+ 13327	        elif _rf is not None and hasattr(_rf, "type"):
+ 13328	            _rf_type = getattr(_rf, "type", None)
+ 13329	        if _rf_type in ("json_object", "json_schema"):
+ 13330	            _suppress_tools = True
+ 13331
+ 13332	    # Merge MCP tools with user-provided tools
+ 13333	    all_tools = []
+ 13334
+ 13335	    if not _suppress_tools:
+ 13336	        # Add MCP tools if available
+ 13337	        if _mcp_manager is not None:
+ 13338	            mcp_tools = _mcp_manager.get_all_tools_openai(policy=_mcp_policy)
+ 13339	            mcp_tools = _drop_colliding_mcp_tools(mcp_tools, request.tools)
+ 13340	            mcp_tools = _filter_tools_for_specific_choice(mcp_tools, _tool_choice)
+ 13341	            all_tools.extend(mcp_tools)
+ 13342	            if mcp_tools:
+ 13343	                logger.debug(f"Added {len(mcp_tools)} MCP tools")
+ 13344
+ 13345	        # Add user-provided tools
+ 13346	        if request.tools:
+ 13347	            # If tool_choice is a specific tool dict, filter to only that tool
+ 13348	            if isinstance(_tool_choice, dict):
+ 13349	                target_name = _tool_choice.get("function", {}).get(
+ 13350	                    "name"
+ 13351	                ) or _tool_choice.get("name")
+ 13352	                if target_name:
+ 13353	                    # request.tools are ToolDefinition Pydantic models (type + function dict)
+ 13354	                    filtered = [
+ 13355	                        t
+ 13356	                        for t in request.tools
+ 13357	                        if t.function.get("name") == target_name
+ 13358	                    ]
+ 13359	                    all_tools.extend(filtered if filtered else request.tools)
+ 13360	                else:
+ 13361	                    all_tools.extend(request.tools)
+ 13362	            else:
+ 13363	                all_tools.extend(request.tools)
+ 13364	            logger.debug(f"Added {len(all_tools)} tools (tool_choice={_tool_choice})")
+ 13365
+ 13366	    if not _suppress_tools:
+ 13367	        _suppress_tools = _suppress_tool_parsing_when_no_tools(
+ 13368	            all_tools, _tool_choice, "Chat Completions"
+ 13369	        )
+ 13370	    _attach_effective_tools_for_tool_parsing(request, all_tools)
+ 13371
+ 13372	    # Pass merged tools to engine (normalize all to template format)
+ 13373	    if all_tools:
+ 13374	        chat_kwargs["tools"] = convert_tools_for_template(all_tools)
+ 13375	        chat_kwargs["_vmlx_tools_present"] = True
+ 13376
+ 13377	    # Inject Harmony analysis prefix for GPT-OSS models when thinking is enabled.
+ 13378	    # The suffix replaces the template's generation prompt (<|start|>assistant<|message|>)
+ 13379	    # with the analysis channel prefix to guide the model into reasoning mode.
+ 13380	    if isinstance(_reasoning_parser, GptOssReasoningParser):
+ 13381	        _think_val = chat_kwargs.get("enable_thinking")
+ 13382	        if _think_val is True:
+ 13383	            _analysis_hint = "<|start|>assistant<|channel|>analysis<|message|>"
+ 13384	            chat_kwargs["prompt_suffix"] = _analysis_hint
+ 13385	            # Skip template's generation prompt — suffix provides the full assistant prefix
+ 13386	            chat_kwargs["skip_generation_prompt"] = True
+ 13387	            _effort = chat_kwargs.get("reasoning_effort", "").lower()
+ 13388	            logger.info(
+ 13389	                f"[chat] Injecting Harmony analysis prefix for GPT-OSS model (effort={_effort or 'default'})"
+ 13390	            )
+ 13391	        # GPT-OSS/GLM Flash models sometimes generate <|im_end|> (ChatML format)
+ 13392	        # which is NOT a single token in the Harmony vocabulary — it shatters into
+ 13393	        # sub-tokens and leaks into output. Add it as a string stop sequence.
+ 13394	        _stop = chat_kwargs.get("stop") or []
+ 13395	        if "<|im_end|>" not in _stop:
+ 13396	            _stop = list(_stop) + ["<|im_end|>"]
+ 13397	            chat_kwargs["stop"] = _stop
+ 13398
+ 13399	    if request.stream:
+ 13400	        return StreamingResponse(
+ 13401	            _terminal_finish_guard(stream_chat_completion(
+ 13402	                engine,
+ 13403	                messages,
+ 13404	                request,
+ 13405	                fastapi_request=fastapi_request,
+ 13406	                **chat_kwargs,
+ 13407	            )),
+ 13408	            media_type="text/event-stream",
+ 13409	        )
+ 13410
+ 13411	    # Non-streaming response with timing and timeout
+ 13412	    start_time = time.perf_counter()
+ 13413	    timeout = request.timeout if request.timeout is not None else _default_timeout
+ 13414	    response_id = f"chatcmpl-{uuid.uuid4().hex[:8]}"
+ 13415
+ 13416	    # Cap the thinking (first) pass at max_thinking_tokens for reasoning
+ 13417	    # answer-pass families, mirroring the streaming path (15734-97) which caps
+ 13418	    # the first pass at mtt so the bounded thinking-off answer pass keeps real
+ 13419	    # budget. Without this the non-stream first pass runs reasoning to the full
+ 13420	    # max_tokens (finish=length), leaving only ANSWER_PASS_FLOOR (48) for the
+ 13421	    # answer pass — too small for qwen3.5/3.6 to complete, so the W2-1 scope
+ 13422	    # rejects the truncated salvage and content is empty. Live-proven: qwen3.6
+ 13423	    # mtt=128 non-stream reasoning=2208 content='' vs streaming reasoning=451
+ 13424	    # content=answer. The original cap is preserved so the answer pass below
+ 13425	    # sizes off the full budget, not the capped thinking budget.
+ 13426	    _ns_answer_pass_original_cap = None
+ 13427	    _ns_pre_mtt = getattr(request, "max_thinking_tokens", None)
+ 13428	    if (
+ 13429	        chat_kwargs.get("enable_thinking") is not False
+ 13430	        and getattr(request, "enable_thinking", None) is not False
+ 13431	        and (chat_kwargs.get("chat_template_kwargs") or {}).get("enable_thinking") is not False
+ 13432	        and not bool(getattr(request, "tools", None) or chat_kwargs.get("tools"))
+ 13433	    ):
+ 13434	        try:
+ 13435	            from .model_config_registry import get_model_config_registry as _ns_pre_mcr
+ 13436	            _ns_pre_family = getattr(
+ 13437	                _ns_pre_mcr().lookup(_model_path or _model_name or request.model),
+ 13438	                "family_name", None,
+ 13439	            )
+ 13440	        except Exception:
+ 13441	            _ns_pre_family = None
+ 13442	        if (
+ 13443	            _ns_pre_family in _THINKING_BUDGET_CAP_FAMILIES
+ 13444	            or _ns_pre_family in ("minimax_m3", "minimax_m3_vl")
+ 13445	        ):
+ 14010	            text = _responses_part_text(part)
+ 14011	            if text:
+ 14012	                texts.append(text)
+ 14013	    return texts
+ 14014
+ 14015
+ 14016	def _responses_output_has_reasoning(output_items: list) -> bool:
+ 14017	    for item in output_items or []:
+ 14018	        item_type = _responses_field(item, "type")
+ 14019	        if item_type in _RESPONSES_REASONING_ITEM_TYPES:
+ 14020	            return True
+ 14021	        for part in _responses_field(item, "content", []) or []:
+ 14022	            if _responses_field(part, "type") in _RESPONSES_REASONING_PART_TYPES:
+ 14023	                return True
+ 14024	    return False
+ 14025
+ 14026
+ 14027	def _responses_output_has_visible_or_tool(output_items: list) -> bool:
+ 14028	    for item in output_items or []:
+ 14029	        item_type = _responses_field(item, "type")
+ 14030	        if item_type == "function_call":
+ 14031	            return True
+ 14032	        if item_type in _RESPONSES_VISIBLE_PART_TYPES and _responses_part_text(item):
+ 14033	            return True
+ 14034	        for part in _responses_field(item, "content", []) or []:
+ 14035	            if (
+ 14036	                _responses_field(part, "type") in _RESPONSES_VISIBLE_PART_TYPES
+ 14037	                and _responses_part_text(part)
+ 14038	            ):
+ 14039	                return True
+ 14040	    return False
+ 14041
+ 14042
+ 14043	def _responses_output_is_reasoning_only(output_items: list) -> bool:
+ 14044	    return _responses_output_has_reasoning(
+ 14045	        output_items
+ 14046	    ) and not _responses_output_has_visible_or_tool(output_items)
+ 14047
+ 14048
+ 14049	def _responses_output_to_assistant_messages(output_items: list) -> list[dict]:
+ 14050	    """Convert a Responses output array back to chat-history assistant turns."""
+ 14051	    assistant_messages: list[dict] = []
+ 14052	    content_parts: list[str] = []
+ 14053	    tool_calls: list[dict] = []
+ 14054	    reasoning_parts: list[str] = []
+ 14055
+ 14056	    for item in output_items or []:
+ 14057	        item_type = _responses_field(item, "type")
+ 14058	        if item_type in _RESPONSES_REASONING_ITEM_TYPES:
+ 14059	            reasoning_parts.extend(_responses_reasoning_texts(item))
+ 14060	            continue
+ 14061	        if item_type == "function_call":
+ 14062	            name = _responses_field(item, "name", "")
+ 14063	            arguments = _responses_field(item, "arguments", "{}")
+ 14064	            call_id = _responses_field(item, "call_id") or f"call_{uuid.uuid4().hex[:8]}"
+ 14065	            tool_calls.append(
+ 14066	                {
+ 14067	                    "id": call_id,
+ 14068	                    "type": "function",
+ 14069	                    "function": {"name": name, "arguments": arguments},
+ 14070	                }
+ 14071	            )
+ 14072	            continue
+ 14073	        content = _responses_field(item, "content") or []
+ 14074	        for part in content:
+ 14075	            ptype = _responses_field(part, "type")
+ 14076	            text = _responses_part_text(part)
+ 14077	            if ptype in _RESPONSES_VISIBLE_PART_TYPES and text:
+ 14078	                content_parts.append(text)
+ 14079	            elif ptype in _RESPONSES_REASONING_PART_TYPES:
+ 14080	                if text:
+ 14081	                    reasoning_parts.append(text)
+ 14082	    reasoning_text = "\n".join(reasoning_parts) if reasoning_parts else ""
+ 14083	    if tool_calls:
+ 14084	        # A Responses turn can contain visible assistant text and function_call
+ 14085	        # items. Store them on the same assistant turn so the next
+ 14086	        # function_call_output remains adjacent to assistant.tool_calls for
+ 14087	        # strict native chat templates.
+ 14088	        message = {
+ 14089	            "role": "assistant",
+ 14090	            "content": "\n".join(content_parts) if content_parts else "",
+ 14091	            "tool_calls": tool_calls,
+ 14092	        }
+ 14093	        if reasoning_text:
+ 14094	            message["reasoning_content"] = reasoning_text
+ 14095	        assistant_messages.append(message)
+ 14096	    elif content_parts:
+ 14097	        message = {"role": "assistant", "content": "\n".join(content_parts)}
+ 14098	        if reasoning_text:
+ 14099	            message["reasoning_content"] = reasoning_text
+ 14100	        assistant_messages.append(message)
+ 14101	    elif reasoning_text and not assistant_messages:
+ 14102	        # Reasoning-only output (no visible text, no tool calls): inject an
+ 14103	        # assistant turn so `previous_response_id` chains preserve both the
+ 14104	        # user→assistant→user anchor and the model's actual reasoning rail.
+ 14105	        assistant_messages.append(
+ 14106	            {
+ 14107	                "role": "assistant",
+ 14108	                "content": "",
+ 14109	                "reasoning_content": reasoning_text,
+ 14110	            }
+ 14111	        )
+ 14112	    return assistant_messages
+ 14113
+ 14114
+ 14115	def _responses_store_history(
+ 14116	    response_id: str,
+ 14117	    messages: list[dict],
+ 14118	    *,
+ 14119	    reasoning_only: bool = False,
+ 14120	) -> None:
+ 14121	    """Persist a Responses history slot keyed by response_id.
+ 14122
+ 14123	    Args:
+ 14124	        response_id: identifier returned in `ResponsesObject.id`.
+ 14125	        messages: the chat-history messages to store (input + replayed
+ 14126	            assistant turns from `_responses_output_to_assistant_messages`).
+ 14127	        reasoning_only: True when the response produced ONLY reasoning items
+ 14128	            (no visible text, no tool calls). Tracked in
+ 14129	            `_responses_was_reasoning_only` so chained turns can surface a
+ 14130	            warning to the client.
+ 14131	    """
+ 14132	    if not response_id:
+ 14133	        return
+ 14134	    with _responses_history_lock:
+ 14135	        _responses_history[response_id] = _clone_response_messages(messages)
+ 14136	        _responses_history.move_to_end(response_id)
+ 14137	        if reasoning_only:
+ 14138	            _responses_was_reasoning_only.add(response_id)
+ 14139	        else:
+ 14140	            _responses_was_reasoning_only.discard(response_id)
+ 14141	        # Capacity enforcement — also evict the matching reasoning-only
+ 14142	        # marker so the marker set never references a freed slot (would
+ 14143	        # otherwise give stale-warning false positives if a future
+ 14144	        # response_id collides via uuid prefix).
+ 14145	        while len(_responses_history) > _RESPONSES_HISTORY_MAX:
+ 14146	            evicted_id, _ = _responses_history.popitem(last=False)
+ 14147	            _responses_was_reasoning_only.discard(evicted_id)
+ 14148
+ 14149
+ 14150	def _chain_warnings_for_previous_response_id(
+ 14151	    previous_response_id: str | None,
+ 14152	) -> list[str] | None:
+ 14153	    """Return chain-warnings list when `previous_response_id` references a
+ 14154	    reasoning-only predecessor, else None.
+ 14155
+ 14156	    Used when constructing a new ResponsesObject for a chained turn so the
+ 14157	    client can surface coherence/cache-prefix risk without breaking the API
+ 14158	    contract. Always returns None for missing/unknown ids.
+ 14159	    """
+ 14160	    if not previous_response_id:
+ 14161	        return None
+ 14162	    with _responses_history_lock:
+ 14163	        if previous_response_id not in _responses_history:
+ 14164	            # The normal store path evicts marker+history in lockstep. Keep
+ 14165	            # the read side defensive too, so tests/admin cleanup paths that
+ 14166	            # clear history directly cannot leave a stale warning behind.
+ 14167	            _responses_was_reasoning_only.discard(previous_response_id)
+ 14168	            return None
+ 14169	        if previous_response_id not in _responses_was_reasoning_only:
+ 14170	            return None
+ 14171	    return [
+ 14172	        "previous_response_id chained a response that produced reasoning only "
+ 14173	        "(no visible message, no tool calls). Chat continuity may be impaired "
+ 14174	        "and prefix-cache reuse may be lower than expected. Consider raising "
+ 14175	        "max_output_tokens or sending enable_thinking=false on the prior turn."
+ 14176	    ]
+ 14177
+ 14178
+ 14179	def _current_response_warnings_for_reasoning_only(
+ 14180	    reasoning_only: bool,
+ 14181	) -> list[str] | None:
+ 14182	    if not reasoning_only:
+ 14183	        return None
+ 14184	    return [
+ 14185	        "This response produced reasoning only (no visible message, no tool "
+ 14186	        "calls). The reasoning was preserved separately, but the visible answer "
+ 14187	        "is empty. Consider raising max_output_tokens or sending "
+ 14188	        "enable_thinking=false for the final synthesis turn."
+ 14189	    ]
+ 14190
+ 14191
+ 14192	def _chat_completion_warnings_for_reasoning_only(
+ 14193	    content: str | None,
+ 14194	    reasoning: str | None,
+ 14195	    tool_calls: list | None,
+ 14196	) -> list[str] | None:
+ 14197	    has_visible_content = bool((content or "").strip())
+ 14198	    has_reasoning = bool((reasoning or "").strip())
+ 14199	    has_tool_calls = bool(tool_calls)
+ 14200	    return _current_response_warnings_for_reasoning_only(
+ 14201	        has_reasoning and not has_visible_content and not has_tool_calls
+ 14202	    )
+ 14203
+ 14204
+ 14205	def _merge_responses_warnings(*warning_lists: list[str] | None) -> list[str] | None:
+     1	export interface PersistedAssistantToolHistory {
+     2	  content?: unknown
+     3	  reasoningContent?: unknown
+     4	  reasoningSegmentsJson?: unknown
+     5	  toolCallsJson?: unknown
+     6	  toolCallsOaiJson?: unknown
+     7	  toolResultsOaiJson?: unknown
+     8	}
+     9
+    10	interface OaiToolCall {
+    11	  id: string
+    12	  type: 'function'
+    13	  function: { name: string; arguments: string }
+    14	}
+    15
+    16	interface OaiToolResult {
+    17	  tool_call_id: string
+    18	  content: string
+    19	}
+    20
+    21	function parseArray(value: unknown): any[] {
+    22	  if (typeof value !== 'string' || value.length === 0) return []
+    23	  try {
+    24	    const parsed = JSON.parse(value)
+    25	    return Array.isArray(parsed) ? parsed : []
+    26	  } catch {
+    27	    return []
+    28	  }
+    29	}
+    30
+    31	function validCalls(value: unknown): OaiToolCall[] {
+    32	  return parseArray(value).filter(
+    33	    (call: any) =>
+    34	      call &&
+    35	      typeof call.id === 'string' &&
+    36	      call.id.length > 0 &&
+    37	      call.function &&
+    38	      typeof call.function.name === 'string' &&
+    39	      typeof call.function.arguments === 'string',
+    40	  )
+    41	}
+    42
+    43	function validResults(value: unknown): OaiToolResult[] {
+    44	  return parseArray(value)
+    45	    .filter(
+    46	      (result: any) =>
+    47	        result &&
+    48	        typeof result.tool_call_id === 'string' &&
+    49	        typeof result.content === 'string',
+    50	    )
+    51	    .map((result: any) => ({
+    52	      tool_call_id: result.tool_call_id,
+    53	      content: result.content,
+    54	    }))
+    55	}
+    56
+    57	function persistedReasoningSegments(message: PersistedAssistantToolHistory): string[] {
+    58	  const segments = parseArray(message.reasoningSegmentsJson).map((segment) =>
+    59	    typeof segment === 'string' ? segment : '',
+    60	  )
+    61	  if (segments.length > 0) return segments
+    62	  return typeof message.reasoningContent === 'string' && message.reasoningContent
+    63	    ? [message.reasoningContent]
+    64	    : []
+    65	}
+    66
+    67	function reasoningItem(text: string): any {
+    68	  return {
+    69	    type: 'reasoning',
+    70	    content: [{ type: 'reasoning', text }],
+    71	  }
+    72	}
+    73
+    74	/**
+    75	 * Rebuild one persisted assistant row into model-visible history.
+    76	 *
+    77	 * Tool-loop rows collapse several model generations into one SQLite row.  The
+    78	 * UI already stores the native calls/results, per-generation reasoning
+    79	 * segments, and call iteration numbers.  Re-expand those fields in their real
+    80	 * order so Responses and Chat Completions templates see:
+    81	 * reasoning -> call -> result -> reasoning -> answer.
+    82	 */
+    83	export function replayPersistedAssistantHistory(
+    84	  message: PersistedAssistantToolHistory,
+    85	  useResponsesApi: boolean,
+    86	): any[] {
+    87	  const calls = validCalls(message.toolCallsOaiJson)
+    88	  const results = validResults(message.toolResultsOaiJson)
+    89	  const content = typeof message.content === 'string' ? message.content : ''
+    90	  const segments = persistedReasoningSegments(message)
+    91
+    92	  const callIterations = new Map<string, number>()
+    93	  for (const status of parseArray(message.toolCallsJson)) {
+    94	    if (
+    95	      status?.phase === 'calling' &&
+    96	      typeof status.toolCallId === 'string' &&
+    97	      Number.isInteger(status.iteration)
+    98	    ) {
+    99	      callIterations.set(status.toolCallId, Math.max(0, status.iteration))
+   100	    }
+   101	  }
+   102
+   103	  if (calls.length === 0) {
+   104	    if (useResponsesApi) {
+   105	      const items: any[] = []
+   106	      if (segments[0]?.trim()) items.push(reasoningItem(segments[0]))
+   107	      if (content.trim()) items.push({ type: 'output_text', text: content })
+   108	      return items
+   109	    }
+   110	    if (!content.trim() && !segments[0]?.trim()) return []
+   111	    return [
+   112	      {
+   113	        role: 'assistant',
+   114	        content,
+   115	        ...(segments[0]?.trim()
+   116	          ? { reasoning_content: segments[0] }
+   117	          : {}),
+   118	      },
+   119	    ]
+   120	  }
+   121
+   122	  const groups = new Map<number, OaiToolCall[]>()
+   123	  calls.forEach((call, index) => {
+   124	    const iteration = callIterations.get(call.id) ?? index
+   125	    const group = groups.get(iteration) || []
+   126	    group.push(call)
+   127	    groups.set(iteration, group)
+   128	  })
+   129	  const iterations = [...groups.keys()].sort((a, b) => a - b)
+   130	  const resultByCall = new Map(results.map((result) => [result.tool_call_id, result]))
+   131	  const replay: any[] = []
+   132
+   133	  for (const iteration of iterations) {
+   134	    const group = groups.get(iteration) || []
+   135	    const reasoning = segments[iteration]
+   136	    if (useResponsesApi) {
+   137	      if (reasoning?.trim()) replay.push(reasoningItem(reasoning))
+   138	      for (const call of group) {
+   139	        replay.push({
+   140	          type: 'function_call',
+   141	          call_id: call.id,
+   142	          name: call.function.name,
+   143	          arguments: call.function.arguments,
+   144	        })
+   145	      }
+   146	      for (const call of group) {
+   147	        const result = resultByCall.get(call.id)
+   148	        if (result) {
+   149	          replay.push({
+   150	            type: 'function_call_output',
+   151	            call_id: result.tool_call_id,
+   152	            output: result.content,
+   153	          })
+   154	        }
+   155	      }
+   156	    } else {
+   157	      replay.push({
+   158	        role: 'assistant',
+   159	        content: null,
+   160	        tool_calls: group,
+   161	        ...(reasoning?.trim() ? { reasoning_content: reasoning } : {}),
+   162	      })
+   163	      for (const call of group) {
+   164	        const result = resultByCall.get(call.id)
+   165	        if (result) {
+   166	          replay.push({
+   167	            role: 'tool',
+   168	            tool_call_id: result.tool_call_id,
+   169	            content: result.content,
+   170	          })
+   171	        }
+   172	      }
+   173	    }
+   174	  }
+   175
+   176	  const lastIteration =
+   177	    iterations.length > 0 ? iterations[iterations.length - 1] : -1
+   178	  const finalReasoning = segments[lastIteration + 1]
+   179	  if (useResponsesApi) {
+   180	    if (finalReasoning?.trim()) replay.push(reasoningItem(finalReasoning))
+   181	    if (content.trim()) replay.push({ type: 'output_text', text: content })
+   182	  } else if (content.trim() || finalReasoning?.trim()) {
+   183	    replay.push({
+   184	      role: 'assistant',
+   185	      content,
+   186	      ...(finalReasoning?.trim()
+   187	        ? { reasoning_content: finalReasoning }
+   188	        : {}),
+   189	    })
+   190	  }
+   191	  return replay
+   192	}
+  1560	            /* not JSON, use as plain string */
+  1561	          }
+  1562	        }
+  1563	        // Rebuild each persisted assistant row into its original model-visible
+  1564	        // order. A tool loop is stored as one UI row, but native history must be
+  1565	        // reasoning -> function_call -> result -> reasoning -> final answer.
+  1566	        // This also preserves reasoning-only assistant turns instead of keeping
+  1567	        // them merely as a UI display field.
+  1568	        if (m.role === "assistant") {
+  1569	          const replay = replayPersistedAssistantHistory(
+  1570	            { ...(m as any), content: msgContent },
+  1571	            useResponsesApi,
+  1572	          );
+  1573	          if (replay.length > 0) {
+  1574	            requestMessages.push(...replay);
+  1575	            continue;
+  1576	          }
+  1577	        }
+  1578	        const reqMsg: any = { role: m.role, content: msgContent };
+  1579	        requestMessages.push(reqMsg);
+  1580	      }
+  1581
+  1582	      // Fix role alternation: merge consecutive same-role messages to prevent
+  1583	      // template errors (e.g., Mistral enforces strict user/assistant alternation).
+  1584	      // This can happen when an aborted assistant message is stripped empty, leaving
+  1585	      // two consecutive user messages in history.
+  1586	      const mergedMessages: typeof requestMessages = [];
+  1587	      for (const msg of requestMessages) {
+  1588	        const prev = mergedMessages[mergedMessages.length - 1];
+  1589	        if (
+  1590	          prev &&
+  1591	          prev.role === msg.role &&
+  1592	          typeof prev.content === "string" &&
+  1593	          typeof msg.content === "string"
+  1594	        ) {
+  1595	          prev.content = prev.content + "\n\n" + msg.content;
+  1596	        } else {
+  1597	          mergedMessages.push({ ...msg });
+  1598	        }
+  1599	      }
+  1600	      requestMessages.length = 0;
+  1601	      requestMessages.push(...mergedMessages);
+  1602	      // History replay is now fully assembled (system + all prior turns + current
+  1603	      // user message). Everything pushed after this point is THIS turn's fresh
+  1604	      // tool exchange (the agentic tool loop). Harvest only from here.
+  1605	      currentTurnToolStart = requestMessages.length;
+  1606
+  1607	      // Prepare assistant message placeholder
+  1608	      const assistantMessage: Message = {
+  1609	        id: assistantMessageId,
+  1610	        chatId,
+  1611	        role: "assistant",
+  1612	        content: "",
+  1613	        timestamp: Date.now(),
+  1614	      };
+  1615
+  1616	      // Metrics tracking
+  1617	      const startTime = Date.now();
+  1618	      let fetchStartTime = startTime; // Updated just before the API fetch (for accurate TTFT)
+  1619	      let tokenCount = 0;
+  1620	      let promptTokens = 0;
+  1621	      let cachedTokens = 0;
+  1622	      let cacheDetail = "";
+  1623	      const recordCacheUsage = (details: any) => {
+  1624	        const nextCachedTokens = Number(details?.cached_tokens);
+  1625	        if (Number.isFinite(nextCachedTokens) && nextCachedTokens > 0) {
+  1626	          cachedTokens = Math.max(cachedTokens, nextCachedTokens);
+  1627	        }
+  1628	        if (typeof details?.cache_detail === "string") {
+  1629	          cacheDetail = mergeCacheDetails(cacheDetail, details.cache_detail);
+  1630	        }
+  1631	      };
+  1632	      let firstTokenTime: number | null = null;
+  1633	      // Track actual generation time (excludes PP and tool execution pauses)
+  1634	      let generationMs = 0;
+  1635	      let lastTokenTime: number | null = null;
+  1636	      // Rolling window for live TPS: circular buffer of (timestamp, tokenCount) snapshots.
+  1637	      // Uses actual token count deltas for accurate throughput — handles multi-token SSE chunks
+  1638	      // correctly (e.g., reasoning batches where each chunk may contain 2+ tokens).
+  1639	      const TPS_BUFFER_SIZE = 30;
+  1640	      const tpsSnapshots: Array<[number, number]> = []; // [timestamp, relative tokenCount]
+  1641	      let liveTps = 0;
+  1642	      // Keep a bounded history across tool iterations. The last rolling value
+  1643	      // can represent only a tiny final-answer tail after a long pause, while
+  1644	      // the displayed token count is cumulative across every reasoning/tool
+  1645	      // round. Final metrics need a representative stream rate, not merely the
