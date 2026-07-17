@@ -1,7 +1,8 @@
 # Bonsai 1-bit image-keyed hybrid cache proof
 
-Status: `PASS-LIVE` for the scoped Bonsai image path at code head
-`f993e36b8`; `PARTIAL` for Bonsai video and the wider Qwen/Bonsai catalog.
+Status: `PASS-LIVE` for the scoped Bonsai image path and the exact video-A
+cache/restore path at code head `f993e36b8`; `PARTIAL` for alternate-video OCR
+exactness and the wider Qwen/Bonsai catalog.
 
 ## Source ownership
 
@@ -63,6 +64,31 @@ prefix, returned exact `Q27-EXACTONCE-ELECTRON2-DONE`, emitted 14 timed
 reported 4,963 cached `paged+ssm` input tokens. There were no reasoning deltas
 because the request explicitly set `enable_thinking=false`.
 
+## Electron and Responses video proof
+
+The real MP4 A fixture contains `FRAME START 2468` near its beginning and
+`FRAME END 9753` near its end. The clean video comparisons again created fresh
+Electron chats and explicitly selected Thinking Off.
+
+- Cold A returned both exact markers in 15 progressive content paints with
+  2,934 prompt tokens and 8.19s TTFT.
+- Identical A restored 2,933 tokens as `paged+ssm`, kept the exact markers and
+  15 paints, and reduced TTFT to 0.66s.
+- Alternate B was a zero-cache miss and returned only alternate content, with
+  no A marker leakage. Bonsai abbreviated its digits as `ALT START 1` /
+  `ALT END 86`; a re-encoded alternate returned only `START` / `END`. Both are
+  retained as OCR-quality misses rather than rewritten or hidden.
+- Return A restored the original 2,933-token `paged+ssm` prefix and returned
+  both exact A markers at 0.64s TTFT.
+- Visible Electron Stop/Start changed PID 36409 to 37342 without clearing L2.
+  A then restored 2,933 tokens as `paged+ssm+disk`, returned the exact markers
+  in 15 paints, and reached TTFT in 1.72s. Health recorded 46 native-TQ
+  block-disk hits, zero selected-prefix block misses, and one SSM disk hit.
+- `video-api-warm.json` was produced by a real `curl -N` Responses request with
+  `input_video`. It reused the Electron prefix, emitted 15 timed
+  `response.output_text.delta` events, returned both exact markers, emitted one
+  `response.completed`, and reported 2,933 cached `paged+ssm` tokens.
+
 ## Retained failures and remaining gates
 
 - The first Auto-thinking image row is retained as a quality failure: it
@@ -71,5 +97,6 @@ because the request explicitly set `enable_thinking=false`.
 - A second screenshot with small UI text was a cache miss but OCR returned only
   `DONE`; the deterministic large-marker B row replaced it for the isolation
   proof rather than hiding the miss.
-- Bonsai video needs its own A/B/return/restart proof. Qwen 3.6 video evidence
-  does not clear Bonsai or other media families.
+- Alternate-video exact OCR remains partial even though cache isolation and
+  return-A correctness are demonstrated. Qwen 3.6 and Bonsai media evidence do
+  not clear other advertised media families.

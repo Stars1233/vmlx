@@ -1,0 +1,143 @@
+{
+  "prompt": "Read only the attached video frames. Output exactly the START marker and END marker visible in the video, one per line. Output nothing else and do not use tools.",
+  "file": "/tmp/mm3-video-current.mp4",
+  "thinking_mode_requested": "off",
+  "thinking_mode_selected": true,
+  "completed": true,
+  "completion": {
+    "chatId": "e84b7ac4-833b-4fe7-948a-e4120c74642e",
+    "messageId": "a0890f64-4885-4f41-8702-8c73a2ad57a4",
+    "content": "FRAME START 2468\nFRAME END 9753",
+    "finishReason": "stop",
+    "metrics": {
+      "tokenCount": 16,
+      "promptTokens": 2934,
+      "cachedTokens": 2933,
+      "cacheDetail": "paged+ssm",
+      "tokensPerSecond": "49.6",
+      "ppSpeed": "4418.7",
+      "ttft": "0.66",
+      "totalTime": "1.0"
+    }
+  },
+  "reasoning_stream_count": 0,
+  "content_stream_count": 15,
+  "reasoning_times_ms": [],
+  "content_times_ms": [
+    740,
+    760,
+    780,
+    800,
+    821,
+    840,
+    861,
+    882,
+    901,
+    921,
+    942,
+    962,
+    982,
+    1002,
+    1022
+  ],
+  "content_lengths": [
+    5,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    22,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "tool_events": [],
+  "all_events": [
+    {
+      "at_ms": 740,
+      "kind": "stream",
+      "messageId": "a0890f64-4885-4f41-8702-8c73a2ad57a4"
+    },
+    {
+      "at_ms": 760,
+      "kind": "stream",
+      "messageId": "a0890f64-4885-4f41-8702-8c73a2ad57a4"
+    },
+    {
+      "at_ms": 780,
+      "kind": "stream",
+      "messageId": "a0890f64-4885-4f41-8702-8c73a2ad57a4"
+    },
+    {
+      "at_ms": 800,
+      "kind": "stream",
+      "messageId": "a0890f64-4885-4f41-8702-8c73a2ad57a4"
+    },
+    {
+      "at_ms": 821,
+      "kind": "stream",
+      "messageId": "a0890f64-4885-4f41-8702-8c73a2ad57a4"
+    },
+    {
+      "at_ms": 840,
+      "kind": "stream",
+      "messageId": "a0890f64-4885-4f41-8702-8c73a2ad57a4"
+    },
+    {
+      "at_ms": 861,
+      "kind": "stream",
+      "messageId": "a0890f64-4885-4f41-8702-8c73a2ad57a4"
+    },
+    {
+      "at_ms": 882,
+      "kind": "stream",
+      "messageId": "a0890f64-4885-4f41-8702-8c73a2ad57a4"
+    },
+    {
+      "at_ms": 901,
+      "kind": "stream",
+      "messageId": "a0890f64-4885-4f41-8702-8c73a2ad57a4"
+    },
+    {
+      "at_ms": 921,
+      "kind": "stream",
+      "messageId": "a0890f64-4885-4f41-8702-8c73a2ad57a4"
+    },
+    {
+      "at_ms": 942,
+      "kind": "stream",
+      "messageId": "a0890f64-4885-4f41-8702-8c73a2ad57a4"
+    },
+    {
+      "at_ms": 962,
+      "kind": "stream",
+      "messageId": "a0890f64-4885-4f41-8702-8c73a2ad57a4"
+    },
+    {
+      "at_ms": 982,
+      "kind": "stream",
+      "messageId": "a0890f64-4885-4f41-8702-8c73a2ad57a4"
+    },
+    {
+      "at_ms": 1002,
+      "kind": "stream",
+      "messageId": "a0890f64-4885-4f41-8702-8c73a2ad57a4"
+    },
+    {
+      "at_ms": 1022,
+      "kind": "stream",
+      "messageId": "a0890f64-4885-4f41-8702-8c73a2ad57a4"
+    },
+    {
+      "at_ms": 1050,
+      "kind": "complete",
+      "messageId": "a0890f64-4885-4f41-8702-8c73a2ad57a4"
+    }
+  ]
+}

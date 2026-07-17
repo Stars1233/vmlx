@@ -1,0 +1,59 @@
+{
+  "prompt": "Read only the attached video frames. Output exactly the START marker and END marker visible in the video, one per line. Output nothing else and do not use tools.",
+  "file": "/tmp/q27-video-alt2.mp4",
+  "thinking_mode_requested": "off",
+  "thinking_mode_selected": true,
+  "completed": true,
+  "completion": {
+    "chatId": "4e52395e-ab8a-4fea-afec-6598bb3daa11",
+    "messageId": "73144207-1411-4d3e-8a56-821c05c9cc77",
+    "content": "START\nEND",
+    "finishReason": "stop",
+    "metrics": {
+      "tokenCount": 4,
+      "promptTokens": 2934,
+      "cachedTokens": 0,
+      "cacheDetail": "",
+      "tokensPerSecond": "50.0",
+      "ppSpeed": "378.4",
+      "ttft": "7.75",
+      "totalTime": "7.9"
+    }
+  },
+  "reasoning_stream_count": 0,
+  "content_stream_count": 3,
+  "reasoning_times_ms": [],
+  "content_times_ms": [
+    7824,
+    7842,
+    7863
+  ],
+  "content_lengths": [
+    5,
+    6,
+    9
+  ],
+  "tool_events": [],
+  "all_events": [
+    {
+      "at_ms": 7824,
+      "kind": "stream",
+      "messageId": "73144207-1411-4d3e-8a56-821c05c9cc77"
+    },
+    {
+      "at_ms": 7842,
+      "kind": "stream",
+      "messageId": "73144207-1411-4d3e-8a56-821c05c9cc77"
+    },
+    {
+      "at_ms": 7863,
+      "kind": "stream",
+      "messageId": "73144207-1411-4d3e-8a56-821c05c9cc77"
+    },
+    {
+      "at_ms": 7882,
+      "kind": "complete",
+      "messageId": "73144207-1411-4d3e-8a56-821c05c9cc77"
+    }
+  ]
+}

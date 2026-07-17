@@ -1,0 +1,108 @@
+{
+  "prompt": "Read only the attached video frames. Output exactly the START marker and END marker visible in the video, one per line. Output nothing else and do not use tools.",
+  "file": "/tmp/q27-video-alt.mp4",
+  "thinking_mode_requested": "off",
+  "thinking_mode_selected": true,
+  "completed": true,
+  "completion": {
+    "chatId": "c3d612bc-06bd-40d2-8e07-361b5f6b2a74",
+    "messageId": "3f9aa5ea-c7de-456f-ad66-d4452ef8a2a4",
+    "content": "ALT START 1\nALT END 86",
+    "finishReason": "stop",
+    "metrics": {
+      "tokenCount": 11,
+      "promptTokens": 2934,
+      "cachedTokens": 0,
+      "cacheDetail": "",
+      "tokensPerSecond": "48.5",
+      "ppSpeed": "379.6",
+      "ttft": "7.73",
+      "totalTime": "8.0"
+    }
+  },
+  "reasoning_stream_count": 0,
+  "content_stream_count": 10,
+  "reasoning_times_ms": [],
+  "content_times_ms": [
+    7810,
+    7822,
+    7843,
+    7863,
+    7883,
+    7903,
+    7923,
+    7944,
+    7967,
+    7987
+  ],
+  "content_lengths": [
+    3,
+    9,
+    10,
+    11,
+    12,
+    15,
+    19,
+    20,
+    21,
+    22
+  ],
+  "tool_events": [],
+  "all_events": [
+    {
+      "at_ms": 7810,
+      "kind": "stream",
+      "messageId": "3f9aa5ea-c7de-456f-ad66-d4452ef8a2a4"
+    },
+    {
+      "at_ms": 7822,
+      "kind": "stream",
+      "messageId": "3f9aa5ea-c7de-456f-ad66-d4452ef8a2a4"
+    },
+    {
+      "at_ms": 7843,
+      "kind": "stream",
+      "messageId": "3f9aa5ea-c7de-456f-ad66-d4452ef8a2a4"
+    },
+    {
+      "at_ms": 7863,
+      "kind": "stream",
+      "messageId": "3f9aa5ea-c7de-456f-ad66-d4452ef8a2a4"
+    },
+    {
+      "at_ms": 7883,
+      "kind": "stream",
+      "messageId": "3f9aa5ea-c7de-456f-ad66-d4452ef8a2a4"
+    },
+    {
+      "at_ms": 7903,
+      "kind": "stream",
+      "messageId": "3f9aa5ea-c7de-456f-ad66-d4452ef8a2a4"
+    },
+    {
+      "at_ms": 7923,
+      "kind": "stream",
+      "messageId": "3f9aa5ea-c7de-456f-ad66-d4452ef8a2a4"
+    },
+    {
+      "at_ms": 7944,
+      "kind": "stream",
+      "messageId": "3f9aa5ea-c7de-456f-ad66-d4452ef8a2a4"
+    },
+    {
+      "at_ms": 7967,
+      "kind": "stream",
+      "messageId": "3f9aa5ea-c7de-456f-ad66-d4452ef8a2a4"
+    },
+    {
+      "at_ms": 7987,
+      "kind": "stream",
+      "messageId": "3f9aa5ea-c7de-456f-ad66-d4452ef8a2a4"
+    },
+    {
+      "at_ms": 8007,
+      "kind": "complete",
+      "messageId": "3f9aa5ea-c7de-456f-ad66-d4452ef8a2a4"
+    }
+  ]
+}
