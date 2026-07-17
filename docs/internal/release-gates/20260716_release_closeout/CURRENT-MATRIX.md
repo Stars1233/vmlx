@@ -10,13 +10,13 @@ superseded conclusions are called out here.
 
 ## Release truth
 
-- Working branch: `reconcile/1.5.68`; current scoped code head `d49f500a3`;
+- Working branch: `reconcile/1.5.68`; current scoped code head `e76cc5451`;
   typed-settings,
   non-MTP architecture-hint, paged resident-accounting, typed hybrid-companion
   ownership, and v8 cache-namespace repairs plus their focused tests are pushed
   to the closeout branch described below.
 - Push target: `origin/codex/live-electron-gates-20260715`.
-- At scoped code head `d49f500a3`, the branch is 74 commits ahead of
+- At scoped code head `e76cc5451`, the branch is 76 commits ahead of
   `origin/main` and zero behind. Matrix-only commits may follow that code head.
 - Source versions are `1.6.11` in `pyproject.toml`,
   `vmlx_engine/__init__.py`, and `panel/package.json`.
@@ -41,10 +41,10 @@ superseded conclusions are called out here.
 | MiniMax-M3 | PARTIAL-LIVE | Typed MSA cache, tools, OCR control, and video pass; two OCR formatting misses retained | Exact deterministic OCR repeat; live 503 guard for REAP32 only if it can be exercised without host-reboot risk |
 | openPangu | PASS-LIVE scoped / PARTIAL long-context+protocol | Source policy `_apply_openpangu_cache_policy` forces paged/block/TQ off and preserves typed MLA KV, DSA indexer, rotating-SWA metadata, causal-conv state, 128 sinks, and mHC runtime. Electron-loaded 3M PID 86212/86842/87268 launched with `--no-paged-cache --enable-disk-cache`, no KV quantization, and no block L2; Bonsai was unloaded by the single-model swap. Rows 2310/2313 prove same-chat exact one-tool finals; row 2313 hit 152 memory tokens. PID 87268 exact first-turn replay row 2322 restored 152 tokens from prompt Disk L2 (`cacheDetail=disk`, TTFT 0.18s), executed one real tool, and returned exact final. Health reports `native_path_dependent_composite`, schema `openpangu_v2_composite_v2`, `generic_turboquant_kv.enabled=false`, paged false, prompt disk L2 true | 512K/long-context soak, full protocol matrix, and broader openPangu bit-variant coverage; MTP remains detection-only/unwired for this family |
 | Cross-model post-tool | PARTIAL | Many named families pass exact one-tool/final rows | MiMo and every remaining configured parser family need current Electron rows |
-| Settings parity | PARTIAL | Cache defaults, Auto/None, gateway LAN, single-model swap, typed-setting restart, selective-TQ Cache/Perf labeling, explicit Tool Parser None, and explicit per-chat Min-P zero now have scoped source-plus-live proof. Commit `d49f500a3` preserves slider zero in SQLite and both wire builders; clean current-source Electron PID 8935 displayed Min P `0.00`, DB stored `min_p=0.0`, and live `[CHAT_DIAG]` serialized `"min_p":0`. Commit `4e13b19a7` keeps parser None literal. | Rerun UI/DB/preview/argv/health matrix including port conflict and LAN/gateway state; retain parser None and Min-P zero as regression rows |
+| Settings parity | PARTIAL | Cache defaults, Auto/None, typed-setting restart, selective-TQ Cache/Perf labeling, explicit Tool Parser None, explicit per-chat Min-P zero, gateway LAN/port persistence, and single-model swap now have scoped source-plus-live proof. Commit `d49f500a3` preserves slider zero in SQLite and both wire builders; clean current-source Electron PID 8935 displayed Min P `0.00`, DB stored `min_p=0.0`, and live `[CHAT_DIAG]` serialized `"min_p":0`. Commit `4e13b19a7` keeps parser None literal. Current-source Electron PID 9909 also exercised gateway conflict rollback, LAN rebind/restore, and the session-manager single-model swap below. | Complete remaining UI/DB/preview/argv/health rows across model-derived defaults and cache controls; retain parser None, Min-P zero, gateway rollback, and single-model swap as regression rows |
 | API/protocol parity | PARTIAL | Responses now emits the standards-matching `response.incomplete` terminal event for length-capped streams, and the Electron client consumes completed/incomplete final text, usage, warnings, and status symmetrically (`a36a5ea66`). Direct Bonsai Responses streamed reasoning and split function arguments; a controlled `tool_choice:none` result continuation completed once but repeated native tool markup to the cap on another run, so tool-result synthesis remains variable. | Streaming + non-stream Chat, Responses, Anthropic, Ollama; stable auto tool/result continuation; disconnect/stop/follow-up |
-| Gateway lifecycle | PARTIAL | Routable LAN address and localhost/LAN rebinding pass | Port conflict UX, cross-protocol streaming, single-model unload/reload state |
-| Full tests/build | OPEN | Current hybrid ownership/cache changes: 784/784 Python hybrid/cache/scheduler tests, 278/278 panel settings tests, and panel typecheck pass. The fetched-block ref-ownership repair adds 90/90 focused paged/TQ/hybrid tests. Parser/Responses terminal coverage passed 135/135 Python, 50/50 panel, and panel typecheck. Typed DSV4 disk-tier telemetry passed 76/76 DSV4/paged-byte-budget tests, three focused scheduler assertions, 43/43 relevant panel tests, and panel typecheck. Explicit Min-P zero passed 213/213 affected panel tests plus typecheck. | Focused suites after each fix, full Python/panel suite, bundled-Python gate, clean release build |
+| Gateway lifecycle | PASS-LIVE lifecycle / PARTIAL protocols | Commit `e76cc5451` makes restart transactional: a rejected port change restores the prior listener and rethrows the original error. Through the current Electron API page, changing running gateway `127.0.0.1:8081` to DSV4's occupied `8012` first reproduced the old stopped-listener bug, then the fixed build rejected the conflict while health and SQLite remained running on 8081. LAN UI enable rebound to `0.0.0.0:8081`, displayed routable `192.168.1.110`, served `/health` over that LAN address, and rebound to localhost when disabled. With Single model mode enabled, the visible Bonsai Start control stopped DSV4 PID 10013 and launched Bonsai PID 10495; UI, SQLite, process listing, gateway discovery, and `[SESSIONS]` lifecycle log all showed exactly one running engine. | Cross-protocol streaming through gateway, disconnect/error recovery, and repeated unload/reload swap soak |
+| Full tests/build | OPEN | Current hybrid ownership/cache changes: 784/784 Python hybrid/cache/scheduler tests, 278/278 panel settings tests, and panel typecheck pass. The fetched-block ref-ownership repair adds 90/90 focused paged/TQ/hybrid tests. Parser/Responses terminal coverage passed 135/135 Python, 50/50 panel, and panel typecheck. Typed DSV4 disk-tier telemetry passed 76/76 DSV4/paged-byte-budget tests, three focused scheduler assertions, 43/43 relevant panel tests, and panel typecheck. Explicit Min-P zero passed 213/213 affected panel tests plus typecheck. Gateway transactional restart and protocol behavior passed 75/75 focused panel tests plus typecheck. | Focused suites after each fix, full Python/panel suite, bundled-Python gate, clean release build |
 | Packaging/public release | BLOCKED | Public truth remains 1.6.10 | Build Sequoia/Tahoe, sign, notarize, staple, Gatekeeper verify, install-smoke, publish GitHub/PyPI/feed |
 
 ### Bonsai multi-turn argument and parser-off recheck — current source
@@ -180,6 +180,37 @@ PID 61919 launched with that argv, and row 2184 repeated the exact disk hit.
 Python hybrid/cache/scheduler tests pass 784/784; panel settings tests pass
 278/278 plus typecheck. Only the stricter long-format/reliability row remains
 partial for this Qwen artifact.
+
+## Gateway and single-model lifecycle — current source
+
+- The pre-fix Electron UI reproduction changed a running gateway from 8081 to
+  DSV4's occupied 8012 and left the gateway stopped. Source trace found
+  `ApiGateway.restart()` stopped the old listener before validating the new
+  bind. Commit `e76cc5451` remembers the prior host/port, attempts the new
+  listener, restores the prior listener on failure, and rethrows the original
+  bind error. A real-listener regression test covers this rollback; the three
+  focused gateway suites pass 75/75 plus panel typecheck.
+- In the clean current-source Electron instance, the same API-page port edit
+  was rejected while `/health` and SQLite stayed at running
+  `127.0.0.1:8081`. Screenshot:
+  `/tmp/gateway-port-conflict-restored.png` (the retained pre-fix screenshot is
+  `/tmp/gateway-port-conflict-prefx.png`).
+- The LAN toggle then rebound the listener to `0.0.0.0:8081`, displayed
+  `192.168.1.110:8081`, and a request to
+  `http://192.168.1.110:8081/health` returned gateway health with
+  `single_model_mode=true`. Disabling LAN rebound to localhost without losing
+  the listener. Screenshot: `/tmp/gateway-lan-enabled.png`.
+- With Single model mode still enabled, the visible Server-page Start button
+  for `jangq-ai/Bonsai-27b-1bit-JANG` exercised
+  `SessionManager.startSession()`. The lifecycle log records DSV4 session
+  `a6810958-...` being stopped before Bonsai `5fd14571-...` started. The after
+  screenshot shows Bonsai PID 10495 as the sole Active session and DSV4 as
+  Stopped; SQLite, `ps`, and gateway discovery independently showed exactly one
+  local engine. Screenshots: `/tmp/single-model-before-dsv4.png` and
+  `/tmp/single-model-after-bonsai.png`.
+- This row proves listener rollback/rebinding and one-engine session ownership.
+  It does not by itself prove cross-protocol streaming or Bonsai output/cache
+  correctness; those remain separate rows.
 
 ## Non-negotiable correctness invariants
 
