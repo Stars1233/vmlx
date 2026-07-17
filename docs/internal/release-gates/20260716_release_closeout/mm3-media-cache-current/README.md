@@ -1,8 +1,8 @@
 # MiniMax-M3 media-keyed prefix cache proof
 
-Status: `PASS-LIVE` for this MiniMax-M3-Small image/video RAM and restart-L2
-boundary; `PARTIAL` for ambiguous OCR, distinct-content video isolation, REAP,
-and the broader M3 catalog.
+Status: `PASS-LIVE` for this MiniMax-M3-Small image/video RAM, restart-L2, and
+cross-video isolation boundary; `PARTIAL` for ambiguous OCR, larger-video
+coverage, REAP, and the broader M3 catalog.
 
 ## Source boundary
 
@@ -85,6 +85,29 @@ visible content itself was progressive; the roughly 2.38s delay from the last
 content delta to the terminal event is measured and retained. See
 `api-video-responses.json`.
 
+## Alternate-video isolation and return-A
+
+After the initial documentation checkpoint, a fresh Electron chat attached
+the distinct two-frame fixture
+`../../20260716_mm3_exact_media_current/mm3-video-current.mp4`:
+
+- Row 276 processed a full 1,712-token prompt with no cached count and no
+  `BANANA8426` leakage. It returned `FRAME START 24568 | FRAME END 9753`, so
+  the cache-isolation result passes while the extra `5` remains an OCR-quality
+  miss. `m3-video-cache-b1-miss.png` visibly captures that zero-hit row.
+- Row 279 is retained but excluded from proof. A UI automation error aborted
+  before Save, leaving the fresh chat at Auto/temperature 1; it produced
+  reasoning and `FRESH IMAGE\nBANANA8426` on a changed 1,705-token prompt.
+- The UI controls were then applied and read back separately as Thinking Off,
+  temperature 0, and tools disabled. Row 282 returned to video A with exact
+  `BANANA8426`, no reasoning, and 1,690/1,695 `paged` tokens at 1.31s TTFT.
+  `m3-video-cache-a-return-after-b.png` is the live Electron screenshot.
+
+The post-control health records the last selection as a 1,690-token paged hit,
+one scheduler miss across the expanded controls, 5,033 tokens indexed in 80
+disk blocks, and no TQ activity. Exact rows are in `video-ab-rows.json`; full
+telemetry is in `final-health-after-video-ab.json`.
+
 ## Cache telemetry and validation
 
 Final health records 1,690 indexed tokens, 27 disk blocks, 108 block-disk hits,
@@ -98,10 +121,9 @@ deprecation warnings; command and output summary are in `focused-tests.txt`.
 
 ## Open gates
 
-- Prove a different-content video B miss and return-A hit; image A/B/A already
-  proves the shared content-key implementation, but video B is not live-proven.
 - Retain ambiguous digit/dash OCR as a model-quality `PARTIAL`; do not rewrite
   generated text.
+- Prove larger/longer video behavior and broader M3 artifacts.
 - Exercise REAP only if it can be done without host-reboot risk.
 - Run the full Python/panel, bundled-Python, clean-build, signing, notarization,
   and install-smoke gates before any release claim.
