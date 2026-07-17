@@ -1,0 +1,67 @@
+{
+  "tag": "q27-video-finalwarmA",
+  "model": "dealignai/Qwen3.6-27B-MXFP8-CRACK-MTP",
+  "kind": "video",
+  "file": "/tmp/mm3-video-current.mp4",
+  "file_size": 50336,
+  "skip_prefix_cache": false,
+  "enable_thinking": false,
+  "curl_returncode": 0,
+  "stderr": "",
+  "expected_matches": [
+    {
+      "item": "FRAME START 2468",
+      "present": true
+    },
+    {
+      "item": "FRAME END 9753",
+      "present": true
+    }
+  ],
+  "summary": {
+    "reasoning_delta_count": 0,
+    "content_delta_count": 10,
+    "first_reasoning_at": null,
+    "first_content_at": 0.89,
+    "last_content_at": 2.6771,
+    "reasoning_times": [],
+    "content_times": [
+      0.89,
+      0.8902,
+      1.0407,
+      1.2256,
+      1.4097,
+      1.6595,
+      1.916,
+      2.1712,
+      2.483,
+      2.6771
+    ],
+    "content_lengths": [
+      5,
+      11,
+      12,
+      15,
+      16,
+      22,
+      26,
+      27,
+      30,
+      31
+    ],
+    "content": "FRAME START 2468\nFRAME END 9753",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 2928,
+      "completion_tokens": 16,
+      "total_tokens": 2944,
+      "prompt_tokens_details": {
+        "cached_tokens": 2927,
+        "cache_detail": "paged+ssm+disk"
+      }
+    }
+  },
+  "pass": true
+}

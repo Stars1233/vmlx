@@ -1,7 +1,8 @@
 # Qwen 3.6 27B media-keyed hybrid cache proof
 
 Status: `PASS-LIVE` for the scoped Qwen 3.6 image path at code commit
-`9982d9ae2`. This does not clear video or other VLM families.
+`9982d9ae2`, plus the Qwen video fallback/cache row in the current working
+tree. This does not clear other VLM families.
 
 ## Source ownership
 
@@ -70,9 +71,45 @@ marker/model and `4955 paged+ssm cached`, 1.06s TTFT.
 user row and an assistant row with 407 reasoning characters, exact final
 content, no tools/warnings, and the same cache metrics.
 
+## Qwen video fallback/cache proof
+
+The real MP4 fixture `/tmp/mm3-video-current.mp4` contains `FRAME START 2468`
+near the start and `FRAME END 9753` near the end. Qwen's image-frame fallback
+now bounds each sampled frame to a 768px long edge before image-token
+expansion, and media cache keys hash decoded local-media bytes rather than
+per-request temporary frame paths. Native-video cache entries also retain
+video pixels and their grid on a cache hit. The associated source contracts
+are the dedicated terminal-guard, video-pixel cache, fallback-bound, and
+local-media-key tests recorded below.
+
+- Cold original A produced both exact markers in 15 progressive content
+  deltas; first content arrived at 11.0741s.
+- Same-input warm A restored 2,927 of 2,928 prompt tokens as `paged+ssm`,
+  emitted 10 content deltas, and reached first content at 0.9878s.
+- A different-frame-content B (`ALT START 1357` / `ALT END 8642`) was a miss,
+  returned only B's markers, and took 10.9365s to first content. Returning to
+  A then restored `paged+ssm` at 0.9620s, proving no cross-video result leak.
+- Explicit A bypass emitted no cache usage and first content at 5.6566s; the
+  following normal A again restored `paged+ssm` at 1.0088s, so bypass did not
+  overwrite the saved media prefix.
+- Electron Server Stop/Start removed the Qwen RAM prefix (zero RAM cached
+  tokens) while retaining 699 block-disk entries and 68 SSM-disk entries.
+  The next original A restored 2,927 tokens as `paged+ssm+disk` at 1.1044s.
+  Health then reported 46 disk/native-TQ block hits and one SSM-disk hit.
+- The real Electron chat attached the MP4 as a rendered video player. Its
+  persisted user row is a `video_url`; the final visible Qwen answer contains
+  both exact markers and the screenshot is
+  `q27-video-electron-disk1-complete.png`. It completed with 1,193 reasoning
+  characters followed by visible answer content, 14.06s TTFT, and 40.6s
+  total. This is an observed long native-reasoning row, not a speed claim.
+
+`q27-video-finalwarm-a8.json` captures the final disk-tier repeat: exact
+markers, 10 content deltas, 0.8900s first content, and `paged+ssm+disk` for
+2,927 cached tokens. Focused current-tree tests: terminal guard 6/6,
+native-video cache 1/1, fallback bounds 6/6, and media-key tests 4/4.
+
 ## Remaining gates
 
-- Qwen video cache needs an equivalent cold/warm/cross-video/restart proof.
 - MiniMax M3, Gemma 4, Bonsai, Step, and other advertised media families need
   family-owned cache proofs; this change deliberately does not enable them.
 - Full-suite, packaging, signing, notarization, and release gates remain open.
