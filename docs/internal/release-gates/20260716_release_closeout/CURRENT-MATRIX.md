@@ -125,6 +125,12 @@ superseded conclusions are called out here.
   `response.output_text.delta` events for `B1-SSE-SHORT-FIX1-OK`, from 2.893s
   through 3.077s, followed by matching `response.output_text.done` and
   `response.completed`.
+- Raw Chat Completions proof on the same PID:
+  `[B1-CHAT-SHORT-FIX1]` produced 48 `reasoning_content` deltas and then 11
+  separate `delta.content` events from 1.922s through 2.106s, assembling exact
+  `B1-CHAT-SHORT-FIX1-OK`, followed by terminal `stop`. This proves the repair
+  is in the shared server fallback rather than only the Electron renderer or
+  only the Responses adapter.
 - Live Electron proof: selected the visible running
   `jangq-ai/Bonsai-27b-1bit-JANG` session, sent
   `[B1-ELECTRON-STREAM-FIX3]`, and instrumented the real preload
@@ -136,9 +142,14 @@ superseded conclusions are called out here.
   `cachedTokens=320`, `cacheDetail=paged+ssm`, `tokensPerSecond=49.3`,
   `ttft=3.48`, `totalTime=4.8`.
 - Remaining status: streaming contract for this fallback path is PASS-LIVE for
-  Responses plus Electron renderer on Bonsai/Qwen-family direct rail. Displayed
-  TPS accounting remains PARTIAL because the UI metric still represents a
-  blended reasoning+answer-pass turn rather than separate phase speeds.
+  Chat Completions, Responses, and the Electron renderer on the live
+  Bonsai/Qwen-family direct rail. This is a shared-path fix, not a universal
+  all-model proof: `hy_v3` and `minimax_m3` inherit the source policy but still
+  need current live rows, while Gemma4/Laguna/openPangu retain the marker tail
+  and DSV4/Step/M2 retain full leak-guard buffering. Those families require
+  separate reasoning-to-answer continuity probes before release. Displayed TPS
+  accounting remains PARTIAL because the UI metric still represents a blended
+  reasoning+answer-pass turn rather than separate phase speeds.
 
 ### Responses terminal-event correctness — current source
 
