@@ -11,13 +11,13 @@ superseded conclusions are called out here.
 ## Release truth
 
 - Working branch: `reconcile/1.5.68`; current scoped code head `f16c51d18` and
-  current matrix/evidence head `383b967da`;
+  prior matrix/evidence head `1e1af69f0`;
   typed-settings,
   non-MTP architecture-hint, paged resident-accounting, typed hybrid-companion
   ownership, and v8 cache-namespace repairs plus their focused tests are pushed
   to the closeout branch described below.
 - Push target: `origin/codex/live-electron-gates-20260715`.
-- At matrix/evidence head `383b967da`, the branch is 105 commits ahead of
+- At prior matrix/evidence head `1e1af69f0`, the branch is 106 commits ahead of
   `origin/main` and zero behind. Matrix-only commits may follow the scoped code
   head.
 - Source versions are `1.6.11` in `pyproject.toml`,
@@ -112,10 +112,23 @@ superseded conclusions are called out here.
   value storage, and zero hybrid-companion fallbacks. Evidence:
   `mm27-current-stream-cache/mm27-tqfair1*.json` and
   `mm27-health-after-l2.json`.
+- Bonsai 1-bit provides the hybrid q8 control. On an exact 4,623-token prompt,
+  cold first content was 5.0758s; the resident request restored 4,622 tokens as
+  `paged+ssm` in 0.6784s (7.482x), with q8 storage applied only to 16 attention
+  KV layers while 48 companion layers remained native. Visible Electron
+  restart changed PID 87231 to 87712; the first identical request restored all
+  4,622 tokens as `paged+ssm+disk` in 1.5259s with a real SSM checkpoint hit.
+  Health recorded 98 native-TQ writes, 225 native-TQ hits, 13 SSM disk stores,
+  one SSM disk hit, and zero unsafe KV-without-SSM reuse. A controlled UI None
+  restart launched PID 88154 with `--kv-cache-quantization none`, completed an
+  exact streamed tool turn, wrote 34 raw blocks with zero TQ writes/hits, then
+  Auto was restored on PID 88434. The original q8+SSM prefix still restored as
+  `paged+ssm+disk` in 1.5499s, proving codec-namespace isolation across the None
+  detour. Evidence: `bonsai-shared-q8-current/`.
 - Verdict: source correctness, API streaming, model-worker ownership, Electron
   agent loops, and real RAM/L2 TQ TTFT speedups are `PASS-LIVE` for Nemotron,
-  Laguna, and MiniMax M2.7. Hy3 remains `PARTIAL`: its matched prompt-L2 request
-  was slower than cold and its resident gain was only about 1.05x. TQ
+  Laguna, MiniMax M2.7, and Bonsai 1-bit. Hy3 remains `PARTIAL`: its matched
+  prompt-L2 request was slower than cold and its resident gain was only about 1.05x. TQ
   performance is therefore cache-family specific, not globally green; no
   cache-hit or release-ready claim may hide the matched cold comparisons.
 
@@ -211,9 +224,16 @@ superseded conclusions are called out here.
   `STEP37-ELECTRON-STREAM1-DONE`, and `finishReason=stop`. The screenshot visibly
   shows the Step session header, reasoning rail, one Info result, exact final,
   and metrics. Evidence: `step37-streaming/step37-electron-stream1.{json,png}`.
-- Prior Bonsai live proof remains valid: PID 58124 streamed raw Chat and
-  Responses, while Electron `[B1-ELECTRON-STREAM-FIX3]` emitted 53 reasoning
-  and seven progressive content updates before exact `UIRENDER-42`.
+- Bonsai current-source `B1-SHARED4` emitted 262/13 reasoning/content deltas on
+  Chat turn 1, 768/20 on cached multi-turn recall, and 287/11 on Responses.
+  Turn 2 exhausted its first 1,024-token reasoning pass, then progressively
+  emitted the bounded answer instead of freezing and batching it; all three
+  outputs were exact. Electron turn 1 emitted 139 timed reasoning and 11 timed
+  content updates before one real `file_info(panel/package.json)` and exact
+  final. The second turn in the same chat emitted 83/13 updates, called
+  `file_info(README.md)` exactly once, and exact-finaled. The controlled None
+  turn emitted 52/10 updates, executed one real `file_info(pyproject.toml)`,
+  and exact-finaled. Evidence: `bonsai-shared-q8-current/`.
 - Nemotron current raw proof emitted 50/14 reasoning/content deltas on Chat
   turn 1, 256/23 on the cached multi-turn recall, and 43/13 on Responses; every
   terminal marker was exact and turn 2 used 53 `paged+ssm+tq-native` tokens.

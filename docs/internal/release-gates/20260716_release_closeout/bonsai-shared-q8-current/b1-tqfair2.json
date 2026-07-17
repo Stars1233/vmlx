@@ -1,0 +1,95 @@
+{
+  "tag": "B1-TQFAIR2",
+  "expected": "B1-TQFAIR2-PREFIX-OK",
+  "cold": {
+    "first_content_seconds": 5.0758,
+    "last_content_seconds": 5.2681,
+    "content_delta_count": 11,
+    "content_times": [
+      5.0758,
+      5.095,
+      5.1144,
+      5.1336,
+      5.1526,
+      5.1716,
+      5.1909,
+      5.2099,
+      5.2293,
+      5.2491,
+      5.2681
+    ],
+    "content": "B1-TQFAIR2-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 4623,
+      "completion_tokens": 12,
+      "total_tokens": 4635
+    }
+  },
+  "cold_cache_execution": {
+    "request_id": "chatcmpl-fccf921a:visible-answer",
+    "cache_detail": "paged+ssm",
+    "cached_tokens": 44,
+    "blocks": 0,
+    "selection": "paged",
+    "disk_hit": false,
+    "reconstructed": true,
+    "dequantized": true,
+    "reconstruction_seconds": 0.02422,
+    "dequantization_seconds": 5e-06,
+    "total_worker_cache_seconds": 0.024565,
+    "reconstruction_ok": true,
+    "dequantization_ok": true
+  },
+  "warm": {
+    "first_content_seconds": 0.6784,
+    "last_content_seconds": 0.8713,
+    "content_delta_count": 11,
+    "content_times": [
+      0.6784,
+      0.6972,
+      0.717,
+      0.736,
+      0.7554,
+      0.7751,
+      0.7945,
+      0.8133,
+      0.8329,
+      0.852,
+      0.8713
+    ],
+    "content": "B1-TQFAIR2-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 4623,
+      "completion_tokens": 12,
+      "total_tokens": 4635,
+      "prompt_tokens_details": {
+        "cached_tokens": 4622,
+        "cache_detail": "paged+ssm"
+      }
+    }
+  },
+  "warm_cache_execution": {
+    "request_id": "chatcmpl-c46f58c2",
+    "cache_detail": "paged+ssm",
+    "cached_tokens": 4622,
+    "blocks": 0,
+    "selection": "paged",
+    "disk_hit": false,
+    "reconstructed": true,
+    "dequantized": true,
+    "reconstruction_seconds": 0.271527,
+    "dequantization_seconds": 9e-06,
+    "total_worker_cache_seconds": 0.271843,
+    "reconstruction_ok": true,
+    "dequantization_ok": true
+  },
+  "exact": true,
+  "warm_faster": true,
+  "ttft_speedup": 7.482
+}

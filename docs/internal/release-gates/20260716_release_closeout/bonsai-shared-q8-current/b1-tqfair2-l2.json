@@ -1,0 +1,99 @@
+{
+  "tag": "B1-TQFAIR2",
+  "expected": "B1-TQFAIR2-PREFIX-OK",
+  "cold": {
+    "first_content_seconds": 1.5259,
+    "last_content_seconds": 1.7181,
+    "content_delta_count": 11,
+    "content_times": [
+      1.5259,
+      1.545,
+      1.564,
+      1.5831,
+      1.6023,
+      1.6216,
+      1.6411,
+      1.6602,
+      1.6794,
+      1.6984,
+      1.7181
+    ],
+    "content": "B1-TQFAIR2-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 4623,
+      "completion_tokens": 12,
+      "total_tokens": 4635,
+      "prompt_tokens_details": {
+        "cached_tokens": 4622,
+        "cache_detail": "paged+ssm+disk"
+      }
+    }
+  },
+  "cold_cache_execution": {
+    "request_id": "chatcmpl-1e6d972c",
+    "cache_detail": "paged+ssm+disk",
+    "cached_tokens": 4622,
+    "blocks": 0,
+    "selection": "paged",
+    "disk_hit": true,
+    "reconstructed": true,
+    "dequantized": true,
+    "reconstruction_seconds": 1.192608,
+    "dequantization_seconds": 7e-06,
+    "total_worker_cache_seconds": 1.192934,
+    "reconstruction_ok": true,
+    "dequantization_ok": true
+  },
+  "warm": {
+    "first_content_seconds": 0.6726,
+    "last_content_seconds": 0.8644,
+    "content_delta_count": 11,
+    "content_times": [
+      0.6726,
+      0.6913,
+      0.7106,
+      0.7299,
+      0.7492,
+      0.768,
+      0.7876,
+      0.8068,
+      0.8263,
+      0.8454,
+      0.8644
+    ],
+    "content": "B1-TQFAIR2-PREFIX-OK",
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 4623,
+      "completion_tokens": 12,
+      "total_tokens": 4635,
+      "prompt_tokens_details": {
+        "cached_tokens": 4622,
+        "cache_detail": "paged+ssm"
+      }
+    }
+  },
+  "warm_cache_execution": {
+    "request_id": "chatcmpl-c980507d",
+    "cache_detail": "paged+ssm",
+    "cached_tokens": 4622,
+    "blocks": 0,
+    "selection": "paged",
+    "disk_hit": false,
+    "reconstructed": true,
+    "dequantized": true,
+    "reconstruction_seconds": 0.272279,
+    "dequantization_seconds": 1.3e-05,
+    "total_worker_cache_seconds": 0.272613,
+    "reconstruction_ok": true,
+    "dequantization_ok": true
+  },
+  "exact": true,
+  "warm_faster": true,
+  "ttft_speedup": 2.269
+}
