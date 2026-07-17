@@ -103,6 +103,32 @@ erase the stochastic failure. The next Step soak must reproduce and trace the
 sampler/decode state without adding a hidden repetition penalty or forced
 temperature.
 
+## Fixed-seed diagnostic
+
+The same normal-temperature prompt was then paired at fixed seeds to separate
+general stochastic decode behavior from cache-only corruption. Seed 42 was
+run once with `skip_prefix_cache=true` and once from the 26-token
+`paged+mixed_swa+disk` prefix. Both streams completed with the correct result
+and marker; the full-prefill run emitted 197 reasoning / 10 content deltas,
+while the disk-restore run emitted 261 / 11. Their reasoning and whitespace
+were not byte-identical, so q4 reconstruction can change a stochastic decode
+trajectory, but it did not truncate either run.
+
+A bounded seeds 0-3 sweep then paired full prefill against the resident q4
+prefix. All eight requests emitted progressive reasoning and content deltas,
+reached `response.completed`, and returned `3973 STEP37-SIMPLE-DONE`:
+
+| Seed | Full-prefill reasoning/content | q4-cache reasoning/content | Result |
+|---:|---:|---:|---|
+| 0 | 364 / 11 | 177 / 10 | completed / completed |
+| 1 | 334 / 10 | 204 / 10 | completed / completed |
+| 2 | 242 / 10 | 356 / 10 | completed / completed |
+| 3 | 257 / 10 | 266 / 10 | completed / completed |
+
+This falsifies a deterministic cache-only cutoff in the tested seeds; it does
+not erase the retained unseeded `Isa` loop or prove broad stochastic
+reliability. Step therefore remains `PARTIAL`, with a larger soak still open.
+
 ## Evidence
 
 - `step37-native-reasoning-help-current.png`
@@ -112,4 +138,6 @@ temperature.
 - `electron-rows.json`
 - `deterministic-{cold,ram,disk}.json`
 - `stochastic-loop-incomplete.json`
+- `seed42-bypass.json`, `seed42-disk-cache.json`, and
+  `seeded-stochastic-sweep.json`
 - `health-after-deterministic-disk.json`

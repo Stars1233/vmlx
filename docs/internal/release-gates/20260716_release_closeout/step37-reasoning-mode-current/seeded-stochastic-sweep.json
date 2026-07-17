@@ -1,0 +1,21 @@
+{
+  "model": "jangq-ai/Step-3.7-Flash-JANGTQ_K",
+  "endpoint": "/v1/responses",
+  "temperature": 0.6,
+  "max_output_tokens": 512,
+  "prompt": "Compute 137 * 29. Reply with the result, then STEP37-SIMPLE-DONE.",
+  "cache_note": "seed 42 cached run restored paged+mixed_swa+disk; seeds 0-3 cached runs restored resident paged+mixed_swa",
+  "runs": [
+    {"seed": 42, "mode": "bypass", "reasoning_deltas": 197, "content_deltas": 10, "terminal": "response.completed", "content": "\n3973 STEP37-SIMPLE-DONE"},
+    {"seed": 42, "mode": "disk_cache", "reasoning_deltas": 261, "content_deltas": 11, "terminal": "response.completed", "content": "\n3973\nSTEP37-SIMPLE-DONE", "cached_tokens": 26, "cache_detail": "paged+mixed_swa+disk"},
+    {"seed": 0, "mode": "bypass", "reasoning_deltas": 364, "content_deltas": 11, "terminal": "response.completed", "content": "\n3973\nSTEP37-SIMPLE-DONE"},
+    {"seed": 0, "mode": "resident_cache", "reasoning_deltas": 177, "content_deltas": 10, "terminal": "response.completed", "content": "\n3973 STEP37-SIMPLE-DONE", "cached_tokens": 26, "cache_detail": "paged+mixed_swa"},
+    {"seed": 1, "mode": "bypass", "reasoning_deltas": 334, "content_deltas": 10, "terminal": "response.completed", "content": "\n3973 STEP37-SIMPLE-DONE"},
+    {"seed": 1, "mode": "resident_cache", "reasoning_deltas": 204, "content_deltas": 10, "terminal": "response.completed", "content": "\n3973 STEP37-SIMPLE-DONE", "cached_tokens": 26, "cache_detail": "paged+mixed_swa"},
+    {"seed": 2, "mode": "bypass", "reasoning_deltas": 242, "content_deltas": 10, "terminal": "response.completed", "content": "\n3973 STEP37-SIMPLE-DONE"},
+    {"seed": 2, "mode": "resident_cache", "reasoning_deltas": 356, "content_deltas": 10, "terminal": "response.completed", "content": "\n3973 STEP37-SIMPLE-DONE", "cached_tokens": 26, "cache_detail": "paged+mixed_swa"},
+    {"seed": 3, "mode": "bypass", "reasoning_deltas": 257, "content_deltas": 10, "terminal": "response.completed", "content": "\n3973 STEP37-SIMPLE-DONE"},
+    {"seed": 3, "mode": "resident_cache", "reasoning_deltas": 266, "content_deltas": 10, "terminal": "response.completed", "content": "\n3973 STEP37-SIMPLE-DONE", "cached_tokens": 26, "cache_detail": "paged+mixed_swa"}
+  ],
+  "verdict": "No deterministic cache-only cutoff reproduced in this bounded sweep; retained unseeded Isa loop remains a stochastic reliability blocker."
+}
