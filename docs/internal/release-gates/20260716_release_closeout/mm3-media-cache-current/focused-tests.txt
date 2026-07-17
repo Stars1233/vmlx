@@ -1,0 +1,17 @@
+Command (2026-07-17, current source head 8df1bfe86):
+
+  .venv/bin/pytest -q \
+    tests/test_minimax_m3_cache_paths.py \
+    tests/test_mllm_cache.py \
+    tests/test_mllm_scheduler_cache.py \
+    tests/test_multimodal_routing.py \
+    tests/test_vl_media_cache_contract.py
+
+Result:
+
+  collected 207 items
+  207 passed, 2 warnings in 4.27s
+
+Both warnings are third-party librosa FutureWarning messages from its
+deprecated audioread loader in two existing audio tests. There were no test
+failures, skips, or deselections in this command.

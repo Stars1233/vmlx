@@ -1,7 +1,8 @@
 # MiniMax-M3 exact OCR and media-cache boundary
 
-Status: `PASS-LIVE` for scoped unambiguous OCR on Electron and Responses;
-`PARTIAL` for ambiguous glyph OCR, media-prefix reuse, and REAP variants.
+Status: `PASS-LIVE` for scoped unambiguous OCR on Electron and Responses and
+for the current image/video media-cache boundary; `PARTIAL` for ambiguous glyph
+OCR, alternate-video isolation, and REAP variants.
 
 ## Runtime and UI ownership
 
@@ -30,21 +31,17 @@ Status: `PASS-LIVE` for scoped unambiguous OCR on Electron and Responses;
 
 ## Media-prefix boundary
 
-The two identical unambiguous image requests each reported 742 prompt tokens
-and zero cached tokens. That is consistent with the current source contract,
-not evidence of a hidden hit:
+The old unconditional media-cache bypass described by the first version of
+this document is superseded by commit `8df1bfe86`. The current path forwards
+raw image/video sources into the shared content-derived media key, salts
+BlockAware fetch/store, rejects unsalted alternatives, and reuses an M3 prefix
+only after it covers every media-token position. Shorter hits release and run
+the original full vision prefill with pixels/grids still present.
 
-- `BatchedEngine` preprocesses M3 image/video media into token IDs, pixel/video
-  tensors, and grids before it enters the text engine (`engine/batched.py:2292-2308`).
-- The scheduler recognizes that active payload on `SingleBatchGenerator`,
-  resets `tokens_to_process` to the entire prompt, and sets
-  `cache_to_use=None` (`scheduler.py:6112-6129`). The comment states why: every
-  image-token position must be present in one forward for the vision splice.
-- Health after the OCR rows reports zero scheduler cache hits/misses and zero
-  disk blocks for these media requests. M3 text-cache proof therefore does not
-  prove image/video cache reuse.
-
-This is safe fail-closed behavior. Enabling M3 media reuse needs a family-owned
-cached-vision boundary that preserves pixel/video content, grids, the MSA KV
-tuple, media-key isolation, and restart reconstruction; a family-name allowlist
-would be insufficient.
+Current Electron proof includes image A cold, 746-token RAM hit, same-shape B
+zero-hit isolation, return-A RAM hit, and 746-token restart/L2 hit. A real MP4
+then produced exact `BANANA8426` cold, on a 1,690-token RAM hit, and on a
+1,690-token restart/L2 hit. Raw Responses emitted four progressive content
+deltas, matching done text, and one completed terminal. The pre-fix
+same-shape collision is retained rather than hidden. Exact source, rows,
+screenshots, health, and open limits are in `../mm3-media-cache-current/`.

@@ -1,0 +1,28 @@
+{
+  "surface": "POST /v1/responses with curl -N",
+  "model": "jangq-ai/MiniMax-M3-Coder-Small",
+  "fixture": "../gemma4-media-cache-current/gemma4-media-a-video.mp4",
+  "settings": {
+    "temperature": 0,
+    "thinking": false,
+    "tools": false
+  },
+  "usage": {
+    "input_tokens": 1695,
+    "cached_tokens": 1690,
+    "cache_detail": "paged",
+    "output_tokens": 5
+  },
+  "timeline": [
+    {"t_seconds": 1.1615, "type": "response.output_text.delta", "delta": "BAN"},
+    {"t_seconds": 1.2074, "type": "response.output_text.delta", "delta": "ANA"},
+    {"t_seconds": 1.2486, "type": "response.output_text.delta", "delta": "842"},
+    {"t_seconds": 1.2900, "type": "response.output_text.delta", "delta": "6"},
+    {"t_seconds": 3.6707, "type": "response.output_text.done", "text": "BANANA8426"},
+    {"t_seconds": 3.6710, "type": "response.completed", "status": "completed"}
+  ],
+  "assembled_content": "BANANA8426",
+  "reasoning_events": 0,
+  "completed_events": 1,
+  "terminal_delay_after_last_content_seconds": 2.381
+}

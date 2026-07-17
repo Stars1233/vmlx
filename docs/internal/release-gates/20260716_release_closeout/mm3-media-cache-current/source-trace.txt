@@ -1,0 +1,476 @@
+  1798	            top_logprobs=int(kwargs.get("top_logprobs", 0) or 0),
+  1799	        )
+  1800
+  1801	        _m3vl_extra = {}
+  1802	        if _m3vl_pv is not None or _m3vl_pv_video is not None:
+  1803	            if _m3vl_pv is not None:
+  1804	                _m3vl_extra["pixel_values"] = _m3vl_pv
+  1805	                _m3vl_extra["image_grid_thw"] = _m3vl_grid
+  1806	            if _m3vl_pv_video is not None:
+  1807	                _m3vl_extra["pixel_values_videos"] = _m3vl_pv_video
+  1808	                _m3vl_extra["video_grid_thw"] = _m3vl_video_grid
+  1809	            _m3vl_extra["prompt_token_ids"] = _m3vl_ids
+  1810
+  1811	        output = await self._engine.generate(
+  1812	            prompt=prompt,
+  1813	            sampling_params=sampling_params,
+  1814	            request_id=request_id,
+  1815	            images=images,
+  1816	            videos=videos,
+  1817	            gen_prompt_len=gen_prompt_len,
+  1818	            num_messages=kwargs.get("num_messages", 1),
+  1819	            segment_boundaries=segment_boundaries,
+  1820	            bypass_prefix_cache=bypass_prefix_cache,
+  1821	            encode_add_special_tokens=encode_add_special_tokens,
+  1822	            max_prompt_tokens=max_prompt_tokens,
+  1823	            **_m3vl_extra,
+  1824	        )
+  1825
+  1826	        raw = output.output_text
+  1827	        text = clean_output_text(raw)
+  1828
+  1829	        return GenerationOutput(
+  1830	            text=text,
+  1948	        )
+  1949
+  1950	        _m3vl_extra = {}
+  1951	        if _m3vl_pv is not None or _m3vl_pv_video is not None:
+  1952	            if _m3vl_pv is not None:
+  1953	                _m3vl_extra["pixel_values"] = _m3vl_pv
+  1954	                _m3vl_extra["image_grid_thw"] = _m3vl_grid
+  1955	            if _m3vl_pv_video is not None:
+  1956	                _m3vl_extra["pixel_values_videos"] = _m3vl_pv_video
+  1957	                _m3vl_extra["video_grid_thw"] = _m3vl_video_grid
+  1958	            _m3vl_extra["prompt_token_ids"] = _m3vl_ids
+  1959
+  1960	        request_id = await self._engine.add_request(
+  1961	            prompt=prompt,
+  1962	            sampling_params=sampling_params,
+  1963	            request_id=request_id,
+  1964	            images=images,
+  1965	            videos=videos,
+  1966	            gen_prompt_len=gen_prompt_len,
+  1967	            num_messages=kwargs.get("num_messages", 1),
+  1968	            segment_boundaries=segment_boundaries,
+  1969	            bypass_prefix_cache=bypass_prefix_cache,
+  1970	            encode_add_special_tokens=encode_add_special_tokens,
+  1971	            max_prompt_tokens=max_prompt_tokens,
+  1972	            **_m3vl_extra,
+  1973	        )
+  1974
+  1975	        async for output in self._engine.stream_outputs(request_id):
+  1976	            text = clean_output_text(output.output_text)
+  1977
+  1978	            yield GenerationOutput(
+  1979	                text=text,
+  1980	                logprobs=getattr(output, "logprobs", None),
+  1981	                new_text=output.new_text,
+  1982	                prompt_tokens=output.prompt_tokens,
+   392	        Returns:
+   393	            The request ID
+   394	        """
+   395	        if request_id is None:
+   396	            request_id = str(uuid.uuid4())
+   397
+   398	        if sampling_params is None:
+   399	            sampling_params = SamplingParams()
+   400
+   401	        request = Request(
+   402	            request_id=request_id,
+   403	            prompt=prompt,
+   404	            sampling_params=sampling_params,
+   405	            images=images,
+   406	            videos=videos,
+   407	        )
+   408
+   409	        # M3 VL: carry preprocessed image/video tensors and input ids whose
+   410	        # media placeholders are already expanded by the bundle processor.
+   411	        if prompt_token_ids is not None:
+   412	            request.prompt_token_ids = list(prompt_token_ids)
+   413	            request.num_prompt_tokens = len(request.prompt_token_ids)
+   414	        if pixel_values is not None:
+   415	            request.pixel_values = pixel_values
+   416	        if image_grid_thw is not None:
+   417	            request.image_grid_thw = image_grid_thw
+   418	        if pixel_values_videos is not None:
+   419	            request.pixel_values_videos = pixel_values_videos
+   420	        if video_grid_thw is not None:
+   421	            request.video_grid_thw = video_grid_thw
+   422
+   423	        # MiniMax-M3 VL is text-routed, but its image/video placeholders are
+   424	        # content-dependent just like the generic MLLM path. Mix the shared
+   425	        # byte-derived media fingerprint into paged/block keys so same-shaped
+   426	        # different media cannot cross-reuse vision-conditioned MSA state.
+   427	        # Scheduler admission below permits only the salted paged/block path;
+   428	        # unsalted legacy/memory/prompt-L2 paths remain disabled for media.
+   429	        if pixel_values is not None or pixel_values_videos is not None:
+   430	            request._cache_extra_keys = _mllm_media_cache_extra_keys(request)
+   431	            request._m3_vl_media_cache_context = bool(request._cache_extra_keys)
+   432
+   433	        # Attach gen_prompt_len for prefix cache key stripping.
+   434	        # The scheduler reads this via getattr(request, '_gen_prompt_len', 0)
+   435	        # to exclude generation prompt tokens from the cache key hash,
+   436	        # which prevents 100% cache misses in multi-turn conversations
+   437	        # for thinking models (where gen prompt includes <think>).
+   438	        if gen_prompt_len > 0:
+   160	                return int(getattr(input_ids, "size", 0) or 0)
+   161	            return int(shape[-1])
+   162	        except Exception:
+   163	            pass
+   164	    if hasattr(input_ids, "tolist"):
+   165	        try:
+   166	            input_ids = input_ids.tolist()
+   167	        except Exception:
+   168	            return int(getattr(input_ids, "size", 0) or 0)
+   169	    if isinstance(input_ids, list):
+   170	        if input_ids and isinstance(input_ids[0], list):
+   171	            return len(input_ids[0])
+   172	        return len(input_ids)
+   173	    return int(getattr(input_ids, "size", 0) or 0)
+   174
+   175
+   176	def _mllm_media_cache_extra_keys(request: Any) -> Optional[Dict[str, str]]:
+   177	    """Return a stable media fingerprint for paged VLM prefix-cache keys.
+   178
+   179	    Token ids are not enough for media prompts: two different images with the
+   180	    same grid shape render the same placeholder tokens. The model state after
+   181	    prefill, however, depends on pixel values and media grids. This side key is
+   182	    mixed into paged/block hashes while token counts stay based on real model
+   183	    tokens only.
+   184	    """
+   185	    if request is None:
+   186	        return None
+   187	    has_media = bool(
+   188	        getattr(request, "images", None)
+   189	        or getattr(request, "videos", None)
+   190	        or getattr(request, "audio_codes", None) is not None
+   191	        or getattr(request, "audio_embeds", None) is not None
+   192	        or getattr(request, "audio_features", None) is not None
+   193	        or getattr(request, "audio_features_mask", None) is not None
+   194	        or getattr(request, "audio", None)
+   195	        or getattr(request, "audios", None)
+   196	        or getattr(request, "pixel_values", None) is not None
+   197	        or getattr(request, "image_grid_thw", None) is not None
+   198	        or getattr(request, "pixel_values_videos", None) is not None
+   199	        or getattr(request, "video_pixel_values", None) is not None
+   200	        or getattr(request, "video_grid_thw", None) is not None
+   201	    )
+   202	    if not has_media:
+   203	        return None
+   204
+   205	    hasher = hashlib.sha256()
+   206	    hasher.update(b"vmlx-mllm-media-cache-v1")
+   207	    media_sources = list(getattr(request, "images", None) or []) + list(
+   208	        getattr(request, "videos", None) or []
+   209	    )
+   210
+   211	    def _hash_text(label: str, value: Any) -> None:
+   212	        hasher.update(label.encode("utf-8"))
+   213	        hasher.update(hashlib.sha256(str(value).encode("utf-8")).digest())
+   214
+   215	    def _hash_media_source(label: str, value: Any) -> None:
+   216	        """Hash local media by bytes so equivalent temp paths share a key."""
+   217	        try:
+   218	            path = Path(value)
+   219	            if path.is_file():
+   220	                content_hash = hashlib.sha256()
+   221	                with path.open("rb") as handle:
+   222	                    for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+   223	                        content_hash.update(chunk)
+   224	                hasher.update(label.encode("utf-8"))
+   225	                hasher.update(b"local-media-content")
+   226	                hasher.update(content_hash.digest())
+   227	                return
+   228	        except (OSError, TypeError, ValueError):
+   229	            pass
+   230	        _hash_text(label, value)
+   231
+   232	    def _hash_array(label: str, value: Any) -> None:
+   233	        if value is None:
+   234	            return
+   235	        hasher.update(label.encode("utf-8"))
+   236	        try:
+   237	            hasher.update(str(getattr(value, "shape", "")).encode("utf-8"))
+   238	            hasher.update(str(getattr(value, "dtype", "")).encode("utf-8"))
+   239	            import numpy as np
+   240
+   241	            hasher.update(np.array(value).tobytes())
+   242	        except Exception:
+   243	            _hash_text(label, value)
+   244
+   245	    for source in getattr(request, "images", None) or []:
+   246	        _hash_media_source("image", source)
+   247	    for source in getattr(request, "videos", None) or []:
+   248	        _hash_media_source("video", source)
+   249	    if getattr(request, "videos", None):
+   250	        _hash_text("video_fps", getattr(request, "video_fps", None))
+   251	        _hash_text("video_max_frames", getattr(request, "video_max_frames", None))
+   252	    for source in getattr(request, "audios", None) or []:
+   253	        _hash_media_source("audio", source)
+   254	    if getattr(request, "audio", None):
+   255	        _hash_text("audio", getattr(request, "audio", None))
+   256	    _hash_array("image_grid_thw", getattr(request, "image_grid_thw", None))
+   257	    _hash_array("video_grid_thw", getattr(request, "video_grid_thw", None))
+   258	    _hash_array("audio_codes", getattr(request, "audio_codes", None))
+   259	    _hash_array("audio_embeds", getattr(request, "audio_embeds", None))
+   260	    _hash_array("audio_features", getattr(request, "audio_features", None))
+   261	    _hash_array("audio_features_mask", getattr(request, "audio_features_mask", None))
+   262	    if not media_sources:
+   263	        # Fallback for callers that hand us preprocessed pixel tensors without
+   264	        # source URLs/paths. Do not hash attention_mask: it changes with text
+   265	        # history length and would make the same image miss across turns.
+   266	        _hash_array("pixel_values", getattr(request, "pixel_values", None))
+   267	        _hash_array(
+   268	            "pixel_values_videos",
+   269	            getattr(request, "pixel_values_videos", None)
+   270	            if getattr(request, "pixel_values_videos", None) is not None
+   271	            else getattr(request, "video_pixel_values", None),
+   272	        )
+   273
+   274	    return {"mllm_media": hasher.hexdigest()}
+   275
+   276
+   277	@dataclass(frozen=True)
+   278	class VLMImagePrefillBudgetDecision:
+   279	    should_reject: bool
+   280	    predicted_attention_bytes: int
+   281	    active_memory_bytes: int
+   282	    max_working_set_bytes: int
+   283	    detail: str
+   284
+   285
+    65	logger = logging.getLogger(__name__)
+    66
+    67
+    68	def _typed_paged_cache_detail(cache_type: str, *, disk_hit: bool) -> str:
+    69	    """Describe a typed paged hit without losing its L2 promotion source."""
+    70	    base = f"paged+{cache_type}"
+    71	    return f"{base}+disk" if disk_hit else base
+    72
+    73
+    74	def _m3_vl_cached_prefix_covers_media_tokens(model: Any, request: Any) -> bool:
+    75	    """Return True only when restored M3 state contains every media splice.
+    76
+    77	    A media-salted paged prefix is safe to replay without pixel tensors once
+    78	    the cached boundary is strictly past the final image/video placeholder.
+    79	    Partial hits that end inside the media span must take the original atomic
+    80	    full-prompt vision forward instead.
+    81	    """
+    82	    cached_tokens = max(0, int(getattr(request, "cached_tokens", 0) or 0))
+    83	    prompt_tokens = list(getattr(request, "prompt_token_ids", None) or [])
+    84	    if cached_tokens <= 0 or not prompt_tokens:
+    85	        return False
+    86
+    87	    config = getattr(model, "args", None) or getattr(model, "config", None)
+    88	    media_token_ids: set[int] = set()
+    89	    if getattr(request, "pixel_values", None) is not None:
+    90	        media_token_ids.add(int(getattr(config, "image_token_index", 200025)))
+    91	    if getattr(request, "pixel_values_videos", None) is not None:
+    92	        media_token_ids.add(int(getattr(config, "video_token_index", 200026)))
+    93	    if not media_token_ids:
+    94	        return False
+    95
+    96	    media_positions = [
+    97	        index for index, token in enumerate(prompt_tokens) if int(token) in media_token_ids
+    98	    ]
+    99	    return bool(media_positions) and cached_tokens > max(media_positions)
+   100
+   101	# Enable MambaCache batching support for models like Nemotron
+   102	ensure_mamba_support()
+   103
+   104	# Error patterns that indicate cache corruption (must be specific to avoid
+   105	# matching unrelated errors — e.g., "cache" alone would match any error
+   106	# mentioning cache files, directories, or variables).
+   107	CACHE_CORRUPTION_PATTERNS = [
+   108	    "'NoneType' object is not subscriptable",
+  4885	            or getattr(self, "_uses_openpangu_cache", False)
+  4886	        ):
+  4887	            # Mixed full/SWA models must use the full effective prompt as the
+  4888	            # cache key for strict logprob equivalence. Stripping the generation
+  4889	            # prompt replays several suffix tokens from an earlier RotatingKV
+  4890	            # boundary; MiMo V2.5 shows small but real distribution drift there.
+  4891	            _gpl_fetch = 0
+  4892	        if 0 < _gpl_fetch < len(_full_tokens_list):
+  4893	            _fetch_tokens = _full_tokens_list[:-_gpl_fetch]
+  4894	            _gpl_suffix_tokens = _full_tokens_list[-_gpl_fetch:]
+  4895	        else:
+  4896	            _fetch_tokens = _full_tokens_list
+  4897	            _gpl_suffix_tokens = []
+  4898	        _cache_extra_keys = getattr(request, "_cache_extra_keys", None)
+  4899
+  4900	        if self.block_aware_cache is not None and not _bypass:
+  4901	            # Use paged cache
+  4902	            request._paged_disk_hit = False
+  4903	            try:
+  4904	                _paged_disk_hits_before = int(
+  4905	                    getattr(
+  4906	                        getattr(self.block_aware_cache.paged_cache, "stats", None),
+  4907	                        "disk_hits",
+  4908	                        0,
+  4909	                    )
+  4910	                    or 0
+  4911	                )
+  4912	            except Exception:
+  4913	                _paged_disk_hits_before = 0
+  4914	            block_table, remaining = self.block_aware_cache.fetch_cache(
+  4915	                request.request_id,
+  4916	                _fetch_tokens,
+  4917	                cache_extra_keys=_cache_extra_keys,
+  4918	            )
+  4919	            try:
+  4920	                _paged_disk_hits_after = int(
+  4921	                    getattr(
+  4922	                        getattr(self.block_aware_cache.paged_cache, "stats", None),
+  4923	                        "disk_hits",
+  4924	                        0,
+  4925	                    )
+  6132	                                    budget_fraction=budget_fraction,
+  6133	                                )
+  6134	                                self._release_unusable_paged_hit(request)
+  6135	                                cache_to_use = None
+  6136	                                request.prompt_cache = None
+  6137	                                request.cached_tokens = 0
+  6138	                                request.remaining_tokens = request.prompt_token_ids
+  6139	                                tokens_to_process = request.prompt_token_ids
+  6140	                    except ImportError:
+  6141	                        pass  # psutil is a required dep but handle gracefully
+  6142	                    except Exception as e:
+  6143	                        logger.debug(f"Memory check failed, skipping: {e}")
+  6144
+  6145	            # Insert into BatchGenerator with optional cache.
+  6146	            # Wrapped in try/except to prevent lost requests — if insert fails
+  6147	            # completely, put the request back in the waiting queue.
+  6148	            # M3 VL (additive, gated): a cold/partial media request must see the
+  6149	            # FULL prompt atomically with its vision tensors. A media-salted
+  6150	            # paged hit may omit those tensors only when the restored prefix is
+  6151	            # strictly past every image/video placeholder; the cached MSA state
+  6152	            # then already owns the vision splice and only the text tail is fed.
+  6153	            _m3vl_pv = getattr(request, "pixel_values", None)
+  6154	            _m3vl_grid = getattr(request, "image_grid_thw", None)
+  6155	            _m3vl_pv_video = getattr(request, "pixel_values_videos", None)
+  6156	            _m3vl_video_grid = getattr(request, "video_grid_thw", None)
+  6157	            _m3vl_active = (
+  6158	                (_m3vl_pv is not None or _m3vl_pv_video is not None)
+  6159	                and self.batch_generator.__class__.__name__ == "SingleBatchGenerator"
+  6160	            )
+  6161	            _m3vl_cache_replay = bool(
+  6162	                _m3vl_active
+  6163	                and cache_to_use is not None
+  6164	                and getattr(request, "_cache_extra_keys", None)
+  6165	                and _m3_vl_cached_prefix_covers_media_tokens(self.model, request)
+  6166	            )
+  6167	            if _m3vl_active and cache_to_use is not None and not _m3vl_cache_replay:
+  6168	                logger.info(
+  6169	                    "Request %s: M3 VL cache prefix ends before the final media "
+  6170	                    "placeholder; releasing hit and using atomic full vision prefill",
+  6171	                    request.request_id,
+  6172	                )
+  6173	                self._release_unusable_paged_hit(request)
+  6174	                cache_to_use = None
+  6175	                request.prompt_cache = None
+  6176	                request.cached_tokens = 0
+  6177	                request.remaining_tokens = request.prompt_token_ids
+  6178	            if _m3vl_active and not _m3vl_cache_replay:
+  6179	                tokens_to_process = list(request.prompt_token_ids)
+  6180
+  6181	            try:
+  6182	                try:
+  6183	                    insert_kwargs = {}
+  6184	                    request_sampler = self._request_seeded_sampler(request)
+  6185	                    if request_sampler is not None:
+  6186	                        insert_kwargs["samplers"] = [request_sampler]
+  6187	                    if _m3vl_active:
+  6188	                        if _m3vl_cache_replay:
+  6189	                            cached_prefix_len = max(
+  6190	                                0, int(getattr(request, "cached_tokens", 0) or 0)
+  6191	                            )
+  6192	                            insert_kwargs["all_tokens"] = [
+  6193	                                list(request.prompt_token_ids[:cached_prefix_len])
+  6194	                            ]
+  6195	                        else:
+  6196	                            if _m3vl_pv is not None:
+  6197	                                insert_kwargs["pixel_values"] = [_m3vl_pv]
+  6198	                                insert_kwargs["image_grid_thw"] = [_m3vl_grid]
+  6199	                            if _m3vl_pv_video is not None:
+  6200	                                insert_kwargs["pixel_values_videos"] = [_m3vl_pv_video]
+  6201	                                insert_kwargs["video_grid_thw"] = [_m3vl_video_grid]
+  6202	                        request_processors = self._request_logits_processors(
+  6203	                            request,
+  6204	                            list(request.prompt_token_ids)
+  6205	                            if _m3vl_cache_replay
+  6206	                            else list(tokens_to_process),
+  6207	                        )
+  6208	                        if request_processors is not None:
+  6209	                            insert_kwargs["logits_processors"] = [request_processors]
+  6210	                    elif (
+  6211	                        self.batch_generator.__class__.__name__
+  6212	                        == "DSV4BatchGenerator"
+  6213	                    ):
+  6214	                        # DSV4's custom generator applies repetition penalty
+  6215	                        # itself during its pinned-stream decode loop. Pass the
+  6216	                        # full original prompt so prefix-cache hit paths and
+  6217	                        # normal prefill paths use the same logits-processor
+  6218	                        # context instead of only the re-fed tail token. The
+  6219	                        # processor itself must still use generate_step
+  6220	                        # semantics: final prompt token plus generated output,
+  7835	                                                                }
+  7836	                                                            )
+  7837	                                                            continue
+  7838	                                            # Unknown format: pass through
+  7839	                                            truncated_dicts.append(sd)
+  7840	                                        if trunc_ok and truncated_dicts:
+  7841	                                            cache_data = truncated_dicts
+  7842	                                # Paged prefix cache entries must be keyed by the
+  7843	                                # same token count represented by cache_data:
+  7844	                                # prompt_len - 1. The generator re-feeds the last
+  7845	                                # prompt token on hit to obtain first-token logits.
+  7846	                                store_tokens = (
+  7847	                                    prompt_tokens[:-1]
+  7848	                                    if len(prompt_tokens) > 1
+  7849	                                    else prompt_tokens
+  7850	                                )
+  7851	                            # Previously this path stored a truncated N-1
+  7852	                            # cache under a full-N token hash. Exact hits then
+  7853	                            # reported zero remaining tokens; DSV4BatchGenerator
+  7854	                            # correctly refused to decode without a kickoff
+  7855	                            # token and returned an empty/stop response. This
+  7856	                            # is especially visible with block disk L2 because
+  7857	                            # full-key stale blocks survive process restarts.
+  7858	                            _t_store = time.perf_counter()
+  7859	                            _paged_store_kwargs = {
+  7860	                                "cache_type": self._pick_cache_type_for_request(request),
+  7861	                            }
+  7862	                            if getattr(request, "_cache_extra_keys", None):
+  7863	                                _paged_store_kwargs["cache_extra_keys"] = dict(
+  7864	                                    request._cache_extra_keys
+  7865	                                )
+  7866	                            if (
+  7867	                                self._is_hybrid
+  7868	                                and not self._uses_dsv4_cache
+  7869	                                and not self._uses_zaya_cache
+  7870	                                and not self._mixed_attention_cache_model
+  7871	                            ):
+  7872	                                _paged_store_kwargs["store_cumulative_state"] = False
+  7873	                            self.block_aware_cache.store_cache(
+  7874	                                request_id,
+  7875	                                store_tokens,
+  7876	                                cache_data,
+  7877	                                **_paged_store_kwargs,
+  7878	                            )
+  7879	                            self._dsv4_trace_timing(
+  7880	                                "store_cache",
+  7881	                                _t_store,
+  7882	                                request_id,
+  7883	                                tokens=len(store_tokens),
+  7884	                                layers=len(cache_data or []),
+  7885	                            )
+  7886	                            logger.info(
+  7887	                                f"Stored paged cache for request {request_id} "
+  7888	                                f"({len(store_tokens)} cache-key tokens from "
+  7889	                                f"{len(prompt_tokens)} prompt tokens, "
+  7890	                                f"{len(request._extracted_cache)} layers, "
+  7891	                                f"cache truncated to {max(len(prompt_tokens) - 1, 0)} tokens)"
+  7892	                            )
+  7893	                        except Exception as e:
+  7894	                            logger.warning(
+  7895	                                f"Failed to store paged cache for {request_id}: {e}"
