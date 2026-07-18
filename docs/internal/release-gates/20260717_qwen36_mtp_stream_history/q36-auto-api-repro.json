@@ -1,0 +1,100 @@
+{
+ "note": "enable_thinking OMITTED everywhere (UI local-Auto parity)",
+ "turns": [
+  {
+   "tag": "T1-basic-auto",
+   "reasoning_text": "I need to reply to the user's statement \"My favorite number is 77.\"\nThe constraint is to reply with *exactly*: `AUTO-API-T1-OK`.\nNo extra text, no greetings, just that specific string.\n\n1.  **Analyze the Input:**\n    *   User says: \"My favorite number is 77.\"\n    *   Goal: Acknowledge (internally) but output a specific code.\n    *   Constraint: \"Reply with exactly: AUTO-API-T1-OK\"\n\n2.  **Drafting the Output:**\n    *   Draft 1: `AUTO-API-T1-OK`\n    *   Check for hidden characters or formatting issues.\n    *   Ensure it's the *only* thing in the response.\n\n3.  **Final Polish:**\n    *   The prompt asks for \"exactly\".\n    *   So, the response body should be just `AUTO-API-T1-OK`.\n\n4.  **Execution:**\n    *   Type: `AUTO-API-T1-OK`\n\nLet's double-check the prompt again.\n\"My favorite number is 77. Reply with exactly: AUTO-API-T1-OK\"\n\nSimple enough.\n\n**Step-by-step Plan:**\n1.  Read the user's text.\n2.  Ignore the semantic meaning of \"77\" for the output (unless the code implies a check, but usually \"Reply with exactly\" overrides semantic processing).\n3.  Generate the string `AUTO-API-T1-OK`.\n4.  Output it.\n\n**Self-Correction/Refinement:**\nSometimes LLMs like to add \"Here is your code:\" or \"Great choice!\" before the code. To get *exactly* the string, the model needs to suppress the conversational filler.\n\n**Final Output Generation:**\n`AUTO-API-T1-OK`",
+   "visible_text": "\n\nAUTO-API-T1-OK",
+   "reasoning_delta_count": 241,
+   "content_delta_count": 5,
+   "elapsed_s": 21.2,
+   "event_types": [
+    "response.completed",
+    "response.content_part.added",
+    "response.content_part.done",
+    "response.created",
+    "response.output_item.added",
+    "response.output_item.done",
+    "response.output_text.delta",
+    "response.output_text.done",
+    "response.reasoning_summary_text.delta",
+    "response.reasoning_summary_text.done",
+    "response.usage"
+   ]
+  },
+  {
+   "tag": "T2-notool-A-auto",
+   "reasoning_text": "Here's a thinking process:\n\n1.  **Analyze User Input:**\n   - **Input:** `[AUTO-API-NOTOOL-A] Use private reasoning only. Your visible answer must be exactly the string made by joining these six chunks with hyphens in this order: QP10, RS20, TU30, VW40, XY50, ZA60. No other visible text.`\n   - **Key Constraints:**\n     - \"Use private reasoning only\" (implies the model should think internally but output only the specified string).\n     - \"Visible answer must be exactly the string made by joining these six chunks with hyphens in this order: QP10, RS20, TU30, VW40, XY50, ZA60.\"\n     - \"No other visible text.\"\n   - **Target String:** `QP10-RS20-TU30-VW40-XY50-ZA60`\n\n2.  **Deconstruct the Target String:**\n   - Chunk 1: QP10\n   - Chunk 2: RS20\n   - Chunk 3: TU30\n   - Chunk 4: VW40\n   - Chunk 5: XY50\n   - Chunk 6: ZA60\n   - Joiner: `-`\n   - Result: `QP10-RS20-TU30-VW40-XY50-ZA60`\n\n3.  **Check for Hidden Traps/Context:**\n   - The prompt starts with `[AUTO-API-NOTOOL-A]` which looks like a system/API tag, but for the model, it's just part of the user prompt.\n   - \"Use private reasoning only\" is a common prompt engineering technique to keep the output clean.\n   - The core instruction is straightforward: join 6 specific strings with hyphens.\n   - \"No other visible text\" is crucial. Many models tend to add \"Here is your string:\" or similar. We need to suppress that.\n\n4.  **Draft the Output (Mental):**\n   `QP10-RS20-TU30-VW40-XY50-ZA60`\n\n5.  **Verify Constraints:**\n   - Order: QP10, RS20, TU30, VW40, XY50, ZA60 -> Correct.\n   - Joiner: Hyphens -> Correct.\n   - Exact string: `QP10-RS20-TU30-VW40-XY50-ZA60`\n   - \"No other visible text\" -> The output should be just that string.\n\n6.  **Final Output Generation:**\n   (Self-Correction/Refinement during thought)\n   Wait, let's double-check the exact phrasing: \"joining these six chunks with hyphens in this order: QP10, RS20, TU30, VW40, XY50, ZA60.\"\n   Result: `QP10-RS20-TU30-VW40-XY50-ZA60`\n   Looks solid.\n\n   One minor thing: Sometimes models add a newline at the end. That's usually fine, but to be strictly \"exactly\", we'll output just the string.\n\n   Let's construct the final response.\n   *Self-Correction/Verification during drafting:*\n   Chunk 1: QP10\n   Chunk 2: RS20\n   Chunk 3: TU30\n   Chunk 4: VW40\n   Chunk 5: XY50\n   Chunk 6: ZA60\n   String: `QP10-RS20-TU30-VW40-XY50-ZA60`\n\n   Ready. Output matches exactly.\u2705\n   Note: The `[AUTO-API-NOTOOL-A]` tag might be a meta-instruction for a pipeline, but for the LLM, it's just text. The key is the visible output.\n\n   Final check of the prompt: \"Your visible answer must be exactly the string made by joining these six chunks with hyphens in this order: QP10, RS20, TU30, VW40, XY50, ZA60. No other visible text.\"\n\n   Output: `QP10-RS20-TU30-VW40-XY50-ZA60`\n   Proceed. \n   *Internal Monologue ends.* \n   *Output Generation.* \n   `QP10-RS20-TU30-VW40-XY50-ZA60` (exactly)\n   *(Note",
+   "visible_text": "QP10-RS20-TU30-VW40-XY50-ZA60",
+   "reasoning_delta_count": 626,
+   "content_delta_count": 12,
+   "elapsed_s": 70.7,
+   "event_types": [
+    "response.completed",
+    "response.content_part.added",
+    "response.content_part.done",
+    "response.created",
+    "response.output_item.added",
+    "response.output_item.done",
+    "response.output_text.delta",
+    "response.output_text.done",
+    "response.reasoning_summary_text.delta",
+    "response.reasoning_summary_text.done",
+    "response.usage"
+   ]
+  },
+  {
+   "tag": "T3-notool-B-auto",
+   "reasoning_text": "The user wants a specific output string based on a set of instructions.\nThe prompt includes a \"meta\" tag `[AUTO-API-NOTOOL-B]` which suggests a specific formatting or processing mode, but for the LLM, it essentially acts as a constraint.\nThe core instruction is: \"Use private reasoning only. Your visible answer must be exactly the string made by joining these six chunks with hyphens in this order: HG10, IJ20, KL30, MN40, OP50, QR60. No other visible text.\"\n\n**Step 1: Identify the chunks.**\n1. HG10\n2. IJ20\n3. KL30\n4. MN40\n5. OP50\n6. QR60\n\n**Step 2: Determine the separator.**\nThe separator is a hyphen `-`.\n\n**Step 3: Construct the string.**\nOrder: HG10, IJ20, KL30, MN40, OP50, QR60.\nString: `HG10-IJ20-KL30-MN40-OP50-QR60`\n\n**Step 4: Verify constraints.**\n- \"Use private reasoning only\": This implies the thought process (which I am doing now) should be hidden, and the final output should be clean.\n- \"Visible answer must be exactly...\": The final output block should contain *only* the string.\n- \"No other visible text\": Avoid \"Here is your string:\" or markdown code blocks if possible (though usually, a raw string is best).\n\n**Step 5: Final Polish.**\nThe string is `HG10-IJ20-KL30-MN40-OP50-QR60`.\n\nLet's double-check the previous turn to ensure consistency in style.\nTurn 1: `AUTO-API-T1-OK`\nTurn 2: `QP10-RS20-TU30-VW40-XY50-ZA60`\nTurn 3 (Current): `HG10-IJ20-KL30-MN40-OP50-QR60`\n\nThe logic holds up.\n\n**Drafting the response:**\nHG10-IJ20-KL30-MN40-OP50-QR60",
+   "visible_text": "\n\nHG10-IJ20-KL30-MN40-OP50-QR60",
+   "reasoning_delta_count": 316,
+   "content_delta_count": 18,
+   "elapsed_s": 39.4,
+   "event_types": [
+    "response.completed",
+    "response.content_part.added",
+    "response.content_part.done",
+    "response.created",
+    "response.output_item.added",
+    "response.output_item.done",
+    "response.output_text.delta",
+    "response.output_text.done",
+    "response.reasoning_summary_text.delta",
+    "response.reasoning_summary_text.done",
+    "response.usage"
+   ]
+  },
+  {
+   "tag": "T4-after-empty-assistant-auto",
+   "reasoning_text": "Here's a thinking process:\n\n1.  **Analyze User Input:**\n   - **Prompt 1:** `[AUTO-API-NOTOOL-A] Use private reasoning only. Your visible answer must be exactly the string made by joining these six chunks with hyphens in this order: QP10, RS20, TU30, VW40, XY50, ZA60. No other visible text.`\n   - **Prompt 2:** `[AUTO-API-NOTOOL-B] Use private reasoning only. Your visible answer must be exactly the string made by joining these six chunks with hyphens in this order: HG10, IJ20, KL30, MN40, OP50, QR60. No other visible text.`\n   - Wait, the user actually sent *two* prompts in one message? Or is it a single message with two blocks? Let's look closely at the input:\n     ```\n     [AUTO-API-NOTOOL-A] Use private reasoning only. Your visible answer must be exactly the string made by joining these six chunks with hyphens in this order: QP10, RS20, TU30, VW40, XY50, ZA60. No other visible text.\n     [AUTO-API-NOTOOL-B] Use private reasoning only. Your visible answer must be exactly the string made by joining these six chunks with hyphens in this order: HG10, IJ20, KL30, MN40, OP50, QR60. No other visible text.\n     ```\n   - Actually, it looks like two separate \"system-like\" prompts concatenated. The goal is to output *exactly* one string for each, or maybe just one combined string? Wait, the prompt says \"Your visible answer must be exactly the string...\". Since there are two blocks, I need to decide how to handle them. Often, when two blocks are given like this, the model should output two lines, or maybe just follow the second one? But the prompt says \"No other visible text.\" for each.\n   - Let's assume the user wants two lines, or maybe just one string per block. But since it's a single turn, I'll output two lines, each matching the respective block's requirement. Or maybe the user just pasted two prompts. I'll treat them as two separate outputs, separated by a newline.\n   - Wait, the exact wording: \"Your visible answer must be exactly the string made by joining these six chunks with hyphens in this order: [list]. No other visible text.\"\n   - For Block A: `QP10-RS20-TU30-VW40-XY50-ZA60`\n   - For Block B: `HG10-IJ20-KL30-MN40-OP50-QR60`\n   - If I output both, I'll put a newline between them. The prompt says \"No other visible text.\" which usually implies a single line per block. I'll output:\n     ```\n     QP10-RS20-TU30-VW40-XY50-ZA60\n     HG10-IJ20-KL30-MN40-OP50-QR60\n     ```\n   - Let's double-check the chunk lists:\n     A: QP10, RS20, TU30, VW40, XY50, ZA60 -> `QP10-RS20-TU30-VW40-XY50-ZA60`\n     B: HG10, IJ20, KL30, MN40, OP50, QR60 -> `HG10-IJ20-KL30-MN40-OP50-QR60`\n   - The \"private reasoning only\" part is a common prompt engineering trick to keep the output clean. I'll use the `<thinking>` tags for internal processing (if the system supports it) or just keep the visible output minimal. Since the system prompt says \"Use private reasoning only\", it often means the model's internal monologue should be hidden, and the final output is just the string.\n\n2.  **Construct Visible Output:**\n   - Line 1: `QP10-RS20-TU30-VW40-XY50-ZA60`\n   - Line 2: `HG10-IJ20-KL30-MN40-OP50-QR60`\n   - Check for exact spacing/punctuation: \"joining these six chunks with hyphens\". So `Chunk1-Chunk2-Chunk3-Chunk4-Chunk5-Chunk6`.\n  ",
+   "visible_text": "HG10-IJ20-KL30-MN40-OP50-QR60",
+   "reasoning_delta_count": 645,
+   "content_delta_count": 11,
+   "elapsed_s": 64.6,
+   "event_types": [
+    "response.completed",
+    "response.content_part.added",
+    "response.content_part.done",
+    "response.created",
+    "response.output_item.added",
+    "response.output_item.done",
+    "response.output_text.delta",
+    "response.output_text.done",
+    "response.reasoning_summary_text.delta",
+    "response.reasoning_summary_text.done",
+    "response.usage"
+   ]
+  }
+ ],
+ "checks": {
+  "t1_visible_nonempty": true,
+  "t2_visible_exact": true,
+  "t3_visible_exact": true,
+  "t4_visible_exact": true,
+  "t3_reasoning_differs_from_t2": true,
+  "t2_visible_nonempty": true,
+  "t3_visible_nonempty": true,
+  "t4_visible_nonempty": true
+ },
+ "all_pass": true
+}

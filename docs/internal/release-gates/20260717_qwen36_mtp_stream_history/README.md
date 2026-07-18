@@ -135,3 +135,20 @@ present; required live Electron evidence is missing.
   runs blocked until `codex login` on the box; current run drives the box UI
   from max2 through an SSH tunnel of 9335.
 - Row status remains **PARTIAL** until that visual evidence lands.
+
+## 2026-07-17 21:5x — Auto-mode API rail VERIFIED-LIVE (NOTOOL repro PASS)
+
+- New evidence: `q36-auto-api-repro.json`. Responses streams with
+  `enable_thinking` OMITTED end-to-end (exact parity with the UI local-Auto
+  rail, which omits the field so the template default decides), against the
+  live restarted server (parsers qwen/qwen3, MTP depth 3, paged+disk cache).
+- 4/4 turns PASS: T1 visible `AUTO-API-T1-OK`; NOTOOL-A visible EXACTLY
+  `QP10-RS20-TU30-VW40-XY50-ZA60`; NOTOOL-B visible EXACTLY
+  `HG10-IJ20-KL30-MN40-OP50-QR60`; turn-after-empty-assistant-row also exact.
+  T3 reasoning text differs from T2 (no byte-identical replay). All visible
+  texts non-empty.
+- Conclusion: the engine/API rail does NOT reproduce
+  `Q36MTP-UI-REASONING-REPLAY` on the patched build in Auto mode. Remaining
+  suspect surface is the panel rail (history persistence/harvest/rendering) —
+  Codex gpt-5.6-sol UI A-E rerun now in flight on the running session.
+- Row status: still **PARTIAL** pending the live Electron visual proof.
