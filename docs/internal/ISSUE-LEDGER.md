@@ -1555,3 +1555,18 @@ remain open. No public release/notarization/feed mutation performed.
   AND/OR persist the re-resolved path back to the session record at launch.
   Repro: any session whose stored path differs from launch-resolved path.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 12:5x - CHAT-SESSION-MODELPATH-IDENTITY-MISMATCH CLOSED-BY-LIVE-PROOF
+
+- Refined root cause: TWO session rows for one model (path-prefix twins:
+  ~/models symlink vs /Volumes real dir — create dedupes by raw path); the
+  chat stayed pinned to the STOPPED twin while the usable one served.
+  Fix (commit above): App.tsx active-session resolution falls back from a
+  non-usable pinned session to a usable same-identity session
+  (sessionMatchesModelPath). Live: MM2.7 chat composer enabled, banner
+  gone, UI turn exact `MM27-UI-T1-OK` (29 tokens, wake from standby).
+  Panel 2301 tests + typecheck green. Relaunch also ACTIVATED the
+  stop-log-retention fix (0fbddfce8) — postmortem buffers now live.
+  Follow-up (P3): dedupe session creation by model identity to stop
+  spawning path-prefix twins in the first place.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
