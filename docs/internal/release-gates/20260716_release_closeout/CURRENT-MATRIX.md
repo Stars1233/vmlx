@@ -22,6 +22,14 @@ superseded conclusions are called out here.
 - Source versions are `1.6.11` in `pyproject.toml`,
   `vmlx_engine/__init__.py`, and `panel/package.json`.
 - Public GitHub app release, PyPI, and `mlxstudio/latest.json` are all 1.6.10.
+- Version-truth reconciliation (2026-07-18, live-verified): the PUBLIC feed
+  `jjang-ai/mlxstudio` `latest.json` serves 1.6.10 (curl raw, today). The
+  repo-TRACKED `latest.json` on this branch still reads 1.5.67: it is a
+  release-process artifact only rewritten by the publish chain at release time
+  on the releasing branch, never a live pointer — this branch forked from the
+  1.5.68 reconcile lineage and has not run a publish. Source versions 1.6.11
+  are the unreleased candidate. No feed/publish change is made or allowed
+  without a separate explicit PUBLISH.
 - The Laguna parser-default migration is committed and pushed as `7b45676ce`.
   Current Electron main launched PID 32806 with `--tool-call-parser glm47`,
   and the session is stamped migration version 1.
