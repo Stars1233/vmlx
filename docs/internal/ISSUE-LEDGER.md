@@ -1396,3 +1396,21 @@ remain open. No public release/notarization/feed mutation performed.
 - Matrix q4-TQ confirmations: Hy3 ✓ Gemma ✓ Laguna ✓ Step(x2) ✓ Nemotron ✓;
   remaining MM2.7. Matrix rows: 8/9 core (MM2.7 + M3 remain).
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 09:3x - MM2.7 row: q4 TQ complete (6/6 families); PAGED-DEFAULT MISSING on session (P2)
+
+- MiniMax-M2.7-Small-JANGTQ (session f73768eb, port 8005): autodetect
+  correct (minimax family, minimax/minimax_m2 parsers, NO VL — contract
+  held). Q4 TQ CONFIRMED — MATRIX-Q4-TQ-POLICY-CONFIRMATION row COMPLETE:
+  Hy3/Gemma/Laguna/Step(x2)/Nemotron/MM2.7 all turboquant-q4, Bonsai q8
+  exception, DSV4/M3-class native excluded. Cold+warm exact answers,
+  reasoning separated, coherent (#95 lineage holds).
+- `MM27-PAGED-DEFAULT-MISSING`: OPEN (P2, cache-defaults wiring). Session
+  argv contains NO --use-paged-cache/--enable-prefix-cache/
+  --enable-block-disk-cache; scheduler warm miss (hits 0, misses 2) on an
+  identical ~750-token prompt. Per paged-default-ON directive (excludes
+  only M3/openpangu_v2/gemma4), MM2.7 should get paged+disk by default.
+  Suspect stale saved session config predating the cache-stack migration
+  (check cacheStackStartupDefaultsVersion migration path in sessions.ts for
+  this session) — CACHE-DEFAULTS-UI-WIRING-MATRIX row to verify + fix.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
