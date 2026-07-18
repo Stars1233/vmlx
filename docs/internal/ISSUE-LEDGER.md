@@ -1637,3 +1637,22 @@ remain open. No public release/notarization/feed mutation performed.
   bundle-python + packaging/signing/notarization; paged-policy decision
   (v7 OFF vs 07-12 ON on this branch); DSV4 sampling regen (jang-tools).
 - `RELEASE`: remains `PARTIAL_NO_RELEASE` pending held gates.
+
+## 2026-07-18 15:2x - Session dedupe CLOSED. CAMPAIGN TESTABLE SCOPE COMPLETE.
+
+- Session-dedupe-by-identity: CLOSED-BY-LIVE-PROOF (commit above). Create
+  with a path-variant of an existing identity reused the row (34 -> 34
+  sessions). Panel 2302 tests + typecheck green.
+- CAMPAIGN STATE (2026-07-17/18 overnight): 14 defects closed by live
+  proof; core matrix 9/9 with UI turns; JANGTQ-vs-affine variant coverage
+  across 8 families; q4-TQ policy row complete; eviction/L2 lifecycle
+  proven (142 evictions, disk restore); settings parity (M3 + JIT rows);
+  VL media rail functional; hosts+GH synced throughout.
+- REMAINING (all HELD for Eric): (1) packaging chain — bundle-python.sh,
+  build-release-dmgs, notarize, verify, publish (explicit permission
+  required); (2) paged-default policy for reconcile/1.5.68 (v7 OFF
+  currently, 07-12 ON directive exists in v1.6.x line); (3) DSV4
+  generation_config sampling regen (jang-tools); (4) optional follow-ups:
+  UI-attach media flow, media-salt axis, Omni audio rows, box codex
+  compaction issue.
+- `RELEASE`: `PARTIAL_NO_RELEASE` — blocked ONLY on the held gates above.
