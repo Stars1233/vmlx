@@ -896,3 +896,33 @@ remain open. No public release/notarization/feed mutation performed.
   pass (run6) stands. Evidence: ui-proof/run6-toolloop-pass.png,
   ui-proof/run7-dialect-guard-pass.png, panel log lines in gate README.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE` (matrix rows pending).
+
+## 2026-07-17 23:0x - Bonsai row: swap-kill verified, q8 TQ policy verified, two truthfulness defects
+
+- `SINGLE-MODEL-SWAP-ORPHANS-ADOPTED-SERVER`: CLOSED-NOT-REPRODUCIBLE.
+  Controlled repro: with adopted Qwen server pid 19298 live on 8032, starting
+  Bonsai session 5fd14571 logged the single-model stop and pid 19298 was DEAD
+  within seconds. The 21:0x suspicion was concurrent-manual-use observation
+  ordering, not a defect.
+- Bonsai-27b-1bit-JANG live row (port 8030, paged+disk, TQ Auto):
+  bundle ground truth model_type=qwen3_5 + vision_config (autodetect
+  family/VLM CORRECT); q8 policy ACTIVE per /v1/cache/stats
+  turboquant_kv_cache: enabled=true, storage q8 (key/value bits 8),
+  auto_policy bonsai_hybrid_*, tq_native_writes=15/tq_native_hits=135,
+  native_cache hybrid_ssm_typed. Cold+warm chat turns: exact visible
+  BONSAI-T1-OK / BONSAI-LONG-OK, reasoning separated; scheduler hits=6,
+  tokens_saved=2703 (870-token warm prefix reused).
+- `HEALTH-KV-QUANT-FLAG-FALSE-WHILE-TQ-ACTIVE`: OPEN (P1, truthfulness;
+  carries over 20260716 PARTIAL, now precisely reproduced). /health
+  kv_cache_quantization={enabled:false} while storage TQ q8 is active with
+  live native writes/hits. Suspect: summary reads live_encode_enabled
+  (false, compress_after=0 per TQ-KV-NEVER-compresses finding) instead of
+  storage_encode_enabled. Fix in vmlx_engine server health assembly +
+  regression test; then live re-proof.
+- `USAGE-CACHED-TOKENS-MISSING-NONSTREAM-CHAT`: OPEN (P1, truthfulness).
+  Non-stream /v1/chat/completions usage on Bonsai omitted
+  cached_tokens/cache_detail on a warm 870-token identical prompt while
+  scheduler_cache counted the hit (hits 6, tokens_saved 2703). Responses/
+  stream rails report these (Q36 rows show cache_detail). Verify grammar per
+  CACHE_DETAIL_GRAMMAR.md across rails; fix usage assembly; retest.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
