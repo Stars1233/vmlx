@@ -1227,3 +1227,22 @@ remain open. No public release/notarization/feed mutation performed.
 - Matrix progress: Qwen3.6 ✓ Bonsai ✓ DSV4 (effort-none P1 open) ✓ Hy3 ✓
   Gemma ✓; next Laguna, Step 3.7, Nemotron, MM2.7, M3.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 05:2x - Laguna row PARTIAL: q4 TQ + cold pass; two open findings
+
+- Laguna-M.1-JANG_2L (session 01bf750a, port 8015): autodetect correct
+  (laguna, glm47/qwen3). Q4 TQ CONFIRMED (turboquant-q4 bits 4/4). Cold
+  exact "Busan LAGUNA-cold-DONE" + reasoning separated. Warm cached 832,
+  detail `paged+tq-native`, non-stream usage working (5th arch).
+- `LAGUNA-DEFAULT-REASONING-CHECK`: OPEN. Default turn (no reasoning
+  params) produced 877-char reasoning_content with exact visible answer.
+  July-11 contract said template-omitted-default-OFF; M.1 may legitimately
+  default thinking ON in its template — ground against the bundle
+  chat_template before classifying. Visible content non-empty (the old
+  empty-output failure is NOT present).
+- `LAGUNA-WARM-TRAILING-SPILL`: OPEN (P2). Warm turn visible content ran
+  past the answer marker: "Busan\n\nLAGUNA-warm-DONE\n\nThe problem
+  involves a se..." — analysis-like prose after the marker ONLY on the
+  warm/cached turn (cold clean). Suspect glm47 parser state on cache-restore
+  or model rambling; needs streamed-delta capture on a warm turn to decide.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
