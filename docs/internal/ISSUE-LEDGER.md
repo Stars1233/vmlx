@@ -1487,3 +1487,16 @@ remain open. No public release/notarization/feed mutation performed.
   verification, media/VL rows (Omni/Gemma/Qwen images), paged-policy
   question for Eric, bundle-python + packaging/signing/notarization gates.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 11:2x - Eviction probe round 1: capacity healthy, eviction NOT yet exercised (PARTIAL)
+
+- `MATRIX-PAGED-EVICTION-L2-DEEP-CHECK`: PARTIAL round 1 (Bonsai 8030,
+  /tmp/evict-probe.json). 16 distinct ~2200-token prompts: hits 0->17,
+  oldest prefix re-queried with 2207/2208 cached `paged+ssm` and exact
+  coherent answer — multi-prefix L1 retention + restore healthy. BUT
+  evictions stayed 0: total ~35k tokens < 64k block capacity (1000x64),
+  so the eviction axis was NOT exercised; also my probe read disk_writes
+  from the wrong health field (null) — fix the field path. ESCALATION:
+  round 2 with ~35 prompts (>64k tokens) to force eviction, then re-query
+  an evicted prefix expecting disk_hits increment + `+disk` detail.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
