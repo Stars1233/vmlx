@@ -1102,3 +1102,14 @@ remain open. No public release/notarization/feed mutation performed.
   rebound-chat continuation capture, DSV4-Flash row, remaining matrix).
 - Bundled-python note for next release build: engine changes tonight
   (1657ed312, aff768f75) require scripts/bundle-python.sh before packaging.
+
+## 2026-07-18 02:1x - ENGINE-AFFINE-JIT-DEFAULT-HYGIENE CLOSED-BY-LIVE-PROOF
+
+- `ENGINE-AFFINE-JIT-DEFAULT-HYGIENE`: CLOSED (commit above). cli.py affine
+  JIT default now gated on is_mllm/hybrid cache_type; Bonsai restart logs
+  "JIT default stays OFF: multimodal/VLM streaming path is not mx.compile
+  safe" and the old "defaulting --enable-jit ON" line is gone (0 vs 1 in
+  session log). Regression tests/test_affine_jit_default_gate.py.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE` (next: DSV4-Flash row, then
+  Hy3/Gemma/Laguna/Step/Nemotron/MiniMax matrix; bundle-python before any
+  packaging).
