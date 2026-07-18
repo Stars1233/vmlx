@@ -1168,3 +1168,22 @@ remain open. No public release/notarization/feed mutation performed.
   from prior sessions are used when RAM cache is cold (proven once on
   Bonsai cold-after-restart paged+ssm+disk — repeat per architecture).
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 04:0x - Hy3+MTP row: q4 TQ + MTP d1 + cold-L2/warm-paged VERIFIED-LIVE
+
+- Hy3-JANG_2K-MTP (session 08921892, port 8010, 73.7GB): autodetect correct
+  (hy3, hunyuan/qwen3, VLM false). MTP depth-1 ACTIVE (config
+  num_nextn_predict_layers=1, jang_mtp_layers=1, index tensors present).
+  Q4 TQ POLICY CONFIRMED (MATRIX-Q4-TQ-POLICY row, Hy3 ✓):
+  kv_cache_quantization {enabled:true, mode:turboquant-storage, bits:4,
+  turboquant-q4} — truthful summary working on a third architecture.
+  API cold: exact "Busan HY3-cold-DONE", reasoning 1239 separated, detail
+  `paged+disk+tq-native` (10 tokens restored from OLD disk L2 —
+  MATRIX-PAGED-EVICTION-L2 partial evidence: cross-session L2 reuse on
+  cold). Warm: exact "Busan HY3-warm-DONE", 640/695 cached,
+  `paged+tq-native`, coherent + self-consistent (MoE MTP gate met; byte
+  inequality expected and observed only in reasoning length).
+- Hy3 row remaining: UI fresh-chat turn; full eviction-past-L1-ceiling
+  deep check (fill beyond cache-memory-percent, verify write-through-first
+  eviction + restore-from-evicted-L2).
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
