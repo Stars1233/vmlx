@@ -1,0 +1,49 @@
+{
+  "source_commit": "dc3b9c491",
+  "source_tests": {
+    "panel_focused": "45/45 passed",
+    "panel_typecheck": "passed"
+  },
+  "electron": {
+    "main_pid": 85736,
+    "model": "dealignai/Qwen3.6-27B-MXFP8-CRACK-MTP",
+    "port": 8032
+  },
+  "responses": {
+    "rowid": 384,
+    "max_output_tokens": 256,
+    "finish_reason": "length",
+    "renderer_mutations": 746,
+    "prompt_tokens": 217,
+    "cached_tokens": 41,
+    "cache_detail": "paged+ssm+disk",
+    "warning_persisted": true,
+    "warning_visible_after_reload": true
+  },
+  "chat_completions": {
+    "rowid": 387,
+    "max_tokens": 128,
+    "finish_reason": "length",
+    "renderer_mutations": 361,
+    "prompt_tokens": 392,
+    "cached_tokens": 41,
+    "cache_detail": "paged+ssm",
+    "warning_persisted": true,
+    "warning_visible": true
+  },
+  "budget_ab": {
+    "max_output_tokens": 256,
+    "max_thinking_tokens": 64,
+    "exact_completed": 2,
+    "incomplete_or_marker_miss": 1,
+    "policy_changed": false
+  },
+  "restored_chat_settings": {
+    "wire": "responses",
+    "thinking": "auto",
+    "max_tokens": "model default",
+    "max_thinking_tokens": "auto or model default",
+    "builtin_tools": true
+  },
+  "verdict": "PARTIAL_NO_RELEASE"
+}

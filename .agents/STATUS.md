@@ -6836,3 +6836,29 @@ matrix `PARTIAL`; global `PARTIAL_NO_RELEASE`.
 - All non-Qwen families retain their prior live evidence and open boundaries;
   none inherits this parser/stream pass without a current-head live regression
   row.
+
+## 2026-07-17 17:55 PT - Shared Electron length-terminal persistence
+
+Status: Responses and Chat Completions length-terminal UI contract `PASS-LIVE`;
+Qwen 256-token exact-final reliability `FAIL-LIVE`; global
+`PARTIAL_NO_RELEASE`.
+
+- Current source commit `dc3b9c491` maps a terminal `finishReason="length"`
+  to one deduplicated persisted warning shared by Responses and Chat
+  Completions. It no longer splices a temporary notice into assistant content.
+- Focused panel tests passed 45/45 and `npm run typecheck` passed before the
+  commit was pushed to `codex/live-electron-gates-20260715`.
+- Fresh Electron main PID 85736 visibly started the exact
+  `dealignai/Qwen3.6-27B-MXFP8-CRACK-MTP` session. Responses row 384 stopped at
+  256 tokens, emitted 746 progressive DOM mutations, carried
+  `finishReason="length"`, persisted the warning in `warnings_json`, and
+  restored it visibly after a renderer reload.
+- The matched Chat Completions turn row 387 stopped at 128 tokens, emitted 361
+  progressive DOM mutations, carried the same length finish reason, and
+  persisted/rendered the same warning separately from model text.
+- Qwen's proposed 64-thinking/192-answer split is rejected as a fix: one of
+  three raw Responses controls repeated arithmetic to the cap and ended
+  incomplete. The existing Auto budget policy remains unchanged.
+- Normal UI state was restored and visually checked: Responses wire, Auto
+  reasoning, blank Max Tokens/model default, blank Max Thinking Tokens, and
+  built-in tools enabled. This does not close broader Qwen sampled reliability.

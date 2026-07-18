@@ -139,3 +139,43 @@ not yet passed on the final aggregate head.
 - Electron's single-model swap stopped Bonsai before Qwen started; the saved
   process snapshot contains only the Qwen serve process. The full long-context,
   cancellation, and broader-sampler reliability gates remain `PARTIAL`.
+
+## Current length-terminal persistence and small-cap reliability
+
+- Commit `dc3b9c491` adds the shared
+  `appendOutputTruncationWarning()` contract in
+  `panel/src/shared/responsesWarnings.ts`. The panel main process applies it
+  after the final tool/recovery iteration and before SQLite persistence, so
+  both Responses `response.incomplete` and Chat Completions
+  `finish_reason="length"` retain a truthful terminal warning. The renderer no
+  longer mutates generated assistant content with a temporary truncation
+  suffix. Focused warning/auto-continue tests passed 45/45 and panel typecheck
+  passed.
+- The fresh dev Electron main was restarted after the source change, and the
+  exact Qwen artifact was started through its visible session control. The
+  Responses diagnostic used visible Auto reasoning, Responses wire, tools off,
+  and Max Tokens 256. Row 384 emitted 746 DOM mutations, persisted 446
+  reasoning characters plus 256 output tokens, reported 41
+  `paged+ssm+disk` cached tokens, and stored the terminal warning in
+  `warnings_json`.
+- `q27-length-warning-before-reload.png` shows that warning as a separate amber
+  metadata card. `q27-length-warning-after-reload.png` shows the same card
+  after a renderer reload, proving SQLite hydration rather than transient React
+  state. The live IPC completion payload carried the identical warning and
+  `finishReason="length"`.
+- A matched visible Chat Completions diagnostic at Max Tokens 128 produced 361
+  DOM mutations. Row 387 carried 41 `paged+ssm` cached tokens, persisted the
+  same warning, and the screenshot `q27-chat-length-warning.png` shows it
+  separately from the truncated model text.
+- Three raw Responses controls tested an explicit 64-token reasoning budget
+  with 192 tokens left for the visible answer. Two exact-finaled, but one
+  repeated the correct arithmetic until the overall 256-token limit and ended
+  `response.incomplete`. This falsifies a simple budget repartition as a
+  reliability repair; no budget formula, sampler, prompt, or generated output
+  was altered.
+- `q27-settings-restored-max.png` records Max Tokens and Max Thinking Tokens
+  restored to their blank model/Auto defaults. The visible settings control
+  and persisted DOM state also confirmed Responses wire and built-in tools on.
+  The terminal UI contract is `PASS-LIVE`; Qwen's sampled exact-final behavior
+  at small caps remains `FAIL-LIVE`, and the aggregate release remains
+  `PARTIAL_NO_RELEASE`.
