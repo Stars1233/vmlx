@@ -751,3 +751,23 @@ remain open. No public release/notarization/feed mutation performed.
   host/port behavior is proven, but machine-global conflict policy and the full
   OpenAI/Anthropic/Ollama streaming matrix remain open.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-17 - Qwen3.6 MTP UI reasoning-replay / missing visible answer (P0)
+
+- `Q36MTP-UI-REASONING-REPLAY`: OPEN (P0). Live pre-patch Electron evidence
+  (20:35-20:38, before the 20:53 patched relaunch): in a chat with a prior
+  run_command tool turn, two different `[Q36MTP-UI-NOTOOL2/3]` exact-string
+  prompts each rendered a Reasoning block BYTE-IDENTICAL to the first NOTOOL
+  turn (same 1300 chars / 456 tokens, still reasoning about the first turn
+  chunks) and an EMPTY visible assistant answer — no output text, no tool
+  call. Timing stats were live per turn (TTFT 2.37s vs 4.65s, prompt 1245 vs
+  1722), so a real generation ran while stale reasoning was displayed and no
+  content was surfaced. Distinct signature from the answer-pass reasoning-only
+  rows: this is stale reasoning REPLAY plus missing visible content.
+- Caveats: evidence app predates commit `9d8a730ec`
+  (toolHistoryReplay/answer-pass fixes) and ran with Engine Manager
+  "Not installed" (venv missing from SSH-launched PATH). Patched app with
+  correct env relaunched 20:53; live Codex UI retest of this exact repro is
+  in progress. Treat as a global bug class (any reasoning model emitting
+  reasoning then no visible answer) until the patched retest proves otherwise.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
