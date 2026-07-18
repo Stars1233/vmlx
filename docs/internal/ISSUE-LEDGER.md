@@ -1086,3 +1086,19 @@ remain open. No public release/notarization/feed mutation performed.
   matched tokens + the stamping max() on follow-up streams; fix + regression;
   re-proof that warm hits still report correctly after.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 01:3x - USAGE-CACHED-GT-PROMPT CLOSED-BY-LIVE-PROOF
+
+- `USAGE-CACHED-GT-PROMPT-ON-CONTINUATION`: CLOSED (commit above). Root
+  cause was PANEL aggregation, not the engine credit path: promptTokens was
+  overwritten per stream (last stream wins) while cachedTokens latched the
+  max across streams — pairing the continuation prompt (481) with the first
+  stream cached count (3904). Fix: fold per-stream pairs into exchange
+  totals at each follow-up boundary with per-stream clamping. Panel 2296
+  tests + typecheck green; live fresh-chat tool turn now reports
+  pp 4743 (4384 cached) — coherent. Engine fix 1657ed312 exonerated (its
+  per-stream values were individually truthful).
+- `RELEASE`: remains `PARTIAL_NO_RELEASE` (next: affine-JIT hygiene P3,
+  rebound-chat continuation capture, DSV4-Flash row, remaining matrix).
+- Bundled-python note for next release build: engine changes tonight
+  (1657ed312, aff768f75) require scripts/bundle-python.sh before packaging.
