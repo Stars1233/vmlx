@@ -1187,3 +1187,17 @@ remain open. No public release/notarization/feed mutation performed.
   deep check (fill beyond cache-memory-percent, verify write-through-first
   eviction + restore-from-evicted-L2).
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 04:2x - Hy3 UI turn PASS; row green except eviction deep-check
+
+- Hy3 UI fresh-chat turn: exact `HY3-UI-T1-OK`, reasoning 276 chars in rail,
+  4096/4163 cached paged hit, 24.9 t/s, persisted. Hy3 row now VERIFIED-LIVE
+  for: autodetect, q4 TQ policy, MTP d1, API cold(disk-L2)+warm(paged)
+  coherence, reasoning separation, non-stream cached usage, UI turn.
+  Remaining: eviction-past-ceiling deep check (MATRIX-PAGED-EVICTION-L2 row,
+  shared pass across models).
+- Next: Gemma row — investigate session e4a79e4c (gemma-4-12B, port 8000,
+  status=error) first; prefer -it- 26B variant per directive; SWA per-layer
+  TQ expectations: mixed_attention Rotating+KVCache, NO paged+ssm telemetry,
+  q4 TQ confirmation.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
