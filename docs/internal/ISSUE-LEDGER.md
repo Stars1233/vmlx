@@ -1534,3 +1534,24 @@ remain open. No public release/notarization/feed mutation performed.
   — jang-tools domain; engine change NOT indicated. Workaround: per-chat
   sampling overrides. Engine P1 CLOSED-NOT-ENGINE.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 12:3x - MM2.7 prefix VERIFIED; new P2: chat-session modelpath identity mismatch
+
+- MM2.7 non-paged prefix: VERIFIED-LIVE — warm identical turn hit
+  (scheduler_cache hits 1, tokens_saved 49, memory-aware entry resident
+  23.7MB) + legacy disk L2 storing (3 entries, 1563 tokens,
+  tq_native_enabled). Earlier miss concern fully resolved; MM2.7 row green
+  except UI turn (blocked by the new P2 below).
+- `CHAT-SESSION-MODELPATH-IDENTITY-MISMATCH`: OPEN (P2, UI truth). Live
+  three-way split: session record model_path=/Users/eric/models/JANGQ-AI/
+  MiniMax-M2.7-Small-JANGTQ (local), running argv=/Volumes/EricsLLMDrive/
+  jangq-ai/... (LE10 launch re-resolution), chat binding=drive path (header
+  dropdown). Renderer matches chat.model_path to sessions[].model_path by
+  RAW STRING -> no match -> "Model is not running" banner + disabled
+  composer while the session server is healthy and DB status=running.
+  Renderer reload does NOT fix (rebuilds from same mismatched paths).
+  FIX: use the LE10 modelIdentity/sessionMatchesModelPath helper in the
+  renderer active-session lookup (App.tsx:82 / SessionView chat binding)
+  AND/OR persist the re-resolved path back to the session record at launch.
+  Repro: any session whose stored path differs from launch-resolved path.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
