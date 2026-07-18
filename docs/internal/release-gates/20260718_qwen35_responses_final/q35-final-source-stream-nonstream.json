@@ -1,0 +1,414 @@
+{
+  "first": {
+    "event_counts": {
+      "response.completed": 1,
+      "response.content_part.added": 1,
+      "response.content_part.done": 1,
+      "response.created": 1,
+      "response.function_call_arguments.delta": 2,
+      "response.function_call_arguments.done": 1,
+      "response.heartbeat": 88,
+      "response.output_item.added": 2,
+      "response.output_item.done": 2,
+      "response.output_text.done": 1,
+      "response.reasoning_summary_text.delta": 55,
+      "response.reasoning_summary_text.done": 1
+    },
+    "reasoning_delta_count": 55,
+    "content_delta_count": 0,
+    "first_reasoning_s": 0.455522,
+    "last_reasoning_s": 1.063023,
+    "first_content_s": null,
+    "last_content_s": null,
+    "reasoning": "The user wants me to call `file_info` with the path `panel/package.json`.\nAfter the result, I need to state the size and finish with `Q35-FINAL-SOURCE-DONE`.\n\nLet's call `file_info` with `path = \"panel/package.json\"`.",
+    "content": "",
+    "function_calls": [
+      {
+        "id": "fc_0b156fa5b26a",
+        "type": "function_call",
+        "status": "completed",
+        "call_id": "call_9a464e20",
+        "name": "file_info",
+        "arguments": "{\"path\": \"panel/package.json\"}"
+      }
+    ],
+    "terminal_count": 1,
+    "terminal": {
+      "type": "response.completed",
+      "response": {
+        "id": "resp_3d1319cdfdad",
+        "object": "response",
+        "created_at": 1784416814,
+        "status": "completed",
+        "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+        "output_text": "",
+        "output": [
+          {
+            "id": "item_959f2e0fb837",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "",
+                "annotations": []
+              }
+            ]
+          },
+          {
+            "id": "fc_0b156fa5b26a",
+            "type": "function_call",
+            "status": "completed",
+            "call_id": "call_9a464e20",
+            "name": "file_info",
+            "arguments": "{\"path\": \"panel/package.json\"}"
+          },
+          {
+            "id": "rs_3640f55141e0",
+            "type": "reasoning",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "reasoning",
+                "text": "The user wants me to call `file_info` with the path `panel/package.json`.\nAfter the result, I need to state the size and finish with `Q35-FINAL-SOURCE-DONE`.\n\nLet's call `file_info` with `path = \"panel/package.json\"`.\n"
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 320,
+          "output_tokens": 90,
+          "total_tokens": 410
+        }
+      },
+      "sequence_number": 155
+    }
+  },
+  "stream": [
+    {
+      "event_counts": {
+        "response.completed": 1,
+        "response.content_part.added": 1,
+        "response.content_part.done": 1,
+        "response.created": 1,
+        "response.output_item.added": 1,
+        "response.output_item.done": 1,
+        "response.output_text.delta": 22,
+        "response.output_text.done": 1,
+        "response.reasoning_summary_text.delta": 38,
+        "response.reasoning_summary_text.done": 1
+      },
+      "reasoning_delta_count": 38,
+      "content_delta_count": 22,
+      "first_reasoning_s": 0.25592,
+      "last_reasoning_s": 0.618942,
+      "first_content_s": 0.648576,
+      "last_content_s": 0.893211,
+      "reasoning": "The result shows the size is 5.2 KB.\nNow I need to state the size in one sentence and finish with `Q35-FINAL-SOURCE-DONE`.",
+      "content": "The reported size of `panel/package.json` is 5.2 KB.\nQ35-FINAL-SOURCE-DONE",
+      "function_calls": [],
+      "terminal_count": 1,
+      "terminal": {
+        "type": "response.completed",
+        "response": {
+          "id": "resp_0cef15e3e0fc",
+          "object": "response",
+          "created_at": 1784416815,
+          "status": "completed",
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "output_text": "The reported size of `panel/package.json` is 5.2 KB.\nQ35-FINAL-SOURCE-DONE",
+          "output": [
+            {
+              "id": "item_430ab48fc50f",
+              "type": "message",
+              "status": "completed",
+              "role": "assistant",
+              "content": [
+                {
+                  "type": "output_text",
+                  "text": "The reported size of `panel/package.json` is 5.2 KB.\nQ35-FINAL-SOURCE-DONE",
+                  "annotations": []
+                }
+              ]
+            },
+            {
+              "id": "rs_67d2d9559ae9",
+              "type": "reasoning",
+              "status": "completed",
+              "role": "assistant",
+              "content": [
+                {
+                  "type": "reasoning",
+                  "text": "The result shows the size is 5.2 KB.\nNow I need to state the size in one sentence and finish with `Q35-FINAL-SOURCE-DONE`.\n"
+                }
+              ]
+            }
+          ],
+          "usage": {
+            "input_tokens": 217,
+            "output_tokens": 67,
+            "total_tokens": 284
+          }
+        },
+        "sequence_number": 67
+      }
+    },
+    {
+      "event_counts": {
+        "response.completed": 1,
+        "response.content_part.added": 1,
+        "response.content_part.done": 1,
+        "response.created": 1,
+        "response.output_item.added": 1,
+        "response.output_item.done": 1,
+        "response.output_text.delta": 22,
+        "response.output_text.done": 1,
+        "response.reasoning_summary_text.delta": 38,
+        "response.reasoning_summary_text.done": 1
+      },
+      "reasoning_delta_count": 38,
+      "content_delta_count": 22,
+      "first_reasoning_s": 0.262301,
+      "last_reasoning_s": 0.624888,
+      "first_content_s": 0.654101,
+      "last_content_s": 0.898442,
+      "reasoning": "The result shows the size is 5.2 KB.\nNow I need to state the size in one sentence and finish with `Q35-FINAL-SOURCE-DONE`.",
+      "content": "The reported size of `panel/package.json` is 5.2 KB.\nQ35-FINAL-SOURCE-DONE",
+      "function_calls": [],
+      "terminal_count": 1,
+      "terminal": {
+        "type": "response.completed",
+        "response": {
+          "id": "resp_f38342c6fb15",
+          "object": "response",
+          "created_at": 1784416816,
+          "status": "completed",
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "output_text": "The reported size of `panel/package.json` is 5.2 KB.\nQ35-FINAL-SOURCE-DONE",
+          "output": [
+            {
+              "id": "item_1d30991b80e7",
+              "type": "message",
+              "status": "completed",
+              "role": "assistant",
+              "content": [
+                {
+                  "type": "output_text",
+                  "text": "The reported size of `panel/package.json` is 5.2 KB.\nQ35-FINAL-SOURCE-DONE",
+                  "annotations": []
+                }
+              ]
+            },
+            {
+              "id": "rs_4326dec1162e",
+              "type": "reasoning",
+              "status": "completed",
+              "role": "assistant",
+              "content": [
+                {
+                  "type": "reasoning",
+                  "text": "The result shows the size is 5.2 KB.\nNow I need to state the size in one sentence and finish with `Q35-FINAL-SOURCE-DONE`.\n"
+                }
+              ]
+            }
+          ],
+          "usage": {
+            "input_tokens": 217,
+            "output_tokens": 67,
+            "total_tokens": 284
+          }
+        },
+        "sequence_number": 67
+      }
+    },
+    {
+      "event_counts": {
+        "response.completed": 1,
+        "response.content_part.added": 1,
+        "response.content_part.done": 1,
+        "response.created": 1,
+        "response.output_item.added": 1,
+        "response.output_item.done": 1,
+        "response.output_text.delta": 22,
+        "response.output_text.done": 1,
+        "response.reasoning_summary_text.delta": 38,
+        "response.reasoning_summary_text.done": 1
+      },
+      "reasoning_delta_count": 38,
+      "content_delta_count": 22,
+      "first_reasoning_s": 0.261883,
+      "last_reasoning_s": 0.649134,
+      "first_content_s": 0.678874,
+      "last_content_s": 0.923858,
+      "reasoning": "The result shows the size is 5.2 KB.\nNow I need to state the size in one sentence and finish with `Q35-FINAL-SOURCE-DONE`.",
+      "content": "The reported size of `panel/package.json` is 5.2 KB.\nQ35-FINAL-SOURCE-DONE",
+      "function_calls": [],
+      "terminal_count": 1,
+      "terminal": {
+        "type": "response.completed",
+        "response": {
+          "id": "resp_d0d14fa6b39d",
+          "object": "response",
+          "created_at": 1784416817,
+          "status": "completed",
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "output_text": "The reported size of `panel/package.json` is 5.2 KB.\nQ35-FINAL-SOURCE-DONE",
+          "output": [
+            {
+              "id": "item_65e21eb72d9f",
+              "type": "message",
+              "status": "completed",
+              "role": "assistant",
+              "content": [
+                {
+                  "type": "output_text",
+                  "text": "The reported size of `panel/package.json` is 5.2 KB.\nQ35-FINAL-SOURCE-DONE",
+                  "annotations": []
+                }
+              ]
+            },
+            {
+              "id": "rs_7010b7535195",
+              "type": "reasoning",
+              "status": "completed",
+              "role": "assistant",
+              "content": [
+                {
+                  "type": "reasoning",
+                  "text": "The result shows the size is 5.2 KB.\nNow I need to state the size in one sentence and finish with `Q35-FINAL-SOURCE-DONE`.\n"
+                }
+              ]
+            }
+          ],
+          "usage": {
+            "input_tokens": 217,
+            "output_tokens": 67,
+            "total_tokens": 284
+          }
+        },
+        "sequence_number": 67
+      }
+    }
+  ],
+  "nonstream": [
+    {
+      "id": "resp_11ed8a982ca0",
+      "status": "completed",
+      "output_text": "The reported size of `panel/package.json` is 5.2 KB.\nQ35-FINAL-SOURCE-DONE",
+      "output": [
+        {
+          "type": "reasoning",
+          "id": "item_561648c5cc62",
+          "status": "completed",
+          "role": "assistant",
+          "content": [
+            {
+              "type": "reasoning",
+              "text": "The result shows the size is 5.2 KB.\nNow I need to state the size in one sentence and finish with `Q35-FINAL-SOURCE-DONE`.",
+              "annotations": []
+            }
+          ]
+        },
+        {
+          "type": "message",
+          "id": "item_91046762b3fa",
+          "status": "completed",
+          "role": "assistant",
+          "content": [
+            {
+              "type": "output_text",
+              "text": "The reported size of `panel/package.json` is 5.2 KB.\nQ35-FINAL-SOURCE-DONE",
+              "annotations": []
+            }
+          ]
+        }
+      ],
+      "usage": {
+        "input_tokens": 217,
+        "output_tokens": 67,
+        "total_tokens": 284,
+        "input_tokens_details": null
+      }
+    },
+    {
+      "id": "resp_53c9e92301de",
+      "status": "completed",
+      "output_text": "The reported size of `panel/package.json` is 5.2 KB.\nQ35-FINAL-SOURCE-DONE",
+      "output": [
+        {
+          "type": "reasoning",
+          "id": "item_df42e25b4e8b",
+          "status": "completed",
+          "role": "assistant",
+          "content": [
+            {
+              "type": "reasoning",
+              "text": "The result shows the size is 5.2 KB.\nNow I need to state the size in one sentence and finish with `Q35-FINAL-SOURCE-DONE`.",
+              "annotations": []
+            }
+          ]
+        },
+        {
+          "type": "message",
+          "id": "item_f8e785db4b88",
+          "status": "completed",
+          "role": "assistant",
+          "content": [
+            {
+              "type": "output_text",
+              "text": "The reported size of `panel/package.json` is 5.2 KB.\nQ35-FINAL-SOURCE-DONE",
+              "annotations": []
+            }
+          ]
+        }
+      ],
+      "usage": {
+        "input_tokens": 217,
+        "output_tokens": 67,
+        "total_tokens": 284,
+        "input_tokens_details": null
+      }
+    },
+    {
+      "id": "resp_15257018e807",
+      "status": "completed",
+      "output_text": "The reported size of `panel/package.json` is 5.2 KB.\nQ35-FINAL-SOURCE-DONE",
+      "output": [
+        {
+          "type": "reasoning",
+          "id": "item_a738a85eeacc",
+          "status": "completed",
+          "role": "assistant",
+          "content": [
+            {
+              "type": "reasoning",
+              "text": "The result shows the size is 5.2 KB.\nNow I need to state the size in one sentence and finish with `Q35-FINAL-SOURCE-DONE`.",
+              "annotations": []
+            }
+          ]
+        },
+        {
+          "type": "message",
+          "id": "item_3c8b92f2fc64",
+          "status": "completed",
+          "role": "assistant",
+          "content": [
+            {
+              "type": "output_text",
+              "text": "The reported size of `panel/package.json` is 5.2 KB.\nQ35-FINAL-SOURCE-DONE",
+              "annotations": []
+            }
+          ]
+        }
+      ],
+      "usage": {
+        "input_tokens": 217,
+        "output_tokens": 67,
+        "total_tokens": 284,
+        "input_tokens_details": null
+      }
+    }
+  ]
+}
