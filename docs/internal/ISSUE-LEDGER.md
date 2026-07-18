@@ -1436,3 +1436,21 @@ remain open. No public release/notarization/feed mutation performed.
   deep pass, DSV4 effort-none P1, Nemotron MXFP4 variant, UI turns
   Step/Nemotron/MM2.7/M3, settings parity.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 10:1x - CORRECTION: MM27 paged-off is branch policy (v7); question for Eric
+
+- `MM27-PAGED-DEFAULT-MISSING`: RECLASSIFIED — NOT a wiring bug on this
+  branch. sessions.ts migration generic branch documents: "Generic /
+  Gemma-SWA / MoE / hybrid: paged cache OFF by default (Eric directive
+  2026-06-30 v7, supersedes v6 ON)". MM2.7 (generic MoE) paged-off +
+  version 10 is CONSISTENT with reconcile/1.5.68 policy. The 2026-07-12
+  paged-default-ON directive (which reversed v7) lives in the v1.6.x line.
+  ALSO withdrawing the "warm miss" sub-claim: I read scheduler_cache (the
+  PAGED stats — rightly idle with paged off); the non-paged prefix-cache
+  stats section was not checked. QUESTION FOR ERIC: should reconcile/1.5.68
+  adopt the 07-12 paged-default-ON policy (excl. M3/openpangu_v2/gemma4)?
+  If yes, the start-time re-resolution fix design from 23aabe891 applies;
+  holding implementation until confirmed.
+- Follow-up kept: verify MM2.7 non-paged prefix-cache hit behavior by
+  reading the correct stats section on the next MM2.7 pass.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
