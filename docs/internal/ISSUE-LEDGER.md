@@ -1288,3 +1288,16 @@ remain open. No public release/notarization/feed mutation performed.
   pass). Matrix: Qwen3.6 ✓ Bonsai ✓ DSV4 ✓(effort-none P1 open) Hy3 ✓
   Gemma ✓ Laguna ✓; remaining Step 3.7, Nemotron, MM2.7, M3.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 06:3x - Eric directive: test BOTH JANGTQ and JANG-affine variants per family
+
+- `MATRIX-JANGTQ-VS-AFFINE-VARIANTS`: TO-DO (Eric directive). JANGTQ
+  (mxtq-packed TurboQuant weights) and plain JANG affine are DIFFERENT
+  loader/runtime paths — where both exist locally, test both per family:
+  Step 3.7 (JANGTQ_K sess 8022 AND JANG_K sess 8023 — do both), Qwen3.6
+  (35B JANGTQ-CRACK vs 27B MXFP8/JANG_4M), Bonsai (1bit-JANG affine done;
+  JANGTQ variant if present), Nemotron (JANGTQ/JANGTQ4 vs MXFP4), MiniMax
+  2.7 (JANG_K), Hy3 (JANG_2K-MTP done — check for JANGTQ variant), Laguna
+  (JANG_2L done — M.1/XS JANGTQ variants if present). Each variant: load,
+  autodetect, TQ policy truth, cold/warm, coherence.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
