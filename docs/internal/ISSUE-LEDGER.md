@@ -951,3 +951,21 @@ remain open. No public release/notarization/feed mutation performed.
   cached_tokens attribution on the batched/MLLM non-stream rail (get_usage
   forwards it; the GenerationOutput arrives with 0 despite scheduler hits).
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-17 23:4x - JIT parity: launch rail verified live; visual toggle/preview check in flight
+
+- `JIT-COMPILE-UI-CLI-PARITY`: PARTIAL progress. Source trace shows all three
+  surfaces share one guard set (VLM/mlx-vlm, TurboQuant, hybrid SSM, DSV4,
+  M3, Zaya CCA, FlashMoE, distributed): sessions.ts effectiveEnableJit gates
+  launch args + logs "Ignoring stale JIT flag because <reason>";
+  SessionSettings.tsx:412+663 uses the same expression for the CLI preview;
+  SessionConfigForm.tsx:1270 masks the toggle checked-state with the same
+  actives. LIVE: running Bonsai (VLM+TQ) argv contains ZERO --enable-jit
+  despite stored default enableJit:true. Remaining evidence: visual toggle
+  state + preview text per session — box-side Codex gpt-5.6-sol computer-use
+  run in flight (box codex auth RESTORED by Eric). Watch for drift risk:
+  form uses multimodalActive/flashMoeActive naming vs isVLM/effective* in
+  the other two copies — preview logic is a COPY, keep synced.
+- `USAGE-CACHED-TOKENS-MISSING-NONSTREAM-CHAT`: bounded source audit running
+  (attribution of response.cached_tokens=0 on warm non-stream MLLM hits).
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
