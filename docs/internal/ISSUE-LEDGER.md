@@ -1280,3 +1280,11 @@ remain open. No public release/notarization/feed mutation performed.
   q4 TQ, cold/warm paged+tq-native, non-stream cached usage, glm47 stream
   separation (spill disproven), default-reasoning intentional.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 06:2x - Laguna UI turn PASS; row GREEN. Matrix 6/9.
+
+- Laguna UI fresh-chat turn: exact `LAGUNA-UI-T1-OK`, reasoning 277 in rail,
+  4096/4158 cached, persisted. Laguna row GREEN (except shared eviction
+  pass). Matrix: Qwen3.6 ✓ Bonsai ✓ DSV4 ✓(effort-none P1 open) Hy3 ✓
+  Gemma ✓ Laguna ✓; remaining Step 3.7, Nemotron, MM2.7, M3.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
