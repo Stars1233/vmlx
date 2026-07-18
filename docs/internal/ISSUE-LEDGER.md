@@ -1500,3 +1500,20 @@ remain open. No public release/notarization/feed mutation performed.
   round 2 with ~35 prompts (>64k tokens) to force eviction, then re-query
   an evicted prefix expecting disk_hits increment + `+disk` detail.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 11:4x - MATRIX-PAGED-EVICTION-L2-DEEP-CHECK CLOSED-BY-LIVE-PROOF
+
+- Round 2 (Bonsai 8030, 35 distinct ~2200-token prompts, evidence
+  bonsai-evict-probe.json): evictions 0 -> 107 -> 142, first eviction at
+  fill #30 (~66k tokens — exactly past the 64k block capacity). Re-query of
+  the FIRST (evicted) prefix: cached 2207/2208, detail `paged+ssm+disk`,
+  disk_hits 0 -> 35, exact coherent answer EVICT-BASE-OK. Eric-requested
+  end-to-end behavior PROVEN: fill past L1 ceiling -> eviction (write-
+  through to L2 first) -> evicted prefix restores from OLD disk-L2 blocks
+  with SSM companion intact -> coherent continuation. Round-1 addendum:
+  16-prefix concurrent retention also healthy. Residual nit: probe read
+  disk_writes from wrong health path (null) — counter exists in
+  block_disk_cache section (verified earlier: disk_writes 15).
+- `RELEASE`: remains `PARTIAL_NO_RELEASE` (remaining: DSV4 effort-none P1,
+  UI turns Nemotron/MM2.7/M3, MXFP4 + JANGTQ variants, MM2.7 prefix
+  verification, settings parity, media rows, packaging gates).
