@@ -1334,3 +1334,11 @@ remain open. No public release/notarization/feed mutation performed.
   exact rendered prompt + sampling params between rails in server.py for
   step-3.7; fix; pytest; live re-proof non-stream warm visible answer.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 07:3x - Step UI turn PASS (stream rail); rail-diff Codex dispatched
+
+- Step 3.7 UI fresh-chat turn: exact `STEP-UI-T1-OK`, reasoning 164 in rail
+  — UI/stream rail clean, reinforcing STEP37-NONSTREAM-RUNAWAY-REASONING as
+  non-stream-rail-specific. Box Codex gpt-5.6-sol dispatched on the source
+  diff (report /tmp/step-rail-fix-report.md, uncommitted changes).
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
