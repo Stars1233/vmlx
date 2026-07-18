@@ -1,0 +1,307 @@
+{
+ "results": [
+  {
+   "tag": "tools-auto",
+   "visible_text": "",
+   "reasoning_tail": "The user wants to know the current working directory.\nI need to use the `run_command` tool.\nThe command to run is `pwd`.\n\nStep 1: Call `run_command` with `command=\"pwd\"`.\nStep 2: Receive the output.\nStep 3: Present the output to the user.",
+   "reasoning_chars": 238,
+   "event_type_counts": {
+    "response.created": 1,
+    "response.output_item.added": 2,
+    "response.content_part.added": 1,
+    "response.reasoning_summary_text.delta": 38,
+    "response.usage": 41,
+    "response.heartbeat": 15,
+    "response.reasoning_summary_text.done": 1,
+    "response.output_text.done": 1,
+    "response.content_part.done": 1,
+    "response.output_item.done": 2,
+    "response.function_call_arguments.delta": 2,
+    "response.function_call_arguments.done": 1,
+    "response.completed": 1
+   },
+   "tool_item_events": [
+    {
+     "type": "response.output_item.added",
+     "item": {
+      "id": "item_701aa7ee53f1",
+      "type": "message",
+      "status": "in_progress",
+      "role": "assistant",
+      "content": []
+     }
+    },
+    {
+     "type": "response.output_item.done",
+     "item": {
+      "id": "item_701aa7ee53f1",
+      "type": "message",
+      "status": "completed",
+      "role": "assistant",
+      "content": [
+       {
+        "type": "output_text",
+        "text": "",
+        "annotations": []
+       }
+      ]
+     }
+    },
+    {
+     "type": "response.output_item.added",
+     "item": {
+      "id": "fc_71aa78f55a9e",
+      "type": "function_call",
+      "status": "in_progress",
+      "call_id": "call_785253dc",
+      "name": "run_command",
+      "arguments": ""
+     }
+    },
+    {
+     "type": "response.function_call_arguments.delta",
+     "item": {
+      "item_id": "fc_71aa78f55a9e",
+      "output_index": 1,
+      "delta": "{\"command\": \"pwd",
+      "sequence_number": 102
+     }
+    },
+    {
+     "type": "response.function_call_arguments.delta",
+     "item": {
+      "item_id": "fc_71aa78f55a9e",
+      "output_index": 1,
+      "delta": "\"}",
+      "sequence_number": 103
+     }
+    },
+    {
+     "type": "response.function_call_arguments.done",
+     "item": {
+      "item_id": "fc_71aa78f55a9e",
+      "output_index": 1,
+      "arguments": "{\"command\": \"pwd\"}",
+      "sequence_number": 104
+     }
+    },
+    {
+     "type": "response.output_item.done",
+     "item": {
+      "id": "fc_71aa78f55a9e",
+      "type": "function_call",
+      "status": "completed",
+      "call_id": "call_785253dc",
+      "name": "run_command",
+      "arguments": "{\"command\": \"pwd\"}"
+     }
+    }
+   ],
+   "final_status": [
+    "completed"
+   ],
+   "final_output_types": [
+    [
+     "message",
+     "function_call",
+     "reasoning"
+    ]
+   ],
+   "usage": {
+    "input_tokens": 296,
+    "output_tokens": 99,
+    "total_tokens": 395
+   },
+   "incomplete_details": [
+    null
+   ],
+   "elapsed_s": 4.9
+  },
+  {
+   "tag": "tools-required",
+   "visible_text": "",
+   "reasoning_tail": "The user wants to run the `pwd` command using the `run_command` tool.\nThe `pwd` command prints the current working directory.\nI need to call `run_command` with the argument `command=\"pwd\"`.\nThen, I will present the output to the user.\n\nStep 1: Call `run_command` with `command=\"pwd\"`.\nStep 2: Receive the result.\nStep 3: Formulate the response.\n\nLet's start with Step 1.",
+   "reasoning_chars": 370,
+   "event_type_counts": {
+    "response.created": 1,
+    "response.output_item.added": 2,
+    "response.content_part.added": 1,
+    "response.reasoning_summary_text.delta": 57,
+    "response.usage": 58,
+    "response.heartbeat": 15,
+    "response.reasoning_summary_text.done": 1,
+    "response.output_text.done": 1,
+    "response.content_part.done": 1,
+    "response.output_item.done": 2,
+    "response.function_call_arguments.delta": 2,
+    "response.function_call_arguments.done": 1,
+    "response.completed": 1
+   },
+   "tool_item_events": [
+    {
+     "type": "response.output_item.added",
+     "item": {
+      "id": "item_696b9c03521e",
+      "type": "message",
+      "status": "in_progress",
+      "role": "assistant",
+      "content": []
+     }
+    },
+    {
+     "type": "response.output_item.done",
+     "item": {
+      "id": "item_696b9c03521e",
+      "type": "message",
+      "status": "completed",
+      "role": "assistant",
+      "content": [
+       {
+        "type": "output_text",
+        "text": "",
+        "annotations": []
+       }
+      ]
+     }
+    },
+    {
+     "type": "response.output_item.added",
+     "item": {
+      "id": "fc_fc9f0cd66945",
+      "type": "function_call",
+      "status": "in_progress",
+      "call_id": "call_5b9d1e7b",
+      "name": "run_command",
+      "arguments": ""
+     }
+    },
+    {
+     "type": "response.function_call_arguments.delta",
+     "item": {
+      "item_id": "fc_fc9f0cd66945",
+      "output_index": 1,
+      "delta": "{\"command\": \"pwd",
+      "sequence_number": 138
+     }
+    },
+    {
+     "type": "response.function_call_arguments.delta",
+     "item": {
+      "item_id": "fc_fc9f0cd66945",
+      "output_index": 1,
+      "delta": "\"}",
+      "sequence_number": 139
+     }
+    },
+    {
+     "type": "response.function_call_arguments.done",
+     "item": {
+      "item_id": "fc_fc9f0cd66945",
+      "output_index": 1,
+      "arguments": "{\"command\": \"pwd\"}",
+      "sequence_number": 140
+     }
+    },
+    {
+     "type": "response.output_item.done",
+     "item": {
+      "id": "fc_fc9f0cd66945",
+      "type": "function_call",
+      "status": "completed",
+      "call_id": "call_5b9d1e7b",
+      "name": "run_command",
+      "arguments": "{\"command\": \"pwd\"}"
+     }
+    }
+   ],
+   "final_status": [
+    "completed"
+   ],
+   "final_output_types": [
+    [
+     "message",
+     "function_call",
+     "reasoning"
+    ]
+   ],
+   "usage": {
+    "input_tokens": 296,
+    "output_tokens": 135,
+    "total_tokens": 431,
+    "input_tokens_details": {
+     "cached_tokens": 295,
+     "cache_detail": "paged+ssm"
+    }
+   },
+   "incomplete_details": [
+    null
+   ],
+   "elapsed_s": 5.5
+  },
+  {
+   "tag": "no-tools-control",
+   "visible_text": "To find the current working directory, I will run the `pwd` command.\n\n```json\n{\n  \"tool\": \"run_command\",\n  \"arguments\": {\n    \"command\": \"pwd\"\n  }\n}\n```",
+   "reasoning_tail": "I need to run the `pwd` command using the `run_command` tool and report the result.\nThe user wants to know the current working directory.\nStep 1: Call `run_command` with `command=\"pwd\"`.\nStep 2: Capture the output.\nStep 3: Present the output to the user.\n",
+   "reasoning_chars": 255,
+   "event_type_counts": {
+    "response.created": 1,
+    "response.output_item.added": 1,
+    "response.content_part.added": 1,
+    "response.reasoning_summary_text.delta": 30,
+    "response.usage": 58,
+    "response.output_text.delta": 27,
+    "response.reasoning_summary_text.done": 1,
+    "response.output_text.done": 1,
+    "response.content_part.done": 1,
+    "response.output_item.done": 1,
+    "response.completed": 1
+   },
+   "tool_item_events": [
+    {
+     "type": "response.output_item.added",
+     "item": {
+      "id": "item_71bb1db9ebe5",
+      "type": "message",
+      "status": "in_progress",
+      "role": "assistant",
+      "content": []
+     }
+    },
+    {
+     "type": "response.output_item.done",
+     "item": {
+      "id": "item_71bb1db9ebe5",
+      "type": "message",
+      "status": "completed",
+      "role": "assistant",
+      "content": [
+       {
+        "type": "output_text",
+        "text": "To find the current working directory, I will run the `pwd` command.\n\n```json\n{\n  \"tool\": \"run_command\",\n  \"arguments\": {\n    \"command\": \"pwd\"\n  }\n}\n```",
+        "annotations": []
+       }
+      ]
+     }
+    }
+   ],
+   "final_status": [
+    "completed"
+   ],
+   "final_output_types": [
+    [
+     "message",
+     "reasoning"
+    ]
+   ],
+   "usage": {
+    "input_tokens": 19,
+    "output_tokens": 125,
+    "total_tokens": 144
+   },
+   "incomplete_details": [
+    null
+   ],
+   "elapsed_s": 5.1
+  }
+ ]
+}
