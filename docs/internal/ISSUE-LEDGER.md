@@ -1414,3 +1414,25 @@ remain open. No public release/notarization/feed mutation performed.
   (check cacheStackStartupDefaultsVersion migration path in sessions.ts for
   this session) — CACHE-DEFAULTS-UI-WIRING-MATRIX row to verify + fix.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 09:5x - MM27 paged-default root-caused: migration best-effort detection failure sticks forever
+
+- `MM27-PAGED-DEFAULT-MISSING`: ROOT-CAUSED (sessions.ts:741+). The v8
+  paged-default-ON migration resolves per-family paged capability
+  best-effort at migration time; on detection failure it leaves the generic
+  branch at paged-OFF (code comment: "detection best-effort; leave
+  undefined -> paged-off"), then v9/v10 stamp
+  cacheStackStartupDefaultsVersion=10 so it NEVER retries. Session f73768eb
+  config: usePagedCache=false, enablePrefixCache=true, version=10.
+  FIX DIRECTION: at session start, when usePagedCache=false with no
+  explicit user opt-out marker and the family is paged-capable (not
+  M3/openpangu_v2/gemma4), re-resolve capability (bundle is reachable at
+  start) and flip to the directive default; needs a user-explicit-off
+  marker to avoid overriding real choices. Also open question: prefix
+  cache enabled yet warm identical prompt MISSED twice on the minimax LLM
+  path (hits 0/misses 2) — verify prefix-hit keying for minimax without
+  paged in the same fix pass.
+- Still queued: M3 row (a563f316), M3 JANG_2L error readout, eviction/L2
+  deep pass, DSV4 effort-none P1, Nemotron MXFP4 variant, UI turns
+  Step/Nemotron/MM2.7/M3, settings parity.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
