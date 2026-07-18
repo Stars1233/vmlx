@@ -835,3 +835,24 @@ remain open. No public release/notarization/feed mutation performed.
   postmortem is possible from the app. Fix direction: retain last N lines in
   a stopped-session buffer or append to a per-session on-disk log.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-17 22:0x - Q36 MTP: replay class FIXED-LIVE; NEW scoped P0 = tool-call never emitted
+
+- `Q36MTP-UI-REASONING-REPLAY`: CLOSED-BY-LIVE-PROOF for the patched build.
+  Codex gpt-5.6-sol UI run2 (real Electron session, prior tool turn, both
+  NOTOOL prompts): visible answers EXACT (`QP10-...-ZA60`, `HG10-...-QR60`),
+  reasoning 3001 vs 3121 chars (NOT byte-identical), Busan recall PASS, no
+  blank/leak/loop on turns A/B/D/E. API rail same-server 4/4 PASS with
+  enable_thinking omitted (Auto parity). Evidence:
+  release-gates/20260717_qwen36_mtp_stream_history/{q36-auto-api-repro.json,
+  ui-proof/run2-*.png, ui-proof/run2-ui-proof.json}.
+- `Q36MTP-TOOL-CALL-NOT-EMITTED`: OPEN (P0, scoped). UI run2 turn C
+  ("Use the run_command tool to run pwd") = reasoning rail streams 501 chars
+  ending literally with "Let's start with the tool call." then the stream
+  ENDS: no tool_call item, no visible content, 164 completion tokens, live
+  stats (18.0 t/s, TTFT 2.52s). Model was cut at the reasoning->tool-call
+  boundary or its tool tokens were swallowed. Tools-enabled Responses API
+  repro (auto + required + no-tools control) running to isolate engine vs
+  panel. This matches Eric's global "reasoning then no tool/no answer"
+  complaint — treat as cross-family suspect until proven scoped.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.

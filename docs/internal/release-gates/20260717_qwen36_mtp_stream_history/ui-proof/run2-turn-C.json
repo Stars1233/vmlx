@@ -1,0 +1,477 @@
+{
+  "turn": "C",
+  "user_prompt": "Use the run_command tool to run pwd and tell me the result.",
+  "visible_text": "",
+  "reasoning_text": "The user wants to run the pwd command using the run_command tool and see the result.\n\nStep 1: Define the tool call.\n\nTool: run_command\nCommand: pwd\n\nStep 2: Execute the tool.\n\nThe model generates the function call.\nThe environment executes pwd.\nThe environment returns the current working directory (e.g., /home/user or similar).\n\nStep 3: Formulate the response.\n\nThe response should state the result returned by the tool.\n\nLet's start with the tool call.",
+  "reasoning_blocks": [
+    "The user wants to run the pwd command using the run_command tool and see the result.\n\nStep 1: Define the tool call.\n\nTool: run_command\nCommand: pwd\n\nStep 2: Execute the tool.\n\nThe model generates the function call.\nThe environment executes pwd.\nThe environment returns the current working directory (e.g., /home/user or similar).\n\nStep 3: Formulate the response.\n\nThe response should state the result returned by the tool.\n\nLet's start with the tool call."
+  ],
+  "reasoning_identical_to_prior": null,
+  "tool_call_emitted": false,
+  "tool_calls": [],
+  "timing_stats": {
+    "Completion tokens": "164 tokens",
+    "Generation speed": "18.0 t/s",
+    "Prompt processing speed": "399.8 pp/s",
+    "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+    "Time to first token": "2.52s TTFT",
+    "Total request time": "11.7s total"
+  },
+  "anomalies": [],
+  "stream_observation": {
+    "reasoning_rail_seen": true,
+    "reasoning_streamed_in_rail": true,
+    "distinct_reasoning_text_states": 1,
+    "distinct_reasoning_char_states": 22,
+    "samples_recorded": 25,
+    "samples": [
+      {
+        "elapsedMs": 13,
+        "visibleText": "",
+        "reasoningBlocks": [],
+        "toolCalls": [],
+        "timingStats": {},
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 2560,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "2 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "0.0 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 2922,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "31 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "17.6 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 3288,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "68 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "22.2 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 3652,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "90 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "19.0 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 4015,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "102 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "18.6 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 4381,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "125 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "18.1 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 4748,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "148 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "18.9 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 5113,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "168 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "19.3 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 5477,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "194 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "20.0 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 5841,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "213 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "19.3 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 6212,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "242 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "19.1 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 6576,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "269 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "18.7 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 6940,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "277 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "17.2 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 7307,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "310 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "17.8 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 7680,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "336 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "17.1 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 8046,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "354 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "16.1 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 8414,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "377 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "16.1 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 8787,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "400 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "15.3 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 9153,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "432 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "15.9 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 9518,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "462 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "15.7 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 9881,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "482 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "16.9 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 10247,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "501 chars",
+            "text": ""
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "16.1 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 10615,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "501 chars",
+            "text": "The user wants to run the pwd command using the run_command tool and see the result.\n\nStep 1: Define the tool call.\n\nTool: run_command\nCommand: pwd\n\nStep 2: Execute the tool.\n\nThe model generates the function call.\nThe environment executes pwd.\nThe environment returns the current working directory (e.g., /home/user or similar).\n\nStep 3: Formulate the response.\n\nThe response should state the result returned by the tool.\n\nLet's start with the tool call."
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Generation speed": "16.1 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT"
+        },
+        "sendTitle": null
+      },
+      {
+        "elapsedMs": 11711,
+        "visibleText": "",
+        "reasoningBlocks": [
+          {
+            "chars": "501 chars",
+            "text": "The user wants to run the pwd command using the run_command tool and see the result.\n\nStep 1: Define the tool call.\n\nTool: run_command\nCommand: pwd\n\nStep 2: Execute the tool.\n\nThe model generates the function call.\nThe environment executes pwd.\nThe environment returns the current working directory (e.g., /home/user or similar).\n\nStep 3: Formulate the response.\n\nThe response should state the result returned by the tool.\n\nLet's start with the tool call."
+          }
+        ],
+        "toolCalls": [],
+        "timingStats": {
+          "Completion tokens": "164 tokens",
+          "Generation speed": "18.0 t/s",
+          "Prompt processing speed": "399.8 pp/s",
+          "Prompt tokens — cache: paged+ssm": "1006 prompt (41 paged+ssm cached)",
+          "Time to first token": "2.52s TTFT",
+          "Total request time": "11.7s total"
+        },
+        "sendTitle": "Send message (Enter)"
+      }
+    ]
+  },
+  "final_dom": {
+    "assistant_inner_text": "Just now\nReasoning\n501 chars\n\nThe user wants to run the pwd command using the run_command tool and see the result.\n\nStep 1: Define the tool call.\n\nTool: run_command\nCommand: pwd\n\nStep 2: Execute the tool.\n\nThe model generates the function call.\nThe environment executes pwd.\nThe environment returns the current working directory (e.g., /home/user or similar).\n\nStep 3: Formulate the response.\n\nThe response should state the result returned by the tool.\n\nLet's start with the tool call.\n\n164 tokens\n18.0 t/s\n399.8 pp/s\n1006 prompt (41 paged+ssm cached)\n2.52s TTFT\n11.7s total",
+    "assistant_outer_html": "<div class=\"flex gap-2.5 group mr-[5%] md:mr-[10%] lg:mr-[15%]\"><div class=\"w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-sparkles h-3.5 w-3.5 text-primary\" aria-hidden=\"true\"><path d=\"M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z\"></path><path d=\"M20 2v4\"></path><path d=\"M22 4h-4\"></path><circle cx=\"4\" cy=\"20\" r=\"2\"></circle></svg></div><div class=\"flex-1 min-w-0\"><div class=\"flex items-center gap-2 mb-1\"><span class=\"text-[10px] text-muted-foreground/50\">Just now</span></div><div class=\"mb-3 space-y-2\"><div class=\"mb-3 rounded border overflow-hidden transition-all duration-200 border-border bg-popover\"><div class=\"w-full px-3 py-2 flex items-center gap-2 text-xs text-muted-foreground\"><button class=\"flex items-center gap-2 hover:text-foreground transition-colors\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-right h-3.5 w-3.5 transition-transform duration-150 rotate-90\" aria-hidden=\"true\"><path d=\"m9 18 6-6-6-6\"></path></svg><span class=\"font-medium\">Reasoning</span></button><span class=\"ml-auto flex items-center gap-2\"><span class=\"text-[10px] opacity-60\">501 chars</span><button class=\"text-[10px] opacity-40 hover:opacity-80 transition-opacity\" title=\"Maximize\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-maximize2 lucide-maximize-2 h-3 w-3\" aria-hidden=\"true\"><path d=\"M15 3h6v6\"></path><path d=\"m21 3-7 7\"></path><path d=\"m3 21 7-7\"></path><path d=\"M9 21H3v-6\"></path></svg></button></span></div><div class=\"px-3 py-2 border-t border-border text-xs text-muted-foreground overflow-y-auto max-h-[300px]\" style=\"line-height: 1.6;\"><div class=\"prose prose-invert prose-xs max-w-none break-words overflow-x-auto [&amp;_pre]:overflow-x-auto [&amp;_code]:break-all [&amp;_pre]:text-[11px] [&amp;_p]:my-1 [&amp;_ul]:my-1 [&amp;_ol]:my-1 [&amp;_li]:my-0.5 [&amp;_h1]:text-sm [&amp;_h2]:text-xs [&amp;_h3]:text-xs [&amp;_pre]:my-1.5 [&amp;_pre]:rounded [&amp;_blockquote]:my-1\"><p>The user wants to run the <code>pwd</code> command using the <code>run_command</code> tool and see the result.</p>\n<p><strong>Step 1: Define the tool call.</strong></p>\n<ul>\n<li>Tool: <code>run_command</code></li>\n<li>Command: <code>pwd</code></li>\n</ul>\n<p><strong>Step 2: Execute the tool.</strong></p>\n<ul>\n<li>The model generates the function call.</li>\n<li>The environment executes <code>pwd</code>.</li>\n<li>The environment returns the current working directory (e.g., <code>/home/user</code> or similar).</li>\n</ul>\n<p><strong>Step 3: Formulate the response.</strong></p>\n<ul>\n<li>The response should state the result returned by the tool.</li>\n</ul>\n<p>Let's start with the tool call.</p>\n</div></div></div></div><div class=\"text-sm\"></div><div class=\"mt-3 pt-2 border-t border-border/30 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-muted-foreground/70\"><span title=\"Completion tokens\" class=\"\">164 tokens</span><span title=\"Generation speed\" class=\"\">18.0 t/s</span><span title=\"Prompt processing speed\" class=\"\">399.8 pp/s</span><span title=\"Prompt tokens — cache: paged+ssm\" class=\"opacity-60\">1006 prompt (41 paged+ssm cached)</span><span title=\"Time to first token\" class=\"opacity-60\">2.52s TTFT</span><span title=\"Total request time\" class=\"\">11.7s total</span></div></div></div>"
+  },
+  "screenshot": "run2-04-turnC.png"
+}
