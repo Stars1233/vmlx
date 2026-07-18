@@ -856,3 +856,29 @@ remain open. No public release/notarization/feed mutation performed.
   panel. This matches Eric's global "reasoning then no tool/no answer"
   complaint — treat as cross-family suspect until proven scoped.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-17 22:2x - Q36MTP tool rail: fix landed d5e9e5177, tool loop VERIFIED-LIVE
+
+- `Q36MTP-TOOL-CALL-NOT-EMITTED`: ROOT-CAUSED + FIXED + PARTIALLY CLOSED.
+  Two stacked panel defects in the chat rail (chat.ts): (1) zero-tool
+  speculative-buffer restore re-entered emitDelta marker detection, so
+  restored text containing the hallucinated `<run_command>` dialect was
+  re-suppressed permanently (live-proven pre-fix: content 0, buffered true;
+  post-fix-v1 live: content 96, buffered false); (2) the final persistence
+  sanitizer stripped the same dialect to an EMPTY answer (DB content len 0,
+  renderer "No visible response was produced"). Fix d5e9e5177: restore
+  bypasses detection + fences dialect text; sanitizer never-empty guard
+  preserves verbatim text when stripping would blank a no-tool turn.
+  Tests: responses-stream-recovery 9/9, panel suite 2296 green, typecheck.
+- VERIFIED-LIVE on the patched app (22:17): full native tool loop — server
+  emitted function_call (tool calls: 1), panel executed builtin run_command,
+  continuation completed, visible answer "The current working directory is:
+  /Users/eric/mlx/vllm-mlx", stats live. Evidence: ui-proof/run6-toolloop-pass.png.
+  API rail control: q36-tool-api-repro.json (tools-auto + tools-required both
+  emit function_call; no-tools control emits visible text).
+- REMAINING PARTIAL: the hallucinated-dialect zero-tool path end-to-end
+  (dialect text visibly rendered + persisted) is unit-pinned but not yet
+  observed live post-v2 (model emitted a native call this run). Next natural
+  occurrence or forced repro will close it. Gateway/API rails untouched by
+  the fix (no import of the shared module outside ipc/chat.ts — verified).
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
