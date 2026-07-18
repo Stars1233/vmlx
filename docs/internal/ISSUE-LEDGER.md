@@ -1135,3 +1135,17 @@ remain open. No public release/notarization/feed mutation performed.
 - Remaining for DSV4 row: UI fresh-chat turn, long-Responses fragment
   retest, restart-restore axis.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 03:2x - DSV4 row: UI turn + long-Responses retest PASS
+
+- DSV4 UI fresh-chat turn (Responses rail, wake-from-soft-sleep): exact
+  visible `DSV4-UI-T1-OK`, reasoning 99 chars separated, TTFT 9.0s incl
+  wake, persisted. Long-Responses fragment row (was matrix PARTIAL/FAIL,
+  111-char fragment after forced </think>): RETESTED-PASS on current
+  source — streamed /v1/responses long prompt + high effort produced 434
+  visible chars in 108 content deltas ending exactly DSV4-LONGRESP-DONE,
+  963 reasoning chars in 271 deltas, response.completed clean.
+- DSV4 row remaining: effort-none degeneration P1 (open), restart-restore/
+  L2 axis for the native composite store (warm detail showed paged+dsv4
+  without +disk — verify dsv4 L2 write/restore in a dedicated pass).
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
