@@ -1383,3 +1383,16 @@ remain open. No public release/notarization/feed mutation performed.
   ~2000-token reasoning close), cached 704 `paged+mixed_swa`. Step family:
   BOTH variants green. Matrix 7/9 + variant coverage advancing.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 09:0x - Nemotron JANGTQ row GREEN. Matrix 8/9.
+
+- Nemotron-Omni-Nano-JANGTQ-CRACK (session ccb65b5a, port 8024): autodetect
+  correct (nemotron-h, nemotron/deepseek_r1, VLM false, JIT correctly off
+  for TQ). Q4 TQ CONFIRMED. Cold exact "Busan NEMO-cold-DONE" (739
+  reasoning, stop); warm exact, 768 cached, `paged+ssm+tq-native` — SSM
+  companion working on the Nemotron-H hybrid path. Media/Omni rows remain
+  TODO per matrix (text-only row here). MXFP4 variant has NO session yet —
+  create + test in the variant pass.
+- Matrix q4-TQ confirmations: Hy3 ✓ Gemma ✓ Laguna ✓ Step(x2) ✓ Nemotron ✓;
+  remaining MM2.7. Matrix rows: 8/9 core (MM2.7 + M3 remain).
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
