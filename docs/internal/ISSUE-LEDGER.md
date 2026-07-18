@@ -1301,3 +1301,20 @@ remain open. No public release/notarization/feed mutation performed.
   (JANG_2L done — M.1/XS JANGTQ variants if present). Each variant: load,
   autodetect, TQ policy truth, cold/warm, coherence.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 06:5x - Step 3.7 JANG_K: q4 TQ + cold pass; WARM reasoning-only EMPTY (P1)
+
+- Step-3.7-Flash-JANG_K (session 3ec7c78c, port 8023): autodetect correct
+  (step-3.7-flash, step3p5/qwen3, VLM, JIT ignored). Q4 TQ CONFIRMED
+  (turboquant-q4 4/4). Cold: exact "Busan STEP-cold-DONE", reasoning 734
+  separated.
+- `STEP37-WARM-REASONING-ONLY-EMPTY`: OPEN (P1 — Eric emission class).
+  WARM identical non-stream turn: content EMPTY, reasoning 1557, cached 704
+  detail paged+mixed_swa. Cold clean / warm broken => cache-restore
+  interaction with the step template/answer-pass (no instruct rail —
+  supportsInstructMode false limits recovery; prior lineage: step3p7
+  non-stream reasoning-preamble leak + long-reasoner floor). Repro is
+  deterministic-ish: long prompt cold then identical warm on 8023. Next:
+  streamed warm capture + answer-pass trace for step family on warm turns.
+- Matrix note: Step detail is paged+mixed_swa (SWA arch) — consistent.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
