@@ -882,3 +882,17 @@ remain open. No public release/notarization/feed mutation performed.
   occurrence or forced repro will close it. Gateway/API rails untouched by
   the fix (no import of the shared module outside ipc/chat.ts — verified).
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-17 22:4x - Q36MTP row: dialect path CLOSED-BY-LIVE-PROOF; NOTOOL regression green on v2/v3
+
+- `Q36MTP-TOOL-CALL-NOT-EMITTED`: CLOSED. Live on the v3 app: forced dialect
+  turn logged buffering -> "Restoring 34 authoritative" -> "Sanitizer emptied
+  a 44-char answer with no executed tool - preserving verbatim in a fence";
+  DB persisted the fenced <run_command>/pwd text (44 chars, visible). Guard
+  v3 keys on receivedToolCalls/allGeneratedContent because the speculative
+  "generating" status had masked the v2 guard (live-caught: empty 12-char
+  fence). NOTOOL-A/B regression on patched app: exact strings, reasoning
+  differs, prefix cache hits (5241/5399 and 5241/5502 cached). Tool loop
+  pass (run6) stands. Evidence: ui-proof/run6-toolloop-pass.png,
+  ui-proof/run7-dialect-guard-pass.png, panel log lines in gate README.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE` (matrix rows pending).
