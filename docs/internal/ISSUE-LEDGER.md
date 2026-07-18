@@ -1579,3 +1579,18 @@ remain open. No public release/notarization/feed mutation performed.
   8034, external drive) and starting — MATRIX-JANGTQ-VS-AFFINE Nemotron
   pair in progress. Remaining UI turn: M3 only.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 13:4x - Nemotron variant pair complete; M3 UI turn PASS; ALL matrix UI turns green
+
+- Nemotron-Omni-Nano-MXFP4-CRACK (d9c7b9c1, port 8034): q4 TQ confirmed,
+  cold exact "Busan NEMOMX-cold-DONE", warm exact with 768 cached
+  `paged+ssm+tq-native` — MATRIX-JANGTQ-VS-AFFINE Nemotron pair COMPLETE
+  (JANGTQ + MXFP4 both green).
+- M3 UI fresh-chat turn: exact `M3-UI-T1-OK`, reasoning 109 in rail,
+  streamed clean (F13 lineage clear), 128 cached. ALL matrix UI turns now
+  green: Qwen3.6/Bonsai/DSV4/Hy3/Gemma/Laguna/Step/Nemotron/MM2.7/M3.
+- Remaining before release: Qwen3.6-35B JANGTQ variant (optional), settings
+  parity sweep, media/VL rows, session-dedupe P3, then HELD gates
+  (bundle-python, packaging/signing/notarization — Eric permission) and
+  Eric decisions (paged policy for this branch; DSV4 sampling regen).
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
