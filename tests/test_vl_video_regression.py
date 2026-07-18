@@ -7652,6 +7652,8 @@ class TestJangTqEncodeDecodeCorrectness:
         "/Users/eric/models/dealign.ai",
         "/Users/eric/models/dealignai",
         "/Users/eric/.mlxstudio/models/MLXModels/dealignai",
+        "/Volumes/EricsLLMDrive/dealignai",
+        "/Volumes/EricsLLMDrive/jangq-ai",
     ]
     _PROBES = [
         "Hello world",
