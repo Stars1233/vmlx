@@ -1264,3 +1264,19 @@ remain open. No public release/notarization/feed mutation performed.
   model_config_registry think_in_template/default-thinking for laguna and
   align to template default; regression + live re-proof.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 06:0x - CORRECTION: Laguna default-reasoning is INTENTIONAL (Eric directive)
+
+- `LAGUNA-DEFAULT-REASONING-CHECK`: CLOSED-INTENTIONAL. model_configs.py
+  laguna entry documents the design explicitly: the template GATES think on
+  enable_thinking (default OFF in template), think_in_template=False, and
+  per ERIC DIRECTIVE all reasoning-capable families default reasoning ON via
+  architecture_hints.default_enable_thinking=True (Auto -> ON, template
+  renders <think>). Observed default-turn reasoning is the intended
+  behavior; visible content exact; template gating verified live both ways
+  earlier (default ON produced reasoning; the template-side </think> path is
+  the explicit-off rail). My 05:4x reclassification was wrong — reverted.
+- Laguna row now GREEN except UI turn + shared eviction pass: autodetect,
+  q4 TQ, cold/warm paged+tq-native, non-stream cached usage, glm47 stream
+  separation (spill disproven), default-reasoning intentional.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
