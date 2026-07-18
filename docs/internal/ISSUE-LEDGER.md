@@ -814,3 +814,24 @@ remain open. No public release/notarization/feed mutation performed.
   the patched panel for a plain turn. NOT yet proof for the NOTOOL replay
   signature; UI A-E rerun + Auto-mode API repro in flight.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-17 - Re-correction after source trace: swap-orphan UNCONFIRMED; add log-retention defect
+
+- `SINGLE-MODEL-SWAP-ORPHANS-ADOPTED-SERVER`: DOWNGRADED to UNCONFIRMED.
+  Source trace shows stopSession() handles adopted pids (SIGTERM, 1.5s wait,
+  SIGKILL, then port fallback), and pid 10970's engine log ends in a
+  GRACEFUL uvicorn shutdown — consistent with the panel killing it correctly
+  at either the swap or the later manual restart. My health-probe ordering vs
+  the swap is ambiguous (concurrent live manual use), so the orphan claim is
+  not proven. Needs a CONTROLLED live repro: adopt server, enable
+  single-model, start a second model, verify the first process dies.
+- The 21:13 "silent server death" is most plausibly a MANUAL Stop:
+  stopSession() emits no console line and deletes the session log buffer,
+  which exactly matches the observed no-log-line + empty getLogs + stopped
+  DB row. Not counted as an engine crash without a controlled repro.
+- `STOP-DESTROYS-SESSION-LOG-BUFFER`: OPEN (P2, diagnosability). sessions.ts
+  stopSession() does `this.logBuffers.delete(sessionId)`, so after ANY stop
+  (manual, swap, monitor) the server's stderr history is gone and no crash
+  postmortem is possible from the app. Fix direction: retain last N lines in
+  a stopped-session buffer or append to a per-session on-disk log.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
