@@ -1,0 +1,191 @@
+{
+  "artifact_format_version": 1,
+  "captured_at": "2026-07-18T04:17:00Z",
+  "overall_verdict": "FAIL",
+  "overall_summary": "Release gate blocked before Turn A could be sent: the correctly selected Qwen chat reported that the model was not running, exposed Start and Load Model controls, disabled the composer and send button, and its selected 127.0.0.1:8032 health endpoint was unreachable from the remote renderer.",
+  "test_context": {
+    "app_expected": "vMLX Electron dev vmlx/1.6.11",
+    "app_observed_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) vmlx/1.6.11 Chrome/120.0.6099.291 Electron/28.3.3 Safari/537.36",
+    "cdp_endpoint": "http://127.0.0.1:9335",
+    "page_target": {
+      "title": "vMLX",
+      "url": "http://localhost:5173/",
+      "id": "2CD19C7442E50FAA12B32724D16A62BA"
+    },
+    "remote_host_claimed_by_user": "erics-m5-max.local",
+    "profile_claimed_by_user": "/Users/eric/.vmlx-v1611-cachefix-dev",
+    "revision_claimed_by_user": {
+      "branch": "reconcile/1.5.68",
+      "commit": "9d8a730ec",
+      "subject": "fix(chat): isolate Qwen reasoning replay"
+    },
+    "revision_verification": "UNVERIFIED: the CDP renderer surfaces app/runtime identity but not a trustworthy Git branch/SHA.",
+    "source_modified": false,
+    "app_or_server_restarted": false,
+    "model_load_attempted": false,
+    "saved_settings_changed": false,
+    "control_channel": "Raw Chrome DevTools Protocol only"
+  },
+  "initial_state": {
+    "screenshot": "01-initial.png",
+    "screenshot_observation": "Server tab showed dealignai/Qwen3.6-27B-MXFP8-CRACK-MTP as Stopped on 127.0.0.1:8032.",
+    "selected_chat_after_opening_chat_tab": "Chat with dealignai/Qwen3.6-27B-MXFP8-CRACK-MTP",
+    "selected_model_header": "dealignai/Qwen3.6-27B-MXFP8-CRACK-MTP",
+    "correct_session_selected": true,
+    "ui_status": "Model is not running.",
+    "header_control": "Start",
+    "composer_placeholder": "Message...",
+    "composer_disabled": true,
+    "send_button_disabled": true,
+    "renderer_health_check": {
+      "url": "http://127.0.0.1:8032/health",
+      "method": "Runtime.evaluate fetch from the remote renderer",
+      "result": "TypeError: Failed to fetch"
+    },
+    "anomalies": [
+      "HARD BLOCKER: the UI and renderer endpoint state contradicted the supplied standby_soft precondition.",
+      "The selected chat was correct, but it could not accept a message without using Start or Load Model, both forbidden by the test constraints.",
+      "The existing chat history visibly contains earlier baseline examples of blank visible answers and repeated reasoning, but those pre-existing messages are not counted as post-patch Turn A-E evidence."
+    ]
+  },
+  "turns": [
+    {
+      "turn": "A",
+      "verdict": "FAIL/UNVERIFIED",
+      "user_prompt": "My favorite city is Busan. Please reply with exactly: Q36-UI-T1-OK",
+      "send_attempted": true,
+      "sent": false,
+      "send_error": "Error: visible chat input not found",
+      "screenshot": "02-turnA.png",
+      "visible_text": "",
+      "visible_text_verified": false,
+      "reasoning_text": "",
+      "reasoning_verified": false,
+      "reasoning_identical_to_prior": false,
+      "reasoning_comparison_verified": false,
+      "tool_call_emitted": false,
+      "tool_call_check_verified": false,
+      "timing_stats_shown_in_ui": null,
+      "anomalies": [
+        "Turn A was not dispatched because the composer and send button were disabled.",
+        "No new reasoning rail streamed.",
+        "No non-empty visible answer containing Q36-UI-T1-OK exists.",
+        "No current-turn timing statistics exist."
+      ]
+    },
+    {
+      "turn": "B",
+      "verdict": "FAIL/UNVERIFIED",
+      "user_prompt": "What is my favorite city? Answer in one word.",
+      "send_attempted": false,
+      "sent": false,
+      "screenshot": null,
+      "visible_text": "",
+      "visible_text_verified": false,
+      "reasoning_text": "",
+      "reasoning_verified": false,
+      "reasoning_identical_to_prior": false,
+      "reasoning_comparison_verified": false,
+      "tool_call_emitted": false,
+      "tool_call_check_verified": false,
+      "timing_stats_shown_in_ui": null,
+      "anomalies": [
+        "Not executed because the sequential release gate was blocked before Turn A.",
+        "Favorite-city memory, visible Busan output, replay absence, and timing are all unverified.",
+        "Required screenshot 03-turnB.png was not fabricated."
+      ]
+    },
+    {
+      "turn": "C",
+      "verdict": "FAIL/UNVERIFIED",
+      "user_prompt": "Use the run_command tool to run pwd and tell me the result.",
+      "send_attempted": false,
+      "sent": false,
+      "screenshot": null,
+      "visible_text": "",
+      "visible_text_verified": false,
+      "reasoning_text": "",
+      "reasoning_verified": false,
+      "reasoning_identical_to_prior": false,
+      "reasoning_comparison_verified": false,
+      "tool_call_emitted": false,
+      "tool_call_check_verified": false,
+      "tool_execution_verified": false,
+      "timing_stats_shown_in_ui": null,
+      "anomalies": [
+        "Not executed because the sequential release gate was blocked before Turn A.",
+        "run_command emission, execution, pwd result, visible follow-up answer, reasoning, and timing are all unverified.",
+        "Required screenshot 04-turnC.png was not fabricated."
+      ]
+    },
+    {
+      "turn": "D",
+      "verdict": "FAIL/UNVERIFIED",
+      "user_prompt": "[Q36MTP-UI-NOTOOL-A] Use private reasoning only. Your visible answer must be exactly the string made by joining these six chunks with hyphens in this order: QP10, RS20, TU30, VW40, XY50, ZA60. No other visible text.",
+      "send_attempted": false,
+      "sent": false,
+      "screenshot": null,
+      "visible_text": "",
+      "visible_text_verified": false,
+      "expected_visible_text": "QP10-RS20-TU30-VW40-XY50-ZA60",
+      "reasoning_text": "",
+      "reasoning_verified": false,
+      "reasoning_identical_to_prior": false,
+      "reasoning_comparison_verified": false,
+      "tool_call_emitted": false,
+      "tool_call_check_verified": false,
+      "timing_stats_shown_in_ui": null,
+      "anomalies": [
+        "Not executed because the sequential release gate was blocked before Turn A.",
+        "Exact visible-answer formatting, private reasoning separation, no-tool behavior, replay absence, and timing are all unverified.",
+        "Required screenshot 05-turnD.png was not fabricated."
+      ]
+    },
+    {
+      "turn": "E",
+      "verdict": "FAIL/UNVERIFIED",
+      "user_prompt": "[Q36MTP-UI-NOTOOL-B] Use private reasoning only. Your visible answer must be exactly the string made by joining these six chunks with hyphens in this order: HG10, IJ20, KL30, MN40, OP50, QR60. No other visible text.",
+      "send_attempted": false,
+      "sent": false,
+      "screenshot": null,
+      "visible_text": "",
+      "visible_text_verified": false,
+      "expected_visible_text": "HG10-IJ20-KL30-MN40-OP50-QR60",
+      "reasoning_text": "",
+      "reasoning_verified": false,
+      "reasoning_identical_to_prior": false,
+      "reasoning_comparison_verified": false,
+      "tool_call_emitted": false,
+      "tool_call_check_verified": false,
+      "timing_stats_shown_in_ui": null,
+      "anomalies": [
+        "Not executed because the sequential release gate was blocked before Turn A.",
+        "Exact visible-answer formatting, private reasoning separation, no-tool behavior, byte-identical replay comparison, and timing are all unverified.",
+        "Required screenshot 06-turnE.png was not fabricated."
+      ]
+    }
+  ],
+  "p0_signature_checks": {
+    "empty_visible_answer_with_reasoning_only": "UNVERIFIED for new Turns A-E because no turn was dispatched",
+    "byte_identical_later_reasoning_replay": "UNVERIFIED for new Turns A-E because no reasoning rails were produced",
+    "reasoning_parser_or_tool_marker_leak": "UNVERIFIED for new Turns A-E",
+    "looping_garbage_or_stale_visible_text": "UNVERIFIED for new Turns A-E"
+  },
+  "artifacts": {
+    "workdir": "/private/tmp/claude-501/-Users-eric-vmlx/0399d9b5-04f2-47a1-90ec-b82f24618a9d/scratchpad/q36-ui-proof/",
+    "present": [
+      "01-initial.png",
+      "02-turnA.png",
+      "cdp-ui-proof.mjs",
+      "q36-health-and-composer.js",
+      "q36-session-state.js",
+      "ui-proof.json"
+    ],
+    "intentionally_absent_because_unexecuted": [
+      "03-turnB.png",
+      "04-turnC.png",
+      "05-turnD.png",
+      "06-turnE.png"
+    ]
+  }
+}
