@@ -1610,3 +1610,15 @@ remain open. No public release/notarization/feed mutation performed.
 - Remaining: media/VL row, Qwen3.6-35B JANGTQ variant, session-dedupe P3,
   HELD gates + Eric decisions.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 14:2x - Gemma VL/media row: API image turn functional PASS
+
+- Gemma 12B VL API image turn (8x8 solid-red data-URI PNG): image ingested
+  (291 prompt tokens incl image), visible answer "Pink GEMMA-IMG-DONE."
+  with marker, reasoning separated, no crash. Color named Pink for pure
+  red — consistent with the known LE7 Gemma-VL-4bit quant color-fidelity
+  trait (model, not engine). Media rail FUNCTIONAL on the API path.
+  UI attach-flow turn deferred as follow-up (file-dialog automation);
+  media-salted cache axis not exercised this pass (single image) — both
+  noted for the media deep pass.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
