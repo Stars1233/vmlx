@@ -1318,3 +1318,19 @@ remain open. No public release/notarization/feed mutation performed.
   streamed warm capture + answer-pass trace for step family on warm turns.
 - Matrix note: Step detail is paged+mixed_swa (SWA arch) — consistent.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 07:1x - STEP37 P1 SHARPENED: non-stream rail runaway reasoning; stream rail clean
+
+- `STEP37-WARM-REASONING-ONLY-EMPTY` renamed scope ->
+  `STEP37-NONSTREAM-RUNAWAY-REASONING` (P1). Evidence on 8023, same warm
+  long prompt: STREAM rail = reasoning 439 chars, closes think, visible
+  "\nBusan STEP-warm2-DONE", finish stop. NON-STREAM rail = reasoning 1557
+  (cap 400) then 5706 (cap 1500), NEVER closes think, finish length, content
+  EMPTY — twice. Deterministic stream-vs-non-stream divergence on the same
+  server => the non-stream path renders/parametrizes differently for the
+  step family (suspects: answer-pass/direct-rail template kwargs, stop
+  tokens, enable_thinking/budget plumbing on non-stream; lineage: step3p7
+  non-stream reasoning-preamble leak + no instruct rail). NEXT: diff the
+  exact rendered prompt + sampling params between rails in server.py for
+  step-3.7; fix; pytest; live re-proof non-stream warm visible answer.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
