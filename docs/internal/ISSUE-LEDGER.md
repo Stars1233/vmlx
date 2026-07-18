@@ -1066,3 +1066,23 @@ remain open. No public release/notarization/feed mutation performed.
   cross-model history carryover is then fed to the new model — matrix rows
   should use fresh chats unless testing carryover deliberately.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 01:1x - Fresh-chat control clean; cached>prompt reproduces on fresh chat (upgrade)
+
+- `BONSAI-TOOL-CONTINUATION-STALE-REPLAY`: SCOPED by control test. FRESH
+  Bonsai chat + same tool prompt = tool emitted, executed once, final answer
+  correct pwd result (239 tokens, 6.5s). The stale-replay manifests only on
+  the REBOUND chat carrying cross-model history — history-conditioned model
+  parroting on 1-bit; panel/engine tool machinery sound on fresh chats for
+  both Bonsai and Qwen. Remaining action: capture the continuation
+  requestMessages for a rebound chat before final classification; matrix
+  rows use fresh chats.
+- `USAGE-CACHED-GT-PROMPT-ON-CONTINUATION`: UPGRADED (P1, engine suspicion).
+  Reproduces on a FRESH chat: continuation stats `pp: 481 tokens (3904
+  cached)` — cached 8x the prompt, impossible as a prefix match. Suspect the
+  new cached-token stamping/credit path (1657ed312: max() latch or block
+  credit counting stored-sequence length instead of matched-prefix length)
+  over-credits on tool continuations. Trace _record_cache_hit credit size vs
+  matched tokens + the stamping max() on follow-up streams; fix + regression;
+  re-proof that warm hits still report correctly after.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
