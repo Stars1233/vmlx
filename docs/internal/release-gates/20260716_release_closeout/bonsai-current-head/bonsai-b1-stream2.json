@@ -1,0 +1,79 @@
+{
+  "elapsed": 5.428,
+  "type_counts": {
+    "response.reasoning_summary_text.delta": 247,
+    "response.output_text.delta": 10,
+    "response.reasoning_summary_text.done": 1,
+    "response.output_text.done": 1,
+    "response.completed": 1
+  },
+  "content": "\n\nB1-STREAM2-CONTENT-OK",
+  "completed": [
+    {
+      "type": "response.completed",
+      "response": {
+        "id": "resp_32059cab8921",
+        "object": "response",
+        "created_at": 1784244102,
+        "status": "completed",
+        "model": "jangq-ai/Bonsai-27b-1bit-JANG",
+        "output_text": "\n\nB1-STREAM2-CONTENT-OK",
+        "output": [
+          {
+            "id": "item_9f0a9d00169d",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "\n\nB1-STREAM2-CONTENT-OK",
+                "annotations": []
+              }
+            ]
+          },
+          {
+            "id": "rs_58a87dd8b7e7",
+            "type": "reasoning",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "reasoning",
+                "text": "Here's a thinking process:\n\n1.  **Analyze User Input:**\n   - User says: `[B1-STREAM2] Answer exactly B1-STREAM2-CONTENT-OK and stop.`\n   - This is a direct instruction/command.\n   - It specifies an exact string to output: `B1-STREAM2-CONTENT-OK`\n   - It adds a strict condition: \"stop\" after answering.\n\n2.  **Identify Key Constraints:**\n   - Output must be exactly `B1-STREAM2-CONTENT-OK`\n   - Nothing else should be included (no explanations, no greetings, no additional text)\n   - Must terminate immediately after that string.\n\n3.  **Verify Compliance:**\n   - The prompt is clear and unambiguous.\n   - I will output exactly the requested string and nothing else.\n\n4.  **Formulate Response:**\n   - `B1-STREAM2-CONTENT-OK` (and stop)\n\n   Check: Does it match exactly? Yes.\n   Does it stop? Yes.\n   Any extra text? No.\n\n   Proceed. \n   Output matches requirement exactly.\u2705\n"
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 25,
+          "output_tokens": 259,
+          "total_tokens": 284
+        }
+      },
+      "sequence_number": 264
+    }
+  ],
+  "tail_types": [
+    "response.reasoning_summary_text.delta",
+    "response.reasoning_summary_text.delta",
+    "response.reasoning_summary_text.delta",
+    "response.reasoning_summary_text.delta",
+    "response.reasoning_summary_text.delta",
+    "response.reasoning_summary_text.delta",
+    "response.reasoning_summary_text.delta",
+    "response.output_text.delta",
+    "response.output_text.delta",
+    "response.output_text.delta",
+    "response.output_text.delta",
+    "response.output_text.delta",
+    "response.output_text.delta",
+    "response.output_text.delta",
+    "response.output_text.delta",
+    "response.output_text.delta",
+    "response.output_text.delta",
+    "response.reasoning_summary_text.done",
+    "response.output_text.done",
+    "response.completed"
+  ]
+}

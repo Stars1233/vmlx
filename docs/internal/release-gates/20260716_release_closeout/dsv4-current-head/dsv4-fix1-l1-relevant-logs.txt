@@ -1,0 +1,18 @@
+137:[22:51:04.775] INFO:vmlx_engine.prefix_cache:Paged cache hit for resp_af2fc900539b: 3 blocks, 606 tokens
+138:[22:51:04.775] INFO:vmlx_engine.scheduler:Request resp_af2fc900539b: paged cache hit, 606 tokens in 3 blocks, 1 remaining to process (worker reconstruct pending)
+149:[22:51:42.871] INFO:vmlx_engine.utils.dsv4_batch_generator:DSV4Gen: captured cache-hit N-1 extension snapshot (43 layers, uncached_head=0, full_N_minus_1=606) for uid=0
+154:[22:51:55.636] INFO:vmlx_engine.scheduler:Extracted 43 layer states for request resp_af2fc900539b
+159:[22:51:55.797] INFO:vmlx_engine.scheduler:Stored paged cache for request resp_af2fc900539b (606 cache-key tokens from 607 prompt tokens, 43 layers, cache truncated to 606 tokens)
+164:[22:51:55.843] INFO:vmlx_engine.scheduler:Request resp_da7f27f4c626: paged cache miss, processing all 155 tokens
+165:[22:51:56.971] INFO:vmlx_engine.scheduler:DSV4 prefix cache store skipped for request resp_da7f27f4c626: prompt below snapshot/store threshold (cache_key_tokens=154 < 256).
+166:[22:51:56.972] WARNING:vmlx_engine.scheduler:Cannot produce prompt-only cache for resp_da7f27f4c626, skipping paged cache store
+167:[22:51:56.972] INFO:vmlx_engine.scheduler:Skipping paged cache store for resp_da7f27f4c626: no extracted cache (prompt_tokens=155, gen_prompt_len=0, block_cache_enabled=True)
+195:[22:53:02.166] INFO:vmlx_engine.prefix_cache:Paged cache hit for resp_f67c38289dd5: 3 blocks, 606 tokens
+196:[22:53:02.166] INFO:vmlx_engine.scheduler:Request resp_f67c38289dd5: paged cache hit, 606 tokens in 3 blocks, 1 remaining to process (worker reconstruct pending)
+197:[22:53:02.236] INFO:vmlx_engine.utils.dsv4_batch_generator:DSV4Gen: captured cache-hit N-1 extension snapshot (43 layers, uncached_head=0, full_N_minus_1=606) for uid=2
+200:[22:53:06.885] INFO:vmlx_engine.scheduler:Extracted 43 layer states for request resp_f67c38289dd5
+205:[22:53:07.034] INFO:vmlx_engine.scheduler:Stored paged cache for request resp_f67c38289dd5 (606 cache-key tokens from 607 prompt tokens, 43 layers, cache truncated to 606 tokens)
+210:[22:53:07.082] INFO:vmlx_engine.scheduler:Request resp_655c45bf3d84: paged cache miss, processing all 155 tokens
+211:[22:53:08.205] INFO:vmlx_engine.scheduler:DSV4 prefix cache store skipped for request resp_655c45bf3d84: prompt below snapshot/store threshold (cache_key_tokens=154 < 256).
+212:[22:53:08.205] WARNING:vmlx_engine.scheduler:Cannot produce prompt-only cache for resp_655c45bf3d84, skipping paged cache store
+213:[22:53:08.205] INFO:vmlx_engine.scheduler:Skipping paged cache store for resp_655c45bf3d84: no extracted cache (prompt_tokens=155, gen_prompt_len=0, block_cache_enabled=True)

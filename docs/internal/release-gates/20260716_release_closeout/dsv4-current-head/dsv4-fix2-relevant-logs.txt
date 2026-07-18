@@ -1,0 +1,11 @@
+41:[DSV4-FIX2] Continue this same chat. Call the built-in file_info tool exactly once with path README.md. You must execute the real tool. After the tool result, reply exactly DSV4-FIX2-DONE and nothing else.
+51:DSV4-FIX2-DONE
+119:[22:45:04.461] INFO:vmlx_engine.scheduler:Block disk cache enabled: dir=/Users/eric/.cache/vmlx-engine/block-cache/b1872736d555, max=10.0GB, expected_layers=43
+154:[22:45:24.650] WARNING:vmlx_engine.prefix_cache:Ignoring DSV4 paged prefix hit for resp_11be69a31b8b: restored blocks contain DeepseekV4Cache pending markers but no terminal deepseek_v4 composite state. A non-terminal DSV4 block only carries SWA/local fragments; CSA/HCA pool state lives in the terminal block, so using this prefix would reconstruct an incomplete cache.
+155:[22:45:24.650] INFO:vmlx_engine.scheduler:Request resp_11be69a31b8b: paged cache miss, processing all 777 tokens
+157:[22:45:24.652] INFO:vmlx_engine.utils.dsv4_batch_generator:DSV4Gen: stop_tokens at construction = [1, 128803, 128804, 128828] (DSV4_EOS_ID=1 always-checked separately)
+165:[22:46:04.087] INFO:vmlx_engine.utils.dsv4_batch_generator:DSV4Gen: kernel warmup done
+172:[22:46:33.736] INFO:vmlx_engine.server:Responses stream resp_11be69a31b8b: complete tool call parsed but model kept generating 9 chunks past it — stopping generation (parser=DSMLToolParser)
+177:[22:46:33.793] INFO:vmlx_engine.scheduler:Request resp_c4a651e004af: paged cache miss, processing all 319 tokens
+180:[22:46:35.339] INFO:vmlx_engine.scheduler:Extracted 43 layer states for request resp_c4a651e004af
+186:[22:46:35.489] INFO:vmlx_engine.scheduler:Stored paged cache for request resp_c4a651e004af (318 cache-key tokens from 319 prompt tokens, 43 layers, cache truncated to 318 tokens)

@@ -811,3 +811,34 @@ partial for this Qwen artifact.
    files, and merge/integrate the closeout branch deliberately.
 6. Build, sign, notarize, staple, verify, install-smoke, and publish 1.6.11 only
    after every release-blocking row above is green.
+
+## 2026-07-18 evidence-preservation addendum (audit-driven; citations repointed off /tmp)
+
+A commit-level audit (43/43 cited commits verified present) found eight rows
+citing evidence that existed only untracked in-tree or in /tmp. All of it is
+now force-added and committed. Mapping for rows whose citations named /tmp:
+
+- `/tmp/gateway-port-conflict-prefx.png`, `/tmp/gateway-port-conflict-restored.png`,
+  `/tmp/gateway-lan-enabled.png`, `/tmp/single-model-before-dsv4.png`,
+  `/tmp/single-model-after-bonsai.png` -> `settings-current-head/` (tracked).
+- `/tmp/bonsai-qwen-3turn-current.png`, `/tmp/bonsai-response-incomplete-ui.png`
+  -> `bonsai-current-head/` (tracked).
+- `bonsai-b1-ui-tool3-current-pass.png` -> `bonsai-1bit-current/` (tracked).
+- Qwen 3.6 35B row screenshots `qwen36-35b-*.png` -> tracked at top level.
+- Gemma 4 mandatory row gate dir `../20260716_gemma4_mixed_swa_tq4/` -> fully
+  tracked (was 100% untracked).
+- openPangu row: `openpangu3m-current/` (tracked) is the artifact set for the
+  prose PIDs 86212/86842/87268 rows; row stays scoped-PASS with sub-axes
+  PARTIAL as written.
+- Full-suite gate: `full-suite-20260718/` holds the 2026-07-18 full panel
+  vitest log (2302 passed / 3 skipped / 0 failed — FULL suite) and round-1
+  eviction probe JSON; full pytest + typecheck logs land there when complete.
+- `.agents/LOG.md` is now tracked (was gitignored working-tree only).
+
+Also recorded: the ledger 07-18 12:0x DSV4 effort-none artifact-blame entry is
+RETRACTED by the 15:0x entry (jang_config.chat.sampling_defaults declares
+temp 0.6 / top_p 0.95 / rep-pen 1.05 and the engine resolves them; cause
+reopened, same-artifact A/B pending). The matrix DSV4 row remains PARTIAL for
+long/strict quality; no artifact regeneration is recommended or authorized.
+Scoped-head note: code commits after `45c64f85e` through `937fd7639` and this
+addendum supersede the pinned head; the newest source-plus-live row wins.
