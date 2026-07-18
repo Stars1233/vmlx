@@ -106,3 +106,32 @@ API stream result:
 
 Current release verdict for this row: **PARTIAL**. Source and API evidence are
 present; required live Electron evidence is missing.
+
+## 2026-07-17 21:00+ update — Electron relaunch blocker RESOLVED, visual proof in flight
+
+- The SSH relaunch failure above is fixed. Root causes: (1) prior `pkill
+  electron-vite` left the old Electron process holding port 9335 (`bind()
+  failed: Address already in use` → CDP served the OLD build); (2) the SSH
+  launch env lacked the Python venv on PATH, so the panel logged
+  `[Engine Manager] Not installed` (vmlx-serve undetectable → model loads
+  broken).
+- Working relaunch (proven live 20:53): kill `electron-vite dev`, any
+  `remote-debugging-port=9335` process, and `panel/node_modules/electron/dist/
+  Electron.app` processes; confirm 9335 free; then launch with
+  `PATH=/Users/eric/mlx/vllm-mlx/.venv/bin:$HOME/.local/bin:$HOME/.local/node/bin:$PATH`
+  and `VMLINUX_USER_DATA_DIR=/Users/eric/.vmlx-v1611-cachefix-dev`.
+- Verified after relaunch: `[STARTUP] Using vMLX userData override:
+  /Users/eric/.vmlx-v1611-cachefix-dev`, `[Engine Manager] Found in PATH:
+  /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine`, CDP 9335 answering,
+  Qwen3.6-27B-MXFP8-CRACK-MTP server alive on 8032 (health standby_soft,
+  model_loaded=true).
+- NEW P0 logged from pre-patch UI evidence (20:35-20:38): ledger row
+  `Q36MTP-UI-REASONING-REPLAY` — later NOTOOL turns rendered byte-identical
+  replayed reasoning from the first NOTOOL turn with EMPTY visible answers
+  while timing stats stayed live. Patched-build retest (5-turn incl. tool turn
+  + both NOTOOL prompts, screenshots + verbatim DOM reads to `ui-proof/`) is
+  running via Codex gpt-5.6-sol xhigh computer-use over CDP.
+- Box codex auth is revoked (`refresh_token_invalidated`) — box-side codex
+  runs blocked until `codex login` on the box; current run drives the box UI
+  from max2 through an SSH tunnel of 9335.
+- Row status remains **PARTIAL** until that visual evidence lands.
