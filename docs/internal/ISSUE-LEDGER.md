@@ -1351,3 +1351,24 @@ remain open. No public release/notarization/feed mutation performed.
   process change — active after the NEXT Electron relaunch (deferred to the
   next natural relaunch point to avoid churn during the Step rail work).
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 08:1x - CORRECTION: Step37 empty-answer = stochastic long-reasoner budget floor, NOT rail divergence
+
+- `STEP37-NONSTREAM-RUNAWAY-REASONING`: RECLASSIFIED ->
+  `STEP37-LONG-REASONER-BUDGET-FLOOR` (known lineage: 20260712 gate "verify
+  budget before blaming parser"). Expanded sample (8 runs, cap 1500):
+  stream 6/6 pass with reasoning 164-2597 chars; non-stream 1/4 pass (pass
+  at 5106 chars reasoning!), fails ONLY when reasoning ~exceeds the cap
+  (finish=length, empty content). Reasoning length is stochastic; the
+  rails are symmetric — earlier 2-sample "deterministic divergence" claim
+  RETRACTED. Engine behavior is explainable: explicit small max_tokens +
+  no-instruct-rail family (supportsInstructMode false) = no recovery when
+  budget dies mid-think; UI already applies reasoning-aware 4x fallback
+  when the cap is unset. IMPROVEMENT row (P3): consider a server-side
+  reasoning-aware floor/warning for explicit small caps on long-reasoner
+  families. Codex rail-diff run died (compaction "Request blocked", 260k
+  tokens, no diffs) — takeover produced this verdict instead.
+- Step JANG_K row now GREEN (autodetect, q4 TQ, cold exact, warm paged+
+  mixed_swa with adequate budget, stream 6/6, UI turn) with the P3
+  improvement note. Next: JANGTQ_K variant per MATRIX-JANGTQ-VS-AFFINE.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
