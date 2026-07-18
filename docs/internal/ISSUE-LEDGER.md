@@ -1041,3 +1041,28 @@ remain open. No public release/notarization/feed mutation performed.
   Minor model quirk observed: cold answer typo "BONSEI-SSM-OK" (1-bit model
   stochastic; warm exact) — not an engine defect.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE` (matrix rows pending).
+
+## 2026-07-18 00:5x - Bonsai UI multiturn: T1/T2 PASS; tool-continuation stale-replay + cached>prompt telemetry
+
+- Bonsai UI multiturn (session 5fd14571, chat REBOUND from the Qwen chat via
+  the header model-switcher — carries full prior history): T1 exact
+  `BONSAI-UI-T1-OK` (17 chars + 339 reasoning, 50 t/s); T2 recall exact
+  `42-Busan` with 5720/5758 paged+ssm cached, TTFT 0.68s — companion fix
+  visibly working in UI. Screenshot bonsai-ui-multiturn.png (gate ui-proof).
+- `BONSAI-TOOL-CONTINUATION-STALE-REPLAY`: OPEN (P1). T3 "run pwd": tool
+  loop completed (2x run_command chips, both executed) but the FINAL visible
+  answer is a VERBATIM copy of the earlier [Q36MTP-V2-NOTOOL-A] user prompt
+  + its `QP10-...-ZA60` answer from the rebound history — never mentions the
+  pwd result. 1255 tokens genuinely generated (not a render bug; persisted
+  in DB). Suspects: tool-continuation history assembly for a
+  model-switched chat confusing the model, or 1-bit model parroting; needs
+  continuation-request capture to decide. Eric's emission class — do not
+  minimize as model quirk without the capture.
+- `USAGE-CACHED-GT-PROMPT-ON-CONTINUATION`: OPEN (P2, telemetry truth). T3
+  stats line: `2077 prompt (5720 paged+ssm cached)` — cached exceeds prompt.
+  Likely the continuation usage line mixes the first stream's cached count
+  with the follow-up prompt count (panel aggregation or engine usage).
+- Also noted: chats REBIND to another session via header switcher by design;
+  cross-model history carryover is then fed to the new model — matrix rows
+  should use fresh chats unless testing carryover deliberately.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
