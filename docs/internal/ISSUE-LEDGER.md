@@ -1246,3 +1246,21 @@ remain open. No public release/notarization/feed mutation performed.
   warm/cached turn (cold clean). Suspect glm47 parser state on cache-restore
   or model rambling; needs streamed-delta capture on a warm turn to decide.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 05:4x - Laguna verdicts: default-reasoning = engine override vs template-OFF; spill = model ramble
+
+- `LAGUNA-WARM-TRAILING-SPILL`: CLOSED-NOT-A-PARSER-BUG. Streamed warm turn:
+  visible exactly "The favorite harbor is Busan." (29 chars), reasoning 1159
+  chars fully separated, no spill. The earlier non-stream trailing prose was
+  model ramble after the answer (reasoning was separately captured there
+  too). glm47 parser clean on the stream rail.
+- `LAGUNA-DEFAULT-REASONING-CHECK`: RECLASSIFIED as engine default-injection
+  finding (P2). GROUND TRUTH: M.1 chat_template generation prompt emits
+  `</think>` (thinking OFF) when enable_thinking is unset/false — the
+  template explicitly DEFAULTS OFF. Yet default API turns produce ~900-1150
+  chars reasoning => the engine/registry passes enable_thinking=True by
+  default for family laguna, overriding the template-owned default
+  (July-11 contract lineage: model-owned defaults must win). Action: check
+  model_config_registry think_in_template/default-thinking for laguna and
+  align to template default; regression + live re-proof.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
