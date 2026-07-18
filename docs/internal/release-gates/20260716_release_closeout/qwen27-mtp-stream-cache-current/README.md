@@ -179,3 +179,25 @@ not yet passed on the final aggregate head.
   The terminal UI contract is `PASS-LIVE`; Qwen's sampled exact-final behavior
   at small caps remains `FAIL-LIVE`, and the aggregate release remains
   `PARTIAL_NO_RELEASE`.
+
+## Current settings and cache-label parity refresh
+
+- Current source preserves explicit Min-P zero end to end. Chat Settings uses
+  `update('minP', v)` without converting zero to undefined; override
+  sanitization accepts the inclusive 0-1 range; both Responses and Chat
+  builders check `overrides.minP != null` before writing `min_p`.
+- A visible live save at Min-P 0.20 wrote `chat_overrides.min_p=0.2`. The next
+  visible save at 0.00 wrote the distinct explicit value 0.0. After a renderer
+  reload, `q27-minp-zero-after-reload-visible.png` shows Min P 0.00 while Max
+  Tokens and Max Thinking Tokens remain blank/default. The focused
+  request-builder, override-policy, and settings-flow suites pass 371/371.
+- The current health payload reports `storage_encode_enabled=true`, stored
+  prefix `turboquant-q4`, q4 K/V bits, q4 applied to the 16 attention-KV slots,
+  and native companion-state rederive for the other 48 layers. Block L2 has
+  836 blocks / 51,964 tokens and ten TQ-native disk hits; SSM L2 has 68 entries
+  / 55,958 tokens.
+- `q27-perf-tq4-truth-label.png` visibly reports `Attention KV L2
+  turboquant-q4 (K q4 / V q4)`, `Selective TQ-KV enabled`, and `SSM Policy
+  native_companion_state + rederive`. The older `Attention KV L2 disabled`
+  observation is therefore closed for current source and this live artifact;
+  broader model-family rows remain separately gated.

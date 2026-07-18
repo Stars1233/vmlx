@@ -6862,3 +6862,24 @@ Qwen 256-token exact-final reliability `FAIL-LIVE`; global
 - Normal UI state was restored and visually checked: Responses wire, Auto
   reasoning, blank Max Tokens/model default, blank Max Thinking Tokens, and
   built-in tools enabled. This does not close broader Qwen sampled reliability.
+
+## 2026-07-17 18:02 PT - Min-P zero and TQ cache-label parity refresh
+
+Status: settings persistence and current Qwen cache telemetry `PASS-LIVE`;
+global `PARTIAL_NO_RELEASE`.
+
+- The stale HY3 follow-up that explicit Min-P zero did not persist was
+  falsified on the current Electron source. The visible Qwen slider was saved
+  at 0.20 (`chat_overrides.min_p=0.2`), then at 0.00
+  (`chat_overrides.min_p=0.0`); a renderer reload still showed 0.00.
+- Current request construction uses `overrides.minP != null`, so explicit zero
+  is forwarded on both Responses and Chat Completions instead of falling back
+  to a non-zero bundle default. The focused request/settings/policy suites pass
+  371/371.
+- The stale Perf-label conflict is also absent on current source. Live health
+  exposes Qwen's 16 attention slots as TurboQuant q4 storage and 48 companion
+  slots as native SSM async rederive. The visible Perf panel reports
+  `Attention KV L2 turboquant-q4 (K q4 / V q4)`, not disabled, alongside 836
+  paged-L2 blocks and 68 SSM-L2 entries.
+- Responses wire, Auto reasoning, blank Max Tokens, blank Max Thinking Tokens,
+  built-in tools on, and explicit Min-P off are the final visible chat state.

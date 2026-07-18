@@ -1,0 +1,32 @@
+{
+  "electron": {
+    "model": "dealignai/Qwen3.6-27B-MXFP8-CRACK-MTP",
+    "pid": 85805,
+    "port": 8032
+  },
+  "min_p": {
+    "nonzero_save": 0.2,
+    "zero_save": 0.0,
+    "sqlite_after_zero_save": 0.0,
+    "ui_after_renderer_reload": 0.0,
+    "responses_wire": true,
+    "builtin_tools_enabled": true,
+    "max_tokens": "model default",
+    "max_thinking_tokens": "auto or model default"
+  },
+  "cache_telemetry": {
+    "attention_layers": 16,
+    "companion_layers": 48,
+    "attention_kv_l2": "turboquant-q4",
+    "key_bits": 4,
+    "value_bits": 4,
+    "companion_policy": "native_companion_state + async rederive",
+    "paged_l2_blocks": 836,
+    "paged_l2_tokens": 51964,
+    "tq_native_disk_hits": 10,
+    "ssm_l2_entries": 68,
+    "ssm_l2_tokens": 55958
+  },
+  "focused_tests": "371/371 passed",
+  "verdict": "PASS_LIVE_SCOPED_SETTINGS_AND_QWEN_LABELS"
+}
