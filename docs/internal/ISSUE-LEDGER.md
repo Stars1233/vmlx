@@ -1570,3 +1570,12 @@ remain open. No public release/notarization/feed mutation performed.
   Follow-up (P3): dedupe session creation by model identity to stop
   spawning path-prefix twins in the first place.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 13:1x - Nemotron UI turn PASS; MXFP4 variant session created + starting
+
+- Nemotron JANGTQ UI fresh-chat turn: exact `NEMO-UI-T1-OK`, reasoning 85
+  in rail, 80.5 t/s. Nemotron JANGTQ row fully green.
+- Nemotron-Omni-Nano-MXFP4-CRACK variant session created (d9c7b9c1, port
+  8034, external drive) and starting — MATRIX-JANGTQ-VS-AFFINE Nemotron
+  pair in progress. Remaining UI turn: M3 only.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
