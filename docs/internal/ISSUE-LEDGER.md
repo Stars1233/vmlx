@@ -1001,3 +1001,24 @@ remain open. No public release/notarization/feed mutation performed.
   Bonsai path is the broken one. CACHE_DETAIL_GRAMMAR.md exists on this
   checkout (audit worktree flag was stale).
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 00:0x - SSM companion narrowed to silent hybrid-detection failure; engine affine-JIT default hygiene
+
+- `HYBRID-SSM-COMPANION-NEVER-STORED`: narrowed. Bonsai server log contains
+  ZERO SSM store/rederive lines -> the store gate
+  (mllm_batch_generator.py:6596, _is_hybrid && _ssm_companion_enabled) never
+  fires. _is_kv_like DOES handle TurboQuantKVCache (by class name, :1463),
+  so prime suspect is hasattr(language_model, "make_cache")=False for the
+  JANG-affine-loaded wrapper -> _hybrid_kv_positions None -> _is_hybrid
+  False, SILENTLY (no warning). Box Codex gpt-5.6-sol xhigh dispatched with
+  load-probe + fix + honest-accounting + non-stream-stamping + regression
+  plan (/tmp/PROMPT-ssm.txt, report to /tmp/ssm-fix-report.md, uncommitted).
+- `ENGINE-AFFINE-JIT-DEFAULT-HYGIENE`: OPEN (P3). Engine cli logs "JANG
+  affine model detected - defaulting --enable-jit ON" for Bonsai (hybrid VLM
+  TQ) even though the panel deliberately omits the flag; the runtime later
+  refuses ("JIT: Skipping mx.compile - MLLM hybrid cache contains
+  ArraysCache"), so JIT is NOT actually active (defense-in-depth held; the
+  JIT-COMPILE-UI-CLI-PARITY closure stands). Hygiene fix: gate the affine
+  JIT default on the same mx.compile-safety conditions so logs/args do not
+  claim ON for models the runtime will refuse.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
