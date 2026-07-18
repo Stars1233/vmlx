@@ -787,3 +787,30 @@ remain open. No public release/notarization/feed mutation performed.
   banner visible) + concurrent health JSON. Needs a structural adopt-or-truth
   fix, not a label tweak.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-17 - CORRECTION + new bug: single-model swap left adopted server alive
+
+- `Q36MTP-UI-ORPHAN-SERVER-NOT-ADOPTED`: CORRECTED — adoption WORKED
+  (`[STARTUP] Adopted 1 vmlx-engine process(es)` in the 20:53 relaunch log).
+  The "Model is not running" banner had a different cause: single-model mode
+  stopped session e5a12a4d when session 08921892 (Hy3, ~73.7GB) was started
+  (`[SESSIONS] single-model mode: stopping session e5a12a4d... before
+  starting 08921892...`). Renderer banner was truthful for a stopped session.
+- `SINGLE-MODEL-SWAP-ORPHANS-ADOPTED-SERVER`: OPEN (P1). That single-model
+  stop did NOT kill the ADOPTED Qwen3.6 server: /health on 8032 still
+  answered `model_loaded=true, standby_soft` ~15 min after the stop, and the
+  Hy3 start logged `RAM: 63.9 GB free / 137 GB` with the explicit
+  may-exceed-memory warning — i.e. the swap left ~27GB resident and loaded a
+  73.7GB model on top (double-residency contention class, same failure mode
+  as the 07-14 DSV4 case). Suspected cause: stop path for adopted sessions
+  (process handle null, killPid by pid/group) not reaching the adopted pid on
+  the single-model swap rail. Needs source trace + live re-proof of the swap.
+- Codex gpt-5.6-sol xhigh CDP run (21:14-21:17) correctly reported
+  FAIL/UNVERIFIED for turns A-E: composer disabled by the stopped session;
+  it changed nothing (`model_load_attempted:false`). Evidence:
+  ui-proof.json + 01-initial/02-turnA.png (to be copied into the gate dir).
+- Post-restart live turn on 8032 (21:3x, panel log): content 50 chars +
+  reasoning 1596 chars, 634 tokens, TTFT 0.40s — visible content emitted on
+  the patched panel for a plain turn. NOT yet proof for the NOTOOL replay
+  signature; UI A-E rerun + Auto-mode API repro in flight.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
