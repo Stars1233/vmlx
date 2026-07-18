@@ -1342,3 +1342,12 @@ remain open. No public release/notarization/feed mutation performed.
   non-stream-rail-specific. Box Codex gpt-5.6-sol dispatched on the source
   diff (report /tmp/step-rail-fix-report.md, uncommitted changes).
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 07:5x - STOP-DESTROYS-SESSION-LOG-BUFFER fixed (active on next app relaunch)
+
+- `STOP-DESTROYS-SESSION-LOG-BUFFER`: FIXED (commit above), tests
+  session-log-retention 3/3 + panel 2299 green + typecheck. Stop retains
+  the buffer with a marker; start resets; delete still drops. NOTE: main-
+  process change — active after the NEXT Electron relaunch (deferred to the
+  next natural relaunch point to avoid churn during the Step rail work).
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
