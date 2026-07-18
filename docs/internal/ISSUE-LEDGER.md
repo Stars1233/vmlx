@@ -771,3 +771,19 @@ remain open. No public release/notarization/feed mutation performed.
   in progress. Treat as a global bug class (any reasoning model emitting
   reasoning then no visible answer) until the patched retest proves otherwise.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-17 - Relaunched Electron does not adopt live orphaned model server
+
+- `Q36MTP-UI-ORPHAN-SERVER-NOT-ADOPTED`: OPEN. After the 20:53 Electron dev
+  relaunch, the Qwen3.6-27B-MXFP8-CRACK-MTP session UI shows
+  "Model is not running." + Load Model button while that session's
+  vmlx-serve (spawned 20:45 by the pre-relaunch app) is still alive on port
+  8032 with `/health` `model_loaded=true`, `status=standby_soft`. Either the
+  panel fails to re-adopt a healthy orphaned server on startup (process
+  handle lost across relaunch) or it renders standby_soft as not-running.
+  Consequence: every chat turn in the session is blocked or silently spawns a
+  duplicate 27B server. Live evidence: CDP screenshot 21:16
+  (release-gates/20260717_qwen36_mtp_stream_history/ui-proof/02-turnA.png,
+  banner visible) + concurrent health JSON. Needs a structural adopt-or-truth
+  fix, not a label tweak.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
