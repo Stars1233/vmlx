@@ -1467,3 +1467,23 @@ remain open. No public release/notarization/feed mutation performed.
   that marks sessions with missing model paths and offers re-point to the
   drive (LE10 lineage) — improvement row.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 10:5x - M3 row GREEN. CORE MATRIX 9/9 COMPLETE.
+
+- MiniMax-M3-Coder-Small (fresh session 3c9ca4bf, port 8017, external
+  drive): autodetect correct (minimax_m3 family/parsers), JIT absent from
+  argv, kv_cache_quantization truthfully false (native typed MSA, no
+  generic TQ). Cold exact "Busan M3-cold-DONE" (424 reasoning, stop); warm
+  exact, 832 cached, detail `paged` (typed idx_keys path), reasoning 2076
+  separated, finish stop.
+- CORE MATRIX 9/9: Qwen3.6-MTP ✓ Bonsai ✓ DSV4 ✓ Hy3+MTP ✓ Gemma ✓
+  Laguna ✓ Step(x2 variants) ✓ Nemotron-JANGTQ ✓ MM2.7 ✓ M3 ✓ — all with
+  live cold/warm cache-detail evidence, reasoning separation, exact-answer
+  turns; q4-TQ row complete across six families + q8 Bonsai + native
+  exclusions verified.
+- REMAINING before release: eviction/L2 deep pass, DSV4-EFFORT-NONE P1,
+  Nemotron MXFP4 + remaining JANGTQ-vs-affine variants, UI turns for
+  Nemotron/MM2.7/M3, settings-parity sweep, MM2.7 non-paged prefix
+  verification, media/VL rows (Omni/Gemma/Qwen images), paged-policy
+  question for Eric, bundle-python + packaging/signing/notarization gates.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
