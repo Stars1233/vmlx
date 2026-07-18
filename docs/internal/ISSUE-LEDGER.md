@@ -1517,3 +1517,20 @@ remain open. No public release/notarization/feed mutation performed.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE` (remaining: DSV4 effort-none P1,
   UI turns Nemotron/MM2.7/M3, MXFP4 + JANGTQ variants, MM2.7 prefix
   verification, settings parity, media rows, packaging gates).
+
+## 2026-07-18 12:0x - DSV4 effort-none root-caused: untuned generation_config stub (artifact-level)
+
+- `DSV4-EFFORT-NONE-DEGENERATION`: ROOT-CAUSED, reclassified artifact-config.
+  Bundle generation_config.json is a transformers auto-stub
+  (_from_model_config:true) declaring temperature 1.0 + top_p 1.0, no
+  repetition penalty; jang_config carries no sampling. Engine policy honors
+  bundle-declared values (does not synthesize) => effort-none direct rail
+  samples at temp 1.0/top_p 1.0 raw and degenerates ("No-go-go-go...");
+  reasoning-on masks it (long CoT stabilizes the final answer). The
+  20260507 exact-"35" pass was a near-single-token answer (low exposure).
+  Artifact-level evidence per the trust rule: the stub marker itself.
+  RECOMMENDATION (Eric): regenerate/patch the DSV4-Flash-JANG-CRACK
+  generation_config with tuned sampling (e.g. temp~0.6/top_p 0.95/rep-pen)
+  — jang-tools domain; engine change NOT indicated. Workaround: per-chat
+  sampling overrides. Engine P1 CLOSED-NOT-ENGINE.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
