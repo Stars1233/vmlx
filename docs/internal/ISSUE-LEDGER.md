@@ -969,3 +969,35 @@ remain open. No public release/notarization/feed mutation performed.
 - `USAGE-CACHED-TOKENS-MISSING-NONSTREAM-CHAT`: bounded source audit running
   (attribution of response.cached_tokens=0 on warm non-stream MLLM hits).
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-17 23:1x - JIT parity CLOSED live; hybrid SSM companion never stored (new P1)
+
+- `JIT-COMPILE-UI-CLI-PARITY`: CLOSED-BY-LIVE-PROOF. Box-side Codex
+  gpt-5.6-sol run (jit-findings.json + 7 jit-*.png in the q36 gate ui-proof
+  dir; interaction guard: nothing changed/saved/restarted): Bonsai (VLM+TQ
+  hybrid) and Qwen3.6 MTP both show JIT toggle UNCHECKED + disabled and CLI
+  preview WITHOUT --enable-jit; my own screenshot read confirms the truthful
+  amber banner ("JIT is disabled for hybrid SSM/Mamba cache models...");
+  running Bonsai argv has zero --enable-jit despite stored default true.
+  All three surfaces share one guard set (sessions.ts effectiveEnableJit,
+  SessionSettings.tsx preview copy, SessionConfigForm checked-mask).
+- `HYBRID-SSM-COMPANION-NEVER-STORED`: OPEN (P1 — supersedes/explains
+  USAGE-CACHED-TOKENS-MISSING-NONSTREAM-CHAT). Source audit + live probe:
+  Bonsai warm 870-token "hit" was counted by prefix_cache.fetch_cache
+  (hits/tokens_saved increment BEFORE consumer acceptance,
+  prefix_cache.py:452-519) but the hybrid gate REJECTED reuse for missing
+  SSM companion (mllm_batch_generator.py:5866-5916 -> release + full
+  re-prefill; req._cached_tokens stays 0 from :5602). Live ground truth:
+  /v1/cache/stats ssm_companion.entries=0 after MULTIPLE completed requests
+  on this hybrid model — companion state is never persisted to L1, so warm
+  hybrid reuse never happens and tokens_saved is fiction. Fix plan (audit):
+  (1) root-cause SSM companion capture/store after generation
+  (_mark_required_ssm_checkpoint / state cache store on _cleanup_finished);
+  (2) gate tokens_saved credit on actual reuse or expose
+  hybrid_kv_without_ssm counter; (3) hardening: mllm_scheduler.generate()
+  should stamp request._cached_tokens/_cache_detail onto final_output
+  (stream rail latches, non-stream does not — server.py:17116 vs :6641).
+  Note: Q36MTP server DOES report paged+ssm cached — its companion works;
+  Bonsai path is the broken one. CACHE_DETAIL_GRAMMAR.md exists on this
+  checkout (audit worktree flag was stale).
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.

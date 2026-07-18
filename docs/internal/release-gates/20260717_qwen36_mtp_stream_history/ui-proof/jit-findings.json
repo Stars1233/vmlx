@@ -1,0 +1,63 @@
+{
+  "check": "JIT-COMPILE-UI-CLI-PARITY",
+  "captured_at_utc": "2026-07-18T06:01:51Z",
+  "surface": {
+    "application": "vMLX Electron dev app",
+    "cdp": "http://127.0.0.1:9335",
+    "renderer_url": "http://localhost:5173/",
+    "profile": "/Users/eric/.vmlx-v1611-cachefix-dev"
+  },
+  "verdict": "PASS",
+  "pass_rule": "Both sessions must show JIT unchecked, must expose a checked JIT state rather than an inferred absence, and their full CLI previews must omit --enable-jit.",
+  "sessions": [
+    {
+      "session": "jangq-ai/Bonsai-27b-1bit-JANG",
+      "model_path": "/Volumes/EricsLLMDrive/jangq-ai/Bonsai-27b-1bit-JANG",
+      "port": 8030,
+      "status_at_initial_settings_open": "running",
+      "toggle_state": "UNCHECKED",
+      "toggle_disabled": true,
+      "explanatory_text": "JIT is disabled for hybrid SSM/Mamba cache models. Their path-dependent Python cache objects are not mx.compile safe.",
+      "preview_contains_enable_jit": false,
+      "preview_snippet": "vmlx-engine serve \\\n+  /Volumes/EricsLLMDrive/jangq-ai/Bonsai-27b-1bit-JANG \\\n+  --host \\\n+  127.0.0.1 \\\n+  --port \\\n+  8030 \\\n+  --timeout \\\n+  300 \\\n+  --max-num-seqs \\\n+  1 \\\n+  --prefill-batch-size \\\n+  512 \\\n+  --prefill-step-size \\\n+  2048 \\\n+  --completion-batch-size \\\n+  512 \\\n+  --is-mllm \\\n+  --continuous-batching \\\n+  --cache-memory-percent \\\n+  0.15 \\\n+  --use-paged-cache \\\n+  --paged-cache-block-size \\\n+  64 \\\n+  --max-cache-blocks \\\n+  1000 \\\n+  --enable-block-disk-cache \\\n+  --block-disk-cache-dir \\\n+  /Users/eric/.cache/vmlx-engine/live-proof-bonsai-1bit-auto-tq-native-20260716 \\\n+  --block-disk-cache-max-gb \\\n+  10 \\\n+  --stream-interval \\\n+  1 \\\n+  --tool-call-parser \\\n+  qwen \\\n+  --enable-auto-tool-choice \\\n+  --reasoning-parser \\\n+  qwen3 \\\n+  --log-level \\\n+  DEBUG",
+      "running_server_args_cross_check": {
+        "checked": true,
+        "ui_surface": "Session Settings > CLI Command Preview while the session settings header reported running",
+        "contains_enable_jit": false
+      },
+      "state_observation_note": "After returning from the first read-only settings inspection, the UI independently reported Light Sleep/standby. No sleep, wake, start, stop, restart, save, or reset control was invoked.",
+      "screenshots": [
+        "jit-bonsai-settings-form.png",
+        "jit-bonsai-settings-jit.png",
+        "jit-bonsai-cli-preview.png",
+        "jit-bonsai-cli-preview-command.png"
+      ]
+    },
+    {
+      "session": "dealignai/Qwen3.6-27B-MXFP8-CRACK-MTP",
+      "model_path": "/Volumes/EricsLLMDrive/dealignai/Qwen3.6-27B-MXFP8-CRACK-MTP",
+      "port": 8032,
+      "status_at_settings_open": "stopped",
+      "toggle_state": "UNCHECKED",
+      "toggle_disabled": true,
+      "explanatory_text": "JIT is disabled for hybrid SSM/Mamba cache models. Their path-dependent Python cache objects are not mx.compile safe.",
+      "preview_contains_enable_jit": false,
+      "preview_snippet": "vmlx-engine serve \\\n+  /Volumes/EricsLLMDrive/dealignai/Qwen3.6-27B-MXFP8-CRACK-MTP \\\n+  --host \\\n+  127.0.0.1 \\\n+  --port \\\n+  8032 \\\n+  --timeout \\\n+  300 \\\n+  --max-num-seqs \\\n+  1 \\\n+  --prefill-batch-size \\\n+  512 \\\n+  --prefill-step-size \\\n+  2048 \\\n+  --completion-batch-size \\\n+  512 \\\n+  --is-mllm \\\n+  --continuous-batching \\\n+  --cache-memory-percent \\\n+  0.15 \\\n+  --use-paged-cache \\\n+  --paged-cache-block-size \\\n+  64 \\\n+  --max-cache-blocks \\\n+  1000 \\\n+  --enable-block-disk-cache \\\n+  --block-disk-cache-max-gb \\\n+  10 \\\n+  --stream-interval \\\n+  1 \\\n+  --tool-call-parser \\\n+  qwen \\\n+  --enable-auto-tool-choice \\\n+  --reasoning-parser \\\n+  qwen3 \\\n+  --native-mtp-depth \\\n+  3 \\\n+  --native-mtp-sampling-policy \\\n+  deterministic-defaults",
+      "screenshots": [
+        "jit-qwen36-mtp-settings-form.png",
+        "jit-qwen36-mtp-settings-jit.png",
+        "jit-qwen36-mtp-cli-preview-command.png"
+      ]
+    }
+  ],
+  "interaction_guard": {
+    "setting_values_changed": false,
+    "save_invoked": false,
+    "save_and_restart_invoked": false,
+    "start_stop_restart_invoked": false,
+    "sleep_wake_invoked": false,
+    "reset_invoked": false,
+    "dialogs_seen": false,
+    "source_modified": false
+  }
+}
