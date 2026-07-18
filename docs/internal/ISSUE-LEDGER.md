@@ -1217,3 +1217,13 @@ remain open. No public release/notarization/feed mutation performed.
 - Gemma remaining: UI turn; eviction/L2 deep-check (shared pass).
 - Matrix q4-TQ progress: Hy3 ✓ Gemma ✓; remaining Step/Laguna/Nemotron/MM2.7.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 05:0x - Gemma UI turn PASS; row green except shared eviction pass
+
+- Gemma UI fresh-chat turn: exact `GEMMA-UI-T1-OK`, reasoning 324 chars in
+  rail, 45 t/s, persisted. Gemma row VERIFIED-LIVE: autodetect, q4 TQ
+  (mixed-SWA policy), cold/warm with paged+mixed_swa, reasoning separation,
+  non-stream cached usage, UI turn. Remaining: shared eviction/L2 deep pass.
+- Matrix progress: Qwen3.6 ✓ Bonsai ✓ DSV4 (effort-none P1 open) ✓ Hy3 ✓
+  Gemma ✓; next Laguna, Step 3.7, Nemotron, MM2.7, M3.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
