@@ -1022,3 +1022,22 @@ remain open. No public release/notarization/feed mutation performed.
   JIT default on the same mx.compile-safety conditions so logs/args do not
   claim ON for models the runtime will refuse.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 00:3x - HYBRID-SSM-COMPANION + cached-usage rows CLOSED-BY-LIVE-PROOF
+
+- `HYBRID-SSM-COMPANION-NEVER-STORED` + `USAGE-CACHED-TOKENS-MISSING-NONSTREAM-CHAT`:
+  CLOSED-BY-LIVE-PROOF (commit above). Codex gpt-5.6-sol authored the fix
+  (report /tmp/ssm-fix-report.md); I ran gates + live proof: 123 pytest pass
+  (new tests/test_hybrid_ssm_companion_regressions.py + scheduler cache + TQ
+  contract + kv-quant); Metal probe scripts/probe_mllm_hybrid_detection.py
+  on the real Bonsai bundle shows 16 KV + 48 ArraysCache and resolver picks
+  language_model correctly; post-restart live: cold 871-token request
+  restored cached 832 `paged+ssm+disk` (restart-restore axis), warm cached
+  832 `paged+ssm` IN NON-STREAM USAGE, ssm_companion.entries=2, tokens_saved
+  backed by real reuse. Note: fresh-load legacy detection also passes, so
+  the live zero-entries state was runtime-path dependent; the new WARNING on
+  non-hybrid resolution ensures any recurrence is visible, and the resolver
+  covers the non-forwarding wrapper shape (pinned by regression).
+  Minor model quirk observed: cold answer typo "BONSEI-SSM-OK" (1-bit model
+  stochastic; warm exact) — not an engine defect.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE` (matrix rows pending).
