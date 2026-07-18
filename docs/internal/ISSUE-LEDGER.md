@@ -1594,3 +1594,19 @@ remain open. No public release/notarization/feed mutation performed.
   (bundle-python, packaging/signing/notarization — Eric permission) and
   Eric decisions (paged policy for this branch; DSV4 sampling regen).
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 14:0x - Settings-parity sweep: M3 PASS (UI settings == argv)
+
+- M3 session settings vs running argv (8017), all matched: tool/reasoning
+  parser dropdowns=minimax_m3/minimax_m3 == argv; Continuous Batching
+  true==flag; Prefix Cache true==engine default-on; Paged KV true==
+  --use-paged-cache (M3 typed paged path); Block Disk L2 true==
+  --enable-block-disk-cache; Legacy Disk false==no flag; JIT false==no
+  flag; Auto Tool Choice true==flag. Settings-parity row: M3 PASS (JIT
+  parity closed earlier across Bonsai/Qwen; parser/cache parity now proven
+  on M3). Preview element not located in drawer DOM this pass — preview
+  parity remains covered by the earlier jit-findings (both sessions) only;
+  note for a future sweep pass.
+- Remaining: media/VL row, Qwen3.6-35B JANGTQ variant, session-dedupe P3,
+  HELD gates + Eric decisions.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
