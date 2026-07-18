@@ -1201,3 +1201,19 @@ remain open. No public release/notarization/feed mutation performed.
   TQ expectations: mixed_attention Rotating+KVCache, NO paged+ssm telemetry,
   q4 TQ confirmation.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 04:4x - Gemma row: q4 TQ + mixed-SWA cache VERIFIED-LIVE (API)
+
+- Gemma 4-12B-it-qat-JANG_4M (external drive session 4a161eb9, port 8009):
+  autodetect correct (gemma4 family/parsers, VLM true, JIT correctly
+  ignored). Q4 TQ CONFIRMED (MATRIX-Q4-TQ row, Gemma ✓): turboquant-q4 bits
+  4/4, auto_policy mixed_* (SWA per-layer). API cold exact
+  "Busan GEMMA-cold-DONE" + 594-char reasoning; warm exact with 768/806
+  cached, detail `paged+mixed_swa` — correct mixed-SWA telemetry, NO
+  paged+ssm (contract held). Non-stream cached usage working (4th arch).
+- Note: errored session e4a79e4c (12B, LOCAL .mlxstudio path) — path exists
+  on disk; error cause not investigated (external variant preferred per
+  directive); minor follow-up.
+- Gemma remaining: UI turn; eviction/L2 deep-check (shared pass).
+- Matrix q4-TQ progress: Hy3 ✓ Gemma ✓; remaining Step/Laguna/Nemotron/MM2.7.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
