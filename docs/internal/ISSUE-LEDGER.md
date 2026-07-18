@@ -1149,3 +1149,22 @@ remain open. No public release/notarization/feed mutation performed.
   L2 axis for the native composite store (warm detail showed paged+dsv4
   without +disk — verify dsv4 L2 write/restore in a dedicated pass).
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 03:4x - Eric directive: per-model q4 TQ confirmation + deep paged-eviction/L2 checks (TO-DO rows)
+
+- `MATRIX-Q4-TQ-POLICY-CONFIRMATION`: TO-DO (Eric directive). For Step 3.7,
+  Gemma, Hy3, Laguna, Nemotron, MiniMax 2.7: confirm each gets the PROPER
+  q4 TurboQuant storage policy on compatible attention KV (Bonsai is the q8
+  exception, already verified; DSV4/M3/openPangu native typed caches stay
+  TQ-free — verified for DSV4). Check /v1/cache/stats turboquant_kv_cache
+  storage bits + auto_policy per model during each row.
+- `MATRIX-PAGED-EVICTION-L2-DEEP-CHECK`: TO-DO (Eric directive). For each
+  matrix model: deep-check paged cache EVICTION behavior (fill past the L1
+  RAM ceiling/cache-memory-percent, verify free-block eviction with disk-L2
+  write-through FIRST, evictions counter increments, no corruption after
+  eviction) and L2 DISK FALLBACK (evicted-from-memory prefix must restore
+  from the OLD stored L2 disk blocks: disk_hits increment, cache_detail
+  gains +disk, output stays coherent). Also verify stale/older L2 stores
+  from prior sessions are used when RAM cache is cold (proven once on
+  Bonsai cold-after-restart paged+ssm+disk — repeat per architecture).
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
