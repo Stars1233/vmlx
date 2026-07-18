@@ -1372,3 +1372,14 @@ remain open. No public release/notarization/feed mutation performed.
   mixed_swa with adequate budget, stream 6/6, UI turn) with the P3
   improvement note. Next: JANGTQ_K variant per MATRIX-JANGTQ-VS-AFFINE.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 08:4x - Step JANGTQ_K variant GREEN (MATRIX-JANGTQ-VS-AFFINE: Step both variants done)
+
+- Step-3.7-Flash-JANGTQ_K (session e04ccb1d, port 8022, mxtq loader path):
+  autodetect identical to affine variant (step-3.7-flash, step3p5/qwen3,
+  VLM, JIT ignored); q4 TQ confirmed. Cold exact "Busan STEPTQ-cold-DONE"
+  (reasoning 1437, stop); warm exact with reasoning 7899 CLOSED (finish
+  stop — budget-floor thesis further confirmed: adequate cap lets even
+  ~2000-token reasoning close), cached 704 `paged+mixed_swa`. Step family:
+  BOTH variants green. Matrix 7/9 + variant coverage advancing.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
