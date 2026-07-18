@@ -1690,3 +1690,32 @@ remain open. No public release/notarization/feed mutation performed.
   same-artifact A/B (jang-tools/reference vs vmlx, matched prompts+sampling)
   before any blame; no artifact mutation without permission.
 - Item remains OPEN as DSV4-EFFORT-NONE-DEGENERATION (cause unknown).
+
+## 2026-07-18 15:4x - FULL-SUITE gate: first complete run triaged (9 fails -> 3 classes)
+
+- FULL pytest (5931 collected effective): 9 failed / 5922 passed / 96 skipped.
+  FULL panel vitest: 2302/2305 GREEN (0 fail). Panel typecheck: PASS. Logs
+  preserved: release_closeout/full-suite-20260718/.
+- CLASS 1 (stale test anchors, behavior intact — FIXED): (a) engine_audit
+  error-recovery window missed delete_block_table because 1657ed312 inserted
+  hit-credit finalization before it (call intact at mllm_scheduler.py:3819;
+  window widened + detach_request forbidden in-window); (b) engine_audit
+  recompress anchor broke on the deliberate cache-owner arg change
+  (_cache_model or language_model — anchor updated); (c) mistral decode-gate
+  contract expected reasoning "mistral" but registry ground truth for BOTH
+  Mistral-Medium-3.5 bundles is reasoning=None ([THINK]-in-content by design;
+  502f656db reconcile was correct) — expectation fixed + None-aware flag check.
+- CLASS 2 (env-only): public_app_issue_audit x2 + verify-bundled-python needed
+  node/PATH; with PATH the audit still FAILS on issue 119: gemma26
+  memory-stress + real-UI artifacts (agent-notes 20260531 proofs) do not exist
+  ANYWHERE in git or on disk — pre-existing red on this branch; closure =
+  fresh Gemma-26B live rows (folded into Gemma family work).
+  verify-bundled-python exit 1 = REAL bundle drift (engine changed);
+  panel/scripts/bundle-python.sh dev-sync launched (NOT packaging).
+- CLASS 3 (missing regenerable artifact): release_regression_manifest freshness
+  fails because untracked build/current-regression-suite-...-20260609.json is
+  gone from every working tree; regenerating fresh via
+  run_current_regression_suite.py (in flight; sub-suite
+  noheavy_api_cache_contract rc=1 to triage).
+- ALSO: test_tq_disk_cache + test_tq_paged_block_cache FAIL under full suite
+  but PASS in isolation — order-dependent state pollution, OPEN to root-cause.
