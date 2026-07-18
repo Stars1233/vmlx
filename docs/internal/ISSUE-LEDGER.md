@@ -1622,3 +1622,18 @@ remain open. No public release/notarization/feed mutation performed.
   media-salted cache axis not exercised this pass (single image) — both
   noted for the media deep pass.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 14:5x - Qwen3.6-35B JANGTQ variant GREEN; variant matrix complete
+
+- Qwen3.6-35B-A3B-JANGTQ-CRACK (session 100cb088, port 8029 — stored path
+  valid, loaded fine): q4 TQ confirmed; cold exact "Busan-Q35-cold-DONE"
+  (model chose no-think, visible fine); warm exact with reasoning 1643
+  separated, 896 cached `paged+ssm`. MATRIX-JANGTQ-VS-AFFINE now covers:
+  Step (JANG_K + JANGTQ_K), Nemotron (JANGTQ + MXFP4), Qwen3.6 (27B MXFP8
+  + 35B JANGTQ), Bonsai (1bit affine), Hy3 (JANG_2K-MTP), Laguna (JANG_2L),
+  MM2.7 (JANGTQ), Gemma (JANG_4M qat) — variant coverage substantially
+  complete for locally-available bundles.
+- LAST code item: session-dedupe-by-identity P3. All else HELD for Eric:
+  bundle-python + packaging/signing/notarization; paged-policy decision
+  (v7 OFF vs 07-12 ON on this branch); DSV4 sampling regen (jang-tools).
+- `RELEASE`: remains `PARTIAL_NO_RELEASE` pending held gates.
