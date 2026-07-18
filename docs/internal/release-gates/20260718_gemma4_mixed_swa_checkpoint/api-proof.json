@@ -1,0 +1,39 @@
+{
+  "status": "pass",
+  "modelName": "jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M",
+  "sourceHead": "7b62ea4a3",
+  "provenSurfaces": [
+    "chat_completions_stream",
+    "responses_api",
+    "reasoning_delta_stream",
+    "content_delta_stream",
+    "language_leak_check",
+    "single_terminal_event",
+    "l2_disk_restore"
+  ],
+  "beforeRestart": {
+    "chatReasoningDeltas": 100,
+    "chatContentDeltas": 93,
+    "chatFirstReasoningSeconds": 0.28901,
+    "chatFirstContentSeconds": 2.05176,
+    "chatLastContentSeconds": 3.146185,
+    "chatTerminal": "stop",
+    "responsesReasoningDeltas": 99,
+    "responsesContentDeltas": 91,
+    "responsesFirstReasoningSeconds": 0.368111,
+    "responsesFirstContentSeconds": 2.132572,
+    "responsesLastContentSeconds": 3.205492,
+    "responsesTerminal": "response.completed"
+  },
+  "afterRestart": {
+    "chatCachedTokens": 55,
+    "chatCacheDetail": "paged+mixed_swa+disk",
+    "nativeDiskHitsAfterReplay": 4,
+    "nativeTqHitsAfterReplay": 4
+  },
+  "rawArtifacts": [
+    "raw-sse-before-restart.json",
+    "raw-sse-after-restart.json",
+    "health-current.json"
+  ]
+}

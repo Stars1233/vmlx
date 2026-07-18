@@ -1,0 +1,3618 @@
+{
+  "captured_unix": 1784418324.3000479,
+  "chat": {
+    "payload": {
+      "model": "jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M",
+      "messages": [
+        {
+          "role": "user",
+          "content": "[G4-RAW-STREAM] Think briefly and then give exactly six short numbered sentences explaining the difference between sliding-window and full attention. End the visible answer with G4-RAW-STREAM-DONE."
+        }
+      ],
+      "stream": true,
+      "stream_options": {
+        "include_usage": true
+      },
+      "enable_thinking": true,
+      "max_thinking_tokens": 128,
+      "max_tokens": 512,
+      "temperature": 0
+    },
+    "events": [
+      {
+        "at": 0.01845,
+        "content": "",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 0.246677,
+        "content": "",
+        "reasoning": "*",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 4,
+          "total_tokens": 60,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.268716,
+        "content": "",
+        "reasoning": "   Topic",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 6,
+          "total_tokens": 62,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.280208,
+        "content": "",
+        "reasoning": ":",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 7,
+          "total_tokens": 63,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.291317,
+        "content": "",
+        "reasoning": " Difference",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 8,
+          "total_tokens": 64,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.302464,
+        "content": "",
+        "reasoning": " between",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 9,
+          "total_tokens": 65,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.313715,
+        "content": "",
+        "reasoning": " sliding",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 10,
+          "total_tokens": 66,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.324937,
+        "content": "",
+        "reasoning": "-",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 11,
+          "total_tokens": 67,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.336063,
+        "content": "",
+        "reasoning": "window",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 12,
+          "total_tokens": 68,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.347247,
+        "content": "",
+        "reasoning": " attention",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 13,
+          "total_tokens": 69,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.358527,
+        "content": "",
+        "reasoning": " and",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 14,
+          "total_tokens": 70,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.369685,
+        "content": "",
+        "reasoning": " full",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 15,
+          "total_tokens": 71,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.38071,
+        "content": "",
+        "reasoning": " attention",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 16,
+          "total_tokens": 72,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.392054,
+        "content": "",
+        "reasoning": ".",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 17,
+          "total_tokens": 73,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.42589,
+        "content": "",
+        "reasoning": "\n    *",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 20,
+          "total_tokens": 76,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.44803,
+        "content": "",
+        "reasoning": "   Constraint",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 22,
+          "total_tokens": 78,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.470558,
+        "content": "",
+        "reasoning": " 1",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 24,
+          "total_tokens": 80,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.481596,
+        "content": "",
+        "reasoning": ":",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 25,
+          "total_tokens": 81,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.49275,
+        "content": "",
+        "reasoning": " Think",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 26,
+          "total_tokens": 82,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.50381,
+        "content": "",
+        "reasoning": " briefly",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 27,
+          "total_tokens": 83,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.515167,
+        "content": "",
+        "reasoning": ".",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 28,
+          "total_tokens": 84,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.548469,
+        "content": "",
+        "reasoning": "\n    *",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 31,
+          "total_tokens": 87,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.570911,
+        "content": "",
+        "reasoning": "   Constraint",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 33,
+          "total_tokens": 89,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.593214,
+        "content": "",
+        "reasoning": " 2",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 35,
+          "total_tokens": 91,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.60452,
+        "content": "",
+        "reasoning": ":",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 36,
+          "total_tokens": 92,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.615486,
+        "content": "",
+        "reasoning": " Exactly",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 37,
+          "total_tokens": 93,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.626625,
+        "content": "",
+        "reasoning": " six",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 38,
+          "total_tokens": 94,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.638127,
+        "content": "",
+        "reasoning": " short",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 39,
+          "total_tokens": 95,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.649597,
+        "content": "",
+        "reasoning": " numbered",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 40,
+          "total_tokens": 96,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.660457,
+        "content": "",
+        "reasoning": " sentences",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 41,
+          "total_tokens": 97,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.671864,
+        "content": "",
+        "reasoning": ".",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 42,
+          "total_tokens": 98,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.705318,
+        "content": "",
+        "reasoning": "\n    *",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 45,
+          "total_tokens": 101,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.727755,
+        "content": "",
+        "reasoning": "   Constraint",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 47,
+          "total_tokens": 103,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.750161,
+        "content": "",
+        "reasoning": " 3",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 49,
+          "total_tokens": 105,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.761414,
+        "content": "",
+        "reasoning": ":",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 50,
+          "total_tokens": 106,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.772604,
+        "content": "",
+        "reasoning": " End",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 51,
+          "total_tokens": 107,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.783948,
+        "content": "",
+        "reasoning": " with",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 52,
+          "total_tokens": 108,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.795232,
+        "content": "",
+        "reasoning": " \"",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 53,
+          "total_tokens": 109,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.806487,
+        "content": "",
+        "reasoning": "G",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 54,
+          "total_tokens": 110,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.81775,
+        "content": "",
+        "reasoning": "4",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 55,
+          "total_tokens": 111,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.829025,
+        "content": "",
+        "reasoning": "-",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 56,
+          "total_tokens": 112,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.84025,
+        "content": "",
+        "reasoning": "RAW",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 57,
+          "total_tokens": 113,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.851718,
+        "content": "",
+        "reasoning": "-",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 58,
+          "total_tokens": 114,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.862987,
+        "content": "",
+        "reasoning": "STREAM",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 59,
+          "total_tokens": 115,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.874109,
+        "content": "",
+        "reasoning": "-",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 60,
+          "total_tokens": 116,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.885377,
+        "content": "",
+        "reasoning": "DONE",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 61,
+          "total_tokens": 117,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.896576,
+        "content": "",
+        "reasoning": "\".",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 62,
+          "total_tokens": 118,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.930186,
+        "content": "",
+        "reasoning": "\n    *",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 65,
+          "total_tokens": 121,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.952513,
+        "content": "",
+        "reasoning": "   Format",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 67,
+          "total_tokens": 123,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.963721,
+        "content": "",
+        "reasoning": ":",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 68,
+          "total_tokens": 124,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.974939,
+        "content": "",
+        "reasoning": " Number",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 69,
+          "total_tokens": 125,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.986073,
+        "content": "",
+        "reasoning": "ed",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 70,
+          "total_tokens": 126,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 0.997443,
+        "content": "",
+        "reasoning": " list",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 71,
+          "total_tokens": 127,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.008471,
+        "content": "",
+        "reasoning": ".",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 72,
+          "total_tokens": 128,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.042005,
+        "content": "",
+        "reasoning": "\n\n    *",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 75,
+          "total_tokens": 131,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.064428,
+        "content": "",
+        "reasoning": "   Full",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 77,
+          "total_tokens": 133,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.075642,
+        "content": "",
+        "reasoning": " attention",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 78,
+          "total_tokens": 134,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.08695,
+        "content": "",
+        "reasoning": ":",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 79,
+          "total_tokens": 135,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.098065,
+        "content": "",
+        "reasoning": " Every",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 80,
+          "total_tokens": 136,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.109235,
+        "content": "",
+        "reasoning": " token",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 81,
+          "total_tokens": 137,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.120698,
+        "content": "",
+        "reasoning": " attends",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 82,
+          "total_tokens": 138,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.132088,
+        "content": "",
+        "reasoning": " to",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 83,
+          "total_tokens": 139,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.143396,
+        "content": "",
+        "reasoning": " every",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 84,
+          "total_tokens": 140,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.154729,
+        "content": "",
+        "reasoning": " other",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 85,
+          "total_tokens": 141,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.165826,
+        "content": "",
+        "reasoning": " token",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 86,
+          "total_tokens": 142,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.176983,
+        "content": "",
+        "reasoning": " in",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 87,
+          "total_tokens": 143,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.188151,
+        "content": "",
+        "reasoning": " the",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 88,
+          "total_tokens": 144,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.199582,
+        "content": "",
+        "reasoning": " sequence",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 89,
+          "total_tokens": 145,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.210819,
+        "content": "",
+        "reasoning": ".",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 90,
+          "total_tokens": 146,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.244673,
+        "content": "",
+        "reasoning": "\n    *",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 93,
+          "total_tokens": 149,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.266923,
+        "content": "",
+        "reasoning": "   Complexity",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 95,
+          "total_tokens": 151,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.278506,
+        "content": "",
+        "reasoning": ":",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 96,
+          "total_tokens": 152,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.28959,
+        "content": "",
+        "reasoning": " Full",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 97,
+          "total_tokens": 153,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.300697,
+        "content": "",
+        "reasoning": " attention",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 98,
+          "total_tokens": 154,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.312062,
+        "content": "",
+        "reasoning": " is",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 99,
+          "total_tokens": 155,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.323386,
+        "content": "",
+        "reasoning": " $",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 100,
+          "total_tokens": 156,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.334452,
+        "content": "",
+        "reasoning": "O",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 101,
+          "total_tokens": 157,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.345597,
+        "content": "",
+        "reasoning": "(",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 102,
+          "total_tokens": 158,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.3571,
+        "content": "",
+        "reasoning": "n",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 103,
+          "total_tokens": 159,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.368144,
+        "content": "",
+        "reasoning": "^",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 104,
+          "total_tokens": 160,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.379304,
+        "content": "",
+        "reasoning": "2",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 105,
+          "total_tokens": 161,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.390467,
+        "content": "",
+        "reasoning": ")$,",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 106,
+          "total_tokens": 162,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.401831,
+        "content": "",
+        "reasoning": " sliding",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 107,
+          "total_tokens": 163,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.413008,
+        "content": "",
+        "reasoning": "-",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 108,
+          "total_tokens": 164,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.424136,
+        "content": "",
+        "reasoning": "window",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 109,
+          "total_tokens": 165,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.435503,
+        "content": "",
+        "reasoning": " is",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 110,
+          "total_tokens": 166,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.446572,
+        "content": "",
+        "reasoning": " $",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 111,
+          "total_tokens": 167,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.457652,
+        "content": "",
+        "reasoning": "O",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 112,
+          "total_tokens": 168,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.468958,
+        "content": "",
+        "reasoning": "(",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 113,
+          "total_tokens": 169,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.480336,
+        "content": "",
+        "reasoning": "n",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 114,
+          "total_tokens": 170,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.491451,
+        "content": "",
+        "reasoning": " \\",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 115,
+          "total_tokens": 171,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.502607,
+        "content": "",
+        "reasoning": "times",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 116,
+          "total_tokens": 172,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.513964,
+        "content": "",
+        "reasoning": " w",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 117,
+          "total_tokens": 173,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.525216,
+        "content": "",
+        "reasoning": ")$.",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 118,
+          "total_tokens": 174,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.558938,
+        "content": "",
+        "reasoning": "\n    *",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 121,
+          "total_tokens": 177,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.581475,
+        "content": "",
+        "reasoning": "   Sl",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 123,
+          "total_tokens": 179,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.59254,
+        "content": "",
+        "reasoning": "iding",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 124,
+          "total_tokens": 180,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.603782,
+        "content": "",
+        "reasoning": "-",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 125,
+          "total_tokens": 181,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.6149,
+        "content": "",
+        "reasoning": "window",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 126,
+          "total_tokens": 182,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.626413,
+        "content": "",
+        "reasoning": " attention",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 127,
+          "total_tokens": 183,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.641879,
+        "content": "",
+        "reasoning": ":",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 128,
+          "total_tokens": 184,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      },
+      {
+        "at": 1.750987,
+        "content": "1",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.762126,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.773567,
+        "content": " Full",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.784651,
+        "content": " attention",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.79562,
+        "content": " computes",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.807052,
+        "content": " relationships",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.818203,
+        "content": " between",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.829479,
+        "content": " every",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.840794,
+        "content": " token",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.852171,
+        "content": " in",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.86317,
+        "content": " a",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.874216,
+        "content": " sequence",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.885557,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.907951,
+        "content": "\n2",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.919172,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.930525,
+        "content": " Sliding",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.941565,
+        "content": "-",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.952586,
+        "content": "window",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.963903,
+        "content": " attention",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.975037,
+        "content": " restricts",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.986134,
+        "content": " each",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 1.997291,
+        "content": " token",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.008468,
+        "content": " to",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.019698,
+        "content": " a",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.030801,
+        "content": " local",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.042221,
+        "content": " neighborhood",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.053286,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.075566,
+        "content": "\n3",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.086878,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.097988,
+        "content": " Full",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.109144,
+        "content": " attention",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.120704,
+        "content": " has",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.132068,
+        "content": " quadratic",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.143222,
+        "content": " computational",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.154453,
+        "content": " complexity",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.165645,
+        "content": " relative",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.176852,
+        "content": " to",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.187942,
+        "content": " sequence",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.199351,
+        "content": " length",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.210529,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.23313,
+        "content": "\n4",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.244344,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.255524,
+        "content": " Sliding",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.266796,
+        "content": "-",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.278071,
+        "content": "window",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.289175,
+        "content": " attention",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.300429,
+        "content": " offers",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.311852,
+        "content": " linear",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.322952,
+        "content": " complexity",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.334006,
+        "content": ",",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.345383,
+        "content": " making",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.356566,
+        "content": " it",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.367663,
+        "content": " more",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.378725,
+        "content": " efficient",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.390115,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.412353,
+        "content": "\n5",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.423471,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.434913,
+        "content": " Full",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.446036,
+        "content": " attention",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.45709,
+        "content": " captures",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.468469,
+        "content": " long",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.479751,
+        "content": "-",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.49093,
+        "content": "range",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.502055,
+        "content": " dependencies",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.513467,
+        "content": " in",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.524666,
+        "content": " a",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.53576,
+        "content": " single",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.558997,
+        "content": " layer",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.568335,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.590775,
+        "content": "\n6",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.601898,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.612991,
+        "content": " Sliding",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.6244,
+        "content": "-",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.63587,
+        "content": "window",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.64688,
+        "content": " attention",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.657945,
+        "content": " requires",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.669299,
+        "content": " multiple",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.680565,
+        "content": " layers",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.69171,
+        "content": " to",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.702948,
+        "content": " propagate",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.714344,
+        "content": " distant",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.725368,
+        "content": " information",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.736556,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.759052,
+        "content": "\n\nG",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.770584,
+        "content": "4",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.782005,
+        "content": "-",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.79293,
+        "content": "RAW",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.804417,
+        "content": "-",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.815567,
+        "content": "STREAM",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.826677,
+        "content": "-",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.838268,
+        "content": "DONE",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.854029,
+        "content": "",
+        "reasoning": "",
+        "finish_reason": "stop",
+        "usage": null
+      },
+      {
+        "at": 2.854085,
+        "content": "",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 230,
+          "total_tokens": 286,
+          "prompt_tokens_details": {
+            "cached_tokens": 55,
+            "cache_detail": "paged+mixed_swa+disk"
+          }
+        }
+      }
+    ],
+    "content": "1. Full attention computes relationships between every token in a sequence.\n2. Sliding-window attention restricts each token to a local neighborhood.\n3. Full attention has quadratic computational complexity relative to sequence length.\n4. Sliding-window attention offers linear complexity, making it more efficient.\n5. Full attention captures long-range dependencies in a single layer.\n6. Sliding-window attention requires multiple layers to propagate distant information.\n\nG4-RAW-STREAM-DONE",
+    "reasoning": "*   Topic: Difference between sliding-window attention and full attention.\n    *   Constraint 1: Think briefly.\n    *   Constraint 2: Exactly six short numbered sentences.\n    *   Constraint 3: End with \"G4-RAW-STREAM-DONE\".\n    *   Format: Numbered list.\n\n    *   Full attention: Every token attends to every other token in the sequence.\n    *   Complexity: Full attention is $O(n^2)$, sliding-window is $O(n \\times w)$.\n    *   Sliding-window attention:",
+    "content_delta_count": 91,
+    "reasoning_delta_count": 100,
+    "first_content_at": 1.750987,
+    "last_content_at": 2.838268,
+    "first_reasoning_at": 0.246677,
+    "last_reasoning_at": 1.641879,
+    "terminal_reasons": [
+      "stop"
+    ]
+  },
+  "responses": {
+    "payload": {
+      "model": "jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M",
+      "input": "[G4-RESP-STREAM] Think briefly and then give exactly six short numbered sentences explaining the difference between sliding-window and full attention. End the visible answer with G4-RESP-STREAM-DONE.",
+      "stream": true,
+      "enable_thinking": true,
+      "max_thinking_tokens": 128,
+      "max_output_tokens": 512,
+      "temperature": 0
+    },
+    "events": [
+      {
+        "at": 0.001791,
+        "type": "response.created",
+        "content": "",
+        "reasoning": "",
+        "delta": ""
+      },
+      {
+        "at": 0.001816,
+        "type": "response.output_item.added",
+        "content": "",
+        "reasoning": "",
+        "delta": ""
+      },
+      {
+        "at": 0.001832,
+        "type": "response.content_part.added",
+        "content": "",
+        "reasoning": "",
+        "delta": ""
+      },
+      {
+        "at": 0.097959,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "*",
+        "delta": "*"
+      },
+      {
+        "at": 0.120192,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "   Topic",
+        "delta": "   Topic"
+      },
+      {
+        "at": 0.131283,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ":",
+        "delta": ":"
+      },
+      {
+        "at": 0.142736,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " Difference",
+        "delta": " Difference"
+      },
+      {
+        "at": 0.15374,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " between",
+        "delta": " between"
+      },
+      {
+        "at": 0.164885,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " sliding",
+        "delta": " sliding"
+      },
+      {
+        "at": 0.176151,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "-",
+        "delta": "-"
+      },
+      {
+        "at": 0.187324,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "window",
+        "delta": "window"
+      },
+      {
+        "at": 0.198552,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " attention",
+        "delta": " attention"
+      },
+      {
+        "at": 0.209681,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " and",
+        "delta": " and"
+      },
+      {
+        "at": 0.221016,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " full",
+        "delta": " full"
+      },
+      {
+        "at": 0.232452,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " attention",
+        "delta": " attention"
+      },
+      {
+        "at": 0.243575,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ".",
+        "delta": "."
+      },
+      {
+        "at": 0.277583,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "\n    *",
+        "delta": "\n    *"
+      },
+      {
+        "at": 0.300084,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "   Constraint",
+        "delta": "   Constraint"
+      },
+      {
+        "at": 0.322292,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " 1",
+        "delta": " 1"
+      },
+      {
+        "at": 0.333751,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ":",
+        "delta": ":"
+      },
+      {
+        "at": 0.345107,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " Think",
+        "delta": " Think"
+      },
+      {
+        "at": 0.356126,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " briefly",
+        "delta": " briefly"
+      },
+      {
+        "at": 0.367322,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ".",
+        "delta": "."
+      },
+      {
+        "at": 0.401179,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "\n    *",
+        "delta": "\n    *"
+      },
+      {
+        "at": 0.423665,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "   Constraint",
+        "delta": "   Constraint"
+      },
+      {
+        "at": 0.446298,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " 2",
+        "delta": " 2"
+      },
+      {
+        "at": 0.457178,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ":",
+        "delta": ":"
+      },
+      {
+        "at": 0.468462,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " Exactly",
+        "delta": " Exactly"
+      },
+      {
+        "at": 0.479557,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " six",
+        "delta": " six"
+      },
+      {
+        "at": 0.490886,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " short",
+        "delta": " short"
+      },
+      {
+        "at": 0.502147,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " numbered",
+        "delta": " numbered"
+      },
+      {
+        "at": 0.5132,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " sentences",
+        "delta": " sentences"
+      },
+      {
+        "at": 0.524667,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ".",
+        "delta": "."
+      },
+      {
+        "at": 0.557965,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "\n    *",
+        "delta": "\n    *"
+      },
+      {
+        "at": 0.580392,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "   Constraint",
+        "delta": "   Constraint"
+      },
+      {
+        "at": 0.602834,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " 3",
+        "delta": " 3"
+      },
+      {
+        "at": 0.614063,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ":",
+        "delta": ":"
+      },
+      {
+        "at": 0.625127,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " End",
+        "delta": " End"
+      },
+      {
+        "at": 0.636482,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " with",
+        "delta": " with"
+      },
+      {
+        "at": 0.647787,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " \"",
+        "delta": " \""
+      },
+      {
+        "at": 0.65889,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "G",
+        "delta": "G"
+      },
+      {
+        "at": 0.67009,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "4",
+        "delta": "4"
+      },
+      {
+        "at": 0.681445,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "-",
+        "delta": "-"
+      },
+      {
+        "at": 0.69282,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "RESP",
+        "delta": "RESP"
+      },
+      {
+        "at": 0.703971,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "-",
+        "delta": "-"
+      },
+      {
+        "at": 0.715314,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "STREAM",
+        "delta": "STREAM"
+      },
+      {
+        "at": 0.7267,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "-",
+        "delta": "-"
+      },
+      {
+        "at": 0.737944,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "DONE",
+        "delta": "DONE"
+      },
+      {
+        "at": 0.749094,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "\".",
+        "delta": "\"."
+      },
+      {
+        "at": 0.783045,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "\n    *",
+        "delta": "\n    *"
+      },
+      {
+        "at": 0.805277,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "   Constraint",
+        "delta": "   Constraint"
+      },
+      {
+        "at": 0.827435,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " 4",
+        "delta": " 4"
+      },
+      {
+        "at": 0.838903,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ":",
+        "delta": ":"
+      },
+      {
+        "at": 0.849962,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " Format",
+        "delta": " Format"
+      },
+      {
+        "at": 0.86105,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ":",
+        "delta": ":"
+      },
+      {
+        "at": 0.872338,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " Number",
+        "delta": " Number"
+      },
+      {
+        "at": 0.883685,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "ed",
+        "delta": "ed"
+      },
+      {
+        "at": 0.89488,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " list",
+        "delta": " list"
+      },
+      {
+        "at": 0.906068,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ".",
+        "delta": "."
+      },
+      {
+        "at": 0.939964,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "\n\n    *",
+        "delta": "\n\n    *"
+      },
+      {
+        "at": 0.962599,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "   Full",
+        "delta": "   Full"
+      },
+      {
+        "at": 0.973752,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " attention",
+        "delta": " attention"
+      },
+      {
+        "at": 0.984988,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ":",
+        "delta": ":"
+      },
+      {
+        "at": 0.996573,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " Every",
+        "delta": " Every"
+      },
+      {
+        "at": 1.007673,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " token",
+        "delta": " token"
+      },
+      {
+        "at": 1.018844,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " attends",
+        "delta": " attends"
+      },
+      {
+        "at": 1.030252,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " to",
+        "delta": " to"
+      },
+      {
+        "at": 1.041525,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " every",
+        "delta": " every"
+      },
+      {
+        "at": 1.052762,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " other",
+        "delta": " other"
+      },
+      {
+        "at": 1.064011,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " token",
+        "delta": " token"
+      },
+      {
+        "at": 1.075376,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " in",
+        "delta": " in"
+      },
+      {
+        "at": 1.086487,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " the",
+        "delta": " the"
+      },
+      {
+        "at": 1.097733,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " sequence",
+        "delta": " sequence"
+      },
+      {
+        "at": 1.109276,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ".",
+        "delta": "."
+      },
+      {
+        "at": 1.142854,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "\n    *",
+        "delta": "\n    *"
+      },
+      {
+        "at": 1.164962,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "   Complexity",
+        "delta": "   Complexity"
+      },
+      {
+        "at": 1.176189,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ":",
+        "delta": ":"
+      },
+      {
+        "at": 1.187484,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " Full",
+        "delta": " Full"
+      },
+      {
+        "at": 1.198612,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " attention",
+        "delta": " attention"
+      },
+      {
+        "at": 1.209747,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " is",
+        "delta": " is"
+      },
+      {
+        "at": 1.220995,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " $",
+        "delta": " $"
+      },
+      {
+        "at": 1.232443,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "O",
+        "delta": "O"
+      },
+      {
+        "at": 1.243569,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "(",
+        "delta": "("
+      },
+      {
+        "at": 1.254916,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "n",
+        "delta": "n"
+      },
+      {
+        "at": 1.266383,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "^",
+        "delta": "^"
+      },
+      {
+        "at": 1.277641,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "2",
+        "delta": "2"
+      },
+      {
+        "at": 1.288855,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ")$,",
+        "delta": ")$,"
+      },
+      {
+        "at": 1.30044,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " sliding",
+        "delta": " sliding"
+      },
+      {
+        "at": 1.311607,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "-",
+        "delta": "-"
+      },
+      {
+        "at": 1.322714,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "window",
+        "delta": "window"
+      },
+      {
+        "at": 1.334245,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " is",
+        "delta": " is"
+      },
+      {
+        "at": 1.345593,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " $",
+        "delta": " $"
+      },
+      {
+        "at": 1.356726,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "O",
+        "delta": "O"
+      },
+      {
+        "at": 1.36791,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "(",
+        "delta": "("
+      },
+      {
+        "at": 1.379348,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "n",
+        "delta": "n"
+      },
+      {
+        "at": 1.390705,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " \\",
+        "delta": " \\"
+      },
+      {
+        "at": 1.401812,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "times",
+        "delta": "times"
+      },
+      {
+        "at": 1.412993,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " w",
+        "delta": " w"
+      },
+      {
+        "at": 1.424331,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ")$.",
+        "delta": ")$."
+      },
+      {
+        "at": 1.458181,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "\n    *",
+        "delta": "\n    *"
+      },
+      {
+        "at": 1.480614,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "   Sl",
+        "delta": "   Sl"
+      },
+      {
+        "at": 1.49622,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "iding",
+        "delta": "iding"
+      },
+      {
+        "at": 1.496339,
+        "type": "response.reasoning_summary_text.done",
+        "content": "",
+        "reasoning": "",
+        "delta": ""
+      },
+      {
+        "at": 1.605396,
+        "type": "response.output_text.delta",
+        "content": "1",
+        "reasoning": "",
+        "delta": "1"
+      },
+      {
+        "at": 1.616735,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 1.62795,
+        "type": "response.output_text.delta",
+        "content": " Full",
+        "reasoning": "",
+        "delta": " Full"
+      },
+      {
+        "at": 1.639138,
+        "type": "response.output_text.delta",
+        "content": " attention",
+        "reasoning": "",
+        "delta": " attention"
+      },
+      {
+        "at": 1.650826,
+        "type": "response.output_text.delta",
+        "content": " considers",
+        "reasoning": "",
+        "delta": " considers"
+      },
+      {
+        "at": 1.6619,
+        "type": "response.output_text.delta",
+        "content": " every",
+        "reasoning": "",
+        "delta": " every"
+      },
+      {
+        "at": 1.672891,
+        "type": "response.output_text.delta",
+        "content": " token",
+        "reasoning": "",
+        "delta": " token"
+      },
+      {
+        "at": 1.684688,
+        "type": "response.output_text.delta",
+        "content": " in",
+        "reasoning": "",
+        "delta": " in"
+      },
+      {
+        "at": 1.69752,
+        "type": "response.output_text.delta",
+        "content": " a",
+        "reasoning": "",
+        "delta": " a"
+      },
+      {
+        "at": 1.709101,
+        "type": "response.output_text.delta",
+        "content": " sequence",
+        "reasoning": "",
+        "delta": " sequence"
+      },
+      {
+        "at": 1.721368,
+        "type": "response.output_text.delta",
+        "content": " simultaneously",
+        "reasoning": "",
+        "delta": " simultaneously"
+      },
+      {
+        "at": 1.731256,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 1.753747,
+        "type": "response.output_text.delta",
+        "content": "\n2",
+        "reasoning": "",
+        "delta": "\n2"
+      },
+      {
+        "at": 1.765412,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 1.778377,
+        "type": "response.output_text.delta",
+        "content": " Sliding",
+        "reasoning": "",
+        "delta": " Sliding"
+      },
+      {
+        "at": 1.788819,
+        "type": "response.output_text.delta",
+        "content": "-",
+        "reasoning": "",
+        "delta": "-"
+      },
+      {
+        "at": 1.799834,
+        "type": "response.output_text.delta",
+        "content": "window",
+        "reasoning": "",
+        "delta": "window"
+      },
+      {
+        "at": 1.811326,
+        "type": "response.output_text.delta",
+        "content": " attention",
+        "reasoning": "",
+        "delta": " attention"
+      },
+      {
+        "at": 1.822432,
+        "type": "response.output_text.delta",
+        "content": " only",
+        "reasoning": "",
+        "delta": " only"
+      },
+      {
+        "at": 1.833572,
+        "type": "response.output_text.delta",
+        "content": " looks",
+        "reasoning": "",
+        "delta": " looks"
+      },
+      {
+        "at": 1.845233,
+        "type": "response.output_text.delta",
+        "content": " at",
+        "reasoning": "",
+        "delta": " at"
+      },
+      {
+        "at": 1.856266,
+        "type": "response.output_text.delta",
+        "content": " a",
+        "reasoning": "",
+        "delta": " a"
+      },
+      {
+        "at": 1.867374,
+        "type": "response.output_text.delta",
+        "content": " fixed",
+        "reasoning": "",
+        "delta": " fixed"
+      },
+      {
+        "at": 1.878578,
+        "type": "response.output_text.delta",
+        "content": " neighborhood",
+        "reasoning": "",
+        "delta": " neighborhood"
+      },
+      {
+        "at": 1.890199,
+        "type": "response.output_text.delta",
+        "content": " of",
+        "reasoning": "",
+        "delta": " of"
+      },
+      {
+        "at": 1.901273,
+        "type": "response.output_text.delta",
+        "content": " tokens",
+        "reasoning": "",
+        "delta": " tokens"
+      },
+      {
+        "at": 1.912403,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 1.935464,
+        "type": "response.output_text.delta",
+        "content": "\n3",
+        "reasoning": "",
+        "delta": "\n3"
+      },
+      {
+        "at": 1.946309,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 1.957568,
+        "type": "response.output_text.delta",
+        "content": " Full",
+        "reasoning": "",
+        "delta": " Full"
+      },
+      {
+        "at": 1.968636,
+        "type": "response.output_text.delta",
+        "content": " attention",
+        "reasoning": "",
+        "delta": " attention"
+      },
+      {
+        "at": 1.980046,
+        "type": "response.output_text.delta",
+        "content": " has",
+        "reasoning": "",
+        "delta": " has"
+      },
+      {
+        "at": 1.991281,
+        "type": "response.output_text.delta",
+        "content": " quadratic",
+        "reasoning": "",
+        "delta": " quadratic"
+      },
+      {
+        "at": 2.002498,
+        "type": "response.output_text.delta",
+        "content": " computational",
+        "reasoning": "",
+        "delta": " computational"
+      },
+      {
+        "at": 2.013821,
+        "type": "response.output_text.delta",
+        "content": " complexity",
+        "reasoning": "",
+        "delta": " complexity"
+      },
+      {
+        "at": 2.025267,
+        "type": "response.output_text.delta",
+        "content": " relative",
+        "reasoning": "",
+        "delta": " relative"
+      },
+      {
+        "at": 2.036403,
+        "type": "response.output_text.delta",
+        "content": " to",
+        "reasoning": "",
+        "delta": " to"
+      },
+      {
+        "at": 2.047492,
+        "type": "response.output_text.delta",
+        "content": " sequence",
+        "reasoning": "",
+        "delta": " sequence"
+      },
+      {
+        "at": 2.058907,
+        "type": "response.output_text.delta",
+        "content": " length",
+        "reasoning": "",
+        "delta": " length"
+      },
+      {
+        "at": 2.070254,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 2.092642,
+        "type": "response.output_text.delta",
+        "content": "\n4",
+        "reasoning": "",
+        "delta": "\n4"
+      },
+      {
+        "at": 2.103823,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 2.114948,
+        "type": "response.output_text.delta",
+        "content": " Sliding",
+        "reasoning": "",
+        "delta": " Sliding"
+      },
+      {
+        "at": 2.125993,
+        "type": "response.output_text.delta",
+        "content": "-",
+        "reasoning": "",
+        "delta": "-"
+      },
+      {
+        "at": 2.137101,
+        "type": "response.output_text.delta",
+        "content": "window",
+        "reasoning": "",
+        "delta": "window"
+      },
+      {
+        "at": 2.148427,
+        "type": "response.output_text.delta",
+        "content": " attention",
+        "reasoning": "",
+        "delta": " attention"
+      },
+      {
+        "at": 2.159751,
+        "type": "response.output_text.delta",
+        "content": " offers",
+        "reasoning": "",
+        "delta": " offers"
+      },
+      {
+        "at": 2.171078,
+        "type": "response.output_text.delta",
+        "content": " linear",
+        "reasoning": "",
+        "delta": " linear"
+      },
+      {
+        "at": 2.182371,
+        "type": "response.output_text.delta",
+        "content": " complexity",
+        "reasoning": "",
+        "delta": " complexity"
+      },
+      {
+        "at": 2.193422,
+        "type": "response.output_text.delta",
+        "content": ",",
+        "reasoning": "",
+        "delta": ","
+      },
+      {
+        "at": 2.204547,
+        "type": "response.output_text.delta",
+        "content": " making",
+        "reasoning": "",
+        "delta": " making"
+      },
+      {
+        "at": 2.21598,
+        "type": "response.output_text.delta",
+        "content": " it",
+        "reasoning": "",
+        "delta": " it"
+      },
+      {
+        "at": 2.227036,
+        "type": "response.output_text.delta",
+        "content": " more",
+        "reasoning": "",
+        "delta": " more"
+      },
+      {
+        "at": 2.238143,
+        "type": "response.output_text.delta",
+        "content": " efficient",
+        "reasoning": "",
+        "delta": " efficient"
+      },
+      {
+        "at": 2.249365,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 2.272046,
+        "type": "response.output_text.delta",
+        "content": "\n5",
+        "reasoning": "",
+        "delta": "\n5"
+      },
+      {
+        "at": 2.283594,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 2.294595,
+        "type": "response.output_text.delta",
+        "content": " Full",
+        "reasoning": "",
+        "delta": " Full"
+      },
+      {
+        "at": 2.305847,
+        "type": "response.output_text.delta",
+        "content": " attention",
+        "reasoning": "",
+        "delta": " attention"
+      },
+      {
+        "at": 2.316839,
+        "type": "response.output_text.delta",
+        "content": " captures",
+        "reasoning": "",
+        "delta": " captures"
+      },
+      {
+        "at": 2.328136,
+        "type": "response.output_text.delta",
+        "content": " long",
+        "reasoning": "",
+        "delta": " long"
+      },
+      {
+        "at": 2.33952,
+        "type": "response.output_text.delta",
+        "content": "-",
+        "reasoning": "",
+        "delta": "-"
+      },
+      {
+        "at": 2.350732,
+        "type": "response.output_text.delta",
+        "content": "range",
+        "reasoning": "",
+        "delta": "range"
+      },
+      {
+        "at": 2.361874,
+        "type": "response.output_text.delta",
+        "content": " dependencies",
+        "reasoning": "",
+        "delta": " dependencies"
+      },
+      {
+        "at": 2.373173,
+        "type": "response.output_text.delta",
+        "content": " across",
+        "reasoning": "",
+        "delta": " across"
+      },
+      {
+        "at": 2.384641,
+        "type": "response.output_text.delta",
+        "content": " the",
+        "reasoning": "",
+        "delta": " the"
+      },
+      {
+        "at": 2.395739,
+        "type": "response.output_text.delta",
+        "content": " entire",
+        "reasoning": "",
+        "delta": " entire"
+      },
+      {
+        "at": 2.406839,
+        "type": "response.output_text.delta",
+        "content": " input",
+        "reasoning": "",
+        "delta": " input"
+      },
+      {
+        "at": 2.418323,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 2.440682,
+        "type": "response.output_text.delta",
+        "content": "\n6",
+        "reasoning": "",
+        "delta": "\n6"
+      },
+      {
+        "at": 2.451905,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 2.463362,
+        "type": "response.output_text.delta",
+        "content": " Sliding",
+        "reasoning": "",
+        "delta": " Sliding"
+      },
+      {
+        "at": 2.47443,
+        "type": "response.output_text.delta",
+        "content": "-",
+        "reasoning": "",
+        "delta": "-"
+      },
+      {
+        "at": 2.485499,
+        "type": "response.output_text.delta",
+        "content": "window",
+        "reasoning": "",
+        "delta": "window"
+      },
+      {
+        "at": 2.496768,
+        "type": "response.output_text.delta",
+        "content": " attention",
+        "reasoning": "",
+        "delta": " attention"
+      },
+      {
+        "at": 2.508097,
+        "type": "response.output_text.delta",
+        "content": " limits",
+        "reasoning": "",
+        "delta": " limits"
+      },
+      {
+        "at": 2.519179,
+        "type": "response.output_text.delta",
+        "content": " the",
+        "reasoning": "",
+        "delta": " the"
+      },
+      {
+        "at": 2.530233,
+        "type": "response.output_text.delta",
+        "content": " receptive",
+        "reasoning": "",
+        "delta": " receptive"
+      },
+      {
+        "at": 2.541813,
+        "type": "response.output_text.delta",
+        "content": " field",
+        "reasoning": "",
+        "delta": " field"
+      },
+      {
+        "at": 2.553065,
+        "type": "response.output_text.delta",
+        "content": " to",
+        "reasoning": "",
+        "delta": " to"
+      },
+      {
+        "at": 2.56414,
+        "type": "response.output_text.delta",
+        "content": " a",
+        "reasoning": "",
+        "delta": " a"
+      },
+      {
+        "at": 2.575377,
+        "type": "response.output_text.delta",
+        "content": " local",
+        "reasoning": "",
+        "delta": " local"
+      },
+      {
+        "at": 2.586558,
+        "type": "response.output_text.delta",
+        "content": " context",
+        "reasoning": "",
+        "delta": " context"
+      },
+      {
+        "at": 2.597811,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 2.620182,
+        "type": "response.output_text.delta",
+        "content": "\n\nG",
+        "reasoning": "",
+        "delta": "\n\nG"
+      },
+      {
+        "at": 2.631418,
+        "type": "response.output_text.delta",
+        "content": "4",
+        "reasoning": "",
+        "delta": "4"
+      },
+      {
+        "at": 2.642815,
+        "type": "response.output_text.delta",
+        "content": "-",
+        "reasoning": "",
+        "delta": "-"
+      },
+      {
+        "at": 2.654115,
+        "type": "response.output_text.delta",
+        "content": "RESP",
+        "reasoning": "",
+        "delta": "RESP"
+      },
+      {
+        "at": 2.665359,
+        "type": "response.output_text.delta",
+        "content": "-",
+        "reasoning": "",
+        "delta": "-"
+      },
+      {
+        "at": 2.676484,
+        "type": "response.output_text.delta",
+        "content": "STREAM",
+        "reasoning": "",
+        "delta": "STREAM"
+      },
+      {
+        "at": 2.68755,
+        "type": "response.output_text.delta",
+        "content": "-",
+        "reasoning": "",
+        "delta": "-"
+      },
+      {
+        "at": 2.698965,
+        "type": "response.output_text.delta",
+        "content": "DONE",
+        "reasoning": "",
+        "delta": "DONE"
+      },
+      {
+        "at": 2.714403,
+        "type": "response.output_text.done",
+        "content": "",
+        "reasoning": "",
+        "delta": ""
+      },
+      {
+        "at": 2.714454,
+        "type": "response.content_part.done",
+        "content": "",
+        "reasoning": "",
+        "delta": ""
+      },
+      {
+        "at": 2.714543,
+        "type": "response.output_item.done",
+        "content": "",
+        "reasoning": "",
+        "delta": ""
+      },
+      {
+        "at": 2.714587,
+        "type": "response.completed",
+        "content": "",
+        "reasoning": "",
+        "delta": ""
+      }
+    ],
+    "content": "1. Full attention considers every token in a sequence simultaneously.\n2. Sliding-window attention only looks at a fixed neighborhood of tokens.\n3. Full attention has quadratic computational complexity relative to sequence length.\n4. Sliding-window attention offers linear complexity, making it more efficient.\n5. Full attention captures long-range dependencies across the entire input.\n6. Sliding-window attention limits the receptive field to a local context.\n\nG4-RESP-STREAM-DONE",
+    "reasoning": "*   Topic: Difference between sliding-window attention and full attention.\n    *   Constraint 1: Think briefly.\n    *   Constraint 2: Exactly six short numbered sentences.\n    *   Constraint 3: End with \"G4-RESP-STREAM-DONE\".\n    *   Constraint 4: Format: Numbered list.\n\n    *   Full attention: Every token attends to every other token in the sequence.\n    *   Complexity: Full attention is $O(n^2)$, sliding-window is $O(n \\times w)$.\n    *   Sliding",
+    "content_delta_count": 92,
+    "reasoning_delta_count": 99,
+    "first_content_at": 1.605396,
+    "last_content_at": 2.698965,
+    "first_reasoning_at": 0.097959,
+    "last_reasoning_at": 1.49622,
+    "terminal_events": [
+      "response.completed"
+    ]
+  }
+}

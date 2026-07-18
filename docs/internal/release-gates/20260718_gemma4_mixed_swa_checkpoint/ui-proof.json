@@ -1,0 +1,39 @@
+{
+  "status": "pass",
+  "modelName": "jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M",
+  "sourceHead": "7b62ea4a3",
+  "sessionId": "7bf80d27-3937-426e-90a8-6152f2159f3b",
+  "provenSurfaces": [
+    "electron_ui",
+    "settings_parity",
+    "cache_hit_telemetry",
+    "l2_disk_storage",
+    "tool_loop",
+    "multi_turn_history",
+    "language_leak_check"
+  ],
+  "launchArgv": [
+    "--use-paged-cache",
+    "--paged-cache-block-size 64",
+    "--max-cache-blocks 1000",
+    "--enable-block-disk-cache",
+    "--block-disk-cache-max-gb 10",
+    "--stream-interval 1",
+    "--tool-call-parser gemma4",
+    "--reasoning-parser gemma4"
+  ],
+  "uiDefaults": {
+    "prefixCache": true,
+    "pagedCache": true,
+    "pagedLockedByArchitecture": true,
+    "blockDiskL2": true,
+    "legacyDiskCache": false,
+    "cacheCodecLabel": "TQ4 full-attention KV + native rotating SWA"
+  },
+  "screenshots": [
+    "electron-defaults.png",
+    "electron-launch-argv.png",
+    "electron-multiturn.png",
+    "electron-disk-tool.png"
+  ]
+}

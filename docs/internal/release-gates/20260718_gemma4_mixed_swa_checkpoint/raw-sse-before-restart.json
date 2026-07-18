@@ -1,0 +1,3221 @@
+{
+  "captured_unix": 1784418251.8588428,
+  "chat": {
+    "payload": {
+      "model": "jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M",
+      "messages": [
+        {
+          "role": "user",
+          "content": "[G4-RAW-STREAM] Think briefly and then give exactly six short numbered sentences explaining the difference between sliding-window and full attention. End the visible answer with G4-RAW-STREAM-DONE."
+        }
+      ],
+      "stream": true,
+      "stream_options": {
+        "include_usage": true
+      },
+      "enable_thinking": true,
+      "max_thinking_tokens": 128,
+      "max_tokens": 512,
+      "temperature": 0
+    },
+    "events": [
+      {
+        "at": 0.019084,
+        "content": "",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 0.28901,
+        "content": "",
+        "reasoning": "*",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 4,
+          "total_tokens": 60
+        }
+      },
+      {
+        "at": 0.311416,
+        "content": "",
+        "reasoning": "   Topic",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 6,
+          "total_tokens": 62
+        }
+      },
+      {
+        "at": 0.322642,
+        "content": "",
+        "reasoning": ":",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 7,
+          "total_tokens": 63
+        }
+      },
+      {
+        "at": 0.333887,
+        "content": "",
+        "reasoning": " Difference",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 8,
+          "total_tokens": 64
+        }
+      },
+      {
+        "at": 0.344982,
+        "content": "",
+        "reasoning": " between",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 9,
+          "total_tokens": 65
+        }
+      },
+      {
+        "at": 0.355978,
+        "content": "",
+        "reasoning": " sliding",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 10,
+          "total_tokens": 66
+        }
+      },
+      {
+        "at": 0.367237,
+        "content": "",
+        "reasoning": "-",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 11,
+          "total_tokens": 67
+        }
+      },
+      {
+        "at": 0.378553,
+        "content": "",
+        "reasoning": "window",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 12,
+          "total_tokens": 68
+        }
+      },
+      {
+        "at": 0.389558,
+        "content": "",
+        "reasoning": " attention",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 13,
+          "total_tokens": 69
+        }
+      },
+      {
+        "at": 0.400619,
+        "content": "",
+        "reasoning": " and",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 14,
+          "total_tokens": 70
+        }
+      },
+      {
+        "at": 0.411975,
+        "content": "",
+        "reasoning": " full",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 15,
+          "total_tokens": 71
+        }
+      },
+      {
+        "at": 0.423005,
+        "content": "",
+        "reasoning": " attention",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 16,
+          "total_tokens": 72
+        }
+      },
+      {
+        "at": 0.433908,
+        "content": "",
+        "reasoning": ".",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 17,
+          "total_tokens": 73
+        }
+      },
+      {
+        "at": 0.467496,
+        "content": "",
+        "reasoning": "\n    *",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 20,
+          "total_tokens": 76
+        }
+      },
+      {
+        "at": 0.489849,
+        "content": "",
+        "reasoning": "   Constraint",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 22,
+          "total_tokens": 78
+        }
+      },
+      {
+        "at": 0.512142,
+        "content": "",
+        "reasoning": " 1",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 24,
+          "total_tokens": 80
+        }
+      },
+      {
+        "at": 0.523059,
+        "content": "",
+        "reasoning": ":",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 25,
+          "total_tokens": 81
+        }
+      },
+      {
+        "at": 0.53414,
+        "content": "",
+        "reasoning": " Think",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 26,
+          "total_tokens": 82
+        }
+      },
+      {
+        "at": 0.545294,
+        "content": "",
+        "reasoning": " briefly",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 27,
+          "total_tokens": 83
+        }
+      },
+      {
+        "at": 0.556631,
+        "content": "",
+        "reasoning": ".",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 28,
+          "total_tokens": 84
+        }
+      },
+      {
+        "at": 0.590341,
+        "content": "",
+        "reasoning": "\n    *",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 31,
+          "total_tokens": 87
+        }
+      },
+      {
+        "at": 0.612756,
+        "content": "",
+        "reasoning": "   Constraint",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 33,
+          "total_tokens": 89
+        }
+      },
+      {
+        "at": 0.634812,
+        "content": "",
+        "reasoning": " 2",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 35,
+          "total_tokens": 91
+        }
+      },
+      {
+        "at": 0.646041,
+        "content": "",
+        "reasoning": ":",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 36,
+          "total_tokens": 92
+        }
+      },
+      {
+        "at": 0.657176,
+        "content": "",
+        "reasoning": " Exactly",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 37,
+          "total_tokens": 93
+        }
+      },
+      {
+        "at": 0.668259,
+        "content": "",
+        "reasoning": " six",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 38,
+          "total_tokens": 94
+        }
+      },
+      {
+        "at": 0.679393,
+        "content": "",
+        "reasoning": " short",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 39,
+          "total_tokens": 95
+        }
+      },
+      {
+        "at": 0.690582,
+        "content": "",
+        "reasoning": " numbered",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 40,
+          "total_tokens": 96
+        }
+      },
+      {
+        "at": 0.701686,
+        "content": "",
+        "reasoning": " sentences",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 41,
+          "total_tokens": 97
+        }
+      },
+      {
+        "at": 0.712906,
+        "content": "",
+        "reasoning": ".",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 42,
+          "total_tokens": 98
+        }
+      },
+      {
+        "at": 0.746199,
+        "content": "",
+        "reasoning": "\n    *",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 45,
+          "total_tokens": 101
+        }
+      },
+      {
+        "at": 0.76854,
+        "content": "",
+        "reasoning": "   Constraint",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 47,
+          "total_tokens": 103
+        }
+      },
+      {
+        "at": 0.790815,
+        "content": "",
+        "reasoning": " 3",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 49,
+          "total_tokens": 105
+        }
+      },
+      {
+        "at": 0.802,
+        "content": "",
+        "reasoning": ":",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 50,
+          "total_tokens": 106
+        }
+      },
+      {
+        "at": 0.812964,
+        "content": "",
+        "reasoning": " End",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 51,
+          "total_tokens": 107
+        }
+      },
+      {
+        "at": 0.824138,
+        "content": "",
+        "reasoning": " with",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 52,
+          "total_tokens": 108
+        }
+      },
+      {
+        "at": 0.835219,
+        "content": "",
+        "reasoning": " \"",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 53,
+          "total_tokens": 109
+        }
+      },
+      {
+        "at": 0.846203,
+        "content": "",
+        "reasoning": "G",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 54,
+          "total_tokens": 110
+        }
+      },
+      {
+        "at": 0.857402,
+        "content": "",
+        "reasoning": "4",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 55,
+          "total_tokens": 111
+        }
+      },
+      {
+        "at": 0.868518,
+        "content": "",
+        "reasoning": "-",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 56,
+          "total_tokens": 112
+        }
+      },
+      {
+        "at": 0.879743,
+        "content": "",
+        "reasoning": "RAW",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 57,
+          "total_tokens": 113
+        }
+      },
+      {
+        "at": 0.890713,
+        "content": "",
+        "reasoning": "-",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 58,
+          "total_tokens": 114
+        }
+      },
+      {
+        "at": 0.902044,
+        "content": "",
+        "reasoning": "STREAM",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 59,
+          "total_tokens": 115
+        }
+      },
+      {
+        "at": 0.913259,
+        "content": "",
+        "reasoning": "-",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 60,
+          "total_tokens": 116
+        }
+      },
+      {
+        "at": 0.924299,
+        "content": "",
+        "reasoning": "DONE",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 61,
+          "total_tokens": 117
+        }
+      },
+      {
+        "at": 0.935341,
+        "content": "",
+        "reasoning": "\".",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 62,
+          "total_tokens": 118
+        }
+      },
+      {
+        "at": 0.96911,
+        "content": "",
+        "reasoning": "\n    *",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 65,
+          "total_tokens": 121
+        }
+      },
+      {
+        "at": 0.991462,
+        "content": "",
+        "reasoning": "   Format",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 67,
+          "total_tokens": 123
+        }
+      },
+      {
+        "at": 1.002445,
+        "content": "",
+        "reasoning": ":",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 68,
+          "total_tokens": 124
+        }
+      },
+      {
+        "at": 1.013581,
+        "content": "",
+        "reasoning": " Number",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 69,
+          "total_tokens": 125
+        }
+      },
+      {
+        "at": 1.024697,
+        "content": "",
+        "reasoning": "ed",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 70,
+          "total_tokens": 126
+        }
+      },
+      {
+        "at": 1.035805,
+        "content": "",
+        "reasoning": " list",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 71,
+          "total_tokens": 127
+        }
+      },
+      {
+        "at": 1.04683,
+        "content": "",
+        "reasoning": ".",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 72,
+          "total_tokens": 128
+        }
+      },
+      {
+        "at": 1.080188,
+        "content": "",
+        "reasoning": "\n\n    *",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 75,
+          "total_tokens": 131
+        }
+      },
+      {
+        "at": 1.102408,
+        "content": "",
+        "reasoning": "   Full",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 77,
+          "total_tokens": 133
+        }
+      },
+      {
+        "at": 1.113414,
+        "content": "",
+        "reasoning": " attention",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 78,
+          "total_tokens": 134
+        }
+      },
+      {
+        "at": 1.124723,
+        "content": "",
+        "reasoning": ":",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 79,
+          "total_tokens": 135
+        }
+      },
+      {
+        "at": 1.135931,
+        "content": "",
+        "reasoning": " Every",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 80,
+          "total_tokens": 136
+        }
+      },
+      {
+        "at": 1.14693,
+        "content": "",
+        "reasoning": " token",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 81,
+          "total_tokens": 137
+        }
+      },
+      {
+        "at": 1.157996,
+        "content": "",
+        "reasoning": " attends",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 82,
+          "total_tokens": 138
+        }
+      },
+      {
+        "at": 1.169263,
+        "content": "",
+        "reasoning": " to",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 83,
+          "total_tokens": 139
+        }
+      },
+      {
+        "at": 1.180348,
+        "content": "",
+        "reasoning": " every",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 84,
+          "total_tokens": 140
+        }
+      },
+      {
+        "at": 1.191457,
+        "content": "",
+        "reasoning": " other",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 85,
+          "total_tokens": 141
+        }
+      },
+      {
+        "at": 1.202681,
+        "content": "",
+        "reasoning": " token",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 86,
+          "total_tokens": 142
+        }
+      },
+      {
+        "at": 1.214024,
+        "content": "",
+        "reasoning": " in",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 87,
+          "total_tokens": 143
+        }
+      },
+      {
+        "at": 1.225065,
+        "content": "",
+        "reasoning": " the",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 88,
+          "total_tokens": 144
+        }
+      },
+      {
+        "at": 1.236075,
+        "content": "",
+        "reasoning": " sequence",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 89,
+          "total_tokens": 145
+        }
+      },
+      {
+        "at": 1.247512,
+        "content": "",
+        "reasoning": ".",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 90,
+          "total_tokens": 146
+        }
+      },
+      {
+        "at": 1.281112,
+        "content": "",
+        "reasoning": "\n    *",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 93,
+          "total_tokens": 149
+        }
+      },
+      {
+        "at": 1.30353,
+        "content": "",
+        "reasoning": "   Complexity",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 95,
+          "total_tokens": 151
+        }
+      },
+      {
+        "at": 1.31449,
+        "content": "",
+        "reasoning": ":",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 96,
+          "total_tokens": 152
+        }
+      },
+      {
+        "at": 1.325973,
+        "content": "",
+        "reasoning": " Full",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 97,
+          "total_tokens": 153
+        }
+      },
+      {
+        "at": 1.336933,
+        "content": "",
+        "reasoning": " attention",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 98,
+          "total_tokens": 154
+        }
+      },
+      {
+        "at": 1.34801,
+        "content": "",
+        "reasoning": " is",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 99,
+          "total_tokens": 155
+        }
+      },
+      {
+        "at": 1.359314,
+        "content": "",
+        "reasoning": " $",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 100,
+          "total_tokens": 156
+        }
+      },
+      {
+        "at": 1.370504,
+        "content": "",
+        "reasoning": "O",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 101,
+          "total_tokens": 157
+        }
+      },
+      {
+        "at": 1.381623,
+        "content": "",
+        "reasoning": "(",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 102,
+          "total_tokens": 158
+        }
+      },
+      {
+        "at": 1.39273,
+        "content": "",
+        "reasoning": "n",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 103,
+          "total_tokens": 159
+        }
+      },
+      {
+        "at": 1.40402,
+        "content": "",
+        "reasoning": "^",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 104,
+          "total_tokens": 160
+        }
+      },
+      {
+        "at": 1.415001,
+        "content": "",
+        "reasoning": "2",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 105,
+          "total_tokens": 161
+        }
+      },
+      {
+        "at": 1.426092,
+        "content": "",
+        "reasoning": ")$,",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 106,
+          "total_tokens": 162
+        }
+      },
+      {
+        "at": 1.43735,
+        "content": "",
+        "reasoning": " sliding",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 107,
+          "total_tokens": 163
+        }
+      },
+      {
+        "at": 1.448506,
+        "content": "",
+        "reasoning": "-",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 108,
+          "total_tokens": 164
+        }
+      },
+      {
+        "at": 1.459634,
+        "content": "",
+        "reasoning": "window",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 109,
+          "total_tokens": 165
+        }
+      },
+      {
+        "at": 1.471022,
+        "content": "",
+        "reasoning": " is",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 110,
+          "total_tokens": 166
+        }
+      },
+      {
+        "at": 1.482202,
+        "content": "",
+        "reasoning": " $",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 111,
+          "total_tokens": 167
+        }
+      },
+      {
+        "at": 1.493462,
+        "content": "",
+        "reasoning": "O",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 112,
+          "total_tokens": 168
+        }
+      },
+      {
+        "at": 1.504578,
+        "content": "",
+        "reasoning": "(",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 113,
+          "total_tokens": 169
+        }
+      },
+      {
+        "at": 1.515843,
+        "content": "",
+        "reasoning": "n",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 114,
+          "total_tokens": 170
+        }
+      },
+      {
+        "at": 1.526925,
+        "content": "",
+        "reasoning": " \\",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 115,
+          "total_tokens": 171
+        }
+      },
+      {
+        "at": 1.537897,
+        "content": "",
+        "reasoning": "times",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 116,
+          "total_tokens": 172
+        }
+      },
+      {
+        "at": 1.549164,
+        "content": "",
+        "reasoning": " w",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 117,
+          "total_tokens": 173
+        }
+      },
+      {
+        "at": 1.560407,
+        "content": "",
+        "reasoning": ")$.",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 118,
+          "total_tokens": 174
+        }
+      },
+      {
+        "at": 1.593879,
+        "content": "",
+        "reasoning": "\n    *",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 121,
+          "total_tokens": 177
+        }
+      },
+      {
+        "at": 1.616427,
+        "content": "",
+        "reasoning": "   Sl",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 123,
+          "total_tokens": 179
+        }
+      },
+      {
+        "at": 1.627173,
+        "content": "",
+        "reasoning": "iding",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 124,
+          "total_tokens": 180
+        }
+      },
+      {
+        "at": 1.638797,
+        "content": "",
+        "reasoning": "-",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 125,
+          "total_tokens": 181
+        }
+      },
+      {
+        "at": 1.650036,
+        "content": "",
+        "reasoning": "window",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 126,
+          "total_tokens": 182
+        }
+      },
+      {
+        "at": 1.661141,
+        "content": "",
+        "reasoning": " attention",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 127,
+          "total_tokens": 183
+        }
+      },
+      {
+        "at": 1.677639,
+        "content": "",
+        "reasoning": ":",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 128,
+          "total_tokens": 184
+        }
+      },
+      {
+        "at": 2.05176,
+        "content": "1",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.062746,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.073816,
+        "content": " Full",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.085018,
+        "content": " attention",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.096228,
+        "content": " computes",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.107172,
+        "content": " relationships",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.118202,
+        "content": " between",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.1296,
+        "content": " every",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.140704,
+        "content": " token",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.151987,
+        "content": " in",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.163152,
+        "content": " a",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.174521,
+        "content": " sequence",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.185698,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.208819,
+        "content": "\n2",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.220211,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.231356,
+        "content": " Sliding",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.242704,
+        "content": "-",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.25406,
+        "content": "window",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.265173,
+        "content": " attention",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.276341,
+        "content": " only",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.287394,
+        "content": " looks",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.298512,
+        "content": " at",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.309553,
+        "content": " a",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.320994,
+        "content": " fixed",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.331958,
+        "content": " number",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.343046,
+        "content": " of",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.354063,
+        "content": " neighboring",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.365614,
+        "content": " tokens",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.376572,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.398859,
+        "content": "\n3",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.409961,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.421197,
+        "content": " Full",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.431946,
+        "content": " attention",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.443204,
+        "content": " has",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.454409,
+        "content": " quadratic",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.465465,
+        "content": " computational",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.476475,
+        "content": " complexity",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.488005,
+        "content": " relative",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.499128,
+        "content": " to",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.510157,
+        "content": " sequence",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.521464,
+        "content": " length",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.532502,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.554834,
+        "content": "\n4",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.566122,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.577132,
+        "content": " Sliding",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.588236,
+        "content": "-",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.599589,
+        "content": "window",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.610809,
+        "content": " attention",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.621764,
+        "content": " offers",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.633078,
+        "content": " linear",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.64433,
+        "content": " complexity",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.655329,
+        "content": ",",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.666327,
+        "content": " making",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.677722,
+        "content": " it",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.688902,
+        "content": " much",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.699877,
+        "content": " faster",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.711388,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.733532,
+        "content": "\n5",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.744938,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.756084,
+        "content": " Full",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.767062,
+        "content": " attention",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.778213,
+        "content": " captures",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.78949,
+        "content": " long",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.800638,
+        "content": "-",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.811673,
+        "content": "range",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.823029,
+        "content": " dependencies",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.834032,
+        "content": " across",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.845,
+        "content": " the",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.856315,
+        "content": " entire",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.86734,
+        "content": " input",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.878473,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.90066,
+        "content": "\n6",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.911964,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.923026,
+        "content": " Sliding",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.934196,
+        "content": "-",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.945407,
+        "content": "window",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.956426,
+        "content": " attention",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.967667,
+        "content": " focuses",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.979177,
+        "content": " on",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 2.989972,
+        "content": " local",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 3.001234,
+        "content": " context",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 3.012784,
+        "content": " to",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 3.0237,
+        "content": " save",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 3.034725,
+        "content": " memory",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 3.045811,
+        "content": ".",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 3.068251,
+        "content": "\n\nG",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 3.079225,
+        "content": "4",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 3.090449,
+        "content": "-",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 3.10172,
+        "content": "RAW",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 3.112707,
+        "content": "-",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 3.123748,
+        "content": "STREAM",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 3.135027,
+        "content": "-",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 3.146185,
+        "content": "DONE",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": null
+      },
+      {
+        "at": 3.162573,
+        "content": "",
+        "reasoning": "",
+        "finish_reason": "stop",
+        "usage": null
+      },
+      {
+        "at": 3.162633,
+        "content": "",
+        "reasoning": "",
+        "finish_reason": null,
+        "usage": {
+          "prompt_tokens": 56,
+          "completion_tokens": 232,
+          "total_tokens": 288
+        }
+      }
+    ],
+    "content": "1. Full attention computes relationships between every token in a sequence.\n2. Sliding-window attention only looks at a fixed number of neighboring tokens.\n3. Full attention has quadratic computational complexity relative to sequence length.\n4. Sliding-window attention offers linear complexity, making it much faster.\n5. Full attention captures long-range dependencies across the entire input.\n6. Sliding-window attention focuses on local context to save memory.\n\nG4-RAW-STREAM-DONE",
+    "reasoning": "*   Topic: Difference between sliding-window attention and full attention.\n    *   Constraint 1: Think briefly.\n    *   Constraint 2: Exactly six short numbered sentences.\n    *   Constraint 3: End with \"G4-RAW-STREAM-DONE\".\n    *   Format: Numbered list.\n\n    *   Full attention: Every token attends to every other token in the sequence.\n    *   Complexity: Full attention is $O(n^2)$, sliding-window is $O(n \\times w)$.\n    *   Sliding-window attention:",
+    "content_delta_count": 93,
+    "reasoning_delta_count": 100,
+    "first_content_at": 2.05176,
+    "last_content_at": 3.146185,
+    "first_reasoning_at": 0.28901,
+    "last_reasoning_at": 1.677639,
+    "terminal_reasons": [
+      "stop"
+    ]
+  },
+  "responses": {
+    "payload": {
+      "model": "jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M",
+      "input": "[G4-RESP-STREAM] Think briefly and then give exactly six short numbered sentences explaining the difference between sliding-window and full attention. End the visible answer with G4-RESP-STREAM-DONE.",
+      "stream": true,
+      "enable_thinking": true,
+      "max_thinking_tokens": 128,
+      "max_output_tokens": 512,
+      "temperature": 0
+    },
+    "events": [
+      {
+        "at": 0.001612,
+        "type": "response.created",
+        "content": "",
+        "reasoning": "",
+        "delta": ""
+      },
+      {
+        "at": 0.001633,
+        "type": "response.output_item.added",
+        "content": "",
+        "reasoning": "",
+        "delta": ""
+      },
+      {
+        "at": 0.001654,
+        "type": "response.content_part.added",
+        "content": "",
+        "reasoning": "",
+        "delta": ""
+      },
+      {
+        "at": 0.368111,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "*",
+        "delta": "*"
+      },
+      {
+        "at": 0.390456,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "   Topic",
+        "delta": "   Topic"
+      },
+      {
+        "at": 0.401578,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ":",
+        "delta": ":"
+      },
+      {
+        "at": 0.412968,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " Difference",
+        "delta": " Difference"
+      },
+      {
+        "at": 0.423916,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " between",
+        "delta": " between"
+      },
+      {
+        "at": 0.435139,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " sliding",
+        "delta": " sliding"
+      },
+      {
+        "at": 0.446325,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "-",
+        "delta": "-"
+      },
+      {
+        "at": 0.45749,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "window",
+        "delta": "window"
+      },
+      {
+        "at": 0.468564,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " attention",
+        "delta": " attention"
+      },
+      {
+        "at": 0.47991,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " and",
+        "delta": " and"
+      },
+      {
+        "at": 0.491153,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " full",
+        "delta": " full"
+      },
+      {
+        "at": 0.502199,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " attention",
+        "delta": " attention"
+      },
+      {
+        "at": 0.51358,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ".",
+        "delta": "."
+      },
+      {
+        "at": 0.546864,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "\n    *",
+        "delta": "\n    *"
+      },
+      {
+        "at": 0.569416,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "   Constraint",
+        "delta": "   Constraint"
+      },
+      {
+        "at": 0.591538,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " 1",
+        "delta": " 1"
+      },
+      {
+        "at": 0.602622,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ":",
+        "delta": ":"
+      },
+      {
+        "at": 0.614167,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " Think",
+        "delta": " Think"
+      },
+      {
+        "at": 0.625071,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " briefly",
+        "delta": " briefly"
+      },
+      {
+        "at": 0.636194,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ".",
+        "delta": "."
+      },
+      {
+        "at": 0.669556,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "\n    *",
+        "delta": "\n    *"
+      },
+      {
+        "at": 0.691928,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "   Constraint",
+        "delta": "   Constraint"
+      },
+      {
+        "at": 0.714053,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " 2",
+        "delta": " 2"
+      },
+      {
+        "at": 0.725208,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ":",
+        "delta": ":"
+      },
+      {
+        "at": 0.736248,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " Exactly",
+        "delta": " Exactly"
+      },
+      {
+        "at": 0.747338,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " six",
+        "delta": " six"
+      },
+      {
+        "at": 0.75889,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " short",
+        "delta": " short"
+      },
+      {
+        "at": 0.769778,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " numbered",
+        "delta": " numbered"
+      },
+      {
+        "at": 0.780754,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " sentences",
+        "delta": " sentences"
+      },
+      {
+        "at": 0.791941,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ".",
+        "delta": "."
+      },
+      {
+        "at": 0.825389,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "\n    *",
+        "delta": "\n    *"
+      },
+      {
+        "at": 0.847772,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "   Constraint",
+        "delta": "   Constraint"
+      },
+      {
+        "at": 0.869836,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " 3",
+        "delta": " 3"
+      },
+      {
+        "at": 0.880991,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ":",
+        "delta": ":"
+      },
+      {
+        "at": 0.892191,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " End",
+        "delta": " End"
+      },
+      {
+        "at": 0.903235,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " with",
+        "delta": " with"
+      },
+      {
+        "at": 0.914252,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " \"",
+        "delta": " \""
+      },
+      {
+        "at": 0.925597,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "G",
+        "delta": "G"
+      },
+      {
+        "at": 0.936704,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "4",
+        "delta": "4"
+      },
+      {
+        "at": 0.947735,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "-",
+        "delta": "-"
+      },
+      {
+        "at": 0.959129,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "RESP",
+        "delta": "RESP"
+      },
+      {
+        "at": 0.970124,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "-",
+        "delta": "-"
+      },
+      {
+        "at": 0.981141,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "STREAM",
+        "delta": "STREAM"
+      },
+      {
+        "at": 0.992253,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "-",
+        "delta": "-"
+      },
+      {
+        "at": 1.003486,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "DONE",
+        "delta": "DONE"
+      },
+      {
+        "at": 1.01462,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "\".",
+        "delta": "\"."
+      },
+      {
+        "at": 1.047974,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "\n    *",
+        "delta": "\n    *"
+      },
+      {
+        "at": 1.070371,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "   Constraint",
+        "delta": "   Constraint"
+      },
+      {
+        "at": 1.092844,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " 4",
+        "delta": " 4"
+      },
+      {
+        "at": 1.103982,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ":",
+        "delta": ":"
+      },
+      {
+        "at": 1.115265,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " Format",
+        "delta": " Format"
+      },
+      {
+        "at": 1.126447,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ":",
+        "delta": ":"
+      },
+      {
+        "at": 1.137575,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " Number",
+        "delta": " Number"
+      },
+      {
+        "at": 1.148543,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "ed",
+        "delta": "ed"
+      },
+      {
+        "at": 1.159942,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " list",
+        "delta": " list"
+      },
+      {
+        "at": 1.171041,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ".",
+        "delta": "."
+      },
+      {
+        "at": 1.204653,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "\n\n    *",
+        "delta": "\n\n    *"
+      },
+      {
+        "at": 1.226797,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "   Full",
+        "delta": "   Full"
+      },
+      {
+        "at": 1.23794,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " attention",
+        "delta": " attention"
+      },
+      {
+        "at": 1.249322,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ":",
+        "delta": ":"
+      },
+      {
+        "at": 1.26029,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " Every",
+        "delta": " Every"
+      },
+      {
+        "at": 1.271269,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " token",
+        "delta": " token"
+      },
+      {
+        "at": 1.282649,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " attends",
+        "delta": " attends"
+      },
+      {
+        "at": 1.293707,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " to",
+        "delta": " to"
+      },
+      {
+        "at": 1.304944,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " every",
+        "delta": " every"
+      },
+      {
+        "at": 1.316005,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " other",
+        "delta": " other"
+      },
+      {
+        "at": 1.327142,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " token",
+        "delta": " token"
+      },
+      {
+        "at": 1.338589,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " in",
+        "delta": " in"
+      },
+      {
+        "at": 1.350118,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " the",
+        "delta": " the"
+      },
+      {
+        "at": 1.361188,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " sequence",
+        "delta": " sequence"
+      },
+      {
+        "at": 1.372657,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ".",
+        "delta": "."
+      },
+      {
+        "at": 1.406839,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "\n    *",
+        "delta": "\n    *"
+      },
+      {
+        "at": 1.429096,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "   Complexity",
+        "delta": "   Complexity"
+      },
+      {
+        "at": 1.440358,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ":",
+        "delta": ":"
+      },
+      {
+        "at": 1.451305,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " Full",
+        "delta": " Full"
+      },
+      {
+        "at": 1.462605,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " attention",
+        "delta": " attention"
+      },
+      {
+        "at": 1.473931,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " is",
+        "delta": " is"
+      },
+      {
+        "at": 1.485059,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " $",
+        "delta": " $"
+      },
+      {
+        "at": 1.49616,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "O",
+        "delta": "O"
+      },
+      {
+        "at": 1.507634,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "(",
+        "delta": "("
+      },
+      {
+        "at": 1.518644,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "n",
+        "delta": "n"
+      },
+      {
+        "at": 1.529728,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "^",
+        "delta": "^"
+      },
+      {
+        "at": 1.541098,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "2",
+        "delta": "2"
+      },
+      {
+        "at": 1.552379,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ")$,",
+        "delta": ")$,"
+      },
+      {
+        "at": 1.563376,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " sliding",
+        "delta": " sliding"
+      },
+      {
+        "at": 1.574469,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "-",
+        "delta": "-"
+      },
+      {
+        "at": 1.585871,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "window",
+        "delta": "window"
+      },
+      {
+        "at": 1.597143,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " is",
+        "delta": " is"
+      },
+      {
+        "at": 1.608143,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " $",
+        "delta": " $"
+      },
+      {
+        "at": 1.619403,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "O",
+        "delta": "O"
+      },
+      {
+        "at": 1.630673,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "(",
+        "delta": "("
+      },
+      {
+        "at": 1.641686,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "n",
+        "delta": "n"
+      },
+      {
+        "at": 1.652786,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " \\",
+        "delta": " \\"
+      },
+      {
+        "at": 1.664054,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "times",
+        "delta": "times"
+      },
+      {
+        "at": 1.675462,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": " w",
+        "delta": " w"
+      },
+      {
+        "at": 1.68652,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": ")$.",
+        "delta": ")$."
+      },
+      {
+        "at": 1.720381,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "\n    *",
+        "delta": "\n    *"
+      },
+      {
+        "at": 1.742475,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "   Sl",
+        "delta": "   Sl"
+      },
+      {
+        "at": 1.758942,
+        "type": "response.reasoning_summary_text.delta",
+        "content": "",
+        "reasoning": "iding",
+        "delta": "iding"
+      },
+      {
+        "at": 1.759069,
+        "type": "response.reasoning_summary_text.done",
+        "content": "",
+        "reasoning": "",
+        "delta": ""
+      },
+      {
+        "at": 2.132572,
+        "type": "response.output_text.delta",
+        "content": "1",
+        "reasoning": "",
+        "delta": "1"
+      },
+      {
+        "at": 2.143856,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 2.15477,
+        "type": "response.output_text.delta",
+        "content": " Full",
+        "reasoning": "",
+        "delta": " Full"
+      },
+      {
+        "at": 2.165957,
+        "type": "response.output_text.delta",
+        "content": " attention",
+        "reasoning": "",
+        "delta": " attention"
+      },
+      {
+        "at": 2.177038,
+        "type": "response.output_text.delta",
+        "content": " considers",
+        "reasoning": "",
+        "delta": " considers"
+      },
+      {
+        "at": 2.188281,
+        "type": "response.output_text.delta",
+        "content": " every",
+        "reasoning": "",
+        "delta": " every"
+      },
+      {
+        "at": 2.199428,
+        "type": "response.output_text.delta",
+        "content": " token",
+        "reasoning": "",
+        "delta": " token"
+      },
+      {
+        "at": 2.210462,
+        "type": "response.output_text.delta",
+        "content": " in",
+        "reasoning": "",
+        "delta": " in"
+      },
+      {
+        "at": 2.221797,
+        "type": "response.output_text.delta",
+        "content": " a",
+        "reasoning": "",
+        "delta": " a"
+      },
+      {
+        "at": 2.23279,
+        "type": "response.output_text.delta",
+        "content": " sequence",
+        "reasoning": "",
+        "delta": " sequence"
+      },
+      {
+        "at": 2.243741,
+        "type": "response.output_text.delta",
+        "content": " simultaneously",
+        "reasoning": "",
+        "delta": " simultaneously"
+      },
+      {
+        "at": 2.254898,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 2.277111,
+        "type": "response.output_text.delta",
+        "content": "\n2",
+        "reasoning": "",
+        "delta": "\n2"
+      },
+      {
+        "at": 2.288224,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 2.299432,
+        "type": "response.output_text.delta",
+        "content": " Sliding",
+        "reasoning": "",
+        "delta": " Sliding"
+      },
+      {
+        "at": 2.310452,
+        "type": "response.output_text.delta",
+        "content": "-",
+        "reasoning": "",
+        "delta": "-"
+      },
+      {
+        "at": 2.321737,
+        "type": "response.output_text.delta",
+        "content": "window",
+        "reasoning": "",
+        "delta": "window"
+      },
+      {
+        "at": 2.332944,
+        "type": "response.output_text.delta",
+        "content": " attention",
+        "reasoning": "",
+        "delta": " attention"
+      },
+      {
+        "at": 2.343885,
+        "type": "response.output_text.delta",
+        "content": " only",
+        "reasoning": "",
+        "delta": " only"
+      },
+      {
+        "at": 2.35494,
+        "type": "response.output_text.delta",
+        "content": " looks",
+        "reasoning": "",
+        "delta": " looks"
+      },
+      {
+        "at": 2.365946,
+        "type": "response.output_text.delta",
+        "content": " at",
+        "reasoning": "",
+        "delta": " at"
+      },
+      {
+        "at": 2.37714,
+        "type": "response.output_text.delta",
+        "content": " a",
+        "reasoning": "",
+        "delta": " a"
+      },
+      {
+        "at": 2.388426,
+        "type": "response.output_text.delta",
+        "content": " fixed",
+        "reasoning": "",
+        "delta": " fixed"
+      },
+      {
+        "at": 2.399652,
+        "type": "response.output_text.delta",
+        "content": " neighborhood",
+        "reasoning": "",
+        "delta": " neighborhood"
+      },
+      {
+        "at": 2.410811,
+        "type": "response.output_text.delta",
+        "content": " of",
+        "reasoning": "",
+        "delta": " of"
+      },
+      {
+        "at": 2.422011,
+        "type": "response.output_text.delta",
+        "content": " tokens",
+        "reasoning": "",
+        "delta": " tokens"
+      },
+      {
+        "at": 2.433216,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 2.455526,
+        "type": "response.output_text.delta",
+        "content": "\n3",
+        "reasoning": "",
+        "delta": "\n3"
+      },
+      {
+        "at": 2.466822,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 2.478819,
+        "type": "response.output_text.delta",
+        "content": " Full",
+        "reasoning": "",
+        "delta": " Full"
+      },
+      {
+        "at": 2.489433,
+        "type": "response.output_text.delta",
+        "content": " attention",
+        "reasoning": "",
+        "delta": " attention"
+      },
+      {
+        "at": 2.500996,
+        "type": "response.output_text.delta",
+        "content": " has",
+        "reasoning": "",
+        "delta": " has"
+      },
+      {
+        "at": 2.512622,
+        "type": "response.output_text.delta",
+        "content": " quadratic",
+        "reasoning": "",
+        "delta": " quadratic"
+      },
+      {
+        "at": 2.524214,
+        "type": "response.output_text.delta",
+        "content": " computational",
+        "reasoning": "",
+        "delta": " computational"
+      },
+      {
+        "at": 2.535642,
+        "type": "response.output_text.delta",
+        "content": " complexity",
+        "reasoning": "",
+        "delta": " complexity"
+      },
+      {
+        "at": 2.547079,
+        "type": "response.output_text.delta",
+        "content": " relative",
+        "reasoning": "",
+        "delta": " relative"
+      },
+      {
+        "at": 2.558808,
+        "type": "response.output_text.delta",
+        "content": " to",
+        "reasoning": "",
+        "delta": " to"
+      },
+      {
+        "at": 2.569799,
+        "type": "response.output_text.delta",
+        "content": " sequence",
+        "reasoning": "",
+        "delta": " sequence"
+      },
+      {
+        "at": 2.580995,
+        "type": "response.output_text.delta",
+        "content": " length",
+        "reasoning": "",
+        "delta": " length"
+      },
+      {
+        "at": 2.592115,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 2.614591,
+        "type": "response.output_text.delta",
+        "content": "\n4",
+        "reasoning": "",
+        "delta": "\n4"
+      },
+      {
+        "at": 2.625593,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 2.636665,
+        "type": "response.output_text.delta",
+        "content": " Sliding",
+        "reasoning": "",
+        "delta": " Sliding"
+      },
+      {
+        "at": 2.647904,
+        "type": "response.output_text.delta",
+        "content": "-",
+        "reasoning": "",
+        "delta": "-"
+      },
+      {
+        "at": 2.659066,
+        "type": "response.output_text.delta",
+        "content": "window",
+        "reasoning": "",
+        "delta": "window"
+      },
+      {
+        "at": 2.67011,
+        "type": "response.output_text.delta",
+        "content": " attention",
+        "reasoning": "",
+        "delta": " attention"
+      },
+      {
+        "at": 2.681202,
+        "type": "response.output_text.delta",
+        "content": " offers",
+        "reasoning": "",
+        "delta": " offers"
+      },
+      {
+        "at": 2.692479,
+        "type": "response.output_text.delta",
+        "content": " linear",
+        "reasoning": "",
+        "delta": " linear"
+      },
+      {
+        "at": 2.703478,
+        "type": "response.output_text.delta",
+        "content": " complexity",
+        "reasoning": "",
+        "delta": " complexity"
+      },
+      {
+        "at": 2.714572,
+        "type": "response.output_text.delta",
+        "content": ",",
+        "reasoning": "",
+        "delta": ","
+      },
+      {
+        "at": 2.725617,
+        "type": "response.output_text.delta",
+        "content": " making",
+        "reasoning": "",
+        "delta": " making"
+      },
+      {
+        "at": 2.736801,
+        "type": "response.output_text.delta",
+        "content": " it",
+        "reasoning": "",
+        "delta": " it"
+      },
+      {
+        "at": 2.748135,
+        "type": "response.output_text.delta",
+        "content": " more",
+        "reasoning": "",
+        "delta": " more"
+      },
+      {
+        "at": 2.759172,
+        "type": "response.output_text.delta",
+        "content": " efficient",
+        "reasoning": "",
+        "delta": " efficient"
+      },
+      {
+        "at": 2.77037,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 2.79267,
+        "type": "response.output_text.delta",
+        "content": "\n5",
+        "reasoning": "",
+        "delta": "\n5"
+      },
+      {
+        "at": 2.80388,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 2.815154,
+        "type": "response.output_text.delta",
+        "content": " Full",
+        "reasoning": "",
+        "delta": " Full"
+      },
+      {
+        "at": 2.826284,
+        "type": "response.output_text.delta",
+        "content": " attention",
+        "reasoning": "",
+        "delta": " attention"
+      },
+      {
+        "at": 2.837456,
+        "type": "response.output_text.delta",
+        "content": " captures",
+        "reasoning": "",
+        "delta": " captures"
+      },
+      {
+        "at": 2.848742,
+        "type": "response.output_text.delta",
+        "content": " long",
+        "reasoning": "",
+        "delta": " long"
+      },
+      {
+        "at": 2.859916,
+        "type": "response.output_text.delta",
+        "content": "-",
+        "reasoning": "",
+        "delta": "-"
+      },
+      {
+        "at": 2.870839,
+        "type": "response.output_text.delta",
+        "content": "range",
+        "reasoning": "",
+        "delta": "range"
+      },
+      {
+        "at": 2.881868,
+        "type": "response.output_text.delta",
+        "content": " dependencies",
+        "reasoning": "",
+        "delta": " dependencies"
+      },
+      {
+        "at": 2.893167,
+        "type": "response.output_text.delta",
+        "content": " across",
+        "reasoning": "",
+        "delta": " across"
+      },
+      {
+        "at": 2.904116,
+        "type": "response.output_text.delta",
+        "content": " the",
+        "reasoning": "",
+        "delta": " the"
+      },
+      {
+        "at": 2.915257,
+        "type": "response.output_text.delta",
+        "content": " entire",
+        "reasoning": "",
+        "delta": " entire"
+      },
+      {
+        "at": 2.9266,
+        "type": "response.output_text.delta",
+        "content": " input",
+        "reasoning": "",
+        "delta": " input"
+      },
+      {
+        "at": 2.937622,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 2.95967,
+        "type": "response.output_text.delta",
+        "content": "\n6",
+        "reasoning": "",
+        "delta": "\n6"
+      },
+      {
+        "at": 2.971029,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 2.982073,
+        "type": "response.output_text.delta",
+        "content": " Sliding",
+        "reasoning": "",
+        "delta": " Sliding"
+      },
+      {
+        "at": 2.993082,
+        "type": "response.output_text.delta",
+        "content": "-",
+        "reasoning": "",
+        "delta": "-"
+      },
+      {
+        "at": 3.004267,
+        "type": "response.output_text.delta",
+        "content": "window",
+        "reasoning": "",
+        "delta": "window"
+      },
+      {
+        "at": 3.015526,
+        "type": "response.output_text.delta",
+        "content": " attention",
+        "reasoning": "",
+        "delta": " attention"
+      },
+      {
+        "at": 3.026522,
+        "type": "response.output_text.delta",
+        "content": " focuses",
+        "reasoning": "",
+        "delta": " focuses"
+      },
+      {
+        "at": 3.037899,
+        "type": "response.output_text.delta",
+        "content": " on",
+        "reasoning": "",
+        "delta": " on"
+      },
+      {
+        "at": 3.04909,
+        "type": "response.output_text.delta",
+        "content": " local",
+        "reasoning": "",
+        "delta": " local"
+      },
+      {
+        "at": 3.060103,
+        "type": "response.output_text.delta",
+        "content": " context",
+        "reasoning": "",
+        "delta": " context"
+      },
+      {
+        "at": 3.071326,
+        "type": "response.output_text.delta",
+        "content": " to",
+        "reasoning": "",
+        "delta": " to"
+      },
+      {
+        "at": 3.082708,
+        "type": "response.output_text.delta",
+        "content": " save",
+        "reasoning": "",
+        "delta": " save"
+      },
+      {
+        "at": 3.093728,
+        "type": "response.output_text.delta",
+        "content": " memory",
+        "reasoning": "",
+        "delta": " memory"
+      },
+      {
+        "at": 3.104781,
+        "type": "response.output_text.delta",
+        "content": ".",
+        "reasoning": "",
+        "delta": "."
+      },
+      {
+        "at": 3.127337,
+        "type": "response.output_text.delta",
+        "content": "\n\nG",
+        "reasoning": "",
+        "delta": "\n\nG"
+      },
+      {
+        "at": 3.138438,
+        "type": "response.output_text.delta",
+        "content": "4",
+        "reasoning": "",
+        "delta": "4"
+      },
+      {
+        "at": 3.149761,
+        "type": "response.output_text.delta",
+        "content": "-",
+        "reasoning": "",
+        "delta": "-"
+      },
+      {
+        "at": 3.160951,
+        "type": "response.output_text.delta",
+        "content": "RESP",
+        "reasoning": "",
+        "delta": "RESP"
+      },
+      {
+        "at": 3.171995,
+        "type": "response.output_text.delta",
+        "content": "-",
+        "reasoning": "",
+        "delta": "-"
+      },
+      {
+        "at": 3.183406,
+        "type": "response.output_text.delta",
+        "content": "STREAM",
+        "reasoning": "",
+        "delta": "STREAM"
+      },
+      {
+        "at": 3.194394,
+        "type": "response.output_text.delta",
+        "content": "-",
+        "reasoning": "",
+        "delta": "-"
+      },
+      {
+        "at": 3.205492,
+        "type": "response.output_text.delta",
+        "content": "DONE",
+        "reasoning": "",
+        "delta": "DONE"
+      },
+      {
+        "at": 3.222033,
+        "type": "response.output_text.done",
+        "content": "",
+        "reasoning": "",
+        "delta": ""
+      },
+      {
+        "at": 3.222089,
+        "type": "response.content_part.done",
+        "content": "",
+        "reasoning": "",
+        "delta": ""
+      },
+      {
+        "at": 3.222147,
+        "type": "response.output_item.done",
+        "content": "",
+        "reasoning": "",
+        "delta": ""
+      },
+      {
+        "at": 3.222189,
+        "type": "response.completed",
+        "content": "",
+        "reasoning": "",
+        "delta": ""
+      }
+    ],
+    "content": "1. Full attention considers every token in a sequence simultaneously.\n2. Sliding-window attention only looks at a fixed neighborhood of tokens.\n3. Full attention has quadratic computational complexity relative to sequence length.\n4. Sliding-window attention offers linear complexity, making it more efficient.\n5. Full attention captures long-range dependencies across the entire input.\n6. Sliding-window attention focuses on local context to save memory.\n\nG4-RESP-STREAM-DONE",
+    "reasoning": "*   Topic: Difference between sliding-window attention and full attention.\n    *   Constraint 1: Think briefly.\n    *   Constraint 2: Exactly six short numbered sentences.\n    *   Constraint 3: End with \"G4-RESP-STREAM-DONE\".\n    *   Constraint 4: Format: Numbered list.\n\n    *   Full attention: Every token attends to every other token in the sequence.\n    *   Complexity: Full attention is $O(n^2)$, sliding-window is $O(n \\times w)$.\n    *   Sliding",
+    "content_delta_count": 91,
+    "reasoning_delta_count": 99,
+    "first_content_at": 2.132572,
+    "last_content_at": 3.205492,
+    "first_reasoning_at": 0.368111,
+    "last_reasoning_at": 1.758942,
+    "terminal_events": [
+      "response.completed"
+    ]
+  }
+}

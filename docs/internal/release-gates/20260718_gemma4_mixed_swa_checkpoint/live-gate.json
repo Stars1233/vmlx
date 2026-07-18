@@ -1,0 +1,100 @@
+{
+  "status": "pass",
+  "captured_at": "2026-07-18T16:47:00-07:00",
+  "source_head": "7b62ea4a3",
+  "model": {
+    "name": "jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M",
+    "path": "/Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M",
+    "model_type": "gemma4",
+    "weight_format": "jang_affine",
+    "profile": "JANG_4M",
+    "cache_schema": "mixed_swa_kv_v1"
+  },
+  "health_ready": {
+    "status": "healthy",
+    "model_loaded": true,
+    "native_cache": {
+      "family": "gemma4",
+      "schema": "mixed_swa_kv_v1",
+      "cache_type": "mixed_swa_kv",
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "storage_only"
+      },
+      "storage_quantization": {
+        "enabled": true,
+        "mode": "storage_boundary",
+        "bits": 4,
+        "group_size": 64
+      },
+      "prefix": true,
+      "paged": true,
+      "block_disk_l2": true
+    },
+    "turboquant_kv_cache": {
+      "objects_active": true,
+      "live_encode_enabled": false,
+      "storage_encode_enabled": true,
+      "stored_prefix_quantization": "turboquant-q4",
+      "storage_key_bits": 4,
+      "storage_value_bits": 4,
+      "auto_policy": "mixed_swa_full_attention_kv_storage_tq4"
+    }
+  },
+  "results": [
+    {
+      "status": "ok",
+      "surface": "electron_ui",
+      "tag": "G4-UI-RECALL2",
+      "source_db_rowid": 24,
+      "content": "5.2 KBG4-UI-RECALL2-DONE",
+      "stream_speed": {
+        "cached_tokens": 3584,
+        "cache_detail": "paged+mixed_swa",
+        "ttft_seconds": 0.43
+      },
+      "speed": {
+        "cached_tokens": 3584,
+        "cache_detail": "paged+mixed_swa",
+        "ttft_seconds": 0.43
+      }
+    },
+    {
+      "status": "ok",
+      "surface": "electron_ui",
+      "tag": "G4-UI-TURN3",
+      "source_db_rowid": 27,
+      "content": "37 plus 58 is 95. G4-UI-TURN3-DONE",
+      "stream_speed": {
+        "cached_tokens": 3821,
+        "cache_detail": "paged+mixed_swa",
+        "ttft_seconds": 0.97
+      },
+      "speed": {
+        "cached_tokens": 3821,
+        "cache_detail": "paged+mixed_swa",
+        "ttft_seconds": 0.97
+      }
+    },
+    {
+      "status": "ok",
+      "surface": "electron_ui_restart",
+      "tag": "G4-UI-TOOL1-DISK-REPLAY",
+      "source_db_rowid": 33,
+      "content": "G4-UI-TOOL1-DONE",
+      "tool_calls": 1,
+      "tool_name": "file_info",
+      "tool_result_size": "5.2 KB",
+      "stream_speed": {
+        "cached_tokens": 149,
+        "cache_detail": "paged+mixed_swa+disk",
+        "ttft_seconds": 0.12
+      },
+      "speed": {
+        "cached_tokens": 149,
+        "cache_detail": "paged+mixed_swa+disk",
+        "ttft_seconds": 0.12
+      }
+    }
+  ]
+}
