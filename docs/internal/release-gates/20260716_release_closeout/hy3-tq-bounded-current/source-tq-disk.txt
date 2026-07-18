@@ -1,0 +1,95 @@
+    76	@lru_cache(maxsize=32)
+    77	def _tq_decoder_pair(
+    78	    key_dim: int,
+    79	    value_dim: int,
+    80	    key_bits: int,
+    81	    value_bits: int,
+    82	    seed: int,
+    83	) -> Tuple[Any, Any]:
+    84	    """Return immutable TurboQuant decoder state for one codec configuration.
+    85
+    86	    Paged-prefix reconstruction may decode thousands of block/layer entries
+    87	    with the same dimensions, bit widths, and seed. Rebuilding the identical
+    88	    rotation, codebook, and QJL state for each entry is wasteful. Keep a small
+    89	    process-local cache of the encoder pair; encode/decode operations remain
+    90	    independent because the encoder objects are read-only after initialization.
+    91	    """
+    92	    from jang_tools.turboquant.pipeline import TurboQuantEncoder
+    93
+    94	    # Disk/paged-cache serialization only needs the immutable codec state.
+    95	    # Constructing a live TurboQuantKVCache here also allocates cache buffers,
+    96	    # while ``compress()`` performs an immediate decode that storage discards.
+    97	    return (
+    98	        TurboQuantEncoder(
+    99	            dim=key_dim,
+   100	            key_bits=key_bits,
+   101	            value_bits=value_bits,
+   102	            seed=seed,
+   103	        ),
+   104	        TurboQuantEncoder(
+   105	            dim=value_dim,
+   106	            key_bits=key_bits,
+   107	            value_bits=value_bits,
+   108	            seed=seed + 500,
+   109	        ),
+   110	    )
+   111
+   112
+   113	def encode_tq_block(
+   114	    keys: Any,
+   115	    values: Any,
+   116	    config: Dict[str, Any],
+   117	) -> Tuple[str, Any, Any, Dict[str, Any]]:
+   118	    """Encode one positional paged-cache block as native TurboQuant data."""
+   119	    if not HAS_MLX:
+   120	        raise RuntimeError("MLX required for TQ block encoding")
+   121	    if not hasattr(keys, "shape") or not hasattr(values, "shape"):
+   122	        raise ValueError("TQ block keys/values must be tensors")
+   123	    if len(keys.shape) != 4 or len(values.shape) != 4:
+   124	        raise ValueError(
+   125	            f"TQ block requires rank-4 KV tensors, got {keys.shape}/{values.shape}"
+   126	        )
+   127	    token_count = int(keys.shape[-2])
+   128	    if token_count <= 0 or int(values.shape[-2]) != token_count:
+   129	        raise ValueError("TQ block key/value token lengths must match and be nonzero")
+   130
+   131	    from jang_tools.turboquant.pipeline import encode_keys, encode_values
+   132
+   133	    key_bits = int(config.get("key_bits", 8) or 8)
+   134	    value_bits = int(config.get("value_bits", 8) or 8)
+   135	    seed = int(config.get("seed", 42) or 42)
+   136	    if key_bits not in (2, 3, 4, 8) or value_bits not in (2, 3, 4, 8):
+   137	        raise ValueError(
+   138	            f"unsupported TQ block codec bits key={key_bits} value={value_bits}"
+   139	        )
+   140	    key_encoder, value_encoder = _tq_decoder_pair(
+   141	        int(keys.shape[-1]),
+   142	        int(values.shape[-1]),
+   143	        key_bits,
+   144	        value_bits,
+   145	        seed,
+   146	    )
+   147	    ck = encode_keys(mx.contiguous(keys), key_encoder)
+   148	    cv = encode_values(mx.contiguous(values), value_encoder)
+   149	    if (
+   150	        ck is None
+   151	        or cv is None
+   152	        or int(ck.shape[-2]) != token_count
+   153	        or int(cv.shape[-2]) != token_count
+   154	    ):
+   155	        raise ValueError("TQ block encoder did not produce a complete packed payload")
+   156	    return (
+   157	        "turboquant_kv",
+   158	        ck,
+   159	        cv,
+   160	        {
+   161	            "key_dim": int(keys.shape[-1]),
+   162	            "value_dim": int(values.shape[-1]),
+   163	            "key_bits": key_bits,
+   164	            "value_bits": value_bits,
+   165	            "key_dtype": _canonical_tq_dtype(keys.dtype),
+   166	            "value_dtype": _canonical_tq_dtype(values.dtype),
+   167	            "seed": seed,
+   168	            "offset": token_count,
+   169	        },
+   170	    )

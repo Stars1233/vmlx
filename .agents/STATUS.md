@@ -1,5 +1,42 @@
 # Current Status
 
+## 2026-07-17 - HY3 bounded TQ4 disk encoding and current agent stream proof
+
+Status: `SCOPED_HY3_LONG_TQ4_CACHE_API_ELECTRON_PASS_STOCHASTIC_FORMAT_AND_BROADER_RELEASE_GATES_OPEN`.
+
+- Retained failure control: HY3 PID 77153 aborted during the second 8K-class
+  cache pass. The `.ips` records `SIGABRT` on Metal's completion queue and the
+  kernel reported 400,000 leaked IOGPU resources. The first direct-encoding
+  attempt still reached Metal's 499,000-resource limit because all prompt
+  page/layer graphs were deferred until the extraction loop ended.
+- Commit `45c64f85e` removes the live-cache `compress()` call from stored TQ
+  page encoding and writes native-TQ pages in bounded
+  `extract -> write -> extract -> write` order. This is shared cache code, not
+  a model-name branch. Verification passes 15/15 TQ paged-block tests and
+  35/35 adjacent TurboQuant/prefix/terminal-cleanup tests.
+- A fresh 9,065-input-token Responses request streamed ten content deltas and
+  exact `HY3-TQ-TTFT-D=583`. Cleanup persisted all 142 q4 native-TQ pages with
+  zero live-cache compression telemetry and zero resource-limit errors.
+- Matched first-content timing was 23.073s cold, 5.802s same-process
+  `paged+tq-native`, and 10.763s after a visible Electron Stop/Start as
+  `paged+disk+tq-native`. Restart health reported 9,061 cached tokens, 142 disk
+  hits, 142 native-TQ hits, native MTP runtime active, and effective depth 1.
+  No new crash report appeared; PID 81451 remained alive through the UI rows.
+- Electron row 369 separated 759 reasoning stream events from 76 progressively
+  painted answer events and exact-finaled `HY3-UI-STREAM1-DONE`.
+- Same-chat stochastic row 372 used one real `file_info` but emitted a draft
+  and correction at the chat's 0.90 temperature. It is retained as a
+  strict-format reliability miss. A raw deterministic continuation then stayed
+  exact on a 457/460 `paged+tq-native` hit, and same-chat Electron row 375 at
+  explicit temperature 0 executed exactly one
+  `file_info(vmlx_engine/tq_disk_store.py)`, progressively streamed and
+  persisted the exact six numbered lines, and reused 5,629 cached tokens.
+- Source and live artifacts:
+  `docs/internal/release-gates/20260716_release_closeout/hy3-tq-bounded-current/`.
+- Release remains `PARTIAL_NO_RELEASE`; no version bump, package, sign,
+  notarize, tag, feed, PyPI, or GitHub release action is authorized by this
+  scoped row.
+
 ## 2026-07-17 - Laguna cross-family post-reasoning stream regression
 
 Status: `SCOPED_LAGUNA_API_ELECTRON_STREAM_PASS_STRICT_FORMAT_LONG_RELEASE_GATES_OPEN`.

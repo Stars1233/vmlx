@@ -1,0 +1,5 @@
+45c64f85e (HEAD -> reconcile/1.5.68, origin/codex/live-electron-gates-20260715) fix(cache): bound TurboQuant disk block encoding
+ tests/test_tq_paged_block_cache.py | 68 ++++++++++++++++++++++++++++++++++++++
+ vmlx_engine/prefix_cache.py        | 36 ++++++++++++++++----
+ vmlx_engine/tq_disk_store.py       | 61 +++++++++++++++++-----------------
+ 3 files changed, 128 insertions(+), 37 deletions(-)

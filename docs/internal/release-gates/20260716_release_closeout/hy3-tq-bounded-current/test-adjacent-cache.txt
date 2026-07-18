@@ -1,0 +1,149 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.11, pytest-9.0.2, pluggy-1.6.0
+rootdir: /Users/eric/mlx/vllm-mlx
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+plugins: asyncio-1.3.0, anyio-4.13.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 35 items
+
+tests/test_turboquant_cache_contract.py ============================================================
+SECURITY CONFIGURATION
+============================================================
+  Authentication: DISABLED - Use --api-key to enable
+  Rate limiting: DISABLED - Use --rate-limit to enable
+  Request timeout: 300s
+  Tool calling: Use --enable-auto-tool-choice to enable
+  Reasoning: ENABLED (parser: Qwen3ReasoningParser)  [thinking model detected]
+  External speculative decoding: Use --speculative-model to enable
+============================================================
+Loading model: /private/var/folders/55/4db45j8d3sdblm_7mqz34b1c0000gn/T/pytest-of-eric/pytest-202/test_omitted_kv_quantization_k0
+Default max tokens override: 128
+Mode: Simple (maximum throughput)
+  NOTE: These settings require --continuous-batching and will be ignored: --kv-cache-quantization q4, --enable-prefix-cache
+Starting server at http://127.0.0.1:8099
+.INFO:vmlx_engine.cli:KV cache auto mode: TurboQuant enabled for compatible models; stored prefix cache quantization=q4
+INFO:vmlx_engine:is_mllm_model(/private/var/folders/55/4db45j8d3sdblm_7mqz34b1c0000gn/T/pytest-of-eric/pytest-202/test_plain_qwen3_moe_auto_mode0): tier=registry_family_qwen3_moe result=False
+INFO:vmlx_engine.cli:Auto-configured tool parser from registry: qwen
+INFO:vmlx_engine.cli:Auto-configured reasoning parser from registry: qwen3
+============================================================
+SECURITY CONFIGURATION
+============================================================
+  Authentication: DISABLED - Use --api-key to enable
+  Rate limiting: DISABLED - Use --rate-limit to enable
+  Request timeout: 300s
+  Tool calling: Use --enable-auto-tool-choice to enable
+  Reasoning: ENABLED (parser: Qwen3ReasoningParser)  [thinking model detected]
+  External speculative decoding: Use --speculative-model to enable
+============================================================
+Loading model: /private/var/folders/55/4db45j8d3sdblm_7mqz34b1c0000gn/T/pytest-of-eric/pytest-202/test_plain_qwen3_moe_auto_mode0
+Default max tokens override: 128
+Mode: Simple (maximum throughput)
+  NOTE: These settings require --continuous-batching and will be ignored: --kv-cache-quantization q4, --enable-prefix-cache
+Starting server at http://127.0.0.1:8099
+.INFO:vmlx_engine.model_config_registry:Model config: matched text_config.model_type='qwen3_5_moe_text' (wrapper='qwen3_5_moe') → qwen3_5_moe
+INFO:vmlx_engine.cli:KV cache auto mode: TurboQuant enabled for compatible models; stored prefix cache quantization=q4
+INFO:vmlx_engine.cli:Qwen3.6 hybrid/path-dependent cache model detected — keeping auto live TurboQuant enabled for attention KVCache layers only; SSM/GatedDelta companion state remains native full precision. Stored attention-KV quantization=none is used for prefix/paged/L2 boundaries (auto lossy storage is disabled for multi-turn numeric parity).
+INFO:vmlx_engine:is_mllm_model(/private/var/folders/55/4db45j8d3sdblm_7mqz34b1c0000gn/T/pytest-of-eric/pytest-202/test_qwen3_5_moe_linear_attent0): tier=registry_family_qwen3_5_moe result=False
+INFO:vmlx_engine.cli:Auto-configured tool parser from registry: qwen
+INFO:vmlx_engine.cli:Auto-configured reasoning parser from registry: qwen3
+============================================================
+SECURITY CONFIGURATION
+============================================================
+  Authentication: DISABLED - Use --api-key to enable
+  Rate limiting: DISABLED - Use --rate-limit to enable
+  Request timeout: 300s
+  Tool calling: Use --enable-auto-tool-choice to enable
+  Reasoning: ENABLED (parser: Qwen3ReasoningParser)  [thinking model detected]
+  External speculative decoding: Use --speculative-model to enable
+============================================================
+Loading model: /private/var/folders/55/4db45j8d3sdblm_7mqz34b1c0000gn/T/pytest-of-eric/pytest-202/test_qwen3_5_moe_linear_attent0
+Default max tokens override: 128
+Mode: Simple (maximum throughput)
+  NOTE: These settings require --continuous-batching and will be ignored: --enable-prefix-cache
+Starting server at http://127.0.0.1:8099
+.INFO:vmlx_engine.cli:KV cache auto mode: TurboQuant enabled for compatible models; stored prefix cache quantization=q4
+INFO:vmlx_engine.cli:MiMo-V2 asymmetric mixed-SWA cache detected — disabling auto stored-prefix q4/q8 quantization (was: q4). Prefix/paged/L2 cache stays enabled with native KV/RotatingKVCache state; explicit --kv-cache-quantization q4/q8 remains available for diagnostics but is not release-cleared for MiMo exactness.
+INFO:vmlx_engine:is_mllm_model(/private/var/folders/55/4db45j8d3sdblm_7mqz34b1c0000gn/T/pytest-of-eric/pytest-202/test_mimo_v2_auto_mode_keeps_p0): tier=jang_config_explicit_true result=True
+INFO:vmlx_engine.cli:Auto-configured tool parser from registry: xml_function
+============================================================
+SECURITY CONFIGURATION
+============================================================
+  Authentication: DISABLED - Use --api-key to enable
+  Rate limiting: DISABLED - Use --rate-limit to enable
+  Request timeout: 300s
+  Tool calling: Use --enable-auto-tool-choice to enable
+  Reasoning: Use --reasoning-parser to enable
+  External speculative decoding: Use --speculative-model to enable
+============================================================
+Loading model: /private/var/folders/55/4db45j8d3sdblm_7mqz34b1c0000gn/T/pytest-of-eric/pytest-202/test_mimo_v2_auto_mode_keeps_p0
+Default max tokens override: 128
+Mode: Simple (maximum throughput)
+  NOTE: These settings require --continuous-batching and will be ignored: --enable-prefix-cache
+Starting server at http://127.0.0.1:8099
+.INFO:vmlx_engine.cli:--kv-cache-quantization=q4 explicit; VMLX_DISABLE_TQ_KV=1 set so JANG-calibrated TurboQuant KV is skipped at load time. Omit the flag (or set VMLX_FORCE_TQ_AUTO=1) to keep the bundle's calibrated TQ.
+INFO:vmlx_engine:is_mllm_model(/private/var/folders/55/4db45j8d3sdblm_7mqz34b1c0000gn/T/pytest-of-eric/pytest-202/test_explicit_kv_quantization_0): tier=registry_family_qwen3_5 result=False
+INFO:vmlx_engine.cli:Auto-configured tool parser from registry: qwen
+INFO:vmlx_engine.cli:Auto-configured reasoning parser from registry: qwen3
+============================================================
+SECURITY CONFIGURATION
+============================================================
+  Authentication: DISABLED - Use --api-key to enable
+  Rate limiting: DISABLED - Use --rate-limit to enable
+  Request timeout: 300s
+  Tool calling: Use --enable-auto-tool-choice to enable
+  Reasoning: ENABLED (parser: Qwen3ReasoningParser)  [thinking model detected]
+  External speculative decoding: Use --speculative-model to enable
+============================================================
+Loading model: /private/var/folders/55/4db45j8d3sdblm_7mqz34b1c0000gn/T/pytest-of-eric/pytest-202/test_explicit_kv_quantization_0
+Default max tokens override: 128
+Mode: Simple (maximum throughput)
+  NOTE: These settings require --continuous-batching and will be ignored: --kv-cache-quantization q4, --enable-prefix-cache
+Starting server at http://127.0.0.1:8099
+.INFO:vmlx_engine.cli:Ling/Bailing detected — disabling JANGTQ_MPP_NAX auto lane. Live bundled greedy Russian probes showed CJK leakage with JANGTQ_MPP_NAX=auto; set JANGTQ_MPP_NAX=on only for explicit kernel diagnostics.
+INFO:vmlx_engine.cli:KV cache auto mode: TurboQuant enabled for compatible models; stored prefix cache quantization=q4
+INFO:vmlx_engine.cli:Hybrid/path-dependent cache model detected — disabling live TurboQuant KV patch while preserving stored attention-KV quantization=q4 for prefix/paged/L2; SSM companions stay full precision with async clean-prefill rederive.
+INFO:vmlx_engine:is_mllm_model(/private/var/folders/55/4db45j8d3sdblm_7mqz34b1c0000gn/T/pytest-of-eric/pytest-202/test_hybrid_ssm_auto_mode_disa0): tier=registry_family_ling result=False
+INFO:vmlx_engine.cli:Auto-configured tool parser from registry: deepseek
+============================================================
+SECURITY CONFIGURATION
+============================================================
+  Authentication: DISABLED - Use --api-key to enable
+  Rate limiting: DISABLED - Use --rate-limit to enable
+  Request timeout: 300s
+  Tool calling: Use --enable-auto-tool-choice to enable
+  Reasoning: Use --reasoning-parser to enable
+  External speculative decoding: Use --speculative-model to enable
+============================================================
+Loading model: /private/var/folders/55/4db45j8d3sdblm_7mqz34b1c0000gn/T/pytest-of-eric/pytest-202/test_hybrid_ssm_auto_mode_disa0
+Default max tokens override: 128
+Mode: Simple (maximum throughput)
+  NOTE: These settings require --continuous-batching and will be ignored: --kv-cache-quantization q4, --enable-prefix-cache
+Starting server at http://127.0.0.1:8099
+.INFO:vmlx_engine.utils.jang_loader:  TurboQuant KV skipped: MiMo-V2 uses native asymmetric full/SWA RotatingKVCache metadata; flat generic TQ-KV would violate the mixed_swa_kv_v1 cache contract.
+.INFO:vmlx_engine.cli:KV cache auto mode: TurboQuant enabled for compatible models; stored prefix cache quantization=q4
+INFO:vmlx_engine:is_mllm_model(/private/var/folders/55/4db45j8d3sdblm_7mqz34b1c0000gn/T/pytest-of-eric/pytest-202/test_paged_cache_reports_cache0): tier=registry_family_qwen3_5 result=False
+INFO:vmlx_engine.cli:Auto-configured tool parser from registry: qwen
+INFO:vmlx_engine.cli:Auto-configured reasoning parser from registry: qwen3
+INFO:vmlx_engine.cli:Paged cache: --cache-memory-mb/--cache-memory-percent set the L1 RAM byte ceiling for the block KV mirror (free blocks are evicted, disk-L2 write-through first, to hold it). --max-cache-blocks caps the block-pool count; --block-disk-cache-max-gb caps L2 disk.
+============================================================
+SECURITY CONFIGURATION
+============================================================
+  Authentication: DISABLED - Use --api-key to enable
+  Rate limiting: DISABLED - Use --rate-limit to enable
+  Request timeout: 300s
+  Tool calling: Use --enable-auto-tool-choice to enable
+  Reasoning: ENABLED (parser: Qwen3ReasoningParser)  [thinking model detected]
+  External speculative decoding: Use --speculative-model to enable
+============================================================
+Loading model: /private/var/folders/55/4db45j8d3sdblm_7mqz34b1c0000gn/T/pytest-of-eric/pytest-202/test_paged_cache_reports_cache0
+Default max tokens override: 128
+Mode: Continuous batching (for multiple concurrent users)
+Stream interval: 1 tokens
+Paged cache: block_size=64, max_blocks=1000, capacity=64000 tokens (--cache-memory-mb/--cache-memory-percent set the L1 RAM byte ceiling for the block KV mirror; --max-cache-blocks caps the block-pool count)
+KV cache quantization: q4 (group_size=64)
+Starting server at http://127.0.0.1:8099
+.
+tests/test_prefix_cache.py .....................
+tests/test_terminal_dispatch_before_cache_cleanup.py ......
+
+============================== 35 passed in 1.94s ==============================

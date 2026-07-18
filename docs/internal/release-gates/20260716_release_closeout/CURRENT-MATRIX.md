@@ -1,4 +1,4 @@
-# vMLX 1.6.11 release closeout matrix — 2026-07-16
+# vMLX 1.6.11 release closeout matrix — 2026-07-17
 
 Status: `PARTIAL_NO_RELEASE`.
 
@@ -10,13 +10,13 @@ superseded conclusions are called out here.
 
 ## Release truth
 
-- Working branch: `reconcile/1.5.68`; current scoped code head `a7b34bc4a`;
+- Working branch: `reconcile/1.5.68`; current scoped code head `45c64f85e`;
   typed-settings,
   non-MTP architecture-hint, paged resident-accounting, typed hybrid-companion
   ownership, and v8 cache-namespace repairs plus their focused tests are pushed
   to the closeout branch described below.
 - Push target: `origin/codex/live-electron-gates-20260715`.
-- At scoped code head `a7b34bc4a`, the branch is 150 commits ahead of
+- At scoped code head `45c64f85e`, the branch is 153 commits ahead of
   `origin/main` and zero behind. Matrix-only commits may follow the scoped code
   head.
 - Source versions are `1.6.11` in `pyproject.toml`,
@@ -27,6 +27,47 @@ superseded conclusions are called out here.
   and the session is stamped migration version 1.
 - No package, version bump, tag, signing, notarization, feed update, PyPI
   upload, or GitHub release is allowed until the red rows below close.
+
+## Latest current-head override — HY3 bounded TQ4 L2 and agent streaming
+
+Status: `SCOPED_HY3_LONG_TQ4_CACHE_API_ELECTRON_PASS_STOCHASTIC_FORMAT_AND_BROADER_RELEASE_GATES_OPEN`.
+
+- Retained failure control: PID 77153 aborted on the second 8K-class TQ cache
+  pass. The current crash report records `SIGABRT` on
+  `com.Metal.CompletionQueueDispatch`; the kernel reported 400,000 leaked
+  IOGPU resources. A first direct-encoder attempt still retained every lazy
+  page/layer encode graph and reached `[metal::malloc] Resource limit (499000)`
+  with zero disk writes.
+- Commit `45c64f85e` fixes the shared storage boundary rather than special
+  casing HY3. `encode_tq_block` now uses the immutable TurboQuant encoder pair
+  directly and never calls live-cache `compress()`. Native-TQ pages are
+  evaluated/serialized in `extract -> write -> extract -> write` order, so
+  Metal resources are bounded by one complete page instead of the whole
+  prompt. Focused verification passes 15/15 TQ page tests plus 35/35 adjacent
+  TurboQuant/prefix/terminal-cleanup tests.
+- Live PID 80838 stored a new 9,061-token q4 prefix as all 142 native-TQ
+  pages. The identical request reached first content in 23.073s cold, 5.802s
+  on same-process `paged+tq-native` reuse, and 10.763s after a visible
+  Electron Stop/Start as `paged+disk+tq-native`. Every run streamed ten
+  content deltas, returned exact `HY3-TQ-TTFT-D=583`, and ended with one
+  completed terminal. Restart health reported 9,061 cached tokens, 142 disk
+  hits, and 142 native-TQ hits. No second crash report appeared.
+- Electron Auto-thinking row 369 emitted 759 reasoning and 76 content IPC
+  stream events, then exact six-line `HY3-UI-STREAM1-DONE`. Same-chat tool row
+  372 executed one `file_info` but retained a stochastic 0.90 draft/correction
+  format miss. That failure is not hidden. A raw deterministic Responses
+  continuation remained exact on a 457-token `paged+tq-native` hit. Same-chat
+  Electron row 375 at explicit temperature 0 then executed exactly one
+  `file_info(vmlx_engine/tq_disk_store.py)`, streamed the answer from 1 to 135
+  characters, persisted exact six numbered lines, and reused 5,629
+  `paged+tq-native` tokens. This discriminates the retained row-372 model
+  sampling miss from global SSE/parser failure or deterministic cache drift.
+- Evidence:
+  `docs/internal/release-gates/20260716_release_closeout/hy3-tq-bounded-current/`.
+- This closes only the current HY3 long TQ4 storage/resource, matched
+  cold/RAM/disk reuse, MTP-D1, Responses stream, and same-chat tool-loop row.
+  The broader family/media/settings/protocol/full-test/release matrix remains
+  `PARTIAL_NO_RELEASE`.
 
 ## Current blockers
 

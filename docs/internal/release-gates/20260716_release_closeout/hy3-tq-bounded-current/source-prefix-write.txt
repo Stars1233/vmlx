@@ -1,0 +1,88 @@
+  2298
+  2299	                    # Defer disk write using numpy slices (no MLX ops)
+  2300	                    if disk_store is not None:
+  2301	                        np_block = _numpy_block_slice(
+  2302	                            cache_data, np_sources or {},
+  2303	                            global_start, global_end, is_last, existing_tokens,
+  2304	                            store_cumulative_state,
+  2305	                        )
+  2306	                        if np_block:
+  2307	                            # The numpy mirror is authoritative for ordinary KV
+  2308	                            # and cumulative/path-dependent state, but it cannot
+  2309	                            # represent native TurboQuant metadata: its generic
+  2310	                            # branch emits ("kv", ...) and silently discards the
+  2311	                            # per-layer seed/bit policy.  The main-thread block
+  2312	                            # extractor above has already created independent,
+  2313	                            # fully packed TQ entries, so splice only those back
+  2314	                            # into the otherwise numpy-safe disk payload.
+  2315	                            for _idx, _entry in enumerate(block_kv_data):
+  2316	                                if _idx < len(np_block) and _entry_has_native_tq(
+  2317	                                    _entry
+  2318	                                ):
+  2319	                                    np_block[_idx] = _entry
+  2320	                            # Count non-skip entries. DSV4 intentionally logs
+  2321	                            # only two plain KV layers plus native composite
+  2322	                            # markers/state for the remaining layers; showing
+  2323	                            # those tags keeps support logs from looking like
+  2324	                            # the CSA/HCA cache was dropped.
+  2325	                            _tag_counts = {}
+  2326	                            for _entry in np_block:
+  2327	                                if not isinstance(_entry, (tuple, list)) or not _entry:
+  2328	                                    continue
+  2329	                                _tag = _entry[0]
+  2330	                                if _tag == "skip":
+  2331	                                    continue
+  2332	                                _tag_counts[_tag] = _tag_counts.get(_tag, 0) + 1
+  2333	                            _kv_count = _tag_counts.get("kv", 0)
+  2334	                            _extra_tags = ", ".join(
+  2335	                                f"{_tag}={_count}"
+  2336	                                for _tag, _count in sorted(_tag_counts.items())
+  2337	                                if _tag != "kv"
+  2338	                            )
+  2339	                            _layer_summary = f"{_kv_count} kv layers"
+  2340	                            if _extra_tags:
+  2341	                                _layer_summary += f", {_extra_tags}"
+  2342	                            _has_native_tq = any(
+  2343	                                _entry_has_native_tq(_entry)
+  2344	                                for _entry in np_block
+  2345	                            )
+  2346	                            if _has_native_tq:
+  2347	                                # Native TQ entries contain lazy MLX encode graphs.
+  2348	                                # Deferring every page until after the extraction
+  2349	                                # loop retains prompt_blocks * layers graphs and can
+  2350	                                # exceed Metal's process resource limit on long
+  2351	                                # prefixes. Serialize/evaluate one complete packed
+  2352	                                # page now; the disk store still queues only the
+  2353	                                # rename/index update on its background thread.
+  2354	                                logger.info(
+  2355	                                    f"Block disk: writing bounded TQ block "
+  2356	                                    f"{block.block_id} ({_layer_summary}, "
+  2357	                                    f"{len(block_tokens)} tokens)"
+  2358	                                )
+  2359	                                disk_store.write_block_async(
+  2360	                                    block_chain_hash,
+  2361	                                    np_block,
+  2362	                                    len(block_tokens),
+  2363	                                )
+  2364	                            else:
+  2365	                                logger.info(
+  2366	                                    f"Block disk: queuing write for block "
+  2367	                                    f"{block.block_id} ({_layer_summary}, "
+  2368	                                    f"{len(block_tokens)} tokens)"
+  2369	                                )
+  2370	                                pending_disk_writes.append(
+  2371	                                    (block_chain_hash, np_block, len(block_tokens))
+  2372	                                )
+  2373	                        else:
+  2374	                            logger.warning(
+  2375	                                f"Block disk: _numpy_block_slice returned empty "
+  2376	                                f"for block {block.block_id} "
+  2377	                                f"(global [{global_start}:{global_end}], is_last={is_last})"
+  2378	                            )
+  2379
+  2380	            # Register in hash caches under lock (both chain hash and legacy)
+  2381	            with self.paged_cache._lock:
+  2382	                self.paged_cache.cached_block_hash_to_block.insert(
+  2383	                    block_chain_hash, block
+  2384	                )
+  2385	            self.paged_cache.register_block_hash(block, block_tokens)

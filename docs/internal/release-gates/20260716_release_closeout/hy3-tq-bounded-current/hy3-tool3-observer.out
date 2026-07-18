@@ -1,0 +1,128 @@
+SENT FIX7
+STATE t=0.0 true|0|0|false|false|false|38
+STATE t=5.1 true|0|0|false|true|false|132
+STATE t=5.3 true|0|0|false|true|false|144
+STATE t=5.6 true|0|0|true|true|false|161
+TOOL_SHOT t=5.6
+STATE t=7.3 true|0|67|true|true|false|173
+STATE t=11.6 true|0|0|true|true|false|203
+STATE t=11.8 true|0|133|true|true|false|295
+STATE t=12.1 true|9|133|true|true|false|305
+STATE t=12.3 true|20|133|true|true|false|316
+STATE t=12.6 true|36|133|true|true|false|332
+STATE t=12.8 true|45|84|true|true|false|291
+STATE t=13.1 true|51|84|true|true|false|297
+STATE t=13.3 true|59|84|true|true|false|305
+STATE t=13.6 true|73|84|true|true|false|319
+ANSWER_SHOT t=13.6 chars=73
+ANSWER_PREFIX "path: vmlx_engine/tq_disk_store.py\ntype: file\nsize: 48.4 KB\nmodified time"
+STATE t=14.0 true|85|84|true|true|false|331
+STATE t=14.3 true|92|84|true|true|false|338
+STATE t=14.5 true|99|84|true|true|false|346
+STATE t=14.8 true|116|84|true|true|false|363
+STATE t=15.0 true|117|84|true|true|false|364
+STATE t=15.3 true|123|84|true|true|false|370
+STATE t=15.5 true|132|84|true|true|false|379
+STATE t=15.8 true|135|84|true|true|true|382
+STATE t=16.0 false|135|84|true|false|true|368
+FINAL t=16.0 toolShot=true answerShot=true chars=135
+Code
+Chat
+Server
+Tools
+Image
+API
+🇺🇸
+Sessions
+jangq-ai/Hy3-JANG_2K-MTP
+JANG_2K (8b)
+127.0.0.1:8010
+PID 81451
++ Chat
+Chat
+Server
+Cache
+Bench
+Embed
+Perf
+Logs
+Stop
+
+[HY3-UI-STREAM1] Think briefly about why a warm prefix lowers prefill work. Then answer in exactly six short numbered lines. The sixth line must be exactly: 6. HY3-UI-STREAM1-DONE. Do not use tools.
+
+5:21 PM
+5:21 PM
+speak
+Reasoning
+3060 chars
+Warm prefix tokens are already computed and cached.
+Prefill work creates key/value caches for input tokens.
+Reusing cached prefix avoids recomputing those tokens.
+Fewer tokens need processing in the prefill stage.
+Less compute lowers latency and cost for the prompt.
+HY3-UI-STREAM1-DONE
+842 tokens
+29.3 t/s
+54.2 pp/s
+70 prompt
+1.29s TTFT
+30.2s total
+
+[HY3-UI-TOOL2] This is turn two in the same chat. Call the built-in file_info tool exactly once with path panel/package.json and no other tool. After the result, reply in exactly six short numbered lines: path, type, size, modified time, permissions, then exactly 6. HY3-UI-TOOL2-DONE.
+
+5:22 PM
+5:22 PM
+speak
+Reasoning
+258 chars
+Reasoning
+411 chars
+Info
+panel/package.json
+path: panel/package.json
+type: file
+size: 5.2 KB
+modified time: 2026-07-15T-STREAM2-DONE
+
+Wait, I need to be careful. The user wants exactly six lines: path, type, size, modified time, permissions, then exactly 6. HY3-UI-TOOL2-DONE.
+
+Let me re-output correctly.1. path: panel/package.json
+2. type: file
+3. size: 5.2 KB
+4. modified time: 2026-07-15T14:28:24.904Z
+5. permissions: 0644
+6. HY3-UI-TOOL2-DONE
+
+407 tokens
+21.0 t/s
+547.3 pp/s
+5170 prompt (5091 paged+tq-native cached)
+9.45s TTFT
+39.4s total
+
+[HY3-UI-TOOL3] Continue this same chat. Call the built-in file_info tool exactly once with path vmlx_engine/tq_disk_store.py and no other tool. After the result, reply in exactly six short numbered lines: path, type, size, modified time, permissions, then exactly 6. HY3-UI-TOOL3-DONE.
+
+Just now
+Just now
+speak
+Reasoning
+47 chars
+Reasoning
+46 chars
+
+Now reply in exactly six short numbered lines.
+
+Info
+vmlx_engine/tq_disk_store.py
+path: vmlx_engine/tq_disk_store.py
+type: file
+size: 48.4 KB
+modified time: 2026-07-18T00:09:07.395Z
+permissions: 0644
+HY3-UI-TOOL3-DONE
+126 tokens
+25.6 t/s
+1324.8 pp/s
+5718 prompt (5629 paged+tq-native cached)
+4.32s TTFT
+16.0s total
