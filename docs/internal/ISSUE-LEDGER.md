@@ -926,3 +926,28 @@ remain open. No public release/notarization/feed mutation performed.
   stream rails report these (Q36 rows show cache_detail). Verify grammar per
   CACHE_DETAIL_GRAMMAR.md across rails; fix usage assembly; retest.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-17 23:2x - Health kv-quant truthfulness FIXED-LIVE; JIT parity row opened
+
+- `HEALTH-KV-QUANT-FLAG-FALSE-WHILE-TQ-ACTIVE`: CLOSED-BY-LIVE-PROOF.
+  Root cause: _kv_cache_quantization_status read only legacy
+  scheduler._kv_cache_bits (explicit live quantization) and was blind to the
+  TurboQuant storage codec. Fix: helper consumes the computed
+  _turboquant_kv_cache_status at both /health and /v1/cache/stats call
+  sites; storage codec reports enabled=true mode=turboquant-storage with
+  bits/key_bits/value_bits/auto_policy; legacy bits report mode=live.
+  Tests: tests/test_kv_quant_status_truthfulness.py 5/5 +
+  turboquant contract 8/8. Live: Bonsai 8030 restart -> /health
+  kv_cache_quantization {enabled:true, mode:turboquant-storage, bits:8,
+  turboquant-q8, bonsai_hybrid_attention_kv_storage_tq8}. Panel consumers
+  checked: PerformancePanel renders bits (mirrored), CachePanel reads the
+  TQ section directly.
+- `JIT-COMPILE-UI-CLI-PARITY`: OPEN (Eric directive). For models that do not
+  support JIT/mx.compile (VLM/mllm streaming path logs "Ignoring stale JIT
+  flag"), the UI toggle must display OFF and the CLI preview/args parity must
+  omit/disable it. Verify per-model in the settings-parity pass; add to the
+  UI wiring matrix.
+- `USAGE-CACHED-TOKENS-MISSING-NONSTREAM-CHAT`: still OPEN — next: trace
+  cached_tokens attribution on the batched/MLLM non-stream rail (get_usage
+  forwards it; the GenerationOutput arrives with 0 despite scheduler hits).
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
