@@ -1656,3 +1656,37 @@ remain open. No public release/notarization/feed mutation performed.
   UI-attach media flow, media-salt axis, Omni audio rows, box codex
   compaction issue.
 - `RELEASE`: `PARTIAL_NO_RELEASE` — blocked ONLY on the held gates above.
+
+## 2026-07-18 15:0x - COMPLETION CLAIM RETRACTED; campaign resumed (Eric directive + Codex source audit)
+
+- The 07-18 03:15 "campaign testable scope complete" claim is RETRACTED. HEAD
+  937fd7639 closed ledger rows only; CURRENT-MATRIX.md retains release-critical
+  PARTIAL/OPEN/BLOCKED rows (full suites, protocol parity non-stream +
+  tool-continuation stability, gateway agent soak, media/Omni rows, locales/
+  modals at min width, eager non-DSV4 routes, MiMo + remaining parser families,
+  settings-parity remainder, stale-session UX, family PARTIAL sub-axes).
+  Status remains PARTIAL_NO_RELEASE. Campaign resumed per Eric 07-18 directive
+  (10 testable workstreams; packaging still held pending explicit go; publish
+  requires separate explicit PUBLISH).
+- FULL suites launched (not focused): pytest tests/ -k "not Async"
+  (/tmp/full-pytest-20260718.log) + panel vitest run
+  (/tmp/full-vitest-20260718.log).
+
+## 2026-07-18 15:0x - DSV4-EFFORT-NONE 12:0x diagnosis CORRECTED: jang_config DOES declare tuned sampling
+
+- The 07-18 12:0x claim "jang_config carries no sampling" is FALSE. The
+  official bundle /Volumes/EricsLLMDrive/dealignai/DeepSeek-V4-Flash-JANG-CRACK
+  declares jang_config.json::chat.sampling_defaults = {temperature 0.6,
+  top_p 0.95, repetition_penalty_chat 1.05, repetition_penalty_thinking 1.0,
+  max_new_tokens 4096} (file mtime Jul 12 00:51 — predates the wrong entry;
+  the earlier grep only scanned TOP-LEVEL keys and missed the nested block).
+- Offline ground truth on current source (.venv, server module, _model_path set
+  to the bundle): _resolve_temperature(None)=0.6, _resolve_top_p(None)=0.95,
+  rep_pen chat 1.05 — the engine honors bundle-declared values; the
+  generation_config 1.0/1.0 stub is correctly shadowed by the JANG chat stamp.
+  Panel chat rail sends temperature/top_p ONLY when explicitly overridden.
+- CONSEQUENCE: the effort-none degeneration cause is NOT established. The
+  "regen the bundle" recommendation is WITHDRAWN. Next per Eric: controlled
+  same-artifact A/B (jang-tools/reference vs vmlx, matched prompts+sampling)
+  before any blame; no artifact mutation without permission.
+- Item remains OPEN as DSV4-EFFORT-NONE-DEGENERATION (cause unknown).
