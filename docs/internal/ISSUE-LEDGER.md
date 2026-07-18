@@ -1113,3 +1113,25 @@ remain open. No public release/notarization/feed mutation performed.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE` (next: DSV4-Flash row, then
   Hy3/Gemma/Laguna/Step/Nemotron/MiniMax matrix; bundle-python before any
   packaging).
+
+## 2026-07-18 02:5x - DSV4-Flash row: cache axes VERIFIED-LIVE; effort-none degeneration reopened
+
+- DSV4-Flash live row (session a6810958, port 8012, 97GB load OK, 99.7GB
+  active): autodetect CORRECT (family deepseek-v4, dsml/deepseek_r1 parsers,
+  native composite prefix cache active). Cache truth: turboquant enabled
+  FALSE (never generic TQ on DSV4 — honored), native_cache
+  deepseek_v4_v7/native_composite, kv_cache_quantization truthfully false
+  (aff768f75 does not mislabel DSV4), block_size 256. API: effort=high exact
+  DSV4-high-OK with 317-char reasoning (cold AND warm); long-prompt warm hit
+  cached 978/979 `paged+dsv4` IN NON-STREAM USAGE (d841fc799/1657ed312
+  working on the typed path). Long-prompt cold/warm answers coherent and
+  consistent (paraphrase, not exact marker — instruction softness, noted).
+- `DSV4-EFFORT-NONE-DEGENERATION`: REOPENED (P1, quality). reasoning_effort
+  none correctly yields reasoning_len 0 (20260507 encoder contract holds)
+  but the visible answer degenerates into a repetition loop live:
+  "No-go-go-go-all-all-all-...". Same class as the 20260507 open
+  quality caveat and #103 verb-loop. Needs direct-rail sampling/template
+  investigation on current source (fresh-context fix e4b2f13f3 lineage).
+- Remaining for DSV4 row: UI fresh-chat turn, long-Responses fragment
+  retest, restart-restore axis.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
