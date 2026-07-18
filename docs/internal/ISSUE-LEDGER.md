@@ -1454,3 +1454,16 @@ remain open. No public release/notarization/feed mutation performed.
 - Follow-up kept: verify MM2.7 non-paged prefix-cache hit behavior by
   reading the correct stats section on the next MM2.7 pass.
 - `RELEASE`: remains `PARTIAL_NO_RELEASE`.
+
+## 2026-07-18 10:3x - M3 sessions triage; fresh Coder-Small session created
+
+- M3 session triage: e00c22bf (JANG_2L) error cause = model path missing
+  (/Users/eric/.mlxstudio/... local, absent) — same class as gemma e4a79e4c
+  and a563f316 Coder (also missing local). 78ad8607 is a remote:// session.
+  REAL drive bundles: MiniMax-M3-Coder-Small + MiniMax-M3-REAP32-d3-Coder.
+  Created fresh session 3c9ca4bf (Coder-Small, port 8017, external drive)
+  via renderer API and started it — M3 row proceeds on it.
+- Stale-local-path sessions (3x) flagged: consider a session-health sweep
+  that marks sessions with missing model paths and offers re-point to the
+  drive (LE10 lineage) — improvement row.
+- `RELEASE`: remains `PARTIAL_NO_RELEASE`.
