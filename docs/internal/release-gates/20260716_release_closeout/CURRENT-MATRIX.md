@@ -36,6 +36,28 @@ superseded conclusions are called out here.
 - Evidence:
   `docs/internal/release-gates/20260719_full_suite_checkpoint/`.
 
+### 2026-07-19 MiniMax M2.7 effective no-tool protocol override
+
+- Current source `ffb9ed7db` fixes a shared Chat/Responses prompt-state bug:
+  retained public schemas with `tool_choice=none` no longer seed parsers or
+  answer policy as though tools were rendered. The pre-fix live Chat
+  continuation had no visible content and contradictory stop/length terminals.
+  After a real Electron Stop/Start, the identical request emitted 18
+  progressive content deltas, exact-finaled, emitted one stop, one terminal
+  usage event, and one `[DONE]`; 173 tokens restored as
+  `paged+disk+tq-native`. Retained-schema Responses independently emitted 19
+  content deltas and completed once.
+- The real Electron UI also passed an Auto reasoning/content/terminal turn,
+  exactly one `file_info(panel/package.json)` call/result/exact-final, and a
+  no-second-tool same-chat recall. Raw Chat and Responses passed stream,
+  non-stream, required tool, and result continuation. Focused regression is
+  244 passed with three intentional deselections.
+- Evidence:
+  `docs/internal/release-gates/20260719_m27_protocol_parity/`.
+- This advances the scoped Chat/Responses row only. API/protocol parity stays
+  `PARTIAL` until Anthropic, Ollama, cancellation/disconnect/mid-stream
+  recovery, and signed-app repeat have current-source live evidence.
+
 ### 2026-07-18 current override
 
 - vMLX `1.6.11` is a public, signed, notarized checkpoint. The package was

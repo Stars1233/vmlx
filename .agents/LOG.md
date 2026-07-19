@@ -1003,3 +1003,21 @@
   `open` for the named retained live/release rows.
 - Evidence:
   `docs/internal/release-gates/20260719_full_suite_checkpoint/`.
+
+## 2026-07-19 - M2.7 Chat/Responses effective no-tool parity
+
+- Live red: MiniMax M2.7 Chat post-tool continuation with retained schemas,
+  `tool_choice=none`, and thinking off emitted no content, then stop/warning/
+  length. Responses with the same real 5.2 KB result completed.
+- Root cause: parser seed and answer policy used public `request.tools` after
+  the renderer had removed tools. Commit `ffb9ed7db` centralizes effective
+  generation-tool availability across Chat/Responses stream/non-stream.
+- Regression: 244 passed, three deselected. Live after a real Electron engine
+  restart: Chat emitted 18 progressive content deltas, exact final, one stop,
+  one usage, and `[DONE]`; retained-schema Responses emitted 19 content deltas
+  and completed once.
+- Electron Auto/tool/recall rows passed with separate reasoning/content, one
+  real `file_info(panel/package.json)` result, no second tool, and no warning.
+- Evidence: `docs/internal/release-gates/20260719_m27_protocol_parity/`.
+  Protocol matrix remains `PARTIAL` pending Anthropic/Ollama and failure-
+  recovery rows.

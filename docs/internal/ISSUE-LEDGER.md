@@ -2316,3 +2316,36 @@ remain open. No public release/notarization/feed mutation performed.
 - This closes only the M2.7 paged full-KV child row. Paged-Off prompt-disk
   partial restore, other cache architectures, media/gateway soak, full suites,
   build, and release remain separate gates.
+
+## 2026-07-19 03:27 - effective no-tool state after a real tool result
+
+- `EFFECTIVE-NO-TOOL-PARSER-SEED`: `VERIFIED-LIVE` on source commit
+  `ffb9ed7db`. A raw MiniMax M2.7 Chat continuation retained its public tool
+  schemas for history fidelity while setting `tool_choice=none` and
+  `enable_thinking=false`. Before the fix it emitted no visible content,
+  contradictory `stop` then `length` terminals, and a reasoning-only warning.
+  The same loaded artifact and tool result completed through Responses, which
+  isolated the failure to endpoint/parser integration rather than the
+  JANGTQ/MXTQ artifact.
+- The renderer had correctly stripped tools, but Chat and Responses parser-
+  seed/answer-policy paths re-read the public `request.tools`. The shared
+  `_tools_available_for_generation` helper now uses the effective prompt tool
+  set and always returns false for `tool_choice=none`. Streaming and non-
+  streaming Chat/Responses use the same contract. No tool argument, output,
+  thinking tag, sampler, or output budget is synthesized or coerced.
+- Focused current-source validation passed 244 tests with three intentional
+  deselections. After a real Electron Stop/Start, the identical Chat request
+  emitted 18 progressive content deltas, exact-finaled
+  `M27-CHAT-TOOL-CONTINUE-DONE SIZE=5.2 KB`, emitted one stop, one terminal
+  usage event, and one `[DONE]`; 173 tokens restored as
+  `paged+disk+tq-native`. A retained-schema Responses continuation separately
+  emitted 19 progressive content deltas and one completed terminal.
+- The current Electron three-turn row also passed separate Auto reasoning and
+  content, exactly one real `file_info(panel/package.json)` call/result/final,
+  and a no-second-tool same-chat recall. SQLite preserves the reasoning,
+  content, tool call, tool result, cache detail, and warnings independently.
+- Evidence:
+  `docs/internal/release-gates/20260719_m27_protocol_parity/`.
+- Scoped status is `VERIFIED-LIVE` for current-source Electron, Chat, and
+  Responses. Overall protocol parity remains `PARTIAL`: Anthropic, Ollama,
+  cancellation/disconnect/mid-stream recovery, and signed-app repeat are open.

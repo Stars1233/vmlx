@@ -6979,3 +6979,33 @@ Status: `SCOPED_GUARD_VERIFIED_LIVE_LONG_REUSE_AND_TIGHT_CAP_LATENCY_PARTIAL`.
   tight 256-token cap caused a second full prefill; this latency remains open.
 - Evidence:
   `docs/internal/release-gates/20260718_openpangu_long_snapshot_guard/`.
+
+## 2026-07-19 - MiniMax M2.7 effective no-tool post-result stream repair
+
+Status: scoped `VERIFIED-LIVE` for Electron + Chat + Responses; global
+protocol/release matrix `PARTIAL`.
+
+- Current source `ffb9ed7db` repairs a shared endpoint contract. Public tool
+  schemas retained with `tool_choice=none` are no longer treated as schemas
+  rendered into the model prompt. Before the fix the Chat result continuation
+  emitted zero content plus contradictory stop/length terminals; the same
+  request after a real UI Stop/Start emitted 18 content deltas, exact final,
+  one stop, one terminal usage, and `[DONE]`.
+- Source trace: `vmlx_engine/server.py:3398` owns effective tool availability;
+  all Chat/Responses stream and non-stream parser-seed/answer-policy call sites
+  use it. `tests/test_server.py:4707` pins the public/effective-schema split and
+  the actual MiniMax post-tool direct-answer shape. Focused current-source
+  validation is 244 passed with three intentional deselections.
+- Electron rows 354/357/360 prove separate non-empty Auto reasoning/content,
+  one real `file_info(panel/package.json)` result and exact final, then
+  no-second-tool history recall. The tool row restored 227
+  `paged+disk+tq-native` tokens and stored no warning.
+- Raw Chat and Responses each passed stream, non-stream, required tool, and
+  tool-result continuation. The repaired Chat continuation restored 173
+  `paged+disk+tq-native`; the retained-schema Responses continuation emitted
+  19 progressive content deltas and completed once.
+- Evidence:
+  `docs/internal/release-gates/20260719_m27_protocol_parity/`.
+- Open boundaries: current-source Anthropic/Ollama tool continuations,
+  cancellation/disconnect/mid-stream recovery, signed-app repeat, and the
+  literal historical `[Engine Manager] Found in PATH` log-line capture.

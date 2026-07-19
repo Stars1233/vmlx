@@ -1,0 +1,75 @@
+event: response.created
+data: {"type": "response.created", "response": {"id": "resp_1b2f05b6ed42", "object": "response", "created_at": 1784456394, "status": "in_progress", "model": "jangq-ai/MiniMax-M2.7-Small-JANGTQ", "output": []}, "sequence_number": 0}
+
+event: response.output_item.added
+data: {"type": "response.output_item.added", "output_index": 0, "item": {"id": "item_57759f331dc8", "type": "message", "status": "in_progress", "role": "assistant", "content": []}, "sequence_number": 1}
+
+event: response.content_part.added
+data: {"type": "response.content_part.added", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "part": {"type": "output_text", "text": "", "annotations": []}, "sequence_number": 2}
+
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "delta": "M", "sequence_number": 3}
+
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "delta": "27", "sequence_number": 4}
+
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "delta": "-R", "sequence_number": 5}
+
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "delta": "ESP", "sequence_number": 6}
+
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "delta": "-TO", "sequence_number": 7}
+
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "delta": "OL", "sequence_number": 8}
+
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "delta": "-C", "sequence_number": 9}
+
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "delta": "ONT", "sequence_number": 10}
+
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "delta": "IN", "sequence_number": 11}
+
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "delta": "UE", "sequence_number": 12}
+
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "delta": "-D", "sequence_number": 13}
+
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "delta": "ONE", "sequence_number": 14}
+
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "delta": " SIZE", "sequence_number": 15}
+
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "delta": "=", "sequence_number": 16}
+
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "delta": "5", "sequence_number": 17}
+
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "delta": ".", "sequence_number": 18}
+
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "delta": "2", "sequence_number": 19}
+
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "delta": " KB", "sequence_number": 20}
+
+event: response.output_text.done
+data: {"type": "response.output_text.done", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "text": "M27-RESP-TOOL-CONTINUE-DONE SIZE=5.2 KB", "sequence_number": 21}
+
+event: response.content_part.done
+data: {"type": "response.content_part.done", "item_id": "item_57759f331dc8", "output_index": 0, "content_index": 0, "part": {"type": "output_text", "text": "M27-RESP-TOOL-CONTINUE-DONE SIZE=5.2 KB", "annotations": []}, "sequence_number": 22}
+
+event: response.output_item.done
+data: {"type": "response.output_item.done", "output_index": 0, "item": {"id": "item_57759f331dc8", "type": "message", "status": "completed", "role": "assistant", "content": [{"type": "output_text", "text": "M27-RESP-TOOL-CONTINUE-DONE SIZE=5.2 KB", "annotations": []}]}, "sequence_number": 23}
+
+event: response.completed
+data: {"type": "response.completed", "response": {"id": "resp_1b2f05b6ed42", "object": "response", "created_at": 1784456394, "status": "completed", "model": "jangq-ai/MiniMax-M2.7-Small-JANGTQ", "output_text": "M27-RESP-TOOL-CONTINUE-DONE SIZE=5.2 KB", "output": [{"id": "item_57759f331dc8", "type": "message", "status": "completed", "role": "assistant", "content": [{"type": "output_text", "text": "M27-RESP-TOOL-CONTINUE-DONE SIZE=5.2 KB", "annotations": []}]}], "usage": {"input_tokens": 177, "output_tokens": 19, "total_tokens": 196}}, "sequence_number": 24}
+
