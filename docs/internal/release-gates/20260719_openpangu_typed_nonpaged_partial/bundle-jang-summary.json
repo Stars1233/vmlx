@@ -1,0 +1,83 @@
+{
+  "format": "jang",
+  "format_version": "2.0",
+  "architecture": {
+    "type": "moe",
+    "attention": "mla",
+    "has_vision": false,
+    "has_ssm": false,
+    "has_moe": true
+  },
+  "source_model": {
+    "name": "openPangu-2.0-Flash-src-bf16",
+    "dtype": "bfloat16",
+    "parameters": "4.8B"
+  },
+  "bundle_has_mtp": true,
+  "mtp": {
+    "kept": true,
+    "enabled": true,
+    "num_layers": 3,
+    "tensor_count": 2385,
+    "layer_indices": [
+      46,
+      47,
+      48
+    ],
+    "layer_prefix": "model.layers",
+    "shared_embed": false,
+    "shared_lm_head": false,
+    "spec_decoding_ready": true,
+    "per_layer_tensor_counts": [
+      795,
+      795,
+      795
+    ]
+  },
+  "mtp_layers": 3,
+  "capabilities": {
+    "reasoning_parser": "deepseek_r1",
+    "tool_parser": "qwen",
+    "think_in_template": true,
+    "supports_tools": true,
+    "supports_thinking": true,
+    "family": "openpangu_v2",
+    "modality": "text",
+    "modalities": {
+      "text": true,
+      "vision": false,
+      "audio": false,
+      "video": false
+    },
+    "has_vision": false,
+    "has_audio": false,
+    "has_video": false,
+    "cache_type": "hybrid"
+  },
+  "runtime": {
+    "total_weight_bytes": 51077680730,
+    "total_weight_gb": 47.57,
+    "bundle_has_mtp": true,
+    "mtp_layers": 3,
+    "mtp_mode": "included"
+  },
+  "quantization": {
+    "profile": "JANG_3M",
+    "target_bits": 3.0,
+    "actual_bits": 3.83,
+    "block_size": 128,
+    "method": "jang-importance",
+    "quantization_backend": "mx.quantize",
+    "quantization_method": "mse",
+    "quantization_scheme": "asymmetric",
+    "hadamard_rotation": false,
+    "bit_widths_used": [
+      3,
+      4,
+      8
+    ],
+    "passthrough_bit_widths_used": [],
+    "passthrough_tensor_count": 0,
+    "tensor_quantization_manifest_count": 684
+  }
+}

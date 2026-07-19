@@ -1,0 +1,395 @@
+   240	    if getattr(args, "kv_cache_quantization", None) not in (None, "none"):
+   241	        changed.append(f"kv_quant={args.kv_cache_quantization}->none")
+   242	    args.use_paged_cache = False
+   243	    args.enable_block_disk_cache = False
+   244	    args.kv_cache_quantization = "none"
+   245	    args._openpangu_force_no_kv_cache_quantization = True
+   246	    os.environ["VMLX_DISABLE_TQ_KV"] = "1"
+   247	    os.environ.pop("VMLX_FORCE_TQ_AUTO", None)
+   248	    logger.info(
+   249	        "openPangu native cache policy: TurboQuantKVCache and generic q4/q8 "
+   250	        "are forced off. Exact typed snapshots preserve MLA KV, DSA indexer, "
+   251	        "rotating-SWA metadata, and causal-conv state; paged/block reuse is off."
+   252	    )
+   253	    return True, tuple(changed)
+   254	
+   255	
+   256	def _apply_dsv4_cache_policy(args, logger):
+   257	    """Apply DSV4's composite SWA+CSA/HCA prefix-cache contract.
+   258	
+   259	    DSV4 paged-prefix entries hold prompt-boundary DeepseekV4Cache snapshots
+   260	    for SWA plus CSA/HCA compressed pools. Treating those records like generic
+   261	    KV pages makes stale app defaults too easy to launch. DSV4 uses this
+   262	    native composite path by default; explicit --disable-prefix-cache remains
+   263	    a full opt-out and also suppresses paged/L2 dependent state.
+   264	    """
+   265	
+   635	                except Exception:
+   636	                    pass
+   637	                return None
+   638	        finally:
+   639	            self._pool.put(conn)
+   640	
+   641	    def fetch_longest_prefix(
+   642	        self,
+   643	        tokens: List[int],
+   644	        *,
+   645	        min_tokens: int = 2,
+   646	    ) -> Tuple[Optional[List[Any]], List[int]]:
+   647	        """Fetch the longest stored prompt prefix for ``tokens``.
+   648	
+   649	        ``fetch()`` is an exact SHA-256 lookup. That is correct for repeated
+   650	        prompts, but chat reuse after an engine restart needs SSD L2 to behave
+   651	        like a prefix cache: if a previous turn stored prompt key ``P`` and the
+   652	        current prompt ``F`` starts with ``P``, restore ``P`` and let the
+   653	        scheduler replay the uncached tail.
+   654	
+   655	        The SQLite index stores prompt lengths, so this avoids an O(prompt_len)
+   656	        blind scan. We only test hashes for lengths that are actually present
+   657	        on disk, then delegate the winner to ``fetch()`` so validation,
+   658	        runtime-fingerprint checks, cache-type propagation, and hit stats stay
+   659	        in one place.
+   660	        """
+   661	        full_tokens = list(tokens or [])
+   662	        if not full_tokens:
+   663	            with self._stats_lock:
+   664	                self.misses += 1
+   665	            return None, []
+   666	
+   667	        min_tokens = max(1, int(min_tokens or 1))
+   668	        conn = self._pool.get()
+   669	        try:
+   670	            rows = conn.execute(
+   671	                "SELECT token_hash, num_tokens FROM cache_entries "
+   672	                "WHERE num_tokens <= ? AND num_tokens >= ? "
+   673	                "ORDER BY num_tokens DESC",
+   674	                (len(full_tokens), min_tokens),
+   675	            ).fetchall()
+   676	        finally:
+   677	            self._pool.put(conn)
+   678	
+   679	        if not rows:
+   680	            with self._stats_lock:
+   681	                self.misses += 1
+   682	            return None, []
+   683	
+   684	        prefix_hash_by_len: Dict[int, str] = {}
+   685	        attempted_load = False
+   686	        for stored_hash, num_tokens in rows:
+   687	            try:
+   688	                n = int(num_tokens)
+   689	            except (TypeError, ValueError):
+   690	                continue
+   691	            if n <= 0 or n > len(full_tokens):
+   692	                continue
+   693	            prefix_hash = prefix_hash_by_len.get(n)
+   694	            if prefix_hash is None:
+   695	                prefix_hash = _hash_tokens(full_tokens[:n])
+   696	                prefix_hash_by_len[n] = prefix_hash
+   697	            if stored_hash != prefix_hash:
+   698	                continue
+   699	
+   700	            attempted_load = True
+   701	            matched_tokens = full_tokens[:n]
+   702	            cache = self.fetch(matched_tokens)
+   703	            if cache is not None:
+   704	                if n < len(full_tokens):
+   705	                    logger.info(
+   706	                        "Disk cache prefix hit: matched %d/%d prompt tokens",
+   707	                        n,
+   708	                        len(full_tokens),
+   709	                    )
+   710	                return cache, matched_tokens
+   711	
+   712	        if not attempted_load:
+   713	            with self._stats_lock:
+   714	                self.misses += 1
+   715	        return None, []
+   430	        self._kv_cache_group_size: int = 64
+   431	
+   432	        # TTFT EWMA tracking (alpha = 0.1 gives ~10-sample effective window)
+   433	        self._ewma_ttft: float = 0.0
+   434	        self._ttft_alpha: float = 0.1
+   435	
+   436	        self._model_type_for_runtime = self._detect_model_type_for_runtime(model)
+   437	        self._uses_openpangu_cache = self._model_type_for_runtime == "openpangu_v2"
+   438	        self._prefix_cache_requested = bool(self.config.enable_prefix_cache)
+   439	        self._prompt_disk_cache_requested = bool(self.config.enable_disk_cache)
+   440	        self._block_disk_cache_requested = bool(self.config.enable_block_disk_cache)
+   441	        if self._uses_openpangu_cache:
+   442	            # OpenPanguV2LayerCache contains path-dependent convolution state in
+   443	            # addition to MLA latent KV, DSA indexer, and rotating SWA state.
+   444	            # Exact N-1 prompt-boundary snapshots now have a typed clone/disk
+   445	            # codec. Generic block paging is still unsafe because an arbitrary
+   446	            # block cannot reconstruct cumulative conv state. Force the exact
+   447	            # memory-aware lane while preserving the user's prefix + prompt-L2
+   448	            # choices, and fail closed on paged/block L2.
+   449	            if self.config.use_paged_cache or self.config.enable_block_disk_cache:
+   450	                logger.warning(
+   451	                    "openpangu_v2 exact typed cache does not support generic "
+   452	                    "paged/block reuse; disabling paged and block-disk while "
+   453	                    "preserving exact memory/prompt-disk reuse"
+   454	                )
+   455	            self.config.use_paged_cache = False
+   456	            self.config.enable_block_disk_cache = False
+   457	            self.config.use_memory_aware_cache = True
+   458	            if self.config.enable_prefix_cache:
+   459	                logger.info(
+   460	                    "openpangu_v2 exact typed prefix cache enabled: N-1 snapshots "
+   461	                    "round-trip MLA KV, DSA indexer, rotating SWA metadata, and "
+   462	                    "all causal-conv states; reverse truncation remains disabled"
+   463	                )
+   464	        # Track if model uses mixed cache types. DSV4's DeepseekV4Cache and
+   465	        # ZAYA's CCA CacheList are first-class typed cache contracts, not SSM
+   466	        # companion-cache rows.
+   467	        self._uses_dsv4_cache = self._model_uses_dsv4_cache(model)
+   468	        self._uses_zaya_cache = (
+   469	            self._model_type_for_runtime == "zaya"
+   470	            or self._model_uses_zaya_cache(model)
+   471	        )
+   472	        self._is_hybrid = self._is_hybrid_model(model)
+   473	        self._uses_m3_msa_cache = self._model_uses_m3_msa_cache(model)
+   474	        # Do not silently widen repetition-penalty history for families whose
+   475	        # chat templates contain EOS/turn-boundary sentinels in the prompt.
+  3250	        remaining: List[int],
+  3251	        gen_prompt_suffix: List[int],
+  3252	    ) -> Tuple[List[int], int]:
+  3253	        """Return prefill tail + cached-token count for an N-1 prefix hit.
+  3254	
+  3255	        Prefix-cache payloads store KV state through ``len(fetch_tokens) - 1``.
+  3256	        On an exact key hit the cache layer may report ``remaining=[]`` because
+  3257	        its key matched the full stripped prompt, but the scheduler must still
+  3258	        re-feed the last stripped prompt token before any generation-prompt
+  3259	        suffix. Otherwise thinking/chat-template suffixes get processed without
+  3260	        the final user token in cache context.
+  3261	        """
+  3262	        key_tokens = list(fetch_tokens or [])
+  3263	        cache_remaining = list(remaining or [])
+  3264	        suffix = list(gen_prompt_suffix or [])
+  3265	        if suffix and not cache_remaining and key_tokens:
+  3266	            cache_remaining = [key_tokens[-1]]
+  3267	        if not cache_remaining and key_tokens:
+  3268	            cached_tokens = max(len(key_tokens) - 1, 0)
+  3269	        else:
+  3270	            cached_tokens = max(len(key_tokens) - len(cache_remaining), 0)
+  3271	        return cache_remaining + suffix, cached_tokens
+  3272	
+  3273	    @staticmethod
+  3274	    def _disk_prefix_hit_tail_and_cached_tokens(
+  3275	        *,
+  3276	        fetch_tokens: List[int],
+  3277	        matched_tokens: List[int],
+  3278	        gen_prompt_suffix: List[int],
+  3279	    ) -> Tuple[List[int], int]:
+  3280	        """Return prefill tail + cached count for disk L2 prefix hits.
+  3281	
+  3282	        Disk prompt L2 payloads store KV state for ``len(matched_tokens) - 1``
+  3283	        tokens, NOT ``len(matched_tokens)``: every disk write truncates via
+  3284	        ``_truncate_cache_to_prompt_length`` (target ``prompt_len - 1``) so the
+  3285	        last matched token can be re-fed on a hit. Its docstring states the
+  3286	        contract for exactly this path — "forward prefix match: remaining has
+  3287	        extra tokens INCLUDING THE Nth token". So the restored cache offset is
+  3288	        ``len(matched) - 1`` and ``matched[-1]`` must lead the uncached tail,
+  3289	        identically to the exact-hit helper. (Returning ``len(matched)`` and
+  3290	        dropping ``matched[-1]`` silently skips one token — a warm disk-prefix
+  3291	        vs cold positional skew on non-hybrid models.)
+  3292	        """
+  3293	        key_tokens = list(fetch_tokens or [])
+  3294	        matched = list(matched_tokens or [])
+  3295	        suffix = list(gen_prompt_suffix or [])
+  3296	        if matched:
+  3297	            offset = max(len(matched) - 1, 0)
+  3298	            # key_tokens[offset:] == [matched[-1], *uncached_tail]; re-feed
+  3299	            # matched[-1] so its KV is (re)computed against the N-1 payload.
+  3300	            tail = list(key_tokens[offset:]) + suffix
+  3301	            if tail:
+  3302	                return tail, offset
+  3303	        return Scheduler._prefix_hit_tail_and_cached_tokens(
+  3304	            fetch_tokens=matched or key_tokens,
+  3305	            remaining=[],
+  3306	            gen_prompt_suffix=suffix,
+  3307	        )
+  3308	
+  3309	    def _cache_selection_hot_advantage_threshold(self) -> int:
+  3310	        raw = os.environ.get("VMLINUX_CACHE_SELECTION_HOT_ADVANTAGE_TOKENS", "64")
+  3311	        try:
+  3312	            return max(0, int(raw))
+  3313	        except (TypeError, ValueError):
+  3314	            return 64
+  3315	
+  5240	        # Thinking models append generation-prompt tokens that change between
+  5241	        # turns — the cache key must exclude them for consistent SHA-256 matching.
+  5242	        # Bypass: if the request set _bypass_prefix_cache, skip the disk L2
+  5243	        # fallback too (otherwise we'd service the request with stale state).
+  5244	        if (
+  5245	            request.prompt_cache is None
+  5246	            and self.disk_cache is not None
+  5247	            and not _bypass
+  5248	            and not _cache_extra_keys
+  5249	            and not getattr(request, "_paged_block_table_needs_worker_reconstruct", False)
+  5250	        ):
+  5251	            _disk_fetch_tokens = list(request.prompt_token_ids)
+  5252	            _gpl = getattr(request, "_gen_prompt_len", 0) or 0
+  5253	            if getattr(self, "_uses_openpangu_cache", False):
+  5254	                # The typed snapshot is the exact full effective prompt's N-1
+  5255	                # state.  Do not strip/replay template trailer tokens against a
+  5256	                # different causal-conv boundary.
+  5257	                _gpl = 0
+  5258	            if _gpl > 0 and _gpl < len(_disk_fetch_tokens):
+  5259	                _disk_fetch_tokens = _disk_fetch_tokens[:-_gpl]
+  5260	                _disk_suffix_tokens = list(request.prompt_token_ids[-_gpl:])
+  5261	            else:
+  5262	                _disk_suffix_tokens = []
+  5263	            _disk_matched_tokens = list(_disk_fetch_tokens)
+  5264	            if hasattr(self.disk_cache, "fetch_longest_prefix"):
+  5265	                disk_cache, _disk_matched_tokens = self.disk_cache.fetch_longest_prefix(
+  5266	                    _disk_fetch_tokens
+  5267	                )
+  5268	                _disk_matched_tokens = list(_disk_matched_tokens or [])
+  5269	            else:
+  5270	                disk_cache = self.disk_cache.fetch(_disk_fetch_tokens)
+  5271	            if disk_cache is not None:
+  5272	                # Disk cache stores full-precision N-1 tokens (last prompt token re-fed on hit)
+  5273	                # Dequantize if KV cache quantization is active (disk stores full precision
+  5274	                # but may have been quantized before storage in some paths)
+  5275	                _disk_needs_worker_dequant = False
+  5276	                if getattr(self, "_kv_cache_bits", 0):
+  5277	                    # As with L1 memory/prefix hits, do not create/evaluate
+  5278	                    # dequantized MLX arrays on the API thread. Worker-side
+  5279	                    # scheduling owns the stream-safe replay path.
+  5280	                    request._prompt_cache_needs_worker_dequant = True
+  5281	                    _disk_needs_worker_dequant = True
+  5282	                if disk_cache is None:
+  5283	                    # Dequantization failed — treat as full cache miss
+  5284	                    logger.info(
+  5285	                        f"Request {request.request_id}: disk cache dequantization "
+  5286	                        f"failed, treating as cache miss"
+  5287	                    )
+  5288	                else:
+  5289	                    request.prompt_cache = disk_cache
+  5290	                    if (
+  5291	                        _disk_matched_tokens
+  5292	                        and len(_disk_matched_tokens) < len(_disk_fetch_tokens)
+  5293	                    ):
+  5294	                        remaining, cached_tokens = (
+  5295	                            self._disk_prefix_hit_tail_and_cached_tokens(
+  5296	                                fetch_tokens=_disk_fetch_tokens,
+  5297	                                matched_tokens=_disk_matched_tokens,
+  5298	                                gen_prompt_suffix=_disk_suffix_tokens,
+  5299	                            )
+  5300	                        )
+  7300	                                                "object cache for %s, skipping "
+  7301	                                                "prefix cache store",
+  7302	                                                request_id,
+  7303	                                            )
+  7304	                                            request._extracted_cache = None
+  7305	                                    else:
+  7306	                                        request._extracted_cache = None
+  7307	                                elif getattr(self, "_uses_openpangu_cache", False):
+  7308	                                    # SingleBatchGenerator captured this exact N-1
+  7309	                                    # typed boundary before consuming the final
+  7310	                                    # prompt token.  Never fall back to the live
+  7311	                                    # post-decode composite: it contains output-side
+  7312	                                    # convolution/indexer state and cannot be rewound.
+  7313	                                    if snapshot_cache is not None:
+  7314	                                        request._extracted_cache = snapshot_cache
+  7315	                                        request._extracted_cache_key_tokens = list(
+  7316	                                            request.prompt_token_ids[:-1]
+  7317	                                        )
+  7318	                                        request._extracted_cache_from_prompt_snapshot = True
+  7319	                                        logger.info(
+  7320	                                            "openPangu prefix store using exact typed "
+  7321	                                            "N-1 prompt snapshot (%d layers, %d key tokens)",
+  7322	                                            len(snapshot_cache),
+  7323	                                            len(request._extracted_cache_key_tokens),
+  7324	                                        )
+  7325	                                    else:
+  7326	                                        request._extracted_cache = None
+  7327	                                        logger.warning(
+  7328	                                            "openPangu request produced no exact N-1 "
+  7329	                                            "typed snapshot; skipping cache store"
+  7330	                                        )
+  7331	                                elif getattr(self, "_uses_m3_msa_cache", False):
+  7332	                                    # MiniMax-M3 MSA is path-dependent: a cache
+  7333	                                    # hit restores K/V/idx_keys, then tail replay
+  7334	                                    # extends all three. Persisting that
+  7335	                                    # hit-derived extension as a new longer
+  7336	                                    # prefix drifted from a clean full-prefill
+  7337	                                    # state in live multi-turn tests: the next
+  7338	                                    # exact hit answered an earlier turn. Rebuild
+  7339	                                    # the N-1 store payload from a clean
+  7340	                                    # prompt-only prefill instead.
+    57	function persistedReasoningSegments(message: PersistedAssistantToolHistory): string[] {
+    58	  const segments = parseArray(message.reasoningSegmentsJson).map((segment) =>
+    59	    typeof segment === 'string' ? segment : '',
+    60	  )
+    61	  if (segments.length > 0) return segments
+    62	  return typeof message.reasoningContent === 'string' && message.reasoningContent
+    63	    ? [message.reasoningContent]
+    64	    : []
+    65	}
+    66	
+    67	function reasoningItem(text: string): any {
+    68	  return {
+    69	    type: 'reasoning',
+    70	    content: [{ type: 'reasoning', text }],
+    71	  }
+    72	}
+    73	
+    74	/**
+    75	 * Rebuild one persisted assistant row into model-visible history.
+    76	 *
+    77	 * Tool-loop rows collapse several model generations into one SQLite row.  The
+    78	 * UI already stores the native calls/results, per-generation reasoning
+    79	 * segments, and call iteration numbers.  Re-expand those fields in their real
+    80	 * order so Responses and Chat Completions templates see:
+    81	 * reasoning -> call -> result -> reasoning -> answer.
+    82	 */
+    83	export function replayPersistedAssistantHistory(
+    84	  message: PersistedAssistantToolHistory,
+    85	  useResponsesApi: boolean,
+    86	): any[] {
+    87	  const calls = validCalls(message.toolCallsOaiJson)
+    88	  const results = validResults(message.toolResultsOaiJson)
+    89	  const content = typeof message.content === 'string' ? message.content : ''
+    90	  const segments = persistedReasoningSegments(message)
+    91	
+    92	  const callIterations = new Map<string, number>()
+    93	  for (const status of parseArray(message.toolCallsJson)) {
+    94	    if (
+    95	      status?.phase === 'calling' &&
+    96	      typeof status.toolCallId === 'string' &&
+    97	      Number.isInteger(status.iteration)
+    98	    ) {
+    99	      callIterations.set(status.toolCallId, Math.max(0, status.iteration))
+   100	    }
+   101	  }
+   102	
+   103	  if (calls.length === 0) {
+   104	    if (useResponsesApi) {
+   105	      // A persisted reasoning-only assistant row usually means the previous
+   106	      // turn hit an answer-recovery/output-budget edge and produced no visible
+   107	      // assistant text. Replaying that hidden reasoning as a standalone
+   108	      // Responses reasoning item makes the next request treat stale private
+   109	      // thoughts as live assistant context. Preserve only the assistant turn
+   110	      // boundary; tool-loop rows above still replay their ordered reasoning.
+   111	      if (!content.trim() && segments[0]?.trim()) {
+   112	        return [{ type: 'message', role: 'assistant', content: '' }]
+   113	      }
+   114	      const items: any[] = []
+   115	      if (segments[0]?.trim()) items.push(reasoningItem(segments[0]))
+   116	      if (content.trim()) items.push({ type: 'output_text', text: content })
+   117	      return items
+   118	    }
+   119	    if (!content.trim() && !segments[0]?.trim()) return []
+   120	    return [
+   121	      {
+   122	        role: 'assistant',
+   123	        content,
+   124	        ...(segments[0]?.trim()
+   125	          ? { reasoning_content: segments[0] }
+   126	          : {}),
+   127	      },
+   128	    ]
+   129	  }
+   130	

@@ -2089,3 +2089,50 @@ remain open. No public release/notarization/feed mutation performed.
 - Focused current-source validation for the MLLM extension: 143 passed. The
   campaign/release status remains `PARTIAL`; no release action is authorized by
   these scoped rows.
+
+## 2026-07-19 01:1x - openPangu typed non-paged prompt-disk partial axis
+
+- `NONPAGED-PROMPT-DISK-L2-RESTORE / TYPED-OPENPANGU / THINKING-OFF`:
+  `VERIFIED-LIVE` on source head `6e5653f56`. The real Electron session for
+  `openPangu-2.0-Flash-JANG_3M` used Prefix On, Paged Off, Block L2 Off,
+  Prompt Disk On, and the architecture-owned typed composite policy. The
+  actual argv contained `--no-paged-cache --enable-disk-cache`; health kept
+  TurboQuant KV, paged blocks, and block-disk tokens at zero. This artifact is
+  JANG affine (`JANG_3M`, 3.83-bit average, asymmetric `mx.quantize`, no
+  Hadamard rotation), not JANGTQ/MXTQ and not base MLX MXFP.
+- The Thinking-Off Electron base wrote a 780-token exact typed N-1 prompt
+  snapshot. After real Electron Stop/Start process replacement, the longer
+  same-chat turn restored 779/840 prompt tokens from disk, recomputed the
+  unmatched tail, recalled the requested fact exactly, and completed. The log
+  records `Disk cache prefix hit: matched 780/840 prompt tokens`; health
+  records `cache_detail=disk`, zero blocks, and no reconstruction or
+  dequantization.
+- Raw Responses after another Electron restart independently restored 779/838
+  input tokens from the same prompt-disk boundary, emitted 14 progressive
+  output-text deltas, exact-finaled, and emitted both output-text done and
+  response completed. Raw Chat after another Electron restart restored
+  779/840 tokens, streamed progressive content, exact-finaled, emitted
+  `finish_reason=stop`, and emitted `[DONE]`.
+- The final Chat store crossed the configured 10 GB prompt-disk limit and
+  logged one entry eviction after the successful restore/store. This is
+  evidence that size enforcement ran, but it is not yet an eviction/refault
+  closure because the evicted key was not requested again.
+- `OPENPANGU-AUTO-REASONING-PROMPT-DISK-PARTIAL`: `OPEN` (P1 correctness and
+  latency). The Auto base emitted a separate 786-character reasoning rail,
+  exact visible output, and a durable 1,432-token typed prompt record. After
+  process restart the longer same-chat follow-up was coherent and exact but
+  restored zero tokens; health recorded one disk miss followed by an
+  independent 1,495-token store. Current source has persisted-reasoning replay,
+  but the observed Auto follow-up did not share an admissible token prefix
+  with the stored prompt-only boundary. Compare the rendered/tokenized base
+  prompt, replayed reasoning item, injected/open `<think>` boundary, and N-1
+  snapshot before changing policy. Do not use prompt coercion, discard hidden
+  reasoning, or add a model-specific fake cache hit.
+- Auto acceptance: fresh Electron Auto base with separate reasoning/content,
+  process restart, longer same-chat Auto follow-up with non-zero typed disk
+  partial reuse and unmatched-tail-only prefill, then equivalent raw Responses
+  and Chat streams with no stale reasoning replay. Evidence:
+  `docs/internal/release-gates/20260719_openpangu_typed_nonpaged_partial/`.
+- The parent non-paged gate remains `PARTIAL`: the typed Thinking-Off subrow
+  joins the plain full-KV pass, while openPangu Auto reasoning and the generic
+  paged-On block-aligned partial/eviction/refault row remain open.
