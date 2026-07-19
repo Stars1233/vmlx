@@ -1,0 +1,14 @@
+[{"cid":0,"name":"token_hash","type":"TEXT","notnull":0,"dflt_value":null,"pk":1},
+{"cid":1,"name":"file_name","type":"TEXT","notnull":1,"dflt_value":null,"pk":0},
+{"cid":2,"name":"num_tokens","type":"INTEGER","notnull":1,"dflt_value":null,"pk":0},
+{"cid":3,"name":"file_size","type":"INTEGER","notnull":1,"dflt_value":null,"pk":0},
+{"cid":4,"name":"created_at","type":"REAL","notnull":1,"dflt_value":null,"pk":0},
+{"cid":5,"name":"last_accessed","type":"REAL","notnull":1,"dflt_value":null,"pk":0},
+{"cid":6,"name":"access_count","type":"INTEGER","notnull":0,"dflt_value":"1","pk":0},
+{"cid":7,"name":"metadata","type":"TEXT","notnull":0,"dflt_value":null,"pk":0},
+{"cid":8,"name":"cache_type","type":"TEXT","notnull":0,"dflt_value":"'assistant'","pk":0},
+{"cid":9,"name":"payload_prefix_hash","type":"TEXT","notnull":0,"dflt_value":null,"pk":0}]
+[{"token_hash":"b133ba0b6cd11c8661ff611fbdef403b4a4011be5399f60fc42da14f47541d7b","num_tokens":1432,"payload_prefix_hash":"b30d1162d6caca82e359f74996b85a3668a38d7baed53f132f1b0ece1ba9e65e","file_name":"cache_b133ba0b6cd11c86_1432tok.safetensors","file_size":2029476840,"cache_type":"assistant","access_count":4},
+{"token_hash":"2b28e018538f389c7091c7f5d052d0cc913b651df538f7bc6aee0cd4c2d81931","num_tokens":1495,"payload_prefix_hash":"d18a33dcba3fbc3bc22bca6858d4e6b0b2f0616edbf8db5267f16779fa999632","file_name":"cache_2b28e018538f389c_1495tok.safetensors","file_size":2541745096,"cache_type":"user","access_count":1},
+{"token_hash":"22df6957a3a5b809a02366bac11e349c1ace3c37c6f61617da37823bd59de8c2","num_tokens":1495,"payload_prefix_hash":"1be1ac791fca0d00476af262d964406f22d23048f79a470d63b60b4389f51404","file_name":"cache_22df6957a3a5b809_1495tok.safetensors","file_size":2541745096,"cache_type":"user","access_count":1},
+{"token_hash":"531b0dd2d880d9655c5f64eb6865a5d5405fc6995384772159efac74c6db94fa","num_tokens":1497,"payload_prefix_hash":"790e6a218897a01279244e7d02db21ad42adbaca82c7078fbc41fd6658828703","file_name":"cache_531b0dd2d880d965_1497tok.safetensors","file_size":2547413968,"cache_type":"user","access_count":1}]

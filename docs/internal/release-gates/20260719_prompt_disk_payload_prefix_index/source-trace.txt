@@ -1,0 +1,30 @@
+a96a44559 fix(cache): index prompt disk payload prefixes
+ tests/test_minimax_m3_cache_paths.py | 119 ++++++++++++++++++++++++++++++
+ vmlx_engine/disk_cache.py            | 136 +++++++++++++++++++++++++++++++----
+ 2 files changed, 242 insertions(+), 13 deletions(-)
+260:                "ALTER TABLE cache_entries ADD COLUMN payload_prefix_hash TEXT"
+273:            CREATE INDEX IF NOT EXISTS idx_payload_prefix_hash
+274:            ON cache_entries(payload_prefix_hash, num_tokens)
+385:    def _fetch_indexed_hash(
+696:    def fetch_longest_prefix(
+728:                "SELECT token_hash, num_tokens, payload_prefix_hash "
+776:                        "Disk cache N-1 payload prefix hit: restored %d cached "
+837:        payload_prefix_hash = _hash_tokens(tokens[:-1]) if len(tokens) > 1 else None
+846:            if existing and payload_prefix_hash:
+850:                    "UPDATE cache_entries SET payload_prefix_hash = ? "
+851:                    "WHERE token_hash = ? AND payload_prefix_hash IS NULL",
+852:                    (payload_prefix_hash, token_hash),
+1156:                    "payload_prefix_hash) "
+1250:                    "payload_prefix_hash) "
+535:def test_disk_cache_fetch_longest_prefix_accepts_shared_n_minus_1_payload(
+606:def test_disk_cache_n_minus_1_index_does_not_accept_earlier_divergence(
+14287:        usage=get_usage(output),
+17771:                        usage=get_usage(output) if include_usage else None,
+17776:                # Include usage in every chunk when include_usage is on (for real-time metrics)
+17777:                chunk_usage = get_usage(output) if include_usage else None
+17796:                            usage=get_usage(output) if include_usage else None,
+17837:                            usage=get_usage(output),
+17975:                        usage=get_usage(output) if include_usage else None,
+17998:                            usage=get_usage(output),
+18038:                # Include usage in every chunk when include_usage is on (for real-time metrics)
+18039:                chunk_usage = get_usage(output) if include_usage else None

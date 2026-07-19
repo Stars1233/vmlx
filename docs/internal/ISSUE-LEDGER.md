@@ -2136,3 +2136,45 @@ remain open. No public release/notarization/feed mutation performed.
 - The parent non-paged gate remains `PARTIAL`: the typed Thinking-Off subrow
   joins the plain full-KV pass, while openPangu Auto reasoning and the generic
   paged-On block-aligned partial/eviction/refault row remain open.
+
+## 2026-07-19 08:32 - shared prompt-disk N-1 payload-prefix repair
+
+- `PROMPT-DISK-NMINUS1-PAYLOAD-PREFIX-INDEX`: `VERIFIED-LIVE` on source
+  commit `a96a44559`. Token-level analysis proved that the 1,432-token
+  openPangu Auto base and 1,495-token replay shared exactly 1,431 tokens: the
+  full typed N-1 payload. Only the non-owned generation sentinel differed
+  (`<think>` token 148905 versus replayed `</think>` token 148906). The old
+  disk index hashed only the full N-token key and could not find the reusable
+  payload. This was a shared prompt-disk lookup bug, not a model, JANG affine,
+  reasoning-parser, or quant artifact failure.
+- SQLite prompt records now index `payload_prefix_hash=hash(tokens[:-1])`.
+  Longest-prefix lookup accepts a different Nth token only when the complete
+  N-1 payload hash is exact, loads the existing record by its stored full-key
+  hash, and re-feeds the current boundary plus unmatched tail. Exact lookup is
+  unchanged, earlier payload divergence is rejected, and legacy null-hash
+  rows remain exact-only until safely backfilled or rewritten. The focused
+  current-source selection passed 84/84 tests across standard, typed, and
+  TQ-native disk paths.
+- `OPENPANGU-AUTO-REASONING-PROMPT-DISK-PARTIAL`: `VERIFIED-LIVE` for the
+  cache/output axes. The real Electron Auto base emitted separate reasoning
+  and exact visible content. After UI Stop/Start, the longer same-chat turn
+  restored 1,431/1,495 tokens from prompt disk, produced fresh non-identical
+  reasoning, exact-finaled, and logged the N-1 boundary re-feed. Raw Responses
+  after an independent UI restart restored 1,431/1,495, emitted 262 separate
+  reasoning deltas and 15 progressive content deltas, exact-finaled, and
+  completed. Raw Chat after another UI restart restored 1,431/1,497, emitted
+  300 reasoning and 16 content deltas, exact-finaled, stopped, and emitted
+  `[DONE]`.
+- `CHAT-STREAM-INCLUDE-USAGE-PARITY`: `OPEN / FAIL` (P1 protocol parity).
+  The same raw Chat stream exposed a shared server behavior: with
+  `stream_options.include_usage=true`, 317 intermediate chunks each carried a
+  non-null usage object instead of a single terminal usage chunk before
+  `[DONE]`. Cache restore, reasoning/content separation, and terminal output
+  passed, but Chat protocol parity must not be closed until source is changed
+  and current live Chat plus Electron metrics prove a single final usage event
+  without regressing progressive rendering.
+- Evidence:
+  `docs/internal/release-gates/20260719_prompt_disk_payload_prefix_index/`.
+  The parent cache/release gate remains `PARTIAL`: generic paged RAM partial
+  reuse plus forced eviction/block-disk refault/restart restore are still
+  required on a compatible model, and the new Chat usage row remains open.
