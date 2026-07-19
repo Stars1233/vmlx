@@ -29,6 +29,24 @@ Status: OPEN / FIXED / VERIFIED-LIVE / WONTFIX / NOT-A-DEFECT / BUNDLE / BASELIN
   implicitly close any `OPEN`, `FAIL-LIVE`, or `PARTIAL` runtime row in this
   additive ledger. Those rows remain active post-release work.
 
+## 2026-07-19 current-source full-suite and bundle-safety checkpoint
+
+- `fb9689968` repairs two stale full-suite contracts: the MCP policy test now
+  pins both real Responses/Chat built-in-tool injection guards, and the
+  worker-dequant fake implements the production memory-cache capacity API.
+- `92935ada5` fixes a real packaging defect: `bundle-python.sh` no longer
+  deletes the whole tracked `build/` proof tree while cleaning setuptools
+  scratch. A real clean-JANG rebuild preserved a build sentinel.
+- Current source results: Python **6,125 passed / 96 skipped / 92 deselected**;
+  panel **2,312 passed / 3 skipped**; typecheck, bundled hash/import verifier,
+  and clean-JANG production build all pass.
+- Canonical current-regression status remains `open`; absent MiMo artifacts,
+  staged packaged-integrity/signing drift for this post-release head, and the
+  retained live model/protocol/media/UI rows remain explicit blockers or
+  partials. No model generation ran in this source/build checkpoint.
+- Evidence:
+  `docs/internal/release-gates/20260719_full_suite_checkpoint/`.
+
 ## Fixed + verified this cycle (v1.6.6 lane)
 | ID | Sev | Issue | Status | Fix | Live proof |
 |----|-----|-------|--------|-----|-----------|

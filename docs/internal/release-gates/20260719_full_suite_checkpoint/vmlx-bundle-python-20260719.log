@@ -1,0 +1,11 @@
+==> Bundling Python 3.12.12 for standalone vMLX distribution
+ERROR: RELEASE BLOCKED — local jang-tools source has tracked changes: /Users/eric/jang/jang-tools
+       Release bundles must not silently package uncommitted JANG runtime changes.
+       Commit/stash/drop those changes, point VMLX_JANG_TOOLS_SOURCE at a clean
+       checkout, or set VMLX_ALLOW_DIRTY_JANG_SOURCE=1 only for local smoke builds.
+       Tracked dirty files:
+ M jang_tools/format/spec.py
+ M jang_tools/format/writer.py
+ M jang_tools/laguna/model.py
+ M jang_tools/laguna/runtime.py
+ M jang_tools/pack.py

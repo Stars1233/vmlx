@@ -1,5 +1,25 @@
 # Current Status
 
+## 2026-07-19 - full suites/build pass; bundle evidence deletion fixed
+
+Status: `SOURCE_FULL_SUITE_BUILD_PASS_LIVE_RUNTIME_MATRIX_OPEN`.
+
+- Pushed `fb9689968` repairs the stale MCP source-shape assertion and the
+  memory-cache worker-dequant test double. Pushed `92935ada5` prevents the
+  Python bundler from deleting the repository's tracked `build/` proof tree.
+- A real clean-JANG bundle rebuild at JANG revision `9081c924` retained a
+  sentinel under `build/`, and bundled critical engine/JANG hashes plus runtime
+  imports verified cleanly.
+- Final isolated current-source verification: Python 6,125 passed, 96 skipped,
+  92 deselected; panel 2,312 passed with three skips; TypeScript typecheck and
+  clean-JANG production build pass.
+- This closes only the source/full-suite/build row. The regenerated canonical
+  runner is still `open` for missing MiMo artifacts, post-release staged-app
+  integrity/signing, and retained live model/protocol/media/UI requirements.
+  No model was loaded in this checkpoint.
+- Evidence:
+  `docs/internal/release-gates/20260719_full_suite_checkpoint/`.
+
 ## 2026-07-19 - MiniMax M2.7 partial paged-L2/refault and source telemetry
 
 Status: `SCOPED_M27_PAGED_L2_PARTIAL_REFAULT_PASS_POST_RELEASE_MATRIX_OPEN`.

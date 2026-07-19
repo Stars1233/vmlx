@@ -983,3 +983,23 @@
 - Commit `135a2ef6b` preserves the current health, raw SSE/traces, settings,
   screenshots, block index, persisted UI rows, issue ledger, and matrix update
   under `docs/internal/release-gates/20260719_m27_paged_l2_partial_refault/`.
+
+## 2026-07-19 - full-suite recovery and bundle evidence preservation
+
+- The first panel full run found a stale MCP source-shape contract. The current
+  contract now asserts both effective Responses/Chat tool-schema guards;
+  focused MCP tests pass 9/9 and full panel passes 2,312 with three skips.
+- The first Python run was invalid because noninteractive SSH omitted Node from
+  PATH. The corrected run found one stale cache fake and one real bundled
+  source drift. The fake now matches the production `get_stats()` interface;
+  bundled Python was rebuilt from current vMLX plus clean JANG `9081c924`.
+- While rebuilding, the bundle script was found deleting the entire tracked
+  `build/` proof tree. `92935ada5` scopes cleanup to setuptools scratch. A real
+  rebuild retained a sentinel and bundled verification passed all critical
+  source hashes/imports.
+- After canonical proof-artifact regeneration, the final isolated Python suite
+  passed 6,125 with 96 skips and 92 deselections. Typecheck and the clean-JANG
+  production build also passed. The canonical regression runner itself stays
+  `open` for the named retained live/release rows.
+- Evidence:
+  `docs/internal/release-gates/20260719_full_suite_checkpoint/`.

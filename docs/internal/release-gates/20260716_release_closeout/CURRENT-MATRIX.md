@@ -10,6 +10,32 @@ superseded conclusions are called out here.
 
 ## Release truth
 
+### 2026-07-19 current-source full-suite and bundle-safety override
+
+- Current pushed code head `92935ada5` closes the source/full-suite/build
+  checkpoint without closing the retained live-runtime matrix. The final
+  isolated Python run passed **6,125**, skipped **96**, and deselected **92**;
+  full panel passed **2,312** with three skips; TypeScript typecheck passed;
+  bundled source/hash/import verification passed; and the clean-JANG
+  production build passed.
+- Full-suite discovery `fb9689968` updates stale test doubles/contracts without
+  changing runtime behavior. Release fix `92935ada5` stops
+  `bundle-python.sh` from deleting the repository's tracked `build/` proof
+  tree: it now removes only setuptools-owned scratch subdirectories. A real
+  clean-JANG bundle rebuild retained a sentinel in `build/` and printed
+  `PRESERVE_PROBE_PASS`.
+- The regenerated canonical current-regression orchestrator remains honestly
+  `status=open`: MiMo bundle absence, staged packaged-integrity/signing drift
+  for the post-release head, DSV4/Qwen/Gemma/cross-family live requirements,
+  and other retained rows are not converted into passes by full unit suites.
+- This supersedes the historical `Full tests/build | OPEN` row for the
+  current-source unit/build gate only. It also supersedes the historical
+  `Packaging/public release | BLOCKED | Public truth remains 1.6.10` row:
+  v1.6.11 is public/signed/notarized, while the current post-release head is
+  not packaged or released as a newer version.
+- Evidence:
+  `docs/internal/release-gates/20260719_full_suite_checkpoint/`.
+
 ### 2026-07-18 current override
 
 - vMLX `1.6.11` is a public, signed, notarized checkpoint. The package was
@@ -185,7 +211,7 @@ Status: `SCOPED_HY3_LONG_TQ4_CACHE_API_ELECTRON_PASS_STOCHASTIC_FORMAT_AND_BROAD
 | Full tests/build | OPEN | Current hybrid ownership/cache changes: 784/784 Python hybrid/cache/scheduler tests, 278/278 panel settings tests, and panel typecheck pass. The fetched-block ref-ownership repair adds 90/90 focused paged/TQ/hybrid tests. Parser/Responses terminal coverage passed 135/135 Python, 50/50 panel, and panel typecheck. Typed DSV4 disk-tier telemetry passed 76/76 DSV4/paged-byte-budget tests, three focused scheduler assertions, 43/43 relevant panel tests, and panel typecheck. Explicit Min-P zero passed 213/213 affected panel tests plus typecheck. Gateway transactional restart and Ollama terminal behavior passed 76/76 focused panel tests plus typecheck. Shared terminal-dispatch ordering passed 4/4 behavioral contracts and 50/50 affected tests; the wider cache/batching slice passed 260/261 with one retained unrelated source-string assertion. Cross-model tool inheritance passed 299/299 affected panel tests plus typecheck. Terminal/exact-once head `9618e2e46` passes 131/131 selected tests. Qwen media-keyed hybrid cache head `9982d9ae2` passes 218 tests with six intentional skips across the full ZAYA/Qwen media, MLLM scheduler-cache, and SSM-companion files. Current DSV4 eager/tool-scope commits add 18/18 eager tests, 40/40 combined tool-fallback/hardening tests, 162/162 affected panel tests, and panel typecheck. Responsive chrome adds 189/189 layout contracts plus typecheck. Gemma media-boundary commit `cc1562a2b` passes 167 tests with six intentional skips across the full ZAYA/media and MLLM scheduler-cache files. Step media-runtime/cache commit `c305b18b5` passes 205 tests with six intentional skips across Step runtime/detection plus the full ZAYA/media and MLLM scheduler-cache files. Streamed server-error propagation commit `57d5bcd0f` passes 45/45 affected panel tests plus typecheck. M3 media-keyed cache commit `8df1bfe86` passes a current 207/207 direct M3/MLLM/media/routing rerun with two third-party deprecation warnings. The TQ storage-label repair passes 283/283 settings tests plus panel typecheck. The DSV4 reasoning-history replay repair passes 55/55 focused Python tests, 121/121 focused panel tests, and panel typecheck. The shared Electron post-reasoning paint repair passes 301/301 affected panel tests plus panel typecheck. | Focused suites after each fix, full Python/panel suite, bundled-Python gate, clean release build |
 | Eager session materialization | PASS-LIVE scoped DSV4 / OPEN other deferred routes | Source `vmlx_engine/utils/tokenizer.py:1123-1134` now calls the DSV4 JANGTQ loader with `skip_params_eval=False`. A visible Electron Stop/Start completed before any prompt; health reported `last_request_time=null`, `model_loaded=true`, and about 99.7 GB active model memory. The focused DSV4 eager suite passed 18/18. This proves DSV4 only, not every lazy architecture route. | Keep DSV4 as a regression row; inventory and prove other routes that still defer materialization |
 | Responsive Electron chrome | PASS-LIVE scoped Server/session chrome / PARTIAL locales+modals | Before commit `073d15d3c`, 700 px clipped Stop at x=739 and 600 px overflowed the body to 651 px while global controls ended at x=639. The current source gives compact mode controls accessible labels/titles and wraps the complete session toolbar below 800 px. Live Electron post-fix: 600, 700, 900, and restored 1400 px all had body width equal to viewport and every sampled top/session control visible; Stop ended at x=584 at 600 px. Layout contracts pass 189/189 and typecheck passes. | Audit translated labels and open drawers/modals at the minimum width; retain this width matrix as a regression row |
-| Packaging/public release | BLOCKED | Public truth remains 1.6.10 | Build Sequoia/Tahoe, sign, notarize, staple, Gatekeeper verify, install-smoke, publish GitHub/PyPI/feed |
+| Packaging/public release | PASS for public v1.6.11 / current post-release head unshipped | Public v1.6.11 Sequoia/Tahoe DMGs are signed, notarized, stapled, Gatekeeper-verified, install-smoked, and published across GitHub/PyPI/feeds/Homebrew; current post-release source is not a newer package | Preserve the v1.6.11 evidence; only package/publish a newer checkpoint after its retained release blockers are explicitly accepted or closed |
 
 ### DSV4 eager materialization and broad-tool continuation — current source
 
@@ -894,8 +920,10 @@ partial for this Qwen artifact.
    run the complete settings and protocol matrix through Electron/gateway.
 5. Run focused and full tests, audit the dirty tree, commit/push only scoped
    files, and merge/integrate the closeout branch deliberately.
-6. Build, sign, notarize, staple, verify, install-smoke, and publish 1.6.11 only
-   after every release-blocking row above is green.
+6. Treat public v1.6.11 as the completed signed/notarized checkpoint. Build,
+   sign, notarize, staple, verify, install-smoke, and publish a newer version
+   only after its explicitly selected release blockers are closed or accepted;
+   do not rerun or republish v1.6.11 as if it were still pending.
 
 ## 2026-07-18 evidence-preservation addendum (audit-driven; citations repointed off /tmp)
 
