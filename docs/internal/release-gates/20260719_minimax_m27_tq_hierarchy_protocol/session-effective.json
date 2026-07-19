@@ -1,0 +1,23 @@
+{
+  "id": "86b9d9f1-7987-46b4-8a45-a25c9cf0109b",
+  "model_name": "jangq-ai/MiniMax-M2.7-Small-JANGTQ",
+  "model_path": "/Volumes/EricsLLMDrive/jangq-ai/MiniMax-M2.7-Small-JANGTQ",
+  "host": "127.0.0.1",
+  "port": 8014,
+  "pid": 37854,
+  "status": "running",
+  "config": {
+    "usePagedCache": true,
+    "pagedCacheBlockSize": 64,
+    "maxCacheBlocks": 10,
+    "enableBlockDiskCache": true,
+    "blockDiskCacheDir": "/Users/eric/.cache/vmlx-engine/live-proof-m27-paged-tier-fixed-20260719",
+    "cacheMemoryPercent": 15,
+    "kvCacheQuantization": "auto",
+    "toolCallParser": "minimax",
+    "reasoningParser": "minimax_m2",
+    "enableAutoToolChoice": true,
+    "streamInterval": 1,
+    "isMultimodal": false
+  }
+}

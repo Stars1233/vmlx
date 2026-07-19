@@ -1,5 +1,30 @@
 # Current Status
 
+## 2026-07-19 - MiniMax M2.7 JANGTQ hierarchy/protocol gate
+
+Status: `VERIFIED_LIVE_SCOPED_OVERALL_MATRIX_PARTIAL`.
+
+- Real Electron Sessions Start loaded the exact full-KV
+  `MiniMax-M2.7-Small-JANGTQ` artifact; single-model mode stopped the previous
+  LFM engine and left one local serve process. Before a prompt, health reported
+  the model loaded, `last_request_time=null`, and about 38.3 GB active memory.
+- Bundle truth distinguishes JANGTQ/MXTQ weights from affine JANG and base
+  MXFP. Auto KV storage selected q4 native TurboQuant across 62 attention
+  layers; Bonsai remains q8.
+- Electron cold/RAM/eviction/SSD/restart rows prove the Paged-RAM -> SSD-L2 ->
+  suffix-prefill hierarchy. A Paged-Off / L2-On UI restart restored a 320-token
+  partial prefix directly from SSD as `block-disk+tq-native` with zero resident
+  bytes. Desired Paged-On / L2-On state was restored.
+- Raw Chat, Responses, Anthropic, and Ollama stream/non-stream parity passed.
+  Native reasoning used separate progressive reasoning/content deltas on all
+  four protocols. Raw Responses and the Electron UI each completed one real
+  tool continuation; Electron same-chat turns recalled the result without a
+  second call and showed no stale reasoning replay.
+- Evidence:
+  `docs/internal/release-gates/20260719_minimax_m27_tq_hierarchy_protocol/`.
+- This is not a global release pass. Other family/cache/media/gateway/eager and
+  signed-app rows remain active.
+
 ## 2026-07-19 - minimum-width locale and drawer repair
 
 Status: `VERIFIED_LIVE_SCOPED_SECONDARY_MODALS_SIGNED_APP_OPEN`.

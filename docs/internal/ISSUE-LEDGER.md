@@ -2886,3 +2886,42 @@ remain open. No public release/notarization/feed mutation performed.
 - Retain `OPEN`: LFM TQ eligibility/native encoding (this run reported zero
   TQ-native blocks), tool/reasoning protocol breadth, signed app, fault
   injection, full suites/build, and the rest of the family matrix.
+
+## 2026-07-19 - MiniMax M2.7 JANGTQ full hierarchy/protocol checkpoint
+
+- `M27-JANGTQ-Q4-HIERARCHY`: `VERIFIED-LIVE_SCOPED` on source cutoff
+  `b31fdca95`. The tested artifact is full-KV `minimax_m2` with MXTQ/JANGTQ2
+  weights; it is not affine JANG and not base MXFP. Auto cache storage selected
+  q4 native TurboQuant for all 62 attention-KV layers. Bonsai remains the only
+  all-q8 cache exception.
+- `M27-PAGED-RAM-THEN-L2`: Electron rows 617/620/623/626 prove cold write,
+  a 352-token RAM hit with zero disk reads, bounded eviction, and a 352-token
+  SSD refault/promotion. Health recorded native q4 writes and hits.
+- `M27-RESTART-PARTIAL`: PID replacement began with zero L1 payloads and 12
+  persisted SSD blocks. Changed-suffix row 629 reused 320/360 tokens as
+  `paged+disk+tq-native` and exact-finaled.
+- `M27-PAGED-OFF-SSD-PARTIAL`: after the real UI set Paged Off / Block L2 On,
+  health reported `block_disk_only`, `ram_mirror_policy=disk_only`, and zero
+  resident bytes. Changed-suffix row 632 reused 320/361 tokens directly as
+  `block-disk+tq-native`, exact-finaled, and kept resident bytes at zero.
+  Paged On / L2 On was restored afterward.
+- `M27-EAGER-SINGLE-MODEL`: the exact Sessions Start action stopped the prior
+  LFM PID and left one local engine. Before a request, health reported
+  `model_loaded=true`, `last_request_time=null`, and about 38.3 GB active
+  memory. The Electron log resolved the project `.venv/bin/vmlx-engine`.
+- `M27-FOUR-PROTOCOL-STREAM`: stream/non-stream Chat, Responses, Anthropic,
+  and Ollama all returned HTTP 200, identical non-empty progressive visible
+  bytes, and native terminal events. Native reasoning separately produced 369
+  reasoning deltas and eight content deltas on each protocol with no think-tag
+  leakage.
+- `M27-TOOL-MULTITURN`: raw Responses emitted exactly one valid
+  `file_info(panel/package.json)` and exact-finaled its result continuation.
+  Electron row 647 independently executed the tool once and exact-finaled;
+  same-chat rows 650/653 recalled the prior result without a second call.
+  Electron reasoning rows 641/644 produced distinct reasoning bytes and
+  non-empty exact visible answers.
+- Evidence:
+  `docs/internal/release-gates/20260719_minimax_m27_tq_hierarchy_protocol/`.
+- This closes only the named M2.7 child rows. MiniMax M3 VL/video, typed
+  DSV4/openPangu, hybrid SSM/GDN, mixed-SWA, gateway/network soak, remaining
+  eager routes, signed-app repetition, and the overall release remain open.

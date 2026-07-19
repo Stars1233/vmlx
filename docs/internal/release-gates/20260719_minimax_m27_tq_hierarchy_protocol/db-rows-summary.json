@@ -1,0 +1,16 @@
+{
+  "rows": [
+    {"rowid": 617, "content": "M27-TQ-TIER-DONE", "reasoning_chars": 0, "metrics": {"promptTokens": 356, "ttft": "2.41"}, "warnings": null},
+    {"rowid": 620, "content": "M27-TQ-TIER-DONE", "reasoning_chars": 0, "metrics": {"promptTokens": 356, "cachedTokens": 352, "cacheDetail": "paged+tq-native", "ttft": "0.37"}, "warnings": null},
+    {"rowid": 623, "content": "M27-TQ-EVICT-DONE", "reasoning_chars": 0, "metrics": {"promptTokens": 358, "ttft": "2.42"}, "warnings": null},
+    {"rowid": 626, "content": "M27-TQ-TIER-DONE", "reasoning_chars": 0, "metrics": {"promptTokens": 356, "cachedTokens": 352, "cacheDetail": "paged+disk+tq-native", "ttft": "0.44"}, "warnings": null},
+    {"rowid": 629, "content": "M27-TQ-RESTART-PARTIAL-DONE", "reasoning_chars": 0, "metrics": {"promptTokens": 360, "cachedTokens": 320, "cacheDetail": "paged+disk+tq-native", "ttft": "0.64"}, "warnings": null},
+    {"rowid": 632, "content": "M27-TQ-DISKONLY-PARTIAL-DONE", "reasoning_chars": 0, "metrics": {"promptTokens": 361, "cachedTokens": 320, "cacheDetail": "block-disk+tq-native", "ttft": "0.64"}, "warnings": null},
+    {"rowid": 641, "content": "M27-JT-UI-REASON-A-DONE", "reasoning_chars": 1334, "metrics": {"promptTokens": 82, "ttft": "0.75"}, "warnings": null},
+    {"rowid": 644, "content": "M27-JT-UI-REASON-B-DONE", "reasoning_chars": 1360, "metrics": {"promptTokens": 82, "ttft": "0.74"}, "warnings": null},
+    {"rowid": 647, "content": "M27-JT-UI-TOOL-DONE SIZE=5.2 KB", "reasoning_chars": 0, "metrics": {"promptTokens": 400, "cachedTokens": 128, "cacheDetail": "paged+tq-native", "ttft": "1.51"}, "tool": {"name": "file_info", "arguments": {"path": "panel/package.json"}, "result_size": "5.2 KB", "count": 1}, "warnings": null},
+    {"rowid": 650, "content": "M27-MULTI-2-SIZE=5.2-KB", "reasoning_chars": 0, "metrics": {"promptTokens": 263, "cachedTokens": 187, "cacheDetail": "paged+tq-native", "ttft": "0.81"}, "tool_count": 0, "warnings": null},
+    {"rowid": 653, "content": "M27-JT-UI-TOOL-DONE|M27-MULTI-2-SIZE=5.2-KB|M27-MULTI-3-DONE", "reasoning_chars": 0, "metrics": {"promptTokens": 363, "cachedTokens": 259, "cacheDetail": "paged+tq-native", "ttft": "0.99"}, "tool_count": 0, "warnings": null}
+  ],
+  "reasoning_verbatim_equal_641_644": false
+}

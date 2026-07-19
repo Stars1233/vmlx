@@ -8,6 +8,42 @@ production gate, and the current branch. Older contradictory rows remain in
 their original ledgers for provenance; the newest source-plus-live row wins and
 superseded conclusions are called out here.
 
+### 2026-07-19 MiniMax M2.7 JANGTQ hierarchy/protocol override
+
+- Current cutoff `b31fdca95` was exercised with the exact external-drive
+  `jangq-ai/MiniMax-M2.7-Small-JANGTQ` artifact through the real Electron
+  Sessions Start control. Bundle truth is `minimax_m2`, full KV, 62 layers,
+  `weight_format=mxtq`, and profile `JANGTQ2`; it is not affine JANG or base
+  MXFP. Auto prefix storage selected q4 native TurboQuant for all 62 attention
+  KV layers. Bonsai remains the separate q8 exception.
+- Single-model mode visibly stopped the prior LFM process and left one local
+  engine. Before any prompt, health reported `model_loaded=true`,
+  `last_request_time=null`, and about 38.3 GB active model memory; the Electron
+  main log again resolved the project `.venv/bin/vmlx-engine`. This closes
+  eager materialization only for this route.
+- Electron rows 617/620/623/626 prove cold q4 write-through, 352-token RAM
+  reuse without an SSD read, bounded eviction, and 352-token SSD refault with
+  L1 promotion. PID restart row 629 restored a 320/360 partial chain as
+  `paged+disk+tq-native`. With the real UI setting Paged Off / L2 On, row 632
+  restored 320/361 directly as `block-disk+tq-native` while health stayed at
+  zero resident bytes. Paged On / L2 On was restored afterward.
+- Raw stream and non-stream Chat, Responses, Anthropic, and Ollama calls
+  emitted identical non-empty progressive content and their native terminal
+  events. A separate native-reasoning run emitted 369 reasoning deltas plus
+  eight visible deltas on all four protocols with no rail leakage. Raw
+  Responses executed one `file_info`, continued from its real result via
+  `previous_response_id`, and exact-finaled.
+- Electron rows 641/644 prove non-empty exact visible answers after distinct
+  non-byte-identical reasoning rails. Row 647 executed exactly one real
+  `file_info(panel/package.json)` and exact-finaled with `5.2 KB`; same-chat
+  rows 650/653 recalled it without another tool call.
+- Verdict: `VERIFIED-LIVE_SCOPED` for this M2.7 JANGTQ full-KV q4 hierarchy,
+  disk-only partial-prefix, four-protocol stream, reasoning, tool, and UI
+  multi-turn row. Remaining families, typed/hybrid/mixed caches, gateway soak,
+  broader eager routes, signed-app repetition, and the overall release remain
+  `PARTIAL`/`OPEN`. Evidence:
+  `docs/internal/release-gates/20260719_minimax_m27_tq_hierarchy_protocol/`.
+
 ### 2026-07-19 Qwen3.6 35B JANGTQ current-source override
 
 - Pushed source `54222003d` has a new current-source Electron/API/cache/UI proof.

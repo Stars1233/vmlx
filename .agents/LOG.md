@@ -1396,3 +1396,27 @@
 - Raw Chat, Responses, Anthropic, and Ollama stream/non-stream parity completed;
   strict formatting remains PARTIAL. 190 cache and 99 protocol tests pass.
 - Evidence: `docs/internal/release-gates/20260719_paged_ram_ssd_hierarchy/`.
+
+## 2026-07-19 - MiniMax M2.7 JANGTQ q4 hierarchy and protocol proof
+
+- The real Electron Start action selected the exact M2.7 JANGTQ/MXTQ bundle,
+  stopped the prior LFM process under single-model mode, and eagerly
+  materialized about 38.3 GB before any prompt. The main log resolved the
+  project venv engine.
+- Live rows cover cold q4 native writes, RAM-only reuse, bounded eviction, SSD
+  refault with promotion, zero-L1 process restart, and a 320-token partial SSD
+  hit. A real Paged-Off / L2-On UI restart restored the partial prefix as
+  `block-disk+tq-native` while resident bytes remained zero; Paged On was
+  restored afterward.
+- Raw Chat, Responses, Anthropic, and Ollama stream/non-stream outputs were
+  non-empty, progressive, identical, and terminated correctly. A second run
+  kept 369 reasoning deltas and eight visible deltas separate on every
+  protocol.
+- Raw Responses and Electron each executed exactly one real
+  `file_info(panel/package.json)` continuation. Two distinct UI reasoning
+  prompts produced different reasoning bytes; the three-turn UI chat retained
+  history without duplicate tools or warnings.
+- Preserved bundle/config truth, argv, settings, DB summaries, health, scripts,
+  raw events, and screenshots under
+  `docs/internal/release-gates/20260719_minimax_m27_tq_hierarchy_protocol/`.
+- Scoped M2.7 verdict is live-pass; overall matrix remains partial.

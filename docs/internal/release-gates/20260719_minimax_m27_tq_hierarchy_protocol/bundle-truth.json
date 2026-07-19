@@ -1,0 +1,28 @@
+{
+  "model_path": "/Volumes/EricsLLMDrive/jangq-ai/MiniMax-M2.7-Small-JANGTQ",
+  "config": {
+    "architectures": ["MiniMaxM2ForCausalLM"],
+    "model_type": "minimax_m2",
+    "num_hidden_layers": 62,
+    "num_attention_heads": 48,
+    "num_key_value_heads": 8,
+    "hidden_size": 3072
+  },
+  "jang_config": {
+    "weight_format": "mxtq",
+    "profile": "JANGTQ2",
+    "mxtq_seed": 42,
+    "source_model": "JANGQ-AI/MiniMax-M2.7-Small",
+    "mxtq_bits": {
+      "routed_expert": 2,
+      "attention": 8,
+      "dense_mlp": 8,
+      "embed_tokens": 8,
+      "lm_head": 8,
+      "norms_router": 16
+    }
+  },
+  "classification": "JANGTQ/MXTQ Hadamard-codebook weights; not affine JANG; not base MLX MXFP",
+  "runtime_kv_policy": "uncalibrated_full_kv_storage_tq4",
+  "runtime_kv_layers": 62
+}
