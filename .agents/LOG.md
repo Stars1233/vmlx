@@ -1040,3 +1040,25 @@
   `docs/internal/release-gates/20260719_anthropic_tool_parity/`.
 - Protocol parity remains `PARTIAL`; proceed to Ollama and failure-recovery
   rows rather than claiming campaign completion.
+
+## 2026-07-19 - Ollama stream/tool and shared think-boundary repair
+
+- Raw Ollama Chat reproduced `\n\n` before visible content. Matched direct
+  Chat reproduced the same bytes, locating the defect in shared streaming
+  reasoning extraction rather than the Ollama adapter or M2.7 artifact.
+- `c1db6b745` strips only the structural whitespace-only boundary, preserves
+  all later deltas, and passes 300 focused tests across Qwen3, DeepSeek-R1,
+  MiniMax-M2, streaming, API, and audit coverage.
+- Templated Generate then exposed an independent terminal bug: finish was
+  emitted before usage and the later count row was discarded. `01d95b448`
+  defers/merges terminal rows. Focused Ollama regression passes 36/36.
+- After real Electron Stop/Start, live Chat and Ollama content were exact;
+  `/api/chat` tool/result completed with one object-argument call and no
+  second tool; `/api/generate` completed with one usage-bearing terminal.
+- CDP captured progressive Electron DOM growth before the final answer, and
+  the persisted row kept reasoning/content separate with no warning.
+- Preserved before/after raw streams, tests, health, DOM samples, SQLite,
+  screenshot, and UI text at
+  `docs/internal/release-gates/20260719_ollama_stream_tool_parity/`.
+- Protocol remains `PARTIAL` pending cancellation/disconnect/failure recovery
+  and retained cross-family rows.

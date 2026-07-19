@@ -7029,3 +7029,23 @@ Status: scoped `VERIFIED-LIVE`; overall protocol/release matrix `PARTIAL`.
   `docs/internal/release-gates/20260719_anthropic_tool_parity/`.
 - Still open: Ollama tool/result parity, cancellation/disconnect/injected
   mid-stream recovery, signed-app repeat, and remaining model/parser rows.
+
+## 2026-07-19 - M2.7 Ollama and shared reasoning stream parity
+
+Status: scoped `VERIFIED-LIVE`; overall protocol/release matrix `PARTIAL`.
+
+- `c1db6b745` fixes shared think-tag streaming boundary whitespace across
+  Qwen3, DeepSeek-R1, and MiniMax-M2 paths. Live direct Chat and Ollama now
+  emit exact visible content after separate progressive reasoning.
+- `01d95b448` retains templated `/api/generate` usage in its single terminal.
+  Live after reports 134 eval and 74 prompt-eval tokens rather than dropping
+  both counts.
+- Current-source Ollama Chat stream/non-stream, required tool, tool result, and
+  Generate stream/non-stream pass for the loaded M2.7 JANGTQ/MXTQ artifact.
+- Real Electron DOM sampling proves progressive reasoning paint before exact
+  visible content; SQLite contains non-empty separate reasoning/content, no
+  tool call for the explicit no-tool row, and no warning.
+- Evidence:
+  `docs/internal/release-gates/20260719_ollama_stream_tool_parity/`.
+- Still open: cancellation/disconnect/injected failure recovery, raw generate,
+  live multi-tool, signed app, and broader family/parser rows.

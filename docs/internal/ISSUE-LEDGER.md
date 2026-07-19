@@ -2373,3 +2373,28 @@ remain open. No public release/notarization/feed mutation performed.
 - Scoped Anthropic status advances to `VERIFIED-LIVE`. Overall protocol parity
   remains `PARTIAL`: Ollama, cancellation/disconnect/injected mid-stream
   recovery, signed-app repeat, and other parser families remain open.
+
+## 2026-07-19 03:5x - shared reasoning separator and Ollama terminal parity
+
+- `THINK-STREAM-STRUCTURAL-SEPARATOR`: `VERIFIED-LIVE` on commit
+  `c1db6b745`. Direct Chat and Ollama both exposed two structural newlines
+  before thinking-enabled visible content. The shared think-tag streaming
+  parser now suppresses only the whitespace-only boundary before the first
+  visible byte; later formatting is preserved. Qwen3, DeepSeek-R1, and
+  MiniMax-M2 split/same-delta paths are pinned by 300 focused passing tests.
+- `OLLAMA-GENERATE-USAGE-TERMINAL`: `VERIFIED-LIVE` on commit `01d95b448`.
+  Templated `/api/generate` previously emitted the finish terminal and dropped
+  the later usage terminal. The wrapper now defers and merges upstream finish
+  and usage into one `done:true` row. Live after has exact progressive output,
+  one terminal, `eval_count=134`, and `prompt_eval_count=74`.
+- Current-source `/api/chat` stream/non-stream and the tool loop pass for M2.7:
+  separate thinking/content, exact final, one terminal, nonzero usage, one
+  `file_info` with object arguments, and no second call after its real result.
+- Real Electron CDP sampling recorded progressive reasoning growth through
+  13/23/43/62/81/108 tokens before exact visible output. SQLite kept 529
+  reasoning characters separate, no tool call, and no warning.
+- Evidence:
+  `docs/internal/release-gates/20260719_ollama_stream_tool_parity/`.
+- Overall protocol parity remains `PARTIAL`: cancellation/disconnect/injected
+  mid-stream failure/recovery, signed-app repeat, raw generate, multi-tool, and
+  other model/parser family live rows remain open.

@@ -1010,3 +1010,14 @@ Evidence: `../20260718_minimax_m27_tq4_agent_stream/`.
 | Anthropic post-tool `tool_choice:none` | PASS-LIVE scoped | `4a53f16e1` renders only the effective prompt tool set. Current live follow-up emitted exact content over 17 progressive deltas, no reasoning/tool leakage, one `end_turn`, and one `message_stop`. | Overall protocol row remains PARTIAL pending Ollama and failure/disconnect/recovery soak. |
 
 Evidence: `../20260719_anthropic_tool_parity/`.
+
+## 2026-07-19 MiniMax-M2.7 Ollama and shared reasoning stream repair
+
+| Gate | Status | Current source + live evidence | Remaining boundary |
+|---|---|---|---|
+| Shared think-close stream separator | PASS-LIVE scoped | `c1db6b745` repairs the shared Qwen3/DeepSeek-R1/MiniMax-M2 think-tag boundary. Direct Chat and Ollama live before each exposed `\n\n`; live after streamed exact content with separate reasoning. Real Electron DOM grew across six sampled reasoning stages before exact visible output. | Other registered reasoning formats need their own current-family live rows; no universal model claim. |
+| Ollama `/api/chat` stream/non-stream | PASS-LIVE scoped | M2.7 current source emitted 200 thinking rows plus 12 exact content rows and one usage terminal; non-stream thinking-off was exact with nonzero usage. | Disconnect/error recovery and signed-app repeat remain open. |
+| Ollama tool/result continuation | PASS-LIVE scoped | Required-tool stream placed one object-argument `file_info` only on the single `done:true/tool_calls` row. Result continuation emitted fresh separate thinking, 17 exact content rows, no second tool, one stop, and usage. | Live multi-tool interleaving and other parser families remain open. |
+| Templated Ollama `/api/generate` | PASS-LIVE scoped | `01d95b448` defers split Chat finish/usage events. Live stream now has 118 thinking rows, 13 exact response rows, one terminal with eval/prompt counts; non-stream is exact. | Raw-mode semantics and failure recovery remain open. |
+
+Evidence: `../20260719_ollama_stream_tool_parity/`.
