@@ -6919,3 +6919,22 @@ global `PARTIAL_NO_RELEASE`.
   paged-L2 blocks and 68 SSM-L2 entries.
 - Responses wire, Auto reasoning, blank Max Tokens, blank Max Thinking Tokens,
   built-in tools on, and explicit Min-P off are the final visible chat state.
+
+## 2026-07-19 - openPangu long-context oversize snapshot guard
+
+Status: `SCOPED_GUARD_VERIFIED_LIVE_LONG_REUSE_AND_TIGHT_CAP_LATENCY_PARTIAL`.
+
+- Source: the single-active generator now estimates typed prompt-cache bytes
+  before cloning and receives its admissible single-entry ceiling from the
+  configured RAM/disk backends. Scheduler/cache telemetry exposes the ceiling,
+  last estimate, and skip count.
+- Tests: 124/124 current openPangu/single-active/memory/disk/isolation/terminal
+  rows passed.
+- Electron: identical 43,980-token prompt returned the exact anchor answer.
+  Pre/post TTFT was 186.35s/103.20s and peak Metal was
+  138,814.3/115,551.8 MB. The post-patch UI kept reasoning separate.
+- API: raw Responses produced 256 progressive reasoning deltas, 23 progressive
+  content deltas, exact answer, and `response.completed`. The deliberately
+  tight 256-token cap caused a second full prefill; this latency remains open.
+- Evidence:
+  `docs/internal/release-gates/20260718_openpangu_long_snapshot_guard/`.

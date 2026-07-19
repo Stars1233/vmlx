@@ -1988,3 +1988,27 @@ remain open. No public release/notarization/feed mutation performed.
   `docs/internal/release-gates/20260718_openpangu_auto_agent_stream/`.
 - Long-context stress and broader protocol/cancellation soak remain
   `PARTIAL`; campaign/release status remains `PARTIAL`.
+
+## 2026-07-19 06:2x - openPangu long-context snapshot admission guard
+
+- `OPENPANGU-LONG-SNAPSHOT-ADMISSION`: `VERIFIED-LIVE` for the owning
+  pre-copy guard. A 43,980-token Electron request produced the exact anchor
+  answer, but the pre-fix path copied a 22,090.8 MB native composite that both
+  configured cache backends then rejected. It took 186.35s to first token and
+  peaked at 138,814.3 MB Metal.
+- `SingleBatchGenerator` now receives the largest valid RAM/disk single-entry
+  ceiling, estimates typed prompt state before deep copy, skips an inadmissible
+  boundary, and reports estimate/limit/skip telemetry. The post-patch Electron
+  replay returned the byte-identical answer with separate reasoning/content at
+  103.20s TTFT, 426.2 prompt tok/s, and 115,551.8 MB peak. No RAM/L2 entry was
+  falsely reported. Focused current-source coverage is 124/124.
+- `OPENPANGU-LONG-RESPONSES-STREAM`: `VERIFIED-LIVE` for wire emission,
+  `PARTIAL` for latency. Raw Responses emitted 256 timed reasoning deltas,
+  then—because a 256-token cap was exhausted inside reasoning—23 timed content
+  deltas from the bounded direct-answer pass, followed by output-text done and
+  response completed. Exact content was
+  `cedar-7319|quartz-4821|harbor-9652`.
+- Retained limitation: a native boundary larger than every backend is not
+  reusable, and a tight reasoning cap can therefore cause two full prefills.
+  The advertised 524,288-token limit remains unproven. Evidence:
+  `docs/internal/release-gates/20260718_openpangu_long_snapshot_guard/`.

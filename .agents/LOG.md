@@ -943,3 +943,18 @@
   `docs/internal/release-gates/20260718_v1_6_11_release/`. This closes the
   release checkpoint only; retained model/media/protocol/UI rows remain active
   post-release work.
+
+## 2026-07-19 - openPangu 44k typed-snapshot admission
+
+- Reproduced the 43,980-token Electron row before patch: exact answer only
+  after 186.35s TTFT; 22,090.8 MB exact native snapshot was copied and then
+  rejected; peak Metal 138,814.3 MB.
+- Added a global typed-snapshot pre-copy size gate to the single-active
+  generator and truthful scheduler/cache telemetry. No native state format or
+  model output policy changed.
+- 124 focused tests passed. Real Electron replay returned the same exact answer
+  at 103.20s TTFT and 115,551.8 MB peak. Raw Responses replay showed progressive
+  reasoning and content plus a completed terminal event.
+- Retained `PARTIAL`: the 256-token API cap was spent entirely in reasoning, so
+  the existing visible-answer recovery performed a second full prefill because
+  the 20.9 GB native boundary could not fit the 10 GB backends.
