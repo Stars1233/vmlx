@@ -1,0 +1,14 @@
+Commit:
+1b35d7a9bfaad4675d4825d462ee112919fb4cf8
+
+vmlx_engine/api/ollama_adapter.py:
+- ollama_chat_to_openai forwards Ollama tools and conversation messages.
+- openai_chat_chunk_to_ollama_ndjson converts every named tool call, parses
+  JSON-string arguments to objects, and preserves done_reason=tool_calls.
+
+tests/test_ollama_adapter.py:
+- test_ollama_chat_preserves_two_tool_results_for_continuation
+- test_ollama_stream_terminal_preserves_two_object_argument_tool_calls
+
+No runtime production code changed for this row; the existing adapter behavior was
+live-proven and then pinned against regression.

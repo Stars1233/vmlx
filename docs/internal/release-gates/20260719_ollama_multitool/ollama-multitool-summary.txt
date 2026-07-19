@@ -1,0 +1,58 @@
+{
+  "executed": [
+    {
+      "arguments": {
+        "path": "panel/package.json"
+      },
+      "name": "file_info"
+    },
+    {
+      "arguments": {
+        "command": "pwd"
+      },
+      "name": "run_command"
+    }
+  ],
+  "iterations": [
+    {
+      "content": "",
+      "content_delta_count": 0,
+      "done_reasons": [
+        "tool_calls"
+      ],
+      "terminal_count": 1,
+      "thinking_chars": 100,
+      "thinking_delta_count": 19,
+      "tool_calls": [
+        {
+          "function": {
+            "arguments": {
+              "path": "panel/package.json"
+            },
+            "name": "file_info"
+          }
+        },
+        {
+          "function": {
+            "arguments": {
+              "command": "pwd"
+            },
+            "name": "run_command"
+          }
+        }
+      ]
+    },
+    {
+      "content": "M27-OLLAMA-MULTI1-DONE SIZE=5.2 KB PWD=/Users/eric/mlx/vllm-mlx",
+      "content_delta_count": 30,
+      "done_reasons": [
+        "stop"
+      ],
+      "terminal_count": 1,
+      "thinking_chars": 119,
+      "thinking_delta_count": 43,
+      "tool_calls": []
+    }
+  ],
+  "message_count": 4
+}

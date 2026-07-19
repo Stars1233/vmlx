@@ -1081,3 +1081,19 @@
 - Keep the parent protocol row `PARTIAL`: safe live mid-stream exception injection,
   Chat cancel/disconnect, signed-app repeat, raw Generate multi-tool, and other
   model/parser families are still open.
+
+## 2026-07-19 - Ollama and Electron simultaneous multi-tool proof
+
+- The first live Ollama iteration returned one `tool_calls` terminal containing
+  exactly `file_info({path: panel/package.json})` and
+  `run_command({command: pwd})`; both wire argument values were objects.
+- The harness executed only those real operations and supplied separate named tool
+  messages. The next iteration produced 43 thinking rows, 30 visible content rows,
+  exact final, one stop terminal, and no second call.
+- The real Electron built-in loop independently showed two reasoning rails, both
+  tool status cards, exact final, and no warning. SQLite row 372 records both calls
+  and results plus `paged+disk+tq-native` reuse.
+- Added and pushed adapter regression coverage at `1b35d7a9b`; 31 selected tests
+  passed. Evidence: `docs/internal/release-gates/20260719_ollama_multitool/`.
+- Parent matrix remains `PARTIAL` for the explicitly retained cross-family,
+  signed-app, media, cancellation, and long-soak rows.

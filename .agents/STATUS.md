@@ -7068,3 +7068,20 @@ Status: scoped `VERIFIED-LIVE`; overall protocol/release matrix `PARTIAL`.
 - Open boundaries: live mid-stream fault injection/recovery, Chat cancellation and
   disconnect semantics, signed-app repeat, raw Generate multi-tool, and remaining
   parser/model families.
+
+## 2026-07-19 - Ollama and Electron two-tool continuation
+
+Status: scoped `VERIFIED-LIVE`; overall protocol/release matrix `PARTIAL`.
+
+- The live M2.7 Ollama stream emitted exactly two object-argument calls in one
+  terminal, consumed both real named results, then streamed fresh reasoning and 30
+  exact visible deltas with one stop and no repeated call.
+- The real Electron chat independently executed `file_info(panel/package.json)` and
+  `run_command(pwd)` once each. Row 372 exact-finaled, stored both call/result ids,
+  retained 740 separate reasoning characters, had no warning, and reported 192
+  `paged+disk+tq-native` cached tokens.
+- Commit `1b35d7a9b` pins request history and two-call Ollama terminal conversion;
+  focused validation is 31 passed with 119 deselected. Evidence:
+  `docs/internal/release-gates/20260719_ollama_multitool/`.
+- Remaining parent rows: other parser/model families, signed app, media tools,
+  cancellation, and long-loop soak.

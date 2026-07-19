@@ -29,6 +29,21 @@ superseded conclusions are called out here.
   fault injection, Chat cancellation/disconnect, signed-app repeat, raw Generate
   multi-tool, and other parser/model family rows remain open.
 
+### 2026-07-19 Ollama/Electron multi-tool override
+
+- Current-source M2.7 emitted two schema-valid Ollama calls in one terminal, both
+  real results were returned as named tool messages, and the follow-up streamed 30
+  exact visible deltas with one stop and no repeated tool. A fresh Electron chat
+  independently executed the same `file_info` and `run_command` calls exactly once
+  each, exact-finaled, retained separate reasoning, stored no warning, and returned
+  the engine to idle.
+- Commit `1b35d7a9b` pins two-call object-argument conversion and two-result history;
+  31 selected adapter/protocol tests pass. Evidence:
+  `docs/internal/release-gates/20260719_ollama_multitool/`.
+- This advances M2.7 Ollama/Electron multi-tool to `PASS-LIVE scoped`. Other model
+  and parser families, signed-app repeat, cancellation, media tools, and long-loop
+  soak remain open.
+
 ## Release truth
 
 ### 2026-07-19 current-source full-suite and bundle-safety override

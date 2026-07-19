@@ -2425,3 +2425,23 @@ remain open. No public release/notarization/feed mutation performed.
   parity remains `PARTIAL` for safe live mid-stream exception injection, Chat
   cancellation/disconnect behavior, signed-app repeat, raw Generate multi-tool,
   and remaining model/parser families.
+
+## 2026-07-19 11:14 - Ollama and Electron simultaneous multi-tool loop
+
+- `M27-OLLAMA-MULTITOOL`: `VERIFIED-LIVE` on test commit `1b35d7a9b`.
+  The Electron-started M2.7 JANGTQ/MXTQ process emitted exactly two valid Ollama
+  calls in one terminal: `file_info(panel/package.json)` and `run_command(pwd)`.
+  Both arguments were objects, the terminal reason was `tool_calls`, and only the
+  exact requested real operations were executed.
+- After both named tool results, the next Ollama stream emitted fresh separate
+  reasoning, 30 progressive content rows, the exact final marker, one stop
+  terminal, and no repeated call. Focused adapter/protocol validation passed
+  31 selected tests with 119 deselected.
+- A fresh real Electron chat independently executed the same two built-ins once
+  each. Row 372 preserves both call ids, arguments, matching results, 740 reasoning
+  characters, exact visible content, no warning, and 192
+  `paged+disk+tq-native` cached tokens. Health returned idle afterward.
+- Evidence: `docs/internal/release-gates/20260719_ollama_multitool/`.
+- This closes only the M2.7 Ollama/Electron two-tool child row. Other parser
+  families, signed-app repeat, media tools, cancellation, and long-loop soak remain
+  open.
