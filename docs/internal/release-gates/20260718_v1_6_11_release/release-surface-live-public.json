@@ -1,0 +1,133 @@
+{
+  "created_at": "2026-07-18T18:17:39-0700",
+  "status": "pass",
+  "checks": {
+    "source_version_consistent": true,
+    "local_updater_not_ahead_of_source": true,
+    "staged_source_version_not_public": false,
+    "local_updater_release_state_valid": true,
+    "local_updater_platform_downloads_valid": true,
+    "local_updater_has_required_fields": true,
+    "local_updater_url_matches_version": true,
+    "local_updater_sha256_valid": true,
+    "local_updater_notes_match_version": true,
+    "public_raw_updater_matches_local": true,
+    "public_site_updater_matches_local": true,
+    "public_site_updater_cache_headers_safe": true,
+    "public_pypi_has_release_files": true,
+    "public_github_release_published": true,
+    "public_github_release_has_updater_asset": true,
+    "public_github_release_has_all_manifest_download_assets": true,
+    "public_github_source_release_tag_matches_source_head": true
+  },
+  "failed_checks": [],
+  "failed_steps": [],
+  "status_failed_checks": [],
+  "informational_false_checks": [
+    "staged_source_version_not_public"
+  ],
+  "next_actions": [],
+  "source_versions": {
+    "pyproject": "1.6.11",
+    "panel_package": "1.6.11",
+    "panel_package_lock": "1.6.11",
+    "engine_init": "1.6.11"
+  },
+  "local_latest": {
+    "version": "1.6.11",
+    "url": "https://github.com/jjang-ai/mlxstudio/releases/download/v1.6.11/vMLX-1.6.11-sequoia-arm64.dmg",
+    "sha256": "c1a8dcd17563a772b83e64bfb443aabedb46111a1e0e500ab69c4fc49143cb2b",
+    "downloads": {
+      "sequoia": {
+        "url": "https://github.com/jjang-ai/mlxstudio/releases/download/v1.6.11/vMLX-1.6.11-sequoia-arm64.dmg",
+        "sha256": "c1a8dcd17563a772b83e64bfb443aabedb46111a1e0e500ab69c4fc49143cb2b",
+        "sha512": "44nbyek4aiJsfFOsvDJU44S1Lp6iSG4yHATmPkdHRsmj1vJ9AeygrAKFyPTxmcICXJelZbMcFjWWedPKwN5Bkw=="
+      },
+      "tahoe": {
+        "url": "https://github.com/jjang-ai/mlxstudio/releases/download/v1.6.11/vMLX-1.6.11-tahoe-arm64.dmg",
+        "sha256": "26b0b30a80e3576d2a2f967d9882966fde9637ed85f5fee2f7ec95a265e74308",
+        "sha512": "iEOnukL53MXyaisCXzIQs+aHOg1mSGGckyH0tTLsMmT9HKTW7T8voYCmZH8mo6QzZNzpG1RUTeoDP0XIBa+dgQ=="
+      }
+    },
+    "notes_head": [
+      "vMLX 1.6.11",
+      "",
+      "Streaming, typed-cache, and packaged-runtime checkpoint.",
+      "",
+      "Highlights:",
+      "- Streams post-reasoning and post-tool visible answers progressively across Responses, Chat Completions, and Electron instead of withholding a second-pass answer until completion.",
+      "- Hardens multi-turn tool continuation, terminal events, cancellation/recovery, and reasoning/content separation.",
+      "- Extends architecture-typed prefix, paged, and block-disk L2 reuse for hybrid and mixed-attention families while keeping native exceptions explicit. TurboQuant is a KV-cache storage codec and remains distinct from JANG affine weights, JANGTQ/MXTQ Hadamard-codebook weights, and base MLX MXFP weights."
+    ]
+  },
+  "live_public": true,
+  "public_surfaces": {
+    "raw_latest": {
+      "version": "1.6.11",
+      "url": "https://github.com/jjang-ai/mlxstudio/releases/download/v1.6.11/vMLX-1.6.11-sequoia-arm64.dmg",
+      "sha256": "c1a8dcd17563a772b83e64bfb443aabedb46111a1e0e500ab69c4fc49143cb2b"
+    },
+    "site_latest": {
+      "version": "1.6.11",
+      "url": "https://github.com/jjang-ai/mlxstudio/releases/download/v1.6.11/vMLX-1.6.11-sequoia-arm64.dmg",
+      "sha256": "c1a8dcd17563a772b83e64bfb443aabedb46111a1e0e500ab69c4fc49143cb2b"
+    },
+    "site_latest_headers": {
+      "cache-control": "no-cache, no-store, must-revalidate",
+      "pragma": "no-cache",
+      "expires": "0",
+      "cf-cache-status": "DYNAMIC",
+      "access-control-allow-origin": "*"
+    },
+    "pypi": {
+      "version": "1.6.11",
+      "files": [
+        "vmlx-1.6.11-py3-none-any.whl",
+        "vmlx-1.6.11.tar.gz"
+      ]
+    },
+    "github_release": {
+      "draft": false,
+      "prerelease": false,
+      "assets": [
+        {
+          "name": "vMLX-1.6.11-sequoia-arm64.dmg",
+          "digest": "sha256:c1a8dcd17563a772b83e64bfb443aabedb46111a1e0e500ab69c4fc49143cb2b",
+          "state": "uploaded"
+        },
+        {
+          "name": "vMLX-1.6.11-sequoia-arm64.dmg.blockmap",
+          "digest": "sha256:bc1b69159fef0acdaafe4129764d1a752c7c9a52d20da929c59b2a5af22234ab",
+          "state": "uploaded"
+        },
+        {
+          "name": "vMLX-1.6.11-tahoe-arm64.dmg",
+          "digest": "sha256:26b0b30a80e3576d2a2f967d9882966fde9637ed85f5fee2f7ec95a265e74308",
+          "state": "uploaded"
+        },
+        {
+          "name": "vMLX-1.6.11-tahoe-arm64.dmg.blockmap",
+          "digest": "sha256:c32201b8403ba7254f43e4b3a84ea589aa0e5e7d17d0206832cee69222fbef81",
+          "state": "uploaded"
+        }
+      ]
+    },
+    "github_source_release_tag": {
+      "sha": "f52e1707fd6b0efd85447f14b98200c0a9d3c1d5",
+      "type": "tag",
+      "resolved_sha": "b4c3edcb14849760a4f490bd4be9916f50f01731",
+      "resolved_type": "commit",
+      "current_revision": "b4c3edcb14849760a4f490bd4be9916f50f01731"
+    }
+  },
+  "current_revision": "b4c3edcb14849760a4f490bd4be9916f50f01731",
+  "source_hashes": {
+    "latest.json": "d18c891c50653c420812f20dc658c9a5d941cdd0ada0cc62740aa7c7737aae7b",
+    "panel/package.json": "82e481460540325f25037237a5aee470d938cdd44781e53e4c9f0bf8c35f1277",
+    "panel/src/main/update-checker.ts": "dd88dcf251d0ac69a83e7ffccca7a4929169150c23afc2135e5b045c49a72dbd",
+    "pyproject.toml": "78bce728c866f1a8ec3f3a4370874fa80f93d1735fa2777bc2007b1744ed8b5f",
+    ".github/workflows/publish-pypi.yml": "30a50b5f1b4b805c45b7f7ed7763f31d51698ba71544e9ec73f1f46f34df2b40",
+    "tests/cross_matrix/run_release_surface_contract.py": "620581fd5117f8571a0afafbfa81db32f4a7a09a091ce94762544e56776ba86b",
+    "tests/test_release_surface_contract.py": "4668e54403835346c296e824a5cc979771c02a6c74d304e0a7ad5c5f46637579"
+  }
+}
