@@ -7085,3 +7085,20 @@ Status: scoped `VERIFIED-LIVE`; overall protocol/release matrix `PARTIAL`.
   `docs/internal/release-gates/20260719_ollama_multitool/`.
 - Remaining parent rows: other parser/model families, signed app, media tools,
   cancellation, and long-loop soak.
+
+## 2026-07-19 - Chat disconnect and Electron stop/recovery
+
+Status: scoped `VERIFIED-LIVE`; overall protocol/release matrix `PARTIAL`.
+
+- Raw Chat client close after five content deltas returned the engine idle in
+  1.078s. Immediate recovery emitted 12 exact deltas, one stop, one usage chunk,
+  and `[DONE]`.
+- Electron stop during prefill created no false assistant. A second stop after
+  visible integers through 76 retained real partial text and an explicit
+  interruption marker. Same-chat recovery exact-finaled without a warning.
+- Auto reasoning, built-in tools On, and blank Max Tokens were restored after the
+  controlled stop row. Focused validation is 7 Python plus 368 panel tests.
+- Evidence:
+  `docs/internal/release-gates/20260719_chat_disconnect_stop_recovery/`.
+- Open: safe live engine exception, signed app, gateway network loss, cross-family
+  repeats, and soak.

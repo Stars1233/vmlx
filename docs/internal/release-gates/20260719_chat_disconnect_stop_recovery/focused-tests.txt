@@ -1,0 +1,13 @@
+Python command:
+.venv/bin/python -m pytest -q tests/test_cancellation.py tests/test_server.py -k "cancel or disconnect or abort"
+
+Python result:
+7 passed, 118 deselected in 1.76s
+
+Panel command:
+npm test -- --run tests/comprehensive-audit.test.ts tests/responses-stream-recovery.test.ts tests/chat-stream-errors.test.ts
+
+Panel result:
+3 test files passed
+368 tests passed
+

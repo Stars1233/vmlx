@@ -1,0 +1,19 @@
+Current source head during live proof:
+576e127332260c6330b3db47b320d994f8da3970
+
+panel/src/main/ipc/chat.ts:
+- 1488-1493 strips display-only [Generation interrupted] suffixes before history
+  is sent back to any API.
+- 3073-3096 stops consuming SSE after the AbortController fires.
+- 4274-4289 distinguishes user abort from backend failure and persists partial
+  visible content with an explicit interruption marker.
+- 4382+ prioritizes AbortController state during outer cleanup.
+
+panel/tests/comprehensive-audit.test.ts:
+- Issue #4 coverage pins stripping of the interruption marker while retaining
+  genuine partial assistant content and leaving user text untouched.
+
+tests/test_cancellation.py and tests/test_server.py:
+- cancellation lookup/abort behavior and server abort contracts remain covered.
+
+No production source changed for this gate; current behavior was live-proven.

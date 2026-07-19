@@ -1,0 +1,40 @@
+{
+  "prefill_stop": {
+    "user_rowid": 373,
+    "assistant_row_created": false,
+    "health_after": {"status": "healthy", "active_requests": 0}
+  },
+  "mid_content_stop": {
+    "user_rowid": 374,
+    "assistant_rowid": 376,
+    "partial_tail": "73, 74, 75, 76,\n\n[Generation interrupted]",
+    "metrics": {
+      "tokenCount": 228,
+      "promptTokens": 74,
+      "tokensPerSecond": "34.2",
+      "ttft": "0.69",
+      "totalTime": "7.7"
+    },
+    "reasoning": null,
+    "tool_calls": null,
+    "warnings": null
+  },
+  "same_chat_recovery": {
+    "assistant_rowid": 379,
+    "content": "M27-ELECTRON-AFTER-STOP2-DONE",
+    "metrics": {
+      "tokenCount": 14,
+      "promptTokens": 348,
+      "tokensPerSecond": "42.4",
+      "ttft": "2.34",
+      "totalTime": "3.1"
+    },
+    "warnings": null
+  },
+  "restored_settings": {
+    "reasoning": "auto",
+    "built_in_tools": true,
+    "max_tokens": null
+  }
+}
+

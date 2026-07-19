@@ -1097,3 +1097,18 @@
   passed. Evidence: `docs/internal/release-gates/20260719_ollama_multitool/`.
 - Parent matrix remains `PARTIAL` for the explicitly retained cross-family,
   signed-app, media, cancellation, and long-soak rows.
+
+## 2026-07-19 - Chat disconnect and real Electron user stop
+
+- Raw Chat closed after five content deltas; scheduler returned idle and the next
+  stream exact-finaled with one stop, usage, and `[DONE]`.
+- Electron prefill stop left only the user row. Electron mid-content stop captured
+  visible counting through 76, persisted the real partial plus
+  `[Generation interrupted]`, and returned idle. The immediate same-chat follow-up
+  stored exact content with no warning.
+- Restored the temporary UI controls to Auto/tools On/blank Max Tokens. Existing
+  focused suites passed 7 Python and 368 panel tests.
+- Evidence:
+  `docs/internal/release-gates/20260719_chat_disconnect_stop_recovery/`.
+- Continue with safe live engine-failure injection and the retained signed-app,
+  gateway, cross-family, and soak rows; do not promote global protocol parity yet.

@@ -2445,3 +2445,21 @@ remain open. No public release/notarization/feed mutation performed.
 - This closes only the M2.7 Ollama/Electron two-tool child row. Other parser
   families, signed-app repeat, media tools, cancellation, and long-loop soak remain
   open.
+
+## 2026-07-19 11:2x - Chat disconnect and Electron user-stop recovery
+
+- `CHAT-CLIENT-DISCONNECT-RECOVERY`: `VERIFIED-LIVE` on current source
+  `576e12733`. A raw Chat client closed after five progressive content deltas; the
+  Electron-started engine returned idle in 1.078s. The immediate fresh Chat request
+  streamed 12 exact content deltas, one stop, one usage tail, and `[DONE]`.
+- `ELECTRON-USER-STOP-RECOVERY`: `VERIFIED-LIVE`. Stopping during prefill created
+  no false assistant row. Stopping after the visible UI painted through integer 76
+  retained actual partial content plus `[Generation interrupted]`, real partial
+  metrics, and no warning/tool/reasoning fabrication. An immediate same-chat turn
+  exact-finaled `M27-ELECTRON-AFTER-STOP2-DONE`; health was idle.
+- Temporary controls were restored to Auto reasoning, built-in tools On, and blank
+  Max Tokens. Existing focused coverage passed 7 Python selections and 368 panel
+  tests. Evidence:
+  `docs/internal/release-gates/20260719_chat_disconnect_stop_recovery/`.
+- Remaining failure parent row: safe live mid-stream engine exception, signed-app
+  repeat, gateway network loss, other parser/model families, and prolonged soak.

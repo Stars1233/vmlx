@@ -44,6 +44,22 @@ superseded conclusions are called out here.
   and parser families, signed-app repeat, cancellation, media tools, and long-loop
   soak remain open.
 
+### 2026-07-19 Chat disconnect/Electron stop override
+
+- A current-source Chat stream was closed after five progressive content deltas;
+  the Electron-started engine returned idle in 1.078s and an immediate recovery
+  streamed 12 exact content deltas, one stop, usage, and `[DONE]`.
+- Real Electron user-stop is live-proven both during prefill and after visible
+  partial content. Prefill stop persisted no false assistant. Mid-content stop
+  preserved only real partial bytes plus `[Generation interrupted]`; same-chat
+  recovery exact-finaled and health stayed idle. Test controls were restored.
+- Existing focused coverage passed 7 Python selections and 368 panel tests.
+  Evidence:
+  `docs/internal/release-gates/20260719_chat_disconnect_stop_recovery/`.
+- Chat client-disconnect and Electron user-stop/recovery advance to `PASS-LIVE
+  scoped`. Safe live engine-exception injection, signed app, gateway network loss,
+  other model/parser families, and soak remain `PARTIAL`.
+
 ## Release truth
 
 ### 2026-07-19 current-source full-suite and bundle-safety override
