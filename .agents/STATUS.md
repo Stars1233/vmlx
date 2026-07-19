@@ -7338,3 +7338,25 @@ Status: `FIXED_SOURCE + VERIFIED-LIVE_SCOPED`; overall release remains
   Start showed PID 38968, Stop removed PID from the header and DB, and the next
   Start showed PID 39507 matching `ps` and SQLite; one local engine remained.
 - Evidence: `docs/internal/release-gates/20260719_current_step37_jangtq/`.
+
+## 2026-07-19 - prompt-disk Stop durability and first-turn role repair
+
+Status: `FIXED_SOURCE_VERIFIED_LIVE_SCOPED`; overall release remains
+`PARTIAL_NO_1_6_12_RELEASE` at pushed source commit `7a146eefb`.
+
+- Shared text and MLLM stop paths now preserve an in-flight terminal cache
+  cleanup before task cancellation.
+- Single user/system base turns now keep their real cache priority. The
+  full-disk live control retained the fresh 1,322-token user entry and evicted
+  older LRU data instead of self-evicting.
+- After visible Electron Stop/Start, the first follow-up restored 1,321/1,395
+  tokens from SSD with separate reasoning, progressive exact content, and zero
+  resident L1 prefix bytes.
+- Independent detached Responses and Chat streams after UI restarts restored
+  the same disk prefix and terminated cleanly; Chat had exactly one terminal
+  usage chunk before `[DONE]`.
+- Focused validation is 119/119. Evidence:
+  `docs/internal/release-gates/20260719_prompt_disk_stop_role_durability/`.
+- Responses `response.usage` extension parity remains an explicit protocol
+  investigation. Generic paged/block-L2/TQ is N/A for openPangu and remains on
+  compatible-family rows.

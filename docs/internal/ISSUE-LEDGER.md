@@ -2744,3 +2744,32 @@ remain open. No public release/notarization/feed mutation performed.
 - Expanded current verification passes 513 with two intentional deselections.
   Evidence:
   `docs/internal/release-gates/20260719_current_step37_jangtq/`.
+
+## 2026-07-19 - Immediate-Stop prompt-disk durability and first-turn role eviction
+
+- `PROMPT-DISK-TERMINAL-STOP-DURABILITY`: `FIXED_SOURCE + VERIFIED-LIVE` at
+  `7a146eefb`. Text `EngineCore` and multimodal `MLLMScheduler` now honor the
+  existing terminal-cleanup barrier before cancelling their loop on shutdown.
+  The final delta still dispatches before cache persistence; only shutdown
+  waits for an in-flight terminal cleanup.
+- `PROMPT-DISK-FIRST-TURN-ROLE`: `FIXED_SOURCE + VERIFIED-LIVE`. A single user
+  or system message now produces a real segment boundary instead of falling
+  back to `assistant` priority. The pre-fix 1,539-token one-turn base logged a
+  store and then evicted itself at the 10 GB ceiling; its first follow-up
+  missed. After the repair, an immediate visible Electron Stop retained the
+  new 1,322-token entry as `user` and evicted the older 1,582-token LRU entry.
+- `OPENPANGU-NONPAGED-SSD-PARTIAL-CURRENT`: `VERIFIED-LIVE`. After visible
+  process replacement, Electron restored 1,321/1,395 tokens from disk with
+  zero resident L1 bytes, separate fresh reasoning, progressive exact content,
+  and no warning. Independent detached Responses and Chat clients after UI
+  restarts both restored 1,321 disk tokens and exact-finaled. Chat preserved
+  strict finish -> one usage-only chunk -> `[DONE]` ordering.
+- `RESPONSES-STREAM-USAGE-EVENT-PARITY`: `OPEN / INVESTIGATE`. The detached
+  Responses request opted into `stream_options.include_usage` and received 483
+  vMLX `response.usage` extension events plus terminal usage. This gate proves
+  delivery and accounting, but does not assume that custom event is part of
+  the current public Responses protocol.
+- Focused validation passes 119/119. Evidence:
+  `docs/internal/release-gates/20260719_prompt_disk_stop_role_durability/`.
+  Generic paged/block-L2/TQ rows remain N/A for openPangu and open on their
+  compatible-model matrix rows. Overall release remains `PARTIAL`.

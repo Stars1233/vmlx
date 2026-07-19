@@ -1,0 +1,133 @@
+Code
+Chat
+Server
+Tools
+Image
+API
+🇺🇸
+Sessions
+jangq-ai/openPangu-2.0-Flash-JANG_3M
+JANG_3M (3.83b)
+127.0.0.1:8027
++ Chat
+Chat
+Server
+Logs
+Start
+
+[OP-STOP-FLUSH-BASE] Retain every stop-durability fact privately. OPSTOPFACT-1=STATE-7919. OPSTOPFACT-2=STATE-15838. OPSTOPFACT-3=STATE-23757. OPSTOPFACT-4=STATE-31676. OPSTOPFACT-5=STATE-39595. OPSTOPFACT-6=STATE-47514. OPSTOPFACT-7=STATE-55433. OPSTOPFACT-8=STATE-63352. OPSTOPFACT-9=STATE-71271. OPSTOPFACT-10=STATE-79190. OPSTOPFACT-11=STATE-87109. OPSTOPFACT-12=STATE-95028. OPSTOPFACT-13=STATE-2947. OPSTOPFACT-14=STATE-10866. OPSTOPFACT-15=STATE-18785. OPSTOPFACT-16=STATE-26704. OPSTOPFACT-17=STATE-34623. OPSTOPFACT-18=STATE-42542. OPSTOPFACT-19=STATE-50461. OPSTOPFACT-20=STATE-58380. OPSTOPFACT-21=STATE-66299. OPSTOPFACT-22=STATE-74218. OPSTOPFACT-23=STATE-82137. OPSTOPFACT-24=STATE-90056. OPSTOPFACT-25=STATE-97975. OPSTOPFACT-26=STATE-5894. OPSTOPFACT-27=STATE-13813. OPSTOPFACT-28=STATE-21732. OPSTOPFACT-29=STATE-29651. OPSTOPFACT-30=STATE-37570. OPSTOPFACT-31=STATE-45489. OPSTOPFACT-32=STATE-53408. OPSTOPFACT-33=STATE-61327. OPSTOPFACT-34=STATE-69246. OPSTOPFACT-35=STATE-77165. OPSTOPFACT-36=STATE-85084. OPSTOPFACT-37=STATE-93003. OPSTOPFACT-38=STATE-922. OPSTOPFACT-39=STATE-8841. OPSTOPFACT-40=STATE-16760. OPSTOPFACT-41=STATE-24679. OPSTOPFACT-42=STATE-32598. OPSTOPFACT-43=STATE-40517. OPSTOPFACT-44=STATE-48436. OPSTOPFACT-45=STATE-56355. OPSTOPFACT-46=STATE-64274. OPSTOPFACT-47=STATE-72193. OPSTOPFACT-48=STATE-80112. OPSTOPFACT-49=STATE-88031. OPSTOPFACT-50=STATE-95950. OPSTOPFACT-51=STATE-3869. OPSTOPFACT-52=STATE-11788. OPSTOPFACT-53=STATE-19707. OPSTOPFACT-54=STATE-27626. OPSTOPFACT-55=STATE-35545. OPSTOPFACT-56=STATE-43464. OPSTOPFACT-57=STATE-51383. OPSTOPFACT-58=STATE-59302. OPSTOPFACT-59=STATE-67221. OPSTOPFACT-60=STATE-75140. OPSTOPFACT-61=STATE-83059. OPSTOPFACT-62=STATE-90978. OPSTOPFACT-63=STATE-98897. OPSTOPFACT-64=STATE-6816. OPSTOPFACT-65=STATE-14735. OPSTOPFACT-66=STATE-22654. OPSTOPFACT-67=STATE-30573. OPSTOPFACT-68=STATE-38492. OPSTOPFACT-69=STATE-46411. OPSTOPFACT-70=STATE-54330. OPSTOPFACT-71=STATE-62249. OPSTOPFACT-72=STATE-70168. OPSTOPFACT-73=STATE-78087. OPSTOPFACT-74=STATE-86006. OPSTOPFACT-75=STATE-93925. OPSTOPFACT-76=STATE-1844. OPSTOPFACT-77=STATE-9763. OPSTOPFACT-78=STATE-17682. OPSTOPFACT-79=STATE-25601. OPSTOPFACT-80=STATE-33520. OPSTOPFACT-81=STATE-41439. OPSTOPFACT-82=STATE-49358. OPSTOPFACT-83=STATE-57277. OPSTOPFACT-84=STATE-65196. OPSTOPFACT-85=STATE-73115. OPSTOPFACT-86=STATE-81034. OPSTOPFACT-87=STATE-88953. OPSTOPFACT-88=STATE-96872. OPSTOPFACT-89=STATE-4791. OPSTOPFACT-90=STATE-12710. OPSTOPFACT-91=STATE-20629. OPSTOPFACT-92=STATE-28548. OPSTOPFACT-93=STATE-36467. OPSTOPFACT-94=STATE-44386. OPSTOPFACT-95=STATE-52305. OPSTOPFACT-96=STATE-60224. OPSTOPFACT-97=STATE-68143. OPSTOPFACT-98=STATE-76062. OPSTOPFACT-99=STATE-83981. OPSTOPFACT-100=STATE-91900. Do not call tools. After private checking, reply exactly OP-STOP-FLUSH-BASE-DONE and nothing else.
+
+Just now
+Just now
+speak
+Reasoning
+617 chars
+
+OP-STOP-FLUSH-BASE-DONE
+
+150 tokens
+21.8 t/s
+1145.1 pp/s
+1539 prompt
+1.34s TTFT
+8.3s total
+Model is not running.
+Load Model
+Server Logs
+95 lines
+Server not running
+[15:56:18.613] [ENV] engine_child_probe={"JANGTQ_MPP_NAX":null,"JANGTQ_MPP_NAX_DISABLE":null,"JANGTQ_MPP_NAX_STRICT":null,"JANGTQ_MPP_DENSE":null,"JANGTQ_MPP_DENSE_STRICT":null,"JANGTQ_DISABLE_DSV4_STREAM_LOAD":null,"JANGTQ_DISABLE_DSV4_FAST_LOAD":null,"DSV4_LONG_CTX":null,"DSV4_POOL_QUANT":null,"VMLX_DENSE_STRICT_LANE":null,"VMLX_DSV4_FAST_LOAD_DISABLE":null,"VMLX_DSV4_ENABLE_PREFIX_CACHE":null,"VMLINUX_DENSE_STRICT_LANE":null,"VMLINUX_DSV4_FAST_LOAD_DISABLE":null}
+[15:56:18.613] $ /Users/eric/mlx/vllm-mlx/.venv/bin/python3 -B -s -m vmlx_engine.cli serve /Volumes/EricsLLMDrive/jangq-ai/openPangu-2.0-Flash-JANG_3M --host 127.0.0.1 --port 8027 --timeout 900 --max-num-seqs 1 --prefill-batch-size 512 --prefill-step-size 2048 --completion-batch-size 512 --continuous-batching --tool-call-parser openpangu --enable-auto-tool-choice --reasoning-parser deepseek_r1 --cache-memory-percent 0.15 --no-paged-cache --enable-disk-cache --disk-cache-dir /Users/eric/.cache/vmlx-engine/live-proof-openpangu-auto-nminus1-20260719 --disk-cache-max-gb 10 --stream-interval 1
+[15:56:20.235]   JANGTQ_WIRED_LIMIT_GB defaulted to 115 GB (from OS sysctl iogpu.wired_limit_mb; overrides external jang_tools 70% default)
+[15:56:20.366] INFO:vmlx_engine:Registered vendored minimax_m3_vl runtime (/Users/eric/mlx/vllm-mlx/vmlx_engine/models/minimax_m3/minimax_m3.py)
+[15:56:20.367] INFO:vmlx_engine:Registered vendored openpangu_v2 runtime (/Users/eric/mlx/vllm-mlx/vmlx_engine/models/openpangu_v2/openpangu_v2.py)
+[15:56:20.367] INFO:__main__:openPangu native cache policy: TurboQuantKVCache and generic q4/q8 are forced off. Exact typed snapshots preserve MLA KV, DSA indexer, rotating-SWA metadata, and causal-conv state; paged/block reuse is off.
+[15:56:20.368] INFO:__main__:openPangu-2.0 AUTODETECTED (openpangu_v2) -> auto-settings: paged_cache=OFF(typed exact memory/L2 lane; blocks unsupported), tq_kv=SKIP(MLA + conv state), prefix_store=exact-typed N-1 (KV + DSA indexer + SWA metadata + conv), mtp=detection-only(depth 3), tool_parser=openpangu, reasoning_parser=deepseek_r1, jit=off
+[15:56:20.369] INFO:vmlx_engine.model_config_registry:Model config: detection_source=jang_stamped family=openpangu_v2 reasoning_parser=deepseek_r1 tool_parser=openpangu think_in_template=True cache_type=kv cache_subtype=openpangu_v2_composite is_mllm=False
+[15:56:20.371] INFO:__main__:KV cache auto mode: openPangu native composite cache detected; TurboQuantKVCache and generic stored KV quantization remain disabled.
+[15:56:20.371] INFO:__main__:Reasoning parser enabled: deepseek_r1
+[15:56:20.384] INFO:vmlx_engine:is_mllm_model(/Volumes/EricsLLMDrive/jangq-ai/openPangu-2.0-Flash-JANG_3M): tier=jang_config_explicit_false result=False
+[15:56:20.390] INFO:vmlx_engine.server:System memory before load: 109.8GB available / 128.0GB total (14.2% used)
+[15:56:20.390] INFO:vmlx_engine.server:Loading model with BatchedEngine: /Volumes/EricsLLMDrive/jangq-ai/openPangu-2.0-Flash-JANG_3M
+[15:56:20.397] INFO:vmlx_engine.server:Model loaded (batched mode): /Volumes/EricsLLMDrive/jangq-ai/openPangu-2.0-Flash-JANG_3M
+[15:56:20.398] INFO:vmlx_engine.server:Metal GPU memory after load: 0.00GB active, 0.00GB peak
+[15:56:20.399] INFO:vmlx_engine.server:System memory after load: 109.8GB available (14.2% used)
+[15:56:20.399] INFO:vmlx_engine.server:Native tool format enabled for parser: openpangu
+[15:56:20.399] INFO:vmlx_engine.server:Default max tokens fallback: 4096 base / 16384 for reasoning-capable models (bundle max_new_tokens wins when present; projected Metal guard clamps per-model)
+[15:56:20.403] INFO:     Started server process [43865]
+[15:56:20.403] INFO:     Waiting for application startup.
+[15:56:20.412] INFO:vmlx_engine.server:Started caffeinate system wake lock for PID 43865
+[15:56:20.418] INFO:vmlx_engine.utils.tokenizer:Detected JANG model: /Volumes/EricsLLMDrive/jangq-ai/openPangu-2.0-Flash-JANG_3M
+[15:56:20.421] INFO:vmlx_engine.utils.jang_loader:JANG v2 detected — loading via mmap (instant)
+[15:56:20.561] INFO:vmlx_engine.utils.jang_loader:  Loading 75 safetensors shards via mmap
+[15:56:24.441] INFO:vmlx_engine.utils.jang_loader:  openPangu strict weight landing: 2826/2826 parameter leaves, 46 decoder layers, 138 causal convs
+[15:56:24.448] INFO:vmlx_engine.utils.jang_loader:  bfloat16 enabled: MLA, hidden=2560 (float16 overflow prevention)
+[15:56:24.449] INFO:vmlx_engine.utils.jang_loader:  Wired limit set to 68 GB (model 51 GB)
+[15:56:38.853] INFO:vmlx_engine.utils.jang_loader:  TurboQuant KV skipped: VMLX_DISABLE_TQ_KV=1; using native model cache plus scheduler-level q4/q8 storage only when explicitly requested and compatible.
+[15:56:38.853] INFO:vmlx_engine.utils.jang_loader:JANG v2 loaded in 18.4s: openPangu-2.0-Flash-src-bf16 (3.8-bit avg)
+[15:56:39.056] INFO:vmlx_engine.engine.batched:BatchedEngine multi-eos hook: family=openpangu_v2, registry eos_tokens=['<|message_end|>', '<|pangu_text_end|>'], tokenizer_class=TokenizerWrapper, primary=148900
+[15:56:39.157] INFO:vmlx_engine.engine.batched:openpangu_v2: BatchedEngine extended existing TokenizerWrapper; eos_token_ids={148900, 148902}
+[15:56:39.157] INFO:vmlx_engine.scheduler:openpangu_v2 exact typed prefix cache enabled: N-1 snapshots round-trip MLA KV, DSA indexer, rotating SWA metadata, and all causal-conv states; reverse truncation remains disabled
+[15:56:39.157] INFO:vmlx_engine.scheduler:Runtime cache layout: model_type=openpangu_v2 layers=46 layout=0:OpenPanguV2LayerCache;1:OpenPanguV2LayerCache;2:OpenPanguV2LayerCache;3:OpenPanguV2LayerCache;4:OpenPanguV2LayerCache;5:OpenPanguV2LayerCache;6:OpenPanguV2LayerCache;7:OpenPanguV2LayerCache;8:OpenPanguV2LayerCache;9:OpenPanguV2LayerCache;10:OpenPanguV2LayerCache;11:OpenPanguV2LayerCache;12:OpenPanguV2LayerCache;13:OpenPanguV2LayerCache;14:OpenPanguV2LayerCache;15:OpenPanguV2LayerCache;16:OpenPanguV2LayerCache;17:OpenPanguV2LayerCache;18:OpenPanguV2LayerCache;19:OpenPanguV2LayerCache;20:OpenPanguV2LayerCache;21:OpenPanguV2LayerCache;22:OpenPanguV2LayerCache;23:OpenPanguV2LayerCache;24:OpenPanguV2LayerCache;25:OpenPanguV2LayerCache;26:OpenPanguV2LayerCache;27:OpenPanguV2LayerCache;28:OpenPanguV2LayerCache;29:OpenPanguV2LayerCache;30:OpenPanguV2LayerCache;31:OpenPanguV2LayerCache;32:OpenPanguV2LayerCache;33:OpenPanguV2LayerCache;34:OpenPanguV2LayerCache;35:OpenPanguV2LayerCache;36:OpenPanguV2LayerCache;37:OpenPanguV2LayerCache;38:OpenPanguV2LayerCache;39:OpenPanguV2LayerCache;40:OpenPanguV2LayerCache;41:OpenPanguV2LayerCache;42:OpenPanguV2LayerCache;43:OpenPanguV2LayerCache;44:OpenPanguV2LayerCache;45:OpenPanguV2LayerCache
+[15:56:39.157] WARNING:vmlx_engine.scheduler:openpangu_v2 cache is single-sequence native (path-dependent conv/CCA state); overriding prefill_batch_size 512->1, completion_batch_size 512->1 so concurrent requests queue serially instead of corrupting the batch.
+[15:56:39.157] INFO:vmlx_engine.scheduler:Prefix cache requires continuous batching — enabled automatically
+[15:56:39.159] INFO:vmlx_engine.memory_cache:MemoryAwarePrefixCache initialized: max_memory=10224.9MB, max_entries=1000, ttl=disabled
+[15:56:39.159] INFO:vmlx_engine.scheduler:Memory-aware cache enabled: limit=10224.9MB
+[15:56:39.161] INFO:vmlx_engine.disk_cache:Disk cache initialized: dir=/Users/eric/.cache/vmlx-engine/live-proof-openpangu-auto-nminus1-20260719/openPangu-2.0-Flash-JANG_3M_b94eff4d3f35, max_size=10.0GB, entries=6
+[15:56:39.161] INFO:vmlx_engine.engine_core:Engine started
+[15:56:39.161] INFO:vmlx_engine.engine.batched:BatchedEngine loaded: /Volumes/EricsLLMDrive/jangq-ai/openPangu-2.0-Flash-JANG_3M (mllm=False)
+[15:56:39.163] INFO:vmlx_engine.server:Recorded Metal working-set model baseline: active=43.1GB max=107.5GB reason=lifespan_engine_start
+[15:56:39.165] INFO:vmlx_engine.mcp.config:No MCP config file found, using empty config
+[15:56:39.166] INFO:     Application startup complete.
+[15:56:39.166] INFO:     Uvicorn running on http://127.0.0.1:8027 (Press CTRL+C to quit)
+[15:56:39.557] ============================================================
+[15:56:39.557] SECURITY CONFIGURATION
+[15:56:39.557] ============================================================
+[15:56:39.557]   Authentication: DISABLED - Use --api-key to enable
+[15:56:39.557]   Rate limiting: DISABLED - Use --rate-limit to enable
+[15:56:39.557]   Request timeout: 900.0s
+[15:56:39.557]   Tool calling: ENABLED (parser: openpangu)
+[15:56:39.557]   Reasoning: ENABLED (parser: DeepSeekR1ReasoningParser)  [thinking model detected]
+[15:56:39.557]   External speculative decoding: Use --speculative-model to enable
+[15:56:39.557]   Native MTP: weights present runtime unwired (scope: text, policy: compatible-only)
+[15:56:39.557] ============================================================
+[15:56:39.557] Loading model: /Volumes/EricsLLMDrive/jangq-ai/openPangu-2.0-Flash-JANG_3M
+[15:56:39.557] Max output fallback: 4096 (bundle max_new_tokens wins when present)
+[15:56:39.557] Mode: Continuous batching (for multiple concurrent users)
+[15:56:39.557] Stream interval: 1 tokens
+[15:56:39.557] Memory-aware cache: 15% of RAM
+[15:56:39.557] Starting server at http://127.0.0.1:8027
+[15:56:39.557] INFO:     127.0.0.1:49155 - "GET /health HTTP/1.1" 200 OK
+[15:56:40.925] INFO:     127.0.0.1:49156 - "GET /health HTTP/1.1" 200 OK
+[15:56:43.700] INFO:     127.0.0.1:49155 - "GET /health HTTP/1.1" 200 OK
+[15:56:48.705] INFO:     127.0.0.1:49159 - "GET /health HTTP/1.1" 200 OK
+[15:56:53.711] INFO:     127.0.0.1:49159 - "GET /health HTTP/1.1" 200 OK
+[15:56:58.715] INFO:     127.0.0.1:49159 - "GET /health HTTP/1.1" 200 OK
+[15:57:03.698] INFO:     127.0.0.1:49159 - "GET /health HTTP/1.1" 200 OK
+[15:57:04.735] INFO:     127.0.0.1:49159 - "GET /health HTTP/1.1" 200 OK
+[15:57:04.736] [CHAT_DIAG] request_shape={"chatId":"e1dba1ea","wireApi":"responses","isRemote":false,"baseUrl":"http://127.0.0.1:8027","chatIsMultimodal":false,"detectedFamily":"openpangu_v2","sessionHasReasoningParser":true,"body":{"route":"/v1/responses","model":"jangq-ai/openPangu-2.0-Flash-JANG_3M","stream":true,"has_tools":false,"messages":[{"role":"user","content":{"type":"text","chars":2845}}]}}
+[15:57:04.740] WARNING:vmlx_engine.server:SECURITY WARNING: Server running without API key authentication. Anyone can access the API. Use --api-key to enable authentication.
+[15:57:04.743] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/openPangu-2.0-Flash-JANG_3M kwargs={'temperature': 1.0, 'top_p': 0.8, 'top_k': 151552, 'max_tokens': 16384, 'enable_thinking': True, 'chat_template_kwargs': {}}
+[15:57:04.743] INFO:     127.0.0.1:49162 - "POST /v1/responses HTTP/1.1" 200 OK
+[15:57:04.758] INFO:vmlx_engine.scheduler:Request resp_cc1c68355189: cache miss, processing all 1539 tokens
+[15:57:04.758] INFO:vmlx_engine.scheduler:max_num_seqs=1 — using vMLX SingleBatchGenerator (raw native cache, scheduler-owned single-active path)
+[15:57:04.765] INFO:mlx_lm.models.openpangu_v2:openPangu forward graph traversed all 46 decoder layers (DSA=16, SWA=30, mHC_streams=4, attention_sinks=128, MLA_kv_rank=512, SWA_windows=[512], max_context=524288)
+[15:57:08.694] INFO:     127.0.0.1:49159 - "GET /health HTTP/1.1" 200 OK
+[15:57:13.006] INFO:vmlx_engine.scheduler:openPangu prefix store using exact typed N-1 prompt snapshot (46 layers, 1538 key tokens)
+[15:57:13.193] INFO:     Shutting down
+[15:57:13.260] INFO:vmlx_engine.scheduler:Stored openPangu exact typed cache for resp_cc1c68355189 (1538 N-1 key tokens from 1539 prompt tokens; composite state not truncated)
+[15:57:13.397] INFO:     Waiting for application shutdown.
+[15:57:13.423] INFO:vmlx_engine.scheduler:Shutting down prompt disk cache...
+[15:57:13.785] INFO:vmlx_engine.disk_cache:Disk cache stored: 1539 tokens, 2080.1MB → cache_d52f8e67993e8515_1539tok.safetensors
+[15:57:13.811] INFO:vmlx_engine.disk_cache:Disk cache evicted 1 entries to stay within size limit
+[15:57:13.823] INFO:vmlx_engine.disk_cache:Disk cache shut down
+[15:57:13.823] INFO:vmlx_engine.scheduler:Prompt disk cache shutdown complete
+[15:57:13.823] INFO:vmlx_engine.engine_core:Engine stopped
+[15:57:13.882] INFO:vmlx_engine.scheduler:Deep reset completed - all caches cleared
+[15:57:13.904] INFO:vmlx_engine.engine.batched:BatchedEngine stopped
+[15:57:13.904] INFO:vmlx_engine.server:Engine stopped
+[15:57:13.904] INFO:vmlx_engine.server:Caffeinate process terminated
+[15:57:13.904] INFO:     Application shutdown complete.
+[15:57:13.904] INFO:     Finished server process [43865]
+[15:57:14.170] [INFO] Process stopped (exit code null)
+[15:57:14.171] [INFO] Session stopped — log retained for postmortem until next start

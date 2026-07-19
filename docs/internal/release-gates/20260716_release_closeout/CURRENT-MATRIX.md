@@ -1240,3 +1240,17 @@ Validation: 411 Python passed / 1 skipped, 771 panel passed, and panel typecheck
 passed. Evidence:
 `../20260719_laguna_current_stream_tq_determinism_eviction/`. Release remains
 blocked by stale bundled Python and all other explicit open rows.
+
+### Prompt-disk immediate-Stop/first-turn role addendum - 2026-07-19
+
+| Row | Status | Current source + live evidence | Remaining |
+|---|---|---|---|
+| Terminal cache cleanup on Stop | PASS-LIVE scoped | `7a146eefb` makes text and MLLM stop paths wait for an in-flight terminal cleanup before cancellation. Focused race tests force the losing branch. Electron immediate Stop retained the just-finished typed snapshot before application shutdown. | Signed-app repeat after final bundled-Python refresh. |
+| One-message role-aware L2 eviction | PASS-LIVE | Single user/system turns now receive real segment boundaries. At the full 10 GB ceiling, the new 1,322-token entry remained `cache_type=user` and an older 1,582-token LRU entry was evicted. | Broader stress breadth across compatible generic-TQ families remains open. |
+| openPangu paged-Off SSD partial prefix | PASS-LIVE current | After UI process replacement, Electron restored 1,321/1,395 tokens from disk with zero resident L1 bytes and exact progressive content. Detached Responses and Chat after independent UI restarts restored the same 1,321-token prefix and exact-finaled. | Generic paged blocks, block-L2 refault, and generic TQ are architecture-incompatible/N/A here and remain assigned elsewhere. |
+| Responses `response.usage` extension parity | OPEN / INVESTIGATE | A detached `include_usage` request delivered 483 `response.usage` events and correct terminal usage. | Compare to the current public Responses event schema and either standardize or explicitly gate the extension. |
+
+Validation: 119/119 focused tests. Evidence:
+`../20260719_prompt_disk_stop_role_durability/`. Overall release remains
+blocked by the explicit open matrix rows, full suites/build, bundled-Python
+refresh, signing/notarization, and publication gates.

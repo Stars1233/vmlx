@@ -1,0 +1,18 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.11, pytest-9.0.2, pluggy-1.6.0
+rootdir: /Users/eric/mlx/vllm-mlx
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+plugins: asyncio-1.3.0, anyio-4.13.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 119 items
+
+tests/test_cache_segment_boundaries.py ...                               [  2%]
+tests/test_terminal_dispatch_before_cache_cleanup.py ........            [  9%]
+tests/test_disk_cache_unit.py .........                                  [ 16%]
+tests/test_disk_prefix_n_minus_1.py .....                                [ 21%]
+tests/test_minimax_m3_cache_paths.py ................................... [ 50%]
+......                                                                   [ 55%]
+tests/test_tq_disk_cache.py .............................                [ 79%]
+tests/test_openpangu_v2.py ........................                      [100%]
+
+============================= 119 passed in 20.61s =============================

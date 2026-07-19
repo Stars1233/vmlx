@@ -1302,3 +1302,24 @@
 - Fully relaunched Electron with the project venv in PATH. Visible
   Start/Stop/Start proved PID 38968 -> absent -> 39507 with SQLite and `ps`
   parity and a single local engine.
+
+## 2026-07-19 - immediate Stop and first-turn prompt-disk eviction repair
+
+- Reproduced a visible-answer/disk-miss sequence at the 10 GB prompt-L2
+  ceiling. The model output was coherent; the new first-turn cache record was
+  missing on restart.
+- Traced two shared causes: shutdown cancellation could overtake deferred
+  terminal cleanup, and one-message user chats were classified as assistant
+  cache entries and could self-evict ahead of older user entries.
+- Added the text/MLLM terminal-cleanup stop barrier and one-message role
+  boundaries. Added concurrency and role regression tests; 119 focused tests
+  pass.
+- Relaunched the real Electron engine from patched source. Detected the final
+  row in a 200 ms poll and clicked Stop immediately. The post-stop index kept
+  the 1,322-token record as `user`; after restart the same chat restored 1,321
+  disk tokens and exact-finaled with progressive content.
+- Repeated Responses and Chat via detached on-box curl after UI restarts.
+  Both restored 1,321 disk tokens; Chat emitted finish, one usage-only chunk,
+  then one `[DONE]`.
+- Committed and pushed source as `7a146eefb`. Evidence is under
+  `20260719_prompt_disk_stop_role_durability/`. Release remains partial.
