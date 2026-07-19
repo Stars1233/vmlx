@@ -1,0 +1,42 @@
+[
+  {
+    "role": "user",
+    "content": "[NEMO-VIDEO1-OFF] Read the large marker visible in the attached video frames. Reply exactly two lines: the marker, then NEMO-VIDEO1-OFF-DONE. Do not use tools."
+  },
+  {
+    "role": "assistant",
+    "content": "BANANA8426\nNEMO-VIDEO1-OFF-DONE"
+  },
+  {
+    "role": "user",
+    "content": "[NEMO-POSTMEDIA-TOOL0] Call the built-in file_info tool exactly once with path panel/package.json. You must use the tool and must not answer from memory. After the tool result reply exactly NEMO-POSTMEDIA-TOOL0-DONE SIZE=<human-readable size> and nothing else."
+  },
+  {
+    "type": "reasoning",
+    "summary": [
+      {
+        "type": "summary_text",
+        "text": "We need to call file_info exactly once, then report the human-readable size."
+      }
+    ]
+  },
+  {
+    "type": "function_call",
+    "call_id": "call_b38a5bac",
+    "name": "file_info",
+    "arguments": "{\"path\":\"panel/package.json\"}"
+  },
+  {
+    "type": "function_call_output",
+    "call_id": "call_b38a5bac",
+    "output": "Path: panel/package.json\nType: file\nSize: 5.2 KB\nModified: 2026-07-15T14:28:24.904Z\nPermissions: 0644"
+  },
+  {
+    "role": "assistant",
+    "content": "NEMO-POSTMEDIA-TOOL0-DONE SIZE=5.2 KB"
+  },
+  {
+    "role": "user",
+    "content": "[NEMO-DUP-REPLAY] Reply exactly NEMO-DUP-REPLAY-DONE and nothing else. Do not use tools."
+  }
+]

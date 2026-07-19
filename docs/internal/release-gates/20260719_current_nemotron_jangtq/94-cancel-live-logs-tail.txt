@@ -1,0 +1,260 @@
+[20:56:13.285] INFO:     127.0.0.1:52285 - "GET /health HTTP/1.1" 200 OK
+[20:56:18.301] INFO:     127.0.0.1:52285 - "GET /health HTTP/1.1" 200 OK
+[20:56:23.308] INFO:     127.0.0.1:52285 - "GET /health HTTP/1.1" 200 OK
+[20:56:28.313] INFO:     127.0.0.1:52285 - "GET /health HTTP/1.1" 200 OK
+[20:56:33.318] INFO:     127.0.0.1:52285 - "GET /health HTTP/1.1" 200 OK
+[20:56:38.323] INFO:     127.0.0.1:52285 - "GET /health HTTP/1.1" 200 OK
+[20:56:43.310] INFO:     127.0.0.1:52286 - "GET /health HTTP/1.1" 200 OK
+[20:56:48.326] INFO:     127.0.0.1:52286 - "GET /health HTTP/1.1" 200 OK
+[20:56:53.328] INFO:     127.0.0.1:52286 - "GET /health HTTP/1.1" 200 OK
+[20:56:58.337] INFO:     127.0.0.1:52286 - "GET /health HTTP/1.1" 200 OK
+[20:57:03.342] INFO:     127.0.0.1:52286 - "GET /health HTTP/1.1" 200 OK
+[20:57:08.345] INFO:     127.0.0.1:52286 - "GET /health HTTP/1.1" 200 OK
+[20:57:13.350] INFO:     127.0.0.1:52288 - "GET /health HTTP/1.1" 200 OK
+[20:57:18.357] INFO:     127.0.0.1:52288 - "GET /health HTTP/1.1" 200 OK
+[20:57:23.359] INFO:     127.0.0.1:52288 - "GET /health HTTP/1.1" 200 OK
+[20:57:28.355] INFO:     127.0.0.1:52288 - "GET /health HTTP/1.1" 200 OK
+[20:57:33.366] INFO:     127.0.0.1:52288 - "GET /health HTTP/1.1" 200 OK
+[20:57:38.376] INFO:     127.0.0.1:52288 - "GET /health HTTP/1.1" 200 OK
+[20:57:43.380] INFO:     127.0.0.1:52290 - "GET /health HTTP/1.1" 200 OK
+[20:57:48.376] INFO:     127.0.0.1:52290 - "GET /health HTTP/1.1" 200 OK
+[20:57:53.386] INFO:     127.0.0.1:52290 - "GET /health HTTP/1.1" 200 OK
+[20:57:58.389] INFO:     127.0.0.1:52290 - "GET /health HTTP/1.1" 200 OK
+[20:58:03.389] INFO:     127.0.0.1:52290 - "GET /health HTTP/1.1" 200 OK
+[20:58:08.399] INFO:     127.0.0.1:52290 - "GET /health HTTP/1.1" 200 OK
+[20:58:13.397] INFO:     127.0.0.1:52290 - "GET /health HTTP/1.1" 200 OK
+[20:58:18.408] INFO:     127.0.0.1:52292 - "GET /health HTTP/1.1" 200 OK
+[20:58:23.411] INFO:     127.0.0.1:52292 - "GET /health HTTP/1.1" 200 OK
+[20:58:28.416] INFO:     127.0.0.1:52292 - "GET /health HTTP/1.1" 200 OK
+[20:58:33.417] INFO:     127.0.0.1:52292 - "GET /health HTTP/1.1" 200 OK
+[20:58:38.422] INFO:     127.0.0.1:52292 - "GET /health HTTP/1.1" 200 OK
+[20:58:41.150] [CHAT_DIAG] attachment_route={"chatId":"8c934b4a","modelPath":"/Volumes/EricsLLMDrive/dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK","detectedFamily":"nemotron-h","modelForceTextOnly":false,"chatIsMultimodal":true,"attachments":{"total":1,"counts":{"image":0,"video":0,"audio":1,"text":0},"files":[{"kind":"audio","name":"amber_seven.wav","mime":"audio/wav","size":61120,"data_url_chars":81518}]}}
+[20:58:41.247] INFO:     127.0.0.1:52292 - "GET /health HTTP/1.1" 200 OK
+[20:58:41.248] [CHAT_DIAG] request_shape={"chatId":"8c934b4a","wireApi":"responses","isRemote":false,"baseUrl":"http://127.0.0.1:8024","chatIsMultimodal":true,"detectedFamily":"nemotron-h","sessionHasReasoningParser":true,"body":{"route":"/v1/responses","model":"dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK","stream":true,"max_tokens":1024,"enable_thinking":false,"thinking_mode":"instruct","has_tools":false,"messages":[{"role":"user","content":[{"type":"text","chars":181},{"type":"text","chars":122}]},{"role":"assistant","content":{"type":"text","chars":0}},{"role":"user","content":[{"type":"text","chars":179},{"type":"text","chars":122}]},{"role":"reasoning","content":[{"type":"reasoning","keys":["text","type"]}]},{"role":"output_text","content":{"type":"text","chars":71}},{"role":"user","content":[{"type":"text","chars":163},{"type":"text","chars":122}]},{"role":"output_text","content":{"type":"text","chars":25}},{"role":"user","content":[{"type":"text","chars":154},{"type":"input_audio","format":"wav","data_chars":81496}]}]}}
+[20:58:41.254] INFO:vmlx_engine.server:[MEDIA_DIAG] request_shape={"engine_is_mllm": false, "family": "nemotron_h", "media": {"content_arrays": 6, "data_url": 0, "items": 1, "missing_source": 0, "total": 1, "types": {"input_audio": 1}, "url_or_path": 1}, "model": "Nemotron-Omni-Nano-JANGTQ-CRACK", "omni_modalities": ["text", "audio", "image", "video"], "registry_is_mllm": false, "route": "/v1/responses"}
+[20:58:41.266] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK kwargs={'temperature': 0.6, 'top_p': 0.95, 'repetition_penalty': 1.0, 'max_tokens': 1024, 'enable_thinking': False}
+[20:58:41.274] INFO:     127.0.0.1:52296 - "POST /v1/responses HTTP/1.1" 200 OK
+[20:58:41.275] INFO:vmlx_engine.omni_multimodal:OmniMultimodalDispatcher: cache reset (prefix='e518a1ed5e7f9ab6' != last='1a3e758121adfb5a')
+[20:58:41.275] INFO:vmlx_engine.omni_multimodal:OmniMultimodalDispatcher: turn — text=154ch, images=0, audio=yes, video=no
+[20:58:42.207] INFO:vmlx_engine.omni_multimodal:Omni multimodal stream: 0 images, audio=True, video=False — 0 reasoning chars, 49 content chars, 18 tokens in 0.93s
+[20:58:43.424] INFO:     127.0.0.1:52292 - "GET /health HTTP/1.1" 200 OK
+[20:58:48.433] INFO:     127.0.0.1:52297 - "GET /health HTTP/1.1" 200 OK
+[20:58:53.411] INFO:     127.0.0.1:52297 - "GET /health HTTP/1.1" 200 OK
+[20:58:58.437] INFO:     127.0.0.1:52297 - "GET /health HTTP/1.1" 200 OK
+[20:59:02.648] INFO:     127.0.0.1:52306 - "GET /health HTTP/1.1" 200 OK
+[20:59:03.446] INFO:     127.0.0.1:52297 - "GET /health HTTP/1.1" 200 OK
+[20:59:08.446] INFO:     127.0.0.1:52297 - "GET /health HTTP/1.1" 200 OK
+[20:59:13.452] INFO:     127.0.0.1:52297 - "GET /health HTTP/1.1" 200 OK
+[20:59:18.453] INFO:     127.0.0.1:52297 - "GET /health HTTP/1.1" 200 OK
+[20:59:23.457] INFO:     127.0.0.1:52307 - "GET /health HTTP/1.1" 200 OK
+[20:59:28.463] INFO:     127.0.0.1:52307 - "GET /health HTTP/1.1" 200 OK
+[20:59:29.885] INFO:vmlx_engine.server:[MEDIA_DIAG] request_shape={"engine_is_mllm": false, "family": "nemotron_h", "media": {"content_arrays": 1, "data_url": 0, "items": 1, "missing_source": 0, "total": 1, "types": {"input_audio": 1}, "url_or_path": 1}, "model": "Nemotron-Omni-Nano-JANGTQ-CRACK", "omni_modalities": ["text", "audio", "image", "video"], "registry_is_mllm": false, "route": "/v1/responses"}
+[20:59:29.911] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK kwargs={'temperature': 0.6, 'top_p': 0.95, 'repetition_penalty': 1.0, 'max_tokens': 1024, 'enable_thinking': False}
+[20:59:29.924] INFO:     127.0.0.1:52308 - "POST /v1/responses HTTP/1.1" 200 OK
+[20:59:29.925] INFO:vmlx_engine.omni_multimodal:OmniMultimodalDispatcher: cache reset (prefix='e3b0c44298fc1c14' != last='3483dc0a153606ef')
+[20:59:29.925] INFO:vmlx_engine.omni_multimodal:OmniMultimodalDispatcher: turn — text=128ch, images=0, audio=yes, video=no
+[20:59:30.478] INFO:vmlx_engine.omni_multimodal:Omni multimodal stream: 0 images, audio=True, video=False — 0 reasoning chars, 54 content chars, 20 tokens in 0.55s
+[20:59:33.462] INFO:     127.0.0.1:52307 - "GET /health HTTP/1.1" 200 OK
+[20:59:38.462] INFO:     127.0.0.1:52307 - "GET /health HTTP/1.1" 200 OK
+[20:59:43.471] INFO:     127.0.0.1:52307 - "GET /health HTTP/1.1" 200 OK
+[20:59:48.473] INFO:     127.0.0.1:52307 - "GET /health HTTP/1.1" 200 OK
+[20:59:53.481] INFO:     127.0.0.1:52309 - "GET /health HTTP/1.1" 200 OK
+[20:59:58.481] INFO:     127.0.0.1:52309 - "GET /health HTTP/1.1" 200 OK
+[21:00:03.450] INFO:     127.0.0.1:52309 - "GET /health HTTP/1.1" 200 OK
+[21:00:08.486] INFO:     127.0.0.1:52309 - "GET /health HTTP/1.1" 200 OK
+[21:00:10.996] [CHAT_DIAG] attachment_route={"chatId":"8c934b4a","modelPath":"/Volumes/EricsLLMDrive/dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK","detectedFamily":"nemotron-h","modelForceTextOnly":false,"chatIsMultimodal":true,"attachments":{"total":1,"counts":{"image":0,"video":1,"audio":0,"text":0},"files":[{"kind":"video","name":"gemma4-media-a-video.mp4","mime":"video/mp4","size":84074,"data_url_chars":112122}]}}
+[21:00:11.113] INFO:     127.0.0.1:52309 - "GET /health HTTP/1.1" 200 OK
+[21:00:11.114] [CHAT_DIAG] request_shape={"chatId":"8c934b4a","wireApi":"responses","isRemote":false,"baseUrl":"http://127.0.0.1:8024","chatIsMultimodal":true,"detectedFamily":"nemotron-h","sessionHasReasoningParser":true,"body":{"route":"/v1/responses","model":"dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK","stream":true,"max_tokens":1024,"enable_thinking":false,"thinking_mode":"instruct","has_tools":false,"messages":[{"role":"user","content":[{"type":"text","chars":179},{"type":"text","chars":122}]},{"role":"reasoning","content":[{"type":"reasoning","keys":["text","type"]}]},{"role":"output_text","content":{"type":"text","chars":71}},{"role":"user","content":[{"type":"text","chars":163},{"type":"text","chars":122}]},{"role":"output_text","content":{"type":"text","chars":25}},{"role":"user","content":[{"type":"text","chars":154},{"type":"text","chars":122}]},{"role":"output_text","content":{"type":"text","chars":49}},{"role":"user","content":[{"type":"text","chars":159},{"type":"video_url","mime":"video/mp4","data_url_chars":112122,"url":"<redacted>"}]}]}}
+[21:00:11.120] INFO:vmlx_engine.server:[MEDIA_DIAG] request_shape={"engine_is_mllm": false, "family": "nemotron_h", "media": {"content_arrays": 7, "data_url": 1, "items": 1, "missing_source": 0, "total": 1, "types": {"video_url": 1}, "url_or_path": 0}, "model": "Nemotron-Omni-Nano-JANGTQ-CRACK", "omni_modalities": ["text", "audio", "image", "video"], "registry_is_mllm": false, "route": "/v1/responses"}
+[21:00:11.133] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK kwargs={'temperature': 0.6, 'top_p': 0.95, 'repetition_penalty': 1.0, 'max_tokens': 1024, 'enable_thinking': False}
+[21:00:11.142] INFO:     127.0.0.1:52312 - "POST /v1/responses HTTP/1.1" 200 OK
+[21:00:11.142] INFO:vmlx_engine.omni_multimodal:OmniMultimodalDispatcher: cache reset (prefix='7b681448837b00d8' != last='5428501aad694311')
+[21:00:11.201] INFO:vmlx_engine.models.mllm:Video: 6 total frames @ 2.0 fps, extracting 4 frames
+[21:00:11.234] INFO:vmlx_engine.omni_multimodal:OmniMultimodalDispatcher: turn — text=159ch, images=1, audio=no, video=no
+[21:00:13.469] INFO:     127.0.0.1:52309 - "GET /health HTTP/1.1" 200 OK
+[21:00:14.550] INFO:vmlx_engine.omni_multimodal:Omni multimodal stream: 1 images, audio=False, video=False — 0 reasoning chars, 32 content chars, 20 tokens in 3.41s
+[21:00:18.500] INFO:     127.0.0.1:52313 - "GET /health HTTP/1.1" 200 OK
+[21:00:23.501] INFO:     127.0.0.1:52313 - "GET /health HTTP/1.1" 200 OK
+[21:00:26.213] INFO:     127.0.0.1:52316 - "GET /health HTTP/1.1" 200 OK
+[21:00:28.505] INFO:     127.0.0.1:52313 - "GET /health HTTP/1.1" 200 OK
+[21:00:33.509] INFO:     127.0.0.1:52313 - "GET /health HTTP/1.1" 200 OK
+[21:00:34.382] INFO:vmlx_engine.server:[MEDIA_DIAG] request_shape={"engine_is_mllm": false, "family": "nemotron_h", "media": {"content_arrays": 1, "data_url": 1, "items": 1, "missing_source": 0, "total": 1, "types": {"input_video": 1}, "url_or_path": 0}, "model": "Nemotron-Omni-Nano-JANGTQ-CRACK", "omni_modalities": ["text", "audio", "image", "video"], "registry_is_mllm": false, "route": "/v1/responses"}
+[21:00:34.408] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK kwargs={'temperature': 0.6, 'top_p': 0.95, 'repetition_penalty': 1.0, 'max_tokens': 1024, 'enable_thinking': False}
+[21:00:34.421] INFO:     127.0.0.1:52317 - "POST /v1/responses HTTP/1.1" 200 OK
+[21:00:34.421] INFO:vmlx_engine.omni_multimodal:OmniMultimodalDispatcher: cache reset (prefix='e3b0c44298fc1c14' != last='5812b85d0132c1a6')
+[21:00:34.422] INFO:vmlx_engine.models.mllm:Video: 6 total frames @ 2.0 fps, extracting 4 frames
+[21:00:34.449] INFO:vmlx_engine.omni_multimodal:OmniMultimodalDispatcher: turn — text=130ch, images=1, audio=no, video=no
+[21:00:37.489] INFO:vmlx_engine.omni_multimodal:Omni multimodal stream: 1 images, audio=False, video=False — 0 reasoning chars, 32 content chars, 21 tokens in 3.07s
+[21:00:38.513] INFO:     127.0.0.1:52313 - "GET /health HTTP/1.1" 200 OK
+[21:00:43.512] INFO:     127.0.0.1:52313 - "GET /health HTTP/1.1" 200 OK
+[21:00:48.519] INFO:     127.0.0.1:52318 - "GET /health HTTP/1.1" 200 OK
+[21:00:53.519] INFO:     127.0.0.1:52318 - "GET /health HTTP/1.1" 200 OK
+[21:00:58.530] INFO:     127.0.0.1:52318 - "GET /health HTTP/1.1" 200 OK
+[21:01:03.530] INFO:     127.0.0.1:52318 - "GET /health HTTP/1.1" 200 OK
+[21:01:08.534] INFO:     127.0.0.1:52318 - "GET /health HTTP/1.1" 200 OK
+[21:01:13.535] INFO:     127.0.0.1:52318 - "GET /health HTTP/1.1" 200 OK
+[21:01:18.545] INFO:     127.0.0.1:52320 - "GET /health HTTP/1.1" 200 OK
+[21:01:23.549] INFO:     127.0.0.1:52320 - "GET /health HTTP/1.1" 200 OK
+[21:01:28.553] INFO:     127.0.0.1:52320 - "GET /health HTTP/1.1" 200 OK
+[21:01:33.556] INFO:     127.0.0.1:52320 - "GET /health HTTP/1.1" 200 OK
+[21:01:38.561] INFO:     127.0.0.1:52320 - "GET /health HTTP/1.1" 200 OK
+[21:01:43.557] INFO:     127.0.0.1:52320 - "GET /health HTTP/1.1" 200 OK
+[21:01:48.568] INFO:     127.0.0.1:52320 - "GET /health HTTP/1.1" 200 OK
+[21:01:53.573] INFO:     127.0.0.1:52320 - "GET /health HTTP/1.1" 200 OK
+[21:01:58.563] INFO:     127.0.0.1:52323 - "GET /health HTTP/1.1" 200 OK
+[21:02:03.581] INFO:     127.0.0.1:52323 - "GET /health HTTP/1.1" 200 OK
+[21:02:04.270] INFO:     127.0.0.1:52323 - "GET /health HTTP/1.1" 200 OK
+[21:02:04.271] [CHAT_DIAG] request_shape={"chatId":"8c934b4a","wireApi":"responses","isRemote":false,"baseUrl":"http://127.0.0.1:8024","chatIsMultimodal":false,"detectedFamily":"nemotron-h","sessionHasReasoningParser":true,"body":{"route":"/v1/responses","model":"dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK","stream":true,"max_tokens":1024,"has_tools":true,"messages":[{"role":"output_text","content":{"type":"text","chars":71}},{"role":"user","content":{"type":"text","chars":163}},{"role":"output_text","content":{"type":"text","chars":25}},{"role":"user","content":{"type":"text","chars":154}},{"role":"output_text","content":{"type":"text","chars":49}},{"role":"user","content":{"type":"text","chars":159}},{"role":"output_text","content":{"type":"text","chars":31}},{"role":"user","content":{"type":"text","chars":260}}]}}
+[21:02:04.277] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK kwargs={'temperature': 0.6, 'top_p': 0.95, 'repetition_penalty': 1.0, 'max_tokens': 1024, 'enable_thinking': True}
+[21:02:04.280] INFO:     127.0.0.1:52325 - "POST /v1/responses HTTP/1.1" 200 OK
+[21:02:04.281] INFO:vmlx_engine.server:Responses exact-once tool gate: initial_selection=True post_user_tool_result=False message_shapes=[('user', None), ('assistant', None), ('user', None), ('assistant', None), ('user', None), ('assistant', None), ('user', None), ('assistant', None), ('user', None), ('assistant', None), ('user', None), ('assistant', None), ('user', None)]
+[21:02:04.297] INFO:vmlx_engine.prefix_cache:Paged cache hit for resp_6c188e4d5a0f: 4 blocks, 256 tokens
+[21:02:04.297] INFO:vmlx_engine.scheduler:Request resp_6c188e4d5a0f: paged cache hit, 256 tokens in 4 blocks, 540 remaining to process (worker reconstruct pending)
+[21:02:04.297] INFO:vmlx_engine.scheduler:max_num_seqs=1 — using vMLX SingleBatchGenerator (raw native cache, scheduler-owned single-active path)
+[21:02:04.469] INFO:vmlx_engine.prefix_cache:Partial hybrid reconstruction: 6/29 layers (23 cumulative layers deferred to _fix_hybrid_cache)
+[21:02:04.469] INFO:vmlx_engine.scheduler:Request resp_6c188e4d5a0f: worker reconstructed 4 paged block(s) from L2
+[21:02:04.469] INFO:vmlx_engine.scheduler:SSM companion worker fetch: req=resp_6c188e4d5a0f fetch_num=256 cache_size=0 tokens_tail=[2453, 1010, 1045, 3367, 2156, 1395, 1836, 2254]
+[21:02:04.469] INFO:vmlx_engine.utils.ssm_companion_cache:SSM fetch MISS: N=256 hash=b5a99847f73f store_size=0 store_keys[:3]=[]
+[21:02:04.472] INFO:vmlx_engine.utils.ssm_companion_cache:SSM disk HIT: N=256 hash=b5a99847f73f states=23 complete=True
+[21:02:04.476] INFO:vmlx_engine.mllm_batch_generator:Re-wrapped 6 KV layers as TurboQuant objects: encoded=0, resident_before=1572864, resident_after=1572864, delta=+0 bytes; no resident-memory reduction claimed
+[21:02:04.476] INFO:vmlx_engine.scheduler:Request resp_6c188e4d5a0f: hybrid paged HIT — 256 tokens (KV + 23 SSM layers)
+[21:02:08.551] INFO:     127.0.0.1:52323 - "GET /health HTTP/1.1" 200 OK
+[21:02:13.547] INFO:     127.0.0.1:52323 - "GET /health HTTP/1.1" 200 OK
+[21:02:18.552] INFO:     127.0.0.1:52323 - "GET /health HTTP/1.1" 200 OK
+[21:02:18.906] INFO:vmlx_engine.scheduler:Extracted 29 layer states for request resp_6c188e4d5a0f
+[21:02:18.907] INFO:vmlx_engine.scheduler:SSM companion: entering store for resp_6c188e4d5a0f (hybrid=True, has_cache=True)
+[21:02:18.907] INFO:vmlx_engine.scheduler:SSM companion: queued deferred re-derive for resp_6c188e4d5a0f (gpl=6, 789 cache-key tokens, will run during next idle period)
+[21:02:18.907] INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=789, num_new_blocks=13, frugal=True, cumulative=external-companion
+[21:02:18.908] INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 6 positional layers (out of 29 total)
+[21:02:18.910] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 5 (0 kv layers, turboquant_kv=6, 64 tokens)
+[21:02:18.919] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK kwargs={'temperature': 0.6, 'top_p': 0.95, 'repetition_penalty': 1.0, 'max_tokens': 1024, 'enable_thinking': False}
+[21:02:18.925] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 6 (0 kv layers, turboquant_kv=6, 64 tokens)
+[21:02:18.925] INFO:     127.0.0.1:52326 - "POST /v1/responses HTTP/1.1" 200 OK
+[21:02:18.926] INFO:vmlx_engine.server:Template for dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK outputs <think></think> with enable_thinking=False (properly handled, not always-thinks)
+[21:02:18.933] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 7 (0 kv layers, turboquant_kv=6, 64 tokens)
+[21:02:18.940] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 8 (0 kv layers, turboquant_kv=6, 64 tokens)
+[21:02:18.946] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 9 (0 kv layers, turboquant_kv=6, 64 tokens)
+[21:02:18.952] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 10 (0 kv layers, turboquant_kv=6, 64 tokens)
+[21:02:18.958] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 11 (0 kv layers, turboquant_kv=6, 64 tokens)
+[21:02:18.964] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 12 (0 kv layers, turboquant_kv=6, 64 tokens)
+[21:02:18.970] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 13 (0 kv layers, turboquant_kv=6, 21 tokens)
+[21:02:19.149] INFO:vmlx_engine.scheduler:Stored paged cache for request resp_6c188e4d5a0f (789 cache-key tokens from 790 prompt tokens, 29 layers, cache truncated to 789 tokens)
+[21:02:19.150] INFO:vmlx_engine.scheduler:Request resp_c8bc0403bb83: paged cache miss, processing all 613 tokens
+[21:02:20.478] INFO:vmlx_engine.scheduler:Extracted 29 layer states for request resp_c8bc0403bb83
+[21:02:20.478] INFO:vmlx_engine.scheduler:SSM companion: entering store for resp_c8bc0403bb83 (hybrid=True, has_cache=True)
+[21:02:20.478] INFO:vmlx_engine.scheduler:SSM companion: queued deferred re-derive for resp_c8bc0403bb83 (gpl=6, 606 cache-key tokens, will run during next idle period)
+[21:02:20.478] INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=606, num_new_blocks=10, frugal=True, cumulative=external-companion
+[21:02:20.479] INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 6 positional layers (out of 29 total)
+[21:02:20.481] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 14 (0 kv layers, turboquant_kv=6, 64 tokens)
+[21:02:20.489] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 15 (0 kv layers, turboquant_kv=6, 64 tokens)
+[21:02:20.495] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 16 (0 kv layers, turboquant_kv=6, 64 tokens)
+[21:02:20.502] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 17 (0 kv layers, turboquant_kv=6, 64 tokens)
+[21:02:20.509] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 18 (0 kv layers, turboquant_kv=6, 64 tokens)
+[21:02:20.515] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 19 (0 kv layers, turboquant_kv=6, 64 tokens)
+[21:02:20.521] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 20 (0 kv layers, turboquant_kv=6, 64 tokens)
+[21:02:20.527] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 21 (0 kv layers, turboquant_kv=6, 64 tokens)
+[21:02:20.533] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 22 (0 kv layers, turboquant_kv=6, 64 tokens)
+[21:02:20.538] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 23 (0 kv layers, turboquant_kv=6, 30 tokens)
+[21:02:20.699] INFO:vmlx_engine.scheduler:Stored paged cache for request resp_c8bc0403bb83 (606 cache-key tokens from 607 prompt tokens, 29 layers, cache truncated to 606 tokens)
+[21:02:23.586] INFO:     127.0.0.1:52323 - "GET /health HTTP/1.1" 200 OK
+[21:02:28.587] INFO:     127.0.0.1:52323 - "GET /health HTTP/1.1" 200 OK
+[21:02:33.590] INFO:     127.0.0.1:52329 - "GET /health HTTP/1.1" 200 OK
+[21:02:38.599] INFO:     127.0.0.1:52329 - "GET /health HTTP/1.1" 200 OK
+[21:02:43.600] INFO:     127.0.0.1:52329 - "GET /health HTTP/1.1" 200 OK
+[21:02:48.607] INFO:     127.0.0.1:52329 - "GET /health HTTP/1.1" 200 OK
+[21:02:53.610] INFO:     127.0.0.1:52329 - "GET /health HTTP/1.1" 200 OK
+[21:02:58.609] INFO:     127.0.0.1:52329 - "GET /health HTTP/1.1" 200 OK
+[21:03:03.623] INFO:     127.0.0.1:52330 - "GET /health HTTP/1.1" 200 OK
+[21:03:08.622] INFO:     127.0.0.1:52330 - "GET /health HTTP/1.1" 200 OK
+[21:03:13.626] INFO:     127.0.0.1:52330 - "GET /health HTTP/1.1" 200 OK
+[21:03:18.624] INFO:     127.0.0.1:52330 - "GET /health HTTP/1.1" 200 OK
+[21:03:23.630] INFO:     127.0.0.1:52330 - "GET /health HTTP/1.1" 200 OK
+[21:03:28.634] INFO:     127.0.0.1:52330 - "GET /health HTTP/1.1" 200 OK
+[21:03:33.640] INFO:     127.0.0.1:52331 - "GET /health HTTP/1.1" 200 OK
+[21:03:38.642] INFO:     127.0.0.1:52331 - "GET /health HTTP/1.1" 200 OK
+[21:03:43.647] INFO:     127.0.0.1:52331 - "GET /health HTTP/1.1" 200 OK
+[21:03:45.917] INFO:     127.0.0.1:52332 - "GET /health HTTP/1.1" 200 OK
+[21:03:48.649] INFO:     127.0.0.1:52331 - "GET /health HTTP/1.1" 200 OK
+[21:03:53.522] INFO:     127.0.0.1:52334 - "GET /health HTTP/1.1" 200 OK
+[21:03:53.617] INFO:     127.0.0.1:52331 - "GET /health HTTP/1.1" 200 OK
+[21:03:58.657] INFO:     127.0.0.1:52331 - "GET /health HTTP/1.1" 200 OK
+[21:04:03.658] INFO:     127.0.0.1:52331 - "GET /health HTTP/1.1" 200 OK
+[21:04:08.659] INFO:     127.0.0.1:52336 - "GET /health HTTP/1.1" 200 OK
+[21:04:13.663] INFO:     127.0.0.1:52336 - "GET /health HTTP/1.1" 200 OK
+[21:04:18.665] INFO:     127.0.0.1:52336 - "GET /health HTTP/1.1" 200 OK
+[21:04:23.672] INFO:     127.0.0.1:52336 - "GET /health HTTP/1.1" 200 OK
+[21:04:28.682] INFO:     127.0.0.1:52336 - "GET /health HTTP/1.1" 200 OK
+[21:04:33.687] INFO:     127.0.0.1:52336 - "GET /health HTTP/1.1" 200 OK
+[21:04:38.689] INFO:     127.0.0.1:52339 - "GET /health HTTP/1.1" 200 OK
+[21:04:43.691] INFO:     127.0.0.1:52339 - "GET /health HTTP/1.1" 200 OK
+[21:04:48.699] INFO:     127.0.0.1:52339 - "GET /health HTTP/1.1" 200 OK
+[21:04:53.705] INFO:     127.0.0.1:52339 - "GET /health HTTP/1.1" 200 OK
+[21:04:58.709] INFO:     127.0.0.1:52339 - "GET /health HTTP/1.1" 200 OK
+[21:05:03.705] INFO:     127.0.0.1:52339 - "GET /health HTTP/1.1" 200 OK
+[21:05:08.707] INFO:     127.0.0.1:52340 - "GET /health HTTP/1.1" 200 OK
+[21:05:13.715] INFO:     127.0.0.1:52340 - "GET /health HTTP/1.1" 200 OK
+[21:05:18.716] INFO:     127.0.0.1:52340 - "GET /health HTTP/1.1" 200 OK
+[21:05:23.722] INFO:     127.0.0.1:52340 - "GET /health HTTP/1.1" 200 OK
+[21:05:28.720] INFO:     127.0.0.1:52340 - "GET /health HTTP/1.1" 200 OK
+[21:05:33.729] INFO:     127.0.0.1:52340 - "GET /health HTTP/1.1" 200 OK
+[21:05:38.732] INFO:     127.0.0.1:52340 - "GET /health HTTP/1.1" 200 OK
+[21:05:43.731] INFO:     127.0.0.1:52342 - "GET /health HTTP/1.1" 200 OK
+[21:05:48.738] INFO:     127.0.0.1:52342 - "GET /health HTTP/1.1" 200 OK
+[21:05:53.747] INFO:     127.0.0.1:52342 - "GET /health HTTP/1.1" 200 OK
+[21:05:58.749] INFO:     127.0.0.1:52342 - "GET /health HTTP/1.1" 200 OK
+[21:06:03.755] INFO:     127.0.0.1:52342 - "GET /health HTTP/1.1" 200 OK
+[21:06:08.757] INFO:     127.0.0.1:52342 - "GET /health HTTP/1.1" 200 OK
+[21:06:13.742] INFO:     127.0.0.1:52342 - "GET /health HTTP/1.1" 200 OK
+[21:06:18.758] INFO:     127.0.0.1:52343 - "GET /health HTTP/1.1" 200 OK
+[21:06:23.769] INFO:     127.0.0.1:52343 - "GET /health HTTP/1.1" 200 OK
+[21:06:28.769] INFO:     127.0.0.1:52343 - "GET /health HTTP/1.1" 200 OK
+[21:06:33.778] INFO:     127.0.0.1:52343 - "GET /health HTTP/1.1" 200 OK
+[21:06:38.781] INFO:     127.0.0.1:52343 - "GET /health HTTP/1.1" 200 OK
+[21:06:43.780] INFO:     127.0.0.1:52343 - "GET /health HTTP/1.1" 200 OK
+[21:06:48.789] INFO:     127.0.0.1:52346 - "GET /health HTTP/1.1" 200 OK
+[21:06:53.787] INFO:     127.0.0.1:52346 - "GET /health HTTP/1.1" 200 OK
+[21:06:58.779] INFO:     127.0.0.1:52346 - "GET /health HTTP/1.1" 200 OK
+[21:07:03.796] INFO:     127.0.0.1:52346 - "GET /health HTTP/1.1" 200 OK
+[21:07:08.801] INFO:     127.0.0.1:52346 - "GET /health HTTP/1.1" 200 OK
+[21:07:13.807] INFO:     127.0.0.1:52346 - "GET /health HTTP/1.1" 200 OK
+[21:07:17.669] INFO:vmlx_engine.server:[MEDIA_DIAG] request_shape={"engine_is_mllm": false, "family": "nemotron_h", "media": {"content_arrays": 1, "data_url": 1, "items": 1, "missing_source": 0, "total": 1, "types": {"input_image": 1}, "url_or_path": 0}, "model": "Nemotron-Omni-Nano-JANGTQ-CRACK", "omni_modalities": ["text", "audio", "image", "video"], "registry_is_mllm": false, "route": "/v1/responses"}
+[21:07:17.696] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK kwargs={'temperature': 0.0, 'top_p': 1.0, 'repetition_penalty': 1.0, 'max_tokens': 1024, 'enable_thinking': True}
+[21:07:17.708] INFO:     127.0.0.1:52348 - "POST /v1/responses HTTP/1.1" 200 OK
+[21:07:17.709] INFO:vmlx_engine.omni_multimodal:OmniMultimodalDispatcher: cache reset (prefix='e3b0c44298fc1c14' != last='1065a6b763e0ad31')
+[21:07:17.716] INFO:vmlx_engine.omni_multimodal:OmniMultimodalDispatcher: turn — text=223ch, images=1, audio=no, video=no
+[21:07:18.794] INFO:     127.0.0.1:52346 - "GET /health HTTP/1.1" 200 OK
+[21:07:23.793] INFO:     127.0.0.1:52349 - "GET /health HTTP/1.1" 200 OK
+[21:07:28.824] INFO:     127.0.0.1:52349 - "GET /health HTTP/1.1" 200 OK
+[21:07:29.372] INFO:     127.0.0.1:52350 - "GET /health HTTP/1.1" 200 OK
+[21:07:33.826] INFO:     127.0.0.1:52349 - "GET /health HTTP/1.1" 200 OK
+[21:07:38.835] INFO:     127.0.0.1:52349 - "GET /health HTTP/1.1" 200 OK
+[21:07:43.841] INFO:     127.0.0.1:52349 - "GET /health HTTP/1.1" 200 OK
+[21:07:48.843] INFO:     127.0.0.1:52349 - "GET /health HTTP/1.1" 200 OK
+[21:07:49.424] INFO:     127.0.0.1:52349 - "GET /health HTTP/1.1" 200 OK
+[21:07:49.424] [CHAT_DIAG] request_shape={"chatId":"8c934b4a","wireApi":"responses","isRemote":false,"baseUrl":"http://127.0.0.1:8024","chatIsMultimodal":false,"detectedFamily":"nemotron-h","sessionHasReasoningParser":true,"body":{"route":"/v1/responses","model":"dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK","stream":true,"max_tokens":1024,"has_tools":false,"messages":[{"role":"user","content":{"type":"text","chars":159}},{"role":"output_text","content":{"type":"text","chars":31}},{"role":"user","content":{"type":"text","chars":260}},{"role":"reasoning","content":[{"type":"reasoning","keys":["text","type"]}]},{"role":"function_call","content":null},{"role":"function_call_output","content":{"type":"text","chars":101}},{"role":"output_text","content":{"type":"text","chars":37}},{"role":"user","content":{"type":"text","chars":100}}]}}
+[21:07:49.430] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK kwargs={'temperature': 0.6, 'top_p': 0.95, 'repetition_penalty': 1.0, 'max_tokens': 1024, 'enable_thinking': True}
+[21:07:49.435] INFO:     127.0.0.1:52353 - "POST /v1/responses HTTP/1.1" 200 OK
+[21:07:49.472] INFO:vmlx_engine.prefix_cache:Paged cache hit for resp_11a7403fa7e6: 10 blocks, 606 tokens
+[21:07:49.472] INFO:vmlx_engine.scheduler:Request resp_11a7403fa7e6: paged cache hit, 606 tokens in 10 blocks, 78 remaining to process (worker reconstruct pending)
+[21:07:49.713] INFO:vmlx_engine.prefix_cache:Partial hybrid reconstruction: 6/29 layers (23 cumulative layers deferred to _fix_hybrid_cache)
+[21:07:49.713] INFO:vmlx_engine.scheduler:Request resp_11a7403fa7e6: worker reconstructed 10 paged block(s) from L2
+[21:07:49.713] INFO:vmlx_engine.scheduler:SSM companion worker fetch: req=resp_11a7403fa7e6 fetch_num=606 cache_size=1 tokens_tail=[1048, 1054, 1052, 1052, 1010, 17, 1010, 11]
+[21:07:49.713] INFO:vmlx_engine.utils.ssm_companion_cache:SSM fetch MISS: N=606 hash=3e9b857a572c store_size=1 store_keys[:3]=['b5a99847f73f']
+[21:07:49.713] INFO:vmlx_engine.utils.ssm_companion_cache:SSM fetch MISS: N=576 hash=ec553c22c01e store_size=1 store_keys[:3]=['b5a99847f73f']
+[21:07:49.846] INFO:     127.0.0.1:52355 - "GET /health HTTP/1.1" 200 OK
+[21:07:50.711] INFO:vmlx_engine.scheduler:Request resp_11a7403fa7e6: synchronously derived SSM companion for block-aligned paged hit (606 tokens, 23 layers)
+[21:07:50.723] INFO:vmlx_engine.mllm_batch_generator:Re-wrapped 6 KV layers as TurboQuant objects: encoded=0, resident_before=3723264, resident_after=3723264, delta=+0 bytes; no resident-memory reduction claimed
+[21:07:50.723] INFO:vmlx_engine.scheduler:Request resp_11a7403fa7e6: hybrid paged HIT — 606 tokens (KV + 23 SSM layers)
+[21:07:51.812] INFO:vmlx_engine.scheduler:Extracted 29 layer states for request resp_11a7403fa7e6
+[21:07:51.812] INFO:vmlx_engine.scheduler:SSM companion: entering store for resp_11a7403fa7e6 (hybrid=True, has_cache=True)
+[21:07:51.812] INFO:vmlx_engine.scheduler:SSM companion: queued deferred re-derive for resp_11a7403fa7e6 (gpl=6, 677 cache-key tokens, will run during next idle period)
+[21:07:51.812] INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=677, num_new_blocks=11, frugal=True, cumulative=external-companion
+[21:07:51.813] INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 6 positional layers (out of 29 total)
+[21:07:51.815] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 24 (0 kv layers, turboquant_kv=6, 64 tokens)
+[21:07:51.826] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 25 (0 kv layers, turboquant_kv=6, 37 tokens)
+[21:07:52.004] INFO:vmlx_engine.scheduler:Stored paged cache for request resp_11a7403fa7e6 (677 cache-key tokens from 678 prompt tokens, 29 layers, cache truncated to 677 tokens)
+[21:07:53.846] INFO:     127.0.0.1:52349 - "GET /health HTTP/1.1" 200 OK
+[21:07:58.847] INFO:     127.0.0.1:52356 - "GET /health HTTP/1.1" 200 OK
+[21:08:01.942] INFO:     127.0.0.1:52358 - "GET /health HTTP/1.1" 200 OK
+[21:08:03.851] INFO:     127.0.0.1:52356 - "GET /health HTTP/1.1" 200 OK
+[21:08:08.852] INFO:     127.0.0.1:52356 - "GET /health HTTP/1.1" 200 OK

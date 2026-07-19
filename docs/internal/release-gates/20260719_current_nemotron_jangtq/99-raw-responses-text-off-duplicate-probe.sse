@@ -1,0 +1,38 @@
+{"api": "responses", "endpoint": "http://127.0.0.1:8024/v1/responses", "max_tokens": 256, "model": "dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK", "prompt": "[NEMO-DUP-RAW] Reply exactly NEMO-DUP-RAW-DONE and nothing else. Do not use tools.", "temperature": 0.0, "thinking": "off"}
+0.016	HTTP 200 text/event-stream
+0.016	event: response.created
+0.016	data: {"type": "response.created", "response": {"id": "resp_0279cf9c6186", "object": "response", "created_at": 1784495352, "status": "in_progress", "model": "dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK", "output": []}, "sequence_number": 0}
+0.016	event: response.output_item.added
+0.016	data: {"type": "response.output_item.added", "output_index": 0, "item": {"id": "item_b0877af0caf5", "type": "message", "status": "in_progress", "role": "assistant", "content": []}, "sequence_number": 1}
+0.016	event: response.content_part.added
+0.016	data: {"type": "response.content_part.added", "item_id": "item_b0877af0caf5", "output_index": 0, "content_index": 0, "part": {"type": "output_text", "text": "", "annotations": []}, "sequence_number": 2}
+0.104	event: response.output_text.delta
+0.104	data: {"type": "response.output_text.delta", "item_id": "item_b0877af0caf5", "output_index": 0, "content_index": 0, "delta": "\n", "sequence_number": 3}
+0.117	event: response.output_text.delta
+0.117	data: {"type": "response.output_text.delta", "item_id": "item_b0877af0caf5", "output_index": 0, "content_index": 0, "delta": "N", "sequence_number": 4}
+0.128	event: response.output_text.delta
+0.128	data: {"type": "response.output_text.delta", "item_id": "item_b0877af0caf5", "output_index": 0, "content_index": 0, "delta": "EM", "sequence_number": 5}
+0.140	event: response.output_text.delta
+0.140	data: {"type": "response.output_text.delta", "item_id": "item_b0877af0caf5", "output_index": 0, "content_index": 0, "delta": "O", "sequence_number": 6}
+0.152	event: response.output_text.delta
+0.152	data: {"type": "response.output_text.delta", "item_id": "item_b0877af0caf5", "output_index": 0, "content_index": 0, "delta": "-D", "sequence_number": 7}
+0.164	event: response.output_text.delta
+0.164	data: {"type": "response.output_text.delta", "item_id": "item_b0877af0caf5", "output_index": 0, "content_index": 0, "delta": "UP", "sequence_number": 8}
+0.176	event: response.output_text.delta
+0.176	data: {"type": "response.output_text.delta", "item_id": "item_b0877af0caf5", "output_index": 0, "content_index": 0, "delta": "-R", "sequence_number": 9}
+0.188	event: response.output_text.delta
+0.188	data: {"type": "response.output_text.delta", "item_id": "item_b0877af0caf5", "output_index": 0, "content_index": 0, "delta": "A", "sequence_number": 10}
+0.200	event: response.output_text.delta
+0.200	data: {"type": "response.output_text.delta", "item_id": "item_b0877af0caf5", "output_index": 0, "content_index": 0, "delta": "W", "sequence_number": 11}
+0.212	event: response.output_text.delta
+0.212	data: {"type": "response.output_text.delta", "item_id": "item_b0877af0caf5", "output_index": 0, "content_index": 0, "delta": "-D", "sequence_number": 12}
+0.224	event: response.output_text.delta
+0.224	data: {"type": "response.output_text.delta", "item_id": "item_b0877af0caf5", "output_index": 0, "content_index": 0, "delta": "ONE", "sequence_number": 13}
+0.236	event: response.output_text.done
+0.236	data: {"type": "response.output_text.done", "item_id": "item_b0877af0caf5", "output_index": 0, "content_index": 0, "text": "\nNEMO-DUP-RAW-DONE", "sequence_number": 14}
+0.315	event: response.content_part.done
+0.315	data: {"type": "response.content_part.done", "item_id": "item_b0877af0caf5", "output_index": 0, "content_index": 0, "part": {"type": "output_text", "text": "\nNEMO-DUP-RAW-DONE", "annotations": []}, "sequence_number": 15}
+0.385	event: response.output_item.done
+0.385	data: {"type": "response.output_item.done", "output_index": 0, "item": {"id": "item_b0877af0caf5", "type": "message", "status": "completed", "role": "assistant", "content": [{"type": "output_text", "text": "\nNEMO-DUP-RAW-DONE", "annotations": []}]}, "sequence_number": 16}
+0.385	event: response.completed
+0.385	data: {"type": "response.completed", "response": {"id": "resp_0279cf9c6186", "object": "response", "created_at": 1784495352, "status": "completed", "model": "dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK", "output_text": "\nNEMO-DUP-RAW-DONE", "output": [{"id": "item_b0877af0caf5", "type": "message", "status": "completed", "role": "assistant", "content": [{"type": "output_text", "text": "\nNEMO-DUP-RAW-DONE", "annotations": []}]}], "usage": {"input_tokens": 46, "output_tokens": 12, "total_tokens": 58, "input_tokens_details": {"cached_tokens": 39, "cache_detail": "paged+ssm+disk+tq-native"}}}, "sequence_number": 17}
