@@ -1,0 +1,177 @@
+Code
+Chat
+Server
+Tools
+Image
+API
+🇺🇸
+Sessions
+jangq-ai/MiniMax-M2.7-Small-JANGTQ
+JANGTQ
+127.0.0.1:8014
++ Chat
+Chat
+Server
+Cache
+Bench
+Embed
+Perf
+Logs
+Stop
+
+[M27-ELECTRON-PROGRESS-AFTER2] Do not call tools. Privately check the streaming contract, then reply exactly M27-ELECTRON-PROGRESS-AFTER2-DONE and nothing else.
+
+3:52 AM
+3:52 AM
+speak
+Reasoning
+529 chars
+
+M27-ELECTRON-PROGRESS-AFTER2-DONE
+
+143 tokens
+35.9 t/s
+109.0 pp/s
+82 prompt
+0.75s TTFT
+5.1s total
+Server Logs
+138 lines
+[11:03:37.632] Paged cache capacity: 64 tokens/block x 4 blocks = 256 tokens. Token capacity is sized by Max Cache Blocks; --cache-memory-mb/--cache-memory-percent set the L1 RAM byte ceiling that evicts free blocks (they bound RAM, not token capacity).
+[11:03:37.632] [ENV] engine_child_probe={"JANGTQ_MPP_NAX":null,"JANGTQ_MPP_NAX_DISABLE":null,"JANGTQ_MPP_NAX_STRICT":null,"JANGTQ_MPP_DENSE":null,"JANGTQ_MPP_DENSE_STRICT":null,"JANGTQ_DISABLE_DSV4_STREAM_LOAD":null,"JANGTQ_DISABLE_DSV4_FAST_LOAD":null,"DSV4_LONG_CTX":null,"DSV4_POOL_QUANT":null,"VMLX_DENSE_STRICT_LANE":null,"VMLX_DSV4_FAST_LOAD_DISABLE":null,"VMLX_DSV4_ENABLE_PREFIX_CACHE":null,"VMLINUX_DENSE_STRICT_LANE":null,"VMLINUX_DSV4_FAST_LOAD_DISABLE":null}
+[11:03:37.632] $ /Users/eric/mlx/vllm-mlx/.venv/bin/python3 -B -s -m vmlx_engine.cli serve /Volumes/EricsLLMDrive/jangq-ai/MiniMax-M2.7-Small-JANGTQ --host 127.0.0.1 --port 8014 --timeout 300 --max-num-seqs 1 --prefill-batch-size 512 --prefill-step-size 2048 --completion-batch-size 512 --continuous-batching --tool-call-parser minimax --enable-auto-tool-choice --reasoning-parser minimax_m2 --cache-memory-percent 0.15 --use-paged-cache --paged-cache-block-size 64 --max-cache-blocks 4 --enable-block-disk-cache --block-disk-cache-dir /Users/eric/.cache/vmlx-engine/live-proof-m27-paged-l2-final-20260719 --block-disk-cache-max-gb 10 --stream-interval 1
+[11:03:39.238]   JANGTQ_WIRED_LIMIT_GB defaulted to 115 GB (from OS sysctl iogpu.wired_limit_mb; overrides external jang_tools 70% default)
+[11:03:39.377] INFO:vmlx_engine:Registered vendored minimax_m3_vl runtime (/Users/eric/mlx/vllm-mlx/vmlx_engine/models/minimax_m3/minimax_m3.py)
+[11:03:39.379] INFO:vmlx_engine:Registered vendored openpangu_v2 runtime (/Users/eric/mlx/vllm-mlx/vmlx_engine/models/openpangu_v2/openpangu_v2.py)
+[11:03:39.379] INFO:__main__:MXTQ/JANGTQ bundle detected — disabling JANGTQ_MPP_NAX=auto. Reporter repros showed incorrect prefill logits on MXTQ/hybrid JANGTQ with auto; set JANGTQ_MPP_NAX=on only for explicit kernel diagnostics.
+[11:03:39.379] INFO:__main__:KV cache auto mode: TurboQuant enabled for compatible models; stored prefix cache quantization=q4
+[11:03:39.379] INFO:__main__:Reasoning parser enabled: minimax_m2
+[11:03:39.485] INFO:vmlx_engine:is_mllm_model(/Volumes/EricsLLMDrive/jangq-ai/MiniMax-M2.7-Small-JANGTQ): tier=registry_family_minimax result=False
+[11:03:39.587] INFO:__main__:Paged cache: --cache-memory-mb/--cache-memory-percent set the L1 RAM byte ceiling for the block KV mirror (free blocks are evicted, disk-L2 write-through first, to hold it). --max-cache-blocks caps the block-pool count; --block-disk-cache-max-gb caps L2 disk.
+[11:03:39.587] INFO:vmlx_engine.server:System memory before load: 115.6GB available / 128.0GB total (9.7% used)
+[11:03:39.587] INFO:vmlx_engine.server:Loading model with BatchedEngine: /Volumes/EricsLLMDrive/jangq-ai/MiniMax-M2.7-Small-JANGTQ
+[11:03:39.690] INFO:vmlx_engine.server:Model loaded (batched mode): /Volumes/EricsLLMDrive/jangq-ai/MiniMax-M2.7-Small-JANGTQ
+[11:03:39.690] INFO:vmlx_engine.server:Metal GPU memory after load: 0.00GB active, 0.00GB peak
+[11:03:39.690] INFO:vmlx_engine.server:System memory after load: 115.6GB available (9.7% used)
+[11:03:39.690] INFO:vmlx_engine.server:Native tool format enabled for parser: minimax
+[11:03:39.690] INFO:vmlx_engine.server:Default max tokens fallback: 4096 base / 16384 for reasoning-capable models (bundle max_new_tokens wins when present; projected Metal guard clamps per-model)
+[11:03:39.692] INFO:     Started server process [95088]
+[11:03:39.692] INFO:     Waiting for application startup.
+[11:03:39.702] INFO:vmlx_engine.server:Started caffeinate system wake lock for PID 95088
+[11:03:39.713] INFO:vmlx_engine.utils.tokenizer:Detected JANG model: /Volumes/EricsLLMDrive/jangq-ai/MiniMax-M2.7-Small-JANGTQ
+[11:03:39.713] INFO:vmlx_engine.utils.jang_loader:JANG v2 detected — loading via mmap (instant)
+[11:03:40.106] WARNING:vmlx_engine.utils.quant_shape_inference:quant_shape_inference: patched 250 module(s) in MiniMax-M2.7-Small-JANGTQ — config disagreed with safetensors shapes (top-level config claimed bits=2 group_size=64; per-module overrides corrected from shape). Most common cause: an older JANG/JANGTQ converter wrote uniform bits=2 into config.json while actual weights were stored with mixed precision per layer.
+[11:03:40.351] INFO:vmlx_engine.utils.jang_loader:MXTQ/JANGTQ detected — using native TurboQuant fast path (jang_tools.load_jangtq, P3/P15/P17/P18 Metal kernels)
+[11:03:40.351] ============================================================
+[11:03:40.351] SECURITY CONFIGURATION
+[11:03:40.351] ============================================================
+[11:03:40.351]   Authentication: DISABLED - Use --api-key to enable
+[11:03:40.351]   Rate limiting: DISABLED - Use --rate-limit to enable
+[11:03:40.351]   Request timeout: 300.0s
+[11:03:40.351]   Tool calling: ENABLED (parser: minimax)
+[11:03:40.351]   Reasoning: ENABLED (parser: MiniMaxM2ReasoningParser)  [thinking model detected]
+[11:03:40.351]   External speculative decoding: Use --speculative-model to enable
+[11:03:40.351] ============================================================
+[11:03:40.351] Loading model: /Volumes/EricsLLMDrive/jangq-ai/MiniMax-M2.7-Small-JANGTQ
+[11:03:40.351] Max output fallback: 4096 (bundle max_new_tokens wins when present)
+[11:03:40.351] Mode: Continuous batching (for multiple concurrent users)
+[11:03:40.351] Stream interval: 1 tokens
+[11:03:40.351] Paged cache: block_size=64, max_blocks=4, capacity=256 tokens (--cache-memory-mb/--cache-memory-percent set the L1 RAM byte ceiling for the block KV mirror; --max-cache-blocks caps the block-pool count)
+[11:03:40.351] Block disk cache: max=10.0GB
+[11:03:40.351] KV cache quantization: q4 (group_size=64)
+[11:03:40.351] Starting server at http://127.0.0.1:8014
+[11:03:40.351]   [wired_limit] auto-set to 115 GB (~84% of 137 GB total RAM; env JANGTQ_WIRED_LIMIT_GB)
+[11:03:40.351] Loading JANGTQ: MiniMax-M2.7-Small-JANGTQ
+[11:03:40.351]   seed=42, bits_map={'routed_expert': 2, 'attention': 8, 'dense_mlp': 8, 'embed_tokens': 8, 'lm_head': 8, 'norms_router': 16}
+[11:03:40.739]   39 shards
+[11:03:45.738]   TQ groups: 28644, regular: 1123
+[11:03:45.751]   Expert groups to stack: 186, pre-stacked: 0
+[11:03:45.818]   After stacking: 186 TQ groups
+[11:03:45.818]   Replacing modules with TurboQuantLinear...
+[11:03:45.820]   Replaced 186 modules
+[11:03:45.923]   Patched SwitchGLU class for fused gate+up (62 TQ instances)
+[11:03:45.924]   P15 mx.compile(router-only) applied to 1 MoE class(es)
+[11:03:45.928]   P18 QKV fusion: 1 class(es), 62 instances
+[11:03:45.930]   [hydrate] inference mode enabled
+[11:03:50.528]   Hydration complete
+[11:03:50.528]   [load_jangtq] merged eos_token_id from generation_config.json: +[200020] → [200020]
+[11:03:51.042]   [warmup] layer-by-layer 1-token forward (62 layers, H=3072) ...
+[11:03:51.050]     layer 0/61 compiled  (0.0s)
+[11:03:51.076]     layer 10/61 compiled  (0.0s)
+[11:03:51.092]     layer 20/61 compiled  (0.1s)
+[11:03:51.102]     layer 30/61 compiled  (0.1s)
+[11:03:51.112]     layer 40/61 compiled  (0.1s)
+[11:03:51.122]     layer 50/61 compiled  (0.1s)
+[11:03:51.132]     layer 60/61 compiled  (0.1s)
+[11:03:51.133]     layer 61/61 compiled  (0.1s)
+[11:03:51.135]   [warmup] full-model 16-token prefill shape ...
+[11:03:51.270]     ok  (0.1s)
+[11:03:51.270]   [warmup] done in 0.2s (Metal kernels now JIT-cached)
+[11:03:51.270]   Done (eos_token_ids=[200020])
+[11:03:51.270] INFO:vmlx_engine.utils.jang_loader:  Wired limit set to 56 GB (model 38 GB)
+[11:03:51.271] INFO:vmlx_engine.utils.jang_loader:  TurboQuant auto-enabled via VMLX_FORCE_TQ_AUTO=1
+[11:03:51.272] INFO:vmlx_engine.utils.jang_loader:  TurboQuant objects active; live encode disabled; storage codec=4-bit attention KV, policy=uncalibrated_full_kv_storage_tq4 (62 mapped KV layers)
+[11:03:51.272] INFO:vmlx_engine.utils.jang_loader:JANGTQ v2 loaded in 11.6s: MiniMax-M2.7-Small (0.0-bit avg, native TQ, no dequant)
+[11:03:51.272] INFO:vmlx_engine.engine.batched:BatchedEngine multi-eos hook: family=minimax, registry eos_tokens=['[e~[', ']~b]'], tokenizer_class=TokenizerWrapper, primary=200020
+[11:03:51.386] INFO:vmlx_engine.engine.batched:minimax: BatchedEngine extended existing TokenizerWrapper; eos_token_ids={200019, 200020}
+[11:03:51.387] INFO:vmlx_engine.scheduler:Runtime cache layout: model_type=minimax_m2 layers=62 layout=0:TurboQuantKVCache;1:TurboQuantKVCache;2:TurboQuantKVCache;3:TurboQuantKVCache;4:TurboQuantKVCache;5:TurboQuantKVCache;6:TurboQuantKVCache;7:TurboQuantKVCache;8:TurboQuantKVCache;9:TurboQuantKVCache;10:TurboQuantKVCache;11:TurboQuantKVCache;12:TurboQuantKVCache;13:TurboQuantKVCache;14:TurboQuantKVCache;15:TurboQuantKVCache;16:TurboQuantKVCache;17:TurboQuantKVCache;18:TurboQuantKVCache;19:TurboQuantKVCache;20:TurboQuantKVCache;21:TurboQuantKVCache;22:TurboQuantKVCache;23:TurboQuantKVCache;24:TurboQuantKVCache;25:TurboQuantKVCache;26:TurboQuantKVCache;27:TurboQuantKVCache;28:TurboQuantKVCache;29:TurboQuantKVCache;30:TurboQuantKVCache;31:TurboQuantKVCache;32:TurboQuantKVCache;33:TurboQuantKVCache;34:TurboQuantKVCache;35:TurboQuantKVCache;36:TurboQuantKVCache;37:TurboQuantKVCache;38:TurboQuantKVCache;39:TurboQuantKVCache;40:TurboQuantKVCache;41:TurboQuantKVCache;42:TurboQuantKVCache;43:TurboQuantKVCache;44:TurboQuantKVCache;45:TurboQuantKVCache;46:TurboQuantKVCache;47:TurboQuantKVCache;48:TurboQuantKVCache;49:TurboQuantKVCache;50:TurboQuantKVCache;51:TurboQuantKVCache;52:TurboQuantKVCache;53:TurboQuantKVCache;54:TurboQuantKVCache;55:TurboQuantKVCache;56:TurboQuantKVCache;57:TurboQuantKVCache;58:TurboQuantKVCache;59:TurboQuantKVCache;60:TurboQuantKVCache;61:TurboQuantKVCache
+[11:03:51.387] INFO:vmlx_engine.scheduler:TurboQuantKVCache live decode preserving configured batching (batch cache API=turboquant_kv_v1).
+[11:03:51.387] INFO:vmlx_engine.scheduler:KV cache auto mode: TurboQuantKVCache is active for live decode; stored prefix/cache snapshots still use q4 when applicable.
+[11:03:51.388] INFO:vmlx_engine.scheduler:KV cache auto mode: native TurboQuant owns stored attention KV; generic q4/q8 prefix quantization is suppressed
+[11:03:51.388] INFO:vmlx_engine.scheduler:Prefix cache requires continuous batching — enabled automatically
+[11:03:51.394] INFO:vmlx_engine.block_disk_store:BlockDiskStore initialized: dir=/Users/eric/.cache/vmlx-engine/live-proof-m27-paged-l2-final-20260719, max_size=10.0GB, entries=84, size=0.27GB
+[11:03:51.394] INFO:vmlx_engine.scheduler:Block disk cache enabled: dir=/Users/eric/.cache/vmlx-engine/live-proof-m27-paged-l2-final-20260719, max=10.0GB, expected_layers=62
+[11:03:51.394] INFO:vmlx_engine.paged_cache:PagedCacheManager initialized: block_size=64, max_blocks=4, max_tokens=256
+[11:03:51.394] INFO:vmlx_engine.scheduler:Paged cache RAM ceiling: 11685 MB (15% of available); block pool max_blocks=4
+[11:03:51.398] INFO:vmlx_engine.scheduler:Paged cache enabled: block_size=64, max_blocks=4
+[11:03:51.565] INFO:vmlx_engine.scheduler:TurboQuant storage decoder startup warmup: configs=62 arrays=496 bytes=8201856 codec_probes=62 probe_tokens=64 probe_heads=8 seconds=0.166
+[11:03:51.565] INFO:vmlx_engine.engine_core:Engine started
+[11:03:51.565] INFO:vmlx_engine.engine.batched:BatchedEngine loaded: /Volumes/EricsLLMDrive/jangq-ai/MiniMax-M2.7-Small-JANGTQ (mllm=False)
+[11:03:51.582] INFO:vmlx_engine.server:Recorded Metal working-set model baseline: active=37.4GB max=107.5GB reason=lifespan_engine_start
+[11:03:51.585] INFO:vmlx_engine.mcp.config:No MCP config file found, using empty config
+[11:03:51.585] INFO:     Application startup complete.
+[11:03:51.585] INFO:     Uvicorn running on http://127.0.0.1:8014 (Press CTRL+C to quit)
+[11:03:52.294] INFO:     127.0.0.1:61489 - "GET /health HTTP/1.1" 200 OK
+[11:03:52.602] INFO:     127.0.0.1:61490 - "GET /health HTTP/1.1" 200 OK
+[11:03:52.922] INFO:     127.0.0.1:61491 - "GET /health HTTP/1.1" 200 OK
+[11:03:53.225] INFO:     127.0.0.1:61489 - "GET /health HTTP/1.1" 200 OK
+[11:03:57.987] INFO:     127.0.0.1:61489 - "GET /health HTTP/1.1" 200 OK
+[11:04:02.993] INFO:     127.0.0.1:61489 - "GET /health HTTP/1.1" 200 OK
+[11:04:07.992] INFO:     127.0.0.1:61489 - "GET /health HTTP/1.1" 200 OK
+[11:04:12.997] INFO:     127.0.0.1:61489 - "GET /health HTTP/1.1" 200 OK
+[11:04:18.002] INFO:     127.0.0.1:61489 - "GET /health HTTP/1.1" 200 OK
+[11:04:23.008] INFO:     127.0.0.1:61489 - "GET /health HTTP/1.1" 200 OK
+[11:04:24.867] WARNING:vmlx_engine.server:SECURITY WARNING: Server running without API key authentication. Anyone can access the API. Use --api-key to enable authentication.
+[11:04:24.868] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/MiniMax-M2.7-Small-JANGTQ kwargs={'temperature': 1.0, 'top_p': 0.95, 'top_k': 40, 'max_tokens': 4096, 'enable_thinking': False}
+[11:04:24.869] INFO:     127.0.0.1:61492 - "POST /v1/responses HTTP/1.1" 200 OK
+[11:04:24.892] INFO:vmlx_engine.server:Template for jangq-ai/MiniMax-M2.7-Small-JANGTQ always injects <think> (ignores enable_thinking=False)
+[11:04:24.894] INFO:vmlx_engine.scheduler:Request resp_7b8a2f8c5881: paged cache miss, processing all 71 tokens
+[11:04:24.894] INFO:vmlx_engine.scheduler:max_num_seqs=1 — using vMLX SingleBatchGenerator (raw native cache, scheduler-owned single-active path)
+[11:04:25.617] INFO:vmlx_engine.server:Response resp_7b8a2f8c5881 cancelled via API
+[11:04:25.617] INFO:     127.0.0.1:61493 - "POST /v1/responses/resp_7b8a2f8c5881/cancel HTTP/1.1" 200 OK
+[11:04:28.021] INFO:     127.0.0.1:61489 - "GET /health HTTP/1.1" 200 OK
+[11:04:30.977] INFO:     127.0.0.1:61495 - "GET /health HTTP/1.1" 200 OK
+[11:04:33.016] INFO:     127.0.0.1:61489 - "GET /health HTTP/1.1" 200 OK
+[11:04:38.021] INFO:     127.0.0.1:61489 - "GET /health HTTP/1.1" 200 OK
+[11:04:43.020] INFO:     127.0.0.1:61496 - "GET /health HTTP/1.1" 200 OK
+[11:04:48.021] INFO:     127.0.0.1:61496 - "GET /health HTTP/1.1" 200 OK
+[11:04:53.027] INFO:     127.0.0.1:61496 - "GET /health HTTP/1.1" 200 OK
+[11:04:58.029] INFO:     127.0.0.1:61496 - "GET /health HTTP/1.1" 200 OK
+[11:05:03.027] INFO:     127.0.0.1:61496 - "GET /health HTTP/1.1" 200 OK
+[11:05:08.036] INFO:     127.0.0.1:61496 - "GET /health HTTP/1.1" 200 OK
+[11:05:10.110] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/MiniMax-M2.7-Small-JANGTQ kwargs={'temperature': 1.0, 'top_p': 0.95, 'top_k': 40, 'max_tokens': 4096, 'enable_thinking': False}
+[11:05:10.111] INFO:     127.0.0.1:61497 - "POST /v1/responses HTTP/1.1" 200 OK
+[11:05:10.115] INFO:vmlx_engine.scheduler:Request resp_4c882b25db62: paged cache miss, processing all 71 tokens
+[11:05:11.230] INFO:     127.0.0.1:61498 - "GET /health HTTP/1.1" 200 OK
+[11:05:11.233] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/MiniMax-M2.7-Small-JANGTQ kwargs={'temperature': 1.0, 'top_p': 0.95, 'top_k': 40, 'max_tokens': 128, 'enable_thinking': False}
+[11:05:11.233] INFO:     127.0.0.1:61499 - "POST /v1/responses HTTP/1.1" 200 OK
+[11:05:11.234] INFO:vmlx_engine.scheduler:Request resp_8972147115f3: paged cache miss, processing all 62 tokens
+[11:05:11.990] INFO:vmlx_engine.scheduler:Extracted 62 layer states for request resp_8972147115f3
+[11:05:11.990] INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=58, num_new_blocks=1, frugal=True, cumulative=block
+[11:05:11.996] INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 62 positional layers (out of 62 total)
+[11:05:12.016] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 1 (0 kv layers, turboquant_kv=62, 58 tokens)
+[11:05:12.182] INFO:vmlx_engine.scheduler:Stored paged cache for request resp_8972147115f3 (58 cache-key tokens from 59 prompt tokens, 62 layers, cache truncated to 58 tokens)
+[11:05:13.039] INFO:     127.0.0.1:61496 - "GET /health HTTP/1.1" 200 OK
+[11:05:18.048] INFO:     127.0.0.1:61496 - "GET /health HTTP/1.1" 200 OK
+[11:05:23.048] INFO:     127.0.0.1:61496 - "GET /health HTTP/1.1" 200 OK
+[11:05:28.051] INFO:     127.0.0.1:61496 - "GET /health HTTP/1.1" 200 OK

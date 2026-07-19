@@ -2398,3 +2398,30 @@ remain open. No public release/notarization/feed mutation performed.
 - Overall protocol parity remains `PARTIAL`: cancellation/disconnect/injected
   mid-stream failure/recovery, signed-app repeat, raw generate, multi-tool, and
   other model/parser family live rows remain open.
+
+## 2026-07-19 11:05 - Responses cancellation truth and disconnect recovery
+
+- `RESPONSES-CANCEL-FALSE-SUCCESS`: `VERIFIED-LIVE` on commit `ae498c70b`.
+  Before the repair, cancelling a long stream after three content deltas returned
+  HTTP 200 but finalized partial text `1, ` as a completed output item inside a
+  `response.completed` terminal. This was a shared Responses finalization defect,
+  not MiniMax-M2.7, JANGTQ/MXTQ, TurboQuant, reasoning-parser, or cache behavior.
+- Aborted or detected-disconnect streams now retain incomplete item state, emit
+  `response.incomplete` with `reason=cancelled`, skip the visible-answer retry, and
+  do not enter Responses history. A mid-stream exception now emits
+  `response.failed` instead of a contradictory `response.completed` envelope.
+- Regression validation passed 111 selected cancellation/Responses/reasoning/API
+  tests with 741 deselected. The exception terminal is directly pinned, but safe
+  live HTTP fault injection remains open.
+- After a real Electron Stop/Start, PID 95088 cancelled response
+  `resp_7b8a2f8c5881` after three progressive content deltas: HTTP 200 cancel, one
+  incomplete output item, one `response.incomplete`, reason `cancelled`, zero
+  active requests, and no persisted history. A separate client disconnect after
+  five deltas reached idle in 1.12s; immediate recovery streamed 12 content deltas
+  to exact marker `M27-AFTER-DISCONNECT-PATCH-DONE` and completed once.
+- Evidence:
+  `docs/internal/release-gates/20260719_response_cancel_disconnect/`.
+- Scoped cancellation/disconnect recovery is `VERIFIED-LIVE`. Overall protocol
+  parity remains `PARTIAL` for safe live mid-stream exception injection, Chat
+  cancellation/disconnect behavior, signed-app repeat, raw Generate multi-tool,
+  and remaining model/parser families.

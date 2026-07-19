@@ -8,6 +8,27 @@ production gate, and the current branch. Older contradictory rows remain in
 their original ledgers for provenance; the newest source-plus-live row wins and
 superseded conclusions are called out here.
 
+### 2026-07-19 Responses cancellation/disconnect override
+
+- Commit `ae498c70b` repairs the shared Responses terminal contract. A pre-fix
+  explicit cancel returned HTTP 200 after three content deltas but falsely emitted
+  a completed output item and `response.completed`. Aborted or detected-disconnect
+  streams now retain incomplete item state, emit only `response.incomplete` with
+  `reason=cancelled`, skip answer retry/history persistence, and return the engine
+  to idle. Mid-stream exceptions emit `response.failed` rather than a completed
+  envelope with failed inner status.
+- Focused validation is 111 passed with 741 deselected. After a real Electron
+  Stop/Start, PID 95088 produced the corrected cancel terminal, zero active
+  requests, and no stored response. A separate client disconnect after five
+  deltas reached idle in 1.12 seconds; immediate recovery streamed 12 content
+  deltas to an exact marker and completed once.
+- Evidence:
+  `docs/internal/release-gates/20260719_response_cancel_disconnect/`.
+- This advances explicit Responses cancellation and client-disconnect recovery to
+  `PASS-LIVE scoped`. API/protocol parity remains `PARTIAL`: safe live mid-stream
+  fault injection, Chat cancellation/disconnect, signed-app repeat, raw Generate
+  multi-tool, and other parser/model family rows remain open.
+
 ## Release truth
 
 ### 2026-07-19 current-source full-suite and bundle-safety override

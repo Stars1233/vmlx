@@ -1062,3 +1062,22 @@
   `docs/internal/release-gates/20260719_ollama_stream_tool_parity/`.
 - Protocol remains `PARTIAL` pending cancellation/disconnect/failure recovery
   and retained cross-family rows.
+
+## 2026-07-19 - Responses cancellation and disconnect recovery repair
+
+- Live red on the Electron-started MiniMax-M2.7 JANGTQ/MXTQ engine: explicit
+  Responses cancellation returned HTTP 200 but finalized three partial bytes as a
+  completed output item and `response.completed`.
+- `ae498c70b` fixes the shared endpoint state machine: aborted/disconnected output
+  is incomplete, cancellation reason is explicit, no answer retry/history write
+  occurs, and exceptions use `response.failed`.
+- Focused tests pass 111/111 selected. After real Electron Stop/Start, live cancel
+  produced only `response.incomplete`; client disconnect reached idle and the
+  immediate recovery streamed 12 exact content deltas before one completed
+  terminal. Both partial ids returned 404 from the Responses history endpoint.
+- Preserved pre/post SSE, summaries, disconnect/recovery, source trace, tests,
+  Electron logs, and screenshot under
+  `docs/internal/release-gates/20260719_response_cancel_disconnect/`.
+- Keep the parent protocol row `PARTIAL`: safe live mid-stream exception injection,
+  Chat cancel/disconnect, signed-app repeat, raw Generate multi-tool, and other
+  model/parser families are still open.

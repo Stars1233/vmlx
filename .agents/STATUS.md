@@ -7049,3 +7049,22 @@ Status: scoped `VERIFIED-LIVE`; overall protocol/release matrix `PARTIAL`.
   `docs/internal/release-gates/20260719_ollama_stream_tool_parity/`.
 - Still open: cancellation/disconnect/injected failure recovery, raw generate,
   live multi-tool, signed app, and broader family/parser rows.
+
+## 2026-07-19 - Responses cancel and disconnect terminal truth
+
+Status: scoped `VERIFIED-LIVE`; overall protocol/release matrix `PARTIAL`.
+
+- Commit `ae498c70b` maps engine abort/client disconnect to incomplete output
+  items and `response.incomplete(reason=cancelled)`, prevents answer retry/history
+  persistence, and maps mid-stream exceptions to `response.failed`.
+- Current-source regression is 111 passed with 741 deselected. The exception path
+  has direct source/test proof; safe live HTTP failure injection remains open.
+- A real Electron Stop/Start loaded PID 95088. Explicit cancellation after three
+  content deltas returned HTTP 200 and one incomplete terminal, then health showed
+  zero active requests. A separate client close after five deltas reached idle in
+  1.12s; immediate recovery streamed 12 deltas to exact final and completed once.
+- Neither partial response id was retrievable as successful history. Evidence:
+  `docs/internal/release-gates/20260719_response_cancel_disconnect/`.
+- Open boundaries: live mid-stream fault injection/recovery, Chat cancellation and
+  disconnect semantics, signed-app repeat, raw Generate multi-tool, and remaining
+  parser/model families.

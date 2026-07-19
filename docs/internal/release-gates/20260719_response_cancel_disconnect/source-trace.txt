@@ -1,0 +1,20 @@
+Commit:
+ae498c70b0562541fb984309e6cf5d28e857856f
+
+vmlx_engine/server.py:
+- 19133 initializes explicit disconnect state.
+- 19420-19425 marks a detected disconnect before aborting the engine request.
+- 19897-19908 emits response.failed for a mid-stream exception.
+- 19911-19917 derives shared cancellation state from disconnect or aborted finish.
+- 19944-19946 derives incomplete output-item status.
+- 20289 prevents cancelled reasoning from launching a visible-answer retry.
+- 20690-20704 maps aborted/cancelled to response.incomplete reason=cancelled.
+- 20758-20764 skips Responses history persistence for cancelled partials.
+- 20765-20772 emits the terminal event matching the final response status.
+
+tests/test_server.py:
+- 2607-2686 pins aborted partial output, incomplete terminal, cancelled reason,
+  incomplete item status, and absent history.
+- 2689-2751 pins error plus response.failed, partial usage, and absence of
+  response.completed after a mid-stream exception.
+

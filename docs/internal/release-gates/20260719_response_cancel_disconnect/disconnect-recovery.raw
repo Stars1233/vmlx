@@ -1,0 +1,98 @@
+# HTTP 200
+101
+event: response.created
+data: {"type": "response.created", "response": {"id": "resp_8972147115f3", "object": "response", "created_at": 1784459111, "status": "in_progress", "model": "jangq-ai/MiniMax-M2.7-Small-JANGTQ", "output": []}, "sequence_number": 0}
+
+
+ee
+event: response.output_item.added
+data: {"type": "response.output_item.added", "output_index": 0, "item": {"id": "item_31406f23e734", "type": "message", "status": "in_progress", "role": "assistant", "content": []}, "sequence_number": 1}
+
+
+ef
+event: response.content_part.added
+data: {"type": "response.content_part.added", "item_id": "item_31406f23e734", "output_index": 0, "content_index": 0, "part": {"type": "output_text", "text": "", "annotations": []}, "sequence_number": 2}
+
+
+bb
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_31406f23e734", "output_index": 0, "content_index": 0, "delta": "M", "sequence_number": 3}
+
+
+bc
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_31406f23e734", "output_index": 0, "content_index": 0, "delta": "27", "sequence_number": 4}
+
+
+bc
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_31406f23e734", "output_index": 0, "content_index": 0, "delta": "-A", "sequence_number": 5}
+
+
+bb
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_31406f23e734", "output_index": 0, "content_index": 0, "delta": "F", "sequence_number": 6}
+
+
+bd
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_31406f23e734", "output_index": 0, "content_index": 0, "delta": "TER", "sequence_number": 7}
+
+
+bc
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_31406f23e734", "output_index": 0, "content_index": 0, "delta": "-D", "sequence_number": 8}
+
+
+bc
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_31406f23e734", "output_index": 0, "content_index": 0, "delta": "IS", "sequence_number": 9}
+
+
+c2
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_31406f23e734", "output_index": 0, "content_index": 0, "delta": "CONNECT", "sequence_number": 10}
+
+
+bd
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_31406f23e734", "output_index": 0, "content_index": 0, "delta": "-P", "sequence_number": 11}
+
+
+bf
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_31406f23e734", "output_index": 0, "content_index": 0, "delta": "ATCH", "sequence_number": 12}
+
+
+bd
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_31406f23e734", "output_index": 0, "content_index": 0, "delta": "-D", "sequence_number": 13}
+
+
+be
+event: response.output_text.delta
+data: {"type": "response.output_text.delta", "item_id": "item_31406f23e734", "output_index": 0, "content_index": 0, "delta": "ONE", "sequence_number": 14}
+
+
+d7
+event: response.output_text.done
+data: {"type": "response.output_text.done", "item_id": "item_31406f23e734", "output_index": 0, "content_index": 0, "text": "M27-AFTER-DISCONNECT-PATCH-DONE", "sequence_number": 15}
+
+
+10d
+event: response.content_part.done
+data: {"type": "response.content_part.done", "item_id": "item_31406f23e734", "output_index": 0, "content_index": 0, "part": {"type": "output_text", "text": "M27-AFTER-DISCONNECT-PATCH-DONE", "annotations": []}, "sequence_number": 16}
+
+
+140
+event: response.output_item.done
+data: {"type": "response.output_item.done", "output_index": 0, "item": {"id": "item_31406f23e734", "type": "message", "status": "completed", "role": "assistant", "content": [{"type": "output_text", "text": "M27-AFTER-DISCONNECT-PATCH-DONE", "annotations": []}]}, "sequence_number": 17}
+
+
+23c
+event: response.completed
+data: {"type": "response.completed", "response": {"id": "resp_8972147115f3", "object": "response", "created_at": 1784459111, "status": "completed", "model": "jangq-ai/MiniMax-M2.7-Small-JANGTQ", "output_text": "M27-AFTER-DISCONNECT-PATCH-DONE", "output": [{"id": "item_31406f23e734", "type": "message", "status": "completed", "role": "assistant", "content": [{"type": "output_text", "text": "M27-AFTER-DISCONNECT-PATCH-DONE", "annotations": []}]}], "usage": {"input_tokens": 62, "output_tokens": 13, "total_tokens": 75}}, "sequence_number": 18}
+
+
+0
+
