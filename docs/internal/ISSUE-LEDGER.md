@@ -1735,6 +1735,33 @@ remain open. No public release/notarization/feed mutation performed.
 - ALSO: test_tq_disk_cache + test_tq_paged_block_cache FAIL under full suite
   but PASS in isolation — order-dependent state pollution, OPEN to root-cause.
 
+## 2026-07-18 21:1x - FULL Python suite green; no-heavy meta-audit remains OPEN
+
+- The order-dependent TurboQuant failures were test-process pollution, not a
+  live cache defect. `test_explicit_kv_quantization_disables_loader_turboquant`
+  invokes the real CLI, which intentionally sets `VMLX_DISABLE_TQ_KV=1` for a
+  server lifetime, but the test stops at `uvicorn.run` and remained in the same
+  pytest process. An autouse fixture now restores every CLI-mutated TQ/SSM
+  policy variable after each test. The entire polluting file followed by both
+  formerly failing disk-cache tests passed 10/10.
+- Two remaining failures were stale source-string contracts: the post-tool
+  Qwen Auto partition now uses `_auto_thinking_partition_allowed` in both Chat
+  and Responses, and the MiniMax-M3 visible-answer path uses the shared
+  progressive streamer. Tests now pin helper behavior and endpoint delta
+  wiring instead of removed inline/log literals.
+- Bundled Python was rebuilt from current vMLX source plus clean JANG source
+  `9081c924` and passed version, critical source/JANG hashes, relocatable
+  shebangs, and all critical imports.
+- Current-source full Python suite with Node in PATH: **5942 passed, 96 skipped,
+  261 deselected** in 246.95s. Evidence:
+  `docs/internal/release-gates/20260718_full_suite_test_isolation/`.
+- The generated no-heavy regression orchestrator is still **OPEN**, not green.
+  Its child pytest/vitest commands generally pass, but several proof runners
+  retain stale exact test-name/count/source-marker expectations; MiMo local
+  bundles are absent from their hard-coded paths; and packaged signing remains
+  outside this post-release source/test checkpoint. These meta-audit rows are
+  being reconciled separately and are not converted into runtime proof.
+
 ## 2026-07-18 19:0x - Step JANGTQ Auto-tool empty final recovered; cross-family Auto-stream gate remains open
 
 - `STEP37-AUTO-INVALID-TOOL-EMPTY`: scoped current-source fix is
