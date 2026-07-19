@@ -2012,3 +2012,39 @@ remain open. No public release/notarization/feed mutation performed.
   reusable, and a tight reasoning cap can therefore cause two full prefills.
   The advertised 524,288-token limit remains unproven. Evidence:
   `docs/internal/release-gates/20260718_openpangu_long_snapshot_guard/`.
+
+## 2026-07-19 00:4x - Seeded TQ restore startup cost closed for text + MLLM schedulers
+
+- `HY3-TQ-DECODER-FIRST-RESTORE-LATENCY`: `VERIFIED-LIVE` on commit
+  `7472c1ad1`. The live 80-layer HY3 cache owns 80 distinct q4 codec seeds,
+  while the storage decoder LRU retained only 32. The first disk hit also paid
+  the first real packed-codec invocation. The text scheduler now retains 256
+  codec pairs and materializes the bundle-derived q4 codecs on its pinned
+  model worker before readiness. The same 36-token `paged+disk+tq-native`
+  boundary moved from 9.688565s to 0.951356s reconstruction and Electron TTFT
+  from 9.88s to 1.14s; an 82-token/two-block replay reconstructed in 1.044455s
+  and exact-finaled. Evidence:
+  `docs/internal/release-gates/20260719_hy3_tq_decoder_warmup/`.
+- `MLLM-TQ-DECODER-FIRST-RESTORE-LATENCY`: `VERIFIED-LIVE` for current
+  Bonsai source, pending this ledger's scoped commit. The initial hook did not
+  cover `--is-mllm`; `_start_mllm` now warms the MLLM scheduler's real patched
+  language-model cache owner on the same load/step worker. Electron Logs show
+  exactly 16 q8 TurboQuant slots warmed and 48 ArraysCache companion slots
+  retained. Fresh-chat restart replay restored 74 tokens as
+  `paged+ssm+disk` at 0.21s TTFT with eight q8 TQ-native block hits, one SSM
+  companion hit, and no unsafe KV-without-SSM reuse. Same-chat Electron
+  `file_info` executed exactly once and exact-finaled; raw Chat/Responses
+  emitted separate progressive reasoning/content and correct terminal events.
+  The stochastic no-tool UI row rambled past the requested terminal marker and
+  remains a strict-format reliability failure. Evidence:
+  `docs/internal/release-gates/20260719_bonsai_mllm_tq_warmup/`.
+- `NONPAGED-PROMPT-DISK-L2-RESTORE`: `OPEN` (P1 cache-axis gate, Eric
+  directive). With paged cache explicitly Off and prompt disk cache/L2 On, an
+  exact prefix must still be indexed, found, restored, and reused across a
+  process restart. Prove a plain-KV representative and an
+  architecture-specific typed-cache representative through Electron UI -> DB
+  -> argv -> health plus raw API streaming. The result must report prompt
+  `disk` reuse without fabricated paged/block hits. Explicit Off must persist.
+- Focused current-source validation for the MLLM extension: 143 passed. The
+  campaign/release status remains `PARTIAL`; no release action is authorized by
+  these scoped rows.

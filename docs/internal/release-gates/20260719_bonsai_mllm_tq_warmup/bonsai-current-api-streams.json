@@ -1,0 +1,60 @@
+{
+  "chat": {
+    "content": "31 times 9 is indeed 279.",
+    "content_deltas": 10,
+    "done": true,
+    "finish_reasons": [
+      "stop"
+    ],
+    "first_content_at": 5.188879,
+    "first_reasoning_at": 0.228855,
+    "last_content_at": 5.388978,
+    "reasoning_deltas": 256,
+    "tool_deltas": 0,
+    "tool_fragments_raw": []
+  },
+  "responses": {
+    "arguments": "",
+    "content": "31 times 9 is indeed 279.",
+    "event_counts": {
+      "response.completed": 1,
+      "response.content_part.added": 1,
+      "response.content_part.done": 1,
+      "response.created": 1,
+      "response.output_item.added": 1,
+      "response.output_item.done": 1,
+      "response.output_text.delta": 10,
+      "response.output_text.done": 1,
+      "response.reasoning_summary_text.delta": 256,
+      "response.reasoning_summary_text.done": 1
+    },
+    "first_content_at": 5.071629,
+    "last_content_at": 5.273183,
+    "terminal": [
+      "response.completed"
+    ]
+  },
+  "responses_required_tool": {
+    "arguments": "{\"path\": \"panel/package.json\"}",
+    "content": "",
+    "event_counts": {
+      "response.completed": 1,
+      "response.content_part.added": 1,
+      "response.content_part.done": 1,
+      "response.created": 1,
+      "response.function_call_arguments.delta": 2,
+      "response.function_call_arguments.done": 1,
+      "response.heartbeat": 99,
+      "response.output_item.added": 2,
+      "response.output_item.done": 2,
+      "response.output_text.done": 1,
+      "response.reasoning_summary_text.delta": 62,
+      "response.reasoning_summary_text.done": 1
+    },
+    "first_content_at": null,
+    "last_content_at": null,
+    "terminal": [
+      "response.completed"
+    ]
+  }
+}
