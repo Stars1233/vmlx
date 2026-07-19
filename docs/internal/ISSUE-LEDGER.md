@@ -2798,3 +2798,37 @@ remain open. No public release/notarization/feed mutation performed.
   `docs/internal/release-gates/20260719_responses_usage_extension_parity/`.
 - Retain `PARTIAL`: live remote-provider smoke, signed packaged-app repeat,
   failure/disconnect soak, and the rest of the explicit release matrix.
+
+## 2026-07-19 - Block-disk-only partial-prefix gate
+
+- `GENERIC-BLOCK-L2-PAGED-OFF`: `PASS-LIVE scoped`. Current source now treats
+  Block Disk Cache (L2) as an independent durable block backend when Paged RAM
+  is explicitly Off. It does not substitute the legacy memory prefix cache if
+  SSD initialization fails, and it does not drop the last KV payload until the
+  queued block write is durably visible.
+- `BLOCK-CAPACITY-TRUTH`: `FIXED_SOURCE + VERIFIED-LIVE`. The engine reserves
+  block 0. UI, DB/argv, launch log, and health now report three usable 64-token
+  blocks / 192 tokens from four configured blocks; idle utilization is `0.0`
+  rather than counting the reserved null block as 25% user cache.
+- `BLOCK-DISK-COUNTER-TRUTH`: `FIXED_SOURCE + VERIFIED-LIVE`. Public scheduler
+  disk hit/miss fields now use actual BlockDiskStore reads, while promotion-only
+  counters remain separately named. Final current-process health showed 21
+  actual disk hits, 21 TQ-native hits, and zero resident KV bytes.
+- The real Electron UI loaded MiniMax-M2.7 JANGTQ via Start with
+  `--no-paged-cache`, block L2 On, and q4 TQ prefix storage. After process
+  replacement, an identical fresh chat restored 192
+  `block-disk+tq-native` tokens and exact-finaled. A raw long Chat API repeat
+  independently restored 192/846 tokens and streamed seven content deltas.
+- Timed Chat and Responses SSE separately proved reasoning deltas, progressive
+  visible-content deltas, and correct terminal events. One tools-enabled
+  synthetic Electron replay unnecessarily chose write/read tools; that
+  model-choice observation is retained instead of being called a strict no-tool
+  pass. The loop still returned the exact final marker.
+- Validation: 13 focused Python passes, 299 panel passes, clean typecheck, and a
+  passing aggregate cache contract with 454 cache-family and 115 panel-policy
+  selections. Evidence:
+  `docs/internal/release-gates/20260719_block_disk_only_partial/`.
+- This closes only the compatible generic full-KV disk-only exact/partial/restart
+  row for the exercised M2.7 artifact. Hybrid companion rederive,
+  native/typed/mixed-SWA families, signed-app repetition, and overall release
+  readiness remain separately `PARTIAL`/`OPEN`.

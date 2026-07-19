@@ -1,0 +1,9 @@
+[21:47:49.657] Block disk-only index capacity: 64 tokens/block x 3 usable blocks (4 configured; 1 reserved) = 192 indexed tokens. Paged RAM is disabled; KV payloads persist on SSD and restore transiently.
+[21:48:00.256] INFO:vmlx_engine.block_disk_store:BlockDiskStore initialized: dir=/Users/eric/.cache/vmlx-engine/live-proof-m27-diskonly-partial-20260719, max_size=10.0GB, entries=14, size=0.05GB
+[21:48:00.256] INFO:vmlx_engine.paged_cache:PagedCacheManager initialized: block_size=64, max_blocks=4, usable_blocks=3, max_tokens=192, backend=block-disk-only
+[21:48:36.907] INFO:vmlx_engine.scheduler:Request resp_6250d1e67886: block disk-only cache hit, 192 tokens in 3 blocks, 1304 remaining to process (worker reconstruct pending)
+[21:49:47.218] WARNING:vmlx_engine.prefix_cache:Paged cache capacity reached for resp_6250d1e67886; stored partial prefix 192/1490 tokens (3 blocks). Increase Max Cache Blocks or lower Block Size to cache more of this prompt.
+[21:49:47.411] INFO:vmlx_engine.scheduler:Request resp_a10d2a0cc7fa: block disk-only cache hit, 192 tokens in 3 blocks, 2007 remaining to process (worker reconstruct pending)
+[21:50:05.832] WARNING:vmlx_engine.prefix_cache:Paged cache capacity reached for resp_a10d2a0cc7fa; stored partial prefix 192/2193 tokens (3 blocks). Increase Max Cache Blocks or lower Block Size to cache more of this prompt.
+[21:50:06.009] INFO:vmlx_engine.scheduler:Request resp_3fa3737adfb5: block disk-only cache hit, 192 tokens in 3 blocks, 2701 remaining to process (worker reconstruct pending)
+[21:50:30.152] WARNING:vmlx_engine.prefix_cache:Paged cache capacity reached for resp_3fa3737adfb5; stored partial prefix 192/2887 tokens (3 blocks). Increase Max Cache Blocks or lower Block Size to cache more of this prompt.

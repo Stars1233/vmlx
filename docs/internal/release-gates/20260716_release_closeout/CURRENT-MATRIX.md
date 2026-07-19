@@ -1268,3 +1268,18 @@ Validation: 83/83 selected Python tests, 111/111 selected panel tests, and clean
 panel typecheck. Evidence:
 `../20260719_responses_usage_extension_parity/`. Overall release remains
 `PARTIAL_NO_1_6_12_RELEASE`.
+
+### Block-disk-only partial-prefix addendum - 2026-07-19
+
+| Row | Status | Current source + live evidence | Remaining |
+|---|---|---|---|
+| Generic full-KV Block L2 with Paged Off | PASS-LIVE scoped | MiniMax-M2.7 JANGTQ loaded through the real Electron Start action with Paged Off, Block L2 On, and q4 TQ prefix storage. An identical fresh chat after process replacement restored 192 SSD tokens and exact-finaled. A raw long Chat repeat restored 192/846 tokens as `block-disk+tq-native`. | Repeat across other compatible full-KV families. Hybrid/native/mixed-SWA families retain their architecture-specific rows. |
+| UI/DB/argv/health capacity parity | PASS-LIVE | DB persisted Paged Off / Prefix On / Block L2 On. Real argv used `--no-paged-cache`. UI, corrected launch log, and health agree on three usable 64-token blocks / 192 tokens from four configured blocks with block 0 reserved; idle utilization is zero. | Retain as a regression row for later settings/model-swap sweeps. |
+| SSD durability and zero persistent RAM payload | PASS-LIVE scoped | Source waits for file/SQLite visibility before dropping the only payload. Final health reported 14 durable blocks / 753 tokens, actual SSD and TQ-native hits, and zero resident KV bytes. | Fault-injected SSD write failure and signed-app repeat remain broader resilience gates. |
+| Chat/Responses output emission | PASS-LIVE scoped | Timed Chat emitted 330 reasoning and 15 content deltas, stop, usage, and DONE. Responses emitted 512 reasoning-summary and 16 content deltas, output-text done, and one completed terminal. Exact content was non-empty on both. | Other model/parser families and long soak remain campaign-level work. |
+| Synthetic tools-enabled replay | PARTIAL model-choice observation | Cache and loop mechanics completed: two schema-valid write/read tools, two results, 576 aggregate SSD tokens, exact final marker, no warning. The model unnecessarily interpreted `DISKONLY` as a file task and took 113.3s. | Do not use this ambiguous prompt as a strict no-tool quality row; raw no-tool streams passed separately. |
+
+Validation: 13 focused Python passes, 299 panel passes, clean typecheck, and a
+passing aggregate cache contract (454 cache-family plus 115 panel-policy
+selections). Evidence: `../20260719_block_disk_only_partial/`. Overall release
+remains `PARTIAL_NO_1_6_12_RELEASE`.
