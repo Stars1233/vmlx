@@ -1,0 +1,260 @@
+{
+  "model": "jangq-ai/openPangu-2.0-Flash-JANG_3M",
+  "responses": {
+    "no_tool": {
+      "wall_seconds": 16.713746,
+      "done_sentinel": false,
+      "event_counts": {
+        "response.created": 1,
+        "response.output_item.added": 1,
+        "response.content_part.added": 1,
+        "response.reasoning_summary_text.delta": 389,
+        "response.usage": 428,
+        "response.output_text.delta": 38,
+        "response.reasoning_summary_text.done": 1,
+        "response.output_text.done": 1,
+        "response.content_part.done": 1,
+        "response.output_item.done": 1,
+        "response.completed": 1
+      },
+      "first_nonempty_delta": {
+        "response.reasoning_summary_text.delta": 0.877456,
+        "response.output_text.delta": 15.225776
+      },
+      "completed": {
+        "id": "resp_ce9ec31dadac",
+        "object": "response",
+        "created_at": 1784440775,
+        "status": "completed",
+        "model": "jangq-ai/openPangu-2.0-Flash-JANG_3M",
+        "output_text": "Separating reasoning deltas from visible answer deltas prevents internal logic from confusing users and maintains a clean output. This separation also allows independent debugging and evolution of both the reasoning process and the final answer.",
+        "output": [
+          {
+            "id": "item_8a0e371ee6c0",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "Separating reasoning deltas from visible answer deltas prevents internal logic from confusing users and maintains a clean output. This separation also allows independent debugging and evolution of both the reasoning process and the final answer.",
+                "annotations": []
+              }
+            ]
+          },
+          {
+            "id": "rs_edaacf5a94bf",
+            "type": "reasoning",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "reasoning",
+                "text": "First, the user asks: \"Explain in two short sentences why an event stream should keep reasoning deltas separate from visible answer deltas. Do not use a tool.\"\n\nI need to respond directly without using any tools. The response must be in two short sentences. I should not use any tool calls, as per the instruction.\n\nThe topic is about event streams, reasoning deltas, and visible answer deltas. I need to explain why they should be kept separate. I need to ensure the explanation is concise and in exactly two sentences.\n\nI should define the terms briefly. Reasoning deltas might refer to the internal reasoning steps or changes, while visible answer deltas are the final outputs or changes that are shown to users. Keeping them separate can help with clarity, debugging, and system design.\n\nKey points: Separation allows for independent evolution, easier debugging, and clear audit trails. Also, it prevents confusion between internal processes and external outputs.\n\nI need to structure this into two sentences. Let me draft:\n\nSentence 1: Explain the benefit of separation. Sentence 2: Highlight the consequences of not separating.\n\nDraft 1: \"Keeping reasoning deltas separate ensures that internal thought processes don't clutter the visible output, maintaining a clean user experience. This separation also allows for independent debugging and evolution of the reasoning system without affecting the presented answers.\"\n\nThat's two sentences. I need to make sure they are short. The second sentence is a bit long. I can shorten it.\n\nRevised: \"Separating reasoning deltas from visible answer deltas prevents internal logic from confusing users. It also enables independent updates and clearer auditing of both the reasoning process and the final output.\"\n\nThat's two sentences. I'll check the word count: first sentence 10 words, second 12. Short enough. I should ensure it directly addresses the \"why\" as per the question.\n\nI'll go with this. No tool usage, so I'll just output the response."
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 408,
+          "output_tokens": 429,
+          "total_tokens": 837
+        }
+      }
+    },
+    "tool": {
+      "wall_seconds": 3.091574,
+      "done_sentinel": false,
+      "event_counts": {
+        "response.created": 1,
+        "response.output_item.added": 2,
+        "response.content_part.added": 1,
+        "response.reasoning_summary_text.delta": 35,
+        "response.usage": 37,
+        "response.heartbeat": 23,
+        "response.reasoning_summary_text.done": 1,
+        "response.output_text.done": 1,
+        "response.content_part.done": 1,
+        "response.output_item.done": 2,
+        "response.function_call_arguments.delta": 2,
+        "response.function_call_arguments.done": 1,
+        "response.completed": 1
+      },
+      "first_nonempty_delta": {
+        "response.reasoning_summary_text.delta": 0.887251,
+        "response.function_call_arguments.delta": 3.091198
+      },
+      "completed": {
+        "id": "resp_6862622bcd33",
+        "object": "response",
+        "created_at": 1784440791,
+        "status": "completed",
+        "model": "jangq-ai/openPangu-2.0-Flash-JANG_3M",
+        "output_text": "",
+        "output": [
+          {
+            "id": "item_9df07faace94",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "",
+                "annotations": []
+              }
+            ]
+          },
+          {
+            "id": "fc_497de89ee324",
+            "type": "function_call",
+            "status": "completed",
+            "call_id": "call_b13cba74",
+            "name": "file_info",
+            "arguments": "{\"path\": \"panel/package.json\"}"
+          },
+          {
+            "id": "rs_70722d2b8698",
+            "type": "reasoning",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "reasoning",
+                "text": "The user wants me to inspect the file `panel/package.json` using the file_info tool. I need to call the tool with the path parameter set to \"panel/package.json\"."
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 580,
+          "output_tokens": 61,
+          "total_tokens": 641
+        }
+      }
+    },
+    "follow": {
+      "wall_seconds": 11.250252,
+      "done_sentinel": false,
+      "event_counts": {
+        "response.created": 1,
+        "response.output_item.added": 1,
+        "response.content_part.added": 1,
+        "response.reasoning_summary_text.delta": 124,
+        "response.usage": 277,
+        "response.output_text.delta": 151,
+        "response.reasoning_summary_text.done": 1,
+        "response.output_text.done": 1,
+        "response.content_part.done": 1,
+        "response.output_item.done": 1,
+        "response.completed": 1
+      },
+      "first_nonempty_delta": {
+        "response.reasoning_summary_text.delta": 0.829932,
+        "response.output_text.delta": 5.437929
+      },
+      "completed": {
+        "id": "resp_206ef2e1f17f",
+        "object": "response",
+        "created_at": 1784440794,
+        "status": "completed",
+        "model": "jangq-ai/openPangu-2.0-Flash-JANG_3M",
+        "output_text": "Here is the information for `panel/package.json`:\n\n| Property | Value |\n|----------|-------|\n| **Path** | `panel/package.json` |\n| **Type** | file |\n| **Size** | 5.2 KB |\n| **Last Modified** | 2026-07-15T14:28:24.904Z (UTC) |\n| **Permissions** | 0644 (readable by all, writable only by owner) |\n\nThe file is a standard JSON package manifest (5.2 KB) last updated on July 15, 2026. If you need the actual content of the file, let me know and I can read it for you.",
+        "output": [
+          {
+            "id": "item_6b402f6621f7",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "Here is the information for `panel/package.json`:\n\n| Property | Value |\n|----------|-------|\n| **Path** | `panel/package.json` |\n| **Type** | file |\n| **Size** | 5.2 KB |\n| **Last Modified** | 2026-07-15T14:28:24.904Z (UTC) |\n| **Permissions** | 0644 (readable by all, writable only by owner) |\n\nThe file is a standard JSON package manifest (5.2 KB) last updated on July 15, 2026. If you need the actual content of the file, let me know and I can read it for you.",
+                "annotations": []
+              }
+            ]
+          },
+          {
+            "id": "rs_3c4fb2d007d0",
+            "type": "reasoning",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "reasoning",
+                "text": "The file_info tool returned the result. I need to present this information to the user in a clear format. The result shows:\n\n- Path: panel/package.json\n- Type: file\n- Size: 5.2 KB\n- Modified: 2026-07-15T14:28:24.904Z\n- Permissions: 0644\n\nI should format this nicely and provide a brief summary. The user asked to \"inspect\" and \"wait for the real result\" - the result is now available, so I should present it."
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 571,
+          "output_tokens": 278,
+          "total_tokens": 849
+        }
+      }
+    }
+  },
+  "chat": {
+    "no_tool": {
+      "wall_seconds": 11.317298,
+      "done_sentinel": true,
+      "event_count": 291,
+      "reasoning_delta_count": 250,
+      "content_delta_count": 38,
+      "tool_delta_count": 0,
+      "first_reasoning_delta": 0.844678,
+      "first_content_delta": 9.904618,
+      "first_tool_delta": null,
+      "finish_reasons": [
+        "stop"
+      ],
+      "reasoning": "First, the user asks: \"Explain in two short sentences why a streaming API should send visible answer text incrementally. Do not use a tool.\"\n\nI need to respond directly without using any tools. The response should be in two short sentences. The topic is about why a streaming API should send visible answer text incrementally.\n\nKey points to cover:\n- Benefits of incremental text: improves user experience by providing immediate feedback, reduces perceived latency, allows for real-time interaction.\n- Keep it concise: two sentences.\n\nStructure:\n- Sentence 1: State the primary reason (e.g., user experience, responsiveness).\n- Sentence 2: Elaborate on the benefits (e.g., engagement, efficiency).\n\nEnsure sentences are short and to the point. Avoid any tool usage, as per instruction.\n\nDraft:\n1. Incremental text delivery provides immediate feedback, making the system feel responsive and reducing perceived wait times.\n2. This approach enhances user engagement by allowing them to start reading and interacting with content as it arrives, rather than waiting for the entire response.\n\nCheck sentence count: two sentences. Yes.\n\nRefine for clarity and brevity. Make sure it's directly answering the question.\n\nFinal response should be in plain text, no formatting issues.",
+      "content": "Incremental text delivery provides immediate feedback, making the system feel responsive and reducing perceived wait times. This approach enhances user engagement by allowing them to start reading and interacting with content as it arrives.",
+      "tool_calls": []
+    },
+    "tool": {
+      "wall_seconds": 2.876977,
+      "done_sentinel": true,
+      "event_count": 63,
+      "reasoning_delta_count": 35,
+      "content_delta_count": 0,
+      "tool_delta_count": 2,
+      "first_reasoning_delta": 0.660368,
+      "first_content_delta": null,
+      "first_tool_delta": 2.018602,
+      "finish_reasons": [
+        "tool_calls"
+      ],
+      "reasoning": "The user wants me to inspect the file `panel/package.json` using the file_info tool. I need to call the tool with the path parameter set to \"panel/package.json\".",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "call_d42a5bcb",
+          "type": "function",
+          "function": {
+            "name": "file_info",
+            "arguments": "{\"path\": \"panel/package.json\"}"
+          }
+        }
+      ]
+    },
+    "follow": {
+      "wall_seconds": 13.156454,
+      "done_sentinel": true,
+      "event_count": 333,
+      "reasoning_delta_count": 185,
+      "content_delta_count": 145,
+      "tool_delta_count": 0,
+      "first_reasoning_delta": 0.607969,
+      "first_content_delta": 7.464078,
+      "first_tool_delta": null,
+      "finish_reasons": [
+        "stop"
+      ],
+      "reasoning": "The user asked to inspect panel/package.json with file_info and wait for the real result. The tool result is now provided. I need to present the information in a clear, organized way. The result shows:\n\n- Path: panel/package.json\n- Type: file\n- Size: 5.2 KB\n- Modified: 2026-07-15T14:28:24.904Z\n- Permissions: 0644\n\nI should format this nicely and maybe add some interpretation. The user said \"wait for the real result\" which I've now received. I should confirm that the inspection is complete and present the findings. I'll also note that the file is a JSON file (package.json) and the permissions 0644 mean read/write for owner, read for group and others. I should keep the response concise but informative.",
+      "content": "The file inspection for `panel/package.json` is complete. Here are the details:\n\n**File Information**\n- **Path:** `panel/package.json`\n- **Type:** File\n- **Size:** 5.2 KB\n- **Last Modified:** 2026-07-15T14:28:24.904Z (UTC)\n- **Permissions:** `0644` (owner: read/write; group: read; others: read)\n\nThe file is a standard Node.js `package.json` configuration file. If you need any specific content from this file (like dependencies, scripts, version, etc.), let me know and I can read its contents for you.",
+      "tool_calls": []
+    }
+  }
+}

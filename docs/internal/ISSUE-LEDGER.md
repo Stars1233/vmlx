@@ -1955,3 +1955,36 @@ remain open. No public release/notarization/feed mutation performed.
   `docs/internal/release-gates/20260718_m3_auto_agent_stream/`.
 - M3 larger-video, digit OCR, terminal-delay, and REAP32 headroom rows remain
   `PARTIAL`; campaign/release status remains `PARTIAL`.
+
+## 2026-07-18 23:1x - openPangu 3M native Auto/tool protocols current-head closure
+
+- `OPENPANGU-AUTO-REASONING-AGENT-STREAM`: `VERIFIED-LIVE` for current-source
+  text Auto reasoning and one-tool continuation through Electron, Responses,
+  and Chat Completions. The real bundle is affine importance-quantized
+  `JANG_3M` with no Hadamard rotation; it is not JANGTQ/MXTQ or base MXFP.
+- Electron Start replaced M3 with openPangu PID 21745 and left exactly one
+  model running. Before a prompt, health reported `model_loaded=true`,
+  `last_request_time=null`, and the native `openpangu_v2_composite_v2` MLA +
+  DSA indexer + rotating SWA + path-dependent convolution state. Generic TQ,
+  generic paged blocks, and block L2 were off; exact typed prompt-disk L2 was
+  on, matching the architecture and UI/argv policy.
+- Bundle defaults appeared in the UI as temperature 1.0, top-p 0.8 and Auto
+  reasoning with Responses/tools enabled. The controlled run changed only
+  temperature to 0 and max tokens to 512. Electron row 207 stored 897
+  reasoning and 406 visible characters separately, coherent and warning-free.
+  Same-chat row 210 executed exactly one real
+  `file_info(panel/package.json)`, received 5.2 KB, and returned the requested
+  one-sentence visible answer with 468 reasoning characters and no warning.
+- Raw Responses no-tool/tool/follow emitted 389/38 reasoning-content, 35
+  reasoning plus two argument, and 124/151 reasoning-content deltas; every
+  case completed. Raw Chat emitted 250/38, 35 plus two tool deltas, and
+  185/145; call/follow finish reasons were `tool_calls`/`stop`, and each ended
+  with `[DONE]`. No generic TQ/paged path was introduced.
+- The bundle contains stored MTP hints but its name does not declare MTP and
+  the tensor index has no MTP tensors. Health truthfully reports the current
+  openPangu runtime drops those extra-layer heads and leaves MTP inactive; no
+  depth was invented for this non-MTP-named artifact.
+- Evidence:
+  `docs/internal/release-gates/20260718_openpangu_auto_agent_stream/`.
+- Long-context stress and broader protocol/cancellation soak remain
+  `PARTIAL`; campaign/release status remains `PARTIAL`.
