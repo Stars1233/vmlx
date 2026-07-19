@@ -1,0 +1,73 @@
+{
+  "version": 2,
+  "weight_format": "jang_affine",
+  "profile": "JANG_4M",
+  "source_model": {
+    "name": "gemma-4-26B-A4B-it-qat-q4_0-unquantized",
+    "architecture": "gemma4_text"
+  },
+  "has_vision": true,
+  "has_audio": false,
+  "has_video": false,
+  "modalities": {
+    "text": true,
+    "vision": true,
+    "audio": false,
+    "video": false
+  },
+  "quantization": {
+    "method": "jang_affine",
+    "quantization_backend": "mx.quantize",
+    "mode": "affine",
+    "group_size": 32,
+    "tier_bits": {
+      "attention": 8,
+      "router": 8,
+      "mlp": 4,
+      "embed": 16,
+      "per_layer_media": 16
+    },
+    "tied_embedding": "fp16_passthrough",
+    "norm_convention": "gemma4_scale_shift_zero",
+    "multimodal": "fp16_passthrough_embedders_early_fusion",
+    "preserved_modal_components": [
+      "vision_embedder"
+    ],
+    "mtp_policy": "none",
+    "per_module_override_count": 180,
+    "passthrough_tensor_count": 718
+  },
+  "runtime": {
+    "total_weight_bytes": 18493004562,
+    "total_weight_gb": 17.22,
+    "attention": "hybrid_swa_full",
+    "sliding_window": 1024,
+    "attention_k_eq_v_on_full_layers": true,
+    "full_attention_layers": [
+      5,
+      11,
+      17,
+      23,
+      29
+    ]
+  },
+  "capabilities": {
+    "reasoning_parser": "gemma4",
+    "tool_parser": "gemma4",
+    "think_in_template": false,
+    "supports_tools": true,
+    "supports_thinking": true,
+    "family": "gemma4",
+    "modality": "vision",
+    "modalities": {
+      "text": true,
+      "vision": true,
+      "audio": false,
+      "video": false
+    },
+    "has_vision": true,
+    "has_audio": false,
+    "has_video": false,
+    "cache_type": "kv"
+  }
+}

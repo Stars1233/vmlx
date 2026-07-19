@@ -1,0 +1,33 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.11, pytest-9.0.2, pluggy-1.6.0
+rootdir: /Users/eric/mlx/vllm-mlx
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+plugins: asyncio-1.3.0, anyio-4.13.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 361 items
+
+tests/test_gemma4_tool_parser.py .............                           [  3%]
+tests/test_gemma4_reasoning_no_leak.py ..........                        [  6%]
+tests/test_reasoning_modes.py .......................................... [ 18%]
+...................                                                      [ 23%]
+tests/test_streaming_reasoning.py ...................................... [ 33%]
+........................................................................ [ 53%]
+.....................                                                    [ 59%]
+tests/test_answer_pass_streaming.py ...................                  [ 64%]
+tests/test_cache_architecture_contract.py .......                        [ 66%]
+tests/test_turboquant_cache_contract.py ........                         [ 68%]
+tests/test_vl_media_cache_contract.py ....                               [ 70%]
+tests/test_mllm_scheduler_cache.py ..................................... [ 80%]
+....................................................................     [ 99%]
+tests/test_mllm_stream_lifecycle.py ...                                  [100%]
+
+=============================== warnings summary ===============================
+tests/test_mllm_scheduler_cache.py::test_mllm_raw_audio_without_processor_payload_fails_loudly
+tests/test_mllm_scheduler_cache.py::test_mllm_mimo_raw_audio_bridge_populates_audio_codes
+  /Users/eric/mlx/vllm-mlx/.venv/lib/python3.13/site-packages/librosa/core/audio.py:184: FutureWarning: librosa.core.audio.__audioread_load
+  	Deprecated as of librosa version 0.10.0.
+  	It will be removed in librosa version 1.0.
+    y, sr_native = __audioread_load(path, offset, duration, dtype)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 361 passed, 2 warnings in 2.76s ========================

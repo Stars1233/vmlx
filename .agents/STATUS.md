@@ -7143,3 +7143,22 @@ Status: M3 text Auto/tool `VERIFIED-LIVE`; overall release `PARTIAL/BLOCKED`.
   `docs/internal/release-gates/20260719_m3_current_postfinalizer/`.
 - Remaining M3 boundaries: larger media, OCR, terminal delay, REAP32 headroom,
   cancellation/disconnect, and signed-app repeat.
+## 2026-07-19 - Gemma4 current parser/stream/cache gate
+
+Status: text/parser/tool/cache scope `VERIFIED-LIVE`; reasoning efficiency and overall
+release `PARTIAL/BLOCKED`.
+
+- Electron Start loaded the Gemma4 26B affine JANG bundle as PID 4530. Rows 394/397
+  retained separate reasoning, non-empty progressively painted content, one real
+  `file_info` loop, no warnings, and a 7,168-token `paged+mixed_swa+disk` restore.
+- Raw Responses and Chat passed no-tool/tool/follow at 4,096 tokens with separate
+  deltas and clean terminals. The 512-token negative controls ended incomplete/length
+  as requested rather than pretending completion.
+- Current health distinguishes native live rotating caches from q4 storage encoding
+  of both full/sliding KV with rotating metadata preserved. Focused validation is 361
+  passed.
+- Retain `PARTIAL`: the default-temperature short Electron prompt spent 3,322 output
+  tokens / 15,629 reasoning characters before a coherent answer. Do not hide this with
+  sampler coercion. Evidence:
+  `docs/internal/release-gates/20260719_gemma4_current_parser_stream/`.
+- Release remains blocked on stale bundled Python relative to current source.

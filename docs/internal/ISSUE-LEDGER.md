@@ -2510,3 +2510,28 @@ remain open. No public release/notarization/feed mutation performed.
   `docs/internal/release-gates/20260719_m3_current_postfinalizer/`.
 - Scoped M3 text verdict is `PASS-LIVE`; M3 larger-media/OCR/terminal-delay/
   REAP32/signed-app and cross-parser rows remain `PARTIAL`.
+## 2026-07-19 - Gemma 4 current parser/stream/cache recheck
+
+- `GEMMA4-CURRENT-AUTO-STREAM`: `PASS-LIVE` with adequate request headroom.
+  Electron Start loaded the 26B affine `JANG_4M` bundle as PID 4530 with Gemma4
+  reasoning/tool parsers, Responses wire, tools On, prefix+paged+L2 On. Row 394
+  persisted non-empty coherent content separately from reasoning; row 397 executed
+  exactly one real `file_info(panel/package.json)`, returned 5.2 KB, restored 7,168
+  `paged+mixed_swa+disk` tokens, and stored no warning. CDP observed progressive
+  visible-content painting.
+- Raw Responses and Chat each passed no-tool, required-tool, and tool-result
+  continuation at 4,096 output tokens with separate reasoning/content deltas and clean
+  completed/stop terminals. The 512-token controls correctly ended
+  `response.incomplete(max_output_tokens)` and Chat `length`; they are retained as
+  negative cap controls, not counted as complete streams.
+- `GEMMA4-DEFAULT-REASONING-EFFICIENCY`: `PARTIAL`. The short default UI prompt used
+  3,322 output tokens and 15,629 reasoning characters before a coherent two-sentence
+  answer. No replay/leak/freeze was observed, but stochastic verbosity remains open;
+  do not mask it with a hidden cap or sampler clamp.
+- Cache truth: live rotating slots remain native and generic live TQ is Off, while
+  stored prefix/block payloads use q4 for full and sliding KV and preserve rotating
+  metadata. Health after the current turns records 10 prefix hits, 7,950 tokens saved,
+  56 scheduler disk hits, and 239 native-TQ L2 hits.
+- Focused current-source validation: 361 passed. Evidence:
+  `docs/internal/release-gates/20260719_gemma4_current_parser_stream/`.
+- Release remains blocked on the already-recorded source/bundled Python hash drift.

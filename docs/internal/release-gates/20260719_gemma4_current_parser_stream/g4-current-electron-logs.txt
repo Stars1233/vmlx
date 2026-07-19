@@ -1,0 +1,396 @@
+Code
+Chat
+Server
+Tools
+Image
+API
+🇺🇸
+Sessions
+jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M
+127.0.0.1:8000
+PID 4530
++ Chat
+Chat
+Server
+Cache
+Bench
+Embed
+Perf
+Logs
+Stop
+
+In two short sentences, explain why a client should render streamed answer text progressively while keeping private reasoning separate. Do not use any tool, and make smooth delivery the final two words.
+
+5:08 AM
+5:08 AM
+speak
+Reasoning
+15629 chars
+
+Streaming the answer provides instant feedback to improve responsiveness. Separating reasoning protects privacy and ensures smooth delivery.
+
+3322 tokens
+79.7 t/s
+172.5 pp/s
+49 prompt
+0.28s TTFT
+42.0s total
+
+Use the built-in file_info tool exactly once to inspect panel/package.json, then report its human-readable size in one short sentence after the real result.
+
+5:09 AM
+5:09 AM
+speak
+Reasoning
+211 chars
+Info
+panel/package.json
+
+The file size is 5.2 KB.
+
+103 tokens
+67.0 t/s
+4209.9 pp/s
+7531 prompt (7168 paged+mixed_swa+disk cached)
+0.91s TTFT
+3.1s total
+Server Logs
+338 lines
+[12:07:16.576] Paged cache capacity: 64 tokens/block x 1000 blocks = 64000 tokens. Token capacity is sized by Max Cache Blocks; --cache-memory-mb/--cache-memory-percent set the L1 RAM byte ceiling that evicts free blocks (they bound RAM, not token capacity).
+[12:07:16.576] [ENV] engine_child_probe={"JANGTQ_MPP_NAX":null,"JANGTQ_MPP_NAX_DISABLE":null,"JANGTQ_MPP_NAX_STRICT":null,"JANGTQ_MPP_DENSE":null,"JANGTQ_MPP_DENSE_STRICT":null,"JANGTQ_DISABLE_DSV4_STREAM_LOAD":null,"JANGTQ_DISABLE_DSV4_FAST_LOAD":null,"DSV4_LONG_CTX":null,"DSV4_POOL_QUANT":null,"VMLX_DENSE_STRICT_LANE":null,"VMLX_DSV4_FAST_LOAD_DISABLE":null,"VMLX_DSV4_ENABLE_PREFIX_CACHE":null,"VMLINUX_DENSE_STRICT_LANE":null,"VMLINUX_DSV4_FAST_LOAD_DISABLE":null}
+[12:07:16.576] $ /Users/eric/mlx/vllm-mlx/.venv/bin/python3 -B -s -m vmlx_engine.cli serve /Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M --host 127.0.0.1 --port 8000 --timeout 300 --max-num-seqs 1 --prefill-batch-size 512 --prefill-step-size 2048 --completion-batch-size 512 --is-mllm --continuous-batching --tool-call-parser gemma4 --enable-auto-tool-choice --reasoning-parser gemma4 --cache-memory-percent 0.15 --use-paged-cache --paged-cache-block-size 64 --max-cache-blocks 1000 --enable-block-disk-cache --block-disk-cache-max-gb 10 --stream-interval 1
+[12:07:18.201]   JANGTQ_WIRED_LIMIT_GB defaulted to 115 GB (from OS sysctl iogpu.wired_limit_mb; overrides external jang_tools 70% default)
+[12:07:18.333] INFO:vmlx_engine:Registered vendored minimax_m3_vl runtime (/Users/eric/mlx/vllm-mlx/vmlx_engine/models/minimax_m3/minimax_m3.py)
+[12:07:18.334] INFO:vmlx_engine:Registered vendored openpangu_v2 runtime (/Users/eric/mlx/vllm-mlx/vmlx_engine/models/openpangu_v2/openpangu_v2.py)
+[12:07:18.334] INFO:vmlx_engine.model_config_registry:Model config: detection_source=jang_stamped family=gemma4 reasoning_parser=gemma4 tool_parser=gemma4 think_in_template=False cache_type=kv cache_subtype=None is_mllm=True
+[12:07:18.335] INFO:__main__:KV cache auto mode: TurboQuant enabled for compatible models; stored prefix cache quantization=q4
+[12:07:18.335] INFO:__main__:Reasoning parser enabled: gemma4
+[12:07:18.339] INFO:vmlx_engine:is_mllm_model(/Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M): tier=force_mllm result=True
+[12:07:18.341] INFO:__main__:Paged cache: --cache-memory-mb/--cache-memory-percent set the L1 RAM byte ceiling for the block KV mirror (free blocks are evicted, disk-L2 write-through first, to hold it). --max-cache-blocks caps the block-pool count; --block-disk-cache-max-gb caps L2 disk.
+[12:07:18.341] INFO:vmlx_engine.server:System memory before load: 111.1GB available / 128.0GB total (13.2% used)
+[12:07:18.341] INFO:vmlx_engine.server:Force MLLM mode enabled via --mllm flag
+[12:07:18.341] INFO:vmlx_engine.server:Loading model with BatchedEngine: /Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M
+[12:07:18.343] INFO:vmlx_engine:is_mllm_model(/Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M): tier=force_mllm result=True
+[12:07:18.343] INFO:vmlx_engine.server:Model loaded (batched mode): /Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M
+[12:07:18.344] INFO:vmlx_engine.server:Metal GPU memory after load: 0.00GB active, 0.00GB peak
+[12:07:18.345] INFO:vmlx_engine.server:System memory after load: 111.1GB available (13.2% used)
+[12:07:18.345] INFO:vmlx_engine.server:Native tool format enabled for parser: gemma4
+[12:07:18.345] INFO:vmlx_engine.server:Default max tokens fallback: 4096 base / 16384 for reasoning-capable models (bundle max_new_tokens wins when present; projected Metal guard clamps per-model)
+[12:07:18.347] INFO:     Started server process [4530]
+[12:07:18.347] INFO:     Waiting for application startup.
+[12:07:18.356] INFO:vmlx_engine.server:Started caffeinate system wake lock for PID 4530
+[12:07:18.560] INFO:vmlx_engine:Registered vMLX-owned Qwen 3.5 VLM runtime under mlx_vlm.models.qwen3_5 (gate-quant fix)
+[12:07:18.561] INFO:vmlx_engine:Registered vMLX-owned Qwen 3.5 VLM runtime under mlx_vlm.models.qwen3_5_moe (gate-quant fix)
+[12:07:18.564] INFO:vmlx_engine.utils.mlx_vlm_compat:mlx_vlm_compat: gemma4 Attention patched (new-style) — queries roped before cache.update_and_fetch (batched q/k offset-skew fix, task #76)
+[12:07:18.564] INFO:vmlx_engine.utils.mlx_vlm_compat:mlx_vlm_compat: gemma4 ProportionalRoPE patched — scalar rope offset expanded to per-row array at batch>1 (mx.fast.rope scalar-offset batch corruption workaround, task #59/F16)
+[12:07:18.564] INFO:vmlx_engine.models.mllm:Loading JANG VL model: /Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M
+[12:07:18.564] INFO:vmlx_engine.utils.jang_loader:JANG v2 VLM detected — loading via mmap (instant)
+[12:07:18.568] INFO:vmlx_engine.utils.jang_loader:  JANG Gemma-4 VL promotion: model_type gemma4 -> gemma4_unified (routing to vendored unified Model; upstream mlx_vlm gemma4 graph is incoherent for JANG bundles)
+[12:07:20.844] INFO:vmlx_engine.utils.jang_loader:  Vision tower upcast to bfloat16 (Gemma 4 VLM — avoids float16 overflow in SigLIP encoder with low-bit JANG quant)
+[12:07:20.844] INFO:vmlx_engine.utils.jang_loader:  Wired limit set to 36 GB (model 18 GB)
+[12:07:26.791] INFO:vmlx_engine.utils.jang_loader:  TurboQuant auto-enabled via VMLX_FORCE_TQ_AUTO=1
+[12:07:26.791] INFO:vmlx_engine.utils.jang_loader:  Mixed-SWA TurboQuant KV: 5 full-attention slots encoded, 25 sliding slots left on RotatingKVCache
+[12:07:26.791] INFO:vmlx_engine.utils.jang_loader:  TurboQuant objects active; live encode disabled; storage codec=4-bit attention KV, policy=mixed_swa_full_attention_kv_storage_tq4 (5 mapped KV layers)
+[12:07:26.791] INFO:vmlx_engine.utils.jang_loader:JANG v2 VLM loaded in 8.2s
+[12:07:27.419] /Users/eric/mlx/vllm-mlx/.venv/lib/python3.13/site-packages/transformers/audio_utils.py:559: UserWarning: At least one mel filter has all zero values. The value for `num_mel_filters` (128) may be set too high. Or, the value for `num_frequency_bins` (257) may be set too low.
+[12:07:27.419]   warnings.warn(
+[12:07:27.759] INFO:vmlx_engine.models.mllm:JANG VL model loaded: /Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M
+[12:07:27.759] INFO:vmlx_engine.mllm_scheduler:VLM mixed-attention model detected (e.g. Gemma 4 sliding+full). Prefix cache remains enabled; RotatingKVCache metadata will be preserved during truncation and paged/L2 reconstruction.
+[12:07:27.771] INFO:vmlx_engine.block_disk_store:BlockDiskStore initialized: dir=/Users/eric/.cache/vmlx-engine/block-cache/293cb91fc1cd, max_size=10.0GB, entries=127, size=1.56GB
+[12:07:27.771] INFO:vmlx_engine.mllm_scheduler:VLM block disk cache enabled: dir=/Users/eric/.cache/vmlx-engine/block-cache/293cb91fc1cd, max=10.0GB
+[12:07:27.772] INFO:vmlx_engine.paged_cache:PagedCacheManager initialized: block_size=64, max_blocks=1000, max_tokens=64000
+[12:07:27.772] INFO:vmlx_engine.mllm_scheduler:MLLM paged cache RAM ceiling: 14352 MB (15% of available); block pool max_blocks=1000
+[12:07:27.772] INFO:vmlx_engine.mllm_scheduler:VLM Paged cache enabled: block_size=64, max_blocks=1000
+[12:07:27.772] INFO:vmlx_engine.mllm_scheduler:Mixed-SWA VLM cache detected — keeping auto q4 TurboQuant KV stored-cache quantization active (RotatingKVCache metadata preserved; gemma SWA q4 parity verified).
+[12:07:27.775] INFO:vmlx_engine.mllm_scheduler:VLM KV quant round-trip test passed: bits=4, group_size=64
+[12:07:27.775] INFO:vmlx_engine.mllm_scheduler:VLM KV cache quantization enabled: q4 (bits=4, group_size=64)
+[12:07:27.775] INFO:vmlx_engine.mllm_scheduler:VLM KV cache auto mode: native TurboQuant owns stored attention KV; generic q4/q8 prefix quantization is suppressed
+[12:07:27.775] INFO:vmlx_engine.mllm_scheduler:VLM TurboQuantKVCache live decode preserving configured batching (batch cache API=turboquant_kv_v1).
+[12:07:27.775] INFO:vmlx_engine.mllm_scheduler:Runtime cache layout: model_type=gemma4_unified layers=30 layout=0:RotatingKVCache;1:RotatingKVCache;2:RotatingKVCache;3:RotatingKVCache;4:RotatingKVCache;5:TurboQuantKVCache;6:RotatingKVCache;7:RotatingKVCache;8:RotatingKVCache;9:RotatingKVCache;10:RotatingKVCache;11:TurboQuantKVCache;12:RotatingKVCache;13:RotatingKVCache;14:RotatingKVCache;15:RotatingKVCache;16:RotatingKVCache;17:TurboQuantKVCache;18:RotatingKVCache;19:RotatingKVCache;20:RotatingKVCache;21:RotatingKVCache;22:RotatingKVCache;23:TurboQuantKVCache;24:RotatingKVCache;25:RotatingKVCache;26:RotatingKVCache;27:RotatingKVCache;28:RotatingKVCache;29:TurboQuantKVCache
+[12:07:27.775] INFO:vmlx_engine.mllm_scheduler:MLLM Scheduler initialized: cache_mode=paged, hybrid=False, zaya_cca=False, kv_quant=q4, prompt_l2=False, block_l2=True, max_seqs=1
+[12:07:27.836] INFO:vmlx_engine.mllm_scheduler:MLLM TurboQuant storage decoder startup warmup: configs=5 arrays=40 bytes=10507200 codec_probes=5 probe_tokens=64 probe_heads=8 seconds=0.061
+[12:07:27.836] INFO:vmlx_engine.mllm_scheduler:MLLM Scheduler started with max_num_seqs=1
+[12:07:27.836] INFO:vmlx_engine.engine.batched:MLLM Scheduler started with continuous batching: max_num_seqs=1, prefill_batch=512, completion_batch=512
+[12:07:27.836] INFO:vmlx_engine.engine.batched:BatchedEngine loaded: /Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M (mllm=True)
+[12:07:27.841] INFO:vmlx_engine.server:Recorded Metal working-set model baseline: active=17.2GB max=107.5GB reason=lifespan_engine_start
+[12:07:27.848] INFO:vmlx_engine.mcp.config:No MCP config file found, using empty config
+[12:07:27.848] INFO:     Application startup complete.
+[12:07:27.848] INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[12:07:28.423] ============================================================
+[12:07:28.423] SECURITY CONFIGURATION
+[12:07:28.423] ============================================================
+[12:07:28.423]   Authentication: DISABLED - Use --api-key to enable
+[12:07:28.423]   Rate limiting: DISABLED - Use --rate-limit to enable
+[12:07:28.423]   Request timeout: 300.0s
+[12:07:28.423]   Tool calling: ENABLED (parser: gemma4)
+[12:07:28.423]   Reasoning: ENABLED (parser: Gemma4ReasoningParser)
+[12:07:28.423]   External speculative decoding: Use --speculative-model to enable
+[12:07:28.423] ============================================================
+[12:07:28.423] Loading model: /Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M
+[12:07:28.423] Max output fallback: 4096 (bundle max_new_tokens wins when present)
+[12:07:28.423] Mode: Continuous batching (for multiple concurrent users)
+[12:07:28.423] Stream interval: 1 tokens
+[12:07:28.423] Paged cache: block_size=64, max_blocks=1000, capacity=64000 tokens (--cache-memory-mb/--cache-memory-percent set the L1 RAM byte ceiling for the block KV mirror; --max-cache-blocks caps the block-pool count)
+[12:07:28.423] Block disk cache: max=10.0GB
+[12:07:28.423] KV cache quantization: q4 (group_size=64)
+[12:07:28.423] Starting server at http://127.0.0.1:8000
+[12:07:28.423] INFO:     127.0.0.1:62141 - "GET /health HTTP/1.1" 200 OK
+[12:07:28.847] INFO:     127.0.0.1:62141 - "GET /health HTTP/1.1" 200 OK
+[12:07:32.665] INFO:     127.0.0.1:62143 - "GET /health HTTP/1.1" 200 OK
+[12:07:33.854] INFO:     127.0.0.1:62144 - "GET /health HTTP/1.1" 200 OK
+[12:07:38.855] INFO:     127.0.0.1:62144 - "GET /health HTTP/1.1" 200 OK
+[12:07:43.864] INFO:     127.0.0.1:62144 - "GET /health HTTP/1.1" 200 OK
+[12:07:48.863] INFO:     127.0.0.1:62144 - "GET /health HTTP/1.1" 200 OK
+[12:07:53.865] INFO:     127.0.0.1:62148 - "GET /health HTTP/1.1" 200 OK
+[12:07:54.641] INFO:     127.0.0.1:62149 - "GET /health HTTP/1.1" 200 OK
+[12:07:58.874] INFO:     127.0.0.1:62148 - "GET /health HTTP/1.1" 200 OK
+[12:08:03.878] INFO:     127.0.0.1:62148 - "GET /health HTTP/1.1" 200 OK
+[12:08:08.883] INFO:     127.0.0.1:62148 - "GET /health HTTP/1.1" 200 OK
+[12:08:13.889] INFO:     127.0.0.1:62153 - "GET /health HTTP/1.1" 200 OK
+[12:08:17.456] [CHAT_DIAG] attachment_route={"chatId":"9bbb55e8","modelPath":"/Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M","detectedFamily":"gemma4","modelForceTextOnly":false,"chatIsMultimodal":true,"attachments":{"total":0,"counts":{"image":0,"video":0,"audio":0,"text":0},"files":[]}}
+[12:08:17.480] INFO:     127.0.0.1:62153 - "GET /health HTTP/1.1" 200 OK
+[12:08:17.481] [CHAT_DIAG] request_shape={"chatId":"9bbb55e8","wireApi":"responses","isRemote":false,"baseUrl":"http://127.0.0.1:8000","chatIsMultimodal":true,"detectedFamily":"gemma4","sessionHasReasoningParser":true,"body":{"route":"/v1/responses","model":"jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M","stream":true,"has_tools":false,"messages":[{"role":"user","content":{"type":"text","chars":202}}]}}
+[12:08:17.486] WARNING:vmlx_engine.server:SECURITY WARNING: Server running without API key authentication. Anyone can access the API. Use --api-key to enable authentication.
+[12:08:17.487] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M kwargs={'temperature': 1.0, 'top_p': 0.95, 'top_k': 64, 'max_tokens': 16384, 'enable_thinking': True}
+[12:08:17.487] INFO:     127.0.0.1:62158 - "POST /v1/responses HTTP/1.1" 200 OK
+[12:08:17.511] INFO:vmlx_engine.mllm_batch_generator:MLLMBatchGenerator: Using VLM's language_model for batched generation
+[12:08:17.511] INFO:vmlx_engine.mllm_batch_generator:MLLMBatchGenerator: Vision cache enabled (size=16)
+[12:08:17.511] INFO:vmlx_engine.mllm_batch_generator:Metal cache limit set to 26.88GB (max_ws=107.5GB, active=17.2GB, free=90.3GB; base=26.88GB safety=45.14GB; mlxstudio#78)
+[12:08:17.677] INFO:vmlx_engine.mllm_batch_generator:TurboQuant live telemetry: {'object_layers': 5, 'encode_enabled_layers': 0, 'encoded_layers': 0, 'compressed_tokens_total': 0, 'compressed_tokens_max': 0, 'compress_after_values': [0], 'resident_bytes': 5242880, 'float_view_bytes': 5242880, 'packed_bytes': 0, 'baseline_float_bytes': 5242880, 'resident_delta_vs_float_bytes': 0, 'resident_memory_reduction_claimed': False}
+[12:08:17.719] INFO:vmlx_engine.mllm_batch_generator:MLLM native MTP skipped for request=resp_94a80714cefd: loaded language model has no native MTP head
+[12:08:18.870] INFO:     127.0.0.1:62153 - "GET /health HTTP/1.1" 200 OK
+[12:08:23.870] INFO:     127.0.0.1:62153 - "GET /health HTTP/1.1" 200 OK
+[12:08:28.874] INFO:     127.0.0.1:62159 - "GET /health HTTP/1.1" 200 OK
+[12:08:33.879] INFO:     127.0.0.1:62159 - "GET /health HTTP/1.1" 200 OK
+[12:08:38.880] INFO:     127.0.0.1:62159 - "GET /health HTTP/1.1" 200 OK
+[12:08:43.886] INFO:     127.0.0.1:62159 - "GET /health HTTP/1.1" 200 OK
+[12:08:48.888] INFO:     127.0.0.1:62159 - "GET /health HTTP/1.1" 200 OK
+[12:08:53.892] INFO:     127.0.0.1:62161 - "GET /health HTTP/1.1" 200 OK
+[12:08:58.896] INFO:     127.0.0.1:62161 - "GET /health HTTP/1.1" 200 OK
+[12:08:59.513] INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=48, num_new_blocks=1, frugal=True, cumulative=block
+[12:08:59.515] INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 30 positional layers (out of 30 total)
+[12:08:59.520] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 1 (0 kv layers, rotating_kv=25, turboquant_kv=5, 48 tokens)
+[12:08:59.706] INFO:vmlx_engine.mllm_scheduler:VLM Scheduler stored paged Prefix Cache for resp_94a80714cefd: 30 layers, truncated to 48 tokens
+[12:09:03.916] INFO:     127.0.0.1:62161 - "GET /health HTTP/1.1" 200 OK
+[12:09:08.924] INFO:     127.0.0.1:62161 - "GET /health HTTP/1.1" 200 OK
+[12:09:13.924] INFO:     127.0.0.1:62162 - "GET /health HTTP/1.1" 200 OK
+[12:09:18.928] INFO:     127.0.0.1:62162 - "GET /health HTTP/1.1" 200 OK
+[12:09:22.578] [CHAT_DIAG] attachment_route={"chatId":"9bbb55e8","modelPath":"/Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M","detectedFamily":"gemma4","modelForceTextOnly":false,"chatIsMultimodal":true,"attachments":{"total":0,"counts":{"image":0,"video":0,"audio":0,"text":0},"files":[]}}
+[12:09:22.601] INFO:     127.0.0.1:62162 - "GET /health HTTP/1.1" 200 OK
+[12:09:22.602] [CHAT_DIAG] request_shape={"chatId":"9bbb55e8","wireApi":"responses","isRemote":false,"baseUrl":"http://127.0.0.1:8000","chatIsMultimodal":true,"detectedFamily":"gemma4","sessionHasReasoningParser":true,"body":{"route":"/v1/responses","model":"jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M","stream":true,"has_tools":true,"messages":[{"role":"user","content":{"type":"text","chars":202}},{"role":"reasoning","content":[{"type":"reasoning","keys":["text","type"]}]},{"role":"output_text","content":{"type":"text","chars":140}},{"role":"user","content":{"type":"text","chars":156}}]}}
+[12:09:22.604] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M kwargs={'temperature': 1.0, 'top_p': 0.95, 'top_k': 64, 'max_tokens': 16384, 'enable_thinking': True}
+[12:09:22.604] INFO:     127.0.0.1:62167 - "POST /v1/responses HTTP/1.1" 200 OK
+[12:09:22.605] INFO:vmlx_engine.server:Responses exact-once tool gate: initial_selection=True post_user_tool_result=False message_shapes=[('system', None), ('user', None), ('assistant', None), ('user', None)]
+[12:09:23.001] INFO:vmlx_engine.prefix_cache:Paged cache hit for resp_89caad7e87e3: 56 blocks, 3584 tokens
+[12:09:23.304] INFO:vmlx_engine.mllm_batch_generator:VLM prefix cache HIT for resp_89caad7e87e3: 3584 cached, 140 remaining (incl. 3-token gen-prompt suffix)
+[12:09:23.305] INFO:vmlx_engine.mllm_batch_generator:Re-wrapped 5 KV layers as TurboQuant objects: encoded=0, resident_before=73400320, resident_after=73400320, delta=+0 bytes; no resident-memory reduction claimed
+[12:09:23.420] INFO:vmlx_engine.mllm_batch_generator:TurboQuant live telemetry: {'object_layers': 5, 'encode_enabled_layers': 0, 'encoded_layers': 0, 'compressed_tokens_total': 0, 'compressed_tokens_max': 0, 'compress_after_values': [0], 'resident_bytes': 78643200, 'float_view_bytes': 78643200, 'packed_bytes': 0, 'baseline_float_bytes': 78643200, 'resident_delta_vs_float_bytes': 0, 'resident_memory_reduction_claimed': False}
+[12:09:23.451] INFO:vmlx_engine.mllm_batch_generator:MLLM native MTP skipped for request=resp_89caad7e87e3: loaded language model has no native MTP head
+[12:09:23.907] INFO:     127.0.0.1:62162 - "GET /health HTTP/1.1" 200 OK
+[12:09:24.592] INFO:vmlx_engine.server:Responses stream resp_89caad7e87e3: complete tool call parsed but model kept generating 9 chunks past it — stopping generation (parser=Gemma4ToolParser)
+[12:09:24.597] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M kwargs={'temperature': 1.0, 'top_p': 0.95, 'top_k': 64, 'max_tokens': 16384, 'enable_thinking': True}
+[12:09:24.598] INFO:     127.0.0.1:62168 - "POST /v1/responses HTTP/1.1" 200 OK
+[12:09:24.598] INFO:vmlx_engine.server:Responses exact-once tool gate: initial_selection=False post_user_tool_result=True message_shapes=[('system', None), ('user', None), ('assistant', None), ('user', None), ('assistant', None), ('tool', None)]
+[12:09:24.976] INFO:vmlx_engine.prefix_cache:Paged cache hit for resp_7863e1f60e05: 56 blocks, 3584 tokens
+[12:09:25.279] INFO:vmlx_engine.mllm_batch_generator:VLM prefix cache HIT for resp_7863e1f60e05: 3584 cached, 226 remaining (incl. 0-token gen-prompt suffix)
+[12:09:25.279] INFO:vmlx_engine.mllm_batch_generator:Re-wrapped 5 KV layers as TurboQuant objects: encoded=0, resident_before=73400320, resident_after=73400320, delta=+0 bytes; no resident-memory reduction claimed
+[12:09:25.409] INFO:vmlx_engine.mllm_batch_generator:TurboQuant live telemetry: {'object_layers': 5, 'encode_enabled_layers': 0, 'encoded_layers': 0, 'compressed_tokens_total': 0, 'compressed_tokens_max': 0, 'compress_after_values': [0], 'resident_bytes': 78643200, 'float_view_bytes': 78643200, 'packed_bytes': 0, 'baseline_float_bytes': 78643200, 'resident_delta_vs_float_bytes': 0, 'resident_memory_reduction_claimed': False}
+[12:09:25.439] INFO:vmlx_engine.mllm_batch_generator:MLLM native MTP skipped for request=resp_7863e1f60e05: loaded language model has no native MTP head
+[12:09:26.499] INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=225, num_new_blocks=4, frugal=True, cumulative=block
+[12:09:26.573] INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 30 positional layers (out of 30 total)
+[12:09:26.579] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 58 (0 kv layers, rotating_kv=25, turboquant_kv=5, 64 tokens)
+[12:09:26.592] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 59 (0 kv layers, rotating_kv=25, turboquant_kv=5, 64 tokens)
+[12:09:26.603] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 60 (0 kv layers, rotating_kv=25, turboquant_kv=5, 64 tokens)
+[12:09:26.614] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 61 (0 kv layers, rotating_kv=25, turboquant_kv=5, 33 tokens)
+[12:09:26.775] INFO:vmlx_engine.mllm_scheduler:VLM Scheduler stored paged Prefix Cache for resp_7863e1f60e05: 30 layers, truncated to 3809 tokens
+[12:09:28.936] INFO:     127.0.0.1:62169 - "GET /health HTTP/1.1" 200 OK
+[12:09:33.934] INFO:     127.0.0.1:62169 - "GET /health HTTP/1.1" 200 OK
+[12:09:38.942] INFO:     127.0.0.1:62169 - "GET /health HTTP/1.1" 200 OK
+[12:09:43.942] INFO:     127.0.0.1:62173 - "GET /health HTTP/1.1" 200 OK
+[12:09:48.954] INFO:     127.0.0.1:62173 - "GET /health HTTP/1.1" 200 OK
+[12:09:53.953] INFO:     127.0.0.1:62173 - "GET /health HTTP/1.1" 200 OK
+[12:09:58.962] INFO:     127.0.0.1:62174 - "GET /health HTTP/1.1" 200 OK
+[12:10:03.963] INFO:     127.0.0.1:62174 - "GET /health HTTP/1.1" 200 OK
+[12:10:08.969] INFO:     127.0.0.1:62174 - "GET /health HTTP/1.1" 200 OK
+[12:10:11.362] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 512, 'enable_thinking': True}
+[12:10:11.362] INFO:     127.0.0.1:62176 - "POST /v1/responses HTTP/1.1" 200 OK
+[12:10:11.604] INFO:vmlx_engine.mllm_batch_generator:TurboQuant live telemetry: {'object_layers': 5, 'encode_enabled_layers': 0, 'encoded_layers': 0, 'compressed_tokens_total': 0, 'compressed_tokens_max': 0, 'compress_after_values': [0], 'resident_bytes': 5242880, 'float_view_bytes': 5242880, 'packed_bytes': 0, 'baseline_float_bytes': 5242880, 'resident_delta_vs_float_bytes': 0, 'resident_memory_reduction_claimed': False}
+[12:10:11.620] INFO:vmlx_engine.mllm_batch_generator:MLLM native MTP skipped for request=resp_b48f6bae1e2f: loaded language model has no native MTP head
+[12:10:13.947] INFO:     127.0.0.1:62177 - "GET /health HTTP/1.1" 200 OK
+[12:10:17.437] INFO:vmlx_engine.server:Gemma4 tools-enabled Responses stream produced no valid tool call or visible content; re-arming bounded thinking-off answer pass
+[12:10:17.437] INFO:vmlx_engine.server:Gemma4 reasoning produced no visible content; running bounded thinking-off answer pass (reasoning_chars=2342, answer_budget=512)
+[12:10:17.531] INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=78, num_new_blocks=2, frugal=True, cumulative=block
+[12:10:17.534] INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 30 positional layers (out of 30 total)
+[12:10:17.539] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 62 (0 kv layers, rotating_kv=25, turboquant_kv=5, 64 tokens)
+[12:10:17.553] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 63 (0 kv layers, rotating_kv=25, turboquant_kv=5, 14 tokens)
+[12:10:17.693] INFO:vmlx_engine.mllm_scheduler:VLM Scheduler stored paged Prefix Cache for resp_b48f6bae1e2f: 30 layers, truncated to 78 tokens
+[12:10:17.764] INFO:vmlx_engine.mllm_batch_generator:TurboQuant live telemetry: {'object_layers': 5, 'encode_enabled_layers': 0, 'encoded_layers': 0, 'compressed_tokens_total': 0, 'compressed_tokens_max': 0, 'compress_after_values': [0], 'resident_bytes': 5242880, 'float_view_bytes': 5242880, 'packed_bytes': 0, 'baseline_float_bytes': 5242880, 'resident_delta_vs_float_bytes': 0, 'resident_memory_reduction_claimed': False}
+[12:10:17.778] INFO:vmlx_engine.mllm_batch_generator:MLLM native MTP skipped for request=resp_b48f6bae1e2f:visible-answer: loaded language model has no native MTP head
+[12:10:18.321] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 512, 'enable_thinking': True}
+[12:10:18.321] INFO:     127.0.0.1:62178 - "POST /v1/responses HTTP/1.1" 200 OK
+[12:10:18.363] INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=32, num_new_blocks=1, frugal=True, cumulative=block
+[12:10:18.364] INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 30 positional layers (out of 30 total)
+[12:10:18.367] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 64 (0 kv layers, rotating_kv=25, turboquant_kv=5, 32 tokens)
+[12:10:18.500] INFO:vmlx_engine.mllm_scheduler:VLM Scheduler stored paged Prefix Cache for resp_b48f6bae1e2f:visible-answer: 30 layers, truncated to 32 tokens
+[12:10:18.608] INFO:vmlx_engine.mllm_batch_generator:TurboQuant live telemetry: {'object_layers': 5, 'encode_enabled_layers': 0, 'encoded_layers': 0, 'compressed_tokens_total': 0, 'compressed_tokens_max': 0, 'compress_after_values': [0], 'resident_bytes': 5242880, 'float_view_bytes': 5242880, 'packed_bytes': 0, 'baseline_float_bytes': 5242880, 'resident_delta_vs_float_bytes': 0, 'resident_memory_reduction_claimed': False}
+[12:10:18.622] INFO:vmlx_engine.mllm_batch_generator:MLLM native MTP skipped for request=resp_105c16ccaead: loaded language model has no native MTP head
+[12:10:18.956] INFO:     127.0.0.1:62177 - "GET /health HTTP/1.1" 200 OK
+[12:10:20.090] INFO:vmlx_engine.server:Responses dynamic tool buffering activated: trigger=content-marker content_chars=12 reasoning_chars=445
+[12:10:20.373] INFO:vmlx_engine.server:Responses stream resp_105c16ccaead: complete tool call parsed but model kept generating 9 chunks past it — stopping generation (parser=Gemma4ToolParser)
+[12:10:20.377] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 512, 'enable_thinking': True}
+[12:10:20.378] INFO:     127.0.0.1:62179 - "POST /v1/responses HTTP/1.1" 200 OK
+[12:10:20.521] INFO:vmlx_engine.mllm_batch_generator:TurboQuant live telemetry: {'object_layers': 5, 'encode_enabled_layers': 0, 'encoded_layers': 0, 'compressed_tokens_total': 0, 'compressed_tokens_max': 0, 'compress_after_values': [0], 'resident_bytes': 10485760, 'float_view_bytes': 10485760, 'packed_bytes': 0, 'baseline_float_bytes': 10485760, 'resident_delta_vs_float_bytes': 0, 'resident_memory_reduction_claimed': False}
+[12:10:20.536] INFO:vmlx_engine.mllm_batch_generator:MLLM native MTP skipped for request=resp_55a7a6532230: loaded language model has no native MTP head
+[12:10:21.145] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 512, 'enable_thinking': True}
+[12:10:21.145] INFO:     127.0.0.1:62180 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[12:10:21.274] INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=310, num_new_blocks=5, frugal=True, cumulative=block
+[12:10:21.281] INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 30 positional layers (out of 30 total)
+[12:10:21.287] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 65 (0 kv layers, rotating_kv=25, turboquant_kv=5, 64 tokens)
+[12:10:21.300] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 66 (0 kv layers, rotating_kv=25, turboquant_kv=5, 64 tokens)
+[12:10:21.311] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 67 (0 kv layers, rotating_kv=25, turboquant_kv=5, 64 tokens)
+[12:10:21.323] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 68 (0 kv layers, rotating_kv=25, turboquant_kv=5, 64 tokens)
+[12:10:21.334] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 69 (0 kv layers, rotating_kv=25, turboquant_kv=5, 54 tokens)
+[12:10:21.473] INFO:vmlx_engine.mllm_scheduler:VLM Scheduler stored paged Prefix Cache for resp_55a7a6532230: 30 layers, truncated to 310 tokens
+[12:10:21.585] INFO:vmlx_engine.mllm_batch_generator:TurboQuant live telemetry: {'object_layers': 5, 'encode_enabled_layers': 0, 'encoded_layers': 0, 'compressed_tokens_total': 0, 'compressed_tokens_max': 0, 'compress_after_values': [0], 'resident_bytes': 5242880, 'float_view_bytes': 5242880, 'packed_bytes': 0, 'baseline_float_bytes': 5242880, 'resident_delta_vs_float_bytes': 0, 'resident_memory_reduction_claimed': False}
+[12:10:21.600] INFO:vmlx_engine.mllm_batch_generator:MLLM native MTP skipped for request=chatcmpl-2965c30e: loaded language model has no native MTP head
+[12:10:23.958] INFO:     127.0.0.1:62181 - "GET /health HTTP/1.1" 200 OK
+[12:10:27.437] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 512, 'enable_thinking': True}
+[12:10:27.437] INFO:     127.0.0.1:62182 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[12:10:27.529] INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=76, num_new_blocks=2, frugal=True, cumulative=block
+[12:10:27.531] INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 30 positional layers (out of 30 total)
+[12:10:27.537] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 70 (0 kv layers, rotating_kv=25, turboquant_kv=5, 64 tokens)
+[12:10:27.548] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 71 (0 kv layers, rotating_kv=25, turboquant_kv=5, 12 tokens)
+[12:10:27.692] INFO:vmlx_engine.mllm_scheduler:VLM Scheduler stored paged Prefix Cache for chatcmpl-2965c30e: 30 layers, truncated to 76 tokens
+[12:10:27.705] INFO:vmlx_engine.prefix_cache:Paged cache hit for chatcmpl-76094c4f: 1 blocks, 64 tokens
+[12:10:27.714] INFO:vmlx_engine.mllm_batch_generator:VLM prefix cache HIT for chatcmpl-76094c4f: 64 cached, 31 remaining (incl. 3-token gen-prompt suffix)
+[12:10:27.714] INFO:vmlx_engine.mllm_batch_generator:Re-wrapped 5 KV layers as TurboQuant objects: encoded=0, resident_before=1310720, resident_after=1310720, delta=+0 bytes; no resident-memory reduction claimed
+[12:10:27.760] INFO:vmlx_engine.mllm_batch_generator:TurboQuant live telemetry: {'object_layers': 5, 'encode_enabled_layers': 0, 'encoded_layers': 0, 'compressed_tokens_total': 0, 'compressed_tokens_max': 0, 'compress_after_values': [0], 'resident_bytes': 6553600, 'float_view_bytes': 6553600, 'packed_bytes': 0, 'baseline_float_bytes': 6553600, 'resident_delta_vs_float_bytes': 0, 'resident_memory_reduction_claimed': False}
+[12:10:27.774] INFO:vmlx_engine.mllm_batch_generator:MLLM native MTP skipped for request=chatcmpl-76094c4f: loaded language model has no native MTP head
+[12:10:28.967] INFO:     127.0.0.1:62181 - "GET /health HTTP/1.1" 200 OK
+[12:10:29.532] INFO:vmlx_engine.server:Stream chatcmpl-76094c4f: complete tool call parsed but model kept generating 9 chunks past it — stopping generation (parser=Gemma4ToolParser)
+[12:10:29.536] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 512, 'enable_thinking': True}
+[12:10:29.537] INFO:     127.0.0.1:62184 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[12:10:29.551] INFO:vmlx_engine.prefix_cache:Paged cache hit for chatcmpl-e6245053: 1 blocks, 64 tokens
+[12:10:29.563] INFO:vmlx_engine.mllm_batch_generator:VLM prefix cache HIT for chatcmpl-e6245053: 64 cached, 117 remaining (incl. 0-token gen-prompt suffix)
+[12:10:29.563] INFO:vmlx_engine.mllm_batch_generator:Re-wrapped 5 KV layers as TurboQuant objects: encoded=0, resident_before=1310720, resident_after=1310720, delta=+0 bytes; no resident-memory reduction claimed
+[12:10:29.653] INFO:vmlx_engine.mllm_batch_generator:TurboQuant live telemetry: {'object_layers': 5, 'encode_enabled_layers': 0, 'encoded_layers': 0, 'compressed_tokens_total': 0, 'compressed_tokens_max': 0, 'compress_after_values': [0], 'resident_bytes': 6553600, 'float_view_bytes': 6553600, 'packed_bytes': 0, 'baseline_float_bytes': 6553600, 'resident_delta_vs_float_bytes': 0, 'resident_memory_reduction_claimed': False}
+[12:10:29.668] INFO:vmlx_engine.mllm_batch_generator:MLLM native MTP skipped for request=chatcmpl-e6245053: loaded language model has no native MTP head
+[12:10:30.740] INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=116, num_new_blocks=2, frugal=True, cumulative=block
+[12:10:30.745] INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 30 positional layers (out of 30 total)
+[12:10:30.751] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 72 (0 kv layers, rotating_kv=25, turboquant_kv=5, 64 tokens)
+[12:10:30.764] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 73 (0 kv layers, rotating_kv=25, turboquant_kv=5, 52 tokens)
+[12:10:30.907] INFO:vmlx_engine.mllm_scheduler:VLM Scheduler stored paged Prefix Cache for chatcmpl-e6245053: 30 layers, truncated to 180 tokens
+[12:10:33.991] INFO:     127.0.0.1:62185 - "GET /health HTTP/1.1" 200 OK
+[12:10:38.995] INFO:     127.0.0.1:62185 - "GET /health HTTP/1.1" 200 OK
+[12:10:43.991] INFO:     127.0.0.1:62185 - "GET /health HTTP/1.1" 200 OK
+[12:10:48.995] INFO:     127.0.0.1:62185 - "GET /health HTTP/1.1" 200 OK
+[12:10:54.000] INFO:     127.0.0.1:62186 - "GET /health HTTP/1.1" 200 OK
+[12:10:59.008] INFO:     127.0.0.1:62186 - "GET /health HTTP/1.1" 200 OK
+[12:11:04.016] INFO:     127.0.0.1:62186 - "GET /health HTTP/1.1" 200 OK
+[12:11:09.013] INFO:     127.0.0.1:62187 - "GET /health HTTP/1.1" 200 OK
+[12:11:14.024] INFO:     127.0.0.1:62187 - "GET /health HTTP/1.1" 200 OK
+[12:11:19.025] INFO:     127.0.0.1:62187 - "GET /health HTTP/1.1" 200 OK
+[12:11:24.031] INFO:     127.0.0.1:62188 - "GET /health HTTP/1.1" 200 OK
+[12:11:29.033] INFO:     127.0.0.1:62188 - "GET /health HTTP/1.1" 200 OK
+[12:11:34.031] INFO:     127.0.0.1:62188 - "GET /health HTTP/1.1" 200 OK
+[12:11:39.043] INFO:     127.0.0.1:62189 - "GET /health HTTP/1.1" 200 OK
+[12:11:44.048] INFO:     127.0.0.1:62189 - "GET /health HTTP/1.1" 200 OK
+[12:11:49.051] INFO:     127.0.0.1:62189 - "GET /health HTTP/1.1" 200 OK
+[12:11:54.055] INFO:     127.0.0.1:62190 - "GET /health HTTP/1.1" 200 OK
+[12:11:59.060] INFO:     127.0.0.1:62190 - "GET /health HTTP/1.1" 200 OK
+[12:12:04.062] INFO:     127.0.0.1:62190 - "GET /health HTTP/1.1" 200 OK
+[12:12:04.578] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 4096, 'enable_thinking': True}
+[12:12:04.578] INFO:     127.0.0.1:62192 - "POST /v1/responses HTTP/1.1" 200 OK
+[12:12:04.592] INFO:vmlx_engine.prefix_cache:Paged cache hit for resp_f7edac6f7764: 2 blocks, 78 tokens
+[12:12:04.727] INFO:vmlx_engine.mllm_batch_generator:VLM prefix cache HIT for resp_f7edac6f7764: 78 cached, 4 remaining (incl. 3-token gen-prompt suffix)
+[12:12:04.727] INFO:vmlx_engine.mllm_batch_generator:Re-wrapped 5 KV layers as TurboQuant objects: encoded=0, resident_before=1597440, resident_after=1597440, delta=+0 bytes; no resident-memory reduction claimed
+[12:12:04.755] INFO:vmlx_engine.mllm_batch_generator:TurboQuant live telemetry: {'object_layers': 5, 'encode_enabled_layers': 0, 'encoded_layers': 0, 'compressed_tokens_total': 0, 'compressed_tokens_max': 0, 'compress_after_values': [0], 'resident_bytes': 6840320, 'float_view_bytes': 6840320, 'packed_bytes': 0, 'baseline_float_bytes': 6840320, 'resident_delta_vs_float_bytes': 0, 'resident_memory_reduction_claimed': False}
+[12:12:04.770] INFO:vmlx_engine.mllm_batch_generator:MLLM native MTP skipped for request=resp_f7edac6f7764: loaded language model has no native MTP head
+[12:12:09.044] INFO:     127.0.0.1:62193 - "GET /health HTTP/1.1" 200 OK
+[12:12:09.914] INFO:vmlx_engine.mllm_scheduler:Skipping VLM paged cache store for resp_f7edac6f7764: resolved extracted cache is empty (mixed_swa=True, zaya_cca=False, prompt_tokens=79, cache_callable=False)
+[12:12:09.918] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 4096, 'enable_thinking': True}
+[12:12:09.918] INFO:     127.0.0.1:62194 - "POST /v1/responses HTTP/1.1" 200 OK
+[12:12:09.934] INFO:vmlx_engine.prefix_cache:Paged cache hit for resp_5cf23e11dc86: 1 blocks, 64 tokens
+[12:12:09.947] INFO:vmlx_engine.mllm_batch_generator:VLM prefix cache HIT for resp_5cf23e11dc86: 64 cached, 31 remaining (incl. 3-token gen-prompt suffix)
+[12:12:09.947] INFO:vmlx_engine.mllm_batch_generator:Re-wrapped 5 KV layers as TurboQuant objects: encoded=0, resident_before=1310720, resident_after=1310720, delta=+0 bytes; no resident-memory reduction claimed
+[12:12:09.993] INFO:vmlx_engine.mllm_batch_generator:TurboQuant live telemetry: {'object_layers': 5, 'encode_enabled_layers': 0, 'encoded_layers': 0, 'compressed_tokens_total': 0, 'compressed_tokens_max': 0, 'compress_after_values': [0], 'resident_bytes': 6553600, 'float_view_bytes': 6553600, 'packed_bytes': 0, 'baseline_float_bytes': 6553600, 'resident_delta_vs_float_bytes': 0, 'resident_memory_reduction_claimed': False}
+[12:12:10.007] INFO:vmlx_engine.mllm_batch_generator:MLLM native MTP skipped for request=resp_5cf23e11dc86: loaded language model has no native MTP head
+[12:12:11.465] INFO:vmlx_engine.server:Responses dynamic tool buffering activated: trigger=content-marker content_chars=12 reasoning_chars=445
+[12:12:11.746] INFO:vmlx_engine.server:Responses stream resp_5cf23e11dc86: complete tool call parsed but model kept generating 9 chunks past it — stopping generation (parser=Gemma4ToolParser)
+[12:12:11.750] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 4096, 'enable_thinking': True}
+[12:12:11.750] INFO:     127.0.0.1:62195 - "POST /v1/responses HTTP/1.1" 200 OK
+[12:12:11.765] INFO:vmlx_engine.prefix_cache:Paged cache hit for resp_f6c761988db5: 3 blocks, 192 tokens
+[12:12:11.784] INFO:vmlx_engine.mllm_batch_generator:VLM prefix cache HIT for resp_f6c761988db5: 192 cached, 119 remaining (incl. 0-token gen-prompt suffix)
+[12:12:11.784] INFO:vmlx_engine.mllm_batch_generator:Re-wrapped 5 KV layers as TurboQuant objects: encoded=0, resident_before=3932160, resident_after=3932160, delta=+0 bytes; no resident-memory reduction claimed
+[12:12:11.880] INFO:vmlx_engine.mllm_batch_generator:TurboQuant live telemetry: {'object_layers': 5, 'encode_enabled_layers': 0, 'encoded_layers': 0, 'compressed_tokens_total': 0, 'compressed_tokens_max': 0, 'compress_after_values': [0], 'resident_bytes': 9175040, 'float_view_bytes': 9175040, 'packed_bytes': 0, 'baseline_float_bytes': 9175040, 'resident_delta_vs_float_bytes': 0, 'resident_memory_reduction_claimed': False}
+[12:12:11.897] INFO:vmlx_engine.mllm_batch_generator:MLLM native MTP skipped for request=resp_f6c761988db5: loaded language model has no native MTP head
+[12:12:12.502] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 4096, 'enable_thinking': True}
+[12:12:12.503] INFO:     127.0.0.1:62196 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[12:12:12.634] INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=118, num_new_blocks=2, frugal=True, cumulative=block
+[12:12:12.641] INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 30 positional layers (out of 30 total)
+[12:12:12.646] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 74 (0 kv layers, rotating_kv=25, turboquant_kv=5, 64 tokens)
+[12:12:12.659] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 75 (0 kv layers, rotating_kv=25, turboquant_kv=5, 54 tokens)
+[12:12:12.797] INFO:vmlx_engine.mllm_scheduler:VLM Scheduler stored paged Prefix Cache for resp_f6c761988db5: 30 layers, truncated to 310 tokens
+[12:12:12.810] INFO:vmlx_engine.prefix_cache:Paged cache hit for chatcmpl-d79384ee: 2 blocks, 76 tokens
+[12:12:12.831] INFO:vmlx_engine.mllm_batch_generator:VLM prefix cache HIT for chatcmpl-d79384ee: 76 cached, 4 remaining (incl. 3-token gen-prompt suffix)
+[12:12:12.831] INFO:vmlx_engine.mllm_batch_generator:Re-wrapped 5 KV layers as TurboQuant objects: encoded=0, resident_before=1556480, resident_after=1556480, delta=+0 bytes; no resident-memory reduction claimed
+[12:12:12.846] INFO:vmlx_engine.mllm_batch_generator:TurboQuant live telemetry: {'object_layers': 5, 'encode_enabled_layers': 0, 'encoded_layers': 0, 'compressed_tokens_total': 0, 'compressed_tokens_max': 0, 'compress_after_values': [0], 'resident_bytes': 6799360, 'float_view_bytes': 6799360, 'packed_bytes': 0, 'baseline_float_bytes': 6799360, 'resident_delta_vs_float_bytes': 0, 'resident_memory_reduction_claimed': False}
+[12:12:12.860] INFO:vmlx_engine.mllm_batch_generator:MLLM native MTP skipped for request=chatcmpl-d79384ee: loaded language model has no native MTP head
+[12:12:14.048] INFO:     127.0.0.1:62193 - "GET /health HTTP/1.1" 200 OK
+[12:12:18.878] INFO:vmlx_engine.mllm_scheduler:Skipping VLM paged cache store for chatcmpl-d79384ee: resolved extracted cache is empty (mixed_swa=True, zaya_cca=False, prompt_tokens=77, cache_callable=False)
+[12:12:18.882] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 4096, 'enable_thinking': True}
+[12:12:18.882] INFO:     127.0.0.1:62197 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[12:12:18.898] INFO:vmlx_engine.prefix_cache:Paged cache hit for chatcmpl-458e3736: 1 blocks, 64 tokens
+[12:12:18.911] INFO:vmlx_engine.mllm_batch_generator:VLM prefix cache HIT for chatcmpl-458e3736: 64 cached, 31 remaining (incl. 3-token gen-prompt suffix)
+[12:12:18.911] INFO:vmlx_engine.mllm_batch_generator:Re-wrapped 5 KV layers as TurboQuant objects: encoded=0, resident_before=1310720, resident_after=1310720, delta=+0 bytes; no resident-memory reduction claimed
+[12:12:18.956] INFO:vmlx_engine.mllm_batch_generator:TurboQuant live telemetry: {'object_layers': 5, 'encode_enabled_layers': 0, 'encoded_layers': 0, 'compressed_tokens_total': 0, 'compressed_tokens_max': 0, 'compress_after_values': [0], 'resident_bytes': 6553600, 'float_view_bytes': 6553600, 'packed_bytes': 0, 'baseline_float_bytes': 6553600, 'resident_delta_vs_float_bytes': 0, 'resident_memory_reduction_claimed': False}
+[12:12:18.971] INFO:vmlx_engine.mllm_batch_generator:MLLM native MTP skipped for request=chatcmpl-458e3736: loaded language model has no native MTP head
+[12:12:19.052] INFO:     127.0.0.1:62198 - "GET /health HTTP/1.1" 200 OK
+[12:12:20.730] INFO:vmlx_engine.server:Stream chatcmpl-458e3736: complete tool call parsed but model kept generating 9 chunks past it — stopping generation (parser=Gemma4ToolParser)
+[12:12:20.734] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/gemma-4-26B-A4B-it-qat-JANG_4M kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 4096, 'enable_thinking': True}
+[12:12:20.734] INFO:     127.0.0.1:62199 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[12:12:20.748] INFO:vmlx_engine.prefix_cache:Paged cache hit for chatcmpl-dba43de5: 3 blocks, 180 tokens
+[12:12:20.769] INFO:vmlx_engine.mllm_batch_generator:VLM prefix cache HIT for chatcmpl-dba43de5: 180 cached, 1 remaining (incl. 0-token gen-prompt suffix)
+[12:12:20.769] INFO:vmlx_engine.mllm_batch_generator:Re-wrapped 5 KV layers as TurboQuant objects: encoded=0, resident_before=3686400, resident_after=3686400, delta=+0 bytes; no resident-memory reduction claimed
+[12:12:20.771] INFO:vmlx_engine.mllm_batch_generator:TurboQuant live telemetry: {'object_layers': 5, 'encode_enabled_layers': 0, 'encoded_layers': 0, 'compressed_tokens_total': 0, 'compressed_tokens_max': 0, 'compress_after_values': [0], 'resident_bytes': 8929280, 'float_view_bytes': 8929280, 'packed_bytes': 0, 'baseline_float_bytes': 8929280, 'resident_delta_vs_float_bytes': 0, 'resident_memory_reduction_claimed': False}
+[12:12:20.786] INFO:vmlx_engine.mllm_batch_generator:MLLM native MTP skipped for request=chatcmpl-dba43de5: loaded language model has no native MTP head
+[12:12:21.059] INFO:vmlx_engine.mllm_scheduler:Skipping VLM paged cache store for chatcmpl-dba43de5: resolved extracted cache is empty (mixed_swa=True, zaya_cca=False, prompt_tokens=181, cache_callable=False)
+[12:12:24.079] INFO:     127.0.0.1:62198 - "GET /health HTTP/1.1" 200 OK
+[12:12:29.079] INFO:     127.0.0.1:62198 - "GET /health HTTP/1.1" 200 OK
+[12:12:34.093] INFO:     127.0.0.1:62201 - "GET /health HTTP/1.1" 200 OK
+[12:12:39.093] INFO:     127.0.0.1:62201 - "GET /health HTTP/1.1" 200 OK
+[12:12:44.097] INFO:     127.0.0.1:62201 - "GET /health HTTP/1.1" 200 OK
+[12:12:49.095] INFO:     127.0.0.1:62201 - "GET /health HTTP/1.1" 200 OK
+[12:12:54.108] INFO:     127.0.0.1:62203 - "GET /health HTTP/1.1" 200 OK
+[12:12:58.430] INFO:     127.0.0.1:62204 - "GET /health HTTP/1.1" 200 OK
+[12:12:59.110] INFO:     127.0.0.1:62203 - "GET /health HTTP/1.1" 200 OK
+[12:13:04.120] INFO:     127.0.0.1:62203 - "GET /health HTTP/1.1" 200 OK
+[12:13:09.119] INFO:     127.0.0.1:62203 - "GET /health HTTP/1.1" 200 OK
+[12:13:14.131] INFO:     127.0.0.1:62205 - "GET /health HTTP/1.1" 200 OK
+[12:13:19.134] INFO:     127.0.0.1:62205 - "GET /health HTTP/1.1" 200 OK
+[12:13:24.139] INFO:     127.0.0.1:62205 - "GET /health HTTP/1.1" 200 OK
+[12:13:29.141] INFO:     127.0.0.1:62205 - "GET /health HTTP/1.1" 200 OK
+[12:13:34.151] INFO:     127.0.0.1:62207 - "GET /health HTTP/1.1" 200 OK
+[12:13:39.153] INFO:     127.0.0.1:62207 - "GET /health HTTP/1.1" 200 OK
+[12:13:44.158] INFO:     127.0.0.1:62207 - "GET /health HTTP/1.1" 200 OK
+[12:13:49.163] INFO:     127.0.0.1:62209 - "GET /health HTTP/1.1" 200 OK
+[12:13:54.165] INFO:     127.0.0.1:62209 - "GET /health HTTP/1.1" 200 OK
+[12:13:59.170] INFO:     127.0.0.1:62209 - "GET /health HTTP/1.1" 200 OK
+[12:14:04.177] INFO:     127.0.0.1:62210 - "GET /health HTTP/1.1" 200 OK
+[12:14:09.183] INFO:     127.0.0.1:62210 - "GET /health HTTP/1.1" 200 OK
+[12:14:14.184] INFO:     127.0.0.1:62210 - "GET /health HTTP/1.1" 200 OK
+[12:14:19.193] INFO:     127.0.0.1:62211 - "GET /health HTTP/1.1" 200 OK
+[12:14:24.194] INFO:     127.0.0.1:62211 - "GET /health HTTP/1.1" 200 OK
+[12:14:29.196] INFO:     127.0.0.1:62211 - "GET /health HTTP/1.1" 200 OK
+[12:14:34.196] INFO:     127.0.0.1:62212 - "GET /health HTTP/1.1" 200 OK
+[12:14:39.202] INFO:     127.0.0.1:62212 - "GET /health HTTP/1.1" 200 OK
+[12:14:44.204] INFO:     127.0.0.1:62212 - "GET /health HTTP/1.1" 200 OK
+[12:14:49.211] INFO:     127.0.0.1:62213 - "GET /health HTTP/1.1" 200 OK
+[12:14:54.211] INFO:     127.0.0.1:62213 - "GET /health HTTP/1.1" 200 OK
+[12:14:59.223] INFO:     127.0.0.1:62213 - "GET /health HTTP/1.1" 200 OK
+[12:15:04.223] INFO:     127.0.0.1:62214 - "GET /health HTTP/1.1" 200 OK
+[12:15:09.231] INFO:     127.0.0.1:62214 - "GET /health HTTP/1.1" 200 OK
+[12:15:14.232] INFO:     127.0.0.1:62214 - "GET /health HTTP/1.1" 200 OK
+[12:15:19.239] INFO:     127.0.0.1:62215 - "GET /health HTTP/1.1" 200 OK
+[12:15:24.243] INFO:     127.0.0.1:62215 - "GET /health HTTP/1.1" 200 OK
+[12:15:29.250] INFO:     127.0.0.1:62215 - "GET /health HTTP/1.1" 200 OK

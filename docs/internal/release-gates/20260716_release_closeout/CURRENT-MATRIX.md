@@ -1111,3 +1111,12 @@ Evidence: `../20260719_ollama_stream_tool_parity/`.
   after `359ce6b2b`; run `bundle-python.sh` at release cutoff, then rerun the
   verifier without deselection.
 - Evidence: `../20260719_m3_current_postfinalizer/`.
+## 2026-07-19 Gemma 4 current-head parser/stream addendum
+
+| Row | Status | Current evidence | Remaining |
+|---|---|---|---|
+| Gemma4 Auto reasoning + no-tool stream | PASS-LIVE at adequate cap / PARTIAL default verbosity | Real Electron row 394 produced non-empty coherent content separately from 15,629 reasoning characters and painted progressively. Raw Responses at 4,096 emitted 356 reasoning + 44 content deltas and completed; Chat emitted 428 + 30 and stopped cleanly. The 512 controls truthfully ended incomplete/length. | Default temp-1.0 short-prompt reasoning used 3,322 output tokens; classify/improve without hidden sampling or output coercion. |
+| Gemma4 required tool + continuation | PASS-LIVE current | Electron row 397 made one real `file_info`, returned 5.2 KB, no warning, and restored 7,168 `paged+mixed_swa+disk` tokens. Both raw APIs emitted one schema-valid call and progressively streamed the real-result follow-up with clean terminals. | Signed packaged-app repeat after bundle refresh. |
+| Gemma4 mixed-SWA storage truth | PASS-LIVE scoped | Health identifies native live rotating caches, generic live TQ Off, q4 storage-boundary encoding for full+sliding KV, preserved rotating metadata, 56 scheduler disk hits, and 239 native-TQ L2 hits. Focused selection is 361 passed. | Retain alternate/larger media and audio-family rows separately. |
+
+Evidence: `../20260719_gemma4_current_parser_stream/`.

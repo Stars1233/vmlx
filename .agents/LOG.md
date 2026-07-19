@@ -1150,3 +1150,17 @@
   `docs/internal/release-gates/20260719_m3_current_postfinalizer/`.
 - Keep release blocked until `bundle-python.sh` refreshes current source at the
   chosen cutoff and the complete verifier passes without deselection.
+## 2026-07-19 - Gemma4 current-source text/parser repeat
+
+- Re-read the 26B bundle: affine `JANG_4M`, 25 sliding + 5 full-attention layers,
+  Gemma4 reasoning/tool parsers, vision-capable, no MTP.
+- Real Electron Start loaded PID 4530. No-tool row 394 was coherent and progressive
+  but consumed 3,322 output tokens; tool row 397 made one real file call, exact-reported
+  5.2 KB, restored 7,168 `paged+mixed_swa+disk`, and had no warning.
+- The 512-token raw controls reproduced truthful output-limit terminals. Increasing
+  only the explicit request cap to 4,096 yielded completed Responses and Chat streams
+  with hundreds of separate reasoning deltas followed by progressive content deltas.
+- Health confirms native live rotating cache objects plus q4 storage-boundary encoding
+  for both KV lanes with rotating metadata preserved. Focused tests pass 361/361.
+- Preserved screenshots, DB rows, health, both raw traces, and test output under
+  `docs/internal/release-gates/20260719_gemma4_current_parser_stream/`.
