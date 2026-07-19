@@ -1296,3 +1296,18 @@ remains `PARTIAL_NO_1_6_12_RELEASE`.
 Validation: 911 expanded Python tests, 304 panel tests, and panel typecheck.
 Evidence: `../20260719_qwen35_hybrid_diskonly/`. Overall release remains
 `PARTIAL_NO_1_6_12_RELEASE`.
+
+### Paged RAM + block-disk L2 hierarchy addendum - 2026-07-19
+
+| Row | Status | Current source + live evidence | Remaining |
+|---|---|---|---|
+| Paged On RAM-first + L2 fallback | PASS-LIVE scoped | `8a93aa910` removes the implicit frugal default. Electron LFM cold stored 306 tokens in RAM+SSD; exact replay was 306 `paged+ssm` with zero disk reads. After bounded eviction it was 306 `paged+ssm+disk` and promoted back to L1. | Repeat on additional compatible full-KV/TQ families; signed app. |
+| Restart partial block reuse | PASS-LIVE scoped | After PID 31958 -> 32602, L1 was empty and L2 retained 635 tokens. A changed suffix restored 256/312 as `paged+ssm+disk` and exact-finaled. | Fault injection and larger-context soak. |
+| Paged Off SSD-only regression | PASS-LIVE scoped | Real UI Paged Off + Block L2 On restarted as `block_disk_only`; a changed suffix restored 256/311 as `block-disk+ssm` while RAM tokens/bytes stayed zero. UI then restored Paged On. | Typed/TQ breadth remains per-family. |
+| Chat/Responses/Anthropic/Ollama stream parity | PASS transport / PARTIAL strict format | Each stream emitted 145 progressive content deltas and one native terminal; stream/non-stream outputs matched byte-for-byte. Chat/Responses reported 295/299 `paged+ssm`. LFM added unwanted explanation on every protocol. | Tool/reasoning continuations, cancellation/failure soak, other parsers. |
+| LFM stored TQ | OPEN | This run reported `tq_native_enabled=false` and zero TQ-native block writes. | Classify eligibility and prove encode/decode before any TQ claim. |
+
+Validation: 190/190 selected cache-family tests plus 99/99 protocol/adapter
+tests. Evidence:
+`../20260719_paged_ram_ssd_hierarchy/`. Overall release remains
+`PARTIAL_NO_1_6_12_RELEASE`.

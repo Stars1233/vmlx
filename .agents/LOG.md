@@ -1381,3 +1381,18 @@
 - Focused panel contracts: 341 passed; typecheck passed. Full suites remain a
   separate current-source gate until their active reruns finish.
 - Evidence: `docs/internal/release-gates/20260719_minwidth_locale_drawers/`.
+
+## 2026-07-19 - Paged RAM + SSD L2 hierarchy repair
+
+- Live LFM health showed the owning red: Paged On / Block L2 On indexed 528
+  tokens but held zero RAM payloads because disk presence implicitly enabled
+  frugal mode.
+- `8a93aa910` makes the tiers independent, retains successful L2 promotions as
+  evictable L1 entries, preserves typed native exceptions, and exposes the
+  effective RAM mirror policy.
+- Electron rows 599/602/605/608/611/614 cover cold, RAM, eviction, SSD,
+  restart-partial, and disk-only-partial paths with exact visible markers and
+  no warnings. Final UI state is Paged On / Block L2 On.
+- Raw Chat, Responses, Anthropic, and Ollama stream/non-stream parity completed;
+  strict formatting remains PARTIAL. 190 cache and 99 protocol tests pass.
+- Evidence: `docs/internal/release-gates/20260719_paged_ram_ssd_hierarchy/`.

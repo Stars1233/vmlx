@@ -1,0 +1,8 @@
+8a93aa910 fix(cache): preserve paged RAM alongside block L2
+ tests/test_dsv4_paged_cache.py |  5 ++-
+ tests/test_engine_audit.py     | 50 +++++++++++++++++++-----
+ tests/test_paged_cache.py      | 51 ++++++++++++++++++++++++
+ vmlx_engine/paged_cache.py     | 26 ++++++++++++-
+ vmlx_engine/prefix_cache.py    | 88 ++++++++++++++++++++++++++++--------------
+ vmlx_engine/server.py          |  6 +++
+ 6 files changed, 187 insertions(+), 39 deletions(-)

@@ -7312,6 +7312,26 @@ release remains `PARTIAL_NO_1_6_12_RELEASE`.
   `JANG` label, full suites/build/bundle/release, and the remaining campaign rows.
 - Evidence: `docs/internal/release-gates/20260719_qwen35_jangtq_current/`.
 
+## 2026-07-19 - Paged RAM and block-disk L2 hierarchy
+
+Status: `FIXED_SOURCE_VERIFIED_LIVE_SCOPED` at pushed `8a93aa910`; overall
+release remains `PARTIAL_NO_1_6_12_RELEASE`.
+
+- Removed the implicit frugal policy that made Paged On behave SSD-only when
+  Block L2 was enabled. Paged On now defaults resident; disk-only and explicit
+  `VMLX_PAGED_FRUGAL=1` remain truthful exceptions.
+- Real Electron LFM proved cold RAM+SSD write-through, 306-token RAM hit with
+  zero disk reads, bounded eviction, 306-token SSD refault, restart/zero-L1,
+  and 256-token partial SSD reuse. Paged Off + L2 On then restored 256 tokens
+  with zero resident bytes; Paged On was restored.
+- Raw Chat/Responses/Anthropic/Ollama streams each emitted 145 progressive
+  content deltas and a clean native terminal. Strict-format quality remains
+  PARTIAL because the model added explanation.
+- 190/190 selected cache tests and 99/99 protocol/adapter tests pass. LFM
+  TQ-native storage remains OPEN because
+  live counters were zero. Evidence:
+  `docs/internal/release-gates/20260719_paged_ram_ssd_hierarchy/`.
+
 ## 2026-07-19 - Qwen JANGTQ Sessions quant-label truth checkpoint
 
 Status: `PASS-LIVE` for the scoped label defect at pushed commit `54222003d`;

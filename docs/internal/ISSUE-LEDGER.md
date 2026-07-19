@@ -2864,3 +2864,25 @@ remain open. No public release/notarization/feed mutation performed.
 - Retain `OPEN`: Paged-On RAM-to-SSD hierarchy, explicit TQ Off, this row's
   Ollama/Anthropic parity, fault injection, signed-app repeat, other families,
   and overall release readiness.
+
+## 2026-07-19 - Generic Paged RAM + block-disk L2 hierarchy
+
+- `PAGED-L1-L2-INDEPENDENCE`: `FIXED_SOURCE + PASS-LIVE_SCOPED` at pushed
+  commit `8a93aa910`. Block-disk L2 no longer silently enables frugal mode and
+  discards ordinary Paged-On RAM payloads. Health exposes the effective
+  `ram_mirror_policy` and `paged_frugal` state.
+- Real Electron LFM rows prove cold write-through, a 306-token RAM-only hit
+  with zero SSD reads, bounded block eviction, a 306-token SSD refault, process
+  restart with zero L1 state, and a 256-token partial SSD prefix. The panel then
+  switched Paged Off / L2 On and restored 256 tokens as `block-disk+ssm` while
+  remaining at zero resident bytes. Paged On was restored afterward.
+- Raw Chat, Responses, Anthropic, and Ollama stream/non-stream requests all
+  emitted non-empty identical content progressively and reached their native
+  terminal events. LFM strict formatting is retained as PARTIAL because it
+  added explanation after the requested lines.
+- Validation: 190/190 selected cache-family tests and 99/99 protocol/adapter
+  tests. Evidence:
+  `docs/internal/release-gates/20260719_paged_ram_ssd_hierarchy/`.
+- Retain `OPEN`: LFM TQ eligibility/native encoding (this run reported zero
+  TQ-native blocks), tool/reasoning protocol breadth, signed app, fault
+  injection, full suites/build, and the rest of the family matrix.
