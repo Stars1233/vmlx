@@ -2178,3 +2178,40 @@ remain open. No public release/notarization/feed mutation performed.
   The parent cache/release gate remains `PARTIAL`: generic paged RAM partial
   reuse plus forced eviction/block-disk refault/restart restore are still
   required on a compatible model, and the new Chat usage row remains open.
+
+## 2026-07-19 01:49 - Chat terminal usage and finish ordering
+
+- `CHAT-STREAM-INCLUDE-USAGE-PARITY`: `VERIFIED-LIVE` on source commit
+  `5358842b2` for the shared Chat Completions serializer/finalizer. The live
+  pre-fix openPangu stream carried 317 non-null, growing usage objects on
+  intermediate reasoning/content chunks. The server now emits `usage:null`
+  on ordinary chunks and one choices-empty total-usage chunk before `[DONE]`.
+  This was a global Chat wire defect, not a model, parser, quant, or cache
+  failure.
+- The same live rerun exposed and closed a second ordering defect in the
+  generic terminal-finish guard. When no prior finish chunk existed, it used
+  to append synthetic `finish_reason=stop` at `[DONE]`, after a previously
+  emitted usage-only tail. The guard now detects that tail and inserts
+  `finish_reason=stop` before it. Current raw order was 388 null-usage ordinary
+  chunks, finish at index 387, exactly one choices-empty usage total at index
+  388, then `[DONE]`; no ordinary chunk omitted usage. Reasoning remained
+  separate/progressive and visible content exact-finaled.
+- The Electron chat override was grounded in SQLite as
+  `wire_api=completions`, and its settings UI showed `/v1/chat/completions`.
+  A retained screenshot sequence shows a no-tool Auto turn growing from 61 to
+  1,370 reasoning characters before exact visible
+  `CHAT-USAGE-UI3-DONE`; final metrics reported 414 output, 364 prompt, 290
+  memory-cached, 25.3 tok/s, and 0.87s TTFT. This proves the UI still derives
+  live progress from real deltas after per-chunk usage removal.
+- The same Chat wire then executed exactly one `file_info` call with valid
+  `{"path":"panel/package.json"}`, consumed the 5.2 KB tool result, and
+  exact-finaled `CHAT-USAGE-TOOL-DONE SIZE=5.2 KB` with separate reasoning,
+  one matching OAI call/result, coherent metrics, and no warning.
+- Current validation: 666/666 Python stream/parser tests, 84/84 panel tests,
+  and TypeScript typecheck passed. Evidence:
+  `docs/internal/release-gates/20260719_chat_terminal_usage_parity/`.
+- This closes the scoped shared Chat usage/order blocker, not the full
+  protocol or model matrix. Other families, Responses/Anthropic/Ollama live
+  rows, paged block eviction/refault, media, gateway, full suites/build, and
+  release gates remain `PARTIAL` or `OPEN` until their own current-source live
+  evidence is recorded.

@@ -1,0 +1,15 @@
+5358842b2 fix(stream): emit Chat usage only at terminal
+ tests/test_engine_audit.py                 |  15 ++-
+ tests/test_stream_terminal_finish_guard.py |   6 ++
+ vmlx_engine/server.py                      | 144 ++++++++++++++++++-----------
+ 3 files changed, 107 insertions(+), 58 deletions(-)
+17103:    def _synthetic_terminal() -> dict | None:
+17154:            # include_usage's choices-empty total must remain the last JSON
+17197:    def _dump_chat_chunk(obj, *, terminal_usage: bool = False) -> str:
+17202:        ``usage:null``; they must never expose the engine's growing counters.
+18176:            yield f"data: {_dump_chat_chunk(err_usage_chunk, terminal_usage=True)}\n\n"
+18319:                yield f"data: {_dump_chat_chunk(usage_chunk, terminal_usage=True)}\n\n"
+18933:        yield f"data: {_dump_chat_chunk(usage_chunk, terminal_usage=True)}\n\n"
+tests/test_engine_audit.py:15162:        assert len(usage_chunks) == 1
+tests/test_engine_audit.py:15715:        assert len(usage_chunks) == 1
+tests/test_stream_terminal_finish_guard.py:111:    def test_usage_only_tail_chunk_still_gets_terminal(self):
