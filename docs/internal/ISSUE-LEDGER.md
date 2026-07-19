@@ -15,6 +15,20 @@ Severity: C / H / M / L(nit) / P(otential, unproven).
 Evidence: LIVE / code-only.
 Status: OPEN / FIXED / VERIFIED-LIVE / WONTFIX / NOT-A-DEFECT / BUNDLE / BASELINE.
 
+## 2026-07-18 public checkpoint override
+
+- Public release checkpoint: `v1.6.11` is released. Packaged engine/source
+  commit: `95b2caa956c592a9caa706f2a790dcd5664721b7`. Final annotated tag,
+  `origin/main`, closeout branch, and evidence head:
+  `df244c4a858df3894fa3911b270d6d1b175966d6`.
+- Current live release-surface verification is `pass` with no failed checks;
+  signed/notarized Sequoia and Tahoe DMGs, PyPI, GitHub releases, updater feeds,
+  and Homebrew are documented in
+  `docs/internal/release-gates/20260718_v1_6_11_release/`.
+- The release closes the packaging/publication gate only. It does not
+  implicitly close any `OPEN`, `FAIL-LIVE`, or `PARTIAL` runtime row in this
+  additive ledger. Those rows remain active post-release work.
+
 ## Fixed + verified this cycle (v1.6.6 lane)
 | ID | Sev | Issue | Status | Fix | Live proof |
 |----|-----|-------|--------|-----|-----------|

@@ -932,3 +932,14 @@
   matching `file_info` call/result, restored 512 `paged+ssm+disk` tokens, and
   exact-finaled `Q27-ELECTRON-TOOLSTREAM-FIX7-DONE`. Other families remain
   regression-gated; no release claim was made.
+- 2026-07-18: published the full v1.6.11 checkpoint. The package was built
+  from `95b2caa956c592a9caa706f2a790dcd5664721b7`; final tag, `origin/main`,
+  closeout branch, and evidence head resolve to
+  `df244c4a858df3894fa3911b270d6d1b175966d6`. Both Sequoia and Tahoe DMGs
+  passed signing, notarization, staple, Gatekeeper, and installed Electron
+  smoke. Public GitHub source/app releases, PyPI, raw/site feeds, and Homebrew
+  are live. Final current-head release-surface verification reports pass with
+  no failed checks. Evidence is under
+  `docs/internal/release-gates/20260718_v1_6_11_release/`. This closes the
+  release checkpoint only; retained model/media/protocol/UI rows remain active
+  post-release work.

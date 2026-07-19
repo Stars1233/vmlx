@@ -1,6 +1,6 @@
-# vMLX 1.6.11 release closeout matrix — 2026-07-17
+# vMLX 1.6.11 release closeout matrix — 2026-07-18
 
-Status: `PARTIAL_NO_RELEASE`.
+Status: `PUBLIC_CHECKPOINT_RELEASED_POST_RELEASE_MATRIX_PARTIAL`.
 
 This is the current additive closeout view over `docs/internal/ISSUE-LEDGER.md`,
 `.agents/STATUS.md`, the July 15–16 live proof directories, the shared wiki
@@ -9,6 +9,35 @@ their original ledgers for provenance; the newest source-plus-live row wins and
 superseded conclusions are called out here.
 
 ## Release truth
+
+### 2026-07-18 current override
+
+- vMLX `1.6.11` is a public, signed, notarized checkpoint. The package was
+  built from engine/source commit
+  `95b2caa956c592a9caa706f2a790dcd5664721b7`; the final annotated tag,
+  `origin/main`, `origin/codex/live-electron-gates-20260715`, and this release
+  evidence head all resolve to
+  `df244c4a858df3894fa3911b270d6d1b175966d6`.
+- Public surfaces are live: the `jjang-ai/vmlx` source release,
+  `jjang-ai/mlxstudio` Sequoia/Tahoe DMG release, PyPI `vmlx==1.6.11`, the
+  raw/site updater feeds, and the Homebrew cask. The final current-head live
+  release contract reports `status=pass` with no failed checks in
+  `docs/internal/release-gates/20260718_v1_6_11_release/`.
+- Both final DMGs passed signature, notarization-ticket, staple, Gatekeeper,
+  and installed-app smoke verification. The installed Sequoia and Tahoe apps
+  each loaded Gemma 4 through the real Electron Start action. Sequoia also
+  proved three UI turns, one real tool continuation, separate reasoning and
+  content SSE, and a disk-restored mixed-SWA prefix; Tahoe independently
+  proved UI and Responses streaming.
+- This release checkpoint does **not** close the retained rows below. Family
+  reliability/latency/eviction, larger media and Omni audio, protocol/gateway
+  soak, broader eager loading, locale/narrow-window UI, and stale-path UX stay
+  post-release `PARTIAL`/`OPEN` until current-source live evidence closes each
+  one.
+
+The historical pre-release statements immediately below are retained as
+provenance and are superseded only for release/version/public-surface truth by
+the current override above.
 
 - Working branch: `reconcile/1.5.68`; current scoped code head `45c64f85e`;
   typed-settings,

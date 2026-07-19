@@ -6,7 +6,10 @@ Verdict: **PASS for the v1.6.11 public checkpoint; broader retained model-family
 
 ## Source and taxonomy
 
-- Packaged source commit and annotated tag: `95b2caa956c592a9caa706f2a790dcd5664721b7` / `v1.6.11`.
+- Packaged engine/source commit:
+  `95b2caa956c592a9caa706f2a790dcd5664721b7`.
+- Final annotated `v1.6.11` tag, `origin/main`, closeout branch, and release
+  evidence head: `df244c4a858df3894fa3911b270d6d1b175966d6`.
 - Clean JANG tools source: `9081c92476a63b912f4d2ce96146674971b5c83e`.
 - JANG affine, JANGTQ/MXTQ, and base MLX MXFP are separate model-weight formats. JANGTQ/MXTQ is the Hadamard/codebook lane. TurboQuant is a separate KV-cache storage codec.
 

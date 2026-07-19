@@ -1,5 +1,24 @@
 # Current Status
 
+## 2026-07-18 - v1.6.11 public checkpoint released; retained runtime matrix continues
+
+Status: `PUBLIC_CHECKPOINT_RELEASED_POST_RELEASE_MATRIX_PARTIAL`.
+
+- The packaged engine/source was commit
+  `95b2caa956c592a9caa706f2a790dcd5664721b7`. The final annotated `v1.6.11`
+  tag, `origin/main`, closeout branch, and current evidence head resolve to
+  `df244c4a858df3894fa3911b270d6d1b175966d6`.
+- Signed/notarized/stapled Sequoia and Tahoe DMGs, installed-app Electron UI
+  starts, Gemma 4 UI/API streaming/tool/cache smoke, PyPI, GitHub source/app
+  releases, raw/site update feeds, and Homebrew were verified and published.
+  Evidence: `docs/internal/release-gates/20260718_v1_6_11_release/`.
+- The final current-head release-surface contract reports `pass` and no failed
+  checks. This supersedes older statements that packaging/publication was not
+  authorized or that public surfaces were still 1.6.10.
+- Broader family reliability/latency/eviction, full media/audio, gateway and
+  protocol soak, eager-load coverage, narrow-window/localization, and stale
+  model-path UX rows remain `PARTIAL`/`OPEN` and continue after the checkpoint.
+
 ## 2026-07-17 - HY3 bounded TQ4 disk encoding and current agent stream proof
 
 Status: `SCOPED_HY3_LONG_TQ4_CACHE_API_ELECTRON_PASS_STOCHASTIC_FORMAT_AND_BROADER_RELEASE_GATES_OPEN`.
