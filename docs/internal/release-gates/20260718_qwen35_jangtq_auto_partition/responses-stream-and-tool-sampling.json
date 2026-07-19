@@ -37,5 +37,30 @@
       "terminal": "response.completed",
       "warnings": null
     }
+  },
+  "chat_completions": {
+    "ordinary_auto": {
+      "reasoning_delta_count": 1024,
+      "content_delta_count": 353,
+      "finish_reason": "stop",
+      "done_count": 1,
+      "strict_format": "FAIL: native model added an explanation before the marker"
+    },
+    "explicit_tool": {
+      "reasoning_delta_count": 58,
+      "content_delta_count": 0,
+      "tool_name": "file_info",
+      "tool_arguments": {"path": "panel/package.json"},
+      "finish_reason": "tool_calls",
+      "done_count": 1
+    },
+    "tool_result_continuation": {
+      "reasoning_delta_count": 152,
+      "content_delta_count": 17,
+      "content": "\n\nQ35-JT-CHAT-CONT-DONE SIZE=5.2 KB",
+      "repeated_tool_calls": 0,
+      "finish_reason": "stop",
+      "done_count": 1
+    }
   }
 }

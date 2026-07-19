@@ -1780,7 +1780,12 @@ remain open. No public release/notarization/feed mutation performed.
   Same-chat row 129 executed exactly one real
   `file_info({"path":"panel/package.json"})`, exact-finaled 5.2 KB, and
   restored 325 `paged+ssm+disk` tokens. Raw Responses emitted 237 reasoning
-  deltas, 14 progressive content deltas, and one completed terminal.
+  deltas, 14 progressive content deltas, and one completed terminal. Raw Chat
+  emitted 1,024/353 reasoning/content deltas for ordinary Auto, a valid
+  explicit `file_info`, and then 152/17 deltas for the exact real-result
+  continuation with no repeated call. Chat finish reasons and `[DONE]` were
+  correct; the ordinary model answer added an explanation before the marker,
+  retained as a strict-format miss.
 - Bundle/runtime truth: `weight_format=mxtq`, `profile=JANGTQ2`, routed expert
   bits 2, `turboquant_codebook`; this is not affine JANG or base MLX MXFP.
   Cache truth is a separate q4 attention-KV TurboQuant storage axis with native

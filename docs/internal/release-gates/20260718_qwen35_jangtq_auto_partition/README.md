@@ -72,6 +72,16 @@ The exact explicit-tool prompt was then repeated 12 times: four at temperature
 emitted exactly one schema-valid `file_info` call with
 `{"path":"panel/package.json"}` and one completed terminal.
 
+Raw Chat Completions on the same PID also stayed incremental. Its ordinary
+Auto control emitted 1,024 reasoning deltas followed by 353 content deltas,
+`finish_reason=stop`, and one `[DONE]`; the model added a long explanation
+before the requested marker, retained as a strict-format miss. The explicit
+tool pass emitted 58 reasoning deltas, one valid `file_info(path)`,
+`finish_reason=tool_calls`, and `[DONE]`. Supplying the real tool result in
+Chat history then emitted 152 new reasoning deltas and 17 content deltas,
+exact-finaled `Q35-JT-CHAT-CONT-DONE SIZE=5.2 KB`, and ended with `stop` plus
+one `[DONE]` without calling the tool again.
+
 ## Retained negative controls
 
 The release evidence must not erase the native variability:

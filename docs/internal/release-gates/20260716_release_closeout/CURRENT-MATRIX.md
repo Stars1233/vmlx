@@ -51,7 +51,11 @@ superseded conclusions are called out here.
   `file_info({"path":"panel/package.json"})`, exact-finaled 5.2 KB, and
   restored 325 tokens as `paged+ssm+disk`. Raw Responses emitted 237 reasoning
   and 14 timed content deltas before one completed terminal. The affected
-  focused matrix passed 101 tests.
+  focused matrix passed 101 tests. Raw Chat emitted 1,024 reasoning plus 353
+  content deltas for ordinary Auto, one valid explicit tool call, then 152
+  reasoning plus 17 content deltas for the exact post-result continuation.
+  Each Chat phase ended with the correct finish reason and one `[DONE]`; the
+  ordinary control retained a native strict-format miss.
 - Explicit native-tool reliability remains `PARTIAL-STOCHASTIC`: row 63 and a
   distinct raw prompt emitted `file_info` without required `path` and were
   safely rejected; repeated-history row 69 reused an old result without a new
