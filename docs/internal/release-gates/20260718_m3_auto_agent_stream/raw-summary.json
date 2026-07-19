@@ -1,0 +1,272 @@
+{
+  "model": "jangq-ai/MiniMax-M3-Coder-Small",
+  "responses": {
+    "no_tool": {
+      "wall_seconds": 15.501816,
+      "done_sentinel": false,
+      "event_counts": {
+        "response.created": 1,
+        "response.output_item.added": 1,
+        "response.content_part.added": 1,
+        "response.reasoning_summary_text.delta": 262,
+        "response.usage": 309,
+        "response.output_text.delta": 46,
+        "response.reasoning_summary_text.done": 1,
+        "response.output_text.done": 1,
+        "response.content_part.done": 1,
+        "response.output_item.done": 1,
+        "response.completed": 1
+      },
+      "first_nonempty_delta": {
+        "response.reasoning_summary_text.delta": 1.906053,
+        "response.output_text.delta": 12.351439
+      },
+      "completed": {
+        "id": "resp_b6a4f92d162f",
+        "object": "response",
+        "created_at": 1784440357,
+        "status": "completed",
+        "model": "jangq-ai/MiniMax-M3-Coder-Small",
+        "output_text": "Keeping reasoning deltas separate from visible answer deltas ensures that internal logic stays hidden from end users, preventing accidental exposure of intermediate steps. It also lets developers debug and optimize the reasoning process without altering the final output presented to users.",
+        "output": [
+          {
+            "id": "item_36fb9beea8ca",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "Keeping reasoning deltas separate from visible answer deltas ensures that internal logic stays hidden from end users, preventing accidental exposure of intermediate steps. It also lets developers debug and optimize the reasoning process without altering the final output presented to users.",
+                "annotations": []
+              }
+            ]
+          },
+          {
+            "id": "rs_9ab05c0e4edf",
+            "type": "reasoning",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "reasoning",
+                "text": "The user asks: \"Explain in two short sentences why an event stream should keep reasoning deltas separate from visible answer deltas. Do not use a tool.\"\n\nWe need to produce a short explanation in two sentences. The user wants to know why an event stream should keep reasoning deltas separate from visible answer deltas. This is a conceptual question about event streams, reasoning deltas, and visible answer deltas. The user wants a short explanation in two sentences. No tool usage is required. So we just answer directly.\n\nWe need to keep it short, two sentences. The explanation should be about why it's beneficial to separate reasoning deltas from visible answer deltas. Possibly about clarity, debugging, security, performance, etc. Two sentences.\n\nWe must not use a tool. So we just respond.\n\nWe need to ensure we comply with policy. There's no disallowed content. It's a simple explanation. So we can answer.\n\nWe should produce two sentences. For example:\n\n\"Keeping reasoning deltas separate from visible answer deltas ensures that internal logic remains hidden from end users, preventing accidental exposure of intermediate steps. It also allows developers to debug and optimize the reasoning process without affecting the final output presented to users.\"\n\nThat's two sentences. That seems fine.\n\nWe must not use a tool. So we just respond."
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 440,
+          "output_tokens": 310,
+          "total_tokens": 750,
+          "input_tokens_details": {
+            "cached_tokens": 192,
+            "cache_detail": "paged"
+          }
+        }
+      }
+    },
+    "tool": {
+      "wall_seconds": 3.670963,
+      "done_sentinel": false,
+      "event_counts": {
+        "response.created": 1,
+        "response.output_item.added": 2,
+        "response.content_part.added": 1,
+        "response.reasoning_summary_text.delta": 19,
+        "response.usage": 20,
+        "response.heartbeat": 28,
+        "response.reasoning_summary_text.done": 1,
+        "response.output_text.done": 1,
+        "response.content_part.done": 1,
+        "response.output_item.done": 2,
+        "response.function_call_arguments.delta": 2,
+        "response.function_call_arguments.done": 1,
+        "response.completed": 1
+      },
+      "first_nonempty_delta": {
+        "response.reasoning_summary_text.delta": 0.639342,
+        "response.function_call_arguments.delta": 3.670488
+      },
+      "completed": {
+        "id": "resp_82b20cabf310",
+        "object": "response",
+        "created_at": 1784440373,
+        "status": "completed",
+        "model": "jangq-ai/MiniMax-M3-Coder-Small",
+        "output_text": "",
+        "output": [
+          {
+            "id": "item_5890ab773986",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "",
+                "annotations": []
+              }
+            ]
+          },
+          {
+            "id": "fc_d71a3188fab1",
+            "type": "function_call",
+            "status": "completed",
+            "call_id": "call_370b751a",
+            "name": "file_info",
+            "arguments": "{\"path\": \"panel/package.json\"}"
+          },
+          {
+            "id": "rs_600aa41088fb",
+            "type": "reasoning",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "reasoning",
+                "text": "The user wants me to inspect panel/package.json using file_info. Let me call the tool."
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 427,
+          "output_tokens": 49,
+          "total_tokens": 476,
+          "input_tokens_details": {
+            "cached_tokens": 384,
+            "cache_detail": "paged"
+          }
+        }
+      }
+    },
+    "follow": {
+      "wall_seconds": 7.555821,
+      "done_sentinel": false,
+      "event_counts": {
+        "response.created": 1,
+        "response.output_item.added": 1,
+        "response.content_part.added": 1,
+        "response.reasoning_summary_text.delta": 15,
+        "response.usage": 137,
+        "response.output_text.delta": 119,
+        "response.reasoning_summary_text.done": 1,
+        "response.output_text.done": 1,
+        "response.content_part.done": 1,
+        "response.output_item.done": 1,
+        "response.completed": 1
+      },
+      "first_nonempty_delta": {
+        "response.reasoning_summary_text.delta": 0.98407,
+        "response.output_text.delta": 1.604481
+      },
+      "completed": {
+        "id": "resp_2560d404ca0f",
+        "object": "response",
+        "created_at": 1784440376,
+        "status": "completed",
+        "model": "jangq-ai/MiniMax-M3-Coder-Small",
+        "output_text": "Here is the real result from `file_info` on `panel/package.json`:\n\n- **Path:** `panel/package.json`\n- **Type:** file\n- **Size:** 5.2 KB\n- **Modified:** 2026-07-15T14:28:24.904Z\n- **Permissions:** 0644\n\nNote: `file_info` only returns metadata (path, type, size, modification time, permissions) — it does not return the file's contents. If you'd like the actual JSON contents parsed, let me know and I can read the file directly.",
+        "output": [
+          {
+            "id": "item_e1b9dfd05792",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "Here is the real result from `file_info` on `panel/package.json`:\n\n- **Path:** `panel/package.json`\n- **Type:** file\n- **Size:** 5.2 KB\n- **Modified:** 2026-07-15T14:28:24.904Z\n- **Permissions:** 0644\n\nNote: `file_info` only returns metadata (path, type, size, modification time, permissions) — it does not return the file's contents. If you'd like the actual JSON contents parsed, let me know and I can read the file directly.",
+                "annotations": []
+              }
+            ]
+          },
+          {
+            "id": "rs_a76e9819d241",
+            "type": "reasoning",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "reasoning",
+                "text": "The tool returned the real result. Let me present it to the user."
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 534,
+          "output_tokens": 138,
+          "total_tokens": 672,
+          "input_tokens_details": {
+            "cached_tokens": 422,
+            "cache_detail": "paged"
+          }
+        }
+      }
+    }
+  },
+  "chat": {
+    "no_tool": {
+      "wall_seconds": 15.792529,
+      "done_sentinel": true,
+      "event_count": 358,
+      "reasoning_delta_count": 304,
+      "content_delta_count": 51,
+      "tool_delta_count": 0,
+      "first_reasoning_delta": 0.662316,
+      "first_content_delta": 12.576874,
+      "first_tool_delta": null,
+      "finish_reasons": [
+        "stop"
+      ],
+      "reasoning": "The user asks: \"Explain in two short sentences why a streaming API should send visible answer text incrementally. Do not use a tool.\"\n\nSo I need to give a short explanation in two sentences. The user explicitly says \"Do not use a tool.\" So I should not invoke any tool. I just need to answer directly.\n\nThe question: \"Explain in two short sentences why a streaming API should send visible answer text incrementally.\"\n\nWe need to explain why a streaming API should send visible answer text incrementally. So we need to give two short sentences. The answer should be concise.\n\nWe must not use a tool. So we just respond.\n\nWe need to be mindful of the policy: no disallowed content. This is a normal question. So we can answer.\n\nWe need to produce two short sentences. For example:\n\n\"Streaming the answer text incrementally lets users see results as they are generated, reducing perceived latency. It also allows the client to render partial output and handle interruptions without waiting for the full response.\"\n\nThat's two sentences. That satisfies the request.\n\nWe must not use a tool. So we just respond.\n\nWe should ensure we don't exceed the two sentences. The user asked \"Explain in two short sentences why a streaming API should send visible answer text incrementally.\" So we need to give exactly two sentences. Let's produce two sentences.\n\nWe can also add a bit more detail but keep it short. The answer should be concise.\n\nWe must not use a tool. So we just respond.\n\nThus, final answer: two sentences.",
+      "content": "A streaming API should send visible answer text incrementally so users can see results as they are generated, reducing perceived latency and improving the user experience. Incremental delivery also lets the client render partial output and recover from interruptions without waiting for the entire response to finish.",
+      "tool_calls": []
+    },
+    "tool": {
+      "wall_seconds": 3.513758,
+      "done_sentinel": true,
+      "event_count": 52,
+      "reasoning_delta_count": 19,
+      "content_delta_count": 0,
+      "tool_delta_count": 2,
+      "first_reasoning_delta": 0.384554,
+      "first_content_delta": null,
+      "first_tool_delta": 1.157398,
+      "finish_reasons": [
+        "tool_calls"
+      ],
+      "reasoning": "The user wants me to inspect panel/package.json with file_info and wait for the real result.",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "call_a8da962d",
+          "type": "function",
+          "function": {
+            "name": "file_info",
+            "arguments": "{\"path\": \"panel/package.json\"}"
+          }
+        }
+      ]
+    },
+    "follow": {
+      "wall_seconds": 9.094621,
+      "done_sentinel": true,
+      "event_count": 165,
+      "reasoning_delta_count": 37,
+      "content_delta_count": 125,
+      "tool_delta_count": 0,
+      "first_reasoning_delta": 1.037923,
+      "first_content_delta": 2.528645,
+      "first_tool_delta": null,
+      "finish_reasons": [
+        "stop"
+      ],
+      "reasoning": "The user asked me to inspect panel/package.json with file_info and wait for the real result. I called file_info and got the result. Now I should present it to the user.",
+      "content": "Here is the real result from inspecting `panel/package.json`:\n\n- **Path:** `panel/package.json`\n- **Type:** file\n- **Size:** 5.2 KB\n- **Modified:** 2026-07-15T14:28:24.904Z\n- **Permissions:** 0644\n\nNote: `file_info` only returns metadata (path, type, size, modification time, permissions) — it does not return the file's contents. If you want to see the actual JSON content (dependencies, scripts, version, etc.), let me know and I can read it for you.",
+      "tool_calls": []
+    }
+  }
+}

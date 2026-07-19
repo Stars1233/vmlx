@@ -1791,8 +1791,11 @@ remain open. No public release/notarization/feed mutation performed.
   openai_gptoss, qwen3, and think_xml. Every locally configured family must
   still have a current-head representative prove Auto progressive reasoning,
   progressive content, clean terminal, no-tool Auto, required tool, and
-  post-tool continuation in Electron plus raw Chat/Responses. No blanket
-  family pass is claimed from the Step row.
+  post-tool continuation in Electron plus raw Chat/Responses. Current-head
+  representatives now include qwen3 (Step/Qwen), minimax_m2, deepseek_r1
+  (DSV4), and minimax_m3; this campaign row remains open for the other
+  configured parser families. No blanket family pass is inferred from one
+  representative.
 - Global release/campaign status remains `PARTIAL`; no new release action is
   authorized by this scoped fix.
 
@@ -1916,3 +1919,39 @@ remain open. No public release/notarization/feed mutation performed.
 - Retained boundary: this closes deterministic typed cache and streaming
   correctness, not the separate temperature-0.6 strict-format/long-quality
   reliability row. Overall campaign/release status remains `PARTIAL`.
+
+## 2026-07-18 23:0x - MiniMax-M3 Auto reasoning/tool stream current-head closure
+
+- `M3-AUTO-REASONING-AGENT-STREAM`: `VERIFIED-LIVE` for current-source text
+  Auto reasoning and the real one-tool continuation through Electron,
+  Responses, and Chat Completions. The real bundle declares
+  `minimax_m3_vl`, `JANG_2L` affine mixed quantization, native sparse MSA
+  cache, tools, thinking, and vision. It is not JANGTQ/MXTQ or base MXFP.
+- The real Electron Start button replaced DSV4 with M3 PID 19963 under the
+  one-model policy. Before any prompt, `/health` reported `model_loaded=true`,
+  `last_request_time=null`, schema `minimax_m3_msa_v1`, dense KV layers 0-2,
+  sparse MSA layers 3-59, and generic TurboQuant forced off. The fresh-chat UI
+  visibly showed Auto reasoning, Responses wire, built-in tools enabled, and
+  bundle defaults temperature 1.0/top-p 0.95; the controlled run then applied
+  temperature 0 and max 512 without changing Auto.
+- Electron row 201 stored 2,065 reasoning characters separately from 541
+  visible characters. Timed screenshots show Waiting at 1s, 42 reasoning
+  characters at 3s, 413 at 6s, then progressive visible content. Same-chat
+  row 204 executed exactly one real `file_info(panel/package.json)`, received
+  5.2 KB, and grew visible content from 178 to 394 characters before final;
+  it retained 1,851 separate reasoning characters and no warning.
+- Raw Responses no-tool Auto emitted 262 reasoning and 46 content deltas with
+  one completed terminal. Required-tool emitted 19 reasoning and two argument
+  deltas plus a schema-valid `file_info`; the real-result continuation emitted
+  15 reasoning and 119 content deltas before completion. Raw Chat emitted
+  304/51 reasoning/content deltas for no-tool Auto, 19 reasoning plus two tool
+  deltas and `finish_reason=tool_calls` for the call, then 37/125 deltas and
+  `finish_reason=stop` for continuation; every Chat stream ended with `[DONE]`.
+- The model refused synthetic `M3-*` exact-output markers as prompt-injection
+  patterns while still producing coherent non-empty answers and executing the
+  requested real tool. This is retained as model policy/strict-format
+  behavior, not misclassified as a parser, cache, UI paint, or API terminal
+  failure. Evidence:
+  `docs/internal/release-gates/20260718_m3_auto_agent_stream/`.
+- M3 larger-video, digit OCR, terminal-delay, and REAP32 headroom rows remain
+  `PARTIAL`; campaign/release status remains `PARTIAL`.
