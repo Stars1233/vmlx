@@ -35,6 +35,34 @@ superseded conclusions are called out here.
   post-release `PARTIAL`/`OPEN` until current-source live evidence closes each
   one.
 
+### 2026-07-18 post-release Qwen 3.6 JANGTQ Auto-stream override
+
+- The 35B artifact is bundle-grounded as `weight_format=mxtq`,
+  `profile=JANGTQ2`, and `codec=turboquant_codebook`. It is JANGTQ/MXTQ, not
+  affine JANG or base MLX MXFP. Its separate hybrid cache policy stores only
+  attention KV as TurboQuant q4 and persists native SSM companion state.
+- The current post-release source repairs an ordinary Qwen Auto request that
+  carries a tool catalog but explicitly requests no tool: Qwen may now reserve
+  the bounded visible-answer share instead of allowing hidden reasoning to
+  consume the full output cap. Required, named, and explicit-tool requests
+  remain unpartitioned and fail closed.
+- Final-source Electron PID 63899 row 126 emitted separate reasoning then exact
+  non-empty three-line content. Same-chat row 129 executed one real
+  `file_info({"path":"panel/package.json"})`, exact-finaled 5.2 KB, and
+  restored 325 tokens as `paged+ssm+disk`. Raw Responses emitted 237 reasoning
+  and 14 timed content deltas before one completed terminal. The affected
+  focused matrix passed 101 tests.
+- Explicit native-tool reliability remains `PARTIAL-STOCHASTIC`: row 63 and a
+  distinct raw prompt emitted `file_info` without required `path` and were
+  safely rejected; repeated-history row 69 reused an old result without a new
+  call; row 72 needed 52,343 reasoning characters before its eventual valid
+  call. In contrast, 11/11 fresh Electron tools, 3/3 fresh Auto-to-tool pairs,
+  the final-source pair, and 12/12 exact raw prompt repeats were valid. No
+  synthetic tool call, guessed argument, hidden sampler clamp, or forced
+  thinking-off retry was introduced.
+- Evidence:
+  `docs/internal/release-gates/20260718_qwen35_jangtq_auto_partition/`.
+
 The historical pre-release statements immediately below are retained as
 provenance and are superseded only for release/version/public-surface truth by
 the current override above.

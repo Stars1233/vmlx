@@ -1,0 +1,41 @@
+{
+  "ordinary_auto": {
+    "reasoning_delta_count": 237,
+    "content_delta_count": 14,
+    "first_reasoning_seconds": 0.478946,
+    "last_reasoning_seconds": 2.818416,
+    "first_content_seconds": 2.837956,
+    "last_content_seconds": 2.987593,
+    "content": "\n\nQ35-JT-API-AUTO-FINAL-DONE\n",
+    "function_calls": [],
+    "terminal": "response.completed",
+    "warnings": null
+  },
+  "distinct_explicit_wording_negative_control": {
+    "reasoning_delta_count": 54,
+    "content_delta_count": 0,
+    "function_calls": [],
+    "terminal": "response.completed",
+    "warnings": [
+      "reasoning-only visible final",
+      "file_info candidate missing required path was dropped",
+      "incomplete native control suffix was hidden"
+    ]
+  },
+  "exact_explicit_prompt_sampling": {
+    "temperature_0": {
+      "valid_calls": 4,
+      "runs": 4
+    },
+    "temperature_1_top_p_0_95_top_k_20": {
+      "valid_calls": 8,
+      "runs": 8
+    },
+    "every_call": {
+      "name": "file_info",
+      "arguments": {"path": "panel/package.json"},
+      "terminal": "response.completed",
+      "warnings": null
+    }
+  }
+}

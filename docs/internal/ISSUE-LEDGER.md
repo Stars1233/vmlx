@@ -1767,3 +1767,35 @@ remain open. No public release/notarization/feed mutation performed.
   family pass is claimed from the Step row.
 - Global release/campaign status remains `PARTIAL`; no new release action is
   authorized by this scoped fix.
+
+## 2026-07-18 19:4x - Qwen 3.6 35B JANGTQ ordinary Auto output recovered; explicit-tool variability retained
+
+- `Q35-JANGTQ-AUTO-PARTITION`: `VERIFIED-LIVE` for the ordinary no-tool Auto
+  path on the JANGTQ/MXTQ artifact. An attached tool catalog no longer disables
+  Qwen's bounded reasoning/output partition when the request has no explicit
+  tool intent. Required, named, or explicit tool turns remain unpartitioned
+  and fail closed. The policy covers stream/non-stream Chat and Responses.
+- Real Electron `Save & Restart` replaced PID 61979 with 63899. Row 126 kept
+  3,773 reasoning characters separate and exact-finaled three non-empty lines.
+  Same-chat row 129 executed exactly one real
+  `file_info({"path":"panel/package.json"})`, exact-finaled 5.2 KB, and
+  restored 325 `paged+ssm+disk` tokens. Raw Responses emitted 237 reasoning
+  deltas, 14 progressive content deltas, and one completed terminal.
+- Bundle/runtime truth: `weight_format=mxtq`, `profile=JANGTQ2`, routed expert
+  bits 2, `turboquant_codebook`; this is not affine JANG or base MLX MXFP.
+  Cache truth is a separate q4 attention-KV TurboQuant storage axis with native
+  SSM companion persistence.
+- `Q35-JANGTQ-EXPLICIT-TOOL-RELIABILITY`: `PARTIAL-STOCHASTIC`. Electron row
+  63 and one distinct raw prompt produced a native `file_info` candidate
+  missing required `path`; schema validation rejected it without execution.
+  Repeated same-chat row 69 reused prior output without calling again, and row
+  72 spent 52,343 reasoning characters / 214.5 seconds before eventually
+  calling and finalizing. Positive controls are 11/11 fresh Electron tool
+  turns, 3/3 fresh Auto-to-tool pairs, the final-source pair, and 12/12 exact
+  raw prompt repeats. This supports prompt/history/sampling-sensitive native
+  emission rather than a deterministic parser/transport defect, but repeated
+  tool soak remains open for coding-harness reliability.
+- Focused affected tests: 101 passed / 105 deselected, plus py_compile. No
+  guessed arguments, synthetic calls, forced thinking-off retry, sampler clamp,
+  or prompt coercion was added. Evidence:
+  `docs/internal/release-gates/20260718_qwen35_jangtq_auto_partition/`.

@@ -1,0 +1,53 @@
+{
+  "live_restart": {
+    "action": "Electron Server panel Save & Restart",
+    "old_pid": 61979,
+    "new_pid": 63899,
+    "port": 8029
+  },
+  "final_source_pair": [
+    {
+      "rowid": 126,
+      "kind": "ordinary_auto",
+      "content": "REASONING-SEPARATE\nCONTENT-PROGRESSIVE\nTERMINAL-COMPLETE",
+      "reasoning_chars": 3773,
+      "token_count": 959,
+      "warnings": null
+    },
+    {
+      "rowid": 129,
+      "kind": "same_chat_explicit_tool",
+      "content": "Q35-JT-FINAL-TOOL-DONE SIZE=5.2 KB",
+      "reasoning_chars": 554,
+      "cached_tokens": 325,
+      "cache_detail": "paged+ssm+disk",
+      "tool_name": "file_info",
+      "tool_arguments": {"path": "panel/package.json"},
+      "tool_result_size": "5.2 KB",
+      "warnings": null
+    }
+  ],
+  "retained_controls": [
+    {
+      "rowid": 63,
+      "result": "empty visible answer; native file_info candidate missing path was dropped",
+      "reasoning_chars": 581
+    },
+    {
+      "rowid": 69,
+      "result": "visible exact answer reused prior result without a new tool call",
+      "reasoning_chars": 814
+    },
+    {
+      "rowid": 72,
+      "result": "eventual real tool and exact final after extreme native reasoning",
+      "reasoning_chars": 52343,
+      "token_count": 16404,
+      "total_time_seconds": 214.5
+    }
+  ],
+  "additional_electron_sampling": {
+    "fresh_explicit_tool_valid": "11/11",
+    "fresh_auto_then_tool_valid": "3/3"
+  }
+}

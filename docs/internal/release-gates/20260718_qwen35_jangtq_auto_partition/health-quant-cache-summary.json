@@ -1,0 +1,37 @@
+{
+  "status": "healthy",
+  "model_loaded": true,
+  "model_name": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+  "quantization": {
+    "weight_format": "mxtq",
+    "profile": "JANGTQ2",
+    "codec": "turboquant_codebook",
+    "mxtq_bits": 2,
+    "routed_expert_bits": 2,
+    "prestacked_bundle": true
+  },
+  "kv_cache_quantization": {
+    "enabled": true,
+    "mode": "turboquant-storage",
+    "stored_prefix_quantization": "turboquant-q4",
+    "key_bits": 4,
+    "value_bits": 4,
+    "auto_policy": "qwen_hybrid_attention_kv_storage_tq4",
+    "live_encode_enabled": false
+  },
+  "block_disk_cache": {
+    "tq_native_enabled": true,
+    "blocks_on_disk": 399,
+    "total_tokens_on_disk": 23924,
+    "tq_native_hits": 22,
+    "tq_native_writes": 7
+  },
+  "ssm_companion_disk": {
+    "enabled": true,
+    "restore_enabled": true,
+    "entries": 166,
+    "total_tokens_on_disk": 99335,
+    "hits": 1,
+    "stores": 33
+  }
+}
