@@ -914,3 +914,13 @@ addendum supersede the pinned head; the newest source-plus-live row wins.
 | Auto reasoning stream by registered parser/family | OPEN/PARTIAL | Registry inventory identifies eight reasoning parsers: `deepseek_r1`, `gemma4`, `minimax_m2`, `minimax_m3`, `mistral`, `openai_gptoss`, `qwen3`, `think_xml`. Existing historical rows are not promoted automatically to current-head proof. | For each locally configured family: current Electron and raw Chat/Responses no-tool Auto, required tool, post-tool continuation, progressive reasoning/content, clean terminal, distinct multi-turn reasoning, and no parser-marker leakage. |
 
 Evidence: `../20260718_step_auto_reasoning_tool_recovery/`.
+
+## 2026-07-18 MiniMax-M2.7 current-source Chat id and q4/L2 checkpoint
+
+| Gate | Status | Current source + live evidence | Remaining boundary |
+|---|---|---|---|
+| Chat tool-call delta assembly | PASS-LIVE scoped | `stream_chat_completion` now introduces index 0's id only in the early START delta; the function-data delta omits repeated id/type/role fragments. The raw M2.7 Chat stream reconstructed one clean id, one valid `file_info(path)`, `tool_calls`, and one DONE. Chat result synthesis emitted 46 reasoning and 14 progressive content deltas; Responses emitted one call then 55 reasoning and 15 progressive content deltas with one completed terminal. Broad affected tests: 430 passed / 3 deselected. | Multi-call raw accumulation remains covered by source contracts but should remain in the campaign-wide protocol soak; non-stream behavior is unchanged by this patch. |
+| MiniMax-M2.7 Electron Auto/tool current PID | PASS-LIVE scoped | Visible Save & Restart produced PID 72865. Fresh Electron row 159 kept reasoning separate, executed exactly one real `file_info(panel/package.json)`, returned exact non-empty `MM27-UI-CURRENT-DONE SIZE=5.2 KB`, stored no warning, and displayed 128 `paged+tq-native` cached tokens. | This adds current-head Auto/required-tool/post-tool proof for `minimax_m2`; it does not promote the other seven registered reasoning-parser families. |
+| MiniMax-M2.7 q4 resident and restart-L2 | PASS-LIVE scoped | Bundle truth is JANGTQ/MXTQ (`weight_format=mxtq`, `profile=JANGTQ2`), distinct from affine JANG and base MLX MXFP. After the visible restart, four identical raw requests restored 838 tokens as `paged+disk+tq-native`; health recorded 22 native-TQ L2 hits, three native-TQ writes, and no dequantization in the last 192-token reconstruction. | Tool-schema/history rendering prevented a maximal second-turn prefix hit. Matching later/resumed boundaries are proven; universal maximal history reuse is not claimed. |
+
+Evidence: `../20260718_minimax_m27_tq4_agent_stream/`.

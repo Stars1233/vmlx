@@ -1,0 +1,54 @@
+{
+  "actual_tool_result": "Path: panel/package.json\nType: file\nSize: 5.2 KB\nPermissions: 0644",
+  "chat_first": {
+    "reasoning_deltas": 73,
+    "content_deltas": 0,
+    "call": {
+      "id": "call_369ebbcf",
+      "name": "file_info",
+      "arguments": "{\"path\": \"panel/package.json\"}"
+    },
+    "finish": [
+      "tool_calls"
+    ],
+    "done": true,
+    "first_ms": 17.7,
+    "last_ms": 3352.8
+  },
+  "chat_result": {
+    "reasoning_deltas": 46,
+    "content_deltas": 14,
+    "content": "\n\nMM27-CHAT-TOOL-DONE SIZE=5.2 KB",
+    "tool_calls": 0,
+    "finish": [
+      "stop"
+    ],
+    "done": true,
+    "first_content_ms": 1622.5,
+    "last_content_ms": 1953.0
+  },
+  "responses_first": {
+    "response_id": "resp_e6fa07dd762d",
+    "call": {
+      "id": "fc_179bac8ac64b",
+      "type": "function_call",
+      "status": "completed",
+      "call_id": "call_931b4ec0",
+      "name": "file_info",
+      "arguments": "{\"path\": \"panel/package.json\"}"
+    },
+    "completed": true,
+    "reasoning_delta_types": [
+      "response.reasoning_summary_text.delta"
+    ]
+  },
+  "responses_result": {
+    "reasoning_deltas": 55,
+    "content_deltas": 15,
+    "content": "\n\nMM27-RESP-TOOL-DONE SIZE=5.2 KB",
+    "function_calls": 0,
+    "completed": true,
+    "first_content_ms": 2659.9,
+    "last_content_ms": 3015.7
+  }
+}

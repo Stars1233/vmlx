@@ -1,0 +1,28 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.11, pytest-9.0.2, pluggy-1.6.0
+rootdir: /Users/eric/mlx/vllm-mlx
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+plugins: asyncio-1.3.0, anyio-4.13.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 433 items / 3 deselected / 430 selected
+
+tests/test_server.py ................................................... [ 11%]
+............................................................             [ 25%]
+tests/test_dsml_tool_parser.py ...........................               [ 32%]
+tests/test_gemma3_tool_parser.py .........                               [ 34%]
+tests/test_gemma4_tool_parser.py .............                           [ 37%]
+tests/test_glm47_tool_parser.py .........                                [ 39%]
+tests/test_granite_tool_parser.py ...........                            [ 41%]
+tests/test_hunyuan_tool_parser.py ............                           [ 44%]
+tests/test_minimax_m3_tool_parser.py ..                                  [ 45%]
+tests/test_openpangu_tool_parser.py ..................................   [ 53%]
+tests/test_step3p5_tool_parser.py ..........                             [ 55%]
+tests/test_xml_function_tool_parser.py .............                     [ 58%]
+tests/test_tool_call_contract.py ......                                  [ 59%]
+tests/test_reasoning_tool_interaction.py ............................... [ 66%]
+..............................                                           [ 73%]
+tests/test_native_tool_format.py .............                           [ 76%]
+tests/test_tool_parsers.py ............................................. [ 87%]
+......................................................                   [100%]
+
+====================== 430 passed, 3 deselected in 2.22s =======================

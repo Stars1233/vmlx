@@ -1805,3 +1805,33 @@ remain open. No public release/notarization/feed mutation performed.
   guessed arguments, synthetic calls, forced thinking-off retry, sampler clamp,
   or prompt coercion was added. Evidence:
   `docs/internal/release-gates/20260718_qwen35_jangtq_auto_partition/`.
+
+## 2026-07-18 20:4x - Chat tool delta id accumulation repaired; MiniMax-M2.7 current-source q4/L2 agent stream re-proven
+
+- `CHAT-TOOL-DELTA-ID-ACCUMULATION`: `VERIFIED-LIVE` on current source. The
+  early Chat START delta already introduced tool-call index 0's id, but the
+  terminal function-data delta repeated the entire string. Standards-style SDK
+  accumulation therefore produced `call_abccall_abc`. The final delta now
+  omits id/type (and the repeated role) for index 0 while subsequent calls still
+  introduce their own identifiers. The raw M2.7 stream reconstructed exactly
+  one `call_369ebbcf`, correct `file_info(path)`, `tool_calls`, and one DONE.
+- Raw Chat result continuation emitted 46 reasoning plus 14 progressive content
+  deltas and exact-finaled. Responses emitted one valid function call, then 55
+  reasoning plus 15 progressive content deltas and one completed terminal.
+- Real Electron Save & Restart moved the model to PID 72865. Fresh row 159
+  executed one real `file_info(panel/package.json)` call, kept reasoning
+  separate, returned non-empty exact `MM27-UI-CURRENT-DONE SIZE=5.2 KB`, and
+  stored no warning. The screenshot visibly identifies the JANGTQ artifact and
+  current PID.
+- Bundle truth remains `weight_format=mxtq`, `profile=JANGTQ2`; this is neither
+  affine JANG nor base MLX MXFP. KV-prefix storage is a separate q4 TurboQuant
+  axis. After process restart, four identical raw requests restored 838 tokens
+  as `paged+disk+tq-native`; health recorded 22 native-TQ L2 hits, three writes,
+  and no dequantization on the last reconstruction.
+- Broad affected regression: 430 passed / 3 deselected. Evidence:
+  `docs/internal/release-gates/20260718_minimax_m27_tq4_agent_stream/`.
+- Retained boundary: prompt/tool-schema rendering changed the second Electron
+  prompt enough to miss the full conversation prefix. Later same-chat and
+  identical restart requests prove resident and disk reuse at matching
+  boundaries; maximal reuse across every history/template transition is not
+  claimed. Campaign/release status remains `PARTIAL`.
