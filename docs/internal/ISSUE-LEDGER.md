@@ -2670,3 +2670,30 @@ remain open. No public release/notarization/feed mutation performed.
   `vl_runtime_available=false`.
 - Evidence:
   `docs/internal/release-gates/20260719_qwen35_jangtq_current/`.
+
+## 2026-07-19 - HY3 native-MTP D1 current-source Electron/API/cache gate
+
+- `HY3-CURRENT-AUTO-D1-AGENT`: `VERIFIED-LIVE_SCOPED` at source cutoff
+  `0e09ce789`. The real bundle is affine `JANG_2K` (not JANGTQ/MXFP), declares
+  one next-token layer, and contains 42 MTP tensors. Electron single-model mode
+  stopped Qwen PID 26427 and loaded HY3 PID 27632 with Hunyuan tools, qwen3
+  reasoning, Auto q4 stored prefixes, and `--native-mtp-depth 1`.
+- Rows 443/446/449 were exact three-turn finals with distinct 844/1,263/483
+  character reasoning. Row 446 executed exactly one real `file_info`; row 449
+  called no tool and recalled both prior values. MutationObserver traces prove
+  the visible finals painted progressively after reasoning/tool execution.
+- Raw curl-N Responses emitted 215+14 no-tool deltas, one valid required tool,
+  and 107+17 post-result deltas. Chat emitted 142+13, one valid required tool,
+  and 89+16 post-result deltas. Finals were exact; terminals/usage/DONE ordering
+  was clean with no parser leakage or warning.
+- `HY3-CURRENT-D1-Q4-L2`: `VERIFIED-LIVE_SCOPED`. The first process recorded
+  1,194 drafted/497 accepted tokens. After Electron Stop/Start to PID 29852,
+  row 452 restored 4,655/4,872 tokens as `paged+disk+tq-native`, exact-recalled
+  without a tool, and independently recorded 87 drafted/35 accepted tokens.
+  Health counted 73 disk hits, all 73 native-TQ hits, and zero resident L1 bytes.
+  Accepted/main-history tokens therefore reach the q4 prefix boundary; rejected
+  speculative drafts are not claimed as persisted history.
+- No source fix was needed. Current focused HY3/MTP/Hunyuan/TQ/reasoning tests
+  pass 318/318. Retained PARTIAL: long/stochastic soak and a new current-source
+  MTP-Off versus D1 performance A/B. VL/audio/video are N/A for this text-only
+  artifact. Evidence: `docs/internal/release-gates/20260719_current_hy3_mtp/`.

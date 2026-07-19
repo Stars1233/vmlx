@@ -1,0 +1,8 @@
+{
+  "responses_no_tool": {"reasoning_deltas": 215, "content_deltas": 14, "content": "HY3-API-RESP-NO-DONE VALUE=42", "calls": 0, "terminal": "response.completed"},
+  "responses_tool": {"reasoning_deltas": 97, "argument_deltas": 2, "calls": [{"name": "file_info", "arguments": {"path": "panel/package.json"}}], "terminal": "response.completed"},
+  "responses_follow": {"reasoning_deltas": 107, "content_deltas": 17, "content": "HY3-API-RESP-FOLLOW-DONE SIZE=5.2 KB", "calls": 0, "terminal": "response.completed"},
+  "chat_no_tool": {"reasoning_deltas": 142, "content_deltas": 13, "content": "HY3-API-CHAT-NO-DONE VALUE=42", "calls": 0, "finish": "stop", "ordinary_nonnull_usage": 0, "terminal_usage_chunks": 1, "done": 1},
+  "chat_tool": {"reasoning_deltas": 112, "calls": [{"name": "file_info", "arguments": {"path": "panel/package.json"}}], "finish": "tool_calls", "ordinary_nonnull_usage": 0, "terminal_usage_chunks": 1, "done": 1},
+  "chat_follow": {"reasoning_deltas": 89, "content_deltas": 16, "content": "HY3-API-CHAT-FOLLOW-DONE SIZE=5.2 KB", "calls": 0, "finish": "stop", "ordinary_nonnull_usage": 0, "terminal_usage_chunks": 1, "done": 1}
+}

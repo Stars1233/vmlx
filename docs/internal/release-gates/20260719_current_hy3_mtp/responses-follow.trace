@@ -1,0 +1,842 @@
+07:44:36.644734 == Info:   Trying 127.0.0.1:8010...
+07:44:36.645130 == Info: Connected to 127.0.0.1 (127.0.0.1) port 8010
+07:44:36.645153 => Send header, 143 bytes (0x8f)
+0000: POST /v1/responses HTTP/1.1
+001d: Host: 127.0.0.1:8010
+0033: User-Agent: curl/8.7.1
+004b: Accept: */*
+0058: Content-Type: application/json
+0078: Content-Length: 970
+008d: 
+07:44:36.645203 => Send data, 970 bytes (0x3ca)
+0000: {"model":"jangq-ai/Hy3-JANG_2K-MTP","input":[{"role":"user","con
+0040: tent":"[HY3-API-RESP-TOOL] Call file_info exactly once with path
+0080:  panel/package.json. Do not answer before the tool call."},{"typ
+00c0: e":"function_call","call_id":"call_5a3d40c4","name":"file_info",
+0100: "arguments":"{\"path\": \"panel/package.json\"}"},{"type":"funct
+0140: ion_call_output","call_id":"call_5a3d40c4","output":"Path: panel
+0180: /package.json\nType: file\nSize: 5.2 KB\nModified: 2026-07-15T14
+01c0: :28:24.904Z\nPermissions: 0644"},{"role":"user","content":"Using
+0200:  only that real tool result, do not call another tool. Reply exa
+0240: ctly HY3-API-RESP-FOLLOW-DONE SIZE=5.2 KB and nothing else."}],"
+0280: tools":[{"type":"function","name":"file_info","description":"Ret
+02c0: urn current filesystem metadata for a path.","parameters":{"type
+0300: ":"object","properties":{"path":{"type":"string"}},"required":["
+0340: path"],"additionalProperties":false}}],"tool_choice":"none","str
+0380: eam":true,"max_output_tokens":768,"temperature":0,"enable_thinki
+03c0: ng":true}.
+07:44:36.645242 == Info: upload completely sent off: 970 bytes
+07:44:36.649827 <= Recv header, 17 bytes (0x11)
+0000: HTTP/1.1 200 OK
+07:44:36.649847 <= Recv header, 37 bytes (0x25)
+0000: date: Sun, 19 Jul 2026 14:44:36 GMT
+07:44:36.649860 <= Recv header, 17 bytes (0x11)
+0000: server: uvicorn
+07:44:36.649870 <= Recv header, 48 bytes (0x30)
+0000: content-type: text/event-stream; charset=utf-8
+07:44:36.649884 <= Recv header, 28 bytes (0x1c)
+0000: Transfer-Encoding: chunked
+07:44:36.649891 <= Recv header, 2 bytes (0x2)
+0000: 
+07:44:36.649898 <= Recv data, 253 bytes (0xfd)
+0000: f7
+0004: event: response.created.data: {"type": "response.created", "resp
+0044: onse": {"id": "resp_516c3e3866f0", "object": "response", "create
+0084: d_at": 1784472276, "status": "in_progress", "model": "jangq-ai/H
+00c4: y3-JANG_2K-MTP", "output": []}, "sequence_number": 0}..
+07:44:36.650061 <= Recv data, 244 bytes (0xf4)
+0000: ee
+0004: event: response.output_item.added.data: {"type": "response.outpu
+0044: t_item.added", "output_index": 0, "item": {"id": "item_e5c152d25
+0084: eae", "type": "message", "status": "in_progress", "role": "assis
+00c4: tant", "content": []}, "sequence_number": 1}..
+07:44:36.650083 <= Recv data, 245 bytes (0xf5)
+0000: ef
+0004: event: response.content_part.added.data: {"type": "response.cont
+0044: ent_part.added", "item_id": "item_e5c152d25eae", "output_index":
+0084:  0, "content_index": 0, "part": {"type": "output_text", "text": 
+00c4: "", "annotations": []}, "sequence_number": 2}..
+07:44:38.773183 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "The", "seq
+00c4: uence_number": 3}..
+07:44:38.773355 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " user", "s
+00c4: equence_number": 4}..
+07:44:38.820960 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " wants", "
+00c4: sequence_number": 5}..
+07:44:38.868747 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " me", "seq
+00c4: uence_number": 6}..
+07:44:38.916654 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " to", "seq
+00c4: uence_number": 7}..
+07:44:38.916832 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " reply", "
+00c4: sequence_number": 8}..
+07:44:38.964502 <= Recv data, 222 bytes (0xde)
+0000: d8
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " exactly",
+00c4:  "sequence_number": 9}..
+07:44:39.011830 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " \"", "seq
+00c4: uence_number": 10}..
+07:44:39.059237 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "HY", "sequ
+00c4: ence_number": 11}..
+07:44:39.059393 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "3", "seque
+00c4: nce_number": 12}..
+07:44:39.107163 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "-A", "sequ
+00c4: ence_number": 13}..
+07:44:39.155057 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "PI", "sequ
+00c4: ence_number": 14}..
+07:44:39.155195 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "-", "seque
+00c4: nce_number": 15}..
+07:44:39.202607 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "RE", "sequ
+00c4: ence_number": 16}..
+07:44:39.202728 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "SP", "sequ
+00c4: ence_number": 17}..
+07:44:39.250030 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "-F", "sequ
+00c4: ence_number": 18}..
+07:44:39.298061 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "OLLOW", "s
+00c4: equence_number": 19}..
+07:44:39.345869 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "-D", "sequ
+00c4: ence_number": 20}..
+07:44:39.393502 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "ONE", "seq
+00c4: uence_number": 21}..
+07:44:39.440979 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " SIZE", "s
+00c4: equence_number": 22}..
+07:44:39.488800 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "=", "seque
+00c4: nce_number": 23}..
+07:44:39.536176 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "5", "seque
+00c4: nce_number": 24}..
+07:44:39.536312 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": ".", "seque
+00c4: nce_number": 25}..
+07:44:39.583922 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "2", "seque
+00c4: nce_number": 26}..
+07:44:39.584083 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " KB", "seq
+00c4: uence_number": 27}..
+07:44:39.631628 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "\"", "sequ
+00c4: ence_number": 28}..
+07:44:39.679437 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " and", "se
+00c4: quence_number": 29}..
+07:44:39.679617 <= Recv data, 223 bytes (0xdf)
+0000: d9
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " nothing",
+00c4:  "sequence_number": 30}..
+07:44:39.726573 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " else", "s
+00c4: equence_number": 31}..
+07:44:39.726708 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": ",", "seque
+00c4: nce_number": 32}..
+07:44:39.774433 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " based", "
+00c4: sequence_number": 33}..
+07:44:39.774570 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " on", "seq
+00c4: uence_number": 34}..
+07:44:39.822881 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " the", "se
+00c4: quence_number": 35}..
+07:44:39.823260 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " tool", "s
+00c4: equence_number": 36}..
+07:44:39.870830 <= Recv data, 222 bytes (0xde)
+0000: d8
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " result", 
+00c4: "sequence_number": 37}..
+07:44:39.870986 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " which", "
+00c4: sequence_number": 38}..
+07:44:39.918879 <= Recv data, 222 bytes (0xde)
+0000: d8
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " showed", 
+00c4: "sequence_number": 39}..
+07:44:39.966961 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " Size", "s
+00c4: equence_number": 40}..
+07:44:40.014875 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": ":", "seque
+00c4: nce_number": 41}..
+07:44:40.015035 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " ", "seque
+00c4: nce_number": 42}..
+07:44:40.062971 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "5", "seque
+00c4: nce_number": 43}..
+07:44:40.063130 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": ".", "seque
+00c4: nce_number": 44}..
+07:44:40.110851 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "2", "seque
+00c4: nce_number": 45}..
+07:44:40.111014 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " KB", "seq
+00c4: uence_number": 46}..
+07:44:40.158397 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": ".", "seque
+00c4: nce_number": 47}..
+07:44:40.206214 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "\n\n", "se
+00c4: quence_number": 48}..
+07:44:40.206360 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "Let", "seq
+00c4: uence_number": 49}..
+07:44:40.254224 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " me", "seq
+00c4: uence_number": 50}..
+07:44:40.254403 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " check", "
+00c4: sequence_number": 51}..
+07:44:40.301959 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " the", "se
+00c4: quence_number": 52}..
+07:44:40.302123 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " exact", "
+00c4: sequence_number": 53}..
+07:44:40.349933 <= Recv data, 222 bytes (0xde)
+0000: d8
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " format", 
+00c4: "sequence_number": 54}..
+07:44:40.398222 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " requested
+00c4: ", "sequence_number": 55}..
+07:44:40.446410 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": ":", "seque
+00c4: nce_number": 56}..
+07:44:40.446569 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " \"", "seq
+00c4: uence_number": 57}..
+07:44:40.493969 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "Reply", "s
+00c4: equence_number": 58}..
+07:44:40.542142 <= Recv data, 223 bytes (0xdf)
+0000: d9
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " exactly",
+00c4:  "sequence_number": 59}..
+07:44:40.590489 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " H", "sequ
+00c4: ence_number": 60}..
+07:44:40.590685 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "Y", "seque
+00c4: nce_number": 61}..
+07:44:40.641052 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "3", "seque
+00c4: nce_number": 62}..
+07:44:40.641198 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "-A", "sequ
+00c4: ence_number": 63}..
+07:44:40.704601 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "PI", "sequ
+00c4: ence_number": 64}..
+07:44:40.752980 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "-", "seque
+00c4: nce_number": 65}..
+07:44:40.801478 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "RE", "sequ
+00c4: ence_number": 66}..
+07:44:40.849495 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "SP", "sequ
+00c4: ence_number": 67}..
+07:44:40.849659 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "-F", "sequ
+00c4: ence_number": 68}..
+07:44:40.897146 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "OLLOW", "s
+00c4: equence_number": 69}..
+07:44:40.944539 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "-D", "sequ
+00c4: ence_number": 70}..
+07:44:40.992775 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "ONE", "seq
+00c4: uence_number": 71}..
+07:44:41.040815 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " SIZE", "s
+00c4: equence_number": 72}..
+07:44:41.088732 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "=", "seque
+00c4: nce_number": 73}..
+07:44:41.088906 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "5", "seque
+00c4: nce_number": 74}..
+07:44:41.136918 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": ".", "seque
+00c4: nce_number": 75}..
+07:44:41.137072 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "2", "seque
+00c4: nce_number": 76}..
+07:44:41.184668 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " KB", "seq
+00c4: uence_number": 77}..
+07:44:41.232423 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " and", "se
+00c4: quence_number": 78}..
+07:44:41.280166 <= Recv data, 223 bytes (0xdf)
+0000: d9
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " nothing",
+00c4:  "sequence_number": 79}..
+07:44:41.328367 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " else", "s
+00c4: equence_number": 80}..
+07:44:41.376119 <= Recv data, 222 bytes (0xde)
+0000: d8
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": ".\"\n\n", 
+00c4: "sequence_number": 81}..
+07:44:41.423932 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "So", "sequ
+00c4: ence_number": 82}..
+07:44:41.424089 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " I", "sequ
+00c4: ence_number": 83}..
+07:44:41.471929 <= Recv data, 222 bytes (0xde)
+0000: d8
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " should", 
+00c4: "sequence_number": 84}..
+07:44:41.472084 <= Recv data, 222 bytes (0xde)
+0000: d8
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " output", 
+00c4: "sequence_number": 85}..
+07:44:41.520236 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": ":", "seque
+00c4: nce_number": 86}..
+07:44:41.567953 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " H", "sequ
+00c4: ence_number": 87}..
+07:44:41.616298 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "Y", "seque
+00c4: nce_number": 88}..
+07:44:41.664542 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "3", "seque
+00c4: nce_number": 89}..
+07:44:41.664692 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "-A", "sequ
+00c4: ence_number": 90}..
+07:44:41.712848 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "PI", "sequ
+00c4: ence_number": 91}..
+07:44:41.760417 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "-", "seque
+00c4: nce_number": 92}..
+07:44:41.808542 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "RE", "sequ
+00c4: ence_number": 93}..
+07:44:41.857414 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "SP", "sequ
+00c4: ence_number": 94}..
+07:44:41.857562 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "-F", "sequ
+00c4: ence_number": 95}..
+07:44:41.905012 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "OLLOW", "s
+00c4: equence_number": 96}..
+07:44:41.952384 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "-D", "sequ
+00c4: ence_number": 97}..
+07:44:42.000440 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "ONE", "seq
+00c4: uence_number": 98}..
+07:44:42.048536 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " SIZE", "s
+00c4: equence_number": 99}..
+07:44:42.096591 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "=", "seque
+00c4: nce_number": 100}..
+07:44:42.144061 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "5", "seque
+00c4: nce_number": 101}..
+07:44:42.144224 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": ".", "seque
+00c4: nce_number": 102}..
+07:44:42.192155 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "2", "seque
+00c4: nce_number": 103}..
+07:44:42.192302 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " KB", "seq
+00c4: uence_number": 104}..
+07:44:42.240471 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "\n\n", "se
+00c4: quence_number": 105}..
+07:44:42.288602 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": "No", "sequ
+00c4: ence_number": 106}..
+07:44:42.336717 <= Recv data, 222 bytes (0xde)
+0000: d8
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " other", "
+00c4: sequence_number": 107}..
+07:44:42.385244 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": " text", "s
+00c4: equence_number": 108}..
+07:44:42.433345 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_e5c152d25e
+0084: ae", "output_index": 0, "summary_index": 0, "delta": ".", "seque
+00c4: nce_number": 109}..
+07:44:42.530599 <= Recv data, 196 bytes (0xc4)
+0000: be
+0004: event: response.output_text.delta.data: {"type": "response.outpu
+0044: t_text.delta", "item_id": "item_e5c152d25eae", "output_index": 0
+0084: , "content_index": 0, "delta": "HY", "sequence_number": 110}..
+07:44:42.578665 <= Recv data, 195 bytes (0xc3)
+0000: bd
+0004: event: response.output_text.delta.data: {"type": "response.outpu
+0044: t_text.delta", "item_id": "item_e5c152d25eae", "output_index": 0
+0084: , "content_index": 0, "delta": "3", "sequence_number": 111}..
+07:44:42.626745 <= Recv data, 196 bytes (0xc4)
+0000: be
+0004: event: response.output_text.delta.data: {"type": "response.outpu
+0044: t_text.delta", "item_id": "item_e5c152d25eae", "output_index": 0
+0084: , "content_index": 0, "delta": "-A", "sequence_number": 112}..
+07:44:42.674795 <= Recv data, 196 bytes (0xc4)
+0000: be
+0004: event: response.output_text.delta.data: {"type": "response.outpu
+0044: t_text.delta", "item_id": "item_e5c152d25eae", "output_index": 0
+0084: , "content_index": 0, "delta": "PI", "sequence_number": 113}..
+07:44:42.674959 <= Recv data, 195 bytes (0xc3)
+0000: bd
+0004: event: response.output_text.delta.data: {"type": "response.outpu
+0044: t_text.delta", "item_id": "item_e5c152d25eae", "output_index": 0
+0084: , "content_index": 0, "delta": "-", "sequence_number": 114}..
+07:44:42.722597 <= Recv data, 196 bytes (0xc4)
+0000: be
+0004: event: response.output_text.delta.data: {"type": "response.outpu
+0044: t_text.delta", "item_id": "item_e5c152d25eae", "output_index": 0
+0084: , "content_index": 0, "delta": "RE", "sequence_number": 115}..
+07:44:42.771047 <= Recv data, 196 bytes (0xc4)
+0000: be
+0004: event: response.output_text.delta.data: {"type": "response.outpu
+0044: t_text.delta", "item_id": "item_e5c152d25eae", "output_index": 0
+0084: , "content_index": 0, "delta": "SP", "sequence_number": 116}..
+07:44:42.771226 <= Recv data, 196 bytes (0xc4)
+0000: be
+0004: event: response.output_text.delta.data: {"type": "response.outpu
+0044: t_text.delta", "item_id": "item_e5c152d25eae", "output_index": 0
+0084: , "content_index": 0, "delta": "-F", "sequence_number": 117}..
+07:44:42.819045 <= Recv data, 199 bytes (0xc7)
+0000: c1
+0004: event: response.output_text.delta.data: {"type": "response.outpu
+0044: t_text.delta", "item_id": "item_e5c152d25eae", "output_index": 0
+0084: , "content_index": 0, "delta": "OLLOW", "sequence_number": 118}.
+00c4: .
+07:44:42.867491 <= Recv data, 196 bytes (0xc4)
+0000: be
+0004: event: response.output_text.delta.data: {"type": "response.outpu
+0044: t_text.delta", "item_id": "item_e5c152d25eae", "output_index": 0
+0084: , "content_index": 0, "delta": "-D", "sequence_number": 119}..
+07:44:42.915830 <= Recv data, 197 bytes (0xc5)
+0000: bf
+0004: event: response.output_text.delta.data: {"type": "response.outpu
+0044: t_text.delta", "item_id": "item_e5c152d25eae", "output_index": 0
+0084: , "content_index": 0, "delta": "ONE", "sequence_number": 120}..
+07:44:42.963588 <= Recv data, 199 bytes (0xc7)
+0000: c1
+0004: event: response.output_text.delta.data: {"type": "response.outpu
+0044: t_text.delta", "item_id": "item_e5c152d25eae", "output_index": 0
+0084: , "content_index": 0, "delta": " SIZE", "sequence_number": 121}.
+00c4: .
+07:44:43.011194 <= Recv data, 195 bytes (0xc3)
+0000: bd
+0004: event: response.output_text.delta.data: {"type": "response.outpu
+0044: t_text.delta", "item_id": "item_e5c152d25eae", "output_index": 0
+0084: , "content_index": 0, "delta": "=", "sequence_number": 122}..
+07:44:43.059065 <= Recv data, 195 bytes (0xc3)
+0000: bd
+0004: event: response.output_text.delta.data: {"type": "response.outpu
+0044: t_text.delta", "item_id": "item_e5c152d25eae", "output_index": 0
+0084: , "content_index": 0, "delta": "5", "sequence_number": 123}..
+07:44:43.059235 <= Recv data, 195 bytes (0xc3)
+0000: bd
+0004: event: response.output_text.delta.data: {"type": "response.outpu
+0044: t_text.delta", "item_id": "item_e5c152d25eae", "output_index": 0
+0084: , "content_index": 0, "delta": ".", "sequence_number": 124}..
+07:44:43.107530 <= Recv data, 195 bytes (0xc3)
+0000: bd
+0004: event: response.output_text.delta.data: {"type": "response.outpu
+0044: t_text.delta", "item_id": "item_e5c152d25eae", "output_index": 0
+0084: , "content_index": 0, "delta": "2", "sequence_number": 125}..
+07:44:43.155858 <= Recv data, 197 bytes (0xc5)
+0000: bf
+0004: event: response.output_text.delta.data: {"type": "response.outpu
+0044: t_text.delta", "item_id": "item_e5c152d25eae", "output_index": 0
+0084: , "content_index": 0, "delta": " KB", "sequence_number": 126}..
+07:44:43.258746 <= Recv data, 554 bytes (0x22a)
+0000: 223
+0005: event: response.reasoning_summary_text.done.data: {"type": "resp
+0045: onse.reasoning_summary_text.done", "item_id": "item_e5c152d25eae
+0085: ", "output_index": 0, "summary_index": 0, "text": "The user want
+00c5: s me to reply exactly \"HY3-API-RESP-FOLLOW-DONE SIZE=5.2 KB\" a
+0105: nd nothing else, based on the tool result which showed Size: 5.2
+0145:  KB.\n\nLet me check the exact format requested: \"Reply exactly
+0185:  HY3-API-RESP-FOLLOW-DONE SIZE=5.2 KB and nothing else.\"\n\nSo 
+01c5: I should output: HY3-API-RESP-FOLLOW-DONE SIZE=5.2 KB\n\nNo othe
+0205: r text.", "sequence_number": 127}..
+07:44:43.258838 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: event: response.output_text.done.data: {"type": "response.output
+0044: _text.done", "item_id": "item_e5c152d25eae", "output_index": 0, 
+0084: "content_index": 0, "text": "HY3-API-RESP-FOLLOW-DONE SIZE=5.2 K
+00c4: B", "sequence_number": 128}..
+07:44:43.258870 <= Recv data, 615 bytes (0x267)
+0000: 113
+0005: event: response.content_part.done.data: {"type": "response.conte
+0045: nt_part.done", "item_id": "item_e5c152d25eae", "output_index": 0
+0085: , "content_index": 0, "part": {"type": "output_text", "text": "H
+00c5: Y3-API-RESP-FOLLOW-DONE SIZE=5.2 KB", "annotations": []}, "seque
+0105: nce_number": 129}..
+011a: 146
+011f: event: response.output_item.done.data: {"type": "response.output
+015f: _item.done", "output_index": 0, "item": {"id": "item_e5c152d25ea
+019f: e", "type": "message", "status": "completed", "role": "assistant
+01df: ", "content": [{"type": "output_text", "text": "HY3-API-RESP-FOL
+021f: LOW-DONE SIZE=5.2 KB", "annotations": []}]}, "sequence_number": 
+025f: 130}..
+07:44:43.259029 <= Recv data, 1150 bytes (0x47e)
+0000: 477
+0005: event: response.completed.data: {"type": "response.completed", "
+0045: response": {"id": "resp_516c3e3866f0", "object": "response", "cr
+0085: eated_at": 1784472276, "status": "completed", "model": "jangq-ai
+00c5: /Hy3-JANG_2K-MTP", "output_text": "HY3-API-RESP-FOLLOW-DONE SIZE
+0105: =5.2 KB", "output": [{"id": "item_e5c152d25eae", "type": "messag
+0145: e", "status": "completed", "role": "assistant", "content": [{"ty
+0185: pe": "output_text", "text": "HY3-API-RESP-FOLLOW-DONE SIZE=5.2 K
+01c5: B", "annotations": []}]}, {"id": "rs_172f2f76f993", "type": "rea
+0205: soning", "status": "completed", "role": "assistant", "content": 
+0245: [{"type": "reasoning", "text": "The user wants me to reply exact
+0285: ly \"HY3-API-RESP-FOLLOW-DONE SIZE=5.2 KB\" and nothing else, ba
+02c5: sed on the tool result which showed Size: 5.2 KB.\n\nLet me chec
+0305: k the exact format requested: \"Reply exactly HY3-API-RESP-FOLLO
+0345: W-DONE SIZE=5.2 KB and nothing else.\"\n\nSo I should output: HY
+0385: 3-API-RESP-FOLLOW-DONE SIZE=5.2 KB\n\nNo other text."}]}], "usag
+03c5: e": {"input_tokens": 158, "output_tokens": 126, "total_tokens": 
+0405: 284, "input_tokens_details": {"cached_tokens": 10, "cache_detail
+0445: ": "paged+disk+tq-native"}}}, "sequence_number": 131}..
+07:44:43.259142 <= Recv data, 5 bytes (0x5)
+0000: 0
+0003: 
+07:44:43.259161 == Info: Connection #0 to host 127.0.0.1 left intact

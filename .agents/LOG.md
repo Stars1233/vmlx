@@ -1237,3 +1237,17 @@
   and base MXFP controls remained distinct.
 - Fresh row 440 completed one real file tool with 3,904 cached hybrid tokens and
   non-empty content, but retained a strict marker typo as PARTIAL evidence.
+
+## 2026-07-19 - HY3 current D1 agent/stream/restart gate
+
+- Used Electron single-model Start to replace Qwen with HY3; health and argv
+  confirmed the real text-only affine JANG_2K bundle, Hunyuan/qwen3 parsers,
+  q4 stored prefixes, and native MTP depth 1.
+- Electron rows 443/446/449 exact-finaled a no-tool calculation, one real
+  file-info turn, and no-tool history recall with distinct reasoning and
+  progressive paint.
+- Raw curl-N Responses/Chat no-tool, tool, and post-result continuations passed.
+- Replaced HY3 PID 27632 with 29852; row 452 restored 4,655 disk/TQ-native
+  tokens, exact-finaled, and health proved current D1 draft/accept execution.
+- Preserved 318/318 focused tests and evidence under
+  `20260719_current_hy3_mtp/`; long soak and MTP-Off A/B remain partial.

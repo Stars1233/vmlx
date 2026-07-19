@@ -7265,3 +7265,24 @@ overall release remains `PARTIAL_NO_1_6_12_RELEASE`.
   exact marker contained an extra `L`. Strict sampled reliability remains
   PARTIAL; no output rewrite or sampler coercion was added.
 - Evidence: `docs/internal/release-gates/20260719_qwen35_jangtq_current/`.
+
+## 2026-07-19 - HY3 current native-MTP D1 / stream / L2 checkpoint
+
+Status: `VERIFIED-LIVE_SCOPED`; overall release remains
+`PARTIAL_NO_1_6_12_RELEASE`.
+
+- Electron single-model Start stopped Qwen and loaded only the affine
+  `Hy3-JANG_2K-MTP` artifact. Bundle/health/argv agree on Hunyuan tools, qwen3
+  reasoning, text-only modality, q4 stored prefixes, and native MTP depth 1.
+- Three same-chat turns exact-finaled with distinct reasoning, one real file
+  tool, and no-tool history recall. Browser observers prove progressive visible
+  content after reasoning/tool execution.
+- Literal curl-N Responses/Chat no-tool, required-tool, and real-result rounds
+  all passed separate reasoning/content/arguments and clean terminal/usage
+  ordering.
+- MTP telemetry was real: 1,194 drafted/497 accepted tokens before restart.
+  After PID 27632 -> 29852, row 452 restored 4,655/4,872
+  `paged+disk+tq-native` tokens and recorded 87 drafted/35 accepted D1 tokens.
+- Focused current validation: 318/318. No source fix was required. Long soak and
+  current MTP-Off performance A/B remain PARTIAL.
+- Evidence: `docs/internal/release-gates/20260719_current_hy3_mtp/`.

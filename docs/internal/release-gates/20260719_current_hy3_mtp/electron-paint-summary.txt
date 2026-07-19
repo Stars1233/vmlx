@@ -1,0 +1,15 @@
+Electron CDP MutationObserver summaries
+
+Turn 2 required tool:
+- 1502 body mutations.
+- Visible output progressed from HY3-CURRENT-T2- at +16.722s to the complete HY3-CURRENT-T2-DONE SIZE=5.2 KB at +16.987s.
+- The one real file_info result was visible before/during the progressive final.
+
+Turn 3 same-chat recall:
+- 655 body mutations.
+- Visible output progressed character-by-character over approximately 292ms.
+
+Turn 4 after PID 27632 -> 29852:
+- 521 body mutations.
+- Visible output progressed from a partial marker to HY3-CURRENT-T4-RESTART-DONE VALUE=703 SIZE=5.2 KB over approximately 226ms.
+- Final DB metrics: 4872 prompt tokens, 4655 paged+disk+tq-native cached, 3.92s TTFT, 9.3s total.

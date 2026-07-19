@@ -1,0 +1,5 @@
+Source cutoff: 0e09ce789
+
+.venv/bin/python -m pytest -q tests/test_hy3_native_mtp.py tests/test_mtp_depth_verify_cycle.py tests/test_mtp_telemetry_edge_cases.py tests/test_native_mtp_autodetect.py tests/test_native_mtp_contract.py tests/test_native_mtp_policy_suite.py tests/test_hunyuan_tool_parser.py tests/test_turboquant_cache_contract.py tests/test_turboquant_prefix_cache_clone.py tests/test_tq_disk_cache.py tests/test_tq_paged_block_cache.py tests/test_reasoning_modes.py tests/test_reasoning_tool_interaction.py -p no:cacheprovider
+
+Result: 318 passed in 16.43s.

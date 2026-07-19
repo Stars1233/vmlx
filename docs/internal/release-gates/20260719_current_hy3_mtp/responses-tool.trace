@@ -1,0 +1,1410 @@
+07:43:27.453218 == Info:   Trying 127.0.0.1:8010...
+07:43:27.453758 == Info: Connected to 127.0.0.1 (127.0.0.1) port 8010
+07:43:27.453799 => Send header, 143 bytes (0x8f)
+0000: POST /v1/responses HTTP/1.1
+001d: Host: 127.0.0.1:8010
+0033: User-Agent: curl/8.7.1
+004b: Accept: */*
+0058: Content-Type: application/json
+0078: Content-Length: 495
+008d: 
+07:43:27.453858 => Send data, 495 bytes (0x1ef)
+0000: {"model":"jangq-ai/Hy3-JANG_2K-MTP","input":"[HY3-API-RESP-TOOL]
+0040:  Call file_info exactly once with path panel/package.json. Do no
+0080: t answer before the tool call.","tools":[{"type":"function","nam
+00c0: e":"file_info","description":"Return current filesystem metadata
+0100:  for a path.","parameters":{"type":"object","properties":{"path"
+0140: :{"type":"string"}},"required":["path"],"additionalProperties":f
+0180: alse}}],"tool_choice":"required","stream":true,"max_output_token
+01c0: s":768,"temperature":0,"enable_thinking":true}.
+07:43:27.453893 == Info: upload completely sent off: 495 bytes
+07:43:27.480335 <= Recv header, 17 bytes (0x11)
+0000: HTTP/1.1 200 OK
+07:43:27.480374 <= Recv header, 37 bytes (0x25)
+0000: date: Sun, 19 Jul 2026 14:43:26 GMT
+07:43:27.480391 <= Recv header, 17 bytes (0x11)
+0000: server: uvicorn
+07:43:27.480406 <= Recv header, 48 bytes (0x30)
+0000: content-type: text/event-stream; charset=utf-8
+07:43:27.480422 <= Recv header, 28 bytes (0x1c)
+0000: Transfer-Encoding: chunked
+07:43:27.480436 <= Recv header, 2 bytes (0x2)
+0000: 
+07:43:27.480454 <= Recv data, 253 bytes (0xfd)
+0000: f7
+0004: event: response.created.data: {"type": "response.created", "resp
+0044: onse": {"id": "resp_a33ed4cdad47", "object": "response", "create
+0084: d_at": 1784472207, "status": "in_progress", "model": "jangq-ai/H
+00c4: y3-JANG_2K-MTP", "output": []}, "sequence_number": 0}..
+07:43:27.481247 <= Recv data, 489 bytes (0x1e9)
+0000: ee
+0004: event: response.output_item.added.data: {"type": "response.outpu
+0044: t_item.added", "output_index": 0, "item": {"id": "item_d4a0266d2
+0084: 095", "type": "message", "status": "in_progress", "role": "assis
+00c4: tant", "content": []}, "sequence_number": 1}..
+00f4: ef
+00f8: event: response.content_part.added.data: {"type": "response.cont
+0138: ent_part.added", "item_id": "item_d4a0266d2095", "output_index":
+0178:  0, "content_index": 0, "part": {"type": "output_text", "text": 
+01b8: "", "annotations": []}, "sequence_number": 2}..
+07:43:28.730766 <= Recv data, 338 bytes (0x152)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": "We", "sequ
+00c4: ence_number": 3}..
+00d8: 74
+00dc: event: response.heartbeat.data: {"type": "response.heartbeat", "
+011c: tool_call_generating": true, "sequence_number": 4}..
+07:43:28.731008 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " need", "s
+00c4: equence_number": 5}..
+07:43:28.731056 <= Recv data, 122 bytes (0x7a)
+0000: 74
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 6}..
+07:43:28.778799 <= Recv data, 339 bytes (0x153)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " to", "seq
+00c4: uence_number": 7}..
+00d9: 74
+00dd: event: response.heartbeat.data: {"type": "response.heartbeat", "
+011d: tool_call_generating": true, "sequence_number": 8}..
+07:43:28.779036 <= Recv data, 342 bytes (0x156)
+0000: d5
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " call", "s
+00c4: equence_number": 9}..
+00db: 75
+00df: event: response.heartbeat.data: {"type": "response.heartbeat", "
+011f: tool_call_generating": true, "sequence_number": 10}..
+07:43:28.827430 <= Recv data, 343 bytes (0x157)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " file", "s
+00c4: equence_number": 11}..
+00dc: 75
+00e0: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0120: tool_call_generating": true, "sequence_number": 12}..
+07:43:28.875462 <= Recv data, 343 bytes (0x157)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": "_info", "s
+00c4: equence_number": 13}..
+00dc: 75
+00e0: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0120: tool_call_generating": true, "sequence_number": 14}..
+07:43:28.923330 <= Recv data, 223 bytes (0xdf)
+0000: d9
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " exactly",
+00c4:  "sequence_number": 15}..
+07:43:28.923437 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 16}..
+07:43:28.971222 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " once", "s
+00c4: equence_number": 17}..
+07:43:28.971336 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 18}..
+07:43:29.019071 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " with", "s
+00c4: equence_number": 19}..
+07:43:29.019197 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 20}..
+07:43:29.019291 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " path", "s
+00c4: equence_number": 21}..
+07:43:29.019366 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 22}..
+07:43:29.066886 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " panel", "
+00c4: sequence_number": 23}..
+07:43:29.067004 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 24}..
+07:43:29.114540 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": "/", "seque
+00c4: nce_number": 25}..
+07:43:29.114606 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 26}..
+07:43:29.162405 <= Recv data, 222 bytes (0xde)
+0000: d8
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": "package", 
+00c4: "sequence_number": 27}..
+07:43:29.162533 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 28}..
+07:43:29.210337 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": ".json", "s
+00c4: equence_number": 29}..
+07:43:29.210441 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 30}..
+07:43:29.258479 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": ".", "seque
+00c4: nce_number": 31}..
+07:43:29.258587 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 32}..
+07:43:29.306802 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " The", "se
+00c4: quence_number": 33}..
+07:43:29.306900 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 34}..
+07:43:29.357176 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " user", "s
+00c4: equence_number": 35}..
+07:43:29.357246 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 36}..
+07:43:29.357400 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " says", "s
+00c4: equence_number": 37}..
+07:43:29.357444 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 38}..
+07:43:29.406249 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": ":", "seque
+00c4: nce_number": 39}..
+07:43:29.406326 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 40}..
+07:43:29.454614 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " \"", "seq
+00c4: uence_number": 41}..
+07:43:29.454708 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 42}..
+07:43:29.454846 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": "[HY", "seq
+00c4: uence_number": 43}..
+07:43:29.454898 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 44}..
+07:43:29.503057 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": "3", "seque
+00c4: nce_number": 45}..
+07:43:29.503142 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 46}..
+07:43:29.551329 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": "-A", "sequ
+00c4: ence_number": 47}..
+07:43:29.551432 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 48}..
+07:43:29.599620 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": "PI", "sequ
+00c4: ence_number": 49}..
+07:43:29.599728 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 50}..
+07:43:29.647564 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": "-", "seque
+00c4: nce_number": 51}..
+07:43:29.647658 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 52}..
+07:43:29.695293 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": "RE", "sequ
+00c4: ence_number": 53}..
+07:43:29.695370 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 54}..
+07:43:29.695509 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": "SP", "sequ
+00c4: ence_number": 55}..
+07:43:29.695552 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 56}..
+07:43:29.742962 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": "-", "seque
+00c4: nce_number": 57}..
+07:43:29.743052 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 58}..
+07:43:29.791536 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": "TO", "sequ
+00c4: ence_number": 59}..
+07:43:29.791643 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 60}..
+07:43:29.791753 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": "OL", "sequ
+00c4: ence_number": 61}..
+07:43:29.791850 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 62}..
+07:43:29.840328 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 63}..
+07:43:29.888356 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": "] Call", "
+00c4: sequence_number": 64}..
+07:43:29.888454 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 65}..
+07:43:29.936444 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " file", "s
+00c4: equence_number": 66}..
+07:43:29.936540 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 67}..
+07:43:29.985033 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": "_info", "s
+00c4: equence_number": 68}..
+07:43:29.985135 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 69}..
+07:43:29.985270 <= Recv data, 223 bytes (0xdf)
+0000: d9
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " exactly",
+00c4:  "sequence_number": 70}..
+07:43:29.985344 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 71}..
+07:43:30.033374 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " once", "s
+00c4: equence_number": 72}..
+07:43:30.033499 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 73}..
+07:43:30.033607 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " with", "s
+00c4: equence_number": 74}..
+07:43:30.033672 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 75}..
+07:43:30.081083 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " path", "s
+00c4: equence_number": 76}..
+07:43:30.081162 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 77}..
+07:43:30.129058 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " panel", "
+00c4: sequence_number": 78}..
+07:43:30.129183 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 79}..
+07:43:30.177460 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": "/", "seque
+00c4: nce_number": 80}..
+07:43:30.177553 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 81}..
+07:43:30.177681 <= Recv data, 222 bytes (0xde)
+0000: d8
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": "package", 
+00c4: "sequence_number": 82}..
+07:43:30.177744 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 83}..
+07:43:30.225819 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": ".json", "s
+00c4: equence_number": 84}..
+07:43:30.225908 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 85}..
+07:43:30.274505 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": ".", "seque
+00c4: nce_number": 86}..
+07:43:30.274564 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 87}..
+07:43:30.322850 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " Do", "seq
+00c4: uence_number": 88}..
+07:43:30.322916 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 89}..
+07:43:30.371137 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " not", "se
+00c4: quence_number": 90}..
+07:43:30.371242 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 91}..
+07:43:30.418973 <= Recv data, 222 bytes (0xde)
+0000: d8
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " answer", 
+00c4: "sequence_number": 92}..
+07:43:30.419076 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 93}..
+07:43:30.466952 <= Recv data, 222 bytes (0xde)
+0000: d8
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " before", 
+00c4: "sequence_number": 94}..
+07:43:30.467020 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 95}..
+07:43:30.515310 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " the", "se
+00c4: quence_number": 96}..
+07:43:30.515391 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 97}..
+07:43:30.563489 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " tool", "s
+00c4: equence_number": 98}..
+07:43:30.563618 <= Recv data, 123 bytes (0x7b)
+0000: 75
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 99}..
+07:43:30.563712 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " call", "s
+00c4: equence_number": 100}..
+07:43:30.563771 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 101}..
+07:43:30.611858 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": ".\"", "seq
+00c4: uence_number": 102}..
+07:43:30.611921 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 103}..
+07:43:30.671120 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " So", "seq
+00c4: uence_number": 104}..
+07:43:30.671219 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 105}..
+07:43:30.671361 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " we", "seq
+00c4: uence_number": 106}..
+07:43:30.671438 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 107}..
+07:43:30.719449 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " must", "s
+00c4: equence_number": 108}..
+07:43:30.719525 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 109}..
+07:43:30.768230 <= Recv data, 223 bytes (0xdf)
+0000: d9
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " output", 
+00c4: "sequence_number": 110}..
+07:43:30.768322 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 111}..
+07:43:30.816747 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " a", "sequ
+00c4: ence_number": 112}..
+07:43:30.816871 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 113}..
+07:43:30.816981 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " tool", "s
+00c4: equence_number": 114}..
+07:43:30.817055 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 115}..
+07:43:30.865749 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " call", "s
+00c4: equence_number": 116}..
+07:43:30.865828 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 117}..
+07:43:30.865978 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " (", "sequ
+00c4: ence_number": 118}..
+07:43:30.866024 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 119}..
+07:43:30.914213 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": "JSON", "se
+00c4: quence_number": 120}..
+07:43:30.914289 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 121}..
+07:43:30.962383 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": ")", "seque
+00c4: nce_number": 122}..
+07:43:30.962465 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 123}..
+07:43:31.010580 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " and", "se
+00c4: quence_number": 124}..
+07:43:31.010686 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 125}..
+07:43:31.058910 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " not", "se
+00c4: quence_number": 126}..
+07:43:31.059011 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 127}..
+07:43:31.107815 <= Recv data, 223 bytes (0xdf)
+0000: d9
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " answer", 
+00c4: "sequence_number": 128}..
+07:43:31.107923 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 129}..
+07:43:31.156059 <= Recv data, 223 bytes (0xdf)
+0000: d9
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " before", 
+00c4: "sequence_number": 130}..
+07:43:31.156160 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 131}..
+07:43:31.203777 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " the", "se
+00c4: quence_number": 132}..
+07:43:31.203879 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 133}..
+07:43:31.252395 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " tool", "s
+00c4: equence_number": 134}..
+07:43:31.252496 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 135}..
+07:43:31.252623 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " call", "s
+00c4: equence_number": 136}..
+07:43:31.252682 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 137}..
+07:43:31.301261 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": ".", "seque
+00c4: nce_number": 138}..
+07:43:31.301349 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 139}..
+07:43:31.301494 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " We", "seq
+00c4: uence_number": 140}..
+07:43:31.301555 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 141}..
+07:43:31.349886 <= Recv data, 223 bytes (0xdf)
+0000: d9
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " should", 
+00c4: "sequence_number": 142}..
+07:43:31.349976 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 143}..
+07:43:31.350132 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " just", "s
+00c4: equence_number": 144}..
+07:43:31.350206 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 145}..
+07:43:31.398528 <= Recv data, 224 bytes (0xe0)
+0000: da
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " produce",
+00c4:  "sequence_number": 146}..
+07:43:31.398644 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 147}..
+07:43:31.447162 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " the", "se
+00c4: quence_number": 148}..
+07:43:31.447260 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 149}..
+07:43:31.494846 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " tool", "s
+00c4: equence_number": 150}..
+07:43:31.494945 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 151}..
+07:43:31.495090 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " call", "s
+00c4: equence_number": 152}..
+07:43:31.495151 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 153}..
+07:43:31.543158 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": ".", "seque
+00c4: nce_number": 154}..
+07:43:31.543265 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 155}..
+07:43:31.591475 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " No", "seq
+00c4: uence_number": 156}..
+07:43:31.591558 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 157}..
+07:43:31.639341 <= Recv data, 222 bytes (0xde)
+0000: d8
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " extra", "
+00c4: sequence_number": 158}..
+07:43:31.639414 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 159}..
+07:43:31.687282 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " text", "s
+00c4: equence_number": 160}..
+07:43:31.687374 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 161}..
+07:43:31.687519 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": ".", "seque
+00c4: nce_number": 162}..
+07:43:31.687581 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 163}..
+07:43:31.735793 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " Let", "se
+00c4: quence_number": 164}..
+07:43:31.735882 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 165}..
+07:43:31.736015 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": "'s", "sequ
+00c4: ence_number": 166}..
+07:43:31.736078 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 167}..
+07:43:31.784344 <= Recv data, 223 bytes (0xdf)
+0000: d9
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " format", 
+00c4: "sequence_number": 168}..
+07:43:31.784443 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 169}..
+07:43:31.833329 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " as", "seq
+00c4: uence_number": 170}..
+07:43:31.833436 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 171}..
+07:43:31.881862 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " per", "se
+00c4: quence_number": 172}..
+07:43:31.881955 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 173}..
+07:43:31.930259 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " instructi
+00c4: ons", "sequence_number": 174}..
+07:43:31.930368 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 175}..
+07:43:31.978887 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": ":", "seque
+00c4: nce_number": 176}..
+07:43:31.978961 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 177}..
+07:43:31.979109 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " For", "se
+00c4: quence_number": 178}..
+07:43:31.979151 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 179}..
+07:43:32.027049 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " function"
+00c4: , "sequence_number": 180}..
+07:43:32.027161 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 181}..
+07:43:32.075264 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " call", "s
+00c4: equence_number": 182}..
+07:43:32.075347 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 183}..
+07:43:32.123506 <= Recv data, 224 bytes (0xe0)
+0000: da
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " returns",
+00c4:  "sequence_number": 184}..
+07:43:32.123597 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 185}..
+07:43:32.172077 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": ",", "seque
+00c4: nce_number": 186}..
+07:43:32.172153 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 187}..
+07:43:32.172314 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " you", "se
+00c4: quence_number": 188}..
+07:43:32.172359 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 189}..
+07:43:32.220003 <= Recv data, 223 bytes (0xdf)
+0000: d9
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " should", 
+00c4: "sequence_number": 190}..
+07:43:32.220104 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 191}..
+07:43:32.220227 <= Recv data, 222 bytes (0xde)
+0000: d8
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " first", "
+00c4: sequence_number": 192}..
+07:43:32.220297 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 193}..
+07:43:32.268352 <= Recv data, 222 bytes (0xde)
+0000: d8
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " print", "
+00c4: sequence_number": 194}..
+07:43:32.268449 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 195}..
+07:43:32.317028 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: event: response.reasoning_summary_text.delta.data: {"type": "res
+0044: ponse.reasoning_summary_text.delta", "item_id": "item_d4a0266d20
+0084: 95", "output_index": 0, "summary_index": 0, "delta": " ", "seque
+00c4: nce_number": 196}..
+07:43:32.317169 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 197}..
+07:43:32.365435 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 198}..
+07:43:32.365901 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 199}..
+07:43:32.414054 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 200}..
+07:43:32.462580 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 201}..
+07:43:32.511429 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 202}..
+07:43:32.560132 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 203}..
+07:43:32.560284 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 204}..
+07:43:32.608640 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 205}..
+07:43:32.657078 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 206}..
+07:43:32.705669 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 207}..
+07:43:32.705830 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 208}..
+07:43:32.754313 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 209}..
+07:43:32.754466 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 210}..
+07:43:32.802327 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 211}..
+07:43:32.851183 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 212}..
+07:43:32.851339 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 213}..
+07:43:32.899846 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 214}..
+07:43:32.947826 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 215}..
+07:43:32.947979 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 216}..
+07:43:32.995851 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 217}..
+07:43:33.044024 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 218}..
+07:43:33.044171 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 219}..
+07:43:33.092670 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 220}..
+07:43:33.141435 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 221}..
+07:43:33.141596 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 222}..
+07:43:33.190156 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 223}..
+07:43:33.190313 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 224}..
+07:43:33.238873 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 225}..
+07:43:33.286876 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 226}..
+07:43:33.335463 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 227}..
+07:43:33.384351 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 228}..
+07:43:33.384500 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 229}..
+07:43:33.433455 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 230}..
+07:43:33.482160 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 231}..
+07:43:33.530823 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 232}..
+07:43:33.530980 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 233}..
+07:43:33.579211 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 234}..
+07:43:33.579374 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 235}..
+07:43:33.627735 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 236}..
+07:43:33.675926 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 237}..
+07:43:33.724623 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 238}..
+07:43:33.773179 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 239}..
+07:43:33.821951 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 240}..
+07:43:33.870076 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 241}..
+07:43:33.919050 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 242}..
+07:43:33.967431 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 243}..
+07:43:34.015809 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 244}..
+07:43:34.015941 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 245}..
+07:43:34.064553 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 246}..
+07:43:34.064706 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 247}..
+07:43:34.113481 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 248}..
+07:43:34.113670 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 249}..
+07:43:34.161646 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 250}..
+07:43:34.161806 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 251}..
+07:43:34.210364 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 252}..
+07:43:34.258999 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 253}..
+07:43:34.259150 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 254}..
+07:43:34.308071 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 255}..
+07:43:34.308258 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 256}..
+07:43:34.357359 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 257}..
+07:43:34.357788 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 258}..
+07:43:34.406613 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 259}..
+07:43:34.455589 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 260}..
+07:43:34.455743 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 261}..
+07:43:34.504533 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 262}..
+07:43:34.504698 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 263}..
+07:43:34.553556 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 264}..
+07:43:34.553712 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 265}..
+07:43:34.602183 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 266}..
+07:43:34.602338 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 267}..
+07:43:34.651016 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 268}..
+07:43:34.651176 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 269}..
+07:43:34.700025 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 270}..
+07:43:34.700166 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 271}..
+07:43:34.748186 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 272}..
+07:43:34.748348 <= Recv data, 124 bytes (0x7c)
+0000: 76
+0004: event: response.heartbeat.data: {"type": "response.heartbeat", "
+0044: tool_call_generating": true, "sequence_number": 273}..
+07:43:34.855806 <= Recv data, 626 bytes (0x272)
+0000: 26b
+0005: event: response.reasoning_summary_text.done.data: {"type": "resp
+0045: onse.reasoning_summary_text.done", "item_id": "item_d4a0266d2095
+0085: ", "output_index": 0, "summary_index": 0, "text": "We need to ca
+00c5: ll file_info exactly once with path panel/package.json. The user
+0105:  says: \"[HY3-API-RESP-TOOL] Call file_info exactly once with pa
+0145: th panel/package.json. Do not answer before the tool call.\" So 
+0185: we must output a tool call (JSON) and not answer before the tool
+01c5:  call. We should just produce the tool call. No extra text. Let'
+0205: s format as per instructions: For function call returns, you sho
+0245: uld first print", "sequence_number": 274}..
+07:43:34.855906 <= Recv data, 191 bytes (0xbf)
+0000: b9
+0004: event: response.output_text.done.data: {"type": "response.output
+0044: _text.done", "item_id": "item_d4a0266d2095", "output_index": 0, 
+0084: "content_index": 0, "text": "", "sequence_number": 275}..
+07:43:34.855938 <= Recv data, 245 bytes (0xf5)
+0000: ef
+0004: event: response.content_part.done.data: {"type": "response.conte
+0044: nt_part.done", "item_id": "item_d4a0266d2095", "output_index": 0
+0084: , "content_index": 0, "part": {"type": "output_text", "text": ""
+00c4: , "annotations": []}, "sequence_number": 276}..
+07:43:34.855969 <= Recv data, 297 bytes (0x129)
+0000: 122
+0005: event: response.output_item.done.data: {"type": "response.output
+0045: _item.done", "output_index": 0, "item": {"id": "item_d4a0266d209
+0085: 5", "type": "message", "status": "completed", "role": "assistant
+00c5: ", "content": [{"type": "output_text", "text": "", "annotations"
+0105: : []}]}, "sequence_number": 277}..
+07:43:34.856070 <= Recv data, 281 bytes (0x119)
+0000: 112
+0005: event: response.output_item.added.data: {"type": "response.outpu
+0045: t_item.added", "output_index": 1, "item": {"id": "fc_0dd1defcb0b
+0085: 4", "type": "function_call", "status": "in_progress", "call_id":
+00c5:  "call_5a3d40c4", "name": "file_info", "arguments": ""}, "sequen
+0105: ce_number": 278}..
+07:43:34.856137 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: event: response.function_call_arguments.delta.data: {"type": "re
+0044: sponse.function_call_arguments.delta", "item_id": "fc_0dd1defcb0
+0084: b4", "output_index": 1, "delta": "{\"path\": \"panel/", "sequenc
+00c4: e_number": 279}..
+07:43:34.856170 <= Recv data, 211 bytes (0xd3)
+0000: cd
+0004: event: response.function_call_arguments.delta.data: {"type": "re
+0044: sponse.function_call_arguments.delta", "item_id": "fc_0dd1defcb0
+0084: b4", "output_index": 1, "delta": "package.json\"}", "sequence_nu
+00c4: mber": 280}..
+07:43:34.856199 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: event: response.function_call_arguments.done.data: {"type": "res
+0044: ponse.function_call_arguments.done", "item_id": "fc_0dd1defcb0b4
+0084: ", "output_index": 1, "arguments": "{\"path\": \"panel/package.j
+00c4: son\"}", "sequence_number": 281}..
+07:43:34.856347 <= Recv data, 311 bytes (0x137)
+0000: 130
+0005: event: response.output_item.done.data: {"type": "response.output
+0045: _item.done", "output_index": 1, "item": {"id": "fc_0dd1defcb0b4"
+0085: , "type": "function_call", "status": "completed", "call_id": "ca
+00c5: ll_5a3d40c4", "name": "file_info", "arguments": "{\"path\": \"pa
+0105: nel/package.json\"}"}, "sequence_number": 282}..
+07:43:34.856401 <= Recv data, 1238 bytes (0x4d6)
+0000: 4cf
+0005: event: response.completed.data: {"type": "response.completed", "
+0045: response": {"id": "resp_a33ed4cdad47", "object": "response", "cr
+0085: eated_at": 1784472207, "status": "completed", "model": "jangq-ai
+00c5: /Hy3-JANG_2K-MTP", "output_text": "", "output": [{"id": "item_d4
+0105: a0266d2095", "type": "message", "status": "completed", "role": "
+0145: assistant", "content": [{"type": "output_text", "text": "", "ann
+0185: otations": []}]}, {"id": "fc_0dd1defcb0b4", "type": "function_ca
+01c5: ll", "status": "completed", "call_id": "call_5a3d40c4", "name": 
+0205: "file_info", "arguments": "{\"path\": \"panel/package.json\"}"},
+0245:  {"id": "rs_dd0e90418bbf", "type": "reasoning", "status": "compl
+0285: eted", "role": "assistant", "content": [{"type": "reasoning", "t
+02c5: ext": "We need to call file_info exactly once with path panel/pa
+0305: ckage.json. The user says: \"[HY3-API-RESP-TOOL] Call file_info 
+0345: exactly once with path panel/package.json. Do not answer before 
+0385: the tool call.\" So we must output a tool call (JSON) and not an
+03c5: swer before the tool call. We should just produce the tool call.
+0405:  No extra text. Let's format as per instructions: For function c
+0445: all returns, you should first print"}]}], "usage": {"input_token
+0485: s": 226, "output_tokens": 176, "total_tokens": 402}}, "sequence_
+04c5: number": 283}..
+07:43:34.856491 <= Recv data, 5 bytes (0x5)
+0000: 0
+0003: 
+07:43:34.856504 == Info: Connection #0 to host 127.0.0.1 left intact

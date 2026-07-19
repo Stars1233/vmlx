@@ -34,6 +34,30 @@ superseded conclusions are called out here.
   reliability and advertised VL (`vl_runtime_available=false` here). Evidence:
   `docs/internal/release-gates/20260719_qwen35_jangtq_current/`.
 
+### 2026-07-19 HY3 native-MTP D1 current-source override
+
+- Source cutoff `0e09ce789` loaded the real affine `Hy3-JANG_2K-MTP` bundle
+  through the Electron Sessions Start control. Single-model mode stopped Qwen
+  PID 26427 before HY3 PID 27632 became ready; health was model-loaded with no
+  request and argv selected Hunyuan tools, qwen3 reasoning, Auto q4 stored
+  prefixes, and native MTP depth 1.
+- Four same-chat Electron turns exact-finaled with distinct reasoning. One turn
+  executed exactly one real `file_info`; later no-tool turns recalled both
+  facts. Browser mutation evidence proves post-reasoning/tool visible text grew
+  character-by-character rather than terminal-batching.
+- Literal curl-N Responses and Chat no-tool, required-tool, and real-result
+  continuations all kept reasoning/content/arguments separate, exact-finaled,
+  and terminated cleanly. Chat emitted zero intermediate non-null usage objects,
+  one choices-empty usage chunk, then one `[DONE]`.
+- The first current process recorded 1,194 drafted/497 accepted D1 tokens.
+  Electron replaced PID 27632 with 29852; the next turn restored 4,655/4,872
+  tokens as `paged+disk+tq-native`, then recorded 87 drafted/35 accepted tokens.
+  Health counted 73 real disk reads, all 73 native-TQ hits, with zero resident
+  L1 bytes. Current focused validation is 318/318.
+- Verdict: `VERIFIED-LIVE_SCOPED`; retained `PARTIAL` rows are long/stochastic
+  reliability and a fresh current-source MTP-Off performance A/B. Evidence:
+  `docs/internal/release-gates/20260719_current_hy3_mtp/`.
+
 ### 2026-07-19 current-head reconciliation override
 
 - Current audited/pushed head is `54222003d`. The public v1.6.11 checkpoint
