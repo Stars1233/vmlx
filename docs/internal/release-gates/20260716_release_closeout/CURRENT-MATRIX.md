@@ -1,12 +1,45 @@
 # vMLX 1.6.11 release closeout matrix — 2026-07-18
 
-Status: `PUBLIC_CHECKPOINT_RELEASED_POST_RELEASE_MATRIX_PARTIAL`.
+Status: `PUBLIC_1_6_11_RELEASED_CURRENT_HEAD_PARTIAL_NO_1_6_12`.
 
 This is the current additive closeout view over `docs/internal/ISSUE-LEDGER.md`,
 `.agents/STATUS.md`, the July 15–16 live proof directories, the shared wiki
 production gate, and the current branch. Older contradictory rows remain in
 their original ledgers for provenance; the newest source-plus-live row wins and
 superseded conclusions are called out here.
+
+### 2026-07-19 current-head reconciliation override
+
+- Current audited/pushed head is `fad7356d4`. The public v1.6.11 checkpoint
+  remains released, signed, and notarized; this post-release head is not a
+  v1.6.12 candidate yet.
+- The earlier full-suite checkpoint remains valid for its source, but is stale
+  relative to later shared protocol/parser/loader fixes. Complete Python/panel,
+  typecheck, bundle verification, and production build must run again at the
+  chosen cutoff.
+- Paged-Off SSD reuse is now live-proven rather than assumed: M2.7 restored a
+  q4 TQ-native partial prompt prefix without paged blocks, and openPangu restored
+  its typed N-1 payload under Auto/Off reasoning. Paged-On M2.7 separately proves
+  a 64+64+50 partial chain, bounded eviction, same-process L2 refault, and
+  process-restart disk-only restore. Evidence: `20260719_nonpaged_prompt_disk_partial/`,
+  `20260719_prompt_disk_payload_prefix_index/`, and
+  `20260719_m27_paged_l2_partial_refault/`.
+- Shared Chat usage, Anthropic, Ollama, Responses cancellation/disconnect, Chat
+  disconnect, Electron stop/recovery, and simultaneous multi-tool rows have
+  current scoped proof under their July 19 evidence directories. Protocol parity
+  remains `PARTIAL` for live injected mid-stream failure, network-loss/gateway
+  soak, signed-app repeats, and remaining parser/model families.
+- Mistral Medium 3.5 JANGTQ2 is newly `BLOCKED_CURRENT_ARTIFACT_RUNTIME`:
+  strict 616/616 hydration succeeds, legacy prefill stalls, and both original and
+  FP32 MPP NAX diagnostics emit newline-only tokens. The unsafe dense-Mistral auto
+  exception was withdrawn by `fad7356d4`; no artifact blame or hidden output fix
+  was added. Evidence: `20260719_mistral35_jangtq_prefill/`.
+- Canonical current worklist and evidence classification:
+  `docs/internal/release-gates/20260719_current_reconciliation/README.md`.
+
+This override supersedes older OPEN/PARTIAL child rows only where the named
+current evidence explicitly closes them. It does not convert the overall matrix
+to a release pass.
 
 ### 2026-07-19 Responses cancellation/disconnect override
 

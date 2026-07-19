@@ -7205,3 +7205,22 @@ Status: `SCOPED_LAGUNA_STREAM_PROTOCOL_SETTINGS_EVICTION_PASS_Q4_COLD_EQUIVALENC
 - Laguna speed/long soak remain partial. Tests: 411 Python pass/1 skip, 771 panel
   pass, typecheck pass. Evidence:
   `docs/internal/release-gates/20260719_laguna_current_stream_tq_determinism_eviction/`.
+
+## 2026-07-19 - Current reconciliation and Mistral3 JANGTQ classification
+
+Status: `PARTIAL_NO_1_6_12_RELEASE` at pushed head `fad7356d4`.
+
+- Mistral Medium 3.5 JANGTQ2 strictly hydrates all 616 dense TurboQuant targets,
+  but live Electron output is not usable. The legacy lane stalled in prefill;
+  the MPP NAX Auto lane and an FP32 A/B diagnostic both emitted newline-only
+  tokens. The failed dense-Mistral exception was reverted and pushed; evidence
+  is in `docs/internal/release-gates/20260719_mistral35_jangtq_prefill/`.
+- Jang commit `000e41c` independently fixes wide BF16/FP32 NAX range handling and
+  passes 23 live Metal tests. It does not close the Mistral model row.
+- Paged-Off prompt-disk partial reuse and paged-On partial block/L2 refault are
+  now preserved current live child rows. They do not prove every architecture.
+- The canonical current worklist is
+  `docs/internal/release-gates/20260719_current_reconciliation/README.md`.
+  Full suites/build and bundled Python must be regenerated at the final cutoff;
+  media, cross-family protocol, settings/gateway soak, and selected model rows
+  remain explicit work rather than optional follow-ups.

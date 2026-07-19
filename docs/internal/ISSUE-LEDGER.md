@@ -2607,3 +2607,26 @@ remain open. No public release/notarization/feed mutation performed.
 - Evidence: `docs/internal/release-gates/20260719_laguna_current_stream_tq_determinism_eviction/`.
 - Release remains `PARTIAL/BLOCKED`; bundled Python is stale and the other
   explicit matrix rows remain open.
+
+## 2026-07-19 - Mistral3 JANGTQ prefill/output failure and current-worklist reconciliation
+
+- `MISTRAL35-JANGTQ-OUTPUT`: `BLOCKED_CURRENT_ARTIFACT_RUNTIME` on pushed head
+  `fad7356d4`. The official 88-layer `mistral3/ministral3` JANGTQ2 bundle passes
+  strict hydration (`swapped=616 skipped=0`). The legacy path did not reach TTFT
+  after more than two minutes. The temporary dense-Mistral MPP NAX Auto exception
+  reduced TTFT to about 14 seconds but emitted only newline tokens. A second live
+  Electron attempt after FP32 A/B NAX accumulation reproduced newline-only output
+  at an explicit 64-token cap and was visibly cancelled.
+- Projection-level official-weight agreement did not predict full-model output,
+  so commit `fad7356d4` withdraws the broad exception and restores the safe generic
+  MXTQ/JANGTQ policy. Twelve focused policy tests pass. No prompt coercion, sampler
+  clamp, fabricated output, or official-artifact mutation was added.
+- The independent Jang NAX wide-range correction is pushed as `000e41c` after 23
+  live Metal-kernel tests. It is not claimed as a Mistral runtime fix.
+- Evidence:
+  `docs/internal/release-gates/20260719_mistral35_jangtq_prefill/`.
+- Documentation/source reconciliation is preserved at
+  `docs/internal/release-gates/20260719_current_reconciliation/README.md`.
+  Current status is `PARTIAL_NO_1_6_12_RELEASE`: the post-release head needs
+  selected current-head model/API/Electron rows, complete suites/build, a fresh
+  bundled-Python rebuild, and the full Sequoia/Tahoe signing/notarization chain.

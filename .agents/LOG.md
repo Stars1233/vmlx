@@ -1197,3 +1197,18 @@
   `docs/internal/release-gates/20260719_laguna_current_stream_tq_determinism_eviction/`.
 - Performance/long soak, q4 cold-byte equivalence policy, bundled-Python refresh,
   and the remaining campaign rows stay open.
+
+## 2026-07-19 - Mistral JANGTQ failure preserved; worklist reconciled
+
+- Real Electron testing of the 88-layer Mistral Medium 3.5 JANGTQ2 bundle found
+  two distinct failures: legacy prefill stall and newline-only MPP NAX decode.
+  A dtype-aware FP32 NAX rerun reproduced the newline-only failure at a real UI
+  64-token cap; the generation was stopped visibly.
+- Reverted the unsafe broad Auto exception, passed 12 focused policy tests,
+  committed/pushed `fad7356d4`, and preserved screenshots, health, source trace,
+  and explicit missing gates in `20260719_mistral35_jangtq_prefill/`.
+- Separately committed/pushed Jang `000e41c` after 23 live Metal-kernel tests;
+  recorded it as a kernel correction only.
+- Reconciled the master matrix/ledger/status against July 19 evidence in
+  `20260719_current_reconciliation/`. Overall status remains
+  `PARTIAL_NO_1_6_12_RELEASE`.
