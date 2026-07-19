@@ -958,3 +958,28 @@
 - Retained `PARTIAL`: the 256-token API cap was spent entirely in reasoning, so
   the existing visible-answer recovery performed a second full prefill because
   the 20.9 GB native boundary could not fit the 10 GB backends.
+
+## 2026-07-19 - MiniMax M2.7 paged q4 partial/refault and telemetry truth
+
+- The live Electron cache drawer applied a fresh dedicated Block Disk L2
+  directory, 64-token blocks, and a four-block ceiling. The first prompt wrote
+  a 178-token q4 native-TQ chain with exact 64+64+50-token records. Same-chat
+  pressure evicted L1; a fresh chat refaulted the older partial boundary and
+  exact-finaled. A visible process replacement then restored the same boundary
+  from four persisted blocks with zero pre-request L1 tokens.
+- The run exposed an instrumentation defect: later frugal indexed requests
+  performed worker-side L2 payload reads while usage said only
+  `paged+tq-native`. Commit `97a84fed5` records successful worker-reconstructed
+  disk blocks and promotes the actual source to request/cache-execution detail.
+  It does not infer a disk hit merely from L2 configuration. Focused cache and
+  scheduler validation passes 114 with two intentional deselections.
+- Patched PID 65685 proved the regression through Electron, raw Responses,
+  and raw Chat. Each restored 178 `paged+disk+tq-native` tokens. Responses
+  emitted 316 reasoning and 10 content deltas before completion; Chat emitted
+  508 reasoning and 10 content deltas then finish, one terminal usage chunk,
+  and `[DONE]`. The same Electron chat restored 192 disk tokens, executed one
+  real `file_info(panel/package.json)`, and exact-finaled with its 5.2 KB
+  result and no warning.
+- Commit `135a2ef6b` preserves the current health, raw SSE/traces, settings,
+  screenshots, block index, persisted UI rows, issue ledger, and matrix update
+  under `docs/internal/release-gates/20260719_m27_paged_l2_partial_refault/`.

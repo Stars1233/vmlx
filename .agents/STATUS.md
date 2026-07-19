@@ -1,5 +1,26 @@
 # Current Status
 
+## 2026-07-19 - MiniMax M2.7 partial paged-L2/refault and source telemetry
+
+Status: `SCOPED_M27_PAGED_L2_PARTIAL_REFAULT_PASS_POST_RELEASE_MATRIX_OPEN`.
+
+- Commits `97a84fed5` and `135a2ef6b` close the current MiniMax M2.7
+  full-KV child row for a 64+64+50-token q4 native-TQ disk chain, four-block
+  pressure/eviction, same-process refault, zero-L1 process-restart restore,
+  truthful worker-side L2 source reporting, progressive Responses/Chat
+  streams, and one exact post-restore `file_info` continuation.
+- Real Electron PID 65685 was launched through `Save & Restart`; pre-request
+  health retained four disk blocks and zero L1 tokens. Electron and later
+  same-process API requests all restored 178 tokens as
+  `paged+disk+tq-native`. Chat ended finish -> one usage-only chunk ->
+  `[DONE]`; no reasoning/content/tool markup leaked.
+- Focused cache/scheduler validation passes 114 with two intentional
+  deselections. Evidence:
+  `docs/internal/release-gates/20260719_m27_paged_l2_partial_refault/`.
+- The public v1.6.11 checkpoint remains the latest released build. This is
+  post-release source work; family/media/protocol/settings/gateway/full-suite
+  rows remain active, and no newer release is claimed.
+
 ## 2026-07-18 - post-release cross-matrix checkpoint; runtime campaign still open
 
 Status: `SOURCE_META_AUDIT_PASS_CAMPAIGN_OPEN_NO_NEW_MODEL_LIVE_PROOF`.
