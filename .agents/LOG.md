@@ -1133,3 +1133,20 @@
   `docs/internal/release-gates/20260719_bonsai_partial_prefix_responses/`.
 - Do not promote the overall release matrix: cross-parser and retained
   long/stochastic/media/eviction/signed-app rows remain open.
+
+## 2026-07-19 - M3 current-source parser/stream recheck
+
+- Started M3 from its real Electron session card; PID 2277 became the only
+  local engine. Re-read the bundle and confirmed affine JANG plus native
+  MSA/index cache rather than JANGTQ/MXFP or generic TQ KV.
+- Auto no-tool and same-chat tool rows both streamed distinct reasoning and
+  progressively painted visible content. The tool ran exactly once and used
+  its real result; no warnings or leaked parser markers.
+- Raw Responses and Chat each completed a six-case no-tool/tool/follow matrix
+  with separate reasoning, argument, and content deltas and clean terminals.
+- The 806-item focused selection exposed stale bundled engine source. With
+  only that packaging verifier deselected, 759 passed and 46 skipped.
+- Preserved current proof in
+  `docs/internal/release-gates/20260719_m3_current_postfinalizer/`.
+- Keep release blocked until `bundle-python.sh` refreshes current source at the
+  chosen cutoff and the complete verifier passes without deselection.

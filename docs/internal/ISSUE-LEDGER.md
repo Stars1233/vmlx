@@ -2487,3 +2487,26 @@ remain open. No public release/notarization/feed mutation performed.
   shared Responses continuation defect. Overall matrix remains `PARTIAL` for
   cross-parser repeats, long/stochastic/media/eviction/signed-app rows. Evidence:
   `docs/internal/release-gates/20260719_bonsai_partial_prefix_responses/`.
+
+## 2026-07-19 - M3 current-head Auto/tool recheck and bundled-engine drift
+
+- Real Electron Sessions-card Start loaded MiniMax-M3 PID 2277 and stopped
+  Bonsai. Bundle/config and health identify affine `JANG_2L` with native
+  `minimax_m3_msa_v1`; generic TQ KV remains correctly Off.
+- Electron Auto rows 388/391 produced non-empty separate reasoning/content.
+  The same-chat second turn executed one real `file_info`, returned the 5.2 KB
+  result, reused 8,980 `paged+disk` tokens, and painted the final progressively
+  with no warning.
+- Current raw Responses and Chat each passed Auto no-tool, required-tool, and
+  real-result continuation. Reasoning, tool arguments, and content streamed on
+  separate rails; every protocol emitted its proper terminal.
+- Focused source/runtime validation is 759 passed, 46 skipped, one deliberate
+  packaging-verifier deselection.
+- New release blocker `BUNDLE-PYTHON-SOURCE-DRIFT`: current `server.py` hash
+  `8e462960...` differs from bundled hash `193ad562...` after the Responses
+  repair. Do not package until `bundle-python.sh` is run and the verifier is
+  rerun without deselection.
+- Evidence:
+  `docs/internal/release-gates/20260719_m3_current_postfinalizer/`.
+- Scoped M3 text verdict is `PASS-LIVE`; M3 larger-media/OCR/terminal-delay/
+  REAP32/signed-app and cross-parser rows remain `PARTIAL`.

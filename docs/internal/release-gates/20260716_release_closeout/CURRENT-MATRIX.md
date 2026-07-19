@@ -1092,3 +1092,22 @@ Evidence: `../20260719_ollama_stream_tool_parity/`.
 - Verdict: scoped `PASS-LIVE`; retain cross-parser, stochastic long-output,
   media, forced-eviction repeat, and signed-app rows as `PARTIAL`.
   Evidence: `../20260719_bonsai_partial_prefix_responses/`.
+
+### MiniMax-M3 current-head Auto/tool recheck and bundle drift
+
+- PID 2277 was loaded by the real Electron Sessions-card Start action; single
+  model mode stopped Bonsai. Bundle/health confirm affine `JANG_2L`, native
+  MSA/index cache, and generic TurboQuant KV Off.
+- Electron Auto no-tool and same-chat real-tool rows both retained separate
+  reasoning, non-empty progressively painted content, clean results, and no
+  warning. The tool row reused 8,980 tokens as `paged+disk`.
+- Raw Responses and Chat each completed Auto no-tool, one required tool, and
+  post-result continuation with separate progressive rails and correct
+  terminals. Focused source/runtime validation is 759 passed / 46 skipped /
+  one packaging-verifier deselection.
+- Scoped M3 text Auto/tool stream: `PASS-LIVE`. Larger media/OCR/delay/REAP32/
+  signed-app remain `PARTIAL`.
+- Packaging: `BLOCKED`. Source `server.py` hash differs from bundled-python
+  after `359ce6b2b`; run `bundle-python.sh` at release cutoff, then rerun the
+  verifier without deselection.
+- Evidence: `../20260719_m3_current_postfinalizer/`.

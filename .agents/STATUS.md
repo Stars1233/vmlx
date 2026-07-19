@@ -7123,3 +7123,23 @@ Status: scoped `VERIFIED-LIVE`; overall model/protocol/release matrix `PARTIAL`.
   `docs/internal/release-gates/20260719_bonsai_partial_prefix_responses/`.
 - Remaining: representative non-Qwen parser repeats plus retained Bonsai
   long/stochastic/media/forced-eviction/signed-app rows.
+
+## 2026-07-19 - M3 current-head text protocol pass; bundle drift blocks release
+
+Status: M3 text Auto/tool `VERIFIED-LIVE`; overall release `PARTIAL/BLOCKED`.
+
+- Electron Start loaded PID 2277 and left M3 as the only local engine. Health
+  reports native MSA/index cache and generic TQ Off.
+- Rows 388/391 retain separate reasoning and progressive visible content; row
+  391 made one real `file_info`, exact-reported 5.2 KB, reused 8,980
+  `paged+disk` tokens, and had no warning.
+- Raw Responses and Chat each passed Auto no-tool, required-tool, and real
+  tool-result continuation with clean terminals. Focused runtime/source tests:
+  759 passed, 46 skipped, one packaging verifier deselected.
+- Release blocker: bundled `server.py` is stale relative to current source.
+  `bundle-python.sh` is mandatory at the next release cutoff before the full
+  packaging verifier/build/sign/notarize chain.
+- Evidence:
+  `docs/internal/release-gates/20260719_m3_current_postfinalizer/`.
+- Remaining M3 boundaries: larger media, OCR, terminal delay, REAP32 headroom,
+  cancellation/disconnect, and signed-app repeat.
