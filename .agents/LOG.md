@@ -1212,3 +1212,17 @@
 - Reconciled the master matrix/ledger/status against July 19 evidence in
   `20260719_current_reconciliation/`. Overall status remains
   `PARTIAL_NO_1_6_12_RELEASE`.
+## 2026-07-19 - Qwen3.6 35B JANGTQ current-source stream/cache checkpoint
+
+- Proved current Electron one-tool/final behavior and current raw Responses/Chat
+  required-tool continuations.
+- Proved real Stop/Start exact L2 restore and changed-suffix partial block reuse:
+  2,560 cached tokens, 40 native-TQ disk hits, one complete SSM disk hit, exact
+  changed answer.
+- Found that startup said stored quantization `none` while health/live blocks said
+  q4 native TQ. Traced `none` to the second generic wrapper, not native TQ; fixed
+  the wording in `87e11c5ee`, reran 103 Python and 127 panel focused tests, and
+  re-proved current-source Electron/API/cache behavior.
+- Preserved strict-format sampling misses, unavailable live VL, and the generic
+  Sessions-card `JANG` label as explicit remaining issues. Evidence is under
+  `20260719_qwen35_jangtq_current/`.

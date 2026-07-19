@@ -2630,3 +2630,32 @@ remain open. No public release/notarization/feed mutation performed.
   Current status is `PARTIAL_NO_1_6_12_RELEASE`: the post-release head needs
   selected current-head model/API/Electron rows, complete suites/build, a fresh
   bundled-Python rebuild, and the full Sequoia/Tahoe signing/notarization chain.
+## 2026-07-19 - Qwen3.6 35B JANGTQ current-source stream, tool, and L2 partial-prefix gate
+
+- `Q35-JANGTQ-CURRENT-TEXT-AGENT`: `PASS-LIVE_SCOPED` at pushed source
+  `87e11c5ee`. The real Electron Sessions Start path loaded the MXTQ/JANGTQ2
+  artifact; a fresh current-source chat executed exactly one real
+  `file_info(panel/package.json)` and exact-finaled `5.2 KB` with reasoning
+  separate, visible content non-empty, no warning, and 256
+  `paged+ssm+disk` tokens. Raw current-source Responses and Chat each produced
+  one valid tool call and streamed the real-result continuation over 256
+  reasoning plus 18 content deltas to clean terminals with usage.
+- `Q35-HYBRID-Q4-L2-PARTIAL-PREFIX`: `PASS-LIVE_SCOPED`. After real Electron
+  Stop/Start, an exact tool replay restored seven q4 native-TQ blocks and two
+  SSM disk checkpoints. A separate 2,587-token seed then changed only its final
+  suffix after another restart: 2,560 tokens restored from 40 disk blocks, all
+  40 native-TQ hits, with one complete 30-layer SSM disk hit and exact changed
+  output in 0.476s. Current source repeated the row in 0.492s.
+- `Q35-TQ-STARTUP-TRUTH`: fixed by `87e11c5ee`. The old log said stored
+  quantization `none`, falsely implying TQ storage was disabled. Source trace
+  and live counters show `none` applies only to the second generic
+  QuantizedKVCache wrapper; architecture-selected q4 attention-TQ remains the
+  prefix/paged/L2 codec. The corrected log says so without altering the proven
+  cache path or double-quantizing it. Focused validation: 103 Python and 127
+  panel tests.
+- Retained reds: strict sampled formatting/tool reliability remains PARTIAL;
+  advertised vision remains OPEN because live health says
+  `vl_runtime_available=false`; the Sessions card says generic `JANG` while the
+  active header says `JANGTQ`, recorded as `Q35-SESSION-CARD-QUANT-LABEL` OPEN.
+- Evidence:
+  `docs/internal/release-gates/20260719_qwen35_jangtq_current/`.

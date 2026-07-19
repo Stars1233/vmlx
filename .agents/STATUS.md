@@ -7224,3 +7224,22 @@ Status: `PARTIAL_NO_1_6_12_RELEASE` at pushed head `fad7356d4`.
   Full suites/build and bundled Python must be regenerated at the final cutoff;
   media, cross-family protocol, settings/gateway soak, and selected model rows
   remain explicit work rather than optional follow-ups.
+## 2026-07-19 - Qwen3.6 35B JANGTQ current source checkpoint
+
+Status: `SCOPED_TEXT_TOOL_STREAM_RESTART_L2_PARTIAL_PREFIX_PASS`; overall
+release remains `PARTIAL_NO_1_6_12_RELEASE`.
+
+- Real Electron Start/Stop/Start used the dealignai Qwen3.6 35B MXTQ/JANGTQ2
+  bundle. Current-source row 437 executed one real file tool and exact-finaled
+  with separate reasoning, non-empty visible content, no warning, and a disk hit.
+- Raw current-source Responses and Chat each passed required tool plus real-result
+  continuation with separate reasoning/content deltas, clean terminal, and usage.
+- Exact restart restored q4 native-TQ and SSM disk state. Changed-suffix L2
+  partial matching restored 2,560/2,587 prompt tokens from 40 native-TQ disk
+  blocks plus the matching 30-layer SSM state and returned the changed exact
+  answer.
+- Commit `87e11c5ee` fixes only misleading startup wording: generic q4 wrapper
+  Off avoids double encoding; native architecture-selected q4 attention-TQ is On.
+- OPEN/PARTIAL: strict sampled reliability, Qwen35 VL route, generic Sessions-card
+  `JANG` label, full suites/build/bundle/release, and the remaining campaign rows.
+- Evidence: `docs/internal/release-gates/20260719_qwen35_jangtq_current/`.

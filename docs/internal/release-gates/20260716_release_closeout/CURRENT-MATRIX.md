@@ -8,9 +8,30 @@ production gate, and the current branch. Older contradictory rows remain in
 their original ledgers for provenance; the newest source-plus-live row wins and
 superseded conclusions are called out here.
 
+### 2026-07-19 Qwen3.6 35B JANGTQ current-source override
+
+- Pushed source `87e11c5ee` has a new current-source Electron/API/cache proof.
+  A fresh Electron tools-on chat executed one real `file_info` and exact-finaled;
+  current Responses and Chat each emitted a valid tool call and streamed the
+  real-result continuation as 256 reasoning plus 18 content deltas to clean
+  terminals with usage.
+- A real process restart restored the exact Electron tool prefix from seven q4
+  native-TQ disk blocks plus two SSM disk hits. A separate changed-suffix
+  2,587-token request restored 2,560 tokens from 40 disk blocks, all 40 native-TQ
+  hits, plus a complete 30-layer SSM checkpoint, then returned the changed exact
+  answer in 0.476s. Current source repeated it in 0.492s.
+- Commit `87e11c5ee` corrects the startup wording: generic
+  `QuantizedKVCache=none` avoids a second codec; native architecture-selected
+  q4 attention-TQ remains enabled at prefix/paged/L2 boundaries. It does not
+  change or duplicate the codec.
+- Retained PARTIAL/OPEN rows: strict sampled formatting/repeated-tool
+  reliability, advertised VL (`vl_runtime_available=false` here), and the
+  Sessions-card generic `JANG` label for an MXTQ/JANGTQ artifact. Evidence:
+  `docs/internal/release-gates/20260719_qwen35_jangtq_current/`.
+
 ### 2026-07-19 current-head reconciliation override
 
-- Current audited/pushed head is `fad7356d4`. The public v1.6.11 checkpoint
+- Current audited/pushed head is `87e11c5ee`. The public v1.6.11 checkpoint
   remains released, signed, and notarized; this post-release head is not a
   v1.6.12 candidate yet.
 - The earlier full-suite checkpoint remains valid for its source, but is stale
