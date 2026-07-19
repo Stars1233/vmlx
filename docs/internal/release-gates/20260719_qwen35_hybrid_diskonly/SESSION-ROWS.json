@@ -1,0 +1,21 @@
+{
+  "session": {
+    "id": "100cb088-bf3c-4728-863a-b56182b27882",
+    "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+    "port": 8029,
+    "pid_at_capture": 27803,
+    "usePagedCache": false,
+    "enableBlockDiskCache": true,
+    "kvCacheQuantization": "auto",
+    "reasoningParser": "qwen3",
+    "toolCallParser": "qwen",
+    "enableAutoToolChoice": true
+  },
+  "assistant_rows": [
+    {"rowid": 569, "promptTokens": 5166, "cachedTokens": 0, "ttft": "4.98", "content": "Q35-HYBRID-DISK-COLD-DONE", "warnings": null},
+    {"rowid": 572, "promptTokens": 5166, "cachedTokens": 5165, "cacheDetail": "paged+ssm+disk", "ttft": "0.63", "content": "Q35-HYBRID-DISK-COLD-DONE", "classification": "pre-fix telemetry red"},
+    {"rowid": 575, "promptTokens": 5166, "cachedTokens": 5165, "cacheDetail": "block-disk+ssm+tq-native", "ttft": "0.45", "content": "Q35-HYBRID-DISK-COLD-DONE", "warnings": null},
+    {"rowid": 578, "promptTokens": 5175, "cachedTokens": 5120, "cacheDetail": "block-disk+ssm+tq-native", "ttft": "0.67", "content": "Q35-HYBRID-DISK-PARTIAL-DONE", "warnings": null},
+    {"rowid": 581, "content": "Q35-JT-DISK-TOOL-DONE SIZE=5.2 KB", "tool": "file_info", "arguments": {"path": "panel/package.json"}, "result_size": "5.2 KB", "tool_call_count": 1, "warnings": null}
+  ]
+}

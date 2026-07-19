@@ -1,0 +1,20 @@
+2026-07-19 current-source validation
+
+Python:
+  pytest tests/test_batching.py tests/test_mllm_scheduler_cache.py
+         tests/test_mllm_continuous_batching.py
+         tests/test_ssm_companion_cache.py tests/test_paged_cache.py
+         tests/test_engine_audit.py -q
+  Result: 911 passed, 5 deselected, 2 warnings in 9.93s
+
+Panel:
+  vitest cache-control-policy, settings-flow, cache-capacity-display,
+         cache-metrics
+  Result: 304 passed (four discovered test files)
+  npm run typecheck
+  Result: passed
+
+The first expanded Python run exposed two failures. The production telemetry
+finalizer now tolerates a lightweight Scheduler without a paged manager, and
+the quant-scope contract now anchors on block_scope_key rather than the earlier
+policy mention. The result above is the post-fix rerun.

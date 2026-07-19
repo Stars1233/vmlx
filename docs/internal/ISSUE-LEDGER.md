@@ -2832,3 +2832,35 @@ remain open. No public release/notarization/feed mutation performed.
   row for the exercised M2.7 artifact. Hybrid companion rederive,
   native/typed/mixed-SWA families, signed-app repetition, and overall release
   readiness remain separately `PARTIAL`/`OPEN`.
+
+## 2026-07-19 - Qwen3.6 JANGTQ hybrid Block L2 with Paged RAM Off
+
+- `Q35-HYBRID-BLOCK-L2-PAGED-OFF`: `FIXED_SOURCE + PASS-LIVE scoped`.
+  UI policy, persistence, preview, and argv now permit an explicitly supported
+  hybrid architecture to keep Block Disk L2 On while Paged RAM is Off. The
+  engine refuses a silent RAM fallback if the authoritative SSD store fails.
+- The real Electron Start action loaded
+  `dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK`, whose live health identifies MXTQ /
+  JANGTQ rather than affine JANG. DB, preview, and process argv agree on
+  `--no-paged-cache`, Block L2 On, Auto q4 attention-KV storage, qwen3
+  reasoning, and qwen tool parsing.
+- Cold row 569 stored the 5,165-token prefix. After visible Stop/Start, row 575
+  restored 5,165/5,166 tokens as `block-disk+ssm+tq-native` with 0.45s TTFT.
+  Changed-suffix row 578 restored 5,120/5,175 tokens with 0.67s TTFT. Health
+  recorded actual SSD and q4 native-TQ hits, typed SSM companion disk hits,
+  and zero paged-KV resident bytes.
+- A same-process warm row exposed a false `paged+ssm+disk` label. Current source
+  now reports `block-disk+ssm+tq-native` only when the disk-only manager and
+  native-TQ reconstruction counters prove those tiers. The pre-fix screenshot
+  is retained as evidence of the live red.
+- Raw Chat and Responses streams kept reasoning and visible content separate,
+  emitted progressive content deltas, and completed normally. Electron row 581
+  executed exactly one real `file_info` call and exact-finaled with the 5.2 KB
+  result. Raw strict formatting remains `PARTIAL` because the model added math
+  prose before the requested lines.
+- Validation: 911 expanded Python tests, 304 panel tests, and typecheck pass.
+  Evidence:
+  `docs/internal/release-gates/20260719_qwen35_hybrid_diskonly/`.
+- Retain `OPEN`: Paged-On RAM-to-SSD hierarchy, explicit TQ Off, this row's
+  Ollama/Anthropic parity, fault injection, signed-app repeat, other families,
+  and overall release readiness.

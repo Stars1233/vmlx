@@ -1283,3 +1283,16 @@ Validation: 13 focused Python passes, 299 panel passes, clean typecheck, and a
 passing aggregate cache contract (454 cache-family plus 115 panel-policy
 selections). Evidence: `../20260719_block_disk_only_partial/`. Overall release
 remains `PARTIAL_NO_1_6_12_RELEASE`.
+
+### Qwen3.6 JANGTQ hybrid disk-only addendum - 2026-07-19
+
+| Row | Status | Current source + live evidence | Remaining |
+|---|---|---|---|
+| Hybrid Block L2 with Paged RAM Off | PASS-LIVE scoped | Real Electron settings, DB, preview, and argv agree on Paged Off / Block L2 On. Restart row 575 restored 5,165/5,166 tokens and changed-suffix row 578 restored 5,120/5,175 as `block-disk+ssm+tq-native`; health records q4 native-TQ attention-KV hits, typed SSM companion disk hits, and zero paged-KV resident bytes. | Paged-On RAM-to-SSD hierarchy, explicit TQ Off, fault injection, signed-app repeat. |
+| Disk-only cache telemetry | FIXED_SOURCE + PASS-LIVE | A live warm row incorrectly said `paged+ssm+disk`. Current source identifies the disk-only manager and appends `tq-native` only from reconstruction counters; the restart and partial UI rows show the corrected detail. | Retain pre-fix screenshot and regression tests. |
+| Chat/Responses reasoning-content streams | PASS-LIVE stream / PARTIAL strict format | Chat emitted 256 reasoning plus 169 content deltas and stopped; Responses emitted 256 reasoning-summary plus 151 content deltas and completed. Both included extra math prose before the requested lines. | Ollama/Anthropic and strict model-format breadth. |
+| Auto one-tool continuation | PASS-LIVE | Electron row 581 made exactly one `file_info(panel/package.json)` call, received 5.2 KB, and exact-finaled with separate reasoning and no warning. | Longer/stochastic agent soak and signed app. |
+
+Validation: 911 expanded Python tests, 304 panel tests, and panel typecheck.
+Evidence: `../20260719_qwen35_hybrid_diskonly/`. Overall release remains
+`PARTIAL_NO_1_6_12_RELEASE`.
