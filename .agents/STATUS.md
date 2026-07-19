@@ -7009,3 +7009,23 @@ protocol/release matrix `PARTIAL`.
 - Open boundaries: current-source Anthropic/Ollama tool continuations,
   cancellation/disconnect/mid-stream recovery, signed-app repeat, and the
   literal historical `[Engine Manager] Found in PATH` log-line capture.
+
+## 2026-07-19 - MiniMax M2.7 Anthropic stream/tool parity
+
+Status: scoped `VERIFIED-LIVE`; overall protocol/release matrix `PARTIAL`.
+
+- Commit `c707bb61a` buffers split Chat tool deltas before opening an Anthropic
+  tool block; the live empty-name failure now emits named `file_info` with
+  exact input and one terminal stop.
+- Commit `d7f74b982` recovers only a complete MiniMax invoke with an orphan
+  outer close. Raw Anthropic and real Electron both executed exactly one
+  `file_info(panel/package.json)` call; the Electron row exact-finaled and
+  stored no warning.
+- Commit `4a53f16e1` makes `/v1/messages` render the effective tool set. A
+  retained-schema `tool_choice=none` continuation emitted exactly
+  `M27-ANTHROPIC-TOOL-DONE SIZE=5.2 KB` over 17 content deltas, with no
+  reasoning/tool leakage and one terminal stop.
+- Ordinary Anthropic stream/non-stream and 119 focused tests passed. Evidence:
+  `docs/internal/release-gates/20260719_anthropic_tool_parity/`.
+- Still open: Ollama tool/result parity, cancellation/disconnect/injected
+  mid-stream recovery, signed-app repeat, and remaining model/parser rows.

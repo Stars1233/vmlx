@@ -2349,3 +2349,27 @@ remain open. No public release/notarization/feed mutation performed.
 - Scoped status is `VERIFIED-LIVE` for current-source Electron, Chat, and
   Responses. Overall protocol parity remains `PARTIAL`: Anthropic, Ollama,
   cancellation/disconnect/mid-stream recovery, and signed-app repeat are open.
+
+## 2026-07-19 03:4x - Anthropic tool-name, MiniMax marker, and no-tool parity
+
+- `ANTHROPIC-SPLIT-TOOL-NAME`: `VERIFIED-LIVE` on commit `c707bb61a`.
+  Chat introduced a tool id before its name; the Anthropic adapter opened an
+  invalid empty-name block. It now buffers by tool index until id and name are
+  both known. Current live output has one `file_info` block, exact path JSON,
+  no error, and one terminal stop.
+- `MINIMAX-ORPHAN-OUTER-OPENER`: `VERIFIED-LIVE` on commit `d7f74b982`.
+  M2.7 emitted a complete invoke and outer close after the opener was consumed.
+  The parser now recovers only that unambiguous native-control shape. A visible
+  invoke without the MiniMax close remains content. Raw Anthropic and a real
+  Electron built-in-tool turn each executed exactly one valid `file_info`.
+- `ANTHROPIC-EFFECTIVE-NO-TOOL-PROMPT`: `VERIFIED-LIVE` on commit
+  `4a53f16e1`. The route previously rendered retained public schemas even when
+  `tool_choice=none`, causing meta-text before the exact post-tool answer. The
+  patched route uses the effective prompt tool set consistently. Live follow-up
+  emitted the exact marker over 17 content deltas, no reasoning/tool block,
+  one `end_turn`, and one `message_stop`.
+- Focused current-source validation passed 119/119 selected tests. Evidence:
+  `docs/internal/release-gates/20260719_anthropic_tool_parity/`.
+- Scoped Anthropic status advances to `VERIFIED-LIVE`. Overall protocol parity
+  remains `PARTIAL`: Ollama, cancellation/disconnect/injected mid-stream
+  recovery, signed-app repeat, and other parser families remain open.

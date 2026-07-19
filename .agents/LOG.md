@@ -1021,3 +1021,22 @@
 - Evidence: `docs/internal/release-gates/20260719_m27_protocol_parity/`.
   Protocol matrix remains `PARTIAL` pending Anthropic/Ollama and failure-
   recovery rows.
+
+## 2026-07-19 - M2.7 Anthropic protocol repair
+
+- Reproduced three distinct integration failures on the Electron-started
+  MiniMax-M2.7 JANGTQ/MXTQ process: an empty Anthropic tool name from split
+  Chat deltas, an orphaned MiniMax outer opener leaking native invoke XML, and
+  retained schemas rendered despite Anthropic `tool_choice=none`.
+- Fixed and pushed `c707bb61a`, `d7f74b982`, and `4a53f16e1`. No argument,
+  tool name, answer, sampler, or token budget is synthesized.
+- Current live Anthropic required-tool output contains one named `file_info`
+  with exact path JSON. Its result continuation emits 17 progressive content
+  deltas and exact final with one stop. Real Electron independently completes
+  one built-in tool loop with exact visible final, separate reasoning, no
+  warning, and `paged+disk+tq-native` cache detail.
+- Focused regression is 119/119. Preserved raw before/after, controls, health,
+  tests, SQLite, UI text, and screenshot under
+  `docs/internal/release-gates/20260719_anthropic_tool_parity/`.
+- Protocol parity remains `PARTIAL`; proceed to Ollama and failure-recovery
+  rows rather than claiming campaign completion.

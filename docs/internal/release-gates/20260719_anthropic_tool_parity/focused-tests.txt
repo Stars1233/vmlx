@@ -1,0 +1,18 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.11, pytest-9.0.2, pluggy-1.6.0
+rootdir: /Users/eric/mlx/vllm-mlx
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+plugins: asyncio-1.3.0, anyio-4.13.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 1013 items / 894 deselected / 119 selected
+
+tests/test_tool_parsers.py .....................                         [ 17%]
+tests/test_server.py ........                                            [ 24%]
+tests/test_streaming_reasoning.py .......                                [ 30%]
+tests/test_anthropic_stream_fixes.py .....                               [ 34%]
+tests/test_anthropic_adapter.py ........................................ [ 68%]
+.......................                                                  [ 87%]
+tests/test_api_surface_parity.py ..                                      [ 89%]
+tests/test_engine_audit.py .............                                 [100%]
+
+===================== 119 passed, 894 deselected in 1.98s ======================

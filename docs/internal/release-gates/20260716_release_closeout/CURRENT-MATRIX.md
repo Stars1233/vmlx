@@ -999,3 +999,14 @@ Evidence: `../20260718_step_auto_reasoning_tool_recovery/`.
 | Frugal worker L2 source reporting | PASS-LIVE current source | Commit `97a84fed5` records successful disk payload reads performed during worker reconstruction, closing a live under-report where later frugal hits said `paged+tq-native` while L2 hit counters rose. Patched Electron, raw Responses, and raw Chat all reported `paged+disk+tq-native`; raw rails stayed progressive and Chat terminal usage order stayed finish -> usage -> `[DONE]`. | Keep this assertion in every retained family run; configured L2 alone must never be labeled a disk hit. |
 
 Evidence: `../20260718_minimax_m27_tq4_agent_stream/`.
+
+## 2026-07-19 MiniMax-M2.7 Anthropic protocol repair
+
+| Gate | Status | Current source + live evidence | Remaining boundary |
+|---|---|---|---|
+| Anthropic ordinary stream/non-stream | PASS-LIVE scoped | Current Electron-started M2.7 emitted 205 separate thinking deltas plus 12 exact visible-content deltas and one stop. Thinking-disabled non-stream returned exact content, `end_turn`, and nonzero usage. | Other model/parser families do not inherit this row. |
+| Anthropic split tool name | PASS-LIVE scoped | `c707bb61a` buffers split Chat tool deltas until id and name exist. Live before had an empty tool name; live after emitted one named `file_info`, exact path JSON, no error, and one stop. | Multi-tool interleaving remains a source-test row until a live multi-call model run is retained. |
+| MiniMax orphaned native-tool opener | PASS-LIVE scoped | `d7f74b982` narrowly recovers a complete invoke followed by an orphan outer close. Live Anthropic and real Electron each executed exactly one valid `file_info`; Electron exact-finaled with no warning and 128 `paged+disk+tq-native` tokens. | Keep negative coverage against promoting arbitrary visible XML. |
+| Anthropic post-tool `tool_choice:none` | PASS-LIVE scoped | `4a53f16e1` renders only the effective prompt tool set. Current live follow-up emitted exact content over 17 progressive deltas, no reasoning/tool leakage, one `end_turn`, and one `message_stop`. | Overall protocol row remains PARTIAL pending Ollama and failure/disconnect/recovery soak. |
+
+Evidence: `../20260719_anthropic_tool_parity/`.
