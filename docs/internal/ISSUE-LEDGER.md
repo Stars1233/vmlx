@@ -1886,3 +1886,33 @@ remain open. No public release/notarization/feed mutation performed.
   artifacts remain open rather than being inferred from source tests.
 - No model generation ran in this checkpoint. Evidence:
   `docs/internal/release-gates/20260718_cross_matrix_count_parser/`.
+
+## 2026-07-18 22:4x - DSV4 native pool codec preserved across RAM/L2; deterministic agent stream re-proven
+
+- `DSV4-V8-TYPED-POOL-CACHE`: `VERIFIED-LIVE` for deterministic native
+  composite prefix reuse and the one-tool Responses/Electron loop. The
+  cache-hit tail had explicitly disabled realization before allocator clear,
+  while prompt snapshots and paged reconstruction silently rebuilt
+  `PoolQuantizedV4Cache` as base `DeepseekV4Cache`. Those paths now preserve
+  the pool codec and realize the uncached tail before clearing MLX allocator
+  state. Schema `deepseek_v4_v8` invalidates v7 blocks captured after the old
+  type downgrade.
+- This artifact is affine JANG (`JANG_AFFINE`), not JANGTQ/MXTQ or base MLX
+  MXFP. Its cache is the DSV4-native 43-layer SWA plus CSA/HCA compressed-pool
+  composite. Health reports pool quant enabled and generic TurboQuant KV
+  disabled; the disk store recorded zero TQ-native writes/hits.
+- Real Electron rows 189/192 produced byte-identical reasoning/content,
+  exactly one real `file_info(panel/package.json)`, and a 340-token
+  `paged+dsv4` resident hit. After the v8 bump, rows 195/198 repeated an exact
+  one-tool final across visible Stop/Start; row 198 restored 338 tokens as
+  `paged+dsv4+disk`, with two disk hits and no warning.
+- Current raw Responses cold/warm/skip-control runs normalized to the same
+  schema-valid function call. Each emitted 78 separate reasoning deltas, two
+  progressive argument deltas, and one completed terminal. The real tool
+  result continuation emitted 15 progressive content deltas and exact
+  `DSV4-RAW-V8-DONE SIZE=5.2 KB` before completion.
+- Focused current-source validation: **813 passed, 1 skipped**. Evidence:
+  `docs/internal/release-gates/20260718_dsv4_v8_typed_cache_electron/`.
+- Retained boundary: this closes deterministic typed cache and streaming
+  correctness, not the separate temperature-0.6 strict-format/long-quality
+  reliability row. Overall campaign/release status remains `PARTIAL`.
