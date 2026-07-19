@@ -1,0 +1,3167 @@
+02:24:51.449819 == Info:   Trying 127.0.0.1:8014...
+02:24:51.450359 == Info: Connected to 127.0.0.1 (127.0.0.1) port 8014
+02:24:51.450386 => Send header, 150 bytes (0x96)
+0000: POST /v1/chat/completions HTTP/1.1
+0024: Host: 127.0.0.1:8014
+003a: User-Agent: curl/8.7.1
+0052: Accept: */*
+005f: Content-Type: application/json
+007f: Content-Length: 513
+0094:
+02:24:51.450455 => Send data, 513 bytes (0x201)
+0000: {"model":"jangq-ai/MiniMax-M2.7-Small-JANGTQ","messages":[{"role
+0040: ":"user","content":"[M27-L2F-BASE] Memorize exact private facts:
+0080:  LFACT-01=Q-51072; LFACT-02=Q-28641; LFACT-03=Q-93450; LFACT-04=
+00c0: Q-41726; LFACT-05=Q-76319; LFACT-06=Q-14583; LFACT-07=Q-82964; L
+0100: FACT-08=Q-37105; LFACT-09=Q-69247; LFACT-10=Q-25836; LFACT-11=Q-
+0140: 84712; LFACT-12=Q-60491. Do not call tools. After private checki
+0180: ng, reply exactly M27-L2F-BASE-DONE and nothing else."}],"stream
+01c0: ":true,"max_tokens":1024,"stream_options":{"include_usage":true}
+0200: }
+02:24:51.450491 == Info: upload completely sent off: 513 bytes
+02:24:51.565630 <= Recv header, 17 bytes (0x11)
+0000: HTTP/1.1 200 OK
+02:24:51.565671 <= Recv header, 37 bytes (0x25)
+0000: date: Sun, 19 Jul 2026 09:24:51 GMT
+02:24:51.565684 <= Recv header, 17 bytes (0x11)
+0000: server: uvicorn
+02:24:51.565693 <= Recv header, 48 bytes (0x30)
+0000: content-type: text/event-stream; charset=utf-8
+02:24:51.565703 <= Recv header, 28 bytes (0x1c)
+0000: Transfer-Encoding: chunked
+02:24:51.565712 <= Recv header, 2 bytes (0x2)
+0000:
+02:24:51.565719 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"role": "assistant
+00c4: "}}], "usage": null}..
+02:24:51.809843 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "The"}}], "usage": null}..
+02:24:51.834835 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " user"}}], "usage": null}..
+02:24:51.859970 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " wants"}}], "usage": null}..
+02:24:51.884542 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " me"}}], "usage": null}..
+02:24:51.909588 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " to"}}], "usage": null}..
+02:24:51.934585 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " memorize"}}], "usage": null}..
+02:24:51.959770 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " exact"}}], "usage": null}..
+02:24:51.984571 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " private"}}], "usage": null}..
+02:24:52.009016 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " facts"}}], "usage": null}..
+02:24:52.034283 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ":"}}], "usage": null}..
+02:24:52.059424 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " a"}}], "usage": null}..
+02:24:52.083925 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " set"}}], "usage": null}..
+02:24:52.109086 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " of"}}], "usage": null}..
+02:24:52.134064 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " key"}}], "usage": null}..
+02:24:52.158594 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-value"}}], "usage": null}..
+02:24:52.183650 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " pairs"}}], "usage": null}..
+02:24:52.208730 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:24:52.233797 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " They"}}], "usage": null}..
+02:24:52.258552 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " say"}}], "usage": null}..
+02:24:52.283491 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " \""}}], "usage": null}..
+02:24:52.308775 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "Do"}}], "usage": null}..
+02:24:52.333826 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " not"}}], "usage": null}..
+02:24:52.358344 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " call"}}], "usage": null}..
+02:24:52.383595 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " tools"}}], "usage": null}..
+02:24:52.408835 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:24:52.434051 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " After"}}], "usage": null}..
+02:24:52.458976 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " private"}}], "usage": null}..
+02:24:52.483590 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " checking"}}], "usage": null}..
+02:24:52.508790 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ","}}], "usage": null}..
+02:24:52.533695 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " reply"}}], "usage": null}..
+02:24:52.558527 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " exactly"}}], "usage": null}..
+02:24:52.583567 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " M"}}], "usage": null}..
+02:24:52.608657 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "27"}}], "usage": null}..
+02:24:52.633220 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-L"}}], "usage": null}..
+02:24:52.658587 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "2"}}], "usage": null}..
+02:24:52.683747 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "F"}}], "usage": null}..
+02:24:52.708323 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-B"}}], "usage": null}..
+02:24:52.733508 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "ASE"}}], "usage": null}..
+02:24:52.758621 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-D"}}], "usage": null}..
+02:24:52.783903 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "ONE"}}], "usage": null}..
+02:24:52.809024 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " and"}}], "usage": null}..
+02:24:52.833664 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " nothing"}}], "usage": null}..
+02:24:52.859656 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " else"}}], "usage": null}..
+02:24:52.885042 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ".\"\n\n"}}], "usage": null}..
+02:24:52.909827 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "This"}}], "usage": null}..
+02:24:52.935061 <= Recv data, 236 bytes (0xec)
+0000: e6
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " instruction"}}], "usage": null}..
+02:24:52.960027 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " is"}}], "usage": null}..
+02:24:52.984628 <= Recv data, 240 bytes (0xf0)
+0000: ea
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " straightforward"}}], "usage": null}..
+02:24:53.009771 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ":"}}], "usage": null}..
+02:24:53.034806 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " memorize"}}], "usage": null}..
+02:24:53.060195 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " a"}}], "usage": null}..
+02:24:53.085304 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " list"}}], "usage": null}..
+02:24:53.109979 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " of"}}], "usage": null}..
+02:24:53.135072 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " private"}}], "usage": null}..
+02:24:53.160153 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " facts"}}], "usage": null}..
+02:24:53.185618 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " and"}}], "usage": null}..
+02:24:53.210322 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " then"}}], "usage": null}..
+02:24:53.234910 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " respond"}}], "usage": null}..
+02:24:53.260075 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " with"}}], "usage": null}..
+02:24:53.285043 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " \""}}], "usage": null}..
+02:24:53.310552 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "M"}}], "usage": null}..
+02:24:53.335632 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "27"}}], "usage": null}..
+02:24:53.360666 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-L"}}], "usage": null}..
+02:24:53.386119 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "2"}}], "usage": null}..
+02:24:53.411275 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "F"}}], "usage": null}..
+02:24:53.436390 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-B"}}], "usage": null}..
+02:24:53.461954 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "ASE"}}], "usage": null}..
+02:24:53.486942 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-D"}}], "usage": null}..
+02:24:53.511671 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "ONE"}}], "usage": null}..
+02:24:53.537017 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "\"."}}], "usage": null}..
+02:24:53.562595 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " However"}}], "usage": null}..
+02:24:53.587227 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ","}}], "usage": null}..
+02:24:53.612413 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " I"}}], "usage": null}..
+02:24:53.637642 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " need"}}], "usage": null}..
+02:24:53.662445 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " to"}}], "usage": null}..
+02:24:53.687736 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " double"}}], "usage": null}..
+02:24:53.712929 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-check"}}], "usage": null}..
+02:24:53.737557 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " that"}}], "usage": null}..
+02:24:53.762910 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " I"}}], "usage": null}..
+02:24:53.788059 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " don't"}}], "usage": null}..
+02:24:53.813246 <= Recv data, 238 bytes (0xee)
+0000: e8
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " inadvertently"}}], "usage": null}..
+02:24:53.838306 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " violate"}}], "usage": null}..
+02:24:53.863457 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " policies"}}], "usage": null}..
+02:24:53.888755 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:24:53.913900 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " The"}}], "usage": null}..
+02:24:53.939123 <= Recv data, 236 bytes (0xec)
+0000: e6
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " instruction"}}], "usage": null}..
+02:24:53.964489 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " is"}}], "usage": null}..
+02:24:53.989689 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " a"}}], "usage": null}..
+02:24:54.014927 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " bit"}}], "usage": null}..
+02:24:54.040531 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " odd"}}], "usage": null}..
+02:24:54.065825 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ":"}}], "usage": null}..
+02:24:54.090546 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " \""}}], "usage": null}..
+02:24:54.116048 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "M"}}], "usage": null}..
+02:24:54.141083 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "emor"}}], "usage": null}..
+02:24:54.165819 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "ize"}}], "usage": null}..
+02:24:54.191108 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " exact"}}], "usage": null}..
+02:24:54.216517 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " private"}}], "usage": null}..
+02:24:54.241981 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " facts"}}], "usage": null}..
+02:24:54.267246 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ":"}}], "usage": null}..
+02:24:54.292332 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " ...\""}}], "usage": null}..
+02:24:54.317867 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " The"}}], "usage": null}..
+02:24:54.343229 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " key"}}], "usage": null}..
+02:24:54.367910 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-value"}}], "usage": null}..
+02:24:54.393316 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " pairs"}}], "usage": null}..
+02:24:54.418675 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " are"}}], "usage": null}..
+02:24:54.443347 <= Recv data, 235 bytes (0xeb)
+0000: e5
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " apparently"}}], "usage": null}..
+02:24:54.768338 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " to"}}], "usage": null}..
+02:24:54.793993 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " be"}}], "usage": null}..
+02:24:54.819805 <= Recv data, 234 bytes (0xea)
+0000: e4
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " memorized"}}], "usage": null}..
+02:24:54.845124 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:24:54.870469 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " The"}}], "usage": null}..
+02:24:54.895792 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " user"}}], "usage": null}..
+02:24:54.920979 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " asks"}}], "usage": null}..
+02:24:54.946487 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " \""}}], "usage": null}..
+02:24:54.971484 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "After"}}], "usage": null}..
+02:24:54.996288 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " private"}}], "usage": null}..
+02:24:55.021504 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " checking"}}], "usage": null}..
+02:24:55.046859 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ","}}], "usage": null}..
+02:24:55.071559 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " reply"}}], "usage": null}..
+02:24:55.097065 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " exactly"}}], "usage": null}..
+02:24:55.122255 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " M"}}], "usage": null}..
+02:24:55.147077 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "27"}}], "usage": null}..
+02:24:55.172437 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-L"}}], "usage": null}..
+02:24:55.197801 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "2"}}], "usage": null}..
+02:24:55.223071 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "F"}}], "usage": null}..
+02:24:55.248390 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-B"}}], "usage": null}..
+02:24:55.273451 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "ASE"}}], "usage": null}..
+02:24:55.298821 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-D"}}], "usage": null}..
+02:24:55.324160 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "ONE"}}], "usage": null}..
+02:24:55.349101 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " and"}}], "usage": null}..
+02:24:55.374642 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " nothing"}}], "usage": null}..
+02:24:55.399990 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " else"}}], "usage": null}..
+02:24:55.425049 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ".\"\n\n"}}], "usage": null}..
+02:24:55.450611 <= Recv data, 238 bytes (0xee)
+0000: e8
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "Interpretation"}}], "usage": null}..
+02:24:55.475962 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ":"}}], "usage": null}..
+02:24:55.501382 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " There's"}}], "usage": null}..
+02:24:55.526688 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " a"}}], "usage": null}..
+02:24:55.551795 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " task"}}], "usage": null}..
+02:24:55.577272 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " to"}}], "usage": null}..
+02:24:55.602576 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " memorize"}}], "usage": null}..
+02:24:55.628166 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " these"}}], "usage": null}..
+02:24:55.653880 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " facts"}}], "usage": null}..
+02:24:55.678521 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:24:55.703543 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " This"}}], "usage": null}..
+02:24:55.728897 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " might"}}], "usage": null}..
+02:24:55.754322 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " be"}}], "usage": null}..
+02:24:55.779114 <= Recv data, 235 bytes (0xeb)
+0000: e5
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " considered"}}], "usage": null}..
+02:24:55.804797 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " a"}}], "usage": null}..
+02:24:55.830059 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " private"}}], "usage": null}..
+02:24:55.855305 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "/p"}}], "usage": null}..
+02:24:55.880675 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "ersonal"}}], "usage": null}..
+02:24:55.906201 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " data"}}], "usage": null}..
+02:24:55.931606 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " store"}}], "usage": null}..
+02:24:55.956824 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:24:55.982013 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " There's"}}], "usage": null}..
+02:24:56.007404 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " no"}}], "usage": null}..
+02:24:56.032997 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " tool"}}], "usage": null}..
+02:24:56.057967 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " calling"}}], "usage": null}..
+02:24:56.083377 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " needed"}}], "usage": null}..
+02:24:56.108951 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:24:56.134521 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " So"}}], "usage": null}..
+02:24:56.159872 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " I"}}], "usage": null}..
+02:24:56.185373 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " must"}}], "usage": null}..
+02:24:56.210900 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " simply"}}], "usage": null}..
+02:24:56.236251 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " memorize"}}], "usage": null}..
+02:24:56.261167 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " them"}}], "usage": null}..
+02:24:56.286754 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " and"}}], "usage": null}..
+02:24:56.312189 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " reply"}}], "usage": null}..
+02:24:56.337016 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " \""}}], "usage": null}..
+02:24:56.362684 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "M"}}], "usage": null}..
+02:24:56.387991 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "27"}}], "usage": null}..
+02:24:56.412854 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-L"}}], "usage": null}..
+02:24:56.438277 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "2"}}], "usage": null}..
+02:24:56.463803 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "F"}}], "usage": null}..
+02:24:56.488677 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-B"}}], "usage": null}..
+02:24:56.514134 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "ASE"}}], "usage": null}..
+02:24:56.539594 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-D"}}], "usage": null}..
+02:24:56.565110 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "ONE"}}], "usage": null}..
+02:24:56.590424 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "\".\n\n"}}], "usage": null}..
+02:24:56.616079 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "But"}}], "usage": null}..
+02:24:56.641369 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " we"}}], "usage": null}..
+02:24:56.666579 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " need"}}], "usage": null}..
+02:24:56.692224 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " to"}}], "usage": null}..
+02:24:56.717866 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " be"}}], "usage": null}..
+02:24:56.743349 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " careful"}}], "usage": null}..
+02:24:56.769237 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " about"}}], "usage": null}..
+02:24:56.794977 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " policy"}}], "usage": null}..
+02:24:56.820620 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:24:56.846272 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " There's"}}], "usage": null}..
+02:24:56.871148 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " no"}}], "usage": null}..
+02:24:56.896763 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " request"}}], "usage": null}..
+02:24:56.922423 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " for"}}], "usage": null}..
+02:24:56.947822 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " me"}}], "usage": null}..
+02:24:56.973355 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " to"}}], "usage": null}..
+02:24:56.998666 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " generate"}}], "usage": null}..
+02:24:57.024172 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " anything"}}], "usage": null}..
+02:24:57.049980 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " beyond"}}], "usage": null}..
+02:24:57.075556 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " that"}}], "usage": null}..
+02:24:57.101116 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " response"}}], "usage": null}..
+02:24:57.126671 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:24:57.152164 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " The"}}], "usage": null}..
+02:24:57.177539 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " user"}}], "usage": null}..
+02:24:57.203253 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " does"}}], "usage": null}..
+02:24:57.228838 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " not"}}], "usage": null}..
+02:24:57.253609 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " request"}}], "usage": null}..
+02:24:57.279122 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " me"}}], "usage": null}..
+02:24:57.304642 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " to"}}], "usage": null}..
+02:24:57.330025 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " retrieve"}}], "usage": null}..
+02:24:57.355522 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " or"}}], "usage": null}..
+02:24:57.380994 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " do"}}], "usage": null}..
+02:24:57.406840 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " anything"}}], "usage": null}..
+02:24:57.432237 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " else"}}], "usage": null}..
+02:24:57.457808 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:24:57.482746 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " The"}}], "usage": null}..
+02:24:57.508215 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " user"}}], "usage": null}..
+02:24:57.533756 <= Recv data, 237 bytes (0xed)
+0000: e7
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " specifically"}}], "usage": null}..
+02:24:57.559520 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " says"}}], "usage": null}..
+02:24:57.584821 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " \""}}], "usage": null}..
+02:24:57.609765 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "Do"}}], "usage": null}..
+02:24:57.635219 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " not"}}], "usage": null}..
+02:24:57.660921 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " call"}}], "usage": null}..
+02:24:57.686039 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " tools"}}], "usage": null}..
+02:24:57.711553 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:24:57.737241 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " After"}}], "usage": null}..
+02:24:57.762770 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " private"}}], "usage": null}..
+02:24:57.788547 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " checking"}}], "usage": null}..
+02:24:57.814187 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ","}}], "usage": null}..
+02:24:57.839697 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " reply"}}], "usage": null}..
+02:24:57.865714 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " exactly"}}], "usage": null}..
+02:24:57.890829 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " M"}}], "usage": null}..
+02:24:57.915846 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "27"}}], "usage": null}..
+02:24:57.941358 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-L"}}], "usage": null}..
+02:24:57.966905 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "2"}}], "usage": null}..
+02:24:57.991893 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "F"}}], "usage": null}..
+02:24:58.017256 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-B"}}], "usage": null}..
+02:24:58.043012 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "ASE"}}], "usage": null}..
+02:24:58.068233 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-D"}}], "usage": null}..
+02:24:58.093752 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "ONE"}}], "usage": null}..
+02:24:58.119424 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " and"}}], "usage": null}..
+02:24:58.144468 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " nothing"}}], "usage": null}..
+02:24:58.169996 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " else"}}], "usage": null}..
+02:24:58.195547 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ".\"\n\n"}}], "usage": null}..
+02:24:58.221254 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "Thus"}}], "usage": null}..
+02:24:58.246706 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " I"}}], "usage": null}..
+02:24:58.271542 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " will"}}], "usage": null}..
+02:24:58.297366 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " comply"}}], "usage": null}..
+02:24:58.322914 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " with"}}], "usage": null}..
+02:24:58.348313 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " this"}}], "usage": null}..
+02:24:58.374096 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " direct"}}], "usage": null}..
+02:24:58.400169 <= Recv data, 236 bytes (0xec)
+0000: e6
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " instruction"}}], "usage": null}..
+02:24:58.427577 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:24:58.453356 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " However"}}], "usage": null}..
+02:24:58.478860 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ","}}], "usage": null}..
+02:24:58.503832 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " I"}}], "usage": null}..
+02:24:58.529307 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " should"}}], "usage": null}..
+02:24:58.555105 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " verify"}}], "usage": null}..
+02:24:58.580047 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " \""}}], "usage": null}..
+02:24:58.605782 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "private"}}], "usage": null}..
+02:24:58.631370 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " checking"}}], "usage": null}..
+02:24:58.656953 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "\""}}], "usage": null}..
+02:24:58.682148 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " -"}}], "usage": null}..
+02:24:58.707863 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " what"}}], "usage": null}..
+02:24:58.733515 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " does"}}], "usage": null}..
+02:24:58.759111 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " that"}}], "usage": null}..
+02:24:58.784602 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " mean"}}], "usage": null}..
+02:24:58.810064 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "?"}}], "usage": null}..
+02:24:58.835779 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " The"}}], "usage": null}..
+02:24:58.861405 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " user"}}], "usage": null}..
+02:24:58.887222 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " might"}}], "usage": null}..
+02:24:58.912818 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " want"}}], "usage": null}..
+02:24:58.938469 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " me"}}], "usage": null}..
+02:24:58.964188 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " to"}}], "usage": null}..
+02:24:58.989606 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " verify"}}], "usage": null}..
+02:24:59.015254 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " that"}}], "usage": null}..
+02:24:59.041005 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " I"}}], "usage": null}..
+02:24:59.066753 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " will"}}], "usage": null}..
+02:24:59.091839 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " not"}}], "usage": null}..
+02:24:59.117335 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " use"}}], "usage": null}..
+02:24:59.142990 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " external"}}], "usage": null}..
+02:24:59.168723 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " tools"}}], "usage": null}..
+02:24:59.194299 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:24:59.219338 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " But"}}], "usage": null}..
+02:24:59.244930 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " the"}}], "usage": null}..
+02:24:59.269912 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " request"}}], "usage": null}..
+02:24:59.295207 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " is"}}], "usage": null}..
+02:24:59.320116 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " simple"}}], "usage": null}..
+02:24:59.345879 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ":"}}], "usage": null}..
+02:24:59.371415 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " after"}}], "usage": null}..
+02:24:59.397201 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " private"}}], "usage": null}..
+02:24:59.422785 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " checking"}}], "usage": null}..
+02:24:59.448507 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " ("}}], "usage": null}..
+02:24:59.774259 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "maybe"}}], "usage": null}..
+02:24:59.800543 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " internal"}}], "usage": null}..
+02:24:59.826381 <= Recv data, 235 bytes (0xeb)
+0000: e5
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " compliance"}}], "usage": null}..
+02:24:59.852267 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " check"}}], "usage": null}..
+02:24:59.877955 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "?),"}}], "usage": null}..
+02:24:59.903093 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " reply"}}], "usage": null}..
+02:24:59.928931 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " exactly"}}], "usage": null}..
+02:24:59.953986 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " \""}}], "usage": null}..
+02:24:59.979726 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "M"}}], "usage": null}..
+02:25:00.005630 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "27"}}], "usage": null}..
+02:25:00.031411 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-L"}}], "usage": null}..
+02:25:00.057320 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "2"}}], "usage": null}..
+02:25:00.082490 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "F"}}], "usage": null}..
+02:25:00.108367 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-B"}}], "usage": null}..
+02:25:00.134148 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "ASE"}}], "usage": null}..
+02:25:00.159993 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-D"}}], "usage": null}..
+02:25:00.185541 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "ONE"}}], "usage": null}..
+02:25:00.211269 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "\"."}}], "usage": null}..
+02:25:00.236411 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " There's"}}], "usage": null}..
+02:25:00.262264 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " no"}}], "usage": null}..
+02:25:00.288004 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " direct"}}], "usage": null}..
+02:25:00.313740 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " content"}}], "usage": null}..
+02:25:00.339632 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:25:00.365392 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " There's"}}], "usage": null}..
+02:25:00.391118 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " no"}}], "usage": null}..
+02:25:00.417079 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " mention"}}], "usage": null}..
+02:25:00.442609 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " of"}}], "usage": null}..
+02:25:00.467920 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " other"}}], "usage": null}..
+02:25:00.493809 <= Recv data, 237 bytes (0xed)
+0000: e7
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " restrictions"}}], "usage": null}..
+02:25:00.519427 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:25:00.545387 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " So"}}], "usage": null}..
+02:25:00.570649 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " it's"}}], "usage": null}..
+02:25:00.596395 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " a"}}], "usage": null}..
+02:25:00.621626 <= Recv data, 240 bytes (0xf0)
+0000: ea
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " straightforward"}}], "usage": null}..
+02:25:00.647633 <= Recv data, 235 bytes (0xeb)
+0000: e5
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " compliance"}}], "usage": null}..
+02:25:00.673552 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:25:00.699313 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " I"}}], "usage": null}..
+02:25:00.724611 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " must"}}], "usage": null}..
+02:25:00.750393 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " obey"}}], "usage": null}..
+02:25:00.776127 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " the"}}], "usage": null}..
+02:25:00.802076 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " user"}}], "usage": null}..
+02:25:00.827748 <= Recv data, 236 bytes (0xec)
+0000: e6
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " instruction"}}], "usage": null}..
+02:25:00.852939 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ".\n\n"}}], "usage": null}..
+02:25:00.878555 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "But"}}], "usage": null}..
+02:25:00.904136 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " caution"}}], "usage": null}..
+02:25:00.929930 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ":"}}], "usage": null}..
+02:25:00.955791 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " There's"}}], "usage": null}..
+02:25:00.981624 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " no"}}], "usage": null}..
+02:25:01.007364 <= Recv data, 234 bytes (0xea)
+0000: e4
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " violation"}}], "usage": null}..
+02:25:01.032614 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:25:01.058570 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " There's"}}], "usage": null}..
+02:25:01.084686 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " no"}}], "usage": null}..
+02:25:01.110236 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " policy"}}], "usage": null}..
+02:25:01.136023 <= Recv data, 234 bytes (0xea)
+0000: e4
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " violation"}}], "usage": null}..
+02:25:01.161847 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " in"}}], "usage": null}..
+02:25:01.187078 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " \""}}], "usage": null}..
+02:25:01.212819 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "M"}}], "usage": null}..
+02:25:01.238002 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "emor"}}], "usage": null}..
+02:25:01.263743 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "ize"}}], "usage": null}..
+02:25:01.289745 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " exact"}}], "usage": null}..
+02:25:01.315635 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " private"}}], "usage": null}..
+02:25:01.341777 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " facts"}}], "usage": null}..
+02:25:01.367021 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "\"."}}], "usage": null}..
+02:25:01.392708 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " It's"}}], "usage": null}..
+02:25:01.418476 <= Recv data, 236 bytes (0xec)
+0000: e6
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " permissible"}}], "usage": null}..
+02:25:01.444388 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "?"}}], "usage": null}..
+02:25:01.469845 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " There's"}}], "usage": null}..
+02:25:01.495071 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " no"}}], "usage": null}..
+02:25:01.520751 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " request"}}], "usage": null}..
+02:25:01.545913 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " to"}}], "usage": null}..
+02:25:01.571289 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " do"}}], "usage": null}..
+02:25:01.596908 <= Recv data, 234 bytes (0xea)
+0000: e4
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " something"}}], "usage": null}..
+02:25:01.622832 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " that"}}], "usage": null}..
+02:25:01.648662 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " is"}}], "usage": null}..
+02:25:01.674351 <= Recv data, 235 bytes (0xeb)
+0000: e5
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " disallowed"}}], "usage": null}..
+02:25:01.700024 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:25:01.725419 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " However"}}], "usage": null}..
+02:25:01.751025 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ","}}], "usage": null}..
+02:25:01.776893 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " I"}}], "usage": null}..
+02:25:01.802328 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " need"}}], "usage": null}..
+02:25:01.828252 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " to"}}], "usage": null}..
+02:25:01.854008 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " be"}}], "usage": null}..
+02:25:01.879701 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " mindful"}}], "usage": null}..
+02:25:01.905590 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " that"}}], "usage": null}..
+02:25:01.931283 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " the"}}], "usage": null}..
+02:25:01.956982 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " system"}}], "usage": null}..
+02:25:01.983077 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " has"}}], "usage": null}..
+02:25:02.009032 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " not"}}], "usage": null}..
+02:25:02.035096 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " been"}}], "usage": null}..
+02:25:02.060913 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " flagged"}}], "usage": null}..
+02:25:02.087110 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " for"}}], "usage": null}..
+02:25:02.113135 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " any"}}], "usage": null}..
+02:25:02.139426 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " policy"}}], "usage": null}..
+02:25:02.165644 <= Recv data, 234 bytes (0xea)
+0000: e4
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " violation"}}], "usage": null}..
+02:25:02.191641 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:25:02.217099 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " The"}}], "usage": null}..
+02:25:02.242897 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " user"}}], "usage": null}..
+02:25:02.268793 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " wants"}}], "usage": null}..
+02:25:02.294757 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " me"}}], "usage": null}..
+02:25:02.320022 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " to"}}], "usage": null}..
+02:25:02.345324 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " memorize"}}], "usage": null}..
+02:25:02.371359 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " private"}}], "usage": null}..
+02:25:02.397226 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " facts"}}], "usage": null}..
+02:25:02.423126 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " ("}}], "usage": null}..
+02:25:02.449296 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "like"}}], "usage": null}..
+02:25:02.475230 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " \""}}], "usage": null}..
+02:25:02.501115 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "LF"}}], "usage": null}..
+02:25:02.527052 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "ACT"}}], "usage": null}..
+02:25:02.553111 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-"}}], "usage": null}..
+02:25:02.578507 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "01"}}], "usage": null}..
+02:25:02.604779 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "=Q"}}], "usage": null}..
+02:25:02.631269 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-"}}], "usage": null}..
+02:25:02.657218 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "510"}}], "usage": null}..
+02:25:02.682732 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "72"}}], "usage": null}..
+02:25:02.708682 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "\")"}}], "usage": null}..
+02:25:02.734570 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " which"}}], "usage": null}..
+02:25:02.760508 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " are"}}], "usage": null}..
+02:25:02.786277 <= Recv data, 235 bytes (0xeb)
+0000: e5
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " presumably"}}], "usage": null}..
+02:25:02.812357 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " numeric"}}], "usage": null}..
+02:25:02.838402 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " IDs"}}], "usage": null}..
+02:25:02.864138 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:25:02.890131 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " The"}}], "usage": null}..
+02:25:02.916115 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " context"}}], "usage": null}..
+02:25:02.941797 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " is"}}], "usage": null}..
+02:25:02.967172 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " not"}}], "usage": null}..
+02:25:02.993103 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " a"}}], "usage": null}..
+02:25:03.018786 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " typical"}}], "usage": null}..
+02:25:03.044535 <= Recv data, 235 bytes (0xeb)
+0000: e5
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " disallowed"}}], "usage": null}..
+02:25:03.070389 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " use"}}], "usage": null}..
+02:25:03.095680 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " case"}}], "usage": null}..
+02:25:03.121794 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:25:03.147740 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " It's"}}], "usage": null}..
+02:25:03.173734 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " just"}}], "usage": null}..
+02:25:03.199143 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " a"}}], "usage": null}..
+02:25:03.225152 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " private"}}], "usage": null}..
+02:25:03.251078 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " fact"}}], "usage": null}..
+02:25:03.277000 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " set"}}], "usage": null}..
+02:25:03.303068 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:25:03.329051 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " There's"}}], "usage": null}..
+02:25:03.354486 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " no"}}], "usage": null}..
+02:25:03.380437 <= Recv data, 235 bytes (0xeb)
+0000: e5
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " disallowed"}}], "usage": null}..
+02:25:03.406487 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " policy"}}], "usage": null}..
+02:25:03.432366 <= Recv data, 234 bytes (0xea)
+0000: e4
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " violation"}}], "usage": null}..
+02:25:03.458785 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:25:03.484678 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " The"}}], "usage": null}..
+02:25:03.510464 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " user"}}], "usage": null}..
+02:25:03.536580 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " requests"}}], "usage": null}..
+02:25:03.562774 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " me"}}], "usage": null}..
+02:25:03.588745 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " to"}}], "usage": null}..
+02:25:03.614920 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " do"}}], "usage": null}..
+02:25:03.640764 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " exactly"}}], "usage": null}..
+02:25:03.666356 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " that"}}], "usage": null}..
+02:25:03.692381 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ":"}}], "usage": null}..
+02:25:03.718128 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " memorize"}}], "usage": null}..
+02:25:03.744256 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " these"}}], "usage": null}..
+02:25:03.770185 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " pairs"}}], "usage": null}..
+02:25:03.796385 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " and"}}], "usage": null}..
+02:25:03.821929 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " then"}}], "usage": null}..
+02:25:03.847931 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " respond"}}], "usage": null}..
+02:25:03.873784 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " with"}}], "usage": null}..
+02:25:03.899215 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " the"}}], "usage": null}..
+02:25:03.925228 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " exact"}}], "usage": null}..
+02:25:03.951246 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " string"}}], "usage": null}..
+02:25:03.976719 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " \""}}], "usage": null}..
+02:25:04.002688 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "M"}}], "usage": null}..
+02:25:04.028581 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "27"}}], "usage": null}..
+02:25:04.055074 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-L"}}], "usage": null}..
+02:25:04.080752 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "2"}}], "usage": null}..
+02:25:04.106783 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "F"}}], "usage": null}..
+02:25:04.132796 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-B"}}], "usage": null}..
+02:25:04.158228 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "ASE"}}], "usage": null}..
+02:25:04.183830 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-D"}}], "usage": null}..
+02:25:04.209751 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "ONE"}}], "usage": null}..
+02:25:04.235835 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "\"."}}], "usage": null}..
+02:25:04.261850 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " There's"}}], "usage": null}..
+02:25:04.287889 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " no"}}], "usage": null}..
+02:25:04.313782 <= Recv data, 235 bytes (0xeb)
+0000: e5
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " disallowed"}}], "usage": null}..
+02:25:04.340098 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " content"}}], "usage": null}..
+02:25:04.366158 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ".\n\n"}}], "usage": null}..
+02:25:04.392210 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "So"}}], "usage": null}..
+02:25:04.417624 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " it's"}}], "usage": null}..
+02:25:04.443468 <= Recv data, 235 bytes (0xeb)
+0000: e5
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " acceptable"}}], "usage": null}..
+02:25:04.777372 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:25:04.803697 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " I'll"}}], "usage": null}..
+02:25:04.829778 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " comply"}}], "usage": null}..
+02:25:04.855851 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ".\n\n"}}], "usage": null}..
+02:25:04.881970 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "But"}}], "usage": null}..
+02:25:04.908024 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " note"}}], "usage": null}..
+02:25:04.934164 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ":"}}], "usage": null}..
+02:25:04.960362 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " I"}}], "usage": null}..
+02:25:04.986135 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " need"}}], "usage": null}..
+02:25:05.011592 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " to"}}], "usage": null}..
+02:25:05.037648 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " not"}}], "usage": null}..
+02:25:05.063397 <= Recv data, 238 bytes (0xee)
+0000: e8
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " inadvertently"}}], "usage": null}..
+02:25:05.089378 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " output"}}], "usage": null}..
+02:25:05.115481 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " any"}}], "usage": null}..
+02:25:05.141654 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " other"}}], "usage": null}..
+02:25:05.167928 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " text"}}], "usage": null}..
+02:25:05.194242 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "."}}], "usage": null}..
+02:25:05.220160 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " Just"}}], "usage": null}..
+02:25:05.246389 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " output"}}], "usage": null}..
+02:25:05.272452 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " \""}}], "usage": null}..
+02:25:05.298681 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "M"}}], "usage": null}..
+02:25:05.324741 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "27"}}], "usage": null}..
+02:25:05.351113 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-L"}}], "usage": null}..
+02:25:05.377244 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "2"}}], "usage": null}..
+02:25:05.402696 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "F"}}], "usage": null}..
+02:25:05.428807 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-B"}}], "usage": null}..
+02:25:05.454913 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "ASE"}}], "usage": null}..
+02:25:05.480414 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "-D"}}], "usage": null}..
+02:25:05.506681 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "ONE"}}], "usage": null}..
+02:25:05.532626 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": "\"."}}], "usage": null}..
+02:25:05.558868 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " So"}}], "usage": null}..
+02:25:05.584503 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " I'll"}}], "usage": null}..
+02:25:05.610750 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " do"}}], "usage": null}..
+02:25:05.639195 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": " that"}}], "usage": null}..
+02:25:05.665255 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"reasoning_content
+00c4: ": ".\n"}}], "usage": null}..
+02:25:05.717608 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"content": "\n\n"}
+00c4: }], "usage": null}..
+02:25:05.743672 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"content": "M"}}],
+00c4:  "usage": null}..
+02:25:05.769164 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"content": "27"}}]
+00c4: , "usage": null}..
+02:25:05.795249 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"content": "-L"}}]
+00c4: , "usage": null}..
+02:25:05.821544 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"content": "2"}}],
+00c4:  "usage": null}..
+02:25:05.847660 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"content": "F"}}],
+00c4:  "usage": null}..
+02:25:05.874338 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"content": "-B"}}]
+00c4: , "usage": null}..
+02:25:05.900029 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"content": "ASE"}}
+00c4: ], "usage": null}..
+02:25:05.926221 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"content": "-D"}}]
+00c4: , "usage": null}..
+02:25:05.951819 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {"content": "ONE"}}
+00c4: ], "usage": null}..
+02:25:06.008234 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0044: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0084: l-JANGTQ", "choices": [{"index": 0, "delta": {}, "finish_reason"
+00c4: : "stop"}], "usage": null}..
+02:25:06.008314 <= Recv data, 331 bytes (0x14b)
+0000: 144
+0005: data: {"id": "chatcmpl-030169c4", "object": "chat.completion.chu
+0045: nk", "created": 1784453091, "model": "jangq-ai/MiniMax-M2.7-Smal
+0085: l-JANGTQ", "choices": [], "usage": {"prompt_tokens": 184, "compl
+00c5: etion_tokens": 520, "total_tokens": 704, "prompt_tokens_details"
+0105: : {"cached_tokens": 178, "cache_detail": "paged+disk+tq-native"}
+0145: }}..
+02:25:06.008352 <= Recv data, 24 bytes (0x18)
+0000: e
+0003: data: [DONE]..
+0013: 0
+0016:
+02:25:06.008371 == Info: Connection #0 to host 127.0.0.1 left intact

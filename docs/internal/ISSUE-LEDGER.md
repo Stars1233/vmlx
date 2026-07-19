@@ -2268,3 +2268,33 @@ remain open. No public release/notarization/feed mutation performed.
   restart restore, and raw Responses/Chat streaming remain the active parent
   gate. Evidence is in
   `docs/internal/release-gates/20260719_no_tool_schema_prefix_stability/`.
+
+## 2026-07-19 09:25 - M2.7 paged q4 partial L2/refault and truthful detail
+
+- `M27-PAGED-Q4-L2-PARTIAL-REFAULT`: `VERIFIED-LIVE` on source commit
+  `97a84fed5`. The real Electron UI applied a new empty block-L2 directory,
+  64-token blocks, and a four-block ceiling. The cold base wrote a 178-token
+  q4 native-TQ chain of 64+64+50 tokens. Same-chat pressure evicted L1 state;
+  a fresh Electron chat refaulted the old partial-terminal chain from L2 and
+  exact-finaled. A real UI process replacement then began with zero L1 tokens
+  and four persisted disk blocks and restored the same 178 tokens with three
+  native-TQ disk hits and exact visible output.
+- `PAGED-FRUGAL-WORKER-DISK-DETAIL`: `VERIFIED-LIVE` after repair. Live raw
+  probes found that later frugal indexed hits read their q4 payloads from L2
+  while usage under-reported `paged+tq-native`. Fetch-time sampling happened
+  before worker reconstruction performed the reads. Successful reconstruction
+  now records actual disk blocks and promotes that fact into request detail;
+  it does not infer disk merely because L2 is enabled. Focused validation is
+  114 passed with two intentional deselections.
+- Patched live evidence: Electron and later same-process Responses/Chat all
+  reported 178 `paged+disk+tq-native` tokens. Responses emitted 316 reasoning
+  and 10 content deltas before completion. Chat emitted 508 reasoning and 10
+  content deltas, followed by finish, one usage-only chunk, and `[DONE]`.
+  A same-session required-tool turn restored 192 disk tokens, executed exactly
+  one real `file_info(panel/package.json)`, consumed its 5.2 KB result, and
+  exact-finaled without a warning.
+- Evidence:
+  `docs/internal/release-gates/20260719_m27_paged_l2_partial_refault/`.
+- This closes only the M2.7 paged full-KV child row. Paged-Off prompt-disk
+  partial restore, other cache architectures, media/gateway soak, full suites,
+  build, and release remain separate gates.
