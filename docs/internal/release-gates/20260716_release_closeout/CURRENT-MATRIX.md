@@ -35,6 +35,26 @@ superseded conclusions are called out here.
   post-release `PARTIAL`/`OPEN` until current-source live evidence closes each
   one.
 
+### 2026-07-18 post-release source/meta-audit override
+
+- Current pushed post-release source head is
+  `db07a6fc1b319c65bc8d47e72f18c3e46a8bbb5b` on
+  `origin/codex/live-electron-gates-20260715`.
+- A shared ANSI-safe count parser now owns pytest/Vitest proof counts for 15
+  cross-matrix runners; every consumer hashes that source. The clean-checkout
+  orchestrator bootstrap and the stale Native-MTP JANG_2K marker were repaired.
+- Focused source verification is **222 passed, 1 skipped**. The canonical
+  no-heavy sweep's 658-test focused sub-suite is **656 passed, 1 skipped, 232
+  deselected**. Full panel verification is **2311 passed, 3 skipped**, with
+  typecheck and a clean-JANG production build passing.
+- Overall post-release campaign status remains `PARTIAL/OPEN`. The canonical
+  sweep still names missing MiMo bundles, signing preflight, release-manifest
+  readiness, current DSV4 live tool/cache evidence, and absent historical
+  live speed/quality/cross-family artifacts. No live model ran in this
+  meta-audit, so no runtime row inherits a pass.
+- Evidence:
+  `docs/internal/release-gates/20260718_cross_matrix_count_parser/`.
+
 ### 2026-07-18 post-release Qwen 3.6 JANGTQ Auto-stream override
 
 - The 35B artifact is bundle-grounded as `weight_format=mxtq`,

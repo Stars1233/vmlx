@@ -1,0 +1,76 @@
+[current-suite] start noheavy_api_cache_contract
+[current-suite] done noheavy_api_cache_contract rc=0 elapsed=34.327
+[current-suite] start cache_architecture_contracts
+[current-suite] done cache_architecture_contracts rc=0 elapsed=51.281
+[current-suite] start noheavy_panel_settings_contract
+[current-suite] done noheavy_panel_settings_contract rc=0 elapsed=8.389
+[current-suite] start max_output_context_contracts
+[current-suite] done max_output_context_contracts rc=0 elapsed=3.249
+[current-suite] start parser_registry_contracts
+[current-suite] done parser_registry_contracts rc=0 elapsed=3.736
+[current-suite] start generation_defaults_contracts
+[current-suite] done generation_defaults_contracts rc=0 elapsed=7.903
+[current-suite] start reasoning_template_contracts
+[current-suite] done reasoning_template_contracts rc=0 elapsed=3.538
+[current-suite] start api_surface_contracts
+[current-suite] done api_surface_contracts rc=0 elapsed=37.168
+[current-suite] start panel_tool_security_contracts
+[current-suite] done panel_tool_security_contracts rc=0 elapsed=0.543
+[current-suite] start tool_call_contracts
+[current-suite] done tool_call_contracts rc=1 elapsed=5.415
+[current-suite] start mcp_policy_contracts
+[current-suite] done mcp_policy_contracts rc=0 elapsed=3.03
+[current-suite] start dsv4_source_exactness_memory_preflight
+[current-suite] done dsv4_source_exactness_memory_preflight rc=0 elapsed=0.09
+[current-suite] start real_ui_dsv4_memory_preflight
+[current-suite] done real_ui_dsv4_memory_preflight rc=0 elapsed=0.09
+[current-suite] start release_surface_contracts
+[current-suite] done release_surface_contracts rc=0 elapsed=0.048
+[current-suite] start cli_release_contracts
+[current-suite] done cli_release_contracts rc=0 elapsed=2.191
+[current-suite] start jang_model_compat_contracts
+[current-suite] done jang_model_compat_contracts rc=0 elapsed=2.247
+[current-suite] start model_artifact_format_contracts
+[current-suite] done model_artifact_format_contracts rc=0 elapsed=5.069
+[current-suite] start model_family_detection_contracts
+[current-suite] done model_family_detection_contracts rc=0 elapsed=3.477
+[current-suite] start native_mtp_contracts
+[current-suite] done native_mtp_contracts rc=0 elapsed=5.821
+[current-suite] start vl_media_cache_contracts
+[current-suite] done vl_media_cache_contracts rc=0 elapsed=4.258
+[current-suite] start mimo_v2_local_bundle_metadata_contract
+[current-suite] done mimo_v2_local_bundle_metadata_contract rc=1 elapsed=0.024
+[current-suite] start step37_crash_falsification_contract
+[current-suite] done step37_crash_falsification_contract rc=0 elapsed=0.024
+[current-suite] start packaged_integrity_contracts
+[current-suite] done packaged_integrity_contracts rc=1 elapsed=44.721
+[current-suite] start installed_app_runtime_parity_audit
+[current-suite] done installed_app_runtime_parity_audit rc=0 elapsed=15.684
+[current-suite] start staged_app_runtime_parity_audit
+[current-suite] done staged_app_runtime_parity_audit rc=0 elapsed=11.417
+[current-suite] start issue179_minimax_k_root_cause_audit
+[current-suite] done issue179_minimax_k_root_cause_audit rc=0 elapsed=9.616
+[current-suite] start issue179_cancel_probe_memory_preflight
+[current-suite] done issue179_cancel_probe_memory_preflight rc=0 elapsed=0.048
+[current-suite] start issue175_179_release_boundary_audit
+[current-suite] done issue175_179_release_boundary_audit rc=0 elapsed=0.21
+[current-suite] start issue181_183_runtime_audit
+[current-suite] done issue181_183_runtime_audit rc=0 elapsed=19.93
+[current-suite] start public_app_issue_audit
+[current-suite] done public_app_issue_audit rc=0 elapsed=8.004
+[current-suite] start gemma_qat_native_mxfp4_inventory_gate
+[current-suite] done gemma_qat_native_mxfp4_inventory_gate rc=0 elapsed=1.05
+[current-suite] start focused_regression_pytest
+[current-suite] done focused_regression_pytest rc=0 elapsed=67.717
+[current-suite] start objective_digest
+[current-suite] done objective_digest rc=0 elapsed=0.09
+[current-suite] start release_regression_manifest
+[current-suite] done release_regression_manifest rc=1 elapsed=0.048
+[current-suite] start full_release_objective_checklist
+[current-suite] done full_release_objective_checklist rc=1 elapsed=0.048
+[current-suite] start release_gate_skip_app
+[current-suite] done release_gate_skip_app rc=1 elapsed=22.742
+build/current-regression-suite-after-pr-intake-matrix-refresh-20260609.json
+status=open
+open_requirements=["DSV4 Flash prefix/paged/L2 cache is enabled by default from app launch", "DSV4 cache is native SWA+CSA/HCA composite, not generic KV/TurboQuant KV", "DSV4 same-process cache hit improves latency/TTFT and records paged+dsv4 hit", "DSV4 block disk L2 stores and hits after restart", "DSV4 Responses one-tool call stops after tool result", "DSV4 can perform multiple tool iterations then final answer", "DSV4 default-cache multi-tool agent loop is proven", "Qwen/JANG packaged MX matmul speed is release-cleared", "Qwen native MTP live decode speed and output equivalence are release-cleared", "Qwen 27B JANG_4M prompt-processing speed floor is release-cleared", "Ling/Bailing multilingual output quality is release-cleared", "Gemma4 26B CRACK Responses visible-content and language quality is release-cleared", "Gemma4 26B CRACK mixed-SWA app-engine speed floor is release-cleared", "Cross-family live multi-turn smoke matrix is release-cleared", "MiMo V2.5 JANG_2L runtime/tool/long-prompt quality is release-cleared", "N2 Pro 397B JANG1L/JANGTQ runtime/cache/API/UI quality is release-cleared", "MiniMax-M2.7-JANGTQ_K reporter parity/root cause is release-cleared", "Real Electron UI unblocked non-MiMo live model matrix is proven", "Real Electron UI cross-family live model matrix is release-cleared", "DSV4 long-output/code/file-generation quality is release-cleared"]
+failed_steps=["mimo_v2_local_bundle_metadata_contract", "packaged_integrity_contracts", "release_regression_manifest", "release_gate_skip_app"]

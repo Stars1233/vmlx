@@ -1,5 +1,22 @@
 # Current Status
 
+## 2026-07-18 - post-release cross-matrix checkpoint; runtime campaign still open
+
+Status: `SOURCE_META_AUDIT_PASS_CAMPAIGN_OPEN_NO_NEW_MODEL_LIVE_PROOF`.
+
+- Pushed commit `db07a6fc1` centralizes ANSI-safe proof counts, hashes the
+  shared parser in all 15 consumers, fixes clean-checkout objective-digest
+  bootstrap, and reconciles stale current-source gate markers including the
+  measured-stamp Native-MTP/JANG_2K policy.
+- Focused contracts pass 222 with one skip. The canonical no-heavy focused
+  sub-suite passes 656 with one skip and 232 deselections. Full panel passes
+  2311 with three skips; typecheck and clean-JANG production build pass.
+- Overall remains OPEN: MiMo local bundles are absent, current DSV4 live
+  tool/cache proof is absent, signing preflight is blocked, and broad live
+  speed/quality/Electron matrix artifacts remain incomplete. No model ran in
+  this source-only checkpoint.
+- Evidence: `docs/internal/release-gates/20260718_cross_matrix_count_parser/`.
+
 ## 2026-07-18 - v1.6.11 public checkpoint released; retained runtime matrix continues
 
 Status: `PUBLIC_CHECKPOINT_RELEASED_POST_RELEASE_MATRIX_PARTIAL`.

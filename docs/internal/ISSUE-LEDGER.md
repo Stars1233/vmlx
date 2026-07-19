@@ -1862,3 +1862,27 @@ remain open. No public release/notarization/feed mutation performed.
   identical restart requests prove resident and disk reuse at matching
   boundaries; maximal reuse across every history/template transition is not
   claimed. Campaign/release status remains `PARTIAL`.
+
+## 2026-07-18 21:4x - Cross-matrix proof counts and clean-checkout bootstrap repaired; canonical sweep remains OPEN
+
+- Commit `db07a6fc1` centralizes ANSI-safe pytest/Vitest result parsing for
+  all 15 affected cross-matrix runners. Each runner now hashes the shared
+  parser, preventing a parser change from leaving an apparently current proof.
+- The no-heavy orchestrator no longer crashes before its own objective-digest
+  producer on a clean checkout. Provisional checkpoints truthfully report a
+  pending digest; final status still requires the generated artifact.
+- Stale gate anchors were reconciled to current source. In particular, the
+  Native-MTP gate no longer asserts the removed policy that JANG_2K blocks MTP;
+  it now pins the measured-stamp policy and has no missing markers.
+- Focused verification: **222 passed, 1 skipped**. Canonical sweep focused
+  sub-suite: **656 passed, 1 skipped, 232 deselected**. Full panel verification
+  in the same source interval: **2311 passed, 3 skipped**, typecheck pass, and
+  production build pass using clean JANG source `9081c924`.
+- The canonical sweep is honestly `OPEN`, not a campaign pass. Current failed
+  steps are missing MiMo local bundles, signing preflight, release manifest,
+  and the release gate's open objective digest. The required current DSV4 live
+  default-cache tool-loop artifact is also absent. Missing historical live
+  Qwen speed, Gemma/Ling quality, broad real-Electron, and cross-family smoke
+  artifacts remain open rather than being inferred from source tests.
+- No model generation ran in this checkpoint. Evidence:
+  `docs/internal/release-gates/20260718_cross_matrix_count_parser/`.
