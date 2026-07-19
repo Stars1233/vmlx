@@ -1,0 +1,32 @@
+[STARTUP] Using vMLX userData override: /Users/eric/.vmlx-v1611-release-tahoe-smoke
+
+DevTools listening on ws://127.0.0.1:9442/devtools/browser/27901e61-490e-4fd5-a433-07485480a538
+[Engine Manager] Engine version check: installed=1.6.11, source=1.6.11, needsUpdate=false
+[STARTUP] Restoring 0 App Sandbox bookmarks
+[STARTUP] No existing vmlx-engine processes found
+[MemoryEnforcer] Started (max 120 GB, poll 5000ms, TTL 30m)
+[gateway] Listening on 127.0.0.1:8082
+[Engine Manager] Checking installation...
+[Engine Manager] Found bundled Python with vmlx_engine 1.6.11 (from dist-info)
+[UPDATE] Fetched manifest from https://mlx.studio/update/latest.json: v1.6.10
+[UPDATE] Fetched manifest from https://raw.githubusercontent.com/jjang-ai/mlxstudio/main/latest.json: v1.6.10
+[UPDATE] Picked highest version across sources: v1.6.10
+[UPDATE] Selected native macOS download: https://github.com/jjang-ai/mlxstudio/releases/download/v1.6.10/vMLX-1.6.10-tahoe-arm64.dmg
+[UPDATE] Up to date (1.6.11)
+[SESSION] Model estimate: ~7.1 GB | RAM: 106.2 GB free / 137 GB total (23% used)
+[SESSION] Model family: gemma4 | tool: gemma4 (user=gemma4, detected=gemma4) | reasoning: gemma4 (user=gemma4, detected=gemma4) | autoTool: true | VLM: true
+[SESSION] Ignoring stale JIT flag because multimodal/VLM models use the mlx-vlm streaming path, which is not mx.compile safe
+[POWER] System sleep blocked (id=0)
+[SLEEP] touchSession 4a161eb9 — idle timer reset
+[CHAT] Inherited coding/tool settings from last chat 82ab6b29; generation/reasoning defaults stayed model-derived
+[SLEEP] touchSession 4a161eb9 — idle timer reset
+[CHAT] Endpoint resolution: isRemote=false, rawBaseUrl=http://127.0.0.1:8009, baseUrl=http://127.0.0.1:8009, session=4a161eb9-c141-4f3e-a023-002b44232aab, type=local
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:8009/v1/responses (wire: responses, remote: false)
+[CHAT] Stream ended — content: 36 chars, reasoning: 301 chars, tool calls: 0, buffered: false
+[CHAT] Response complete: 149 tokens in 7.6s (23.0 t/s, live=22.5 t/s, TTFT: 1.06s, pp: 3674 tokens (3584 cached), 3456.3 pp/s, usage=server)
+[POWER] System sleep unblocked (id=0)
+[MemoryEnforcer] Stopped
+[gateway] Stopped
+[QUIT] All vmlx-engine processes stopped
+[QUIT] Database closed
