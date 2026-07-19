@@ -1,0 +1,15 @@
+[23:46:11.896] Electron request: Responses wire, video_url, max_tokens=256, temperature=0, enable_thinking=false, tools=false
+[23:46:12.700] M3 VL preprocess: 1706 tokens, 1496 video tokens, video pixels=(5984, 1176)
+[23:46:12.709] Paged cache hit: 27 blocks, 1701 tokens, 5 remaining
+[23:46:12.740] Worker reconstructed 1 block from L2
+[23:46:14.243] M3 paged store scheduled deferred clean prompt-boundary re-prefill after terminal dispatch
+[23:46:14.244] Post-dispatch cleanup began deferred 1701-token clean re-prefill
+[23:46:16.643] Extracted 60 deferred MiniMax-M3 layer states
+[23:46:16.856] Stored paged cache: 1701 cache-key tokens, 60 layers
+
+Raw Responses timing for the same fixture after reload:
+last content delta=5.4395s
+response.output_text.done=5.4810s
+response.completed=5.4814s
+last-content-to-done=0.0415s
+last-content-to-completed=0.0419s

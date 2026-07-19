@@ -1,0 +1,55 @@
+{
+  "surface": "POST /v1/responses",
+  "model": "jangq-ai/MiniMax-M3-Coder-Small",
+  "fixture": {
+    "path": "mm3-large-abab-14s.mp4",
+    "sha256": "b79f92e10cdf5580c648b3ff5f3ce580f48cd2c3fcafa6d3c2eb3f8f3c1858ab",
+    "duration_seconds": 14,
+    "frames": 28,
+    "resolution": "1400x900"
+  },
+  "settings": {
+    "temperature": 0,
+    "thinking": false,
+    "tools": false,
+    "max_output_tokens": 256
+  },
+  "before": {
+    "content_delta_count": 30,
+    "reasoning_delta_count": 0,
+    "output_text_done_count": 1,
+    "completed_count": 1,
+    "last_content_t_seconds": 2.4933,
+    "output_text_done_t_seconds": 4.8386,
+    "completed_t_seconds": 4.8391,
+    "terminal_delay_after_last_content_seconds": 2.3453,
+    "completed_delay_after_last_content_seconds": 2.3458,
+    "cached_tokens": 1664,
+    "cache_detail": "paged"
+  },
+  "after": {
+    "http_status": 200,
+    "content_delta_count": 40,
+    "reasoning_delta_count": 0,
+    "output_text_done_count": 1,
+    "completed_count": 1,
+    "first_content_t_seconds": 3.85,
+    "last_content_t_seconds": 5.4395,
+    "output_text_done_t_seconds": 5.481,
+    "completed_t_seconds": 5.4814,
+    "terminal_delay_after_last_content_seconds": 0.0415,
+    "completed_delay_after_last_content_seconds": 0.0419,
+    "cached_tokens": 1701,
+    "cache_detail": "paged+disk",
+    "assembled_content": "The video contains the following alphanumeric markers:\n- FRESH IMAGE\n- FRAME START 2468\n- BANANA84426\n- FRAME END 9755\n- BANANA84426",
+    "checks": {
+      "status_200": true,
+      "content_nonempty": true,
+      "content_progressive": true,
+      "reasoning_disabled": true,
+      "one_output_text_done": true,
+      "one_completed": true,
+      "no_failed_or_incomplete": true
+    }
+  }
+}

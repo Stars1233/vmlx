@@ -1420,3 +1420,23 @@
   raw events, and screenshots under
   `docs/internal/release-gates/20260719_minimax_m27_tq_hierarchy_protocol/`.
 - Scoped M2.7 verdict is live-pass; overall matrix remains partial.
+
+## 2026-07-19 - MiniMax-M3 terminal-first cache cleanup
+
+- Reproduced the M3 large-video terminal stall in raw Responses: progressive
+  content stopped for 2.3453s while a synchronous clean prompt-boundary
+  re-prefill ran before text-done/completed.
+- Moved M3 hit-derived clean rederive scheduling out of
+  `_process_batch_responses`; post-dispatch `_cleanup_finished` now owns both
+  paged and object-cache materialization under the existing admission barrier.
+- Updated cache-path and terminal-order contracts. Focused 51/51 and expanded
+  101/101 selections pass.
+- Electron Save & Restart changed PID 40588 -> 42270. Raw repeat emitted 40
+  progressive deltas and terminaled 0.0415s after the last delta while
+  restoring 1,701 `paged+disk` tokens.
+- Fresh visible Electron video turn persisted non-empty output, no reasoning,
+  no tool call, and no warning; UI Logs showed one L2 block reconstruction,
+  deferred 1,701-token clean rederive, and 60 typed M3 layer states.
+- Retained OCR/order misses as `PARTIAL`; no REAP32 retry due reboot risk.
+- Evidence:
+  `docs/internal/release-gates/20260719_m3_terminal_dispatch_large_video/`.

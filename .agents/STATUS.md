@@ -7459,3 +7459,25 @@ Status: `FIXED_SOURCE_VERIFIED_LIVE_SCOPED`; overall release remains
   `docs/internal/release-gates/20260719_responses_usage_extension_parity/`.
 - Live remote-provider smoke, signed-app repeat, and the broader protocol/model
   matrix remain `PARTIAL`.
+
+## 2026-07-19 - MiniMax-M3 terminal delay repair and large-video gate
+
+Status: `FIXED_SOURCE_VERIFIED_LIVE_SCOPED`; overall release remains
+`PARTIAL_NO_1_6_12_RELEASE`.
+
+- Root cause: M3 hit-derived clean sparse-MSA re-prefill still ran inside
+  response finalization, ahead of the existing terminal-first cleanup barrier.
+- Source now schedules paged/object M3 rederive descriptors and materializes
+  them in `_cleanup_finished` after terminal collector dispatch. Next-turn
+  admission still waits for cache persistence.
+- Raw Responses last-content-to-text-done improved from 2.3453s to 0.0415s;
+  the after-run emitted 40 content deltas, one text-done, one completed, and
+  restored 1,701 `paged+disk` tokens.
+- Real Electron Save & Restart replaced PID 40588 with 42270. A fresh visible
+  14-second-video turn returned non-empty content with 1,701 `paged+disk`
+  tokens and no reasoning/tool/warning. Typed M3 cache truth remained 60
+  layers with generic TQ off.
+- Exact OCR/order remains partial and REAP32 remains risk-blocked. Expanded
+  focused tests pass 101/101.
+- Evidence:
+  `docs/internal/release-gates/20260719_m3_terminal_dispatch_large_video/`.

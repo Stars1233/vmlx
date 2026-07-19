@@ -2925,3 +2925,35 @@ remain open. No public release/notarization/feed mutation performed.
 - This closes only the named M2.7 child rows. MiniMax M3 VL/video, typed
   DSV4/openPangu, hybrid SSM/GDN, mixed-SWA, gateway/network soak, remaining
   eager routes, signed-app repetition, and the overall release remain open.
+
+## 2026-07-19 - MiniMax-M3 terminal dispatch and 14-second video
+
+- Status: `FIXED_SOURCE_VERIFIED_LIVE_SCOPED`; global release remains
+  `PARTIAL_NO_1_6_12_RELEASE`.
+- `M3-TERMINAL-STALL`: live raw Responses reproduced a 2.3453-second gap
+  between the last progressive content delta and `response.output_text.done`.
+  Source trace found the clean M3 sparse-MSA prompt-boundary re-prefill inside
+  `_process_batch_responses`, before EngineCore could dispatch the terminal
+  `RequestOutput`.
+- `M3-DEFERRED-CLEAN-REDERIVE`: both paged and object-cache M3 hit paths now
+  schedule a typed descriptor. `_cleanup_finished` performs the required clean
+  N-1 re-prefill after terminal dispatch while the existing admission barrier
+  keeps the next turn out until persistence finishes.
+- After a real Electron Save & Restart replaced PID 40588 with 42270, the same
+  raw video request emitted 40 progressive content deltas, one text-done, one
+  completed, and reduced last-content-to-done to 0.0415 seconds. It restored
+  1,701 tokens as `paged+disk`.
+- A fresh visible Electron chat attached the 14-second/28-frame MP4, used
+  Responses / Thinking Off / temperature 0 / tools off, and persisted a
+  non-empty answer with 1,701 `paged+disk` tokens, no reasoning, no tool call,
+  and no warning. UI Logs showed an L2 reconstruction followed by deferred
+  clean rederive and 60-layer typed store.
+- M3 remained native `minimax_m3_msa_v1`: dense KV 0-2, sparse MSA/idx_keys
+  3-59, generic TQ disabled, zero native-TQ block writes/hits.
+- OCR/order quality remains `PARTIAL` (`BANANA8426` -> `BANANA84426`,
+  `9753` -> `97553`/`9755`, plus one raw extra line). REAP32 remains excluded
+  from live retry because prior attempts rebooted the host.
+- Focused validation: 51/51; expanded terminal/M3/media/Responses selection:
+  101/101.
+- Evidence:
+  `docs/internal/release-gates/20260719_m3_terminal_dispatch_large_video/`.

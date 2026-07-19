@@ -1,0 +1,14 @@
+Focused command:
+.venv/bin/python -m pytest tests/test_terminal_dispatch_before_cache_cleanup.py tests/test_minimax_m3_cache_paths.py -q -p no:cacheprovider
+Result: 51 passed in 4.47s
+
+Expanded command:
+.venv/bin/python -m pytest -q -p no:cacheprovider \
+  tests/test_terminal_dispatch_before_cache_cleanup.py \
+  tests/test_stream_terminal_finish_guard.py \
+  tests/test_minimax_m3_cache_paths.py \
+  tests/test_minimax_m3_tool_parser.py \
+  tests/test_responses_multimodal_history.py \
+  tests/test_vl_media_cache_contract.py \
+  tests/test_responses_history.py
+Result: 101 passed in 5.10s
