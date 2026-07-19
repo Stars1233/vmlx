@@ -1323,3 +1323,28 @@
   then one `[DONE]`.
 - Committed and pushed source as `7a146eefb`. Evidence is under
   `20260719_prompt_disk_stop_role_durability/`. Release remains partial.
+
+## 2026-07-19 - Responses usage event parity
+
+- Compared the current official Responses streaming contract and generated
+  OpenAI Python request types: terminal usage belongs to
+  `response.completed`, while Responses `StreamOptions` exposes
+  `include_obfuscation`, not Chat's `include_usage`.
+- Gated the vMLX incremental `response.usage` event behind
+  `X-vMLX-Stream-Usage: incremental`. Removed the Chat-style body field from
+  Electron Responses requests and limited the private header to local engines.
+- Added standard/private-extension server contracts, panel request-shape
+  contracts, and standard stream-option decoding coverage.
+- Remote current-source validation passed 83 Python selections and 111 panel
+  selections; panel typecheck passed.
+- Raw curl-N standard/extension A/B produced exact progressive outputs,
+  contiguous sequence numbers, one completed terminal, and terminal usage. The
+  standard stream had zero incremental usage events; the explicit private path
+  had 337.
+- Relaunched the complete Electron main process and confirmed the project venv
+  engine. The visible Start button loaded openPangu PID 49982. A fresh no-tool
+  turn streamed reasoning separately, painted visible answer prefixes before
+  completion, exact-finaled, and persisted no warning or tool call.
+- Committed and pushed source as `cc4251318`. Preserved the raw SSE, analysis,
+  screenshots, DOM trace, DB rows, argv, health, tests, and source diff under
+  `20260719_responses_usage_extension_parity/`.

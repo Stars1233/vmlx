@@ -2773,3 +2773,27 @@ remain open. No public release/notarization/feed mutation performed.
   `docs/internal/release-gates/20260719_prompt_disk_stop_role_durability/`.
   Generic paged/block-L2/TQ rows remain N/A for openPangu and open on their
   compatible-model matrix rows. Overall release remains `PARTIAL`.
+
+## 2026-07-19 - Responses stream usage event parity
+
+- `RESPONSES-STANDARD-USAGE-EVENTS`: `FIXED_SOURCE + VERIFIED_LIVE_SCOPED` at
+  `cc4251318`. Chat-style `stream_options.include_usage` can no longer cause an
+  ordinary Responses stream to emit the private `response.usage` event. A raw
+  current-source stream produced 383 reasoning and nine content deltas, zero
+  incremental usage events, one completed terminal, final usage, and exact
+  visible content.
+- `RESPONSES-LOCAL-INCREMENTAL-USAGE`: `VERIFIED_LIVE_SCOPED`. The explicitly
+  header-gated local extension produced 337 incremental usage events plus one
+  completed terminal with final usage, without changing reasoning/content or
+  event-sequence correctness.
+- `ELECTRON-RESPONSES-USAGE-REQUEST-SHAPE`: `FIXED_SOURCE +
+  VERIFIED_LIVE_SCOPED`. The panel omits the nonstandard body field and sends
+  the private header only to local engines. A fully relaunched Electron main,
+  real visible Start, and fresh chat proved character-wise reasoning and
+  progressive visible content, exact non-empty final output, server-backed
+  metrics, no tool call, and no warning.
+- Expanded current-source validation is 83 Python plus 111 panel tests and
+  clean typecheck. Evidence:
+  `docs/internal/release-gates/20260719_responses_usage_extension_parity/`.
+- Retain `PARTIAL`: live remote-provider smoke, signed packaged-app repeat,
+  failure/disconnect soak, and the rest of the explicit release matrix.

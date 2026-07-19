@@ -7360,3 +7360,27 @@ Status: `FIXED_SOURCE_VERIFIED_LIVE_SCOPED`; overall release remains
 - Responses `response.usage` extension parity remains an explicit protocol
   investigation. Generic paged/block-L2/TQ is N/A for openPangu and remains on
   compatible-family rows.
+
+## 2026-07-19 - Responses usage stream parity repair
+
+Status: `FIXED_SOURCE_VERIFIED_LIVE_SCOPED`; overall release remains
+`PARTIAL_NO_1_6_12_RELEASE` at pushed source `cc4251318`.
+
+- Standard Responses streams now keep usage on `response.completed` and do not
+  emit the private `response.usage` extension from Chat-style
+  `stream_options.include_usage`.
+- Local Electron Responses requests use the explicit private
+  `X-vMLX-Stream-Usage: incremental` header, while remote-provider request
+  bodies no longer receive the nonstandard Chat field.
+- Raw standard/extension curl-N A/B proved zero versus 337 incremental usage
+  events, exact progressive content, contiguous event sequence, one completed
+  terminal, and final usage in both paths.
+- A full Electron-main relaunch found the project venv engine. Visible Start
+  loaded PID 49982; the UI streamed separate reasoning and partial visible
+  content before exact `RESP-USAGE-ELECTRON-DONE`. SQLite retained non-empty
+  content, separate reasoning, no tool call, and no warning.
+- Expanded verification is 83/83 Python and 111/111 panel plus clean typecheck.
+  Evidence:
+  `docs/internal/release-gates/20260719_responses_usage_extension_parity/`.
+- Live remote-provider smoke, signed-app repeat, and the broader protocol/model
+  matrix remain `PARTIAL`.

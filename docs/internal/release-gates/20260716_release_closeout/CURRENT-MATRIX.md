@@ -1254,3 +1254,17 @@ Validation: 119/119 focused tests. Evidence:
 `../20260719_prompt_disk_stop_role_durability/`. Overall release remains
 blocked by the explicit open matrix rows, full suites/build, bundled-Python
 refresh, signing/notarization, and publication gates.
+
+### Responses usage event parity addendum - 2026-07-19
+
+| Row | Status | Current source + live evidence | Remaining |
+|---|---|---|---|
+| Standard Responses stream usage | PASS-LIVE scoped | `cc4251318` gates the private usage event independently of Chat-style body input. Literal curl-N emitted 383 separate reasoning deltas, nine progressive content deltas, zero `response.usage` events, one completed terminal with final usage, exact content, contiguous sequence numbers, and no errors. | Signed packaged-app repeat and failure/disconnect soak remain open. |
+| Local vMLX incremental usage extension | PASS-LIVE scoped | `X-vMLX-Stream-Usage: incremental` explicitly produced 337 private usage events while preserving exact progressive content, a single completed terminal, final usage, and sequence correctness. | This private event is not claimed as part of the public Responses protocol. |
+| Electron local Responses request and paint | PASS-LIVE scoped | The panel no longer sends Chat's `include_usage` field in Responses bodies and adds the private header only for local engines. Full Electron relaunch plus visible Start loaded PID 49982; the fresh turn painted separate reasoning and a partial visible `RES` before exact completion. DB content was non-empty with no tool call or warning. | Live remote-provider request smoke is pending intentional provider access. |
+| Official SDK parser probe | N/A for this gate | Neither the runtime venv nor panel dependencies contained the OpenAI SDK. Literal current-source curl-N SSE is the retained API consumer proof; no test-only dependency was installed. | Optional SDK smoke may be added when the release dependency set intentionally includes one. |
+
+Validation: 83/83 selected Python tests, 111/111 selected panel tests, and clean
+panel typecheck. Evidence:
+`../20260719_responses_usage_extension_parity/`. Overall release remains
+`PARTIAL_NO_1_6_12_RELEASE`.

@@ -1,0 +1,342 @@
+commit cc42513180ce39208445a8ac6a7201feb2450558
+Author:     Jinho Jang <eric@jangq.ai>
+AuthorDate: Sun Jul 19 09:22:24 2026 -0700
+Commit:     Jinho Jang <eric@jangq.ai>
+CommitDate: Sun Jul 19 09:22:24 2026 -0700
+
+    fix(api): isolate Responses usage telemetry
+---
+ panel/src/main/ipc/chat.ts                     | 24 +++++--
+ panel/tests/request-builder.test.ts            |  9 ++-
+ panel/tests/tool-status-responsiveness.test.ts | 15 +++++
+ tests/test_api_models.py                       | 11 ++++
+ tests/test_engine_audit.py                     | 90 ++++++++++++++++++++++++--
+ vmlx_engine/api/models.py                      |  9 ++-
+ vmlx_engine/server.py                          | 21 ++++--
+ 7 files changed, 163 insertions(+), 16 deletions(-)
+
+diff --git a/panel/src/main/ipc/chat.ts b/panel/src/main/ipc/chat.ts
+index f43fc5bd4..9b758ed67 100644
+--- a/panel/src/main/ipc/chat.ts
++++ b/panel/src/main/ipc/chat.ts
+@@ -1890,7 +1890,6 @@ export function registerChatHandlers(
+                 ? { max_output_tokens: resolvedOutputBudget }
+                 : {}),
+               stream: true,
+-              stream_options: { include_usage: true },
+             };
+             if (stopSequences) obj.stop = stopSequences;
+             const effectiveTopK = overrides?.topK;
+@@ -2067,16 +2066,32 @@ export function registerChatHandlers(
+         // Remote internet providers use Electron's net.fetch for certificates
+         // and proxies; loopback model servers use Node streaming for SSE.
+         const useNodeStreamingFetch = !isRemote || isLoopbackUrl(apiUrl);
++        // `response.usage` is a vMLX-only incremental telemetry extension.
++        // Negotiate it out-of-band only with a local engine.  The public
++        // Responses request body must not send Chat's non-standard
++        // stream_options.include_usage to OpenAI-compatible remote providers.
++        const vmlxResponsesUsageHeaders: Record<string, string> =
++          useResponsesApi && !isRemote
++            ? { "X-vMLX-Stream-Usage": "incremental" }
++            : {};
+         const response = useNodeStreamingFetch
+           ? await streamingFetch(apiUrl, {
+               method: "POST",
+-              headers: { "Content-Type": "application/json", ...authHeaders },
++              headers: {
++                "Content-Type": "application/json",
++                ...authHeaders,
++                ...vmlxResponsesUsageHeaders,
++              },
+               body: requestBody,
+               signal: abortController.signal,
+             })
+           : await remoteFetch(apiUrl, {
+               method: "POST",
+-              headers: { "Content-Type": "application/json", ...authHeaders },
++              headers: {
++                "Content-Type": "application/json",
++                ...authHeaders,
++                ...vmlxResponsesUsageHeaders,
++              },
+               body: requestBody,
+               signal: abortController.signal,
+             });
+@@ -2660,7 +2675,8 @@ export function registerChatHandlers(
+                 );
+               }
+
+-              // Real-time usage from response.usage events (per-chunk, for live TPS accuracy)
++              // Real-time usage from the explicitly negotiated local vMLX
++              // response.usage extension (never part of a standard remote stream).
+               if (responsesEventType === "response.usage" && parsed.usage) {
+                 if (parsed.usage.output_tokens != null) {
+                   tokenCount = parsed.usage.output_tokens;
+diff --git a/panel/tests/request-builder.test.ts b/panel/tests/request-builder.test.ts
+index d8c0b2eab..0e3bc78d3 100644
+--- a/panel/tests/request-builder.test.ts
++++ b/panel/tests/request-builder.test.ts
+@@ -93,8 +93,7 @@ function buildRequestBody(
+             model: modelName,
+             input: inputMessages,
+             instructions,
+-            stream: true,
+-            stream_options: { include_usage: true }
++            stream: true
+         }
+         if (overrides?.temperature != null) obj.temperature = overrides.temperature
+         if (overrides?.topP != null) obj.top_p = overrides.topP
+@@ -608,6 +607,12 @@ describe('buildRequestBody — Responses API', () => {
+         expect(body.repetition_penalty).toBeUndefined()
+     })
+
++    it('does not put Chat include_usage in a standard Responses request body', () => {
++        const body = buildRequestBody('responses', 'gpt-4', messages, undefined, true, true)
++        expect(body.stream).toBe(true)
++        expect(body.stream_options).toBeUndefined()
++    })
++
+     it('switching chats never carries a previous chat maxTokens into Auto Responses', () => {
+         const cappedChat = buildRequestBody('responses', 'gpt-4', messages, { maxTokens: 512 }, false, false)
+         const autoChat = buildRequestBody('responses', 'gpt-4', messages, {}, false, false)
+diff --git a/panel/tests/tool-status-responsiveness.test.ts b/panel/tests/tool-status-responsiveness.test.ts
+index c10de7e2c..b0e85b74d 100644
+--- a/panel/tests/tool-status-responsiveness.test.ts
++++ b/panel/tests/tool-status-responsiveness.test.ts
+@@ -154,4 +154,19 @@ describe('tool status responsiveness contract', () => {
+     expect(responsesParser).toContain('const finalArguments =')
+     expect(responsesParser).toContain('item.arguments || argsBuffer?.value || "{}"')
+   })
++
++  it('negotiates incremental Responses usage only with the local vMLX engine', () => {
++    const source = readPanelSource('src/main/ipc/chat.ts')
++    const responsesBody = source.slice(
++      source.indexOf('if (useResponsesApi)'),
++      source.indexOf('} else {', source.indexOf('if (useResponsesApi)')),
++    )
++
++    expect(responsesBody).not.toContain('stream_options: { include_usage: true }')
++    expect(source).toContain(
++      'const vmlxResponsesUsageHeaders: Record<string, string> =',
++    )
++    expect(source).toContain('useResponsesApi && !isRemote')
++    expect(source).toContain('{ "X-vMLX-Stream-Usage": "incremental" }')
++  })
+ })
+diff --git a/tests/test_api_models.py b/tests/test_api_models.py
+index e7fcb6efe..89c8043ff 100644
+--- a/tests/test_api_models.py
++++ b/tests/test_api_models.py
+@@ -846,6 +846,17 @@ class TestParameterValidation:
+         assert req.temperature == 0.7
+         assert req.max_output_tokens == 100
+
++    def test_responses_accepts_standard_stream_obfuscation_option(self):
++        req = ResponsesRequest(
++            model="test",
++            input="hi",
++            stream=True,
++            stream_options=StreamOptions(include_obfuscation=False),
++        )
++        assert req.stream_options is not None
++        assert req.stream_options.include_obfuscation is False
++        assert req.stream_options.include_usage is False
++
+     def test_responses_stop_normalized(self):
+         req = ResponsesRequest(model="test", input="hi", stop="<|end|>")
+         assert req.stop == ["<|end|>"]
+diff --git a/tests/test_engine_audit.py b/tests/test_engine_audit.py
+index 62be85e46..3b8371e9e 100644
+--- a/tests/test_engine_audit.py
++++ b/tests/test_engine_audit.py
+@@ -22,7 +22,7 @@ import sys
+ import tempfile
+ from pathlib import Path
+ from types import SimpleNamespace
+-from unittest.mock import MagicMock, patch
++from unittest.mock import AsyncMock, MagicMock, patch
+
+ import pytest
+
+@@ -15224,7 +15224,10 @@ class TestStreamUsagePropagatesCacheDetail:
+                 _Engine(),
+                 [{"role": "user", "content": "hi"}],
+                 request,
+-                fastapi_request=None,
++                fastapi_request=SimpleNamespace(
++                    headers={"x-vmlx-stream-usage": "incremental"},
++                    is_disconnected=AsyncMock(return_value=False),
++                ),
+             )
+         ]
+
+@@ -15300,7 +15303,10 @@ class TestStreamUsagePropagatesCacheDetail:
+                 _Engine(),
+                 [{"role": "user", "content": "hi"}],
+                 request,
+-                fastapi_request=None,
++                fastapi_request=SimpleNamespace(
++                    headers={"x-vmlx-stream-usage": "incremental"},
++                    is_disconnected=AsyncMock(return_value=False),
++                ),
+             )
+         ]
+
+@@ -15310,6 +15316,79 @@ class TestStreamUsagePropagatesCacheDetail:
+         assert usage["input_tokens_details"] == expected
+         assert completed["input_tokens_details"] == expected
+
++    @pytest.mark.asyncio
++    async def test_standard_responses_stream_keeps_usage_on_terminal_event_only(
++        self, monkeypatch
++    ):
++        import json
++        from types import SimpleNamespace
++
++        import vmlx_engine.server as server
++        from vmlx_engine.api.models import ResponsesRequest, StreamOptions
++        from vmlx_engine.engine.base import GenerationOutput
++
++        class _Engine:
++            tokenizer = SimpleNamespace(has_thinking=False)
++
++            async def stream_chat(self, *, messages, **kwargs):
++                yield GenerationOutput(
++                    text="A",
++                    new_text="A",
++                    prompt_tokens=7,
++                    completion_tokens=1,
++                    finished=False,
++                )
++                yield GenerationOutput(
++                    text="AB",
++                    new_text="B",
++                    prompt_tokens=7,
++                    completion_tokens=2,
++                    finished=True,
++                    finish_reason="stop",
++                )
++
++        monkeypatch.setattr(server, "_default_timeout", 5.0)
++        monkeypatch.setattr(server, "_model_name", "responses-standard-test")
++        monkeypatch.setattr(server, "_model_path", None)
++        monkeypatch.setattr(server, "_reasoning_parser", None)
++        monkeypatch.setattr(server, "_tool_call_parser", None)
++
++        # Even a legacy Chat-style include_usage field does not add an unknown
++        # event to the public Responses union.  Usage is authoritative on the
++        # terminal response.completed object.
++        request = ResponsesRequest(
++            model="responses-standard-test",
++            input="hi",
++            stream=True,
++            stream_options=StreamOptions(include_usage=True),
++        )
++        events = [
++            event async for event in server.stream_responses_api(
++                _Engine(),
++                [{"role": "user", "content": "hi"}],
++                request,
++                fastapi_request=None,
++            )
++        ]
++        event_types = []
++        completed = None
++        for event in events:
++            data_line = next(
++                line for line in event.splitlines() if line.startswith("data: ")
++            )
++            payload = json.loads(data_line.removeprefix("data: "))
++            event_types.append(payload["type"])
++            if payload["type"] == "response.completed":
++                completed = payload["response"]
++
++        assert "response.usage" not in event_types
++        assert completed is not None
++        assert completed["usage"] == {
++            "input_tokens": 7,
++            "output_tokens": 2,
++            "total_tokens": 9,
++        }
++
+     @pytest.mark.asyncio
+     async def test_gemma4_responses_stream_reasoning_only_runs_visible_answer_pass(
+         self, monkeypatch
+@@ -15397,7 +15476,10 @@ class TestStreamUsagePropagatesCacheDetail:
+                 _Engine(),
+                 [{"role": "user", "content": "hi"}],
+                 request,
+-                fastapi_request=None,
++                fastapi_request=SimpleNamespace(
++                    headers={"x-vmlx-stream-usage": "incremental"},
++                    is_disconnected=AsyncMock(return_value=False),
++                ),
+             )
+         ]
+
+diff --git a/vmlx_engine/api/models.py b/vmlx_engine/api/models.py
+index 488de0fce..1bc5df519 100644
+--- a/vmlx_engine/api/models.py
++++ b/vmlx_engine/api/models.py
+@@ -183,7 +183,12 @@ class ResponseFormat(BaseModel):
+ class StreamOptions(BaseModel):
+     """Options for streaming responses."""
+
+-    include_usage: bool = False  # Include usage stats in final chunk
++    # Chat Completions option. Responses usage is already carried by its
++    # terminal response object; this field does not enable a Responses event.
++    include_usage: bool = False
++    # Standard Responses option. vMLX does not add padding today, but accepts
++    # the field so OpenAI-compatible clients can send their normal shape.
++    include_obfuscation: bool | None = None
+
+
+ class ChatCompletionRequest(BaseModel):
+@@ -826,7 +831,7 @@ class ResponsesRequest(BaseModel):
+     max_output_tokens: int | None = None
+     stop: str | list[str] | None = None
+     stream: bool = False
+-    stream_options: StreamOptions | None = None  # Streaming options (include_usage)
++    stream_options: StreamOptions | None = None  # Responses: include_obfuscation
+     # Accept both flat (Responses API) and nested (Chat Completions) tool formats, plus built-in tools
+     tools: list[dict] | None = None
+     tool_choice: str | dict | None = None
+diff --git a/vmlx_engine/server.py b/vmlx_engine/server.py
+index 828f5853f..7b7a69d77 100644
+--- a/vmlx_engine/server.py
++++ b/vmlx_engine/server.py
+@@ -19015,8 +19015,20 @@ async def stream_responses_api(
+     seq = 0
+     created_at = int(time.time())
+
+-    # Check if client wants per-chunk usage reporting
+-    include_usage = request.stream_options and request.stream_options.include_usage
++    # ``response.usage`` is a private vMLX incremental-telemetry extension, not
++    # an OpenAI Responses stream event.  Standard Responses clients receive
++    # authoritative usage on response.completed.  Only an explicitly
++    # negotiated client (the local Electron panel) may receive the extension;
++    # a Chat-style stream_options.include_usage field alone must never alter
++    # the public Responses event union.
++    _usage_header = ""
++    if fastapi_request is not None:
++        _headers = getattr(fastapi_request, "headers", None)
++        if _headers is not None:
++            _usage_header = str(
++                _headers.get("x-vmlx-stream-usage", "")
++            ).strip().lower()
++    incremental_usage_extension = _usage_header == "incremental"
+
+     def _sse(event_type: str, data: dict) -> str:
+         nonlocal seq
+@@ -19805,8 +19817,9 @@ async def stream_responses_api(
+                                 },
+                             )
+
+-            # Emit per-chunk usage when include_usage is enabled (for real-time metrics)
+-            if include_usage and (prompt_tokens or completion_tokens):
++            # Private local-panel telemetry.  Standard Responses usage remains
++            # on the terminal response.completed object below.
++            if incremental_usage_extension and (prompt_tokens or completion_tokens):
+                 usage_obj = {
+                     "input_tokens": prompt_tokens,
+                     "output_tokens": completion_tokens,
