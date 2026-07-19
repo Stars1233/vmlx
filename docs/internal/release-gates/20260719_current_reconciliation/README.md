@@ -1,6 +1,6 @@
 # Current source/release reconciliation — 2026-07-19
 
-Source head audited: `fad7356d4` (`reconcile/1.5.68`)
+Source cutoff audited: `a8864c6b6` (`reconcile/1.5.68`)
 
 Push target: `origin/codex/live-electron-gates-20260715`
 
@@ -29,8 +29,8 @@ Every investigated issue must be recorded before moving on:
 | Current full suites/build | `STALE-PASS / RERUN-REQUIRED` | `20260719_full_suite_checkpoint/` passed 6,125 Python, 2,312 panel, typecheck, bundle verification, and production build at an earlier source. Shared server/parser/loader changes landed afterward. |
 | Bundled Python | `STALE / BLOCKING` | M3 proof `20260719_m3_current_postfinalizer/` recorded source/bundle hash drift; `bundle-python.sh` is mandatory at the next cutoff. |
 | MiniMax M2.7 text/protocol | `VERIFIED-LIVE scoped` | `20260719_m27_protocol_parity/`, `anthropic_tool_parity/`, `ollama_stream_tool_parity/`, `ollama_multitool/`, `response_cancel_disconnect/`, and `chat_disconnect_stop_recovery/`. Other parser families and safe live mid-stream fault injection remain open. |
-| Paged-Off prompt-disk partial prefix | `VERIFIED-LIVE scoped` | M2.7 JANGTQ q4: `20260719_nonpaged_prompt_disk_partial/`. openPangu typed N-1 Auto/Off: `20260719_prompt_disk_payload_prefix_index/`. These prove disk reuse without paged cache; they do not generalize to every architecture. |
-| Paged q4 partial/eviction/L2 | `VERIFIED-LIVE scoped` | `20260719_m27_paged_l2_partial_refault/` proves 64+64+50 partial blocks, bounded L1 eviction, same-process L2 refault, process-restart disk-only restore, progressive Chat/Responses, and a post-restore tool loop. |
+| Paged-Off prompt-disk partial prefix | `VERIFIED-LIVE scoped` | M2.7 JANGTQ q4: `20260719_nonpaged_prompt_disk_partial/`. openPangu typed N-1 Auto/Off: `20260719_prompt_disk_payload_prefix_index/`. These prove disk reuse without paged cache; they do not generalize to every architecture. At cutoff `a8864c6b6`, no owning prompt-disk/prefix source changed after the live gates and the exact current disk/paged/TQ union passed 261 tests (2 deselected). |
+| Paged q4 partial/eviction/L2 | `VERIFIED-LIVE scoped` | `20260719_m27_paged_l2_partial_refault/` proves 64+64+50 partial blocks, bounded L1 eviction, same-process L2 refault, process-restart disk-only restore, progressive Chat/Responses, and a post-restore tool loop. `vmlx_engine/prefix_cache.py` and its focused tests are unchanged since `97a84fed5`; the current 261-test union passes. |
 | Chat terminal usage | `VERIFIED-LIVE scoped` | `20260719_chat_terminal_usage_parity/` proves ordinary `usage:null`, one final choices-empty usage chunk, then `[DONE]`; Electron paint remained progressive. Cross-family current-head repeats remain open. |
 | Bonsai 27B 1-bit | `VERIFIED-LIVE scoped / PARTIAL family` | `20260719_bonsai_partial_prefix_responses/` proves q8 attention-KV plus native companion state, 6,336-token RAM/L2 partial prefix, progressive exact tool continuation. Long pre-tool reasoning, stochastic/media/soak and signed-app repeats remain open. |
 | MiniMax M3 | `VERIFIED-LIVE text scoped / PARTIAL family` | `20260719_m3_current_postfinalizer/` proves current-source Electron and Chat/Responses text/tool streams with native MSA cache. Larger media/OCR/terminal delay/REAP and packaged repeat remain open. |
