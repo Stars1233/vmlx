@@ -1288,3 +1288,17 @@
   disk blocks, exact content, and 1.99s TTFT.
 - Expanded selected verification passes 513 with two intentional deselections.
 - Preserved the independent post-restart PID-header failure as open.
+
+## 2026-07-19 - Electron PID lifecycle repair
+
+- Traced the missing Step PID to the main process dropping `proc.pid` from
+  local `session:ready` payloads. The renderer summary type and two awaited
+  start resolutions also omitted PID, while the Stop handler retained stale
+  state.
+- Added PID transport for spawned and monitored local sessions, preserved it in
+  all shared-context start paths, and cleared it on Stop. Remote endpoints
+  remain PID-less.
+- Panel session PID/single-model/port selection passes 174/174 and typecheck.
+- Fully relaunched Electron with the project venv in PATH. Visible
+  Start/Stop/Start proved PID 38968 -> absent -> 39507 with SQLite and `ps`
+  parity and a single local engine.

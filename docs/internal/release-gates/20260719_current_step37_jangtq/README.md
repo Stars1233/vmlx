@@ -134,9 +134,15 @@ Literal `curl -N` requests used actual PNG data URLs.
    `paged+mixed_swa+disk`; row 476's `last_cache_execution` records
    `disk_hit=true` and `disk_blocks=68` for the immediate same-process frugal
    refault.
-4. `STEP-RESTART-PID-UI`: FAIL telemetry. After Electron Stop/Start, the model
-   was healthy and the UI showed Stop, but the active header no longer displayed
-   a PID.
+4. `STEP-RESTART-PID-UI`: FIXED/VERIFIED-LIVE. The main process now includes
+   the spawned/local PID in every local `session:ready` payload. The shared
+   Sessions context declares and preserves the PID through both direct and
+   awaited starts, and clears it on `session:stopped`. A fully relaunched
+   Electron main logged the project `.venv/bin/vmlx-engine`; visible Start
+   showed PID 38968, visible Stop removed the PID while SQLite stored
+   `pid=null,status=stopped`, and the next visible Start showed PID 39507.
+   Both running PIDs matched `ps`, the DB session, port 8022, and the sole local
+   `vmlx_engine.cli serve` process.
 5. `STEP-STOCHASTIC-SOAK`: PARTIAL. The retained unseeded 1,024-token reasoning
    loop remains a failure control. No sampler coercion or hidden output clamp
    was added.
@@ -161,6 +167,11 @@ Literal `curl -N` requests used actual PNG data URLs.
 - `step-current-restarted-loaded.png`
 - `step-current-image-a-restart-disk.png`
 - `step-current-same-process-disk-detail-fixed.png`
+- `pid-fix-running-server.png`
+- `pid-fix-running-chat-header.png`
+- `pid-fix-stopped-chat-header.png`
+- `pid-fix-restarted-chat-header.png`
+- `pid-lifecycle-proof.md`
 - `assistant-rows.json`
 - `api-stream-summary.json`
 - `restart-l2-health-summary.json`

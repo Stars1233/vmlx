@@ -7324,3 +7324,17 @@ Status: `VERIFIED-LIVE_SCOPED`; overall release remains
 - Focused current validation: 318/318. No source fix was required. Long soak and
   current MTP-Off performance A/B remain PARTIAL.
 - Evidence: `docs/internal/release-gates/20260719_current_hy3_mtp/`.
+
+## 2026-07-19 - shared Electron session PID lifecycle
+
+Status: `FIXED_SOURCE + VERIFIED-LIVE_SCOPED`; overall release remains
+`PARTIAL_NO_1_6_12_RELEASE`.
+
+- Root cause was missing PID transport in local `session:ready` events plus
+  incomplete PID lifecycle handling in `SessionsContext`, not an engine or DB
+  failure.
+- Focused panel verification passes 174/174 plus typecheck.
+- A complete Electron-main relaunch found the project venv engine. Visible
+  Start showed PID 38968, Stop removed PID from the header and DB, and the next
+  Start showed PID 39507 matching `ps` and SQLite; one local engine remained.
+- Evidence: `docs/internal/release-gates/20260719_current_step37_jangtq/`.

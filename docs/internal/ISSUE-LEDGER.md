@@ -2730,8 +2730,14 @@ remain open. No public release/notarization/feed mutation performed.
   matching the existing text scheduler. After source reload, rows 473/476 both
   reported 4,290 `paged+mixed_swa+disk` tokens; the immediate same-process row
   recorded `disk_hit=true` and `disk_blocks=68`.
-- `STEP37-RESTART-PID-UI`: `FAIL_TELEMETRY`. After Stop/Start, health was ready
-  and the Electron header exposed Stop but no PID.
+- `STEP37-RESTART-PID-UI`: `FIXED_SOURCE + VERIFIED-LIVE_SCOPED`. The local
+  `session:ready` paths now include the real PID; `SessionsContext` carries it
+  through event and promise paths and clears it on Stop. A full Electron-main
+  relaunch logged the project `.venv/bin/vmlx-engine`. Visible Start showed PID
+  38968 in both Server and Chat; visible Stop cleared the header and SQLite PID;
+  the next visible Start showed PID 39507, matching SQLite and `ps`. Exactly one
+  local engine was running. Panel PID/session/port tests pass 174/174 plus
+  typecheck. Evidence is in the Step current-source gate.
 - `STEP37-COLD-MEDIA-LATENCY`: `PARTIAL`. Cold image TTFT remained
   44.44-44.87s and video TTFT 55.21s. Larger video and retained stochastic
   loop soak remain open without sampler coercion.

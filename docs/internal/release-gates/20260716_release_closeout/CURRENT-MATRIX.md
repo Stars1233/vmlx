@@ -894,6 +894,14 @@ the Electron row.
 | DSV4 Flash | Native DSA/SWA/CSA/HCA composite and pool codec only; never generic TQ KV. | Composite cache health, eager load, cold/warm/restart/eviction, multi-turn agent loop, reasoning/content stream continuity and coherent constrained output. | PASS-LIVE eager/cache/settings/eviction/stream/tool-scope tiers / PARTIAL strict stochastic long quality+perf. The current v8 repair preserves the native pool-quantized class across snapshots, paged blocks, and disk reconstruction and removes an unsafe lazy cache-hit tail before `mx.clear_cache`. Electron rows 189/192 exact-finaled one real tool on cold and 340-token resident restore; rows 195/198 exact-finaled across a real UI Stop/Start with 338 `paged+dsv4+disk` tokens and byte-identical reasoning/content. Raw Responses cold/warm/skip-control normalized to the same function call; reasoning, arguments, post-tool content, and terminal events all streamed separately. Health identifies 43 native composite layers, pool quant enabled, generic TQ forced off, and v8 schema. Focused current-source validation is 813 passed / 1 skipped. Earlier eager/eviction/tool-scope evidence remains retained; stochastic exact-format and long quality/performance failures remain open. Evidence: `dsv4-eager-current/`, `dsv4-cache-current/`, `dsv4-tool-scope-current/`, `20260718_dsv4_v8_typed_cache_electron/`. |
 | MiniMax M3 / openPangu | Native typed architecture cache only; generic TQ remains off. | openPangu 3M current rows pass scoped tools/restart prompt L2, and current-head Auto now passes real Electron load/swap, progressive reasoning/content, required tool, post-tool continuation, and raw Chat/Responses terminals in `20260718_openpangu_auto_agent_stream/`. MiniMax-M3 image and MP4 prefixes pass content-keyed RAM/restart-L2 proof at `8df1bfe86`, and its current text Auto protocol gate is in `20260718_m3_auto_agent_stream/`. Larger-video, REAP32 headroom, digit OCR, terminal delay, openPangu long context, and cancellation/disconnect soak remain partial. | PARTIAL |
 
+Current Step session-lifecycle supplement: the missing post-restart PID was a
+shared Electron event/state defect, not a model-runtime failure. Local
+`session:ready` now transports the real PID and the shared chat context clears
+it on Stop. A full Electron-main relaunch plus visible Start/Stop/Start showed
+38968 -> no PID -> 39507, with DB/`ps` parity and exactly one engine. The
+focused panel selection passes 174/174 plus typecheck. Evidence:
+`20260719_current_step37_jangtq/`.
+
 Current Qwen 27 settings-parity evidence: the Electron number field published
 `3` before blur, SQLite persisted `nativeMtpDepth=3` with override enabled, PID
 52719 launched with `--native-mtp-depth 3`, `/health::mtp.effective_depth` was
