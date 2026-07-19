@@ -2215,3 +2215,31 @@ remain open. No public release/notarization/feed mutation performed.
   rows, paged block eviction/refault, media, gateway, full suites/build, and
   release gates remain `PARTIAL` or `OPEN` until their own current-source live
   evidence is recorded.
+
+## 2026-07-19 09:0x - explicit no-tool schema/prefix stability
+
+- `ELECTRON-NO-TOOL-SCHEMA-PREFIX-STABILITY`: `VERIFIED-LIVE` on source
+  commit `258cf16f9`. With built-in tools persistently enabled, the panel
+  recognized an explicit current-turn “do not call tools” directive but still
+  sent the full tool catalog plus `tool_choice=none`. On the next Responses
+  turn, MiniMax tool-template fallback inserted that catalog at the prompt
+  front; prompt size changed 297 to 1,185, the cached prefix no longer
+  matched, and three L1 evictions occurred. This was a shared Electron request-
+  builder defect, not a MiniMax, JANGTQ, reasoning-parser, or cache-codec
+  failure.
+- Both Responses and Chat builders now omit tool definitions entirely for a
+  guarded explicit no-tool directive. Normal tool-enabled turns remain
+  unchanged. Focused panel validation passed 24/24 and TypeScript typecheck.
+- After a full Electron main-process relaunch, the current-source base logged
+  `has_tools=false`, exact-finaled with separate reasoning, and stored a q4
+  native-TQ paged boundary. The same-chat follow-up also omitted tools,
+  restored 192 tokens as `paged+disk+tq-native`, recalled the exact private
+  fact, exact-finaled, and stored no warning.
+- The cache result is deliberately classified as same-process L2, not RAM:
+  with block disk enabled the default frugal policy keeps the L1 chain index
+  but releases the duplicate payload after q4-native disk write-through.
+  RAM-resident reuse with Block L2 Off, then forced eviction/L2 refault,
+  partial-block reuse, and process-restart restore remain the active parent
+  gate.
+- Evidence:
+  `docs/internal/release-gates/20260719_no_tool_schema_prefix_stability/`.
