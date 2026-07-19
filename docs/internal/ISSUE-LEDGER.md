@@ -1733,3 +1733,37 @@ remain open. No public release/notarization/feed mutation performed.
   noheavy_api_cache_contract rc=1 to triage).
 - ALSO: test_tq_disk_cache + test_tq_paged_block_cache FAIL under full suite
   but PASS in isolation — order-dependent state pollution, OPEN to root-cause.
+
+## 2026-07-18 19:0x - Step JANGTQ Auto-tool empty final recovered; cross-family Auto-stream gate remains open
+
+- `STEP37-AUTO-INVALID-TOOL-EMPTY`: scoped current-source fix is
+  `VERIFIED-LIVE` on the JANGTQ/MXTQ artifact, not inherited by affine JANG or
+  base MLX MXFP routes. An ordinary no-tool Electron request with the full
+  built-in catalog made Step emit malformed native XML; the schema validator
+  dropped it and the old stream finalized reasoning-only/empty. The new
+  Step-only intent-gated retry removes only tool schemas, preserves native
+  qwen3 reasoning, and requires a real close marker before progressively
+  exposing content. Explicit/required/named tool requests remain fail-closed.
+- Live Electron PID 56622, port 8022: row 42 recovered to exact
+  `3861 STEP-POSTREL-FIX-T2-DONE`; row 45 retained same-chat `CEDAR-720` and
+  visibly streamed the four-line final character-by-character; row 48 emitted
+  exactly one real `file_info(panel/package.json)`, two separate progressive
+  reasoning rails, exact 5.2 KB post-tool content, and reused 512
+  `paged+mixed_swa` tokens.
+- Raw temperature-0 parity: Responses no-tools 144/9 reasoning/content
+  deltas; Responses two-tools Auto 216/9; Chat two-tools Auto 255/10 plus stop
+  and `[DONE]`. All three exact-finaled. One earlier default-sampling response
+  inserted `WASHINGTON` into a strict marker despite structurally correct
+  152/21 streaming; it remains a semantic reliability FAIL sample.
+- Source tests: 352 passed / 3 deselected across server/tool format/prompt/
+  parser suites; py_compile and diff-check pass. Evidence:
+  `docs/internal/release-gates/20260718_step_auto_reasoning_tool_recovery/`.
+- `AUTO-REASONING-CROSS-FAMILY-STREAM`: OPEN/PARTIAL. Registered reasoning
+  parsers are deepseek_r1, gemma4, minimax_m2, minimax_m3, mistral,
+  openai_gptoss, qwen3, and think_xml. Every locally configured family must
+  still have a current-head representative prove Auto progressive reasoning,
+  progressive content, clean terminal, no-tool Auto, required tool, and
+  post-tool continuation in Electron plus raw Chat/Responses. No blanket
+  family pass is claimed from the Step row.
+- Global release/campaign status remains `PARTIAL`; no new release action is
+  authorized by this scoped fix.

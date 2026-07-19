@@ -871,3 +871,13 @@ reopened, same-artifact A/B pending). The matrix DSV4 row remains PARTIAL for
 long/strict quality; no artifact regeneration is recommended or authorized.
 Scoped-head note: code commits after `45c64f85e` through `937fd7639` and this
 addendum supersede the pinned head; the newest source-plus-live row wins.
+
+## 2026-07-18 post-release Step Auto reasoning/tool recovery
+
+| Gate | Status | Current source + live evidence | Remaining boundary |
+|---|---|---|---|
+| Step 3.7 JANGTQ Auto no-tool recovery | PASS-LIVE scoped | Step-only native tools-free retry is guarded by explicit tool intent and preserves the qwen3 rail. Electron rows 42/45 returned non-empty exact finals; row 45 visibly grew character-by-character. Raw deterministic Responses A/B emitted 144/9 deltas without tools and 216/9 with two Auto tools; Chat emitted 255/10 and clean stop/DONE. | Successful recovery still exposes a diagnostic warning on row 42; first-pass tight-memory cache store skipped; retain stochastic/default-sampling miss. |
+| Step explicit tool + post-tool stream | PASS-LIVE scoped | Electron row 48 executed one real `file_info(panel/package.json)`, rendered two separate progressive reasoning rails and progressive post-tool content, exact-finaled, and reused 512 `paged+mixed_swa` tokens. | Broader protocol cancellation/disconnect and media/eviction rows remain separate. |
+| Auto reasoning stream by registered parser/family | OPEN/PARTIAL | Registry inventory identifies eight reasoning parsers: `deepseek_r1`, `gemma4`, `minimax_m2`, `minimax_m3`, `mistral`, `openai_gptoss`, `qwen3`, `think_xml`. Existing historical rows are not promoted automatically to current-head proof. | For each locally configured family: current Electron and raw Chat/Responses no-tool Auto, required tool, post-tool continuation, progressive reasoning/content, clean terminal, distinct multi-turn reasoning, and no parser-marker leakage. |
+
+Evidence: `../20260718_step_auto_reasoning_tool_recovery/`.

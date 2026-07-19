@@ -1,0 +1,38 @@
+{
+  "artifact": "/Volumes/EricsLLMDrive/jangq-ai/Step-3.7-Flash-JANGTQ_K",
+  "port": 8022,
+  "responses_no_tools_temperature_0": {
+    "reasoning_delta_count": 144,
+    "reasoning_first_last_ms": [1007, 4120],
+    "content_delta_count": 9,
+    "content_first_last_ms": [4164, 4338],
+    "content": "\n245 STEP-API-AB-DONE",
+    "status": "completed",
+    "warnings": null
+  },
+  "responses_two_tools_auto_temperature_0": {
+    "reasoning_delta_count": 216,
+    "reasoning_first_last_ms": [664, 5416],
+    "content_delta_count": 9,
+    "content_first_last_ms": [5460, 5638],
+    "content": "\n245 STEP-API-AB-DONE",
+    "status": "completed",
+    "warnings": null
+  },
+  "chat_two_tools_auto_temperature_0": {
+    "reasoning_delta_count": 255,
+    "reasoning_first_last_ms": [1121, 6747],
+    "content_delta_count": 10,
+    "content_first_last_ms": [6814, 7014],
+    "content": "\n245 STEP-API-CHAT-AUTO-DONE",
+    "tool_delta_count": 0,
+    "finish_events": ["stop", "[DONE]"]
+  },
+  "retained_default_sampling_miss": {
+    "reasoning_delta_count": 152,
+    "content_delta_count": 21,
+    "content": "\n245\nAPI RESPONSES AUTO STREAMWASHINGTON\nSTEP-API-RESP-AUTO-DONE",
+    "status": "completed",
+    "classification": "structural stream pass; strict semantic-format fail"
+  }
+}
