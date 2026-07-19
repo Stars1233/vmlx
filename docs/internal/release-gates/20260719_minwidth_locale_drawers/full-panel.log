@@ -1,0 +1,388 @@
+
+> vmlx@1.6.11 test
+> vitest run --run
+
+
+[1m[46m RUN [49m[22m [36mv4.0.18 [39m[90m/Users/eric/mlx/vllm-mlx/panel[39m
+
+ [32m✓[39m tests/developer-tools.test.ts [2m([22m[2m92 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m tests/layout-shell.test.ts [2m([22m[2m189 tests[22m[2m)[22m[32m 14[2mms[22m[39m
+ [32m✓[39m tests/chat-ui.test.ts [2m([22m[2m142 tests[22m[2m)[22m[32m 26[2mms[22m[39m
+ [32m✓[39m tests/i18n-consistency.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 32[2mms[22m[39m
+ [32m✓[39m tests/session-port-ui.test.ts [2m([22m[2m170 tests[22m[2m)[22m[32m 27[2mms[22m[39m
+ [32m✓[39m tests/hf-download-worker-regression.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 36[2mms[22m[39m
+ [32m✓[39m tests/comprehensive-audit.test.ts [2m([22m[2m358 tests[22m[2m)[22m[32m 21[2mms[22m[39m
+ [32m✓[39m tests/download-system.test.ts [2m([22m[2m14 tests[22m[2m)[22m[32m 73[2mms[22m[39m
+ [32m✓[39m tests/coding-tools-config-save.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 78[2mms[22m[39m
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mstops other active local sessions before routing to the requested model
+[22m[39m[gateway] single-model mode: stopping session other-running before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mstops other active local sessions before routing to the requested model
+[22m[39m[gateway] single-model mode: stopping session other-loading before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mstops other active local sessions before routing to the requested model
+[22m[39m[gateway] single-model mode: stopping session other-standby before routing to target
+
+[90mstdout[2m | tests/mcp-gateway-routing.test.ts[2m > [22m[2mMCP gateway routing[2m > [22m[2mroutes MCP list and execute calls by explicit model alias
+[22m[39m[gateway] Listening on 127.0.0.1:50737
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2momits unset and disabled sampling sentinels without dropping explicit overrides
+[22m[39m[gateway] Listening on 127.0.0.1:50738
+
+ [32m✓[39m tests/session-model-path-recovery.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mallows gateway startup on ports used only by stopped or remote saved sessions
+[22m[39m[gateway] Listening on 127.0.0.1:50740
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mallows gateway startup on ports used only by stopped or remote saved sessions
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrestores the previous listener when restart targets an active session port
+[22m[39m[gateway] Listening on 127.0.0.1:50742
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrestores the previous listener when restart targets an active session port
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrestores the previous listener when restart targets an active session port
+[22m[39m[gateway] Listening on 127.0.0.1:50742
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrestores the previous listener when restart targets an active session port
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mreports failure when another active local session cannot be unloaded
+[22m[39m[gateway] single-model mode: stopping session other-running before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrefuses auto-switch when previous local model cannot unload before starting target
+[22m[39m[gateway] Listening on 127.0.0.1:50748
+
+ [32m✓[39m tests/cache-capacity-display.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrefuses auto-switch when previous local model cannot unload before starting target
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrefuses auto-switch when previous local model cannot unload before starting target
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches direct OpenAI streaming by model id without mutating payload or deltas
+[22m[39m[gateway] Listening on 127.0.0.1:50755
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2momits unset and disabled sampling sentinels without dropping explicit overrides
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/mcp-gateway-routing.test.ts[2m > [22m[2mMCP gateway routing[2m > [22m[2mroutes MCP list and execute calls by explicit model alias
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2momits malformed Ollama num_predict values instead of poisoning max_tokens
+[22m[39m[gateway] Listening on 127.0.0.1:50757
+
+[90mstdout[2m | tests/mcp-gateway-routing.test.ts[2m > [22m[2mMCP gateway routing[2m > [22m[2mauto-switches MCP tools and execute by explicit model in single-model mode
+[22m[39m[gateway] Listening on 127.0.0.1:50761
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches direct OpenAI streaming by model id without mutating payload or deltas
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches direct OpenAI streaming by model id without mutating payload or deltas
+[22m[39m[gateway] JIT loading session target
+
+[90mstdout[2m | tests/mcp-gateway-routing.test.ts[2m > [22m[2mMCP gateway routing[2m > [22m[2mauto-switches MCP tools and execute by explicit model in single-model mode
+[22m[39m[gateway] single-model mode: stopping session alpha before routing to beta
+
+[90mstdout[2m | tests/mcp-gateway-routing.test.ts[2m > [22m[2mMCP gateway routing[2m > [22m[2mauto-switches MCP tools and execute by explicit model in single-model mode
+[22m[39m[gateway] JIT waking session beta
+
+[90mstdout[2m | tests/mcp-gateway-routing.test.ts[2m > [22m[2mMCP gateway routing[2m > [22m[2mauto-switches MCP tools and execute by explicit model in single-model mode
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/mcp-gateway-routing.test.ts[2m > [22m[2mMCP gateway routing[2m > [22m[2mrejects ambiguous multi-session MCP requests without a model
+[22m[39m[gateway] Listening on 127.0.0.1:50777
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches direct OpenAI streaming by model id without mutating payload or deltas
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mserializes concurrent single-model switches before starting a second target
+[22m[39m[gateway] Listening on 127.0.0.1:50771
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mserializes concurrent single-model switches before starting a second target
+[22m[39m[gateway] single-model mode: stopping session other before routing to target-a
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mserializes concurrent single-model switches before starting a second target
+[22m[39m[gateway] JIT loading session target-a
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2momits malformed Ollama num_predict values instead of poisoning max_tokens
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2momits malformed Ollama context values instead of poisoning max_prompt_tokens
+[22m[39m[gateway] Listening on 127.0.0.1:50774
+
+ [32m✓[39m tests/generation-defaults.test.ts [2m([22m[2m15 tests[22m[2m)[22m[32m 34[2mms[22m[39m
+ [32m✓[39m tests/model-config-registry.test.ts [2m([22m[2m84 tests[22m[2m)[22m[32m 81[2mms[22m[39m
+[90mstdout[2m | tests/mcp-gateway-routing.test.ts[2m > [22m[2mMCP gateway routing[2m > [22m[2mrejects ambiguous multi-session MCP requests without a model
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/mcp-gateway-routing.test.ts[2m > [22m[2mMCP gateway routing[2m > [22m[2mkeeps direct single-session MCP gateway fallback compatible
+[22m[39m[gateway] Listening on 127.0.0.1:50785
+
+ [32m✓[39m tests/tool-status-responsiveness.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+[90mstdout[2m | tests/mcp-gateway-routing.test.ts[2m > [22m[2mMCP gateway routing[2m > [22m[2mkeeps direct single-session MCP gateway fallback compatible
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2momits malformed Ollama context values instead of poisoning max_prompt_tokens
+[22m[39m[gateway] Stopped
+
+ [32m✓[39m tests/mcp-gateway-routing.test.ts [2m([22m[2m7 tests[22m[2m | [22m[33m3 skipped[39m[2m)[22m[32m 179[2mms[22m[39m
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mdoes not coerce string false enable_thinking into reasoning on
+[22m[39m[gateway] Listening on 127.0.0.1:50789
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mdoes not coerce string false enable_thinking into reasoning on
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mforwards bearer auth through translated Ollama chat, generate, and embeddings routes
+[22m[39m[gateway] Listening on 127.0.0.1:50794
+
+ [32m✓[39m tests/settings-flow.test.ts [2m([22m[2m283 tests[22m[2m)[22m[32m 59[2mms[22m[39m
+ [32m✓[39m tests/api-gateway-ollama.test.ts [2m([22m[2m38 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mforwards bearer auth through translated Ollama chat, generate, and embeddings routes
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mrequires configured session bearer before gateway-owned model lists and Ollama routing
+[22m[39m[gateway] Listening on 127.0.0.1:50799
+
+ [32m✓[39m tests/chat-settings-compatibility.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m tests/image-system.test.ts [2m([22m[2m111 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mrequires configured session bearer before gateway-owned model lists and Ollama routing
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mauto-switches by model id in single-model mode before preserving streaming deltas
+[22m[39m[gateway] Listening on 127.0.0.1:50805
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mserializes concurrent single-model switches before starting a second target
+[22m[39m[gateway] single-model mode: stopping session target-a before routing to target-b
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mserializes concurrent single-model switches before starting a second target
+[22m[39m[gateway] JIT loading session target-b
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mauto-switches by model id in single-model mode before preserving streaming deltas
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mauto-switches by model id in single-model mode before preserving streaming deltas
+[22m[39m[gateway] JIT loading session target
+
+ [32m✓[39m tests/tool-auto-continue.test.ts [2m([22m[2m20 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mauto-switches by model id in single-model mode before preserving streaming deltas
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mauto-switches single-model Ollama chat while emitting incremental content chunks
+[22m[39m[gateway] Listening on 127.0.0.1:50812
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mauto-switches single-model Ollama chat while emitting incremental content chunks
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mauto-switches single-model Ollama chat while emitting incremental content chunks
+[22m[39m[gateway] JIT loading session target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mserializes concurrent single-model switches before starting a second target
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches to a standby model by waking it before direct OpenAI streaming
+[22m[39m[gateway] Listening on 127.0.0.1:50816
+
+ [32m✓[39m tests/tool-executor-security.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 113[2mms[22m[39m
+ [32m✓[39m tests/request-builder.test.ts [2m([22m[2m73 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mauto-switches single-model Ollama chat while emitting incremental content chunks
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mstreams thinking exactly once and leaves the terminal message empty
+[22m[39m[gateway] Listening on 127.0.0.1:50820
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mstreams thinking exactly once and leaves the terminal message empty
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mauto-switches single-model Ollama generate while emitting incremental response chunks
+[22m[39m[gateway] Listening on 127.0.0.1:50829
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mauto-switches single-model Ollama generate while emitting incremental response chunks
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mauto-switches single-model Ollama generate while emitting incremental response chunks
+[22m[39m[gateway] JIT loading session target
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mauto-switches single-model Ollama generate while emitting incremental response chunks
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mauto-switches single-model Ollama embeddings before proxying embedding data
+[22m[39m[gateway] Listening on 127.0.0.1:50840
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mauto-switches single-model Ollama embeddings before proxying embedding data
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mauto-switches single-model Ollama embeddings before proxying embedding data
+[22m[39m[gateway] JIT waking session target
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mauto-switches single-model Ollama embeddings before proxying embedding data
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2maborts Ollama backend streaming when the client disconnects mid-response
+[22m[39m[gateway] Listening on 127.0.0.1:50847
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches to a standby model by waking it before direct OpenAI streaming
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches to a standby model by waking it before direct OpenAI streaming
+[22m[39m[gateway] JIT waking session target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches to a standby model by waking it before direct OpenAI streaming
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches Responses API streaming by model id while preserving output text deltas
+[22m[39m[gateway] Listening on 127.0.0.1:50826
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches Responses API streaming by model id while preserving output text deltas
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches Responses API streaming by model id while preserving output text deltas
+[22m[39m[gateway] JIT loading session target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches Responses API streaming by model id while preserving output text deltas
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mpasses Responses function-call argument SSE through unchanged
+[22m[39m[gateway] Listening on 127.0.0.1:50836
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mpasses Responses function-call argument SSE through unchanged
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mpasses Responses function-call argument SSE through unchanged
+[22m[39m[gateway] JIT loading session target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mpasses Responses function-call argument SSE through unchanged
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mreturns backend-unavailable for stale Responses session ports
+[22m[39m[gateway] Listening on 127.0.0.1:50845
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mreturns backend-unavailable for stale Responses session ports
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches model capability requests by path model before proxying
+[22m[39m[gateway] Listening on 127.0.0.1:50854
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches model capability requests by path model before proxying
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches model capability requests by path model before proxying
+[22m[39m[gateway] JIT waking session target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches model capability requests by path model before proxying
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache endpoints by query model before proxying cache stats
+[22m[39m[gateway] Listening on 127.0.0.1:50860
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache endpoints by query model before proxying cache stats
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache endpoints by query model before proxying cache stats
+[22m[39m[gateway] JIT waking session target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache endpoints by query model before proxying cache stats
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache entries and clear endpoints by query model before proxying cache endpoints
+[22m[39m[gateway] Listening on 127.0.0.1:50865
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache entries and clear endpoints by query model before proxying cache endpoints
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache entries and clear endpoints by query model before proxying cache endpoints
+[22m[39m[gateway] JIT waking session target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache entries and clear endpoints by query model before proxying cache endpoints
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache warm by body model before proxying warm prompts
+[22m[39m[gateway] Listening on 127.0.0.1:50871
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache warm by body model before proxying warm prompts
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache warm by body model before proxying warm prompts
+[22m[39m[gateway] JIT waking session target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache warm by body model before proxying warm prompts
+[22m[39m[gateway] Stopped
+
+ [32m✓[39m tests/api-gateway-single-model.behavior.test.ts [2m([22m[2m25 tests[22m[2m)[22m[32m 230[2mms[22m[39m
+ [32m✓[39m tests/audit-fixes.test.ts [2m([22m[2m141 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m tests/download-manager.test.ts [2m([22m[2m29 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m tests/remote-session.test.ts [2m([22m[2m26 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m tests/responses-stream-recovery.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+ [32m✓[39m tests/jang-compat.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m tests/update-checker.test.ts [2m([22m[2m30 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/image-autodetect-paths.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+ [32m✓[39m tests/reasoning-display.test.ts [2m([22m[2m107 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m tests/mcp-policy.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m tests/dsv4-env.test.ts [2m([22m[2m25 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m tests/chat-override-policy.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m tests/responses-warnings.test.ts [2m([22m[2m25 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m tests/cache-control-policy.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/image-model-fuzzy-resolve.test.ts [2m([22m[2m25 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+ [32m✓[39m tests/interleaved-reasoning-segments.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/model-launch-memory.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m tests/load-progress-honesty.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/secret-settings-startup.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+ [32m✓[39m tests/jangtq-mpp-nax-global-setting.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/session-model-identity.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/tool-media-followup.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/interleaved-reasoning-render.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 22[2mms[22m[39m
+ [32m✓[39m tests/mcp-config-store.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/api-gateway-body.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/engine-path-policy.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/metal-wired-limit.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 2[2mms[22m[39m
+ [32m✓[39m tests/database-migrations.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+ [32m✓[39m tests/session-log-retention.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 2[2mms[22m[39m
+ [32m✓[39m tests/media-rollback-source.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 1[2mms[22m[39m
+ [32m✓[39m tests/models-scan-hf-layout.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 2[2mms[22m[39m
+ [32m✓[39m tests/chat-settings-reset-policy.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 2[2mms[22m[39m
+ [32m✓[39m tests/image-display-consistency.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/image-generation-state.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m tests/session-pid-lifecycle.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/chat-stream-errors.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/hf-settings.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 2[2mms[22m[39m
+ [32m✓[39m tests/backend-stderr.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 2[2mms[22m[39m
+ [32m✓[39m tests/app-user-data-isolation.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 2[2mms[22m[39m
+ [32m✓[39m tests/tool-history-replay.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/jang-quantization-label.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/user-data-override.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 1[2mms[22m[39m
+ [32m✓[39m tests/chat-error-display.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 1[2mms[22m[39m
+ [32m✓[39m tests/session-single-model-start.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 1[2mms[22m[39m
+ [32m✓[39m tests/session-card-quantization-label.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 1[2mms[22m[39m
+ [32m✓[39m tests/namespaced-tool-scaffold.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 1[2mms[22m[39m
+ [32m✓[39m tests/network-address.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 1[2mms[22m[39m
+ [32m✓[39m tests/dsv4-request-budget.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 1[2mms[22m[39m
+ [32m✓[39m tests/content-security-policy.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 1[2mms[22m[39m
+ [32m✓[39m tests/chat-metrics.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 1[2mms[22m[39m
+ [32m✓[39m tests/cache-metrics.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 1[2mms[22m[39m
+ [32m✓[39m tests/active-session-usable-twin.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 1[2mms[22m[39m
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2maborts Ollama backend streaming when the client disconnects mid-response
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mrefuses single-model Ollama routes when previous local model cannot unload
+[22m[39m[gateway] Listening on 127.0.0.1:50876
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mrefuses single-model Ollama routes when previous local model cannot unload
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mrefuses single-model Ollama routes when previous local model cannot unload
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mrefuses single-model Ollama routes when previous local model cannot unload
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-ollama-behavior.test.ts[2m > [22m[2mOllama gateway request translation behavior[2m > [22m[2mrefuses single-model Ollama routes when previous local model cannot unload
+[22m[39m[gateway] Stopped
+
+ [32m✓[39m tests/api-gateway-ollama-behavior.test.ts [2m([22m[2m13 tests[22m[2m)[22m[33m 3227[2mms[22m[39m
+     [33m[2m✓[22m[39m aborts Ollama backend streaming when the client disconnects mid-response [33m 3009[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m75 passed[39m[22m[90m (75)[39m
+[2m      Tests [22m [1m[32m2326 passed[39m[22m[2m | [22m[33m3 skipped[39m[90m (2329)[39m
+[2m   Start at [22m 12:42:58
+[2m   Duration [22m 3.56s[2m (transform 3.88s, setup 0ms, import 4.82s, tests 4.50s, environment 4ms)[22m

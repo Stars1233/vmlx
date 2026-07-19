@@ -1,5 +1,35 @@
 # Current Status
 
+## 2026-07-19 - minimum-width locale and drawer repair
+
+Status: `VERIFIED_LIVE_SCOPED_SECONDARY_MODALS_SIGNED_APP_OPEN`.
+
+- The 600 px layout fit, but live Korean/Spanish inspection exposed hardcoded
+  English across Create Session, Server Settings, chat-history/inference
+  controls, message/TTS actions, About/version, and API-key settings.
+- A second source sweep found and repaired the same defect in the Code and
+  chat-empty screens, remote picker/form, markdown copy feedback,
+  waiting/empty-response states, session side panels, image-session labels,
+  and user-visible fallback errors. All five catalogs and source contracts were
+  expanded together.
+- Cleanly relaunched the complete Electron main process with the project venv.
+  At 600x760, About/API Keys passed English, Chinese, Korean, Japanese, and
+  Spanish at document width 600/600 with zero sampled clipped controls. Korean
+  Chat, Create Session, remote endpoint, and the open Server drawer also pass.
+- The expanded Code screen passed 600/600 width, zero raw keys, and zero clipped
+  main elements in all five locales. Japanese opened the real localized remote
+  endpoint form at the same minimum width. Transient wait/empty-response and
+  image-session panels retain source/contract proof only in this pass.
+- Focused panel verification passes 341/341 plus typecheck. Complete current
+  suites pass: Python 6,153 passed / 96 skipped / 92 deselected; panel 2,326
+  passed / 3 skipped. The clean-JANG production bundle gate passed before the
+  expanded renderer sweep, and current renderer/main/preload production build
+  passes after it.
+- Evidence: `docs/internal/release-gates/20260719_minwidth_locale_drawers/`.
+- Remaining UI boundary: secondary/destructive modals, native confirmation
+  sheets, full accessibility traversal, transient states named above, and
+  signed-app repeat.
+
 ## 2026-07-19 - shared MLLM lazy-L2 cache-detail repair
 
 Status: `SCOPED_MLLM_CACHE_DETAIL_SOURCE_AND_STEP_LIVE_PASS_PID_UI_OPEN`.

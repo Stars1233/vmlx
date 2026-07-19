@@ -1,0 +1,2719 @@
+diff --git a/panel/src/renderer/src/App.tsx b/panel/src/renderer/src/App.tsx
+index a0a82ccc6..8cae6973a 100644
+--- a/panel/src/renderer/src/App.tsx
++++ b/panel/src/renderer/src/App.tsx
+@@ -25,6 +25,7 @@ import { isImageSession, sessionMatchesModelPath } from '../../shared/sessionUti
+ import { useTranslation, LOCALE_NAMES, LOCALE_FLAGS, type Locale } from './i18n'
+
+ function App() {
++  const { t } = useTranslation()
+   const [setupDone, setSetupDone] = useState(false)
+   const [checkingSetup, setCheckingSetup] = useState(true)
+   const { state, dispatch, setMode, openChat } = useAppState()
+@@ -148,9 +149,9 @@ function App() {
+       return
+     }
+
+-    const modelName = target.modelName || target.modelPath.split('/').pop() || 'New Chat'
++    const modelName = target.modelName || target.modelPath.split('/').pop() || t('chat.interface.newChat')
+     const result = await window.api.chat.create(
+-      `Chat with ${modelName}`,
++      t('chat.quickStart.chatWithModel', { model: modelName }),
+       target.modelPath,
+       undefined,
+       target.modelPath
+@@ -158,7 +159,7 @@ function App() {
+     if (result?.id) {
+       openChat(result.id, target.id)
+     }
+-  }, [sessions, state.activeSessionId, setMode, dispatch, openChat])
++  }, [sessions, state.activeSessionId, setMode, dispatch, openChat, t])
+
+   const handleSessionChange = useCallback(async (sessionId: string) => {
+     if (!state.activeChatId) return
+@@ -212,12 +213,12 @@ function App() {
+                 <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center mb-4">
+                   <Terminal className="h-8 w-8 text-emerald-500" />
+                 </div>
+-                <h2 className="text-lg font-semibold mb-2">Code</h2>
++                <h2 className="text-lg font-semibold mb-2">{t('app.code.title')}</h2>
+                 <p className="text-sm text-muted-foreground max-w-sm">
+-                  IDE-like coding environment with AI agent, file browser, and integrated terminal.
++                  {t('app.code.description')}
+                 </p>
+                 <span className="mt-4 px-3 py-1 text-xs font-medium bg-emerald-500/10 text-emerald-500 rounded-full">
+-                  Coming Soon
++                  {t('app.code.comingSoon')}
+                 </span>
+               </div>
+             )}
+@@ -293,59 +294,57 @@ function ChatModeContent({ activeChatId, sessionEndpoint, sessionStatus, activeS
+
+ // vMLX / mlxstudio — authored by Jinho Jang
+ function ChatEmptyState({ onNewChat }: { onNewChat: () => void }) {
++  const { t } = useTranslation()
+   return (
+     <div className="flex flex-col items-center justify-center h-full text-center px-8 overflow-auto" data-mlx-studio="jinhojang">
+       <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-4 flex-shrink-0">
+         <MessageSquare className="h-8 w-8 text-primary" />
+       </div>
+-      <h2 className="text-lg font-semibold mb-2">Start a conversation</h2>
++      <h2 className="text-lg font-semibold mb-2">{t('chat.interface.emptyStateTitle')}</h2>
+       <p className="text-sm text-muted-foreground mb-4 max-w-md">
+-        Load a model from the <strong>Server</strong> tab, then come back here to chat.
++        {t('chat.quickStart.emptyBody')}
+       </p>
+       <button
+         onClick={onNewChat}
+         className="px-4 py-2 bg-primary text-primary-foreground text-sm rounded-md hover:bg-primary/90 transition-colors mb-6"
+       >
+-        New Chat
++        {t('chat.interface.newChat')}
+       </button>
+
+       <div className="text-left max-w-lg space-y-3 text-xs text-muted-foreground border-t border-border pt-4">
+-        <p className="font-semibold text-foreground text-sm">Quick Start Guide</p>
++        <p className="font-semibold text-foreground text-sm">{t('chat.quickStart.title')}</p>
+
+         <div>
+-          <p className="font-medium text-foreground">Text Models</p>
+-          <p>Best for chat, coding, reasoning. Works with any MLX or JANG model.</p>
++          <p className="font-medium text-foreground">{t('chat.quickStart.textModelsTitle')}</p>
++          <p>{t('chat.quickStart.textModelsBody')}</p>
+           <p className="text-muted-foreground/70 mt-0.5">
+-            Recommended: Qwen3, Llama 4, Gemma 4, Nemotron, DeepSeek, Mistral
++            {t('chat.quickStart.textModelsRecommended')}
+           </p>
+         </div>
+
+         <div>
+-          <p className="font-medium text-foreground">Vision Models (VLM)</p>
+-          <p>Attach images in chat. The model auto-detects as VLM if it has a vision encoder.</p>
++          <p className="font-medium text-foreground">{t('chat.quickStart.visionModelsTitle')}</p>
++          <p>{t('chat.quickStart.visionModelsBody')}</p>
+           <p className="text-muted-foreground/70 mt-0.5">
+-            Recommended: Gemma 4 E2B/E4B (standard 4-bit), Qwen3.5-VL, Mistral Small 4
++            {t('chat.quickStart.visionModelsRecommended')}
+           </p>
+         </div>
+
+         <div>
+-          <p className="font-medium text-foreground">Large MoE Models + Smelt</p>
+-          <p>
+-            Models too big for RAM? Enable <strong>Smelt</strong> in Server Settings to load only a
+-            fraction of experts. Trades speed for RAM — 45-68% less memory.
+-          </p>
++          <p className="font-medium text-foreground">{t('chat.quickStart.smeltTitle')}</p>
++          <p>{t('chat.quickStart.smeltBody')}</p>
+           <p className="text-muted-foreground/70 mt-0.5">
+-            Smelt disables VLM mode (vision). Use text-only models with Smelt.
++            {t('chat.quickStart.smeltNote')}
+           </p>
+         </div>
+
+         <div>
+-          <p className="font-medium text-foreground">Tips</p>
++          <p className="font-medium text-foreground">{t('chat.quickStart.tipsTitle')}</p>
+           <ul className="list-disc list-inside space-y-0.5 text-muted-foreground/80">
+-            <li>Looping? Increase <strong>Repetition Penalty</strong> in Chat Settings (try 1.1-1.3)</li>
+-            <li>Slow first response? That's model weight paging — second message is faster</li>
+-            <li>JANG 2-bit models are compact but lower quality. Try JANG 4M or standard 4-bit for best results</li>
+-            <li>All settings auto-save per model. Switch models and your settings follow</li>
++            <li>{t('chat.quickStart.tipLooping')}</li>
++            <li>{t('chat.quickStart.tipFirstResponse')}</li>
++            <li>{t('chat.quickStart.tipJang')}</li>
++            <li>{t('chat.quickStart.tipSettings')}</li>
+           </ul>
+         </div>
+       </div>
+@@ -506,19 +505,21 @@ function ToolsModeContent() {
+ // ─── Shared Components ──────────────────────────────────────────────────────
+
+ function AppVersion() {
++  const { t } = useTranslation()
+   const [version, setVersion] = useState('...')
+   useEffect(() => {
+     window.api.app.getVersion().then((v: string) => setVersion(v)).catch(() => setVersion('unknown'))
+   }, [])
+   return (
+     <div className="text-xs text-muted-foreground space-y-1">
+-      <p>Version {version}</p>
+-      <p>&copy; {new Date().getFullYear()} Eric Jang. All rights reserved.</p>
++      <p>{t('app.about.version', { version })}</p>
++      <p>{t('app.about.copyright', { year: new Date().getFullYear() })}</p>
+     </div>
+   )
+ }
+
+ function ApiKeysSection() {
++  const { t } = useTranslation()
+   const [braveKey, setBraveKey] = useState('')
+   const [hfToken, setHfToken] = useState('')
+   const [saved, setSaved] = useState(false)
+@@ -566,19 +567,19 @@ function ApiKeysSection() {
+
+   return (
+     <div className="border border-border rounded-lg p-5">
+-      <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">API Keys</h3>
++      <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">{t('app.about.apiKeysTitle')}</h3>
+       <div className="space-y-3">
+         <div>
+-          <label className="text-sm font-medium">Brave Search API Key</label>
++          <label className="text-sm font-medium">{t('app.about.braveKey')}</label>
+           <p className="text-xs text-muted-foreground mt-0.5 mb-2">
+-            Required for the <code className="text-xs bg-muted px-1 py-0.5 rounded">web_search</code> tool when built-in tools are enabled.{' '}
++            {t('app.about.braveRequired')}{' '}
+             <a
+               href="https://brave.com/search/api/"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="text-primary hover:underline"
+             >
+-              Get a free key
++              {t('app.about.getFreeKey')}
+             </a>
+           </p>
+           <div className="flex gap-2">
+@@ -587,36 +588,36 @@ function ApiKeysSection() {
+                 type={showKey ? 'text' : 'password'}
+                 value={braveKey}
+                 onChange={e => { setBraveKey(e.target.value); setSaved(false) }}
+-                placeholder={hasSavedBraveKey ? 'Saved key configured (enter a new key to replace)' : 'BSA...'}
++                placeholder={hasSavedBraveKey ? t('app.about.savedKeyPlaceholder') : 'BSA...'}
+                 className="w-full px-3 py-2 bg-background border border-input rounded text-sm font-mono focus:outline-none focus:ring-1 focus:ring-ring pr-10"
+               />
+               <button
+                 onClick={() => setShowKey(!showKey)}
+                 className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground text-xs"
+-                title={showKey ? 'Hide' : 'Show'}
++                title={showKey ? t('app.about.hide') : t('app.about.show')}
+               >
+-                {showKey ? 'Hide' : 'Show'}
++                {showKey ? t('app.about.hide') : t('app.about.show')}
+               </button>
+             </div>
+             <button
+               onClick={handleSave}
+               className="px-4 py-2 text-sm bg-primary text-primary-foreground rounded hover:bg-primary/90"
+             >
+-              {saved ? 'Saved' : 'Save'}
++              {saved ? t('app.about.saved') : t('common.save')}
+             </button>
+           </div>
+         </div>
+         <div className="mt-4 pt-4 border-t border-border">
+-          <label className="text-sm font-medium">HuggingFace Token</label>
++          <label className="text-sm font-medium">{t('app.about.hfToken')}</label>
+           <p className="text-xs text-muted-foreground mt-0.5 mb-2">
+-            Required for downloading gated models (Flux, Llama, etc.).{' '}
++            {t('app.about.hfRequired')}{' '}
+             <a
+               href="https://huggingface.co/settings/tokens"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="text-primary hover:underline"
+             >
+-              Get your token
++              {t('app.about.getToken')}
+             </a>
+           </p>
+           <div className="flex gap-2">
+@@ -625,22 +626,22 @@ function ApiKeysSection() {
+                 type={showHfKey ? 'text' : 'password'}
+                 value={hfToken}
+                 onChange={e => { setHfToken(e.target.value); setHfSaved(false) }}
+-                placeholder={hasSavedHfToken ? 'Saved token configured (enter a new token to replace)' : 'hf_...'}
++                placeholder={hasSavedHfToken ? t('app.about.savedTokenPlaceholder') : 'hf_...'}
+                 className="w-full px-3 py-2 bg-background border border-input rounded text-sm font-mono focus:outline-none focus:ring-1 focus:ring-ring pr-10"
+               />
+               <button
+                 onClick={() => setShowHfKey(!showHfKey)}
+                 className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground text-xs"
+-                title={showHfKey ? 'Hide' : 'Show'}
++                title={showHfKey ? t('app.about.hide') : t('app.about.show')}
+               >
+-                {showHfKey ? 'Hide' : 'Show'}
++                {showHfKey ? t('app.about.hide') : t('app.about.show')}
+               </button>
+             </div>
+             <button
+               onClick={handleHfSave}
+               className="px-4 py-2 text-sm bg-primary text-primary-foreground rounded hover:bg-primary/90"
+             >
+-              {hfSaved ? 'Saved' : 'Save'}
++              {hfSaved ? t('app.about.saved') : t('common.save')}
+             </button>
+           </div>
+         </div>
+diff --git a/panel/src/renderer/src/components/chat/MessageBubble.tsx b/panel/src/renderer/src/components/chat/MessageBubble.tsx
+index 7e31dc10e..139335462 100644
+--- a/panel/src/renderer/src/components/chat/MessageBubble.tsx
++++ b/panel/src/renderer/src/components/chat/MessageBubble.tsx
+@@ -10,6 +10,7 @@ import { InlineToolCall, InlineToolGroup } from './InlineToolCall'
+ import { TTSPlayer } from './VoiceChat'
+ import { formatTimestamp, parseContentArray, getMetricsItems, type MessageMetrics } from './chat-utils'
+ import { reasoningSegmentsForDisplay as getReasoningSegmentsForDisplay } from '../../../../shared/interleavedReasoning'
++import { useTranslation } from '../../i18n'
+
+ interface Message {
+   id: string
+@@ -35,26 +36,22 @@ interface MessageBubbleProps {
+   onEdit?: (messageId: string, newContent: string) => void
+ }
+
+-// Custom renderer: wraps code blocks with a header bar (language label + copy button)
+-const renderer = new marked.Renderer()
+-renderer.code = (code, lang) => {
++// Custom renderer: wraps code blocks with a localized header bar.
++function parseMarkdown(markdown: string, defaultLanguage: string, copyLabel: string): string {
++  const renderer = new marked.Renderer()
++  renderer.code = (code, lang) => {
+   let highlighted: string
+   if (lang && hljs.getLanguage(lang)) {
+     highlighted = hljs.highlight(code, { language: lang }).value
+   } else {
+     highlighted = hljs.highlightAuto(code).value
+   }
+-  const headerHtml = `<div class="code-header"><span class="code-lang">${lang || 'code'}</span><button class="code-copy-btn">Copy</button></div>`
++  const headerHtml = `<div class="code-header"><span class="code-lang">${lang || defaultLanguage}</span><button class="code-copy-btn">${copyLabel}</button></div>`
+   return `<div class="code-block-wrapper">${headerHtml}<pre><code class="hljs language-${lang || 'plaintext'}">${highlighted}</code></pre></div>`
++  }
++  return marked.parse(markdown, { renderer, breaks: true, gfm: true }) as string
+ }
+
+-// Configure marked with code highlighting and custom renderer
+-marked.setOptions({
+-  renderer,
+-  breaks: true,
+-  gfm: true
+-})
+-
+ /**
+  * Sanitize HTML using DOMPurify — allows safe markdown output, blocks XSS.
+  * All user/model content passes through this before being rendered via innerHTML.
+@@ -177,6 +174,7 @@ function useTypewriter(fullContent: string, isStreaming: boolean): string {
+ }
+
+ export const MessageBubble = memo(function MessageBubble({ message, isStreaming, metrics, reasoningContent, reasoningSegments, reasoningDone, toolStatuses, warnings, sessionId, sessionEndpoint, isLastAssistant, onRegenerate, onEdit }: MessageBubbleProps) {
++  const { t } = useTranslation()
+   const [copied, setCopied] = useState(false)
+   const [zoomedImage, setZoomedImage] = useState<string | null>(null)
+   const [editing, setEditing] = useState(false)
+@@ -195,10 +193,10 @@ export const MessageBubble = memo(function MessageBubble({ message, isStreaming,
+     const code = btn.closest('.code-block-wrapper')?.querySelector('code')
+     if (code) {
+       navigator.clipboard.writeText(code.textContent || '')
+-      btn.textContent = 'Copied!'
+-      setTimeout(() => { btn.textContent = 'Copy' }, 1500)
++      btn.textContent = t('chat.bubble.codeCopied')
++      setTimeout(() => { btn.textContent = t('chat.bubble.codeCopy') }, 1500)
+     }
+-  }, [])
++  }, [t])
+
+   // Group tool statuses for inline rendering
+   const toolGroups = useMemo(() => {
+@@ -237,7 +235,11 @@ export const MessageBubble = memo(function MessageBubble({ message, isStreaming,
+   // Render a DOMPurify-sanitized markdown segment
+   const renderMarkdownSegment = useCallback((text: string, key: string) => {
+     if (!text) return null
+-    const safeHtml = sanitizeHtml(marked.parse(text) as string)
++    const safeHtml = sanitizeHtml(parseMarkdown(
++      text,
++      t('chat.bubble.codeDefaultLang'),
++      t('chat.bubble.codeCopy')
++    ))
+     return (
+       <div
+         key={key}
+@@ -246,7 +248,7 @@ export const MessageBubble = memo(function MessageBubble({ message, isStreaming,
+         onClick={handleProseClick}
+       />
+     )
+-  }, [handleProseClick])
++  }, [handleProseClick, t])
+
+   const renderUserContent = () => {
+     const contentParts = parseContentArray(message.content)
+@@ -273,7 +275,7 @@ export const MessageBubble = memo(function MessageBubble({ message, isStreaming,
+                 <img
+                   key={i}
+                   src={img.image_url!.url}
+-                  alt={`Attached image ${i + 1}`}
++                  alt={t('chat.bubble.imageAlt', { n: i + 1 })}
+                   className="max-w-[300px] max-h-[200px] rounded-md border border-white/10 cursor-pointer hover:opacity-90 transition-opacity object-contain"
+                   onClick={() => setZoomedImage(img.image_url!.url)}
+                 />
+@@ -340,7 +342,7 @@ export const MessageBubble = memo(function MessageBubble({ message, isStreaming,
+         elements.push(
+           <div key="processing" className="flex items-center gap-2 text-muted-foreground text-xs py-1">
+             <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${isGenerating ? 'bg-primary' : 'bg-warning'}`} />
+-            <span>{isGenerating ? 'Generating tool call...' : 'Processing tool results...'}</span>
++            <span>{isGenerating ? t('chat.bubble.generatingTool') : t('chat.bubble.processingTool')}</span>
+           </div>
+         )
+       }
+@@ -353,7 +355,11 @@ export const MessageBubble = memo(function MessageBubble({ message, isStreaming,
+     }
+
+     if (!content.trim()) return null
+-    const safeHtml = sanitizeHtml(marked.parse(content) as string)
++    const safeHtml = sanitizeHtml(parseMarkdown(
++      content,
++      t('chat.bubble.codeDefaultLang'),
++      t('chat.bubble.codeCopy')
++    ))
+     return (
+       <div
+         className={proseClasses}
+@@ -420,8 +426,8 @@ export const MessageBubble = memo(function MessageBubble({ message, isStreaming,
+               }}
+             />
+             <div className="flex gap-2 mt-1.5">
+-              <button onClick={() => setEditing(false)} className="text-xs text-muted-foreground hover:text-foreground px-2 py-1">Cancel</button>
+-              <button onClick={() => { if (editText.trim()) { onEdit(message.id, editText.trim()); setEditing(false) } }} className="text-xs bg-primary text-primary-foreground px-3 py-1 rounded hover:bg-primary/90">Send</button>
++              <button onClick={() => setEditing(false)} className="text-xs text-muted-foreground hover:text-foreground px-2 py-1">{t('chat.bubble.cancel')}</button>
++              <button onClick={() => { if (editText.trim()) { onEdit(message.id, editText.trim()); setEditing(false) } }} className="text-xs bg-primary text-primary-foreground px-3 py-1 rounded hover:bg-primary/90">{t('chat.bubble.send')}</button>
+             </div>
+           </div>
+         </div>
+@@ -441,7 +447,7 @@ export const MessageBubble = memo(function MessageBubble({ message, isStreaming,
+                 setEditing(true)
+               }}
+               className="text-muted-foreground/40 hover:text-foreground transition-colors p-1"
+-              title="Edit & resend"
++              title={t('chat.bubble.editTitle')}
+             >
+               <Pencil className="h-3 w-3" />
+             </button>
+@@ -467,13 +473,15 @@ export const MessageBubble = memo(function MessageBubble({ message, isStreaming,
+           >
+             <img
+               src={zoomedImage}
+-              alt="Zoomed"
++              alt={t('chat.bubble.zoomedAlt')}
+               className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg"
+               onClick={e => e.stopPropagation()}
+             />
+             <button
+               onClick={() => setZoomedImage(null)}
+               className="absolute top-4 right-4 text-white/80 hover:text-white text-2xl font-bold"
++              aria-label={t('common.close')}
++              title={t('common.close')}
+             >
+               x
+             </button>
+@@ -501,7 +509,7 @@ export const MessageBubble = memo(function MessageBubble({ message, isStreaming,
+               <button
+                 onClick={() => copyToClipboard(message.content)}
+                 className="text-muted-foreground/50 hover:text-foreground transition-colors"
+-                title="Copy response"
++                title={t('chat.bubble.copyTitle')}
+               >
+                 {copied
+                   ? <Check className="h-3 w-3 text-success" />
+@@ -512,7 +520,7 @@ export const MessageBubble = memo(function MessageBubble({ message, isStreaming,
+                 <button
+                   onClick={onRegenerate}
+                   className="text-muted-foreground/50 hover:text-foreground transition-colors"
+-                  title="Regenerate response"
++                  title={t('chat.bubble.regenerateTitle')}
+                 >
+                   <RefreshCw className="h-3 w-3" />
+                 </button>
+@@ -545,13 +553,13 @@ export const MessageBubble = memo(function MessageBubble({ message, isStreaming,
+           {isEmptyAssistant && isStreaming && (
+             <div className="flex items-center gap-2 text-muted-foreground py-1">
+               <Loader2 className="h-3.5 w-3.5 animate-spin text-primary" />
+-              <span>Waiting for model response...</span>
++              <span>{t('chat.bubble.waitingForResponse')}</span>
+             </div>
+           )}
+           {isEmptyAssistant && !isStreaming && (
+             <div className="flex items-center gap-2 rounded-md border border-warning/30 bg-warning/10 px-3 py-2 text-xs text-warning-foreground/90">
+               <AlertTriangle className="h-3.5 w-3.5 flex-shrink-0 text-warning" />
+-              <span>No visible response was produced.</span>
++              <span>{t('chat.bubble.noVisibleResponse')}</span>
+             </div>
+           )}
+         </div>
+diff --git a/panel/src/renderer/src/components/chat/VoiceChat.tsx b/panel/src/renderer/src/components/chat/VoiceChat.tsx
+index 429755681..e5d4a3991 100644
+--- a/panel/src/renderer/src/components/chat/VoiceChat.tsx
++++ b/panel/src/renderer/src/components/chat/VoiceChat.tsx
+@@ -1,4 +1,5 @@
+ import { useState, useRef, useCallback, useEffect } from 'react'
++import { useTranslation } from '../../i18n'
+
+ interface VoiceChatProps {
+   onTranscription: (text: string) => void
+@@ -220,6 +221,7 @@ interface TTSPlayerProps {
+  * TTS settings resolution: explicit prop > settings('ttsModel'/'ttsVoice'/'ttsSpeed') > defaults
+  */
+ export function TTSPlayer({ text, endpoint, sessionId, ttsModel, voice, speed, autoPlay }: TTSPlayerProps) {
++  const { t } = useTranslation()
+   const [playing, setPlaying] = useState(false)
+   const [loading, setLoading] = useState(false)
+   const audioRef = useRef<HTMLAudioElement | null>(null)
+@@ -288,7 +290,7 @@ export function TTSPlayer({ text, endpoint, sessionId, ttsModel, voice, speed, a
+       onClick={playing ? stop : play}
+       disabled={loading}
+       className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors ml-2"
+-      title={playing ? 'Stop playback' : 'Read aloud'}
++      title={playing ? t('chat.tts.stopTitle') : t('chat.tts.readAloudTitle')}
+     >
+       {loading ? (
+         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="animate-spin">
+@@ -306,7 +308,7 @@ export function TTSPlayer({ text, endpoint, sessionId, ttsModel, voice, speed, a
+           <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+         </svg>
+       )}
+-      {playing ? 'stop' : 'speak'}
++      {playing ? t('chat.tts.stop') : t('chat.tts.speak')}
+     </button>
+   )
+ }
+diff --git a/panel/src/renderer/src/components/layout/ChatHistory.tsx b/panel/src/renderer/src/components/layout/ChatHistory.tsx
+index 430995eb5..765e67ba6 100644
+--- a/panel/src/renderer/src/components/layout/ChatHistory.tsx
++++ b/panel/src/renderer/src/components/layout/ChatHistory.tsx
+@@ -1,5 +1,6 @@
+ import { useState, useEffect, useRef } from 'react'
+ import { Pencil, Trash2, X, Check, MessageSquare, Search, Trash } from 'lucide-react'
++import { useTranslation } from '../../i18n'
+
+ interface ChatSummary {
+   id: string
+@@ -51,6 +52,7 @@ function groupByDate(chats: ChatSummary[]): DateGroup[] {
+ }
+
+ export function ChatHistory({ currentChatId, onChatSelect, searchQuery }: ChatHistoryProps) {
++  const { t } = useTranslation()
+   const [chats, setChats] = useState<ChatSummary[]>([])
+   const [loading, setLoading] = useState(true)
+   const [renamingId, setRenamingId] = useState<string | null>(null)
+@@ -100,7 +102,7 @@ export function ChatHistory({ currentChatId, onChatSelect, searchQuery }: ChatHi
+     // vmlx#70: shift-click skips the confirm dialog for quick-delete mode
+     // (matches the convention @scannermobs asked for — other apps use
+     // shift as a modifier for destructive actions).
+-    if (!e.shiftKey && !confirm('Delete this chat?')) return
++    if (!e.shiftKey && !confirm(t('layout.chatHistory.deleteConfirm'))) return
+     await window.api.chat.delete(id)
+     // Deselect if the deleted chat was the active one
+     if (id === currentChatId) {
+@@ -116,10 +118,7 @@ export function ChatHistory({ currentChatId, onChatSelect, searchQuery }: ChatHi
+   const handleClearAll = async () => {
+     const total = chats.length
+     if (total === 0) return
+-    if (!confirm(
+-      `Delete ALL ${total} chat${total === 1 ? '' : 's'} across every model?\n\n` +
+-      `This wipes the chat rows and their messages. Cannot be undone.`
+-    )) return
++    if (!confirm(t('layout.chatHistory.clearAllConfirm', { n: total }))) return
+     try {
+       const res = await window.api.chat.deleteAll()
+       if (!res?.success) {
+@@ -141,7 +140,7 @@ export function ChatHistory({ currentChatId, onChatSelect, searchQuery }: ChatHi
+   const groups = groupByDate(filtered)
+
+   if (loading) {
+-    return <div className="px-3 py-4 text-xs text-muted-foreground">Loading chats...</div>
++    return <div className="px-3 py-4 text-xs text-muted-foreground">{t('layout.chatHistory.loading')}</div>
+   }
+
+   if (filtered.length === 0) {
+@@ -150,13 +149,13 @@ export function ChatHistory({ currentChatId, onChatSelect, searchQuery }: ChatHi
+         {searchQuery ? (
+           <>
+             <Search className="h-5 w-5 text-muted-foreground/40 mb-2" />
+-            <span className="text-xs text-muted-foreground">No chats match your search</span>
++            <span className="text-xs text-muted-foreground">{t('layout.chatHistory.noResults')}</span>
+           </>
+         ) : (
+           <>
+             <MessageSquare className="h-5 w-5 text-muted-foreground/40 mb-2" />
+-            <span className="text-xs text-muted-foreground">No chats yet</span>
+-            <span className="text-[10px] text-muted-foreground/50 mt-0.5">Start a new chat to begin</span>
++            <span className="text-xs text-muted-foreground">{t('layout.chatHistory.empty')}</span>
++            <span className="text-[10px] text-muted-foreground/50 mt-0.5">{t('layout.chatHistory.emptyHint')}</span>
+           </>
+         )}
+       </div>
+@@ -169,24 +168,24 @@ export function ChatHistory({ currentChatId, onChatSelect, searchQuery }: ChatHi
+       {chats.length > 0 && !searchQuery && (
+         <div className="px-3 pt-2 pb-1 flex items-center justify-between border-b border-border/40">
+           <span className="text-[10px] text-muted-foreground/70">
+-            {chats.length} chat{chats.length === 1 ? '' : 's'} • shift-click × to skip confirm
++            {t('layout.chatHistory.chatCountHint', { n: chats.length })}
+           </span>
+           <button
+             type="button"
+             onClick={handleClearAll}
+             className="text-[10px] text-destructive hover:text-destructive/80 hover:underline flex items-center gap-1"
+-            aria-label="Clear all chats"
+-            title="Delete every chat across every model (with confirm)"
++            aria-label={t('layout.chatHistory.clearAllAria')}
++            title={t('layout.chatHistory.clearAllTitle')}
+           >
+             <Trash className="h-3 w-3" />
+-            Clear All
++            {t('layout.chatHistory.clearAll')}
+           </button>
+         </div>
+       )}
+       {groups.map(group => (
+         <div key={group.label}>
+           <div className="px-3 pt-3 pb-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+-            {group.label}
++            {t(`layout.chatHistory.group${group.label.replace(/\s+/g, '')}`)}
+           </div>
+           {group.chats.map(chat => (
+             <div
+diff --git a/panel/src/renderer/src/components/layout/ChatModeToolbar.tsx b/panel/src/renderer/src/components/layout/ChatModeToolbar.tsx
+index f534508ec..563b5b3ea 100644
+--- a/panel/src/renderer/src/components/layout/ChatModeToolbar.tsx
++++ b/panel/src/renderer/src/components/layout/ChatModeToolbar.tsx
+@@ -5,6 +5,7 @@ import { ServerSettingsDrawer } from '../sessions/ServerSettingsDrawer'
+ import { useSessionsContext, type SessionSummary } from '../../contexts/SessionsContext'
+ import { isImageSession } from '../../../../shared/sessionUtils'
+ import { canonicalizeReasoningParserForCli } from '../../../../shared/reasoningParserAliases'
++import { useTranslation } from '../../i18n'
+
+ interface ChatModeToolbarProps {
+   activeChatId: string | null
+@@ -28,6 +29,7 @@ interface SessionDetail {
+ }
+
+ export function ChatModeToolbar({ activeChatId, activeSessionId, onSessionChange, onOverridesChanged }: ChatModeToolbarProps) {
++  const { t } = useTranslation()
+   const { sessions: allSessions } = useSessionsContext()
+
+   // Filter out image sessions — they belong in the Image tab, not chat
+@@ -97,8 +99,8 @@ export function ChatModeToolbar({ activeChatId, activeSessionId, onSessionChange
+
+   const isRemote = displaySession?.type === 'remote'
+   const shortName = displaySession
+-    ? (displaySession.modelName || displaySession.modelPath.split('/').pop() || 'Model')
+-    : 'No model selected'
++    ? (displaySession.modelName || displaySession.modelPath.split('/').pop() || t('layout.chatToolbar.modelFallback'))
++    : t('layout.chatToolbar.noModelSelected')
+   const isRunning = displaySession?.status === 'running'
+   const isStandby = displaySession?.status === 'standby'
+   const isLoading = displaySession?.status === 'loading'
+@@ -132,7 +134,7 @@ export function ChatModeToolbar({ activeChatId, activeSessionId, onSessionChange
+         remoteModel: remoteModel.trim(),
+       })
+       if (!remoteResult.success) {
+-        throw new Error(remoteResult.error || 'Failed to create remote session')
++        throw new Error(remoteResult.error || t('layout.chatToolbar.remoteCreateFailed'))
+       }
+       const session = remoteResult.session
+
+@@ -145,7 +147,7 @@ export function ChatModeToolbar({ activeChatId, activeSessionId, onSessionChange
+         setRemoteModel('')
+         setRemoteApiKey('')
+       } else {
+-        setRemoteError(result.error || 'Failed to connect')
++        setRemoteError(result.error || t('layout.chatToolbar.remoteConnectFailed'))
+       }
+     } catch (error) {
+       setRemoteError((error as Error).message)
+@@ -163,7 +165,7 @@ export function ChatModeToolbar({ activeChatId, activeSessionId, onSessionChange
+       <div className="flex flex-col border-b border-border bg-card/50 flex-shrink-0">
+         <div className="flex items-center gap-2 px-3 py-1.5">
+           <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground flex-shrink-0" />
+-          <span className="text-xs text-muted-foreground">No models configured.</span>
++          <span className="text-xs text-muted-foreground">{t('layout.chatToolbar.noModels')}</span>
+           <button
+             onClick={() => {
+               const event = new CustomEvent('vmlx:navigate', { detail: { mode: 'server', panel: 'create', modelPath: null } })
+@@ -171,14 +173,14 @@ export function ChatModeToolbar({ activeChatId, activeSessionId, onSessionChange
+             }}
+             className="text-xs text-primary hover:text-primary/80 font-medium"
+           >
+-            Add local model
++            {t('layout.chatToolbar.addLocalModel')}
+           </button>
+-          <span className="text-xs text-muted-foreground">or</span>
++          <span className="text-xs text-muted-foreground">{t('common.or')}</span>
+           <button
+             onClick={() => { setShowRemoteForm(!showRemoteForm); setRemoteError(null) }}
+             className="text-xs text-primary hover:text-primary/80 font-medium"
+           >
+-            Connect remote
++            {t('layout.chatToolbar.connectRemote')}
+           </button>
+         </div>
+         {showRemoteForm && (
+@@ -187,21 +189,21 @@ export function ChatModeToolbar({ activeChatId, activeSessionId, onSessionChange
+               autoFocus
+               value={remoteUrl}
+               onChange={e => setRemoteUrl(e.target.value)}
+-              placeholder="API URL (e.g. https://api.openai.com)"
++              placeholder={t('layout.chatToolbar.apiUrlPlaceholder')}
+               className="w-full px-2 py-1.5 bg-background border border-input rounded text-xs focus:outline-none focus:ring-1 focus:ring-ring"
+             />
+             <div className="flex gap-2">
+               <input
+                 value={remoteModel}
+                 onChange={e => setRemoteModel(e.target.value)}
+-                placeholder="Model name (e.g. gpt-4o)"
++                placeholder={t('layout.chatToolbar.modelNamePlaceholder')}
+                 className="flex-1 px-2 py-1.5 bg-background border border-input rounded text-xs focus:outline-none focus:ring-1 focus:ring-ring"
+               />
+               <input
+                 type="password"
+                 value={remoteApiKey}
+                 onChange={e => setRemoteApiKey(e.target.value)}
+-                placeholder="API key"
++                placeholder={t('layout.chatToolbar.apiKeyPlaceholder')}
+                 className="flex-1 px-2 py-1.5 bg-background border border-input rounded text-xs font-mono focus:outline-none focus:ring-1 focus:ring-ring"
+               />
+             </div>
+@@ -215,16 +217,16 @@ export function ChatModeToolbar({ activeChatId, activeSessionId, onSessionChange
+                 className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-primary text-primary-foreground rounded hover:bg-primary/90 disabled:opacity-50 transition-colors"
+               >
+                 {remoteConnecting ? (
+-                  <><Loader2 className="h-3 w-3 animate-spin" /> Connecting...</>
++                  <><Loader2 className="h-3 w-3 animate-spin" /> {t('common.connecting')}</>
+                 ) : (
+-                  <><Globe className="h-3 w-3" /> Connect</>
++                  <><Globe className="h-3 w-3" /> {t('common.connect')}</>
+                 )}
+               </button>
+               <button
+                 onClick={() => setShowRemoteForm(false)}
+                 className="text-xs text-muted-foreground hover:text-foreground px-2 py-1.5"
+               >
+-                Cancel
++                {t('common.cancel')}
+               </button>
+             </div>
+           </div>
+@@ -275,10 +277,10 @@ export function ChatModeToolbar({ activeChatId, activeSessionId, onSessionChange
+                     }`} />
+                     <span className="flex-1 truncate font-medium">{name}</span>
+                     {s.type === 'remote' && (
+-                      <span className="text-[10px] bg-primary/15 text-primary px-1 py-0.5 rounded">Remote</span>
++                      <span className="text-[10px] bg-primary/15 text-primary px-1 py-0.5 rounded">{t('layout.chatToolbar.remoteBadge')}</span>
+                     )}
+                     <span className="text-[10px] text-muted-foreground">
+-                      {s.status === 'running' ? 'Running' : s.status === 'standby' ? 'Sleeping' : s.status === 'loading' ? 'Loading' : 'Stopped'}
++                      {s.status === 'running' ? t('status.running') : s.status === 'standby' ? t('status.sleeping') : s.status === 'loading' ? t('status.loading') : t('status.stopped')}
+                     </span>
+                   </button>
+                 )
+@@ -295,22 +297,22 @@ export function ChatModeToolbar({ activeChatId, activeSessionId, onSessionChange
+                 className="w-full flex items-center gap-2 px-3 py-2 text-left text-xs text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
+               >
+                 <Plus className="h-3 w-3" />
+-                Add local model
++                {t('layout.chatToolbar.addLocalModel')}
+               </button>
+               <button
+                 onClick={() => { setShowRemoteForm(true); setRemoteError(null) }}
+                 className="w-full flex items-center gap-2 px-3 py-2 text-left text-xs text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
+               >
+                 <Globe className="h-3 w-3" />
+-                Connect remote endpoint
++                {t('layout.chatToolbar.connectRemoteEndpoint')}
+               </button>
+
+               {/* Inline remote form */}
+               {showRemoteForm && (
+                 <div className="border-t border-border mt-1 p-3 space-y-2" onClick={e => e.stopPropagation()}>
+                   <div className="flex items-center justify-between">
+-                    <span className="text-xs font-medium">Connect Remote</span>
+-                    <button onClick={() => setShowRemoteForm(false)} className="text-muted-foreground hover:text-foreground">
++                    <span className="text-xs font-medium">{t('layout.chatToolbar.connectRemote')}</span>
++                    <button onClick={() => setShowRemoteForm(false)} className="text-muted-foreground hover:text-foreground" aria-label={t('common.close')} title={t('common.close')}>
+                       <X className="h-3 w-3" />
+                     </button>
+                   </div>
+@@ -318,20 +320,20 @@ export function ChatModeToolbar({ activeChatId, activeSessionId, onSessionChange
+                     autoFocus
+                     value={remoteUrl}
+                     onChange={e => setRemoteUrl(e.target.value)}
+-                    placeholder="API URL (e.g. https://api.openai.com)"
++                    placeholder={t('layout.chatToolbar.apiUrlPlaceholder')}
+                     className="w-full px-2 py-1.5 bg-background border border-input rounded text-xs focus:outline-none focus:ring-1 focus:ring-ring"
+                   />
+                   <input
+                     value={remoteModel}
+                     onChange={e => setRemoteModel(e.target.value)}
+-                    placeholder="Model name (e.g. gpt-4o)"
++                    placeholder={t('layout.chatToolbar.modelNamePlaceholder')}
+                     className="w-full px-2 py-1.5 bg-background border border-input rounded text-xs focus:outline-none focus:ring-1 focus:ring-ring"
+                   />
+                   <input
+                     type="password"
+                     value={remoteApiKey}
+                     onChange={e => setRemoteApiKey(e.target.value)}
+-                    placeholder="API key (optional)"
++                    placeholder={t('layout.chatToolbar.apiKeyOptionalPlaceholder')}
+                     className="w-full px-2 py-1.5 bg-background border border-input rounded text-xs font-mono focus:outline-none focus:ring-1 focus:ring-ring"
+                   />
+                   {remoteError && (
+@@ -343,9 +345,9 @@ export function ChatModeToolbar({ activeChatId, activeSessionId, onSessionChange
+                     className="w-full flex items-center justify-center gap-1.5 px-2 py-1.5 text-xs bg-primary text-primary-foreground rounded hover:bg-primary/90 disabled:opacity-50 transition-colors"
+                   >
+                     {remoteConnecting ? (
+-                      <><Loader2 className="h-3 w-3 animate-spin" /> Connecting...</>
++                      <><Loader2 className="h-3 w-3 animate-spin" /> {t('common.connecting')}</>
+                     ) : (
+-                      <><Globe className="h-3 w-3" /> Connect</>
++                      <><Globe className="h-3 w-3" /> {t('common.connect')}</>
+                     )}
+                   </button>
+                 </div>
+@@ -361,32 +363,32 @@ export function ChatModeToolbar({ activeChatId, activeSessionId, onSessionChange
+               <button
+                 onClick={handleStart}
+                 className="flex items-center gap-1 text-xs px-2 py-1 rounded bg-destructive/10 text-destructive hover:bg-destructive/20 border border-destructive/30 transition-colors"
+-                title={isRemote ? 'Reconnect' : 'Restart model'}
++                title={isRemote ? t('common.reconnect') : t('sessions.toolbar.restartModel')}
+               >
+                 <RotateCw className="h-3 w-3" />
+-                {isRemote ? 'Reconnect' : 'Restart'}
++                {isRemote ? t('common.reconnect') : t('sessions.toolbar.restart')}
+               </button>
+             )}
+             {isStopped && !isError && (
+               <button
+                 onClick={handleStart}
+                 className="flex items-center gap-1 text-xs px-2 py-1 rounded bg-success text-success-foreground hover:bg-success/90 transition-colors"
+-                title={isRemote ? 'Connect' : 'Start model'}
++                title={isRemote ? t('common.connect') : t('sessions.toolbar.startModel')}
+               >
+                 <Play className="h-3 w-3" />
+-                {isRemote ? 'Connect' : 'Start'}
++                {isRemote ? t('common.connect') : t('common.start')}
+               </button>
+             )}
+             {isLoading && (
+               <>
+                 <span className="flex items-center gap-1 text-xs px-2 py-1 text-warning">
+                   <Loader2 className="h-3 w-3 animate-spin" />
+-                  {isRemote ? 'Connecting...' : 'Loading...'}
++                  {isRemote ? t('common.connecting') : t('common.loading')}
+                 </span>
+                 <button
+                   onClick={handleStop}
+                   className="text-xs px-1.5 py-0.5 rounded text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors"
+-                  title="Cancel"
++                  title={t('common.cancel')}
+                 >
+                   <X className="h-3 w-3" />
+                 </button>
+@@ -396,10 +398,10 @@ export function ChatModeToolbar({ activeChatId, activeSessionId, onSessionChange
+               <button
+                 onClick={handleStop}
+                 className="flex items-center gap-1 text-xs px-2 py-1 rounded text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-colors"
+-                title={isRemote ? 'Disconnect' : 'Stop model'}
++                title={isRemote ? t('common.disconnect') : t('sessions.toolbar.stopModel')}
+               >
+                 <Square className="h-3 w-3" />
+-                {isRemote ? 'Disconnect' : 'Stop'}
++                {isRemote ? t('common.disconnect') : t('common.stop')}
+               </button>
+             )}
+           </div>
+@@ -416,20 +418,20 @@ export function ChatModeToolbar({ activeChatId, activeSessionId, onSessionChange
+               className={`flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors ${
+                 showChatSettings ? 'bg-accent text-foreground' : 'text-muted-foreground hover:bg-accent hover:text-foreground'
+               }`}
+-              title="Chat inference settings (temperature, system prompt, tools, etc.)"
++              title={t('sessions.view.chatSettingsTitle')}
+             >
+               <Settings className="h-3 w-3" />
+-              Chat
++              {t('sessions.view.chatLabel')}
+             </button>
+             <button
+               onClick={() => { setShowServerSettings(!showServerSettings); setShowChatSettings(false) }}
+               className={`flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors ${
+                 showServerSettings ? 'bg-accent text-foreground' : 'text-muted-foreground hover:bg-accent hover:text-foreground'
+               }`}
+-              title={isRemote ? 'Connection settings' : 'Server settings'}
++              title={isRemote ? t('sessions.view.connectionTitle') : t('sessions.view.serverSettingsTitle')}
+             >
+               <Server className="h-3 w-3" />
+-              {isRemote ? 'Connection' : 'Server'}
++              {isRemote ? t('sessions.view.connection') : t('sessions.view.server')}
+             </button>
+           </div>
+         )}
+diff --git a/panel/src/renderer/src/components/layout/InferenceMode.tsx b/panel/src/renderer/src/components/layout/InferenceMode.tsx
+index 701ee3f4f..4b6e733f7 100644
+--- a/panel/src/renderer/src/components/layout/InferenceMode.tsx
++++ b/panel/src/renderer/src/components/layout/InferenceMode.tsx
+@@ -1,5 +1,6 @@
+ import { useState, useEffect, useCallback } from 'react'
+ import { CASUAL_CONFIG, EXPERT_CONFIG, SessionConfig } from '../sessions/SessionConfigForm'
++import { useTranslation } from '../../i18n'
+
+ export type InferenceMode = 'casual' | 'expert'
+
+@@ -23,6 +24,7 @@ export function useInferenceMode() {
+ }
+
+ export function InferenceModeToggle({ mode, onToggle }: { mode: InferenceMode; onToggle: (m: InferenceMode) => void }) {
++  const { t } = useTranslation()
+   const isCasual = mode === 'casual'
+   return (
+     <button
+@@ -33,10 +35,10 @@ export function InferenceModeToggle({ mode, onToggle }: { mode: InferenceMode; o
+           : 'bg-blue-500/15 text-blue-400 border-blue-500/30 hover:bg-blue-500/25'
+       }`}
+       title={isCasual
+-        ? 'Casual: Safe defaults for all machines. Click for Expert mode.'
+-        : 'Expert: Full control, high resource ceilings. Click for Casual mode.'}
++        ? t('layout.inferenceMode.casualTitle')
++        : t('layout.inferenceMode.expertTitle')}
+     >
+-      {isCasual ? 'Casual' : 'Expert'}
++      {isCasual ? t('layout.inferenceMode.casual') : t('layout.inferenceMode.expert')}
+     </button>
+   )
+ }
+diff --git a/panel/src/renderer/src/components/sessions/CreateSession.tsx b/panel/src/renderer/src/components/sessions/CreateSession.tsx
+index 9b1262847..1468404bf 100644
+--- a/panel/src/renderer/src/components/sessions/CreateSession.tsx
++++ b/panel/src/renderer/src/components/sessions/CreateSession.tsx
+@@ -3,6 +3,7 @@ import { ArrowLeft } from 'lucide-react'
+ import { SessionConfigForm, SessionConfig, DEFAULT_CONFIG } from './SessionConfigForm'
+ import { DownloadTab } from './DownloadTab'
+ import { DirectoryManager } from './DirectoryManager'
++import { useTranslation } from '../../i18n'
+
+ function hasDeclaredSamplingDefaults(gen: any): boolean {
+   return !!gen && (
+@@ -60,6 +61,7 @@ interface CreateSessionProps {
+ }
+
+ export function CreateSession({ initialModelPath, onBack, onCreated, filterType: filterTypeProp }: CreateSessionProps) {
++  const { t } = useTranslation()
+   const [sessionType, setSessionType] = useState<'local' | 'remote' | 'download'>('local')
+   const [step, setStep] = useState<1 | 2>(initialModelPath ? 2 : 1)
+   const [models, setModels] = useState<ModelInfo[]>([])
+@@ -429,9 +431,9 @@ export function CreateSession({ initialModelPath, onBack, onCreated, filterType:
+         <div className="max-w-3xl mx-auto">
+           <div className="flex items-center gap-3 mb-6">
+             <button onClick={onBack} className="text-muted-foreground hover:text-foreground flex items-center gap-1">
+-              <ArrowLeft className="h-3.5 w-3.5" /> Back
++              <ArrowLeft className="h-3.5 w-3.5" /> {t('common.back')}
+             </button>
+-            <h1 className="text-2xl font-bold">Create Session</h1>
++            <h1 className="text-2xl font-bold">{t('sessions.create.title')}</h1>
+           </div>
+
+           {/* Session Type Selector */}
+@@ -443,7 +445,7 @@ export function CreateSession({ initialModelPath, onBack, onCreated, filterType:
+                 : 'hover:bg-accent text-muted-foreground'
+                 }`}
+             >
+-              Local Model
++              {t('sessions.create.localModel')}
+             </button>
+             <button
+               onClick={() => setSessionType('download')}
+@@ -452,7 +454,7 @@ export function CreateSession({ initialModelPath, onBack, onCreated, filterType:
+                 : 'hover:bg-accent text-muted-foreground'
+                 }`}
+             >
+-              Download
++              {t('sessions.create.download')}
+             </button>
+             <button
+               onClick={() => setSessionType('remote')}
+@@ -461,7 +463,7 @@ export function CreateSession({ initialModelPath, onBack, onCreated, filterType:
+                 : 'hover:bg-accent text-muted-foreground'
+                 }`}
+             >
+-              Remote Endpoint
++              {t('sessions.create.remoteEndpoint')}
+             </button>
+           </div>
+
+@@ -471,28 +473,28 @@ export function CreateSession({ initialModelPath, onBack, onCreated, filterType:
+           ) : sessionType === 'remote' ? (
+             <div className="space-y-4">
+               <p className="text-sm text-muted-foreground">
+-                Connect to any OpenAI-compatible API endpoint.
++                {t('sessions.create.remoteHint')}
+               </p>
+
+               <div>
+-                <label className="text-sm font-medium block mb-1">API Base URL *</label>
++                <label className="text-sm font-medium block mb-1">{t('sessions.create.apiBaseUrl')}</label>
+                 <input
+                   type="url"
+-                  placeholder="https://api.openai.com"
++                  placeholder={t('sessions.create.apiBaseUrlPlaceholder')}
+                   value={remoteUrl}
+                   onChange={(e) => setRemoteUrl(e.target.value)}
+                   className="w-full px-3 py-2 bg-background border border-input rounded text-sm"
+                 />
+                 <p className="text-xs text-muted-foreground mt-1">
+-                  Base URL of the OpenAI-compatible API (e.g., https://api.openai.com, http://localhost:8000)
++                  {t('sessions.create.apiBaseUrlHelp')}
+                 </p>
+               </div>
+
+               <div>
+-                <label className="text-sm font-medium block mb-1">Model Name *</label>
++                <label className="text-sm font-medium block mb-1">{t('sessions.create.modelName')}</label>
+                 <input
+                   type="text"
+-                  placeholder="gpt-4o, llama-3.1-8b, etc."
++                  placeholder={t('sessions.create.modelNamePlaceholder')}
+                   value={remoteModel}
+                   onChange={(e) => setRemoteModel(e.target.value)}
+                   className="w-full px-3 py-2 bg-background border border-input rounded text-sm"
+@@ -500,10 +502,10 @@ export function CreateSession({ initialModelPath, onBack, onCreated, filterType:
+               </div>
+
+               <div>
+-                <label className="text-sm font-medium block mb-1">API Key</label>
++                <label className="text-sm font-medium block mb-1">{t('sessions.create.apiKey')}</label>
+                 <input
+                   type="password"
+-                  placeholder="sk-..."
++                  placeholder={t('sessions.create.apiKeyPlaceholder')}
+                   value={remoteApiKey}
+                   onChange={(e) => setRemoteApiKey(e.target.value)}
+                   className="w-full px-3 py-2 bg-background border border-input rounded text-sm"
+@@ -511,10 +513,10 @@ export function CreateSession({ initialModelPath, onBack, onCreated, filterType:
+               </div>
+
+               <div>
+-                <label className="text-sm font-medium block mb-1">Organization</label>
++                <label className="text-sm font-medium block mb-1">{t('sessions.create.organization')}</label>
+                 <input
+                   type="text"
+-                  placeholder="Optional"
++                  placeholder={t('sessions.create.organizationPlaceholder')}
+                   value={remoteOrganization}
+                   onChange={(e) => setRemoteOrganization(e.target.value)}
+                   className="w-full px-3 py-2 bg-background border border-input rounded text-sm"
+@@ -532,18 +534,18 @@ export function CreateSession({ initialModelPath, onBack, onCreated, filterType:
+                 disabled={remoteConnecting || !remoteUrl.trim() || !remoteModel.trim()}
+                 className="px-6 py-2 bg-primary text-primary-foreground rounded hover:bg-primary/90 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+               >
+-                {remoteConnecting ? 'Connecting...' : 'Connect'}
++                {remoteConnecting ? t('common.connecting') : t('common.connect')}
+               </button>
+             </div>
+           ) : (
+             <>
+-              <span className="text-sm text-muted-foreground block mb-4">Select a local MLX model to serve</span>
++              <span className="text-sm text-muted-foreground block mb-4">{t('sessions.create.localHint')}</span>
+
+               {/* Search + Actions Row */}
+               <div className="flex items-center gap-2 mb-4">
+                 <input
+                   type="text"
+-                  placeholder="Filter models..."
++                  placeholder={t('sessions.create.filterPlaceholder')}
+                   value={modelFilter}
+                   onChange={(e) => setModelFilter(e.target.value)}
+                   className="flex-1 px-3 py-2 bg-background border border-input rounded text-sm"
+@@ -553,14 +555,14 @@ export function CreateSession({ initialModelPath, onBack, onCreated, filterType:
+                   disabled={scanLoading}
+                   className="px-3 py-2 text-sm border border-border rounded hover:bg-accent disabled:opacity-50 whitespace-nowrap"
+                 >
+-                  {scanLoading ? 'Scanning...' : 'Rescan'}
++                  {scanLoading ? t('sessions.create.scanning') : t('sessions.create.rescan')}
+                 </button>
+                 <button
+                   onClick={() => setShowDirManager(!showDirManager)}
+                   className={`px-3 py-2 text-sm border rounded whitespace-nowrap ${showDirManager ? 'border-primary bg-primary/10 text-primary' : 'border-border hover:bg-accent'
+                     }`}
+                 >
+-                  Directories
++                  {t('sessions.create.directories')}
+                 </button>
+               </div>
+
+@@ -580,21 +582,20 @@ export function CreateSession({ initialModelPath, onBack, onCreated, filterType:
+               )}
+
+               {scanLoading ? (
+-                <p className="text-muted-foreground">Scanning for models...</p>
++                <p className="text-muted-foreground">{t('sessions.create.scanning')}</p>
+               ) : filteredModels.length === 0 ? (
+                 <div className="text-center py-8">
+-                  <p className="text-muted-foreground mb-2">No models found</p>
++                  <p className="text-muted-foreground mb-2">{t('sessions.create.noModels')}</p>
+                   <p className="text-xs text-muted-foreground mb-4">
+-                    Click "Directories" above to add your model folders,
+-                    or place models in ~/.mlxstudio/models/ or ~/.cache/huggingface/hub/
++                    {t('sessions.create.noModelsHelp')}
+                   </p>
+                   <div className="mb-4 p-3 bg-card border border-border rounded-lg text-left">
+-                    <p className="text-xs text-muted-foreground mb-2">To download a model, run in Terminal:</p>
++                    <p className="text-xs text-muted-foreground mb-2">{t('sessions.create.downloadHint')}</p>
+                     <div className="p-2 bg-muted rounded font-mono text-[11px] text-foreground select-all">
+                       huggingface-cli download mlx-community/Llama-3.2-3B-Instruct-4bit --local-dir ~/.cache/huggingface/hub/mlx-community/Llama-3.2-3B-Instruct-4bit
+                     </div>
+                     <p className="text-[10px] text-muted-foreground mt-2">
+-                      Browse more MLX models at{' '}
++                      {t('sessions.create.browseModels')}{' '}
+                       <span className="text-primary select-all">huggingface.co/mlx-community</span>
+                     </p>
+                   </div>
+@@ -602,7 +603,7 @@ export function CreateSession({ initialModelPath, onBack, onCreated, filterType:
+                     onClick={() => setShowDirManager(true)}
+                     className="px-4 py-2 text-sm border border-border rounded hover:bg-accent"
+                   >
+-                    Manage Directories
++                    {t('sessions.create.manageDirectories')}
+                   </button>
+                 </div>
+               ) : (
+@@ -751,7 +752,7 @@ export function CreateSession({ initialModelPath, onBack, onCreated, filterType:
+     return (
+       <div className="p-6 overflow-auto h-full">
+         <div className="max-w-3xl mx-auto">
+-          <h1 className="text-2xl font-bold mb-2">Loading Model</h1>
++          <h1 className="text-2xl font-bold mb-2">{t('sessions.create.loadingModel')}</h1>
+           <p className="text-muted-foreground text-sm mb-4">
+             {selectedModel.split('/').pop()}
+           </p>
+@@ -766,7 +767,7 @@ export function CreateSession({ initialModelPath, onBack, onCreated, filterType:
+
+           {launchError && (
+             <div className="mt-4 p-4 bg-destructive/10 border border-destructive/30 rounded-lg">
+-              <h3 className="text-sm font-bold text-destructive mb-2">Launch Failed</h3>
++              <h3 className="text-sm font-bold text-destructive mb-2">{t('sessions.create.launchFailed')}</h3>
+               <p className="text-sm text-destructive/90 whitespace-pre-wrap">{launchError}</p>
+               <div className="flex gap-2 mt-3">
+                 <button
+@@ -777,7 +778,7 @@ export function CreateSession({ initialModelPath, onBack, onCreated, filterType:
+                   }}
+                   className="px-4 py-1.5 text-sm bg-destructive text-destructive-foreground rounded hover:bg-destructive/90"
+                 >
+-                  Back to Config
++                  {t('sessions.create.backToConfig')}
+                 </button>
+                 <button
+                   onClick={() => {
+@@ -787,7 +788,7 @@ export function CreateSession({ initialModelPath, onBack, onCreated, filterType:
+                   }}
+                   className="px-4 py-1.5 text-sm border border-border rounded hover:bg-accent"
+                 >
+-                  Retry
++                  {t('common.retry')}
+                 </button>
+               </div>
+             </div>
+@@ -803,10 +804,10 @@ export function CreateSession({ initialModelPath, onBack, onCreated, filterType:
+       <div className="max-w-2xl mx-auto">
+         <div className="flex items-center gap-3 mb-6">
+           <button onClick={() => setStep(1)} className="text-muted-foreground hover:text-foreground flex items-center gap-1">
+-            <ArrowLeft className="h-3.5 w-3.5" /> Back
++            <ArrowLeft className="h-3.5 w-3.5" /> {t('common.back')}
+           </button>
+-          <h1 className="text-2xl font-bold">Create Session</h1>
+-          <span className="text-sm text-muted-foreground">Step 2: Configure</span>
++          <h1 className="text-2xl font-bold">{t('sessions.create.title')}</h1>
++          <span className="text-sm text-muted-foreground">{t('sessions.create.step2')}</span>
+         </div>
+
+         {/* Pre-launch error banner */}
+@@ -818,44 +819,44 @@ export function CreateSession({ initialModelPath, onBack, onCreated, filterType:
+
+         {/* Selected model */}
+         <div className="mb-4 p-3 bg-card border border-border rounded">
+-          <span className="text-xs text-muted-foreground">Model</span>
++          <span className="text-xs text-muted-foreground">{t('sessions.create.modelLabel')}</span>
+           <p className="font-medium text-sm truncate">{selectedModel}</p>
+         </div>
+
+         {/* Config Form — image models get simplified settings */}
+         {(autoDetectedType || filterTypeProp) === 'image' ? (
+           <div className="space-y-4 border border-border rounded p-4">
+-            <h3 className="text-sm font-medium">Image Server Settings</h3>
++            <h3 className="text-sm font-medium">{t('sessions.create.imageServerSettings')}</h3>
+             <div className="grid grid-cols-2 gap-3 text-sm">
+               <div>
+-                <label className="text-xs text-muted-foreground block mb-1">Image Mode</label>
++                <label className="text-xs text-muted-foreground block mb-1">{t('sessions.create.imageMode')}</label>
+                 <select value={config.imageMode || 'generate'} onChange={e => handleChange('imageMode', e.target.value)} className="w-full px-2 py-1.5 bg-background border border-input rounded text-sm">
+-                  <option value="generate">Image Generation</option>
+-                  <option value="edit">Image Editing</option>
++                  <option value="generate">{t('sessions.create.imageModeGen')}</option>
++                  <option value="edit">{t('sessions.create.imageModeEdit')}</option>
+                 </select>
+               </div>
+               <div>
+-                <label className="text-xs text-muted-foreground block mb-1">Quantization</label>
++                <label className="text-xs text-muted-foreground block mb-1">{t('sessions.create.quantization')}</label>
+                 <select value={config.imageQuantize ?? 0} onChange={e => handleChange('imageQuantize', parseInt(e.target.value))} className="w-full px-2 py-1.5 bg-background border border-input rounded text-sm">
+-                  <option value={0}>Full Precision</option>
++                  <option value={0}>{t('sessions.create.quantFullPrecision')}</option>
+                   <option value={4}>4-bit</option>
+                   <option value={8}>8-bit</option>
+                 </select>
+               </div>
+               <div>
+-                <label className="text-xs text-muted-foreground block mb-1">Host</label>
++                <label className="text-xs text-muted-foreground block mb-1">{t('sessions.create.host')}</label>
+                 <input type="text" value={config.host} onChange={e => handleChange('host', e.target.value)} className="w-full px-2 py-1.5 bg-background border border-input rounded text-sm" />
+               </div>
+               <div>
+-                <label className="text-xs text-muted-foreground block mb-1">Port</label>
++                <label className="text-xs text-muted-foreground block mb-1">{t('sessions.create.port')}</label>
+                 <input type="number" value={config.port} onChange={e => handleChange('port', parseInt(e.target.value) || 8000)} className="w-full px-2 py-1.5 bg-background border border-input rounded text-sm" />
+               </div>
+               <div>
+-                <label className="text-xs text-muted-foreground block mb-1">API Key (optional)</label>
+-                <input type="password" value={config.apiKey} onChange={e => handleChange('apiKey', e.target.value)} placeholder="Leave empty for no auth" className="w-full px-2 py-1.5 bg-background border border-input rounded text-sm" />
++                <label className="text-xs text-muted-foreground block mb-1">{t('sessions.create.apiKeyOptional')}</label>
++                <input type="password" value={config.apiKey} onChange={e => handleChange('apiKey', e.target.value)} placeholder={t('sessions.config.apiKeyPlaceholder')} className="w-full px-2 py-1.5 bg-background border border-input rounded text-sm" />
+               </div>
+               <div>
+-                <label className="text-xs text-muted-foreground block mb-1">Log Level</label>
++                <label className="text-xs text-muted-foreground block mb-1">{t('sessions.create.logLevel')}</label>
+                 <select value={config.logLevel || 'INFO'} onChange={e => handleChange('logLevel', e.target.value)} className="w-full px-2 py-1.5 bg-background border border-input rounded text-sm">
+                   <option value="DEBUG">DEBUG</option>
+                   <option value="INFO">INFO</option>
+@@ -866,8 +867,8 @@ export function CreateSession({ initialModelPath, onBack, onCreated, filterType:
+             </div>
+             <p className="text-xs text-muted-foreground">
+               {(config.imageMode === 'edit')
+-                ? <>The image server exposes a <code>/v1/images/edits</code> endpoint for editing images with prompts. Use the Image tab or any API client.</>
+-                : <>The image server exposes a <code>/v1/images/generations</code> endpoint (OpenAI-compatible). Use the Image tab or any API client to generate images.</>
++                ? t('sessions.create.imageServerEditHint')
++                : t('sessions.create.imageServerGenHint')
+               }
+             </p>
+           </div>
+@@ -878,14 +879,14 @@ export function CreateSession({ initialModelPath, onBack, onCreated, filterType:
+         {/* Launch */}
+         <div className="flex gap-3 mt-6 pb-6">
+           <button onClick={() => setStep(1)} className="px-4 py-2 border border-border rounded hover:bg-accent">
+-            Back
++            {t('common.back')}
+           </button>
+           <button
+             onClick={handleLaunch}
+             disabled={launching || !selectedModel}
+             className="px-6 py-2 bg-primary text-primary-foreground rounded hover:bg-primary/90 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+           >
+-            Launch Session
++            {t('sessions.create.launchSession')}
+           </button>
+         </div>
+       </div>
+diff --git a/panel/src/renderer/src/components/sessions/ServerSettingsDrawer.tsx b/panel/src/renderer/src/components/sessions/ServerSettingsDrawer.tsx
+index f563d02c8..f75808f25 100644
+--- a/panel/src/renderer/src/components/sessions/ServerSettingsDrawer.tsx
++++ b/panel/src/renderer/src/components/sessions/ServerSettingsDrawer.tsx
+@@ -255,8 +255,8 @@ export function ServerSettingsDrawer({ session, isRemote, onClose, onSessionUpda
+     <div className="w-96 h-full border-l border-border bg-card flex flex-col overflow-hidden">
+       {/* Header */}
+       <div className="flex items-center justify-between px-4 py-2 border-b border-border flex-shrink-0">
+-        <span className="font-medium text-sm">{isRemote ? 'Connection Settings' : 'Server Settings'}</span>
+-        <button onClick={onClose} className="text-muted-foreground hover:text-foreground text-sm px-1">
++        <span className="font-medium text-sm">{isRemote ? t('sessions.view.connectionTitle') : t('sessions.view.serverSettingsTitle')}</span>
++        <button onClick={onClose} aria-label={t('common.close')} title={t('common.close')} className="text-muted-foreground hover:text-foreground text-sm px-1">
+           <X className="h-3.5 w-3.5" />
+         </button>
+       </div>
+@@ -274,7 +274,7 @@ export function ServerSettingsDrawer({ session, isRemote, onClose, onSessionUpda
+
+         {isRunning && !restarting && !isRemote && (
+           <div className="p-2 bg-warning/10 border border-warning/30 rounded text-xs text-warning">
+-            Session is running. Save & Restart to apply changes.
++            {t('sessions.settings.runningWarning')}
+           </div>
+         )}
+
+@@ -289,6 +289,7 @@ export function ServerSettingsDrawer({ session, isRemote, onClose, onSessionUpda
+               </div>
+               <button
+                 onClick={handleGatewaySingleModelModeToggle}
++                aria-label={t('main.tray.singleModelMode')}
+                 className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors flex-shrink-0 ${singleModelMode ? 'bg-primary' : 'bg-muted'}`}
+               >
+                 <span
+@@ -303,7 +304,7 @@ export function ServerSettingsDrawer({ session, isRemote, onClose, onSessionUpda
+         {isRemote ? (
+           <div className="space-y-3">
+             <SliderField
+-              label="Request Timeout (seconds)"
++              label={t('sessions.config.timeout')}
+               tooltip="Maximum time to wait for a response from the remote server before timing out. Increase this for slow models, long generations, or high-latency connections. Default 300s (5 minutes)."
+               value={config.timeout}
+               onChange={v => handleChange('timeout', v)}
+@@ -313,7 +314,7 @@ export function ServerSettingsDrawer({ session, isRemote, onClose, onSessionUpda
+               defaultValue={DEFAULT_CONFIG.timeout}
+               allowUnlimited
+               unlimitedValue={0}
+-              unlimitedLabel="No limit"
++              unlimitedLabel={t('sessions.config.timeoutNoLimit')}
+             />
+           </div>
+         ) : (
+@@ -329,7 +330,7 @@ export function ServerSettingsDrawer({ session, isRemote, onClose, onSessionUpda
+           disabled={!dirty || saving || restarting}
+           className="flex-1 px-3 py-1.5 text-sm bg-primary text-primary-foreground rounded hover:bg-primary/90 disabled:opacity-40"
+         >
+-          {saving && !restarting ? 'Saving...' : 'Save'}
++          {saving && !restarting ? t('common.saving') : t('common.save')}
+         </button>
+         {isRunning && !isRemote && (
+           <button
+@@ -338,7 +339,7 @@ export function ServerSettingsDrawer({ session, isRemote, onClose, onSessionUpda
+             disabled={saving || restarting}
+             className="flex-1 px-3 py-1.5 text-sm bg-success text-success-foreground rounded hover:bg-success/90 disabled:opacity-40"
+           >
+-            {restarting ? 'Restarting...' : 'Save & Restart'}
++            {restarting ? t('sessions.settings.restarting') : t('sessions.settings.saveAndRestart')}
+           </button>
+         )}
+         <button
+@@ -346,7 +347,7 @@ export function ServerSettingsDrawer({ session, isRemote, onClose, onSessionUpda
+           disabled={restarting}
+           className="px-3 py-1.5 text-sm border border-border rounded hover:bg-accent disabled:opacity-40"
+         >
+-          Reset
++          {t('common.reset')}
+         </button>
+       </div>
+     </div>
+diff --git a/panel/src/renderer/src/components/sessions/SessionView.tsx b/panel/src/renderer/src/components/sessions/SessionView.tsx
+index f209b3037..b09aad4a9 100644
+--- a/panel/src/renderer/src/components/sessions/SessionView.tsx
++++ b/panel/src/renderer/src/components/sessions/SessionView.tsx
+@@ -13,6 +13,7 @@ import { useToast } from '../Toast'
+ import { useAppState } from '../../contexts/AppStateContext'
+ import { useSessionsContext } from '../../contexts/SessionsContext'
+ import { canonicalizeReasoningParserForCli } from '../../../../shared/reasoningParserAliases'
++import { useTranslation } from '../../i18n'
+
+ interface Session {
+   id: string
+@@ -37,6 +38,7 @@ interface SessionViewProps {
+ }
+
+ export function SessionView({ sessionId, onBack }: SessionViewProps) {
++  const { t } = useTranslation()
+   const { showToast } = useToast()
+   const { setMode } = useAppState()
+   const [session, setSession] = useState<Session | null>(null)
+@@ -194,7 +196,7 @@ export function SessionView({ sessionId, onBack }: SessionViewProps) {
+       setCurrentChatId(chat.id)
+       setShowChatList(false)
+     } catch (error) {
+-      showToast('error', 'Failed to create chat', (error as Error).message)
++      showToast('error', t('sessions.view.toast.failedToStartChat'), (error as Error).message)
+     }
+   }
+
+@@ -207,7 +209,7 @@ export function SessionView({ sessionId, onBack }: SessionViewProps) {
+     if (!session) return
+     const result = await window.api.sessions.stop(session.id)
+     if (!result.success) {
+-      showToast('error', 'Failed to stop server', result.error)
++      showToast('error', t('sessions.view.toast.failedToStopServer'), result.error)
+     }
+   }
+
+@@ -217,14 +219,14 @@ export function SessionView({ sessionId, onBack }: SessionViewProps) {
+     const result = await window.api.sessions.start(session.id)
+     if (!result.success) {
+       setSession(prev => prev ? { ...prev, status: 'error' } : prev)
+-      showToast('error', 'Failed to start server', result.error)
++      showToast('error', t('sessions.view.toast.failedToStartServer'), result.error)
+     }
+   }
+
+   if (!session) {
+     return (
+       <div className="flex items-center justify-center h-full">
+-        <p className="text-muted-foreground">Loading session...</p>
++        <p className="text-muted-foreground">{t('sessions.view.loadingSession')}</p>
+       </div>
+     )
+   }
+@@ -248,7 +250,7 @@ export function SessionView({ sessionId, onBack }: SessionViewProps) {
+       {/* Session Header */}
+       <div className="flex flex-wrap items-center gap-3 px-4 py-2 border-b border-border bg-card/50 flex-shrink-0 overflow-x-hidden">
+         <button onClick={onBack} className="text-muted-foreground hover:text-foreground text-sm flex items-center gap-1 flex-shrink-0">
+-          <ArrowLeft className="h-3.5 w-3.5" /> Sessions
++          <ArrowLeft className="h-3.5 w-3.5" /> {t('sessions.view.back')}
+         </button>
+         <div className="w-px h-4 bg-border flex-shrink-0" />
+
+@@ -261,7 +263,7 @@ export function SessionView({ sessionId, onBack }: SessionViewProps) {
+             <span className={`text-[10px] px-1.5 py-0.5 rounded font-medium flex-shrink-0 ${
+               isImageEdit ? 'bg-violet-500/15 text-violet-400' : 'bg-blue-500/15 text-blue-400'
+             }`}>
+-              {isImageEdit ? 'Image Edit' : 'Image Gen'}
++              {isImageEdit ? t('sessions.view.imageEditBadge') : t('sessions.view.imageGenBadge')}
+             </span>
+           )}
+           {jangLabel && (
+@@ -292,14 +294,14 @@ export function SessionView({ sessionId, onBack }: SessionViewProps) {
+                 onClick={handleNewChat}
+                 className="text-sm hover:bg-accent px-2 py-1 rounded"
+               >
+-                + Chat
++                {t('sessions.view.chatButton')}
+               </button>
+               <button
+                 onClick={() => { setShowSettings(!showSettings); if (!showSettings) { setShowServerSettings(false); setShowCache(false); setShowBenchmark(false); setShowEmbeddings(false); setShowPerformance(false); setShowLogs(false) } }}
+                 className={`text-sm px-2 py-1 rounded flex items-center gap-1 ${showSettings ? 'bg-accent' : 'hover:bg-accent'}`}
+-                title="Chat inference settings"
++                title={t('sessions.view.chatSettingsTitle')}
+               >
+-                <Settings className="h-3.5 w-3.5" /> Chat
++                <Settings className="h-3.5 w-3.5" /> {t('sessions.view.chatLabel')}
+               </button>
+             </>
+           )}
+@@ -307,76 +309,78 @@ export function SessionView({ sessionId, onBack }: SessionViewProps) {
+             <button
+               onClick={() => setMode('image')}
+               className="text-sm hover:bg-accent px-2 py-1 rounded flex items-center gap-1"
+-              title={isImageEdit ? 'Switch to Image Editor' : 'Switch to Image Generator'}
++              title={isImageEdit ? t('sessions.view.switchImageEditor') : t('sessions.view.switchImageGenerator')}
+             >
+-              <ImageIcon className="h-3.5 w-3.5" /> {isImageEdit ? 'Image Editor' : 'Image Gen'}
++              <ImageIcon className="h-3.5 w-3.5" /> {isImageEdit ? t('sessions.view.imageEditor') : t('sessions.view.imageGenerator')}
+             </button>
+           )}
+           <button
+             onClick={() => { setShowServerSettings(!showServerSettings); if (!showServerSettings) { setShowSettings(false); setShowCache(false); setShowBenchmark(false); setShowEmbeddings(false); setShowPerformance(false); setShowLogs(false) } }}
+             className={`text-sm px-2 py-1 rounded flex items-center gap-1 ${showServerSettings ? 'bg-accent' : 'hover:bg-accent'}`}
+-            title={isRemote ? 'Connection Settings' : 'Server Settings'}
++            title={isRemote ? t('sessions.view.connectionTitle') : t('sessions.view.serverSettingsTitle')}
+           >
+-            <Settings className="h-3.5 w-3.5" /> {isRemote ? 'Connection' : 'Server'}
++            <Settings className="h-3.5 w-3.5" /> {isRemote ? t('sessions.view.connection') : t('sessions.view.server')}
+           </button>
+           {!isRemote && !isImage && session.status === 'running' && (
+             <>
+               <button
+                 onClick={() => { setShowCache(!showCache); if (!showCache) { setShowSettings(false); setShowServerSettings(false); setShowBenchmark(false); setShowEmbeddings(false); setShowPerformance(false); setShowLogs(false) } }}
+                 className={`text-sm px-2 py-1 rounded ${showCache ? 'bg-accent' : 'hover:bg-accent'}`}
+-                title="Cache Management"
++                title={t('sessions.view.cacheTitle')}
+               >
+-                Cache
++                {t('sessions.view.cache')}
+               </button>
+               <button
+                 onClick={() => { setShowBenchmark(!showBenchmark); if (!showBenchmark) { setShowSettings(false); setShowServerSettings(false); setShowCache(false); setShowEmbeddings(false); setShowPerformance(false); setShowLogs(false) } }}
+                 className={`text-sm px-2 py-1 rounded ${showBenchmark ? 'bg-accent' : 'hover:bg-accent'}`}
+-                title="Run Benchmark"
++                title={t('sessions.view.benchTitle')}
+               >
+-                Bench
++                {t('sessions.view.bench')}
+               </button>
+               <button
+                 onClick={() => { setShowEmbeddings(!showEmbeddings); if (!showEmbeddings) { setShowSettings(false); setShowServerSettings(false); setShowCache(false); setShowBenchmark(false); setShowPerformance(false); setShowLogs(false) } }}
+                 className={`text-sm px-2 py-1 rounded ${showEmbeddings ? 'bg-accent' : 'hover:bg-accent'}`}
+-                title="Embeddings"
++                title={t('sessions.view.embedTitle')}
+               >
+-                Embed
++                {t('sessions.view.embed')}
+               </button>
+               <button
+                 onClick={() => { setShowPerformance(!showPerformance); if (!showPerformance) { setShowSettings(false); setShowServerSettings(false); setShowCache(false); setShowBenchmark(false); setShowEmbeddings(false); setShowLogs(false) } }}
+                 className={`text-sm px-2 py-1 rounded ${showPerformance ? 'bg-accent' : 'hover:bg-accent'}`}
+-                title="Performance Monitor"
++                title={t('sessions.view.perfTitle')}
+               >
+-                Perf
++                {t('sessions.view.perf')}
+               </button>
+             </>
+           )}
+           <button
+             onClick={() => { setShowLogs(!showLogs); if (!showLogs) { setShowSettings(false); setShowServerSettings(false); setShowCache(false); setShowBenchmark(false); setShowEmbeddings(false); setShowPerformance(false) } }}
+             className={`text-sm px-2 py-1 rounded ${showLogs ? 'bg-accent' : 'hover:bg-accent'}`}
+-            title={isRemote ? 'Connection Logs' : 'Server Logs'}
++            title={isRemote ? t('sessions.view.connectionLogs') : t('sessions.view.serverLogs')}
+           >
+-            Logs
++            {t('sessions.view.logs')}
+           </button>
+           {session.status === 'running' && (
+             <>
+               {isRemote && (
+                 <span className="text-xs text-success font-medium px-1">
+-                  Connected{session.latencyMs != null ? ` · ${session.latencyMs}ms` : ''}
++                  {session.latencyMs != null
++                    ? t('sessions.view.connectedWithLatency', { latency: session.latencyMs })
++                    : t('sessions.view.connected')}
+                 </span>
+               )}
+               <button
+                 onClick={handleStop}
+                 className="text-xs px-2 py-1 bg-destructive text-destructive-foreground rounded hover:bg-destructive/90"
+               >
+-                {isRemote ? 'Disconnect' : 'Stop'}
++                {isRemote ? t('sessions.view.disconnect') : t('sessions.view.stop')}
+               </button>
+             </>
+           )}
+           {session.status === 'standby' && (
+             <>
+               <span className="text-xs text-blue-400 font-medium px-1">
+-                {(session as any).standbyDepth === 'deep' ? 'Deep Sleep' : 'Light Sleep'}
++                {(session as any).standbyDepth === 'deep' ? t('sessions.view.deepSleep') : t('sessions.view.lightSleep')}
+               </span>
+               <button
+                 onClick={async () => {
+@@ -384,39 +388,41 @@ export function SessionView({ sessionId, onBack }: SessionViewProps) {
+                 }}
+                 className="text-xs px-2 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
+               >
+-                Wake
++                {t('sessions.view.wake')}
+               </button>
+               <button
+                 onClick={handleStop}
+                 className="text-xs px-2 py-1 border border-border text-muted-foreground rounded hover:bg-destructive hover:text-destructive-foreground"
+               >
+-                Stop
++                {t('sessions.view.stop')}
+               </button>
+             </>
+           )}
+           {(session.status === 'stopped' || session.status === 'error') && (
+             <>
+               {isRemote && (
+-                <span className="text-xs text-destructive font-medium px-1">Disconnected</span>
++                <span className="text-xs text-destructive font-medium px-1">{t('sessions.view.disconnected')}</span>
+               )}
+               <button
+                 onClick={handleStart}
+                 className="text-xs px-2 py-1 bg-success text-success-foreground rounded hover:bg-success/90"
+               >
+-                {isRemote ? (session.status === 'error' ? 'Reconnect' : 'Connect') : 'Start'}
++                {isRemote
++                  ? (session.status === 'error' ? t('sessions.view.reconnect') : t('sessions.view.connect'))
++                  : t('common.start')}
+               </button>
+             </>
+           )}
+           {session.status === 'loading' && (
+             <>
+               <span className="text-xs text-muted-foreground px-2 py-1 animate-pulse">
+-                {isRemote ? 'Connecting...' : 'Starting...'}
++                {isRemote ? t('common.connecting') : t('common.starting')}
+               </span>
+               <button
+                 onClick={handleStop}
+                 className="text-xs px-2 py-1 border border-destructive/40 text-destructive rounded hover:bg-destructive/10"
+               >
+-                Cancel
++                {t('common.cancel')}
+               </button>
+             </>
+           )}
+@@ -431,9 +437,8 @@ export function SessionView({ sessionId, onBack }: SessionViewProps) {
+         <div className="flex items-start gap-2 px-4 py-2 bg-amber-500/10 border-b border-amber-500/20 flex-shrink-0">
+           <AlertTriangle className="h-3.5 w-3.5 text-amber-400 flex-shrink-0 mt-0.5" />
+           <p className="text-xs text-amber-300/90 flex-1">
+-            <span className="font-semibold">JANG Model Update Required:</span>{' '}
+-            As of 3/19/2026, all JANG models must be re-downloaded from HuggingFace (JANGQ-AI) to include proper chat templates.
+-            Without updated models, thinking on/off may not work correctly and some models may loop.
++            <span className="font-semibold">{t('sessions.view.jangNoticeHeader')}</span>{' '}
++            {t('sessions.view.jangNoticeBody')}
+           </p>
+           <button
+             onClick={() => {
+@@ -472,12 +477,12 @@ export function SessionView({ sessionId, onBack }: SessionViewProps) {
+                 <ImageIcon className={`h-8 w-8 ${isImageEdit ? 'text-violet-400' : 'text-blue-400'}`} />
+               </div>
+               <h2 className="text-lg font-semibold mb-2">
+-                {isImageEdit ? 'Image Edit Server' : 'Image Generation Server'}
++                {isImageEdit ? t('sessions.view.imageEditHeader') : t('sessions.view.imageGenHeader')}
+               </h2>
+               <p className="text-sm text-muted-foreground mb-6 max-w-sm">
+                 {isImageEdit
+-                  ? 'This is an image editing model. Use the Image tab to upload images and edit them with prompts.'
+-                  : 'This is an image generation model. Use the Image tab to generate images from text prompts.'
++                  ? t('sessions.view.imageEditBody')
++                  : t('sessions.view.imageGenBody')
+                 }
+               </p>
+               <button
+@@ -487,7 +492,7 @@ export function SessionView({ sessionId, onBack }: SessionViewProps) {
+                 }`}
+               >
+                 <ImageIcon className="h-4 w-4" />
+-                {isImageEdit ? 'Open Image Editor' : 'Open Image Generator'}
++                {isImageEdit ? t('sessions.view.openImageEditor') : t('sessions.view.openImageGenerator')}
+               </button>
+             </div>
+           ) : (
+@@ -534,8 +539,8 @@ export function SessionView({ sessionId, onBack }: SessionViewProps) {
+         {showCache && (
+           <div className="w-80 border-l border-border bg-card overflow-y-auto flex-shrink-0">
+             <div className="flex items-center justify-between p-3 border-b border-border">
+-              <h3 className="text-sm font-medium">Cache Management</h3>
+-              <button onClick={() => setShowCache(false)} className="text-muted-foreground hover:text-foreground text-sm"><X className="h-3.5 w-3.5" /></button>
++              <h3 className="text-sm font-medium">{t('sessions.view.cacheTitle')}</h3>
++              <button onClick={() => setShowCache(false)} className="text-muted-foreground hover:text-foreground text-sm" aria-label={t('common.close')} title={t('common.close')}><X className="h-3.5 w-3.5" /></button>
+             </div>
+             <div className="p-3">
+               <CachePanel endpoint={{ host: session.host, port: session.port }} sessionStatus={session.status} sessionId={session.id} />
+@@ -545,8 +550,8 @@ export function SessionView({ sessionId, onBack }: SessionViewProps) {
+         {showBenchmark && (
+           <div className="w-96 border-l border-border bg-card overflow-y-auto flex-shrink-0">
+             <div className="flex items-center justify-between p-3 border-b border-border">
+-              <h3 className="text-sm font-medium">Benchmark</h3>
+-              <button onClick={() => setShowBenchmark(false)} className="text-muted-foreground hover:text-foreground text-sm"><X className="h-3.5 w-3.5" /></button>
++              <h3 className="text-sm font-medium">{t('sessions.view.benchPanelTitle')}</h3>
++              <button onClick={() => setShowBenchmark(false)} className="text-muted-foreground hover:text-foreground text-sm" aria-label={t('common.close')} title={t('common.close')}><X className="h-3.5 w-3.5" /></button>
+             </div>
+             <div className="p-3">
+               <BenchmarkPanel
+@@ -562,8 +567,8 @@ export function SessionView({ sessionId, onBack }: SessionViewProps) {
+         {showEmbeddings && (
+           <div className="w-80 border-l border-border bg-card overflow-y-auto flex-shrink-0">
+             <div className="flex items-center justify-between p-3 border-b border-border">
+-              <h3 className="text-sm font-medium">Embeddings</h3>
+-              <button onClick={() => setShowEmbeddings(false)} className="text-muted-foreground hover:text-foreground text-sm"><X className="h-3.5 w-3.5" /></button>
++              <h3 className="text-sm font-medium">{t('sessions.view.embeddingsPanelTitle')}</h3>
++              <button onClick={() => setShowEmbeddings(false)} className="text-muted-foreground hover:text-foreground text-sm" aria-label={t('common.close')} title={t('common.close')}><X className="h-3.5 w-3.5" /></button>
+             </div>
+             <div className="p-3">
+               <EmbeddingsPanel
+@@ -577,8 +582,8 @@ export function SessionView({ sessionId, onBack }: SessionViewProps) {
+         {showPerformance && (
+           <div className="w-80 border-l border-border bg-card overflow-y-auto flex-shrink-0">
+             <div className="flex items-center justify-between p-3 border-b border-border">
+-              <h3 className="text-sm font-medium">Performance</h3>
+-              <button onClick={() => setShowPerformance(false)} className="text-muted-foreground hover:text-foreground text-sm"><X className="h-3.5 w-3.5" /></button>
++              <h3 className="text-sm font-medium">{t('sessions.view.performancePanelTitle')}</h3>
++              <button onClick={() => setShowPerformance(false)} className="text-muted-foreground hover:text-foreground text-sm" aria-label={t('common.close')} title={t('common.close')}><X className="h-3.5 w-3.5" /></button>
+             </div>
+             <div className="p-3">
+               <PerformancePanel
+@@ -591,8 +596,8 @@ export function SessionView({ sessionId, onBack }: SessionViewProps) {
+         {showLogs && (
+           <div className="w-96 border-l border-border bg-card flex-shrink-0 flex flex-col min-h-0 overflow-hidden">
+             <div className="flex items-center justify-between p-3 border-b border-border flex-shrink-0">
+-              <h3 className="text-sm font-medium">{isRemote ? 'Connection Logs' : 'Server Logs'}</h3>
+-              <button onClick={() => setShowLogs(false)} className="text-muted-foreground hover:text-foreground text-sm"><X className="h-3.5 w-3.5" /></button>
++              <h3 className="text-sm font-medium">{isRemote ? t('sessions.view.connectionLogs') : t('sessions.view.serverLogs')}</h3>
++              <button onClick={() => setShowLogs(false)} className="text-muted-foreground hover:text-foreground text-sm" aria-label={t('common.close')} title={t('common.close')}><X className="h-3.5 w-3.5" /></button>
+             </div>
+             <LogsPanel sessionId={session.id} sessionStatus={session.status} isRemote={isRemote} />
+           </div>
+@@ -617,6 +622,7 @@ function formatResidentLoad(progress?: { residentMb?: number; modelBytes?: numbe
+ }
+
+ function SessionViewLoadBar({ sessionId }: { sessionId: string }) {
++  const { t } = useTranslation()
+   const { loadProgress } = useSessionsContext()
+   const progress = loadProgress.get(sessionId)
+   const residentLoad = formatResidentLoad(progress)
+@@ -629,7 +635,7 @@ function SessionViewLoadBar({ sessionId }: { sessionId: string }) {
+         />
+       </div>
+       <p className="text-[10px] text-muted-foreground mt-1">
+-        {progress?.label ?? 'Starting server...'} {progress ? `(${progress.progress}%)` : ''}
++        {progress?.label ?? t('sessions.view.loadProgressFallback')} {progress ? `(${progress.progress}%)` : ''}
+       </p>
+       {formatModelBytes(progress?.modelBytes) && (
+         <p className="text-[10px] text-muted-foreground/80 mt-0.5">
+diff --git a/panel/src/renderer/src/i18n/locales/en.json b/panel/src/renderer/src/i18n/locales/en.json
+index b84e85896..75c674b3c 100644
+--- a/panel/src/renderer/src/i18n/locales/en.json
++++ b/panel/src/renderer/src/i18n/locales/en.json
+@@ -32,7 +32,8 @@
+     "retry": "Retry",
+     "open": "Open",
+     "dismiss": "Dismiss",
+-    "language": "Language"
++    "language": "Language",
++    "or": "or"
+   },
+   "status": {
+     "running": "Running",
+@@ -147,6 +148,11 @@
+     "quickStart": "Quick Start"
+   },
+   "app": {
++    "code": {
++      "title": "Code",
++      "description": "IDE-like coding environment with AI agent, file browser, and integrated terminal.",
++      "comingSoon": "Coming Soon"
++    },
+     "mode": {
+       "code": "Code",
+       "chat": "Chat",
+@@ -164,7 +170,21 @@
+       "desc": "Local AI inference for Apple Silicon",
+       "creator": "Created by Jinho Jang",
+       "language": "Language",
+-      "settings": "About & Settings"
++      "settings": "About & Settings",
++      "version": "Version {version}",
++      "copyright": "© {year} Eric Jang. All rights reserved.",
++      "apiKeysTitle": "API Keys",
++      "braveKey": "Brave Search API Key",
++      "braveRequired": "Required for the web_search tool when built-in tools are enabled.",
++      "getFreeKey": "Get a free key",
++      "savedKeyPlaceholder": "Saved key configured (enter a new key to replace)",
++      "show": "Show",
++      "hide": "Hide",
++      "saved": "Saved",
++      "hfToken": "HuggingFace Token",
++      "hfRequired": "Required for downloading gated models (Flux, Llama, etc.).",
++      "getToken": "Get your token",
++      "savedTokenPlaceholder": "Saved token configured (enter a new token to replace)"
+     }
+   },
+   "titlebar": {
+@@ -187,10 +207,30 @@
+       "empty": "No chats yet",
+       "emptyHint": "Start a new chat to begin",
+       "clearAllAria": "Clear all chats",
+-      "clearAllTitle": "Delete every chat across every model (with confirm)"
++      "clearAllTitle": "Delete every chat across every model (with confirm)",
++      "clearAll": "Clear All",
++      "clearAllConfirm": "Delete ALL {n} chat(s) across every model?\n\nThis wipes the chat rows and their messages. Cannot be undone.",
++      "chatCountHint": "{n} chat(s) • shift-click × to skip confirm",
++      "groupToday": "Today",
++      "groupYesterday": "Yesterday",
++      "groupThisWeek": "This Week",
++      "groupThisMonth": "This Month",
++      "groupOlder": "Older"
++    },
++    "inferenceMode": {
++      "casual": "Casual",
++      "expert": "Expert",
++      "casualTitle": "Casual mode — simplified chat controls",
++      "expertTitle": "Expert mode — full inference controls"
+     },
+     "chatToolbar": {
+       "noModels": "No models configured.",
++      "addLocalModel": "Add local model",
++      "connectRemoteEndpoint": "Connect remote endpoint",
++      "modelFallback": "Model",
++      "noModelSelected": "No model selected",
++      "remoteCreateFailed": "Failed to create remote session",
++      "remoteConnectFailed": "Failed to connect",
+       "apiUrlPlaceholder": "API URL (e.g. https://api.openai.com)",
+       "modelNamePlaceholder": "Model name (e.g. gpt-4o)",
+       "apiKeyPlaceholder": "API key",
+@@ -226,6 +266,25 @@
+         "failedToStart": "Failed to start"
+       }
+     },
++    "quickStart": {
++      "emptyBody": "Load a model from the Server tab, then come back here to chat.",
++      "chatWithModel": "Chat with {model}",
++      "title": "Quick Start Guide",
++      "textModelsTitle": "Text Models",
++      "textModelsBody": "Best for chat, coding, and reasoning. Works with any MLX or JANG model.",
++      "textModelsRecommended": "Recommended: Qwen3, Llama 4, Gemma 4, Nemotron, DeepSeek, Mistral",
++      "visionModelsTitle": "Vision Models (VLM)",
++      "visionModelsBody": "Attach images in chat. The model is detected as a VLM when it has a vision encoder.",
++      "visionModelsRecommended": "Recommended: Gemma 4 E2B/E4B (standard 4-bit), Qwen3.5-VL, Mistral Small 4",
++      "smeltTitle": "Large MoE Models + Smelt",
++      "smeltBody": "Models too big for RAM? Enable Smelt in Server Settings to load only a fraction of experts. This trades speed for 45-68% less memory.",
++      "smeltNote": "Smelt disables VLM mode (vision). Use text-only models with Smelt.",
++      "tipsTitle": "Tips",
++      "tipLooping": "Looping? Increase Repetition Penalty in Chat Settings (try 1.1-1.3).",
++      "tipFirstResponse": "Slow first response? That is model weight paging; the second message is faster.",
++      "tipJang": "JANG 2-bit models are compact but lower quality. Try JANG 4M or standard 4-bit for best results.",
++      "tipSettings": "All settings auto-save per model. Switch models and your settings follow."
++    },
+     "list": {
+       "newChat": "+ New Chat",
+       "import": "Import",
+@@ -390,7 +449,9 @@
+       "send": "Send",
+       "editTitle": "Edit & resend",
+       "copyTitle": "Copy response",
+-      "regenerateTitle": "Regenerate response"
++      "regenerateTitle": "Regenerate response",
++      "waitingForResponse": "Waiting for model response...",
++      "noVisibleResponse": "No visible response was produced."
+     },
+     "messages": {
+       "emptyPrimary": "Send a message to start the conversation",
+@@ -452,6 +513,12 @@
+     }
+   },
+   "sessions": {
++    "toolbar": {
++      "restartModel": "Restart model",
++      "restart": "Restart",
++      "startModel": "Start model",
++      "stopModel": "Stop model"
++    },
+     "card": {
+       "remoteBadge": "Remote",
+       "imageBadge": "Image",
+@@ -537,8 +604,13 @@
+     },
+     "create": {
+       "title": "Create Session",
++      "localModel": "Local Model",
++      "download": "Download",
++      "remoteEndpoint": "Remote Endpoint",
++      "remoteHint": "Connect to any OpenAI-compatible API endpoint.",
+       "apiBaseUrl": "API Base URL *",
+       "apiBaseUrlPlaceholder": "https://api.openai.com",
++      "apiBaseUrlHelp": "Base URL of the OpenAI-compatible API (e.g., https://api.openai.com, http://localhost:8000)",
+       "modelName": "Model Name *",
+       "modelNamePlaceholder": "gpt-4o, llama-3.1-8b, etc.",
+       "apiKey": "API Key",
+@@ -547,12 +619,19 @@
+       "organizationPlaceholder": "Optional",
+       "localHint": "Select a local MLX model to serve",
+       "filterPlaceholder": "Filter models...",
++      "rescan": "Rescan",
++      "directories": "Directories",
++      "manageDirectories": "Manage Directories",
+       "scanning": "Scanning for models...",
+       "noModels": "No models found",
++      "noModelsHelp": "Click \"Directories\" above to add your model folders, or place models in ~/.mlxstudio/models/ or ~/.cache/huggingface/hub/",
+       "downloadHint": "To download a model, run in Terminal:",
++      "browseModels": "Browse more MLX models at",
+       "deleteFailed": "Failed to delete: {error}",
+       "loadingModel": "Loading Model",
+       "launchFailed": "Launch Failed",
++      "backToConfig": "Back to Config",
++      "launchSession": "Launch Session",
+       "step2": "Step 2: Configure",
+       "imageServerSettings": "Image Server Settings",
+       "imageMode": "Image Mode",
+@@ -656,11 +735,21 @@
+       "jangNoticeBody": "As of 3/19/2026, all JANG models must be re-downloaded from HuggingFace (JANGQ-AI) to include proper chat templates. Without updated models, thinking on/off may not work correctly and some models may loop.",
+       "imageEditHeader": "Image Edit Server",
+       "imageGenHeader": "Image Generation Server",
++      "imageEditBadge": "Image Edit",
++      "imageGenBadge": "Image Gen",
++      "switchImageEditor": "Switch to Image Editor",
++      "switchImageGenerator": "Switch to Image Generator",
++      "imageEditor": "Image Editor",
++      "imageGenerator": "Image Gen",
+       "imageEditBody": "This is an image editing model. Use the Image tab to upload images and edit them with prompts.",
+       "imageGenBody": "This is an image generation model. Use the Image tab to generate images from text prompts.",
+       "openImageEditor": "Open Image Editor",
+       "openImageGenerator": "Open Image Generator",
+       "loadProgressFallback": "Starting server...",
++      "loadingSession": "Loading session...",
++      "benchPanelTitle": "Benchmark",
++      "embeddingsPanelTitle": "Embeddings",
++      "performancePanelTitle": "Performance",
+       "toast": {
+         "failedToStartChat": "Failed to create chat",
+         "failedToStopServer": "Failed to stop server",
+diff --git a/panel/src/renderer/src/i18n/locales/es.json b/panel/src/renderer/src/i18n/locales/es.json
+index b55e70b37..8a7e727cb 100644
+--- a/panel/src/renderer/src/i18n/locales/es.json
++++ b/panel/src/renderer/src/i18n/locales/es.json
+@@ -32,7 +32,8 @@
+     "retry": "Reintentar",
+     "open": "Abrir",
+     "dismiss": "Descartar",
+-    "language": "Idioma"
++    "language": "Idioma",
++    "or": "o"
+   },
+   "status": {
+     "running": "En ejecución",
+@@ -147,6 +148,11 @@
+     "quickStart": "Inicio rápido"
+   },
+   "app": {
++    "code": {
++      "title": "Código",
++      "description": "Entorno de programación tipo IDE con agente de IA, explorador de archivos y terminal integrado.",
++      "comingSoon": "Próximamente"
++    },
+     "mode": {
+       "code": "Código",
+       "chat": "Chat",
+@@ -164,7 +170,21 @@
+       "desc": "Inferencia de IA local para Apple Silicon",
+       "creator": "Creado por Jinho Jang",
+       "language": "Idioma",
+-      "settings": "Acerca de y configuración"
++      "settings": "Acerca de y configuración",
++      "version": "Versión {version}",
++      "copyright": "© {year} Eric Jang. Todos los derechos reservados.",
++      "apiKeysTitle": "Claves de API",
++      "braveKey": "Clave de API de Brave Search",
++      "braveRequired": "Necesaria para la herramienta web_search cuando las herramientas integradas están activadas.",
++      "getFreeKey": "Obtener una clave gratis",
++      "savedKeyPlaceholder": "Clave guardada configurada (introduzca una nueva para reemplazarla)",
++      "show": "Mostrar",
++      "hide": "Ocultar",
++      "saved": "Guardada",
++      "hfToken": "Token de HuggingFace",
++      "hfRequired": "Necesario para descargar modelos restringidos (Flux, Llama, etc.).",
++      "getToken": "Obtener token",
++      "savedTokenPlaceholder": "Token guardado configurado (introduzca uno nuevo para reemplazarlo)"
+     }
+   },
+   "titlebar": {
+@@ -187,10 +207,30 @@
+       "empty": "Aún no hay chats",
+       "emptyHint": "Inicie un nuevo chat para comenzar",
+       "clearAllAria": "Borrar todos los chats",
+-      "clearAllTitle": "Eliminar todos los chats de todos los modelos (con confirmación)"
++      "clearAllTitle": "Eliminar todos los chats de todos los modelos (con confirmación)",
++      "clearAll": "Borrar todo",
++      "clearAllConfirm": "¿Eliminar los {n} chats de todos los modelos?\n\nEsto borra los chats y sus mensajes. No se puede deshacer.",
++      "chatCountHint": "{n} chats • Mayús-clic en × omite la confirmación",
++      "groupToday": "Hoy",
++      "groupYesterday": "Ayer",
++      "groupThisWeek": "Esta semana",
++      "groupThisMonth": "Este mes",
++      "groupOlder": "Anteriores"
++    },
++    "inferenceMode": {
++      "casual": "Casual",
++      "expert": "Experto",
++      "casualTitle": "Modo casual — controles de chat simplificados",
++      "expertTitle": "Modo experto — controles de inferencia completos"
+     },
+     "chatToolbar": {
+       "noModels": "No hay modelos configurados.",
++      "addLocalModel": "Añadir modelo local",
++      "connectRemoteEndpoint": "Conectar endpoint remoto",
++      "modelFallback": "Modelo",
++      "noModelSelected": "Ningún modelo seleccionado",
++      "remoteCreateFailed": "No se pudo crear la sesión remota",
++      "remoteConnectFailed": "No se pudo conectar",
+       "apiUrlPlaceholder": "URL de la API (p. ej., https://api.openai.com)",
+       "modelNamePlaceholder": "Nombre del modelo (p. ej., gpt-4o)",
+       "apiKeyPlaceholder": "API key",
+@@ -226,6 +266,25 @@
+         "failedToStart": "No se pudo iniciar"
+       }
+     },
++    "quickStart": {
++      "emptyBody": "Carga un modelo desde la pestaña Servidor y vuelve aquí para chatear.",
++      "chatWithModel": "Chat con {model}",
++      "title": "Guía de inicio rápido",
++      "textModelsTitle": "Modelos de texto",
++      "textModelsBody": "Ideales para chat, programación y razonamiento. Funcionan con cualquier modelo MLX o JANG.",
++      "textModelsRecommended": "Recomendados: Qwen3, Llama 4, Gemma 4, Nemotron, DeepSeek, Mistral",
++      "visionModelsTitle": "Modelos de visión (VLM)",
++      "visionModelsBody": "Adjunta imágenes en el chat. Los modelos con codificador visual se detectan como VLM.",
++      "visionModelsRecommended": "Recomendados: Gemma 4 E2B/E4B (4 bits estándar), Qwen3.5-VL, Mistral Small 4",
++      "smeltTitle": "Modelos MoE grandes + Smelt",
++      "smeltBody": "¿El modelo no cabe en la RAM? Activa Smelt en Ajustes del servidor para cargar solo parte de los expertos. Reduce la memoria un 45-68% a cambio de velocidad.",
++      "smeltNote": "Smelt desactiva el modo VLM (visión). Úsalo con modelos de solo texto.",
++      "tipsTitle": "Consejos",
++      "tipLooping": "¿Se repite? Aumenta la penalización por repetición en Ajustes del chat (prueba 1.1-1.3).",
++      "tipFirstResponse": "¿La primera respuesta es lenta? Se debe a la paginación de pesos; el segundo mensaje será más rápido.",
++      "tipJang": "Los modelos JANG de 2 bits son compactos pero de menor calidad. Prueba JANG 4M o 4 bits estándar para obtener mejores resultados.",
++      "tipSettings": "Los ajustes se guardan automáticamente por modelo y te siguen al cambiar de modelo."
++    },
+     "list": {
+       "newChat": "+ Nuevo chat",
+       "import": "Importar",
+@@ -390,7 +449,9 @@
+       "send": "Enviar",
+       "editTitle": "Editar y reenviar",
+       "copyTitle": "Copiar respuesta",
+-      "regenerateTitle": "Regenerar respuesta"
++      "regenerateTitle": "Regenerar respuesta",
++      "waitingForResponse": "Esperando la respuesta del modelo...",
++      "noVisibleResponse": "No se generó ninguna respuesta visible."
+     },
+     "messages": {
+       "emptyPrimary": "Envíe un mensaje para iniciar la conversación",
+@@ -452,6 +513,12 @@
+     }
+   },
+   "sessions": {
++    "toolbar": {
++      "restartModel": "Reiniciar modelo",
++      "restart": "Reiniciar",
++      "startModel": "Iniciar modelo",
++      "stopModel": "Detener modelo"
++    },
+     "card": {
+       "remoteBadge": "Remoto",
+       "imageBadge": "Imagen",
+@@ -537,8 +604,13 @@
+     },
+     "create": {
+       "title": "Crear sesión",
++      "localModel": "Modelo local",
++      "download": "Descargar",
++      "remoteEndpoint": "Endpoint remoto",
++      "remoteHint": "Conéctese a cualquier endpoint de API compatible con OpenAI.",
+       "apiBaseUrl": "URL base de la API *",
+       "apiBaseUrlPlaceholder": "https://api.openai.com",
++      "apiBaseUrlHelp": "URL base de la API compatible con OpenAI (p. ej., https://api.openai.com, http://localhost:8000)",
+       "modelName": "Nombre del modelo *",
+       "modelNamePlaceholder": "gpt-4o, llama-3.1-8b, etc.",
+       "apiKey": "API Key",
+@@ -547,12 +619,19 @@
+       "organizationPlaceholder": "Opcional",
+       "localHint": "Seleccione un modelo MLX local para servir",
+       "filterPlaceholder": "Filtrar modelos...",
++      "rescan": "Volver a escanear",
++      "directories": "Directorios",
++      "manageDirectories": "Administrar directorios",
+       "scanning": "Buscando modelos...",
+       "noModels": "No se encontraron modelos",
++      "noModelsHelp": "Haga clic en \"Directorios\" arriba para agregar sus carpetas de modelos, o coloque los modelos en ~/.mlxstudio/models/ o ~/.cache/huggingface/hub/.",
+       "downloadHint": "Para descargar un modelo, ejecute en la Terminal:",
++      "browseModels": "Explore más modelos MLX en",
+       "deleteFailed": "No se pudo eliminar: {error}",
+       "loadingModel": "Cargando modelo",
+       "launchFailed": "Error al iniciar",
++      "backToConfig": "Volver a la configuración",
++      "launchSession": "Iniciar sesión",
+       "step2": "Paso 2: Configurar",
+       "imageServerSettings": "Configuración del servidor de imágenes",
+       "imageMode": "Modo de imagen",
+@@ -656,11 +735,21 @@
+       "jangNoticeBody": "A partir del 19/03/2026, todos los modelos JANG deben descargarse nuevamente desde HuggingFace (JANGQ-AI) para incluir las plantillas de chat correctas. Sin los modelos actualizados, activar/desactivar el pensamiento puede no funcionar correctamente y algunos modelos pueden entrar en bucle.",
+       "imageEditHeader": "Servidor de edición de imágenes",
+       "imageGenHeader": "Servidor de generación de imágenes",
++      "imageEditBadge": "Edición de imagen",
++      "imageGenBadge": "Generación de imagen",
++      "switchImageEditor": "Cambiar al editor de imágenes",
++      "switchImageGenerator": "Cambiar al generador de imágenes",
++      "imageEditor": "Editor de imágenes",
++      "imageGenerator": "Generación de imagen",
+       "imageEditBody": "Este es un modelo de edición de imágenes. Use la pestaña Imagen para subir imágenes y editarlas con prompts.",
+       "imageGenBody": "Este es un modelo de generación de imágenes. Use la pestaña Imagen para generar imágenes a partir de prompts de texto.",
+       "openImageEditor": "Abrir editor de imágenes",
+       "openImageGenerator": "Abrir generador de imágenes",
+       "loadProgressFallback": "Iniciando servidor...",
++      "loadingSession": "Cargando sesión...",
++      "benchPanelTitle": "Benchmark",
++      "embeddingsPanelTitle": "Embeddings",
++      "performancePanelTitle": "Rendimiento",
+       "toast": {
+         "failedToStartChat": "No se pudo crear el chat",
+         "failedToStopServer": "No se pudo detener el servidor",
+diff --git a/panel/src/renderer/src/i18n/locales/ja.json b/panel/src/renderer/src/i18n/locales/ja.json
+index f65541793..b4cb0b10f 100644
+--- a/panel/src/renderer/src/i18n/locales/ja.json
++++ b/panel/src/renderer/src/i18n/locales/ja.json
+@@ -32,7 +32,8 @@
+     "retry": "再試行",
+     "open": "開く",
+     "dismiss": "閉じる",
+-    "language": "言語"
++    "language": "言語",
++    "or": "または"
+   },
+   "status": {
+     "running": "実行中",
+@@ -147,6 +148,11 @@
+     "quickStart": "クイックスタート"
+   },
+   "app": {
++    "code": {
++      "title": "コード",
++      "description": "AI エージェント、ファイルブラウザー、統合ターミナルを備えた IDE 風のコーディング環境です。",
++      "comingSoon": "近日公開"
++    },
+     "mode": {
+       "code": "コード",
+       "chat": "チャット",
+@@ -164,7 +170,21 @@
+       "desc": "Apple Silicon 向けローカル AI 推論",
+       "creator": "Jinho Jang が作成",
+       "language": "言語",
+-      "settings": "情報と設定"
++      "settings": "情報と設定",
++      "version": "バージョン {version}",
++      "copyright": "© {year} Eric Jang. All rights reserved.",
++      "apiKeysTitle": "API キー",
++      "braveKey": "Brave Search API キー",
++      "braveRequired": "組み込みツールが有効な場合、web_search ツールに必要です。",
++      "getFreeKey": "無料キーを取得",
++      "savedKeyPlaceholder": "保存済みキーが設定されています（新しいキーで置換）",
++      "show": "表示",
++      "hide": "非表示",
++      "saved": "保存済み",
++      "hfToken": "HuggingFace トークン",
++      "hfRequired": "制限付きモデル（Flux、Llama など）のダウンロードに必要です。",
++      "getToken": "トークンを取得",
++      "savedTokenPlaceholder": "保存済みトークンが設定されています（新しいトークンで置換）"
+     }
+   },
+   "titlebar": {
+@@ -187,10 +207,30 @@
+       "empty": "チャットがありません",
+       "emptyHint": "新規チャットを開始してください",
+       "clearAllAria": "すべてのチャットをクリア",
+-      "clearAllTitle": "すべてのモデルのすべてのチャットを削除（確認あり）"
++      "clearAllTitle": "すべてのモデルのすべてのチャットを削除（確認あり）",
++      "clearAll": "すべて消去",
++      "clearAllConfirm": "すべてのモデルのチャット {n} 件を削除しますか？\n\nチャットとメッセージが削除され、元に戻せません。",
++      "chatCountHint": "チャット {n} 件 • Shift を押しながら × をクリックすると確認を省略",
++      "groupToday": "今日",
++      "groupYesterday": "昨日",
++      "groupThisWeek": "今週",
++      "groupThisMonth": "今月",
++      "groupOlder": "それ以前"
++    },
++    "inferenceMode": {
++      "casual": "カジュアル",
++      "expert": "エキスパート",
++      "casualTitle": "カジュアルモード — 簡易チャット操作",
++      "expertTitle": "エキスパートモード — すべての推論操作"
+     },
+     "chatToolbar": {
+       "noModels": "モデルが設定されていません。",
++      "addLocalModel": "ローカルモデルを追加",
++      "connectRemoteEndpoint": "リモートエンドポイントに接続",
++      "modelFallback": "モデル",
++      "noModelSelected": "モデルが選択されていません",
++      "remoteCreateFailed": "リモートセッションの作成に失敗しました",
++      "remoteConnectFailed": "接続に失敗しました",
+       "apiUrlPlaceholder": "API URL (例: https://api.openai.com)",
+       "modelNamePlaceholder": "モデル名 (例: gpt-4o)",
+       "apiKeyPlaceholder": "API キー",
+@@ -226,6 +266,25 @@
+         "failedToStart": "起動に失敗しました"
+       }
+     },
++    "quickStart": {
++      "emptyBody": "サーバータブでモデルを読み込み、ここに戻ってチャットを開始してください。",
++      "chatWithModel": "{model} とチャット",
++      "title": "クイックスタートガイド",
++      "textModelsTitle": "テキストモデル",
++      "textModelsBody": "チャット、コーディング、推論に最適です。すべての MLX または JANG モデルに対応します。",
++      "textModelsRecommended": "推奨: Qwen3、Llama 4、Gemma 4、Nemotron、DeepSeek、Mistral",
++      "visionModelsTitle": "ビジョンモデル (VLM)",
++      "visionModelsBody": "チャットに画像を添付できます。ビジョンエンコーダーを持つモデルは VLM として検出されます。",
++      "visionModelsRecommended": "推奨: Gemma 4 E2B/E4B（標準 4 ビット）、Qwen3.5-VL、Mistral Small 4",
++      "smeltTitle": "大規模 MoE モデル + Smelt",
++      "smeltBody": "モデルが RAM に収まりませんか？サーバー設定で Smelt を有効にすると、一部のエキスパートだけを読み込みます。速度と引き換えにメモリを 45-68% 節約します。",
++      "smeltNote": "Smelt は VLM（ビジョン）モードを無効にします。テキスト専用モデルで使用してください。",
++      "tipsTitle": "ヒント",
++      "tipLooping": "ループする場合は、チャット設定の反復ペナルティを上げてください（1.1-1.3 を推奨）。",
++      "tipFirstResponse": "最初の応答が遅い場合はモデル重みのページングが原因です。2 回目は速くなります。",
++      "tipJang": "JANG 2 ビットモデルは小型ですが品質が低めです。最良の結果には JANG 4M または標準 4 ビットをお試しください。",
++      "tipSettings": "すべての設定はモデルごとに自動保存され、モデルを切り替えると設定も追従します。"
++    },
+     "list": {
+       "newChat": "+ 新規チャット",
+       "import": "インポート",
+@@ -390,7 +449,9 @@
+       "send": "送信",
+       "editTitle": "編集して再送信",
+       "copyTitle": "応答をコピー",
+-      "regenerateTitle": "応答を再生成"
++      "regenerateTitle": "応答を再生成",
++      "waitingForResponse": "モデルの応答を待っています...",
++      "noVisibleResponse": "表示可能な応答は生成されませんでした。"
+     },
+     "messages": {
+       "emptyPrimary": "メッセージを送信して会話を開始",
+@@ -452,6 +513,12 @@
+     }
+   },
+   "sessions": {
++    "toolbar": {
++      "restartModel": "モデルを再起動",
++      "restart": "再起動",
++      "startModel": "モデルを起動",
++      "stopModel": "モデルを停止"
++    },
+     "card": {
+       "remoteBadge": "リモート",
+       "imageBadge": "画像",
+@@ -537,8 +604,13 @@
+     },
+     "create": {
+       "title": "セッションを作成",
++      "localModel": "ローカルモデル",
++      "download": "ダウンロード",
++      "remoteEndpoint": "リモートエンドポイント",
++      "remoteHint": "OpenAI 互換 API エンドポイントに接続します。",
+       "apiBaseUrl": "API ベース URL *",
+       "apiBaseUrlPlaceholder": "https://api.openai.com",
++      "apiBaseUrlHelp": "OpenAI 互換 API のベース URL（例: https://api.openai.com、http://localhost:8000）",
+       "modelName": "モデル名 *",
+       "modelNamePlaceholder": "gpt-4o、llama-3.1-8b など",
+       "apiKey": "API キー",
+@@ -547,12 +619,19 @@
+       "organizationPlaceholder": "任意",
+       "localHint": "サーブするローカル MLX モデルを選択",
+       "filterPlaceholder": "モデルを絞り込み...",
++      "rescan": "再スキャン",
++      "directories": "ディレクトリ",
++      "manageDirectories": "ディレクトリを管理",
+       "scanning": "モデルをスキャン中...",
+       "noModels": "モデルが見つかりません",
++      "noModelsHelp": "上の「ディレクトリ」をクリックしてモデルフォルダを追加するか、モデルを ~/.mlxstudio/models/ または ~/.cache/huggingface/hub/ に配置してください。",
+       "downloadHint": "モデルをダウンロードするには、ターミナルで実行:",
++      "browseModels": "その他の MLX モデルを見る:",
+       "deleteFailed": "削除に失敗しました: {error}",
+       "loadingModel": "モデルを読み込み中",
+       "launchFailed": "起動に失敗しました",
++      "backToConfig": "設定に戻る",
++      "launchSession": "セッションを起動",
+       "step2": "ステップ 2: 構成",
+       "imageServerSettings": "画像サーバー設定",
+       "imageMode": "画像モード",
+@@ -656,11 +735,21 @@
+       "jangNoticeBody": "2026/3/19 以降、すべての JANG モデルは適切なチャットテンプレートを含めるため HuggingFace (JANGQ-AI) から再ダウンロードする必要があります。更新されていないモデルでは思考のオン/オフが正しく動作しないか、一部モデルがループする可能性があります。",
+       "imageEditHeader": "画像編集サーバー",
+       "imageGenHeader": "画像生成サーバー",
++      "imageEditBadge": "画像編集",
++      "imageGenBadge": "画像生成",
++      "switchImageEditor": "画像エディターに切り替え",
++      "switchImageGenerator": "画像ジェネレーターに切り替え",
++      "imageEditor": "画像エディター",
++      "imageGenerator": "画像生成",
+       "imageEditBody": "これは画像編集モデルです。Image タブで画像をアップロードし、プロンプトで編集してください。",
+       "imageGenBody": "これは画像生成モデルです。Image タブでテキストプロンプトから画像を生成してください。",
+       "openImageEditor": "画像エディタを開く",
+       "openImageGenerator": "画像ジェネレータを開く",
+       "loadProgressFallback": "サーバーを起動中...",
++      "loadingSession": "セッションを読み込み中...",
++      "benchPanelTitle": "ベンチマーク",
++      "embeddingsPanelTitle": "埋め込み",
++      "performancePanelTitle": "パフォーマンス",
+       "toast": {
+         "failedToStartChat": "チャットの作成に失敗しました",
+         "failedToStopServer": "サーバーの停止に失敗しました",
+diff --git a/panel/src/renderer/src/i18n/locales/ko.json b/panel/src/renderer/src/i18n/locales/ko.json
+index 2205950af..4c28f2d21 100644
+--- a/panel/src/renderer/src/i18n/locales/ko.json
++++ b/panel/src/renderer/src/i18n/locales/ko.json
+@@ -32,7 +32,8 @@
+     "retry": "다시 시도",
+     "open": "열기",
+     "dismiss": "닫기",
+-    "language": "언어"
++    "language": "언어",
++    "or": "또는"
+   },
+   "status": {
+     "running": "실행 중",
+@@ -147,6 +148,11 @@
+     "quickStart": "빠른 시작"
+   },
+   "app": {
++    "code": {
++      "title": "코드",
++      "description": "AI 에이전트, 파일 브라우저, 통합 터미널을 갖춘 IDE형 코딩 환경입니다.",
++      "comingSoon": "출시 예정"
++    },
+     "mode": {
+       "code": "코드",
+       "chat": "채팅",
+@@ -164,7 +170,21 @@
+       "desc": "Apple Silicon용 로컬 AI 추론",
+       "creator": "Jinho Jang 제작",
+       "language": "언어",
+-      "settings": "정보 및 설정"
++      "settings": "정보 및 설정",
++      "version": "버전 {version}",
++      "copyright": "© {year} Eric Jang. 모든 권리 보유.",
++      "apiKeysTitle": "API 키",
++      "braveKey": "Brave Search API 키",
++      "braveRequired": "내장 도구가 활성화된 경우 web_search 도구에 필요합니다.",
++      "getFreeKey": "무료 키 받기",
++      "savedKeyPlaceholder": "저장된 키가 구성됨 (새 키를 입력하여 교체)",
++      "show": "표시",
++      "hide": "숨기기",
++      "saved": "저장됨",
++      "hfToken": "HuggingFace 토큰",
++      "hfRequired": "제한된 모델(Flux, Llama 등)을 다운로드하는 데 필요합니다.",
++      "getToken": "토큰 받기",
++      "savedTokenPlaceholder": "저장된 토큰이 구성됨 (새 토큰을 입력하여 교체)"
+     }
+   },
+   "titlebar": {
+@@ -187,10 +207,30 @@
+       "empty": "채팅이 없습니다",
+       "emptyHint": "새 채팅을 시작하세요",
+       "clearAllAria": "모든 채팅 삭제",
+-      "clearAllTitle": "모든 모델의 모든 채팅 삭제 (확인 요청됨)"
++      "clearAllTitle": "모든 모델의 모든 채팅 삭제 (확인 요청됨)",
++      "clearAll": "모두 지우기",
++      "clearAllConfirm": "모든 모델의 채팅 {n}개를 모두 삭제하시겠습니까?\n\n채팅 행과 메시지가 삭제되며 되돌릴 수 없습니다.",
++      "chatCountHint": "채팅 {n}개 • Shift를 누른 채 ×를 클릭하면 확인 생략",
++      "groupToday": "오늘",
++      "groupYesterday": "어제",
++      "groupThisWeek": "이번 주",
++      "groupThisMonth": "이번 달",
++      "groupOlder": "이전"
++    },
++    "inferenceMode": {
++      "casual": "일반",
++      "expert": "전문가",
++      "casualTitle": "일반 모드 — 간소화된 채팅 제어",
++      "expertTitle": "전문가 모드 — 전체 추론 제어"
+     },
+     "chatToolbar": {
+       "noModels": "구성된 모델이 없습니다.",
++      "addLocalModel": "로컬 모델 추가",
++      "connectRemoteEndpoint": "원격 엔드포인트 연결",
++      "modelFallback": "모델",
++      "noModelSelected": "선택된 모델 없음",
++      "remoteCreateFailed": "원격 세션 생성 실패",
++      "remoteConnectFailed": "연결 실패",
+       "apiUrlPlaceholder": "API URL (예: https://api.openai.com)",
+       "modelNamePlaceholder": "모델 이름 (예: gpt-4o)",
+       "apiKeyPlaceholder": "API 키",
+@@ -226,6 +266,25 @@
+         "failedToStart": "시작 실패"
+       }
+     },
++    "quickStart": {
++      "emptyBody": "서버 탭에서 모델을 불러온 뒤 여기로 돌아와 채팅을 시작하세요.",
++      "chatWithModel": "{model}와 채팅",
++      "title": "빠른 시작 안내",
++      "textModelsTitle": "텍스트 모델",
++      "textModelsBody": "채팅, 코딩, 추론에 적합하며 모든 MLX 또는 JANG 모델을 지원합니다.",
++      "textModelsRecommended": "권장: Qwen3, Llama 4, Gemma 4, Nemotron, DeepSeek, Mistral",
++      "visionModelsTitle": "비전 모델 (VLM)",
++      "visionModelsBody": "채팅에 이미지를 첨부하세요. 비전 인코더가 있는 모델은 VLM으로 감지됩니다.",
++      "visionModelsRecommended": "권장: Gemma 4 E2B/E4B(표준 4비트), Qwen3.5-VL, Mistral Small 4",
++      "smeltTitle": "대형 MoE 모델 + Smelt",
++      "smeltBody": "모델이 RAM보다 큰가요? 서버 설정에서 Smelt를 켜 일부 전문가만 불러오세요. 속도를 낮추는 대신 메모리를 45-68% 절약합니다.",
++      "smeltNote": "Smelt는 VLM(비전) 모드를 비활성화합니다. 텍스트 전용 모델에 사용하세요.",
++      "tipsTitle": "팁",
++      "tipLooping": "반복되나요? 채팅 설정에서 반복 페널티를 높이세요(1.1-1.3 권장).",
++      "tipFirstResponse": "첫 응답이 느린가요? 모델 가중치 페이징 때문이며 두 번째 메시지는 더 빠릅니다.",
++      "tipJang": "JANG 2비트 모델은 작지만 품질이 낮습니다. 최상의 결과에는 JANG 4M 또는 표준 4비트를 사용하세요.",
++      "tipSettings": "모든 설정은 모델별로 자동 저장됩니다. 모델을 바꾸면 해당 설정이 따라옵니다."
++    },
+     "list": {
+       "newChat": "+ 새 채팅",
+       "import": "가져오기",
+@@ -390,7 +449,9 @@
+       "send": "전송",
+       "editTitle": "편집 및 다시 전송",
+       "copyTitle": "응답 복사",
+-      "regenerateTitle": "응답 재생성"
++      "regenerateTitle": "응답 재생성",
++      "waitingForResponse": "모델 응답을 기다리는 중...",
++      "noVisibleResponse": "표시할 응답이 생성되지 않았습니다."
+     },
+     "messages": {
+       "emptyPrimary": "메시지를 보내 대화를 시작하세요",
+@@ -452,6 +513,12 @@
+     }
+   },
+   "sessions": {
++    "toolbar": {
++      "restartModel": "모델 다시 시작",
++      "restart": "다시 시작",
++      "startModel": "모델 시작",
++      "stopModel": "모델 중지"
++    },
+     "card": {
+       "remoteBadge": "원격",
+       "imageBadge": "이미지",
+@@ -537,8 +604,13 @@
+     },
+     "create": {
+       "title": "세션 생성",
++      "localModel": "로컬 모델",
++      "download": "다운로드",
++      "remoteEndpoint": "원격 엔드포인트",
++      "remoteHint": "OpenAI 호환 API 엔드포인트에 연결합니다.",
+       "apiBaseUrl": "API 기본 URL *",
+       "apiBaseUrlPlaceholder": "https://api.openai.com",
++      "apiBaseUrlHelp": "OpenAI 호환 API의 기본 URL(예: https://api.openai.com, http://localhost:8000)",
+       "modelName": "모델 이름 *",
+       "modelNamePlaceholder": "gpt-4o, llama-3.1-8b 등",
+       "apiKey": "API 키",
+@@ -547,12 +619,19 @@
+       "organizationPlaceholder": "선택 사항",
+       "localHint": "제공할 로컬 MLX 모델을 선택하세요",
+       "filterPlaceholder": "모델 필터링...",
++      "rescan": "다시 스캔",
++      "directories": "디렉터리",
++      "manageDirectories": "디렉터리 관리",
+       "scanning": "모델 검색 중...",
+       "noModels": "모델을 찾을 수 없습니다",
++      "noModelsHelp": "위의 ‘디렉터리’를 눌러 모델 폴더를 추가하거나 모델을 ~/.mlxstudio/models/ 또는 ~/.cache/huggingface/hub/에 배치하세요.",
+       "downloadHint": "모델을 다운로드하려면 터미널에서 실행하세요:",
++      "browseModels": "더 많은 MLX 모델 찾아보기:",
+       "deleteFailed": "삭제 실패: {error}",
+       "loadingModel": "모델 로드 중",
+       "launchFailed": "실행 실패",
++      "backToConfig": "구성으로 돌아가기",
++      "launchSession": "세션 시작",
+       "step2": "2단계: 구성",
+       "imageServerSettings": "이미지 서버 설정",
+       "imageMode": "이미지 모드",
+@@ -656,11 +735,21 @@
+       "jangNoticeBody": "2026년 3월 19일부터 모든 JANG 모델은 올바른 채팅 템플릿을 포함하기 위해 HuggingFace (JANGQ-AI)에서 다시 다운로드해야 합니다. 업데이트된 모델이 없으면 사고 켜기/끄기가 올바르게 작동하지 않을 수 있으며 일부 모델은 반복될 수 있습니다.",
+       "imageEditHeader": "이미지 편집 서버",
+       "imageGenHeader": "이미지 생성 서버",
++      "imageEditBadge": "이미지 편집",
++      "imageGenBadge": "이미지 생성",
++      "switchImageEditor": "이미지 편집기로 전환",
++      "switchImageGenerator": "이미지 생성기로 전환",
++      "imageEditor": "이미지 편집기",
++      "imageGenerator": "이미지 생성",
+       "imageEditBody": "이것은 이미지 편집 모델입니다. 이미지 탭을 사용하여 이미지를 업로드하고 프롬프트로 편집하세요.",
+       "imageGenBody": "이것은 이미지 생성 모델입니다. 이미지 탭을 사용하여 텍스트 프롬프트에서 이미지를 생성하세요.",
+       "openImageEditor": "이미지 편집기 열기",
+       "openImageGenerator": "이미지 생성기 열기",
+       "loadProgressFallback": "서버 시작 중...",
++      "loadingSession": "세션 불러오는 중...",
++      "benchPanelTitle": "벤치마크",
++      "embeddingsPanelTitle": "임베딩",
++      "performancePanelTitle": "성능",
+       "toast": {
+         "failedToStartChat": "채팅 생성 실패",
+         "failedToStopServer": "서버 중지 실패",
+diff --git a/panel/src/renderer/src/i18n/locales/zh.json b/panel/src/renderer/src/i18n/locales/zh.json
+index 258255091..cfe14465d 100644
+--- a/panel/src/renderer/src/i18n/locales/zh.json
++++ b/panel/src/renderer/src/i18n/locales/zh.json
+@@ -32,7 +32,8 @@
+     "retry": "重试",
+     "open": "打开",
+     "dismiss": "关闭",
+-    "language": "语言"
++    "language": "语言",
++    "or": "或"
+   },
+   "status": {
+     "running": "运行中",
+@@ -147,6 +148,11 @@
+     "quickStart": "快速开始"
+   },
+   "app": {
++    "code": {
++      "title": "代码",
++      "description": "集成 AI 智能体、文件浏览器和终端的 IDE 式编码环境。",
++      "comingSoon": "即将推出"
++    },
+     "mode": {
+       "code": "代码",
+       "chat": "聊天",
+@@ -164,7 +170,21 @@
+       "desc": "Apple Silicon 的本地 AI 推理",
+       "creator": "由 Jinho Jang 创建",
+       "language": "语言",
+-      "settings": "关于 & 设置"
++      "settings": "关于 & 设置",
++      "version": "版本 {version}",
++      "copyright": "© {year} Eric Jang。保留所有权利。",
++      "apiKeysTitle": "API 密钥",
++      "braveKey": "Brave Search API 密钥",
++      "braveRequired": "启用内置工具时，web_search 工具需要此密钥。",
++      "getFreeKey": "获取免费密钥",
++      "savedKeyPlaceholder": "已配置密钥（输入新密钥以替换）",
++      "show": "显示",
++      "hide": "隐藏",
++      "saved": "已保存",
++      "hfToken": "HuggingFace 令牌",
++      "hfRequired": "下载受限模型（Flux、Llama 等）时需要此令牌。",
++      "getToken": "获取令牌",
++      "savedTokenPlaceholder": "已配置令牌（输入新令牌以替换）"
+     }
+   },
+   "titlebar": {
+@@ -187,10 +207,30 @@
+       "empty": "暂无聊天",
+       "emptyHint": "开始新聊天以开始",
+       "clearAllAria": "清除所有聊天",
+-      "clearAllTitle": "删除每个模型下的所有聊天(会要求确认)"
++      "clearAllTitle": "删除每个模型下的所有聊天(会要求确认)",
++      "clearAll": "全部清除",
++      "clearAllConfirm": "删除所有模型中的全部 {n} 个聊天？\n\n这会清除聊天记录及其消息，且无法撤销。",
++      "chatCountHint": "{n} 个聊天 • 按住 Shift 点击 × 可跳过确认",
++      "groupToday": "今天",
++      "groupYesterday": "昨天",
++      "groupThisWeek": "本周",
++      "groupThisMonth": "本月",
++      "groupOlder": "更早"
++    },
++    "inferenceMode": {
++      "casual": "轻松",
++      "expert": "专家",
++      "casualTitle": "轻松模式 — 简化的聊天控制",
++      "expertTitle": "专家模式 — 完整的推理控制"
+     },
+     "chatToolbar": {
+       "noModels": "未配置模型。",
++      "addLocalModel": "添加本地模型",
++      "connectRemoteEndpoint": "连接远程端点",
++      "modelFallback": "模型",
++      "noModelSelected": "未选择模型",
++      "remoteCreateFailed": "创建远程会话失败",
++      "remoteConnectFailed": "连接失败",
+       "apiUrlPlaceholder": "API URL(例如 https://api.openai.com)",
+       "modelNamePlaceholder": "模型名称(例如 gpt-4o)",
+       "apiKeyPlaceholder": "API 密钥",
+@@ -226,6 +266,25 @@
+         "failedToStart": "启动失败"
+       }
+     },
++    "quickStart": {
++      "emptyBody": "请先从服务器标签页加载模型，然后返回此处聊天。",
++      "chatWithModel": "与 {model} 聊天",
++      "title": "快速入门指南",
++      "textModelsTitle": "文本模型",
++      "textModelsBody": "适合聊天、编程和推理。支持任何 MLX 或 JANG 模型。",
++      "textModelsRecommended": "推荐：Qwen3、Llama 4、Gemma 4、Nemotron、DeepSeek、Mistral",
++      "visionModelsTitle": "视觉模型 (VLM)",
++      "visionModelsBody": "在聊天中附加图像。具有视觉编码器的模型会被识别为 VLM。",
++      "visionModelsRecommended": "推荐：Gemma 4 E2B/E4B（标准 4 位）、Qwen3.5-VL、Mistral Small 4",
++      "smeltTitle": "大型 MoE 模型 + Smelt",
++      "smeltBody": "模型太大无法装入内存？在服务器设置中启用 Smelt，仅加载部分专家。它以速度换取 45-68% 的内存节省。",
++      "smeltNote": "Smelt 会禁用 VLM（视觉）模式。请将 Smelt 用于纯文本模型。",
++      "tipsTitle": "提示",
++      "tipLooping": "出现循环？请在聊天设置中提高重复惩罚（建议 1.1-1.3）。",
++      "tipFirstResponse": "首次响应较慢？这是模型权重分页；第二条消息会更快。",
++      "tipJang": "JANG 2 位模型更紧凑但质量较低。为获得最佳效果，请尝试 JANG 4M 或标准 4 位。",
++      "tipSettings": "所有设置都会按模型自动保存。切换模型时，相应设置会自动跟随。"
++    },
+     "list": {
+       "newChat": "+ 新建聊天",
+       "import": "导入",
+@@ -390,7 +449,9 @@
+       "send": "发送",
+       "editTitle": "编辑并重新发送",
+       "copyTitle": "复制响应",
+-      "regenerateTitle": "重新生成响应"
++      "regenerateTitle": "重新生成响应",
++      "waitingForResponse": "正在等待模型响应...",
++      "noVisibleResponse": "未生成可见响应。"
+     },
+     "messages": {
+       "emptyPrimary": "发送消息以开始对话",
+@@ -452,6 +513,12 @@
+     }
+   },
+   "sessions": {
++    "toolbar": {
++      "restartModel": "重启模型",
++      "restart": "重启",
++      "startModel": "启动模型",
++      "stopModel": "停止模型"
++    },
+     "card": {
+       "remoteBadge": "远程",
+       "imageBadge": "图像",
+@@ -537,8 +604,13 @@
+     },
+     "create": {
+       "title": "创建会话",
++      "localModel": "本地模型",
++      "download": "下载",
++      "remoteEndpoint": "远程端点",
++      "remoteHint": "连接到任何兼容 OpenAI 的 API 端点。",
+       "apiBaseUrl": "API 基础 URL *",
+       "apiBaseUrlPlaceholder": "https://api.openai.com",
++      "apiBaseUrlHelp": "兼容 OpenAI 的 API 基础 URL（例如 https://api.openai.com、http://localhost:8000）",
+       "modelName": "模型名称 *",
+       "modelNamePlaceholder": "gpt-4o、llama-3.1-8b 等",
+       "apiKey": "API 密钥",
+@@ -547,12 +619,19 @@
+       "organizationPlaceholder": "可选",
+       "localHint": "选择要服务的本地 MLX 模型",
+       "filterPlaceholder": "筛选模型...",
++      "rescan": "重新扫描",
++      "directories": "目录",
++      "manageDirectories": "管理目录",
+       "scanning": "正在扫描模型...",
+       "noModels": "未找到模型",
++      "noModelsHelp": "点击上方“目录”添加模型文件夹，或将模型放入 ~/.mlxstudio/models/ 或 ~/.cache/huggingface/hub/。",
+       "downloadHint": "如需下载模型,请在终端运行:",
++      "browseModels": "浏览更多 MLX 模型：",
+       "deleteFailed": "删除失败: {error}",
+       "loadingModel": "加载模型",
+       "launchFailed": "启动失败",
++      "backToConfig": "返回配置",
++      "launchSession": "启动会话",
+       "step2": "第 2 步: 配置",
+       "imageServerSettings": "图像服务器设置",
+       "imageMode": "图像模式",
+@@ -656,11 +735,21 @@
+       "jangNoticeBody": "自 2026/3/19 起,所有 JANG 模型都必须从 HuggingFace (JANGQ-AI) 重新下载,以包含正确的聊天模板。如未更新模型,思考开关可能无法正常工作,部分模型可能出现循环。",
+       "imageEditHeader": "图像编辑服务器",
+       "imageGenHeader": "图像生成服务器",
++      "imageEditBadge": "图像编辑",
++      "imageGenBadge": "图像生成",
++      "switchImageEditor": "切换到图像编辑器",
++      "switchImageGenerator": "切换到图像生成器",
++      "imageEditor": "图像编辑器",
++      "imageGenerator": "图像生成",
+       "imageEditBody": "这是一个图像编辑模型。请使用 Image 标签页上传图像并通过提示词进行编辑。",
+       "imageGenBody": "这是一个图像生成模型。请使用 Image 标签页,通过文本提示词生成图像。",
+       "openImageEditor": "打开图像编辑器",
+       "openImageGenerator": "打开图像生成器",
+       "loadProgressFallback": "启动服务器中...",
++      "loadingSession": "正在加载会话...",
++      "benchPanelTitle": "基准测试",
++      "embeddingsPanelTitle": "嵌入",
++      "performancePanelTitle": "性能",
+       "toast": {
+         "failedToStartChat": "创建聊天失败",
+         "failedToStopServer": "停止服务器失败",
+diff --git a/panel/tests/i18n-consistency.test.ts b/panel/tests/i18n-consistency.test.ts
+index 6bff72bec..e3e371f5c 100644
+--- a/panel/tests/i18n-consistency.test.ts
++++ b/panel/tests/i18n-consistency.test.ts
+@@ -150,6 +150,133 @@ describe('i18n locale consistency', () => {
+     expect(indexSrc).toContain('localStorage.getItem')
+   })
+
++  it('session creation and narrow session drawers use the shared locale catalog', () => {
++    const createSrc = readFileSync(
++      resolve(__dirname, '..', 'src', 'renderer', 'src', 'components', 'sessions', 'CreateSession.tsx'),
++      'utf-8',
++    )
++    const drawerSrc = readFileSync(
++      resolve(__dirname, '..', 'src', 'renderer', 'src', 'components', 'sessions', 'ServerSettingsDrawer.tsx'),
++      'utf-8',
++    )
++    const viewSrc = readFileSync(
++      resolve(__dirname, '..', 'src', 'renderer', 'src', 'components', 'sessions', 'SessionView.tsx'),
++      'utf-8',
++    )
++    const chatToolbarSrc = readFileSync(
++      resolve(__dirname, '..', 'src', 'renderer', 'src', 'components', 'layout', 'ChatModeToolbar.tsx'),
++      'utf-8',
++    )
++
++    for (const key of [
++      'sessions.create.title',
++      'sessions.create.localModel',
++      'sessions.create.remoteEndpoint',
++      'sessions.create.filterPlaceholder',
++      'sessions.create.launchSession',
++    ]) {
++      expect(createSrc).toContain(`t('${key}')`)
++    }
++    for (const key of [
++      'sessions.view.serverSettingsTitle',
++      'sessions.settings.runningWarning',
++      'sessions.settings.saveAndRestart',
++      'common.close',
++    ]) {
++      expect(drawerSrc).toContain(`t('${key}')`)
++    }
++    for (const key of [
++      'sessions.view.chatButton',
++      'sessions.view.server',
++      'sessions.view.logs',
++      'sessions.view.wake',
++      'sessions.view.loadingSession',
++      'sessions.view.cacheTitle',
++      'sessions.view.benchPanelTitle',
++      'sessions.view.embeddingsPanelTitle',
++      'sessions.view.performancePanelTitle',
++    ]) {
++      expect(viewSrc).toContain(`t('${key}')`)
++    }
++    for (const key of [
++      'sessions.view.chatLabel',
++      'sessions.view.server',
++      'sessions.toolbar.startModel',
++      'sessions.toolbar.stopModel',
++      'layout.chatToolbar.addLocalModel',
++      'layout.chatToolbar.connectRemoteEndpoint',
++      'layout.chatToolbar.apiUrlPlaceholder',
++    ]) {
++      expect(chatToolbarSrc).toContain(`t('${key}')`)
++    }
++  })
++
++  it('chat history, inference mode, message actions, voice, and API keys use the locale catalog', () => {
++    const chatHistorySrc = readFileSync(
++      resolve(__dirname, '..', 'src', 'renderer', 'src', 'components', 'layout', 'ChatHistory.tsx'),
++      'utf-8',
++    )
++    const inferenceModeSrc = readFileSync(
++      resolve(__dirname, '..', 'src', 'renderer', 'src', 'components', 'layout', 'InferenceMode.tsx'),
++      'utf-8',
++    )
++    const messageBubbleSrc = readFileSync(
++      resolve(__dirname, '..', 'src', 'renderer', 'src', 'components', 'chat', 'MessageBubble.tsx'),
++      'utf-8',
++    )
++    const voiceChatSrc = readFileSync(
++      resolve(__dirname, '..', 'src', 'renderer', 'src', 'components', 'chat', 'VoiceChat.tsx'),
++      'utf-8',
++    )
++    const appSrc = readFileSync(
++      resolve(__dirname, '..', 'src', 'renderer', 'src', 'App.tsx'),
++      'utf-8',
++    )
++
++    for (const key of [
++      'layout.chatHistory.clearAll',
++      'layout.chatHistory.clearAllConfirm',
++      'layout.chatHistory.chatCountHint',
++    ]) {
++      expect(chatHistorySrc).toContain(`t('${key}'`)
++    }
++    for (const key of [
++      'layout.inferenceMode.casual',
++      'layout.inferenceMode.expert',
++      'layout.inferenceMode.casualTitle',
++      'layout.inferenceMode.expertTitle',
++    ]) {
++      expect(inferenceModeSrc).toContain(`t('${key}')`)
++    }
++    for (const key of [
++      'chat.bubble.editTitle',
++      'chat.bubble.copyTitle',
++      'chat.bubble.regenerateTitle',
++      'chat.bubble.codeCopy',
++      'chat.bubble.codeCopied',
++      'chat.bubble.waitingForResponse',
++      'chat.bubble.noVisibleResponse',
++    ]) {
++      expect(messageBubbleSrc).toContain(`t('${key}')`)
++    }
++    for (const key of ['chat.tts.stopTitle', 'chat.tts.readAloudTitle', 'chat.tts.speak']) {
++      expect(voiceChatSrc).toContain(`t('${key}')`)
++    }
++    for (const key of [
++      'app.about.version',
++      'app.about.apiKeysTitle',
++      'app.about.braveKey',
++      'app.about.hfToken',
++      'app.code.title',
++      'app.code.description',
++      'app.code.comingSoon',
++      'chat.quickStart.title',
++      'chat.quickStart.tipSettings',
++    ]) {
++      expect(appSrc).toContain(`t('${key}'`)
++    }
++  })
++
+   it('release update notice is localized and covers v1.5.45 release-critical items', () => {
+     const updateNoticeSrc = readFileSync(
+       resolve(__dirname, '..', 'src', 'renderer', 'src', 'components', 'UpdateNotice.tsx'),
+diff --git a/tests/test_vl_video_regression.py b/tests/test_vl_video_regression.py
+index 4b1046aa6..7143eb74d 100644
+--- a/tests/test_vl_video_regression.py
++++ b/tests/test_vl_video_regression.py
+@@ -10142,9 +10142,9 @@ class TestChatHistoryClearAllButton:
+     def test_chat_history_has_clear_all_button(self):
+         """Clear All button must be rendered with an accessible label."""
+         src = Path(self.PANEL_CH).read_text()
+-        assert 'aria-label="Clear all chats"' in src, (
+-            "ChatHistory must expose Clear All button with accessible "
+-            "label for screen readers + keyboard navigation"
++        assert "aria-label={t('layout.chatHistory.clearAllAria')}" in src, (
++            "ChatHistory must expose a localized Clear All accessible "
++            "label for screen readers and keyboard navigation"
+         )
+
+     def test_chat_history_has_shift_click_quick_delete(self):

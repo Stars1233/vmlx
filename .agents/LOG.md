@@ -1,5 +1,21 @@
 # Agent proof log
 
+## 2026-07-19 - minimum-width five-locale expansion and full-suite gate
+
+- Expanded the live-found locale repair through Code/chat-empty screens,
+  remote picker/form, markdown code-copy feedback, waiting/empty-response
+  states, session side panels, image-session labels, and fallback errors.
+- Full current suites pass: Python 6,153 passed / 96 skipped / 92 deselected;
+  panel 2,326 passed / 3 skipped; typecheck and current Electron production
+  build pass. The clean-JANG bundled-Python production gate passed immediately
+  before the renderer-only expansion.
+- Full Electron at 600x760 passed all five Code locales at 600/600 with no raw
+  catalog keys or clipped main elements. Japanese remote picker/form was also
+  opened and visually inspected. Transient wait/empty/image-panel rendering,
+  secondary/destructive modals, native sheets, full accessibility, and the
+  signed app remain explicitly partial.
+- Evidence: `docs/internal/release-gates/20260719_minwidth_locale_drawers/`.
+
 ## 2026-07-16 - Gemma 4 mixed-SWA cache/settings closeout PASS, long output PARTIAL
 
 - Pushed `3385cb019`: Auto now wraps only Gemma 4 full-attention slots with
@@ -1348,3 +1364,20 @@
 - Committed and pushed source as `cc4251318`. Preserved the raw SSE, analysis,
   screenshots, DOM trace, DB rows, argv, health, tests, and source diff under
   `20260719_responses_usage_extension_parity/`.
+## 2026-07-19 - minimum-width localization follow-through
+
+- Live Electron at 600x760 disproved the prior assumption that the remaining
+  work was layout-only: Korean About/API Keys, Create Session, Server Settings,
+  history/inference controls, message actions, and TTS retained English copy.
+- Localized the observed surfaces through the existing catalog and added the
+  missing English/Chinese/Korean/Japanese/Spanish keys.
+- HMR briefly displayed raw keys from an orphaned dev renderer. Killed only the
+  two scoped dev Electron process trees, relaunched cleanly on CDP 9335, and
+  confirmed the fresh renderer resolved translations. The startup log again
+  found `/Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine` version 1.6.11.
+- UI-selected About/API Keys passed all five locales at 600x760 with no document
+  overflow or sampled clipped control. Korean Chat, Create Session, remote
+  endpoint, and the open Server Settings drawer passed the same probe.
+- Focused panel contracts: 341 passed; typecheck passed. Full suites remain a
+  separate current-source gate until their active reruns finish.
+- Evidence: `docs/internal/release-gates/20260719_minwidth_locale_drawers/`.
