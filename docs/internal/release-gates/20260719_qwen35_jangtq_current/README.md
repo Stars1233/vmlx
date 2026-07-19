@@ -2,7 +2,7 @@
 
 Date: 2026-07-19
 
-Source cutoff: `87e11c5ee` (`reconcile/1.5.68`, pushed to
+Source cutoff: `54222003d` (`reconcile/1.5.68`, pushed to
 `origin/codex/live-electron-gates-20260715`)
 
 Verdict: `PASS-LIVE_SCOPED_TEXT_TOOL_STREAM_RESTART_L2_PARTIAL_PREFIX`.
@@ -38,12 +38,20 @@ Source trace:
 - `panel/src/main/ipc/chat.ts:2503-2570` consumes reasoning and visible deltas
   separately and retains the terminal-text fallback only when no text delta was
   seen.
+- `panel/src/shared/jangQuantization.ts:13-65` reads the current sidecar's
+  top-level `profile=JANGTQ2` as well as nested legacy profiles.
+- `panel/src/main/model-config-registry.ts:947-953` exports that bundle-grounded
+  label through `detectConfig`; `SessionCard.tsx:116-151` uses the real bundle
+  basename for its immediate fallback, so a provider directory such as
+  `jangq-ai/` cannot relabel an MXFP child bundle.
 
 ## Focused tests
 
 - Python hybrid/TQ/cache and policy selection: 103 passed, 609 deselected.
 - Panel reasoning display, tool-history replay, and chat override policy:
   127 passed across three files.
+- Quant-label detector/card regression: 94 passed across three files, followed
+  by clean `tsc --noEmit`.
 - No full-suite/build inference is made from these focused tests.
 
 ## Electron proof
@@ -82,9 +90,33 @@ Controls retained rather than hidden:
   obeying byte-exact formatting. Strict sampled instruction reliability remains
   PARTIAL.
 
+Post-label-fix current-source UI/runtime proof:
+
+- A complete Electron-main relaunch used
+  `VMLINUX_USER_DATA_DIR=/Users/eric/.vmlx-v1611-cachefix-dev` and logged
+  `[Engine Manager] Found in PATH: /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine`.
+- The real Sessions `Start` button launched PID 26427. The Sessions card and
+  active chat header both displayed `JANGTQ2 (2b)`.
+- Visual controls stayed distinct: Bonsai 1-bit displayed
+  `JANG_AFFINE_1BIT (1.1128b)`; DSV4/Gemma basename fallbacks remained JANG;
+  base Nemotron MXFP4 showed no JANG badge; and the MXFP4 child under the
+  `jangq-ai/` provider directory also showed no false JANG badge. The excluded
+  Mistral MXFP4 model was not loaded or generation-tested.
+- Fresh Electron row 440 executed exactly one real
+  `file_info({"path":"panel/package.json"})`, returned a non-empty visible
+  answer, restored 3,904 `paged+ssm+disk` tokens, and persisted no warning.
+  It misspelled the requested marker as `Q35-JT-L-LABEL-LIVE-DONE`; therefore
+  the agent/tool loop passes but strict sampled formatting remains PARTIAL.
+
 Visual and DB evidence:
 
 - `q35jt-current-source-tool-pass.png`
+- `session-card-quant-labels-final-v3.png`
+- `session-card-qwen-started.png`
+- `q35jt-active-header-final.png`
+- `q35jt-label-live-tool-partial.png`
+- `q35jt-label-live-tool-row.json`
+- `health-after-label-live-turn.json`
 - `q35jt-truthfix-live-log.png`
 - `electron-current-source-tool-db-rows.json`
 - `electron-db-rows.json`
@@ -171,10 +203,10 @@ Evidence:
   was added.
 - `Q35-VL-ROUTE`: OPEN. The artifact advertises vision, but this loaded route
   reports `vl_runtime_available=false`; no media claim is made.
-- `Q35-SESSION-CARD-QUANT-LABEL`: OPEN UI truthfulness issue. The Sessions card
-  labels this MXTQ bundle generically as `JANG`, while the active chat header
-  correctly says `JANGTQ`. The quant distinction must be traced/fixed and
-  visually retested.
+- `Q35-SESSION-CARD-QUANT-LABEL`: PASS-LIVE at `54222003d`. The bundle-grounded
+  card and active header both say `JANGTQ2 (2b)`; affine JANG and base MXFP
+  controls remain distinct. Provider directory names no longer contaminate the
+  fallback label.
 - Full suites, build, bundled-Python refresh, signed/notarized packaging, and
   the broader model/protocol/settings/media/gateway matrix remain outside this
   scoped pass.

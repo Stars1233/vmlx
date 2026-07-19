@@ -7243,3 +7243,25 @@ release remains `PARTIAL_NO_1_6_12_RELEASE`.
 - OPEN/PARTIAL: strict sampled reliability, Qwen35 VL route, generic Sessions-card
   `JANG` label, full suites/build/bundle/release, and the remaining campaign rows.
 - Evidence: `docs/internal/release-gates/20260719_qwen35_jangtq_current/`.
+
+## 2026-07-19 - Qwen JANGTQ Sessions quant-label truth checkpoint
+
+Status: `PASS-LIVE` for the scoped label defect at pushed commit `54222003d`;
+overall release remains `PARTIAL_NO_1_6_12_RELEASE`.
+
+- Source now reads current top-level `profile=JANGTQ2`, returns the precise
+  bundle label through `detectConfig`, and restricts fallback matching to the
+  real bundle basename rather than a provider directory.
+- Remote focused tests passed 94/94 across three label/registry/card files and
+  `tsc --noEmit` passed.
+- A complete Electron-main relaunch logged the project `.venv/bin/vmlx-engine`.
+  The real Sessions Start button launched PID 26427; card and active header both
+  showed `JANGTQ2 (2b)`.
+- Visual controls retained Bonsai affine and DSV4/Gemma JANG labels. Base MXFP
+  controls had no JANG badge, including an MXFP4 child under `jangq-ai/`. The
+  excluded Mistral MXFP4 artifact was not loaded or generation-tested.
+- Fresh Electron row 440 executed one real `file_info`, returned non-empty
+  content, and restored 3,904 `paged+ssm+disk` tokens without warning, but its
+  exact marker contained an extra `L`. Strict sampled reliability remains
+  PARTIAL; no output rewrite or sampler coercion was added.
+- Evidence: `docs/internal/release-gates/20260719_qwen35_jangtq_current/`.

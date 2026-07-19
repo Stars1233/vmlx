@@ -1,0 +1,12 @@
+Remote source: reconcile/1.5.68 at 54222003d
+
+npm test -- --run tests/jang-quantization-label.test.ts tests/model-config-registry.test.ts tests/session-card-quantization-label.test.ts
+Result: 3 files passed, 94 tests passed.
+
+npm run typecheck
+Result: tsc --noEmit completed successfully.
+
+Live Electron main relaunch:
+[Engine Manager] Found in PATH: /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine
+[SESSIONS] Using project venv: /Users/eric/mlx/vllm-mlx/.venv/bin/python3
+Real Sessions Start PID: 26427

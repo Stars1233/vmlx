@@ -10,7 +10,7 @@ superseded conclusions are called out here.
 
 ### 2026-07-19 Qwen3.6 35B JANGTQ current-source override
 
-- Pushed source `87e11c5ee` has a new current-source Electron/API/cache proof.
+- Pushed source `54222003d` has a new current-source Electron/API/cache/UI proof.
   A fresh Electron tools-on chat executed one real `file_info` and exact-finaled;
   current Responses and Chat each emitted a valid tool call and streamed the
   real-result continuation as 256 reasoning plus 18 content deltas to clean
@@ -24,14 +24,19 @@ superseded conclusions are called out here.
   `QuantizedKVCache=none` avoids a second codec; native architecture-selected
   q4 attention-TQ remains enabled at prefix/paged/L2 boundaries. It does not
   change or duplicate the codec.
+- Commit `54222003d` closes the Sessions-card quant-label defect. A complete
+  Electron-main relaunch and real Sessions Start showed `JANGTQ2 (2b)` on both
+  the card and active header. Affine JANG controls stayed explicit; base MXFP
+  controls stayed unlabeled, including a child beneath provider directory
+  `jangq-ai/`. Fresh row 440 completed one real tool loop with non-empty content
+  and a 3,904-token disk-backed hybrid hit, but misspelled its requested marker.
 - Retained PARTIAL/OPEN rows: strict sampled formatting/repeated-tool
-  reliability, advertised VL (`vl_runtime_available=false` here), and the
-  Sessions-card generic `JANG` label for an MXTQ/JANGTQ artifact. Evidence:
+  reliability and advertised VL (`vl_runtime_available=false` here). Evidence:
   `docs/internal/release-gates/20260719_qwen35_jangtq_current/`.
 
 ### 2026-07-19 current-head reconciliation override
 
-- Current audited/pushed head is `87e11c5ee`. The public v1.6.11 checkpoint
+- Current audited/pushed head is `54222003d`. The public v1.6.11 checkpoint
   remains released, signed, and notarized; this post-release head is not a
   v1.6.12 candidate yet.
 - The earlier full-suite checkpoint remains valid for its source, but is stale

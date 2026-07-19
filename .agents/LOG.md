@@ -1226,3 +1226,14 @@
 - Preserved strict-format sampling misses, unavailable live VL, and the generic
   Sessions-card `JANG` label as explicit remaining issues. Evidence is under
   `20260719_qwen35_jangtq_current/`.
+
+## 2026-07-19 - Qwen JANGTQ card label fixed and live-rechecked
+
+- Commit `54222003d` makes quant labels bundle-grounded and prevents provider
+  directory names from classifying base MXFP children as JANG.
+- Remote label/registry/card tests passed 94/94 plus typecheck.
+- Fully relaunched Electron main, used the real Sessions Start button, and
+  captured `JANGTQ2 (2b)` on both the Qwen card and active header. Affine JANG
+  and base MXFP controls remained distinct.
+- Fresh row 440 completed one real file tool with 3,904 cached hybrid tokens and
+  non-empty content, but retained a strict marker typo as PARTIAL evidence.

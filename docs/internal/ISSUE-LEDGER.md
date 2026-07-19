@@ -2653,9 +2653,20 @@ remain open. No public release/notarization/feed mutation performed.
   prefix/paged/L2 codec. The corrected log says so without altering the proven
   cache path or double-quantizing it. Focused validation: 103 Python and 127
   panel tests.
+- `Q35-SESSION-CARD-QUANT-LABEL`: `PASS-LIVE` at pushed commit `54222003d`.
+  The shared label formatter now reads current top-level JANG sidecar profiles,
+  the detector returns `JANGTQ2 (2b)`, and SessionCard limits its fallback to
+  the actual bundle basename rather than provider directories. After a complete
+  Electron-main relaunch, the real Sessions card and active header both showed
+  `JANGTQ2 (2b)`; affine Bonsai/DSV4/Gemma labels remained JANG, while base
+  Nemotron MXFP4 and a base MXFP4 child under `jangq-ai/` had no false badge.
+  The latter was UI-only classification proof; the excluded Mistral MXFP4 model
+  was not loaded or generation-tested. Focused panel validation is 94/94 plus
+  typecheck. Fresh row 440 then executed one real file tool with non-empty final
+  content and 3,904 `paged+ssm+disk` tokens, but misspelled the exact marker;
+  strict sampled formatting/tool reliability therefore remains PARTIAL.
 - Retained reds: strict sampled formatting/tool reliability remains PARTIAL;
   advertised vision remains OPEN because live health says
-  `vl_runtime_available=false`; the Sessions card says generic `JANG` while the
-  active header says `JANGTQ`, recorded as `Q35-SESSION-CARD-QUANT-LABEL` OPEN.
+  `vl_runtime_available=false`.
 - Evidence:
   `docs/internal/release-gates/20260719_qwen35_jangtq_current/`.
