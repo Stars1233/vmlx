@@ -1440,3 +1440,21 @@
 - Retained OCR/order misses as `PARTIAL`; no REAP32 retry due reboot risk.
 - Evidence:
   `docs/internal/release-gates/20260719_m3_terminal_dispatch_large_video/`.
+
+## 2026-07-19 - Generalized terminal-first path-dependent cache store
+
+- Audited `_process_batch_responses` after the M3 fix and found the same
+  pre-terminal clean-prefill lifecycle violation in DSV4, ZAYA, and mixed-SWA
+  branches.
+- Replaced all six architecture branches with shared typed deferred
+  descriptors. The terminal finalizer now has zero direct clean-prefill calls;
+  `_cleanup_finished` materializes paged/object stores after dispatch.
+- Full DSV4 paged + ZAYA runtime plus M3/terminal/media/history selection:
+  229 passed, 6 skipped.
+- Relaunched through Electron Save & Restart (PID 42270 -> 43998). Raw M3
+  terminal remained 0.0414s after the last content delta with 1,701
+  `paged+disk` tokens. Fresh Electron row 662 independently persisted visible
+  content without warning/tool/reasoning.
+- DSV4, mixed-SWA, and ZAYA family live reloads remain explicit partials.
+- Evidence:
+  `docs/internal/release-gates/20260719_path_dependent_terminal_cleanup/`.

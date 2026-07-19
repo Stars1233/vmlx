@@ -1,0 +1,22 @@
+{
+  "function": "Scheduler._process_batch_responses",
+  "before": {
+    "direct_clean_prefill_calls": 4,
+    "affected_branches": 6,
+    "families": {
+      "DSV4": {"paged": 1, "object": 0},
+      "ZAYA": {"paged": 1, "object": 0},
+      "Mixed-SWA": {"paged": 1, "object": 1},
+      "MiniMax-M3": {"paged": 1, "object": 1}
+    }
+  },
+  "after": {
+    "direct_clean_prefill_calls": 0,
+    "deferred_descriptors": 6,
+    "paged_modes": 4,
+    "object_modes": 2,
+    "cleanup_owner": "Scheduler._materialize_deferred_prompt_cache",
+    "terminal_dispatch_owner": "EngineCore._engine_loop",
+    "next_turn_admission_barrier": "EngineCore._terminal_cleanup_complete"
+  }
+}

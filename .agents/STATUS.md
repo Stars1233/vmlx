@@ -7481,3 +7481,21 @@ Status: `FIXED_SOURCE_VERIFIED_LIVE_SCOPED`; overall release remains
   focused tests pass 101/101.
 - Evidence:
   `docs/internal/release-gates/20260719_m3_terminal_dispatch_large_video/`.
+
+## 2026-07-19 - Shared path-dependent terminal cleanup
+
+Status: `FIXED_SOURCE`; current-source live M3 is
+`VERIFIED-LIVE_SCOPED`. Other affected families remain `PARTIAL` pending live
+reloads.
+
+- Removed all direct clean prompt re-prefills from LLM response finalization.
+  DSV4, ZAYA, mixed-SWA, and M3 now schedule six typed deferred descriptors;
+  post-terminal cleanup owns materialization under the existing admission
+  barrier.
+- Expanded validation: 229 passed, 6 skipped.
+- Electron Save & Restart loaded generalized source as PID 43998. Raw M3 video
+  repeated the 0.0414s terminal gap with 1,701 `paged+disk` tokens; fresh UI
+  row 662 returned non-empty content and no warning/tool/reasoning.
+- Live DSV4, mixed-SWA, and ZAYA runtime terminal rows are still required.
+- Evidence:
+  `docs/internal/release-gates/20260719_path_dependent_terminal_cleanup/`.

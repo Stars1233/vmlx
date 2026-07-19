@@ -29,9 +29,9 @@ collector.  Next-turn admission remains blocked on
 Source:
 
 - `vmlx_engine/scheduler.py`
-  - both paged and object-cache M3 hit branches schedule
-    `_deferred_m3_prompt_cache`;
-  - `_materialize_deferred_m3_prompt_cache()` performs the clean N-1 prefill,
+  - both paged and object-cache M3 hit branches schedule the shared
+    `_deferred_prompt_cache` descriptor;
+  - `_materialize_deferred_prompt_cache()` performs the clean N-1 prefill,
     typed-state extraction, optional legacy prompt-disk mirror, and normal
     paged/block-L2 store during post-dispatch cleanup.
 - `vmlx_engine/engine_core.py`

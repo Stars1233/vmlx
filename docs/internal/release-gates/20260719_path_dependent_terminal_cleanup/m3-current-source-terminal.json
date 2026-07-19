@@ -1,0 +1,35 @@
+{
+  "model": "jangq-ai/MiniMax-M3-Coder-Small",
+  "electron_pid_before": 42270,
+  "electron_pid_after": 43998,
+  "surface": "POST /v1/responses",
+  "fixture": "../20260719_m3_terminal_dispatch_large_video/mm3-large-abab-14s.mp4",
+  "content_delta_count": 40,
+  "reasoning_delta_count": 0,
+  "output_text_done_count": 1,
+  "completed_count": 1,
+  "terminal_delay_after_last_content_seconds": 0.0414,
+  "completed_delay_after_last_content_seconds": 0.0419,
+  "cached_tokens": 1701,
+  "cache_detail": "paged+disk",
+  "checks": {
+    "http_200": true,
+    "content_nonempty": true,
+    "content_progressive": true,
+    "one_text_done": true,
+    "one_completed": true,
+    "no_failed_or_incomplete": true
+  },
+  "electron_row": {
+    "rowid": 662,
+    "content_nonempty": true,
+    "reasoning_content": null,
+    "tool_calls_json": null,
+    "warnings_json": null,
+    "prompt_tokens": 1706,
+    "cached_tokens": 1701,
+    "cache_detail": "paged+disk",
+    "ttft_seconds": 1.18,
+    "total_seconds": 2.5
+  }
+}

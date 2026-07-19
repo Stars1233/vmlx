@@ -2957,3 +2957,29 @@ remain open. No public release/notarization/feed mutation performed.
   101/101.
 - Evidence:
   `docs/internal/release-gates/20260719_m3_terminal_dispatch_large_video/`.
+
+## 2026-07-19 - Path-dependent terminal cleanup generalized
+
+- Status: `FIXED_SOURCE`; `VERIFIED-LIVE_SCOPED` on current-source M3.
+  DSV4/ZAYA/mixed-SWA live family rows remain `PARTIAL` until reloaded.
+- Source audit found six path-dependent cache branches in
+  `_process_batch_responses`: DSV4 paged, ZAYA paged, mixed-SWA paged/object,
+  and M3 paged/object. Four direct clean-prefill calls could hold terminal SSE
+  and Electron finalization behind a full prompt rederive.
+- All six now schedule the shared `_deferred_prompt_cache`; the terminal
+  finalizer has zero `_prefill_for_prompt_only_cache` calls. Cleanup performs
+  the unchanged typed N-1 rederive after collector dispatch and retains the
+  next-turn admission barrier.
+- Expanded source/runtime contracts: 229 passed, 6 skipped. This includes the
+  full DSV4 paged and ZAYA runtime files; real small ZAYA tests still prove
+  clean CCA storage and reuse through synchronous-default Scheduler.step.
+- Current-source M3 Save & Restart replaced PID 42270 with 43998. Raw video
+  streaming again restored 1,701 `paged+disk` tokens, emitted 40 content
+  deltas, and terminaled 0.0414s after the last delta. Electron row 662
+  independently returned non-empty visible content with no reasoning/tool/
+  warning and the same 1,701-token restore.
+- DSV4, Gemma/Step/MiMo mixed-SWA, and available ZAYA artifacts still require
+  their own live Electron/API terminal measurements before those family rows
+  can be closed.
+- Evidence:
+  `docs/internal/release-gates/20260719_path_dependent_terminal_cleanup/`.

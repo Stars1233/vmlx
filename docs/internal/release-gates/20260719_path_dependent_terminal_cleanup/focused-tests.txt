@@ -1,0 +1,14 @@
+Command:
+.venv/bin/python -m pytest -q -p no:cacheprovider \
+  tests/test_terminal_dispatch_before_cache_cleanup.py \
+  tests/test_stream_terminal_finish_guard.py \
+  tests/test_minimax_m3_cache_paths.py \
+  tests/test_minimax_m3_tool_parser.py \
+  tests/test_responses_multimodal_history.py \
+  tests/test_vl_media_cache_contract.py \
+  tests/test_responses_history.py \
+  tests/test_dsv4_paged_cache.py \
+  tests/test_zaya_runtime.py
+
+Result:
+229 passed, 6 skipped in 7.46s
