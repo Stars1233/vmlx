@@ -1112,3 +1112,24 @@
   `docs/internal/release-gates/20260719_chat_disconnect_stop_recovery/`.
 - Continue with safe live engine-failure injection and the retained signed-app,
   gateway, cross-family, and soak rows; do not promote global protocol parity yet.
+
+## 2026-07-19 - Bonsai partial-prefix and shared Responses finalizer repair
+
+- Re-read bundle config and recorded the quant boundary: Bonsai 27B 1-bit is
+  `JANG_AFFINE_1BIT`, not JANGTQ/MXTQ. Its hybrid cache graph is 16 attention
+  KV lanes plus 48 native companion lanes.
+- Live 6,336-token sibling-prefix rows hit resident `paged+ssm` twice and
+  process-restart `paged+ssm+disk`; health showed q8 native-TQ attention block
+  hits plus an SSM disk restore.
+- Raw Responses exposed a shared leak where a rejected incomplete tool suffix
+  on the reasoning rail became visible output and blocked answer synthesis.
+  `359ce6b2b` keeps it private and re-arms the direct answer pass; 147 selected
+  neighboring tests pass.
+- After Electron Stop/Start to PID 1054, raw Responses completed the real
+  two-round tool loop with separate progressive rails. Electron row 385 made
+  one real `file_info` call, exact-finaled with no warning, and CDP recorded
+  progressive final paint.
+- Preserved current-source evidence under
+  `docs/internal/release-gates/20260719_bonsai_partial_prefix_responses/`.
+- Do not promote the overall release matrix: cross-parser and retained
+  long/stochastic/media/eviction/signed-app rows remain open.

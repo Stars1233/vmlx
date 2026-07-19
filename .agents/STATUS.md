@@ -7102,3 +7102,24 @@ Status: scoped `VERIFIED-LIVE`; overall protocol/release matrix `PARTIAL`.
   `docs/internal/release-gates/20260719_chat_disconnect_stop_recovery/`.
 - Open: safe live engine exception, signed app, gateway network loss, cross-family
   repeats, and soak.
+
+## 2026-07-19 - Bonsai partial-prefix and Responses post-tool privacy
+
+Status: scoped `VERIFIED-LIVE`; overall model/protocol/release matrix `PARTIAL`.
+
+- The bundle is Qwen3.5 `JANG_AFFINE_1BIT`, not JANGTQ/MXTQ. Electron Auto
+  correctly selected q8 attention-KV disk storage plus native companion state.
+- 6,336 prefix tokens restored from RAM as `paged+ssm` and after visible
+  process replacement as `paged+ssm+disk`; health recorded native-TQ and SSM
+  disk hits.
+- Commit `359ce6b2b` prevents rejected reasoning-channel native tool markup
+  from leaking into Responses output and re-arms the tools-free answer pass.
+  Neighboring tests pass 147/147 selected.
+- PID 1054 raw Responses streamed one real tool, then 185 reasoning and 18
+  progressive exact content deltas with one completed terminal. Electron row
+  385 independently exact-finaled one real tool loop, no warning, and DOM paint
+  advanced from `SIZE=` to `SIZE=5.2 KB`.
+- Evidence:
+  `docs/internal/release-gates/20260719_bonsai_partial_prefix_responses/`.
+- Remaining: representative non-Qwen parser repeats plus retained Bonsai
+  long/stochastic/media/forced-eviction/signed-app rows.

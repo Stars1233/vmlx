@@ -2463,3 +2463,27 @@ remain open. No public release/notarization/feed mutation performed.
   `docs/internal/release-gates/20260719_chat_disconnect_stop_recovery/`.
 - Remaining failure parent row: safe live mid-stream engine exception, signed-app
   repeat, gateway network loss, other parser/model families, and prolonged soak.
+
+## 2026-07-19 - Bonsai partial-prefix and shared Responses post-tool finalization
+
+- Artifact truth was re-read from the live bundle: this model is Qwen3.5
+  `JANG_AFFINE_1BIT` (1.1128 actual bits), not JANGTQ/MXTQ. Its 64-layer graph
+  has 16 full-attention KV lanes and 48 linear-attention companion lanes.
+- Real Electron Auto launched q8 storage for attention KV only plus native
+  companion state. A 6,336-token sibling prefix reused as `paged+ssm` from RAM
+  twice and as `paged+ssm+disk` after visible process replacement. Health
+  records 99 native-TQ disk hits and a successful SSM checkpoint restore.
+- A release-blocking raw Responses continuation reproduced a shared finalizer
+  defect: rejected reasoning-channel tool markup was copied into output text,
+  the tools-free answer pass was skipped, and the terminal was incomplete.
+  Commit `359ce6b2b` keeps that text private and re-arms the existing answer
+  pass. All three neighboring test files pass 147 with three deselected.
+- Current PID 1054 live proof: raw Responses emitted 454 reasoning deltas and
+  one valid tool call, then 185 separate reasoning plus 18 progressive exact
+  content deltas after the real result, ending completed. Fresh Electron row
+  385 independently executed one real tool, exact-finaled, had no warning, and
+  visibly painted `SIZE=` through `SIZE=5.2 KB` over multiple DOM mutations.
+- Scoped verdict: `PASS-LIVE` for Bonsai Auto partial-prefix RAM/L2 and this
+  shared Responses continuation defect. Overall matrix remains `PARTIAL` for
+  cross-parser repeats, long/stochastic/media/eviction/signed-app rows. Evidence:
+  `docs/internal/release-gates/20260719_bonsai_partial_prefix_responses/`.

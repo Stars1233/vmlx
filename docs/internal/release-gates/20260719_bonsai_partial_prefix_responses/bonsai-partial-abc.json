@@ -1,0 +1,671 @@
+{
+  "model": "jangq-ai/Bonsai-27b-1bit-JANG",
+  "prefix_tag": "B1-PARTIAL-CURRENT-2fd337092-20260719",
+  "common_chars": 12737,
+  "started_at": 1784460937.018135,
+  "before": {
+    "scheduler_cache": {
+      "hits": 0,
+      "misses": 0,
+      "hit_rate": 0,
+      "tokens_saved": 0,
+      "active_requests": 0,
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 0,
+        "system": 0
+      },
+      "block_size": 64,
+      "max_blocks": 1000,
+      "allocated_blocks": 1,
+      "free_blocks": 999,
+      "shared_blocks": 0,
+      "total_tokens_cached": 0,
+      "utilization": 0.001,
+      "cache_hit_rate": 0,
+      "cache_hits": 0,
+      "cache_misses": 0,
+      "disk_hits": 0,
+      "disk_misses": 0,
+      "cow_copies": 0,
+      "evictions": 0
+    },
+    "block_disk_cache": {
+      "blocks_on_disk": 2366,
+      "disk_size_bytes": 10333631334,
+      "disk_size_gb": 9.624,
+      "total_accesses": 13257,
+      "total_tokens_on_disk": 146293,
+      "total_cached_tokens": 146293,
+      "disk_hits": 0,
+      "disk_misses": 0,
+      "disk_writes": 0,
+      "disk_evictions": 0,
+      "tq_native_writes": 0,
+      "tq_native_hits": 0,
+      "tq_native_enabled": true
+    },
+    "ssm_companion": {
+      "entries": 0,
+      "max_entries": 8,
+      "nbytes": 0,
+      "nbytes_mb": 0.0,
+      "max_bytes": 536870912,
+      "max_bytes_mb": 512.0,
+      "disk_enabled": true,
+      "disk_directory": "/Users/eric/.cache/vmlx-engine/live-proof-bonsai-1bit-auto-tq-native-20260716/ssm_companion",
+      "disk": {
+        "enabled": true,
+        "directory": "/Users/eric/.cache/vmlx-engine/live-proof-bonsai-1bit-auto-tq-native-20260716/ssm_companion",
+        "entries": 69,
+        "total_tokens_on_disk": 135421,
+        "total_cached_tokens": 135421,
+        "bytes": 10623214380,
+        "bytes_mb": 10131.09,
+        "budget_bytes": 10737418240,
+        "budget_gb": 10.0,
+        "stores": 0,
+        "hits": 0,
+        "misses": 0,
+        "restore_enabled": true,
+        "restore_suppressed": 0,
+        "hit_rate": 0.0
+      }
+    },
+    "totals": {
+      "ram_tokens_cached": 0,
+      "l1_indexed_tokens": 0,
+      "l1_resident_bytes": 0,
+      "l1_resident_bytes_mb": 0.0,
+      "l1_max_resident_bytes": 16547214950,
+      "l1_max_resident_bytes_mb": 15780.65,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 146293,
+      "l2_ssm_tokens_on_disk": 135421,
+      "ssm_tokens_on_disk": 135421,
+      "l2_tokens_on_disk": 281714,
+      "l2_tokens_on_disk_store_sum": 281714,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    }
+  },
+  "turns": [
+    {
+      "label": "B1P-A",
+      "marker": "B1P-A-DONE",
+      "content": "B1P-A-DONE",
+      "reasoning": "",
+      "content_delta_count": 6,
+      "reasoning_delta_count": 0,
+      "first_content_seconds": 6.941878,
+      "last_content_seconds": 7.038335,
+      "terminal": [
+        "stop"
+      ],
+      "usage": {
+        "prompt_tokens": 6382,
+        "completion_tokens": 7,
+        "total_tokens": 6389
+      },
+      "done_count": 1,
+      "events": [
+        {
+          "t": 0.006919,
+          "content": "",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 6.941878,
+          "content": "B",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 6.96095,
+          "content": "1",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 6.98021,
+          "content": "P",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 6.999624,
+          "content": "-A",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 7.018859,
+          "content": "-D",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 7.038335,
+          "content": "ONE",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 7.064635,
+          "content": "",
+          "reasoning": "",
+          "finish_reason": "stop",
+          "usage": null
+        },
+        {
+          "t": 7.06467,
+          "content": "",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": {
+            "prompt_tokens": 6382,
+            "completion_tokens": 7,
+            "total_tokens": 6389
+          }
+        },
+        {
+          "t": 7.0647,
+          "done": true
+        }
+      ],
+      "cache_after": {
+        "scheduler_cache": {
+          "pixel_cache_hits": 0,
+          "pixel_cache_misses": 0,
+          "pixel_hit_rate": 0.0,
+          "total_time_saved": 0.0,
+          "total_images_processed": 0,
+          "pixel_cache_size": 0,
+          "hits": 0,
+          "misses": 1,
+          "hit_rate": 0.0,
+          "tokens_saved": 0,
+          "active_requests": 0,
+          "entries_by_type": {
+            "assistant": 1,
+            "user": 0,
+            "system": 0
+          },
+          "block_size": 64,
+          "max_blocks": 1000,
+          "allocated_blocks": 1,
+          "free_blocks": 999,
+          "shared_blocks": 0,
+          "total_tokens_cached": 6381,
+          "utilization": 0.001,
+          "cache_hit_rate": 0.0,
+          "cache_hits": 0,
+          "cache_misses": 102,
+          "disk_hits": 0,
+          "disk_misses": 2,
+          "cow_copies": 0,
+          "evictions": 0
+        },
+        "block_disk_cache": {
+          "blocks_on_disk": 2466,
+          "disk_size_bytes": 10559617804,
+          "disk_size_gb": 9.834,
+          "total_accesses": 13257,
+          "total_tokens_on_disk": 152674,
+          "total_cached_tokens": 152674,
+          "disk_hits": 0,
+          "disk_misses": 112,
+          "disk_writes": 100,
+          "disk_evictions": 0,
+          "tq_native_writes": 100,
+          "tq_native_hits": 0,
+          "tq_native_enabled": true
+        },
+        "ssm_companion": {
+          "entries": 2,
+          "max_entries": 8,
+          "nbytes": 307888128,
+          "nbytes_mb": 293.62,
+          "evictions": 0,
+          "evicted_bytes": 0,
+          "evicted_bytes_mb": 0.0,
+          "max_bytes": 536870912,
+          "max_bytes_mb": 512.0,
+          "disk_enabled": true,
+          "disk_directory": "/Users/eric/.cache/vmlx-engine/live-proof-bonsai-1bit-auto-tq-native-20260716/ssm_companion",
+          "disk": {
+            "enabled": true,
+            "directory": "/Users/eric/.cache/vmlx-engine/live-proof-bonsai-1bit-auto-tq-native-20260716/ssm_companion",
+            "entries": 69,
+            "total_tokens_on_disk": 143786,
+            "total_cached_tokens": 143786,
+            "bytes": 10623214379,
+            "bytes_mb": 10131.09,
+            "budget_bytes": 10737418240,
+            "budget_gb": 10.0,
+            "stores": 2,
+            "hits": 0,
+            "misses": 0,
+            "restore_enabled": true,
+            "restore_suppressed": 0,
+            "hit_rate": 0.0
+          }
+        },
+        "totals": {
+          "ram_tokens_cached": 0,
+          "l1_indexed_tokens": 6381,
+          "l1_resident_bytes": 0,
+          "l1_resident_bytes_mb": 0.0,
+          "l1_max_resident_bytes": 16547214950,
+          "l1_max_resident_bytes_mb": 15780.65,
+          "l1_evictions": 0,
+          "l2_prompt_tokens_on_disk": 0,
+          "l2_block_tokens_on_disk": 152674,
+          "l2_ssm_tokens_on_disk": 143786,
+          "ssm_tokens_on_disk": 143786,
+          "l2_tokens_on_disk": 296460,
+          "l2_tokens_on_disk_store_sum": 296460,
+          "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+        }
+      }
+    },
+    {
+      "label": "B1P-B",
+      "marker": "B1P-B-DONE",
+      "content": "B1P-B-DONE",
+      "reasoning": "",
+      "content_delta_count": 6,
+      "reasoning_delta_count": 0,
+      "first_content_seconds": 0.894057,
+      "last_content_seconds": 0.990657,
+      "terminal": [
+        "stop"
+      ],
+      "usage": {
+        "prompt_tokens": 6382,
+        "completion_tokens": 7,
+        "total_tokens": 6389,
+        "prompt_tokens_details": {
+          "cached_tokens": 6336,
+          "cache_detail": "paged+ssm"
+        }
+      },
+      "done_count": 1,
+      "events": [
+        {
+          "t": 0.003983,
+          "content": "",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 0.894057,
+          "content": "B",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 0.91333,
+          "content": "1",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 0.932498,
+          "content": "P",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 0.951775,
+          "content": "-B",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 0.971324,
+          "content": "-D",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 0.990657,
+          "content": "ONE",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 1.018016,
+          "content": "",
+          "reasoning": "",
+          "finish_reason": "stop",
+          "usage": null
+        },
+        {
+          "t": 1.018069,
+          "content": "",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": {
+            "prompt_tokens": 6382,
+            "completion_tokens": 7,
+            "total_tokens": 6389,
+            "prompt_tokens_details": {
+              "cached_tokens": 6336,
+              "cache_detail": "paged+ssm"
+            }
+          }
+        },
+        {
+          "t": 1.018109,
+          "done": true
+        }
+      ],
+      "cache_after": {
+        "scheduler_cache": {
+          "pixel_cache_hits": 0,
+          "pixel_cache_misses": 0,
+          "pixel_hit_rate": 0.0,
+          "total_time_saved": 0.0,
+          "total_images_processed": 0,
+          "pixel_cache_size": 0,
+          "hits": 1,
+          "misses": 1,
+          "hit_rate": 0.5,
+          "tokens_saved": 6336,
+          "active_requests": 0,
+          "entries_by_type": {
+            "assistant": 1,
+            "user": 0,
+            "system": 0
+          },
+          "block_size": 64,
+          "max_blocks": 1000,
+          "allocated_blocks": 1,
+          "free_blocks": 999,
+          "shared_blocks": 0,
+          "total_tokens_cached": 6381,
+          "utilization": 0.001,
+          "cache_hit_rate": 0.66,
+          "cache_hits": 198,
+          "cache_misses": 102,
+          "disk_hits": 0,
+          "disk_misses": 2,
+          "cow_copies": 0,
+          "evictions": 0
+        },
+        "block_disk_cache": {
+          "blocks_on_disk": 2466,
+          "disk_size_bytes": 10559617804,
+          "disk_size_gb": 9.834,
+          "total_accesses": 13554,
+          "total_tokens_on_disk": 152674,
+          "total_cached_tokens": 152674,
+          "disk_hits": 297,
+          "disk_misses": 193,
+          "disk_writes": 100,
+          "disk_evictions": 0,
+          "tq_native_writes": 100,
+          "tq_native_hits": 297,
+          "tq_native_enabled": true
+        },
+        "ssm_companion": {
+          "entries": 3,
+          "max_entries": 8,
+          "nbytes": 461832192,
+          "nbytes_mb": 440.44,
+          "evictions": 0,
+          "evicted_bytes": 0,
+          "evicted_bytes_mb": 0.0,
+          "max_bytes": 536870912,
+          "max_bytes_mb": 512.0,
+          "disk_enabled": true,
+          "disk_directory": "/Users/eric/.cache/vmlx-engine/live-proof-bonsai-1bit-auto-tq-native-20260716/ssm_companion",
+          "disk": {
+            "enabled": true,
+            "directory": "/Users/eric/.cache/vmlx-engine/live-proof-bonsai-1bit-auto-tq-native-20260716/ssm_companion",
+            "entries": 69,
+            "total_tokens_on_disk": 147991,
+            "total_cached_tokens": 147991,
+            "bytes": 10623214379,
+            "bytes_mb": 10131.09,
+            "budget_bytes": 10737418240,
+            "budget_gb": 10.0,
+            "stores": 3,
+            "hits": 0,
+            "misses": 0,
+            "restore_enabled": true,
+            "restore_suppressed": 0,
+            "hit_rate": 0.0
+          }
+        },
+        "totals": {
+          "ram_tokens_cached": 0,
+          "l1_indexed_tokens": 6381,
+          "l1_resident_bytes": 0,
+          "l1_resident_bytes_mb": 0.0,
+          "l1_max_resident_bytes": 16547214950,
+          "l1_max_resident_bytes_mb": 15780.65,
+          "l1_evictions": 0,
+          "l2_prompt_tokens_on_disk": 0,
+          "l2_block_tokens_on_disk": 152674,
+          "l2_ssm_tokens_on_disk": 147991,
+          "ssm_tokens_on_disk": 147991,
+          "l2_tokens_on_disk": 300665,
+          "l2_tokens_on_disk_store_sum": 300665,
+          "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+        }
+      }
+    },
+    {
+      "label": "B1P-C",
+      "marker": "B1P-C-DONE",
+      "content": "B1P-C-DONE",
+      "reasoning": "",
+      "content_delta_count": 6,
+      "reasoning_delta_count": 0,
+      "first_content_seconds": 0.879039,
+      "last_content_seconds": 0.977383,
+      "terminal": [
+        "stop"
+      ],
+      "usage": {
+        "prompt_tokens": 6382,
+        "completion_tokens": 7,
+        "total_tokens": 6389,
+        "prompt_tokens_details": {
+          "cached_tokens": 6336,
+          "cache_detail": "paged+ssm"
+        }
+      },
+      "done_count": 1,
+      "events": [
+        {
+          "t": 0.004307,
+          "content": "",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 0.879039,
+          "content": "B",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 0.898737,
+          "content": "1",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 0.918062,
+          "content": "P",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 0.937965,
+          "content": "-C",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 0.957603,
+          "content": "-D",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 0.977383,
+          "content": "ONE",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": null
+        },
+        {
+          "t": 1.00425,
+          "content": "",
+          "reasoning": "",
+          "finish_reason": "stop",
+          "usage": null
+        },
+        {
+          "t": 1.004307,
+          "content": "",
+          "reasoning": "",
+          "finish_reason": null,
+          "usage": {
+            "prompt_tokens": 6382,
+            "completion_tokens": 7,
+            "total_tokens": 6389,
+            "prompt_tokens_details": {
+              "cached_tokens": 6336,
+              "cache_detail": "paged+ssm"
+            }
+          }
+        },
+        {
+          "t": 1.004351,
+          "done": true
+        }
+      ],
+      "cache_after": {
+        "scheduler_cache": {
+          "pixel_cache_hits": 0,
+          "pixel_cache_misses": 0,
+          "pixel_hit_rate": 0.0,
+          "total_time_saved": 0.0,
+          "total_images_processed": 0,
+          "pixel_cache_size": 0,
+          "hits": 2,
+          "misses": 1,
+          "hit_rate": 0.6666666666666666,
+          "tokens_saved": 12672,
+          "active_requests": 0,
+          "entries_by_type": {
+            "assistant": 1,
+            "user": 0,
+            "system": 0
+          },
+          "block_size": 64,
+          "max_blocks": 1000,
+          "allocated_blocks": 1,
+          "free_blocks": 999,
+          "shared_blocks": 0,
+          "total_tokens_cached": 6381,
+          "utilization": 0.001,
+          "cache_hit_rate": 0.7951807228915663,
+          "cache_hits": 396,
+          "cache_misses": 102,
+          "disk_hits": 0,
+          "disk_misses": 2,
+          "cow_copies": 0,
+          "evictions": 0
+        },
+        "block_disk_cache": {
+          "blocks_on_disk": 2466,
+          "disk_size_bytes": 10559617804,
+          "disk_size_gb": 9.834,
+          "total_accesses": 13851,
+          "total_tokens_on_disk": 152674,
+          "total_cached_tokens": 152674,
+          "disk_hits": 594,
+          "disk_misses": 274,
+          "disk_writes": 100,
+          "disk_evictions": 0,
+          "tq_native_writes": 100,
+          "tq_native_hits": 594,
+          "tq_native_enabled": true
+        },
+        "ssm_companion": {
+          "entries": 3,
+          "max_entries": 8,
+          "nbytes": 461832192,
+          "nbytes_mb": 440.44,
+          "evictions": 1,
+          "evicted_bytes": 153944064,
+          "evicted_bytes_mb": 146.81,
+          "max_bytes": 536870912,
+          "max_bytes_mb": 512.0,
+          "disk_enabled": true,
+          "disk_directory": "/Users/eric/.cache/vmlx-engine/live-proof-bonsai-1bit-auto-tq-native-20260716/ssm_companion",
+          "disk": {
+            "enabled": true,
+            "directory": "/Users/eric/.cache/vmlx-engine/live-proof-bonsai-1bit-auto-tq-native-20260716/ssm_companion",
+            "entries": 69,
+            "total_tokens_on_disk": 152196,
+            "total_cached_tokens": 152196,
+            "bytes": 10623214378,
+            "bytes_mb": 10131.09,
+            "budget_bytes": 10737418240,
+            "budget_gb": 10.0,
+            "stores": 4,
+            "hits": 0,
+            "misses": 0,
+            "restore_enabled": true,
+            "restore_suppressed": 0,
+            "hit_rate": 0.0
+          }
+        },
+        "totals": {
+          "ram_tokens_cached": 0,
+          "l1_indexed_tokens": 6381,
+          "l1_resident_bytes": 0,
+          "l1_resident_bytes_mb": 0.0,
+          "l1_max_resident_bytes": 16547214950,
+          "l1_max_resident_bytes_mb": 15780.65,
+          "l1_evictions": 0,
+          "l2_prompt_tokens_on_disk": 0,
+          "l2_block_tokens_on_disk": 152674,
+          "l2_ssm_tokens_on_disk": 152196,
+          "ssm_tokens_on_disk": 152196,
+          "l2_tokens_on_disk": 304870,
+          "l2_tokens_on_disk_store_sum": 304870,
+          "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+        }
+      }
+    }
+  ]
+}

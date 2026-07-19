@@ -1073,3 +1073,22 @@ Evidence: `../20260719_anthropic_tool_parity/`.
 | Templated Ollama `/api/generate` | PASS-LIVE scoped | `01d95b448` defers split Chat finish/usage events. Live stream now has 118 thinking rows, 13 exact response rows, one terminal with eval/prompt counts; non-stream is exact. | Raw-mode semantics and failure recovery remain open. |
 
 Evidence: `../20260719_ollama_stream_tool_parity/`.
+
+### Bonsai partial-prefix and rejected reasoning-tool suffix - current source
+
+- Bundle/config truth: Qwen3.5 `JANG_AFFINE_1BIT`, not JANGTQ/MXTQ; 16
+  full-attention KV plus 48 native companion lanes.
+- Electron Auto/q8 stored attention KV only. A 6,336-token sibling prefix hit
+  twice as `paged+ssm` and after process replacement as `paged+ssm+disk`;
+  health recorded native-TQ q8 block and SSM-disk restoration.
+- Commit `359ce6b2b` fixes the shared Responses finalizer so an incomplete,
+  rejected tool suffix on the reasoning rail cannot become visible output or
+  suppress the bounded tools-free answer pass. Neighboring validation is
+  147 passed / 3 deselected.
+- Current-source raw Responses completed one valid tool call, then streamed
+  185 reasoning plus 18 progressive content deltas to the exact post-tool
+  final. Electron row 385 independently performed one real call and visibly
+  painted the final over multiple DOM mutations with no warning.
+- Verdict: scoped `PASS-LIVE`; retain cross-parser, stochastic long-output,
+  media, forced-eviction repeat, and signed-app rows as `PARTIAL`.
+  Evidence: `../20260719_bonsai_partial_prefix_responses/`.
