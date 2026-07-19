@@ -2243,3 +2243,28 @@ remain open. No public release/notarization/feed mutation performed.
   gate.
 - Evidence:
   `docs/internal/release-gates/20260719_no_tool_schema_prefix_stability/`.
+
+## 2026-07-19 09:07 - no-tool directive variant and paged RAM partial reuse
+
+- `ELECTRON-WITHOUT-TOOLS-DIRECTIVE`: `VERIFIED-LIVE` on source commit
+  `69246de78`. The explicit phrase `Without tools` was not covered by the
+  guarded current-turn parser. The first RAM acceptance attempt therefore
+  changed from `has_tools=false` on the base to `has_tools=true` on the
+  follow-up, expanded the prompt 182 to 1,061 tokens, missed the prefix, and
+  evicted three blocks. This was a shared parser/request-shape defect, not a
+  MiniMax M2.7, JANGTQ, TurboQuant, or paged-cache failure.
+- The shared parser now recognizes directive-shaped `without tools` and
+  `without using any tools` while negative tests protect quoted/explanatory
+  text. Focused panel validation passed 20/20 and TypeScript typecheck.
+- `M27-PAGED-RAM-PARTIAL`: `VERIFIED-LIVE`. After a full Electron relaunch,
+  the model was started from the real UI with Block Disk L2 Off. Both current-
+  source Responses requests logged `has_tools=false`. The follow-up restored
+  178 tokens from three 64-token RAM-resident q4 native-TQ blocks as
+  `paged+tq-native`, including the partial terminal block, exact-recalled
+  `SFACT-11=N-15263`, preserved separate fresh reasoning, and stored no
+  warning. Health recorded 192 RAM tokens, 13,066,128 resident L1 bytes, zero
+  disk hits, and zero L2 tokens.
+- Forced eviction/L2 refault, L2 partial-block reconstruction, server-process
+  restart restore, and raw Responses/Chat streaming remain the active parent
+  gate. Evidence is in
+  `docs/internal/release-gates/20260719_no_tool_schema_prefix_stability/`.

@@ -1,7 +1,9 @@
 # Explicit no-tool request-shape and prefix stability
 
 Status: `VERIFIED-LIVE` for the shared Electron Responses/Chat request-builder
-fix at source commit `258cf16f91d4629acd0b71d77b407e9683ef3777`.
+fix at source commit `258cf16f91d4629acd0b71d77b407e9683ef3777`
+and the directive-parser follow-up at
+`69246de7810a42c7f406226541bdc9e75bb82edf`.
 
 ## Artifact and UI configuration
 
@@ -76,6 +78,42 @@ frugal block-L2 mode: L1 keeps the chain index while disk is authoritative for
 the q4-native payload, so this is deliberately classified as same-process L2
 reuse rather than a RAM-resident payload hit.
 
+## Follow-up defect: “Without tools” was not classified
+
+The first RAM-resident acceptance run exposed a second shared defect. The
+follow-up began with `Without tools, ...`, which is a direct no-tool command,
+but `requestsNoToolCalls()` recognized only `do not`, `don't`, `dont`, and
+`never` forms. The base request therefore had `has_tools=false`, while the
+follow-up silently reattached schemas (`has_tools=true`). Its prompt expanded
+from 182 to 1,061 tokens, missed the base prefix, and evicted three blocks.
+That run is retained as a failure and is not counted as cache evidence.
+
+The parser now recognizes directive-shaped `without tools` and
+`without using any tools` forms while preserving negative tests for quoted or
+explanatory prose. Focused validation passed 20/20 and TypeScript typecheck.
+
+After another full Electron relaunch, the real Start button launched PID
+62495 with Block Disk L2 visibly Off. The base and same-chat follow-up both
+logged `has_tools=false`. The base exact-finaled
+`M27-RAM2-BASE-DONE`; the follow-up restored 178 tokens from three 64-token
+RAM-resident blocks as `paged+tq-native`, retained a separate and fresh
+reasoning rail, recalled `SFACT-11=N-15263`, and exact-finaled
+`M27-RAM2-FOLLOW-DONE VALUE=N-15263` without a warning.
+
+Current health proves this is the distinct RAM tier rather than disk:
+
+```text
+cache_hit_requests=1
+ram_tokens_cached=192
+l1_resident_bytes=13066128
+disk_hits=0
+l2_block_tokens_on_disk=0
+```
+
+The 178-token match deliberately includes a non-64-token terminal block, so
+it also proves partial-terminal reuse in L1. It does not yet prove L2 partial
+restore, eviction/refault, or restart restore.
+
 ## Evidence files
 
 - `m27-paged-settings-before-restart.png`
@@ -86,11 +124,15 @@ reuse rather than a RAM-resident payload hit.
 - `m27-health-after-fix-follow.json`
 - `m27-paged-argv.txt`
 - `m27-paged-session.json`
+- `m27-paged-ram-settings.png`
+- `m27-ram2-follow.png`
+- `m27-health-ram2-follow.json`
 
 ## Remaining gate
 
-This closes the shared explicit-no-tool request-shape defect. It does not close
-the parent paged-cache gate. RAM-resident reuse must be rerun with block L2
-explicitly Off; then block L2 must be re-enabled for forced eviction/refault,
-partial-block reuse, and process-restart disk-only restore. Required-tool
-turns remain a separate live acceptance axis.
+This closes the shared explicit-no-tool request-shape defect, including its
+directive-parser variant, and the RAM-resident partial-prefix child row. It
+does not close the parent paged-cache gate. Block L2 must be re-enabled in a
+fresh directory for forced eviction/refault, partial-block reuse, and
+process-restart disk-only restore. Required-tool turns remain a separate live
+acceptance axis.
