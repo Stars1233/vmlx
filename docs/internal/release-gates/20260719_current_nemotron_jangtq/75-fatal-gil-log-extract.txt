@@ -1,0 +1,12 @@
+[20:45:18.606] Fatal Python error: PyThreadState_Get: the function must be called with the GIL held, after Python initialization and before Python finalization, but the GIL is released (the current Python thread state is NULL)
+[20:45:18.606] Python runtime state: initialized
+[20:45:18.606] Thread 0x0000000170763000 (most recent call first):
+[20:45:18.606]   File ".../asyncio/base_events.py", line 884 in call_soon_threadsafe
+[20:45:18.606]   File ".../concurrent/futures/_base.py", line 550 in set_result
+[20:45:18.606]   File ".../concurrent/futures/thread.py", line 65 in run
+[20:45:18.606] INFO:vmlx_engine.omni_multimodal:Omni multimodal stream: 1 images, audio=False, video=False — 905 reasoning chars, 0 content chars, 256 tokens in 10.27s
+[20:45:18.638] [INFO] Process stopped (exit code null)
+
+Source: real Electron Server Logs for PID 10148 at CDP 127.0.0.1:9335.
+The full log remained visible in the dev app; this file preserves the minimal
+sanitized crash signature and terminal ordering needed for the release gate.
