@@ -2697,3 +2697,40 @@ remain open. No public release/notarization/feed mutation performed.
   pass 318/318. Retained PARTIAL: long/stochastic soak and a new current-source
   MTP-Off versus D1 performance A/B. VL/audio/video are N/A for this text-only
   artifact. Evidence: `docs/internal/release-gates/20260719_current_hy3_mtp/`.
+
+## 2026-07-19 08:21 - Step 3.7 JANGTQ zero-patch VL repair and current media/L2 gate
+
+- `STEP37-ZERO-PATCH-MLX-METADATA`: `FIXED_SOURCE + VERIFIED-LIVE_SCOPED`.
+  The real Electron image request failed with 169 placeholders and zero
+  embeddings even though `pixel_values=(1,3,728,728)` arrived. The owning
+  defect was `array([0])` patch metadata being reduced to `[]` by Python
+  truthiness. The model boundary now normalizes MLX/NumPy arrays to a 1-D
+  integer list and uses an explicit `None` check. No parser, sampler, prompt,
+  or quant workaround was added.
+- `STEP37-CURRENT-MEDIA-SALT`: `VERIFIED-LIVE_SCOPED`. Electron rows
+  455/458/461/464 prove A cold, identical-A 4,290-token resident hit,
+  same-shape B miss/no-A-leak, and return-A reuse. Row 467 reads the real
+  four-second MP4 exactly as `VIDEO-B-8264`. DOM observers prove progressive
+  visible paints after separate reasoning rails.
+- `STEP37-CURRENT-L2-TQ4`: `VERIFIED-LIVE_SCOPED`. A visible Stop/Start left
+  zero L1 tokens and 15,987 L2 tokens. Row 470 restored all 4,290 tokens as
+  `paged+mixed_swa+disk` with `disk_hit=true`, 68 block-disk hits, 68 q4
+  native-TQ hits, exact content, and 1.71s TTFT.
+- `STEP37-CURRENT-API-STREAM`: `VERIFIED-LIVE_SCOPED`. Literal curl-N Chat
+  emitted 46 reasoning plus 42 content deltas, stop/usage/DONE. Responses
+  emitted 73 reasoning-summary plus six exact content deltas and one completed
+  terminal with 223 cached input tokens.
+- `STEP37-CONTENT-STRICTNESS`: `PARTIAL/FAIL`. Cold image generations placed
+  self-correction prose after the reasoning terminator. Raw Chat proves it was
+  genuine content, not parser leakage or Electron batching. Do not hide it.
+- `STEP37-SAME-PROCESS-DISK-DETAIL`: `FAIL_TELEMETRY`. Return-A increased
+  aggregate block-disk and native-TQ hits by 204 while per-request
+  `disk_hit=false` and the UI omitted `disk`. The clean restart row reported
+  the tier correctly.
+- `STEP37-RESTART-PID-UI`: `FAIL_TELEMETRY`. After Stop/Start, health was ready
+  and the Electron header exposed Stop but no PID.
+- `STEP37-COLD-MEDIA-LATENCY`: `PARTIAL`. Cold image TTFT remained
+  44.44-44.87s and video TTFT 55.21s. Larger video and retained stochastic
+  loop soak remain open without sampler coercion.
+- Focused current verification passes 422/422. Evidence:
+  `docs/internal/release-gates/20260719_current_step37_jangtq/`.

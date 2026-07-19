@@ -1,0 +1,27 @@
+{
+  "before_request": {
+    "l1_indexed_tokens": 0,
+    "ram_tokens_cached": 0,
+    "l2_block_tokens_on_disk": 15987,
+    "block_disk_cache_blocks": 260
+  },
+  "request": {
+    "rowid": 470,
+    "cached_tokens": 4290,
+    "cache_detail": "paged+mixed_swa+disk",
+    "disk_hit": true,
+    "reconstructed": true,
+    "dequantized": true,
+    "reconstruction_seconds": 0.475945,
+    "dequantization_seconds": 0.000031,
+    "ttft_seconds": 1.71
+  },
+  "after_request": {
+    "scheduler_disk_hits": 68,
+    "block_disk_hits": 68,
+    "tq_native_hits": 68,
+    "block_disk_writes": 0,
+    "tq_native_writes": 0,
+    "stored_prefix_quantization": "turboquant-q4"
+  }
+}

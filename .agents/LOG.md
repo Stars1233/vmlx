@@ -1251,3 +1251,27 @@
   tokens, exact-finaled, and health proved current D1 draft/accept execution.
 - Preserved 318/318 focused tests and evidence under
   `20260719_current_hy3_mtp/`; long soak and MTP-Off A/B remain partial.
+
+## 2026-07-19 - Step 3.7 JANGTQ zero-patch image/video and restart-L2 gate
+
+- Used the real Electron Start/Stop/Start path for
+  `Step-3.7-Flash-JANGTQ_K`; the artifact remained correctly classified as
+  JANGTQ/MXTQ codebook quantization rather than affine JANG or MLX MXFP.
+- Reproduced the 169-placeholder/zero-embedding image failure and traced it to
+  false truthiness of MLX `array([0])` patch metadata. Normalized MLX/NumPy
+  metadata and removed the truthiness branch; no prompt/parser/sampler fix.
+- Electron rows 455/458/461/464 prove image A cold, identical-A resident hit,
+  same-shape B isolation, and return-A. Row 467 reads a real MP4 as exact
+  `VIDEO-B-8264`. DOM mutation traces prove content paints progressively.
+- Literal curl-N Chat/Responses traces keep reasoning and content separate and
+  finish cleanly. The Chat trace classifies cold self-correction as native
+  content, retained as a strict-format miss.
+- After visible process replacement with zero L1 state, row 470 restored 4,290
+  tokens as `paged+mixed_swa+disk`; health reports 68 disk and q4 native-TQ
+  hits, exact content, and 1.71s TTFT.
+- Preserved two telemetry defects: same-process disk counters can increase while
+  per-request detail omits disk, and the restarted Electron header lost its PID
+  while still showing Stop. Cold latency, larger video, and stochastic soak
+  remain partial.
+- Current focused tests pass 422/422. Evidence:
+  `docs/internal/release-gates/20260719_current_step37_jangtq/`.

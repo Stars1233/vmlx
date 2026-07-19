@@ -1,5 +1,26 @@
 # Current Status
 
+## 2026-07-19 - Step 3.7 JANGTQ zero-patch media repair and current L2/API gate
+
+Status: `SCOPED_STEP37_CURRENT_MEDIA_CACHE_STREAM_PASS_FAMILY_PARTIAL`.
+
+- Fixed the real Step image failure where MLX `array([0])` patch metadata was
+  discarded by truthiness, leaving 169 prompt placeholders and zero embeddings.
+- Real Electron image A/A/B/A proves resident reuse, same-shape media-salt
+  isolation, return-A, progressive content paint, and no tool leakage.
+- Real four-second MP4 returns exact `VIDEO-B-8264` with separate reasoning and
+  progressive content.
+- Literal Chat and Responses traces prove separate reasoning/content deltas and
+  clean terminal/usage ordering. Chat also proves the retained cold
+  self-correction prose is genuine model content, not a parser/UI defect.
+- Visible Stop/Start with zero L1 entries restored 4,290 tokens as
+  `paged+mixed_swa+disk`, including 68 q4 native-TQ hits at 1.71s TTFT.
+- Focused verification passes 422/422. Evidence:
+  `docs/internal/release-gates/20260719_current_step37_jangtq/`.
+- Still open: cold media latency, larger-video and stochastic soak,
+  same-process disk-detail truthfulness, and missing PID in the restarted UI
+  header. Overall release matrix remains partial.
+
 ## 2026-07-19 - full suites/build pass; bundle evidence deletion fixed
 
 Status: `SOURCE_FULL_SUITE_BUILD_PASS_LIVE_RUNTIME_MATRIX_OPEN`.
