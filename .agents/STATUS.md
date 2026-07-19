@@ -7185,3 +7185,23 @@ Status: `SCOPED_DSV4_AUTO_STREAM_RESTART_L2_PASS_STRICT_QUALITY_PARTIAL_RELEASE_
 - Tests: 329 Python, 100 panel, and panel typecheck pass.
 - Evidence: `docs/internal/release-gates/20260719_dsv4_current_parser_auto_stream/`.
 - Release remains blocked by stale bundled Python and all other explicit open rows.
+
+## 2026-07-19 - Laguna current stream/cache/determinism gate
+
+Status: `SCOPED_LAGUNA_STREAM_PROTOCOL_SETTINGS_EVICTION_PASS_Q4_COLD_EQUIVALENCE_PERF_PARTIAL_RELEASE_BLOCKED`.
+
+- Real Electron Start loaded PID 13706/port 8015. Natural reasoning/content and
+  one-tool/final turns are non-empty and progressive; the tool DOM trace records
+  final-answer growth from 30 to 208 characters.
+- Post-restart history recall used no new tool and restored 4,980
+  `paged+disk+tq-native` tokens.
+- Raw Responses and Chat stream/non-stream no-tool, one-tool, and continuation
+  rows have separated reasoning/content and clean terminals.
+- Real UI None/max-four launched explicit cache controls and zero TQ; bounded
+  eviction/refault restored 192 raw disk tokens and exact answer `166`.
+- Auto q4 is stable warm-to-warm but differs from cold full precision at greedy;
+  explicit None/raw cache and bypass cold are byte-identical. This is recorded,
+  not hidden.
+- Laguna speed/long soak remain partial. Tests: 411 Python pass/1 skip, 771 panel
+  pass, typecheck pass. Evidence:
+  `docs/internal/release-gates/20260719_laguna_current_stream_tq_determinism_eviction/`.

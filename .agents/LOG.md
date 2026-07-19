@@ -1180,3 +1180,20 @@
   PARTIAL; matched same-artifact reference-runtime A/B is still required.
 - Tests pass 329 Python + 100 panel + typecheck. Evidence preserved under
   `docs/internal/release-gates/20260719_dsv4_current_parser_auto_stream/`.
+
+## 2026-07-19 - Laguna current stream, TQ A/B, and eviction checkpoint
+
+- Loaded Laguna-M.1 through the visible Electron Sessions Start path.
+- Preserved natural reasoning/content progress, exact one-tool row, DOM paint
+  progression, and post-restart history recall.
+- Exercised raw Responses and Chat stream/non-stream no-tool, tool, and follow-up.
+- Used the real UI to switch Auto/1000 to None/max-four and back. Explicit None
+  reached argv and health; max-four forced eviction and partial disk refault.
+- Isolated greedy cold-vs-q4 divergence to q4 stored-prefix restore: q4 warm runs
+  are stable, while raw None and bypass-cold match full-precision cold exactly.
+- Updated the stale source-contract test only; commit `6f7b29bc3` is pushed.
+- Focused validation: 411 Python pass/1 skip, 771 panel pass, typecheck pass.
+- Evidence saved under
+  `docs/internal/release-gates/20260719_laguna_current_stream_tq_determinism_eviction/`.
+- Performance/long soak, q4 cold-byte equivalence policy, bundled-Python refresh,
+  and the remaining campaign rows stay open.

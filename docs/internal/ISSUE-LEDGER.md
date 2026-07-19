@@ -2566,3 +2566,44 @@ remain open. No public release/notarization/feed mutation performed.
   Evidence: `docs/internal/release-gates/20260719_dsv4_current_parser_auto_stream/`.
 - Release stays `PARTIAL/BLOCKED`: bundled Python remains stale relative to
   current source, and the other recorded matrix rows remain open.
+
+## 2026-07-19 - Laguna current stream, settings, q4 determinism, and eviction recheck
+
+- `LAGUNA-ELECTRON-STREAM`: `VERIFIED-LIVE`. The real Sessions Start action
+  loaded Laguna-M.1 on port 8015. Natural row 409 kept 3,244 reasoning
+  characters separate from a non-empty two-sentence answer. Tool row 412 made
+  exactly one `file_info(panel/package.json)` call, used the real 5.2 KB result,
+  and painted the final answer progressively; the DOM trace records visible
+  content-length growth from 30 through 208 rather than one terminal batch.
+- `LAGUNA-MULTITURN-RESTART`: `VERIFIED-LIVE`. After two real UI Save & Restart
+  cycles, row 415 recalled the prior 5.2 KB tool result without a new tool call,
+  produced visible content, stored no warning, and restored 4,980
+  `paged+disk+tq-native` tokens.
+- `LAGUNA-PROTOCOL-PARITY`: `VERIFIED-LIVE` for the controlled matrix. Raw
+  Responses and Chat Completions, stream and non-stream, preserve separate
+  reasoning/content, one schema-valid tool call, real-result continuation, and
+  clean completed/stop/DONE terminals.
+- `LAGUNA-CACHE-SETTINGS-PARITY`: `VERIFIED-LIVE`. Auto/1000 displayed and
+  launched q4 stored-prefix TQ with paged+block L2. Explicit UI None/max-four
+  launched `--kv-cache-quantization none --max-cache-blocks 4`, showed TQ Off,
+  and health reported zero TQ objects/writes/hits. Restoring Auto removed the
+  explicit mode and health again reported `uncalibrated_full_kv_storage_tq4`.
+- `LAGUNA-EVICTION-PARTIAL-PREFIX`: `VERIFIED-LIVE` with TQ Off. Four blocks
+  forced ten L1 evictions and ten disk writes; the oldest 4,538-token prompt
+  refaulted 192 tokens from three disk blocks as `paged+disk` and reproduced
+  exact answer `166`.
+- `LAGUNA-Q4-COLD-EQUIVALENCE`: `PARTIAL/OBSERVED-MISMATCH`. Four greedy q4
+  disk restores are byte-identical to one another, but differ from the first
+  full-precision cold answer. Three bypass-cold runs and cold plus four raw
+  `paged+disk` restores with explicit None are byte-identical to the cold
+  baseline. The observed boundary is lossy q4 stored-KV restoration; no sampler,
+  prompt, or output rewrite was added to hide it.
+- `LAGUNA-LATENCY-LONG-SOAK`: remains `OPEN/PARTIAL`. Controlled correctness
+  passes, but the natural row is about 23.8 tok/s and restart recall TTFT is
+  5.10 s; long agent reliability and the performance target are not closed.
+- Validation: 411 Python passed / 1 skipped, 771 panel passed, and TypeScript
+  typecheck passed. Test-only commit `6f7b29bc3` updates one stale source
+  assertion to the effective-tool helper already used by both streaming paths.
+- Evidence: `docs/internal/release-gates/20260719_laguna_current_stream_tq_determinism_eviction/`.
+- Release remains `PARTIAL/BLOCKED`; bundled Python is stale and the other
+  explicit matrix rows remain open.

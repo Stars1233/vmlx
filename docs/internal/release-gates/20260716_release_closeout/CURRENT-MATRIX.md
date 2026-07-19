@@ -1133,3 +1133,19 @@ Evidence: `../20260719_gemma4_current_parser_stream/`.
 Focused validation is 329 Python + 100 panel tests and panel typecheck. Evidence:
 `../20260719_dsv4_current_parser_auto_stream/`. Overall release remains blocked by
 stale bundled Python and the other open matrix rows.
+
+### Laguna current stream/cache addendum - 2026-07-19
+
+| Row | Status | Current source + live evidence | Remaining |
+|---|---|---|---|
+| Electron load, reasoning/content paint, and tool history | PASS-LIVE controlled | Real Sessions Start loaded PID 13706 on 8015. Row 409 separated reasoning from non-empty content. Row 412 executed one real `file_info` and painted the final answer incrementally. After two UI restarts, row 415 recalled 5.2 KB without a new tool and restored 4,980 `paged+disk+tq-native` tokens. | Longer agent/tool soak and signed packaged-app repeat. |
+| Chat/Responses stream and non-stream | PASS-LIVE controlled | Responses emitted 234 reasoning/43 content deltas for no-tool, one exact call, 130/10 continuation deltas, and completed terminals. Chat kept reasoning/content separate, emitted one exact call, stopped cleanly, and produced one DONE per stream. Non-stream variants returned visible content. | Broader parser-family/protocol matrix remains campaign-level work. |
+| UI/DB/argv/health cache controls | PASS-LIVE | Auto/1000 produced q4 stored-prefix TQ, paged cache, and block L2. Explicit None/max-four produced `--kv-cache-quantization none --max-cache-blocks 4`, visible TQ Off/256-token capacity, raw storage, and zero TQ objects/hits/writes. Auto was restored by another real Save & Restart. | Retain as regression row across remaining families. |
+| Bounded eviction and partial L2 refault | PASS-LIVE with TQ Off | Four blocks forced ten evictions and ten disk writes. The oldest 4,538-token prompt refaulted 192 tokens from three blocks as `paged+disk` and repeated exact answer `166`. | Larger/longer stress breadth remains open. |
+| q4 greedy determinism | PASS stable warm / PARTIAL cold equivalence | Four q4 restores are byte-identical to each other. Bypass-cold and explicit-None raw restores match cold byte-for-byte. q4 restored output differs from the cold full-precision output. | Decide whether lossy q4 cold-byte equivalence is required; do not mask with sampling/prompt/output coercion. |
+| Laguna performance/reliability | PARTIAL | Controlled output is coherent and progressive, but natural decode remains about 23.8 tok/s and restart recall TTFT is 5.10 s. | Reference comparison, performance work/acceptance budget, and long-agent reliability. |
+
+Validation: 411 Python passed / 1 skipped, 771 panel passed, and panel typecheck
+passed. Evidence:
+`../20260719_laguna_current_stream_tq_determinism_eviction/`. Release remains
+blocked by stale bundled Python and all other explicit open rows.

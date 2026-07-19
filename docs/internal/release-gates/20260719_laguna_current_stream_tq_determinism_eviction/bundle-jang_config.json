@@ -1,0 +1,28 @@
+{
+  "format": "jang",
+  "format_version": "2.0",
+  "quantization": {
+    "method": "jang-affine-mixed",
+    "profile": "JANG_2L",
+    "block_size": 64,
+    "mode": "affine",
+    "routed_avg_bits": 2.333,
+    "awq": {
+      "enabled": false
+    }
+  },
+  "architecture": {
+    "type": "moe",
+    "attention": "gqa+gated",
+    "has_vision": false,
+    "has_audio": false,
+    "has_moe": true,
+    "cache_type": "kv"
+  },
+  "capabilities": {
+    "family": "laguna",
+    "modality": "text",
+    "supports_tools": true,
+    "supports_thinking": true
+  }
+}

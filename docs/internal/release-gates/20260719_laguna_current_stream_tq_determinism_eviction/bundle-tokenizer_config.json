@@ -1,0 +1,576 @@
+{
+  "added_tokens_decoder": {
+    "0": {
+      "content": "\u3008|UNK|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "1": {
+      "content": "\u3008|CODE_START|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "2": {
+      "content": "\u3008|EOS|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "3": {
+      "content": "\u3008|CODE_END|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "4": {
+      "content": "\u3008|META_START|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "5": {
+      "content": "\u3008|META_END|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "6": {
+      "content": "\u3008|FIM_MIDDLE|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "7": {
+      "content": "\u3008|FIM_SUFFIX|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "8": {
+      "content": "\u3008|SEP|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "9": {
+      "content": "\u3008|PAD|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "10": {
+      "content": "\u3008|CLS|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "11": {
+      "content": "\u3008|FIM_START|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "12": {
+      "content": "\u3008|MASK|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "13": {
+      "content": "|\u25ca|",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "14": {
+      "content": "\u3008|",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "15": {
+      "content": "|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "16": {
+      "content": "\u3008|/",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "17": {
+      "content": "/|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "20": {
+      "content": "\u3008|SPECIAL_1|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "21": {
+      "content": "\u3008|SPECIAL_2|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "22": {
+      "content": "\u3008|SPECIAL_3|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "27": {
+      "content": "\u3008|SPECIAL_8|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "28": {
+      "content": "\u3008|SPECIAL_9|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "29": {
+      "content": "\u3008|SPECIAL_10|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "30": {
+      "content": "\u3008|SPECIAL_11|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "31": {
+      "content": "\u3008|SPECIAL_12|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "32": {
+      "content": "\u3008|SPECIAL_13|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "33": {
+      "content": "\u3008|SPECIAL_14|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "34": {
+      "content": "\u3008|SPECIAL_15|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "35": {
+      "content": "\u3008|SPECIAL_16|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "36": {
+      "content": "\u3008|SPECIAL_17|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "37": {
+      "content": "\u3008|SPECIAL_18|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "38": {
+      "content": "\u3008|SPECIAL_19|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "39": {
+      "content": "\u3008|SPECIAL_20|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "40": {
+      "content": "\u3008|SPECIAL_21|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "41": {
+      "content": "\u3008|SPECIAL_22|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "42": {
+      "content": "\u3008|SPECIAL_23|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "43": {
+      "content": "\u3008|SPECIAL_24|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "44": {
+      "content": "\u3008|SPECIAL_25|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "45": {
+      "content": "\u3008|SPECIAL_26|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "46": {
+      "content": "\u3008|SPECIAL_27|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "47": {
+      "content": "\u3008|SPECIAL_28|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "48": {
+      "content": "\u3008|SPECIAL_29|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "49": {
+      "content": "\u3008|SPECIAL_30|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "50": {
+      "content": "\u3008|SPECIAL_31|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "51": {
+      "content": "\u3008|SPECIAL_32|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "52": {
+      "content": "\u3008|SPECIAL_33|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "53": {
+      "content": "\u3008|SPECIAL_34|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "54": {
+      "content": "\u3008|SPECIAL_35|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "55": {
+      "content": "\u3008|SPECIAL_36|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "56": {
+      "content": "\u3008|SPECIAL_37|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "57": {
+      "content": "\u3008|SPECIAL_38|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "58": {
+      "content": "\u3008|SPECIAL_39|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "59": {
+      "content": "\u3008|SPECIAL_40|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "60": {
+      "content": "\u3008|SPECIAL_41|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "61": {
+      "content": "\u3008|SPECIAL_42|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "62": {
+      "content": "\u3008|SPECIAL_43|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "63": {
+      "content": "\u3008|SPECIAL_44|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "64": {
+      "content": "\u3008|SPECIAL_45|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "65": {
+      "content": "\u3008|SPECIAL_46|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "66": {
+      "content": "\u3008|SPECIAL_47|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "67": {
+      "content": "\u3008|SPECIAL_48|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "68": {
+      "content": "\u3008|SPECIAL_49|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "69": {
+      "content": "\u3008|SPECIAL_50|\u3009",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "18": {
+      "content": "<think>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": false
+    },
+    "19": {
+      "content": "</think>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": false
+    },
+    "23": {
+      "content": "<assistant>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": false
+    },
+    "24": {
+      "content": "</assistant>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": false
+    },
+    "25": {
+      "content": "<tool_call>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": false
+    },
+    "26": {
+      "content": "</tool_call>",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": false
+    }
+  },
+  "bos_token": "\u3008|EOS|\u3009",
+  "clean_up_tokenization_spaces": false,
+  "cls_token": "\u3008|CLS|\u3009",
+  "eos_token": "\u3008|EOS|\u3009",
+  "extra_special_tokens": {},
+  "mask_token": "\u3008|MASK|\u3009",
+  "model_max_length": 1000000000000000019884624838656,
+  "pad_token": "\u3008|PAD|\u3009",
+  "sep_token": "\u3008|SEP|\u3009",
+  "tokenizer_class": "PreTrainedTokenizerFast",
+  "unk_token": "\u3008|UNK|\u3009",
+  "chat_template": "{#- Copied from laguna_glm_thinking_v4/chat_template.jinja -#}\n{#- Removes prefix that references <think> token, and replaces message.reasoning_content reference with message.reasoning -#}\n{{- \"\u3008|EOS|\u3009\" -}}\n{%- set enable_thinking = enable_thinking | default(false) -%}\n{%- set render_assistant_messages_raw = render_assistant_messages_raw | default(false) -%}\n{%- set add_generation_prompt = add_generation_prompt | default(false) -%}\n\n{#- \u2500\u2500\u2500\u2500\u2500 header (system message) \u2500\u2500\u2500\u2500\u2500 -#}\n{%- set system_message = \"\" -%}\n{%- if messages and messages[0].role == \"system\" -%}\n  {%- set system_message = messages[0].content -%}\n{%- endif -%}\n\n{%- if (system_message and system_message.strip()) or tools -%}\n  {{- \"<system>\\n\" -}}\n\n  {%- if system_message and system_message.strip() -%}\n    {{- \"\\n\" -}}\n    {{- system_message.rstrip() -}}\n  {%- endif -%}\n\n  {%- if tools -%}\n    {{- \"\\n\\n### Tools\\n\\n\" -}}\n    {%- set ns = namespace(tool_string=\"You may call functions to assist with the user query.\\n\"\n          ~ \"All available function signatures are listed below:\\n\"\n          ~ \"<available_tools>\\n\") -%}\n    {%- for tool in tools -%}\n      {%- set ns.tool_string = ns.tool_string ~ (tool | tojson) ~ \"\\n\" -%}\n    {%- endfor -%}\n    {%- if enable_thinking -%}\n      {%- set tool_string = ns.tool_string + \"</available_tools>\\n\\n\" ~\n            \"Wrap your thinking in '<think>', '</think>' tags, followed by a function call. For each function call, return an unescaped XML-like object with function name and arguments within '<tool_call>' and '</tool_call>' tags, like here:\\n\" ~\n            \"<think> your thoughts here </think>\\n\" ~\n            \"<tool_call>function-name\\n<arg_key>argument-key</arg_key>\\n<arg_value>value-of-argument-key</arg_value>\\n\" ~\n            \"</tool_call>\" -%}\n    {%- else -%}\n      {%- set tool_string = ns.tool_string + \"</available_tools>\\n\\n\" ~\n            \"For each function call, return an unescaped XML-like object \" ~\n            \"with function name and arguments within '<tool_call>' and '</tool_call>' tags, like here:\\n\" ~\n            \"<tool_call>function-name\\n<arg_key>argument-key</arg_key>\\n<arg_value>value-of-argument-key</arg_value>\\n\" ~\n            \"</tool_call>\" -%}\n    {%- endif -%}\n    {{- tool_string -}}\n  {%- endif -%}\n\n  {{- \"\\n</system>\\n\" -}}\n{%- endif -%}\n\n{#- \u2500\u2500\u2500\u2500\u2500 main loop \u2500\u2500\u2500\u2500\u2500 -#}\n{%- for message in messages -%}\n  {%- set content = message.content if message.content is string else \"\" -%}\n  {%- if message.role == \"user\" -%}\n    {{- \"<user>\\n\" + content + \"\\n</user>\\n\" -}}\n  {%- elif message.role == \"assistant\" -%}\n    {%- generation -%}\n      {{- \"<assistant>\\n\" -}}\n      {%- if render_assistant_messages_raw -%}\n        {#- Raw mode: prepend the generation prompt token, then dump content verbatim. -#}\n        {#- The generation prompt is <think> when enable_thinking, </think> otherwise. -#}\n        {#- Only prepend if content doesn't already start with it. -#}\n        {%- if enable_thinking -%}\n          {%- if not content.startswith('<think>') -%}\n            {{- '<think>' -}}\n          {%- endif -%}\n        {%- else -%}\n          {%- if not content.startswith('</think>') -%}\n            {{- '</think>' -}}\n          {%- endif -%}\n        {%- endif -%}\n        {{- content -}}\n        {#- Append closing tag if content doesn't already end with it. -#}\n        {%- if not content.endswith('</assistant>\\n') and not content.endswith('</assistant>') -%}\n          {{- '\\n</assistant>' -}}\n        {%- endif -%}\n        {{- \"\\n\" -}}\n      {%- else -%}\n        {#- Extract reasoning content from message.reasoning (vLLM field name) or message.reasoning_content, or from <think> tags -#}\n        {%- set reasoning_content = '' %}\n        {%- if message.reasoning is string %}\n          {%- set reasoning_content = message.reasoning %}\n        {%- elif message.reasoning_content is string %}\n          {%- set reasoning_content = message.reasoning_content %}\n        {%- endif %}\n        {#- Always strip <think> tags from content if present to avoid duplication -#}\n        {%- if '</think>' in content %}\n          {%- if not reasoning_content %}\n            {%- set reasoning_content = content.split('</think>')[0].rstrip('\\n').split('<think>')[-1].lstrip('\\n') %}\n          {%- endif %}\n          {%- set content = content.split('</think>')[-1].lstrip('\\n') %}\n        {%- endif %}\n        {#- Display reasoning content for all messages -#}\n        {%- if reasoning_content -%}\n          {{- '<think>\\n' + reasoning_content.strip() + '\\n</think>\\n' -}}\n        {%- else -%}\n          {{- '</think>\\n' -}}\n        {%- endif -%}\n        {#- Display main content -#}\n        {%- if content.strip() -%}\n          {{- content.strip() ~ \"\\n\" -}}\n        {%- endif -%}\n        {%- if message.tool_calls -%}\n          {%- for tool_call in message.tool_calls -%}\n            {%- set function_data = tool_call.function -%}\n            {{- '<tool_call>' + function_data.name }}\n            {% set _args = function_data.arguments %}\n            {%- for k, v in _args.items() -%}\n              {{- \"<arg_key>\" ~ k ~ \"</arg_key>\\n\" -}}\n              {{- \"<arg_value>\"}}{{ v | tojson(ensure_ascii=False) if v is not string else v }}{{ \"</arg_value>\\n\" -}}\n            {%- endfor -%}\n            {{- \"</tool_call>\\n\" -}}\n          {%- endfor -%}\n        {%- endif -%}\n        {{- \"</assistant>\\n\" -}}\n      {%- endif -%}\n    {%- endgeneration -%}\n  {%- elif message.role == \"tool\" -%}\n    {{- \"<tool_response>\\n\" + content + \"\\n</tool_response>\\n\" -}}\n  {%- elif message.role == \"system\" and loop.index0 != 0 -%}\n    {#- Render additional system messages (skip the first one which is handled separately in the header) -#}\n    {{- \"<system>\\n\" + content + \"\\n</system>\\n\" -}}\n  {%- endif -%}\n{%- endfor -%}\n{#- \u2500\u2500\u2500\u2500\u2500 generation prompt \u2500\u2500\u2500\u2500\u2500 -#}\n{%- if add_generation_prompt -%}\n  {{- \"<assistant>\\n\" -}}\n  {#- \u2500\u2500\u2500\u2500\u2500 Include reasoning mode directive \u2500\u2500\u2500\u2500\u2500 -#}\n  {%- if not enable_thinking %}\n    {{- '</think>' -}}\n  {%- else %}\n    {{- '<think>' -}}\n  {%- endif %}\n{%- endif -%}\n"
+}

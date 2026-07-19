@@ -1,0 +1,33 @@
+
+> vmlx@1.6.11 test
+> vitest run --run tests/settings-flow.test.ts tests/cache-capacity-display.test.ts tests/cache-control-policy.test.ts tests/cache-metrics.test.ts tests/chat-settings-compatibility.test.ts tests/chat-settings-reset-policy.test.ts tests/model-config-registry.test.ts tests/database-migrations.test.ts tests/active-session-usable-twin.test.ts tests/session-model-identity.test.ts tests/session-model-path-recovery.test.ts tests/session-port-ui.test.ts tests/session-single-model-start.test.ts tests/chat-stream-errors.test.ts tests/interleaved-reasoning-render.test.ts tests/interleaved-reasoning-segments.test.ts tests/reasoning-display.test.ts tests/responses-stream-recovery.test.ts tests/tool-auto-continue.test.ts tests/tool-history-replay.test.ts tests/tool-status-responsiveness.test.ts
+
+
+[1m[46m RUN [49m[22m [36mv4.0.18 [39m[90m/Users/eric/mlx/vllm-mlx/panel[39m
+
+ [32m✓[39m tests/session-single-model-start.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 2[2mms[22m[39m
+ [32m✓[39m tests/tool-status-responsiveness.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m tests/database-migrations.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/cache-capacity-display.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m tests/responses-stream-recovery.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m tests/reasoning-display.test.ts [2m([22m[2m107 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m tests/tool-history-replay.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/session-model-identity.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/session-port-ui.test.ts [2m([22m[2m170 tests[22m[2m)[22m[32m 20[2mms[22m[39m
+ [32m✓[39m tests/interleaved-reasoning-segments.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+ [32m✓[39m tests/cache-control-policy.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+ [32m✓[39m tests/chat-settings-compatibility.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m tests/tool-auto-continue.test.ts [2m([22m[2m20 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m tests/session-model-path-recovery.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m tests/chat-stream-errors.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 2[2mms[22m[39m
+ [32m✓[39m tests/model-config-registry.test.ts [2m([22m[2m83 tests[22m[2m)[22m[32m 57[2mms[22m[39m
+ [32m✓[39m tests/chat-settings-reset-policy.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 2[2mms[22m[39m
+ [32m✓[39m tests/active-session-usable-twin.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 1[2mms[22m[39m
+ [32m✓[39m tests/cache-metrics.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 1[2mms[22m[39m
+ [32m✓[39m tests/settings-flow.test.ts [2m([22m[2m283 tests[22m[2m)[22m[32m 55[2mms[22m[39m
+ [32m✓[39m tests/interleaved-reasoning-render.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m21 passed[39m[22m[90m (21)[39m
+[2m      Tests [22m [1m[32m771 passed[39m[22m[90m (771)[39m
+[2m   Start at [22m 06:02:47
+[2m   Duration [22m 503ms[2m (transform 1.63s, setup 0ms, import 2.00s, tests 239ms, environment 1ms)[22m
