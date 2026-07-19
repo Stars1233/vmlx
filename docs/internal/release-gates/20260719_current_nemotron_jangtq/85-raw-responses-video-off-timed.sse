@@ -1,0 +1,56 @@
+{"api": "responses", "endpoint": "http://127.0.0.1:8024/v1/responses", "max_tokens": 1024, "media": "docs/internal/release-gates/20260716_release_closeout/gemma4-media-cache-current/gemma4-media-a-video.mp4", "media_sha256_prefix": "842e3540854bfec1", "model": "dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK", "prompt": "[NEMO-RAW-VIDEO1] Read the large marker visible in the video frames. Reply exactly two lines: BANANA8426 and NEMO-RAW-VIDEO1-DONE.", "thinking": "off"}
+0.063	HTTP 200 text/event-stream; charset=utf-8
+0.063	event: response.created
+0.063	data: {"type": "response.created", "response": {"id": "resp_b6d1901f7bcd", "object": "response", "created_at": 1784494834, "status": "in_progress", "model": "dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK", "output": []}, "sequence_number": 0}
+0.063	event: response.output_item.added
+0.063	data: {"type": "response.output_item.added", "output_index": 0, "item": {"id": "item_34077f4ed958", "type": "message", "status": "in_progress", "role": "assistant", "content": []}, "sequence_number": 1}
+0.063	event: response.content_part.added
+0.063	data: {"type": "response.content_part.added", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "part": {"type": "output_text", "text": "", "annotations": []}, "sequence_number": 2}
+2.898	event: response.output_text.delta
+2.898	data: {"type": "response.output_text.delta", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "delta": "\n", "sequence_number": 3}
+2.911	event: response.output_text.delta
+2.911	data: {"type": "response.output_text.delta", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "delta": "BA", "sequence_number": 4}
+2.923	event: response.output_text.delta
+2.923	data: {"type": "response.output_text.delta", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "delta": "NA", "sequence_number": 5}
+2.934	event: response.output_text.delta
+2.934	data: {"type": "response.output_text.delta", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "delta": "NA", "sequence_number": 6}
+2.946	event: response.output_text.delta
+2.946	data: {"type": "response.output_text.delta", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "delta": "8", "sequence_number": 7}
+2.958	event: response.output_text.delta
+2.958	data: {"type": "response.output_text.delta", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "delta": "4", "sequence_number": 8}
+2.969	event: response.output_text.delta
+2.969	data: {"type": "response.output_text.delta", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "delta": "2", "sequence_number": 9}
+2.981	event: response.output_text.delta
+2.981	data: {"type": "response.output_text.delta", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "delta": "6", "sequence_number": 10}
+2.993	event: response.output_text.delta
+2.993	data: {"type": "response.output_text.delta", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "delta": "\n", "sequence_number": 11}
+3.004	event: response.output_text.delta
+3.004	data: {"type": "response.output_text.delta", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "delta": "N", "sequence_number": 12}
+3.016	event: response.output_text.delta
+3.016	data: {"type": "response.output_text.delta", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "delta": "EM", "sequence_number": 13}
+3.027	event: response.output_text.delta
+3.027	data: {"type": "response.output_text.delta", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "delta": "O", "sequence_number": 14}
+3.039	event: response.output_text.delta
+3.039	data: {"type": "response.output_text.delta", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "delta": "-R", "sequence_number": 15}
+3.051	event: response.output_text.delta
+3.051	data: {"type": "response.output_text.delta", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "delta": "A", "sequence_number": 16}
+3.062	event: response.output_text.delta
+3.062	data: {"type": "response.output_text.delta", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "delta": "W", "sequence_number": 17}
+3.074	event: response.output_text.delta
+3.074	data: {"type": "response.output_text.delta", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "delta": "-", "sequence_number": 18}
+3.086	event: response.output_text.delta
+3.086	data: {"type": "response.output_text.delta", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "delta": "VIDEO", "sequence_number": 19}
+3.097	event: response.output_text.delta
+3.097	data: {"type": "response.output_text.delta", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "delta": "1", "sequence_number": 20}
+3.109	event: response.output_text.delta
+3.109	data: {"type": "response.output_text.delta", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "delta": "-D", "sequence_number": 21}
+3.120	event: response.output_text.delta
+3.120	data: {"type": "response.output_text.delta", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "delta": "ONE", "sequence_number": 22}
+3.131	event: response.output_text.done
+3.131	data: {"type": "response.output_text.done", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "text": "BANANA8426\nNEMO-RAW-VIDEO1-DONE", "sequence_number": 23}
+3.131	event: response.content_part.done
+3.131	data: {"type": "response.content_part.done", "item_id": "item_34077f4ed958", "output_index": 0, "content_index": 0, "part": {"type": "output_text", "text": "BANANA8426\nNEMO-RAW-VIDEO1-DONE", "annotations": []}, "sequence_number": 24}
+3.131	event: response.output_item.done
+3.131	data: {"type": "response.output_item.done", "output_index": 0, "item": {"id": "item_34077f4ed958", "type": "message", "status": "completed", "role": "assistant", "content": [{"type": "output_text", "text": "BANANA8426\nNEMO-RAW-VIDEO1-DONE", "annotations": []}]}, "sequence_number": 25}
+3.131	event: response.completed
+3.131	data: {"type": "response.completed", "response": {"id": "resp_b6d1901f7bcd", "object": "response", "created_at": 1784494834, "status": "completed", "model": "dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK", "output_text": "BANANA8426\nNEMO-RAW-VIDEO1-DONE", "output": [{"id": "item_34077f4ed958", "type": "message", "status": "completed", "role": "assistant", "content": [{"type": "output_text", "text": "BANANA8426\nNEMO-RAW-VIDEO1-DONE", "annotations": []}]}], "usage": {"input_tokens": 1340, "output_tokens": 21, "total_tokens": 1361}}, "sequence_number": 26}

@@ -1,0 +1,54 @@
+{"api": "responses", "endpoint": "http://127.0.0.1:8024/v1/responses", "max_tokens": 1024, "media": "docs/internal/release-gates/20260508_nemotron_omni_media_live/amber_seven.wav", "media_sha256_prefix": "99c589be9ed38a70", "model": "dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK", "prompt": "[NEMO-RAW-AUDIO1] Transcribe the attached audio. Reply exactly two lines: the code word is amber seven and NEMO-RAW-AUDIO1-DONE.", "thinking": "off"}
+0.065	HTTP 200 text/event-stream; charset=utf-8
+0.065	event: response.created
+0.065	data: {"type": "response.created", "response": {"id": "resp_44bce23560f4", "object": "response", "created_at": 1784494769, "status": "in_progress", "model": "dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK", "output": []}, "sequence_number": 0}
+0.065	event: response.output_item.added
+0.065	data: {"type": "response.output_item.added", "output_index": 0, "item": {"id": "item_4284d62bba76", "type": "message", "status": "in_progress", "role": "assistant", "content": []}, "sequence_number": 1}
+0.065	event: response.content_part.added
+0.065	data: {"type": "response.content_part.added", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "part": {"type": "output_text", "text": "", "annotations": []}, "sequence_number": 2}
+0.399	event: response.output_text.delta
+0.399	data: {"type": "response.output_text.delta", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "delta": "The", "sequence_number": 3}
+0.412	event: response.output_text.delta
+0.412	data: {"type": "response.output_text.delta", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "delta": " code", "sequence_number": 4}
+0.424	event: response.output_text.delta
+0.424	data: {"type": "response.output_text.delta", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "delta": " word", "sequence_number": 5}
+0.435	event: response.output_text.delta
+0.435	data: {"type": "response.output_text.delta", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "delta": " is", "sequence_number": 6}
+0.447	event: response.output_text.delta
+0.447	data: {"type": "response.output_text.delta", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "delta": " amber", "sequence_number": 7}
+0.458	event: response.output_text.delta
+0.458	data: {"type": "response.output_text.delta", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "delta": " seven", "sequence_number": 8}
+0.470	event: response.output_text.delta
+0.470	data: {"type": "response.output_text.delta", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "delta": " and", "sequence_number": 9}
+0.481	event: response.output_text.delta
+0.481	data: {"type": "response.output_text.delta", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "delta": " N", "sequence_number": 10}
+0.493	event: response.output_text.delta
+0.493	data: {"type": "response.output_text.delta", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "delta": "EM", "sequence_number": 11}
+0.505	event: response.output_text.delta
+0.505	data: {"type": "response.output_text.delta", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "delta": "O", "sequence_number": 12}
+0.516	event: response.output_text.delta
+0.516	data: {"type": "response.output_text.delta", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "delta": "-R", "sequence_number": 13}
+0.528	event: response.output_text.delta
+0.528	data: {"type": "response.output_text.delta", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "delta": "A", "sequence_number": 14}
+0.539	event: response.output_text.delta
+0.539	data: {"type": "response.output_text.delta", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "delta": "W", "sequence_number": 15}
+0.551	event: response.output_text.delta
+0.551	data: {"type": "response.output_text.delta", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "delta": "-A", "sequence_number": 16}
+0.562	event: response.output_text.delta
+0.562	data: {"type": "response.output_text.delta", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "delta": "UDIO", "sequence_number": 17}
+0.574	event: response.output_text.delta
+0.574	data: {"type": "response.output_text.delta", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "delta": "1", "sequence_number": 18}
+0.585	event: response.output_text.delta
+0.585	data: {"type": "response.output_text.delta", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "delta": "-D", "sequence_number": 19}
+0.597	event: response.output_text.delta
+0.597	data: {"type": "response.output_text.delta", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "delta": "ONE", "sequence_number": 20}
+0.608	event: response.output_text.delta
+0.608	data: {"type": "response.output_text.delta", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "delta": ".", "sequence_number": 21}
+0.619	event: response.output_text.done
+0.619	data: {"type": "response.output_text.done", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "text": "The code word is amber seven and NEMO-RAW-AUDIO1-DONE.", "sequence_number": 22}
+0.619	event: response.content_part.done
+0.619	data: {"type": "response.content_part.done", "item_id": "item_4284d62bba76", "output_index": 0, "content_index": 0, "part": {"type": "output_text", "text": "The code word is amber seven and NEMO-RAW-AUDIO1-DONE.", "annotations": []}, "sequence_number": 23}
+0.619	event: response.output_item.done
+0.619	data: {"type": "response.output_item.done", "output_index": 0, "item": {"id": "item_4284d62bba76", "type": "message", "status": "completed", "role": "assistant", "content": [{"type": "output_text", "text": "The code word is amber seven and NEMO-RAW-AUDIO1-DONE.", "annotations": []}]}, "sequence_number": 24}
+0.619	event: response.completed
+0.619	data: {"type": "response.completed", "response": {"id": "resp_44bce23560f4", "object": "response", "created_at": 1784494769, "status": "completed", "model": "dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK", "output_text": "The code word is amber seven and NEMO-RAW-AUDIO1-DONE.", "output": [{"id": "item_4284d62bba76", "type": "message", "status": "completed", "role": "assistant", "content": [{"type": "output_text", "text": "The code word is amber seven and NEMO-RAW-AUDIO1-DONE.", "annotations": []}]}], "usage": {"input_tokens": 85, "output_tokens": 20, "total_tokens": 105}}, "sequence_number": 25}

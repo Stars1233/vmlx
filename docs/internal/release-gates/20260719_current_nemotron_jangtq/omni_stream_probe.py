@@ -28,6 +28,23 @@ def main() -> int:
     data_url = f"data:{mime};base64,{encoded}"
     thinking = None if args.thinking == "auto" else args.thinking == "on"
 
+    media_family = mime.split("/", 1)[0]
+    if media_family == "image":
+        responses_media = {"type": "input_image", "image_url": data_url}
+        chat_media = {"type": "image_url", "image_url": {"url": data_url}}
+    elif media_family == "audio":
+        audio_format = args.media.suffix.lower().lstrip(".") or "wav"
+        responses_media = {
+            "type": "input_audio",
+            "input_audio": {"data": encoded, "format": audio_format},
+        }
+        chat_media = dict(responses_media)
+    elif media_family == "video":
+        responses_media = {"type": "input_video", "video_url": data_url}
+        chat_media = {"type": "video_url", "video_url": {"url": data_url}}
+    else:
+        raise SystemExit(f"unsupported media MIME for this probe: {mime}")
+
     if args.api == "responses":
         endpoint = f"{args.base_url.rstrip('/')}/v1/responses"
         payload = {
@@ -36,7 +53,7 @@ def main() -> int:
                 "role": "user",
                 "content": [
                     {"type": "input_text", "text": args.prompt},
-                    {"type": "input_image", "image_url": data_url},
+                    responses_media,
                 ],
             }],
             "stream": True,
@@ -50,7 +67,7 @@ def main() -> int:
                 "role": "user",
                 "content": [
                     {"type": "text", "text": args.prompt},
-                    {"type": "image_url", "image_url": {"url": data_url}},
+                    chat_media,
                 ],
             }],
             "stream": True,
