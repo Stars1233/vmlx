@@ -1,0 +1,26 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.11, pytest-9.0.2, pluggy-1.6.0
+rootdir: /Users/eric/mlx/vllm-mlx
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+plugins: asyncio-1.3.0, anyio-4.13.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 329 items
+
+tests/test_dsml_tool_parser.py ...........................               [  8%]
+tests/test_deepseek_r1_reasoning_no_leak.py .........                    [ 10%]
+tests/test_dsv4_contract_hardening.py ..................                 [ 16%]
+tests/test_dsv4_default_cache_tool_loop_gate.py ...........              [ 19%]
+tests/test_dsv4_paged_cache.py ......................................... [ 32%]
+.......................                                                  [ 39%]
+tests/test_dsv4_responses_restart_l2_gate.py ..                          [ 39%]
+tests/test_dsv4_route_mode_code_exactness.py ........................... [ 48%]
+                                                                         [ 48%]
+tests/test_dsv4_thinking_finalizer.py ........                           [ 50%]
+tests/test_streaming_reasoning.py ...................................... [ 62%]
+........................................................................ [ 83%]
+.....................                                                    [ 90%]
+tests/test_answer_pass_streaming.py ...................                  [ 96%]
+tests/test_stream_terminal_finish_guard.py ......                        [ 97%]
+tests/test_cache_architecture_contract.py .......                        [100%]
+
+============================= 329 passed in 3.98s ==============================

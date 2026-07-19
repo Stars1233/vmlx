@@ -1,0 +1,75 @@
+
+> vmlx@1.6.11 dev
+> electron-vite dev --remoteDebuggingPort 9335
+
+vite v5.4.21 building SSR bundle for development...
+transforming...
+✓ 91 modules transformed.
+[plugin:vite:reporter] [plugin vite:reporter]
+(!) /Users/eric/mlx/vllm-mlx/panel/src/main/sessions.ts is dynamically imported by /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/models.ts but also statically imported by /Users/eric/mlx/vllm-mlx/panel/src/main/api-gateway.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/index.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/benchmark.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/chat.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/developer.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/distributed.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/image.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/performance.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/sessions.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/utils.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/tray.ts, dynamic import will not move module into another chunk.
+
+rendering chunks...
+dist/main/index.mjs  1,005.21 kB
+✓ built in 346ms
+
+build the electron main process successfully
+
+-----
+
+vite v5.4.21 building SSR bundle for development...
+transforming...
+✓ 1 modules transformed.
+rendering chunks...
+dist/preload/index.js  23.34 kB
+✓ built in 9ms
+
+build the electron preload files successfully
+
+-----
+
+dev server running for the electron renderer process at:
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+
+start electron app...
+
+[STARTUP] Using vMLX userData override: /Users/eric/.vmlx-v1611-cachefix-dev
+
+DevTools listening on ws://127.0.0.1:9335/devtools/browser/51b44bd5-f449-4228-97c5-a140b88d4f7e
+[STARTUP] Restoring 0 App Sandbox bookmarks
+[STARTUP] No existing vmlx-engine processes found
+[MemoryEnforcer] Started (max 120 GB, poll 5000ms, TTL 30m)
+[gateway] Listening on 127.0.0.1:8081
+Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[Engine Manager] Checking installation...
+[Engine Manager] Checking installation...
+[Engine Manager] Found in PATH: /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine
+[Engine Manager] Found in PATH: /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine
+[Engine Manager] Version: 1.6.11
+[Engine Manager] Version: 1.6.11
+[UPDATE] Fetched manifest from https://raw.githubusercontent.com/jjang-ai/mlxstudio/main/latest.json: v1.6.11
+[UPDATE] Fetched manifest from https://mlx.studio/update/latest.json: v1.6.11
+[UPDATE] Picked highest version across sources: v1.6.11
+[UPDATE] Selected native macOS download: https://github.com/jjang-ai/mlxstudio/releases/download/v1.6.11/vMLX-1.6.11-tahoe-arm64.dmg
+[UPDATE] Up to date (1.6.11)
+[SESSIONS] Using project venv: /Users/eric/mlx/vllm-mlx/.venv/bin/python3
+[SESSION] Model estimate: ~73.2 GB | RAM: 118.4 GB free / 137 GB total (14% used)
+[SESSION] Model family: deepseek-v4 | tool: dsml (user=dsml, detected=dsml) | reasoning: deepseek_r1 (user=deepseek_r1, detected=deepseek_r1) | autoTool: true | VLM: false
+[SESSION] DSV4-Flash native composite prefix cache is active
+[POWER] System sleep blocked (id=0)
+[SESSIONS] Health check failed 10/180 for session a6810958-d14f-45e3-a049-b23c602e8427 (process alive, likely busy)
+[SLEEP] touchSession a6810958 — idle timer reset
+[CHAT] Inherited coding/tool settings from last chat 5f482b6e; generation/reasoning defaults stayed model-derived
+[SLEEP] touchSession a6810958 — idle timer reset
+[CHAT] Endpoint resolution: isRemote=false, rawBaseUrl=http://127.0.0.1:8012, baseUrl=http://127.0.0.1:8012, session=a6810958-d14f-45e3-a049-b23c602e8427, type=local
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:8012/v1/responses (wire: responses, remote: false)
+[CHAT] Stream ended — content: 0 chars, reasoning: 75 chars, tool calls: 1, buffered: true
+[CHAT] Tool execution iteration 1 (1 tool calls)
+[SLEEP] touchSession a6810958 — idle timer reset
+[CHAT] Builtin tool: file_info
+[CHAT] Tool loop completed after 1 iteration(s)
+[CHAT] Response complete: 94 tokens in 16.7s (19.3 t/s, live=20.0 t/s, TTFT: 1.41s, pp: 1125 tokens, 370.8 pp/s, usage=server)

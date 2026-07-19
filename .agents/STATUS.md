@@ -7162,3 +7162,26 @@ release `PARTIAL/BLOCKED`.
   sampler coercion. Evidence:
   `docs/internal/release-gates/20260719_gemma4_current_parser_stream/`.
 - Release remains blocked on stale bundled Python relative to current source.
+
+## 2026-07-19 - DSV4 Auto UI/parser/restart cache current-head checkpoint
+
+Status: `SCOPED_DSV4_AUTO_STREAM_RESTART_L2_PASS_STRICT_QUALITY_PARTIAL_RELEASE_BLOCKED`.
+
+- Source head `4e723f311` exposes model-default Auto reasoning for DSV4 and
+  declares the current `dsml` / `deepseek_r1` capability contract.
+- Full Electron main-process relaunch found the project venv engine; a real
+  Sessions-card Start loaded PID 8882 before generation. The live drawer selected
+  Auto after the relaunch, not merely renderer HMR.
+- Fresh Electron row 406 performed one exact `file_info(panel/package.json)`, used
+  the real result, kept reasoning separate, produced non-empty visible content,
+  and stored no warning.
+- Current Responses/Chat controlled prompts preserve separate reasoning/content,
+  progressive tool/final deltas, and clean terminals. A shared synthetic-marker
+  mutation and weak-prompt stochastic failures remain PARTIAL pending matched
+  reference-runtime A/B; no official-artifact blame was made.
+- Native DSV4 L2 restored across the process replacement: two disk hits, 3,173
+  L2 block tokens, `DSV4BatchGenerator`, generic TQ Off. Bundle truth is affine
+  JANG, not JANGTQ/MXTQ/MXFP.
+- Tests: 329 Python, 100 panel, and panel typecheck pass.
+- Evidence: `docs/internal/release-gates/20260719_dsv4_current_parser_auto_stream/`.
+- Release remains blocked by stale bundled Python and all other explicit open rows.

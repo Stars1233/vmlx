@@ -1,0 +1,37 @@
+{
+  "bundle": "/Volumes/EricsLLMDrive/dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+  "config": {
+    "model_type": "deepseek_v4",
+    "num_hidden_layers": 43,
+    "hidden_size": 4096,
+    "num_attention_heads": 64,
+    "num_key_value_heads": 1,
+    "sliding_window": 128,
+    "weight_format": "affine"
+  },
+  "quantization": {
+    "bits": 4,
+    "group_size": 64,
+    "mode": "affine",
+    "routed_expert_bits": 2,
+    "routed_expert_group_size": 64,
+    "bookend_bits": 4,
+    "bookend_group_size": 64,
+    "token_bookend_bits": 8,
+    "token_bookend_group_size": 64
+  },
+  "jang_capabilities": null,
+  "jang_profile": "JANG_2L_GS64_ProjLayerBits_Ggs32-Dgs32-Ugs64_bk4_Tok8g64_NoMTP",
+  "generation_config": {
+    "_from_model_config": true,
+    "bos_token_id": 0,
+    "eos_token_id": [
+      1,
+      128803
+    ],
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "transformers_version": "4.46.3"
+  }
+}

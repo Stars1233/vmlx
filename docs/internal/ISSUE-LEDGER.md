@@ -2535,3 +2535,34 @@ remain open. No public release/notarization/feed mutation performed.
 - Focused current-source validation: 361 passed. Evidence:
   `docs/internal/release-gates/20260719_gemma4_current_parser_stream/`.
 - Release remains blocked on the already-recorded source/bundled Python hash drift.
+
+## 2026-07-19 - DSV4 current-source Auto UI, parser stream, and restart/L2 recheck
+
+- `DSV4-AUTO-UI-STATE`: `VERIFIED-LIVE`. Commit `4e723f311` declares the
+  DSV4 `dsml`/`deepseek_r1` reasoning capabilities and adds a real Auto choice
+  for an absent override. After a full Electron main-process relaunch (not only
+  renderer HMR), the settings drawer visibly selected Auto and left
+  Instruct/Reasoning/Max unselected.
+- `DSV4-ELECTRON-RESTART-TOOL`: `VERIFIED-LIVE`. The correct-PATH dev log
+  found `/Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine`; the real Sessions
+  Start action loaded PID 8882 before a prompt. Fresh row 406 kept two reasoning
+  rails separate, made exactly one `file_info(panel/package.json)` call, used
+  the real 5.2 KB result, produced non-empty visible content, and stored no warning.
+- `DSV4-NATIVE-L2-RESTART`: `VERIFIED-LIVE`. Post-turn health identifies the
+  `dsv4` batch path, two disk hits, 3,173 L2 block tokens, and zero generic TQ
+  writes/hits. This artifact is affine JANG, not JANGTQ/MXTQ/MXFP; its 43-layer
+  native SWA+CSA/HCA pool cache remains outside generic TurboQuant.
+- `DSV4-PROTOCOL-STREAM`: `VERIFIED-LIVE` for controlled current prompts.
+  Identical Responses/Chat prompts emitted byte-identical separated reasoning
+  and progressive content; both protocols completed one real tool continuation
+  with clean terminals. This rules out an endpoint-specific re-emission defect
+  for the controlled row.
+- `DSV4-STRICT-MARKER-AND-STOCHASTIC-QUALITY`: remains `OPEN/PARTIAL`.
+  Both APIs mutated one synthetic marker before endpoint emission, a weaker
+  stochastic prompt duplicated a path, and another weak post-tool prompt
+  hallucinated package contents. No artifact blame is assigned; a matched
+  same-artifact reference-runtime A/B remains required.
+- Focused validation: 329 Python tests, 100 panel tests, and panel typecheck pass.
+  Evidence: `docs/internal/release-gates/20260719_dsv4_current_parser_auto_stream/`.
+- Release stays `PARTIAL/BLOCKED`: bundled Python remains stale relative to
+  current source, and the other recorded matrix rows remain open.

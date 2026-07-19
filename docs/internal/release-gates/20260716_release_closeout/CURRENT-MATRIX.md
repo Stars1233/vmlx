@@ -1120,3 +1120,16 @@ Evidence: `../20260719_ollama_stream_tool_parity/`.
 | Gemma4 mixed-SWA storage truth | PASS-LIVE scoped | Health identifies native live rotating caches, generic live TQ Off, q4 storage-boundary encoding for full+sliding KV, preserved rotating metadata, 56 scheduler disk hits, and 239 native-TQ L2 hits. Focused selection is 361 passed. | Retain alternate/larger media and audio-family rows separately. |
 
 Evidence: `../20260719_gemma4_current_parser_stream/`.
+
+### DSV4 current-source Auto/parser/restart addendum - 2026-07-19
+
+| Row | Status | Current source + live evidence | Remaining |
+|---|---|---|---|
+| Electron Start and Auto reasoning UI | PASS-LIVE | Commit `4e723f311` declares DSV4 thinking/instruct capabilities and renders an explicit Auto state. A full Electron main restart logged the project `vmlx-engine`; the real Sessions Start action loaded PID 8882 before any prompt. The reopened settings drawer visibly selected Auto, with Instruct/Reasoning/Max unselected. | Signed-app repeat after bundled-Python refresh. |
+| Electron one-tool continuation | PASS-LIVE | Fresh row 406 retained two separate reasoning rails, one exact `file_info(panel/package.json)`, the real 5.2 KB result, non-empty visible content, and no warning. The final screenshot shows the reasoning cards, tool card, and answer. | Broader stochastic/long exact-format quality remains separate. |
+| Responses/Chat transport | PASS-LIVE controlled / PARTIAL quality | Identical no-tool and tool-schema prompts normalized byte-identically across Responses and Chat with separated reasoning/content. Both tool/result continuations streamed arguments, post-tool content, and clean terminals. | Both endpoints mutated one synthetic marker identically; same-artifact reference-runtime A/B is still required before assigning cause. |
+| Native composite restart/L2 | PASS-LIVE | After visible process replacement, health reported `engine_path=dsv4`, two disk hits, 3,173 L2 block tokens, and zero generic TQ writes/hits. The tested bundle is affine JANG and uses native 43-layer SWA+CSA/HCA pool cache, not JANGTQ/MXFP or generic TQ. | Retain long reliability/perf and stress/eviction breadth as recorded. |
+
+Focused validation is 329 Python + 100 panel tests and panel typecheck. Evidence:
+`../20260719_dsv4_current_parser_auto_stream/`. Overall release remains blocked by
+stale bundled Python and the other open matrix rows.

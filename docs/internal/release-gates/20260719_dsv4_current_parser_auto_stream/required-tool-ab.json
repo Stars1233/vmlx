@@ -1,0 +1,6956 @@
+{
+  "greedy_1": {
+    "temperature": 0.0,
+    "summary": {
+      "reasoning": " about the request: I need to call file_info exactly once with path \"panel/package.json\". I'll do exactly that.",
+      "content": "",
+      "reasoning_delta_count": 26,
+      "content_delta_count": 0,
+      "functions": [
+        {
+          "id": "fc_7b7282b923fd",
+          "type": "function_call",
+          "status": "completed",
+          "call_id": "call_9cec9fc1",
+          "name": "file_info",
+          "arguments": "{\"path\": \"panel/package.json\"}"
+        }
+      ],
+      "terminals": [
+        "response.completed"
+      ],
+      "terminal": {
+        "id": "resp_ffe34b667499",
+        "object": "response",
+        "created_at": 1784463890,
+        "status": "completed",
+        "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+        "output_text": "",
+        "output": [
+          {
+            "id": "item_388fbe3f1dee",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "",
+                "annotations": []
+              }
+            ]
+          },
+          {
+            "id": "fc_7b7282b923fd",
+            "type": "function_call",
+            "status": "completed",
+            "call_id": "call_9cec9fc1",
+            "name": "file_info",
+            "arguments": "{\"path\": \"panel/package.json\"}"
+          },
+          {
+            "id": "rs_5b686c04307d",
+            "type": "reasoning",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "reasoning",
+                "text": " about the request: I need to call file_info exactly once with path \"panel/package.json\". I'll do exactly that."
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 262,
+          "output_tokens": 73,
+          "total_tokens": 335,
+          "input_tokens_details": {
+            "cached_tokens": 261,
+            "cache_detail": "paged+dsv4"
+          }
+        }
+      }
+    },
+    "events": [
+      {
+        "at": 0.051822,
+        "data": {
+          "type": "response.created",
+          "response": {
+            "id": "resp_ffe34b667499",
+            "object": "response",
+            "created_at": 1784463890,
+            "status": "in_progress",
+            "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+            "output": []
+          },
+          "sequence_number": 0
+        }
+      },
+      {
+        "at": 0.051839,
+        "data": {
+          "type": "response.output_item.added",
+          "output_index": 0,
+          "item": {
+            "id": "item_388fbe3f1dee",
+            "type": "message",
+            "status": "in_progress",
+            "role": "assistant",
+            "content": []
+          },
+          "sequence_number": 1
+        }
+      },
+      {
+        "at": 0.051846,
+        "data": {
+          "type": "response.content_part.added",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "content_index": 0,
+          "part": {
+            "type": "output_text",
+            "text": "",
+            "annotations": []
+          },
+          "sequence_number": 2
+        }
+      },
+      {
+        "at": 1.163522,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " about",
+          "sequence_number": 3
+        }
+      },
+      {
+        "at": 1.163602,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 4
+        }
+      },
+      {
+        "at": 1.254862,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " the",
+          "sequence_number": 5
+        }
+      },
+      {
+        "at": 1.25491,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 6
+        }
+      },
+      {
+        "at": 1.307455,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " request",
+          "sequence_number": 7
+        }
+      },
+      {
+        "at": 1.307482,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 8
+        }
+      },
+      {
+        "at": 1.348831,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": ":",
+          "sequence_number": 9
+        }
+      },
+      {
+        "at": 1.348854,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 10
+        }
+      },
+      {
+        "at": 1.390364,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " I",
+          "sequence_number": 11
+        }
+      },
+      {
+        "at": 1.390398,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 12
+        }
+      },
+      {
+        "at": 1.428364,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " need",
+          "sequence_number": 13
+        }
+      },
+      {
+        "at": 1.428416,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 14
+        }
+      },
+      {
+        "at": 1.480651,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " to",
+          "sequence_number": 15
+        }
+      },
+      {
+        "at": 1.480709,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 16
+        }
+      },
+      {
+        "at": 1.522087,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " call",
+          "sequence_number": 17
+        }
+      },
+      {
+        "at": 1.522151,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 18
+        }
+      },
+      {
+        "at": 1.563737,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " file",
+          "sequence_number": 19
+        }
+      },
+      {
+        "at": 1.563803,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 20
+        }
+      },
+      {
+        "at": 1.600845,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "_info",
+          "sequence_number": 21
+        }
+      },
+      {
+        "at": 1.600891,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 22
+        }
+      },
+      {
+        "at": 1.654006,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " exactly",
+          "sequence_number": 23
+        }
+      },
+      {
+        "at": 1.654041,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 24
+        }
+      },
+      {
+        "at": 1.695826,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " once",
+          "sequence_number": 25
+        }
+      },
+      {
+        "at": 1.695894,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 26
+        }
+      },
+      {
+        "at": 1.737735,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " with",
+          "sequence_number": 27
+        }
+      },
+      {
+        "at": 1.737795,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 28
+        }
+      },
+      {
+        "at": 1.775607,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " path",
+          "sequence_number": 29
+        }
+      },
+      {
+        "at": 1.775684,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 30
+        }
+      },
+      {
+        "at": 1.828369,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " \"",
+          "sequence_number": 31
+        }
+      },
+      {
+        "at": 1.828433,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 32
+        }
+      },
+      {
+        "at": 1.869841,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "panel",
+          "sequence_number": 33
+        }
+      },
+      {
+        "at": 1.869883,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 34
+        }
+      },
+      {
+        "at": 1.911611,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "/",
+          "sequence_number": 35
+        }
+      },
+      {
+        "at": 1.911669,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 36
+        }
+      },
+      {
+        "at": 1.949194,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "package",
+          "sequence_number": 37
+        }
+      },
+      {
+        "at": 1.949269,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 38
+        }
+      },
+      {
+        "at": 2.001645,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": ".json",
+          "sequence_number": 39
+        }
+      },
+      {
+        "at": 2.001696,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 40
+        }
+      },
+      {
+        "at": 2.043024,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "\".",
+          "sequence_number": 41
+        }
+      },
+      {
+        "at": 2.04307,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 42
+        }
+      },
+      {
+        "at": 2.08459,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " I",
+          "sequence_number": 43
+        }
+      },
+      {
+        "at": 2.084626,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 44
+        }
+      },
+      {
+        "at": 2.121978,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "'ll",
+          "sequence_number": 45
+        }
+      },
+      {
+        "at": 2.122047,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 46
+        }
+      },
+      {
+        "at": 2.174467,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " do",
+          "sequence_number": 47
+        }
+      },
+      {
+        "at": 2.174518,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 48
+        }
+      },
+      {
+        "at": 2.216594,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " exactly",
+          "sequence_number": 49
+        }
+      },
+      {
+        "at": 2.216641,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 50
+        }
+      },
+      {
+        "at": 2.25827,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " that",
+          "sequence_number": 51
+        }
+      },
+      {
+        "at": 2.258318,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 52
+        }
+      },
+      {
+        "at": 2.295708,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": ".",
+          "sequence_number": 53
+        }
+      },
+      {
+        "at": 2.295761,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 54
+        }
+      },
+      {
+        "at": 2.431289,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 55
+        }
+      },
+      {
+        "at": 2.469253,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 56
+        }
+      },
+      {
+        "at": 2.522189,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 57
+        }
+      },
+      {
+        "at": 2.563994,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 58
+        }
+      },
+      {
+        "at": 2.605548,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 59
+        }
+      },
+      {
+        "at": 2.643215,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 60
+        }
+      },
+      {
+        "at": 2.696399,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 61
+        }
+      },
+      {
+        "at": 2.738327,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 62
+        }
+      },
+      {
+        "at": 2.780128,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 63
+        }
+      },
+      {
+        "at": 2.818144,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 64
+        }
+      },
+      {
+        "at": 2.871099,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 65
+        }
+      },
+      {
+        "at": 2.912773,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 66
+        }
+      },
+      {
+        "at": 2.954433,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 67
+        }
+      },
+      {
+        "at": 2.991809,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 68
+        }
+      },
+      {
+        "at": 3.044986,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 69
+        }
+      },
+      {
+        "at": 3.086913,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 70
+        }
+      },
+      {
+        "at": 3.128559,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 71
+        }
+      },
+      {
+        "at": 3.166111,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 72
+        }
+      },
+      {
+        "at": 3.218979,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 73
+        }
+      },
+      {
+        "at": 3.260665,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 74
+        }
+      },
+      {
+        "at": 3.302337,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 75
+        }
+      },
+      {
+        "at": 3.339999,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 76
+        }
+      },
+      {
+        "at": 3.393607,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 77
+        }
+      },
+      {
+        "at": 3.435445,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 78
+        }
+      },
+      {
+        "at": 3.477218,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 79
+        }
+      },
+      {
+        "at": 3.514366,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 80
+        }
+      },
+      {
+        "at": 3.569022,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 81
+        }
+      },
+      {
+        "at": 3.611296,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 82
+        }
+      },
+      {
+        "at": 3.653006,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 83
+        }
+      },
+      {
+        "at": 3.690651,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 84
+        }
+      },
+      {
+        "at": 3.743689,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 85
+        }
+      },
+      {
+        "at": 3.785557,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 86
+        }
+      },
+      {
+        "at": 3.827399,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 87
+        }
+      },
+      {
+        "at": 3.864873,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 88
+        }
+      },
+      {
+        "at": 3.917927,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 89
+        }
+      },
+      {
+        "at": 3.959495,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 90
+        }
+      },
+      {
+        "at": 4.00112,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 91
+        }
+      },
+      {
+        "at": 4.038742,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 92
+        }
+      },
+      {
+        "at": 4.091835,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 93
+        }
+      },
+      {
+        "at": 4.133041,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 94
+        }
+      },
+      {
+        "at": 4.174465,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 95
+        }
+      },
+      {
+        "at": 4.211516,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 96
+        }
+      },
+      {
+        "at": 4.264209,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 97
+        }
+      },
+      {
+        "at": 4.30617,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 98
+        }
+      },
+      {
+        "at": 4.465427,
+        "data": {
+          "type": "response.reasoning_summary_text.done",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "summary_index": 0,
+          "text": " about the request: I need to call file_info exactly once with path \"panel/package.json\". I'll do exactly that.",
+          "sequence_number": 99
+        }
+      },
+      {
+        "at": 4.465488,
+        "data": {
+          "type": "response.output_text.done",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "content_index": 0,
+          "text": "",
+          "sequence_number": 100
+        }
+      },
+      {
+        "at": 4.465529,
+        "data": {
+          "type": "response.content_part.done",
+          "item_id": "item_388fbe3f1dee",
+          "output_index": 0,
+          "content_index": 0,
+          "part": {
+            "type": "output_text",
+            "text": "",
+            "annotations": []
+          },
+          "sequence_number": 101
+        }
+      },
+      {
+        "at": 4.465542,
+        "data": {
+          "type": "response.output_item.done",
+          "output_index": 0,
+          "item": {
+            "id": "item_388fbe3f1dee",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "",
+                "annotations": []
+              }
+            ]
+          },
+          "sequence_number": 102
+        }
+      },
+      {
+        "at": 4.465617,
+        "data": {
+          "type": "response.output_item.added",
+          "output_index": 1,
+          "item": {
+            "id": "fc_7b7282b923fd",
+            "type": "function_call",
+            "status": "in_progress",
+            "call_id": "call_9cec9fc1",
+            "name": "file_info",
+            "arguments": ""
+          },
+          "sequence_number": 103
+        }
+      },
+      {
+        "at": 4.465639,
+        "data": {
+          "type": "response.function_call_arguments.delta",
+          "item_id": "fc_7b7282b923fd",
+          "output_index": 1,
+          "delta": "{\"path\": \"panel/",
+          "sequence_number": 104
+        }
+      },
+      {
+        "at": 4.465709,
+        "data": {
+          "type": "response.function_call_arguments.delta",
+          "item_id": "fc_7b7282b923fd",
+          "output_index": 1,
+          "delta": "package.json\"}",
+          "sequence_number": 105
+        }
+      },
+      {
+        "at": 4.465729,
+        "data": {
+          "type": "response.function_call_arguments.done",
+          "item_id": "fc_7b7282b923fd",
+          "output_index": 1,
+          "arguments": "{\"path\": \"panel/package.json\"}",
+          "sequence_number": 106
+        }
+      },
+      {
+        "at": 4.465841,
+        "data": {
+          "type": "response.output_item.done",
+          "output_index": 1,
+          "item": {
+            "id": "fc_7b7282b923fd",
+            "type": "function_call",
+            "status": "completed",
+            "call_id": "call_9cec9fc1",
+            "name": "file_info",
+            "arguments": "{\"path\": \"panel/package.json\"}"
+          },
+          "sequence_number": 107
+        }
+      },
+      {
+        "at": 4.465876,
+        "data": {
+          "type": "response.completed",
+          "response": {
+            "id": "resp_ffe34b667499",
+            "object": "response",
+            "created_at": 1784463890,
+            "status": "completed",
+            "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+            "output_text": "",
+            "output": [
+              {
+                "id": "item_388fbe3f1dee",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "",
+                    "annotations": []
+                  }
+                ]
+              },
+              {
+                "id": "fc_7b7282b923fd",
+                "type": "function_call",
+                "status": "completed",
+                "call_id": "call_9cec9fc1",
+                "name": "file_info",
+                "arguments": "{\"path\": \"panel/package.json\"}"
+              },
+              {
+                "id": "rs_5b686c04307d",
+                "type": "reasoning",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "reasoning",
+                    "text": " about the request: I need to call file_info exactly once with path \"panel/package.json\". I'll do exactly that."
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 262,
+              "output_tokens": 73,
+              "total_tokens": 335,
+              "input_tokens_details": {
+                "cached_tokens": 261,
+                "cache_detail": "paged+dsv4"
+              }
+            }
+          },
+          "sequence_number": 108
+        }
+      }
+    ]
+  },
+  "greedy_2": {
+    "temperature": 0.0,
+    "summary": {
+      "reasoning": " about the request: I need to call file_info exactly once with path \"panel/package.json\". I'll do exactly that.",
+      "content": "",
+      "reasoning_delta_count": 26,
+      "content_delta_count": 0,
+      "functions": [
+        {
+          "id": "fc_772b0078cf78",
+          "type": "function_call",
+          "status": "completed",
+          "call_id": "call_4a5fb636",
+          "name": "file_info",
+          "arguments": "{\"path\": \"panel/package.json\"}"
+        }
+      ],
+      "terminals": [
+        "response.completed"
+      ],
+      "terminal": {
+        "id": "resp_030559d62357",
+        "object": "response",
+        "created_at": 1784463895,
+        "status": "completed",
+        "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+        "output_text": "",
+        "output": [
+          {
+            "id": "item_04e79d78f8d2",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "",
+                "annotations": []
+              }
+            ]
+          },
+          {
+            "id": "fc_772b0078cf78",
+            "type": "function_call",
+            "status": "completed",
+            "call_id": "call_4a5fb636",
+            "name": "file_info",
+            "arguments": "{\"path\": \"panel/package.json\"}"
+          },
+          {
+            "id": "rs_6aadf9164f31",
+            "type": "reasoning",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "reasoning",
+                "text": " about the request: I need to call file_info exactly once with path \"panel/package.json\". I'll do exactly that."
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 262,
+          "output_tokens": 73,
+          "total_tokens": 335,
+          "input_tokens_details": {
+            "cached_tokens": 261,
+            "cache_detail": "paged+dsv4"
+          }
+        }
+      }
+    },
+    "events": [
+      {
+        "at": 0.021439,
+        "data": {
+          "type": "response.created",
+          "response": {
+            "id": "resp_030559d62357",
+            "object": "response",
+            "created_at": 1784463895,
+            "status": "in_progress",
+            "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+            "output": []
+          },
+          "sequence_number": 0
+        }
+      },
+      {
+        "at": 0.021472,
+        "data": {
+          "type": "response.output_item.added",
+          "output_index": 0,
+          "item": {
+            "id": "item_04e79d78f8d2",
+            "type": "message",
+            "status": "in_progress",
+            "role": "assistant",
+            "content": []
+          },
+          "sequence_number": 1
+        }
+      },
+      {
+        "at": 0.021489,
+        "data": {
+          "type": "response.content_part.added",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "content_index": 0,
+          "part": {
+            "type": "output_text",
+            "text": "",
+            "annotations": []
+          },
+          "sequence_number": 2
+        }
+      },
+      {
+        "at": 0.171773,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " about",
+          "sequence_number": 3
+        }
+      },
+      {
+        "at": 0.171805,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 4
+        }
+      },
+      {
+        "at": 0.270666,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " the",
+          "sequence_number": 5
+        }
+      },
+      {
+        "at": 0.270696,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 6
+        }
+      },
+      {
+        "at": 0.32384,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " request",
+          "sequence_number": 7
+        }
+      },
+      {
+        "at": 0.323876,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 8
+        }
+      },
+      {
+        "at": 0.36561,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": ":",
+          "sequence_number": 9
+        }
+      },
+      {
+        "at": 0.365649,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 10
+        }
+      },
+      {
+        "at": 0.406884,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " I",
+          "sequence_number": 11
+        }
+      },
+      {
+        "at": 0.406923,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 12
+        }
+      },
+      {
+        "at": 0.44455,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " need",
+          "sequence_number": 13
+        }
+      },
+      {
+        "at": 0.44458,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 14
+        }
+      },
+      {
+        "at": 0.496864,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " to",
+          "sequence_number": 15
+        }
+      },
+      {
+        "at": 0.496913,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 16
+        }
+      },
+      {
+        "at": 0.53847,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " call",
+          "sequence_number": 17
+        }
+      },
+      {
+        "at": 0.538525,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 18
+        }
+      },
+      {
+        "at": 0.579816,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " file",
+          "sequence_number": 19
+        }
+      },
+      {
+        "at": 0.579856,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 20
+        }
+      },
+      {
+        "at": 0.617634,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "_info",
+          "sequence_number": 21
+        }
+      },
+      {
+        "at": 0.617712,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 22
+        }
+      },
+      {
+        "at": 0.670411,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " exactly",
+          "sequence_number": 23
+        }
+      },
+      {
+        "at": 0.670455,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 24
+        }
+      },
+      {
+        "at": 0.711852,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " once",
+          "sequence_number": 25
+        }
+      },
+      {
+        "at": 0.711919,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 26
+        }
+      },
+      {
+        "at": 0.753274,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " with",
+          "sequence_number": 27
+        }
+      },
+      {
+        "at": 0.753315,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 28
+        }
+      },
+      {
+        "at": 0.791041,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " path",
+          "sequence_number": 29
+        }
+      },
+      {
+        "at": 0.791086,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 30
+        }
+      },
+      {
+        "at": 0.843605,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " \"",
+          "sequence_number": 31
+        }
+      },
+      {
+        "at": 0.843662,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 32
+        }
+      },
+      {
+        "at": 0.884989,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "panel",
+          "sequence_number": 33
+        }
+      },
+      {
+        "at": 0.885042,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 34
+        }
+      },
+      {
+        "at": 0.926541,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "/",
+          "sequence_number": 35
+        }
+      },
+      {
+        "at": 0.926594,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 36
+        }
+      },
+      {
+        "at": 0.963945,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "package",
+          "sequence_number": 37
+        }
+      },
+      {
+        "at": 0.964,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 38
+        }
+      },
+      {
+        "at": 1.017029,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": ".json",
+          "sequence_number": 39
+        }
+      },
+      {
+        "at": 1.017086,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 40
+        }
+      },
+      {
+        "at": 1.106611,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "\".",
+          "sequence_number": 41
+        }
+      },
+      {
+        "at": 1.106678,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 42
+        }
+      },
+      {
+        "at": 1.14848,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " I",
+          "sequence_number": 43
+        }
+      },
+      {
+        "at": 1.148538,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 44
+        }
+      },
+      {
+        "at": 1.186204,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "'ll",
+          "sequence_number": 45
+        }
+      },
+      {
+        "at": 1.186254,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 46
+        }
+      },
+      {
+        "at": 1.239447,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " do",
+          "sequence_number": 47
+        }
+      },
+      {
+        "at": 1.239506,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 48
+        }
+      },
+      {
+        "at": 1.281722,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " exactly",
+          "sequence_number": 49
+        }
+      },
+      {
+        "at": 1.281765,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 50
+        }
+      },
+      {
+        "at": 1.324244,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " that",
+          "sequence_number": 51
+        }
+      },
+      {
+        "at": 1.324287,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 52
+        }
+      },
+      {
+        "at": 1.362319,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": ".",
+          "sequence_number": 53
+        }
+      },
+      {
+        "at": 1.36236,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 54
+        }
+      },
+      {
+        "at": 1.498794,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 55
+        }
+      },
+      {
+        "at": 1.536393,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 56
+        }
+      },
+      {
+        "at": 1.589187,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 57
+        }
+      },
+      {
+        "at": 1.630821,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 58
+        }
+      },
+      {
+        "at": 1.672161,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 59
+        }
+      },
+      {
+        "at": 1.709637,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 60
+        }
+      },
+      {
+        "at": 1.762452,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 61
+        }
+      },
+      {
+        "at": 1.804071,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 62
+        }
+      },
+      {
+        "at": 1.845822,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 63
+        }
+      },
+      {
+        "at": 1.883655,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 64
+        }
+      },
+      {
+        "at": 1.936934,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 65
+        }
+      },
+      {
+        "at": 1.978774,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 66
+        }
+      },
+      {
+        "at": 2.020616,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 67
+        }
+      },
+      {
+        "at": 2.058219,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 68
+        }
+      },
+      {
+        "at": 2.111201,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 69
+        }
+      },
+      {
+        "at": 2.153016,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 70
+        }
+      },
+      {
+        "at": 2.194996,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 71
+        }
+      },
+      {
+        "at": 2.232621,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 72
+        }
+      },
+      {
+        "at": 2.286693,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 73
+        }
+      },
+      {
+        "at": 2.328598,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 74
+        }
+      },
+      {
+        "at": 2.370612,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 75
+        }
+      },
+      {
+        "at": 2.408132,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 76
+        }
+      },
+      {
+        "at": 2.461178,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 77
+        }
+      },
+      {
+        "at": 2.503105,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 78
+        }
+      },
+      {
+        "at": 2.54482,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 79
+        }
+      },
+      {
+        "at": 2.58221,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 80
+        }
+      },
+      {
+        "at": 2.635893,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 81
+        }
+      },
+      {
+        "at": 2.677819,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 82
+        }
+      },
+      {
+        "at": 2.719598,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 83
+        }
+      },
+      {
+        "at": 2.757094,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 84
+        }
+      },
+      {
+        "at": 2.810092,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 85
+        }
+      },
+      {
+        "at": 2.852054,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 86
+        }
+      },
+      {
+        "at": 2.894308,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 87
+        }
+      },
+      {
+        "at": 2.931872,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 88
+        }
+      },
+      {
+        "at": 2.984764,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 89
+        }
+      },
+      {
+        "at": 3.02757,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 90
+        }
+      },
+      {
+        "at": 3.069372,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 91
+        }
+      },
+      {
+        "at": 3.10682,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 92
+        }
+      },
+      {
+        "at": 3.159626,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 93
+        }
+      },
+      {
+        "at": 3.201253,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 94
+        }
+      },
+      {
+        "at": 3.242983,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 95
+        }
+      },
+      {
+        "at": 3.28061,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 96
+        }
+      },
+      {
+        "at": 3.334033,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 97
+        }
+      },
+      {
+        "at": 3.37686,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 98
+        }
+      },
+      {
+        "at": 3.536421,
+        "data": {
+          "type": "response.reasoning_summary_text.done",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "summary_index": 0,
+          "text": " about the request: I need to call file_info exactly once with path \"panel/package.json\". I'll do exactly that.",
+          "sequence_number": 99
+        }
+      },
+      {
+        "at": 3.53648,
+        "data": {
+          "type": "response.output_text.done",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "content_index": 0,
+          "text": "",
+          "sequence_number": 100
+        }
+      },
+      {
+        "at": 3.53651,
+        "data": {
+          "type": "response.content_part.done",
+          "item_id": "item_04e79d78f8d2",
+          "output_index": 0,
+          "content_index": 0,
+          "part": {
+            "type": "output_text",
+            "text": "",
+            "annotations": []
+          },
+          "sequence_number": 101
+        }
+      },
+      {
+        "at": 3.536535,
+        "data": {
+          "type": "response.output_item.done",
+          "output_index": 0,
+          "item": {
+            "id": "item_04e79d78f8d2",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "",
+                "annotations": []
+              }
+            ]
+          },
+          "sequence_number": 102
+        }
+      },
+      {
+        "at": 3.536588,
+        "data": {
+          "type": "response.output_item.added",
+          "output_index": 1,
+          "item": {
+            "id": "fc_772b0078cf78",
+            "type": "function_call",
+            "status": "in_progress",
+            "call_id": "call_4a5fb636",
+            "name": "file_info",
+            "arguments": ""
+          },
+          "sequence_number": 103
+        }
+      },
+      {
+        "at": 3.53662,
+        "data": {
+          "type": "response.function_call_arguments.delta",
+          "item_id": "fc_772b0078cf78",
+          "output_index": 1,
+          "delta": "{\"path\": \"panel/",
+          "sequence_number": 104
+        }
+      },
+      {
+        "at": 3.536677,
+        "data": {
+          "type": "response.function_call_arguments.delta",
+          "item_id": "fc_772b0078cf78",
+          "output_index": 1,
+          "delta": "package.json\"}",
+          "sequence_number": 105
+        }
+      },
+      {
+        "at": 3.536697,
+        "data": {
+          "type": "response.function_call_arguments.done",
+          "item_id": "fc_772b0078cf78",
+          "output_index": 1,
+          "arguments": "{\"path\": \"panel/package.json\"}",
+          "sequence_number": 106
+        }
+      },
+      {
+        "at": 3.536806,
+        "data": {
+          "type": "response.output_item.done",
+          "output_index": 1,
+          "item": {
+            "id": "fc_772b0078cf78",
+            "type": "function_call",
+            "status": "completed",
+            "call_id": "call_4a5fb636",
+            "name": "file_info",
+            "arguments": "{\"path\": \"panel/package.json\"}"
+          },
+          "sequence_number": 107
+        }
+      },
+      {
+        "at": 3.53684,
+        "data": {
+          "type": "response.completed",
+          "response": {
+            "id": "resp_030559d62357",
+            "object": "response",
+            "created_at": 1784463895,
+            "status": "completed",
+            "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+            "output_text": "",
+            "output": [
+              {
+                "id": "item_04e79d78f8d2",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "",
+                    "annotations": []
+                  }
+                ]
+              },
+              {
+                "id": "fc_772b0078cf78",
+                "type": "function_call",
+                "status": "completed",
+                "call_id": "call_4a5fb636",
+                "name": "file_info",
+                "arguments": "{\"path\": \"panel/package.json\"}"
+              },
+              {
+                "id": "rs_6aadf9164f31",
+                "type": "reasoning",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "reasoning",
+                    "text": " about the request: I need to call file_info exactly once with path \"panel/package.json\". I'll do exactly that."
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 262,
+              "output_tokens": 73,
+              "total_tokens": 335,
+              "input_tokens_details": {
+                "cached_tokens": 261,
+                "cache_detail": "paged+dsv4"
+              }
+            }
+          },
+          "sequence_number": 108
+        }
+      }
+    ]
+  },
+  "greedy_3": {
+    "temperature": 0.0,
+    "summary": {
+      "reasoning": " about the request: I need to call file_info exactly once with path \"panel/package.json\". I'll do exactly that.",
+      "content": "",
+      "reasoning_delta_count": 26,
+      "content_delta_count": 0,
+      "functions": [
+        {
+          "id": "fc_d7dfd9633901",
+          "type": "function_call",
+          "status": "completed",
+          "call_id": "call_3e2d9ad9",
+          "name": "file_info",
+          "arguments": "{\"path\": \"panel/package.json\"}"
+        }
+      ],
+      "terminals": [
+        "response.completed"
+      ],
+      "terminal": {
+        "id": "resp_f07e4ad757b3",
+        "object": "response",
+        "created_at": 1784463898,
+        "status": "completed",
+        "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+        "output_text": "",
+        "output": [
+          {
+            "id": "item_a9076c6dea06",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "",
+                "annotations": []
+              }
+            ]
+          },
+          {
+            "id": "fc_d7dfd9633901",
+            "type": "function_call",
+            "status": "completed",
+            "call_id": "call_3e2d9ad9",
+            "name": "file_info",
+            "arguments": "{\"path\": \"panel/package.json\"}"
+          },
+          {
+            "id": "rs_8fd94a6f9855",
+            "type": "reasoning",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "reasoning",
+                "text": " about the request: I need to call file_info exactly once with path \"panel/package.json\". I'll do exactly that."
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 262,
+          "output_tokens": 73,
+          "total_tokens": 335,
+          "input_tokens_details": {
+            "cached_tokens": 261,
+            "cache_detail": "paged+dsv4"
+          }
+        }
+      }
+    },
+    "events": [
+      {
+        "at": 0.022188,
+        "data": {
+          "type": "response.created",
+          "response": {
+            "id": "resp_f07e4ad757b3",
+            "object": "response",
+            "created_at": 1784463898,
+            "status": "in_progress",
+            "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+            "output": []
+          },
+          "sequence_number": 0
+        }
+      },
+      {
+        "at": 0.022205,
+        "data": {
+          "type": "response.output_item.added",
+          "output_index": 0,
+          "item": {
+            "id": "item_a9076c6dea06",
+            "type": "message",
+            "status": "in_progress",
+            "role": "assistant",
+            "content": []
+          },
+          "sequence_number": 1
+        }
+      },
+      {
+        "at": 0.022213,
+        "data": {
+          "type": "response.content_part.added",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "content_index": 0,
+          "part": {
+            "type": "output_text",
+            "text": "",
+            "annotations": []
+          },
+          "sequence_number": 2
+        }
+      },
+      {
+        "at": 0.177857,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " about",
+          "sequence_number": 3
+        }
+      },
+      {
+        "at": 0.177886,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 4
+        }
+      },
+      {
+        "at": 0.277383,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " the",
+          "sequence_number": 5
+        }
+      },
+      {
+        "at": 0.277421,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 6
+        }
+      },
+      {
+        "at": 0.330224,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " request",
+          "sequence_number": 7
+        }
+      },
+      {
+        "at": 0.330251,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 8
+        }
+      },
+      {
+        "at": 0.372975,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": ":",
+          "sequence_number": 9
+        }
+      },
+      {
+        "at": 0.372997,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 10
+        }
+      },
+      {
+        "at": 0.414698,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " I",
+          "sequence_number": 11
+        }
+      },
+      {
+        "at": 0.414723,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 12
+        }
+      },
+      {
+        "at": 0.452604,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " need",
+          "sequence_number": 13
+        }
+      },
+      {
+        "at": 0.452687,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 14
+        }
+      },
+      {
+        "at": 0.50569,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " to",
+          "sequence_number": 15
+        }
+      },
+      {
+        "at": 0.505755,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 16
+        }
+      },
+      {
+        "at": 0.54783,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " call",
+          "sequence_number": 17
+        }
+      },
+      {
+        "at": 0.547883,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 18
+        }
+      },
+      {
+        "at": 0.590501,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " file",
+          "sequence_number": 19
+        }
+      },
+      {
+        "at": 0.590549,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 20
+        }
+      },
+      {
+        "at": 0.628109,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "_info",
+          "sequence_number": 21
+        }
+      },
+      {
+        "at": 0.628165,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 22
+        }
+      },
+      {
+        "at": 0.681603,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " exactly",
+          "sequence_number": 23
+        }
+      },
+      {
+        "at": 0.68166,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 24
+        }
+      },
+      {
+        "at": 0.723281,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " once",
+          "sequence_number": 25
+        }
+      },
+      {
+        "at": 0.723352,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 26
+        }
+      },
+      {
+        "at": 0.76489,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " with",
+          "sequence_number": 27
+        }
+      },
+      {
+        "at": 0.76495,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 28
+        }
+      },
+      {
+        "at": 0.802863,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " path",
+          "sequence_number": 29
+        }
+      },
+      {
+        "at": 0.802919,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 30
+        }
+      },
+      {
+        "at": 0.855526,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " \"",
+          "sequence_number": 31
+        }
+      },
+      {
+        "at": 0.855583,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 32
+        }
+      },
+      {
+        "at": 0.897001,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "panel",
+          "sequence_number": 33
+        }
+      },
+      {
+        "at": 0.897056,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 34
+        }
+      },
+      {
+        "at": 0.938412,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "/",
+          "sequence_number": 35
+        }
+      },
+      {
+        "at": 0.938457,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 36
+        }
+      },
+      {
+        "at": 0.975424,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "package",
+          "sequence_number": 37
+        }
+      },
+      {
+        "at": 0.975488,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 38
+        }
+      },
+      {
+        "at": 1.028262,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": ".json",
+          "sequence_number": 39
+        }
+      },
+      {
+        "at": 1.028307,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 40
+        }
+      },
+      {
+        "at": 1.070192,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "\".",
+          "sequence_number": 41
+        }
+      },
+      {
+        "at": 1.07026,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 42
+        }
+      },
+      {
+        "at": 1.112222,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " I",
+          "sequence_number": 43
+        }
+      },
+      {
+        "at": 1.112281,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 44
+        }
+      },
+      {
+        "at": 1.149826,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "'ll",
+          "sequence_number": 45
+        }
+      },
+      {
+        "at": 1.149874,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 46
+        }
+      },
+      {
+        "at": 1.202339,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " do",
+          "sequence_number": 47
+        }
+      },
+      {
+        "at": 1.202391,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 48
+        }
+      },
+      {
+        "at": 1.243504,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " exactly",
+          "sequence_number": 49
+        }
+      },
+      {
+        "at": 1.243558,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 50
+        }
+      },
+      {
+        "at": 1.285056,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " that",
+          "sequence_number": 51
+        }
+      },
+      {
+        "at": 1.285121,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 52
+        }
+      },
+      {
+        "at": 1.322877,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": ".",
+          "sequence_number": 53
+        }
+      },
+      {
+        "at": 1.32293,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 54
+        }
+      },
+      {
+        "at": 1.45918,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 55
+        }
+      },
+      {
+        "at": 1.496994,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 56
+        }
+      },
+      {
+        "at": 1.549791,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 57
+        }
+      },
+      {
+        "at": 1.591473,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 58
+        }
+      },
+      {
+        "at": 1.633165,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 59
+        }
+      },
+      {
+        "at": 1.670719,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 60
+        }
+      },
+      {
+        "at": 1.72406,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 61
+        }
+      },
+      {
+        "at": 1.766037,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 62
+        }
+      },
+      {
+        "at": 1.807894,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 63
+        }
+      },
+      {
+        "at": 1.845689,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 64
+        }
+      },
+      {
+        "at": 1.898509,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 65
+        }
+      },
+      {
+        "at": 1.940167,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 66
+        }
+      },
+      {
+        "at": 1.981509,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 67
+        }
+      },
+      {
+        "at": 2.019186,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 68
+        }
+      },
+      {
+        "at": 2.072267,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 69
+        }
+      },
+      {
+        "at": 2.114106,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 70
+        }
+      },
+      {
+        "at": 2.155797,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 71
+        }
+      },
+      {
+        "at": 2.193945,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 72
+        }
+      },
+      {
+        "at": 2.246995,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 73
+        }
+      },
+      {
+        "at": 2.288959,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 74
+        }
+      },
+      {
+        "at": 2.331269,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 75
+        }
+      },
+      {
+        "at": 2.369501,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 76
+        }
+      },
+      {
+        "at": 2.422989,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 77
+        }
+      },
+      {
+        "at": 2.4649,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 78
+        }
+      },
+      {
+        "at": 2.507826,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 79
+        }
+      },
+      {
+        "at": 2.573921,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 80
+        }
+      },
+      {
+        "at": 2.628879,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 81
+        }
+      },
+      {
+        "at": 2.671362,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 82
+        }
+      },
+      {
+        "at": 2.713392,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 83
+        }
+      },
+      {
+        "at": 2.751,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 84
+        }
+      },
+      {
+        "at": 2.80443,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 85
+        }
+      },
+      {
+        "at": 2.846331,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 86
+        }
+      },
+      {
+        "at": 2.888274,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 87
+        }
+      },
+      {
+        "at": 2.92601,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 88
+        }
+      },
+      {
+        "at": 2.97935,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 89
+        }
+      },
+      {
+        "at": 3.021132,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 90
+        }
+      },
+      {
+        "at": 3.063789,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 91
+        }
+      },
+      {
+        "at": 3.102221,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 92
+        }
+      },
+      {
+        "at": 3.15588,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 93
+        }
+      },
+      {
+        "at": 3.198103,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 94
+        }
+      },
+      {
+        "at": 3.240264,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 95
+        }
+      },
+      {
+        "at": 3.278087,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 96
+        }
+      },
+      {
+        "at": 3.331877,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 97
+        }
+      },
+      {
+        "at": 3.374232,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 98
+        }
+      },
+      {
+        "at": 3.534825,
+        "data": {
+          "type": "response.reasoning_summary_text.done",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "summary_index": 0,
+          "text": " about the request: I need to call file_info exactly once with path \"panel/package.json\". I'll do exactly that.",
+          "sequence_number": 99
+        }
+      },
+      {
+        "at": 3.534864,
+        "data": {
+          "type": "response.output_text.done",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "content_index": 0,
+          "text": "",
+          "sequence_number": 100
+        }
+      },
+      {
+        "at": 3.534911,
+        "data": {
+          "type": "response.content_part.done",
+          "item_id": "item_a9076c6dea06",
+          "output_index": 0,
+          "content_index": 0,
+          "part": {
+            "type": "output_text",
+            "text": "",
+            "annotations": []
+          },
+          "sequence_number": 101
+        }
+      },
+      {
+        "at": 3.534929,
+        "data": {
+          "type": "response.output_item.done",
+          "output_index": 0,
+          "item": {
+            "id": "item_a9076c6dea06",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "",
+                "annotations": []
+              }
+            ]
+          },
+          "sequence_number": 102
+        }
+      },
+      {
+        "at": 3.53501,
+        "data": {
+          "type": "response.output_item.added",
+          "output_index": 1,
+          "item": {
+            "id": "fc_d7dfd9633901",
+            "type": "function_call",
+            "status": "in_progress",
+            "call_id": "call_3e2d9ad9",
+            "name": "file_info",
+            "arguments": ""
+          },
+          "sequence_number": 103
+        }
+      },
+      {
+        "at": 3.535026,
+        "data": {
+          "type": "response.function_call_arguments.delta",
+          "item_id": "fc_d7dfd9633901",
+          "output_index": 1,
+          "delta": "{\"path\": \"panel/",
+          "sequence_number": 104
+        }
+      },
+      {
+        "at": 3.535095,
+        "data": {
+          "type": "response.function_call_arguments.delta",
+          "item_id": "fc_d7dfd9633901",
+          "output_index": 1,
+          "delta": "package.json\"}",
+          "sequence_number": 105
+        }
+      },
+      {
+        "at": 3.535116,
+        "data": {
+          "type": "response.function_call_arguments.done",
+          "item_id": "fc_d7dfd9633901",
+          "output_index": 1,
+          "arguments": "{\"path\": \"panel/package.json\"}",
+          "sequence_number": 106
+        }
+      },
+      {
+        "at": 3.535235,
+        "data": {
+          "type": "response.output_item.done",
+          "output_index": 1,
+          "item": {
+            "id": "fc_d7dfd9633901",
+            "type": "function_call",
+            "status": "completed",
+            "call_id": "call_3e2d9ad9",
+            "name": "file_info",
+            "arguments": "{\"path\": \"panel/package.json\"}"
+          },
+          "sequence_number": 107
+        }
+      },
+      {
+        "at": 3.535261,
+        "data": {
+          "type": "response.completed",
+          "response": {
+            "id": "resp_f07e4ad757b3",
+            "object": "response",
+            "created_at": 1784463898,
+            "status": "completed",
+            "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+            "output_text": "",
+            "output": [
+              {
+                "id": "item_a9076c6dea06",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "",
+                    "annotations": []
+                  }
+                ]
+              },
+              {
+                "id": "fc_d7dfd9633901",
+                "type": "function_call",
+                "status": "completed",
+                "call_id": "call_3e2d9ad9",
+                "name": "file_info",
+                "arguments": "{\"path\": \"panel/package.json\"}"
+              },
+              {
+                "id": "rs_8fd94a6f9855",
+                "type": "reasoning",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "reasoning",
+                    "text": " about the request: I need to call file_info exactly once with path \"panel/package.json\". I'll do exactly that."
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 262,
+              "output_tokens": 73,
+              "total_tokens": 335,
+              "input_tokens_details": {
+                "cached_tokens": 261,
+                "cache_detail": "paged+dsv4"
+              }
+            }
+          },
+          "sequence_number": 108
+        }
+      }
+    ]
+  },
+  "bundle_default_1": {
+    "temperature": 0.6,
+    "summary": {
+      "reasoning": " about...\n\nThe user wants me to call file_info exactly once with path \"panel/package.json\". I'll do exactly that.",
+      "content": "",
+      "reasoning_delta_count": 26,
+      "content_delta_count": 0,
+      "functions": [
+        {
+          "id": "fc_56e4e8c6fcd6",
+          "type": "function_call",
+          "status": "completed",
+          "call_id": "call_3aa87d8f",
+          "name": "file_info",
+          "arguments": "{\"path\": \"panel/panel/package.json\"}"
+        }
+      ],
+      "terminals": [
+        "response.completed"
+      ],
+      "terminal": {
+        "id": "resp_e75e58ffe8a2",
+        "object": "response",
+        "created_at": 1784463902,
+        "status": "completed",
+        "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+        "output_text": "",
+        "output": [
+          {
+            "id": "item_02827b9917f9",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "",
+                "annotations": []
+              }
+            ]
+          },
+          {
+            "id": "fc_56e4e8c6fcd6",
+            "type": "function_call",
+            "status": "completed",
+            "call_id": "call_3aa87d8f",
+            "name": "file_info",
+            "arguments": "{\"path\": \"panel/panel/package.json\"}"
+          },
+          {
+            "id": "rs_cb4c3ffb3106",
+            "type": "reasoning",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "reasoning",
+                "text": " about...\n\nThe user wants me to call file_info exactly once with path \"panel/package.json\". I'll do exactly that."
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 262,
+          "output_tokens": 75,
+          "total_tokens": 337,
+          "input_tokens_details": {
+            "cached_tokens": 261,
+            "cache_detail": "paged+dsv4"
+          }
+        }
+      }
+    },
+    "events": [
+      {
+        "at": 0.02206,
+        "data": {
+          "type": "response.created",
+          "response": {
+            "id": "resp_e75e58ffe8a2",
+            "object": "response",
+            "created_at": 1784463902,
+            "status": "in_progress",
+            "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+            "output": []
+          },
+          "sequence_number": 0
+        }
+      },
+      {
+        "at": 0.022091,
+        "data": {
+          "type": "response.output_item.added",
+          "output_index": 0,
+          "item": {
+            "id": "item_02827b9917f9",
+            "type": "message",
+            "status": "in_progress",
+            "role": "assistant",
+            "content": []
+          },
+          "sequence_number": 1
+        }
+      },
+      {
+        "at": 0.022106,
+        "data": {
+          "type": "response.content_part.added",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "content_index": 0,
+          "part": {
+            "type": "output_text",
+            "text": "",
+            "annotations": []
+          },
+          "sequence_number": 2
+        }
+      },
+      {
+        "at": 0.228454,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " about",
+          "sequence_number": 3
+        }
+      },
+      {
+        "at": 0.228497,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 4
+        }
+      },
+      {
+        "at": 0.320136,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "...\n\n",
+          "sequence_number": 5
+        }
+      },
+      {
+        "at": 0.320167,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 6
+        }
+      },
+      {
+        "at": 0.377815,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "The",
+          "sequence_number": 7
+        }
+      },
+      {
+        "at": 0.377841,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 8
+        }
+      },
+      {
+        "at": 0.422105,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " user",
+          "sequence_number": 9
+        }
+      },
+      {
+        "at": 0.422141,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 10
+        }
+      },
+      {
+        "at": 0.467276,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " wants",
+          "sequence_number": 11
+        }
+      },
+      {
+        "at": 0.46731,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 12
+        }
+      },
+      {
+        "at": 0.506519,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " me",
+          "sequence_number": 13
+        }
+      },
+      {
+        "at": 0.506571,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 14
+        }
+      },
+      {
+        "at": 0.565174,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " to",
+          "sequence_number": 15
+        }
+      },
+      {
+        "at": 0.56522,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 16
+        }
+      },
+      {
+        "at": 0.609496,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " call",
+          "sequence_number": 17
+        }
+      },
+      {
+        "at": 0.609556,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 18
+        }
+      },
+      {
+        "at": 0.653674,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " file",
+          "sequence_number": 19
+        }
+      },
+      {
+        "at": 0.653722,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 20
+        }
+      },
+      {
+        "at": 0.692721,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "_info",
+          "sequence_number": 21
+        }
+      },
+      {
+        "at": 0.692777,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 22
+        }
+      },
+      {
+        "at": 0.751173,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " exactly",
+          "sequence_number": 23
+        }
+      },
+      {
+        "at": 0.751225,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 24
+        }
+      },
+      {
+        "at": 0.795801,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " once",
+          "sequence_number": 25
+        }
+      },
+      {
+        "at": 0.795845,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 26
+        }
+      },
+      {
+        "at": 0.840051,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " with",
+          "sequence_number": 27
+        }
+      },
+      {
+        "at": 0.840103,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 28
+        }
+      },
+      {
+        "at": 0.879483,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " path",
+          "sequence_number": 29
+        }
+      },
+      {
+        "at": 0.879551,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 30
+        }
+      },
+      {
+        "at": 0.937502,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " \"",
+          "sequence_number": 31
+        }
+      },
+      {
+        "at": 0.937551,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 32
+        }
+      },
+      {
+        "at": 0.981574,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "panel",
+          "sequence_number": 33
+        }
+      },
+      {
+        "at": 0.981613,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 34
+        }
+      },
+      {
+        "at": 1.026166,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "/",
+          "sequence_number": 35
+        }
+      },
+      {
+        "at": 1.026228,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 36
+        }
+      },
+      {
+        "at": 1.065414,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "package",
+          "sequence_number": 37
+        }
+      },
+      {
+        "at": 1.065454,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 38
+        }
+      },
+      {
+        "at": 1.124148,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": ".json",
+          "sequence_number": 39
+        }
+      },
+      {
+        "at": 1.1242,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 40
+        }
+      },
+      {
+        "at": 1.168563,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "\".",
+          "sequence_number": 41
+        }
+      },
+      {
+        "at": 1.168618,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 42
+        }
+      },
+      {
+        "at": 1.213367,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " I",
+          "sequence_number": 43
+        }
+      },
+      {
+        "at": 1.213404,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 44
+        }
+      },
+      {
+        "at": 1.25241,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "'ll",
+          "sequence_number": 45
+        }
+      },
+      {
+        "at": 1.252458,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 46
+        }
+      },
+      {
+        "at": 1.311103,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " do",
+          "sequence_number": 47
+        }
+      },
+      {
+        "at": 1.311174,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 48
+        }
+      },
+      {
+        "at": 1.355269,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " exactly",
+          "sequence_number": 49
+        }
+      },
+      {
+        "at": 1.355317,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 50
+        }
+      },
+      {
+        "at": 1.399527,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " that",
+          "sequence_number": 51
+        }
+      },
+      {
+        "at": 1.399577,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 52
+        }
+      },
+      {
+        "at": 1.4387,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": ".",
+          "sequence_number": 53
+        }
+      },
+      {
+        "at": 1.438757,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 54
+        }
+      },
+      {
+        "at": 1.586696,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 55
+        }
+      },
+      {
+        "at": 1.626903,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 56
+        }
+      },
+      {
+        "at": 1.685047,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 57
+        }
+      },
+      {
+        "at": 1.729231,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 58
+        }
+      },
+      {
+        "at": 1.773683,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 59
+        }
+      },
+      {
+        "at": 1.813121,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 60
+        }
+      },
+      {
+        "at": 1.871442,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 61
+        }
+      },
+      {
+        "at": 1.916337,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 62
+        }
+      },
+      {
+        "at": 1.961062,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 63
+        }
+      },
+      {
+        "at": 2.000161,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 64
+        }
+      },
+      {
+        "at": 2.059399,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 65
+        }
+      },
+      {
+        "at": 2.103873,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 66
+        }
+      },
+      {
+        "at": 2.148575,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 67
+        }
+      },
+      {
+        "at": 2.188279,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 68
+        }
+      },
+      {
+        "at": 2.246643,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 69
+        }
+      },
+      {
+        "at": 2.291306,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 70
+        }
+      },
+      {
+        "at": 2.336218,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 71
+        }
+      },
+      {
+        "at": 2.376317,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 72
+        }
+      },
+      {
+        "at": 2.434762,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 73
+        }
+      },
+      {
+        "at": 2.479047,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 74
+        }
+      },
+      {
+        "at": 2.523942,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 75
+        }
+      },
+      {
+        "at": 2.563266,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 76
+        }
+      },
+      {
+        "at": 2.624142,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 77
+        }
+      },
+      {
+        "at": 2.668858,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 78
+        }
+      },
+      {
+        "at": 2.713482,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 79
+        }
+      },
+      {
+        "at": 2.752441,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 80
+        }
+      },
+      {
+        "at": 2.811323,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 81
+        }
+      },
+      {
+        "at": 2.856139,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 82
+        }
+      },
+      {
+        "at": 2.900683,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 83
+        }
+      },
+      {
+        "at": 2.940266,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 84
+        }
+      },
+      {
+        "at": 2.999065,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 85
+        }
+      },
+      {
+        "at": 3.043989,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 86
+        }
+      },
+      {
+        "at": 3.088444,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 87
+        }
+      },
+      {
+        "at": 3.12763,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 88
+        }
+      },
+      {
+        "at": 3.186966,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 89
+        }
+      },
+      {
+        "at": 3.231573,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 90
+        }
+      },
+      {
+        "at": 3.275739,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 91
+        }
+      },
+      {
+        "at": 3.314741,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 92
+        }
+      },
+      {
+        "at": 3.373766,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 93
+        }
+      },
+      {
+        "at": 3.418409,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 94
+        }
+      },
+      {
+        "at": 3.46281,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 95
+        }
+      },
+      {
+        "at": 3.501969,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 96
+        }
+      },
+      {
+        "at": 3.560761,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 97
+        }
+      },
+      {
+        "at": 3.605799,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 98
+        }
+      },
+      {
+        "at": 3.650382,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 99
+        }
+      },
+      {
+        "at": 3.689786,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 100
+        }
+      },
+      {
+        "at": 3.863305,
+        "data": {
+          "type": "response.reasoning_summary_text.done",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "summary_index": 0,
+          "text": " about...\n\nThe user wants me to call file_info exactly once with path \"panel/package.json\". I'll do exactly that.",
+          "sequence_number": 101
+        }
+      },
+      {
+        "at": 3.863356,
+        "data": {
+          "type": "response.output_text.done",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "content_index": 0,
+          "text": "",
+          "sequence_number": 102
+        }
+      },
+      {
+        "at": 3.86338,
+        "data": {
+          "type": "response.content_part.done",
+          "item_id": "item_02827b9917f9",
+          "output_index": 0,
+          "content_index": 0,
+          "part": {
+            "type": "output_text",
+            "text": "",
+            "annotations": []
+          },
+          "sequence_number": 103
+        }
+      },
+      {
+        "at": 3.863404,
+        "data": {
+          "type": "response.output_item.done",
+          "output_index": 0,
+          "item": {
+            "id": "item_02827b9917f9",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "",
+                "annotations": []
+              }
+            ]
+          },
+          "sequence_number": 104
+        }
+      },
+      {
+        "at": 3.863511,
+        "data": {
+          "type": "response.output_item.added",
+          "output_index": 1,
+          "item": {
+            "id": "fc_56e4e8c6fcd6",
+            "type": "function_call",
+            "status": "in_progress",
+            "call_id": "call_3aa87d8f",
+            "name": "file_info",
+            "arguments": ""
+          },
+          "sequence_number": 105
+        }
+      },
+      {
+        "at": 3.86353,
+        "data": {
+          "type": "response.function_call_arguments.delta",
+          "item_id": "fc_56e4e8c6fcd6",
+          "output_index": 1,
+          "delta": "{\"path\": \"panel/",
+          "sequence_number": 106
+        }
+      },
+      {
+        "at": 3.863606,
+        "data": {
+          "type": "response.function_call_arguments.delta",
+          "item_id": "fc_56e4e8c6fcd6",
+          "output_index": 1,
+          "delta": "panel/package.js",
+          "sequence_number": 107
+        }
+      },
+      {
+        "at": 3.863624,
+        "data": {
+          "type": "response.function_call_arguments.delta",
+          "item_id": "fc_56e4e8c6fcd6",
+          "output_index": 1,
+          "delta": "on\"}",
+          "sequence_number": 108
+        }
+      },
+      {
+        "at": 3.863742,
+        "data": {
+          "type": "response.function_call_arguments.done",
+          "item_id": "fc_56e4e8c6fcd6",
+          "output_index": 1,
+          "arguments": "{\"path\": \"panel/panel/package.json\"}",
+          "sequence_number": 109
+        }
+      },
+      {
+        "at": 3.863766,
+        "data": {
+          "type": "response.output_item.done",
+          "output_index": 1,
+          "item": {
+            "id": "fc_56e4e8c6fcd6",
+            "type": "function_call",
+            "status": "completed",
+            "call_id": "call_3aa87d8f",
+            "name": "file_info",
+            "arguments": "{\"path\": \"panel/panel/package.json\"}"
+          },
+          "sequence_number": 110
+        }
+      },
+      {
+        "at": 3.863904,
+        "data": {
+          "type": "response.completed",
+          "response": {
+            "id": "resp_e75e58ffe8a2",
+            "object": "response",
+            "created_at": 1784463902,
+            "status": "completed",
+            "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+            "output_text": "",
+            "output": [
+              {
+                "id": "item_02827b9917f9",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "",
+                    "annotations": []
+                  }
+                ]
+              },
+              {
+                "id": "fc_56e4e8c6fcd6",
+                "type": "function_call",
+                "status": "completed",
+                "call_id": "call_3aa87d8f",
+                "name": "file_info",
+                "arguments": "{\"path\": \"panel/panel/package.json\"}"
+              },
+              {
+                "id": "rs_cb4c3ffb3106",
+                "type": "reasoning",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "reasoning",
+                    "text": " about...\n\nThe user wants me to call file_info exactly once with path \"panel/package.json\". I'll do exactly that."
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 262,
+              "output_tokens": 75,
+              "total_tokens": 337,
+              "input_tokens_details": {
+                "cached_tokens": 261,
+                "cache_detail": "paged+dsv4"
+              }
+            }
+          },
+          "sequence_number": 111
+        }
+      }
+    ]
+  },
+  "bundle_default_2": {
+    "temperature": 0.6,
+    "summary": {
+      "reasoning": " about...\n\nThe user wants me to call file_info exactly once with path \"panel/package.json\". I'll do exactly that.",
+      "content": "",
+      "reasoning_delta_count": 26,
+      "content_delta_count": 0,
+      "functions": [
+        {
+          "id": "fc_74641f229650",
+          "type": "function_call",
+          "status": "completed",
+          "call_id": "call_0a34f689",
+          "name": "file_info",
+          "arguments": "{\"path\": \"panel/panel/package.json\"}"
+        }
+      ],
+      "terminals": [
+        "response.completed"
+      ],
+      "terminal": {
+        "id": "resp_4ca47ad112d6",
+        "object": "response",
+        "created_at": 1784463906,
+        "status": "completed",
+        "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+        "output_text": "",
+        "output": [
+          {
+            "id": "item_f59f5934e93b",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "",
+                "annotations": []
+              }
+            ]
+          },
+          {
+            "id": "fc_74641f229650",
+            "type": "function_call",
+            "status": "completed",
+            "call_id": "call_0a34f689",
+            "name": "file_info",
+            "arguments": "{\"path\": \"panel/panel/package.json\"}"
+          },
+          {
+            "id": "rs_ceae9fcaaa71",
+            "type": "reasoning",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "reasoning",
+                "text": " about...\n\nThe user wants me to call file_info exactly once with path \"panel/package.json\". I'll do exactly that."
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 262,
+          "output_tokens": 75,
+          "total_tokens": 337,
+          "input_tokens_details": {
+            "cached_tokens": 261,
+            "cache_detail": "paged+dsv4"
+          }
+        }
+      }
+    },
+    "events": [
+      {
+        "at": 0.02202,
+        "data": {
+          "type": "response.created",
+          "response": {
+            "id": "resp_4ca47ad112d6",
+            "object": "response",
+            "created_at": 1784463906,
+            "status": "in_progress",
+            "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+            "output": []
+          },
+          "sequence_number": 0
+        }
+      },
+      {
+        "at": 0.022041,
+        "data": {
+          "type": "response.output_item.added",
+          "output_index": 0,
+          "item": {
+            "id": "item_f59f5934e93b",
+            "type": "message",
+            "status": "in_progress",
+            "role": "assistant",
+            "content": []
+          },
+          "sequence_number": 1
+        }
+      },
+      {
+        "at": 0.02205,
+        "data": {
+          "type": "response.content_part.added",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "content_index": 0,
+          "part": {
+            "type": "output_text",
+            "text": "",
+            "annotations": []
+          },
+          "sequence_number": 2
+        }
+      },
+      {
+        "at": 0.195551,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " about",
+          "sequence_number": 3
+        }
+      },
+      {
+        "at": 0.195589,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 4
+        }
+      },
+      {
+        "at": 0.288512,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "...\n\n",
+          "sequence_number": 5
+        }
+      },
+      {
+        "at": 0.288568,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 6
+        }
+      },
+      {
+        "at": 0.346986,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "The",
+          "sequence_number": 7
+        }
+      },
+      {
+        "at": 0.347015,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 8
+        }
+      },
+      {
+        "at": 0.391019,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " user",
+          "sequence_number": 9
+        }
+      },
+      {
+        "at": 0.391047,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 10
+        }
+      },
+      {
+        "at": 0.435738,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " wants",
+          "sequence_number": 11
+        }
+      },
+      {
+        "at": 0.435768,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 12
+        }
+      },
+      {
+        "at": 0.475319,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " me",
+          "sequence_number": 13
+        }
+      },
+      {
+        "at": 0.475352,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 14
+        }
+      },
+      {
+        "at": 0.53336,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " to",
+          "sequence_number": 15
+        }
+      },
+      {
+        "at": 0.533414,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 16
+        }
+      },
+      {
+        "at": 0.577469,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " call",
+          "sequence_number": 17
+        }
+      },
+      {
+        "at": 0.577547,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 18
+        }
+      },
+      {
+        "at": 0.621586,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " file",
+          "sequence_number": 19
+        }
+      },
+      {
+        "at": 0.621641,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 20
+        }
+      },
+      {
+        "at": 0.6612,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "_info",
+          "sequence_number": 21
+        }
+      },
+      {
+        "at": 0.661242,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 22
+        }
+      },
+      {
+        "at": 0.719488,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " exactly",
+          "sequence_number": 23
+        }
+      },
+      {
+        "at": 0.71954,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 24
+        }
+      },
+      {
+        "at": 0.763799,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " once",
+          "sequence_number": 25
+        }
+      },
+      {
+        "at": 0.763861,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 26
+        }
+      },
+      {
+        "at": 0.808199,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " with",
+          "sequence_number": 27
+        }
+      },
+      {
+        "at": 0.808256,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 28
+        }
+      },
+      {
+        "at": 0.847452,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " path",
+          "sequence_number": 29
+        }
+      },
+      {
+        "at": 0.847518,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 30
+        }
+      },
+      {
+        "at": 0.90595,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " \"",
+          "sequence_number": 31
+        }
+      },
+      {
+        "at": 0.906003,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 32
+        }
+      },
+      {
+        "at": 0.950978,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "panel",
+          "sequence_number": 33
+        }
+      },
+      {
+        "at": 0.951029,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 34
+        }
+      },
+      {
+        "at": 0.995515,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "/",
+          "sequence_number": 35
+        }
+      },
+      {
+        "at": 0.995567,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 36
+        }
+      },
+      {
+        "at": 1.035134,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "package",
+          "sequence_number": 37
+        }
+      },
+      {
+        "at": 1.035204,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 38
+        }
+      },
+      {
+        "at": 1.096519,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": ".json",
+          "sequence_number": 39
+        }
+      },
+      {
+        "at": 1.096556,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 40
+        }
+      },
+      {
+        "at": 1.141228,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "\".",
+          "sequence_number": 41
+        }
+      },
+      {
+        "at": 1.141273,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 42
+        }
+      },
+      {
+        "at": 1.185894,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " I",
+          "sequence_number": 43
+        }
+      },
+      {
+        "at": 1.185935,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 44
+        }
+      },
+      {
+        "at": 1.225365,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "'ll",
+          "sequence_number": 45
+        }
+      },
+      {
+        "at": 1.225413,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 46
+        }
+      },
+      {
+        "at": 1.285152,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " do",
+          "sequence_number": 47
+        }
+      },
+      {
+        "at": 1.285212,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 48
+        }
+      },
+      {
+        "at": 1.32962,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " exactly",
+          "sequence_number": 49
+        }
+      },
+      {
+        "at": 1.329663,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 50
+        }
+      },
+      {
+        "at": 1.374296,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " that",
+          "sequence_number": 51
+        }
+      },
+      {
+        "at": 1.374343,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 52
+        }
+      },
+      {
+        "at": 1.413579,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": ".",
+          "sequence_number": 53
+        }
+      },
+      {
+        "at": 1.413634,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 54
+        }
+      },
+      {
+        "at": 1.56044,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 55
+        }
+      },
+      {
+        "at": 1.599866,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 56
+        }
+      },
+      {
+        "at": 1.658797,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 57
+        }
+      },
+      {
+        "at": 1.703721,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 58
+        }
+      },
+      {
+        "at": 1.748415,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 59
+        }
+      },
+      {
+        "at": 1.787522,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 60
+        }
+      },
+      {
+        "at": 1.846281,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 61
+        }
+      },
+      {
+        "at": 1.890307,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 62
+        }
+      },
+      {
+        "at": 1.935751,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 63
+        }
+      },
+      {
+        "at": 1.976043,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 64
+        }
+      },
+      {
+        "at": 2.034271,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 65
+        }
+      },
+      {
+        "at": 2.079027,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 66
+        }
+      },
+      {
+        "at": 2.123517,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 67
+        }
+      },
+      {
+        "at": 2.162993,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 68
+        }
+      },
+      {
+        "at": 2.222063,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 69
+        }
+      },
+      {
+        "at": 2.267,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 70
+        }
+      },
+      {
+        "at": 2.311541,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 71
+        }
+      },
+      {
+        "at": 2.351461,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 72
+        }
+      },
+      {
+        "at": 2.410622,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 73
+        }
+      },
+      {
+        "at": 2.455112,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 74
+        }
+      },
+      {
+        "at": 2.499709,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 75
+        }
+      },
+      {
+        "at": 2.539748,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 76
+        }
+      },
+      {
+        "at": 2.598949,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 77
+        }
+      },
+      {
+        "at": 2.643335,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 78
+        }
+      },
+      {
+        "at": 2.688114,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 79
+        }
+      },
+      {
+        "at": 2.727564,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 80
+        }
+      },
+      {
+        "at": 2.786561,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 81
+        }
+      },
+      {
+        "at": 2.831126,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 82
+        }
+      },
+      {
+        "at": 2.875677,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 83
+        }
+      },
+      {
+        "at": 2.91463,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 84
+        }
+      },
+      {
+        "at": 2.974078,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 85
+        }
+      },
+      {
+        "at": 3.019152,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 86
+        }
+      },
+      {
+        "at": 3.063639,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 87
+        }
+      },
+      {
+        "at": 3.103249,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 88
+        }
+      },
+      {
+        "at": 3.162475,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 89
+        }
+      },
+      {
+        "at": 3.207958,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 90
+        }
+      },
+      {
+        "at": 3.252637,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 91
+        }
+      },
+      {
+        "at": 3.292173,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 92
+        }
+      },
+      {
+        "at": 3.351154,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 93
+        }
+      },
+      {
+        "at": 3.396235,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 94
+        }
+      },
+      {
+        "at": 3.441735,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 95
+        }
+      },
+      {
+        "at": 3.481073,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 96
+        }
+      },
+      {
+        "at": 3.540084,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 97
+        }
+      },
+      {
+        "at": 3.584971,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 98
+        }
+      },
+      {
+        "at": 3.629917,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 99
+        }
+      },
+      {
+        "at": 3.668881,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 100
+        }
+      },
+      {
+        "at": 3.84722,
+        "data": {
+          "type": "response.reasoning_summary_text.done",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "summary_index": 0,
+          "text": " about...\n\nThe user wants me to call file_info exactly once with path \"panel/package.json\". I'll do exactly that.",
+          "sequence_number": 101
+        }
+      },
+      {
+        "at": 3.84727,
+        "data": {
+          "type": "response.output_text.done",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "content_index": 0,
+          "text": "",
+          "sequence_number": 102
+        }
+      },
+      {
+        "at": 3.847291,
+        "data": {
+          "type": "response.content_part.done",
+          "item_id": "item_f59f5934e93b",
+          "output_index": 0,
+          "content_index": 0,
+          "part": {
+            "type": "output_text",
+            "text": "",
+            "annotations": []
+          },
+          "sequence_number": 103
+        }
+      },
+      {
+        "at": 3.847311,
+        "data": {
+          "type": "response.output_item.done",
+          "output_index": 0,
+          "item": {
+            "id": "item_f59f5934e93b",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "",
+                "annotations": []
+              }
+            ]
+          },
+          "sequence_number": 104
+        }
+      },
+      {
+        "at": 3.847388,
+        "data": {
+          "type": "response.output_item.added",
+          "output_index": 1,
+          "item": {
+            "id": "fc_74641f229650",
+            "type": "function_call",
+            "status": "in_progress",
+            "call_id": "call_0a34f689",
+            "name": "file_info",
+            "arguments": ""
+          },
+          "sequence_number": 105
+        }
+      },
+      {
+        "at": 3.847416,
+        "data": {
+          "type": "response.function_call_arguments.delta",
+          "item_id": "fc_74641f229650",
+          "output_index": 1,
+          "delta": "{\"path\": \"panel/",
+          "sequence_number": 106
+        }
+      },
+      {
+        "at": 3.847475,
+        "data": {
+          "type": "response.function_call_arguments.delta",
+          "item_id": "fc_74641f229650",
+          "output_index": 1,
+          "delta": "panel/package.js",
+          "sequence_number": 107
+        }
+      },
+      {
+        "at": 3.847491,
+        "data": {
+          "type": "response.function_call_arguments.delta",
+          "item_id": "fc_74641f229650",
+          "output_index": 1,
+          "delta": "on\"}",
+          "sequence_number": 108
+        }
+      },
+      {
+        "at": 3.847577,
+        "data": {
+          "type": "response.function_call_arguments.done",
+          "item_id": "fc_74641f229650",
+          "output_index": 1,
+          "arguments": "{\"path\": \"panel/panel/package.json\"}",
+          "sequence_number": 109
+        }
+      },
+      {
+        "at": 3.847613,
+        "data": {
+          "type": "response.output_item.done",
+          "output_index": 1,
+          "item": {
+            "id": "fc_74641f229650",
+            "type": "function_call",
+            "status": "completed",
+            "call_id": "call_0a34f689",
+            "name": "file_info",
+            "arguments": "{\"path\": \"panel/panel/package.json\"}"
+          },
+          "sequence_number": 110
+        }
+      },
+      {
+        "at": 3.847705,
+        "data": {
+          "type": "response.completed",
+          "response": {
+            "id": "resp_4ca47ad112d6",
+            "object": "response",
+            "created_at": 1784463906,
+            "status": "completed",
+            "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+            "output_text": "",
+            "output": [
+              {
+                "id": "item_f59f5934e93b",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "",
+                    "annotations": []
+                  }
+                ]
+              },
+              {
+                "id": "fc_74641f229650",
+                "type": "function_call",
+                "status": "completed",
+                "call_id": "call_0a34f689",
+                "name": "file_info",
+                "arguments": "{\"path\": \"panel/panel/package.json\"}"
+              },
+              {
+                "id": "rs_ceae9fcaaa71",
+                "type": "reasoning",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "reasoning",
+                    "text": " about...\n\nThe user wants me to call file_info exactly once with path \"panel/package.json\". I'll do exactly that."
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 262,
+              "output_tokens": 75,
+              "total_tokens": 337,
+              "input_tokens_details": {
+                "cached_tokens": 261,
+                "cache_detail": "paged+dsv4"
+              }
+            }
+          },
+          "sequence_number": 111
+        }
+      }
+    ]
+  },
+  "bundle_default_3": {
+    "temperature": 0.6,
+    "summary": {
+      "reasoning": " about...\n\nThe user wants me to call file_info exactly once with path \"panel/package.json\". I'll do exactly that.",
+      "content": "",
+      "reasoning_delta_count": 26,
+      "content_delta_count": 0,
+      "functions": [
+        {
+          "id": "fc_2da0355070d4",
+          "type": "function_call",
+          "status": "completed",
+          "call_id": "call_6fda2eb6",
+          "name": "file_info",
+          "arguments": "{\"path\": \"panel/panel/package.json\"}"
+        }
+      ],
+      "terminals": [
+        "response.completed"
+      ],
+      "terminal": {
+        "id": "resp_b12b575c3ba5",
+        "object": "response",
+        "created_at": 1784463910,
+        "status": "completed",
+        "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+        "output_text": "",
+        "output": [
+          {
+            "id": "item_93cfb0b2fad4",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "",
+                "annotations": []
+              }
+            ]
+          },
+          {
+            "id": "fc_2da0355070d4",
+            "type": "function_call",
+            "status": "completed",
+            "call_id": "call_6fda2eb6",
+            "name": "file_info",
+            "arguments": "{\"path\": \"panel/panel/package.json\"}"
+          },
+          {
+            "id": "rs_172568a706b6",
+            "type": "reasoning",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "reasoning",
+                "text": " about...\n\nThe user wants me to call file_info exactly once with path \"panel/package.json\". I'll do exactly that."
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 262,
+          "output_tokens": 75,
+          "total_tokens": 337,
+          "input_tokens_details": {
+            "cached_tokens": 261,
+            "cache_detail": "paged+dsv4"
+          }
+        }
+      }
+    },
+    "events": [
+      {
+        "at": 0.021047,
+        "data": {
+          "type": "response.created",
+          "response": {
+            "id": "resp_b12b575c3ba5",
+            "object": "response",
+            "created_at": 1784463910,
+            "status": "in_progress",
+            "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+            "output": []
+          },
+          "sequence_number": 0
+        }
+      },
+      {
+        "at": 0.02107,
+        "data": {
+          "type": "response.output_item.added",
+          "output_index": 0,
+          "item": {
+            "id": "item_93cfb0b2fad4",
+            "type": "message",
+            "status": "in_progress",
+            "role": "assistant",
+            "content": []
+          },
+          "sequence_number": 1
+        }
+      },
+      {
+        "at": 0.021081,
+        "data": {
+          "type": "response.content_part.added",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "content_index": 0,
+          "part": {
+            "type": "output_text",
+            "text": "",
+            "annotations": []
+          },
+          "sequence_number": 2
+        }
+      },
+      {
+        "at": 0.191268,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " about",
+          "sequence_number": 3
+        }
+      },
+      {
+        "at": 0.191308,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 4
+        }
+      },
+      {
+        "at": 0.2854,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "...\n\n",
+          "sequence_number": 5
+        }
+      },
+      {
+        "at": 0.285445,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 6
+        }
+      },
+      {
+        "at": 0.343945,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "The",
+          "sequence_number": 7
+        }
+      },
+      {
+        "at": 0.343978,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 8
+        }
+      },
+      {
+        "at": 0.387776,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " user",
+          "sequence_number": 9
+        }
+      },
+      {
+        "at": 0.387795,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 10
+        }
+      },
+      {
+        "at": 0.432143,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " wants",
+          "sequence_number": 11
+        }
+      },
+      {
+        "at": 0.432181,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 12
+        }
+      },
+      {
+        "at": 0.472071,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " me",
+          "sequence_number": 13
+        }
+      },
+      {
+        "at": 0.472137,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 14
+        }
+      },
+      {
+        "at": 0.530617,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " to",
+          "sequence_number": 15
+        }
+      },
+      {
+        "at": 0.530695,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 16
+        }
+      },
+      {
+        "at": 0.574949,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " call",
+          "sequence_number": 17
+        }
+      },
+      {
+        "at": 0.574985,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 18
+        }
+      },
+      {
+        "at": 0.619137,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " file",
+          "sequence_number": 19
+        }
+      },
+      {
+        "at": 0.619202,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 20
+        }
+      },
+      {
+        "at": 0.658577,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "_info",
+          "sequence_number": 21
+        }
+      },
+      {
+        "at": 0.658616,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 22
+        }
+      },
+      {
+        "at": 0.717762,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " exactly",
+          "sequence_number": 23
+        }
+      },
+      {
+        "at": 0.717796,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 24
+        }
+      },
+      {
+        "at": 0.761853,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " once",
+          "sequence_number": 25
+        }
+      },
+      {
+        "at": 0.761901,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 26
+        }
+      },
+      {
+        "at": 0.80625,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " with",
+          "sequence_number": 27
+        }
+      },
+      {
+        "at": 0.806283,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 28
+        }
+      },
+      {
+        "at": 0.845568,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " path",
+          "sequence_number": 29
+        }
+      },
+      {
+        "at": 0.84561,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 30
+        }
+      },
+      {
+        "at": 0.904123,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " \"",
+          "sequence_number": 31
+        }
+      },
+      {
+        "at": 0.904177,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 32
+        }
+      },
+      {
+        "at": 0.948432,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "panel",
+          "sequence_number": 33
+        }
+      },
+      {
+        "at": 0.948474,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 34
+        }
+      },
+      {
+        "at": 0.993033,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "/",
+          "sequence_number": 35
+        }
+      },
+      {
+        "at": 0.993079,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 36
+        }
+      },
+      {
+        "at": 1.031952,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "package",
+          "sequence_number": 37
+        }
+      },
+      {
+        "at": 1.032002,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 38
+        }
+      },
+      {
+        "at": 1.091006,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": ".json",
+          "sequence_number": 39
+        }
+      },
+      {
+        "at": 1.091049,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 40
+        }
+      },
+      {
+        "at": 1.13611,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "\".",
+          "sequence_number": 41
+        }
+      },
+      {
+        "at": 1.136165,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 42
+        }
+      },
+      {
+        "at": 1.180695,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " I",
+          "sequence_number": 43
+        }
+      },
+      {
+        "at": 1.180754,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 44
+        }
+      },
+      {
+        "at": 1.220183,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": "'ll",
+          "sequence_number": 45
+        }
+      },
+      {
+        "at": 1.220226,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 46
+        }
+      },
+      {
+        "at": 1.334105,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " do",
+          "sequence_number": 47
+        }
+      },
+      {
+        "at": 1.33418,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 48
+        }
+      },
+      {
+        "at": 1.378954,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " exactly",
+          "sequence_number": 49
+        }
+      },
+      {
+        "at": 1.379016,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 50
+        }
+      },
+      {
+        "at": 1.423694,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": " that",
+          "sequence_number": 51
+        }
+      },
+      {
+        "at": 1.423752,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 52
+        }
+      },
+      {
+        "at": 1.462697,
+        "data": {
+          "type": "response.reasoning_summary_text.delta",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "delta": ".",
+          "sequence_number": 53
+        }
+      },
+      {
+        "at": 1.462762,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 54
+        }
+      },
+      {
+        "at": 1.61039,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 55
+        }
+      },
+      {
+        "at": 1.650178,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 56
+        }
+      },
+      {
+        "at": 1.709066,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 57
+        }
+      },
+      {
+        "at": 1.75365,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 58
+        }
+      },
+      {
+        "at": 1.798419,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 59
+        }
+      },
+      {
+        "at": 1.838149,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 60
+        }
+      },
+      {
+        "at": 1.897015,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 61
+        }
+      },
+      {
+        "at": 1.941423,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 62
+        }
+      },
+      {
+        "at": 1.985993,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 63
+        }
+      },
+      {
+        "at": 2.024758,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 64
+        }
+      },
+      {
+        "at": 2.084007,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 65
+        }
+      },
+      {
+        "at": 2.128748,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 66
+        }
+      },
+      {
+        "at": 2.17358,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 67
+        }
+      },
+      {
+        "at": 2.212974,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 68
+        }
+      },
+      {
+        "at": 2.271855,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 69
+        }
+      },
+      {
+        "at": 2.317031,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 70
+        }
+      },
+      {
+        "at": 2.361541,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 71
+        }
+      },
+      {
+        "at": 2.400786,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 72
+        }
+      },
+      {
+        "at": 2.45994,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 73
+        }
+      },
+      {
+        "at": 2.505516,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 74
+        }
+      },
+      {
+        "at": 2.551471,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 75
+        }
+      },
+      {
+        "at": 2.590859,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 76
+        }
+      },
+      {
+        "at": 2.649693,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 77
+        }
+      },
+      {
+        "at": 2.694513,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 78
+        }
+      },
+      {
+        "at": 2.739241,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 79
+        }
+      },
+      {
+        "at": 2.778746,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 80
+        }
+      },
+      {
+        "at": 2.837772,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 81
+        }
+      },
+      {
+        "at": 2.882327,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 82
+        }
+      },
+      {
+        "at": 2.927127,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 83
+        }
+      },
+      {
+        "at": 2.966268,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 84
+        }
+      },
+      {
+        "at": 3.024842,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 85
+        }
+      },
+      {
+        "at": 3.069373,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 86
+        }
+      },
+      {
+        "at": 3.114429,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 87
+        }
+      },
+      {
+        "at": 3.154547,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 88
+        }
+      },
+      {
+        "at": 3.213742,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 89
+        }
+      },
+      {
+        "at": 3.258607,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 90
+        }
+      },
+      {
+        "at": 3.303951,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 91
+        }
+      },
+      {
+        "at": 3.343435,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 92
+        }
+      },
+      {
+        "at": 3.402311,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 93
+        }
+      },
+      {
+        "at": 3.446633,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 94
+        }
+      },
+      {
+        "at": 3.491585,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 95
+        }
+      },
+      {
+        "at": 3.531226,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 96
+        }
+      },
+      {
+        "at": 3.590253,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 97
+        }
+      },
+      {
+        "at": 3.634911,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 98
+        }
+      },
+      {
+        "at": 3.679618,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 99
+        }
+      },
+      {
+        "at": 3.719085,
+        "data": {
+          "type": "response.heartbeat",
+          "tool_call_generating": true,
+          "sequence_number": 100
+        }
+      },
+      {
+        "at": 3.898923,
+        "data": {
+          "type": "response.reasoning_summary_text.done",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "summary_index": 0,
+          "text": " about...\n\nThe user wants me to call file_info exactly once with path \"panel/package.json\". I'll do exactly that.",
+          "sequence_number": 101
+        }
+      },
+      {
+        "at": 3.898976,
+        "data": {
+          "type": "response.output_text.done",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "content_index": 0,
+          "text": "",
+          "sequence_number": 102
+        }
+      },
+      {
+        "at": 3.899,
+        "data": {
+          "type": "response.content_part.done",
+          "item_id": "item_93cfb0b2fad4",
+          "output_index": 0,
+          "content_index": 0,
+          "part": {
+            "type": "output_text",
+            "text": "",
+            "annotations": []
+          },
+          "sequence_number": 103
+        }
+      },
+      {
+        "at": 3.899043,
+        "data": {
+          "type": "response.output_item.done",
+          "output_index": 0,
+          "item": {
+            "id": "item_93cfb0b2fad4",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "",
+                "annotations": []
+              }
+            ]
+          },
+          "sequence_number": 104
+        }
+      },
+      {
+        "at": 3.899137,
+        "data": {
+          "type": "response.output_item.added",
+          "output_index": 1,
+          "item": {
+            "id": "fc_2da0355070d4",
+            "type": "function_call",
+            "status": "in_progress",
+            "call_id": "call_6fda2eb6",
+            "name": "file_info",
+            "arguments": ""
+          },
+          "sequence_number": 105
+        }
+      },
+      {
+        "at": 3.899157,
+        "data": {
+          "type": "response.function_call_arguments.delta",
+          "item_id": "fc_2da0355070d4",
+          "output_index": 1,
+          "delta": "{\"path\": \"panel/",
+          "sequence_number": 106
+        }
+      },
+      {
+        "at": 3.899228,
+        "data": {
+          "type": "response.function_call_arguments.delta",
+          "item_id": "fc_2da0355070d4",
+          "output_index": 1,
+          "delta": "panel/package.js",
+          "sequence_number": 107
+        }
+      },
+      {
+        "at": 3.899245,
+        "data": {
+          "type": "response.function_call_arguments.delta",
+          "item_id": "fc_2da0355070d4",
+          "output_index": 1,
+          "delta": "on\"}",
+          "sequence_number": 108
+        }
+      },
+      {
+        "at": 3.899346,
+        "data": {
+          "type": "response.function_call_arguments.done",
+          "item_id": "fc_2da0355070d4",
+          "output_index": 1,
+          "arguments": "{\"path\": \"panel/panel/package.json\"}",
+          "sequence_number": 109
+        }
+      },
+      {
+        "at": 3.899387,
+        "data": {
+          "type": "response.output_item.done",
+          "output_index": 1,
+          "item": {
+            "id": "fc_2da0355070d4",
+            "type": "function_call",
+            "status": "completed",
+            "call_id": "call_6fda2eb6",
+            "name": "file_info",
+            "arguments": "{\"path\": \"panel/panel/package.json\"}"
+          },
+          "sequence_number": 110
+        }
+      },
+      {
+        "at": 3.899466,
+        "data": {
+          "type": "response.completed",
+          "response": {
+            "id": "resp_b12b575c3ba5",
+            "object": "response",
+            "created_at": 1784463910,
+            "status": "completed",
+            "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+            "output_text": "",
+            "output": [
+              {
+                "id": "item_93cfb0b2fad4",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "",
+                    "annotations": []
+                  }
+                ]
+              },
+              {
+                "id": "fc_2da0355070d4",
+                "type": "function_call",
+                "status": "completed",
+                "call_id": "call_6fda2eb6",
+                "name": "file_info",
+                "arguments": "{\"path\": \"panel/panel/package.json\"}"
+              },
+              {
+                "id": "rs_172568a706b6",
+                "type": "reasoning",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "reasoning",
+                    "text": " about...\n\nThe user wants me to call file_info exactly once with path \"panel/package.json\". I'll do exactly that."
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 262,
+              "output_tokens": 75,
+              "total_tokens": 337,
+              "input_tokens_details": {
+                "cached_tokens": 261,
+                "cache_detail": "paged+dsv4"
+              }
+            }
+          },
+          "sequence_number": 111
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,110 @@
+
+> vmlx@1.6.11 dev
+> electron-vite dev --remoteDebuggingPort 9335
+
+vite v5.4.21 building SSR bundle for development...
+transforming...
+✓ 91 modules transformed.
+[plugin:vite:reporter] [plugin vite:reporter]
+(!) /Users/eric/mlx/vllm-mlx/panel/src/main/sessions.ts is dynamically imported by /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/models.ts but also statically imported by /Users/eric/mlx/vllm-mlx/panel/src/main/api-gateway.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/index.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/benchmark.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/chat.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/developer.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/distributed.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/image.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/performance.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/sessions.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/utils.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/tray.ts, dynamic import will not move module into another chunk.
+
+rendering chunks...
+dist/main/index.mjs  1,005.21 kB
+✓ built in 407ms
+
+build the electron main process successfully
+
+-----
+
+vite v5.4.21 building SSR bundle for development...
+transforming...
+✓ 1 modules transformed.
+rendering chunks...
+dist/preload/index.js  23.34 kB
+✓ built in 8ms
+
+build the electron preload files successfully
+
+-----
+
+dev server running for the electron renderer process at:
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+
+start electron app...
+
+[STARTUP] Using vMLX userData override: /Users/eric/.vmlx-v1611-cachefix-dev
+
+DevTools listening on ws://127.0.0.1:9335/devtools/browser/2b0e4a0c-0d53-401d-9f86-5d4cefed616b
+[STARTUP] Restoring 0 App Sandbox bookmarks
+[STARTUP] No existing vmlx-engine processes found
+[MemoryEnforcer] Started (max 120 GB, poll 5000ms, TTL 30m)
+[gateway] Listening on 127.0.0.1:8081
+Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[Engine Manager] Checking installation...
+[Engine Manager] Checking installation...
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import vmlx_engine; print(vmlx_engine.__version__)
+    ^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'vmlx_engine'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'vmlx_engine'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'vmlx_engine'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import vmlx_engine; print(vmlx_engine.__version__)
+    ^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'vmlx_engine'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'vmlx_engine'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'vmlx_engine'
+[Engine Manager] Not installed
+[Engine Manager] Checking installation...
+[Engine Manager] Checking installation...
+[Engine Manager] Not installed
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import vmlx_engine; print(vmlx_engine.__version__)
+    ^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'vmlx_engine'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'vmlx_engine'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'vmlx_engine'
+[Engine Manager] Not installed
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import vmlx_engine; print(vmlx_engine.__version__)
+    ^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'vmlx_engine'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'vmlx_engine'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'vmlx_engine'
+[Engine Manager] Not installed
+[UPDATE] Fetched manifest from https://mlx.studio/update/latest.json: v1.6.11
+[UPDATE] Fetched manifest from https://raw.githubusercontent.com/jjang-ai/mlxstudio/main/latest.json: v1.6.11
+[UPDATE] Picked highest version across sources: v1.6.11
+[UPDATE] Selected native macOS download: https://github.com/jjang-ai/mlxstudio/releases/download/v1.6.11/vMLX-1.6.11-tahoe-arm64.dmg
+[UPDATE] Up to date (1.6.11)
+[MemoryEnforcer] Stopped
+[gateway] Stopped
+[QUIT] All vmlx-engine processes stopped
+[QUIT] Database closed
+[8212:0719/053327.883130:ERROR:command_buffer_proxy_impl.cc(319)] GPU state invalid after WaitForGetOffsetInRange.
+[8212:0719/053327.888545:ERROR:gpu_process_host.cc(993)] GPU process exited unexpectedly: exit_code=15
+[8212:0719/053327.891284:ERROR:network_service_instance_impl.cc(601)] Network service crashed, restarting service.

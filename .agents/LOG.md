@@ -1164,3 +1164,19 @@
   for both KV lanes with rotating metadata preserved. Focused tests pass 361/361.
 - Preserved screenshots, DB rows, health, both raw traces, and test output under
   `docs/internal/release-gates/20260719_gemma4_current_parser_stream/`.
+
+## 2026-07-19 - DSV4 current Auto/parser/restart/L2 proof
+
+- Pushed code commit `4e723f311` for the DSV4 Auto reasoning UI state.
+- Rejected one bad-PATH Electron relaunch as invalid evidence, then launched the
+  current app with the project venv; main logged the exact engine path.
+- Used the real Sessions Start button to load PID 8882 and visually confirmed Auto
+  selected after a full main-process restart.
+- Electron row 406: two separate reasoning rails, one exact real file-info call,
+  visible `The file size is 5.2 KB.`, no warning.
+- Health after the turn: two disk hits, 3,173 native DSV4 L2 block tokens, zero
+  generic TQ. Controlled raw Responses/Chat streams and clean terminals pass.
+- Retained marker mutation, path sensitivity, and weak-prompt hallucination as
+  PARTIAL; matched same-artifact reference-runtime A/B is still required.
+- Tests pass 329 Python + 100 panel + typecheck. Evidence preserved under
+  `docs/internal/release-gates/20260719_dsv4_current_parser_auto_stream/`.

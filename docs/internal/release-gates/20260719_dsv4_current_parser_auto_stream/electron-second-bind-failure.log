@@ -1,0 +1,40 @@
+
+> vmlx@1.6.11 dev
+> electron-vite dev --remoteDebuggingPort 9335
+
+vite v5.4.21 building SSR bundle for development...
+transforming...
+✓ 91 modules transformed.
+[plugin:vite:reporter] [plugin vite:reporter]
+(!) /Users/eric/mlx/vllm-mlx/panel/src/main/sessions.ts is dynamically imported by /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/models.ts but also statically imported by /Users/eric/mlx/vllm-mlx/panel/src/main/api-gateway.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/index.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/benchmark.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/chat.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/developer.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/distributed.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/image.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/performance.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/sessions.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/ipc/utils.ts, /Users/eric/mlx/vllm-mlx/panel/src/main/tray.ts, dynamic import will not move module into another chunk.
+
+rendering chunks...
+dist/main/index.mjs  1,005.21 kB
+✓ built in 354ms
+
+build the electron main process successfully
+
+-----
+
+vite v5.4.21 building SSR bundle for development...
+transforming...
+✓ 1 modules transformed.
+rendering chunks...
+dist/preload/index.js  23.34 kB
+✓ built in 9ms
+
+build the electron preload files successfully
+
+-----
+
+Port 5173 is in use, trying another one...
+dev server running for the electron renderer process at:
+
+  ➜  Local:   http://localhost:5174/
+  ➜  Network: use --host to expose
+
+start electron app...
+
+[STARTUP] Using vMLX userData override: /Users/eric/.vmlx-v1611-cachefix-dev
+[8640:0719/053152.401011:ERROR:socket_posix.cc(147)] bind() failed: Address already in use (48)
+[8640:0719/053152.401035:ERROR:devtools_http_handler.cc(311)] Cannot start http server for devtools.
