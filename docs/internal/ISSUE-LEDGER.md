@@ -2026,7 +2026,7 @@ remain open. No public release/notarization/feed mutation performed.
   and exact-finaled. Evidence:
   `docs/internal/release-gates/20260719_hy3_tq_decoder_warmup/`.
 - `MLLM-TQ-DECODER-FIRST-RESTORE-LATENCY`: `VERIFIED-LIVE` for current
-  Bonsai source, pending this ledger's scoped commit. The initial hook did not
+  Bonsai source on commit `727da2e44`. The initial hook did not
   cover `--is-mllm`; `_start_mllm` now warms the MLLM scheduler's real patched
   language-model cache owner on the same load/step worker. Electron Logs show
   exactly 16 q8 TurboQuant slots warmed and 48 ArraysCache companion slots
@@ -2041,10 +2041,51 @@ remain open. No public release/notarization/feed mutation performed.
 - `NONPAGED-PROMPT-DISK-L2-RESTORE`: `OPEN` (P1 cache-axis gate, Eric
   directive). With paged cache explicitly Off and prompt disk cache/L2 On, an
   exact prefix must still be indexed, found, restored, and reused across a
-  process restart. Prove a plain-KV representative and an
+  process restart. This gate also requires a non-zero partial-prefix match:
+  prove block-aligned partial reuse, prove only the unmatched tail is
+  recomputed, and prove the same partial boundary restores from L2 after a
+  process restart. Repeat the partial-prefix/block-reuse axis with paged cache
+  On where the representative architecture supports paged blocks, so exact
+  hits cannot mask a broken partial lookup or eviction/refault path. Prove a
+  plain-KV representative and an
   architecture-specific typed-cache representative through Electron UI -> DB
   -> argv -> health plus raw API streaming. The result must report prompt
-  `disk` reuse without fabricated paged/block hits. Explicit Off must persist.
+  `disk` reuse without fabricated paged/block hits when paged is Off, and must
+  report the actual reused-token/block boundary rather than only a generic
+  cache-hit label. Explicit Off must persist.
+- `NONPAGED-PROMPT-DISK-L2-RESTORE / PLAIN-FULL-KV`: `VERIFIED-LIVE` on
+  current source for MiniMax-M2.7-Small-JANGTQ. This is a text-only
+  `minimax_m2` bundle whose weights are JANGTQ/MXTQ (`JANGTQ2`, routed experts
+  2-bit and attention/shared/embed/head 8-bit); it is not JANG affine or base
+  MLX MXFP. The UI was set to Prefix On, Paged Off, Block L2 Off, Prompt Disk
+  On and stored-codec Auto. The saved preview and process argv contained
+  `--no-paged-cache --enable-disk-cache` with the dedicated prompt-cache
+  directory, and health selected q4 TurboQuant storage for its 62-layer plain
+  KV cache. Only this model remained loaded after the UI Start swap.
+- Electron PID 44250 wrote two durable q4 TQ-native prompt records. After UI
+  Stop/Start to PID 45185, a longer same-chat prompt restored 2,235/2,310
+  prompt tokens from the 2,236-token disk boundary, recomputed only the tail,
+  recalled the requested fact exactly, kept reasoning separate, and completed
+  with 0.88s TTFT. Logs report `matched 2236/2305`; health reports one prompt
+  disk hit and one TQ-native hit with zero paged/block-disk tokens.
+- Raw Responses independently wrote a 1,393-token boundary. After UI restart
+  to PID 45913, a longer request restored 1,392/1,458 input tokens, emitted
+  124 reasoning-summary deltas and 26 progressive content deltas, returned the
+  exact retained value, and emitted output-text done plus response completed.
+  After another UI restart to PID 46340, Chat Completions restored the same
+  boundary for a different longer turn (1,392/1,460), emitted 58 reasoning and
+  14 content deltas, returned the exact value, finished `stop`, and emitted
+  `[DONE]`. Evidence:
+  `docs/internal/release-gates/20260719_nonpaged_prompt_disk_partial/`.
+- This closes only the plain full-KV, paged-Off prompt-L2 subrow. The
+  architecture-specific typed-cache representative and the paged-On
+  block-aligned partial/eviction/refault rows remain `OPEN`; therefore the
+  parent gate and campaign/release status remain `PARTIAL`.
+- Current focused cache selection initially exposed one stale constructor-
+  bypass fixture: `test_scheduler_uses_minimax_m3_logits_sampler_for_msa_cache`
+  used `object.__new__(Scheduler)` without declaring the no-RAM/no-disk cache
+  state now read by snapshot admission. The fixture now explicitly sets both
+  cache backends to `None`; the same selection reran `107 passed`.
 - Focused current-source validation for the MLLM extension: 143 passed. The
   campaign/release status remains `PARTIAL`; no release action is authorized by
   these scoped rows.
