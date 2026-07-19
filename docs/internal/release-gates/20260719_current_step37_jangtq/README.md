@@ -50,12 +50,19 @@ discarded the base-image feature while prompt placeholders remained.
   check, preserving `[0]` and therefore the base image embedding.
 - `tests/test_step37_mlx_vlm_runtime.py:771-787` covers MLX and NumPy
   `array([0])` metadata.
+- `vmlx_engine/mllm_batch_generator.py::_paged_reconstruct_disk_source`
+  merges fetch-time L2 detection with lazy worker-side block refaults. This is
+  shared MLLM accounting, not a Step model-name branch.
+- The MLLM reconstruction path now applies that source before it creates
+  `cache_detail` and `last_cache_execution`, matching the text scheduler's
+  existing worker-side L2 accounting.
 - The temporary diagnostic was removed before verification; there is no
   production-only logging branch.
 
 ## Focused verification
 
-The current source passed 422 selected tests:
+The media fix first passed 422 selected tests. After the shared MLLM cache-tier
+accounting repair, the expanded current-source selection passed 513 tests:
 
 ```text
 tests/test_step37_mlx_vlm_runtime.py
@@ -69,7 +76,7 @@ tests/test_streaming_reasoning.py
 tests/test_step3p5_tool_parser.py
 tests/test_reasoning_tool_interaction.py
 
-422 passed, 2 warnings in 3.88s
+513 passed, 2 deselected, 2 warnings in 7.93s
 ```
 
 ## Live Electron image matrix
@@ -85,6 +92,8 @@ input. SQLite rows are sanitized in `assistant-rows.json`.
 | 464 | return image A | exact `VISION-A-7319` | 4,290 `paged+mixed_swa` | 2.38s | return-A reuse PASS; telemetry inconsistency retained |
 | 467 | real 4-second MP4 B | exact `VIDEO-B-8264` | cold | 55.21s | video transport/OCR/paint PASS; cold latency PARTIAL |
 | 470 | image A after visible Stop/Start | exact `VISION-A-7319` | 4,290 `paged+mixed_swa+disk` | 1.71s | process-restart L2 PASS |
+| 473 | image A after loading cache-detail fix | exact `VISION-A-7319` | 4,290 `paged+mixed_swa+disk` | 1.71s | process-cold L2 PASS |
+| 476 | immediate identical A, same process | exact `VISION-A-7319` | 4,290 `paged+mixed_swa+disk`; 68 worker disk blocks | 1.99s | lazy same-process L2 detail PASS |
 
 DOM observers recorded progressive final-answer paints. For example, row 470
 painted `V`, `VI`, `VIS`, through `VISION-A-7319`; it did not appear as one
@@ -119,11 +128,12 @@ Literal `curl -N` requests used actual PNG data URLs.
 2. `STEP-COLD-MEDIA-LATENCY`: PARTIAL. Image cold TTFT was 44.44-44.87s and
    video cold TTFT was 55.21s. Warm and disk restore are much faster, but the
    cold latency remains visible.
-3. `STEP-SAME-PROCESS-DISK-DETAIL`: FAIL telemetry. Row 464 increased aggregate
-   block-disk/TQ-native hit counters by 204 while the per-request
-   `last_cache_execution.disk_hit` stayed false and UI detail omitted `disk`.
-   The clean restart row correctly reported disk. The mixed-tier source field
-   needs an owning-layer audit.
+3. `STEP-SAME-PROCESS-DISK-DETAIL`: FIXED/VERIFIED-LIVE. Row 464 is retained as
+   the failure control: aggregate L2/TQ counters increased while per-request
+   detail omitted disk. Rows 473/476 on the shared fix both report
+   `paged+mixed_swa+disk`; row 476's `last_cache_execution` records
+   `disk_hit=true` and `disk_blocks=68` for the immediate same-process frugal
+   refault.
 4. `STEP-RESTART-PID-UI`: FAIL telemetry. After Electron Stop/Start, the model
    was healthy and the UI showed Stop, but the active header no longer displayed
    a PID.
@@ -150,6 +160,7 @@ Literal `curl -N` requests used actual PNG data URLs.
 - `step-current-video-b.png`
 - `step-current-restarted-loaded.png`
 - `step-current-image-a-restart-disk.png`
+- `step-current-same-process-disk-detail-fixed.png`
 - `assistant-rows.json`
 - `api-stream-summary.json`
 - `restart-l2-health-summary.json`

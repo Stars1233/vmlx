@@ -2723,14 +2723,18 @@ remain open. No public release/notarization/feed mutation performed.
 - `STEP37-CONTENT-STRICTNESS`: `PARTIAL/FAIL`. Cold image generations placed
   self-correction prose after the reasoning terminator. Raw Chat proves it was
   genuine content, not parser leakage or Electron batching. Do not hide it.
-- `STEP37-SAME-PROCESS-DISK-DETAIL`: `FAIL_TELEMETRY`. Return-A increased
-  aggregate block-disk and native-TQ hits by 204 while per-request
-  `disk_hit=false` and the UI omitted `disk`. The clean restart row reported
-  the tier correctly.
+- `STEP37-SAME-PROCESS-DISK-DETAIL`: `FIXED_SOURCE + VERIFIED-LIVE_SCOPED`.
+  Row 464 remains the control where aggregate block-disk/native-TQ counters
+  increased but per-request detail omitted disk. The MLLM path now merges its
+  fetch-time sample with `BlockAwarePrefixCache._last_reconstruct_disk_blocks`,
+  matching the existing text scheduler. After source reload, rows 473/476 both
+  reported 4,290 `paged+mixed_swa+disk` tokens; the immediate same-process row
+  recorded `disk_hit=true` and `disk_blocks=68`.
 - `STEP37-RESTART-PID-UI`: `FAIL_TELEMETRY`. After Stop/Start, health was ready
   and the Electron header exposed Stop but no PID.
 - `STEP37-COLD-MEDIA-LATENCY`: `PARTIAL`. Cold image TTFT remained
   44.44-44.87s and video TTFT 55.21s. Larger video and retained stochastic
   loop soak remain open without sampler coercion.
-- Focused current verification passes 422/422. Evidence:
+- Expanded current verification passes 513 with two intentional deselections.
+  Evidence:
   `docs/internal/release-gates/20260719_current_step37_jangtq/`.

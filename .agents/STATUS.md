@@ -1,5 +1,22 @@
 # Current Status
 
+## 2026-07-19 - shared MLLM lazy-L2 cache-detail repair
+
+Status: `SCOPED_MLLM_CACHE_DETAIL_SOURCE_AND_STEP_LIVE_PASS_PID_UI_OPEN`.
+
+- The text scheduler already labeled worker-side lazy block refaults as disk;
+  the MLLM batch generator sampled only fetch-time paged counters.
+- Added shared `_paged_reconstruct_disk_source` accounting and a functional
+  regression; no model-name branch was introduced.
+- After Electron source reload, Step rows 473/476 each restored 4,290 tokens as
+  `paged+mixed_swa+disk`. The immediate same-process repeat records
+  `disk_hit=true`, `disk_blocks=68`, exact content, and 1.99s TTFT.
+- Expanded Step/MLLM/TQ/media/reasoning/tool validation passes 513 with two
+  intentional deselections. Evidence is appended to
+  `20260719_current_step37_jangtq/`.
+- The missing PID in the restarted Electron header still reproduces and remains
+  open. Broader family/cache/protocol/release rows remain partial.
+
 ## 2026-07-19 - Step 3.7 JANGTQ zero-patch media repair and current L2/API gate
 
 Status: `SCOPED_STEP37_CURRENT_MEDIA_CACHE_STREAM_PASS_FAMILY_PARTIAL`.

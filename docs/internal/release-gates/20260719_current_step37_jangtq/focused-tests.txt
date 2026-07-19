@@ -1,7 +1,7 @@
-Step 3.7 current-source focused verification, 2026-07-19
+Step 3.7 plus shared MLLM cache-tier current-source verification, 2026-07-19
 
-422 collected
-422 passed, 2 warnings in 3.88s
+515 collected, 2 deselected
+513 passed, 2 deselected, 2 warnings in 7.93s
 
 Files:
 - tests/test_step37_mlx_vlm_runtime.py
@@ -14,3 +14,5 @@ Files:
 - tests/test_streaming_reasoning.py
 - tests/test_step3p5_tool_parser.py
 - tests/test_reasoning_tool_interaction.py
+- tests/test_tq_paged_block_cache.py
+- tests/test_batching.py

@@ -1275,3 +1275,16 @@
   remain partial.
 - Current focused tests pass 422/422. Evidence:
   `docs/internal/release-gates/20260719_current_step37_jangtq/`.
+
+## 2026-07-19 - shared MLLM lazy-L2 cache-detail repair
+
+- Traced Step row 464's missing `+disk` label to a shared MLLM omission:
+  `fetch_cache` found an indexed frugal block chain before the worker lazily
+  refaulted its payloads from L2 during reconstruction.
+- Ported the text scheduler's worker-source promotion to the MLLM batch
+  generator through `_paged_reconstruct_disk_source`; no Step-specific branch.
+- Source reload plus real Electron rows 473/476 now report
+  `paged+mixed_swa+disk`; the immediate same-process repeat records 68 worker
+  disk blocks, exact content, and 1.99s TTFT.
+- Expanded selected verification passes 513 with two intentional deselections.
+- Preserved the independent post-restart PID-header failure as open.
