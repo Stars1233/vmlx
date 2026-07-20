@@ -1387,3 +1387,13 @@ the cache restore row is independently live-proven.
 | Gate | Status | Current source + live evidence | Remaining boundary |
 |---|---|---|---|
 | Two MiniMax M2.7/Laguna round trips | PASS-LIVE scoped dev Electron | Real dashboard Start controls produced PID sequence `70292 -> 78868 -> 79430 -> 80033 -> 80479`. Every Start stopped the prior session and endpoint first; SQLite and `ps` showed exactly one engine after every transition. Health before any request reported both replacement models loaded with `last_request_time=null`. The Electron main log preserved the venv engine PATH and all four stop-before-start events. The final real moon control restored Laguna PID 80479 to `standby/soft`. | No generation ran; streaming/tool/cache-hit claims stay in their dedicated gates. Repeat in the signed app. Evidence: `../20260719_one_model_swap_soak/`. |
+
+## v1.6.12 signed checkpoint addendum - 2026-07-19
+
+| Gate | Status | Current source + live evidence | Remaining boundary |
+|---|---|---|---|
+| Full source/package gates | PASS on runtime source `6de1096ec` | Python 6,186 passed / 185 skipped; panel 2,332 passed / 3 skipped; typecheck, bundled engine/JANG compatibility, and both production builds passed. | Public surface publication/verification is recorded in `../20260719_release_checkpoint_1_6_12/README.md`. |
+| Sequoia signed installed app | PASS-LIVE checkpoint | Exact post-staple app loaded Gemma 4 through real Start, completed three distinct reasoning/content turns, exactly one real `file_info`, cross-turn recall, raw Responses/Chat streaming, and a 100-token `paged+mixed_swa+tq-native` cache hit; real Stop returned it to inactive. | This is checkpoint smoke, not repetition of every family in the signed build. |
+| Tahoe signed installed app | PASS-LIVE checkpoint | Exact post-staple app loaded through real Start; Electron showed separate reasoning and exact non-empty content. Raw Responses emitted 147 reasoning and 17 content deltas, completed terminal, and usage; real Stop returned the model inactive. | This is checkpoint smoke, not the broad signed-app family matrix. |
+| Signing/notarization | PASS | Both DMGs/apps passed strict codesign and Gatekeeper; notary IDs `8b4a213b-a856-4659-8aa9-146ba211c163` and `4fb3b188-5c57-4eb2-a909-85a917ee31b4` were Accepted; both tickets stapled and validated. | None for these exact artifacts. |
+| Deferred campaign rows | PARTIAL/OPEN preserved | The canonical checkpoint lists remaining parser, failure-injection, long/stochastic/media, accessibility, 512K, quality-A/B, and broader signed-app soak rows. | Resume only after the requested release pause. |

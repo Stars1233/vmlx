@@ -3331,3 +3331,38 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   `git diff --check`.
 - Evidence:
   `docs/internal/release-gates/20260719_gateway_disconnect_recovery/`.
+
+## 2026-07-19 - vMLX 1.6.12 signed release checkpoint
+
+- Status: `RELEASE-CANDIDATE VERIFIED-LIVE`; public publication is the only
+  remaining action at this ledger revision. The checkpoint does not close the
+  deferred family/stress rows below.
+- Runtime/source checkpoint:
+  `6de1096eca0ea2d5516ad64d6e79da98f3ae20a2`.
+- Complete validation on that source: 6,186 Python tests passed / 185 skipped;
+  2,332 panel tests passed / 3 skipped; TypeScript typecheck passed; bundled
+  engine 1.6.12 and clean JANG 2.5.31 compatibility passed.
+- Fresh production artifacts were built for Sequoia and Tahoe, signed by
+  `Developer ID Application: ShieldStack LLC (55KGF2S5AY)`, freshly notarized,
+  stapled, and accepted by Gatekeeper. Notary IDs are
+  `8b4a213b-a856-4659-8aa9-146ba211c163` (Sequoia) and
+  `4fb3b188-5c57-4eb2-a909-85a917ee31b4` (Tahoe), both Accepted.
+- Exact installed-app proof used each real Start and Stop control. Sequoia
+  completed three Electron turns with separate reasoning, exactly one real
+  `file_info` tool, post-tool continuation, cross-turn recall, raw Responses
+  and Chat progressive streams, and a live 100-token
+  `paged+mixed_swa+tq-native` cache hit. Tahoe independently completed a
+  reasoning/content UI turn and a raw Responses stream with 147 reasoning
+  deltas, 17 content deltas, one completed terminal, and usage.
+- Artifact SHA-256: Sequoia
+  `704d87edf168a73d4ca2d94e8cb6190ca593ada71bca181bf369c84ea13ae421`;
+  Tahoe
+  `81b9205a722282cc1eec75713c18dec3efc34ed76e3bcaf6587147e0ce372c49`.
+- Canonical record:
+  `docs/internal/release-gates/20260719_release_checkpoint_1_6_12/README.md`.
+- Explicitly retained after publication: broad signed-app family repetition,
+  remaining parser-family tool rows, safe injected mid-stream failure, long
+  stochastic/latency/media soaks, remaining accessibility/modal breadth,
+  openPangu 512K work, DSV4 controlled reference A/B, and the broader gateway/
+  swap soak. These stay `PARTIAL`/`OPEN`; release packaging does not promote
+  them.

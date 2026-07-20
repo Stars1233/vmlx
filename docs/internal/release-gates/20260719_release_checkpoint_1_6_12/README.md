@@ -1,6 +1,6 @@
 # vMLX 1.6.12 release checkpoint — 2026-07-19
 
-Status: **IN PROGRESS — NOT YET RELEASED**
+Status: **RELEASE-CANDIDATE GATES PASSED — PUBLICATION IN PROGRESS**
 
 This is the canonical checkpoint for the requested full public release. It
 records exactly what is complete, what is under current validation, what must
@@ -9,35 +9,64 @@ campaign. A scoped live gate does not automatically close a family-wide row.
 
 ## Source and synchronization truth
 
-- Working repository: `/Users/eric/mlx/vllm-mlx` on
-  `erics-m5-max.local`, branch `reconcile/1.5.68`.
+- Runtime/source checkpoint:
+  `6de1096eca0ea2d5516ad64d6e79da98f3ae20a2`.
 - Push target: `origin/codex/live-electron-gates-20260715`.
-- Current pre-bump source head:
-  `c4ec592b3ed8c2c8b165c92cdb19ff81dbc81c16`.
-- GitHub branch and clean second-Mac worktree matched that SHA before the
-  `1.6.12` version commit; final release SHA is pending.
-- Clean synchronized worktree on the second Mac:
-  `/Users/eric/mlx/vllm-mlx-live-electron-gates`, detached at the same SHA,
-  with zero changes.
-- The second Mac's original `/Users/eric/mlx/vllm-mlx` `main` worktree has 150
-  pre-existing changes. It is deliberately untouched; synchronization uses
-  the clean linked worktree so user-owned state is not overwritten.
+- Clean release worktree:
+  `/Users/eric/mlx/vllm-mlx-live-electron-gates`.
+- Live-model worktree on `erics-m5-max.local`:
+  `/Users/eric/mlx/vllm-mlx`, branch `reconcile/1.5.68`; it and the GitHub
+  branch matched the runtime/source checkpoint before release-metadata work.
+- Unrelated local coordination and harness files on the remote workbox remain
+  deliberately unstaged and were not overwritten.
 - `.agents/STATUS.md` and `.agents/LOG.md` are local coordination files and are
   intentionally not staged or published.
 
-## Current live Electron state
+## Exact installed-app live proof
 
-- Dev Electron uses CDP `127.0.0.1:9335` and user data
-  `/Users/eric/.vmlx-v1611-cachefix-dev`.
-- The current main-process log contains
-  `[Engine Manager] Found in PATH: /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine`.
-- The last current-source live model is
-  `jangq-ai/Laguna-M.1-JANG_2L`, PID `88506`, port `8015`.
-- It was restarted through the real Electron **Save & Restart** control and
-  then returned through the real moon control to `standby/soft`.
-- SQLite reports `status=standby`, `standby_depth=soft`, PID `88506`.
-  `/health` reports `standby_soft`, `model_loaded=true`, and scheduler
-  `num_waiting=0`, `num_running=0`.
+Both post-staple DMGs were mounted and copied to isolated app paths without
+replacing `/Applications/vMLX.app`:
+
+- `/Applications/vMLX-1.6.12-Sequoia-Checkpoint.app`
+- `/Applications/vMLX-1.6.12-Tahoe-Checkpoint.app`
+
+The exact app path was verified from each Electron page URL. Each app was
+driven through its real **Start** and **Stop** controls over its own CDP target.
+Both logs report `installed=1.6.12`, `source=1.6.12`, and a bundled Python
+engine at `1.6.12`. The selected Gemma 4 bundle launched with model-derived
+`gemma4` tool and reasoning parsers, auto tool choice, VLM routing, paged cache,
+block-disk L2, and the configured cache limits in the actual child-process
+argv.
+
+Sequoia evidence root:
+`/Users/eric/.cache/vmlx-release/1.6.12/installed-smoke/final-6de1096ec`.
+
+- UI turn 1: separate 1,783-character reasoning rail, non-empty three-sentence
+  visible answer, and terminal marker `REL1612-FINAL-SEQ-T1-DONE`.
+- UI turn 2: exactly one real `file_info(panel/package.json)` call and exact
+  visible final `REL1612-FINAL-SEQ-T2-DONE SIZE=5.2 KB`.
+- UI turn 3: no tool, distinct 463-character reasoning rail, and exact
+  multi-turn recall `REL1612-FINAL-SEQ-T3-DONE CODEWORD=NEBULA-612 SIZE=5.2 KB`.
+- Raw Responses: 116 reasoning deltas, 16 content deltas, exact visible output,
+  `response.completed`, and usage. Raw Chat Completions: 200 reasoning chunks,
+  15 content chunks, `finish_reason=stop`, usage, and `[DONE]`.
+- Warm cache usage reported 100 cached tokens with
+  `paged+mixed_swa+tq-native`; health recorded one cache-hit request, 100 hit
+  tokens, native-TQ reconstruction/dequantization, disk writes, and L2 blocks.
+- Two deliberately undersized/over-complex probes truthfully terminated
+  `response.incomplete` at `max_output_tokens`; they are retained as negative
+  evidence and are not counted as completion passes.
+
+Tahoe used the same evidence root:
+
+- real Start completed without an error toast and exposed the actual bundled
+  engine PID/argv;
+- UI turn `REL1612-FINAL-TAHOE-T1` showed a separate 173-character reasoning
+  rail and exact non-empty visible output `42` plus the completion marker;
+- raw Responses emitted 147 reasoning deltas, 17 content deltas, exact output
+  `42\nREL1612-FINAL-TAHOE-RESP-DONE`, `response.completed`, and usage
+  `73/199/272`;
+- the real Stop control returned the app to `Start` / `Model is not running`.
 
 ## Completed and committed in the immediate checkpoint
 
@@ -124,22 +153,19 @@ uses the documented clean JANG source
 
 | Gate | Current status | Evidence/result |
 | --- | --- | --- |
-| Complete panel suite | PASS on `5e83f2775` | 2,332 passed, 3 skipped; `full-panel.log` |
-| Complete Python suite, first run | FAIL on `5e83f2775` | 6,161 passed, 102 skipped, 92 deselected, 8 failed in 303.36 s |
-| Focused q4 reproduction | FAIL before repair | missing `block_aware_cache` caused unquantized fallback |
-| Focused q4 contract after repair | PASS on `4b3d6951c` | 1 passed; q4 NumPy storage and restore shape verified |
-| Eight-failure triage union | PASS after repairs | all 8 previously failing tests passed together in 15.75 s |
-| Clean source rerun on `320b1eef0` | FAIL, then triaged | 6,166 passed; 3 generated-proof audit failures |
-| Clean source rerun on `2b28a82af` | HARNESS PARTIAL | 6,167 passed; two public-app audit failures remained because the Python-only worktree lacked `panel/node_modules` for ASAR extraction |
-| Public-app audit after proof-boundary repair | PASS focused | full file 6/6; absent generated proof is OPEN, present stale/mismatched proof remains FAIL |
-| Complete Python rerun | PENDING | must run from a clean worktree at the final pre-bump source head |
-| Complete panel rerun | PENDING | required on final release-bump head if source changes |
-| TypeScript typecheck | PENDING current wrapper | runs after full suite wrapper completes |
-| Production bundle/build | PENDING | must run after version reconciliation and final source gates |
+| Complete Python suite | PASS on `6de1096ec` | 6,186 passed, 185 skipped in 271.90 s; `~/.cache/vmlx-release/logs-6de1096ec/full-python-after-bundle.log` |
+| Complete panel suite | PASS on `6de1096ec` | 75 files; 2,332 passed, 3 skipped; `~/.cache/vmlx-release/logs-6de1096ec/panel-full.log` |
+| TypeScript typecheck | PASS on `6de1096ec` | `~/.cache/vmlx-release/logs-6de1096ec/panel-typecheck.log` |
+| Bundled runtime compatibility | PASS | engine 1.6.12 and clean JANG 2.5.31 source; `verify-bundled-python-compat.log` |
+| Production Sequoia/Tahoe build | PASS | `build-release-dmgs-all.log` |
+| Fresh Apple notarization | PASS | Sequoia `8b4a213b-a856-4659-8aa9-146ba211c163`; Tahoe `4fb3b188-5c57-4eb2-a909-85a917ee31b4`; both Accepted |
+| Staple, signature, Gatekeeper | PASS | staple validation succeeded; both apps/DMGs accepted as Notarized Developer ID |
+| Exact installed-app smoke | PASS | Sequoia UI/API/tool/cache and Tahoe UI/API evidence described above |
 
-Current logs live under
-`docs/internal/release-gates/20260719_post_disconnect_full_gates/` and will be
-copied/linked into this checkpoint after finalization.
+Current build/notary logs live under
+`/Users/eric/.cache/vmlx-release/logs-6de1096ec/`; exact installed-app evidence
+lives under the evidence root named above. Source regressions and earlier
+campaign evidence remain linked from the master ledger and matrix.
 
 The eight failures split into one real runtime defect, three stale source
 contracts, and four release-audit failures caused by tracked generated
@@ -152,28 +178,13 @@ from the Git index while locally regenerated copies remain on disk under the
 existing `build/` ignore rule. This prevents a clean release checkout from
 mistaking historical proof output for current packaged-runtime evidence.
 
-## Release-critical work still required before publication
+## Release-critical work remaining at this document revision
 
-1. Fix every release-relevant failure without hiding, deselecting, or weakening
-   the contract; commit/push each scoped repair.
-2. Rerun the complete Python suite on the final pushed source.
-3. Rerun the complete panel suite and TypeScript typecheck on the final pushed
-   source.
-4. Reconcile all source/package/feed versions to the selected `1.6.12`
-   checkpoint only after verifying the repository's current version surfaces.
-5. Commit and push the version/release-note/feed changes; synchronize both Macs
-   and GitHub to the exact release SHA.
-6. Run `panel/scripts/bundle-python.sh` first because Python engine source
-   changed, then verify the bundled runtime and build the production app.
-7. Build both Sequoia and Tahoe distribution artifacts.
-8. Sign, notarize, staple, and verify every app/DMG artifact; retain notarization
-   request IDs, signature assessment, package hashes, and install-smoke logs.
-9. Install-smoke both OS-targeted builds without replacing or confusing the
-    current dev Electron state.
-10. Create/push the release tag, GitHub release, assets, `latest.json`, and feed
-    updates; verify public URLs, hashes, version truth, and downloadable assets.
-11. Update the master ledger/matrix with the final release SHA and exact
-    pass/fail/deferred boundary, then pause.
+Only public metadata/integration remains: commit and push this exact manifest,
+fast-forward the authorized public source branch, create/push tag `v1.6.12`,
+upload both DMGs and blockmaps, publish PyPI/Homebrew/update-feed metadata, and
+verify the public versions, URLs, asset sizes, and hashes. No packaging or live
+runtime gate remains open for the checkpoint artifacts.
 
 ## Explicitly deferred after this release checkpoint
 
@@ -215,19 +226,24 @@ Do not publish if any of these is true:
   batched/non-progressive content, false tool success, cache corruption, or a
   stuck active scheduler.
 
-## Final release record (to fill before stopping)
+## Final release record
 
-- Final source SHA: `PENDING`
-- Version/tag: `PENDING`
-- Python suite: `PENDING`
-- Panel suite: `PENDING`
-- Typecheck/build: `PENDING`
-- Sequoia artifact/hash: `PENDING`
-- Tahoe artifact/hash: `PENDING`
-- Codesign/Gatekeeper: `PENDING`
-- Notarization request IDs/status: `PENDING`
-- Staple validation: `PENDING`
-- Install smoke: `PENDING`
-- GitHub release/assets: `PENDING`
-- Feed/latest version truth: `PENDING`
+- Runtime/source checkpoint: `6de1096eca0ea2d5516ad64d6e79da98f3ae20a2`
+- Version/tag: `1.6.12` / `v1.6.12` (publication pending)
+- Python suite: `6,186 passed, 185 skipped`
+- Panel suite: `2,332 passed, 3 skipped`
+- Typecheck/build/bundled runtime: PASS; see exact logs above
+- Sequoia DMG: 509,134,318 bytes; SHA-256
+  `704d87edf168a73d4ca2d94e8cb6190ca593ada71bca181bf369c84ea13ae421`
+- Tahoe DMG: 525,182,991 bytes; SHA-256
+  `81b9205a722282cc1eec75713c18dec3efc34ed76e3bcaf6587147e0ce372c49`
+- Codesign/Gatekeeper: both apps and DMGs accepted as Notarized Developer ID,
+  signed by `Developer ID Application: ShieldStack LLC (55KGF2S5AY)`
+- Notarization: Sequoia `8b4a213b-a856-4659-8aa9-146ba211c163` Accepted;
+  Tahoe `4fb3b188-5c57-4eb2-a909-85a917ee31b4` Accepted
+- Staple validation: PASS for both DMGs
+- Install smoke: PASS for both isolated exact post-staple apps; see evidence
+  root above
+- GitHub release/assets: publication pending
+- Feed/PyPI/Homebrew public truth: publication pending
 - Deferred rows preserved: `YES — see above and master matrix`

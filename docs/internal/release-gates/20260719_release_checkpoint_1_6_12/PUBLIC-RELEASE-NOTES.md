@@ -28,11 +28,18 @@ Cache-hierarchy, streaming-recovery, and gateway-lifecycle checkpoint.
 
 ## Verification
 
-- Source commit: `PENDING`; tag: `v1.6.12`.
-- Full Python suite: `PENDING`.
+- Runtime source checkpoint: `6de1096eca0ea2d5516ad64d6e79da98f3ae20a2`;
+  tag: `v1.6.12`.
+- Full Python suite: `6,186 passed, 185 skipped`.
 - Full panel suite: `2,332 passed, 3 skipped`; TypeScript typecheck passed.
-- Both Sequoia and Tahoe DMGs: `PENDING` Developer ID signing, Apple
-  notarization, stapling, Gatekeeper verification, and installed-app smoke.
+- Both Sequoia and Tahoe DMGs passed bundled-runtime verification, Developer ID
+  signing, fresh Apple notarization, stapling, Gatekeeper verification, and
+  exact installed-app smoke.
+- The Sequoia app completed a three-turn UI reasoning/tool/recall loop, raw
+  Responses and Chat streaming, and a live
+  `paged+mixed_swa+tq-native` cache hit. Tahoe independently completed a UI
+  reasoning/content turn and a raw Responses stream with separate reasoning
+  and content deltas, terminal completion, and usage.
 
 ## macOS builds
 
@@ -43,8 +50,10 @@ Cache-hierarchy, streaming-recovery, and gateway-lifecycle checkpoint.
 
 ## Checksums
 
-- Sequoia SHA-256: `PENDING`
-- Tahoe SHA-256: `PENDING`
+- Sequoia SHA-256:
+  `704d87edf168a73d4ca2d94e8cb6190ca593ada71bca181bf369c84ea13ae421`
+- Tahoe SHA-256:
+  `81b9205a722282cc1eec75713c18dec3efc34ed76e3bcaf6587147e0ce372c49`
 
 ## Known follow-up
 
