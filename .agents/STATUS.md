@@ -7582,3 +7582,29 @@ Public v1.6.12 remains sealed and does not contain this post-release change.
 - Overall status remains `PARTIAL`; no Electron model generation, signed-app
   repeat, gateway network-loss injection, or family/cache/media row was run in
   this scoped closure.
+
+## 2026-07-20 - v1.6.13 signed installed-app checkpoint
+
+Status: `SIGNED_NOTARIZED_VERIFIED_LIVE_PUBLICATION_PENDING` at pushed source
+`5fae65d38`.
+
+- Full exact-source validation is 6,185 Python passed / 99 skipped / 92
+  deselected and 2,336 panel passed / 3 skipped, plus clean typecheck.
+- Fixed the installed bundled-Python launch-cwd shadowing bug with
+  `PYTHONSAFEPATH=1` and stable child cwd; both final bundles import
+  `vmlx_engine 1.6.13` and launch their installed bundled engine paths.
+- Fresh Apple notarization IDs: Sequoia
+  `bc4293f5-02f8-4f28-9cd3-d7bf51031f51`; Tahoe
+  `4dbf39a0-d2ec-43a8-a126-ca24f3cdc3d0`. Both tickets are stapled and both
+  installed apps pass strict codesign and Gatekeeper on `erics-m5-max.local`.
+- Sequoia completed clean three-turn UI reasoning/tool/recall, raw Responses
+  and Chat SSE, q4-native L2 writes, and a real process-restart 3,359-token
+  `paged+mixed_swa+disk+tq-native` hit with 53 disk/q4-native blocks.
+- Tahoe independently completed real UI Start/load/reasoning/content/Stop and
+  raw Chat SSE with terminal usage.
+- Strict Gemma marker-only compliance remains PARTIAL; the first 512-token
+  Responses truncation is retained as a truthful incomplete control.
+- Canonical evidence:
+  `docs/internal/release-gates/20260720_release_checkpoint_1_6_13/`.
+- Public tag/releases/manifests/PyPI/Homebrew/edge feed are still pending. All
+  unrelated retained family/media/gateway/stress rows remain PARTIAL/OPEN.

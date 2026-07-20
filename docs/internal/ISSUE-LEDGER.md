@@ -3429,3 +3429,30 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - Still open: gateway network-loss injection, signed-app repetition, broader
   parser/model agentic loops, non-stream pre-header failures, and unrelated
   family/cache/media/stress rows.
+
+## 2026-07-20 - v1.6.13 packaged checkpoint proof
+
+- Status before publication: `SIGNED_NOTARIZED_VERIFIED_LIVE_PUBLICATION_PENDING`
+  at pushed source `5fae65d38`.
+- The initial installed Sequoia candidate exposed a real packaged-runtime bug:
+  launch cwd `/Users/eric` placed `/Users/eric/mlx` on Python's path beside the
+  bundled `mlx` package. `5fae65d38` now launches bundled Python with
+  `PYTHONSAFEPATH=1` and a stable bundled-binary cwd; focused and full panel
+  tests pass after the fix.
+- Both corrected DMGs were rebuilt, Developer-ID signed, freshly notarized,
+  stapled, independently verified, transferred byte-for-byte to
+  `erics-m5-max.local`, installed separately, and accepted by Gatekeeper.
+- Final Sequoia Electron proof includes clean reasoning/content, one real
+  `file_info` call/result, multi-turn recall, progressive Responses/Chat SSE,
+  q4-native L2 writes, and a process-restart 3,359-token
+  `paged+mixed_swa+disk+tq-native` restore with 53 disk/q4-native hits.
+- Final Tahoe proof includes real Start/load/generation/Stop plus raw Chat SSE
+  with separate reasoning/content, stop, usage, and DONE.
+- Honest retained observations: the 512-token Responses control correctly
+  truncated; Gemma strict marker-only behavior is partial because completed
+  rows can add coherent explanatory prose. No output rewrite or hidden sampler
+  coercion was added.
+- Canonical evidence:
+  `docs/internal/release-gates/20260720_release_checkpoint_1_6_13/`.
+- Broader model/parser/cache/media/gateway/stress rows remain exactly as OPEN or
+  PARTIAL in the master matrix; packaging does not promote them.

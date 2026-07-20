@@ -1528,3 +1528,24 @@
 - Evidence and remaining boundaries are recorded under
   `20260720_anthropic_ollama_midstream_failure/`. Overall matrix remains
   partial; this was an API adapter closure, not a model/Electron/release row.
+
+## 2026-07-20 - built, notarized, and live-proved v1.6.13 artifacts
+
+- Rebuilt both production DMGs from pushed source `5fae65d38` with pinned clean
+  JANG after fixing packaged child import isolation.
+- Apple accepted Sequoia submission
+  `bc4293f5-02f8-4f28-9cd3-d7bf51031f51` and Tahoe submission
+  `4dbf39a0-d2ec-43a8-a126-ca24f3cdc3d0`; stapling, validation, codesign, and
+  Gatekeeper checks passed.
+- Copied exact artifacts to `erics-m5-max.local`; all DMG/blockmap SHA-256
+  values matched before install. Did not touch `/Applications/vMLX.app`.
+- Final Sequoia installed app loaded Gemma via real UI Start and passed a clean
+  reasoning/tool/recall sequence. Exactly one `file_info(panel/package.json)`
+  returned 5.2 KB. Raw Responses/Chat streamed separate rails and clean
+  terminals. UI Stop/Start then restored 3,359 tokens from 53 q4-native disk
+  blocks with exact visible completion.
+- Final Tahoe installed app loaded independently, completed a visible coherent
+  reasoning/content turn, streamed raw Chat with usage/DONE, and stopped via UI.
+- Preserved screenshots, health, logs, SQLite rows, and raw SSE under the
+  v1.6.13 release-checkpoint evidence directory. Publication is the remaining
+  checkpoint step; broader matrix rows remain partial/open.
