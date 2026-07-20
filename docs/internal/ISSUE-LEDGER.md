@@ -2799,6 +2799,38 @@ remain open. No public release/notarization/feed mutation performed.
 - Retain `PARTIAL`: live remote-provider smoke, signed packaged-app repeat,
   failure/disconnect soak, and the rest of the explicit release matrix.
 
+## 2026-07-19 - current-head Responses usage/gateway recovery reconciliation
+
+- Status: `VERIFIED-LIVE_SCOPED` at source cutoff `76e8d6c1e`; overall API
+  parity remains `PARTIAL`.
+- This is a bounded current-head spot-check and matrix reconciliation, not a
+  third replacement for the stronger retained gates. Source keeps public
+  Responses usage on `response.completed`, exposes incremental
+  `response.usage` only through `X-vMLX-Stream-Usage: incremental`, and sends
+  that private header only from the local Electron client.
+- Direct Laguna without the private header emitted seven progressive content
+  deltas, exact `USAGE-STANDARD-CURRENT-OK`, one `response.completed`, terminal
+  usage `27/10/37`, and zero `response.usage` events. Explicit negotiation
+  emitted ten private usage events, the same seven content deltas/exact final,
+  and terminal usage with 23 `paged+tq-native` cached tokens.
+- The ordinary gateway request emitted eight progressive content deltas, exact
+  `USAGE-GATEWAY-CURRENT-OK`, one completed terminal, terminal usage
+  `28/11/39`, and zero private usage events. This proves the current gateway
+  did not inject the local telemetry header into a public client request.
+- The earlier explicit-cancel gate remains authoritative for cancellation
+  semantics: incomplete item/terminal state, `reason=cancelled`, no successful
+  history, zero active requests, and immediate exact recovery after a client
+  disconnect. The current Laguna client-abort spot-check again reached idle and
+  a gateway follow-up completed; real Electron row 725 then visibly returned
+  exact `UI-CANCEL-RECOVERY-OK`, with null reasoning/warnings and
+  `paged+disk+tq-native` telemetry.
+- Remaining: non-stream equivalents, stable tool-result continuation through
+  every protocol, Chat/Anthropic/Ollama cancellation, safe live mid-stream
+  exception injection, remote-provider smoke, and signed-app repetition.
+- Evidence:
+  `docs/internal/release-gates/20260719_responses_usage_extension_parity/` and
+  `docs/internal/release-gates/20260719_response_cancel_disconnect/`.
+
 ## 2026-07-19 - Block-disk-only partial-prefix gate
 
 - `GENERIC-BLOCK-L2-PAGED-OFF`: `PASS-LIVE scoped`. Current source now treats

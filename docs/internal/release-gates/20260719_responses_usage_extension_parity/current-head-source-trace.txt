@@ -1,0 +1,73 @@
+ 19356	    # ``response.usage`` is a private vMLX incremental-telemetry extension, not
+ 19357	    # an OpenAI Responses stream event.  Standard Responses clients receive
+ 19358	    # authoritative usage on response.completed.  Only an explicitly
+ 19359	    # negotiated client (the local Electron panel) may receive the extension;
+ 19360	    # a Chat-style stream_options.include_usage field alone must never alter
+ 19361	    # the public Responses event union.
+ 19362	    _usage_header = ""
+ 19363	    if fastapi_request is not None:
+ 19364	        _headers = getattr(fastapi_request, "headers", None)
+ 19365	        if _headers is not None:
+ 19366	            _usage_header = str(
+ 19367	                _headers.get("x-vmlx-stream-usage", "")
+ 19368	            ).strip().lower()
+ 19369	    incremental_usage_extension = _usage_header == "incremental"
+ 20158	            # Private local-panel telemetry.  Standard Responses usage remains
+ 20159	            # on the terminal response.completed object below.
+ 20160	            if incremental_usage_extension and (prompt_tokens or completion_tokens):
+ 20161	                usage_obj = {
+ 20162	                    "input_tokens": prompt_tokens,
+ 20163	                    "output_tokens": completion_tokens,
+ 20164	                    "total_tokens": prompt_tokens + completion_tokens,
+ 20165	                }
+ 20166	                if _cached > 0 or _cache_detail:
+ 20167	                    _ictd = {"cached_tokens": _cached}
+ 20168	                    if _cache_detail:
+ 20169	                        _ictd["cache_detail"] = _cache_detail
+ 20170	                    usage_obj["input_tokens_details"] = _ictd
+ 20171	                yield _sse(
+ 20172	                    "response.usage",
+ 20173	                    {
+ 20174	                        "type": "response.usage",
+ 20175	                        "usage": usage_obj,
+ 20176	                    },
+ 20177	                )
+  2069	        // `response.usage` is a vMLX-only incremental telemetry extension.
+  2070	        // Negotiate it out-of-band only with a local engine.  The public
+  2071	        // Responses request body must not send Chat's non-standard
+  2072	        // stream_options.include_usage to OpenAI-compatible remote providers.
+  2073	        const vmlxResponsesUsageHeaders: Record<string, string> =
+  2074	          useResponsesApi && !isRemote
+  2075	            ? { "X-vMLX-Stream-Usage": "incremental" }
+  2076	            : {};
+  2077	        const response = useNodeStreamingFetch
+  2078	          ? await streamingFetch(apiUrl, {
+  2079	              method: "POST",
+  2080	              headers: {
+  2081	                "Content-Type": "application/json",
+  2082	                ...authHeaders,
+  2083	                ...vmlxResponsesUsageHeaders,
+  2084	              },
+  2085	              body: requestBody,
+  2678	              // Real-time usage from the explicitly negotiated local vMLX
+  2679	              // response.usage extension (never part of a standard remote stream).
+  2680	              if (responsesEventType === "response.usage" && parsed.usage) {
+  2681	                if (parsed.usage.output_tokens != null) {
+  2682	                  tokenCount = parsed.usage.output_tokens;
+  2683	                  // Detect server token count restart (new HTTP request resets completion_tokens to 0)
+  2684	                  if (tokenCount < iterationTokenBase) iterationTokenBase = 0;
+  2685	                  iterationTokenCount = Math.max(
+  2686	                    0,
+  2687	                    tokenCount - iterationTokenBase,
+  2688	                  );
+  2689	                  // Clear contaminated client-counted entries when transitioning to server usage
+  2690	                  if (!serverSendsUsage) {
+  2691	                    tpsSnapshots.length = 0;
+  2692	                    tpsTokenBase = tokenCount;
+  2693	                  }
+  2694	                  serverSendsUsage = true;
+  2695	                }
+  2696	                if (parsed.usage.input_tokens != null)
+  2697	                  promptTokens = parsed.usage.input_tokens;
+  2698	                recordCacheUsage(parsed.usage.input_tokens_details);
+  2699	              }
