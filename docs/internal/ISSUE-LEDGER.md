@@ -3608,9 +3608,10 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   intentionally failed only because the bundle still had the pre-fix source.
   `bundle-python.sh` was then run against the clean detached JANG checkout;
   the complete bundled-runtime verifier and the formerly failing test pass.
-- `NEMO-OMNI-MEDIA-L2`: `OPEN`. The Omni dispatcher's persistent KV+SSM
-  conversation is process-local. Do not use ordinary scheduler paged/TQ/L2
-  counters to claim process-restart media-session restore.
+- `NEMO-OMNI-MEDIA-L2`: `OPEN` at this historical source checkpoint. The Omni
+  dispatcher's persistent KV+SSM conversation was process-local. Do not use
+  ordinary scheduler paged/TQ/L2 counters to claim process-restart
+  media-session restore. The later post-v1.6.14 closure is recorded below.
 - Evidence:
   `docs/internal/release-gates/20260720_nemotron_omni_audio/`.
 
@@ -3658,3 +3659,38 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - This checkpoint closes publication/signing for these exact artifacts only.
   Every broader family/protocol/cache/media/gateway/stress row retains its
   existing PASS/PARTIAL/OPEN status in the master matrix.
+
+## 2026-07-20 - Nemotron Omni q4-KV/native-SSM process-restart session L2
+
+- Current host/repo: `erics-m5-max.local`,
+  `/Users/eric/mlx/vllm-mlx-release-1.6.13`, branch
+  `codex/postrelease-ui-drawers-20260720`.
+- Artifact truth remains JANGTQ/MXTQ Hadamard-codebook (`profile=JANGTQ2`),
+  not affine JANG and not base MLX MXFP. Runtime persistence quantizes only
+  attention KV to q4 and retains Mamba/SSM `ArraysCache` natively.
+- `NEMO-OMNI-MEDIA-L2`: `VERIFIED-LIVE_SCOPED` on current post-v1.6.14
+  source. `vmlx_engine/omni_multimodal.py` now fingerprints the exact bundle,
+  binds the snapshot to the exact conversation/media prefix, atomically saves
+  the architecture-owned mixed cache, and rejects schema/fingerprint/prefix/
+  topology mismatches. `vmlx_engine/server.py` forwards the effective loaded
+  Block Disk Cache toggle and exposes architecture-specific health.
+- Exact-current-source Electron proof: seed PID 82562 exact-finaled `SEEDED`;
+  real UI Stop/Start produced fresh PID 82724; the post-restart turn painted
+  progressive separate reasoning and exact `FIR-9928`. The DB row is nonempty
+  with no warning/tool; health records `hits=1`, 0.000317 s restore, q4/native
+  codecs, and no error.
+- Exact-current-source raw Chat proof after another UI restart: 129 reasoning
+  deltas, 13 content deltas, exact `blue6813 FIR-9928`, one stop, one usage,
+  and one DONE. Health again recorded a real architecture-session hit.
+- Explicit-Off negative control: the real UI unchecked L2 and applied Save &
+  Restart. Health reported `enabled=false` while the file remained present;
+  exact `OFF-PATH-ACTIVE` completed with hits/stores still zero. The same UI
+  restored L2 On and restarted; final screenshots/health preserve On.
+- Validation: expanded Omni/multimodal 45 passed / 563 deselected; complete
+  `tests/test_server.py` 119 passed / 3 deselected; diff check passed.
+- Honest remaining boundary: latest exact-prefix snapshot only. Multi-snapshot
+  LRU, architecture-file partial-prefix reuse, bounded eviction, image/video
+  restart controls, Responses/Anthropic restart repetition, and signed-app
+  repetition remain OPEN. Public v1.6.14 predates this fix.
+- Evidence:
+  `docs/internal/release-gates/20260720_nemotron_omni_session_l2/`.

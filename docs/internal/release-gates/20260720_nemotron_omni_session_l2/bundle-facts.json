@@ -1,0 +1,23 @@
+{
+  "bundle": "/Volumes/EricsLLMDrive/dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK",
+  "config.json": {
+    "model_type": "nemotron_h",
+    "weight_format": "mxtq",
+    "mxtq_bits": 2
+  },
+  "config_omni.json": {
+    "model_type": "NemotronH_Nano_Omni_Reasoning_V3"
+  },
+  "jang_config.json": {
+    "weight_format": "mxtq",
+    "mxtq_bits": {
+      "attention": 8,
+      "shared_expert": 8,
+      "mamba_proj": 8,
+      "routed_expert": 2,
+      "embed_tokens": 8,
+      "lm_head": 8
+    },
+    "profile": "JANGTQ2"
+  }
+}

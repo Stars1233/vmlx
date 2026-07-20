@@ -1,0 +1,61 @@
+{
+  "before": 6,
+  "events": [
+    {
+      "ms": 4,
+      "text": "Just now\nWaiting for model response..."
+    },
+    {
+      "ms": 4439,
+      "text": "Just now\nThinking\n...\n1 chars\nW\n1 tokens\n0.0 t/s\n4.36s TTFT\n0.0s"
+    },
+    {
+      "ms": 4542,
+      "text": "Just now\nThinking\n...\n20 chars\nWe need to parse the\n9 tokens\n79.2 t/s\n4.36s TTFT\n0.1s"
+    },
+    {
+      "ms": 4648,
+      "text": "Just now\nThinking\n...\n53 chars\nWe need to parse the instruction: \"Remember this rest\n18 tokens\n79.8 t/s\n4.36s TTFT\n0.2s"
+    },
+    {
+      "ms": 4752,
+      "text": "Just now\nThinking\n...\n78 chars\nWe need to parse the instruction: \"Remember this restart-only code: FIR-9928. \n26 tokens\n81.2 t/s\n4.36s TTFT\n0.3s"
+    },
+    {
+      "ms": 4856,
+      "text": "Just now\nThinking\n...\n107 chars\nWe need to parse the instruction: \"Remember this restart-only code: FIR-9928. Reply exactly SEEDED.\"\n\nSo we\n35 tokens\n81.9 t/s\n4.36s TTFT\n0.4s"
+    },
+    {
+      "ms": 4961,
+      "text": "Just now\nThinking\n...\n143 chars\nWe need to parse the instruction: \"Remember this restart-only code: FIR-9928. Reply exactly SEEDED.\"\n\nSo we must respond with exactly \"SEEDED\".\n44 tokens\n83.1 t/s\n4.36s TTFT\n0.5s"
+    },
+    {
+      "ms": 5064,
+      "text": "Just now\nThinking\n...\n181 chars\nWe need to parse the instruction: \"Remember this restart-only code: FIR-9928. Reply exactly SEEDED.\"\n\nSo we must respond with exactly \"SEEDED\". Probably case-sensitive? It says \"Rep\n52 tokens\n83.1 t/s\n4.36s TTFT\n0.6s"
+    },
+    {
+      "ms": 5168,
+      "text": "Just now\nThinking\n...\n212 chars\nWe need to parse the instruction: \"Remember this restart-only code: FIR-9928. Reply exactly SEEDED.\"\n\nSo we must respond with exactly \"SEEDED\". Probably case-sensitive? It says \"Reply exactly SEEDED.\" So output \"\n61 tokens\n82.9 t/s\n4.36s TTFT\n0.7s"
+    },
+    {
+      "ms": 5271,
+      "text": "Just now\nThinking\n...\n250 chars\nWe need to parse the instruction: \"Remember this restart-only code: FIR-9928. Reply exactly SEEDED.\"\n\nSo we must respond with exactly \"SEEDED\". Probably case-sensitive? It says \"Reply exactly SEEDED.\" So output \"SEEDED\". No extra text. Ensure no extr\n69 tokens\n82.4 t/s\n4.36s TTFT\n0.8s"
+    },
+    {
+      "ms": 5377,
+      "text": "Just now\nReasoning\n281 chars\n\nWe need to parse the instruction: \"Remember this restart-only code: FIR-9928. Reply exactly SEEDED.\"\n\nSo we must respond with exactly \"SEEDED\". Probably case-sensitive? It says \"Reply exactly SEEDED.\" So output \"SEEDED\". No extra text. Ensure no extra spaces or punctuation. Just t\n\n77 tokens\n79.7 t/s\n4.36s TTFT\n0.9s"
+    },
+    {
+      "ms": 5481,
+      "text": "Just now\nspeak\nReasoning\n296 chars\n\nWe need to parse the instruction: \"Remember this restart-only code: FIR-9928. Reply exactly SEEDED.\"\n\nSo we must respond with exactly \"SEEDED\". Probably case-sensitive? It says \"Reply exactly SEEDED.\" So output \"SEEDED\". No extra text. Ensure no extra spaces or punctuation. Just the word SEEDED.\n\nSEEDED\n\n81 tokens\n84.2 t/s\n21.3 pp/s\n93 prompt\n4.36s TTFT\n5.4s total"
+    },
+    {
+      "ms": 5585,
+      "text": "Just now\nspeak\nReasoning\n297 chars\n\nWe need to parse the instruction: \"Remember this restart-only code: FIR-9928. Reply exactly SEEDED.\"\n\nSo we must respond with exactly \"SEEDED\". Probably case-sensitive? It says \"Reply exactly SEEDED.\" So output \"SEEDED\". No extra text. Ensure no extra spaces or punctuation. Just the word SEEDED.\n\nSEEDED\n\n81 tokens\n84.2 t/s\n21.3 pp/s\n93 prompt\n4.36s TTFT\n5.4s total"
+    },
+    {
+      "ms": 6422,
+      "text": "Just now\nspeak\nReasoning\n297 chars\n\nSEEDED\n\n81 tokens\n84.2 t/s\n21.3 pp/s\n93 prompt\n4.36s TTFT\n5.4s total"
+    }
+  ]
+}
