@@ -3456,3 +3456,27 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   `docs/internal/release-gates/20260720_release_checkpoint_1_6_13/`.
 - Broader model/parser/cache/media/gateway/stress rows remain exactly as OPEN or
   PARTIAL in the master matrix; packaging does not promote them.
+
+## 2026-07-20 - v1.6.13 public checkpoint released
+
+- Status: `PUBLIC_CHECKPOINT_RELEASED_BROADER_MATRIX_PARTIAL`.
+- Source release `jjang-ai/vmlx@v1.6.13` peels to
+  `2f509f79d7829119308a36a02f13fd590dd2010e`. The public
+  `jjang-ai/mlxstudio@v1.6.13` release contains both signed/notarized DMGs and
+  blockmaps with GitHub-reported digests matching the built artifacts.
+- Updater repo `main` and its lightweight `v1.6.13` tag resolve to
+  `07c402d426f125e1ded175b34d52a16e3769dd8a`. Both GitHub manifests and the
+  `mlx.studio` origin serve version 1.6.13 with the exact Sequoia/Tahoe hashes.
+- PyPI serves `vmlx==1.6.13` with wheel SHA-256 `363e5e3e...a2100` and sdist
+  SHA-256 `bbd2141b...1f24`. Homebrew main `0b0f54c` serves cask 1.6.13 with
+  the exact Sequoia hash and passes `brew style`.
+- Publication, public re-read, and source synchronization were driven from
+  `erics-m5-max.local`. Its older dirty checkout was not overwritten; a clean
+  release worktree was created at the exact tag.
+- Gemma output verdict remains scoped: corrected Sequoia turns are coherent,
+  separately parsed, and include a real one-call tool loop; the earlier raw
+  tool-markup/`221 bytes` row is excluded. Tahoe is coherent but adds prose
+  before an exact marker, so strict-format reliability remains PARTIAL.
+- Operational follow-up: repair the GitHub/PyPI trusted-publisher OIDC mapping.
+  Broader family/parser/cache/media/gateway/stress rows remain PARTIAL/OPEN and
+  resume only after the requested release pause.

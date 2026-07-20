@@ -1549,3 +1549,19 @@
 - Preserved screenshots, health, logs, SQLite rows, and raw SSE under the
   v1.6.13 release-checkpoint evidence directory. Publication is the remaining
   checkpoint step; broader matrix rows remain partial/open.
+
+## 2026-07-20 - published and independently re-read v1.6.13
+
+- Published the public source and four-asset DMG releases. Corrected the
+  updater-repo lightweight tag to its 1.6.13 manifest commit `07c402d` while
+  preserving the annotated source tag at `2f509f79d`.
+- Published updater manifests, Homebrew cask `0b0f54c`, PyPI `vmlx==1.6.13`,
+  and the `mlx.studio` origin feed; independently re-read exact versions,
+  sizes, and hashes from every public surface.
+- Ran publication and verification from `erics-m5-max.local`. Preserved the
+  dirty older checkout and created a clean exact-tag release worktree.
+- Re-read the installed Electron Gemma rows. The corrected Sequoia tool row is
+  a real one-call `file_info` result (`5.2 KB`); the earlier raw-markup
+  `221 bytes` row is excluded. Tahoe content is coherent but not marker-only.
+- Checkpoint is public and usable within its named proof scope. The broader
+  matrix remains partial/open; pause after final proof push and remote fetch.

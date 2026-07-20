@@ -1,11 +1,11 @@
 # vMLX 1.6.13 release checkpoint — 2026-07-20
 
-Status: **ARTIFACTS VERIFIED LIVE — PUBLICATION PENDING**
+Status: **PUBLIC CHECKPOINT RELEASED — BROADER MATRIX PARTIAL**
 
-This is the canonical record for the requested v1.6.13 public checkpoint. It
-must be updated with exact source commits, suite counts, artifact hashes,
-notary submissions, installed-app evidence, and public-surface URLs before the
-release can be called published.
+This is the canonical record for the requested v1.6.13 public checkpoint. The
+exact source, suite counts, artifact hashes, notary submissions, installed-app
+evidence, and public surfaces below are current. This release does not promote
+the separately retained model, parser, media, gateway, or stress rows.
 
 ## Included source changes
 
@@ -50,7 +50,7 @@ release can be called published.
 | Sequoia/Tahoe production build | PASS | Exact pushed source `5fae65d38`; both bundles were rebuilt after the installed-app import-path fix |
 | Apple notarization/stapling | PASS | Accepted submissions `bc4293f5-02f8-4f28-9cd3-d7bf51031f51` (Sequoia) and `4dbf39a0-d2ec-43a8-a126-ca24f3cdc3d0` (Tahoe); independent verification saw stapled tickets and Gatekeeper acceptance |
 | Exact installed-app smoke | PASS scoped | On `erics-m5-max.local`, both final DMGs were installed separately, passed `codesign --deep --strict` and `spctl`, loaded Gemma through the real Electron Start control, generated in the UI, streamed raw API output, and stopped through the UI |
-| Public release surfaces | PENDING | Source/DMG GitHub releases, manifests/feed, PyPI, and Homebrew |
+| Public release surfaces | PASS-PUBLIC | Source and four-asset DMG releases, both GitHub manifests, `mlx.studio` feed, PyPI, and Homebrew were independently re-read at 1.6.13 with exact hashes |
 
 ## Final artifacts
 
@@ -62,6 +62,51 @@ release can be called published.
 | Tahoe blockmap | 544,852 | `f966303753ba3c41c5a8ba039ae6c26278e5a5e894f0ccece4b6c7d4f30be8e7` | — |
 
 Remote hashes matched the build machine byte-for-byte before installation.
+
+## Public surface verification
+
+- Source release: `https://github.com/jjang-ai/vmlx/releases/tag/v1.6.13`.
+  The annotated tag object `e536c9fefb90919f74f22be2e1fb9a62d9be7185`
+  peels to source commit `2f509f79d7829119308a36a02f13fd590dd2010e`.
+- DMG release: `https://github.com/jjang-ai/mlxstudio/releases/tag/v1.6.13`.
+  It is public, non-draft, and non-prerelease. GitHub reports all four assets
+  uploaded with the exact byte counts and SHA-256 digests in this record.
+- The updater-repo `v1.6.13` lightweight tag and `main` both resolve to
+  `07c402d426f125e1ded175b34d52a16e3769dd8a`, the 1.6.13 manifest commit.
+  The tag was corrected before checkpoint close because the initial release
+  creation had captured the preceding 1.6.12 manifest commit.
+- `jjang-ai/vmlx/main/latest.json`,
+  `jjang-ai/mlxstudio/main/latest.json`, and
+  `https://mlx.studio/update/latest.json` all publicly serve 1.6.13 with the
+  exact Sequoia and Tahoe hashes. The custom origin update preserved its prior
+  manifest as
+  `/var/www/mlx.studio/update/latest.json.20260720T100947Z.bak`.
+- PyPI publicly serves `vmlx==1.6.13`. Wheel: 1,699,110 bytes, SHA-256
+  `363e5e3ee5a2ff45a8e675f4d31005a2bb77a9fa2078c280ca80b3f76b7a2100`.
+  Sdist: 2,702,455 bytes, SHA-256
+  `bbd2141b1fa83c809492da5dea705a74437b1f3ade8d10cc007785b8f1541f24`.
+  Both match the distributions built and checked from the exact tag on
+  `erics-m5-max.local`.
+- Homebrew commit `0b0f54ca59c8f371de1f070bed2720306cf722c0`
+  publishes cask version 1.6.13 with the exact Sequoia hash. `brew style`
+  inspected the cask with no offenses.
+- The repository PyPI workflow built and checked the tagged distributions but
+  its trusted-publisher step failed because the GitHub/PyPI OIDC mapping is
+  still not configured. Publication used the existing authenticated
+  `.pypirc` on the trusted live-model Mac without exposing the credential.
+  Repairing trusted publishing remains an operational follow-up, not an
+  unpublished-artifact blocker.
+
+## Cross-box source and runtime truth
+
+- Runtime/install proof was performed on `erics-m5-max.local`, not on the
+  build Mac. The two installed 1.6.13 apps remain independently addressable at
+  CDP ports 9461 and 9462 with their model engines stopped after proof.
+- The other Mac's older dirty checkout at `/Users/eric/mlx/vllm-mlx` was left
+  untouched. A clean release worktree was created at
+  `/Users/eric/mlx/vllm-mlx-release-1.6.13` and verified at the exact tagged
+  commit. Post-release documentation is synchronized there after its final
+  proof commit rather than overwriting the dirty checkout.
 
 ## Installed-app live proof
 
@@ -108,10 +153,11 @@ session logs, SQLite row exports, health snapshots, and literal raw SSE files.
 
 - An initial Sequoia tool prompt was sent while the per-chat built-in-tools
   toggle was visibly Off and no working directory was configured. Gemma
-  printed tool-like markup instead of executing a tool. Once the UI toggle was
-  enabled and `/Users/eric/mlx/vllm-mlx` was saved, two independent tool turns
-  executed exactly once with real persisted calls/results. This was test setup,
-  not a parser closure claim.
+  printed raw tool-like markup and hallucinated `221 bytes`; that row is not
+  counted as a tool PASS. Once the UI toggle was enabled and
+  `/Users/eric/mlx/vllm-mlx` was saved, two independent tool turns executed
+  exactly once with real persisted calls/results reporting `5.2 KB`. This was
+  test setup, not a parser closure claim.
 - The first raw Responses probe used `max_output_tokens=512` and correctly
   ended `response.incomplete` with reason `max_output_tokens`; it is retained
   as a truthful truncation control. The 2,048-token rerun completed.
@@ -138,9 +184,10 @@ remains `docs/internal/release-gates/20260716_release_closeout/CURRENT-MATRIX.md
 - remaining translated modal/drawer/accessibility/minimum-width breadth and
   stale-path cleanup beyond the already proved repoint/remove flow.
 
-## Stop condition
+## Checkpoint stop condition
 
-After the exact artifacts are signed, notarized, stapled, installed-smoked,
-published, and independently re-read from their public surfaces, update this
-record and the master ledgers, commit/push the final proof, and pause work as
-the user requested.
+The exact artifacts are signed, notarized, stapled, installed-smoked,
+published, and independently re-read from their public surfaces. After this
+record and the master ledgers are committed/pushed and the other Mac fetches
+that post-release proof commit, work pauses as requested. The retained
+PARTIAL/OPEN rows above remain the continuation list for a later campaign.

@@ -7608,3 +7608,23 @@ Status: `SIGNED_NOTARIZED_VERIFIED_LIVE_PUBLICATION_PENDING` at pushed source
   `docs/internal/release-gates/20260720_release_checkpoint_1_6_13/`.
 - Public tag/releases/manifests/PyPI/Homebrew/edge feed are still pending. All
   unrelated retained family/media/gateway/stress rows remain PARTIAL/OPEN.
+
+## 2026-07-20 - v1.6.13 public checkpoint complete
+
+Status: `PUBLIC_CHECKPOINT_RELEASED_BROADER_MATRIX_PARTIAL`.
+
+- Public source tag peels to `2f509f79d`; the four-asset DMG release reports
+  exact local sizes and SHA-256 digests.
+- Updater tag/main are `07c402d`; Homebrew main is `0b0f54c`; both GitHub
+  manifests and `https://mlx.studio/update/latest.json` publicly serve 1.6.13
+  with exact Sequoia/Tahoe hashes.
+- PyPI publicly serves the exact tagged wheel and sdist. The authenticated
+  other-Mac publication succeeded; trusted-publisher OIDC still needs repair.
+- The other Mac now has a clean exact-tag release worktree while its older
+  dirty checkout remains preserved. Installed Sequoia/Tahoe apps remain signed
+  and Gatekeeper-accepted; model engines are stopped.
+- Gemma coherence is PASS for the counted scoped turns. Strict marker-only
+  behavior is PARTIAL, and the initial raw-markup/hallucinated-size tool row is
+  explicitly excluded from tool PASS evidence.
+- Pause after this post-release proof is committed, pushed, and fetched on the
+  other Mac. All retained matrix rows remain the later continuation list.

@@ -1,0 +1,19 @@
+{
+  "version": "1.6.13",
+  "url": "https://github.com/jjang-ai/mlxstudio/releases/download/v1.6.13/vMLX-1.6.13-sequoia-arm64.dmg",
+  "sha256": "21cf069cd1adf7d0a3903ee96290986248f2ed7a634df6944122f6e5e16490f2",
+  "sha512": "7JerdVJljbgb/ImsBH0ELRFkoPonplhVLQUhcxePfIDhuJmcEDUUrc3xTdFOT/N5MaIoXcecpSeYV1z7wyZuVw==",
+  "downloads": {
+    "sequoia": {
+      "url": "https://github.com/jjang-ai/mlxstudio/releases/download/v1.6.13/vMLX-1.6.13-sequoia-arm64.dmg",
+      "sha256": "21cf069cd1adf7d0a3903ee96290986248f2ed7a634df6944122f6e5e16490f2",
+      "sha512": "7JerdVJljbgb/ImsBH0ELRFkoPonplhVLQUhcxePfIDhuJmcEDUUrc3xTdFOT/N5MaIoXcecpSeYV1z7wyZuVw=="
+    },
+    "tahoe": {
+      "url": "https://github.com/jjang-ai/mlxstudio/releases/download/v1.6.13/vMLX-1.6.13-tahoe-arm64.dmg",
+      "sha256": "a244eedb3f94400dee8a068966851ed9bfb7c39eef07846191d51fbc7d60b887",
+      "sha512": "uCmn8mLomXM13owVnUBqboEasKQDgpvMG194hMt6DjcWVBrnmB1OIeDq2XdIvrdYom5TWnZgNLOTxUJj94L/yQ=="
+    }
+  },
+  "notes": "vMLX 1.6.13\n\nStreaming-failure integrity and packaged-runtime isolation checkpoint.\n\nHighlights:\n- Preserves progressive partial output, authoritative terminal usage, and immediate same-chat recovery when Chat Completions or Responses fails after streaming begins.\n- Emits native terminal errors for Anthropic Messages and all Ollama streaming routes without synthesizing false success after failure.\n- Isolates bundled Python imports so an unrelated launch-cwd mlx directory cannot shadow the packaged runtime.\n- Retains architecture-aware prefix, paged, block-disk L2, and q4 TurboQuant stored-KV behavior without conflating affine JANG, JANGTQ/MXTQ, and base MLX MXFP formats.\n\nVerification:\n- Runtime source checkpoint 5fae65d3805b1aa5cd44c9634eb754f2851b4779; tag v1.6.13.\n- Full Python suite: 6185 passed, 99 skipped, 92 deselected. Full panel suite: 2336 passed, 3 skipped; TypeScript typecheck passed.\n- Both DMGs passed bundled-runtime verification, Developer ID signing, fresh Apple notarization, stapling, Gatekeeper verification, and exact installed-app smoke on erics-m5-max.local.\n- Sequoia completed a clean three-turn Electron reasoning/tool/recall loop, raw Responses and Chat streaming, paged+mixed-SWA+tq-native RAM reuse, and a 3359-token process-restart disk+tq-native restore. Tahoe independently completed Electron reasoning/content and raw Chat streaming with terminal usage.\n\nKnown follow-up:\n- This is a public usable checkpoint, not closure of every retained family/stress row. Broader signed-app model repetition, long stochastic/media soaks, remaining parser-family tool rows, strict marker-only model reliability, and documented family-specific PARTIAL rows remain deferred.\n\nDMG SHA256:\n- Sequoia: 21cf069cd1adf7d0a3903ee96290986248f2ed7a634df6944122f6e5e16490f2\n- Tahoe: a244eedb3f94400dee8a068966851ed9bfb7c39eef07846191d51fbc7d60b887"
+}
