@@ -1507,3 +1507,8 @@
 - Full validation passed (Python 6,185; panel 2,333; typecheck; Electron build).
   ESLint is N/A because no config exists; the exact tool output is retained.
 - Committed/pushed source as `5f05ad72a`; public v1.6.12 is unchanged.
+- Committed the proof/ledger bundle as `1cc329c05` and fast-forwarded `main`,
+  `codex/live-electron-gates-20260715`, and the post-release branch to it.
+  Revalidated the immutable v1.6.12 tag target, both public GitHub releases,
+  both DMG hashes/staples/Gatekeeper verdicts, both installed-app signatures,
+  all updater feeds, PyPI, and the Homebrew cask after the push.

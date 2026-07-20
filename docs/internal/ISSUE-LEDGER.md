@@ -3401,3 +3401,8 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   failures, signed-app repetition, and unrelated family/stress rows remain
   open. Evidence:
   `docs/internal/release-gates/20260719_midstream_failure_recovery/`.
+- Proof/ledger commit `1cc329c05` was pushed by fast-forward to `main`,
+  `codex/live-electron-gates-20260715`, and the post-release branch. A final
+  public-surface audit revalidated the unchanged v1.6.12 tag target, both DMG
+  hashes/staples/Gatekeeper results, both installed-app signatures, all updater
+  feeds, PyPI, and the Homebrew cask; see the release-checkpoint README.

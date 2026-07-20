@@ -282,3 +282,33 @@ commit `5f05ad72a` closed the dev-Electron/raw-Chat/raw-Responses safe injected
 mid-stream failure row with current committed-source live evidence. It is not
 part of 1.6.12 and requires a future release checkpoint to ship. Evidence:
 `../20260719_midstream_failure_recovery/README.md`.
+
+## Final public checkpoint revalidation after post-release synchronization
+
+After committing the post-release proof as `1cc329c05`, the three GitHub source
+refs `main`, `codex/live-electron-gates-20260715`, and
+`codex/postrelease-midstream-failure-20260719` were independently fetched and
+all resolved to that commit. The sealed annotated `v1.6.12` tag was not moved:
+its local and remote peeled target remained `15da63f6d5d3323ca09c1c7cb1ab99251a2163d6`.
+
+The published checkpoint surfaces were then revalidated directly:
+
+- GitHub still exposed the public, non-draft, non-prerelease `v1.6.12` source
+  release and all four Sequoia/Tahoe DMG and blockmap assets.
+- Fresh SHA-256 reads of the final local DMGs remained
+  `704d87edf168a73d4ca2d94e8cb6190ca593ada71bca181bf369c84ea13ae421`
+  (Sequoia) and
+  `81b9205a722282cc1eec75713c18dec3efc34ed76e3bcaf6587147e0ce372c49`
+  (Tahoe).
+- `xcrun stapler validate` succeeded for both DMGs. Gatekeeper accepted both
+  DMGs and both isolated installed apps as `Notarized Developer ID`, and strict
+  deep code-signature verification passed for both installed apps.
+- `vmlx/main/latest.json`, `mlxstudio/main/latest.json`, and
+  `https://mlx.studio/update/latest.json` all served version `1.6.12` with the
+  exact Sequoia and Tahoe hashes.
+- PyPI still served the recorded 1.6.12 wheel and sdist sizes/hashes.
+  `jjang-ai/homebrew-mlxstudio` remained at `1f9410e` with cask version
+  `1.6.12` and the exact Sequoia hash.
+
+This revalidation confirms the already-shipped 1.6.12 checkpoint. It does not
+promote post-release commit `5f05ad72a` into those immutable artifacts.
