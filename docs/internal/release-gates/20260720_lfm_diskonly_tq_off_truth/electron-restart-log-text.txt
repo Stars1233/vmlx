@@ -1,0 +1,330 @@
+Code
+Chat
+Server
+Tools
+Image
+API
+🇺🇸
+Sessions
+dealignai/LFM2.5-8B-A1B-MXFP4-CRACK
+127.0.0.1:8016
+PID 88694
++ Chat
+Chat
+Server
+Cache
+Bench
+Embed
+Perf
+Logs
+Stop
+
+[LFM-SSD-NONE-RETARGET] Read the following compact ledger privately. Its checksum marker is LFMSSD-9381. Do not call tools. After reading it, output exactly LFM-SSD-NONE-RETARGET-DONE.
+
+segment-01 alpha birch cobalt delta ember frost granite harbor iris juniper
+segment-02 amber brook cedar dune elm field grove heather inlet jade
+segment-03 arch beacon clay drift echo fern glade hill indigo kiln
+segment-04 atlas breeze copper dusk earth flint grain hollow ivory jet
+segment-05 alder bridge coral dawn engine forest gravel haze island kite
+segment-06 acorn basin circle dream east flame garden helm iron jewel
+segment-07 anvil branch crest diamond edge fog grass horizon ink kernel
+segment-08 arrow brick current desert elmstone fiber green harborlight item key
+segment-09 aurora cable cylinder depth emberline flag ground honey index knot
+segment-10 autumn cabin crystal dock energy flower graphite hearth idea lake
+segment-11 axis canyon curve dust evergreen frame grid hub image lantern
+segment-12 anchor chamber cyclone daylight element furrow graphite2 harbor2 icon leaf
+segment-13 arc channel cube driftwood ember2 fountain grain2 hill2 input lever
+segment-14 artifact circuit delta2 dune2 engine2 field2 grove2 home2 iris2 link
+segment-15 ash cloud datum earth2 fern2 forge gravel2 haze2 island2 locus
+segment-16 avenue cluster diagram echo2 fiber2 garden2 granite2 hollow2 item2 maple
+segment-17 badge column digit ember3 flint2 gate grass2 horizon2 jade2 node
+segment-18 beam compass domain field3 forest2 gauge harbor3 ivory2 kiln2 orbit
+segment-19 bell conduit draft flame2 frame2 gear heather2 index2 kite2 path
+segment-20 binary console edge2 fog2 fountain2 glade2 hill3 ink2 lake2 quartz
+segment-21 blade corridor element2 frost2 furrow2 grain3 home3 input2 lantern2 route
+segment-22 bloom cylinder2 energy2 garden3 gate2 graphite3 hub2 iris3 leaf2 signal
+segment-23 board depth2 engine3 granite3 gauge2 gravel3 icon2 item3 lever2 token
+segment-24 border desert2 evergreen2 grass3 gear2 ground2 image2 jade3 link2 vector
+segment-25 branch2 dock2 fiber3 harbor4 grid2 haze3 index3 kiln3 locus2 window
+segment-26 bridge2 domain2 field4 heather3 hollow3 hill4 input3 kite3 maple2 xenon
+segment-27 brook2 draft2 flame3 home4 hub3 horizon3 iris4 lake3 node2 yellow
+segment-28 cabin2 drift3 forest3 icon3 idea2 ink3 item4 lantern3 orbit2 zenith
+segment-29 cable2 dune3 fountain3 image3 inlet2 island3 jade4 leaf3 path2 zero
+segment-30 canyon2 dust2 frame3 index4 iron2 ivory3 kiln4 lever3 quartz2 final
+
+Remember privately that LFMSSD-9381 is the checksum marker. Your only visible answer must be LFM-SSD-NONE-RETARGET-DONE.
+
+Just now
+Just now
+speak
+Reasoning
+907 chars
+
+LFM-SSD-NONE-RETARGET-DONE
+
+238 tokens
+233.6 t/s
+4741.7 pp/s
+716 prompt (576 block-disk+ssm cached)
+0.15s TTFT
+1.2s total
+Server Logs
+258 lines
+[22:07:43.308] Block disk-only index capacity: 64 tokens/block x 9 usable blocks (10 configured; 1 reserved) = 576 indexed tokens. Paged RAM is disabled; KV payloads persist on SSD and restore transiently.
+[22:07:43.308] [ENV] engine_child_probe={"JANGTQ_MPP_NAX":null,"JANGTQ_MPP_NAX_DISABLE":null,"JANGTQ_MPP_NAX_STRICT":null,"JANGTQ_MPP_DENSE":null,"JANGTQ_MPP_DENSE_STRICT":null,"JANGTQ_DISABLE_DSV4_STREAM_LOAD":null,"JANGTQ_DISABLE_DSV4_FAST_LOAD":null,"DSV4_LONG_CTX":null,"DSV4_POOL_QUANT":null,"VMLX_DENSE_STRICT_LANE":null,"VMLX_DSV4_FAST_LOAD_DISABLE":null,"VMLX_DSV4_ENABLE_PREFIX_CACHE":null,"VMLINUX_DENSE_STRICT_LANE":null,"VMLINUX_DSV4_FAST_LOAD_DISABLE":null}
+[22:07:43.308] $ /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine serve /Volumes/EricsLLMDrive/dealignai/LFM2.5-8B-A1B-MXFP4-CRACK --host 127.0.0.1 --port 8016 --timeout 300 --max-num-seqs 1 --prefill-batch-size 512 --prefill-step-size 2048 --completion-batch-size 512 --continuous-batching --tool-call-parser lfm2 --enable-auto-tool-choice --reasoning-parser qwen3 --no-paged-cache --paged-cache-block-size 64 --max-cache-blocks 10 --kv-cache-quantization none --enable-block-disk-cache --block-disk-cache-dir /Users/eric/.cache/vmlx-engine/live-proof-lfm-protocol-20260720 --block-disk-cache-max-gb 10 --stream-interval 1 --max-tokens 2048 --max-prompt-tokens 128000
+[22:07:44.837]   JANGTQ_WIRED_LIMIT_GB defaulted to 115 GB (from OS sysctl iogpu.wired_limit_mb; overrides external jang_tools 70% default)
+[22:07:44.965] INFO:vmlx_engine:Registered vendored minimax_m3_vl runtime (/Users/eric/mlx/vllm-mlx-release-1.6.13/vmlx_engine/models/minimax_m3/minimax_m3.py)
+[22:07:44.966] INFO:vmlx_engine:Registered vendored openpangu_v2 runtime (/Users/eric/mlx/vllm-mlx-release-1.6.13/vmlx_engine/models/openpangu_v2/openpangu_v2.py)
+[22:07:44.966] INFO:vmlx_engine.cli:--kv-cache-quantization=none explicit; VMLX_DISABLE_TQ_KV=1 set so JANG-calibrated TurboQuant KV is skipped at load time. Omit the flag (or set VMLX_FORCE_TQ_AUTO=1) to keep the bundle's calibrated TQ.
+[22:07:44.967] INFO:vmlx_engine.cli:Reasoning parser enabled: qwen3
+[22:07:44.969] INFO:vmlx_engine:is_mllm_model(/Volumes/EricsLLMDrive/dealignai/LFM2.5-8B-A1B-MXFP4-CRACK): tier=registry_family_lfm2 result=False
+[22:07:44.969] INFO:vmlx_engine.server:System memory before load: 111.2GB available / 128.0GB total (13.1% used)
+[22:07:44.970] INFO:vmlx_engine.server:Loading model with BatchedEngine: /Volumes/EricsLLMDrive/dealignai/LFM2.5-8B-A1B-MXFP4-CRACK
+[22:07:44.970] INFO:vmlx_engine.server:Model loaded (batched mode): /Volumes/EricsLLMDrive/dealignai/LFM2.5-8B-A1B-MXFP4-CRACK
+[22:07:44.970] INFO:vmlx_engine.server:Max prompt/context length: ~128,000 tokens (explicit --max-prompt-tokens)
+[22:07:44.970] INFO:vmlx_engine.server:Metal GPU memory after load: 0.00GB active, 0.00GB peak
+[22:07:44.971] INFO:vmlx_engine.server:System memory after load: 111.2GB available (13.1% used)
+[22:07:44.971] INFO:vmlx_engine.server:Native tool format enabled for parser: lfm2
+[22:07:44.971] INFO:vmlx_engine.server:Default max tokens override: 2048
+[22:07:44.973] INFO:     Started server process [88694]
+[22:07:44.973] INFO:     Waiting for application startup.
+[22:07:44.981] INFO:vmlx_engine.server:Started caffeinate system wake lock for PID 88694
+[22:07:45.564] INFO:vmlx_engine.engine.batched:BatchedEngine multi-eos hook: family=lfm2, registry eos_tokens=None, tokenizer_class=TokenizerWrapper, primary=124900
+[22:07:45.688] INFO:vmlx_engine.scheduler:Runtime cache layout: model_type=unknown layers=24 layout=0:ArraysCache;1:ArraysCache;2:KVCache;3:ArraysCache;4:ArraysCache;5:ArraysCache;6:KVCache;7:ArraysCache;8:ArraysCache;9:ArraysCache;10:KVCache;11:ArraysCache;12:ArraysCache;13:ArraysCache;14:KVCache;15:ArraysCache;16:ArraysCache;17:ArraysCache;18:KVCache;19:ArraysCache;20:ArraysCache;21:KVCache;22:ArraysCache;23:ArraysCache
+[22:07:45.689] INFO:vmlx_engine.scheduler:Hybrid SSM cache: 6/24 KV layers, SSM companion enabled (entries=8, max_mb=512, model_key=add6284ddc0a)
+[22:07:45.689] INFO:vmlx_engine.scheduler:Prefix cache requires continuous batching — enabled automatically
+[22:07:45.695] INFO:vmlx_engine.block_disk_store:BlockDiskStore initialized: dir=/Users/eric/.cache/vmlx-engine/live-proof-lfm-protocol-20260720, max_size=10.0GB, entries=61, size=0.03GB
+[22:07:45.695] INFO:vmlx_engine.scheduler:Block disk cache enabled: dir=/Users/eric/.cache/vmlx-engine/live-proof-lfm-protocol-20260720, max=10.0GB, expected_layers=24
+[22:07:45.695] INFO:vmlx_engine.scheduler:Hybrid SSM companion L2 enabled: dir=/Users/eric/.cache/vmlx-engine/live-proof-lfm-protocol-20260720/ssm_companion, max=10GB
+[22:07:45.695] INFO:vmlx_engine.paged_cache:PagedCacheManager initialized: block_size=64, max_blocks=10, usable_blocks=9, max_tokens=576, backend=block-disk-only, ram_mirror_policy=disk_only
+[22:07:45.695] INFO:vmlx_engine.scheduler:Block disk-only prefix backend: paged RAM disabled, max_index_blocks=10; payloads restore transiently from SSD
+[22:07:45.696] INFO:vmlx_engine.scheduler:Block disk-only cache enabled: block_size=64, max_index_blocks=10, persistent_ram_payloads=0
+[22:07:45.696] INFO:vmlx_engine.engine_core:Engine started
+[22:07:45.696] INFO:vmlx_engine.engine.batched:BatchedEngine loaded: /Volumes/EricsLLMDrive/dealignai/LFM2.5-8B-A1B-MXFP4-CRACK (mllm=False)
+[22:07:45.697] INFO:vmlx_engine.server:Recorded Metal working-set model baseline: active=4.2GB max=107.5GB reason=lifespan_engine_start
+[22:07:45.699] INFO:vmlx_engine.mcp.config:No MCP config file found, using empty config
+[22:07:45.699] INFO:     Application startup complete.
+[22:07:45.700] INFO:     Uvicorn running on http://127.0.0.1:8016 (Press CTRL+C to quit)
+[22:07:46.055] ============================================================
+[22:07:46.055] SECURITY CONFIGURATION
+[22:07:46.055] ============================================================
+[22:07:46.055]   Authentication: DISABLED - Use --api-key to enable
+[22:07:46.055]   Rate limiting: DISABLED - Use --rate-limit to enable
+[22:07:46.055]   Request timeout: 300.0s
+[22:07:46.055]   Tool calling: ENABLED (parser: lfm2)
+[22:07:46.055]   Reasoning: ENABLED (parser: Qwen3ReasoningParser)
+[22:07:46.055]   External speculative decoding: Use --speculative-model to enable
+[22:07:46.055] ============================================================
+[22:07:46.055] Loading model: /Volumes/EricsLLMDrive/dealignai/LFM2.5-8B-A1B-MXFP4-CRACK
+[22:07:46.055] Default max tokens override: 2048
+[22:07:46.055] Max prompt/context tokens: 128000
+[22:07:46.055] Mode: Continuous batching (for multiple concurrent users)
+[22:07:46.055] Stream interval: 1 tokens
+[22:07:46.055] Block disk-only prefix cache: block_size=64, max_index_blocks=10, max=10.0GB (paged RAM disabled; KV payloads restore from SSD transiently)
+[22:07:46.055] Starting server at http://127.0.0.1:8016
+[22:07:46.055] INFO:     127.0.0.1:57717 - "GET /health HTTP/1.1" 200 OK
+[22:07:46.442] INFO:     127.0.0.1:57718 - "GET /health HTTP/1.1" 200 OK
+[22:07:47.522] INFO:     127.0.0.1:57719 - "GET /health HTTP/1.1" 200 OK
+[22:07:48.234] INFO:     127.0.0.1:57717 - "GET /health HTTP/1.1" 200 OK
+[22:07:48.594] INFO:     127.0.0.1:57720 - "GET /health HTTP/1.1" 200 OK
+[22:07:49.667] INFO:     127.0.0.1:57721 - "GET /health HTTP/1.1" 200 OK
+[22:07:50.740] INFO:     127.0.0.1:57722 - "GET /health HTTP/1.1" 200 OK
+[22:07:51.818] INFO:     127.0.0.1:57723 - "GET /health HTTP/1.1" 200 OK
+[22:07:52.894] INFO:     127.0.0.1:57724 - "GET /health HTTP/1.1" 200 OK
+[22:07:53.236] INFO:     127.0.0.1:57725 - "GET /health HTTP/1.1" 200 OK
+[22:07:53.972] INFO:     127.0.0.1:57726 - "GET /health HTTP/1.1" 200 OK
+[22:07:55.043] INFO:     127.0.0.1:57727 - "GET /health HTTP/1.1" 200 OK
+[22:07:56.117] INFO:     127.0.0.1:57728 - "GET /health HTTP/1.1" 200 OK
+[22:07:57.191] INFO:     127.0.0.1:57729 - "GET /health HTTP/1.1" 200 OK
+[22:07:58.245] INFO:     127.0.0.1:57725 - "GET /health HTTP/1.1" 200 OK
+[22:07:58.264] INFO:     127.0.0.1:57730 - "GET /health HTTP/1.1" 200 OK
+[22:07:59.338] INFO:     127.0.0.1:57731 - "GET /health HTTP/1.1" 200 OK
+[22:08:00.414] INFO:     127.0.0.1:57732 - "GET /health HTTP/1.1" 200 OK
+[22:08:01.489] INFO:     127.0.0.1:57733 - "GET /health HTTP/1.1" 200 OK
+[22:08:02.559] INFO:     127.0.0.1:57734 - "GET /health HTTP/1.1" 200 OK
+[22:08:03.248] INFO:     127.0.0.1:57725 - "GET /health HTTP/1.1" 200 OK
+[22:08:03.640] INFO:     127.0.0.1:57735 - "GET /health HTTP/1.1" 200 OK
+[22:08:04.714] INFO:     127.0.0.1:57736 - "GET /health HTTP/1.1" 200 OK
+[22:08:05.786] INFO:     127.0.0.1:57737 - "GET /health HTTP/1.1" 200 OK
+[22:08:06.866] INFO:     127.0.0.1:57738 - "GET /health HTTP/1.1" 200 OK
+[22:08:07.948] INFO:     127.0.0.1:57739 - "GET /health HTTP/1.1" 200 OK
+[22:08:08.252] INFO:     127.0.0.1:57725 - "GET /health HTTP/1.1" 200 OK
+[22:08:09.027] INFO:     127.0.0.1:57740 - "GET /health HTTP/1.1" 200 OK
+[22:08:10.104] INFO:     127.0.0.1:57741 - "GET /health HTTP/1.1" 200 OK
+[22:08:11.181] INFO:     127.0.0.1:57742 - "GET /health HTTP/1.1" 200 OK
+[22:08:12.253] INFO:     127.0.0.1:57743 - "GET /health HTTP/1.1" 200 OK
+[22:08:13.252] INFO:     127.0.0.1:57744 - "GET /health HTTP/1.1" 200 OK
+[22:08:13.318] INFO:     127.0.0.1:57745 - "GET /health HTTP/1.1" 200 OK
+[22:08:14.390] INFO:     127.0.0.1:57746 - "GET /health HTTP/1.1" 200 OK
+[22:08:15.462] INFO:     127.0.0.1:57747 - "GET /health HTTP/1.1" 200 OK
+[22:08:16.542] INFO:     127.0.0.1:57748 - "GET /health HTTP/1.1" 200 OK
+[22:08:17.614] INFO:     127.0.0.1:57749 - "GET /health HTTP/1.1" 200 OK
+[22:08:18.253] INFO:     127.0.0.1:57744 - "GET /health HTTP/1.1" 200 OK
+[22:08:18.688] INFO:     127.0.0.1:57750 - "GET /health HTTP/1.1" 200 OK
+[22:08:19.761] INFO:     127.0.0.1:57751 - "GET /health HTTP/1.1" 200 OK
+[22:08:20.837] INFO:     127.0.0.1:57752 - "GET /health HTTP/1.1" 200 OK
+[22:08:21.908] INFO:     127.0.0.1:57753 - "GET /health HTTP/1.1" 200 OK
+[22:08:22.993] INFO:     127.0.0.1:57754 - "GET /health HTTP/1.1" 200 OK
+[22:08:23.257] INFO:     127.0.0.1:57744 - "GET /health HTTP/1.1" 200 OK
+[22:08:24.074] INFO:     127.0.0.1:57755 - "GET /health HTTP/1.1" 200 OK
+[22:08:25.147] INFO:     127.0.0.1:57756 - "GET /health HTTP/1.1" 200 OK
+[22:08:26.219] INFO:     127.0.0.1:57757 - "GET /health HTTP/1.1" 200 OK
+[22:08:27.292] INFO:     127.0.0.1:57758 - "GET /health HTTP/1.1" 200 OK
+[22:08:28.261] INFO:     127.0.0.1:57759 - "GET /health HTTP/1.1" 200 OK
+[22:08:28.351] INFO:     127.0.0.1:57760 - "GET /health HTTP/1.1" 200 OK
+[22:08:29.432] INFO:     127.0.0.1:57761 - "GET /health HTTP/1.1" 200 OK
+[22:08:30.509] INFO:     127.0.0.1:57762 - "GET /health HTTP/1.1" 200 OK
+[22:08:31.589] INFO:     127.0.0.1:57763 - "GET /health HTTP/1.1" 200 OK
+[22:08:32.669] INFO:     127.0.0.1:57764 - "GET /health HTTP/1.1" 200 OK
+[22:08:33.265] INFO:     127.0.0.1:57759 - "GET /health HTTP/1.1" 200 OK
+[22:08:33.746] INFO:     127.0.0.1:57766 - "GET /health HTTP/1.1" 200 OK
+[22:08:34.817] INFO:     127.0.0.1:57767 - "GET /health HTTP/1.1" 200 OK
+[22:08:35.893] INFO:     127.0.0.1:57768 - "GET /health HTTP/1.1" 200 OK
+[22:08:36.972] INFO:     127.0.0.1:57769 - "GET /health HTTP/1.1" 200 OK
+[22:08:38.052] INFO:     127.0.0.1:57770 - "GET /health HTTP/1.1" 200 OK
+[22:08:38.267] INFO:     127.0.0.1:57759 - "GET /health HTTP/1.1" 200 OK
+[22:08:39.124] INFO:     127.0.0.1:57771 - "GET /health HTTP/1.1" 200 OK
+[22:08:40.204] INFO:     127.0.0.1:57772 - "GET /health HTTP/1.1" 200 OK
+[22:08:41.275] INFO:     127.0.0.1:57773 - "GET /health HTTP/1.1" 200 OK
+[22:08:42.355] INFO:     127.0.0.1:57774 - "GET /health HTTP/1.1" 200 OK
+[22:08:43.280] INFO:     127.0.0.1:57759 - "GET /health HTTP/1.1" 200 OK
+[22:08:43.422] INFO:     127.0.0.1:57775 - "GET /health HTTP/1.1" 200 OK
+[22:08:44.501] INFO:     127.0.0.1:57776 - "GET /health HTTP/1.1" 200 OK
+[22:08:45.572] INFO:     127.0.0.1:57777 - "GET /health HTTP/1.1" 200 OK
+[22:08:46.641] INFO:     127.0.0.1:57778 - "GET /health HTTP/1.1" 200 OK
+[22:08:47.720] INFO:     127.0.0.1:57779 - "GET /health HTTP/1.1" 200 OK
+[22:08:48.282] INFO:     127.0.0.1:57780 - "GET /health HTTP/1.1" 200 OK
+[22:08:48.797] INFO:     127.0.0.1:57781 - "GET /health HTTP/1.1" 200 OK
+[22:08:49.866] INFO:     127.0.0.1:57782 - "GET /health HTTP/1.1" 200 OK
+[22:08:50.938] INFO:     127.0.0.1:57783 - "GET /health HTTP/1.1" 200 OK
+[22:08:52.009] INFO:     127.0.0.1:57784 - "GET /health HTTP/1.1" 200 OK
+[22:08:53.093] INFO:     127.0.0.1:57785 - "GET /health HTTP/1.1" 200 OK
+[22:08:53.283] INFO:     127.0.0.1:57780 - "GET /health HTTP/1.1" 200 OK
+[22:08:54.173] INFO:     127.0.0.1:57786 - "GET /health HTTP/1.1" 200 OK
+[22:08:55.247] INFO:     127.0.0.1:57787 - "GET /health HTTP/1.1" 200 OK
+[22:08:56.328] INFO:     127.0.0.1:57788 - "GET /health HTTP/1.1" 200 OK
+[22:08:57.407] INFO:     127.0.0.1:57789 - "GET /health HTTP/1.1" 200 OK
+[22:08:58.291] INFO:     127.0.0.1:57780 - "GET /health HTTP/1.1" 200 OK
+[22:08:58.484] INFO:     127.0.0.1:57790 - "GET /health HTTP/1.1" 200 OK
+[22:08:59.568] INFO:     127.0.0.1:57791 - "GET /health HTTP/1.1" 200 OK
+[22:09:00.643] INFO:     127.0.0.1:57792 - "GET /health HTTP/1.1" 200 OK
+[22:09:01.726] INFO:     127.0.0.1:57793 - "GET /health HTTP/1.1" 200 OK
+[22:09:02.801] INFO:     127.0.0.1:57794 - "GET /health HTTP/1.1" 200 OK
+[22:09:03.293] INFO:     127.0.0.1:57795 - "GET /health HTTP/1.1" 200 OK
+[22:09:03.880] INFO:     127.0.0.1:57796 - "GET /health HTTP/1.1" 200 OK
+[22:09:04.961] INFO:     127.0.0.1:57797 - "GET /health HTTP/1.1" 200 OK
+[22:09:06.044] INFO:     127.0.0.1:57798 - "GET /health HTTP/1.1" 200 OK
+[22:09:07.120] INFO:     127.0.0.1:57799 - "GET /health HTTP/1.1" 200 OK
+[22:09:08.203] INFO:     127.0.0.1:57800 - "GET /health HTTP/1.1" 200 OK
+[22:09:08.288] INFO:     127.0.0.1:57795 - "GET /health HTTP/1.1" 200 OK
+[22:09:09.286] INFO:     127.0.0.1:57801 - "GET /health HTTP/1.1" 200 OK
+[22:09:10.358] INFO:     127.0.0.1:57802 - "GET /health HTTP/1.1" 200 OK
+[22:09:11.438] INFO:     127.0.0.1:57803 - "GET /health HTTP/1.1" 200 OK
+[22:09:12.512] INFO:     127.0.0.1:57804 - "GET /health HTTP/1.1" 200 OK
+[22:09:13.296] INFO:     127.0.0.1:57795 - "GET /health HTTP/1.1" 200 OK
+[22:09:13.584] INFO:     127.0.0.1:57805 - "GET /health HTTP/1.1" 200 OK
+[22:09:14.659] INFO:     127.0.0.1:57806 - "GET /health HTTP/1.1" 200 OK
+[22:09:15.735] INFO:     127.0.0.1:57807 - "GET /health HTTP/1.1" 200 OK
+[22:09:16.807] INFO:     127.0.0.1:57808 - "GET /health HTTP/1.1" 200 OK
+[22:09:17.882] INFO:     127.0.0.1:57809 - "GET /health HTTP/1.1" 200 OK
+[22:09:18.300] INFO:     127.0.0.1:57810 - "GET /health HTTP/1.1" 200 OK
+[22:09:18.954] INFO:     127.0.0.1:57811 - "GET /health HTTP/1.1" 200 OK
+[22:09:20.028] INFO:     127.0.0.1:57812 - "GET /health HTTP/1.1" 200 OK
+[22:09:21.098] INFO:     127.0.0.1:57813 - "GET /health HTTP/1.1" 200 OK
+[22:09:22.161] INFO:     127.0.0.1:57814 - "GET /health HTTP/1.1" 200 OK
+[22:09:23.226] INFO:     127.0.0.1:57815 - "GET /health HTTP/1.1" 200 OK
+[22:09:23.292] INFO:     127.0.0.1:57810 - "GET /health HTTP/1.1" 200 OK
+[22:09:24.296] INFO:     127.0.0.1:57816 - "GET /health HTTP/1.1" 200 OK
+[22:09:25.375] INFO:     127.0.0.1:57817 - "GET /health HTTP/1.1" 200 OK
+[22:09:26.457] INFO:     127.0.0.1:57818 - "GET /health HTTP/1.1" 200 OK
+[22:09:27.528] INFO:     127.0.0.1:57819 - "GET /health HTTP/1.1" 200 OK
+[22:09:28.319] INFO:     127.0.0.1:57820 - "GET /health HTTP/1.1" 200 OK
+[22:09:28.610] INFO:     127.0.0.1:57821 - "GET /health HTTP/1.1" 200 OK
+[22:09:29.684] INFO:     127.0.0.1:57822 - "GET /health HTTP/1.1" 200 OK
+[22:09:30.758] INFO:     127.0.0.1:57823 - "GET /health HTTP/1.1" 200 OK
+[22:09:31.832] INFO:     127.0.0.1:57824 - "GET /health HTTP/1.1" 200 OK
+[22:09:32.913] INFO:     127.0.0.1:57825 - "GET /health HTTP/1.1" 200 OK
+[22:09:33.314] INFO:     127.0.0.1:57820 - "GET /health HTTP/1.1" 200 OK
+[22:09:33.984] INFO:     127.0.0.1:57826 - "GET /health HTTP/1.1" 200 OK
+[22:09:35.055] INFO:     127.0.0.1:57827 - "GET /health HTTP/1.1" 200 OK
+[22:09:36.129] INFO:     127.0.0.1:57828 - "GET /health HTTP/1.1" 200 OK
+[22:09:37.206] INFO:     127.0.0.1:57829 - "GET /health HTTP/1.1" 200 OK
+[22:09:38.281] INFO:     127.0.0.1:57830 - "GET /health HTTP/1.1" 200 OK
+[22:09:38.304] INFO:     127.0.0.1:57820 - "GET /health HTTP/1.1" 200 OK
+[22:09:39.355] INFO:     127.0.0.1:57831 - "GET /health HTTP/1.1" 200 OK
+[22:09:40.432] INFO:     127.0.0.1:57832 - "GET /health HTTP/1.1" 200 OK
+[22:09:41.514] INFO:     127.0.0.1:57833 - "GET /health HTTP/1.1" 200 OK
+[22:09:42.590] INFO:     127.0.0.1:57834 - "GET /health HTTP/1.1" 200 OK
+[22:09:43.328] INFO:     127.0.0.1:57835 - "GET /health HTTP/1.1" 200 OK
+[22:09:43.663] INFO:     127.0.0.1:57836 - "GET /health HTTP/1.1" 200 OK
+[22:09:44.747] INFO:     127.0.0.1:57837 - "GET /health HTTP/1.1" 200 OK
+[22:09:45.819] INFO:     127.0.0.1:57838 - "GET /health HTTP/1.1" 200 OK
+[22:09:46.896] INFO:     127.0.0.1:57839 - "GET /health HTTP/1.1" 200 OK
+[22:09:47.973] INFO:     127.0.0.1:57840 - "GET /health HTTP/1.1" 200 OK
+[22:09:48.330] INFO:     127.0.0.1:57835 - "GET /health HTTP/1.1" 200 OK
+[22:09:49.052] INFO:     127.0.0.1:57841 - "GET /health HTTP/1.1" 200 OK
+[22:09:50.132] INFO:     127.0.0.1:57842 - "GET /health HTTP/1.1" 200 OK
+[22:09:51.214] INFO:     127.0.0.1:57843 - "GET /health HTTP/1.1" 200 OK
+[22:09:52.287] INFO:     127.0.0.1:57844 - "GET /health HTTP/1.1" 200 OK
+[22:09:53.332] INFO:     127.0.0.1:57835 - "GET /health HTTP/1.1" 200 OK
+[22:09:53.352] INFO:     127.0.0.1:57845 - "GET /health HTTP/1.1" 200 OK
+[22:09:54.423] INFO:     127.0.0.1:57846 - "GET /health HTTP/1.1" 200 OK
+[22:09:55.503] INFO:     127.0.0.1:57847 - "GET /health HTTP/1.1" 200 OK
+[22:09:56.582] INFO:     127.0.0.1:57848 - "GET /health HTTP/1.1" 200 OK
+[22:09:57.661] INFO:     127.0.0.1:57849 - "GET /health HTTP/1.1" 200 OK
+[22:09:58.339] INFO:     127.0.0.1:57850 - "GET /health HTTP/1.1" 200 OK
+[22:09:58.737] INFO:     127.0.0.1:57851 - "GET /health HTTP/1.1" 200 OK
+[22:09:59.820] INFO:     127.0.0.1:57852 - "GET /health HTTP/1.1" 200 OK
+[22:10:00.901] INFO:     127.0.0.1:57853 - "GET /health HTTP/1.1" 200 OK
+[22:10:01.977] INFO:     127.0.0.1:57854 - "GET /health HTTP/1.1" 200 OK
+[22:10:03.050] INFO:     127.0.0.1:57855 - "GET /health HTTP/1.1" 200 OK
+[22:10:03.340] INFO:     127.0.0.1:57850 - "GET /health HTTP/1.1" 200 OK
+[22:10:04.130] INFO:     127.0.0.1:57856 - "GET /health HTTP/1.1" 200 OK
+[22:10:05.206] INFO:     127.0.0.1:57857 - "GET /health HTTP/1.1" 200 OK
+[22:10:06.280] INFO:     127.0.0.1:57858 - "GET /health HTTP/1.1" 200 OK
+[22:10:07.359] INFO:     127.0.0.1:57859 - "GET /health HTTP/1.1" 200 OK
+[22:10:08.347] INFO:     127.0.0.1:57850 - "GET /health HTTP/1.1" 200 OK
+[22:10:08.428] INFO:     127.0.0.1:57860 - "GET /health HTTP/1.1" 200 OK
+[22:10:09.509] INFO:     127.0.0.1:57861 - "GET /health HTTP/1.1" 200 OK
+[22:10:10.590] INFO:     127.0.0.1:57862 - "GET /health HTTP/1.1" 200 OK
+[22:10:11.664] INFO:     127.0.0.1:57863 - "GET /health HTTP/1.1" 200 OK
+[22:10:12.738] INFO:     127.0.0.1:57864 - "GET /health HTTP/1.1" 200 OK
+[22:10:13.350] INFO:     127.0.0.1:57865 - "GET /health HTTP/1.1" 200 OK
+[22:10:18.356] INFO:     127.0.0.1:57865 - "GET /health HTTP/1.1" 200 OK
+[22:10:23.356] INFO:     127.0.0.1:57865 - "GET /health HTTP/1.1" 200 OK
+[22:10:26.275] INFO:     127.0.0.1:57867 - "GET /health HTTP/1.1" 200 OK
+[22:10:28.356] INFO:     127.0.0.1:57868 - "GET /health HTTP/1.1" 200 OK
+[22:10:33.366] INFO:     127.0.0.1:57868 - "GET /health HTTP/1.1" 200 OK
+[22:10:37.199] INFO:     127.0.0.1:57868 - "GET /health HTTP/1.1" 200 OK
+[22:10:37.199] [CHAT_DIAG] request_shape={"chatId":"c0651d3f","wireApi":"responses","isRemote":false,"baseUrl":"http://127.0.0.1:8016","chatIsMultimodal":false,"preserveHistoricalMediaForOmni":false,"detectedFamily":"lfm2","sessionHasReasoningParser":true,"body":{"route":"/v1/responses","model":"dealignai/LFM2.5-8B-A1B-MXFP4-CRACK","stream":true,"has_tools":false,"messages":[{"role":"user","content":{"type":"text","chars":2634}}]}}
+[22:10:37.203] WARNING:vmlx_engine.server:SECURITY WARNING: Server running without API key authentication. Anyone can access the API. Use --api-key to enable authentication.
+[22:10:37.204] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/dealignai/LFM2.5-8B-A1B-MXFP4-CRACK kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 2048, 'enable_thinking': True}
+[22:10:37.204] INFO:     127.0.0.1:57870 - "POST /v1/responses HTTP/1.1" 200 OK
+[22:10:37.227] INFO:vmlx_engine.prefix_cache:Paged cache hit for resp_4218b4f022ae: 9 blocks, 576 tokens
+[22:10:37.227] INFO:vmlx_engine.scheduler:Request resp_4218b4f022ae: block disk-only cache hit, 576 tokens in 9 blocks, 140 remaining to process (worker reconstruct pending)
+[22:10:37.227] INFO:vmlx_engine.scheduler:max_num_seqs=1 — using vMLX SingleBatchGenerator (raw native cache, scheduler-owned single-active path)
+[22:10:37.350] INFO:vmlx_engine.prefix_cache:Partial hybrid reconstruction: 6/24 layers (18 cumulative layers deferred to _fix_hybrid_cache)
+[22:10:37.350] INFO:vmlx_engine.scheduler:Request resp_4218b4f022ae: worker reconstructed 9 block(s) from L2
+[22:10:37.350] INFO:vmlx_engine.scheduler:SSM companion worker fetch: req=resp_4218b4f022ae fetch_num=576 cache_size=0 tokens_tail=[5635, 27, 94380, 27, 54092, 26, 50588, 271]
+[22:10:37.350] INFO:vmlx_engine.utils.ssm_companion_cache:SSM fetch MISS: N=576 hash=7d223bb0c662 store_size=0 store_keys[:3]=[]
+[22:10:37.350] INFO:vmlx_engine.utils.ssm_companion_cache:SSM disk HIT: N=576 hash=7d223bb0c662 states=18 complete=True
+[22:10:37.350] INFO:vmlx_engine.scheduler:Request resp_4218b4f022ae: hybrid block-cache HIT — 576 tokens (KV + 18 SSM layers)
+[22:10:38.340] INFO:     127.0.0.1:57868 - "GET /health HTTP/1.1" 200 OK
+[22:10:38.377] INFO:vmlx_engine.scheduler:Extracted 24 layer states for request resp_4218b4f022ae
+[22:10:38.377] INFO:vmlx_engine.scheduler:SSM companion: entering store for resp_4218b4f022ae (hybrid=True, has_cache=True)
+[22:10:38.377] INFO:vmlx_engine.scheduler:SSM companion: queued deferred re-derive for resp_4218b4f022ae (gpl=3, 712 cache-key tokens, will run during next idle period)
+[22:10:38.377] INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=712, num_new_blocks=12, frugal=True, cumulative=external-companion
+[22:10:38.382] INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 6 positional layers (out of 24 total)
+[22:10:38.382] WARNING:vmlx_engine.paged_cache:Out of cache blocks
+[22:10:38.382] WARNING:vmlx_engine.prefix_cache:Paged cache capacity reached for resp_4218b4f022ae; stored partial prefix 576/712 tokens (9 blocks). Increase Max Cache Blocks or lower Block Size to cache more of this prompt.
+[22:10:38.517] INFO:vmlx_engine.scheduler:SSM companion: retargeted deferred re-derive for resp_4218b4f022ae from 712 to stored paged boundary 576 tokens
+[22:10:38.517] INFO:vmlx_engine.scheduler:Stored paged cache for request resp_4218b4f022ae (712 cache-key tokens from 713 prompt tokens, 24 layers, cache truncated to 712 tokens)
+[22:10:38.518] INFO:vmlx_engine.scheduler:SSM re-derive: running deferred prefill for resp_4218b4f022ae (576 prompt tokens, 0 remaining in queue)
+[22:10:38.583] INFO:vmlx_engine.scheduler:SSM re-derive: stored clean companion for resp_4218b4f022ae: 18 SSM layers, 576-token key (next fetch will hit)
+[22:10:43.369] INFO:     127.0.0.1:57871 - "GET /health HTTP/1.1" 200 OK
+[22:10:48.359] INFO:     127.0.0.1:57871 - "GET /health HTTP/1.1" 200 OK
+[22:10:53.360] INFO:     127.0.0.1:57871 - "GET /health HTTP/1.1" 200 OK
+[22:10:54.776] INFO:     127.0.0.1:57872 - "GET /health HTTP/1.1" 200 OK
+[22:10:58.365] INFO:     127.0.0.1:57871 - "GET /health HTTP/1.1" 200 OK
+[22:11:03.371] INFO:     127.0.0.1:57876 - "GET /health HTTP/1.1" 200 OK
