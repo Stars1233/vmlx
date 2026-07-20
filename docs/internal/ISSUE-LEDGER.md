@@ -3223,3 +3223,19 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   reuse claim.
 - Evidence:
   `docs/internal/release-gates/20260719_laguna_soft_sleep_soak/`.
+
+## 2026-07-19 - Laguna deep-sleep unload and Wake
+
+- Status: `VERIFIED-LIVE_SCOPED` for real UI policy configuration, automatic
+  deep sleep, visible deep-standby state, in-process Wake reload, and default
+  restoration; cross-model swaps and signed-app repetition remain open.
+- The session settings UI set Light/Deep to `0`/`1`; the idle Laguna session
+  automatically entered `standby/deep`. Health reported
+  `standby_deep/model_loaded=false`, while the same PID 70292 and its listening
+  process remained alive. Electron visibly rendered `Deep Sleep` plus Wake.
+- Wake reloaded the model without replacing PID 70292. The settings UI then
+  restored `10`/`30`, and final state returned to
+  `standby/soft/model_loaded=true` with exactly one engine process.
+- No generation ran, so this row makes no streaming/cache-reuse claim.
+- Evidence:
+  `docs/internal/release-gates/20260719_laguna_deep_sleep_ui/`.

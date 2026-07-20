@@ -1375,3 +1375,9 @@ the cache restore row is independently live-proven.
 | Gate | Status | Current source + live evidence | Remaining boundary |
 |---|---|---|---|
 | Same-process soft sleep/Wake | PASS-LIVE scoped 3-cycle soak | The real Electron moon and Wake controls completed three consecutive cycles on Laguna PID 70292. Each wake produced DB `running` and health `healthy/model_loaded=true`; each sleep produced DB `standby/soft` and health `standby_soft/model_loaded=true`. The final process list had exactly one engine, and the log retained all six transitions. | Deep sleep/model unload, repeated cross-model one-model swaps, and signed-app repeat remain open. Evidence: `../20260719_laguna_soft_sleep_soak/`. |
+
+## 2026-07-19 Laguna deep-sleep unload lifecycle
+
+| Gate | Status | Current source + live evidence | Remaining boundary |
+|---|---|---|---|
+| Deep sleep and same-PID Wake | PASS-LIVE scoped | The real power-settings UI set Light/Deep to `0`/`1`, after which idle Laguna automatically entered deep sleep. Electron visibly rendered `Deep Sleep`; DB stored `standby/deep`; health reported `standby_deep/model_loaded=false`; PID 70292 remained alive. Visible Wake reloaded the model in place. UI defaults were restored to `10`/`30`, and final state is `standby/soft/model_loaded=true` with one engine. | Repeat another loader class, repeated one-model cross-model swaps, and signed-app lifecycle. Evidence: `../20260719_laguna_deep_sleep_ui/`. |
