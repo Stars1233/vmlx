@@ -3171,3 +3171,18 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - Retain `OPEN`: natural decode is still about 24 tok/s, restart cache TTFT is
   slower than warm RAM, long-agent reliability/strict formatting remain
   partial, and other deferred loader routes still need eager proof.
+
+## 2026-07-19 - eager Start evidence reconciliation
+
+- Status: `VERIFIED-LIVE_SCOPED` for the already-recorded DSV4, Laguna, Step,
+  openPangu, Gemma mixed-SWA, HY3 native-MTP D1, and MiniMax M2.7 JANGTQ
+  routes; remaining loader classes, repeated sleep/wake swaps, and signed-app
+  repetition remain `PARTIAL`/`OPEN`.
+- This is a documentation reconciliation, not a new runtime run. Each named
+  gate used the real Electron Start or Stop/Start control and captured health
+  before the first request with the model loaded and no prior request. The
+  corresponding evidence directories are now linked from the master matrix's
+  eager-materialization row so these routes are not repeatedly retested.
+- No claim is generalized to an untested loader class. In particular, Mistral
+  MXFP4 remains excluded by user directive, and Mistral JANGTQ2 remains on its
+  separately documented blocked runtime row.
