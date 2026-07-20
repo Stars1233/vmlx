@@ -1,0 +1,21 @@
+{
+  "content": "1. Prefix caching stores common data block prefixes upfront.\n2. Eliminates redundant computation for repeated patterns.\n3. Accelerates processing speed significantly.\nLAG-EXPLICIT-UI1-DONE",
+  "reasoning_content": "The user wants me to explain prefix caching in exactly three numbered lines, then add a fourth line with the specific marker. It plans the concise definition, reuse, and speed benefit before producing the answer.",
+  "metrics": {
+    "tokenCount": 148,
+    "promptTokens": 177,
+    "cachedTokens": 90,
+    "cacheDetail": "paged+disk+tq-native",
+    "tokensPerSecond": "31.6",
+    "ppSpeed": "710.8",
+    "ttft": "0.25",
+    "totalTime": "5.0"
+  },
+  "warnings": null,
+  "tool_calls": null,
+  "chat_override": {
+    "enable_thinking": 1,
+    "max_thinking_tokens": 256,
+    "builtin_tools_enabled": 0
+  }
+}
