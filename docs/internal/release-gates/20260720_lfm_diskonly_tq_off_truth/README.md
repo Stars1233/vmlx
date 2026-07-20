@@ -10,6 +10,8 @@ Branch: `codex/postrelease-ui-drawers-20260720`
 
 Base HEAD before this scoped repair: `e8755c6b2e4a8abe5cfb38b0a284fb61129a0634`
 
+Scoped source/test/evidence commit: `d23a4a37f215937ebd3289f2ac777208f0b594d2`
+
 Public checkpoint boundary: v1.6.14 is already public at tagged source
 `e1776a485`. This post-release cache repair is newer than that tag and is not
 part of the public v1.6.14 binaries.
@@ -18,7 +20,7 @@ part of the public v1.6.14 binaries.
 
 - LFM block-disk reuse with Paged Cache **Off**, Block Disk L2 **On**, and
   stored KV quantization explicitly **None**: **PASS-LIVE scoped on current
-  post-release source**.
+  post-release source at `d23a4a37f`**.
 - Partial-prefix reuse from SSD without a resident paged-KV payload:
   **PASS-LIVE scoped**. The live process restored nine 64-token blocks, saved
   576 of 716 prompt tokens, and retained zero resident L1 KV bytes.

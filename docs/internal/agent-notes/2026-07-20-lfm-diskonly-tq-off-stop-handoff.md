@@ -15,6 +15,8 @@ other Mac, not the local Swift repository.
 - Upstream: `origin/codex/postrelease-ui-drawers-20260720`
 - Base before the pending scoped cache repair:
   `e8755c6b2e4a8abe5cfb38b0a284fb61129a0634`
+- Scoped source/test/evidence commit:
+  `d23a4a37f215937ebd3289f2ac777208f0b594d2`
 - Electron profile: `/Users/eric/.vmlx-v1613-responsive-dev`
 - CDP: `127.0.0.1:9335`
 - Python runtime venv: `/Users/eric/mlx/vllm-mlx/.venv`
@@ -60,7 +62,7 @@ Two defects were found:
    block pool stored only 576 tokens, and the scheduler idle predicate did not
    wake for that queued rederive.
 
-## Pending scoped source/test changes
+## Committed scoped source/test changes
 
 These are intentional user/agent changes and must not be reverted:
 
@@ -122,9 +124,9 @@ effective value across UI, SQLite, launch preview, argv, and health.
 ## Working-tree ownership and staging boundary
 
 At the start of this repair, the branch and upstream both pointed to
-`e8755c6b2`. The intended scoped commit consists only of the five source/test
-files above plus the evidence README/artifacts, this handoff, the canonical
-matrix update, and the issue-ledger update.
+`e8755c6b2`. Commit `d23a4a37f` contains only the five source/test files above
+plus the evidence README/artifacts, this handoff, the canonical matrix update,
+and the issue-ledger update.
 
 Preserve these unrelated/local-only paths:
 
@@ -310,8 +312,8 @@ retained row that lacks current proof or has a current failure.
 
 1. Re-read all canonical files above and `git status --short`.
 2. Confirm the stopped LFM state and no port-8016 listener.
-3. Confirm the scoped handoff commit is present locally and on the upstream
-   branch; do not overwrite newer work if HEAD moved.
+3. Confirm `d23a4a37f` is present locally and on the upstream branch; do not
+   overwrite newer work if HEAD moved.
 4. Through the real Electron UI, restore desired steady-state LFM settings
    (expected policy should be chosen from the then-current matrix, not from
    memory), then verify DB/preview/argv/health.
