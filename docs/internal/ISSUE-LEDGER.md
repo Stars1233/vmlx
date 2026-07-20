@@ -3150,3 +3150,24 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   composite and must be proven on compatible families instead.
 - Evidence:
   `docs/internal/release-gates/20260719_openpangu_current_disk_restore/`.
+
+## 2026-07-19 - Laguna eager Start checkpoint
+
+- Status: `VERIFIED-LIVE_SCOPED` for eager Start/materialization on current head
+  `7d48071e2`; Laguna performance/reliability and overall release remain
+  `PARTIAL`.
+- The real Electron Sessions Start control stopped the prior LFM process and
+  launched only `Laguna-M.1-JANG_2L` PID 70292. Before any request, health
+  reported `model_loaded=true`, `last_request_time=null`, and 82,631.3 MB
+  active memory. The process argv selected `glm47`, qwen3 reasoning, Paged On,
+  Block L2 On, and Auto q4 TurboQuant storage.
+- The first fresh Electron turn persisted 1,524 separate reasoning characters
+  and a coherent two-sentence visible answer ending `LAGUNA-EAGER-DONE`; there
+  was no tool call or warning. The attempted DOM paint observer exited without
+  saving samples, so this row does not replace the existing current Laguna raw
+  SSE/Electron progressive-paint evidence and makes no new streaming-timing
+  claim.
+- Evidence: `docs/internal/release-gates/20260719_laguna_eager_current/`.
+- Retain `OPEN`: natural decode is still about 24 tok/s, restart cache TTFT is
+  slower than warm RAM, long-agent reliability/strict formatting remain
+  partial, and other deferred loader routes still need eager proof.
