@@ -1,0 +1,6585 @@
+{
+  "health_before": {
+    "last_request_time": 1784511001.525537,
+    "native_cache": {
+      "family": "openpangu_v2",
+      "schema": "openpangu_v2_composite_v2",
+      "cache_type": "native_path_dependent_composite",
+      "cache_subtype": "openpangu_v2_composite",
+      "components": [
+        "mla_latent_kv",
+        "dsa_indexer_state",
+        "swa_rotating_window",
+        "path_dependent_conv_state"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "mla_and_path_dependent_conv_state"
+      },
+      "cache_store_policy": {
+        "prompt_boundary_snapshot": "exact_typed_n_minus_1",
+        "state_roundtrip": "kv_indexer_swa_meta_and_three_conv_states",
+        "reverse_truncation": "unsupported_clean_miss",
+        "generic_paged_blocks": "unsupported",
+        "prompt_disk_l2": "exact_typed_full_precision",
+        "reuse": "exact_or_forward_prefix_from_typed_boundary"
+      },
+      "prefix_configured": true,
+      "prefix": true,
+      "paged": false,
+      "prompt_disk_l2_configured": true,
+      "block_disk_l2_configured": false,
+      "prompt_disk_l2": true,
+      "block_disk_l2": false
+    },
+    "turboquant_kv_cache": {
+      "enabled": false
+    },
+    "scheduler": {
+      "num_waiting": 0,
+      "num_running": 0,
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1,
+        "prompt_snapshot_max_bytes": 10737418240,
+        "prompt_snapshot_last_estimated_bytes": 1159278592,
+        "prompt_snapshot_oversize_skips": 0
+      },
+      "single_active_decode": true,
+      "ewma_ttft_seconds": 0.046,
+      "cache_hit_requests": 1,
+      "cache_hit_tokens": 817,
+      "cache_hit_tokens_by_detail": {
+        "disk": 817
+      },
+      "hybrid_kv_without_ssm_hits": 0,
+      "hybrid_kv_without_ssm_tokens": 0,
+      "last_hybrid_kv_without_ssm": null,
+      "cache_reuse_skips": 0,
+      "cache_reuse_skip_tokens": 0,
+      "last_cache_reuse_skip": null,
+      "cache_reuse_partial_downgrades": 0,
+      "cache_reuse_partial_tokens": 0,
+      "last_cache_reuse_partial": null,
+      "last_cache_selection": null,
+      "last_cache_execution": {
+        "request_id": "resp_d03a28ab7ddb",
+        "cache_detail": "disk",
+        "cached_tokens": 817,
+        "blocks": 0,
+        "reconstructed": false,
+        "dequantized": false,
+        "reconstruction_seconds": 0.0,
+        "dequantization_seconds": 0.0,
+        "total_worker_cache_seconds": 0.000321
+      }
+    },
+    "scheduler_cache": {
+      "hits": 0,
+      "misses": 1,
+      "hit_rate": 0.0,
+      "evictions": 0,
+      "tokens_saved": 0,
+      "current_memory_mb": 1105.57,
+      "max_memory_mb": 9969.21,
+      "memory_utilization": 0.1109,
+      "entry_count": 1,
+      "nbytes": 1159278592,
+      "nbytes_by_type": {
+        "assistant": 0,
+        "user": 1159278592,
+        "system": 0
+      },
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 1,
+        "system": 0
+      },
+      "max_bytes": 10453472870,
+      "disk_cache": {
+        "entries": 8,
+        "total_tokens_on_disk": 6502,
+        "total_cached_tokens": 6502,
+        "total_size_mb": 10054.36,
+        "max_size_gb": 10.0,
+        "hits": 1,
+        "misses": 0,
+        "stores": 0,
+        "hit_rate": 1.0,
+        "pending_writes": 0,
+        "tq_native_enabled": false
+      },
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1,
+        "prompt_snapshot_max_bytes": 10737418240,
+        "prompt_snapshot_last_estimated_bytes": 1159278592,
+        "prompt_snapshot_oversize_skips": 0
+      }
+    },
+    "totals": {
+      "ram_tokens_cached": 0,
+      "l1_indexed_tokens": 0,
+      "l1_resident_bytes": 0,
+      "l1_resident_bytes_mb": 0.0,
+      "l1_max_resident_bytes": 0,
+      "l1_max_resident_bytes_mb": 0.0,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 6502,
+      "l2_block_tokens_on_disk": 0,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 6502,
+      "l2_tokens_on_disk_store_sum": 6502,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    }
+  },
+  "runs": [
+    {
+      "label": "cold_a",
+      "status": 200,
+      "visible": "PANGU-API-A-DONE",
+      "reasoning": "First, the user has provided a list of typed prompt records from 001 to 032, each preserving a corresponding PANGU-API. The instruction is: \"Do not use tools. If the input ends here, privately reason and reply exactly PANGU-API-A-DONE and nothing else.\"\n\nI need to check if the input ends here. The input is the entire message, which includes the list of records and then the instruction. The last part is: \"Do not use tools. If the input ends here, privately reason and reply exactly PANGU-API-A-DONE and nothing else.\"\n\nSo, the input does end here. I should not use any tools. I need to privately reason and then reply exactly with \"PANGU-API-A-DONE\" and nothing else.\n\nWhat does \"privately reason\" mean? It means I should think about it internally, but my response should only be the specified string. So, in my response, I must output only \"PANGU-API-A-DONE\".\n\nI should ensure that there are no additional characters, spaces, or newlines. Just the exact string.\n\nAlso, note that the user said \"If the input ends here\" – and it does. So, I follow the instruction.\n\nMy response should be: PANGU-API-A-DONE\n\nI need to confirm that I'm not using any tools. The instruction explicitly says \"Do not use tools.\" So, I'll just output the response without any processing.\n\nFinally, I'll write the response.",
+      "content_delta_count": 6,
+      "reasoning_delta_count": 307,
+      "output_text_done_count": 1,
+      "completed_count": 1,
+      "last_content_to_completed_s": 0.0487,
+      "elapsed_s": 12.6015,
+      "events": [
+        {
+          "at_s": 0.0037,
+          "type": "response.created"
+        },
+        {
+          "at_s": 0.0037,
+          "type": "response.output_item.added"
+        },
+        {
+          "at_s": 0.0038,
+          "type": "response.content_part.added"
+        },
+        {
+          "at_s": 0.827,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "First"
+        },
+        {
+          "at_s": 0.8649,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 0.9009,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 0.9369,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " user"
+        },
+        {
+          "at_s": 0.9727,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " has"
+        },
+        {
+          "at_s": 1.0085,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " provided"
+        },
+        {
+          "at_s": 1.0439,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " a"
+        },
+        {
+          "at_s": 1.0795,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " list"
+        },
+        {
+          "at_s": 1.115,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " of"
+        },
+        {
+          "at_s": 1.1503,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " typed"
+        },
+        {
+          "at_s": 1.1859,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " prompt"
+        },
+        {
+          "at_s": 1.2215,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " records"
+        },
+        {
+          "at_s": 1.2572,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " from"
+        },
+        {
+          "at_s": 1.3154,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_s": 1.3516,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_s": 1.3875,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_s": 1.4232,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_s": 1.4589,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_s": 1.4945,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_s": 1.5304,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_s": 1.5662,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_s": 1.6019,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_s": 1.6377,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 1.6734,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " each"
+        },
+        {
+          "at_s": 1.7091,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " preserving"
+        },
+        {
+          "at_s": 1.7446,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " a"
+        },
+        {
+          "at_s": 1.7804,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " corresponding"
+        },
+        {
+          "at_s": 1.8161,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " P"
+        },
+        {
+          "at_s": 1.8518,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 1.8878,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 1.9241,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 1.96,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " The"
+        },
+        {
+          "at_s": 1.9959,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " instruction"
+        },
+        {
+          "at_s": 2.0317,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_s": 2.0676,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_s": 2.1034,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 2.1391,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Do"
+        },
+        {
+          "at_s": 2.175,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " not"
+        },
+        {
+          "at_s": 2.2111,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " use"
+        },
+        {
+          "at_s": 2.247,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " tools"
+        },
+        {
+          "at_s": 2.2829,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 2.3187,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " If"
+        },
+        {
+          "at_s": 2.3547,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 2.4055,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 2.4419,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " ends"
+        },
+        {
+          "at_s": 2.4782,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " here"
+        },
+        {
+          "at_s": 2.5144,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 2.5507,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " privately"
+        },
+        {
+          "at_s": 2.5869,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reason"
+        },
+        {
+          "at_s": 2.623,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 2.659,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reply"
+        },
+        {
+          "at_s": 2.6951,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " exactly"
+        },
+        {
+          "at_s": 2.731,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " P"
+        },
+        {
+          "at_s": 2.7667,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 2.8026,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 2.8387,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-A"
+        },
+        {
+          "at_s": 2.8749,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 2.9114,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 2.9476,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 2.9837,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " nothing"
+        },
+        {
+          "at_s": 3.0199,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " else"
+        },
+        {
+          "at_s": 3.056,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\"\n\n"
+        },
+        {
+          "at_s": 3.092,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "I"
+        },
+        {
+          "at_s": 3.128,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " need"
+        },
+        {
+          "at_s": 3.164,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_s": 3.2003,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " check"
+        },
+        {
+          "at_s": 3.2365,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " if"
+        },
+        {
+          "at_s": 3.2739,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 3.3107,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 3.347,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " ends"
+        },
+        {
+          "at_s": 3.3834,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " here"
+        },
+        {
+          "at_s": 3.4201,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 3.4562,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " The"
+        },
+        {
+          "at_s": 3.5004,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 3.537,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_s": 3.5734,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 3.6098,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " entire"
+        },
+        {
+          "at_s": 3.6461,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " message"
+        },
+        {
+          "at_s": 3.6824,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 3.7367,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " which"
+        },
+        {
+          "at_s": 3.773,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " includes"
+        },
+        {
+          "at_s": 3.8095,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 3.846,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " list"
+        },
+        {
+          "at_s": 3.8828,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " of"
+        },
+        {
+          "at_s": 3.9194,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " records"
+        },
+        {
+          "at_s": 3.9558,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 3.9922,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " then"
+        },
+        {
+          "at_s": 4.0284,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 4.0649,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " instruction"
+        },
+        {
+          "at_s": 4.1012,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 4.1378,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " The"
+        },
+        {
+          "at_s": 4.1746,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " last"
+        },
+        {
+          "at_s": 4.2115,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " part"
+        },
+        {
+          "at_s": 4.2488,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_s": 4.2853,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_s": 4.3219,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 4.3582,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Do"
+        },
+        {
+          "at_s": 4.3948,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " not"
+        },
+        {
+          "at_s": 4.4312,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " use"
+        },
+        {
+          "at_s": 4.4677,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " tools"
+        },
+        {
+          "at_s": 4.5041,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 4.5406,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " If"
+        },
+        {
+          "at_s": 4.5882,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 4.6249,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 4.6615,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " ends"
+        },
+        {
+          "at_s": 4.6981,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " here"
+        },
+        {
+          "at_s": 4.7347,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 4.7712,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " privately"
+        },
+        {
+          "at_s": 4.8078,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reason"
+        },
+        {
+          "at_s": 4.8444,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 4.8813,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reply"
+        },
+        {
+          "at_s": 4.9181,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " exactly"
+        },
+        {
+          "at_s": 4.9548,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " P"
+        },
+        {
+          "at_s": 4.9914,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 5.028,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 5.0645,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-A"
+        },
+        {
+          "at_s": 5.101,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 5.1377,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 5.1745,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 5.2114,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " nothing"
+        },
+        {
+          "at_s": 5.2481,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " else"
+        },
+        {
+          "at_s": 5.285,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\"\n\n"
+        },
+        {
+          "at_s": 5.3218,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "So"
+        },
+        {
+          "at_s": 5.3587,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 5.3952,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 5.4322,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 5.469,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " does"
+        },
+        {
+          "at_s": 5.5057,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " end"
+        },
+        {
+          "at_s": 5.5423,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " here"
+        },
+        {
+          "at_s": 5.5793,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 5.6163,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_s": 5.6534,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " should"
+        },
+        {
+          "at_s": 5.6905,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " not"
+        },
+        {
+          "at_s": 5.7273,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " use"
+        },
+        {
+          "at_s": 5.7643,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " any"
+        },
+        {
+          "at_s": 5.8014,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " tools"
+        },
+        {
+          "at_s": 5.8382,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 5.8752,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_s": 5.9126,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " need"
+        },
+        {
+          "at_s": 5.9499,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_s": 5.987,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " privately"
+        },
+        {
+          "at_s": 6.024,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reason"
+        },
+        {
+          "at_s": 6.0612,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 6.0981,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " then"
+        },
+        {
+          "at_s": 6.135,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reply"
+        },
+        {
+          "at_s": 6.1721,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " exactly"
+        },
+        {
+          "at_s": 6.2095,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " with"
+        },
+        {
+          "at_s": 6.2465,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 6.2834,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "P"
+        },
+        {
+          "at_s": 6.3206,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 6.3578,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 6.3948,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-A"
+        },
+        {
+          "at_s": 6.4319,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 6.4691,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 6.5062,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "\""
+        },
+        {
+          "at_s": 6.5432,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 6.5805,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " nothing"
+        },
+        {
+          "at_s": 6.6174,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " else"
+        },
+        {
+          "at_s": 6.6544,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\n\n"
+        },
+        {
+          "at_s": 6.6914,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "What"
+        },
+        {
+          "at_s": 6.7285,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " does"
+        },
+        {
+          "at_s": 6.7657,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 6.8029,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "priv"
+        },
+        {
+          "at_s": 6.8401,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ately"
+        },
+        {
+          "at_s": 6.8772,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reason"
+        },
+        {
+          "at_s": 6.9147,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "\""
+        },
+        {
+          "at_s": 6.952,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " mean"
+        },
+        {
+          "at_s": 6.9894,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "?"
+        },
+        {
+          "at_s": 7.0265,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " It"
+        },
+        {
+          "at_s": 7.0637,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " means"
+        },
+        {
+          "at_s": 7.101,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_s": 7.1382,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " should"
+        },
+        {
+          "at_s": 7.1753,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " think"
+        },
+        {
+          "at_s": 7.2126,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " about"
+        },
+        {
+          "at_s": 7.2499,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " it"
+        },
+        {
+          "at_s": 7.2874,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " internally"
+        },
+        {
+          "at_s": 7.3247,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 7.3623,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " but"
+        },
+        {
+          "at_s": 7.3996,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " my"
+        },
+        {
+          "at_s": 7.4371,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " response"
+        },
+        {
+          "at_s": 7.4742,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " should"
+        },
+        {
+          "at_s": 7.5116,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " only"
+        },
+        {
+          "at_s": 7.5492,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " be"
+        },
+        {
+          "at_s": 7.5868,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 7.6239,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " specified"
+        },
+        {
+          "at_s": 7.661,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " string"
+        },
+        {
+          "at_s": 7.6983,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 7.7356,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " So"
+        },
+        {
+          "at_s": 7.7728,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 7.8101,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " in"
+        },
+        {
+          "at_s": 7.8477,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " my"
+        },
+        {
+          "at_s": 7.8851,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " response"
+        },
+        {
+          "at_s": 7.9226,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 7.9601,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_s": 7.9976,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " must"
+        },
+        {
+          "at_s": 8.0352,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " output"
+        },
+        {
+          "at_s": 8.0726,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " only"
+        },
+        {
+          "at_s": 8.1101,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 8.1476,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "P"
+        },
+        {
+          "at_s": 8.1853,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 8.2232,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 8.2637,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-A"
+        },
+        {
+          "at_s": 8.3015,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 8.3393,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 8.3767,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "\".\n\n"
+        },
+        {
+          "at_s": 8.4149,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "I"
+        },
+        {
+          "at_s": 8.4528,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " should"
+        },
+        {
+          "at_s": 8.4906,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " ensure"
+        },
+        {
+          "at_s": 8.5281,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " that"
+        },
+        {
+          "at_s": 8.566,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " there"
+        },
+        {
+          "at_s": 8.6037,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " are"
+        },
+        {
+          "at_s": 8.6415,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " no"
+        },
+        {
+          "at_s": 8.6792,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " additional"
+        },
+        {
+          "at_s": 8.745,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " characters"
+        },
+        {
+          "at_s": 8.7832,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 8.8209,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " spaces"
+        },
+        {
+          "at_s": 8.8586,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 8.8966,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " or"
+        },
+        {
+          "at_s": 8.9348,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " new"
+        },
+        {
+          "at_s": 8.9726,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "lines"
+        },
+        {
+          "at_s": 9.0104,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 9.0482,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Just"
+        },
+        {
+          "at_s": 9.0857,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 9.1235,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " exact"
+        },
+        {
+          "at_s": 9.1611,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " string"
+        },
+        {
+          "at_s": 9.199,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\n\n"
+        },
+        {
+          "at_s": 9.2367,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Also"
+        },
+        {
+          "at_s": 9.2745,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 9.3124,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " note"
+        },
+        {
+          "at_s": 9.3503,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " that"
+        },
+        {
+          "at_s": 9.3882,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 9.4265,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " user"
+        },
+        {
+          "at_s": 9.4644,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " said"
+        },
+        {
+          "at_s": 9.5024,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 9.5407,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "If"
+        },
+        {
+          "at_s": 9.5788,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 9.6194,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 9.6572,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " ends"
+        },
+        {
+          "at_s": 9.695,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " here"
+        },
+        {
+          "at_s": 9.7327,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "\""
+        },
+        {
+          "at_s": 9.7703,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_s": 9.8081,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "–"
+        },
+        {
+          "at_s": 9.8461,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 9.884,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " it"
+        },
+        {
+          "at_s": 9.9217,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " does"
+        },
+        {
+          "at_s": 9.9595,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 9.9974,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " So"
+        },
+        {
+          "at_s": 10.0351,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 10.0726,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_s": 10.1104,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " follow"
+        },
+        {
+          "at_s": 10.1482,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 10.1862,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " instruction"
+        },
+        {
+          "at_s": 10.224,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\n\n"
+        },
+        {
+          "at_s": 10.262,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "My"
+        },
+        {
+          "at_s": 10.3,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " response"
+        },
+        {
+          "at_s": 10.3379,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " should"
+        },
+        {
+          "at_s": 10.3757,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " be"
+        },
+        {
+          "at_s": 10.4138,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_s": 10.4518,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " P"
+        },
+        {
+          "at_s": 10.4898,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 10.5277,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 10.5658,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-A"
+        },
+        {
+          "at_s": 10.6036,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 10.6412,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 10.6786,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "\n\n"
+        },
+        {
+          "at_s": 10.7167,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "I"
+        },
+        {
+          "at_s": 10.7546,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " need"
+        },
+        {
+          "at_s": 10.7924,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_s": 10.8301,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " confirm"
+        },
+        {
+          "at_s": 10.8706,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " that"
+        },
+        {
+          "at_s": 10.9085,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_s": 10.9468,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "'m"
+        },
+        {
+          "at_s": 10.9847,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " not"
+        },
+        {
+          "at_s": 11.0229,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " using"
+        },
+        {
+          "at_s": 11.0613,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " any"
+        },
+        {
+          "at_s": 11.0995,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " tools"
+        },
+        {
+          "at_s": 11.1375,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 11.1755,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " The"
+        },
+        {
+          "at_s": 11.2136,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " instruction"
+        },
+        {
+          "at_s": 11.2517,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " explicitly"
+        },
+        {
+          "at_s": 11.2897,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " says"
+        },
+        {
+          "at_s": 11.3278,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 11.3661,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Do"
+        },
+        {
+          "at_s": 11.4044,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " not"
+        },
+        {
+          "at_s": 11.4425,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " use"
+        },
+        {
+          "at_s": 11.4806,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " tools"
+        },
+        {
+          "at_s": 11.5188,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\""
+        },
+        {
+          "at_s": 11.5571,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " So"
+        },
+        {
+          "at_s": 11.5953,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 11.6336,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_s": 11.6718,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "'ll"
+        },
+        {
+          "at_s": 11.7099,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " just"
+        },
+        {
+          "at_s": 11.7479,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " output"
+        },
+        {
+          "at_s": 11.7862,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 11.8244,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " response"
+        },
+        {
+          "at_s": 11.8627,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " without"
+        },
+        {
+          "at_s": 11.901,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " any"
+        },
+        {
+          "at_s": 11.9396,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " processing"
+        },
+        {
+          "at_s": 11.978,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\n\n"
+        },
+        {
+          "at_s": 12.0163,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Finally"
+        },
+        {
+          "at_s": 12.0544,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 12.0926,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_s": 12.1307,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "'ll"
+        },
+        {
+          "at_s": 12.1688,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " write"
+        },
+        {
+          "at_s": 12.2069,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 12.2452,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " response"
+        },
+        {
+          "at_s": 12.2836,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 12.36,
+          "type": "response.output_text.delta",
+          "delta": "P"
+        },
+        {
+          "at_s": 12.3982,
+          "type": "response.output_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 12.4367,
+          "type": "response.output_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 12.4752,
+          "type": "response.output_text.delta",
+          "delta": "-A"
+        },
+        {
+          "at_s": 12.5133,
+          "type": "response.output_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 12.5525,
+          "type": "response.output_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 12.601,
+          "type": "response.reasoning_summary_text.done"
+        },
+        {
+          "at_s": 12.6011,
+          "type": "response.output_text.done",
+          "text": "PANGU-API-A-DONE"
+        },
+        {
+          "at_s": 12.6011,
+          "type": "response.content_part.done"
+        },
+        {
+          "at_s": 12.6011,
+          "type": "response.output_item.done"
+        },
+        {
+          "at_s": 12.6012,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_0029a2563c12",
+            "object": "response",
+            "created_at": 1784511079,
+            "status": "completed",
+            "model": "jangq-ai/openPangu-2.0-Flash-JANG_3M",
+            "output_text": "PANGU-API-A-DONE",
+            "output": [
+              {
+                "id": "item_3fb9a4eebe92",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "PANGU-API-A-DONE",
+                    "annotations": []
+                  }
+                ]
+              },
+              {
+                "id": "rs_ff428e46fc2e",
+                "type": "reasoning",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "reasoning",
+                    "text": "First, the user has provided a list of typed prompt records from 001 to 032, each preserving a corresponding PANGU-API. The instruction is: \"Do not use tools. If the input ends here, privately reason and reply exactly PANGU-API-A-DONE and nothing else.\"\n\nI need to check if the input ends here. The input is the entire message, which includes the list of records and then the instruction. The last part is: \"Do not use tools. If the input ends here, privately reason and reply exactly PANGU-API-A-DONE and nothing else.\"\n\nSo, the input does end here. I should not use any tools. I need to privately reason and then reply exactly with \"PANGU-API-A-DONE\" and nothing else.\n\nWhat does \"privately reason\" mean? It means I should think about it internally, but my response should only be the specified string. So, in my response, I must output only \"PANGU-API-A-DONE\".\n\nI should ensure that there are no additional characters, spaces, or newlines. Just the exact string.\n\nAlso, note that the user said \"If the input ends here\" – and it does. So, I follow the instruction.\n\nMy response should be: PANGU-API-A-DONE\n\nI need to confirm that I'm not using any tools. The instruction explicitly says \"Do not use tools.\" So, I'll just output the response without any processing.\n\nFinally, I'll write the response."
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 567,
+              "output_tokens": 315,
+              "total_tokens": 882
+            }
+          }
+        }
+      ]
+    },
+    {
+      "label": "exact_a",
+      "status": 200,
+      "visible": "PANGU-API-A-DONE",
+      "reasoning": "First, the user has provided a list of typed prompt records from 001 to 032, each preserving a corresponding PANGU-API. The instruction is: \"Do not use tools. If the input ends here, privately reason and reply exactly PANGU-API-A-DONE and nothing else.\"\n\nI need to check if the input ends here. The input is the entire message, which includes the list of records and then the instruction. The last part is: \"Do not use tools. If the input ends here, privately reason and reply exactly PANGU-API-A-DONE and nothing else.\"\n\nSo, the input does end here. I should not use any tools. I need to privately reason and then reply exactly with \"PANGU-API-A-DONE\" and nothing else.\n\nWhat does \"privately reason\" mean? It means I should think about it internally, but my response should only be the specified string. So, in my response, I must output only \"PANGU-API-A-DONE\".\n\nI should ensure that there are no additional characters, spaces, or newlines. Just the exact string.\n\nAlso, note that the user said \"If the input ends here\" – and it does. So, I follow the instruction.\n\nMy response should be: PANGU-API-A-DONE\n\nI need to confirm that I'm not using any tools. The instruction explicitly says \"Do not use tools.\" So, I'll just output the response without any processing.\n\nFinally, I'll write the response.",
+      "content_delta_count": 6,
+      "reasoning_delta_count": 307,
+      "output_text_done_count": 1,
+      "completed_count": 1,
+      "last_content_to_completed_s": 0.1563,
+      "elapsed_s": 12.5539,
+      "events": [
+        {
+          "at_s": 0.0035,
+          "type": "response.created"
+        },
+        {
+          "at_s": 0.0035,
+          "type": "response.output_item.added"
+        },
+        {
+          "at_s": 0.0035,
+          "type": "response.content_part.added"
+        },
+        {
+          "at_s": 0.6875,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "First"
+        },
+        {
+          "at_s": 0.7234,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 0.7593,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 0.7954,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " user"
+        },
+        {
+          "at_s": 0.8312,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " has"
+        },
+        {
+          "at_s": 0.8671,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " provided"
+        },
+        {
+          "at_s": 0.9029,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " a"
+        },
+        {
+          "at_s": 0.9387,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " list"
+        },
+        {
+          "at_s": 0.9743,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " of"
+        },
+        {
+          "at_s": 1.01,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " typed"
+        },
+        {
+          "at_s": 1.0458,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " prompt"
+        },
+        {
+          "at_s": 1.1144,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " records"
+        },
+        {
+          "at_s": 1.1275,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " from"
+        },
+        {
+          "at_s": 1.1638,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_s": 1.2,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_s": 1.2361,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_s": 1.2723,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_s": 1.3086,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_s": 1.3448,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_s": 1.3808,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_s": 1.4167,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_s": 1.4527,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_s": 1.4888,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 1.5246,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " each"
+        },
+        {
+          "at_s": 1.5606,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " preserving"
+        },
+        {
+          "at_s": 1.5966,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " a"
+        },
+        {
+          "at_s": 1.6327,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " corresponding"
+        },
+        {
+          "at_s": 1.6691,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " P"
+        },
+        {
+          "at_s": 1.7052,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 1.7413,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 1.7774,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 1.8136,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " The"
+        },
+        {
+          "at_s": 1.8495,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " instruction"
+        },
+        {
+          "at_s": 1.8855,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_s": 1.9215,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_s": 1.9574,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 1.9935,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Do"
+        },
+        {
+          "at_s": 2.0297,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " not"
+        },
+        {
+          "at_s": 2.066,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " use"
+        },
+        {
+          "at_s": 2.1024,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " tools"
+        },
+        {
+          "at_s": 2.1385,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 2.1749,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " If"
+        },
+        {
+          "at_s": 2.2118,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 2.2487,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 2.2854,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " ends"
+        },
+        {
+          "at_s": 2.3219,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " here"
+        },
+        {
+          "at_s": 2.3583,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 2.3948,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " privately"
+        },
+        {
+          "at_s": 2.431,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reason"
+        },
+        {
+          "at_s": 2.4673,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 2.5037,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reply"
+        },
+        {
+          "at_s": 2.54,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " exactly"
+        },
+        {
+          "at_s": 2.5764,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " P"
+        },
+        {
+          "at_s": 2.6127,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 2.649,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 2.6854,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-A"
+        },
+        {
+          "at_s": 2.7217,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 2.7578,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 2.7941,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 2.8306,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " nothing"
+        },
+        {
+          "at_s": 2.8668,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " else"
+        },
+        {
+          "at_s": 2.9032,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\"\n\n"
+        },
+        {
+          "at_s": 2.9397,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "I"
+        },
+        {
+          "at_s": 2.976,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " need"
+        },
+        {
+          "at_s": 3.0121,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_s": 3.0486,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " check"
+        },
+        {
+          "at_s": 3.0851,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " if"
+        },
+        {
+          "at_s": 3.1216,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 3.1581,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 3.1948,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " ends"
+        },
+        {
+          "at_s": 3.2319,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " here"
+        },
+        {
+          "at_s": 3.2681,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 3.3043,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " The"
+        },
+        {
+          "at_s": 3.3407,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 3.3772,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_s": 3.4137,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 3.4502,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " entire"
+        },
+        {
+          "at_s": 3.4868,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " message"
+        },
+        {
+          "at_s": 3.5232,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 3.5599,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " which"
+        },
+        {
+          "at_s": 3.5966,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " includes"
+        },
+        {
+          "at_s": 3.6334,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 3.6699,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " list"
+        },
+        {
+          "at_s": 3.7065,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " of"
+        },
+        {
+          "at_s": 3.743,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " records"
+        },
+        {
+          "at_s": 3.7799,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 3.8164,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " then"
+        },
+        {
+          "at_s": 3.8529,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 3.8895,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " instruction"
+        },
+        {
+          "at_s": 3.9262,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 3.9628,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " The"
+        },
+        {
+          "at_s": 3.9996,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " last"
+        },
+        {
+          "at_s": 4.0362,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " part"
+        },
+        {
+          "at_s": 4.0727,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_s": 4.1096,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_s": 4.1463,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 4.1831,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Do"
+        },
+        {
+          "at_s": 4.22,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " not"
+        },
+        {
+          "at_s": 4.2572,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " use"
+        },
+        {
+          "at_s": 4.2942,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " tools"
+        },
+        {
+          "at_s": 4.331,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 4.3678,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " If"
+        },
+        {
+          "at_s": 4.4045,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 4.4414,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 4.4779,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " ends"
+        },
+        {
+          "at_s": 4.5143,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " here"
+        },
+        {
+          "at_s": 4.5512,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 4.5881,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " privately"
+        },
+        {
+          "at_s": 4.625,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reason"
+        },
+        {
+          "at_s": 4.6617,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 4.6985,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reply"
+        },
+        {
+          "at_s": 4.7354,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " exactly"
+        },
+        {
+          "at_s": 4.7722,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " P"
+        },
+        {
+          "at_s": 4.8092,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 4.8462,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 4.8831,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-A"
+        },
+        {
+          "at_s": 4.9201,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 4.9572,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 4.9943,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 5.0313,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " nothing"
+        },
+        {
+          "at_s": 5.0682,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " else"
+        },
+        {
+          "at_s": 5.1053,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\"\n\n"
+        },
+        {
+          "at_s": 5.1424,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "So"
+        },
+        {
+          "at_s": 5.1795,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 5.2168,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 5.254,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 5.2913,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " does"
+        },
+        {
+          "at_s": 5.3285,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " end"
+        },
+        {
+          "at_s": 5.3655,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " here"
+        },
+        {
+          "at_s": 5.4028,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 5.4398,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_s": 5.477,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " should"
+        },
+        {
+          "at_s": 5.5142,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " not"
+        },
+        {
+          "at_s": 5.5514,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " use"
+        },
+        {
+          "at_s": 5.5888,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " any"
+        },
+        {
+          "at_s": 5.6261,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " tools"
+        },
+        {
+          "at_s": 5.6635,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 5.7015,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_s": 5.739,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " need"
+        },
+        {
+          "at_s": 5.7764,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_s": 5.8137,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " privately"
+        },
+        {
+          "at_s": 5.8509,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reason"
+        },
+        {
+          "at_s": 5.8883,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 5.9255,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " then"
+        },
+        {
+          "at_s": 5.9627,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reply"
+        },
+        {
+          "at_s": 6.0001,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " exactly"
+        },
+        {
+          "at_s": 6.0373,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " with"
+        },
+        {
+          "at_s": 6.0746,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 6.1209,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "P"
+        },
+        {
+          "at_s": 6.1584,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 6.1958,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 6.2332,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-A"
+        },
+        {
+          "at_s": 6.2705,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 6.3076,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 6.3447,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "\""
+        },
+        {
+          "at_s": 6.3818,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 6.419,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " nothing"
+        },
+        {
+          "at_s": 6.456,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " else"
+        },
+        {
+          "at_s": 6.4933,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\n\n"
+        },
+        {
+          "at_s": 6.5308,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "What"
+        },
+        {
+          "at_s": 6.5679,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " does"
+        },
+        {
+          "at_s": 6.6054,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 6.6427,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "priv"
+        },
+        {
+          "at_s": 6.68,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ately"
+        },
+        {
+          "at_s": 6.7173,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reason"
+        },
+        {
+          "at_s": 6.7546,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "\""
+        },
+        {
+          "at_s": 6.792,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " mean"
+        },
+        {
+          "at_s": 6.8296,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "?"
+        },
+        {
+          "at_s": 6.8668,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " It"
+        },
+        {
+          "at_s": 6.9041,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " means"
+        },
+        {
+          "at_s": 6.9415,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_s": 6.9792,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " should"
+        },
+        {
+          "at_s": 7.0164,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " think"
+        },
+        {
+          "at_s": 7.0537,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " about"
+        },
+        {
+          "at_s": 7.0912,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " it"
+        },
+        {
+          "at_s": 7.1285,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " internally"
+        },
+        {
+          "at_s": 7.1658,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 7.2033,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " but"
+        },
+        {
+          "at_s": 7.2407,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " my"
+        },
+        {
+          "at_s": 7.2785,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " response"
+        },
+        {
+          "at_s": 7.316,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " should"
+        },
+        {
+          "at_s": 7.3538,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " only"
+        },
+        {
+          "at_s": 7.3912,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " be"
+        },
+        {
+          "at_s": 7.4287,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 7.4663,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " specified"
+        },
+        {
+          "at_s": 7.5041,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " string"
+        },
+        {
+          "at_s": 7.5421,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 7.5803,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " So"
+        },
+        {
+          "at_s": 7.618,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 7.6559,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " in"
+        },
+        {
+          "at_s": 7.6937,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " my"
+        },
+        {
+          "at_s": 7.7314,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " response"
+        },
+        {
+          "at_s": 7.7691,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 7.807,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_s": 7.8447,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " must"
+        },
+        {
+          "at_s": 7.8823,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " output"
+        },
+        {
+          "at_s": 7.9198,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " only"
+        },
+        {
+          "at_s": 7.9576,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 7.9954,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "P"
+        },
+        {
+          "at_s": 8.0332,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 8.0707,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 8.1084,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-A"
+        },
+        {
+          "at_s": 8.1461,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 8.1842,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 8.2216,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "\".\n\n"
+        },
+        {
+          "at_s": 8.2594,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "I"
+        },
+        {
+          "at_s": 8.2976,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " should"
+        },
+        {
+          "at_s": 8.3356,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " ensure"
+        },
+        {
+          "at_s": 8.3734,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " that"
+        },
+        {
+          "at_s": 8.4111,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " there"
+        },
+        {
+          "at_s": 8.4488,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " are"
+        },
+        {
+          "at_s": 8.4865,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " no"
+        },
+        {
+          "at_s": 8.524,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " additional"
+        },
+        {
+          "at_s": 8.562,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " characters"
+        },
+        {
+          "at_s": 8.5999,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 8.6382,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " spaces"
+        },
+        {
+          "at_s": 8.6761,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 8.7139,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " or"
+        },
+        {
+          "at_s": 8.7519,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " new"
+        },
+        {
+          "at_s": 8.7901,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "lines"
+        },
+        {
+          "at_s": 8.828,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 8.8662,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Just"
+        },
+        {
+          "at_s": 8.9042,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 8.9423,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " exact"
+        },
+        {
+          "at_s": 8.9802,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " string"
+        },
+        {
+          "at_s": 9.0185,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\n\n"
+        },
+        {
+          "at_s": 9.0566,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Also"
+        },
+        {
+          "at_s": 9.0948,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 9.1327,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " note"
+        },
+        {
+          "at_s": 9.171,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " that"
+        },
+        {
+          "at_s": 9.2109,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 9.2487,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " user"
+        },
+        {
+          "at_s": 9.287,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " said"
+        },
+        {
+          "at_s": 9.3248,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 9.3627,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "If"
+        },
+        {
+          "at_s": 9.4004,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 9.4381,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 9.476,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " ends"
+        },
+        {
+          "at_s": 9.5137,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " here"
+        },
+        {
+          "at_s": 9.5517,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "\""
+        },
+        {
+          "at_s": 9.5896,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_s": 9.6276,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "–"
+        },
+        {
+          "at_s": 9.6656,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 9.7036,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " it"
+        },
+        {
+          "at_s": 9.7413,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " does"
+        },
+        {
+          "at_s": 9.7794,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 9.8174,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " So"
+        },
+        {
+          "at_s": 9.8552,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 9.893,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_s": 9.931,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " follow"
+        },
+        {
+          "at_s": 9.9689,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 10.0068,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " instruction"
+        },
+        {
+          "at_s": 10.0445,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\n\n"
+        },
+        {
+          "at_s": 10.0822,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "My"
+        },
+        {
+          "at_s": 10.1205,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " response"
+        },
+        {
+          "at_s": 10.1667,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " should"
+        },
+        {
+          "at_s": 10.2047,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " be"
+        },
+        {
+          "at_s": 10.2428,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_s": 10.281,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " P"
+        },
+        {
+          "at_s": 10.3193,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 10.3571,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 10.3951,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-A"
+        },
+        {
+          "at_s": 10.4333,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 10.4706,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 10.508,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "\n\n"
+        },
+        {
+          "at_s": 10.5459,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "I"
+        },
+        {
+          "at_s": 10.5841,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " need"
+        },
+        {
+          "at_s": 10.6225,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_s": 10.6607,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " confirm"
+        },
+        {
+          "at_s": 10.6991,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " that"
+        },
+        {
+          "at_s": 10.7373,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_s": 10.7755,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "'m"
+        },
+        {
+          "at_s": 10.8136,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " not"
+        },
+        {
+          "at_s": 10.8516,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " using"
+        },
+        {
+          "at_s": 10.8898,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " any"
+        },
+        {
+          "at_s": 10.9279,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " tools"
+        },
+        {
+          "at_s": 10.9657,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 11.0039,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " The"
+        },
+        {
+          "at_s": 11.0419,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " instruction"
+        },
+        {
+          "at_s": 11.0799,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " explicitly"
+        },
+        {
+          "at_s": 11.1276,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " says"
+        },
+        {
+          "at_s": 11.1661,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 11.2045,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Do"
+        },
+        {
+          "at_s": 11.243,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " not"
+        },
+        {
+          "at_s": 11.2814,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " use"
+        },
+        {
+          "at_s": 11.3201,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " tools"
+        },
+        {
+          "at_s": 11.3585,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\""
+        },
+        {
+          "at_s": 11.3966,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " So"
+        },
+        {
+          "at_s": 11.4348,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 11.473,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_s": 11.5114,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "'ll"
+        },
+        {
+          "at_s": 11.5498,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " just"
+        },
+        {
+          "at_s": 11.5879,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " output"
+        },
+        {
+          "at_s": 11.6263,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 11.6648,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " response"
+        },
+        {
+          "at_s": 11.7033,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " without"
+        },
+        {
+          "at_s": 11.7414,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " any"
+        },
+        {
+          "at_s": 11.7798,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " processing"
+        },
+        {
+          "at_s": 11.8183,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\n\n"
+        },
+        {
+          "at_s": 11.8567,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Finally"
+        },
+        {
+          "at_s": 11.8949,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 11.9333,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_s": 11.9717,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "'ll"
+        },
+        {
+          "at_s": 12.0101,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " write"
+        },
+        {
+          "at_s": 12.0484,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 12.0867,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " response"
+        },
+        {
+          "at_s": 12.1251,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 12.2025,
+          "type": "response.output_text.delta",
+          "delta": "P"
+        },
+        {
+          "at_s": 12.242,
+          "type": "response.output_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 12.2812,
+          "type": "response.output_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 12.3201,
+          "type": "response.output_text.delta",
+          "delta": "-A"
+        },
+        {
+          "at_s": 12.3587,
+          "type": "response.output_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 12.3974,
+          "type": "response.output_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 12.5534,
+          "type": "response.reasoning_summary_text.done"
+        },
+        {
+          "at_s": 12.5535,
+          "type": "response.output_text.done",
+          "text": "PANGU-API-A-DONE"
+        },
+        {
+          "at_s": 12.5536,
+          "type": "response.content_part.done"
+        },
+        {
+          "at_s": 12.5536,
+          "type": "response.output_item.done"
+        },
+        {
+          "at_s": 12.5537,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_b74263f6dada",
+            "object": "response",
+            "created_at": 1784511092,
+            "status": "completed",
+            "model": "jangq-ai/openPangu-2.0-Flash-JANG_3M",
+            "output_text": "PANGU-API-A-DONE",
+            "output": [
+              {
+                "id": "item_46797c6be1db",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "PANGU-API-A-DONE",
+                    "annotations": []
+                  }
+                ]
+              },
+              {
+                "id": "rs_0276576d8a9c",
+                "type": "reasoning",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "reasoning",
+                    "text": "First, the user has provided a list of typed prompt records from 001 to 032, each preserving a corresponding PANGU-API. The instruction is: \"Do not use tools. If the input ends here, privately reason and reply exactly PANGU-API-A-DONE and nothing else.\"\n\nI need to check if the input ends here. The input is the entire message, which includes the list of records and then the instruction. The last part is: \"Do not use tools. If the input ends here, privately reason and reply exactly PANGU-API-A-DONE and nothing else.\"\n\nSo, the input does end here. I should not use any tools. I need to privately reason and then reply exactly with \"PANGU-API-A-DONE\" and nothing else.\n\nWhat does \"privately reason\" mean? It means I should think about it internally, but my response should only be the specified string. So, in my response, I must output only \"PANGU-API-A-DONE\".\n\nI should ensure that there are no additional characters, spaces, or newlines. Just the exact string.\n\nAlso, note that the user said \"If the input ends here\" – and it does. So, I follow the instruction.\n\nMy response should be: PANGU-API-A-DONE\n\nI need to confirm that I'm not using any tools. The instruction explicitly says \"Do not use tools.\" So, I'll just output the response without any processing.\n\nFinally, I'll write the response."
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 567,
+              "output_tokens": 315,
+              "total_tokens": 882,
+              "input_tokens_details": {
+                "cached_tokens": 566,
+                "cache_detail": "memory"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "label": "forward_b",
+      "status": 200,
+      "visible": "PANGU-API-A-DONE  \nPANGU-API-B-DONE",
+      "reasoning": "First, I need to understand the input. It's a list of \"Typed prompt records\" from 001 to 032, each preserving a corresponding PANGU-API. The instruction says: \"Do not use tools. If the input ends here, privately reason and reply exactly PANGU-API-A-DONE and nothing else. Additional forward-only suffix: because this suffix is present, privately reason and reply exactly PANGU-API-B-DONE and nothing else.\"\n\nThe input ends with the list, but there's an additional part: \"Additional forward-only suffix: because this suffix is present, privately reason and reply exactly PANGU-API-B-DONE and nothing else.\" This seems to be a condition that modifies the response.\n\nI need to parse this carefully. The main instruction is: \"If the input ends here, privately reason and reply exactly PANGU-API-A-DONE and nothing else.\" But then it says \"Additional forward-only suffix: because this suffix is present, privately reason and reply exactly PANGU-API-B-DONE and nothing else.\"\n\nThis is confusing. It might be that the input has two parts: the first part is the list, and then there's a suffix. The instruction says \"if the input ends here\" referring to the list, but then there's additional text. So, the input doesn't end at the list; it continues with the suffix.\n\nI should consider the entire input as given. The user has provided a block of text. I need to follow the instructions precisely.\n\nLet me break it down:\n\n1. \"Typed prompt record 001 preserves PANGU-API-001.\" ... up to \"Typed prompt record 032 preserves PANGU-API-032.\"\n\n2. Then: \"Do not use tools.\"\n\n3. Then: \"If the input ends here, privately reason and reply exactly PANGU-API-A-DONE and nothing else.\"\n\n4. Then: \"Additional forward-only suffix: because this suffix is present, privately reason and reply exactly PANGU-API-B-DONE and nothing else.\"\n\nThe phrase \"If the input ends here\" likely refers to the point after the list, but since there's more text, the input doesn't end there. However, the instruction is conditional: if the input ends at that point, do A. But it doesn't end there, so perhaps I should ignore that part? But then there's the suffix part.\n\nThe suffix says: \"because this suffix is present, privately reason and reply exactly PANGU-API-B-DONE",
+      "content_delta_count": 12,
+      "reasoning_delta_count": 512,
+      "output_text_done_count": 1,
+      "completed_count": 1,
+      "last_content_to_completed_s": 0.0345,
+      "elapsed_s": 21.7384,
+      "events": [
+        {
+          "at_s": 0.0034,
+          "type": "response.created"
+        },
+        {
+          "at_s": 0.0034,
+          "type": "response.output_item.added"
+        },
+        {
+          "at_s": 0.0034,
+          "type": "response.content_part.added"
+        },
+        {
+          "at_s": 0.64,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "First"
+        },
+        {
+          "at_s": 0.6763,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 0.7123,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_s": 0.7484,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " need"
+        },
+        {
+          "at_s": 0.7845,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_s": 0.8203,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " understand"
+        },
+        {
+          "at_s": 0.8562,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 0.8922,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 0.9283,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 0.9645,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " It"
+        },
+        {
+          "at_s": 1.0007,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "'s"
+        },
+        {
+          "at_s": 1.0369,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " a"
+        },
+        {
+          "at_s": 1.073,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " list"
+        },
+        {
+          "at_s": 1.1091,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " of"
+        },
+        {
+          "at_s": 1.145,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 1.1813,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Typed"
+        },
+        {
+          "at_s": 1.2176,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " prompt"
+        },
+        {
+          "at_s": 1.2536,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " records"
+        },
+        {
+          "at_s": 1.2897,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "\""
+        },
+        {
+          "at_s": 1.326,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " from"
+        },
+        {
+          "at_s": 1.3622,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_s": 1.3984,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_s": 1.4345,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_s": 1.4707,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_s": 1.5071,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_s": 1.5432,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_s": 1.5794,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_s": 1.6159,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_s": 1.6522,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_s": 1.689,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 1.7252,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " each"
+        },
+        {
+          "at_s": 1.7619,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " preserving"
+        },
+        {
+          "at_s": 1.7982,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " a"
+        },
+        {
+          "at_s": 1.8347,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " corresponding"
+        },
+        {
+          "at_s": 1.8707,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " P"
+        },
+        {
+          "at_s": 1.9071,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 1.9435,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 1.98,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 2.0164,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " The"
+        },
+        {
+          "at_s": 2.0531,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " instruction"
+        },
+        {
+          "at_s": 2.0899,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " says"
+        },
+        {
+          "at_s": 2.1266,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_s": 2.1629,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 2.1995,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Do"
+        },
+        {
+          "at_s": 2.2358,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " not"
+        },
+        {
+          "at_s": 2.2723,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " use"
+        },
+        {
+          "at_s": 2.3084,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " tools"
+        },
+        {
+          "at_s": 2.3451,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 2.3819,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " If"
+        },
+        {
+          "at_s": 2.4187,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 2.4551,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 2.4917,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " ends"
+        },
+        {
+          "at_s": 2.5283,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " here"
+        },
+        {
+          "at_s": 2.565,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 2.6015,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " privately"
+        },
+        {
+          "at_s": 2.6384,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reason"
+        },
+        {
+          "at_s": 2.6751,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 2.7121,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reply"
+        },
+        {
+          "at_s": 2.7488,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " exactly"
+        },
+        {
+          "at_s": 2.7855,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " P"
+        },
+        {
+          "at_s": 2.8219,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 2.8584,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 2.8949,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-A"
+        },
+        {
+          "at_s": 2.9315,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 2.9684,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 3.0051,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 3.0417,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " nothing"
+        },
+        {
+          "at_s": 3.0783,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " else"
+        },
+        {
+          "at_s": 3.1152,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 3.1519,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Additional"
+        },
+        {
+          "at_s": 3.1887,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " forward"
+        },
+        {
+          "at_s": 3.2256,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-only"
+        },
+        {
+          "at_s": 3.2625,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " suffix"
+        },
+        {
+          "at_s": 3.2994,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_s": 3.3359,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " because"
+        },
+        {
+          "at_s": 3.3725,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " this"
+        },
+        {
+          "at_s": 3.4093,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " suffix"
+        },
+        {
+          "at_s": 3.4461,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_s": 3.4828,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " present"
+        },
+        {
+          "at_s": 3.5399,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 3.5772,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " privately"
+        },
+        {
+          "at_s": 3.614,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reason"
+        },
+        {
+          "at_s": 3.651,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 3.6882,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reply"
+        },
+        {
+          "at_s": 3.7254,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " exactly"
+        },
+        {
+          "at_s": 3.7626,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " P"
+        },
+        {
+          "at_s": 3.7995,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 3.8364,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 3.8733,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-B"
+        },
+        {
+          "at_s": 3.9102,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 3.947,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 3.9842,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 4.0214,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " nothing"
+        },
+        {
+          "at_s": 4.0585,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " else"
+        },
+        {
+          "at_s": 4.0954,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\"\n\n"
+        },
+        {
+          "at_s": 4.1326,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "The"
+        },
+        {
+          "at_s": 4.1696,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 4.2067,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " ends"
+        },
+        {
+          "at_s": 4.2437,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " with"
+        },
+        {
+          "at_s": 4.2807,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 4.3177,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " list"
+        },
+        {
+          "at_s": 4.3547,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 4.3916,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " but"
+        },
+        {
+          "at_s": 4.4286,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " there"
+        },
+        {
+          "at_s": 4.4659,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "'s"
+        },
+        {
+          "at_s": 4.5029,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " an"
+        },
+        {
+          "at_s": 4.5399,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " additional"
+        },
+        {
+          "at_s": 4.577,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " part"
+        },
+        {
+          "at_s": 4.6141,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_s": 4.6513,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 4.6887,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Additional"
+        },
+        {
+          "at_s": 4.726,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " forward"
+        },
+        {
+          "at_s": 4.7633,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-only"
+        },
+        {
+          "at_s": 4.8005,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " suffix"
+        },
+        {
+          "at_s": 4.8376,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_s": 4.8747,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " because"
+        },
+        {
+          "at_s": 4.9119,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " this"
+        },
+        {
+          "at_s": 4.9493,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " suffix"
+        },
+        {
+          "at_s": 4.9865,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_s": 5.024,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " present"
+        },
+        {
+          "at_s": 5.0612,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 5.0985,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " privately"
+        },
+        {
+          "at_s": 5.1357,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reason"
+        },
+        {
+          "at_s": 5.1729,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 5.2105,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reply"
+        },
+        {
+          "at_s": 5.248,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " exactly"
+        },
+        {
+          "at_s": 5.2852,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " P"
+        },
+        {
+          "at_s": 5.3224,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 5.3597,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 5.3971,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-B"
+        },
+        {
+          "at_s": 5.434,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 5.4711,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 5.5086,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 5.5461,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " nothing"
+        },
+        {
+          "at_s": 5.5837,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " else"
+        },
+        {
+          "at_s": 5.6217,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\""
+        },
+        {
+          "at_s": 5.6597,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " This"
+        },
+        {
+          "at_s": 5.6977,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " seems"
+        },
+        {
+          "at_s": 5.7352,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_s": 5.7729,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " be"
+        },
+        {
+          "at_s": 5.8103,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " a"
+        },
+        {
+          "at_s": 5.8477,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " condition"
+        },
+        {
+          "at_s": 5.885,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " that"
+        },
+        {
+          "at_s": 5.9224,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " modifies"
+        },
+        {
+          "at_s": 5.9598,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 5.9972,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " response"
+        },
+        {
+          "at_s": 6.0345,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\n\n"
+        },
+        {
+          "at_s": 6.0722,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "I"
+        },
+        {
+          "at_s": 6.1096,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " need"
+        },
+        {
+          "at_s": 6.147,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_s": 6.1844,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " parse"
+        },
+        {
+          "at_s": 6.2222,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " this"
+        },
+        {
+          "at_s": 6.2596,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " carefully"
+        },
+        {
+          "at_s": 6.2969,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 6.3343,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " The"
+        },
+        {
+          "at_s": 6.3719,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " main"
+        },
+        {
+          "at_s": 6.4093,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " instruction"
+        },
+        {
+          "at_s": 6.4466,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_s": 6.4838,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_s": 6.5214,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 6.5588,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "If"
+        },
+        {
+          "at_s": 6.5963,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 6.6338,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 6.6714,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " ends"
+        },
+        {
+          "at_s": 6.7092,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " here"
+        },
+        {
+          "at_s": 6.7466,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 6.784,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " privately"
+        },
+        {
+          "at_s": 6.8215,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reason"
+        },
+        {
+          "at_s": 6.8591,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 6.8969,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reply"
+        },
+        {
+          "at_s": 6.9341,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " exactly"
+        },
+        {
+          "at_s": 6.9719,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " P"
+        },
+        {
+          "at_s": 7.0097,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 7.0473,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 7.0854,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-A"
+        },
+        {
+          "at_s": 7.1261,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 7.1637,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 7.2017,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 7.2394,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " nothing"
+        },
+        {
+          "at_s": 7.2772,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " else"
+        },
+        {
+          "at_s": 7.3151,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\""
+        },
+        {
+          "at_s": 7.353,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " But"
+        },
+        {
+          "at_s": 7.3907,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " then"
+        },
+        {
+          "at_s": 7.4286,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " it"
+        },
+        {
+          "at_s": 7.4665,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " says"
+        },
+        {
+          "at_s": 7.5045,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 7.5421,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Additional"
+        },
+        {
+          "at_s": 7.58,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " forward"
+        },
+        {
+          "at_s": 7.6179,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-only"
+        },
+        {
+          "at_s": 7.6559,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " suffix"
+        },
+        {
+          "at_s": 7.6938,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_s": 7.732,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " because"
+        },
+        {
+          "at_s": 7.7701,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " this"
+        },
+        {
+          "at_s": 7.808,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " suffix"
+        },
+        {
+          "at_s": 7.8458,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_s": 7.8841,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " present"
+        },
+        {
+          "at_s": 7.9218,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 7.9598,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " privately"
+        },
+        {
+          "at_s": 7.9977,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reason"
+        },
+        {
+          "at_s": 8.0358,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 8.0737,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reply"
+        },
+        {
+          "at_s": 8.1118,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " exactly"
+        },
+        {
+          "at_s": 8.1502,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " P"
+        },
+        {
+          "at_s": 8.189,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 8.2273,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 8.2655,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-B"
+        },
+        {
+          "at_s": 8.3037,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 8.3418,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 8.3799,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 8.4179,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " nothing"
+        },
+        {
+          "at_s": 8.4561,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " else"
+        },
+        {
+          "at_s": 8.4942,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\"\n\n"
+        },
+        {
+          "at_s": 8.5497,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "This"
+        },
+        {
+          "at_s": 8.5877,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_s": 8.6259,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " confusing"
+        },
+        {
+          "at_s": 8.664,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 8.7025,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " It"
+        },
+        {
+          "at_s": 8.741,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " might"
+        },
+        {
+          "at_s": 8.7792,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " be"
+        },
+        {
+          "at_s": 8.8175,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " that"
+        },
+        {
+          "at_s": 8.8553,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 8.8934,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 8.9311,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " has"
+        },
+        {
+          "at_s": 8.9693,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " two"
+        },
+        {
+          "at_s": 9.0077,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " parts"
+        },
+        {
+          "at_s": 9.0459,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_s": 9.084,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 9.1222,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " first"
+        },
+        {
+          "at_s": 9.1604,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " part"
+        },
+        {
+          "at_s": 9.1986,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_s": 9.2367,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 9.275,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " list"
+        },
+        {
+          "at_s": 9.3132,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 9.3514,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 9.3894,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " then"
+        },
+        {
+          "at_s": 9.4275,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " there"
+        },
+        {
+          "at_s": 9.4657,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "'s"
+        },
+        {
+          "at_s": 9.5034,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " a"
+        },
+        {
+          "at_s": 9.5436,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " suffix"
+        },
+        {
+          "at_s": 9.5817,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 9.6198,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " The"
+        },
+        {
+          "at_s": 9.6582,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " instruction"
+        },
+        {
+          "at_s": 9.6963,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " says"
+        },
+        {
+          "at_s": 9.7345,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 9.7726,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "if"
+        },
+        {
+          "at_s": 9.811,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 9.8492,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 9.8874,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " ends"
+        },
+        {
+          "at_s": 9.9256,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " here"
+        },
+        {
+          "at_s": 9.9639,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "\""
+        },
+        {
+          "at_s": 10.002,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " referring"
+        },
+        {
+          "at_s": 10.0405,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_s": 10.0788,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 10.1169,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " list"
+        },
+        {
+          "at_s": 10.155,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 10.1934,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " but"
+        },
+        {
+          "at_s": 10.2318,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " then"
+        },
+        {
+          "at_s": 10.2699,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " there"
+        },
+        {
+          "at_s": 10.308,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "'s"
+        },
+        {
+          "at_s": 10.3463,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " additional"
+        },
+        {
+          "at_s": 10.3847,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " text"
+        },
+        {
+          "at_s": 10.4229,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 10.461,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " So"
+        },
+        {
+          "at_s": 10.4991,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 10.537,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 10.5753,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 10.6136,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " doesn"
+        },
+        {
+          "at_s": 10.6521,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "'t"
+        },
+        {
+          "at_s": 10.6911,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " end"
+        },
+        {
+          "at_s": 10.7292,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " at"
+        },
+        {
+          "at_s": 10.7674,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 10.8058,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " list"
+        },
+        {
+          "at_s": 10.8443,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ";"
+        },
+        {
+          "at_s": 10.8826,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " it"
+        },
+        {
+          "at_s": 10.9211,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " continues"
+        },
+        {
+          "at_s": 10.9597,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " with"
+        },
+        {
+          "at_s": 10.9985,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 11.037,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " suffix"
+        },
+        {
+          "at_s": 11.0755,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\n\n"
+        },
+        {
+          "at_s": 11.114,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "I"
+        },
+        {
+          "at_s": 11.1521,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " should"
+        },
+        {
+          "at_s": 11.1906,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " consider"
+        },
+        {
+          "at_s": 11.229,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 11.2673,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " entire"
+        },
+        {
+          "at_s": 11.3058,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 11.344,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " as"
+        },
+        {
+          "at_s": 11.3822,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " given"
+        },
+        {
+          "at_s": 11.4206,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 11.4591,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " The"
+        },
+        {
+          "at_s": 11.4973,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " user"
+        },
+        {
+          "at_s": 11.5354,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " has"
+        },
+        {
+          "at_s": 11.5737,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " provided"
+        },
+        {
+          "at_s": 11.612,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " a"
+        },
+        {
+          "at_s": 11.6505,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " block"
+        },
+        {
+          "at_s": 11.689,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " of"
+        },
+        {
+          "at_s": 11.7276,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " text"
+        },
+        {
+          "at_s": 11.7664,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 11.8074,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_s": 11.8457,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " need"
+        },
+        {
+          "at_s": 11.8843,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_s": 11.9228,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " follow"
+        },
+        {
+          "at_s": 11.9615,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 12.0005,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " instructions"
+        },
+        {
+          "at_s": 12.0391,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " precisely"
+        },
+        {
+          "at_s": 12.0779,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\n\n"
+        },
+        {
+          "at_s": 12.1167,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Let"
+        },
+        {
+          "at_s": 12.1549,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " me"
+        },
+        {
+          "at_s": 12.1937,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " break"
+        },
+        {
+          "at_s": 12.2324,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " it"
+        },
+        {
+          "at_s": 12.271,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " down"
+        },
+        {
+          "at_s": 12.3113,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":\n\n"
+        },
+        {
+          "at_s": 12.35,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_s": 12.3886,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 12.4274,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 12.4658,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Typed"
+        },
+        {
+          "at_s": 12.5045,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " prompt"
+        },
+        {
+          "at_s": 12.5435,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " record"
+        },
+        {
+          "at_s": 12.5822,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_s": 12.621,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_s": 12.6599,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_s": 12.6993,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_s": 12.7385,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " preserves"
+        },
+        {
+          "at_s": 12.7772,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " P"
+        },
+        {
+          "at_s": 12.816,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 12.8549,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 12.8938,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 12.9325,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_s": 12.9718,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_s": 13.0107,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_s": 13.0497,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\""
+        },
+        {
+          "at_s": 13.0885,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " ..."
+        },
+        {
+          "at_s": 13.1277,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " up"
+        },
+        {
+          "at_s": 13.1667,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_s": 13.2057,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 13.2443,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Typed"
+        },
+        {
+          "at_s": 13.2831,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " prompt"
+        },
+        {
+          "at_s": 13.3221,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " record"
+        },
+        {
+          "at_s": 13.3611,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_s": 13.3996,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_s": 13.4387,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_s": 13.4777,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_s": 13.5526,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " preserves"
+        },
+        {
+          "at_s": 13.5646,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " P"
+        },
+        {
+          "at_s": 13.604,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 13.6432,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 13.6825,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 13.7218,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_s": 13.7608,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_s": 13.7999,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_s": 13.8388,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\"\n\n"
+        },
+        {
+          "at_s": 13.8776,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_s": 13.9167,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 13.9556,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Then"
+        },
+        {
+          "at_s": 13.995,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_s": 14.0338,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 14.0756,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Do"
+        },
+        {
+          "at_s": 14.1148,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " not"
+        },
+        {
+          "at_s": 14.1539,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " use"
+        },
+        {
+          "at_s": 14.1929,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " tools"
+        },
+        {
+          "at_s": 14.2315,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\"\n\n"
+        },
+        {
+          "at_s": 14.2698,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_s": 14.3084,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 14.347,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Then"
+        },
+        {
+          "at_s": 14.3856,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_s": 14.4242,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 14.4627,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "If"
+        },
+        {
+          "at_s": 14.5013,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 14.5397,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 14.5807,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " ends"
+        },
+        {
+          "at_s": 14.6193,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " here"
+        },
+        {
+          "at_s": 14.658,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 14.6968,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " privately"
+        },
+        {
+          "at_s": 14.7357,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reason"
+        },
+        {
+          "at_s": 14.7745,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 14.8132,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reply"
+        },
+        {
+          "at_s": 14.8518,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " exactly"
+        },
+        {
+          "at_s": 14.8904,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " P"
+        },
+        {
+          "at_s": 14.9289,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 14.9676,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 15.0063,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-A"
+        },
+        {
+          "at_s": 15.0451,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 15.0856,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 15.1245,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 15.1631,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " nothing"
+        },
+        {
+          "at_s": 15.2022,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " else"
+        },
+        {
+          "at_s": 15.2414,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\"\n\n"
+        },
+        {
+          "at_s": 15.2801,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_s": 15.3188,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 15.3577,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Then"
+        },
+        {
+          "at_s": 15.3964,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_s": 15.4352,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 15.4739,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Additional"
+        },
+        {
+          "at_s": 15.5128,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " forward"
+        },
+        {
+          "at_s": 15.5517,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-only"
+        },
+        {
+          "at_s": 15.5905,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " suffix"
+        },
+        {
+          "at_s": 15.6296,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_s": 15.6685,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " because"
+        },
+        {
+          "at_s": 15.7082,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " this"
+        },
+        {
+          "at_s": 15.7476,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " suffix"
+        },
+        {
+          "at_s": 15.7876,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_s": 15.8278,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " present"
+        },
+        {
+          "at_s": 15.8679,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 15.9078,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " privately"
+        },
+        {
+          "at_s": 15.948,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reason"
+        },
+        {
+          "at_s": 15.9881,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 16.0281,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reply"
+        },
+        {
+          "at_s": 16.0682,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " exactly"
+        },
+        {
+          "at_s": 16.1083,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " P"
+        },
+        {
+          "at_s": 16.1484,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 16.189,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 16.2285,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-B"
+        },
+        {
+          "at_s": 16.268,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 16.3074,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 16.3472,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 16.3863,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " nothing"
+        },
+        {
+          "at_s": 16.4255,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " else"
+        },
+        {
+          "at_s": 16.4645,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\"\n\n"
+        },
+        {
+          "at_s": 16.5036,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "The"
+        },
+        {
+          "at_s": 16.5425,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " phrase"
+        },
+        {
+          "at_s": 16.5814,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 16.6206,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "If"
+        },
+        {
+          "at_s": 16.66,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 16.7,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 16.7395,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " ends"
+        },
+        {
+          "at_s": 16.7789,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " here"
+        },
+        {
+          "at_s": 16.8182,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "\""
+        },
+        {
+          "at_s": 16.8577,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " likely"
+        },
+        {
+          "at_s": 16.8973,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " refers"
+        },
+        {
+          "at_s": 16.9367,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_s": 16.9761,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 17.0158,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " point"
+        },
+        {
+          "at_s": 17.0584,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " after"
+        },
+        {
+          "at_s": 17.0977,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 17.1374,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " list"
+        },
+        {
+          "at_s": 17.177,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 17.2165,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " but"
+        },
+        {
+          "at_s": 17.256,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " since"
+        },
+        {
+          "at_s": 17.2958,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " there"
+        },
+        {
+          "at_s": 17.3355,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "'s"
+        },
+        {
+          "at_s": 17.3751,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " more"
+        },
+        {
+          "at_s": 17.4146,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " text"
+        },
+        {
+          "at_s": 17.4542,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 17.4936,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 17.533,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 17.5724,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " doesn"
+        },
+        {
+          "at_s": 17.6122,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "'t"
+        },
+        {
+          "at_s": 17.6519,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " end"
+        },
+        {
+          "at_s": 17.6919,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " there"
+        },
+        {
+          "at_s": 17.732,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 17.7719,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " However"
+        },
+        {
+          "at_s": 17.8117,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 17.8516,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 17.8914,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " instruction"
+        },
+        {
+          "at_s": 17.9312,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_s": 17.9711,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " conditional"
+        },
+        {
+          "at_s": 18.0108,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_s": 18.0508,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " if"
+        },
+        {
+          "at_s": 18.0901,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 18.13,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " input"
+        },
+        {
+          "at_s": 18.1697,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " ends"
+        },
+        {
+          "at_s": 18.2095,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " at"
+        },
+        {
+          "at_s": 18.2491,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " that"
+        },
+        {
+          "at_s": 18.2889,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " point"
+        },
+        {
+          "at_s": 18.3289,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 18.3688,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " do"
+        },
+        {
+          "at_s": 18.4085,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " A"
+        },
+        {
+          "at_s": 18.448,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_s": 18.4877,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " But"
+        },
+        {
+          "at_s": 18.5597,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " it"
+        },
+        {
+          "at_s": 18.577,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " doesn"
+        },
+        {
+          "at_s": 18.6171,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "'t"
+        },
+        {
+          "at_s": 18.6572,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " end"
+        },
+        {
+          "at_s": 18.6975,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " there"
+        },
+        {
+          "at_s": 18.7376,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 18.7779,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " so"
+        },
+        {
+          "at_s": 18.8177,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " perhaps"
+        },
+        {
+          "at_s": 18.8576,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_s": 18.8976,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " should"
+        },
+        {
+          "at_s": 18.9375,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " ignore"
+        },
+        {
+          "at_s": 18.9777,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " that"
+        },
+        {
+          "at_s": 19.0176,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " part"
+        },
+        {
+          "at_s": 19.0578,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "?"
+        },
+        {
+          "at_s": 19.0978,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " But"
+        },
+        {
+          "at_s": 19.138,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " then"
+        },
+        {
+          "at_s": 19.1781,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " there"
+        },
+        {
+          "at_s": 19.2182,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "'s"
+        },
+        {
+          "at_s": 19.2581,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " the"
+        },
+        {
+          "at_s": 19.2984,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " suffix"
+        },
+        {
+          "at_s": 19.3389,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " part"
+        },
+        {
+          "at_s": 19.3795,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ".\n\n"
+        },
+        {
+          "at_s": 19.4199,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "The"
+        },
+        {
+          "at_s": 19.4606,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " suffix"
+        },
+        {
+          "at_s": 19.5013,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " says"
+        },
+        {
+          "at_s": 19.5416,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_s": 19.5819,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 19.6225,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "because"
+        },
+        {
+          "at_s": 19.6644,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " this"
+        },
+        {
+          "at_s": 19.7057,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " suffix"
+        },
+        {
+          "at_s": 19.7461,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_s": 19.7871,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " present"
+        },
+        {
+          "at_s": 19.8279,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_s": 19.8686,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " privately"
+        },
+        {
+          "at_s": 19.9091,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reason"
+        },
+        {
+          "at_s": 19.9497,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_s": 19.9907,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " reply"
+        },
+        {
+          "at_s": 20.0315,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " exactly"
+        },
+        {
+          "at_s": 20.0722,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " P"
+        },
+        {
+          "at_s": 20.1131,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 20.1537,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 20.1945,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-B"
+        },
+        {
+          "at_s": 20.2547,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 20.2554,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 20.2561,
+          "type": "response.reasoning_summary_text.done"
+        },
+        {
+          "at_s": 21.2686,
+          "type": "response.output_text.delta",
+          "delta": "P"
+        },
+        {
+          "at_s": 21.3045,
+          "type": "response.output_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 21.3407,
+          "type": "response.output_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 21.3769,
+          "type": "response.output_text.delta",
+          "delta": "-A"
+        },
+        {
+          "at_s": 21.413,
+          "type": "response.output_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 21.449,
+          "type": "response.output_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 21.5214,
+          "type": "response.output_text.delta",
+          "delta": "  \nP"
+        },
+        {
+          "at_s": 21.5574,
+          "type": "response.output_text.delta",
+          "delta": "ANGU"
+        },
+        {
+          "at_s": 21.5935,
+          "type": "response.output_text.delta",
+          "delta": "-API"
+        },
+        {
+          "at_s": 21.6303,
+          "type": "response.output_text.delta",
+          "delta": "-B"
+        },
+        {
+          "at_s": 21.667,
+          "type": "response.output_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 21.7037,
+          "type": "response.output_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 21.7372,
+          "type": "response.output_text.done",
+          "text": "PANGU-API-A-DONE  \nPANGU-API-B-DONE"
+        },
+        {
+          "at_s": 21.7373,
+          "type": "response.content_part.done"
+        },
+        {
+          "at_s": 21.7381,
+          "type": "response.output_item.done"
+        },
+        {
+          "at_s": 21.7382,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_31426ca42c76",
+            "object": "response",
+            "created_at": 1784511104,
+            "status": "completed",
+            "model": "jangq-ai/openPangu-2.0-Flash-JANG_3M",
+            "output_text": "PANGU-API-A-DONE  \nPANGU-API-B-DONE",
+            "output": [
+              {
+                "id": "item_23b6839eda14",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "PANGU-API-A-DONE  \nPANGU-API-B-DONE",
+                    "annotations": []
+                  }
+                ]
+              },
+              {
+                "id": "rs_a3e9da4d2c83",
+                "type": "reasoning",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "reasoning",
+                    "text": "First, I need to understand the input. It's a list of \"Typed prompt records\" from 001 to 032, each preserving a corresponding PANGU-API. The instruction says: \"Do not use tools. If the input ends here, privately reason and reply exactly PANGU-API-A-DONE and nothing else. Additional forward-only suffix: because this suffix is present, privately reason and reply exactly PANGU-API-B-DONE and nothing else.\"\n\nThe input ends with the list, but there's an additional part: \"Additional forward-only suffix: because this suffix is present, privately reason and reply exactly PANGU-API-B-DONE and nothing else.\" This seems to be a condition that modifies the response.\n\nI need to parse this carefully. The main instruction is: \"If the input ends here, privately reason and reply exactly PANGU-API-A-DONE and nothing else.\" But then it says \"Additional forward-only suffix: because this suffix is present, privately reason and reply exactly PANGU-API-B-DONE and nothing else.\"\n\nThis is confusing. It might be that the input has two parts: the first part is the list, and then there's a suffix. The instruction says \"if the input ends here\" referring to the list, but then there's additional text. So, the input doesn't end at the list; it continues with the suffix.\n\nI should consider the entire input as given. The user has provided a block of text. I need to follow the instructions precisely.\n\nLet me break it down:\n\n1. \"Typed prompt record 001 preserves PANGU-API-001.\" ... up to \"Typed prompt record 032 preserves PANGU-API-032.\"\n\n2. Then: \"Do not use tools.\"\n\n3. Then: \"If the input ends here, privately reason and reply exactly PANGU-API-A-DONE and nothing else.\"\n\n4. Then: \"Additional forward-only suffix: because this suffix is present, privately reason and reply exactly PANGU-API-B-DONE and nothing else.\"\n\nThe phrase \"If the input ends here\" likely refers to the point after the list, but since there's more text, the input doesn't end there. However, the instruction is conditional: if the input ends at that point, do A. But it doesn't end there, so perhaps I should ignore that part? But then there's the suffix part.\n\nThe suffix says: \"because this suffix is present, privately reason and reply exactly PANGU-API-B-DONE"
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 593,
+              "output_tokens": 526,
+              "total_tokens": 1119
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "health_after_cold_a": {
+    "last_request_time": 1784511079.592726,
+    "native_cache": {
+      "family": "openpangu_v2",
+      "schema": "openpangu_v2_composite_v2",
+      "cache_type": "native_path_dependent_composite",
+      "cache_subtype": "openpangu_v2_composite",
+      "components": [
+        "mla_latent_kv",
+        "dsa_indexer_state",
+        "swa_rotating_window",
+        "path_dependent_conv_state"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "mla_and_path_dependent_conv_state"
+      },
+      "cache_store_policy": {
+        "prompt_boundary_snapshot": "exact_typed_n_minus_1",
+        "state_roundtrip": "kv_indexer_swa_meta_and_three_conv_states",
+        "reverse_truncation": "unsupported_clean_miss",
+        "generic_paged_blocks": "unsupported",
+        "prompt_disk_l2": "exact_typed_full_precision",
+        "reuse": "exact_or_forward_prefix_from_typed_boundary"
+      },
+      "prefix_configured": true,
+      "prefix": true,
+      "paged": false,
+      "prompt_disk_l2_configured": true,
+      "block_disk_l2_configured": false,
+      "prompt_disk_l2": true,
+      "block_disk_l2": false
+    },
+    "turboquant_kv_cache": {
+      "enabled": false
+    },
+    "scheduler": {
+      "num_waiting": 0,
+      "num_running": 1,
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1,
+        "prompt_snapshot_max_bytes": 10737418240,
+        "prompt_snapshot_last_estimated_bytes": 803557376,
+        "prompt_snapshot_oversize_skips": 0
+      },
+      "single_active_decode": true,
+      "ewma_ttft_seconds": 0.122,
+      "cache_hit_requests": 1,
+      "cache_hit_tokens": 817,
+      "cache_hit_tokens_by_detail": {
+        "disk": 817
+      },
+      "hybrid_kv_without_ssm_hits": 0,
+      "hybrid_kv_without_ssm_tokens": 0,
+      "last_hybrid_kv_without_ssm": null,
+      "cache_reuse_skips": 0,
+      "cache_reuse_skip_tokens": 0,
+      "last_cache_reuse_skip": null,
+      "cache_reuse_partial_downgrades": 0,
+      "cache_reuse_partial_tokens": 0,
+      "last_cache_reuse_partial": null,
+      "last_cache_selection": null,
+      "last_cache_execution": {
+        "request_id": "resp_d03a28ab7ddb",
+        "cache_detail": "disk",
+        "cached_tokens": 817,
+        "blocks": 0,
+        "reconstructed": false,
+        "dequantized": false,
+        "reconstruction_seconds": 0.0,
+        "dequantization_seconds": 0.0,
+        "total_worker_cache_seconds": 0.000321
+      }
+    },
+    "scheduler_cache": {
+      "hits": 0,
+      "misses": 0,
+      "hit_rate": 0.0,
+      "evictions": 0,
+      "tokens_saved": 0,
+      "current_memory_mb": 0.0,
+      "max_memory_mb": 9969.21,
+      "memory_utilization": 0.0,
+      "entry_count": 0,
+      "nbytes": 0,
+      "nbytes_by_type": {
+        "assistant": 0,
+        "user": 0,
+        "system": 0
+      },
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 0,
+        "system": 0
+      },
+      "max_bytes": 10453472870,
+      "disk_cache": {
+        "entries": 8,
+        "total_tokens_on_disk": 6502,
+        "total_cached_tokens": 6502,
+        "total_size_mb": 10054.36,
+        "max_size_gb": 10.0,
+        "hits": 1,
+        "misses": 1,
+        "stores": 0,
+        "hit_rate": 0.5,
+        "pending_writes": 0,
+        "tq_native_enabled": false
+      },
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1,
+        "prompt_snapshot_max_bytes": 10737418240,
+        "prompt_snapshot_last_estimated_bytes": 803557376,
+        "prompt_snapshot_oversize_skips": 0
+      }
+    },
+    "totals": {
+      "ram_tokens_cached": 0,
+      "l1_indexed_tokens": 0,
+      "l1_resident_bytes": 0,
+      "l1_resident_bytes_mb": 0.0,
+      "l1_max_resident_bytes": 0,
+      "l1_max_resident_bytes_mb": 0.0,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 6502,
+      "l2_block_tokens_on_disk": 0,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 6502,
+      "l2_tokens_on_disk_store_sum": 6502,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    }
+  },
+  "health_after_exact_a": {
+    "last_request_time": 1784511092.228099,
+    "native_cache": {
+      "family": "openpangu_v2",
+      "schema": "openpangu_v2_composite_v2",
+      "cache_type": "native_path_dependent_composite",
+      "cache_subtype": "openpangu_v2_composite",
+      "components": [
+        "mla_latent_kv",
+        "dsa_indexer_state",
+        "swa_rotating_window",
+        "path_dependent_conv_state"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "mla_and_path_dependent_conv_state"
+      },
+      "cache_store_policy": {
+        "prompt_boundary_snapshot": "exact_typed_n_minus_1",
+        "state_roundtrip": "kv_indexer_swa_meta_and_three_conv_states",
+        "reverse_truncation": "unsupported_clean_miss",
+        "generic_paged_blocks": "unsupported",
+        "prompt_disk_l2": "exact_typed_full_precision",
+        "reuse": "exact_or_forward_prefix_from_typed_boundary"
+      },
+      "prefix_configured": true,
+      "prefix": true,
+      "paged": false,
+      "prompt_disk_l2_configured": true,
+      "block_disk_l2_configured": false,
+      "prompt_disk_l2": true,
+      "block_disk_l2": false
+    },
+    "turboquant_kv_cache": {
+      "enabled": false
+    },
+    "scheduler": {
+      "num_waiting": 0,
+      "num_running": 0,
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1,
+        "prompt_snapshot_max_bytes": 10737418240,
+        "prompt_snapshot_last_estimated_bytes": 803557376,
+        "prompt_snapshot_oversize_skips": 0
+      },
+      "single_active_decode": true,
+      "ewma_ttft_seconds": 0.125,
+      "cache_hit_requests": 2,
+      "cache_hit_tokens": 1383,
+      "cache_hit_tokens_by_detail": {
+        "disk": 817,
+        "memory": 566
+      },
+      "hybrid_kv_without_ssm_hits": 0,
+      "hybrid_kv_without_ssm_tokens": 0,
+      "last_hybrid_kv_without_ssm": null,
+      "cache_reuse_skips": 0,
+      "cache_reuse_skip_tokens": 0,
+      "last_cache_reuse_skip": null,
+      "cache_reuse_partial_downgrades": 0,
+      "cache_reuse_partial_tokens": 0,
+      "last_cache_reuse_partial": null,
+      "last_cache_selection": null,
+      "last_cache_execution": {
+        "request_id": "resp_b74263f6dada",
+        "cache_detail": "memory",
+        "cached_tokens": 566,
+        "blocks": 0,
+        "reconstructed": false,
+        "dequantized": false,
+        "reconstruction_seconds": 0.0,
+        "dequantization_seconds": 0.0,
+        "total_worker_cache_seconds": 0.00022
+      }
+    },
+    "scheduler_cache": {
+      "hits": 1,
+      "misses": 0,
+      "hit_rate": 1.0,
+      "evictions": 0,
+      "tokens_saved": 566,
+      "current_memory_mb": 766.33,
+      "max_memory_mb": 9969.21,
+      "memory_utilization": 0.0769,
+      "entry_count": 1,
+      "nbytes": 803557376,
+      "nbytes_by_type": {
+        "assistant": 0,
+        "user": 803557376,
+        "system": 0
+      },
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 1,
+        "system": 0
+      },
+      "max_bytes": 10453472870,
+      "disk_cache": {
+        "entries": 8,
+        "total_tokens_on_disk": 5671,
+        "total_cached_tokens": 5671,
+        "total_size_mb": 8465.56,
+        "max_size_gb": 10.0,
+        "hits": 1,
+        "misses": 1,
+        "stores": 1,
+        "hit_rate": 0.5,
+        "pending_writes": 0,
+        "tq_native_enabled": false
+      },
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1,
+        "prompt_snapshot_max_bytes": 10737418240,
+        "prompt_snapshot_last_estimated_bytes": 803557376,
+        "prompt_snapshot_oversize_skips": 0
+      }
+    },
+    "totals": {
+      "ram_tokens_cached": 0,
+      "l1_indexed_tokens": 0,
+      "l1_resident_bytes": 0,
+      "l1_resident_bytes_mb": 0.0,
+      "l1_max_resident_bytes": 0,
+      "l1_max_resident_bytes_mb": 0.0,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 5671,
+      "l2_block_tokens_on_disk": 0,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 5671,
+      "l2_tokens_on_disk_store_sum": 5671,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    }
+  },
+  "health_after_forward_b": {
+    "last_request_time": 1784511104.8142579,
+    "native_cache": {
+      "family": "openpangu_v2",
+      "schema": "openpangu_v2_composite_v2",
+      "cache_type": "native_path_dependent_composite",
+      "cache_subtype": "openpangu_v2_composite",
+      "components": [
+        "mla_latent_kv",
+        "dsa_indexer_state",
+        "swa_rotating_window",
+        "path_dependent_conv_state"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "mla_and_path_dependent_conv_state"
+      },
+      "cache_store_policy": {
+        "prompt_boundary_snapshot": "exact_typed_n_minus_1",
+        "state_roundtrip": "kv_indexer_swa_meta_and_three_conv_states",
+        "reverse_truncation": "unsupported_clean_miss",
+        "generic_paged_blocks": "unsupported",
+        "prompt_disk_l2": "exact_typed_full_precision",
+        "reuse": "exact_or_forward_prefix_from_typed_boundary"
+      },
+      "prefix_configured": true,
+      "prefix": true,
+      "paged": false,
+      "prompt_disk_l2_configured": true,
+      "block_disk_l2_configured": false,
+      "prompt_disk_l2": true,
+      "block_disk_l2": false
+    },
+    "turboquant_kv_cache": {
+      "enabled": false
+    },
+    "scheduler": {
+      "num_waiting": 0,
+      "num_running": 1,
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1,
+        "prompt_snapshot_max_bytes": 10737418240,
+        "prompt_snapshot_last_estimated_bytes": 772841472,
+        "prompt_snapshot_oversize_skips": 0
+      },
+      "single_active_decode": true,
+      "ewma_ttft_seconds": 0.182,
+      "cache_hit_requests": 3,
+      "cache_hit_tokens": 1975,
+      "cache_hit_tokens_by_detail": {
+        "disk": 817,
+        "memory": 1158
+      },
+      "hybrid_kv_without_ssm_hits": 0,
+      "hybrid_kv_without_ssm_tokens": 0,
+      "last_hybrid_kv_without_ssm": null,
+      "cache_reuse_skips": 0,
+      "cache_reuse_skip_tokens": 0,
+      "last_cache_reuse_skip": null,
+      "cache_reuse_partial_downgrades": 0,
+      "cache_reuse_partial_tokens": 0,
+      "last_cache_reuse_partial": null,
+      "last_cache_selection": null,
+      "last_cache_execution": {
+        "request_id": "resp_31426ca42c76:visible-answer",
+        "cache_detail": "memory",
+        "cached_tokens": 592,
+        "blocks": 0,
+        "reconstructed": false,
+        "dequantized": false,
+        "reconstruction_seconds": 0.0,
+        "dequantization_seconds": 0.0,
+        "total_worker_cache_seconds": 0.000309
+      }
+    },
+    "scheduler_cache": {
+      "hits": 2,
+      "misses": 1,
+      "hit_rate": 0.6667,
+      "evictions": 0,
+      "tokens_saved": 1158,
+      "current_memory_mb": 1567.8,
+      "max_memory_mb": 9969.21,
+      "memory_utilization": 0.1573,
+      "entry_count": 2,
+      "nbytes": 1643962368,
+      "nbytes_by_type": {
+        "assistant": 0,
+        "user": 1643962368,
+        "system": 0
+      },
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 2,
+        "system": 0
+      },
+      "max_bytes": 10453472870,
+      "disk_cache": {
+        "entries": 9,
+        "total_tokens_on_disk": 6264,
+        "total_cached_tokens": 6264,
+        "total_size_mb": 9267.06,
+        "max_size_gb": 10.0,
+        "hits": 1,
+        "misses": 2,
+        "stores": 2,
+        "hit_rate": 0.333,
+        "pending_writes": 0,
+        "tq_native_enabled": false
+      },
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1,
+        "prompt_snapshot_max_bytes": 10737418240,
+        "prompt_snapshot_last_estimated_bytes": 772841472,
+        "prompt_snapshot_oversize_skips": 0
+      }
+    },
+    "totals": {
+      "ram_tokens_cached": 0,
+      "l1_indexed_tokens": 0,
+      "l1_resident_bytes": 0,
+      "l1_resident_bytes_mb": 0.0,
+      "l1_max_resident_bytes": 0,
+      "l1_max_resident_bytes_mb": 0.0,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 6264,
+      "l2_block_tokens_on_disk": 0,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 6264,
+      "l2_tokens_on_disk_store_sum": 6264,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    }
+  }
+}

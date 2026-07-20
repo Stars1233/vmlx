@@ -3095,3 +3095,27 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   paged RAM and stored-prefix TQ4. Focused checks: 14 Python, 300 panel,
   typecheck, and diff check. Evidence:
   `docs/internal/release-gates/20260719_step37_mixed_swa_disk_only_ui/`.
+
+## 2026-07-19 - openPangu current-head exact memory/SSD restart recheck
+
+- Status: `VERIFIED-LIVE_SCOPED` for exact prompt-memory and first-turn
+  prompt-SSD restore on source `117c3d206`; overall release remains
+  `PARTIAL_NO_RELEASE`.
+- The real Electron Sessions Start action stopped Step and eagerly loaded only
+  openPangu PID 65893 before a request (`last_request_time=null`). The actual
+  argv used `--no-paged-cache --enable-disk-cache`; health kept generic TQ and
+  block-disk L2 off for native schema `openpangu_v2_composite_v2`.
+- Cold Electron stored an 817-token typed boundary. A fresh exact chat restored
+  817 tokens from memory. After a real UI Stop/Start replaced the process with
+  PID 66691, pre-request health had zero memory/L1 entries and 6,502 prompt-L2
+  tokens; the first identical UI turn restored 817 tokens as `disk`, exact-
+  finaled, and streamed distinct reasoning plus visible content progressively.
+- Raw Responses emitted separate progressive reasoning/content and clean
+  terminals for cold/exact/forward-prefix requests. The forward request hit
+  592 memory tokens but produced both A and B markers after exhausting 512
+  reasoning tokens, so strict B-only output remains `PARTIAL`.
+- Generic paged blocks, arbitrary block partial reuse, and generic TurboQuant
+  are architecture-incompatible/N/A for openPangu's MLA/DSA/SWA/causal-conv
+  composite and must be proven on compatible families instead.
+- Evidence:
+  `docs/internal/release-gates/20260719_openpangu_current_disk_restore/`.
