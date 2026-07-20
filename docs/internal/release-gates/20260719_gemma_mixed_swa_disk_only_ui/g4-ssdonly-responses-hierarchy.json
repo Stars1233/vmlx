@@ -1,0 +1,1132 @@
+{
+  "source_head": "4343e8913ef9132ebc313dc94c74281571ea282a",
+  "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M",
+  "native_cache_expected": "mixed_swa_kv_v1",
+  "generic_turboquant_expected": false,
+  "health_before": {
+    "model_loaded": true,
+    "last_request_time": 1784509140.1198888,
+    "kv_cache_quantization": {
+      "enabled": false
+    },
+    "turboquant_kv_cache": {
+      "enabled": false
+    },
+    "native_cache": {
+      "family": "gemma4",
+      "schema": "mixed_swa_kv_v1",
+      "cache_type": "mixed_swa_kv",
+      "cache_subtype": "mixed_swa_kv",
+      "components": [
+        "full_attention_kv",
+        "sliding_window_kv",
+        "rotating_window_metadata"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "not_active"
+      },
+      "storage_quantization": {
+        "enabled": false,
+        "mode": "storage_boundary",
+        "bits": null,
+        "group_size": null,
+        "applies_to": "full_and_sliding_attention_kv",
+        "metadata_policy": "preserve_rotating_window_metadata"
+      },
+      "prefix": true,
+      "paged": false,
+      "block_disk_only": true,
+      "block_disk_l2": true
+    },
+    "scheduler": {
+      "pixel_cache_hits": 0,
+      "pixel_cache_misses": 0,
+      "pixel_hit_rate": 0.0,
+      "total_time_saved": 0.0,
+      "total_images_processed": 0,
+      "pixel_cache_size": 0,
+      "hits": 1,
+      "misses": 0,
+      "hit_rate": 1.0,
+      "tokens_saved": 1646,
+      "active_requests": 0,
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 0,
+        "system": 0
+      },
+      "backend_mode": "block_disk_only",
+      "paged_ram_enabled": false,
+      "disk_only": true,
+      "paged_frugal": true,
+      "ram_mirror_policy": "disk_only",
+      "block_size": 64,
+      "max_blocks": 1000,
+      "usable_blocks": 999,
+      "capacity_tokens": 63936,
+      "allocated_blocks": 1,
+      "free_blocks": 999,
+      "shared_blocks": 0,
+      "total_tokens_cached": 1646,
+      "utilization": 0.0,
+      "cache_hit_rate": 1.0,
+      "cache_hits": 52,
+      "cache_misses": 0,
+      "disk_hits": 26,
+      "disk_misses": 1,
+      "cow_copies": 0,
+      "evictions": 0,
+      "disk_promotion_hits": 26,
+      "disk_lookup_misses": 0,
+      "disk_counter_source": "block_disk_store"
+    },
+    "block_disk": {
+      "blocks_on_disk": 87,
+      "disk_size_bytes": 1866577438,
+      "disk_size_gb": 1.738,
+      "total_accesses": 176,
+      "total_tokens_on_disk": 5419,
+      "total_cached_tokens": 5419,
+      "disk_hits": 26,
+      "disk_misses": 1,
+      "disk_writes": 0,
+      "disk_evictions": 0,
+      "tq_native_writes": 0,
+      "tq_native_hits": 0,
+      "tq_native_enabled": false
+    },
+    "totals": {
+      "ram_tokens_cached": 0,
+      "l1_indexed_tokens": 1646,
+      "l1_resident_bytes": 0,
+      "l1_resident_bytes_mb": 0.0,
+      "l1_max_resident_bytes": 0,
+      "l1_max_resident_bytes_mb": 0.0,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 5419,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 5419,
+      "l2_tokens_on_disk_store_sum": 5419,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    }
+  },
+  "runs": [
+    {
+      "label": "cold_a",
+      "status": 200,
+      "prompt_chars": 3250,
+      "visible": "G4-SSDONLY-API-A-DONE",
+      "reasoning": "",
+      "content_delta_count": 12,
+      "reasoning_delta_count": 0,
+      "content_deltas": [
+        {
+          "at_s": 0.6568,
+          "text": "G"
+        },
+        {
+          "at_s": 0.6786,
+          "text": "4"
+        },
+        {
+          "at_s": 0.7004,
+          "text": "-"
+        },
+        {
+          "at_s": 0.7222,
+          "text": "SS"
+        },
+        {
+          "at_s": 0.7442,
+          "text": "DON"
+        },
+        {
+          "at_s": 0.7662,
+          "text": "LY"
+        },
+        {
+          "at_s": 0.7881,
+          "text": "-"
+        },
+        {
+          "at_s": 0.8101,
+          "text": "API"
+        },
+        {
+          "at_s": 0.8318,
+          "text": "-"
+        },
+        {
+          "at_s": 0.8539,
+          "text": "A"
+        },
+        {
+          "at_s": 0.8759,
+          "text": "-"
+        },
+        {
+          "at_s": 0.8978,
+          "text": "DONE"
+        }
+      ],
+      "reasoning_deltas": [],
+      "terminal_events": [
+        {
+          "at_s": 0.9203,
+          "type": "response.output_text.done",
+          "text": "G4-SSDONLY-API-A-DONE"
+        },
+        {
+          "at_s": 0.9205,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_ec2cf1ccd3a5",
+            "object": "response",
+            "created_at": 1784509161,
+            "status": "completed",
+            "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M",
+            "output_text": "G4-SSDONLY-API-A-DONE",
+            "output": [
+              {
+                "id": "item_149137fa8555",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "G4-SSDONLY-API-A-DONE",
+                    "annotations": []
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 919,
+              "output_tokens": 17,
+              "total_tokens": 936
+            }
+          }
+        }
+      ],
+      "last_content_to_completed_s": 0.0227,
+      "elapsed_s": 0.9207,
+      "events": [
+        {
+          "at_s": 0.0023,
+          "type": "response.created"
+        },
+        {
+          "at_s": 0.0024,
+          "type": "response.output_item.added"
+        },
+        {
+          "at_s": 0.0024,
+          "type": "response.content_part.added"
+        },
+        {
+          "at_s": 0.6568,
+          "type": "response.output_text.delta",
+          "delta": "G"
+        },
+        {
+          "at_s": 0.6786,
+          "type": "response.output_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_s": 0.7004,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.7222,
+          "type": "response.output_text.delta",
+          "delta": "SS"
+        },
+        {
+          "at_s": 0.7442,
+          "type": "response.output_text.delta",
+          "delta": "DON"
+        },
+        {
+          "at_s": 0.7662,
+          "type": "response.output_text.delta",
+          "delta": "LY"
+        },
+        {
+          "at_s": 0.7881,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.8101,
+          "type": "response.output_text.delta",
+          "delta": "API"
+        },
+        {
+          "at_s": 0.8318,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.8539,
+          "type": "response.output_text.delta",
+          "delta": "A"
+        },
+        {
+          "at_s": 0.8759,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.8978,
+          "type": "response.output_text.delta",
+          "delta": "DONE"
+        },
+        {
+          "at_s": 0.9203,
+          "type": "response.output_text.done",
+          "text": "G4-SSDONLY-API-A-DONE"
+        },
+        {
+          "at_s": 0.9204,
+          "type": "response.content_part.done"
+        },
+        {
+          "at_s": 0.9205,
+          "type": "response.output_item.done"
+        },
+        {
+          "at_s": 0.9205,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_ec2cf1ccd3a5",
+            "object": "response",
+            "created_at": 1784509161,
+            "status": "completed",
+            "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M",
+            "output_text": "G4-SSDONLY-API-A-DONE",
+            "output": [
+              {
+                "id": "item_149137fa8555",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "G4-SSDONLY-API-A-DONE",
+                    "annotations": []
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 919,
+              "output_tokens": 17,
+              "total_tokens": 936
+            }
+          }
+        }
+      ]
+    },
+    {
+      "label": "warm_a",
+      "status": 200,
+      "prompt_chars": 3250,
+      "visible": "G4-SSDONLY-API-A-DONE",
+      "reasoning": "",
+      "content_delta_count": 12,
+      "reasoning_delta_count": 0,
+      "content_deltas": [
+        {
+          "at_s": 0.4042,
+          "text": "G"
+        },
+        {
+          "at_s": 0.426,
+          "text": "4"
+        },
+        {
+          "at_s": 0.448,
+          "text": "-"
+        },
+        {
+          "at_s": 0.4698,
+          "text": "SS"
+        },
+        {
+          "at_s": 0.4919,
+          "text": "DON"
+        },
+        {
+          "at_s": 0.5137,
+          "text": "LY"
+        },
+        {
+          "at_s": 0.5359,
+          "text": "-"
+        },
+        {
+          "at_s": 0.558,
+          "text": "API"
+        },
+        {
+          "at_s": 0.58,
+          "text": "-"
+        },
+        {
+          "at_s": 0.602,
+          "text": "A"
+        },
+        {
+          "at_s": 0.6241,
+          "text": "-"
+        },
+        {
+          "at_s": 0.6466,
+          "text": "DONE"
+        }
+      ],
+      "reasoning_deltas": [],
+      "terminal_events": [
+        {
+          "at_s": 0.6679,
+          "type": "response.output_text.done",
+          "text": "G4-SSDONLY-API-A-DONE"
+        },
+        {
+          "at_s": 0.6681,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_c21a0feac6e3",
+            "object": "response",
+            "created_at": 1784509162,
+            "status": "completed",
+            "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M",
+            "output_text": "G4-SSDONLY-API-A-DONE",
+            "output": [
+              {
+                "id": "item_fc75cfc6db36",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "G4-SSDONLY-API-A-DONE",
+                    "annotations": []
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 919,
+              "output_tokens": 17,
+              "total_tokens": 936,
+              "input_tokens_details": {
+                "cached_tokens": 918,
+                "cache_detail": "block-disk+mixed_swa"
+              }
+            }
+          }
+        }
+      ],
+      "last_content_to_completed_s": 0.0215,
+      "elapsed_s": 0.6682,
+      "events": [
+        {
+          "at_s": 0.0029,
+          "type": "response.created"
+        },
+        {
+          "at_s": 0.003,
+          "type": "response.output_item.added"
+        },
+        {
+          "at_s": 0.003,
+          "type": "response.content_part.added"
+        },
+        {
+          "at_s": 0.4042,
+          "type": "response.output_text.delta",
+          "delta": "G"
+        },
+        {
+          "at_s": 0.426,
+          "type": "response.output_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_s": 0.448,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.4698,
+          "type": "response.output_text.delta",
+          "delta": "SS"
+        },
+        {
+          "at_s": 0.4919,
+          "type": "response.output_text.delta",
+          "delta": "DON"
+        },
+        {
+          "at_s": 0.5137,
+          "type": "response.output_text.delta",
+          "delta": "LY"
+        },
+        {
+          "at_s": 0.5359,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.558,
+          "type": "response.output_text.delta",
+          "delta": "API"
+        },
+        {
+          "at_s": 0.58,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.602,
+          "type": "response.output_text.delta",
+          "delta": "A"
+        },
+        {
+          "at_s": 0.6241,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.6466,
+          "type": "response.output_text.delta",
+          "delta": "DONE"
+        },
+        {
+          "at_s": 0.6679,
+          "type": "response.output_text.done",
+          "text": "G4-SSDONLY-API-A-DONE"
+        },
+        {
+          "at_s": 0.668,
+          "type": "response.content_part.done"
+        },
+        {
+          "at_s": 0.668,
+          "type": "response.output_item.done"
+        },
+        {
+          "at_s": 0.6681,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_c21a0feac6e3",
+            "object": "response",
+            "created_at": 1784509162,
+            "status": "completed",
+            "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M",
+            "output_text": "G4-SSDONLY-API-A-DONE",
+            "output": [
+              {
+                "id": "item_fc75cfc6db36",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "G4-SSDONLY-API-A-DONE",
+                    "annotations": []
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 919,
+              "output_tokens": 17,
+              "total_tokens": 936,
+              "input_tokens_details": {
+                "cached_tokens": 918,
+                "cache_detail": "block-disk+mixed_swa"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "label": "partial_b",
+      "status": 200,
+      "prompt_chars": 3288,
+      "visible": "G4-SSDONLY-API-B-DONE",
+      "reasoning": "",
+      "content_delta_count": 12,
+      "reasoning_delta_count": 0,
+      "content_deltas": [
+        {
+          "at_s": 0.4552,
+          "text": "G"
+        },
+        {
+          "at_s": 0.477,
+          "text": "4"
+        },
+        {
+          "at_s": 0.4991,
+          "text": "-"
+        },
+        {
+          "at_s": 0.5209,
+          "text": "SS"
+        },
+        {
+          "at_s": 0.5428,
+          "text": "DON"
+        },
+        {
+          "at_s": 0.5652,
+          "text": "LY"
+        },
+        {
+          "at_s": 0.5872,
+          "text": "-"
+        },
+        {
+          "at_s": 0.609,
+          "text": "API"
+        },
+        {
+          "at_s": 0.631,
+          "text": "-"
+        },
+        {
+          "at_s": 0.6528,
+          "text": "B"
+        },
+        {
+          "at_s": 0.6747,
+          "text": "-"
+        },
+        {
+          "at_s": 0.6971,
+          "text": "DONE"
+        }
+      ],
+      "reasoning_deltas": [],
+      "terminal_events": [
+        {
+          "at_s": 0.7191,
+          "type": "response.output_text.done",
+          "text": "G4-SSDONLY-API-B-DONE"
+        },
+        {
+          "at_s": 0.7193,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_dfeb31558c14",
+            "object": "response",
+            "created_at": 1784509163,
+            "status": "completed",
+            "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M",
+            "output_text": "G4-SSDONLY-API-B-DONE",
+            "output": [
+              {
+                "id": "item_4c62d6a3a766",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "G4-SSDONLY-API-B-DONE",
+                    "annotations": []
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 923,
+              "output_tokens": 17,
+              "total_tokens": 940,
+              "input_tokens_details": {
+                "cached_tokens": 832,
+                "cache_detail": "block-disk+mixed_swa"
+              }
+            }
+          }
+        }
+      ],
+      "last_content_to_completed_s": 0.0222,
+      "elapsed_s": 0.7194,
+      "events": [
+        {
+          "at_s": 0.0028,
+          "type": "response.created"
+        },
+        {
+          "at_s": 0.0029,
+          "type": "response.output_item.added"
+        },
+        {
+          "at_s": 0.0029,
+          "type": "response.content_part.added"
+        },
+        {
+          "at_s": 0.4552,
+          "type": "response.output_text.delta",
+          "delta": "G"
+        },
+        {
+          "at_s": 0.477,
+          "type": "response.output_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_s": 0.4991,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.5209,
+          "type": "response.output_text.delta",
+          "delta": "SS"
+        },
+        {
+          "at_s": 0.5428,
+          "type": "response.output_text.delta",
+          "delta": "DON"
+        },
+        {
+          "at_s": 0.5652,
+          "type": "response.output_text.delta",
+          "delta": "LY"
+        },
+        {
+          "at_s": 0.5872,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.609,
+          "type": "response.output_text.delta",
+          "delta": "API"
+        },
+        {
+          "at_s": 0.631,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.6528,
+          "type": "response.output_text.delta",
+          "delta": "B"
+        },
+        {
+          "at_s": 0.6747,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.6971,
+          "type": "response.output_text.delta",
+          "delta": "DONE"
+        },
+        {
+          "at_s": 0.7191,
+          "type": "response.output_text.done",
+          "text": "G4-SSDONLY-API-B-DONE"
+        },
+        {
+          "at_s": 0.7192,
+          "type": "response.content_part.done"
+        },
+        {
+          "at_s": 0.7193,
+          "type": "response.output_item.done"
+        },
+        {
+          "at_s": 0.7193,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_dfeb31558c14",
+            "object": "response",
+            "created_at": 1784509163,
+            "status": "completed",
+            "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M",
+            "output_text": "G4-SSDONLY-API-B-DONE",
+            "output": [
+              {
+                "id": "item_4c62d6a3a766",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "G4-SSDONLY-API-B-DONE",
+                    "annotations": []
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 923,
+              "output_tokens": 17,
+              "total_tokens": 940,
+              "input_tokens_details": {
+                "cached_tokens": 832,
+                "cache_detail": "block-disk+mixed_swa"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "health_after_cold_a": {
+    "model_loaded": true,
+    "last_request_time": 1784509161.1537762,
+    "kv_cache_quantization": {
+      "enabled": false
+    },
+    "turboquant_kv_cache": {
+      "enabled": false
+    },
+    "native_cache": {
+      "family": "gemma4",
+      "schema": "mixed_swa_kv_v1",
+      "cache_type": "mixed_swa_kv",
+      "cache_subtype": "mixed_swa_kv",
+      "components": [
+        "full_attention_kv",
+        "sliding_window_kv",
+        "rotating_window_metadata"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "not_active"
+      },
+      "storage_quantization": {
+        "enabled": false,
+        "mode": "storage_boundary",
+        "bits": null,
+        "group_size": null,
+        "applies_to": "full_and_sliding_attention_kv",
+        "metadata_policy": "preserve_rotating_window_metadata"
+      },
+      "prefix": true,
+      "paged": false,
+      "block_disk_only": true,
+      "block_disk_l2": true
+    },
+    "scheduler": {
+      "pixel_cache_hits": 0,
+      "pixel_cache_misses": 0,
+      "pixel_hit_rate": 0.0,
+      "total_time_saved": 0.0,
+      "total_images_processed": 0,
+      "pixel_cache_size": 0,
+      "hits": 1,
+      "misses": 1,
+      "hit_rate": 0.5,
+      "tokens_saved": 1646,
+      "active_requests": 0,
+      "entries_by_type": {
+        "assistant": 1,
+        "user": 0,
+        "system": 0
+      },
+      "backend_mode": "block_disk_only",
+      "paged_ram_enabled": false,
+      "disk_only": true,
+      "paged_frugal": true,
+      "ram_mirror_policy": "disk_only",
+      "block_size": 64,
+      "max_blocks": 1000,
+      "usable_blocks": 999,
+      "capacity_tokens": 63936,
+      "allocated_blocks": 1,
+      "free_blocks": 999,
+      "shared_blocks": 0,
+      "total_tokens_cached": 2564,
+      "utilization": 0.0,
+      "cache_hit_rate": 0.7536231884057971,
+      "cache_hits": 52,
+      "cache_misses": 17,
+      "disk_hits": 26,
+      "disk_misses": 13,
+      "cow_copies": 0,
+      "evictions": 0,
+      "disk_promotion_hits": 26,
+      "disk_lookup_misses": 2,
+      "disk_counter_source": "block_disk_store"
+    },
+    "block_disk": {
+      "blocks_on_disk": 102,
+      "disk_size_bytes": 2182789214,
+      "disk_size_gb": 2.033,
+      "total_accesses": 176,
+      "total_tokens_on_disk": 6337,
+      "total_cached_tokens": 6337,
+      "disk_hits": 26,
+      "disk_misses": 13,
+      "disk_writes": 15,
+      "disk_evictions": 0,
+      "tq_native_writes": 0,
+      "tq_native_hits": 0,
+      "tq_native_enabled": false
+    },
+    "totals": {
+      "ram_tokens_cached": 0,
+      "l1_indexed_tokens": 2564,
+      "l1_resident_bytes": 0,
+      "l1_resident_bytes_mb": 0.0,
+      "l1_max_resident_bytes": 0,
+      "l1_max_resident_bytes_mb": 0.0,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 6337,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 6337,
+      "l2_tokens_on_disk_store_sum": 6337,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    }
+  },
+  "health_after_warm_a": {
+    "model_loaded": true,
+    "last_request_time": 1784509162.860464,
+    "kv_cache_quantization": {
+      "enabled": false
+    },
+    "turboquant_kv_cache": {
+      "enabled": false
+    },
+    "native_cache": {
+      "family": "gemma4",
+      "schema": "mixed_swa_kv_v1",
+      "cache_type": "mixed_swa_kv",
+      "cache_subtype": "mixed_swa_kv",
+      "components": [
+        "full_attention_kv",
+        "sliding_window_kv",
+        "rotating_window_metadata"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "not_active"
+      },
+      "storage_quantization": {
+        "enabled": false,
+        "mode": "storage_boundary",
+        "bits": null,
+        "group_size": null,
+        "applies_to": "full_and_sliding_attention_kv",
+        "metadata_policy": "preserve_rotating_window_metadata"
+      },
+      "prefix": true,
+      "paged": false,
+      "block_disk_only": true,
+      "block_disk_l2": true
+    },
+    "scheduler": {
+      "pixel_cache_hits": 0,
+      "pixel_cache_misses": 0,
+      "pixel_hit_rate": 0.0,
+      "total_time_saved": 0.0,
+      "total_images_processed": 0,
+      "pixel_cache_size": 0,
+      "hits": 2,
+      "misses": 1,
+      "hit_rate": 0.6666666666666666,
+      "tokens_saved": 2564,
+      "active_requests": 0,
+      "entries_by_type": {
+        "assistant": 1,
+        "user": 0,
+        "system": 0
+      },
+      "backend_mode": "block_disk_only",
+      "paged_ram_enabled": false,
+      "disk_only": true,
+      "paged_frugal": true,
+      "ram_mirror_policy": "disk_only",
+      "block_size": 64,
+      "max_blocks": 1000,
+      "usable_blocks": 999,
+      "capacity_tokens": 63936,
+      "allocated_blocks": 1,
+      "free_blocks": 999,
+      "shared_blocks": 0,
+      "total_tokens_cached": 2564,
+      "utilization": 0.0,
+      "cache_hit_rate": 0.8282828282828283,
+      "cache_hits": 82,
+      "cache_misses": 17,
+      "disk_hits": 71,
+      "disk_misses": 14,
+      "cow_copies": 0,
+      "evictions": 0,
+      "disk_promotion_hits": 26,
+      "disk_lookup_misses": 2,
+      "disk_counter_source": "block_disk_store"
+    },
+    "block_disk": {
+      "blocks_on_disk": 102,
+      "disk_size_bytes": 2182789214,
+      "disk_size_gb": 2.033,
+      "total_accesses": 221,
+      "total_tokens_on_disk": 6337,
+      "total_cached_tokens": 6337,
+      "disk_hits": 71,
+      "disk_misses": 14,
+      "disk_writes": 15,
+      "disk_evictions": 0,
+      "tq_native_writes": 0,
+      "tq_native_hits": 0,
+      "tq_native_enabled": false
+    },
+    "totals": {
+      "ram_tokens_cached": 0,
+      "l1_indexed_tokens": 2564,
+      "l1_resident_bytes": 0,
+      "l1_resident_bytes_mb": 0.0,
+      "l1_max_resident_bytes": 0,
+      "l1_max_resident_bytes_mb": 0.0,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 6337,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 6337,
+      "l2_tokens_on_disk_store_sum": 6337,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    }
+  },
+  "health_after_partial_b": {
+    "model_loaded": true,
+    "last_request_time": 1784509163.547265,
+    "kv_cache_quantization": {
+      "enabled": false
+    },
+    "turboquant_kv_cache": {
+      "enabled": false
+    },
+    "native_cache": {
+      "family": "gemma4",
+      "schema": "mixed_swa_kv_v1",
+      "cache_type": "mixed_swa_kv",
+      "cache_subtype": "mixed_swa_kv",
+      "components": [
+        "full_attention_kv",
+        "sliding_window_kv",
+        "rotating_window_metadata"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "not_active"
+      },
+      "storage_quantization": {
+        "enabled": false,
+        "mode": "storage_boundary",
+        "bits": null,
+        "group_size": null,
+        "applies_to": "full_and_sliding_attention_kv",
+        "metadata_policy": "preserve_rotating_window_metadata"
+      },
+      "prefix": true,
+      "paged": false,
+      "block_disk_only": true,
+      "block_disk_l2": true
+    },
+    "scheduler": {
+      "pixel_cache_hits": 0,
+      "pixel_cache_misses": 0,
+      "pixel_hit_rate": 0.0,
+      "total_time_saved": 0.0,
+      "total_images_processed": 0,
+      "pixel_cache_size": 0,
+      "hits": 3,
+      "misses": 1,
+      "hit_rate": 0.75,
+      "tokens_saved": 3396,
+      "active_requests": 0,
+      "entries_by_type": {
+        "assistant": 2,
+        "user": 0,
+        "system": 0
+      },
+      "backend_mode": "block_disk_only",
+      "paged_ram_enabled": false,
+      "disk_only": true,
+      "paged_frugal": true,
+      "ram_mirror_policy": "disk_only",
+      "block_size": 64,
+      "max_blocks": 1000,
+      "usable_blocks": 999,
+      "capacity_tokens": 63936,
+      "allocated_blocks": 1,
+      "free_blocks": 999,
+      "shared_blocks": 0,
+      "total_tokens_cached": 2654,
+      "utilization": 0.0,
+      "cache_hit_rate": 0.8372093023255814,
+      "cache_hits": 108,
+      "cache_misses": 21,
+      "disk_hits": 110,
+      "disk_misses": 26,
+      "cow_copies": 0,
+      "evictions": 0,
+      "disk_promotion_hits": 26,
+      "disk_lookup_misses": 4,
+      "disk_counter_source": "block_disk_store"
+    },
+    "block_disk": {
+      "blocks_on_disk": 104,
+      "disk_size_bytes": 2213802847,
+      "disk_size_gb": 2.062,
+      "total_accesses": 260,
+      "total_tokens_on_disk": 6427,
+      "total_cached_tokens": 6427,
+      "disk_hits": 110,
+      "disk_misses": 26,
+      "disk_writes": 17,
+      "disk_evictions": 0,
+      "tq_native_writes": 0,
+      "tq_native_hits": 0,
+      "tq_native_enabled": false
+    },
+    "totals": {
+      "ram_tokens_cached": 0,
+      "l1_indexed_tokens": 2654,
+      "l1_resident_bytes": 0,
+      "l1_resident_bytes_mb": 0.0,
+      "l1_max_resident_bytes": 0,
+      "l1_max_resident_bytes_mb": 0.0,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 6427,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 6427,
+      "l2_tokens_on_disk_store_sum": 6427,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    }
+  },
+  "checks": {
+    "all_status_200": true,
+    "all_visible_nonempty": true,
+    "all_progressive": true,
+    "all_output_done_once": true,
+    "all_completed_once": true,
+    "all_terminal_under_250ms": true
+  }
+}

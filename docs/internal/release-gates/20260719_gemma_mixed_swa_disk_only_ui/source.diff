@@ -1,0 +1,262 @@
+diff --git a/panel/src/main/sessions.ts b/panel/src/main/sessions.ts
+index eb1589bb8..32131c0c5 100644
+--- a/panel/src/main/sessions.ts
++++ b/panel/src/main/sessions.ts
+@@ -106,13 +106,17 @@ function cacheTypeRequiresPaged(cacheType?: string): boolean {
+ }
+
+ function cacheTypeSupportsBlockDiskOnly(cacheType?: string): boolean {
+-  return cacheType === 'hybrid' || cacheType === 'mamba'
++  return cacheType === 'hybrid' || cacheType === 'mamba' || cacheType === 'rotating_kv'
+ }
+
+ function cacheSubtypeRequiresPaged(cacheSubtype?: string): boolean {
+   return cacheSubtype === 'step3p7_full_sliding_kv' || cacheSubtype === 'mixed_swa_kv'
+ }
+
++function cacheSubtypeSupportsBlockDiskOnly(cacheSubtype?: string): boolean {
++  return cacheSubtype === 'mixed_swa_kv'
++}
++
+ const DSV4_PAGED_CACHE_BLOCK_SIZE = 256
+ const GENERIC_DEFAULT_TIMEOUT_SECONDS = 300
+ const DSV4_DEFAULT_TIMEOUT_SECONDS = 900
+@@ -1854,7 +1858,7 @@ export class SessionManager extends EventEmitter {
+           if (
+             freshConfig.usePagedCache === true &&
+             (cacheTypeRequiresPaged(freshConfig.cacheType) || cacheSubtypeRequiresPaged(freshConfig.cacheSubtype)) &&
+-            !(cacheTypeSupportsBlockDiskOnly(freshConfig.cacheType) && !isZayaCcaFamily(freshFamily) && config.enableBlockDiskCache === true) &&
++            !((cacheTypeSupportsBlockDiskOnly(freshConfig.cacheType) || cacheSubtypeSupportsBlockDiskOnly(freshConfig.cacheSubtype)) && !isZayaCcaFamily(freshFamily) && config.enableBlockDiskCache === true) &&
+             config.continuousBatching !== false &&
+             config.enablePrefixCache !== false &&
+             config.usePagedCache === false
+@@ -3465,8 +3469,9 @@ export class SessionManager extends EventEmitter {
+       zayaCcaActive ||
+       dsv4PrefixCacheOptIn ||
+       ((hybridCacheActive || subtypePagedCacheActive) && detected.usePagedCache === true)
+-    const hybridSsmBlockDiskOnlySupported =
+-      cacheTypeSupportsBlockDiskOnly(detected.cacheType) &&
++    const architectureBlockDiskOnlySupported =
++      (cacheTypeSupportsBlockDiskOnly(detected.cacheType) ||
++        cacheSubtypeSupportsBlockDiskOnly(detected.cacheSubtype)) &&
+       !zayaCcaActive &&
+       !dsv4Active &&
+       !openPanguExactTypedCache
+@@ -3483,7 +3488,7 @@ export class SessionManager extends EventEmitter {
+         ? dsv4PrefixCacheOptIn && !!config.enableBlockDiskCache
+         : openPanguExactTypedCache ? false : !!config.enableBlockDiskCache,
+       architectureRequiresPagedCache,
+-      architectureSupportsBlockDiskOnly: hybridSsmBlockDiskOnlySupported,
++      architectureSupportsBlockDiskOnly: architectureBlockDiskOnlySupported,
+     })
+     const prefixCacheOff = cacheLaunchPolicy.prefixCacheOff
+     const usePagedCache = cacheLaunchPolicy.effectiveUsePagedCache
+diff --git a/panel/src/renderer/src/components/sessions/SessionConfigForm.tsx b/panel/src/renderer/src/components/sessions/SessionConfigForm.tsx
+index 70275aa4c..21d090fd6 100644
+--- a/panel/src/renderer/src/components/sessions/SessionConfigForm.tsx
++++ b/panel/src/renderer/src/components/sessions/SessionConfigForm.tsx
+@@ -368,8 +368,13 @@ export function SessionConfigForm({ config, onChange, onReset, detectedCacheType
+     detectedCacheType === 'mamba' ||
+     detectedCacheType === 'hybrid' ||
+     detectedCacheType === 'rotating_kv'
+-  const hybridSsmBlockDiskOnlySupported =
+-    (detectedCacheType === 'mamba' || detectedCacheType === 'hybrid') &&
++  const mixedSwaBlockDiskOnlySupported =
++    detectedCacheType === 'rotating_kv' ||
++    detectedCacheSubtype === 'mixed_swa_kv'
++  const architectureBlockDiskOnlySupported =
++    (detectedCacheType === 'mamba' ||
++      detectedCacheType === 'hybrid' ||
++      mixedSwaBlockDiskOnlySupported) &&
+     !zayaCcaActive &&
+     !dsv4Active &&
+     !openPanguExactTypedCache
+@@ -400,7 +405,7 @@ export function SessionConfigForm({ config, onChange, onReset, detectedCacheType
+     enableDiskCache: config.enableDiskCache,
+     enableBlockDiskCache: dsv4Active ? dsv4CompositeCacheOptIn && config.enableBlockDiskCache : openPanguExactTypedCache ? false : config.enableBlockDiskCache,
+     architectureRequiresPagedCache,
+-    architectureSupportsBlockDiskOnly: hybridSsmBlockDiskOnlySupported,
++    architectureSupportsBlockDiskOnly: architectureBlockDiskOnlySupported,
+   }
+   const cachePolicy = resolveCacheControlPolicy(cacheControlState)
+   const nativeCacheRequiresPaged = cachePolicy.architectureForcedPagedActive && nativePagedFamilyActive
+@@ -1020,7 +1025,9 @@ export function SessionConfigForm({ config, onChange, onReset, detectedCacheType
+         {!batchingOff && prefixOff && cachePolicy.architectureRequiresPagedCache && <IncompatWarning text="This model uses native/paged cache when Prefix Cache is enabled. Enable Prefix Cache above to activate the architecture-specific cache stack." />}
+         {zayaTypedCacheRequiresPaged && <InfoNote text="ZAYA typed CCA cache requires paged cache while prefix cache is enabled. Turn off Prefix Cache to disable this cache stack for ZAYA." />}
+         {nativeCacheRequiresPaged && !zayaTypedCacheRequiresPaged && !dsv4CompositeRequiresPaged && <InfoNote text="This native cache route requires paged cache while prefix cache is enabled so KV blocks and path-dependent state stay in the same cache contract." />}
+-        {hybridSsmBlockDiskOnlySupported && cachePolicy.blockDiskCacheChecked && <InfoNote text="Hybrid/Mamba SSD-only mode is available: turn Paged KV Cache Off to keep attention KV blocks in Block Disk L2 while restoring full-precision SSM/GDN companion state from its typed SSD store or clean-prefill rederive." />}
++        {architectureBlockDiskOnlySupported && cachePolicy.blockDiskCacheChecked && <InfoNote text={mixedSwaBlockDiskOnlySupported
++          ? "Native sliding/mixed-SWA SSD-only mode is available: turn Paged KV Cache Off to keep typed KV blocks and rotating-window metadata in Block Disk L2 without retaining RAM payloads."
++          : "Hybrid/Mamba SSD-only mode is available: turn Paged KV Cache Off to keep attention KV blocks in Block Disk L2 while restoring full-precision SSM/GDN companion state from its typed SSD store or clean-prefill rederive."} />}
+         {dsv4CompositeRequiresPaged && <InfoNote text="DSV4 uses native SWA+CSA/HCA composite cache snapshots, so paged cache stays on and block size is fixed to 256 tokens for diagnostic decode-cache testing." />}
+         {m3Active && <InfoNote text="MiniMax-M3 uses a native typed MSA paged cache that preserves keys, values, idx_keys, and absolute offsets. Block Disk Cache provides its persistent L2; generic KV q4/q8 remains disabled." />}
+         {openPanguExactTypedCache && <InfoNote text="openPangu does not use generic paged blocks: causal-convolution state is cumulative and cannot be reconstructed from an arbitrary block. Use Prefix Cache plus prompt-level Disk Cache (L2) instead." />}
+diff --git a/panel/src/renderer/src/components/sessions/SessionSettings.tsx b/panel/src/renderer/src/components/sessions/SessionSettings.tsx
+index 086555267..69c79d353 100644
+--- a/panel/src/renderer/src/components/sessions/SessionSettings.tsx
++++ b/panel/src/renderer/src/components/sessions/SessionSettings.tsx
+@@ -46,6 +46,14 @@ function cacheSubtypeRequiresPaged(cacheSubtype?: string): boolean {
+   return cacheSubtype === 'step3p7_full_sliding_kv' || cacheSubtype === 'mixed_swa_kv'
+ }
+
++function cacheTypeSupportsBlockDiskOnly(cacheType?: string): boolean {
++  return cacheType === 'hybrid' || cacheType === 'mamba' || cacheType === 'rotating_kv'
++}
++
++function cacheSubtypeSupportsBlockDiskOnly(cacheSubtype?: string): boolean {
++  return cacheSubtype === 'mixed_swa_kv'
++}
++
+ const DSV4_PAGED_CACHE_BLOCK_SIZE = 256
+ const GENERIC_DEFAULT_TIMEOUT_SECONDS = 300
+ const DSV4_DEFAULT_TIMEOUT_SECONDS = 900
+@@ -406,8 +414,9 @@ function buildCommandPreview(
+   const zayaCcaActive = isZayaCcaFamily(detectedFamily)
+   const turboQuantActive = !!detected?.isTurboQuant
+   const hybridCacheActive = cacheTypeRequiresPaged(detected?.cacheType)
+-  const hybridSsmBlockDiskOnlySupported =
+-    (detected?.cacheType === 'hybrid' || detected?.cacheType === 'mamba') &&
++  const architectureBlockDiskOnlySupported =
++    (cacheTypeSupportsBlockDiskOnly(detected?.cacheType) ||
++      cacheSubtypeSupportsBlockDiskOnly(detected?.cacheSubtype)) &&
+     !zayaCcaActive &&
+     !dsv4Active &&
+     !openPanguExactTypedCache
+@@ -485,7 +494,7 @@ function buildCommandPreview(
+       ? dsv4PrefixCacheOptIn && !!config.enableBlockDiskCache
+       : !!config.enableBlockDiskCache,
+     architectureRequiresPagedCache,
+-    architectureSupportsBlockDiskOnly: hybridSsmBlockDiskOnlySupported,
++    architectureSupportsBlockDiskOnly: architectureBlockDiskOnlySupported,
+   })
+   const prefixCacheOff = cacheLaunchPolicy.prefixCacheOff
+   const usePagedCache = cacheLaunchPolicy.effectiveUsePagedCache
+diff --git a/panel/src/shared/cacheControlPolicy.ts b/panel/src/shared/cacheControlPolicy.ts
+index 2244a5666..8b2b0a538 100644
+--- a/panel/src/shared/cacheControlPolicy.ts
++++ b/panel/src/shared/cacheControlPolicy.ts
+@@ -18,8 +18,9 @@ export interface CacheControlState {
+   /**
+    * The architecture has non-KV companion state, but the engine can pair the
+    * disk-only KV block index with a typed companion SSD store/rederive path.
+-   * This is currently true for hybrid/Mamba SSM caches, not for native typed
+-   * DSV4/ZAYA/M3/openPangu cache contracts.
++   * This is true for hybrid/Mamba SSM caches and native rotating/mixed-SWA
++   * caches whose typed metadata is carried in each block record. It is not
++   * true for DSV4/ZAYA/M3/openPangu path-dependent cache contracts.
+    */
+   architectureSupportsBlockDiskOnly?: boolean
+ }
+diff --git a/panel/tests/cache-control-policy.test.ts b/panel/tests/cache-control-policy.test.ts
+index 235001e80..8644afeff 100644
+--- a/panel/tests/cache-control-policy.test.ts
++++ b/panel/tests/cache-control-policy.test.ts
+@@ -189,6 +189,22 @@ describe('cache control policy', () => {
+     expect(launch.enableBlockDiskCache).toBe(true)
+   })
+
++  it('lets a rotating mixed-SWA architecture use typed block SSD L2 without paged RAM', () => {
++    const policy = resolveCacheLaunchPolicy({
++      continuousBatching: true,
++      enablePrefixCache: true,
++      usePagedCache: false,
++      enableDiskCache: false,
++      enableBlockDiskCache: true,
++      architectureRequiresPagedCache: true,
++      architectureSupportsBlockDiskOnly: true,
++    })
++
++    expect(policy.effectiveUsePagedCache).toBe(false)
++    expect(policy.enableBlockDiskCache).toBe(true)
++    expect(policy.enableLegacyDiskCache).toBe(false)
++  })
++
+   it('still forces paged cache for a hybrid architecture without block SSD L2', () => {
+     const policy = resolveCacheLaunchPolicy({
+       continuousBatching: true,
+diff --git a/panel/tests/settings-flow.test.ts b/panel/tests/settings-flow.test.ts
+index b23890c64..9ac91d497 100644
+--- a/panel/tests/settings-flow.test.ts
++++ b/panel/tests/settings-flow.test.ts
+@@ -212,6 +212,14 @@ function cacheSubtypeRequiresPaged(cacheSubtype?: string): boolean {
+     return cacheSubtype === 'step3p7_full_sliding_kv' || cacheSubtype === 'mixed_swa_kv'
+ }
+
++function cacheTypeSupportsBlockDiskOnly(cacheType?: string): boolean {
++    return cacheType === 'hybrid' || cacheType === 'mamba' || cacheType === 'rotating_kv'
++}
++
++function cacheSubtypeSupportsBlockDiskOnly(cacheSubtype?: string): boolean {
++    return cacheSubtype === 'mixed_swa_kv'
++}
++
+ const DSV4_PAGED_CACHE_BLOCK_SIZE = 256
+ const GENERIC_DEFAULT_TIMEOUT_SECONDS = 300
+ const DSV4_DEFAULT_TIMEOUT_SECONDS = 900
+@@ -336,8 +344,10 @@ function buildCommandPreview(
+                 : false
+     const zayaCcaActive = isZayaCcaFamily(detectedFamily)
+     const hybridCacheActive = detected?.cacheType === 'hybrid' || detected?.cacheType === 'mamba'
+-    const hybridSsmBlockDiskOnlySupported =
+-        hybridCacheActive && !zayaCcaActive && !dsv4Active && detectedFamily !== 'openpangu_v2'
++    const architectureBlockDiskOnlySupported =
++        (cacheTypeSupportsBlockDiskOnly(detected?.cacheType) ||
++            cacheSubtypeSupportsBlockDiskOnly(detected?.cacheSubtype)) &&
++        !zayaCcaActive && !dsv4Active && detectedFamily !== 'openpangu_v2'
+     const effectiveDistributed = requestedDistributed && !dsv4Active
+     const effectiveFlashMoe = requestedFlashMoe && !effectiveDistributed && !dsv4Active
+     const effectiveEnableJit = !!config.enableJit && !isVLM && !effectiveFlashMoe && !effectiveDistributed && !dsv4Active && !m3Active && !zayaCcaActive && !turboQuantActive && !hybridCacheActive
+@@ -396,7 +406,7 @@ function buildCommandPreview(
+             zayaCcaActive ||
+             dsv4PrefixCacheOptIn ||
+             ((cacheTypeRequiresPaged(detected?.cacheType) || cacheSubtypeRequiresPaged(detected?.cacheSubtype)) && detected?.usePagedCache === true),
+-        architectureSupportsBlockDiskOnly: hybridSsmBlockDiskOnlySupported,
++        architectureSupportsBlockDiskOnly: architectureBlockDiskOnlySupported,
+     })
+     const prefixCacheOff = cacheLaunchPolicy.prefixCacheOff
+     const usePagedCache = cacheLaunchPolicy.effectiveUsePagedCache
+@@ -2353,7 +2363,7 @@ describe('No Hardcoded Values', () => {
+         expect(hasFlag(kvOut, '--use-paged-cache')).toBe(false)
+     })
+
+-    it('detected Gemma4 mixed-SWA rotating KV forces paged cache over stale saved false', () => {
++    it('detected Gemma4 mixed-SWA rotating KV honors SSD-only mode with Block L2', () => {
+         const out = preview(
+             {
+                 enablePrefixCache: true,
+@@ -2373,11 +2383,32 @@ describe('No Hardcoded Values', () => {
+         )
+
+         expect(hasFlag(out, '--is-mllm')).toBe(true)
+-        expect(hasFlag(out, '--use-paged-cache')).toBe(true)
++        expect(hasFlag(out, '--use-paged-cache')).toBe(false)
++        expect(hasFlag(out, '--no-paged-cache')).toBe(true)
+         expect(hasFlag(out, '--enable-disk-cache')).toBe(false)
+         expect(hasFlag(out, '--enable-block-disk-cache')).toBe(true)
+-        // #98/H1: cache-memory-% sets the paged L1 RAM byte ceiling → emitted.
+-        expect(getFlagValue(out, '--cache-memory-percent')).toBe('0.15')
++        // SSD-only mode does not retain a paged L1 payload mirror.
++        expect(hasFlag(out, '--cache-memory-percent')).toBe(false)
++    })
++
++    it('detected Gemma4 mixed-SWA rotating KV still forces paged cache without Block L2', () => {
++        const out = preview(
++            {
++                enablePrefixCache: true,
++                usePagedCache: false,
++                enableBlockDiskCache: false,
++            },
++            {
++                family: 'gemma4',
++                cacheType: 'rotating_kv',
++                cacheSubtype: 'mixed_swa_kv',
++                usePagedCache: true,
++                isMultimodal: true,
++            },
++        )
++
++        expect(hasFlag(out, '--use-paged-cache')).toBe(true)
++        expect(hasFlag(out, '--enable-block-disk-cache')).toBe(false)
+     })
+
+     it('changing maxCacheBlocks produces different CLI output', () => {

@@ -3044,3 +3044,28 @@ from RAM and SSD with progressive Responses/Electron output and sub-0.15-second
 raw terminal gaps. Arbitrary changed-suffix partial reuse remains deliberately
 rejected because non-terminal blocks lack complete CSA/HCA state. Strict output
 fidelity is still partial due intermittent `TERTERMINAL` duplication.
+
+## 2026-07-19 - Gemma mixed-SWA block SSD without paged RAM
+
+- Status: `VERIFIED-LIVE_SCOPED`; overall release remains
+  `PARTIAL_NO_1_6_12_RELEASE`.
+- The panel now exposes the engine's authoritative mixed-SWA Block Disk L2 route
+  when Prefix Cache and Block L2 are on but Paged KV Cache is explicitly off.
+  The actual Electron `Save & Restart` argv used `--no-paged-cache`,
+  `--kv-cache-quantization none`, and `--enable-block-disk-cache`.
+- Cold, exact-warm, changed-tail partial-prefix, and process-restart Electron
+  rows returned exact non-empty visible answers with separate progressive
+  reasoning. Exact hits restored 1,646 tokens and the changed-tail row restored
+  1,536/1,649 tokens as `block-disk+mixed_swa`.
+- Before the restart hit, the new process had zero L1 indexed/resident tokens
+  and 5,419 L2 tokens on SSD. The first request produced 26 disk promotions,
+  zero new writes, zero resident L1 bytes, and zero TQ writes/hits.
+- Raw Responses cold/warm/partial runs each emitted 12 progressive content
+  deltas, one text-done, one completed terminal, and a 21.5-22.7 ms terminal
+  gap. Focused validation passed 7 + 7 Python, 300 panel, typecheck, and diff
+  check.
+- The real UI was restored to Paged On + Auto afterward; PID 59856 health
+  reports paged RAM and stored-prefix `turboquant-q4` for compatible mixed-SWA
+  KV storage.
+- Step/MiMo and Chat/Anthropic/Ollama repetition remain open. Evidence:
+  `docs/internal/release-gates/20260719_gemma_mixed_swa_disk_only_ui/`.
