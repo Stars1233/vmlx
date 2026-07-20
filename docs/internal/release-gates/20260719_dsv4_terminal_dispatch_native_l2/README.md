@@ -86,4 +86,3 @@ zero generic-TQ hits/writes, and 2,303 total saved tokens.
 - This scoped proof does not close DSV4 long-output quality/performance,
   cross-protocol tool continuation, cancellation/disconnect recovery, or the
   broader model/release matrix.
-
