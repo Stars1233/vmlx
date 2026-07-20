@@ -12,8 +12,10 @@ campaign. A scoped live gate does not automatically close a family-wide row.
 - Working repository: `/Users/eric/mlx/vllm-mlx` on
   `erics-m5-max.local`, branch `reconcile/1.5.68`.
 - Push target: `origin/codex/live-electron-gates-20260715`.
-- Current source head: `4b3d6951c444c22ce6d273350aef69e056ae1f22`.
-- GitHub branch head: `4b3d6951c444c22ce6d273350aef69e056ae1f22`.
+- Current pre-bump source head:
+  `c4ec592b3ed8c2c8b165c92cdb19ff81dbc81c16`.
+- GitHub branch and clean second-Mac worktree matched that SHA before the
+  `1.6.12` version commit; final release SHA is pending.
 - Clean synchronized worktree on the second Mac:
   `/Users/eric/mlx/vllm-mlx-live-electron-gates`, detached at the same SHA,
   with zero changes.
@@ -127,6 +129,9 @@ uses the documented clean JANG source
 | Focused q4 reproduction | FAIL before repair | missing `block_aware_cache` caused unquantized fallback |
 | Focused q4 contract after repair | PASS on `4b3d6951c` | 1 passed; q4 NumPy storage and restore shape verified |
 | Eight-failure triage union | PASS after repairs | all 8 previously failing tests passed together in 15.75 s |
+| Clean source rerun on `320b1eef0` | FAIL, then triaged | 6,166 passed; 3 generated-proof audit failures |
+| Clean source rerun on `2b28a82af` | HARNESS PARTIAL | 6,167 passed; two public-app audit failures remained because the Python-only worktree lacked `panel/node_modules` for ASAR extraction |
+| Public-app audit after proof-boundary repair | PASS focused | full file 6/6; absent generated proof is OPEN, present stale/mismatched proof remains FAIL |
 | Complete Python rerun | PENDING | must run from a clean worktree at the final pre-bump source head |
 | Complete panel rerun | PENDING | required on final release-bump head if source changes |
 | TypeScript typecheck | PENDING current wrapper | runs after full suite wrapper completes |
