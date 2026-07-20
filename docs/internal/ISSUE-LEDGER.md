@@ -3069,3 +3069,29 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   KV storage.
 - Step/MiMo and Chat/Anthropic/Ollama repetition remain open. Evidence:
   `docs/internal/release-gates/20260719_gemma_mixed_swa_disk_only_ui/`.
+
+## 2026-07-19 - Step 3.7 mixed-SWA SSD-only bounded proof
+
+- Status: `VERIFIED-LIVE_SCOPED_SHORT_PREFIX`; long tight-memory cold store is
+  `PARTIAL`; overall release remains `PARTIAL_NO_1_6_12_RELEASE`.
+- The real Step JANGTQ_K bundle has 45 full/sliding attention layers, a
+  512-token window, typed `step3p7_full_sliding_kv` records, and no MTP tensors.
+  The panel now allows Paged Off + Block L2 for this exact subtype and visibly
+  discloses the tight-headroom long-store limitation.
+- Gateway single-model Start stopped Gemma PID 59856 and eagerly loaded Step PID
+  60732 before a prompt with exactly one engine remaining.
+- The real settings drawer launched PID 62212 with `--no-paged-cache`,
+  `--kv-cache-quantization none`, and Block L2. A 136-token cold prompt wrote
+  three SSD blocks; exact warm restored 135/136; changed-tail partial restored
+  one 64-token block; PID 63165 restored 135/136 from disk after restart. L1
+  resident bytes and TQ writes/hits stayed zero.
+- Raw Responses with the supported low-reasoning rail emitted 102/85 reasoning
+  deltas, 9 content deltas per turn, one text-done, one completed terminal, and
+  26.5-26.8 ms terminal gaps.
+- A 1,343-token cold prompt streamed an exact answer but intentionally wrote no
+  cache: the tight-Metal guard rejected a second clean prefill to avoid OOM.
+  No unsafe force override was used; long cold store remains open.
+- Paged On + Auto was restored through the real UI; PID 64768 health reports
+  paged RAM and stored-prefix TQ4. Focused checks: 14 Python, 300 panel,
+  typecheck, and diff check. Evidence:
+  `docs/internal/release-gates/20260719_step37_mixed_swa_disk_only_ui/`.
