@@ -3510,3 +3510,47 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - Validation: 14 selected Python tests, 88 panel tests, TypeScript typecheck,
   and diff check. Evidence:
   `docs/internal/release-gates/20260720_lfm_native_reasoning_protocol/`.
+## 2026-07-20 - Gemma 4 media-order, 1120-budget, mixed-SWA L2, and fallback recheck
+
+- Current host/repo: `erics-m5-max.local`,
+  `/Users/eric/mlx/vllm-mlx-release-1.6.13`, branch
+  `codex/postrelease-ui-drawers-20260720`.
+- Bundle identity is grounded in the real files: affine `JANG_4M`, not
+  JANGTQ/MXTQ; `gemma4_unified`; 40 rotating-SWA plus eight full-attention
+  layers; vision+audio advertised; video not advertised.
+- `7687f237b` fixes the Electron composer contract for Gemma only: visual media
+  precedes text and audio follows it. The pre-fix `[text,image]` rows looped or
+  mangled output even with cache disabled. The corrected request log shows
+  `[image_url,text]`.
+- `a0abd7ab3` adds explicit validated Gemma image budgets
+  70/140/280/560/1120 across Chat, Responses, batching, UI persistence, and
+  media-cache identity. The real UI selected 1120 and sent it; prompt size rose
+  from 328 to 1,144 tokens.
+- Structural image transport is current-source PASS-LIVE, but exact OCR is
+  **PARTIAL**: Electron A5 returned `jiang-ai/...`; raw A6/A7/A8 also changed
+  one or more characters/case from
+  `jangq-ai/gemma-4-12B-it-qat-JANG_4M`. Do not call that output proper and do
+  not hide it with postprocessing.
+- Raw Responses A6 emitted progressive reasoning from 1.44s, progressive
+  content from 7.40s, and a completed terminal at 8.28s. Identical warm reuse
+  restored 1,137/1,138 tokens as `paged+mixed_swa+tq-native` and began at
+  0.32s.
+- Visible Electron Stop/Start cleared L1. A7 restored 1,137 tokens as
+  `paged+mixed_swa+disk+tq-native`; health recorded 18 disk promotions plus 18
+  native-TQ hits, with the 40 rotating layers kept native.
+- The first pre-fix restart row exposed a separate P0 fallback bug: after the
+  512-token reasoning rail, the direct answer pass emitted literal `thought`
+  and ended incomplete. Cache restoration was numerically coherent; the server
+  prompt/stream layer was wrong.
+- Root cause and fix (`1b89e1118`): buffer the degraded Gemma `thought\n`
+  channel from its first partial chunk, and rerun the fallback from original
+  context because Gemma's real template ignores a bare assistant
+  `reasoning_content` turn. Forced A8 at a 64-token thinking cap emitted 57
+  reasoning events followed by 30 progressive content events, no `thought`
+  leak, and `response.completed`.
+- Validation: dedicated family test 9/9; expanded server/Gemma/reasoning/media
+  selection 57 passed with two intentional skips. Evidence:
+  `docs/internal/release-gates/20260720_gemma4_media_stream_cache/`.
+- Remaining: controlled same-artifact OCR reference A/B, different-media
+  1120-budget salt isolation and return-A, audio, post-media text/tool turns,
+  bounded eviction, and signed-app repetition.
