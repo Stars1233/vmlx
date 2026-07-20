@@ -1,0 +1,56 @@
+{
+  "bundle": "/Volumes/EricsLLMDrive/dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK",
+  "config": {
+    "architectures": [
+      "NemotronHForCausalLM"
+    ],
+    "model_type": "nemotron_h",
+    "mxtq_bits": 2,
+    "weight_format": "mxtq"
+  },
+  "generation": {
+    "eos_token_id": [
+      2,
+      11
+    ],
+    "temperature": 0.6,
+    "top_p": 0.95
+  },
+  "jang_config": {
+    "mxtq_bits": {
+      "attention": 8,
+      "embed_tokens": 8,
+      "lm_head": 8,
+      "mamba_proj": 8,
+      "routed_expert": 2,
+      "shared_expert": 8
+    },
+    "weight_format": "mxtq"
+  },
+  "omni": {
+    "architectures": [
+      "NemotronH_Nano_Omni_Reasoning_V3"
+    ],
+    "model_type": "NemotronH_Nano_Omni_Reasoning_V3",
+    "sound_config": {
+      "conv_kernel_size": 9,
+      "convolution_bias": false,
+      "hidden_size": 1024,
+      "intermediate_size": 4096,
+      "model_type": "parakeet",
+      "num_attention_heads": 8,
+      "num_hidden_layers": 24,
+      "num_mel_bins": 128,
+      "projection_bias": false,
+      "projection_hidden_size": 4096,
+      "sampling_rate": 16000,
+      "subsampling_conv_channels": 256,
+      "subsampling_conv_kernel_size": 3,
+      "subsampling_conv_stride": 2,
+      "subsampling_factor": 8
+    },
+    "sound_context_token": "<so_embedding>",
+    "video_context_token": "<video>",
+    "vision_version": "radio_v2.5-h"
+  }
+}

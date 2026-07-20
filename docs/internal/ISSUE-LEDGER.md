@@ -3569,3 +3569,47 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   audio, non-advertised-video rejection, bounded eviction, and signed-app
   repetition. Exact OCR remains `PARTIAL`; these cache/history passes do not
   promote it.
+
+## 2026-07-20 - Nemotron Omni audio media-salt and Electron history replay
+
+- Current host/repo: `erics-m5-max.local`,
+  `/Users/eric/mlx/vllm-mlx-release-1.6.13`, branch
+  `codex/postrelease-ui-drawers-20260720`.
+- Bundle files classify the artifact as JANGTQ/MXTQ Hadamard-codebook, not
+  affine JANG and not base MLX MXFP. `config_omni.json` advertises Parakeet
+  16-kHz audio, C-RADIO vision, and video tokens.
+- `NEMO-OMNI-MEDIA-SALT`: `VERIFIED-LIVE_SCOPED`. Root cause was text-only
+  conversation hashing in `vmlx_engine/omni_multimodal.py`. An identical-text
+  orange->blue replay returned stale `MARKER=ORANGE-4729`. Current source adds
+  media identity to every user-turn signature, resets on a mismatched prefix,
+  and rehydrates the latest historical media for a text-only follow-up. The
+  post-fix blue replay exact-finaled `MARKER=BLUE-6813` with progressive
+  content, stop, usage, and DONE.
+- `NEMO-OMNI-PANEL-HISTORY`: `VERIFIED-LIVE_SCOPED`. The shared Electron path
+  previously stripped all historical media, turning the next request into
+  `chatIsMultimodal:false` and bypassing Omni. Current source preserves prior
+  media only when family detection says `nemotron-h` and the selected bundle
+  has `config_omni.json`. A clean no-attachment second turn logged
+  `preserveHistoricalMediaForOmni:true`, retained `input_audio`, reached the
+  Omni dispatcher, and continued a matching persistent conversation prefix.
+- Clean Electron chat outputs were `READY`, `blue6813`, and exact
+  `BLUE-6813`; separate reasoning lengths were 445/367/354 and hashes were all
+  different. The turn-2 missing hyphen is retained as a strict-format miss,
+  not rewritten or hidden.
+- Raw Chat audio emitted 146 reasoning plus 24 content deltas, terminal stop,
+  usage, and DONE. Raw Responses emitted 160 reasoning-summary plus 26 text
+  deltas, matching done events, one completed item, and one completed response
+  with usage.
+- Real Electron Stop/relaunch plus UI Start proved eager load before the first
+  request (`last_request_time=null`, 9,348.1 MB active) and retained the exact
+  venv `[Engine Manager] Found in PATH` log.
+- Validation: 25 focused Python tests; full panel 77 files / 2,346 passed / 3
+  skipped; typecheck. Full Python ran 6,202 pass / 96 skip / 92 deselect and
+  intentionally failed only because the bundle still had the pre-fix source.
+  `bundle-python.sh` was then run against the clean detached JANG checkout;
+  the complete bundled-runtime verifier and the formerly failing test pass.
+- `NEMO-OMNI-MEDIA-L2`: `OPEN`. The Omni dispatcher's persistent KV+SSM
+  conversation is process-local. Do not use ordinary scheduler paged/TQ/L2
+  counters to claim process-restart media-session restore.
+- Evidence:
+  `docs/internal/release-gates/20260720_nemotron_omni_audio/`.
