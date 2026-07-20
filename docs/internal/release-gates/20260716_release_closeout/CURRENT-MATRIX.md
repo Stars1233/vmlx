@@ -8,6 +8,29 @@ production gate, and the current branch. Older contradictory rows remain in
 their original ledgers for provenance; the newest source-plus-live row wins and
 superseded conclusions are called out here.
 
+### 2026-07-20 Anthropic/Ollama mid-stream failure override
+
+- Pushed source `d811270ad` closes the native terminal contract for injected
+  mid-stream engine failures on Anthropic Messages, Ollama `/api/chat`,
+  templated `/api/generate`, and raw `/api/generate`. Public v1.6.12 remains
+  sealed and does not contain this post-release fix.
+- Ollama previously discarded the upstream structured error and synthesized a
+  false `done:true` from the later `[DONE]`. All three converters now emit the
+  official native `{"error":"..."}` NDJSON row, while each route clears any
+  deferred success/tool terminal and suppresses later success synthesis.
+- Literal `curl -N --no-buffer` failure/recovery pairs against production
+  handlers streamed two visible chunks before each error. No failing Ollama
+  stream contained `done:true`; every immediate recovery completed with one
+  truthful terminal and usage. Anthropic likewise ended on `event:error`
+  without `message_stop`, then recovered to `message_stop` with usage.
+- Focused current validation is 30 adapter/route tests plus the existing
+  Chat/Responses mid-stream and Ollama output-cap selections. Evidence:
+  `docs/internal/release-gates/20260720_anthropic_ollama_midstream_failure/`.
+- This supersedes only the older `Anthropic/Ollama injected failures` OPEN
+  wording. Gateway network-loss injection, signed-app repetition, broader
+  parser/model agentic loops, and unrelated family/cache/media/stress rows
+  remain `PARTIAL`/`OPEN`.
+
 ### 2026-07-19 post-release mid-stream failure/recovery override
 
 - Pushed source `5f05ad72a` closes the shared safe injected engine-failure

@@ -3406,3 +3406,26 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   public-surface audit revalidated the unchanged v1.6.12 tag target, both DMG
   hashes/staples/Gatekeeper results, both installed-app signatures, all updater
   feeds, PyPI, and the Homebrew cask; see the release-checkpoint README.
+
+## 2026-07-20 - Anthropic/Ollama injected mid-stream failure closure
+
+- Status: `FIXED_SOURCE_VERIFIED_LIVE_SCOPED` at pushed source `d811270ad`;
+  public v1.6.12 is unchanged and does not contain this post-release fix.
+- The Anthropic adapter already emitted a native error and suppressed normal
+  finalization. Ollama's chat, templated-generate, and raw-generate converters
+  instead dropped the structured error; their route wrappers then converted
+  the later `[DONE]` into a false successful `done:true` row.
+- All Ollama converters now emit the official native terminal
+  `{"error":"..."}` row. Route state clears deferred done/tool state and
+  suppresses later success/usage synthesis after an error.
+- Literal curl-N failure/recovery pairs through the production handlers proved
+  two progressive visible chunks before every failure, no false success
+  terminal, and immediate normal completion on Anthropic plus all three Ollama
+  streaming rails.
+- Validation: 30 adapter/route tests, two existing Chat/Responses mid-stream
+  selections, one Ollama route-cap selection, py_compile, and diff check pass.
+- Evidence:
+  `docs/internal/release-gates/20260720_anthropic_ollama_midstream_failure/`.
+- Still open: gateway network-loss injection, signed-app repetition, broader
+  parser/model agentic loops, non-stream pre-header failures, and unrelated
+  family/cache/media/stress rows.

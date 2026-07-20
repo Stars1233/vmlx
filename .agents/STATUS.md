@@ -7565,3 +7565,20 @@ Public v1.6.12 remains sealed and does not contain this post-release change.
   `docs/internal/release-gates/20260719_midstream_failure_recovery/`.
 - Remaining boundary: gateway network-loss injection, Anthropic/Ollama injected
   failures, signed-app repetition, and unrelated model/cache/media/stress rows.
+
+## 2026-07-20 - Anthropic/Ollama mid-stream failure terminal parity
+
+- Blocker `api/ui`: Ollama dropped structured stream errors and could emit a
+  false `done:true` after the engine had already failed.
+- Source `d811270ad` maps errors to native Ollama NDJSON and makes errors
+  terminal across `/api/chat`, templated `/api/generate`, and raw generate.
+- Live curl-N pairs through production handlers proved progressive partial
+  output, native error termination, no false success, and immediate recovery
+  for Anthropic and all three Ollama rails.
+- Focused validation passes 30 adapter/route tests plus existing
+  Chat/Responses mid-stream and Ollama route-cap selections.
+- Evidence:
+  `docs/internal/release-gates/20260720_anthropic_ollama_midstream_failure/`.
+- Overall status remains `PARTIAL`; no Electron model generation, signed-app
+  repeat, gateway network-loss injection, or family/cache/media row was run in
+  this scoped closure.

@@ -1512,3 +1512,19 @@
   Revalidated the immutable v1.6.12 tag target, both public GitHub releases,
   both DMG hashes/staples/Gatekeeper verdicts, both installed-app signatures,
   all updater feeds, PyPI, and the Homebrew cask after the push.
+
+## 2026-07-20 - Anthropic/Ollama injected failure recovery
+
+- Reproduced the global Ollama false-success bug from real converter output:
+  upstream `error` became no row (or an empty nonterminal raw row), then later
+  `[DONE]` became `done:true`.
+- Pinned the official native `{"error":"..."}` streaming contract, added a
+  production-route regression, fixed all three streaming routes, and pushed
+  source commit `d811270ad`.
+- Ran live localhost production handlers with delayed partial output and an
+  injected engine exception. Anthropic plus Ollama chat/templated/raw each
+  ended natively without a false success; the immediately following request
+  completed normally.
+- Evidence and remaining boundaries are recorded under
+  `20260720_anthropic_ollama_midstream_failure/`. Overall matrix remains
+  partial; this was an API adapter closure, not a model/Electron/release row.
