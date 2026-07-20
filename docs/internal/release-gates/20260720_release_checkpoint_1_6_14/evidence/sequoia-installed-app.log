@@ -1,0 +1,78 @@
+[STARTUP] Using vMLX userData override: /Users/eric/.vmlx-v1614-sequoia-checkpoint
+[STARTUP] Allowing an isolated secondary instance for live proof
+
+DevTools listening on ws://127.0.0.1:9463/devtools/browser/888fbd6e-c0b4-4d5b-8213-5675937eb033
+[Engine Manager] Engine version check: installed=1.6.14, source=1.6.14, needsUpdate=false
+[MODE] Auto-detected: expert (128GB RAM)
+[STARTUP] Restoring 0 App Sandbox bookmarks
+[STARTUP] No existing vmlx-engine processes found
+[MemoryEnforcer] Started (max 120 GB, poll 5000ms, TTL 30m)
+[gateway] Listening on 127.0.0.1:8080
+[Engine Manager] Checking installation...
+[Engine Manager] Found bundled Python with vmlx_engine 1.6.14 (from dist-info)
+[UPDATE] Fetched manifest from https://mlx.studio/update/latest.json: v1.6.13
+[UPDATE] Fetched manifest from https://raw.githubusercontent.com/jjang-ai/mlxstudio/main/latest.json: v1.6.13
+[UPDATE] Picked highest version across sources: v1.6.13
+[UPDATE] Selected native macOS download: https://github.com/jjang-ai/mlxstudio/releases/download/v1.6.13/vMLX-1.6.13-tahoe-arm64.dmg
+[UPDATE] Up to date (1.6.14)
+[MODELS] Scanning directories: [
+  '/Users/eric/.mlxstudio/models',
+  '/Users/eric/.cache/huggingface/hub',
+  '/Users/eric/.exo/models'
+]
+[MODELS] Found 18 models in /Users/eric/.mlxstudio/models
+[MODELS] Found 3 models in /Users/eric/.cache/huggingface/hub
+[MODELS] Found 0 models in /Users/eric/.exo/models
+[MODELS] Total models found: 21 (0 duplicates removed)
+[Engine Manager] Checking installation...
+[Engine Manager] Found bundled Python with vmlx_engine 1.6.14 (from dist-info)
+[SESSION] Model estimate: ~7.1 GB | RAM: 115.2 GB free / 137 GB total (16% used)
+[SESSION] Model family: gemma4 | tool: gemma4 (user=gemma4, detected=gemma4) | reasoning: gemma4 (user=gemma4, detected=gemma4) | autoTool: true | VLM: true
+[SESSION] Ignoring stale JIT flag because multimodal/VLM models use the mlx-vlm streaming path, which is not mx.compile safe
+[POWER] System sleep blocked (id=0)
+[SLEEP] touchSession 2cb761e5 — idle timer reset
+[MODELS] Scanning directories: [
+  '/Users/eric/.mlxstudio/models',
+  '/Users/eric/.cache/huggingface/hub',
+  '/Users/eric/.exo/models'
+]
+[MODELS] Found 18 models in /Users/eric/.mlxstudio/models
+[MODELS] Found 3 models in /Users/eric/.cache/huggingface/hub
+[MODELS] Found 0 models in /Users/eric/.exo/models
+[MODELS] Total models found: 21 (0 duplicates removed)
+[SLEEP] touchSession 2cb761e5 — idle timer reset
+[CHAT] Endpoint resolution: isRemote=false, rawBaseUrl=http://127.0.0.1:8143, baseUrl=http://127.0.0.1:8143, session=2cb761e5-ad55-4d4b-b8be-c8adb8c92013, type=local
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:8143/v1/responses (wire: responses, remote: false)
+[CHAT] Stream ended — content: 118 chars, reasoning: 1829 chars, tool calls: 0, buffered: false
+[CHAT] Response complete: 823 tokens in 19.0s (44.4 t/s, live=44.2 t/s, TTFT: 0.39s, pp: 74 tokens, 191.7 pp/s, usage=server)
+[SLEEP] touchSession 2cb761e5 — idle timer reset
+[CHAT] Endpoint resolution: isRemote=false, rawBaseUrl=http://127.0.0.1:8143, baseUrl=http://127.0.0.1:8143, session=2cb761e5-ad55-4d4b-b8be-c8adb8c92013, type=local
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:8143/v1/responses (wire: responses, remote: false)
+[CHAT] Stream ended — content: 209 chars, reasoning: 7378 chars, tool calls: 0, buffered: false
+[CHAT] Response complete: 2782 tokens in 72.8s (38.5 t/s, live=33.2 t/s, TTFT: 0.43s, pp: 178 tokens (73 cached), 414.0 pp/s, usage=server)
+[SLEEP] touchSession 2cb761e5 — idle timer reset
+[CHAT] Endpoint resolution: isRemote=false, rawBaseUrl=http://127.0.0.1:8143, baseUrl=http://127.0.0.1:8143, session=2cb761e5-ad55-4d4b-b8be-c8adb8c92013, type=local
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:8143/v1/responses (wire: responses, remote: false)
+[CHAT] Stream ended — content: 93 chars, reasoning: 2829 chars, tool calls: 0, buffered: false
+[CHAT] Response complete: 840 tokens in 19.6s (44.3 t/s, live=43.7 t/s, TTFT: 0.55s, pp: 342 tokens (177 cached), 618.4 pp/s, usage=server)
+[SLEEP] touchSession 2cb761e5 — idle timer reset
+[CHAT] Endpoint resolution: isRemote=false, rawBaseUrl=http://127.0.0.1:8143, baseUrl=http://127.0.0.1:8143, session=2cb761e5-ad55-4d4b-b8be-c8adb8c92013, type=local
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:8143/v1/responses (wire: responses, remote: false)
+[CHAT] Stream ended — content: 0 chars, reasoning: 491 chars, tool calls: 1, buffered: true
+[CHAT] Tool execution iteration 1 (1 tool calls)
+[CHAT] Tool loop completed after 1 iteration(s)
+[CHAT] Response complete: 211 tokens in 6.5s (53.4 t/s, live=44.5 t/s, TTFT: 0.92s, pp: 1002 tokens, 524.9 pp/s, usage=server)
+[SLEEP] touchSession 2cb761e5 — idle timer reset
+[CHAT] Endpoint resolution: isRemote=false, rawBaseUrl=http://127.0.0.1:8143, baseUrl=http://127.0.0.1:8143, session=2cb761e5-ad55-4d4b-b8be-c8adb8c92013, type=local
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:8143/v1/responses (wire: responses, remote: false)
+[CHAT] Stream ended — content: 0 chars, reasoning: 411 chars, tool calls: 1, buffered: true
+[CHAT] Tool execution iteration 1 (1 tool calls)
+[CHAT] Builtin tool: file_info
+[CHAT] Tool loop completed after 1 iteration(s)
+[CHAT] Response complete: 154 tokens in 5.0s (58.0 t/s, live=43.2 t/s, TTFT: 0.51s, pp: 1320 tokens (484 cached), 1316.8 pp/s, usage=server)
+[POWER] System sleep unblocked (id=0)

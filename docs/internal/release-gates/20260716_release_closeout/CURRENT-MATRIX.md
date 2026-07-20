@@ -1,12 +1,19 @@
-# vMLX 1.6.13 release checkpoint and post-release matrix — 2026-07-20
+# vMLX 1.6.14 public checkpoint and retained matrix — 2026-07-20
 
-Status: `PUBLIC_1_6_13_RELEASED_POST_RELEASE_HEAD_PARTIAL`.
+Status: `PUBLIC_1_6_14_RELEASED_BROADER_MATRIX_PARTIAL`.
 
 This is the current additive closeout view over `docs/internal/ISSUE-LEDGER.md`,
 `.agents/STATUS.md`, the July 15–16 live proof directories, the shared wiki
 production gate, and the current branch. Older contradictory rows remain in
 their original ledgers for provenance; the newest source-plus-live row wins and
 superseded conclusions are called out here.
+
+The public v1.6.14 checkpoint is tagged at `e1776a485`, signed/notarized for
+Sequoia and Tahoe, installed-smoked through the real Electron UI, published to
+GitHub/PyPI/Homebrew/updater feeds, and independently re-read. Canonical proof:
+`../20260720_release_checkpoint_1_6_14/README.md`. This changes only the release
+checkpoint status; every explicit family/protocol/cache/media/gateway/stress
+PARTIAL or OPEN row below remains retained.
 
 ### 2026-07-20 LFM native-reasoning and gateway-error override
 
@@ -1509,3 +1516,15 @@ the cache restore row is independently live-proven.
 | Omni media-salt isolation | PASS-LIVE scoped | Pre-fix identical-text orange->blue replay returned stale `MARKER=ORANGE-4729`. Current source salts each user turn with media identity, resets on mismatch, and rehydrates the latest prior media after reset. Post-fix blue replay progressively returned exact `MARKER=BLUE-6813` with stop/usage/DONE. | Add same-shape image/video media-salt controls for this Omni artifact. |
 | Electron post-audio continuation | PASS-LIVE scoped | The panel now preserves historical media only for a bundle-grounded `nemotron-h` route with `config_omni.json`. A fresh UI follow-up with no attachment logged `preserveHistoricalMediaForOmni:true`, retained the first `input_audio`, reached `[MEDIA_DIAG]`, and the dispatcher logged `continuing conversation (prefix matches)`. The unseen marker was recalled over two no-attachment turns; all reasoning hashes differed. | Omni process-restart/L2 media-session restore is OPEN. Ordinary scheduler `paged+ssm+tq-native` counters must not be misreported as persisted Omni media state. Evidence: `../20260720_nemotron_omni_audio/`. |
 | Post-fix source/package validation | PASS scoped | Focused Omni/multimodal Python tests pass 25. Full panel passes 77 files / 2,346 tests with 3 skipped; typecheck passes. Full Python reached 6,202 pass / 96 skip / 92 deselect and failed only the intentional bundle-drift gate; after rebuilding from the clean detached JANG checkout, the complete bundled-runtime verifier and the formerly failing test pass. | Rerun both production DMG builds only when selecting the next release checkpoint; these post-v1.6.13 changes are not publicly shipped. |
+
+## v1.6.14 public signed checkpoint addendum - 2026-07-20
+
+| Gate | Status | Current source + live evidence | Remaining boundary |
+|---|---|---|---|
+| Exact source and complete suites | PASS at tagged source `e1776a485` | Annotated `v1.6.14` peels to `e1776a485e8a85f3957b79030e12f4c312eda04b`. Full Python: 6,203 passed / 96 skipped / 92 deselected. Full panel: 77 files / 2,346 passed / 3 skipped. Typecheck, production compile, bundled engine 1.6.14, and clean JANG 2.5.31 verification passed. | Focused/scoped live rows outside this checkpoint retain their own status. |
+| Sequoia signed installed app | PASS-LIVE scoped | Exact stapled app loaded the real affine Gemma 4 JANG_4M bundle through Electron `Launch Session`. Two prompt-distinct turns retained separate reasoning and non-empty content with multi-turn recall. A later correctly configured turn executed exactly one real `file_info`, consumed the 5.2 KB result, and exact-finaled. Raw Responses emitted 337 reasoning and 50 content deltas with done/item/completed/usage. Real Stop closed the engine. | UI2 needed 72.8 s / 2,782 tokens despite progressive paint; strict-format/latency remains PARTIAL. Broad signed-family repeat remains OPEN. |
+| Tahoe signed installed app | PASS-LIVE scoped | Independent Tahoe app loaded, then completed a literal UI Stop/Start. Its fresh identical prompt restored 73 tokens as `paged+mixed_swa+disk+tq-native` across process/profile/app variant with 0.29 s TTFT. Raw Chat emitted 185 reasoning plus 18 content deltas, stop, and DONE. Real Stop closed the engine. | Broader Tahoe-native family/media and longer soak remain OPEN. |
+| Signed artifact integrity | PASS | Sequoia/Tahoe DMGs passed `hdiutil verify`, strict Developer ID signing, Apple notarization, stapling, and Gatekeeper. SHA-256 are `345fd1ec...8022c` and `d77b49ed...a739d`; exact submission IDs and full hashes are in `../20260720_release_checkpoint_1_6_14/README.md`. | None for these exact artifacts. |
+| Public v1.6.14 surfaces | PASS-PUBLIC | Source and DMG releases are public/non-draft; four GitHub assets match exact sizes/digests. PyPI wheel/sdist match locally built hashes. Homebrew main is `47a691a2`. Both GitHub manifests and the custom origin are byte-identical at version 1.6.14. | Public checkpoint is complete; broader campaign remains PARTIAL. |
+| Negative controls and retained quality rows | PARTIAL retained | Tools-Off raw markup and unset-working-directory structured error are explicitly excluded from tool PASS. Gemma strict output/OCR and short-prompt reasoning economy remain PARTIAL. Omni process-restart/L2 media-session persistence remains OPEN. | No hidden output rewrite, sampler coercion, or false cache promotion. Continue later from the retained matrix. |
+| Deferred campaign rows | PARTIAL/OPEN preserved | This checkpoint does not promote remaining family/parser/cache/media/gateway/network-loss/accessibility/long-context/stochastic/reference-A/B rows. | Resume only after the requested post-release pause. Canonical checkpoint: `../20260720_release_checkpoint_1_6_14/README.md`. |

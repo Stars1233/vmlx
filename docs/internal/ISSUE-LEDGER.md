@@ -3613,3 +3613,48 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   counters to claim process-restart media-session restore.
 - Evidence:
   `docs/internal/release-gates/20260720_nemotron_omni_audio/`.
+
+## 2026-07-20 - v1.6.14 public signed checkpoint
+
+- Status: `PUBLIC_CHECKPOINT_RELEASED_BROADER_MATRIX_PARTIAL`.
+- Exact source: annotated tag object
+  `420b3d91c54e5626164ea49faf7ee6783641df53` peels to
+  `e1776a485e8a85f3957b79030e12f4c312eda04b`. Source release:
+  `https://github.com/jjang-ai/vmlx/releases/tag/v1.6.14`.
+- Complete current-source validation: 6,203 Python passed / 96 skipped / 92
+  deselected, 77 panel files / 2,346 passed / 3 skipped, TypeScript typecheck,
+  Electron production compile, and bundled engine 1.6.14 + clean JANG 2.5.31
+  verification.
+- Both final DMGs were built from the exact source, Developer ID signed by
+  ShieldStack LLC (`55KGF2S5AY`), Apple notarized, stapled, Gatekeeper
+  accepted, and installed separately on `erics-m5-max.local`.
+- Final SHA-256:
+  - Sequoia: `345fd1ec02bf039b4a113bc617c5fa4eca7c057577a100212e3587dd1bc8022c`;
+  - Tahoe: `d77b49ede22d47f7cc2ebb3f3ecfe1b4425f92c05c20eff7be9d2ab6c97a739d`.
+- Sequoia signed-app proof: real Electron Launch Session loaded the affine
+  Gemma 4 JANG_4M bundle; two distinct prompts produced separate reasoning
+  and non-empty content, multi-turn recall, one exact real
+  `file_info(panel/package.json)` call/result/final loop, and raw Responses
+  streaming with 337 reasoning plus 50 content deltas and a completed terminal.
+- Tahoe signed-app proof: fresh launch plus literal UI Stop/Start loaded the
+  installed Tahoe engine, restored 73 tokens across process/profile/variant as
+  `paged+mixed_swa+disk+tq-native` with 0.29 s TTFT, and raw Chat emitted 185
+  reasoning plus 18 content deltas, stop, and DONE.
+- The tools-Off raw-markup row and tools-On/unset-working-directory error row
+  are retained but excluded from the successful tool verdict. Only the later
+  one-call/5.2-KB/exact-final row counts as PASS.
+- Public DMG release:
+  `https://github.com/jjang-ai/mlxstudio/releases/tag/v1.6.14`. GitHub reports
+  all four DMG/blockmap sizes and hashes equal to the final artifacts.
+- PyPI serves the exact 1.6.14 wheel/sdist; Homebrew commit `47a691a2`
+  serves cask 1.6.14; both GitHub manifests and `mlx.studio` are byte-identical
+  at SHA-256 `e19da155...d79c6a7c` and carry both exact platform hashes.
+- Honest retained partials: Gemma UI2 progressively completed but overthought
+  for 72.8 s / 2,782 tokens; strict marker-only behavior and exact OCR remain
+  PARTIAL; Nemotron Omni process-restart/L2 media state remains OPEN. No hidden
+  sampler clamp, output rewrite, or fake cache/model behavior was added.
+- Canonical source/live/public evidence:
+  `docs/internal/release-gates/20260720_release_checkpoint_1_6_14/`.
+- This checkpoint closes publication/signing for these exact artifacts only.
+  Every broader family/protocol/cache/media/gateway/stress row retains its
+  existing PASS/PARTIAL/OPEN status in the master matrix.

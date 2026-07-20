@@ -1,0 +1,52 @@
+SOURCE_RELEASE v1.6.14 False False https://github.com/jjang-ai/vmlx/releases/tag/v1.6.14 2026-07-20T19:41:50Z
+DMG_RELEASE v1.6.14 False False https://github.com/jjang-ai/mlxstudio/releases/tag/v1.6.14 2026-07-20T19:43:23Z
+vMLX-1.6.14-sequoia-arm64.dmg 505846456 sha256:345fd1ec02bf039b4a113bc617c5fa4eca7c057577a100212e3587dd1bc8022c
+vMLX-1.6.14-sequoia-arm64.dmg.blockmap 528344 sha256:99fb36df897654f78cffc347c2aee3ef3551dc50ddf1f16acfa47ab1b3830d98
+vMLX-1.6.14-tahoe-arm64.dmg 521680787 sha256:d77b49ede22d47f7cc2ebb3f3ecfe1b4425f92c05c20eff7be9d2ab6c97a739d
+vMLX-1.6.14-tahoe-arm64.dmg.blockmap 542774 sha256:eaa3aea294406fb1137f5c75fd34b78d9e84fc2feee030145a93adc4d1a80436
+MANIFEST /Users/eric/.cache/vmlx-release/1.6.14/public-proof/github-mlxstudio-latest.json
+e19da155e7853763cd953dc85a24ff092e19c83505535560cecda491d79c6a7c  /Users/eric/.cache/vmlx-release/1.6.14/public-proof/github-mlxstudio-latest.json
+  "version": "1.6.14",
+  "sha256": "345fd1ec02bf039b4a113bc617c5fa4eca7c057577a100212e3587dd1bc8022c",
+      "sha256": "345fd1ec02bf039b4a113bc617c5fa4eca7c057577a100212e3587dd1bc8022c",
+      "sha256": "d77b49ede22d47f7cc2ebb3f3ecfe1b4425f92c05c20eff7be9d2ab6c97a739d",
+MANIFEST /Users/eric/.cache/vmlx-release/1.6.14/public-proof/github-vmlx-latest.json
+e19da155e7853763cd953dc85a24ff092e19c83505535560cecda491d79c6a7c  /Users/eric/.cache/vmlx-release/1.6.14/public-proof/github-vmlx-latest.json
+  "version": "1.6.14",
+  "sha256": "345fd1ec02bf039b4a113bc617c5fa4eca7c057577a100212e3587dd1bc8022c",
+      "sha256": "345fd1ec02bf039b4a113bc617c5fa4eca7c057577a100212e3587dd1bc8022c",
+      "sha256": "d77b49ede22d47f7cc2ebb3f3ecfe1b4425f92c05c20eff7be9d2ab6c97a739d",
+MANIFEST /Users/eric/.cache/vmlx-release/1.6.14/public-proof/mlx-studio-latest.json
+e19da155e7853763cd953dc85a24ff092e19c83505535560cecda491d79c6a7c  /Users/eric/.cache/vmlx-release/1.6.14/public-proof/mlx-studio-latest.json
+  "version": "1.6.14",
+  "sha256": "345fd1ec02bf039b4a113bc617c5fa4eca7c057577a100212e3587dd1bc8022c",
+      "sha256": "345fd1ec02bf039b4a113bc617c5fa4eca7c057577a100212e3587dd1bc8022c",
+      "sha256": "d77b49ede22d47f7cc2ebb3f3ecfe1b4425f92c05c20eff7be9d2ab6c97a739d",
+GITHUB_MANIFESTS_IDENTICAL
+CUSTOM_ORIGIN_IDENTICAL
+PYPI 1.6.14 https://pypi.org/project/vmlx/
+vmlx-1.6.14-py3-none-any.whl 1701660 da84e4a68f4994c0c3ea2bfede490519f03a4c7f39a59974d1f00ace8c40afa4
+vmlx-1.6.14.tar.gz 2706884 6483819395f74c0a46b2c513cde442da6aa900ff23e17930164c107ee7405157
+HOMEBREW
+# frozen_string_literal: true
+
+cask "mlxstudio" do
+  version "1.6.14"
+  sha256 "345fd1ec02bf039b4a113bc617c5fa4eca7c057577a100212e3587dd1bc8022c"
+
+  url "https://github.com/jjang-ai/mlxstudio/releases/download/v#{version}/vMLX-#{version}-sequoia-arm64.dmg"
+  name "vMLX"
+  name "MLX Studio"
+  desc "Local text, image, video, and audio inference"
+  homepage "https://github.com/jjang-ai/vmlx"
+
+  depends_on macos: ">= :sonoma"
+  depends_on arch: :arm64
+
+  app "vMLX.app"
+SOURCE_TAGS
+420b3d91c54e5626164ea49faf7ee6783641df53	refs/tags/v1.6.14
+e1776a485e8a85f3957b79030e12f4c312eda04b	refs/tags/v1.6.14^{}
+MLXSTUDIO_TAGS
+8acf927b121d78010154f4edec1dc05ea0d8c741	refs/tags/v1.6.14
+dab40cff2a9f4857b516015a7312b99648d2559f	refs/tags/v1.6.14^{}

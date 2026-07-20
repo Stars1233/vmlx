@@ -1,0 +1,56 @@
+[STARTUP] Using vMLX userData override: /Users/eric/.vmlx-v1614-tahoe-checkpoint
+[STARTUP] Allowing an isolated secondary instance for live proof
+
+DevTools listening on ws://127.0.0.1:9464/devtools/browser/5ff57a34-1f3b-43b4-8c81-3d3467ef664e
+[Engine Manager] Engine version check: installed=1.6.14, source=1.6.14, needsUpdate=false
+[MODE] Auto-detected: expert (128GB RAM)
+[STARTUP] Restoring 0 App Sandbox bookmarks
+[STARTUP] No existing vmlx-engine processes found
+[MemoryEnforcer] Started (max 120 GB, poll 5000ms, TTL 30m)
+[gateway] Port 8080 in use, trying 8081
+[gateway] Listening on 127.0.0.1:8081
+[Engine Manager] Checking installation...
+[Engine Manager] Found bundled Python with vmlx_engine 1.6.14 (from dist-info)
+[UPDATE] Fetched manifest from https://mlx.studio/update/latest.json: v1.6.13
+[UPDATE] Fetched manifest from https://raw.githubusercontent.com/jjang-ai/mlxstudio/main/latest.json: v1.6.13
+[UPDATE] Picked highest version across sources: v1.6.13
+[UPDATE] Selected native macOS download: https://github.com/jjang-ai/mlxstudio/releases/download/v1.6.13/vMLX-1.6.13-tahoe-arm64.dmg
+[UPDATE] Up to date (1.6.14)
+[MODELS] Scanning directories: [
+  '/Users/eric/.mlxstudio/models',
+  '/Users/eric/.cache/huggingface/hub',
+  '/Users/eric/.exo/models'
+]
+[MODELS] Found 18 models in /Users/eric/.mlxstudio/models
+[MODELS] Found 3 models in /Users/eric/.cache/huggingface/hub
+[MODELS] Found 0 models in /Users/eric/.exo/models
+[MODELS] Total models found: 21 (0 duplicates removed)
+[Engine Manager] Checking installation...
+[Engine Manager] Found bundled Python with vmlx_engine 1.6.14 (from dist-info)
+[SESSION] Model estimate: ~7.1 GB | RAM: 103.0 GB free / 137 GB total (25% used)
+[SESSION] Model family: gemma4 | tool: gemma4 (user=gemma4, detected=gemma4) | reasoning: gemma4 (user=gemma4, detected=gemma4) | autoTool: true | VLM: true
+[SESSION] Ignoring stale JIT flag because multimodal/VLM models use the mlx-vlm streaming path, which is not mx.compile safe
+[POWER] System sleep blocked (id=0)
+[SLEEP] touchSession 69e3ed32 — idle timer reset
+[MODELS] Scanning directories: [
+  '/Users/eric/.mlxstudio/models',
+  '/Users/eric/.cache/huggingface/hub',
+  '/Users/eric/.exo/models'
+]
+[MODELS] Found 18 models in /Users/eric/.mlxstudio/models
+[MODELS] Found 3 models in /Users/eric/.cache/huggingface/hub
+[MODELS] Found 0 models in /Users/eric/.exo/models
+[MODELS] Total models found: 21 (0 duplicates removed)
+[POWER] System sleep unblocked (id=0)
+[SESSION] Model estimate: ~7.1 GB | RAM: 102.9 GB free / 137 GB total (25% used)
+[SESSION] Model family: gemma4 | tool: gemma4 (user=gemma4, detected=gemma4) | reasoning: gemma4 (user=gemma4, detected=gemma4) | autoTool: true | VLM: true
+[SESSION] Ignoring stale JIT flag because multimodal/VLM models use the mlx-vlm streaming path, which is not mx.compile safe
+[POWER] System sleep blocked (id=1)
+[SLEEP] touchSession 69e3ed32 — idle timer reset
+[SLEEP] touchSession 69e3ed32 — idle timer reset
+[CHAT] Endpoint resolution: isRemote=false, rawBaseUrl=http://127.0.0.1:8144, baseUrl=http://127.0.0.1:8144, session=69e3ed32-92e6-49de-b6f1-36d58b94a783, type=local
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:8144/v1/responses (wire: responses, remote: false)
+[CHAT] Stream ended — content: 118 chars, reasoning: 1178 chars, tool calls: 0, buffered: false
+[CHAT] Response complete: 489 tokens in 11.2s (45.0 t/s, live=44.5 t/s, TTFT: 0.29s, pp: 74 tokens (73 cached), 253.4 pp/s, usage=server)
+[POWER] System sleep unblocked (id=1)
