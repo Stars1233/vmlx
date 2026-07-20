@@ -3212,7 +3212,8 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 ## 2026-07-19 - Laguna soft-sleep/wake UI soak
 
 - Status: `VERIFIED-LIVE_SCOPED` for three consecutive soft-sleep/Wake cycles;
-  deep sleep, cross-model swap soak, and signed-app repetition remain open.
+  deep sleep and cross-model swap soak are now covered by their later gates,
+  while signed-app repetition remains open.
 - The real Electron moon and Wake controls drove all six transitions. Every
   wake reached DB `running` plus health `healthy/model_loaded=true`; every
   sleep returned DB to `standby/soft` plus health
@@ -3228,7 +3229,8 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 
 - Status: `VERIFIED-LIVE_SCOPED` for real UI policy configuration, automatic
   deep sleep, visible deep-standby state, in-process Wake reload, and default
-  restoration; cross-model swaps and signed-app repetition remain open.
+  restoration; cross-model swaps are now covered by the later one-model soak,
+  while signed-app repetition remains open.
 - The session settings UI set Light/Deep to `0`/`1`; the idle Laguna session
   automatically entered `standby/deep`. Health reported
   `standby_deep/model_loaded=false`, while the same PID 70292 and its listening
@@ -3239,3 +3241,22 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - No generation ran, so this row makes no streaming/cache-reuse claim.
 - Evidence:
   `docs/internal/release-gates/20260719_laguna_deep_sleep_ui/`.
+
+## 2026-07-19 - repeated one-model Electron Start swap soak
+
+- Status: `VERIFIED-LIVE_SCOPED` for two MiniMax M2.7/Laguna round trips using
+  the real Electron Start controls; signed-app repetition remains open.
+- With gateway single-model mode live, the PID sequence was
+  `70292 -> 78868 -> 79430 -> 80033 -> 80479`. Every Start stopped the prior
+  session and endpoint before the replacement became active; SQLite and `ps`
+  showed exactly one local engine after every transition.
+- Both model loads completed before any request. Health reported
+  `model_loaded=true` and `last_request_time=null`; M2.7 and Laguna argv/parser/
+  cache/quant identities matched their distinct JANGTQ2 and affine JANG routes.
+- The Electron main log preserved the venv engine PATH line and all four
+  stop-before-start transitions. Final state was restored through the real moon
+  control to Laguna `standby/soft`, PID 80479, with M2.7 stopped.
+- No generation ran, so this row makes no streaming, tool, cache-hit, or L2
+  restore claim.
+- Evidence:
+  `docs/internal/release-gates/20260719_one_model_swap_soak/`.

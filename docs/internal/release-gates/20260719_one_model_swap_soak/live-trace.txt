@@ -1,0 +1,28 @@
+SOURCE_HEAD=677c408507fdba5d24994ba2a8baa706d7c1bbce
+BRANCH=reconcile/1.5.68
+GATEWAY_PORT=8081
+GATEWAY_SINGLE_MODEL_MODE=true
+ENGINE_PATH=/Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine
+
+INITIAL laguna=standby/soft pid=70292 m27=stopped
+STEP1 m27=running pid=78868 laguna=stopped laguna_endpoint=down engines=1 last_request_time=null
+STEP2 laguna=running pid=79430 m27=stopped m27_endpoint=down engines=1 last_request_time=null
+STEP3 m27=running pid=80033 laguna=stopped engines=1
+STEP4 laguna=running pid=80479 m27=stopped engines=1 last_request_time=null
+FINAL laguna=standby/soft pid=80479 model_loaded=true m27=stopped engines=1
+
+ELECTRON_MAIN_LOG=/private/tmp/vmlx-electron-step37-mixedswa-diskonly-20260719.log
+LOG_49=[Engine Manager] Found in PATH: /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine
+LOG_474=[SESSIONS] single-model mode: stopping Laguna before starting MiniMax M2.7
+LOG_481=[SESSIONS] single-model mode: stopping MiniMax M2.7 before starting Laguna
+LOG_532=[SESSIONS] single-model mode: stopping Laguna before starting MiniMax M2.7
+LOG_568=[SESSIONS] single-model mode: stopping MiniMax M2.7 before starting Laguna
+
+M27_NATIVE_CACHE=paged_kv attention_kv block_disk_l2=true
+M27_STORED_PREFIX=turboquant-q4
+M27_WEIGHT_CODEC=turboquant_codebook/JANGTQ2
+LAGUNA_NATIVE_CACHE=paged_kv attention_kv block_disk_l2=true
+LAGUNA_STORED_PREFIX=turboquant-q4
+LAGUNA_WEIGHT_CODEC=affine_quantized_matmul/JANG_2L
+
+NO_GENERATION_RAN=true
