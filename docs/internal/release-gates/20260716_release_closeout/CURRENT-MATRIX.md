@@ -1352,9 +1352,14 @@ Evidence: `../20260719_qwen35_hybrid_diskonly/`. Overall release remains
 | Restart partial block reuse | PASS-LIVE scoped | After PID 31958 -> 32602, L1 was empty and L2 retained 635 tokens. A changed suffix restored 256/312 as `paged+ssm+disk` and exact-finaled. | Fault injection and larger-context soak. |
 | Paged Off SSD-only regression | PASS-LIVE scoped | Real UI Paged Off + Block L2 On restarted as `block_disk_only`; a changed suffix restored 256/311 as `block-disk+ssm` while RAM tokens/bytes stayed zero. UI then restored Paged On. | Typed/TQ breadth remains per-family. |
 | Chat/Responses/Anthropic/Ollama stream parity | PASS transport / PARTIAL strict format | Each stream emitted 145 progressive content deltas and one native terminal; stream/non-stream outputs matched byte-for-byte. Chat/Responses reported 295/299 `paged+ssm`. LFM added unwanted explanation on every protocol. | Tool/reasoning continuations, cancellation/failure soak, other parsers. |
-| LFM stored TQ | OPEN | This run reported `tq_native_enabled=false` and zero TQ-native block writes. | Classify eligibility and prove encode/decode before any TQ claim. |
+| LFM stored TQ | PASS-LIVE scoped at `748929fe3` | Base-MXFP4 LFM now derives 64-wide heads and applies q4 native TQ only to six attention-KV slots. Electron cold/warm wrote nine q4-native blocks; a real Stop/Start began with zero L1 tokens and restored all nine SSD blocks (`tq_native_hits=9`) plus one typed SSM companion entry, saving 576/1,204 tokens. | Paged-Off native-TQ SSD-only, explicit Off, larger-context eviction, four-protocol/tool/cancel breadth, signed app. |
 
 Validation: 190/190 selected cache-family tests plus 99/99 protocol/adapter
 tests. Evidence:
 `../20260719_paged_ram_ssd_hierarchy/`. Overall release remains
 `PARTIAL_NO_1_6_12_RELEASE`.
+
+LFM native-TQ addendum evidence:
+`../20260719_lfm_native_tq4/`. The 64-token post-restart Responses probe is
+`PARTIAL` for strict output because it correctly ended `response.incomplete`;
+the cache restore row is independently live-proven.

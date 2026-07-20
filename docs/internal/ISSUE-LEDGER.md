@@ -2887,6 +2887,37 @@ remain open. No public release/notarization/feed mutation performed.
   TQ-native blocks), tool/reasoning protocol breadth, signed app, fault
   injection, full suites/build, and the rest of the family matrix.
 
+## 2026-07-19 - LFM2.5 selective q4 TurboQuant KV checkpoint
+
+- `LFM-SELECTIVE-TQ4`: `FIXED_SOURCE + VERIFIED-LIVE_SCOPED` at pushed commit
+  `748929fe3`. The tested `LFM2.5-8B-A1B-MXFP4-CRACK` artifact is base MLX
+  MXFP4, not affine JANG and not JANGTQ/MXTQ. Its native 24-slot cache has six
+  full-attention `KVCache` positions and 18 `ArraysCache` convolution/SSM
+  companions.
+- Auto mode now derives LFM's real 64-wide attention heads, installs q4
+  `TurboQuantKVCache` only at positions 2/6/10/14/18/21, and preserves every
+  companion slot in native full precision. Health reports
+  `uncalibrated_selective_attention_kv_storage_tq4`, `turboquant_native`, and
+  `tq_native_enabled=true`; explicit user Off still bypasses this Auto branch.
+- Real Electron settings showed Paged On, Block L2 On, and Auto. A cold UI turn
+  wrote nine q4-native SSD blocks. A fresh-chat replay reused 576/1,204 prompt
+  tokens as `paged+ssm+tq-native`, exact-finaled visibly, and wrote the matching
+  typed SSM companion checkpoint.
+- A real Electron Stop/Start replaced PID 69378 with 69763. Before the first
+  request, L1 held zero tokens while SSD retained nine q4-native blocks plus one
+  SSM companion entry. The first post-restart request restored all nine blocks
+  (`disk_hits=9`, `tq_native_hits=9`) and the SSM checkpoint (`hits=1`), saving
+  576 tokens.
+- The deliberately 64-token raw Responses probe emitted 63 progressive content
+  deltas and `response.output_text.done`, then correctly terminated as
+  `response.incomplete`; its strict-format answer is therefore `PARTIAL`, not a
+  cache failure and not a completed protocol-quality row.
+- Validation: 63/63 focused hybrid-TQ/model-inspector tests. Evidence:
+  `docs/internal/release-gates/20260719_lfm_native_tq4/`.
+- Retain `OPEN`: the same native-TQ codec with Paged RAM explicitly Off,
+  explicit Auto-to-Off live parity, full four-protocol/tool/cancel breadth,
+  larger-context eviction, fault injection, signed-app repeat, and full suites.
+
 ## 2026-07-19 - MiniMax M2.7 JANGTQ full hierarchy/protocol checkpoint
 
 - `M27-JANGTQ-Q4-HIERARCHY`: `VERIFIED-LIVE_SCOPED` on source cutoff
