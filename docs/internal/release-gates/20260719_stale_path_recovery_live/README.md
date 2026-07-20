@@ -3,9 +3,8 @@
 Date: 2026-07-19
 
 Status: `VERIFIED-LIVE_SCOPED` for missing-path classification, safe action
-surface, and explicit removal in the real Electron dashboard on current head
-`0e2285606`. Native chooser repoint success remains `PARTIAL` because this gate
-did not automate the macOS directory chooser.
+surface, native-chooser repoint, and explicit removal in the real Electron
+dashboard on current head `fd83128c8`. Signed-app repetition remains open.
 
 ## Source ownership
 
@@ -37,6 +36,15 @@ post-removal health still reported `standby_soft`, `model_loaded=true`, and mode
 The fixture was temporary and is no longer present. No model was started or
 stopped by this gate.
 
+The fixture was then recreated and the real `Repoint model path` button opened
+the native macOS directory chooser. Selecting the disposable valid bundle
+`/tmp/vmlx-repoint-live/Laguna-M.1-JANG_2L` updated SQLite to the canonical
+`/private/tmp/...` path and moved the card from `MISSING MODEL` to ordinary
+`INACTIVE`, where Start/Delete replaced Repoint/Remove. See
+`03-after-native-repoint-ui.png`. The disposable session was deleted through
+its own rendered Delete button and the temporary bundle directory was removed.
+Active Laguna PID 70292 remained unchanged throughout.
+
 ## Focused validation
 
 - `tests/session-model-path-recovery.test.ts`: 8/8 passed.
@@ -45,7 +53,7 @@ stopped by this gate.
 
 ## Remaining boundary
 
-The Repoint button and its source/persistence contracts are present, but a
-successful native-directory-chooser repoint was not exercised in this gate.
-Keep that single interaction plus signed-app repetition open; do not call the
-entire stale-path UX globally complete from the removal proof alone.
+Repeat this flow in the next signed app. This scoped dev-Electron gate does not
+claim that a repointed bundle with only `config.json` is startable; the fixture
+was intentionally never started because this row owns path recovery UX, not
+model loading.

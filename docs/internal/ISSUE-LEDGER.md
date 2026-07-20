@@ -3190,8 +3190,8 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 ## 2026-07-19 - stale local model-path recovery UI
 
 - Status: `VERIFIED-LIVE_SCOPED` for current filesystem classification, visible
-  no-Start recovery actions, and explicit removal; successful native-chooser
-  repoint remains `PARTIAL`.
+  no-Start recovery actions, native-chooser repoint, and explicit removal;
+  signed-app repetition remains open.
 - A disposable missing-path session appeared in the real Electron dashboard
   under `MISSING MODEL (1)` with an unavailable-directory warning, usable-twin
   hint, and only `Repoint model path` / `Remove session` actions. The rendered
@@ -3201,5 +3201,10 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   validation, identity-change confirmation, duplicate/running-session guards,
   and transactional chat rebinding. Focused panel validation passes 8/8 plus
   typecheck.
+- The complementary real Repoint action opened the native directory chooser,
+  updated the fixture to `/private/tmp/vmlx-repoint-live/Laguna-M.1-JANG_2L`,
+  and moved the card from `MISSING MODEL` to normal `INACTIVE` Start/Delete.
+  The disposable session and directory were removed afterward; active Laguna
+  PID 70292 remained unchanged.
 - Evidence:
   `docs/internal/release-gates/20260719_stale_path_recovery_live/`.
