@@ -1,0 +1,237 @@
+diff --git a/panel/src/renderer/src/components/chat/VoiceChat.tsx b/panel/src/renderer/src/components/chat/VoiceChat.tsx
+index e5d4a3991..10bdfe384 100644
+--- a/panel/src/renderer/src/components/chat/VoiceChat.tsx
++++ b/panel/src/renderer/src/components/chat/VoiceChat.tsx
+@@ -56,6 +56,7 @@ function useAudioSettings() {
+  * STT model resolution: explicit prop > settings('sttModel') > 'whisper-large-v3'
+  */
+ export function VoiceChat({ onTranscription, endpoint, sessionId, sttModel, disabled }: VoiceChatProps) {
++  const { t } = useTranslation()
+   const [state, setState] = useState<RecordingState>('idle')
+   const [error, setError] = useState<string | null>(null)
+   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
+@@ -126,9 +127,9 @@ export function VoiceChat({ onTranscription, endpoint, sessionId, sttModel, disa
+           }
+         } catch (err: any) {
+           console.error('Transcription failed:', err)
+-          const msg = err.message || 'Transcription failed'
++          const msg = err.message || t('chat.voice.transcribeFailed')
+           if (msg.includes('mlx-audio') || msg.includes('mlx_audio')) {
+-            setError('STT not available — mlx-audio not installed on server')
++            setError(t('chat.voice.sttMissing'))
+           } else {
+             setError(msg.length > 80 ? msg.slice(0, 80) + '…' : msg)
+           }
+@@ -142,12 +143,12 @@ export function VoiceChat({ onTranscription, endpoint, sessionId, sttModel, disa
+     } catch (err: any) {
+       console.error('Failed to start recording:', err)
+       if (err.name === 'NotAllowedError') {
+-        setError('Microphone access denied')
++        setError(t('chat.voice.micDenied'))
+       } else {
+-        setError(err.message || 'Failed to start recording')
++        setError(err.message || t('chat.voice.startFailed'))
+       }
+     }
+-  }, [endpoint, effectiveSttModel, onTranscription])
++  }, [endpoint, effectiveSttModel, onTranscription, sessionId, t])
+
+   const stopRecording = useCallback(() => {
+     if (mediaRecorderRef.current && mediaRecorderRef.current.state === 'recording') {
+@@ -163,6 +164,12 @@ export function VoiceChat({ onTranscription, endpoint, sessionId, sttModel, disa
+     }
+   }
+
++  const buttonLabel = state === 'recording'
++    ? t('chat.voice.stopRecordingTitle')
++    : state === 'transcribing'
++      ? t('chat.voice.transcribingTitle')
++      : t('chat.voice.startRecordingTitle')
++
+   return (
+     <div className="relative">
+       <button
+@@ -175,11 +182,8 @@ export function VoiceChat({ onTranscription, endpoint, sessionId, sttModel, disa
+               ? 'bg-primary/10 border-primary/30 text-primary'
+               : 'bg-background border-input text-muted-foreground hover:text-foreground hover:bg-accent'
+         } disabled:opacity-50 disabled:cursor-not-allowed`}
+-        title={
+-          state === 'recording' ? 'Click to stop recording'
+-            : state === 'transcribing' ? 'Transcribing...'
+-            : 'Click to start voice input'
+-        }
++        title={buttonLabel}
++        aria-label={buttonLabel}
+       >
+         {state === 'transcribing' ? (
+           // Loading spinner
+diff --git a/panel/src/renderer/src/components/ui/theme-toggle.tsx b/panel/src/renderer/src/components/ui/theme-toggle.tsx
+index f7dfd704b..54c5eb0ca 100644
+--- a/panel/src/renderer/src/components/ui/theme-toggle.tsx
++++ b/panel/src/renderer/src/components/ui/theme-toggle.tsx
+@@ -1,9 +1,11 @@
+ import { Sun, Moon, Monitor } from 'lucide-react'
+ import { useTheme } from '../../providers/ThemeProvider'
++import { useTranslation } from '../../i18n'
+ import { Button } from './button'
+
+ export function ThemeToggle() {
+   const { theme, setTheme } = useTheme()
++  const { t } = useTranslation()
+
+   const cycle = () => {
+     const next = theme === 'dark' ? 'light' : theme === 'light' ? 'system' : 'dark'
+@@ -11,7 +13,14 @@ export function ThemeToggle() {
+   }
+
+   return (
+-    <Button variant="ghost" size="icon" onClick={cycle} className="h-6 w-6" title={`Theme: ${theme}`}>
++    <Button
++      variant="ghost"
++      size="icon"
++      onClick={cycle}
++      className="h-6 w-6"
++      title={t(`common.theme.${theme}`)}
++      aria-label={t(`common.theme.${theme}`)}
++    >
+       {theme === 'dark' && <Moon className="h-3.5 w-3.5" />}
+       {theme === 'light' && <Sun className="h-3.5 w-3.5" />}
+       {theme === 'system' && <Monitor className="h-3.5 w-3.5" />}
+diff --git a/panel/src/renderer/src/i18n/locales/en.json b/panel/src/renderer/src/i18n/locales/en.json
+index 75c674b3c..0f27e85a2 100644
+--- a/panel/src/renderer/src/i18n/locales/en.json
++++ b/panel/src/renderer/src/i18n/locales/en.json
+@@ -33,7 +33,12 @@
+     "open": "Open",
+     "dismiss": "Dismiss",
+     "language": "Language",
+-    "or": "or"
++    "or": "or",
++    "theme": {
++      "dark": "Dark theme",
++      "light": "Light theme",
++      "system": "System theme"
++    }
+   },
+   "status": {
+     "running": "Running",
+diff --git a/panel/src/renderer/src/i18n/locales/es.json b/panel/src/renderer/src/i18n/locales/es.json
+index 8a7e727cb..98d9c2815 100644
+--- a/panel/src/renderer/src/i18n/locales/es.json
++++ b/panel/src/renderer/src/i18n/locales/es.json
+@@ -33,7 +33,12 @@
+     "open": "Abrir",
+     "dismiss": "Descartar",
+     "language": "Idioma",
+-    "or": "o"
++    "or": "o",
++    "theme": {
++      "dark": "Tema oscuro",
++      "light": "Tema claro",
++      "system": "Tema del sistema"
++    }
+   },
+   "status": {
+     "running": "En ejecución",
+diff --git a/panel/src/renderer/src/i18n/locales/ja.json b/panel/src/renderer/src/i18n/locales/ja.json
+index b4cb0b10f..ef0da25e5 100644
+--- a/panel/src/renderer/src/i18n/locales/ja.json
++++ b/panel/src/renderer/src/i18n/locales/ja.json
+@@ -33,7 +33,12 @@
+     "open": "開く",
+     "dismiss": "閉じる",
+     "language": "言語",
+-    "or": "または"
++    "or": "または",
++    "theme": {
++      "dark": "ダークテーマ",
++      "light": "ライトテーマ",
++      "system": "システムテーマ"
++    }
+   },
+   "status": {
+     "running": "実行中",
+diff --git a/panel/src/renderer/src/i18n/locales/ko.json b/panel/src/renderer/src/i18n/locales/ko.json
+index 4c28f2d21..0e06c1e69 100644
+--- a/panel/src/renderer/src/i18n/locales/ko.json
++++ b/panel/src/renderer/src/i18n/locales/ko.json
+@@ -33,7 +33,12 @@
+     "open": "열기",
+     "dismiss": "닫기",
+     "language": "언어",
+-    "or": "또는"
++    "or": "또는",
++    "theme": {
++      "dark": "어두운 테마",
++      "light": "밝은 테마",
++      "system": "시스템 테마"
++    }
+   },
+   "status": {
+     "running": "실행 중",
+diff --git a/panel/src/renderer/src/i18n/locales/zh.json b/panel/src/renderer/src/i18n/locales/zh.json
+index cfe14465d..1a8a2d9c6 100644
+--- a/panel/src/renderer/src/i18n/locales/zh.json
++++ b/panel/src/renderer/src/i18n/locales/zh.json
+@@ -33,7 +33,12 @@
+     "open": "打开",
+     "dismiss": "关闭",
+     "language": "语言",
+-    "or": "或"
++    "or": "或",
++    "theme": {
++      "dark": "深色主题",
++      "light": "浅色主题",
++      "system": "系统主题"
++    }
+   },
+   "status": {
+     "running": "运行中",
+diff --git a/panel/tests/i18n-consistency.test.ts b/panel/tests/i18n-consistency.test.ts
+index 5e028a376..ae4d5b055 100644
+--- a/panel/tests/i18n-consistency.test.ts
++++ b/panel/tests/i18n-consistency.test.ts
+@@ -259,7 +259,18 @@ describe('i18n locale consistency', () => {
+     ]) {
+       expect(messageBubbleSrc).toContain(`t('${key}')`)
+     }
+-    for (const key of ['chat.tts.stopTitle', 'chat.tts.readAloudTitle', 'chat.tts.speak']) {
++    for (const key of [
++      'chat.voice.stopRecordingTitle',
++      'chat.voice.transcribingTitle',
++      'chat.voice.startRecordingTitle',
++      'chat.voice.sttMissing',
++      'chat.voice.micDenied',
++      'chat.voice.startFailed',
++      'chat.voice.transcribeFailed',
++      'chat.tts.stopTitle',
++      'chat.tts.readAloudTitle',
++      'chat.tts.speak',
++    ]) {
+       expect(voiceChatSrc).toContain(`t('${key}')`)
+     }
+     for (const key of [
+@@ -277,6 +288,23 @@ describe('i18n locale consistency', () => {
+     }
+   })
+
++  it('theme and voice icon controls expose localized accessible names', () => {
++    const themeToggleSrc = readFileSync(
++      resolve(__dirname, '..', 'src', 'renderer', 'src', 'components', 'ui', 'theme-toggle.tsx'),
++      'utf-8',
++    )
++    const voiceChatSrc = readFileSync(
++      resolve(__dirname, '..', 'src', 'renderer', 'src', 'components', 'chat', 'VoiceChat.tsx'),
++      'utf-8',
++    )
++
++    expect(themeToggleSrc).toContain('title={t(`common.theme.${theme}`)}')
++    expect(themeToggleSrc).toContain('aria-label={t(`common.theme.${theme}`)}')
++    expect(themeToggleSrc).not.toContain('title={`Theme: ${theme}`}')
++    expect(voiceChatSrc).toContain('title={buttonLabel}')
++    expect(voiceChatSrc).toContain('aria-label={buttonLabel}')
++  })
++
+   it('chat settings agentic controls and accessibility labels use the locale catalog', () => {
+     const chatSettingsSrc = readFileSync(
+       resolve(__dirname, '..', 'src', 'renderer', 'src', 'components', 'chat', 'ChatSettings.tsx'),
