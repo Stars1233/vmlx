@@ -1458,3 +1458,19 @@
 - DSV4, mixed-SWA, and ZAYA family live reloads remain explicit partials.
 - Evidence:
   `docs/internal/release-gates/20260719_path_dependent_terminal_cleanup/`.
+## 2026-07-19 - DSV4 terminal-first current-source live proof
+
+- Live-proved generalized source `0c9436bce` on the Electron-started affine
+  DSV4 CRACK artifact. Raw Responses emitted 11 progressive deltas/run and
+  terminaled within 0.15 s for cold, RAM-hit, and changed-suffix requests.
+- Exact warm saved 765 tokens. A non-terminal changed-suffix partial was
+  rejected because it lacked complete CSA/HCA composite state, preserving
+  correctness.
+- Electron restarts 45021 -> 46544 -> 48507 eagerly loaded before first
+  request. Exact SSD replay produced five raw disk promotions; Electron row 671
+  restored 765 `paged+dsv4+disk` tokens. Generic TQ stayed off.
+- Visible short output was exact and progressive. Strict long marker fidelity
+  remains partial due intermittent `TERTERMINAL` duplication.
+- Archived current raw JSON, restart health, UI/Logs/settings screenshots, and
+  source/DB observations under
+  `docs/internal/release-gates/20260719_dsv4_terminal_dispatch_native_l2/`.

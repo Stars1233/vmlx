@@ -2983,3 +2983,37 @@ remain open. No public release/notarization/feed mutation performed.
   can be closed.
 - Evidence:
   `docs/internal/release-gates/20260719_path_dependent_terminal_cleanup/`.
+# 2026-07-19 current active continuation after `0c9436bce`
+
+Overall status: `PARTIAL_NO_RELEASE`. A scoped DSV4 current-source proof now
+closes the shared terminal-first lifecycle for that native composite family,
+but the following remain explicit release gates:
+
+1. Compatible cache families: prove SSD-only partial-prefix/block reuse with
+   Paged Off, then RAM-first -> SSD-refault -> full-prefill fallback with Paged
+   On. Include eviction, process restart, accurate counters, q4 native-TQ for
+   eligible models, q8 only for Bonsai, and native typed exceptions.
+2. Protocol parity: current-source stream/non-stream Chat Completions,
+   Responses, Anthropic, and Ollama, including separate reasoning/content,
+   automatic/required/no-tool continuations, cancellation, disconnect,
+   injected failure, recovery, and follow-up.
+3. Electron parity: per-chat overrides and model-derived defaults must match
+   DB, preview, argv, health, and actual request behavior. Explicit Off must be
+   honored; Auto must resolve from the real bundle/architecture.
+4. Gateway/session lifecycle: one-model mode must unload the old process before
+   eagerly materializing the selected model; cover repeated swaps, port
+   conflicts, LAN rollback, listener recovery, and stale missing-model paths.
+5. Required live family rows: mixed-SWA Gemma/Step/MiMo and ZAYA for the shared
+   terminal change, then remaining MiniMax M2.7/M3, openPangu, DSV4, Laguna,
+   Nemotron, Qwen/JANGTQ, Gemma, LFM, Step, and advertised media/audio routes.
+6. Full Python/panel suites, typecheck/build, version/feed truth, signed and
+   notarized Sequoia/Tahoe install smoke, then an explicitly authorized public
+   release.
+
+Scoped DSV4 evidence:
+`docs/internal/release-gates/20260719_dsv4_terminal_dispatch_native_l2/`.
+The native `deepseek_v4_v8` path restored exact terminal composite prefixes
+from RAM and SSD with progressive Responses/Electron output and sub-0.15-second
+raw terminal gaps. Arbitrary changed-suffix partial reuse remains deliberately
+rejected because non-terminal blocks lack complete CSA/HCA state. Strict output
+fidelity is still partial due intermittent `TERTERMINAL` duplication.

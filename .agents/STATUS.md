@@ -7499,3 +7499,31 @@ reloads.
 - Live DSV4, mixed-SWA, and ZAYA runtime terminal rows are still required.
 - Evidence:
   `docs/internal/release-gates/20260719_path_dependent_terminal_cleanup/`.
+## 2026-07-19 - DSV4 current terminal dispatch and native L2
+
+Status: `VERIFIED-LIVE_SCOPED`; strict output quality `PARTIAL`; overall release
+remains `PARTIAL_NO_1_6_12_RELEASE`.
+
+- Current pushed source `0c9436bce` ran through the real Electron DSV4 session,
+  not a separate CLI-only engine. The initial Start path had already eagerly
+  materialized PID 45021 with `last_request_time=null`.
+- Raw Responses cold/exact-warm/changed-suffix runs each emitted 11 progressive
+  content deltas, one text-done, one completed, and terminaled 0.099-0.146 s
+  after the last content delta. Exact warm saved 765 tokens.
+- DSV4 correctly rejected an incomplete changed-suffix partial prefix whose
+  non-terminal blocks had SWA fragments/pending markers but no complete CSA/HCA
+  terminal state. No corrupt partial cache was admitted.
+- Electron Save & Restart replaced 45021 -> 46544; before any request the new
+  process was loaded with 4,199 native L2 tokens and zero L1 tokens. Raw exact
+  replay produced five disk promotions and retained immediate terminals.
+- A second UI restart replaced 46544 -> 48507. Electron row 671 restored 765
+  tokens as `paged+dsv4+disk`, displayed a non-empty exact answer, and health
+  reported three disk hits. Generic TQ remained disabled with zero native-TQ
+  block writes/hits.
+- Correct Chat Settings footer Save persisted temperature 0, max 128,
+  Responses, Instruct, and tools off. An earlier harness action clicked the
+  prompt-template Save and is not recorded as a product bug.
+- Strict marker fidelity remains partial: raw runs and a later capped UI
+  regenerate produced `TERTERMINAL`. No fake output rewrite was introduced.
+- Evidence:
+  `docs/internal/release-gates/20260719_dsv4_terminal_dispatch_native_l2/`.

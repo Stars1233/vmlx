@@ -1,0 +1,967 @@
+{
+  "head": "0c9436bce7c6c2bdfc0a31c742b324269b203a50",
+  "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+  "native_cache_expected": true,
+  "generic_turboquant_expected": false,
+  "health_before": {
+    "model_loaded": true,
+    "last_request_time": null,
+    "scheduler": {
+      "hits": 0,
+      "misses": 0,
+      "hit_rate": 0,
+      "tokens_saved": 0,
+      "active_requests": 0,
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 0,
+        "system": 0
+      },
+      "backend_mode": "paged",
+      "paged_ram_enabled": true,
+      "disk_only": false,
+      "paged_frugal": false,
+      "ram_mirror_policy": "resident",
+      "block_size": 256,
+      "max_blocks": 1000,
+      "usable_blocks": 999,
+      "capacity_tokens": 255744,
+      "allocated_blocks": 1,
+      "free_blocks": 999,
+      "shared_blocks": 0,
+      "total_tokens_cached": 0,
+      "utilization": 0.0,
+      "cache_hit_rate": 0,
+      "cache_hits": 0,
+      "cache_misses": 0,
+      "disk_hits": 0,
+      "disk_misses": 0,
+      "cow_copies": 0,
+      "evictions": 0,
+      "disk_promotion_hits": 0,
+      "disk_lookup_misses": 0,
+      "disk_counter_source": "block_disk_store",
+      "engine_path": "none",
+      "batch_generator": {
+        "class": null,
+        "path": "none",
+        "single_active_decode": false,
+        "max_num_seqs": 1
+      }
+    },
+    "block_disk": {
+      "blocks_on_disk": 20,
+      "disk_size_bytes": 414200966,
+      "disk_size_gb": 0.386,
+      "total_accesses": 4,
+      "total_tokens_on_disk": 3173,
+      "total_cached_tokens": 3173,
+      "disk_hits": 0,
+      "disk_misses": 0,
+      "disk_writes": 0,
+      "disk_evictions": 0,
+      "tq_native_writes": 0,
+      "tq_native_hits": 0,
+      "tq_native_enabled": false
+    },
+    "native": {},
+    "totals": {
+      "ram_tokens_cached": 0,
+      "l1_indexed_tokens": 0,
+      "l1_resident_bytes": 0,
+      "l1_resident_bytes_mb": 0.0,
+      "l1_max_resident_bytes": 3900196454,
+      "l1_max_resident_bytes_mb": 3719.52,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 3173,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 3173,
+      "l2_tokens_on_disk_store_sum": 3173,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    }
+  },
+  "runs": [
+    {
+      "label": "cold_a",
+      "status": 200,
+      "prompt_chars": 3246,
+      "visible": "DSV4-TERTERMINAL-A-DONE",
+      "content_delta_count": 11,
+      "content_deltas": [
+        {
+          "at_s": 21.5349,
+          "text": "DS"
+        },
+        {
+          "at_s": 21.6221,
+          "text": "V"
+        },
+        {
+          "at_s": 21.6873,
+          "text": "4"
+        },
+        {
+          "at_s": 21.7287,
+          "text": "-T"
+        },
+        {
+          "at_s": 21.7699,
+          "text": "ER"
+        },
+        {
+          "at_s": 21.8072,
+          "text": "TER"
+        },
+        {
+          "at_s": 21.8602,
+          "text": "MIN"
+        },
+        {
+          "at_s": 21.9015,
+          "text": "AL"
+        },
+        {
+          "at_s": 21.9429,
+          "text": "-A"
+        },
+        {
+          "at_s": 21.9804,
+          "text": "-D"
+        },
+        {
+          "at_s": 22.0327,
+          "text": "ONE"
+        }
+      ],
+      "terminal_events": [
+        {
+          "at_s": 22.1405,
+          "type": "response.output_text.done",
+          "text": "DSV4-TERTERMINAL-A-DONE"
+        },
+        {
+          "at_s": 22.1412,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_df92c12f47d2",
+            "object": "response",
+            "created_at": 1784505697,
+            "status": "completed",
+            "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+            "output_text": "DSV4-TERTERMINAL-A-DONE",
+            "output": [
+              {
+                "id": "item_b39e4a5bf5c4",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "DSV4-TERTERMINAL-A-DONE",
+                    "annotations": []
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 766,
+              "output_tokens": 12,
+              "total_tokens": 778
+            }
+          }
+        }
+      ],
+      "last_content_to_output_done_s": 0.1078,
+      "last_content_to_completed_s": 0.1085,
+      "elapsed_s": 22.1417,
+      "events": [
+        {
+          "at_s": 0.0232,
+          "type": "response.created"
+        },
+        {
+          "at_s": 0.0232,
+          "type": "response.output_item.added"
+        },
+        {
+          "at_s": 0.0232,
+          "type": "response.content_part.added"
+        },
+        {
+          "at_s": 21.5349,
+          "type": "response.output_text.delta",
+          "delta": "DS"
+        },
+        {
+          "at_s": 21.6221,
+          "type": "response.output_text.delta",
+          "delta": "V"
+        },
+        {
+          "at_s": 21.6873,
+          "type": "response.output_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_s": 21.7287,
+          "type": "response.output_text.delta",
+          "delta": "-T"
+        },
+        {
+          "at_s": 21.7699,
+          "type": "response.output_text.delta",
+          "delta": "ER"
+        },
+        {
+          "at_s": 21.8072,
+          "type": "response.output_text.delta",
+          "delta": "TER"
+        },
+        {
+          "at_s": 21.8602,
+          "type": "response.output_text.delta",
+          "delta": "MIN"
+        },
+        {
+          "at_s": 21.9015,
+          "type": "response.output_text.delta",
+          "delta": "AL"
+        },
+        {
+          "at_s": 21.9429,
+          "type": "response.output_text.delta",
+          "delta": "-A"
+        },
+        {
+          "at_s": 21.9804,
+          "type": "response.output_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 22.0327,
+          "type": "response.output_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 22.1405,
+          "type": "response.output_text.done",
+          "text": "DSV4-TERTERMINAL-A-DONE"
+        },
+        {
+          "at_s": 22.1408,
+          "type": "response.content_part.done"
+        },
+        {
+          "at_s": 22.1411,
+          "type": "response.output_item.done"
+        },
+        {
+          "at_s": 22.1412,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_df92c12f47d2",
+            "object": "response",
+            "created_at": 1784505697,
+            "status": "completed",
+            "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+            "output_text": "DSV4-TERTERMINAL-A-DONE",
+            "output": [
+              {
+                "id": "item_b39e4a5bf5c4",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "DSV4-TERTERMINAL-A-DONE",
+                    "annotations": []
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 766,
+              "output_tokens": 12,
+              "total_tokens": 778
+            }
+          }
+        }
+      ]
+    },
+    {
+      "label": "warm_a",
+      "status": 200,
+      "prompt_chars": 3246,
+      "visible": "DSV4-TERTERMINAL-A-DONE",
+      "content_delta_count": 11,
+      "content_deltas": [
+        {
+          "at_s": 0.1692,
+          "text": "DS"
+        },
+        {
+          "at_s": 0.2658,
+          "text": "V"
+        },
+        {
+          "at_s": 0.3256,
+          "text": "4"
+        },
+        {
+          "at_s": 0.367,
+          "text": "-T"
+        },
+        {
+          "at_s": 0.4082,
+          "text": "ER"
+        },
+        {
+          "at_s": 0.4456,
+          "text": "TER"
+        },
+        {
+          "at_s": 0.4985,
+          "text": "MIN"
+        },
+        {
+          "at_s": 0.5398,
+          "text": "AL"
+        },
+        {
+          "at_s": 0.5811,
+          "text": "-A"
+        },
+        {
+          "at_s": 0.6183,
+          "text": "-D"
+        },
+        {
+          "at_s": 0.6707,
+          "text": "ONE"
+        }
+      ],
+      "terminal_events": [
+        {
+          "at_s": 0.8164,
+          "type": "response.output_text.done",
+          "text": "DSV4-TERTERMINAL-A-DONE"
+        },
+        {
+          "at_s": 0.8165,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_cb67f4d9ee8d",
+            "object": "response",
+            "created_at": 1784505719,
+            "status": "completed",
+            "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+            "output_text": "DSV4-TERTERMINAL-A-DONE",
+            "output": [
+              {
+                "id": "item_35053084734b",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "DSV4-TERTERMINAL-A-DONE",
+                    "annotations": []
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 766,
+              "output_tokens": 12,
+              "total_tokens": 778,
+              "input_tokens_details": {
+                "cached_tokens": 765,
+                "cache_detail": "paged+dsv4"
+              }
+            }
+          }
+        }
+      ],
+      "last_content_to_output_done_s": 0.1457,
+      "last_content_to_completed_s": 0.1458,
+      "elapsed_s": 0.8166,
+      "events": [
+        {
+          "at_s": 0.0199,
+          "type": "response.created"
+        },
+        {
+          "at_s": 0.0199,
+          "type": "response.output_item.added"
+        },
+        {
+          "at_s": 0.0199,
+          "type": "response.content_part.added"
+        },
+        {
+          "at_s": 0.1692,
+          "type": "response.output_text.delta",
+          "delta": "DS"
+        },
+        {
+          "at_s": 0.2658,
+          "type": "response.output_text.delta",
+          "delta": "V"
+        },
+        {
+          "at_s": 0.3256,
+          "type": "response.output_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_s": 0.367,
+          "type": "response.output_text.delta",
+          "delta": "-T"
+        },
+        {
+          "at_s": 0.4082,
+          "type": "response.output_text.delta",
+          "delta": "ER"
+        },
+        {
+          "at_s": 0.4456,
+          "type": "response.output_text.delta",
+          "delta": "TER"
+        },
+        {
+          "at_s": 0.4985,
+          "type": "response.output_text.delta",
+          "delta": "MIN"
+        },
+        {
+          "at_s": 0.5398,
+          "type": "response.output_text.delta",
+          "delta": "AL"
+        },
+        {
+          "at_s": 0.5811,
+          "type": "response.output_text.delta",
+          "delta": "-A"
+        },
+        {
+          "at_s": 0.6183,
+          "type": "response.output_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 0.6707,
+          "type": "response.output_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 0.8164,
+          "type": "response.output_text.done",
+          "text": "DSV4-TERTERMINAL-A-DONE"
+        },
+        {
+          "at_s": 0.8164,
+          "type": "response.content_part.done"
+        },
+        {
+          "at_s": 0.8165,
+          "type": "response.output_item.done"
+        },
+        {
+          "at_s": 0.8165,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_cb67f4d9ee8d",
+            "object": "response",
+            "created_at": 1784505719,
+            "status": "completed",
+            "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+            "output_text": "DSV4-TERTERMINAL-A-DONE",
+            "output": [
+              {
+                "id": "item_35053084734b",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "DSV4-TERTERMINAL-A-DONE",
+                    "annotations": []
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 766,
+              "output_tokens": 12,
+              "total_tokens": 778,
+              "input_tokens_details": {
+                "cached_tokens": 765,
+                "cache_detail": "paged+dsv4"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "label": "partial_b",
+      "status": 200,
+      "prompt_chars": 3310,
+      "visible": "DSV4-TERTERMINAL-B-DONE",
+      "content_delta_count": 11,
+      "content_deltas": [
+        {
+          "at_s": 1.5366,
+          "text": "DS"
+        },
+        {
+          "at_s": 1.6259,
+          "text": "V"
+        },
+        {
+          "at_s": 1.6792,
+          "text": "4"
+        },
+        {
+          "at_s": 1.7206,
+          "text": "-T"
+        },
+        {
+          "at_s": 1.7621,
+          "text": "ER"
+        },
+        {
+          "at_s": 1.7994,
+          "text": "TER"
+        },
+        {
+          "at_s": 1.852,
+          "text": "MIN"
+        },
+        {
+          "at_s": 1.8932,
+          "text": "AL"
+        },
+        {
+          "at_s": 1.9347,
+          "text": "-B"
+        },
+        {
+          "at_s": 1.972,
+          "text": "-D"
+        },
+        {
+          "at_s": 2.0244,
+          "text": "ONE"
+        }
+      ],
+      "terminal_events": [
+        {
+          "at_s": 2.1231,
+          "type": "response.output_text.done",
+          "text": "DSV4-TERTERMINAL-B-DONE"
+        },
+        {
+          "at_s": 2.1238,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_9c162d2e13a1",
+            "object": "response",
+            "created_at": 1784505720,
+            "status": "completed",
+            "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+            "output_text": "DSV4-TERTERMINAL-B-DONE",
+            "output": [
+              {
+                "id": "item_49b90ae526df",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "DSV4-TERTERMINAL-B-DONE",
+                    "annotations": []
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 774,
+              "output_tokens": 12,
+              "total_tokens": 786
+            }
+          }
+        }
+      ],
+      "last_content_to_output_done_s": 0.0987,
+      "last_content_to_completed_s": 0.0994,
+      "elapsed_s": 2.1242,
+      "events": [
+        {
+          "at_s": 0.0207,
+          "type": "response.created"
+        },
+        {
+          "at_s": 0.0207,
+          "type": "response.output_item.added"
+        },
+        {
+          "at_s": 0.0207,
+          "type": "response.content_part.added"
+        },
+        {
+          "at_s": 1.5366,
+          "type": "response.output_text.delta",
+          "delta": "DS"
+        },
+        {
+          "at_s": 1.6259,
+          "type": "response.output_text.delta",
+          "delta": "V"
+        },
+        {
+          "at_s": 1.6792,
+          "type": "response.output_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_s": 1.7206,
+          "type": "response.output_text.delta",
+          "delta": "-T"
+        },
+        {
+          "at_s": 1.7621,
+          "type": "response.output_text.delta",
+          "delta": "ER"
+        },
+        {
+          "at_s": 1.7994,
+          "type": "response.output_text.delta",
+          "delta": "TER"
+        },
+        {
+          "at_s": 1.852,
+          "type": "response.output_text.delta",
+          "delta": "MIN"
+        },
+        {
+          "at_s": 1.8932,
+          "type": "response.output_text.delta",
+          "delta": "AL"
+        },
+        {
+          "at_s": 1.9347,
+          "type": "response.output_text.delta",
+          "delta": "-B"
+        },
+        {
+          "at_s": 1.972,
+          "type": "response.output_text.delta",
+          "delta": "-D"
+        },
+        {
+          "at_s": 2.0244,
+          "type": "response.output_text.delta",
+          "delta": "ONE"
+        },
+        {
+          "at_s": 2.1231,
+          "type": "response.output_text.done",
+          "text": "DSV4-TERTERMINAL-B-DONE"
+        },
+        {
+          "at_s": 2.1231,
+          "type": "response.content_part.done"
+        },
+        {
+          "at_s": 2.1236,
+          "type": "response.output_item.done"
+        },
+        {
+          "at_s": 2.1238,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_9c162d2e13a1",
+            "object": "response",
+            "created_at": 1784505720,
+            "status": "completed",
+            "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+            "output_text": "DSV4-TERTERMINAL-B-DONE",
+            "output": [
+              {
+                "id": "item_49b90ae526df",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "DSV4-TERTERMINAL-B-DONE",
+                    "annotations": []
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 774,
+              "output_tokens": 12,
+              "total_tokens": 786
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "health_after_cold_a": {
+    "model_loaded": true,
+    "last_request_time": 1784505697.662515,
+    "scheduler": {
+      "hits": 0,
+      "misses": 1,
+      "hit_rate": 0.0,
+      "tokens_saved": 0,
+      "active_requests": 0,
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 0,
+        "system": 0
+      },
+      "backend_mode": "paged",
+      "paged_ram_enabled": true,
+      "disk_only": false,
+      "paged_frugal": false,
+      "ram_mirror_policy": "resident",
+      "block_size": 256,
+      "max_blocks": 1000,
+      "usable_blocks": 999,
+      "capacity_tokens": 255744,
+      "allocated_blocks": 4,
+      "free_blocks": 996,
+      "shared_blocks": 0,
+      "total_tokens_cached": 765,
+      "utilization": 0.003003003003003003,
+      "cache_hit_rate": 0.0,
+      "cache_hits": 0,
+      "cache_misses": 5,
+      "disk_hits": 0,
+      "disk_misses": 22,
+      "cow_copies": 0,
+      "evictions": 0,
+      "disk_promotion_hits": 0,
+      "disk_lookup_misses": 2,
+      "disk_counter_source": "block_disk_store",
+      "engine_path": "dsv4",
+      "batch_generator": {
+        "class": "DSV4BatchGenerator",
+        "path": "dsv4",
+        "single_active_decode": false,
+        "max_num_seqs": 1
+      }
+    },
+    "block_disk": {
+      "blocks_on_disk": 21,
+      "disk_size_bytes": 415260070,
+      "disk_size_gb": 0.387,
+      "total_accesses": 4,
+      "total_tokens_on_disk": 3429,
+      "total_cached_tokens": 3429,
+      "disk_hits": 0,
+      "disk_misses": 22,
+      "disk_writes": 1,
+      "disk_evictions": 0,
+      "tq_native_writes": 0,
+      "tq_native_hits": 0,
+      "tq_native_enabled": false
+    },
+    "native": {},
+    "totals": {
+      "ram_tokens_cached": 765,
+      "l1_indexed_tokens": 765,
+      "l1_resident_bytes": 77128704,
+      "l1_resident_bytes_mb": 73.56,
+      "l1_max_resident_bytes": 3900196454,
+      "l1_max_resident_bytes_mb": 3719.52,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 3429,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 3429,
+      "l2_tokens_on_disk_store_sum": 3429,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    }
+  },
+  "health_after_warm_a": {
+    "model_loaded": true,
+    "last_request_time": 1784505719.922807,
+    "scheduler": {
+      "hits": 1,
+      "misses": 1,
+      "hit_rate": 0.5,
+      "tokens_saved": 765,
+      "active_requests": 0,
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 2,
+        "system": 0
+      },
+      "backend_mode": "paged",
+      "paged_ram_enabled": true,
+      "disk_only": false,
+      "paged_frugal": false,
+      "ram_mirror_policy": "resident",
+      "block_size": 256,
+      "max_blocks": 1000,
+      "usable_blocks": 999,
+      "capacity_tokens": 255744,
+      "allocated_blocks": 1,
+      "free_blocks": 999,
+      "shared_blocks": 0,
+      "total_tokens_cached": 765,
+      "utilization": 0.0,
+      "cache_hit_rate": 0.5454545454545454,
+      "cache_hits": 6,
+      "cache_misses": 5,
+      "disk_hits": 0,
+      "disk_misses": 23,
+      "cow_copies": 0,
+      "evictions": 0,
+      "disk_promotion_hits": 0,
+      "disk_lookup_misses": 2,
+      "disk_counter_source": "block_disk_store",
+      "engine_path": "dsv4",
+      "batch_generator": {
+        "class": "DSV4BatchGenerator",
+        "path": "dsv4",
+        "single_active_decode": false,
+        "max_num_seqs": 1
+      }
+    },
+    "block_disk": {
+      "blocks_on_disk": 23,
+      "disk_size_bytes": 491403720,
+      "disk_size_gb": 0.458,
+      "total_accesses": 4,
+      "total_tokens_on_disk": 3938,
+      "total_cached_tokens": 3938,
+      "disk_hits": 0,
+      "disk_misses": 23,
+      "disk_writes": 3,
+      "disk_evictions": 0,
+      "tq_native_writes": 0,
+      "tq_native_hits": 0,
+      "tq_native_enabled": false
+    },
+    "native": {},
+    "totals": {
+      "ram_tokens_cached": 765,
+      "l1_indexed_tokens": 765,
+      "l1_resident_bytes": 77128704,
+      "l1_resident_bytes_mb": 73.56,
+      "l1_max_resident_bytes": 3900196454,
+      "l1_max_resident_bytes_mb": 3719.52,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 3938,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 3938,
+      "l2_tokens_on_disk_store_sum": 3938,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    }
+  },
+  "health_after_partial_b": {
+    "model_loaded": true,
+    "last_request_time": 1784505720.792734,
+    "scheduler": {
+      "hits": 1,
+      "misses": 2,
+      "hit_rate": 0.3333333333333333,
+      "tokens_saved": 765,
+      "active_requests": 0,
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 2,
+        "system": 0
+      },
+      "backend_mode": "paged",
+      "paged_ram_enabled": true,
+      "disk_only": false,
+      "paged_frugal": false,
+      "ram_mirror_policy": "resident",
+      "block_size": 256,
+      "max_blocks": 1000,
+      "usable_blocks": 999,
+      "capacity_tokens": 255744,
+      "allocated_blocks": 5,
+      "free_blocks": 995,
+      "shared_blocks": 0,
+      "total_tokens_cached": 1026,
+      "utilization": 0.004004004004004004,
+      "cache_hit_rate": 0.5263157894736842,
+      "cache_hits": 10,
+      "cache_misses": 9,
+      "disk_hits": 0,
+      "disk_misses": 47,
+      "cow_copies": 0,
+      "evictions": 0,
+      "disk_promotion_hits": 0,
+      "disk_lookup_misses": 4,
+      "disk_counter_source": "block_disk_store",
+      "engine_path": "dsv4",
+      "batch_generator": {
+        "class": "DSV4BatchGenerator",
+        "path": "dsv4",
+        "single_active_decode": false,
+        "max_num_seqs": 1
+      }
+    },
+    "block_disk": {
+      "blocks_on_disk": 24,
+      "disk_size_bytes": 492462824,
+      "disk_size_gb": 0.459,
+      "total_accesses": 4,
+      "total_tokens_on_disk": 4194,
+      "total_cached_tokens": 4194,
+      "disk_hits": 0,
+      "disk_misses": 47,
+      "disk_writes": 4,
+      "disk_evictions": 0,
+      "tq_native_writes": 0,
+      "tq_native_hits": 0,
+      "tq_native_enabled": false
+    },
+    "native": {},
+    "totals": {
+      "ram_tokens_cached": 1026,
+      "l1_indexed_tokens": 1026,
+      "l1_resident_bytes": 148013056,
+      "l1_resident_bytes_mb": 141.16,
+      "l1_max_resident_bytes": 3900196454,
+      "l1_max_resident_bytes_mb": 3719.52,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 4194,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 4194,
+      "l2_tokens_on_disk_store_sum": 4194,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    }
+  },
+  "checks": {
+    "all_status_200": true,
+    "all_visible_nonempty": true,
+    "all_progressive": true,
+    "all_output_done_once": true,
+    "all_completed_once": true,
+    "all_terminal_under_250ms": true
+  }
+}
