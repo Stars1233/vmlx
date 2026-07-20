@@ -1,8 +1,8 @@
 # openPangu current-head prompt-L2 restart recheck
 
-Date: 2026-07-19  
-Source head: `117c3d20699316bdb2ee8a17d40c60b69e9f22b9`  
-Model: `jangq-ai/openPangu-2.0-Flash-JANG_3M`  
+Date: 2026-07-19
+Source head: `117c3d20699316bdb2ee8a17d40c60b69e9f22b9`
+Model: `jangq-ai/openPangu-2.0-Flash-JANG_3M`
 Status: **VERIFIED-LIVE scoped** for exact memory/SSD restore and streaming; **PARTIAL** for the new forward-suffix strict-format control.
 
 This is a current-head recheck of the architecture-specific openPangu cache

@@ -9,7 +9,7 @@
   8358	        }
   8359	        status.update(layout)
   8360	        return status
-  8361	
+  8361
   8362	    if (
   8363	        family_name == "openpangu_v2"
   8364	        or scheduler_family == "openpangu_v2"
@@ -62,7 +62,7 @@
   8411	            "prompt_disk_l2": bool(disk_cache is not None),
   8412	            "block_disk_l2": False,
   8413	        }
-  8414	
+  8414
   8415	    family_probe_parts = [family_name, scheduler_family]
   8416	    if cfg is not None:
   8417	        if isinstance(cfg, dict):
