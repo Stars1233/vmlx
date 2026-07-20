@@ -1,0 +1,262 @@
+   426	  private writeJsonLine(res: ServerResponse, payload: any): boolean {
+   427	    return this.writeResponse(res, JSON.stringify(payload) + "\n");
+   428	  }
+   429
+   430	  private abortProxyResponseOnClientClose(
+   431	    res: ServerResponse,
+   432	    proxyRes: IncomingMessage,
+   433	  ): void {
+   434	    res.on("close", () => {
+   435	      if (!proxyRes.destroyed) proxyRes.destroy();
+   436	    });
+   437	  }
+   438
+   439	  private abortProxyRequestOnClientClose(
+   440	    res: ServerResponse,
+   441	    proxyReq: ClientRequest,
+   442	  ): void {
+   443	    // Install this before backend response headers exist. Non-streaming model
+   444	    // routes do not produce a proxyRes until generation has finished, so only
+   445	    // watching proxyRes (or the already-consumed client request body) strands
+   446	    // backend inference when the downstream client disconnects mid-generation.
+   447	    res.once("close", () => {
+   448	      if (!res.writableEnded && !proxyReq.destroyed) proxyReq.destroy();
+   449	    });
+   450	  }
+   451
+   452	  async stop(): Promise<void> {
+   453	    if (!this.server) return;
+   454	    return new Promise((resolve) => {
+   455	      this.server!.close(() => {
+   456	        this._running = false;
+   457	        this.server = null;
+   458	        this.jitPending.clear();
+   459	        console.log("[gateway] Stopped");
+   460	        this.emit("stopped");
+   461	        resolve();
+   462	      });
+   994	        console.error(
+   995	          `[gateway] Proxy response error → ${session.host}:${session.port}${clientReq.url}: ${err.message}`,
+   996	        );
+   997	      });
+   998	      this.abortProxyResponseOnClientClose(clientRes, proxyRes);
+   999	      // Forward bytes manually so client disconnects go through the guarded writer.
+  1000	      // This preserves SSE Content-Type while avoiding noisy write EPIPE crashes.
+  1001	      proxyRes.on("data", (chunk: Buffer) => {
+  1002	        if (!this.writeResponse(clientRes, chunk)) {
+  1003	          proxyRes.destroy();
+  1004	        }
+  1005	      });
+  1006	      proxyRes.on("end", () => {
+  1007	        this.endResponse(clientRes);
+  1008	      });
+  1009	    });
+  1010
+  1011	    this.abortProxyRequestOnClientClose(clientRes, proxyReq);
+  1012
+  1013	    proxyReq.on("error", (err) => {
+  1014	      if (this.isClientDisconnectError(err)) {
+  1015	        if (!this.responseWritable(clientRes)) return;
+  1016	        if (!clientRes.headersSent) {
+  1017	          this.sendJson(clientRes, 502, {
+  1018	            error: {
+  1019	              message: "Backend connection closed while receiving request",
+  1020	              type: "server_error",
+  1678	              }
+  1679	            } catch (_) {
+  1680	              /* skip malformed chunks */
+  1681	            }
+  1682	          }
+  1683	        });
+  1684
+  1685	        proxyRes.on("end", () => {
+  1686	          emitTerminal();
+  1687	        });
+  1688	      }
+  1689	    });
+  1690
+  1691	    this.abortProxyRequestOnClientClose(res, proxyReq);
+  1692
+  1693	    proxyReq.on("error", (err) => {
+  1694	      if (this.isClientDisconnectError(err)) {
+  1695	        if (!this.responseWritable(res)) return;
+  1696	        if (!res.headersSent)
+  1697	          this.sendJson(res, 502, {
+  1698	            error: "Backend connection closed while receiving request",
+  1699	          });
+  1700	        return;
+  1952	                created_at: new Date().toISOString(),
+  1953	                response: "",
+  1954	                done: true,
+  1955	                done_reason: "stop",
+  1956	              })
+  1957	            )
+  1958	              return;
+  1959	            this.endResponse(res);
+  1960	          }
+  1961	        });
+  1962	      }
+  1963	    });
+  1964
+  1965	    this.abortProxyRequestOnClientClose(res, proxyReq);
+  1966
+  1967	    proxyReq.on("error", (err) => {
+  1968	      if (this.isClientDisconnectError(err)) {
+  1969	        if (!this.responseWritable(res)) return;
+  1970	        if (!res.headersSent)
+  1971	          this.sendJson(res, 502, {
+  1972	            error: "Backend connection closed while receiving request",
+  1973	          });
+  1974	        return;
+ 17576	async def stream_chat_completion(
+ 17577	    engine: BaseEngine,
+ 17578	    messages: list,
+ 17579	    request: ChatCompletionRequest,
+ 17580	    fastapi_request: Request | None = None,
+ 17581	    **kwargs,
+ 17582	) -> AsyncIterator[str]:
+ 17583	    """Stream chat completion with auto-detection of closed connections."""
+ 17584	    response_id = f"chatcmpl-{uuid.uuid4().hex[:8]}"
+ 17585
+ 17586	    # Some adapters (notably Anthropic stream=false) consume this streaming
+ 17587	    # generator inside a non-streaming HTTP handler so they can reuse its
+ 17588	    # reasoning and tool parsing. Starlette does not own a StreamingResponse in
+ 17589	    # that shape, and lazy is_disconnected() polling can miss http.disconnect
+ 17590	    # after the request body has already been consumed. Actively drain receive
+ 17591	    # only for that non-streaming-consumer shape; real StreamingResponse routes
+ 17592	    # retain Starlette's single receive owner.
+ 17593	    _nonstream_disconnect_event = asyncio.Event()
+ 17594	    _nonstream_disconnect_drain: asyncio.Task | None = None
+ 17595	    if (
+ 17596	        fastapi_request is not None
+ 17597	        and request.stream is False
+ 17598	        and hasattr(fastapi_request, "receive")
+ 17599	    ):
+ 17600	        async def _drain_nonstream_disconnect() -> None:
+ 17601	            try:
+ 17602	                while not _nonstream_disconnect_event.is_set():
+ 17603	                    message = await fastapi_request.receive()
+ 17604	                    if (
+ 17605	                        isinstance(message, dict)
+ 17606	                        and message.get("type") == "http.disconnect"
+ 17607	                    ):
+ 17608	                        _nonstream_disconnect_event.set()
+ 17609	                        return
+ 17610	            except asyncio.CancelledError:
+ 17611	                raise
+ 17612	            except Exception:
+ 17613	                _nonstream_disconnect_event.set()
+ 17614
+ 17615	        _nonstream_disconnect_drain = asyncio.create_task(
+ 17616	            _drain_nonstream_disconnect()
+ 17617	        )
+ 17618
+ 17619	    def _stop_nonstream_disconnect_drain() -> None:
+ 17620	        if (
+ 17621	            _nonstream_disconnect_drain is not None
+ 17622	            and not _nonstream_disconnect_drain.done()
+ 17623	        ):
+ 17624	            _nonstream_disconnect_drain.cancel()
+ 17625
+ 17626	    # Pass response_id as request_id to engine for unified tracking
+ 17627	    kwargs["request_id"] = response_id
+ 17628
+ 17629	    # Check if we should include usage in the final chunk
+ 17630	    include_usage = request.stream_options and request.stream_options.include_usage
+ 17631
+ 17632	    def _dump_chat_chunk(obj, *, terminal_usage: bool = False) -> str:
+ 17633	        """Serialize one Chat SSE chunk with OpenAI-compatible usage shape.
+ 17634
+ 17635	        ``include_usage`` requests exactly one non-null, choices-empty usage
+ 17636	        chunk immediately before ``[DONE]``. Ordinary chunks carry
+ 17637	        ``usage:null``; they must never expose the engine's growing counters.
+ 17638	        The Electron client derives live TPS from real reasoning/content
+ 17639	        deltas and consumes the authoritative total from the terminal chunk.
+ 17640	        """
+ 17641	        if hasattr(obj, "model_dump"):
+ 17642	            payload = obj.model_dump(exclude_none=True)
+ 17643	        else:
+ 17644	            payload = dict(obj)
+ 17645	        if include_usage and not terminal_usage:
+ 18000	    stream_logprob_offset = 0
+ 18001
+ 18002	    # Use per-request timeout if provided, otherwise server default
+ 18003	    _stream_timeout = (
+ 18004	        request.timeout if request.timeout is not None else _default_timeout
+ 18005	    )
+ 18006
+ 18007	    try:
+ 18008	        # Stream content (with SSE keep-alive during long prefills)
+ 18009	        async for output in _stream_with_keepalive(
+ 18010	            engine.stream_chat(messages=messages, **kwargs),
+ 18011	            interval=(
+ 18012	                0.25
+ 18013	                if _nonstream_disconnect_drain is not None
+ 18014	                else _SSE_KEEPALIVE_INTERVAL
+ 18015	            ),
+ 18016	            total_timeout=_stream_timeout,
+ 18017	        ):
+ 18018	            # Keep-alive sentinel — emit SSE comment to prevent connection timeout
+ 18019	            if output is None:
+ 18020	                if _nonstream_disconnect_event.is_set():
+ 18021	                    logger.info(
+ 18022	                        "Client disconnected from non-stream adapter, aborting %s",
+ 18023	                        response_id,
+ 18024	                    )
+ 18025	                    if hasattr(engine, "abort_request"):
+ 18026	                        await engine.abort_request(response_id)
+ 18027	                    return
+ 18028	                yield ": keep-alive\n\n"
+ 18029	                continue
+ 18030
+ 18031	            # Check if client disconnected
+ 18032	            if _nonstream_disconnect_event.is_set() or (
+ 18033	                fastapi_request
+ 18034	                and _nonstream_disconnect_drain is None
+ 18035	                and await fastapi_request.is_disconnected()
+ 18036	            ):
+ 18037	                logger.info(f"Client disconnected, aborting request {response_id}")
+ 18038	                if hasattr(engine, "abort_request"):
+ 18039	                    await engine.abort_request(response_id)
+ 18040	                return
+ 18041
+ 18042	            delta_text = output.new_text
+ 18043	            last_output = output
+ 18044
+ 18045	            # Track token counts from output (updated each chunk)
+ 18046	            if hasattr(output, "prompt_tokens") and output.prompt_tokens:
+ 18047	                prompt_tokens = output.prompt_tokens
+ 18048	            if hasattr(output, "completion_tokens") and output.completion_tokens:
+ 18049	                completion_tokens = output.completion_tokens
+ 18050	            if hasattr(output, "cached_tokens") and output.cached_tokens:
+ 18051	                cached_tokens = output.cached_tokens
+ 18052	            _detail = getattr(output, "cache_detail", "") or None
+ 18053	            if _detail is not None:
+ 18054	                cache_detail = _detail
+ 18055	            chunk_logprobs = None
+ 18620	            )
+ 18621	            if cached_tokens > 0 or cache_detail:
+ 18622	                _err_usage.prompt_tokens_details = PromptTokensDetails(
+ 18623	                    cached_tokens=cached_tokens, cache_detail=cache_detail
+ 18624	                )
+ 18625	            err_usage_chunk = ChatCompletionChunk(
+ 18626	                id=response_id,
+ 18627	                created=_created_ts,
+ 18628	                model=request.model,
+ 18629	                choices=[],
+ 18630	                usage=_err_usage,
+ 18631	            )
+ 18632	            yield f"data: {_dump_chat_chunk(err_usage_chunk, terminal_usage=True)}\n\n"
+ 18633	        yield "data: [DONE]\n\n"
+ 18634	        return
+ 18635	    finally:
+ 18636	        _stop_nonstream_disconnect_drain()
+ 18637
+ 18638	    # ─── Post-stream: tool call extraction ───────────────────────────────
+ 18639	    # If we buffered text because of tool call markers, parse it now
+ 18640	    if tool_call_buffering and accumulated_text and not _suppress_tools:
+ 18641	        # Use content-only text when reasoning parser separated it (avoids losing
+ 18642	        # tool calls that appear inside <think> blocks during regex stripping).
+ 18643	        # If content is empty but reasoning has tool markers, check reasoning too
+ 18644	        # (model may emit tool calls in analysis channel instead of final channel).
+ 18645	        # Fall back to accumulated_text with think-tag stripping when no parser was active.

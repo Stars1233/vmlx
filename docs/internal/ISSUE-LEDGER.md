@@ -3292,3 +3292,42 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   restore claim.
 - Evidence:
   `docs/internal/release-gates/20260719_one_model_swap_soak/`.
+
+## 2026-07-19 - gateway downstream-disconnect cleanup and recovery
+
+- Status: `VERIFIED-LIVE_SCOPED` for downstream client disconnects through the
+  live Electron gateway on streaming and non-stream Chat Completions,
+  Anthropic Messages, Ollama chat, and Ollama generate; signed-app repetition,
+  safe injected engine failures, stable agentic tool/result continuation, and
+  broader model/parser coverage remain `PARTIAL`/`OPEN`.
+- Source trace found two owning defects. The gateway watched the consumed
+  request body and installed its response-close listener only after upstream
+  headers, so a non-stream client could disappear while headerless inference
+  remained active. The Anthropic non-stream adapter also internally consumed
+  `stream_chat_completion`, leaving no Starlette streaming response to own the
+  disconnect receive channel.
+- `panel/src/main/api-gateway.ts` now binds downstream response closure before
+  proxy headers and destroys the upstream request when the downstream socket
+  closes early. `vmlx_engine/server.py` now uses a bounded active receive drain
+  only for non-stream adapter consumption, aborting the exact response while
+  leaving normal stream ownership unchanged.
+- Before the fix, non-stream Chat remained at `num_running=1` for every sample
+  across 10 seconds after the client timeout. After the gateway repair, Chat,
+  Ollama chat, and Ollama generate returned idle in 0.037/0.031/0.029 seconds.
+  Anthropic initially retained the orphan, independently proving the adapter
+  defect; after its repair it returned idle in 0.034 seconds.
+- Current-source recovery requests completed exactly on all four surfaces with
+  one truthful terminal and usage. Streaming aborts emitted progressive partial
+  bytes but no false terminal, returned idle in 0.030-0.034 seconds, and were
+  followed by exact completed recovery streams.
+- The real Electron app was reloaded against the patched main process and used
+  its Save & Restart control to replace Laguna PID 80479 with PID 88506. A
+  visible recovery turn progressively grew
+  `UI-GATEWAY-DISCONNECT-FIX-` -> `...-O` -> `...-OK` before terminal metrics;
+  SQLite preserved exact visible content, null reasoning/warnings, and the DOM
+  observer recorded 46 mutations.
+- Focused validation passes: 5 selected Python disconnect/stream tests, 63
+  Anthropic adapter tests, 77 panel gateway tests, panel typecheck, and
+  `git diff --check`.
+- Evidence:
+  `docs/internal/release-gates/20260719_gateway_disconnect_recovery/`.
