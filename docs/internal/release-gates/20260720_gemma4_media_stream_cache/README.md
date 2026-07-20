@@ -18,7 +18,9 @@ Branch: `codex/postrelease-ui-drawers-20260720`
 | Restart/L2 restore | PASS-LIVE cache; output quality separate | After visible Electron Stop/Start, A7 restored 1,137/1,138 tokens as `paged+mixed_swa+disk+tq-native`; health recorded 18 disk promotions and 18 native-TQ hits with zero new writes. The turn completed, but OCR was still inexact. |
 | Reasoning-budget fallback | PASS-LIVE after `1b89e1118` | A8 deliberately capped thinking at 64 tokens. The real Gemma fallback ran, emitted 57 reasoning events followed by 30 progressive content events, leaked no literal `thought`, and terminated `response.completed`. Focused regression: 57 passed, two intentional skips. |
 | Small-text OCR fidelity | **PARTIAL / FAIL exactness** | Electron A5 read `jiang-ai/...`; raw A6 read `jangg-ai/...`; A7/A8 also altered characters/case. The real target is `jangq-ai/gemma-4-12B-it-qat-JANG_4M`. Transport, budget, streaming, and cache behavior must not be described as an OCR pass. |
-| Audio/video/media-salt breadth | PARTIAL | This gate used a real PNG and same-media reuse. Gemma audio, different-media salt isolation at 1120, post-media tool turns, and non-advertised video behavior were not rerun here. |
+| Different-media salt and return-A | PASS-LIVE | Same-size 2800x1800 image A visibly contained two active session cards and image B contained one. With an identical prompt, A/B/A answered `2`/`1`/`2`; B claimed no cached tokens, while return-A restored 1,097/1,098 as `paged+mixed_swa+tq-native`. After a real Electron Stop/Start, return-A again answered `2` and restored 1,097 tokens as `paged+mixed_swa+disk+tq-native`; health recorded 18 disk promotions and 18 native-TQ hits with no writes. |
+| Post-media text/tool history | PASS-LIVE | In the same real Electron chat, a text-only turn recalled the preceding image-turn marker exactly. After enabling built-in tools in the real Chat Settings UI, the next turn made exactly one `file_info(panel/package.json)` call, consumed its real 5.2 KB result, and exact-finaled `G4-POSTMEDIA-TOOL-DONE SIZE=5.2 KB` with no warning. |
+| Audio/video breadth | PARTIAL | Gemma audio was not rerun here. Video remains a negative-capability row because this bundle advertises `has_video=false`; rejection/fallback behavior was not rerun. |
 
 ## Source trace
 
@@ -57,6 +59,13 @@ Branch: `codex/postrelease-ui-drawers-20260720`
    direct fallback from fresh original context. A7 then restored the same disk
    prefix and completed; A8 forced the fallback and progressively emitted a
    visible answer with no channel leak.
+7. The same-size A/B/A media-salt probe returned `2`, `1`, and `2`. B did not
+   reuse A; return-A restored 1,097 tokens from resident cache. After a real
+   Electron Stop/Start, return-A restored the same 1,097 tokens from L2 with 18
+   disk/native-TQ hits and no new writes.
+8. The original Electron image chat then completed a text-only history turn and
+   one exact `file_info` tool loop after tools were visibly enabled in Chat
+   Settings. This proves the media turn did not poison later text or tool state.
 
 ## Validation
 
@@ -76,15 +85,20 @@ Branch: `codex/postrelease-ui-drawers-20260720`
 - `gemma-a7-disk-fallback-fix-sse.txt` — post-fix restart/L2 completion.
 - `gemma-a8-fallback-fix-sse.txt` — forced bounded fallback with progressive
   content and no `thought` leak.
+- `gemma-salt-a1.sse.txt`, `gemma-salt-b.sse.txt`, and
+  `gemma-salt-a2-return.sse.txt` — same-size A/B/A isolation and resident
+  return-A proof.
+- `gemma-salt-a3-restart-disk.sse.txt` — real Electron restart/L2 return-A
+  proof.
+- `gemma-salt-ui-stopped.png` and `gemma-salt-ui-restarted.png` — visible
+  Electron lifecycle proof.
+- `gemma-postmedia-text-pass.png` and `gemma-postmedia-tool-current.png` —
+  visible same-chat text recall and exact one-tool continuation.
 
 ## Remaining work
 
 - Run a controlled same-artifact reference A/B before classifying exact OCR as
   quant quality. Do not postprocess or silently rewrite the model output.
-- Prove different-media salt isolation at 1120, then return to the original
-  image from RAM and from L2.
 - Exercise real audio through Electron and raw APIs because this bundle
   advertises audio. Keep video separate because `jang_config.json` says
   `has_video=false`.
-- Run a post-media text turn and a real tool turn to ensure media cache history
-  does not perturb the Gemma parser/tool loop.

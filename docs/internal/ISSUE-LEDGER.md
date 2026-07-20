@@ -3554,3 +3554,18 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - Remaining: controlled same-artifact OCR reference A/B, different-media
   1120-budget salt isolation and return-A, audio, post-media text/tool turns,
   bounded eviction, and signed-app repetition.
+- Follow-up media-salt proof is now `PASS-LIVE_SCOPED`: same-size screenshot A
+  had two active cards and B had one; identical-prompt A/B/A returned
+  `2`/`1`/`2`. B had no cached-token claim. Return-A restored 1,097/1,098 tokens
+  as `paged+mixed_swa+tq-native`; after a real Electron Stop/Start it restored
+  the same 1,097 tokens as `paged+mixed_swa+disk+tq-native`, with 18 disk
+  promotions/native-TQ hits and no writes.
+- Follow-up post-media history/tool proof is `PASS-LIVE_SCOPED`: the same
+  Electron chat recalled the prior image marker on a text-only turn. After the
+  real Chat Settings UI enabled built-in tools, Gemma emitted exactly one
+  `file_info(panel/package.json)` call, consumed the 5.2 KB result, and
+  exact-finaled with no warning.
+- Remaining Gemma rows are now the controlled OCR reference A/B, advertised
+  audio, non-advertised-video rejection, bounded eviction, and signed-app
+  repetition. Exact OCR remains `PARTIAL`; these cache/history passes do not
+  promote it.
