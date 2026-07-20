@@ -102,3 +102,36 @@ Branch: `codex/postrelease-ui-drawers-20260720`
 - Exercise real audio through Electron and raw APIs because this bundle
   advertises audio. Keep video separate because `jang_config.json` says
   `has_video=false`.
+
+## 2026-07-20 current-head cache-equivalence audit
+
+Source cutoff: `26f3dfb59a6d59cb3a94a31fc8d336552c3ac03d`.
+All live work in this audit ran on `erics-m5-max.local` against the real
+Electron dev app at CDP `9335`; `/Users/eric/vmlx` was only the controller and
+staging checkout.
+
+### Result
+
+| Axis | Verdict | Evidence |
+|---|---|---|
+| Current Auto settings and load | PASS-LIVE | The real Server Settings drawer was used to restore `Auto` and `Save & Restart`. Fresh PID 45909 reported `last_request_time=null`, `JANG_4M` affine weights, `mixed_swa_kv_v1`, paged RAM, block-disk L2, and q4 storage-boundary TQ with rotating metadata preserved. `gemma-final-auto-before-restart.png`. |
+| Current Electron stream finalization | PASS-LIVE | Fresh post-restart row 67 stored 1,008 reasoning characters separately, non-empty content, 402 output tokens, 1,132 prompt tokens, 44.3 tok/s, 1.52s TTFT, no warning/tool call, and a completed visible message. `gemma-final-ui-auto1.png`. |
+| Strict current OCR | PARTIAL / FAIL exactness | Row 67 read `jangqq-ai/...` rather than `jangq-ai/...`. The same typo appears in both private reasoning and content, so it is model OCR, not reasoning/content parser leakage or terminal truncation. |
+| Seed delivery / repeatability | PASS-LIVE scoped | Two greedy cache-bypass image requests were byte-identical. Two greedy text-only requests were byte-identical; a 9,866-token text prompt also stayed byte-identical across a 9,865-token `paged+mixed_swa` hit, ruling out a generic rotating-window reconstruction fault. |
+| Reasoning-mode cache identity | PASS-SOURCE+RUNTIME | Source-owned `_apply_chat_template` probes produced different full prompts, N-1 cache keys, and token lengths for thinking On vs Off. A thinking-off answer-pass key cannot alias a thinking-on key. `gemma-prompt-key-probe.json`. |
+| Media cold/warm under explicit None | PASS visible answer; hidden rail not universally exact | With TQ disabled, current-source greedy cold/warm content was byte-identical and exact in the retained probe, while private reasoning differed in an earlier prefill-shape probe. `gemma-cache-greedy-none.json`. |
+| Media cold/warm under Auto q4 | PASS coherence; no byte-identity claim | The retained current-source Auto probe completed with exact, byte-identical visible content cold/warm while private reasoning hashes differed. q4 stored KV is lossy; byte-identical private hidden text is not claimed. `gemma-cache-greedy.json`. |
+| Experimental N-1 cold alignment | REJECTED / NOT IN SOURCE | A temporary uncommitted split aligned None cold/warm hashes but made Auto q4 change a visible OCR character. The direct real-model logits probe measured one-shot vs split max absolute logit delta `0.0625`. The experiment was fully reverted; the remote source files match pushed HEAD. `gemma-media-split-logits.json`, `gemma-splitfix-greedy-auto.json`, and `gemma-splitfix-greedy-none.json`. |
+
+### Classification
+
+The user-visible Gemma output is structurally proper: the app streams and
+persists separate reasoning and content, reaches a terminal completion, and
+does not leak parser/tool markup. Exact small-text OCR remains stochastic and
+is still `PARTIAL`; the fresh turn's extra `q` is not hidden or rewritten.
+
+No engine fix was retained from this audit. Enforcing byte-identical private
+reasoning across a lossy q4 stored-cache boundary would either require a
+different cache-quality policy or deliberately running cold requests through
+the same lossy boundary. The attempted execution-shape-only change degraded a
+visible answer and was rejected rather than shipped as a fake determinism fix.

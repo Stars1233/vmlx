@@ -1,0 +1,42 @@
+{
+  "verdict": {
+    "reasoning_identical": true,
+    "content_identical": true
+  },
+  "rows": [
+    {
+      "elapsed": 10.851578500001779,
+      "reasoning": "*   Input: `[G4-TEXT-CACHE-GREEDY] Privately compute 1234567 * 89 + 321. Then answer exactly G4-TEXT-CACHE-GREEDY-DONE and nothing else.`\n    *   Task: Compute 1234567 * 89 + 321.\n    *   Constraint: Answer exactly \"G4-TEXT-CACHE-GREEDY-DONE\" and nothing else.\n\n    *   1234567 * 89:\n        *   1234567 * 90 = 111,111,030\n        *   1234567 * 1 = 1,234,567\n        *   111,111,030 - 1,234,567 = 109,876,463\n    *   109,876,463 + 321:\n        *   109,876,463 + 321 = 109,876,784\n\n    *   The prompt asks to compute the value privately and then output *only* the specific string \"G4-TEXT-CACHE-GREEDY-DONE\".\n\n    *   The output must be exactly \"G4-TEXT-CACHE-GREEDY-DONE\".",
+      "content": "G4-TEXT-CACHE-GREEDY-DONE",
+      "reasoning_sha256": "9cb04a1963c5781cc1a670dee33aa7a39df9b488ac72af8aee54bc18471306d2",
+      "content_sha256": "4f33dd7a69afbecdea0c970d90f350ebc4d7cbdec3bab596e850c4782bf2b0ce",
+      "reasoning_deltas": 276,
+      "content_deltas": 11,
+      "terminal": "response.completed",
+      "usage": {
+        "input_tokens": 63,
+        "output_tokens": 339,
+        "total_tokens": 402
+      }
+    },
+    {
+      "elapsed": 9.753907499998604,
+      "reasoning": "*   Input: `[G4-TEXT-CACHE-GREEDY] Privately compute 1234567 * 89 + 321. Then answer exactly G4-TEXT-CACHE-GREEDY-DONE and nothing else.`\n    *   Task: Compute 1234567 * 89 + 321.\n    *   Constraint: Answer exactly \"G4-TEXT-CACHE-GREEDY-DONE\" and nothing else.\n\n    *   1234567 * 89:\n        *   1234567 * 90 = 111,111,030\n        *   1234567 * 1 = 1,234,567\n        *   111,111,030 - 1,234,567 = 109,876,463\n    *   109,876,463 + 321:\n        *   109,876,463 + 321 = 109,876,784\n\n    *   The prompt asks to compute the value privately and then output *only* the specific string \"G4-TEXT-CACHE-GREEDY-DONE\".\n\n    *   The output must be exactly \"G4-TEXT-CACHE-GREEDY-DONE\".",
+      "content": "G4-TEXT-CACHE-GREEDY-DONE",
+      "reasoning_sha256": "9cb04a1963c5781cc1a670dee33aa7a39df9b488ac72af8aee54bc18471306d2",
+      "content_sha256": "4f33dd7a69afbecdea0c970d90f350ebc4d7cbdec3bab596e850c4782bf2b0ce",
+      "reasoning_deltas": 276,
+      "content_deltas": 11,
+      "terminal": "response.completed",
+      "usage": {
+        "input_tokens": 63,
+        "output_tokens": 339,
+        "total_tokens": 402,
+        "input_tokens_details": {
+          "cached_tokens": 62,
+          "cache_detail": "paged+mixed_swa"
+        }
+      }
+    }
+  ]
+}

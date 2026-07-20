@@ -1,0 +1,86 @@
+{
+  "verdict": {
+    "bypass_reasoning_identical": true,
+    "bypass_content_identical": true,
+    "cache_reasoning_identical": true,
+    "cache_content_identical": true
+  },
+  "rows": [
+    {
+      "label": "G4-SPLITFIX2-BYPASS",
+      "bypass": true,
+      "elapsed": 1.6415652079995198,
+      "reasoning": "",
+      "content": "jangqq-ai/gemma-4-12B-it-qat-JANG_4M\nG4-SPLITFIX2-BYPASS-DONE",
+      "reasoning_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "content_sha256": "9d73d7cc13b96ff32874a262320c85118db7b94af82cfc17905d7f7769112385",
+      "reasoning_delta_count": 0,
+      "content_delta_count": 35,
+      "completed": true,
+      "incomplete": false,
+      "usage": {
+        "input_tokens": 1134,
+        "output_tokens": 41,
+        "total_tokens": 1175
+      }
+    },
+    {
+      "label": "G4-SPLITFIX2-BYPASS",
+      "bypass": true,
+      "elapsed": 1.5308759590006957,
+      "reasoning": "",
+      "content": "jangqq-ai/gemma-4-12B-it-qat-JANG_4M\nG4-SPLITFIX2-BYPASS-DONE",
+      "reasoning_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "content_sha256": "9d73d7cc13b96ff32874a262320c85118db7b94af82cfc17905d7f7769112385",
+      "reasoning_delta_count": 0,
+      "content_delta_count": 35,
+      "completed": true,
+      "incomplete": false,
+      "usage": {
+        "input_tokens": 1134,
+        "output_tokens": 41,
+        "total_tokens": 1175
+      }
+    },
+    {
+      "label": "G4-SPLITFIX2-CACHE",
+      "bypass": false,
+      "elapsed": 2.0431024589997833,
+      "reasoning": "",
+      "content": "jangqq-ai/gemma-4-12B-it-qat-JANG_4M\nG4-SPLITFIX2-CACHE-DONE",
+      "reasoning_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "content_sha256": "de83444ebb7ba078b7e9d8fe2f26b513cea487a2da91a3f7659d11dc889ed105",
+      "reasoning_delta_count": 0,
+      "content_delta_count": 34,
+      "completed": true,
+      "incomplete": false,
+      "usage": {
+        "input_tokens": 1132,
+        "output_tokens": 40,
+        "total_tokens": 1172
+      }
+    },
+    {
+      "label": "G4-SPLITFIX2-CACHE",
+      "bypass": false,
+      "elapsed": 1.4506739169992215,
+      "reasoning": "",
+      "content": "jangqq-ai/gemma-4-12B-it-qat-JANG_4M\nG4-SPLITFIX2-CACHE-DONE",
+      "reasoning_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "content_sha256": "de83444ebb7ba078b7e9d8fe2f26b513cea487a2da91a3f7659d11dc889ed105",
+      "reasoning_delta_count": 0,
+      "content_delta_count": 34,
+      "completed": true,
+      "incomplete": false,
+      "usage": {
+        "input_tokens": 1132,
+        "output_tokens": 40,
+        "total_tokens": 1172,
+        "input_tokens_details": {
+          "cached_tokens": 1131,
+          "cache_detail": "paged+mixed_swa"
+        }
+      }
+    }
+  ]
+}

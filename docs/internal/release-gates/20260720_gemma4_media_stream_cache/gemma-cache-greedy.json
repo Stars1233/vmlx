@@ -1,0 +1,86 @@
+{
+  "verdict": {
+    "bypass_reasoning_identical": true,
+    "bypass_content_identical": true,
+    "cache_reasoning_identical": false,
+    "cache_content_identical": true
+  },
+  "rows": [
+    {
+      "label": "G4-GREEDY-BYPASS",
+      "bypass": true,
+      "elapsed": 6.935385875000065,
+      "reasoning": "The user wants me to identify the first active model repository name from the provided screenshot.\n\n1.  **Analyze the screenshot:**\n    *   The screenshot shows a \"Session\" (세션) management interface.\n    *   There are two sections: \"Active\" (활성) and \"Inactive\" (비활성).\n    *   Under \"Active\" (활성), there is one entry.\n    *   The repository name for this entry is `jangq-ai/gemma-4-12B-it-qat-JANG_4M`.\n    *   The prompt asks for the \"exact first active model repository name\".\n\n2.  **Extract the name:**\n    *   The name is `jangq-ai/gemma-4-12B-it-qat-JANG_4M`.\n\n3.  **Format the output:**\n    *   Line 1: `jangq-ai/gemma-4-12B-it-qat-JANG_4M`\n    *   Line 2: `G4-GREEDY-BYPASS-DONE`",
+      "content": "jangq-ai/gemma-4-12B-it-qat-JANG_4M\nG4-GREEDY-BYPASS-DONE",
+      "reasoning_sha256": "0ea0c75b0fccb9ec983b4035803d0d0169c8dafa5ae0ef769ef53170e0592f6e",
+      "content_sha256": "04ef6b7a14d2ae6a2f1169893d54df934351f95f300f9f3ab2e0ea91f58b6944",
+      "reasoning_delta_count": 210,
+      "content_delta_count": 33,
+      "completed": true,
+      "incomplete": false,
+      "usage": {
+        "input_tokens": 1130,
+        "output_tokens": 281,
+        "total_tokens": 1411
+      }
+    },
+    {
+      "label": "G4-GREEDY-BYPASS",
+      "bypass": true,
+      "elapsed": 6.849249375001818,
+      "reasoning": "The user wants me to identify the first active model repository name from the provided screenshot.\n\n1.  **Analyze the screenshot:**\n    *   The screenshot shows a \"Session\" (세션) management interface.\n    *   There are two sections: \"Active\" (활성) and \"Inactive\" (비활성).\n    *   Under \"Active\" (활성), there is one entry.\n    *   The repository name for this entry is `jangq-ai/gemma-4-12B-it-qat-JANG_4M`.\n    *   The prompt asks for the \"exact first active model repository name\".\n\n2.  **Extract the name:**\n    *   The name is `jangq-ai/gemma-4-12B-it-qat-JANG_4M`.\n\n3.  **Format the output:**\n    *   Line 1: `jangq-ai/gemma-4-12B-it-qat-JANG_4M`\n    *   Line 2: `G4-GREEDY-BYPASS-DONE`",
+      "content": "jangq-ai/gemma-4-12B-it-qat-JANG_4M\nG4-GREEDY-BYPASS-DONE",
+      "reasoning_sha256": "0ea0c75b0fccb9ec983b4035803d0d0169c8dafa5ae0ef769ef53170e0592f6e",
+      "content_sha256": "04ef6b7a14d2ae6a2f1169893d54df934351f95f300f9f3ab2e0ea91f58b6944",
+      "reasoning_delta_count": 210,
+      "content_delta_count": 33,
+      "completed": true,
+      "incomplete": false,
+      "usage": {
+        "input_tokens": 1130,
+        "output_tokens": 281,
+        "total_tokens": 1411
+      }
+    },
+    {
+      "label": "G4-GREEDY-CACHE",
+      "bypass": false,
+      "elapsed": 9.661259874999814,
+      "reasoning": "The user wants me to identify the first active model repository name from the provided screenshot.\n\n1.  **Analyze the screenshot:**\n    *   The screenshot shows a \"세션\" (Session) management interface.\n    *   There are two sections: \"활성 (1)\" (Active (1)) and \"비활성 (1)\" (Inactive (1)).\n    *   Under \"활성 (1)\", there is one entry.\n    *   The entry's name is `jangq-ai/gemma-4-12B-it-qat-JANG_4M`.\n    *   The entry's status is \"실행 중\" (Running) with a green dot.\n    *   The entry's path is `/Volumes/EricsLLMDrive/jangq-ai/gemma-4-12B-it-qat-JANG_4M`.\n    *   The entry's IP is `127.0.0.1:8141` and PID is `35513`.\n\n2.  **Identify the first active model repository name:**\n    *   The first (and only) active model repository name is `jangq-ai/gemma-4-12B-it-qat-JANG_4M`.\n\n3.  **Format the output:**\n    *   Line 1: `jangq-ai/gemma-4-12B-it-qat-JANG_4M`\n    *   Line 2: `G4-GREEDY-CACHE-DONE`",
+      "content": "jangq-ai/gemma-4-12B-it-qat-JANG_4M\nG4-GREEDY-CACHE-DONE",
+      "reasoning_sha256": "e98b22f4a38340bbeea28d446a74252f165af3dfcfdd821c4fd2a95b0df83f98",
+      "content_sha256": "b82f224ef8d8471b56f3864e8a1356031b4147d038d4cf4b32ea2d9d020c8792",
+      "reasoning_delta_count": 306,
+      "content_delta_count": 32,
+      "completed": true,
+      "incomplete": false,
+      "usage": {
+        "input_tokens": 1128,
+        "output_tokens": 382,
+        "total_tokens": 1510
+      }
+    },
+    {
+      "label": "G4-GREEDY-CACHE",
+      "bypass": false,
+      "elapsed": 7.174118957998871,
+      "reasoning": "The user wants me to identify the first active model repository name from the provided screenshot.\n\n1.  **Analyze the screenshot:**\n    *   The screenshot shows a \"Session\" (세션) management interface.\n    *   There are two sections: \"Active\" (활성) and \"Inactive\" (비활성).\n    *   Under \"Active\" (활성), there is one entry.\n    *   The repository name for this entry is `jangq-ai/gemma-4-12B-it-qat-JANG_4M`.\n    *   The \"Active\" section is the first one listed.\n\n2.  **Extract the information:**\n    *   First active model repository name: `jangq-ai/gemma-4-12B-it-qat-JANG_4M`\n\n3.  **Format the output:**\n    *   Line 1: `jangq-ai/gemma-4-12B-it-qat-JANG_4M`\n    *   Line 2: `G4-GREEDY-CACHE-DONE`",
+      "content": "jangq-ai/gemma-4-12B-it-qat-JANG_4M\nG4-GREEDY-CACHE-DONE",
+      "reasoning_sha256": "e7d33e1cff060623dd4cd33f1db2d01dc69aadd6defc3ae9e5e3f718113a5c85",
+      "content_sha256": "b82f224ef8d8471b56f3864e8a1356031b4147d038d4cf4b32ea2d9d020c8792",
+      "reasoning_delta_count": 210,
+      "content_delta_count": 32,
+      "completed": true,
+      "incomplete": false,
+      "usage": {
+        "input_tokens": 1128,
+        "output_tokens": 280,
+        "total_tokens": 1408,
+        "input_tokens_details": {
+          "cached_tokens": 1127,
+          "cache_detail": "paged+mixed_swa+tq-native"
+        }
+      }
+    }
+  ]
+}

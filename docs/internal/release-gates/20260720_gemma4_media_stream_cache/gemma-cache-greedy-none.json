@@ -1,0 +1,86 @@
+{
+  "verdict": {
+    "bypass_reasoning_identical": true,
+    "bypass_content_identical": true,
+    "cache_reasoning_identical": false,
+    "cache_content_identical": true
+  },
+  "rows": [
+    {
+      "label": "G4-GREEDY-NONE-BYPASS",
+      "bypass": true,
+      "elapsed": 12.34089354200114,
+      "reasoning": "The user wants me to identify the first active model repository name from the provided screenshot.\n\n1.  **Analyze the screenshot:**\n    *   The screenshot shows a \"Session\" (세션) management interface.\n    *   There are two sections: \"Active\" (활성) and \"Inactive\" (비활성).\n    *   Under \"Active\" (활성), there is one entry.\n    *   The repository name for this entry is `jangq-ai/gemma-4-12B-it-qat-JANG_4M`.\n    *   The \"Inactive\" (비활성) section has `dealignai/LFM2.5-8B-A1B-MXFP4-CRACK`.\n\n2.  **Identify the first active model repository name:**\n    *   The first (and only) active model is `jangq-ai/gemma-4-12B-it-qat-JANG_4M`.\n\n3.  **Format the output:**\n    *   Line 1: `jangq-ai/gemma-4-12B-it-qat-JANG_4M`\n    *   Line 2: `G4-GREEDY-NONE-BYPASS-DONE`",
+      "content": "jangq-ai/gemma-4-12B-it-qat-JANG_4M\nG4-GREEDY-NONE-BYPASS-DONE",
+      "reasoning_sha256": "69e3cd03e1295e1a2189d55b33406bd4163f3f89f1c5943041b94cbd2d979141",
+      "content_sha256": "fa1e129f9a7178f78e9ce5f3ba5aa0146084124309796cebcffc7363bd1ea5bf",
+      "reasoning_delta_count": 245,
+      "content_delta_count": 35,
+      "completed": true,
+      "incomplete": false,
+      "usage": {
+        "input_tokens": 1134,
+        "output_tokens": 318,
+        "total_tokens": 1452
+      }
+    },
+    {
+      "label": "G4-GREEDY-NONE-BYPASS",
+      "bypass": true,
+      "elapsed": 12.032954458001768,
+      "reasoning": "The user wants me to identify the first active model repository name from the provided screenshot.\n\n1.  **Analyze the screenshot:**\n    *   The screenshot shows a \"Session\" (세션) management interface.\n    *   There are two sections: \"Active\" (활성) and \"Inactive\" (비활성).\n    *   Under \"Active\" (활성), there is one entry.\n    *   The repository name for this entry is `jangq-ai/gemma-4-12B-it-qat-JANG_4M`.\n    *   The \"Inactive\" (비활성) section has `dealignai/LFM2.5-8B-A1B-MXFP4-CRACK`.\n\n2.  **Identify the first active model repository name:**\n    *   The first (and only) active model is `jangq-ai/gemma-4-12B-it-qat-JANG_4M`.\n\n3.  **Format the output:**\n    *   Line 1: `jangq-ai/gemma-4-12B-it-qat-JANG_4M`\n    *   Line 2: `G4-GREEDY-NONE-BYPASS-DONE`",
+      "content": "jangq-ai/gemma-4-12B-it-qat-JANG_4M\nG4-GREEDY-NONE-BYPASS-DONE",
+      "reasoning_sha256": "69e3cd03e1295e1a2189d55b33406bd4163f3f89f1c5943041b94cbd2d979141",
+      "content_sha256": "fa1e129f9a7178f78e9ce5f3ba5aa0146084124309796cebcffc7363bd1ea5bf",
+      "reasoning_delta_count": 245,
+      "content_delta_count": 35,
+      "completed": true,
+      "incomplete": false,
+      "usage": {
+        "input_tokens": 1134,
+        "output_tokens": 318,
+        "total_tokens": 1452
+      }
+    },
+    {
+      "label": "G4-GREEDY-NONE-CACHE",
+      "bypass": false,
+      "elapsed": 13.477684292000049,
+      "reasoning": "The user wants me to identify the first active model repository name from the provided screenshot.\n\n1.  **Analyze the screenshot:**\n    *   The screenshot shows a \"세션\" (Session) management interface.\n    *   There are two sections: \"활성 (1)\" (Active (1)) and \"비활성 (1)\" (Inactive (1)).\n    *   Under \"활성 (1)\", there is one entry.\n    *   The entry's name is `jangq-ai/gemma-4-12B-it-qat-JANG_4M`.\n    *   The entry's status is \"실행 중\" (Running) with a green dot.\n    *   The entry's path is `/Volumes/EricsLLMDrive/jangq-ai/gemma-4-12B-it-qat-JANG_4M`.\n    *   The entry's IP and PID are shown.\n    *   There are buttons for \"열기\" (Open), settings, refresh, and \"종료\" (Terminate).\n\n2.  **Identify the first active model repository name:**\n    *   The first (and only) active model is `jangq-ai/gemma-4-12B-it-qat-JANG_4M`.\n\n3.  **Format the output:**\n    *   Line 1: `jangq-ai/gemma-4-12B-it-qat-JANG_4M`\n    *   Line 2: `G4-GREEDY-NONE-CACHE-DONE`",
+      "content": "jangq-ai/gemma-4-12B-it-qat-JANG_4M\nG4-GREEDY-NONE-CACHE-DONE",
+      "reasoning_sha256": "5a0635bf5b54195fbdc5bb980d5274d29a74761dccf46746e093c82a79b9fcca",
+      "content_sha256": "427560f983c4dfbfe0ecf9dcfbfc9fc7f1f50dd0ddb1097ad66fbca39998bfa5",
+      "reasoning_delta_count": 308,
+      "content_delta_count": 34,
+      "completed": true,
+      "incomplete": false,
+      "usage": {
+        "input_tokens": 1132,
+        "output_tokens": 389,
+        "total_tokens": 1521
+      }
+    },
+    {
+      "label": "G4-GREEDY-NONE-CACHE",
+      "bypass": false,
+      "elapsed": 10.345658583999466,
+      "reasoning": "The user wants me to identify the first active model repository name from the provided screenshot.\n\n1.  **Analyze the screenshot:**\n    *   The screenshot shows a \"Session\" (세션) management interface.\n    *   There are two sections: \"Active\" (활성) and \"Inactive\" (비활성).\n    *   The \"Active\" (활성) section contains one entry.\n    *   The entry in the \"Active\" section is: `jangq-ai/gemma-4-12B-it-qat-JANG_4M`.\n    *   The \"Inactive\" (비활성) section contains another entry: `dealignai/LFM2.5-8B-A1B-MXFP4-CRACK`.\n\n2.  **Identify the first active model repository name:**\n    *   The first (and only) active model repository name is `jangq-ai/gemma-4-12B-it-qat-JANG_4M`.\n\n3.  **Formulate the final response:**\n    *   Line 1: `jangq-ai/gemma-4-12B-it-qat-JANG_4M`\n    *   Line 2: `G4-GREEDY-NONE-CACHE-DONE`",
+      "content": "jangq-ai/gemma-4-12B-it-qat-JANG_4M\nG4-GREEDY-NONE-CACHE-DONE",
+      "reasoning_sha256": "87852f28bc8a99e378cd4b443a38dfe18e4a8885055d4d483ef85d9cf6c5ca6d",
+      "content_sha256": "427560f983c4dfbfe0ecf9dcfbfc9fc7f1f50dd0ddb1097ad66fbca39998bfa5",
+      "reasoning_delta_count": 254,
+      "content_delta_count": 34,
+      "completed": true,
+      "incomplete": false,
+      "usage": {
+        "input_tokens": 1132,
+        "output_tokens": 326,
+        "total_tokens": 1458,
+        "input_tokens_details": {
+          "cached_tokens": 1131,
+          "cache_detail": "paged+mixed_swa"
+        }
+      }
+    }
+  ]
+}
