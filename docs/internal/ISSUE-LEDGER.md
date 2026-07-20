@@ -3208,3 +3208,18 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   PID 70292 remained unchanged.
 - Evidence:
   `docs/internal/release-gates/20260719_stale_path_recovery_live/`.
+
+## 2026-07-19 - Laguna soft-sleep/wake UI soak
+
+- Status: `VERIFIED-LIVE_SCOPED` for three consecutive soft-sleep/Wake cycles;
+  deep sleep, cross-model swap soak, and signed-app repetition remain open.
+- The real Electron moon and Wake controls drove all six transitions. Every
+  wake reached DB `running` plus health `healthy/model_loaded=true`; every
+  sleep returned DB to `standby/soft` plus health
+  `standby_soft/model_loaded=true`.
+- PID 70292 was unchanged throughout, and the final process list contained
+  exactly one engine. Logs preserve three engine/app Wake pairs and three
+  soft-sleep pairs. No inference ran, so this row makes no streaming or cache
+  reuse claim.
+- Evidence:
+  `docs/internal/release-gates/20260719_laguna_soft_sleep_soak/`.

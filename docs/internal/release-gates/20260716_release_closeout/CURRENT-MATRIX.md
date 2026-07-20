@@ -1369,3 +1369,9 @@ the cache restore row is independently live-proven.
 | Gate | Status | Current source + live evidence | Remaining boundary |
 |---|---|---|---|
 | Missing local model path | PASS-LIVE scoped dev Electron | Current source classifies filesystem truth without mutating SQLite and renders a missing-path card with no Start action. A disposable absent-path session visibly appeared under `MISSING MODEL (1)` with Repoint/Remove only. The real native-chooser Repoint moved it to a valid disposable path and ordinary INACTIVE Start/Delete state; the real Remove/Delete actions cleaned both fixture runs. Active Laguna PID 70292 and health remained unchanged. Focused tests pass 8/8 and typecheck passes. | Repeat in the signed app; the disposable config-only target was intentionally never started. Evidence: `../20260719_stale_path_recovery_live/`. |
+
+## 2026-07-19 Laguna soft-sleep/wake lifecycle soak
+
+| Gate | Status | Current source + live evidence | Remaining boundary |
+|---|---|---|---|
+| Same-process soft sleep/Wake | PASS-LIVE scoped 3-cycle soak | The real Electron moon and Wake controls completed three consecutive cycles on Laguna PID 70292. Each wake produced DB `running` and health `healthy/model_loaded=true`; each sleep produced DB `standby/soft` and health `standby_soft/model_loaded=true`. The final process list had exactly one engine, and the log retained all six transitions. | Deep sleep/model unload, repeated cross-model one-model swaps, and signed-app repeat remain open. Evidence: `../20260719_laguna_soft_sleep_soak/`. |
