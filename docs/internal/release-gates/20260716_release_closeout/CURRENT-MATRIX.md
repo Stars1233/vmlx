@@ -1363,3 +1363,9 @@ LFM native-TQ addendum evidence:
 `../20260719_lfm_native_tq4/`. The 64-token post-restart Responses probe is
 `PARTIAL` for strict output because it correctly ended `response.incomplete`;
 the cache restore row is independently live-proven.
+
+## 2026-07-19 stale local model-path recovery
+
+| Gate | Status | Current source + live evidence | Remaining boundary |
+|---|---|---|---|
+| Missing local model path | PASS-LIVE scoped removal / PARTIAL repoint chooser | Current source classifies filesystem truth without mutating SQLite and renders a missing-path card with no Start action. A disposable absent-path session visibly appeared under `MISSING MODEL (1)` with Repoint/Remove only. Clicking the real Remove action deleted it from UI and SQLite while active Laguna PID 70292 and health remained unchanged. Focused tests pass 8/8 and typecheck passes. | Exercise one successful macOS native-directory-chooser repoint with history rebind and repeat in the signed app. Evidence: `../20260719_stale_path_recovery_live/`. |

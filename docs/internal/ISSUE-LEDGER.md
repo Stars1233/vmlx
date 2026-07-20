@@ -3186,3 +3186,20 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - No claim is generalized to an untested loader class. In particular, Mistral
   MXFP4 remains excluded by user directive, and Mistral JANGTQ2 remains on its
   separately documented blocked runtime row.
+
+## 2026-07-19 - stale local model-path recovery UI
+
+- Status: `VERIFIED-LIVE_SCOPED` for current filesystem classification, visible
+  no-Start recovery actions, and explicit removal; successful native-chooser
+  repoint remains `PARTIAL`.
+- A disposable missing-path session appeared in the real Electron dashboard
+  under `MISSING MODEL (1)` with an unavailable-directory warning, usable-twin
+  hint, and only `Repoint model path` / `Remove session` actions. The rendered
+  Remove action deleted the fixture from UI and SQLite without stopping or
+  altering active Laguna PID 70292.
+- Source ownership is explicit classification without silent mutation, bundle
+  validation, identity-change confirmation, duplicate/running-session guards,
+  and transactional chat rebinding. Focused panel validation passes 8/8 plus
+  typecheck.
+- Evidence:
+  `docs/internal/release-gates/20260719_stale_path_recovery_live/`.
