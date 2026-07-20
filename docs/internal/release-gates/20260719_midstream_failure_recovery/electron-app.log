@@ -1,0 +1,126 @@
+
+> vmlx@1.6.12 dev
+> electron-vite dev -- --user-data-dir=/var/folders/8x/q1k_20mj5w3bzpx5c_psg3800000gn/T/vmlx-midstream-userdata-BwGbL8 --remote-debugging-port=63886
+
+vite v5.4.21 building SSR bundle for development...
+transforming...
+✓ 91 modules transformed.
+[plugin:vite:reporter] [plugin vite:reporter]
+(!) /Users/eric/mlx/vllm-mlx-live-electron-gates/panel/src/main/sessions.ts is dynamically imported by /Users/eric/mlx/vllm-mlx-live-electron-gates/panel/src/main/ipc/models.ts but also statically imported by /Users/eric/mlx/vllm-mlx-live-electron-gates/panel/src/main/api-gateway.ts, /Users/eric/mlx/vllm-mlx-live-electron-gates/panel/src/main/index.ts, /Users/eric/mlx/vllm-mlx-live-electron-gates/panel/src/main/ipc/benchmark.ts, /Users/eric/mlx/vllm-mlx-live-electron-gates/panel/src/main/ipc/chat.ts, /Users/eric/mlx/vllm-mlx-live-electron-gates/panel/src/main/ipc/developer.ts, /Users/eric/mlx/vllm-mlx-live-electron-gates/panel/src/main/ipc/distributed.ts, /Users/eric/mlx/vllm-mlx-live-electron-gates/panel/src/main/ipc/image.ts, /Users/eric/mlx/vllm-mlx-live-electron-gates/panel/src/main/ipc/performance.ts, /Users/eric/mlx/vllm-mlx-live-electron-gates/panel/src/main/ipc/sessions.ts, /Users/eric/mlx/vllm-mlx-live-electron-gates/panel/src/main/ipc/utils.ts, /Users/eric/mlx/vllm-mlx-live-electron-gates/panel/src/main/tray.ts, dynamic import will not move module into another chunk.
+
+rendering chunks...
+dist/main/index.mjs  1,027.80 kB
+✓ built in 366ms
+
+build the electron main process successfully
+
+-----
+
+vite v5.4.21 building SSR bundle for development...
+transforming...
+✓ 1 modules transformed.
+rendering chunks...
+dist/preload/index.js  23.34 kB
+✓ built in 9ms
+
+build the electron preload files successfully
+
+-----
+
+dev server running for the electron renderer process at:
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+
+start electron app...
+
+
+DevTools listening on ws://127.0.0.1:63886/devtools/browser/09a0f32d-f432-4c07-aac1-cf24d0a9ee0a
+[MODE] Auto-detected: expert (128GB RAM)
+[STARTUP] Restoring 0 App Sandbox bookmarks
+[UPDATE] Skipping update check because VMLX_SKIP_UPDATE_CHECK=1
+[STARTUP] No existing vmlx-engine processes found
+[MemoryEnforcer] Started (max 120 GB, poll 5000ms, TTL 30m)
+[gateway] Port 8080 in use, trying 8081
+[gateway] Port 8081 in use, trying 8082
+[gateway] Listening on 127.0.0.1:8082
+[IMAGE] Migrated existing model: schnell q=8 → /Users/eric/.mlxstudio/models/image/FLUX.1-schnell-mflux-8bit
+[IMAGE] Migrated existing model: z-image-turbo q=8 → /Users/eric/.mlxstudio/models/image/Z-Image-Turbo-mflux-8bit
+[IMAGE] Migration complete: registered 2 existing image model(s) in DB
+Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[Engine Manager] Checking installation...
+[Engine Manager] Found at: /Users/eric/.local/bin/vmlx-engine
+[Engine Manager] Checking installation...
+[Engine Manager] Found at: /Users/eric/.local/bin/vmlx-engine
+[Engine Manager] Version: 1.5.62
+[Engine Manager] Version: 1.5.62
+[SESSION] Connecting to remote: http://127.0.0.1:63885/v1/models
+[SESSION] Remote connected: http://127.0.0.1:63885/v1/models (attempt 1)
+[SLEEP] touchSession 3cc5469a — idle timer reset
+[CHAT] Endpoint resolution: isRemote=true, rawBaseUrl=http://127.0.0.1:63885, baseUrl=http://127.0.0.1:63885, session=3cc5469a-5c06-4d8f-b15c-eeebd467a689, type=remote
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:63885/v1/responses (wire: responses, remote: true)
+[CHAT] Responses API error event: Stream generation failed: RESP-MIDSTREAM-PROBE-FAILURE
+[CHAT] Responses API error event: RESP-MIDSTREAM-PROBE-FAILURE
+[CHAT] Error caught: {
+  message: 'Server error: RESP-MIDSTREAM-PROBE-FAILURE',
+  name: 'ChatStreamServerEventError',
+  code: undefined,
+  type: 'ChatStreamServerEventError',
+  stack: 'ChatStreamServerEventError: Server error: RESP-MIDSTREAM-PROBE-FAILURE\n' +
+    '    at processLine (file:///Users/eric/mlx/vllm-mlx-live-electron-gates/panel/dist/main/index.mjs:13168:44)\n' +
+    '    at streamSSE (file:///Users/eric/mlx/vllm-mlx-live-electron-gates/panel/dist/main/index.mjs:13449:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n' +
+    '    at async file:///Users/eric/mlx/vllm-mlx-live-electron-gates/panel/dist/main/index.mjs:13497:9',
+  abortSignal: false,
+  timedOut: false,
+  fullContentLen: 20,
+  readerAcquired: true
+}
+Error occurred in handler for 'chat:sendMessage': Error: Failed to send message: Server error: RESP-MIDSTREAM-PROBE-FAILURE
+    at file:///Users/eric/mlx/vllm-mlx-live-electron-gates/panel/dist/main/index.mjs:14449:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async WebContents.<anonymous> (node:electron/js2c/browser_init:2:77963)
+[CHAT] Endpoint resolution: isRemote=true, rawBaseUrl=http://127.0.0.1:63885, baseUrl=http://127.0.0.1:63885, session=3cc5469a-5c06-4d8f-b15c-eeebd467a689, type=remote
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:63885/v1/responses (wire: responses, remote: true)
+[CHAT] Stream ended — content: 16 chars, reasoning: 0 chars, tool calls: 0, buffered: false
+[CHAT] Response complete: 2 tokens in 0.5s (4.0 t/s, live=4.0 t/s, TTFT: 0.00s, pp: 6 tokens, 3000.0 pp/s, usage=server)
+[CHAT] Inherited coding/tool settings from last chat 81fcc8ce; generation/reasoning defaults stayed model-derived
+[CHAT] Endpoint resolution: isRemote=true, rawBaseUrl=http://127.0.0.1:63885, baseUrl=http://127.0.0.1:63885, session=3cc5469a-5c06-4d8f-b15c-eeebd467a689, type=remote
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:63885/v1/chat/completions (wire: completions, remote: true)
+[CHAT] Chat completions error chunk: Stream generation failed: RuntimeError: CHAT-MIDSTREAM-PROBE-FAILURE
+[CHAT] Error caught: {
+  message: 'Server error: Stream generation failed: RuntimeError: CHAT-MIDSTREAM-PROBE-FAILURE',
+  name: 'ChatStreamServerEventError',
+  code: undefined,
+  type: 'ChatStreamServerEventError',
+  stack: 'ChatStreamServerEventError: Server error: Stream generation failed: RuntimeError: CHAT-MIDSTREAM-PROBE-FAILURE\n' +
+    '    at processLine (file:///Users/eric/mlx/vllm-mlx-live-electron-gates/panel/dist/main/index.mjs:13257:44)\n' +
+    '    at streamSSE (file:///Users/eric/mlx/vllm-mlx-live-electron-gates/panel/dist/main/index.mjs:13449:15)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n' +
+    '    at async file:///Users/eric/mlx/vllm-mlx-live-electron-gates/panel/dist/main/index.mjs:13497:9',
+  abortSignal: false,
+  timedOut: false,
+  fullContentLen: 20,
+  readerAcquired: true
+}
+Error occurred in handler for 'chat:sendMessage': Error: Failed to send message: Server error: Stream generation failed: RuntimeError: CHAT-MIDSTREAM-PROBE-FAILURE
+    at file:///Users/eric/mlx/vllm-mlx-live-electron-gates/panel/dist/main/index.mjs:14449:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async WebContents.<anonymous> (node:electron/js2c/browser_init:2:77963)
+[CHAT] Endpoint resolution: isRemote=true, rawBaseUrl=http://127.0.0.1:63885, baseUrl=http://127.0.0.1:63885, session=3cc5469a-5c06-4d8f-b15c-eeebd467a689, type=remote
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:63885/v1/chat/completions (wire: completions, remote: true)
+[CHAT] Stream ended — content: 16 chars, reasoning: 0 chars, tool calls: 0, buffered: false
+[CHAT] Response complete: 2 tokens in 0.5s (4.0 t/s, live=4.0 t/s, TTFT: 0.00s, pp: 6 tokens, 3000.0 pp/s, usage=server)
+[MemoryEnforcer] Stopped
+[gateway] Stopped
+[QUIT] All vmlx-engine processes stopped
+[QUIT] Database closed
+[88491:0720/001927.120371:ERROR:command_buffer_proxy_impl.cc(319)] GPU state invalid after WaitForGetOffsetInRange.
+[88491:0720/001927.137829:ERROR:gpu_process_host.cc(993)] GPU process exited unexpectedly: exit_code=15
+[88491:0720/001927.139646:ERROR:network_service_instance_impl.cc(601)] Network service crashed, restarting service.

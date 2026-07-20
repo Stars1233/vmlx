@@ -1491,3 +1491,19 @@
 - Focused contracts passed 49 with one broad-selection skip. Preserved raw
   JSON, health, driver, DOM trace, and visually inspected screenshots under
   `docs/internal/release-gates/20260719_zaya_typed_cca_terminal_l2/`.
+
+## 2026-07-19 - safe injected stream failure closure
+
+- Traced the global mid-stream exception contract end to end. Python already
+  emitted partial text then failed terminal/usage; Electron consumed only the
+  first error and cancelled early.
+- Added shared nested-error extraction and deferred error propagation in the
+  panel, plus Chat/Responses server contracts and a production-stream-function
+  live harness.
+- Ran literal curl-N failure/recovery pairs and real Electron visible textarea
+  turns on both protocols. Visually inspected progressive partial, interrupted
+  terminal, and immediate recovery screenshots. DB metrics and request-history
+  assertions passed.
+- Full validation passed (Python 6,185; panel 2,333; typecheck; Electron build).
+  ESLint is N/A because no config exists; the exact tool output is retained.
+- Committed/pushed source as `5f05ad72a`; public v1.6.12 is unchanged.

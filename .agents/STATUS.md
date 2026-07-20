@@ -7542,3 +7542,26 @@ Status: `VERIFIED-LIVE_SCOPED`; overall release remains
   failure soak, eviction, and alternate variants remain open.
 - Evidence:
   `docs/internal/release-gates/20260719_zaya_typed_cca_terminal_l2/`.
+
+## 2026-07-19 - post-release mid-stream failure terminal/usage recovery
+
+Status: `FIXED_SOURCE_VERIFIED_LIVE_SCOPED` at pushed commit `5f05ad72a`.
+Public v1.6.12 remains sealed and does not contain this post-release change.
+
+- Shared root cause: Electron threw on the first Chat/Responses server error
+  event, cancelling the SSE reader before authoritative partial terminal usage.
+- The panel now defers ordinary server errors until terminal consumption,
+  recognizes `response.failed`, handles its nested error, and preserves the
+  immediate expected-disconnect path.
+- Literal curl-N probes against the production Python stream generators and
+  the real Electron dev app both passed progressive failure and immediate
+  recovery for Chat Completions and Responses. Persisted failed rows retained
+  exact visible bytes plus 2 output / 5 prompt tokens; history stripped the UI
+  interruption marker.
+- Complete validation: 6,185 Python passed / 95 skipped / 92 deselected with
+  the clean release JANG source; 2,333 panel passed / 3 skipped; typecheck and
+  Electron production build passed.
+- Evidence:
+  `docs/internal/release-gates/20260719_midstream_failure_recovery/`.
+- Remaining boundary: gateway network-loss injection, Anthropic/Ollama injected
+  failures, signed-app repetition, and unrelated model/cache/media/stress rows.

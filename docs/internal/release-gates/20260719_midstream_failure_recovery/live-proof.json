@@ -1,0 +1,67 @@
+{
+  "verdict": "PASS",
+  "sourceHead": "5f05ad72a90192f5d0d3e6b1734551d8495a380b",
+  "health": {
+    "status": "healthy",
+    "model_loaded": true,
+    "model_name": "midstream-live-proof",
+    "engine_type": "live-proof-production-streamers",
+    "aborted_requests": 0
+  },
+  "serverPort": 63885,
+  "cdpPort": 63886,
+  "cdpNote": "Used isolated local CDP port because 9335 is occupied by an existing SSH tunnel.",
+  "remoteSessionId": "3cc5469a-5c06-4d8f-b15c-eeebd467a689",
+  "responsesChatId": "81fcc8ce-c284-43b3-9f59-6ac836057358",
+  "chatCompletionChatId": "baa62522-c230-4d84-abe6-2807ec7767a6",
+  "assertions": {
+    "responsesPartialContent": "RESP-PARTIAL-VISIBLE\n\n[Generation interrupted]",
+    "responsesPartialMetrics": {
+      "tokenCount": 2,
+      "promptTokens": 5,
+      "tokensPerSecond": "5.7",
+      "ppSpeed": "1666.7",
+      "ttft": "0.00",
+      "totalTime": "1.2"
+    },
+    "chatPartialContent": "CHAT-PARTIAL-VISIBLE\n\n[Generation interrupted]",
+    "chatPartialMetrics": {
+      "tokenCount": 2,
+      "promptTokens": 5,
+      "tokensPerSecond": "5.7",
+      "ppSpeed": "2500.0",
+      "ttft": "0.00",
+      "totalTime": "1.2"
+    },
+    "responsesRecoveryContent": "RESP-RECOVERY-OK",
+    "chatRecoveryContent": "CHAT-RECOVERY-OK"
+  },
+  "historyReplay": {
+    "interruptionMarkerStripped": true,
+    "safePartialPrefixReplayed": true
+  },
+  "screenshots": {
+    "responseFailShots": {
+      "partialScreenshot": "/Users/eric/mlx/vllm-mlx-live-electron-gates/docs/internal/release-gates/20260719_midstream_failure_recovery/electron-responses-fail-partial.png",
+      "terminalScreenshot": "/Users/eric/mlx/vllm-mlx-live-electron-gates/docs/internal/release-gates/20260719_midstream_failure_recovery/electron-responses-fail-terminal.png"
+    },
+    "responseRecoverShots": {
+      "partialScreenshot": "/Users/eric/mlx/vllm-mlx-live-electron-gates/docs/internal/release-gates/20260719_midstream_failure_recovery/electron-responses-recover-partial.png",
+      "terminalScreenshot": "/Users/eric/mlx/vllm-mlx-live-electron-gates/docs/internal/release-gates/20260719_midstream_failure_recovery/electron-responses-recover-terminal.png"
+    },
+    "chatFailShots": {
+      "partialScreenshot": "/Users/eric/mlx/vllm-mlx-live-electron-gates/docs/internal/release-gates/20260719_midstream_failure_recovery/electron-chat-fail-partial.png",
+      "terminalScreenshot": "/Users/eric/mlx/vllm-mlx-live-electron-gates/docs/internal/release-gates/20260719_midstream_failure_recovery/electron-chat-fail-terminal.png"
+    },
+    "chatRecoverShots": {
+      "partialScreenshot": "/Users/eric/mlx/vllm-mlx-live-electron-gates/docs/internal/release-gates/20260719_midstream_failure_recovery/electron-chat-recover-partial.png",
+      "terminalScreenshot": "/Users/eric/mlx/vllm-mlx-live-electron-gates/docs/internal/release-gates/20260719_midstream_failure_recovery/electron-chat-recover-terminal.png"
+    }
+  },
+  "rawSse": [
+    "responsesFail",
+    "responsesRecover",
+    "chatFail",
+    "chatRecover"
+  ]
+}

@@ -1,0 +1,72 @@
+INFO:     Started server process [88419]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:63885 (Press CTRL+C to quit)
+INFO:     127.0.0.1:63902 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63903 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63906 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63907 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63908 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+WARNING:vmlx_engine.model_config_registry:Could not load config.json for midstream-live-proof to check model_type: [Errno 2] No such file or directory: 'midstream-live-proof/config.json'
+ERROR:vmlx_engine.server:Stream generator error: RESP-MIDSTREAM-PROBE-FAILURE
+ERROR:vmlx_engine.server:Stream error for resp_94f1b3f5f768: RESP-MIDSTREAM-PROBE-FAILURE
+Traceback (most recent call last):
+  File "/Users/eric/mlx/vllm-mlx-live-electron-gates/vmlx_engine/server.py", line 19834, in stream_responses_api
+    async for output in _stream_with_keepalive(
+    ...<415 lines>...
+            )
+  File "/Users/eric/mlx/vllm-mlx-live-electron-gates/vmlx_engine/server.py", line 17473, in _stream_with_keepalive
+    yield pending.result()
+          ~~~~~~~~~~~~~~^^
+  File "/Users/eric/mlx/vllm-mlx-live-electron-gates/tests/cross_matrix/live_midstream_failure_server.py", line 84, in stream_chat
+    raise RuntimeError(f"{prefix}MIDSTREAM-PROBE-FAILURE")
+RuntimeError: RESP-MIDSTREAM-PROBE-FAILURE
+ERROR:vmlx_engine.server:Stream generator error: CHAT-MIDSTREAM-PROBE-FAILURE
+ERROR:vmlx_engine.server:Stream error for chatcmpl-77413ecf: CHAT-MIDSTREAM-PROBE-FAILURE
+Traceback (most recent call last):
+  File "/Users/eric/mlx/vllm-mlx-live-electron-gates/vmlx_engine/server.py", line 18023, in stream_chat_completion
+    async for output in _stream_with_keepalive(
+    ...<539 lines>...
+            continue
+  File "/Users/eric/mlx/vllm-mlx-live-electron-gates/vmlx_engine/server.py", line 17473, in _stream_with_keepalive
+    yield pending.result()
+          ~~~~~~~~~~~~~~^^
+  File "/Users/eric/mlx/vllm-mlx-live-electron-gates/tests/cross_matrix/live_midstream_failure_server.py", line 84, in stream_chat
+    raise RuntimeError(f"{prefix}MIDSTREAM-PROBE-FAILURE")
+RuntimeError: CHAT-MIDSTREAM-PROBE-FAILURE
+INFO:     127.0.0.1:63935 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63936 - "POST /v1/responses HTTP/1.1" 200 OK
+ERROR:vmlx_engine.server:Stream generator error: RESP-MIDSTREAM-PROBE-FAILURE
+ERROR:vmlx_engine.server:Stream error for resp_5573775e6a4a: RESP-MIDSTREAM-PROBE-FAILURE
+Traceback (most recent call last):
+  File "/Users/eric/mlx/vllm-mlx-live-electron-gates/vmlx_engine/server.py", line 19834, in stream_responses_api
+    async for output in _stream_with_keepalive(
+    ...<415 lines>...
+            )
+  File "/Users/eric/mlx/vllm-mlx-live-electron-gates/vmlx_engine/server.py", line 17473, in _stream_with_keepalive
+    yield pending.result()
+          ~~~~~~~~~~~~~~^^
+  File "/Users/eric/mlx/vllm-mlx-live-electron-gates/tests/cross_matrix/live_midstream_failure_server.py", line 84, in stream_chat
+    raise RuntimeError(f"{prefix}MIDSTREAM-PROBE-FAILURE")
+RuntimeError: RESP-MIDSTREAM-PROBE-FAILURE
+INFO:     127.0.0.1:63937 - "POST /v1/responses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63939 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63935 - "GET /v1/models HTTP/1.1" 200 OK
+ERROR:vmlx_engine.server:Stream generator error: CHAT-MIDSTREAM-PROBE-FAILURE
+ERROR:vmlx_engine.server:Stream error for chatcmpl-fc50e61b: CHAT-MIDSTREAM-PROBE-FAILURE
+Traceback (most recent call last):
+  File "/Users/eric/mlx/vllm-mlx-live-electron-gates/vmlx_engine/server.py", line 18023, in stream_chat_completion
+    async for output in _stream_with_keepalive(
+    ...<539 lines>...
+            continue
+  File "/Users/eric/mlx/vllm-mlx-live-electron-gates/vmlx_engine/server.py", line 17473, in _stream_with_keepalive
+    yield pending.result()
+          ~~~~~~~~~~~~~~^^
+  File "/Users/eric/mlx/vllm-mlx-live-electron-gates/tests/cross_matrix/live_midstream_failure_server.py", line 84, in stream_chat
+    raise RuntimeError(f"{prefix}MIDSTREAM-PROBE-FAILURE")
+RuntimeError: CHAT-MIDSTREAM-PROBE-FAILURE
+INFO:     127.0.0.1:63940 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [88419]

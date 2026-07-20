@@ -3374,3 +3374,30 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   openPangu 512K work, DSV4 controlled reference A/B, and the broader gateway/
   swap soak. These stay `PARTIAL`/`OPEN`; release packaging does not promote
   them.
+
+## 2026-07-19 - post-release mid-stream engine-failure recovery
+
+- Status: `FIXED_SOURCE_VERIFIED_LIVE_SCOPED` on pushed source
+  `5f05ad72a`; public v1.6.12 remains sealed and does not contain this
+  post-release fix.
+- Root cause was shared Electron SSE ownership, not a model family. Chat and
+  Responses already emitted progressive partial text and authoritative failed
+  terminals/usage, but `panel/src/main/ipc/chat.ts` threw on the first error
+  event and cancelled the reader before terminal usage arrived.
+- The panel now defers ordinary server errors until the stream terminal,
+  recognizes `response.failed`, extracts nested failed-response errors, and
+  preserves immediate handling for expected backend disconnects.
+- Literal curl-N production-stream-function probes passed Chat and Responses
+  failure/recovery ordering. The real Electron dev app visibly painted
+  `RESP-PARTIAL-` / `CHAT-PARTIAL-` before failure, persisted exact partial
+  content with 2 output and 5 prompt tokens, showed the failure, and completed
+  immediate same-chat recoveries exactly. Recovery history retained the safe
+  partial prefix but stripped the UI-only interruption marker.
+- Complete validation: 6,185 Python passed / 95 skipped / 92 deselected using
+  the released clean JANG 2.5.31 source; 2,333 panel passed / 3 skipped;
+  typecheck and Electron main/preload/renderer production build passed.
+- This closes safe injected engine failure for dev Electron plus raw
+  Chat/Responses. Gateway network-loss injection, Anthropic/Ollama injected
+  failures, signed-app repetition, and unrelated family/stress rows remain
+  open. Evidence:
+  `docs/internal/release-gates/20260719_midstream_failure_recovery/`.

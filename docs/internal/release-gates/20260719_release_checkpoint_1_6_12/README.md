@@ -274,3 +274,11 @@ Do not publish if any of these is true:
 - GitHub releases/assets: public; exact URLs and hashes above
 - Feed/PyPI/Homebrew public truth: public 1.6.12; exact commits/hashes above
 - Deferred rows preserved: `YES — see above and master matrix`
+
+## Post-release follow-up index
+
+The v1.6.12 artifacts and tag remain immutable. After publication, source
+commit `5f05ad72a` closed the dev-Electron/raw-Chat/raw-Responses safe injected
+mid-stream failure row with current committed-source live evidence. It is not
+part of 1.6.12 and requires a future release checkpoint to ship. Evidence:
+`../20260719_midstream_failure_recovery/README.md`.

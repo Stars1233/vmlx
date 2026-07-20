@@ -1,12 +1,39 @@
-# vMLX 1.6.11 release closeout matrix — 2026-07-18
+# vMLX 1.6.12 release checkpoint and post-release matrix — 2026-07-19
 
-Status: `PUBLIC_1_6_11_RELEASED_CURRENT_HEAD_PARTIAL_NO_1_6_12`.
+Status: `PUBLIC_1_6_12_RELEASED_POST_RELEASE_HEAD_PARTIAL`.
 
 This is the current additive closeout view over `docs/internal/ISSUE-LEDGER.md`,
 `.agents/STATUS.md`, the July 15–16 live proof directories, the shared wiki
 production gate, and the current branch. Older contradictory rows remain in
 their original ledgers for provenance; the newest source-plus-live row wins and
 superseded conclusions are called out here.
+
+### 2026-07-19 post-release mid-stream failure/recovery override
+
+- Pushed source `5f05ad72a` closes the shared safe injected engine-failure
+  boundary for raw Chat Completions, raw Responses, and the real Electron dev
+  app. The public v1.6.12 artifacts remain sealed and do not include this
+  post-release change.
+- Both production Python stream generators already emitted progressive text
+  plus terminal error/usage truth. Electron cancelled the reader at the first
+  error event, before Chat's usage chunk or Responses' `response.failed`
+  terminal. The client now defers the ordinary server error until the terminal,
+  consumes authoritative partial usage, recognizes nested failed-response
+  errors, and retains immediate expected-disconnect handling.
+- Literal curl-N probes proved error/terminal/usage ordering and clean immediate
+  recovery on both APIs. Current committed-source Electron frames visibly show
+  partial text before failure, exact interrupted persistence with 2 output / 5
+  prompt tokens, error UI, and exact same-chat recovery on both protocols.
+  Outbound recovery history keeps the safe partial prefix and strips the
+  UI-only interruption marker.
+- Full current validation is 6,185 Python passed / 95 skipped / 92 deselected,
+  2,333 panel passed / 3 skipped, typecheck PASS, and Electron production build
+  PASS. Evidence:
+  `docs/internal/release-gates/20260719_midstream_failure_recovery/`.
+- This supersedes only the older `safe live mid-stream exception injection`
+  OPEN wording. Gateway network-loss injection, Anthropic/Ollama injected
+  failures, signed-app repetition, and other model/parser/stress rows remain
+  `PARTIAL`/`OPEN`.
 
 ### 2026-07-19 MiniMax M2.7 JANGTQ hierarchy/protocol override
 
