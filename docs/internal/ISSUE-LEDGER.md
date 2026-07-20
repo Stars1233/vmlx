@@ -3332,11 +3332,10 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - Evidence:
   `docs/internal/release-gates/20260719_gateway_disconnect_recovery/`.
 
-## 2026-07-19 - vMLX 1.6.12 signed release checkpoint
+## 2026-07-19 - vMLX 1.6.12 signed public release checkpoint
 
-- Status: `RELEASE-CANDIDATE VERIFIED-LIVE`; public publication is the only
-  remaining action at this ledger revision. The checkpoint does not close the
-  deferred family/stress rows below.
+- Status: `PUBLIC-RELEASED VERIFIED-LIVE` for this exact checkpoint. The
+  checkpoint does not close the deferred family/stress rows below.
 - Runtime/source checkpoint:
   `6de1096eca0ea2d5516ad64d6e79da98f3ae20a2`.
 - Complete validation on that source: 6,186 Python tests passed / 185 skipped;
@@ -3360,6 +3359,15 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   `81b9205a722282cc1eec75713c18dec3efc34ed76e3bcaf6587147e0ce372c49`.
 - Canonical record:
   `docs/internal/release-gates/20260719_release_checkpoint_1_6_12/README.md`.
+- Public source and DMG releases are
+  `https://github.com/jjang-ai/vmlx/releases/tag/v1.6.12` and
+  `https://github.com/jjang-ai/mlxstudio/releases/tag/v1.6.12`. PyPI,
+  Homebrew, both GitHub updater manifests, and the `mlx.studio` edge feed all
+  publicly report 1.6.12 with their recorded hashes.
+- The standard GitHub PyPI workflow still needs its trusted-publisher mapping
+  repaired (`invalid-publisher`); this release used the existing authenticated
+  publisher credential on the trusted live-model Mac after building/checking
+  the exact tagged artifacts.
 - Explicitly retained after publication: broad signed-app family repetition,
   remaining parser-family tool rows, safe injected mid-stream failure, long
   stochastic/latency/media soaks, remaining accessibility/modal breadth,

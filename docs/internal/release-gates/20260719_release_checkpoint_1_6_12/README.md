@@ -1,6 +1,6 @@
 # vMLX 1.6.12 release checkpoint — 2026-07-19
 
-Status: **RELEASE-CANDIDATE GATES PASSED — PUBLICATION IN PROGRESS**
+Status: **PUBLIC CHECKPOINT RELEASED — BROADER DEFERRED ROWS REMAIN PARTIAL**
 
 This is the canonical checkpoint for the requested full public release. It
 records exactly what is complete, what is under current validation, what must
@@ -178,13 +178,39 @@ from the Git index while locally regenerated copies remain on disk under the
 existing `build/` ignore rule. This prevents a clean release checkout from
 mistaking historical proof output for current packaged-runtime evidence.
 
-## Release-critical work remaining at this document revision
+## Public surface verification
 
-Only public metadata/integration remains: commit and push this exact manifest,
-fast-forward the authorized public source branch, create/push tag `v1.6.12`,
-upload both DMGs and blockmaps, publish PyPI/Homebrew/update-feed metadata, and
-verify the public versions, URLs, asset sizes, and hashes. No packaging or live
-runtime gate remains open for the checkpoint artifacts.
+- Source release:
+  `https://github.com/jjang-ai/vmlx/releases/tag/v1.6.12`; annotated tag target
+  `15da63f6d5d3323ca09c1c7cb1ab99251a2163d6`.
+- DMG release:
+  `https://github.com/jjang-ai/mlxstudio/releases/tag/v1.6.12`; updater-repo
+  tag target `4221cc58a82443567778db3ef1c60fd2486b1cba`.
+- GitHub reports all four assets uploaded with the exact local sizes and
+  SHA-256 digests. Blockmap SHA-256 values are
+  `201988a4d54b454cf6513805e044442d481995dd09cf82f2ef8f14cca5dc9639`
+  (Sequoia) and
+  `8395cff9765f2e5a210d480b51fa360ae02011719e51cf9950e1f11b7aa54a0a`
+  (Tahoe).
+- PyPI `vmlx==1.6.12` is public. Wheel: 1,698,741 bytes, SHA-256
+  `bd225af3b929173976c7e772bb96ce01542b723df26bb331aee23d08838ebc20`.
+  Sdist: 2,698,733 bytes, SHA-256
+  `a7b76485a28d77be946a887c3d402b0d3244af073ad6e745f3c273e759c82d9f`.
+- Homebrew commit `1f9410e` publishes cask version `1.6.12` with the exact
+  Sequoia hash. `brew style Casks/mlxstudio.rb` inspected one file with no
+  offenses.
+- Both `vmlx/main/latest.json` and `mlxstudio/main/latest.json` serve 1.6.12
+  with the exact Sequoia/Tahoe hashes.
+- `https://mlx.studio/update/latest.json` was deployed to the actual origin
+  with a timestamped 1.6.11 backup and publicly serves 1.6.12 with the same
+  hashes.
+- The repository PyPI workflow run
+  `https://github.com/jjang-ai/vmlx/actions/runs/29722123933` built and checked
+  the package but failed OIDC with `invalid-publisher` because PyPI lacks a
+  publisher matching the current GitHub claims. The exact checked artifacts
+  were then published with the existing authenticated `.pypirc` on the trusted
+  live-model Mac. Repairing the trusted-publisher configuration remains a
+  post-release operational item; it did not change the published artifacts.
 
 ## Explicitly deferred after this release checkpoint
 
@@ -229,7 +255,8 @@ Do not publish if any of these is true:
 ## Final release record
 
 - Runtime/source checkpoint: `6de1096eca0ea2d5516ad64d6e79da98f3ae20a2`
-- Version/tag: `1.6.12` / `v1.6.12` (publication pending)
+- Version/tag: `1.6.12` / `v1.6.12`; tag target
+  `15da63f6d5d3323ca09c1c7cb1ab99251a2163d6`
 - Python suite: `6,186 passed, 185 skipped`
 - Panel suite: `2,332 passed, 3 skipped`
 - Typecheck/build/bundled runtime: PASS; see exact logs above
@@ -244,6 +271,6 @@ Do not publish if any of these is true:
 - Staple validation: PASS for both DMGs
 - Install smoke: PASS for both isolated exact post-staple apps; see evidence
   root above
-- GitHub release/assets: publication pending
-- Feed/PyPI/Homebrew public truth: publication pending
+- GitHub releases/assets: public; exact URLs and hashes above
+- Feed/PyPI/Homebrew public truth: public 1.6.12; exact commits/hashes above
 - Deferred rows preserved: `YES — see above and master matrix`
