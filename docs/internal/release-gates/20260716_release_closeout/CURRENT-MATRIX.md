@@ -1,12 +1,43 @@
-# vMLX 1.6.12 release checkpoint and post-release matrix — 2026-07-19
+# vMLX 1.6.13 release checkpoint and post-release matrix — 2026-07-20
 
-Status: `PUBLIC_1_6_12_RELEASED_POST_RELEASE_HEAD_PARTIAL`.
+Status: `PUBLIC_1_6_13_RELEASED_POST_RELEASE_HEAD_PARTIAL`.
 
 This is the current additive closeout view over `docs/internal/ISSUE-LEDGER.md`,
 `.agents/STATUS.md`, the July 15–16 live proof directories, the shared wiki
 production gate, and the current branch. Older contradictory rows remain in
 their original ledgers for provenance; the newest source-plus-live row wins and
 superseded conclusions are called out here.
+
+### 2026-07-20 LFM native-reasoning and gateway-error override
+
+- Current remote post-release head is pushed source `1d04d49b3` on
+  `codex/postrelease-ui-drawers-20260720`. Public v1.6.13 remains sealed at
+  tagged source `2f509f79d`; neither post-release fix is part of that public
+  artifact.
+- `24330de7e` removes the synthetic LFM-only `<think>` sentinel after the real
+  `LFM2.5-8B-A1B-MXFP4-CRACK` bundle proved it is base MLX MXFP4 (not affine
+  JANG or JANGTQ/MXTQ), has six attention plus 18 SSM/conv layers, owns native
+  reasoning in its template, and explicitly forbids synthetic prefill.
+- A current-source Electron Auto/no-tool turn streamed a separate reasoning
+  rail, progressively painted content, and exact-finaled. The required
+  `file_info(panel/package.json)` Electron turn remains `FAIL-LIVE` for this
+  artifact: it parsed `path=": "`, failed execution, leaked faux JSON, and
+  replayed the prior marker. No artifact blame, forced tool output, sampler
+  clamp, or hidden answer rewrite was added.
+- The shared Responses terminal bug is closed: unmet `tool_choice=required`
+  now emits `tool_calls_required`, terminates only with `response.failed`, and
+  is not persisted as successful history. Raw current-source API proof
+  reproduces the model miss and the truthful terminal.
+- `1d04d49b3` teaches the Ollama gateway error translator to preserve FastAPI
+  `detail` messages and backend status. After a full current-source Electron
+  relaunch and real UI Start of LFM PID 26730, direct/gateway Chat, Responses,
+  Anthropic, and Ollama all returned the same explicit 400 family message.
+- Focused validation: 14 selected Python tests, 88 LFM panel tests, 53 gateway
+  tests, panel typecheck, and diff checks. Evidence:
+  `docs/internal/release-gates/20260720_lfm_native_reasoning_protocol/`.
+- Overall status remains `PARTIAL`: the LFM MXFP4 native required-tool row,
+  remaining family/parser/media/cache/settings/network-loss/stress rows, and
+  full-suite/build repetition at the eventual next cutoff are still open.
 
 ### 2026-07-20 Anthropic/Ollama mid-stream failure override
 
