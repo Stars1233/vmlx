@@ -86,6 +86,7 @@ Status: OPEN / FIXED / VERIFIED-LIVE / WONTFIX / NOT-A-DEFECT / BUNDLE / BASELIN
 | post-tool-cross-model | H | The shared Electron post-tool loop can repeat reasoning, lose final content, misreport TPS, retain stale warnings, or repeat tools; every parser/model family needs a separate live row | OPEN/PARTIAL | Current source + LIVE Electron matrix | Bonsai 1-bit, Bonsai ternary, HY3, Laguna, LFM, Qwen3.6, Gemma4, MM2.7, M3, Nemotron, both Step quant paths, and DSV4 now have exact one-tool/final rows. Current Nemotron 1394, MM2.7 1397, DSV4 1400/1403, and Step JANGTQ_K 1418 pass without repeated reasoning or missing final content. MiMo and other configured families remain untested, so this campaign-wide row stays partial. See `docs/POST-TOOL-CROSS-MODEL-MATRIX-2026-07-15.md`. |
 | post-tool-warning-lifecycle | M | A successful answer-only recovery could retain an intermediate `visible answer is empty` warning in the final assistant row/UI | VERIFIED-LIVE (current source) | 48 focused tests + LIVE DSV4 Electron/DB | `dropSupersededRecoveryWarnings` narrowly removes only superseded current-response empty-answer diagnostics after visible content exists. DSV4 pre-fix row 1301 showed exact final plus stale warning; post-fix row 1304 has one tool/result, visible final content, and `warnings_json=null`. The model misspelled the strict marker, so DSV4 fidelity remains separately open. |
 | LFM2-explicit-tool-placeholder | H | LFM2 native-template shortcut treated placeholder argument examples as concrete, causing Electron `file_info` to emit malformed `path=': '` and repeat calls | VERIFIED-LIVE (current source) | Source trace + 8 focused tests + LIVE Electron/DB | Explicitly named LFM tools now force request-bound fallback examples; scalar values such as `path panel/package.json` replace `VALUE_HERE`. Pre-fix broad/Search-only rows made 2/3 calls with malformed arguments. Post-fix broad File/Search/Shell row 1325 made exactly one `file_info({"path":"panel/package.json"})`, one result, exact `LFM-POSTTOOL5-DONE`, and no warning. |
+| LFM2-MXFP4-native-reasoning-tool | H | Base-MLX MXFP4 LFM2.5 must use its native reasoning rail; its current required-tool turn can still emit malformed arguments and replay stale visible content | PARTIAL-LIVE (current source) | Bundle source trace + 14 Python tests + 88 panel tests/typecheck + LIVE Electron/API | `LFM2.5-8B-A1B-MXFP4-CRACK` is MXFP4 (not affine JANG/JANGTQ), has six attention plus 18 SSM/conv layers, and explicitly forbids synthetic `<think>` prefill. Auto reasoning streamed and exact-finaled. The current Electron required `file_info` row parsed `{"path":": "}`, failed execution, leaked faux JSON, and replayed the prior marker. Responses now truthfully ends unmet required-tool requests with `response.failed`/`tool_calls_required`, not `response.completed`. Gateway Ollama still masks the explicit-Off 400 detail. Evidence: `docs/internal/release-gates/20260720_lfm_native_reasoning_protocol/`. |
 | Q36-post-tool-current | H | Qwen3.6 current broad-tools Electron post-tool finalization needed proof independent of shared qwen parser source | VERIFIED-LIVE (current source) | LIVE Electron + DB + `/health` | Broad File/Search/Shell row 1328 made exactly one `file_info({"path":"panel/package.json"})`, one result, exact `Q36-POSTTOOL1-DONE`, two short reasoning fragments, no warning, and `22.6 t/s`. Health showed MTP D3 and hybrid SSM/TQ/cache telemetry active; MTP net speedup is not claimed by this row. |
 | G4-post-tool-current | H | Gemma4 current broad-tools Electron post-tool finalization needed proof with its own parser/reasoning behavior | VERIFIED-LIVE (current source) | LIVE Electron + DB | Broad File/Search/Shell row 1331 made exactly one `file_info({"path":"panel/package.json"})`, one result, exact `G4-POSTTOOL1-DONE`, no reasoning fragments, no warning, and `38.2 t/s`. |
 | G4-cache-default-parity-current | H | Gemma4 mixed-SWA needs its architecture-correct non-paged prompt L2 default reflected consistently in UI, DB, argv, health, warm reuse, and restart restore | VERIFIED-LIVE (current source) | Source trace + LIVE Electron + DB + process argv + `/health` + restart | Real bundle has 40 sliding and 8 full-attention layers; detector/CLI exclude generic paged blocks. Electron Reset Defaults visibly enabled legacy Disk Cache; preview and PID emitted `--no-paged-cache --enable-disk-cache`; DB stored prefix/paged/legacy/block `1/0/1/0`. Exact cold/warm/restart tool rows passed; warm restored 156/157 tokens from memory and process-restart restored the same 156 from disk. Health recorded 2 prompt-L2 disk hits. |
@@ -3480,3 +3481,27 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - Operational follow-up: repair the GitHub/PyPI trusted-publisher OIDC mapping.
   Broader family/parser/cache/media/gateway/stress rows remain PARTIAL/OPEN and
   resume only after the requested release pause.
+
+## 2026-07-20 - LFM2.5 MXFP4 native reasoning / required-tool protocol
+
+- Status: `PARTIAL_LIVE` on the post-v1.6.13 remote release checkout.
+- The real bundle is base MLX MXFP4, not affine JANG or JANGTQ/MXTQ. Its native
+  template has no `enable_thinking` branch and the bundle README explicitly
+  forbids synthetic `<think>` prefill. Current source removes the old LFM-only
+  sentinel, exposes Auto/On, and rejects explicit Off across protocol surfaces.
+- A fresh Electron Auto/no-tool turn streamed a separate reasoning rail and
+  progressive visible content, then exact-finaled
+  `LFM-UI-AUTO-CURRENT-DONE`.
+- The required `file_info(panel/package.json)` Electron turn remains red for
+  this artifact: parsed arguments were `{"path":": "}`, execution failed, faux
+  tool JSON leaked into content, and the prior marker replayed. The older
+  JANG_2L proof remains scoped to that separate artifact.
+- The shared Responses bug is fixed: an unmet required-tool contract now emits
+  `tool_calls_required` and terminates only as `response.failed`; it is not
+  stored as successful history. Current raw API proof reproduces the model miss
+  and the truthful failed terminal.
+- Gateway Ollama still masks the clear explicit-Off 400 as generic
+  `Backend request failed`; retain OPEN.
+- Validation: 14 selected Python tests, 88 panel tests, TypeScript typecheck,
+  and diff check. Evidence:
+  `docs/internal/release-gates/20260720_lfm_native_reasoning_protocol/`.

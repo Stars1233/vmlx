@@ -1,0 +1,66 @@
+[
+  {
+    "base": "http://127.0.0.1:8016",
+    "path": "/v1/chat/completions",
+    "status": 400,
+    "body": {
+      "detail": "lfm2 does not expose a native thinking-off/instruct mode; the request requested enable_thinking=false. Use Auto/On with one of the advertised reasoning_efforts instead."
+    }
+  },
+  {
+    "base": "http://127.0.0.1:8016",
+    "path": "/v1/responses",
+    "status": 400,
+    "body": {
+      "detail": "lfm2 does not expose a native thinking-off/instruct mode; the request requested enable_thinking=false. Use Auto/On with one of the advertised reasoning_efforts instead."
+    }
+  },
+  {
+    "base": "http://127.0.0.1:8016",
+    "path": "/v1/messages",
+    "status": 400,
+    "body": {
+      "detail": "lfm2 does not expose a native thinking-off/instruct mode; the request requested enable_thinking=false. Use Auto/On with one of the advertised reasoning_efforts instead."
+    }
+  },
+  {
+    "base": "http://127.0.0.1:8016",
+    "path": "/api/generate",
+    "status": 400,
+    "body": {
+      "detail": "lfm2 does not expose a native thinking-off/instruct mode; the request requested enable_thinking=false. Use Auto/On with one of the advertised reasoning_efforts instead."
+    }
+  },
+  {
+    "base": "http://127.0.0.1:8084",
+    "path": "/v1/chat/completions",
+    "status": 400,
+    "body": {
+      "detail": "lfm2 does not expose a native thinking-off/instruct mode; the request requested enable_thinking=false. Use Auto/On with one of the advertised reasoning_efforts instead."
+    }
+  },
+  {
+    "base": "http://127.0.0.1:8084",
+    "path": "/v1/responses",
+    "status": 400,
+    "body": {
+      "detail": "lfm2 does not expose a native thinking-off/instruct mode; the request requested enable_thinking=false. Use Auto/On with one of the advertised reasoning_efforts instead."
+    }
+  },
+  {
+    "base": "http://127.0.0.1:8084",
+    "path": "/v1/messages",
+    "status": 400,
+    "body": {
+      "detail": "lfm2 does not expose a native thinking-off/instruct mode; the request requested enable_thinking=false. Use Auto/On with one of the advertised reasoning_efforts instead."
+    }
+  },
+  {
+    "base": "http://127.0.0.1:8084",
+    "path": "/api/generate",
+    "status": 400,
+    "body": {
+      "error": "Backend request failed"
+    }
+  }
+]

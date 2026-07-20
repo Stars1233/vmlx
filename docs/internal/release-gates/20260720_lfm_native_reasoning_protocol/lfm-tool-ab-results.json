@@ -1,0 +1,37 @@
+[
+  {
+    "case": "history_required",
+    "history": true,
+    "tool_count": 1,
+    "tool_choice": "required",
+    "reasoning_chars": 4594,
+    "reasoning_tail": "tool call. The phrase after that is not a tool call, it's a final answer. But the instruction says \"After reasoning, reply exactly ...\". That could be a separate request. However the earlier instruction is more specific: \"When a tool call is needed, emit ONLY this Python tool call\". So we must not include any other text. So answer with the tool call only.\n\nThus:\n\n<tool>\n{\"name\": \"get_diagnostics\", \"arguments\": {\"path\": \"panel/package.json\"}}\n</tool>\n\nWe must ensure no extra text. Let's do that.\n",
+    "content": "",
+    "calls": [],
+    "warnings": [],
+    "errors": [
+      {
+        "type": "error",
+        "error": {
+          "type": "invalid_request_error",
+          "message": "tool_choice='required' was set but the model did not produce any tool calls. Try rephrasing your prompt or using a model with better tool-calling support.",
+          "code": "tool_calls_required"
+        },
+        "message": "tool_choice='required' was set but the model did not produce any tool calls. Try rephrasing your prompt or using a model with better tool-calling support.",
+        "code": "tool_calls_required",
+        "sequence_number": 2192
+      }
+    ],
+    "terminals": [
+      {
+        "type": "response.failed",
+        "status": "failed",
+        "error": {
+          "type": "invalid_request_error",
+          "message": "tool_choice='required' was set but the model did not produce any tool calls. Try rephrasing your prompt or using a model with better tool-calling support.",
+          "code": "tool_calls_required"
+        }
+      }
+    ]
+  }
+]
