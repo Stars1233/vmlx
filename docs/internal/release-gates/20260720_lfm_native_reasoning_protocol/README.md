@@ -75,10 +75,17 @@ Auto-mode direct and gateway captures are preserved in
 `lfm-auto-direct-current.json` and `lfm-auto-gateway-current.json`.
 
 Explicit Off returned a clear 400 for direct Chat Completions, Responses,
-Anthropic Messages, and Ollama Generate. The gateway preserved the same clear
-400 for Chat, Responses, and Anthropic, but gateway Ollama reduced it to
-`{"error":"Backend request failed"}`. That gateway error-parity row remains
-OPEN.
+Anthropic Messages, and Ollama Generate. Before the follow-up gateway fix,
+gateway Chat, Responses, and Anthropic preserved that detail while gateway
+Ollama reduced it to `{"error":"Backend request failed"}`.
+
+The gateway translator now recognizes FastAPI's top-level `detail` field in
+addition to OpenAI-style `error`/`message` fields. After a full current-source
+Electron relaunch and a real UI Start of the persisted LFM session (PID 26730),
+all eight direct/gateway rows returned status 400 and the complete model-family
+message. Gateway Ollama returned the same text in its native `error` field.
+Evidence: `lfm-off-protocol-rejection-after-gateway.json` and
+`lfm-gateway-current-source-start.png`.
 
 For `tool_choice=required`, the current model again produced no schema-valid
 call. Current source now terminates truthfully:
@@ -123,6 +130,7 @@ scope.
 - Required-tool Responses terminal semantics: `PASS_LIVE_SCOPED`.
 - LFM2.5 MXFP4 required built-in tool execution/final fidelity:
   `FAIL_LIVE`.
-- Gateway Ollama error-detail parity: `OPEN`.
+- Gateway Ollama FastAPI-detail/status parity: `PASS_LIVE_SCOPED` after a
+  current-source Electron relaunch and real UI Start.
 - Overall LFM family/tool/protocol campaign: `PARTIAL_LIVE`, not release-ready
   by itself.
