@@ -2983,6 +2983,33 @@ remain open. No public release/notarization/feed mutation performed.
   can be closed.
 - Evidence:
   `docs/internal/release-gates/20260719_path_dependent_terminal_cleanup/`.
+
+## 2026-07-19 - ZAYA typed CCA terminal and L2 proof
+
+- `ZAYA-TYPED-CCA-CURRENT`: `VERIFIED-LIVE_SCOPED` on source cutoff
+  `1aa5f8e49`. The exercised `Zaya-8B-JANG_4M` bundle is affine JANG, not
+  JANGTQ/MXTQ. Health exposed the native `zaya_cca_v1` record with standard
+  KV, convolution state, previous hidden state, and no-state MoE slots.
+- `ZAYA-GENERIC-TQ-BOUNDARY`: `PASS-SAFE-EXCEPTION`. Generic q4/q8 and
+  TurboQuant remain disabled because a KV-only record cannot restore
+  path-dependent CCA companion state. Explicit Paged Off is auto-promoted to
+  typed paged storage for this family rather than admitting an incomplete SSD
+  cache.
+- Raw Responses cold/exact-warm/changed-suffix runs emitted 26-39 progressive
+  content deltas and completed within 17 ms of the last visible delta. Exact
+  warm saved 919 tokens; the changed suffix clean-prefilled instead of using
+  a non-terminal typed chain without complete CCA state.
+- Real Electron Start eagerly materialized PID 50901 before any request. A
+  fresh short UI answer visibly grew to exact `ZAYA-UI-FIRST-DONE`. Real
+  `Save & Restart` replaced it with PID 52039, starting with 2,101 SSD tokens
+  and zero L1 tokens; Regenerate restored 529/537 as
+  `paged+zaya_cca+disk`, promoted nine blocks, and exact-finaled.
+- Focused validation: 49 passed, 1 skipped. Raw long strict formatting remains
+  `PARTIAL`; media, tools/protocol breadth, cancellation/failure, eviction,
+  alternate ZAYA variants, signed app, and the overall release remain open.
+- Evidence:
+  `docs/internal/release-gates/20260719_zaya_typed_cca_terminal_l2/`.
+
 # 2026-07-19 current active continuation after `0c9436bce`
 
 Overall status: `PARTIAL_NO_RELEASE`. A scoped DSV4 current-source proof now

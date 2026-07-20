@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "weight_format": "jang",
+  "profile": "JANG_4M",
+  "cache_subtype": "zaya_cca",
+  "source_model": {
+    "name": "ZAYA1-8B",
+    "org": "Zyphra",
+    "architecture": "zaya"
+  },
+  "expert_layout": "split_switch_mlp",
+  "quantization": {
+    "method": "affine",
+    "group_size": 32,
+    "attn_bits": 8,
+    "expert_bits": 4,
+    "embed_bits": 8
+  },
+  "capabilities": {
+    "reasoning_parser": "qwen3",
+    "tool_parser": "zaya_xml",
+    "think_in_template": false,
+    "supports_tools": true,
+    "supports_thinking": true,
+    "family": "zaya",
+    "modality": "text",
+    "cache_type": "hybrid"
+  }
+}

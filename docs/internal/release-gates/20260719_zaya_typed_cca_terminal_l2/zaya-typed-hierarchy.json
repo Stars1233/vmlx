@@ -1,0 +1,1717 @@
+{
+  "source_head": "1aa5f8e4994b0af3df63c86a16b48e5c4bb3cd3b",
+  "model": "jangq-ai/Zaya-8B-JANG_4M",
+  "native_cache_expected": "zaya_cca_v1",
+  "generic_turboquant_expected": false,
+  "health_before": {
+    "model_loaded": true,
+    "last_request_time": null,
+    "kv_cache_quantization": {
+      "enabled": false
+    },
+    "turboquant_kv_cache": {
+      "enabled": false
+    },
+    "native_cache": {
+      "family": "zaya",
+      "schema": "zaya_cca_v1",
+      "cache_type": "typed_cca",
+      "components": [
+        "standard_kv",
+        "cca_conv_state",
+        "cca_prev_hidden",
+        "moe_no_state_slots"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "cca_state_is_path_dependent"
+      },
+      "prefix": true,
+      "paged": true,
+      "block_disk_only": false,
+      "block_disk_l2": true
+    },
+    "scheduler": {
+      "hits": 0,
+      "misses": 0,
+      "hit_rate": 0,
+      "tokens_saved": 0,
+      "active_requests": 0,
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 0,
+        "system": 0
+      },
+      "backend_mode": "paged",
+      "paged_ram_enabled": true,
+      "disk_only": false,
+      "paged_frugal": false,
+      "ram_mirror_policy": "resident",
+      "block_size": 64,
+      "max_blocks": 1000,
+      "usable_blocks": 999,
+      "capacity_tokens": 63936,
+      "allocated_blocks": 1,
+      "free_blocks": 999,
+      "shared_blocks": 0,
+      "total_tokens_cached": 0,
+      "utilization": 0.0,
+      "cache_hit_rate": 0,
+      "cache_hits": 0,
+      "cache_misses": 0,
+      "disk_hits": 0,
+      "disk_misses": 0,
+      "cow_copies": 0,
+      "evictions": 0,
+      "disk_promotion_hits": 0,
+      "disk_lookup_misses": 0,
+      "disk_counter_source": "block_disk_store",
+      "engine_path": "none",
+      "batch_generator": {
+        "class": null,
+        "path": "none",
+        "single_active_decode": false,
+        "max_num_seqs": 1
+      }
+    },
+    "block_disk": {
+      "blocks_on_disk": 10,
+      "disk_size_bytes": 34047253,
+      "disk_size_gb": 0.032,
+      "total_accesses": 0,
+      "total_tokens_on_disk": 532,
+      "total_cached_tokens": 532,
+      "disk_hits": 0,
+      "disk_misses": 0,
+      "disk_writes": 0,
+      "disk_evictions": 0,
+      "tq_native_writes": 0,
+      "tq_native_hits": 0,
+      "tq_native_enabled": false
+    },
+    "totals": {
+      "ram_tokens_cached": 0,
+      "l1_indexed_tokens": 0,
+      "l1_resident_bytes": 0,
+      "l1_resident_bytes_mb": 0.0,
+      "l1_max_resident_bytes": 16950826598,
+      "l1_max_resident_bytes_mb": 16165.57,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 532,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 532,
+      "l2_tokens_on_disk_store_sum": 532,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    }
+  },
+  "runs": [
+    {
+      "label": "cold_a",
+      "status": 200,
+      "prompt_chars": 3246,
+      "visible": "set ZAYA-TYPED-A-DONE to make new typed record with properties {name:\"A\", body:\"<p>ZAYA-TYPED-A-DONE</p>\"}",
+      "reasoning": "",
+      "content_delta_count": 39,
+      "reasoning_delta_count": 0,
+      "content_deltas": [
+        {
+          "at_s": 0.2033,
+          "text": "set"
+        },
+        {
+          "at_s": 0.2194,
+          "text": " Z"
+        },
+        {
+          "at_s": 0.2349,
+          "text": "AYA"
+        },
+        {
+          "at_s": 0.2502,
+          "text": "-"
+        },
+        {
+          "at_s": 0.2652,
+          "text": "TY"
+        },
+        {
+          "at_s": 0.2804,
+          "text": "PED"
+        },
+        {
+          "at_s": 0.2954,
+          "text": "-"
+        },
+        {
+          "at_s": 0.3105,
+          "text": "A"
+        },
+        {
+          "at_s": 0.3253,
+          "text": "-"
+        },
+        {
+          "at_s": 0.3403,
+          "text": "DONE"
+        },
+        {
+          "at_s": 0.3552,
+          "text": " to"
+        },
+        {
+          "at_s": 0.3703,
+          "text": " make"
+        },
+        {
+          "at_s": 0.3852,
+          "text": " new"
+        },
+        {
+          "at_s": 0.3999,
+          "text": " typed"
+        },
+        {
+          "at_s": 0.4148,
+          "text": " record"
+        },
+        {
+          "at_s": 0.4295,
+          "text": " with"
+        },
+        {
+          "at_s": 0.4442,
+          "text": " properties"
+        },
+        {
+          "at_s": 0.459,
+          "text": " {"
+        },
+        {
+          "at_s": 0.4738,
+          "text": "name"
+        },
+        {
+          "at_s": 0.4886,
+          "text": ":\""
+        },
+        {
+          "at_s": 0.5032,
+          "text": "A"
+        },
+        {
+          "at_s": 0.5179,
+          "text": "\","
+        },
+        {
+          "at_s": 0.5326,
+          "text": " body"
+        },
+        {
+          "at_s": 0.5474,
+          "text": ":\""
+        },
+        {
+          "at_s": 0.5765,
+          "text": "<p"
+        },
+        {
+          "at_s": 0.6111,
+          "text": ">"
+        },
+        {
+          "at_s": 0.6271,
+          "text": "Z"
+        },
+        {
+          "at_s": 0.6422,
+          "text": "AYA"
+        },
+        {
+          "at_s": 0.6573,
+          "text": "-"
+        },
+        {
+          "at_s": 0.6723,
+          "text": "TY"
+        },
+        {
+          "at_s": 0.6872,
+          "text": "PED"
+        },
+        {
+          "at_s": 0.7018,
+          "text": "-"
+        },
+        {
+          "at_s": 0.7169,
+          "text": "A"
+        },
+        {
+          "at_s": 0.7318,
+          "text": "-"
+        },
+        {
+          "at_s": 0.7469,
+          "text": "DONE"
+        },
+        {
+          "at_s": 0.7616,
+          "text": "</"
+        },
+        {
+          "at_s": 0.7764,
+          "text": "p"
+        },
+        {
+          "at_s": 0.7912,
+          "text": ">"
+        },
+        {
+          "at_s": 0.8061,
+          "text": "\"}"
+        }
+      ],
+      "reasoning_deltas": [],
+      "terminal_events": [
+        {
+          "at_s": 0.822,
+          "type": "response.output_text.done",
+          "text": "set ZAYA-TYPED-A-DONE to make new typed record with properties {name:\"A\", body:\"<p>ZAYA-TYPED-A-DONE</p>\"}"
+        },
+        {
+          "at_s": 0.8222,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_17e38b66f62d",
+            "object": "response",
+            "created_at": 1784506981,
+            "status": "completed",
+            "model": "jangq-ai/Zaya-8B-JANG_4M",
+            "output_text": "set ZAYA-TYPED-A-DONE to make new typed record with properties {name:\"A\", body:\"<p>ZAYA-TYPED-A-DONE</p>\"}",
+            "output": [
+              {
+                "id": "item_2f493669c988",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "set ZAYA-TYPED-A-DONE to make new typed record with properties {name:\"A\", body:\"<p>ZAYA-TYPED-A-DONE</p>\"}",
+                    "annotations": []
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 927,
+              "output_tokens": 41,
+              "total_tokens": 968
+            }
+          }
+        }
+      ],
+      "last_content_to_completed_s": 0.0161,
+      "elapsed_s": 0.8223,
+      "events": [
+        {
+          "at_s": 0.006,
+          "type": "response.created"
+        },
+        {
+          "at_s": 0.0061,
+          "type": "response.output_item.added"
+        },
+        {
+          "at_s": 0.0061,
+          "type": "response.content_part.added"
+        },
+        {
+          "at_s": 0.2033,
+          "type": "response.output_text.delta",
+          "delta": "set"
+        },
+        {
+          "at_s": 0.2194,
+          "type": "response.output_text.delta",
+          "delta": " Z"
+        },
+        {
+          "at_s": 0.2349,
+          "type": "response.output_text.delta",
+          "delta": "AYA"
+        },
+        {
+          "at_s": 0.2502,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.2652,
+          "type": "response.output_text.delta",
+          "delta": "TY"
+        },
+        {
+          "at_s": 0.2804,
+          "type": "response.output_text.delta",
+          "delta": "PED"
+        },
+        {
+          "at_s": 0.2954,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.3105,
+          "type": "response.output_text.delta",
+          "delta": "A"
+        },
+        {
+          "at_s": 0.3253,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.3403,
+          "type": "response.output_text.delta",
+          "delta": "DONE"
+        },
+        {
+          "at_s": 0.3552,
+          "type": "response.output_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_s": 0.3703,
+          "type": "response.output_text.delta",
+          "delta": " make"
+        },
+        {
+          "at_s": 0.3852,
+          "type": "response.output_text.delta",
+          "delta": " new"
+        },
+        {
+          "at_s": 0.3999,
+          "type": "response.output_text.delta",
+          "delta": " typed"
+        },
+        {
+          "at_s": 0.4148,
+          "type": "response.output_text.delta",
+          "delta": " record"
+        },
+        {
+          "at_s": 0.4295,
+          "type": "response.output_text.delta",
+          "delta": " with"
+        },
+        {
+          "at_s": 0.4442,
+          "type": "response.output_text.delta",
+          "delta": " properties"
+        },
+        {
+          "at_s": 0.459,
+          "type": "response.output_text.delta",
+          "delta": " {"
+        },
+        {
+          "at_s": 0.4738,
+          "type": "response.output_text.delta",
+          "delta": "name"
+        },
+        {
+          "at_s": 0.4886,
+          "type": "response.output_text.delta",
+          "delta": ":\""
+        },
+        {
+          "at_s": 0.5032,
+          "type": "response.output_text.delta",
+          "delta": "A"
+        },
+        {
+          "at_s": 0.5179,
+          "type": "response.output_text.delta",
+          "delta": "\","
+        },
+        {
+          "at_s": 0.5326,
+          "type": "response.output_text.delta",
+          "delta": " body"
+        },
+        {
+          "at_s": 0.5474,
+          "type": "response.output_text.delta",
+          "delta": ":\""
+        },
+        {
+          "at_s": 0.5765,
+          "type": "response.output_text.delta",
+          "delta": "<p"
+        },
+        {
+          "at_s": 0.6111,
+          "type": "response.output_text.delta",
+          "delta": ">"
+        },
+        {
+          "at_s": 0.6271,
+          "type": "response.output_text.delta",
+          "delta": "Z"
+        },
+        {
+          "at_s": 0.6422,
+          "type": "response.output_text.delta",
+          "delta": "AYA"
+        },
+        {
+          "at_s": 0.6573,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.6723,
+          "type": "response.output_text.delta",
+          "delta": "TY"
+        },
+        {
+          "at_s": 0.6872,
+          "type": "response.output_text.delta",
+          "delta": "PED"
+        },
+        {
+          "at_s": 0.7018,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.7169,
+          "type": "response.output_text.delta",
+          "delta": "A"
+        },
+        {
+          "at_s": 0.7318,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.7469,
+          "type": "response.output_text.delta",
+          "delta": "DONE"
+        },
+        {
+          "at_s": 0.7616,
+          "type": "response.output_text.delta",
+          "delta": "</"
+        },
+        {
+          "at_s": 0.7764,
+          "type": "response.output_text.delta",
+          "delta": "p"
+        },
+        {
+          "at_s": 0.7912,
+          "type": "response.output_text.delta",
+          "delta": ">"
+        },
+        {
+          "at_s": 0.8061,
+          "type": "response.output_text.delta",
+          "delta": "\"}"
+        },
+        {
+          "at_s": 0.822,
+          "type": "response.output_text.done",
+          "text": "set ZAYA-TYPED-A-DONE to make new typed record with properties {name:\"A\", body:\"<p>ZAYA-TYPED-A-DONE</p>\"}"
+        },
+        {
+          "at_s": 0.8221,
+          "type": "response.content_part.done"
+        },
+        {
+          "at_s": 0.8222,
+          "type": "response.output_item.done"
+        },
+        {
+          "at_s": 0.8222,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_17e38b66f62d",
+            "object": "response",
+            "created_at": 1784506981,
+            "status": "completed",
+            "model": "jangq-ai/Zaya-8B-JANG_4M",
+            "output_text": "set ZAYA-TYPED-A-DONE to make new typed record with properties {name:\"A\", body:\"<p>ZAYA-TYPED-A-DONE</p>\"}",
+            "output": [
+              {
+                "id": "item_2f493669c988",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "set ZAYA-TYPED-A-DONE to make new typed record with properties {name:\"A\", body:\"<p>ZAYA-TYPED-A-DONE</p>\"}",
+                    "annotations": []
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 927,
+              "output_tokens": 41,
+              "total_tokens": 968
+            }
+          }
+        }
+      ]
+    },
+    {
+      "label": "warm_a",
+      "status": 200,
+      "prompt_chars": 3246,
+      "visible": "set ZAYA-TYPED-A-DONE to make new typed record with properties {name:\"A\", body:\"<p>ZAYA-TYPED-A-DONE</p>\"}",
+      "reasoning": "",
+      "content_delta_count": 39,
+      "reasoning_delta_count": 0,
+      "content_deltas": [
+        {
+          "at_s": 0.385,
+          "text": "set"
+        },
+        {
+          "at_s": 0.4,
+          "text": " Z"
+        },
+        {
+          "at_s": 0.4149,
+          "text": "AYA"
+        },
+        {
+          "at_s": 0.4301,
+          "text": "-"
+        },
+        {
+          "at_s": 0.4452,
+          "text": "TY"
+        },
+        {
+          "at_s": 0.4603,
+          "text": "PED"
+        },
+        {
+          "at_s": 0.475,
+          "text": "-"
+        },
+        {
+          "at_s": 0.4898,
+          "text": "A"
+        },
+        {
+          "at_s": 0.5047,
+          "text": "-"
+        },
+        {
+          "at_s": 0.5197,
+          "text": "DONE"
+        },
+        {
+          "at_s": 0.5346,
+          "text": " to"
+        },
+        {
+          "at_s": 0.5495,
+          "text": " make"
+        },
+        {
+          "at_s": 0.5643,
+          "text": " new"
+        },
+        {
+          "at_s": 0.5792,
+          "text": " typed"
+        },
+        {
+          "at_s": 0.5943,
+          "text": " record"
+        },
+        {
+          "at_s": 0.6096,
+          "text": " with"
+        },
+        {
+          "at_s": 0.6242,
+          "text": " properties"
+        },
+        {
+          "at_s": 0.6391,
+          "text": " {"
+        },
+        {
+          "at_s": 0.6541,
+          "text": "name"
+        },
+        {
+          "at_s": 0.6688,
+          "text": ":\""
+        },
+        {
+          "at_s": 0.6837,
+          "text": "A"
+        },
+        {
+          "at_s": 0.6985,
+          "text": "\","
+        },
+        {
+          "at_s": 0.7134,
+          "text": " body"
+        },
+        {
+          "at_s": 0.7281,
+          "text": ":\""
+        },
+        {
+          "at_s": 0.7575,
+          "text": "<p"
+        },
+        {
+          "at_s": 0.7724,
+          "text": ">"
+        },
+        {
+          "at_s": 0.7872,
+          "text": "Z"
+        },
+        {
+          "at_s": 0.8022,
+          "text": "AYA"
+        },
+        {
+          "at_s": 0.8169,
+          "text": "-"
+        },
+        {
+          "at_s": 0.8318,
+          "text": "TY"
+        },
+        {
+          "at_s": 0.8467,
+          "text": "PED"
+        },
+        {
+          "at_s": 0.8616,
+          "text": "-"
+        },
+        {
+          "at_s": 0.8766,
+          "text": "A"
+        },
+        {
+          "at_s": 0.8914,
+          "text": "-"
+        },
+        {
+          "at_s": 0.9065,
+          "text": "DONE"
+        },
+        {
+          "at_s": 0.9211,
+          "text": "</"
+        },
+        {
+          "at_s": 0.936,
+          "text": "p"
+        },
+        {
+          "at_s": 0.9509,
+          "text": ">"
+        },
+        {
+          "at_s": 0.9656,
+          "text": "\"}"
+        }
+      ],
+      "reasoning_deltas": [],
+      "terminal_events": [
+        {
+          "at_s": 0.981,
+          "type": "response.output_text.done",
+          "text": "set ZAYA-TYPED-A-DONE to make new typed record with properties {name:\"A\", body:\"<p>ZAYA-TYPED-A-DONE</p>\"}"
+        },
+        {
+          "at_s": 0.9812,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_70919de2826a",
+            "object": "response",
+            "created_at": 1784506982,
+            "status": "completed",
+            "model": "jangq-ai/Zaya-8B-JANG_4M",
+            "output_text": "set ZAYA-TYPED-A-DONE to make new typed record with properties {name:\"A\", body:\"<p>ZAYA-TYPED-A-DONE</p>\"}",
+            "output": [
+              {
+                "id": "item_af384207ecde",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "set ZAYA-TYPED-A-DONE to make new typed record with properties {name:\"A\", body:\"<p>ZAYA-TYPED-A-DONE</p>\"}",
+                    "annotations": []
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 927,
+              "output_tokens": 41,
+              "total_tokens": 968,
+              "input_tokens_details": {
+                "cached_tokens": 919,
+                "cache_detail": "paged+zaya_cca"
+              }
+            }
+          }
+        }
+      ],
+      "last_content_to_completed_s": 0.0156,
+      "elapsed_s": 0.9813,
+      "events": [
+        {
+          "at_s": 0.0028,
+          "type": "response.created"
+        },
+        {
+          "at_s": 0.0028,
+          "type": "response.output_item.added"
+        },
+        {
+          "at_s": 0.0028,
+          "type": "response.content_part.added"
+        },
+        {
+          "at_s": 0.385,
+          "type": "response.output_text.delta",
+          "delta": "set"
+        },
+        {
+          "at_s": 0.4,
+          "type": "response.output_text.delta",
+          "delta": " Z"
+        },
+        {
+          "at_s": 0.4149,
+          "type": "response.output_text.delta",
+          "delta": "AYA"
+        },
+        {
+          "at_s": 0.4301,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.4452,
+          "type": "response.output_text.delta",
+          "delta": "TY"
+        },
+        {
+          "at_s": 0.4603,
+          "type": "response.output_text.delta",
+          "delta": "PED"
+        },
+        {
+          "at_s": 0.475,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.4898,
+          "type": "response.output_text.delta",
+          "delta": "A"
+        },
+        {
+          "at_s": 0.5047,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.5197,
+          "type": "response.output_text.delta",
+          "delta": "DONE"
+        },
+        {
+          "at_s": 0.5346,
+          "type": "response.output_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_s": 0.5495,
+          "type": "response.output_text.delta",
+          "delta": " make"
+        },
+        {
+          "at_s": 0.5643,
+          "type": "response.output_text.delta",
+          "delta": " new"
+        },
+        {
+          "at_s": 0.5792,
+          "type": "response.output_text.delta",
+          "delta": " typed"
+        },
+        {
+          "at_s": 0.5943,
+          "type": "response.output_text.delta",
+          "delta": " record"
+        },
+        {
+          "at_s": 0.6096,
+          "type": "response.output_text.delta",
+          "delta": " with"
+        },
+        {
+          "at_s": 0.6242,
+          "type": "response.output_text.delta",
+          "delta": " properties"
+        },
+        {
+          "at_s": 0.6391,
+          "type": "response.output_text.delta",
+          "delta": " {"
+        },
+        {
+          "at_s": 0.6541,
+          "type": "response.output_text.delta",
+          "delta": "name"
+        },
+        {
+          "at_s": 0.6688,
+          "type": "response.output_text.delta",
+          "delta": ":\""
+        },
+        {
+          "at_s": 0.6837,
+          "type": "response.output_text.delta",
+          "delta": "A"
+        },
+        {
+          "at_s": 0.6985,
+          "type": "response.output_text.delta",
+          "delta": "\","
+        },
+        {
+          "at_s": 0.7134,
+          "type": "response.output_text.delta",
+          "delta": " body"
+        },
+        {
+          "at_s": 0.7281,
+          "type": "response.output_text.delta",
+          "delta": ":\""
+        },
+        {
+          "at_s": 0.7575,
+          "type": "response.output_text.delta",
+          "delta": "<p"
+        },
+        {
+          "at_s": 0.7724,
+          "type": "response.output_text.delta",
+          "delta": ">"
+        },
+        {
+          "at_s": 0.7872,
+          "type": "response.output_text.delta",
+          "delta": "Z"
+        },
+        {
+          "at_s": 0.8022,
+          "type": "response.output_text.delta",
+          "delta": "AYA"
+        },
+        {
+          "at_s": 0.8169,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.8318,
+          "type": "response.output_text.delta",
+          "delta": "TY"
+        },
+        {
+          "at_s": 0.8467,
+          "type": "response.output_text.delta",
+          "delta": "PED"
+        },
+        {
+          "at_s": 0.8616,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.8766,
+          "type": "response.output_text.delta",
+          "delta": "A"
+        },
+        {
+          "at_s": 0.8914,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.9065,
+          "type": "response.output_text.delta",
+          "delta": "DONE"
+        },
+        {
+          "at_s": 0.9211,
+          "type": "response.output_text.delta",
+          "delta": "</"
+        },
+        {
+          "at_s": 0.936,
+          "type": "response.output_text.delta",
+          "delta": "p"
+        },
+        {
+          "at_s": 0.9509,
+          "type": "response.output_text.delta",
+          "delta": ">"
+        },
+        {
+          "at_s": 0.9656,
+          "type": "response.output_text.delta",
+          "delta": "\"}"
+        },
+        {
+          "at_s": 0.981,
+          "type": "response.output_text.done",
+          "text": "set ZAYA-TYPED-A-DONE to make new typed record with properties {name:\"A\", body:\"<p>ZAYA-TYPED-A-DONE</p>\"}"
+        },
+        {
+          "at_s": 0.9811,
+          "type": "response.content_part.done"
+        },
+        {
+          "at_s": 0.9812,
+          "type": "response.output_item.done"
+        },
+        {
+          "at_s": 0.9812,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_70919de2826a",
+            "object": "response",
+            "created_at": 1784506982,
+            "status": "completed",
+            "model": "jangq-ai/Zaya-8B-JANG_4M",
+            "output_text": "set ZAYA-TYPED-A-DONE to make new typed record with properties {name:\"A\", body:\"<p>ZAYA-TYPED-A-DONE</p>\"}",
+            "output": [
+              {
+                "id": "item_af384207ecde",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "set ZAYA-TYPED-A-DONE to make new typed record with properties {name:\"A\", body:\"<p>ZAYA-TYPED-A-DONE</p>\"}",
+                    "annotations": []
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 927,
+              "output_tokens": 41,
+              "total_tokens": 968,
+              "input_tokens_details": {
+                "cached_tokens": 919,
+                "cache_detail": "paged+zaya_cca"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "label": "partial_b",
+      "status": 200,
+      "prompt_chars": 3284,
+      "visible": "set prefixText to \"ZAYA-TYPED-B-\"\nset suffixText to \"DONE\"\nreturn prefixText & suffixText",
+      "reasoning": "",
+      "content_delta_count": 26,
+      "reasoning_delta_count": 0,
+      "content_deltas": [
+        {
+          "at_s": 0.3297,
+          "text": "set"
+        },
+        {
+          "at_s": 0.345,
+          "text": " prefix"
+        },
+        {
+          "at_s": 0.3602,
+          "text": "Text"
+        },
+        {
+          "at_s": 0.3753,
+          "text": " to"
+        },
+        {
+          "at_s": 0.3905,
+          "text": " \""
+        },
+        {
+          "at_s": 0.4056,
+          "text": "Z"
+        },
+        {
+          "at_s": 0.4208,
+          "text": "AYA"
+        },
+        {
+          "at_s": 0.436,
+          "text": "-"
+        },
+        {
+          "at_s": 0.4512,
+          "text": "TY"
+        },
+        {
+          "at_s": 0.4662,
+          "text": "PED"
+        },
+        {
+          "at_s": 0.4814,
+          "text": "-"
+        },
+        {
+          "at_s": 0.4965,
+          "text": "B"
+        },
+        {
+          "at_s": 0.5114,
+          "text": "-\""
+        },
+        {
+          "at_s": 0.5416,
+          "text": "\nset"
+        },
+        {
+          "at_s": 0.5567,
+          "text": " suffix"
+        },
+        {
+          "at_s": 0.5717,
+          "text": "Text"
+        },
+        {
+          "at_s": 0.5866,
+          "text": " to"
+        },
+        {
+          "at_s": 0.6015,
+          "text": " \""
+        },
+        {
+          "at_s": 0.6166,
+          "text": "DONE"
+        },
+        {
+          "at_s": 0.6315,
+          "text": "\""
+        },
+        {
+          "at_s": 0.6612,
+          "text": "\nreturn"
+        },
+        {
+          "at_s": 0.6762,
+          "text": " prefix"
+        },
+        {
+          "at_s": 0.6913,
+          "text": "Text"
+        },
+        {
+          "at_s": 0.7063,
+          "text": " &"
+        },
+        {
+          "at_s": 0.7214,
+          "text": " suffix"
+        },
+        {
+          "at_s": 0.7366,
+          "text": "Text"
+        }
+      ],
+      "reasoning_deltas": [],
+      "terminal_events": [
+        {
+          "at_s": 0.7523,
+          "type": "response.output_text.done",
+          "text": "set prefixText to \"ZAYA-TYPED-B-\"\nset suffixText to \"DONE\"\nreturn prefixText & suffixText"
+        },
+        {
+          "at_s": 0.7525,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_a8460dbf0ac4",
+            "object": "response",
+            "created_at": 1784506983,
+            "status": "completed",
+            "model": "jangq-ai/Zaya-8B-JANG_4M",
+            "output_text": "set prefixText to \"ZAYA-TYPED-B-\"\nset suffixText to \"DONE\"\nreturn prefixText & suffixText",
+            "output": [
+              {
+                "id": "item_6f1b216f3b68",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "set prefixText to \"ZAYA-TYPED-B-\"\nset suffixText to \"DONE\"\nreturn prefixText & suffixText",
+                    "annotations": []
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 931,
+              "output_tokens": 29,
+              "total_tokens": 960
+            }
+          }
+        }
+      ],
+      "last_content_to_completed_s": 0.0159,
+      "elapsed_s": 0.7526,
+      "events": [
+        {
+          "at_s": 0.0031,
+          "type": "response.created"
+        },
+        {
+          "at_s": 0.0031,
+          "type": "response.output_item.added"
+        },
+        {
+          "at_s": 0.0031,
+          "type": "response.content_part.added"
+        },
+        {
+          "at_s": 0.3297,
+          "type": "response.output_text.delta",
+          "delta": "set"
+        },
+        {
+          "at_s": 0.345,
+          "type": "response.output_text.delta",
+          "delta": " prefix"
+        },
+        {
+          "at_s": 0.3602,
+          "type": "response.output_text.delta",
+          "delta": "Text"
+        },
+        {
+          "at_s": 0.3753,
+          "type": "response.output_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_s": 0.3905,
+          "type": "response.output_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 0.4056,
+          "type": "response.output_text.delta",
+          "delta": "Z"
+        },
+        {
+          "at_s": 0.4208,
+          "type": "response.output_text.delta",
+          "delta": "AYA"
+        },
+        {
+          "at_s": 0.436,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.4512,
+          "type": "response.output_text.delta",
+          "delta": "TY"
+        },
+        {
+          "at_s": 0.4662,
+          "type": "response.output_text.delta",
+          "delta": "PED"
+        },
+        {
+          "at_s": 0.4814,
+          "type": "response.output_text.delta",
+          "delta": "-"
+        },
+        {
+          "at_s": 0.4965,
+          "type": "response.output_text.delta",
+          "delta": "B"
+        },
+        {
+          "at_s": 0.5114,
+          "type": "response.output_text.delta",
+          "delta": "-\""
+        },
+        {
+          "at_s": 0.5416,
+          "type": "response.output_text.delta",
+          "delta": "\nset"
+        },
+        {
+          "at_s": 0.5567,
+          "type": "response.output_text.delta",
+          "delta": " suffix"
+        },
+        {
+          "at_s": 0.5717,
+          "type": "response.output_text.delta",
+          "delta": "Text"
+        },
+        {
+          "at_s": 0.5866,
+          "type": "response.output_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_s": 0.6015,
+          "type": "response.output_text.delta",
+          "delta": " \""
+        },
+        {
+          "at_s": 0.6166,
+          "type": "response.output_text.delta",
+          "delta": "DONE"
+        },
+        {
+          "at_s": 0.6315,
+          "type": "response.output_text.delta",
+          "delta": "\""
+        },
+        {
+          "at_s": 0.6612,
+          "type": "response.output_text.delta",
+          "delta": "\nreturn"
+        },
+        {
+          "at_s": 0.6762,
+          "type": "response.output_text.delta",
+          "delta": " prefix"
+        },
+        {
+          "at_s": 0.6913,
+          "type": "response.output_text.delta",
+          "delta": "Text"
+        },
+        {
+          "at_s": 0.7063,
+          "type": "response.output_text.delta",
+          "delta": " &"
+        },
+        {
+          "at_s": 0.7214,
+          "type": "response.output_text.delta",
+          "delta": " suffix"
+        },
+        {
+          "at_s": 0.7366,
+          "type": "response.output_text.delta",
+          "delta": "Text"
+        },
+        {
+          "at_s": 0.7523,
+          "type": "response.output_text.done",
+          "text": "set prefixText to \"ZAYA-TYPED-B-\"\nset suffixText to \"DONE\"\nreturn prefixText & suffixText"
+        },
+        {
+          "at_s": 0.7524,
+          "type": "response.content_part.done"
+        },
+        {
+          "at_s": 0.7525,
+          "type": "response.output_item.done"
+        },
+        {
+          "at_s": 0.7525,
+          "type": "response.completed",
+          "response": {
+            "id": "resp_a8460dbf0ac4",
+            "object": "response",
+            "created_at": 1784506983,
+            "status": "completed",
+            "model": "jangq-ai/Zaya-8B-JANG_4M",
+            "output_text": "set prefixText to \"ZAYA-TYPED-B-\"\nset suffixText to \"DONE\"\nreturn prefixText & suffixText",
+            "output": [
+              {
+                "id": "item_6f1b216f3b68",
+                "type": "message",
+                "status": "completed",
+                "role": "assistant",
+                "content": [
+                  {
+                    "type": "output_text",
+                    "text": "set prefixText to \"ZAYA-TYPED-B-\"\nset suffixText to \"DONE\"\nreturn prefixText & suffixText",
+                    "annotations": []
+                  }
+                ]
+              }
+            ],
+            "usage": {
+              "input_tokens": 931,
+              "output_tokens": 29,
+              "total_tokens": 960
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "health_after_cold_a": {
+    "model_loaded": true,
+    "last_request_time": 1784506981.9481091,
+    "kv_cache_quantization": {
+      "enabled": false
+    },
+    "turboquant_kv_cache": {
+      "enabled": false
+    },
+    "native_cache": {
+      "family": "zaya",
+      "schema": "zaya_cca_v1",
+      "cache_type": "typed_cca",
+      "components": [
+        "standard_kv",
+        "cca_conv_state",
+        "cca_prev_hidden",
+        "moe_no_state_slots"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "cca_state_is_path_dependent"
+      },
+      "prefix": true,
+      "paged": true,
+      "block_disk_only": false,
+      "block_disk_l2": true
+    },
+    "scheduler": {
+      "hits": 0,
+      "misses": 1,
+      "hit_rate": 0.0,
+      "tokens_saved": 0,
+      "active_requests": 0,
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 0,
+        "system": 0
+      },
+      "backend_mode": "paged",
+      "paged_ram_enabled": true,
+      "disk_only": false,
+      "paged_frugal": false,
+      "ram_mirror_policy": "resident",
+      "block_size": 64,
+      "max_blocks": 1000,
+      "usable_blocks": 999,
+      "capacity_tokens": 63936,
+      "allocated_blocks": 1,
+      "free_blocks": 999,
+      "shared_blocks": 0,
+      "total_tokens_cached": 0,
+      "utilization": 0.0,
+      "cache_hit_rate": 0.0,
+      "cache_hits": 0,
+      "cache_misses": 2,
+      "disk_hits": 0,
+      "disk_misses": 6,
+      "cow_copies": 0,
+      "evictions": 0,
+      "disk_promotion_hits": 0,
+      "disk_lookup_misses": 2,
+      "disk_counter_source": "block_disk_store",
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1,
+        "prompt_snapshot_max_bytes": null,
+        "prompt_snapshot_last_estimated_bytes": 0,
+        "prompt_snapshot_oversize_skips": 0
+      }
+    },
+    "block_disk": {
+      "blocks_on_disk": 10,
+      "disk_size_bytes": 34047253,
+      "disk_size_gb": 0.032,
+      "total_accesses": 0,
+      "total_tokens_on_disk": 532,
+      "total_cached_tokens": 532,
+      "disk_hits": 0,
+      "disk_misses": 6,
+      "disk_writes": 0,
+      "disk_evictions": 0,
+      "tq_native_writes": 0,
+      "tq_native_hits": 0,
+      "tq_native_enabled": false
+    },
+    "totals": {
+      "ram_tokens_cached": 0,
+      "l1_indexed_tokens": 0,
+      "l1_resident_bytes": 0,
+      "l1_resident_bytes_mb": 0.0,
+      "l1_max_resident_bytes": 16950826598,
+      "l1_max_resident_bytes_mb": 16165.57,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 532,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 532,
+      "l2_tokens_on_disk_store_sum": 532,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    }
+  },
+  "health_after_warm_a": {
+    "model_loaded": true,
+    "last_request_time": 1784506982.793695,
+    "kv_cache_quantization": {
+      "enabled": false
+    },
+    "turboquant_kv_cache": {
+      "enabled": false
+    },
+    "native_cache": {
+      "family": "zaya",
+      "schema": "zaya_cca_v1",
+      "cache_type": "typed_cca",
+      "components": [
+        "standard_kv",
+        "cca_conv_state",
+        "cca_prev_hidden",
+        "moe_no_state_slots"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "cca_state_is_path_dependent"
+      },
+      "prefix": true,
+      "paged": true,
+      "block_disk_only": false,
+      "block_disk_l2": true
+    },
+    "scheduler": {
+      "hits": 1,
+      "misses": 1,
+      "hit_rate": 0.5,
+      "tokens_saved": 919,
+      "active_requests": 1,
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 1,
+        "system": 0
+      },
+      "backend_mode": "paged",
+      "paged_ram_enabled": true,
+      "disk_only": false,
+      "paged_frugal": false,
+      "ram_mirror_policy": "resident",
+      "block_size": 64,
+      "max_blocks": 1000,
+      "usable_blocks": 999,
+      "capacity_tokens": 63936,
+      "allocated_blocks": 16,
+      "free_blocks": 984,
+      "shared_blocks": 0,
+      "total_tokens_cached": 919,
+      "utilization": 0.015015015015015015,
+      "cache_hit_rate": 0.6382978723404256,
+      "cache_hits": 30,
+      "cache_misses": 17,
+      "disk_hits": 0,
+      "disk_misses": 7,
+      "cow_copies": 0,
+      "evictions": 0,
+      "disk_promotion_hits": 0,
+      "disk_lookup_misses": 2,
+      "disk_counter_source": "block_disk_store",
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1,
+        "prompt_snapshot_max_bytes": null,
+        "prompt_snapshot_last_estimated_bytes": 0,
+        "prompt_snapshot_oversize_skips": 0
+      }
+    },
+    "block_disk": {
+      "blocks_on_disk": 25,
+      "disk_size_bytes": 91204486,
+      "disk_size_gb": 0.085,
+      "total_accesses": 0,
+      "total_tokens_on_disk": 1451,
+      "total_cached_tokens": 1451,
+      "disk_hits": 0,
+      "disk_misses": 7,
+      "disk_writes": 15,
+      "disk_evictions": 0,
+      "tq_native_writes": 0,
+      "tq_native_hits": 0,
+      "tq_native_enabled": false
+    },
+    "totals": {
+      "ram_tokens_cached": 919,
+      "l1_indexed_tokens": 919,
+      "l1_resident_bytes": 56832000,
+      "l1_resident_bytes_mb": 54.2,
+      "l1_max_resident_bytes": 16950826598,
+      "l1_max_resident_bytes_mb": 16165.57,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 1451,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 1451,
+      "l2_tokens_on_disk_store_sum": 1451,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    }
+  },
+  "health_after_partial_b": {
+    "model_loaded": true,
+    "last_request_time": 1784506983.799995,
+    "kv_cache_quantization": {
+      "enabled": false
+    },
+    "turboquant_kv_cache": {
+      "enabled": false
+    },
+    "native_cache": {
+      "family": "zaya",
+      "schema": "zaya_cca_v1",
+      "cache_type": "typed_cca",
+      "components": [
+        "standard_kv",
+        "cca_conv_state",
+        "cca_prev_hidden",
+        "moe_no_state_slots"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "cca_state_is_path_dependent"
+      },
+      "prefix": true,
+      "paged": true,
+      "block_disk_only": false,
+      "block_disk_l2": true
+    },
+    "scheduler": {
+      "hits": 1,
+      "misses": 2,
+      "hit_rate": 0.3333333333333333,
+      "tokens_saved": 919,
+      "active_requests": 0,
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 2,
+        "system": 0
+      },
+      "backend_mode": "paged",
+      "paged_ram_enabled": true,
+      "disk_only": false,
+      "paged_frugal": false,
+      "ram_mirror_policy": "resident",
+      "block_size": 64,
+      "max_blocks": 1000,
+      "usable_blocks": 999,
+      "capacity_tokens": 63936,
+      "allocated_blocks": 1,
+      "free_blocks": 999,
+      "shared_blocks": 0,
+      "total_tokens_cached": 919,
+      "utilization": 0.0,
+      "cache_hit_rate": 0.7466666666666667,
+      "cache_hits": 56,
+      "cache_misses": 19,
+      "disk_hits": 0,
+      "disk_misses": 15,
+      "cow_copies": 0,
+      "evictions": 0,
+      "disk_promotion_hits": 0,
+      "disk_lookup_misses": 4,
+      "disk_counter_source": "block_disk_store",
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1,
+        "prompt_snapshot_max_bytes": null,
+        "prompt_snapshot_last_estimated_bytes": 0,
+        "prompt_snapshot_oversize_skips": 0
+      }
+    },
+    "block_disk": {
+      "blocks_on_disk": 25,
+      "disk_size_bytes": 91204486,
+      "disk_size_gb": 0.085,
+      "total_accesses": 0,
+      "total_tokens_on_disk": 1451,
+      "total_cached_tokens": 1451,
+      "disk_hits": 0,
+      "disk_misses": 15,
+      "disk_writes": 15,
+      "disk_evictions": 0,
+      "tq_native_writes": 0,
+      "tq_native_hits": 0,
+      "tq_native_enabled": false
+    },
+    "totals": {
+      "ram_tokens_cached": 919,
+      "l1_indexed_tokens": 919,
+      "l1_resident_bytes": 56832000,
+      "l1_resident_bytes_mb": 54.2,
+      "l1_max_resident_bytes": 16950826598,
+      "l1_max_resident_bytes_mb": 16165.57,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 1451,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 1451,
+      "l2_tokens_on_disk_store_sum": 1451,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    }
+  },
+  "checks": {
+    "all_status_200": true,
+    "all_visible_nonempty": true,
+    "all_progressive": true,
+    "all_output_done_once": true,
+    "all_completed_once": true,
+    "all_terminal_under_250ms": true
+  }
+}

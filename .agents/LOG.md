@@ -1474,3 +1474,20 @@
 - Archived current raw JSON, restart health, UI/Logs/settings screenshots, and
   source/DB observations under
   `docs/internal/release-gates/20260719_dsv4_terminal_dispatch_native_l2/`.
+
+## 2026-07-19 - ZAYA typed CCA current-source live proof
+
+- Traced ZAYA's native `zaya_cca_v1` contract: generic TurboQuant is disabled,
+  Paged Off is promoted to typed paged storage, and prefix chains without
+  terminal convolution/previous-hidden state are rejected.
+- Raw Responses cold/warm/changed-suffix runs streamed 26-39 visible deltas and
+  terminaled within 17 ms. Exact warm saved 919 typed tokens; the unsafe
+  changed suffix clean-prefilled.
+- The Electron Sessions Start path eagerly loaded PID 50901. A fresh chat
+  streamed exact `ZAYA-UI-FIRST-DONE`. `Save & Restart` replaced the process
+  with PID 52039, which began with zero L1 and 2,101 L2 tokens before any
+  request; Regenerate restored 529/537 as `paged+zaya_cca+disk` and exact-
+  finaled.
+- Focused contracts passed 49 with one broad-selection skip. Preserved raw
+  JSON, health, driver, DOM trace, and visually inspected screenshots under
+  `docs/internal/release-gates/20260719_zaya_typed_cca_terminal_l2/`.

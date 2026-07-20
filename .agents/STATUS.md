@@ -7527,3 +7527,18 @@ remains `PARTIAL_NO_1_6_12_RELEASE`.
   regenerate produced `TERTERMINAL`. No fake output rewrite was introduced.
 - Evidence:
   `docs/internal/release-gates/20260719_dsv4_terminal_dispatch_native_l2/`.
+
+## 2026-07-19 - ZAYA typed CCA terminal and L2
+
+Status: `VERIFIED-LIVE_SCOPED`; overall release remains
+`PARTIAL_NO_1_6_12_RELEASE`.
+
+- The available affine JANG ZAYA artifact now has current-source raw Responses
+  and real Electron proof for progressive terminal delivery, a 919-token exact
+  typed RAM hit, eager model load, and a 529/537-token process-restart SSD
+  restore as `paged+zaya_cca+disk`.
+- Unsafe non-terminal CCA partials clean-prefill by design; generic TurboQuant
+  remains disabled. Raw strict formatting, media, tool/protocol breadth,
+  failure soak, eviction, and alternate variants remain open.
+- Evidence:
+  `docs/internal/release-gates/20260719_zaya_typed_cca_terminal_l2/`.
