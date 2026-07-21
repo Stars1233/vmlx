@@ -4236,3 +4236,50 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   parser families, full suites, and signed-app repetition remain open.
   Evidence:
   `docs/internal/release-gates/20260721_gateway_concurrent_single_model_swap/`.
+
+## 2026-07-21 - real Electron affine JANG conversion and produced-model agent loop
+
+- `QUANT-UI-JANG4M-CONVERT`: `VERIFIED-LIVE_SCOPED`. The real Electron Tools
+  converter invoked the current venv engine on the local 18 GB
+  `OsaurusAgent-9b-BF16` source and produced
+  `Codex-Quant-Probe-OsaurusAgent-9b-JANG_4M` in 13.8 seconds. The output is
+  affine `mx.quantize` JANG_4M at 4.66 measured bits with 4/8-bit tensors and
+  16-bit passthrough, not JANGTQ/MXTQ and not base MLX MXFP. Ten indexed
+  safetensor shards exist, none are missing, and the converter's own load +
+  generation smoke returned coherent text.
+- The visible `Serve Model` -> Create Session -> `Launch Session` flow eagerly
+  materialized PID 68166 before a request. Health identified affine MLX
+  quantized-matmul dispatch, hybrid Qwen cache with eight attention-KV plus 24
+  native SSM companion layers, q4 TurboQuant only at the attention-KV storage
+  boundary, paged RAM, and Block L2.
+- `QUANT-UI-JANG4M-AGENT`: `VERIFIED-LIVE_SCOPED`. With reasoning Auto and
+  built-in tools visibly enabled, a fresh Electron chat painted 12 states,
+  streamed reasoning separately, executed exactly one real
+  `file_info(panel/package.json)`, exact-finaled
+  `QUANT-UI-T2-CORRECTED-DONE SIZE=5.2 KB`, and persisted one tool-call/result
+  pair without warning. The next no-tool history turn painted eight states and
+  exact-finaled the same path and size from the prior result.
+- The earlier raw-JSON UI output is classified, not hidden: that chat had
+  `builtin_tools_enabled=0`, and `[CHAT_DIAG]` recorded `has_tools=false`.
+  Direct API and the corrected UI both emitted a schema-valid call once a tool
+  schema was actually available. No quantizer/parser fix, prompt coercion, or
+  raw-JSON rewrite was justified.
+- `QUANT-API-JANG4M-RESPONSES`: `VERIFIED-LIVE_SCOPED`. The raw timed SSE gate
+  used the already Electron-loaded server. Round one emitted 28 reasoning and
+  two function-argument deltas before one `file_info` call. Its
+  `previous_response_id` follow-up kept tools available, made no repeat call,
+  emitted 34 reasoning plus 15 content deltas, exact-finaled the real 5.2 KB
+  result, and ended with one `response.completed`; 256 input tokens were
+  `paged+ssm+tq-native` cached.
+- Active-source/dead-code audit traced ModelConverter -> developer IPC ->
+  `_jang_convert_command` -> `jang_tools.convert_model` and the ordinary
+  Sessions/Chat path. All have production call sites; no dead/test-only bypass
+  or compatibility branch was added or found safe to remove in this scope.
+- Retain `PARTIAL`: other affine profiles/custom mix, error/cancel/overwrite,
+  large MoE/calibration modes, newly converted Chat/Anthropic/Ollama,
+  eviction/restart/paged-off partial L2, and JANGTQ/MXTQ conversion are open.
+  The copied Qwen vision metadata is currently safety-gated
+  `forceTextOnly=true` because this freshly converted affine hybrid artifact
+  lacks independent live-verified vision status; converted-model media remains
+  open rather than being inferred from files. Evidence:
+  `docs/internal/release-gates/20260721_electron_jang4m_conversion_agent/`.
