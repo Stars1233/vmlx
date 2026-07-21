@@ -1,0 +1,432 @@
+{
+  "created_at": "2026-07-20T19:21:59-0700",
+  "status": "pass",
+  "checks": {
+    "generation_config_defaults_are_surfaced": true,
+    "jang_config_sampling_defaults_override_generation_config": true,
+    "disabled_top_k_sentinels_normalize_to_off": true,
+    "mode_specific_jang_repetition_penalty_is_metadata_owned": true,
+    "request_api_overrides_win_over_startup_defaults": true,
+    "bundle_max_new_tokens_preserved_when_omitted": true,
+    "omitted_max_tokens_without_bundle_default_is_bounded": true,
+    "server_default_output_cap_is_not_request_ceiling": true,
+    "panel_max_output_context_labels_are_separated": true,
+    "no_hidden_sampler_forcing_or_repetition_floor": true,
+    "additional_args_cannot_override_app_owned_cli_flags": true,
+    "local_high_risk_model_metadata_audit": true,
+    "panel_does_not_emit_default_sampler_cli_flags": true,
+    "cli_startup_flags_match_engine": true,
+    "mlxstudio_startup_preview_matches_runtime": true,
+    "startup_surface_independence_pinned": true,
+    "legacy_count_floor_still_nontrivial": true,
+    "generation_defaults_family_matrix_complete": true
+  },
+  "generation_defaults_family_matrix": {
+    "standard_mlx_generation_config": {
+      "status": "pass",
+      "checks": {
+        "generation_config_defaults_are_surfaced": true
+      },
+      "missing_markers": []
+    },
+    "jang_chat_sampling_overrides": {
+      "status": "pass",
+      "checks": {
+        "jang_config_sampling_defaults_override_generation_config": true,
+        "mode_specific_jang_repetition_penalty_is_metadata_owned": true
+      },
+      "missing_markers": []
+    },
+    "disabled_top_k_sentinel": {
+      "status": "pass",
+      "checks": {
+        "disabled_top_k_sentinels_normalize_to_off": true
+      },
+      "missing_markers": []
+    },
+    "generation_config_do_sample_false": {
+      "status": "pass",
+      "checks": {
+        "generation_config_defaults_are_surfaced": true,
+        "no_hidden_sampler_forcing_or_repetition_floor": true
+      },
+      "missing_markers": []
+    },
+    "dsv4_direct_chat_repetition_policy": {
+      "status": "pass",
+      "checks": {
+        "mode_specific_jang_repetition_penalty_is_metadata_owned": true,
+        "no_hidden_sampler_forcing_or_repetition_floor": true,
+        "additional_args_cannot_override_app_owned_cli_flags": true
+      },
+      "missing_markers": []
+    },
+    "max_output_context_separation": {
+      "status": "pass",
+      "checks": {
+        "request_api_overrides_win_over_startup_defaults": true,
+        "server_default_output_cap_is_not_request_ceiling": true,
+        "bundle_max_new_tokens_preserved_when_omitted": true,
+        "panel_max_output_context_labels_are_separated": true
+      },
+      "missing_markers": []
+    },
+    "thinking_budget_template_support": {
+      "status": "pass",
+      "checks": {
+        "local_high_risk_model_metadata_audit": true
+      },
+      "missing_markers": []
+    },
+    "step3p7_metadata_route_matrix": {
+      "status": "pass",
+      "checks": {
+        "local_high_risk_model_metadata_audit": true
+      },
+      "missing_markers": []
+    },
+    "additional_args_no_override": {
+      "status": "pass",
+      "checks": {
+        "additional_args_cannot_override_app_owned_cli_flags": true,
+        "panel_does_not_emit_default_sampler_cli_flags": true
+      },
+      "missing_markers": []
+    },
+    "cli_mlxstudio_startup_parity": {
+      "status": "pass",
+      "checks": {
+        "cli_startup_flags_match_engine": true,
+        "mlxstudio_startup_preview_matches_runtime": true,
+        "startup_surface_independence_pinned": true
+      },
+      "missing_markers": []
+    },
+    "registered_family_max_token_contract": {
+      "status": "pass",
+      "checks": {
+        "omitted_max_tokens_without_bundle_default_is_bounded": true
+      },
+      "missing_markers": []
+    }
+  },
+  "failed": [],
+  "missing_markers": [],
+  "source_hashes": {
+    "tests/cross_matrix/output_counts.py": "21685d28f408c8a8e8560b1293795abb25f873cff823bc0ccff51568b64db3f3",
+    "vmlx_engine/server.py": "85ab346c8f1d25d387cd5eecb3f806da3a8e9853048b53302656c762ffe918ec",
+    "vmlx_engine/cli.py": "aeaaa185fb26050f56bce6450ed98600b30a2ddb5b00e493b89ffdcea4a09146",
+    "tests/test_engine_audit.py": "30e06ef2a058df526df65bdecd48c7e323312dce81f84e8bd8216ea8685ad78d",
+    "tests/test_reasoning_modes.py": "0c4b8ed634d4d759b4be8b01f43ea6d2513a96010d9d936e85f55b8a33d28b48",
+    "panel/src/main/ipc/models.ts": "d3ed5b43dfc8ae8cad0ca6247283c1dc5929995bc40055401961baac53ce20c3",
+    "panel/src/main/sessions.ts": "0bc3018a655cc20b48a8b6aad2f04e527af256c78cb8ae1e2cd4c260bf321795",
+    "panel/src/renderer/src/components/sessions/ServerSettingsDrawer.tsx": "f26659fb925c8c4c70d927404d1badc946d863a6be9cad42176ab5ba835e0771",
+    "panel/src/renderer/src/components/sessions/SessionConfigForm.tsx": "afc00bc95d2f2690d765525705066b3bf4155d3541139a38371db4462ca68ac7",
+    "panel/src/renderer/src/components/sessions/SessionSettings.tsx": "d40ec11c5ec2a5f4978b53d66bcedfb4651571bce27907ae77336e20c4aa3324",
+    "panel/src/renderer/src/components/chat/ChatSettings.tsx": "8773f2ec17a81a3a7bf9f19a319318b7b7133b0ec2aa3570b8bba01bdf4a0347",
+    "panel/src/main/database.ts": "b8ae6c73a894112d841e07b39c8b2ec60d8e7c88ae589aea18f7a3f065e7286c",
+    "panel/src/main/ipc/chat.ts": "25b8772d54e1666cbdf68d6e092066bb043e01bcbf2fc42edf848ee1bc9de5c6",
+    "panel/src/shared/sessionConfigMigrations.ts": "a5fec550c52da39cd01e8cc9a8e97a194159a2b7250bcd590b78d3f9c04046b6",
+    "panel/tests/generation-defaults.test.ts": "a88dd32d2adf7f22908b57cb4908a2f5174f0efb3140b83f07fc985c4d3ac548",
+    "panel/tests/settings-flow.test.ts": "5dafea859fda096de7e0ef224454759ddc8f394b0dddcf850b316878c8c8fedd",
+    "tests/test_panel_cli_flag_contract.py": "95c1e10fa972ddfeb362153d4d21f0ee79c18c1efc3198169aeb1852971c9a36",
+    "tests/cross_matrix/run_generation_defaults_contract.py": "30cdc25c08ce0e02ade90e1ef78d95bde569985334538bc832aa3f9d0a32b092",
+    "tests/cross_matrix/run_local_generation_metadata_audit.py": "b166705167c391e8e53448c9ee1db5fbaf2bd5c05d27ceeacc37b674817c4cc1",
+    "tests/test_generation_defaults_contract.py": "9b2033933c39e30c7be3ffd3c4c7b9f816a256a373def41e3d605eaac74d1730",
+    "tests/test_local_generation_metadata_audit.py": "a50acc4c18bd51f95e2ef94d515cd8f4e6e067d2ab49f504cee5c33fcfa3ee68"
+  },
+  "results": {
+    "panel_generation_defaults": {
+      "name": "panel_generation_defaults",
+      "command": [
+        "npx",
+        "vitest",
+        "run",
+        "tests/generation-defaults.test.ts",
+        "tests/settings-flow.test.ts",
+        "--testNamePattern",
+        "generation_config|JANG chat sampling|disabled top_k|do_sample=false|repetition penalty|server --default sampling|max_new_tokens|legacy session maxTokens|Max Output Tokens|Max Context Tokens|model-owned|runtime default flags|additional args",
+        "--reporter=verbose"
+      ],
+      "cwd": "panel",
+      "returncode": 0,
+      "elapsed_sec": 0.525,
+      "counts": {
+        "passed": 28,
+        "skipped": 272,
+        "deselected": null
+      },
+      "stdout_tail": [
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mconnectHost Resolution\u001b[2m > \u001b[22mpasses through hostnames unchanged",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22mcontinuous batching off is a real master switch for LLM cache flags",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22mcontinuous batching off is a real master switch for VLM cache flags",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22mprefillBatchSize 0 omits flag (uses backend default 512)",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22mVLM with all caching features works together",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22mdisabling prefix cache disables all dependent features",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22mspeculative decoding with all options set",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22moptional model-specific features remain disabled by default",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22mtool parser emitted without auto-tool-choice (matches buildArgs)",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22mdetected tool parser emitted without auto-tool-choice",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22mMCP tools honor explicit prefix cache disable",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22mnoMemoryAwareCache suppresses memory-aware flags",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22mCLI preview includes prefixCacheMaxBytes like session launch args",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22mcacheMemoryPercent default 15 emits 0.15 when legacy memory cache is active",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22memits cache memory budget flags under paged cache (paged L1 RAM byte ceiling, #98)",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22mDSV4 native composite paged L1 receives the visible cache memory budget",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22mDSV4 launch and preview source do not suppress paged L1 memory flags",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22msettings form renders effective paged capacity and ignored memory-budget state",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22mdefaultTopP minimum boundary stays out of startup CLI",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22mnumDraftTokens 0 with speculative model omits draft tokens flag",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22mempty diskCacheDir with enableDiskCache does not emit --disk-cache-dir",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22menableDiskCache suppressed when usePagedCache is on",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22mVLM suppresses external speculative decoding at launch",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mFeature Interaction\u001b[2m > \u001b[22mcontinuous batching suppresses external speculative decoding but preserves embedding model",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mUpdate Checker\u001b[2m > \u001b[22mdetects newer major version",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mUpdate Checker\u001b[2m > \u001b[22mdetects newer minor version",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mUpdate Checker\u001b[2m > \u001b[22mdetects newer patch version",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mUpdate Checker\u001b[2m > \u001b[22mreturns false when versions are equal",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mUpdate Checker\u001b[2m > \u001b[22mreturns false when current is newer",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mUpdate Checker\u001b[2m > \u001b[22mhandles different version lengths",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mUpdate Checker\u001b[2m > \u001b[22mhandles major version jump",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mUpdate Checker\u001b[2m > \u001b[22mhandles zero versions",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mURL construction uses connectHost\u001b[2m > \u001b[22mall URL construction sites use connectHost \u2014 0.0.0.0 maps to 127.0.0.1",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mURL construction uses connectHost\u001b[2m > \u001b[22mconnectHost preserves specific IPs",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mURL construction uses connectHost\u001b[2m > \u001b[22mconnectHost preserves hostnames",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mURL construction uses connectHost\u001b[2m > \u001b[22mhealth URL construction uses connectHost",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mCORS credentials logic\u001b[2m > \u001b[22mcredentials are false when wildcard origin is used",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mCORS credentials logic\u001b[2m > \u001b[22mcredentials are true when specific origins are listed",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mCORS credentials logic\u001b[2m > \u001b[22mcredentials are false when wildcard is among specific origins",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mCORS credentials logic\u001b[2m > \u001b[22mempty string produces no origins",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mSettings \u2192 CLI Round-Trip Completeness\u001b[2m > \u001b[22mevery SessionConfig field is listed in the completeness check",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mSettings \u2192 CLI Round-Trip Completeness\u001b[2m > \u001b[22mdefault config produces the single-sequence cache-stack flags",
+        " \u001b[32m\u2713\u001b[39m tests/settings-flow.test.ts\u001b[2m > \u001b[22mSettings \u2192 CLI Round-Trip Completeness\u001b[2m > \u001b[22mserver startup generation defaults are model-owned and not editable sliders\u001b[32m 0\u001b[2mms\u001b[22m\u001b[39m",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mSettings \u2192 CLI Round-Trip Completeness\u001b[2m > \u001b[22mvideo sampling controls are gated to runtime video-capable families",
+        " \u001b[32m\u2713\u001b[39m tests/settings-flow.test.ts\u001b[2m > \u001b[22mSettings \u2192 CLI Round-Trip Completeness\u001b[2m > \u001b[22mMax Context Tokens can be manually typed while Auto is active\u001b[32m 0\u001b[2mms\u001b[22m\u001b[39m",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mSettings \u2192 CLI Round-Trip Completeness\u001b[2m > \u001b[22mslider settings expose stable value metadata and active unlimited state for live UI parity proof",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mSettings \u2192 CLI Round-Trip Completeness\u001b[2m > \u001b[22mtyped slider values are committed before either settings surface saves",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mSettings \u2192 CLI Round-Trip Completeness\u001b[2m > \u001b[22mGemma live stress harness checks actual settings input values, not body text labels",
+        " \u001b[32m\u2713\u001b[39m tests/settings-flow.test.ts\u001b[2m > \u001b[22mSettings \u2192 CLI Round-Trip Completeness\u001b[2m > \u001b[22mall local session settings surfaces pass detected model context to Max Context Tokens\u001b[32m 0\u001b[2mms\u001b[22m\u001b[39m",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mSettings \u2192 CLI Round-Trip Completeness\u001b[2m > \u001b[22mJANGTQ router top-k override is not exposed through settings UI or launch env",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mSettings \u2192 CLI Round-Trip Completeness\u001b[2m > \u001b[22mchat settings renders disabled top-k sentinel as Off instead of raw 0 or -1",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mSettings \u2192 CLI Round-Trip Completeness\u001b[2m > \u001b[22mchat settings shows max-thinking tokens only for engine-honoring or template-budget families",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mSettings \u2192 CLI Round-Trip Completeness\u001b[2m > \u001b[22mJANGTQ acceleration toggle is not exposed as a user setting",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mSettings \u2192 CLI Round-Trip Completeness\u001b[2m > \u001b[22mDSV4 and MiniMax-M3 timeout defaults are wired through launch, chat IPC, and gateway proxy",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mSettings \u2192 CLI Round-Trip Completeness\u001b[2m > \u001b[22mmutual exclusion: disk cache NOT emitted when paged cache is active",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mSettings \u2192 CLI Round-Trip Completeness\u001b[2m > \u001b[22mblock disk cache is emitted with paged RAM either active or disabled",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mSettings \u2192 CLI Round-Trip Completeness\u001b[2m > \u001b[22mcontinuous batching off suppresses prefix cache even if prefix toggle is still on",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mSettings \u2192 CLI Round-Trip Completeness\u001b[2m > \u001b[22mprefix cache disabled suppresses all cache sub-flags",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/settings-flow.test.ts\u001b[2m > \u001b[22mSettings \u2192 CLI Round-Trip Completeness\u001b[2m > \u001b[22mcache TTL only emitted without paged cache",
+        " \u001b[32m\u2713\u001b[39m tests/generation-defaults.test.ts\u001b[2m > \u001b[22mreadGenerationDefaults generation_config defaults\u001b[2m > \u001b[22muses standard MLX generation_config.json for non-JANG and VLM bundles\u001b[32m 2\u001b[2mms\u001b[22m\u001b[39m",
+        " \u001b[32m\u2713\u001b[39m tests/generation-defaults.test.ts\u001b[2m > \u001b[22mreadGenerationDefaults generation_config defaults\u001b[2m > \u001b[22mnormalizes disabled top_k sentinels to Off/0 for UI and requests\u001b[32m 1\u001b[2mms\u001b[22m\u001b[39m",
+        " \u001b[32m\u2713\u001b[39m tests/generation-defaults.test.ts\u001b[2m > \u001b[22mreadGenerationDefaults generation_config defaults\u001b[2m > \u001b[22mtreats generation_config do_sample=false as effective greedy sampling\u001b[32m 1\u001b[2mms\u001b[22m\u001b[39m",
+        " \u001b[32m\u2713\u001b[39m tests/generation-defaults.test.ts\u001b[2m > \u001b[22mreadGenerationDefaults generation_config defaults\u001b[2m > \u001b[22mlets JANG chat sampling metadata override generation_config.json\u001b[32m 1\u001b[2mms\u001b[22m\u001b[39m",
+        " \u001b[32m\u2713\u001b[39m tests/generation-defaults.test.ts\u001b[2m > \u001b[22mreadGenerationDefaults generation_config defaults\u001b[2m > \u001b[22msurfaces Step Flash JANG greedy chat metadata instead of treating zero temperature as missing\u001b[32m 1\u001b[2mms\u001b[22m\u001b[39m",
+        " \u001b[32m\u2713\u001b[39m tests/generation-defaults.test.ts\u001b[2m > \u001b[22mreadGenerationDefaults generation_config defaults\u001b[2m > \u001b[22mreturns the qwen3 reasoning-budget capability without inventing sampling defaults\u001b[32m 1\u001b[2mms\u001b[22m\u001b[39m",
+        " \u001b[32m\u2713\u001b[39m tests/generation-defaults.test.ts\u001b[2m > \u001b[22mreadGenerationDefaults generation_config defaults\u001b[2m > \u001b[22mmarks thinking-budget unsupported when the template has thinking but no budget variable\u001b[32m 1\u001b[2mms\u001b[22m\u001b[39m",
+        " \u001b[32m\u2713\u001b[39m tests/generation-defaults.test.ts\u001b[2m > \u001b[22mreadGenerationDefaults generation_config defaults\u001b[2m > \u001b[22msurfaces maxThinkingTokens only when the template consumes thinking_budget\u001b[32m 0\u001b[2mms\u001b[22m\u001b[39m",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/generation-defaults.test.ts\u001b[2m > \u001b[22mreadGenerationDefaults JANG sampling defaults\u001b[2m > \u001b[22muses Ling CRACK bundle startup defaults without hidden temperature override",
+        " \u001b[32m\u2713\u001b[39m tests/generation-defaults.test.ts\u001b[2m > \u001b[22mreadGenerationDefaults JANG sampling defaults\u001b[2m > \u001b[22muses chat repetition penalty when bundle default reasoning mode is not thinking\u001b[32m 1\u001b[2mms\u001b[22m\u001b[39m",
+        " \u001b[32m\u2713\u001b[39m tests/generation-defaults.test.ts\u001b[2m > \u001b[22mreadGenerationDefaults JANG sampling defaults\u001b[2m > \u001b[22muses neutral generic repetition penalty for DSV4 direct chat defaults\u001b[32m 1\u001b[2mms\u001b[22m\u001b[39m",
+        " \u001b[32m\u2713\u001b[39m tests/generation-defaults.test.ts\u001b[2m > \u001b[22mreadGenerationDefaults JANG sampling defaults\u001b[2m > \u001b[22muses thinking repetition penalty when bundle default reasoning mode is thinking\u001b[32m 0\u001b[2mms\u001b[22m\u001b[39m",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/generation-defaults.test.ts\u001b[2m > \u001b[22mreadGenerationDefaults supportsThinkingBudget capability surfacing\u001b[2m > \u001b[22msurfaces supportsThinkingBudget for an engine-honoring family (qwen3.5)",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/generation-defaults.test.ts\u001b[2m > \u001b[22mreadGenerationDefaults supportsThinkingBudget capability surfacing\u001b[2m > \u001b[22msurfaces supportsThinkingBudget for plain qwen3",
+        " \u001b[2m\u001b[90m\u2193\u001b[39m\u001b[22m tests/generation-defaults.test.ts\u001b[2m > \u001b[22mreadGenerationDefaults supportsThinkingBudget capability surfacing\u001b[2m > \u001b[22mdoes NOT surface supportsThinkingBudget for deepseek-v4 (no engine thinking budget)",
+        "",
+        "\u001b[2m Test Files \u001b[22m \u001b[1m\u001b[32m2 passed\u001b[39m\u001b[22m\u001b[90m (2)\u001b[39m",
+        "\u001b[2m      Tests \u001b[22m \u001b[1m\u001b[32m28 passed\u001b[39m\u001b[22m\u001b[2m | \u001b[22m\u001b[33m272 skipped\u001b[39m\u001b[90m (300)\u001b[39m",
+        "\u001b[2m   Start at \u001b[22m 19:21:52",
+        "\u001b[2m   Duration \u001b[22m 244ms\u001b[2m (transform 188ms, setup 0ms, import 217ms, tests 16ms, environment 0ms)\u001b[22m",
+        ""
+      ]
+    },
+    "engine_generation_defaults": {
+      "name": "engine_generation_defaults",
+      "command": [
+        "/Users/eric/mlx/vllm-mlx/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-vv",
+        "tests/test_engine_audit.py",
+        "tests/test_reasoning_modes.py",
+        "-k",
+        "generation_config or max_tokens_resolution_contract or sampling or output_caps or reasoning_effort_preserves_bundle or omitted_server_max_tokens or effort_does_not_synthesize or session_command_preview_mirrors_runtime_default_flags or do_sample_false"
+      ],
+      "cwd": ".",
+      "returncode": 0,
+      "elapsed_sec": 2.507,
+      "counts": {
+        "passed": 61,
+        "skipped": null,
+        "deselected": 594
+      },
+      "stdout_tail": [
+        "============================= test session starts ==============================",
+        "platform darwin -- Python 3.13.11, pytest-9.0.2, pluggy-1.6.0 -- /Users/eric/mlx/vllm-mlx/.venv/bin/python",
+        "cachedir: .pytest_cache",
+        "rootdir: /Users/eric/mlx/vllm-mlx-release-1.6.13",
+        "configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)",
+        "plugins: asyncio-1.3.0, anyio-4.13.0",
+        "asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function",
+        "collecting ... collected 655 items / 594 deselected / 61 selected",
+        "",
+        "tests/test_engine_audit.py::TestSamplingParams::test_sampling_params_has_all_fields PASSED [  1%]",
+        "tests/test_engine_audit.py::TestSamplingParams::test_sampling_params_defaults PASSED [  3%]",
+        "tests/test_engine_audit.py::TestMLLMBatchRequestSampling::test_mllm_batch_request_has_sampling_fields PASSED [  4%]",
+        "tests/test_engine_audit.py::TestMLLMBatchRequestSampling::test_mllm_batch_request_defaults PASSED [  6%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_family_fallback_prefers_loaded_model_path_over_served_alias PASSED [  8%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_gemma4_video_capability_requires_video_processor PASSED [  9%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_step37_video_capability_uses_frame_fallback PASSED [ 11%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_nemotron_omni_installs_vendored_cradio_dynamic_module PASSED [ 13%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_nemotron_omni_temp_view_rewrites_cradio_automap PASSED [ 14%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_nemotron_omni_temp_view_patches_radio_constructor PASSED [ 16%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_nemotron_omni_temp_view_preseeds_cradio_cache PASSED [ 18%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_nemotron_omni_extract_parts_routes_video_to_image_frames PASSED [ 19%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_resolve_temperature_request_value PASSED [ 21%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_resolve_temperature_fallback PASSED [ 22%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_resolve_top_p_request_value PASSED [ 24%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_resolve_top_p_fallback PASSED [ 26%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_api_routes_pass_model_to_sampling_resolvers PASSED [ 27%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_chat_and_responses_log_and_forward_supported_sampling_kwargs PASSED [ 29%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_all_top_k_resolution_sites_normalize_deterministic_filters PASSED [ 31%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_temperature_zero_omits_bundle_sampling_filters_at_route_layer PASSED [ 32%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_temperature_zero_preserves_explicit_sampling_filters PASSED [ 34%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_request_output_caps_override_server_default_without_touching_context_cap PASSED [ 36%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_chat_and_responses_streaming_output_caps_override_server_default_without_touching_context_cap PASSED [ 37%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_streaming_output_caps_do_not_mutate_server_default_across_later_omitted_requests PASSED [ 39%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_explicit_startup_max_tokens_is_default_not_request_ceiling PASSED [ 40%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_request_output_caps_can_go_below_or_above_startup_default PASSED [ 42%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_request_output_caps_do_not_mutate_server_default_across_later_omitted_requests PASSED [ 44%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_legacy_completions_output_cap_overrides_server_default_without_touching_context_cap PASSED [ 45%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_legacy_completions_streaming_output_cap_overrides_server_default_without_touching_context_cap PASSED [ 47%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_ollama_streaming_num_predict_overrides_server_default_without_touching_context_cap PASSED [ 49%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_ollama_nonstream_num_predict_overrides_server_default_without_touching_context_cap PASSED [ 50%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_prompt_context_aliases_clamp_without_rewriting_output_caps PASSED [ 52%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_reasoning_effort_preserves_bundle_max_new_tokens PASSED [ 54%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_explicit_max_thinking_tokens_overrides_effort_budget_without_rewriting_output_length PASSED [ 55%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_anthropic_messages_omitted_max_tokens_uses_bundle_default PASSED [ 57%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_anthropic_messages_streaming_max_tokens_overrides_server_default_without_touching_context_cap PASSED [ 59%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_explicit_server_max_tokens_overrides_bundle_max_new_tokens PASSED [ 60%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_omitted_server_max_tokens_uses_bundle_max_new_tokens PASSED [ 62%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_omitted_server_max_tokens_without_bundle_default_is_bounded PASSED [ 63%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_ling_bailing_omitted_top_k_stays_neutral_without_bundle_metadata PASSED [ 65%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_max_tokens_resolution_contract_applies_to_every_registered_family PASSED [ 67%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_wake_reload_preserves_max_tokens_explicitness PASSED [ 68%]",
+        "tests/test_engine_audit.py::TestServerSamplingResolution::test_cli_serve_implicit_max_tokens_uses_bounded_fallback PASSED [ 70%]",
+        "tests/test_engine_audit.py::TestRequestStatus::test_sampling_params_stop_sequences PASSED [ 72%]",
+        "tests/test_engine_audit.py::TestAPIModels::test_chat_completion_request_has_sampling_fields PASSED [ 73%]",
+        "tests/test_engine_audit.py::TestAPIModels::test_responses_request_has_sampling_fields PASSED [ 75%]",
+        "tests/test_engine_audit.py::TestAPIModels::test_public_api_models_reject_non_positive_output_caps PASSED [ 77%]",
+        "tests/test_engine_audit.py::TestMLLMStopSequences::test_sampling_params_stop_sequences_populated PASSED [ 78%]",
+        "tests/test_engine_audit.py::TestMLLMStopSequences::test_sampling_params_stop_default_empty PASSED [ 80%]",
+        "tests/test_engine_audit.py::TestMLLMStopTokenIds::test_sampling_params_has_stop_token_ids PASSED [ 81%]",
+        "tests/test_engine_audit.py::TestL3ReasoningEffort::test_effort_does_not_synthesize_max_tokens_when_unset PASSED [ 83%]",
+        "tests/test_engine_audit.py::TestTurboQuantKVTelemetry::test_session_command_preview_mirrors_runtime_default_flags PASSED [ 85%]",
+        "tests/test_engine_audit.py::TestTurboQuantKVTelemetry::test_vlm_video_sampling_is_request_scoped_not_restart_required PASSED [ 86%]",
+        "tests/test_engine_audit.py::TestTurboQuantKVTelemetry::test_responses_long_context_tool_cache_gate_can_force_deterministic_sampling PASSED [ 88%]",
+        "tests/test_reasoning_modes.py::test_dsv4_jang_chat_defaults_override_generation_config_when_cli_unset PASSED [ 90%]",
+        "tests/test_reasoning_modes.py::test_ling_stamped_bailing_family_preserves_sampling_values PASSED [ 91%]",
+        "tests/test_reasoning_modes.py::test_generation_config_top_k_and_min_p_are_used_when_request_omits_values PASSED [ 93%]",
+        "tests/test_reasoning_modes.py::test_missing_bundle_sampling_defaults_do_not_force_sampler PASSED [ 95%]",
+        "tests/test_reasoning_modes.py::test_generation_config_do_sample_false_resolves_greedy_when_request_omits_sampling PASSED [ 96%]",
+        "tests/test_reasoning_modes.py::test_jang_chat_sampling_overrides_generation_config_do_sample_false PASSED [ 98%]",
+        "tests/test_reasoning_modes.py::test_minimax_m2_preserves_sampling_values_without_family_floor PASSED [100%]",
+        "",
+        "====================== 61 passed, 594 deselected in 1.89s ======================"
+      ]
+    },
+    "local_generation_metadata_audit": {
+      "name": "local_generation_metadata_audit",
+      "command": [
+        "/Users/eric/mlx/vllm-mlx/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-vv",
+        "tests/test_local_generation_metadata_audit.py"
+      ],
+      "cwd": ".",
+      "returncode": 0,
+      "elapsed_sec": 2.227,
+      "counts": {
+        "passed": 6,
+        "skipped": 1,
+        "deselected": null
+      },
+      "stdout_tail": [
+        "============================= test session starts ==============================",
+        "platform darwin -- Python 3.13.11, pytest-9.0.2, pluggy-1.6.0 -- /Users/eric/mlx/vllm-mlx/.venv/bin/python",
+        "cachedir: .pytest_cache",
+        "rootdir: /Users/eric/mlx/vllm-mlx-release-1.6.13",
+        "configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)",
+        "plugins: asyncio-1.3.0, anyio-4.13.0",
+        "asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function",
+        "collecting ... collected 7 items",
+        "",
+        "tests/test_local_generation_metadata_audit.py::test_local_generation_metadata_audit_defaults_include_step3p7_repro_paths PASSED [ 14%]",
+        "tests/test_local_generation_metadata_audit.py::test_local_generation_metadata_audit_reports_high_risk_rows SKIPPED [ 28%]",
+        "tests/test_local_generation_metadata_audit.py::test_local_generation_metadata_audit_artifact_is_json_serializable PASSED [ 42%]",
+        "tests/test_local_generation_metadata_audit.py::test_local_generation_metadata_audit_flags_thinking_template_without_budget PASSED [ 57%]",
+        "tests/test_local_generation_metadata_audit.py::test_local_generation_metadata_audit_accepts_template_budget_support PASSED [ 71%]",
+        "tests/test_local_generation_metadata_audit.py::test_local_generation_metadata_audit_reports_step3p7_source_runtime_route PASSED [ 85%]",
+        "tests/test_local_generation_metadata_audit.py::test_local_generation_metadata_audit_reports_step3p7_guard_when_runtime_missing PASSED [100%]",
+        "",
+        "========================= 6 passed, 1 skipped in 1.63s ========================="
+      ]
+    },
+    "panel_cli_startup_contract": {
+      "name": "panel_cli_startup_contract",
+      "command": [
+        "/Users/eric/mlx/vllm-mlx/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-vv",
+        "tests/test_panel_cli_flag_contract.py"
+      ],
+      "cwd": ".",
+      "returncode": 0,
+      "elapsed_sec": 2.008,
+      "counts": {
+        "passed": 22,
+        "skipped": null,
+        "deselected": null
+      },
+      "stdout_tail": [
+        "============================= test session starts ==============================",
+        "platform darwin -- Python 3.13.11, pytest-9.0.2, pluggy-1.6.0 -- /Users/eric/mlx/vllm-mlx/.venv/bin/python",
+        "cachedir: .pytest_cache",
+        "rootdir: /Users/eric/mlx/vllm-mlx-release-1.6.13",
+        "configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)",
+        "plugins: asyncio-1.3.0, anyio-4.13.0",
+        "asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function",
+        "collecting ... collected 22 items",
+        "",
+        "tests/test_panel_cli_flag_contract.py::test_panel_serve_flags_are_registered_engine_cli_flags PASSED [  4%]",
+        "tests/test_panel_cli_flag_contract.py::test_dsv4_advanced_args_blocklist_names_real_serve_flags PASSED [  9%]",
+        "tests/test_panel_cli_flag_contract.py::test_runtime_and_preview_additional_arg_filters_share_blocklists PASSED [ 13%]",
+        "tests/test_panel_cli_flag_contract.py::test_dsv4_stale_value_flags_strip_their_values_in_preview_and_runtime PASSED [ 18%]",
+        "tests/test_panel_cli_flag_contract.py::test_text_stale_value_flags_strip_their_values_in_preview_and_runtime PASSED [ 22%]",
+        "tests/test_panel_cli_flag_contract.py::test_panel_cli_flag_contract_covers_dsv4_cache_and_output_boundaries PASSED [ 27%]",
+        "tests/test_panel_cli_flag_contract.py::test_serve_cli_exposes_image_lora_flags_and_startup_passes_them_through PASSED [ 31%]",
+        "tests/test_panel_cli_flag_contract.py::test_command_preview_uses_runtime_numeric_sanitizers_for_advanced_modes PASSED [ 36%]",
+        "tests/test_panel_cli_flag_contract.py::test_command_preview_uses_runtime_numeric_sanitizers_for_core_flags PASSED [ 40%]",
+        "tests/test_panel_cli_flag_contract.py::test_paged_cache_capacity_is_visible_and_not_memory_mb_driven PASSED [ 45%]",
+        "tests/test_panel_cli_flag_contract.py::test_live_metal_headroom_ui_proof_checks_paged_capacity_log PASSED [ 50%]",
+        "tests/test_panel_cli_flag_contract.py::test_live_metal_headroom_ui_proof_checks_minimax_m3_native_cache_controls PASSED [ 54%]",
+        "tests/test_panel_cli_flag_contract.py::test_live_metal_headroom_chat_ui_proof_checks_visible_safety_block PASSED [ 59%]",
+        "tests/test_panel_cli_flag_contract.py::test_metal_oom_startup_errors_surface_wired_limit_guidance PASSED [ 63%]",
+        "tests/test_panel_cli_flag_contract.py::test_large_model_low_memory_preflight_blocks_before_engine_spawn PASSED [ 68%]",
+        "tests/test_panel_cli_flag_contract.py::test_jang_loader_wired_limit_honors_sysctl_by_default PASSED [ 72%]",
+        "tests/test_panel_cli_flag_contract.py::test_jang_loader_wired_limit_default_honors_full_sysctl PASSED [ 77%]",
+        "tests/test_panel_cli_flag_contract.py::test_jang_loader_wired_limit_opt_in_reserve_still_works PASSED [ 81%]",
+        "tests/test_panel_cli_flag_contract.py::test_cli_minimax_m3_vl_autoroutes_to_text_msa_runtime PASSED [ 86%]",
+        "tests/test_panel_cli_flag_contract.py::test_live_clean_start_proof_checks_mm3_actual_launch_argv PASSED [ 90%]",
+        "tests/test_panel_cli_flag_contract.py::test_mm3_and_gemma_live_stress_harnesses_cover_api_auth_matrix PASSED [ 95%]",
+        "tests/test_panel_cli_flag_contract.py::test_mm3_and_gemma_live_stress_harnesses_gate_actual_launch_argv PASSED [100%]",
+        "",
+        "============================== 22 passed in 1.49s =============================="
+      ]
+    }
+  }
+}

@@ -1,0 +1,48 @@
+1784600339.496860	event: response.created
+1784600339.496865	data: {"type": "response.created", "response": {"id": "resp_c6c5d5ee6b73", "object": "response", "created_at": 1784600339, "status": "in_progress", "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M", "output": []}, "sequence_number": 0}
+1784600339.496866
+1784600339.496866	event: response.output_item.added
+1784600339.496867	data: {"type": "response.output_item.added", "output_index": 0, "item": {"id": "item_c6aff473f775", "type": "message", "status": "in_progress", "role": "assistant", "content": []}, "sequence_number": 1}
+1784600339.496867
+1784600339.496868	event: response.content_part.added
+1784600339.496868	data: {"type": "response.content_part.added", "item_id": "item_c6aff473f775", "output_index": 0, "content_index": 0, "part": {"type": "output_text", "text": "", "annotations": []}, "sequence_number": 2}
+1784600339.496869
+1784600339.835601	event: response.output_text.delta
+1784600339.835613	data: {"type": "response.output_text.delta", "item_id": "item_c6aff473f775", "output_index": 0, "content_index": 0, "delta": "S", "sequence_number": 3}
+1784600339.835615
+1784600339.867370	event: response.output_text.delta
+1784600339.867381	data: {"type": "response.output_text.delta", "item_id": "item_c6aff473f775", "output_index": 0, "content_index": 0, "delta": "AMP", "sequence_number": 4}
+1784600339.867383
+1784600339.899007	event: response.output_text.delta
+1784600339.899016	data: {"type": "response.output_text.delta", "item_id": "item_c6aff473f775", "output_index": 0, "content_index": 0, "delta": "-", "sequence_number": 5}
+1784600339.899017
+1784600339.930740	event: response.output_text.delta
+1784600339.930749	data: {"type": "response.output_text.delta", "item_id": "item_c6aff473f775", "output_index": 0, "content_index": 0, "delta": "API", "sequence_number": 6}
+1784600339.930751
+1784600339.962470	event: response.output_text.delta
+1784600339.962484	data: {"type": "response.output_text.delta", "item_id": "item_c6aff473f775", "output_index": 0, "content_index": 0, "delta": "-", "sequence_number": 7}
+1784600339.962485
+1784600339.994255	event: response.output_text.delta
+1784600339.994268	data: {"type": "response.output_text.delta", "item_id": "item_c6aff473f775", "output_index": 0, "content_index": 0, "delta": "RESP", "sequence_number": 8}
+1784600339.994270
+1784600340.026384	event: response.output_text.delta
+1784600340.026404	data: {"type": "response.output_text.delta", "item_id": "item_c6aff473f775", "output_index": 0, "content_index": 0, "delta": "0", "sequence_number": 9}
+1784600340.026406
+1784600340.058129	event: response.output_text.delta
+1784600340.058140	data: {"type": "response.output_text.delta", "item_id": "item_c6aff473f775", "output_index": 0, "content_index": 0, "delta": "-", "sequence_number": 10}
+1784600340.058142
+1784600340.089650	event: response.output_text.delta
+1784600340.089673	data: {"type": "response.output_text.delta", "item_id": "item_c6aff473f775", "output_index": 0, "content_index": 0, "delta": "DONE", "sequence_number": 11}
+1784600340.089675
+1784600340.131246	event: response.output_text.done
+1784600340.131259	data: {"type": "response.output_text.done", "item_id": "item_c6aff473f775", "output_index": 0, "content_index": 0, "text": "SAMP-API-RESP0-DONE", "sequence_number": 12}
+1784600340.131261
+1784600340.131262	event: response.content_part.done
+1784600340.131262	data: {"type": "response.content_part.done", "item_id": "item_c6aff473f775", "output_index": 0, "content_index": 0, "part": {"type": "output_text", "text": "SAMP-API-RESP0-DONE", "annotations": []}, "sequence_number": 13}
+1784600340.131264
+1784600340.131317	event: response.output_item.done
+1784600340.131320	data: {"type": "response.output_item.done", "output_index": 0, "item": {"id": "item_c6aff473f775", "type": "message", "status": "completed", "role": "assistant", "content": [{"type": "output_text", "text": "SAMP-API-RESP0-DONE", "annotations": []}]}, "sequence_number": 14}
+1784600340.131321
+1784600340.131338	event: response.completed
+1784600340.131343	data: {"type": "response.completed", "response": {"id": "resp_c6c5d5ee6b73", "object": "response", "created_at": 1784600339, "status": "completed", "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M", "output_text": "SAMP-API-RESP0-DONE", "output": [{"id": "item_c6aff473f775", "type": "message", "status": "completed", "role": "assistant", "content": [{"type": "output_text", "text": "SAMP-API-RESP0-DONE", "annotations": []}]}], "usage": {"input_tokens": 26, "output_tokens": 14, "total_tokens": 40}}, "sequence_number": 15}
+1784600340.131345

@@ -3730,18 +3730,34 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   diff check passed. Evidence:
   `docs/internal/release-gates/20260720_gemma4_audio_mask_cache/`.
 
-## 2026-07-20 - model-derived generation-settings UI parity
+## 2026-07-20/21 - model-derived generation-settings UI parity
 
-- `CHAT-SAMPLING-DEFAULTS-PARITY`: `OPEN / USER-REPORTED`. Visible Chat
-  Settings sliders for temperature, top-p, top-k, and repetition penalty may
-  not match the model-owned defaults from `generation_config.json`,
-  `jang_config.json`, or other bundle metadata.
-- Required proof is end to end for representative affine JANG, JANGTQ/MXTQ,
-  base MLX/MXFP, and architecture-native routes: document precedence, inspect
-  exact bundle values, start via the real Electron UI, compare visible slider
-  values and persisted session/SQLite state, capture the outgoing Chat and
-  Responses payloads, and verify the effective runtime values. Include a user
-  override/save/reopen/restart negative control.
-- A backend that silently uses the right default while the UI displays a
-  different value is still a failure. Do not close from source inspection or
-  slider appearance alone.
+- `CHAT-SAMPLING-DEFAULTS-PARITY`: `VERIFIED-LIVE-SCOPED / BROADER MATRIX
+  PARTIAL`. The affine Gemma JANG route now has current-source end-to-end proof
+  from exact bundle metadata (`temperature=1.0`, `top_p=0.95`, `top_k=64`) to
+  persisted session detection, visible Chat Settings, outgoing Responses body,
+  and resolved engine kwargs.
+- Root cause for the explicit-Off failure was shared request serialization:
+  Chat/Responses and both Ollama translations dropped `top_k=0`, so the engine
+  correctly re-inherited bundle `64`. Current source preserves zero. A real
+  Electron Save produced a request with `"top_k":0` and engine kwargs without
+  top-k; exact visible output completed with no warning. Raw Responses, Chat,
+  and Ollama each streamed nine content deltas and a valid terminal.
+- Real Reset now clears sampler fields to SQL `NULL` rather than storing a
+  stale copy. The drawer visibly returned to Top K 64 and the next request
+  omitted the override; engine kwargs resolved `top_k:64` from the bundle.
+- Removed the engine-only Ling/Bailing top-k 20 fallback. Undeclared sampling
+  now remains neutral unless supplied by request, startup/session CLI, or
+  bundle metadata. No Ling/Bailing artifact exists in the active roots, so this
+  sub-row is `PASS-SOURCE`, not live.
+- Focused validation: panel 519/519 plus typecheck; engine sampling audit 51/51;
+  generation-default matrix pass (28 panel + 61 engine + 6 live-path metadata
+  audit + 22 startup contracts). Evidence:
+  `docs/internal/release-gates/20260720_sampling_defaults_ui_runtime/`.
+- Remaining: repeat this exact visual/payload/runtime chain on JANGTQ/MXTQ,
+  base MLX/MXFP, DSV4/M3 native typed routes, and a bundle whose repetition
+  penalty is non-neutral. Do not promote the broad matrix from this Gemma row.
+- `ENGINE-VERSION-TRUTH`: `OPEN`. The restarted v1.6.14 Electron source log
+  reported the PATH `vmlx-engine` version as 1.6.12. Trace package/source/bundle
+  version surfaces before the next checkpoint; do not infer runtime source from
+  the displayed version alone.
