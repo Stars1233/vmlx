@@ -1658,3 +1658,12 @@ family/media/network/release matrix.
 This is a non-duplicate closure of the Qwen media/protocol stream defect. It
 does not reopen already-proven cache, MTP, sampler, or one-model ownership
 rows, and it does not promote the broader family/release matrix.
+
+## 2026-07-21 Electron gateway disconnect addendum
+
+| Gate | Status | Current-source evidence | Remaining |
+|---|---|---|---|
+| Four-protocol downstream disconnect | PASS-LIVE scoped | The real Electron-owned gateway streamed three visible deltas on Chat, Responses, Anthropic, and Ollama before each client deliberately closed. The backend returned to zero active/running requests in 24.88-28.08 ms. | Explicit request-ID cancel, upstream/backend connection loss, active-request LAN/port failure, and concurrent disconnect/swap soak remain OPEN. Evidence: `../20260721_gateway_disconnect_recovery_current/`. |
+| Immediate gateway recovery | PASS-LIVE scoped | Each protocol immediately returned HTTP 200, exact content over 8-10 progressive deltas, its native terminal, and an idle backend. Single Model On retained exactly one Qwen process. | Signed-app repetition and other failure classes remain OPEN. |
+| Visible Electron post-disconnect recovery | PASS-LIVE scoped | The next real Chat UI turn produced 88 observed states, separate 891-character reasoning, exact non-empty content, no warning/tool payload, and 130 `paged+ssm+disk+tq-native` cached tokens. | This is transport recovery proof, not a repeat or promotion of the Qwen model/cache matrix. |
+| Gateway disconnect helpers | PASS-SOURCE+LIVE | Both shared close helpers have four production call sites across the generic proxy and Ollama chat/templated/raw routes. No source fix or dead replacement branch was required. | Continue dead-code review with the owning surface of each future fix; do not delete these active helpers. |

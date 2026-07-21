@@ -4122,3 +4122,27 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   cancellation/fault injection, alternate-media salt, signed-app repetition,
   and other model families remain open. Evidence:
   `docs/internal/release-gates/20260721_gateway_media_stream_repair_current/`.
+
+## 2026-07-21 - Electron gateway downstream-disconnect recovery
+
+- `GATEWAY-CLIENT-DISCONNECT-FOUR-PROTOCOL`: `VERIFIED-LIVE_SCOPED`. The
+  current Electron-owned gateway on port 8088 received real Chat, Responses,
+  Anthropic, and Ollama streams. Each downstream client closed after three
+  visible deltas and before a terminal. Backend activity returned to zero in
+  24.88-28.08 ms after close.
+- Each immediate recovery request returned HTTP 200, exact visible content,
+  8-10 progressive deltas, its native terminal, and an idle backend. Gateway
+  health retained Single Model On, one Qwen engine, and all other sessions
+  stopped.
+- The following real Electron chat turn produced 88 observed UI states,
+  separate 891-character reasoning, exact
+  `GATEWAY-UI-DISCONNECT-RECOVERY-DONE`, no warning/tool payload, and 130
+  `paged+ssm+disk+tq-native` cached tokens. The screenshot was visually
+  inspected and backend health remained idle.
+- Source/dead-code trace confirms both shared close helpers have four
+  production route call sites; no source edit or redundant model/test matrix
+  was needed.
+- Retain `PARTIAL`: explicit request-ID cancel, upstream/backend connection
+  loss through the gateway, concurrent disconnect/swap soak, active-request
+  LAN/port failure, and signed-app repetition remain open. Evidence:
+  `docs/internal/release-gates/20260721_gateway_disconnect_recovery_current/`.

@@ -1,0 +1,406 @@
+{
+  "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+  "gateway": "http://127.0.0.1:8088",
+  "backend": "http://127.0.0.1:8005",
+  "gateway_health_before": {
+    "status": "ok",
+    "gateway_port": 8088,
+    "single_model_mode": true,
+    "backends": [
+      {
+        "id": "6bfcafa6-a3aa-447a-bf6a-a31349931f18",
+        "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+        "status": "running",
+        "port": 8005
+      },
+      {
+        "id": "c3011773-8e0b-487c-b0be-09fb06cc17ed",
+        "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+        "status": "stopped",
+        "port": 8003
+      },
+      {
+        "id": "4bf52e96-0489-4184-997c-8203f3dfe2ae",
+        "model": "JANGQ-AI/Laguna-XS.2-JANGTQ",
+        "status": "stopped",
+        "port": 8000
+      },
+      {
+        "id": "8bea88a2-df48-48b2-a192-a8b8e09b7945",
+        "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+        "status": "stopped",
+        "port": 8002
+      },
+      {
+        "id": "32b760b3-43ef-48c1-b4b5-188c57363a4e",
+        "model": "dealignai/Gemma-4-26B-A4B-it-JANG_4M-CRACK",
+        "status": "stopped",
+        "port": 8004
+      },
+      {
+        "id": "799e1b6f-c60d-40a3-b111-b9408769035e",
+        "model": "dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK",
+        "status": "stopped",
+        "port": 8001
+      },
+      {
+        "id": "da93e052-0313-489a-a56a-62f22a2ce9af",
+        "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M",
+        "status": "stopped",
+        "port": 8141
+      },
+      {
+        "id": "89a68557-452b-4850-b189-ba9d57c4d6c5",
+        "model": "dealignai/LFM2.5-8B-A1B-MXFP4-CRACK",
+        "status": "stopped",
+        "port": 8016
+      }
+    ]
+  },
+  "backend_before": {
+    "status": "healthy",
+    "model_loaded": true,
+    "num_running": 0,
+    "num_waiting": 0,
+    "active_requests": 0
+  },
+  "rows": {
+    "chat": {
+      "disconnect": {
+        "status": 200,
+        "closed_at_ms": 487.35,
+        "content_deltas_before_close": [
+          {
+            "at_ms": 392.91,
+            "text": "STREAM"
+          },
+          {
+            "at_ms": 393.38,
+            "text": " "
+          },
+          {
+            "at_ms": 487.23,
+            "text": "1\nSTREAM"
+          }
+        ],
+        "idle_after_close": {
+          "idle": true,
+          "elapsed_ms": 24.88,
+          "samples": [
+            {
+              "status": "healthy",
+              "model_loaded": true,
+              "num_running": 0,
+              "num_waiting": 0,
+              "active_requests": 0,
+              "at_ms": 24.88
+            }
+          ]
+        }
+      },
+      "recovery": {
+        "status": 200,
+        "elapsed_ms": 743.58,
+        "expected": "GATEWAY-CHAT-DISCONNECT-RECOVERY-DONE",
+        "visible": "GATEWAY-CHAT-DISCONNECT-RECOVERY-DONE",
+        "content_delta_count": 8,
+        "terminal": [
+          "stop",
+          "DONE"
+        ],
+        "exact": true,
+        "idle_after_recovery": {
+          "idle": true,
+          "elapsed_ms": 23.63,
+          "samples": [
+            {
+              "status": "healthy",
+              "model_loaded": true,
+              "num_running": 0,
+              "num_waiting": 0,
+              "active_requests": 0,
+              "at_ms": 23.63
+            }
+          ]
+        }
+      }
+    },
+    "responses": {
+      "disconnect": {
+        "status": 200,
+        "closed_at_ms": 512.53,
+        "content_deltas_before_close": [
+          {
+            "at_ms": 417.26,
+            "text": "STREAM"
+          },
+          {
+            "at_ms": 418.48,
+            "text": " "
+          },
+          {
+            "at_ms": 512.41,
+            "text": "1\nSTREAM"
+          }
+        ],
+        "idle_after_close": {
+          "idle": true,
+          "elapsed_ms": 27.95,
+          "samples": [
+            {
+              "status": "healthy",
+              "model_loaded": true,
+              "num_running": 0,
+              "num_waiting": 0,
+              "active_requests": 0,
+              "at_ms": 27.95
+            }
+          ]
+        }
+      },
+      "recovery": {
+        "status": 200,
+        "elapsed_ms": 855.45,
+        "expected": "GATEWAY-RESPONSES-DISCONNECT-RECOVERY-DONE",
+        "visible": "GATEWAY-RESPONSES-DISCONNECT-RECOVERY-DONE",
+        "content_delta_count": 9,
+        "terminal": [
+          "response.completed"
+        ],
+        "exact": true,
+        "idle_after_recovery": {
+          "idle": true,
+          "elapsed_ms": 23.23,
+          "samples": [
+            {
+              "status": "healthy",
+              "model_loaded": true,
+              "num_running": 0,
+              "num_waiting": 0,
+              "active_requests": 0,
+              "at_ms": 23.23
+            }
+          ]
+        }
+      }
+    },
+    "anthropic": {
+      "disconnect": {
+        "status": 200,
+        "closed_at_ms": 518.26,
+        "content_deltas_before_close": [
+          {
+            "at_ms": 424.03,
+            "text": "STREAM"
+          },
+          {
+            "at_ms": 425.34,
+            "text": " "
+          },
+          {
+            "at_ms": 518.13,
+            "text": "1\nSTREAM"
+          }
+        ],
+        "idle_after_close": {
+          "idle": true,
+          "elapsed_ms": 28.08,
+          "samples": [
+            {
+              "status": "healthy",
+              "model_loaded": true,
+              "num_running": 0,
+              "num_waiting": 0,
+              "active_requests": 0,
+              "at_ms": 28.08
+            }
+          ]
+        }
+      },
+      "recovery": {
+        "status": 200,
+        "elapsed_ms": 948.52,
+        "expected": "GATEWAY-ANTHROPIC-DISCONNECT-RECOVERY-DONE",
+        "visible": "GATEWAY-ANTHROPIC-DISCONNECT-RECOVERY-DONE",
+        "content_delta_count": 10,
+        "terminal": [
+          "message_stop"
+        ],
+        "exact": true,
+        "idle_after_recovery": {
+          "idle": true,
+          "elapsed_ms": 24.22,
+          "samples": [
+            {
+              "status": "healthy",
+              "model_loaded": true,
+              "num_running": 0,
+              "num_waiting": 0,
+              "active_requests": 0,
+              "at_ms": 24.22
+            }
+          ]
+        }
+      }
+    },
+    "ollama": {
+      "disconnect": {
+        "status": 200,
+        "closed_at_ms": 477.97,
+        "content_deltas_before_close": [
+          {
+            "at_ms": 383.85,
+            "text": "STREAM"
+          },
+          {
+            "at_ms": 384.65,
+            "text": " "
+          },
+          {
+            "at_ms": 477.87,
+            "text": "1\nSTREAM"
+          }
+        ],
+        "idle_after_close": {
+          "idle": true,
+          "elapsed_ms": 27.97,
+          "samples": [
+            {
+              "status": "healthy",
+              "model_loaded": true,
+              "num_running": 0,
+              "num_waiting": 0,
+              "active_requests": 0,
+              "at_ms": 27.97
+            }
+          ]
+        }
+      },
+      "recovery": {
+        "status": 200,
+        "elapsed_ms": 956.09,
+        "expected": "GATEWAY-OLLAMA-DISCONNECT-RECOVERY-DONE",
+        "visible": "GATEWAY-OLLAMA-DISCONNECT-RECOVERY-DONE",
+        "content_delta_count": 9,
+        "terminal": [
+          "stop"
+        ],
+        "exact": true,
+        "idle_after_recovery": {
+          "idle": true,
+          "elapsed_ms": 170.48,
+          "samples": [
+            {
+              "status": "healthy",
+              "model_loaded": true,
+              "num_running": 0,
+              "num_waiting": 0,
+              "active_requests": 0,
+              "at_ms": 170.48
+            }
+          ]
+        }
+      }
+    }
+  },
+  "gateway_health_after": {
+    "status": "ok",
+    "gateway_port": 8088,
+    "single_model_mode": true,
+    "backends": [
+      {
+        "id": "6bfcafa6-a3aa-447a-bf6a-a31349931f18",
+        "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+        "status": "running",
+        "port": 8005
+      },
+      {
+        "id": "c3011773-8e0b-487c-b0be-09fb06cc17ed",
+        "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+        "status": "stopped",
+        "port": 8003
+      },
+      {
+        "id": "4bf52e96-0489-4184-997c-8203f3dfe2ae",
+        "model": "JANGQ-AI/Laguna-XS.2-JANGTQ",
+        "status": "stopped",
+        "port": 8000
+      },
+      {
+        "id": "8bea88a2-df48-48b2-a192-a8b8e09b7945",
+        "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+        "status": "stopped",
+        "port": 8002
+      },
+      {
+        "id": "32b760b3-43ef-48c1-b4b5-188c57363a4e",
+        "model": "dealignai/Gemma-4-26B-A4B-it-JANG_4M-CRACK",
+        "status": "stopped",
+        "port": 8004
+      },
+      {
+        "id": "799e1b6f-c60d-40a3-b111-b9408769035e",
+        "model": "dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK",
+        "status": "stopped",
+        "port": 8001
+      },
+      {
+        "id": "da93e052-0313-489a-a56a-62f22a2ce9af",
+        "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M",
+        "status": "stopped",
+        "port": 8141
+      },
+      {
+        "id": "89a68557-452b-4850-b189-ba9d57c4d6c5",
+        "model": "dealignai/LFM2.5-8B-A1B-MXFP4-CRACK",
+        "status": "stopped",
+        "port": 8016
+      }
+    ]
+  },
+  "backend_after": {
+    "status": "healthy",
+    "model_loaded": true,
+    "num_running": 0,
+    "num_waiting": 0,
+    "active_requests": 0
+  },
+  "checks": {
+    "chat": {
+      "stream_started": true,
+      "cancelled_to_idle": true,
+      "recovery_200": true,
+      "recovery_exact": true,
+      "recovery_progressive": true,
+      "recovery_terminal": true,
+      "recovery_idle": true
+    },
+    "responses": {
+      "stream_started": true,
+      "cancelled_to_idle": true,
+      "recovery_200": true,
+      "recovery_exact": true,
+      "recovery_progressive": true,
+      "recovery_terminal": true,
+      "recovery_idle": true
+    },
+    "anthropic": {
+      "stream_started": true,
+      "cancelled_to_idle": true,
+      "recovery_200": true,
+      "recovery_exact": true,
+      "recovery_progressive": true,
+      "recovery_terminal": true,
+      "recovery_idle": true
+    },
+    "ollama": {
+      "stream_started": true,
+      "cancelled_to_idle": true,
+      "recovery_200": true,
+      "recovery_exact": true,
+      "recovery_progressive": true,
+      "recovery_terminal": true,
+      "recovery_idle": true
+    }
+  }
+}

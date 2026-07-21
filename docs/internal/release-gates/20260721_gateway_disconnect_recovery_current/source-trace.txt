@@ -1,0 +1,15 @@
+Current source trace recorded 2026-07-21
+
+panel/src/main/api-gateway.ts
+- 338-427: responseWritable, guarded write/end helpers, and JSON-line writer.
+- 430-449: downstream close destroys the active proxy response and the
+  pre-header proxy request.
+- 998,1011: generic OpenAI-compatible proxy production calls.
+- 1528,1731: Ollama chat production calls.
+- 1854,2005: Ollama templated generate production calls.
+- 2144,2173: Ollama raw generate production calls.
+
+Dead-code result
+- Both disconnect helpers have four production route call sites.
+- The guarded writer is used by generic proxy and translated Ollama streams.
+- No source edit was needed for this proof.
