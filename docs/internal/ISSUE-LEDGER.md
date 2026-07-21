@@ -4516,3 +4516,27 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   removed. Validation: 7/7 focused path/isolation tests, panel typecheck, and
   clean diff check. Evidence:
   `docs/internal/release-gates/20260721_engine_version_source_truth_current/`.
+
+## 2026-07-21 - JANGTQ sampling truth and initial-chat lifecycle
+
+- `JANGTQ-MODEL-SAMPLING-PARITY`: `VERIFIED-LIVE_SCOPED`. The exact
+  dealignai Qwen 3.6 JANGTQ/MXTQ bundle declares temperature 1.0, top-p 0.95,
+  and top-k 20. The real Electron drawer, SQLite no-override state, resolved
+  Logs values, and real argv/API path agreed. UI content painted progressive
+  prefixes and exact-finaled; uncapped raw Responses emitted its native done
+  and completed events. A separate explicit 64-token request truthfully ended
+  incomplete and remains a negative control.
+- `JANG-TEMPLATE-NOTICE`: `VERIFIED-LIVE_SCOPED`. The old renderer displayed
+  a stale redownload notice from the quantization label alone. Current source
+  checks real standalone or tokenizer-embedded templates, including include
+  targets. The real scanner returned `hasChatTemplate=true` for this exact
+  artifact and the current Electron session displayed no warning.
+- `INITIAL-CHAT-DEDUPE`: `VERIFIED-LIVE_SCOPED`. The retained pre-fix session
+  had two agent-created chats 9 ms apart because renderer get/create effects
+  raced. One main-process ensure operation now owns lookup and insertion. At a
+  clean zero-chat boundary, the real UI created exactly one row.
+- The superseded renderer get/create branch was removed. Focused validation:
+  36/36 plus panel typecheck and clean diff check. Base MLX/MXFP, DSV4/M3
+  typed sampling, and non-neutral repetition-penalty breadth remain PARTIAL.
+  Evidence:
+  `docs/internal/release-gates/20260721_jangtq_sampling_chat_lifecycle_current/`.
