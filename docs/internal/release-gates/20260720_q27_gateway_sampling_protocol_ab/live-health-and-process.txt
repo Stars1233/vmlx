@@ -1,0 +1,24 @@
+2026-07-20 post-matrix live ownership/cache summary
+
+Gateway 127.0.0.1:8088:
+  status=ok
+  gateway_port=8088
+  single_model_mode=true
+  running backend=dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP on 8005
+  all seven other saved backends=stopped
+
+Backend 127.0.0.1:8005:
+  status=healthy
+  model_loaded=true
+  model_name=dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP
+  scheduler active_requests=0
+  backend_mode=paged
+  paged_ram_enabled=true
+  block L2 tokens=444
+  SSM-companion L2 tokens=572
+  total L2 tokens=1016
+  q4-native block writes=11
+  scheduler cache hits=16
+
+Exactly one engine process remained:
+  PID 47036 /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine serve /Volumes/EricsLLMDrive/dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP --host 127.0.0.1 --port 8005 --use-paged-cache --enable-block-disk-cache --native-mtp-depth 3 --native-mtp-sampling-policy deterministic-defaults

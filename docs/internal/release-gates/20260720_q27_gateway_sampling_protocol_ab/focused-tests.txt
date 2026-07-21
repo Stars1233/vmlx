@@ -1,0 +1,19 @@
+2026-07-20 focused validation on erics-m5-max.local
+
+Python:
+  /Users/eric/mlx/vllm-mlx/.venv/bin/python -m pytest \
+    tests/test_anthropic_adapter.py \
+    tests/test_anthropic_stream_fixes.py \
+    tests/test_ollama_adapter.py -q
+Result: 92 passed in 1.68s
+
+Panel:
+  npm test -- --run \
+    tests/api-gateway-body.test.ts \
+    tests/api-gateway-ollama-behavior.test.ts \
+    tests/api-gateway-ollama.test.ts \
+    tests/api-gateway-single-model.behavior.test.ts
+Result: 4 files passed; 82 tests passed
+
+  npm run typecheck
+Result: passed (tsc --noEmit)

@@ -1,0 +1,1787 @@
+{
+  "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+  "gateway": "http://127.0.0.1:8088",
+  "variants": {
+    "omitted": {},
+    "explicit": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "repetition_penalty": 1.05
+    }
+  },
+  "rows": {
+    "chat_omitted": {
+      "marker": "Q27-GATEWAY-SAMPLING-CHAT-OMITTED-DONE",
+      "prompt": "Reply exactly Q27-GATEWAY-SAMPLING-CHAT-OMITTED-DONE and nothing else. Do not call tools.",
+      "request_stream": {
+        "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Reply exactly Q27-GATEWAY-SAMPLING-CHAT-OMITTED-DONE and nothing else. Do not call tools."
+          }
+        ],
+        "max_tokens": 96,
+        "enable_thinking": false,
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "stream": {
+        "status": 200,
+        "events": [],
+        "content_deltas": [
+          {
+            "at_ms": 428.79,
+            "text": "Q"
+          },
+          {
+            "at_ms": 428.91,
+            "text": "2"
+          },
+          {
+            "at_ms": 516.12,
+            "text": "7-G"
+          },
+          {
+            "at_ms": 604.04,
+            "text": "ATEWAY"
+          },
+          {
+            "at_ms": 692.45,
+            "text": "-SAMPL"
+          },
+          {
+            "at_ms": 780.41,
+            "text": "ING-"
+          },
+          {
+            "at_ms": 876.29,
+            "text": "CHAT-OM"
+          },
+          {
+            "at_ms": 961.09,
+            "text": "IT"
+          },
+          {
+            "at_ms": 1049.24,
+            "text": "TED-D"
+          },
+          {
+            "at_ms": 1113.17,
+            "text": "ONE"
+          }
+        ],
+        "reasoning_deltas": [],
+        "terminals": [
+          {
+            "at_ms": 1113.17,
+            "type": "stop"
+          },
+          {
+            "at_ms": 1113.3,
+            "type": "DONE"
+          }
+        ],
+        "usage": [
+          {
+            "prompt_tokens": 33,
+            "completion_tokens": 18,
+            "total_tokens": 51
+          }
+        ],
+        "elapsed_ms": 1113.59,
+        "visible": "Q27-GATEWAY-SAMPLING-CHAT-OMITTED-DONE",
+        "reasoning": "",
+        "content_delta_count": 10,
+        "reasoning_delta_count": 0,
+        "first_content_ms": 428.79,
+        "last_content_ms": 1113.17
+      },
+      "nonstream": {
+        "status": 200,
+        "elapsed_ms": 1024.21,
+        "visible": "Q27-GATEWAY-SAMPLING-CHAT-OMITTED-DONE",
+        "body": {
+          "id": "chatcmpl-7c0c4d6a",
+          "object": "chat.completion",
+          "created": 1784617015,
+          "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "Q27-GATEWAY-SAMPLING-CHAT-OMITTED-DONE",
+                "tool_calls": null,
+                "reasoning_content": null
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 33,
+            "completion_tokens": 18,
+            "total_tokens": 51,
+            "prompt_tokens_details": {
+              "cached_tokens": 32,
+              "cache_detail": "paged+ssm+tq-native"
+            }
+          },
+          "warnings": null
+        }
+      },
+      "checks": {
+        "stream_status_200": true,
+        "stream_nonempty": true,
+        "stream_progressive": true,
+        "stream_reasoning_empty": true,
+        "stream_terminal": true,
+        "stream_exact": true,
+        "nonstream_status_200": true,
+        "nonstream_exact": true
+      }
+    },
+    "responses_omitted": {
+      "marker": "Q27-GATEWAY-SAMPLING-RESPONSES-OMITTED-DONE",
+      "prompt": "Reply exactly Q27-GATEWAY-SAMPLING-RESPONSES-OMITTED-DONE and nothing else. Do not call tools.",
+      "request_stream": {
+        "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+        "input": "Reply exactly Q27-GATEWAY-SAMPLING-RESPONSES-OMITTED-DONE and nothing else. Do not call tools.",
+        "max_output_tokens": 96,
+        "enable_thinking": false,
+        "stream": true
+      },
+      "stream": {
+        "status": 200,
+        "events": [
+          {
+            "at_ms": 4.75,
+            "event": "response.created"
+          },
+          {
+            "at_ms": 4.79,
+            "event": "response.output_item.added"
+          },
+          {
+            "at_ms": 4.8,
+            "event": "response.content_part.added"
+          },
+          {
+            "at_ms": 291.07,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 291.2,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 377.59,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 465.39,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 553.76,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 641.89,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 737.71,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 833.44,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 921.62,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 986.23,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 986.38,
+            "event": "response.output_text.done"
+          },
+          {
+            "at_ms": 986.42,
+            "event": "response.content_part.done"
+          },
+          {
+            "at_ms": 986.57,
+            "event": "response.output_item.done"
+          },
+          {
+            "at_ms": 986.63,
+            "event": "response.completed"
+          }
+        ],
+        "content_deltas": [
+          {
+            "at_ms": 291.11,
+            "text": "Q"
+          },
+          {
+            "at_ms": 291.21,
+            "text": "2"
+          },
+          {
+            "at_ms": 377.62,
+            "text": "7-G"
+          },
+          {
+            "at_ms": 465.41,
+            "text": "ATEWAY"
+          },
+          {
+            "at_ms": 553.79,
+            "text": "-SAMPL"
+          },
+          {
+            "at_ms": 641.91,
+            "text": "ING-"
+          },
+          {
+            "at_ms": 737.74,
+            "text": "RESPONSES"
+          },
+          {
+            "at_ms": 833.47,
+            "text": "-OMIT"
+          },
+          {
+            "at_ms": 921.65,
+            "text": "TED-D"
+          },
+          {
+            "at_ms": 986.26,
+            "text": "ONE"
+          }
+        ],
+        "reasoning_deltas": [],
+        "terminals": [
+          {
+            "at_ms": 986.65,
+            "type": "response.completed"
+          }
+        ],
+        "usage": [
+          {
+            "input_tokens": 35,
+            "output_tokens": 20,
+            "total_tokens": 55
+          }
+        ],
+        "elapsed_ms": 986.77,
+        "visible": "Q27-GATEWAY-SAMPLING-RESPONSES-OMITTED-DONE",
+        "reasoning": "",
+        "content_delta_count": 10,
+        "reasoning_delta_count": 0,
+        "first_content_ms": 291.11,
+        "last_content_ms": 986.26
+      },
+      "nonstream": {
+        "status": 200,
+        "elapsed_ms": 1027.98,
+        "visible": "Q27-GATEWAY-SAMPLING-RESPONSES-OMITTED-DONE",
+        "body": {
+          "id": "resp_bac53bb97795",
+          "object": "response",
+          "created_at": 1784617017,
+          "status": "completed",
+          "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+          "output": [
+            {
+              "type": "message",
+              "id": "item_b4c20ffb55c6",
+              "status": "completed",
+              "role": "assistant",
+              "content": [
+                {
+                  "type": "output_text",
+                  "text": "Q27-GATEWAY-SAMPLING-RESPONSES-OMITTED-DONE",
+                  "annotations": []
+                }
+              ]
+            }
+          ],
+          "usage": {
+            "input_tokens": 35,
+            "output_tokens": 20,
+            "total_tokens": 55,
+            "input_tokens_details": {
+              "cached_tokens": 34,
+              "cache_detail": "paged+ssm+tq-native"
+            }
+          },
+          "previous_response_id": null,
+          "error": null,
+          "warnings": null,
+          "output_text": "Q27-GATEWAY-SAMPLING-RESPONSES-OMITTED-DONE"
+        }
+      },
+      "checks": {
+        "stream_status_200": true,
+        "stream_nonempty": true,
+        "stream_progressive": true,
+        "stream_reasoning_empty": true,
+        "stream_terminal": true,
+        "stream_exact": true,
+        "nonstream_status_200": true,
+        "nonstream_exact": true
+      }
+    },
+    "anthropic_omitted": {
+      "marker": "Q27-GATEWAY-SAMPLING-ANTHROPIC-OMITTED-DONE",
+      "prompt": "Reply exactly Q27-GATEWAY-SAMPLING-ANTHROPIC-OMITTED-DONE and nothing else. Do not call tools.",
+      "request_stream": {
+        "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Reply exactly Q27-GATEWAY-SAMPLING-ANTHROPIC-OMITTED-DONE and nothing else. Do not call tools."
+          }
+        ],
+        "max_tokens": 96,
+        "enable_thinking": false,
+        "stream": true
+      },
+      "stream": {
+        "status": 200,
+        "events": [
+          {
+            "at_ms": 14.0,
+            "event": "message_start"
+          },
+          {
+            "at_ms": 305.9,
+            "event": "content_block_start"
+          },
+          {
+            "at_ms": 305.94,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 306.16,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 392.23,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 480.02,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 568.4,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 656.62,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 744.35,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 829.24,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 914.1,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 1002.48,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 1098.42,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 1163.04,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 1163.13,
+            "event": "content_block_stop"
+          },
+          {
+            "at_ms": 1163.16,
+            "event": "message_delta"
+          },
+          {
+            "at_ms": 1163.24,
+            "event": "message_stop"
+          }
+        ],
+        "content_deltas": [
+          {
+            "at_ms": 305.95,
+            "text": "Q"
+          },
+          {
+            "at_ms": 306.17,
+            "text": "2"
+          },
+          {
+            "at_ms": 392.26,
+            "text": "7-G"
+          },
+          {
+            "at_ms": 480.04,
+            "text": "ATEWAY"
+          },
+          {
+            "at_ms": 568.43,
+            "text": "-SAMPL"
+          },
+          {
+            "at_ms": 656.66,
+            "text": "ING-"
+          },
+          {
+            "at_ms": 744.38,
+            "text": "ANTH"
+          },
+          {
+            "at_ms": 829.26,
+            "text": "ROP"
+          },
+          {
+            "at_ms": 914.14,
+            "text": "IC"
+          },
+          {
+            "at_ms": 1002.51,
+            "text": "-OM"
+          },
+          {
+            "at_ms": 1098.45,
+            "text": "ITTED-D"
+          },
+          {
+            "at_ms": 1163.06,
+            "text": "ONE"
+          }
+        ],
+        "reasoning_deltas": [],
+        "terminals": [
+          {
+            "at_ms": 1163.25,
+            "type": "message_stop"
+          }
+        ],
+        "usage": [
+          {
+            "output_tokens": 21,
+            "input_tokens": 36
+          }
+        ],
+        "elapsed_ms": 1163.36,
+        "visible": "Q27-GATEWAY-SAMPLING-ANTHROPIC-OMITTED-DONE",
+        "reasoning": "",
+        "content_delta_count": 12,
+        "reasoning_delta_count": 0,
+        "first_content_ms": 305.95,
+        "last_content_ms": 1163.06
+      },
+      "nonstream": {
+        "status": 200,
+        "elapsed_ms": 1178.93,
+        "visible": "Q27-GATEWAY-SAMPLING-ANTHROPIC-OMITTED-DONE",
+        "body": {
+          "id": "msg_858eef5a301a",
+          "type": "message",
+          "role": "assistant",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q27-GATEWAY-SAMPLING-ANTHROPIC-OMITTED-DONE"
+            }
+          ],
+          "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+          "stop_reason": "end_turn",
+          "stop_sequence": null,
+          "usage": {
+            "input_tokens": 36,
+            "output_tokens": 21
+          }
+        }
+      },
+      "checks": {
+        "stream_status_200": true,
+        "stream_nonempty": true,
+        "stream_progressive": true,
+        "stream_reasoning_empty": true,
+        "stream_terminal": true,
+        "stream_exact": true,
+        "nonstream_status_200": true,
+        "nonstream_exact": true
+      }
+    },
+    "ollama_omitted": {
+      "marker": "Q27-GATEWAY-SAMPLING-OLLAMA-OMITTED-DONE",
+      "prompt": "Reply exactly Q27-GATEWAY-SAMPLING-OLLAMA-OMITTED-DONE and nothing else. Do not call tools.",
+      "request_stream": {
+        "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Reply exactly Q27-GATEWAY-SAMPLING-OLLAMA-OMITTED-DONE and nothing else. Do not call tools."
+          }
+        ],
+        "think": false,
+        "options": {
+          "num_predict": 96
+        },
+        "stream": true
+      },
+      "stream": {
+        "status": 200,
+        "objects": [
+          {
+            "at_ms": 293.33,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 293.38,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 379.41,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 467.16,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 555.53,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 643.26,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 731.83,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 825.19,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 920.27,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 984.64,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 984.86,
+            "keys": [
+              "created_at",
+              "done",
+              "done_reason",
+              "eval_count",
+              "message",
+              "model",
+              "prompt_eval_count"
+            ],
+            "done": true
+          }
+        ],
+        "content_deltas": [
+          {
+            "at_ms": 293.33,
+            "text": "Q"
+          },
+          {
+            "at_ms": 293.38,
+            "text": "2"
+          },
+          {
+            "at_ms": 379.41,
+            "text": "7-G"
+          },
+          {
+            "at_ms": 467.16,
+            "text": "ATEWAY"
+          },
+          {
+            "at_ms": 555.53,
+            "text": "-SAMPL"
+          },
+          {
+            "at_ms": 643.26,
+            "text": "ING-"
+          },
+          {
+            "at_ms": 731.83,
+            "text": "OLLAMA"
+          },
+          {
+            "at_ms": 825.19,
+            "text": "-OM"
+          },
+          {
+            "at_ms": 920.27,
+            "text": "ITTED-D"
+          },
+          {
+            "at_ms": 984.64,
+            "text": "ONE"
+          }
+        ],
+        "reasoning_deltas": [],
+        "terminals": [
+          {
+            "at_ms": 984.86,
+            "type": "stop"
+          }
+        ],
+        "usage": [
+          {
+            "prompt_eval_count": 34,
+            "eval_count": 19,
+            "prompt_eval_duration": null,
+            "eval_duration": null
+          }
+        ],
+        "elapsed_ms": 984.92,
+        "visible": "Q27-GATEWAY-SAMPLING-OLLAMA-OMITTED-DONE",
+        "reasoning": "",
+        "content_delta_count": 10,
+        "reasoning_delta_count": 0,
+        "first_content_ms": 293.33,
+        "last_content_ms": 984.64
+      },
+      "nonstream": {
+        "status": 200,
+        "elapsed_ms": 1026.66,
+        "visible": "Q27-GATEWAY-SAMPLING-OLLAMA-OMITTED-DONE",
+        "body": {
+          "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+          "created_at": "2026-07-21T06:57:01.498Z",
+          "message": {
+            "role": "assistant",
+            "content": "Q27-GATEWAY-SAMPLING-OLLAMA-OMITTED-DONE"
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 0,
+          "eval_count": 19,
+          "prompt_eval_count": 34
+        }
+      },
+      "checks": {
+        "stream_status_200": true,
+        "stream_nonempty": true,
+        "stream_progressive": true,
+        "stream_reasoning_empty": true,
+        "stream_terminal": true,
+        "stream_exact": true,
+        "nonstream_status_200": true,
+        "nonstream_exact": true
+      }
+    },
+    "chat_explicit": {
+      "marker": "Q27-GATEWAY-SAMPLING-CHAT-EXPLICIT-DONE",
+      "prompt": "Reply exactly Q27-GATEWAY-SAMPLING-CHAT-EXPLICIT-DONE and nothing else. Do not call tools.",
+      "request_stream": {
+        "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Reply exactly Q27-GATEWAY-SAMPLING-CHAT-EXPLICIT-DONE and nothing else. Do not call tools."
+          }
+        ],
+        "max_tokens": 96,
+        "enable_thinking": false,
+        "stream": true,
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 20,
+        "min_p": 0.0,
+        "repetition_penalty": 1.05,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "stream": {
+        "status": 200,
+        "events": [],
+        "content_deltas": [
+          {
+            "at_ms": 307.8,
+            "text": "Q"
+          },
+          {
+            "at_ms": 336.36,
+            "text": "2"
+          },
+          {
+            "at_ms": 365.05,
+            "text": "7"
+          },
+          {
+            "at_ms": 394.01,
+            "text": "-G"
+          },
+          {
+            "at_ms": 422.71,
+            "text": "ATE"
+          },
+          {
+            "at_ms": 451.56,
+            "text": "WAY"
+          },
+          {
+            "at_ms": 480.39,
+            "text": "-S"
+          },
+          {
+            "at_ms": 509.41,
+            "text": "AMPL"
+          },
+          {
+            "at_ms": 538.14,
+            "text": "ING"
+          },
+          {
+            "at_ms": 567.14,
+            "text": "-"
+          },
+          {
+            "at_ms": 595.95,
+            "text": "CHAT"
+          },
+          {
+            "at_ms": 624.72,
+            "text": "-"
+          },
+          {
+            "at_ms": 653.93,
+            "text": "EX"
+          },
+          {
+            "at_ms": 682.92,
+            "text": "PLICIT"
+          },
+          {
+            "at_ms": 711.77,
+            "text": "-D"
+          },
+          {
+            "at_ms": 740.53,
+            "text": "ONE"
+          }
+        ],
+        "reasoning_deltas": [],
+        "terminals": [
+          {
+            "at_ms": 777.32,
+            "type": "stop"
+          },
+          {
+            "at_ms": 777.39,
+            "type": "DONE"
+          }
+        ],
+        "usage": [
+          {
+            "prompt_tokens": 32,
+            "completion_tokens": 17,
+            "total_tokens": 49
+          }
+        ],
+        "elapsed_ms": 777.46,
+        "visible": "Q27-GATEWAY-SAMPLING-CHAT-EXPLICIT-DONE",
+        "reasoning": "",
+        "content_delta_count": 16,
+        "reasoning_delta_count": 0,
+        "first_content_ms": 307.8,
+        "last_content_ms": 740.53
+      },
+      "nonstream": {
+        "status": 200,
+        "elapsed_ms": 777.09,
+        "visible": "Q27-GATEWAY-SAMPLING-CHAT-EXPLICIT-DONE",
+        "body": {
+          "id": "chatcmpl-f45abbf0",
+          "object": "chat.completion",
+          "created": 1784617023,
+          "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "Q27-GATEWAY-SAMPLING-CHAT-EXPLICIT-DONE",
+                "tool_calls": null,
+                "reasoning_content": null
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 32,
+            "completion_tokens": 17,
+            "total_tokens": 49,
+            "prompt_tokens_details": {
+              "cached_tokens": 31,
+              "cache_detail": "paged+ssm+tq-native"
+            }
+          },
+          "warnings": null
+        }
+      },
+      "checks": {
+        "stream_status_200": true,
+        "stream_nonempty": true,
+        "stream_progressive": true,
+        "stream_reasoning_empty": true,
+        "stream_terminal": true,
+        "stream_exact": true,
+        "nonstream_status_200": true,
+        "nonstream_exact": true
+      }
+    },
+    "responses_explicit": {
+      "marker": "Q27-GATEWAY-SAMPLING-RESPONSES-EXPLICIT-DONE",
+      "prompt": "Reply exactly Q27-GATEWAY-SAMPLING-RESPONSES-EXPLICIT-DONE and nothing else. Do not call tools.",
+      "request_stream": {
+        "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+        "input": "Reply exactly Q27-GATEWAY-SAMPLING-RESPONSES-EXPLICIT-DONE and nothing else. Do not call tools.",
+        "max_output_tokens": 96,
+        "enable_thinking": false,
+        "stream": true,
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 20,
+        "min_p": 0.0,
+        "repetition_penalty": 1.05
+      },
+      "stream": {
+        "status": 200,
+        "events": [
+          {
+            "at_ms": 4.79,
+            "event": "response.created"
+          },
+          {
+            "at_ms": 4.82,
+            "event": "response.output_item.added"
+          },
+          {
+            "at_ms": 4.84,
+            "event": "response.content_part.added"
+          },
+          {
+            "at_ms": 280.98,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 309.58,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 338.49,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 367.31,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 396.05,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 424.96,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 453.77,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 482.68,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 511.6,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 540.6,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 569.49,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 598.59,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 627.41,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 656.24,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 685.29,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 714.24,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 743.09,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 772.31,
+            "event": "response.output_text.delta"
+          },
+          {
+            "at_ms": 809.64,
+            "event": "response.output_text.done"
+          },
+          {
+            "at_ms": 809.7,
+            "event": "response.content_part.done"
+          },
+          {
+            "at_ms": 809.77,
+            "event": "response.output_item.done"
+          },
+          {
+            "at_ms": 809.83,
+            "event": "response.completed"
+          }
+        ],
+        "content_deltas": [
+          {
+            "at_ms": 281.01,
+            "text": "Q"
+          },
+          {
+            "at_ms": 309.61,
+            "text": "2"
+          },
+          {
+            "at_ms": 338.51,
+            "text": "7"
+          },
+          {
+            "at_ms": 367.35,
+            "text": "-G"
+          },
+          {
+            "at_ms": 396.06,
+            "text": "ATE"
+          },
+          {
+            "at_ms": 425.0,
+            "text": "WAY"
+          },
+          {
+            "at_ms": 453.8,
+            "text": "-S"
+          },
+          {
+            "at_ms": 482.7,
+            "text": "AMPL"
+          },
+          {
+            "at_ms": 511.61,
+            "text": "ING"
+          },
+          {
+            "at_ms": 540.63,
+            "text": "-"
+          },
+          {
+            "at_ms": 569.51,
+            "text": "RESP"
+          },
+          {
+            "at_ms": 598.61,
+            "text": "ONSE"
+          },
+          {
+            "at_ms": 627.43,
+            "text": "S"
+          },
+          {
+            "at_ms": 656.26,
+            "text": "-"
+          },
+          {
+            "at_ms": 685.3,
+            "text": "EX"
+          },
+          {
+            "at_ms": 714.26,
+            "text": "PLICIT"
+          },
+          {
+            "at_ms": 743.1,
+            "text": "-D"
+          },
+          {
+            "at_ms": 772.32,
+            "text": "ONE"
+          }
+        ],
+        "reasoning_deltas": [],
+        "terminals": [
+          {
+            "at_ms": 809.85,
+            "type": "response.completed"
+          }
+        ],
+        "usage": [
+          {
+            "input_tokens": 34,
+            "output_tokens": 19,
+            "total_tokens": 53
+          }
+        ],
+        "elapsed_ms": 810.04,
+        "visible": "Q27-GATEWAY-SAMPLING-RESPONSES-EXPLICIT-DONE",
+        "reasoning": "",
+        "content_delta_count": 18,
+        "reasoning_delta_count": 0,
+        "first_content_ms": 281.01,
+        "last_content_ms": 772.32
+      },
+      "nonstream": {
+        "status": 200,
+        "elapsed_ms": 841.83,
+        "visible": "Q27-GATEWAY-SAMPLING-RESPONSES-EXPLICIT-DONE",
+        "body": {
+          "id": "resp_ab6875cb778c",
+          "object": "response",
+          "created_at": 1784617024,
+          "status": "completed",
+          "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+          "output": [
+            {
+              "type": "message",
+              "id": "item_2376149cace1",
+              "status": "completed",
+              "role": "assistant",
+              "content": [
+                {
+                  "type": "output_text",
+                  "text": "Q27-GATEWAY-SAMPLING-RESPONSES-EXPLICIT-DONE",
+                  "annotations": []
+                }
+              ]
+            }
+          ],
+          "usage": {
+            "input_tokens": 34,
+            "output_tokens": 19,
+            "total_tokens": 53,
+            "input_tokens_details": {
+              "cached_tokens": 33,
+              "cache_detail": "paged+ssm+tq-native"
+            }
+          },
+          "previous_response_id": null,
+          "error": null,
+          "warnings": null,
+          "output_text": "Q27-GATEWAY-SAMPLING-RESPONSES-EXPLICIT-DONE"
+        }
+      },
+      "checks": {
+        "stream_status_200": true,
+        "stream_nonempty": true,
+        "stream_progressive": true,
+        "stream_reasoning_empty": true,
+        "stream_terminal": true,
+        "stream_exact": true,
+        "nonstream_status_200": true,
+        "nonstream_exact": true
+      }
+    },
+    "anthropic_explicit": {
+      "marker": "Q27-GATEWAY-SAMPLING-ANTHROPIC-EXPLICIT-DONE",
+      "prompt": "Reply exactly Q27-GATEWAY-SAMPLING-ANTHROPIC-EXPLICIT-DONE and nothing else. Do not call tools.",
+      "request_stream": {
+        "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Reply exactly Q27-GATEWAY-SAMPLING-ANTHROPIC-EXPLICIT-DONE and nothing else. Do not call tools."
+          }
+        ],
+        "max_tokens": 96,
+        "enable_thinking": false,
+        "stream": true,
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 20
+      },
+      "stream": {
+        "status": 200,
+        "events": [
+          {
+            "at_ms": 4.72,
+            "event": "message_start"
+          },
+          {
+            "at_ms": 276.2,
+            "event": "content_block_start"
+          },
+          {
+            "at_ms": 276.24,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 305.06,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 334.73,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 363.24,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 391.98,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 420.73,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 450.25,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 478.76,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 507.57,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 536.69,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 565.37,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 606.85,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 632.8,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 662.21,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 690.85,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 719.27,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 747.91,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 776.73,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 805.65,
+            "event": "content_block_delta"
+          },
+          {
+            "at_ms": 843.65,
+            "event": "content_block_stop"
+          },
+          {
+            "at_ms": 843.72,
+            "event": "message_delta"
+          },
+          {
+            "at_ms": 843.74,
+            "event": "message_stop"
+          }
+        ],
+        "content_deltas": [
+          {
+            "at_ms": 276.26,
+            "text": "Q"
+          },
+          {
+            "at_ms": 305.09,
+            "text": "2"
+          },
+          {
+            "at_ms": 334.76,
+            "text": "7"
+          },
+          {
+            "at_ms": 363.26,
+            "text": "-G"
+          },
+          {
+            "at_ms": 391.99,
+            "text": "ATE"
+          },
+          {
+            "at_ms": 420.76,
+            "text": "WAY"
+          },
+          {
+            "at_ms": 450.27,
+            "text": "-S"
+          },
+          {
+            "at_ms": 478.78,
+            "text": "AMPL"
+          },
+          {
+            "at_ms": 507.59,
+            "text": "ING"
+          },
+          {
+            "at_ms": 536.71,
+            "text": "-"
+          },
+          {
+            "at_ms": 565.39,
+            "text": "ANT"
+          },
+          {
+            "at_ms": 606.88,
+            "text": "H"
+          },
+          {
+            "at_ms": 632.83,
+            "text": "ROP"
+          },
+          {
+            "at_ms": 662.23,
+            "text": "IC"
+          },
+          {
+            "at_ms": 690.87,
+            "text": "-"
+          },
+          {
+            "at_ms": 719.28,
+            "text": "EX"
+          },
+          {
+            "at_ms": 747.94,
+            "text": "PLICIT"
+          },
+          {
+            "at_ms": 776.75,
+            "text": "-D"
+          },
+          {
+            "at_ms": 805.67,
+            "text": "ONE"
+          }
+        ],
+        "reasoning_deltas": [],
+        "terminals": [
+          {
+            "at_ms": 843.75,
+            "type": "message_stop"
+          }
+        ],
+        "usage": [
+          {
+            "output_tokens": 20,
+            "input_tokens": 35
+          }
+        ],
+        "elapsed_ms": 843.82,
+        "visible": "Q27-GATEWAY-SAMPLING-ANTHROPIC-EXPLICIT-DONE",
+        "reasoning": "",
+        "content_delta_count": 19,
+        "reasoning_delta_count": 0,
+        "first_content_ms": 276.26,
+        "last_content_ms": 805.67
+      },
+      "nonstream": {
+        "status": 200,
+        "elapsed_ms": 878.79,
+        "visible": "Q27-GATEWAY-SAMPLING-ANTHROPIC-EXPLICIT-DONE",
+        "body": {
+          "id": "msg_9e0c856a0314",
+          "type": "message",
+          "role": "assistant",
+          "content": [
+            {
+              "type": "text",
+              "text": "Q27-GATEWAY-SAMPLING-ANTHROPIC-EXPLICIT-DONE"
+            }
+          ],
+          "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+          "stop_reason": "end_turn",
+          "stop_sequence": null,
+          "usage": {
+            "input_tokens": 35,
+            "output_tokens": 20
+          }
+        }
+      },
+      "checks": {
+        "stream_status_200": true,
+        "stream_nonempty": true,
+        "stream_progressive": true,
+        "stream_reasoning_empty": true,
+        "stream_terminal": true,
+        "stream_exact": true,
+        "nonstream_status_200": true,
+        "nonstream_exact": true
+      }
+    },
+    "ollama_explicit": {
+      "marker": "Q27-GATEWAY-SAMPLING-OLLAMA-EXPLICIT-DONE",
+      "prompt": "Reply exactly Q27-GATEWAY-SAMPLING-OLLAMA-EXPLICIT-DONE and nothing else. Do not call tools.",
+      "request_stream": {
+        "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Reply exactly Q27-GATEWAY-SAMPLING-OLLAMA-EXPLICIT-DONE and nothing else. Do not call tools."
+          }
+        ],
+        "think": false,
+        "options": {
+          "num_predict": 96,
+          "temperature": 1.0,
+          "top_p": 0.95,
+          "top_k": 20,
+          "min_p": 0.0,
+          "repeat_penalty": 1.05
+        },
+        "stream": true
+      },
+      "stream": {
+        "status": 200,
+        "objects": [
+          {
+            "at_ms": 280.77,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 309.1,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 337.88,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 366.87,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 395.67,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 424.64,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 453.77,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 482.61,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 511.46,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 540.51,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 569.37,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 598.49,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 627.48,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 656.24,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 685.09,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 714.13,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 743.39,
+            "keys": [
+              "created_at",
+              "done",
+              "message",
+              "model"
+            ],
+            "done": false
+          },
+          {
+            "at_ms": 780.52,
+            "keys": [
+              "created_at",
+              "done",
+              "done_reason",
+              "eval_count",
+              "message",
+              "model",
+              "prompt_eval_count"
+            ],
+            "done": true
+          }
+        ],
+        "content_deltas": [
+          {
+            "at_ms": 280.77,
+            "text": "Q"
+          },
+          {
+            "at_ms": 309.1,
+            "text": "2"
+          },
+          {
+            "at_ms": 337.88,
+            "text": "7"
+          },
+          {
+            "at_ms": 366.87,
+            "text": "-G"
+          },
+          {
+            "at_ms": 395.67,
+            "text": "ATE"
+          },
+          {
+            "at_ms": 424.64,
+            "text": "WAY"
+          },
+          {
+            "at_ms": 453.77,
+            "text": "-S"
+          },
+          {
+            "at_ms": 482.61,
+            "text": "AMPL"
+          },
+          {
+            "at_ms": 511.46,
+            "text": "ING"
+          },
+          {
+            "at_ms": 540.51,
+            "text": "-"
+          },
+          {
+            "at_ms": 569.37,
+            "text": "OLL"
+          },
+          {
+            "at_ms": 598.49,
+            "text": "AMA"
+          },
+          {
+            "at_ms": 627.48,
+            "text": "-"
+          },
+          {
+            "at_ms": 656.24,
+            "text": "EX"
+          },
+          {
+            "at_ms": 685.09,
+            "text": "PLICIT"
+          },
+          {
+            "at_ms": 714.13,
+            "text": "-D"
+          },
+          {
+            "at_ms": 743.39,
+            "text": "ONE"
+          }
+        ],
+        "reasoning_deltas": [],
+        "terminals": [
+          {
+            "at_ms": 780.52,
+            "type": "stop"
+          }
+        ],
+        "usage": [
+          {
+            "prompt_eval_count": 33,
+            "eval_count": 18,
+            "prompt_eval_duration": null,
+            "eval_duration": null
+          }
+        ],
+        "elapsed_ms": 780.59,
+        "visible": "Q27-GATEWAY-SAMPLING-OLLAMA-EXPLICIT-DONE",
+        "reasoning": "",
+        "content_delta_count": 17,
+        "reasoning_delta_count": 0,
+        "first_content_ms": 280.77,
+        "last_content_ms": 743.39
+      },
+      "nonstream": {
+        "status": 200,
+        "elapsed_ms": 811.62,
+        "visible": "Q27-GATEWAY-SAMPLING-OLLAMA-EXPLICIT-DONE",
+        "body": {
+          "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+          "created_at": "2026-07-21T06:57:08.021Z",
+          "message": {
+            "role": "assistant",
+            "content": "Q27-GATEWAY-SAMPLING-OLLAMA-EXPLICIT-DONE"
+          },
+          "done": true,
+          "done_reason": "stop",
+          "total_duration": 0,
+          "eval_count": 18,
+          "prompt_eval_count": 33
+        }
+      },
+      "checks": {
+        "stream_status_200": true,
+        "stream_nonempty": true,
+        "stream_progressive": true,
+        "stream_reasoning_empty": true,
+        "stream_terminal": true,
+        "stream_exact": true,
+        "nonstream_status_200": true,
+        "nonstream_exact": true
+      }
+    }
+  },
+  "checks": {
+    "all_status_200": true,
+    "all_stream_nonempty": true,
+    "all_stream_progressive": true,
+    "all_reasoning_empty": true,
+    "all_terminal": true,
+    "all_stream_exact": true,
+    "all_nonstream_exact": true
+  }
+}

@@ -4063,3 +4063,28 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - Retain `PARTIAL`: a non-neutral repetition-penalty artifact, sampling A/B on
   Chat/Anthropic/Ollama, signed-app repetition, and the remaining catalog are
   not closed by this representative gate.
+
+## 2026-07-20 - Qwen gateway sampler translation across four protocols
+
+- `Q27-GATEWAY-SAMPLING-PRECEDENCE`: `VERIFIED-LIVE_SCOPED` on current source.
+  The already Electron-loaded Qwen3.6 27B MXFP4-MTP backend received 16 live
+  gateway calls: Chat, Responses, Anthropic, and Ollama; each with omitted and
+  explicit sampling; each in stream and non-stream mode.
+- All 16 returned HTTP 200 and exact non-empty visible markers. The eight
+  streams emitted 10-19 time-separated content deltas, kept reasoning empty
+  under explicit thinking-off, and ended with their native terminal
+  (Chat stop+DONE, Responses completed, Anthropic message_stop, Ollama done).
+- Engine logs independently resolved every omitted route to temperature 0 /
+  top-p 1 under deterministic native-MTP startup policy. Explicit routes
+  resolved temperature 1 / top-p .95 / top-k 20; Chat/Responses/Ollama also
+  retained repetition penalty 1.05. Explicit temperature 1 correctly skipped
+  deterministic MTP, while omitted temperature 0 exercised it.
+- Gateway health remained `single_model_mode=true`, only Qwen was running,
+  exactly one engine process existed, and the scheduler returned to zero active
+  requests. Focused validation: 92 Python adapter tests, 82 panel gateway tests,
+  and TypeScript typecheck passed.
+- Evidence:
+  `docs/internal/release-gates/20260720_q27_gateway_sampling_protocol_ab/`.
+- Retain `PARTIAL`: this does not repeat cancellation/failure injection, media
+  payloads, tool-result continuation under stochastic sampling, concurrent
+  clients, LAN/port rollback, signed app, or other parser/model families.
