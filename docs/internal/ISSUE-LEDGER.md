@@ -4211,3 +4211,28 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - Retain `PARTIAL`: concurrent reconfigure plus model-swap/backend-loss races,
   longer soak, other running families, full suites, and signed-app repetition
   remain open.
+
+## 2026-07-21 - concurrent Single Model displacement and swap-back
+
+- `GATEWAY-CONCURRENT-SINGLE-MODEL-SWAP`: `VERIFIED-LIVE_SCOPED`. This is the
+  concurrent boundary, not another sequential family loop. A real Qwen Chat
+  stream emitted 262 progressive visible deltas before a gateway request for
+  Laguna intentionally displaced it under Single Model mode.
+- The Qwen stream promptly received one native `backend_connection_closed`
+  error at 14,738.20 ms with no client exception and no false `[DONE]`.
+  Laguna then exact-finaled `CONCURRENT-SWAP-LAGUNA-DONE` over 12 progressive
+  deltas with `stop` plus `[DONE]`; the real Electron Server page, gateway
+  health, SQLite, and process list all showed Laguna as the sole engine.
+- The swap-back request stopped Laguna and exact-finaled
+  `CONCURRENT-SWAP-QWEN-RETURN-DONE` over eight progressive Qwen deltas with a
+  truthful terminal. The second visually inspected Server screenshot and all
+  three state owners showed Qwen as the sole engine.
+- Source/dead-code trace confirms gateway transition serialization, one-model
+  enforcement, backend-response failure translation, and manual Start
+  enforcement all have production call sites. No source edit or model-specific
+  output rewrite was needed.
+- Retain `PARTIAL`: longer multi-client soak, simultaneous host/port mutation
+  plus swap, target-load failure races, non-stream partial-body loss, other
+  parser families, full suites, and signed-app repetition remain open.
+  Evidence:
+  `docs/internal/release-gates/20260721_gateway_concurrent_single_model_swap/`.

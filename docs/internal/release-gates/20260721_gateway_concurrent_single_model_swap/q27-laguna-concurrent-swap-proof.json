@@ -1,0 +1,1598 @@
+{
+  "gateway": "http://127.0.0.1:8088",
+  "qwen_model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+  "laguna_model": "JANGQ-AI/Laguna-XS.2-JANGTQ",
+  "health_before": {
+    "status": "ok",
+    "gateway_port": 8088,
+    "active_requests": 0,
+    "single_model_mode": true,
+    "backends": [
+      {
+        "id": "6bfcafa6-a3aa-447a-bf6a-a31349931f18",
+        "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+        "status": "standby",
+        "port": 8005
+      },
+      {
+        "id": "c3011773-8e0b-487c-b0be-09fb06cc17ed",
+        "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+        "status": "stopped",
+        "port": 8003
+      },
+      {
+        "id": "4bf52e96-0489-4184-997c-8203f3dfe2ae",
+        "model": "JANGQ-AI/Laguna-XS.2-JANGTQ",
+        "status": "stopped",
+        "port": 8000
+      },
+      {
+        "id": "8bea88a2-df48-48b2-a192-a8b8e09b7945",
+        "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+        "status": "stopped",
+        "port": 8002
+      },
+      {
+        "id": "32b760b3-43ef-48c1-b4b5-188c57363a4e",
+        "model": "dealignai/Gemma-4-26B-A4B-it-JANG_4M-CRACK",
+        "status": "stopped",
+        "port": 8004
+      },
+      {
+        "id": "799e1b6f-c60d-40a3-b111-b9408769035e",
+        "model": "dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK",
+        "status": "stopped",
+        "port": 8001
+      },
+      {
+        "id": "da93e052-0313-489a-a56a-62f22a2ce9af",
+        "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M",
+        "status": "stopped",
+        "port": 8141
+      },
+      {
+        "id": "89a68557-452b-4850-b189-ba9d57c4d6c5",
+        "model": "dealignai/LFM2.5-8B-A1B-MXFP4-CRACK",
+        "status": "stopped",
+        "port": 8016
+      }
+    ]
+  },
+  "sessions_before": [
+    {
+      "id": "4bf52e96-0489-4184-997c-8203f3dfe2ae",
+      "model_name": "JANGQ-AI/Laguna-XS.2-JANGTQ",
+      "status": "stopped",
+      "port": 8000
+    },
+    {
+      "id": "6bfcafa6-a3aa-447a-bf6a-a31349931f18",
+      "model_name": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+      "status": "standby",
+      "port": 8005
+    }
+  ],
+  "processes_before": [
+    "65694 /Users/eric/mlx/vllm-mlx/.venv/bin/python3 /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine serve /Volumes/EricsLLMDrive/dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP --host 127.0.0.1 --port 8005 --timeout 300 --max-num-seqs 1 --prefill-batch-size 512 --prefill-step-size 2048 --completion-batch-size 512 --is-mllm --continuous-batching --tool-call-parser qwen --enable-auto-tool-choice --reasoning-parser qwen3 --cache-memory-percent 0.15 --use-paged-cache --paged-cache-block-size 64 --max-cache-blocks 1000 --enable-block-disk-cache --block-disk-cache-max-gb 10 --stream-interval 1 --native-mtp-depth 3 --native-mtp-sampling-policy deterministic-defaults"
+  ],
+  "triggered_after_three": true,
+  "health_at_trigger": {
+    "status": "ok",
+    "gateway_port": 8088,
+    "active_requests": 1,
+    "single_model_mode": true,
+    "backends": [
+      {
+        "id": "6bfcafa6-a3aa-447a-bf6a-a31349931f18",
+        "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+        "status": "running",
+        "port": 8005
+      },
+      {
+        "id": "c3011773-8e0b-487c-b0be-09fb06cc17ed",
+        "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+        "status": "stopped",
+        "port": 8003
+      },
+      {
+        "id": "4bf52e96-0489-4184-997c-8203f3dfe2ae",
+        "model": "JANGQ-AI/Laguna-XS.2-JANGTQ",
+        "status": "stopped",
+        "port": 8000
+      },
+      {
+        "id": "8bea88a2-df48-48b2-a192-a8b8e09b7945",
+        "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+        "status": "stopped",
+        "port": 8002
+      },
+      {
+        "id": "32b760b3-43ef-48c1-b4b5-188c57363a4e",
+        "model": "dealignai/Gemma-4-26B-A4B-it-JANG_4M-CRACK",
+        "status": "stopped",
+        "port": 8004
+      },
+      {
+        "id": "799e1b6f-c60d-40a3-b111-b9408769035e",
+        "model": "dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK",
+        "status": "stopped",
+        "port": 8001
+      },
+      {
+        "id": "da93e052-0313-489a-a56a-62f22a2ce9af",
+        "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M",
+        "status": "stopped",
+        "port": 8141
+      },
+      {
+        "id": "89a68557-452b-4850-b189-ba9d57c4d6c5",
+        "model": "dealignai/LFM2.5-8B-A1B-MXFP4-CRACK",
+        "status": "stopped",
+        "port": 8016
+      }
+    ]
+  },
+  "laguna_swap": {
+    "model": "JANGQ-AI/Laguna-XS.2-JANGTQ",
+    "prompt": "Reply exactly CONCURRENT-SWAP-LAGUNA-DONE and nothing else. Do not call tools.",
+    "request": {
+      "model": "JANGQ-AI/Laguna-XS.2-JANGTQ",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply exactly CONCURRENT-SWAP-LAGUNA-DONE and nothing else. Do not call tools."
+        }
+      ],
+      "stream": true,
+      "stream_options": {
+        "include_usage": true
+      },
+      "max_tokens": 96,
+      "enable_thinking": false,
+      "temperature": 0,
+      "top_p": 1
+    },
+    "status": 200,
+    "content_deltas": [
+      {
+        "at_ms": 16222.79,
+        "text": "\n"
+      },
+      {
+        "at_ms": 16252.43,
+        "text": "CON"
+      },
+      {
+        "at_ms": 16282.25,
+        "text": "CURRENT"
+      },
+      {
+        "at_ms": 16312.12,
+        "text": "-S"
+      },
+      {
+        "at_ms": 16341.84,
+        "text": "WAP"
+      },
+      {
+        "at_ms": 16371.61,
+        "text": "-L"
+      },
+      {
+        "at_ms": 16401.15,
+        "text": "AG"
+      },
+      {
+        "at_ms": 16430.56,
+        "text": "UN"
+      },
+      {
+        "at_ms": 16460.01,
+        "text": "A"
+      },
+      {
+        "at_ms": 16489.57,
+        "text": "-D"
+      },
+      {
+        "at_ms": 16518.99,
+        "text": "ONE"
+      },
+      {
+        "at_ms": 16548.88,
+        "text": "\n"
+      }
+    ],
+    "reasoning_deltas": [],
+    "tool_calls": [],
+    "errors": [],
+    "terminals": [
+      {
+        "at_ms": 16579.5,
+        "type": "stop"
+      },
+      {
+        "at_ms": 16579.59,
+        "type": "DONE"
+      }
+    ],
+    "usage": [
+      {
+        "prompt_tokens": 71,
+        "completion_tokens": 13,
+        "total_tokens": 84
+      }
+    ],
+    "exception": null,
+    "elapsed_ms": 16579.74,
+    "visible": "\nCONCURRENT-SWAP-LAGUNA-DONE\n",
+    "reasoning": "",
+    "content_delta_count": 12,
+    "reasoning_delta_count": 0,
+    "first_content_ms": 16222.79,
+    "last_content_ms": 16548.88
+  },
+  "qwen_stream_thread_alive_after_laguna": false,
+  "displaced_qwen": {
+    "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+    "prompt": "Output exactly 180 numbered lines. Each line must be SWAP-HOLD followed by its line number. Do not call tools.",
+    "request": {
+      "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Output exactly 180 numbered lines. Each line must be SWAP-HOLD followed by its line number. Do not call tools."
+        }
+      ],
+      "stream": true,
+      "stream_options": {
+        "include_usage": true
+      },
+      "max_tokens": 700,
+      "enable_thinking": false,
+      "temperature": 0,
+      "top_p": 1
+    },
+    "status": 200,
+    "content_deltas": [
+      {
+        "at_ms": 4429.52,
+        "text": "1"
+      },
+      {
+        "at_ms": 4430.01,
+        "text": "."
+      },
+      {
+        "at_ms": 4524.46,
+        "text": " SWAP-H"
+      },
+      {
+        "at_ms": 4615.96,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 4674.62,
+        "text": "1\n2."
+      },
+      {
+        "at_ms": 4765.3,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 4853.02,
+        "text": "-H"
+      },
+      {
+        "at_ms": 4944.74,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 5003.32,
+        "text": "2\n3."
+      },
+      {
+        "at_ms": 5101.81,
+        "text": " SWAP-H"
+      },
+      {
+        "at_ms": 5193.0,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 5251.47,
+        "text": "3\n4."
+      },
+      {
+        "at_ms": 5349.9,
+        "text": " SWAP-H"
+      },
+      {
+        "at_ms": 5438.52,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 5478.09,
+        "text": "4\n"
+      },
+      {
+        "at_ms": 5514.43,
+        "text": "5."
+      },
+      {
+        "at_ms": 5550.61,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 5613.67,
+        "text": "-H"
+      },
+      {
+        "at_ms": 5652.58,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 5688.67,
+        "text": "5\n"
+      },
+      {
+        "at_ms": 5724.87,
+        "text": "6."
+      },
+      {
+        "at_ms": 5760.99,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 5797.19,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 5833.58,
+        "text": " 6"
+      },
+      {
+        "at_ms": 5869.67,
+        "text": "\n7"
+      },
+      {
+        "at_ms": 5906.41,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 5942.12,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 5978.3,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 6014.45,
+        "text": "7\n"
+      },
+      {
+        "at_ms": 6050.71,
+        "text": "8."
+      },
+      {
+        "at_ms": 6086.8,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 6122.85,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 6158.98,
+        "text": " 8"
+      },
+      {
+        "at_ms": 6195.34,
+        "text": "\n9"
+      },
+      {
+        "at_ms": 6231.6,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 6267.93,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 6304.02,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 6340.29,
+        "text": "9\n"
+      },
+      {
+        "at_ms": 6376.81,
+        "text": "10"
+      },
+      {
+        "at_ms": 6413.32,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 6449.45,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 6485.74,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 6522.45,
+        "text": "10"
+      },
+      {
+        "at_ms": 6558.44,
+        "text": "\n1"
+      },
+      {
+        "at_ms": 6594.53,
+        "text": "1."
+      },
+      {
+        "at_ms": 6631.09,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 6667.22,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 6703.39,
+        "text": " 1"
+      },
+      {
+        "at_ms": 6739.99,
+        "text": "1\n"
+      },
+      {
+        "at_ms": 6776.1,
+        "text": "12"
+      },
+      {
+        "at_ms": 6812.39,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 6848.63,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 6884.77,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 6921.5,
+        "text": "12"
+      },
+      {
+        "at_ms": 6958.1,
+        "text": "\n1"
+      },
+      {
+        "at_ms": 6994.79,
+        "text": "3."
+      },
+      {
+        "at_ms": 7031.12,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 7067.49,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 7103.89,
+        "text": " 1"
+      },
+      {
+        "at_ms": 7140.34,
+        "text": "3\n"
+      },
+      {
+        "at_ms": 7176.68,
+        "text": "14"
+      },
+      {
+        "at_ms": 7212.98,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 7249.44,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 7285.83,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 7322.52,
+        "text": "14"
+      },
+      {
+        "at_ms": 7358.9,
+        "text": "\n1"
+      },
+      {
+        "at_ms": 7395.58,
+        "text": "5."
+      },
+      {
+        "at_ms": 7431.94,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 7468.16,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 7504.62,
+        "text": " 1"
+      },
+      {
+        "at_ms": 7540.9,
+        "text": "5\n"
+      },
+      {
+        "at_ms": 7577.23,
+        "text": "16"
+      },
+      {
+        "at_ms": 7614.02,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 7650.36,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 7686.55,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 7723.06,
+        "text": "16"
+      },
+      {
+        "at_ms": 7759.18,
+        "text": "\n1"
+      },
+      {
+        "at_ms": 7795.63,
+        "text": "7."
+      },
+      {
+        "at_ms": 7832.14,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 7868.32,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 7904.69,
+        "text": " 1"
+      },
+      {
+        "at_ms": 7941.13,
+        "text": "7\n"
+      },
+      {
+        "at_ms": 7977.44,
+        "text": "18"
+      },
+      {
+        "at_ms": 8014.04,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 8050.54,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 8086.85,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 8123.49,
+        "text": "18"
+      },
+      {
+        "at_ms": 8159.73,
+        "text": "\n1"
+      },
+      {
+        "at_ms": 8196.05,
+        "text": "9."
+      },
+      {
+        "at_ms": 8232.14,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 8268.54,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 8304.88,
+        "text": " 1"
+      },
+      {
+        "at_ms": 8341.26,
+        "text": "9\n"
+      },
+      {
+        "at_ms": 8377.65,
+        "text": "20"
+      },
+      {
+        "at_ms": 8414.29,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 8450.74,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 8486.97,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 8523.5,
+        "text": "20"
+      },
+      {
+        "at_ms": 8560.08,
+        "text": "\n2"
+      },
+      {
+        "at_ms": 8596.38,
+        "text": "1."
+      },
+      {
+        "at_ms": 8632.72,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 8669.02,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 8705.71,
+        "text": " 2"
+      },
+      {
+        "at_ms": 8742.0,
+        "text": "1\n"
+      },
+      {
+        "at_ms": 8778.32,
+        "text": "22"
+      },
+      {
+        "at_ms": 8814.78,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 8851.93,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 8888.18,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 8924.68,
+        "text": "22"
+      },
+      {
+        "at_ms": 8960.99,
+        "text": "\n2"
+      },
+      {
+        "at_ms": 8997.28,
+        "text": "3."
+      },
+      {
+        "at_ms": 9033.71,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 9070.21,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 9106.8,
+        "text": " 2"
+      },
+      {
+        "at_ms": 9143.15,
+        "text": "3\n"
+      },
+      {
+        "at_ms": 9179.9,
+        "text": "24"
+      },
+      {
+        "at_ms": 9216.52,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 9252.82,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 9289.25,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 9325.7,
+        "text": "24"
+      },
+      {
+        "at_ms": 9362.04,
+        "text": "\n2"
+      },
+      {
+        "at_ms": 9398.38,
+        "text": "5."
+      },
+      {
+        "at_ms": 9435.05,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 9471.42,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 9507.71,
+        "text": " 2"
+      },
+      {
+        "at_ms": 9544.15,
+        "text": "5\n"
+      },
+      {
+        "at_ms": 9580.84,
+        "text": "26"
+      },
+      {
+        "at_ms": 9617.23,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 9653.68,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 9690.01,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 9726.45,
+        "text": "26"
+      },
+      {
+        "at_ms": 9762.96,
+        "text": "\n2"
+      },
+      {
+        "at_ms": 9799.5,
+        "text": "7."
+      },
+      {
+        "at_ms": 9835.87,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 9872.23,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 9908.95,
+        "text": " 2"
+      },
+      {
+        "at_ms": 9945.52,
+        "text": "7\n"
+      },
+      {
+        "at_ms": 9982.08,
+        "text": "28"
+      },
+      {
+        "at_ms": 10018.46,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 10054.94,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 10091.5,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 10127.94,
+        "text": "28"
+      },
+      {
+        "at_ms": 10164.37,
+        "text": "\n2"
+      },
+      {
+        "at_ms": 10200.7,
+        "text": "9."
+      },
+      {
+        "at_ms": 10237.23,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 10273.86,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 10310.13,
+        "text": " 2"
+      },
+      {
+        "at_ms": 10346.57,
+        "text": "9\n"
+      },
+      {
+        "at_ms": 10382.97,
+        "text": "30"
+      },
+      {
+        "at_ms": 10419.52,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 10456.09,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 10492.93,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 10529.27,
+        "text": "30"
+      },
+      {
+        "at_ms": 10565.82,
+        "text": "\n3"
+      },
+      {
+        "at_ms": 10602.3,
+        "text": "1."
+      },
+      {
+        "at_ms": 10639.03,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 10675.34,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 10711.81,
+        "text": " 3"
+      },
+      {
+        "at_ms": 10748.51,
+        "text": "1\n"
+      },
+      {
+        "at_ms": 10785.06,
+        "text": "32"
+      },
+      {
+        "at_ms": 10821.5,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 10858.15,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 10894.5,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 10931.35,
+        "text": "32"
+      },
+      {
+        "at_ms": 10967.67,
+        "text": "\n3"
+      },
+      {
+        "at_ms": 11004.2,
+        "text": "3."
+      },
+      {
+        "at_ms": 11040.61,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 11076.96,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 11113.47,
+        "text": " 3"
+      },
+      {
+        "at_ms": 11149.85,
+        "text": "3\n"
+      },
+      {
+        "at_ms": 11186.54,
+        "text": "34"
+      },
+      {
+        "at_ms": 11222.89,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 11259.45,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 11295.86,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 11332.42,
+        "text": "34"
+      },
+      {
+        "at_ms": 11369.1,
+        "text": "\n3"
+      },
+      {
+        "at_ms": 11405.85,
+        "text": "5."
+      },
+      {
+        "at_ms": 11441.81,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 11478.17,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 11514.9,
+        "text": " 3"
+      },
+      {
+        "at_ms": 11551.42,
+        "text": "5\n"
+      },
+      {
+        "at_ms": 11587.81,
+        "text": "36"
+      },
+      {
+        "at_ms": 11624.3,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 11660.97,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 11697.7,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 11734.27,
+        "text": "36"
+      },
+      {
+        "at_ms": 11770.99,
+        "text": "\n3"
+      },
+      {
+        "at_ms": 11807.57,
+        "text": "7."
+      },
+      {
+        "at_ms": 11844.19,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 11881.09,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 11917.99,
+        "text": " 3"
+      },
+      {
+        "at_ms": 11954.38,
+        "text": "7\n"
+      },
+      {
+        "at_ms": 11991.14,
+        "text": "38"
+      },
+      {
+        "at_ms": 12027.57,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 12064.44,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 12100.91,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 12137.57,
+        "text": "38"
+      },
+      {
+        "at_ms": 12174.03,
+        "text": "\n3"
+      },
+      {
+        "at_ms": 12210.8,
+        "text": "9."
+      },
+      {
+        "at_ms": 12247.47,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 12283.98,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 12320.92,
+        "text": " 3"
+      },
+      {
+        "at_ms": 12357.46,
+        "text": "9\n"
+      },
+      {
+        "at_ms": 12394.05,
+        "text": "40"
+      },
+      {
+        "at_ms": 12431.19,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 12467.92,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 12504.48,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 12540.94,
+        "text": "40"
+      },
+      {
+        "at_ms": 12577.46,
+        "text": "\n4"
+      },
+      {
+        "at_ms": 12614.48,
+        "text": "1."
+      },
+      {
+        "at_ms": 12651.01,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 12687.57,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 12724.23,
+        "text": " 4"
+      },
+      {
+        "at_ms": 12760.64,
+        "text": "1\n"
+      },
+      {
+        "at_ms": 12797.19,
+        "text": "42"
+      },
+      {
+        "at_ms": 12833.86,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 12870.51,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 12907.42,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 12944.22,
+        "text": "42"
+      },
+      {
+        "at_ms": 12981.08,
+        "text": "\n4"
+      },
+      {
+        "at_ms": 13017.81,
+        "text": "3."
+      },
+      {
+        "at_ms": 13054.45,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 13091.28,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 13127.99,
+        "text": " 4"
+      },
+      {
+        "at_ms": 13164.79,
+        "text": "3\n"
+      },
+      {
+        "at_ms": 13201.3,
+        "text": "44"
+      },
+      {
+        "at_ms": 13237.8,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 13274.42,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 13311.06,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 13347.91,
+        "text": "44"
+      },
+      {
+        "at_ms": 13384.62,
+        "text": "\n4"
+      },
+      {
+        "at_ms": 13421.57,
+        "text": "5."
+      },
+      {
+        "at_ms": 13458.12,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 13494.81,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 13532.17,
+        "text": " 4"
+      },
+      {
+        "at_ms": 13568.72,
+        "text": "5\n"
+      },
+      {
+        "at_ms": 13605.23,
+        "text": "46"
+      },
+      {
+        "at_ms": 13641.78,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 13678.36,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 13715.07,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 13751.6,
+        "text": "46"
+      },
+      {
+        "at_ms": 13788.3,
+        "text": "\n4"
+      },
+      {
+        "at_ms": 13825.08,
+        "text": "7."
+      },
+      {
+        "at_ms": 13861.64,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 13898.65,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 13935.52,
+        "text": " 4"
+      },
+      {
+        "at_ms": 13972.25,
+        "text": "7\n"
+      },
+      {
+        "at_ms": 14008.75,
+        "text": "48"
+      },
+      {
+        "at_ms": 14045.28,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 14081.95,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 14118.89,
+        "text": "OLD "
+      },
+      {
+        "at_ms": 14155.44,
+        "text": "48"
+      },
+      {
+        "at_ms": 14192.02,
+        "text": "\n4"
+      },
+      {
+        "at_ms": 14228.49,
+        "text": "9."
+      },
+      {
+        "at_ms": 14265.37,
+        "text": " SWAP"
+      },
+      {
+        "at_ms": 14302.2,
+        "text": "-HOLD"
+      },
+      {
+        "at_ms": 14338.74,
+        "text": " 4"
+      },
+      {
+        "at_ms": 14375.72,
+        "text": "9\n"
+      },
+      {
+        "at_ms": 14412.57,
+        "text": "50"
+      },
+      {
+        "at_ms": 14449.89,
+        "text": ". SW"
+      },
+      {
+        "at_ms": 14486.94,
+        "text": "AP-H"
+      },
+      {
+        "at_ms": 14523.57,
+        "text": "OLD "
+      }
+    ],
+    "reasoning_deltas": [],
+    "tool_calls": [],
+    "errors": [
+      {
+        "at_ms": 14738.2,
+        "code": "backend_connection_closed",
+        "message": "Backend connection closed before response completed",
+        "type": "server_error"
+      }
+    ],
+    "terminals": [],
+    "usage": [],
+    "exception": null,
+    "elapsed_ms": 14738.29,
+    "visible": "1. SWAP-HOLD 1\n2. SWAP-HOLD 2\n3. SWAP-HOLD 3\n4. SWAP-HOLD 4\n5. SWAP-HOLD 5\n6. SWAP-HOLD 6\n7. SWAP-HOLD 7\n8. SWAP-HOLD 8\n9. SWAP-HOLD 9\n10. SWAP-HOLD 10\n11. SWAP-HOLD 11\n12. SWAP-HOLD 12\n13. SWAP-HOLD 13\n14. SWAP-HOLD 14\n15. SWAP-HOLD 15\n16. SWAP-HOLD 16\n17. SWAP-HOLD 17\n18. SWAP-HOLD 18\n19. SWAP-HOLD 19\n20. SWAP-HOLD 20\n21. SWAP-HOLD 21\n22. SWAP-HOLD 22\n23. SWAP-HOLD 23\n24. SWAP-HOLD 24\n25. SWAP-HOLD 25\n26. SWAP-HOLD 26\n27. SWAP-HOLD 27\n28. SWAP-HOLD 28\n29. SWAP-HOLD 29\n30. SWAP-HOLD 30\n31. SWAP-HOLD 31\n32. SWAP-HOLD 32\n33. SWAP-HOLD 33\n34. SWAP-HOLD 34\n35. SWAP-HOLD 35\n36. SWAP-HOLD 36\n37. SWAP-HOLD 37\n38. SWAP-HOLD 38\n39. SWAP-HOLD 39\n40. SWAP-HOLD 40\n41. SWAP-HOLD 41\n42. SWAP-HOLD 42\n43. SWAP-HOLD 43\n44. SWAP-HOLD 44\n45. SWAP-HOLD 45\n46. SWAP-HOLD 46\n47. SWAP-HOLD 47\n48. SWAP-HOLD 48\n49. SWAP-HOLD 49\n50. SWAP-HOLD ",
+    "reasoning": "",
+    "content_delta_count": 262,
+    "reasoning_delta_count": 0,
+    "first_content_ms": 4429.52,
+    "last_content_ms": 14523.57
+  },
+  "health_after_laguna": {
+    "status": "ok",
+    "gateway_port": 8088,
+    "active_requests": 0,
+    "single_model_mode": true,
+    "backends": [
+      {
+        "id": "4bf52e96-0489-4184-997c-8203f3dfe2ae",
+        "model": "JANGQ-AI/Laguna-XS.2-JANGTQ",
+        "status": "running",
+        "port": 8000
+      },
+      {
+        "id": "6bfcafa6-a3aa-447a-bf6a-a31349931f18",
+        "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+        "status": "stopped",
+        "port": 8005
+      },
+      {
+        "id": "c3011773-8e0b-487c-b0be-09fb06cc17ed",
+        "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+        "status": "stopped",
+        "port": 8003
+      },
+      {
+        "id": "8bea88a2-df48-48b2-a192-a8b8e09b7945",
+        "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+        "status": "stopped",
+        "port": 8002
+      },
+      {
+        "id": "32b760b3-43ef-48c1-b4b5-188c57363a4e",
+        "model": "dealignai/Gemma-4-26B-A4B-it-JANG_4M-CRACK",
+        "status": "stopped",
+        "port": 8004
+      },
+      {
+        "id": "799e1b6f-c60d-40a3-b111-b9408769035e",
+        "model": "dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK",
+        "status": "stopped",
+        "port": 8001
+      },
+      {
+        "id": "da93e052-0313-489a-a56a-62f22a2ce9af",
+        "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M",
+        "status": "stopped",
+        "port": 8141
+      },
+      {
+        "id": "89a68557-452b-4850-b189-ba9d57c4d6c5",
+        "model": "dealignai/LFM2.5-8B-A1B-MXFP4-CRACK",
+        "status": "stopped",
+        "port": 8016
+      }
+    ]
+  },
+  "sessions_after_laguna": [
+    {
+      "id": "4bf52e96-0489-4184-997c-8203f3dfe2ae",
+      "model_name": "JANGQ-AI/Laguna-XS.2-JANGTQ",
+      "status": "running",
+      "port": 8000
+    },
+    {
+      "id": "6bfcafa6-a3aa-447a-bf6a-a31349931f18",
+      "model_name": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+      "status": "stopped",
+      "port": 8005
+    }
+  ],
+  "processes_after_laguna": [
+    "66989 /Users/eric/mlx/vllm-mlx/.venv/bin/python3 /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine serve /Users/eric/.mlxstudio/models/JANGQ-AI/Laguna-XS.2-JANGTQ --host 127.0.0.1 --port 8000 --timeout 300 --max-num-seqs 1 --prefill-batch-size 512 --prefill-step-size 2048 --completion-batch-size 512 --continuous-batching --tool-call-parser glm47 --enable-auto-tool-choice --reasoning-parser qwen3 --cache-memory-percent 0.15 --use-paged-cache --paged-cache-block-size 64 --max-cache-blocks 1000 --enable-block-disk-cache --block-disk-cache-max-gb 10 --stream-interval 1"
+  ],
+  "ui_after_laguna": {
+    "path": "/private/tmp/concurrent-swap-laguna.png",
+    "click_rc": 0,
+    "click_output": "CLICKED Server",
+    "shot_rc": 0,
+    "shot_output": "SHOT /private/tmp/concurrent-swap-laguna.png",
+    "body": "Code\nChat\nServer\nTools\nImage\nAPI\n🇺🇸\nSessions\nDirectories\nDetect Processes\n+ New Session\nACTIVE (1)\nJANGQ-AI/Laguna-XS.2-JANGTQ\nJANGTQ2 (2b)\n\n/Users/eric/.mlxstudio/models/JANGQ-AI/Laguna-XS.2-JANGTQ\n\nRunning\n127.0.0.1:8000\nPID 66989\nOpen\nStop\nINACTIVE (7)\ndealignai/Qwen3.6-27B-MXFP4-CRACK-MTP\n\n/Volumes/EricsLLMDrive/dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP\n\nStopped\n127.0.0.1:8005\nStart\nDelete\nJANGQ-AI/MiniMax-M3-Coder-Small\nJANG_2L (2b routed)\n\n/Users/eric/.mlxstudio/models/JANGQ-AI/MiniMax-M3-Coder-Small\n\nStopped\n127.0.0.1:8003\nStart\nDelete\ndealignai/DeepSeek-V4-Flash-JANG-CRACK\nJANG\n\n/Volumes/EricsLLMDrive/dealignai/DeepSeek-V4-Flash-JANG-CRACK\n\nStopped\n127.0.0.1:8002\nStart\nDelete\ndealignai/Gemma-4-26B-A4B-it-JANG_4M-CRACK\nJANG_4M (4.26b)\n\n/Volumes/EricsLLMDrive/dealignai/Gemma-4-26B-A4B-it-JANG_4M-CRACK\n\nStopped\n127.0.0.1:8004\nStart\nDelete\ndealignai/Nemotron-Omni-Nano-JANGTQ-CRACK\nJANGTQ2 (2b)\n\n/Volumes/EricsLLMDrive/dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK\n\nStopped\n127.0.0.1:8001\nStart\nDelete\njangq-ai/gemma-4-12B-it-qat-JANG_4M\nJANG 4-bit\n\n/Volumes/EricsLLMDrive/jangq-ai/gemma-4-12B-it-qat-JANG_4M\n\nStopped\n127.0.0.1:8141\nStart\nDelete\ndealignai/LFM2.5-8B-A1B-MXFP4-CRACK\n\n/Volumes/EricsLLMDrive/dealignai/LFM2.5-8B-A1B-MXFP4-CRACK\n\nStopped\n127.0.0.1:8016\nStart\nDelete\n",
+    "body_rc": 0
+  },
+  "qwen_swapback": {
+    "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+    "prompt": "Reply exactly CONCURRENT-SWAP-QWEN-RETURN-DONE and nothing else. Do not call tools.",
+    "request": {
+      "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply exactly CONCURRENT-SWAP-QWEN-RETURN-DONE and nothing else. Do not call tools."
+        }
+      ],
+      "stream": true,
+      "stream_options": {
+        "include_usage": true
+      },
+      "max_tokens": 96,
+      "enable_thinking": false,
+      "temperature": 0,
+      "top_p": 1
+    },
+    "status": 200,
+    "content_deltas": [
+      {
+        "at_ms": 6226.05,
+        "text": "CON"
+      },
+      {
+        "at_ms": 6226.28,
+        "text": "CURRENT"
+      },
+      {
+        "at_ms": 6309.46,
+        "text": "-S"
+      },
+      {
+        "at_ms": 6405.47,
+        "text": "WAP-Q"
+      },
+      {
+        "at_ms": 6490.75,
+        "text": "W"
+      },
+      {
+        "at_ms": 6587.26,
+        "text": "EN-RETURN"
+      },
+      {
+        "at_ms": 6672.12,
+        "text": "-D"
+      },
+      {
+        "at_ms": 6736.57,
+        "text": "ONE"
+      }
+    ],
+    "reasoning_deltas": [],
+    "tool_calls": [],
+    "errors": [],
+    "terminals": [
+      {
+        "at_ms": 6736.57,
+        "type": "stop"
+      },
+      {
+        "at_ms": 6736.72,
+        "type": "DONE"
+      }
+    ],
+    "usage": [
+      {
+        "prompt_tokens": 28,
+        "completion_tokens": 13,
+        "total_tokens": 41
+      }
+    ],
+    "exception": null,
+    "elapsed_ms": 6736.93,
+    "visible": "CONCURRENT-SWAP-QWEN-RETURN-DONE",
+    "reasoning": "",
+    "content_delta_count": 8,
+    "reasoning_delta_count": 0,
+    "first_content_ms": 6226.05,
+    "last_content_ms": 6736.57
+  },
+  "health_after_qwen": {
+    "status": "ok",
+    "gateway_port": 8088,
+    "active_requests": 0,
+    "single_model_mode": true,
+    "backends": [
+      {
+        "id": "6bfcafa6-a3aa-447a-bf6a-a31349931f18",
+        "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+        "status": "running",
+        "port": 8005
+      },
+      {
+        "id": "4bf52e96-0489-4184-997c-8203f3dfe2ae",
+        "model": "JANGQ-AI/Laguna-XS.2-JANGTQ",
+        "status": "stopped",
+        "port": 8000
+      },
+      {
+        "id": "c3011773-8e0b-487c-b0be-09fb06cc17ed",
+        "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+        "status": "stopped",
+        "port": 8003
+      },
+      {
+        "id": "8bea88a2-df48-48b2-a192-a8b8e09b7945",
+        "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+        "status": "stopped",
+        "port": 8002
+      },
+      {
+        "id": "32b760b3-43ef-48c1-b4b5-188c57363a4e",
+        "model": "dealignai/Gemma-4-26B-A4B-it-JANG_4M-CRACK",
+        "status": "stopped",
+        "port": 8004
+      },
+      {
+        "id": "799e1b6f-c60d-40a3-b111-b9408769035e",
+        "model": "dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK",
+        "status": "stopped",
+        "port": 8001
+      },
+      {
+        "id": "da93e052-0313-489a-a56a-62f22a2ce9af",
+        "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M",
+        "status": "stopped",
+        "port": 8141
+      },
+      {
+        "id": "89a68557-452b-4850-b189-ba9d57c4d6c5",
+        "model": "dealignai/LFM2.5-8B-A1B-MXFP4-CRACK",
+        "status": "stopped",
+        "port": 8016
+      }
+    ]
+  },
+  "sessions_after_qwen": [
+    {
+      "id": "4bf52e96-0489-4184-997c-8203f3dfe2ae",
+      "model_name": "JANGQ-AI/Laguna-XS.2-JANGTQ",
+      "status": "stopped",
+      "port": 8000
+    },
+    {
+      "id": "6bfcafa6-a3aa-447a-bf6a-a31349931f18",
+      "model_name": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+      "status": "running",
+      "port": 8005
+    }
+  ],
+  "processes_after_qwen": [
+    "67116 /Users/eric/mlx/vllm-mlx/.venv/bin/python3 /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine serve /Volumes/EricsLLMDrive/dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP --host 127.0.0.1 --port 8005 --timeout 300 --max-num-seqs 1 --prefill-batch-size 512 --prefill-step-size 2048 --completion-batch-size 512 --is-mllm --continuous-batching --tool-call-parser qwen --enable-auto-tool-choice --reasoning-parser qwen3 --cache-memory-percent 0.15 --use-paged-cache --paged-cache-block-size 64 --max-cache-blocks 1000 --enable-block-disk-cache --block-disk-cache-max-gb 10 --stream-interval 1 --native-mtp-depth 3 --native-mtp-sampling-policy deterministic-defaults"
+  ],
+  "ui_after_qwen": {
+    "path": "/private/tmp/concurrent-swap-qwen-return.png",
+    "click_rc": 0,
+    "click_output": "CLICKED Server",
+    "shot_rc": 0,
+    "shot_output": "SHOT /private/tmp/concurrent-swap-qwen-return.png",
+    "body": "Code\nChat\nServer\nTools\nImage\nAPI\n🇺🇸\nSessions\nDirectories\nDetect Processes\n+ New Session\nACTIVE (1)\ndealignai/Qwen3.6-27B-MXFP4-CRACK-MTP\n\n/Volumes/EricsLLMDrive/dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP\n\nRunning\n127.0.0.1:8005\nPID 67116\nOpen\nStop\nINACTIVE (7)\nJANGQ-AI/Laguna-XS.2-JANGTQ\nJANGTQ2 (2b)\n\n/Users/eric/.mlxstudio/models/JANGQ-AI/Laguna-XS.2-JANGTQ\n\nStopped\n127.0.0.1:8000\nStart\nDelete\nJANGQ-AI/MiniMax-M3-Coder-Small\nJANG_2L (2b routed)\n\n/Users/eric/.mlxstudio/models/JANGQ-AI/MiniMax-M3-Coder-Small\n\nStopped\n127.0.0.1:8003\nStart\nDelete\ndealignai/DeepSeek-V4-Flash-JANG-CRACK\nJANG\n\n/Volumes/EricsLLMDrive/dealignai/DeepSeek-V4-Flash-JANG-CRACK\n\nStopped\n127.0.0.1:8002\nStart\nDelete\ndealignai/Gemma-4-26B-A4B-it-JANG_4M-CRACK\nJANG_4M (4.26b)\n\n/Volumes/EricsLLMDrive/dealignai/Gemma-4-26B-A4B-it-JANG_4M-CRACK\n\nStopped\n127.0.0.1:8004\nStart\nDelete\ndealignai/Nemotron-Omni-Nano-JANGTQ-CRACK\nJANGTQ2 (2b)\n\n/Volumes/EricsLLMDrive/dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK\n\nStopped\n127.0.0.1:8001\nStart\nDelete\njangq-ai/gemma-4-12B-it-qat-JANG_4M\nJANG 4-bit\n\n/Volumes/EricsLLMDrive/jangq-ai/gemma-4-12B-it-qat-JANG_4M\n\nStopped\n127.0.0.1:8141\nStart\nDelete\ndealignai/LFM2.5-8B-A1B-MXFP4-CRACK\n\n/Volumes/EricsLLMDrive/dealignai/LFM2.5-8B-A1B-MXFP4-CRACK\n\nStopped\n127.0.0.1:8016\nStart\nDelete\n",
+    "body_rc": 0
+  },
+  "checks": {
+    "triggered_after_three": true,
+    "displaced_had_progress": true,
+    "displaced_native_error": true,
+    "displaced_no_done": true,
+    "displaced_no_exception": true,
+    "displaced_no_reasoning_or_tool": true,
+    "laguna_status_200": true,
+    "laguna_exact": true,
+    "laguna_progressive": true,
+    "laguna_terminal": true,
+    "laguna_no_reasoning_tool_or_error": true,
+    "laguna_only_running": true,
+    "laguna_one_engine": true,
+    "qwen_status_200": true,
+    "qwen_exact": true,
+    "qwen_progressive": true,
+    "qwen_terminal": true,
+    "qwen_no_reasoning_tool_or_error": true,
+    "qwen_only_running": true,
+    "qwen_one_engine": true
+  }
+}
