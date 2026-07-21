@@ -4401,3 +4401,25 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   sites for every new preflight/rollback helper. Focused validation is 36/36
   plus panel typecheck and clean diff check. Evidence:
   `docs/internal/release-gates/20260721_gateway_failed_target_transaction/`.
+
+## 2026-07-21 - Nemotron Omni artifact Auto detection and persistence
+
+- `NEMO-OMNI-AUTO-DETECT`: `VERIFIED-LIVE_SCOPED`. The panel previously read
+  media only from `config.json`, while the exact Nemotron-H text decoder keeps
+  Parakeet/RADIO declarations in `config_omni.json`. Current detection requires
+  the sidecar plus matching indexed encoder/projector tensors; metadata-only
+  artifacts fail closed. The obsolete blanket Nemotron text-only override was
+  removed.
+- `NEMO-OMNI-TEXT-DISPATCH`: `VERIFIED-LIVE_SCOPED`. The visible CLI preview
+  and actual PID 84552 argv contain neither generic `--is-mllm` nor
+  `--text-only`. Health reports the dedicated Stage 1 Omni dispatcher with
+  text/audio/image/video and Parakeet/RADIO/media projector present.
+- `NEMO-OMNI-AUTO-PERSIST`: `VERIFIED-LIVE_SCOPED`. A retained pre-final Start
+  converted Auto into Force On. Current source keeps the detected effective
+  value only in the launch config; SQLite retains no `isMultimodal` override,
+  and the real drawer still shows Auto after a real Start.
+- Real Electron Start eagerly materialized 9.35 GB with
+  `last_request_time=null`; the active Chat exposed image/video/audio
+  attachment. Existing audio/media-salt/L2/protocol rows were not repeated.
+  Focused validation: 377 passed plus typecheck. Evidence:
+  `docs/internal/release-gates/20260721_nemotron_omni_auto_detection/`.

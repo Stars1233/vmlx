@@ -1,0 +1,33 @@
+{
+  "config": {
+    "model_type": "nemotron_h",
+    "weight_format": "mxtq",
+    "_jang_modality": "text"
+  },
+  "jang": {
+    "weight_format": "mxtq",
+    "modality": "omni",
+    "capabilities": {
+      "reasoning_parser": "deepseek_r1",
+      "tool_parser": "nemotron",
+      "think_in_template": true,
+      "supports_tools": true,
+      "supports_thinking": true,
+      "family": "nemotron_h",
+      "modality": "omni",
+      "cache_type": "hybrid"
+    }
+  },
+  "omni": {
+    "model_type": "NemotronH_Nano_Omni_Reasoning_V3",
+    "sound_model_type": "parakeet",
+    "sampling_rate": 16000,
+    "has_vision_config": true
+  },
+  "tensor_prefix_counts": {
+    "sound_encoder.": 710,
+    "sound_projection.": 3,
+    "vision_model.": 390,
+    "mlp1.": 3
+  }
+}

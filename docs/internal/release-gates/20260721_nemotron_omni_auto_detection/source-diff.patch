@@ -1,0 +1,332 @@
+diff --git a/panel/src/main/model-config-registry.ts b/panel/src/main/model-config-registry.ts
+index d77cd36d8..6084f9344 100644
+--- a/panel/src/main/model-config-registry.ts
++++ b/panel/src/main/model-config-registry.ts
+@@ -615,6 +615,48 @@ function modelIndexHasVisionWeights(modelPath: string): boolean {
+   }
+ }
+
++/**
++ * Nemotron Omni keeps its media contract outside the text decoder's
++ * config.json.  Treat it as media-capable only when the sidecar declaration
++ * and the matching encoder/projector tensors are both present.  This mirrors
++ * the engine's artifact-first Omni dispatch without trusting a folder name or
++ * a JANG modality stamp by itself.
++ */
++function nemotronOmniArtifactHasMedia(
++  parsedConfig: any,
++  jangCfg: any,
++  modelPath: string,
++): boolean {
++  const modelTypes = [
++    parsedConfig?.model_type,
++    parsedConfig?.text_config?.model_type,
++    jangCfg?.capabilities?.family,
++  ].map(value => String(value || '').toLowerCase())
++  if (!modelTypes.some(value => value === 'nemotron_h' || value === 'nemotron-h')) {
++    return false
++  }
++
++  try {
++    const omni = JSON.parse(readFileSync(join(modelPath, 'config_omni.json'), 'utf-8'))
++    const index = JSON.parse(readFileSync(join(modelPath, 'model.safetensors.index.json'), 'utf-8'))
++    const weightMap = index?.weight_map
++    if (!omni || typeof omni !== 'object' || !weightMap || typeof weightMap !== 'object') {
++      return false
++    }
++    const keys = Object.keys(weightMap)
++    const hasPrefix = (prefix: string): boolean => keys.some(key => key.startsWith(prefix))
++    const audioReady = omni.sound_config != null &&
++      hasPrefix('sound_encoder.') &&
++      hasPrefix('sound_projection.')
++    const visionReady = omni.vision_config != null &&
++      hasPrefix('vision_model.') &&
++      hasPrefix('mlp1.')
++    return audioReady || visionReady
++  } catch {
++    return false
++  }
++}
++
+ function affineJangArtifactHasVision(jangCfg: any, modelPath: string): boolean {
+   if (affineJangRuntimeHasVerifiedVision(jangCfg)) return true
+   if (
+@@ -895,9 +937,6 @@ function applyConfigMetadataOverrides(
+       vlRuntimeAvailable: false,
+     }
+   }
+-  if (next.family === 'nemotron-h' && !configDeclaresMedia(parsedConfig)) {
+-    next.isMultimodal = false
+-  }
+   if (
+     next.family === 'nemotron-h' &&
+     typeof parsedConfig?.hybrid_override_pattern === 'string' &&
+@@ -1124,6 +1163,10 @@ function resolveJangMultimodal(jangCfg: any, parsedConfig: any, modelPath: strin
+     jangCfg?.modality ??
+     parsedConfig?._jang_modality
+
++  if (modality === 'omni') {
++    return nemotronOmniArtifactHasMedia(parsedConfig, jangCfg, modelPath)
++  }
++
+   if (parsedConfig?.model_type === 'zaya1_vl' && hasMediaConfig) {
+     return true
+   }
+@@ -1141,7 +1184,6 @@ function resolveJangMultimodal(jangCfg: any, parsedConfig: any, modelPath: strin
+     return jangCfg.architecture.has_vision
+   }
+   if (typeof modality === 'string') {
+-    if (modality === 'omni') return hasMediaConfig
+     return modality !== 'text' && modality !== 'embedding' && modality !== 'rerank'
+   }
+   return hasMediaConfig
+diff --git a/panel/src/main/sessions.ts b/panel/src/main/sessions.ts
+index 192bc820f..79857b8f8 100644
+--- a/panel/src/main/sessions.ts
++++ b/panel/src/main/sessions.ts
+@@ -1722,6 +1722,14 @@ export class SessionManager extends EventEmitter {
+     }
+
+     const config: ServerConfig = JSON.parse(session.config)
++    // Detection may materialize an effective multimodal value for this launch,
++    // but it must not turn an absent (Auto) setting into a persisted Force On
++    // or Force Off override.  Capture user intent before applying defaults or
++    // inspecting the current artifact.
++    const hadExplicitMultimodalOverride = Object.prototype.hasOwnProperty.call(
++      config,
++      'isMultimodal',
++    )
+     config.modelPath = session.modelPath
+     config.host = session.host
+     config.port = session.port
+@@ -1908,8 +1916,14 @@ export class SessionManager extends EventEmitter {
+           if (oldReasoningParser && oldReasoningParser !== 'auto' && isZayaCcaFamily(freshFamily) && oldReasoningParser !== config.reasoningParser) {
+             this.pushLog(sessionId, `[INFO] ZAYA reasoning parser reset from stale ${oldReasoningParser} to auto (no reasoning parser)`)
+           }
+-          // Update DB with refreshed config
+-          db.updateSession(sessionId, { config: JSON.stringify(config) })
++          // Persist refreshed defaults without converting the tri-state Auto
++          // selection into an explicit override.  The in-memory config keeps
++          // the detected effective value for buildArgs below.
++          const persistedConfig = { ...config }
++          if (!hadExplicitMultimodalOverride) {
++            delete persistedConfig.isMultimodal
++          }
++          db.updateSession(sessionId, { config: JSON.stringify(persistedConfig) })
+         }
+       } catch (e) {
+         this.pushLog(sessionId, `[WARN] Could not re-detect model config: ${(e as Error).message}`)
+@@ -3390,7 +3404,6 @@ export class SessionManager extends EventEmitter {
+     const dsv4Active = detectedFamily === 'deepseek-v4'
+     const m3Active = detectedFamily === 'minimax_m3'
+     const dsv4PrefixCacheOptIn = dsv4Active && config.dsv4PrefixCache !== false
+-    const omniBackendActive = detectedFamily === 'nemotron-h' && detected.isMultimodal === true
+
+     // Concurrent processing
+     // When value is 0 ("No limit" in UI), omit the flag so backend uses its default.
+@@ -3429,18 +3442,25 @@ export class SessionManager extends EventEmitter {
+     const effectiveSmelt = !!(config as any).smelt && !dsv4Active
+     // User explicitly toggled multimodal OFF (Force Off) — must beat detected VL.
+     const userForceTextOnly = config.isMultimodal === false
++    // Nemotron Omni advertises attachments through isMultimodal, but its
++    // Parakeet/RADIO inputs are injected by the engine's Omni dispatcher into
++    // the text decoder.  It is not a generic mlx_vlm --is-mllm route.
++    const omniBackendActive = detectedFamily === 'nemotron-h' &&
++      detected.isMultimodal === true &&
++      !userForceTextOnly &&
++      !detected.forceTextOnly
+     // MiniMax-M3 VL route: vision is handled in-engine via SingleBatchGenerator behind
+     // VMLX_M3_VL=1, so M3 must emit NEITHER --is-mllm NOR --text-only. Forcing isVLM=false
+     // suppresses --is-mllm (the unpublished mlx_vlm.minimax_m3_vl path that crashes), and
+     // excluding m3VlRoute from the --text-only branch keeps images flowing to the engine.
+     const m3VlRoute = !!detected.m3VlRoute
+-    const isVLM = dsv4Active || effectiveSmelt || detected.forceTextOnly || userForceTextOnly || m3VlRoute ? false
++    const isVLM = dsv4Active || effectiveSmelt || detected.forceTextOnly || userForceTextOnly || m3VlRoute || omniBackendActive ? false
+       : detected.isMultimodal ? true
+         : config.isMultimodal === true ? true
+           : false
+     if (isVLM) {
+       args.push('--is-mllm')
+-    } else if (!dsv4Active && !effectiveSmelt && !m3VlRoute && detected.isMultimodal && (userForceTextOnly || detected.forceTextOnly)) {
++    } else if (!dsv4Active && !effectiveSmelt && !m3VlRoute && !omniBackendActive && detected.isMultimodal && (userForceTextOnly || detected.forceTextOnly)) {
+       // Model autodetects as VL but must run TEXT-ONLY (user Force-Off, or a family
+       // whose VL runtime path isn't wired). Omitting --is-mllm is NOT enough — the
+       // engine re-autodetects VL from config.json. --text-only forces is_mllm_model->False.
+diff --git a/panel/src/renderer/src/components/sessions/SessionSettings.tsx b/panel/src/renderer/src/components/sessions/SessionSettings.tsx
+index 9babc2b1d..885d36a10 100644
+--- a/panel/src/renderer/src/components/sessions/SessionSettings.tsx
++++ b/panel/src/renderer/src/components/sessions/SessionSettings.tsx
+@@ -400,14 +400,19 @@ function buildCommandPreview(
+   const m3Active = detectedFamily === 'minimax_m3'
+   const openPanguExactTypedCache = detectedFamily === 'openpangu_v2'
+   const dsv4PrefixCacheOptIn = dsv4Active && config.dsv4PrefixCache !== false
+-  const omniBackendActive = detectedFamily === 'nemotron-h' && detected?.isMultimodal === true
+   const effectiveSmelt = !!(config as any).smelt && !dsv4Active
+   // User explicitly toggled multimodal OFF (Force Off) — must beat detected VL.
+   // Mirror buildArgs (sessions.ts): m3Active stands in for m3VlRoute since the
+   // registry sets m3VlRoute for every minimax_m3 bundle while keeping isMultimodal
+   // true, so M3 must emit NEITHER --is-mllm NOR --text-only.
+   const userForceTextOnly = config.isMultimodal === false
+-  const isVLM = dsv4Active || effectiveSmelt || detected?.forceTextOnly || userForceTextOnly || m3Active ? false
++  // Omni media is injected into the Nemotron-H text decoder by the engine;
++  // attachments stay enabled without advertising the generic mlx_vlm route.
++  const omniBackendActive = detectedFamily === 'nemotron-h' &&
++    detected?.isMultimodal === true &&
++    !userForceTextOnly &&
++    !detected?.forceTextOnly
++  const isVLM = dsv4Active || effectiveSmelt || detected?.forceTextOnly || userForceTextOnly || m3Active || omniBackendActive ? false
+     : detected?.isMultimodal ? true
+       : config.isMultimodal === true ? true
+         : false
+@@ -445,7 +450,7 @@ function buildCommandPreview(
+   if (!dsv4Active && completionBatchSize != null) parts.push('--completion-batch-size', completionBatchSize.toString())
+
+   if (isVLM) parts.push('--is-mllm')
+-  else if (!dsv4Active && !effectiveSmelt && !m3Active && detected?.isMultimodal && (userForceTextOnly || detected?.forceTextOnly)) {
++  else if (!dsv4Active && !effectiveSmelt && !m3Active && !omniBackendActive && detected?.isMultimodal && (userForceTextOnly || detected?.forceTextOnly)) {
+     // Model autodetects as VL but must run TEXT-ONLY (user Force-Off, or a family
+     // whose VL runtime path isn't wired). Mirrors buildArgs: --text-only forces
+     // is_mllm_model->False so the engine doesn't re-autodetect VL from config.json.
+diff --git a/panel/tests/model-config-registry.test.ts b/panel/tests/model-config-registry.test.ts
+index 63a14b4e7..f54bfbcda 100644
+--- a/panel/tests/model-config-registry.test.ts
++++ b/panel/tests/model-config-registry.test.ts
+@@ -53,6 +53,64 @@ describe('detectModelConfigFromDir quantization label', () => {
+ })
+
+ describe('detectModelConfigFromDir JANG multimodal detection', () => {
++  it('detects Nemotron Omni media from its sidecar and matching component tensors', () => {
++    const dir = makeModelDir(
++      {
++        model_type: 'nemotron_h',
++        weight_format: 'mxtq',
++        _jang_modality: 'text',
++      },
++      {
++        weight_format: 'mxtq',
++        modality: 'omni',
++        capabilities: {
++          family: 'nemotron_h',
++          modality: 'omni',
++          cache_type: 'hybrid',
++        },
++      },
++    )
++    writeFileSync(join(dir, 'config_omni.json'), JSON.stringify({
++      model_type: 'NemotronH_Nano_Omni_Reasoning_V3',
++      sound_config: { model_type: 'parakeet', sampling_rate: 16000 },
++      vision_config: { model_type: 'radio' },
++    }))
++    writeFileSync(join(dir, 'model.safetensors.index.json'), JSON.stringify({
++      weight_map: {
++        'sound_encoder.layers.0.weight': 'model.safetensors',
++        'sound_projection.0.weight': 'model.safetensors',
++        'vision_model.encoder.weight': 'model.safetensors',
++        'mlp1.0.weight': 'model.safetensors',
++      },
++    }))
++
++    const detected = detectModelConfigFromDir(dir)
++
++    expect(detected.family).toBe('nemotron-h')
++    expect(detected.isTurboQuant).toBe(true)
++    expect(detected.isMultimodal).toBe(true)
++  })
++
++  it('does not trust a Nemotron Omni metadata stamp without matching media tensors', () => {
++    const dir = makeModelDir(
++      { model_type: 'nemotron_h', weight_format: 'mxtq', _jang_modality: 'text' },
++      {
++        weight_format: 'mxtq',
++        modality: 'omni',
++        capabilities: { family: 'nemotron_h', modality: 'omni', cache_type: 'hybrid' },
++      },
++    )
++    writeFileSync(join(dir, 'config_omni.json'), JSON.stringify({
++      sound_config: { model_type: 'parakeet', sampling_rate: 16000 },
++      vision_config: { model_type: 'radio' },
++    }))
++    writeFileSync(join(dir, 'model.safetensors.index.json'), JSON.stringify({
++      weight_map: { 'model.layers.0.mixer.weight': 'model.safetensors' },
++    }))
++
++    expect(detectModelConfigFromDir(dir).isMultimodal).toBe(false)
++  })
++
+   it('marks Qwen3.6 VL JANG bundles with indexed MTP tensors as native MTP capable', () => {
+     const dir = makeModelDir(
+       {
+diff --git a/panel/tests/settings-flow.test.ts b/panel/tests/settings-flow.test.ts
+index c98c0714c..f984a5717 100644
+--- a/panel/tests/settings-flow.test.ts
++++ b/panel/tests/settings-flow.test.ts
+@@ -333,13 +333,16 @@ function buildCommandPreview(
+     const dsv4Active = detectedFamily === 'deepseek-v4'
+     const m3Active = detectedFamily === 'minimax_m3'
+     const dsv4PrefixCacheOptIn = dsv4Active && config.dsv4PrefixCache !== false
+-    const omniBackendActive = detectedFamily === 'nemotron-h' && detected?.isMultimodal === true
+     const effectiveSmelt = !!config.smelt && !dsv4Active
+     // Mirror buildArgs (sessions.ts): user Force-Off (isMultimodal===false) beats
+     // detected VL; m3Active stands in for m3VlRoute (registry sets it for every
+     // minimax_m3 bundle) so M3 emits NEITHER --is-mllm NOR --text-only.
+     const userForceTextOnly = config.isMultimodal === false
+-    const isVLM = dsv4Active || effectiveSmelt || detected?.forceTextOnly || userForceTextOnly || m3Active ? false
++    const omniBackendActive = detectedFamily === 'nemotron-h' &&
++        detected?.isMultimodal === true &&
++        !userForceTextOnly &&
++        !detected?.forceTextOnly
++    const isVLM = dsv4Active || effectiveSmelt || detected?.forceTextOnly || userForceTextOnly || m3Active || omniBackendActive ? false
+         : detected?.isMultimodal ? true
+             : config.isMultimodal === true ? true
+                 : false
+@@ -371,7 +374,7 @@ function buildCommandPreview(
+     if (!dsv4Active && completionBatchSize != null) parts.push('--completion-batch-size', completionBatchSize.toString())
+
+     if (isVLM) parts.push('--is-mllm')
+-    else if (!dsv4Active && !effectiveSmelt && !m3Active && detected?.isMultimodal && (userForceTextOnly || detected?.forceTextOnly)) {
++    else if (!dsv4Active && !effectiveSmelt && !m3Active && !omniBackendActive && detected?.isMultimodal && (userForceTextOnly || detected?.forceTextOnly)) {
+         parts.push('--text-only')
+     }
+     const cacheStackActive = dsv4Active ? true : config.continuousBatching !== false
+@@ -2760,6 +2763,21 @@ describe('Default IP and New Settings', () => {
+         expect(updateBlock).toContain('Object.prototype.hasOwnProperty.call(currentConfig, k)')
+     })
+
++    it('does not materialize a detected multimodal value into a persisted Auto override at Start', () => {
++        const fs = require('fs')
++        const sessions = fs.readFileSync('src/main/sessions.ts', 'utf-8')
++        const start = sessions.slice(
++            sessions.indexOf('private async _startSessionInner'),
++            sessions.indexOf('// Memory estimation:', sessions.indexOf('private async _startSessionInner')),
++        )
++
++        expect(start).toContain('const hadExplicitMultimodalOverride = Object.prototype.hasOwnProperty.call(')
++        expect(start).toContain('const persistedConfig = { ...config }')
++        expect(start).toContain('if (!hadExplicitMultimodalOverride)')
++        expect(start).toContain('delete persistedConfig.isMultimodal')
++        expect(start).toContain('db.updateSession(sessionId, { config: JSON.stringify(persistedConfig) })')
++    })
++
+     it('adopted paged sessions default to block L2 without legacy L2', () => {
+         const source = readFileSync('src/main/sessions.ts', 'utf8')
+         const start = source.indexOf('async detectAndAdoptAll()')
+@@ -3080,10 +3098,19 @@ describe('JIT Toggle', () => {
+         const nonOmni = preview({ omniBackend: 'stage2' }, { family: 'qwen3.5', isMultimodal: true })
+         const textNemotron = preview({ omniBackend: 'stage2' }, { family: 'nemotron-h', isMultimodal: false })
+         const omni = preview({ omniBackend: 'stage2' }, { family: 'nemotron-h', isMultimodal: true })
++        const omniForceOff = preview(
++            { omniBackend: 'stage2', isMultimodal: false },
++            { family: 'nemotron-h', isMultimodal: true },
++        )
+
+         expect(hasFlag(nonOmni, '--omni-backend')).toBe(false)
+         expect(hasFlag(textNemotron, '--omni-backend')).toBe(false)
+         expect(getFlagValue(omni, '--omni-backend')).toBe('stage2')
++        expect(hasFlag(omni, '--is-mllm')).toBe(false)
++        expect(hasFlag(omni, '--text-only')).toBe(false)
++        expect(hasFlag(omniForceOff, '--omni-backend')).toBe(false)
++        expect(hasFlag(omniForceOff, '--is-mllm')).toBe(false)
++        expect(hasFlag(omniForceOff, '--text-only')).toBe(true)
+     })
+
+     it('settings form and launch code surface ZAYA typed CCA paged-cache requirement', () => {
