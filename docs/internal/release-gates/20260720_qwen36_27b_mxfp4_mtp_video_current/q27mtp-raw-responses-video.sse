@@ -1,0 +1,360 @@
+{"api": "responses", "endpoint": "http://127.0.0.1:8005/v1/responses", "media": "docs/internal/release-gates/20260720_gemma4_moe_media_capability_current/video-a-banana8426.mp4", "media_type": "video", "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP", "omitted_fields": ["max_tokens", "max_completion_tokens", "max_output_tokens"], "prompt": "[Q27-MTP-RAW-VID1] Watch only this video. What exact large alphanumeric code appears inside the yellow rectangle? Reply exactly two lines: the code, then Q27-MTP-RAW-VID1-DONE."}
+0.011	HTTP 200
+0.011	event: response.created
+0.011	data: {"type": "response.created", "response": {"id": "resp_5f2e5717fb53", "object": "response", "created_at": 1784609334, "status": "in_progress", "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP", "output": []}, "sequence_number": 0}
+0.011	event: response.output_item.added
+0.011	data: {"type": "response.output_item.added", "output_index": 0, "item": {"id": "item_2c4e25858d71", "type": "message", "status": "in_progress", "role": "assistant", "content": []}, "sequence_number": 1}
+0.011	event: response.content_part.added
+0.011	data: {"type": "response.content_part.added", "item_id": "item_2c4e25858d71", "output_index": 0, "content_index": 0, "part": {"type": "output_text", "text": "", "annotations": []}, "sequence_number": 2}
+7.324	event: response.reasoning_summary_text.delta
+7.324	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "The", "sequence_number": 3}
+7.324	event: response.reasoning_summary_text.delta
+7.324	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " user", "sequence_number": 4}
+7.420	event: response.reasoning_summary_text.delta
+7.420	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " wants me", "sequence_number": 5}
+7.478	event: response.reasoning_summary_text.delta
+7.478	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " to identify the alphanumeric", "sequence_number": 6}
+7.571	event: response.reasoning_summary_text.delta
+7.571	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " code inside", "sequence_number": 7}
+7.664	event: response.reasoning_summary_text.delta
+7.664	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " the yellow", "sequence_number": 8}
+7.758	event: response.reasoning_summary_text.delta
+7.758	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " rectangle from", "sequence_number": 9}
+7.859	event: response.reasoning_summary_text.delta
+7.860	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " the provided video", "sequence_number": 10}
+7.966	event: response.reasoning_summary_text.delta
+7.966	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " frames.\n\n", "sequence_number": 11}
+8.025	event: response.reasoning_summary_text.delta
+8.025	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "1.  **", "sequence_number": 12}
+8.084	event: response.reasoning_summary_text.delta
+8.084	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "Analyze the input", "sequence_number": 13}
+8.144	event: response.reasoning_summary_text.delta
+8.144	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": ":** The user has", "sequence_number": 14}
+8.240	event: response.reasoning_summary_text.delta
+8.240	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " provided a", "sequence_number": 15}
+8.340	event: response.reasoning_summary_text.delta
+8.340	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " sequence of images", "sequence_number": 16}
+8.409	event: response.reasoning_summary_text.delta
+8.409	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " (", "sequence_number": 17}
+8.475	event: response.reasoning_summary_text.delta
+8.475	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "frames", "sequence_number": 18}
+8.542	event: response.reasoning_summary_text.delta
+8.542	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " from", "sequence_number": 19}
+8.580	event: response.reasoning_summary_text.delta
+8.580	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " a video", "sequence_number": 20}
+8.644	event: response.reasoning_summary_text.delta
+8.644	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": ").", "sequence_number": 21}
+8.681	event: response.reasoning_summary_text.delta
+8.681	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " All frames", "sequence_number": 22}
+8.746	event: response.reasoning_summary_text.delta
+8.746	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " look", "sequence_number": 23}
+8.783	event: response.reasoning_summary_text.delta
+8.783	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " identical.", "sequence_number": 24}
+8.819	event: response.reasoning_summary_text.delta
+8.819	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "\n2", "sequence_number": 25}
+8.883	event: response.reasoning_summary_text.delta
+8.883	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": ".", "sequence_number": 26}
+8.921	event: response.reasoning_summary_text.delta
+8.921	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "  **", "sequence_number": 27}
+8.985	event: response.reasoning_summary_text.delta
+8.985	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "Focus", "sequence_number": 28}
+9.023	event: response.reasoning_summary_text.delta
+9.023	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " on the", "sequence_number": 29}
+9.059	event: response.reasoning_summary_text.delta
+9.059	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " target area", "sequence_number": 30}
+9.095	event: response.reasoning_summary_text.delta
+9.095	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": ":** The", "sequence_number": 31}
+9.159	event: response.reasoning_summary_text.delta
+9.159	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " target", "sequence_number": 32}
+9.224	event: response.reasoning_summary_text.delta
+9.224	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " is", "sequence_number": 33}
+9.262	event: response.reasoning_summary_text.delta
+9.262	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " the \"", "sequence_number": 34}
+9.298	event: response.reasoning_summary_text.delta
+9.298	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "yellow rectangle", "sequence_number": 35}
+9.334	event: response.reasoning_summary_text.delta
+9.334	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "\".\n", "sequence_number": 36}
+9.398	event: response.reasoning_summary_text.delta
+9.398	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "3", "sequence_number": 37}
+9.463	event: response.reasoning_summary_text.delta
+9.463	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": ".", "sequence_number": 38}
+9.501	event: response.reasoning_summary_text.delta
+9.501	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "  **", "sequence_number": 39}
+9.539	event: response.reasoning_summary_text.delta
+9.539	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "Identify", "sequence_number": 40}
+9.575	event: response.reasoning_summary_text.delta
+9.575	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " the text", "sequence_number": 41}
+9.611	event: response.reasoning_summary_text.delta
+9.611	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " inside:**", "sequence_number": 42}
+9.675	event: response.reasoning_summary_text.delta
+9.675	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " Inside", "sequence_number": 43}
+9.713	event: response.reasoning_summary_text.delta
+9.714	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " the yellow", "sequence_number": 44}
+9.750	event: response.reasoning_summary_text.delta
+9.750	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " rectangle,", "sequence_number": 45}
+9.787	event: response.reasoning_summary_text.delta
+9.787	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " there is", "sequence_number": 46}
+9.823	event: response.reasoning_summary_text.delta
+9.823	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " large,", "sequence_number": 47}
+9.860	event: response.reasoning_summary_text.delta
+9.860	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " bold,", "sequence_number": 48}
+9.897	event: response.reasoning_summary_text.delta
+9.897	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " yellow text", "sequence_number": 49}
+9.934	event: response.reasoning_summary_text.delta
+9.934	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": ".\n", "sequence_number": 50}
+9.999	event: response.reasoning_summary_text.delta
+9.999	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "4", "sequence_number": 51}
+10.066	event: response.reasoning_summary_text.delta
+10.066	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": ".", "sequence_number": 52}
+10.105	event: response.reasoning_summary_text.delta
+10.105	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "  **", "sequence_number": 53}
+10.141	event: response.reasoning_summary_text.delta
+10.141	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "Read the", "sequence_number": 54}
+10.178	event: response.reasoning_summary_text.delta
+10.178	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " text:**", "sequence_number": 55}
+10.215	event: response.reasoning_summary_text.delta
+10.215	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " The text", "sequence_number": 56}
+10.252	event: response.reasoning_summary_text.delta
+10.252	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " reads \"", "sequence_number": 57}
+10.289	event: response.reasoning_summary_text.delta
+10.289	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "BANANA", "sequence_number": 58}
+10.354	event: response.reasoning_summary_text.delta
+10.355	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "8", "sequence_number": 59}
+10.421	event: response.reasoning_summary_text.delta
+10.421	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "4", "sequence_number": 60}
+10.460	event: response.reasoning_summary_text.delta
+10.460	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "26", "sequence_number": 61}
+10.525	event: response.reasoning_summary_text.delta
+10.525	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "\".", "sequence_number": 62}
+10.564	event: response.reasoning_summary_text.delta
+10.564	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "\n5", "sequence_number": 63}
+10.629	event: response.reasoning_summary_text.delta
+10.629	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": ".", "sequence_number": 64}
+10.668	event: response.reasoning_summary_text.delta
+10.668	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "  **", "sequence_number": 65}
+10.705	event: response.reasoning_summary_text.delta
+10.705	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "Format the", "sequence_number": 66}
+10.742	event: response.reasoning_summary_text.delta
+10.742	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " output:**", "sequence_number": 67}
+10.779	event: response.reasoning_summary_text.delta
+10.779	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " The user", "sequence_number": 68}
+10.816	event: response.reasoning_summary_text.delta
+10.816	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " requested a", "sequence_number": 69}
+10.853	event: response.reasoning_summary_text.delta
+10.853	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " specific two", "sequence_number": 70}
+10.890	event: response.reasoning_summary_text.delta
+10.890	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "-line format", "sequence_number": 71}
+10.927	event: response.reasoning_summary_text.delta
+10.927	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": ":\n", "sequence_number": 72}
+10.964	event: response.reasoning_summary_text.delta
+10.965	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "    *", "sequence_number": 73}
+11.002	event: response.reasoning_summary_text.delta
+11.002	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "   Line", "sequence_number": 74}
+11.039	event: response.reasoning_summary_text.delta
+11.039	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " 1", "sequence_number": 75}
+11.076	event: response.reasoning_summary_text.delta
+11.076	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": ": The", "sequence_number": 76}
+11.114	event: response.reasoning_summary_text.delta
+11.114	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " code itself", "sequence_number": 77}
+11.151	event: response.reasoning_summary_text.delta
+11.151	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": ".\n", "sequence_number": 78}
+11.188	event: response.reasoning_summary_text.delta
+11.188	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "    *", "sequence_number": 79}
+11.226	event: response.reasoning_summary_text.delta
+11.226	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "   Line", "sequence_number": 80}
+11.263	event: response.reasoning_summary_text.delta
+11.263	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " 2", "sequence_number": 81}
+11.301	event: response.reasoning_summary_text.delta
+11.301	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": ": `", "sequence_number": 82}
+11.338	event: response.reasoning_summary_text.delta
+11.338	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "Q2", "sequence_number": 83}
+11.376	event: response.reasoning_summary_text.delta
+11.376	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "7-M", "sequence_number": 84}
+11.441	event: response.reasoning_summary_text.delta
+11.442	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "TP", "sequence_number": 85}
+11.509	event: response.reasoning_summary_text.delta
+11.509	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "-", "sequence_number": 86}
+11.548	event: response.reasoning_summary_text.delta
+11.548	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "RAW-", "sequence_number": 87}
+11.585	event: response.reasoning_summary_text.delta
+11.585	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "VID1", "sequence_number": 88}
+11.623	event: response.reasoning_summary_text.delta
+11.623	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "-DONE", "sequence_number": 89}
+11.688	event: response.reasoning_summary_text.delta
+11.688	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "`.", "sequence_number": 90}
+11.727	event: response.reasoning_summary_text.delta
+11.727	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "\n\n**", "sequence_number": 91}
+11.765	event: response.reasoning_summary_text.delta
+11.765	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "Step-by", "sequence_number": 92}
+11.802	event: response.reasoning_summary_text.delta
+11.802	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "-step extraction", "sequence_number": 93}
+11.840	event: response.reasoning_summary_text.delta
+11.840	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": ":**\n", "sequence_number": 94}
+11.877	event: response.reasoning_summary_text.delta
+11.877	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "*  ", "sequence_number": 95}
+11.915	event: response.reasoning_summary_text.delta
+11.915	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " Look at", "sequence_number": 96}
+11.953	event: response.reasoning_summary_text.delta
+11.953	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " the center", "sequence_number": 97}
+11.991	event: response.reasoning_summary_text.delta
+11.991	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " of the", "sequence_number": 98}
+12.028	event: response.reasoning_summary_text.delta
+12.028	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " image.", "sequence_number": 99}
+12.066	event: response.reasoning_summary_text.delta
+12.066	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "\n*", "sequence_number": 100}
+12.104	event: response.reasoning_summary_text.delta
+12.104	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "   There", "sequence_number": 101}
+12.141	event: response.reasoning_summary_text.delta
+12.141	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " is a", "sequence_number": 102}
+12.179	event: response.reasoning_summary_text.delta
+12.179	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " yellow rectangular", "sequence_number": 103}
+12.216	event: response.reasoning_summary_text.delta
+12.216	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " border.", "sequence_number": 104}
+12.254	event: response.reasoning_summary_text.delta
+12.254	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "\n*", "sequence_number": 105}
+12.291	event: response.reasoning_summary_text.delta
+12.291	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "   Inside", "sequence_number": 106}
+12.329	event: response.reasoning_summary_text.delta
+12.329	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " the border", "sequence_number": 107}
+12.366	event: response.reasoning_summary_text.delta
+12.366	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": ", the", "sequence_number": 108}
+12.404	event: response.reasoning_summary_text.delta
+12.404	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " text is", "sequence_number": 109}
+12.441	event: response.reasoning_summary_text.delta
+12.442	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " \"BAN", "sequence_number": 110}
+12.507	event: response.reasoning_summary_text.delta
+12.507	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "ANA", "sequence_number": 111}
+12.575	event: response.reasoning_summary_text.delta
+12.575	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "8", "sequence_number": 112}
+12.642	event: response.reasoning_summary_text.delta
+12.643	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "4", "sequence_number": 113}
+12.709	event: response.reasoning_summary_text.delta
+12.709	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "2", "sequence_number": 114}
+12.777	event: response.reasoning_summary_text.delta
+12.777	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "6", "sequence_number": 115}
+12.815	event: response.reasoning_summary_text.delta
+12.816	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "\".\n", "sequence_number": 116}
+12.852	event: response.reasoning_summary_text.delta
+12.852	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "*  ", "sequence_number": 117}
+12.889	event: response.reasoning_summary_text.delta
+12.889	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " Above the", "sequence_number": 118}
+12.926	event: response.reasoning_summary_text.delta
+12.926	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " rectangle is", "sequence_number": 119}
+12.968	event: response.reasoning_summary_text.delta
+12.968	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " \"F", "sequence_number": 120}
+13.006	event: response.reasoning_summary_text.delta
+13.006	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "RESH IMAGE", "sequence_number": 121}
+13.071	event: response.reasoning_summary_text.delta
+13.071	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "\",", "sequence_number": 122}
+13.110	event: response.reasoning_summary_text.delta
+13.110	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " but the", "sequence_number": 123}
+13.148	event: response.reasoning_summary_text.delta
+13.148	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " question specifically", "sequence_number": 124}
+13.185	event: response.reasoning_summary_text.delta
+13.185	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " asks for", "sequence_number": 125}
+13.222	event: response.reasoning_summary_text.delta
+13.222	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " the code", "sequence_number": 126}
+13.288	event: response.reasoning_summary_text.delta
+13.288	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " *", "sequence_number": 127}
+13.327	event: response.reasoning_summary_text.delta
+13.327	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "inside*", "sequence_number": 128}
+13.364	event: response.reasoning_summary_text.delta
+13.364	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " the yellow", "sequence_number": 129}
+13.401	event: response.reasoning_summary_text.delta
+13.401	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " rectangle.", "sequence_number": 130}
+13.438	event: response.reasoning_summary_text.delta
+13.439	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "\n\n**", "sequence_number": 131}
+13.476	event: response.reasoning_summary_text.delta
+13.476	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "Final Check", "sequence_number": 132}
+13.513	event: response.reasoning_summary_text.delta
+13.513	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": ":**\n", "sequence_number": 133}
+13.550	event: response.reasoning_summary_text.delta
+13.550	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "*  ", "sequence_number": 134}
+13.588	event: response.reasoning_summary_text.delta
+13.588	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " Code:", "sequence_number": 135}
+13.653	event: response.reasoning_summary_text.delta
+13.653	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " BAN", "sequence_number": 136}
+13.721	event: response.reasoning_summary_text.delta
+13.721	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "ANA", "sequence_number": 137}
+13.788	event: response.reasoning_summary_text.delta
+13.788	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "8", "sequence_number": 138}
+13.855	event: response.reasoning_summary_text.delta
+13.855	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "4", "sequence_number": 139}
+13.894	event: response.reasoning_summary_text.delta
+13.894	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "26", "sequence_number": 140}
+13.960	event: response.reasoning_summary_text.delta
+13.960	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "\n", "sequence_number": 141}
+14.026	event: response.reasoning_summary_text.delta
+14.027	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "*", "sequence_number": 142}
+14.065	event: response.reasoning_summary_text.delta
+14.065	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "   S", "sequence_number": 143}
+14.102	event: response.reasoning_summary_text.delta
+14.102	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "uffix:", "sequence_number": 144}
+14.139	event: response.reasoning_summary_text.delta
+14.139	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " Q2", "sequence_number": 145}
+14.204	event: response.reasoning_summary_text.delta
+14.204	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "7", "sequence_number": 146}
+14.271	event: response.reasoning_summary_text.delta
+14.271	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "-M", "sequence_number": 147}
+14.338	event: response.reasoning_summary_text.delta
+14.338	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "TP", "sequence_number": 148}
+14.405	event: response.reasoning_summary_text.delta
+14.405	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "-", "sequence_number": 149}
+14.444	event: response.reasoning_summary_text.delta
+14.444	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "RAW-", "sequence_number": 150}
+14.481	event: response.reasoning_summary_text.delta
+14.481	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "VID1", "sequence_number": 151}
+14.546	event: response.reasoning_summary_text.delta
+14.546	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "-D", "sequence_number": 152}
+14.585	event: response.reasoning_summary_text.delta
+14.585	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "ONE\n\n", "sequence_number": 153}
+14.650	event: response.reasoning_summary_text.delta
+14.650	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "Let", "sequence_number": 154}
+14.689	event: response.reasoning_summary_text.delta
+14.689	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": "'s construct", "sequence_number": 155}
+14.726	event: response.reasoning_summary_text.delta
+14.726	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " the final", "sequence_number": 156}
+14.763	event: response.reasoning_summary_text.delta
+14.763	data: {"type": "response.reasoning_summary_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "delta": " response.", "sequence_number": 157}
+14.837	event: response.output_text.delta
+14.837	data: {"type": "response.output_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "content_index": 0, "delta": "BAN", "sequence_number": 158}
+14.902	event: response.output_text.delta
+14.902	data: {"type": "response.output_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "content_index": 0, "delta": "ANA", "sequence_number": 159}
+14.970	event: response.output_text.delta
+14.970	data: {"type": "response.output_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "content_index": 0, "delta": "8", "sequence_number": 160}
+15.037	event: response.output_text.delta
+15.037	data: {"type": "response.output_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "content_index": 0, "delta": "4", "sequence_number": 161}
+15.104	event: response.output_text.delta
+15.104	data: {"type": "response.output_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "content_index": 0, "delta": "2", "sequence_number": 162}
+15.171	event: response.output_text.delta
+15.171	data: {"type": "response.output_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "content_index": 0, "delta": "6", "sequence_number": 163}
+15.239	event: response.output_text.delta
+15.239	data: {"type": "response.output_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "content_index": 0, "delta": "\n", "sequence_number": 164}
+15.278	event: response.output_text.delta
+15.278	data: {"type": "response.output_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "content_index": 0, "delta": "Q2", "sequence_number": 165}
+15.342	event: response.output_text.delta
+15.343	data: {"type": "response.output_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "content_index": 0, "delta": "7", "sequence_number": 166}
+15.410	event: response.output_text.delta
+15.410	data: {"type": "response.output_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "content_index": 0, "delta": "-M", "sequence_number": 167}
+15.476	event: response.output_text.delta
+15.476	data: {"type": "response.output_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "content_index": 0, "delta": "TP", "sequence_number": 168}
+15.543	event: response.output_text.delta
+15.543	data: {"type": "response.output_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "content_index": 0, "delta": "-", "sequence_number": 169}
+15.582	event: response.output_text.delta
+15.582	data: {"type": "response.output_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "content_index": 0, "delta": "RAW-", "sequence_number": 170}
+15.619	event: response.output_text.delta
+15.619	data: {"type": "response.output_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "content_index": 0, "delta": "VID1", "sequence_number": 171}
+15.684	event: response.output_text.delta
+15.684	data: {"type": "response.output_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "content_index": 0, "delta": "-D", "sequence_number": 172}
+15.725	event: response.output_text.delta
+15.725	data: {"type": "response.output_text.delta", "item_id": "item_2c4e25858d71", "output_index": 0, "content_index": 0, "delta": "ONE", "sequence_number": 173}
+15.726	event: response.reasoning_summary_text.done
+15.726	data: {"type": "response.reasoning_summary_text.done", "item_id": "item_2c4e25858d71", "output_index": 0, "summary_index": 0, "text": "The user wants me to identify the alphanumeric code inside the yellow rectangle from the provided video frames.\n\n1.  **Analyze the input:** The user has provided a sequence of images (frames from a video). All frames look identical.\n2.  **Focus on the target area:** The target is the \"yellow rectangle\".\n3.  **Identify the text inside:** Inside the yellow rectangle, there is large, bold, yellow text.\n4.  **Read the text:** The text reads \"BANANA8426\".\n5.  **Format the output:** The user requested a specific two-line format:\n    *   Line 1: The code itself.\n    *   Line 2: `Q27-MTP-RAW-VID1-DONE`.\n\n**Step-by-step extraction:**\n*   Look at the center of the image.\n*   There is a yellow rectangular border.\n*   Inside the border, the text is \"BANANA8426\".\n*   Above the rectangle is \"FRESH IMAGE\", but the question specifically asks for the code *inside* the yellow rectangle.\n\n**Final Check:**\n*   Code: BANANA8426\n*   Suffix: Q27-MTP-RAW-VID1-DONE\n\nLet's construct the final response.", "sequence_number": 174}
+15.726	event: response.output_text.done
+15.726	data: {"type": "response.output_text.done", "item_id": "item_2c4e25858d71", "output_index": 0, "content_index": 0, "text": "BANANA8426\nQ27-MTP-RAW-VID1-DONE", "sequence_number": 175}
+15.726	event: response.content_part.done
+15.726	data: {"type": "response.content_part.done", "item_id": "item_2c4e25858d71", "output_index": 0, "content_index": 0, "part": {"type": "output_text", "text": "BANANA8426\nQ27-MTP-RAW-VID1-DONE", "annotations": []}, "sequence_number": 176}
+15.726	event: response.output_item.done
+15.726	data: {"type": "response.output_item.done", "output_index": 0, "item": {"id": "item_2c4e25858d71", "type": "message", "status": "completed", "role": "assistant", "content": [{"type": "output_text", "text": "BANANA8426\nQ27-MTP-RAW-VID1-DONE", "annotations": []}]}, "sequence_number": 177}
+15.726	event: response.completed
+15.726	data: {"type": "response.completed", "response": {"id": "resp_5f2e5717fb53", "object": "response", "created_at": 1784609334, "status": "completed", "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP", "output_text": "BANANA8426\nQ27-MTP-RAW-VID1-DONE", "output": [{"id": "item_2c4e25858d71", "type": "message", "status": "completed", "role": "assistant", "content": [{"type": "output_text", "text": "BANANA8426\nQ27-MTP-RAW-VID1-DONE", "annotations": []}]}, {"id": "rs_126df9d11209", "type": "reasoning", "status": "completed", "role": "assistant", "content": [{"type": "reasoning", "text": "The user wants me to identify the alphanumeric code inside the yellow rectangle from the provided video frames.\n\n1.  **Analyze the input:** The user has provided a sequence of images (frames from a video). All frames look identical.\n2.  **Focus on the target area:** The target is the \"yellow rectangle\".\n3.  **Identify the text inside:** Inside the yellow rectangle, there is large, bold, yellow text.\n4.  **Read the text:** The text reads \"BANANA8426\".\n5.  **Format the output:** The user requested a specific two-line format:\n    *   Line 1: The code itself.\n    *   Line 2: `Q27-MTP-RAW-VID1-DONE`.\n\n**Step-by-step extraction:**\n*   Look at the center of the image.\n*   There is a yellow rectangular border.\n*   Inside the border, the text is \"BANANA8426\".\n*   Above the rectangle is \"FRESH IMAGE\", but the question specifically asks for the code *inside* the yellow rectangle.\n\n**Final Check:**\n*   Code: BANANA8426\n*   Suffix: Q27-MTP-RAW-VID1-DONE\n\nLet's construct the final response."}]}], "usage": {"input_tokens": 2227, "output_tokens": 302, "total_tokens": 2529}}, "sequence_number": 178}

@@ -1,0 +1,320 @@
+   700	    runtime_available = bool(
+   701	        runtime_supported
+   702	        and runtime_env_enabled
+   703	        and runtime_validation_block_reason is None
+   704	    )
+   705	    effective_depth, effective_depth_source = native_mtp_effective_depth(bundle_path)
+   706
+   707	    has_vision_config = bool(cfg.get("vision_config")) or bool(
+   708	        isinstance(cfg.get("text_config"), dict)
+   709	        and (cfg.get("text_config") or {}).get("vision_config")
+   710	    )
+   711	    vision_keys = _vision_keys_from_weight_keys(weight_keys) if not weight_key_error else []
+   712	    has_vision_weights = bool(vision_keys)
+   713	    has_vision = bool(has_vision_config and has_vision_weights)
+   714	    capabilities = jang_cfg.get("capabilities") if isinstance(jang_cfg.get("capabilities"), dict) else {}
+   715	    cache_type = capabilities.get("cache_type") if isinstance(capabilities, dict) else None
+   716
+   717	    vl_runtime_available = bool(runtime_available and has_vision and runtime_supported)
+   718	    runtime_scope = (
+   719	        "text+vl"
+   720	        if runtime_supported and has_vision
+   721	        else "text"
+   722	        if runtime_supported
+   723	        else None
+   724	    )
+   725
+   726	    if issues:
+   727	        status = "metadata_inconsistent"
+   728	        runtime_reason = "metadata_inconsistent"
+   729	    elif drop_mtp is True:
+   730	        status = "dropped"
+   731	        runtime_reason = (
+   732	            "jang_config.runtime.bundle_has_mtp=false"
+   733	            if runtime_declares_dropped_mtp
+   734	            else "jang_config.drop_mtp=true"
+   735	        )
+   736	    elif runtime_available:
+   737	        status = "native_runtime_ready"
+   738	        runtime_reason = (
+   739	            "native MTP runtime will be enabled for supported text and VL "
+   740	            "Qwen3.5/3.6 sessions"
+   741	            if vl_runtime_available
+   742	            else "native MTP runtime will be enabled for supported text "
+   743	            "BatchGenerator sessions"
+   744	        )
+   745	    elif artifact_available and runtime_supported and not runtime_env_enabled:
+   746	        status = "runtime_disabled"
+   747	        runtime_reason = "VMLINUX_NATIVE_MTP disables native MTP runtime"
+   748	    elif artifact_available and runtime_supported and runtime_validation_block_reason:
+   749	        status = "runtime_validation_blocked"
+   750	        runtime_reason = runtime_validation_block_reason
+   751	    elif artifact_available:
+   752	        status = "weights_present_runtime_unwired"
+   753	        runtime_reason = (
+   754	            f"MTP metadata is present for family '{family or 'unknown'}', but "
+   755	            "this family is not currently on the JangMTP support map / native "
+   756	            "MTP runtime map yet"
+   757	        )
+   758	    elif openpangu_included_mtp_runtime_unwired and config_layers:
+   759	        status = "weights_present_runtime_unwired"
+   760	        runtime_reason = (
+   761	            "openPangu MTP heads are stored as extra model.layers entries and "
+   762	            "are intentionally dropped by the current openpangu_v2 runtime"
+   763	        )
+   764	        runtime_mtp_mode = "included_but_dropped_for_runtime"
+   765	    elif nested_architecture_hint_only:
+   766	        status = "not_configured"
+   767	        runtime_reason = (
+   768	            "nested architecture MTP field is inactive because the bundle "
+   769	            "name, JANG runtime sidecar, and tensor index do not declare MTP"
+   770	        )
+   771	    elif config_layers:
+   772	        status = "configured_without_runtime"
+   773	        runtime_reason = "config requests MTP but runtime requirements are incomplete"
+   774	    else:
+   775	        status = "not_configured"
+   776	        runtime_reason = "config does not request MTP"
+   777
+   778	    return {
+   779	        "config_num_nextn_predict_layers": config_layers,
+   780	        "config_mtp_layer_source": layer_source,
+   781	        "jang_mtp_layers": jang_layers,
+   782	        "jang_drop_mtp": drop_mtp,
+   783	        "index_has_mtp_tensors": has_mtp_tensors,
+   784	        "index_mtp_layer_count": indexed_layer_count,
+   785	        "mtp_tensor_count": len(mtp_keys),
+   786	        "artifact_available": artifact_available,
+   787	        "family": family,
+   788	        "has_vision_config": has_vision_config,
+   789	        "has_vision_weights": has_vision_weights,
+   790	        "vision_tensor_count": len(vision_keys),
+   791	        "cache_type": cache_type,
+   792	        "runtime_supported": runtime_supported,
+   793	        "runtime_available": runtime_available,
+   794	        "runtime_active": False,
+   795	        "runtime_validation_blocked": bool(runtime_validation_block_reason),
+   796	        "effective_depth": effective_depth if runtime_available else None,
+   797	        "effective_depth_source": effective_depth_source if runtime_available else None,
+   798	        "runtime_scope": runtime_scope,
+   799	        "vl_runtime_available": vl_runtime_available,
+   800	        "runtime_bundle_has_mtp": runtime_bundle_has_mtp,
+   801	        "runtime_mtp_mode": runtime_mtp_mode,
+   802	        "bundle_name_declares_mtp": bundle_name_declares_mtp,
+   803	        "mtp_declared": mtp_declared,
+   804	        "architecture_mtp_hint_layers": (
+   805	            config_layers if nested_architecture_hint_only else None
+   806	        ),
+   807	        "runtime_reason": runtime_reason,
+   808	        "status": status,
+   809	        "issues": issues,
+   810	    }
+   811
+   812
+   813	def _apply_mlx_lm_mtp_patch() -> bool:
+   814	    from .patches.mlx_lm_mtp import apply_mlx_lm_mtp_patch
+   815	    from .patches.mlx_vlm_mtp import apply_mlx_vlm_mtp_patch
+  2300	    init_emits: int = 0
+  2301	    draft_emits: int = 0
+  2302	    bonus_emits: int = 0
+  2303	    verify_emits: int = 0
+  2304	    drafted_tokens: int = 0
+  2305	    accepted_tokens: int = 0
+  2306	    verify_ms: float = 0.0
+  2307	    sample_ms: float = 0.0
+  2308	    draft_ms: float = 0.0
+  2309	    snapshot_ms: float = 0.0
+  2310	    restore_ms: float = 0.0
+  2311	    replay_ms: float = 0.0
+  2312	    materialize_ms: float = 0.0
+  2313	    accepted_by_depth: List[int] = field(default_factory=lambda: [0, 0, 0])
+  2314	    drafted_by_depth: List[int] = field(default_factory=lambda: [0, 0, 0])
+  2315	    seed_main_forwards: int = 0
+  2316	    verify_main_forwards: int = 0
+  2317	    replay_main_forwards: int = 0
+  2318	    mtp_forwards: int = 0
+  2319
+  2320	    def to_dict(
+  2321	        self,
+  2322	        *,
+  2323	        request_id: str,
+  2324	        finish_reason: str,
+  2325	        final_depth: int,
+  2326	        fallback_reason: Optional[str] = None,
+  2327	    ) -> Dict[str, Any]:
+  2328	        def _rate(accepted: int, drafted: int) -> Optional[float]:
+  2329	            if drafted <= 0:
+  2330	                return None
+  2331	            return accepted / drafted
+  2332
+  2333	        timings = {
+  2334	            "verify": self.verify_ms,
+  2335	            "sample": self.sample_ms,
+  2336	            "draft": self.draft_ms,
+  2337	            "snapshot": self.snapshot_ms,
+  2338	            "restore": self.restore_ms,
+  2339	            "replay": self.replay_ms,
+  2340	            "materialize": self.materialize_ms,
+  2341	        }
+  2342	        total_ms = sum(float(value or 0.0) for value in timings.values())
+  2343	        timings["total"] = total_ms
+  2344	        timings["avg_cycle"] = total_ms / max(1, int(self.cycles or 0))
+  2345
+  2346	        depth_rates = {}
+  2347	        for index, label in enumerate(("d1", "d2", "d3")):
+  2348	            accepted = (
+  2349	                int(self.accepted_by_depth[index])
+  2350	                if index < len(self.accepted_by_depth)
+  2351	                else 0
+  2352	            )
+  2353	            drafted = (
+  2354	                int(self.drafted_by_depth[index])
+  2355	                if index < len(self.drafted_by_depth)
+  2356	                else 0
+  2357	            )
+  2358	            depth_rates[label] = _rate(accepted, drafted)
+  2359
+  2360	        return {
+  2361	            "request_id": request_id,
+  2362	            "finish_reason": finish_reason,
+  2363	            "final_depth": int(final_depth or 1),
+  2364	            "cycles": int(self.cycles),
+  2365	            "accepts": int(self.accepts),
+  2366	            "rejects": int(self.rejects),
+  2367	            "init_emits": int(self.init_emits),
+  2368	            "draft_emits": int(self.draft_emits),
+  2369	            "bonus_emits": int(self.bonus_emits),
+  2370	            "verify_emits": int(self.verify_emits),
+  2371	            "drafted_tokens": int(self.drafted_tokens),
+  2372	            "accepted_tokens": int(self.accepted_tokens),
+  2373	            "acceptance_rate": _rate(
+  2374	                int(self.accepted_tokens),
+  2375	                int(self.drafted_tokens),
+  2376	            ),
+  2377	            "accepted_by_depth": list(self.accepted_by_depth),
+  2378	            "drafted_by_depth": list(self.drafted_by_depth),
+  2379	            "depth_acceptance_rates": depth_rates,
+  2380	            "forwards": {
+  2381	                "seed_main": int(self.seed_main_forwards),
+  2382	                "verify_main": int(self.verify_main_forwards),
+  2383	                "replay_main": int(self.replay_main_forwards),
+  2384	                "mtp": int(self.mtp_forwards),
+  2385	            },
+  3030
+  3031	def _native_mtp_log_stats(request_id: str, stats: MLLMNativeMTPStats, reason: str) -> None:
+  3032	    rate = (stats.accepted_tokens / stats.drafted_tokens * 100.0) if stats.drafted_tokens else 0.0
+  3033	    logger.info(
+  3034	        "MLLM MTP[%s] finish=%s cycles=%d accepted=%d/%d (%.1f%%) "
+  3035	        "emits[init=%d,draft=%d,bonus=%d,verify=%d]",
+  3036	        request_id,
+  3037	        reason,
+  3038	        stats.cycles,
+  3039	        stats.accepted_tokens,
+  3040	        stats.drafted_tokens,
+  3041	        rate,
+  3042	        stats.init_emits,
+  3043	        stats.draft_emits,
+  3044	        stats.bonus_emits,
+  3045	        stats.verify_emits,
+  3046	    )
+  3047	    if any(stats.drafted_by_depth) or any(stats.accepted_by_depth):
+  3048	        logger.info(
+  3049	            "MLLM MTP[%s] accept_by_depth[d1=%d/%d,d2=%d/%d,d3=%d/%d] "
+  3050	            "forwards[seed_main=%d,verify_main=%d,replay_main=%d,mtp=%d]",
+  8625	        )
+  8626	        hybrid_tq_live_encode = hybrid_tq_enabled and hybrid_tq_compress_after > 0
+  8627	        hybrid_tq_storage_enabled = bool(
+  8628	            hybrid_tq_enabled and block_aware_cache is not None
+  8629	        )
+  8630	        hybrid_tq_key_bits = int(
+  8631	            getattr(scheduler, "_hybrid_tq_default_key_bits", 0) or 0
+  8632	        )
+  8633	        hybrid_tq_value_bits = int(
+  8634	            getattr(scheduler, "_hybrid_tq_default_value_bits", 0) or 0
+  8635	        )
+  8636	        hybrid_tq_auto_policy = getattr(
+  8637	            scheduler, "_hybrid_tq_auto_policy", None
+  8638	        )
+  8639	        try:
+  8640	            stored_kv_bits = int(getattr(scheduler, "_kv_cache_bits", 0) or 0)
+  8641	        except (TypeError, ValueError):
+  8642	            stored_kv_bits = 0
+  8643	        try:
+  8644	            stored_kv_group = int(getattr(scheduler, "_kv_cache_group_size", 64) or 64)
+  8645	        except (TypeError, ValueError):
+  8646	            stored_kv_group = 64
+  8647	        return {
+  8648	            "family": family_name or scheduler_family or "hybrid",
+  8649	            "schema": "hybrid_ssm_v1",
+  8650	            "cache_type": "hybrid_ssm_typed",
+  8651	            "components": [
+  8652	                "attention_kv",
+  8653	                "ssm_companion_state",
+  8654	                "async_rederive",
+  8655	            ],
+  8656	            "generic_turboquant_kv": {
+  8657	                "enabled": hybrid_tq_enabled,
+  8658	                "reason": (
+  8659	                    "hybrid_attention_kv_only"
+  8660	                    if hybrid_tq_enabled
+  8661	                    else "hybrid_ssm_state"
+  8662	                ),
+  8663	            },
+  8664	            "live_attention_tq_kv": {
+  8665	                "enabled": hybrid_tq_enabled,
+  8666	                "mode": (
+  8667	                    ("live_decode" if hybrid_tq_live_encode else "attention_kv_objects")
+  8668	                    if hybrid_tq_enabled
+  8669	                    else None
+  8670	                ),
+  8671	                "compress_after": hybrid_tq_compress_after if hybrid_tq_enabled else None,
+  8672	                "applies_to": "attention_kv_layers_only",
+  8673	                "ssm_policy": "native_full_precision_companion_state",
+  8674	                "attention_layers": hybrid_tq_attention_layers,
+  8675	                "companion_layers": hybrid_tq_companion_layers,
+  8676	            },
+  8677	            "attention_kv_storage_quantization": (
+  8678	                {
+  8679	                    "enabled": True,
+  8680	                    "mode": "storage_boundary",
+  8681	                    "codec": "turboquant_native",
+  8682	                    "bits": hybrid_tq_key_bits or None,
+  8683	                    "value_bits": hybrid_tq_value_bits or None,
+  8684	                    "group_size": None,
+  8685	                    "auto_policy": hybrid_tq_auto_policy,
+   145	    )
+   146	    bonsai = _is_bonsai_config(model_config)
+   147	    storage_bits = (
+   148	        BONSAI_UNCALIBRATED_AUTO_TQ_BITS
+   149	        if bonsai
+   150	        else HY3_FULL_KV_AUTO_TQ_BITS
+   151	        if hy3_full_kv
+   152	        else UNCALIBRATED_AUTO_TQ_BITS
+   153	    )
+   154
+   155	    if architecture == "qwen_full_kv":
+   156	        auto_policy = (
+   157	            "bonsai_full_kv_storage_tq8"
+   158	            if bonsai
+   159	            else "qwen_full_kv_storage_tq4_critical_tq8"
+   160	        )
+   161	    elif architecture in {
+   162	        "qwen3_5_hybrid_gated_delta",
+   163	        "qwen3_next_hybrid_gated_delta",
+   164	    }:
+   165	        auto_policy = (
+   166	            "bonsai_hybrid_attention_kv_storage_tq8"
+   167	            if bonsai
+   168	            else "qwen_hybrid_attention_kv_storage_tq4"
+   169	        )
+   170	    elif hy3_full_kv:
+   171	        auto_policy = "hy3_full_kv_storage_tq4"
+   172	    elif len(attention_layers) == len(layer_types):
+   173	        auto_policy = "uncalibrated_full_kv_storage_tq4"
+   174	    else:
+   175	        auto_policy = "uncalibrated_selective_attention_kv_storage_tq4"
+   176
+   177	    critical_layers = (
+   178	        [0, 1, 2, 3, 4, 5, -6, -5, -4, -3, -2, -1]
+   179	        if architecture == "qwen_full_kv" and not bonsai
+   180	        else attention_layers

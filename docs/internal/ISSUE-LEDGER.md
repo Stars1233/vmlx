@@ -3937,3 +3937,31 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   so stale video was not resent into the tool turn. Raw API post-media
   continuation and other Gemma variants remain open; this is not a family-wide
   closure.
+
+## 2026-07-20 - Qwen3.6 27B MXFP4-MTP video, native MTP, and restart L2
+
+- `Q27-MXFP4-MTP-CLASSIFICATION`: `VERIFIED-LIVE_SCOPED`. The exact tested
+  artifact is base MLX MXFP4, not affine JANG or JANGTQ/MXTQ. Bundle/index
+  truth records 333 vision and 23 MTP tensors. The real UI launch selected
+  native MTP depth 3 with text+VL scope and eagerly materialized one engine
+  before a request.
+- `Q27-MTP-VIDEO-UI-STREAM`: `VERIFIED-LIVE_SCOPED`. Real file-input MP4
+  attachment exact-finaled `BANANA8426` plus the requested marker. The 86-state
+  DOM trace proves progressive reasoning followed by progressive content;
+  SQLite has non-empty content, separate reasoning, and no tool/warning. MTP
+  telemetry recorded 127/192 accepted drafts including depth-2/depth-3 accepts.
+- `Q27-MTP-VIDEO-RESTART-L2`: `VERIFIED-LIVE_SCOPED`. A visible Stop/Start
+  emptied L1 while retaining SSD state. The identical fresh-chat media/prompt
+  restored 2,225/2,226 tokens from all 35 q4-native attention blocks plus the
+  native SSM companion, exact-finaled over 81 UI states, and reduced TTFT from
+  7.68 s to 0.60 s. TurboQuant is restricted to the 16 attention-KV layers;
+  48 SSM layers retain native companion state and async rederive.
+- `Q27-MTP-RAW-RESPONSES-VIDEO`: `VERIFIED-LIVE_SCOPED`. Omitted-max raw
+  Responses emitted 155 reasoning deltas, 16 progressive content deltas,
+  exact content, one text-done, and one completed event. It recorded 130/194
+  accepted MTP drafts including deeper accepts.
+- Remaining: media-salt/partial-prefix variants, post-media tool use,
+  Chat/Anthropic/Ollama media, explicit MTP policy variants, bounded eviction
+  and fault injection, longer inputs, 35B MoE MTP, Bonsai/Ornith breadth, and
+  signed-app repetition. Evidence:
+  `docs/internal/release-gates/20260720_qwen36_27b_mxfp4_mtp_video_current/`.
