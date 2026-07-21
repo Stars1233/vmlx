@@ -1,0 +1,39 @@
+Current-source trace recorded 2026-07-21
+
+Media translation
+- vmlx_engine/api/anthropic_adapter.py:330-427
+  Uses has_media and maps Anthropic video/video_url and audio/input_audio blocks
+  to typed video_url/input_audio/audio_url parts.
+- vmlx_engine/api/ollama_adapter.py:129-183
+  Maps direct Ollama images, videos, and audio/audios extensions to typed parts.
+- panel/src/main/api-gateway.ts:1258-1317
+  Maps gateway Ollama images, videos, and audio/audios to image_url, video_url,
+  and audio_url content parts while removing the extension fields.
+
+Answer-pass streaming and terminals
+- vmlx_engine/server.py:1082-1144
+  _answer_pass_reconcile_delta waits for regenerated output to cover an already
+  emitted visible prefix and then emits only the missing suffix; divergence
+  emits nothing because streamed bytes cannot be retracted.
+- vmlx_engine/server.py:19271 and 19309
+  Chat streaming production call sites.
+- vmlx_engine/server.py:21136 and 21166
+  Responses streaming production call sites.
+- vmlx_engine/server.py:14232,14424-14426,14559-14564
+  Non-stream Chat records and adopts the answer pass finish reason.
+
+Development import isolation
+- panel/src/main/sessions.ts:50
+  EnginePath.system carries an optional development sourceRoot.
+- panel/src/main/sessions.ts:2093-2107
+  System-engine spawn pins PYTHONPATH only when sourceRoot is present.
+- panel/src/main/sessions.ts:3809-3819
+  sourceRoot is derived only for an unpackaged Electron checkout containing
+  vmlx_engine/__init__.py.
+
+Dead-code check
+- _answer_pass_reconcile_delta has four production call sites in server.py.
+- sourceRoot flows from findEnginePath into the production spawn path.
+- translateOllamaMessages is called by the live /api/chat route at
+  panel/src/main/api-gateway.ts:1482.
+- No test-only replacement or hidden output rewrite was added.

@@ -1,0 +1,5437 @@
+{
+  "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+  "video": "/Users/eric/mlx/vllm-mlx-release-1.6.13/docs/internal/release-gates/20260720_gemma4_moe_media_capability_current/video-a-banana8426.mp4",
+  "video_bytes": 84074,
+  "gateway": "http://127.0.0.1:8088",
+  "rows": {
+    "chat": {
+      "expected": "BANANA8426\nQ27-MEDIA-CHAT-DONE",
+      "request": {
+        "stream_and_nonstream": true,
+        "thinking": true,
+        "video_data_url_bytes": 112122
+      },
+      "stream": {
+        "status": 200,
+        "content_deltas": [
+          {
+            "at_ms": 14646.06,
+            "text": "BANANA"
+          },
+          {
+            "at_ms": 14712.46,
+            "text": "8"
+          },
+          {
+            "at_ms": 14780.53,
+            "text": "4"
+          },
+          {
+            "at_ms": 14848.93,
+            "text": "2"
+          },
+          {
+            "at_ms": 14916.07,
+            "text": "6"
+          },
+          {
+            "at_ms": 14982.24,
+            "text": "\n"
+          },
+          {
+            "at_ms": 15020.5,
+            "text": "Q2"
+          },
+          {
+            "at_ms": 15085.34,
+            "text": "7"
+          },
+          {
+            "at_ms": 15151.41,
+            "text": "-M"
+          },
+          {
+            "at_ms": 15189.45,
+            "text": "EDIA-"
+          },
+          {
+            "at_ms": 15229.0,
+            "text": "CHAT-D"
+          }
+        ],
+        "reasoning_deltas": [
+          {
+            "at_ms": 7394.0,
+            "text": "The"
+          },
+          {
+            "at_ms": 7394.18,
+            "text": " user"
+          },
+          {
+            "at_ms": 7487.36,
+            "text": " wants me"
+          },
+          {
+            "at_ms": 7544.42,
+            "text": " to identify the alphanumeric"
+          },
+          {
+            "at_ms": 7631.26,
+            "text": " marker"
+          },
+          {
+            "at_ms": 7729.97,
+            "text": " from the provided"
+          },
+          {
+            "at_ms": 7817.93,
+            "text": " video"
+          },
+          {
+            "at_ms": 7875.17,
+            "text": " frames.\n\n1"
+          },
+          {
+            "at_ms": 7931.69,
+            "text": ".  **An"
+          },
+          {
+            "at_ms": 8031.29,
+            "text": "alyze the frames"
+          },
+          {
+            "at_ms": 8125.02,
+            "text": ":** I"
+          },
+          {
+            "at_ms": 8214.44,
+            "text": " see"
+          },
+          {
+            "at_ms": 8303.61,
+            "text": " a"
+          },
+          {
+            "at_ms": 8389.04,
+            "text": " series"
+          },
+          {
+            "at_ms": 8426.26,
+            "text": " of identical"
+          },
+          {
+            "at_ms": 8489.62,
+            "text": " frames"
+          },
+          {
+            "at_ms": 8555.03,
+            "text": "."
+          },
+          {
+            "at_ms": 8592.28,
+            "text": "\n2"
+          },
+          {
+            "at_ms": 8655.77,
+            "text": "."
+          },
+          {
+            "at_ms": 8693.08,
+            "text": "  **"
+          },
+          {
+            "at_ms": 8728.61,
+            "text": "Identify"
+          },
+          {
+            "at_ms": 8764.1,
+            "text": " the text"
+          },
+          {
+            "at_ms": 8827.99,
+            "text": ":**"
+          },
+          {
+            "at_ms": 8864.98,
+            "text": "\n   "
+          },
+          {
+            "at_ms": 8900.49,
+            "text": " *  "
+          },
+          {
+            "at_ms": 8936.06,
+            "text": " Top text"
+          },
+          {
+            "at_ms": 8999.39,
+            "text": ":"
+          },
+          {
+            "at_ms": 9036.61,
+            "text": " \"F"
+          },
+          {
+            "at_ms": 9072.12,
+            "text": "RESH IMAGE"
+          },
+          {
+            "at_ms": 9107.74,
+            "text": "\"\n"
+          },
+          {
+            "at_ms": 9170.79,
+            "text": "   "
+          },
+          {
+            "at_ms": 9208.26,
+            "text": " *  "
+          },
+          {
+            "at_ms": 9243.77,
+            "text": " Central text"
+          },
+          {
+            "at_ms": 9279.49,
+            "text": " inside a"
+          },
+          {
+            "at_ms": 9319.85,
+            "text": " yellow box"
+          },
+          {
+            "at_ms": 9355.73,
+            "text": ": \""
+          },
+          {
+            "at_ms": 9391.45,
+            "text": "BANANA"
+          },
+          {
+            "at_ms": 9455.36,
+            "text": "8"
+          },
+          {
+            "at_ms": 9492.55,
+            "text": "42"
+          },
+          {
+            "at_ms": 9528.06,
+            "text": "6\""
+          },
+          {
+            "at_ms": 9563.8,
+            "text": "\n3"
+          },
+          {
+            "at_ms": 9628.78,
+            "text": "."
+          },
+          {
+            "at_ms": 9665.93,
+            "text": "  **"
+          },
+          {
+            "at_ms": 9731.55,
+            "text": "Extract"
+          },
+          {
+            "at_ms": 9768.78,
+            "text": " the marker"
+          },
+          {
+            "at_ms": 9832.72,
+            "text": ":**"
+          },
+          {
+            "at_ms": 9869.81,
+            "text": " The specific"
+          },
+          {
+            "at_ms": 9933.36,
+            "text": " alphanumeric"
+          },
+          {
+            "at_ms": 9970.64,
+            "text": " string is"
+          },
+          {
+            "at_ms": 10006.31,
+            "text": " \"BAN"
+          },
+          {
+            "at_ms": 10070.13,
+            "text": "ANA"
+          },
+          {
+            "at_ms": 10135.7,
+            "text": "8"
+          },
+          {
+            "at_ms": 10200.98,
+            "text": "4"
+          },
+          {
+            "at_ms": 10266.18,
+            "text": "2"
+          },
+          {
+            "at_ms": 10331.81,
+            "text": "6"
+          },
+          {
+            "at_ms": 10396.99,
+            "text": "\"."
+          },
+          {
+            "at_ms": 10434.4,
+            "text": "\n4"
+          },
+          {
+            "at_ms": 10497.92,
+            "text": "."
+          },
+          {
+            "at_ms": 10535.4,
+            "text": "  **"
+          },
+          {
+            "at_ms": 10571.02,
+            "text": "Format the"
+          },
+          {
+            "at_ms": 10606.69,
+            "text": " output:**"
+          },
+          {
+            "at_ms": 10642.71,
+            "text": "\n   "
+          },
+          {
+            "at_ms": 10679.15,
+            "text": " *  "
+          },
+          {
+            "at_ms": 10715.6,
+            "text": " Line "
+          },
+          {
+            "at_ms": 10752.49,
+            "text": "1:"
+          },
+          {
+            "at_ms": 10790.22,
+            "text": " The marker"
+          },
+          {
+            "at_ms": 10855.9,
+            "text": " itself"
+          },
+          {
+            "at_ms": 10895.11,
+            "text": ".\n"
+          },
+          {
+            "at_ms": 10960.76,
+            "text": "   "
+          },
+          {
+            "at_ms": 10999.83,
+            "text": " *  "
+          },
+          {
+            "at_ms": 11037.18,
+            "text": " Line "
+          },
+          {
+            "at_ms": 11075.13,
+            "text": "2:"
+          },
+          {
+            "at_ms": 11112.52,
+            "text": " \"Q"
+          },
+          {
+            "at_ms": 11150.29,
+            "text": "27"
+          },
+          {
+            "at_ms": 11216.0,
+            "text": "-M"
+          },
+          {
+            "at_ms": 11255.46,
+            "text": "EDIA-"
+          },
+          {
+            "at_ms": 11293.44,
+            "text": "CHAT-D"
+          },
+          {
+            "at_ms": 11331.27,
+            "text": "ONE\""
+          },
+          {
+            "at_ms": 11368.95,
+            "text": "\n\nLet"
+          },
+          {
+            "at_ms": 11406.83,
+            "text": "'s double"
+          },
+          {
+            "at_ms": 11444.9,
+            "text": "-check the"
+          },
+          {
+            "at_ms": 11482.87,
+            "text": " spelling."
+          },
+          {
+            "at_ms": 11520.91,
+            "text": "\nB"
+          },
+          {
+            "at_ms": 11587.06,
+            "text": "-A"
+          },
+          {
+            "at_ms": 11626.94,
+            "text": "-N-A"
+          },
+          {
+            "at_ms": 11664.41,
+            "text": "-N-A"
+          },
+          {
+            "at_ms": 11702.23,
+            "text": "-8"
+          },
+          {
+            "at_ms": 11740.4,
+            "text": "-4"
+          },
+          {
+            "at_ms": 11778.43,
+            "text": "-2"
+          },
+          {
+            "at_ms": 11815.81,
+            "text": "-6"
+          },
+          {
+            "at_ms": 11853.51,
+            "text": ".\n"
+          },
+          {
+            "at_ms": 11920.75,
+            "text": "Yes"
+          },
+          {
+            "at_ms": 11960.16,
+            "text": ", \""
+          },
+          {
+            "at_ms": 11998.25,
+            "text": "BANANA"
+          },
+          {
+            "at_ms": 12065.14,
+            "text": "8"
+          },
+          {
+            "at_ms": 12132.98,
+            "text": "4"
+          },
+          {
+            "at_ms": 12200.51,
+            "text": "2"
+          },
+          {
+            "at_ms": 12267.22,
+            "text": "6"
+          },
+          {
+            "at_ms": 12305.77,
+            "text": "\".\n\n"
+          },
+          {
+            "at_ms": 12342.3,
+            "text": "The prompt"
+          },
+          {
+            "at_ms": 12379.3,
+            "text": " asks for"
+          },
+          {
+            "at_ms": 12416.4,
+            "text": " \"exact"
+          },
+          {
+            "at_ms": 12482.28,
+            "text": " alphanumeric"
+          },
+          {
+            "at_ms": 12548.93,
+            "text": " marker"
+          },
+          {
+            "at_ms": 12615.51,
+            "text": "\"."
+          },
+          {
+            "at_ms": 12653.53,
+            "text": "\nThe"
+          },
+          {
+            "at_ms": 12718.03,
+            "text": " text"
+          },
+          {
+            "at_ms": 12755.89,
+            "text": " \"F"
+          },
+          {
+            "at_ms": 12820.65,
+            "text": "RESH"
+          },
+          {
+            "at_ms": 12886.62,
+            "text": " IMAGE"
+          },
+          {
+            "at_ms": 12952.41,
+            "text": "\""
+          },
+          {
+            "at_ms": 12989.79,
+            "text": " is also"
+          },
+          {
+            "at_ms": 13054.01,
+            "text": " there"
+          },
+          {
+            "at_ms": 13092.05,
+            "text": ", but"
+          },
+          {
+            "at_ms": 13128.32,
+            "text": " usually,"
+          },
+          {
+            "at_ms": 13164.66,
+            "text": " the central"
+          },
+          {
+            "at_ms": 13229.72,
+            "text": ","
+          },
+          {
+            "at_ms": 13268.35,
+            "text": " boxed text"
+          },
+          {
+            "at_ms": 13305.55,
+            "text": " is the"
+          },
+          {
+            "at_ms": 13370.96,
+            "text": " primary"
+          },
+          {
+            "at_ms": 13437.93,
+            "text": " \""
+          },
+          {
+            "at_ms": 13476.57,
+            "text": "marker\""
+          },
+          {
+            "at_ms": 13514.05,
+            "text": " or ID"
+          },
+          {
+            "at_ms": 13579.92,
+            "text": " in"
+          },
+          {
+            "at_ms": 13618.86,
+            "text": " these types"
+          },
+          {
+            "at_ms": 13656.35,
+            "text": " of synthetic"
+          },
+          {
+            "at_ms": 13722.07,
+            "text": " datasets"
+          },
+          {
+            "at_ms": 13761.26,
+            "text": ". \""
+          },
+          {
+            "at_ms": 13827.53,
+            "text": "BAN"
+          },
+          {
+            "at_ms": 13894.22,
+            "text": "ANA"
+          },
+          {
+            "at_ms": 13960.78,
+            "text": "8"
+          },
+          {
+            "at_ms": 14027.16,
+            "text": "4"
+          },
+          {
+            "at_ms": 14093.05,
+            "text": "2"
+          },
+          {
+            "at_ms": 14158.85,
+            "text": "6"
+          },
+          {
+            "at_ms": 14196.61,
+            "text": "\" looks"
+          },
+          {
+            "at_ms": 14233.01,
+            "text": " like a"
+          },
+          {
+            "at_ms": 14319.63,
+            "text": " unique"
+          },
+          {
+            "at_ms": 14384.08,
+            "text": " identifier"
+          },
+          {
+            "at_ms": 14421.71,
+            "text": ".\n\n"
+          },
+          {
+            "at_ms": 14458.42,
+            "text": "Let's"
+          },
+          {
+            "at_ms": 14495.45,
+            "text": " construct the"
+          },
+          {
+            "at_ms": 14532.79,
+            "text": " final response"
+          },
+          {
+            "at_ms": 14570.26,
+            "text": ".\n"
+          }
+        ],
+        "terminals": [
+          {
+            "at_ms": 15229.0,
+            "type": "length"
+          },
+          {
+            "at_ms": 15229.14,
+            "type": "DONE"
+          }
+        ],
+        "usage": [
+          {
+            "prompt_tokens": 2221,
+            "completion_tokens": 256,
+            "total_tokens": 2477
+          }
+        ],
+        "events": [
+          {
+            "at_ms": 33.01,
+            "type": null
+          },
+          {
+            "at_ms": 7394.0,
+            "type": null
+          },
+          {
+            "at_ms": 7394.18,
+            "type": null
+          },
+          {
+            "at_ms": 7487.36,
+            "type": null
+          },
+          {
+            "at_ms": 7544.42,
+            "type": null
+          },
+          {
+            "at_ms": 7631.26,
+            "type": null
+          },
+          {
+            "at_ms": 7729.97,
+            "type": null
+          },
+          {
+            "at_ms": 7817.93,
+            "type": null
+          },
+          {
+            "at_ms": 7875.17,
+            "type": null
+          },
+          {
+            "at_ms": 7931.69,
+            "type": null
+          },
+          {
+            "at_ms": 8031.29,
+            "type": null
+          },
+          {
+            "at_ms": 8125.02,
+            "type": null
+          },
+          {
+            "at_ms": 8214.44,
+            "type": null
+          },
+          {
+            "at_ms": 8303.61,
+            "type": null
+          },
+          {
+            "at_ms": 8389.04,
+            "type": null
+          },
+          {
+            "at_ms": 8426.26,
+            "type": null
+          },
+          {
+            "at_ms": 8489.62,
+            "type": null
+          },
+          {
+            "at_ms": 8555.03,
+            "type": null
+          },
+          {
+            "at_ms": 8592.28,
+            "type": null
+          },
+          {
+            "at_ms": 8655.77,
+            "type": null
+          },
+          {
+            "at_ms": 8693.08,
+            "type": null
+          },
+          {
+            "at_ms": 8728.61,
+            "type": null
+          },
+          {
+            "at_ms": 8764.1,
+            "type": null
+          },
+          {
+            "at_ms": 8827.99,
+            "type": null
+          },
+          {
+            "at_ms": 8864.98,
+            "type": null
+          },
+          {
+            "at_ms": 8900.49,
+            "type": null
+          },
+          {
+            "at_ms": 8936.06,
+            "type": null
+          },
+          {
+            "at_ms": 8999.39,
+            "type": null
+          },
+          {
+            "at_ms": 9036.61,
+            "type": null
+          },
+          {
+            "at_ms": 9072.12,
+            "type": null
+          },
+          {
+            "at_ms": 9107.74,
+            "type": null
+          },
+          {
+            "at_ms": 9170.79,
+            "type": null
+          },
+          {
+            "at_ms": 9208.26,
+            "type": null
+          },
+          {
+            "at_ms": 9243.77,
+            "type": null
+          },
+          {
+            "at_ms": 9279.49,
+            "type": null
+          },
+          {
+            "at_ms": 9319.85,
+            "type": null
+          },
+          {
+            "at_ms": 9355.73,
+            "type": null
+          },
+          {
+            "at_ms": 9391.45,
+            "type": null
+          },
+          {
+            "at_ms": 9455.36,
+            "type": null
+          },
+          {
+            "at_ms": 9492.55,
+            "type": null
+          },
+          {
+            "at_ms": 9528.06,
+            "type": null
+          },
+          {
+            "at_ms": 9563.8,
+            "type": null
+          },
+          {
+            "at_ms": 9628.78,
+            "type": null
+          },
+          {
+            "at_ms": 9665.93,
+            "type": null
+          },
+          {
+            "at_ms": 9731.55,
+            "type": null
+          },
+          {
+            "at_ms": 9768.78,
+            "type": null
+          },
+          {
+            "at_ms": 9832.72,
+            "type": null
+          },
+          {
+            "at_ms": 9869.81,
+            "type": null
+          },
+          {
+            "at_ms": 9933.36,
+            "type": null
+          },
+          {
+            "at_ms": 9970.64,
+            "type": null
+          },
+          {
+            "at_ms": 10006.31,
+            "type": null
+          },
+          {
+            "at_ms": 10070.13,
+            "type": null
+          },
+          {
+            "at_ms": 10135.7,
+            "type": null
+          },
+          {
+            "at_ms": 10200.98,
+            "type": null
+          },
+          {
+            "at_ms": 10266.18,
+            "type": null
+          },
+          {
+            "at_ms": 10331.81,
+            "type": null
+          },
+          {
+            "at_ms": 10396.99,
+            "type": null
+          },
+          {
+            "at_ms": 10434.4,
+            "type": null
+          },
+          {
+            "at_ms": 10497.92,
+            "type": null
+          },
+          {
+            "at_ms": 10535.4,
+            "type": null
+          },
+          {
+            "at_ms": 10571.02,
+            "type": null
+          },
+          {
+            "at_ms": 10606.69,
+            "type": null
+          },
+          {
+            "at_ms": 10642.71,
+            "type": null
+          },
+          {
+            "at_ms": 10679.15,
+            "type": null
+          },
+          {
+            "at_ms": 10715.6,
+            "type": null
+          },
+          {
+            "at_ms": 10752.49,
+            "type": null
+          },
+          {
+            "at_ms": 10790.22,
+            "type": null
+          },
+          {
+            "at_ms": 10855.9,
+            "type": null
+          },
+          {
+            "at_ms": 10895.11,
+            "type": null
+          },
+          {
+            "at_ms": 10960.76,
+            "type": null
+          },
+          {
+            "at_ms": 10999.83,
+            "type": null
+          },
+          {
+            "at_ms": 11037.18,
+            "type": null
+          },
+          {
+            "at_ms": 11075.13,
+            "type": null
+          },
+          {
+            "at_ms": 11112.52,
+            "type": null
+          },
+          {
+            "at_ms": 11150.29,
+            "type": null
+          },
+          {
+            "at_ms": 11216.0,
+            "type": null
+          },
+          {
+            "at_ms": 11255.46,
+            "type": null
+          },
+          {
+            "at_ms": 11293.44,
+            "type": null
+          },
+          {
+            "at_ms": 11331.27,
+            "type": null
+          },
+          {
+            "at_ms": 11368.95,
+            "type": null
+          },
+          {
+            "at_ms": 11406.83,
+            "type": null
+          },
+          {
+            "at_ms": 11444.9,
+            "type": null
+          },
+          {
+            "at_ms": 11482.87,
+            "type": null
+          },
+          {
+            "at_ms": 11520.91,
+            "type": null
+          },
+          {
+            "at_ms": 11587.06,
+            "type": null
+          },
+          {
+            "at_ms": 11626.94,
+            "type": null
+          },
+          {
+            "at_ms": 11664.41,
+            "type": null
+          },
+          {
+            "at_ms": 11702.23,
+            "type": null
+          },
+          {
+            "at_ms": 11740.4,
+            "type": null
+          },
+          {
+            "at_ms": 11778.43,
+            "type": null
+          },
+          {
+            "at_ms": 11815.81,
+            "type": null
+          },
+          {
+            "at_ms": 11853.51,
+            "type": null
+          },
+          {
+            "at_ms": 11920.75,
+            "type": null
+          },
+          {
+            "at_ms": 11960.16,
+            "type": null
+          },
+          {
+            "at_ms": 11998.25,
+            "type": null
+          },
+          {
+            "at_ms": 12065.14,
+            "type": null
+          },
+          {
+            "at_ms": 12132.98,
+            "type": null
+          },
+          {
+            "at_ms": 12200.51,
+            "type": null
+          },
+          {
+            "at_ms": 12267.22,
+            "type": null
+          },
+          {
+            "at_ms": 12305.77,
+            "type": null
+          },
+          {
+            "at_ms": 12342.3,
+            "type": null
+          },
+          {
+            "at_ms": 12379.3,
+            "type": null
+          },
+          {
+            "at_ms": 12416.4,
+            "type": null
+          },
+          {
+            "at_ms": 12482.28,
+            "type": null
+          },
+          {
+            "at_ms": 12548.93,
+            "type": null
+          },
+          {
+            "at_ms": 12615.51,
+            "type": null
+          },
+          {
+            "at_ms": 12653.53,
+            "type": null
+          },
+          {
+            "at_ms": 12718.03,
+            "type": null
+          },
+          {
+            "at_ms": 12755.89,
+            "type": null
+          },
+          {
+            "at_ms": 12820.65,
+            "type": null
+          },
+          {
+            "at_ms": 12886.62,
+            "type": null
+          },
+          {
+            "at_ms": 12952.41,
+            "type": null
+          },
+          {
+            "at_ms": 12989.79,
+            "type": null
+          },
+          {
+            "at_ms": 13054.01,
+            "type": null
+          },
+          {
+            "at_ms": 13092.05,
+            "type": null
+          },
+          {
+            "at_ms": 13128.32,
+            "type": null
+          },
+          {
+            "at_ms": 13164.66,
+            "type": null
+          },
+          {
+            "at_ms": 13229.72,
+            "type": null
+          },
+          {
+            "at_ms": 13268.35,
+            "type": null
+          },
+          {
+            "at_ms": 13305.55,
+            "type": null
+          },
+          {
+            "at_ms": 13370.96,
+            "type": null
+          },
+          {
+            "at_ms": 13437.93,
+            "type": null
+          },
+          {
+            "at_ms": 13476.57,
+            "type": null
+          },
+          {
+            "at_ms": 13514.05,
+            "type": null
+          },
+          {
+            "at_ms": 13579.92,
+            "type": null
+          },
+          {
+            "at_ms": 13618.86,
+            "type": null
+          },
+          {
+            "at_ms": 13656.35,
+            "type": null
+          },
+          {
+            "at_ms": 13722.07,
+            "type": null
+          },
+          {
+            "at_ms": 13761.26,
+            "type": null
+          },
+          {
+            "at_ms": 13827.53,
+            "type": null
+          },
+          {
+            "at_ms": 13894.22,
+            "type": null
+          },
+          {
+            "at_ms": 13960.78,
+            "type": null
+          },
+          {
+            "at_ms": 14027.16,
+            "type": null
+          },
+          {
+            "at_ms": 14093.05,
+            "type": null
+          },
+          {
+            "at_ms": 14158.85,
+            "type": null
+          },
+          {
+            "at_ms": 14196.61,
+            "type": null
+          },
+          {
+            "at_ms": 14233.01,
+            "type": null
+          },
+          {
+            "at_ms": 14319.63,
+            "type": null
+          },
+          {
+            "at_ms": 14384.08,
+            "type": null
+          },
+          {
+            "at_ms": 14421.71,
+            "type": null
+          },
+          {
+            "at_ms": 14458.42,
+            "type": null
+          },
+          {
+            "at_ms": 14495.45,
+            "type": null
+          },
+          {
+            "at_ms": 14532.79,
+            "type": null
+          },
+          {
+            "at_ms": 14570.26,
+            "type": null
+          },
+          {
+            "at_ms": 14646.06,
+            "type": null
+          },
+          {
+            "at_ms": 14712.46,
+            "type": null
+          },
+          {
+            "at_ms": 14780.53,
+            "type": null
+          },
+          {
+            "at_ms": 14848.93,
+            "type": null
+          },
+          {
+            "at_ms": 14916.07,
+            "type": null
+          },
+          {
+            "at_ms": 14982.24,
+            "type": null
+          },
+          {
+            "at_ms": 15020.5,
+            "type": null
+          },
+          {
+            "at_ms": 15085.34,
+            "type": null
+          },
+          {
+            "at_ms": 15151.41,
+            "type": null
+          },
+          {
+            "at_ms": 15189.45,
+            "type": null
+          },
+          {
+            "at_ms": 15229.0,
+            "type": null
+          },
+          {
+            "at_ms": 15229.08,
+            "type": null
+          }
+        ],
+        "elapsed_ms": 15229.41,
+        "visible": "BANANA8426\nQ27-MEDIA-CHAT-D",
+        "reasoning": "The user wants me to identify the alphanumeric marker from the provided video frames.\n\n1.  **Analyze the frames:** I see a series of identical frames.\n2.  **Identify the text:**\n    *   Top text: \"FRESH IMAGE\"\n    *   Central text inside a yellow box: \"BANANA8426\"\n3.  **Extract the marker:** The specific alphanumeric string is \"BANANA8426\".\n4.  **Format the output:**\n    *   Line 1: The marker itself.\n    *   Line 2: \"Q27-MEDIA-CHAT-DONE\"\n\nLet's double-check the spelling.\nB-A-N-A-N-A-8-4-2-6.\nYes, \"BANANA8426\".\n\nThe prompt asks for \"exact alphanumeric marker\".\nThe text \"FRESH IMAGE\" is also there, but usually, the central, boxed text is the primary \"marker\" or ID in these types of synthetic datasets. \"BANANA8426\" looks like a unique identifier.\n\nLet's construct the final response.\n",
+        "content_delta_count": 11,
+        "reasoning_delta_count": 143,
+        "first_content_ms": 14646.06,
+        "last_content_ms": 15229.0
+      },
+      "nonstream": {
+        "status": 200,
+        "elapsed_ms": 9387.06,
+        "visible": "BANANA8426\nQ27-MEDIA-CHAT-DONE",
+        "body": {
+          "id": "chatcmpl-5e88679a",
+          "object": "chat.completion",
+          "created": 1784618273,
+          "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "BANANA8426\nQ27-MEDIA-CHAT-DONE",
+                "tool_calls": null,
+                "reasoning_content": "The user wants me to identify the alphanumeric marker from the provided images.\n\n1.  **Analyze the images:** All the images are identical. They show a dark blue background with yellow text.\n2.  **Locate the text:**\n    *   Top text: \"FRESH IMAGE\"\n    *   Central text inside a yellow rectangle: \"BANANA8426\"\n3.  **Identify the \"alphanumeric marker\":** The prompt asks for the \"exact alphanumeric marker shown in it\". While \"FRESH IMAGE\" is text, \"BANANA8426\" looks like a specific code or marker, especially given its prominence and the mix of letters and numbers. It's the most distinct \"marker\" in the visual hierarchy.\n4.  **Formulate the output:**\n    *   Line 1: The marker itself -> `BANANA8426`\n    *   Line 2: The specific suffix requested -> `Q27-MEDIA-CHAT-DONE`\n\nLet's double-check the spelling.\nB-A-N-A-N-A-8-4-2-6.\nYes, \"BANANA8426\".\n\nThe prompt asks for \"private reasoning\""
+              },
+              "logprobs": null,
+              "finish_reason": "length"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 2221,
+            "completion_tokens": 273,
+            "total_tokens": 2494,
+            "prompt_tokens_details": {
+              "cached_tokens": 2220,
+              "cache_detail": "paged+ssm+disk+tq-native"
+            }
+          },
+          "warnings": null
+        }
+      },
+      "checks": {
+        "stream_200": true,
+        "stream_exact": false,
+        "stream_progressive_content": true,
+        "stream_reasoning_separate_nonempty": true,
+        "stream_terminal": true,
+        "nonstream_200": true,
+        "nonstream_exact": true
+      }
+    },
+    "responses": {
+      "expected": "BANANA8426\nQ27-MEDIA-RESPONSES-DONE",
+      "request": {
+        "stream_and_nonstream": true,
+        "thinking": true,
+        "video_data_url_bytes": 112122
+      },
+      "stream": {
+        "status": 200,
+        "content_deltas": [
+          {
+            "at_ms": 17600.26,
+            "text": "BAN"
+          },
+          {
+            "at_ms": 17600.42,
+            "text": "ANA"
+          },
+          {
+            "at_ms": 17706.73,
+            "text": "8"
+          },
+          {
+            "at_ms": 17815.92,
+            "text": "4"
+          },
+          {
+            "at_ms": 17928.68,
+            "text": "26"
+          },
+          {
+            "at_ms": 18154.33,
+            "text": "\nQ2"
+          },
+          {
+            "at_ms": 18265.81,
+            "text": "7"
+          },
+          {
+            "at_ms": 18376.59,
+            "text": "-M"
+          },
+          {
+            "at_ms": 18498.48,
+            "text": "EDIA-RESP"
+          },
+          {
+            "at_ms": 18613.9,
+            "text": "ONSES"
+          },
+          {
+            "at_ms": 18698.83,
+            "text": "-DONE"
+          }
+        ],
+        "reasoning_deltas": [
+          {
+            "at_ms": 8014.19,
+            "text": "The"
+          },
+          {
+            "at_ms": 8014.33,
+            "text": " user"
+          },
+          {
+            "at_ms": 8110.47,
+            "text": " wants me"
+          },
+          {
+            "at_ms": 8170.4,
+            "text": " to identify the alphanumeric"
+          },
+          {
+            "at_ms": 8261.76,
+            "text": " marker"
+          },
+          {
+            "at_ms": 8367.46,
+            "text": " from the provided"
+          },
+          {
+            "at_ms": 8460.48,
+            "text": " video"
+          },
+          {
+            "at_ms": 8566.86,
+            "text": " frames.\n\n"
+          },
+          {
+            "at_ms": 8630.21,
+            "text": "1.  **"
+          },
+          {
+            "at_ms": 8693.31,
+            "text": "Analyze the frames"
+          },
+          {
+            "at_ms": 8791.82,
+            "text": ":** I"
+          },
+          {
+            "at_ms": 8885.24,
+            "text": " see"
+          },
+          {
+            "at_ms": 8977.51,
+            "text": " a"
+          },
+          {
+            "at_ms": 9067.22,
+            "text": " series"
+          },
+          {
+            "at_ms": 9105.94,
+            "text": " of identical"
+          },
+          {
+            "at_ms": 9171.03,
+            "text": " frames"
+          },
+          {
+            "at_ms": 9238.29,
+            "text": "."
+          },
+          {
+            "at_ms": 9286.1,
+            "text": "\n2"
+          },
+          {
+            "at_ms": 9352.48,
+            "text": "."
+          },
+          {
+            "at_ms": 9401.11,
+            "text": "  **"
+          },
+          {
+            "at_ms": 9437.59,
+            "text": "Identify"
+          },
+          {
+            "at_ms": 9483.64,
+            "text": " the text"
+          },
+          {
+            "at_ms": 9559.29,
+            "text": ":**"
+          },
+          {
+            "at_ms": 9608.9,
+            "text": "\n   "
+          },
+          {
+            "at_ms": 9654.63,
+            "text": " *  "
+          },
+          {
+            "at_ms": 9718.55,
+            "text": " Top text"
+          },
+          {
+            "at_ms": 9783.32,
+            "text": ":"
+          },
+          {
+            "at_ms": 9831.05,
+            "text": " \"F"
+          },
+          {
+            "at_ms": 9876.13,
+            "text": "RESH IMAGE"
+          },
+          {
+            "at_ms": 9920.84,
+            "text": "\"\n"
+          },
+          {
+            "at_ms": 9999.44,
+            "text": "   "
+          },
+          {
+            "at_ms": 10048.47,
+            "text": " *  "
+          },
+          {
+            "at_ms": 10093.98,
+            "text": " Central text"
+          },
+          {
+            "at_ms": 10139.68,
+            "text": " inside a"
+          },
+          {
+            "at_ms": 10185.85,
+            "text": " yellow box"
+          },
+          {
+            "at_ms": 10229.95,
+            "text": ": \""
+          },
+          {
+            "at_ms": 10274.88,
+            "text": "BANANA"
+          },
+          {
+            "at_ms": 10356.7,
+            "text": "8"
+          },
+          {
+            "at_ms": 10405.59,
+            "text": "42"
+          },
+          {
+            "at_ms": 10450.68,
+            "text": "6\""
+          },
+          {
+            "at_ms": 10496.54,
+            "text": "\n3"
+          },
+          {
+            "at_ms": 10582.52,
+            "text": "."
+          },
+          {
+            "at_ms": 10631.64,
+            "text": "  **"
+          },
+          {
+            "at_ms": 10715.07,
+            "text": "Extract"
+          },
+          {
+            "at_ms": 10764.24,
+            "text": " the marker"
+          },
+          {
+            "at_ms": 10846.95,
+            "text": ":**"
+          },
+          {
+            "at_ms": 10896.55,
+            "text": " The specific"
+          },
+          {
+            "at_ms": 10979.8,
+            "text": " alphanumeric"
+          },
+          {
+            "at_ms": 11027.51,
+            "text": " string is"
+          },
+          {
+            "at_ms": 11072.5,
+            "text": " \"BAN"
+          },
+          {
+            "at_ms": 11155.61,
+            "text": "ANA"
+          },
+          {
+            "at_ms": 11242.61,
+            "text": "8"
+          },
+          {
+            "at_ms": 11328.4,
+            "text": "4"
+          },
+          {
+            "at_ms": 11415.71,
+            "text": "2"
+          },
+          {
+            "at_ms": 11502.86,
+            "text": "6"
+          },
+          {
+            "at_ms": 11590.18,
+            "text": "\"."
+          },
+          {
+            "at_ms": 11639.34,
+            "text": "\n4"
+          },
+          {
+            "at_ms": 11723.09,
+            "text": "."
+          },
+          {
+            "at_ms": 11772.08,
+            "text": "  **"
+          },
+          {
+            "at_ms": 11817.39,
+            "text": "Format the"
+          },
+          {
+            "at_ms": 11862.74,
+            "text": " output:**"
+          },
+          {
+            "at_ms": 11908.25,
+            "text": "\n   "
+          },
+          {
+            "at_ms": 11954.6,
+            "text": " *  "
+          },
+          {
+            "at_ms": 11999.5,
+            "text": " Line "
+          },
+          {
+            "at_ms": 12044.64,
+            "text": "1:"
+          },
+          {
+            "at_ms": 12089.75,
+            "text": " The marker"
+          },
+          {
+            "at_ms": 12174.23,
+            "text": " itself"
+          },
+          {
+            "at_ms": 12222.34,
+            "text": ".\n"
+          },
+          {
+            "at_ms": 12304.17,
+            "text": "   "
+          },
+          {
+            "at_ms": 12352.59,
+            "text": " *  "
+          },
+          {
+            "at_ms": 12397.96,
+            "text": " Line "
+          },
+          {
+            "at_ms": 12444.01,
+            "text": "2:"
+          },
+          {
+            "at_ms": 12528.05,
+            "text": " The"
+          },
+          {
+            "at_ms": 12577.18,
+            "text": " specific suffix"
+          },
+          {
+            "at_ms": 12623.11,
+            "text": " \"Q"
+          },
+          {
+            "at_ms": 12669.42,
+            "text": "27"
+          },
+          {
+            "at_ms": 12752.7,
+            "text": "-M"
+          },
+          {
+            "at_ms": 12801.55,
+            "text": "EDIA-"
+          },
+          {
+            "at_ms": 12847.02,
+            "text": "RESPONSE"
+          },
+          {
+            "at_ms": 12892.57,
+            "text": "S-D"
+          },
+          {
+            "at_ms": 12938.82,
+            "text": "ONE\"."
+          },
+          {
+            "at_ms": 12984.78,
+            "text": "\n\nLet"
+          },
+          {
+            "at_ms": 13030.68,
+            "text": "'s double"
+          },
+          {
+            "at_ms": 13076.36,
+            "text": "-check the"
+          },
+          {
+            "at_ms": 13121.82,
+            "text": " spelling."
+          },
+          {
+            "at_ms": 13168.58,
+            "text": "\nB"
+          },
+          {
+            "at_ms": 13251.72,
+            "text": "-A"
+          },
+          {
+            "at_ms": 13299.99,
+            "text": "-N-A"
+          },
+          {
+            "at_ms": 13345.47,
+            "text": "-N-A"
+          },
+          {
+            "at_ms": 13390.93,
+            "text": "-8"
+          },
+          {
+            "at_ms": 13437.31,
+            "text": "-4"
+          },
+          {
+            "at_ms": 13483.39,
+            "text": "-2"
+          },
+          {
+            "at_ms": 13529.54,
+            "text": "-6"
+          },
+          {
+            "at_ms": 13575.87,
+            "text": ".\n"
+          },
+          {
+            "at_ms": 13660.34,
+            "text": "Yes"
+          },
+          {
+            "at_ms": 13709.82,
+            "text": ", \""
+          },
+          {
+            "at_ms": 13754.65,
+            "text": "BANANA"
+          },
+          {
+            "at_ms": 13836.54,
+            "text": "8"
+          },
+          {
+            "at_ms": 13923.22,
+            "text": "4"
+          },
+          {
+            "at_ms": 14010.83,
+            "text": "2"
+          },
+          {
+            "at_ms": 14097.82,
+            "text": "6"
+          },
+          {
+            "at_ms": 14146.31,
+            "text": "\".\n\n"
+          },
+          {
+            "at_ms": 14192.92,
+            "text": "The prompt"
+          },
+          {
+            "at_ms": 14238.11,
+            "text": " asks for"
+          },
+          {
+            "at_ms": 14283.33,
+            "text": " \"exact"
+          },
+          {
+            "at_ms": 14366.87,
+            "text": " alphanumeric"
+          },
+          {
+            "at_ms": 14454.47,
+            "text": " marker"
+          },
+          {
+            "at_ms": 14542.26,
+            "text": "\"."
+          },
+          {
+            "at_ms": 14592.04,
+            "text": "\nThe"
+          },
+          {
+            "at_ms": 14676.5,
+            "text": " text"
+          },
+          {
+            "at_ms": 14731.81,
+            "text": " \"F"
+          },
+          {
+            "at_ms": 14815.41,
+            "text": "RESH"
+          },
+          {
+            "at_ms": 14900.66,
+            "text": " IMAGE"
+          },
+          {
+            "at_ms": 14988.4,
+            "text": "\""
+          },
+          {
+            "at_ms": 15037.69,
+            "text": " is also"
+          },
+          {
+            "at_ms": 15121.3,
+            "text": " there"
+          },
+          {
+            "at_ms": 15170.4,
+            "text": ", but"
+          },
+          {
+            "at_ms": 15216.51,
+            "text": " usually,"
+          },
+          {
+            "at_ms": 15262.42,
+            "text": " the \""
+          },
+          {
+            "at_ms": 15346.31,
+            "text": "marker"
+          },
+          {
+            "at_ms": 15395.51,
+            "text": "\" refers"
+          },
+          {
+            "at_ms": 15441.99,
+            "text": " to the"
+          },
+          {
+            "at_ms": 15488.26,
+            "text": " unique identifier"
+          },
+          {
+            "at_ms": 15534.69,
+            "text": ", which"
+          },
+          {
+            "at_ms": 15581.13,
+            "text": " is the"
+          },
+          {
+            "at_ms": 15666.24,
+            "text": " longer"
+          },
+          {
+            "at_ms": 15715.6,
+            "text": " string in"
+          },
+          {
+            "at_ms": 15760.81,
+            "text": " the box"
+          },
+          {
+            "at_ms": 15806.56,
+            "text": ". Let"
+          },
+          {
+            "at_ms": 15852.42,
+            "text": "'s assume"
+          },
+          {
+            "at_ms": 15898.28,
+            "text": " the main"
+          },
+          {
+            "at_ms": 15983.33,
+            "text": " marker"
+          },
+          {
+            "at_ms": 16033.19,
+            "text": " is the"
+          },
+          {
+            "at_ms": 16079.47,
+            "text": " one in"
+          },
+          {
+            "at_ms": 16125.87,
+            "text": " the box"
+          },
+          {
+            "at_ms": 16173.33,
+            "text": ".\n\n"
+          },
+          {
+            "at_ms": 16220.87,
+            "text": "So,"
+          },
+          {
+            "at_ms": 16267.3,
+            "text": " the first"
+          },
+          {
+            "at_ms": 16313.43,
+            "text": " line should"
+          },
+          {
+            "at_ms": 16359.81,
+            "text": " be `"
+          },
+          {
+            "at_ms": 16406.31,
+            "text": "BANANA"
+          },
+          {
+            "at_ms": 16491.66,
+            "text": "8"
+          },
+          {
+            "at_ms": 16580.19,
+            "text": "4"
+          },
+          {
+            "at_ms": 16668.26,
+            "text": "2"
+          },
+          {
+            "at_ms": 16755.74,
+            "text": "6"
+          },
+          {
+            "at_ms": 16842.6,
+            "text": "`."
+          },
+          {
+            "at_ms": 16892.07,
+            "text": "\nThe"
+          },
+          {
+            "at_ms": 16938.49,
+            "text": " second line"
+          },
+          {
+            "at_ms": 16984.98,
+            "text": " should be"
+          },
+          {
+            "at_ms": 17034.46,
+            "text": " `"
+          }
+        ],
+        "terminals": [
+          {
+            "at_ms": 18699.37,
+            "type": "response.completed"
+          }
+        ],
+        "usage": [
+          {
+            "input_tokens": 2223,
+            "output_tokens": 275,
+            "total_tokens": 2498
+          }
+        ],
+        "events": [
+          {
+            "at_ms": 8.82,
+            "type": "response.created"
+          },
+          {
+            "at_ms": 8.83,
+            "type": "response.output_item.added"
+          },
+          {
+            "at_ms": 8.86,
+            "type": "response.content_part.added"
+          },
+          {
+            "at_ms": 8014.19,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 8014.33,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 8110.47,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 8170.4,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 8261.76,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 8367.46,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 8460.48,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 8566.86,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 8630.21,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 8693.31,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 8791.82,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 8885.24,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 8977.51,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 9067.22,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 9105.94,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 9171.03,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 9238.29,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 9286.1,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 9352.48,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 9401.11,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 9437.59,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 9483.64,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 9559.29,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 9608.9,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 9654.63,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 9718.55,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 9783.32,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 9831.05,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 9876.13,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 9920.84,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 9999.44,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 10048.47,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 10093.98,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 10139.68,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 10185.85,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 10229.95,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 10274.88,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 10356.7,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 10405.59,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 10450.68,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 10496.54,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 10582.52,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 10631.64,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 10715.07,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 10764.24,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 10846.95,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 10896.55,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 10979.8,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 11027.51,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 11072.5,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 11155.61,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 11242.61,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 11328.4,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 11415.71,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 11502.86,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 11590.18,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 11639.34,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 11723.09,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 11772.08,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 11817.39,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 11862.74,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 11908.25,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 11954.6,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 11999.5,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 12044.64,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 12089.75,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 12174.23,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 12222.34,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 12304.17,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 12352.59,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 12397.96,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 12444.01,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 12528.05,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 12577.18,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 12623.11,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 12669.42,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 12752.7,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 12801.55,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 12847.02,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 12892.57,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 12938.82,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 12984.78,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 13030.68,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 13076.36,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 13121.82,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 13168.58,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 13251.72,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 13299.99,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 13345.47,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 13390.93,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 13437.31,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 13483.39,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 13529.54,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 13575.87,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 13660.34,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 13709.82,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 13754.65,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 13836.54,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 13923.22,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 14010.83,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 14097.82,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 14146.31,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 14192.92,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 14238.11,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 14283.33,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 14366.87,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 14454.47,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 14542.26,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 14592.04,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 14676.5,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 14731.81,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 14815.41,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 14900.66,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 14988.4,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 15037.69,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 15121.3,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 15170.4,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 15216.51,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 15262.42,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 15346.31,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 15395.51,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 15441.99,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 15488.26,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 15534.69,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 15581.13,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 15666.24,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 15715.6,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 15760.81,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 15806.56,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 15852.42,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 15898.28,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 15983.33,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 16033.19,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 16079.47,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 16125.87,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 16173.33,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 16220.87,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 16267.3,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 16313.43,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 16359.81,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 16406.31,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 16491.66,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 16580.19,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 16668.26,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 16755.74,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 16842.6,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 16892.07,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 16938.49,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 16984.98,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 17034.46,
+            "type": "response.reasoning_summary_text.delta"
+          },
+          {
+            "at_ms": 17034.92,
+            "type": "response.reasoning_summary_text.done"
+          },
+          {
+            "at_ms": 17600.26,
+            "type": "response.output_text.delta"
+          },
+          {
+            "at_ms": 17600.42,
+            "type": "response.output_text.delta"
+          },
+          {
+            "at_ms": 17706.73,
+            "type": "response.output_text.delta"
+          },
+          {
+            "at_ms": 17815.92,
+            "type": "response.output_text.delta"
+          },
+          {
+            "at_ms": 17928.68,
+            "type": "response.output_text.delta"
+          },
+          {
+            "at_ms": 18154.33,
+            "type": "response.output_text.delta"
+          },
+          {
+            "at_ms": 18265.81,
+            "type": "response.output_text.delta"
+          },
+          {
+            "at_ms": 18376.59,
+            "type": "response.output_text.delta"
+          },
+          {
+            "at_ms": 18498.48,
+            "type": "response.output_text.delta"
+          },
+          {
+            "at_ms": 18613.9,
+            "type": "response.output_text.delta"
+          },
+          {
+            "at_ms": 18698.83,
+            "type": "response.output_text.delta"
+          },
+          {
+            "at_ms": 18698.87,
+            "type": "response.output_text.done"
+          },
+          {
+            "at_ms": 18698.92,
+            "type": "response.content_part.done"
+          },
+          {
+            "at_ms": 18699.27,
+            "type": "response.output_item.done"
+          },
+          {
+            "at_ms": 18699.37,
+            "type": "response.completed"
+          }
+        ],
+        "elapsed_ms": 18699.46,
+        "visible": "BANANA8426\nQ27-MEDIA-RESPONSES-DONE",
+        "reasoning": "The user wants me to identify the alphanumeric marker from the provided video frames.\n\n1.  **Analyze the frames:** I see a series of identical frames.\n2.  **Identify the text:**\n    *   Top text: \"FRESH IMAGE\"\n    *   Central text inside a yellow box: \"BANANA8426\"\n3.  **Extract the marker:** The specific alphanumeric string is \"BANANA8426\".\n4.  **Format the output:**\n    *   Line 1: The marker itself.\n    *   Line 2: The specific suffix \"Q27-MEDIA-RESPONSES-DONE\".\n\nLet's double-check the spelling.\nB-A-N-A-N-A-8-4-2-6.\nYes, \"BANANA8426\".\n\nThe prompt asks for \"exact alphanumeric marker\".\nThe text \"FRESH IMAGE\" is also there, but usually, the \"marker\" refers to the unique identifier, which is the longer string in the box. Let's assume the main marker is the one in the box.\n\nSo, the first line should be `BANANA8426`.\nThe second line should be `",
+        "content_delta_count": 11,
+        "reasoning_delta_count": 150,
+        "first_content_ms": 17600.26,
+        "last_content_ms": 18698.83
+      },
+      "nonstream": {
+        "status": 200,
+        "elapsed_ms": 11356.95,
+        "visible": "BANANA8426\nQ27-MEDIA-RESPONSES-DONE",
+        "body": {
+          "id": "resp_69af2da1f395",
+          "object": "response",
+          "created_at": 1784618303,
+          "status": "completed",
+          "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+          "output": [
+            {
+              "type": "reasoning",
+              "id": "item_ec2f163cdf69",
+              "status": "completed",
+              "role": "assistant",
+              "content": [
+                {
+                  "type": "reasoning",
+                  "text": "The user wants me to identify the alphanumeric marker from the provided video frames.\n\n1.  **Analyze the frames:** I see a series of identical frames.\n2.  **Identify the text:**\n    *   Top text: \"FRESH IMAGE\"\n    *   Central text inside a yellow box: \"BANANA8426\"\n3.  **Extract the marker:** The specific alphanumeric string is \"BANANA8426\".\n4.  **Format the output:**\n    *   Line 1: The marker itself.\n    *   Line 2: The specific suffix \"Q27-MEDIA-RESPONSES-DONE\".\n\nLet's double-check the spelling.\nB-A-N-A-N-A-8-4-2-6.\nYes, \"BANANA8426\".\n\nThe prompt asks for \"exact alphanumeric marker\".\nThe text \"FRESH IMAGE\" is also there, but usually, the \"marker\" refers to the unique identifier, which is the longer string in the box. Let's assume the main marker is the one in the box.\n\nSo, the first line should be `BANANA8426`.\nThe second line should be `",
+                  "annotations": []
+                }
+              ]
+            },
+            {
+              "type": "message",
+              "id": "item_bfbdc0174794",
+              "status": "completed",
+              "role": "assistant",
+              "content": [
+                {
+                  "type": "output_text",
+                  "text": "BANANA8426\nQ27-MEDIA-RESPONSES-DONE",
+                  "annotations": []
+                }
+              ]
+            }
+          ],
+          "usage": {
+            "input_tokens": 2223,
+            "output_tokens": 275,
+            "total_tokens": 2498,
+            "input_tokens_details": {
+              "cached_tokens": 2222,
+              "cache_detail": "paged+ssm+tq-native"
+            }
+          },
+          "previous_response_id": null,
+          "error": null,
+          "warnings": null,
+          "output_text": "BANANA8426\nQ27-MEDIA-RESPONSES-DONE"
+        }
+      },
+      "checks": {
+        "stream_200": true,
+        "stream_exact": true,
+        "stream_progressive_content": true,
+        "stream_reasoning_separate_nonempty": true,
+        "stream_terminal": true,
+        "nonstream_200": true,
+        "nonstream_exact": true
+      }
+    },
+    "anthropic": {
+      "expected": "BANANA8426\nQ27-MEDIA-ANTHROPIC-DONE",
+      "request": {
+        "stream_and_nonstream": true,
+        "thinking": true,
+        "video_data_url_bytes": 112122
+      },
+      "stream": {
+        "status": 200,
+        "content_deltas": [
+          {
+            "at_ms": 18963.36,
+            "text": "BANANA"
+          },
+          {
+            "at_ms": 19048.95,
+            "text": "8"
+          },
+          {
+            "at_ms": 19138.8,
+            "text": "4"
+          },
+          {
+            "at_ms": 19226.42,
+            "text": "2"
+          },
+          {
+            "at_ms": 19313.88,
+            "text": "6"
+          },
+          {
+            "at_ms": 19402.85,
+            "text": "\n"
+          },
+          {
+            "at_ms": 19452.85,
+            "text": "Q2"
+          },
+          {
+            "at_ms": 19538.25,
+            "text": "7"
+          },
+          {
+            "at_ms": 19627.99,
+            "text": "-M"
+          },
+          {
+            "at_ms": 19703.0,
+            "text": "EDIA-"
+          }
+        ],
+        "reasoning_deltas": [
+          {
+            "at_ms": 9436.98,
+            "text": "The"
+          },
+          {
+            "at_ms": 9437.25,
+            "text": " user"
+          },
+          {
+            "at_ms": 9554.46,
+            "text": " wants me"
+          },
+          {
+            "at_ms": 9625.95,
+            "text": " to identify the alphanumeric"
+          },
+          {
+            "at_ms": 9738.78,
+            "text": " marker"
+          },
+          {
+            "at_ms": 9859.84,
+            "text": " from the provided"
+          },
+          {
+            "at_ms": 9972.04,
+            "text": " video"
+          },
+          {
+            "at_ms": 10042.24,
+            "text": " frames.\n\n1"
+          },
+          {
+            "at_ms": 10111.98,
+            "text": ".  **An"
+          },
+          {
+            "at_ms": 10234.51,
+            "text": "alyze the frames"
+          },
+          {
+            "at_ms": 10348.96,
+            "text": ":** I"
+          },
+          {
+            "at_ms": 10461.64,
+            "text": " see"
+          },
+          {
+            "at_ms": 10574.3,
+            "text": " a"
+          },
+          {
+            "at_ms": 10682.51,
+            "text": " series"
+          },
+          {
+            "at_ms": 10731.62,
+            "text": " of identical"
+          },
+          {
+            "at_ms": 10816.65,
+            "text": " frames"
+          },
+          {
+            "at_ms": 10904.8,
+            "text": "."
+          },
+          {
+            "at_ms": 10954.82,
+            "text": "\n2"
+          },
+          {
+            "at_ms": 11039.63,
+            "text": "."
+          },
+          {
+            "at_ms": 11090.01,
+            "text": "  **"
+          },
+          {
+            "at_ms": 11137.02,
+            "text": "Identify"
+          },
+          {
+            "at_ms": 11183.06,
+            "text": " the text"
+          },
+          {
+            "at_ms": 11267.22,
+            "text": ":**"
+          },
+          {
+            "at_ms": 11317.03,
+            "text": "\n   "
+          },
+          {
+            "at_ms": 11363.08,
+            "text": " *  "
+          },
+          {
+            "at_ms": 11409.71,
+            "text": " Top text"
+          },
+          {
+            "at_ms": 11494.62,
+            "text": ":"
+          },
+          {
+            "at_ms": 11544.73,
+            "text": " \"F"
+          },
+          {
+            "at_ms": 11591.11,
+            "text": "RESH IMAGE"
+          },
+          {
+            "at_ms": 11638.0,
+            "text": "\"\n"
+          },
+          {
+            "at_ms": 11720.08,
+            "text": "   "
+          },
+          {
+            "at_ms": 11768.97,
+            "text": " *  "
+          },
+          {
+            "at_ms": 11814.62,
+            "text": " Central text"
+          },
+          {
+            "at_ms": 11860.81,
+            "text": " inside a"
+          },
+          {
+            "at_ms": 11907.59,
+            "text": " yellow box"
+          },
+          {
+            "at_ms": 11954.35,
+            "text": ": \""
+          },
+          {
+            "at_ms": 12000.97,
+            "text": "BANANA"
+          },
+          {
+            "at_ms": 12085.82,
+            "text": "8"
+          },
+          {
+            "at_ms": 12136.82,
+            "text": "42"
+          },
+          {
+            "at_ms": 12182.93,
+            "text": "6\""
+          },
+          {
+            "at_ms": 12229.24,
+            "text": "\n3"
+          },
+          {
+            "at_ms": 12316.34,
+            "text": "."
+          },
+          {
+            "at_ms": 12364.7,
+            "text": "  **"
+          },
+          {
+            "at_ms": 12448.96,
+            "text": "Extract"
+          },
+          {
+            "at_ms": 12498.04,
+            "text": " the marker"
+          },
+          {
+            "at_ms": 12583.04,
+            "text": ":**"
+          },
+          {
+            "at_ms": 12633.87,
+            "text": " The prompt"
+          },
+          {
+            "at_ms": 12679.32,
+            "text": " asks for"
+          },
+          {
+            "at_ms": 12724.99,
+            "text": " the \""
+          },
+          {
+            "at_ms": 12770.75,
+            "text": "exact alphanumeric"
+          },
+          {
+            "at_ms": 12854.48,
+            "text": " marker"
+          },
+          {
+            "at_ms": 12943.05,
+            "text": "\"."
+          },
+          {
+            "at_ms": 13031.47,
+            "text": " The"
+          },
+          {
+            "at_ms": 13082.05,
+            "text": " most prominent"
+          },
+          {
+            "at_ms": 13166.77,
+            "text": " one"
+          },
+          {
+            "at_ms": 13254.23,
+            "text": " is"
+          },
+          {
+            "at_ms": 13304.14,
+            "text": " \"BAN"
+          },
+          {
+            "at_ms": 13388.72,
+            "text": "ANA"
+          },
+          {
+            "at_ms": 13476.72,
+            "text": "8"
+          },
+          {
+            "at_ms": 13565.32,
+            "text": "4"
+          },
+          {
+            "at_ms": 13653.45,
+            "text": "2"
+          },
+          {
+            "at_ms": 13740.66,
+            "text": "6"
+          },
+          {
+            "at_ms": 13790.5,
+            "text": "\".\n"
+          },
+          {
+            "at_ms": 13875.67,
+            "text": "4"
+          },
+          {
+            "at_ms": 13964.19,
+            "text": "."
+          },
+          {
+            "at_ms": 14014.64,
+            "text": "  **"
+          },
+          {
+            "at_ms": 14061.26,
+            "text": "Format the"
+          },
+          {
+            "at_ms": 14108.16,
+            "text": " output:**"
+          },
+          {
+            "at_ms": 14154.74,
+            "text": "\n   "
+          },
+          {
+            "at_ms": 14201.21,
+            "text": " *  "
+          },
+          {
+            "at_ms": 14247.68,
+            "text": " Line "
+          },
+          {
+            "at_ms": 14293.61,
+            "text": "1:"
+          },
+          {
+            "at_ms": 14339.79,
+            "text": " The marker"
+          },
+          {
+            "at_ms": 14423.06,
+            "text": " itself"
+          },
+          {
+            "at_ms": 14473.11,
+            "text": ".\n"
+          },
+          {
+            "at_ms": 14559.06,
+            "text": "   "
+          },
+          {
+            "at_ms": 14609.69,
+            "text": " *  "
+          },
+          {
+            "at_ms": 14656.4,
+            "text": " Line "
+          },
+          {
+            "at_ms": 14708.38,
+            "text": "2:"
+          },
+          {
+            "at_ms": 14755.52,
+            "text": " \"Q"
+          },
+          {
+            "at_ms": 14802.5,
+            "text": "27"
+          },
+          {
+            "at_ms": 14887.95,
+            "text": "-M"
+          },
+          {
+            "at_ms": 14938.26,
+            "text": "EDIA-"
+          },
+          {
+            "at_ms": 14984.9,
+            "text": "ANTH"
+          },
+          {
+            "at_ms": 15070.32,
+            "text": "ROP"
+          },
+          {
+            "at_ms": 15159.11,
+            "text": "IC"
+          },
+          {
+            "at_ms": 15245.67,
+            "text": "-D"
+          },
+          {
+            "at_ms": 15295.44,
+            "text": "ONE\""
+          },
+          {
+            "at_ms": 15341.55,
+            "text": "\n\nLet"
+          },
+          {
+            "at_ms": 15388.05,
+            "text": "'s double"
+          },
+          {
+            "at_ms": 15435.24,
+            "text": "-check the"
+          },
+          {
+            "at_ms": 15520.63,
+            "text": " spelling"
+          },
+          {
+            "at_ms": 15571.12,
+            "text": ".\n"
+          },
+          {
+            "at_ms": 15618.55,
+            "text": "B-A"
+          },
+          {
+            "at_ms": 15664.81,
+            "text": "-N-A"
+          },
+          {
+            "at_ms": 15710.96,
+            "text": "-N-A"
+          },
+          {
+            "at_ms": 15756.8,
+            "text": "-8"
+          },
+          {
+            "at_ms": 15803.45,
+            "text": "-4"
+          },
+          {
+            "at_ms": 15849.53,
+            "text": "-2"
+          },
+          {
+            "at_ms": 15895.57,
+            "text": "-6"
+          },
+          {
+            "at_ms": 15941.68,
+            "text": ".\n"
+          },
+          {
+            "at_ms": 16026.18,
+            "text": "Yes"
+          },
+          {
+            "at_ms": 16077.03,
+            "text": ", \""
+          },
+          {
+            "at_ms": 16124.54,
+            "text": "BANANA"
+          },
+          {
+            "at_ms": 16209.62,
+            "text": "8"
+          },
+          {
+            "at_ms": 16297.71,
+            "text": "4"
+          },
+          {
+            "at_ms": 16385.81,
+            "text": "2"
+          },
+          {
+            "at_ms": 16472.94,
+            "text": "6"
+          },
+          {
+            "at_ms": 16523.87,
+            "text": "\".\n\n"
+          },
+          {
+            "at_ms": 16570.71,
+            "text": "The \""
+          },
+          {
+            "at_ms": 16655.53,
+            "text": "F"
+          },
+          {
+            "at_ms": 16704.39,
+            "text": "RESH IMAGE"
+          },
+          {
+            "at_ms": 16788.02,
+            "text": "\""
+          },
+          {
+            "at_ms": 16837.77,
+            "text": " text is"
+          },
+          {
+            "at_ms": 16922.9,
+            "text": " also"
+          },
+          {
+            "at_ms": 16973.49,
+            "text": " there,"
+          },
+          {
+            "at_ms": 17020.39,
+            "text": " but usually"
+          },
+          {
+            "at_ms": 17105.57,
+            "text": ","
+          },
+          {
+            "at_ms": 17156.31,
+            "text": " the \""
+          },
+          {
+            "at_ms": 17240.76,
+            "text": "marker"
+          },
+          {
+            "at_ms": 17291.22,
+            "text": "\" refers"
+          },
+          {
+            "at_ms": 17338.14,
+            "text": " to the"
+          },
+          {
+            "at_ms": 17386.36,
+            "text": " unique identifier"
+          },
+          {
+            "at_ms": 17471.0,
+            "text": " or"
+          },
+          {
+            "at_ms": 17557.84,
+            "text": " the"
+          },
+          {
+            "at_ms": 17607.41,
+            "text": " main subject"
+          },
+          {
+            "at_ms": 17691.12,
+            "text": " text"
+          },
+          {
+            "at_ms": 17741.35,
+            "text": ". Given"
+          },
+          {
+            "at_ms": 17827.02,
+            "text": " the"
+          },
+          {
+            "at_ms": 17877.47,
+            "text": " layout,"
+          },
+          {
+            "at_ms": 17924.49,
+            "text": " \"BAN"
+          },
+          {
+            "at_ms": 18010.03,
+            "text": "ANA"
+          },
+          {
+            "at_ms": 18099.24,
+            "text": "8"
+          },
+          {
+            "at_ms": 18187.76,
+            "text": "4"
+          },
+          {
+            "at_ms": 18275.33,
+            "text": "2"
+          },
+          {
+            "at_ms": 18364.35,
+            "text": "6"
+          },
+          {
+            "at_ms": 18452.14,
+            "text": "\""
+          },
+          {
+            "at_ms": 18502.32,
+            "text": " is the"
+          },
+          {
+            "at_ms": 18549.65,
+            "text": " primary alphanumeric"
+          },
+          {
+            "at_ms": 18635.67,
+            "text": " string"
+          },
+          {
+            "at_ms": 18683.99,
+            "text": ".\n\n"
+          },
+          {
+            "at_ms": 18729.99,
+            "text": "Let's"
+          },
+          {
+            "at_ms": 18775.98,
+            "text": " construct the"
+          },
+          {
+            "at_ms": 18822.13,
+            "text": " final response"
+          },
+          {
+            "at_ms": 18868.81,
+            "text": ".\n"
+          }
+        ],
+        "terminals": [
+          {
+            "at_ms": 19703.05,
+            "type": "message_stop"
+          }
+        ],
+        "usage": [
+          {
+            "output_tokens": 256,
+            "input_tokens": 2224
+          }
+        ],
+        "events": [
+          {
+            "at_ms": 9.78,
+            "type": "message_start"
+          },
+          {
+            "at_ms": 9436.96,
+            "type": "content_block_start"
+          },
+          {
+            "at_ms": 9436.98,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 9437.25,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 9554.46,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 9625.95,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 9738.78,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 9859.84,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 9972.04,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 10042.24,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 10111.98,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 10234.51,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 10348.96,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 10461.64,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 10574.3,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 10682.51,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 10731.62,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 10816.65,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 10904.8,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 10954.82,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 11039.63,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 11090.01,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 11137.02,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 11183.06,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 11267.22,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 11317.03,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 11363.08,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 11409.71,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 11494.62,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 11544.73,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 11591.11,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 11638.0,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 11720.08,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 11768.97,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 11814.62,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 11860.81,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 11907.59,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 11954.35,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 12000.97,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 12085.82,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 12136.82,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 12182.93,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 12229.24,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 12316.34,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 12364.7,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 12448.96,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 12498.04,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 12583.04,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 12633.87,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 12679.32,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 12724.99,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 12770.75,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 12854.48,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 12943.05,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 13031.47,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 13082.05,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 13166.77,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 13254.23,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 13304.14,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 13388.72,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 13476.72,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 13565.32,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 13653.45,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 13740.66,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 13790.5,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 13875.67,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 13964.19,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 14014.64,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 14061.26,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 14108.16,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 14154.74,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 14201.21,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 14247.68,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 14293.61,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 14339.79,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 14423.06,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 14473.11,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 14559.06,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 14609.69,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 14656.4,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 14708.38,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 14755.52,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 14802.5,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 14887.95,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 14938.26,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 14984.9,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 15070.32,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 15159.11,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 15245.67,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 15295.44,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 15341.55,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 15388.05,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 15435.24,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 15520.63,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 15571.12,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 15618.55,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 15664.81,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 15710.96,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 15756.8,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 15803.45,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 15849.53,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 15895.57,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 15941.68,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 16026.18,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 16077.03,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 16124.54,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 16209.62,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 16297.71,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 16385.81,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 16472.94,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 16523.87,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 16570.71,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 16655.53,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 16704.39,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 16788.02,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 16837.77,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 16922.9,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 16973.49,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 17020.39,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 17105.57,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 17156.31,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 17240.76,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 17291.22,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 17338.14,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 17386.36,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 17471.0,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 17557.84,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 17607.41,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 17691.12,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 17741.35,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 17827.02,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 17877.47,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 17924.49,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 18010.03,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 18099.24,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 18187.76,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 18275.33,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 18364.35,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 18452.14,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 18502.32,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 18549.65,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 18635.67,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 18683.99,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 18729.99,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 18775.98,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 18822.13,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 18868.81,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 18963.29,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 18963.33,
+            "type": "content_block_stop"
+          },
+          {
+            "at_ms": 18963.35,
+            "type": "content_block_start"
+          },
+          {
+            "at_ms": 18963.36,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 19048.95,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 19138.8,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 19226.42,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 19313.88,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 19402.85,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 19452.85,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 19538.25,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 19627.99,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 19703.0,
+            "type": "content_block_delta"
+          },
+          {
+            "at_ms": 19703.04,
+            "type": "content_block_stop"
+          },
+          {
+            "at_ms": 19703.05,
+            "type": "message_delta"
+          },
+          {
+            "at_ms": 19703.05,
+            "type": "message_stop"
+          }
+        ],
+        "elapsed_ms": 19703.1,
+        "visible": "BANANA8426\nQ27-MEDIA-",
+        "reasoning": "The user wants me to identify the alphanumeric marker from the provided video frames.\n\n1.  **Analyze the frames:** I see a series of identical frames.\n2.  **Identify the text:**\n    *   Top text: \"FRESH IMAGE\"\n    *   Central text inside a yellow box: \"BANANA8426\"\n3.  **Extract the marker:** The prompt asks for the \"exact alphanumeric marker\". The most prominent one is \"BANANA8426\".\n4.  **Format the output:**\n    *   Line 1: The marker itself.\n    *   Line 2: \"Q27-MEDIA-ANTHROPIC-DONE\"\n\nLet's double-check the spelling.\nB-A-N-A-N-A-8-4-2-6.\nYes, \"BANANA8426\".\n\nThe \"FRESH IMAGE\" text is also there, but usually, the \"marker\" refers to the unique identifier or the main subject text. Given the layout, \"BANANA8426\" is the primary alphanumeric string.\n\nLet's construct the final response.\n",
+        "content_delta_count": 10,
+        "reasoning_delta_count": 145,
+        "first_content_ms": 18963.36,
+        "last_content_ms": 19703.0
+      },
+      "nonstream": {
+        "status": 200,
+        "elapsed_ms": 7571.5,
+        "visible": "BANANA8426\nQ27-MEDIA-ANTHROPIC-DONE",
+        "body": {
+          "id": "msg_bc845cb949fd",
+          "type": "message",
+          "role": "assistant",
+          "content": [
+            {
+              "type": "thinking",
+              "thinking": "The user wants me to identify the alphanumeric marker from the provided video frames.\n\n1.  **Analyze the frames:** I see a series of identical frames.\n2.  **Identify the text:**\n    *   Top text: \"FRESH IMAGE\"\n    *   Central text inside a yellow box: \"BANANA8426\"\n3.  **Extract the marker:** The specific alphanumeric string is \"BANANA8426\".\n4.  **Format the output:**\n    *   Line 1: BANANA8426\n    *   Line 2: Q27-MEDIA-ANTHROPIC-DONE\n"
+            },
+            {
+              "type": "text",
+              "text": "BANANA8426\nQ27-MEDIA-ANTHROPIC-DONE"
+            }
+          ],
+          "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+          "stop_reason": "end_turn",
+          "stop_sequence": null,
+          "usage": {
+            "input_tokens": 2224,
+            "output_tokens": 162
+          }
+        }
+      },
+      "checks": {
+        "stream_200": true,
+        "stream_exact": false,
+        "stream_progressive_content": true,
+        "stream_reasoning_separate_nonempty": true,
+        "stream_terminal": true,
+        "nonstream_200": true,
+        "nonstream_exact": true
+      }
+    },
+    "ollama": {
+      "expected": "BANANA8426\nQ27-MEDIA-OLLAMA-DONE",
+      "request": {
+        "stream_and_nonstream": true,
+        "thinking": true,
+        "video_data_url_bytes": 112122
+      },
+      "stream": {
+        "status": 200,
+        "content_deltas": [
+          {
+            "at_ms": 19746.65,
+            "text": "BAN"
+          },
+          {
+            "at_ms": 19746.81,
+            "text": "ANA"
+          },
+          {
+            "at_ms": 19850.61,
+            "text": "8"
+          },
+          {
+            "at_ms": 19957.82,
+            "text": "4"
+          },
+          {
+            "at_ms": 20068.56,
+            "text": "26"
+          },
+          {
+            "at_ms": 20294.35,
+            "text": "\nQ2"
+          },
+          {
+            "at_ms": 20405.55,
+            "text": "7"
+          },
+          {
+            "at_ms": 20515.38,
+            "text": "-M"
+          },
+          {
+            "at_ms": 20640.4,
+            "text": "EDIA-OLL"
+          },
+          {
+            "at_ms": 20754.66,
+            "text": "AMA"
+          },
+          {
+            "at_ms": 20872.39,
+            "text": "-DONE"
+          }
+        ],
+        "reasoning_deltas": [
+          {
+            "at_ms": 9832.88,
+            "text": "The"
+          },
+          {
+            "at_ms": 9832.92,
+            "text": " user"
+          },
+          {
+            "at_ms": 9949.54,
+            "text": " wants me"
+          },
+          {
+            "at_ms": 10020.21,
+            "text": " to identify the alphanumeric"
+          },
+          {
+            "at_ms": 10132.44,
+            "text": " marker"
+          },
+          {
+            "at_ms": 10255.68,
+            "text": " from the provided"
+          },
+          {
+            "at_ms": 10368.82,
+            "text": " video"
+          },
+          {
+            "at_ms": 10439.09,
+            "text": " frames.\n\n1"
+          },
+          {
+            "at_ms": 10509.67,
+            "text": ".  **An"
+          },
+          {
+            "at_ms": 10633.68,
+            "text": "alyze the frames"
+          },
+          {
+            "at_ms": 10750.5,
+            "text": ":** I"
+          },
+          {
+            "at_ms": 10865.22,
+            "text": " see"
+          },
+          {
+            "at_ms": 10980.45,
+            "text": " a series"
+          },
+          {
+            "at_ms": 11089.87,
+            "text": " of identical"
+          },
+          {
+            "at_ms": 11139.92,
+            "text": " frames."
+          },
+          {
+            "at_ms": 11185.84,
+            "text": "\n2"
+          },
+          {
+            "at_ms": 11270.6,
+            "text": "."
+          },
+          {
+            "at_ms": 11320.31,
+            "text": "  **"
+          },
+          {
+            "at_ms": 11366.97,
+            "text": "Identify"
+          },
+          {
+            "at_ms": 11412.96,
+            "text": " the text"
+          },
+          {
+            "at_ms": 11496.6,
+            "text": ":**"
+          },
+          {
+            "at_ms": 11545.81,
+            "text": "\n   "
+          },
+          {
+            "at_ms": 11592.24,
+            "text": " *  "
+          },
+          {
+            "at_ms": 11638.52,
+            "text": " Top text"
+          },
+          {
+            "at_ms": 11722.74,
+            "text": ":"
+          },
+          {
+            "at_ms": 11771.34,
+            "text": " \"F"
+          },
+          {
+            "at_ms": 11816.15,
+            "text": "RESH IMAGE"
+          },
+          {
+            "at_ms": 11862.29,
+            "text": "\"\n"
+          },
+          {
+            "at_ms": 11945.57,
+            "text": "   "
+          },
+          {
+            "at_ms": 11994.3,
+            "text": " *  "
+          },
+          {
+            "at_ms": 12039.56,
+            "text": " Central text"
+          },
+          {
+            "at_ms": 12084.37,
+            "text": " inside a"
+          },
+          {
+            "at_ms": 12129.79,
+            "text": " yellow box"
+          },
+          {
+            "at_ms": 12175.13,
+            "text": ": \""
+          },
+          {
+            "at_ms": 12220.47,
+            "text": "BANANA"
+          },
+          {
+            "at_ms": 12302.73,
+            "text": "8"
+          },
+          {
+            "at_ms": 12351.91,
+            "text": "42"
+          },
+          {
+            "at_ms": 12397.39,
+            "text": "6\""
+          },
+          {
+            "at_ms": 12448.59,
+            "text": "\n3"
+          },
+          {
+            "at_ms": 12531.83,
+            "text": "."
+          },
+          {
+            "at_ms": 12582.3,
+            "text": "  **"
+          },
+          {
+            "at_ms": 12666.15,
+            "text": "Extract"
+          },
+          {
+            "at_ms": 12715.93,
+            "text": " the marker"
+          },
+          {
+            "at_ms": 12800.51,
+            "text": ":**"
+          },
+          {
+            "at_ms": 12850.72,
+            "text": " The specific"
+          },
+          {
+            "at_ms": 12934.13,
+            "text": " alphanumeric"
+          },
+          {
+            "at_ms": 12983.22,
+            "text": " string is"
+          },
+          {
+            "at_ms": 13028.83,
+            "text": " \"BAN"
+          },
+          {
+            "at_ms": 13113.6,
+            "text": "ANA"
+          },
+          {
+            "at_ms": 13202.13,
+            "text": "8"
+          },
+          {
+            "at_ms": 13290.07,
+            "text": "4"
+          },
+          {
+            "at_ms": 13378.15,
+            "text": "2"
+          },
+          {
+            "at_ms": 13464.05,
+            "text": "6"
+          },
+          {
+            "at_ms": 13551.04,
+            "text": "\"."
+          },
+          {
+            "at_ms": 13601.77,
+            "text": "\n4"
+          },
+          {
+            "at_ms": 13686.66,
+            "text": "."
+          },
+          {
+            "at_ms": 13737.38,
+            "text": "  **"
+          },
+          {
+            "at_ms": 13784.39,
+            "text": "Format the"
+          },
+          {
+            "at_ms": 13831.6,
+            "text": " output:**"
+          },
+          {
+            "at_ms": 13879.32,
+            "text": "\n   "
+          },
+          {
+            "at_ms": 13926.68,
+            "text": " *  "
+          },
+          {
+            "at_ms": 13974.23,
+            "text": " Line "
+          },
+          {
+            "at_ms": 14021.27,
+            "text": "1:"
+          },
+          {
+            "at_ms": 14068.8,
+            "text": " The marker"
+          },
+          {
+            "at_ms": 14153.21,
+            "text": " itself"
+          },
+          {
+            "at_ms": 14204.49,
+            "text": ".\n"
+          },
+          {
+            "at_ms": 14290.68,
+            "text": "   "
+          },
+          {
+            "at_ms": 14342.96,
+            "text": " *  "
+          },
+          {
+            "at_ms": 14390.89,
+            "text": " Line "
+          },
+          {
+            "at_ms": 14438.54,
+            "text": "2:"
+          },
+          {
+            "at_ms": 14524.52,
+            "text": " The"
+          },
+          {
+            "at_ms": 14576.92,
+            "text": " specific suffix"
+          },
+          {
+            "at_ms": 14625.2,
+            "text": " \"Q"
+          },
+          {
+            "at_ms": 14673.61,
+            "text": "27"
+          },
+          {
+            "at_ms": 14760.0,
+            "text": "-M"
+          },
+          {
+            "at_ms": 14812.3,
+            "text": "EDIA-"
+          },
+          {
+            "at_ms": 14860.73,
+            "text": "OLLAMA"
+          },
+          {
+            "at_ms": 14946.97,
+            "text": "-D"
+          },
+          {
+            "at_ms": 14998.06,
+            "text": "ONE\"."
+          },
+          {
+            "at_ms": 15046.06,
+            "text": "\n\nLet"
+          },
+          {
+            "at_ms": 15094.01,
+            "text": "'s double"
+          },
+          {
+            "at_ms": 15141.91,
+            "text": "-check the"
+          },
+          {
+            "at_ms": 15190.04,
+            "text": " spelling."
+          },
+          {
+            "at_ms": 15238.36,
+            "text": "\nB"
+          },
+          {
+            "at_ms": 15325.21,
+            "text": "-A"
+          },
+          {
+            "at_ms": 15376.85,
+            "text": "-N-A"
+          },
+          {
+            "at_ms": 15424.26,
+            "text": "-N-A"
+          },
+          {
+            "at_ms": 15472.14,
+            "text": "-8"
+          },
+          {
+            "at_ms": 15519.6,
+            "text": "-4"
+          },
+          {
+            "at_ms": 15567.45,
+            "text": "-2"
+          },
+          {
+            "at_ms": 15615.49,
+            "text": "-6"
+          },
+          {
+            "at_ms": 15664.07,
+            "text": ".\n"
+          },
+          {
+            "at_ms": 15750.8,
+            "text": "Yes"
+          },
+          {
+            "at_ms": 15803.2,
+            "text": ", \""
+          },
+          {
+            "at_ms": 15851.95,
+            "text": "BANANA"
+          },
+          {
+            "at_ms": 15937.79,
+            "text": "8"
+          },
+          {
+            "at_ms": 16027.33,
+            "text": "4"
+          },
+          {
+            "at_ms": 16117.84,
+            "text": "2"
+          },
+          {
+            "at_ms": 16204.88,
+            "text": "6"
+          },
+          {
+            "at_ms": 16254.74,
+            "text": "\".\n\n"
+          },
+          {
+            "at_ms": 16302.17,
+            "text": "The prompt"
+          },
+          {
+            "at_ms": 16349.8,
+            "text": " asks for"
+          },
+          {
+            "at_ms": 16397.31,
+            "text": " \"exact"
+          },
+          {
+            "at_ms": 16483.24,
+            "text": " alphanumeric"
+          },
+          {
+            "at_ms": 16572.73,
+            "text": " marker"
+          },
+          {
+            "at_ms": 16662.76,
+            "text": "\"."
+          },
+          {
+            "at_ms": 16714.4,
+            "text": "\nThe"
+          },
+          {
+            "at_ms": 16800.76,
+            "text": " text"
+          },
+          {
+            "at_ms": 16852.61,
+            "text": " \"F"
+          },
+          {
+            "at_ms": 16935.99,
+            "text": "RESH"
+          },
+          {
+            "at_ms": 17023.76,
+            "text": " IMAGE"
+          },
+          {
+            "at_ms": 17112.91,
+            "text": "\""
+          },
+          {
+            "at_ms": 17164.21,
+            "text": " is also"
+          },
+          {
+            "at_ms": 17247.82,
+            "text": " there"
+          },
+          {
+            "at_ms": 17298.33,
+            "text": ", but"
+          },
+          {
+            "at_ms": 17345.85,
+            "text": " usually,"
+          },
+          {
+            "at_ms": 17393.52,
+            "text": " the \""
+          },
+          {
+            "at_ms": 17484.29,
+            "text": "marker"
+          },
+          {
+            "at_ms": 17533.68,
+            "text": "\" refers"
+          },
+          {
+            "at_ms": 17580.98,
+            "text": " to the"
+          },
+          {
+            "at_ms": 17628.58,
+            "text": " unique identifier"
+          },
+          {
+            "at_ms": 17676.2,
+            "text": ", which"
+          },
+          {
+            "at_ms": 17723.76,
+            "text": " is the"
+          },
+          {
+            "at_ms": 17809.46,
+            "text": " longer"
+          },
+          {
+            "at_ms": 17861.59,
+            "text": " string in"
+          },
+          {
+            "at_ms": 17909.16,
+            "text": " the box"
+          },
+          {
+            "at_ms": 17956.59,
+            "text": ". Let"
+          },
+          {
+            "at_ms": 18004.4,
+            "text": "'s assume"
+          },
+          {
+            "at_ms": 18052.55,
+            "text": " the main"
+          },
+          {
+            "at_ms": 18139.55,
+            "text": " marker"
+          },
+          {
+            "at_ms": 18191.71,
+            "text": " is the"
+          },
+          {
+            "at_ms": 18238.56,
+            "text": " one in"
+          },
+          {
+            "at_ms": 18286.14,
+            "text": " the box"
+          },
+          {
+            "at_ms": 18333.56,
+            "text": ".\n\n"
+          },
+          {
+            "at_ms": 18381.79,
+            "text": "So,"
+          },
+          {
+            "at_ms": 18430.21,
+            "text": " the first"
+          },
+          {
+            "at_ms": 18478.57,
+            "text": " line should"
+          },
+          {
+            "at_ms": 18526.98,
+            "text": " be `"
+          },
+          {
+            "at_ms": 18575.41,
+            "text": "BANANA"
+          },
+          {
+            "at_ms": 18662.38,
+            "text": "8"
+          },
+          {
+            "at_ms": 18753.53,
+            "text": "4"
+          },
+          {
+            "at_ms": 18844.1,
+            "text": "2"
+          },
+          {
+            "at_ms": 18933.15,
+            "text": "6"
+          },
+          {
+            "at_ms": 19021.99,
+            "text": "`."
+          },
+          {
+            "at_ms": 19073.64,
+            "text": "\nThe"
+          },
+          {
+            "at_ms": 19121.76,
+            "text": " second line"
+          },
+          {
+            "at_ms": 19170.01,
+            "text": " should be"
+          },
+          {
+            "at_ms": 19221.64,
+            "text": " `Q"
+          }
+        ],
+        "terminals": [
+          {
+            "at_ms": 21001.25,
+            "type": "stop"
+          }
+        ],
+        "usage": [
+          {
+            "prompt_eval_count": 2222,
+            "eval_count": 274,
+            "prompt_eval_duration": null,
+            "eval_duration": null
+          }
+        ],
+        "events": [
+          {
+            "at_ms": 9832.88,
+            "done": false
+          },
+          {
+            "at_ms": 9832.92,
+            "done": false
+          },
+          {
+            "at_ms": 9949.54,
+            "done": false
+          },
+          {
+            "at_ms": 10020.21,
+            "done": false
+          },
+          {
+            "at_ms": 10132.44,
+            "done": false
+          },
+          {
+            "at_ms": 10255.68,
+            "done": false
+          },
+          {
+            "at_ms": 10368.82,
+            "done": false
+          },
+          {
+            "at_ms": 10439.09,
+            "done": false
+          },
+          {
+            "at_ms": 10509.67,
+            "done": false
+          },
+          {
+            "at_ms": 10633.68,
+            "done": false
+          },
+          {
+            "at_ms": 10750.5,
+            "done": false
+          },
+          {
+            "at_ms": 10865.22,
+            "done": false
+          },
+          {
+            "at_ms": 10980.45,
+            "done": false
+          },
+          {
+            "at_ms": 11089.87,
+            "done": false
+          },
+          {
+            "at_ms": 11139.92,
+            "done": false
+          },
+          {
+            "at_ms": 11185.84,
+            "done": false
+          },
+          {
+            "at_ms": 11270.6,
+            "done": false
+          },
+          {
+            "at_ms": 11320.31,
+            "done": false
+          },
+          {
+            "at_ms": 11366.97,
+            "done": false
+          },
+          {
+            "at_ms": 11412.96,
+            "done": false
+          },
+          {
+            "at_ms": 11496.6,
+            "done": false
+          },
+          {
+            "at_ms": 11545.81,
+            "done": false
+          },
+          {
+            "at_ms": 11592.24,
+            "done": false
+          },
+          {
+            "at_ms": 11638.52,
+            "done": false
+          },
+          {
+            "at_ms": 11722.74,
+            "done": false
+          },
+          {
+            "at_ms": 11771.34,
+            "done": false
+          },
+          {
+            "at_ms": 11816.15,
+            "done": false
+          },
+          {
+            "at_ms": 11862.29,
+            "done": false
+          },
+          {
+            "at_ms": 11945.57,
+            "done": false
+          },
+          {
+            "at_ms": 11994.3,
+            "done": false
+          },
+          {
+            "at_ms": 12039.56,
+            "done": false
+          },
+          {
+            "at_ms": 12084.37,
+            "done": false
+          },
+          {
+            "at_ms": 12129.79,
+            "done": false
+          },
+          {
+            "at_ms": 12175.13,
+            "done": false
+          },
+          {
+            "at_ms": 12220.47,
+            "done": false
+          },
+          {
+            "at_ms": 12302.73,
+            "done": false
+          },
+          {
+            "at_ms": 12351.91,
+            "done": false
+          },
+          {
+            "at_ms": 12397.39,
+            "done": false
+          },
+          {
+            "at_ms": 12448.59,
+            "done": false
+          },
+          {
+            "at_ms": 12531.83,
+            "done": false
+          },
+          {
+            "at_ms": 12582.3,
+            "done": false
+          },
+          {
+            "at_ms": 12666.15,
+            "done": false
+          },
+          {
+            "at_ms": 12715.93,
+            "done": false
+          },
+          {
+            "at_ms": 12800.51,
+            "done": false
+          },
+          {
+            "at_ms": 12850.72,
+            "done": false
+          },
+          {
+            "at_ms": 12934.13,
+            "done": false
+          },
+          {
+            "at_ms": 12983.22,
+            "done": false
+          },
+          {
+            "at_ms": 13028.83,
+            "done": false
+          },
+          {
+            "at_ms": 13113.6,
+            "done": false
+          },
+          {
+            "at_ms": 13202.13,
+            "done": false
+          },
+          {
+            "at_ms": 13290.07,
+            "done": false
+          },
+          {
+            "at_ms": 13378.15,
+            "done": false
+          },
+          {
+            "at_ms": 13464.05,
+            "done": false
+          },
+          {
+            "at_ms": 13551.04,
+            "done": false
+          },
+          {
+            "at_ms": 13601.77,
+            "done": false
+          },
+          {
+            "at_ms": 13686.66,
+            "done": false
+          },
+          {
+            "at_ms": 13737.38,
+            "done": false
+          },
+          {
+            "at_ms": 13784.39,
+            "done": false
+          },
+          {
+            "at_ms": 13831.6,
+            "done": false
+          },
+          {
+            "at_ms": 13879.32,
+            "done": false
+          },
+          {
+            "at_ms": 13926.68,
+            "done": false
+          },
+          {
+            "at_ms": 13974.23,
+            "done": false
+          },
+          {
+            "at_ms": 14021.27,
+            "done": false
+          },
+          {
+            "at_ms": 14068.8,
+            "done": false
+          },
+          {
+            "at_ms": 14153.21,
+            "done": false
+          },
+          {
+            "at_ms": 14204.49,
+            "done": false
+          },
+          {
+            "at_ms": 14290.68,
+            "done": false
+          },
+          {
+            "at_ms": 14342.96,
+            "done": false
+          },
+          {
+            "at_ms": 14390.89,
+            "done": false
+          },
+          {
+            "at_ms": 14438.54,
+            "done": false
+          },
+          {
+            "at_ms": 14524.52,
+            "done": false
+          },
+          {
+            "at_ms": 14576.92,
+            "done": false
+          },
+          {
+            "at_ms": 14625.2,
+            "done": false
+          },
+          {
+            "at_ms": 14673.61,
+            "done": false
+          },
+          {
+            "at_ms": 14760.0,
+            "done": false
+          },
+          {
+            "at_ms": 14812.3,
+            "done": false
+          },
+          {
+            "at_ms": 14860.73,
+            "done": false
+          },
+          {
+            "at_ms": 14946.97,
+            "done": false
+          },
+          {
+            "at_ms": 14998.06,
+            "done": false
+          },
+          {
+            "at_ms": 15046.06,
+            "done": false
+          },
+          {
+            "at_ms": 15094.01,
+            "done": false
+          },
+          {
+            "at_ms": 15141.91,
+            "done": false
+          },
+          {
+            "at_ms": 15190.04,
+            "done": false
+          },
+          {
+            "at_ms": 15238.36,
+            "done": false
+          },
+          {
+            "at_ms": 15325.21,
+            "done": false
+          },
+          {
+            "at_ms": 15376.85,
+            "done": false
+          },
+          {
+            "at_ms": 15424.26,
+            "done": false
+          },
+          {
+            "at_ms": 15472.14,
+            "done": false
+          },
+          {
+            "at_ms": 15519.6,
+            "done": false
+          },
+          {
+            "at_ms": 15567.45,
+            "done": false
+          },
+          {
+            "at_ms": 15615.49,
+            "done": false
+          },
+          {
+            "at_ms": 15664.07,
+            "done": false
+          },
+          {
+            "at_ms": 15750.8,
+            "done": false
+          },
+          {
+            "at_ms": 15803.2,
+            "done": false
+          },
+          {
+            "at_ms": 15851.95,
+            "done": false
+          },
+          {
+            "at_ms": 15937.79,
+            "done": false
+          },
+          {
+            "at_ms": 16027.33,
+            "done": false
+          },
+          {
+            "at_ms": 16117.84,
+            "done": false
+          },
+          {
+            "at_ms": 16204.88,
+            "done": false
+          },
+          {
+            "at_ms": 16254.74,
+            "done": false
+          },
+          {
+            "at_ms": 16302.17,
+            "done": false
+          },
+          {
+            "at_ms": 16349.8,
+            "done": false
+          },
+          {
+            "at_ms": 16397.31,
+            "done": false
+          },
+          {
+            "at_ms": 16483.24,
+            "done": false
+          },
+          {
+            "at_ms": 16572.73,
+            "done": false
+          },
+          {
+            "at_ms": 16662.76,
+            "done": false
+          },
+          {
+            "at_ms": 16714.4,
+            "done": false
+          },
+          {
+            "at_ms": 16800.76,
+            "done": false
+          },
+          {
+            "at_ms": 16852.61,
+            "done": false
+          },
+          {
+            "at_ms": 16935.99,
+            "done": false
+          },
+          {
+            "at_ms": 17023.76,
+            "done": false
+          },
+          {
+            "at_ms": 17112.91,
+            "done": false
+          },
+          {
+            "at_ms": 17164.21,
+            "done": false
+          },
+          {
+            "at_ms": 17247.82,
+            "done": false
+          },
+          {
+            "at_ms": 17298.33,
+            "done": false
+          },
+          {
+            "at_ms": 17345.85,
+            "done": false
+          },
+          {
+            "at_ms": 17393.52,
+            "done": false
+          },
+          {
+            "at_ms": 17484.29,
+            "done": false
+          },
+          {
+            "at_ms": 17533.68,
+            "done": false
+          },
+          {
+            "at_ms": 17580.98,
+            "done": false
+          },
+          {
+            "at_ms": 17628.58,
+            "done": false
+          },
+          {
+            "at_ms": 17676.2,
+            "done": false
+          },
+          {
+            "at_ms": 17723.76,
+            "done": false
+          },
+          {
+            "at_ms": 17809.46,
+            "done": false
+          },
+          {
+            "at_ms": 17861.59,
+            "done": false
+          },
+          {
+            "at_ms": 17909.16,
+            "done": false
+          },
+          {
+            "at_ms": 17956.59,
+            "done": false
+          },
+          {
+            "at_ms": 18004.4,
+            "done": false
+          },
+          {
+            "at_ms": 18052.55,
+            "done": false
+          },
+          {
+            "at_ms": 18139.55,
+            "done": false
+          },
+          {
+            "at_ms": 18191.71,
+            "done": false
+          },
+          {
+            "at_ms": 18238.56,
+            "done": false
+          },
+          {
+            "at_ms": 18286.14,
+            "done": false
+          },
+          {
+            "at_ms": 18333.56,
+            "done": false
+          },
+          {
+            "at_ms": 18381.79,
+            "done": false
+          },
+          {
+            "at_ms": 18430.21,
+            "done": false
+          },
+          {
+            "at_ms": 18478.57,
+            "done": false
+          },
+          {
+            "at_ms": 18526.98,
+            "done": false
+          },
+          {
+            "at_ms": 18575.41,
+            "done": false
+          },
+          {
+            "at_ms": 18662.38,
+            "done": false
+          },
+          {
+            "at_ms": 18753.53,
+            "done": false
+          },
+          {
+            "at_ms": 18844.1,
+            "done": false
+          },
+          {
+            "at_ms": 18933.15,
+            "done": false
+          },
+          {
+            "at_ms": 19021.99,
+            "done": false
+          },
+          {
+            "at_ms": 19073.64,
+            "done": false
+          },
+          {
+            "at_ms": 19121.76,
+            "done": false
+          },
+          {
+            "at_ms": 19170.01,
+            "done": false
+          },
+          {
+            "at_ms": 19221.64,
+            "done": false
+          },
+          {
+            "at_ms": 19746.65,
+            "done": false
+          },
+          {
+            "at_ms": 19746.81,
+            "done": false
+          },
+          {
+            "at_ms": 19850.61,
+            "done": false
+          },
+          {
+            "at_ms": 19957.82,
+            "done": false
+          },
+          {
+            "at_ms": 20068.56,
+            "done": false
+          },
+          {
+            "at_ms": 20294.35,
+            "done": false
+          },
+          {
+            "at_ms": 20405.55,
+            "done": false
+          },
+          {
+            "at_ms": 20515.38,
+            "done": false
+          },
+          {
+            "at_ms": 20640.4,
+            "done": false
+          },
+          {
+            "at_ms": 20754.66,
+            "done": false
+          },
+          {
+            "at_ms": 20872.39,
+            "done": false
+          },
+          {
+            "at_ms": 21001.25,
+            "done": true
+          }
+        ],
+        "elapsed_ms": 21001.32,
+        "visible": "BANANA8426\nQ27-MEDIA-OLLAMA-DONE",
+        "reasoning": "The user wants me to identify the alphanumeric marker from the provided video frames.\n\n1.  **Analyze the frames:** I see a series of identical frames.\n2.  **Identify the text:**\n    *   Top text: \"FRESH IMAGE\"\n    *   Central text inside a yellow box: \"BANANA8426\"\n3.  **Extract the marker:** The specific alphanumeric string is \"BANANA8426\".\n4.  **Format the output:**\n    *   Line 1: The marker itself.\n    *   Line 2: The specific suffix \"Q27-MEDIA-OLLAMA-DONE\".\n\nLet's double-check the spelling.\nB-A-N-A-N-A-8-4-2-6.\nYes, \"BANANA8426\".\n\nThe prompt asks for \"exact alphanumeric marker\".\nThe text \"FRESH IMAGE\" is also there, but usually, the \"marker\" refers to the unique identifier, which is the longer string in the box. Let's assume the main marker is the one in the box.\n\nSo, the first line should be `BANANA8426`.\nThe second line should be `Q",
+        "content_delta_count": 11,
+        "reasoning_delta_count": 148,
+        "first_content_ms": 19746.65,
+        "last_content_ms": 20872.39
+      },
+      "nonstream": {
+        "status": 200,
+        "elapsed_ms": 11489.48,
+        "visible": "BANANA8426\nQ27-MEDIA-OLLAMA-DONE",
+        "body": {
+          "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+          "created_at": "2026-07-21T07:19:22.920Z",
+          "message": {
+            "role": "assistant",
+            "content": "BANANA8426\nQ27-MEDIA-OLLAMA-DONE",
+            "thinking": "The user wants me to identify the alphanumeric marker from the provided video frames.\n\n1.  **Analyze the frames:** I see a series of identical frames.\n2.  **Identify the text:**\n    *   Top text: \"FRESH IMAGE\"\n    *   Central text inside a yellow box: \"BANANA8426\"\n3.  **Extract the marker:** The specific alphanumeric string is \"BANANA8426\".\n4.  **Format the output:**\n    *   Line 1: The marker itself.\n    *   Line 2: The specific suffix \"Q27-MEDIA-OLLAMA-DONE\".\n\nLet's double-check the spelling.\nB-A-N-A-N-A-8-4-2-6.\nYes, \"BANANA8426\".\n\nThe prompt asks for \"exact alphanumeric marker\".\nThe text \"FRESH IMAGE\" is also there, but usually, the \"marker\" refers to the unique identifier, which is the longer string in the box. Let's assume the main marker is the one in the box.\n\nSo, the first line should be `BANANA8426`.\nThe second line should be `Q"
+          },
+          "done": true,
+          "done_reason": "length",
+          "total_duration": 0,
+          "eval_count": 274,
+          "prompt_eval_count": 2222
+        }
+      },
+      "checks": {
+        "stream_200": true,
+        "stream_exact": true,
+        "stream_progressive_content": true,
+        "stream_reasoning_separate_nonempty": true,
+        "stream_terminal": true,
+        "nonstream_200": true,
+        "nonstream_exact": true
+      }
+    }
+  }
+}

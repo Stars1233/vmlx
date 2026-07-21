@@ -4088,3 +4088,37 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - Retain `PARTIAL`: this does not repeat cancellation/failure injection, media
   payloads, tool-result continuation under stochastic sampling, concurrent
   clients, LAN/port rollback, signed app, or other parser/model families.
+
+## 2026-07-21 - Qwen gateway media preservation and answer-stream completion
+
+- `Q27-GATEWAY-MEDIA-TRANSLATION`: `VERIFIED-LIVE_SCOPED`. The exact tested
+  artifact is `dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP`: base MLX MXFP4 with
+  native MTP, not affine JANG or JANGTQ/MXTQ. Anthropic video/audio blocks,
+  direct Ollama `videos` and `audio`/`audios`, and Electron-gateway Ollama
+  media extensions now reach typed model content instead of being dropped.
+- `Q27-AUTO-PARTIAL-ANSWER-STREAM`: `FIXED_SOURCE_VERIFIED_LIVE_SCOPED`.
+  Current-source Chat, Responses, Anthropic, and Ollama media requests each
+  returned exact stream and non-stream answers. Streams emitted 9-14
+  progressive content deltas, 86-154 separate reasoning deltas, and one native
+  terminal. A reserved answer pass now reconciles against the already-visible
+  byte prefix and emits only the missing suffix; divergence fails closed.
+- `Q27-NONSTREAM-TERMINAL`: `FIXED_SOURCE_VERIFIED_LIVE_SCOPED`. Chat now
+  adopts the completed answer pass terminal rather than retaining the first
+  pass's `length`; translated Ollama therefore also reports `stop`. Responses
+  reports `completed` and Anthropic reports `end_turn`.
+- `DEV-ELECTRON-SOURCE-PIN`: `FIXED_SOURCE_VERIFIED_LIVE_SCOPED`. A clean
+  Electron launch with no parent `PYTHONPATH` loaded through the real Start
+  path and spawned the engine with
+  `PYTHONPATH=/Users/eric/mlx/vllm-mlx-release-1.6.13`. This prevents a sibling
+  editable checkout from silently supplying runtime source during dev proof.
+- Real Electron MP4 proof produced 90 UI states, separate reasoning, and exact
+  `BANANA8426` / `Q27-MEDIA-UI-CURRENT-DONE`. The clean source-pin follow-up
+  persisted exact visible content with separate reasoning and no warning.
+- Validation: 131 focused Python tests, 58 panel tests, TypeScript typecheck,
+  and `git diff --check`. The new reconciliation helper has four production
+  call sites; no superseded stream branch was retained solely for tests.
+- Retain `PARTIAL`: audio has source/contract coverage but no audio-capable
+  live model in this gate; Auto reasoning verbosity, media tools,
+  cancellation/fault injection, alternate-media salt, signed-app repetition,
+  and other model families remain open. Evidence:
+  `docs/internal/release-gates/20260721_gateway_media_stream_repair_current/`.

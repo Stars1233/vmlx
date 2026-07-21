@@ -1,0 +1,34 @@
+{
+  "state_count": 90,
+  "attachment_ready": true,
+  "final_has_video_marker": true,
+  "final_has_completion_marker": true,
+  "observer_finished_flag": false,
+  "observer_note": "finished flag is false because an empty idle textarea also disables Send; exact final screenshot and SQLite terminal row are authoritative",
+  "progressive_markers": [
+    {
+      "label": "reasoning rail begins",
+      "pattern": "Thinking\n...",
+      "first_at_ms": 7757,
+      "matching_states": 79
+    },
+    {
+      "label": "visible answer prefix",
+      "pattern": "\nBANANA8426\nQ27-MEDIA-UI-CURRENT-",
+      "first_at_ms": 16763,
+      "matching_states": 4
+    },
+    {
+      "label": "visible answer exact final",
+      "pattern": "\nBANANA8426\nQ27-MEDIA-UI-CURRENT-DONE",
+      "first_at_ms": 16869,
+      "matching_states": 3
+    },
+    {
+      "label": "terminal metrics",
+      "pattern": "285 tokens",
+      "first_at_ms": 16763,
+      "matching_states": 4
+    }
+  ]
+}

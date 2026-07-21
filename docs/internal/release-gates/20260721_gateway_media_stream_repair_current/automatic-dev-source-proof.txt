@@ -1,0 +1,9 @@
+ELECTRON_PARENT_ENV
+VMLINUX_USER_DATA_DIR=/Users/eric/.vmlx-v1613-responsive-dev
+VMLX_USER_DATA_DIR=/Users/eric/.vmlx-v1613-responsive-dev
+ENGINE_PID
+52435 52328 05:51 /Users/eric/mlx/vllm-mlx/.venv/bin/python3 /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine serve /Volumes/EricsLLMDrive/dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP --host 127.0.0.1 --port 8005 --timeout 300 --max-num-seqs 1 --prefill-batch-size 512 --prefill-step-size 2048 --completion-batch-size 512 --is-mllm --continuous-batching --tool-call-parser qwen --enable-auto-tool-choice --reasoning-parser qwen3 --cache-memory-percent 0.15 --use-paged-cache --paged-cache-block-size 64 --max-cache-blocks 1000 --enable-block-disk-cache --block-disk-cache-max-gb 10 --stream-interval 1 --native-mtp-depth 3 --native-mtp-sampling-policy deterministic-defaults
+ENGINE_ENV
+VMLINUX_USER_DATA_DIR=/Users/eric/.vmlx-v1613-responsive-dev
+VMLX_USER_DATA_DIR=/Users/eric/.vmlx-v1613-responsive-dev
+PYTHONPATH=/Users/eric/mlx/vllm-mlx-release-1.6.13
