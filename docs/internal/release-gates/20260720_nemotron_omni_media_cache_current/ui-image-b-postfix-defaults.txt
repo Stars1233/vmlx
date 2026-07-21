@@ -1,0 +1,95 @@
+Endpoint
+http://127.0.0.1:8001
+Status
+Running
+PID
+23620
+API URL (click to copy)
+http://127.0.0.1:8001/v1/responses
+PROFILES
+
+New chats inherit tool & search settings from your last chat. Star a profile to use its tool settings instead.
+
+Save current settings as profile
+
+Save and load named presets. Star a profile to auto-apply its tool settings on new chats.
+
+INFERENCE
+Enable Thinking
+Auto
+On
+Off
+
+Auto: local vMLX uses the model/runtime reasoning default. On: request thinking. Off: request direct responses.
+
+Temperature
+0.60
+
+Controls randomness. Lower = more focused, higher = more creative.
+
+Top P
+0.95
+
+Nucleus sampling. Only tokens with cumulative probability above this threshold.
+
+Max Tokens
+
+Maximum new tokens for responses in this chat. Leave blank to use the model's generation_config/jang_config default; set a value here or send max_tokens/max_output_tokens in the API request to override it.
+
+Max Thinking Tokens
+
+Reasoning-phase budget for this chat. Leave blank for the model default; when Qwen 3.5/3.6 has none, local vMLX Auto uses at most 1,024 reasoning tokens and keeps at least 256 tokens (or half of a smaller output cap) for the visible answer. An explicit value or API max_thinking_tokens overrides Auto. Models without thinking-budget support may ignore it.
+
+Top K
+Off
+
+Limits tokens to top K candidates. 0 = disabled (uses Top P only).
+
+Min P
+0.00
+
+Minimum probability threshold relative to top token. 0 = disabled.
+
+Repetition Penalty
+1.00
+
+Penalizes repeated tokens. 1.0 = no penalty. Leave Server default to use the model bundle defaults instead of applying a global penalty.
+
+SYSTEM PROMPT
+(No template)
+Code Reviewer
+Coding Assistant
+Concise Responder
+Creative Writer
+Data Analyst
+Patient Tutor
+Socratic Guide
+Save
+
+Injected as the first message in each request.
+
+STOP SEQUENCES
+
+Custom stop tokens override the built-in template tokens.
+
+API WIRE FORMAT
+Chat Completions (/v1/chat/completions)
+Responses (/v1/responses)
+
+Wire format for API requests. Use Responses for OpenAI Responses API compatibility.
+
+AGENTIC
+Max Tool Iterations
+
+Maximum MCP tool call rounds per message. Higher = more autonomous.
+
+Enable Built-in Coding Tools
+
+File I/O, code search, shell commands, web search, and URL fetching. Full agentic coding environment.
+
+Hide Tool Status
+
+Hide tool execution details from the chat. Tools still execute normally.
+
+Save
+Reset

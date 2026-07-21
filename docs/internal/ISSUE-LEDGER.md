@@ -3861,3 +3861,34 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - Validation: 39 focused capability tests and 739 expanded
   engine/multimodal/Gemma/scheduler tests passed. Evidence:
   `docs/internal/release-gates/20260720_gemma4_video_capability_bridge_current/`.
+
+## 2026-07-20 - Nemotron Omni omitted-cap Auto finalization and image-session proof
+
+- `NEMO-OMNI-OMITTED-MAX`: `VERIFIED-LIVE_SCOPED` after a current-source
+  repair. A fresh real Electron Auto image turn retained 849 reasoning
+  characters but stopped at exactly 256 tokens with empty content and length
+  warnings, although the UI Max Tokens field was blank, the bundle default was
+  16,384, and server sampling logs resolved 16,384. Responses rebuilt its
+  internal Chat request from unresolved `request.max_output_tokens`; the Omni
+  bridge then applied its old 256 fallback.
+- Current Chat, Responses, and Anthropic Omni entries pass the same resolved
+  max-token/temperature/top-p values used by their ordinary generation rails.
+  The patched Electron Auto turn produced separate 284-character reasoning
+  plus exact `BANANA8426` / `NEMO-IMG-B2-AUTO-DONE` content in 107 tokens, no
+  warning, and no tool state. Raw omitted-max Responses emitted 257 reasoning
+  plus 24 content deltas and one completed event; Chat emitted 351 reasoning
+  plus 23 content deltas, stop, usage, and `[DONE]`.
+- `NEMO-OMNI-IMAGE-SESSION`: `VERIFIED-LIVE_SCOPED` in-process. Real image A
+  exact-finaled `vMLX` over progressive character paints and wrote a 50.97 MB
+  q4-attention-KV/native-SSM snapshot. A no-attachment follow-up exact-recalled
+  it at 0.37 s TTFT; logs recorded `continuing conversation (prefix matches)`
+  and zero new images. Fresh image B logged a reset and returned the distinct
+  unseen code without leaking A.
+- Bundle/start truth: real Electron Start eagerly loaded the MXTQ/JANGTQ2
+  artifact before a request and left exactly one engine. Health reports q4 TQ
+  only for attention layers 3/7/11/15/19/24, native SSM companion layers, and
+  async rederive; this is not affine JANG, base MXFP, or generic all-layer KV.
+- Focused validation: 30 passed / 580 deselected plus `py_compile` and diff
+  check. Image/video process-restart controls and bounded/multi-snapshot
+  behavior remain `PARTIAL/IN PROGRESS`. Evidence:
+  `docs/internal/release-gates/20260720_nemotron_omni_media_cache_current/`.

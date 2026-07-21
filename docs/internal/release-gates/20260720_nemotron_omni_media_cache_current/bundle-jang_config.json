@@ -1,0 +1,44 @@
+{
+  "capabilities": {
+    "cache_type": "hybrid",
+    "family": "nemotron_h",
+    "modality": "omni",
+    "reasoning_parser": "deepseek_r1",
+    "supports_thinking": true,
+    "supports_tools": true,
+    "think_in_template": true,
+    "tool_parser": "nemotron"
+  },
+  "hybrid_pattern": "MEMEM*EMEMEM*EMEMEM*EMEMEM*EMEMEM*EMEMEMEM*EMEMEMEME",
+  "modality": "omni",
+  "multimodal_components": [
+    "vision_model",
+    "sound_encoder",
+    "mlp1",
+    "sound_projection"
+  ],
+  "mxtq_bits": {
+    "attention": 8,
+    "embed_tokens": 8,
+    "lm_head": 8,
+    "mamba_proj": 8,
+    "routed_expert": 2,
+    "shared_expert": 8
+  },
+  "mxtq_seed": 42,
+  "profile": "JANGTQ2",
+  "quantization": {
+    "bits_default": 2,
+    "group_size": 64,
+    "method": "affine+mxtq"
+  },
+  "source_model": {
+    "architecture": "nemotron_h",
+    "modality": "omni",
+    "name": "Nemotron-3-Nano-Omni-30B-A3B-Reasoning",
+    "org": "nvidia",
+    "wrapper_arch": "NemotronH_Nano_Omni_Reasoning_V3"
+  },
+  "version": 2,
+  "weight_format": "mxtq"
+}
