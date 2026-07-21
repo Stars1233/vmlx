@@ -3904,3 +3904,25 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - Focused validation: 30 passed / 580 deselected plus `py_compile` and diff
   check. Evidence:
   `docs/internal/release-gates/20260720_nemotron_omni_media_cache_current/`.
+
+## 2026-07-20 - Gemma 4 MoE token-only audio capability and video L2
+
+- `GEMMA4-MOE-AUDIO-CAPABILITY`: `VERIFIED-LIVE_SCOPED` after a current-source
+  repair. The real 26B-A4B JANG_4M artifact is a 30-layer, 128-expert top-8
+  MoE with vision but `audio_config=null` and no audio tower. Pre-fix
+  capabilities nevertheless advertised audio because a reserved top-level
+  `audio_token_id` reached a generic heuristic. Gemma 4 now fails closed on a
+  token-only audio stamp. Patched `/v1/capabilities` reports text/vision/video
+  and `audio=not_advertised`; raw Responses WAV returns HTTP 400.
+- `GEMMA4-MOE-VIDEO-L2`: `VERIFIED-LIVE_SCOPED`. Real Electron `Launch
+  Session` stopped the prior Nemotron engine and eagerly loaded one Gemma
+  process before a request. Fresh MP4 exact-finaled over 16 progressive UI
+  states with separate reasoning. After real process replacement and empty
+  L1, a fresh identical media/prompt row restored 327/328 tokens as
+  `paged+mixed_swa+disk+tq-native`, with six disk promotions, six native-TQ
+  hits, and 0.33 s TTFT. Raw omitted-max Responses emitted 100 reasoning plus
+  18 content deltas and one completed event.
+- A no-attachment follow-up is not counted as cache proof: it was coherent and
+  exact but health recorded zero hits because ordinary Gemma history omitted
+  the old media payload. Fifteen focused tests passed. Evidence:
+  `docs/internal/release-gates/20260720_gemma4_moe_media_capability_current/`.

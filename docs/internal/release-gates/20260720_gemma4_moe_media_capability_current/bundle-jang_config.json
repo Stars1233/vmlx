@@ -1,0 +1,59 @@
+{
+  "quantization": {
+    "method": "jang-importance",
+    "profile": "JANG_4M",
+    "target_bits": 4.0,
+    "actual_bits": 4.26,
+    "block_size": 64,
+    "calibration_method": "weights",
+    "quantization_method": "mse",
+    "scoring_method": "weight-magnitude",
+    "bit_widths_used": [
+      4,
+      8
+    ],
+    "quantization_scheme": "asymmetric",
+    "quantization_backend": "mx.quantize"
+  },
+  "source_model": {
+    "name": "Gemma-4-26B-A4B-it-BF16",
+    "dtype": "bfloat16",
+    "parameters": "70.2B"
+  },
+  "architecture": {
+    "type": "moe",
+    "attention": "gqa",
+    "has_vision": true,
+    "has_ssm": false,
+    "has_moe": true
+  },
+  "runtime": {
+    "total_weight_bytes": 13444349952,
+    "total_weight_gb": 12.52
+  },
+  "format": "jang",
+  "format_version": "2.0",
+  "crack_surgery": {
+    "method": "per-layer",
+    "mode": "standard",
+    "vector": "gemma4_26b_refusal_vectors.safetensors",
+    "target_layers": [
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "target_projs": [
+      "o_proj"
+    ],
+    "strength": 8.0,
+    "modified_tensors": 11
+  }
+}
