@@ -1,0 +1,29 @@
+Current-source focused validation
+=================================
+
+Repo: /Users/eric/mlx/vllm-mlx-release-1.6.13
+Branch: codex/postrelease-ui-drawers-20260720
+Base: 280e29280da29e5f80885ee4601b8241e71fb3f5
+
+Panel tests:
+  tests/developer-operation-lifecycle.test.ts: 5 passed
+  tests/developer-tools.test.ts: 92 passed
+  total: 97 passed
+
+Typecheck:
+  npm run typecheck
+  tsc --noEmit
+  PASS
+
+Live Electron:
+  engine path: /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine
+  effective version: 1.6.14
+  CDP: 127.0.0.1:9335
+  running navigation restore: PASS
+  exact source/output/profile restore: PASS
+  current-source cancel after navigation: PASS
+  cancel child remaining: none
+  cancelled output files: none
+  post-cancel ordinary failure: PASS (cancelled=false)
+
+No model session or chat generation was run in this lifecycle gate.

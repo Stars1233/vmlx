@@ -4282,6 +4282,35 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   later independent source+live image proof is recorded below. Evidence:
   `docs/internal/release-gates/20260721_electron_jang4m_conversion_agent/`.
 
+## 2026-07-21 - Developer Tools conversion lifecycle and reconnect truth
+
+- `QUANT-UI-LIFECYCLE-RECONNECT`: `VERIFIED-LIVE_SCOPED`. The shared
+  Developer Tools hook now restores completed logs/result and the actual CLI
+  descriptor after navigation. A real affine JANG_4L attempt retained its
+  exact source path, output path, selected 4L profile, running Cancel action,
+  and log after Server -> Tools navigation instead of returning with empty
+  fields/default 3M.
+- `QUANT-UI-LIFECYCLE-CANCEL`: `VERIFIED-LIVE_SCOPED`. On current source the
+  real Convert and Cancel buttons terminated the child; after navigating away
+  and back, the UI visibly retained `Conversion cancelled`, the exact 4L
+  descriptor, no child, and no output files.
+- `QUANT-UI-LIFECYCLE-RECOVERY`: `VERIFIED-LIVE_SCOPED`. The next real Convert
+  click used an explicit nonexistent source and visibly produced `Conversion
+  failed`; IPC recorded `success=false,cancelled=false`, proving cancellation
+  state did not poison the next operation.
+- Source/dead-code repair replaces module-global active/cancelled flags with a
+  per-child lifecycle owner, suppresses duplicate close/error completion,
+  prevents late old-child settlement from clearing later state, and removes
+  the duplicate app-quit kill branch. Focused validation is 97/97 plus
+  typecheck.
+- Retain `PARTIAL`: force-overwrite/low-disk/unwritable-volume,
+  calibration/AWQ/imatrix, large MoE, true interrupted-job resume, generic
+  JANGTQ/MXTQ conversion, and produced-profile protocol/cache/media breadth.
+  An incidental JANG_3M completed-result probe emitted trailing `<think>` in
+  the converter's raw minimal smoke, so that smoke remains load/decode evidence
+  only—not chat-quality certification. Evidence:
+  `docs/internal/release-gates/20260721_developer_conversion_lifecycle_current/`.
+
 ## 2026-07-21 - converted affine-JANG Qwen vision Auto/persistence repair
 
 - `CONVERTED-AFFINE-QWEN-VL-AUTO`: `VERIFIED-LIVE_SCOPED`. Panel detection no

@@ -199,13 +199,18 @@ history.
 Still open:
 
 - other affine profiles and custom mix
-- cancellation/resume/force-overwrite and low-disk/error UX
+- force-overwrite and low-disk/unwritable-volume UX
+- true interrupted-job resume (distinct from reconnecting to a live child)
 - JANGTQ/MXTQ Hadamard-codebook conversion except its separate Zaya branch
 - large MoE conversion, calibration/AWQ/imatrix modes
 - Chat/Anthropic/Ollama for a newly converted bundle
 - eviction, process-restart L2 restore, paged-off disk-only reuse, and partial
   block reuse for this newly produced bundle
 - media after conversion
+
+The shared navigation/cancel/error lifecycle is now closed separately in
+`../20260721_developer_conversion_lifecycle_current/`. That gate does not
+promote other quant profiles or generic JANGTQ/MXTQ conversion.
 
 The source and output contain Qwen vision metadata, but current model
 detection deliberately set `forceTextOnly=true` because this freshly affine-
