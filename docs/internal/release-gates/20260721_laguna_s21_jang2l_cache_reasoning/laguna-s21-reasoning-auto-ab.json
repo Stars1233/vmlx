@@ -1,0 +1,3586 @@
+{
+  "checks": {
+    "all_http_200": true,
+    "auto_reasoning_progressive": true,
+    "auto_content_progressive": true,
+    "auto_matches_explicit_on_reasoning": true,
+    "auto_matches_explicit_on_visible": true,
+    "off_has_no_reasoning": true,
+    "off_content_progressive": true
+  },
+  "rows": [
+    {
+      "label": "auto",
+      "explicit_enable_thinking": null,
+      "payload": {
+        "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+        "input": "[LAG-S21-AUTO-AB] Privately calculate 143 times 27 and double-check it. Then answer in one sentence.",
+        "stream": true,
+        "store": false,
+        "temperature": 0.0,
+        "max_output_tokens": 256,
+        "cache_salt": "auto"
+      },
+      "status": 200,
+      "reasoning": "Okay, let me calculate 143 times 27. Hmm, I need to do this step by step. First, maybe break down 27 into 20 and 7. So, 143 times 20 is... 143 multiplied by 20. Let me think, 143 times 2 is 286, so adding a zero makes it 2860. Then 143 times 7. Let me calculate that. 143 times 7: 140 times 7 is 980, and 3 times 7 is 21, so 980 plus 21 is 1001. So adding those two results together: 2860 plus 1001. Let me add them. 2860 + 1000 is 3860, then plus 1 more is 3861. Wait, so 143 times 27 should be 3861. Let me double-check that. Maybe another way: 143 times 27. Let me try multiplying 143 by ",
+      "visible": "The product of 143 and 27 is **3,861** (calculated as 143 × 27 = 3,861, verified by breaking it into 143×",
+      "reasoning_delta_count": 256,
+      "content_delta_count": 42,
+      "reasoning_sha256": "e409e0dca07035b9c1e07c493c7acd81cb1ce6a36fd8899a476706b9ef86ef98",
+      "visible_sha256": "1ca72acfd59e077883685d674854ca49f8f5df8d4dbb817288602b85acf07621",
+      "terminal": [
+        "response.incomplete"
+      ],
+      "timeline": [
+        {
+          "at_ms": 13.24,
+          "type": "response.created",
+          "delta": ""
+        },
+        {
+          "at_ms": 13.28,
+          "type": "response.output_item.added",
+          "delta": ""
+        },
+        {
+          "at_ms": 13.32,
+          "type": "response.content_part.added",
+          "delta": ""
+        },
+        {
+          "at_ms": 276.96,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Okay"
+        },
+        {
+          "at_ms": 294.48,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 312.07,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " let"
+        },
+        {
+          "at_ms": 329.61,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " me"
+        },
+        {
+          "at_ms": 347.02,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " calculate"
+        },
+        {
+          "at_ms": 364.34,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 381.9,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 399.23,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 416.66,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 434.17,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " times"
+        },
+        {
+          "at_ms": 451.57,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 469.02,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 486.45,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 504.19,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 521.33,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Hmm"
+        },
+        {
+          "at_ms": 538.8,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 556.14,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_ms": 573.49,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " need"
+        },
+        {
+          "at_ms": 590.87,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_ms": 608.16,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " do"
+        },
+        {
+          "at_ms": 625.57,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " this"
+        },
+        {
+          "at_ms": 642.91,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " step"
+        },
+        {
+          "at_ms": 660.27,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " by"
+        },
+        {
+          "at_ms": 677.68,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " step"
+        },
+        {
+          "at_ms": 695.31,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 713.17,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " First"
+        },
+        {
+          "at_ms": 730.58,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 747.95,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " maybe"
+        },
+        {
+          "at_ms": 765.34,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " break"
+        },
+        {
+          "at_ms": 782.7,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " down"
+        },
+        {
+          "at_ms": 800.15,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 817.49,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 834.86,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 852.17,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " into"
+        },
+        {
+          "at_ms": 869.54,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 886.94,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 904.34,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 921.7,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_ms": 939.14,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 956.5,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 973.92,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 991.23,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " So"
+        },
+        {
+          "at_ms": 1008.58,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 1025.95,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1043.29,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 1060.72,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 1078.09,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 1095.64,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " times"
+        },
+        {
+          "at_ms": 1113.14,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1130.58,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 1147.92,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 1165.32,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_ms": 1182.72,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "..."
+        },
+        {
+          "at_ms": 1200.11,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1217.53,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 1234.93,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 1252.32,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 1269.74,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " multiplied"
+        },
+        {
+          "at_ms": 1287.21,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " by"
+        },
+        {
+          "at_ms": 1304.67,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1322.18,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 1339.62,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 1357.02,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 1374.41,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Let"
+        },
+        {
+          "at_ms": 1391.8,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " me"
+        },
+        {
+          "at_ms": 1409.2,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " think"
+        },
+        {
+          "at_ms": 1426.78,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 1444.01,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1461.46,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 1478.91,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 1496.22,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 1513.62,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " times"
+        },
+        {
+          "at_ms": 1531.01,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1548.41,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 1565.76,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_ms": 1583.21,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1600.65,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 1618.07,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 1635.42,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 1652.83,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 1670.31,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " so"
+        },
+        {
+          "at_ms": 1687.75,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " adding"
+        },
+        {
+          "at_ms": 1705.14,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " a"
+        },
+        {
+          "at_ms": 1722.58,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " zero"
+        },
+        {
+          "at_ms": 1739.99,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " makes"
+        },
+        {
+          "at_ms": 1757.49,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " it"
+        },
+        {
+          "at_ms": 1774.96,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1792.64,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 1810.76,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 1828.84,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 1847.06,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 1865.31,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 1883.04,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Then"
+        },
+        {
+          "at_ms": 1901.15,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1919.18,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 1937.29,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 1955.14,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 1972.51,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " times"
+        },
+        {
+          "at_ms": 1990.18,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2007.52,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 2024.92,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 2042.41,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Let"
+        },
+        {
+          "at_ms": 2060.18,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " me"
+        },
+        {
+          "at_ms": 2077.62,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " calculate"
+        },
+        {
+          "at_ms": 2094.92,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " that"
+        },
+        {
+          "at_ms": 2112.13,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 2129.59,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2151.43,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 2166.34,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 2184.58,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 2202.31,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " times"
+        },
+        {
+          "at_ms": 2219.8,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2237.39,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 2255.07,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_ms": 2273.73,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2292.1,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 2309.75,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 2327.4,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 2345.12,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " times"
+        },
+        {
+          "at_ms": 2362.73,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2380.46,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 2398.09,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_ms": 2415.69,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2433.25,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "9"
+        },
+        {
+          "at_ms": 2450.83,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 2468.44,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 2485.95,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 2515.39,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_ms": 2533.44,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2550.98,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 2568.62,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " times"
+        },
+        {
+          "at_ms": 2586.18,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2603.84,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 2621.38,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_ms": 2639.03,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2656.53,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 2674.06,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 2691.68,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 2709.2,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " so"
+        },
+        {
+          "at_ms": 2726.74,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2744.25,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "9"
+        },
+        {
+          "at_ms": 2761.77,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 2779.33,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 2796.98,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " plus"
+        },
+        {
+          "at_ms": 2814.62,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2832.31,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 2849.93,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 2867.82,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_ms": 2885.68,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2903.58,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 2921.35,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 2939.03,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 2956.68,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 2974.3,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 2991.96,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " So"
+        },
+        {
+          "at_ms": 3009.52,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " adding"
+        },
+        {
+          "at_ms": 3027.11,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " those"
+        },
+        {
+          "at_ms": 3044.72,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " two"
+        },
+        {
+          "at_ms": 3062.32,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " results"
+        },
+        {
+          "at_ms": 3079.88,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " together"
+        },
+        {
+          "at_ms": 3097.44,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_ms": 3115.06,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 3132.57,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 3150.11,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 3167.7,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 3185.23,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 3202.81,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " plus"
+        },
+        {
+          "at_ms": 3220.44,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 3237.92,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 3255.44,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 3273.04,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 3290.61,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 3308.12,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 3325.75,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Let"
+        },
+        {
+          "at_ms": 3343.31,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " me"
+        },
+        {
+          "at_ms": 3362.44,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " add"
+        },
+        {
+          "at_ms": 3380.22,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " them"
+        },
+        {
+          "at_ms": 3397.88,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 3415.53,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 3433.15,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 3450.73,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 3468.42,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 3486.23,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 3503.9,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " +"
+        },
+        {
+          "at_ms": 3521.96,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 3539.64,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 3557.23,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 3574.8,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 3592.47,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 3610.02,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_ms": 3627.56,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 3645.12,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 3662.71,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 3680.3,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 3697.9,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 3715.49,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 3733.04,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " then"
+        },
+        {
+          "at_ms": 3750.62,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " plus"
+        },
+        {
+          "at_ms": 3768.17,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 3785.69,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 3803.25,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " more"
+        },
+        {
+          "at_ms": 3820.85,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_ms": 3838.43,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 3856.07,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 3873.78,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 3891.26,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 3908.98,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 3926.65,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 3944.33,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Wait"
+        },
+        {
+          "at_ms": 3962.18,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 3979.94,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " so"
+        },
+        {
+          "at_ms": 3997.65,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 4015.33,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 4033.04,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 4050.64,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 4068.28,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " times"
+        },
+        {
+          "at_ms": 4085.91,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 4103.78,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 4121.51,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 4139.17,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " should"
+        },
+        {
+          "at_ms": 4156.82,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " be"
+        },
+        {
+          "at_ms": 4174.48,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 4192.21,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 4209.87,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 4227.64,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 4245.47,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 4263.1,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 4280.8,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Let"
+        },
+        {
+          "at_ms": 4298.46,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " me"
+        },
+        {
+          "at_ms": 4316.19,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " double"
+        },
+        {
+          "at_ms": 4333.91,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-check"
+        },
+        {
+          "at_ms": 4351.67,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " that"
+        },
+        {
+          "at_ms": 4369.39,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 4387.2,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Maybe"
+        },
+        {
+          "at_ms": 4404.96,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " another"
+        },
+        {
+          "at_ms": 4422.64,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " way"
+        },
+        {
+          "at_ms": 4440.36,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_ms": 4458.12,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 4475.88,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 4493.51,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 4511.17,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 4529.21,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " times"
+        },
+        {
+          "at_ms": 4546.65,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 4564.36,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 4582.04,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 4599.82,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 4617.51,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Let"
+        },
+        {
+          "at_ms": 4635.23,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " me"
+        },
+        {
+          "at_ms": 4652.97,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " try"
+        },
+        {
+          "at_ms": 4670.71,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " multiplying"
+        },
+        {
+          "at_ms": 4688.4,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 4706.04,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 4723.77,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 4741.45,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 4758.5,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " by"
+        },
+        {
+          "at_ms": 4758.76,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 4759.22,
+          "type": "response.reasoning_summary_text.done",
+          "delta": ""
+        },
+        {
+          "at_ms": 4986.54,
+          "type": "response.output_text.delta",
+          "delta": "The"
+        },
+        {
+          "at_ms": 5003.99,
+          "type": "response.output_text.delta",
+          "delta": " product"
+        },
+        {
+          "at_ms": 5021.46,
+          "type": "response.output_text.delta",
+          "delta": " of"
+        },
+        {
+          "at_ms": 5056.23,
+          "type": "response.output_text.delta",
+          "delta": " 1"
+        },
+        {
+          "at_ms": 5073.58,
+          "type": "response.output_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 5090.99,
+          "type": "response.output_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 5108.33,
+          "type": "response.output_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_ms": 5143.14,
+          "type": "response.output_text.delta",
+          "delta": " 2"
+        },
+        {
+          "at_ms": 5160.57,
+          "type": "response.output_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 5177.97,
+          "type": "response.output_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_ms": 5195.35,
+          "type": "response.output_text.delta",
+          "delta": " **"
+        },
+        {
+          "at_ms": 5212.81,
+          "type": "response.output_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 5230.17,
+          "type": "response.output_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 5247.54,
+          "type": "response.output_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 5264.87,
+          "type": "response.output_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 5282.23,
+          "type": "response.output_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 5299.6,
+          "type": "response.output_text.delta",
+          "delta": "**"
+        },
+        {
+          "at_ms": 5317.0,
+          "type": "response.output_text.delta",
+          "delta": " ("
+        },
+        {
+          "at_ms": 5334.45,
+          "type": "response.output_text.delta",
+          "delta": "calculated"
+        },
+        {
+          "at_ms": 5351.88,
+          "type": "response.output_text.delta",
+          "delta": " as"
+        },
+        {
+          "at_ms": 5386.93,
+          "type": "response.output_text.delta",
+          "delta": " 1"
+        },
+        {
+          "at_ms": 5404.38,
+          "type": "response.output_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 5421.77,
+          "type": "response.output_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 5439.21,
+          "type": "response.output_text.delta",
+          "delta": " ×"
+        },
+        {
+          "at_ms": 5473.97,
+          "type": "response.output_text.delta",
+          "delta": " 2"
+        },
+        {
+          "at_ms": 5491.32,
+          "type": "response.output_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 5508.79,
+          "type": "response.output_text.delta",
+          "delta": " ="
+        },
+        {
+          "at_ms": 5543.59,
+          "type": "response.output_text.delta",
+          "delta": " 3"
+        },
+        {
+          "at_ms": 5560.95,
+          "type": "response.output_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 5578.59,
+          "type": "response.output_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 5596.11,
+          "type": "response.output_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 5614.52,
+          "type": "response.output_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 5630.98,
+          "type": "response.output_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 5648.41,
+          "type": "response.output_text.delta",
+          "delta": " verified"
+        },
+        {
+          "at_ms": 5665.81,
+          "type": "response.output_text.delta",
+          "delta": " by"
+        },
+        {
+          "at_ms": 5683.23,
+          "type": "response.output_text.delta",
+          "delta": " breaking"
+        },
+        {
+          "at_ms": 5700.67,
+          "type": "response.output_text.delta",
+          "delta": " it"
+        },
+        {
+          "at_ms": 5718.07,
+          "type": "response.output_text.delta",
+          "delta": " into"
+        },
+        {
+          "at_ms": 5752.9,
+          "type": "response.output_text.delta",
+          "delta": " 1"
+        },
+        {
+          "at_ms": 5770.31,
+          "type": "response.output_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 5787.52,
+          "type": "response.output_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 5787.68,
+          "type": "response.output_text.delta",
+          "delta": "×"
+        },
+        {
+          "at_ms": 5787.78,
+          "type": "response.output_text.done",
+          "delta": ""
+        },
+        {
+          "at_ms": 5787.8,
+          "type": "response.content_part.done",
+          "delta": ""
+        },
+        {
+          "at_ms": 5787.99,
+          "type": "response.output_item.done",
+          "delta": ""
+        },
+        {
+          "at_ms": 5788.03,
+          "type": "response.incomplete",
+          "delta": ""
+        }
+      ]
+    },
+    {
+      "label": "on",
+      "explicit_enable_thinking": true,
+      "payload": {
+        "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+        "input": "[LAG-S21-AUTO-AB] Privately calculate 143 times 27 and double-check it. Then answer in one sentence.",
+        "stream": true,
+        "store": false,
+        "temperature": 0.0,
+        "max_output_tokens": 256,
+        "cache_salt": "on",
+        "enable_thinking": true,
+        "chat_template_kwargs": {
+          "enable_thinking": true
+        }
+      },
+      "status": 200,
+      "reasoning": "Okay, let me calculate 143 times 27. Hmm, I need to do this step by step. First, maybe break down 27 into 20 and 7. So, 143 times 20 is... 143 multiplied by 20. Let me think, 143 times 2 is 286, so adding a zero makes it 2860. Then 143 times 7. Let me calculate that. 143 times 7: 140 times 7 is 980, and 3 times 7 is 21, so 980 plus 21 is 1001. So adding those two results together: 2860 plus 1001. Let me add them. 2860 + 1000 is 3860, then plus 1 more is 3861. Wait, so 143 times 27 should be 3861. Let me double-check that. Maybe another way: 143 times 27. Let me try multiplying 143 by ",
+      "visible": "The product of 143 and 27 is **3,861** (calculated as 143 × 27 = 3,861, verified by breaking it into 143×",
+      "reasoning_delta_count": 256,
+      "content_delta_count": 42,
+      "reasoning_sha256": "e409e0dca07035b9c1e07c493c7acd81cb1ce6a36fd8899a476706b9ef86ef98",
+      "visible_sha256": "1ca72acfd59e077883685d674854ca49f8f5df8d4dbb817288602b85acf07621",
+      "terminal": [
+        "response.incomplete"
+      ],
+      "timeline": [
+        {
+          "at_ms": 2.68,
+          "type": "response.created",
+          "delta": ""
+        },
+        {
+          "at_ms": 2.7,
+          "type": "response.output_item.added",
+          "delta": ""
+        },
+        {
+          "at_ms": 2.71,
+          "type": "response.content_part.added",
+          "delta": ""
+        },
+        {
+          "at_ms": 230.37,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "Okay"
+        },
+        {
+          "at_ms": 247.74,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 265.34,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " let"
+        },
+        {
+          "at_ms": 282.8,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " me"
+        },
+        {
+          "at_ms": 300.09,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " calculate"
+        },
+        {
+          "at_ms": 317.55,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 334.91,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 352.29,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 369.78,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 387.07,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " times"
+        },
+        {
+          "at_ms": 404.86,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 422.54,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 440.26,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 458.16,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 475.9,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Hmm"
+        },
+        {
+          "at_ms": 493.37,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 510.83,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " I"
+        },
+        {
+          "at_ms": 528.32,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " need"
+        },
+        {
+          "at_ms": 545.82,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " to"
+        },
+        {
+          "at_ms": 563.32,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " do"
+        },
+        {
+          "at_ms": 580.68,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " this"
+        },
+        {
+          "at_ms": 598.17,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " step"
+        },
+        {
+          "at_ms": 615.66,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " by"
+        },
+        {
+          "at_ms": 633.07,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " step"
+        },
+        {
+          "at_ms": 650.49,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 667.82,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " First"
+        },
+        {
+          "at_ms": 685.29,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 702.63,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " maybe"
+        },
+        {
+          "at_ms": 719.99,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " break"
+        },
+        {
+          "at_ms": 737.34,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " down"
+        },
+        {
+          "at_ms": 754.75,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 772.22,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 789.69,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 807.2,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " into"
+        },
+        {
+          "at_ms": 824.64,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 842.11,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 859.52,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 876.95,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_ms": 894.37,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 911.8,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 995.78,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 995.99,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " So"
+        },
+        {
+          "at_ms": 1023.57,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 1041.12,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1058.56,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 1075.96,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 1093.39,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 1110.8,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " times"
+        },
+        {
+          "at_ms": 1128.21,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1145.7,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 1163.16,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 1180.56,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_ms": 1198.02,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "..."
+        },
+        {
+          "at_ms": 1215.55,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1232.96,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 1250.69,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 1268.15,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 1285.62,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " multiplied"
+        },
+        {
+          "at_ms": 1303.05,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " by"
+        },
+        {
+          "at_ms": 1320.45,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1337.85,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 1355.31,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 1372.73,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 1390.35,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Let"
+        },
+        {
+          "at_ms": 1407.81,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " me"
+        },
+        {
+          "at_ms": 1425.32,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " think"
+        },
+        {
+          "at_ms": 1442.75,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 1460.15,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1477.61,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 1495.12,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 1512.59,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 1530.09,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " times"
+        },
+        {
+          "at_ms": 1547.59,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1565.01,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 1582.51,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_ms": 1600.02,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1617.37,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 1634.89,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 1652.31,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 1669.79,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 1687.24,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " so"
+        },
+        {
+          "at_ms": 1704.61,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " adding"
+        },
+        {
+          "at_ms": 1732.31,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " a"
+        },
+        {
+          "at_ms": 1749.85,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " zero"
+        },
+        {
+          "at_ms": 1767.36,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " makes"
+        },
+        {
+          "at_ms": 1784.96,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " it"
+        },
+        {
+          "at_ms": 1802.5,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1820.02,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 1837.52,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 1855.05,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 1872.64,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 1890.18,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 1907.7,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Then"
+        },
+        {
+          "at_ms": 1925.16,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1942.68,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 1960.21,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 1977.74,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 1995.17,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " times"
+        },
+        {
+          "at_ms": 2012.68,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2030.14,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 2047.61,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 2065.09,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Let"
+        },
+        {
+          "at_ms": 2082.71,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " me"
+        },
+        {
+          "at_ms": 2100.22,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " calculate"
+        },
+        {
+          "at_ms": 2117.76,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " that"
+        },
+        {
+          "at_ms": 2135.28,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 2152.83,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2170.3,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 2187.83,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 2205.35,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 2222.9,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " times"
+        },
+        {
+          "at_ms": 2240.54,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2258.09,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 2275.7,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_ms": 2293.39,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2311.24,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 2329.19,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 2347.3,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 2365.04,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " times"
+        },
+        {
+          "at_ms": 2382.59,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2400.34,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 2418.02,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_ms": 2435.63,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2453.17,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "9"
+        },
+        {
+          "at_ms": 2470.72,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 2488.3,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 2505.87,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 2523.39,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_ms": 2541.07,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2558.69,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 2576.32,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " times"
+        },
+        {
+          "at_ms": 2593.82,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2611.35,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 2628.85,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_ms": 2646.35,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2663.82,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 2681.35,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 2698.9,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 2716.4,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " so"
+        },
+        {
+          "at_ms": 2734.04,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2751.86,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "9"
+        },
+        {
+          "at_ms": 2769.26,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 2786.77,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 2804.28,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " plus"
+        },
+        {
+          "at_ms": 2821.79,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2839.37,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 2857.07,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 2874.65,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_ms": 2892.16,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 2909.71,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 2927.21,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 2944.76,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 2962.36,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 2979.85,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 2997.39,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " So"
+        },
+        {
+          "at_ms": 3015.05,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " adding"
+        },
+        {
+          "at_ms": 3032.68,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " those"
+        },
+        {
+          "at_ms": 3050.18,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " two"
+        },
+        {
+          "at_ms": 3067.75,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " results"
+        },
+        {
+          "at_ms": 3085.37,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " together"
+        },
+        {
+          "at_ms": 3102.89,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_ms": 3120.45,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 3137.98,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 3155.54,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 3173.18,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 3190.9,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 3208.45,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " plus"
+        },
+        {
+          "at_ms": 3226.08,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 3243.67,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 3261.18,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 3278.77,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 3296.33,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 3313.9,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 3331.45,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Let"
+        },
+        {
+          "at_ms": 3349.31,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " me"
+        },
+        {
+          "at_ms": 3366.98,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " add"
+        },
+        {
+          "at_ms": 3384.6,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " them"
+        },
+        {
+          "at_ms": 3402.19,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 3419.72,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 3437.32,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 3454.85,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 3472.42,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 3490.04,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 3507.77,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " +"
+        },
+        {
+          "at_ms": 3525.82,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 3543.46,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 3561.12,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 3578.71,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 3596.37,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 3613.9,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_ms": 3631.55,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 3649.35,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 3666.92,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 3684.53,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 3702.09,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 3719.7,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 3737.58,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " then"
+        },
+        {
+          "at_ms": 3754.92,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " plus"
+        },
+        {
+          "at_ms": 3772.58,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 3790.16,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 3807.89,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " more"
+        },
+        {
+          "at_ms": 3825.48,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_ms": 3843.09,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 3860.69,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 3878.3,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 3895.9,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 3913.53,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 3931.04,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 3948.89,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Wait"
+        },
+        {
+          "at_ms": 3966.51,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 3984.12,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " so"
+        },
+        {
+          "at_ms": 4001.81,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 4019.36,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 4036.96,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 4054.69,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 4072.36,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " times"
+        },
+        {
+          "at_ms": 4089.93,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 4107.67,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 4125.28,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 4142.92,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " should"
+        },
+        {
+          "at_ms": 4160.57,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " be"
+        },
+        {
+          "at_ms": 4178.15,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 4195.79,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 4213.38,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 4230.97,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 4248.81,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 4266.46,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 4284.19,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Let"
+        },
+        {
+          "at_ms": 4301.82,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " me"
+        },
+        {
+          "at_ms": 4319.53,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " double"
+        },
+        {
+          "at_ms": 4337.11,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "-check"
+        },
+        {
+          "at_ms": 4354.77,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " that"
+        },
+        {
+          "at_ms": 4372.49,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 4390.17,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Maybe"
+        },
+        {
+          "at_ms": 4407.95,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " another"
+        },
+        {
+          "at_ms": 4425.82,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " way"
+        },
+        {
+          "at_ms": 4443.55,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": ":"
+        },
+        {
+          "at_ms": 4461.33,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 4478.93,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 4496.58,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 4514.35,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 4532.22,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " times"
+        },
+        {
+          "at_ms": 4549.9,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 4567.6,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 4585.34,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 4603.01,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "."
+        },
+        {
+          "at_ms": 4620.68,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " Let"
+        },
+        {
+          "at_ms": 4638.32,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " me"
+        },
+        {
+          "at_ms": 4656.0,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " try"
+        },
+        {
+          "at_ms": 4673.86,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " multiplying"
+        },
+        {
+          "at_ms": 4691.51,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 4709.12,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 4726.81,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 4744.52,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 4763.56,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " by"
+        },
+        {
+          "at_ms": 4763.72,
+          "type": "response.reasoning_summary_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 4763.98,
+          "type": "response.reasoning_summary_text.done",
+          "delta": ""
+        },
+        {
+          "at_ms": 4991.79,
+          "type": "response.output_text.delta",
+          "delta": "The"
+        },
+        {
+          "at_ms": 5009.18,
+          "type": "response.output_text.delta",
+          "delta": " product"
+        },
+        {
+          "at_ms": 5026.6,
+          "type": "response.output_text.delta",
+          "delta": " of"
+        },
+        {
+          "at_ms": 5061.59,
+          "type": "response.output_text.delta",
+          "delta": " 1"
+        },
+        {
+          "at_ms": 5078.96,
+          "type": "response.output_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 5096.42,
+          "type": "response.output_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 5113.81,
+          "type": "response.output_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_ms": 5148.86,
+          "type": "response.output_text.delta",
+          "delta": " 2"
+        },
+        {
+          "at_ms": 5166.32,
+          "type": "response.output_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 5183.7,
+          "type": "response.output_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_ms": 5200.99,
+          "type": "response.output_text.delta",
+          "delta": " **"
+        },
+        {
+          "at_ms": 5218.44,
+          "type": "response.output_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 5235.9,
+          "type": "response.output_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 5253.29,
+          "type": "response.output_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 5270.73,
+          "type": "response.output_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 5288.07,
+          "type": "response.output_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 5305.56,
+          "type": "response.output_text.delta",
+          "delta": "**"
+        },
+        {
+          "at_ms": 5323.04,
+          "type": "response.output_text.delta",
+          "delta": " ("
+        },
+        {
+          "at_ms": 5340.54,
+          "type": "response.output_text.delta",
+          "delta": "calculated"
+        },
+        {
+          "at_ms": 5357.98,
+          "type": "response.output_text.delta",
+          "delta": " as"
+        },
+        {
+          "at_ms": 5392.82,
+          "type": "response.output_text.delta",
+          "delta": " 1"
+        },
+        {
+          "at_ms": 5410.23,
+          "type": "response.output_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 5427.61,
+          "type": "response.output_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 5445.07,
+          "type": "response.output_text.delta",
+          "delta": " ×"
+        },
+        {
+          "at_ms": 5480.13,
+          "type": "response.output_text.delta",
+          "delta": " 2"
+        },
+        {
+          "at_ms": 5497.47,
+          "type": "response.output_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 5514.99,
+          "type": "response.output_text.delta",
+          "delta": " ="
+        },
+        {
+          "at_ms": 5549.84,
+          "type": "response.output_text.delta",
+          "delta": " 3"
+        },
+        {
+          "at_ms": 5567.36,
+          "type": "response.output_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 5584.73,
+          "type": "response.output_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 5602.11,
+          "type": "response.output_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 5619.45,
+          "type": "response.output_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 5636.86,
+          "type": "response.output_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 5654.25,
+          "type": "response.output_text.delta",
+          "delta": " verified"
+        },
+        {
+          "at_ms": 5671.68,
+          "type": "response.output_text.delta",
+          "delta": " by"
+        },
+        {
+          "at_ms": 5689.11,
+          "type": "response.output_text.delta",
+          "delta": " breaking"
+        },
+        {
+          "at_ms": 5706.5,
+          "type": "response.output_text.delta",
+          "delta": " it"
+        },
+        {
+          "at_ms": 5723.97,
+          "type": "response.output_text.delta",
+          "delta": " into"
+        },
+        {
+          "at_ms": 5758.77,
+          "type": "response.output_text.delta",
+          "delta": " 1"
+        },
+        {
+          "at_ms": 5776.2,
+          "type": "response.output_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 5793.35,
+          "type": "response.output_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 5793.53,
+          "type": "response.output_text.delta",
+          "delta": "×"
+        },
+        {
+          "at_ms": 5793.64,
+          "type": "response.output_text.done",
+          "delta": ""
+        },
+        {
+          "at_ms": 5793.66,
+          "type": "response.content_part.done",
+          "delta": ""
+        },
+        {
+          "at_ms": 5793.84,
+          "type": "response.output_item.done",
+          "delta": ""
+        },
+        {
+          "at_ms": 5793.92,
+          "type": "response.incomplete",
+          "delta": ""
+        }
+      ]
+    },
+    {
+      "label": "off",
+      "explicit_enable_thinking": false,
+      "payload": {
+        "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+        "input": "[LAG-S21-AUTO-AB] Privately calculate 143 times 27 and double-check it. Then answer in one sentence.",
+        "stream": true,
+        "store": false,
+        "temperature": 0.0,
+        "max_output_tokens": 256,
+        "cache_salt": "off",
+        "enable_thinking": false,
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "status": 200,
+      "reasoning": "",
+      "visible": "The product of 143 and 27 is **3,861** (calculated as 143 × 27 = 3,861, verified by breaking it into 143×20 + 143×7 = 2,860 + 1,001 = 3,861).",
+      "reasoning_delta_count": 0,
+      "content_delta_count": 79,
+      "reasoning_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "visible_sha256": "97df5a2cf5699df77ddb53ef3bf0c2be6654c5dac9ab690483cb02957294b705",
+      "terminal": [
+        "response.completed"
+      ],
+      "timeline": [
+        {
+          "at_ms": 2.9,
+          "type": "response.created",
+          "delta": ""
+        },
+        {
+          "at_ms": 2.91,
+          "type": "response.output_item.added",
+          "delta": ""
+        },
+        {
+          "at_ms": 2.92,
+          "type": "response.content_part.added",
+          "delta": ""
+        },
+        {
+          "at_ms": 230.48,
+          "type": "response.output_text.delta",
+          "delta": "The"
+        },
+        {
+          "at_ms": 247.94,
+          "type": "response.output_text.delta",
+          "delta": " product"
+        },
+        {
+          "at_ms": 265.48,
+          "type": "response.output_text.delta",
+          "delta": " of"
+        },
+        {
+          "at_ms": 282.91,
+          "type": "response.output_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 300.35,
+          "type": "response.output_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 317.8,
+          "type": "response.output_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 335.24,
+          "type": "response.output_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 352.75,
+          "type": "response.output_text.delta",
+          "delta": " and"
+        },
+        {
+          "at_ms": 370.15,
+          "type": "response.output_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 387.65,
+          "type": "response.output_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 405.13,
+          "type": "response.output_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 422.58,
+          "type": "response.output_text.delta",
+          "delta": " is"
+        },
+        {
+          "at_ms": 440.04,
+          "type": "response.output_text.delta",
+          "delta": " **"
+        },
+        {
+          "at_ms": 457.42,
+          "type": "response.output_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 474.85,
+          "type": "response.output_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 492.21,
+          "type": "response.output_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 509.64,
+          "type": "response.output_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 527.06,
+          "type": "response.output_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 544.54,
+          "type": "response.output_text.delta",
+          "delta": "**"
+        },
+        {
+          "at_ms": 562.05,
+          "type": "response.output_text.delta",
+          "delta": " ("
+        },
+        {
+          "at_ms": 579.63,
+          "type": "response.output_text.delta",
+          "delta": "calculated"
+        },
+        {
+          "at_ms": 597.15,
+          "type": "response.output_text.delta",
+          "delta": " as"
+        },
+        {
+          "at_ms": 614.64,
+          "type": "response.output_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 632.12,
+          "type": "response.output_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 649.65,
+          "type": "response.output_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 667.05,
+          "type": "response.output_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 684.87,
+          "type": "response.output_text.delta",
+          "delta": " ×"
+        },
+        {
+          "at_ms": 702.37,
+          "type": "response.output_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 719.89,
+          "type": "response.output_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 737.37,
+          "type": "response.output_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 754.83,
+          "type": "response.output_text.delta",
+          "delta": " ="
+        },
+        {
+          "at_ms": 772.3,
+          "type": "response.output_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 789.93,
+          "type": "response.output_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 807.53,
+          "type": "response.output_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 825.12,
+          "type": "response.output_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 842.68,
+          "type": "response.output_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 860.15,
+          "type": "response.output_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 877.57,
+          "type": "response.output_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 895.01,
+          "type": "response.output_text.delta",
+          "delta": " verified"
+        },
+        {
+          "at_ms": 912.44,
+          "type": "response.output_text.delta",
+          "delta": " by"
+        },
+        {
+          "at_ms": 938.44,
+          "type": "response.output_text.delta",
+          "delta": " breaking"
+        },
+        {
+          "at_ms": 956.06,
+          "type": "response.output_text.delta",
+          "delta": " it"
+        },
+        {
+          "at_ms": 973.58,
+          "type": "response.output_text.delta",
+          "delta": " into"
+        },
+        {
+          "at_ms": 991.19,
+          "type": "response.output_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1008.65,
+          "type": "response.output_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 1026.1,
+          "type": "response.output_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 1043.51,
+          "type": "response.output_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 1060.88,
+          "type": "response.output_text.delta",
+          "delta": "×"
+        },
+        {
+          "at_ms": 1078.37,
+          "type": "response.output_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 1095.86,
+          "type": "response.output_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 1113.35,
+          "type": "response.output_text.delta",
+          "delta": " +"
+        },
+        {
+          "at_ms": 1130.78,
+          "type": "response.output_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1148.25,
+          "type": "response.output_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 1165.76,
+          "type": "response.output_text.delta",
+          "delta": "4"
+        },
+        {
+          "at_ms": 1183.25,
+          "type": "response.output_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 1200.81,
+          "type": "response.output_text.delta",
+          "delta": "×"
+        },
+        {
+          "at_ms": 1218.34,
+          "type": "response.output_text.delta",
+          "delta": "7"
+        },
+        {
+          "at_ms": 1235.84,
+          "type": "response.output_text.delta",
+          "delta": " ="
+        },
+        {
+          "at_ms": 1253.38,
+          "type": "response.output_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1270.87,
+          "type": "response.output_text.delta",
+          "delta": "2"
+        },
+        {
+          "at_ms": 1288.44,
+          "type": "response.output_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 1305.95,
+          "type": "response.output_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 1323.54,
+          "type": "response.output_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 1341.01,
+          "type": "response.output_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 1358.51,
+          "type": "response.output_text.delta",
+          "delta": " +"
+        },
+        {
+          "at_ms": 1375.98,
+          "type": "response.output_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1393.49,
+          "type": "response.output_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 1410.96,
+          "type": "response.output_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 1428.4,
+          "type": "response.output_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 1445.91,
+          "type": "response.output_text.delta",
+          "delta": "0"
+        },
+        {
+          "at_ms": 1463.4,
+          "type": "response.output_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 1480.89,
+          "type": "response.output_text.delta",
+          "delta": " ="
+        },
+        {
+          "at_ms": 1498.37,
+          "type": "response.output_text.delta",
+          "delta": " "
+        },
+        {
+          "at_ms": 1515.94,
+          "type": "response.output_text.delta",
+          "delta": "3"
+        },
+        {
+          "at_ms": 1533.43,
+          "type": "response.output_text.delta",
+          "delta": ","
+        },
+        {
+          "at_ms": 1550.83,
+          "type": "response.output_text.delta",
+          "delta": "8"
+        },
+        {
+          "at_ms": 1568.37,
+          "type": "response.output_text.delta",
+          "delta": "6"
+        },
+        {
+          "at_ms": 1585.91,
+          "type": "response.output_text.delta",
+          "delta": "1"
+        },
+        {
+          "at_ms": 1603.41,
+          "type": "response.output_text.delta",
+          "delta": ")."
+        },
+        {
+          "at_ms": 1622.14,
+          "type": "response.output_text.done",
+          "delta": ""
+        },
+        {
+          "at_ms": 1622.17,
+          "type": "response.content_part.done",
+          "delta": ""
+        },
+        {
+          "at_ms": 1622.26,
+          "type": "response.output_item.done",
+          "delta": ""
+        },
+        {
+          "at_ms": 1622.3,
+          "type": "response.completed",
+          "delta": ""
+        }
+      ]
+    }
+  ]
+}

@@ -4571,3 +4571,31 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   is longer multi-client/OS-network/swap stress and signed-app repetition, not
   non-stream partial-body loss. Evidence:
   `docs/internal/release-gates/20260721_gateway_nonstream_atomic_current/`.
+
+## 2026-07-21 - Laguna S-2.1 JANG_2L Auto/tool/q4 cache hierarchy
+
+- `LAGUNA-S21-AUTO-REASONING`: `VERIFIED-LIVE_SCOPED`. Bundle-stamped Auto
+  resolves thinking On. A deterministic raw Auto/explicit-On A/B emitted
+  byte-identical reasoning and content streams, while explicit Off emitted no
+  reasoning. The real Electron Auto row painted a Thinking rail, persisted
+  1,724 reasoning characters separately, and completed a non-empty final.
+- `LAGUNA-S21-TOOL-LOOP`: `VERIFIED-LIVE_SCOPED`. The real Electron Responses
+  route executed one `file_info(panel/package.json)` and exact-finaled the
+  5.2 KB result. Raw Responses emitted progressive tool arguments, one call,
+  then a `previous_response_id` result continuation with 16 progressive
+  content deltas, no repeated call, and one completed terminal.
+- `LAGUNA-S21-TQ4-HIERARCHY`: `VERIFIED-LIVE_SCOPED`. Auto storage is q4 only
+  for the 12 full-attention KV layers; 36 SWA layers retain native rotating
+  state. Electron cold/warm rows reused 320/334 tokens in five 64-token blocks.
+  Restart restored the same prefix from SSD as `paged+disk+tq-native`.
+  A seven-usable-block pressure run caused real L1 eviction and recovered the
+  original prefix from L2. Paged Off plus L2 On then restored the same prefix
+  as `block-disk+tq-native` with zero resident cache bytes. Paged On/1000 was
+  restored in the final PID.
+- Retained negative controls: one explicit-On turn added unwanted visible text;
+  one stochastic Auto turn closed an empty think rail and self-corrected; the
+  deliberately capped raw Auto/On A/B ended `response.incomplete`. None is
+  hidden or rewritten.
+- S-2.1 JANG_4M, Chat/Anthropic/Ollama tool continuations, long-context SWA
+  boundary quality, and performance remain open. Evidence:
+  `docs/internal/release-gates/20260721_laguna_s21_jang2l_cache_reasoning/`.

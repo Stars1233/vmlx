@@ -1,0 +1,460 @@
+{
+  "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+  "expected": "LAG-S21-RESP-TOOL-DONE SIZE=5.2 KB",
+  "tool_output": "Path: panel/package.json\nType: file\nSize: 5.2 KB\nModified: 1784557845134779575\nPermissions: 0644",
+  "checks": {
+    "round1_status_200": true,
+    "round1_exactly_one_tool": true,
+    "round1_tool_name": true,
+    "round1_exact_arguments": true,
+    "round1_no_visible_prose": true,
+    "round1_terminal": true,
+    "round1_response_id": true,
+    "round2_status_200": true,
+    "round2_no_tool_calls": true,
+    "round2_visible_exact": true,
+    "round2_content_progressive": true,
+    "round2_terminal": true,
+    "previous_response_id_used": true
+  },
+  "round1_payload": {
+    "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+    "input": "[LAG-S21-RESP-TOOL-1] Call file_info exactly once with path panel/package.json. You must use the tool and must not answer from memory. Do not emit prose before the call.",
+    "store": true,
+    "stream": true,
+    "max_output_tokens": 512,
+    "temperature": 0.0,
+    "enable_thinking": false,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "tools": [
+      {
+        "type": "function",
+        "name": "file_info",
+        "description": "Return file metadata for one path.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "path"
+          ],
+          "additionalProperties": false
+        }
+      }
+    ],
+    "tool_choice": "required"
+  },
+  "round1": {
+    "status": 200,
+    "events": [
+      {
+        "at_ms": 12.74,
+        "event": "response.created"
+      },
+      {
+        "at_ms": 12.89,
+        "event": "response.output_item.added"
+      },
+      {
+        "at_ms": 12.95,
+        "event": "response.content_part.added"
+      },
+      {
+        "at_ms": 430.04,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 447.99,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 466.36,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 484.0,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 502.07,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 520.13,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 538.24,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 556.3,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 574.7,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 592.36,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 610.46,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 628.43,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 646.57,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 664.72,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 682.83,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 701.15,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 719.12,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 737.06,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 755.01,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 773.4,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 792.25,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 810.15,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 828.25,
+        "event": "response.heartbeat"
+      },
+      {
+        "at_ms": 846.98,
+        "event": "response.output_text.done"
+      },
+      {
+        "at_ms": 847.01,
+        "event": "response.content_part.done"
+      },
+      {
+        "at_ms": 847.1,
+        "event": "response.output_item.done"
+      },
+      {
+        "at_ms": 847.12,
+        "event": "response.output_item.added"
+      },
+      {
+        "at_ms": 847.18,
+        "event": "response.function_call_arguments.delta"
+      },
+      {
+        "at_ms": 847.21,
+        "event": "response.function_call_arguments.delta"
+      },
+      {
+        "at_ms": 847.29,
+        "event": "response.function_call_arguments.done"
+      },
+      {
+        "at_ms": 847.32,
+        "event": "response.output_item.done"
+      },
+      {
+        "at_ms": 847.39,
+        "event": "response.completed"
+      }
+    ],
+    "content_deltas": [],
+    "reasoning_deltas": [],
+    "argument_deltas": [
+      "{\"path\": \"panel/",
+      "package.json\"}"
+    ],
+    "terminals": [
+      "response.completed"
+    ],
+    "response_id": "resp_524b6f1a2e6d",
+    "completed_response": {
+      "id": "resp_524b6f1a2e6d",
+      "object": "response",
+      "created_at": 1784674303,
+      "status": "completed",
+      "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+      "output_text": "",
+      "output": [
+        {
+          "id": "item_2c4afbff959d",
+          "type": "message",
+          "status": "completed",
+          "role": "assistant",
+          "content": [
+            {
+              "type": "output_text",
+              "text": "",
+              "annotations": []
+            }
+          ]
+        },
+        {
+          "id": "fc_0399d237b199",
+          "type": "function_call",
+          "status": "completed",
+          "call_id": "call_3ee10b37",
+          "name": "file_info",
+          "arguments": "{\"path\": \"panel/package.json\"}"
+        }
+      ],
+      "usage": {
+        "input_tokens": 179,
+        "output_tokens": 24,
+        "total_tokens": 203,
+        "input_tokens_details": {
+          "cached_tokens": 64,
+          "cache_detail": "paged+tq-native"
+        }
+      }
+    },
+    "elapsed_ms": 847.47,
+    "visible": "",
+    "reasoning": "",
+    "function_calls": [
+      {
+        "id": "fc_0399d237b199",
+        "type": "function_call",
+        "status": "completed",
+        "call_id": "call_3ee10b37",
+        "name": "file_info",
+        "arguments": "{\"path\": \"panel/package.json\"}"
+      }
+    ]
+  },
+  "round2_payload": {
+    "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+    "previous_response_id": "resp_524b6f1a2e6d",
+    "input": [
+      {
+        "type": "function_call_output",
+        "call_id": "call_3ee10b37",
+        "output": "Path: panel/package.json\nType: file\nSize: 5.2 KB\nModified: 1784557845134779575\nPermissions: 0644"
+      },
+      {
+        "role": "user",
+        "content": "The tool result is complete. Do not call another tool. Reply exactly LAG-S21-RESP-TOOL-DONE SIZE=5.2 KB and nothing else."
+      }
+    ],
+    "store": true,
+    "stream": true,
+    "max_output_tokens": 512,
+    "temperature": 0.0,
+    "enable_thinking": false,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "tools": [
+      {
+        "type": "function",
+        "name": "file_info",
+        "description": "Return file metadata for one path.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "path"
+          ],
+          "additionalProperties": false
+        }
+      }
+    ],
+    "tool_choice": "auto"
+  },
+  "round2": {
+    "status": 200,
+    "events": [
+      {
+        "at_ms": 2.96,
+        "event": "response.created"
+      },
+      {
+        "at_ms": 2.97,
+        "event": "response.output_item.added"
+      },
+      {
+        "at_ms": 2.98,
+        "event": "response.content_part.added"
+      },
+      {
+        "at_ms": 935.42,
+        "event": "response.output_text.delta"
+      },
+      {
+        "at_ms": 953.66,
+        "event": "response.output_text.delta"
+      },
+      {
+        "at_ms": 971.86,
+        "event": "response.output_text.delta"
+      },
+      {
+        "at_ms": 989.91,
+        "event": "response.output_text.delta"
+      },
+      {
+        "at_ms": 1008.14,
+        "event": "response.output_text.delta"
+      },
+      {
+        "at_ms": 1026.41,
+        "event": "response.output_text.delta"
+      },
+      {
+        "at_ms": 1044.62,
+        "event": "response.output_text.delta"
+      },
+      {
+        "at_ms": 1063.02,
+        "event": "response.output_text.delta"
+      },
+      {
+        "at_ms": 1081.27,
+        "event": "response.output_text.delta"
+      },
+      {
+        "at_ms": 1098.94,
+        "event": "response.output_text.delta"
+      },
+      {
+        "at_ms": 1116.61,
+        "event": "response.output_text.delta"
+      },
+      {
+        "at_ms": 1134.27,
+        "event": "response.output_text.delta"
+      },
+      {
+        "at_ms": 1151.92,
+        "event": "response.output_text.delta"
+      },
+      {
+        "at_ms": 1169.75,
+        "event": "response.output_text.delta"
+      },
+      {
+        "at_ms": 1187.65,
+        "event": "response.output_text.delta"
+      },
+      {
+        "at_ms": 1205.36,
+        "event": "response.output_text.delta"
+      },
+      {
+        "at_ms": 1227.01,
+        "event": "response.output_text.done"
+      },
+      {
+        "at_ms": 1227.04,
+        "event": "response.content_part.done"
+      },
+      {
+        "at_ms": 1227.15,
+        "event": "response.output_item.done"
+      },
+      {
+        "at_ms": 1227.18,
+        "event": "response.completed"
+      }
+    ],
+    "content_deltas": [
+      "LAG",
+      "-S",
+      "2",
+      "1",
+      "-RE",
+      "SP",
+      "-",
+      "TOOL",
+      "-D",
+      "ONE",
+      " SIZE",
+      "=",
+      "5",
+      ".",
+      "2",
+      " KB"
+    ],
+    "reasoning_deltas": [],
+    "argument_deltas": [],
+    "terminals": [
+      "response.completed"
+    ],
+    "response_id": "resp_2ca7ba8057c3",
+    "completed_response": {
+      "id": "resp_2ca7ba8057c3",
+      "object": "response",
+      "created_at": 1784674304,
+      "status": "completed",
+      "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+      "output_text": "LAG-S21-RESP-TOOL-DONE SIZE=5.2 KB",
+      "output": [
+        {
+          "id": "item_abdef33e21d8",
+          "type": "message",
+          "status": "completed",
+          "role": "assistant",
+          "content": [
+            {
+              "type": "output_text",
+              "text": "LAG-S21-RESP-TOOL-DONE SIZE=5.2 KB",
+              "annotations": []
+            }
+          ]
+        }
+      ],
+      "usage": {
+        "input_tokens": 303,
+        "output_tokens": 17,
+        "total_tokens": 320,
+        "input_tokens_details": {
+          "cached_tokens": 178,
+          "cache_detail": "paged+tq-native"
+        }
+      }
+    },
+    "elapsed_ms": 1227.33,
+    "visible": "LAG-S21-RESP-TOOL-DONE SIZE=5.2 KB",
+    "reasoning": "",
+    "function_calls": []
+  }
+}
