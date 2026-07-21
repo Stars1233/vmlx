@@ -1,0 +1,323 @@
+{
+  "omitted": {
+    "label": "OMITTED",
+    "request": {
+      "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+      "input": "Reply exactly Q27-RAW-OMITTED-DONE and nothing else.",
+      "stream": true,
+      "max_output_tokens": 96,
+      "enable_thinking": false
+    },
+    "elapsed_ms": 892.325,
+    "content": "Q27-RAW-OMITTED-DONE",
+    "content_delta_count": 8,
+    "reasoning_delta_count": 0,
+    "terminals": [
+      "response.completed"
+    ],
+    "exact": true,
+    "events": [
+      {
+        "type": "response.created",
+        "delta": null,
+        "text": null,
+        "response": null,
+        "ms": 13.54
+      },
+      {
+        "type": "response.output_item.added",
+        "delta": null,
+        "text": null,
+        "response": null,
+        "ms": 13.706
+      },
+      {
+        "type": "response.content_part.added",
+        "delta": null,
+        "text": null,
+        "response": null,
+        "ms": 13.779
+      },
+      {
+        "type": "response.output_text.delta",
+        "delta": "Q",
+        "text": null,
+        "response": null,
+        "ms": 395.463
+      },
+      {
+        "type": "response.output_text.delta",
+        "delta": "2",
+        "text": null,
+        "response": null,
+        "ms": 395.589
+      },
+      {
+        "type": "response.output_text.delta",
+        "delta": "7-",
+        "text": null,
+        "response": null,
+        "ms": 482.335
+      },
+      {
+        "type": "response.output_text.delta",
+        "delta": "RAW",
+        "text": null,
+        "response": null,
+        "ms": 566.868
+      },
+      {
+        "type": "response.output_text.delta",
+        "delta": "-",
+        "text": null,
+        "response": null,
+        "ms": 651.485
+      },
+      {
+        "type": "response.output_text.delta",
+        "delta": "OMIT",
+        "text": null,
+        "response": null,
+        "ms": 739.85
+      },
+      {
+        "type": "response.output_text.delta",
+        "delta": "TED-D",
+        "text": null,
+        "response": null,
+        "ms": 827.904
+      },
+      {
+        "type": "response.output_text.delta",
+        "delta": "ONE",
+        "text": null,
+        "response": null,
+        "ms": 891.711
+      },
+      {
+        "type": "response.output_text.done",
+        "delta": null,
+        "text": "Q27-RAW-OMITTED-DONE",
+        "response": null,
+        "ms": 891.995
+      },
+      {
+        "type": "response.content_part.done",
+        "delta": null,
+        "text": null,
+        "response": null,
+        "ms": 892.03
+      },
+      {
+        "type": "response.output_item.done",
+        "delta": null,
+        "text": null,
+        "response": null,
+        "ms": 892.16
+      },
+      {
+        "type": "response.completed",
+        "delta": null,
+        "text": null,
+        "response": {
+          "id": "resp_0ab678028fb9",
+          "object": "response",
+          "created_at": 1784616138,
+          "status": "completed",
+          "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+          "output_text": "Q27-RAW-OMITTED-DONE",
+          "output": [
+            {
+              "id": "item_4b8ad1539d0d",
+              "type": "message",
+              "status": "completed",
+              "role": "assistant",
+              "content": [
+                {
+                  "type": "output_text",
+                  "text": "Q27-RAW-OMITTED-DONE",
+                  "annotations": []
+                }
+              ]
+            }
+          ],
+          "usage": {
+            "input_tokens": 22,
+            "output_tokens": 12,
+            "total_tokens": 34
+          }
+        },
+        "ms": 892.217
+      }
+    ]
+  },
+  "explicit": {
+    "label": "EXPLICIT",
+    "request": {
+      "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+      "input": "Reply exactly Q27-RAW-EXPLICIT-DONE and nothing else.",
+      "stream": true,
+      "max_output_tokens": 96,
+      "enable_thinking": false,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20
+    },
+    "elapsed_ms": 733.909,
+    "content": "Q27-RAW-EXPLICIT-DONE",
+    "content_delta_count": 10,
+    "reasoning_delta_count": 0,
+    "terminals": [
+      "response.completed"
+    ],
+    "exact": true,
+    "events": [
+      {
+        "type": "response.created",
+        "delta": null,
+        "text": null,
+        "response": null,
+        "ms": 2.634
+      },
+      {
+        "type": "response.output_item.added",
+        "delta": null,
+        "text": null,
+        "response": null,
+        "ms": 2.652
+      },
+      {
+        "type": "response.content_part.added",
+        "delta": null,
+        "text": null,
+        "response": null,
+        "ms": 2.664
+      },
+      {
+        "type": "response.output_text.delta",
+        "delta": "Q",
+        "text": null,
+        "response": null,
+        "ms": 437.687
+      },
+      {
+        "type": "response.output_text.delta",
+        "delta": "2",
+        "text": null,
+        "response": null,
+        "ms": 466.23
+      },
+      {
+        "type": "response.output_text.delta",
+        "delta": "7",
+        "text": null,
+        "response": null,
+        "ms": 494.934
+      },
+      {
+        "type": "response.output_text.delta",
+        "delta": "-",
+        "text": null,
+        "response": null,
+        "ms": 523.891
+      },
+      {
+        "type": "response.output_text.delta",
+        "delta": "RAW",
+        "text": null,
+        "response": null,
+        "ms": 552.679
+      },
+      {
+        "type": "response.output_text.delta",
+        "delta": "-",
+        "text": null,
+        "response": null,
+        "ms": 581.486
+      },
+      {
+        "type": "response.output_text.delta",
+        "delta": "EX",
+        "text": null,
+        "response": null,
+        "ms": 610.359
+      },
+      {
+        "type": "response.output_text.delta",
+        "delta": "PLICIT",
+        "text": null,
+        "response": null,
+        "ms": 639.5
+      },
+      {
+        "type": "response.output_text.delta",
+        "delta": "-D",
+        "text": null,
+        "response": null,
+        "ms": 668.105
+      },
+      {
+        "type": "response.output_text.delta",
+        "delta": "ONE",
+        "text": null,
+        "response": null,
+        "ms": 696.773
+      },
+      {
+        "type": "response.output_text.done",
+        "delta": null,
+        "text": "Q27-RAW-EXPLICIT-DONE",
+        "response": null,
+        "ms": 733.605
+      },
+      {
+        "type": "response.content_part.done",
+        "delta": null,
+        "text": null,
+        "response": null,
+        "ms": 733.621
+      },
+      {
+        "type": "response.output_item.done",
+        "delta": null,
+        "text": null,
+        "response": null,
+        "ms": 733.732
+      },
+      {
+        "type": "response.completed",
+        "delta": null,
+        "text": null,
+        "response": {
+          "id": "resp_1a6c5b54e73a",
+          "object": "response",
+          "created_at": 1784616139,
+          "status": "completed",
+          "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+          "output_text": "Q27-RAW-EXPLICIT-DONE",
+          "output": [
+            {
+              "id": "item_ce93df22addc",
+              "type": "message",
+              "status": "completed",
+              "role": "assistant",
+              "content": [
+                {
+                  "type": "output_text",
+                  "text": "Q27-RAW-EXPLICIT-DONE",
+                  "annotations": []
+                }
+              ]
+            }
+          ],
+          "usage": {
+            "input_tokens": 21,
+            "output_tokens": 11,
+            "total_tokens": 32
+          }
+        },
+        "ms": 733.808
+      }
+    ]
+  }
+}

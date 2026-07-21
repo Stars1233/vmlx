@@ -1,0 +1,39 @@
+{
+  "host": "erics-m5-max.local",
+  "base_source": "3916a6cf075d4f666f81a90795b70096bfdece36",
+  "laguna": {
+    "quant_class": "JANGTQ/MXTQ",
+    "ui_ranges": [0.7, 0.9, 0, 0, 1],
+    "max_placeholder": "2048 (model default)",
+    "resolved_log": "temperature=0.7, top_p=0.9, max_tokens=2048, enable_thinking=False",
+    "electron_final": "LAGUNA-SAMPLING-INHERIT-DONE"
+  },
+  "minimax_m3": {
+    "cache_class": "native dense-KV plus MSA index-key typed cache",
+    "ui_ranges": [1, 0.95, 0, 0, 1],
+    "resolved_log": "temperature=1.0, top_p=0.95, max_tokens=16384, enable_thinking=False",
+    "electron_final": "M3-SAMPLING-INHERIT-DONE",
+    "cache_detail": "paged+disk",
+    "cached_tokens": 128
+  },
+  "qwen_mxfp_mtp": {
+    "artifact_class": "base MLX MXFP4 with preserved native MTP",
+    "bundle_ui_before_fix": [1, 0.95, 20, 0, 1],
+    "effective_runtime_before_fix": [0, 1, 0, 0, 1],
+    "effective_ui_after_fix": [0, 1, 0, 0, 1],
+    "explicit_ui_override": [1, 0.95, 20, 0, 1],
+    "reset_ui": [0, 1, 0, 0, 1],
+    "electron_inherited_final": "Q27-MXFP-SAMPLING-EFFECTIVE-POSTFIX",
+    "electron_explicit_final": "Q27-MXFP-SAMPLING-EXPLICIT-OVERRIDE",
+    "raw_omitted": {
+      "content_deltas": 8,
+      "terminal": "response.completed",
+      "resolved": [0, 1, 0, 0]
+    },
+    "raw_explicit": {
+      "content_deltas": 10,
+      "terminal": "response.completed",
+      "resolved": [1, 0.95, 20, 0]
+    }
+  }
+}

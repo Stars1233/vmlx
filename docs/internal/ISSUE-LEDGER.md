@@ -4023,3 +4023,43 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - Overall campaign and release status remain `PARTIAL`: DSV4 Auto quality,
   broader protocols/media/fault injection, other model-derived sampler visual
   rows, and signed-app repetition are not closed by this scoped gate.
+
+## 2026-07-20 - effective Chat sampling defaults under native-MTP startup policy
+
+- `CHAT-SAMPLING-NATIVE-MTP-EFFECTIVE-PARITY`: `VERIFIED-LIVE_SCOPED` after a
+  current-source repair. The Qwen3.6 27B MXFP4-MTP bundle declares stochastic
+  defaults 1.0/.95/top-k 20, but the session's default native-MTP
+  `deterministic` mode launches the server with `deterministic-defaults`, which
+  intentionally changes omitted requests to 0/1/top-k Off/min-p Off. The
+  pre-fix drawer showed bundle values while live resolved kwargs used greedy
+  values. This was a panel/effective-policy mismatch, not an artifact defect.
+- Current source applies session startup policy after bundle/model detection.
+  Both Chat Settings entry points pass the serialized session config, and the
+  renderer type contract now includes native-MTP detection. `auto`/`off` MTP
+  modes retain bundle defaults; explicit chat values keep request precedence.
+- Patched Qwen Electron proof: the visible inherited drawer is now
+  0/1/Off/Off/1, same-chat output exact-finaled with no warning and
+  `paged+ssm+tq-native`, and runtime logs resolved 0/1. A real UI override to
+  1/.95/20 exact-finaled over seven progressive states and runtime logs kept
+  1/.95/20. Real Reset returned the drawer to 0/1/Off/Off/1.
+- Raw Responses A/B independently exact-finaled: omitted values emitted eight
+  content deltas and one completed terminal at resolved 0/1; explicit values
+  emitted ten deltas and one completed terminal at resolved 1/.95/20. Native
+  MTP stayed active at depth 3; the explicit stochastic row used its rejection
+  acceptance path and accepted tokens at depths 1, 2, and 3.
+- Ordinary non-MTP-policy spot checks also pass live: Laguna JANGTQ visibly
+  matched and resolved .7/.9/max 2048; MiniMax-M3 visibly matched and resolved
+  1/.95 and restored 128 tokens from disk. DSV4 -> Laguna -> M3 -> Qwen UI
+  Starts left exactly one Qwen engine process.
+- A clean Electron/process relaunch independently retained the repair: startup
+  found the intended venv engine, the real Start button eagerly loaded Qwen
+  with `last_request_time=null`, and the fresh renderer still showed
+  0/1/Off/Off/1. The following Electron turn exposed a separate 1211-character
+  reasoning rail, 113 observed progressive UI states, and the exact non-empty
+  visible final without a warning.
+- Validation: 561 focused panel tests across five files and TypeScript
+  typecheck. Evidence:
+  `docs/internal/release-gates/20260720_sampling_effective_mtp_current/`.
+- Retain `PARTIAL`: a non-neutral repetition-penalty artifact, sampling A/B on
+  Chat/Anthropic/Ollama, signed-app repetition, and the remaining catalog are
+  not closed by this representative gate.
