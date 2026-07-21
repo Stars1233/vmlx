@@ -1,0 +1,490 @@
+diff --git a/panel/src/main/api-gateway.ts b/panel/src/main/api-gateway.ts
+index 906eaa434..c877269df 100644
+--- a/panel/src/main/api-gateway.ts
++++ b/panel/src/main/api-gateway.ts
+@@ -47,7 +47,12 @@ interface ResolvedSession {
+ type PreparedSession =
+   | { status: "ready"; session: ResolvedSession }
+   | { status: "unload_failed"; session: ResolvedSession }
+-  | { status: "load_failed"; session: ResolvedSession };
++  | {
++      status: "load_failed";
++      session: ResolvedSession;
++      code: "model_preflight_failed" | "model_load_timeout";
++      message: string;
++    };
+
+ type ProxyStreamProtocol = "openai" | "responses" | "anthropic" | "ollama";
+
+@@ -845,9 +850,9 @@ export class ApiGateway extends EventEmitter {
+     if (prepared.status === "load_failed") {
+       return this.sendJson(res, 503, {
+         error: {
+-          message: `Model '${session.modelName}' failed to load within ${JIT_TIMEOUT_MS / 1000}s`,
++          message: prepared.message,
+           type: "server_error",
+-          code: "model_load_timeout",
++          code: prepared.code,
+         },
+         retry_after: 30,
+       });
+@@ -1043,11 +1048,70 @@ export class ApiGateway extends EventEmitter {
+     }
+   }
+
++  private getSingleModelRollbackCandidate(
++    targetSessionId: string,
++  ): ResolvedSession | undefined {
++    if (!this.singleModelMode) return undefined;
++    const candidates = db
++      .getSessions()
++      .filter(
++        (candidate: any) =>
++          candidate.id !== targetSessionId &&
++          candidate.type !== "remote" &&
++          ["running", "standby"].includes(candidate.status),
++      )
++      .map((candidate: any) => this.getResolvedSessionById(candidate.id))
++      .filter((candidate): candidate is ResolvedSession => Boolean(candidate));
++    return (
++      candidates.find((candidate) => candidate.status === "running") ||
++      candidates.find((candidate) => candidate.status === "standby")
++    );
++  }
++
++  private async restoreDisplacedSingleModel(
++    candidate: ResolvedSession | undefined,
++    failedTargetId: string,
++  ): Promise<void> {
++    if (!candidate) return;
++    try {
++      console.warn(
++        `[gateway] target ${failedTargetId} failed to load; restoring displaced session ${candidate.id}`,
++      );
++      await sessionManager.startSession(candidate.id);
++      console.log(
++        `[gateway] restored displaced session ${candidate.id} after target ${failedTargetId} failed`,
++      );
++    } catch (error) {
++      console.error(
++        `[gateway] failed to restore displaced session ${candidate.id} after target ${failedTargetId}: ${error}`,
++      );
++    }
++  }
++
+   private async prepareSessionForRouting(
+     session: ResolvedSession,
+   ): Promise<PreparedSession> {
+     return this.withSingleModelTransition(async () => {
+       const target = this.getResolvedSessionById(session.id) || session;
++      try {
++        // A stale/malformed target must fail before Single Model mode unloads
++        // the currently healthy engine. The session manager repeats this same
++        // shared validation at spawn time to cover filesystem races.
++        sessionManager.preflightSessionStart(target.id);
++      } catch (error) {
++        const detail = error instanceof Error ? error.message : String(error);
++        console.error(
++          `[gateway] target session ${target.id} failed preflight: ${error}`,
++        );
++        return {
++          status: "load_failed",
++          session: target,
++          code: "model_preflight_failed",
++          message: `Model '${target.modelName}' cannot be loaded: ${detail}`,
++        };
++      }
++
++      const rollbackCandidate = this.getSingleModelRollbackCandidate(target.id);
+       const singleModelReady = await this.enforceSingleModelMode(target.id);
+       if (!singleModelReady) return { status: "unload_failed", session: target };
+
+@@ -1057,7 +1121,15 @@ export class ApiGateway extends EventEmitter {
+       }
+
+       const ok = await this.jitLoad(latest.id);
+-      if (!ok) return { status: "load_failed", session: latest };
++      if (!ok) {
++        await this.restoreDisplacedSingleModel(rollbackCandidate, latest.id);
++        return {
++          status: "load_failed",
++          session: latest,
++          code: "model_load_timeout",
++          message: `Model '${latest.modelName}' failed to load within ${JIT_TIMEOUT_MS / 1000}s`,
++        };
++      }
+
+       return {
+         status: "ready",
+@@ -1640,7 +1712,10 @@ export class ApiGateway extends EventEmitter {
+       });
+     }
+     if (prepared.status === "load_failed") {
+-      return this.sendJson(res, 503, { error: "Model failed to load" });
++      return this.sendJson(res, 503, {
++        error: prepared.message,
++        code: prepared.code,
++      });
+     }
+     const routedSession = prepared.session;
+
+@@ -1955,7 +2030,10 @@ export class ApiGateway extends EventEmitter {
+       });
+     }
+     if (prepared.status === "load_failed") {
+-      return this.sendJson(res, 503, { error: "Model failed to load" });
++      return this.sendJson(res, 503, {
++        error: prepared.message,
++        code: prepared.code,
++      });
+     }
+     const routedSession = prepared.session;
+
+@@ -2288,7 +2366,10 @@ export class ApiGateway extends EventEmitter {
+       });
+     }
+     if (prepared.status === "load_failed") {
+-      return this.sendJson(res, 503, { error: "Model failed to load" });
++      return this.sendJson(res, 503, {
++        error: prepared.message,
++        code: prepared.code,
++      });
+     }
+     const routedSession = prepared.session;
+
+diff --git a/panel/src/main/sessions.ts b/panel/src/main/sessions.ts
+index a2ee4f9c5..192bc820f 100644
+--- a/panel/src/main/sessions.ts
++++ b/panel/src/main/sessions.ts
+@@ -1539,6 +1539,120 @@ export class SessionManager extends EventEmitter {
+     return session
+   }
+
++  /**
++   * Validate a local target before single-model replacement unloads the
++   * currently healthy engine. This intentionally performs no process mutation.
++   * `_startSessionInner` repeats the same shared validation immediately before
++   * spawn so filesystem changes between preflight and launch still fail closed.
++   */
++  preflightSessionStart(sessionId: string): void {
++    const session = db.getSession(sessionId)
++    if (!session) throw new Error(`Session ${sessionId} not found`)
++    if (session.type === 'remote') return
++
++    const config: ServerConfig = JSON.parse(session.config)
++    config.modelPath = session.modelPath
++    config.host = session.host
++    config.port = session.port
++    if (!this.findEnginePath()) {
++      throw new Error('vmlx-engine not found. Please install it first.')
++    }
++    this.validateLocalSessionTarget(sessionId, session, config)
++  }
++
++  private validateLocalSessionTarget(
++    sessionId: string,
++    session: Session,
++    config: ServerConfig
++  ): boolean {
++    // Image models may use mflux named models (e.g., "schnell") that are NOT
++    // filesystem paths. Let the image server validate those names at launch.
++    const isImageSession = config.modelType === 'image'
++
++    if (!isImageSession) {
++      if (!existsSync(config.modelPath)) {
++        // LE10: the saved path may be a stale symlink/alias (e.g. a
++        // ~/.mlxstudio/models/X target that moved) while the SAME model is
++        // present at a different real path (e.g. an external drive). Re-resolve
++        // by model IDENTITY (basename) against other known sessions whose path
++        // still exists — a real comparison, and only when exactly one distinct
++        // valid path matches, never a guess. This lets Start succeed instead of
++        // failing on a dead symlink when the model is plainly available.
++        // When NO unambiguous twin exists, fail with the explicit repoint hint
++        // (the session list surfaces the Repoint/Remove recovery actions).
++        const resolved = Array.from(new Set(
++          db.getSessions()
++            .filter(s =>
++              s.id !== sessionId &&
++              sessionMatchesModelPath(s.modelPath, config.modelPath) &&
++              existsSync(s.modelPath))
++            .map(s => s.modelPath.replace(/\/+$/, ''))
++        ))
++        if (resolved.length === 1) {
++          console.log(`[SESSION] modelPath missing (${config.modelPath}) — re-resolved by identity to ${resolved[0]}`)
++          config.modelPath = resolved[0]
++          // Persist so the UI + future starts use the valid path — but ONLY when
++          // no other session already owns that path. sessions.model_path is
++          // UNIQUE, and the valid path is typically owned by the very session we
++          // re-resolved against, so a blind update would throw a UNIQUE
++          // constraint error. In that collision case persistence is both
++          // impossible and unnecessary: the identity re-resolution re-fires
++          // cheaply on every start and the launch already uses the valid path.
++          const pathOwnedElsewhere = db.getSessions().some(
++            s => s.id !== session.id && s.modelPath?.replace(/\/+$/, '') === resolved[0],
++          )
++          if (!pathOwnedElsewhere) {
++            try {
++              db.updateSession(session.id, { modelPath: resolved[0] })
++            } catch (e) {
++              console.warn(`[SESSION] Failed to persist re-resolved modelPath for ${session.id}: ${e}`)
++            }
++          }
++        } else {
++          throw new Error(
++            `Model not found at: ${config.modelPath}. Repoint the session to a valid model bundle before starting it.`,
++          )
++        }
++      }
++
++      // Block starting a session with an actively downloading model.
++      const downloadMarker = join(config.modelPath, '.vmlx-downloading')
++      if (existsSync(downloadMarker)) {
++        throw new Error('This model is still downloading. Please wait for the download to complete before starting a session.')
++      }
++
++      // Validate model format: vmlx-engine only supports MLX (safetensors) models.
++      try {
++        const files = readdirSync(config.modelPath)
++        const hasGGUF = files.some(f => f.endsWith('.gguf') || f.endsWith('.gguf.part'))
++        const hasSafetensors = files.some(f => f.endsWith('.safetensors'))
++        const hasConfig = files.includes('config.json')
++
++        if (hasGGUF && !hasSafetensors) {
++          throw new Error(
++            'This model is in GGUF format, which is not supported by vmlx-engine. ' +
++            'Please download an MLX-format version (safetensors) from HuggingFace Hub.'
++          )
++        }
++        // Diffusers image models have model_index.json instead of config.json — that's valid.
++        const hasModelIndex = files.includes('model_index.json')
++        const hasTransformerDir = files.includes('transformer')
++        if (!hasConfig && !hasModelIndex && !hasTransformerDir) {
++          throw new Error(
++            'Model directory is missing config.json (text) or model_index.json (image). ' +
++            'vmlx-engine requires MLX-format models with config.json and .safetensors files, ' +
++            'or diffusers-format image models with model_index.json.'
++          )
++        }
++      } catch (e) {
++        if ((e as Error).message.includes('GGUF format') || (e as Error).message.includes('missing config.json') || (e as Error).message.includes('model_index.json')) throw e
++        // Ignore other filesystem errors — let the server handle them.
++      }
++    }
++
++    return isImageSession
++  }
++
+   async startSession(sessionId: string): Promise<void> {
+     // Remote sessions connect instead of starting a local process
+     const session = db.getSession(sessionId)
+@@ -1553,6 +1667,9 @@ export class SessionManager extends EventEmitter {
+
+     const startLocalSession = async () => {
+       if (db.getSetting('gateway_single_model_mode') === 'true') {
++        // Validate before unloading the current model. Without this ordering a
++        // stale/malformed target can strand the user with zero loaded models.
++        this.preflightSessionStart(sessionId)
+         const otherLocalSessions = db.getSessions().filter(other =>
+           other.id !== sessionId &&
+           other.type !== 'remote' &&
+@@ -1635,91 +1752,7 @@ export class SessionManager extends EventEmitter {
+
+     const engineResult = this.findEnginePath()
+     if (!engineResult) throw new Error('vmlx-engine not found. Please install it first.')
+-
+-    // Image models may use mflux named models (e.g., "schnell") that are NOT filesystem paths
+-    // — skip path/format validation for image sessions, let the Python server handle it
+-    const isImageSession = config.modelType === 'image'
+-
+-    if (!isImageSession) {
+-      if (!existsSync(config.modelPath)) {
+-        // LE10: the saved path may be a stale symlink/alias (e.g. a
+-        // ~/.mlxstudio/models/X target that moved) while the SAME model is
+-        // present at a different real path (e.g. an external drive). Re-resolve
+-        // by model IDENTITY (basename) against other known sessions whose path
+-        // still exists — a real comparison, and only when exactly one distinct
+-        // valid path matches, never a guess. This lets Start succeed instead of
+-        // failing on a dead symlink when the model is plainly available.
+-        // When NO unambiguous twin exists, fail with the explicit repoint hint
+-        // (the session list surfaces the Repoint/Remove recovery actions).
+-        const resolved = Array.from(new Set(
+-          db.getSessions()
+-            .filter(s =>
+-              s.id !== sessionId &&
+-              sessionMatchesModelPath(s.modelPath, config.modelPath) &&
+-              existsSync(s.modelPath))
+-            .map(s => s.modelPath.replace(/\/+$/, ''))
+-        ))
+-        if (resolved.length === 1) {
+-          console.log(`[SESSION] modelPath missing (${config.modelPath}) — re-resolved by identity to ${resolved[0]}`)
+-          config.modelPath = resolved[0]
+-          // Persist so the UI + future starts use the valid path — but ONLY when
+-          // no other session already owns that path. sessions.model_path is
+-          // UNIQUE, and the valid path is typically owned by the very session we
+-          // re-resolved against, so a blind update would throw a UNIQUE
+-          // constraint error. In that collision case persistence is both
+-          // impossible and unnecessary: the identity re-resolution re-fires
+-          // cheaply on every start and the launch already uses the valid path.
+-          const pathOwnedElsewhere = db.getSessions().some(
+-            s => s.id !== session.id && s.modelPath?.replace(/\/+$/, '') === resolved[0],
+-          )
+-          if (!pathOwnedElsewhere) {
+-            try {
+-              db.updateSession(session.id, { modelPath: resolved[0] })
+-            } catch (e) {
+-              console.warn(`[SESSION] Failed to persist re-resolved modelPath for ${session.id}: ${e}`)
+-            }
+-          }
+-        } else {
+-          throw new Error(
+-            `Model not found at: ${config.modelPath}. Repoint the session to a valid model bundle before starting it.`,
+-          )
+-        }
+-      }
+-
+-      // Block starting a session with an actively downloading model
+-      const downloadMarker = join(config.modelPath, '.vmlx-downloading')
+-      if (existsSync(downloadMarker)) {
+-        throw new Error('This model is still downloading. Please wait for the download to complete before starting a session.')
+-      }
+-
+-      // Validate model format: vmlx-engine only supports MLX (safetensors) models
+-      try {
+-        const files = readdirSync(config.modelPath)
+-        const hasGGUF = files.some(f => f.endsWith('.gguf') || f.endsWith('.gguf.part'))
+-        const hasSafetensors = files.some(f => f.endsWith('.safetensors'))
+-        const hasConfig = files.includes('config.json')
+-
+-        if (hasGGUF && !hasSafetensors) {
+-          throw new Error(
+-            'This model is in GGUF format, which is not supported by vmlx-engine. ' +
+-            'Please download an MLX-format version (safetensors) from HuggingFace Hub.'
+-          )
+-        }
+-        // Diffusers image models have model_index.json instead of config.json — that's valid
+-        const hasModelIndex = files.includes('model_index.json')
+-        const hasTransformerDir = files.includes('transformer')
+-        if (!hasConfig && !hasModelIndex && !hasTransformerDir) {
+-          throw new Error(
+-            'Model directory is missing config.json (text) or model_index.json (image). ' +
+-            'vmlx-engine requires MLX-format models with config.json and .safetensors files, ' +
+-            'or diffusers-format image models with model_index.json.'
+-          )
+-        }
+-      } catch (e) {
+-        if ((e as Error).message.includes('GGUF format') || (e as Error).message.includes('missing config.json') || (e as Error).message.includes('model_index.json')) throw e
+-        // Ignore filesystem errors — let the server handle them
+-      }
+-    } // end if (!isImageSession)
++    const isImageSession = this.validateLocalSessionTarget(sessionId, session, config)
+
+     // Re-detect model config from disk — handles case where model files were
+     // replaced with a different model (same folder name, different model_type).
+diff --git a/panel/tests/api-gateway-single-model.behavior.test.ts b/panel/tests/api-gateway-single-model.behavior.test.ts
+index ea1756ea4..c299939af 100644
+--- a/panel/tests/api-gateway-single-model.behavior.test.ts
++++ b/panel/tests/api-gateway-single-model.behavior.test.ts
+@@ -14,6 +14,7 @@ const sessionManagerMock = vi.hoisted(() => ({
+   startSession: vi.fn(),
+   wakeSession: vi.fn(),
+   touchSession: vi.fn(),
++  preflightSessionStart: vi.fn(),
+ }));
+
+ const gatewayBodyMock = vi.hoisted(() => ({
+@@ -437,6 +438,95 @@ describe("ApiGateway single-model mode behavior", () => {
+     );
+   });
+
++  it("rejects an invalid target before unloading the healthy single model", async () => {
++    dbMock.getSetting.mockImplementation((key: string) =>
++      key === "gateway_single_model_mode" ? "true" : undefined,
++    );
++    const previous = {
++      id: "previous",
++      modelPath: "/models/Previous-JANG",
++      modelName: "previous-model",
++      host: "127.0.0.1",
++      port: 9001,
++      status: "running",
++      type: "local",
++      config: "{}",
++    };
++    const target = {
++      id: "target",
++      modelPath: "/models/Missing-JANG",
++      modelName: "target-model",
++      host: "127.0.0.1",
++      port: 9002,
++      status: "stopped",
++      type: "local",
++      config: "{}",
++    };
++    dbMock.getSessions.mockReturnValue([previous, target]);
++    dbMock.getSession.mockImplementation((id: string) =>
++      id === previous.id ? previous : id === target.id ? target : undefined,
++    );
++    sessionManagerMock.preflightSessionStart.mockImplementationOnce(() => {
++      throw new Error("Model not found");
++    });
++
++    const { ApiGateway } = await import("../src/main/api-gateway");
++    const gateway = new ApiGateway();
++    const result = await (gateway as any).prepareSessionForRouting(target);
++
++    expect(result.status).toBe("load_failed");
++    expect(result.code).toBe("model_preflight_failed");
++    expect(result.message).toContain("Model not found");
++    expect(sessionManagerMock.stopSession).not.toHaveBeenCalled();
++    expect(sessionManagerMock.startSession).not.toHaveBeenCalled();
++  });
++
++  it("restores the displaced healthy model when a preflighted target later fails", async () => {
++    dbMock.getSetting.mockImplementation((key: string) =>
++      key === "gateway_single_model_mode" ? "true" : undefined,
++    );
++    const previous = {
++      id: "previous",
++      modelPath: "/models/Previous-JANG",
++      modelName: "previous-model",
++      host: "127.0.0.1",
++      port: 9001,
++      status: "running",
++      type: "local",
++      config: "{}",
++    };
++    const target = {
++      id: "target",
++      modelPath: "/models/Target-JANG",
++      modelName: "target-model",
++      host: "127.0.0.1",
++      port: 9002,
++      status: "stopped",
++      type: "local",
++      config: "{}",
++    };
++    dbMock.getSessions.mockReturnValue([previous, target]);
++    dbMock.getSession.mockImplementation((id: string) =>
++      id === previous.id ? previous : id === target.id ? target : undefined,
++    );
++    sessionManagerMock.preflightSessionStart.mockReturnValueOnce(undefined);
++    sessionManagerMock.startSession
++      .mockRejectedValueOnce(new Error("target load failed"))
++      .mockResolvedValueOnce(undefined);
++
++    const { ApiGateway } = await import("../src/main/api-gateway");
++    const gateway = new ApiGateway();
++    const result = await (gateway as any).prepareSessionForRouting(target);
++
++    expect(result.status).toBe("load_failed");
++    expect(result.code).toBe("model_load_timeout");
++    expect(sessionManagerMock.stopSession).toHaveBeenCalledWith(previous.id);
++    expect(sessionManagerMock.startSession.mock.calls.map((call) => call[0])).toEqual([
++      target.id,
++      previous.id,
++    ]);
++  });
++
+   it("writes each streamed gateway response chunk once and treats EPIPE as disconnect", async () => {
+     const { ApiGateway } = await import("../src/main/api-gateway");
+     const gateway = new ApiGateway();

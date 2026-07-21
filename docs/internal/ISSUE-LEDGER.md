@@ -4374,3 +4374,30 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - No output rewrite, prompt coercion, hidden sampler clamp, or generic cache
   substitution was added. Evidence:
   `docs/internal/release-gates/20260721_dsv4_direct_quality_boundary/`.
+
+## 2026-07-21 - gateway failed-target transaction and truthful diagnostics
+
+- `GATEWAY-SINGLE-MODEL-MISSING-TARGET`: `VERIFIED-LIVE_SCOPED`. The retained
+  pre-fix Electron reproduction proved that routing to a missing saved target
+  unloaded the healthy DSV4 process before local validation and stranded the
+  app with zero loaded engines. The gateway and direct session start paths now
+  call one shared, non-mutating local-target preflight before unloading another
+  model; spawn repeats the same validation to cover filesystem races.
+- The gateway records the displaced running/standby session and restores it if
+  a target passes preflight but later fails JIT loading. This branch is
+  `PASS-SOURCE+CONTRACT / PARTIAL-LIVE`: the behavior test covers it, but no
+  official valid bundle was deliberately damaged to force the late failure.
+- After a full current-source Electron relaunch, the real Start control loaded
+  DSV4 PID 80040. A request to the confirmed-missing target returned HTTP 503
+  in 0.030499 seconds with truthful `model_preflight_failed`; before/after
+  health was identical, SQLite kept DSV4 running at the same PID, and the
+  Electron Sessions page visibly retained `Active (1)` DSV4.
+- The surviving gateway route then emitted 256 reasoning and ten content
+  deltas plus `[DONE]`. Its content was non-empty but missed the exact marker
+  (`GATEWAY-R-RECOVERY-DONE`), retained under the separate DSV4 Auto quality
+  failure rather than hidden as a gateway pass.
+- The old duplicated inline session validation was removed. The active-source
+  search finds a single missing-path diagnostic owner and production call
+  sites for every new preflight/rollback helper. Focused validation is 36/36
+  plus panel typecheck and clean diff check. Evidence:
+  `docs/internal/release-gates/20260721_gateway_failed_target_transaction/`.

@@ -1,0 +1,1644 @@
+04:25:45.534345 == Info:   Trying 127.0.0.1:8088...
+04:25:45.535158 == Info: Connected to 127.0.0.1 (127.0.0.1) port 8088
+04:25:45.535188 => Send header, 150 bytes (0x96)
+0000: POST /v1/chat/completions HTTP/1.1
+0024: Host: 127.0.0.1:8088
+003a: User-Agent: curl/8.7.1
+0052: Accept: */*
+005f: Content-Type: application/json
+007f: Content-Length: 192
+0094:
+04:25:45.535251 => Send data, 192 bytes (0xc0)
+0000: {"model":"dealignai/DeepSeek-V4-Flash-JANG-CRACK","messages":[{"
+0040: role":"user","content":"Reply exactly GATEWAY-RECOVERY-DONE and
+0080: nothing else."}],"stream":true,"max_tokens":256,"temperature":0}
+04:25:45.535268 == Info: upload completely sent off: 192 bytes
+04:25:45.672289 <= Recv header, 17 bytes (0x11)
+0000: HTTP/1.1 200 OK
+04:25:45.672345 <= Recv header, 37 bytes (0x25)
+0000: date: Tue, 21 Jul 2026 11:25:45 GMT
+04:25:45.672368 <= Recv header, 17 bytes (0x11)
+0000: server: uvicorn
+04:25:45.672383 <= Recv header, 48 bytes (0x30)
+0000: content-type: text/event-stream; charset=utf-8
+04:25:45.672400 <= Recv header, 28 bytes (0x1c)
+0000: transfer-encoding: chunked
+04:25:45.672414 <= Recv header, 19 bytes (0x13)
+0000: connection: close
+04:25:45.672426 <= Recv header, 2 bytes (0x2)
+0000:
+04:25:45.672437 <= Recv data, 209 bytes (0xd1)
+0000: cb
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"role": "assis
+00c4: tant"}}]}..
+04:25:52.158320 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "We"}}]}..
+04:25:52.257550 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " are"}}]}..
+04:25:52.298769 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " asked"}}]}..
+04:25:52.339452 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " to"}}]}..
+04:25:52.376300 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " reply"}}]}..
+04:25:52.428204 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " exactly"}}]}..
+04:25:52.468993 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " \""}}]}..
+04:25:52.509836 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "G"}}]}..
+04:25:52.546849 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ATE"}}]}..
+04:25:52.598428 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "WAY"}}]}..
+04:25:52.639189 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-R"}}]}..
+04:25:52.679906 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-R"}}]}..
+04:25:52.716784 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "EC"}}]}..
+04:25:52.768825 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "OV"}}]}..
+04:25:52.809562 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ERY"}}]}..
+04:25:52.850302 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-D"}}]}..
+04:25:52.887110 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ONE"}}]}..
+04:25:52.939051 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "\""}}]}..
+04:25:52.980029 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " and"}}]}..
+04:25:53.020847 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " nothing"}}]}..
+04:25:53.057880 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " else"}}]}..
+04:25:53.112167 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "."}}]}..
+04:25:53.154178 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " The"}}]}..
+04:25:53.195132 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " phrase"}}]}..
+04:25:53.232068 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " seems"}}]}..
+04:25:53.283769 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " to"}}]}..
+04:25:53.324638 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " be"}}]}..
+04:25:53.365427 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " \""}}]}..
+04:25:53.402679 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "G"}}]}..
+04:25:53.455530 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ATE"}}]}..
+04:25:53.496698 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "WAY"}}]}..
+04:25:53.537727 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-R"}}]}..
+04:25:53.574863 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "EC"}}]}..
+04:25:53.626739 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "OV"}}]}..
+04:25:53.667735 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ERY"}}]}..
+04:25:53.708712 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-D"}}]}..
+04:25:53.745675 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ONE"}}]}..
+04:25:53.797701 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "\""}}]}..
+04:25:53.838638 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " but"}}]}..
+04:25:53.879729 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " with"}}]}..
+04:25:53.916835 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " \""}}]}..
+04:25:53.968659 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "R"}}]}..
+04:25:54.009806 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "\""}}]}..
+04:25:54.050885 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " maybe"}}]}..
+04:25:54.087935 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "?"}}]}..
+04:25:54.143717 <= Recv data, 222 bytes (0xde)
+0000: d8
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " Actually"}}]}..
+04:25:54.184945 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " \""}}]}..
+04:25:54.225920 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "G"}}]}..
+04:25:54.262983 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ATE"}}]}..
+04:25:54.314956 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "WAY"}}]}..
+04:25:54.356120 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-R"}}]}..
+04:25:54.397305 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "EC"}}]}..
+04:25:54.434676 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "OV"}}]}..
+04:25:54.486712 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ERY"}}]}..
+04:25:54.527909 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-D"}}]}..
+04:25:54.569039 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ONE"}}]}..
+04:25:54.606091 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "\""}}]}..
+04:25:54.658330 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " is"}}]}..
+04:25:54.699722 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " "}}]}..
+04:25:54.740870 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " the"}}]}..
+04:25:54.778343 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " exact"}}]}..
+04:25:54.830074 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " phrase"}}]}..
+04:25:54.871394 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "."}}]}..
+04:25:54.912558 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " The"}}]}..
+04:25:54.949681 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " instruction"}}]}..
+04:25:55.001738 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " says"}}]}..
+04:25:55.043110 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " \""}}]}..
+04:25:55.084265 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "Reply"}}]}..
+04:25:55.121294 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " exactly"}}]}..
+04:25:55.173637 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " G"}}]}..
+04:25:55.214912 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ATE"}}]}..
+04:25:55.256094 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "WAY"}}]}..
+04:25:55.293390 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-R"}}]}..
+04:25:55.345610 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "EC"}}]}..
+04:25:55.386922 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-R"}}]}..
+04:25:55.428254 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "OV"}}]}..
+04:25:55.465542 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ERY"}}]}..
+04:25:55.518147 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-D"}}]}..
+04:25:55.559541 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ONE"}}]}..
+04:25:55.600767 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " and"}}]}..
+04:25:55.671636 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " nothing"}}]}..
+04:25:55.724615 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " else"}}]}..
+04:25:55.766025 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": ".\""}}]}..
+04:25:55.807240 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " Wait"}}]}..
+04:25:55.844339 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": ","}}]}..
+04:25:55.896748 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " it"}}]}..
+04:25:55.938089 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " says"}}]}..
+04:25:55.979325 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " \""}}]}..
+04:25:56.016763 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "G"}}]}..
+04:25:56.069006 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ATE"}}]}..
+04:25:56.110414 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "WAY"}}]}..
+04:25:56.151739 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-R"}}]}..
+04:25:56.189110 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "EC"}}]}..
+04:25:56.241205 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "OV"}}]}..
+04:25:56.282639 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ERY"}}]}..
+04:25:56.323968 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-D"}}]}..
+04:25:56.361281 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ONE"}}]}..
+04:25:56.413783 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "\""}}]}..
+04:25:56.455313 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " but"}}]}..
+04:25:56.496921 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " with"}}]}..
+04:25:56.534302 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " \""}}]}..
+04:25:56.586704 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "R"}}]}..
+04:25:56.628172 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "\""}}]}..
+04:25:56.669527 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " maybe"}}]}..
+04:25:56.706781 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "?"}}]}..
+04:25:56.759354 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " Let"}}]}..
+04:25:56.800965 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "'s"}}]}..
+04:25:56.842253 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " read"}}]}..
+04:25:56.879543 <= Recv data, 223 bytes (0xdf)
+0000: d9
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " carefully"}}]}..
+04:25:56.965319 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": ":"}}]}..
+04:25:57.006486 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " \""}}]}..
+04:25:57.047788 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "Reply"}}]}..
+04:25:57.084903 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " exactly"}}]}..
+04:25:57.137005 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " G"}}]}..
+04:25:57.178491 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ATE"}}]}..
+04:25:57.219576 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "WAY"}}]}..
+04:25:57.256952 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-R"}}]}..
+04:25:57.309168 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "EC"}}]}..
+04:25:57.350397 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "OV"}}]}..
+04:25:57.391652 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ERY"}}]}..
+04:25:57.428948 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-D"}}]}..
+04:25:57.481114 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ONE"}}]}..
+04:25:57.522226 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " and"}}]}..
+04:25:57.563548 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " nothing"}}]}..
+04:25:57.600859 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " else"}}]}..
+04:25:57.653326 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": ".\""}}]}..
+04:25:57.694856 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " It"}}]}..
+04:25:57.736228 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " says"}}]}..
+04:25:57.773657 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " \""}}]}..
+04:25:57.825710 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "G"}}]}..
+04:25:57.867061 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ATE"}}]}..
+04:25:57.908395 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "WAY"}}]}..
+04:25:57.945680 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-R"}}]}..
+04:25:57.998019 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "EC"}}]}..
+04:25:58.039496 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "OV"}}]}..
+04:25:58.080869 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ERY"}}]}..
+04:25:58.118169 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-D"}}]}..
+04:25:58.170289 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ONE"}}]}..
+04:25:58.211907 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "\""}}]}..
+04:25:58.253296 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " but"}}]}..
+04:25:58.290691 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " I"}}]}..
+04:25:58.342708 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " think"}}]}..
+04:25:58.384062 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " it"}}]}..
+04:25:58.425397 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "'s"}}]}..
+04:25:58.462843 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " \""}}]}..
+04:25:58.514967 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "G"}}]}..
+04:25:58.556738 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ATE"}}]}..
+04:25:58.599921 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "WAY"}}]}..
+04:25:58.637216 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-R"}}]}..
+04:25:58.689594 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "EC"}}]}..
+04:25:58.731189 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "OV"}}]}..
+04:25:58.772579 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ERY"}}]}..
+04:25:58.809832 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-D"}}]}..
+04:25:58.862300 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ONE"}}]}..
+04:25:58.903801 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "\""}}]}..
+04:25:58.945277 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " ("}}]}..
+04:25:58.982684 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "without"}}]}..
+04:25:59.035169 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " R"}}]}..
+04:25:59.076701 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "?"}}]}..
+04:25:59.118762 <= Recv data, 222 bytes (0xde)
+0000: d8
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " Actually"}}]}..
+04:25:59.156290 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " \""}}]}..
+04:25:59.209814 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "G"}}]}..
+04:25:59.251606 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ATE"}}]}..
+04:25:59.293141 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "WAY"}}]}..
+04:25:59.330601 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-R"}}]}..
+04:25:59.383354 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "EC"}}]}..
+04:25:59.424954 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "OV"}}]}..
+04:25:59.466487 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ERY"}}]}..
+04:25:59.503771 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-D"}}]}..
+04:25:59.556209 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ONE"}}]}..
+04:25:59.597845 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "\""}}]}..
+04:25:59.639621 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " is"}}]}..
+04:25:59.677058 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " "}}]}..
+04:25:59.729614 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " the"}}]}..
+04:25:59.771904 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " phrase"}}]}..
+04:25:59.814001 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "."}}]}..
+04:25:59.851721 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " But"}}]}..
+04:25:59.905110 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " I"}}]}..
+04:25:59.946675 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " see"}}]}..
+04:25:59.988203 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " \""}}]}..
+04:26:00.025660 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "G"}}]}..
+04:26:00.079054 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ATE"}}]}..
+04:26:00.121141 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "WAY"}}]}..
+04:26:00.163764 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-R"}}]}..
+04:26:00.202239 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "EC"}}]}..
+04:26:00.256858 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "OV"}}]}..
+04:26:00.298876 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ERY"}}]}..
+04:26:00.340659 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-D"}}]}..
+04:26:00.378198 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ONE"}}]}..
+04:26:00.431294 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "\""}}]}..
+04:26:00.473193 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " "}}]}..
+04:26:00.514904 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " in"}}]}..
+04:26:00.553292 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " the"}}]}..
+04:26:00.606384 <= Recv data, 225 bytes (0xe1)
+0000: db
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " instruction"}}]}..
+04:26:00.681424 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "."}}]}..
+04:26:00.723395 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " So"}}]}..
+04:26:00.761065 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " I"}}]}..
+04:26:00.814482 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "'ll"}}]}..
+04:26:00.856506 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " just"}}]}..
+04:26:00.898076 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " reply"}}]}..
+04:26:00.936053 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " exactly"}}]}..
+04:26:00.989070 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " that"}}]}..
+04:26:01.030095 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "."}}]}..
+04:26:01.071578 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " But"}}]}..
+04:26:01.108901 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " I"}}]}..
+04:26:01.161087 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " need"}}]}..
+04:26:01.202709 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " to"}}]}..
+04:26:01.244298 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " ensure"}}]}..
+04:26:01.281728 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " I"}}]}..
+04:26:01.333951 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " don"}}]}..
+04:26:01.375421 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "'t"}}]}..
+04:26:01.417024 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " add"}}]}..
+04:26:01.454402 <= Recv data, 222 bytes (0xde)
+0000: d8
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " anything"}}]}..
+04:26:01.506733 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " else"}}]}..
+04:26:01.548430 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "."}}]}..
+04:26:01.590043 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " So"}}]}..
+04:26:01.627552 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " I"}}]}..
+04:26:01.679953 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "'ll"}}]}..
+04:26:01.721755 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " just"}}]}..
+04:26:01.763376 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " say"}}]}..
+04:26:01.800855 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " \""}}]}..
+04:26:01.853190 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "G"}}]}..
+04:26:01.894666 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ATE"}}]}..
+04:26:01.936220 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "WAY"}}]}..
+04:26:01.973785 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-R"}}]}..
+04:26:02.026151 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "EC"}}]}..
+04:26:02.067649 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "OV"}}]}..
+04:26:02.109331 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ERY"}}]}..
+04:26:02.146496 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-D"}}]}..
+04:26:02.199085 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ONE"}}]}..
+04:26:02.240870 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "\""}}]}..
+04:26:02.282395 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " "}}]}..
+04:26:02.319756 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " as"}}]}..
+04:26:02.372163 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " a"}}]}..
+04:26:02.413980 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " string"}}]}..
+04:26:02.455550 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "."}}]}..
+04:26:02.493018 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " But"}}]}..
+04:26:02.581923 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " wait"}}]}..
+04:26:02.623356 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": ","}}]}..
+04:26:02.664817 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " it"}}]}..
+04:26:02.702198 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " says"}}]}..
+04:26:02.754885 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " \""}}]}..
+04:26:02.796417 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "G"}}]}..
+04:26:02.838123 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ATE"}}]}..
+04:26:02.875607 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "WAY"}}]}..
+04:26:02.928317 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-R"}}]}..
+04:26:02.970142 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "EC"}}]}..
+04:26:03.011776 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "OV"}}]}..
+04:26:03.049246 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ERY"}}]}..
+04:26:03.101761 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "-D"}}]}..
+04:26:03.143528 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "ONE"}}]}..
+04:26:03.185002 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": "\""}}]}..
+04:26:03.222616 <= Recv data, 214 bytes (0xd6)
+0000: d0
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " "}}]}..
+04:26:03.275090 <= Recv data, 217 bytes (0xd9)
+0000: d3
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " but"}}]}..
+04:26:03.316785 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " I"}}]}..
+04:26:03.358828 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"reasoning_con
+00c4: tent": " think"}}]}..
+04:26:03.577403 <= Recv data, 204 bytes (0xcc)
+0000: c6
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"content": "G"
+00c4: }}]}..
+04:26:03.682936 <= Recv data, 206 bytes (0xce)
+0000: c8
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"content": "AT
+00c4: E"}}]}..
+04:26:03.723725 <= Recv data, 206 bytes (0xce)
+0000: c8
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"content": "WA
+00c4: Y"}}]}..
+04:26:03.764655 <= Recv data, 205 bytes (0xcd)
+0000: c7
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"content": "-R
+00c4: "}}]}..
+04:26:03.802151 <= Recv data, 205 bytes (0xcd)
+0000: c7
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"content": "-R
+00c4: "}}]}..
+04:26:03.853984 <= Recv data, 205 bytes (0xcd)
+0000: c7
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"content": "EC
+00c4: "}}]}..
+04:26:03.894846 <= Recv data, 205 bytes (0xcd)
+0000: c7
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"content": "OV
+00c4: "}}]}..
+04:26:03.935458 <= Recv data, 206 bytes (0xce)
+0000: c8
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"content": "ER
+00c4: Y"}}]}..
+04:26:03.972498 <= Recv data, 205 bytes (0xcd)
+0000: c7
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"content": "-D
+00c4: "}}]}..
+04:26:04.023944 <= Recv data, 206 bytes (0xce)
+0000: c8
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {"content": "ON
+00c4: E"}}]}..
+04:26:04.061289 <= Recv data, 215 bytes (0xd7)
+0000: d1
+0004: data: {"id": "chatcmpl-1b747fc6", "object": "chat.completion.chu
+0044: nk", "created": 1784633145, "model": "dealignai/DeepSeek-V4-Flas
+0084: h-JANG-CRACK", "choices": [{"index": 0, "delta": {}, "finish_rea
+00c4: son": "stop"}]}..
+04:26:04.061339 <= Recv data, 19 bytes (0x13)
+0000: e
+0003: data: [DONE]..
+04:26:04.061574 <= Recv data, 5 bytes (0x5)
+0000: 0
+0003:
+04:26:04.061597 == Info: Closing connection

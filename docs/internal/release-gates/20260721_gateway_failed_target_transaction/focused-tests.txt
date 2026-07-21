@@ -1,0 +1,212 @@
+
+> vmlx@1.6.14 test
+> vitest run --run tests/api-gateway-single-model.behavior.test.ts tests/session-model-path-recovery.test.ts
+
+
+[1m[46m RUN [49m[22m [36mv4.0.18 [39m[90m/Users/eric/mlx/vllm-mlx-release-1.6.13/panel[39m
+
+ [32m✓[39m tests/session-model-path-recovery.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mstops other active local sessions before routing to the requested model
+[22m[39m[gateway] single-model mode: stopping session other-running before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mstops other active local sessions before routing to the requested model
+[22m[39m[gateway] single-model mode: stopping session other-loading before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mstops other active local sessions before routing to the requested model
+[22m[39m[gateway] single-model mode: stopping session other-standby before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mallows gateway startup on ports used only by stopped or remote saved sessions
+[22m[39m[gateway] Listening on 127.0.0.1:50828
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mallows gateway startup on ports used only by stopped or remote saved sessions
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrestores the previous listener when restart targets an active session port
+[22m[39m[gateway] Listening on 127.0.0.1:50829
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrestores the previous listener when restart targets an active session port
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrestores the previous listener when restart targets an active session port
+[22m[39m[gateway] Listening on 127.0.0.1:50829
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrestores the previous listener when restart targets an active session port
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mkeeps the listener live and rejects reconfiguration while a model response is active
+[22m[39m[gateway] Listening on 127.0.0.1:50832
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mkeeps the listener live and rejects reconfiguration while a model response is active
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mkeeps the listener live and rejects reconfiguration while a model response is active
+[22m[39m[gateway] Listening on 127.0.0.1:50833
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mkeeps the listener live and rejects reconfiguration while a model response is active
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mreports failure when another active local session cannot be unloaded
+[22m[39m[gateway] single-model mode: stopping session other-running before routing to target
+
+[90mstderr[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mreports failure when another active local session cannot be unloaded
+[22m[39m[gateway] single-model mode: failed to stop session other-running: Error: process refused to exit
+
+[90mstderr[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrejects an invalid target before unloading the healthy single model
+[22m[39m[gateway] target session target failed preflight: Error: Model not found
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrestores the displaced healthy model when a preflighted target later fails
+[22m[39m[gateway] single-model mode: stopping session previous before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrestores the displaced healthy model when a preflighted target later fails
+[22m[39m[gateway] JIT loading session target
+
+[90mstderr[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrestores the displaced healthy model when a preflighted target later fails
+[22m[39m[gateway] Failed to start session target: Error: target load failed
+
+[90mstderr[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrestores the displaced healthy model when a preflighted target later fails
+[22m[39m[gateway] target target failed to load; restoring displaced session previous
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrestores the displaced healthy model when a preflighted target later fails
+[22m[39m[gateway] restored displaced session previous after target target failed
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrefuses auto-switch when previous local model cannot unload before starting target
+[22m[39m[gateway] Listening on 127.0.0.1:50839
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrefuses auto-switch when previous local model cannot unload before starting target
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstderr[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrefuses auto-switch when previous local model cannot unload before starting target
+[22m[39m[gateway] single-model mode: failed to stop session other: Error: process refused to exit
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mrefuses auto-switch when previous local model cannot unload before starting target
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches direct OpenAI streaming by model id without mutating payload or deltas
+[22m[39m[gateway] Listening on 127.0.0.1:50843
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches direct OpenAI streaming by model id without mutating payload or deltas
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches direct OpenAI streaming by model id without mutating payload or deltas
+[22m[39m[gateway] JIT loading session target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches direct OpenAI streaming by model id without mutating payload or deltas
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mserializes concurrent single-model switches before starting a second target
+[22m[39m[gateway] Listening on 127.0.0.1:50848
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mserializes concurrent single-model switches before starting a second target
+[22m[39m[gateway] single-model mode: stopping session other before routing to target-a
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mserializes concurrent single-model switches before starting a second target
+[22m[39m[gateway] JIT loading session target-a
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mserializes concurrent single-model switches before starting a second target
+[22m[39m[gateway] single-model mode: stopping session target-a before routing to target-b
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mserializes concurrent single-model switches before starting a second target
+[22m[39m[gateway] JIT loading session target-b
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mserializes concurrent single-model switches before starting a second target
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches to a standby model by waking it before direct OpenAI streaming
+[22m[39m[gateway] Listening on 127.0.0.1:50855
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches to a standby model by waking it before direct OpenAI streaming
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches to a standby model by waking it before direct OpenAI streaming
+[22m[39m[gateway] JIT waking session target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches to a standby model by waking it before direct OpenAI streaming
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches Responses API streaming by model id while preserving output text deltas
+[22m[39m[gateway] Listening on 127.0.0.1:50860
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches Responses API streaming by model id while preserving output text deltas
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches Responses API streaming by model id while preserving output text deltas
+[22m[39m[gateway] JIT loading session target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches Responses API streaming by model id while preserving output text deltas
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mpasses Responses function-call argument SSE through unchanged
+[22m[39m[gateway] Listening on 127.0.0.1:50865
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mpasses Responses function-call argument SSE through unchanged
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mpasses Responses function-call argument SSE through unchanged
+[22m[39m[gateway] JIT loading session target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mpasses Responses function-call argument SSE through unchanged
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mreturns backend-unavailable for stale Responses session ports
+[22m[39m[gateway] Listening on 127.0.0.1:50869
+
+[90mstderr[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mreturns backend-unavailable for stale Responses session ports
+[22m[39m[gateway] Proxy error → 127.0.0.1:50868/v1/responses: connect ECONNREFUSED 127.0.0.1:50868
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mreturns backend-unavailable for stale Responses session ports
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches model capability requests by path model before proxying
+[22m[39m[gateway] Listening on 127.0.0.1:50874
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches model capability requests by path model before proxying
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches model capability requests by path model before proxying
+[22m[39m[gateway] JIT waking session target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches model capability requests by path model before proxying
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache endpoints by query model before proxying cache stats
+[22m[39m[gateway] Listening on 127.0.0.1:50879
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache endpoints by query model before proxying cache stats
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache endpoints by query model before proxying cache stats
+[22m[39m[gateway] JIT waking session target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache endpoints by query model before proxying cache stats
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache entries and clear endpoints by query model before proxying cache endpoints
+[22m[39m[gateway] Listening on 127.0.0.1:50884
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache entries and clear endpoints by query model before proxying cache endpoints
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache entries and clear endpoints by query model before proxying cache endpoints
+[22m[39m[gateway] JIT waking session target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache entries and clear endpoints by query model before proxying cache endpoints
+[22m[39m[gateway] Stopped
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache warm by body model before proxying warm prompts
+[22m[39m[gateway] Listening on 127.0.0.1:50890
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache warm by body model before proxying warm prompts
+[22m[39m[gateway] single-model mode: stopping session other before routing to target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache warm by body model before proxying warm prompts
+[22m[39m[gateway] JIT waking session target
+
+[90mstdout[2m | tests/api-gateway-single-model.behavior.test.ts[2m > [22m[2mApiGateway single-model mode behavior[2m > [22m[2mauto-switches cache warm by body model before proxying warm prompts
+[22m[39m[gateway] Stopped
+
+ [32m✓[39m tests/api-gateway-single-model.behavior.test.ts [2m([22m[2m28 tests[22m[2m)[22m[32m 144[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+[2m      Tests [22m [1m[32m36 passed[39m[22m[90m (36)[39m
+[2m   Start at [22m 04:32:10
+[2m   Duration [22m 373ms[2m (transform 170ms, setup 0ms, import 119ms, tests 147ms, environment 0ms)[22m

@@ -1689,6 +1689,14 @@ rows, and it does not promote the broader family/release matrix.
 | Idle LAN rebind and restore | PASS-LIVE scoped | With zero active requests, the visible toggle successfully rebound to `0.0.0.0:8088`, displayed `192.168.1.110:8088`, and persisted it. The next visible toggle restored `127.0.0.1:8088`; final health reported active_requests=0 and Single Model On. | Remote-LAN client soak and signed-app repetition remain OPEN. |
 | Gateway host/port persistence owner | PASS-SOURCE+CONTRACT | The two pre-bind IPC DB writes were deleted. `_tryListen()` is now the only success-only host/port persistence path. Gateway-focused validation is 91 passed / 3 skipped plus typecheck and diff check. | Full panel suite remains a separate checkpoint. |
 
+## 2026-07-21 Electron gateway failed-target transaction addendum
+
+| Row | Verdict | Current evidence | Remaining boundary |
+|---|---|---|---|
+| Missing/stale gateway target in Single Model mode | PASS-SOURCE+LIVE scoped | The retained pre-fix Electron run stopped the healthy DSV4 backend before rejecting a confirmed-missing target and left zero models loaded. Current source shares one non-mutating session preflight owner across UI and gateway paths, calls it before unload, and preserves the running backend. After a full Electron relaunch, a real Start loaded DSV4 PID 80040; the missing-target request returned truthful `model_preflight_failed` in 0.030499s, before/after health was identical, SQLite retained the same PID/status, and the visible Sessions page still showed `Active (1)` DSV4 beside `Missing model (1)`. | Keep as a regression row. Evidence: `../20260721_gateway_failed_target_transaction/`. |
+| Post-preflight target-load rollback | PASS-SOURCE+CONTRACT / PARTIAL-LIVE | The gateway captures the displaced running/standby session and restores it when JIT start later fails. The focused test pins stop target, failed target start, then previous-session restart; 36 focused tests and typecheck pass. | Exercise a safe real late-loader failure without mutating or blaming an official artifact; then capture Electron restoration. |
+| Surviving-route stream after rejected target | PASS-LIVE transport / FAIL strict model output retained | The preserved DSV4 route emitted 256 separate reasoning and ten progressive content chunks followed by stop and `[DONE]`. It returned `GATEWAY-R-RECOVERY-DONE` instead of the requested exact marker, so this is gateway liveness/streaming evidence only and does not promote the open DSV4 Auto quality row. | DSV4 exact-output quality remains owned by `../20260721_dsv4_direct_quality_boundary/`. |
+
 ## 2026-07-21 Electron-created affine JANG bundle addendum
 
 | Gate | Status | Current-source evidence | Remaining |
