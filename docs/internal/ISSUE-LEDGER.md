@@ -3960,7 +3960,12 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   Responses emitted 155 reasoning deltas, 16 progressive content deltas,
   exact content, one text-done, and one completed event. It recorded 130/194
   accepted MTP drafts including deeper accepts.
-- Remaining: media-salt/partial-prefix variants, post-media tool use,
+- `Q27-MTP-POSTVIDEO-TOOL`: `VERIFIED-LIVE_SCOPED`. In the same real chat,
+  enabling built-in tools through the visible drawer produced 50 UI states,
+  separate reasoning, exactly one `file_info(panel/package.json)` call, one
+  real 5.2 KB result, exact visible content, and no warning. Tool-bearing MTP
+  correctly capped to depth 1 with no deeper drafts or dropped call.
+- Remaining: media-salt/partial-prefix variants, raw API post-media tool use,
   Chat/Anthropic/Ollama media, explicit MTP policy variants, bounded eviction
   and fault injection, longer inputs, 35B MoE MTP, Bonsai/Ornith breadth, and
   signed-app repetition. Evidence:

@@ -100,6 +100,27 @@ Content streamed from 14.837 to 15.725 seconds in prefixes such as `BAN`,
 `ANA`, `8`, `4`, and `2`; it was not withheld until completion. The raw request
 also used native MTP (194 drafted / 130 accepted, including deeper accepts).
 
+## Same-chat post-video automatic tool proof
+
+After the restart video turn, built-in tools were enabled through the real Chat
+settings drawer. A no-attachment same-chat request required exactly one
+`file_info(panel/package.json)` call and an exact final based on its result.
+The observer captured 50 UI states spanning progressive reasoning, the tool
+card, result processing, and progressive visible content. SQLite row 214
+contains exactly one schema-valid call with `{"path":"panel/package.json"}`,
+one real `Size: 5.2 KB` result, separate reasoning, no warning, and exact:
+
+```text
+Q27-MTP-POSTVIDEO-TOOL1-DONE SIZE=5.2 KB
+```
+
+The request did not resend the old video or hallucinate a result. The native
+MTP tool-safety policy constrained this tool-bearing turn to depth 1: health
+recorded 13 drafted / 6 accepted tokens, zero depth-2/depth-3 drafts, and no
+fallback. This directly covers the previously risky combination of a Qwen MTP
+artifact, Auto reasoning, native tool XML/JSON parsing, and continuation after
+media without a reasoning-only or dropped-call final.
+
 ## Evidence map
 
 - Settings/load: `q27mtp-create-derived-settings.png`,
@@ -111,6 +132,9 @@ also used native MTP (194 drafted / 130 accepted, including deeper accepts).
   screenshots, row 211, and `health-after-raw-video.json` (which retains the
   disk-hit counters and last cache execution).
 - Raw API: `q27mtp-raw-responses-video.sse`.
+- Post-video tool: `q27mtp-chat-settings-before-tool.png`,
+  `q27mtp-postvideo-tool-dom-trace.json`, paired screenshots,
+  `ui-postvideo-tool-row.json`, and `health-after-postvideo-tool.json`.
 - Source/artifact truth: `source-trace.txt`, `bundle-facts.json`, and
   `capabilities.json`.
 
@@ -122,7 +146,7 @@ content, raw Responses terminals, native MTP depth use, q4 attention-KV plus
 native SSM storage, and restart-from-disk restoration are directly evidenced.
 
 Still `PARTIAL/OPEN`: image/video salt isolation beyond this identical-media
-restart, post-video automatic tool continuation, Chat/Anthropic/Ollama media
+restart, raw API post-media tool continuation, Chat/Anthropic/Ollama media
 requests, explicit MTP Off/depth variants, bounded eviction/fault injection,
 longer video/context, 35B MoE MTP variants, Bonsai/Ornith breadth, signed-app
 repeat, and the full campaign/release matrix. No public release contains this
