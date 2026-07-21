@@ -1,0 +1,54 @@
+{
+  "date": "2026-07-21",
+  "artifact": {
+    "path": "/Users/eric/models/Codex-Quant-Probe-OsaurusAgent-9b-JANG_4M",
+    "quantization": "affine mx.quantize JANG_4M",
+    "measured_bits": 4.66,
+    "not": ["JANGTQ/MXTQ", "base MLX MXFP"],
+    "indexed_tensor_count": 1260,
+    "vision_tensor_count": 333
+  },
+  "electron": {
+    "cdp_port": 9335,
+    "pid": 71790,
+    "started_via_real_ui": true,
+    "eager_before_request": true,
+    "health_model_type": "mllm",
+    "ui_distinct_states": 17,
+    "first_partial_content_ms": 16657,
+    "complete_content_ms": 16967,
+    "persisted_rowid": 275,
+    "reasoning_chars": 271,
+    "content": "QUAFF-VL-UI1-DONE READ=QUANT-UI-T3-DONE PATH=panel/package.json SIZE=5.2 KB",
+    "requested_prefix": "QAFF-VL-UI1-DONE",
+    "strict_format": "partial: emitted QUAFF instead of QAFF",
+    "tool_calls": 0,
+    "warnings": 0,
+    "total_seconds": 16.7
+  },
+  "raw_responses": {
+    "http_status": 200,
+    "reasoning_delta_count": 51,
+    "content_delta_count": 19,
+    "completed_count": 1,
+    "input_tokens": 4964,
+    "output_tokens": 73,
+    "first_reasoning_seconds": 11.944,
+    "first_content_seconds": 12.561,
+    "terminal_seconds": 12.793,
+    "content": "QUANT-UI-T3-DONE PATH=panel/package.json SIZE=5.2 KB",
+    "strict_format": "pass"
+  },
+  "cache_scope": {
+    "store_observed": true,
+    "media_boundary_tokens": 8792,
+    "ssm_companion_layers": 24,
+    "block_disk_blocks_written": 138,
+    "restore_or_hit_claimed": false
+  },
+  "validation": {
+    "python_selected": "12 passed",
+    "panel_selected": "374 passed",
+    "typescript_typecheck": "passed"
+  }
+}

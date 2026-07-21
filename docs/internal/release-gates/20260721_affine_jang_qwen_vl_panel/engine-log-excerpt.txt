@@ -1,0 +1,15 @@
+[10:20:30.177]   Tool calling: ENABLED (parser: qwen)
+[10:20:30.177]   Reasoning: ENABLED (parser: Qwen3ReasoningParser)  [thinking model detected]
+[10:20:30.177]   Native MTP: metadata inconsistent (scope: text, policy: compatible-only)
+[10:20:30.177] Loading model: /Users/eric/models/Codex-Quant-Probe-OsaurusAgent-9b-JANG_4M
+[10:20:30.177] Paged cache: block_size=64, max_blocks=1000, capacity=64000 tokens (--cache-memory-mb/--cache-memory-percent set the L1 RAM byte ceiling for the block KV mirror; --max-cache-blocks caps the block-pool count)
+[10:20:30.177] Block disk cache: max=10.0GB
+[10:21:53.454] [CHAT_DIAG] attachment_route={"chatId":"736c9212","modelPath":"/Users/eric/models/Codex-Quant-Probe-OsaurusAgent-9b-JANG_4M","detectedFamily":"qwen3.5","modelForceTextOnly":false,"chatIsMultimodal":true,"attachments":{"total":1,"counts":{"image":1,"video":0,"audio":0,"text":0},"files":[{"kind":"image","name":"quant-ui-t3-stable.png","mime":"image/png","size":273211,"data_url_chars":364306}]}}
+[10:21:53.486] [CHAT_DIAG] request_shape={"chatId":"736c9212","wireApi":"responses","isRemote":false,"baseUrl":"http://127.0.0.1:8006","chatIsMultimodal":true,"preserveHistoricalMediaForOmni":false,"detectedFamily":"qwen3.5","sessionHasReasoningParser":true,"body":{"route":"/v1/responses","model":"models/Codex-Quant-Probe-OsaurusAgent-9b-JANG_4M","stream":true,"has_tools":true,"messages":[{"role":"user","content":[{"type":"text","chars":236},{"type":"image_url","mime":"image/png","data_url_chars":364306,"url":"<redacted>"}]}]}}
+[10:21:53.492] INFO:vmlx_engine.server:[MEDIA_DIAG] request_shape={"engine_is_mllm": true, "family": "qwen3_5", "media": {"content_arrays": 1, "data_url": 1, "items": 1, "missing_source": 0, "total": 1, "types": {"image_url": 1}, "url_or_path": 0}, "model": "Codex-Quant-Probe-OsaurusAgent-9b-JANG_4M", "omni_modalities": null, "registry_is_mllm": true, "route": "/v1/responses"}
+[10:21:53.532] INFO:vmlx_engine.mllm_batch_generator:MLLMBatchGenerator: Using VLM's language_model for batched generation
+[10:21:53.532] INFO:vmlx_engine.mllm_batch_generator:MLLMBatchGenerator: Vision cache enabled (size=16)
+[10:22:01.097] INFO:vmlx_engine.mllm_batch_generator:MLLM media prefix cache: captured clean media N-1 boundary for resp_1b63990235b0 (8792 tokens) before tensor release
+[10:22:08.955] INFO:vmlx_engine.mllm_batch_generator:MLLM media prefix cache: stored clean media SSM companion for resp_1b63990235b0 (24 layers, 8792-token key)
+[10:22:10.186] INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=8792, num_new_blocks=138, frugal=False, cumulative=external-companion
+[10:22:11.459] INFO:vmlx_engine.mllm_scheduler:VLM Scheduler stored paged Prefix Cache for resp_1b63990235b0: 32 layers, truncated to 8792 tokens with media side-key

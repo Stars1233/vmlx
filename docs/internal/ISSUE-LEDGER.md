@@ -4278,8 +4278,41 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - Retain `PARTIAL`: other affine profiles/custom mix, error/cancel/overwrite,
   large MoE/calibration modes, newly converted Chat/Anthropic/Ollama,
   eviction/restart/paged-off partial L2, and JANGTQ/MXTQ conversion are open.
-  The copied Qwen vision metadata is currently safety-gated
-  `forceTextOnly=true` because this freshly converted affine hybrid artifact
-  lacks independent live-verified vision status; converted-model media remains
-  open rather than being inferred from files. Evidence:
+  The original copied-metadata-only vision claim was not promoted here; the
+  later independent source+live image proof is recorded below. Evidence:
   `docs/internal/release-gates/20260721_electron_jang4m_conversion_agent/`.
+
+## 2026-07-21 - converted affine-JANG Qwen vision Auto/persistence repair
+
+- `CONVERTED-AFFINE-QWEN-VL-AUTO`: `VERIFIED-LIVE_SCOPED`. Panel detection no
+  longer requires a missing historical runtime stamp when the actual converted
+  index carries vision tensors. It still fails closed for explicit
+  `has_vision=false` and metadata-only/text artifacts. This bundle is affine
+  `mx.quantize` JANG_4M, not JANGTQ/MXTQ and not base MLX MXFP.
+- The settings persistence owner was also broken: submitted tri-state Auto was
+  stripped as `undefined`, leaving stale `isMultimodal=false` in SQLite. The
+  current merge deletes explicitly submitted Auto keys while leaving omitted
+  keys untouched and includes restart-required clears in `changedKeys`.
+- Real Electron evidence: Auto removed the DB override; a real Start click
+  eagerly loaded PID 71790 as `model_type=mllm` before a request; argv included
+  `--is-mllm`; the chat exposed the attachment control and sent one real PNG.
+  Engine diagnostics confirmed one `image_url`, `engine_is_mllm=true`, and the
+  VLM scheduler. The final frame has non-empty image-derived content, separate
+  reasoning, no tool calls/warnings, and rendered metrics.
+- The DOM trace contains 17 painted states and progressive content at
+  16.657/16.761/16.865/16.967 seconds. Its `completed=false` field is retained
+  as a probe predicate bug: it incorrectly required the marker twice after the
+  UI and DB were already terminal.
+- Strict output is `PARTIAL`: the UI requested outer prefix `QAFF` and the
+  model emitted `QUAFF`, although it read the inner screenshot marker exactly.
+  No synthetic finalizer was added. The separate raw Responses image probe
+  exact-finaled the screenshot marker over 51 reasoning and 19 content deltas
+  plus one completed terminal.
+- Store-only cache evidence records an 8,792-token media boundary, 24 SSM
+  companion layers, 138 block-disk blocks, and a paged store. Restore/hit,
+  media-salt, eviction, and restart/L2 remain open and are not inferred.
+- Validation: 12 selected Python tests, 374 selected panel tests, and typecheck
+  passed. Stale active-source references to the deleted affine-Qwen audit doc
+  were removed; the still-active runtime/env branches retain production call
+  sites. Evidence:
+  `docs/internal/release-gates/20260721_affine_jang_qwen_vl_panel/`.
