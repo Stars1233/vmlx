@@ -18,7 +18,7 @@ Starting source: `912df1c633f0619f3f4b10c06d54ce7db634de38`
 | Resident prefix/TQ reuse | PASS-LIVE | The identical warm request restored 218/219 tokens as `paged+mixed_swa+tq-native`, emitted the exact transcript, and completed in 0.747 s. |
 | Process-restart L2/TQ restore | PASS-LIVE | After real Electron Save & Restart, L1 began empty while L2 retained eight blocks. The first identical request restored 218/219 tokens as `paged+mixed_swa+disk+tq-native`, emitted the exact transcript in 21 progressive deltas, and completed in 1.072 s. Health recorded four disk hits and four native-TQ hits with zero writes. |
 | Auto-thinking quality/economy | PARTIAL | Auto no longer enters the pre-fix repeated `0.02e+19` collapse, but two real UI Auto turns overthought for 2,896 and 2,271 tokens; the second claimed the audio was absent. This is retained as a reasoning/default-quality issue, not promoted by the Thinking Off transport proof. |
-| Generation-setting slider parity | OPEN | The user reports that visible temperature/top-p/top-k/repetition-penalty values do not match model-owned defaults. This gate does not close that separate issue. Trace bundle precedence, saved session state, UI sliders, outgoing payload, and effective runtime before claiming parity. |
+| Generation-setting slider parity | PASS-LIVE scoped / PARTIAL family breadth | The real affine `JANG_4M` Gemma 4 26B bundle declares temperature 1.0, top-p .95, and top-k 64; it declares no min-p or repetition penalty. Persisted session detection, the real Electron drawer, omitted-override payload, and engine resolution agree on 1.00/.95/64/0.00/1.00. The decisive saved Thinking-Off/tools-Off turn painted partial content before exact completion. JANGTQ/MXTQ, base MLX/MXFP, typed routes, and a non-neutral repetition-penalty artifact remain separate. Evidence: `../20260721_gemma4_26b_sampling_parity/`. |
 
 ## Root cause
 
@@ -62,8 +62,10 @@ higher-rank masks remain supported.
 
 ## Remaining boundaries
 
-- Fix and live-prove model-derived temperature/top-p/top-k/repetition-penalty
-  slider and request/runtime parity.
+- Retain model-derived sampling breadth for JANGTQ/MXTQ, base MLX/MXFP,
+  DSV4/M3 typed routes, and a non-neutral repetition-penalty artifact. The
+  affine Gemma UI/payload/runtime chain is closed at
+  `../20260721_gemma4_26b_sampling_parity/`.
 - Investigate Gemma Auto-thinking economy/attachment awareness without hidden
   sampler clamps, prompt coercion, output rewriting, or forced thinking modes.
 - Keep exact OCR/strict-format, bounded eviction, non-advertised-video

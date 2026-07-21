@@ -4316,3 +4316,27 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   were removed; the still-active runtime/env branches retain production call
   sites. Evidence:
   `docs/internal/release-gates/20260721_affine_jang_qwen_vl_panel/`.
+
+## 2026-07-21 - Gemma 4 26B model-derived sampling parity
+
+- `G4-26-SAMPLING-PARITY`: `VERIFIED-LIVE_SCOPED`. The exact artifact is
+  affine `JANG_4M` (`mx.quantize`, 4.26 measured bits), not JANGTQ/MXTQ and not
+  base MLX MXFP. Its generation config declares sampling on, temperature 1.0,
+  top-p .95, and top-k 64, with no min-p or repetition-penalty declaration.
+- Persisted session config normalized the same defaults to 100/95/64/0/0. The
+  real Electron Chat Settings drawer visibly showed 1.00/.95/64/.00/1.00. In
+  the decisive saved UI2 turn, `CHAT_DIAG` omitted sampler overrides and sent
+  Thinking Off/tools Off; the engine resolved 1.0/.95/64 from the model-owned
+  chain.
+- UI2 painted an intermediate `G4-26-SA` state before exact non-empty
+  `G4-26-SAMP-UI2-DONE`. SQLite row 281 contains no reasoning, tool call, or
+  warning. UI1 is retained as an unsaved-settings negative control because its
+  log truthfully records Thinking/tools still enabled.
+- Source/dead-code trace confirms the generation-config readers, session
+  normalization, drawer fallback, shared request builder, and engine sampler
+  resolver all have production call sites. No code change, compatibility shim,
+  prompt coercion, or output rewrite was justified.
+- Retain `PARTIAL` family breadth: JANGTQ/MXTQ, base MLX/MXFP, DSV4/M3 typed
+  routes, and a non-neutral repetition-penalty artifact remain separate. Do not
+  rerun the already-proven generic protocol explicit-zero gate. Evidence:
+  `docs/internal/release-gates/20260721_gemma4_26b_sampling_parity/`.
