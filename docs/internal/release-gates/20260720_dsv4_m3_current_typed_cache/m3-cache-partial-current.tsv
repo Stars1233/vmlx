@@ -1,0 +1,12 @@
+1.354081	response.output_text.delta	"M"
+1.394357	response.output_text.delta	"3"
+1.434894	response.output_text.delta	"-C"
+1.475323	response.output_text.delta	"ACHE"
+1.515459	response.output_text.delta	"-P"
+1.555744	response.output_text.delta	"ART"
+1.595734	response.output_text.delta	"IAL"
+1.635918	response.output_text.delta	"-D"
+1.676070	response.output_text.delta	"ONE"
+1.717080	response.output_text.done	{"content_index": 0, "item_id": "item_fe9f0e2b62a2", "output_index": 0, "sequence_number": 12, "text": "M3-CACHE-PARTIAL-DONE", "type": "response.output_text.done"}
+1.717226	response.completed	{"response": {"created_at": 1784602226, "id": "resp_e7674cb32b2d", "model": "JANGQ-AI/MiniMax-M3-Coder-Small", "object": "response", "output": [{"content": [{"annotations": [], "text": "M3-CACHE-PARTIAL-DONE", "type": "output_text"}], "id": "item_fe9f0e2b62a2", "role": "assistant", "status": "completed", "type": "message"}], "output_text": "M3-CACHE-PARTIAL-DONE", "status": "completed", "usage": {"input_tokens": 1512, "input_tokens_details": {"cache_detail": "paged", "cached_tokens": 1472}, "output_tokens": 10, "total_tokens": 1522}}, "sequence_number": 15, "type": "response.completed"}
+SUMMARY	{"elapsed": 1.717485, "event_types": ["response.completed", "response.content_part.added", "response.content_part.done", "response.created", "response.output_item.added", "response.output_item.done", "response.output_text.delta", "response.output_text.done"], "label": "partial", "reasoning_chars": 0, "usage": {"input_tokens": 1512, "input_tokens_details": {"cache_detail": "paged", "cached_tokens": 1472}, "output_tokens": 10, "total_tokens": 1522}, "visible": "M3-CACHE-PARTIAL-DONE", "warnings": null}

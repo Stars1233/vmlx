@@ -3761,3 +3761,32 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   reported the PATH `vmlx-engine` version as 1.6.12. Trace package/source/bundle
   version surfaces before the next checkpoint; do not infer runtime source from
   the displayed version alone.
+
+## 2026-07-20 - current-source DSV4/M3 typed cache and M3 tool continuation
+
+- `DSV4-M3-CURRENT-TYPED-CACHE`: `VERIFIED-LIVE_SCOPED`. Both artifacts were
+  selected and launched through the real Electron UI with single-model mode
+  enabled; each eagerly materialized before its first request and replaced the
+  prior engine. DSV4 retained its native SWA/CSA/HCA composite path with pool
+  codec and no generic TQ. M3 retained dense KV layers 0-2 plus native MSA
+  index-key layers 3-59 and no generic TQ.
+- DSV4 exact warm reuse restored 1,722/1,723 tokens as `paged+dsv4`; after a
+  real UI restart it restored the same prefix as `paged+dsv4+disk`. Its
+  nonterminal partial request safely recomputed because terminal composite
+  CSA/HCA state was absent. The explicit pool-codec Off UI control changed
+  health and raw progressive output still exact-finaled.
+- `M3-PERSISTED-TQ-TRUTH`: fixed. The loader rejected TQ, but the disk-store
+  health/admission gate remained enabled. The M3 CLI branch now sets
+  `VMLX_DISABLE_TQ_KV=1`; after real Electron Save & Restart, health reports
+  native MSA, `tq_native_enabled=false`, and a real 23-block SSD restore.
+- M3 exact warm reused 1,495/1,500 tokens. Same-process partial reuse restored
+  1,472/1,512; after process replacement and empty L1, a new suffix restored
+  1,472/1,514 from SSD as `paged+disk`, then stored only the new tail.
+- Current Electron M3 turns have non-empty output and prompt-distinct reasoning.
+  The second same-chat turn generated and executed exactly one
+  `file_info(panel/package.json)` call and exact-finaled
+  `M3-HEAD-TOOL-DONE SIZE=5.2 KB` with no warning or zero-tool card.
+- Validation: 132 focused Python tests. Current-source M3 VL remains PARTIAL
+  because health reports `vl_runtime_available=false`; this cache/tool gate
+  does not promote media support. Evidence:
+  `docs/internal/release-gates/20260720_dsv4_m3_current_typed_cache/`.

@@ -1,0 +1,16 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.11, pytest-9.0.2, pluggy-1.6.0
+rootdir: /Users/eric/mlx/vllm-mlx-release-1.6.13
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+plugins: asyncio-1.3.0, anyio-4.13.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 132 items
+
+tests/test_turboquant_cache_contract.py .........                        [  6%]
+tests/test_minimax_m3_cache_paths.py ................................... [ 33%]
+......                                                                   [ 37%]
+tests/test_dsv4_paged_cache.py ......................................... [ 68%]
+.......................                                                  [ 86%]
+tests/test_dsv4_contract_hardening.py ..................                 [100%]
+
+============================= 132 passed in 5.45s ==============================

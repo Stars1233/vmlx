@@ -1,0 +1,12 @@
+6.777972	response.output_text.delta	"DS"
+6.881056	response.output_text.delta	"V"
+6.922326	response.output_text.delta	"4"
+6.963377	response.output_text.delta	"-C"
+7.000717	response.output_text.delta	"ACHE"
+7.052890	response.output_text.delta	"-C"
+7.093688	response.output_text.delta	"URRENT"
+7.134647	response.output_text.delta	"-D"
+7.171895	response.output_text.delta	"ONE"
+7.222456	response.output_text.done	{"content_index": 0, "item_id": "item_5b2527b750a2", "output_index": 0, "sequence_number": 12, "text": "DSV4-CACHE-CURRENT-DONE", "type": "response.output_text.done"}
+7.335434	response.completed	{"response": {"created_at": 1784601572, "id": "resp_e5497fc19661", "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK", "object": "response", "output": [{"content": [{"annotations": [], "text": "DSV4-CACHE-CURRENT-DONE", "type": "output_text"}], "id": "item_5b2527b750a2", "role": "assistant", "status": "completed", "type": "message"}], "output_text": "DSV4-CACHE-CURRENT-DONE", "status": "completed", "usage": {"input_tokens": 1723, "input_tokens_details": {"cache_detail": "paged+dsv4+disk", "cached_tokens": 1722}, "output_tokens": 10, "total_tokens": 1733}}, "sequence_number": 15, "type": "response.completed"}
+SUMMARY	{"elapsed": 7.335706, "event_types": ["response.completed", "response.content_part.added", "response.content_part.done", "response.created", "response.output_item.added", "response.output_item.done", "response.output_text.delta", "response.output_text.done"], "label": "restart", "reasoning_chars": 0, "usage": {"input_tokens": 1723, "input_tokens_details": {"cache_detail": "paged+dsv4+disk", "cached_tokens": 1722}, "output_tokens": 10, "total_tokens": 1733}, "visible": "DSV4-CACHE-CURRENT-DONE", "warnings": null}
