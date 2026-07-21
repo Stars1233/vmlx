@@ -4423,3 +4423,22 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   attachment. Existing audio/media-salt/L2/protocol rows were not repeated.
   Focused validation: 377 passed plus typecheck. Evidence:
   `docs/internal/release-gates/20260721_nemotron_omni_auto_detection/`.
+
+## 2026-07-21 - Parser Auto selections survive real Start
+
+- `PARSER-AUTO-START-PERSIST`: `VERIFIED-LIVE_SCOPED`. The retained pre-fix
+  Electron drawer showed launch-detected `Nemotron` and `DeepSeek R1` as
+  manual selections after Start. `_startSessionInner` had reused its mutable
+  launch config for the DB write, materializing detected parser values into
+  persisted user intent.
+- Current source captures the pre-detection Auto state and restores only the
+  persisted copy to `auto`; launch-local effective parser values remain
+  unchanged. After a clean Electron relaunch and real Start, the drawer still
+  showed `Auto (detected: nemotron)` and
+  `Auto (detected: deepseek_r1)`, SQLite stored both parser fields as `auto`,
+  and the actual venv engine argv still carried `--tool-call-parser nemotron`
+  and `--reasoning-parser deepseek_r1`.
+- This is a settings-persistence closure, not another Nemotron generation or
+  family-wide parser-quality claim. Validation: 289 settings-flow tests plus
+  typecheck. Evidence:
+  `docs/internal/release-gates/20260721_nemotron_omni_auto_detection/`.

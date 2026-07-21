@@ -1,0 +1,22 @@
+diff --git a/panel/src/main/sessions.ts b/panel/src/main/sessions.ts
+index 79857b8f8..a1a1e51cc 100644
+--- a/panel/src/main/sessions.ts
++++ b/panel/src/main/sessions.ts
+@@ -1730,6 +1730,8 @@ export class SessionManager extends EventEmitter {
+       config,
+       'isMultimodal',
+     )
++    const toolParserWasAuto = config.toolCallParser == null || config.toolCallParser === 'auto'
++    const reasoningParserWasAuto = config.reasoningParser == null || config.reasoningParser === 'auto'
+     config.modelPath = session.modelPath
+@@ -1923,6 +1925,12 @@ export class SessionManager extends EventEmitter {
+           if (!hadExplicitMultimodalOverride) {
+             delete persistedConfig.isMultimodal
+           }
++          if (toolParserWasAuto) {
++            persistedConfig.toolCallParser = 'auto'
++          }
++          if (reasoningParserWasAuto) {
++            persistedConfig.reasoningParser = 'auto'
++          }
+           db.updateSession(sessionId, { config: JSON.stringify(persistedConfig) })

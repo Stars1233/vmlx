@@ -123,6 +123,47 @@ Synthetic registry coverage fails closed when Omni metadata exists without
 matching component tensors. Command-preview coverage pins Auto, Force On, and
 Force Off routing.
 
+## Parser Auto persistence follow-on
+
+The same current-source Electron session exposed a distinct global settings
+persistence defect after the media Auto repair. Before this follow-on fix, a
+real Start resolved the session's parser Auto selections for launch and then
+wrote those detected values back as manual overrides. The real drawer showed
+`Nemotron` and `DeepSeek R1`, rather than:
+
+- `Auto (detected: nemotron)`
+- `Auto (detected: deepseek_r1)`
+
+The retained negative-control screenshot is
+`07-parser-manualized-before-fix.png`.
+
+`panel/src/main/sessions.ts` now captures whether each parser was Auto before
+startup normalization and artifact refresh. The launch-local config still
+receives the detected effective parsers, so the current engine argv contains
+`--tool-call-parser nemotron` and `--reasoning-parser deepseek_r1`. Only the
+persisted copy restores `toolCallParser=auto` and `reasoningParser=auto`.
+
+Current live proof after a clean Electron relaunch and real Start:
+
+- `08-parser-auto-before-start.png` shows both parser controls on Auto before
+  Start.
+- `09-parser-auto-after-start.png` shows both controls still on Auto after
+  Start.
+- `parser-auto-live-dom.json` records the exact selected labels from the live
+  renderer after Start.
+- `parser-auto-session-after-start.json` records both persisted values as
+  `auto`, no explicit model-family override, and no materialized multimodal
+  override.
+- `parser-auto-argv.txt` records the actual venv engine process and its
+  detected effective parser flags.
+- `parser-auto-health.json` is the current eager-loaded health snapshot.
+
+The focused regression is 289/289 `settings-flow` tests plus panel typecheck;
+see `parser-auto-focused-validation.txt`. No generation, audio, cache, or
+protocol row was rerun for this settings-only follow-on. The source trace found
+one production persistence owner in `_startSessionInner`; no obsolete parser
+persistence helper or duplicate replacement branch was introduced.
+
 ## Remaining boundary
 
 This gate does not promote signed-app behavior, Stage 2 native MLX quality, or
