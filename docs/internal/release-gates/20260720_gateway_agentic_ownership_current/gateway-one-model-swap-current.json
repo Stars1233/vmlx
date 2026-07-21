@@ -1,0 +1,740 @@
+{
+  "before": {
+    "gateway": {
+      "status": "ok",
+      "gateway_port": 8088,
+      "single_model_mode": true,
+      "backends": [
+        {
+          "id": "c3011773-8e0b-487c-b0be-09fb06cc17ed",
+          "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+          "status": "running",
+          "port": 8003
+        },
+        {
+          "id": "8bea88a2-df48-48b2-a192-a8b8e09b7945",
+          "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+          "status": "stopped",
+          "port": 8002
+        },
+        {
+          "id": "da93e052-0313-489a-a56a-62f22a2ce9af",
+          "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M",
+          "status": "stopped",
+          "port": 8141
+        },
+        {
+          "id": "89a68557-452b-4850-b189-ba9d57c4d6c5",
+          "model": "dealignai/LFM2.5-8B-A1B-MXFP4-CRACK",
+          "status": "stopped",
+          "port": 8016
+        },
+        {
+          "id": "799e1b6f-c60d-40a3-b111-b9408769035e",
+          "model": "dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK",
+          "status": "stopped",
+          "port": 8001
+        },
+        {
+          "id": "4bf52e96-0489-4184-997c-8203f3dfe2ae",
+          "model": "JANGQ-AI/Laguna-XS.2-JANGTQ",
+          "status": "stopped",
+          "port": 8000
+        }
+      ]
+    },
+    "processes": [
+      "15072 65319984    23:12 /Users/eric/mlx/vllm-mlx/.venv/bin/python3 /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine serve /Users/eric/.mlxstudio/models/JANGQ-AI/MiniMax-M3-Coder-Small --host 127.0.0.1 --port 8003 --timeout 900 --max-num-seqs 1 --prefill-batch-size 512 --prefill-step-size 2048 --completion-batch-size 512 --continuous-batching --tool-call-parser minimax_m3 --enable-auto-tool-choice --reasoning-parser minimax_m3 --cache-memory-percent 0.15 --use-paged-cache --paged-cache-block-size 64 --max-cache-blocks 1000 --enable-block-disk-cache --block-disk-cache-max-gb 10 --stream-interval 1"
+    ]
+  },
+  "steps": [
+    {
+      "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+      "marker": "DSV4-GATEWAY-SWAP-DONE",
+      "stream": {
+        "status": 200,
+        "elapsed": 55.869859,
+        "events": [
+          {
+            "at": 48.779497,
+            "data": {
+              "id": "chatcmpl-f642742b",
+              "object": "chat.completion.chunk",
+              "created": 1784603698,
+              "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 55.354476,
+            "data": {
+              "id": "chatcmpl-f642742b",
+              "object": "chat.completion.chunk",
+              "created": 1784603698,
+              "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "DS"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 55.45155,
+            "data": {
+              "id": "chatcmpl-f642742b",
+              "object": "chat.completion.chunk",
+              "created": 1784603698,
+              "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "V"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 55.499499,
+            "data": {
+              "id": "chatcmpl-f642742b",
+              "object": "chat.completion.chunk",
+              "created": 1784603698,
+              "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "4"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 55.540239,
+            "data": {
+              "id": "chatcmpl-f642742b",
+              "object": "chat.completion.chunk",
+              "created": 1784603698,
+              "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-G"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 55.581183,
+            "data": {
+              "id": "chatcmpl-f642742b",
+              "object": "chat.completion.chunk",
+              "created": 1784603698,
+              "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "ATE"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 55.622627,
+            "data": {
+              "id": "chatcmpl-f642742b",
+              "object": "chat.completion.chunk",
+              "created": 1784603698,
+              "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "WAY"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 55.665635,
+            "data": {
+              "id": "chatcmpl-f642742b",
+              "object": "chat.completion.chunk",
+              "created": 1784603698,
+              "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-S"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 55.706253,
+            "data": {
+              "id": "chatcmpl-f642742b",
+              "object": "chat.completion.chunk",
+              "created": 1784603698,
+              "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "W"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 55.747206,
+            "data": {
+              "id": "chatcmpl-f642742b",
+              "object": "chat.completion.chunk",
+              "created": 1784603698,
+              "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "AP"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 55.788634,
+            "data": {
+              "id": "chatcmpl-f642742b",
+              "object": "chat.completion.chunk",
+              "created": 1784603698,
+              "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-D"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 55.831741,
+            "data": {
+              "id": "chatcmpl-f642742b",
+              "object": "chat.completion.chunk",
+              "created": 1784603698,
+              "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "ONE"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 55.869465,
+            "data": {
+              "id": "chatcmpl-f642742b",
+              "object": "chat.completion.chunk",
+              "created": 1784603698,
+              "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {},
+                  "finish_reason": "stop"
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 55.869757,
+            "data": {
+              "id": "chatcmpl-f642742b",
+              "object": "chat.completion.chunk",
+              "created": 1784603698,
+              "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+              "choices": [],
+              "usage": {
+                "prompt_tokens": 26,
+                "completion_tokens": 12,
+                "total_tokens": 38
+              }
+            }
+          },
+          {
+            "at": 55.869778,
+            "data": "[DONE]"
+          }
+        ],
+        "content": "DSV4-GATEWAY-SWAP-DONE",
+        "content_deltas": [
+          {
+            "at": 55.354476,
+            "text": "DS"
+          },
+          {
+            "at": 55.45155,
+            "text": "V"
+          },
+          {
+            "at": 55.499499,
+            "text": "4"
+          },
+          {
+            "at": 55.540239,
+            "text": "-G"
+          },
+          {
+            "at": 55.581183,
+            "text": "ATE"
+          },
+          {
+            "at": 55.622627,
+            "text": "WAY"
+          },
+          {
+            "at": 55.665635,
+            "text": "-S"
+          },
+          {
+            "at": 55.706253,
+            "text": "W"
+          },
+          {
+            "at": 55.747206,
+            "text": "AP"
+          },
+          {
+            "at": 55.788634,
+            "text": "-D"
+          },
+          {
+            "at": 55.831741,
+            "text": "ONE"
+          }
+        ],
+        "reasoning": "",
+        "reasoning_deltas": [],
+        "finish": [
+          "stop"
+        ],
+        "done": 1
+      },
+      "gateway": {
+        "status": "ok",
+        "gateway_port": 8088,
+        "single_model_mode": true,
+        "backends": [
+          {
+            "id": "8bea88a2-df48-48b2-a192-a8b8e09b7945",
+            "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+            "status": "running",
+            "port": 8002
+          },
+          {
+            "id": "c3011773-8e0b-487c-b0be-09fb06cc17ed",
+            "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+            "status": "stopped",
+            "port": 8003
+          },
+          {
+            "id": "da93e052-0313-489a-a56a-62f22a2ce9af",
+            "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M",
+            "status": "stopped",
+            "port": 8141
+          },
+          {
+            "id": "89a68557-452b-4850-b189-ba9d57c4d6c5",
+            "model": "dealignai/LFM2.5-8B-A1B-MXFP4-CRACK",
+            "status": "stopped",
+            "port": 8016
+          },
+          {
+            "id": "799e1b6f-c60d-40a3-b111-b9408769035e",
+            "model": "dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK",
+            "status": "stopped",
+            "port": 8001
+          },
+          {
+            "id": "4bf52e96-0489-4184-997c-8203f3dfe2ae",
+            "model": "JANGQ-AI/Laguna-XS.2-JANGTQ",
+            "status": "stopped",
+            "port": 8000
+          }
+        ]
+      },
+      "processes": [
+        "17066 35946672    00:56 /Users/eric/mlx/vllm-mlx/.venv/bin/python3 /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine serve /Volumes/EricsLLMDrive/dealignai/DeepSeek-V4-Flash-JANG-CRACK --host 127.0.0.1 --port 8002 --timeout 900 --max-num-seqs 1 --continuous-batching --tool-call-parser dsml --enable-auto-tool-choice --reasoning-parser deepseek_r1 --dsv4-enable-prefix-cache --cache-memory-percent 0.15 --use-paged-cache --paged-cache-block-size 256 --max-cache-blocks 1000 --enable-block-disk-cache --block-disk-cache-max-gb 10 --stream-interval 1"
+      ]
+    },
+    {
+      "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+      "marker": "M3-GATEWAY-SWAP-DONE",
+      "stream": {
+        "status": 200,
+        "elapsed": 15.709421,
+        "events": [
+          {
+            "at": 12.406777,
+            "data": {
+              "id": "chatcmpl-fbf662c2",
+              "object": "chat.completion.chunk",
+              "created": 1784603718,
+              "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 15.364873,
+            "data": {
+              "id": "chatcmpl-fbf662c2",
+              "object": "chat.completion.chunk",
+              "created": 1784603718,
+              "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "M"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 15.402678,
+            "data": {
+              "id": "chatcmpl-fbf662c2",
+              "object": "chat.completion.chunk",
+              "created": 1784603718,
+              "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "3"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 15.44052,
+            "data": {
+              "id": "chatcmpl-fbf662c2",
+              "object": "chat.completion.chunk",
+              "created": 1784603718,
+              "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-G"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 15.479055,
+            "data": {
+              "id": "chatcmpl-fbf662c2",
+              "object": "chat.completion.chunk",
+              "created": 1784603718,
+              "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "ATE"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 15.517108,
+            "data": {
+              "id": "chatcmpl-fbf662c2",
+              "object": "chat.completion.chunk",
+              "created": 1784603718,
+              "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "WAY"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 15.555009,
+            "data": {
+              "id": "chatcmpl-fbf662c2",
+              "object": "chat.completion.chunk",
+              "created": 1784603718,
+              "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-S"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 15.592832,
+            "data": {
+              "id": "chatcmpl-fbf662c2",
+              "object": "chat.completion.chunk",
+              "created": 1784603718,
+              "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "WAP"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 15.630767,
+            "data": {
+              "id": "chatcmpl-fbf662c2",
+              "object": "chat.completion.chunk",
+              "created": 1784603718,
+              "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-D"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 15.66886,
+            "data": {
+              "id": "chatcmpl-fbf662c2",
+              "object": "chat.completion.chunk",
+              "created": 1784603718,
+              "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "ONE"
+                  }
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 15.708987,
+            "data": {
+              "id": "chatcmpl-fbf662c2",
+              "object": "chat.completion.chunk",
+              "created": 1784603718,
+              "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {},
+                  "finish_reason": "stop"
+                }
+              ],
+              "usage": null
+            }
+          },
+          {
+            "at": 15.709347,
+            "data": {
+              "id": "chatcmpl-fbf662c2",
+              "object": "chat.completion.chunk",
+              "created": 1784603718,
+              "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+              "choices": [],
+              "usage": {
+                "prompt_tokens": 183,
+                "completion_tokens": 10,
+                "total_tokens": 193,
+                "prompt_tokens_details": {
+                  "cached_tokens": 128,
+                  "cache_detail": "paged+disk"
+                }
+              }
+            }
+          },
+          {
+            "at": 15.709369,
+            "data": "[DONE]"
+          }
+        ],
+        "content": "M3-GATEWAY-SWAP-DONE",
+        "content_deltas": [
+          {
+            "at": 15.364873,
+            "text": "M"
+          },
+          {
+            "at": 15.402678,
+            "text": "3"
+          },
+          {
+            "at": 15.44052,
+            "text": "-G"
+          },
+          {
+            "at": 15.479055,
+            "text": "ATE"
+          },
+          {
+            "at": 15.517108,
+            "text": "WAY"
+          },
+          {
+            "at": 15.555009,
+            "text": "-S"
+          },
+          {
+            "at": 15.592832,
+            "text": "WAP"
+          },
+          {
+            "at": 15.630767,
+            "text": "-D"
+          },
+          {
+            "at": 15.66886,
+            "text": "ONE"
+          }
+        ],
+        "reasoning": "",
+        "reasoning_deltas": [],
+        "finish": [
+          "stop"
+        ],
+        "done": 1
+      },
+      "gateway": {
+        "status": "ok",
+        "gateway_port": 8088,
+        "single_model_mode": true,
+        "backends": [
+          {
+            "id": "c3011773-8e0b-487c-b0be-09fb06cc17ed",
+            "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+            "status": "running",
+            "port": 8003
+          },
+          {
+            "id": "8bea88a2-df48-48b2-a192-a8b8e09b7945",
+            "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+            "status": "stopped",
+            "port": 8002
+          },
+          {
+            "id": "da93e052-0313-489a-a56a-62f22a2ce9af",
+            "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M",
+            "status": "stopped",
+            "port": 8141
+          },
+          {
+            "id": "89a68557-452b-4850-b189-ba9d57c4d6c5",
+            "model": "dealignai/LFM2.5-8B-A1B-MXFP4-CRACK",
+            "status": "stopped",
+            "port": 8016
+          },
+          {
+            "id": "799e1b6f-c60d-40a3-b111-b9408769035e",
+            "model": "dealignai/Nemotron-Omni-Nano-JANGTQ-CRACK",
+            "status": "stopped",
+            "port": 8001
+          },
+          {
+            "id": "4bf52e96-0489-4184-997c-8203f3dfe2ae",
+            "model": "JANGQ-AI/Laguna-XS.2-JANGTQ",
+            "status": "stopped",
+            "port": 8000
+          }
+        ]
+      },
+      "processes": [
+        "17914 62244704    00:16 /Users/eric/mlx/vllm-mlx/.venv/bin/python3 /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine serve /Users/eric/.mlxstudio/models/JANGQ-AI/MiniMax-M3-Coder-Small --host 127.0.0.1 --port 8003 --timeout 900 --max-num-seqs 1 --prefill-batch-size 512 --prefill-step-size 2048 --completion-batch-size 512 --continuous-batching --tool-call-parser minimax_m3 --enable-auto-tool-choice --reasoning-parser minimax_m3 --cache-memory-percent 0.15 --use-paged-cache --paged-cache-block-size 64 --max-cache-blocks 1000 --enable-block-disk-cache --block-disk-cache-max-gb 10 --stream-interval 1"
+      ]
+    }
+  ],
+  "checks": {
+    "single_mode_true_all_states": true,
+    "one_engine_after_each_swap": true,
+    "requested_backend_only_running": true,
+    "exact_progressive_streams": true
+  }
+}

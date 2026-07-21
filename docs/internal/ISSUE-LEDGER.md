@@ -3790,3 +3790,31 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   because health reports `vl_runtime_available=false`; this cache/tool gate
   does not promote media support. Evidence:
   `docs/internal/release-gates/20260720_dsv4_m3_current_typed_cache/`.
+
+## 2026-07-20 - current-source gateway protocols and one-model ownership
+
+- `GATEWAY-AGENTIC-PROTOCOLS`: `VERIFIED-LIVE_SCOPED`. The real Electron API
+  drawer showed the current dev gateway at `127.0.0.1:8088`, LAN Off, Single
+  Model On, and one running MiniMax-M3 backend. Raw stream and non-stream Chat,
+  Responses, Anthropic, and Ollama calls all returned HTTP 200, identical
+  non-empty output, progressive stream deltas, and truthful native terminals.
+- With Auto reasoning, every protocol emitted 512 reasoning deltas separately
+  from 12 progressive content deltas and exact-finaled. This proves transport
+  separation, not reasoning economy: the complete 512-token budget was used.
+- `GATEWAY-TOOL-CONTINUATION`: `VERIFIED-LIVE_SCOPED`. Chat, Responses,
+  Anthropic, and Ollama each emitted one schema-valid
+  `file_info(panel/package.json)` call, consumed the real 5.2 KB result, and
+  progressively exact-finaled without a second call. OpenAI stream/non-stream
+  no-tool and continuation controls also completed.
+- `GATEWAY-ONE-MODEL-AUTOSWAP`: `VERIFIED-LIVE_SCOPED`. Requests through 8088
+  performed M3 -> DSV4 -> M3 replacement. Every state had
+  `single_model_mode=true`, only the requested backend running, exactly one
+  engine process, progressive exact output, and updated gateway health.
+- Focused validation: 92 Python adapter passes; 87 panel gateway/session passes
+  with three skips. Evidence:
+  `docs/internal/release-gates/20260720_gateway_agentic_ownership_current/`.
+- Retained `PARTIAL/OPEN`: current LAN enable/rollback, port-conflict and
+  network-loss injection, concurrent/long gateway soak, signed-app repetition,
+  other parser/model families, and media-bearing gateway turns. A stale
+  installed app remains separately bound to 8081; this gate deliberately
+  isolated the current dev app on 8088 and does not claim stale-listener cleanup.
