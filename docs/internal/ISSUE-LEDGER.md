@@ -4183,3 +4183,31 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   active-request LAN/port mutation, concurrent loss/swap soak, other parser
   families, full suites, and signed-app repetition remain open. Evidence:
   `docs/internal/release-gates/20260721_gateway_backend_loss_current/`.
+
+## 2026-07-21 - Electron gateway active-request reconfiguration safety
+
+- `GATEWAY-ACTIVE-REQUEST-RECONFIGURE`: `FIXED_SOURCE_VERIFIED_LIVE_SCOPED`.
+  The retained pre-fix live run clicked the real LAN toggle during a
+  21,266.62 ms Chat stream. The UI changed optimistically, but all eight new
+  gateway health attempts failed until the original stream ended and
+  `server.close()` finally allowed the listener to rebind.
+- Current source tracks non-liveness responses from admission through
+  `finish`/`close`. `restart()` now rejects host/port mutation before closing
+  the listener while a model/API request is active. `/health` remains live and
+  exposes `active_requests`; the Electron status payload uses the same owner.
+- Dead path removed: `gateway:restart` no longer writes host/port to SQLite
+  before bind. `_tryListen()` is the sole success-only persistence owner.
+- Current-source proof fully relaunched Electron, printed the intended venv
+  engine path, and loaded Qwen through the real Start button before a request.
+  During a 127-delta stream, the visible LAN toggle rolled back with the busy
+  error; all eight health probes stayed 200 and the stream completed normally.
+  Immediate recovery exact-finaled over nine deltas with stop + DONE.
+- Occupied port `8005` visibly failed while gateway `8088`, model `8005`, and
+  persisted localhost/8088 remained healthy. Idle LAN On then succeeded at
+  `0.0.0.0:8088`; LAN Off restored the retained localhost state.
+- Focused validation: 91 passed / 3 skipped across five gateway test files,
+  TypeScript typecheck, and diff check. Evidence:
+  `docs/internal/release-gates/20260721_gateway_active_reconfigure_current/`.
+- Retain `PARTIAL`: concurrent reconfigure plus model-swap/backend-loss races,
+  longer soak, other running families, full suites, and signed-app repetition
+  remain open.
