@@ -1,0 +1,221 @@
+{
+  "summary": {
+    "status": 200,
+    "fixture": "/Users/eric/mlx/vllm-mlx-release-1.6.13/docs/internal/release-gates/20260716_release_closeout/gemma4-media-cache-current/gemma4-media-a-video.mp4",
+    "fixture_sha256": "842e3540854bfec12eda7701f9baa25fcd182ac3dff39088c758f095355111ed",
+    "content": "FRANCMASSONIC",
+    "content_delta_count": 6,
+    "reasoning_event_count": 0,
+    "done_event_count": 1,
+    "completed_event_count": 1,
+    "last_content_to_completed_seconds": 0.023442,
+    "usage": {
+      "input_tokens": 1109,
+      "output_tokens": 11,
+      "total_tokens": 1120
+    },
+    "checks": {
+      "status_200": true,
+      "exact_content": false,
+      "progressive_content": true,
+      "thinking_off_separate": true,
+      "single_done": true,
+      "single_completed": true
+    }
+  },
+  "events": [
+    {
+      "t": 0.135073,
+      "event": {
+        "type": "response.created",
+        "response": {
+          "id": "resp_2ee880f484eb",
+          "object": "response",
+          "created_at": 1784605444,
+          "status": "in_progress",
+          "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M",
+          "output": []
+        },
+        "sequence_number": 0
+      }
+    },
+    {
+      "t": 0.135092,
+      "event": {
+        "type": "response.output_item.added",
+        "output_index": 0,
+        "item": {
+          "id": "item_9b6f4a7ee33a",
+          "type": "message",
+          "status": "in_progress",
+          "role": "assistant",
+          "content": []
+        },
+        "sequence_number": 1
+      }
+    },
+    {
+      "t": 0.135103,
+      "event": {
+        "type": "response.content_part.added",
+        "item_id": "item_9b6f4a7ee33a",
+        "output_index": 0,
+        "content_index": 0,
+        "part": {
+          "type": "output_text",
+          "text": "",
+          "annotations": []
+        },
+        "sequence_number": 2
+      }
+    },
+    {
+      "t": 1.453541,
+      "event": {
+        "type": "response.output_text.delta",
+        "item_id": "item_9b6f4a7ee33a",
+        "output_index": 0,
+        "content_index": 0,
+        "delta": "FR",
+        "sequence_number": 3
+      }
+    },
+    {
+      "t": 1.475367,
+      "event": {
+        "type": "response.output_text.delta",
+        "item_id": "item_9b6f4a7ee33a",
+        "output_index": 0,
+        "content_index": 0,
+        "delta": "AN",
+        "sequence_number": 4
+      }
+    },
+    {
+      "t": 1.497092,
+      "event": {
+        "type": "response.output_text.delta",
+        "item_id": "item_9b6f4a7ee33a",
+        "output_index": 0,
+        "content_index": 0,
+        "delta": "CM",
+        "sequence_number": 5
+      }
+    },
+    {
+      "t": 1.518962,
+      "event": {
+        "type": "response.output_text.delta",
+        "item_id": "item_9b6f4a7ee33a",
+        "output_index": 0,
+        "content_index": 0,
+        "delta": "AS",
+        "sequence_number": 6
+      }
+    },
+    {
+      "t": 1.540818,
+      "event": {
+        "type": "response.output_text.delta",
+        "item_id": "item_9b6f4a7ee33a",
+        "output_index": 0,
+        "content_index": 0,
+        "delta": "SON",
+        "sequence_number": 7
+      }
+    },
+    {
+      "t": 1.562681,
+      "event": {
+        "type": "response.output_text.delta",
+        "item_id": "item_9b6f4a7ee33a",
+        "output_index": 0,
+        "content_index": 0,
+        "delta": "IC",
+        "sequence_number": 8
+      }
+    },
+    {
+      "t": 1.585819,
+      "event": {
+        "type": "response.output_text.done",
+        "item_id": "item_9b6f4a7ee33a",
+        "output_index": 0,
+        "content_index": 0,
+        "text": "FRANCMASSONIC",
+        "sequence_number": 9
+      }
+    },
+    {
+      "t": 1.585841,
+      "event": {
+        "type": "response.content_part.done",
+        "item_id": "item_9b6f4a7ee33a",
+        "output_index": 0,
+        "content_index": 0,
+        "part": {
+          "type": "output_text",
+          "text": "FRANCMASSONIC",
+          "annotations": []
+        },
+        "sequence_number": 10
+      }
+    },
+    {
+      "t": 1.586052,
+      "event": {
+        "type": "response.output_item.done",
+        "output_index": 0,
+        "item": {
+          "id": "item_9b6f4a7ee33a",
+          "type": "message",
+          "status": "completed",
+          "role": "assistant",
+          "content": [
+            {
+              "type": "output_text",
+              "text": "FRANCMASSONIC",
+              "annotations": []
+            }
+          ]
+        },
+        "sequence_number": 11
+      }
+    },
+    {
+      "t": 1.586123,
+      "event": {
+        "type": "response.completed",
+        "response": {
+          "id": "resp_2ee880f484eb",
+          "object": "response",
+          "created_at": 1784605444,
+          "status": "completed",
+          "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M",
+          "output_text": "FRANCMASSONIC",
+          "output": [
+            {
+              "id": "item_9b6f4a7ee33a",
+              "type": "message",
+              "status": "completed",
+              "role": "assistant",
+              "content": [
+                {
+                  "type": "output_text",
+                  "text": "FRANCMASSONIC",
+                  "annotations": []
+                }
+              ]
+            }
+          ],
+          "usage": {
+            "input_tokens": 1109,
+            "output_tokens": 11,
+            "total_tokens": 1120
+          }
+        },
+        "sequence_number": 12
+      }
+    }
+  ]
+}

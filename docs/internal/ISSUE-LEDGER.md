@@ -3838,3 +3838,26 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   Broader OCR quality, stochastic Auto media, signed-app repetition, and
   REAP32 headroom remain `PARTIAL/OPEN`. Evidence:
   `docs/internal/release-gates/20260720_m3_media_capability_truth_current/`.
+
+## 2026-07-20 - Gemma native-video versus sampled-frame capability truth
+
+- `G4-VIDEO-CAPABILITY-TRUTH`: `PASS-SOURCE+LIVE_SCOPED`. The tested affine
+  12B bundle explicitly declares native video false while carrying a video
+  token/processor that the current engine safely routes through sampled image
+  frames. Source now preserves both facts: native declaration false, runtime
+  bridge supported. `/v1/capabilities` no longer adds bridge-only video to
+  `declared_modalities`, but retains video in the runtime-supported surface.
+- Real Electron Start-button loading materialized PID 20930 on port 8141 before
+  a request. The visible drawer matched bundle defaults Auto/1.00/0.95/top-k
+  64/repetition 1.00. A fresh blind MP4 turn emitted progressive visible
+  prefixes and completed cleanly with null reasoning/no tools/no warning.
+- `G4-VIDEO-BLIND-OCR`: `FAIL-QUALITY/PARTIAL-ROOT-CAUSE`. The fresh UI final
+  was `FRANCMASSONIC`; raw direct-PNG and MP4-frame routes also missed the
+  visible `BANANA8426` marker while retaining progressive content and truthful
+  terminals. A history-contaminated same-chat exact answer is excluded.
+  Because direct image and video fallback fail on the same pixels, this is not
+  promoted as a video-only bridge bug and is not blamed on the trusted artifact
+  without a controlled reference-runtime A/B.
+- Validation: 39 focused capability tests and 739 expanded
+  engine/multimodal/Gemma/scheduler tests passed. Evidence:
+  `docs/internal/release-gates/20260720_gemma4_video_capability_bridge_current/`.

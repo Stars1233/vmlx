@@ -1,0 +1,210 @@
+{
+  "summary": {
+    "status": 200,
+    "fixture": "/tmp/g4-video-frame0.png",
+    "fixture_sha256": "5ed68f1e09b4e4d3e6a7e8e23fd8e9e0eba84ac20a149a1022607264a25aaeb7",
+    "content": "REMANAS66",
+    "content_delta_count": 5,
+    "reasoning_event_count": 0,
+    "done_event_count": 1,
+    "completed_event_count": 1,
+    "last_content_to_completed_seconds": 0.02359,
+    "usage": {
+      "input_tokens": 1109,
+      "output_tokens": 10,
+      "total_tokens": 1119
+    },
+    "checks": {
+      "status_200": true,
+      "exact_content": false,
+      "progressive_content": true,
+      "thinking_off_separate": true,
+      "single_done": true,
+      "single_completed": true
+    }
+  },
+  "events": [
+    {
+      "t": 0.009341,
+      "event": {
+        "type": "response.created",
+        "response": {
+          "id": "resp_ad01ebd5c5d6",
+          "object": "response",
+          "created_at": 1784605442,
+          "status": "in_progress",
+          "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M",
+          "output": []
+        },
+        "sequence_number": 0
+      }
+    },
+    {
+      "t": 0.009351,
+      "event": {
+        "type": "response.output_item.added",
+        "output_index": 0,
+        "item": {
+          "id": "item_a99254b7b57f",
+          "type": "message",
+          "status": "in_progress",
+          "role": "assistant",
+          "content": []
+        },
+        "sequence_number": 1
+      }
+    },
+    {
+      "t": 0.009356,
+      "event": {
+        "type": "response.content_part.added",
+        "item_id": "item_a99254b7b57f",
+        "output_index": 0,
+        "content_index": 0,
+        "part": {
+          "type": "output_text",
+          "text": "",
+          "annotations": []
+        },
+        "sequence_number": 2
+      }
+    },
+    {
+      "t": 1.42216,
+      "event": {
+        "type": "response.output_text.delta",
+        "item_id": "item_a99254b7b57f",
+        "output_index": 0,
+        "content_index": 0,
+        "delta": "RE",
+        "sequence_number": 3
+      }
+    },
+    {
+      "t": 1.443977,
+      "event": {
+        "type": "response.output_text.delta",
+        "item_id": "item_a99254b7b57f",
+        "output_index": 0,
+        "content_index": 0,
+        "delta": "MAN",
+        "sequence_number": 4
+      }
+    },
+    {
+      "t": 1.465823,
+      "event": {
+        "type": "response.output_text.delta",
+        "item_id": "item_a99254b7b57f",
+        "output_index": 0,
+        "content_index": 0,
+        "delta": "AS",
+        "sequence_number": 5
+      }
+    },
+    {
+      "t": 1.487821,
+      "event": {
+        "type": "response.output_text.delta",
+        "item_id": "item_a99254b7b57f",
+        "output_index": 0,
+        "content_index": 0,
+        "delta": "6",
+        "sequence_number": 6
+      }
+    },
+    {
+      "t": 1.510155,
+      "event": {
+        "type": "response.output_text.delta",
+        "item_id": "item_a99254b7b57f",
+        "output_index": 0,
+        "content_index": 0,
+        "delta": "6",
+        "sequence_number": 7
+      }
+    },
+    {
+      "t": 1.533251,
+      "event": {
+        "type": "response.output_text.done",
+        "item_id": "item_a99254b7b57f",
+        "output_index": 0,
+        "content_index": 0,
+        "text": "REMANAS66",
+        "sequence_number": 8
+      }
+    },
+    {
+      "t": 1.533273,
+      "event": {
+        "type": "response.content_part.done",
+        "item_id": "item_a99254b7b57f",
+        "output_index": 0,
+        "content_index": 0,
+        "part": {
+          "type": "output_text",
+          "text": "REMANAS66",
+          "annotations": []
+        },
+        "sequence_number": 9
+      }
+    },
+    {
+      "t": 1.53371,
+      "event": {
+        "type": "response.output_item.done",
+        "output_index": 0,
+        "item": {
+          "id": "item_a99254b7b57f",
+          "type": "message",
+          "status": "completed",
+          "role": "assistant",
+          "content": [
+            {
+              "type": "output_text",
+              "text": "REMANAS66",
+              "annotations": []
+            }
+          ]
+        },
+        "sequence_number": 10
+      }
+    },
+    {
+      "t": 1.533745,
+      "event": {
+        "type": "response.completed",
+        "response": {
+          "id": "resp_ad01ebd5c5d6",
+          "object": "response",
+          "created_at": 1784605442,
+          "status": "completed",
+          "model": "jangq-ai/gemma-4-12B-it-qat-JANG_4M",
+          "output_text": "REMANAS66",
+          "output": [
+            {
+              "id": "item_a99254b7b57f",
+              "type": "message",
+              "status": "completed",
+              "role": "assistant",
+              "content": [
+                {
+                  "type": "output_text",
+                  "text": "REMANAS66",
+                  "annotations": []
+                }
+              ]
+            }
+          ],
+          "usage": {
+            "input_tokens": 1109,
+            "output_tokens": 10,
+            "total_tokens": 1119
+          }
+        },
+        "sequence_number": 11
+      }
+    }
+  ]
+}
