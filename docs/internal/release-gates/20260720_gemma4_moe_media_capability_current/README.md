@@ -65,6 +65,18 @@ bundle mutation was added.
   seconds, but it had zero cache hits because ordinary Gemma history omitted
   the old media payload. It is retained as history/output evidence and is
   explicitly excluded from the L2 claim.
+- A later same-chat **post-video automatic tool turn** enabled the built-in
+  coding tools through the real Chat settings drawer and called
+  `file_info(panel/package.json)` exactly once. The 16 captured DOM states show
+  progressive separate reasoning, the tool card, `Processing tool results`,
+  and progressive visible content before the exact final
+  `G4MOE-POSTMEDIA-TOOL1-DONE SIZE=5.2 KB`. SQLite row 205 preserves one
+  schema-valid call, one real `Size: 5.2 KB` result, non-empty visible content,
+  no warning, 0.16-second TTFT, and 1.8-second total time. The owning
+  `CHAT_DIAG` request reports zero current attachments and `has_tools=true`;
+  historical video bytes were not resent or mistaken for the new text/tool
+  request. This closes the exercised Electron post-media text/tool transition,
+  not raw API post-media continuation for every Gemma variant.
 
 ## Evidence map
 
@@ -84,6 +96,9 @@ bundle mutation was added.
   `ui-log-after-video-a1-disk.png`.
 - Raw API: `raw-responses-video-omitmax-auto.sse` and
   `ui-log-after-raw-video.png`.
+- Post-media tool transition: `ui-chat-settings-before-tool.png`,
+  `ui-postmedia-tool-dom-trace.json`, paired first-paint/final screenshots,
+  `ui-postmedia-tool-row.json`, and `ui-postmedia-tool-request-shape.txt`.
 
 ## Validation and remaining scope
 

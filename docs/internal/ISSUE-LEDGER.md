@@ -3926,3 +3926,14 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   exact but health recorded zero hits because ordinary Gemma history omitted
   the old media payload. Fifteen focused tests passed. Evidence:
   `docs/internal/release-gates/20260720_gemma4_moe_media_capability_current/`.
+- `GEMMA4-MOE-POSTMEDIA-TOOL`: `VERIFIED-LIVE_SCOPED` in the current dev
+  Electron app. Built-in tools were enabled through the real Chat settings
+  drawer after the MP4 turn. The next no-attachment request rendered 16
+  progressive states, separate 253-character reasoning, one exact
+  `file_info(panel/package.json)` call, the real 5.2 KB result, and exact
+  `G4MOE-POSTMEDIA-TOOL1-DONE SIZE=5.2 KB` visible content. SQLite row 205 has
+  one call/result, no warning, 0.16-second TTFT, and 1.8-second total time.
+  The owning request-shape log records zero attachments and `has_tools=true`,
+  so stale video was not resent into the tool turn. Raw API post-media
+  continuation and other Gemma variants remain open; this is not a family-wide
+  closure.

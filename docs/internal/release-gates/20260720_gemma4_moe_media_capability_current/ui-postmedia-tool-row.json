@@ -1,0 +1,21 @@
+{
+  "rowid": 205,
+  "chat_id": "7938463e-574f-4c0c-8adc-a3071f8ef6b2",
+  "content": "G4MOE-POSTMEDIA-TOOL1-DONE SIZE=5.2 KB",
+  "reasoning_content": "The user wants me to call file_info on panel/package.json. Then I need to provide the result of the tool call and a specific string. Step 1: Call file_info(path='panel/package.json'). Step 2: Respond with G4MOE-POSTMEDIA-TOOL1-DONE SIZE=<size>.",
+  "tool_call": {
+    "id": "call_5b2ffe0d",
+    "name": "file_info",
+    "arguments": {"path": "panel/package.json"}
+  },
+  "tool_result": "Path: panel/package.json\nType: file\nSize: 5.2 KB\nModified: 2026-07-20T03:54:32.142Z\nPermissions: 0644",
+  "metrics": {
+    "tokenCount": 134,
+    "promptTokens": 569,
+    "tokensPerSecond": "85.5",
+    "ppSpeed": "1793.8",
+    "ttft": "0.16",
+    "totalTime": "1.8"
+  },
+  "warnings": null
+}

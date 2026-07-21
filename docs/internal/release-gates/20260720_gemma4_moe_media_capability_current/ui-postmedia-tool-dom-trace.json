@@ -1,0 +1,69 @@
+{
+  "before": 1,
+  "events": [
+    {
+      "ms": 1,
+      "text": "Just now\nWaiting for model response..."
+    },
+    {
+      "ms": 354,
+      "text": "Just now\nThinking\n...\n6 chars\nThe us\nGenerating tool call...\nGenerating tool call...\n5 tokens\n100.0 t/s\n0.29s TTFT\n0.0s"
+    },
+    {
+      "ms": 458,
+      "text": "Just now\nThinking\n...\n30 chars\nThe user wants me to call `fil\nGenerating tool call...\nGenerating tool call...\n12 tokens\n72.8 t/s\n0.29s TTFT\n0.2s"
+    },
+    {
+      "ms": 563,
+      "text": "Just now\nThinking\n...\n58 chars\nThe user wants me to call `file_info` on `panel/package.js\nGenerating tool call...\nGenerating tool call...\n21 tokens\n80.0 t/s\n0.29s TTFT\n0.3s"
+    },
+    {
+      "ms": 668,
+      "text": "Just now\nThinking\n...\n98 chars\nThe user wants me to call `file_info` on `panel/package.json`.\nThen I need to provide the result o\nGenerating tool call...\nGenerating tool call...\n32 tokens\n84.8 t/s\n0.29s TTFT\n0.4s"
+    },
+    {
+      "ms": 772,
+      "text": "Just now\nThinking\n...\n137 chars\nThe user wants me to call `file_info` on `panel/package.json`.\nThen I need to provide the result of the tool call and a specific string.\n\nGenerating tool call...\nGenerating tool call...\n39 tokens\n85.5 t/s\n0.29s TTFT\n0.5s"
+    },
+    {
+      "ms": 874,
+      "text": "Just now\nThinking\n...\n168 chars\nThe user wants me to call `file_info` on `panel/package.json`.\nThen I need to provide the result of the tool call and a specific string.\n\nStep 1: Call `file_info(path='\nGenerating tool call...\nGenerating tool call...\n49 tokens\n90.6 t/s\n0.29s TTFT\n0.6s"
+    },
+    {
+      "ms": 978,
+      "text": "Just now\nThinking\n...\n195 chars\nThe user wants me to call `file_info` on `panel/package.json`.\nThen I need to provide the result of the tool call and a specific string.\n\nStep 1: Call `file_info(path='panel/package.json')`.\nStep\nGenerating tool call...\nGenerating tool call...\n58 tokens\n85.3 t/s\n0.29s TTFT\n0.7s"
+    },
+    {
+      "ms": 1082,
+      "text": "Just now\nThinking\n...\n222 chars\nThe user wants me to call `file_info` on `panel/package.json`.\nThen I need to provide the result of the tool call and a specific string.\n\nStep 1: Call `file_info(path='panel/package.json')`.\nStep 2: Respond with \"G4MOE-POS\nGenerating tool call...\nGenerating tool call...\n68 tokens\n93.5 t/s\n0.29s TTFT\n0.8s"
+    },
+    {
+      "ms": 1184,
+      "text": "Just now\nThinking\n...\n244 chars\nThe user wants me to call `file_info` on `panel/package.json`.\nThen I need to provide the result of the tool call and a specific string.\n\nStep 1: Call `file_info(path='panel/package.json')`.\nStep 2: Respond with \"G4MOE-POSTMEDIA-TOOL1-DONE SIZE\nGenerating tool call...\nGenerating tool call...\n72 tokens\n93.2 t/s\n0.29s TTFT\n0.8s"
+    },
+    {
+      "ms": 1288,
+      "text": "Just now\nThinking\n...\n253 chars\nThe user wants me to call `file_info` on `panel/package.json`.\nThen I need to provide the result of the tool call and a specific string.\n\nStep 1: Call `file_info(path='panel/package.json')`.\nStep 2: Respond with \"G4MOE-POSTMEDIA-TOOL1-DONE SIZE=<size>\".\nGenerating tool call...\nGenerating tool call...\n72 tokens\n93.2 t/s\n0.29s TTFT\n0.8s"
+    },
+    {
+      "ms": 1493,
+      "text": "Just now\nReasoning\n253 chars\n\nThe user wants me to call file_info on panel/package.json. Then I need to provide the result of the tool call and a specific string.\n\nStep 1: Call file_info(path='panel/package.json'). Step 2: Respond with \"G4MOE-POSTMEDIA-TOOL1-DONE SIZE=\".\n\nInfo\npanel/package.json\nProcessing tool results...\n72 tokens\n93.2 t/s\n0.29s TTFT\n0.8s"
+    },
+    {
+      "ms": 1596,
+      "text": "Just now\nReasoning\n253 chars\n\nThe user wants me to call file_info on panel/package.json. Then I need to provide the result of the tool call and a specific string.\n\nStep 1: Call file_info(path='panel/package.json'). Step 2: Respond with \"G4MOE-POSTMEDIA-TOOL1-DONE SIZE=\".\n\nInfo\npanel/package.json\nProcessing tool results...\n116 tokens\n0.0 t/s\n0.16s TTFT\n0.8s"
+    },
+    {
+      "ms": 1698,
+      "text": "Just now\nReasoning\n253 chars\n\nThe user wants me to call file_info on panel/package.json. Then I need to provide the result of the tool call and a specific string.\n\nStep 1: Call file_info(path='panel/package.json'). Step 2: Respond with \"G4MOE-POSTMEDIA-TOOL1-DONE SIZE=\".\n\nInfo\npanel/package.json\nProcessing tool results...\n\nG4MOE-POSTME\n\n126 tokens\n101.0 t/s\n0.16s TTFT\n0.9s"
+    },
+    {
+      "ms": 1801,
+      "text": "Just now\nspeak\nReasoning\n253 chars\n\nThe user wants me to call file_info on panel/package.json. Then I need to provide the result of the tool call and a specific string.\n\nStep 1: Call file_info(path='panel/package.json'). Step 2: Respond with \"G4MOE-POSTMEDIA-TOOL1-DONE SIZE=\".\n\nInfo\npanel/package.json\n\nG4MOE-POSTMEDIA-TOOL1-DONE SIZ\n\n134 tokens\n85.5 t/s\n1793.8 pp/s\n569 prompt\n0.16s TTFT\n1.8s total"
+    },
+    {
+      "ms": 1905,
+      "text": "Just now\nspeak\nReasoning\n253 chars\n\nThe user wants me to call file_info on panel/package.json. Then I need to provide the result of the tool call and a specific string.\n\nStep 1: Call file_info(path='panel/package.json'). Step 2: Respond with \"G4MOE-POSTMEDIA-TOOL1-DONE SIZE=\".\n\nInfo\npanel/package.json\n\nG4MOE-POSTMEDIA-TOOL1-DONE SIZE=5.2 KB\n\n134 tokens\n85.5 t/s\n1793.8 pp/s\n569 prompt\n0.16s TTFT\n1.8s total"
+    }
+  ]
+}
