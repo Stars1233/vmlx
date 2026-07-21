@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/tmp/dsv4_direct_jang_reference.py", line 34, in <module>
+    model, tokenizer = load_jang_model(BUNDLE)
+                       ~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/eric/jang/jang-tools/jang_tools/loader.py", line 1063, in load_jang_model
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: JANG config jang_config.json is missing 'format' field. Expected one of: jang, jjqf, mxq

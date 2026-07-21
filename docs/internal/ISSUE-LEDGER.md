@@ -3979,3 +3979,47 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   and fault injection, longer inputs, 35B MoE MTP, Bonsai/Ornith breadth, and
   signed-app repetition. Evidence:
   `docs/internal/release-gates/20260720_qwen36_27b_mxfp4_mtp_video_current/`.
+
+## 2026-07-20 - DSV4 long-prefill memory, UI chunk parity, and output split
+
+- `DSV4-LONG-PREFILL-MEMORY`: `VERIFIED-LIVE_SCOPED`. The tested affine JANG
+  CRACK artifact retained its native 43-layer SWA/CSA/HCA composite cache and
+  separate pool codec; generic TurboQuant remained off. Source now rejects an
+  unsafe deep-copy prompt snapshot before allocation using the active backend
+  budget and Metal headroom, and DSV4 JANG materializes hidden state at each
+  layer boundary for multi-token prefill so all 43 lazy CSA/HCA graphs do not
+  coexist. The exact 23,477-token Electron prompt survived at about 104.9 GB
+  peak active memory instead of the prior Metal OOM.
+- `DSV4-PREFILL-STEP-UI-ARGV`: `VERIFIED-LIVE_SCOPED`. DSV4 still suppresses
+  inapplicable batch-size flags, but the real preview and Start path now pass
+  the user's `--prefill-step-size`. Current live argv records 512.
+- `DSV4-LONG-AUTO-QUALITY`: `FAIL/PARTIAL`. Memory survival is not output
+  correctness. The 23,477-token Auto turn generated 23,560 reasoning
+  characters, exhausted 4,144 output tokens, and returned wrong visible
+  content. A 7,875-token Auto turn visibly streamed 1,228 UI changes but also
+  looped until manually stopped at 2,288 tokens. No output filter, hidden
+  sampler clamp, forced Thinking Off, or synthetic answer was added.
+- `DSV4-MEDIUM-INSTRUCT-STREAM`: `VERIFIED-LIVE_SCOPED`. The same 7,875-token
+  prompt under Instruct produced 18 progressive Electron states and exact
+  non-empty three-line content. Raw Responses Thinking emitted 512 distinct
+  reasoning deltas followed by 29 content deltas and one completed terminal;
+  raw Instruct emitted 31 progressive content deltas.
+- `DSV4-DETERMINISTIC-COMPOSITE-L2`: `VERIFIED-LIVE_SCOPED`. After real UI
+  process replacement, the deterministic row restored 7,874 tokens as
+  `paged+dsv4+disk`; the immediate resident repeat restored the same prefix as
+  `paged+dsv4`. Health records 31 disk promotions, 15,748 saved tokens, and the
+  exact native typed components. The direct JANG reference A/B remains
+  `BLOCKED` because its legacy loader rejected the official sidecar shape
+  before model load; no artifact-level conclusion is made.
+- `CHAT-SAMPLING-DEFAULTS-DSV4`: `VERIFIED-LIVE_SCOPED`. Bundle JANG chat
+  defaults 0.6/0.95/top-k Off/min-p Off/repetition 1.0/max 4096 matched the
+  visible DSV4 drawer and detection API. Eight-session metadata parity was
+  captured, but each non-DSV4 session still needs its own visual/payload/runtime
+  chain before promoting broad family parity.
+- Focused validation: 67 DSV4 cache tests, 12 snapshot-admission selections,
+  286 panel settings-flow tests, panel typecheck, Python compile checks, and
+  seven JANG DSV4 overlap/pool tests. Evidence:
+  `docs/internal/release-gates/20260720_dsv4_long_context_snapshot_budget_current/`.
+- Overall campaign and release status remain `PARTIAL`: DSV4 Auto quality,
+  broader protocols/media/fault injection, other model-derived sampler visual
+  rows, and signed-app repetition are not closed by this scoped gate.
