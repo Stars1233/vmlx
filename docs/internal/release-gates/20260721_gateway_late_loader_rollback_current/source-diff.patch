@@ -1,0 +1,49 @@
+diff --git a/panel/src/main/api-gateway.ts b/panel/src/main/api-gateway.ts
+--- a/panel/src/main/api-gateway.ts
++++ b/panel/src/main/api-gateway.ts
+@@
+-      code: "model_preflight_failed" | "model_load_timeout";
++      code:
++        | "model_preflight_failed"
++        | "model_load_failed"
++        | "model_load_timeout";
+@@
++type JitLoadResult =
++  | { status: "ready" }
++  | { status: "load_failed"; detail: string }
++  | { status: "timeout" };
+@@
+-  private jitPending = new Map<string, Promise<boolean>>();
++  private jitPending = new Map<string, Promise<JitLoadResult>>();
+@@
+-      const ok = await this.jitLoad(latest.id);
+-      if (!ok) {
++      const loadResult = await this.jitLoad(latest.id);
++      if (loadResult.status !== "ready") {
+         await this.restoreDisplacedSingleModel(rollbackCandidate, latest.id);
++        const timedOut = loadResult.status === "timeout";
+@@
+-          code: "model_load_timeout",
+-          message: `Model '${latest.modelName}' failed to load within ${JIT_TIMEOUT_MS / 1000}s`,
++          code: timedOut ? "model_load_timeout" : "model_load_failed",
++          message: timedOut
++            ? `Model '${latest.modelName}' failed to load within ${JIT_TIMEOUT_MS / 1000}s`
++            : `Model '${latest.modelName}' failed to load: ${loadResult.detail}`,
+@@
+-  private async _doJitLoad(sessionId: string): Promise<boolean> {
++  private async _doJitLoad(sessionId: string): Promise<JitLoadResult> {
+@@
+-      return false;
++      return { status: "load_failed", detail };
+@@
+-      if (s?.status === "running") return true;
+-      if (s?.status === "error") return false;
++      if (s?.status === "running") return { status: "ready" };
++      if (s?.status === "error") return { status: "load_failed", detail: "engine process entered error state before becoming ready" };
+@@
+-    return false;
++    return { status: "timeout" };
+
+Focused test changes:
+- immediate target-start failure now expects model_load_failed plus loader detail
+- explicit typed timeout is the only case that expects model_load_timeout

@@ -6,9 +6,8 @@
 The gateway now rejects that target before Single Model mode unloads the healthy
 backend, returns a truthful preflight error, and leaves the existing Electron-
 started backend loaded. A failure that occurs only after a target passes
-preflight remains `PASS-SOURCE+CONTRACT / PARTIAL-LIVE`: rollback is implemented
-and covered by the focused behavior test, but this gate did not fabricate a
-late loader failure in a valid official bundle.
+preflight was later exercised with a safe synthetic fixture and is now closed
+by `../20260721_gateway_late_loader_rollback_current/README.md`.
 
 ## Retained pre-fix failure
 
@@ -111,8 +110,9 @@ quality boundary.
 
 ## Remaining boundary
 
-- `PARTIAL-LIVE`: inject a real post-preflight loader failure without mutating
-  or distrusting an official bundle, then confirm the previous backend is
-  restored in the Electron UI. The restoration branch is source-tested now.
+- `VERIFIED-LIVE_SCOPED`: the safe synthetic late-loader gate confirms the
+  previous backend is restored in the Electron UI and distinguishes the real
+  loader failure from a deadline timeout. See
+  `../20260721_gateway_late_loader_rollback_current/README.md`.
 - Longer concurrent load-failure/model-swap soak and signed packaged-app
   repetition remain separate matrix rows.

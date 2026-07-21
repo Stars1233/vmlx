@@ -4442,3 +4442,29 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   family-wide parser-quality claim. Validation: 289 settings-flow tests plus
   typecheck. Evidence:
   `docs/internal/release-gates/20260721_nemotron_omni_auto_detection/`.
+
+## 2026-07-21 - Gateway late-loader rollback and truthful failure class
+
+- `GATEWAY-SINGLE-MODEL-LATE-LOAD-ROLLBACK`: `VERIFIED-LIVE_SCOPED`. A tiny
+  synthetic target passed local preflight and then failed only inside
+  `load_safetensors`. The real Electron-owned gateway displaced the healthy
+  Nemotron process, observed the target loader exit, and restored Nemotron as
+  the sole running backend at PID 79320. The visible Sessions page retained
+  the restored process, gateway/model health was idle and loaded, and a raw
+  recovery request exact-finaled over 16 progressive content deltas plus stop
+  and `[DONE]`.
+- `GATEWAY-JIT-ERROR-TRUTH`: `VERIFIED-LIVE_SCOPED`. The old `boolean` JIT
+  result mislabeled the 9.949086-second immediate loader failure as a
+  120-second timeout. Current source uses a typed ready/load-failed/timeout
+  result. The patched request returned `model_load_failed` with the actual
+  invalid-header loader diagnostic in 7.563482 seconds; only an exhausted
+  deadline returns `model_load_timeout`.
+- The real UI follow-up painted 53 states and exact-finaled
+  `GATEWAY-LATEFAIL-UI-RECOVERY2-DONE` after the exact Thinking Off control was
+  saved. The earlier wrong-control automation turn is retained as a negative
+  row: 254 reasoning characters, empty content, and a 64-token truncation
+  warning. It is not hidden or represented as a product/model defect.
+- The obsolete boolean result and inference branch were removed. Validation:
+  29/29 focused gateway tests, panel typecheck, and clean diff check. This gate
+  does not promote model, cache, parser, or media rows. Evidence:
+  `docs/internal/release-gates/20260721_gateway_late_loader_rollback_current/`.
