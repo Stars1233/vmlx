@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import base64
 import json
+import mimetypes
 import time
 import urllib.request
 from pathlib import Path
@@ -16,12 +17,22 @@ def main() -> int:
     parser.add_argument("--api", choices=("responses", "chat"), required=True)
     parser.add_argument("--base-url", default="http://127.0.0.1:8001")
     parser.add_argument("--model", required=True)
-    parser.add_argument("--image", type=Path, required=True)
+    parser.add_argument("--media", type=Path, required=True)
     parser.add_argument("--prompt", required=True)
     args = parser.parse_args()
 
-    encoded = base64.b64encode(args.image.read_bytes()).decode("ascii")
-    data_url = f"data:image/png;base64,{encoded}"
+    mime = mimetypes.guess_type(args.media.name)[0] or "application/octet-stream"
+    encoded = base64.b64encode(args.media.read_bytes()).decode("ascii")
+    data_url = f"data:{mime};base64,{encoded}"
+    media_family = mime.split("/", 1)[0]
+    if media_family == "image":
+        responses_media = {"type": "input_image", "image_url": data_url}
+        chat_media = {"type": "image_url", "image_url": {"url": data_url}}
+    elif media_family == "video":
+        responses_media = {"type": "input_video", "video_url": data_url}
+        chat_media = {"type": "video_url", "video_url": {"url": data_url}}
+    else:
+        raise SystemExit(f"unsupported media MIME for this probe: {mime}")
     if args.api == "responses":
         endpoint = f"{args.base_url}/v1/responses"
         payload = {
@@ -30,7 +41,7 @@ def main() -> int:
                 "role": "user",
                 "content": [
                     {"type": "input_text", "text": args.prompt},
-                    {"type": "input_image", "image_url": data_url},
+                    responses_media,
                 ],
             }],
             "stream": True,
@@ -43,7 +54,7 @@ def main() -> int:
                 "role": "user",
                 "content": [
                     {"type": "text", "text": args.prompt},
-                    {"type": "image_url", "image_url": {"url": data_url}},
+                    chat_media,
                 ],
             }],
             "stream": True,
@@ -54,7 +65,8 @@ def main() -> int:
         "api": args.api,
         "endpoint": endpoint,
         "model": args.model,
-        "image": str(args.image),
+        "media": str(args.media),
+        "media_type": media_family,
         "omitted_fields": ["max_tokens", "max_completion_tokens", "max_output_tokens"],
         "prompt": args.prompt,
     }, sort_keys=True), flush=True)

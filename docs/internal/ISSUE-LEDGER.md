@@ -3888,7 +3888,19 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   artifact before a request and left exactly one engine. Health reports q4 TQ
   only for attention layers 3/7/11/15/19/24, native SSM companion layers, and
   async rederive; this is not affine JANG, base MXFP, or generic all-layer KV.
+- `NEMO-OMNI-VIDEO-SESSION-L2`: `VERIFIED-LIVE_SCOPED` for transport,
+  streaming, and disk restoration. The fresh Electron MP4 turn had 33 visible
+  UI states, separate reasoning, exact unseen `BANANA8426`, and one final
+  message. Real Stop/Start changed PID 23620 to 24498 and health showed the
+  replacement loaded with `last_request_time=null`. The no-attachment
+  follow-up restored 51,847,398 bytes of q4 attention KV plus native SSM in
+  0.000328 s (`hits=1`, `misses=0`). Raw omitted-max Responses emitted 447
+  reasoning plus 25 content deltas and one completed event.
+- Exact-format quality remains `PARTIAL`: the post-restart Electron follow-up
+  appended an unrequested Python block after the correct two lines. No output
+  filter was added. The architecture store is one `latest.safetensors`;
+  latest-only replacement behavior, bounded/multi-snapshot eviction, and
+  different-history partial-prefix matching remain open.
 - Focused validation: 30 passed / 580 deselected plus `py_compile` and diff
-  check. Image/video process-restart controls and bounded/multi-snapshot
-  behavior remain `PARTIAL/IN PROGRESS`. Evidence:
+  check. Evidence:
   `docs/internal/release-gates/20260720_nemotron_omni_media_cache_current/`.

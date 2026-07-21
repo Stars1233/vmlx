@@ -1,4 +1,4 @@
-# Nemotron Omni current image/video session-cache gate
+# Nemotron Omni current image/video streaming and session-cache gate
 
 Date: 2026-07-20
 
@@ -39,9 +39,22 @@ Base HEAD: `28bf22729824c6265dd988a8e744308b13bfae30`
   Omitted-max raw Responses emitted 257 reasoning and 24 content deltas plus
   one completed event; raw Chat emitted 351 reasoning and 23 content deltas,
   stop, usage, and one `[DONE]`. Both exact-finaled the unseen image code.
-- Image/video process-restart controls, latest-snapshot replacement behavior,
-  and bounded/multi-snapshot eviction: **IN PROGRESS / PARTIAL**. Do not
-  promote these rows from the source fix alone.
+- Video streaming and process-restart session L2: **PASS-LIVE for transport,
+  stream structure, and cache restore; PARTIAL for strict output format**. A
+  fresh Electron MP4 turn produced 33 distinct visible states, 785 characters
+  of separate reasoning, exact `BANANA8426`, and the requested completion
+  marker. After real Stop/Start changed PID 23620 to PID 24498, health was
+  loaded with `last_request_time=null`. The same-chat no-attachment follow-up
+  restored the 51,847,398-byte q4-attention-KV/native-SSM snapshot in 0.000328
+  seconds (`hits=1`, `misses=0`) and streamed exact recall, but appended an
+  unrequested Python block after the two requested lines. That format miss is
+  retained rather than normalized away.
+- Raw Responses MP4 with all max fields omitted: **PASS-LIVE scoped**. It
+  emitted 447 reasoning deltas, 25 content deltas, one text-done, and one
+  completed event, then exact-finaled `BANANA8426` plus the requested marker.
+- The implementation exposes one `latest.safetensors` architecture snapshot.
+  Latest-snapshot replacement semantics, bounded/multi-snapshot eviction, and
+  partial-prefix matching across different media histories remain **OPEN**.
 
 ## Root cause and repair
 
@@ -73,10 +86,21 @@ model-specific synthesis pass was added.
   exact two-line visible output, no warning/tool state.
 - `raw-responses-omitmax-auto.sse`: omitted-max Responses proof.
 - `raw-chat-omitmax-auto.sse`: omitted-max Chat Completions proof.
+- `raw-responses-video-omitmax-auto.sse`: raw omitted-max MP4 Responses proof
+  with 447 reasoning and 25 content deltas plus one completed event.
 - `health-before-request.json`: eager load, exact hybrid cache layout, zero
   prior request.
 - `health-after-ui-image-a.json` and `health-after-ui-image-a2.json`: 50.97 MB
   then 51.09 MB architecture snapshots with q4 attention KV/native SSM.
+- `ui-video-a1-dom-trace.json`, `ui-video-a1-row.json`, and paired screenshots:
+  fresh Electron MP4 reasoning/content progression and exact video read.
+- `health-after-video-restart-before-request.json`: replacement process loaded
+  before any request after the real UI restart.
+- `ui-video-a2-l2-row.json`, `ui-video-a2-l2-dom-trace.json`, and
+  `health-after-ui-video-a2-l2.json`: no-attachment restart follow-up, the
+  exact q4-KV/native-SSM restore counters, and the retained format miss.
+- `ui-log-after-video-a2-l2.png`: visible owning log with the restore,
+  prefix-match, and re-persist events.
 
 The deterministic media fixtures and hashes are retained as
 `image-a-vmlx.png`, `image-b-banana8426.png`, and
