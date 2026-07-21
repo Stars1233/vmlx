@@ -3786,9 +3786,9 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   The second same-chat turn generated and executed exactly one
   `file_info(panel/package.json)` call and exact-finaled
   `M3-HEAD-TOOL-DONE SIZE=5.2 KB` with no warning or zero-tool card.
-- Validation: 132 focused Python tests. Current-source M3 VL remains PARTIAL
-  because health reports `vl_runtime_available=false`; this cache/tool gate
-  does not promote media support. Evidence:
+- Validation: 132 focused Python tests. This cache/tool gate did not itself
+  rerun media support; the later current-head media capability correction and
+  representative live image/video proof are recorded below. Evidence:
   `docs/internal/release-gates/20260720_dsv4_m3_current_typed_cache/`.
 
 ## 2026-07-20 - current-source gateway protocols and one-model ownership
@@ -3818,3 +3818,23 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   other parser/model families, and media-bearing gateway turns. A stale
   installed app remains separately bound to 8081; this gate deliberately
   isolated the current dev app on 8088 and does not claim stale-listener cleanup.
+
+## 2026-07-20 - MiniMax-M3 current media capability telemetry correction
+
+- `M3-MEDIA-CAPABILITY-TRUTH`: `VERIFIED-LIVE_SCOPED`. The earlier current-head
+  note incorrectly used `/health.mtp.vl_runtime_available=false` as a media
+  verdict. That field correctly describes inactive MTP for this non-MTP
+  artifact. The owning `/v1/capabilities` surface reports current runtime
+  modalities text/vision/video, 907 vision tensors, and no unwired media lane.
+- Real Electron proof used a fresh M3 chat, actual file-input attachment,
+  Thinking Off, tools Off, temperature 0, and Responses wire. The image was
+  visibly rendered and exact-finaled `MAGNOLIA CACHE DONE`; SQLite retained
+  non-empty content, null reasoning, no warning, and no tool state.
+- Raw Responses sent the real six-frame MP4 and exact-finaled `BANANA8426`
+  across four progressive content deltas, zero reasoning events under Off, one
+  text-done, and one completed terminal. Last-content-to-completed was
+  0.039767 s.
+- This refreshes representative current-head image/video transport only.
+  Broader OCR quality, stochastic Auto media, signed-app repetition, and
+  REAP32 headroom remain `PARTIAL/OPEN`. Evidence:
+  `docs/internal/release-gates/20260720_m3_media_capability_truth_current/`.

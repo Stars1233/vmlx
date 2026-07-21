@@ -1,0 +1,199 @@
+{
+  "summary": {
+    "status": 200,
+    "fixture": "/Users/eric/mlx/vllm-mlx-release-1.6.13/docs/internal/release-gates/20260716_release_closeout/gemma4-media-cache-current/gemma4-media-a-video.mp4",
+    "fixture_sha256": "842e3540854bfec12eda7701f9baa25fcd182ac3dff39088c758f095355111ed",
+    "content": "BANANA8426",
+    "content_delta_count": 4,
+    "reasoning_event_count": 0,
+    "done_event_count": 1,
+    "completed_event_count": 1,
+    "last_content_to_completed_seconds": 0.039767,
+    "usage": {
+      "input_tokens": 1682,
+      "output_tokens": 5,
+      "total_tokens": 1687
+    },
+    "checks": {
+      "status_200": true,
+      "exact_content": true,
+      "progressive_content": true,
+      "thinking_off_separate": true,
+      "single_done": true,
+      "single_completed": true
+    }
+  },
+  "events": [
+    {
+      "t": 0.008448,
+      "event": {
+        "type": "response.created",
+        "response": {
+          "id": "resp_7b1688518945",
+          "object": "response",
+          "created_at": 1784604607,
+          "status": "in_progress",
+          "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+          "output": []
+        },
+        "sequence_number": 0
+      }
+    },
+    {
+      "t": 0.00846,
+      "event": {
+        "type": "response.output_item.added",
+        "output_index": 0,
+        "item": {
+          "id": "item_da96fba18da6",
+          "type": "message",
+          "status": "in_progress",
+          "role": "assistant",
+          "content": []
+        },
+        "sequence_number": 1
+      }
+    },
+    {
+      "t": 0.008521,
+      "event": {
+        "type": "response.content_part.added",
+        "item_id": "item_da96fba18da6",
+        "output_index": 0,
+        "content_index": 0,
+        "part": {
+          "type": "output_text",
+          "text": "",
+          "annotations": []
+        },
+        "sequence_number": 2
+      }
+    },
+    {
+      "t": 4.291802,
+      "event": {
+        "type": "response.output_text.delta",
+        "item_id": "item_da96fba18da6",
+        "output_index": 0,
+        "content_index": 0,
+        "delta": "BAN",
+        "sequence_number": 3
+      }
+    },
+    {
+      "t": 4.34421,
+      "event": {
+        "type": "response.output_text.delta",
+        "item_id": "item_da96fba18da6",
+        "output_index": 0,
+        "content_index": 0,
+        "delta": "ANA",
+        "sequence_number": 4
+      }
+    },
+    {
+      "t": 4.385444,
+      "event": {
+        "type": "response.output_text.delta",
+        "item_id": "item_da96fba18da6",
+        "output_index": 0,
+        "content_index": 0,
+        "delta": "842",
+        "sequence_number": 5
+      }
+    },
+    {
+      "t": 4.426584,
+      "event": {
+        "type": "response.output_text.delta",
+        "item_id": "item_da96fba18da6",
+        "output_index": 0,
+        "content_index": 0,
+        "delta": "6",
+        "sequence_number": 6
+      }
+    },
+    {
+      "t": 4.466035,
+      "event": {
+        "type": "response.output_text.done",
+        "item_id": "item_da96fba18da6",
+        "output_index": 0,
+        "content_index": 0,
+        "text": "BANANA8426",
+        "sequence_number": 7
+      }
+    },
+    {
+      "t": 4.46605,
+      "event": {
+        "type": "response.content_part.done",
+        "item_id": "item_da96fba18da6",
+        "output_index": 0,
+        "content_index": 0,
+        "part": {
+          "type": "output_text",
+          "text": "BANANA8426",
+          "annotations": []
+        },
+        "sequence_number": 8
+      }
+    },
+    {
+      "t": 4.466287,
+      "event": {
+        "type": "response.output_item.done",
+        "output_index": 0,
+        "item": {
+          "id": "item_da96fba18da6",
+          "type": "message",
+          "status": "completed",
+          "role": "assistant",
+          "content": [
+            {
+              "type": "output_text",
+              "text": "BANANA8426",
+              "annotations": []
+            }
+          ]
+        },
+        "sequence_number": 9
+      }
+    },
+    {
+      "t": 4.466351,
+      "event": {
+        "type": "response.completed",
+        "response": {
+          "id": "resp_7b1688518945",
+          "object": "response",
+          "created_at": 1784604607,
+          "status": "completed",
+          "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+          "output_text": "BANANA8426",
+          "output": [
+            {
+              "id": "item_da96fba18da6",
+              "type": "message",
+              "status": "completed",
+              "role": "assistant",
+              "content": [
+                {
+                  "type": "output_text",
+                  "text": "BANANA8426",
+                  "annotations": []
+                }
+              ]
+            }
+          ],
+          "usage": {
+            "input_tokens": 1682,
+            "output_tokens": 5,
+            "total_tokens": 1687
+          }
+        },
+        "sequence_number": 10
+      }
+    }
+  ]
+}
