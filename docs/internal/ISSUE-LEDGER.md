@@ -4146,3 +4146,40 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   loss through the gateway, concurrent disconnect/swap soak, active-request
   LAN/port failure, and signed-app repetition remain open. Evidence:
   `docs/internal/release-gates/20260721_gateway_disconnect_recovery_current/`.
+
+## 2026-07-21 - Electron gateway upstream/backend-loss recovery
+
+- `GATEWAY-BACKEND-LOSS-FOUR-PROTOCOL`: `VERIFIED-LIVE_SCOPED`. The retained
+  pre-fix Chat run proves the current Electron gateway hung after its already-
+  streaming backend disappeared: no error terminal, no downstream EOF, then a
+  read timeout at 36,626.17 ms.
+- Root cause was shared gateway lifecycle handling, not Qwen generation. The
+  generic and three Ollama proxy paths ended downstream responses only on
+  backend `end`; their duplicated response-error listeners also treated
+  backend reset shapes as harmless downstream disconnects.
+- Current `panel/src/main/api-gateway.ts` has one protocol-aware
+  `guardProxyResponseLifecycle`. It deduplicates incomplete `aborted`, `error`,
+  and `close`, preserves silent downstream cancellation, emits native Chat,
+  Responses, Anthropic, or Ollama failures, and never emits a false success
+  terminal. Four superseded per-route error listeners were deleted; the
+  opposite-direction downstream close helpers remain active at four production
+  call sites.
+- The Electron dev main was fully relaunched from this checkout and printed
+  `[Engine Manager] Found in PATH: /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine`.
+  The real Start button eagerly loaded
+  `dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP`, which is base MLX MXFP4 plus native
+  MTP, not affine JANG or JANGTQ/MXTQ.
+- Four real streams were interrupted with the visible Electron Stop button.
+  Chat emitted `backend_connection_closed` at 18,284.40 ms; Responses emitted
+  `error` plus `response.failed` at 20,562.97/20,563.30 ms; Anthropic emitted
+  native `error` at 30,521.77 ms; Ollama emitted a native error object at
+  18,304.69 ms. None hung or emitted a false success terminal.
+- Same-protocol JIT recoveries exact-finaled over 9/9/10/9 progressive content
+  deltas with their native success terminals. A following fresh Electron chat
+  produced 153 distinct visual states, separate reasoning, exact non-empty
+  `GATEWAY-BACKEND-LOSS-UI-FINAL-DONE`, no warning, and no tool call.
+- Focused validation: 81/81 panel gateway tests, TypeScript typecheck, and
+  scoped diff check pass. Retain `PARTIAL`: non-stream partial-response loss,
+  active-request LAN/port mutation, concurrent loss/swap soak, other parser
+  families, full suites, and signed-app repetition remain open. Evidence:
+  `docs/internal/release-gates/20260721_gateway_backend_loss_current/`.
