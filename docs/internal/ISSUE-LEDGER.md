@@ -3695,3 +3695,53 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   repetition remain OPEN. Public v1.6.14 predates this fix.
 - Evidence:
   `docs/internal/release-gates/20260720_nemotron_omni_session_l2/`.
+
+## 2026-07-20 - Gemma 4 Unified direct-audio mask/cache closure
+
+- Host/repo: `erics-m5-max.local`,
+  `/Users/eric/mlx/vllm-mlx-release-1.6.13`, branch
+  `codex/postrelease-ui-drawers-20260720`.
+- Artifact truth: `gemma4_unified`, affine `JANG_4M`, encoder-free
+  `embed_audio` projection, 40 rotating-SWA plus eight full-attention layers,
+  audio+vision, no advertised video. It is not JANGTQ/MXTQ or base MXFP.
+- `GEMMA4-DIRECT-AUDIO-MASK`: `VERIFIED-LIVE_SCOPED`. The continuous-batching
+  wrapper incorrectly forwarded the processor's 2-D padding mask into Gemma's
+  causal language attention. Same-artifact logits differed from direct
+  mlx-vlm by max `18.86328125`; omitting that mask was bit-identical (`0.0`).
+  Current source drops only ordinary 2-D-or-lower processor masks and preserves
+  explicit higher-rank attention masks.
+- `GEMMA4-AUDIO-UI`: `VERIFIED-LIVE_SCOPED` with Thinking Off. The real
+  Electron UI visibly attached a WAV and emitted a non-empty exact-content
+  transcription in 26 tokens, 0.48 s TTFT, and 1.0 s total, with no reasoning
+  rail, loop, warning, tool markup, or truncation.
+- `GEMMA4-AUDIO-STREAM`: `VERIFIED-LIVE_SCOPED`. Raw Responses under explicit
+  TQ None and restored Auto q4 each emitted 21 progressive content deltas,
+  output-text done, completed terminal, and the exact lowercase transcript.
+- `GEMMA4-AUDIO-CACHE`: `VERIFIED-LIVE_SCOPED`. Resident reuse restored
+  218/219 tokens as `paged+mixed_swa+tq-native`. After real Electron Save &
+  Restart, the first request restored 218/219 as
+  `paged+mixed_swa+disk+tq-native`; health recorded four disk hits and four
+  native-TQ hits with no writes.
+- `GEMMA4-AUTO-AUDIO-QUALITY`: `PARTIAL`. The fix removed the pre-fix repeated
+  `0.02e+19` collapse, but Auto-thinking UI turns overthought for 2,896 and
+  2,271 tokens; the second said no audio was attached. Do not hide this with
+  forced Thinking Off, output rewriting, prompt coercion, or sampler clamps.
+- Validation: capability selection 7/7; Gemma/audio scheduler selection 9/9;
+  diff check passed. Evidence:
+  `docs/internal/release-gates/20260720_gemma4_audio_mask_cache/`.
+
+## 2026-07-20 - model-derived generation-settings UI parity
+
+- `CHAT-SAMPLING-DEFAULTS-PARITY`: `OPEN / USER-REPORTED`. Visible Chat
+  Settings sliders for temperature, top-p, top-k, and repetition penalty may
+  not match the model-owned defaults from `generation_config.json`,
+  `jang_config.json`, or other bundle metadata.
+- Required proof is end to end for representative affine JANG, JANGTQ/MXTQ,
+  base MLX/MXFP, and architecture-native routes: document precedence, inspect
+  exact bundle values, start via the real Electron UI, compare visible slider
+  values and persisted session/SQLite state, capture the outgoing Chat and
+  Responses payloads, and verify the effective runtime values. Include a user
+  override/save/reopen/restart negative control.
+- A backend that silently uses the right default while the UI displays a
+  different value is still a failure. Do not close from source inspection or
+  slider appearance alone.

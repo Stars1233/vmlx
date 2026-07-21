@@ -20,7 +20,7 @@ Branch: `codex/postrelease-ui-drawers-20260720`
 | Small-text OCR fidelity | **PARTIAL / FAIL exactness** | Electron A5 read `jiang-ai/...`; raw A6 read `jangg-ai/...`; A7/A8 also altered characters/case. The real target is `jangq-ai/gemma-4-12B-it-qat-JANG_4M`. Transport, budget, streaming, and cache behavior must not be described as an OCR pass. |
 | Different-media salt and return-A | PASS-LIVE | Same-size 2800x1800 image A visibly contained two active session cards and image B contained one. With an identical prompt, A/B/A answered `2`/`1`/`2`; B claimed no cached tokens, while return-A restored 1,097/1,098 as `paged+mixed_swa+tq-native`. After a real Electron Stop/Start, return-A again answered `2` and restored 1,097 tokens as `paged+mixed_swa+disk+tq-native`; health recorded 18 disk promotions and 18 native-TQ hits with no writes. |
 | Post-media text/tool history | PASS-LIVE | In the same real Electron chat, a text-only turn recalled the preceding image-turn marker exactly. After enabling built-in tools in the real Chat Settings UI, the next turn made exactly one `file_info(panel/package.json)` call, consumed its real 5.2 KB result, and exact-finaled `G4-POSTMEDIA-TOOL-DONE SIZE=5.2 KB` with no warning. |
-| Audio/video breadth | PARTIAL | Gemma audio was not rerun here. Video remains a negative-capability row because this bundle advertises `has_video=false`; rejection/fallback behavior was not rerun. |
+| Audio/video breadth | PASS-SOURCE+LIVE audio / PARTIAL video negative control | Current-source direct audio now passes real Electron attachment, raw Responses streaming, resident cache, and process-restart L2 restore after fixing a continuous-batching mask mismatch. Auto-thinking quality/economy remains PARTIAL. Video remains a negative-capability row because this bundle advertises `has_video=false`; rejection/fallback behavior was not rerun. Evidence: `../20260720_gemma4_audio_mask_cache/`. |
 
 ## Source trace
 
@@ -99,9 +99,10 @@ Branch: `codex/postrelease-ui-drawers-20260720`
 
 - Run a controlled same-artifact reference A/B before classifying exact OCR as
   quant quality. Do not postprocess or silently rewrite the model output.
-- Exercise real audio through Electron and raw APIs because this bundle
-  advertises audio. Keep video separate because `jang_config.json` says
-  `has_video=false`.
+- Keep video separate because `jang_config.json` says `has_video=false`; rerun
+  its rejection/fallback negative control. Gemma audio transport/cache is
+  closed by `../20260720_gemma4_audio_mask_cache/`, while Auto-thinking
+  economy/quality remains PARTIAL.
 
 ## 2026-07-20 current-head cache-equivalence audit
 

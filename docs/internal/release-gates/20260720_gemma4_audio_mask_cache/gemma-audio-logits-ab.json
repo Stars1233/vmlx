@@ -1,0 +1,129 @@
+{
+  "formatted": "<bos><|turn>user\n[G4-LOGITS-AB] Transcribe the attached speech in its original language. Reply with only the exact spoken words, preserving the final cobalt dash 7429 marker.<|audio|><turn|>\n<|turn>model\n",
+  "input_shape": [
+    1,
+    215
+  ],
+  "attention_mask_shape": [
+    1,
+    215
+  ],
+  "attention_mask_min": 1,
+  "attention_mask_max": 1,
+  "input_features_shape": [
+    1,
+    165,
+    640
+  ],
+  "rows": [
+    {
+      "name": "direct",
+      "top_ids": [
+        100,
+        818,
+        106,
+        2717,
+        236840,
+        726,
+        7243,
+        236775
+      ],
+      "top_text": [
+        "<|channel>",
+        "The",
+        "<turn|>",
+        "```",
+        "[",
+        "--",
+        "---",
+        "\""
+      ],
+      "top_logits": [
+        27.984375,
+        20.96875,
+        19.84375,
+        19.203125,
+        18.796875,
+        18.46875,
+        18.375,
+        18.0625
+      ]
+    },
+    {
+      "name": "wrapper_mask",
+      "top_ids": [
+        100,
+        236840,
+        818,
+        236820,
+        6654,
+        115216,
+        101,
+        236779
+      ],
+      "top_text": [
+        "<|channel>",
+        "[",
+        "The",
+        "<",
+        "Co",
+        "Exactly",
+        "<channel|>",
+        "_"
+      ],
+      "top_logits": [
+        24.6875,
+        23.3125,
+        20.984375,
+        20.625,
+        19.765625,
+        19.6875,
+        19.265625,
+        19.171875
+      ]
+    },
+    {
+      "name": "wrapper_none",
+      "top_ids": [
+        100,
+        818,
+        106,
+        2717,
+        236840,
+        726,
+        7243,
+        236775
+      ],
+      "top_text": [
+        "<|channel>",
+        "The",
+        "<turn|>",
+        "```",
+        "[",
+        "--",
+        "---",
+        "\""
+      ],
+      "top_logits": [
+        27.984375,
+        20.96875,
+        19.84375,
+        19.203125,
+        18.796875,
+        18.46875,
+        18.375,
+        18.0625
+      ]
+    },
+    {
+      "compare": "direct_vs_wrapper_mask",
+      "max_abs_diff": 18.86328125,
+      "mean_abs_diff": 2.5395236015319824
+    },
+    {
+      "compare": "direct_vs_wrapper_none",
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0
+    }
+  ]
+}
