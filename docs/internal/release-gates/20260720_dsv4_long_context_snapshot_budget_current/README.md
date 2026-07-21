@@ -62,16 +62,21 @@ These are focused suites, not the full repository checkpoint suites.
 | Raw Responses reasoning/content/terminal | **PASS-LIVE scoped** | `dsv4-medium-raw-stream-ab.json`: Instruct emitted 31 progressive content deltas; Thinking emitted 512 separate reasoning deltas plus 29 content deltas. Both emitted exactly one completed terminal and correct visible content. |
 | Exact warm and restart-from-disk composite reuse | **PASS-LIVE scoped** | `dsv4-medium-raw-stream-disk.json` records deterministic identical output. After real UI Stop/Start, 7,874 tokens restored as `paged+dsv4+disk`; the immediate resident repeat restored 7,874 as `paged+dsv4`. `dsv4-health-after-deterministic-cache.json` records 31 disk promotions, two scheduler hits, 15,748 saved tokens, exact 43-layer typed state, native pool codec On, and generic TQ Off. |
 | DSV4 sampling defaults in real drawer | **PASS-LIVE scoped** | Exact bundle `jang_config.json` defaults are temperature 0.6, top-p 0.95, repetition 1.0, max 4096. `dsv4-sampling-defaults-live.png` shows sliders `0.6 / 0.95 / top-k Off / min-p Off / 1.0` and max placeholder 4096. `sampling-defaults-live.json` also captures session-default/API detection parity for eight existing model sessions; only DSV4 was visually reopened in this gate. |
-| Independent direct JANG reference A/B | **BLOCKED** | `dsv4-direct-jang-reference-loader-fail.txt` records `jang_tools.loader.load_jang_model` rejecting the official bundle because it lacks the loader's legacy top-level `format` field. No artifact blame or reference-quality conclusion is made. |
+| Current-loader direct model A/B | **FAIL / PARTIAL root cause** | Follow-up gate `../20260721_dsv4_direct_quality_boundary/` bypassed Electron, API adapters, parsers, scheduler, paged RAM, and block L2. All three 7,879-token direct runs (bundle sampling, greedy pool-on, greedy pool-off) failed to close reasoning or reach the marker within 512 tokens. This narrows the defect below transport/cache/sampling/pool-codec layers but does not distinguish the official artifact from the shared DSV4 architecture implementation. |
+| Independent architecture reference | **BLOCKED** | `dsv4-direct-jang-reference-loader-fail.txt` records the legacy standalone JANG loader rejecting the official bundle because it lacks its old top-level `format` field. No artifact blame or independent-reference quality conclusion is made. |
+| Current-head short Auto stream boundary | **PASS-LIVE scoped** | Follow-up Electron row 284 progressively painted separate reasoning and exact visible content over 40 DOM states; raw Responses emitted 44 reasoning-summary and 12 content deltas plus one completed terminal. This confirms the shared stream boundary for short prompts without promoting the retained long-quality row. |
 
 ## Current verdict
 
-The long-prefill memory lifetime, UI prefill-step argv parity, raw streaming
-separation, and deterministic resident/SSD typed-cache restore are current-source
-**PASS-LIVE scoped** with the evidence above. DSV4 Auto-reasoning quality on the
-repeated-record long-context prompts is **FAIL/PARTIAL**. The broader DSV4
-quality, stochastic, gateway-protocol, media, fault-injection, and signed-app
-matrix remains open. This gate is not a release-readiness claim.
+The long-prefill memory lifetime, UI prefill-step argv parity, short/raw
+streaming separation, and deterministic resident/SSD typed-cache restore are
+current-source **PASS-LIVE scoped** with the evidence above. DSV4
+Auto-reasoning quality on the repeated-record long-context prompts is
+**FAIL/PARTIAL**, and the direct-model follow-up proves the symptom exists below
+the API/cache layers. Artifact-versus-shared-architecture attribution remains
+unresolved. The broader DSV4 quality, stochastic, gateway-protocol,
+fault-injection, and signed-app matrix remains open. This gate is not a
+release-readiness claim.
 
 ## Evidence inventory
 

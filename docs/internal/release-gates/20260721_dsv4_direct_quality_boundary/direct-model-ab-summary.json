@@ -1,0 +1,51 @@
+{
+  "source": "6081b1da4b04830fd6b9a237530f2da6421ad2fb",
+  "bundle": "/Volumes/EricsLLMDrive/dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+  "sqlite_rowid": 225,
+  "prompt_tokens": 7879,
+  "max_output_tokens": 512,
+  "execution": "direct mlx_lm.generate using current vmlx load_jang_model; no server, API adapter, parser, scheduler, paged RAM, or block-disk L2",
+  "provenance": "values transcribed from the current tool execution stdout; full raw completions were not persisted",
+  "arms": [
+    {
+      "pool_quant": true,
+      "temperature": 0.6,
+      "top_p": 0.95,
+      "load_seconds": 44.958,
+      "generation_seconds": 48.377,
+      "raw_length": 1712,
+      "has_thinking_end": false,
+      "has_start_secret": false,
+      "has_end_secret": false,
+      "has_done_marker": false,
+      "observation": "looped planning and hallucinated record values"
+    },
+    {
+      "pool_quant": true,
+      "temperature": 0.0,
+      "top_p": 1.0,
+      "load_seconds": 42.982,
+      "generation_seconds": 47.87,
+      "raw_length": 1526,
+      "has_thinking_end": false,
+      "has_start_secret": true,
+      "has_end_secret": true,
+      "has_done_marker": false,
+      "observation": "repeated the same secret-boundary planning sentence without entering visible content"
+    },
+    {
+      "pool_quant": false,
+      "temperature": 0.0,
+      "top_p": 1.0,
+      "load_seconds": 43.293,
+      "generation_seconds": 58.568,
+      "raw_length": 1526,
+      "has_thinking_end": false,
+      "has_start_secret": true,
+      "has_end_secret": true,
+      "has_done_marker": false,
+      "observation": "same visible looping completion as pool-quant-on greedy arm"
+    }
+  ],
+  "verdict": "failure reproduced below Electron/API/cache; artifact-versus-shared-architecture cause remains unresolved"
+}

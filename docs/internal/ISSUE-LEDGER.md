@@ -4340,3 +4340,37 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   routes, and a non-neutral repetition-penalty artifact remain separate. Do not
   rerun the already-proven generic protocol explicit-zero gate. Evidence:
   `docs/internal/release-gates/20260721_gemma4_26b_sampling_parity/`.
+
+## 2026-07-21 - DSV4 Auto quality narrowed below API/cache; short stream boundary current
+
+- `DSV4-LONG-AUTO-QUALITY`: remains **FAIL/PARTIAL**. The current-loader direct
+  A/B used the exact 7,879-token failing prompt and direct `mlx_lm.generate`,
+  excluding Electron, API adapters, parsers, scheduler, paged RAM, block L2,
+  and generic TQ. Bundle sampling, greedy pool-on, and greedy pool-off all
+  failed to close `</think>` or reach the requested marker within 512 tokens.
+  Greedy pool-on/off produced the same 1,526-character loop, so neither
+  stochastic sampling nor the native pool codec owns the symptom.
+- This is not an artifact-blame closure. The standalone legacy JANG loader
+  still cannot consume the official affine sidecar because it requires the old
+  top-level `format` field. Independent architecture/reference evidence remains
+  **BLOCKED/PARTIAL**.
+- `DSV4-SHORT-AUTO-STREAM-CURRENT`: **VERIFIED-LIVE_SCOPED**. Real Electron
+  Start loaded PID 76078 before a request. The visible drawer matched the
+  bundle's 0.6/.95/Off/0/1 defaults. Row 284 painted 40 distinct states with
+  progressive separate reasoning and exact visible
+  `DSV4-CURRENT-BOUNDARY-DONE VALUE=45`; raw Responses emitted 44 timed
+  reasoning-summary plus 12 content deltas and one `response.completed`.
+- Current health identifies affine JANG, `DSV4BatchGenerator`, the 43-layer
+  SWA/CSA/HCA native composite, native pool codec On, paged/block L2 On, and
+  generic TQ Off. The short prompt was below one 256-token block, so no new
+  cache-hit claim is made; the existing long resident/restart gate remains the
+  cache evidence owner.
+- Dead-code audit found two unused parameters on
+  `_resolve_dsv4_thinking_policy` (`tools_present`, `tool_choice`) forwarded by
+  five production call sites. They are queued for removal with the next DSV4
+  code change so the required engine restart/live rerun is not duplicated for a
+  no-behavior cleanup. Historical CHANGELOG text is retained as release
+  history, not mistaken for active runtime policy.
+- No output rewrite, prompt coercion, hidden sampler clamp, or generic cache
+  substitution was added. Evidence:
+  `docs/internal/release-gates/20260721_dsv4_direct_quality_boundary/`.

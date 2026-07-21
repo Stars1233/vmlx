@@ -1,0 +1,374 @@
+{
+  "endpoint": "http://127.0.0.1:8002/v1/responses",
+  "prompt": "[DSV4-CURRENT-API] Privately compute 19+23. Do not call tools. After reasoning, reply exactly DSV4-CURRENT-API-DONE VALUE=42 and nothing else.",
+  "payload": {
+    "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+    "input": "[DSV4-CURRENT-API] Privately compute 19+23. Do not call tools. After reasoning, reply exactly DSV4-CURRENT-API-DONE VALUE=42 and nothing else.",
+    "stream": true,
+    "max_output_tokens": 1024
+  },
+  "elapsed_ms": 3878,
+  "reasoning_delta_count": 44,
+  "reasoning_text": " We need to compute 19+23 privately without calling any tools. The result is 42. So I will respond with exactly \"DSV4-CURRENT-API-DONE VALUE=42\" and nothing else.",
+  "content_delta_count": 12,
+  "content_text": "DSV4-CURRENT-API-DONE VALUE=42",
+  "terminal_types": [
+    "response.completed"
+  ],
+  "events": [
+    {
+      "ms": 46,
+      "type": "response.created"
+    },
+    {
+      "ms": 46,
+      "type": "response.output_item.added"
+    },
+    {
+      "ms": 46,
+      "type": "response.content_part.added"
+    },
+    {
+      "ms": 1189,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " We"
+    },
+    {
+      "ms": 1290,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " need"
+    },
+    {
+      "ms": 1333,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " to"
+    },
+    {
+      "ms": 1376,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " compute"
+    },
+    {
+      "ms": 1415,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " "
+    },
+    {
+      "ms": 1472,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": "19"
+    },
+    {
+      "ms": 1515,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": "+"
+    },
+    {
+      "ms": 1558,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": "23"
+    },
+    {
+      "ms": 1596,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " privately"
+    },
+    {
+      "ms": 1654,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " without"
+    },
+    {
+      "ms": 1697,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " calling"
+    },
+    {
+      "ms": 1740,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " any"
+    },
+    {
+      "ms": 1779,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " tools"
+    },
+    {
+      "ms": 1836,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": "."
+    },
+    {
+      "ms": 1879,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " The"
+    },
+    {
+      "ms": 1922,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " result"
+    },
+    {
+      "ms": 1961,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " is"
+    },
+    {
+      "ms": 2018,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " "
+    },
+    {
+      "ms": 2061,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": "42"
+    },
+    {
+      "ms": 2104,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": "."
+    },
+    {
+      "ms": 2171,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " So"
+    },
+    {
+      "ms": 2230,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " I"
+    },
+    {
+      "ms": 2274,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " will"
+    },
+    {
+      "ms": 2318,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " respond"
+    },
+    {
+      "ms": 2357,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " with"
+    },
+    {
+      "ms": 2414,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " exactly"
+    },
+    {
+      "ms": 2457,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " \""
+    },
+    {
+      "ms": 2501,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": "DS"
+    },
+    {
+      "ms": 2540,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": "V"
+    },
+    {
+      "ms": 2598,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": "4"
+    },
+    {
+      "ms": 2641,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": "-C"
+    },
+    {
+      "ms": 2685,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": "URRENT"
+    },
+    {
+      "ms": 2723,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": "-"
+    },
+    {
+      "ms": 2781,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": "API"
+    },
+    {
+      "ms": 2825,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": "-D"
+    },
+    {
+      "ms": 2868,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": "ONE"
+    },
+    {
+      "ms": 2907,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " VALUE"
+    },
+    {
+      "ms": 2964,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": "="
+    },
+    {
+      "ms": 3007,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": "42"
+    },
+    {
+      "ms": 3051,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": "\""
+    },
+    {
+      "ms": 3089,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " and"
+    },
+    {
+      "ms": 3147,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " nothing"
+    },
+    {
+      "ms": 3190,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": " else"
+    },
+    {
+      "ms": 3234,
+      "type": "response.reasoning_summary_text.delta",
+      "delta": "."
+    },
+    {
+      "ms": 3330,
+      "type": "response.output_text.delta",
+      "delta": "DS"
+    },
+    {
+      "ms": 3374,
+      "type": "response.output_text.delta",
+      "delta": "V"
+    },
+    {
+      "ms": 3417,
+      "type": "response.output_text.delta",
+      "delta": "4"
+    },
+    {
+      "ms": 3456,
+      "type": "response.output_text.delta",
+      "delta": "-C"
+    },
+    {
+      "ms": 3513,
+      "type": "response.output_text.delta",
+      "delta": "URRENT"
+    },
+    {
+      "ms": 3557,
+      "type": "response.output_text.delta",
+      "delta": "-"
+    },
+    {
+      "ms": 3601,
+      "type": "response.output_text.delta",
+      "delta": "API"
+    },
+    {
+      "ms": 3640,
+      "type": "response.output_text.delta",
+      "delta": "-D"
+    },
+    {
+      "ms": 3697,
+      "type": "response.output_text.delta",
+      "delta": "ONE"
+    },
+    {
+      "ms": 3741,
+      "type": "response.output_text.delta",
+      "delta": " VALUE"
+    },
+    {
+      "ms": 3785,
+      "type": "response.output_text.delta",
+      "delta": "="
+    },
+    {
+      "ms": 3824,
+      "type": "response.output_text.delta",
+      "delta": "42"
+    },
+    {
+      "ms": 3878,
+      "type": "response.reasoning_summary_text.done",
+      "text": " We need to compute 19+23 privately without calling any tools. The result is 42. So I will respond with exactly \"DSV4-CURRENT-API-DONE VALUE=42\" and nothing else."
+    },
+    {
+      "ms": 3878,
+      "type": "response.output_text.done",
+      "text": "DSV4-CURRENT-API-DONE VALUE=42"
+    },
+    {
+      "ms": 3878,
+      "type": "response.content_part.done"
+    },
+    {
+      "ms": 3878,
+      "type": "response.output_item.done"
+    },
+    {
+      "ms": 3878,
+      "type": "response.completed",
+      "response": {
+        "id": "resp_e9480ed70ec3",
+        "object": "response",
+        "created_at": 1784631964,
+        "status": "completed",
+        "model": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+        "output_text": "DSV4-CURRENT-API-DONE VALUE=42",
+        "output": [
+          {
+            "id": "item_7b787b704aa9",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "DSV4-CURRENT-API-DONE VALUE=42",
+                "annotations": []
+              }
+            ]
+          },
+          {
+            "id": "rs_4753ef2b3801",
+            "type": "reasoning",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "reasoning",
+                "text": " We need to compute 19+23 privately without calling any tools. The result is 42. So I will respond with exactly \"DSV4-CURRENT-API-DONE VALUE=42\" and nothing else."
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 47,
+          "output_tokens": 58,
+          "total_tokens": 105
+        }
+      }
+    }
+  ]
+}
