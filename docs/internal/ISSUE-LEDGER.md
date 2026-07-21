@@ -4617,9 +4617,15 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   cached, and a real Stop/Start L2 restore at 48.9 tok/s with 93/94
   `paged+disk+tq-native` cached. The pre-fix restart control was 16.0 tok/s;
   JIT Off remained 16.0, excluding compile as the owner.
-- Retain the restart row's 4,087-character repetitive reasoning as a quality
-  observation. Paged-Off/SSD-only current JANG_4M, long-window, remaining
-  protocols/tools, and settings breadth are still open. Evidence:
+- `LAGUNA-S21-4M-SSD-ONLY`: `VERIFIED-LIVE_SCOPED` for cache and `FAIL` for
+  strict format. Real UI Paged Off + L2 On launched PID 7217 with
+  `block_disk_only`, restored the 64+29-token partial block set as
+  `block-disk+tq-native`, kept zero resident cache bytes, and decoded at
+  50.7 tok/s. The model added an unwanted arithmetic line before the marker.
+  Real UI restored Paged On in eager PID 7739 with L2 retained.
+- Retain the restart row's 4,087-character repetitive reasoning and the
+  SSD-only row's extra visible line as quality observations. Long-window,
+  remaining protocols/tools, and settings breadth are still open. Evidence:
   `docs/internal/release-gates/20260721_laguna_s21_jang2l_cache_reasoning/JANG_4M.md`.
 
 ## 2026-07-21 - Cross-family reasoning/output protocol gate added

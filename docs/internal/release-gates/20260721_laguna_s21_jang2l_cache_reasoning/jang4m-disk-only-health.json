@@ -1,0 +1,49 @@
+{
+  "engine_pid": 7217,
+  "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+  "kv_cache_quantization": {
+    "enabled": true,
+    "stored_prefix_quantization": "turboquant-q4",
+    "key_bits": 4,
+    "value_bits": 4,
+    "auto_policy": "mixed_swa_full_attention_kv_storage_tq4"
+  },
+  "scheduler": {
+    "cache_hit_requests": 1,
+    "cache_hit_tokens": 93,
+    "cache_hit_tokens_by_detail": {
+      "block-disk+tq-native": 93
+    },
+    "last_cache_execution": {
+      "cache_detail": "block-disk+tq-native",
+      "cached_tokens": 93,
+      "blocks": 2,
+      "reconstructed": true,
+      "reconstruction_ok": true,
+      "disk_blocks": 2,
+      "tq_native_blocks": 24,
+      "total_worker_cache_seconds": 0.363785
+    }
+  },
+  "cache": {
+    "backend_mode": "block_disk_only",
+    "paged_ram_enabled": false,
+    "disk_only": true,
+    "ram_mirror_policy": "disk_only",
+    "tokens_saved": 93,
+    "disk_promotion_hits": 2,
+    "ram_tokens_cached": 0,
+    "l1_indexed_tokens": 93,
+    "l1_resident_bytes": 0,
+    "l2_block_tokens_on_disk": 93
+  },
+  "native_cache": {
+    "schema": "mixed_swa_kv_v1",
+    "paged": false,
+    "block_disk_only": true,
+    "block_disk_l2": true,
+    "storage_bits": 4,
+    "storage_applies_to": "full_attention_kv_only",
+    "sliding_window_policy": "native_rotating_kv_state"
+  }
+}

@@ -82,10 +82,10 @@ full gateway protocol matrix.
 
 ## Still open
 
-1. Complete JANG_4M Paged-Off/SSD-only restore, one-tool/protocol, sampling,
-   and long-window rows. The q4 mixed-SWA disk dtype, RAM hit, restart L2 hit,
+1. Complete JANG_4M one-tool/protocol, sampling, and long-window rows. The q4
+   mixed-SWA disk dtype, RAM hit, restart L2 hit, Paged-Off SSD-only hit,
    settings restart, eager load, and performance regression are closed in
-   `JANG_4M.md`.
+   `JANG_4M.md`; the SSD-only row's strict-format miss remains visible.
 2. Run Chat Completions, Anthropic, and Ollama tool-result continuations for
    S-2.1; this gate covers Electron Responses plus raw Responses.
 3. Measure long-context correctness across the 512-token SWA boundary and the
