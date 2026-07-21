@@ -1,0 +1,87 @@
+{
+  "status": "pass",
+  "gateway": "http://127.0.0.1:8088",
+  "results": [
+    {
+      "path": "/v1/chat/completions",
+      "phase": "premature_backend",
+      "status": 502,
+      "elapsed_ms": 103.1,
+      "raw": "{\"error\":{\"message\":\"Backend connection closed before response completed\",\"type\":\"server_error\",\"code\":\"backend_connection_closed\"}}",
+      "parsed": {
+        "error": {
+          "message": "Backend connection closed before response completed",
+          "type": "server_error",
+          "code": "backend_connection_closed"
+        }
+      }
+    },
+    {
+      "path": "/v1/chat/completions",
+      "phase": "immediate_recovery",
+      "status": 200,
+      "elapsed_ms": 34.9,
+      "raw": "{\"object\":\"gateway.recovery\",\"path\":\"/v1/chat/completions\",\"ok\":true,\"attempt\":2}",
+      "parsed": {
+        "object": "gateway.recovery",
+        "path": "/v1/chat/completions",
+        "ok": true,
+        "attempt": 2
+      }
+    },
+    {
+      "path": "/v1/responses",
+      "phase": "premature_backend",
+      "status": 502,
+      "elapsed_ms": 68.1,
+      "raw": "{\"error\":{\"message\":\"Backend connection closed before response completed\",\"type\":\"server_error\",\"code\":\"backend_connection_closed\"}}",
+      "parsed": {
+        "error": {
+          "message": "Backend connection closed before response completed",
+          "type": "server_error",
+          "code": "backend_connection_closed"
+        }
+      }
+    },
+    {
+      "path": "/v1/responses",
+      "phase": "immediate_recovery",
+      "status": 200,
+      "elapsed_ms": 24.5,
+      "raw": "{\"object\":\"gateway.recovery\",\"path\":\"/v1/responses\",\"ok\":true,\"attempt\":2}",
+      "parsed": {
+        "object": "gateway.recovery",
+        "path": "/v1/responses",
+        "ok": true,
+        "attempt": 2
+      }
+    },
+    {
+      "path": "/v1/messages",
+      "phase": "premature_backend",
+      "status": 502,
+      "elapsed_ms": 68.9,
+      "raw": "{\"error\":{\"message\":\"Backend connection closed before response completed\",\"type\":\"server_error\",\"code\":\"backend_connection_closed\"}}",
+      "parsed": {
+        "error": {
+          "message": "Backend connection closed before response completed",
+          "type": "server_error",
+          "code": "backend_connection_closed"
+        }
+      }
+    },
+    {
+      "path": "/v1/messages",
+      "phase": "immediate_recovery",
+      "status": 200,
+      "elapsed_ms": 27.5,
+      "raw": "{\"object\":\"gateway.recovery\",\"path\":\"/v1/messages\",\"ok\":true,\"attempt\":2}",
+      "parsed": {
+        "object": "gateway.recovery",
+        "path": "/v1/messages",
+        "ok": true,
+        "attempt": 2
+      }
+    }
+  ]
+}

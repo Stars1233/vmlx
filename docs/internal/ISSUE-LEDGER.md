@@ -4540,3 +4540,34 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   typed sampling, and non-neutral repetition-penalty breadth remain PARTIAL.
   Evidence:
   `docs/internal/release-gates/20260721_jangtq_sampling_chat_lifecycle_current/`.
+
+## 2026-07-21 - Electron gateway non-stream responses are atomic
+
+- `GATEWAY-NONSTREAM-PARTIAL-BODY`: `VERIFIED-LIVE_SCOPED`. The generic proxy
+  previously committed backend status/headers and forwarded body fragments
+  before knowing whether a non-stream JSON document completed. A backend reset
+  after HTTP 200 plus `{"partial":` could therefore leave clients with a
+  false-success status and malformed JSON.
+- Commit `e70902c42` fixes the owning `proxyRequest` path once for OpenAI Chat
+  Completions, Responses, and Anthropic Messages. Non-stream responses now
+  remain buffered until backend `end`; the shared lifecycle guard is installed
+  before any header commit and can emit one truthful atomic 502. Streaming
+  routes retain their progressive byte forwarding and protocol-native failure
+  terminals. No endpoint-specific workaround, output repair, prompt coercion,
+  or model-family branch was added.
+- The current dev Electron app was fully relaunched with CDP 9335 and the
+  correct `/Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine`; its API drawer was
+  visually inspected at `localhost:8088`, LAN Off/local-only, Single Model On.
+  A controlled healthy backend then sent a partial non-stream body and reset
+  once per route. Chat, Responses, and Anthropic each returned parseable HTTP
+  502 JSON with `backend_connection_closed`, then the immediate same-route
+  request returned parseable HTTP 200 recovery JSON.
+- The backend recorded exactly two requests per route. The temporary mapping
+  was restored to the original stopped session on port 8007 with no PID, and
+  the controlled backend stopped. No model generation/cache/media row was
+  repeated or promoted.
+- Validation: the full gateway behavior file passes 18/18, TypeScript
+  typecheck passes, and the scoped diff check passes. Remaining gateway work
+  is longer multi-client/OS-network/swap stress and signed-app repetition, not
+  non-stream partial-body loss. Evidence:
+  `docs/internal/release-gates/20260721_gateway_nonstream_atomic_current/`.

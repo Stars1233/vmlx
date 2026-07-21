@@ -1,0 +1,176 @@
+Code
+Chat
+Server
+Tools
+Image
+API
+🇺🇸
+API Gateway
+
+All models are accessible through a single endpoint. Route by model name in your request.
+
+MLX Studio by Jinho Jang · mlx.studio
+
+Gateway
+No models
+URL
+http://localhost:8088
+Port
+LAN
+Localhost only (127.0.0.1)
+Single model
+Gateway swaps models and unloads other local sessions
+OpenAI
+http://localhost:8088/v1
+Anthropic
+http://localhost:8088
+Ollama
+OLLAMA_HOST=http://localhost:8088
+Format:
+OpenAI
+Anthropic
+Ollama
+Quick Start
+curl
+Python (OpenAI)
+JavaScript
+curl http://localhost:8088/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "your-model-name",
+    "messages": [
+      {"role": "user", "content": "Hello!"}
+    ],
+    "stream": true
+  }'
+Coding Tool Integration
+
+Connect your local model to coding agents — one-click or manual config
+
+Claude Code
+Anthropic CLI for coding
+Installed
+Auto-Configure
+Manual Setup
+Codex CLI
+OpenAI coding agent
+Installed
+Auto-Configure
+Manual Setup
+OpenCode
+Terminal coding assistant
+Installed
+Auto-Configure
+Manual Setup
+OpenClaw
+AI agent framework
+Installed
+Auto-Configure
+Manual Setup
+OpenAI Endpoints
+Chat & Completions
+
+OpenAI-compatible chat and text completion endpoints
+
+POST
+/v1/chat/completions
+stream
+Chat completions (OpenAI format)
+POST
+/v1/responses
+stream
+Responses API (OpenAI format)
+POST
+/v1/completions
+stream
+Text completions (legacy format)
+Models
+
+Model information and management
+
+GET
+/v1/models
+List loaded models
+Image Generation
+
+Text-to-image generation and image editing (requires mflux).
+
+POST
+/v1/images/generations
+Generate images from text prompts (OpenAI format)
+POST
+/v1/images/edits
+Edit images with text instructions (Qwen-Image-Edit)
+Embeddings & Reranking
+
+Vector embeddings and reranking (requires embedding model)
+
+POST
+/v1/embeddings
+Generate text embeddings
+POST
+/v1/rerank
+Rerank documents by relevance
+Audio
+
+Speech-to-text and text-to-speech (requires mlx-audio)
+
+POST
+/v1/audio/transcriptions
+Transcribe audio (Whisper STT)
+POST
+/v1/audio/speech
+stream
+Generate speech (Kokoro TTS)
+GET
+/v1/audio/voices
+List available TTS voices
+Cache
+
+KV cache management for prefix caching
+
+GET
+/v1/cache/stats
+Cache statistics (hit rate, size)
+GET
+/v1/cache/entries
+List cached prefix entries
+POST
+/v1/cache/warm
+Pre-warm cache with a prompt
+DELETE
+/v1/cache
+Clear all cached entries
+MCP Tools
+
+Model Context Protocol tool integration
+
+GET
+/v1/mcp/tools
+List available MCP tools
+GET
+/v1/mcp/servers
+MCP server connection status
+POST
+/v1/mcp/execute
+Execute an MCP tool
+Cancel
+
+Cancel in-flight streaming requests
+
+POST
+/v1/chat/completions/{id}/cancel
+Cancel a chat completion stream
+POST
+/v1/responses/{id}/cancel
+Cancel a responses stream
+POST
+/v1/completions/{id}/cancel
+Cancel a text completion stream
+Health
+
+Server health and status
+
+GET
+/health
+Health check — model status, memory, MCP info
