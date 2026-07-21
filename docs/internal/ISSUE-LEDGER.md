@@ -4468,3 +4468,22 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   29/29 focused gateway tests, panel typecheck, and clean diff check. This gate
   does not promote model, cache, parser, or media rows. Evidence:
   `docs/internal/release-gates/20260721_gateway_late_loader_rollback_current/`.
+
+## 2026-07-21 - Development engine version matches effective source
+
+- `ENGINE-VERSION-TRUTH`: `VERIFIED-LIVE_SCOPED`. The selected sibling venv
+  shim reported 1.6.12 when probed without the development source root, while
+  actual sessions ran this checkout through a pinned `PYTHONPATH` at 1.6.14.
+  `getVersionFromBinary` had therefore displayed the shim's stale editable
+  install rather than the source the app would execute.
+- Current source uses one development source-root owner for version probing and
+  bundled-source discovery. Packaged builds return no development source root
+  and retain bundled-Python/dist-info isolation.
+- After a clean current-source Electron relaunch, the real renderer IPC
+  returned version 1.6.14 for the exact selected shim and the main log printed
+  `[Engine Manager] Version: 1.6.14`. Real Start eagerly loaded PID 82494 with
+  the same checkout on `PYTHONPATH`; health was loaded with no request.
+- No version string was forced and the duplicate dev-root calculation was
+  removed. Validation: 7/7 focused path/isolation tests, panel typecheck, and
+  clean diff check. Evidence:
+  `docs/internal/release-gates/20260721_engine_version_source_truth_current/`.

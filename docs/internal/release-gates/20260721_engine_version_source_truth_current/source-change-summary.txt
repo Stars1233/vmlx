@@ -1,0 +1,8 @@
+panel/src/main/engine-manager.ts
+- add one development source-root resolver that is disabled when packaged
+- pass that source root to all discovered binary version probes
+- import vmlx_engine with the effective development PYTHONPATH
+- reuse the source-root owner in getBundledSourcePath
+
+panel/tests/engine-path-policy.test.ts
+- pin the shared development source-root and effective PYTHONPATH contract
