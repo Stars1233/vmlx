@@ -29,6 +29,7 @@ Cutoff: `9e8a2f67c0816887f27ec02de29e777e287ec0c5` on
 | OpenAI agentic tool/result continuation | PASS-LIVE scoped | `m3-gateway-openai-tools.json` records no-tool controls, one schema-valid `file_info(path=panel/package.json)` call, a real 5.2 KB tool result, and exact `M3-GATEWAY-TOOL-DONE SIZE=5.2 KB` continuations for both Chat and Responses. Streaming continuations were progressive and terminal-complete; non-stream controls also completed. |
 | Anthropic/Ollama agentic continuation | PASS-LIVE scoped | `m3-gateway-anthropic-ollama-tools.json` records one exact native tool call on each protocol, zero premature visible content, then 29 separate reasoning deltas and 15 progressive content deltas after the real result. Both exact-finaled with no second tool call and their truthful native terminal. |
 | One-model gateway auto-swap | PASS-LIVE scoped | `gateway-one-model-swap-current.json` records M3 -> DSV4 -> M3 requests through port 8088. Each request stopped the old backend, eagerly started only the requested backend, left exactly one `vmlx-engine serve` process, progressively exact-finaled, and updated gateway health. DSV4 took 55.87 s and M3 15.71 s including replacement load. |
+| Qwen3.6 MXFP4-MTP four-protocol reasoning | PASS-LIVE scoped at `616b0f3c8` | The current API drawer visibly showed the Qwen backend as the only running model, LAN Off, and Single Model On. Chat, Responses, Anthropic, and Ollama each returned HTTP 200, 460-469 separate reasoning deltas, 12 progressive content deltas, exact `Q27-MTP-GATEWAY-REASON-DONE VALUE=95`, and the native terminal. Gateway health and the process snapshot still show one Qwen engine after all four sequential requests. |
 
 ## Focused validation
 
@@ -49,9 +50,11 @@ Cutoff: `9e8a2f67c0816887f27ec02de29e777e287ec0c5` on
   this row. Current LAN enable/rollback, port-conflict recovery, network-loss
   injection, concurrent-client soak, and signed-app repetition remain OPEN.
 - This is one current MiniMax-M3 parser family plus DSV4 ownership swapping.
-  Other parser/model families, media-bearing tool loops, longer stochastic
-  agentic use, and explicit cancellation/disconnect injection retain their
-  existing per-row status.
+  Qwen3.6 MXFP4-MTP reasoning transport is now an additional live parser/model
+  row, while its direct Electron post-video one-tool continuation is retained
+  in `../20260720_qwen36_27b_mxfp4_mtp_video_current/`. Other parser/model
+  families, media-bearing gateway tools, longer stochastic agentic use, and
+  explicit cancellation/disconnect injection retain their existing status.
 - The app-versus-PATH engine version-string mismatch remains OPEN and must be
   reconciled before the next release checkpoint.
 

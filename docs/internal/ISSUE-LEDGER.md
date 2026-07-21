@@ -3818,6 +3818,15 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   other parser/model families, and media-bearing gateway turns. A stale
   installed app remains separately bound to 8081; this gate deliberately
   isolated the current dev app on 8088 and does not claim stale-listener cleanup.
+- `GATEWAY-Q27-MTP-REASONING`: `VERIFIED-LIVE_SCOPED` at `616b0f3c8`.
+  The real API drawer showed localhost 8088, LAN Off, Single Model On, and only
+  Qwen3.6-27B-MXFP4-MTP running. Sequential Chat, Responses, Anthropic, and
+  Ollama streams each returned HTTP 200, 460-469 separate reasoning deltas,
+  12 progressive content deltas, exact `Q27-MTP-GATEWAY-REASON-DONE VALUE=95`,
+  and the protocol-native terminal. Gateway health and `ps` still showed one
+  Qwen engine afterward. This adds Qwen parser/MTP transport breadth; it does
+  not close LAN/port/failure/cancel/media-bearing gateway rows. Evidence:
+  `docs/internal/release-gates/20260720_gateway_agentic_ownership_current/`.
 
 ## 2026-07-20 - MiniMax-M3 current media capability telemetry correction
 
