@@ -1,4 +1,4 @@
-# Laguna S-2.1 JANG_2L reasoning, tool, and q4 cache gate
+# Laguna S-2.1 JANG_2L reasoning/tool/cache gate and JANG_4M supplement
 
 Date: 2026-07-21
 
@@ -10,10 +10,11 @@ Electron data: `/Users/eric/.vmlx-v1613-responsive-dev`
 
 CDP: `127.0.0.1:9335`
 
-This gate covers the current `jangq-ai/Laguna-S-2.1-JANG_2L` artifact loaded
-through the real Electron Start/Save-and-Restart controls. It does not promote
-JANG_4M, long-context quality, Laguna performance, or the full gateway protocol
-matrix.
+The main gate covers the current `jangq-ai/Laguna-S-2.1-JANG_2L` artifact
+loaded through the real Electron Start/Save-and-Restart controls. The
+`JANG_4M.md` supplement adds current live proof for the JANG_4M q4/L2 dtype and
+restart-performance defect. It does not promote long-context quality or the
+full gateway protocol matrix.
 
 ## Artifact and source contract
 
@@ -81,8 +82,10 @@ matrix.
 
 ## Still open
 
-1. Run the JANG_4M artifact through the same settings identity, Auto reasoning,
-   one-tool, and representative q4 cache restore rows.
+1. Complete JANG_4M Paged-Off/SSD-only restore, one-tool/protocol, sampling,
+   and long-window rows. The q4 mixed-SWA disk dtype, RAM hit, restart L2 hit,
+   settings restart, eager load, and performance regression are closed in
+   `JANG_4M.md`.
 2. Run Chat Completions, Anthropic, and Ollama tool-result continuations for
    S-2.1; this gate covers Electron Responses plus raw Responses.
 3. Measure long-context correctness across the 512-token SWA boundary and the
@@ -90,3 +93,7 @@ matrix.
    cache prompt.
 4. Keep the model-level stochastic exact-format/empty-think variability visible;
    do not add output rewriting, synthetic think tags, or hidden sampler clamps.
+5. Audit Chat Completions and Responses across parser families for separate
+   reasoning deltas/`reasoning_content`, progressive visible content, valid tool
+   continuation, and truthful terminal events. Inline `<think>` leakage is a
+   failure; it is not inferred closed from the Electron DB split alone.

@@ -1765,3 +1765,18 @@ rows, and it does not promote the broader family/release matrix.
 | Responses tool loop | PASS-LIVE scoped | Electron executed exactly one `file_info` and exact-finaled. Raw required-tool Responses emitted two argument deltas and one call; `previous_response_id` continuation emitted 16 content deltas, no repeat call, and one completed terminal. | Chat Completions, Anthropic, and Ollama tool-result continuations for S-2.1 remain open. |
 | Mixed-SWA q4 cache hierarchy | PASS-LIVE scoped | Health reports q4 storage on 12 full-attention KV slots and native rotating state on 36 SWA slots. Electron reused 320/334 tokens from RAM, restored the same five blocks after process restart, evicted them under a seven-usable-block L1, restored them again from SSD, and finally restored them with Paged Off as `block-disk+tq-native` and zero resident bytes. | Long-context behavior beyond the 512-token SWA window and JANG_4M remain open. Evidence: `../20260721_laguna_s21_jang2l_cache_reasoning/`. |
 | Saved cache settings | PASS-LIVE scoped | Real UI changed 1000→8 blocks, Paged On→Off, then restored Paged On/1000. Every Save-and-Restart produced a new PID whose argv and health matched the drawer; final PID 99170 was eagerly loaded with no request. | Broader non-cache server/chat controls remain in the shared settings matrix. |
+
+## 2026-07-21 Laguna S-2.1 JANG_4M dtype/performance addendum
+
+| Gate | Status | Current-source and live evidence | Remaining |
+|---|---|---|---|
+| Mixed-SWA block-L2 dtype | PASS-SOURCE+LIVE scoped | `_numpy_block_slice` now restores the original bfloat16 dtype after the NumPy fp32 bridge for plain KV, rotating KV, and M3 positional state; quantized snapshots preserve their pre-bridge dtype. New JANG_4M block headers contain 12 q4/q4 full-attention TQ layers plus 36 BF16 rotating layers. Focused cache suites pass 34/34. | Keep other native/typed cache families as regressions; do not infer their live closure from Laguna. |
+| JANG_4M cold/RAM/restart performance | PASS-LIVE scoped | Real Electron rows 371/374/377 exact-finaled without warnings. Cold was 51.3 tok/s; paged RAM reused 93/94 at 51.7 tok/s; real Stop/Start restored 93/94 `paged+disk+tq-native` at 48.9 tok/s. The retained pre-fix and JIT-Off restart controls were both 16.0 tok/s. | Paged-Off disk-only current JANG_4M, long >512-token SWA, protocol/tool breadth, and longer quality soak. Evidence: `../20260721_laguna_s21_jang2l_cache_reasoning/JANG_4M.md`. |
+| Restart reasoning quality | PARTIAL / retained observation | The restart turn streamed to exact visible content with no warning, but produced 4,087 characters of repetitive private reasoning. No output rewriting, forced tag, cap, or sampler coercion was added. | Longer natural and agentic prompts with model-derived sampling. |
+
+## 2026-07-21 cross-family reasoning/content protocol addendum
+
+| Gate | Status | Required evidence | Remaining |
+|---|---|---|---|
+| Chat and Responses reasoning separation | OPEN / RELEASE-CRITICAL | For each configured parser-family representative: timed raw SSE proving progressive reasoning deltas separate from progressive content deltas, no inline `<think>`/parser leakage, and one truthful completed/incomplete/failed terminal. | Run after Laguna on current source; Electron DB/UI separation does not substitute for raw protocol proof. |
+| Agentic reasoning/tool continuation | OPEN / RELEASE-CRITICAL | Chat Completions and Responses must emit a schema-valid call, accept the real tool result, continue reasoning/content without stale replay, and terminalize exactly once. | Include Auto reasoning and no-tool controls; then extend representative coverage to Anthropic/Ollama adapters. |

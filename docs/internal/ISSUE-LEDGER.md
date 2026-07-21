@@ -4599,3 +4599,36 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - S-2.1 JANG_4M, Chat/Anthropic/Ollama tool continuations, long-context SWA
   boundary quality, and performance remain open. Evidence:
   `docs/internal/release-gates/20260721_laguna_s21_jang2l_cache_reasoning/`.
+
+## 2026-07-21 - Laguna S-2.1 JANG_4M block-L2 dtype/performance repair
+
+- `LAGUNA-S21-4M-L2-DTYPE`: `VERIFIED-LIVE_SCOPED`. The block writer used a
+  float32 NumPy bridge for bfloat16 states, but the general positional/rotating
+  slicer discarded the recorded original dtype. JANG_4M process-restart L2
+  restore therefore ran all 36 SWA layers from float32 disk records while the
+  12 full-attention layers stayed q4/bfloat16. The shared slicer now restores
+  model-owned dtype for plain KV, rotating KV, and M3 positional arrays before
+  persistence; quantized source snapshots preserve the pre-bridge dtype.
+- Fresh cache headers now contain 12 q4/q4 `turboquant_kv` layers and 36 BF16
+  `rotating_kv` layers in both the 64-token and 29-token blocks. Focused cache
+  validation passes 34/34.
+- Real Electron rows 371/374/377 exact-finaled with separate reasoning and no
+  warning. Cold decoded at 51.3 tok/s, paged RAM at 51.7 tok/s with 93/94
+  cached, and a real Stop/Start L2 restore at 48.9 tok/s with 93/94
+  `paged+disk+tq-native` cached. The pre-fix restart control was 16.0 tok/s;
+  JIT Off remained 16.0, excluding compile as the owner.
+- Retain the restart row's 4,087-character repetitive reasoning as a quality
+  observation. Paged-Off/SSD-only current JANG_4M, long-window, remaining
+  protocols/tools, and settings breadth are still open. Evidence:
+  `docs/internal/release-gates/20260721_laguna_s21_jang2l_cache_reasoning/JANG_4M.md`.
+
+## 2026-07-21 - Cross-family reasoning/output protocol gate added
+
+- `REASONING-CONTENT-PROTOCOL-PARITY`: `OPEN / RELEASE-CRITICAL`. After Laguna,
+  audit and live-prove Chat Completions and Responses across configured
+  reasoning/parser families. Required behavior is progressive reasoning on the
+  reasoning channel (`reasoning_content` or protocol-native reasoning deltas),
+  progressive visible content on the content channel, no inline `<think>` or
+  parser markup leakage, schema-valid tool calls/results, and exactly one
+  truthful completed/incomplete/failed terminal. Electron separation alone is
+  insufficient; preserve raw timed SSE evidence and tool continuations.
