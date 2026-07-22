@@ -1,0 +1,191 @@
+{
+  "payload": {
+    "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+    "input": [
+      {
+        "role": "user",
+        "content": "[LAG-S21-API-RAIL-DUP1] Do not call tools. Think briefly if reasoning is enabled, but keep all reasoning out of the visible answer. The visible answer must be exactly: LAGUNA API OK"
+      }
+    ],
+    "stream": true,
+    "max_output_tokens": 256,
+    "tools": [],
+    "temperature": 0
+  },
+  "content_join": "LAGUNA API OK",
+  "reasoning_join": "",
+  "event_types": [
+    "response.created",
+    "response.output_item.added",
+    "response.content_part.added",
+    "response.output_text.delta",
+    "response.output_text.delta",
+    "response.output_text.delta",
+    "response.output_text.delta",
+    "response.output_text.delta",
+    "response.output_text.done",
+    "response.content_part.done",
+    "response.output_item.done",
+    "response.completed"
+  ],
+  "events": [
+    {
+      "type": "response.created",
+      "response": {
+        "id": "resp_ce581cc3a0ec",
+        "object": "response",
+        "created_at": 1784695173,
+        "status": "in_progress",
+        "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+        "output": []
+      },
+      "sequence_number": 0,
+      "_t": 0.0103
+    },
+    {
+      "type": "response.output_item.added",
+      "output_index": 0,
+      "item": {
+        "id": "item_bcbb2066efa4",
+        "type": "message",
+        "status": "in_progress",
+        "role": "assistant",
+        "content": []
+      },
+      "sequence_number": 1,
+      "_t": 0.489
+    },
+    {
+      "type": "response.content_part.added",
+      "item_id": "item_bcbb2066efa4",
+      "output_index": 0,
+      "content_index": 0,
+      "part": {
+        "type": "output_text",
+        "text": "",
+        "annotations": []
+      },
+      "sequence_number": 2,
+      "_t": 0.489
+    },
+    {
+      "type": "response.output_text.delta",
+      "item_id": "item_bcbb2066efa4",
+      "output_index": 0,
+      "content_index": 0,
+      "delta": "LAG",
+      "sequence_number": 3,
+      "_t": 0.4891
+    },
+    {
+      "type": "response.output_text.delta",
+      "item_id": "item_bcbb2066efa4",
+      "output_index": 0,
+      "content_index": 0,
+      "delta": "UN",
+      "sequence_number": 4,
+      "_t": 0.5063
+    },
+    {
+      "type": "response.output_text.delta",
+      "item_id": "item_bcbb2066efa4",
+      "output_index": 0,
+      "content_index": 0,
+      "delta": "A",
+      "sequence_number": 5,
+      "_t": 0.524
+    },
+    {
+      "type": "response.output_text.delta",
+      "item_id": "item_bcbb2066efa4",
+      "output_index": 0,
+      "content_index": 0,
+      "delta": " API",
+      "sequence_number": 6,
+      "_t": 0.5416
+    },
+    {
+      "type": "response.output_text.delta",
+      "item_id": "item_bcbb2066efa4",
+      "output_index": 0,
+      "content_index": 0,
+      "delta": " OK",
+      "sequence_number": 7,
+      "_t": 0.559
+    },
+    {
+      "type": "response.output_text.done",
+      "item_id": "item_bcbb2066efa4",
+      "output_index": 0,
+      "content_index": 0,
+      "text": "LAGUNA API OK",
+      "sequence_number": 8,
+      "_t": 0.5768
+    },
+    {
+      "type": "response.content_part.done",
+      "item_id": "item_bcbb2066efa4",
+      "output_index": 0,
+      "content_index": 0,
+      "part": {
+        "type": "output_text",
+        "text": "LAGUNA API OK",
+        "annotations": []
+      },
+      "sequence_number": 9,
+      "_t": 0.5768
+    },
+    {
+      "type": "response.output_item.done",
+      "output_index": 0,
+      "item": {
+        "id": "item_bcbb2066efa4",
+        "type": "message",
+        "status": "completed",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "output_text",
+            "text": "LAGUNA API OK",
+            "annotations": []
+          }
+        ]
+      },
+      "sequence_number": 10,
+      "_t": 0.5769
+    },
+    {
+      "type": "response.completed",
+      "response": {
+        "id": "resp_ce581cc3a0ec",
+        "object": "response",
+        "created_at": 1784695173,
+        "status": "completed",
+        "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+        "output_text": "LAGUNA API OK",
+        "output": [
+          {
+            "id": "item_bcbb2066efa4",
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "LAGUNA API OK",
+                "annotations": []
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 89,
+          "output_tokens": 7,
+          "total_tokens": 96
+        }
+      },
+      "sequence_number": 11,
+      "_t": 0.5769
+    }
+  ]
+}
