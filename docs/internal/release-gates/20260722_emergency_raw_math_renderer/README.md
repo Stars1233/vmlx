@@ -100,6 +100,31 @@ not classified as a renderer defect and is not closed by this gate. Fresh raw
 API byte-fidelity and progressive-stream captures are required on the eventual
 current release cutoff.
 
+## Current-source Qwen follow-up after removing the filter
+
+The Qwen3.6 27B MXFP4 MTP session was stopped and restarted through the real
+Electron controls as PID 36471 before the follow-up. The current four-protocol
+gateway artifact is `q27-current-four-protocol.json`:
+
+| Protocol | Reasoning deltas | Content deltas | First content | Terminal |
+|---|---:|---:|---:|---|
+| Chat Completions | 460 | 12 | 22.469 s | `stop`, `[DONE]` |
+| Responses | 469 | 12 | 30.124 s | `response.completed` |
+| Anthropic | 469 | 12 | 32.807 s | `message_stop` |
+| Ollama | 469 | 12 | 53.036 s | `stop` |
+
+All four produced the same exact visible string, kept reasoning separate, and
+streamed the answer progressively. This confirms that the old terminal-batched
+visible answer in the diagnostic captures was caused by the removed filter.
+
+The paired real Electron turn is retained as
+`q27-current-ui-streaming.png` and `q27-current-ui-final.png`. It showed a live
+reasoning rail at 5 seconds, then completed with separate visible content
+`Q27-R16-UI-CURRENT-DONE VALUE=95`. The UI reported 16
+`paged+ssm+disk+tq-native` cached prompt tokens, 1.56 s TTFT, and a truthful
+48.9 s wall time. This is a Qwen scoped stream/display pass only; it is not a
+cache-hierarchy or cross-family promotion.
+
 ## Remaining release boundary
 
 Before v1.6.16 can be released, the campaign still requires current-source
