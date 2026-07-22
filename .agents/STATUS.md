@@ -7728,3 +7728,21 @@ Status: `VERIFIED-LIVE_SCOPED / GLOBAL CAMPAIGN PARTIAL` at vMLX
   remaining four-protocol/gateway agentic rows; architecture-wide cache/media;
   full suites; version bump; bundled-Python packaging; signing/notarization;
   signed-app regression; and public v1.6.16 release truth.
+
+## 2026-07-22 - Qwen3.6 JANGTQ release-cut checkpoint
+
+Status: `VERIFIED-LIVE_SCOPED / AUTO-TOOL PARTIAL` at `74dadd30c`.
+
+- Unified setup/session development-engine discovery; focused proof is 11/11
+  plus typecheck. Signed packaged-app bootstrap remains to be rerun.
+- Added request-schema-gated recovery for two malformed closed wrapper shapes
+  observed in the real Electron tool catalog. Parser/fallback proof is 140/140
+  on both boxes.
+- Explicit Thinking Off passed the 16-row direct/gateway × four-protocol ×
+  stream/non-stream two-tool harness.
+- Fresh Electron proof executed both tools and restored 3,904
+  `paged+ssm+disk+tq-native` tokens without warnings. Default sampling copied
+  one path segment incorrectly, so strict synthesis is not claimed.
+- Matched required-tool Anthropic Thinking On failed while Off emitted the
+  exact call. No hidden reasoning-mode retry was introduced.
+- Evidence: `docs/internal/release-gates/20260722_qwen35_release_checkpoint/`.

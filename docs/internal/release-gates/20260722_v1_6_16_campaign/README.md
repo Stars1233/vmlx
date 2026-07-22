@@ -385,6 +385,23 @@ closure only; it does not substitute for the Paged-Off partial/restart or
 eviction gates below. Evidence is in
 `docs/internal/release-gates/20260722_cache_names_ram_ssd/`.
 
+## Qwen3.6 JANGTQ checkpoint selected for 1.6.16
+
+At source `74dadd30c`, setup/session engine discovery is unified and the Qwen
+parser accepts two additional live, closed, schema-valid malformed wrapper
+shapes without accepting unadvertised tools or inventing required arguments.
+Focused parser/fallback tests pass `140/140` on both source boxes; engine
+discovery tests pass `11/11` plus typecheck.
+
+Current live proof closes direct/tool coding-harness parity with explicit
+Thinking Off across 16 direct/gateway/protocol/mode rows. A real Electron
+full-catalog turn executed both tools and restored 3,904
+`paged+ssm+disk+tq-native` tokens. Its copied path omitted `eric`, so strict
+default-sampling synthesis remains partial. Thinking On failed the matched
+required-tool A/B while Off emitted the exact call; no hidden retry was added.
+
+Evidence: `docs/internal/release-gates/20260722_qwen35_release_checkpoint/`.
+
 ## Release stop conditions
 
 Do not package, tag, publish, or describe v1.6.16 as ready while any selected

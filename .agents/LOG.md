@@ -1643,3 +1643,18 @@
   separated reasoning/content with truthful terminals and no native marker
   leak. The global campaign remains partial; Paged-Off restart, long eviction,
   broader protocols/gateway, full suites, and release packaging remain open.
+
+## 2026-07-22 - Qwen full-catalog parser and protocol release cut
+
+- Fixed setup/Install Engine divergence by sharing the source-venv resolver
+  between installation checks and session launch.
+- Captured two real Qwen3.6 JANGTQ malformed closed tool wrappers and added
+  request-schema-gated parser support. Missing arguments are not synthesized
+  and unadvertised tools remain rejected.
+- Proved 16/16 explicit Thinking-Off coding-harness flows through direct and
+  gateway Chat, Responses, Anthropic, and Ollama in both modes.
+- Live Electron executed `file_info` and `run_command` with warm
+  `paged+ssm+disk+tq-native` reuse. The model's final copy dropped one path
+  segment, retained as a strict-synthesis partial.
+- Thinking-On required-tool A/B remains a real artifact/runtime limitation.
+  Evidence is under `20260722_qwen35_release_checkpoint/` at `74dadd30c`.

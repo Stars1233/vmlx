@@ -5110,3 +5110,29 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   This does not close Laguna's separate long-context, eviction/restart,
   settings, parser, or latency rows. Overall 1.6.16 campaign status remains
   `PARTIAL / NOT RELEASE-READY`.
+
+## 2026-07-22 - Qwen3.6 full-catalog tool/parser release checkpoint
+
+- `Q36-FULL-CATALOG-WRAPPER`: `FIXED-SOURCE / VERIFIED-LIVE_SCOPED` at
+  `74dadd30c`. Real Electron turns exposed two closed native wrapper variants
+  with a missing `<function=...>` opener. The Qwen parser now recovers them
+  only when the emitted name is advertised and all emitted/required parameters
+  satisfy that request schema. Unadvertised tools and missing required
+  arguments remain rejected. Focused parser/fallback tests pass 140/140 on
+  both source boxes.
+- `DEV-ENGINE-DISCOVERY`: `FIXED-SOURCE / LIVE-PACKAGE-PENDING` at
+  `666c02094`. Setup installation checks and session launch now share the same
+  project source-venv resolver. Focused panel tests pass 11/11 plus typecheck;
+  final signed-app bootstrap proof remains part of the release gate.
+- `Q36-EXPLICIT-DIRECT-TOOL`: `VERIFIED-LIVE_SCOPED`. Thinking Off passes all
+  16 direct/gateway × Chat/Responses/Anthropic/Ollama × stream/non-stream
+  two-tool flows with exact calls, real results, progressive finals, truthful
+  terminals, and no control-marker leak.
+- `Q36-AUTO-REQUIRED-TOOL`: `PARTIAL-LIVE`. In the matched Anthropic A/B,
+  Thinking On produced reasoning but no valid required tool while Off emitted
+  the exact call. A fresh Electron full-catalog run executed both tools and
+  restored 3,904 `paged+ssm+disk+tq-native` tokens, but default-sampling final
+  synthesis copied `/Users/eric/...` as `/Users//...`. No hidden thinking-off
+  retry or fabricated argument was added.
+- Evidence:
+  `docs/internal/release-gates/20260722_qwen35_release_checkpoint/`.

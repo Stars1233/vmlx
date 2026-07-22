@@ -317,6 +317,18 @@ with an easier unrelated model.
 
 ## Final 1.6.16 release gate
 
+Checkpoint update at `74dadd30c`:
+
+- [x] Shared setup/session development-engine discovery is source/focused-test
+  closed; signed packaged-app bootstrap smoke remains below.
+- [x] Explicit Thinking-Off harness flow passes all 16 direct/gateway,
+  four-protocol, stream/non-stream rows on Qwen3.6 35B JANGTQ.
+- [x] Two live full-catalog malformed wrappers have schema-gated parser
+  coverage; missing required arguments remain rejected.
+- [ ] Auto/Thinking-On required-tool reliability is partial. The matched
+  Anthropic request failed On and passed Off. Default-sampling Electron tool
+  execution succeeded but final result copying dropped `eric` from the path.
+
 - [ ] Freeze the selected source cutoff and update this checklist, `README.md`,
   `ISSUE-LEDGER.md`, `.agents/STATUS.md`, `.agents/LOG.md`, and the retained
   closeout matrix with exact PASS/PARTIAL/FAIL boundaries.
