@@ -4954,3 +4954,33 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   53268, Chat Settings still displayed 52809. Acceptance requires the displayed
   PID, SQLite, process list, and launched argv to agree after Save & Restart,
   manual Stop/Start, failure, and stopped state.
+
+## 2026-07-22 - Settings restart and live PID scoped closure
+
+- `R16-SAVE-NEXT-RESTART-UX`: `VERIFIED-LIVE_SCOPED` at `951eab25d`.
+  Running settings surfaces now say `Save for Next Restart`; a real DEBUG and
+  INFO plain Save each persisted without changing the running PID/argv, and
+  Save & Restart remained available afterward.
+- `R16-SAVE-RESTART-DELAY`: `VERIFIED-LIVE_SCOPED`. Both renderer restart
+  flows now trust the already-awaited Stop promise instead of waiting on an
+  event that already fired or an arbitrary timer. In the INFO restore run, the
+  new process started within three seconds of the click and loaded within the
+  18-second observation bound, rather than incurring the old 15-second
+  renderer delay before Start.
+- `R16-SESSION-UPDATED-BROADCAST`: `VERIFIED-SOURCE_TEST_SCOPED`. Successful
+  config writes now read back the durable row and emit `session:updated` with
+  the session and changed keys. The current drawer stayed synchronized through
+  the live plain-save/restart sequence. Other mounted settings consumers still
+  belong to the broader settings matrix.
+- `R16-CHAT-PID-STALE`: `VERIFIED-LIVE_SCOPED`. Real Save & Restart sequences
+  changed PID 56197 to 57093 to 58440. After the final restart, the Chat header,
+  drawer, SQLite, and `ps` all agreed on PID 58440; SQLite and the live argv
+  agreed on INFO, with no DEBUG flag. The live consumer also clears the stale
+  PID when current context reports stopped, covered by focused tests.
+- Verification: 503/503 focused panel tests, TypeScript typecheck, locale JSON
+  parse, and diff check passed on the synchronized proof checkout. A fresh
+  post-restart Electron turn exact-finaled `R16-SET-POST-DONE` and restored 80
+  `paged+disk+tq-native` tokens; health recorded two disk promotions and two
+  TQ-native hits. This is a scoped Paged-On restart refault, not Paged-Off
+  disk-only partial reuse or eviction proof. Evidence is under
+  `docs/internal/release-gates/20260722_v1_6_16_campaign/`.

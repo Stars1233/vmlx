@@ -1,0 +1,114 @@
+{
+  "captured_at": "2026-07-22T03:29:32-07:00",
+  "source_commit": "951eab25d",
+  "proof_checkout_commit": "3b33fa9aa0dac03632edc78c0e81f97b9cfc185b",
+  "proof_host": "erics-m5-max.local",
+  "electron_cdp": "http://127.0.0.1:9335",
+  "engine_path_log": "[Engine Manager] Found in PATH: /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine",
+  "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+  "session_id": "6e71c6e8-1b61-4963-81a1-d1110986c205",
+  "focused_verification": {
+    "vitest_files": 5,
+    "vitest_tests": 503,
+    "vitest_failures": 0,
+    "typescript_typecheck": "pass",
+    "locale_json_parse": "pass",
+    "git_diff_check": "pass"
+  },
+  "plain_save_negative_controls": [
+    {
+      "saved_log_level": "DEBUG",
+      "running_pid_before": 56197,
+      "running_argv_changed": false,
+      "save_label": "Save for Next Restart",
+      "save_and_restart_enabled_after_save": true
+    },
+    {
+      "saved_log_level": "INFO",
+      "running_pid_before": 57093,
+      "running_argv_retained": "--log-level DEBUG",
+      "save_label": "Save for Next Restart",
+      "save_and_restart_enabled_after_save": true
+    }
+  ],
+  "restart_sequence": [
+    {
+      "old_pid": 56197,
+      "new_pid": 57093,
+      "effective_log_level": "DEBUG",
+      "chat_header_pid": 57093,
+      "drawer_message": "Restarted with new settings."
+    },
+    {
+      "old_pid": 57093,
+      "new_pid": 58440,
+      "click_epoch_seconds": 1784716085,
+      "new_process_start": "2026-07-22T03:28:08-07:00",
+      "new_process_spawn_upper_bound_seconds": 3,
+      "model_loaded_health_upper_bound_seconds": 18,
+      "effective_log_level": "INFO",
+      "argv_contains_debug_flag": false,
+      "chat_header_pid": 58440,
+      "sqlite_pid": 58440,
+      "sqlite_log_level": "INFO",
+      "drawer_select_value": "INFO",
+      "drawer_message": "Restarted with new settings."
+    }
+  ],
+  "post_restart_turn": {
+    "sqlite_rowid": 192,
+    "visible_content": "R16-SET-POST-DONE",
+    "reasoning_chars": 0,
+    "tool_calls": 0,
+    "warnings": 0,
+    "token_count": 11,
+    "prompt_tokens": 602,
+    "cached_tokens": 80,
+    "cache_detail": "paged+disk+tq-native",
+    "tokens_per_second": 75.3,
+    "prompt_processing_speed": 723.6,
+    "ttft_seconds": 0.83,
+    "total_seconds": 1.0
+  },
+  "post_restart_health": {
+    "model_loaded": true,
+    "paged_ram_enabled": true,
+    "disk_only": false,
+    "disk_hits": 2,
+    "disk_promotion_hits": 2,
+    "tq_native_hits": 2,
+    "tokens_saved": 80,
+    "stored_prefix_quantization": "turboquant-q4",
+    "auto_policy": "mixed_swa_full_attention_kv_storage_tq4"
+  },
+  "screenshots": [
+    {
+      "path": "settings-debug-restart.png",
+      "sha256": "c99c172e13618210e60761857db47691d156d8fee0f68f3062fad26d3adf2974"
+    },
+    {
+      "path": "settings-info-select.png",
+      "sha256": "c05b1b494447bfb93a00a3c6142f30f7e91e69d472b803bd1a705b40fbdd328e"
+    },
+    {
+      "path": "settings-post-restart-turn.png",
+      "sha256": "fb4a9e0f63d0d1f35db3493167cc508e730c6f1f45913bc9e20584064c05a1ae"
+    }
+  ],
+  "scope": {
+    "closed": [
+      "running-session plain Save wording",
+      "ordinary session:updated broadcast",
+      "Save & Restart post-stop wait race",
+      "full settings fixed post-stop delay",
+      "Chat Settings live PID refresh and stop clearing",
+      "one current-source post-restart Electron generation"
+    ],
+    "not_closed": [
+      "full cross-model settings/default matrix",
+      "Paged-Off disk-only partial prefix",
+      "eviction",
+      "all protocol post-restart rows"
+    ]
+  }
+}

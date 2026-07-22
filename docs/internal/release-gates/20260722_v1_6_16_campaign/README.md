@@ -10,7 +10,7 @@ It starts from public v1.6.15 follow-up source commit
 `codex/v1.6.16-release-campaign-20260722`. The immutable v1.6.15 tag and its
 signed evidence remain unchanged.
 
-Current tested cutoff: `230c822f2e36967d8f6050b47f820e40b7a21f46`.
+Current tested cutoff: `3b33fa9aa0dac03632edc78c0e81f97b9cfc185b`.
 The clean source checkout is
 `/Users/eric/mlx/vllm-mlx-release-1.6.15`; the live Electron proof checkout on
 `erics-m5-max.local` is `/Users/eric/mlx/vllm-mlx-release-1.6.13`. Both were at
@@ -84,7 +84,7 @@ For every live model generation retained as evidence:
 | `R16-AGENTIC-HARNESS` | `OPEN / RELEASE-CRITICAL` | Use a coding-harness-shaped client for no-tool, auto, required, explicit function choice, real result continuation, two-tool interleaving, final synthesis, cancellation, disconnect, injected backend failure, and immediate recovery. Exercise direct and Electron gateway paths. A reasoning-only final, dropped required argument, repeated tool, hallucinated tool result, or false terminal fails the row. |
 | `R16-STREAM-METRICS` | `OPEN` | Compare Electron `metrics_json` against raw timed SSE for the same prompt. Report TTFT, prompt processing speed, decode tokens/s after first output token, reasoning tokens, visible tokens, tool/fallback pauses, and wall time separately. Reject terminal-batch answer painting and misleading blended two-pass TPS. |
 | `R16-CACHE-HIERARCHY` | `OPEN / RELEASE-CRITICAL` | Prove cold store, resident RAM hit, partial-block reuse, L1 eviction, L2 SSD refault, process restart restore, and safe full-prefill fallback for standard KV, hybrid SSM/GDN, mixed SWA, CCA, M3 sparse, DSV4 composite, and openPangu native prompt disk. With Paged Off and L2 On, partial prefix reuse must come from SSD with zero resident paged bytes. With Paged On, lookup order must use matching RAM blocks first and SSD when absent. Cross-chat and cross-session reuse must not leak unrelated suffixes or media. |
-| `R16-SETTINGS-PARITY` | `OPEN / RELEASE-CRITICAL` | Compare bundle defaults to visible Chat Settings, SQLite, IPC/request payload, preview/argv, and engine-resolved kwargs/health. Cover temperature, top-p, top-k including Off/-1/large values, min-p zero, repetition penalty, max output, max context, reasoning Auto/On/Off, tool/reasoning parsers, MTP, modalities, cache toggles, block size/count, RAM percentage, L2 size/path, LAN/port, and Single Model. First use must inherit the bundle; saved per-chat/per-session values must survive restart; reset/Auto must remove the override. Current source trace found that plain Save deliberately persists for the next restart, while Save & Restart has a late-listener delay, ordinary config saves do not broadcast `session:updated`, and Chat Settings can show a stale PID after restart. These subdefects remain open until patched and live-reproved. |
+| `R16-SETTINGS-PARITY` | `PARTIAL / RELEASE-CRITICAL` | Compare bundle defaults to visible Chat Settings, SQLite, IPC/request payload, preview/argv, and engine-resolved kwargs/health. Cover temperature, top-p, top-k including Off/-1/large values, min-p zero, repetition penalty, max output, max context, reasoning Auto/On/Off, tool/reasoning parsers, MTP, modalities, cache toggles, block size/count, RAM percentage, L2 size/path, LAN/port, and Single Model. First use must inherit the bundle; saved per-chat/per-session values must survive restart; reset/Auto must remove the override. Commit `951eab25d` plus the retained live gate close the plain-Save wording, restart delay, update broadcast, and live PID subdefects. The broader cross-model/default/reset/failure matrix remains open. |
 | `R16-CACHE-LABEL` | `VERIFIED-LIVE_SCOPED` | Source `4558dac06` renames Electron `Paged Cache` / `Use Paged KV Cache` to **In-Memory Paged Cache (RAM)** and identifies **Block Disk Cache (L2)** as SSD. It also prevents help-tooltip clicks from toggling checkbox settings. Focused tests, typecheck, normal/minimum-width visual proof, unchanged persisted state/argv, and effective loaded health are named below. Backend flags/defaults/eligibility are unchanged; explicit Off plus disk-only L2 remains a separate cache-behavior regression row. |
 | `R16-SINGLE-MODEL-GATEWAY` | `PARTIAL` | Preserve the scoped unmanaged-engine sweep, rollback, disconnect, backend-loss, and non-stream atomicity fixes. Still run a bounded multi-client soak with repeated real UI model swaps, only one resident process, eager Start-before-first-message load, concurrent route/swap attempts, active-request LAN/port rollback, occupied port, stale target, late loader failure, unload/reload, and recovery across all four protocols. |
 
@@ -148,6 +148,7 @@ For every live model generation retained as evidence:
 | 2026-07-22 | `95e954045` | Balanced Anthropic late-reasoning block transitions, indices, and terminal handling | Included in 210/210 combined reasoning/protocol focused tests | No live late-reasoning family was exercised | Laguna normal reasoning-before-text produced blocks 0/1, 222/99 thinking/text deltas, one terminal | `VERIFIED-SOURCE_TEST_SCOPED / LIVE NORMAL-ORDER ONLY` |
 | 2026-07-22 | `230c822f2` | Normalized streaming Ollama reasoning policy for MiniMax M3, openPangu, Mistral4, and Off-history stripping | Included in 210/210 combined reasoning/protocol focused tests | Laguna UI unaffected and coherent | Laguna generic Ollama route produced 222 thinking events, 99 content events, one terminal; named-family normalization is not yet live-proven | `VERIFIED-SOURCE_TEST_SCOPED / LIVE REPRESENTATIVE` |
 | 2026-07-22 | `230c822f2` | Current Laguna S-2.1 JANG_2L reasoning, tool-loop, and protocol representative | Bundle/config grounded; combined focused suite 210/210 | Real Electron chat retained one separate reasoning turn and two exact one-tool continuations; third turn restored 664 `paged+tq-native` RAM tokens | Chat, Responses, Anthropic, and Ollama streams were progressive and terminal-complete; exact counts are in the sanitized summary | `VERIFIED-LIVE_SCOPED / GLOBAL ROW PARTIAL` |
+| 2026-07-22 | `951eab25d` | Synchronized settings updates, Save & Restart sequencing, and Chat Settings live PID | 503/503 focused panel tests + typecheck + locale parse + diff check | Plain Save kept the current process and exposed the next-restart contract; two real Save & Restarts changed PID/config/argv without the old wait; displayed PID matched SQLite/ps; post-restart exact turn restored 80 disk/TQ-native tokens | Current health matched Paged RAM/L2/q4 policy and recorded two disk promotions/TQ-native hits | `VERIFIED-LIVE_SCOPED / GLOBAL SETTINGS ROW PARTIAL` |
 
 ## Cache terminology and tooltip proof
 
@@ -230,26 +231,47 @@ Durable evidence:
 The raw SSE/NDJSON captures and full private reasoning text are deliberately
 not committed.
 
-## Settings restart findings at this cutoff
+## Settings restart fix and live proof at this cutoff
 
 The live DEBUG-to-INFO negative control initially looked like a lost settings
 update. Source trace and the next real Stop/Start show a narrower result:
 plain Save deliberately persists for the next restart and does not restart the
 running process; the subsequent PID 53268 correctly omitted the DEBUG argv
-flag. Three actual UI/session defects remain:
+flag. Commit `951eab25d` then repaired the three actual UI/session defects:
 
-1. Save & Restart subscribes for `session:stopped` only after awaited Stop has
-   already emitted it, causing the 15-second fallback wait.
-2. Ordinary config updates do not emit `session:updated`, so other mounted UI
-   consumers can keep stale config.
-3. Chat Settings merges live status/port but not live PID, so it displayed old
-   PID 52809 after the engine had restarted as 53268.
+1. Save & Restart now proceeds directly from the already-awaited Stop promise
+   to Start instead of subscribing after the stop event and waiting 15 seconds.
+   The parallel full settings screen no longer adds its fixed 2.5-second delay.
+2. Ordinary config updates read back the durable session and emit
+   `session:updated`, allowing every mounted consumer to refresh.
+3. Chat Settings now treats the current `SessionsContext` PID as authoritative,
+   including explicit `undefined` when stopped, rather than retaining stale
+   detailed-session state.
 
-Plain Save also needs clearer "Save for Next Restart" wording while running.
-No settings row is promoted until the shared source fix, focused tests, and a
-new Electron Save & Restart prove prompt PID replacement, argv/config parity,
-drawer persistence, Chat Settings PID parity, and prompt restart failure
-handling.
+Both running-session settings surfaces now label the non-disruptive action
+`Save for Next Restart`; Save & Restart remains available after that save.
+Focused proof passed 503/503 panel tests, TypeScript typecheck, locale parsing,
+and `git diff --check` on the synchronized proof checkout.
+
+Live Electron proof changed INFO to DEBUG using plain Save: PID 56197 and its
+argv stayed unchanged, while Save & Restart produced PID 57093 with
+`--log-level DEBUG`. The same path then saved INFO without changing PID 57093;
+Save & Restart produced PID 58440, whose process start was within three seconds
+of the click and whose loaded health was observed within 18 seconds. The new
+argv omitted the DEBUG flag. Chat header, drawer, SQLite, and `ps` all agreed
+on PID 58440 and INFO, with the visible success message
+`Restarted with new settings.`
+
+A fresh post-restart Electron turn exact-finaled `R16-SET-POST-DONE` with no
+warning or tool call and restored 80 `paged+disk+tq-native` tokens. Health
+recorded two disk promotions and two TQ-native hits under the Laguna mixed-SWA
+q4 policy. This closes the settings/restart/PID subdefects and one Paged-On
+restart refault; it does not close cross-model settings defaults, failure
+recovery, Paged-Off disk-only partial reuse, or eviction.
+
+Durable evidence: `settings-restart-pid-proof.json`,
+`settings-debug-restart.png`, `settings-info-select.png`, and
+`settings-post-restart-turn.png`.
 
 ## Release stop conditions
 
