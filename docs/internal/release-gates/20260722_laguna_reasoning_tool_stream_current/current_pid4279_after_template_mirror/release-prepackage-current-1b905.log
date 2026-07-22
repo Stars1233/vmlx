@@ -1,0 +1,10 @@
+
+> vmlx@1.6.15 release:prepackage
+> cd .. && ${PYTHON:-.venv/bin/python} tests/cross_matrix/run_release_regression_manifest.py --require-prepackage-ready --out build/current-release-regression-manifest-pre-panel-dist.json
+
+build/current-release-regression-manifest-pre-panel-dist.json
+rows=26
+domains=api_surface,cache_architecture,chat_ui_settings,generation_defaults,mcp,model_artifact_detection,model_family_detection,native_mtp,packaging_release,parser_registry,performance,pr_intake,reasoning_template,release_surface,tool_calls,ui_panel,vl_media
+current_proof_sweep=fail
+prepackage_ready=false
+release_ready=false

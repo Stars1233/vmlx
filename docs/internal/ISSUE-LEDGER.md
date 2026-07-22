@@ -4671,6 +4671,22 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   row, not cross-family reasoning-content parity, deterministic Electron
   hidden-reasoning behavior for every prompt, full settings parity, full
   suites, or release packaging.
+- `V1.6.15-PREPACKAGE-CHECK`: `BLOCKED`. After the 1.6.15 version bump and
+  bundled-Python refresh, `verify-bundled-python.sh` passed on current HEAD
+  `1b905cfbcad93877d17f255ea08df35651616fea` and confirmed bundled
+  `vmlx_engine`/`jang_tools` source-hash parity plus required runtime imports.
+  The prepackage manifest gate was rerun with
+  `PYTHON=/Users/eric/mlx/vllm-mlx/.venv/bin/python npm run
+  release:prepackage` and wrote
+  `build/current-release-regression-manifest-pre-panel-dist.json`, but reported
+  `current_proof_sweep=fail`, `prepackage_ready=false`, and
+  `release_ready=false`. Missing/failed components include broad API, cache
+  architecture, parser registry, reasoning template, tool-call, native MTP,
+  VL/media, packaged-integrity/release-surface, live-smoke, real Electron
+  full-model matrix, and DSV4 freshness rows. Evidence logs:
+  `docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/verify-bundled-python-current-1b905.log`
+  and
+  `docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/release-prepackage-current-1b905.log`.
 
 ## 2026-07-21 - Qwen3.6 35B JANGTQ Anthropic/Ollama tool continuation
 

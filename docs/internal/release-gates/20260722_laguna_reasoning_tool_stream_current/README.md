@@ -201,11 +201,41 @@ was a real release blocker until `bundle-python.sh` was rerun.
   reasoning-content protocol gate or guarantee every Electron prompt produces a
   non-empty reasoning rail.
 
+- Current 1.6.15 release prepackage check (2026-07-22 local):
+  `current_pid4279_after_template_mirror/verify-bundled-python-current-1b905.log`
+  passed, confirming the bundled `vmlx_engine` version matches
+  `panel/package.json` (`1.6.15`), critical bundled `vmlx_engine` files match
+  source hashes, critical bundled `jang_tools` files match source hashes, and
+  the required MLX/VLM/audio/JANG runtime imports load from the bundled Python
+  tree.
+- The actual prepackage manifest gate was also rerun from current HEAD
+  `1b905cfbcad93877d17f255ea08df35651616fea` with the correct shared venv:
+  `PYTHON=/Users/eric/mlx/vllm-mlx/.venv/bin/python npm run
+  release:prepackage`. Log:
+  `current_pid4279_after_template_mirror/release-prepackage-current-1b905.log`.
+  It wrote
+  `build/current-release-regression-manifest-pre-panel-dist.json` and reported
+  `current_proof_sweep=fail`, `prepackage_ready=false`, and
+  `release_ready=false`. Failed/missing manifest components include broad API
+  surface, cache architecture, model-family/artifact detection, parser
+  registry, reasoning template, tool-call loop, native MTP, VL/media,
+  packaged-integrity, release-surface, live-smoke, real Electron full-model
+  matrix, and DSV4 freshness rows. This is the current release-stop evidence
+  for 1.6.15.
+
 - Full Python suite was not rerun end-to-end after the later 1.6.15 version bump; targeted release/version tests were. Full panel suite, panel build, and typecheck were not rerun end-to-end in this gate.
 - Full protocol matrix remains open: non-stream Chat/Responses, Anthropic, Ollama, cancellation/disconnect/recovery across representative models.
 - Full settings parity remains open for all models; this gate only checks Laguna S-2.1 generation defaults observed in UI.
 - Disk-only L2/paged-off partial-prefix restore remains unproven here.
 - Broader model family matrix remains open: DSV4 Flash typed composite cache, MiniMax M3 sparse/lightning cache, Gemma, Qwen/Bonsai/Ornith, Step, Nemotron/Omni/audio/video, M2.7, LFM, openPangu.
-- Packaging, signing, notarization, version bump, latest.json/feed updates, and install smoke were not performed in this gate.
+- Packaging, signing, notarization, v1.6.15 git tag/GitHub release,
+  latest.json/feed updates, and install smoke were not performed in this gate.
 
-Verdict for this gate: PARTIAL scoped closure. Laguna S-2.1 current-source reasoning separation, post-tool phantom-call streaming, explicit enable_thinking propagation, and local bundled-Python freshness are source/test/live-proven for the named scope. Electron/API proof used Electron-launched PIDs 93364 and 93786 plus raw API. Overall release remains BLOCKED until the remaining release gates above are closed or explicitly deferred with a release-risk note.
+Verdict for this gate: PARTIAL scoped closure. Laguna S-2.1 current-source
+reasoning separation, post-tool phantom-call streaming, explicit
+`enable_thinking` propagation, and local bundled-Python freshness are
+source/test/live-proven for the named scope. Electron/API proof used
+Electron-launched PIDs 93364, 93786, and 4279 plus raw API. Current 1.6.15
+prepackage manifest evidence is negative (`prepackage_ready=false`,
+`release_ready=false`), so overall release remains BLOCKED until the remaining
+release gates above are closed or explicitly deferred with a release-risk note.
