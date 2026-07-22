@@ -80,16 +80,25 @@ provenance controls only. They cannot demonstrate this v1.6.16 source change.
 
 ## Raw API and separate streaming boundary
 
-The retained timed Chat and Responses captures are:
+The retained timed Chat and Responses captures are diagnostic negative controls:
 
 - `qwen-chat-exact-a4.sse.jsonl`;
 - `qwen-responses-exact-r2.sse.jsonl`.
 
-They show the current exact-visible containment path keeps private math out of
-visible content. They also expose a separate unresolved release blocker: after
+Those captures were produced while an experimental server-side
+`exact visible target` filter was present. Once the display root cause was
+proven, that filter and its synthetic tests were removed: rewriting generated
+content to a string parsed from the prompt is not an acceptable runtime fix.
+The focused answer-pass suites pass after removal (37 tests on both boxes).
+Therefore these JSONL files are not current API-correctness proof and must not
+be promoted as such.
+
+They remain useful evidence for a separate unresolved release blocker: after
 the reasoning pass, the bounded answer pass can pause and emit the visible
 answer as a single late delta, while usage/TPS blends phases. That behavior is
-not classified as a renderer defect and is not closed by this gate.
+not classified as a renderer defect and is not closed by this gate. Fresh raw
+API byte-fidelity and progressive-stream captures are required on the eventual
+current release cutoff.
 
 ## Remaining release boundary
 
