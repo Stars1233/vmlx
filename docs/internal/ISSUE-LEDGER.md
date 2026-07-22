@@ -4731,3 +4731,45 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   parser families, SSD/cache/media rows, and the observed duplicate Electron
   send boundary remain separate gates. Evidence:
   `docs/internal/release-gates/20260721_qwen36_jangtq_tool_parser_current/q36-jt-anthropic-ollama-tool-summary.json`.
+
+## 2026-07-22 - Laguna S-2.1 Paged-Off SSD-only cross-chat partial-prefix addendum
+
+- `LAGUNA-S21-DISKONLY-CROSSCHAT-PARTIAL`: `VERIFIED-LIVE_SCOPED` for the
+  exact `jangq-ai/Laguna-S-2.1-JANG_2L` artifact on
+  `/Users/eric/mlx/vllm-mlx-release-1.6.13` branch
+  `codex/postrelease-ui-drawers-20260720`.
+- Source trace: the Electron settings checkbox is the real
+  `Use Paged KV Cache` control in
+  `panel/src/renderer/src/components/sessions/SessionConfigForm.tsx:1040`;
+  the main process computes `blockDiskOnly` and emits
+  `--no-paged-cache` while retaining block L2 in
+  `panel/src/main/sessions.ts:3794`, `3836-3841`, and `3897`;
+  `vmlx_engine/scheduler.py` builds the `block_disk_only` backend and TQ-native
+  compatibility tags; `vmlx_engine/paged_cache.py:1762` reports
+  `backend_mode`; `vmlx_engine/block_disk_store.py:925-927` reports
+  `tq_native_writes`, `tq_native_hits`, and `tq_native_enabled`.
+- Live Electron proof: through the real Server settings drawer, Paged KV Cache
+  was toggled Off while Prefix Cache and Block Disk Cache (L2) stayed enabled,
+  then Save & Restart launched PID `28307` with `--no-paged-cache`,
+  `--enable-block-disk-cache`, `--block-disk-cache-max-gb 10`, block size `64`,
+  and max blocks `1000`. Start health reported
+  `backend_mode="block_disk_only"`, `paged_ram_enabled=false`,
+  `disk_only=true`, `ram_tokens_cached=0`, and `tq_native_enabled=true`.
+- Negative-control rows A/B exact-finaled but wrote new blocks and kept
+  `disk_hits=0` because their first prompt block differed. Rows C/D shared the
+  identical long prefix first across two different Electron chats; row C
+  exact-finaled cold, and row D exact-finaled
+  `LAG-S21-SSD-CROSSCHAT-D-DONE` with `cachedTokens=1024` and
+  `cacheDetail="block-disk+tq-native"`.
+- Post-D health recorded `tokens_saved=1024`, `cache_hits=32`,
+  `disk_hits=48`, `tq_native_hits=48`, `tq_native_writes=60`,
+  `total_tokens_on_disk=3638`, `ram_tokens_cached=0`, and
+  `l1_resident_bytes=0`. The UI was restored through Save & Restart to Paged On
+  plus Block Disk L2; restored PID `81068` reported `backend_mode="paged"`,
+  `paged_ram_enabled=true`, and q4 TurboQuant storage still enabled.
+- Evidence:
+  `docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid28307_diskonly_crosschat/`.
+- Retained boundaries: disk-only process-restart partial reuse, JANG_4M,
+  long-context/SWA-boundary quality, all-family cache breadth, full protocol
+  matrix, signing/notarization, public tag/feed, and install smoke remain
+  `PARTIAL` or `BLOCKED`.

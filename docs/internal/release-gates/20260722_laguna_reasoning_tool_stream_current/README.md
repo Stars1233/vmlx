@@ -77,7 +77,42 @@ Interpretation: for Laguna S-2.1, Auto/On permits reasoning and the parser separ
 - scheduler cache hits/misses present, `tokens_saved=327`, `backend_mode=paged`, `disk_hits=2`, `disk_promotion_hits=2`.
 - block disk cache had `blocks_on_disk=1763`, `l2_block_tokens_on_disk=106025`, `disk_writes=4`, `tq_native_writes=4`, `tq_native_hits=2`, `tq_native_enabled=true`.
 
-This proves current live Laguna reuse through paged + disk + TQ-native on this session. It does not prove disk-only-with-paged-off partial prefix restore; that remains a separate open gate.
+This proves current live Laguna reuse through paged + disk + TQ-native on this session.
+
+`current_pid28307_diskonly_crosschat/` adds the explicit Paged-Off SSD-only
+partial-prefix proof on the same current 1.6.15 branch:
+
+- Real Electron Server settings were changed through the UI from Paged On to
+  Paged Off while keeping Prefix Cache and Block Disk Cache (L2) enabled; the
+  before-save screenshot is `ui-paged-off-before-save.png`.
+- Electron Save & Restart launched PID `28307` with `--no-paged-cache`,
+  `--enable-block-disk-cache`, `--block-disk-cache-max-gb 10`,
+  `--paged-cache-block-size 64`, `--max-cache-blocks 1000`,
+  `--reasoning-parser deepseek_r1`, and `--tool-call-parser glm47`.
+- `health-paged-off-start.json` reports
+  `backend_mode="block_disk_only"`, `paged_ram_enabled=false`,
+  `disk_only=true`, `ram_tokens_cached=0`, and
+  `tq_native_enabled=true`.
+- The A/B negative-control rows put a unique marker before the shared prefix;
+  they exact-finaled but produced zero disk hits, so first-block mismatch does
+  not falsely claim reuse.
+- The C/D rows put the identical long prefix first and changed only the suffix
+  across two different Electron chats. Row C exact-finaled
+  `LAG-S21-SSD-COLD-C-DONE` cold. Row D exact-finaled
+  `LAG-S21-SSD-CROSSCHAT-D-DONE` with `cachedTokens=1024` and
+  `cacheDetail="block-disk+tq-native"`.
+- `health-after-d.json` records `tokens_saved=1024`, `cache_hits=32`,
+  `disk_hits=48`, `tq_native_hits=48`, `tq_native_writes=60`,
+  `total_tokens_on_disk=3638`, `ram_tokens_cached=0`, and
+  `l1_resident_bytes=0`.
+- The UI was restored through Save & Restart to Paged On + Block Disk L2 On;
+  `health-restored-paged-on.json` reports PID `81068`,
+  `backend_mode="paged"`, `paged_ram_enabled=true`, `disk_only=false`, and
+  q4 TurboQuant storage still enabled.
+
+This closes only the Laguna S-2.1 JANG_2L cross-chat Paged-Off SSD-only
+partial-prefix row. It does not prove disk-only process-restart reuse, JANG_4M,
+long SWA-boundary quality, or the cross-family SSD/cache matrix.
 
 ## Tests
 
@@ -262,7 +297,10 @@ was a real release blocker until `bundle-python.sh` was rerun.
   this gate now adds current-source Laguna streaming Anthropic/Ollama
   one-tool continuations but does not generalize them cross-family.
 - Full settings parity remains open for all models; this gate only checks Laguna S-2.1 generation defaults observed in UI.
-- Disk-only L2/paged-off partial-prefix restore remains unproven here.
+- Disk-only L2/paged-off cross-chat partial-prefix restore is now proven for
+  this exact Laguna S-2.1 JANG_2L row in
+  `current_pid28307_diskonly_crosschat/`. Disk-only process-restart reuse and
+  cross-family breadth remain open.
 - Broader model family matrix remains open: DSV4 Flash typed composite cache, MiniMax M3 sparse/lightning cache, Gemma, Qwen/Bonsai/Ornith, Step, Nemotron/Omni/audio/video, M2.7, LFM, openPangu.
 - Packaging, signing, notarization, v1.6.15 git tag/GitHub release,
   latest.json/feed updates, and install smoke were not performed in this gate.
@@ -271,7 +309,9 @@ Verdict for this gate: PARTIAL scoped closure. Laguna S-2.1 current-source
 reasoning separation, post-tool phantom-call streaming, explicit
 `enable_thinking` propagation, and local bundled-Python freshness are
 source/test/live-proven for the named scope. Electron/API proof used
-Electron-launched PIDs 93364, 93786, and 4279 plus raw API. Current 1.6.15
+Electron-launched PIDs 93364, 93786, 4279, 28307, and 81068 plus raw API.
+The additional PID 28307/81068 evidence closes the named Laguna cross-chat
+Paged-Off SSD-only partial-prefix row. Current 1.6.15
 prepackage manifest evidence is negative (`prepackage_ready=false`,
 `release_ready=false`), so overall release remains BLOCKED until the remaining
 release gates above are closed or explicitly deferred with a release-risk note.
