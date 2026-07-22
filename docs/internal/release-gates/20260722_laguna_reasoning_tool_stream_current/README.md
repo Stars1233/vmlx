@@ -223,20 +223,24 @@ was a real release blocker until `bundle-python.sh` was rerun.
   source hashes, critical bundled `jang_tools` files match source hashes, and
   the required MLX/VLM/audio/JANG runtime imports load from the bundled Python
   tree.
-- The actual prepackage manifest gate was also rerun from current HEAD
-  `1b905cfbcad93877d17f255ea08df35651616fea` with the correct shared venv:
+- The actual prepackage manifest gate was rerun first from HEAD
+  `1b905cfbcad93877d17f255ea08df35651616fea` and again after the later panel
+  build proof/source HEAD `841ff7ebd2f10f26d9a9d8cf9ecbe7ef190f2553`, both
+  with the correct shared venv:
   `PYTHON=/Users/eric/mlx/vllm-mlx/.venv/bin/python npm run
-  release:prepackage`. Log:
-  `current_pid4279_after_template_mirror/release-prepackage-current-1b905.log`.
-  It wrote
+  release:prepackage`. Logs:
+  `current_pid4279_after_template_mirror/release-prepackage-current-1b905.log`
+  and
+  `current_pid4279_after_template_mirror/release-prepackage-current-841ff.log`.
+  The current rerun wrote
   `build/current-release-regression-manifest-pre-panel-dist.json` and reported
   `current_proof_sweep=fail`, `prepackage_ready=false`, and
   `release_ready=false`. Failed/missing manifest components include broad API
   surface, cache architecture, model-family/artifact detection, parser
   registry, reasoning template, tool-call loop, native MTP, VL/media,
   packaged-integrity, release-surface, live-smoke, real Electron full-model
-  matrix, and DSV4 freshness rows. This is the current release-stop evidence
-  for 1.6.15.
+  matrix, and DSV4 freshness rows. The `841ff7ebd` rerun is the current
+  release-stop evidence for 1.6.15.
 - Current panel/build proof after the later Laguna/API commits (2026-07-22
   local): `panel-typecheck-current-9f18.log` records `npm run typecheck`
   passing on current 1.6.15 source. `panel-full-tests-current-9f18.log`

@@ -4686,16 +4686,19 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   `vmlx_engine`/`jang_tools` source-hash parity plus required runtime imports.
   The prepackage manifest gate was rerun with
   `PYTHON=/Users/eric/mlx/vllm-mlx/.venv/bin/python npm run
-  release:prepackage` and wrote
+  release:prepackage` at both HEAD
+  `1b905cfbcad93877d17f255ea08df35651616fea` and current HEAD
+  `841ff7ebd2f10f26d9a9d8cf9ecbe7ef190f2553`. The current rerun wrote
   `build/current-release-regression-manifest-pre-panel-dist.json`, but reported
   `current_proof_sweep=fail`, `prepackage_ready=false`, and
   `release_ready=false`. Missing/failed components include broad API, cache
   architecture, parser registry, reasoning template, tool-call, native MTP,
   VL/media, packaged-integrity/release-surface, live-smoke, real Electron
   full-model matrix, and DSV4 freshness rows. Evidence logs:
-  `docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/verify-bundled-python-current-1b905.log`
+  `docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/verify-bundled-python-current-1b905.log`,
+  `docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/release-prepackage-current-1b905.log`,
   and
-  `docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/release-prepackage-current-1b905.log`.
+  `docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/release-prepackage-current-841ff.log`.
 - `V1.6.15-PANEL-BUILD-CHECK`: `VERIFIED-SOURCE_BUILD_SCOPED`.
   `panel-typecheck-current-9f18.log` records `npm run typecheck` passing.
   `panel-full-tests-current-9f18.log` records the complete panel Vitest suite
