@@ -1,0 +1,19 @@
+{
+  "version": "1.6.15",
+  "url": "https://github.com/jjang-ai/mlxstudio/releases/download/v1.6.15/vMLX-1.6.15-sequoia-arm64.dmg",
+  "sha256": "c1bfa6e6b62e2e322461fd549203599f912dc4688e2c31e86d83d7b68c69a4cf",
+  "sha512": "qZAaRKE5rmYIgR473AmlabEqHqO+eEtidqBStb98d8qfR8l8z5YvceFG39OB/8RtUdtxfvvEt667XyDBeR7ZHg==",
+  "downloads": {
+    "sequoia": {
+      "url": "https://github.com/jjang-ai/mlxstudio/releases/download/v1.6.15/vMLX-1.6.15-sequoia-arm64.dmg",
+      "sha256": "c1bfa6e6b62e2e322461fd549203599f912dc4688e2c31e86d83d7b68c69a4cf",
+      "sha512": "qZAaRKE5rmYIgR473AmlabEqHqO+eEtidqBStb98d8qfR8l8z5YvceFG39OB/8RtUdtxfvvEt667XyDBeR7ZHg=="
+    },
+    "tahoe": {
+      "url": "https://github.com/jjang-ai/mlxstudio/releases/download/v1.6.15/vMLX-1.6.15-tahoe-arm64.dmg",
+      "sha256": "ae5a41c60fd79a39238e03fd74c1df2f5d92a2e57df8a60ff58ee34e248eb4be",
+      "sha512": "h3iVg2ZcCzY3gOUT7YdEJ4/7MQR3hJ5iyY04FMZJQPTQ8LnefrwPNN7YZKbQILoGMU1RvxDUa7zQK7wVeGhC+A=="
+    }
+  },
+  "notes": "vMLX 1.6.15\n\nReasoning, tool-streaming, cache, and gateway reliability checkpoint.\n\nHighlights:\n- Separates reasoning, visible content, and tool-call streaming across Electron, Chat Completions, Responses, Anthropic, and Ollama.\n- Hardens post-tool continuation and removes speculative or phantom tool-start emissions.\n- Improves Laguna S2.1 reasoning/template behavior and q4 TurboQuant mixed-SWA cache restore, including disk-only partial-prefix reuse.\n- Preserves model-derived sampling and parser defaults across saved sessions.\n- Improves single-model gateway swaps, disconnect handling, and process cleanup.\n- Adds targeted cache/runtime fixes for LFM, MiniMax M3, Nemotron Omni, Gemma 4 media, Qwen MTP video, and DSV4 long prefill.\n\nVerification:\n- Exact source/tag: 344b6c88e46ce3eaf4aeb32108a48ed7144c7d2f / v1.6.15.\n- Full Python suite: 6290 passed, 96 skipped, 92 deselected. Full panel suite: 2405 passed, 3 skipped; TypeScript typecheck and production build passed.\n- Sequoia and Tahoe DMGs passed Developer ID signing, Apple notarization, stapling, Gatekeeper, isolated installation, and signed-app Electron Start/Stop smoke.\n- Sequoia completed a three-turn UI reasoning/tool/history loop, raw Chat and Responses streaming, warm paged mixed-SWA q4-TQ reuse, and post-restart block-disk L2 restore. Tahoe independently completed signed-app UI and raw Chat streaming proof.\n\nKnown follow-up:\n- This is a public usable checkpoint, not closure of every retained family/stress row. Broader family/media/gateway repetition and documented PARTIAL rows remain follow-up work.\n\nDMG SHA256:\n- Sequoia: c1bfa6e6b62e2e322461fd549203599f912dc4688e2c31e86d83d7b68c69a4cf\n- Tahoe: ae5a41c60fd79a39238e03fd74c1df2f5d92a2e57df8a60ff58ee34e248eb4be"
+}

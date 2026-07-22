@@ -1,0 +1,52 @@
+[STARTUP] Using vMLX userData override: /Users/eric/.vmlx-v1615-sequoia-checkpoint
+
+DevTools listening on ws://127.0.0.1:9471/devtools/browser/b677b7cd-e538-4553-9e40-0b48817d677a
+[Engine Manager] Engine version check: installed=1.6.15, source=1.6.15, needsUpdate=false
+[STARTUP] Restoring 0 App Sandbox bookmarks
+[STARTUP] Adopted 1 vmlx-engine process(es):
+  - jangq-ai/Laguna-S-2.1-JANG_2L on port 8018 (PID 81068)
+[MemoryEnforcer] Started (max 120 GB, poll 5000ms, TTL 30m)
+[gateway] Port 8080 in use, trying 8081
+[gateway] Port 8081 in use, trying 8082
+[gateway] Listening on 127.0.0.1:8082
+[Engine Manager] Checking installation...
+[Engine Manager] Found bundled Python with vmlx_engine 1.6.15 (from dist-info)
+[UPDATE] Fetched manifest from https://mlx.studio/update/latest.json: v1.6.14
+[UPDATE] Fetched manifest from https://raw.githubusercontent.com/jjang-ai/mlxstudio/main/latest.json: v1.6.14
+[UPDATE] Picked highest version across sources: v1.6.14
+[UPDATE] Selected native macOS download: https://github.com/jjang-ai/mlxstudio/releases/download/v1.6.14/vMLX-1.6.14-tahoe-arm64.dmg
+[UPDATE] Up to date (1.6.15)
+[SESSION] Model estimate: ~7.1 GB | RAM: 81.1 GB free / 137 GB total (41% used)
+[SESSION] Model family: gemma4 | tool: gemma4 (user=gemma4, detected=gemma4) | reasoning: gemma4 (user=gemma4, detected=gemma4) | autoTool: true | VLM: true
+[SESSION] Ignoring stale JIT flag because multimodal/VLM models use the mlx-vlm streaming path, which is not mx.compile safe
+[POWER] System sleep blocked (id=0)
+[SLEEP] touchSession 2cb761e5 — idle timer reset
+[CHAT] Inherited coding/tool settings from last chat 51771f39; generation/reasoning defaults stayed model-derived
+[SLEEP] touchSession 2cb761e5 — idle timer reset
+[CHAT] Endpoint resolution: isRemote=false, rawBaseUrl=http://127.0.0.1:8143, baseUrl=http://127.0.0.1:8143, session=2cb761e5-ad55-4d4b-b8be-c8adb8c92013, type=local
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:8143/v1/responses (wire: responses, remote: false)
+[CHAT] Stream ended — content: 123 chars, reasoning: 744 chars, tool calls: 0, buffered: false
+[CHAT] Response complete: 240 tokens in 5.6s (46.4 t/s, live=47.0 t/s, TTFT: 0.32s, pp: 44 tokens, 137.9 pp/s, usage=server)
+[SLEEP] touchSession 2cb761e5 — idle timer reset
+[CHAT] Endpoint resolution: isRemote=false, rawBaseUrl=http://127.0.0.1:8143, baseUrl=http://127.0.0.1:8143, session=2cb761e5-ad55-4d4b-b8be-c8adb8c92013, type=local
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:8143/v1/responses (wire: responses, remote: false)
+[CHAT] Stream ended — content: 0 chars, reasoning: 318 chars, tool calls: 1, buffered: true
+[CHAT] Tool execution iteration 1 (1 tool calls)
+[CHAT] Builtin tool: file_info
+[CHAT] Tool loop completed after 1 iteration(s)
+[CHAT] Response complete: 192 tokens in 17.3s (53.9 t/s, live=41.4 t/s, TTFT: 6.79s, pp: 7705 tokens, 582.0 pp/s, usage=server)
+[SLEEP] touchSession 2cb761e5 — idle timer reset
+[CHAT] Endpoint resolution: isRemote=false, rawBaseUrl=http://127.0.0.1:8143, baseUrl=http://127.0.0.1:8143, session=2cb761e5-ad55-4d4b-b8be-c8adb8c92013, type=local
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:8143/v1/responses (wire: responses, remote: false)
+[CHAT] Stream ended — content: 74 chars, reasoning: 524 chars, tool calls: 0, buffered: false
+[CHAT] Response complete: 227 tokens in 17.6s (33.0 t/s, live=33.0 t/s, TTFT: 10.59s, pp: 3910 tokens, 369.1 pp/s, usage=server)
+[POWER] System sleep unblocked (id=0)
+[SESSION] Model estimate: ~7.1 GB | RAM: 70.1 GB free / 137 GB total (49% used)
+[SESSION] Model family: gemma4 | tool: gemma4 (user=gemma4, detected=gemma4) | reasoning: gemma4 (user=gemma4, detected=gemma4) | autoTool: true | VLM: true
+[SESSION] Ignoring stale JIT flag because multimodal/VLM models use the mlx-vlm streaming path, which is not mx.compile safe
+[POWER] System sleep blocked (id=1)
+[SLEEP] touchSession 2cb761e5 — idle timer reset
+[POWER] System sleep unblocked (id=1)

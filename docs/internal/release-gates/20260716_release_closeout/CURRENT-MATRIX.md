@@ -1,6 +1,6 @@
-# vMLX 1.6.14 public checkpoint and retained matrix — 2026-07-20
+# vMLX 1.6.15 public checkpoint and retained matrix — 2026-07-22
 
-Status: `PUBLIC_1_6_14_RELEASED_BROADER_MATRIX_PARTIAL`.
+Status: `PUBLIC_1_6_15_RELEASED_BROADER_MATRIX_PARTIAL`.
 
 This is the current additive closeout view over `docs/internal/ISSUE-LEDGER.md`,
 `.agents/STATUS.md`, the July 15–16 live proof directories, the shared wiki
@@ -8,12 +8,39 @@ production gate, and the current branch. Older contradictory rows remain in
 their original ledgers for provenance; the newest source-plus-live row wins and
 superseded conclusions are called out here.
 
-The public v1.6.14 checkpoint is tagged at `e1776a485`, signed/notarized for
-Sequoia and Tahoe, installed-smoked through the real Electron UI, published to
+The public v1.6.15 checkpoint is tagged at
+`344b6c88e46ce3eaf4aeb32108a48ed7144c7d2f`, signed/notarized for Sequoia and
+Tahoe, installed-smoked through the real Electron UI, published to
 GitHub/PyPI/Homebrew/updater feeds, and independently re-read. Canonical proof:
-`../20260720_release_checkpoint_1_6_14/README.md`. This changes only the release
+`../20260722_release_checkpoint_1_6_15/README.md`. This changes only the release
 checkpoint status; every explicit family/protocol/cache/media/gateway/stress
-PARTIAL or OPEN row below remains retained.
+`PARTIAL`, `OPEN`, or artifact-specific `BLOCKED` row below remains retained.
+
+### 2026-07-22 v1.6.15 public release override
+
+- Exact tagged/built source is `344b6c88e46ce3eaf4aeb32108a48ed7144c7d2f`;
+  the later `f724b122d` commit publishes only the 1.6.15 updater manifest.
+- Full current-source Python, panel Vitest, TypeScript typecheck, production
+  build, bundled-Python source/import verification, and release-packaging
+  regression gates passed at the checkpoint cutoff.
+- Final Sequoia and Tahoe DMGs are Developer ID signed, Apple-notarized,
+  stapled, Gatekeeper-accepted, installed-smoked, and independently verified.
+  The real signed apps loaded bundled `vmlx_engine 1.6.15` via their Electron
+  Start controls, produced non-empty separated reasoning/content, completed a
+  real tool-result continuation, retained multi-turn history, and stopped the
+  model through the UI.
+- Raw signed-app Chat and Responses streams emitted progressive protocol-native
+  reasoning and visible-content deltas plus one truthful terminal. The signed
+  Sequoia Gemma row also proved cold q4 native-TQ writes, warm paged mixed-SWA
+  reuse, and process-restart disk restore.
+- Public GitHub source/DMG releases, all four DMG/blockmap digests, three
+  byte-identical updater manifests, PyPI 1.6.15, and the Homebrew cask were
+  independently re-read. See the canonical checkpoint README for exact hashes,
+  notary submission IDs, screenshots, SQLite rows, health snapshots, and SSE
+  traces.
+- This is a usable public checkpoint, not a blanket production-readiness claim.
+  The broad prepackage history and retained family/media/gateway/stress rows
+  below remain honest follow-up work.
 
 ### 2026-07-20 LFM native-reasoning and gateway-error override
 

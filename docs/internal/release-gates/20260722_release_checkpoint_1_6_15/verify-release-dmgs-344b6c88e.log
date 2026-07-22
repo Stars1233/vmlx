@@ -1,0 +1,100 @@
+==> Verifying final sequoia DMG: release/vMLX-1.6.15-sequoia-arm64.dmg
+Checksumming Protective Master Boot Record (MBR : 0)…
+Protective Master Boot Record (MBR :: verified   CRC32 $04210BF4
+Checksumming GPT Header (Primary GPT Header : 1)…
+ GPT Header (Primary GPT Header : 1): verified   CRC32 $CE0A96CC
+Checksumming GPT Partition Data (Primary GPT Table : 2)…
+GPT Partition Data (Primary GPT Tabl: verified   CRC32 $8CA2D5C1
+Checksumming  (Apple_Free : 3)…
+                    (Apple_Free : 3): verified   CRC32 $00000000
+Checksumming EFI System Partition (C12A7328-F81F-11D2-BA4B-00A0C93EC93B : 4)…
+EFI System Partition (C12A7328-F81F-: verified   CRC32 $B54B659C
+Checksumming disk image (Apple_APFS : 5)…
+         disk image (Apple_APFS : 5): verified   CRC32 $447FB619
+Checksumming  (Apple_Free : 6)…
+                    (Apple_Free : 6): verified   CRC32 $00000000
+Checksumming GPT Partition Data (Backup GPT Table : 7)…
+GPT Partition Data (Backup GPT Table: verified   CRC32 $8CA2D5C1
+Checksumming GPT Header (Backup GPT Header : 8)…
+  GPT Header (Backup GPT Header : 8): verified   CRC32 $DA927251
+verified   CRC32 $13F523DE
+hdiutil: verify: checksum of "release/vMLX-1.6.15-sequoia-arm64.dmg" is VALID
+release/vMLX-1.6.15-sequoia-arm64.dmg: valid on disk
+release/vMLX-1.6.15-sequoia-arm64.dmg: satisfies its Designated Requirement
+Executable=/Users/eric/mlx/vllm-mlx-release-1.6.13/panel/release/vMLX-1.6.15-sequoia-arm64.dmg
+Identifier=vMLX-1.6.15-sequoia-arm64
+Format=disk image
+CodeDirectory v=20200 size=313 flags=0x0(none) hashes=1+6 location=embedded
+Hash type=sha256 size=32
+CandidateCDHash sha256=ddf9f8f9321eabdf2ba40c4f938a579db7b3b9a8
+CandidateCDHashFull sha256=ddf9f8f9321eabdf2ba40c4f938a579db7b3b9a8b8d3360820ee715f83d6657c
+Hash choices=sha256
+CMSDigest=ddf9f8f9321eabdf2ba40c4f938a579db7b3b9a8b8d3360820ee715f83d6657c
+CMSDigestType=2
+Page size=none
+CDHash=ddf9f8f9321eabdf2ba40c4f938a579db7b3b9a8
+Signature size=9050
+Authority=Developer ID Application: ShieldStack LLC (55KGF2S5AY)
+Authority=Developer ID Certification Authority
+Authority=Apple Root CA
+Timestamp=Jul 22, 2026 at 1:14:41 AM
+Notarization Ticket=stapled
+Info.plist=not bound
+TeamIdentifier=55KGF2S5AY
+Sealed Resources=none
+Internal requirements count=1 size=188
+Processing: /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/release/vMLX-1.6.15-sequoia-arm64.dmg
+The validate action worked!
+release/vMLX-1.6.15-sequoia-arm64.dmg: accepted
+source=Notarized Developer ID
+c1bfa6e6b62e2e322461fd549203599f912dc4688e2c31e86d83d7b68c69a4cf  release/vMLX-1.6.15-sequoia-arm64.dmg
+==> Verifying final tahoe DMG: release/vMLX-1.6.15-tahoe-arm64.dmg
+Checksumming Protective Master Boot Record (MBR : 0)…
+Protective Master Boot Record (MBR :: verified   CRC32 $AD45D7D6
+Checksumming GPT Header (Primary GPT Header : 1)…
+ GPT Header (Primary GPT Header : 1): verified   CRC32 $4655EE18
+Checksumming GPT Partition Data (Primary GPT Table : 2)…
+GPT Partition Data (Primary GPT Tabl: verified   CRC32 $A2B879B5
+Checksumming  (Apple_Free : 3)…
+                    (Apple_Free : 3): verified   CRC32 $00000000
+Checksumming EFI System Partition (C12A7328-F81F-11D2-BA4B-00A0C93EC93B : 4)…
+EFI System Partition (C12A7328-F81F-: verified   CRC32 $B54B659C
+Checksumming disk image (Apple_APFS : 5)…
+         disk image (Apple_APFS : 5): verified   CRC32 $49159B92
+Checksumming  (Apple_Free : 6)…
+                    (Apple_Free : 6): verified   CRC32 $00000000
+Checksumming GPT Partition Data (Backup GPT Table : 7)…
+GPT Partition Data (Backup GPT Table: verified   CRC32 $A2B879B5
+Checksumming GPT Header (Backup GPT Header : 8)…
+  GPT Header (Backup GPT Header : 8): verified   CRC32 $65BAB30D
+verified   CRC32 $F0423DB1
+hdiutil: verify: checksum of "release/vMLX-1.6.15-tahoe-arm64.dmg" is VALID
+release/vMLX-1.6.15-tahoe-arm64.dmg: valid on disk
+release/vMLX-1.6.15-tahoe-arm64.dmg: satisfies its Designated Requirement
+Executable=/Users/eric/mlx/vllm-mlx-release-1.6.13/panel/release/vMLX-1.6.15-tahoe-arm64.dmg
+Identifier=vMLX-1.6.15-tahoe-arm64
+Format=disk image
+CodeDirectory v=20200 size=311 flags=0x0(none) hashes=1+6 location=embedded
+Hash type=sha256 size=32
+CandidateCDHash sha256=612c45d5d8441dce0713dd88c3bc585905ff120a
+CandidateCDHashFull sha256=612c45d5d8441dce0713dd88c3bc585905ff120a19c17336b6a3cb00918d1d84
+Hash choices=sha256
+CMSDigest=612c45d5d8441dce0713dd88c3bc585905ff120a19c17336b6a3cb00918d1d84
+CMSDigestType=2
+Page size=none
+CDHash=612c45d5d8441dce0713dd88c3bc585905ff120a
+Signature size=9049
+Authority=Developer ID Application: ShieldStack LLC (55KGF2S5AY)
+Authority=Developer ID Certification Authority
+Authority=Apple Root CA
+Timestamp=Jul 22, 2026 at 1:27:53 AM
+Notarization Ticket=stapled
+Info.plist=not bound
+TeamIdentifier=55KGF2S5AY
+Sealed Resources=none
+Internal requirements count=1 size=184
+Processing: /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/release/vMLX-1.6.15-tahoe-arm64.dmg
+The validate action worked!
+release/vMLX-1.6.15-tahoe-arm64.dmg: accepted
+source=Notarized Developer ID
+ae5a41c60fd79a39238e03fd74c1df2f5d92a2e57df8a60ff58ee34e248eb4be  release/vMLX-1.6.15-tahoe-arm64.dmg

@@ -1,0 +1,893 @@
+01:54:53.845148 == Info:   Trying 127.0.0.1:8143...
+01:54:53.845437 == Info: Connected to 127.0.0.1 (127.0.0.1) port 8143
+01:54:53.845455 => Send header, 150 bytes (0x96)
+0000: POST /v1/chat/completions HTTP/1.1
+0024: Host: 127.0.0.1:8143
+003a: User-Agent: curl/8.7.1
+0052: Accept: */*
+005f: Content-Type: application/json
+007f: Content-Length: 306
+0094: 
+01:54:53.845501 => Send data, 306 bytes (0x132)
+0000: {"model":"JANGQ-AI/gemma-4-12B-it-qat-JANG_4M","messages":[{"rol
+0040: e":"user","content":"[REL1615-SEQ-CHAT] Think briefly, then repl
+0080: y with two short lines: STREAM-CHAT and REL1615-SEQ-CHAT-DONE."}
+00c0: ],"stream":true,"stream_options":{"include_usage":true},"max_tok
+0100: ens":768,"enable_thinking":true,"temperature":0.2}
+01:54:53.845513 == Info: upload completely sent off: 306 bytes
+01:54:53.859806 <= Recv header, 17 bytes (0x11)
+0000: HTTP/1.1 200 OK
+01:54:53.859819 <= Recv header, 37 bytes (0x25)
+0000: date: Wed, 22 Jul 2026 08:54:53 GMT
+01:54:53.859826 <= Recv header, 17 bytes (0x11)
+0000: server: uvicorn
+01:54:53.859831 <= Recv header, 48 bytes (0x30)
+0000: content-type: text/event-stream; charset=utf-8
+01:54:53.859837 <= Recv header, 28 bytes (0x1c)
+0000: Transfer-Encoding: chunked
+01:54:53.859842 <= Recv header, 2 bytes (0x2)
+0000: 
+01:54:53.859936 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"role": "assistan
+00c4: t"}}], "usage": null}..
+01:54:54.287486 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "*"}}], "usage": null}..
+01:54:54.329886 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "   Input"}}], "usage": null}..
+01:54:54.350989 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": ":"}}], "usage": null}..
+01:54:54.372504 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " `"}}], "usage": null}..
+01:54:54.393459 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "["}}], "usage": null}..
+01:54:54.414647 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "REL"}}], "usage": null}..
+01:54:54.435773 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "1"}}], "usage": null}..
+01:54:54.456902 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "6"}}], "usage": null}..
+01:54:54.477975 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "1"}}], "usage": null}..
+01:54:54.499176 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "5"}}], "usage": null}..
+01:54:54.520301 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "-"}}], "usage": null}..
+01:54:54.541406 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "SEQ"}}], "usage": null}..
+01:54:54.562831 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "-"}}], "usage": null}..
+01:54:54.584406 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "CHAT"}}], "usage": null}..
+01:54:54.605831 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "]"}}], "usage": null}..
+01:54:54.627342 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " Think"}}], "usage": null}..
+01:54:54.648775 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " briefly"}}], "usage": null}..
+01:54:54.670280 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": ","}}], "usage": null}..
+01:54:54.691854 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " then"}}], "usage": null}..
+01:54:54.713528 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " reply"}}], "usage": null}..
+01:54:54.734975 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " with"}}], "usage": null}..
+01:54:54.756543 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " two"}}], "usage": null}..
+01:54:54.778283 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " short"}}], "usage": null}..
+01:54:54.799997 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " lines"}}], "usage": null}..
+01:54:54.821621 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": ":"}}], "usage": null}..
+01:54:54.843186 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " STREAM"}}], "usage": null}..
+01:54:54.865537 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "-"}}], "usage": null}..
+01:54:54.886992 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "CHAT"}}], "usage": null}..
+01:54:54.908614 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " and"}}], "usage": null}..
+01:54:54.930502 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " REL"}}], "usage": null}..
+01:54:54.952438 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "1"}}], "usage": null}..
+01:54:54.974440 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "6"}}], "usage": null}..
+01:54:54.996298 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "1"}}], "usage": null}..
+01:54:55.018051 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "5"}}], "usage": null}..
+01:54:55.039962 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "-"}}], "usage": null}..
+01:54:55.061984 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "SEQ"}}], "usage": null}..
+01:54:55.084088 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "-"}}], "usage": null}..
+01:54:55.106391 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "CHAT"}}], "usage": null}..
+01:54:55.128611 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "-"}}], "usage": null}..
+01:54:55.150837 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "DONE"}}], "usage": null}..
+01:54:55.173110 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": ".`"}}], "usage": null}..
+01:54:55.240536 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "\n    *"}}], "usage": null}..
+01:54:55.285637 <= Recv data, 238 bytes (0xee)
+0000: e8
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "   Constraint"}}], "usage": null}..
+01:54:55.331098 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " 1"}}], "usage": null}..
+01:54:55.354116 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": ":"}}], "usage": null}..
+01:54:55.377563 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " Think"}}], "usage": null}..
+01:54:55.400810 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " briefly"}}], "usage": null}..
+01:54:55.423941 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "."}}], "usage": null}..
+01:54:55.496384 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "\n    *"}}], "usage": null}..
+01:54:55.547486 <= Recv data, 238 bytes (0xee)
+0000: e8
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "   Constraint"}}], "usage": null}..
+01:54:55.597895 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " 2"}}], "usage": null}..
+01:54:55.624126 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": ":"}}], "usage": null}..
+01:54:55.673873 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " Reply"}}], "usage": null}..
+01:54:55.695547 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " with"}}], "usage": null}..
+01:54:55.723523 <= Recv data, 233 bytes (0xe9)
+0000: e3
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " exactly"}}], "usage": null}..
+01:54:55.751437 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " two"}}], "usage": null}..
+01:54:55.780329 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " short"}}], "usage": null}..
+01:54:55.810392 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " lines"}}], "usage": null}..
+01:54:55.841271 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "."}}], "usage": null}..
+01:54:55.939610 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "\n    *"}}], "usage": null}..
+01:54:56.014968 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "   Line"}}], "usage": null}..
+01:54:56.097957 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " 1"}}], "usage": null}..
+01:54:56.145551 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": ":"}}], "usage": null}..
+01:54:56.195354 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " `"}}], "usage": null}..
+01:54:56.243532 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "STREAM"}}], "usage": null}..
+01:54:56.291584 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "-"}}], "usage": null}..
+01:54:56.339736 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "CHAT"}}], "usage": null}..
+01:54:56.386905 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "`"}}], "usage": null}..
+01:54:56.520537 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "\n    *"}}], "usage": null}..
+01:54:56.601891 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "   Line"}}], "usage": null}..
+01:54:56.676732 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " 2"}}], "usage": null}..
+01:54:56.713921 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": ":"}}], "usage": null}..
+01:54:56.747526 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " `"}}], "usage": null}..
+01:54:56.780996 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "REL"}}], "usage": null}..
+01:54:56.814627 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "1"}}], "usage": null}..
+01:54:56.848295 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "6"}}], "usage": null}..
+01:54:56.882203 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "1"}}], "usage": null}..
+01:54:56.914412 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "5"}}], "usage": null}..
+01:54:56.947404 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "-"}}], "usage": null}..
+01:54:56.980024 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "SEQ"}}], "usage": null}..
+01:54:57.011581 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "-"}}], "usage": null}..
+01:54:57.043292 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "CHAT"}}], "usage": null}..
+01:54:57.073828 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "-"}}], "usage": null}..
+01:54:57.104370 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "DONE"}}], "usage": null}..
+01:54:57.135067 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "`"}}], "usage": null}..
+01:54:57.225296 <= Recv data, 234 bytes (0xea)
+0000: e4
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "\n\n    *"}}], "usage": null}..
+01:54:57.284228 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "   The"}}], "usage": null}..
+01:54:57.313503 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " user"}}], "usage": null}..
+01:54:57.342462 <= Recv data, 231 bytes (0xe7)
+0000: e1
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " wants"}}], "usage": null}..
+01:54:57.371996 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " a"}}], "usage": null}..
+01:54:57.400291 <= Recv data, 234 bytes (0xea)
+0000: e4
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " specific"}}], "usage": null}..
+01:54:57.429544 <= Recv data, 234 bytes (0xea)
+0000: e4
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " sequence"}}], "usage": null}..
+01:54:57.458300 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " of"}}], "usage": null}..
+01:54:57.487215 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " tokens"}}], "usage": null}..
+01:54:57.515739 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "/"}}], "usage": null}..
+01:54:57.544899 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "lines"}}], "usage": null}..
+01:54:57.572747 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "."}}], "usage": null}..
+01:54:57.655716 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "\n    *"}}], "usage": null}..
+01:54:57.711462 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "   No"}}], "usage": null}..
+01:54:57.739613 <= Recv data, 236 bytes (0xec)
+0000: e6
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " additional"}}], "usage": null}..
+01:54:57.768115 <= Recv data, 230 bytes (0xe6)
+0000: e0
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " text"}}], "usage": null}..
+01:54:57.795480 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " is"}}], "usage": null}..
+01:54:57.823380 <= Recv data, 235 bytes (0xeb)
+0000: e5
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " requested"}}], "usage": null}..
+01:54:57.851319 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "."}}], "usage": null}..
+01:54:57.934465 <= Recv data, 234 bytes (0xea)
+0000: e4
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "\n\n    *"}}], "usage": null}..
+01:54:57.989519 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "   Line"}}], "usage": null}..
+01:54:58.045011 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " 1"}}], "usage": null}..
+01:54:58.071267 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": ":"}}], "usage": null}..
+01:54:58.098459 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " STREAM"}}], "usage": null}..
+01:54:58.125453 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "-"}}], "usage": null}..
+01:54:58.152692 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "CHAT"}}], "usage": null}..
+01:54:58.234706 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "\n    *"}}], "usage": null}..
+01:54:58.289087 <= Recv data, 232 bytes (0xe8)
+0000: e2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "   Line"}}], "usage": null}..
+01:54:58.343811 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " 2"}}], "usage": null}..
+01:54:58.371192 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": ":"}}], "usage": null}..
+01:54:58.397919 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": " REL"}}], "usage": null}..
+01:54:58.425199 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "1"}}], "usage": null}..
+01:54:58.452470 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "6"}}], "usage": null}..
+01:54:58.479524 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "1"}}], "usage": null}..
+01:54:58.506730 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "5"}}], "usage": null}..
+01:54:58.533549 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "-"}}], "usage": null}..
+01:54:58.560489 <= Recv data, 228 bytes (0xe4)
+0000: de
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "SEQ"}}], "usage": null}..
+01:54:58.587649 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "-"}}], "usage": null}..
+01:54:58.615915 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "CHAT"}}], "usage": null}..
+01:54:58.643202 <= Recv data, 226 bytes (0xe2)
+0000: dc
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "-"}}], "usage": null}..
+01:54:58.669690 <= Recv data, 229 bytes (0xe5)
+0000: df
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"reasoning_conten
+00c4: t": "DONE"}}], "usage": null}..
+01:54:58.723343 <= Recv data, 221 bytes (0xdd)
+0000: d7
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"content": "STREA
+00c4: M"}}], "usage": null}..
+01:54:58.750480 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"content": "-"}}]
+00c4: , "usage": null}..
+01:54:58.777209 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"content": "CHAT"
+00c4: }}], "usage": null}..
+01:54:58.830841 <= Recv data, 220 bytes (0xdc)
+0000: d6
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"content": "\nREL
+00c4: "}}], "usage": null}..
+01:54:58.858629 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"content": "1"}}]
+00c4: , "usage": null}..
+01:54:58.886126 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"content": "6"}}]
+00c4: , "usage": null}..
+01:54:58.913944 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"content": "1"}}]
+00c4: , "usage": null}..
+01:54:58.942373 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"content": "5"}}]
+00c4: , "usage": null}..
+01:54:58.969820 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"content": "-"}}]
+00c4: , "usage": null}..
+01:54:58.997979 <= Recv data, 218 bytes (0xda)
+0000: d4
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"content": "SEQ"}
+00c4: }], "usage": null}..
+01:54:59.025821 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"content": "-"}}]
+00c4: , "usage": null}..
+01:54:59.052625 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"content": "CHAT"
+00c4: }}], "usage": null}..
+01:54:59.079901 <= Recv data, 216 bytes (0xd8)
+0000: d2
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"content": "-"}}]
+00c4: , "usage": null}..
+01:54:59.107784 <= Recv data, 219 bytes (0xdb)
+0000: d5
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {"content": "DONE"
+00c4: }}], "usage": null}..
+01:54:59.147899 <= Recv data, 227 bytes (0xe3)
+0000: dd
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [{"index": 0, "delta": {}, "finish_reason
+00c4: ": "stop"}], "usage": null}..
+01:54:59.148022 <= Recv data, 260 bytes (0x104)
+0000: eb
+0004: data: {"id": "chatcmpl-c790b7c5", "object": "chat.completion.chu
+0044: nk", "created": 1784710493, "model": "JANGQ-AI/gemma-4-12B-it-qa
+0084: t-JANG_4M", "choices": [], "usage": {"prompt_tokens": 50, "compl
+00c4: etion_tokens": 177, "total_tokens": 227}}..
+00f1: e
+00f4: data: [DONE]..
+01:54:59.148080 <= Recv data, 5 bytes (0x5)
+0000: 0
+0003: 
+01:54:59.148137 == Info: Connection #0 to host 127.0.0.1 left intact

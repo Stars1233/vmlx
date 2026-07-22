@@ -1,0 +1,21 @@
+JANG/JANG-tools provenance audit for vMLX 1.6.15
+Date: 2026-07-22
+Host: erics-m5-max.local
+Repository root: /Users/eric/jang
+JANG-tools package path: /Users/eric/jang/jang-tools
+Branch: main
+HEAD: 801209c13c189ebb8fb4d1596748a336f568da38
+origin/main: 801209c13c189ebb8fb4d1596748a336f568da38
+HEAD...origin/main: 0 0
+Package version: 2.5.31
+Version surfaces:
+  jang-tools/pyproject.toml: version = "2.5.31"
+  jang-tools/jang_tools/__init__.py: __version__ = "2.5.31"
+Tracked diff: empty
+Tracked diff check: clean
+
+The vMLX 1.6.15 bundled-Python build used this exact JANG source and its
+bundle verifier reported JANG 2.5.31 source/import parity. There is no later
+tracked JANG/JANG-tools change to publish or version-bump for this vMLX-only
+release. Unrelated untracked research documents, staging directories, backup
+files, and scripts were preserved and were not staged or published.

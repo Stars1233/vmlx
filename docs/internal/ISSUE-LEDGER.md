@@ -4789,3 +4789,42 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   quality, all-family architecture breadth, signed-app repetition, and the
   full v1.6.15 release prepackage manifest remain separate `PARTIAL/BLOCKED`
   rows.
+
+## 2026-07-22 - vMLX 1.6.15 signed public checkpoint
+
+- `V1.6.15-SOURCE-TAG-VERSION`: `VERIFIED-PUBLIC`. Annotated tag `v1.6.15`
+  peels to exact built source
+  `344b6c88e46ce3eaf4aeb32108a48ed7144c7d2f`. Version surfaces agree on
+  `1.6.15`; later commit `f724b122d` publishes only the updater manifest.
+- `V1.6.15-SIGN-NOTARY`: `VERIFIED-LIVE`. Sequoia submission
+  `d967e0f8-8760-4471-944a-60989357e542` and Tahoe submission
+  `bb654f20-2cc3-475f-9a32-c398a59dae75` were accepted. Both final DMGs pass
+  deep/strict codesign, stapler validation, and Gatekeeper as Notarized
+  Developer ID. This supersedes the earlier SSH-keychain signing blocker.
+- `V1.6.15-INSTALLED-ELECTRON`: `VERIFIED-LIVE_SCOPED`. Final Sequoia and
+  Tahoe DMGs were independently installed. Their real Electron Start controls
+  loaded bundled `vmlx_engine 1.6.15`; real chat turns retained non-empty
+  visible answers, separate non-stale reasoning, progressive API reasoning and
+  content deltas, truthful terminals, and UI Stop cleanup. Sequoia additionally
+  completed exactly one real `file_info(panel/package.json)` continuation and
+  a no-tool recall turn.
+- `V1.6.15-SIGNED-CACHE`: `VERIFIED-LIVE_SCOPED` for the signed Sequoia Gemma
+  mixed-SWA route. Cold q4 native-TQ writes, same-process paged mixed-SWA reuse,
+  and real UI Stop/Start disk restore were observed with reconstruction and
+  dequantization counters. This does not promote unrelated cache architectures.
+- `V1.6.15-PUBLIC-SURFACES`: `VERIFIED-PUBLIC`. Public source and MLXStudio
+  releases are non-draft/non-prerelease. Fresh public downloads match the
+  recorded Sequoia/Tahoe post-staple SHA-256 values. The source, MLXStudio, and
+  website updater manifests are byte-identical. PyPI `vmlx==1.6.15` installs
+  in a clean no-deps venv and imports as 1.6.15. The public Homebrew cask
+  resolves 1.6.15 and fetches the same Sequoia DMG digest.
+- `JANG-TOOLS-RELEASE-PROVENANCE`: `VERIFIED-SOURCE`. The bundle used JANG
+  `2.5.31` at `801209c13c189ebb8fb4d1596748a336f568da38`; tracked source is
+  clean and synchronized with `origin/main` (`0 0`). No JANG package code
+  changed for this vMLX-only release, so no synthetic JANG version bump was
+  made. Unrelated untracked research/backup files remain preserved.
+- Overall release status is
+  `PUBLIC_CHECKPOINT_RELEASED_BROADER_MATRIX_PARTIAL`. The broad prepackage
+  manifest and retained family/media/gateway/stress rows remain honest
+  follow-up work. Canonical evidence:
+  `docs/internal/release-gates/20260722_release_checkpoint_1_6_15/README.md`.
