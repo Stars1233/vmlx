@@ -1,0 +1,729 @@
+==> Checking pre-package release ledger before public DMG build
+    RELEASE_SCOPE=codex_ui_only: skipping offline manifest gate.
+    Codex UI validation on the built DMG is the substantive gate.
+==> Building vMLX 1.6.15 sequoia DMG (macosx_14_0_arm64)
+==> Bundling Python 3.12.12 for standalone vMLX distribution
+==> Downloading Python 3.12.12...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 16.9M  100 16.9M    0     0  39.7M      0 --:--:-- --:--:-- --:--:-- 39.7M
+Python 3.12.12
+==> Upgrading pip...
+Requirement already satisfied: pip in ./bundled-python/python/lib/python3.12/site-packages (26.0.1)
+Collecting pip
+  Using cached pip-26.1.2-py3-none-any.whl.metadata (4.6 kB)
+Using cached pip-26.1.2-py3-none-any.whl (1.8 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 26.0.1
+    Uninstalling pip-26.0.1:
+      Successfully uninstalled pip-26.0.1
+Successfully installed pip-26.1.2
+==> Installing MLX 0.31.2 wheels for macosx_14_0_arm64...
+Collecting mlx==0.31.2
+  Using cached mlx-0.31.2-cp312-cp312-macosx_14_0_arm64.whl.metadata (5.9 kB)
+Using cached mlx-0.31.2-cp312-cp312-macosx_14_0_arm64.whl (584 kB)
+Saved ./bundled-python/wheelhouse/mlx-0.31.2-cp312-cp312-macosx_14_0_arm64.whl
+Successfully downloaded mlx
+Collecting mlx-metal==0.31.2
+  Using cached mlx_metal-0.31.2-py3-none-macosx_14_0_arm64.whl.metadata (5.1 kB)
+Using cached mlx_metal-0.31.2-py3-none-macosx_14_0_arm64.whl (40.1 MB)
+Saved ./bundled-python/wheelhouse/mlx_metal-0.31.2-py3-none-macosx_14_0_arm64.whl
+Successfully downloaded mlx-metal
+Processing ./bundled-python/wheelhouse/mlx-0.31.2-cp312-cp312-macosx_14_0_arm64.whl
+Processing ./bundled-python/wheelhouse/mlx_metal-0.31.2-py3-none-macosx_14_0_arm64.whl
+Installing collected packages: mlx-metal, mlx
+
+Successfully installed mlx-0.31.2 mlx-metal-0.31.2
+==> Installing dependencies...
+Requirement already satisfied: mlx==0.31.2 in ./bundled-python/python/lib/python3.12/site-packages (0.31.2)
+Collecting mlx-lm==0.31.3
+  Using cached mlx_lm-0.31.3-py3-none-any.whl.metadata (9.5 kB)
+Collecting mlx-vlm==0.5.0
+  Using cached mlx_vlm-0.5.0-py3-none-any.whl.metadata (44 kB)
+Collecting transformers<5.13,>=4.40.0
+  Using cached transformers-5.12.1-py3-none-any.whl.metadata (33 kB)
+Collecting tokenizers>=0.19.0
+  Using cached tokenizers-0.23.1-cp310-abi3-macosx_11_0_arm64.whl.metadata (9.8 kB)
+Collecting huggingface-hub>=0.23.0
+  Using cached huggingface_hub-1.24.0-py3-none-any.whl.metadata (16 kB)
+Collecting numpy>=1.24.0
+  Using cached numpy-2.5.1-cp312-cp312-macosx_14_0_arm64.whl.metadata (6.6 kB)
+Collecting pillow>=10.0.0
+  Using cached pillow-12.3.0-cp312-cp312-macosx_11_0_arm64.whl.metadata (9.1 kB)
+Collecting opencv-python-headless>=4.8.0
+  Using cached opencv_python_headless-5.0.0.93-cp37-abi3-macosx_13_0_arm64.whl.metadata (19 kB)
+Collecting fastapi>=0.100.0
+  Using cached fastapi-0.139.2-py3-none-any.whl.metadata (26 kB)
+Collecting uvicorn>=0.23.0
+  Using cached uvicorn-0.51.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting mcp>=1.0.0
+  Using cached mcp-1.28.1-py3-none-any.whl.metadata (9.4 kB)
+Collecting jsonschema>=4.0.0
+  Using cached jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+Collecting psutil>=5.9.0
+  Using cached psutil-7.2.2-cp36-abi3-macosx_11_0_arm64.whl.metadata (22 kB)
+Collecting tqdm>=4.66.0
+  Using cached tqdm-4.69.0-py3-none-any.whl.metadata (57 kB)
+Collecting pyyaml>=6.0
+  Using cached pyyaml-6.0.3-cp312-cp312-macosx_11_0_arm64.whl.metadata (2.4 kB)
+Collecting requests>=2.28.0
+  Using cached requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting tabulate>=0.9.0
+  Using cached tabulate-0.10.0-py3-none-any.whl.metadata (40 kB)
+Collecting mlx-embeddings>=0.0.5
+  Using cached mlx_embeddings-0.1.0-py2.py3-none-any.whl.metadata (20 kB)
+Collecting tiktoken>=0.7.0
+  Using cached tiktoken-0.13.0-cp312-cp312-macosx_11_0_arm64.whl.metadata (6.7 kB)
+Collecting soundfile>=0.12
+  Using cached soundfile-0.14.0-py2.py3-none-macosx_11_0_arm64.whl.metadata (18 kB)
+Collecting mflux==0.17.5
+  Using cached mflux-0.17.5-py3-none-any.whl.metadata (11 kB)
+Collecting timm>=1.0.20
+  Using cached timm-1.0.28-py3-none-any.whl.metadata (40 kB)
+Collecting einops>=0.8.0
+  Using cached einops-0.8.2-py3-none-any.whl.metadata (13 kB)
+Requirement already satisfied: mlx-metal==0.31.2 in ./bundled-python/python/lib/python3.12/site-packages (from mlx==0.31.2) (0.31.2)
+Collecting sentencepiece (from mlx-lm==0.31.3)
+  Using cached sentencepiece-0.2.2-cp312-cp312-macosx_11_0_arm64.whl.metadata (33 kB)
+Collecting protobuf (from mlx-lm==0.31.3)
+  Using cached protobuf-7.35.1-cp310-abi3-macosx_10_9_universal2.whl.metadata (595 bytes)
+Collecting jinja2 (from mlx-lm==0.31.3)
+  Using cached jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting datasets>=2.19.1 (from mlx-vlm==0.5.0)
+  Using cached datasets-5.0.0-py3-none-any.whl.metadata (23 kB)
+Collecting miniaudio>=1.59 (from mlx-vlm==0.5.0)
+  Using cached miniaudio-1.71-cp312-cp312-macosx_11_0_arm64.whl.metadata (25 kB)
+Collecting llguidance>=1.7.0 (from mlx-vlm==0.5.0)
+  Using cached llguidance-1.7.6-cp39-abi3-macosx_11_0_arm64.whl.metadata (10 kB)
+Collecting mlx-audio>=0.4.3 (from mlx-vlm==0.5.0)
+  Using cached mlx_audio-0.4.5-py3-none-any.whl.metadata (31 kB)
+Collecting opencv-python>=4.12.0.88 (from mlx-vlm==0.5.0)
+  Using cached opencv_python-5.0.0.93-cp37-abi3-macosx_13_0_arm64.whl.metadata (19 kB)
+Collecting filelock>=3.20.1 (from mflux==0.17.5)
+  Using cached filelock-3.32.0-py3-none-any.whl.metadata (2.0 kB)
+Collecting fonttools>=4.60.2 (from mflux==0.17.5)
+  Using cached fonttools-4.63.0-cp312-cp312-macosx_10_13_universal2.whl.metadata (118 kB)
+Collecting hf-transfer<1.0,>=0.1.9 (from mflux==0.17.5)
+  Using cached hf_transfer-0.1.9-cp38-abi3-macosx_11_0_arm64.whl.metadata (1.7 kB)
+Collecting matplotlib<4.0,>=3.9.2 (from mflux==0.17.5)
+  Using cached matplotlib-3.11.1-cp312-cp312-macosx_11_0_arm64.whl.metadata (80 kB)
+Collecting opencv-python>=4.12.0.88 (from mlx-vlm==0.5.0)
+  Using cached opencv_python-4.13.0.92-cp37-abi3-macosx_13_0_arm64.whl.metadata (19 kB)
+Collecting piexif<2.0,>=1.1.3 (from mflux==0.17.5)
+  Using cached piexif-1.1.3-py2.py3-none-any.whl.metadata (3.7 kB)
+Collecting platformdirs<5.0,>=4.0 (from mflux==0.17.5)
+  Using cached platformdirs-4.11.0-py3-none-any.whl.metadata (5.5 kB)
+Collecting regex>=2024.11.6 (from mflux==0.17.5)
+  Using cached regex-2026.7.19-cp312-cp312-macosx_11_0_arm64.whl.metadata (40 kB)
+Collecting safetensors<1.0,>=0.4.4 (from mflux==0.17.5)
+  Using cached safetensors-0.8.0-cp310-abi3-macosx_11_0_arm64.whl.metadata (4.2 kB)
+Collecting toml<1.0,>=0.10.2 (from mflux==0.17.5)
+  Using cached toml-0.10.2-py2.py3-none-any.whl.metadata (7.1 kB)
+Collecting torch<3.0,>=2.7.1 (from mflux==0.17.5)
+  Using cached torch-2.13.0-cp312-cp312-macosx_14_0_arm64.whl.metadata (39 kB)
+Requirement already satisfied: twine<7.0,>=6.1.0 in /Users/eric/.local/lib/python3.12/site-packages (from mflux==0.17.5) (6.2.0)
+Collecting urllib3>=2.6.0 (from mflux==0.17.5)
+  Using cached urllib3-2.7.0-py3-none-any.whl.metadata (6.9 kB)
+Collecting packaging>=20.0 (from transformers<5.13,>=4.40.0)
+  Using cached packaging-26.2-py3-none-any.whl.metadata (3.5 kB)
+Collecting tokenizers>=0.19.0
+  Using cached tokenizers-0.22.2-cp39-abi3-macosx_11_0_arm64.whl.metadata (7.3 kB)
+Collecting typer (from transformers<5.13,>=4.40.0)
+  Using cached typer-0.27.0-py3-none-any.whl.metadata (15 kB)
+Collecting click<9.0.0,>=8.4.2 (from huggingface-hub>=0.23.0)
+  Using cached click-8.4.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting fsspec>=2023.5.0 (from huggingface-hub>=0.23.0)
+  Using cached fsspec-2026.6.0-py3-none-any.whl.metadata (10 kB)
+Collecting hf-xet<2.0.0,>=1.5.1 (from huggingface-hub>=0.23.0)
+  Using cached hf_xet-1.5.2-cp38-abi3-macosx_11_0_arm64.whl.metadata (4.9 kB)
+Collecting httpx<1,>=0.23.0 (from huggingface-hub>=0.23.0)
+  Using cached httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting typing-extensions>=4.1.0 (from huggingface-hub>=0.23.0)
+  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting anyio (from httpx<1,>=0.23.0->huggingface-hub>=0.23.0)
+  Using cached anyio-4.14.2-py3-none-any.whl.metadata (4.6 kB)
+Collecting certifi (from httpx<1,>=0.23.0->huggingface-hub>=0.23.0)
+  Using cached certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx<1,>=0.23.0->huggingface-hub>=0.23.0)
+  Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting idna (from httpx<1,>=0.23.0->huggingface-hub>=0.23.0)
+  Using cached idna-3.18-py3-none-any.whl.metadata (6.1 kB)
+Collecting h11>=0.16 (from httpcore==1.*->httpx<1,>=0.23.0->huggingface-hub>=0.23.0)
+  Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting contourpy>=1.0.1 (from matplotlib<4.0,>=3.9.2->mflux==0.17.5)
+  Using cached contourpy-1.3.3-cp312-cp312-macosx_11_0_arm64.whl.metadata (5.5 kB)
+Collecting cycler>=0.10 (from matplotlib<4.0,>=3.9.2->mflux==0.17.5)
+  Using cached cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting kiwisolver>=1.3.1 (from matplotlib<4.0,>=3.9.2->mflux==0.17.5)
+  Using cached kiwisolver-1.5.0-cp312-cp312-macosx_11_0_arm64.whl.metadata (5.1 kB)
+Collecting pyparsing>=3 (from matplotlib<4.0,>=3.9.2->mflux==0.17.5)
+  Using cached pyparsing-3.3.2-py3-none-any.whl.metadata (5.8 kB)
+Collecting python-dateutil>=2.7 (from matplotlib<4.0,>=3.9.2->mflux==0.17.5)
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting setuptools>=77.0.3 (from torch<3.0,>=2.7.1->mflux==0.17.5)
+  Using cached setuptools-83.0.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting sympy>=1.13.3 (from torch<3.0,>=2.7.1->mflux==0.17.5)
+  Using cached sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting networkx>=2.5.1 (from torch<3.0,>=2.7.1->mflux==0.17.5)
+  Using cached networkx-3.6.1-py3-none-any.whl.metadata (6.8 kB)
+Requirement already satisfied: readme-renderer>=35.0 in /Users/eric/.local/lib/python3.12/site-packages (from twine<7.0,>=6.1.0->mflux==0.17.5) (44.0)
+Requirement already satisfied: requests-toolbelt!=0.9.0,>=0.8.0 in /Users/eric/.local/lib/python3.12/site-packages (from twine<7.0,>=6.1.0->mflux==0.17.5) (1.0.0)
+Requirement already satisfied: keyring>=21.2.0 in /Users/eric/.local/lib/python3.12/site-packages (from twine<7.0,>=6.1.0->mflux==0.17.5) (25.7.0)
+Requirement already satisfied: rfc3986>=1.4.0 in /Users/eric/.local/lib/python3.12/site-packages (from twine<7.0,>=6.1.0->mflux==0.17.5) (2.0.0)
+Collecting rich>=12.0.0 (from twine<7.0,>=6.1.0->mflux==0.17.5)
+  Using cached rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+Requirement already satisfied: id in /Users/eric/.local/lib/python3.12/site-packages (from twine<7.0,>=6.1.0->mflux==0.17.5) (1.6.1)
+Collecting starlette>=0.46.0 (from fastapi>=0.100.0)
+  Using cached starlette-1.3.1-py3-none-any.whl.metadata (6.4 kB)
+Collecting pydantic>=2.9.0 (from fastapi>=0.100.0)
+  Using cached pydantic-2.13.4-py3-none-any.whl.metadata (109 kB)
+Collecting typing-inspection>=0.4.2 (from fastapi>=0.100.0)
+  Using cached typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting annotated-doc>=0.0.2 (from fastapi>=0.100.0)
+  Using cached annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+Collecting httpx-sse>=0.4 (from mcp>=1.0.0)
+  Using cached httpx_sse-0.4.3-py3-none-any.whl.metadata (9.7 kB)
+Collecting pydantic-settings>=2.5.2 (from mcp>=1.0.0)
+  Using cached pydantic_settings-2.14.2-py3-none-any.whl.metadata (3.4 kB)
+Collecting pyjwt>=2.10.1 (from pyjwt[crypto]>=2.10.1->mcp>=1.0.0)
+  Using cached pyjwt-2.13.0-py3-none-any.whl.metadata (3.4 kB)
+Collecting python-multipart>=0.0.9 (from mcp>=1.0.0)
+  Using cached python_multipart-0.0.32-py3-none-any.whl.metadata (2.1 kB)
+Collecting sse-starlette>=1.6.1 (from mcp>=1.0.0)
+  Using cached sse_starlette-3.4.6-py3-none-any.whl.metadata (15 kB)
+Collecting annotated-types>=0.6.0 (from pydantic>=2.9.0->fastapi>=0.100.0)
+  Using cached annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.46.4 (from pydantic>=2.9.0->fastapi>=0.100.0)
+  Using cached pydantic_core-2.46.4-cp312-cp312-macosx_11_0_arm64.whl.metadata (6.6 kB)
+Collecting attrs>=22.2.0 (from jsonschema>=4.0.0)
+  Using cached attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>=4.0.0)
+  Using cached jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting referencing>=0.28.4 (from jsonschema>=4.0.0)
+  Using cached referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+Collecting rpds-py>=0.25.0 (from jsonschema>=4.0.0)
+  Using cached rpds_py-2026.6.3-cp312-cp312-macosx_11_0_arm64.whl.metadata (4.1 kB)
+Collecting charset_normalizer<4,>=2 (from requests>=2.28.0)
+  Using cached charset_normalizer-3.4.9-cp312-cp312-macosx_10_13_universal2.whl.metadata (41 kB)
+Collecting cffi>=1.0 (from soundfile>=0.12)
+  Using cached cffi-2.1.0-cp312-cp312-macosx_11_0_arm64.whl.metadata (2.5 kB)
+Collecting torchvision (from timm>=1.0.20)
+  Using cached torchvision-0.28.0-cp312-cp312-macosx_14_0_arm64.whl.metadata (5.6 kB)
+Collecting pycparser (from cffi>=1.0->soundfile>=0.12)
+  Using cached pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+Collecting pyarrow>=21.0.0 (from datasets>=2.19.1->mlx-vlm==0.5.0)
+  Using cached pyarrow-25.0.0-cp312-cp312-macosx_12_0_arm64.whl.metadata (3.0 kB)
+Collecting dill<0.4.2,>=0.3.0 (from datasets>=2.19.1->mlx-vlm==0.5.0)
+  Using cached dill-0.4.1-py3-none-any.whl.metadata (10 kB)
+Collecting pandas (from datasets>=2.19.1->mlx-vlm==0.5.0)
+  Using cached pandas-3.0.3-cp312-cp312-macosx_11_0_arm64.whl.metadata (79 kB)
+Collecting xxhash (from datasets>=2.19.1->mlx-vlm==0.5.0)
+  Using cached xxhash-3.8.1-cp312-cp312-macosx_11_0_arm64.whl.metadata (15 kB)
+Collecting multiprocess<0.70.20 (from datasets>=2.19.1->mlx-vlm==0.5.0)
+  Using cached multiprocess-0.70.19-py312-none-any.whl.metadata (7.5 kB)
+Collecting fsspec>=2023.5.0 (from huggingface-hub>=0.23.0)
+  Using cached fsspec-2026.4.0-py3-none-any.whl.metadata (10 kB)
+Collecting aiohttp!=4.0.0a0,!=4.0.0a1 (from fsspec[http]<=2026.4.0,>=2023.1.0->datasets>=2.19.1->mlx-vlm==0.5.0)
+  Using cached aiohttp-3.14.2-cp312-cp312-macosx_11_0_arm64.whl.metadata (8.3 kB)
+Collecting aiohappyeyeballs>=2.5.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets>=2.19.1->mlx-vlm==0.5.0)
+  Using cached aiohappyeyeballs-2.7.1-py3-none-any.whl.metadata (5.9 kB)
+Collecting aiosignal>=1.4.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets>=2.19.1->mlx-vlm==0.5.0)
+  Using cached aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+Collecting frozenlist>=1.1.1 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets>=2.19.1->mlx-vlm==0.5.0)
+  Using cached frozenlist-1.8.0-cp312-cp312-macosx_11_0_arm64.whl.metadata (20 kB)
+Collecting multidict<7.0,>=4.5 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets>=2.19.1->mlx-vlm==0.5.0)
+  Using cached multidict-6.7.1-cp312-cp312-macosx_11_0_arm64.whl.metadata (5.3 kB)
+Collecting propcache>=0.2.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets>=2.19.1->mlx-vlm==0.5.0)
+  Using cached propcache-0.5.2-cp312-cp312-macosx_11_0_arm64.whl.metadata (16 kB)
+Collecting yarl<2.0,>=1.17.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.4.0,>=2023.1.0->datasets>=2.19.1->mlx-vlm==0.5.0)
+  Using cached yarl-1.24.5-cp312-cp312-macosx_11_0_arm64.whl.metadata (103 kB)
+Requirement already satisfied: jaraco.classes in /Users/eric/.local/lib/python3.12/site-packages (from keyring>=21.2.0->twine<7.0,>=6.1.0->mflux==0.17.5) (3.4.0)
+Requirement already satisfied: jaraco.functools in /Users/eric/.local/lib/python3.12/site-packages (from keyring>=21.2.0->twine<7.0,>=6.1.0->mflux==0.17.5) (4.4.0)
+Requirement already satisfied: jaraco.context in /Users/eric/.local/lib/python3.12/site-packages (from keyring>=21.2.0->twine<7.0,>=6.1.0->mflux==0.17.5) (6.1.2)
+Collecting scipy>=1.10.0 (from mlx-audio>=0.4.3->mlx-vlm==0.5.0)
+  Using cached scipy-1.18.0-cp312-cp312-macosx_14_0_arm64.whl.metadata (62 kB)
+Collecting sounddevice>=0.5.3 (from mlx-audio>=0.4.3->mlx-vlm==0.5.0)
+  Using cached sounddevice-0.5.5-py3-none-macosx_10_6_x86_64.macosx_10_6_universal2.whl.metadata (1.4 kB)
+Collecting python-dotenv>=0.21.0 (from pydantic-settings>=2.5.2->mcp>=1.0.0)
+  Using cached python_dotenv-1.2.2-py3-none-any.whl.metadata (27 kB)
+Collecting cryptography>=3.4.0 (from pyjwt[crypto]>=2.10.1->mcp>=1.0.0)
+  Using cached cryptography-49.0.0-cp311-abi3-macosx_11_0_arm64.whl.metadata (4.3 kB)
+Collecting six>=1.5 (from python-dateutil>=2.7->matplotlib<4.0,>=3.9.2->mflux==0.17.5)
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Requirement already satisfied: nh3>=0.2.14 in /Users/eric/.local/lib/python3.12/site-packages (from readme-renderer>=35.0->twine<7.0,>=6.1.0->mflux==0.17.5) (0.3.5)
+Requirement already satisfied: docutils>=0.21.2 in /Users/eric/.local/lib/python3.12/site-packages (from readme-renderer>=35.0->twine<7.0,>=6.1.0->mflux==0.17.5) (0.22.4)
+Collecting Pygments>=2.5.1 (from readme-renderer>=35.0->twine<7.0,>=6.1.0->mflux==0.17.5)
+  Using cached pygments-2.20.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting markdown-it-py>=2.2.0 (from rich>=12.0.0->twine<7.0,>=6.1.0->mflux==0.17.5)
+  Using cached markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=12.0.0->twine<7.0,>=6.1.0->mflux==0.17.5)
+  Using cached mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch<3.0,>=2.7.1->mflux==0.17.5)
+  Using cached mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Requirement already satisfied: more-itertools in /Users/eric/.local/lib/python3.12/site-packages (from jaraco.classes->keyring>=21.2.0->twine<7.0,>=6.1.0->mflux==0.17.5) (11.0.2)
+Collecting MarkupSafe>=2.0 (from jinja2->mlx-lm==0.31.3)
+  Using cached markupsafe-3.0.3-cp312-cp312-macosx_11_0_arm64.whl.metadata (2.7 kB)
+Collecting shellingham>=1.3.0 (from typer->transformers<5.13,>=4.40.0)
+  Using cached shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+Using cached mlx_lm-0.31.3-py3-none-any.whl (408 kB)
+Using cached mlx_vlm-0.5.0-py3-none-any.whl (1.2 MB)
+Using cached mflux-0.17.5-py3-none-any.whl (1.0 MB)
+Using cached transformers-5.12.1-py3-none-any.whl (11.2 MB)
+Using cached tokenizers-0.22.2-cp39-abi3-macosx_11_0_arm64.whl (3.0 MB)
+Using cached huggingface_hub-1.24.0-py3-none-any.whl (771 kB)
+Using cached numpy-2.5.1-cp312-cp312-macosx_14_0_arm64.whl (5.3 MB)
+Using cached tqdm-4.69.0-py3-none-any.whl (676 kB)
+Using cached click-8.4.2-py3-none-any.whl (119 kB)
+Using cached hf_transfer-0.1.9-cp38-abi3-macosx_11_0_arm64.whl (1.3 MB)
+Using cached hf_xet-1.5.2-cp38-abi3-macosx_11_0_arm64.whl (3.8 MB)
+Using cached httpx-0.28.1-py3-none-any.whl (73 kB)
+Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+Using cached matplotlib-3.11.1-cp312-cp312-macosx_11_0_arm64.whl (9.3 MB)
+Using cached opencv_python-4.13.0.92-cp37-abi3-macosx_13_0_arm64.whl (46.2 MB)
+Using cached piexif-1.1.3-py2.py3-none-any.whl (20 kB)
+Using cached platformdirs-4.11.0-py3-none-any.whl (23 kB)
+Using cached protobuf-7.35.1-cp310-abi3-macosx_10_9_universal2.whl (433 kB)
+Using cached safetensors-0.8.0-cp310-abi3-macosx_11_0_arm64.whl (484 kB)
+Using cached sentencepiece-0.2.2-cp312-cp312-macosx_11_0_arm64.whl (1.3 MB)
+Using cached toml-0.10.2-py2.py3-none-any.whl (16 kB)
+Using cached torch-2.13.0-cp312-cp312-macosx_14_0_arm64.whl (111.2 MB)
+Using cached pillow-12.3.0-cp312-cp312-macosx_11_0_arm64.whl (4.8 MB)
+Using cached opencv_python_headless-5.0.0.93-cp37-abi3-macosx_13_0_arm64.whl (48.3 MB)
+Using cached fastapi-0.139.2-py3-none-any.whl (130 kB)
+Using cached uvicorn-0.51.0-py3-none-any.whl (73 kB)
+Using cached mcp-1.28.1-py3-none-any.whl (222 kB)
+Using cached pydantic-2.13.4-py3-none-any.whl (472 kB)
+Using cached pydantic_core-2.46.4-cp312-cp312-macosx_11_0_arm64.whl (2.0 MB)
+Using cached jsonschema-4.26.0-py3-none-any.whl (90 kB)
+Using cached psutil-7.2.2-cp36-abi3-macosx_11_0_arm64.whl (129 kB)
+Using cached pyyaml-6.0.3-cp312-cp312-macosx_11_0_arm64.whl (173 kB)
+Using cached requests-2.34.2-py3-none-any.whl (73 kB)
+Using cached charset_normalizer-3.4.9-cp312-cp312-macosx_10_13_universal2.whl (319 kB)
+Using cached idna-3.18-py3-none-any.whl (65 kB)
+Using cached urllib3-2.7.0-py3-none-any.whl (131 kB)
+Using cached tabulate-0.10.0-py3-none-any.whl (39 kB)
+Using cached mlx_embeddings-0.1.0-py2.py3-none-any.whl (74 kB)
+Using cached tiktoken-0.13.0-cp312-cp312-macosx_11_0_arm64.whl (982 kB)
+Using cached soundfile-0.14.0-py2.py3-none-macosx_11_0_arm64.whl (1.1 MB)
+Using cached timm-1.0.28-py3-none-any.whl (2.6 MB)
+Using cached einops-0.8.2-py3-none-any.whl (65 kB)
+Using cached annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+Using cached annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Using cached anyio-4.14.2-py3-none-any.whl (125 kB)
+Using cached attrs-26.1.0-py3-none-any.whl (67 kB)
+Using cached certifi-2026.7.22-py3-none-any.whl (136 kB)
+Using cached cffi-2.1.0-cp312-cp312-macosx_11_0_arm64.whl (184 kB)
+Using cached contourpy-1.3.3-cp312-cp312-macosx_11_0_arm64.whl (273 kB)
+Using cached cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Using cached datasets-5.0.0-py3-none-any.whl (555 kB)
+Using cached dill-0.4.1-py3-none-any.whl (120 kB)
+Using cached fsspec-2026.4.0-py3-none-any.whl (203 kB)
+Using cached multiprocess-0.70.19-py312-none-any.whl (150 kB)
+Using cached aiohttp-3.14.2-cp312-cp312-macosx_11_0_arm64.whl (511 kB)
+Using cached multidict-6.7.1-cp312-cp312-macosx_11_0_arm64.whl (43 kB)
+Using cached yarl-1.24.5-cp312-cp312-macosx_11_0_arm64.whl (97 kB)
+Using cached aiohappyeyeballs-2.7.1-py3-none-any.whl (15 kB)
+Using cached aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+Using cached filelock-3.32.0-py3-none-any.whl (97 kB)
+Using cached fonttools-4.63.0-cp312-cp312-macosx_10_13_universal2.whl (2.9 MB)
+Using cached frozenlist-1.8.0-cp312-cp312-macosx_11_0_arm64.whl (50 kB)
+Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+Using cached httpx_sse-0.4.3-py3-none-any.whl (9.0 kB)
+Using cached jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+Using cached kiwisolver-1.5.0-cp312-cp312-macosx_11_0_arm64.whl (64 kB)
+Using cached llguidance-1.7.6-cp39-abi3-macosx_11_0_arm64.whl (3.1 MB)
+Using cached miniaudio-1.71-cp312-cp312-macosx_11_0_arm64.whl (351 kB)
+Using cached mlx_audio-0.4.5-py3-none-any.whl (1.8 MB)
+Using cached networkx-3.6.1-py3-none-any.whl (2.1 MB)
+Using cached packaging-26.2-py3-none-any.whl (100 kB)
+Using cached propcache-0.5.2-cp312-cp312-macosx_11_0_arm64.whl (55 kB)
+Using cached pyarrow-25.0.0-cp312-cp312-macosx_12_0_arm64.whl (35.9 MB)
+Using cached pydantic_settings-2.14.2-py3-none-any.whl (61 kB)
+Using cached pyjwt-2.13.0-py3-none-any.whl (31 kB)
+Using cached cryptography-49.0.0-cp311-abi3-macosx_11_0_arm64.whl (4.0 MB)
+Using cached pyparsing-3.3.2-py3-none-any.whl (122 kB)
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Using cached python_dotenv-1.2.2-py3-none-any.whl (22 kB)
+Using cached python_multipart-0.0.32-py3-none-any.whl (30 kB)
+Using cached pygments-2.20.0-py3-none-any.whl (1.2 MB)
+Using cached referencing-0.37.0-py3-none-any.whl (26 kB)
+Using cached regex-2026.7.19-cp312-cp312-macosx_11_0_arm64.whl (292 kB)
+Using cached rich-15.0.0-py3-none-any.whl (310 kB)
+Using cached markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+Using cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Using cached rpds_py-2026.6.3-cp312-cp312-macosx_11_0_arm64.whl (338 kB)
+Using cached scipy-1.18.0-cp312-cp312-macosx_14_0_arm64.whl (20.4 MB)
+Using cached setuptools-83.0.0-py3-none-any.whl (1.0 MB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Using cached sounddevice-0.5.5-py3-none-macosx_10_6_x86_64.macosx_10_6_universal2.whl (108 kB)
+Using cached sse_starlette-3.4.6-py3-none-any.whl (16 kB)
+Using cached starlette-1.3.1-py3-none-any.whl (73 kB)
+Using cached sympy-1.14.0-py3-none-any.whl (6.3 MB)
+Using cached mpmath-1.3.0-py3-none-any.whl (536 kB)
+Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Using cached typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
+Using cached markupsafe-3.0.3-cp312-cp312-macosx_11_0_arm64.whl (12 kB)
+Using cached pandas-3.0.3-cp312-cp312-macosx_11_0_arm64.whl (9.9 MB)
+Using cached pycparser-3.0-py3-none-any.whl (48 kB)
+Using cached torchvision-0.28.0-cp312-cp312-macosx_14_0_arm64.whl (1.9 MB)
+Using cached typer-0.27.0-py3-none-any.whl (122 kB)
+Using cached shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+Using cached xxhash-3.8.1-cp312-cp312-macosx_11_0_arm64.whl (32 kB)
+Installing collected packages: mpmath, xxhash, urllib3, typing-extensions, tqdm, toml, tabulate, sympy, six, shellingham, setuptools, sentencepiece, safetensors, rpds-py, regex, pyyaml, python-multipart, python-dotenv, pyparsing, pyjwt, Pygments, pycparser, pyarrow, psutil, protobuf, propcache, platformdirs, pillow, piexif, packaging, numpy, networkx, multidict, mdurl, MarkupSafe, llguidance, kiwisolver, idna, httpx-sse, hf-xet, hf-transfer, h11, fsspec, frozenlist, fonttools, filelock, einops, dill, cycler, click, charset_normalizer, certifi, attrs, annotated-types, annotated-doc, aiohappyeyeballs, yarl, uvicorn, typing-inspection, scipy, requests, referencing, python-dateutil, pydantic-core, opencv-python-headless, opencv-python, multiprocess, markdown-it-py, jinja2, httpcore, contourpy, cffi, anyio, aiosignal, torch, tiktoken, starlette, soundfile, sounddevice, rich, pydantic, pandas, miniaudio, matplotlib, jsonschema-specifications, httpx, cryptography, aiohttp, typer, torchvision, sse-starlette, pydantic-settings, jsonschema, huggingface-hub, fastapi, tokenizers, timm, mcp, datasets, transformers, mlx-lm, mflux, mlx-audio, mlx-vlm, mlx-embeddings
+
+Successfully installed MarkupSafe-3.0.3 Pygments-2.20.0 aiohappyeyeballs-2.7.1 aiohttp-3.14.2 aiosignal-1.4.0 annotated-doc-0.0.4 annotated-types-0.7.0 anyio-4.14.2 attrs-26.1.0 certifi-2026.7.22 cffi-2.1.0 charset_normalizer-3.4.9 click-8.4.2 contourpy-1.3.3 cryptography-49.0.0 cycler-0.12.1 datasets-5.0.0 dill-0.4.1 einops-0.8.2 fastapi-0.139.2 filelock-3.32.0 fonttools-4.63.0 frozenlist-1.8.0 fsspec-2026.4.0 h11-0.16.0 hf-transfer-0.1.9 hf-xet-1.5.2 httpcore-1.0.9 httpx-0.28.1 httpx-sse-0.4.3 huggingface-hub-1.24.0 idna-3.18 jinja2-3.1.6 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 kiwisolver-1.5.0 llguidance-1.7.6 markdown-it-py-4.2.0 matplotlib-3.11.1 mcp-1.28.1 mdurl-0.1.2 mflux-0.17.5 miniaudio-1.71 mlx-audio-0.4.5 mlx-embeddings-0.1.0 mlx-lm-0.31.3 mlx-vlm-0.5.0 mpmath-1.3.0 multidict-6.7.1 multiprocess-0.70.19 networkx-3.6.1 numpy-2.5.1 opencv-python-4.13.0.92 opencv-python-headless-5.0.0.93 packaging-26.2 pandas-3.0.3 piexif-1.1.3 pillow-12.3.0 platformdirs-4.11.0 propcache-0.5.2 protobuf-7.35.1 psutil-7.2.2 pyarrow-25.0.0 pycparser-3.0 pydantic-2.13.4 pydantic-core-2.46.4 pydantic-settings-2.14.2 pyjwt-2.13.0 pyparsing-3.3.2 python-dateutil-2.9.0.post0 python-dotenv-1.2.2 python-multipart-0.0.32 pyyaml-6.0.3 referencing-0.37.0 regex-2026.7.19 requests-2.34.2 rich-15.0.0 rpds-py-2026.6.3 safetensors-0.8.0 scipy-1.18.0 sentencepiece-0.2.2 setuptools-83.0.0 shellingham-1.5.4 six-1.17.0 sounddevice-0.5.5 soundfile-0.14.0 sse-starlette-3.4.6 starlette-1.3.1 sympy-1.14.0 tabulate-0.10.0 tiktoken-0.13.0 timm-1.0.28 tokenizers-0.22.2 toml-0.10.2 torch-2.13.0 torchvision-0.28.0 tqdm-4.69.0 transformers-5.12.1 typer-0.27.0 typing-extensions-4.16.0 typing-inspection-0.4.2 urllib3-2.7.0 uvicorn-0.51.0 xxhash-3.8.1 yarl-1.24.5
+==> Installing mlx-audio (STT/TTS)...
+Requirement already satisfied: mlx-audio>=0.2.0 in ./bundled-python/python/lib/python3.12/site-packages (0.4.5)
+Collecting librosa
+  Using cached librosa-0.11.0-py3-none-any.whl.metadata (8.7 kB)
+Requirement already satisfied: sounddevice in ./bundled-python/python/lib/python3.12/site-packages (0.5.5)
+Requirement already satisfied: miniaudio in ./bundled-python/python/lib/python3.12/site-packages (1.71)
+Collecting pyloudnorm
+  Using cached pyloudnorm-0.2.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting numba
+  Using cached numba-0.66.0-cp312-cp312-macosx_12_0_arm64.whl.metadata (2.7 kB)
+Collecting audioread>=2.1.9 (from librosa)
+  Using cached audioread-3.1.0-py3-none-any.whl.metadata (9.0 kB)
+Requirement already satisfied: numpy>=1.22.3 in ./bundled-python/python/lib/python3.12/site-packages (from librosa) (2.5.1)
+Requirement already satisfied: scipy>=1.6.0 in ./bundled-python/python/lib/python3.12/site-packages (from librosa) (1.18.0)
+Collecting scikit-learn>=1.1.0 (from librosa)
+  Using cached scikit_learn-1.9.0-cp312-cp312-macosx_12_0_arm64.whl.metadata (11 kB)
+Collecting joblib>=1.0 (from librosa)
+  Using cached joblib-1.5.3-py3-none-any.whl.metadata (5.5 kB)
+Collecting decorator>=4.3.0 (from librosa)
+  Using cached decorator-5.3.1-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: soundfile>=0.12.1 in ./bundled-python/python/lib/python3.12/site-packages (from librosa) (0.14.0)
+Collecting pooch>=1.1 (from librosa)
+  Using cached pooch-1.9.0-py3-none-any.whl.metadata (10 kB)
+Collecting soxr>=0.3.2 (from librosa)
+  Using cached soxr-1.1.0-cp312-abi3-macosx_11_0_arm64.whl.metadata (5.8 kB)
+Requirement already satisfied: typing_extensions>=4.1.1 in ./bundled-python/python/lib/python3.12/site-packages (from librosa) (4.16.0)
+Collecting lazy_loader>=0.1 (from librosa)
+  Using cached lazy_loader-0.5-py3-none-any.whl.metadata (5.9 kB)
+Collecting msgpack>=1.0 (from librosa)
+  Using cached msgpack-1.2.1-cp312-cp312-macosx_11_0_arm64.whl.metadata (8.3 kB)
+Requirement already satisfied: cffi in ./bundled-python/python/lib/python3.12/site-packages (from sounddevice) (2.1.0)
+Collecting llvmlite<0.49,>=0.48.0dev0 (from numba)
+  Using cached llvmlite-0.48.0-cp312-cp312-macosx_12_0_arm64.whl.metadata (5.0 kB)
+Collecting numpy>=1.22.3 (from librosa)
+  Using cached numpy-2.4.6-cp312-cp312-macosx_14_0_arm64.whl.metadata (6.6 kB)
+Requirement already satisfied: pycparser in ./bundled-python/python/lib/python3.12/site-packages (from cffi->sounddevice) (3.0)
+Requirement already satisfied: packaging in ./bundled-python/python/lib/python3.12/site-packages (from lazy_loader>=0.1->librosa) (26.2)
+Requirement already satisfied: platformdirs>=2.5.0 in ./bundled-python/python/lib/python3.12/site-packages (from pooch>=1.1->librosa) (4.11.0)
+Requirement already satisfied: requests>=2.19.0 in ./bundled-python/python/lib/python3.12/site-packages (from pooch>=1.1->librosa) (2.34.2)
+Requirement already satisfied: charset_normalizer<4,>=2 in ./bundled-python/python/lib/python3.12/site-packages (from requests>=2.19.0->pooch>=1.1->librosa) (3.4.9)
+Requirement already satisfied: idna<4,>=2.5 in ./bundled-python/python/lib/python3.12/site-packages (from requests>=2.19.0->pooch>=1.1->librosa) (3.18)
+Requirement already satisfied: urllib3<3,>=1.26 in ./bundled-python/python/lib/python3.12/site-packages (from requests>=2.19.0->pooch>=1.1->librosa) (2.7.0)
+Requirement already satisfied: certifi>=2023.5.7 in ./bundled-python/python/lib/python3.12/site-packages (from requests>=2.19.0->pooch>=1.1->librosa) (2026.7.22)
+Collecting narwhals>=2.0.1 (from scikit-learn>=1.1.0->librosa)
+  Using cached narwhals-2.24.0-py3-none-any.whl.metadata (15 kB)
+Collecting threadpoolctl>=3.5.0 (from scikit-learn>=1.1.0->librosa)
+  Using cached threadpoolctl-3.6.0-py3-none-any.whl.metadata (13 kB)
+Using cached librosa-0.11.0-py3-none-any.whl (260 kB)
+Using cached pyloudnorm-0.2.0-py3-none-any.whl (10 kB)
+Using cached numba-0.66.0-cp312-cp312-macosx_12_0_arm64.whl (2.7 MB)
+Using cached llvmlite-0.48.0-cp312-cp312-macosx_12_0_arm64.whl (40.5 MB)
+Using cached numpy-2.4.6-cp312-cp312-macosx_14_0_arm64.whl (5.2 MB)
+Using cached audioread-3.1.0-py3-none-any.whl (23 kB)
+Using cached decorator-5.3.1-py3-none-any.whl (10 kB)
+Using cached joblib-1.5.3-py3-none-any.whl (309 kB)
+Using cached lazy_loader-0.5-py3-none-any.whl (8.0 kB)
+Using cached msgpack-1.2.1-cp312-cp312-macosx_11_0_arm64.whl (82 kB)
+Using cached pooch-1.9.0-py3-none-any.whl (67 kB)
+Using cached scikit_learn-1.9.0-cp312-cp312-macosx_12_0_arm64.whl (8.3 MB)
+Using cached narwhals-2.24.0-py3-none-any.whl (461 kB)
+Using cached soxr-1.1.0-cp312-abi3-macosx_11_0_arm64.whl (165 kB)
+Using cached threadpoolctl-3.6.0-py3-none-any.whl (18 kB)
+Installing collected packages: threadpoolctl, numpy, narwhals, msgpack, llvmlite, lazy_loader, joblib, decorator, audioread, soxr, pooch, numba, scikit-learn, pyloudnorm, librosa
+  Attempting uninstall: numpy
+    Found existing installation: numpy 2.5.1
+    Uninstalling numpy-2.5.1:
+      Successfully uninstalled numpy-2.5.1
+
+Successfully installed audioread-3.1.0 decorator-5.3.1 joblib-1.5.3 lazy_loader-0.5 librosa-0.11.0 llvmlite-0.48.0 msgpack-1.2.1 narwhals-2.24.0 numba-0.66.0 numpy-2.4.6 pooch-1.9.0 pyloudnorm-0.2.0 scikit-learn-1.9.0 soxr-1.1.0 threadpoolctl-3.6.0
+==> Installing vmlx-engine + jang_tools (local source)...
+    using local vmlx at /Users/eric/mlx/vllm-mlx-release-1.6.13
+Processing /Users/eric/mlx/vllm-mlx-release-1.6.13
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: vmlx
+  Building wheel for vmlx (pyproject.toml): started
+  Building wheel for vmlx (pyproject.toml): finished with status 'done'
+  Created wheel for vmlx: filename=vmlx-1.6.15-py3-none-any.whl size=1720560 sha256=70c41b4a22aaa3087717f09505327f45b8b22c584817f6131164578c85f7fe35
+  Stored in directory: /private/var/folders/55/4db45j8d3sdblm_7mqz34b1c0000gn/T/pip-ephem-wheel-cache-8xyf_nrg/wheels/33/d0/e6/55b6c32c9f05b6b16db7e19b44382feb551d07765ac22b6e5f
+Successfully built vmlx
+Installing collected packages: vmlx
+Successfully installed vmlx-1.6.15
+    using local jang-tools at /Users/eric/jang/jang-tools
+Processing /Users/eric/jang/jang-tools
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: jang
+  Building wheel for jang (pyproject.toml): started
+  Building wheel for jang (pyproject.toml): finished with status 'done'
+  Created wheel for jang: filename=jang-2.5.31-py3-none-any.whl size=942689 sha256=e6d4c0bd9583ef432def8d5def44d9c82cca5c3b4d1b8273c29d3fbf9f82530b
+  Stored in directory: /private/var/folders/55/4db45j8d3sdblm_7mqz34b1c0000gn/T/pip-ephem-wheel-cache-lq9lrqxn/wheels/dc/e1/68/10139b8e38666f6453c5918ad1d5584ae51210a893ee906afe
+Successfully built jang
+Installing collected packages: jang
+Successfully installed jang-2.5.31
+==> Cleaning up...
+==> Applying bundled dependency patches...
+  Already patched or structure changed: processing_utils.py sub-processor
+  Already patched or structure changed: qwen3_5/language.py
+  Patching mlx_vlm/models/gemma4/vision.py (pixel_values list coercion)...
+  WARNING: gemma4 vision patch target not found
+  Installing mlx_lm/models/deepseek_v3.py (Kimi K2.6 fp32 MLA decode)...
+  Installing mlx_lm/models/deepseek_v32.py (DSV3.2 fp32 MLA decode)...
+  Installing mlx_lm/models/mistral4.py (Mistral 4 fp32 MLA decode)...
+  Installing mlx_lm/models/bailing_hybrid.py (Ling-2.6 / Bailing-V2.5 hybrid)...
+  Installing distutils.version compatibility shim (Python 3.12 RADIO support)...
+  Patching mlx_lm/models/ssm.py (Mamba state fixes)...
+  Patched: ssm.py dt clip -> maximum
+  Already patched or structure changed: ssm.py dtype fix
+==> Patches applied.
+==> Verifying installation...
+vmlx_engine 1.6.15 imported OK
+CLI OK
+==> Verifying Python shared library...
+  libpython3.12.dylib OK ( 18M)
+==> Verifying pip is functional (needed for engine auto-update)...
+  pip OK
+==> Removing Python bytecode generated by verification imports...
+==> Checking for editable installs...
+  No editable installs (good)
+==> Verifying path isolation...
+  ENABLE_USER_SITE=False with -s flag OK
+
+==> Rewriting console-script shebangs to relocatable bundled Python...
+  rewrote 96 console-script shebangs
+  console-script shebangs are relocatable (good)
+
+==> Bundle size:
+1.4G	/Users/eric/mlx/vllm-mlx-release-1.6.13/panel/bundled-python
+
+==> Done! Bundled Python ready at: /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/bundled-python
+    Next: npm run build && npx electron-builder --mac
+  ok   bundled vmlx_engine version matches package.json (1.6.15)
+  ok   bundled vmlx_engine has no removed DSV4 env-var force-flips
+  ok   bundled-python console-script shebangs are relocatable
+  ok   bundled critical vmlx_engine files match source content
+  ok   bundled critical jang_tools files match source content
+  ok   mlx core                                  (mlx)
+  ok   mlx.nn                                    (mlx.nn)
+  ok   mlx-lm                                    (mlx_lm)
+  ok   mlx-vlm                                   (mlx_vlm)
+  ok   mlx-vlm gemma4                            (mlx_vlm.models.gemma4)
+  ok   mlx-vlm gemma3                            (mlx_vlm.models.gemma3)
+  ok   mlx-vlm qwen3_vl                          (mlx_vlm.models.qwen3_vl)
+  ok   mflux image runtime                       (mflux)
+  ok   mflux ModelConfig                         (mflux.models.common.config.model_config)
+  ok   timm vision backbone                      (timm)
+  ok   einops tensor rearrange                   (einops)
+  ok   librosa audio features                    (librosa)
+  ok   jang-tools                                (jang_tools)
+  ok   jang_tools.capabilities                   (jang_tools.capabilities)
+  ok   jang_tools.hy3                            (jang_tools.hy3)
+  ok   mlx_lm.models.hy_v3                       (mlx_lm.models.hy_v3)
+  ok   mlx_lm.models.bailing_hybrid              (mlx_lm.models.bailing_hybrid)
+  ok   jang_tools.hy3.runtime                    (jang_tools.hy3.runtime)
+  ok   jang_tools.mimo_v2.mlx_register           (jang_tools.mimo_v2.mlx_register)
+  ok   mlx_lm.models.mimo_v2                     (mlx_lm.models.mimo_v2)
+  ok   jang_tools.step37.step3p7_mlx             (jang_tools.step37.step3p7_mlx)
+  ok   jang_tools.load_jangtq                    (jang_tools.load_jangtq)
+  ok   jang_tools.topk_override                  (jang_tools.topk_override)
+  ok   jang_tools.turboquant.tq_kernel           (jang_tools.turboquant.tq_kernel)
+  ok   hadamard_kernel                           (jang_tools.turboquant.hadamard_kernel)
+  ok   fused_gate_up_kernel                      (jang_tools.turboquant.fused_gate_up_kernel)
+  ok   gather_tq_kernel                          (jang_tools.turboquant.gather_tq_kernel)
+  ok   mpp_nax_kernel                            (jang_tools.turboquant.mpp_nax_kernel)
+  ok   jang_tools.load_jangtq_kimi_vlm           (jang_tools.load_jangtq_kimi_vlm)
+  ok   jang_tools.kimi_prune.generate_vl         (jang_tools.kimi_prune.generate_vl)
+  ok   vmlx_engine                               (vmlx_engine)
+  ok   vmlx_engine Step3p7 VLM runtime           (vmlx_engine.models.step3p7_mlx_vlm)
+  ok   vmlx_engine Gemma 4 Unified VLM/audio runtime register  (vmlx_engine.models.gemma4_unified_register)
+  ok   vmlx_engine jang_loader                   (vmlx_engine.utils.jang_loader)
+  ok   vmlx_engine ollama_adapter                (vmlx_engine.api.ollama_adapter)
+  ok   vmlx_engine.loaders.load_jangtq           (vmlx_engine.loaders.load_jangtq)
+  ok   vmlx_engine.loaders.load_jangtq_vlm       (vmlx_engine.loaders.load_jangtq_vlm)
+  ok   vmlx_engine.loaders.load_jangtq_kimi_vlm  (vmlx_engine.loaders.load_jangtq_kimi_vlm)
+  ok   vmlx_engine.vlm.generate_vl               (vmlx_engine.vlm.generate_vl)
+  ok   vmlx_engine.runtime_patches.kimi_k25_mla  (vmlx_engine.runtime_patches.kimi_k25_mla)
+  ok   Step3p7 mlx-vlm registration
+  ok   Gemma 4 Unified mlx-vlm registration
+  ok   gemma4 Model/LanguageModel/VisionModel classes
+  ok   Gemma 4 assistant mlx_vlm.models alias
+  ok   Gemma 4 vision pixel_values list coercion in bundled mlx_vlm
+  ok   Kimi K2.6 fp32 MLA L==1 SDPA patch in bundled mlx_lm
+  ok   DeepSeek V3.2 / GLM-5.1 fp32 MLA L==1 SDPA patch in bundled mlx_lm
+  ok   Mistral 4 fp32 MLA L==1 SDPA patch in bundled mlx_lm
+  ok   Kimi K2.6 mlx_vlm remap + prompt_utils config
+  ok   MiniCPM-V-4.6 mlx_vlm remap + prompt_utils config
+
+bundled-python: all critical imports ok
+vite v5.4.21 building SSR bundle for production...
+transforming...
+✓ 94 modules transformed.
+[plugin:vite:reporter] [plugin vite:reporter]
+(!) /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/sessions.ts is dynamically imported by /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/models.ts but also statically imported by /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/api-gateway.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/index.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/benchmark.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/chat.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/developer.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/distributed.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/image.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/performance.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/sessions.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/utils.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/tray.ts, dynamic import will not move module into another chunk.
+
+rendering chunks...
+dist/main/index.mjs  1,062.52 kB
+✓ built in 410ms
+vite v5.4.21 building SSR bundle for production...
+transforming...
+✓ 1 modules transformed.
+rendering chunks...
+dist/preload/index.js  23.46 kB
+✓ built in 9ms
+vite v5.4.21 building for production...
+transforming...
+Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 2031 modules transformed.
+rendering chunks...
+../../out/renderer/index.html                     0.68 kB
+../../out/renderer/assets/index-DjOOXUqX.css     93.05 kB
+../../out/renderer/assets/index-CdizCKZH.js   3,178.26 kB
+✓ built in 1.42s
+  • electron-builder  version=24.13.3 os=25.3.0
+  • loaded configuration  file=package.json ("build" field)
+  ok   bundled vmlx_engine version matches package.json (1.6.15)
+  ok   bundled vmlx_engine has no removed DSV4 env-var force-flips
+  ok   bundled-python console-script shebangs are relocatable
+  ok   bundled critical vmlx_engine files match source content
+  ok   bundled critical jang_tools files match source content
+  ok   mlx core                                  (mlx)
+  ok   mlx.nn                                    (mlx.nn)
+  ok   mlx-lm                                    (mlx_lm)
+  ok   mlx-vlm                                   (mlx_vlm)
+  ok   mlx-vlm gemma4                            (mlx_vlm.models.gemma4)
+  ok   mlx-vlm gemma3                            (mlx_vlm.models.gemma3)
+  ok   mlx-vlm qwen3_vl                          (mlx_vlm.models.qwen3_vl)
+  ok   mflux image runtime                       (mflux)
+  ok   mflux ModelConfig                         (mflux.models.common.config.model_config)
+  ok   timm vision backbone                      (timm)
+  ok   einops tensor rearrange                   (einops)
+  ok   librosa audio features                    (librosa)
+  ok   jang-tools                                (jang_tools)
+  ok   jang_tools.capabilities                   (jang_tools.capabilities)
+  ok   jang_tools.hy3                            (jang_tools.hy3)
+  ok   mlx_lm.models.hy_v3                       (mlx_lm.models.hy_v3)
+  ok   mlx_lm.models.bailing_hybrid              (mlx_lm.models.bailing_hybrid)
+  ok   jang_tools.hy3.runtime                    (jang_tools.hy3.runtime)
+  ok   jang_tools.mimo_v2.mlx_register           (jang_tools.mimo_v2.mlx_register)
+  ok   mlx_lm.models.mimo_v2                     (mlx_lm.models.mimo_v2)
+  ok   jang_tools.step37.step3p7_mlx             (jang_tools.step37.step3p7_mlx)
+  ok   jang_tools.load_jangtq                    (jang_tools.load_jangtq)
+  ok   jang_tools.topk_override                  (jang_tools.topk_override)
+  ok   jang_tools.turboquant.tq_kernel           (jang_tools.turboquant.tq_kernel)
+  ok   hadamard_kernel                           (jang_tools.turboquant.hadamard_kernel)
+  ok   fused_gate_up_kernel                      (jang_tools.turboquant.fused_gate_up_kernel)
+  ok   gather_tq_kernel                          (jang_tools.turboquant.gather_tq_kernel)
+  ok   mpp_nax_kernel                            (jang_tools.turboquant.mpp_nax_kernel)
+  ok   jang_tools.load_jangtq_kimi_vlm           (jang_tools.load_jangtq_kimi_vlm)
+  ok   jang_tools.kimi_prune.generate_vl         (jang_tools.kimi_prune.generate_vl)
+  ok   vmlx_engine                               (vmlx_engine)
+  ok   vmlx_engine Step3p7 VLM runtime           (vmlx_engine.models.step3p7_mlx_vlm)
+  ok   vmlx_engine Gemma 4 Unified VLM/audio runtime register  (vmlx_engine.models.gemma4_unified_register)
+  ok   vmlx_engine jang_loader                   (vmlx_engine.utils.jang_loader)
+  ok   vmlx_engine ollama_adapter                (vmlx_engine.api.ollama_adapter)
+  ok   vmlx_engine.loaders.load_jangtq           (vmlx_engine.loaders.load_jangtq)
+  ok   vmlx_engine.loaders.load_jangtq_vlm       (vmlx_engine.loaders.load_jangtq_vlm)
+  ok   vmlx_engine.loaders.load_jangtq_kimi_vlm  (vmlx_engine.loaders.load_jangtq_kimi_vlm)
+  ok   vmlx_engine.vlm.generate_vl               (vmlx_engine.vlm.generate_vl)
+  ok   vmlx_engine.runtime_patches.kimi_k25_mla  (vmlx_engine.runtime_patches.kimi_k25_mla)
+  ok   Step3p7 mlx-vlm registration
+  ok   Gemma 4 Unified mlx-vlm registration
+  ok   gemma4 Model/LanguageModel/VisionModel classes
+  ok   Gemma 4 assistant mlx_vlm.models alias
+  ok   Gemma 4 vision pixel_values list coercion in bundled mlx_vlm
+  ok   Kimi K2.6 fp32 MLA L==1 SDPA patch in bundled mlx_lm
+  ok   DeepSeek V3.2 / GLM-5.1 fp32 MLA L==1 SDPA patch in bundled mlx_lm
+  ok   Mistral 4 fp32 MLA L==1 SDPA patch in bundled mlx_lm
+  ok   Kimi K2.6 mlx_vlm remap + prompt_utils config
+  ok   MiniCPM-V-4.6 mlx_vlm remap + prompt_utils config
+
+bundled-python: all critical imports ok
+vite v5.4.21 building SSR bundle for production...
+transforming...
+✓ 94 modules transformed.
+[plugin:vite:reporter] [plugin vite:reporter]
+(!) /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/sessions.ts is dynamically imported by /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/models.ts but also statically imported by /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/api-gateway.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/index.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/benchmark.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/chat.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/developer.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/distributed.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/image.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/performance.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/sessions.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/utils.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/tray.ts, dynamic import will not move module into another chunk.
+
+rendering chunks...
+dist/main/index.mjs  1,062.52 kB
+✓ built in 382ms
+vite v5.4.21 building SSR bundle for production...
+transforming...
+✓ 1 modules transformed.
+rendering chunks...
+dist/preload/index.js  23.46 kB
+✓ built in 9ms
+vite v5.4.21 building for production...
+transforming...
+Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 2031 modules transformed.
+rendering chunks...
+../../out/renderer/index.html                     0.68 kB
+../../out/renderer/assets/index-DjOOXUqX.css     93.05 kB
+../../out/renderer/assets/index-CdizCKZH.js   3,178.26 kB
+✓ built in 1.34s
+  • rebuilding native dependencies  dependencies=better-sqlite3@12.6.2 platform=darwin arch=arm64
+  • install prebuilt binary  name=better-sqlite3 version=12.6.2 platform=darwin arch=arm64 napi=
+  • build native dependency from sources  name=better-sqlite3
+                                          version=12.6.2
+                                          platform=darwin
+                                          arch=arm64
+                                          napi=
+                                          reason=prebuild-install failed with error (run with env DEBUG=electron-builder to get more information)
+                                          error=prebuild-install info begin Prebuild-install version 7.1.3
+    prebuild-install warn install prebuilt binaries enforced with --force!
+    prebuild-install warn install prebuilt binaries may be out of date!
+    prebuild-install info looking for local prebuild @ prebuilds/better-sqlite3-v12.6.2-electron-v119-darwin-arm64.tar.gz
+    prebuild-install info looking for cached prebuild @ /Users/eric/.npm/_prebuilds/a4b470-better-sqlite3-v12.6.2-electron-v119-darwin-arm64.tar.gz
+    prebuild-install http request GET https://github.com/WiseLibs/better-sqlite3/releases/download/v12.6.2/better-sqlite3-v12.6.2-electron-v119-darwin-arm64.tar.gz
+    prebuild-install http 404 https://github.com/WiseLibs/better-sqlite3/releases/download/v12.6.2/better-sqlite3-v12.6.2-electron-v119-darwin-arm64.tar.gz
+    prebuild-install warn install No prebuilt binaries found (target=28.3.3 runtime=electron arch=arm64 libc= platform=darwin)
+
+  • packaging       platform=darwin arch=arm64 electron=28.3.3 appOutDir=release/sequoia-app/mac-arm64
+  • downloading     url=https://github.com/electron/electron/releases/download/v28.3.3/electron-v28.3.3-darwin-arm64.zip size=95 MB parts=8
+  • downloaded      url=https://github.com/electron/electron/releases/download/v28.3.3/electron-v28.3.3-darwin-arm64.zip duration=1.199s
+[afterPack] normalized ad-hoc signatures for 12 bundled Python native files
+  • signing         file=release/sequoia-app/mac-arm64/vMLX.app platform=darwin type=distribution identity=D4DBBCB52F666D03F0A5154BFFEA2227BEE8FC7C provisioningProfile=none
+  ⨯ Command failed: codesign --sign D4DBBCB52F666D03F0A5154BFFEA2227BEE8FC7C --force --timestamp --options runtime --entitlements build/entitlements.mac.plist /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/release/sequoia-app/mac-arm64/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/pip/_vendor/distlib/t32.exe
+/Users/eric/mlx/vllm-mlx-release-1.6.13/panel/release/sequoia-app/mac-arm64/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/pip/_vendor/distlib/t32.exe: errSecInternalComponent
+  failedTask=build stackTrace=Error: Command failed: codesign --sign D4DBBCB52F666D03F0A5154BFFEA2227BEE8FC7C --force --timestamp --options runtime --entitlements build/entitlements.mac.plist /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/release/sequoia-app/mac-arm64/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/pip/_vendor/distlib/t32.exe
+/Users/eric/mlx/vllm-mlx-release-1.6.13/panel/release/sequoia-app/mac-arm64/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/pip/_vendor/distlib/t32.exe: errSecInternalComponent
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at ChildProcess.exithandler (node:child_process:417:12)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:304:5)
+From previous event:
+    at processImmediate (node:internal/timers:484:21)
+From previous event:
+    at readDirectoryAndSign (/Users/eric/mlx/vllm-mlx/panel/node_modules/app-builder-lib/src/macPackager.ts:478:29)
+    at MacPackager.signApp (/Users/eric/mlx/vllm-mlx/panel/node_modules/app-builder-lib/src/macPackager.ts:488:11)
+    at MacPackager.doSignAfterPack (/Users/eric/mlx/vllm-mlx/panel/node_modules/app-builder-lib/src/platformPackager.ts:336:21)
+    at MacPackager.doPack (/Users/eric/mlx/vllm-mlx/panel/node_modules/app-builder-lib/src/platformPackager.ts:321:7)
+    at MacPackager.pack (/Users/eric/mlx/vllm-mlx/panel/node_modules/app-builder-lib/src/macPackager.ts:198:9)
+    at Packager.doBuild (/Users/eric/mlx/vllm-mlx/panel/node_modules/app-builder-lib/src/packager.ts:445:9)
+    at executeFinally (/Users/eric/mlx/vllm-mlx/panel/node_modules/builder-util/src/promise.ts:12:14)
+    at Packager._build (/Users/eric/mlx/vllm-mlx/panel/node_modules/app-builder-lib/src/packager.ts:379:31)
+    at Packager.build (/Users/eric/mlx/vllm-mlx/panel/node_modules/app-builder-lib/src/packager.ts:340:12)
+    at executeFinally (/Users/eric/mlx/vllm-mlx/panel/node_modules/builder-util/src/promise.ts:12:14)
