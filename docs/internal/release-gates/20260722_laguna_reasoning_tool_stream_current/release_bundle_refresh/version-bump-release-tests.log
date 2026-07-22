@@ -1,0 +1,16 @@
+COMMAND=pytest version release gates
+============================= test session starts ==============================
+platform darwin -- Python 3.13.11, pytest-9.0.2, pluggy-1.6.0
+rootdir: /Users/eric/mlx/vllm-mlx-release-1.6.13
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+plugins: asyncio-1.3.0, anyio-4.13.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 73 items
+
+tests/test_release_gate_python_app.py .................................. [ 46%]
+..............                                                           [ 65%]
+tests/test_vl_video_regression.py .                                      [ 67%]
+tests/test_installed_app_runtime_parity_audit.py ..................      [ 91%]
+tests/test_public_app_issue_audit.py ......                              [100%]
+
+======================== 73 passed in 81.07s (0:01:21) =========================

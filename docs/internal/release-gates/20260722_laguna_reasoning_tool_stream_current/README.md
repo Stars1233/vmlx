@@ -114,10 +114,29 @@ failing release/audit tests passed after running with
 `PATH=/Users/eric/.local/node/bin:$PATH` and the refreshed bundle.
 
 `release_bundle_refresh/full-python-pytest-with-nodepath.log`: the complete
-Python suite passed with the corrected node PATH after the bundle refresh:
+Python suite passed with the corrected node PATH after the 1.6.14 bundle
+refresh and before the subsequent 1.6.15 version bump:
 
 ```text
 6290 passed, 96 skipped, 92 deselected, 2 warnings in 268.94s
+```
+
+`release_bundle_refresh/verify-bundled-python-1.6.15.log`: after bumping
+`panel/package.json`, `panel/package-lock.json`, `pyproject.toml`, and
+`vmlx_engine/__init__.py` to `1.6.15`, `panel/scripts/bundle-python.sh` was
+rerun and `panel/scripts/verify-bundled-python.sh` passed with bundled
+`vmlx_engine 1.6.15`.
+
+`release_bundle_refresh/version-bump-release-tests.log`: 73 release/version
+tests passed after the 1.6.15 bump and rebundling:
+
+```text
+tests/test_release_gate_python_app.py
+tests/test_vl_video_regression.py::TestBundledPythonVerifyScript::test_verify_script_passes_against_current_bundle
+tests/test_installed_app_runtime_parity_audit.py
+tests/test_public_app_issue_audit.py
+
+73 passed in 81.07s
 ```
 
 The earlier unqualified full Python-suite invocation captured in
@@ -128,7 +147,7 @@ was a real release blocker until `bundle-python.sh` was rerun.
 
 ## Remaining release blockers not closed by this gate
 
-- Full panel suite, panel build, and typecheck were not rerun end-to-end in this gate.
+- Full Python suite was not rerun end-to-end after the later 1.6.15 version bump; targeted release/version tests were. Full panel suite, panel build, and typecheck were not rerun end-to-end in this gate.
 - Full protocol matrix remains open: non-stream Chat/Responses, Anthropic, Ollama, cancellation/disconnect/recovery across representative models.
 - Full settings parity remains open for all models; this gate only checks Laguna S-2.1 generation defaults observed in UI.
 - Disk-only L2/paged-off partial-prefix restore remains unproven here.
