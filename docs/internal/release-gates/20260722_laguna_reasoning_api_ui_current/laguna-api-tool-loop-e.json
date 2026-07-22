@@ -1,0 +1,88 @@
+{
+  "chat_first": {
+    "first_s": 0.0078,
+    "total_s": 0.908,
+    "content": "",
+    "reasoning": "LAG-S21-API-CHAT-TOOL-E-DONE VALUE=42",
+    "tool_calls": [
+      {
+        "id": "call_678d48b1",
+        "type": "function",
+        "function": {
+          "name": "",
+          "arguments": ""
+        }
+      }
+    ],
+    "finishes": [
+      "length"
+    ],
+    "event_count": 38
+  },
+  "chat_final": {
+    "first_s": 0.0017,
+    "total_s": 1.3066,
+    "content": "LAG-S21-API-CHAT-TOOL-E-DONE VALUE=ALPHA-42",
+    "reasoning": "",
+    "tool_calls": [],
+    "finishes": [
+      "stop"
+    ],
+    "event_count": 21,
+    "content_has_inline_think": false
+  },
+  "responses_first": {
+    "first_s": 0.0016,
+    "total_s": 1.5099,
+    "content": "",
+    "reasoning": "",
+    "tool_calls": [
+      {
+        "id": "fc_7f1e1de23952",
+        "type": "function_call",
+        "status": "completed",
+        "call_id": "call_dc4542ee",
+        "name": "lookup_code",
+        "arguments": "{\"key\": \"beta\"}"
+      }
+    ],
+    "types_tail": [
+      "response.heartbeat",
+      "response.heartbeat",
+      "response.heartbeat",
+      "response.heartbeat",
+      "response.heartbeat",
+      "response.heartbeat",
+      "response.heartbeat",
+      "response.output_item.added",
+      "response.function_call_arguments.delta",
+      "response.function_call_arguments.done",
+      "response.output_item.done",
+      "response.completed"
+    ],
+    "event_count": 45
+  },
+  "responses_final": {
+    "first_s": 0.0019,
+    "total_s": 1.2864,
+    "content": "LAG-S21-API-RESP-TOOL-E-DONE VALUE=BETA-84",
+    "reasoning": "",
+    "tool_calls": [],
+    "types_tail": [
+      "response.output_text.delta",
+      "response.output_text.delta",
+      "response.output_text.delta",
+      "response.output_text.delta",
+      "response.output_text.delta",
+      "response.output_text.delta",
+      "response.output_text.delta",
+      "response.output_text.delta",
+      "response.output_text.done",
+      "response.content_part.done",
+      "response.output_item.done",
+      "response.completed"
+    ],
+    "event_count": 25,
+    "content_has_inline_think": false
+  }
+}

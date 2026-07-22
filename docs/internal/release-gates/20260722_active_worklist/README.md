@@ -40,6 +40,7 @@ model/prompt loops.
 | JANGTQ sampler/session lifecycle on Qwen3.6 | `20260721_jangtq_sampling_chat_lifecycle_current/`; bundle-owned temp/top-p/top-k shown in Electron and raw Responses | Base MLX/MXFP, DSV4/M3 native-cache routes, and non-neutral repetition-penalty default |
 | Gemma sampler Top-K zero/reset scoped chain | `20260720_sampling_defaults_ui_runtime/`; explicit Top-K Off and reset-to-bundle path through UI/SQLite/request/engine/API | JANGTQ/MXFP/native-cache family repeats and non-neutral repetition penalty |
 | Laguna S2.1 JANG_2L Responses/Electron tool/cache | `20260721_laguna_s21_jang2l_cache_reasoning/`; Auto reasoning, Electron one-tool, raw Responses one-tool, q4 mixed-SWA cache, paged RAM partial, restart L2, eviction, SSD-only partial | Chat/Anthropic/Ollama result continuations, long-context/SWA-boundary quality, JANG_4M protocol rows, strict-format variability |
+| Laguna S2.1 current reasoning/API/UI supplement | `20260722_laguna_reasoning_api_ui_current/`; current Electron Auto reasoning rail persisted `reasoning_content`, Electron reasoning-history one-tool continuation, raw Chat/Responses reasoning streams, raw Chat/Responses one-tool continuations, q4/L2 health telemetry | Anthropic/Ollama current reruns, paged-off SSD-only rerun on this exact source, cross-chat/cross-session partial SSD match, long-context/SWA-boundary quality, full-suite/package gates |
 | DSV4/M3 typed cache current source | `20260720_dsv4_m3_current_typed_cache/`; DSV4 composite cache and M3 sparse-index cache not flattened into generic TQ | DSV4 long quality/protocol breadth; M3 current VL/video row remains PARTIAL |
 | Gateway non-stream atomic JSON | `20260721_gateway_nonstream_atomic_current/`; parseable 502 on reset plus immediate recovery | Broader soak, simultaneous config mutations, signed-app repetition, model/parser breadth |
 | Eager materialization representatives | `CURRENT-MATRIX.md` names DSV4, Laguna, Step, openPangu, Gemma, HY3, MiniMax M2.7, and swap soak | Inventory only loader classes not represented; signed-app repeat |
@@ -68,14 +69,20 @@ model/prompt loops.
 The next target should not rerun the already-closed Qwen/Bonsai/M2.7 single-tool
 rows. The best current reducer is:
 
-1. `settings + parser/template`: audit and fix model-derived sampler/default
+1. `reasoning/API rail closure`: use the new Laguna supplement as a current
+   source/live proof reference, then close the remaining non-duplicate protocol
+   surfaces: Anthropic and Ollama tool-result continuations, plus one broader
+   parser-family row that actually emits reasoning deltas. Keep over-specified
+   `tool_choice="required"` prompt-shape negatives visible instead of calling
+   them green.
+2. `settings + parser/template`: audit and fix model-derived sampler/default
    parity for non-duplicate artifacts whose defaults stress the UI/API path:
    MiniMax M2.7 top-k 40, OpenPangu top-p 0.8/top-k 151552/no generic TQ, HY3 or
    ZAYA top-k -1/off, and a Nemotron non-Gemma temperature row.
-2. Fold the same live run into `reasoning/content rails` by using Auto/on/off
+3. Fold the same live run into `reasoning/content rails` by using Auto/on/off
    probes and one required-tool continuation on one selected model, rather than
    separate repetitive prompts.
-3. Then return to Laguna S2.1 JANG_4M/JANG_2L protocol breadth and long-SWA
+4. Then return to Laguna S2.1 JANG_4M/JANG_2L protocol breadth and long-SWA
    correctness with the same proof style.
 
 ## Rules for subsequent closures

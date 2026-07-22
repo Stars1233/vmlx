@@ -1,0 +1,245 @@
+{
+  "no_choice": {
+    "content": "",
+    "reasoning": "",
+    "tool_calls": [
+      {
+        "id": "call_2be915b5",
+        "type": "function",
+        "function": {
+          "name": "lookup_code",
+          "arguments": "{\"key\": \"alpha\"}"
+        }
+      }
+    ],
+    "finishes": [
+      "tool_calls"
+    ],
+    "usage_tail": [
+      {
+        "prompt_tokens": 161,
+        "completion_tokens": 23,
+        "total_tokens": 184,
+        "prompt_tokens_details": {
+          "cached_tokens": 128,
+          "cache_detail": "paged+tq-native"
+        }
+      }
+    ],
+    "event_count": 26,
+    "tail": [
+      {
+        "t": 0.7058,
+        "delta": {},
+        "finish": null
+      },
+      {
+        "t": 0.7237,
+        "delta": {},
+        "finish": null
+      },
+      {
+        "t": 0.7414,
+        "delta": {},
+        "finish": null
+      },
+      {
+        "t": 0.7591,
+        "delta": {},
+        "finish": null
+      },
+      {
+        "t": 0.7768,
+        "delta": {},
+        "finish": null
+      },
+      {
+        "t": 0.7949,
+        "delta": {
+          "tool_calls": [
+            {
+              "index": 0,
+              "function": {
+                "name": "lookup_code",
+                "arguments": "{\"key\": \"alpha\"}"
+              }
+            }
+          ]
+        },
+        "finish": null
+      },
+      {
+        "t": 0.795,
+        "delta": {},
+        "finish": "tool_calls"
+      },
+      {
+        "t": 0.7951,
+        "delta": {},
+        "finish": null
+      }
+    ]
+  },
+  "required_simple": {
+    "content": "",
+    "reasoning": "Let me call the lookup_code function with the key \"alpha\".",
+    "tool_calls": [
+      {
+        "id": "call_ad3ee556",
+        "type": "function",
+        "function": {
+          "name": "lookup_code",
+          "arguments": "{\"key\": \"alpha\"}"
+        }
+      }
+    ],
+    "finishes": [
+      "tool_calls"
+    ],
+    "usage_tail": [
+      {
+        "prompt_tokens": 161,
+        "completion_tokens": 35,
+        "total_tokens": 196,
+        "prompt_tokens_details": {
+          "cached_tokens": 128,
+          "cache_detail": "paged+tq-native"
+        }
+      }
+    ],
+    "event_count": 39,
+    "tail": [
+      {
+        "t": 1.1909,
+        "delta": {},
+        "finish": null
+      },
+      {
+        "t": 1.2086,
+        "delta": {},
+        "finish": null
+      },
+      {
+        "t": 1.2264,
+        "delta": {},
+        "finish": null
+      },
+      {
+        "t": 1.2442,
+        "delta": {},
+        "finish": null
+      },
+      {
+        "t": 1.262,
+        "delta": {},
+        "finish": null
+      },
+      {
+        "t": 1.2802,
+        "delta": {
+          "tool_calls": [
+            {
+              "index": 0,
+              "function": {
+                "name": "lookup_code",
+                "arguments": "{\"key\": \"alpha\"}"
+              }
+            }
+          ]
+        },
+        "finish": null
+      },
+      {
+        "t": 1.2802,
+        "delta": {},
+        "finish": "tool_calls"
+      },
+      {
+        "t": 1.2802,
+        "delta": {},
+        "finish": null
+      }
+    ]
+  },
+  "named_choice": {
+    "content": "",
+    "reasoning": "",
+    "tool_calls": [
+      {
+        "id": "call_bc2681ca",
+        "type": "function",
+        "function": {
+          "name": "lookup_code",
+          "arguments": "{\"key\": \"alpha\"}"
+        }
+      }
+    ],
+    "finishes": [
+      "tool_calls"
+    ],
+    "usage_tail": [
+      {
+        "prompt_tokens": 161,
+        "completion_tokens": 23,
+        "total_tokens": 184,
+        "prompt_tokens_details": {
+          "cached_tokens": 128,
+          "cache_detail": "paged+tq-native"
+        }
+      }
+    ],
+    "event_count": 26,
+    "tail": [
+      {
+        "t": 0.9764,
+        "delta": {},
+        "finish": null
+      },
+      {
+        "t": 0.9941,
+        "delta": {},
+        "finish": null
+      },
+      {
+        "t": 1.0119,
+        "delta": {},
+        "finish": null
+      },
+      {
+        "t": 1.0295,
+        "delta": {},
+        "finish": null
+      },
+      {
+        "t": 1.0475,
+        "delta": {},
+        "finish": null
+      },
+      {
+        "t": 1.0655,
+        "delta": {
+          "tool_calls": [
+            {
+              "index": 0,
+              "function": {
+                "name": "lookup_code",
+                "arguments": "{\"key\": \"alpha\"}"
+              }
+            }
+          ]
+        },
+        "finish": null
+      },
+      {
+        "t": 1.0655,
+        "delta": {},
+        "finish": "tool_calls"
+      },
+      {
+        "t": 1.0656,
+        "delta": {},
+        "finish": null
+      }
+    ]
+  }
+}
