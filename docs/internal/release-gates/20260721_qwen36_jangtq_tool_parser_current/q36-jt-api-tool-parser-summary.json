@@ -1,0 +1,48 @@
+{
+  "ts": 1784687599.714675,
+  "chat_first": {
+    "events": 97,
+    "reasoning_len": 265,
+    "content": "",
+    "tool_chunk_count": 2,
+    "call_id": "call_5d931876",
+    "name": "file_info",
+    "args": "{\"path\": \"panel/package.json\"}",
+    "finish": [
+      "tool_calls"
+    ],
+    "inline_think": false
+  },
+  "chat_cont": {
+    "events": 84,
+    "reasoning_len": 200,
+    "content": "Q36JTAPI1-DONE SIZE=5.2 KB",
+    "finish": [
+      "stop"
+    ],
+    "inline_think": false
+  },
+  "responses_first": {
+    "events": 208,
+    "function_calls": [
+      {
+        "id": "fc_f99086ff5b41",
+        "type": "function_call",
+        "status": "completed",
+        "call_id": "call_37f14ac7",
+        "name": "file_info",
+        "arguments": "{\"path\": \"panel/package.json\"}"
+      }
+    ],
+    "completed": true,
+    "response_id": "resp_609bea437bc7",
+    "inline_think": false
+  },
+  "responses_cont": {
+    "events": 71,
+    "reasoning_len": 0,
+    "content": "Q36JTRESP1-DONE SIZE=5.2 KB",
+    "completed": true,
+    "inline_think": false
+  }
+}
