@@ -4828,3 +4828,16 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   manifest and retained family/media/gateway/stress rows remain honest
   follow-up work. Canonical evidence:
   `docs/internal/release-gates/20260722_release_checkpoint_1_6_15/README.md`.
+
+## 2026-07-22 - Post-release cache-setting terminology follow-up
+
+- `PAGED-CACHE-PLAIN-LANGUAGE-LABEL`: `OPEN-UX`. Rename the Electron server
+  setting currently shown as `Paged Cache` / `Use Paged KV Cache` to a clearer
+  label such as `In-Memory Paged Cache (RAM)`. Help text must distinguish this
+  fast unified-memory tier from `Block Disk Cache (L2)`, which is the SSD tier.
+- Acceptance requires source, persisted DB/config, preview, launched argv, and
+  effective `/health` parity. The change must not rename or reinterpret the
+  backend flag, silently enable the RAM tier, alter architecture-specific
+  eligibility, or break explicit Off plus disk-only L2 behavior. Verify the
+  final wording visually at normal and minimum window widths in the real
+  Electron app before closing.

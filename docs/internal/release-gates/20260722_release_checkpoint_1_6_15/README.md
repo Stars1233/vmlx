@@ -177,8 +177,9 @@ claim. Continue from `docs/internal/ISSUE-LEDGER.md` and
 `../20260716_release_closeout/CURRENT-MATRIX.md`. In particular, do not erase
 retained `PARTIAL`, `OPEN`, or artifact-specific `BLOCKED` rows for broader
 family/media breadth, long-context and stochastic quality, gateway/network
-soak, repeated model swaps, stale-path UX, or models not exercised by these two
-signed-app smokes.
+soak, repeated model swaps, stale-path UX, the post-release plain-language
+`In-Memory Paged Cache (RAM)` label/help-text change, or models not exercised by
+these two signed-app smokes.
 
 ## Publication hygiene
 
