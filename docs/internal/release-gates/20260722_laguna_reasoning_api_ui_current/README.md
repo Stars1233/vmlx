@@ -11,8 +11,8 @@ replace the broader matrix and does not authorize a release by itself.
 - Host: `erics-m5-max.local`
 - Repo: `/Users/eric/mlx/vllm-mlx-release-1.6.13`
 - Branch: `codex/postrelease-ui-drawers-20260720`
-- Source HEAD during latest proof: `ffbc19dd8`
-- Latest committed source gate: `ffbc19dd8 fix(api): suppress phantom post-tool tool deltas` (`vmlx_engine/server.py` + `tests/test_server.py`), validated by focused tests and the live PID below.
+- Source HEAD during latest proof: `ed009b163`
+- Latest committed source gate: `ed009b163 fix(api): gate speculative tool start deltas` (`vmlx_engine/server.py` + `tests/test_server.py`), validated by focused tests and the live PID below.
 - Electron profile: `/Users/eric/.vmlx-v1613-responsive-dev`
 - CDP: `127.0.0.1:9335`
 - Live model: `/Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_2L`
