@@ -88,11 +88,34 @@ Restart-from-disk proof:
 - all rows emitted valid `file_info({"path":"panel/package.json"})` tool-call deltas
 - no gibberish flagged
 
+Electron UI proof:
+
+- screenshot: `laguna-ui-tool-v9-restart-pass.png`
+- persisted DB row: `laguna-ui-tool-v9-restart-row.json`
+- health snapshot: `laguna-ui-tool-v9-health.json`
+- model loaded by the real Electron UI Start button into running `Stop` state
+- user prompt: `[LAG-S21-UI-TOOL-V9-RESTART] ... file_info ... panel/package.json`
+- final visible answer: `LAG-S21-UI-TOOL-V9-RESTART-DONE SIZE=5.2 KB`
+- tool loop:
+  - `phase=calling`, `toolName=file_info`, `detail={"path": "panel/package.json"}`
+  - tool result reported `Size: 5.2 KB`
+  - `phase=done`
+- metrics:
+  - `promptTokens=684`
+  - `cachedTokens=64`
+  - `cacheDetail=paged+disk+tq-native`
+  - `ttft=1.20`
+  - `totalTime=3.4`
+- no warnings and no gibberish in the persisted row
+
+## Separate blocker observed during UI proof
+
+While the UI Laguna session was running on port 8008, a separate LFM2 engine process was also still alive on port 8051. This means the global "one model only" lifecycle/swap gate is not closed by this proof and must remain a release-check item.
+
 ## Remaining gates before release
 
 This does not close:
 
-- Electron visual Laguna proof through the real app/session UI
-- tool-result continuation after the tool call executes inside the UI
 - full API protocol matrix
+- global one-model-only lifecycle/swap cleanup
 - packaged Sequoia/Tahoe DMG signing/notarization/Gatekeeper install smoke
