@@ -5025,3 +5025,29 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   variants, openPangu/Mistral4 named-family Ollama normalization, and the
   global agentic/release matrices. Sanitized evidence and screenshots are in
   `docs/internal/release-gates/20260722_v1_6_16_campaign/`.
+
+## 2026-07-22 - Qwen3.6 JANGTQ Anthropic two-tool ordering/finalizer repair
+
+- `R16-ANTHROPIC-COMBINED-TOOL-RESULT-ORDER`: `VERIFIED-SOURCE_TEST_SCOPED`.
+  Anthropic allows a prior `tool_result` and the next user instruction in one
+  user content array. The adapter had flattened that as user text followed by
+  the tool result, breaking assistant-call/result adjacency and confusing the
+  next exact-tool gate. It now emits result messages first and the new user
+  instruction second. The focused adapter regression passed.
+- `R16-EXACT-TOOL-INVALID-CONTROL-LEAK`: `VERIFIED-LIVE_SCOPED`. Exact-one Chat
+  streaming no longer exposes pre-tool prose or rejected Qwen
+  `<parameter=...>` residue. The focused server regression passed, and patched
+  live Anthropic runs contained neither residue nor reasoning duplicated into
+  content. Invalid required calls ended with a truthful error.
+- `R16-Q35-ANTHROPIC-TWO-TOOL`: `PARTIAL`. On the current real Electron-loaded
+  Qwen3.6 35B JANGTQ/MXTQ process, the direct natural-prompt Anthropic stream
+  completed real `file_info`, then real `run_command(pwd)`, then a progressive
+  exact visible final. Reasoning was separate on the latter two rounds and
+  every terminal was balanced. The gateway completed `file_info` but generated
+  reasoning without the required second tool and truthfully failed. This is
+  not a global gateway/Anthropic pass and was not hidden by retries or an
+  underscore alias. Current evidence and the reusable harness live in
+  `docs/internal/release-gates/20260722_qwen35_agentic_protocol_matrix/`.
+- Verification at the uncommitted cutoff: 44/44 focused adapter, streaming
+  finalizer, and harness tests; all retained JSON artifacts parse; diff check
+  passes. Commit SHA is intentionally filled by the next scoped checkpoint.

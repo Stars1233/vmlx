@@ -136,6 +136,18 @@ Named live deltas still required after current scoped proofs:
   hashes/lengths, tool IDs/arguments, real-result hash, terminal type/count,
   cancellation time, recovery latency, and normalized direct/gateway diff.
 
+Current Qwen3.6 JANGTQ boundary after the Anthropic ordering/finalizer repair:
+
+- [x] Direct streamed Anthropic natural-prompt two-tool continuation: exact
+  `file_info`, real result, fresh separate reasoning, exact `run_command`, real
+  result, fresh separate reasoning, progressive exact final, balanced terminal,
+  and no visible native-control leakage.
+- [ ] Gateway streamed Anthropic equivalent: first tool passed, but the second
+  turn produced private reasoning without the required `run_command`; the
+  adapter returned a truthful error. Do not retry-loop this into a false pass.
+- [ ] The remaining direct/gateway protocols, non-stream modes, cancellation,
+  disconnect, fault, and recovery rows remain open.
+
 ### P0.3 Cache hierarchy and TurboQuant/native-state correctness
 
 For each archetype, prove coherent cold store, resident hit, partial-prefix

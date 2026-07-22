@@ -1,0 +1,339 @@
+Code
+Chat
+Server
+Tools
+Image
+API
+🇺🇸
+Sessions
+dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK
+JANGTQ2 (2b)
+127.0.0.1:8007
+PID 20167
++ Chat
+Chat
+Server
+Cache
+Bench
+Embed
+Perf
+Logs
+Stop
++ New Chat
+Import
+Clear
++ Folder
+
+Chat 7/22/2026, 9:19:17 AM
+
+Today
+
+↗
+
+Chat 7/22/2026, 9:19:08 AM
+
+Today
+
+↗
+
+[R16-Q35-UI-TWO-TOOL] Use the built-in tools in this exact order. First call file_info exactly once with path panel/package.json. Only after receiving that real tool result, call run_command exactly once with command pwd. Only after receiving the second real tool result, reply exactly R16-Q35-UI-TWO-TOOL-DONE SIZE=<human-readable size from file_info> PWD=<exact pwd from run_command> and nothing else. Do not invent either result.
+
+9:20 AM
+9:20 AM
+speak
+Reasoning
+401 chars
+Reasoning
+227 chars
+Reasoning
+447 chars
+Info
+panel/package.json
+$
+pwd
+
+R16-Q35-UI-TWO-TOOL-DONE SIZE=5.2 KB PWD=/Users/eric/mlx/vllm-mlx-release-1.6.13
+
+359 tokens
+82.4 t/s
+637.6 pp/s
+5336 prompt
+0.87s TTFT
+11.2s total
+Server Logs
+275 lines
+[16:18:14.999] Paged cache capacity: 64 tokens/block x 999 usable blocks (1000 configured; 1 reserved) = 63936 tokens. Token capacity is sized by the usable Max Cache Blocks; --cache-memory-mb/--cache-memory-percent set the L1 RAM byte ceiling that evicts free blocks (they bound RAM, not token capacity).
+[16:18:15.000] [ENV] engine_child_probe={"JANGTQ_MPP_NAX":null,"JANGTQ_MPP_NAX_DISABLE":null,"JANGTQ_MPP_NAX_STRICT":null,"JANGTQ_MPP_DENSE":null,"JANGTQ_MPP_DENSE_STRICT":null,"JANGTQ_DISABLE_DSV4_STREAM_LOAD":null,"JANGTQ_DISABLE_DSV4_FAST_LOAD":null,"DSV4_LONG_CTX":null,"DSV4_POOL_QUANT":null,"VMLX_DENSE_STRICT_LANE":null,"VMLX_DSV4_FAST_LOAD_DISABLE":null,"VMLX_DSV4_ENABLE_PREFIX_CACHE":null,"VMLINUX_DENSE_STRICT_LANE":null,"VMLINUX_DSV4_FAST_LOAD_DISABLE":null}
+[16:18:15.000] $ /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine serve /Volumes/EricsLLMDrive/dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK --host 127.0.0.1 --port 8007 --timeout 300 --max-num-seqs 1 --prefill-batch-size 512 --prefill-step-size 2048 --completion-batch-size 512 --is-mllm --continuous-batching --tool-call-parser qwen --enable-auto-tool-choice --reasoning-parser qwen3 --cache-memory-percent 0.15 --use-paged-cache --paged-cache-block-size 64 --max-cache-blocks 1000 --enable-block-disk-cache --block-disk-cache-max-gb 10 --stream-interval 1
+[16:18:15.000] [SESSIONS] Development engine source: /Users/eric/mlx/vllm-mlx-release-1.6.13
+[16:18:17.440]   JANGTQ_WIRED_LIMIT_GB defaulted to 115 GB (from OS sysctl iogpu.wired_limit_mb; overrides external jang_tools 70% default)
+[16:18:17.623] INFO:vmlx_engine:Registered vendored minimax_m3_vl runtime (/Users/eric/mlx/vllm-mlx-release-1.6.13/vmlx_engine/models/minimax_m3/minimax_m3.py)
+[16:18:17.625] INFO:vmlx_engine:Registered vendored openpangu_v2 runtime (/Users/eric/mlx/vllm-mlx-release-1.6.13/vmlx_engine/models/openpangu_v2/openpangu_v2.py)
+[16:18:17.625] INFO:vmlx_engine.model_config_registry:Model config: detection_source=jang_stamped family=qwen3_5_moe reasoning_parser=qwen3 tool_parser=qwen think_in_template=True cache_type=hybrid cache_subtype=None is_mllm=True
+[16:18:17.625] INFO:vmlx_engine.cli:MXTQ/JANGTQ bundle detected — disabling JANGTQ_MPP_NAX=auto. Reporter repros showed incorrect prefill logits on MXTQ/hybrid JANGTQ with auto; set JANGTQ_MPP_NAX=on only for explicit kernel diagnostics.
+[16:18:17.625] INFO:vmlx_engine.cli:KV cache auto mode: TurboQuant enabled for compatible models; stored prefix cache quantization=q4
+[16:18:17.626] INFO:vmlx_engine.cli:Reasoning parser enabled: qwen3
+[16:18:17.626] INFO:vmlx_engine.cli:Qwen3.6 hybrid/path-dependent cache model detected — keeping auto live TurboQuant enabled for attention KVCache layers only; SSM/GatedDelta companion state remains native full precision. Generic QuantizedKVCache storage=none is disabled to avoid a second codec; native architecture-selected attention-TQ storage remains enabled for prefix/paged/L2 and reports its effective bit policy in /health.
+[16:18:17.630] INFO:vmlx_engine:is_mllm_model(/Volumes/EricsLLMDrive/dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK): tier=force_mllm result=True
+[16:18:17.632] INFO:vmlx_engine.cli:Paged cache: --cache-memory-mb/--cache-memory-percent set the L1 RAM byte ceiling for the block KV mirror (free blocks are evicted, disk-L2 write-through first, to hold it). --max-cache-blocks caps the block-pool count; --block-disk-cache-max-gb caps L2 disk.
+[16:18:17.632] INFO:vmlx_engine.server:System memory before load: 105.1GB available / 128.0GB total (17.9% used)
+[16:18:17.632] INFO:vmlx_engine.server:Force MLLM mode enabled via --mllm flag
+[16:18:17.632] INFO:vmlx_engine.server:Loading model with BatchedEngine: /Volumes/EricsLLMDrive/dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK
+[16:18:17.635] INFO:vmlx_engine:is_mllm_model(/Volumes/EricsLLMDrive/dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK): tier=force_mllm result=True
+[16:18:17.635] INFO:vmlx_engine.server:Model loaded (batched mode): /Volumes/EricsLLMDrive/dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK
+[16:18:17.636] INFO:vmlx_engine.server:Metal GPU memory after load: 0.00GB active, 0.00GB peak
+[16:18:17.637] INFO:vmlx_engine.server:System memory after load: 105.1GB available (17.9% used)
+[16:18:17.637] INFO:vmlx_engine.server:Default max tokens fallback: 4096 base / 16384 for reasoning-capable models (bundle max_new_tokens wins when present; projected Metal guard clamps per-model)
+[16:18:17.640] INFO:     Started server process [20167]
+[16:18:17.640] INFO:     Waiting for application startup.
+[16:18:17.650] INFO:vmlx_engine.server:Started caffeinate system wake lock for PID 20167
+[16:18:17.921] INFO:vmlx_engine:Registered vMLX-owned Qwen 3.5 VLM runtime under mlx_vlm.models.qwen3_5 (gate-quant fix)
+[16:18:17.923] INFO:vmlx_engine:Registered vMLX-owned Qwen 3.5 VLM runtime under mlx_vlm.models.qwen3_5_moe (gate-quant fix)
+[16:18:17.927] INFO:vmlx_engine.utils.mlx_vlm_compat:mlx_vlm_compat: gemma4 Attention patched (new-style) — queries roped before cache.update_and_fetch (batched q/k offset-skew fix, task #76)
+[16:18:17.927] INFO:vmlx_engine.utils.mlx_vlm_compat:mlx_vlm_compat: gemma4 ProportionalRoPE patched — scalar rope offset expanded to per-row array at batch>1 (mx.fast.rope scalar-offset batch corruption workaround, task #59/F16)
+[16:18:17.927] INFO:vmlx_engine.models.mllm:Loading JANG VL model: /Volumes/EricsLLMDrive/dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK
+[16:18:17.927] INFO:vmlx_engine.utils.jang_loader:JANG v2 VLM detected — loading via mmap (instant)
+[16:18:17.937] WARNING:vmlx_engine.utils.quant_shape_inference:quant_shape_inference: patched 312 module(s) in Qwen3.6-35B-A3B-JANGTQ-CRACK — config disagreed with safetensors shapes (top-level config claimed bits=2 group_size=64; per-module overrides corrected from shape). Most common cause: an older JANG/JANGTQ converter wrote uniform bits=2 into config.json while actual weights were stored with mixed precision per layer.
+[16:18:18.703] INFO:vmlx_engine.utils.jang_loader:MXTQ/JANGTQ VLM detected — using native TurboQuant fast path (jang_tools.load_jangtq_vlm, P3/P15/P17/P18 Metal kernels)
+[16:18:18.703] ============================================================
+[16:18:18.703] SECURITY CONFIGURATION
+[16:18:18.703] ============================================================
+[16:18:18.703]   Authentication: DISABLED - Use --api-key to enable
+[16:18:18.703]   Rate limiting: DISABLED - Use --rate-limit to enable
+[16:18:18.703]   Request timeout: 300.0s
+[16:18:18.703]   Tool calling: ENABLED (parser: qwen)
+[16:18:18.703]   Reasoning: ENABLED (parser: Qwen3ReasoningParser)  [thinking model detected]
+[16:18:18.703]   External speculative decoding: Use --speculative-model to enable
+[16:18:18.703] ============================================================
+[16:18:18.703] Loading model: /Volumes/EricsLLMDrive/dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK
+[16:18:18.703] Max output fallback: 4096 (bundle max_new_tokens wins when present)
+[16:18:18.703] Mode: Continuous batching (for multiple concurrent users)
+[16:18:18.703] Stream interval: 1 tokens
+[16:18:18.703] Paged cache: block_size=64, max_blocks=1000, capacity=64000 tokens (--cache-memory-mb/--cache-memory-percent set the L1 RAM byte ceiling for the block KV mirror; --max-cache-blocks caps the block-pool count)
+[16:18:18.703] Block disk cache: max=10.0GB
+[16:18:18.703] Starting server at http://127.0.0.1:8007
+[16:18:18.703] Loading JANGTQ VLM: Qwen3.6-35B-A3B-JANGTQ-CRACK
+[16:18:18.703]   seed=42, bits_map={'attention': 8, 'linear_attention': 8, 'shared_expert': 8, 'routed_expert': 2, 'embed_tokens': 8, 'lm_head': 8}
+[16:18:19.055]   12 shards
+[16:18:19.101]   TQ groups: 120, regular: 1570
+[16:18:19.101]   Expert groups to stack: 0, pre-stacked: 120
+[16:18:19.163]   After stacking: 120 TQ groups
+[16:18:19.163]   Replacing modules with TurboQuantLinear...
+[16:18:19.165]   Replaced 120 modules
+[16:18:19.290]   Patched SwitchGLU class for fused gate+up (40 TQ instances)
+[16:18:19.293]   P15 mx.compile(router-only) applied to 1 MoE class(es)
+[16:18:19.296]   P18 QKV fusion: 0 class(es), 0 instances
+[16:18:19.300]   [hydrate] inference mode enabled
+[16:18:22.988]   Hydration complete
+[16:18:22.994] INFO:vmlx_engine.utils.jang_loader:  JANGTQ VLM fast path: JANGTQ VLM command-buffer split installed
+[16:18:22.995]   [warmup] layer-by-layer 1-token forward (40 layers, H=2048) ...
+[16:18:23.009]     layer 0/39 compiled  (0.0s)
+[16:18:23.013] WARNING:vmlx_engine.utils.jang_loader:  JANGTQ VLM fast path: JANGTQ VLM layer warmup skipped: 'NoneType' object has no attribute 'offset'; trying full-model prefill warmup
+[16:18:23.069] INFO:vmlx_engine.utils.jang_loader:  JANGTQ VLM fast path: JANGTQ VLM full-model 16-token prefill warmup complete
+[16:18:23.070] INFO:vmlx_engine.utils.jang_loader:  TurboQuant auto-enabled via VMLX_FORCE_TQ_AUTO=1
+[16:18:23.070] INFO:vmlx_engine.utils.jang_loader:  Hybrid model: 10 attention + 30 SSM layers
+[16:18:23.070] INFO:vmlx_engine.utils.jang_loader:  TurboQuant objects active; live encode disabled; storage codec=4-bit attention KV, policy=qwen_hybrid_attention_kv_storage_tq4 (10 mapped KV layers)
+[16:18:23.070] INFO:vmlx_engine.utils.jang_loader:JANGTQ VLM loaded in 5.1s (fast path)
+[16:18:23.081] INFO:vmlx_engine.models.mllm:JANG VL model loaded: /Volumes/EricsLLMDrive/dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK
+[16:18:23.081] INFO:vmlx_engine.mllm_scheduler:VLM hybrid model detected (MambaCache + KVCache layers). Mamba batching support enabled.
+[16:18:23.084] INFO:vmlx_engine.block_disk_store:BlockDiskStore initialized: dir=/Users/eric/.cache/vmlx-engine/block-cache/f250ba619998, max_size=10.0GB, entries=0, size=0.00GB
+[16:18:23.085] INFO:vmlx_engine.mllm_scheduler:VLM block disk cache enabled: dir=/Users/eric/.cache/vmlx-engine/block-cache/f250ba619998, max=10.0GB
+[16:18:23.085] INFO:vmlx_engine.mllm_scheduler:VLM hybrid SSM companion L2 enabled: dir=/Users/eric/.cache/vmlx-engine/block-cache/f250ba619998/ssm_companion, max=10GB
+[16:18:23.085] INFO:vmlx_engine.paged_cache:PagedCacheManager initialized: block_size=64, max_blocks=1000, usable_blocks=999, max_tokens=63936, backend=paged, ram_mirror_policy=resident
+[16:18:23.085] INFO:vmlx_engine.mllm_scheduler:MLLM paged cache RAM ceiling: 14423 MB (15% of available); block pool max_blocks=1000
+[16:18:23.087] INFO:vmlx_engine.mllm_scheduler:VLM paged cache enabled: block_size=64, max_blocks=1000
+[16:18:23.087] INFO:vmlx_engine.mllm_scheduler:VLM TurboQuantKVCache live decode preserving configured batching (batch cache API=turboquant_kv_v1).
+[16:18:23.087] INFO:vmlx_engine.mllm_scheduler:Runtime cache layout: model_type=qwen3_5_moe layers=40 layout=0:ArraysCache;1:ArraysCache;2:ArraysCache;3:TurboQuantKVCache;4:ArraysCache;5:ArraysCache;6:ArraysCache;7:TurboQuantKVCache;8:ArraysCache;9:ArraysCache;10:ArraysCache;11:TurboQuantKVCache;12:ArraysCache;13:ArraysCache;14:ArraysCache;15:TurboQuantKVCache;16:ArraysCache;17:ArraysCache;18:ArraysCache;19:TurboQuantKVCache;20:ArraysCache;21:ArraysCache;22:ArraysCache;23:TurboQuantKVCache;24:ArraysCache;25:ArraysCache;26:ArraysCache;27:TurboQuantKVCache;28:ArraysCache;29:ArraysCache;30:ArraysCache;31:TurboQuantKVCache;32:ArraysCache;33:ArraysCache;34:ArraysCache;35:TurboQuantKVCache;36:ArraysCache;37:ArraysCache;38:ArraysCache;39:TurboQuantKVCache
+[16:18:23.087] INFO:vmlx_engine.mllm_scheduler:MLLM Scheduler initialized: cache_mode=paged, hybrid=True, zaya_cca=False, kv_quant=none, prompt_l2=False, block_l2=True, max_seqs=1
+[16:18:23.150] INFO:vmlx_engine.mllm_scheduler:MLLM TurboQuant storage decoder startup warmup: configs=10 arrays=80 bytes=5265280 codec_probes=10 probe_tokens=64 probe_heads=2 seconds=0.062
+[16:18:23.150] INFO:vmlx_engine.mllm_scheduler:MLLM Scheduler started with max_num_seqs=1
+[16:18:23.150] INFO:vmlx_engine.engine.batched:MLLM Scheduler started with continuous batching: max_num_seqs=1, prefill_batch=512, completion_batch=512
+[16:18:23.150] INFO:vmlx_engine.engine.batched:BatchedEngine loaded: /Volumes/EricsLLMDrive/dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK (mllm=True)
+[16:18:23.156] INFO:vmlx_engine.server:Recorded Metal working-set model baseline: active=10.8GB max=107.5GB reason=lifespan_engine_start
+[16:18:23.160] INFO:vmlx_engine.mcp.config:No MCP config file found, using empty config
+[16:18:23.161] INFO:     Application startup complete.
+[16:18:23.161] INFO:     Uvicorn running on http://127.0.0.1:8007 (Press CTRL+C to quit)
+[16:18:23.828] INFO:     127.0.0.1:52850 - "GET /health HTTP/1.1" 200 OK
+[16:18:25.801] INFO:     127.0.0.1:52850 - "GET /health HTTP/1.1" 200 OK
+[16:18:30.810] INFO:     127.0.0.1:52852 - "GET /health HTTP/1.1" 200 OK
+[16:18:35.810] INFO:     127.0.0.1:52852 - "GET /health HTTP/1.1" 200 OK
+[16:18:40.817] INFO:     127.0.0.1:52852 - "GET /health HTTP/1.1" 200 OK
+[16:18:41.651] INFO:     127.0.0.1:52853 - "GET /health HTTP/1.1" 200 OK
+[16:18:45.818] INFO:     127.0.0.1:52854 - "GET /health HTTP/1.1" 200 OK
+[16:18:50.821] INFO:     127.0.0.1:52854 - "GET /health HTTP/1.1" 200 OK
+[16:18:55.823] INFO:     127.0.0.1:52854 - "GET /health HTTP/1.1" 200 OK
+[16:19:00.830] INFO:     127.0.0.1:52856 - "GET /health HTTP/1.1" 200 OK
+[16:19:05.834] INFO:     127.0.0.1:52856 - "GET /health HTTP/1.1" 200 OK
+[16:19:10.844] INFO:     127.0.0.1:52856 - "GET /health HTTP/1.1" 200 OK
+[16:19:15.851] INFO:     127.0.0.1:52856 - "GET /health HTTP/1.1" 200 OK
+[16:19:20.852] INFO:     127.0.0.1:52862 - "GET /health HTTP/1.1" 200 OK
+[16:19:25.860] INFO:     127.0.0.1:52862 - "GET /health HTTP/1.1" 200 OK
+[16:19:30.863] INFO:     127.0.0.1:52862 - "GET /health HTTP/1.1" 200 OK
+[16:19:35.866] INFO:     127.0.0.1:52867 - "GET /health HTTP/1.1" 200 OK
+[16:19:40.873] INFO:     127.0.0.1:52867 - "GET /health HTTP/1.1" 200 OK
+[16:19:45.863] INFO:     127.0.0.1:52867 - "GET /health HTTP/1.1" 200 OK
+[16:19:50.881] INFO:     127.0.0.1:52868 - "GET /health HTTP/1.1" 200 OK
+[16:19:55.882] INFO:     127.0.0.1:52868 - "GET /health HTTP/1.1" 200 OK
+[16:20:00.890] INFO:     127.0.0.1:52868 - "GET /health HTTP/1.1" 200 OK
+[16:20:05.893] INFO:     127.0.0.1:52869 - "GET /health HTTP/1.1" 200 OK
+[16:20:10.904] INFO:     127.0.0.1:52869 - "GET /health HTTP/1.1" 200 OK
+[16:20:15.905] INFO:     127.0.0.1:52869 - "GET /health HTTP/1.1" 200 OK
+[16:20:20.913] INFO:     127.0.0.1:52870 - "GET /health HTTP/1.1" 200 OK
+[16:20:25.916] INFO:     127.0.0.1:52870 - "GET /health HTTP/1.1" 200 OK
+[16:20:30.915] INFO:     127.0.0.1:52870 - "GET /health HTTP/1.1" 200 OK
+[16:20:35.922] INFO:     127.0.0.1:52873 - "GET /health HTTP/1.1" 200 OK
+[16:20:40.922] INFO:     127.0.0.1:52873 - "GET /health HTTP/1.1" 200 OK
+[16:20:45.931] INFO:     127.0.0.1:52873 - "GET /health HTTP/1.1" 200 OK
+[16:20:50.931] INFO:     127.0.0.1:52877 - "GET /health HTTP/1.1" 200 OK
+[16:20:55.934] INFO:     127.0.0.1:52877 - "GET /health HTTP/1.1" 200 OK
+[16:20:58.727] [CHAT_DIAG] attachment_route={"chatId":"aad59bd6","modelPath":"/Volumes/EricsLLMDrive/dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK","detectedFamily":"qwen3.5-moe","modelForceTextOnly":false,"chatIsMultimodal":true,"attachments":{"total":0,"counts":{"image":0,"video":0,"audio":0,"text":0},"files":[]}}
+[16:20:58.757] INFO:     127.0.0.1:52877 - "GET /health HTTP/1.1" 200 OK
+[16:20:58.758] [CHAT_DIAG] request_shape={"chatId":"aad59bd6","wireApi":"responses","isRemote":false,"baseUrl":"http://127.0.0.1:8007","chatIsMultimodal":true,"preserveHistoricalMediaForOmni":false,"detectedFamily":"qwen3.5-moe","sessionHasReasoningParser":true,"body":{"route":"/v1/responses","model":"dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK","stream":true,"enable_thinking":true,"thinking_mode":"reasoning","has_tools":true,"messages":[{"role":"user","content":{"type":"text","chars":432}}]}}
+[16:20:58.762] WARNING:vmlx_engine.server:SECURITY WARNING: Server running without API key authentication. Anyone can access the API. Use --api-key to enable authentication.
+[16:20:58.763] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK kwargs={'temperature': 1.0, 'top_p': 0.95, 'top_k': 20, 'max_tokens': 16384, 'enable_thinking': True, 'reasoning_effort': 'medium', 'chat_template_kwargs': {'reasoning_effort': 'medium', 'thinking_budget': 8192, 'enable_thinking': True}}
+[16:20:58.763] INFO:     127.0.0.1:52880 - "POST /v1/responses HTTP/1.1" 200 OK
+[16:20:58.788] INFO:vmlx_engine.mllm_batch_generator:MLLMBatchGenerator: Using VLM's language_model for batched generation
+[16:20:58.788] INFO:vmlx_engine.mllm_batch_generator:MLLMBatchGenerator: Vision cache enabled (size=16)
+[16:20:58.788] INFO:vmlx_engine.mllm_batch_generator:Metal cache limit set to 26.88GB (max_ws=107.5GB, active=10.8GB, free=96.7GB; base=26.88GB safety=48.34GB; mlxstudio#78)
+[16:21:00.921] INFO:     127.0.0.1:52877 - "GET /health HTTP/1.1" 200 OK
+[16:21:02.386] INFO:vmlx_engine.mllm_batch_generator:vmlx#109: captured clean SSM at prefill boundary for resp_9a2fe2beb3cd (30 layers, key=4032 tokens, is_complete=True — no re-derive needed)
+[16:21:02.408] INFO:vmlx_engine.mllm_batch_generator:vmlx#109: captured clean SSM at prefill boundary for resp_9a2fe2beb3cd (30 layers, key=4036 tokens, is_complete=True — no re-derive needed)
+[16:21:02.411] INFO:vmlx_engine.mllm_batch_generator:TurboQuant live telemetry: {'object_layers': 10, 'encode_enabled_layers': 0, 'encoded_layers': 0, 'compressed_tokens_total': 0, 'compressed_tokens_max': 0, 'compress_after_values': [0], 'resident_bytes': 83886080, 'float_view_bytes': 83886080, 'packed_bytes': 0, 'baseline_float_bytes': 83886080, 'resident_delta_vs_float_bytes': 0, 'resident_memory_reduction_claimed': False}
+[16:21:02.548] INFO:vmlx_engine.mllm_batch_generator:vmlx#109: stored inline-captured SSM for resp_9a2fe2beb3cd (30 layers, 4032-token key, no re-derive)
+[16:21:02.562] INFO:vmlx_engine.mllm_batch_generator:vmlx#109: stored inline-captured SSM for resp_9a2fe2beb3cd (30 layers, 4036-token key, no re-derive)
+[16:21:02.562] INFO:vmlx_engine.mllm_batch_generator:MLLM native MTP skipped for request=resp_9a2fe2beb3cd: loaded language model has no native MTP head
+[16:21:03.797] INFO:vmlx_engine.server:Responses dynamic tool buffering activated: trigger=content-marker content_chars=11 reasoning_chars=401
+[16:21:04.073] INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=4036, num_new_blocks=64, frugal=False, cumulative=external-companion
+[16:21:04.076] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK kwargs={'temperature': 1.0, 'top_p': 0.95, 'top_k': 20, 'max_tokens': 16384, 'enable_thinking': True, 'reasoning_effort': 'medium', 'chat_template_kwargs': {'reasoning_effort': 'medium', 'thinking_budget': 8192, 'enable_thinking': True}}
+[16:21:04.076] INFO:     127.0.0.1:52881 - "POST /v1/responses HTTP/1.1" 200 OK
+[16:21:04.078] WARNING:vmlx_engine.api.tool_calling:Chat template needs fallback tool schema injection.
+[16:21:04.079] WARNING:vmlx_engine.api.tool_calling:Chat template needs fallback tool schema injection.
+[16:21:04.082] WARNING:vmlx_engine.api.tool_calling:Chat template needs fallback tool schema injection.
+[16:21:04.090] INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 10 positional layers (out of 40 total)
+[16:21:04.093] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 1 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.104] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 2 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.114] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 3 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.124] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 4 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.134] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 5 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.143] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 6 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.153] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 7 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.162] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 8 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.172] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 9 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.181] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 10 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.191] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 11 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.200] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 12 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.209] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 13 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.219] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 14 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.228] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 15 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.237] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 16 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.247] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 17 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.256] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 18 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.265] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 19 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.274] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 20 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.283] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 21 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.293] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 22 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.302] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 23 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.312] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 24 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.321] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 25 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.331] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 26 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.339] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 27 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.348] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 28 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.356] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 29 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.365] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 30 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.374] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 31 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.382] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 32 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.391] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 33 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.400] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 34 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.409] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 35 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.418] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 36 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.428] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 37 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.436] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 38 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.445] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 39 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.454] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 40 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.463] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 41 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.471] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 42 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.480] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 43 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.488] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 44 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.497] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 45 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.505] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 46 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.514] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 47 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.525] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 48 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.533] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 49 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.542] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 50 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.551] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 51 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.560] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 52 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.569] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 53 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.577] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 54 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.586] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 55 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.595] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 56 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.604] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 57 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.613] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 58 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.621] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 59 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.630] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 60 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.639] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 61 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.648] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 62 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.657] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 63 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:04.665] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 64 (0 kv layers, turboquant_kv=10, 4 tokens)
+[16:21:04.808] INFO:vmlx_engine.mllm_scheduler:VLM Scheduler stored paged Prefix Cache for resp_9a2fe2beb3cd: 40 layers, truncated to 4036 tokens with cache side-key
+[16:21:05.440] INFO:vmlx_engine.mllm_batch_generator:vmlx#109: captured clean SSM at prefill boundary for resp_88577f6ca2ce (30 layers, key=704 tokens, is_complete=True — no re-derive needed)
+[16:21:05.491] INFO:vmlx_engine.mllm_batch_generator:vmlx#109: captured clean SSM at prefill boundary for resp_88577f6ca2ce (30 layers, key=742 tokens, is_complete=True — no re-derive needed)
+[16:21:05.493] INFO:vmlx_engine.mllm_batch_generator:TurboQuant live telemetry: {'object_layers': 10, 'encode_enabled_layers': 0, 'encoded_layers': 0, 'compressed_tokens_total': 0, 'compressed_tokens_max': 0, 'compress_after_values': [0], 'resident_bytes': 15728640, 'float_view_bytes': 15728640, 'packed_bytes': 0, 'baseline_float_bytes': 15728640, 'resident_delta_vs_float_bytes': 0, 'resident_memory_reduction_claimed': False}
+[16:21:05.546] INFO:vmlx_engine.mllm_batch_generator:vmlx#109: stored inline-captured SSM for resp_88577f6ca2ce (30 layers, 704-token key, no re-derive)
+[16:21:05.559] INFO:vmlx_engine.mllm_batch_generator:vmlx#109: stored inline-captured SSM for resp_88577f6ca2ce (30 layers, 742-token key, no re-derive)
+[16:21:05.559] INFO:vmlx_engine.mllm_batch_generator:MLLM native MTP skipped for request=resp_88577f6ca2ce: loaded language model has no native MTP head
+[16:21:05.924] INFO:     127.0.0.1:52882 - "GET /health HTTP/1.1" 200 OK
+[16:21:06.539] INFO:vmlx_engine.server:Responses dynamic tool buffering activated: trigger=content-marker content_chars=11 reasoning_chars=227
+[16:21:06.810] INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=742, num_new_blocks=12, frugal=False, cumulative=external-companion
+[16:21:06.816] INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/responses model=/Volumes/EricsLLMDrive/dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK kwargs={'temperature': 1.0, 'top_p': 0.95, 'top_k': 20, 'max_tokens': 16384, 'enable_thinking': True, 'reasoning_effort': 'medium', 'chat_template_kwargs': {'reasoning_effort': 'medium', 'thinking_budget': 8192, 'enable_thinking': True}}
+[16:21:06.816] INFO:     127.0.0.1:52884 - "POST /v1/responses HTTP/1.1" 200 OK
+[16:21:06.818] WARNING:vmlx_engine.api.tool_calling:Chat template needs fallback tool schema injection.
+[16:21:06.819] WARNING:vmlx_engine.api.tool_calling:Chat template needs fallback tool schema injection.
+[16:21:06.820] INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 10 positional layers (out of 40 total)
+[16:21:06.824] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 65 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:06.825] WARNING:vmlx_engine.api.tool_calling:Chat template needs fallback tool schema injection.
+[16:21:06.837] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 66 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:06.848] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 67 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:06.858] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 68 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:06.868] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 69 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:06.878] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 70 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:06.888] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 71 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:06.898] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 72 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:06.908] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 73 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:06.918] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 74 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:06.928] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 75 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:06.938] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 76 (0 kv layers, turboquant_kv=10, 38 tokens)
+[16:21:07.089] INFO:vmlx_engine.mllm_scheduler:VLM Scheduler stored paged Prefix Cache for resp_88577f6ca2ce: 40 layers, truncated to 742 tokens with cache side-key
+[16:21:07.550] INFO:vmlx_engine.mllm_batch_generator:vmlx#109: captured clean SSM at prefill boundary for resp_394e33d83eef (30 layers, key=512 tokens, is_complete=True — no re-derive needed)
+[16:21:07.605] INFO:vmlx_engine.mllm_batch_generator:vmlx#109: captured clean SSM at prefill boundary for resp_394e33d83eef (30 layers, key=555 tokens, is_complete=True — no re-derive needed)
+[16:21:07.608] INFO:vmlx_engine.mllm_batch_generator:TurboQuant live telemetry: {'object_layers': 10, 'encode_enabled_layers': 0, 'encoded_layers': 0, 'compressed_tokens_total': 0, 'compressed_tokens_max': 0, 'compress_after_values': [0], 'resident_bytes': 15728640, 'float_view_bytes': 15728640, 'packed_bytes': 0, 'baseline_float_bytes': 15728640, 'resident_delta_vs_float_bytes': 0, 'resident_memory_reduction_claimed': False}
+[16:21:07.660] INFO:vmlx_engine.mllm_batch_generator:vmlx#109: stored inline-captured SSM for resp_394e33d83eef (30 layers, 512-token key, no re-derive)
+[16:21:07.673] INFO:vmlx_engine.mllm_batch_generator:vmlx#109: stored inline-captured SSM for resp_394e33d83eef (30 layers, 555-token key, no re-derive)
+[16:21:07.673] INFO:vmlx_engine.mllm_batch_generator:MLLM native MTP skipped for request=resp_394e33d83eef: loaded language model has no native MTP head
+[16:21:09.932] INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=555, num_new_blocks=9, frugal=False, cumulative=external-companion
+[16:21:09.937] INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 10 positional layers (out of 40 total)
+[16:21:09.941] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 77 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:09.956] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 78 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:09.967] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 79 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:09.977] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 80 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:09.987] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 81 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:09.997] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 82 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:10.008] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 83 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:10.018] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 84 (0 kv layers, turboquant_kv=10, 64 tokens)
+[16:21:10.028] INFO:vmlx_engine.prefix_cache:Block disk: writing bounded TQ block 85 (0 kv layers, turboquant_kv=10, 43 tokens)
+[16:21:10.168] INFO:vmlx_engine.mllm_scheduler:VLM Scheduler stored paged Prefix Cache for resp_394e33d83eef: 40 layers, truncated to 555 tokens with cache side-key
+[16:21:10.931] INFO:     127.0.0.1:52882 - "GET /health HTTP/1.1" 200 OK
+[16:21:15.956] INFO:     127.0.0.1:52882 - "GET /health HTTP/1.1" 200 OK
+[16:21:20.964] INFO:     127.0.0.1:52882 - "GET /health HTTP/1.1" 200 OK
+[16:21:25.968] INFO:     127.0.0.1:52889 - "GET /health HTTP/1.1" 200 OK
+[16:21:30.976] INFO:     127.0.0.1:52889 - "GET /health HTTP/1.1" 200 OK
+[16:21:35.947] INFO:     127.0.0.1:52889 - "GET /health HTTP/1.1" 200 OK
+[16:21:40.974] INFO:     127.0.0.1:52906 - "GET /health HTTP/1.1" 200 OK
+[16:21:45.977] INFO:     127.0.0.1:52906 - "GET /health HTTP/1.1" 200 OK
+[16:21:50.973] INFO:     127.0.0.1:52906 - "GET /health HTTP/1.1" 200 OK
+[16:21:52.223] INFO:     127.0.0.1:52915 - "GET /health HTTP/1.1" 200 OK
+[16:21:55.988] INFO:     127.0.0.1:52916 - "GET /health HTTP/1.1" 200 OK
+[16:22:00.989] INFO:     127.0.0.1:52916 - "GET /health HTTP/1.1" 200 OK
+[16:22:05.988] INFO:     127.0.0.1:52916 - "GET /health HTTP/1.1" 200 OK
+[16:22:11.004] INFO:     127.0.0.1:52920 - "GET /health HTTP/1.1" 200 OK
+[16:22:16.005] INFO:     127.0.0.1:52920 - "GET /health HTTP/1.1" 200 OK
+[16:22:21.002] INFO:     127.0.0.1:52920 - "GET /health HTTP/1.1" 200 OK

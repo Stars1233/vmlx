@@ -1,0 +1,133 @@
+{
+  "abort_recovery": {
+    "direct": {
+      "anthropic": {}
+    },
+    "gateway": {
+      "anthropic": {}
+    }
+  },
+  "bases": {
+    "direct": "http://127.0.0.1:8007",
+    "gateway": "http://127.0.0.1:8088"
+  },
+  "checks": {
+    "abort_recovery_skipped": true,
+    "all_abort_recovery_pass": true,
+    "all_flows_pass": false,
+    "all_requested_flows_present": true
+  },
+  "created_at": "2026-07-22T16:59:03.944438+00:00",
+  "flows": {
+    "direct": {
+      "anthropic": {
+        "stream": {
+          "failure": "round1: expected exactly one tool call",
+          "pass": false,
+          "rounds": [
+            {
+              "content": "",
+              "content_chars": 0,
+              "content_delta_count": 0,
+              "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "elapsed_ms": 569.947,
+              "errors": [
+                {
+                  "at_ms": 569.805,
+                  "channel": "error",
+                  "detail_chars": 230,
+                  "detail_sha256": "275f0a9174f8168219ef2d34177363c263c0960f9468df1a4dc82f00132d6bc3",
+                  "kind": "error"
+                }
+              ],
+              "events": [
+                {
+                  "at_ms": 569.805,
+                  "channel": "error",
+                  "detail_chars": 230,
+                  "detail_sha256": "275f0a9174f8168219ef2d34177363c263c0960f9468df1a4dc82f00132d6bc3",
+                  "kind": "error"
+                },
+                {
+                  "at_ms": 569.805,
+                  "channel": "terminal",
+                  "kind": "error"
+                }
+              ],
+              "reasoning_chars": 0,
+              "reasoning_delta_count": 0,
+              "reasoning_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "response_id": "msg_d5ac05c24284",
+              "status_code": 200,
+              "terminals": [
+                "error"
+              ],
+              "tool_calls": []
+            }
+          ]
+        }
+      }
+    },
+    "gateway": {
+      "anthropic": {
+        "stream": {
+          "failure": "round1: expected exactly one tool call",
+          "pass": false,
+          "rounds": [
+            {
+              "content": "",
+              "content_chars": 0,
+              "content_delta_count": 0,
+              "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "elapsed_ms": 509.232,
+              "errors": [
+                {
+                  "at_ms": 509.116,
+                  "channel": "error",
+                  "detail_chars": 230,
+                  "detail_sha256": "275f0a9174f8168219ef2d34177363c263c0960f9468df1a4dc82f00132d6bc3",
+                  "kind": "error"
+                }
+              ],
+              "events": [
+                {
+                  "at_ms": 509.116,
+                  "channel": "error",
+                  "detail_chars": 230,
+                  "detail_sha256": "275f0a9174f8168219ef2d34177363c263c0960f9468df1a4dc82f00132d6bc3",
+                  "kind": "error"
+                },
+                {
+                  "at_ms": 509.116,
+                  "channel": "terminal",
+                  "kind": "error"
+                }
+              ],
+              "reasoning_chars": 0,
+              "reasoning_delta_count": 0,
+              "reasoning_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "response_id": "msg_a28ec1eb35cd",
+              "status_code": 200,
+              "terminals": [
+                "error"
+              ],
+              "tool_calls": []
+            }
+          ]
+        }
+      }
+    }
+  },
+  "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+  "modes": [
+    "stream"
+  ],
+  "pass": false,
+  "protocols": [
+    "anthropic"
+  ],
+  "repo_root": "/Users/eric/mlx/vllm-mlx-release-1.6.13",
+  "schema_version": 1,
+  "second_tool_choice": "explicit",
+  "source_head": "WORKTREE-after-aa97"
+}

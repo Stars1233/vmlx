@@ -1,0 +1,211 @@
+
+> vmlx@1.6.15 dev
+> electron-vite dev -- --user-data-dir=/Users/eric/.vmlx-v1613-responsive-dev --remote-debugging-port=9335
+
+vite v5.4.21 building SSR bundle for development...
+transforming...
+✓ 94 modules transformed.
+[plugin:vite:reporter] [plugin vite:reporter]
+(!) /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/sessions.ts is dynamically imported by /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/models.ts but also statically imported by /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/api-gateway.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/index.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/benchmark.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/chat.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/developer.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/distributed.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/image.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/performance.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/sessions.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/ipc/utils.ts, /Users/eric/mlx/vllm-mlx-release-1.6.13/panel/src/main/tray.ts, dynamic import will not move module into another chunk.
+
+rendering chunks...
+dist/main/index.mjs  1,063.00 kB
+✓ built in 373ms
+
+build the electron main process successfully
+
+-----
+
+vite v5.4.21 building SSR bundle for development...
+transforming...
+✓ 1 modules transformed.
+rendering chunks...
+dist/preload/index.js  23.46 kB
+✓ built in 8ms
+
+build the electron preload files successfully
+
+-----
+
+dev server running for the electron renderer process at:
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+
+start electron app...
+
+[STARTUP] Using vMLX userData override: /Users/eric/.vmlx-v1613-responsive-dev
+
+DevTools listening on ws://127.0.0.1:9335/devtools/browser/38fc7cee-aed9-493e-9f12-0ae265782a94
+[STARTUP] Restoring 0 App Sandbox bookmarks
+[STARTUP] No existing vmlx-engine processes found
+[MemoryEnforcer] Started (max 120 GB, poll 5000ms, TTL 30m)
+[gateway] Listening on 127.0.0.1:8088
+Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[Engine Manager] Checking installation...
+[Engine Manager] Checking installation...
+[Engine Manager] Found in PATH: /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine
+[Engine Manager] Found in PATH: /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine
+[Engine Manager] Version: 1.6.15
+[Engine Manager] Version: 1.6.15
+[UPDATE] Fetched manifest from https://raw.githubusercontent.com/jjang-ai/mlxstudio/main/latest.json: v1.6.15
+[UPDATE] Fetched manifest from https://mlx.studio/update/latest.json: v1.6.15
+[UPDATE] Picked highest version across sources: v1.6.15
+[UPDATE] Selected native macOS download: https://github.com/jjang-ai/mlxstudio/releases/download/v1.6.15/vMLX-1.6.15-tahoe-arm64.dmg
+[UPDATE] Up to date (1.6.15)
+[SESSION] Model estimate: ~31.0 GB | RAM: 89.2 GB free / 137 GB total (35% used)
+[SESSION] Model family: laguna | tool: glm47 (user=glm47, detected=glm47) | reasoning: deepseek_r1 (user=deepseek_r1, detected=deepseek_r1) | autoTool: true | VLM: false
+[SLEEP] touchSession 6e71c6e8 — idle timer reset
+[POWER] System sleep blocked (id=0)
+[MODELS] Scanning directories: [
+  '/Volumes/EricsLLMDrive/dealignai',
+  '/Volumes/EricsLLMDrive/jangq-ai',
+  '/Users/eric/.mlxstudio/models',
+  '/Users/eric/.cache/huggingface/hub',
+  '/Users/eric/.exo/models'
+]
+[MODELS] Scanning directories: [
+  '/Volumes/EricsLLMDrive/dealignai',
+  '/Volumes/EricsLLMDrive/jangq-ai',
+  '/Users/eric/.mlxstudio/models',
+  '/Users/eric/.cache/huggingface/hub',
+  '/Users/eric/.exo/models'
+]
+[MODELS] Found 20 models in /Volumes/EricsLLMDrive/dealignai
+[MODELS] Found 20 models in /Volumes/EricsLLMDrive/dealignai
+[MODELS] Found 23 models in /Volumes/EricsLLMDrive/jangq-ai
+[MODELS] Found 23 models in /Volumes/EricsLLMDrive/jangq-ai
+[MODELS] Found 18 models in /Users/eric/.mlxstudio/models
+[MODELS] Found 18 models in /Users/eric/.mlxstudio/models
+[MODELS] Found 3 models in /Users/eric/.cache/huggingface/hub
+[MODELS] Found 3 models in /Users/eric/.cache/huggingface/hub
+[MODELS] Found 0 models in /Users/eric/.exo/models
+[MODELS] Found 0 models in /Users/eric/.exo/models
+[MODELS] Total models found: 63 (1 duplicates removed)
+[MODELS] Total models found: 63 (1 duplicates removed)
+[SESSION] Model estimate: ~31.0 GB | RAM: 89.2 GB free / 137 GB total (35% used)
+[SESSION] Model family: laguna | tool: glm47 (user=glm47, detected=glm47) | reasoning: deepseek_r1 (user=deepseek_r1, detected=deepseek_r1) | autoTool: true | VLM: false
+[SLEEP] touchSession 6e71c6e8 — idle timer reset
+[SESSIONS] single-model mode: stopping detected engine pid=58371 port=8000 model=/Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_2L") {print}'; if kill -0 57093 2>/dev/null; then echo OLD_ALIVE; else echo OLD_STOPPED; fi; /Users/eric/.local/node/bin/node /tmp/uidrv-once.cjs text | tail -28 before starting 6e71c6e8-1b61-4963-81a1-d1110986c205
+[POWER] System sleep unblocked (id=0)
+[SESSION] Model estimate: ~31.0 GB | RAM: 89.3 GB free / 137 GB total (35% used)
+[SESSION] Model family: laguna | tool: glm47 (user=glm47, detected=glm47) | reasoning: deepseek_r1 (user=deepseek_r1, detected=deepseek_r1) | autoTool: true | VLM: false
+[SLEEP] touchSession 6e71c6e8 — idle timer reset
+[POWER] System sleep blocked (id=1)
+[SLEEP] touchSession 6e71c6e8 — idle timer reset
+[CHAT] Endpoint resolution: isRemote=false, rawBaseUrl=http://127.0.0.1:8018, baseUrl=http://127.0.0.1:8018, session=6e71c6e8-1b61-4963-81a1-d1110986c205, type=local
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:8018/v1/responses (wire: responses, remote: false)
+[CHAT] Stream ended — content: 17 chars, reasoning: 0 chars, tool calls: 0, buffered: false
+[CHAT] Response complete: 11 tokens in 1.0s (75.3 t/s, live=54.7 t/s, TTFT: 0.83s, pp: 602 tokens (80 cached), 723.6 pp/s, usage=server)
+[POWER] System sleep unblocked (id=1)
+[SESSION] Model estimate: ~59.0 GB | RAM: 89.0 GB free / 137 GB total (35% used)
+[SESSION] Model family: minimax_m3 | tool: minimax_m3 (user=minimax_m3, detected=minimax_m3) | reasoning: minimax_m3 (user=minimax_m3, detected=minimax_m3) | autoTool: true | VLM: false
+[POWER] System sleep blocked (id=2)
+[SLEEP] touchSession c3011773 — idle timer reset
+[CHAT] Inherited coding/tool settings from last chat 832171cb; generation/reasoning defaults stayed model-derived
+[MODELS] Scanning directories: [
+  '/Volumes/EricsLLMDrive/dealignai',
+  '/Volumes/EricsLLMDrive/jangq-ai',
+  '/Users/eric/.mlxstudio/models',
+  '/Users/eric/.cache/huggingface/hub',
+  '/Users/eric/.exo/models'
+]
+[MODELS] Scanning directories: [
+  '/Volumes/EricsLLMDrive/dealignai',
+  '/Volumes/EricsLLMDrive/jangq-ai',
+  '/Users/eric/.mlxstudio/models',
+  '/Users/eric/.cache/huggingface/hub',
+  '/Users/eric/.exo/models'
+]
+[MODELS] Found 20 models in /Volumes/EricsLLMDrive/dealignai
+[MODELS] Found 20 models in /Volumes/EricsLLMDrive/dealignai
+[MODELS] Found 23 models in /Volumes/EricsLLMDrive/jangq-ai
+[MODELS] Found 23 models in /Volumes/EricsLLMDrive/jangq-ai
+[MODELS] Found 18 models in /Users/eric/.mlxstudio/models
+[MODELS] Found 18 models in /Users/eric/.mlxstudio/models
+[MODELS] Found 3 models in /Users/eric/.cache/huggingface/hub
+[MODELS] Found 3 models in /Users/eric/.cache/huggingface/hub
+[MODELS] Found 0 models in /Users/eric/.exo/models
+[MODELS] Found 0 models in /Users/eric/.exo/models
+[MODELS] Total models found: 63 (1 duplicates removed)
+[MODELS] Total models found: 63 (1 duplicates removed)
+[SLEEP] touchSession c3011773 — idle timer reset
+[CHAT] Endpoint resolution: isRemote=false, rawBaseUrl=http://127.0.0.1:8003, baseUrl=http://127.0.0.1:8003, session=c3011773-8e0b-487c-b0be-09fb06cc17ed, type=local
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:8003/v1/responses (wire: responses, remote: false)
+[CHAT] Stream ended — content: 21 chars, reasoning: 802 chars, tool calls: 0, buffered: false
+[CHAT] Response complete: 355 tokens in 18.5s (24.8 t/s, live=24.2 t/s, TTFT: 4.14s, pp: 219 tokens, 52.9 pp/s, usage=server)
+[SLEEP] touchSession c3011773 — idle timer reset
+[CHAT] Inherited coding/tool settings from last chat e2431744; generation/reasoning defaults stayed model-derived
+[SLEEP] touchSession c3011773 — idle timer reset
+[CHAT] Endpoint resolution: isRemote=false, rawBaseUrl=http://127.0.0.1:8003, baseUrl=http://127.0.0.1:8003, session=c3011773-8e0b-487c-b0be-09fb06cc17ed, type=local
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:8003/v1/responses (wire: responses, remote: false)
+[CHAT] Stream ended — content: 0 chars, reasoning: 233 chars, tool calls: 1, buffered: true
+[CHAT] Tool execution iteration 1 (1 tool calls)
+[CHAT] Builtin tool: file_info
+[CHAT] Tool loop completed after 1 iteration(s)
+[CHAT] Response complete: 104 tokens in 12.2s (30.4 t/s, live=22.4 t/s, TTFT: 4.06s, pp: 811 tokens (256 cached), 78.0 pp/s, usage=server)
+[CHAT] Inherited coding/tool settings from last chat 6673460f; generation/reasoning defaults stayed model-derived
+[SLEEP] touchSession c3011773 — idle timer reset
+[CHAT] Endpoint resolution: isRemote=false, rawBaseUrl=http://127.0.0.1:8003, baseUrl=http://127.0.0.1:8003, session=c3011773-8e0b-487c-b0be-09fb06cc17ed, type=local
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:8003/v1/responses (wire: responses, remote: false)
+[CHAT] Stream ended — content: 18 chars, reasoning: 620 chars, tool calls: 0, buffered: false
+[CHAT] Response complete: 257 tokens in 11.9s (25.1 t/s, live=24.5 t/s, TTFT: 1.65s, pp: 219 tokens (128 cached), 132.9 pp/s, usage=server)
+[SLEEP] Session c3011773 idle 602s >= soft 600s → soft sleep
+[POWER] System sleep unblocked (id=2)
+[SLEEP] Session c3011773 idle 1803s >= hard 1800s → deep sleep
+[SESSION] Model estimate: ~8.2 GB | RAM: 103.7 GB free / 137 GB total (25% used)
+[SESSION] Model family: qwen3.5-moe | tool: qwen (user=qwen, detected=qwen) | reasoning: qwen3 (user=qwen3, detected=qwen3) | autoTool: true | VLM: true
+[SESSION] Ignoring stale JIT flag because multimodal/VLM models use the mlx-vlm streaming path, which is not mx.compile safe
+[POWER] System sleep blocked (id=3)
+[SLEEP] touchSession 60ed85c5 — idle timer reset
+[CHAT] Inherited coding/tool settings from last chat 0fc5d310; generation/reasoning defaults stayed model-derived
+[MODELS] Scanning directories: [
+  '/Volumes/EricsLLMDrive/dealignai',
+  '/Volumes/EricsLLMDrive/jangq-ai',
+  '/Users/eric/.mlxstudio/models',
+  '/Users/eric/.cache/huggingface/hub',
+  '/Users/eric/.exo/models'
+]
+[MODELS] Scanning directories: [
+  '/Volumes/EricsLLMDrive/dealignai',
+  '/Volumes/EricsLLMDrive/jangq-ai',
+  '/Users/eric/.mlxstudio/models',
+  '/Users/eric/.cache/huggingface/hub',
+  '/Users/eric/.exo/models'
+]
+[MODELS] Found 20 models in /Volumes/EricsLLMDrive/dealignai
+[MODELS] Found 20 models in /Volumes/EricsLLMDrive/dealignai
+[MODELS] Found 23 models in /Volumes/EricsLLMDrive/jangq-ai
+[MODELS] Found 23 models in /Volumes/EricsLLMDrive/jangq-ai
+[MODELS] Found 18 models in /Users/eric/.mlxstudio/models
+[MODELS] Found 18 models in /Users/eric/.mlxstudio/models
+[MODELS] Found 3 models in /Users/eric/.cache/huggingface/hub
+[MODELS] Found 3 models in /Users/eric/.cache/huggingface/hub
+[MODELS] Found 0 models in /Users/eric/.exo/models
+[MODELS] Found 0 models in /Users/eric/.exo/models
+[MODELS] Total models found: 63 (1 duplicates removed)
+[MODELS] Total models found: 63 (1 duplicates removed)
+[CHAT] Inherited coding/tool settings from last chat ee5a4ec9; generation/reasoning defaults stayed model-derived
+[SLEEP] touchSession 60ed85c5 — idle timer reset
+[CHAT] Endpoint resolution: isRemote=false, rawBaseUrl=http://127.0.0.1:8007, baseUrl=http://127.0.0.1:8007, session=60ed85c5-c761-4dfc-9a4e-b8511d5af6a4, type=local
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:8007/v1/responses (wire: responses, remote: false)
+[CHAT] Stream ended — content: 0 chars, reasoning: 401 chars, tool calls: 1, buffered: true
+[CHAT] Tool execution iteration 1 (1 tool calls)
+[CHAT] Builtin tool: file_info
+[CHAT] Tool execution iteration 2 (1 tool calls)
+[CHAT] Builtin tool: run_command
+[CHAT] Tool loop completed after 2 iteration(s)
+[CHAT] Response complete: 359 tokens in 11.2s (82.4 t/s, live=97.0 t/s, TTFT: 0.87s, pp: 5336 tokens, 637.6 pp/s, usage=server)
+[SLEEP] touchSession 60ed85c5 — idle timer reset
+[CHAT] Endpoint resolution: isRemote=false, rawBaseUrl=http://127.0.0.1:8007, baseUrl=http://127.0.0.1:8007, session=60ed85c5-c761-4dfc-9a4e-b8511d5af6a4, type=local
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:8007/v1/responses (wire: responses, remote: false)
+[CHAT] Stream ended — content: 79 chars, reasoning: 300 chars, tool calls: 0, buffered: false
+[CHAT] Response complete: 134 tokens in 2.0s (95.7 t/s, live=93.9 t/s, TTFT: 0.56s, pp: 4323 tokens (4036 cached), 7761.2 pp/s, usage=server)

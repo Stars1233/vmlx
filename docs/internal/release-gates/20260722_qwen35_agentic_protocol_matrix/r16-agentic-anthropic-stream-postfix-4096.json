@@ -1,0 +1,3419 @@
+{
+  "abort_recovery": {
+    "direct": {
+      "anthropic": {}
+    },
+    "gateway": {
+      "anthropic": {}
+    }
+  },
+  "bases": {
+    "direct": "http://127.0.0.1:8007",
+    "gateway": "http://127.0.0.1:8088"
+  },
+  "checks": {
+    "abort_recovery_skipped": true,
+    "all_abort_recovery_pass": true,
+    "all_flows_pass": false,
+    "all_requested_flows_present": true
+  },
+  "created_at": "2026-07-22T16:56:06.590395+00:00",
+  "flows": {
+    "direct": {
+      "anthropic": {
+        "stream": {
+          "failure": "round1: expected exactly one tool call",
+          "pass": false,
+          "rounds": [
+            {
+              "content": "",
+              "content_chars": 0,
+              "content_delta_count": 0,
+              "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "elapsed_ms": 405.672,
+              "errors": [
+                {
+                  "at_ms": 405.504,
+                  "channel": "error",
+                  "detail_chars": 230,
+                  "detail_sha256": "275f0a9174f8168219ef2d34177363c263c0960f9468df1a4dc82f00132d6bc3",
+                  "kind": "error"
+                }
+              ],
+              "events": [
+                {
+                  "at_ms": 405.504,
+                  "channel": "error",
+                  "detail_chars": 230,
+                  "detail_sha256": "275f0a9174f8168219ef2d34177363c263c0960f9468df1a4dc82f00132d6bc3",
+                  "kind": "error"
+                },
+                {
+                  "at_ms": 405.504,
+                  "channel": "terminal",
+                  "kind": "error"
+                }
+              ],
+              "reasoning_chars": 0,
+              "reasoning_delta_count": 0,
+              "reasoning_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "response_id": "msg_1a2739fab54f",
+              "status_code": 200,
+              "terminals": [
+                "error"
+              ],
+              "tool_calls": []
+            }
+          ]
+        }
+      }
+    },
+    "gateway": {
+      "anthropic": {
+        "stream": {
+          "checks": {
+            "final_exact": true,
+            "final_no_tool": true,
+            "no_stream_or_protocol_errors": true,
+            "no_visible_control_markup": true,
+            "reasoning_not_duplicated_as_content": true,
+            "reasoning_not_stale_when_present": true,
+            "reasoning_present": false,
+            "responses_chain_ids_forwarded": true,
+            "responses_stream_tool_lifecycle_complete": true,
+            "round1_exact_tool": true,
+            "round2_exact_tool": true,
+            "status_200": true,
+            "stream_final_progressive": true,
+            "terminals_truthful": true,
+            "timestamps_monotonic": true,
+            "tool_rounds_have_no_visible_prose": true
+          },
+          "executions": [
+            {
+              "arguments": {
+                "path": "panel/package.json"
+              },
+              "call_id": "call_3debf601",
+              "name": "file_info",
+              "output_chars": 154,
+              "output_sha256": "589ee38082748eb3ec6d741616cbc8c4eb3751ada73c43a88e66e5e8de761f6d",
+              "result": {
+                "modified_utc": "2026-07-22T07:12:25.302770+00:00",
+                "path": "panel/package.json",
+                "permissions": "0644",
+                "size_bytes": 5312,
+                "size_human": "5.2 KB",
+                "type": "file"
+              }
+            },
+            {
+              "arguments": {
+                "command": "pwd"
+              },
+              "call_id": "call_2d23077a",
+              "name": "run_command",
+              "output_chars": 82,
+              "output_sha256": "de990c1c9aa9292a12a745cbc944e93be876921ff26c91f8e5191f3ef32bdbb8",
+              "result": {
+                "command": "pwd",
+                "exit_code": 0,
+                "stdout": "/Users/eric/mlx/vllm-mlx-release-1.6.13"
+              }
+            }
+          ],
+          "expected_final": "AGENTIC-GATEWAY-ANTHROPIC-STREAM-DONE SIZE=5.2 KB PWD=/Users/eric/mlx/vllm-mlx-release-1.6.13",
+          "pass": false,
+          "rounds": [
+            {
+              "content": "",
+              "content_chars": 0,
+              "content_delta_count": 0,
+              "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "elapsed_ms": 819.266,
+              "errors": [],
+              "events": [
+                {
+                  "argument_chars": 0,
+                  "argument_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "at_ms": 818.593,
+                  "call_id": "call_3debf601",
+                  "channel": "tool",
+                  "index": 0,
+                  "kind": "content_block_start",
+                  "name_fragment": "file_info"
+                },
+                {
+                  "argument_chars": 30,
+                  "argument_sha256": "cd537352f9bd81e8edd928a4c1ff0ddd7b8dbf09cb15253481a8da4b094957f5",
+                  "at_ms": 818.83,
+                  "call_id": "",
+                  "channel": "tool",
+                  "index": 0,
+                  "kind": "input_json_delta",
+                  "name_fragment": ""
+                },
+                {
+                  "at_ms": 819.141,
+                  "channel": "terminal",
+                  "kind": "tool_use"
+                },
+                {
+                  "at_ms": 819.206,
+                  "channel": "terminal",
+                  "kind": "message_stop"
+                }
+              ],
+              "reasoning_chars": 0,
+              "reasoning_delta_count": 0,
+              "reasoning_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "response_id": "msg_35e59f344919",
+              "status_code": 200,
+              "terminals": [
+                "tool_use",
+                "message_stop"
+              ],
+              "tool_calls": [
+                {
+                  "arguments": {
+                    "path": "panel/package.json"
+                  },
+                  "id": "call_3debf601",
+                  "index": 0,
+                  "name": "file_info"
+                }
+              ]
+            },
+            {
+              "content": "",
+              "content_chars": 0,
+              "content_delta_count": 0,
+              "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "elapsed_ms": 1071.119,
+              "errors": [],
+              "events": [
+                {
+                  "at_ms": 98.693,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "b344d80e24a3679999fa964450b34bc24d1578a35509f934c1418b0a20d21a67"
+                },
+                {
+                  "at_ms": 108.567,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "163576924d6f1fb77a20e42f34b18f6ca771571e520e3104100fdbb80c825b79"
+                },
+                {
+                  "at_ms": 118.236,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "a627e35156d87997d10cff01a9ca8dba2a8cf8c8f1c742ba865aa23d8cd4c151"
+                },
+                {
+                  "at_ms": 127.927,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "516f64febc634399dbf16bd878257179838b93d3a058372c65a6bdf9940f8d5d"
+                },
+                {
+                  "at_ms": 137.731,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "84d0f765cd51d373f02dd72c742454b26807b93f5a2655ba1c8d905236e43df0"
+                },
+                {
+                  "at_ms": 147.727,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "c71427b5867d41e09710f0b563c3a49f04b95edf1312ac981da1d79b6b40ce3d"
+                },
+                {
+                  "at_ms": 167.236,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "a1691ecbfadf39eff0ef8303af90f532a9629d8141343864d7f6680cf112722d"
+                },
+                {
+                  "at_ms": 176.987,
+                  "channel": "reasoning",
+                  "chars": 8,
+                  "kind": "thinking_delta",
+                  "sha256": "9df658f37ce1c165db9aa689572f6fd1f2c2980c91db205b4a5cfe95ac01f019"
+                },
+                {
+                  "at_ms": 196.616,
+                  "channel": "reasoning",
+                  "chars": 9,
+                  "kind": "thinking_delta",
+                  "sha256": "87ebc9e12b4c74a4b442ade6a4822abfa66b5e8681543a988ac5a0b6e02a9e89"
+                },
+                {
+                  "at_ms": 206.41,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "c0da09ca67b3deb81c4bea265d2f544fe2fb8782fca9496faaaaddfc2184cb73"
+                },
+                {
+                  "at_ms": 216.251,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "6a413b5775392d19e58ec9acf903302e7e58cc7e1ed845f825f9c5685b130bb2"
+                },
+                {
+                  "at_ms": 226.021,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "fe0663fd13cdb08743dca3d2d5d1168762556ea36f77d8ab6009306d12a6f351"
+                },
+                {
+                  "at_ms": 235.851,
+                  "channel": "reasoning",
+                  "chars": 8,
+                  "kind": "thinking_delta",
+                  "sha256": "5626488f6c83859cf2990cd0e87498a219c0a2a5adf30d45086a4a3c9efffb83"
+                },
+                {
+                  "at_ms": 255.421,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "af83ba4c0403b253bf1db017ba2b9b64ff8358d6af00a664c15d5a4d3570f79a"
+                },
+                {
+                  "at_ms": 265.244,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "c351cefdbeee2b2feebc8fd2144739504a5c2687d9d6c49c72eae15c006b6a6d"
+                },
+                {
+                  "at_ms": 275.126,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "c4dff3e2ed6977e1b8ea1d1e9e76155155d6182f99617db7db552ca20a195657"
+                },
+                {
+                  "at_ms": 284.847,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "c10bdee0b4245325f71642c20cef06cb3cde0b7159bfa12a14c276db41d967bc"
+                },
+                {
+                  "at_ms": 294.681,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "84d0f765cd51d373f02dd72c742454b26807b93f5a2655ba1c8d905236e43df0"
+                },
+                {
+                  "at_ms": 304.568,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "36e8354c11081f1d561b75127c2c6d5b009aa80e7018089e6478e2945cfd77fd"
+                },
+                {
+                  "at_ms": 314.623,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "fe0663fd13cdb08743dca3d2d5d1168762556ea36f77d8ab6009306d12a6f351"
+                },
+                {
+                  "at_ms": 324.337,
+                  "channel": "reasoning",
+                  "chars": 7,
+                  "kind": "thinking_delta",
+                  "sha256": "96f936309696b1441c89edf23b862e498269cc9b911128e1263aff9015dd8e2f"
+                },
+                {
+                  "at_ms": 334.138,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "86d5d38c3ebe4ba2cedce55ef925b139c99d5f4d10c30f4c5e680009d5555e1c"
+                },
+                {
+                  "at_ms": 343.928,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "b8e323fd8bbf02ca00cc30de884f858e49c1b30efcb95b0104087ca65688ec07"
+                },
+                {
+                  "at_ms": 353.981,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "a3fa396491822fb5a54491f2162b08d9eb96af80d2fd51d62afb123268a108ea"
+                },
+                {
+                  "at_ms": 363.541,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "fe0663fd13cdb08743dca3d2d5d1168762556ea36f77d8ab6009306d12a6f351"
+                },
+                {
+                  "at_ms": 373.317,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "c3c2dcf22644c1e149e4333a3244684d569103d60be5fe5daed9a1355c480e38"
+                },
+                {
+                  "at_ms": 383.14,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "c71427b5867d41e09710f0b563c3a49f04b95edf1312ac981da1d79b6b40ce3d"
+                },
+                {
+                  "at_ms": 392.927,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+                },
+                {
+                  "at_ms": 402.682,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "2c16f3cac1d4fb2e478b7c16193cf258ace331e8290ff58596a503540bad790e"
+                },
+                {
+                  "at_ms": 412.478,
+                  "channel": "reasoning",
+                  "chars": 9,
+                  "kind": "thinking_delta",
+                  "sha256": "0b46e46a30a49bb5627d680e7aaa5a944833a9189db4c1ffc0bb50ab69e519cc"
+                },
+                {
+                  "at_ms": 422.282,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "c3c2dcf22644c1e149e4333a3244684d569103d60be5fe5daed9a1355c480e38"
+                },
+                {
+                  "at_ms": 432.099,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "c71427b5867d41e09710f0b563c3a49f04b95edf1312ac981da1d79b6b40ce3d"
+                },
+                {
+                  "at_ms": 441.909,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "cc82604211b7f7b38cc514cf0213855c5e120d66ab4af2be74b205c5693826ec"
+                },
+                {
+                  "at_ms": 461.556,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "6820d14a198c790fc3cb6f15f9b6242d4ede2621519aa40e005113c44155715d"
+                },
+                {
+                  "at_ms": 471.333,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "ee94cc22fc97bdc35dc59a1843deb057c65a193d07628e839952273f636b8680"
+                },
+                {
+                  "at_ms": 490.867,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "2670d23f4013e6d46d6804accf20cd62515793e3521d4a7824078782bb89cb97"
+                },
+                {
+                  "at_ms": 500.638,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "32707e75583cecd2b4259b545f40431ae556e0ec507f711306f3e0a0578b3589"
+                },
+                {
+                  "at_ms": 520.255,
+                  "channel": "reasoning",
+                  "chars": 8,
+                  "kind": "thinking_delta",
+                  "sha256": "6573700200cfc0383ef206ec7743f597f1237edc9c84f88c966ad85ef7d47e18"
+                },
+                {
+                  "at_ms": 530.091,
+                  "channel": "reasoning",
+                  "chars": 8,
+                  "kind": "thinking_delta",
+                  "sha256": "ca6387669caf62efd044b846d6459a48e60058a2e82d14474114cd2503d22225"
+                },
+                {
+                  "at_ms": 539.911,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "12157ab04ed2c6accc3d4f5ab863eea901dec1e9e48d92f18a35e4b9438afed6"
+                },
+                {
+                  "at_ms": 549.66,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "c351cefdbeee2b2feebc8fd2144739504a5c2687d9d6c49c72eae15c006b6a6d"
+                },
+                {
+                  "at_ms": 559.466,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "de90d81850954d88d6adb79733bf88847ca7df23debce93bafae2238e3a49bb5"
+                },
+                {
+                  "at_ms": 569.327,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "c4dff3e2ed6977e1b8ea1d1e9e76155155d6182f99617db7db552ca20a195657"
+                },
+                {
+                  "at_ms": 579.111,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "c10bdee0b4245325f71642c20cef06cb3cde0b7159bfa12a14c276db41d967bc"
+                },
+                {
+                  "at_ms": 588.901,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "84d0f765cd51d373f02dd72c742454b26807b93f5a2655ba1c8d905236e43df0"
+                },
+                {
+                  "at_ms": 598.753,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "c71427b5867d41e09710f0b563c3a49f04b95edf1312ac981da1d79b6b40ce3d"
+                },
+                {
+                  "at_ms": 618.388,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "a1691ecbfadf39eff0ef8303af90f532a9629d8141343864d7f6680cf112722d"
+                },
+                {
+                  "at_ms": 628.142,
+                  "channel": "reasoning",
+                  "chars": 8,
+                  "kind": "thinking_delta",
+                  "sha256": "9df658f37ce1c165db9aa689572f6fd1f2c2980c91db205b4a5cfe95ac01f019"
+                },
+                {
+                  "at_ms": 647.775,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "2670d23f4013e6d46d6804accf20cd62515793e3521d4a7824078782bb89cb97"
+                },
+                {
+                  "at_ms": 667.407,
+                  "channel": "reasoning",
+                  "chars": 9,
+                  "kind": "thinking_delta",
+                  "sha256": "3b3acd88a3b4dbdf014fcf53223bcd3133eec7ef9e537b794454db23dc24247e"
+                },
+                {
+                  "at_ms": 687.018,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "86180ef18dffc83d6dae76d585bd79e7c1331cac49f158fc03d97e40f839e104"
+                },
+                {
+                  "at_ms": 696.84,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "84d0f765cd51d373f02dd72c742454b26807b93f5a2655ba1c8d905236e43df0"
+                },
+                {
+                  "at_ms": 716.469,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "af83ba4c0403b253bf1db017ba2b9b64ff8358d6af00a664c15d5a4d3570f79a"
+                },
+                {
+                  "at_ms": 726.305,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "c351cefdbeee2b2feebc8fd2144739504a5c2687d9d6c49c72eae15c006b6a6d"
+                },
+                {
+                  "at_ms": 736.092,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070"
+                },
+                {
+                  "at_ms": 745.894,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "e947a3d4f4a1b23611f8aa204b2bb149785cfb02f5ccc687d1eb10b059e0d5aa"
+                },
+                {
+                  "at_ms": 755.793,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "edc00d4db80ddc3e91783b63ae5fbcdfd204de983c650e9587785a40271c8f3c"
+                },
+                {
+                  "at_ms": 765.576,
+                  "channel": "reasoning",
+                  "chars": 10,
+                  "kind": "thinking_delta",
+                  "sha256": "d42061778032baaf3a53818e9e22c5aa450fd1bc315acba1e4bac1d972aecece"
+                },
+                {
+                  "at_ms": 775.309,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "fe0663fd13cdb08743dca3d2d5d1168762556ea36f77d8ab6009306d12a6f351"
+                },
+                {
+                  "at_ms": 785.174,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "c3c2dcf22644c1e149e4333a3244684d569103d60be5fe5daed9a1355c480e38"
+                },
+                {
+                  "at_ms": 794.968,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "c71427b5867d41e09710f0b563c3a49f04b95edf1312ac981da1d79b6b40ce3d"
+                },
+                {
+                  "at_ms": 804.854,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "e7ac0786668e0ff0f02b62bd04f45ff636fd82db63b1104601c975dc005f3a67"
+                },
+                {
+                  "at_ms": 814.773,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                },
+                {
+                  "argument_chars": 0,
+                  "argument_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "at_ms": 1070.528,
+                  "call_id": "call_2d23077a",
+                  "channel": "tool",
+                  "index": 1,
+                  "kind": "content_block_start",
+                  "name_fragment": "run_command"
+                },
+                {
+                  "argument_chars": 18,
+                  "argument_sha256": "3be327afeace5ed2bddd4b7de49bf8f26849c6e389e463a980c7402ecbc6a998",
+                  "at_ms": 1070.723,
+                  "call_id": "",
+                  "channel": "tool",
+                  "index": 1,
+                  "kind": "input_json_delta",
+                  "name_fragment": ""
+                },
+                {
+                  "at_ms": 1071.015,
+                  "channel": "terminal",
+                  "kind": "tool_use"
+                },
+                {
+                  "at_ms": 1071.077,
+                  "channel": "terminal",
+                  "kind": "message_stop"
+                }
+              ],
+              "reasoning_chars": 298,
+              "reasoning_delta_count": 63,
+              "reasoning_sha256": "f1abd7606b849577382b985a0465f10b9f256957d36b98cccc2adb10839c2c21",
+              "response_id": "msg_84e3991bd4fa",
+              "status_code": 200,
+              "terminals": [
+                "tool_use",
+                "message_stop"
+              ],
+              "tool_calls": [
+                {
+                  "arguments": {
+                    "command": "pwd"
+                  },
+                  "id": "call_2d23077a",
+                  "index": 1,
+                  "name": "run_command"
+                }
+              ]
+            },
+            {
+              "content": "AGENTIC-GATEWAY-ANTHROPIC-STREAM-DONE SIZE=5.2 KB PWD=/Users/eric/mlx/vllm-mlx-release-1.6.13",
+              "content_chars": 93,
+              "content_delta_count": 41,
+              "content_sha256": "ae2fd10a7a4141b0111a3d594eb17a46fecf3c2a40117620edab176c887f9e1e",
+              "elapsed_ms": 4673.623,
+              "errors": [],
+              "events": [
+                {
+                  "at_ms": 905.62,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "b344d80e24a3679999fa964450b34bc24d1578a35509f934c1418b0a20d21a67"
+                },
+                {
+                  "at_ms": 915.591,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "163576924d6f1fb77a20e42f34b18f6ca771571e520e3104100fdbb80c825b79"
+                },
+                {
+                  "at_ms": 925.296,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "a627e35156d87997d10cff01a9ca8dba2a8cf8c8f1c742ba865aa23d8cd4c151"
+                },
+                {
+                  "at_ms": 934.775,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "516f64febc634399dbf16bd878257179838b93d3a058372c65a6bdf9940f8d5d"
+                },
+                {
+                  "at_ms": 944.561,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "84d0f765cd51d373f02dd72c742454b26807b93f5a2655ba1c8d905236e43df0"
+                },
+                {
+                  "at_ms": 954.345,
+                  "channel": "reasoning",
+                  "chars": 7,
+                  "kind": "thinking_delta",
+                  "sha256": "7c816a3a1139c683d08dd28a212a7e8677f91ba89c546687628b1372e7d16400"
+                },
+                {
+                  "at_ms": 964.084,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "7de598b3ff8a99638e1f9bf49260baa0d98e069dde32d1f2e153adb5ce478242"
+                },
+                {
+                  "at_ms": 973.984,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "19162747d5aa39246c743a5359a504dbbdc30a211d450be1ce4b2cf39c55a493"
+                },
+                {
+                  "at_ms": 983.741,
+                  "channel": "reasoning",
+                  "chars": 9,
+                  "kind": "thinking_delta",
+                  "sha256": "752da19f5286b357e5d55b908fbdd7b9488fad213e54e284a1ed612b47f96f33"
+                },
+                {
+                  "at_ms": 993.475,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "35c993f58b077b07c39ea9c7a8a0f86dea8fe3b1f24524ba8d9789aedfe1abb3"
+                },
+                {
+                  "at_ms": 1003.278,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "582bfe13a74808224d026af77237edf780776fd8d9b0dc5de599111bbbcb44c5"
+                },
+                {
+                  "at_ms": 1013.045,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "fe0663fd13cdb08743dca3d2d5d1168762556ea36f77d8ab6009306d12a6f351"
+                },
+                {
+                  "at_ms": 1022.866,
+                  "channel": "reasoning",
+                  "chars": 8,
+                  "kind": "thinking_delta",
+                  "sha256": "703236f63488a2264836ced7741a94e25eb201fc5d84649fd824b08b356e4680"
+                },
+                {
+                  "at_ms": 1032.638,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "88eb5a7ed2730b8af9fcab410bb1ca9d258e493830226b57b6a5fd9f3b062563"
+                },
+                {
+                  "at_ms": 1042.43,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "6ac910565b447334990e5494bda0d7263b4ffb2528dc6199e6ce1885dcb6e8a3"
+                },
+                {
+                  "at_ms": 1052.273,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "c3c2dcf22644c1e149e4333a3244684d569103d60be5fe5daed9a1355c480e38"
+                },
+                {
+                  "at_ms": 1061.978,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "b41692f172a8a55be46ea9138b7fab41b2c99fbaca82d912582da4e760dddcf3"
+                },
+                {
+                  "at_ms": 1071.868,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "e7ac0786668e0ff0f02b62bd04f45ff636fd82db63b1104601c975dc005f3a67"
+                },
+                {
+                  "at_ms": 1081.587,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "ca233959bcddd2b99ba13972061ab3cd9e64b395b231989835b1ff52dac734fe"
+                },
+                {
+                  "at_ms": 1091.389,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "3b9c358f36f0a31b6ad3e14f309c7cf198ac9246e8316f9ce543d5b19ac02b80"
+                },
+                {
+                  "at_ms": 1101.235,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "ee94cc22fc97bdc35dc59a1843deb057c65a193d07628e839952273f636b8680"
+                },
+                {
+                  "at_ms": 1110.958,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "8d33f520a3c4cef80d2453aef81b612bfe1cb44c8b2025630ad38662763f13d3"
+                },
+                {
+                  "at_ms": 1120.713,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "2e5f769687c7731726bb738d6137d86e89691a3a164a80588c046c79ce99d749"
+                },
+                {
+                  "at_ms": 1130.524,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "ca233959bcddd2b99ba13972061ab3cd9e64b395b231989835b1ff52dac734fe"
+                },
+                {
+                  "at_ms": 1140.251,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "acba25512100f80b56fc3ccd14c65be55d94800cda77585c5f41a887e398f9be"
+                },
+                {
+                  "at_ms": 1150.092,
+                  "channel": "reasoning",
+                  "chars": 8,
+                  "kind": "thinking_delta",
+                  "sha256": "9df658f37ce1c165db9aa689572f6fd1f2c2980c91db205b4a5cfe95ac01f019"
+                },
+                {
+                  "at_ms": 1159.853,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "c351cefdbeee2b2feebc8fd2144739504a5c2687d9d6c49c72eae15c006b6a6d"
+                },
+                {
+                  "at_ms": 1169.91,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070"
+                },
+                {
+                  "at_ms": 1179.466,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+                },
+                {
+                  "at_ms": 1189.258,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+                },
+                {
+                  "at_ms": 1199.02,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068"
+                },
+                {
+                  "at_ms": 1208.771,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "1c3d92f767a2fe131ade1bfe4e7e087fc0d76b6a853199eda33ddbb6cf5211b0"
+                },
+                {
+                  "at_ms": 1218.628,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "3b9c358f36f0a31b6ad3e14f309c7cf198ac9246e8316f9ce543d5b19ac02b80"
+                },
+                {
+                  "at_ms": 1228.507,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "ee94cc22fc97bdc35dc59a1843deb057c65a193d07628e839952273f636b8680"
+                },
+                {
+                  "at_ms": 1238.211,
+                  "channel": "reasoning",
+                  "chars": 7,
+                  "kind": "thinking_delta",
+                  "sha256": "6c501d1a34b75d8fd678f32f4c25ad5a0c91e6bf8b3f375fe0897d465f389042"
+                },
+                {
+                  "at_ms": 1247.97,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "a733e65e10a6c9753f29726e27eb0702da419e0577a1dc780abc05d89b3aff6e"
+                },
+                {
+                  "at_ms": 1257.713,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                },
+                {
+                  "at_ms": 1267.531,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "0aad7da77d2ed59c396c99a74e49f3a4524dcdbcb5163251b1433d640247aeb4"
+                },
+                {
+                  "at_ms": 1277.317,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "64e752669b24739d5a68c49d86c86ee8371eacbb9e61a46741f62f2f9d4ab4f4"
+                },
+                {
+                  "at_ms": 1287.111,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "6c179f21e6f62b629055d8ab40f454ed02e48b68563913473b857d3638e23b28"
+                },
+                {
+                  "at_ms": 1296.881,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "4959f3729eb0c27b09ba15216250153a8428ab2dafcd62b31353155a7f903cb3"
+                },
+                {
+                  "at_ms": 1306.664,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "e7ac0786668e0ff0f02b62bd04f45ff636fd82db63b1104601c975dc005f3a67"
+                },
+                {
+                  "at_ms": 1316.45,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "ca233959bcddd2b99ba13972061ab3cd9e64b395b231989835b1ff52dac734fe"
+                },
+                {
+                  "at_ms": 1326.244,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "320e00e73a7d24a9a44cde87e98d150e10e72b05ccffb74e7332354fdd85c5e5"
+                },
+                {
+                  "at_ms": 1336.072,
+                  "channel": "reasoning",
+                  "chars": 8,
+                  "kind": "thinking_delta",
+                  "sha256": "ca6387669caf62efd044b846d6459a48e60058a2e82d14474114cd2503d22225"
+                },
+                {
+                  "at_ms": 1345.803,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "12157ab04ed2c6accc3d4f5ab863eea901dec1e9e48d92f18a35e4b9438afed6"
+                },
+                {
+                  "at_ms": 1355.646,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "8d33f520a3c4cef80d2453aef81b612bfe1cb44c8b2025630ad38662763f13d3"
+                },
+                {
+                  "at_ms": 1365.45,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                },
+                {
+                  "at_ms": 1375.128,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "0aad7da77d2ed59c396c99a74e49f3a4524dcdbcb5163251b1433d640247aeb4"
+                },
+                {
+                  "at_ms": 1384.929,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "64e752669b24739d5a68c49d86c86ee8371eacbb9e61a46741f62f2f9d4ab4f4"
+                },
+                {
+                  "at_ms": 1394.631,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "6c179f21e6f62b629055d8ab40f454ed02e48b68563913473b857d3638e23b28"
+                },
+                {
+                  "at_ms": 1404.493,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "ca233959bcddd2b99ba13972061ab3cd9e64b395b231989835b1ff52dac734fe"
+                },
+                {
+                  "at_ms": 1414.235,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "ccdcbe846f3da4eb044fbdf64bf6b57902388ab72fb0c852ba72280f8d478b40"
+                },
+                {
+                  "at_ms": 1424.089,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "3d107d77f38f2637d5faa3bf24d37f34be9b87d2db4deb5a29420356dc7dc351"
+                },
+                {
+                  "at_ms": 1433.805,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "90b16e50e2004073e56e82bfb5264f14a22768a986dc28ab35012b3ad2ab2450"
+                },
+                {
+                  "at_ms": 1443.6,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "0c2e4902423d482c95ef4724f6345a633877642276f0655f940f1669bf91b1b5"
+                },
+                {
+                  "at_ms": 1453.337,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d"
+                },
+                {
+                  "at_ms": 1463.136,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+                },
+                {
+                  "at_ms": 1472.86,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+                },
+                {
+                  "at_ms": 1482.714,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "550fde8751fff8ef748288be4fa57fac02ead72495191dc9270cead69a510a75"
+                },
+                {
+                  "at_ms": 1492.459,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "8a331fdde7032f33a71e1b2e257d80166e348e00fcb17914f48bdb57a1c63007"
+                },
+                {
+                  "at_ms": 1502.299,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                },
+                {
+                  "at_ms": 1512.145,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "0aad7da77d2ed59c396c99a74e49f3a4524dcdbcb5163251b1433d640247aeb4"
+                },
+                {
+                  "at_ms": 1521.908,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "64e752669b24739d5a68c49d86c86ee8371eacbb9e61a46741f62f2f9d4ab4f4"
+                },
+                {
+                  "at_ms": 1531.681,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "6c179f21e6f62b629055d8ab40f454ed02e48b68563913473b857d3638e23b28"
+                },
+                {
+                  "at_ms": 1541.447,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "ca233959bcddd2b99ba13972061ab3cd9e64b395b231989835b1ff52dac734fe"
+                },
+                {
+                  "at_ms": 1551.243,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "ccdcbe846f3da4eb044fbdf64bf6b57902388ab72fb0c852ba72280f8d478b40"
+                },
+                {
+                  "at_ms": 1561.005,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "c851cec3ba0d2fc5b0a1d8cd917f478b08d4e8e6fb107178c7d1d4003e343dfb"
+                },
+                {
+                  "at_ms": 1570.77,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "90b16e50e2004073e56e82bfb5264f14a22768a986dc28ab35012b3ad2ab2450"
+                },
+                {
+                  "at_ms": 1580.539,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068"
+                },
+                {
+                  "at_ms": 1590.335,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d"
+                },
+                {
+                  "at_ms": 1600.17,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce"
+                },
+                {
+                  "at_ms": 1609.917,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+                },
+                {
+                  "at_ms": 1619.72,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+                },
+                {
+                  "at_ms": 1629.552,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070"
+                },
+                {
+                  "at_ms": 1639.263,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+                },
+                {
+                  "at_ms": 1649.056,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+                },
+                {
+                  "at_ms": 1658.835,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068"
+                },
+                {
+                  "at_ms": 1668.628,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "1c3d92f767a2fe131ade1bfe4e7e087fc0d76b6a853199eda33ddbb6cf5211b0"
+                },
+                {
+                  "at_ms": 1678.407,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "acba25512100f80b56fc3ccd14c65be55d94800cda77585c5f41a887e398f9be"
+                },
+                {
+                  "at_ms": 1688.184,
+                  "channel": "reasoning",
+                  "chars": 8,
+                  "kind": "thinking_delta",
+                  "sha256": "9df658f37ce1c165db9aa689572f6fd1f2c2980c91db205b4a5cfe95ac01f019"
+                },
+                {
+                  "at_ms": 1697.961,
+                  "channel": "reasoning",
+                  "chars": 7,
+                  "kind": "thinking_delta",
+                  "sha256": "6c501d1a34b75d8fd678f32f4c25ad5a0c91e6bf8b3f375fe0897d465f389042"
+                },
+                {
+                  "at_ms": 1707.736,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "a733e65e10a6c9753f29726e27eb0702da419e0577a1dc780abc05d89b3aff6e"
+                },
+                {
+                  "at_ms": 1717.5,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                },
+                {
+                  "at_ms": 1727.486,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "0aad7da77d2ed59c396c99a74e49f3a4524dcdbcb5163251b1433d640247aeb4"
+                },
+                {
+                  "at_ms": 1737.258,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "64e752669b24739d5a68c49d86c86ee8371eacbb9e61a46741f62f2f9d4ab4f4"
+                },
+                {
+                  "at_ms": 1747.27,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "6c179f21e6f62b629055d8ab40f454ed02e48b68563913473b857d3638e23b28"
+                },
+                {
+                  "at_ms": 1756.79,
+                  "channel": "reasoning",
+                  "chars": 8,
+                  "kind": "thinking_delta",
+                  "sha256": "0b1bdf993ca9466c23890d84aea04f01a4a219b5d9acb6cd8cc4d8a6f7f73bad"
+                },
+                {
+                  "at_ms": 1766.529,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "e7ac0786668e0ff0f02b62bd04f45ff636fd82db63b1104601c975dc005f3a67"
+                },
+                {
+                  "at_ms": 1776.273,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "ca233959bcddd2b99ba13972061ab3cd9e64b395b231989835b1ff52dac734fe"
+                },
+                {
+                  "at_ms": 1786.071,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "a1159e9df3670d549d04524532629f5477ceb7deec9b45e47e8c009506ecb2c8"
+                },
+                {
+                  "at_ms": 1795.863,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "8d33f520a3c4cef80d2453aef81b612bfe1cb44c8b2025630ad38662763f13d3"
+                },
+                {
+                  "at_ms": 1805.658,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                },
+                {
+                  "at_ms": 1815.428,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "0aad7da77d2ed59c396c99a74e49f3a4524dcdbcb5163251b1433d640247aeb4"
+                },
+                {
+                  "at_ms": 1825.259,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "64e752669b24739d5a68c49d86c86ee8371eacbb9e61a46741f62f2f9d4ab4f4"
+                },
+                {
+                  "at_ms": 1835.13,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "6c179f21e6f62b629055d8ab40f454ed02e48b68563913473b857d3638e23b28"
+                },
+                {
+                  "at_ms": 1844.871,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "ca233959bcddd2b99ba13972061ab3cd9e64b395b231989835b1ff52dac734fe"
+                },
+                {
+                  "at_ms": 1854.619,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "63d42d26156fcc761e57da4128e9881d5bdf3bf933f0f6e9c93d6e26b9b90ae7"
+                },
+                {
+                  "at_ms": 1864.46,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "90b16e50e2004073e56e82bfb5264f14a22768a986dc28ab35012b3ad2ab2450"
+                },
+                {
+                  "at_ms": 1874.269,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "411da03e30f29e99c51b8b7e1466c750327dd482408794579a824e6384f3df31"
+                },
+                {
+                  "at_ms": 1884.042,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "6b0cc904d081a8c11cfdaec667f05132cbfa8a57f5040d27d5fc0f2fc50d0dc6"
+                },
+                {
+                  "at_ms": 1893.836,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "8a5edab282632443219e051e4ade2d1d5bbc671c781051bf1437897cbdfea0f1"
+                },
+                {
+                  "at_ms": 1903.597,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "6f9edcd3408cbda14a837e6a44fc5b7f64ccc9a2477c1498fcb13c777ffb9605"
+                },
+                {
+                  "at_ms": 1913.405,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "2f33b946a9ee985aa4ad7faa0c121f42c9a3ccaee81f5550411892d7a3e850b5"
+                },
+                {
+                  "at_ms": 1923.268,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881"
+                },
+                {
+                  "at_ms": 1932.992,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "1f807e6b8d5495c0403a1c3b7d7331b178aabbaa07babd0f767fb240e00509f6"
+                },
+                {
+                  "at_ms": 1942.768,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "f9e012396be65db022bd11de9308a9b40e04e492cc4ee8636c09fb83df4aa27b"
+                },
+                {
+                  "at_ms": 1952.542,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a"
+                },
+                {
+                  "at_ms": 1962.383,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "3973e022e93220f9212c18d0d0c543ae7c309e46640da93a4a0314de999f5112"
+                },
+                {
+                  "at_ms": 1972.184,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "339a1eac565d4dbf7c4389e7449e9f2265b8a9dec68ecc24d09b324226e0a263"
+                },
+                {
+                  "at_ms": 1981.935,
+                  "channel": "reasoning",
+                  "chars": 8,
+                  "kind": "thinking_delta",
+                  "sha256": "95d483672f450edd07f75fc78d150f00d1373a31dab5079cc32319c2a0388278"
+                },
+                {
+                  "at_ms": 1991.747,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "3973e022e93220f9212c18d0d0c543ae7c309e46640da93a4a0314de999f5112"
+                },
+                {
+                  "at_ms": 2001.547,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+                },
+                {
+                  "at_ms": 2011.396,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+                },
+                {
+                  "at_ms": 2021.121,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683"
+                },
+                {
+                  "at_ms": 2030.898,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+                },
+                {
+                  "at_ms": 2040.784,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+                },
+                {
+                  "at_ms": 2050.553,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce"
+                },
+                {
+                  "at_ms": 2060.352,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "8d33f520a3c4cef80d2453aef81b612bfe1cb44c8b2025630ad38662763f13d3"
+                },
+                {
+                  "at_ms": 2070.134,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070"
+                },
+                {
+                  "at_ms": 2079.829,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "b344d80e24a3679999fa964450b34bc24d1578a35509f934c1418b0a20d21a67"
+                },
+                {
+                  "at_ms": 2089.632,
+                  "channel": "reasoning",
+                  "chars": 7,
+                  "kind": "thinking_delta",
+                  "sha256": "7c816a3a1139c683d08dd28a212a7e8677f91ba89c546687628b1372e7d16400"
+                },
+                {
+                  "at_ms": 2099.394,
+                  "channel": "reasoning",
+                  "chars": 9,
+                  "kind": "thinking_delta",
+                  "sha256": "1307c284df7b37d5fd5aed9015946ed2bd37b6cfdba17ff3de48b9c1bcfbdecd"
+                },
+                {
+                  "at_ms": 2109.181,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "a8bdfde11f2443a17f53ad0c9eb033c86a916c4575fe9cbce4c6a0d5af432aed"
+                },
+                {
+                  "at_ms": 2118.964,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "e7ac0786668e0ff0f02b62bd04f45ff636fd82db63b1104601c975dc005f3a67"
+                },
+                {
+                  "at_ms": 2128.823,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                },
+                {
+                  "at_ms": 2138.631,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "8d33f520a3c4cef80d2453aef81b612bfe1cb44c8b2025630ad38662763f13d3"
+                },
+                {
+                  "at_ms": 2148.406,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "b62db7d0b79d11100c7103df97dd87bc90ff6ffbd88de6019cf1e933069c8525"
+                },
+                {
+                  "at_ms": 2158.233,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "7ed36e239722df47b96215ff57b8c58aa3b948fb2c85e17a95f0da2037c0a4a8"
+                },
+                {
+                  "at_ms": 2168.013,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "040c533f6280d3ff95812373c8884ba3b560723cc862277a90c47a2e1fd24000"
+                },
+                {
+                  "at_ms": 2177.847,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "95d63c6151e87fa98d2fc07e665cb8375e77e261d933c63b72ae9a845efc3812"
+                },
+                {
+                  "at_ms": 2187.652,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "f01ee4d3a9647b353c7ef1ded9175f02f2cbaf467ad5a0c75a5b14bafab92861"
+                },
+                {
+                  "at_ms": 2197.443,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "3973e022e93220f9212c18d0d0c543ae7c309e46640da93a4a0314de999f5112"
+                },
+                {
+                  "at_ms": 2207.292,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "88886033384749b1394576ff745bb5f9a4b9c295cb02bfa91eebf91f2eab0bf4"
+                },
+                {
+                  "at_ms": 2217.055,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+                },
+                {
+                  "at_ms": 2226.875,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "31e97012aca2d8787395384cd2b863b88704af707168bf36a70cd70c00d71977"
+                },
+                {
+                  "at_ms": 2236.842,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "7ed36e239722df47b96215ff57b8c58aa3b948fb2c85e17a95f0da2037c0a4a8"
+                },
+                {
+                  "at_ms": 2246.656,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "3973e022e93220f9212c18d0d0c543ae7c309e46640da93a4a0314de999f5112"
+                },
+                {
+                  "at_ms": 2256.361,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "df2ff3bb0af36c6384e6206552a4ed807f6f6a26e7d0aa6bff772ddc9d4307aa"
+                },
+                {
+                  "at_ms": 2266.118,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "cdded7231a0c512ed51b072e9982f725870905b7d5c8c6df5e258910a6d77f07"
+                },
+                {
+                  "at_ms": 2275.941,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "2192e8955d5e1ad1651f2f0c637e6f1ac82855747a5f42f978db28669595dc21"
+                },
+                {
+                  "at_ms": 2285.72,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "429fff6d9304b51656ae37b104ca152ce67e638f08a433f87fafe2e39bd7c74d"
+                },
+                {
+                  "at_ms": 2295.478,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "380918b946a526640a40df5dced6516794f3d97bbd9e6bb553d037c4439f31c3"
+                },
+                {
+                  "at_ms": 2305.364,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "681698336fb656bc47febf3011f60944c022f43dcb83e7277dce7144985a3c65"
+                },
+                {
+                  "at_ms": 2315.379,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "2973913b7ea2a186682fd209f7f6bb7ae7003edc86eb44f8183ed32f9d3572ea"
+                },
+                {
+                  "at_ms": 2324.996,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "3d107d77f38f2637d5faa3bf24d37f34be9b87d2db4deb5a29420356dc7dc351"
+                },
+                {
+                  "at_ms": 2334.797,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "017914d7ed1d7f185f524211ea684ef16d79a039523e4aa4611299a01c4d2339"
+                },
+                {
+                  "at_ms": 2344.559,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "fe0663fd13cdb08743dca3d2d5d1168762556ea36f77d8ab6009306d12a6f351"
+                },
+                {
+                  "at_ms": 2354.345,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "b4c480d5276e0ff94f0e40a45e7763498400e7bb1d494029c692286b3309297c"
+                },
+                {
+                  "at_ms": 2364.155,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "ee94cc22fc97bdc35dc59a1843deb057c65a193d07628e839952273f636b8680"
+                },
+                {
+                  "at_ms": 2373.931,
+                  "channel": "reasoning",
+                  "chars": 7,
+                  "kind": "thinking_delta",
+                  "sha256": "6c501d1a34b75d8fd678f32f4c25ad5a0c91e6bf8b3f375fe0897d465f389042"
+                },
+                {
+                  "at_ms": 2383.746,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "62b67e1f685b7fef51102005dddd27774be3fee38c42965c53aab035d0b6b221"
+                },
+                {
+                  "at_ms": 2393.571,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "6249e6faa58831154f6df352c843a316a98c6b1eb57baa61a8bf4401e3726988"
+                },
+                {
+                  "at_ms": 2403.342,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "49ed2896ce83bcd63049c2658fbdd3fd26b5d55802d61ff852ca7ac763755070"
+                },
+                {
+                  "at_ms": 2413.186,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "380918b946a526640a40df5dced6516794f3d97bbd9e6bb553d037c4439f31c3"
+                },
+                {
+                  "at_ms": 2422.932,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "681698336fb656bc47febf3011f60944c022f43dcb83e7277dce7144985a3c65"
+                },
+                {
+                  "at_ms": 2432.696,
+                  "channel": "reasoning",
+                  "chars": 7,
+                  "kind": "thinking_delta",
+                  "sha256": "92c091f2e33fa65f847c351eeed03918099e18475308a9a63d4c62a68fbba4a5"
+                },
+                {
+                  "at_ms": 2442.494,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "017914d7ed1d7f185f524211ea684ef16d79a039523e4aa4611299a01c4d2339"
+                },
+                {
+                  "at_ms": 2452.278,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "fe0663fd13cdb08743dca3d2d5d1168762556ea36f77d8ab6009306d12a6f351"
+                },
+                {
+                  "at_ms": 2462.176,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "5e9c88062df8df52d3c59ff739a253886511f20fba3f7c33980687fb1bdd9e25"
+                },
+                {
+                  "at_ms": 2471.937,
+                  "channel": "reasoning",
+                  "chars": 8,
+                  "kind": "thinking_delta",
+                  "sha256": "9df658f37ce1c165db9aa689572f6fd1f2c2980c91db205b4a5cfe95ac01f019"
+                },
+                {
+                  "at_ms": 2481.683,
+                  "channel": "reasoning",
+                  "chars": 7,
+                  "kind": "thinking_delta",
+                  "sha256": "6c501d1a34b75d8fd678f32f4c25ad5a0c91e6bf8b3f375fe0897d465f389042"
+                },
+                {
+                  "at_ms": 2491.443,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "8b3beef1899162338a4706a13dc2fbb89608225e7ffe9710510da1f35392c27d"
+                },
+                {
+                  "at_ms": 2501.234,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070"
+                },
+                {
+                  "at_ms": 2511.006,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "fb1df1a24e3f6a12ee1fcb639a5c6d61d7919dc10ccb363b7ed75303b0391798"
+                },
+                {
+                  "at_ms": 2520.776,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "d03502c43d74a30b936740a9517dc4ea2b2ad7168caa0a774cefe793ce0b33e7"
+                },
+                {
+                  "at_ms": 2530.583,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "c4dff3e2ed6977e1b8ea1d1e9e76155155d6182f99617db7db552ca20a195657"
+                },
+                {
+                  "at_ms": 2540.36,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "c10bdee0b4245325f71642c20cef06cb3cde0b7159bfa12a14c276db41d967bc"
+                },
+                {
+                  "at_ms": 2550.169,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "84d0f765cd51d373f02dd72c742454b26807b93f5a2655ba1c8d905236e43df0"
+                },
+                {
+                  "at_ms": 2559.976,
+                  "channel": "reasoning",
+                  "chars": 8,
+                  "kind": "thinking_delta",
+                  "sha256": "c423d261c1661b95980a6bc62b8059278f707b58da5f9d97e197ac139e0e3ee5"
+                },
+                {
+                  "at_ms": 2569.693,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "ca233959bcddd2b99ba13972061ab3cd9e64b395b231989835b1ff52dac734fe"
+                },
+                {
+                  "at_ms": 2579.518,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "681698336fb656bc47febf3011f60944c022f43dcb83e7277dce7144985a3c65"
+                },
+                {
+                  "at_ms": 2589.28,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "2973913b7ea2a186682fd209f7f6bb7ae7003edc86eb44f8183ed32f9d3572ea"
+                },
+                {
+                  "at_ms": 2599.106,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "3d107d77f38f2637d5faa3bf24d37f34be9b87d2db4deb5a29420356dc7dc351"
+                },
+                {
+                  "at_ms": 2608.901,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "017914d7ed1d7f185f524211ea684ef16d79a039523e4aa4611299a01c4d2339"
+                },
+                {
+                  "at_ms": 2618.683,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "fe0663fd13cdb08743dca3d2d5d1168762556ea36f77d8ab6009306d12a6f351"
+                },
+                {
+                  "at_ms": 2628.427,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "b4c480d5276e0ff94f0e40a45e7763498400e7bb1d494029c692286b3309297c"
+                },
+                {
+                  "at_ms": 2638.257,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "ee94cc22fc97bdc35dc59a1843deb057c65a193d07628e839952273f636b8680"
+                },
+                {
+                  "at_ms": 2648.08,
+                  "channel": "reasoning",
+                  "chars": 7,
+                  "kind": "thinking_delta",
+                  "sha256": "6c501d1a34b75d8fd678f32f4c25ad5a0c91e6bf8b3f375fe0897d465f389042"
+                },
+                {
+                  "at_ms": 2657.906,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "8b3beef1899162338a4706a13dc2fbb89608225e7ffe9710510da1f35392c27d"
+                },
+                {
+                  "at_ms": 2667.627,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "6a413b5775392d19e58ec9acf903302e7e58cc7e1ed845f825f9c5685b130bb2"
+                },
+                {
+                  "at_ms": 2677.491,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "0c2e4902423d482c95ef4724f6345a633877642276f0655f940f1669bf91b1b5"
+                },
+                {
+                  "at_ms": 2687.294,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d"
+                },
+                {
+                  "at_ms": 2697.084,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+                },
+                {
+                  "at_ms": 2706.934,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+                },
+                {
+                  "at_ms": 2716.744,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "550fde8751fff8ef748288be4fa57fac02ead72495191dc9270cead69a510a75"
+                },
+                {
+                  "at_ms": 2726.552,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "8a331fdde7032f33a71e1b2e257d80166e348e00fcb17914f48bdb57a1c63007"
+                },
+                {
+                  "at_ms": 2736.558,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "2e5f769687c7731726bb738d6137d86e89691a3a164a80588c046c79ce99d749"
+                },
+                {
+                  "at_ms": 2746.28,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "ca233959bcddd2b99ba13972061ab3cd9e64b395b231989835b1ff52dac734fe"
+                },
+                {
+                  "at_ms": 2756.035,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "681698336fb656bc47febf3011f60944c022f43dcb83e7277dce7144985a3c65"
+                },
+                {
+                  "at_ms": 2765.793,
+                  "channel": "reasoning",
+                  "chars": 7,
+                  "kind": "thinking_delta",
+                  "sha256": "92c091f2e33fa65f847c351eeed03918099e18475308a9a63d4c62a68fbba4a5"
+                },
+                {
+                  "at_ms": 2775.612,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "017914d7ed1d7f185f524211ea684ef16d79a039523e4aa4611299a01c4d2339"
+                },
+                {
+                  "at_ms": 2785.373,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "fe0663fd13cdb08743dca3d2d5d1168762556ea36f77d8ab6009306d12a6f351"
+                },
+                {
+                  "at_ms": 2795.245,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "5e9c88062df8df52d3c59ff739a253886511f20fba3f7c33980687fb1bdd9e25"
+                },
+                {
+                  "at_ms": 2805.048,
+                  "channel": "reasoning",
+                  "chars": 8,
+                  "kind": "thinking_delta",
+                  "sha256": "9df658f37ce1c165db9aa689572f6fd1f2c2980c91db205b4a5cfe95ac01f019"
+                },
+                {
+                  "at_ms": 2814.834,
+                  "channel": "reasoning",
+                  "chars": 7,
+                  "kind": "thinking_delta",
+                  "sha256": "6c501d1a34b75d8fd678f32f4c25ad5a0c91e6bf8b3f375fe0897d465f389042"
+                },
+                {
+                  "at_ms": 2824.603,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "8b3beef1899162338a4706a13dc2fbb89608225e7ffe9710510da1f35392c27d"
+                },
+                {
+                  "at_ms": 2834.418,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "6a413b5775392d19e58ec9acf903302e7e58cc7e1ed845f825f9c5685b130bb2"
+                },
+                {
+                  "at_ms": 2844.234,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "9c5292e06502ebe4f52296c4b762043a6a7e040f72f8f85f1408b7aa53d3008a"
+                },
+                {
+                  "at_ms": 2854.082,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "6b0cc904d081a8c11cfdaec667f05132cbfa8a57f5040d27d5fc0f2fc50d0dc6"
+                },
+                {
+                  "at_ms": 2864.06,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "8a5edab282632443219e051e4ade2d1d5bbc671c781051bf1437897cbdfea0f1"
+                },
+                {
+                  "at_ms": 2873.698,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "6f9edcd3408cbda14a837e6a44fc5b7f64ccc9a2477c1498fcb13c777ffb9605"
+                },
+                {
+                  "at_ms": 2883.43,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "2f33b946a9ee985aa4ad7faa0c121f42c9a3ccaee81f5550411892d7a3e850b5"
+                },
+                {
+                  "at_ms": 2893.198,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881"
+                },
+                {
+                  "at_ms": 2902.99,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "1f807e6b8d5495c0403a1c3b7d7331b178aabbaa07babd0f767fb240e00509f6"
+                },
+                {
+                  "at_ms": 2912.785,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "f9e012396be65db022bd11de9308a9b40e04e492cc4ee8636c09fb83df4aa27b"
+                },
+                {
+                  "at_ms": 2922.578,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a"
+                },
+                {
+                  "at_ms": 2932.424,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "3973e022e93220f9212c18d0d0c543ae7c309e46640da93a4a0314de999f5112"
+                },
+                {
+                  "at_ms": 2942.276,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "339a1eac565d4dbf7c4389e7449e9f2265b8a9dec68ecc24d09b324226e0a263"
+                },
+                {
+                  "at_ms": 2952.045,
+                  "channel": "reasoning",
+                  "chars": 8,
+                  "kind": "thinking_delta",
+                  "sha256": "95d483672f450edd07f75fc78d150f00d1373a31dab5079cc32319c2a0388278"
+                },
+                {
+                  "at_ms": 2961.818,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "3973e022e93220f9212c18d0d0c543ae7c309e46640da93a4a0314de999f5112"
+                },
+                {
+                  "at_ms": 2971.618,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+                },
+                {
+                  "at_ms": 2981.417,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+                },
+                {
+                  "at_ms": 2991.255,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683"
+                },
+                {
+                  "at_ms": 3000.992,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+                },
+                {
+                  "at_ms": 3010.839,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+                },
+                {
+                  "at_ms": 3020.624,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce"
+                },
+                {
+                  "at_ms": 3030.42,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "1e4a1452ad4db45827a1f32c090285ef6e9f4cf40180dbed85b04e1d73ebbe6b"
+                },
+                {
+                  "at_ms": 3040.275,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070"
+                },
+                {
+                  "at_ms": 3050.033,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "b344d80e24a3679999fa964450b34bc24d1578a35509f934c1418b0a20d21a67"
+                },
+                {
+                  "at_ms": 3059.819,
+                  "channel": "reasoning",
+                  "chars": 7,
+                  "kind": "thinking_delta",
+                  "sha256": "bc74ef1e258a0eb309dfda1960f1f62eb2d2e9d9a2fb94b6a5522dc905762364"
+                },
+                {
+                  "at_ms": 3069.728,
+                  "channel": "reasoning",
+                  "chars": 7,
+                  "kind": "thinking_delta",
+                  "sha256": "4565eb4961d55b36078dd5e67b1ca784034c13f06ac05776374462776c1fa544"
+                },
+                {
+                  "at_ms": 3079.457,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "d7b348eb5e32f8a55b2ecdaf414cf1ee0c35a963a11f46263efb69d72bc390d4"
+                },
+                {
+                  "at_ms": 3089.312,
+                  "channel": "reasoning",
+                  "chars": 8,
+                  "kind": "thinking_delta",
+                  "sha256": "09a5b9919fde63bf5661746134420ee97c96855c7b5233677443d0ae5640887d"
+                },
+                {
+                  "at_ms": 3099.094,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "3a3b3b71e474d80df327eeb214441f45d7a26d185688be83c1f49dd195942fed"
+                },
+                {
+                  "at_ms": 3108.887,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "15baa9a8ef2a6c74d13db11fa09104ec5b5eb5eda76d5fb56430f16f010bae0c"
+                },
+                {
+                  "at_ms": 3118.663,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "6a413b5775392d19e58ec9acf903302e7e58cc7e1ed845f825f9c5685b130bb2"
+                },
+                {
+                  "at_ms": 3128.55,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "2f1b21c08a0e60e7d20c550a27ffefc84fe45f75dfdc309a77a77650d3dbece2"
+                },
+                {
+                  "at_ms": 3138.322,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "d462782f2f649c9a4b3eae107b6ce1d0f6b1b033ca7d4fdb5ac48b2db884816e"
+                },
+                {
+                  "at_ms": 3148.173,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "42b013ab06a9a4c06a3d1d9b107b7f2ac4627fc89e07494cb4d2e6034e79b3e6"
+                },
+                {
+                  "at_ms": 3157.951,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+                },
+                {
+                  "at_ms": 3167.742,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070"
+                },
+                {
+                  "at_ms": 3177.51,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "e947a3d4f4a1b23611f8aa204b2bb149785cfb02f5ccc687d1eb10b059e0d5aa"
+                },
+                {
+                  "at_ms": 3187.448,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "edc00d4db80ddc3e91783b63ae5fbcdfd204de983c650e9587785a40271c8f3c"
+                },
+                {
+                  "at_ms": 3197.335,
+                  "channel": "reasoning",
+                  "chars": 10,
+                  "kind": "thinking_delta",
+                  "sha256": "d42061778032baaf3a53818e9e22c5aa450fd1bc315acba1e4bac1d972aecece"
+                },
+                {
+                  "at_ms": 3207.171,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "fe0663fd13cdb08743dca3d2d5d1168762556ea36f77d8ab6009306d12a6f351"
+                },
+                {
+                  "at_ms": 3217.312,
+                  "channel": "reasoning",
+                  "chars": 7,
+                  "kind": "thinking_delta",
+                  "sha256": "adea4261ba020a4e2156f727ad1039ef7a82d5e8421eae6114fef39649f4ab37"
+                },
+                {
+                  "at_ms": 3227.505,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "e7ac0786668e0ff0f02b62bd04f45ff636fd82db63b1104601c975dc005f3a67"
+                },
+                {
+                  "at_ms": 3237.767,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                },
+                {
+                  "at_ms": 3247.818,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "8d33f520a3c4cef80d2453aef81b612bfe1cb44c8b2025630ad38662763f13d3"
+                },
+                {
+                  "at_ms": 3257.742,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "b62db7d0b79d11100c7103df97dd87bc90ff6ffbd88de6019cf1e933069c8525"
+                },
+                {
+                  "at_ms": 3267.862,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "7ed36e239722df47b96215ff57b8c58aa3b948fb2c85e17a95f0da2037c0a4a8"
+                },
+                {
+                  "at_ms": 3277.451,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "040c533f6280d3ff95812373c8884ba3b560723cc862277a90c47a2e1fd24000"
+                },
+                {
+                  "at_ms": 3287.267,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "95d63c6151e87fa98d2fc07e665cb8375e77e261d933c63b72ae9a845efc3812"
+                },
+                {
+                  "at_ms": 3297.027,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "f01ee4d3a9647b353c7ef1ded9175f02f2cbaf467ad5a0c75a5b14bafab92861"
+                },
+                {
+                  "at_ms": 3306.88,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "3973e022e93220f9212c18d0d0c543ae7c309e46640da93a4a0314de999f5112"
+                },
+                {
+                  "at_ms": 3316.648,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "88886033384749b1394576ff745bb5f9a4b9c295cb02bfa91eebf91f2eab0bf4"
+                },
+                {
+                  "at_ms": 3326.497,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+                },
+                {
+                  "at_ms": 3336.257,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "31e97012aca2d8787395384cd2b863b88704af707168bf36a70cd70c00d71977"
+                },
+                {
+                  "at_ms": 3346.085,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "7ed36e239722df47b96215ff57b8c58aa3b948fb2c85e17a95f0da2037c0a4a8"
+                },
+                {
+                  "at_ms": 3355.895,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "3973e022e93220f9212c18d0d0c543ae7c309e46640da93a4a0314de999f5112"
+                },
+                {
+                  "at_ms": 3365.726,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "df2ff3bb0af36c6384e6206552a4ed807f6f6a26e7d0aa6bff772ddc9d4307aa"
+                },
+                {
+                  "at_ms": 3375.535,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "cdded7231a0c512ed51b072e9982f725870905b7d5c8c6df5e258910a6d77f07"
+                },
+                {
+                  "at_ms": 3385.317,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "2192e8955d5e1ad1651f2f0c637e6f1ac82855747a5f42f978db28669595dc21"
+                },
+                {
+                  "at_ms": 3395.207,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "429fff6d9304b51656ae37b104ca152ce67e638f08a433f87fafe2e39bd7c74d"
+                },
+                {
+                  "at_ms": 3404.98,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "380918b946a526640a40df5dced6516794f3d97bbd9e6bb553d037c4439f31c3"
+                },
+                {
+                  "at_ms": 3414.733,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d"
+                },
+                {
+                  "at_ms": 3424.544,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+                },
+                {
+                  "at_ms": 3434.374,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+                },
+                {
+                  "at_ms": 3444.413,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "550fde8751fff8ef748288be4fa57fac02ead72495191dc9270cead69a510a75"
+                },
+                {
+                  "at_ms": 3454.111,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "6249e6faa58831154f6df352c843a316a98c6b1eb57baa61a8bf4401e3726988"
+                },
+                {
+                  "at_ms": 3463.884,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "49ed2896ce83bcd63049c2658fbdd3fd26b5d55802d61ff852ca7ac763755070"
+                },
+                {
+                  "at_ms": 3473.691,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "70ec249fa15d5c0b852069fb8776c63a6b424e97055390949aa3475db806f11b"
+                },
+                {
+                  "at_ms": 3483.546,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "6b0cc904d081a8c11cfdaec667f05132cbfa8a57f5040d27d5fc0f2fc50d0dc6"
+                },
+                {
+                  "at_ms": 3493.322,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "8a5edab282632443219e051e4ade2d1d5bbc671c781051bf1437897cbdfea0f1"
+                },
+                {
+                  "at_ms": 3503.116,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "6f9edcd3408cbda14a837e6a44fc5b7f64ccc9a2477c1498fcb13c777ffb9605"
+                },
+                {
+                  "at_ms": 3512.985,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "2f33b946a9ee985aa4ad7faa0c121f42c9a3ccaee81f5550411892d7a3e850b5"
+                },
+                {
+                  "at_ms": 3522.744,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881"
+                },
+                {
+                  "at_ms": 3532.539,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "1f807e6b8d5495c0403a1c3b7d7331b178aabbaa07babd0f767fb240e00509f6"
+                },
+                {
+                  "at_ms": 3542.367,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "f9e012396be65db022bd11de9308a9b40e04e492cc4ee8636c09fb83df4aa27b"
+                },
+                {
+                  "at_ms": 3552.365,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a"
+                },
+                {
+                  "at_ms": 3562.16,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "3973e022e93220f9212c18d0d0c543ae7c309e46640da93a4a0314de999f5112"
+                },
+                {
+                  "at_ms": 3571.949,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "339a1eac565d4dbf7c4389e7449e9f2265b8a9dec68ecc24d09b324226e0a263"
+                },
+                {
+                  "at_ms": 3581.778,
+                  "channel": "reasoning",
+                  "chars": 8,
+                  "kind": "thinking_delta",
+                  "sha256": "95d483672f450edd07f75fc78d150f00d1373a31dab5079cc32319c2a0388278"
+                },
+                {
+                  "at_ms": 3591.634,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "3973e022e93220f9212c18d0d0c543ae7c309e46640da93a4a0314de999f5112"
+                },
+                {
+                  "at_ms": 3601.462,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+                },
+                {
+                  "at_ms": 3611.301,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+                },
+                {
+                  "at_ms": 3621.132,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683"
+                },
+                {
+                  "at_ms": 3630.97,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+                },
+                {
+                  "at_ms": 3640.762,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+                },
+                {
+                  "at_ms": 3650.577,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce"
+                },
+                {
+                  "at_ms": 3660.397,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "8d33f520a3c4cef80d2453aef81b612bfe1cb44c8b2025630ad38662763f13d3"
+                },
+                {
+                  "at_ms": 3670.204,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070"
+                },
+                {
+                  "at_ms": 3680.014,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "529441523bec75ececf4b98d5c326b733439d0312de1a334fa01e3f6720d1425"
+                },
+                {
+                  "at_ms": 3689.834,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "9f388b8826f4422518e8da3b564662d10f2f2ad950c4ecc6c0305e3255f7446f"
+                },
+                {
+                  "at_ms": 3699.622,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "fe0663fd13cdb08743dca3d2d5d1168762556ea36f77d8ab6009306d12a6f351"
+                },
+                {
+                  "at_ms": 3709.433,
+                  "channel": "reasoning",
+                  "chars": 7,
+                  "kind": "thinking_delta",
+                  "sha256": "d3c34ca3b396545d5f1255d50ad5cbd29630fe60d72b379c416e5567098c6533"
+                },
+                {
+                  "at_ms": 3719.199,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "e7ac0786668e0ff0f02b62bd04f45ff636fd82db63b1104601c975dc005f3a67"
+                },
+                {
+                  "at_ms": 3729.354,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                },
+                {
+                  "at_ms": 3739.161,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "3973e022e93220f9212c18d0d0c543ae7c309e46640da93a4a0314de999f5112"
+                },
+                {
+                  "at_ms": 3749.029,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "ca233959bcddd2b99ba13972061ab3cd9e64b395b231989835b1ff52dac734fe"
+                },
+                {
+                  "at_ms": 3758.848,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "ccdcbe846f3da4eb044fbdf64bf6b57902388ab72fb0c852ba72280f8d478b40"
+                },
+                {
+                  "at_ms": 3768.643,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "3d107d77f38f2637d5faa3bf24d37f34be9b87d2db4deb5a29420356dc7dc351"
+                },
+                {
+                  "at_ms": 3778.435,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "8d33f520a3c4cef80d2453aef81b612bfe1cb44c8b2025630ad38662763f13d3"
+                },
+                {
+                  "at_ms": 3788.242,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "017914d7ed1d7f185f524211ea684ef16d79a039523e4aa4611299a01c4d2339"
+                },
+                {
+                  "at_ms": 3798.125,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "b4c480d5276e0ff94f0e40a45e7763498400e7bb1d494029c692286b3309297c"
+                },
+                {
+                  "at_ms": 3807.901,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "ee94cc22fc97bdc35dc59a1843deb057c65a193d07628e839952273f636b8680"
+                },
+                {
+                  "at_ms": 3844.165,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "e7ac0786668e0ff0f02b62bd04f45ff636fd82db63b1104601c975dc005f3a67"
+                },
+                {
+                  "at_ms": 3852.342,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "0c2e4902423d482c95ef4724f6345a633877642276f0655f940f1669bf91b1b5"
+                },
+                {
+                  "at_ms": 3862.243,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d"
+                },
+                {
+                  "at_ms": 3871.818,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+                },
+                {
+                  "at_ms": 3881.537,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+                },
+                {
+                  "at_ms": 3891.302,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "550fde8751fff8ef748288be4fa57fac02ead72495191dc9270cead69a510a75"
+                },
+                {
+                  "at_ms": 3901.134,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "8a331fdde7032f33a71e1b2e257d80166e348e00fcb17914f48bdb57a1c63007"
+                },
+                {
+                  "at_ms": 3910.912,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                },
+                {
+                  "at_ms": 3920.793,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "3973e022e93220f9212c18d0d0c543ae7c309e46640da93a4a0314de999f5112"
+                },
+                {
+                  "at_ms": 3930.623,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "ca233959bcddd2b99ba13972061ab3cd9e64b395b231989835b1ff52dac734fe"
+                },
+                {
+                  "at_ms": 3940.417,
+                  "channel": "reasoning",
+                  "chars": 6,
+                  "kind": "thinking_delta",
+                  "sha256": "63d42d26156fcc761e57da4128e9881d5bdf3bf933f0f6e9c93d6e26b9b90ae7"
+                },
+                {
+                  "at_ms": 3950.312,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "8d33f520a3c4cef80d2453aef81b612bfe1cb44c8b2025630ad38662763f13d3"
+                },
+                {
+                  "at_ms": 3960.15,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "017914d7ed1d7f185f524211ea684ef16d79a039523e4aa4611299a01c4d2339"
+                },
+                {
+                  "at_ms": 3969.923,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "5e9c88062df8df52d3c59ff739a253886511f20fba3f7c33980687fb1bdd9e25"
+                },
+                {
+                  "at_ms": 3979.782,
+                  "channel": "reasoning",
+                  "chars": 8,
+                  "kind": "thinking_delta",
+                  "sha256": "9df658f37ce1c165db9aa689572f6fd1f2c2980c91db205b4a5cfe95ac01f019"
+                },
+                {
+                  "at_ms": 3989.595,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "e7ac0786668e0ff0f02b62bd04f45ff636fd82db63b1104601c975dc005f3a67"
+                },
+                {
+                  "at_ms": 3999.446,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "9c5292e06502ebe4f52296c4b762043a6a7e040f72f8f85f1408b7aa53d3008a"
+                },
+                {
+                  "at_ms": 4009.198,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "6b0cc904d081a8c11cfdaec667f05132cbfa8a57f5040d27d5fc0f2fc50d0dc6"
+                },
+                {
+                  "at_ms": 4019.077,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "8a5edab282632443219e051e4ade2d1d5bbc671c781051bf1437897cbdfea0f1"
+                },
+                {
+                  "at_ms": 4028.914,
+                  "channel": "reasoning",
+                  "chars": 4,
+                  "kind": "thinking_delta",
+                  "sha256": "6f9edcd3408cbda14a837e6a44fc5b7f64ccc9a2477c1498fcb13c777ffb9605"
+                },
+                {
+                  "at_ms": 4039.291,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "2f33b946a9ee985aa4ad7faa0c121f42c9a3ccaee81f5550411892d7a3e850b5"
+                },
+                {
+                  "at_ms": 4048.841,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881"
+                },
+                {
+                  "at_ms": 4058.677,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "1f807e6b8d5495c0403a1c3b7d7331b178aabbaa07babd0f767fb240e00509f6"
+                },
+                {
+                  "at_ms": 4068.486,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "f9e012396be65db022bd11de9308a9b40e04e492cc4ee8636c09fb83df4aa27b"
+                },
+                {
+                  "at_ms": 4078.333,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a"
+                },
+                {
+                  "at_ms": 4088.122,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "3973e022e93220f9212c18d0d0c543ae7c309e46640da93a4a0314de999f5112"
+                },
+                {
+                  "at_ms": 4097.946,
+                  "channel": "reasoning",
+                  "chars": 3,
+                  "kind": "thinking_delta",
+                  "sha256": "339a1eac565d4dbf7c4389e7449e9f2265b8a9dec68ecc24d09b324226e0a263"
+                },
+                {
+                  "at_ms": 4107.768,
+                  "channel": "reasoning",
+                  "chars": 8,
+                  "kind": "thinking_delta",
+                  "sha256": "95d483672f450edd07f75fc78d150f00d1373a31dab5079cc32319c2a0388278"
+                },
+                {
+                  "at_ms": 4117.64,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "3973e022e93220f9212c18d0d0c543ae7c309e46640da93a4a0314de999f5112"
+                },
+                {
+                  "at_ms": 4127.459,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+                },
+                {
+                  "at_ms": 4137.251,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+                },
+                {
+                  "at_ms": 4147.085,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683"
+                },
+                {
+                  "at_ms": 4156.923,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+                },
+                {
+                  "at_ms": 4166.766,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+                },
+                {
+                  "at_ms": 4176.604,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce"
+                },
+                {
+                  "at_ms": 4186.418,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "8a331fdde7032f33a71e1b2e257d80166e348e00fcb17914f48bdb57a1c63007"
+                },
+                {
+                  "at_ms": 4196.276,
+                  "channel": "reasoning",
+                  "chars": 2,
+                  "kind": "thinking_delta",
+                  "sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070"
+                },
+                {
+                  "at_ms": 4206.102,
+                  "channel": "reasoning",
+                  "chars": 5,
+                  "kind": "thinking_delta",
+                  "sha256": "c64fb0872e9dfa5def312ae39f7bd36cf25c92470b60c42b704f2faba832cacb"
+                },
+                {
+                  "at_ms": 4215.903,
+                  "channel": "reasoning",
+                  "chars": 8,
+                  "kind": "thinking_delta",
+                  "sha256": "9a61564ebdc0836397ce3664de6a264a2c544b829a9ba412ffad3ebc98d5a27f"
+                },
+                {
+                  "at_ms": 4225.927,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+                },
+                {
+                  "at_ms": 4235.751,
+                  "channel": "reasoning",
+                  "chars": 1,
+                  "kind": "thinking_delta",
+                  "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                },
+                {
+                  "at_ms": 4266.368,
+                  "channel": "content",
+                  "chars": 5,
+                  "kind": "text_delta",
+                  "sha256": "b62db7d0b79d11100c7103df97dd87bc90ff6ffbd88de6019cf1e933069c8525"
+                },
+                {
+                  "at_ms": 4275.753,
+                  "channel": "content",
+                  "chars": 2,
+                  "kind": "text_delta",
+                  "sha256": "7ed36e239722df47b96215ff57b8c58aa3b948fb2c85e17a95f0da2037c0a4a8"
+                },
+                {
+                  "at_ms": 4285.423,
+                  "channel": "content",
+                  "chars": 2,
+                  "kind": "text_delta",
+                  "sha256": "040c533f6280d3ff95812373c8884ba3b560723cc862277a90c47a2e1fd24000"
+                },
+                {
+                  "at_ms": 4295.259,
+                  "channel": "content",
+                  "chars": 3,
+                  "kind": "text_delta",
+                  "sha256": "95d63c6151e87fa98d2fc07e665cb8375e77e261d933c63b72ae9a845efc3812"
+                },
+                {
+                  "at_ms": 4305.071,
+                  "channel": "content",
+                  "chars": 3,
+                  "kind": "text_delta",
+                  "sha256": "f01ee4d3a9647b353c7ef1ded9175f02f2cbaf467ad5a0c75a5b14bafab92861"
+                },
+                {
+                  "at_ms": 4314.962,
+                  "channel": "content",
+                  "chars": 1,
+                  "kind": "text_delta",
+                  "sha256": "3973e022e93220f9212c18d0d0c543ae7c309e46640da93a4a0314de999f5112"
+                },
+                {
+                  "at_ms": 4324.749,
+                  "channel": "content",
+                  "chars": 3,
+                  "kind": "text_delta",
+                  "sha256": "88886033384749b1394576ff745bb5f9a4b9c295cb02bfa91eebf91f2eab0bf4"
+                },
+                {
+                  "at_ms": 4334.578,
+                  "channel": "content",
+                  "chars": 1,
+                  "kind": "text_delta",
+                  "sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+                },
+                {
+                  "at_ms": 4344.364,
+                  "channel": "content",
+                  "chars": 3,
+                  "kind": "text_delta",
+                  "sha256": "31e97012aca2d8787395384cd2b863b88704af707168bf36a70cd70c00d71977"
+                },
+                {
+                  "at_ms": 4354.222,
+                  "channel": "content",
+                  "chars": 2,
+                  "kind": "text_delta",
+                  "sha256": "7ed36e239722df47b96215ff57b8c58aa3b948fb2c85e17a95f0da2037c0a4a8"
+                },
+                {
+                  "at_ms": 4364.031,
+                  "channel": "content",
+                  "chars": 1,
+                  "kind": "text_delta",
+                  "sha256": "3973e022e93220f9212c18d0d0c543ae7c309e46640da93a4a0314de999f5112"
+                },
+                {
+                  "at_ms": 4373.936,
+                  "channel": "content",
+                  "chars": 6,
+                  "kind": "text_delta",
+                  "sha256": "df2ff3bb0af36c6384e6206552a4ed807f6f6a26e7d0aa6bff772ddc9d4307aa"
+                },
+                {
+                  "at_ms": 4383.696,
+                  "channel": "content",
+                  "chars": 2,
+                  "kind": "text_delta",
+                  "sha256": "cdded7231a0c512ed51b072e9982f725870905b7d5c8c6df5e258910a6d77f07"
+                },
+                {
+                  "at_ms": 4393.482,
+                  "channel": "content",
+                  "chars": 3,
+                  "kind": "text_delta",
+                  "sha256": "2192e8955d5e1ad1651f2f0c637e6f1ac82855747a5f42f978db28669595dc21"
+                },
+                {
+                  "at_ms": 4403.311,
+                  "channel": "content",
+                  "chars": 5,
+                  "kind": "text_delta",
+                  "sha256": "429fff6d9304b51656ae37b104ca152ce67e638f08a433f87fafe2e39bd7c74d"
+                },
+                {
+                  "at_ms": 4413.197,
+                  "channel": "content",
+                  "chars": 1,
+                  "kind": "text_delta",
+                  "sha256": "380918b946a526640a40df5dced6516794f3d97bbd9e6bb553d037c4439f31c3"
+                },
+                {
+                  "at_ms": 4423.027,
+                  "channel": "content",
+                  "chars": 1,
+                  "kind": "text_delta",
+                  "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d"
+                },
+                {
+                  "at_ms": 4432.802,
+                  "channel": "content",
+                  "chars": 1,
+                  "kind": "text_delta",
+                  "sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+                },
+                {
+                  "at_ms": 4442.633,
+                  "channel": "content",
+                  "chars": 1,
+                  "kind": "text_delta",
+                  "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+                },
+                {
+                  "at_ms": 4452.537,
+                  "channel": "content",
+                  "chars": 3,
+                  "kind": "text_delta",
+                  "sha256": "550fde8751fff8ef748288be4fa57fac02ead72495191dc9270cead69a510a75"
+                },
+                {
+                  "at_ms": 4462.362,
+                  "channel": "content",
+                  "chars": 2,
+                  "kind": "text_delta",
+                  "sha256": "6249e6faa58831154f6df352c843a316a98c6b1eb57baa61a8bf4401e3726988"
+                },
+                {
+                  "at_ms": 4472.19,
+                  "channel": "content",
+                  "chars": 2,
+                  "kind": "text_delta",
+                  "sha256": "49ed2896ce83bcd63049c2658fbdd3fd26b5d55802d61ff852ca7ac763755070"
+                },
+                {
+                  "at_ms": 4482.042,
+                  "channel": "content",
+                  "chars": 2,
+                  "kind": "text_delta",
+                  "sha256": "70ec249fa15d5c0b852069fb8776c63a6b424e97055390949aa3475db806f11b"
+                },
+                {
+                  "at_ms": 4491.888,
+                  "channel": "content",
+                  "chars": 5,
+                  "kind": "text_delta",
+                  "sha256": "6b0cc904d081a8c11cfdaec667f05132cbfa8a57f5040d27d5fc0f2fc50d0dc6"
+                },
+                {
+                  "at_ms": 4501.762,
+                  "channel": "content",
+                  "chars": 1,
+                  "kind": "text_delta",
+                  "sha256": "8a5edab282632443219e051e4ade2d1d5bbc671c781051bf1437897cbdfea0f1"
+                },
+                {
+                  "at_ms": 4511.572,
+                  "channel": "content",
+                  "chars": 4,
+                  "kind": "text_delta",
+                  "sha256": "6f9edcd3408cbda14a837e6a44fc5b7f64ccc9a2477c1498fcb13c777ffb9605"
+                },
+                {
+                  "at_ms": 4521.389,
+                  "channel": "content",
+                  "chars": 3,
+                  "kind": "text_delta",
+                  "sha256": "2f33b946a9ee985aa4ad7faa0c121f42c9a3ccaee81f5550411892d7a3e850b5"
+                },
+                {
+                  "at_ms": 4531.18,
+                  "channel": "content",
+                  "chars": 1,
+                  "kind": "text_delta",
+                  "sha256": "2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881"
+                },
+                {
+                  "at_ms": 4541.088,
+                  "channel": "content",
+                  "chars": 2,
+                  "kind": "text_delta",
+                  "sha256": "1f807e6b8d5495c0403a1c3b7d7331b178aabbaa07babd0f767fb240e00509f6"
+                },
+                {
+                  "at_ms": 4550.94,
+                  "channel": "content",
+                  "chars": 2,
+                  "kind": "text_delta",
+                  "sha256": "f9e012396be65db022bd11de9308a9b40e04e492cc4ee8636c09fb83df4aa27b"
+                },
+                {
+                  "at_ms": 4560.766,
+                  "channel": "content",
+                  "chars": 1,
+                  "kind": "text_delta",
+                  "sha256": "62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a"
+                },
+                {
+                  "at_ms": 4570.571,
+                  "channel": "content",
+                  "chars": 1,
+                  "kind": "text_delta",
+                  "sha256": "3973e022e93220f9212c18d0d0c543ae7c309e46640da93a4a0314de999f5112"
+                },
+                {
+                  "at_ms": 4580.44,
+                  "channel": "content",
+                  "chars": 3,
+                  "kind": "text_delta",
+                  "sha256": "339a1eac565d4dbf7c4389e7449e9f2265b8a9dec68ecc24d09b324226e0a263"
+                },
+                {
+                  "at_ms": 4590.497,
+                  "channel": "content",
+                  "chars": 8,
+                  "kind": "text_delta",
+                  "sha256": "95d483672f450edd07f75fc78d150f00d1373a31dab5079cc32319c2a0388278"
+                },
+                {
+                  "at_ms": 4600.136,
+                  "channel": "content",
+                  "chars": 1,
+                  "kind": "text_delta",
+                  "sha256": "3973e022e93220f9212c18d0d0c543ae7c309e46640da93a4a0314de999f5112"
+                },
+                {
+                  "at_ms": 4609.99,
+                  "channel": "content",
+                  "chars": 1,
+                  "kind": "text_delta",
+                  "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+                },
+                {
+                  "at_ms": 4619.789,
+                  "channel": "content",
+                  "chars": 1,
+                  "kind": "text_delta",
+                  "sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+                },
+                {
+                  "at_ms": 4629.628,
+                  "channel": "content",
+                  "chars": 1,
+                  "kind": "text_delta",
+                  "sha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683"
+                },
+                {
+                  "at_ms": 4639.493,
+                  "channel": "content",
+                  "chars": 1,
+                  "kind": "text_delta",
+                  "sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+                },
+                {
+                  "at_ms": 4649.326,
+                  "channel": "content",
+                  "chars": 1,
+                  "kind": "text_delta",
+                  "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+                },
+                {
+                  "at_ms": 4659.161,
+                  "channel": "content",
+                  "chars": 1,
+                  "kind": "text_delta",
+                  "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce"
+                },
+                {
+                  "at_ms": 4673.488,
+                  "channel": "terminal",
+                  "kind": "end_turn"
+                },
+                {
+                  "at_ms": 4673.564,
+                  "channel": "terminal",
+                  "kind": "message_stop"
+                }
+              ],
+              "reasoning_chars": 1024,
+              "reasoning_delta_count": 338,
+              "reasoning_sha256": "116d2cfa8f7d52a4e3e95d6565dcc40c344d60b680565157999c26949ffe0651",
+              "response_id": "msg_de014b62975a",
+              "status_code": 200,
+              "terminals": [
+                "end_turn",
+                "message_stop"
+              ],
+              "tool_calls": []
+            }
+          ],
+          "terminal_classification": [
+            {
+              "pass": true,
+              "semantic": [
+                "tool_use"
+              ],
+              "values": [
+                "tool_use",
+                "message_stop"
+              ]
+            },
+            {
+              "pass": true,
+              "semantic": [
+                "tool_use"
+              ],
+              "values": [
+                "tool_use",
+                "message_stop"
+              ]
+            },
+            {
+              "pass": true,
+              "semantic": [
+                "end_turn"
+              ],
+              "values": [
+                "end_turn",
+                "message_stop"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+  "modes": [
+    "stream"
+  ],
+  "pass": false,
+  "protocols": [
+    "anthropic"
+  ],
+  "repo_root": "/Users/eric/mlx/vllm-mlx-release-1.6.13",
+  "schema_version": 1,
+  "second_tool_choice": "explicit",
+  "source_head": "WORKTREE-after-aa97"
+}
