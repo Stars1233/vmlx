@@ -4696,6 +4696,17 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   `docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/verify-bundled-python-current-1b905.log`
   and
   `docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/release-prepackage-current-1b905.log`.
+- `V1.6.15-PANEL-BUILD-CHECK`: `VERIFIED-SOURCE_BUILD_SCOPED`.
+  `panel-typecheck-current-9f18.log` records `npm run typecheck` passing.
+  `panel-full-tests-current-9f18.log` records the complete panel Vitest suite
+  passing with `79 passed` test files, `2403 passed`, and `3 skipped`.
+  `panel-build-current-9f18-rerun-correct-jang.log` records `npm run build`
+  passing with `VMLX_JANG_TOOLS_SOURCE=/Users/eric/jang/jang-tools`; the
+  bundled Python tree installed local `vmlx 1.6.15` and local `jang 2.5.31`,
+  rewrote 96 console-script shebangs, passed bundled import/hash verification,
+  and completed `electron-vite build`. This reduces the panel/build blocker
+  but does not override `V1.6.15-PREPACKAGE-CHECK`, which remains blocked on
+  broader release matrices and live/signed-app evidence.
 
 ## 2026-07-21 - Qwen3.6 35B JANGTQ Anthropic/Ollama tool continuation
 

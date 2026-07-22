@@ -237,8 +237,22 @@ was a real release blocker until `bundle-python.sh` was rerun.
   packaged-integrity, release-surface, live-smoke, real Electron full-model
   matrix, and DSV4 freshness rows. This is the current release-stop evidence
   for 1.6.15.
+- Current panel/build proof after the later Laguna/API commits (2026-07-22
+  local): `panel-typecheck-current-9f18.log` records `npm run typecheck`
+  passing on current 1.6.15 source. `panel-full-tests-current-9f18.log`
+  records the complete panel Vitest suite passing: `79 passed` test files,
+  `2403 passed`, `3 skipped`. `panel-build-current-9f18-rerun-correct-jang.log`
+  records `npm run build` passing after pointing the release bundle script at
+  the actual clean JANG package source
+  `VMLX_JANG_TOOLS_SOURCE=/Users/eric/jang/jang-tools`; the build installed
+  local `vmlx 1.6.15` and local `jang 2.5.31`, rewrote 96 console-script
+  shebangs to the relocatable sibling-Python trampoline, passed bundled import
+  verification, and completed `electron-vite build`. The first production
+  build attempt used the wrong source path (`/Users/eric/jang` instead of the
+  `jang-tools` package directory) and failed before shebang rewrite; it was an
+  invocation error, not counted as a product pass.
 
-- Full Python suite was not rerun end-to-end after the later 1.6.15 version bump; targeted release/version tests were. Full panel suite, panel build, and typecheck were not rerun end-to-end in this gate.
+- Full Python suite was not rerun end-to-end after the later 1.6.15 version bump; targeted release/version tests were. Current full panel suite, panel production build, bundled-Python verification, and TypeScript typecheck have now been rerun and passed in this gate.
 - Full protocol matrix remains open: non-stream Chat/Responses and
   cancellation/disconnect/recovery across representative models remain open;
   this gate now adds current-source Laguna streaming Anthropic/Ollama
