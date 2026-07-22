@@ -1,0 +1,202 @@
+{
+  "payload": {
+    "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+    "messages": [
+      {
+        "role": "user",
+        "content": "[LAG-S21-RAW-CHAT-TOOL-M] Call the file_info function exactly once with path panel/package.json. Do not answer in prose."
+      }
+    ],
+    "stream": true,
+    "max_tokens": 512,
+    "enable_thinking": true,
+    "chat_template_kwargs": {
+      "enable_thinking": true
+    },
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "file_info",
+          "description": "Get file metadata",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "path"
+            ]
+          }
+        }
+      }
+    ],
+    "tool_choice": "auto"
+  },
+  "summary": {
+    "tool_deltas": [],
+    "content": "{call_file_info_of_panel_package_json}",
+    "reasoning_len": 0,
+    "finish": [
+      "stop"
+    ],
+    "empty_name_deltas": [],
+    "delta_count": 12
+  },
+  "events": [
+    {
+      "id": "chatcmpl-12bb5d0d",
+      "object": "chat.completion.chunk",
+      "created": 1784702452,
+      "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+      "choices": [
+        {
+          "index": 0,
+          "delta": {
+            "role": "assistant"
+          }
+        }
+      ],
+      "_t": 0.009865045547485352
+    },
+    {
+      "id": "chatcmpl-12bb5d0d",
+      "object": "chat.completion.chunk",
+      "created": 1784702452,
+      "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+      "choices": [
+        {
+          "index": 0,
+          "delta": {}
+        }
+      ],
+      "_t": 0.5868749618530273
+    },
+    {
+      "id": "chatcmpl-12bb5d0d",
+      "object": "chat.completion.chunk",
+      "created": 1784702452,
+      "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+      "choices": [
+        {
+          "index": 0,
+          "delta": {}
+        }
+      ],
+      "_t": 0.6067121028900146
+    },
+    {
+      "id": "chatcmpl-12bb5d0d",
+      "object": "chat.completion.chunk",
+      "created": 1784702452,
+      "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+      "choices": [
+        {
+          "index": 0,
+          "delta": {}
+        }
+      ],
+      "_t": 0.6262350082397461
+    },
+    {
+      "id": "chatcmpl-12bb5d0d",
+      "object": "chat.completion.chunk",
+      "created": 1784702452,
+      "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+      "choices": [
+        {
+          "index": 0,
+          "delta": {}
+        }
+      ],
+      "_t": 0.6461629867553711
+    },
+    {
+      "id": "chatcmpl-12bb5d0d",
+      "object": "chat.completion.chunk",
+      "created": 1784702452,
+      "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+      "choices": [
+        {
+          "index": 0,
+          "delta": {}
+        }
+      ],
+      "_t": 0.6662421226501465
+    },
+    {
+      "id": "chatcmpl-12bb5d0d",
+      "object": "chat.completion.chunk",
+      "created": 1784702452,
+      "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+      "choices": [
+        {
+          "index": 0,
+          "delta": {}
+        }
+      ],
+      "_t": 0.6860799789428711
+    },
+    {
+      "id": "chatcmpl-12bb5d0d",
+      "object": "chat.completion.chunk",
+      "created": 1784702452,
+      "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+      "choices": [
+        {
+          "index": 0,
+          "delta": {}
+        }
+      ],
+      "_t": 0.7062861919403076
+    },
+    {
+      "id": "chatcmpl-12bb5d0d",
+      "object": "chat.completion.chunk",
+      "created": 1784702452,
+      "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+      "choices": [
+        {
+          "index": 0,
+          "delta": {}
+        }
+      ],
+      "_t": 0.725816011428833
+    },
+    {
+      "id": "chatcmpl-12bb5d0d",
+      "object": "chat.completion.chunk",
+      "created": 1784702452,
+      "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+      "choices": [
+        {
+          "index": 0,
+          "delta": {}
+        }
+      ],
+      "_t": 0.7450509071350098
+    },
+    {
+      "id": "chatcmpl-12bb5d0d",
+      "object": "chat.completion.chunk",
+      "created": 1784702452,
+      "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+      "choices": [
+        {
+          "index": 0,
+          "delta": {
+            "content": "{call_file_info_of_panel_package_json}"
+          },
+          "finish_reason": "stop"
+        }
+      ],
+      "_t": 0.76564621925354
+    },
+    {
+      "done": true,
+      "t": 0.7656729221343994
+    }
+  ]
+}
