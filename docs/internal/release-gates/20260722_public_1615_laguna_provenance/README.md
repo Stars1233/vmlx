@@ -2,9 +2,11 @@
 
 Date: 2026-07-22
 
-Verdict: `PUBLIC_SIGNED_1.6.15 PASS FOR THIS DEFECT`; stale installed 1.6.9
-negative control `FAIL-LIVE`; v1.6.16 campaign remains `PARTIAL / NOT
-RELEASE-READY` for its broader matrix.
+Verdict: `PUBLIC SIGNED APP 1.6.15 PASS FOR THIS DEFECT`; public Python/CLI
+v1.6.15 dependency floor `FAIL`; stale installed 1.6.9 negative control
+`FAIL-LIVE`; JANG 2.5.33 plus the vMLX 1.6.16 dependency guard
+`VERIFIED-LIVE_SCOPED`. The broader v1.6.16 campaign remains
+`PARTIAL / NOT RELEASE-READY`.
 
 ## Report investigated
 
@@ -46,25 +48,22 @@ Two signed apps coexist on the proof host:
 
 The Sequoia and Tahoe 1.6.15 checkpoint apps have identical Laguna runtime and
 model hashes. Both are Developer ID signed by ShieldStack LLC (team
-`55KGF2S5AY`). The fixed runtime was already part of the public 1.6.15 bundle;
-there is no post-1.6.15 vMLX loader patch for this defect.
+`55KGF2S5AY`). The fixed runtime was already part of those app bundles.
 
-The host's active development interpreter resolves `jang_tools` through the
-editable `/Users/eric/jang/jang-tools` checkout at commit
-`801209c13c189ebb8fb4d1596748a336f568da38`, whose effective Laguna runtime and
-model hashes match the signed 1.6.15 bundle. An older physical copy under the
-venv's `site-packages` is not the module imported by that interpreter. Runtime
-provenance must be established with `module.__file__`, not directory inventory
-or package version alone.
+That does **not** make the public Python/CLI 1.6.15 surface safe. Current PyPI
+metadata for `vmlx==1.6.15` permits `jang>=2.5.29`. Published JANG wheels at
+that older floor did not guarantee the per-module mixed-affine loader
+contract, so a standards-compliant fresh Python install could resolve a stale
+runtime and reproduce the defect. vMLX commits `b6d38eac7` and `e4c6762ce`
+therefore raise the floor to `jang>=2.5.33`, reject stale mixed-affine Laguna
+runtimes before model execution, and log the exact imported module/marker.
 
-The local development venv initially differed: from the vMLX source cwd it
-resolved a stale physical runtime SHA `3c0c8eb7...` without `_module_bits`, even
-though its distribution metadata also said JANG 2.5.31. It was reinstalled
-without dependencies from a clean detached worktree at exact commit
-`801209c13c189ebb8fb4d1596748a336f568da38`. A fresh import from the vMLX cwd
-now resolves runtime SHA `4a531e91...` and model SHA `acff90d0...`, identical
-to the signed 1.6.15 checkpoint. This was an environment repair, not a source
-change or a new public release.
+Both development venvs now import the published no-cache JANG 2.5.33 wheel
+from physical `site-packages`, not either machine's dirty editable JANG tree.
+Fresh wheel inspection recorded version 2.5.33, runtime marker 1, runtime SHA
+`96091e33...`, and exact `(576,48,group_size=64) -> 6` inference. Runtime
+provenance must always use `module.__file__`, capability marker, and source
+hash—not package metadata or directory inventory alone.
 
 ## Current live positive controls
 
@@ -119,9 +118,17 @@ Retained artifacts:
 
 ## Operational conclusion
 
-Public signed v1.6.15 is not affected by this specific mixed-bit Laguna fault.
-The reproduced failure comes from the stale 1.6.9 runtime. Anyone seeing it
-must record the exact app version, executable, `vmlx_engine.__file__`,
-`jang_tools.laguna.runtime.__file__`, and runtime SHA before diagnosing model
-math. This scoped result does not close the v1.6.16 release matrix or Laguna's
-separate long-context, cache-eviction, parser, or latency gates.
+The signed v1.6.15 Sequoia/Tahoe apps are not affected by this exact fault,
+but the public `vmlx==1.6.15` Python dependency contract is too weak and must
+not be described as passing. The repaired public JANG package is 2.5.33; the
+next vMLX Python release must require that floor and retain the runtime marker
+guard. Anyone seeing the error must record the exact app/package version,
+executable, `vmlx_engine.__file__`, `jang_tools.laguna.runtime.__file__`, and
+runtime SHA before diagnosing model math.
+
+Current-source Electron plus Chat/Responses proof for the repaired dependency
+surface is retained under
+`../20260722_jang_2533_laguna_distribution/`. This scoped result does not
+close the v1.6.16 release matrix or Laguna's separate long-context,
+Paged-Off restart, cache-eviction, four-protocol agentic, gateway, or latency
+gates.

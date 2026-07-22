@@ -5089,21 +5089,24 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   8-bit value uniformly. Against the same S-2.1 JANG_4M artifact it reproduced
   the dequant exception byte-for-byte. The test process was stopped and port
   8064 was confirmed closed.
-- The active dev interpreter on the proof host imports the fixed editable
-  `/Users/eric/jang/jang-tools` checkout at commit `801209c`; an older physical
-  site-packages copy is inactive. Future diagnosis/release proof must record
-  executable, app version, `module.__file__`, and source hash, not package
-  version or directory inventory alone.
-- `LAGUNA-LOCAL-DEV-VENV-DRIFT`: `REPAIRED / IMPORT-VERIFIED`. The local venv
-  initially imported stale runtime SHA `3c0c8eb7...` from physical
-  site-packages when launched from the vMLX cwd, despite reporting JANG 2.5.31.
-  It was reinstalled without dependencies from a clean detached worktree at
-  JANG commit `801209c`; fresh import now resolves signed-checkpoint runtime
-  SHA `4a531e91...` and model SHA `acff90d0...`. No local model generation was
-  run for this environment-only repair; the live generation proof is the M5
-  Max signed-engine/Electron matrix above.
+- `LAGUNA-PUBLIC-PYTHON-FLOOR`: `FIXED-SOURCE / VERIFIED-LIVE_SCOPED`. The
+  signed v1.6.15 apps bundle a capable runtime, but public PyPI
+  `vmlx==1.6.15` allowed `jang>=2.5.29`; that dependency floor did not
+  guarantee per-module mixed-affine dispatch. JANG 2.5.33 is now published
+  from commit `b788273e` with marker 1 and exact `(576,48)->6` inference.
+  vMLX commits `b6d38eac7`/`e4c6762ce` raise the floor, reject stale runtimes,
+  and log exact runtime provenance.
+- Both development venvs now import the public physical JANG 2.5.33 wheel
+  rather than dirty editable trees. Current-source Electron Start bound the
+  shared venv shim to the synchronized release checkout via `PYTHONPATH`,
+  logged marker 1, loaded Laguna, showed a separate reasoning rail, executed
+  one real file tool/result continuation, and completed visibly. Raw
+  Responses/Chat separately streamed reasoning/content and explicit Off emitted
+  zero reasoning. Future proof must still record executable, app version,
+  `PYTHONPATH`, `module.__file__`, marker, and source hash.
 - Evidence:
-  `docs/internal/release-gates/20260722_public_1615_laguna_provenance/`.
+  `docs/internal/release-gates/20260722_public_1615_laguna_provenance/` and
+  `docs/internal/release-gates/20260722_jang_2533_laguna_distribution/`.
   This does not close Laguna's separate long-context, eviction/restart,
   settings, parser, or latency rows. Overall 1.6.16 campaign status remains
   `PARTIAL / NOT RELEASE-READY`.

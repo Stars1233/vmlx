@@ -11,7 +11,7 @@ It starts from public v1.6.15 follow-up source commit
 signed evidence remain unchanged.
 
 Latest behavior-bearing tested cutoff:
-`f9a4b6838b398312a951e78299e5457ce35d68b7`. The first immutable evidence
+`e4c6762ce982c1878a82feec142fda929ebc3311`. The first immutable evidence
 checkpoint containing the retained MiniMax-M3 artifacts is
 `6de9ce8eff206e8a77f65f2ab191c2b3aa971390`; later documentation-only commits
 do not silently promote the runtime cutoff.
@@ -45,6 +45,7 @@ is shown unchanged or the proof is rerun.
 - `../20260722_single_model_unmanaged_engine_sweep/README.md`
 - `../20260722_release_checkpoint_1_6_15/README.md`
 - `../20260722_public_1615_laguna_provenance/README.md`
+- `../20260722_jang_2533_laguna_distribution/README.md`
 - `OPEN-ISSUES-RANKED.md`, the living exhaustive 1.6.16 checklist
 - User campaign attachment
   `/Users/eric/.codex/attachments/668d3b34-ca92-49c4-aeb2-5e0ded8f6fc0/pasted-text-1.txt`
@@ -178,6 +179,7 @@ For every live model generation retained as evidence:
 | 2026-07-22 | `WORKTREE after aa97a531b` | Corrected Anthropic combined tool-result/follow-up ordering and exact-one Chat finalization; added a reusable four-protocol two-tool harness | 44/44 focused adapter/server/harness tests; evidence JSON parse and diff check passed | Reuses the current Qwen Electron Start/load and two-tool UI proof; no new UI generation is claimed for this raw-wire row | Natural direct Anthropic stream completed two real tools plus progressive exact final with separate reasoning; gateway completed the first tool but truthfully failed its second-tool continuation | `VERIFIED-LIVE_SCOPED / GLOBAL AGENTIC ROW PARTIAL` |
 | 2026-07-22 | current cache-name checkpoint after `4ee7befad` | Unified RAM/SSD cache terminology across settings/status/CLI and moved tooltip suppression to the outer wrapper | 293 focused panel tests + typecheck and 94 CLI/cache tests passed on both source boxes | Server Settings, Cache, and Perf inspected through CDP 9335; RAM and SSD wrapper clicks stayed `true -> true`; status surfaces showed `RAM paged + SSD L2` and `Block Disk L2 (SSD)` | Live CLI help distinguishes Apple unified memory and supported SSD-only mode; no new cache-reuse claim | `VERIFIED-LIVE_SCOPED` |
 | 2026-07-22 | signed v1.6.15 versus stale signed v1.6.9 provenance control | Classified the Laguna `576/48 bits=8` crash as stale uniform-bit runtime behavior, not S-2.1 `g_proj` slicing | Signed 1.6.15 runtime lines 261-306 derive 6-bit module width; stale 1.6.9 lines 185-199 apply top-level 8-bit uniformly | Real signed 1.6.15 Tahoe Electron Start loaded S-2.1 and exact-finaled `REL1615-LAGUNA-UI-DONE` without warnings | Signed 1.6.15 bundled engine exact-finaled cache-disabled JANG_2L and JANG_4M; signed 1.6.9 negative control reproduced the exact dequant error | `VERIFIED-LIVE_SCOPED / GLOBAL RELEASE ROW PARTIAL` |
+| 2026-07-22 | `b6d38eac7`, `e4c6762ce`, JANG `b788273e` / 2.5.33 | Repaired the Python/CLI mixed-affine distribution contract: vMLX now requires JANG 2.5.33, rejects stale runtimes, and logs runtime provenance | JANG full suite 574 passed/37 skipped on both boxes; vMLX focused set 370 passed on both boxes; panel engine-path set 7 passed | Real Start loaded S-2.1 under the synchronized release checkout and public 2.5.33 wheel; separate reasoning/content and exact one-tool continuation persisted without warnings | Current Responses Auto/Off and Chat streams separated reasoning/content, terminalized truthfully, had no inline marker leak, and warm-hit q4 native cache | `VERIFIED-LIVE_SCOPED / GLOBAL RELEASE ROW PARTIAL` |
 
 ## Cache terminology and tooltip proof
 

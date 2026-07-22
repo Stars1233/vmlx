@@ -7628,3 +7628,103 @@ Status: `PUBLIC_CHECKPOINT_RELEASED_BROADER_MATRIX_PARTIAL`.
   explicitly excluded from tool PASS evidence.
 - Pause after this post-release proof is committed, pushed, and fetched on the
   other Mac. All retained matrix rows remain the later continuation list.
+
+## 2026-07-22 - v1.6.16 reasoning/protocol and settings restart checkpoint
+
+Status: `PARTIAL / NOT RELEASE-READY` at pushed branch head `f9a4b6838`.
+
+- Parser/API source fixes are pushed: split reasoning-marker holdback
+  `ff293d1e7`, Anthropic late-reasoning sequencing `95e954045`, and Ollama
+  streaming family normalization `230c822f2`.
+- Current Laguna Electron proof retained a separate reasoning rail, two exact
+  real one-tool continuations, and a 664-token `paged+tq-native` RAM hit. Raw
+  Chat/Responses/Anthropic/Ollama streams were progressive and terminal-
+  complete; precise counts and boundaries are in the v1.6.16 campaign.
+- Settings source `951eab25d` clarifies `Save for Next Restart`, removes the
+  missed-event/fixed restart waits, broadcasts ordinary session updates, and
+  makes live context PID authoritative in Chat Settings.
+- Focused panel proof is 503/503 plus typecheck. Real Electron Save & Restart
+  changed Laguna PID 56197 -> 57093 -> 58440; final Chat header, SQLite,
+  drawer, `ps`, INFO config, and argv agreed. A fresh exact turn restored 80
+  `paged+disk+tq-native` tokens and health recorded two disk/TQ-native hits.
+- Canonical evidence:
+  `docs/internal/release-gates/20260722_v1_6_16_campaign/`.
+- Remaining P0 boundaries include cross-family reasoning branches, broader
+  agentic/cancel/failure/non-stream coverage, architecture-wide cache matrix,
+  and complete settings/default parity. Packaging/signing remains locked.
+
+## 2026-07-22 - MiniMax-M3 current-source Electron/Ollama checkpoint
+
+Status: `VERIFIED-LIVE_SCOPED / GLOBAL CAMPAIGN PARTIAL` at
+`f9a4b6838`.
+
+- Real Electron Sessions Start eagerly materialized MiniMax-M3 PID 60303 before
+  a prompt. Bundle/config and health ground affine JANG_2L, the native 60-layer
+  MSA/Lightning-Indexer cache, Paged RAM plus Block L2, and intentional generic
+  TQ/JIT Off. Live health says `vl_runtime_available=false`.
+- Electron IPC recorded 245 progressive reasoning updates, then ten
+  progressive content updates and one completion. The exact visible final was
+  `R16-M3-UI-IPC-DONE`; reasoning was not inline.
+- A fresh UI turn emitted 233 reasoning characters, exactly one real
+  `file_info(panel/package.json)` call/result, exact final
+  `R16-M3-UI-TOOL-DONE SIZE=5.2 KB`, no warning, and 256 paged tokens.
+- Raw Responses and direct/gateway Ollama On/Off/Auto streams had separate
+  reasoning/content rails, progressive content, one truthful terminal, exact
+  finals, and no native-marker leak.
+- Public version truth: v1.6.15 exists and is latest. Its `jjang-ai/vmlx`
+  source release has no assets, while the separate `jjang-ai/mlxstudio`
+  distribution release currently has both notarized DMGs and blockmaps with
+  the retained hashes. The next checkpoint is a new 1.6.16 release across both
+  repositories, never an overwrite of 1.6.15.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_16_campaign/`.
+- Still open: M3 restart/partial/eviction native-cache proof, M3 VL availability,
+  Ollama non-stream/post-tool continuation, openPangu/Mistral4 named-family
+  branches, global agentic/cache/settings/full-suite/release rows.
+
+## 2026-07-22 - v1.6.16 exhaustive open-issues reconciliation
+
+Status: `DOCUMENTED / CAMPAIGN ACTIVE / NOT RELEASE-READY`.
+
+- Added the living ranked checklist at
+  `docs/internal/release-gates/20260722_v1_6_16_campaign/OPEN-ISSUES-RANKED.md`.
+- It reconciles 63 explicit open acceptance checks across reasoning rails,
+  coding-harness tools, cache archetypes, settings/budgets/metrics, gateway
+  ownership, model families, media, conversion, provenance, suites, signing,
+  notarization, and public release truth.
+- Already scoped-proven rows are separately listed to prevent repeated Qwen,
+  Bonsai, Laguna, LFM, or M3 single-tool runs from masquerading as progress.
+- Current source/docs branch is synchronized at `aa97a531b` on both checkouts;
+  the retained M3 evidence checkpoint is `6de9ce8ef`. The branch is ten commits
+  ahead of `origin/main`; integration and the 1.6.16 version bump remain
+  intentionally pending.
+- JANG release-source truth needs repair before packaging: `/Users/eric/jang`
+  is dirty; the older named release-prep path is missing; the apparent clean
+  `jangq-release-clean-4129f28` worktree tracks the local repo rather than the
+  GitHub remote directly.
+
+## 2026-07-22 - JANG 2.5.33 / Laguna current-source checkpoint
+
+Status: `VERIFIED-LIVE_SCOPED / GLOBAL CAMPAIGN PARTIAL` at vMLX
+`e4c6762ce` and JANG `b788273e`.
+
+- Public JANG 2.5.33 is live on GitHub and PyPI with wheel SHA-256
+  `ada2af21...` and sdist SHA-256 `9ca57332...`. Its marker and exact mixed-bit
+  inference were verified from a fresh no-cache wheel; full suites passed on
+  both clean boxes.
+- vMLX now requires the capable JANG floor and fails stale mixed-affine Laguna
+  runtimes before model execution. Current-source focused tests passed on both
+  boxes.
+- Remote Electron Start loaded the real S-2.1 JANG_2L artifact as PID 39057.
+  Runtime proof records the synchronized release `PYTHONPATH`, public physical
+  JANG 2.5.33 module, marker 1, typed mixed-SWA cache, q4 full-attention storage,
+  native rotating state, Paged RAM, and Block L2.
+- Live UI persisted separate reasoning and non-empty content, then exactly one
+  real file tool/result and visible final without warnings. Raw Responses and
+  Chat separated reasoning/content; explicit Off emitted no reasoning.
+- Evidence:
+  `docs/internal/release-gates/20260722_jang_2533_laguna_distribution/`.
+- Still open: Laguna Paged-Off process restart, eviction and long SWA quality;
+  remaining four-protocol/gateway agentic rows; architecture-wide cache/media;
+  full suites; version bump; bundled-Python packaging; signing/notarization;
+  signed-app regression; and public v1.6.16 release truth.

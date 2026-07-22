@@ -73,13 +73,17 @@ Historical matrices were also inspected but are not silently authoritative:
   continuation. Electron, Anthropic/Ollama, and disk restart remain open.
 - [x] v1.6.15 remains immutable. Its source release is in `jjang-ai/vmlx`; its
   signed DMGs are in `jjang-ai/mlxstudio`. 1.6.16 must repeat both surfaces.
-- [x] Public signed v1.6.15 Laguna mixed-affine loading is not the source of the
-  reported `(…,576)` / `(…,48)` / `bits=8` crash. Cache-disabled signed-engine
-  JANG_2L and JANG_4M streams plus a real signed Electron Start/chat passed.
-  The stale signed `/Applications/vMLX.app` version 1.6.9 reproduced the error
-  exactly on the same JANG_4M artifact. See
-  `../20260722_public_1615_laguna_provenance/README.md`. This closes only the
-  mixed-bit provenance defect; Laguna's long/cache/settings rows stay open.
+- [x] Signed v1.6.15 Sequoia/Tahoe Laguna mixed-affine loading is not the
+  source of the reported `(…,576)` / `(…,48)` / `bits=8` crash. Cache-disabled
+  signed-engine JANG_2L/JANG_4M plus real signed Electron proof passed, while
+  stale signed v1.6.9 reproduced the error. The public Python v1.6.15 floor was
+  separately broken because `jang>=2.5.29` allowed stale wheels. JANG 2.5.33
+  is now published and vMLX current source requires/guards it; current-source
+  Electron plus Chat/Responses proof passed at `e4c6762ce`. See
+  `../20260722_public_1615_laguna_provenance/README.md` and
+  `../20260722_jang_2533_laguna_distribution/README.md`. This closes only the
+  mixed-bit distribution/provenance defect; Laguna's long/cache/settings and
+  broader protocol rows stay open.
 
 ## P0: release-critical shared runtime contracts
 

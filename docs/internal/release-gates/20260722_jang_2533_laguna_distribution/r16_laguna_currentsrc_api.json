@@ -1,0 +1,372 @@
+{
+  "base": "http://127.0.0.1:8018",
+  "responses": [
+    {
+      "label": "auto_word_first",
+      "extra": {},
+      "reasoning_len": 732,
+      "reasoning_sample": "[redacted; length retained]",
+      "content": "YES",
+      "done": [
+        "YES"
+      ],
+      "usage": {
+        "input_tokens": 82,
+        "output_tokens": 193,
+        "total_tokens": 275
+      },
+      "usage_ext_tail": [
+        {
+          "type": "response.usage",
+          "usage": {
+            "input_tokens": 82,
+            "output_tokens": 190,
+            "total_tokens": 272
+          },
+          "sequence_number": 382
+        },
+        {
+          "type": "response.usage",
+          "usage": {
+            "input_tokens": 82,
+            "output_tokens": 192,
+            "total_tokens": 274
+          },
+          "sequence_number": 389
+        },
+        {
+          "type": "response.usage",
+          "usage": {
+            "input_tokens": 82,
+            "output_tokens": 193,
+            "total_tokens": 275
+          },
+          "sequence_number": 390
+        }
+      ],
+      "first_reason_s": 0.474,
+      "first_content_s": 3.844,
+      "total_s": 3.862,
+      "event_head": [
+        "response.created",
+        "response.output_item.added",
+        "response.reasoning_summary_part.added",
+        "response.reasoning_summary_text.delta",
+        "response.usage",
+        "response.reasoning_summary_text.delta",
+        "response.usage",
+        "response.reasoning_summary_text.delta",
+        "response.usage",
+        "response.reasoning_summary_text.delta"
+      ],
+      "event_tail": [
+        "response.output_item.done",
+        "response.output_item.added",
+        "response.content_part.added",
+        "response.output_text.delta",
+        "response.usage",
+        "response.usage",
+        "response.output_text.done",
+        "response.content_part.done",
+        "response.output_item.done",
+        "response.completed"
+      ],
+      "inline_marker_leak": false
+    },
+    {
+      "label": "auto_word_second_same_prompt",
+      "extra": {},
+      "reasoning_len": 875,
+      "reasoning_sample": "[redacted; length retained]",
+      "content": "YES",
+      "done": [
+        "YES"
+      ],
+      "usage": {
+        "input_tokens": 82,
+        "output_tokens": 242,
+        "total_tokens": 324,
+        "input_tokens_details": {
+          "cached_tokens": 81,
+          "cache_detail": "paged+tq-native"
+        }
+      },
+      "usage_ext_tail": [
+        {
+          "type": "response.usage",
+          "usage": {
+            "input_tokens": 82,
+            "output_tokens": 238,
+            "total_tokens": 320,
+            "input_tokens_details": {
+              "cached_tokens": 81,
+              "cache_detail": "paged+tq-native"
+            }
+          },
+          "sequence_number": 478
+        },
+        {
+          "type": "response.usage",
+          "usage": {
+            "input_tokens": 82,
+            "output_tokens": 239,
+            "total_tokens": 321,
+            "input_tokens_details": {
+              "cached_tokens": 81,
+              "cache_detail": "paged+tq-native"
+            }
+          },
+          "sequence_number": 480
+        },
+        {
+          "type": "response.usage",
+          "usage": {
+            "input_tokens": 82,
+            "output_tokens": 240,
+            "total_tokens": 322,
+            "input_tokens_details": {
+              "cached_tokens": 81,
+              "cache_detail": "paged+tq-native"
+            }
+          },
+          "sequence_number": 482
+        }
+      ],
+      "first_reason_s": 0.452,
+      "first_content_s": 5.291,
+      "total_s": 5.309,
+      "event_head": [
+        "response.created",
+        "response.output_item.added",
+        "response.reasoning_summary_part.added",
+        "response.reasoning_summary_text.delta",
+        "response.usage",
+        "response.reasoning_summary_text.delta",
+        "response.usage",
+        "response.reasoning_summary_text.delta",
+        "response.usage",
+        "response.reasoning_summary_text.delta"
+      ],
+      "event_tail": [
+        "response.reasoning_summary_text.done",
+        "response.reasoning_summary_part.done",
+        "response.output_item.done",
+        "response.output_item.added",
+        "response.content_part.added",
+        "response.output_text.delta",
+        "response.output_text.done",
+        "response.content_part.done",
+        "response.output_item.done",
+        "response.completed"
+      ],
+      "inline_marker_leak": false
+    },
+    {
+      "label": "explicit_false_direct",
+      "extra": {
+        "enable_thinking": false
+      },
+      "reasoning_len": 0,
+      "reasoning_sample": "[redacted; length retained]",
+      "content": "YES",
+      "done": [
+        "YES"
+      ],
+      "usage": {
+        "input_tokens": 66,
+        "output_tokens": 2,
+        "total_tokens": 68
+      },
+      "usage_ext_tail": [
+        {
+          "type": "response.usage",
+          "usage": {
+            "input_tokens": 66,
+            "output_tokens": 1,
+            "total_tokens": 67
+          },
+          "sequence_number": 4
+        },
+        {
+          "type": "response.usage",
+          "usage": {
+            "input_tokens": 66,
+            "output_tokens": 2,
+            "total_tokens": 68
+          },
+          "sequence_number": 5
+        }
+      ],
+      "first_reason_s": 0,
+      "first_content_s": 0.611,
+      "total_s": 0.629,
+      "event_head": [
+        "response.created",
+        "response.output_item.added",
+        "response.content_part.added",
+        "response.output_text.delta",
+        "response.usage",
+        "response.usage",
+        "response.output_text.done",
+        "response.content_part.done",
+        "response.output_item.done",
+        "response.completed"
+      ],
+      "event_tail": [
+        "response.created",
+        "response.output_item.added",
+        "response.content_part.added",
+        "response.output_text.delta",
+        "response.usage",
+        "response.usage",
+        "response.output_text.done",
+        "response.content_part.done",
+        "response.output_item.done",
+        "response.completed"
+      ],
+      "inline_marker_leak": false
+    }
+  ],
+  "chat_stream": {
+    "reasoning_len": 935,
+    "reasoning_sample": "[redacted; length retained]",
+    "content": "YES",
+    "finish": [
+      "stop"
+    ],
+    "chunks": 243,
+    "inline_marker_leak": false
+  },
+  "health_cache": {
+    "scheduler_cache": {
+      "hits": 1,
+      "misses": 6,
+      "hit_rate": 0.14285714285714285,
+      "tokens_saved": 81,
+      "active_requests": 0,
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 6,
+        "system": 0
+      },
+      "backend_mode": "paged",
+      "paged_ram_enabled": true,
+      "disk_only": false,
+      "paged_frugal": false,
+      "ram_mirror_policy": "resident",
+      "block_size": 64,
+      "max_blocks": 1000,
+      "usable_blocks": 999,
+      "capacity_tokens": 63936,
+      "allocated_blocks": 1,
+      "free_blocks": 999,
+      "shared_blocks": 0,
+      "total_tokens_cached": 401,
+      "utilization": 0.0,
+      "cache_hit_rate": 0.15384615384615385,
+      "cache_hits": 4,
+      "cache_misses": 22,
+      "disk_hits": 0,
+      "disk_misses": 73,
+      "cow_copies": 0,
+      "evictions": 0,
+      "disk_promotion_hits": 0,
+      "disk_lookup_misses": 12,
+      "disk_counter_source": "block_disk_store",
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1,
+        "prompt_snapshot_max_bytes": null,
+        "prompt_snapshot_last_estimated_bytes": 0,
+        "prompt_snapshot_oversize_skips": 0,
+        "prompt_snapshot_headroom_skips": 0,
+        "prompt_snapshot_last_headroom_bytes": 0
+      }
+    },
+    "block_disk_cache": {
+      "blocks_on_disk": 16,
+      "disk_size_bytes": 111476109,
+      "disk_size_gb": 0.104,
+      "total_accesses": 0,
+      "total_tokens_on_disk": 691,
+      "total_cached_tokens": 691,
+      "disk_hits": 0,
+      "disk_misses": 73,
+      "disk_writes": 10,
+      "disk_evictions": 0,
+      "tq_native_writes": 10,
+      "tq_native_hits": 0,
+      "tq_native_enabled": true
+    },
+    "totals": {
+      "ram_tokens_cached": 401,
+      "l1_indexed_tokens": 401,
+      "l1_resident_bytes": 64411680,
+      "l1_resident_bytes_mb": 61.43,
+      "l1_max_resident_bytes": 4294967296,
+      "l1_max_resident_bytes_mb": 4096.0,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 691,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 691,
+      "l2_tokens_on_disk_store_sum": 691,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    }
+  },
+  "capabilities": {
+    "family": "laguna",
+    "supports_thinking": true,
+    "reasoning_parser": "deepseek_r1",
+    "think_in_template": true,
+    "tool_parser": "glm47",
+    "cache": {
+      "prefix": true,
+      "type": "paged",
+      "paged": true,
+      "block_disk_l2": true,
+      "block_disk_only": false,
+      "dsv4_composite_state": false,
+      "native": {
+        "family": "laguna",
+        "schema": "mixed_swa_kv_v1",
+        "cache_type": "mixed_swa_kv",
+        "cache_subtype": "kv",
+        "components": [
+          "full_attention_kv",
+          "sliding_window_kv",
+          "rotating_window_metadata"
+        ],
+        "generic_turboquant_kv": {
+          "enabled": false,
+          "reason": "storage_only"
+        },
+        "storage_quantization": {
+          "enabled": true,
+          "mode": "storage_boundary",
+          "bits": 4,
+          "group_size": 64,
+          "applies_to": "full_attention_kv_only",
+          "metadata_policy": "preserve_rotating_window_metadata",
+          "sliding_window_policy": "native_rotating_kv_state",
+          "restore_policy": "decode_full_attention_tq_and_restore_rotating_state"
+        },
+        "prefix": true,
+        "paged": true,
+        "block_disk_only": false,
+        "block_disk_l2": true
+      }
+    },
+    "sampling_defaults": {
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "top_k": 20.0,
+      "min_p": 0.0,
+      "max_new_tokens": 32768.0
+    }
+  }
+}

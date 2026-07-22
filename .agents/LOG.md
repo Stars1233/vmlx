@@ -1565,3 +1565,81 @@
   `221 bytes` row is excluded. Tahoe content is coherent but not marker-only.
 - Checkpoint is public and usable within its named proof scope. The broader
   matrix remains partial/open; pause after final proof push and remote fetch.
+
+## 2026-07-22 - v1.6.16 shared rails and settings restart work
+
+- Added split-marker holdback across DeepSeek, ThinkXML, and M3 reasoning
+  parsers; repaired Anthropic late block ordering/terminal handling; normalized
+  Ollama streaming reasoning policy for M3/openPangu/Mistral4 and Off history.
+- Live Laguna on the real Electron dev app proved separate UI reasoning,
+  exact real tools, raw four-protocol progressive rails, and honest direct-rail
+  Auto controls. Privacy-safe summaries/screenshots are committed; raw private
+  reasoning was not committed.
+- Fixed settings restart ownership: removed both post-stop delays, emitted
+  `session:updated`, refreshed current PID/config in Chat Settings, and renamed
+  running plain Save to `Save for Next Restart`. Focused panel/typecheck passed.
+- Relaunched the patched main process with the venv PATH and current user-data
+  directory. Two real Save & Restart cycles applied DEBUG then INFO, refreshed
+  PID without staleness, and completed a post-restart exact turn with a
+  disk/TQ-native promotion. Source/evidence/docs are pushed through
+  `f9a4b6838` and synchronized while preserving unrelated dirty state.
+
+## 2026-07-22 - MiniMax-M3 named-family Ollama and Electron reasoning proof
+
+- Stopped Laguna through the UI and started the exact MiniMax-M3 Coder Small
+  card through the real Sessions Start control. PID 60303 reached loaded health
+  and roughly 52 GB RSS before its first request.
+- Inspected the real bundle/config and visible settings: affine JANG_2L (not
+  JANGTQ/MXTQ), temperature 1.0, top-p 0.95, top-k Off, MiniMax-M3 tool and
+  reasoning parsers, native MSA cache, no generic TQ, no JIT.
+- Captured Electron stream IPC: 245 reasoning events to 620 chars, ten content
+  events to 18 chars, then one completion. Captured an exact one-tool UI turn
+  and screenshots.
+- Raw Responses emitted 83 reasoning plus eight content deltas and one
+  completion. Direct Ollama On/Off and gateway Auto all exact-finaled with one
+  terminal and clean separated fields.
+- Recorded the truthful remaining boundaries. A follow-up public check
+  corrected the release wording: `jjang-ai/vmlx` is the source release and has
+  no assets, while `jjang-ai/mlxstudio` currently carries the two DMGs and two
+  blockmaps. No package, tag, or public release action was performed.
+
+## 2026-07-22 - reconciled exhaustive 1.6.16 worklist
+
+- Re-read the current campaign, active worklist, global reasoning audit, LFM
+  handoff, settings/default gate, release guard, release checkpoint, user
+  attachment, historical model matrix, and historical cache/UI matrix.
+- Kept the current campaign board authoritative where old matrices conflict;
+  notably, the old June paged-Off default directive does not supersede the
+  current architecture-aware policy or the user's later requirement.
+- Added `OPEN-ISSUES-RANKED.md` with ranked acceptance criteria, family rows,
+  no-repeat scoped closures, release provenance, and the final 1.6.16
+  signing/notarization/publication gate.
+- Checked GitHub release truth live: source v1.6.15 remains public; the
+  MLXStudio distribution release exposes both DMGs/blockmaps with the retained
+  SHA-256 values; both raw updater manifests still name 1.6.15.
+- Checked repo truth: vMLX campaign head is synchronized locally/GitHub/remote
+  proof checkout through `aa97a531b`; the behavior evidence checkpoint remains
+  `6de9ce8ef`, and the branch is ten commits ahead of main.
+  JANG GitHub main is not safely represented by the current dirty developer
+  tree, so clean provenance remains an explicit packaging gate.
+
+## 2026-07-22 - JANG 2.5.33 and current-source Laguna distribution proof
+
+- Identified the public packaging split: signed v1.6.15 apps already contained
+  the fixed per-module Laguna runtime, but PyPI `vmlx==1.6.15` allowed
+  `jang>=2.5.29`, so Python/CLI installs could resolve a stale uniform-bit
+  runtime and reproduce the `576/48 bits=8` failure.
+- Published JANG 2.5.33 from `b788273e`; GitHub release and PyPI wheel/sdist
+  digests match. Full clean JANG suites passed on both source boxes.
+- Pushed vMLX `b6d38eac7` and `e4c6762ce`: require JANG 2.5.33, reject stale
+  mixed-affine runtimes, and log imported runtime provenance. The focused vMLX
+  set passed 370/370 on both boxes; engine-path tests passed 7/7.
+- Relaunched the real remote Electron app cleanly. After its initial probe, it
+  left the installer screen and the main log found the venv engine. Real Start
+  loaded Laguna PID 39057 with `PYTHONPATH` pinned to the synchronized release
+  checkout; session logs recorded JANG marker 1 before model load.
+- Current-source Electron showed a separate reasoning rail and a subsequent
+  exact-one real `file_info` continuation. Raw Responses Auto/Off and Chat
+  separated reasoning/content with truthful terminals and no native marker
+  leak. The global campaign remains partial; Paged-Off restart, long eviction,
+  broader protocols/gateway, full suites, and release packaging remain open.
