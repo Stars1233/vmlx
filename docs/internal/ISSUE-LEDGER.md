@@ -4741,35 +4741,41 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - Source trace: the Electron settings checkbox is the real
   `Use Paged KV Cache` control in
   `panel/src/renderer/src/components/sessions/SessionConfigForm.tsx:1040`;
+  the pure SSD prefix-tier note is in
+  `panel/src/renderer/src/components/sessions/SessionConfigForm.tsx:1073`;
   the main process computes `blockDiskOnly` and emits
   `--no-paged-cache` while retaining block L2 in
-  `panel/src/main/sessions.ts:3794`, `3836-3841`, and `3897`;
+  `panel/src/main/sessions.ts:3794`, `3835-3841`, and `3897`;
   `vmlx_engine/scheduler.py` builds the `block_disk_only` backend and TQ-native
   compatibility tags; `vmlx_engine/paged_cache.py:1762` reports
   `backend_mode`; `vmlx_engine/block_disk_store.py:925-927` reports
   `tq_native_writes`, `tq_native_hits`, and `tq_native_enabled`.
-- Live Electron proof: through the real Server settings drawer, Paged KV Cache
-  was toggled Off while Prefix Cache and Block Disk Cache (L2) stayed enabled,
-  then Save & Restart launched PID `28307` with `--no-paged-cache`,
-  `--enable-block-disk-cache`, `--block-disk-cache-max-gb 10`, block size `64`,
-  and max blocks `1000`. Start health reported
-  `backend_mode="block_disk_only"`, `paged_ram_enabled=false`,
-  `disk_only=true`, `ram_tokens_cached=0`, and `tq_native_enabled=true`.
-- Negative-control rows A/B exact-finaled but wrote new blocks and kept
-  `disk_hits=0` because their first prompt block differed. Rows C/D shared the
-  identical long prefix first across two different Electron chats; row C
-  exact-finaled cold, and row D exact-finaled
-  `LAG-S21-SSD-CROSSCHAT-D-DONE` with `cachedTokens=1024` and
-  `cacheDetail="block-disk+tq-native"`.
-- Post-D health recorded `tokens_saved=1024`, `cache_hits=32`,
-  `disk_hits=48`, `tq_native_hits=48`, `tq_native_writes=60`,
-  `total_tokens_on_disk=3638`, `ram_tokens_cached=0`, and
-  `l1_resident_bytes=0`. The UI was restored through Save & Restart to Paged On
-  plus Block Disk L2; restored PID `81068` reported `backend_mode="paged"`,
-  `paged_ram_enabled=true`, and q4 TurboQuant storage still enabled.
-- Evidence:
+- Live Electron proof:
   `docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid28307_diskonly_crosschat/`.
-- Retained boundaries: disk-only process-restart partial reuse, JANG_4M,
-  long-context/SWA-boundary quality, all-family cache breadth, full protocol
-  matrix, signing/notarization, public tag/feed, and install smoke remain
-  `PARTIAL` or `BLOCKED`.
+  The real Electron UI was used to turn `Use Paged KV Cache` Off while leaving
+  `Prefix Cache` and `Block Disk Cache (L2)` On, then Save & Restart launched
+  PID 28307 with `--no-paged-cache`, block size 64, 1000 max blocks, 10 GB L2,
+  parser settings `deepseek_r1`/`glm47`, and `kvCacheQuantization=auto`.
+  Health at start recorded `backend_mode=block_disk_only`,
+  `paged_ram_enabled=false`, `disk_only=true`, `tq_native_enabled=true`, and
+  no resident paged-RAM tokens.
+- Live cross-chat result:
+  cold row 177 emitted exact `LAG-S21-SSD-COLD-C-DONE` with prompt 1091 and no
+  cache detail. A fresh-chat row 180 with the same long prefix but a different
+  suffix emitted exact `LAG-S21-SSD-CROSSCHAT-D-DONE` with prompt 1093,
+  `cachedTokens=1024`, and `cacheDetail=block-disk+tq-native`. Post-row health
+  recorded `tokens_saved=1024`, `cache_hits=32`, `disk_hits=48`,
+  `tq_native_hits=48`, `ram_tokens_cached=0`, and `l1_resident_bytes=0`, proving
+  the reuse came from SSD/TQ-native blocks rather than Paged RAM.
+- Control and cleanup:
+  an earlier A/B where the distinct marker preceded the shared body produced no
+  cached-token credit; this remains a useful negative control that the block
+  hash chain did not fake reuse when the first block differed. The UI was
+  restored to Paged KV On via Save & Restart into PID 81068, with health
+  recording `backend_mode=paged`, `paged_ram_enabled=true`, `disk_only=false`,
+  and block-disk L2 still enabled.
+- Retained open scope:
+  disk-only process-restart restore, JANG_4M, long-context/SWA-boundary
+  quality, all-family architecture breadth, signed-app repetition, and the
+  full v1.6.15 release prepackage manifest remain separate `PARTIAL/BLOCKED`
+  rows.

@@ -290,6 +290,41 @@ was a real release blocker until `bundle-python.sh` was rerun.
   build attempt used the wrong source path (`/Users/eric/jang` instead of the
   `jang-tools` package directory) and failed before shebang rewrite; it was an
   invocation error, not counted as a product pass.
+- Current PID 28307/81068 disk-only cache supplement (2026-07-22 local):
+  the real Electron Server settings drawer was used to turn `Use Paged KV
+  Cache` Off while leaving `Prefix Cache` and `Block Disk Cache (L2)` On for
+  `jangq-ai/Laguna-S-2.1-JANG_2L`; the model was restarted via the UI
+  `Save & Restart` path into PID 28307. The launch argv in
+  `current_pid28307_diskonly_crosschat/process-restored-paged-on.txt` and
+  the paged-off health/session artifacts show the scoped disk-only policy:
+  `--no-paged-cache`, `--enable-block-disk-cache`, block size 64, 1000 max
+  blocks, 10 GB L2, reasoning parser `deepseek_r1`, tool parser `glm47`, and
+  `kvCacheQuantization=auto`. Source trace for this path is
+  `panel/src/renderer/src/components/sessions/SessionConfigForm.tsx`
+  (Paged/Block Disk UI notes, including pure SSD prefix tier text),
+  `panel/src/main/sessions.ts` (effective cache launch policy and
+  `--no-paged-cache`/block-disk argv emission), `vmlx_engine/paged_cache.py`
+  (`disk_only`, `_promote_from_disk`, and `backend_mode=block_disk_only`), and
+  `vmlx_engine/prefix_cache.py` (disk-only fallback and TQ-native block
+  reconstruction).
+- Disk-only cross-chat partial-prefix proof on PID 28307:
+  `current_pid28307_diskonly_crosschat/electron-rows-169-180.json` preserves
+  the real Electron rows. The intentionally bad A/B control put different
+  marker text before the shared body and produced no cached-token credit, so
+  the cache did not fake a hit when the first block differed. The corrected
+  C/D control kept the long prefix identical across two fresh chats and moved
+  the distinct marker after the shared prefix. Cold row 177 returned exact
+  `LAG-S21-SSD-COLD-C-DONE` with prompt 1091 and no cache detail. Cross-chat
+  row 180 returned exact `LAG-S21-SSD-CROSSCHAT-D-DONE` with prompt 1093,
+  `cachedTokens=1024`, `cacheDetail=block-disk+tq-native`, `ttft=0.83`, and no
+  paged-RAM credit. `health-after-d.json` records
+  `backend_mode=block_disk_only`, `paged_ram_enabled=false`,
+  `disk_only=true`, `ram_tokens_cached=0`, `l1_resident_bytes=0`,
+  `tokens_saved=1024`, `cache_hits=32`, `disk_hits=48`,
+  `tq_native_hits=48`, and `tq_native_enabled=true`. The UI was then restored
+  to paged-on defaults by Save & Restart into PID 81068; `health-restored-paged-on.json`
+  records `backend_mode=paged`, `paged_ram_enabled=true`, `disk_only=false`,
+  and block-disk L2 still enabled.
 
 - Full Python suite was not rerun end-to-end after the later 1.6.15 version bump; targeted release/version tests were. Current full panel suite, panel production build, bundled-Python verification, and TypeScript typecheck have now been rerun and passed in this gate.
 - Full protocol matrix remains open: non-stream Chat/Responses and
@@ -298,20 +333,19 @@ was a real release blocker until `bundle-python.sh` was rerun.
   one-tool continuations but does not generalize them cross-family.
 - Full settings parity remains open for all models; this gate only checks Laguna S-2.1 generation defaults observed in UI.
 - Disk-only L2/paged-off cross-chat partial-prefix restore is now proven for
-  this exact Laguna S-2.1 JANG_2L row in
-  `current_pid28307_diskonly_crosschat/`. Disk-only process-restart reuse and
-  cross-family breadth remain open.
+  this exact Laguna S-2.1 JANG_2L current-source PID 28307 scope. It does not
+  close process-restart disk-only reuse, all-model architecture breadth, or
+  signed-app repetition.
 - Broader model family matrix remains open: DSV4 Flash typed composite cache, MiniMax M3 sparse/lightning cache, Gemma, Qwen/Bonsai/Ornith, Step, Nemotron/Omni/audio/video, M2.7, LFM, openPangu.
 - Packaging, signing, notarization, v1.6.15 git tag/GitHub release,
   latest.json/feed updates, and install smoke were not performed in this gate.
 
 Verdict for this gate: PARTIAL scoped closure. Laguna S-2.1 current-source
 reasoning separation, post-tool phantom-call streaming, explicit
-`enable_thinking` propagation, and local bundled-Python freshness are
+`enable_thinking` propagation, local bundled-Python freshness, and scoped
+Paged-Off block-disk/TQ-native cross-chat partial-prefix reuse are
 source/test/live-proven for the named scope. Electron/API proof used
-Electron-launched PIDs 93364, 93786, 4279, 28307, and 81068 plus raw API.
-The additional PID 28307/81068 evidence closes the named Laguna cross-chat
-Paged-Off SSD-only partial-prefix row. Current 1.6.15
+Electron-launched PIDs 93364, 93786, 4279, 28307, and 81068 plus raw API. Current 1.6.15
 prepackage manifest evidence is negative (`prepackage_ready=false`,
 `release_ready=false`), so overall release remains BLOCKED until the remaining
 release gates above are closed or explicitly deferred with a release-risk note.
