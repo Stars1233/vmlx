@@ -4984,3 +4984,42 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   TQ-native hits. This is a scoped Paged-On restart refault, not Paged-Off
   disk-only partial reuse or eviction proof. Evidence is under
   `docs/internal/release-gates/20260722_v1_6_16_campaign/`.
+
+## 2026-07-22 - MiniMax-M3 current Ollama/UI reasoning closure and release truth
+
+- `V1.6.15-PUBLIC-VERSION-TRUTH`: `PUBLISHED / ASSET GAP`. GitHub currently
+  exposes `v1.6.15` as the latest public release and the annotated tag resolves
+  to `2dc90921ea8604f4ec4c62e196621007fbb1cbbf`. The GitHub release API reports
+  zero attached assets. The 1.6.16 campaign must not overwrite 1.6.15 or claim
+  its GitHub release contains Sequoia/Tahoe DMGs; the next checkpoint is a new
+  version with public-asset redownload/hash proof.
+- `M3-R16-EAGER-NATIVE-MSA`: `VERIFIED-LIVE_SCOPED` at `f9a4b6838`. The real
+  Electron Sessions Start control eagerly loaded the exact affine JANG_2L
+  MiniMax-M3 bundle as PID 60303 before any prompt. Pre-request health reports
+  the 60-layer native MSA tuple (`attention_kv`, `msa_idx_keys`, absolute block
+  index), Paged RAM and Block L2 On, generic TQ Off, and JIT Off for the
+  Lightning-Indexer path. Live `vl_runtime_available=false` keeps current media
+  proof open.
+- `M3-R16-UI-REASONING-IPC`: `VERIFIED-LIVE_SCOPED`. An Electron IPC observer
+  recorded 245 progressive reasoning updates to 620 characters, followed by
+  ten progressive content updates to 18 characters and one completion with the
+  same split. The visible exact final was `R16-M3-UI-IPC-DONE`; reasoning was
+  not rendered inline. A transient SQLite placeholder rowid change was an
+  `INSERT OR REPLACE` persistence artifact, not renderer batching.
+- `M3-R16-UI-TOOL`: `VERIFIED-LIVE_SCOPED`. A fresh Electron chat produced
+  233 separately persisted reasoning characters, exactly one real
+  `file_info(panel/package.json)` call/result, exact final
+  `R16-M3-UI-TOOL-DONE SIZE=5.2 KB`, no warning, and a 256-token paged hit.
+- `OLLAMA-STREAMING-REASONING-NORMALIZATION-M3`: `VERIFIED-LIVE_SCOPED` for
+  the M3 branch changed by `230c822f2`. Direct `think:true` produced 512
+  thinking plus nine content deltas; direct `think:false` produced zero
+  thinking plus nine content deltas; Electron gateway Auto produced 160
+  thinking plus nine content deltas. Each exact-finaled with one
+  `done:true/stop` and no native-marker leak. Raw Responses independently
+  produced 83 reasoning and eight output-text deltas with one completed
+  terminal.
+- Still open: M3 process-restart/partial/eviction native sparse-cache proof,
+  current VL/video runtime, Ollama non-stream/post-tool continuation, REAP
+  variants, openPangu/Mistral4 named-family Ollama normalization, and the
+  global agentic/release matrices. Sanitized evidence and screenshots are in
+  `docs/internal/release-gates/20260722_v1_6_16_campaign/`.

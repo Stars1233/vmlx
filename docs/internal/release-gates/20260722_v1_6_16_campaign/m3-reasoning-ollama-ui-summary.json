@@ -1,0 +1,165 @@
+{
+  "date": "2026-07-22",
+  "source_head": "f9a4b6838b398312a951e78299e5457ce35d68b7",
+  "proof_host": "erics-m5-max.local",
+  "electron_cdp": "http://127.0.0.1:9335",
+  "model": {
+    "path": "/Users/eric/.mlxstudio/models/JANGQ-AI/MiniMax-M3-Coder-Small",
+    "config_sha256": "812ee91f6511256ad24cec09493bd98b7cdcd6dd61497df43bbca38d6c7fc0f6",
+    "generation_config_sha256": "272d19efac5060ff8c9f76c7ed67909a5da1be466284ee4f1f1bd2a810c6fad2",
+    "tokenizer_config_sha256": "15caca9f74fbce9b86dc014e9324cbefa56703d81ccd6d56020faa1c41d2eae5",
+    "jang_config_sha256": "bf0ba244b178dc1b88406020ff1b5a982e5341e081a7080632a0e2f36e52a701",
+    "model_type": "minimax_m3_vl",
+    "quantization_identity": "JANG affine mixed / JANG_2L; not JANGTQ or MXTQ",
+    "layers": 60,
+    "sparse_msa_layers": 57,
+    "dense_kv_layers": 3,
+    "generation_defaults": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": "absent/off"
+    }
+  },
+  "electron_load": {
+    "real_sessions_start_clicked": true,
+    "loaded_before_first_prompt": true,
+    "pid": 60303,
+    "rss_kb_before_first_prompt": 52070448,
+    "port": 8003,
+    "engine_path_log": "[Engine Manager] Found in PATH: /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine",
+    "argv_has": [
+      "--tool-call-parser minimax_m3",
+      "--enable-auto-tool-choice",
+      "--reasoning-parser minimax_m3",
+      "--use-paged-cache",
+      "--enable-block-disk-cache",
+      "--stream-interval 1"
+    ],
+    "no_error_toast": true,
+    "screenshot": "m3-loaded-session.png"
+  },
+  "effective_runtime": {
+    "reasoning_parser": "minimax_m3",
+    "tool_parser": "minimax_m3",
+    "native_cache_schema": "minimax_m3_msa_v1",
+    "native_cache_type": "native_msa_sparse_kv",
+    "components": [
+      "attention_kv",
+      "msa_idx_keys",
+      "absolute_block_index"
+    ],
+    "generic_turboquant_kv": false,
+    "generic_turboquant_reason": "native_minimax_m3_msa_idx_keys",
+    "paged_ram": true,
+    "block_disk_l2": true,
+    "jit": false,
+    "jit_reason": "Lightning-Indexer idx_keys path uses the uncompiled scheduler",
+    "vl_bundle_detected": true,
+    "vl_runtime_available": false,
+    "mtp_artifact_available": false
+  },
+  "electron_settings": {
+    "thinking": "Auto",
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": "Off",
+    "max_tokens": "model-owned",
+    "model_context": 1048576,
+    "tool_parser": "Auto -> MiniMax M3",
+    "reasoning_parser": "Auto -> MiniMax M3",
+    "cache_ui": "native MSA / generic q4-q8 disabled"
+  },
+  "electron_responses_reasoning": {
+    "ipc_reasoning_events": 245,
+    "ipc_reasoning_chars_final": 620,
+    "ipc_first_reasoning_ms": 1894,
+    "ipc_last_reasoning_ms": 11669,
+    "ipc_content_events": 10,
+    "ipc_content_chars_final": 18,
+    "ipc_first_content_ms": 11756,
+    "ipc_last_content_ms": 12117,
+    "completion_ms": 12160,
+    "completion_reasoning_chars": 620,
+    "completion_content_chars": 18,
+    "exact_visible_final": "R16-M3-UI-IPC-DONE",
+    "reasoning_inline": false,
+    "screenshot": "m3-ui-reason.png"
+  },
+  "electron_tool_loop": {
+    "assistant_rowid": 198,
+    "reasoning_chars": 233,
+    "tool_call_count": 1,
+    "tool_name": "file_info",
+    "arguments": {
+      "path": "panel/package.json"
+    },
+    "real_result_size": "5.2 KB",
+    "exact_visible_final": "R16-M3-UI-TOOL-DONE SIZE=5.2 KB",
+    "warnings": [],
+    "cached_tokens": 256,
+    "cache_detail": "paged",
+    "screenshot": "m3-ui-tool.png"
+  },
+  "raw_responses_stream": {
+    "reasoning_delta_events": 83,
+    "reasoning_chars": 278,
+    "content_delta_events": 8,
+    "content_chars": 19,
+    "first_reasoning_seconds": 1.824,
+    "first_content_seconds": 5.793,
+    "last_content_seconds": 6.14,
+    "terminal_event": "response.completed",
+    "terminal_count": 1,
+    "terminal_status": "completed",
+    "exact_visible_final": "M3-RESP-STREAM-DONE",
+    "raw_marker_leak": false
+  },
+  "ollama_streams": {
+    "direct_think_on": {
+      "thinking_delta_events": 512,
+      "thinking_chars": 1054,
+      "content_delta_events": 9,
+      "content_chars": 17,
+      "first_thinking_seconds": 1.597,
+      "first_content_seconds": 23.921,
+      "last_content_seconds": 24.242,
+      "terminal_count": 1,
+      "done_reason": "stop",
+      "exact_visible_final": "M3-OLLAMA-ON-DONE",
+      "raw_marker_leak": false
+    },
+    "direct_think_off": {
+      "thinking_delta_events": 0,
+      "content_delta_events": 9,
+      "content_chars": 18,
+      "first_content_seconds": 1.446,
+      "last_content_seconds": 1.819,
+      "terminal_count": 1,
+      "done_reason": "stop",
+      "exact_visible_final": "M3-OLLAMA-OFF-DONE",
+      "raw_marker_leak": false
+    },
+    "gateway_auto": {
+      "thinking_delta_events": 160,
+      "thinking_chars": 368,
+      "content_delta_events": 9,
+      "content_chars": 20,
+      "first_content_seconds": 14.13,
+      "last_content_seconds": 14.474,
+      "terminal_count": 1,
+      "done_reason": "stop",
+      "exact_visible_final": "M3-GATEWAY-AUTO-DONE",
+      "raw_marker_leak": false
+    }
+  },
+  "truthful_boundary": {
+    "status": "VERIFIED-LIVE_SCOPED / GLOBAL RELEASE ROWS PARTIAL",
+    "not_proven_here": [
+      "M3 process-restart native sparse L2 restore at this source cutoff",
+      "M3 partial-prefix and eviction behavior at this source cutoff",
+      "M3 image or video runtime, because live health reports vl_runtime_available=false",
+      "Ollama non-stream and post-tool continuation matrix",
+      "openPangu and Mistral4 named-family Ollama normalization"
+    ]
+  }
+}

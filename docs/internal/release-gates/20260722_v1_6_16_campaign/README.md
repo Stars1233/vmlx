@@ -10,11 +10,11 @@ It starts from public v1.6.15 follow-up source commit
 `codex/v1.6.16-release-campaign-20260722`. The immutable v1.6.15 tag and its
 signed evidence remain unchanged.
 
-Current tested cutoff: `3b33fa9aa0dac03632edc78c0e81f97b9cfc185b`.
+Current tested cutoff: `f9a4b6838b398312a951e78299e5457ce35d68b7`.
 The clean source checkout is
 `/Users/eric/mlx/vllm-mlx-release-1.6.15`; the live Electron proof checkout on
 `erics-m5-max.local` is `/Users/eric/mlx/vllm-mlx-release-1.6.13`. Both were at
-the same commit for the retained Laguna proof. The dev launcher executable was
+the same commit for the retained Laguna, settings, and MiniMax-M3 proofs. The dev launcher executable was
 `/Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine`, with `PYTHONPATH` selecting
 the synchronized release proof checkout rather than the launcher's source
 tree.
@@ -42,6 +42,18 @@ is shown unchanged or the proof is rerun.
 - `../20260722_release_checkpoint_1_6_15/README.md`
 - User campaign attachment
   `/Users/eric/.codex/attachments/668d3b34-ca92-49c4-aeb2-5e0ded8f6fc0/pasted-text-1.txt`
+
+## Public release truth at campaign start
+
+GitHub currently exposes public `v1.6.15` as the latest release, published
+2026-07-22 at 09:05:45 UTC. The annotated tag resolves to
+`2dc90921ea8604f4ec4c62e196621007fbb1cbbf`; the source checkout's version
+surfaces (`pyproject.toml`, `panel/package.json`, and `latest.json`) remain
+1.6.15. The GitHub release API currently reports **zero attached assets**.
+That does not erase separately retained signing/notarization evidence, but it
+means this campaign must not describe the GitHub release itself as containing
+Sequoia/Tahoe DMGs. The next public checkpoint is a new version (1.6.16 or
+later), never a retag or overwrite of 1.6.15.
 
 ## Non-negotiable proof contract
 
@@ -80,7 +92,7 @@ For every live model generation retained as evidence:
 
 | ID | Status | Work and acceptance |
 |---|---|---|
-| `R16-REASONING-RAILS` | `PARTIAL / RELEASE-CRITICAL` | Current Laguna Electron plus Chat/Responses/Anthropic/Ollama live proof and the three scoped source/test repairs are retained below. Auto remains model-owned variable reasoning where the bundle supports it; it must resolve to an enabled reasoning-capable request, not force the model to expose reasoning on every easy prompt. Explicit On and Off must be honored. Still close non-stream behavior, remaining parser families, a live late-reasoning family, and live M3/openPangu/Mistral4 Ollama normalization. Separate reasoning/content, progressive paint/wire events, one truthful terminal, and no inline native tags are mandatory. |
+| `R16-REASONING-RAILS` | `PARTIAL / RELEASE-CRITICAL` | Current Laguna Electron plus Chat/Responses/Anthropic/Ollama proof, current M3 Electron/Responses/Ollama proof, and the three scoped source/test repairs are retained below. Auto remains model-owned variable reasoning where the bundle supports it; it must resolve to an enabled reasoning-capable request, not force the model to expose reasoning on every easy prompt. Explicit On and Off must be honored. Still close non-stream behavior, remaining parser families, a live late-reasoning family, and live openPangu/Mistral4 Ollama normalization. Separate reasoning/content, progressive paint/wire events, one truthful terminal, and no inline native tags are mandatory. |
 | `R16-AGENTIC-HARNESS` | `OPEN / RELEASE-CRITICAL` | Use a coding-harness-shaped client for no-tool, auto, required, explicit function choice, real result continuation, two-tool interleaving, final synthesis, cancellation, disconnect, injected backend failure, and immediate recovery. Exercise direct and Electron gateway paths. A reasoning-only final, dropped required argument, repeated tool, hallucinated tool result, or false terminal fails the row. |
 | `R16-STREAM-METRICS` | `OPEN` | Compare Electron `metrics_json` against raw timed SSE for the same prompt. Report TTFT, prompt processing speed, decode tokens/s after first output token, reasoning tokens, visible tokens, tool/fallback pauses, and wall time separately. Reject terminal-batch answer painting and misleading blended two-pass TPS. |
 | `R16-CACHE-HIERARCHY` | `OPEN / RELEASE-CRITICAL` | Prove cold store, resident RAM hit, partial-block reuse, L1 eviction, L2 SSD refault, process restart restore, and safe full-prefill fallback for standard KV, hybrid SSM/GDN, mixed SWA, CCA, M3 sparse, DSV4 composite, and openPangu native prompt disk. With Paged Off and L2 On, partial prefix reuse must come from SSD with zero resident paged bytes. With Paged On, lookup order must use matching RAM blocks first and SSD when absent. Cross-chat and cross-session reuse must not leak unrelated suffixes or media. |
@@ -98,7 +110,7 @@ For every live model generation retained as evidence:
 | Bonsai 27B 1-bit and other real Bonsai variants | q8 TQ hybrid storage is the explicit Bonsai exception; exact tool/restart/media scoped rows exist. Long pre-tool reasoning and partial-prefix breadth remain partial. | Re-run shared rails and partial-prefix repair/eviction. Confirm q8 only for Bonsai attention KV, native SSM/GDN rederive/companion state, L2 cross-chat/restart, and no incoherent loops or reasoning-only finalization. Ground each variant in its real Qwen-family config. |
 | Ornith / other Qwen-family variants | Not globally promoted by the Qwen3.6/Bonsai rows. | Bundle-ground parser, modalities, MTP, quant format, sampler defaults, hybrid-state topology, Auto reasoning, one multi-turn tool loop, cache hierarchy, and media if advertised. |
 | MiniMax M2.7 | Existing scoped proof is M2.7 JANGTQ/MXTQ full-KV text-only, not affine JANG. | Add the requested affine-JANG M2.7 artifact if locally present. M2.7 remains text-only. Prove full-KV q4 TQ, cache hierarchy, Auto/On/Off, all four protocols, tools, settings, and no false VL claim. |
-| MiniMax M3 | Image/video/tool/cache transport scoped pass; exact OCR and REAP remain partial. | Preserve native dense KV plus sparse/MSA lightning-indexer state; do not apply generic TQ to indexer state. Regress image/video salt A/B/A, partial/restart cache, Ollama normalization, long video terminal delay, and agentic tool finalization. |
+| MiniMax M3 | Current-source real Electron Start/eager load, Auto reasoning/content IPC separation, exact one-tool continuation, raw Responses, and direct/gateway Ollama On/Off/Auto are scoped passes. Native MSA health is explicit; generic TQ remains Off. Live health reports `vl_runtime_available=false`, so prior media transport does not promote this current runtime to a VL pass. | Preserve native dense KV plus sparse/MSA lightning-indexer state; do not apply generic TQ to indexer state. Still regress image/video availability and salt A/B/A after the VL runtime is available, partial/restart/eviction cache, Ollama non-stream/post-tool continuation, long video terminal delay, and REAP variants. |
 | DSV4 Flash affine/JANG and any exact JANGTQ artifact | Short reasoning/content stream and native composite cache scoped pass. Medium/long Auto loops in direct generation remain an honest failure boundary. | Preserve MLA plus exact bundle/source-owned local/global compressed branches (SWA/CSA/HCA) and native pool codec; generic TQ stays Off. Regress cold/warm/partial/restart/eviction, long/short coherence, DSML tools, four protocols, and eager materialization. Do not blame or rewrite the official artifact without an independent matched A/B. |
 | Gemma 4 JANG_4M/MXFP8, dense/MoE and rotating-SWA variants | Signed 1.6.15 Gemma mixed-SWA q4 cache row passed scoped. Anthropic late reasoning and broader media remain open. | Regress mixed rotating/full KV cache, q4 only where eligible, late-reasoning Anthropic event indices, sampler defaults, image/video/audio only where the exact artifact advertises them, media salt, tools, and long context. |
 | Nemotron Nano/Omni | Auto-detection and selected Omni media/audio rows are scoped, not family-wide. | Ground Parakeet/RADIO/audio/VL tensors in sidecars and index. Prove audio and advertised image/video in Electron and raw APIs, parser Auto persistence, hybrid cache/TQ companion state, tool loop, and no modality overclaim. |
@@ -149,6 +161,7 @@ For every live model generation retained as evidence:
 | 2026-07-22 | `230c822f2` | Normalized streaming Ollama reasoning policy for MiniMax M3, openPangu, Mistral4, and Off-history stripping | Included in 210/210 combined reasoning/protocol focused tests | Laguna UI unaffected and coherent | Laguna generic Ollama route produced 222 thinking events, 99 content events, one terminal; named-family normalization is not yet live-proven | `VERIFIED-SOURCE_TEST_SCOPED / LIVE REPRESENTATIVE` |
 | 2026-07-22 | `230c822f2` | Current Laguna S-2.1 JANG_2L reasoning, tool-loop, and protocol representative | Bundle/config grounded; combined focused suite 210/210 | Real Electron chat retained one separate reasoning turn and two exact one-tool continuations; third turn restored 664 `paged+tq-native` RAM tokens | Chat, Responses, Anthropic, and Ollama streams were progressive and terminal-complete; exact counts are in the sanitized summary | `VERIFIED-LIVE_SCOPED / GLOBAL ROW PARTIAL` |
 | 2026-07-22 | `951eab25d` | Synchronized settings updates, Save & Restart sequencing, and Chat Settings live PID | 503/503 focused panel tests + typecheck + locale parse + diff check | Plain Save kept the current process and exposed the next-restart contract; two real Save & Restarts changed PID/config/argv without the old wait; displayed PID matched SQLite/ps; post-restart exact turn restored 80 disk/TQ-native tokens | Current health matched Paged RAM/L2/q4 policy and recorded two disk promotions/TQ-native hits | `VERIFIED-LIVE_SCOPED / GLOBAL SETTINGS ROW PARTIAL` |
+| 2026-07-22 | `f9a4b6838` | Current MiniMax-M3 Ollama normalization, reasoning rail, exact tool loop, and native sparse-cache boundary | Bundle hashes and live health ground affine JANG_2L, 60-layer MSA topology, parser defaults, sampler defaults, and intentional no-generic-TQ policy | Real Sessions Start eagerly materialized PID 60303 before a prompt; UI IPC recorded 245 reasoning updates then 10 content updates and one completion; a separate turn executed exactly one real `file_info` and exact-finaled | Responses emitted 83 reasoning plus eight content deltas and one completion; direct Ollama On/Off and gateway Auto streamed separate rails with one terminal and no native-tag leak | `VERIFIED-LIVE_SCOPED / GLOBAL ROWS PARTIAL` |
 
 ## Cache terminology and tooltip proof
 
@@ -272,6 +285,60 @@ recovery, Paged-Off disk-only partial reuse, or eviction.
 Durable evidence: `settings-restart-pid-proof.json`,
 `settings-debug-restart.png`, `settings-info-select.png`, and
 `settings-post-restart-turn.png`.
+
+## Current MiniMax-M3 native-cache, reasoning, Ollama, and tool boundary
+
+At source cutoff `f9a4b6838`, the real Electron Sessions **Start** control
+loaded `/Users/eric/.mlxstudio/models/JANGQ-AI/MiniMax-M3-Coder-Small` as PID
+60303 on port 8003 before any prompt. Pre-request RSS was approximately 52 GB,
+the card visibly reported Running, and the dev log named
+`/Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine`. This is eager
+materialization evidence rather than a load-on-first-message observation.
+
+The exact bundle is `minimax_m3_vl` with affine mixed JANG/JANG_2L weights,
+not JANGTQ/MXTQ. Live health reports a 60-layer native
+`minimax_m3_msa_v1` cache: dense KV layers 0-2 and sparse MSA layers 3-59 with
+`attention_kv`, `msa_idx_keys`, and `absolute_block_index`. Generic
+TurboQuant KV is intentionally Off because it cannot preserve indexer state;
+Paged RAM and Block Disk L2 are enabled. JIT is Off for the Lightning-Indexer
+path. The UI matched bundle defaults temperature 1.00, top-p 0.95, top-k Off,
+Auto reasoning, MiniMax-M3 tool/reasoning parsers, and the 1,048,576-token
+context. Live health also reports `vl_runtime_available=false`; this run makes
+no current image/video claim despite the bundle's vision tensors.
+
+Electron Responses proof:
+
+- an injected IPC observer saw 245 progressive reasoning updates grow from 3
+  to 620 characters, then ten content updates grow from 1 to 18 characters,
+  then one completion with the same 620/18 split;
+- the visible final was exact `R16-M3-UI-IPC-DONE`, with no inline native
+  marker;
+- a separate fresh chat emitted 233 reasoning characters, exactly one real
+  `file_info({"path":"panel/package.json"})`, the real 5.2 KB result, and
+  exact `R16-M3-UI-TOOL-DONE SIZE=5.2 KB` with no warning;
+- that tool turn reported a 256-token `paged` hit.
+
+Raw protocol proof:
+
+- Responses: 83 reasoning-summary deltas, eight output-text deltas, exact
+  `M3-RESP-STREAM-DONE`, and one `response.completed` status `completed`;
+- direct Ollama `think:true`: 512 thinking deltas followed by nine content
+  deltas and one `done:true/stop`, exact `M3-OLLAMA-ON-DONE`;
+- direct Ollama `think:false`: zero thinking deltas, nine content deltas, one
+  terminal, exact `M3-OLLAMA-OFF-DONE`;
+- Electron gateway Ollama Auto: 160 thinking deltas, nine content deltas, one
+  terminal, exact `M3-GATEWAY-AUTO-DONE`;
+- none of the visible streams contained `<think>` or `<mm:think>` markers.
+
+The transient SQLite placeholder changes rowid when final `INSERT OR REPLACE`
+persists the completed message. That artifact did not indicate inline
+rendering: current UI IPC proves reasoning and content were separate while
+streaming. Still open for M3 at this cutoff are native sparse-cache
+partial/eviction/process-restart proof, VL runtime availability and media salt,
+Ollama non-stream/post-tool continuation, and REAP variants.
+
+Durable evidence: `m3-reasoning-ollama-ui-summary.json`,
+`m3-loaded-session.png`, `m3-ui-reason.png`, and `m3-ui-tool.png`.
 
 ## Release stop conditions
 
