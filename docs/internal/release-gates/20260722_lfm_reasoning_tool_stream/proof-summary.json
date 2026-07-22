@@ -1,0 +1,40 @@
+{
+  "source_head_at_retest": "ad931a45f",
+  "model": "dealignai/LFM2.5-8B-A1B-MXFP4-CRACK",
+  "endpoint_results": {
+    "chat_reasoning_answer": {
+      "reasoning_chunks": 73,
+      "content_chunks": 6,
+      "content": "The product is 323.",
+      "terminal": "stop"
+    },
+    "responses_reasoning_answer": {
+      "reasoning_chunks": 120,
+      "content_chunks": 5,
+      "content": "Spring Summer Autumn Winter",
+      "terminal": "response.completed"
+    },
+    "chat_tool_call": {
+      "arguments": {"path": "panel/package.json"},
+      "terminal": "tool_calls",
+      "continuation_content_chunks": 11,
+      "continuation_content": "LFM-TOOL-CONTINUATION-PASS",
+      "continuation_terminal": "stop"
+    },
+    "responses_tool_call": {
+      "arguments": {"path": "panel/package.json"},
+      "terminal": "response.completed",
+      "input_tokens": 239,
+      "output_tokens": 416,
+      "cached_tokens": 235,
+      "cache_detail": "paged+ssm+tq-native",
+      "continuation_content_chunks": 10,
+      "continuation_content": "LFM-RESPONSES-TOOL-PASS",
+      "continuation_terminal": "response.completed"
+    }
+  },
+  "focused_tests": {
+    "tests/test_tool_prompt_fallback.py": "25 passed"
+  },
+  "release_scope": "PARTIAL"
+}
