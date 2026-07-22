@@ -1,0 +1,103 @@
+  JANGTQ_WIRED_LIMIT_GB defaulted to 115 GB (from OS sysctl iogpu.wired_limit_mb; overrides external jang_tools 70% default)
+INFO:vmlx_engine:Registered vendored minimax_m3_vl runtime (/Users/eric/mlx/vllm-mlx-release-1.6.13/vmlx_engine/models/minimax_m3/minimax_m3.py)
+INFO:vmlx_engine:Registered vendored openpangu_v2 runtime (/Users/eric/mlx/vllm-mlx-release-1.6.13/vmlx_engine/models/openpangu_v2/openpangu_v2.py)
+INFO:vmlx_engine.model_config_registry:Model config: detection_source=jang_stamped family=laguna reasoning_parser=deepseek_r1 tool_parser=glm47 think_in_template=True cache_type=kv cache_subtype=kv is_mllm=False
+INFO:vmlx_engine.cli:KV cache auto mode: TurboQuant enabled for compatible models; stored prefix cache quantization=q4
+INFO:vmlx_engine.cli:Reasoning parser enabled: deepseek_r1
+INFO:vmlx_engine:is_mllm_model(/Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_2L): tier=jang_config_explicit_false result=False
+INFO:vmlx_engine.cli:Paged cache: --cache-memory-mb/--cache-memory-percent set the L1 RAM byte ceiling for the block KV mirror (free blocks are evicted, disk-L2 write-through first, to hold it). --max-cache-blocks caps the block-pool count; --block-disk-cache-max-gb caps L2 disk.
+INFO:vmlx_engine.server:System memory before load: 106.2GB available / 128.0GB total (17.0% used)
+INFO:vmlx_engine.server:Loading model with BatchedEngine: /Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_2L
+INFO:vmlx_engine.server:Model loaded (batched mode): /Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_2L
+INFO:vmlx_engine.server:Metal GPU memory after load: 0.00GB active, 0.00GB peak
+INFO:vmlx_engine.server:System memory after load: 106.2GB available (17.0% used)
+INFO:vmlx_engine.server:Default max tokens fallback: 4096 base / 16384 for reasoning-capable models (bundle max_new_tokens wins when present; projected Metal guard clamps per-model)
+INFO:     Started server process [59960]
+INFO:     Waiting for application startup.
+INFO:vmlx_engine.server:Started caffeinate system wake lock for PID 59960
+INFO:vmlx_engine.utils.tokenizer:Laguna bundle detected (early route) — load_laguna_model
+INFO:vmlx_engine.loaders.laguna:Loading Laguna bundle: Laguna-S-2.1-JANG_2L
+============================================================
+SECURITY CONFIGURATION
+============================================================
+  Authentication: DISABLED - Use --api-key to enable
+  Rate limiting: DISABLED - Use --rate-limit to enable
+  Request timeout: 300.0s
+  Tool calling: ENABLED (parser: glm47)
+  Reasoning: ENABLED (parser: DeepSeekR1ReasoningParser)  [thinking model detected]
+  External speculative decoding: Use --speculative-model to enable
+============================================================
+Loading model: /Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_2L
+Max output fallback: 4096 (bundle max_new_tokens wins when present)
+Mode: Continuous batching (for multiple concurrent users)
+Stream interval: 1 tokens
+Paged cache: block_size=64, max_blocks=1000, capacity=64000 tokens (--cache-memory-mb/--cache-memory-percent set the L1 RAM byte ceiling for the block KV mirror; --max-cache-blocks caps the block-pool count)
+Block disk cache: max=10.0GB
+KV cache quantization: q4 (group_size=64)
+Starting server at http://127.0.0.1:8008
+[laguna] wired_limit=57 GB (bundle 41.3 GB)
+[laguna] format=jang, layers=48, experts=256
+[laguna] inference mode enabled
+INFO:vmlx_engine.loaders.laguna:Laguna loaded: format=jang, layers=48, experts=256, vocab=100352, hidden=3072
+INFO:vmlx_engine.utils.jang_loader:  TurboQuant auto-enabled via VMLX_FORCE_TQ_AUTO=1
+INFO:vmlx_engine.utils.jang_loader:  Mixed-SWA TurboQuant KV: 12 full-attention slots encoded, 36 sliding slots left on RotatingKVCache
+INFO:vmlx_engine.utils.jang_loader:  TurboQuant objects active; live encode disabled; storage codec=4-bit attention KV, policy=mixed_swa_full_attention_kv_storage_tq4 (12 mapped KV layers)
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'sliding_attention', 'full_attention'}
+[transformers] The tokenizer you are loading from '/Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_2L' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+INFO:vmlx_engine.loaders.laguna:Laguna tokenizer pre-wrapped with eos_token_ids=[2, 24]
+INFO:vmlx_engine.engine.batched:BatchedEngine multi-eos hook: family=laguna, registry eos_tokens=['</assistant>', '〈|EOS|〉'], tokenizer_class=TokenizerWrapper, primary=2
+INFO:vmlx_engine.engine.batched:laguna: BatchedEngine extended existing TokenizerWrapper; eos_token_ids={24, 2}
+INFO:vmlx_engine.scheduler:Runtime cache layout: model_type=laguna layers=48 layout=0:TurboQuantKVCache;1:RotatingKVCache;2:RotatingKVCache;3:RotatingKVCache;4:TurboQuantKVCache;5:RotatingKVCache;6:RotatingKVCache;7:RotatingKVCache;8:TurboQuantKVCache;9:RotatingKVCache;10:RotatingKVCache;11:RotatingKVCache;12:TurboQuantKVCache;13:RotatingKVCache;14:RotatingKVCache;15:RotatingKVCache;16:TurboQuantKVCache;17:RotatingKVCache;18:RotatingKVCache;19:RotatingKVCache;20:TurboQuantKVCache;21:RotatingKVCache;22:RotatingKVCache;23:RotatingKVCache;24:TurboQuantKVCache;25:RotatingKVCache;26:RotatingKVCache;27:RotatingKVCache;28:TurboQuantKVCache;29:RotatingKVCache;30:RotatingKVCache;31:RotatingKVCache;32:TurboQuantKVCache;33:RotatingKVCache;34:RotatingKVCache;35:RotatingKVCache;36:TurboQuantKVCache;37:RotatingKVCache;38:RotatingKVCache;39:RotatingKVCache;40:TurboQuantKVCache;41:RotatingKVCache;42:RotatingKVCache;43:RotatingKVCache;44:TurboQuantKVCache;45:RotatingKVCache;46:RotatingKVCache;47:RotatingKVCache
+INFO:vmlx_engine.scheduler:TurboQuantKVCache live decode preserving configured batching (batch cache API=turboquant_kv_v1).
+INFO:vmlx_engine.scheduler:KV cache auto mode: TurboQuantKVCache is active for live decode; stored prefix/cache snapshots still use q4 when applicable.
+INFO:vmlx_engine.scheduler:LLM mixed-attention model detected (e.g. Gemma 4 sliding+full). Prefix cache remains enabled; RotatingKVCache metadata will be preserved during truncation and paged/L2 reconstruction.
+INFO:vmlx_engine.scheduler:KV cache auto mode: native TurboQuant owns stored attention KV; generic q4/q8 prefix quantization is suppressed
+INFO:vmlx_engine.scheduler:Prefix cache requires continuous batching — enabled automatically
+INFO:vmlx_engine.block_disk_store:BlockDiskStore initialized: dir=/Users/eric/.cache/vmlx-engine/block-cache/76568903fd2e, max_size=10.0GB, entries=3, size=0.03GB
+INFO:vmlx_engine.scheduler:Block disk cache enabled: dir=/Users/eric/.cache/vmlx-engine/block-cache/76568903fd2e, max=10.0GB, expected_layers=48
+INFO:vmlx_engine.paged_cache:PagedCacheManager initialized: block_size=64, max_blocks=1000, usable_blocks=999, max_tokens=63936, backend=paged, ram_mirror_policy=resident
+INFO:vmlx_engine.scheduler:Paged cache RAM ceiling: 9932 MB (15% of available); block pool max_blocks=1000
+INFO:vmlx_engine.scheduler:Paged cache enabled: block_size=64, max_blocks=1000
+INFO:vmlx_engine.scheduler:TurboQuant storage decoder startup warmup: configs=12 arrays=96 bytes=1587456 codec_probes=12 probe_tokens=64 probe_heads=1 seconds=0.061
+INFO:vmlx_engine.engine_core:Engine started
+INFO:vmlx_engine.engine.batched:BatchedEngine loaded: /Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_2L (mllm=False)
+INFO:vmlx_engine.server:Recorded Metal working-set model baseline: active=41.3GB max=107.5GB reason=lifespan_engine_start
+INFO:vmlx_engine.server:JIT: Applying mx.compile to model forward pass...
+INFO:vmlx_engine.server:JIT: mx.compile applied successfully — running warmup pass
+INFO:vmlx_engine.server:JIT: Warmup complete — model weights paged in, Metal shaders compiled
+INFO:vmlx_engine.mcp.config:No MCP config file found, using empty config
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8008 (Press CTRL+C to quit)
+INFO:     127.0.0.1:60014 - "GET /health HTTP/1.1" 200 OK
+WARNING:vmlx_engine.server:SECURITY WARNING: Server running without API key authentication. Anyone can access the API. Use --api-key to enable authentication.
+INFO:vmlx_engine.server:Request model 'default' differs from served model 'jangq-ai/Laguna-S-2.1-JANG_2L' — using loaded model (single-model server). This is expected when routing tools like Claude Code, opencode, or CCSwitch at vMLX — they send their own model alias.
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_2L kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 220, 'enable_thinking': True}
+INFO:     127.0.0.1:60015 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Chat exact-once tool gate: initial_selection=True post_user_tool_result=False message_shapes=[('user', None)]
+INFO:vmlx_engine.scheduler:max_num_seqs=1 — using vMLX SingleBatchGenerator (raw native cache, scheduler-owned single-active path)
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_2L kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 220, 'enable_thinking': True}
+INFO:     127.0.0.1:60016 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Chat exact-once tool gate: initial_selection=True post_user_tool_result=False message_shapes=[('user', None)]
+INFO:vmlx_engine.prefix_cache:Paged cache hit for chatcmpl-67c04433: 3 blocks, 181 tokens
+INFO:vmlx_engine.scheduler:Request chatcmpl-67c04433: paged cache hit, 181 tokens in 3 blocks, 1 remaining to process (worker reconstruct pending)
+INFO:vmlx_engine.scheduler:Request chatcmpl-67c04433: worker reconstructed 3 block(s) from L2
+INFO:vmlx_engine.mllm_batch_generator:Re-wrapped 12 KV layers as TurboQuant objects: encoded=0, resident_before=8896512, resident_after=8896512, delta=+0 bytes; no resident-memory reduction claimed
+INFO:vmlx_engine.scheduler:Mixed-SWA prefix cache store using deferred clean prompt-boundary re-prefill (181 cache-key tokens from 182 prompt tokens) after terminal dispatch.
+INFO:vmlx_engine.scheduler:Mixed-SWA paged prefix cleanup now running deferred clean prompt-boundary re-prefill (181 cache-key tokens) after terminal dispatch.
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_2L kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 220, 'enable_thinking': True}
+INFO:     127.0.0.1:60017 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:vmlx_engine.server:Chat exact-once tool gate: initial_selection=True post_user_tool_result=False message_shapes=[('user', None)]
+INFO:vmlx_engine.scheduler:Extracted 48 deferred Mixed-SWA layer states for request chatcmpl-67c04433
+INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=181, num_new_blocks=3, frugal=False, cumulative=block
+INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 48 positional layers (out of 48 total)
+INFO:vmlx_engine.scheduler:Stored paged cache for request chatcmpl-67c04433 (181 cache-key tokens from 182 prompt tokens, 48 layers, cache truncated to 181 tokens)
+INFO:vmlx_engine.prefix_cache:Paged cache hit for chatcmpl-1449ccb4: 3 blocks, 181 tokens
+INFO:vmlx_engine.scheduler:Request chatcmpl-1449ccb4: paged cache hit, 181 tokens in 3 blocks, 1 remaining to process (worker reconstruct pending)
+INFO:vmlx_engine.mllm_batch_generator:Re-wrapped 12 KV layers as TurboQuant objects: encoded=0, resident_before=8896512, resident_after=8896512, delta=+0 bytes; no resident-memory reduction claimed
+INFO:vmlx_engine.scheduler:Mixed-SWA prefix cache store using deferred clean prompt-boundary re-prefill (181 cache-key tokens from 182 prompt tokens) after terminal dispatch.
+INFO:vmlx_engine.scheduler:Mixed-SWA paged prefix cleanup now running deferred clean prompt-boundary re-prefill (181 cache-key tokens) after terminal dispatch.
+INFO:     127.0.0.1:60018 - "GET /health HTTP/1.1" 200 OK
+INFO:vmlx_engine.scheduler:Extracted 48 deferred Mixed-SWA layer states for request chatcmpl-1449ccb4
+INFO:vmlx_engine.prefix_cache:Block disk write-through: disk_store=present, is_tensor_data=True, new_tokens=181, num_new_blocks=3, frugal=False, cumulative=block
+INFO:vmlx_engine.prefix_cache:Block disk: np_sources has 48 positional layers (out of 48 total)
+INFO:vmlx_engine.scheduler:Stored paged cache for request chatcmpl-1449ccb4 (181 cache-key tokens from 182 prompt tokens, 48 layers, cache truncated to 181 tokens)

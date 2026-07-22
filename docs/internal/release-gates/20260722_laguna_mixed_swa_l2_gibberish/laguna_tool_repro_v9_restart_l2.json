@@ -1,0 +1,154 @@
+{
+  "rows": [
+    {
+      "label": "LAG-TOOL-FRESH-20260722M",
+      "salted": true,
+      "reasoning_len": 0,
+      "reasoning_sample": "",
+      "content": "",
+      "content_len": 0,
+      "tool_call_delta_count": 2,
+      "tool_calls_sample": [
+        {
+          "index": 0,
+          "id": "call_2114112e",
+          "type": "function",
+          "function": {
+            "name": "",
+            "arguments": ""
+          }
+        },
+        {
+          "index": 0,
+          "function": {
+            "name": "file_info",
+            "arguments": "{\"path\": \"panel/package.json\"}"
+          }
+        }
+      ],
+      "finishes": [
+        "tool_calls"
+      ],
+      "usage": {},
+      "chunks": 27,
+      "total_s": 1.06,
+      "gibberish_suspect": false
+    },
+    {
+      "label": "LAG-TOOL-WARM-20260722M",
+      "salted": false,
+      "reasoning_len": 0,
+      "reasoning_sample": "",
+      "content": "",
+      "content_len": 0,
+      "tool_call_delta_count": 2,
+      "tool_calls_sample": [
+        {
+          "index": 0,
+          "id": "call_78e157c4",
+          "type": "function",
+          "function": {
+            "name": "",
+            "arguments": ""
+          }
+        },
+        {
+          "index": 0,
+          "function": {
+            "name": "file_info",
+            "arguments": "{\"path\": \"panel/package.json\"}"
+          }
+        }
+      ],
+      "finishes": [
+        "tool_calls"
+      ],
+      "usage": {},
+      "chunks": 27,
+      "total_s": 0.51,
+      "gibberish_suspect": false
+    },
+    {
+      "label": "LAG-TOOL-WARM-20260722M",
+      "salted": false,
+      "reasoning_len": 0,
+      "reasoning_sample": "",
+      "content": "",
+      "content_len": 0,
+      "tool_call_delta_count": 2,
+      "tool_calls_sample": [
+        {
+          "index": 0,
+          "id": "call_f9bc747f",
+          "type": "function",
+          "function": {
+            "name": "",
+            "arguments": ""
+          }
+        },
+        {
+          "index": 0,
+          "function": {
+            "name": "file_info",
+            "arguments": "{\"path\": \"panel/package.json\"}"
+          }
+        }
+      ],
+      "finishes": [
+        "tool_calls"
+      ],
+      "usage": {},
+      "chunks": 27,
+      "total_s": 0.99,
+      "gibberish_suspect": false
+    }
+  ],
+  "health_cache": {
+    "hits": 2,
+    "misses": 0,
+    "hit_rate": 1.0,
+    "tokens_saved": 362,
+    "active_requests": 1,
+    "entries_by_type": {
+      "assistant": 0,
+      "user": 1,
+      "system": 0
+    },
+    "backend_mode": "paged",
+    "paged_ram_enabled": true,
+    "disk_only": false,
+    "paged_frugal": false,
+    "ram_mirror_policy": "resident",
+    "block_size": 64,
+    "max_blocks": 1000,
+    "usable_blocks": 999,
+    "capacity_tokens": 63936,
+    "allocated_blocks": 4,
+    "free_blocks": 996,
+    "shared_blocks": 0,
+    "total_tokens_cached": 181,
+    "utilization": 0.003003003003003003,
+    "cache_hit_rate": 1.0,
+    "cache_hits": 12,
+    "cache_misses": 0,
+    "disk_hits": 3,
+    "disk_misses": 2,
+    "cow_copies": 0,
+    "evictions": 0,
+    "disk_promotion_hits": 3,
+    "disk_lookup_misses": 0,
+    "disk_counter_source": "block_disk_store",
+    "engine_path": "single_active",
+    "batch_generator": {
+      "class": "SingleBatchGenerator",
+      "path": "single_active",
+      "single_active_decode": true,
+      "max_num_seqs": 1,
+      "prompt_snapshot_max_bytes": null,
+      "prompt_snapshot_last_estimated_bytes": 0,
+      "prompt_snapshot_oversize_skips": 0,
+      "prompt_snapshot_headroom_skips": 0,
+      "prompt_snapshot_last_headroom_bytes": 0
+    }
+  }
+}
