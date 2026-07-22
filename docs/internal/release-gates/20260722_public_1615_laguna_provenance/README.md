@@ -57,6 +57,15 @@ venv's `site-packages` is not the module imported by that interpreter. Runtime
 provenance must be established with `module.__file__`, not directory inventory
 or package version alone.
 
+The local development venv initially differed: from the vMLX source cwd it
+resolved a stale physical runtime SHA `3c0c8eb7...` without `_module_bits`, even
+though its distribution metadata also said JANG 2.5.31. It was reinstalled
+without dependencies from a clean detached worktree at exact commit
+`801209c13c189ebb8fb4d1596748a336f568da38`. A fresh import from the vMLX cwd
+now resolves runtime SHA `4a531e91...` and model SHA `acff90d0...`, identical
+to the signed 1.6.15 checkpoint. This was an environment repair, not a source
+change or a new public release.
+
 ## Current live positive controls
 
 All tests below used the real S-2.1 bundles on the M5 Max proof host.
@@ -106,6 +115,7 @@ Retained artifacts:
 - `r16-stale-169-laguna-negative-health.json`
 - `r16-stale-169-laguna-negative-sse.txt`
 - `r16-stale-169-laguna-negative.log`
+- `local-dev-venv-refresh.txt`
 
 ## Operational conclusion
 

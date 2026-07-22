@@ -5094,6 +5094,14 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   site-packages copy is inactive. Future diagnosis/release proof must record
   executable, app version, `module.__file__`, and source hash, not package
   version or directory inventory alone.
+- `LAGUNA-LOCAL-DEV-VENV-DRIFT`: `REPAIRED / IMPORT-VERIFIED`. The local venv
+  initially imported stale runtime SHA `3c0c8eb7...` from physical
+  site-packages when launched from the vMLX cwd, despite reporting JANG 2.5.31.
+  It was reinstalled without dependencies from a clean detached worktree at
+  JANG commit `801209c`; fresh import now resolves signed-checkpoint runtime
+  SHA `4a531e91...` and model SHA `acff90d0...`. No local model generation was
+  run for this environment-only repair; the live generation proof is the M5
+  Max signed-engine/Electron matrix above.
 - Evidence:
   `docs/internal/release-gates/20260722_public_1615_laguna_provenance/`.
   This does not close Laguna's separate long-context, eviction/restart,
