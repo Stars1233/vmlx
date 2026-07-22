@@ -4841,3 +4841,22 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   eligibility, or break explicit Off plus disk-only L2 behavior. Verify the
   final wording visually at normal and minimum window widths in the real
   Electron app before closing.
+
+## 2026-07-22 - vMLX 1.6.16 release campaign opened
+
+- `V1.6.16-CAMPAIGN`: `ACTIVE / NOT RELEASE-READY`. The canonical ranked
+  control board is
+  `docs/internal/release-gates/20260722_v1_6_16_campaign/README.md` and starts
+  from post-v1.6.15 source `7b940b070dc8ab7afe014561c5094853e16a29c4`.
+- P0 ownership is shared reasoning/content/tool streaming, coding-harness
+  continuations, truthful stream metrics, architecture-aware RAM/L2 cache
+  reuse including Paged-Off SSD-only partial prefixes, complete settings
+  persistence/default parity, the plain-language in-memory cache label, and
+  gateway/single-model lifecycle soak.
+- Family rows explicitly distinguish affine JANG, JANGTQ/MXTQ Hadamard
+  codebook, and base MLX/MXFP artifacts. Existing scoped proofs remain useful
+  boundaries but do not make the new release cutoff green without current
+  source applicability and the named Electron/API evidence.
+- Packaging, version bump, signing, notarization, tagging, and publication are
+  blocked until the selected cutoff has current full-suite, bundled-Python,
+  production-build, signed-app, and public-version proof.
