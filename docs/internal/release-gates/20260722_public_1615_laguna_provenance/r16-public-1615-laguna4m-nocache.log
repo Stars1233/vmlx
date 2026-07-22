@@ -1,0 +1,71 @@
+  JANGTQ_WIRED_LIMIT_GB defaulted to 115 GB (from OS sysctl iogpu.wired_limit_mb; overrides external jang_tools 70% default)
+INFO:vmlx_engine:Registered vendored minimax_m3_vl runtime (/Applications/vMLX-1.6.15-Tahoe-Checkpoint.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/models/minimax_m3/minimax_m3.py)
+INFO:vmlx_engine:Registered vendored openpangu_v2 runtime (/Applications/vMLX-1.6.15-Tahoe-Checkpoint.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/models/openpangu_v2/openpangu_v2.py)
+INFO:vmlx_engine.model_config_registry:Model config: detection_source=jang_stamped family=laguna reasoning_parser=deepseek_r1 tool_parser=glm47 think_in_template=True cache_type=kv cache_subtype=kv is_mllm=False
+INFO:vmlx_engine.cli:--kv-cache-quantization=none explicit; VMLX_DISABLE_TQ_KV=1 set so JANG-calibrated TurboQuant KV is skipped at load time. Omit the flag (or set VMLX_FORCE_TQ_AUTO=1) to keep the bundle's calibrated TQ.
+INFO:vmlx_engine:is_mllm_model(/Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_4M): tier=jang_config_explicit_false result=False
+INFO:vmlx_engine.cli:Auto-configured tool parser from registry: glm47
+INFO:vmlx_engine.cli:Auto-configured reasoning parser from registry: deepseek_r1
+INFO:vmlx_engine.server:System memory before load: 106.0GB available / 128.0GB total (17.2% used)
+INFO:vmlx_engine.server:Loading model with BatchedEngine: /Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_4M
+INFO:vmlx_engine.server:Model loaded (batched mode): /Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_4M
+INFO:vmlx_engine.server:Metal GPU memory after load: 0.00GB active, 0.00GB peak
+INFO:vmlx_engine.server:System memory after load: 106.0GB available (17.2% used)
+INFO:vmlx_engine.server:Default max tokens fallback: 4096 base / 16384 for reasoning-capable models (bundle max_new_tokens wins when present; projected Metal guard clamps per-model)
+INFO:     Started server process [27730]
+INFO:     Waiting for application startup.
+INFO:vmlx_engine.server:Started caffeinate system wake lock for PID 27730
+INFO:vmlx_engine.utils.tokenizer:Laguna bundle detected (early route) — load_laguna_model
+INFO:vmlx_engine.loaders.laguna:Loading Laguna bundle: Laguna-S-2.1-JANG_4M
+============================================================
+SECURITY CONFIGURATION
+============================================================
+  Authentication: DISABLED - Use --api-key to enable
+  Rate limiting: DISABLED - Use --rate-limit to enable
+  Request timeout: 300.0s
+  Tool calling: Use --enable-auto-tool-choice to enable
+  Reasoning: ENABLED (parser: DeepSeekR1ReasoningParser)  [thinking model detected]
+  External speculative decoding: Use --speculative-model to enable
+============================================================
+Loading model: /Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_4M
+Max output fallback: 4096 (bundle max_new_tokens wins when present)
+Mode: Continuous batching (for multiple concurrent users)
+Stream interval: 1 tokens
+Starting server at http://127.0.0.1:8052
+[laguna] wired_limit=84 GB (bundle 63.4 GB)
+[laguna] format=jang, layers=48, experts=256
+[laguna] inference mode enabled
+INFO:vmlx_engine.loaders.laguna:Laguna loaded: format=jang, layers=48, experts=256, vocab=100352, hidden=3072
+INFO:vmlx_engine.utils.jang_loader:  TurboQuant KV skipped: VMLX_DISABLE_TQ_KV=1; using native model cache plus scheduler-level q4/q8 storage only when explicitly requested and compatible.
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'sliding_attention', 'full_attention'}
+[transformers] The tokenizer you are loading from '/Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_4M' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+INFO:vmlx_engine.loaders.laguna:Laguna tokenizer pre-wrapped with eos_token_ids=[2, 24]
+INFO:vmlx_engine.engine.batched:BatchedEngine multi-eos hook: family=laguna, registry eos_tokens=['</assistant>', '〈|EOS|〉'], tokenizer_class=TokenizerWrapper, primary=2
+INFO:vmlx_engine.engine.batched:laguna: BatchedEngine extended existing TokenizerWrapper; eos_token_ids={24, 2}
+INFO:vmlx_engine.scheduler:Runtime cache layout: model_type=laguna layers=48 layout=0:KVCache;1:RotatingKVCache;2:RotatingKVCache;3:RotatingKVCache;4:KVCache;5:RotatingKVCache;6:RotatingKVCache;7:RotatingKVCache;8:KVCache;9:RotatingKVCache;10:RotatingKVCache;11:RotatingKVCache;12:KVCache;13:RotatingKVCache;14:RotatingKVCache;15:RotatingKVCache;16:KVCache;17:RotatingKVCache;18:RotatingKVCache;19:RotatingKVCache;20:KVCache;21:RotatingKVCache;22:RotatingKVCache;23:RotatingKVCache;24:KVCache;25:RotatingKVCache;26:RotatingKVCache;27:RotatingKVCache;28:KVCache;29:RotatingKVCache;30:RotatingKVCache;31:RotatingKVCache;32:KVCache;33:RotatingKVCache;34:RotatingKVCache;35:RotatingKVCache;36:KVCache;37:RotatingKVCache;38:RotatingKVCache;39:RotatingKVCache;40:KVCache;41:RotatingKVCache;42:RotatingKVCache;43:RotatingKVCache;44:KVCache;45:RotatingKVCache;46:RotatingKVCache;47:RotatingKVCache
+INFO:vmlx_engine.scheduler:LLM mixed-attention model detected (e.g. Gemma 4 sliding+full). Prefix cache remains enabled; RotatingKVCache metadata will be preserved during truncation and paged/L2 reconstruction.
+INFO:vmlx_engine.engine_core:Engine started
+INFO:vmlx_engine.engine.batched:BatchedEngine loaded: /Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_4M (mllm=False)
+INFO:vmlx_engine.server:Recorded Metal working-set model baseline: active=63.4GB max=107.5GB reason=lifespan_engine_start
+INFO:vmlx_engine.server:JIT: Applying mx.compile to model forward pass...
+INFO:vmlx_engine.server:JIT: mx.compile applied successfully — running warmup pass
+INFO:vmlx_engine.server:JIT: Warmup complete — model weights paged in, Metal shaders compiled
+INFO:vmlx_engine.mcp.config:No MCP config file found, using empty config
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8052 (Press CTRL+C to quit)
+INFO:     127.0.0.1:53577 - "GET /health HTTP/1.1" 200 OK
+WARNING:vmlx_engine.server:SECURITY WARNING: Server running without API key authentication. Anyone can access the API. Use --api-key to enable authentication.
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_4M kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 96, 'enable_thinking': False, 'chat_template_kwargs': {'enable_thinking': False}}
+INFO:     127.0.0.1:53578 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:vmlx_engine.scheduler:max_num_seqs=1 — using vMLX SingleBatchGenerator (raw native cache, scheduler-owned single-active path)
+INFO:vmlx_engine.scheduler:Mixed-SWA prefix cache store using deferred clean prompt-boundary re-prefill (63 cache-key tokens from 64 prompt tokens, object cache) after terminal dispatch.
+INFO:vmlx_engine.scheduler:Mixed-SWA object prefix cleanup now running deferred clean prompt-boundary re-prefill (63 cache-key tokens) after terminal dispatch.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:vmlx_engine.engine_core:Engine stopped
+INFO:vmlx_engine.scheduler:Deep reset completed - all caches cleared
+INFO:vmlx_engine.engine.batched:BatchedEngine stopped
+INFO:vmlx_engine.server:Engine stopped
+INFO:vmlx_engine.server:Caffeinate process terminated
+INFO:     Application shutdown complete.
+INFO:     Finished server process [27730]

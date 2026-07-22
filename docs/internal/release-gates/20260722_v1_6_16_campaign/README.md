@@ -44,6 +44,7 @@ is shown unchanged or the proof is rerun.
 - `../20260721_developer_conversion_lifecycle_current/README.md`
 - `../20260722_single_model_unmanaged_engine_sweep/README.md`
 - `../20260722_release_checkpoint_1_6_15/README.md`
+- `../20260722_public_1615_laguna_provenance/README.md`
 - `OPEN-ISSUES-RANKED.md`, the living exhaustive 1.6.16 checklist
 - User campaign attachment
   `/Users/eric/.codex/attachments/668d3b34-ca92-49c4-aeb2-5e0ded8f6fc0/pasted-text-1.txt`
@@ -107,7 +108,8 @@ For every live model generation retained as evidence:
 | `R16-STREAM-METRICS` | `OPEN` | Compare Electron `metrics_json` against raw timed SSE for the same prompt. Report TTFT, prompt processing speed, decode tokens/s after first output token, reasoning tokens, visible tokens, tool/fallback pauses, and wall time separately. Reject terminal-batch answer painting and misleading blended two-pass TPS. |
 | `R16-CACHE-HIERARCHY` | `OPEN / RELEASE-CRITICAL` | Prove cold store, resident RAM hit, partial-block reuse, L1 eviction, L2 SSD refault, process restart restore, and safe full-prefill fallback for standard KV, hybrid SSM/GDN, mixed SWA, CCA, M3 sparse, DSV4 composite, and openPangu native prompt disk. With Paged Off and L2 On, partial prefix reuse must come from SSD with zero resident paged bytes. With Paged On, lookup order must use matching RAM blocks first and SSD when absent. Cross-chat and cross-session reuse must not leak unrelated suffixes or media. |
 | `R16-SETTINGS-PARITY` | `PARTIAL / RELEASE-CRITICAL` | Compare bundle defaults to visible Chat Settings, SQLite, IPC/request payload, preview/argv, and engine-resolved kwargs/health. Cover temperature, top-p, top-k including Off/-1/large values, min-p zero, repetition penalty, max output, max context, reasoning Auto/On/Off, tool/reasoning parsers, MTP, modalities, cache toggles, block size/count, RAM percentage, L2 size/path, LAN/port, and Single Model. First use must inherit the bundle; saved per-chat/per-session values must survive restart; reset/Auto must remove the override. Commit `951eab25d` plus the retained live gate close the plain-Save wording, restart delay, update broadcast, and live PID subdefects. The broader cross-model/default/reset/failure matrix remains open. |
-| `R16-CACHE-LABEL` | `VERIFIED-LIVE_SCOPED` | Source `4558dac06` renames Electron `Paged Cache` / `Use Paged KV Cache` to **In-Memory Paged Cache (RAM)** and identifies **Block Disk Cache (L2)** as SSD. It also prevents help-tooltip clicks from toggling checkbox settings. Focused tests, typecheck, normal/minimum-width visual proof, unchanged persisted state/argv, and effective loaded health are named below. Backend flags/defaults/eligibility are unchanged; explicit Off plus disk-only L2 remains a separate cache-behavior regression row. |
+| `R16-CACHE-LABEL` | `VERIFIED-LIVE_SCOPED` | Source `4558dac06` introduced **In-Memory Paged Cache (RAM)**; the current checkpoint consistently names the persistent tier **Block Disk Cache (SSD / L2)** across Settings, Cache, Perf, capacity text, locales, and CLI help. Live verification found the earlier glyph-only tooltip suppression did not cover wrapper padding; the wrapper now owns the click boundary and both toggles rechecked `true -> true`. Backend flags/defaults/eligibility are unchanged; explicit Off plus disk-only L2 remains a separate cache-behavior regression row. |
+| `R16-LAGUNA-MIXED-BIT-PROVENANCE` | `VERIFIED-LIVE_SCOPED` | The reported `(…,576)` weight / `(…,48)` scales / `bits=8` failure is a 6-bit 3072-input affine module being treated as 8-bit, not an attention `g_proj` slice. The exact signed v1.6.15 bundled engine completed cache-disabled S-2.1 JANG_2L and JANG_4M streams; the real signed Electron app completed an S-2.1 UI turn. The stale signed `/Applications/vMLX.app` version 1.6.9 reproduced the error byte-for-byte on the same JANG_4M artifact. Require exact executable and imported-module provenance for every release proof. |
 | `R16-SINGLE-MODEL-GATEWAY` | `PARTIAL` | Preserve the scoped unmanaged-engine sweep, rollback, disconnect, backend-loss, and non-stream atomicity fixes. Still run a bounded multi-client soak with repeated real UI model swaps, only one resident process, eager Start-before-first-message load, concurrent route/swap attempts, active-request LAN/port rollback, occupied port, stale target, late loader failure, unload/reload, and recovery across all four protocols. |
 
 ### P1 — architecture and family gates
@@ -174,17 +176,22 @@ For every live model generation retained as evidence:
 | 2026-07-22 | `f9a4b6838` | Current MiniMax-M3 Ollama normalization, reasoning rail, exact tool loop, and native sparse-cache boundary | Bundle hashes and live health ground affine JANG_2L, 60-layer MSA topology, parser defaults, sampler defaults, and intentional no-generic-TQ policy | Real Sessions Start eagerly materialized PID 60303 before a prompt; UI IPC recorded 245 reasoning updates then 10 content updates and one completion; a separate turn executed exactly one real `file_info` and exact-finaled | Responses emitted 83 reasoning plus eight content deltas and one completion; direct Ollama On/Off and gateway Auto streamed separate rails with one terminal and no native-tag leak | `VERIFIED-LIVE_SCOPED / GLOBAL ROWS PARTIAL` |
 | 2026-07-22 | `6de9ce8ef` | Preserved the MiniMax-M3 live artifacts and reconciled source-vs-distribution v1.6.15 release truth | JSON evidence parses; diff check clean | Reuses the exact retained current-source screenshots/IPC capture without claiming a new model run | Reuses the retained raw Responses/Ollama captures without changing the behavior cutoff | `DOCUMENTATION CHECKPOINT` |
 | 2026-07-22 | `WORKTREE after aa97a531b` | Corrected Anthropic combined tool-result/follow-up ordering and exact-one Chat finalization; added a reusable four-protocol two-tool harness | 44/44 focused adapter/server/harness tests; evidence JSON parse and diff check passed | Reuses the current Qwen Electron Start/load and two-tool UI proof; no new UI generation is claimed for this raw-wire row | Natural direct Anthropic stream completed two real tools plus progressive exact final with separate reasoning; gateway completed the first tool but truthfully failed its second-tool continuation | `VERIFIED-LIVE_SCOPED / GLOBAL AGENTIC ROW PARTIAL` |
+| 2026-07-22 | current cache-name checkpoint after `4ee7befad` | Unified RAM/SSD cache terminology across settings/status/CLI and moved tooltip suppression to the outer wrapper | 293 focused panel tests + typecheck and 94 CLI/cache tests passed on both source boxes | Server Settings, Cache, and Perf inspected through CDP 9335; RAM and SSD wrapper clicks stayed `true -> true`; status surfaces showed `RAM paged + SSD L2` and `Block Disk L2 (SSD)` | Live CLI help distinguishes Apple unified memory and supported SSD-only mode; no new cache-reuse claim | `VERIFIED-LIVE_SCOPED` |
+| 2026-07-22 | signed v1.6.15 versus stale signed v1.6.9 provenance control | Classified the Laguna `576/48 bits=8` crash as stale uniform-bit runtime behavior, not S-2.1 `g_proj` slicing | Signed 1.6.15 runtime lines 261-306 derive 6-bit module width; stale 1.6.9 lines 185-199 apply top-level 8-bit uniformly | Real signed 1.6.15 Tahoe Electron Start loaded S-2.1 and exact-finaled `REL1615-LAGUNA-UI-DONE` without warnings | Signed 1.6.15 bundled engine exact-finaled cache-disabled JANG_2L and JANG_4M; signed 1.6.9 negative control reproduced the exact dequant error | `VERIFIED-LIVE_SCOPED / GLOBAL RELEASE ROW PARTIAL` |
 
 ## Cache terminology and tooltip proof
 
-Source commit `4558dac06` changes only user-facing terminology/help and the
-shared tooltip click contract:
+Source commit `4558dac06` introduced the plain-language RAM label. The current
+checkpoint completes the terminology/status surfaces and corrects the shared
+tooltip click boundary:
 
 - section and control: `In-Memory Paged Cache (RAM)`;
-- help: Apple unified memory is the fast RAM tier; Block Disk Cache (L2) is the
-  persistent SSD tier and may remain enabled when the RAM tier is Off;
-- `Tooltip.handleClick` calls `preventDefault()` before `stopPropagation()` so
-  a help click nested inside a checkbox label does not activate the checkbox;
+- help: Apple unified memory is the fast RAM tier; Block Disk Cache (SSD / L2)
+  is persistent and may remain enabled when the RAM tier is Off;
+- the earlier inner-glyph `Tooltip.handleClick` fix did not cover clicks on
+  wrapper padding. The outer wrapper now owns `preventDefault()` and
+  `stopPropagation()`, so every help-target click nested inside a checkbox
+  label avoids the label's toggle action;
 - all five locale section labels were updated; backend config field
   `usePagedCache` and CLI flag `--use-paged-cache` were deliberately retained.
 
@@ -203,6 +210,12 @@ Focused proof on `erics-m5-max.local`:
 - after a real `/admin/wake`, `cache-label-health.json` records
   `model_loaded=true`, `last_request_time=null`, paged RAM enabled, disk-only
   false, 63,936-token configured RAM capacity, and Block L2 present.
+
+Current-checkpoint follow-up proof is retained separately under
+`docs/internal/release-gates/20260722_cache_names_ram_ssd/`: both outer
+wrapper clicks kept the checked value `true -> true`; Cache rendered
+`Block Disk Cache (SSD / L2)`; Perf rendered `RAM paged + SSD L2` and
+`Block Disk L2 (SSD)`; and the focused test sets passed on both source boxes.
 
 No model generation was run for this UI/settings proof, and no cache reuse or
 output-coherence claim is added here.
@@ -351,6 +364,24 @@ Ollama non-stream/post-tool continuation, and REAP variants.
 
 Durable evidence: `m3-reasoning-ollama-ui-summary.json`,
 `m3-loaded-session.png`, `m3-ui-reason.png`, and `m3-ui-tool.png`.
+
+## Cache tier naming and tooltip boundary at the current cutoff
+
+The Electron settings/status surfaces now use `In-Memory Paged Cache (RAM)`
+for the fast Apple unified-memory tier and `Block Disk Cache (SSD / L2)` for
+the persistent tier. Command-line flag names remain stable. The live Server
+Settings, Cache, and Perf views were inspected through CDP 9335; the latter
+reported `RAM paged + SSD L2` on a real Laguna mixed-SWA/q4 process.
+
+Live verification also found a real interaction defect: clicking padding in a
+tooltip wrapper could toggle its enclosing checkbox because suppression was
+owned only by the inner `?` glyph. The event boundary now lives on the outer
+wrapper, and both RAM and SSD/L2 tooltip clicks rechecked `true -> true` while
+showing the tooltip. Focused panel tests/typecheck and CLI/cache tests passed
+on both synchronized source checkouts. This is a terminology/interaction
+closure only; it does not substitute for the Paged-Off partial/restart or
+eviction gates below. Evidence is in
+`docs/internal/release-gates/20260722_cache_names_ram_ssd/`.
 
 ## Release stop conditions
 

@@ -5051,3 +5051,51 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - Verification at the uncommitted cutoff: 44/44 focused adapter, streaming
   finalizer, and harness tests; all retained JSON artifacts parse; diff check
   passes. Commit SHA is intentionally filled by the next scoped checkpoint.
+
+## 2026-07-22 - Cache tier terminology and tooltip click boundary
+
+- `R16-CACHE-TIER-NAMES`: `VERIFIED-LIVE_SCOPED`. Electron Server Settings
+  now says `In-Memory Paged Cache (RAM)` and `Block Disk Cache (SSD / L2)`;
+  Cache and Perf status panels use the same distinction, and CLI help explains
+  Apple unified memory versus the persistent/SSD-only tier. Existing backend
+  flags and cache policy are unchanged.
+- `R16-TOOLTIP-WRAPPER-TOGGLE`: `VERIFIED-LIVE_SCOPED`. The first live outer
+  tooltip-wrapper click toggled the enclosing cache checkbox because event
+  suppression was attached only to the inner glyph. The outer wrapper now
+  owns click/hover handling. Rechecks for both cache tiers kept their checkbox
+  values `true -> true` and visibly opened the intended tooltip.
+- Verification: live Electron CDP screenshots/text for Server Settings, Cache,
+  and Perf; 293 focused panel tests plus TypeScript typecheck and 94 focused
+  Python CLI/cache tests on both source boxes; `git diff --check`. This closes
+  wording and tooltip interaction only, not cache reuse, eviction, or restart
+  rows. Evidence is under
+  `docs/internal/release-gates/20260722_cache_names_ram_ssd/`.
+
+## 2026-07-22 - Laguna public v1.6.15 mixed-bit provenance control
+
+- `LAGUNA-576-48-DEQUANT-PROVENANCE`: `VERIFIED-LIVE_SCOPED`. The reported
+  `(1,seq,576)` matrix with `(1,seq,48)` scales at group size 64 and `bits=8`
+  identifies a 3072-input 6-bit packed affine module being executed as 8-bit;
+  it is not evidence of a 576-wide `g_proj` slice. The inspected S-2.1 config
+  declares the embedding at 6-bit while attention `g_proj` is 8-bit.
+- Exact signed public v1.6.15 source trace: bundled Laguna runtime SHA
+  `4a531e91...` lines 261-306 derives per-module 2/3/4/5/6/8-bit widths before
+  `nn.quantize`. Exact signed v1.6.15 bundled-engine live proof completed
+  cache-disabled S-2.1 JANG_2L and JANG_4M Chat streams. Exact signed Tahoe
+  Electron proof loaded with the real Start control and exact-finaled
+  `REL1615-LAGUNA-UI-DONE` without warnings.
+- Negative control: the co-installed signed `/Applications/vMLX.app` is version
+  1.6.9. Its bundled Laguna runtime SHA `1ae98b92...` applies the top-level
+  8-bit value uniformly. Against the same S-2.1 JANG_4M artifact it reproduced
+  the dequant exception byte-for-byte. The test process was stopped and port
+  8064 was confirmed closed.
+- The active dev interpreter on the proof host imports the fixed editable
+  `/Users/eric/jang/jang-tools` checkout at commit `801209c`; an older physical
+  site-packages copy is inactive. Future diagnosis/release proof must record
+  executable, app version, `module.__file__`, and source hash, not package
+  version or directory inventory alone.
+- Evidence:
+  `docs/internal/release-gates/20260722_public_1615_laguna_provenance/`.
+  This does not close Laguna's separate long-context, eviction/restart,
+  settings, parser, or latency rows. Overall 1.6.16 campaign status remains
+  `PARTIAL / NOT RELEASE-READY`.

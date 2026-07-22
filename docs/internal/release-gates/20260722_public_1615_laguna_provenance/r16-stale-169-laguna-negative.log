@@ -1,0 +1,137 @@
+  JANGTQ_WIRED_LIMIT_GB defaulted to 115 GB (from OS sysctl iogpu.wired_limit_mb; overrides external jang_tools 70% default)
+INFO:vmlx_engine:Registered vendored minimax_m3_vl runtime (/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/models/minimax_m3/minimax_m3.py)
+INFO:vmlx_engine:Registered vendored openpangu_v2 runtime (/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/models/openpangu_v2/openpangu_v2.py)
+INFO:vmlx_engine.model_config_registry:Model config: detection_source=jang_stamped family=laguna reasoning_parser=deepseek_r1 tool_parser=glm47 think_in_template=True cache_type=kv cache_subtype=kv is_mllm=False
+INFO:vmlx_engine.cli:--kv-cache-quantization=none explicit; VMLX_DISABLE_TQ_KV=1 set so JANG-calibrated TurboQuant KV is skipped at load time. Omit the flag (or set VMLX_FORCE_TQ_AUTO=1) to keep the bundle's calibrated TQ.
+INFO:vmlx_engine:is_mllm_model(/Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_4M): tier=jang_config_explicit_false result=False
+INFO:vmlx_engine.cli:Auto-configured tool parser from registry: glm47
+INFO:vmlx_engine.cli:Auto-configured reasoning parser from registry: deepseek_r1
+INFO:vmlx_engine.cli:JANG affine model detected (format=jang, family=laguna) — defaulting --enable-jit ON for mx.compile decode speedup. Disable with explicit --enable-jit=0 or env VMLX_DISABLE_JANG_AFFINE_JIT_DEFAULT=1.
+INFO:vmlx_engine.server:System memory before load: 106.7GB available / 128.0GB total (16.6% used)
+INFO:vmlx_engine.server:Loading model with BatchedEngine: /Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_4M
+INFO:vmlx_engine.server:Model loaded (batched mode): /Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_4M
+INFO:vmlx_engine.server:Metal GPU memory after load: 0.00GB active, 0.00GB peak
+INFO:vmlx_engine.server:System memory after load: 106.7GB available (16.6% used)
+INFO:vmlx_engine.server:Default max tokens override: 64
+INFO:     Started server process [28149]
+INFO:     Waiting for application startup.
+INFO:vmlx_engine.server:Started caffeinate system wake lock for PID 28149
+INFO:vmlx_engine.utils.tokenizer:Laguna bundle detected (early route) — load_laguna_model
+INFO:vmlx_engine.loaders.laguna:Loading Laguna bundle: Laguna-S-2.1-JANG_4M
+============================================================
+SECURITY CONFIGURATION
+============================================================
+  Authentication: DISABLED - Use --api-key to enable
+  Rate limiting: DISABLED - Use --rate-limit to enable
+  Request timeout: 300.0s
+  Tool calling: Use --enable-auto-tool-choice to enable
+  Reasoning: ENABLED (parser: DeepSeekR1ReasoningParser)  [thinking model detected]
+  External speculative decoding: Use --speculative-model to enable
+============================================================
+Loading model: /Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_4M
+Default max tokens override: 64
+Mode: Continuous batching (for multiple concurrent users)
+Stream interval: 1 tokens
+Starting server at http://127.0.0.1:8064
+[laguna] format=jang, layers=48, experts=256
+[laguna] inference mode enabled
+INFO:vmlx_engine.loaders.laguna:Laguna loaded: format=jang, layers=48, experts=256, vocab=100352, hidden=3072
+INFO:vmlx_engine.utils.jang_loader:  TurboQuant KV skipped: VMLX_DISABLE_TQ_KV=1; using native model cache plus scheduler-level q4/q8 storage only when explicitly requested and compatible.
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'sliding_attention', 'full_attention'}
+[transformers] The tokenizer you are loading from '/Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_4M' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+INFO:vmlx_engine.loaders.laguna:Laguna tokenizer pre-wrapped with eos_token_ids=[2, 24]
+INFO:vmlx_engine.engine.batched:BatchedEngine multi-eos hook: family=laguna, registry eos_tokens=['</assistant>', '〈|EOS|〉'], tokenizer_class=TokenizerWrapper, primary=2
+INFO:vmlx_engine.engine.batched:laguna: BatchedEngine extended existing TokenizerWrapper; eos_token_ids={24, 2}
+INFO:vmlx_engine.scheduler:Runtime cache layout: model_type=laguna layers=48 layout=0:KVCache;1:RotatingKVCache;2:RotatingKVCache;3:RotatingKVCache;4:KVCache;5:RotatingKVCache;6:RotatingKVCache;7:RotatingKVCache;8:KVCache;9:RotatingKVCache;10:RotatingKVCache;11:RotatingKVCache;12:KVCache;13:RotatingKVCache;14:RotatingKVCache;15:RotatingKVCache;16:KVCache;17:RotatingKVCache;18:RotatingKVCache;19:RotatingKVCache;20:KVCache;21:RotatingKVCache;22:RotatingKVCache;23:RotatingKVCache;24:KVCache;25:RotatingKVCache;26:RotatingKVCache;27:RotatingKVCache;28:KVCache;29:RotatingKVCache;30:RotatingKVCache;31:RotatingKVCache;32:KVCache;33:RotatingKVCache;34:RotatingKVCache;35:RotatingKVCache;36:KVCache;37:RotatingKVCache;38:RotatingKVCache;39:RotatingKVCache;40:KVCache;41:RotatingKVCache;42:RotatingKVCache;43:RotatingKVCache;44:KVCache;45:RotatingKVCache;46:RotatingKVCache;47:RotatingKVCache
+INFO:vmlx_engine.scheduler:LLM mixed-attention model detected (e.g. Gemma 4 sliding+full). Prefix cache remains enabled; RotatingKVCache metadata will be preserved during truncation and paged/L2 reconstruction.
+INFO:vmlx_engine.engine_core:Engine started
+INFO:vmlx_engine.engine.batched:BatchedEngine loaded: /Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_4M (mllm=False)
+INFO:vmlx_engine.server:Recorded Metal working-set model baseline: active=63.4GB max=107.5GB reason=lifespan_engine_start
+INFO:vmlx_engine.server:JIT: Applying mx.compile to model forward pass...
+INFO:vmlx_engine.server:JIT: mx.compile applied successfully — running warmup pass
+WARNING:vmlx_engine.server:JIT: warmup raised ([dequantize] Shape of scales and biases does not match the matrix given the quantization parameters. Provided matrix of shape (1,1,576) and scales/biases of shape (1,1,48) with group_size=64 and bits=8.) — rolling back mx.compile (vmlx#83 fallback)
+INFO:vmlx_engine.server:JIT: rollback complete — running without JIT (first request will NOT be slower because JIT is off)
+INFO:vmlx_engine.mcp.config:No MCP config file found, using empty config
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8064 (Press CTRL+C to quit)
+INFO:     127.0.0.1:53598 - "GET /health HTTP/1.1" 200 OK
+WARNING:vmlx_engine.server:SECURITY WARNING: Server running without API key authentication. Anyone can access the API. Use --api-key to enable authentication.
+INFO:vmlx_engine.server:Resolved sampling kwargs route=/v1/chat/completions model=/Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_4M kwargs={'temperature': 0.0, 'top_p': 1.0, 'max_tokens': 32, 'enable_thinking': True}
+INFO:     127.0.0.1:53599 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:vmlx_engine.scheduler:max_num_seqs=1 — using vMLX SingleBatchGenerator (raw native cache, scheduler-owned single-active path)
+ERROR:vmlx_engine.scheduler:Error in batch generation step: [dequantize] Shape of scales and biases does not match the matrix given the quantization parameters. Provided matrix of shape (1,54,576) and scales/biases of shape (1,54,48) with group_size=64 and bits=8.
+ERROR:vmlx_engine.engine_core:Engine loop error: [dequantize] Shape of scales and biases does not match the matrix given the quantization parameters. Provided matrix of shape (1,54,576) and scales/biases of shape (1,54,48) with group_size=64 and bits=8.
+Traceback (most recent call last):
+  File "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/engine_core.py", line 170, in _engine_loop
+    output = await _async_loop.run_in_executor(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/scheduler.py", line 8309, in step
+    responses = self.batch_generator.next()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/utils/single_batch_generator.py", line 703, in next
+    return [self._start_request(self._request)], []
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/utils/single_batch_generator.py", line 683, in _start_request
+    self._prefill(req.prompt_tokens[:-1], req)
+  File "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/utils/single_batch_generator.py", line 378, in _prefill
+    self._model_call(chunk, req)
+  File "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/utils/single_batch_generator.py", line 364, in _model_call
+    return self.model(arr, cache=req.cache)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/engine/batched.py", line 138, in __call__
+    output = self._model(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/jang_tools/laguna/model.py", line 332, in __call__
+    h = self.embed_tokens(ids)
+        ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/mlx/nn/layers/quantized.py", line 146, in __call__
+    return mx.dequantize(
+           ^^^^^^^^^^^^^^
+ValueError: [dequantize] Shape of scales and biases does not match the matrix given the quantization parameters. Provided matrix of shape (1,54,576) and scales/biases of shape (1,54,48) with group_size=64 and bits=8.
+WARNING:vmlx_engine.engine_core:Aborted 1 running + 0 waiting requests after engine error
+INFO:vmlx_engine.server:Qwen3.5 Chat Completions stream produced no visible content; running bounded thinking-off answer pass (reasoning_chars=222, answer_budget=32)
+ERROR:vmlx_engine.scheduler:Error in batch generation step: [dequantize] Shape of scales and biases does not match the matrix given the quantization parameters. Provided matrix of shape (1,58,576) and scales/biases of shape (1,58,48) with group_size=64 and bits=8.
+ERROR:vmlx_engine.engine_core:Engine loop error: [dequantize] Shape of scales and biases does not match the matrix given the quantization parameters. Provided matrix of shape (1,58,576) and scales/biases of shape (1,58,48) with group_size=64 and bits=8.
+Traceback (most recent call last):
+  File "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/engine_core.py", line 170, in _engine_loop
+    output = await _async_loop.run_in_executor(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/scheduler.py", line 8309, in step
+    responses = self.batch_generator.next()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/utils/single_batch_generator.py", line 703, in next
+    return [self._start_request(self._request)], []
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/utils/single_batch_generator.py", line 683, in _start_request
+    self._prefill(req.prompt_tokens[:-1], req)
+  File "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/utils/single_batch_generator.py", line 378, in _prefill
+    self._model_call(chunk, req)
+  File "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/utils/single_batch_generator.py", line 364, in _model_call
+    return self.model(arr, cache=req.cache)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/vmlx_engine/engine/batched.py", line 138, in __call__
+    output = self._model(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/jang_tools/laguna/model.py", line 332, in __call__
+    h = self.embed_tokens(ids)
+        ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/vMLX.app/Contents/Resources/bundled-python/python/lib/python3.12/site-packages/mlx/nn/layers/quantized.py", line 146, in __call__
+    return mx.dequantize(
+           ^^^^^^^^^^^^^^
+ValueError: [dequantize] Shape of scales and biases does not match the matrix given the quantization parameters. Provided matrix of shape (1,58,576) and scales/biases of shape (1,58,48) with group_size=64 and bits=8.
+WARNING:vmlx_engine.engine_core:Aborted 1 running + 0 waiting requests after engine error
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:vmlx_engine.engine_core:Engine stopped
+INFO:vmlx_engine.scheduler:Deep reset completed - all caches cleared
+INFO:vmlx_engine.engine.batched:BatchedEngine stopped
+INFO:vmlx_engine.server:Engine stopped
+INFO:vmlx_engine.server:Caffeinate process terminated
+INFO:     Application shutdown complete.
+INFO:     Finished server process [28149]

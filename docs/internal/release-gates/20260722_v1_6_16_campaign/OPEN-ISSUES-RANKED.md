@@ -48,8 +48,10 @@ Historical matrices were also inspected but are not silently authoritative:
 ## Do not repeat these scoped rows unless their owning source changes
 
 - [x] Plain-language cache UI: **In-Memory Paged Cache (RAM)** versus
-  **Block Disk Cache (L2)** SSD, including tooltip-click safety and minimum-width
-  visual proof (`4558dac06`). Backend option names remain unchanged.
+  **Block Disk Cache (SSD / L2)**, including outer-wrapper tooltip-click safety,
+  minimum-width settings proof, and live Cache/Perf status surfaces (current
+  cache-name checkpoint after `4ee7befad`). Backend option names remain
+  unchanged. The earlier `4558dac06` inner-glyph boundary alone was incomplete.
 - [x] Split-marker holdback source/test coverage for `<think>`, `[THINK]`, and
   `<mm:think>` plus a representative live no-leak row (`ff293d1e7`). Family
   breadth remains below.
@@ -71,6 +73,13 @@ Historical matrices were also inspected but are not silently authoritative:
   continuation. Electron, Anthropic/Ollama, and disk restart remain open.
 - [x] v1.6.15 remains immutable. Its source release is in `jjang-ai/vmlx`; its
   signed DMGs are in `jjang-ai/mlxstudio`. 1.6.16 must repeat both surfaces.
+- [x] Public signed v1.6.15 Laguna mixed-affine loading is not the source of the
+  reported `(…,576)` / `(…,48)` / `bits=8` crash. Cache-disabled signed-engine
+  JANG_2L and JANG_4M streams plus a real signed Electron Start/chat passed.
+  The stale signed `/Applications/vMLX.app` version 1.6.9 reproduced the error
+  exactly on the same JANG_4M artifact. See
+  `../20260722_public_1615_laguna_provenance/README.md`. This closes only the
+  mixed-bit provenance defect; Laguna's long/cache/settings rows stay open.
 
 ## P0: release-critical shared runtime contracts
 

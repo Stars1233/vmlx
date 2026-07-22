@@ -1,0 +1,41 @@
+[STARTUP] Using vMLX userData override: /Users/eric/.vmlx-v1615-signed-laguna-proof
+[STARTUP] Allowing an isolated secondary instance for live proof
+
+DevTools listening on ws://127.0.0.1:9336/devtools/browser/e5d5824c-5049-4767-bf52-19ae44bb218b
+[Engine Manager] Engine version check: installed=1.6.15, source=1.6.15, needsUpdate=false
+[STARTUP] Restoring 0 App Sandbox bookmarks
+[STARTUP] No existing vmlx-engine processes found
+[MemoryEnforcer] Started (max 120 GB, poll 5000ms, TTL 30m)
+[gateway] Port 8088 in use, trying 8089
+[gateway] Listening on 127.0.0.1:8089
+[Engine Manager] Checking installation...
+[Engine Manager] Found bundled Python with vmlx_engine 1.6.15 (from dist-info)
+[UPDATE] Fetched manifest from https://raw.githubusercontent.com/jjang-ai/mlxstudio/main/latest.json: v1.6.15
+[UPDATE] Fetched manifest from https://mlx.studio/update/latest.json: v1.6.15
+[UPDATE] Picked highest version across sources: v1.6.15
+[UPDATE] Selected native macOS download: https://github.com/jjang-ai/mlxstudio/releases/download/v1.6.15/vMLX-1.6.15-tahoe-arm64.dmg
+[UPDATE] Up to date (1.6.15)
+[SESSION] Model estimate: ~31.0 GB | RAM: 86.2 GB free / 137 GB total (37% used)
+[SESSION] Model family: laguna | tool: glm47 (user=glm47, detected=glm47) | reasoning: deepseek_r1 (user=deepseek_r1, detected=deepseek_r1) | autoTool: true | VLM: false
+[POWER] System sleep blocked (id=0)
+[SLEEP] touchSession 6e71c6e8 — idle timer reset
+[MODELS] Scanning directories: [
+  '/Volumes/EricsLLMDrive/dealignai',
+  '/Volumes/EricsLLMDrive/jangq-ai',
+  '/Users/eric/.mlxstudio/models',
+  '/Users/eric/.cache/huggingface/hub',
+  '/Users/eric/.exo/models'
+]
+[MODELS] Found 20 models in /Volumes/EricsLLMDrive/dealignai
+[MODELS] Found 23 models in /Volumes/EricsLLMDrive/jangq-ai
+[MODELS] Found 18 models in /Users/eric/.mlxstudio/models
+[MODELS] Found 3 models in /Users/eric/.cache/huggingface/hub
+[MODELS] Found 0 models in /Users/eric/.exo/models
+[MODELS] Total models found: 63 (1 duplicates removed)
+[CHAT] Inherited coding/tool settings from last chat 19a427e7; generation/reasoning defaults stayed model-derived
+[SLEEP] touchSession 6e71c6e8 — idle timer reset
+[CHAT] Endpoint resolution: isRemote=false, rawBaseUrl=http://127.0.0.1:8018, baseUrl=http://127.0.0.1:8018, session=6e71c6e8-1b61-4963-81a1-d1110986c205, type=local
+[CHAT] Skipping health check — global monitor confirmed healthy within 15s
+[CHAT] Sending to: http://127.0.0.1:8018/v1/responses (wire: responses, remote: false)
+[CHAT] Stream ended — content: 22 chars, reasoning: 0 chars, tool calls: 0, buffered: false
+[CHAT] Response complete: 14 tokens in 0.8s (68.0 t/s, live=53.2 t/s, TTFT: 0.58s, pp: 81 tokens, 140.6 pp/s, usage=server)
