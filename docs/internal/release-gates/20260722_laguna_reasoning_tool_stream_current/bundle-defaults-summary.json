@@ -1,0 +1,66 @@
+{
+  "generation_config.json": {
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 20,
+    "min_p": 0.0,
+    "do_sample": true,
+    "max_new_tokens": 32768,
+    "eos_token_id": [
+      2,
+      24
+    ],
+    "pad_token_id": 9,
+    "reasoning_parser": "poolside_v1",
+    "tool_call_parser": "poolside_v1"
+  },
+  "config.json": {
+    "eos_token_id": [
+      2,
+      24
+    ],
+    "pad_token_id": 9,
+    "model_type": "laguna",
+    "architectures": [
+      "LagunaForCausalLM"
+    ]
+  },
+  "jang_config.json": {
+    "cache_subtype": "kv",
+    "quantization": {
+      "method": "jang-affine-mixed",
+      "profile": "JANG_2L",
+      "block_size": 64,
+      "group_size": 64,
+      "mode": "affine",
+      "bits": 8,
+      "bits_by_role": {
+        "routed_expert": {
+          "gate_proj": 2,
+          "up_proj": 2,
+          "down_proj": 3
+        },
+        "attention": 8,
+        "shared_expert": 6,
+        "dense_mlp": 6,
+        "embed_tokens": 6,
+        "lm_head": 8,
+        "norms_router": 16
+      },
+      "bit_widths_used": [
+        2,
+        3,
+        6,
+        8
+      ],
+      "routed_avg_bits": 2.333,
+      "awq": {
+        "enabled": true,
+        "scope": "routed+shared gate/up + router gate fold"
+      }
+    }
+  },
+  "tokenizer_config.json": {
+    "chat_template_prefix": "{% include 'chat_template.jinja' %}"
+  }
+}

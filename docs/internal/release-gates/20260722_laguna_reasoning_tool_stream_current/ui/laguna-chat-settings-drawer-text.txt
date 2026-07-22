@@ -1,0 +1,160 @@
+
+11:37 PM
+11:37 PM
+speak
+
+555 + 111 = 666
+LAG-S21-UI-ON-RAIL-I-DONE
+
+29 tokens
+58.1 t/s
+1599.7 pp/s
+1051 prompt (925 paged+tq-native cached)
+0.66s TTFT
+1.2s total
+
+[LAG-S21-UI-FORCE-RAIL-J] Think privately in detail for at least five sentences about checking 888 + 111 equals 999, keeping the reasoning hidden in the reasoning rail. Do not call tools. Then visible answer exactly two lines: 888 + 111 = 999 and LAG-S21-UI-FORCE-RAIL-J-DONE
+
+Just now
+Just now
+speak
+Reasoning
+394 chars
+
+888 + 111 = 999
+LAG-S21-UI-FORCE-RAIL-J-DONE
+
+206 tokens
+38.1 t/s
+1560.3 pp/s
+1178 prompt (1050 paged+disk+tq-native cached)
+0.76s TTFT
+6.2s total
+Chat Settings
+SERVER INFO
+Model
+jangq-ai/Laguna-S-2.1-JANG_2L
+Endpoint
+http://127.0.0.1:8018
+Status
+Running
+PID
+90393
+API URL (click to copy)
+http://127.0.0.1:8018/v1/responses
+PROFILES
+
+New chats inherit tool & search settings from your last chat. Star a profile to use its tool settings instead.
+
+Save current settings as profile
+
+Save and load named presets. Star a profile to auto-apply its tool settings on new chats.
+
+INFERENCE
+Enable Thinking
+Auto
+On
+Off
+
+Auto: local vMLX uses the model/runtime reasoning default. On: request thinking. Off: request direct responses.
+
+Temperature
+1.00
+
+Controls randomness. Lower = more focused, higher = more creative.
+
+Top P
+1.00
+
+Nucleus sampling. Only tokens with cumulative probability above this threshold.
+
+Max Tokens
+
+Maximum new tokens for responses in this chat. Leave blank to use the model's generation_config/jang_config default; set a value here or send max_tokens/max_output_tokens in the API request to override it.
+
+Max Thinking Tokens
+
+Reasoning-phase budget for this chat. Leave blank for the model default; when Qwen 3.5/3.6 has none, local vMLX Auto uses at most 1,024 reasoning tokens and keeps at least 256 tokens (or half of a smaller output cap) for the visible answer. An explicit value or API max_thinking_tokens overrides Auto. Models without thinking-budget support may ignore it.
+
+Top K
+20
+
+Limits tokens to top K candidates. 0 = disabled (uses Top P only).
+
+Min P
+0.00
+
+Minimum probability threshold relative to top token. 0 = disabled.
+
+Repetition Penalty
+1.00
+
+Penalizes repeated tokens. 1.0 = no penalty. Leave Server default to use the model bundle defaults instead of applying a global penalty.
+
+SYSTEM PROMPT
+(No template)
+Code Reviewer
+Coding Assistant
+Concise Responder
+Creative Writer
+Data Analyst
+Patient Tutor
+Socratic Guide
+Save
+
+Injected as the first message in each request.
+
+STOP SEQUENCES
+
+Custom stop tokens override the built-in template tokens.
+
+API WIRE FORMAT
+Chat Completions (/v1/chat/completions)
+Responses (/v1/responses)
+
+Wire format for API requests. Use Responses for OpenAI Responses API compatibility.
+
+AGENTIC
+Max Tool Iterations
+
+Maximum MCP tool call rounds per message. Higher = more autonomous.
+
+Enable Built-in Coding Tools
+
+File I/O, code search, shell commands, web search, and URL fetching. Full agentic coding environment.
+
+Working Directory
+Browse
+
+All file operations and commands execute within this directory.
+
+TOOL CATEGORIES
+
+File I/O
+read, write, edit, copy, move, delete files and directories
+Search
+search file contents, find files, file info
+Shell
+execute shell commands in working directory
+Web Search (DuckDuckGo)
+free web search — no API key needed
+Brave Search
+requires API key — enter below
+Get a free API key →
+URL Fetch
+fetch and read web page content
+Git
+git status, diff, log, blame, commit, branch, stash
+Utilities
+token count, clipboard read/write, ask user
+Tool Result Limit
+
+Max characters per tool result. Lower values reduce context usage. Default 50,000 (~12k tokens).
+
+50k
+Hide Tool Status
+
+Hide tool execution details from the chat. Tools still execute normally.
+
+Save
+Reset

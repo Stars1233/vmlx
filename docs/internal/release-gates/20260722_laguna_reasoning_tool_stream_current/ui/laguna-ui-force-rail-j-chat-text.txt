@@ -1,0 +1,120 @@
+Server
+Tools
+Image
+API
+🇺🇸
+Sessions
+jangq-ai/Laguna-S-2.1-JANG_2L
+JANG_2L (2.33b routed)
+127.0.0.1:8018
+PID 90393
++ Chat
+Chat
+Server
+Cache
+Bench
+Embed
+Perf
+Logs
+Stop
+
+[LAG-S21-UI-THINK-RAIL-C] Do not call tools. Think privately and solve 2468 + 1357. Then visible answer exactly two lines: 2468 + 1357 = 3825 and LAG-S21-UI-THINK-RAIL-C-DONE
+
+11:22 PM
+11:22 PM
+speak
+Reasoning
+1011 chars
+
+2468 + 1357 = 3825
+LAG-S21-UI-THINK-RAIL-C-DONE
+
+403 tokens
+53.5 t/s
+18.1 pp/s
+115 prompt
+6.34s TTFT
+13.9s total
+
+[LAG-S21-UI-REASON-TOOL-D] Call the built-in file_info tool exactly once with path panel/package.json. You must use the tool. After the tool result, reply exactly LAG-S21-UI-REASON-TOOL-D-DONE SIZE=<the human-readable size reported by the tool> and nothing else.
+
+11:23 PM
+11:23 PM
+speak
+Reasoning
+88 chars
+
+LAG-S21-UI-REASON-TOOL-D-DONE SIZE=5.2 KB
+
+63 tokens
+50.3 t/s
+193.5 pp/s
+1022 prompt (128 paged+tq-native cached)
+1.61s TTFT
+3.6s total
+
+[LAG-S21-UI-POSTPATCH-RAIL-F] Think privately and solve 314 + 159. Do not call tools. Then visible answer exactly two lines: 314 + 159 = 473 and LAG-S21-UI-POSTPATCH-RAIL-F-DONE
+
+11:33 PM
+11:33 PM
+speak
+
+314 + 159 = 473
+LAG-S21-UI-POSTPATCH-RAIL-F-DONE
+
+30 tokens
+57.4 t/s
+909.1 pp/s
+800 prompt (114 paged+tq-native cached)
+0.88s TTFT
+1.5s total
+
+[LAG-S21-UI-AUTO-RAIL-H] Auto reasoning mode test. Think privately in detail about why 444 + 222 equals 666, keeping the reasoning hidden in the reasoning rail. Do not call tools. Then visible answer exactly two lines: 444 + 222 = 666 and LAG-S21-UI-AUTO-RAIL-H-DONE
+
+11:36 PM
+11:36 PM
+speak
+
+444 + 222 = 666
+LAG-S21-UI-AUTO-RAIL-H-DONE
+
+29 tokens
+58.9 t/s
+1220.0 pp/s
+926 prompt (799 paged+disk+tq-native cached)
+0.76s TTFT
+1.3s total
+
+[LAG-S21-UI-ON-RAIL-I] Explicit reasoning On test. Think privately in detail about why 555 + 111 equals 666, keeping the reasoning hidden in the reasoning rail. Do not call tools. Then visible answer exactly two lines: 555 + 111 = 666 and LAG-S21-UI-ON-RAIL-I-DONE
+
+11:37 PM
+11:37 PM
+speak
+
+555 + 111 = 666
+LAG-S21-UI-ON-RAIL-I-DONE
+
+29 tokens
+58.1 t/s
+1599.7 pp/s
+1051 prompt (925 paged+tq-native cached)
+0.66s TTFT
+1.2s total
+
+[LAG-S21-UI-FORCE-RAIL-J] Think privately in detail for at least five sentences about checking 888 + 111 equals 999, keeping the reasoning hidden in the reasoning rail. Do not call tools. Then visible answer exactly two lines: 888 + 111 = 999 and LAG-S21-UI-FORCE-RAIL-J-DONE
+
+Just now
+Just now
+speak
+Reasoning
+394 chars
+
+888 + 111 = 999
+LAG-S21-UI-FORCE-RAIL-J-DONE
+
+206 tokens
+38.1 t/s
+1560.3 pp/s
+1178 prompt (1050 paged+disk+tq-native cached)
+0.76s TTFT
+6.2s total

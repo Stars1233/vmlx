@@ -1,0 +1,103 @@
+{
+  "same_ui_prompt": {
+    "content": "137 × 29 = 3,973\n\nLAG-S21-API-SAME-REASONING-DONE",
+    "reasoning": "Alright, let's tackle 137 multiplied by 29. Hmm, okay, I need to do this step by step. Let me think. Maybe I can break it down using the distributive property. So, 29 is the same as 30 minus 1. That might make it easier. So, 137 times 30 first, and then subtract 137. Let me calculate that.\n\n137 times 30. Well, 137 times 3 is 411, so adding a zero makes it 4110. Then subtract 137 from that. Let me do 4110 minus 137. Hmm, 4110 minus 100 is 4010, then minus 37 more would be 3973. Wait, is that right? Let me check again. 4110 minus 137. Let's subtract 100 first: 4110 - 100 = 4010. Then subtract 37: 4010 - 37 = 3973. Yeah, that seems correct.\n\nAlternatively, maybe I can do the standard multiplication method. Let's try that to verify. 137 times 29. Multiply 137 by 9 first. 137 times 9. 137*9: 137*10 is 1370, minus 137 gives 1233. Then multiply 137 by 20 (since the 2 in 29 is in the tens place). 137*20 is 2740. Now add those two results: 1233 + 2740. Let's add them. 1233 + 2000 is 3233, then +740 is 3973. Same answer. Okay, so that's consistent.\n\nWait, just to make sure, maybe another way. Let's do 137*29 directly. Let me write it out:\n\n       137\n     x 29\n     -----\nFirst, multiply 137 by 9: 137*9=1233.",
+    "content_len": 49,
+    "reasoning_len": 1217,
+    "content_delta_count": 24,
+    "reasoning_delta_count": 512,
+    "first_reasoning_s": 0.5261502499924973,
+    "first_content_s": 10.344639374990948,
+    "finish_reasons": [
+      "stop"
+    ],
+    "tool_delta_count": 0,
+    "marker_leak_content": false,
+    "marker_anywhere": false,
+    "usage": {
+      "prompt_tokens": 97,
+      "completion_tokens": 540,
+      "total_tokens": 637
+    },
+    "done_seen": true
+  },
+  "strict_two_line": {
+    "content": "Product: 3973\nLAG-S21-API-STRICT-TWO-LINE-DONE",
+    "reasoning": "Okay, let's see. I need to calculate 137 multiplied by 29. Hmm, how do I do this? Maybe I can break it down using the distributive property. Let me think. 29 is close to 30, so maybe I can do 137 times 30 and then subtract 137 once. That might be easier.\n\nSo, 137 times 30. Well, 137 times 3 is 411, right? Because 100 times 3 is 300, 30 times 3 is 90, and 7 times 3 is 21. Adding those up: 300 + 90 = 390, plus 21 is 411. So 137 times 30 is 4110. Then I need to subtract 137 from that. Let me do 4110 minus 137. \n\nSubtracting 100 from 4110 gives 4010, then subtract 37 more. 4010 minus 37 is 3973. Wait, so 137 times 29 is 3973? Let me check that again to make sure I didn't make a mistake. \n\nAnother way to do it is to multiply 137 by 20 and 137 by 9, then add them together. 137 times 20 is 2740. 137 times 9: 137 times 10 is 1370, minus 137 gives 1233. So 2740 plus 1233. Let's add them: 2740 + 1200 is 3940, then add 33 more to get 3973. Yep, same result. \n\nSo both methods give me 3973. That seems right. I think that's the correct product. Let me just do a quick verification by another method. Maybe using the standard multiplication algorithm. \n\n137\nx 29\n------\nFirst, multiply 137 by 9: 137*9=1233\nThen multiply 13",
+    "content_len": 46,
+    "reasoning_len": 1224,
+    "content_delta_count": 19,
+    "reasoning_delta_count": 512,
+    "first_reasoning_s": 0.7080779589887243,
+    "first_content_s": 10.644225458992878,
+    "finish_reasons": [
+      "stop"
+    ],
+    "tool_delta_count": 0,
+    "marker_leak_content": false,
+    "marker_anywhere": false,
+    "usage": {
+      "prompt_tokens": 102,
+      "completion_tokens": 534,
+      "total_tokens": 636
+    },
+    "done_seen": true
+  },
+  "tool_round1": {
+    "content": "",
+    "reasoning": "",
+    "content_len": 0,
+    "reasoning_len": 0,
+    "content_delta_count": 0,
+    "reasoning_delta_count": 0,
+    "first_reasoning_s": null,
+    "first_content_s": null,
+    "finish_reasons": [
+      "tool_calls"
+    ],
+    "tool_delta_count": 2,
+    "marker_leak_content": false,
+    "marker_anywhere": false,
+    "usage": {
+      "prompt_tokens": 194,
+      "completion_tokens": 37,
+      "total_tokens": 231,
+      "prompt_tokens_details": {
+        "cached_tokens": 64,
+        "cache_detail": "paged+tq-native"
+      }
+    },
+    "done_seen": true,
+    "assembled_call": {
+      "id": "call_70486139",
+      "name": "file_info",
+      "arguments": "{\"path\": \"panel/package.json\"}"
+    }
+  },
+  "tool_round2": {
+    "content": "LAG-S21-API-TOOL-CHECK-DONE SIZE=5.2 KB",
+    "reasoning": "",
+    "content_len": 39,
+    "reasoning_len": 0,
+    "content_delta_count": 1,
+    "reasoning_delta_count": 0,
+    "first_reasoning_s": null,
+    "first_content_s": 1.246360207995167,
+    "finish_reasons": [
+      "stop"
+    ],
+    "tool_delta_count": 1,
+    "marker_leak_content": false,
+    "marker_anywhere": false,
+    "usage": {
+      "prompt_tokens": 288,
+      "completion_tokens": 19,
+      "total_tokens": 307,
+      "prompt_tokens_details": {
+        "cached_tokens": 193,
+        "cache_detail": "paged+tq-native"
+      }
+    },
+    "done_seen": true
+  }
+}
