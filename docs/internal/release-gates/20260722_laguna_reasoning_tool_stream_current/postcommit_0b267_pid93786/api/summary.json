@@ -1,0 +1,71 @@
+{
+  "head": "0b267fda724729649ad862aedbc179817b866f4d",
+  "pid": 93786,
+  "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+  "source_mtime_epoch": 1784703117.867819,
+  "health_kv": {
+    "enabled": true,
+    "mode": "turboquant-storage",
+    "bits": 4,
+    "stored_prefix_quantization": "turboquant-q4",
+    "key_bits": 4,
+    "value_bits": 4,
+    "auto_policy": "mixed_swa_full_attention_kv_storage_tq4",
+    "live_encode_enabled": false
+  },
+  "checks": {
+    "post_tool_t": {
+      "content": "LAG-S21-CHAT-POSTCOMMIT-T-DONE VALUE=BETA-84",
+      "reasoning_len": 0,
+      "reasoning_delta_count": 0,
+      "content_delta_count": 1,
+      "tool_delta_count": 0,
+      "tool_deltas": [],
+      "finish_reasons": [
+        "stop"
+      ],
+      "content_has_inline_think_or_tool_marker": false,
+      "first_reasoning_t": null,
+      "last_reasoning_t": null,
+      "first_content_t": 0.808316,
+      "last_content_t": 0.808316,
+      "done_sentinel": true,
+      "event_count": 21
+    },
+    "required_tool_valid": {
+      "content": "",
+      "reasoning_len": 0,
+      "reasoning_delta_count": 0,
+      "content_delta_count": 0,
+      "tool_delta_count": 2,
+      "tool_deltas": [
+        {
+          "index": 0,
+          "id": "call_a8c8c63a",
+          "type": "function",
+          "function": {
+            "name": "",
+            "arguments": ""
+          }
+        },
+        {
+          "index": 0,
+          "function": {
+            "name": "lookup_code",
+            "arguments": "{\"key\": \"alpha\"}"
+          }
+        }
+      ],
+      "finish_reasons": [
+        "tool_calls"
+      ],
+      "content_has_inline_think_or_tool_marker": false,
+      "first_reasoning_t": null,
+      "last_reasoning_t": null,
+      "first_content_t": null,
+      "last_content_t": null,
+      "done_sentinel": true,
+      "event_count": 26
+    }
+  }
+}

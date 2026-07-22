@@ -1,0 +1,46 @@
+{
+  "pid_expected": 93364,
+  "reason": {
+    "stem": "chat_reason_p",
+    "elapsed": 0.822,
+    "ttfe": 0.0099,
+    "events": 19,
+    "text": "753\nLAG-S21-CURRENT-CHAT-REASON-P-DONE",
+    "text_len": 38,
+    "reasoning_len": 0,
+    "reasoning_head": "",
+    "inline_marker_in_content": false,
+    "tool_chunk_count": 0,
+    "tool_chunks": [],
+    "finishes": [
+      "stop"
+    ],
+    "raw_path": "docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid93364/chat_reason_p.raw.jsonl",
+    "events_path": "docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid93364/chat_reason_p.events.jsonl"
+  },
+  "tool_round1": {
+    "stem": "chat_tool_q_round1",
+    "elapsed": 1.013,
+    "ttfe": 0.002,
+    "events": 26,
+    "text": "",
+    "text_len": 0,
+    "reasoning_len": 27,
+    "reasoning_head": "LAG-S21-CURRENT-CHAT-TOOL-Q",
+    "inline_marker_in_content": false,
+    "tool_chunk_count": 0,
+    "tool_chunks": [],
+    "finishes": [
+      "length"
+    ],
+    "raw_path": "docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid93364/chat_tool_q_round1.raw.jsonl",
+    "events_path": "docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid93364/chat_tool_q_round1.events.jsonl"
+  },
+  "tool_round2": {
+    "stem": "chat_tool_q_round2",
+    "skipped": "round1 did not produce concrete file_info(path) call",
+    "assembled_name": "",
+    "assembled_args": "",
+    "assembled_id": null
+  }
+}

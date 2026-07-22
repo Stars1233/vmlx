@@ -1,0 +1,54 @@
+{
+  "round1": {
+    "content": "",
+    "reasoning_len": 0,
+    "content_delta_count": 0,
+    "reasoning_delta_count": 0,
+    "tool_delta_count": 1,
+    "assembled_tools": [
+      {
+        "id": "call_97078c3f",
+        "type": "function",
+        "name": "file_info",
+        "arguments": "{\"path\": \"panel/package.json\"}"
+      }
+    ],
+    "finish_reasons": [
+      "tool_calls"
+    ],
+    "usage": {
+      "prompt_tokens": 200,
+      "completion_tokens": 37,
+      "total_tokens": 237,
+      "prompt_tokens_details": {
+        "cached_tokens": 128,
+        "cache_detail": "paged+disk+tq-native"
+      }
+    },
+    "done_seen": true,
+    "marker_leak": false
+  },
+  "round2": {
+    "content": "LAG-S21-API-TOOL-NOSTART-FINAL-DONE SIZE=5.2 KB",
+    "reasoning_len": 0,
+    "content_delta_count": 1,
+    "reasoning_delta_count": 0,
+    "tool_delta_count": 0,
+    "assembled_tools": [],
+    "finish_reasons": [
+      "stop"
+    ],
+    "usage": {
+      "prompt_tokens": 294,
+      "completion_tokens": 22,
+      "total_tokens": 316,
+      "prompt_tokens_details": {
+        "cached_tokens": 199,
+        "cache_detail": "paged+tq-native"
+      }
+    },
+    "done_seen": true,
+    "marker_leak": false
+  },
+  "out": "/tmp/laguna_api_tool_no_start_final_20260721-235154"
+}

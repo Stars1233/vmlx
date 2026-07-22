@@ -15,7 +15,7 @@ This gate is narrow: Laguna S-2.1 JANG_2L, current source, Electron-launched ser
 
 ## Live process proof
 
-- `live-processes.txt`: single active `vmlx-engine serve` process for `/Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_2L`, PID 90393 at capture time.
+- `live-processes.txt`: single active `vmlx-engine serve` process for `/Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_2L`, PID 93364 in the final post-fix capture; earlier screenshots used PID 90393 before the final no-START rerun.
 - `live-process-env.txt`: Electron-managed process had `PYTHONPATH=/Users/eric/mlx/vllm-mlx-release-1.6.13`, `PWD=/Users/eric/mlx/vllm-mlx-release-1.6.13/panel`, and `VMLINUX_USER_DATA_DIR=/Users/eric/.vmlx-v1613-responsive-dev`.
 
 ## Bundle/default proof
@@ -35,11 +35,28 @@ The Electron chat settings drawer screenshot/text (`ui/laguna-chat-settings-draw
 
 ### Post-fix proof
 
-`api_post_fix_no_phantom/summary.json` after Electron Save & Restart on current source:
+`api_post_fix_no_phantom_final/summary.json` after Electron Save & Restart on current source/PID 93364:
 
 - Round 1 required tool call: `tool_delta_count=1`, `finish_reasons=["tool_calls"]`, assembled call `file_info({"path":"panel/package.json"})`.
-- Round 2 tool-result continuation: visible content `LAG-S21-API-TOOL-NOPHANTOM-DONE SIZE=5.2 KB`, `tool_delta_count=0`, `finish_reasons=["stop"]`, `done_seen=true`.
+- Round 2 tool-result continuation: visible content `LAG-S21-API-TOOL-NOSTART-FINAL-DONE SIZE=5.2 KB`, `tool_delta_count=0`, `finish_reasons=["stop"]`, `done_seen=true`.
 - Cache detail on the live API rows included `paged+disk+tq-native` on the first round and `paged+tq-native` on continuation.
+
+`postcommit_0b267_pid93786/api/summary.json` adds a clean-restart proof after
+the final source commit `0b267fda724729649ad862aedbc179817b866f4d`:
+
+- Source mtime: `2026-07-21 23:51:57 -0700`; Electron-launched PID `93786`
+  started afterward at `2026-07-21 23:52:34 -0700`.
+- Post-tool continuation marker `LAG-S21-CHAT-POSTCOMMIT-T` returned
+  `LAG-S21-CHAT-POSTCOMMIT-T-DONE VALUE=BETA-84` with
+  `tool_delta_count=0`, `finish_reasons=["stop"]`, and no inline
+  think/tool marker leakage.
+- Required-tool control still preserved valid OpenAI SDK assembly:
+  `tool_delta_count=2`, first delta contained id/type plus empty function
+  start, second delta contained `lookup_code({"key":"alpha"})`, and terminal
+  `finish_reasons=["tool_calls"]`.
+- Health on the same process reported q4 TurboQuant storage:
+  `stored_prefix_quantization="turboquant-q4"` and
+  `auto_policy="mixed_swa_full_attention_kv_storage_tq4"`.
 
 `api_reasoning_prompt_compare/summary.json` documents variable Laguna reasoning behavior with `enable_thinking=true`:
 
@@ -55,10 +72,10 @@ Interpretation: for Laguna S-2.1, Auto/On permits reasoning and the parser separ
 
 ## Cache proof level
 
-`health-after-ui-api.json` after the UI/API pass showed:
+`health-after-final-api.json` after the final UI/API pass showed:
 
-- scheduler cache hits/misses present, `tokens_saved=1944`, `backend_mode=paged`, `disk_hits=25`, `disk_promotion_hits=25`.
-- block disk cache had `blocks_on_disk=1725`, `l2_block_tokens_on_disk=104283`, `disk_writes=38`, `tq_native_writes=38`, `tq_native_hits=25`, `tq_native_enabled=true`.
+- scheduler cache hits/misses present, `tokens_saved=327`, `backend_mode=paged`, `disk_hits=2`, `disk_promotion_hits=2`.
+- block disk cache had `blocks_on_disk=1763`, `l2_block_tokens_on_disk=106025`, `disk_writes=4`, `tq_native_writes=4`, `tq_native_hits=2`, `tq_native_enabled=true`.
 
 This proves current live Laguna reuse through paged + disk + TQ-native on this session. It does not prove disk-only-with-paged-off partial prefix restore; that remains a separate open gate.
 
@@ -80,4 +97,4 @@ This proves current live Laguna reuse through paged + disk + TQ-native on this s
 - Broader model family matrix remains open: DSV4 Flash typed composite cache, MiniMax M3 sparse/lightning cache, Gemma, Qwen/Bonsai/Ornith, Step, Nemotron/Omni/audio/video, M2.7, LFM, openPangu.
 - Packaging, signing, notarization, version bump, latest.json/feed updates, and install smoke were not performed in this gate.
 
-Verdict for this gate: PARTIAL scoped closure. Laguna S-2.1 current-source reasoning separation and post-tool phantom-call streaming are live-proven on Electron-launched PID 90393 and raw API. Overall release remains BLOCKED until the remaining release gates above are closed or explicitly deferred with a release-risk note.
+Verdict for this gate: PARTIAL scoped closure. Laguna S-2.1 current-source reasoning separation and post-tool phantom-call streaming are live-proven on Electron-launched PIDs 93364 and 93786 plus raw API. Overall release remains BLOCKED until the remaining release gates above are closed or explicitly deferred with a release-risk note.
