@@ -10,6 +10,15 @@ It starts from public v1.6.15 follow-up source commit
 `codex/v1.6.16-release-campaign-20260722`. The immutable v1.6.15 tag and its
 signed evidence remain unchanged.
 
+Current tested cutoff: `230c822f2e36967d8f6050b47f820e40b7a21f46`.
+The clean source checkout is
+`/Users/eric/mlx/vllm-mlx-release-1.6.15`; the live Electron proof checkout on
+`erics-m5-max.local` is `/Users/eric/mlx/vllm-mlx-release-1.6.13`. Both were at
+the same commit for the retained Laguna proof. The dev launcher executable was
+`/Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine`, with `PYTHONPATH` selecting
+the synchronized release proof checkout rather than the launcher's source
+tree.
+
 The campaign must not be called complete from focused tests, source inspection,
 or one successful model turn. A row closes only when its current source trace,
 focused regression tests, real Electron computer-use proof, raw protocol proof,
@@ -71,11 +80,11 @@ For every live model generation retained as evidence:
 
 | ID | Status | Work and acceptance |
 |---|---|---|
-| `R16-REASONING-RAILS` | `OPEN / RELEASE-CRITICAL` | Close Chat Completions, Responses, Anthropic, and Ollama stream and non-stream reasoning behavior across representative parser families. Auto remains model-owned variable reasoning where the bundle supports it; it must resolve to an enabled reasoning-capable request, not force the model to expose reasoning on every easy prompt. Explicit On and Off must be honored. Separate reasoning/content, progressive paint/wire events, one truthful terminal, and no inline native tags are mandatory. Include the known Ollama M3/Mistral4 normalization, Ollama Off-history stripping, Anthropic late-reasoning block-index, and partial-delimiter holdback source findings. |
+| `R16-REASONING-RAILS` | `PARTIAL / RELEASE-CRITICAL` | Current Laguna Electron plus Chat/Responses/Anthropic/Ollama live proof and the three scoped source/test repairs are retained below. Auto remains model-owned variable reasoning where the bundle supports it; it must resolve to an enabled reasoning-capable request, not force the model to expose reasoning on every easy prompt. Explicit On and Off must be honored. Still close non-stream behavior, remaining parser families, a live late-reasoning family, and live M3/openPangu/Mistral4 Ollama normalization. Separate reasoning/content, progressive paint/wire events, one truthful terminal, and no inline native tags are mandatory. |
 | `R16-AGENTIC-HARNESS` | `OPEN / RELEASE-CRITICAL` | Use a coding-harness-shaped client for no-tool, auto, required, explicit function choice, real result continuation, two-tool interleaving, final synthesis, cancellation, disconnect, injected backend failure, and immediate recovery. Exercise direct and Electron gateway paths. A reasoning-only final, dropped required argument, repeated tool, hallucinated tool result, or false terminal fails the row. |
 | `R16-STREAM-METRICS` | `OPEN` | Compare Electron `metrics_json` against raw timed SSE for the same prompt. Report TTFT, prompt processing speed, decode tokens/s after first output token, reasoning tokens, visible tokens, tool/fallback pauses, and wall time separately. Reject terminal-batch answer painting and misleading blended two-pass TPS. |
 | `R16-CACHE-HIERARCHY` | `OPEN / RELEASE-CRITICAL` | Prove cold store, resident RAM hit, partial-block reuse, L1 eviction, L2 SSD refault, process restart restore, and safe full-prefill fallback for standard KV, hybrid SSM/GDN, mixed SWA, CCA, M3 sparse, DSV4 composite, and openPangu native prompt disk. With Paged Off and L2 On, partial prefix reuse must come from SSD with zero resident paged bytes. With Paged On, lookup order must use matching RAM blocks first and SSD when absent. Cross-chat and cross-session reuse must not leak unrelated suffixes or media. |
-| `R16-SETTINGS-PARITY` | `OPEN / RELEASE-CRITICAL` | Compare bundle defaults to visible Chat Settings, SQLite, IPC/request payload, preview/argv, and engine-resolved kwargs/health. Cover temperature, top-p, top-k including Off/-1/large values, min-p zero, repetition penalty, max output, max context, reasoning Auto/On/Off, tool/reasoning parsers, MTP, modalities, cache toggles, block size/count, RAM percentage, L2 size/path, LAN/port, and Single Model. First use must inherit the bundle; saved per-chat/per-session values must survive restart; reset/Auto must remove the override. |
+| `R16-SETTINGS-PARITY` | `OPEN / RELEASE-CRITICAL` | Compare bundle defaults to visible Chat Settings, SQLite, IPC/request payload, preview/argv, and engine-resolved kwargs/health. Cover temperature, top-p, top-k including Off/-1/large values, min-p zero, repetition penalty, max output, max context, reasoning Auto/On/Off, tool/reasoning parsers, MTP, modalities, cache toggles, block size/count, RAM percentage, L2 size/path, LAN/port, and Single Model. First use must inherit the bundle; saved per-chat/per-session values must survive restart; reset/Auto must remove the override. Current source trace found that plain Save deliberately persists for the next restart, while Save & Restart has a late-listener delay, ordinary config saves do not broadcast `session:updated`, and Chat Settings can show a stale PID after restart. These subdefects remain open until patched and live-reproved. |
 | `R16-CACHE-LABEL` | `VERIFIED-LIVE_SCOPED` | Source `4558dac06` renames Electron `Paged Cache` / `Use Paged KV Cache` to **In-Memory Paged Cache (RAM)** and identifies **Block Disk Cache (L2)** as SSD. It also prevents help-tooltip clicks from toggling checkbox settings. Focused tests, typecheck, normal/minimum-width visual proof, unchanged persisted state/argv, and effective loaded health are named below. Backend flags/defaults/eligibility are unchanged; explicit Off plus disk-only L2 remains a separate cache-behavior regression row. |
 | `R16-SINGLE-MODEL-GATEWAY` | `PARTIAL` | Preserve the scoped unmanaged-engine sweep, rollback, disconnect, backend-loss, and non-stream atomicity fixes. Still run a bounded multi-client soak with repeated real UI model swaps, only one resident process, eager Start-before-first-message load, concurrent route/swap attempts, active-request LAN/port rollback, occupied port, stale target, late loader failure, unload/reload, and recovery across all four protocols. |
 
@@ -135,6 +144,10 @@ For every live model generation retained as evidence:
 |---|---|---|---|---|---|---|
 | 2026-07-22 | `7b940b070` | Opened 1.6.16 campaign from post-1.6.15 main; added explicit cache terminology gate | Documentation/source reconciliation only | Not run for this row | Not run for this row | `ACTIVE / NOT READY` |
 | 2026-07-22 | `4558dac06` | Renamed the visible RAM tier and fixed tooltip clicks toggling checkbox settings | 301 focused panel tests + typecheck passed on proof host | 1400x900 and 600x760 section/toggle/help inspected; checked state preserved | Existing DB/argv and pre-request loaded health agree on Paged RAM On plus Block L2 | `VERIFIED-LIVE_SCOPED` |
+| 2026-07-22 | `ff293d1e7` | Added accumulated-prefix holdback for split reasoning markers across DeepSeek, ThinkXML, and MiniMax M3 parsers | Included in 210/210 combined reasoning/protocol focused tests | Laguna current-source UI showed a separate reasoning rail with no visible marker leakage; natural character-split timing was not forced live | Laguna current-source protocol rows had no visible control-marker leakage | `VERIFIED-SOURCE_TEST_SCOPED / LIVE REPRESENTATIVE` |
+| 2026-07-22 | `95e954045` | Balanced Anthropic late-reasoning block transitions, indices, and terminal handling | Included in 210/210 combined reasoning/protocol focused tests | No live late-reasoning family was exercised | Laguna normal reasoning-before-text produced blocks 0/1, 222/99 thinking/text deltas, one terminal | `VERIFIED-SOURCE_TEST_SCOPED / LIVE NORMAL-ORDER ONLY` |
+| 2026-07-22 | `230c822f2` | Normalized streaming Ollama reasoning policy for MiniMax M3, openPangu, Mistral4, and Off-history stripping | Included in 210/210 combined reasoning/protocol focused tests | Laguna UI unaffected and coherent | Laguna generic Ollama route produced 222 thinking events, 99 content events, one terminal; named-family normalization is not yet live-proven | `VERIFIED-SOURCE_TEST_SCOPED / LIVE REPRESENTATIVE` |
+| 2026-07-22 | `230c822f2` | Current Laguna S-2.1 JANG_2L reasoning, tool-loop, and protocol representative | Bundle/config grounded; combined focused suite 210/210 | Real Electron chat retained one separate reasoning turn and two exact one-tool continuations; third turn restored 664 `paged+tq-native` RAM tokens | Chat, Responses, Anthropic, and Ollama streams were progressive and terminal-complete; exact counts are in the sanitized summary | `VERIFIED-LIVE_SCOPED / GLOBAL ROW PARTIAL` |
 
 ## Cache terminology and tooltip proof
 
@@ -167,6 +180,76 @@ Focused proof on `erics-m5-max.local`:
 
 No model generation was run for this UI/settings proof, and no cache reuse or
 output-coherence claim is added here.
+
+## Current Laguna reasoning, protocol, tool-loop, and cache boundary
+
+Cutoff `230c822f2` was synchronized to the live proof checkout before the real
+Electron Start action loaded
+`/Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_2L` as PID 53268 on port
+8018. Its actual bundle identifies `model_type=laguna`, JANG affine-mixed
+weights (not JANGTQ/MXTQ), 48 layers with one full-attention layer followed by
+three sliding-window layers, window 512, `deepseek_r1` reasoning, `glm47`
+tools, text-only modality, and temperature/top-p/top-k/min-p defaults
+`1/1/20/0`. The visible Chat Settings controls matched those sampling defaults.
+
+The retained three-turn Electron chat has:
+
+- row 183: exact `R16-LAG-UI-DONE`, a separate 404-character reasoning rail,
+  no tool call, no warning;
+- row 186: exactly one `file_info(panel/package.json)`, a real result reporting
+  5.2 KB, exact `R16-LAG-UI-TOOL-DONE SIZE=5.2 KB`, no warning;
+- row 189: exactly one visibly rendered `file_info(pyproject.toml)`, exact
+  `R16-LAG-UI-TOOL-VISIBLE-DONE`, no warning, and 664 restored
+  `paged+tq-native` tokens.
+
+Raw current-process protocol summaries:
+
+- Chat Completions: 228 reasoning deltas, 98 content deltas, one stop, one
+  usage event, no visible marker leak. The model added explanatory prose before
+  the requested marker, so transport passed while strict exact format did not.
+- Responses: 21 progressive content deltas and one completed terminal. The
+  model selected its direct visible rail for the easy prompt.
+- Anthropic: a strong prompt produced thinking block 0 then text block 1, 222
+  thinking deltas, 99 text deltas, and one `message_stop`.
+- Ollama: the same strong prompt produced 222 `message.thinking` events, 99
+  content events, and one terminal.
+
+Easy Chat/Anthropic/Ollama A/B prompts all selected direct visible output, so
+the absence of a private rail on those turns is a model-variable Auto control,
+not evidence of adapter loss. The live current process has 5,132 L2 block
+tokens on disk but zero disk hits; this row proves only the observed resident
+RAM/native-TQ warm hit, not SSD refault or restart restore.
+
+Durable evidence:
+
+- `laguna-reasoning-protocol-ui-summary.json`: sanitized counts, hashes, exact
+  visible finals, DB-derived tool metadata, metrics, and cache boundary;
+- `laguna-ui-reasoning.png`: collapsed private rail plus exact visible final;
+- `laguna-ui-tool-visible.png`: both real tool cards, exact finals, and metrics.
+
+The raw SSE/NDJSON captures and full private reasoning text are deliberately
+not committed.
+
+## Settings restart findings at this cutoff
+
+The live DEBUG-to-INFO negative control initially looked like a lost settings
+update. Source trace and the next real Stop/Start show a narrower result:
+plain Save deliberately persists for the next restart and does not restart the
+running process; the subsequent PID 53268 correctly omitted the DEBUG argv
+flag. Three actual UI/session defects remain:
+
+1. Save & Restart subscribes for `session:stopped` only after awaited Stop has
+   already emitted it, causing the 15-second fallback wait.
+2. Ordinary config updates do not emit `session:updated`, so other mounted UI
+   consumers can keep stale config.
+3. Chat Settings merges live status/port but not live PID, so it displayed old
+   PID 52809 after the engine had restarted as 53268.
+
+Plain Save also needs clearer "Save for Next Restart" wording while running.
+No settings row is promoted until the shared source fix, focused tests, and a
+new Electron Save & Restart prove prompt PID replacement, argv/config parity,
+drawer persistence, Chat Settings PID parity, and prompt restart failure
+handling.
 
 ## Release stop conditions
 

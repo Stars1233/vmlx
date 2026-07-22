@@ -1,0 +1,172 @@
+{
+  "captured_at": "2026-07-22T03:08:00-07:00",
+  "source_commit": "230c822f2e36967d8f6050b47f820e40b7a21f46",
+  "proof_host": "erics-m5-max.local",
+  "electron_cdp": "http://127.0.0.1:9335",
+  "model": {
+    "path": "/Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_2L",
+    "served_name": "jangq-ai/Laguna-S-2.1-JANG_2L",
+    "pid": 53268,
+    "port": 8018,
+    "model_type": "laguna",
+    "weight_format": "jang-affine-mixed",
+    "reasoning_parser": "deepseek_r1",
+    "tool_call_parser": "glm47",
+    "paged_ram": true,
+    "block_disk_l2": true,
+    "block_size": 64,
+    "max_blocks": 1000,
+    "cache_memory_percent": 0.15
+  },
+  "electron": {
+    "chat_id": "832171cb-f888-4344-995e-88bf5577a078",
+    "turns": [
+      {
+        "rowid": 183,
+        "visible_content": "R16-LAG-UI-DONE",
+        "reasoning_chars": 404,
+        "reasoning_stored_separately": true,
+        "tool_calls": 0,
+        "warnings": 0,
+        "metrics": {
+          "token_count": 138,
+          "prompt_tokens": 81,
+          "tokens_per_second": 55.7,
+          "prompt_processing_speed": 163.0,
+          "ttft_seconds": 0.50,
+          "total_seconds": 3.0
+        }
+      },
+      {
+        "rowid": 186,
+        "visible_content": "R16-LAG-UI-TOOL-DONE SIZE=5.2 KB",
+        "reasoning_chars": 0,
+        "tool_name": "file_info",
+        "tool_arguments": {"path": "panel/package.json"},
+        "tool_results": 1,
+        "warnings": 0,
+        "metrics": {
+          "token_count": 42,
+          "prompt_tokens": 666,
+          "tokens_per_second": 54.9,
+          "prompt_processing_speed": 212.5,
+          "ttft_seconds": 1.20,
+          "total_seconds": 2.7
+        }
+      },
+      {
+        "rowid": 189,
+        "visible_content": "R16-LAG-UI-TOOL-VISIBLE-DONE",
+        "reasoning_chars": 0,
+        "tool_name": "file_info",
+        "tool_arguments": {"path": "pyproject.toml"},
+        "tool_results": 1,
+        "warnings": 0,
+        "metrics": {
+          "token_count": 37,
+          "prompt_tokens": 1007,
+          "cached_tokens": 664,
+          "cache_detail": "paged+tq-native",
+          "tokens_per_second": 54.5,
+          "prompt_processing_speed": 350.7,
+          "ttft_seconds": 1.21,
+          "total_seconds": 2.6
+        }
+      }
+    ],
+    "screenshots": [
+      {
+        "path": "laguna-ui-reasoning.png",
+        "sha256": "4799c26186be6152a3d6cfd24cfbf45b1056edd32c45f3b86b10e86d92dad938"
+      },
+      {
+        "path": "laguna-ui-tool-visible.png",
+        "sha256": "2f7113722118c64ee2796ee621514a6467c557dd9f95931059296495400b7ee6"
+      }
+    ]
+  },
+  "raw_protocols": [
+    {
+      "protocol": "openai_chat_completions",
+      "capture_sha256": "5671a445f729ec2a8f2848a390747daa4823ac61681284394ca908231e1f4754",
+      "events": 329,
+      "reasoning_deltas": 228,
+      "content_deltas": 98,
+      "terminal_events": 1,
+      "usage_events": 1,
+      "visible_control_marker_leak": false,
+      "visible_final_contains": "R16-LAG-CHAT-DONE",
+      "strict_exact_format": false
+    },
+    {
+      "protocol": "openai_responses",
+      "capture_sha256": "069b5f9e269e2d976a7fc812dcf405725af35032668d6f4e769ece4af82267ba",
+      "events": 28,
+      "reasoning_deltas": 0,
+      "content_deltas": 21,
+      "completed_events": 1,
+      "failed_events": 0,
+      "visible_control_marker_leak": false,
+      "visible_final": "R16-LAG-RESP-DONE: Yes, the word \"apple\" has five letters.",
+      "classification": "direct visible rail selected by model"
+    },
+    {
+      "protocol": "anthropic_messages",
+      "capture_sha256": "3bd307784bfd63c52701019c626bede4af96f5d90c65e5af8563c5b2fdbba06f",
+      "events": 329,
+      "block_indices": [0, 1],
+      "block_types": ["thinking", "text"],
+      "thinking_deltas": 222,
+      "text_deltas": 99,
+      "message_stop_events": 1,
+      "visible_control_marker_leak": false,
+      "visible_final_contains": "R16-LAG-CHAT-DONE"
+    },
+    {
+      "protocol": "ollama_chat",
+      "capture_sha256": "999a72a4282769180f6505d1dc6c06dda1c82982311c36bbeaf68ed3348ee93e",
+      "events": 322,
+      "thinking_events": 222,
+      "content_events": 99,
+      "done_events": 1,
+      "visible_control_marker_leak": false,
+      "visible_final_contains": "R16-LAG-CHAT-DONE"
+    }
+  ],
+  "negative_controls": {
+    "easy_anthropic_prompt": {
+      "capture_sha256": "ddfd23323672213e5a45253a4ec1550a274ebed90177593d0091e54e9de64913",
+      "thinking_deltas": 0,
+      "text_deltas": 92,
+      "message_stop_events": 1,
+      "classification": "model selected immediate visible rail"
+    },
+    "matching_chat_prompt": {
+      "capture_sha256": "d72d007023259c0f50fe226a1921e43f818ac7391bdf2daa6fec9c2b4c6ae8ea",
+      "reasoning_deltas": 0,
+      "content_deltas": 32,
+      "terminal_events": 1,
+      "classification": "same immediate visible-rail behavior; not adapter-only"
+    },
+    "easy_ollama_prompt": {
+      "capture_sha256": "f308dee0cf27cf0ad760ba7ab1412335d6f4077d38ae2ccd4b19d167599a04b2",
+      "thinking_events": 0,
+      "content_events": 119,
+      "done_events": 1,
+      "classification": "model selected immediate visible rail"
+    }
+  },
+  "current_cache_boundary": {
+    "ram_tokens_cached": 1494,
+    "l2_block_tokens_on_disk": 5132,
+    "disk_hits_this_process": 0,
+    "warm_ui_cached_tokens": 664,
+    "warm_ui_cache_detail": "paged+tq-native",
+    "claim": "resident RAM plus native-TQ warm reuse only",
+    "not_claimed": "process-restart or SSD-refault proof"
+  },
+  "open_live_defects": [
+    "Saving a changed server log level did not restart or update the running argv until manual Stop/Start.",
+    "After manual Stop/Start, Chat Settings still displayed the previous PID."
+  ]
+}

@@ -4835,6 +4835,8 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   setting currently shown as `Paged Cache` / `Use Paged KV Cache` to a clearer
   label such as `In-Memory Paged Cache (RAM)`. Help text must distinguish this
   fast unified-memory tier from `Block Disk Cache (L2)`, which is the SSD tier.
+- This historical open row is superseded by the scoped live closure below at
+  source `4558dac06`; it is retained only as append-only campaign history.
 - Acceptance requires source, persisted DB/config, preview, launched argv, and
   effective `/health` parity. The change must not rename or reinterpret the
   backend flag, silently enable the RAM tier, alter architecture-specific
@@ -4886,3 +4888,69 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   `last_request_time=null`, `backend_mode=paged`, `paged_ram_enabled=true`,
   `disk_only=false`, and Block L2 present. Evidence is stored under
   `docs/internal/release-gates/20260722_v1_6_16_campaign/`.
+
+## 2026-07-22 - Shared reasoning/protocol repairs and Laguna current-source proof
+
+- `REASONING-SPLIT-MARKER-HOLDBACK`: `VERIFIED-SOURCE_TEST_SCOPED` at
+  `ff293d1e7`. DeepSeek, ThinkXML, and MiniMax M3 streaming parsers now retain
+  ambiguous marker prefixes until they either complete or become ordinary
+  text. The change was included in a 210/210 combined focused suite. Current
+  Laguna Electron/API output had no visible control-marker leakage, but a real
+  model was not forced to split every marker at every character boundary; that
+  stronger live claim remains unmade.
+- `ANTHROPIC-LATE-REASONING-SEQUENCE`: `VERIFIED-SOURCE_TEST_SCOPED` at
+  `95e954045`. The adapter now balances text/tool blocks before late thinking,
+  uses monotonic indices, closes blocks centrally, and finalizes once. Laguna's
+  current strong prompt live row used normal thinking-before-text order: block
+  indices 0/1, 222 thinking deltas, 99 text deltas, and one `message_stop`.
+  A family that actually emits late reasoning remains a live follow-up.
+- `OLLAMA-STREAMING-REASONING-NORMALIZATION`: `VERIFIED-SOURCE_TEST_SCOPED` at
+  `230c822f2`. Streaming Ollama now mirrors non-stream MiniMax M3,
+  openPangu, Mistral4, and `think:false` history policy. Current Laguna live
+  Ollama proves the generic native reasoning rail (222 thinking events, 99
+  content events, one terminal), not those named-family branches.
+- `LAGUNA-R16-REASONING-TOOLS-PROTOCOLS`: `VERIFIED-LIVE_SCOPED` at cutoff
+  `230c822f2`. Real Electron Start loaded
+  `Laguna-S-2.1-JANG_2L` as PID 53268 with bundle-derived JANG affine-mixed,
+  `deepseek_r1`, `glm47`, and generation settings. One UI turn retained a
+  separate 404-character reasoning rail and exact visible final. Two further
+  turns each executed exactly one real `file_info` call and exact-finaled with
+  no warnings; the visible tool cards and metrics are retained. The third turn
+  restored 664 resident `paged+tq-native` tokens. This is not an L2/restart
+  claim: current-process health had `disk_hits=0`.
+- Raw Chat produced 228 reasoning and 98 content deltas plus one stop and one
+  usage event. Responses selected a direct visible rail and completed after 21
+  content deltas. Anthropic and Ollama both produced separate 222/99
+  reasoning/content rails plus one terminal on the strong prompt. Easy prompts
+  selecting direct visible output are retained as Auto/model-variable negative
+  controls, not rationalized as parser failure. Raw Chat added explanatory
+  prose before its marker, so its strict-format sub-gate is partial even though
+  transport separation passed; the Electron exact-format turns passed.
+- Privacy-safe counts, hashes, exact visible finals, DB-derived tool metadata,
+  cache boundary, and collapsed reasoning screenshots are stored in
+  `docs/internal/release-gates/20260722_v1_6_16_campaign/`. Raw private
+  reasoning streams are intentionally not committed.
+
+## 2026-07-22 - Settings restart and live PID defects opened
+
+- `R16-SAVE-NEXT-RESTART-UX`: `OPEN-UX`. Source trace shows that plain Save is
+  intentionally non-disruptive: it persists config and tells the user to
+  restart. The live DEBUG-to-INFO negative control confirms persistence because
+  the next manual Stop/Start removed `--log-level DEBUG`. The button/message
+  still need unmistakable "Save for Next Restart" wording while a session is
+  running; do not misclassify this as lost engine config.
+- `R16-SAVE-RESTART-DELAY`: `OPEN / RELEASE-CRITICAL`. The renderer awaits
+  `sessions.stop()` and only then subscribes to `onStopped`; main IPC already
+  emitted that event before returning, so the UI waits for its 15-second
+  timeout before Start. The parallel settings screen also adds a needless
+  fixed 2.5-second wait after an awaited stop.
+- `R16-SESSION-UPDATED-BROADCAST`: `OPEN`. Ordinary config saves write SQLite
+  but do not emit `session:updated`, so other open surfaces can retain stale
+  settings even though `SessionsContext` already knows how to refresh on that
+  event.
+- `R16-CHAT-PID-STALE`: `OPEN / RELEASE-CRITICAL`. `ChatModeToolbar` refreshes
+  detailed session state only when the selected session ID changes and merges
+  live status/port but not live PID. After real Stop/Start changed PID 52809 to
+  53268, Chat Settings still displayed 52809. Acceptance requires the displayed
+  PID, SQLite, process list, and launched argv to agree after Save & Restart,
+  manual Stop/Start, failure, and stopped state.
