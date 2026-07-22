@@ -7,7 +7,9 @@ Remote checkout:
 - Host: `erics-m5-max.local`
 - Repo: `/Users/eric/mlx/vllm-mlx-release-1.6.13`
 - Branch: `codex/postrelease-ui-drawers-20260720`
-- Commit: `2f3c36017 fix(streaming): keep reasoning on protocol rails`
+- Commits:
+  - `2f3c36017 fix(streaming): keep reasoning on protocol rails`
+  - `87a78f5f7 fix(chat): keep exact text turns tool-free`
 
 ## Scope closed by this checkpoint
 
@@ -17,6 +19,7 @@ This checkpoint fixes and proves the following scoped behavior:
 - The base `<think>` reasoning parser handles repeated reasoning blocks, so `reasoning -> visible/tool -> reasoning -> final` does not leak the later `<think>...</think>` block as visible content.
 - The Electron active tool loop preserves the current reasoning segment in follow-up request history before the tool call item, for both Responses-style and Chat Completions-style continuations.
 - A current Laguna Electron UI row can complete a required built-in tool call with visible final text and without reasoning-only finalization.
+- Strict exact-answer prompts that do not request tools do not receive the built-in tool catalog even when built-in tools are enabled for the chat. This prevents schema/tool prompt text from polluting small/native model responses for text-only probes.
 
 ## Source trace
 
@@ -27,6 +30,8 @@ This checkpoint fixes and proves the following scoped behavior:
 - `vmlx_engine/reasoning/think_parser.py:231-270` routes later streamed explicit think blocks back to reasoning instead of visible content.
 - `panel/src/main/ipc/chat.ts:1737-1745` tracks current reasoning segments for the active turn.
 - `panel/src/main/ipc/chat.ts:3327-3360` pushes current reasoning before active tool calls in Responses and Chat follow-up histories.
+- `panel/src/shared/toolAutoContinue.ts` adds `requestsExactTextOnlyWithoutToolUse(...)`.
+- `panel/src/main/ipc/chat.ts` uses `attachBuiltinToolsForCurrentTurn` so strict text-only exact prompts omit built-in tools while explicit tool prompts still receive tools.
 
 ## Regression tests run
 
@@ -55,7 +60,7 @@ Current dev app/log state:
 - Dev log contains `[STARTUP] Using vMLX userData override: /Users/eric/.vmlx-v1613-responsive-dev`
 - Dev log contains `[Engine Manager] Found in PATH: /Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine`
 
-Current live model:
+Current live model for the first proof run:
 
 - UI session: `jangq-ai/Laguna-S-2.1-JANG_4M`
 - Backend: `127.0.0.1:8009`
@@ -83,6 +88,20 @@ Electron tool row:
 - Metrics: `39 tokens`, `43.1 t/s`, `142.8 pp/s`, `415 prompt (128 paged+disk+tq-native cached)`, `1.36s TTFT`, `3.1s total`
 - Screenshot: `/tmp/lag-global-ui2-clean.png`
 
+Post-relaunch exact text-only proof:
+
+- Dev app was relaunched cleanly after `87a78f5f7`; current dev PIDs were `32230`/`32232`, CDP `127.0.0.1:9335`.
+- Laguna was started again via the real UI Start button.
+- Current backend: `jangq-ai/Laguna-S-2.1-JANG_4M`, `127.0.0.1:8009`, PID `32359`.
+- Prompt row: SQLite row `414`
+- Assistant row: SQLite row `416`
+- Visible content: `LAG-UI-EXACT-NOTOOLS-AFTER-FIX-DONE`
+- `reasoning_content`: `null`
+- Tool calls: `null`
+- Warnings: `null`
+- Metrics: `16 tokens`, `59.7 t/s`, `131.3 pp/s`, `81 prompt`, `0.62s TTFT`, `0.9s total`
+- Screenshot: `/tmp/lag-ui-exact-notools-after-fix.png`
+
 ## Raw API protocol proof
 
 Artifact summary: `/tmp/laguna-protocol-rails-1784686222-summary.json`
@@ -101,7 +120,7 @@ Rows:
 
 These remain PARTIAL or OPEN and must not be described as release-closed by this checkpoint:
 
-1. Laguna produced unrelated Git guidance under a contaminated/stale multi-turn UI history for prompt rows `396/399` with assistant rows `398/401`. Reasoning and content were separated, but coherence was wrong. This needs a separate history/cache/prompt-contamination investigation.
+1. Laguna produced unrelated Git guidance under a contaminated/stale multi-turn UI history for prompt rows `396/399` with assistant rows `398/401`. Reasoning and content were separated, but coherence was wrong. Commit `87a78f5f7` fixes one contributing UI issue for strict text-only exact prompts by omitting unused tool schemas, and row `416` proves that narrow case after relaunch. Broader contaminated-history coherence still needs a separate investigation.
 2. The live Laguna rows in this checkpoint did not emit reasoning deltas (`reasoning_count=0`). They prove no inline leakage on these prompts, not live reasoning-delta behavior for all reasoning families. Qwen/Bonsai/Gemma/MiniMax rows still need current-source live proof.
 3. Chat Completions live token/s can still use client-side `tokenCount++` per emitted chunk when the server does not send per-chunk usage (`panel/src/main/ipc/chat.ts:2475-2487`). Final metrics may be acceptable when terminal usage exists, but live rolling TPS remains a separate truthfulness gate.
 4. Responses tool streams still emit vMLX heartbeat events such as `response.heartbeat` with `tool_call_generating=true`. That may be acceptable as an extension, but SDK compatibility needs a dedicated coding-harness soak.
