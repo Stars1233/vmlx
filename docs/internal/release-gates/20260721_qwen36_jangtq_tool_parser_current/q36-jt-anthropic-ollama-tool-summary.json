@@ -1,0 +1,1180 @@
+{
+  "base": "http://127.0.0.1:8007",
+  "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+  "ts": 1784688136.774888,
+  "anthropic_initial": {
+    "status": 200,
+    "error": null,
+    "elapsed": 0.733192,
+    "event_count": 6,
+    "reasoning_len": 0,
+    "reasoning_deltas": 0,
+    "content": "",
+    "content_deltas": 0,
+    "tool_id": "call_e0aea348",
+    "tool_name": "file_info",
+    "tool_arguments": "{\"path\": \"panel/package.json\"}",
+    "terminals": [
+      "message_stop"
+    ],
+    "stop_reasons": [
+      "tool_use"
+    ],
+    "inline_think": false,
+    "errors": [],
+    "first_events": [
+      {
+        "at": 0.016869,
+        "event": "message_start",
+        "data": {
+          "type": "message_start",
+          "message": {
+            "id": "msg_62cb09bb98c5",
+            "type": "message",
+            "role": "assistant",
+            "content": [],
+            "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+            "stop_reason": null,
+            "stop_sequence": null,
+            "usage": {
+              "input_tokens": 0,
+              "output_tokens": 0
+            }
+          }
+        }
+      },
+      {
+        "at": 0.732578,
+        "event": "content_block_start",
+        "data": {
+          "type": "content_block_start",
+          "index": 0,
+          "content_block": {
+            "type": "tool_use",
+            "id": "call_e0aea348",
+            "name": "file_info",
+            "input": {}
+          }
+        }
+      },
+      {
+        "at": 0.73279,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 0,
+          "delta": {
+            "type": "input_json_delta",
+            "partial_json": "{\"path\": \"panel/package.json\"}"
+          }
+        }
+      },
+      {
+        "at": 0.73289,
+        "event": "content_block_stop",
+        "data": {
+          "type": "content_block_stop",
+          "index": 0
+        }
+      },
+      {
+        "at": 0.733076,
+        "event": "message_delta",
+        "data": {
+          "type": "message_delta",
+          "delta": {
+            "stop_reason": "tool_use",
+            "stop_sequence": null
+          },
+          "usage": {
+            "output_tokens": 28,
+            "input_tokens": 318
+          }
+        }
+      },
+      {
+        "at": 0.733134,
+        "event": "message_stop",
+        "data": {
+          "type": "message_stop"
+        }
+      }
+    ],
+    "last_events": [
+      {
+        "at": 0.016869,
+        "event": "message_start",
+        "data": {
+          "type": "message_start",
+          "message": {
+            "id": "msg_62cb09bb98c5",
+            "type": "message",
+            "role": "assistant",
+            "content": [],
+            "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+            "stop_reason": null,
+            "stop_sequence": null,
+            "usage": {
+              "input_tokens": 0,
+              "output_tokens": 0
+            }
+          }
+        }
+      },
+      {
+        "at": 0.732578,
+        "event": "content_block_start",
+        "data": {
+          "type": "content_block_start",
+          "index": 0,
+          "content_block": {
+            "type": "tool_use",
+            "id": "call_e0aea348",
+            "name": "file_info",
+            "input": {}
+          }
+        }
+      },
+      {
+        "at": 0.73279,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 0,
+          "delta": {
+            "type": "input_json_delta",
+            "partial_json": "{\"path\": \"panel/package.json\"}"
+          }
+        }
+      },
+      {
+        "at": 0.73289,
+        "event": "content_block_stop",
+        "data": {
+          "type": "content_block_stop",
+          "index": 0
+        }
+      },
+      {
+        "at": 0.733076,
+        "event": "message_delta",
+        "data": {
+          "type": "message_delta",
+          "delta": {
+            "stop_reason": "tool_use",
+            "stop_sequence": null
+          },
+          "usage": {
+            "output_tokens": 28,
+            "input_tokens": 318
+          }
+        }
+      },
+      {
+        "at": 0.733134,
+        "event": "message_stop",
+        "data": {
+          "type": "message_stop"
+        }
+      }
+    ]
+  },
+  "anthropic_follow": {
+    "status": 200,
+    "error": null,
+    "elapsed": 3.166115,
+    "event_count": 262,
+    "reasoning_len": 671,
+    "reasoning_deltas": 239,
+    "content": "Q36JTANTH1-DONE SIZE=5.2 KB",
+    "content_deltas": 15,
+    "tool_id": "",
+    "tool_name": "",
+    "tool_arguments": "",
+    "terminals": [
+      "message_stop"
+    ],
+    "stop_reasons": [
+      "end_turn"
+    ],
+    "inline_think": false,
+    "errors": [],
+    "first_events": [
+      {
+        "at": 0.003009,
+        "event": "message_start",
+        "data": {
+          "type": "message_start",
+          "message": {
+            "id": "msg_b7f9bc1049db",
+            "type": "message",
+            "role": "assistant",
+            "content": [],
+            "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+            "stop_reason": null,
+            "stop_sequence": null,
+            "usage": {
+              "input_tokens": 0,
+              "output_tokens": 0
+            }
+          }
+        }
+      },
+      {
+        "at": 0.2627,
+        "event": "content_block_start",
+        "data": {
+          "type": "content_block_start",
+          "index": 0,
+          "content_block": {
+            "type": "thinking",
+            "thinking": ""
+          }
+        }
+      },
+      {
+        "at": 0.262892,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 0,
+          "delta": {
+            "type": "thinking_delta",
+            "thinking": "The"
+          }
+        }
+      },
+      {
+        "at": 0.272164,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 0,
+          "delta": {
+            "type": "thinking_delta",
+            "thinking": " user"
+          }
+        }
+      },
+      {
+        "at": 0.281779,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 0,
+          "delta": {
+            "type": "thinking_delta",
+            "thinking": " wants"
+          }
+        }
+      },
+      {
+        "at": 0.291406,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 0,
+          "delta": {
+            "type": "thinking_delta",
+            "thinking": " me"
+          }
+        }
+      },
+      {
+        "at": 0.301178,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 0,
+          "delta": {
+            "type": "thinking_delta",
+            "thinking": " to"
+          }
+        }
+      },
+      {
+        "at": 0.310733,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 0,
+          "delta": {
+            "type": "thinking_delta",
+            "thinking": " reply"
+          }
+        }
+      },
+      {
+        "at": 0.32044,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 0,
+          "delta": {
+            "type": "thinking_delta",
+            "thinking": " with"
+          }
+        }
+      },
+      {
+        "at": 0.330149,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 0,
+          "delta": {
+            "type": "thinking_delta",
+            "thinking": " a"
+          }
+        }
+      },
+      {
+        "at": 0.339971,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 0,
+          "delta": {
+            "type": "thinking_delta",
+            "thinking": " specific"
+          }
+        }
+      },
+      {
+        "at": 0.349553,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 0,
+          "delta": {
+            "type": "thinking_delta",
+            "thinking": " format"
+          }
+        }
+      }
+    ],
+    "last_events": [
+      {
+        "at": 2.675961,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 1,
+          "delta": {
+            "type": "text_delta",
+            "text": "1"
+          }
+        }
+      },
+      {
+        "at": 2.685614,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 1,
+          "delta": {
+            "type": "text_delta",
+            "text": "-D"
+          }
+        }
+      },
+      {
+        "at": 2.695378,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 1,
+          "delta": {
+            "type": "text_delta",
+            "text": "ONE"
+          }
+        }
+      },
+      {
+        "at": 2.705172,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 1,
+          "delta": {
+            "type": "text_delta",
+            "text": " SIZE"
+          }
+        }
+      },
+      {
+        "at": 2.714862,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 1,
+          "delta": {
+            "type": "text_delta",
+            "text": "="
+          }
+        }
+      },
+      {
+        "at": 2.724537,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 1,
+          "delta": {
+            "type": "text_delta",
+            "text": "5"
+          }
+        }
+      },
+      {
+        "at": 2.734316,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 1,
+          "delta": {
+            "type": "text_delta",
+            "text": "."
+          }
+        }
+      },
+      {
+        "at": 2.744104,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 1,
+          "delta": {
+            "type": "text_delta",
+            "text": "2"
+          }
+        }
+      },
+      {
+        "at": 2.757472,
+        "event": "content_block_delta",
+        "data": {
+          "type": "content_block_delta",
+          "index": 1,
+          "delta": {
+            "type": "text_delta",
+            "text": " KB"
+          }
+        }
+      },
+      {
+        "at": 3.165671,
+        "event": "content_block_stop",
+        "data": {
+          "type": "content_block_stop",
+          "index": 1
+        }
+      },
+      {
+        "at": 3.165882,
+        "event": "message_delta",
+        "data": {
+          "type": "message_delta",
+          "delta": {
+            "stop_reason": "end_turn",
+            "stop_sequence": null
+          },
+          "usage": {
+            "output_tokens": 272,
+            "input_tokens": 172
+          }
+        }
+      },
+      {
+        "at": 3.165953,
+        "event": "message_stop",
+        "data": {
+          "type": "message_stop"
+        }
+      }
+    ]
+  },
+  "ollama_initial": {
+    "status": 200,
+    "error": null,
+    "elapsed": 1.451865,
+    "event_count": 63,
+    "reasoning_len": 255,
+    "reasoning_deltas": 62,
+    "content": "",
+    "content_deltas": 0,
+    "tool_calls": [
+      {
+        "function": {
+          "name": "file_info",
+          "arguments": {
+            "path": "panel/package.json"
+          }
+        }
+      }
+    ],
+    "terminals": [
+      "tool_calls"
+    ],
+    "inline_think": false,
+    "errors": [],
+    "first_events": [
+      {
+        "at": 0.547661,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": "The"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.557176,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " user"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.566946,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " wants"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.576535,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " to"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.586224,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " call"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.595954,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " the"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.615302,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " `file"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.625111,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": "_info"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.644593,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": "` tool"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.654274,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " exactly"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.663981,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " once"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.673682,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " with"
+          },
+          "done": false
+        }
+      }
+    ],
+    "last_events": [
+      {
+        "at": 1.080458,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": "/package"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.090232,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": ".json"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.099895,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": "\""
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.109578,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": "\n\n"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.119383,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": "Let"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.129077,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": "'s"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.138738,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " call"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.148522,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " the"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.158249,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " tool"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.167956,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": "."
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.1777,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:21.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": "\n"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.451745,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:22.000Z",
+          "done": true,
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+              {
+                "function": {
+                  "name": "file_info",
+                  "arguments": {
+                    "path": "panel/package.json"
+                  }
+                }
+              }
+            ]
+          },
+          "done_reason": "tool_calls",
+          "eval_count": 93,
+          "prompt_eval_count": 304
+        }
+      }
+    ]
+  },
+  "ollama_follow": {
+    "status": 200,
+    "error": null,
+    "elapsed": 1.824855,
+    "event_count": 135,
+    "reasoning_len": 349,
+    "reasoning_deltas": 119,
+    "content": "Q36JTOLLAMA1-DONE SIZE=5.2 KB",
+    "content_deltas": 15,
+    "tool_calls": [],
+    "terminals": [
+      "stop"
+    ],
+    "inline_think": false,
+    "errors": [],
+    "first_events": [
+      {
+        "at": 0.492706,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:22.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": "The"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.502289,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:22.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " user"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.512103,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:22.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " wants"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.521758,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:22.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " me"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.531541,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:22.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " to"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.541157,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:22.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " reply"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.55092,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:22.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " with"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.560711,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:22.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " a"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.570399,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:22.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " specific"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.58014,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:22.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " string"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.589847,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:22.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " based"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 0.599575,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:22.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "thinking": " on"
+          },
+          "done": false
+        }
+      }
+    ],
+    "last_events": [
+      {
+        "at": 1.713218,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:23.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "OLL"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.722931,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:23.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "AMA"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.732661,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:23.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "1"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.742475,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:23.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "-D"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.752255,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:23.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "ONE"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.761998,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:23.000Z",
+          "message": {
+            "role": "assistant",
+            "content": " SIZE"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.771752,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:23.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "="
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.781557,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:23.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "5"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.791311,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:23.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "."
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.801182,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:23.000Z",
+          "message": {
+            "role": "assistant",
+            "content": "2"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.810885,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:23.000Z",
+          "message": {
+            "role": "assistant",
+            "content": " KB"
+          },
+          "done": false
+        }
+      },
+      {
+        "at": 1.824714,
+        "data": {
+          "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+          "created_at": "2026-07-22T02:42:23.000Z",
+          "done": true,
+          "message": {
+            "role": "assistant",
+            "content": ""
+          },
+          "done_reason": "stop",
+          "eval_count": 137,
+          "prompt_eval_count": 436
+        }
+      }
+    ]
+  },
+  "checks": {
+    "anthropic_initial_tool": true,
+    "anthropic_follow_final": true,
+    "ollama_initial_tool": true,
+    "ollama_follow_final": true,
+    "no_inline_think_all": true
+  }
+}

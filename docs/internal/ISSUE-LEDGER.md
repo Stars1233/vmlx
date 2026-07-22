@@ -4638,3 +4638,24 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   parser markup leakage, schema-valid tool calls/results, and exactly one
   truthful completed/incomplete/failed terminal. Electron separation alone is
   insufficient; preserve raw timed SSE evidence and tool continuations.
+
+## 2026-07-21 - Qwen3.6 35B JANGTQ Anthropic/Ollama tool continuation
+
+- `Q35-JANGTQ-ANTHROPIC-OLLAMA-TOOL`: `VERIFIED-LIVE_SCOPED` for this exact
+  `dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK` artifact and single-tool
+  continuation shape. Direct current-source `/v1/messages` emitted one
+  `file_info` `tool_use` with `{"path": "panel/package.json"}` and
+  `stop_reason=tool_use`; the real-result follow-up emitted 239 separate
+  reasoning deltas, 15 progressive text deltas, exact visible
+  `Q36JTANTH1-DONE SIZE=5.2 KB`, and one `message_stop`, with no inline
+  `<think>`.
+- Direct current-source Ollama `/api/chat` emitted one `file_info` tool call
+  with the same path and terminal `done_reason=tool_calls`; the real-result
+  follow-up emitted 119 separate reasoning deltas, 15 progressive content
+  deltas, exact visible `Q36JTOLLAMA1-DONE SIZE=5.2 KB`, and terminal
+  `done_reason=stop`, with no inline `<think>`.
+- Scope retained as PARTIAL for the broader release matrix: multi-tool
+  interleaving, cancellation/failure injection, non-stream parity, other
+  parser families, SSD/cache/media rows, and the observed duplicate Electron
+  send boundary remain separate gates. Evidence:
+  `docs/internal/release-gates/20260721_qwen36_jangtq_tool_parser_current/q36-jt-anthropic-ollama-tool-summary.json`.

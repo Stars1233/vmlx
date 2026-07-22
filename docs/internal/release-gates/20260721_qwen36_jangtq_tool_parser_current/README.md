@@ -46,6 +46,10 @@ the Electron tool loop can complete.
 - `vmlx_engine/tool_parsers/qwen_tool_parser.py:162-224` centralizes
   single-required-string schema validation so unadvertised tools, wrong
   parameter names, and non-string required arguments are rejected.
+- `vmlx_engine/tool_parsers/abstract_tool_parser.py:227-249` makes that schema
+  lookup protocol-symmetric: Chat Completions nested function schemas and
+  Responses top-level function schemas are both accepted, while non-function or
+  mismatched tools still resolve to no schema.
 - `vmlx_engine/tool_parsers/qwen_tool_parser.py:341-357` routes the new shapes
   through final extraction as `tool_calls` with no visible content.
 - `vmlx_engine/tool_parsers/qwen_tool_parser.py:383-407` detects the same
@@ -87,6 +91,8 @@ The added coverage includes markdown call parsing, schema rejection, streaming
 request-schema use, labeled-line parsing after a prompt marker, and exact-once
 truncation after the argument line. The server regression pins the Chat
 Completions exact-once buffering contract for the labeled Qwen shape.
+The current focused rerun after the protocol-symmetric schema helper selected
+21 tests and passed them all.
 
 ## Live Electron proof
 
@@ -124,6 +130,7 @@ Artifact retained:
 
 - `q36-jt-api-tool-parser-summary.json`
 - `q36-jt-responses-reasoning-summary-event-proof.json`
+- `q36-jt-anthropic-ollama-tool-summary.json`
 
 Summary:
 
@@ -141,6 +148,18 @@ Summary:
   progressive rails for this artifact: `256`
   `response.reasoning_summary_text.delta` events, `110`
   `response.output_text.delta` events, and `response.completed`.
+- Anthropic Messages now has current-source proof for this same artifact:
+  initial stream emitted one `tool_use` named `file_info` with
+  `{"path": "panel/package.json"}` and `stop_reason="tool_use"`; the real
+  result continuation emitted `239` reasoning deltas, `15` progressive text
+  deltas, exact visible `Q36JTANTH1-DONE SIZE=5.2 KB`, and one
+  `message_stop`, with no inline `<think>`.
+- Ollama `/api/chat` now has current-source proof for this same artifact:
+  initial stream emitted one `file_info` call with
+  `{"path": "panel/package.json"}` and terminal `done_reason="tool_calls"`;
+  the real result continuation emitted `119` reasoning deltas, `15`
+  progressive content deltas, exact visible `Q36JTOLLAMA1-DONE SIZE=5.2 KB`,
+  and terminal `done_reason="stop"`, with no inline `<think>`.
 
 ## Remaining open rows
 
@@ -150,8 +169,15 @@ Summary:
   the model still placed explanatory math text in visible content before the
   final marker. That is recorded as model-visible style behavior, not inline
   `<think>` parser leakage.
-- This does not close Anthropic/Ollama for this exact JANGTQ artifact; those
-  protocol families remain broader matrix rows.
+- The Electron `TOOL4` proof was observed twice in the same chat as two
+  independent persisted user rows and two distinct tool call IDs. Both rows
+  passed the parser/tool loop, but this gate does not claim a UI send-dedupe
+  proof; if the duplicate did not come from the automation driver, classify and
+  fix it under the separate chat-send lifecycle row.
+- Anthropic/Ollama are closed only for this exact single-tool continuation
+  shape on this exact Qwen JANGTQ artifact. Multi-tool interleaving,
+  cancellation/failure injection, non-stream parity, and other parser families
+  remain broader protocol rows.
 - This does not close SSD-only, partial-prefix, eviction, restart, or media
   rows for this artifact.
 - This does not close the global metrics/EOS/fallback-accounting issue; that
