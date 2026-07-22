@@ -4987,12 +4987,14 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 
 ## 2026-07-22 - MiniMax-M3 current Ollama/UI reasoning closure and release truth
 
-- `V1.6.15-PUBLIC-VERSION-TRUTH`: `PUBLISHED / ASSET GAP`. GitHub currently
-  exposes `v1.6.15` as the latest public release and the annotated tag resolves
-  to `2dc90921ea8604f4ec4c62e196621007fbb1cbbf`. The GitHub release API reports
-  zero attached assets. The 1.6.16 campaign must not overwrite 1.6.15 or claim
-  its GitHub release contains Sequoia/Tahoe DMGs; the next checkpoint is a new
-  version with public-asset redownload/hash proof.
+- `V1.6.15-PUBLIC-VERSION-TRUTH`: `PUBLISHED / TWO-REPOSITORY LAYOUT`. GitHub
+  exposes `v1.6.15` as the latest public source release and the annotated tag
+  resolves to `2dc90921ea8604f4ec4c62e196621007fbb1cbbf`. The
+  `jjang-ai/vmlx` source release has no binary assets; the separate
+  `jjang-ai/mlxstudio` distribution release has the two public DMGs and two
+  blockmaps. Current public DMG digests match the retained checkpoint and both
+  updater manifests name those URLs. The 1.6.16 campaign must verify both
+  repositories separately, publish a new version, and never overwrite 1.6.15.
 - `M3-R16-EAGER-NATIVE-MSA`: `VERIFIED-LIVE_SCOPED` at `f9a4b6838`. The real
   Electron Sessions Start control eagerly loaded the exact affine JANG_2L
   MiniMax-M3 bundle as PID 60303 before any prompt. Pre-request health reports

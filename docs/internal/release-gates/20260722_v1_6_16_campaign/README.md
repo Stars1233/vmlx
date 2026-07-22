@@ -10,7 +10,11 @@ It starts from public v1.6.15 follow-up source commit
 `codex/v1.6.16-release-campaign-20260722`. The immutable v1.6.15 tag and its
 signed evidence remain unchanged.
 
-Current tested cutoff: `f9a4b6838b398312a951e78299e5457ce35d68b7`.
+Latest behavior-bearing tested cutoff:
+`f9a4b6838b398312a951e78299e5457ce35d68b7`. The first immutable evidence
+checkpoint containing the retained MiniMax-M3 artifacts is
+`6de9ce8eff206e8a77f65f2ab191c2b3aa971390`; later documentation-only commits
+do not silently promote the runtime cutoff.
 The clean source checkout is
 `/Users/eric/mlx/vllm-mlx-release-1.6.15`; the live Electron proof checkout on
 `erics-m5-max.local` is `/Users/eric/mlx/vllm-mlx-release-1.6.13`. Both were at
@@ -40,6 +44,7 @@ is shown unchanged or the proof is rerun.
 - `../20260721_developer_conversion_lifecycle_current/README.md`
 - `../20260722_single_model_unmanaged_engine_sweep/README.md`
 - `../20260722_release_checkpoint_1_6_15/README.md`
+- `OPEN-ISSUES-RANKED.md`, the living exhaustive 1.6.16 checklist
 - User campaign attachment
   `/Users/eric/.codex/attachments/668d3b34-ca92-49c4-aeb2-5e0ded8f6fc0/pasted-text-1.txt`
 
@@ -49,11 +54,16 @@ GitHub currently exposes public `v1.6.15` as the latest release, published
 2026-07-22 at 09:05:45 UTC. The annotated tag resolves to
 `2dc90921ea8604f4ec4c62e196621007fbb1cbbf`; the source checkout's version
 surfaces (`pyproject.toml`, `panel/package.json`, and `latest.json`) remain
-1.6.15. The GitHub release API currently reports **zero attached assets**.
-That does not erase separately retained signing/notarization evidence, but it
-means this campaign must not describe the GitHub release itself as containing
-Sequoia/Tahoe DMGs. The next public checkpoint is a new version (1.6.16 or
-later), never a retag or overwrite of 1.6.15.
+1.6.15. The `jjang-ai/vmlx` **source** release has zero attached assets by
+design. The separate `jjang-ai/mlxstudio` **distribution** release currently
+has four public assets: Sequoia and Tahoe DMGs plus both blockmaps. Its DMG
+digests match the retained checkpoint evidence:
+`c1bfa6e6b62e2e322461fd549203599f912dc4688e2c31e86d83d7b68c69a4cf`
+and `ae5a41c60fd79a39238e03fd74c1df2f5d92a2e57df8a60ff58ee34e248eb4be`.
+The updater manifests in both repositories currently name 1.6.15 and those
+distribution URLs. This is not an asset gap; it is a two-repository release
+layout that must be verified separately again for 1.6.16. The next checkpoint
+is a new version, never a retag or overwrite of 1.6.15.
 
 ## Non-negotiable proof contract
 
@@ -162,6 +172,7 @@ For every live model generation retained as evidence:
 | 2026-07-22 | `230c822f2` | Current Laguna S-2.1 JANG_2L reasoning, tool-loop, and protocol representative | Bundle/config grounded; combined focused suite 210/210 | Real Electron chat retained one separate reasoning turn and two exact one-tool continuations; third turn restored 664 `paged+tq-native` RAM tokens | Chat, Responses, Anthropic, and Ollama streams were progressive and terminal-complete; exact counts are in the sanitized summary | `VERIFIED-LIVE_SCOPED / GLOBAL ROW PARTIAL` |
 | 2026-07-22 | `951eab25d` | Synchronized settings updates, Save & Restart sequencing, and Chat Settings live PID | 503/503 focused panel tests + typecheck + locale parse + diff check | Plain Save kept the current process and exposed the next-restart contract; two real Save & Restarts changed PID/config/argv without the old wait; displayed PID matched SQLite/ps; post-restart exact turn restored 80 disk/TQ-native tokens | Current health matched Paged RAM/L2/q4 policy and recorded two disk promotions/TQ-native hits | `VERIFIED-LIVE_SCOPED / GLOBAL SETTINGS ROW PARTIAL` |
 | 2026-07-22 | `f9a4b6838` | Current MiniMax-M3 Ollama normalization, reasoning rail, exact tool loop, and native sparse-cache boundary | Bundle hashes and live health ground affine JANG_2L, 60-layer MSA topology, parser defaults, sampler defaults, and intentional no-generic-TQ policy | Real Sessions Start eagerly materialized PID 60303 before a prompt; UI IPC recorded 245 reasoning updates then 10 content updates and one completion; a separate turn executed exactly one real `file_info` and exact-finaled | Responses emitted 83 reasoning plus eight content deltas and one completion; direct Ollama On/Off and gateway Auto streamed separate rails with one terminal and no native-tag leak | `VERIFIED-LIVE_SCOPED / GLOBAL ROWS PARTIAL` |
+| 2026-07-22 | `6de9ce8ef` | Preserved the MiniMax-M3 live artifacts and reconciled source-vs-distribution v1.6.15 release truth | JSON evidence parses; diff check clean | Reuses the exact retained current-source screenshots/IPC capture without claiming a new model run | Reuses the retained raw Responses/Ollama captures without changing the behavior cutoff | `DOCUMENTATION CHECKPOINT` |
 
 ## Cache terminology and tooltip proof
 
