@@ -326,7 +326,15 @@ was a real release blocker until `bundle-python.sh` was rerun.
   records `backend_mode=paged`, `paged_ram_enabled=true`, `disk_only=false`,
   and block-disk L2 still enabled.
 
-- Full Python suite was not rerun end-to-end after the later 1.6.15 version bump; targeted release/version tests were. Current full panel suite, panel production build, bundled-Python verification, and TypeScript typecheck have now been rerun and passed in this gate.
+- Full Python suite was rerun end-to-end after the 1.6.15 version bump and the
+  release-checkpoint documentation update: current-source log
+  `current_pid4279_after_template_mirror/full-python-pytest-current-3998.log`
+  records `6290 passed, 96 skipped, 92 deselected, 2 warnings in 259.27s
+  (0:04:19)`. The release-checkpoint directory also preserves
+  `../20260722_release_checkpoint_1_6_15/full-python-pytest-1.6.15.log`
+  (`6290 passed, 96 skipped, 92 deselected, 2 warnings in 254.16s`). Current
+  full panel suite, panel production build, bundled-Python verification, and
+  TypeScript typecheck have also been rerun and passed in this gate.
 - Full protocol matrix remains open: non-stream Chat/Responses and
   cancellation/disconnect/recovery across representative models remain open;
   this gate now adds current-source Laguna streaming Anthropic/Ollama

@@ -12,7 +12,8 @@ keychain access in the current SSH session.
 
 - Repository: `/Users/eric/mlx/vllm-mlx-release-1.6.13`
 - Branch: `codex/postrelease-ui-drawers-20260720`
-- Current pushed source HEAD: `8bd3716f2`
+- Signing-attempt source HEAD: `8bd3716f2`
+- Checkpoint evidence commit: `1ea83e184`
 - Version surfaces: `1.6.15` in `panel/package.json`, `panel/package-lock.json`,
   `pyproject.toml`, and `vmlx_engine/__init__.py`.
 - JANG source used for bundling: `/Users/eric/jang` clean at
