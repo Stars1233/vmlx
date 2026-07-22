@@ -106,6 +106,11 @@ Evidence:
     `errSecInternalComponent`;
   - manual Developer-ID signing of a copied Electron binary also fails with
     `errSecInternalComponent`.
+- `codesign-keychain-blocker-current-b286d2671.log` repeats the current-head
+  probe after the Laguna disk-only proof docs and current Python-suite proof
+  commits. The Developer ID identity is still visible, but both keychains still
+  report `User interaction is not allowed`, and signing a copied Electron
+  binary still fails with `errSecInternalComponent`.
 
 Therefore no Sequoia/Tahoe public DMG was produced, signed, notarized, stapled,
 verified, installed-smoked, uploaded, tagged, or published in this attempt.
