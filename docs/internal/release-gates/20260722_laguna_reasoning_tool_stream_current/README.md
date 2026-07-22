@@ -183,6 +183,21 @@ was a real release blocker until `bundle-python.sh` was rerun.
   `function_call` item for `file_info({"path":"panel/package.json"})`, then a
   `function_call_output` continuation streaming
   `LAG-S21-RESP-TOOL-X-DONE SIZE=5.2 KB` with no repeated call.
+- Current PID 4279 Anthropic/Ollama streaming supplement (2026-07-22 local):
+  `anthropic_tool_ab_summary.json` shows `/v1/messages` emitted exactly one
+  `file_info({"path":"panel/package.json"})` `tool_use` with
+  `stop_reason=tool_use`, then the real `tool_result` continuation returned
+  exact visible `LAG-S21-ANTH-TOOL-AB-DONE SIZE=5.2 KB` with
+  `stop_reason=end_turn`, no inline think/tool marker leakage, and no visible
+  content before the tool. `ollama_tool_ac_summary.json` shows `/api/chat`
+  emitted exactly one `file_info({"path":"panel/package.json"})` tool call
+  with `done_reason=tool_calls`, then the real tool-result continuation
+  returned exact visible `LAG-S21-OLLAMA-TOOL-AC-DONE SIZE=5.2 KB` with
+  `done_reason=stop`, `done=true`, zero repeated tool calls, and no inline
+  think/tool marker leakage. Raw event artifacts:
+  `anthropic_tool_ab_round1.events.jsonl`,
+  `anthropic_tool_ab_round2.events.jsonl`, `ollama_tool_ac_round1.jsonl`, and
+  `ollama_tool_ac_round2.jsonl`.
 - Electron controls on the same PID are intentionally not hidden. Fresh
   Electron row 165 (`[LAG-S21-UI-FRESH-Z]`) answered exactly with
   `reasoning_content=null`; this is an empty think-rail/easy-prompt behavior,
@@ -224,7 +239,10 @@ was a real release blocker until `bundle-python.sh` was rerun.
   for 1.6.15.
 
 - Full Python suite was not rerun end-to-end after the later 1.6.15 version bump; targeted release/version tests were. Full panel suite, panel build, and typecheck were not rerun end-to-end in this gate.
-- Full protocol matrix remains open: non-stream Chat/Responses, Anthropic, Ollama, cancellation/disconnect/recovery across representative models.
+- Full protocol matrix remains open: non-stream Chat/Responses and
+  cancellation/disconnect/recovery across representative models remain open;
+  this gate now adds current-source Laguna streaming Anthropic/Ollama
+  one-tool continuations but does not generalize them cross-family.
 - Full settings parity remains open for all models; this gate only checks Laguna S-2.1 generation defaults observed in UI.
 - Disk-only L2/paged-off partial-prefix restore remains unproven here.
 - Broader model family matrix remains open: DSV4 Flash typed composite cache, MiniMax M3 sparse/lightning cache, Gemma, Qwen/Bonsai/Ornith, Step, Nemotron/Omni/audio/video, M2.7, LFM, openPangu.

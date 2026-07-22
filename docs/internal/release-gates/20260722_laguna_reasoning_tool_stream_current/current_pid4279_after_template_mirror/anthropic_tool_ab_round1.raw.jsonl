@@ -1,0 +1,12 @@
+{"t": 0.019857168197631836, "line": "event: message_start"}
+{"t": 0.01986098289489746, "line": "data: {\"type\": \"message_start\", \"message\": {\"id\": \"msg_5cb6f012a0d2\", \"type\": \"message\", \"role\": \"assistant\", \"content\": [], \"model\": \"jangq-ai/Laguna-S-2.1-JANG_2L\", \"stop_reason\": null, \"stop_sequence\": null, \"usage\": {\"input_tokens\": 0, \"output_tokens\": 0}}}"}
+{"t": 1.0372710227966309, "line": "event: content_block_start"}
+{"t": 1.0372862815856934, "line": "data: {\"type\": \"content_block_start\", \"index\": 0, \"content_block\": {\"type\": \"tool_use\", \"id\": \"call_46af86e4\", \"name\": \"file_info\", \"input\": {}}}"}
+{"t": 1.0373601913452148, "line": "event: content_block_delta"}
+{"t": 1.0373640060424805, "line": "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"input_json_delta\", \"partial_json\": \"{\\\"path\\\": \\\"panel/package.json\\\"}\"}}"}
+{"t": 1.0373990535736084, "line": "event: content_block_stop"}
+{"t": 1.0374031066894531, "line": "data: {\"type\": \"content_block_stop\", \"index\": 0}"}
+{"t": 1.037414312362671, "line": "event: message_delta"}
+{"t": 1.0374181270599365, "line": "data: {\"type\": \"message_delta\", \"delta\": {\"stop_reason\": \"tool_use\", \"stop_sequence\": null}, \"usage\": {\"output_tokens\": 25, \"input_tokens\": 179}}"}
+{"t": 1.0374269485473633, "line": "event: message_stop"}
+{"t": 1.0374290943145752, "line": "data: {\"type\": \"message_stop\"}"}

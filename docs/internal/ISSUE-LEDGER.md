@@ -4660,6 +4660,15 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   `responses_tool_x_after_template_mirror_summary.json` record one
   `file_info({"path":"panel/package.json"})` call, real-result continuation,
   progressive final output, and no phantom post-tool tool delta.
+- Live Anthropic/Ollama supplement on the same PID:
+  `anthropic_tool_ab_summary.json` records one `/v1/messages`
+  `file_info({"path":"panel/package.json"})` `tool_use`, real `tool_result`
+  continuation, exact visible `LAG-S21-ANTH-TOOL-AB-DONE SIZE=5.2 KB`, and no
+  inline think/tool marker leakage. `ollama_tool_ac_summary.json` records one
+  `/api/chat` `file_info({"path":"panel/package.json"})` tool call, real
+  tool-result continuation, exact visible
+  `LAG-S21-OLLAMA-TOOL-AC-DONE SIZE=5.2 KB`, zero repeated tool calls, and no
+  inline marker leakage.
 - Retained Electron controls: fresh UI row 165 exact-finaled with
   `reasoning_content=null` (empty think rail), while fresh UI row 168 emitted
   visible step-by-step text with `reasoning_content=null` despite
