@@ -1,0 +1,516 @@
+  JANGTQ_WIRED_LIMIT_GB defaulted to 115 GB (from OS sysctl iogpu.wired_limit_mb; overrides external jang_tools 70% default)
+usage: cli.py serve [-h] [--served-model-name SERVED_MODEL_NAME]
+                    [--image-quantize {3,4,5,6,8}]
+                    [--image-mode {generate,edit}] [--mflux-class MFLUX_CLASS]
+                    [--lora-paths [LORA_PATHS ...]]
+                    [--lora-scales [LORA_SCALES ...]] [--host HOST]
+                    [--port PORT] [--uds UDS] [--max-num-seqs MAX_NUM_SEQS]
+                    [--prefill-batch-size PREFILL_BATCH_SIZE]
+                    [--prefill-step-size PREFILL_STEP_SIZE]
+                    [--completion-batch-size COMPLETION_BATCH_SIZE]
+                    [--enable-prefix-cache] [--disable-prefix-cache]
+                    [--dsv4-enable-prefix-cache]
+                    [--prefix-cache-size PREFIX_CACHE_SIZE]
+                    [--prefix-cache-max-bytes PREFIX_CACHE_MAX_BYTES]
+                    [--no-state-machine-stops]
+                    [--cache-memory-mb CACHE_MEMORY_MB]
+                    [--cache-memory-percent CACHE_MEMORY_PERCENT]
+                    [--no-memory-aware-cache]
+                    [--cache-ttl-minutes CACHE_TTL_MINUTES]
+                    [--ssm-state-cache-size SSM_STATE_CACHE_SIZE]
+                    [--ssm-state-cache-mb SSM_STATE_CACHE_MB]
+                    [--stream-interval STREAM_INTERVAL] [--prefill-keep-alloc]
+                    [--max-tokens MAX_TOKENS]
+                    [--max-prompt-tokens MAX_PROMPT_TOKENS]
+                    [--continuous-batching] [--no-continuous-batching]
+                    [--use-paged-cache] [--no-paged-cache]
+                    [--paged-cache-block-size PAGED_CACHE_BLOCK_SIZE]
+                    [--max-cache-blocks MAX_CACHE_BLOCKS]
+                    [--kv-cache-quantization {none,q4,q8}]
+                    [--kv-cache-group-size KV_CACHE_GROUP_SIZE]
+                    [--enable-disk-cache] [--disk-cache-dir DISK_CACHE_DIR]
+                    [--disk-cache-max-gb DISK_CACHE_MAX_GB]
+                    [--enable-block-disk-cache | --disable-block-disk-cache]
+                    [--block-disk-cache-dir BLOCK_DISK_CACHE_DIR]
+                    [--block-disk-cache-max-gb BLOCK_DISK_CACHE_MAX_GB]
+                    [--smelt] [--smelt-experts SMELT_EXPERTS] [--flash-moe]
+                    [--flash-moe-slot-bank FLASH_MOE_SLOT_BANK]
+                    [--flash-moe-prefetch {none,temporal}]
+                    [--flash-moe-io-split FLASH_MOE_IO_SPLIT] [--distributed]
+                    [--cluster-secret CLUSTER_SECRET]
+                    [--distributed-mode {pipeline,tensor}]
+                    [--worker-nodes WORKER_NODES] [--mcp-config MCP_CONFIG]
+                    [--mcp-enabled-servers MCP_ENABLED_SERVERS]
+                    [--mcp-disabled-servers MCP_DISABLED_SERVERS]
+                    [--mcp-enabled-tools MCP_ENABLED_TOOLS]
+                    [--mcp-disabled-tools MCP_DISABLED_TOOLS]
+                    [--api-key API_KEY] [--rate-limit RATE_LIMIT]
+                    [--timeout TIMEOUT]
+                    [--inference-endpoints INFERENCE_ENDPOINTS]
+                    [--wake-timeout WAKE_TIMEOUT] [--enable-auto-tool-choice]
+                    [--model-family MODEL_FAMILY]
+                    [--tool-call-parser {auto,none,mistral,qwen,llama,hermes,deepseek,kimi,lfm2,granite,nemotron,minimax,xlam,functionary,glm47,step3p5,gemma3,gemma3n,xml_function,dsml,deepseek_v4,zaya_xml,hunyuan,openpangu,generic,qwen3,llama3,llama4,nous,deepseek_v3,deepseek_r1,kimi_k2,moonshot,liquid,granite3,nemotron3,minimax_m2,minimax_m3,meetkai,stepfun,glm4,gemma4,hy_v3,tencent,openpangu_v2}]
+                    [--reasoning-parser {auto,none,qwen3,deepseek_r1,poolside_v1,minimax_m2,think_xml,openai_gptoss,mistral,gemma4,minimax_m3}]
+                    [--text-only] [--is-mllm]
+                    [--embedding-model EMBEDDING_MODEL]
+                    [--default-temperature DEFAULT_TEMPERATURE]
+                    [--default-top-p DEFAULT_TOP_P]
+                    [--default-top-k DEFAULT_TOP_K]
+                    [--default-min-p DEFAULT_MIN_P]
+                    [--default-repetition-penalty DEFAULT_REPETITION_PENALTY]
+                    [--default-enable-thinking {true,false}]
+                    [--chat-template CHAT_TEMPLATE]
+                    [--chat-template-kwargs CHAT_TEMPLATE_KWARGS]
+                    [--enable-jit] [--speculative-model SPECULATIVE_MODEL]
+                    [--num-draft-tokens NUM_DRAFT_TOKENS]
+                    [--native-mtp-depth NATIVE_MTP_DEPTH]
+                    [--native-mtp-sampling-policy {compatible-only,deterministic-defaults}]
+                    [--disable-native-mtp] [--omni-backend {stage1,stage2}]
+                    [--enable-pld]
+                    [--pld-summary-interval PLD_SUMMARY_INTERVAL]
+                    [--log-level {DEBUG,INFO,WARNING,ERROR}]
+                    [--allowed-origins ALLOWED_ORIGINS]
+                    model
+
+positional arguments:
+  model                 HuggingFace model name or local path to serve.
+                        Example: mlx-community/Llama-3.2-3B-Instruct-4bit
+
+options:
+  -h, --help            show this help message and exit
+  --served-model-name SERVED_MODEL_NAME
+                        Custom model name exposed via /v1/models API. Clients
+                        use this name in requests. Useful for aliasing long
+                        model paths. Default: auto-extracted from model path.
+  --image-quantize {3,4,5,6,8}
+                        Quantization bits for image models (mflux). Lower =
+                        less memory, faster. 4-bit recommended. (default:
+                        auto-detect from model name)
+  --image-mode {generate,edit}
+                        Image model mode. 'generate' for text-to-image, 'edit'
+                        for image editing (Kontext, Fill, Qwen-Image-Edit).
+                        (default: auto-detect from model name)
+  --mflux-class MFLUX_CLASS
+                        Explicit mflux model class name (e.g., Flux1,
+                        Flux2Klein, ZImage, QwenImageEdit). Used by the image
+                        loader to pick the correct Python class. If not set,
+                        falls back to name-based lookup.
+  --lora-paths [LORA_PATHS ...]
+                        Optional local LoRA adapter path(s) for image models.
+                        Accepts space-separated values or a comma-separated
+                        list.
+  --lora-scales [LORA_SCALES ...]
+                        Optional LoRA scale(s) matching --lora-paths order.
+                        Accepts space-separated values or a comma-separated
+                        list.
+  --host HOST           Network interface to bind. '0.0.0.0' = all interfaces
+                        (LAN access). '127.0.0.1' = localhost only (default:
+                        127.0.0.1)
+  --port PORT           TCP port for the API server (default: 8000). Example:
+                        --port 8092
+  --uds UDS             Path to a Unix domain socket to bind instead of
+                        host/port. When set, --host and --port are ignored.
+                        Example: --uds /tmp/vmlx.sock
+  --max-num-seqs MAX_NUM_SEQS
+                        Maximum number of requests that can be processed
+                        simultaneously. Higher values use more memory but
+                        support more concurrent users. The default keeps the
+                        full cache stack on for local single-user chat without
+                        reserving a multi-user batch. Requires --continuous-
+                        batching. (default: 1)
+  --prefill-batch-size PREFILL_BATCH_SIZE
+                        How many new prompts to process at once during the
+                        'prefill' phase (reading the input). Higher = faster
+                        throughput but more memory spikes. Requires
+                        --continuous-batching. (default: 512)
+  --prefill-step-size PREFILL_STEP_SIZE
+                        Maximum tokens per prefill chunk. Smaller values
+                        reduce peak Metal memory during prefill — required for
+                        very large MoE models (e.g. 128-expert Qwen3.5-397B)
+                        that hit Metal single-buffer OOM at long contexts. Try
+                        512 or 256 if prefill crashes. Requires --continuous-
+                        batching. (default: 2048)
+  --completion-batch-size COMPLETION_BATCH_SIZE
+                        How many responses to generate tokens for
+                        simultaneously during the 'decode' phase. Higher =
+                        more throughput for concurrent requests but more
+                        memory. Requires --continuous-batching. (default: 512)
+  --enable-prefix-cache
+                        Cache computed KV states for prompt prefixes so
+                        repeated system prompts or conversation history don't
+                        need to be recomputed. Saves significant time on
+                        multi-turn conversations. Requires --continuous-
+                        batching. (default: enabled)
+  --disable-prefix-cache
+                        Turn off prefix caching. Useful for debugging or if
+                        memory is very limited.
+  --dsv4-enable-prefix-cache
+                        Enable DeepSeek-V4 Flash native SWA+CSA/HCA composite
+                        prefix cache reuse. This is the default when neither
+                        --disable-prefix-cache nor
+                        VMLX_DSV4_ENABLE_PREFIX_CACHE=0 is set.
+  --prefix-cache-size PREFIX_CACHE_SIZE
+                        Maximum number of cached prompt prefixes (legacy
+                        entry-count mode only, ignored when memory-aware cache
+                        is active). (default: 100)
+  --prefix-cache-max-bytes PREFIX_CACHE_MAX_BYTES
+                        Optional global byte budget for the prefix cache. When
+                        set, eviction fires when total cached bytes exceed
+                        this. Eviction priority is assistant → user → system,
+                        so shared system prompts persist across
+                        users/sessions. None = unlimited (entry-count only).
+                        (default: None)
+  --no-state-machine-stops
+                        Disable token-level reasoning/stop detection via
+                        SequenceStateMachine (Phase 3c) and fall back to the
+                        legacy substring '<think>' scan. Useful for rollback
+                        if a regression appears. (default: state machine ON)
+  --cache-memory-mb CACHE_MEMORY_MB
+                        Fixed memory budget for prefix cache in megabytes.
+                        When set, cached prompts are evicted based on actual
+                        memory usage rather than entry count. Example:
+                        --cache-memory-mb 4096 for 4GB. Default: auto-detect
+                        (~20% of available RAM).
+  --cache-memory-percent CACHE_MEMORY_PERCENT
+                        Fraction of available unified memory to use for prefix
+                        cache when auto-detecting. Only used when --cache-
+                        memory-mb is not set. Value is a decimal: 0.20 = 20%.
+                        Example: 0.50 for half of RAM. (default: 0.20)
+  --no-memory-aware-cache
+                        Fall back to simple entry-count-based cache eviction
+                        instead of memory-aware. Not recommended — memory-
+                        aware cache is better for most workloads.
+  --cache-ttl-minutes CACHE_TTL_MINUTES
+                        Automatically evict cache entries not accessed within
+                        this many minutes. Useful for long-running servers to
+                        prevent stale caches from consuming memory. 0 = never
+                        expire, entries only evicted when cache is full.
+                        (default: 0)
+  --ssm-state-cache-size SSM_STATE_CACHE_SIZE
+                        Maximum in-memory SSM companion entries for hybrid
+                        models. These entries can be large, so the default is
+                        conservative. (default: 8)
+  --ssm-state-cache-mb SSM_STATE_CACHE_MB
+                        Approximate memory budget in MB for hybrid SSM
+                        companion states. Entries above the budget are
+                        skipped; older entries are evicted when the total
+                        exceeds it. (default: 512)
+  --stream-interval STREAM_INTERVAL
+                        How many tokens to generate before sending a streaming
+                        update to the client. 1 = send every token (smoothest
+                        typing effect). Higher values batch tokens for
+                        slightly better throughput. Requires --continuous-
+                        batching. (default: 1)
+  --prefill-keep-alloc  Skip per-prefill-chunk mx.clear_cache() calls by
+                        setting VMLX_PREFILL_KEEP_ALLOC=1. This is opt-in for
+                        long text-only chunked prefill tuning; default
+                        behavior is unchanged.
+  --max-tokens MAX_TOKENS
+                        Default maximum number of tokens the model will
+                        generate per request. Can be overridden per-request
+                        via the 'max_tokens' API parameter. Higher values
+                        allow longer responses but use more memory. (default:
+                        4096)
+  --max-prompt-tokens MAX_PROMPT_TOKENS
+                        Maximum prompt/context tokens accepted before prefill.
+                        If omitted, vMLX uses the automatic memory-safe prompt
+                        limit. This is separate from --max-tokens, which caps
+                        generated output length.
+  --continuous-batching
+                        Process multiple requests simultaneously using
+                        continuous batching. Enables Prefix Cache, In-Memory
+                        Paged Cache (RAM), stored-cache codecs, and concurrent
+                        users. Default is enabled with max-num-seqs=1 for
+                        local chat.
+  --no-continuous-batching
+                        Use the direct single-request engine and disable
+                        cache-stack features that require continuous batching.
+  --use-paged-cache     Keep block-based (paged) prompt and KV cache entries
+                        in Apple unified memory. Splits cached prompts into
+                        fixed-size blocks that can be shared across requests
+                        with common prefixes. Reduces memory fragmentation and
+                        improves cache utilization for multi-user workloads.
+                        Requires --continuous-batching.
+  --no-paged-cache      Disable the generic in-memory paged-cache tier. Block
+                        Disk Cache may remain enabled as an SSD-only tier on
+                        supported architectures. Architecture-owned native
+                        caches may still use internal block transport; inspect
+                        startup output and /health for the effective policy.
+  --paged-cache-block-size PAGED_CACHE_BLOCK_SIZE
+                        Number of tokens per content-addressed cache block in
+                        the in-memory paged tier or Block Disk Cache. Smaller
+                        blocks = more granular sharing but higher overhead.
+                        Larger blocks = less overhead but waste space on short
+                        prompts. (default: 64)
+  --max-cache-blocks MAX_CACHE_BLOCKS
+                        Maximum number of indexed cache blocks. With In-Memory
+                        Paged Cache on, this caps the RAM block pool; in SSD-
+                        only mode, it caps the in-memory block index. SSD
+                        capacity is controlled separately by --block-disk-
+                        cache-max-gb. (default: 1000)
+  --kv-cache-quantization {none,q4,q8}
+                        Compress stored KV cache to reduce unified memory
+                        usage by 2-4x. q8 = 8-bit (minimal quality loss, ~2x
+                        savings). q4 = 4-bit (slight quality loss, ~4x
+                        savings). Cache is stored compressed but decompressed
+                        for generation (no inference slowdown). Requires
+                        --continuous-batching. Omitting this flag uses
+                        production auto mode: TurboQuant KV for compatible
+                        models plus q4 stored-prefix fallback. Passing the
+                        flag explicitly disables JANG-calibrated TurboQuant KV
+                        so your choice is honored. Set
+                        VMLX_DEFAULT_KV_CACHE_QUANTIZATION=none to turn the
+                        stored-prefix fallback off. (default: auto q4)
+  --kv-cache-group-size KV_CACHE_GROUP_SIZE
+                        Group size for KV cache quantization. Smaller = better
+                        accuracy but larger metadata overhead. Only used when
+                        --kv-cache-quantization is q4 or q8. (default: 64)
+  --enable-disk-cache   Persist prompt KV caches to SSD so they survive server
+                        restarts. Acts as an L2 cache: on L1 (in-memory) miss,
+                        checks disk before recomputing. Great for system
+                        prompts and repeated conversations. Requires
+                        --continuous-batching.
+  --disk-cache-dir DISK_CACHE_DIR
+                        Directory to store disk cache files. Each cached
+                        prompt becomes a .safetensors file. (default:
+                        ~/.cache/vmlx-engine/prompt-cache)
+  --disk-cache-max-gb DISK_CACHE_MAX_GB
+                        Maximum total size of disk cache in gigabytes. Oldest
+                        entries are evicted when the limit is exceeded. 0 =
+                        unlimited. (default: 10)
+  --enable-block-disk-cache
+                        Persist content-addressed cache blocks to SSD. With
+                        the in-memory paged tier on, SSD is L2 behind RAM;
+                        with it off, SSD is the authoritative block tier on
+                        supported architectures. Requires continuous batching
+                        and Prefix Cache.
+  --disable-block-disk-cache
+                        Disable Block Disk Cache (SSD / L2), including the
+                        disk-only block tier.
+  --block-disk-cache-dir BLOCK_DISK_CACHE_DIR
+                        Directory for block disk cache files. (default:
+                        ~/.cache/vmlx-engine/block-cache/<model_hash>)
+  --block-disk-cache-max-gb BLOCK_DISK_CACHE_MAX_GB
+                        Maximum total size of block disk cache in GB. 0 =
+                        unlimited. (default: 10)
+  --smelt               Enable Smelt mode: load backbone + N% of MoE experts
+                        from SSD. Reduces RAM by ~50% while maintaining ~97%
+                        baseline speed via cache-biased routing and native
+                        SwitchGLU kernels.
+  --smelt-experts SMELT_EXPERTS
+                        Percentage of experts to load per MoE layer (10-100).
+                        Lower = less RAM, more routing bias. (default: 50)
+  --flash-moe           Enable Flash MoE: stream expert weights from SSD on-
+                        demand. Enables massive MoE models (35B-397B) to run
+                        with limited RAM by keeping only active experts in a
+                        slot-bank cache.
+  --flash-moe-slot-bank FLASH_MOE_SLOT_BANK
+                        Number of expert weight sets to cache in RAM (default:
+                        64). Higher = more cache hits but more RAM usage.
+  --flash-moe-prefetch {none,temporal}
+                        Expert prefetching strategy (default: none).
+                        'temporal' prefetches recently-used experts.
+  --flash-moe-io-split FLASH_MOE_IO_SPLIT
+                        Number of parallel I/O threads for expert loading
+                        (default: 4).
+  --distributed         Enable distributed inference (coordinator mode).
+                        Discovers worker nodes via Bonjour and splits the
+                        model across them using pipeline parallelism. Workers
+                        must be running vmlx-worker on the same network.
+  --cluster-secret CLUSTER_SECRET
+                        Shared secret for authenticating worker nodes. All
+                        workers in the cluster must use the same secret.
+  --distributed-mode {pipeline,tensor}
+                        Parallelism mode: 'pipeline' splits layers across
+                        nodes (default), 'tensor' splits weights within layers
+                        (requires high bandwidth).
+  --worker-nodes WORKER_NODES
+                        Comma-separated list of worker node addresses
+                        (ip:port). Use instead of Bonjour auto-discovery.
+                        Example: 192.168.1.10:9100,192.168.1.11:9100
+  --mcp-config MCP_CONFIG
+                        Path to MCP (Model Context Protocol) config file
+                        (JSON/YAML). Enables the model to call external tools
+                        (web search, code execution, etc.) via MCP servers.
+                        Tools appear in /v1/mcp/tools and can be used in chat
+                        completions with tool_choice.
+  --mcp-enabled-servers MCP_ENABLED_SERVERS
+                        Comma-separated MCP server allow-list for this model
+                        session.
+  --mcp-disabled-servers MCP_DISABLED_SERVERS
+                        Comma-separated MCP server deny-list for this model
+                        session.
+  --mcp-enabled-tools MCP_ENABLED_TOOLS
+                        Comma-separated MCP tool allow-list for this model
+                        session.
+  --mcp-disabled-tools MCP_DISABLED_TOOLS
+                        Comma-separated MCP tool deny-list for this model
+                        session.
+  --api-key API_KEY     Require this API key for all requests. Clients must
+                        send it as 'Authorization: Bearer <key>'. Without
+                        this, anyone with network access can use your model.
+                        Example: --api-key sk-my-secret-key
+  --rate-limit RATE_LIMIT
+                        Maximum requests per minute per client IP. Prevents
+                        abuse from a single client overwhelming the server. 0
+                        = no limit. Example: --rate-limit 60
+  --timeout TIMEOUT     Maximum time in seconds for a single request before
+                        it's cancelled. Long prompts or high max_tokens may
+                        need higher values. (default: 300 = 5 minutes)
+  --inference-endpoints INFERENCE_ENDPOINTS
+                        Comma-separated list of API endpoints that should be
+                        treated as actual inference endpoints. Requests to
+                        these endpoints will keep the server awake and reset
+                        the idle timeout. If not set, uses a default list
+                        covering OpenAI, MLX, and Ollama endpoints.
+  --wake-timeout WAKE_TIMEOUT
+                        Maximum time in seconds to wait for a model to reload
+                        from deep sleep during a JIT wake. Larger models may
+                        need higher values to finish loading. (default: 300)
+  --enable-auto-tool-choice
+                        Let the model decide when to call tools (function
+                        calling). Must be combined with --tool-call-parser to
+                        specify how the model formats tool calls. Example:
+                        --enable-auto-tool-choice --tool-call-parser qwen
+  --model-family MODEL_FAMILY
+                        Manually force the model family, bypassing
+                        autodetection. The engine normally detects the family
+                        from jang_config.json / config.json; pass this to
+                        override that when detection is wrong (e.g. renamed
+                        fine-tunes, GGUF, custom merges). The chosen family's
+                        cache + tool/reasoning parser contract is used. 'auto'
+                        (or omitting the flag) keeps autodetection. Run with
+                        an unknown family name and the engine still honors it
+                        with a kv cache + a warning. Example: --model-family
+                        qwen3
+  --tool-call-parser {auto,none,mistral,qwen,llama,hermes,deepseek,kimi,lfm2,granite,nemotron,minimax,xlam,functionary,glm47,step3p5,gemma3,gemma3n,xml_function,dsml,deepseek_v4,zaya_xml,hunyuan,openpangu,generic,qwen3,llama3,llama4,nous,deepseek_v3,deepseek_r1,kimi_k2,moonshot,liquid,granite3,nemotron3,minimax_m2,minimax_m3,meetkai,stepfun,glm4,gemma4,hy_v3,tencent,openpangu_v2}
+                        Which format to use for parsing tool calls from model
+                        output. Must match your model's training format.
+                        Common choices: 'qwen' for Qwen models, 'llama' for
+                        Llama 3+, 'hermes' for Hermes/NousResearch, 'mistral'
+                        for Mistral. Use 'auto' to detect from model name.
+                        Requires --enable-auto-tool-choice.
+  --reasoning-parser {auto,none,qwen3,deepseek_r1,poolside_v1,minimax_m2,think_xml,openai_gptoss,mistral,gemma4,minimax_m3}
+                        Extract reasoning/thinking content from model output.
+                        Reasoning models like Qwen3 and DeepSeek-R1 wrap their
+                        thinking in special tags. This parser extracts that
+                        content into a separate 'reasoning_content' field in
+                        the API response. 'auto' = detect from model name.
+                        'none' = explicitly disable. Parsers: qwen3,
+                        deepseek_r1, poolside_v1, minimax_m2, think_xml,
+                        openai_gptoss, mistral, gemma4, minimax_m3.
+  --text-only           Force the model to load as TEXT-ONLY even if auto-
+                        detection recognizes it as a vision/multimodal model.
+                        Overrides --is-mllm and autodetect. Backs the UI
+                        'Force Off' multimodal toggle for genuinely-detected
+                        VL models.
+  --is-mllm             Force the model to load as a multimodal (vision) model
+                        even if auto-detection doesn't recognize it. Use this
+                        for VLM models that aren't in the built-in registry.
+                        Auto-detection checks config.json for 'vision_config'.
+  --embedding-model EMBEDDING_MODEL
+                        Pre-load a separate embedding model at startup for
+                        /v1/embeddings endpoint. Runs alongside the main chat
+                        model. Example: --embedding-model mlx-
+                        community/embeddinggemma-300m-6bit
+  --default-temperature DEFAULT_TEMPERATURE
+                        Server-wide default temperature for generation.
+                        Controls randomness: 0.0 = deterministic, 1.0 =
+                        creative. Overridden by per-request 'temperature'. If
+                        not set, uses 0.7 as fallback.
+  --default-top-p DEFAULT_TOP_P
+                        Server-wide default top-p (nucleus sampling) for
+                        generation. Only considers tokens whose cumulative
+                        probability ≤ this value: 0.9 = use top 90% of
+                        probability mass. Lower = more focused, higher = more
+                        diverse. Overridden by per-request 'top_p'. If not
+                        set, uses model default.
+  --default-top-k DEFAULT_TOP_K
+                        Server-wide default top-k for generation. Overridden
+                        by per-request 'top_k'. If not set, uses
+                        generation_config.json / jang_config metadata when
+                        present.
+  --default-min-p DEFAULT_MIN_P
+                        Server-wide default min-p for generation. Overridden
+                        by per-request 'min_p'. If not set, uses
+                        generation_config.json / jang_config metadata when
+                        present.
+  --default-repetition-penalty DEFAULT_REPETITION_PENALTY
+                        Server-wide default repetition penalty for generation.
+                        1.0 = no penalty. Overridden by per-request
+                        'repetition_penalty'. If not set, bundle metadata is
+                        used when present; otherwise no penalty is applied
+                        server-wide.
+  --default-enable-thinking {true,false}
+                        Server-wide default for thinking/reasoning mode.
+                        'true' enables thinking, 'false' disables it.
+                        Overridden by per-request 'enable_thinking'. If not
+                        set, uses model's default behavior.
+  --chat-template CHAT_TEMPLATE
+                        Custom Jinja2 chat template string to override the
+                        model's built-in template. Useful for models whose
+                        templates are incompatible with certain clients (e.g.,
+                        JetBrains AI Chat). The template receives 'messages'
+                        and 'add_generation_prompt' variables.
+  --chat-template-kwargs CHAT_TEMPLATE_KWARGS
+                        Server-wide default kwargs passed to the chat
+                        template. JSON string, e.g. '{"enable_thinking":
+                        false}'. Per-request chat_template_kwargs override
+                        these. Common use: disable thinking for reasoning
+                        models like Qwen3.
+  --enable-jit          Enable JIT compilation (mx.compile) on the model
+                        forward pass. This fuses Metal operations for faster
+                        inference after a one-time warmup. May not work with
+                        all models. Falls back gracefully if compilation
+                        fails.
+  --speculative-model SPECULATIVE_MODEL
+                        Path or HuggingFace name of a small draft model for
+                        speculative decoding. The draft model proposes tokens
+                        that the main model verifies in a single forward pass,
+                        giving 20-90% speedup with zero quality loss. Must use
+                        the same tokenizer as the main model. Example:
+                        --speculative-model mlx-
+                        community/Llama-3.2-1B-Instruct-4bit
+  --num-draft-tokens NUM_DRAFT_TOKENS
+                        Number of tokens the draft model proposes per
+                        speculative decoding step. Higher values = more
+                        potential speedup but lower acceptance rate. Typical
+                        sweet spot is 2-5. (default: 3)
+  --native-mtp-depth NATIVE_MTP_DEPTH
+                        Depth for native in-model MTP heads on preserved-MTP
+                        bundles. D3 is the current Qwen3.6 default; overridden
+                        by VMLX_NATIVE_MTP_DEPTH.
+  --native-mtp-sampling-policy {compatible-only,deterministic-defaults}
+                        Native MTP request policy. compatible-only leaves
+                        sampling defaults alone and uses MTP only for
+                        deterministic requests. deterministic-defaults is used
+                        by the app for native-MTP sessions to set
+                        deterministic temperature/top-p/top-k/min-p without
+                        applying repetition-penalty guards.
+  --disable-native-mtp  Disable native in-model MTP even when the loaded
+                        bundle has MTP tensors.
+  --omni-backend {stage1,stage2}
+                        Nemotron-Omni multimodal backend. stage1 is
+                        correctness-first PyTorch/MPS; stage2 opts into the
+                        native MLX RADIO + Parakeet path via
+                        VMLX_OMNI_BACKEND=stage2.
+  --enable-pld          Enable Prompt Lookup Decoding speculative
+                        acceleration. PLD verifies n-gram draft tokens in a
+                        single forward pass, giving ~5-8x speedup on long
+                        structured or repetitive output (code, JSON,
+                        summarisation). Net-neutral or negative on short novel
+                        prompts. Check 'eff tok/pass' in the [PLD:3b1f] log
+                        summary to evaluate impact for your workload.
+  --pld-summary-interval PLD_SUMMARY_INTERVAL
+                        Log a PLD effectiveness summary every N spec-decode
+                        tokens. The summary reports accept rate, full/zero %,
+                        and eff tok/pass (>1.0 = net gain over baseline).
+                        (default: 487)
+  --log-level {DEBUG,INFO,WARNING,ERROR}
+                        Server log verbosity. DEBUG shows all details, ERROR
+                        shows only errors. (default: INFO)
+  --allowed-origins ALLOWED_ORIGINS
+                        Comma-separated list of allowed CORS origins for
+                        browser-based API consumers. Use * to allow all
+                        origins. Example:
+                        http://localhost:3000,https://myapp.com (default: *)

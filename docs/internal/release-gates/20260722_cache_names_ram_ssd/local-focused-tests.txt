@@ -1,0 +1,32 @@
+
+> vmlx@1.6.15 test
+> vitest run --run tests/cache-capacity-display.test.ts tests/settings-flow.test.ts
+
+
+ RUN  v4.0.18 /Users/eric/mlx/vllm-mlx-release-1.6.15/panel
+
+ ✓ tests/cache-capacity-display.test.ts (3 tests) 9ms
+ ✓ tests/settings-flow.test.ts (290 tests) 42ms
+
+ Test Files  2 passed (2)
+      Tests  293 passed (293)
+   Start at  10:22:21
+   Duration  270ms (transform 76ms, setup 0ms, import 129ms, tests 51ms, environment 0ms)
+
+
+> vmlx@1.6.15 typecheck
+> tsc --noEmit
+
+============================= test session starts ==============================
+platform darwin -- Python 3.13.13, pytest-9.0.2, pluggy-1.6.0
+rootdir: /Users/eric/mlx/vllm-mlx-release-1.6.15
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+plugins: asyncio-1.3.0, anyio-4.13.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 94 items
+
+tests/test_cli_commands.py ...........................                   [ 28%]
+tests/test_dsv4_paged_cache.py ......................................... [ 72%]
+..........................                                               [100%]
+
+============================== 94 passed in 3.00s ==============================
