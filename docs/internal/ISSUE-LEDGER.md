@@ -4676,19 +4676,20 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   `thinking_mode="reasoning"` and no history; a raw replay of that UI-shaped
   request did not reproduce the visible-step leak. Treat this as a retained
   stochastic/model-output negative, not a global UI/protocol closure.
-- Scope remains `PARTIAL`: this closes a Laguna raw API reasoning/tool-loop
-  row, not cross-family reasoning-content parity, deterministic Electron
-  hidden-reasoning behavior for every prompt, full settings parity, full
-  suites, or release packaging.
+- Scope remains `PARTIAL`: this closes Laguna raw API reasoning/tool-loop and
+  current-source suite/build rows, not cross-family reasoning-content parity,
+  deterministic Electron hidden-reasoning behavior for every prompt, full
+  settings parity, signed-app repetition, or release packaging.
 - `V1.6.15-PREPACKAGE-CHECK`: `BLOCKED`. After the 1.6.15 version bump and
   bundled-Python refresh, `verify-bundled-python.sh` passed on current HEAD
   `1b905cfbcad93877d17f255ea08df35651616fea` and confirmed bundled
   `vmlx_engine`/`jang_tools` source-hash parity plus required runtime imports.
   The prepackage manifest gate was rerun with
   `PYTHON=/Users/eric/mlx/vllm-mlx/.venv/bin/python npm run
-  release:prepackage` at both HEAD
-  `1b905cfbcad93877d17f255ea08df35651616fea` and current HEAD
-  `841ff7ebd2f10f26d9a9d8cf9ecbe7ef190f2553`. The current rerun wrote
+  release:prepackage` at HEADs
+  `1b905cfbcad93877d17f255ea08df35651616fea`,
+  `841ff7ebd2f10f26d9a9d8cf9ecbe7ef190f2553`, and later checkpoint evidence
+  commit `1ea83e1842c7fd060269635ad4881222e55c0645`. The current rerun wrote
   `build/current-release-regression-manifest-pre-panel-dist.json`, but reported
   `current_proof_sweep=fail`, `prepackage_ready=false`, and
   `release_ready=false`. Missing/failed components include broad API, cache
@@ -4697,8 +4698,9 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   full-model matrix, and DSV4 freshness rows. Evidence logs:
   `docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/verify-bundled-python-current-1b905.log`,
   `docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/release-prepackage-current-1b905.log`,
+  `docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/release-prepackage-current-841ff.log`,
   and
-  `docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/release-prepackage-current-841ff.log`.
+  `docs/internal/release-gates/20260722_release_checkpoint_1_6_15/release-prepackage.log`.
 - `V1.6.15-PANEL-BUILD-CHECK`: `VERIFIED-SOURCE_BUILD_SCOPED`.
   `panel-typecheck-current-9f18.log` records `npm run typecheck` passing.
   `panel-full-tests-current-9f18.log` records the complete panel Vitest suite
@@ -4710,6 +4712,14 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   and completed `electron-vite build`. This reduces the panel/build blocker
   but does not override `V1.6.15-PREPACKAGE-CHECK`, which remains blocked on
   broader release matrices and live/signed-app evidence.
+- `V1.6.15-FULL-SUITE-CHECK`: `VERIFIED-SOURCE_TEST_SCOPED`.
+  `docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/full-python-pytest-current-3998.log`
+  records the full current-source Python suite passing with `6290 passed, 96
+  skipped, 92 deselected, 2 warnings in 259.27s`. The release checkpoint also
+  preserves
+  `docs/internal/release-gates/20260722_release_checkpoint_1_6_15/full-python-pytest-1.6.15.log`
+  with the same pass counts. This does not override the negative
+  prepackage/release manifest or the signing/notarization blocker.
 
 ## 2026-07-21 - Qwen3.6 35B JANGTQ Anthropic/Ollama tool continuation
 
