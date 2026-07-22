@@ -9,7 +9,7 @@ This gate is narrow: Laguna S-2.1 JANG_2L, current source, Electron-launched ser
 ## Source changes covered
 
 - `vmlx_engine/engine/batched.py`: renders chat templates through the wrapper/inner tokenizer object that actually owns `apply_chat_template`; this is required for Laguna tokenizer wrappers whose inner tokenizer carries the native Poolside/Laguna template.
-- `vmlx_engine/server.py`: Chat/Responses streaming now treats structured engine errors as errors instead of assistant reasoning/content, and Chat streaming no longer emits speculative empty `tool_calls` START deltas before a parser-valid function call exists.
+- `vmlx_engine/server.py`: Chat/Responses streaming now treats structured engine errors as errors instead of assistant reasoning/content, Chat streaming no longer emits speculative empty `tool_calls` START deltas before a parser-valid function call exists, and resolved `enable_thinking` is mirrored into `chat_template_kwargs` across Chat, Responses, and Anthropic routes so tokenizer/template wrappers see the same effective reasoning state as the top-level engine kwarg.
 - `vmlx_engine/engine_core.py`, `vmlx_engine/engine/base.py`, `vmlx_engine/output_collector.py`: preserve structured engine-loop failures as error fields instead of generated text.
 - Tests pin the above in `tests/test_streaming_reasoning.py`, `tests/test_batching.py`, and `tests/test_server.py`.
 
@@ -88,13 +88,46 @@ This proves current live Laguna reuse through paged + disk + TQ-native on this s
 - Chat post-tool phantom `tool_calls` regression.
 - Responses tool-call argument buffering regression.
 
+`release_bundle_refresh/reasoning-template-kwargs-tests.log`: 141 passed:
+
+- `tests/test_streaming_reasoning.py::TestEnableThinkingTriState`
+- `tests/test_reasoning_modes.py`
+- `tests/test_reasoning_tool_interaction.py`
+
+## Bundled Python / release-prep proof
+
+After the server reasoning/template-kwargs change, `panel/scripts/bundle-python.sh`
+was rerun from this checkout using the clean JANG `origin/main` source at
+`/Users/eric/jang` commit `801209c13c189ebb8fb4d1596748a336f568da38`. The
+script installed local `vmlx` 1.6.14 and local `jang` 2.5.31 into the
+untracked release artifact directory `panel/bundled-python/`.
+
+`release_bundle_refresh/verify-bundled-python.log`: `panel/scripts/verify-bundled-python.sh` passed after the refresh:
+
+- bundled `vmlx_engine` version matches `panel/package.json` (`1.6.14`);
+- bundled critical `vmlx_engine` files match current source hashes;
+- bundled critical `jang_tools` files match the clean JANG source checkout;
+- critical MLX, MLX-VLM, audio, JANG, DSV4/Kimi/Step/Gemma runtime imports pass.
+
+`release_bundle_refresh/targeted-release-failures-rerun.log`: 28 previously
+failing release/audit tests passed after running with
+`PATH=/Users/eric/.local/node/bin:$PATH` and the refreshed bundle.
+
+The unqualified full Python-suite invocation captured in
+`/tmp/vmlx-full-pytest-20260722-235509.log` failed 12 tests because `node`/`npx`
+were absent from PATH, then the bundled verifier exposed stale bundled Python
+content. The node/npx portion was environment setup noise, but the stale bundle
+was a real release blocker until `bundle-python.sh` was rerun. A complete
+end-to-end Python suite rerun with the corrected PATH was not performed in this
+gate.
+
 ## Remaining release blockers not closed by this gate
 
-- Full Python and panel suites/build/typecheck were not rerun in this gate.
+- Full Python suite with corrected node PATH, full panel suite, panel build, and typecheck were not rerun end-to-end in this gate.
 - Full protocol matrix remains open: non-stream Chat/Responses, Anthropic, Ollama, cancellation/disconnect/recovery across representative models.
 - Full settings parity remains open for all models; this gate only checks Laguna S-2.1 generation defaults observed in UI.
 - Disk-only L2/paged-off partial-prefix restore remains unproven here.
 - Broader model family matrix remains open: DSV4 Flash typed composite cache, MiniMax M3 sparse/lightning cache, Gemma, Qwen/Bonsai/Ornith, Step, Nemotron/Omni/audio/video, M2.7, LFM, openPangu.
 - Packaging, signing, notarization, version bump, latest.json/feed updates, and install smoke were not performed in this gate.
 
-Verdict for this gate: PARTIAL scoped closure. Laguna S-2.1 current-source reasoning separation and post-tool phantom-call streaming are live-proven on Electron-launched PIDs 93364 and 93786 plus raw API. Overall release remains BLOCKED until the remaining release gates above are closed or explicitly deferred with a release-risk note.
+Verdict for this gate: PARTIAL scoped closure. Laguna S-2.1 current-source reasoning separation, post-tool phantom-call streaming, explicit enable_thinking propagation, and local bundled-Python freshness are source/test/live-proven for the named scope. Electron/API proof used Electron-launched PIDs 93364 and 93786 plus raw API. Overall release remains BLOCKED until the remaining release gates above are closed or explicitly deferred with a release-risk note.

@@ -1,0 +1,16 @@
+COMMAND=pytest targeted release failures
+============================= test session starts ==============================
+platform darwin -- Python 3.13.11, pytest-9.0.2, pluggy-1.6.0
+rootdir: /Users/eric/mlx/vllm-mlx-release-1.6.13
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+plugins: asyncio-1.3.0, anyio-4.13.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 28 items
+
+tests/test_installed_app_runtime_parity_audit.py ..................      [ 64%]
+tests/test_mcp_security.py .                                             [ 67%]
+tests/test_public_app_issue_audit.py ......                              [ 89%]
+tests/test_release_gate_python_app.py ..                                 [ 96%]
+tests/test_vl_video_regression.py .                                      [100%]
+
+======================== 28 passed in 83.35s (0:01:23) =========================
