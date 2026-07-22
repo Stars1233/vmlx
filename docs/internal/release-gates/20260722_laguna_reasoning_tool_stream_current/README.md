@@ -357,3 +357,58 @@ Electron-launched PIDs 93364, 93786, 4279, 28307, and 81068 plus raw API. Curren
 prepackage manifest evidence is negative (`prepackage_ready=false`,
 `release_ready=false`), so overall release remains BLOCKED until the remaining
 release gates above are closed or explicitly deferred with a release-risk note.
+
+## 1.6.16 working-tree addendum: JANG_4M PID 37157
+
+This is current live evidence from the 1.6.16 campaign working tree, not a
+packaged-app or release-commit certification.  The real Electron Start flow
+loaded `/Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_4M` as PID 37157 on
+port 8001, with CDP 9335 and gateway 8088.
+
+Bundle-grounded settings were compared with the live controls and argv:
+
+- `generation_config.json` declares temperature `1.0`, top-p `1.0`, top-k
+  `20`, and Poolside v1 reasoning/tool parsers;
+- Electron showed Auto, `1.00`, `1.00`, and `20`;
+- the session persisted parser choices as `auto`; launch resolved the
+  registered Poolside aliases to canonical `deepseek_r1` reasoning and `glm47`
+  tool implementations;
+- health reported mixed-SWA native state, q4 TurboQuant storage on the
+  full-attention KV component, rotating-window metadata preservation, paged RAM
+  on, and block-disk L2 on.
+
+Four-protocol gateway evidence is retained in
+`current_pid37157/lag-r16-current-four-protocol-hard.json`. Chat Completions,
+Responses, Anthropic, and Ollama each returned HTTP 200, hundreds of separate
+reasoning deltas, 16 progressive visible-content deltas, the same exact visible
+answer, and their proper terminal event. No inline think marker appeared in
+visible content.
+
+Electron Auto reasoning was visually inspected in
+`current_pid37157/lag-r16-ui-auto-reasoning.png` and
+`current_pid37157/lag-r16-ui-auto-final.png`. The reasoning rail streamed
+separately and model math rendered as readable multiplication/minus operators;
+no raw TeX delimiters or broken backslash commands were visible. This
+stochastic UI row did not follow the exact-output instruction perfectly: it
+added one explanatory visible sentence before the requested terminal line.
+That is retained as a model/prompt-adherence negative and is not hidden by a
+server rewrite. The deterministic four-protocol row produced the exact output.
+
+The first Electron `file_info(panel/package.json)` attempt correctly failed
+with `Working directory not set. Configure it in Chat Settings.` After setting
+the real remote checkout `/Users/eric/mlx/vllm-mlx-release-1.6.13` through Chat
+Settings, the same tool call executed exactly once and completed with
+`SIZE=5.2 KB`; see `current_pid37157/lag-r16-ui-tool-retry-final.png`.
+
+A real `+ Chat` then inherited Built-in Coding Tools, the working directory,
+Auto, temperature `1.0`, top-p `1.0`, and top-k `20`. Its fresh tool call again
+executed exactly once and completed with `SIZE=5.2 KB`; see
+`current_pid37157/lag-r16-newchat-persist.png`.
+
+Scoped verdict for this addendum: **PASS** for current-working-tree JANG_4M
+Electron load, model-derived visual settings, Auto reasoning separation,
+four-protocol progressive gateway streaming, one real built-in tool
+continuation, and fresh-chat tool/working-directory persistence. **PARTIAL**
+for release: TPS phase accounting visibly dipped at the reasoning-to-answer
+transition, and Paged-Off SSD-only JANG_4M partial-prefix/refault/restart proof
+remains open. Packaged-app and release-head repetition also remain open.
