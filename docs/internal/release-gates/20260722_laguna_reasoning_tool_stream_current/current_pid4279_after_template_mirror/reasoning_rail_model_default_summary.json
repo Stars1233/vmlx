@@ -1,0 +1,59 @@
+{
+  "pid_expected": 4279,
+  "prompt": "[LAG-S21-API-THINK-RAIL-V] Do not call tools. Think privately and solve 2468 + 1357. Then visible answer exactly two lines: 2468 + 1357 = 3825 and LAG-S21-API-THINK-RAIL-V-DONE",
+  "chat": {
+    "elapsed": 3.4362,
+    "ttfe": 0.0101,
+    "events": 153,
+    "delta_keys_unique": [
+      [],
+      [
+        "content"
+      ],
+      [
+        "reasoning_content"
+      ],
+      [
+        "role"
+      ]
+    ],
+    "reasoning_len": 278,
+    "reasoning_head": "The user wants me to solve 2468 + 1357.\n\nLet me calculate:\n2468\n+1357\n-----\n3825\n\nLet me verify:\n2468 + 1357 = 3825\n\nYes, that's correct.\n\nThe user wants the answer in exactly two lines:\n2468 + 1357 = 3825\nLAG-S21-API-THINK-RAIL-V-DONE\n\nLet me follow the instructions carefully.",
+    "text": "2468 + 1357 = 3825\nLAG-S21-API-THINK-RAIL-V-DONE",
+    "text_len": 48,
+    "content_delta_count": 30,
+    "reasoning_delta_count": 120,
+    "inline_marker_in_content": false,
+    "finish": [
+      "stop"
+    ],
+    "raw": "docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/chat_think_rail_v_model_default.raw.jsonl"
+  },
+  "responses": {
+    "elapsed": 9.3348,
+    "ttfe": 0.0052,
+    "events": 491,
+    "types": {
+      "response.created": 1,
+      "response.output_item.added": 2,
+      "response.reasoning_summary_part.added": 1,
+      "response.reasoning_summary_text.delta": 448,
+      "response.reasoning_summary_text.done": 1,
+      "response.reasoning_summary_part.done": 1,
+      "response.output_item.done": 2,
+      "response.content_part.added": 1,
+      "response.output_text.delta": 31,
+      "response.output_text.done": 1,
+      "response.content_part.done": 1,
+      "response.completed": 1
+    },
+    "reasoning_len": 2576,
+    "reasoning_head": "First, I need to solve the math problem 2468 + 1357. Let me do that step by step. \n\nStarting from the rightmost digits: 8 + 7 is 15. I'll carry over the 1. Then, the next digits: 6 + 5 is 11, plus the carried 1 makes 12. So, I carry over 1 again. The next digits: 4 + 3 is 7, plus the carried 1 makes 8. Finally, the leftmost digits: 2 + 1 is 3. So putting it all together, the sum should be 3825.\n\nNow, I need to check if there's any trick here. The problem mentions \"Do not call tools\" and \"Think p",
+    "text": "2468 + 1357 = 3825  \nLAG-S21-API-THINK-RAIL-V-DONE",
+    "text_len": 50,
+    "content_delta_count": 31,
+    "reasoning_event_count": 451,
+    "inline_marker_in_content": false,
+    "raw": "docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/responses_think_rail_v_model_default.raw.jsonl"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "pid_expected": 4279,
+  "round1": {
+    "elapsed": 1.3965,
+    "ttfe": 0.0102,
+    "events": 40,
+    "reasoning_len": 0,
+    "reasoning_head": "",
+    "text": "",
+    "text_len": 0,
+    "reasoning_delta_count": 0,
+    "content_delta_count": 0,
+    "tool_delta_count": 2,
+    "assembled_name": "file_info",
+    "assembled_args": "{\"path\": \"panel/package.json\"}",
+    "assembled_id": "call_bf6918c2",
+    "finish": [
+      "tool_calls"
+    ],
+    "inline_marker_in_content": false,
+    "raw": "docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/chat_tool_w_round1_after_template_mirror.raw.jsonl"
+  },
+  "round2": {
+    "elapsed": 1.4072,
+    "ttfe": 0.0028,
+    "events": 20,
+    "reasoning_len": 0,
+    "reasoning_head": "",
+    "text": "LAG-S21-CHAT-TOOL-W-DONE SIZE=5.2 KB",
+    "text_len": 36,
+    "reasoning_delta_count": 0,
+    "content_delta_count": 17,
+    "tool_delta_count": 0,
+    "assembled_name": "",
+    "assembled_args": "",
+    "assembled_id": null,
+    "finish": [
+      "stop"
+    ],
+    "inline_marker_in_content": false,
+    "raw": "docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/chat_tool_w_round2_after_template_mirror.raw.jsonl"
+  },
+  "tool_result": "Path: panel/package.json\nType: file\nSize: 5.2 KB\nModified: 2026-07-15T14:28:24.904Z\nPermissions: 0644"
+}

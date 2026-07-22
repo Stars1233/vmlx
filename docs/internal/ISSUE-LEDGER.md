@@ -4639,6 +4639,39 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   truthful completed/incomplete/failed terminal. Electron separation alone is
   insufficient; preserve raw timed SSE evidence and tool continuations.
 
+## 2026-07-22 - Laguna S-2.1 API reasoning/template mirror addendum
+
+- `LAGUNA-S21-API-REASONING-TEMPLATE-MIRROR`: `VERIFIED-LIVE_SCOPED` for raw
+  Chat Completions and Responses on Electron-launched PID 4279. Source now
+  mirrors resolved `enable_thinking` into `chat_template_kwargs` at the
+  Anthropic, Chat Completions, Responses, streaming Chat, and streaming
+  Responses engine handoff sites, so tokenizer/template wrappers receive the
+  same reasoning state as the top-level kwarg. Focused source tests passed 4/4
+  in `tests/test_streaming_reasoning.py` and 5/5 in `tests/test_server.py`.
+- Live raw Chat proof:
+  `docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/reasoning_rail_model_default_summary.json`
+  records 120 `reasoning_content` deltas followed by 30 content deltas, no
+  inline think/private marker leakage, and terminal `stop`. Raw Responses proof
+  in the same summary/raw files records 448
+  `response.reasoning_summary_text.delta` events followed by 31
+  `response.output_text.delta` events and `response.completed`.
+- Live tool proof:
+  `chat_tool_w_after_template_mirror_summary.json` and
+  `responses_tool_x_after_template_mirror_summary.json` record one
+  `file_info({"path":"panel/package.json"})` call, real-result continuation,
+  progressive final output, and no phantom post-tool tool delta.
+- Retained Electron controls: fresh UI row 165 exact-finaled with
+  `reasoning_content=null` (empty think rail), while fresh UI row 168 emitted
+  visible step-by-step text with `reasoning_content=null` despite
+  `enable_thinking=true`. Logs show the UI request used `/v1/responses` with
+  `thinking_mode="reasoning"` and no history; a raw replay of that UI-shaped
+  request did not reproduce the visible-step leak. Treat this as a retained
+  stochastic/model-output negative, not a global UI/protocol closure.
+- Scope remains `PARTIAL`: this closes a Laguna raw API reasoning/tool-loop
+  row, not cross-family reasoning-content parity, deterministic Electron
+  hidden-reasoning behavior for every prompt, full settings parity, full
+  suites, or release packaging.
+
 ## 2026-07-21 - Qwen3.6 35B JANGTQ Anthropic/Ollama tool continuation
 
 - `Q35-JANGTQ-ANTHROPIC-OLLAMA-TOOL`: `VERIFIED-LIVE_SCOPED` for this exact

@@ -1,0 +1,102 @@
+{
+  "pid_expected": 4279,
+  "round1": {
+    "elapsed": 1.3636,
+    "ttfe": 0.0101,
+    "events": 42,
+    "types": {
+      "response.created": 1,
+      "response.heartbeat": 35,
+      "response.output_item.added": 1,
+      "response.function_call_arguments.delta": 2,
+      "response.function_call_arguments.done": 1,
+      "response.output_item.done": 1,
+      "response.completed": 1
+    },
+    "text": "",
+    "text_len": 0,
+    "reasoning_len": 0,
+    "reasoning_head": "",
+    "function_calls": [
+      {
+        "id": "fc_8c6d58280380",
+        "type": "function_call",
+        "status": "completed",
+        "call_id": "call_cc74c0ba",
+        "name": "file_info",
+        "arguments": "{\"path\": \"panel/package.json\"}"
+      }
+    ],
+    "arguments_deltas": "{\"path\": \"panel/package.json\"}",
+    "completed_output": [
+      {
+        "id": "fc_8c6d58280380",
+        "type": "function_call",
+        "status": "completed",
+        "call_id": "call_cc74c0ba",
+        "name": "file_info",
+        "arguments": "{\"path\": \"panel/package.json\"}"
+      }
+    ],
+    "content_delta_count": 0,
+    "reasoning_event_count": 0,
+    "raw": "docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/responses_tool_x_round1_after_template_mirror.raw.jsonl"
+  },
+  "round2": {
+    "elapsed": 1.3342,
+    "ttfe": 0.0026,
+    "events": 24,
+    "types": {
+      "response.created": 1,
+      "response.output_item.added": 1,
+      "response.content_part.added": 1,
+      "response.output_text.delta": 17,
+      "response.output_text.done": 1,
+      "response.content_part.done": 1,
+      "response.output_item.done": 1,
+      "response.completed": 1
+    },
+    "text": "LAG-S21-RESP-TOOL-X-DONE SIZE=5.2 KB",
+    "text_len": 36,
+    "reasoning_len": 0,
+    "reasoning_head": "",
+    "function_calls": [],
+    "arguments_deltas": "",
+    "completed_output": [
+      {
+        "id": "item_d6f661fab2a6",
+        "type": "message",
+        "status": "completed",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "output_text",
+            "text": "LAG-S21-RESP-TOOL-X-DONE SIZE=5.2 KB",
+            "annotations": []
+          }
+        ]
+      }
+    ],
+    "content_delta_count": 17,
+    "reasoning_event_count": 0,
+    "raw": "docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/responses_tool_x_round2_after_template_mirror.raw.jsonl"
+  },
+  "round2_input": [
+    {
+      "role": "user",
+      "content": "[LAG-S21-RESP-TOOL-X] Call file_info exactly once with path panel/package.json. Do not answer from memory. After the tool result, reply exactly LAG-S21-RESP-TOOL-X-DONE SIZE=<size>."
+    },
+    {
+      "type": "function_call",
+      "name": "file_info",
+      "call_id": "call_cc74c0ba",
+      "arguments": "{\"path\": \"panel/package.json\"}"
+    },
+    {
+      "type": "function_call_output",
+      "call_id": "call_cc74c0ba",
+      "output": "Path: panel/package.json\nType: file\nSize: 5.2 KB\nModified: 2026-07-15T14:28:24.904Z\nPermissions: 0644"
+    }
+  ],
+  "tool_result": "Path: panel/package.json\nType: file\nSize: 5.2 KB\nModified: 2026-07-15T14:28:24.904Z\nPermissions: 0644"
+}

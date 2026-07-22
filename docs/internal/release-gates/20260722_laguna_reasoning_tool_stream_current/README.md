@@ -147,6 +147,60 @@ was a real release blocker until `bundle-python.sh` was rerun.
 
 ## Remaining release blockers not closed by this gate
 
+- Current PID 4279 addendum (2026-07-22 00:07-00:18 local): after the
+  `enable_thinking` template-kwargs mirror patch, the real Electron Start
+  button launched PID 4279 with `PYTHONPATH` pointed at this checkout. The
+  process argv kept `--reasoning-parser deepseek_r1`, `--tool-call-parser
+  glm47`, paged cache, block-disk L2, and 15% cache RAM. Health artifact:
+  `current_pid4279_after_template_mirror/health_pid4279_after_template_mirror.json`.
+- Source/test trace for this addendum: `vmlx_engine/server.py` mirrors resolved
+  thinking into `chat_template_kwargs` at the Anthropic, Chat Completions,
+  Responses, streaming Chat, and streaming Responses handoff sites. Focused
+  validation rerun on this source passed:
+  `tests/test_streaming_reasoning.py -k "laguna_forwards_reasoning_on_to_engine
+  or stamped_think_template_seeds_without_renderer or
+  stream_chat_forwards_effective_thinking_to_engine_kwargs or
+  stream_responses_forwards_effective_thinking_to_engine_kwargs"` (4/4) and
+  `tests/test_server.py -k "post_tool_false_marker or
+  tool_call_arguments_survive_buffering or reasoning_tool_call_keeps_arguments
+  or required_empty_xml_tool_call_is_rejected or
+  streaming_chat_minimax_truncated_namespace_emits_only_tool_call"` (5/5).
+- Raw Chat API proof on PID 4279:
+  `current_pid4279_after_template_mirror/reasoning_rail_model_default_summary.json`
+  shows 120 `reasoning_content` deltas followed by 30 content deltas for
+  `[LAG-S21-API-THINK-RAIL-V]`, with no inline think/private marker leakage
+  and terminal `stop`. Required-tool proof:
+  `chat_tool_w_after_template_mirror_summary.json` shows round 1 emitted
+  exactly one `file_info({"path":"panel/package.json"})` call and round 2
+  streamed `LAG-S21-CHAT-TOOL-W-DONE SIZE=5.2 KB` with zero phantom tool
+  deltas.
+- Raw Responses API proof on PID 4279:
+  `responses_think_rail_v_model_default.raw.jsonl` and the same summary show
+  448 `response.reasoning_summary_text.delta` events followed by 31
+  `response.output_text.delta` events for the reasoning row, with no inline
+  marker leakage and `response.completed`. Required-tool proof:
+  `responses_tool_x_after_template_mirror_summary.json` shows a completed
+  `function_call` item for `file_info({"path":"panel/package.json"})`, then a
+  `function_call_output` continuation streaming
+  `LAG-S21-RESP-TOOL-X-DONE SIZE=5.2 KB` with no repeated call.
+- Electron controls on the same PID are intentionally not hidden. Fresh
+  Electron row 165 (`[LAG-S21-UI-FRESH-Z]`) answered exactly with
+  `reasoning_content=null`; this is an empty think-rail/easy-prompt behavior,
+  not a parser proof. Fresh Electron row 168 (`[LAG-S21-UI-FRESH-AA]`) emitted
+  visible step-by-step text with `reasoning_content=null` despite
+  `enable_thinking=true`; the in-app log shows the request used `/v1/responses`
+  with `thinking_mode="reasoning"`, `reasoning_effort="medium"`, and no
+  history. A raw replay of the same UI-shaped request in
+  `responses_raw_ui_shape_ab_summary.json` did not reproduce the visible-step
+  leak, so this remains a stochastic/model-output negative control rather than
+  a proven renderer/request-off bug. Artifact:
+  `current_pid4279_after_template_mirror/electron_rows_162_165_168.json`;
+  screenshot: `laguna-ui-fresh-aa-visible-negative.png`.
+- Therefore this addendum upgrades the raw API reasoning/tool-loop evidence for
+  Laguna S-2.1 on PID 4279, but it does not close the global
+  reasoning-content protocol gate or guarantee every Electron prompt produces a
+  non-empty reasoning rail.
+
 - Full Python suite was not rerun end-to-end after the later 1.6.15 version bump; targeted release/version tests were. Full panel suite, panel build, and typecheck were not rerun end-to-end in this gate.
 - Full protocol matrix remains open: non-stream Chat/Responses, Anthropic, Ollama, cancellation/disconnect/recovery across representative models.
 - Full settings parity remains open for all models; this gate only checks Laguna S-2.1 generation defaults observed in UI.

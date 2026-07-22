@@ -1,0 +1,37 @@
+{
+  "pid_expected": 4279,
+  "body": {
+    "model": "jangq-ai/Laguna-S-2.1-JANG_2L",
+    "input": "[LAG-S21-RAW-UI-SHAPE-AB] Do not call tools. Think privately and solve 2468 + 1357. Then visible answer exactly two lines: 2468 + 1357 = 3825 and LAG-S21-RAW-UI-SHAPE-AB-DONE",
+    "stream": true,
+    "enable_thinking": true,
+    "thinking_mode": "reasoning",
+    "reasoning_effort": "medium",
+    "chat_template_kwargs": {
+      "reasoning_effort": "medium",
+      "thinking_budget": 8192,
+      "enable_thinking": true
+    },
+    "max_output_tokens": 32768
+  },
+  "elapsed": 1.4075,
+  "ttfe": 0.0103,
+  "types": {
+    "response.created": 1,
+    "response.output_item.added": 1,
+    "response.content_part.added": 1,
+    "response.output_text.delta": 30,
+    "response.output_text.done": 1,
+    "response.content_part.done": 1,
+    "response.output_item.done": 1,
+    "response.completed": 1
+  },
+  "reasoning_len": 0,
+  "reasoning_head": "",
+  "text": "2468 + 1357 = 3825\nLAG-S21-RAW-UI-SHAPE-AB-DONE",
+  "text_len": 47,
+  "content_delta_count": 30,
+  "reasoning_event_count": 0,
+  "inline_marker_in_content": false,
+  "raw": "docs/internal/release-gates/20260722_laguna_reasoning_tool_stream_current/current_pid4279_after_template_mirror/responses_raw_ui_shape_ab.raw.jsonl"
+}
