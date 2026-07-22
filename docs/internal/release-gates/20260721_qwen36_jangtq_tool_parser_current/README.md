@@ -123,6 +123,7 @@ Artifacts retained in this directory:
 Artifact retained:
 
 - `q36-jt-api-tool-parser-summary.json`
+- `q36-jt-responses-reasoning-summary-event-proof.json`
 
 Summary:
 
@@ -136,11 +137,19 @@ Summary:
   visible content `Q36JTRESP1-DONE SIZE=5.2 KB` and `response.completed`.
 - Neither raw path emitted inline `<think>` in the reasoning or visible text
   captured by the probe.
+- A separate Responses reasoning probe confirmed the current event names and
+  progressive rails for this artifact: `256`
+  `response.reasoning_summary_text.delta` events, `110`
+  `response.output_text.delta` events, and `response.completed`.
 
 ## Remaining open rows
 
 - This does not certify all Qwen exact-format compliance. The model can still
-  produce verbose or bracketed visible text on some strict labels.
+  produce verbose, explanatory, or bracketed visible text on some strict labels.
+  In the raw reasoning probe, protocol rails were separate and progressive, but
+  the model still placed explanatory math text in visible content before the
+  final marker. That is recorded as model-visible style behavior, not inline
+  `<think>` parser leakage.
 - This does not close Anthropic/Ollama for this exact JANGTQ artifact; those
   protocol families remain broader matrix rows.
 - This does not close SSD-only, partial-prefix, eviction, restart, or media
