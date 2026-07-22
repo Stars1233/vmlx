@@ -4860,3 +4860,29 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
 - Packaging, version bump, signing, notarization, tagging, and publication are
   blocked until the selected cutoff has current full-suite, bundled-Python,
   production-build, signed-app, and public-version proof.
+
+## 2026-07-22 - In-memory cache wording live follow-up
+
+- `PAGED-CACHE-PLAIN-LANGUAGE-LABEL`: `VERIFIED-LIVE_SCOPED` at source
+  `4558dac06`.
+  The Server Settings section and toggle now say
+  `In-Memory Paged Cache (RAM)` and explicitly identify Apple unified memory
+  as the fast RAM tier and `Block Disk Cache (L2)` as persistent SSD storage.
+  The backend option and persisted field names remain unchanged.
+- The first real Electron tooltip inspection exposed a shared checkbox-help
+  defect: clicking `?` inside a label also activated the label's checkbox.
+  `Tooltip.handleClick` now cancels the label default action before stopping
+  propagation, so reading help cannot silently change an unsaved server
+  setting.
+- Focused panel verification passed 301 tests across `settings-flow` and
+  `i18n-consistency`, followed by TypeScript typecheck. Real Electron proof at
+  both 1400x900 and 600x760 shows the new section, checked toggle,
+  RAM-versus-SSD help, and L2 control together with no horizontal overflow.
+  The tooltip click retained `checked=true` before and after activation.
+- The same live session persisted `usePagedCache:true`; its process argv
+  retained `--use-paged-cache --paged-cache-block-size 64
+  --max-cache-blocks 1000 --enable-block-disk-cache`; and a real admin wake
+  produced pre-request `/health` with `model_loaded=true`,
+  `last_request_time=null`, `backend_mode=paged`, `paged_ram_enabled=true`,
+  `disk_only=false`, and Block L2 present. Evidence is stored under
+  `docs/internal/release-gates/20260722_v1_6_16_campaign/`.

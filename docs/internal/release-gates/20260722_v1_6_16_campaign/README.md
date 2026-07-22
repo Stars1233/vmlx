@@ -76,7 +76,7 @@ For every live model generation retained as evidence:
 | `R16-STREAM-METRICS` | `OPEN` | Compare Electron `metrics_json` against raw timed SSE for the same prompt. Report TTFT, prompt processing speed, decode tokens/s after first output token, reasoning tokens, visible tokens, tool/fallback pauses, and wall time separately. Reject terminal-batch answer painting and misleading blended two-pass TPS. |
 | `R16-CACHE-HIERARCHY` | `OPEN / RELEASE-CRITICAL` | Prove cold store, resident RAM hit, partial-block reuse, L1 eviction, L2 SSD refault, process restart restore, and safe full-prefill fallback for standard KV, hybrid SSM/GDN, mixed SWA, CCA, M3 sparse, DSV4 composite, and openPangu native prompt disk. With Paged Off and L2 On, partial prefix reuse must come from SSD with zero resident paged bytes. With Paged On, lookup order must use matching RAM blocks first and SSD when absent. Cross-chat and cross-session reuse must not leak unrelated suffixes or media. |
 | `R16-SETTINGS-PARITY` | `OPEN / RELEASE-CRITICAL` | Compare bundle defaults to visible Chat Settings, SQLite, IPC/request payload, preview/argv, and engine-resolved kwargs/health. Cover temperature, top-p, top-k including Off/-1/large values, min-p zero, repetition penalty, max output, max context, reasoning Auto/On/Off, tool/reasoning parsers, MTP, modalities, cache toggles, block size/count, RAM percentage, L2 size/path, LAN/port, and Single Model. First use must inherit the bundle; saved per-chat/per-session values must survive restart; reset/Auto must remove the override. |
-| `R16-CACHE-LABEL` | `OPEN-UX` | Rename Electron `Paged Cache` / `Use Paged KV Cache` to **In-Memory Paged Cache (RAM)**. Help text must say it is the fast unified-memory prefix/block tier and distinguish it from **Block Disk Cache (L2)** on SSD. Do not call it GPU RAM on Apple silicon, rename backend flags, change defaults, enable unsupported architectures, or break explicit Off plus disk-only L2. Verify wording and controls at normal and minimum window widths plus UI/DB/preview/argv/health parity. |
+| `R16-CACHE-LABEL` | `VERIFIED-LIVE_SCOPED` | Source `4558dac06` renames Electron `Paged Cache` / `Use Paged KV Cache` to **In-Memory Paged Cache (RAM)** and identifies **Block Disk Cache (L2)** as SSD. It also prevents help-tooltip clicks from toggling checkbox settings. Focused tests, typecheck, normal/minimum-width visual proof, unchanged persisted state/argv, and effective loaded health are named below. Backend flags/defaults/eligibility are unchanged; explicit Off plus disk-only L2 remains a separate cache-behavior regression row. |
 | `R16-SINGLE-MODEL-GATEWAY` | `PARTIAL` | Preserve the scoped unmanaged-engine sweep, rollback, disconnect, backend-loss, and non-stream atomicity fixes. Still run a bounded multi-client soak with repeated real UI model swaps, only one resident process, eager Start-before-first-message load, concurrent route/swap attempts, active-request LAN/port rollback, occupied port, stale target, late loader failure, unload/reload, and recovery across all four protocols. |
 
 ### P1 — architecture and family gates
@@ -134,6 +134,39 @@ For every live model generation retained as evidence:
 | Date | Commit/source | Change | Focused proof | Electron proof | Raw API proof | Status |
 |---|---|---|---|---|---|---|
 | 2026-07-22 | `7b940b070` | Opened 1.6.16 campaign from post-1.6.15 main; added explicit cache terminology gate | Documentation/source reconciliation only | Not run for this row | Not run for this row | `ACTIVE / NOT READY` |
+| 2026-07-22 | `4558dac06` | Renamed the visible RAM tier and fixed tooltip clicks toggling checkbox settings | 301 focused panel tests + typecheck passed on proof host | 1400x900 and 600x760 section/toggle/help inspected; checked state preserved | Existing DB/argv and pre-request loaded health agree on Paged RAM On plus Block L2 | `VERIFIED-LIVE_SCOPED` |
+
+## Cache terminology and tooltip proof
+
+Source commit `4558dac06` changes only user-facing terminology/help and the
+shared tooltip click contract:
+
+- section and control: `In-Memory Paged Cache (RAM)`;
+- help: Apple unified memory is the fast RAM tier; Block Disk Cache (L2) is the
+  persistent SSD tier and may remain enabled when the RAM tier is Off;
+- `Tooltip.handleClick` calls `preventDefault()` before `stopPropagation()` so
+  a help click nested inside a checkbox label does not activate the checkbox;
+- all five locale section labels were updated; backend config field
+  `usePagedCache` and CLI flag `--use-paged-cache` were deliberately retained.
+
+Focused proof on `erics-m5-max.local`:
+
+- `tests/settings-flow.test.ts` plus `tests/i18n-consistency.test.ts`: 301/301
+  passed;
+- `npm run typecheck`: passed;
+- normal-width visual artifact: `cache-label-normal.png`;
+- 600x760 visual artifact: `cache-label-minwidth.png`; DOM width was 600/600,
+  label rectangle `x=290..565`, tooltip `x=253.76..541.76`, and the checkbox
+  remained checked before and after opening help;
+- persisted session config retained `usePagedCache:true`;
+- live PID 81068 argv retained `--use-paged-cache`, block size 64, 1000 max
+  blocks, and Block Disk L2;
+- after a real `/admin/wake`, `cache-label-health.json` records
+  `model_loaded=true`, `last_request_time=null`, paged RAM enabled, disk-only
+  false, 63,936-token configured RAM capacity, and Block L2 present.
+
+No model generation was run for this UI/settings proof, and no cache reuse or
+output-coherence claim is added here.
 
 ## Release stop conditions
 
