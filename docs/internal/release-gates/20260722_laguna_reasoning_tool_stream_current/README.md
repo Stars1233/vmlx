@@ -113,17 +113,22 @@ untracked release artifact directory `panel/bundled-python/`.
 failing release/audit tests passed after running with
 `PATH=/Users/eric/.local/node/bin:$PATH` and the refreshed bundle.
 
-The unqualified full Python-suite invocation captured in
+`release_bundle_refresh/full-python-pytest-with-nodepath.log`: the complete
+Python suite passed with the corrected node PATH after the bundle refresh:
+
+```text
+6290 passed, 96 skipped, 92 deselected, 2 warnings in 268.94s
+```
+
+The earlier unqualified full Python-suite invocation captured in
 `/tmp/vmlx-full-pytest-20260722-235509.log` failed 12 tests because `node`/`npx`
 were absent from PATH, then the bundled verifier exposed stale bundled Python
 content. The node/npx portion was environment setup noise, but the stale bundle
-was a real release blocker until `bundle-python.sh` was rerun. A complete
-end-to-end Python suite rerun with the corrected PATH was not performed in this
-gate.
+was a real release blocker until `bundle-python.sh` was rerun.
 
 ## Remaining release blockers not closed by this gate
 
-- Full Python suite with corrected node PATH, full panel suite, panel build, and typecheck were not rerun end-to-end in this gate.
+- Full panel suite, panel build, and typecheck were not rerun end-to-end in this gate.
 - Full protocol matrix remains open: non-stream Chat/Responses, Anthropic, Ollama, cancellation/disconnect/recovery across representative models.
 - Full settings parity remains open for all models; this gate only checks Laguna S-2.1 generation defaults observed in UI.
 - Disk-only L2/paged-off partial-prefix restore remains unproven here.
