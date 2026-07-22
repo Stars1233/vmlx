@@ -1,0 +1,173 @@
+{
+  "anthropic_first": {
+    "event_count": 6,
+    "text": "",
+    "tool": {
+      "id": "call_956c483d",
+      "name": "lookup_code",
+      "input": {
+        "key": "gamma"
+      }
+    },
+    "input_json": "{\"key\": \"gamma\"}",
+    "stopped": true,
+    "tail_types": [
+      "message_start",
+      "content_block_start",
+      "content_block_delta",
+      "content_block_stop",
+      "message_delta",
+      "message_stop"
+    ]
+  },
+  "anthropic_final": {
+    "event_count": 11,
+    "text": "GAMMA-126",
+    "tool_uses": [],
+    "content_has_inline_think": false,
+    "tail_types": [
+      "content_block_start",
+      "content_block_delta",
+      "content_block_delta",
+      "content_block_delta",
+      "content_block_delta",
+      "content_block_delta",
+      "content_block_delta",
+      "content_block_stop",
+      "message_delta",
+      "message_stop"
+    ]
+  },
+  "ollama_first": {
+    "event_count": 1,
+    "content": "",
+    "tool_calls": [
+      {
+        "function": {
+          "name": "lookup_code",
+          "arguments": {
+            "key": "delta"
+          }
+        }
+      }
+    ],
+    "done": true,
+    "tail": [
+      {
+        "model": "laguna-s21",
+        "created_at": "2026-07-22T06:32:00.000Z",
+        "done": true,
+        "message": {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "function": {
+                "name": "lookup_code",
+                "arguments": {
+                  "key": "delta"
+                }
+              }
+            }
+          ]
+        },
+        "done_reason": "tool_calls",
+        "eval_count": 23,
+        "prompt_eval_count": 157,
+        "_t": 1.1032
+      }
+    ]
+  },
+  "ollama_final": {
+    "event_count": 21,
+    "content": "LAG-S21-OLLAMA-TOOL-F-DONE VALUE=DELTA-168",
+    "tool_calls": [],
+    "done": true,
+    "content_has_inline_think": false,
+    "tail": [
+      {
+        "model": "laguna-s21",
+        "created_at": "2026-07-22T06:32:01.000Z",
+        "message": {
+          "role": "assistant",
+          "content": "="
+        },
+        "done": false,
+        "_t": 1.1608
+      },
+      {
+        "model": "laguna-s21",
+        "created_at": "2026-07-22T06:32:01.000Z",
+        "message": {
+          "role": "assistant",
+          "content": "DEL"
+        },
+        "done": false,
+        "_t": 1.1786
+      },
+      {
+        "model": "laguna-s21",
+        "created_at": "2026-07-22T06:32:01.000Z",
+        "message": {
+          "role": "assistant",
+          "content": "TA"
+        },
+        "done": false,
+        "_t": 1.1965
+      },
+      {
+        "model": "laguna-s21",
+        "created_at": "2026-07-22T06:32:01.000Z",
+        "message": {
+          "role": "assistant",
+          "content": "-"
+        },
+        "done": false,
+        "_t": 1.214
+      },
+      {
+        "model": "laguna-s21",
+        "created_at": "2026-07-22T06:32:01.000Z",
+        "message": {
+          "role": "assistant",
+          "content": "1"
+        },
+        "done": false,
+        "_t": 1.2317
+      },
+      {
+        "model": "laguna-s21",
+        "created_at": "2026-07-22T06:32:01.000Z",
+        "message": {
+          "role": "assistant",
+          "content": "6"
+        },
+        "done": false,
+        "_t": 1.2494
+      },
+      {
+        "model": "laguna-s21",
+        "created_at": "2026-07-22T06:32:01.000Z",
+        "message": {
+          "role": "assistant",
+          "content": "8"
+        },
+        "done": false,
+        "_t": 1.2671
+      },
+      {
+        "model": "laguna-s21",
+        "created_at": "2026-07-22T06:32:01.000Z",
+        "done": true,
+        "message": {
+          "role": "assistant",
+          "content": ""
+        },
+        "done_reason": "stop",
+        "eval_count": 22,
+        "prompt_eval_count": 144,
+        "_t": 1.2852
+      }
+    ]
+  }
+}

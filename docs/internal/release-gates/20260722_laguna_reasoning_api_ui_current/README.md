@@ -94,6 +94,8 @@ Artifacts:
 - `laguna-api-tool-loop-e.json`
 - `laguna-chat-tool-first-rerun.json`
 - `laguna-chat-tool-continuation-simple2.json`
+- `laguna-anthropic-ollama-tool-f.json`
+- `laguna-anthropic-final-rerun-g.json`
 
 Raw `/v1/responses` reasoning stream:
 
@@ -137,6 +139,25 @@ empty tool-call shell and `finish="length"`. The simpler API-shaped tool
 contract above passed; this negative remains a prompt-shape/model/tool-choice
 edge to keep in the broader coding-harness soak.
 
+Raw `/v1/messages` Anthropic-style tool loop:
+
+- First request emitted one `tool_use` block for `lookup_code` with
+  `{"key":"gamma"}` and reached `message_stop`.
+- The first follow-up returned only `GAMMA-126`; that exact-format miss is
+  retained in `laguna-anthropic-ollama-tool-f.json`.
+- A stricter follow-up rerun emitted final visible text exactly:
+  `LAG-S21-ANTH-TOOL-G-DONE VALUE=GAMMA-126`
+- No repeat `tool_use` block appeared in the passing follow-up.
+
+Raw `/api/chat` Ollama-style tool loop:
+
+- First request emitted one `lookup_code` tool call with `{"key":"delta"}` and
+  terminal `done_reason="tool_calls"`.
+- Follow-up with a `tool` role result emitted progressive content chunks and
+  final visible text:
+  `LAG-S21-OLLAMA-TOOL-F-DONE VALUE=DELTA-168`
+- No repeat tool call appeared and `content_has_inline_think=false`.
+
 ## Current q4/cache telemetry
 
 Artifact:
@@ -168,15 +189,14 @@ Scoped current-source PASS:
   separate `reasoning_content`.
 - Raw Chat Completions and Responses can emit reasoning on reasoning rails and
   visible answers on content rails without inline `<think>` leakage.
-- Current Electron and raw Chat/Responses can complete a one-tool continuation
-  without repeating the tool after a result.
+- Current Electron and raw Chat/Responses/Anthropic/Ollama can complete a
+  one-tool continuation without repeating the tool after a result, within the
+  prompt-shape caveats above.
 - Active Laguna q4 TurboQuant storage and block-disk L2 telemetry are visible.
 
 Still `PARTIAL_NO_RELEASE`:
 
 - Full Python and panel suites were not rerun for this supplement.
-- Anthropic/Ollama current-source tool-result continuations were not rerun in
-  this supplement.
 - Paged-off SSD-only partial prefix proof was not rerun in this supplement.
 - Cross-chat/cross-session SSD partial-prefix matching, eviction breadth,
   signed-app proof, and notarized package gates remain outside this row.
