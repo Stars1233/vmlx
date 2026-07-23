@@ -5447,3 +5447,24 @@ Status: `PARTIAL / CORRECTNESS FALLBACK LIVE / RELEASE BLOCKING`.
 - Evidence:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/qwen35-gateway-running-session-latency-live.json`.
 - Overall v1.6.17 remains `PARTIAL / NOT RELEASE-READY`.
+
+## 2026-07-23 - R17 Ollama normalized history and real tool continuation
+
+- `R17-001`: `VERIFIED-LIVE-SCOPED / EXACT MARKER PARTIAL`.
+- On source head `91a6bb414e76`, the exact Electron-started Qwen 35 JANGTQ
+  PID `92163` handled identical direct-port and Electron-gateway Ollama
+  three-stage histories.
+- Both routes streamed private `message.thinking` separately, emitted exact
+  `file_info(panel/package.json)` and `run_command(pwd)` calls, consumed the
+  harness's real tool results, and produced byte-identical progressive visible
+  final text with one truthful `stop`.
+- No tool-round visible prose, protocol error, reasoning/content duplication,
+  stale reasoning replay, or raw control marker appeared.
+- The model omitted the requested `STREAM` word in the final marker on both
+  routes. A 512-token diagnostic also ended direct stage two at `length`
+  without a tool call; the retained 1,024-token row completed both tool calls
+  on both routes. Neither miss was hidden or repaired.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/qwen35-ollama-reasoning-history-tool-live-1024.json`.
+- This is one Qwen-family streaming proof, not global Ollama, signed-app, or
+  release closure.

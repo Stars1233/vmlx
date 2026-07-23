@@ -2229,3 +2229,24 @@
   Electron build, and diff check passed.
 - Retained:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/qwen35-gateway-running-session-latency-live.json`.
+
+## 2026-07-23 - live Ollama history normalization and tool loop
+
+- Kept the already Electron-started Qwen 35 JANGTQ PID `92163` loaded.
+- Ran the existing allowlisted agentic harness through direct port `8006` and
+  Electron gateway `8088` with identical Ollama request bodies.
+- Both endpoints streamed separate private thinking, called real
+  `file_info(panel/package.json)`, consumed its `5.2 KB` result, called real
+  `run_command(pwd)`, consumed its repository-path result, and produced
+  progressive visible final text with a truthful terminal.
+- Direct and gateway tool calls and visible final bytes matched. Their first
+  two reasoning payload hashes matched; the third reasoning payloads were
+  fresh and distinct while visible output remained identical.
+- Kept the row partial because the model omitted literal `STREAM` in the final
+  requested marker. Kept the lower-budget diagnostic because direct stage two
+  truthfully exhausted 512 tokens before emitting a tool call.
+- Added no product fallback and made no new runtime code change.
+- Retained:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/qwen35-ollama-reasoning-history-tool-live.json`
+  and
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/qwen35-ollama-reasoning-history-tool-live-1024.json`.

@@ -230,7 +230,7 @@ Evidence:
 
 ### R17-001 Electron gateway Ollama history normalization
 
-Status: `SOURCE+FOCUSED_TEST PASS / LIVE MODEL PROOF OPEN`
+Status: `VERIFIED-LIVE-SCOPED / EXACT MARKER PARTIAL`
 
 Finding:
 
@@ -259,13 +259,47 @@ Focused evidence:
   -> `59 passed`.
 - Panel typecheck -> pass.
 
-Missing:
+Current live proof on source head `91a6bb414e76`:
 
-- Real Electron-started model with a three-turn Ollama follow-up that consumes
-  prior private reasoning.
-- Raw direct versus gateway body/event comparison on the same model and
-  prompts.
-- Required tool/result continuation after the normalized history.
+- Used the exact real Electron-started
+  `dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK` PID `92163` on direct port `8006`
+  and Electron gateway `8088`.
+- Both endpoints received byte-identical three-stage request bodies. Their
+  stage hashes were identical:
+  `3bd5a7d868c...`, `2d785d4d7ede...`, and `1d2e07fbcbfd...`.
+- Stage one streamed `291` private reasoning characters and emitted exactly
+  one schema-valid `file_info({"path":"panel/package.json"})` call on both
+  endpoints. The harness executed the real tool and forwarded its `5.2 KB`
+  result.
+- Stage two consumed the prior assistant `message.thinking` plus the real tool
+  result, streamed `277` private reasoning characters, and emitted exactly one
+  schema-valid `run_command({"command":"pwd"})` call on both endpoints. The
+  harness executed real `pwd` and forwarded
+  `/Users/eric/mlx/vllm-mlx-r17-consolidation`.
+- Stage three consumed both real results and streamed progressive visible
+  output separately from private reasoning. Direct and gateway visible bytes
+  were identical and both ended with one truthful `stop`.
+- No tool-round visible prose, protocol errors, control-marker leakage, stale
+  byte-identical reasoning across different prompts, or reasoning/content
+  duplication appeared.
+- The model omitted the requested literal word `STREAM` from the final marker
+  on both endpoints, producing `AGENTIC-OLLAMA--DONE ...`. This is retained as
+  an exact-instruction failure, not hidden or repaired. The first 512-token
+  diagnostic also truthfully ended direct stage two at `length` before a tool
+  call, while the gateway instance completed; the 1,024-token run completed
+  both tool calls on both endpoints.
+
+Evidence:
+
+- `qwen35-ollama-reasoning-history-tool-live.json`
+- `qwen35-ollama-reasoning-history-tool-live-1024.json`
+
+Remaining boundary:
+
+- This closes the source defect's live direct/gateway history and tool
+  continuation shape for one Qwen parser family. The exact-final miss, other
+  parser families, Ollama non-stream, cancellation/failure recovery, signed
+  app repetition, and the global protocol matrix remain open.
 
 ### Cache source audit checkpoint
 
