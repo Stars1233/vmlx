@@ -8469,7 +8469,7 @@ Status: `VERIFIED-LIVE-SCOPED / EXACT MARKER PARTIAL / OVERALL PARTIAL`.
 
 ## 2026-07-23 - MiniMax M3 exactly-once tools and repeated TeX delimiter repair
 
-Status: `FIXED+VERIFIED-LIVE-SCOPED / API PARTIAL / OVERALL PARTIAL`.
+Status: `FIXED+VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
 
 - Current source head: `0592404d85613704bcc93d740f4c948682acee13`.
 - The real isolated Electron Start button loaded
@@ -8489,7 +8489,14 @@ Status: `FIXED+VERIFIED-LIVE-SCOPED / API PARTIAL / OVERALL PARTIAL`.
   history behavior, and `19.5`, `17.4`, and `18.4 tok/s`.
 - Focused verification: math `15/15`, tool-auto-continue `23/23`, combined
   tool/metrics `26/26`, and panel typecheck passed.
+- Current direct and gateway Chat/Responses/Anthropic/Ollama proof now covers
+  separate progressive reasoning, exact real tools/results, progressive
+  finals, truthful terminals, and thinking-Off stream/non-stream parity.
+- Raw protocol bytes matched across every route. M3 emitted model-owned `\×`
+  instead of requested `\times`; no adapter injected or removed it. Commit
+  `f34deae28` renders that malformed Unicode-operator escape as KaTeX in the UI
+  without altering raw API content. Updated math tests: `17/17`.
 - Evidence:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/m3-tool-math-live/README.md`.
-- Direct/gateway API parity, M3 restart/eviction native sparse cache, media,
-  signed app, full suites, and release actions remain open.
+- M3 restart/eviction native sparse cache, media, signed app, full suites, and
+  release actions remain open.

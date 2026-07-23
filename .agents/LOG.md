@@ -2295,3 +2295,12 @@
   26, and typecheck.
 - Left direct/gateway API parity and the remaining M3 cache/media/release gates
   explicitly open.
+- Ran current direct and Electron-gateway Chat/Responses/Anthropic/Ollama.
+  All eight agentic routes separated reasoning, emitted one exact tool, consumed
+  its real result, streamed a progressive final, and terminated truthfully.
+- Stream/non-stream thinking-Off parity passed all four protocols at both
+  endpoints with identical exact output and zero reasoning deltas.
+- Raw math transport retained literal `$43`, delimiters, and the same
+  model-owned `\×` on every route. Added `f34deae28` so the UI renders that
+  invalid TeX spelling without fallback while preserving API bytes. Live DOM
+  showed KaTeX in answer and reasoning with zero raw marker.

@@ -5519,10 +5519,15 @@ Status: `PARTIAL / CORRECTNESS FALLBACK LIVE / RELEASE BLOCKING`.
   The real Start-loaded PID `11370` completed no-tool math, exactly-once tool,
   and no-tool history recall with separate non-empty reasoning and visible
   output at `19.5`, `17.4`, and `18.4 tok/s`.
-- `R17-M3-CURRENT-API-PARITY`: `PARTIAL`.
-  Direct/gateway Chat, Responses, Anthropic, and Ollama were not repeated for
-  this exact M3 checkpoint. Raw API byte fidelity and agentic continuation
-  remain required.
+- `R17-M3-CURRENT-API-PARITY`: `VERIFIED-LIVE_SCOPED`.
+  Direct/gateway Chat, Responses, Anthropic, and Ollama all have current
+  progressive reasoning/content, one exact real tool/result continuation,
+  truthful terminals, and thinking-Off stream/non-stream parity.
+- `R17-M3-RAW-MATH-BYTES`: `VERIFIED-LIVE_SCOPED / MODEL EXACTNESS PARTIAL`.
+  Every direct/gateway protocol preserved `$43`, math delimiters, and identical
+  raw model output. M3 substituted `\×` for requested `\times`; this exact-copy
+  miss is recorded. `f34deae28` renders it safely in Electron without changing
+  API bytes.
 - Evidence:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/m3-tool-math-live/README.md`.
 - Overall v1.6.17 remains `PARTIAL / NOT RELEASE-READY`.

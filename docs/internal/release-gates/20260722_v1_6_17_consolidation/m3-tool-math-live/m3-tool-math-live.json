@@ -1,10 +1,11 @@
 {
   "date": "2026-07-23",
-  "status": "FIXED+VERIFIED-LIVE-SCOPED / API PARTIAL / OVERALL PARTIAL",
-  "source_head": "0592404d85613704bcc93d740f4c948682acee13",
+  "status": "FIXED+VERIFIED-LIVE-SCOPED / OVERALL PARTIAL",
+  "source_head": "f34deae28b84e9e1cf0f1f1f7055127a72d16581",
   "commits": {
     "exactly_once_tools": "b482bec60",
-    "repeated_tex_delimiters": "0592404d8"
+    "repeated_tex_delimiters": "0592404d8",
+    "escaped_unicode_math": "f34deae28"
   },
   "runtime": {
     "host": "erics-m5-max.local",
@@ -66,16 +67,59 @@
         "raw_times_present": false,
         "raw_delimiter_present": false
       }
+    },
+    {
+      "index": 4,
+      "kind": "escaped-unicode-tex-rendering",
+      "tool_calls": 0,
+      "stored_api_content": "M3-RAW-MATH\nCURRENCY=$43 TEX=\\(47 \\× 19 = 893\\)",
+      "renderer_dom": {
+        "katex_text": "47×19=893",
+        "math_fallback_count": 0,
+        "raw_escaped_unicode_present": false,
+        "raw_times_present": false
+      }
     }
   ],
+  "api_protocols": {
+    "endpoints": [
+      "direct:8008",
+      "electron-gateway:8090"
+    ],
+    "protocols": [
+      "chat",
+      "responses",
+      "anthropic",
+      "ollama"
+    ],
+    "agentic": {
+      "separate_reasoning": true,
+      "exact_file_info_call": true,
+      "real_result_continuation": true,
+      "progressive_final": true,
+      "truthful_terminal": true
+    },
+    "stream_nonstream_parity": {
+      "all_protocols": true,
+      "exact_expected": true,
+      "reasoning_empty_when_disabled": true
+    },
+    "raw_math": {
+      "route_content_equal": true,
+      "currency_preserved": true,
+      "math_delimiters_preserved": true,
+      "renderer_html_absent": true,
+      "exact_requested_tex_command": false,
+      "model_output": "CURRENCY=$43 TEX=\\(47 \\× 19 = 893\\)"
+    }
+  },
   "focused_tests": {
-    "math_markdown": "15/15 passed",
+    "math_markdown": "17/17 passed",
     "tool_auto_continue": "23/23 passed",
     "combined_tool_metrics": "26/26 passed",
     "typecheck": "passed"
   },
   "remaining": [
-    "direct and gateway API matrix on this exact M3 checkpoint",
     "restart and eviction native sparse-cache proof",
     "media",
     "signed app",

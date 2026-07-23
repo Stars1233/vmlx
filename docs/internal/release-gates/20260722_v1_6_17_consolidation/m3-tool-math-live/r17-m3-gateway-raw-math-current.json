@@ -1,0 +1,714 @@
+{
+  "base": "http://127.0.0.1:8090",
+  "model": "JANGQ-AI/MiniMax-M3-Coder-Small",
+  "prompt": "Do not call tools. Reply exactly two lines and preserve the literal dollar and TeX backslashes:\nM3-RAW-MATH\nCURRENCY=$43 TEX=\\(47 \\times 19 = 893\\)",
+  "routes": {
+    "chat": {
+      "status": 200,
+      "elapsed_ms": 1946.532,
+      "raw_lines": [
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"M\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"3\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"-\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"RAW\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"-M\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"ATH\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"\\n\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"C\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"URR\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"ENCY\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"=$\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"43\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \" TEX\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"=\\\\\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"(\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"47\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \" \\\\\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"\\u00d7\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \" \"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"19\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \" =\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \" \"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"893\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"\\\\)\"}}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [{\"index\": 0, \"delta\": {}, \"finish_reason\": \"stop\"}], \"usage\": null}",
+        "",
+        "data: {\"id\": \"chatcmpl-a0afe0db\", \"object\": \"chat.completion.chunk\", \"created\": 1784833513, \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"choices\": [], \"usage\": {\"prompt_tokens\": 208, \"completion_tokens\": 25, \"total_tokens\": 233, \"prompt_tokens_details\": {\"cached_tokens\": 203, \"cache_detail\": \"paged\"}}}",
+        "",
+        "data: [DONE]",
+        ""
+      ],
+      "content_deltas": [
+        {
+          "at_ms": 1036.321,
+          "text": "M"
+        },
+        {
+          "at_ms": 1074.231,
+          "text": "3"
+        },
+        {
+          "at_ms": 1112.16,
+          "text": "-"
+        },
+        {
+          "at_ms": 1150.144,
+          "text": "RAW"
+        },
+        {
+          "at_ms": 1187.707,
+          "text": "-M"
+        },
+        {
+          "at_ms": 1225.424,
+          "text": "ATH"
+        },
+        {
+          "at_ms": 1263.343,
+          "text": "\n"
+        },
+        {
+          "at_ms": 1301.006,
+          "text": "C"
+        },
+        {
+          "at_ms": 1338.687,
+          "text": "URR"
+        },
+        {
+          "at_ms": 1376.201,
+          "text": "ENCY"
+        },
+        {
+          "at_ms": 1413.781,
+          "text": "=$"
+        },
+        {
+          "at_ms": 1451.79,
+          "text": "43"
+        },
+        {
+          "at_ms": 1489.729,
+          "text": " TEX"
+        },
+        {
+          "at_ms": 1527.762,
+          "text": "=\\"
+        },
+        {
+          "at_ms": 1565.676,
+          "text": "("
+        },
+        {
+          "at_ms": 1603.456,
+          "text": "47"
+        },
+        {
+          "at_ms": 1641.596,
+          "text": " \\"
+        },
+        {
+          "at_ms": 1679.646,
+          "text": "×"
+        },
+        {
+          "at_ms": 1717.751,
+          "text": " "
+        },
+        {
+          "at_ms": 1755.619,
+          "text": "19"
+        },
+        {
+          "at_ms": 1793.741,
+          "text": " ="
+        },
+        {
+          "at_ms": 1831.613,
+          "text": " "
+        },
+        {
+          "at_ms": 1869.384,
+          "text": "893"
+        },
+        {
+          "at_ms": 1907.221,
+          "text": "\\)"
+        }
+      ],
+      "content": "M3-RAW-MATH\nCURRENCY=$43 TEX=\\(47 \\× 19 = 893\\)",
+      "terminals": [
+        "stop",
+        "[DONE]"
+      ]
+    },
+    "responses": {
+      "status": 200,
+      "elapsed_ms": 2052.232,
+      "raw_lines": [
+        "event: response.created",
+        "data: {\"type\": \"response.created\", \"response\": {\"id\": \"resp_4c345963cf13\", \"object\": \"response\", \"created_at\": 1784833515, \"status\": \"in_progress\", \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"output\": []}, \"sequence_number\": 0}",
+        "",
+        "event: response.output_item.added",
+        "data: {\"type\": \"response.output_item.added\", \"output_index\": 0, \"item\": {\"id\": \"item_6b211b068a32\", \"type\": \"message\", \"status\": \"in_progress\", \"role\": \"assistant\", \"content\": []}, \"sequence_number\": 1}",
+        "",
+        "event: response.content_part.added",
+        "data: {\"type\": \"response.content_part.added\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"part\": {\"type\": \"output_text\", \"text\": \"\", \"annotations\": []}, \"sequence_number\": 2}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \"M\", \"sequence_number\": 3}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \"3\", \"sequence_number\": 4}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \"-\", \"sequence_number\": 5}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \"RAW\", \"sequence_number\": 6}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \"-M\", \"sequence_number\": 7}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \"ATH\", \"sequence_number\": 8}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \"\\n\", \"sequence_number\": 9}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \"C\", \"sequence_number\": 10}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \"URR\", \"sequence_number\": 11}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \"ENCY\", \"sequence_number\": 12}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \"=$\", \"sequence_number\": 13}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \"43\", \"sequence_number\": 14}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \" TEX\", \"sequence_number\": 15}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \"=\\\\\", \"sequence_number\": 16}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \"(\", \"sequence_number\": 17}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \"47\", \"sequence_number\": 18}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \" \\\\\", \"sequence_number\": 19}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \"\\u00d7\", \"sequence_number\": 20}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \" \", \"sequence_number\": 21}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \"19\", \"sequence_number\": 22}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \" =\", \"sequence_number\": 23}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \" \", \"sequence_number\": 24}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \"893\", \"sequence_number\": 25}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"delta\": \"\\\\)\", \"sequence_number\": 26}",
+        "",
+        "event: response.output_text.done",
+        "data: {\"type\": \"response.output_text.done\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"text\": \"M3-RAW-MATH\\nCURRENCY=$43 TEX=\\\\(47 \\\\\\u00d7 19 = 893\\\\)\", \"sequence_number\": 27}",
+        "",
+        "event: response.content_part.done",
+        "data: {\"type\": \"response.content_part.done\", \"item_id\": \"item_6b211b068a32\", \"output_index\": 0, \"content_index\": 0, \"part\": {\"type\": \"output_text\", \"text\": \"M3-RAW-MATH\\nCURRENCY=$43 TEX=\\\\(47 \\\\\\u00d7 19 = 893\\\\)\", \"annotations\": []}, \"sequence_number\": 28}",
+        "",
+        "event: response.output_item.done",
+        "data: {\"type\": \"response.output_item.done\", \"output_index\": 0, \"item\": {\"id\": \"item_6b211b068a32\", \"type\": \"message\", \"status\": \"completed\", \"role\": \"assistant\", \"content\": [{\"type\": \"output_text\", \"text\": \"M3-RAW-MATH\\nCURRENCY=$43 TEX=\\\\(47 \\\\\\u00d7 19 = 893\\\\)\", \"annotations\": []}]}, \"sequence_number\": 29}",
+        "",
+        "event: response.completed",
+        "data: {\"type\": \"response.completed\", \"response\": {\"id\": \"resp_4c345963cf13\", \"object\": \"response\", \"created_at\": 1784833515, \"status\": \"completed\", \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"output_text\": \"M3-RAW-MATH\\nCURRENCY=$43 TEX=\\\\(47 \\\\\\u00d7 19 = 893\\\\)\", \"output\": [{\"id\": \"item_6b211b068a32\", \"type\": \"message\", \"status\": \"completed\", \"role\": \"assistant\", \"content\": [{\"type\": \"output_text\", \"text\": \"M3-RAW-MATH\\nCURRENCY=$43 TEX=\\\\(47 \\\\\\u00d7 19 = 893\\\\)\", \"annotations\": []}]}], \"usage\": {\"input_tokens\": 208, \"output_tokens\": 25, \"total_tokens\": 233, \"input_tokens_details\": {\"cached_tokens\": 203, \"cache_detail\": \"paged\"}}}, \"sequence_number\": 30}",
+        ""
+      ],
+      "content_deltas": [
+        {
+          "at_ms": 1123.75,
+          "text": "M"
+        },
+        {
+          "at_ms": 1162.459,
+          "text": "3"
+        },
+        {
+          "at_ms": 1200.226,
+          "text": "-"
+        },
+        {
+          "at_ms": 1238.229,
+          "text": "RAW"
+        },
+        {
+          "at_ms": 1275.917,
+          "text": "-M"
+        },
+        {
+          "at_ms": 1313.577,
+          "text": "ATH"
+        },
+        {
+          "at_ms": 1351.447,
+          "text": "\n"
+        },
+        {
+          "at_ms": 1398.935,
+          "text": "C"
+        },
+        {
+          "at_ms": 1437.944,
+          "text": "URR"
+        },
+        {
+          "at_ms": 1475.877,
+          "text": "ENCY"
+        },
+        {
+          "at_ms": 1513.498,
+          "text": "=$"
+        },
+        {
+          "at_ms": 1551.474,
+          "text": "43"
+        },
+        {
+          "at_ms": 1589.994,
+          "text": " TEX"
+        },
+        {
+          "at_ms": 1627.872,
+          "text": "=\\"
+        },
+        {
+          "at_ms": 1665.844,
+          "text": "("
+        },
+        {
+          "at_ms": 1703.702,
+          "text": "47"
+        },
+        {
+          "at_ms": 1741.913,
+          "text": " \\"
+        },
+        {
+          "at_ms": 1780.118,
+          "text": "×"
+        },
+        {
+          "at_ms": 1818.812,
+          "text": " "
+        },
+        {
+          "at_ms": 1858.133,
+          "text": "19"
+        },
+        {
+          "at_ms": 1896.232,
+          "text": " ="
+        },
+        {
+          "at_ms": 1934.227,
+          "text": " "
+        },
+        {
+          "at_ms": 1972.107,
+          "text": "893"
+        },
+        {
+          "at_ms": 2010.395,
+          "text": "\\)"
+        }
+      ],
+      "content": "M3-RAW-MATH\nCURRENCY=$43 TEX=\\(47 \\× 19 = 893\\)",
+      "terminals": [
+        "response.completed"
+      ]
+    },
+    "anthropic": {
+      "status": 200,
+      "elapsed_ms": 2163.824,
+      "raw_lines": [
+        "event: message_start",
+        "data: {\"type\": \"message_start\", \"message\": {\"id\": \"msg_27487a4816ef\", \"type\": \"message\", \"role\": \"assistant\", \"content\": [], \"model\": \"JANGQ-AI/MiniMax-M3-Coder-Small\", \"stop_reason\": null, \"stop_sequence\": null, \"usage\": {\"input_tokens\": 0, \"output_tokens\": 0}}}",
+        "",
+        "event: content_block_start",
+        "data: {\"type\": \"content_block_start\", \"index\": 0, \"content_block\": {\"type\": \"text\", \"text\": \"\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"M\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"3\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"-\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"RAW\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"-M\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"ATH\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"\\n\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"C\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"URR\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"ENCY\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"=$\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"43\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \" TEX\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"=\\\\\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"(\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"47\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \" \\\\\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"\\u00d7\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \" \"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"19\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \" =\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \" \"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"893\"}}",
+        "",
+        "event: content_block_delta",
+        "data: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"\\\\)\"}}",
+        "",
+        "event: content_block_stop",
+        "data: {\"type\": \"content_block_stop\", \"index\": 0}",
+        "",
+        "event: message_delta",
+        "data: {\"type\": \"message_delta\", \"delta\": {\"stop_reason\": \"end_turn\", \"stop_sequence\": null}, \"usage\": {\"output_tokens\": 25, \"input_tokens\": 208}}",
+        "",
+        "event: message_stop",
+        "data: {\"type\": \"message_stop\"}",
+        ""
+      ],
+      "content_deltas": [
+        {
+          "at_ms": 1244.362,
+          "text": "M"
+        },
+        {
+          "at_ms": 1281.91,
+          "text": "3"
+        },
+        {
+          "at_ms": 1319.806,
+          "text": "-"
+        },
+        {
+          "at_ms": 1357.704,
+          "text": "RAW"
+        },
+        {
+          "at_ms": 1395.591,
+          "text": "-M"
+        },
+        {
+          "at_ms": 1433.046,
+          "text": "ATH"
+        },
+        {
+          "at_ms": 1470.842,
+          "text": "\n"
+        },
+        {
+          "at_ms": 1509.702,
+          "text": "C"
+        },
+        {
+          "at_ms": 1548.906,
+          "text": "URR"
+        },
+        {
+          "at_ms": 1587.745,
+          "text": "ENCY"
+        },
+        {
+          "at_ms": 1626.812,
+          "text": "=$"
+        },
+        {
+          "at_ms": 1664.873,
+          "text": "43"
+        },
+        {
+          "at_ms": 1702.688,
+          "text": " TEX"
+        },
+        {
+          "at_ms": 1740.582,
+          "text": "=\\"
+        },
+        {
+          "at_ms": 1778.623,
+          "text": "("
+        },
+        {
+          "at_ms": 1817.828,
+          "text": "47"
+        },
+        {
+          "at_ms": 1856.348,
+          "text": " \\"
+        },
+        {
+          "at_ms": 1894.399,
+          "text": "×"
+        },
+        {
+          "at_ms": 1932.366,
+          "text": " "
+        },
+        {
+          "at_ms": 1970.446,
+          "text": "19"
+        },
+        {
+          "at_ms": 2008.426,
+          "text": " ="
+        },
+        {
+          "at_ms": 2047.2,
+          "text": " "
+        },
+        {
+          "at_ms": 2086.604,
+          "text": "893"
+        },
+        {
+          "at_ms": 2124.657,
+          "text": "\\)"
+        }
+      ],
+      "content": "M3-RAW-MATH\nCURRENCY=$43 TEX=\\(47 \\× 19 = 893\\)",
+      "terminals": [
+        "message_stop"
+      ]
+    },
+    "ollama": {
+      "status": 200,
+      "elapsed_ms": 2055.568,
+      "raw_lines": [
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.151Z\",\"message\":{\"role\":\"assistant\",\"content\":\"M\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.189Z\",\"message\":{\"role\":\"assistant\",\"content\":\"3\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.228Z\",\"message\":{\"role\":\"assistant\",\"content\":\"-\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.266Z\",\"message\":{\"role\":\"assistant\",\"content\":\"RAW\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.304Z\",\"message\":{\"role\":\"assistant\",\"content\":\"-M\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.342Z\",\"message\":{\"role\":\"assistant\",\"content\":\"ATH\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.380Z\",\"message\":{\"role\":\"assistant\",\"content\":\"\\n\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.419Z\",\"message\":{\"role\":\"assistant\",\"content\":\"C\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.457Z\",\"message\":{\"role\":\"assistant\",\"content\":\"URR\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.495Z\",\"message\":{\"role\":\"assistant\",\"content\":\"ENCY\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.533Z\",\"message\":{\"role\":\"assistant\",\"content\":\"=$\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.571Z\",\"message\":{\"role\":\"assistant\",\"content\":\"43\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.608Z\",\"message\":{\"role\":\"assistant\",\"content\":\" TEX\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.646Z\",\"message\":{\"role\":\"assistant\",\"content\":\"=\\\\\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.684Z\",\"message\":{\"role\":\"assistant\",\"content\":\"(\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.722Z\",\"message\":{\"role\":\"assistant\",\"content\":\"47\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.761Z\",\"message\":{\"role\":\"assistant\",\"content\":\" \\\\\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.799Z\",\"message\":{\"role\":\"assistant\",\"content\":\"×\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.837Z\",\"message\":{\"role\":\"assistant\",\"content\":\" \"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.875Z\",\"message\":{\"role\":\"assistant\",\"content\":\"19\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.913Z\",\"message\":{\"role\":\"assistant\",\"content\":\" =\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.951Z\",\"message\":{\"role\":\"assistant\",\"content\":\" \"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:21.990Z\",\"message\":{\"role\":\"assistant\",\"content\":\"893\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:22.029Z\",\"message\":{\"role\":\"assistant\",\"content\":\"\\\\)\"},\"done\":false}",
+        "{\"model\":\"JANGQ-AI/MiniMax-M3-Coder-Small\",\"created_at\":\"2026-07-23T19:05:22.069Z\",\"message\":{\"role\":\"assistant\",\"content\":\"\"},\"done\":true,\"done_reason\":\"stop\",\"eval_count\":25,\"prompt_eval_count\":208}"
+      ],
+      "content_deltas": [
+        {
+          "at_ms": 1138.209,
+          "text": "M"
+        },
+        {
+          "at_ms": 1175.95,
+          "text": "3"
+        },
+        {
+          "at_ms": 1214.329,
+          "text": "-"
+        },
+        {
+          "at_ms": 1252.605,
+          "text": "RAW"
+        },
+        {
+          "at_ms": 1290.74,
+          "text": "-M"
+        },
+        {
+          "at_ms": 1328.482,
+          "text": "ATH"
+        },
+        {
+          "at_ms": 1366.798,
+          "text": "\n"
+        },
+        {
+          "at_ms": 1405.457,
+          "text": "C"
+        },
+        {
+          "at_ms": 1443.23,
+          "text": "URR"
+        },
+        {
+          "at_ms": 1481.939,
+          "text": "ENCY"
+        },
+        {
+          "at_ms": 1519.717,
+          "text": "=$"
+        },
+        {
+          "at_ms": 1557.455,
+          "text": "43"
+        },
+        {
+          "at_ms": 1595.181,
+          "text": " TEX"
+        },
+        {
+          "at_ms": 1632.882,
+          "text": "=\\"
+        },
+        {
+          "at_ms": 1670.814,
+          "text": "("
+        },
+        {
+          "at_ms": 1708.707,
+          "text": "47"
+        },
+        {
+          "at_ms": 1747.325,
+          "text": " \\"
+        },
+        {
+          "at_ms": 1785.55,
+          "text": "×"
+        },
+        {
+          "at_ms": 1823.68,
+          "text": " "
+        },
+        {
+          "at_ms": 1861.83,
+          "text": "19"
+        },
+        {
+          "at_ms": 1899.475,
+          "text": " ="
+        },
+        {
+          "at_ms": 1937.805,
+          "text": " "
+        },
+        {
+          "at_ms": 1977.041,
+          "text": "893"
+        },
+        {
+          "at_ms": 2015.743,
+          "text": "\\)"
+        }
+      ],
+      "content": "M3-RAW-MATH\nCURRENCY=$43 TEX=\\(47 \\× 19 = 893\\)",
+      "terminals": [
+        "stop"
+      ]
+    }
+  },
+  "checks": {
+    "all_status_200": true,
+    "all_progressive": true,
+    "all_terminal": true,
+    "all_keep_currency": true,
+    "all_keep_math_delimiters": true,
+    "all_keep_math_operator": true,
+    "no_renderer_html": true,
+    "all_route_content_equal": true
+  },
+  "diagnostics": {
+    "all_exact_requested_tex_command": false
+  }
+}

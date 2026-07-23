@@ -1447,7 +1447,7 @@ Remaining boundary:
 
 ### R17-020 MiniMax M3 exactly-once tools and repeated TeX delimiters
 
-Status: `FIXED+VERIFIED-LIVE-SCOPED / API PARTIAL / OVERALL PARTIAL`.
+Status: `FIXED+VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
 
 Root causes and corrections:
 
@@ -1478,6 +1478,16 @@ Current live proof:
   delimiter. The expanded reasoning rail showed the same corrected rendering.
 - Focused remote tests: math `15/15`, tool-auto-continue `23/23`, combined
   tool/metrics `26/26`; panel typecheck passed.
+- A raw byte probe found M3 consistently emitted `\×` rather than requested
+  `\times`. All four direct and gateway routes preserved those same bytes,
+  `$43`, and math delimiters without injecting HTML. Commit `f34deae28`
+  renders the malformed-but-unambiguous operator correctly in answer and
+  reasoning surfaces; the API remains byte-faithful.
+- Direct and gateway Chat/Responses/Anthropic/Ollama now have current
+  progressive reasoning/content, exact tool/result continuation, truthful
+  terminal, and stream/non-stream parity evidence. Explicit thinking Off
+  emitted zero reasoning deltas on all four protocols.
+- Updated math selection: `17/17` passed; panel typecheck passed.
 
 Evidence:
 
@@ -1487,8 +1497,6 @@ Evidence:
 
 Remaining boundary:
 
-- Direct and gateway API parity was not repeated for this exact M3 checkpoint;
-  raw API byte fidelity and agentic continuation therefore remain `PARTIAL`.
 - M3 restart/eviction native sparse-cache proof, media, signed-app repetition,
   full suites, packaging, notarization, and publication remain open. Overall
   v1.6.17 remains `PARTIAL / NOT RELEASE-READY`.
