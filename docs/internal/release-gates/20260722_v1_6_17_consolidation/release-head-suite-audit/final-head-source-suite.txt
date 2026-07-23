@@ -1,0 +1,6 @@
+source_head=107be113b2146e8699d31f28b3ac345d8043174c
+host=erics-m5-max.local
+command=.venv/bin/python -m pytest -q --deselect tests/test_vl_video_regression.py::TestBundledPythonVerifyScript::test_verify_script_passes_against_current_bundle
+result=6407 passed, 96 skipped, 93 deselected, 2 warnings in 247.70s
+full_remote_log=/private/tmp/r17-full-python-source-107be113b.log
+manual_deselection_reason=bundled Python must be rebuilt from final versioned source; the integrity gate remains enabled and will be rerun after bundle-python.sh

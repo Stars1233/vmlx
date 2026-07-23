@@ -43,12 +43,16 @@ remain open until the final versioned source is frozen and
 to make the suite green.
 
 The complete source suite at `b05dc6840`, with only the intentional
-bundled-Python integrity row deselected, passed on the M5 Max:
+bundled-Python integrity row manually deselected, passed on the M5 Max:
 `6406 passed, 96 skipped, 93 deselected` in 255.41 seconds. The ZAYA
 version-neutral follow-up passed its normalization and real-bundle focused
-tests (`2 passed`); the complete suite must now be rerun at that follow-up
-head.
+tests (`2 passed`).
+
+The complete source suite was then rerun at corrected head `107be113b`:
+`6407 passed, 96 skipped, 93 deselected` in 247.70 seconds. See
+`final-head-source-suite.txt`. The additional pass is the new ZAYA
+version-stability regression. This is the current source-suite result.
 
 This checkpoint is not yet release-ready. Required next evidence is the final
-head Python rerun, rebuilt-bundle verification, raw live API protocol smoke,
-and signed/notarized installed-app smoke.
+rebuilt-bundle verification, raw live API protocol smoke, and
+signed/notarized installed-app smoke.
