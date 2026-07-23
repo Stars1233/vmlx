@@ -7846,3 +7846,29 @@ Status: `VERIFIED-LIVE_SCOPED / CACHE MATRIX PARTIAL`.
   `paged_ram_enabled=false`, `max_blocks=1000`, and `block_disk_l2=true`.
 - Evidence:
   `docs/internal/release-gates/20260722_laguna_r16_parser_ui_api/laguna-four-block-eviction-refault.json`.
+
+## 2026-07-22 - Laguna Block Cache Max GB eviction/refault addendum
+
+Status: `VERIFIED-LIVE_SCOPED / CACHE MATRIX PARTIAL`.
+
+- The same Electron-started Laguna JANG_4M session was restarted with
+  Paged RAM off, Block Disk L2 on, and custom isolated `blockDiskCacheDir`
+  values so the proof did not evict unrelated retained cache data.
+- Negative control: `blockDiskCacheMaxGb=0.03` started empty and recorded
+  `198` writes plus `198` evictions, proving the cap was active, but the cap
+  was too tight for any block to survive. Disk hits stayed `0`, refault was
+  impossible, and two visible rows were not exact. This row is retained as
+  `FAIL/PARTIAL`.
+- Passing row: `blockDiskCacheMaxGb=0.25` started empty and all neutral marker
+  rows exact-finaled with HTTP 200, `[DONE]`, and no native marker leak. Final
+  health recorded `disk_writes=62`, `disk_hits=53`, `disk_evictions=59`, and
+  `blocks_on_disk=3`.
+- The surviving-prefix refault row `charlie_refault` increased disk hits by
+  `2` and exact-finaled `OK_CHARLIE_B`; the older-prefix after-pressure row
+  exact-finaled `OK_ALPHA_C`, proving safe coherent behavior after eviction.
+- The session was restored to Paged RAM off, `maxCacheBlocks=1000`,
+  `blockDiskCacheMaxGb=10`, default disk path, and Block Disk L2 on.
+- Evidence:
+  `docs/internal/release-gates/20260722_laguna_r16_parser_ui_api/laguna-block-disk-gb-cap-eviction.json`
+  and
+  `docs/internal/release-gates/20260722_laguna_r16_parser_ui_api/laguna-block-disk-gb-cap-eviction-025gb.json`.

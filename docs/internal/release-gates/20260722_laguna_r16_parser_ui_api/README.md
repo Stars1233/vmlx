@@ -81,6 +81,37 @@ After this proof the session was restored to Paged RAM off,
 `backend_mode=block_disk_only`, `paged_ram_enabled=false`, `max_blocks=1000`,
 and `block_disk_l2=true`.
 
+## Block Cache Max (GB) eviction/refault addendum
+
+The same Laguna JANG_4M session was also restarted with Paged RAM off,
+Block Disk L2 on, and a custom isolated `blockDiskCacheDir` so the disk-budget
+proof did not delete unrelated retained cache entries.
+
+The first attempt used `blockDiskCacheMaxGb=0.03`. It is retained as a
+negative control: the store started empty and recorded `198` writes plus
+`198` evictions, proving the budget cap was active, but the cap was too tight
+for any block to survive. Disk hits stayed `0`, surviving-prefix refault was
+impossible, and two visible rows were not exact. This row is `FAIL/PARTIAL`,
+not promoted.
+
+The accepted run used `blockDiskCacheMaxGb=0.25` in a second isolated
+directory. It started empty, ran neutral exact-marker prompts, and passed all
+checks:
+
+- all rows HTTP 200, terminal `[DONE]`, exact visible markers, no native marker
+  leak;
+- final health: `disk_writes=62`, `disk_hits=53`, `disk_evictions=59`;
+- surviving-prefix refault row `charlie_refault` increased disk hits by `2`
+  and exact-finaled `OK_CHARLIE_B`;
+- older-prefix after pressure exact-finaled `OK_ALPHA_C`, proving the
+  post-eviction path stayed safe and coherent.
+
+After this proof the session was restored again to Paged RAM off,
+`maxCacheBlocks=1000`, `blockDiskCacheMaxGb=10`, empty default
+`blockDiskCacheDir`, and Block Disk L2 on. Post-restore health reported
+`backend_mode=block_disk_only`, `paged_ram_enabled=false`, `max_blocks=1000`,
+and `block_disk_l2=true`.
+
 ## Gateway API proof
 
 Artifacts:
@@ -89,6 +120,8 @@ Artifacts:
 - `laguna-api-terminal-addendum.json`
 - `laguna-anthropic-ollama-gateway-proof.json`
 - `laguna-four-block-eviction-refault.json`
+- `laguna-block-disk-gb-cap-eviction.json`
+- `laguna-block-disk-gb-cap-eviction-025gb.json`
 
 Rows:
 
@@ -121,6 +154,5 @@ the full Laguna strict-format API reasoning gate green from this proof alone.
   the requested concise answer. Transport/parser/tool loop is live, but strict
   visible formatting is still partial.
 - Longer agentic tool loop and cancellation/recovery.
-- Low-limit `Block Cache Max (GB)` disk eviction/refault and corrupt/missing
-  companion fallback.
+- Corrupt/missing companion fallback.
 - Signed-app repeat after packaging.

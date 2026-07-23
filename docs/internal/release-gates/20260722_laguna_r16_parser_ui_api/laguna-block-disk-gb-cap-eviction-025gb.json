@@ -1,0 +1,1297 @@
+{
+  "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+  "base": "http://127.0.0.1:8001",
+  "started_at": "2026-07-23T02:36:47Z",
+  "health_before": {
+    "label": "before",
+    "scheduler": {
+      "num_waiting": 0,
+      "num_running": 0,
+      "engine_path": "none",
+      "batch_generator": {
+        "class": null,
+        "path": "none",
+        "single_active_decode": false,
+        "max_num_seqs": 1
+      },
+      "single_active_decode": false,
+      "ewma_ttft_seconds": 0.0,
+      "cache_hit_requests": 0,
+      "cache_hit_tokens": 0,
+      "cache_hit_tokens_by_detail": {},
+      "hybrid_kv_without_ssm_hits": 0,
+      "hybrid_kv_without_ssm_tokens": 0,
+      "last_hybrid_kv_without_ssm": null,
+      "cache_reuse_skips": 0,
+      "cache_reuse_skip_tokens": 0,
+      "last_cache_reuse_skip": null,
+      "cache_reuse_partial_downgrades": 0,
+      "cache_reuse_partial_tokens": 0,
+      "last_cache_reuse_partial": null,
+      "last_cache_selection": null,
+      "last_cache_execution": null
+    },
+    "sc": {
+      "hits": 0,
+      "misses": 0,
+      "hit_rate": 0,
+      "tokens_saved": 0,
+      "active_requests": 0,
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 0,
+        "system": 0
+      },
+      "backend_mode": "block_disk_only",
+      "paged_ram_enabled": false,
+      "disk_only": true,
+      "paged_frugal": true,
+      "ram_mirror_policy": "disk_only",
+      "block_size": 64,
+      "max_blocks": 1000,
+      "usable_blocks": 999,
+      "capacity_tokens": 63936,
+      "allocated_blocks": 1,
+      "free_blocks": 999,
+      "shared_blocks": 0,
+      "total_tokens_cached": 0,
+      "utilization": 0.0,
+      "cache_hit_rate": 0,
+      "cache_hits": 0,
+      "cache_misses": 0,
+      "disk_hits": 0,
+      "disk_misses": 0,
+      "cow_copies": 0,
+      "evictions": 0,
+      "disk_promotion_hits": 0,
+      "disk_lookup_misses": 0,
+      "disk_counter_source": "block_disk_store",
+      "engine_path": "none",
+      "batch_generator": {
+        "class": null,
+        "path": "none",
+        "single_active_decode": false,
+        "max_num_seqs": 1
+      }
+    },
+    "bd": {
+      "blocks_on_disk": 0,
+      "disk_size_bytes": 0,
+      "disk_size_gb": 0.0,
+      "total_accesses": 0,
+      "total_tokens_on_disk": 0,
+      "total_cached_tokens": 0,
+      "disk_hits": 0,
+      "disk_misses": 0,
+      "disk_writes": 0,
+      "disk_evictions": 0,
+      "tq_native_writes": 0,
+      "tq_native_hits": 0,
+      "tq_native_enabled": true
+    },
+    "totals": {
+      "ram_tokens_cached": 0,
+      "l1_indexed_tokens": 0,
+      "l1_resident_bytes": 0,
+      "l1_resident_bytes_mb": 0.0,
+      "l1_max_resident_bytes": 0,
+      "l1_max_resident_bytes_mb": 0.0,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 0,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 0,
+      "l2_tokens_on_disk_store_sum": 0,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    },
+    "native": {
+      "family": "laguna",
+      "schema": "mixed_swa_kv_v1",
+      "cache_type": "mixed_swa_kv",
+      "cache_subtype": "kv",
+      "components": [
+        "full_attention_kv",
+        "sliding_window_kv",
+        "rotating_window_metadata"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "storage_only"
+      },
+      "storage_quantization": {
+        "enabled": true,
+        "mode": "storage_boundary",
+        "bits": 4,
+        "group_size": 64,
+        "applies_to": "full_attention_kv_only",
+        "metadata_policy": "preserve_rotating_window_metadata",
+        "sliding_window_policy": "native_rotating_kv_state",
+        "restore_policy": "decode_full_attention_tq_and_restore_rotating_state"
+      },
+      "prefix": true,
+      "paged": false,
+      "block_disk_only": true,
+      "block_disk_l2": true
+    }
+  },
+  "rows": [
+    {
+      "label": "alpha_store",
+      "expected": "OK_ALPHA_A",
+      "before": {
+        "hits": 0,
+        "writes": 0,
+        "evictions": 0,
+        "blocks": 0,
+        "size_gb": 0.0
+      },
+      "result": {
+        "label": "alpha_store",
+        "status": 200,
+        "elapsed": 1.717993,
+        "content": "OK_ALPHA_A",
+        "reasoning": "",
+        "content_deltas": 3,
+        "finish": [
+          "stop"
+        ],
+        "terminals": [
+          "[DONE]"
+        ],
+        "marker_leak": false,
+        "prompt_hash": "cc69d456c5715946789bd4ff4d0fbf5fc6cc49d7a71af09a43dc9a58763e03af",
+        "events": [
+          {
+            "at": 0.00478,
+            "data": {
+              "id": "chatcmpl-2632c1ae",
+              "object": "chat.completion.chunk",
+              "created": 1784774207,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 1.63877,
+            "data": {
+              "id": "chatcmpl-2632c1ae",
+              "object": "chat.completion.chunk",
+              "created": 1784774207,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "OK"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 1.665487,
+            "data": {
+              "id": "chatcmpl-2632c1ae",
+              "object": "chat.completion.chunk",
+              "created": 1784774207,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "_ALPHA"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 1.691843,
+            "data": {
+              "id": "chatcmpl-2632c1ae",
+              "object": "chat.completion.chunk",
+              "created": 1784774207,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "_A"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 1.7179,
+            "data": {
+              "id": "chatcmpl-2632c1ae",
+              "object": "chat.completion.chunk",
+              "created": 1784774207,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {},
+                  "finish_reason": "stop"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "after": {
+        "hits": 0,
+        "writes": 0,
+        "evictions": 0,
+        "blocks": 0,
+        "size_gb": 0.0,
+        "last_cache_execution": null,
+        "hit_delta": 0,
+        "eviction_delta": 0
+      }
+    },
+    {
+      "label": "alpha_partial",
+      "expected": "OK_ALPHA_B",
+      "before": {
+        "hits": 0,
+        "writes": 0,
+        "evictions": 0,
+        "blocks": 0,
+        "size_gb": 0.0
+      },
+      "result": {
+        "label": "alpha_partial",
+        "status": 200,
+        "elapsed": 2.435889,
+        "content": "OK_ALPHA_B",
+        "reasoning": "",
+        "content_deltas": 3,
+        "finish": [
+          "stop"
+        ],
+        "terminals": [
+          "[DONE]"
+        ],
+        "marker_leak": false,
+        "prompt_hash": "4660159cbd30b7457f0048fed296cbe8b65dc8f2128e42f507b59eca14cca142",
+        "events": [
+          {
+            "at": 0.004207,
+            "data": {
+              "id": "chatcmpl-a2ddddc2",
+              "object": "chat.completion.chunk",
+              "created": 1784774209,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 2.37429,
+            "data": {
+              "id": "chatcmpl-a2ddddc2",
+              "object": "chat.completion.chunk",
+              "created": 1784774209,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "OK"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 2.394594,
+            "data": {
+              "id": "chatcmpl-a2ddddc2",
+              "object": "chat.completion.chunk",
+              "created": 1784774209,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "_ALPHA"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 2.415046,
+            "data": {
+              "id": "chatcmpl-a2ddddc2",
+              "object": "chat.completion.chunk",
+              "created": 1784774209,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "_B"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 2.435796,
+            "data": {
+              "id": "chatcmpl-a2ddddc2",
+              "object": "chat.completion.chunk",
+              "created": 1784774209,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {},
+                  "finish_reason": "stop"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "after": {
+        "hits": 51,
+        "writes": 18,
+        "evictions": 0,
+        "blocks": 18,
+        "size_gb": 0.225,
+        "last_cache_execution": {
+          "request_id": "chatcmpl-a2ddddc2",
+          "cache_detail": "block-disk+tq-native",
+          "cached_tokens": 1088,
+          "blocks": 17,
+          "selection": {
+            "paged_cached_tokens": 1088,
+            "paged_cold_tokens": 0,
+            "warm_cached_tokens": 0,
+            "hot_advantage_tokens": 1088,
+            "hot_advantage_threshold_tokens": 64,
+            "selected": "paged",
+            "rejected": null,
+            "reason": "no_warm_prefix_alternative"
+          },
+          "reconstructed": true,
+          "dequantized": false,
+          "reconstruction_seconds": 0.091452,
+          "dequantization_seconds": 0.0,
+          "total_worker_cache_seconds": 0.0919,
+          "reconstruction_ok": true,
+          "disk_blocks": 17,
+          "tq_native_blocks": 204,
+          "tq_rewrapped": true,
+          "tq_rewrap_seconds": 9.8e-05
+        },
+        "hit_delta": 51,
+        "eviction_delta": 0
+      }
+    },
+    {
+      "label": "bravo_store",
+      "expected": "OK_BRAVO_A",
+      "before": {
+        "hits": 51,
+        "writes": 18,
+        "evictions": 0,
+        "blocks": 18,
+        "size_gb": 0.225
+      },
+      "result": {
+        "label": "bravo_store",
+        "status": 200,
+        "elapsed": 3.281213,
+        "content": "OK_BRAVO_A",
+        "reasoning": "",
+        "content_deltas": 5,
+        "finish": [
+          "stop"
+        ],
+        "terminals": [
+          "[DONE]"
+        ],
+        "marker_leak": false,
+        "prompt_hash": "54d073b4c72df7f8376b3a43cb7bc877bef9d36bf1d99dbbf8f5ecd958477a88",
+        "events": [
+          {
+            "at": 0.004255,
+            "data": {
+              "id": "chatcmpl-4a034c50",
+              "object": "chat.completion.chunk",
+              "created": 1784774211,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.159037,
+            "data": {
+              "id": "chatcmpl-4a034c50",
+              "object": "chat.completion.chunk",
+              "created": 1784774211,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "OK"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.183625,
+            "data": {
+              "id": "chatcmpl-4a034c50",
+              "object": "chat.completion.chunk",
+              "created": 1784774211,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "_BR"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.208214,
+            "data": {
+              "id": "chatcmpl-4a034c50",
+              "object": "chat.completion.chunk",
+              "created": 1784774211,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "AV"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.232572,
+            "data": {
+              "id": "chatcmpl-4a034c50",
+              "object": "chat.completion.chunk",
+              "created": 1784774211,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "O"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.25679,
+            "data": {
+              "id": "chatcmpl-4a034c50",
+              "object": "chat.completion.chunk",
+              "created": 1784774211,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "_A"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.281122,
+            "data": {
+              "id": "chatcmpl-4a034c50",
+              "object": "chat.completion.chunk",
+              "created": 1784774211,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {},
+                  "finish_reason": "stop"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "after": {
+        "hits": 51,
+        "writes": 19,
+        "evictions": 17,
+        "blocks": 2,
+        "size_gb": 0.142,
+        "last_cache_execution": {
+          "request_id": "chatcmpl-a2ddddc2",
+          "cache_detail": "block-disk+tq-native",
+          "cached_tokens": 1088,
+          "blocks": 17,
+          "selection": {
+            "paged_cached_tokens": 1088,
+            "paged_cold_tokens": 0,
+            "warm_cached_tokens": 0,
+            "hot_advantage_tokens": 1088,
+            "hot_advantage_threshold_tokens": 64,
+            "selected": "paged",
+            "rejected": null,
+            "reason": "no_warm_prefix_alternative"
+          },
+          "reconstructed": true,
+          "dequantized": false,
+          "reconstruction_seconds": 0.091452,
+          "dequantization_seconds": 0.0,
+          "total_worker_cache_seconds": 0.0919,
+          "reconstruction_ok": true,
+          "disk_blocks": 17,
+          "tq_native_blocks": 204,
+          "tq_rewrapped": true,
+          "tq_rewrap_seconds": 9.8e-05
+        },
+        "hit_delta": 0,
+        "eviction_delta": 17
+      }
+    },
+    {
+      "label": "charlie_store",
+      "expected": "OK_CHARLIE_A",
+      "before": {
+        "hits": 51,
+        "writes": 19,
+        "evictions": 17,
+        "blocks": 2,
+        "size_gb": 0.142
+      },
+      "result": {
+        "label": "charlie_store",
+        "status": 200,
+        "elapsed": 3.565082,
+        "content": "OK_CHARLIE_A",
+        "reasoning": "",
+        "content_deltas": 5,
+        "finish": [
+          "stop"
+        ],
+        "terminals": [
+          "[DONE]"
+        ],
+        "marker_leak": false,
+        "prompt_hash": "0c5d97002ce127ae893af72bf5aa1869ddc77a505371cc9a32a50e11ff08aceb",
+        "events": [
+          {
+            "at": 0.00401,
+            "data": {
+              "id": "chatcmpl-6130a234",
+              "object": "chat.completion.chunk",
+              "created": 1784774215,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.445309,
+            "data": {
+              "id": "chatcmpl-6130a234",
+              "object": "chat.completion.chunk",
+              "created": 1784774215,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "OK"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.469489,
+            "data": {
+              "id": "chatcmpl-6130a234",
+              "object": "chat.completion.chunk",
+              "created": 1784774215,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "_CHAR"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.493416,
+            "data": {
+              "id": "chatcmpl-6130a234",
+              "object": "chat.completion.chunk",
+              "created": 1784774215,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "L"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.516964,
+            "data": {
+              "id": "chatcmpl-6130a234",
+              "object": "chat.completion.chunk",
+              "created": 1784774215,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "IE"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.541024,
+            "data": {
+              "id": "chatcmpl-6130a234",
+              "object": "chat.completion.chunk",
+              "created": 1784774215,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "_A"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.564982,
+            "data": {
+              "id": "chatcmpl-6130a234",
+              "object": "chat.completion.chunk",
+              "created": 1784774215,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {},
+                  "finish_reason": "stop"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "after": {
+        "hits": 51,
+        "writes": 40,
+        "evictions": 19,
+        "blocks": 21,
+        "size_gb": 0.227,
+        "last_cache_execution": {
+          "request_id": "chatcmpl-a2ddddc2",
+          "cache_detail": "block-disk+tq-native",
+          "cached_tokens": 1088,
+          "blocks": 17,
+          "selection": {
+            "paged_cached_tokens": 1088,
+            "paged_cold_tokens": 0,
+            "warm_cached_tokens": 0,
+            "hot_advantage_tokens": 1088,
+            "hot_advantage_threshold_tokens": 64,
+            "selected": "paged",
+            "rejected": null,
+            "reason": "no_warm_prefix_alternative"
+          },
+          "reconstructed": true,
+          "dequantized": false,
+          "reconstruction_seconds": 0.091452,
+          "dequantization_seconds": 0.0,
+          "total_worker_cache_seconds": 0.0919,
+          "reconstruction_ok": true,
+          "disk_blocks": 17,
+          "tq_native_blocks": 204,
+          "tq_rewrapped": true,
+          "tq_rewrap_seconds": 9.8e-05
+        },
+        "hit_delta": 0,
+        "eviction_delta": 2
+      }
+    },
+    {
+      "label": "charlie_refault",
+      "expected": "OK_CHARLIE_B",
+      "before": {
+        "hits": 51,
+        "writes": 40,
+        "evictions": 19,
+        "blocks": 21,
+        "size_gb": 0.227
+      },
+      "result": {
+        "label": "charlie_refault",
+        "status": 200,
+        "elapsed": 3.371487,
+        "content": "OK_CHARLIE_B",
+        "reasoning": "",
+        "content_deltas": 5,
+        "finish": [
+          "stop"
+        ],
+        "terminals": [
+          "[DONE]"
+        ],
+        "marker_leak": false,
+        "prompt_hash": "2351eeede974925625b48aacec7b75d571b5c5ff8750a930a9c782f902c32aa2",
+        "events": [
+          {
+            "at": 0.003592,
+            "data": {
+              "id": "chatcmpl-b9c52311",
+              "object": "chat.completion.chunk",
+              "created": 1784774218,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.252767,
+            "data": {
+              "id": "chatcmpl-b9c52311",
+              "object": "chat.completion.chunk",
+              "created": 1784774218,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "OK"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.276716,
+            "data": {
+              "id": "chatcmpl-b9c52311",
+              "object": "chat.completion.chunk",
+              "created": 1784774218,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "_CHAR"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.300476,
+            "data": {
+              "id": "chatcmpl-b9c52311",
+              "object": "chat.completion.chunk",
+              "created": 1784774218,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "L"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.324213,
+            "data": {
+              "id": "chatcmpl-b9c52311",
+              "object": "chat.completion.chunk",
+              "created": 1784774218,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "IE"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.347667,
+            "data": {
+              "id": "chatcmpl-b9c52311",
+              "object": "chat.completion.chunk",
+              "created": 1784774218,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "_B"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.371396,
+            "data": {
+              "id": "chatcmpl-b9c52311",
+              "object": "chat.completion.chunk",
+              "created": 1784774218,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {},
+                  "finish_reason": "stop"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "after": {
+        "hits": 53,
+        "writes": 61,
+        "evictions": 59,
+        "blocks": 2,
+        "size_gb": 0.142,
+        "last_cache_execution": {
+          "request_id": "chatcmpl-a2ddddc2",
+          "cache_detail": "block-disk+tq-native",
+          "cached_tokens": 1088,
+          "blocks": 17,
+          "selection": {
+            "paged_cached_tokens": 1088,
+            "paged_cold_tokens": 0,
+            "warm_cached_tokens": 0,
+            "hot_advantage_tokens": 1088,
+            "hot_advantage_threshold_tokens": 64,
+            "selected": "paged",
+            "rejected": null,
+            "reason": "no_warm_prefix_alternative"
+          },
+          "reconstructed": true,
+          "dequantized": false,
+          "reconstruction_seconds": 0.091452,
+          "dequantization_seconds": 0.0,
+          "total_worker_cache_seconds": 0.0919,
+          "reconstruction_ok": true,
+          "disk_blocks": 17,
+          "tq_native_blocks": 204,
+          "tq_rewrapped": true,
+          "tq_rewrap_seconds": 9.8e-05
+        },
+        "hit_delta": 2,
+        "eviction_delta": 40
+      }
+    },
+    {
+      "label": "alpha_after_pressure",
+      "expected": "OK_ALPHA_C",
+      "before": {
+        "hits": 53,
+        "writes": 61,
+        "evictions": 59,
+        "blocks": 2,
+        "size_gb": 0.142
+      },
+      "result": {
+        "label": "alpha_after_pressure",
+        "status": 200,
+        "elapsed": 2.879272,
+        "content": "OK_ALPHA_C",
+        "reasoning": "",
+        "content_deltas": 3,
+        "finish": [
+          "stop"
+        ],
+        "terminals": [
+          "[DONE]"
+        ],
+        "marker_leak": false,
+        "prompt_hash": "c2d3d13eb2f576af6e0c528055f610a9f141e007c75e21cd964205ea3acdda19",
+        "events": [
+          {
+            "at": 0.004044,
+            "data": {
+              "id": "chatcmpl-0b1df1c2",
+              "object": "chat.completion.chunk",
+              "created": 1784774222,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 2.808346,
+            "data": {
+              "id": "chatcmpl-0b1df1c2",
+              "object": "chat.completion.chunk",
+              "created": 1784774222,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "OK"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 2.831948,
+            "data": {
+              "id": "chatcmpl-0b1df1c2",
+              "object": "chat.completion.chunk",
+              "created": 1784774222,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "_ALPHA"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 2.855466,
+            "data": {
+              "id": "chatcmpl-0b1df1c2",
+              "object": "chat.completion.chunk",
+              "created": 1784774222,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "_C"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 2.879178,
+            "data": {
+              "id": "chatcmpl-0b1df1c2",
+              "object": "chat.completion.chunk",
+              "created": 1784774222,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {},
+                  "finish_reason": "stop"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "after": {
+        "hits": 53,
+        "writes": 62,
+        "evictions": 59,
+        "blocks": 3,
+        "size_gb": 0.212,
+        "last_cache_execution": {
+          "request_id": "chatcmpl-a2ddddc2",
+          "cache_detail": "block-disk+tq-native",
+          "cached_tokens": 1088,
+          "blocks": 17,
+          "selection": {
+            "paged_cached_tokens": 1088,
+            "paged_cold_tokens": 0,
+            "warm_cached_tokens": 0,
+            "hot_advantage_tokens": 1088,
+            "hot_advantage_threshold_tokens": 64,
+            "selected": "paged",
+            "rejected": null,
+            "reason": "no_warm_prefix_alternative"
+          },
+          "reconstructed": true,
+          "dequantized": false,
+          "reconstruction_seconds": 0.091452,
+          "dequantization_seconds": 0.0,
+          "total_worker_cache_seconds": 0.0919,
+          "reconstruction_ok": true,
+          "disk_blocks": 17,
+          "tq_native_blocks": 204,
+          "tq_rewrapped": true,
+          "tq_rewrap_seconds": 9.8e-05
+        },
+        "hit_delta": 0,
+        "eviction_delta": 0
+      }
+    }
+  ],
+  "health_after": {
+    "label": "after",
+    "scheduler": {
+      "num_waiting": 0,
+      "num_running": 1,
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1,
+        "prompt_snapshot_max_bytes": null,
+        "prompt_snapshot_last_estimated_bytes": 0,
+        "prompt_snapshot_oversize_skips": 0,
+        "prompt_snapshot_headroom_skips": 0,
+        "prompt_snapshot_last_headroom_bytes": 0
+      },
+      "single_active_decode": true,
+      "ewma_ttft_seconds": 0.586,
+      "cache_hit_requests": 1,
+      "cache_hit_tokens": 1088,
+      "cache_hit_tokens_by_detail": {
+        "block-disk+tq-native": 1088
+      },
+      "hybrid_kv_without_ssm_hits": 0,
+      "hybrid_kv_without_ssm_tokens": 0,
+      "last_hybrid_kv_without_ssm": null,
+      "cache_reuse_skips": 0,
+      "cache_reuse_skip_tokens": 0,
+      "last_cache_reuse_skip": null,
+      "cache_reuse_partial_downgrades": 0,
+      "cache_reuse_partial_tokens": 0,
+      "last_cache_reuse_partial": null,
+      "last_cache_selection": {
+        "paged_cached_tokens": 1088,
+        "paged_cold_tokens": 0,
+        "warm_cached_tokens": 0,
+        "hot_advantage_tokens": 1088,
+        "hot_advantage_threshold_tokens": 64,
+        "selected": "paged",
+        "rejected": null,
+        "reason": "no_warm_prefix_alternative"
+      },
+      "last_cache_execution": {
+        "request_id": "chatcmpl-a2ddddc2",
+        "cache_detail": "block-disk+tq-native",
+        "cached_tokens": 1088,
+        "blocks": 17,
+        "selection": {
+          "paged_cached_tokens": 1088,
+          "paged_cold_tokens": 0,
+          "warm_cached_tokens": 0,
+          "hot_advantage_tokens": 1088,
+          "hot_advantage_threshold_tokens": 64,
+          "selected": "paged",
+          "rejected": null,
+          "reason": "no_warm_prefix_alternative"
+        },
+        "reconstructed": true,
+        "dequantized": false,
+        "reconstruction_seconds": 0.091452,
+        "dequantization_seconds": 0.0,
+        "total_worker_cache_seconds": 0.0919,
+        "reconstruction_ok": true,
+        "disk_blocks": 17,
+        "tq_native_blocks": 204,
+        "tq_rewrapped": true,
+        "tq_rewrap_seconds": 9.8e-05
+      }
+    },
+    "sc": {
+      "hits": 1,
+      "misses": 5,
+      "hit_rate": 0.16666666666666666,
+      "tokens_saved": 1088,
+      "active_requests": 0,
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 0,
+        "system": 5
+      },
+      "backend_mode": "block_disk_only",
+      "paged_ram_enabled": false,
+      "disk_only": true,
+      "paged_frugal": true,
+      "ram_mirror_policy": "disk_only",
+      "block_size": 64,
+      "max_blocks": 1000,
+      "usable_blocks": 999,
+      "capacity_tokens": 63936,
+      "allocated_blocks": 1,
+      "free_blocks": 999,
+      "shared_blocks": 0,
+      "total_tokens_cached": 3787,
+      "utilization": 0.0,
+      "cache_hit_rate": 0.6136363636363636,
+      "cache_hits": 108,
+      "cache_misses": 68,
+      "disk_hits": 53,
+      "disk_misses": 102,
+      "cow_copies": 0,
+      "evictions": 0,
+      "disk_promotion_hits": 0,
+      "disk_lookup_misses": 6,
+      "disk_counter_source": "block_disk_store",
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1,
+        "prompt_snapshot_max_bytes": null,
+        "prompt_snapshot_last_estimated_bytes": 0,
+        "prompt_snapshot_oversize_skips": 0,
+        "prompt_snapshot_headroom_skips": 0,
+        "prompt_snapshot_last_headroom_bytes": 0
+      }
+    },
+    "bd": {
+      "blocks_on_disk": 3,
+      "disk_size_bytes": 228060303,
+      "disk_size_gb": 0.212,
+      "total_accesses": 2,
+      "total_tokens_on_disk": 112,
+      "total_cached_tokens": 112,
+      "disk_hits": 53,
+      "disk_misses": 102,
+      "disk_writes": 62,
+      "disk_evictions": 59,
+      "tq_native_writes": 62,
+      "tq_native_hits": 53,
+      "tq_native_enabled": true
+    },
+    "totals": {
+      "ram_tokens_cached": 0,
+      "l1_indexed_tokens": 3787,
+      "l1_resident_bytes": 0,
+      "l1_resident_bytes_mb": 0.0,
+      "l1_max_resident_bytes": 0,
+      "l1_max_resident_bytes_mb": 0.0,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 112,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 112,
+      "l2_tokens_on_disk_store_sum": 112,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    },
+    "native": {
+      "family": "laguna",
+      "schema": "mixed_swa_kv_v1",
+      "cache_type": "mixed_swa_kv",
+      "cache_subtype": "kv",
+      "components": [
+        "full_attention_kv",
+        "sliding_window_kv",
+        "rotating_window_metadata"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "storage_only"
+      },
+      "storage_quantization": {
+        "enabled": true,
+        "mode": "storage_boundary",
+        "bits": 4,
+        "group_size": 64,
+        "applies_to": "full_attention_kv_only",
+        "metadata_policy": "preserve_rotating_window_metadata",
+        "sliding_window_policy": "native_rotating_kv_state",
+        "restore_policy": "decode_full_attention_tq_and_restore_rotating_state"
+      },
+      "prefix": true,
+      "paged": false,
+      "block_disk_only": true,
+      "block_disk_l2": true
+    }
+  },
+  "checks": {
+    "disk_only": true,
+    "empty_custom_store_before": true,
+    "all_status_200": true,
+    "all_exact": true,
+    "all_done": true,
+    "no_marker_leak": true,
+    "disk_writes_positive": true,
+    "disk_hits_positive": true,
+    "disk_evictions_positive": true,
+    "surviving_prefix_refault_hit": true,
+    "alpha_after_pressure_exact_or_safe": true
+  }
+}

@@ -1733,3 +1733,25 @@
 - Retained artifact:
   `docs/internal/release-gates/20260722_laguna_r16_parser_ui_api/laguna-four-block-eviction-refault.json`.
   Low-limit `Block Cache Max (GB)` disk eviction/refault remains open.
+
+## 2026-07-22 - Laguna Block Cache Max GB eviction/refault
+
+- Ran the SSD budget proof in isolated Block Disk Cache directories. The
+  first `0.03 GB` cap is retained as a negative control: the cache wrote and
+  evicted `198` blocks immediately, so no refault could survive and two visible
+  rows were not exact.
+- Reran with `blockDiskCacheMaxGb=0.25` and neutral exact-marker prompts. All
+  rows exact-finaled, reached `[DONE]`, and leaked no native markers. Final
+  counters: `disk_writes=62`, `disk_hits=53`, `disk_evictions=59`,
+  `blocks_on_disk=3`.
+- The surviving-prefix refault row increased disk hits by `2` and exact-finaled
+  `OK_CHARLIE_B`; the older-prefix after-pressure row exact-finaled
+  `OK_ALPHA_C`.
+- Restored the session to Paged RAM off, `maxCacheBlocks=1000`,
+  `blockDiskCacheMaxGb=10`, default disk path, and Block Disk L2 on.
+- Retained artifacts:
+  `docs/internal/release-gates/20260722_laguna_r16_parser_ui_api/laguna-block-disk-gb-cap-eviction.json`
+  and
+  `docs/internal/release-gates/20260722_laguna_r16_parser_ui_api/laguna-block-disk-gb-cap-eviction-025gb.json`.
+  Cache matrix remains partial for corrupt/missing companion fallback and
+  untested architecture archetypes.

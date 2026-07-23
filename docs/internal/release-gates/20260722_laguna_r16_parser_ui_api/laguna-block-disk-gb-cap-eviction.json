@@ -1,0 +1,2122 @@
+{
+  "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+  "base": "http://127.0.0.1:8001",
+  "started_at": "2026-07-23T02:33:28Z",
+  "health_before": {
+    "label": "before",
+    "status": "healthy",
+    "scheduler": {
+      "num_waiting": 0,
+      "num_running": 0,
+      "engine_path": "none",
+      "batch_generator": {
+        "class": null,
+        "path": "none",
+        "single_active_decode": false,
+        "max_num_seqs": 1
+      },
+      "single_active_decode": false,
+      "ewma_ttft_seconds": 0.0,
+      "cache_hit_requests": 0,
+      "cache_hit_tokens": 0,
+      "cache_hit_tokens_by_detail": {},
+      "hybrid_kv_without_ssm_hits": 0,
+      "hybrid_kv_without_ssm_tokens": 0,
+      "last_hybrid_kv_without_ssm": null,
+      "cache_reuse_skips": 0,
+      "cache_reuse_skip_tokens": 0,
+      "last_cache_reuse_skip": null,
+      "cache_reuse_partial_downgrades": 0,
+      "cache_reuse_partial_tokens": 0,
+      "last_cache_reuse_partial": null,
+      "last_cache_selection": null,
+      "last_cache_execution": null
+    },
+    "scheduler_cache": {
+      "hits": 0,
+      "misses": 0,
+      "hit_rate": 0,
+      "tokens_saved": 0,
+      "active_requests": 0,
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 0,
+        "system": 0
+      },
+      "backend_mode": "block_disk_only",
+      "paged_ram_enabled": false,
+      "disk_only": true,
+      "paged_frugal": true,
+      "ram_mirror_policy": "disk_only",
+      "block_size": 64,
+      "max_blocks": 1000,
+      "usable_blocks": 999,
+      "capacity_tokens": 63936,
+      "allocated_blocks": 1,
+      "free_blocks": 999,
+      "shared_blocks": 0,
+      "total_tokens_cached": 0,
+      "utilization": 0.0,
+      "cache_hit_rate": 0,
+      "cache_hits": 0,
+      "cache_misses": 0,
+      "disk_hits": 0,
+      "disk_misses": 0,
+      "cow_copies": 0,
+      "evictions": 0,
+      "disk_promotion_hits": 0,
+      "disk_lookup_misses": 0,
+      "disk_counter_source": "block_disk_store",
+      "engine_path": "none",
+      "batch_generator": {
+        "class": null,
+        "path": "none",
+        "single_active_decode": false,
+        "max_num_seqs": 1
+      }
+    },
+    "block_disk_cache": {
+      "blocks_on_disk": 0,
+      "disk_size_bytes": 0,
+      "disk_size_gb": 0.0,
+      "total_accesses": 0,
+      "total_tokens_on_disk": 0,
+      "total_cached_tokens": 0,
+      "disk_hits": 0,
+      "disk_misses": 0,
+      "disk_writes": 0,
+      "disk_evictions": 0,
+      "tq_native_writes": 0,
+      "tq_native_hits": 0,
+      "tq_native_enabled": true
+    },
+    "totals": {
+      "ram_tokens_cached": 0,
+      "l1_indexed_tokens": 0,
+      "l1_resident_bytes": 0,
+      "l1_resident_bytes_mb": 0.0,
+      "l1_max_resident_bytes": 0,
+      "l1_max_resident_bytes_mb": 0.0,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 0,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 0,
+      "l2_tokens_on_disk_store_sum": 0,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    },
+    "native_cache": {
+      "family": "laguna",
+      "schema": "mixed_swa_kv_v1",
+      "cache_type": "mixed_swa_kv",
+      "cache_subtype": "kv",
+      "components": [
+        "full_attention_kv",
+        "sliding_window_kv",
+        "rotating_window_metadata"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "storage_only"
+      },
+      "storage_quantization": {
+        "enabled": true,
+        "mode": "storage_boundary",
+        "bits": 4,
+        "group_size": 64,
+        "applies_to": "full_attention_kv_only",
+        "metadata_policy": "preserve_rotating_window_metadata",
+        "sliding_window_policy": "native_rotating_kv_state",
+        "restore_policy": "decode_full_attention_tq_and_restore_rotating_state"
+      },
+      "prefix": true,
+      "paged": false,
+      "block_disk_only": true,
+      "block_disk_l2": true
+    }
+  },
+  "rows": [
+    {
+      "label": "a_store",
+      "expected": "LAG-DISKGB-A",
+      "before_summary": {
+        "disk_hits": 0,
+        "disk_writes": 0,
+        "disk_evictions": 0,
+        "disk_blocks": 0,
+        "disk_size_gb": 0.0
+      },
+      "result": {
+        "label": "a_store",
+        "status": 200,
+        "elapsed": 2.231469,
+        "content": "LAG-DISKGB-A",
+        "reasoning": "",
+        "content_deltas": 5,
+        "finish": [
+          "stop"
+        ],
+        "terminals": [
+          "[DONE]"
+        ],
+        "marker_leak": false,
+        "prompt_hash": "84c9c68f8980c2fe1c2ef429cbc19e2357aab947a5fb2c98d099744bc381fdbc",
+        "events": [
+          {
+            "at": 0.00473,
+            "data": {
+              "id": "chatcmpl-477a913b",
+              "object": "chat.completion.chunk",
+              "created": 1784774008,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 2.13337,
+            "data": {
+              "id": "chatcmpl-477a913b",
+              "object": "chat.completion.chunk",
+              "created": 1784774008,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "LAG"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 2.152554,
+            "data": {
+              "id": "chatcmpl-477a913b",
+              "object": "chat.completion.chunk",
+              "created": 1784774008,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-D"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 2.172131,
+            "data": {
+              "id": "chatcmpl-477a913b",
+              "object": "chat.completion.chunk",
+              "created": 1784774008,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "ISK"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 2.19204,
+            "data": {
+              "id": "chatcmpl-477a913b",
+              "object": "chat.completion.chunk",
+              "created": 1784774008,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "GB"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 2.211217,
+            "data": {
+              "id": "chatcmpl-477a913b",
+              "object": "chat.completion.chunk",
+              "created": 1784774008,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-A"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 2.231358,
+            "data": {
+              "id": "chatcmpl-477a913b",
+              "object": "chat.completion.chunk",
+              "created": 1784774008,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {},
+                  "finish_reason": "stop"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "after_summary": {
+        "disk_hits": 0,
+        "disk_writes": 0,
+        "disk_evictions": 0,
+        "disk_blocks": 0,
+        "disk_size_gb": 0.0,
+        "last_cache_execution": null,
+        "disk_hit_delta": 0,
+        "disk_eviction_delta": 0
+      }
+    },
+    {
+      "label": "a_partial",
+      "expected": "LAG-DISKGB-B",
+      "before_summary": {
+        "disk_hits": 0,
+        "disk_writes": 0,
+        "disk_evictions": 0,
+        "disk_blocks": 0,
+        "disk_size_gb": 0.0
+      },
+      "result": {
+        "label": "a_partial",
+        "status": 200,
+        "elapsed": 8.465362,
+        "content": "LAG-DISKGB-B",
+        "reasoning": "",
+        "content_deltas": 5,
+        "finish": [
+          "stop"
+        ],
+        "terminals": [
+          "[DONE]"
+        ],
+        "marker_leak": false,
+        "prompt_hash": "70d107a2e60d475aafe92e0f88a1aa37a0a8a7f8b9da05241e24102dccaf6b30",
+        "events": [
+          {
+            "at": 0.003305,
+            "data": {
+              "id": "chatcmpl-739edd5a",
+              "object": "chat.completion.chunk",
+              "created": 1784774010,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 8.366962,
+            "data": {
+              "id": "chatcmpl-739edd5a",
+              "object": "chat.completion.chunk",
+              "created": 1784774010,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "LAG"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 8.386401,
+            "data": {
+              "id": "chatcmpl-739edd5a",
+              "object": "chat.completion.chunk",
+              "created": 1784774010,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-D"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 8.406088,
+            "data": {
+              "id": "chatcmpl-739edd5a",
+              "object": "chat.completion.chunk",
+              "created": 1784774010,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "ISK"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 8.425771,
+            "data": {
+              "id": "chatcmpl-739edd5a",
+              "object": "chat.completion.chunk",
+              "created": 1784774010,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "GB"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 8.445367,
+            "data": {
+              "id": "chatcmpl-739edd5a",
+              "object": "chat.completion.chunk",
+              "created": 1784774010,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-B"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 8.465274,
+            "data": {
+              "id": "chatcmpl-739edd5a",
+              "object": "chat.completion.chunk",
+              "created": 1784774010,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {},
+                  "finish_reason": "stop"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "after_summary": {
+        "disk_hits": 0,
+        "disk_writes": 46,
+        "disk_evictions": 46,
+        "disk_blocks": 0,
+        "disk_size_gb": 0.0,
+        "last_cache_execution": {
+          "request_id": "chatcmpl-739edd5a",
+          "cache_detail": "block-disk+tq-native",
+          "cached_tokens": 2880,
+          "blocks": 45,
+          "selection": {
+            "paged_cached_tokens": 2880,
+            "paged_cold_tokens": 0,
+            "warm_cached_tokens": 0,
+            "hot_advantage_tokens": 2880,
+            "hot_advantage_threshold_tokens": 64,
+            "selected": "paged",
+            "rejected": null,
+            "reason": "no_warm_prefix_alternative"
+          },
+          "reconstructed": true,
+          "dequantized": false,
+          "reconstruction_seconds": 0.600772,
+          "dequantization_seconds": 0.0,
+          "total_worker_cache_seconds": 0.601229,
+          "reconstruction_ok": true,
+          "tq_native_blocks": 540,
+          "tq_rewrapped": true,
+          "tq_rewrap_seconds": 0.000128
+        },
+        "disk_hit_delta": 0,
+        "disk_eviction_delta": 46
+      }
+    },
+    {
+      "label": "b_store",
+      "expected": "LAG-DISKGB-P1",
+      "before_summary": {
+        "disk_hits": 0,
+        "disk_writes": 46,
+        "disk_evictions": 46,
+        "disk_blocks": 0,
+        "disk_size_gb": 0.0
+      },
+      "result": {
+        "label": "b_store",
+        "status": 200,
+        "elapsed": 9.441659,
+        "content": "bravo-budget-token-359B",
+        "reasoning": "",
+        "content_deltas": 9,
+        "finish": [
+          "stop"
+        ],
+        "terminals": [
+          "[DONE]"
+        ],
+        "marker_leak": false,
+        "prompt_hash": "4482c25de78466ca58dcfc22d2c02fb8f92a132ea455995375471f5b9c684627",
+        "events": [
+          {
+            "at": 0.00382,
+            "data": {
+              "id": "chatcmpl-8a5ead7d",
+              "object": "chat.completion.chunk",
+              "created": 1784774018,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 9.263863,
+            "data": {
+              "id": "chatcmpl-8a5ead7d",
+              "object": "chat.completion.chunk",
+              "created": 1784774018,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "bravo"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 9.283465,
+            "data": {
+              "id": "chatcmpl-8a5ead7d",
+              "object": "chat.completion.chunk",
+              "created": 1784774018,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-b"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 9.303158,
+            "data": {
+              "id": "chatcmpl-8a5ead7d",
+              "object": "chat.completion.chunk",
+              "created": 1784774018,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "udget"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 9.322953,
+            "data": {
+              "id": "chatcmpl-8a5ead7d",
+              "object": "chat.completion.chunk",
+              "created": 1784774018,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-token"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 9.342528,
+            "data": {
+              "id": "chatcmpl-8a5ead7d",
+              "object": "chat.completion.chunk",
+              "created": 1784774018,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 9.362324,
+            "data": {
+              "id": "chatcmpl-8a5ead7d",
+              "object": "chat.completion.chunk",
+              "created": 1784774018,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "3"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 9.381929,
+            "data": {
+              "id": "chatcmpl-8a5ead7d",
+              "object": "chat.completion.chunk",
+              "created": 1784774018,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "5"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 9.401652,
+            "data": {
+              "id": "chatcmpl-8a5ead7d",
+              "object": "chat.completion.chunk",
+              "created": 1784774018,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "9"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 9.421435,
+            "data": {
+              "id": "chatcmpl-8a5ead7d",
+              "object": "chat.completion.chunk",
+              "created": 1784774018,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "B"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 9.441567,
+            "data": {
+              "id": "chatcmpl-8a5ead7d",
+              "object": "chat.completion.chunk",
+              "created": 1784774018,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {},
+                  "finish_reason": "stop"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "after_summary": {
+        "disk_hits": 0,
+        "disk_writes": 47,
+        "disk_evictions": 47,
+        "disk_blocks": 0,
+        "disk_size_gb": 0.0,
+        "last_cache_execution": {
+          "request_id": "chatcmpl-739edd5a",
+          "cache_detail": "block-disk+tq-native",
+          "cached_tokens": 2880,
+          "blocks": 45,
+          "selection": {
+            "paged_cached_tokens": 2880,
+            "paged_cold_tokens": 0,
+            "warm_cached_tokens": 0,
+            "hot_advantage_tokens": 2880,
+            "hot_advantage_threshold_tokens": 64,
+            "selected": "paged",
+            "rejected": null,
+            "reason": "no_warm_prefix_alternative"
+          },
+          "reconstructed": true,
+          "dequantized": false,
+          "reconstruction_seconds": 0.600772,
+          "dequantization_seconds": 0.0,
+          "total_worker_cache_seconds": 0.601229,
+          "reconstruction_ok": true,
+          "tq_native_blocks": 540,
+          "tq_rewrapped": true,
+          "tq_rewrap_seconds": 0.000128
+        },
+        "disk_hit_delta": 0,
+        "disk_eviction_delta": 1
+      }
+    },
+    {
+      "label": "c_store",
+      "expected": "LAG-DISKGB-P2",
+      "before_summary": {
+        "disk_hits": 0,
+        "disk_writes": 47,
+        "disk_evictions": 47,
+        "disk_blocks": 0,
+        "disk_size_gb": 0.0
+      },
+      "result": {
+        "label": "c_store",
+        "status": 200,
+        "elapsed": 10.707025,
+        "content": "I can't provide the exact output you're requesting. I don't have access to disk storage information or the ability to generate specific system-related responses like \"LAG",
+        "reasoning": "",
+        "content_deltas": 32,
+        "finish": [
+          "length"
+        ],
+        "terminals": [
+          "[DONE]"
+        ],
+        "marker_leak": false,
+        "prompt_hash": "7cf66701254aa2da3b68913e2c82420db66f39f0a32cd3c5e9d5ab771d1999e0",
+        "events": [
+          {
+            "at": 0.003811,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.111459,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "I"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.130937,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " can"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.15066,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "'t"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.170455,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " provide"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.190271,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " the"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.210023,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " exact"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.229563,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " output"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.249246,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " you"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.268948,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "'re"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.28864,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " requesting"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.308296,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.32793,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " I"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.347947,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " don"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.367534,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "'t"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.387303,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " have"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.40712,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " access"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.426751,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " to"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.447121,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " disk"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.46677,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " storage"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.486893,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " information"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.506622,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " or"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.526296,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " the"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.546162,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " ability"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.565744,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " to"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.585361,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " generate"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.605051,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " specific"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.625168,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " system"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.645185,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-related"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.664543,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " responses"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.684242,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " like"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.706461,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": " \""
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.706924,
+            "data": {
+              "id": "chatcmpl-b1c22931",
+              "object": "chat.completion.chunk",
+              "created": 1784774028,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "LAG"
+                  },
+                  "finish_reason": "length"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "after_summary": {
+        "disk_hits": 0,
+        "disk_writes": 99,
+        "disk_evictions": 99,
+        "disk_blocks": 0,
+        "disk_size_gb": 0.0,
+        "last_cache_execution": {
+          "request_id": "chatcmpl-739edd5a",
+          "cache_detail": "block-disk+tq-native",
+          "cached_tokens": 2880,
+          "blocks": 45,
+          "selection": {
+            "paged_cached_tokens": 2880,
+            "paged_cold_tokens": 0,
+            "warm_cached_tokens": 0,
+            "hot_advantage_tokens": 2880,
+            "hot_advantage_threshold_tokens": 64,
+            "selected": "paged",
+            "rejected": null,
+            "reason": "no_warm_prefix_alternative"
+          },
+          "reconstructed": true,
+          "dequantized": false,
+          "reconstruction_seconds": 0.600772,
+          "dequantization_seconds": 0.0,
+          "total_worker_cache_seconds": 0.601229,
+          "reconstruction_ok": true,
+          "tq_native_blocks": 540,
+          "tq_rewrapped": true,
+          "tq_rewrap_seconds": 0.000128
+        },
+        "disk_hit_delta": 0,
+        "disk_eviction_delta": 52
+      }
+    },
+    {
+      "label": "d_store",
+      "expected": "LAG-DISKGB-P3",
+      "before_summary": {
+        "disk_hits": 0,
+        "disk_writes": 99,
+        "disk_evictions": 99,
+        "disk_blocks": 0,
+        "disk_size_gb": 0.0
+      },
+      "result": {
+        "label": "d_store",
+        "status": 200,
+        "elapsed": 10.398031,
+        "content": "LAG-DISKGB-P3",
+        "reasoning": "",
+        "content_deltas": 6,
+        "finish": [
+          "stop"
+        ],
+        "terminals": [
+          "[DONE]"
+        ],
+        "marker_leak": false,
+        "prompt_hash": "cc7344da56f5442c5c0427c0fb451f2485fb2cbeee724354b46d2f5812d04af2",
+        "events": [
+          {
+            "at": 0.003221,
+            "data": {
+              "id": "chatcmpl-c13324b6",
+              "object": "chat.completion.chunk",
+              "created": 1784774039,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.278184,
+            "data": {
+              "id": "chatcmpl-c13324b6",
+              "object": "chat.completion.chunk",
+              "created": 1784774039,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "LAG"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.29786,
+            "data": {
+              "id": "chatcmpl-c13324b6",
+              "object": "chat.completion.chunk",
+              "created": 1784774039,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-D"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.317822,
+            "data": {
+              "id": "chatcmpl-c13324b6",
+              "object": "chat.completion.chunk",
+              "created": 1784774039,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "ISK"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.337939,
+            "data": {
+              "id": "chatcmpl-c13324b6",
+              "object": "chat.completion.chunk",
+              "created": 1784774039,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "GB"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.357982,
+            "data": {
+              "id": "chatcmpl-c13324b6",
+              "object": "chat.completion.chunk",
+              "created": 1784774039,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-P"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.377964,
+            "data": {
+              "id": "chatcmpl-c13324b6",
+              "object": "chat.completion.chunk",
+              "created": 1784774039,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "3"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 10.397938,
+            "data": {
+              "id": "chatcmpl-c13324b6",
+              "object": "chat.completion.chunk",
+              "created": 1784774039,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {},
+                  "finish_reason": "stop"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "after_summary": {
+        "disk_hits": 0,
+        "disk_writes": 151,
+        "disk_evictions": 151,
+        "disk_blocks": 0,
+        "disk_size_gb": 0.0,
+        "last_cache_execution": {
+          "request_id": "chatcmpl-739edd5a",
+          "cache_detail": "block-disk+tq-native",
+          "cached_tokens": 2880,
+          "blocks": 45,
+          "selection": {
+            "paged_cached_tokens": 2880,
+            "paged_cold_tokens": 0,
+            "warm_cached_tokens": 0,
+            "hot_advantage_tokens": 2880,
+            "hot_advantage_threshold_tokens": 64,
+            "selected": "paged",
+            "rejected": null,
+            "reason": "no_warm_prefix_alternative"
+          },
+          "reconstructed": true,
+          "dequantized": false,
+          "reconstruction_seconds": 0.600772,
+          "dequantization_seconds": 0.0,
+          "total_worker_cache_seconds": 0.601229,
+          "reconstruction_ok": true,
+          "tq_native_blocks": 540,
+          "tq_rewrapped": true,
+          "tq_rewrap_seconds": 0.000128
+        },
+        "disk_hit_delta": 0,
+        "disk_eviction_delta": 52
+      }
+    },
+    {
+      "label": "d_refault",
+      "expected": "LAG-DISKGB-D2",
+      "before_summary": {
+        "disk_hits": 0,
+        "disk_writes": 151,
+        "disk_evictions": 151,
+        "disk_blocks": 0,
+        "disk_size_gb": 0.0
+      },
+      "result": {
+        "label": "d_refault",
+        "status": 200,
+        "elapsed": 8.712103,
+        "content": "LAG-DISKGB-D2",
+        "reasoning": "",
+        "content_deltas": 6,
+        "finish": [
+          "stop"
+        ],
+        "terminals": [
+          "[DONE]"
+        ],
+        "marker_leak": false,
+        "prompt_hash": "dc0bd0ec88369a254fc5559b92aa5db741b2cee1961e4459e035d44bc035ef3a",
+        "events": [
+          {
+            "at": 0.004263,
+            "data": {
+              "id": "chatcmpl-3f5b4e27",
+              "object": "chat.completion.chunk",
+              "created": 1784774049,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 8.593737,
+            "data": {
+              "id": "chatcmpl-3f5b4e27",
+              "object": "chat.completion.chunk",
+              "created": 1784774049,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "LAG"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 8.61336,
+            "data": {
+              "id": "chatcmpl-3f5b4e27",
+              "object": "chat.completion.chunk",
+              "created": 1784774049,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-D"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 8.633085,
+            "data": {
+              "id": "chatcmpl-3f5b4e27",
+              "object": "chat.completion.chunk",
+              "created": 1784774049,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "ISK"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 8.652743,
+            "data": {
+              "id": "chatcmpl-3f5b4e27",
+              "object": "chat.completion.chunk",
+              "created": 1784774049,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "GB"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 8.672451,
+            "data": {
+              "id": "chatcmpl-3f5b4e27",
+              "object": "chat.completion.chunk",
+              "created": 1784774049,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-D"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 8.691975,
+            "data": {
+              "id": "chatcmpl-3f5b4e27",
+              "object": "chat.completion.chunk",
+              "created": 1784774049,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "2"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 8.712014,
+            "data": {
+              "id": "chatcmpl-3f5b4e27",
+              "object": "chat.completion.chunk",
+              "created": 1784774049,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {},
+                  "finish_reason": "stop"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "after_summary": {
+        "disk_hits": 0,
+        "disk_writes": 197,
+        "disk_evictions": 197,
+        "disk_blocks": 0,
+        "disk_size_gb": 0.0,
+        "last_cache_execution": {
+          "request_id": "chatcmpl-3f5b4e27",
+          "cache_detail": "block-disk+tq-native",
+          "cached_tokens": 2880,
+          "blocks": 45,
+          "selection": {
+            "paged_cached_tokens": 2880,
+            "paged_cold_tokens": 0,
+            "warm_cached_tokens": 0,
+            "hot_advantage_tokens": 2880,
+            "hot_advantage_threshold_tokens": 64,
+            "selected": "paged",
+            "rejected": null,
+            "reason": "no_warm_prefix_alternative"
+          },
+          "reconstructed": true,
+          "dequantized": false,
+          "reconstruction_seconds": 0.664415,
+          "dequantization_seconds": 0.0,
+          "total_worker_cache_seconds": 0.664858,
+          "reconstruction_ok": true,
+          "tq_native_blocks": 540,
+          "tq_rewrapped": true,
+          "tq_rewrap_seconds": 0.000117
+        },
+        "disk_hit_delta": 0,
+        "disk_eviction_delta": 46
+      }
+    },
+    {
+      "label": "a_after_eviction_safe",
+      "expected": "LAG-DISKGB-C",
+      "before_summary": {
+        "disk_hits": 0,
+        "disk_writes": 197,
+        "disk_evictions": 197,
+        "disk_blocks": 0,
+        "disk_size_gb": 0.0
+      },
+      "result": {
+        "label": "a_after_eviction_safe",
+        "status": 200,
+        "elapsed": 7.988925,
+        "content": "LAG-DISKGB-C",
+        "reasoning": "",
+        "content_deltas": 5,
+        "finish": [
+          "stop"
+        ],
+        "terminals": [
+          "[DONE]"
+        ],
+        "marker_leak": false,
+        "prompt_hash": "cba337173ed35e7d92e1ee3967f65676adcca64a3a2d4dac985c80288902858c",
+        "events": [
+          {
+            "at": 0.004375,
+            "data": {
+              "id": "chatcmpl-e3aab4fc",
+              "object": "chat.completion.chunk",
+              "created": 1784774058,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 7.889694,
+            "data": {
+              "id": "chatcmpl-e3aab4fc",
+              "object": "chat.completion.chunk",
+              "created": 1784774058,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "LAG"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 7.909303,
+            "data": {
+              "id": "chatcmpl-e3aab4fc",
+              "object": "chat.completion.chunk",
+              "created": 1784774058,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-D"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 7.929411,
+            "data": {
+              "id": "chatcmpl-e3aab4fc",
+              "object": "chat.completion.chunk",
+              "created": 1784774058,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "ISK"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 7.949091,
+            "data": {
+              "id": "chatcmpl-e3aab4fc",
+              "object": "chat.completion.chunk",
+              "created": 1784774058,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "GB"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 7.968767,
+            "data": {
+              "id": "chatcmpl-e3aab4fc",
+              "object": "chat.completion.chunk",
+              "created": 1784774058,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-C"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 7.98883,
+            "data": {
+              "id": "chatcmpl-e3aab4fc",
+              "object": "chat.completion.chunk",
+              "created": 1784774058,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {},
+                  "finish_reason": "stop"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "after_summary": {
+        "disk_hits": 0,
+        "disk_writes": 198,
+        "disk_evictions": 198,
+        "disk_blocks": 0,
+        "disk_size_gb": 0.0,
+        "last_cache_execution": {
+          "request_id": "chatcmpl-e3aab4fc",
+          "cache_detail": "block-disk+tq-native",
+          "cached_tokens": 2880,
+          "blocks": 45,
+          "selection": {
+            "paged_cached_tokens": 2880,
+            "paged_cold_tokens": 0,
+            "warm_cached_tokens": 0,
+            "hot_advantage_tokens": 2880,
+            "hot_advantage_threshold_tokens": 64,
+            "selected": "paged",
+            "rejected": null,
+            "reason": "no_warm_prefix_alternative"
+          },
+          "reconstructed": true,
+          "dequantized": false,
+          "reconstruction_seconds": 0.659687,
+          "dequantization_seconds": 0.0,
+          "total_worker_cache_seconds": 0.660133,
+          "reconstruction_ok": true,
+          "tq_native_blocks": 540,
+          "tq_rewrapped": true,
+          "tq_rewrap_seconds": 0.000116
+        },
+        "disk_hit_delta": 0,
+        "disk_eviction_delta": 1
+      }
+    }
+  ],
+  "health_after": {
+    "label": "after",
+    "status": "healthy",
+    "scheduler": {
+      "num_waiting": 0,
+      "num_running": 1,
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1,
+        "prompt_snapshot_max_bytes": null,
+        "prompt_snapshot_last_estimated_bytes": 0,
+        "prompt_snapshot_oversize_skips": 0,
+        "prompt_snapshot_headroom_skips": 0,
+        "prompt_snapshot_last_headroom_bytes": 0
+      },
+      "single_active_decode": true,
+      "ewma_ttft_seconds": 0.829,
+      "cache_hit_requests": 3,
+      "cache_hit_tokens": 8640,
+      "cache_hit_tokens_by_detail": {
+        "block-disk+tq-native": 8640
+      },
+      "hybrid_kv_without_ssm_hits": 0,
+      "hybrid_kv_without_ssm_tokens": 0,
+      "last_hybrid_kv_without_ssm": null,
+      "cache_reuse_skips": 0,
+      "cache_reuse_skip_tokens": 0,
+      "last_cache_reuse_skip": null,
+      "cache_reuse_partial_downgrades": 0,
+      "cache_reuse_partial_tokens": 0,
+      "last_cache_reuse_partial": null,
+      "last_cache_selection": {
+        "paged_cached_tokens": 2880,
+        "paged_cold_tokens": 0,
+        "warm_cached_tokens": 0,
+        "hot_advantage_tokens": 2880,
+        "hot_advantage_threshold_tokens": 64,
+        "selected": "paged",
+        "rejected": null,
+        "reason": "no_warm_prefix_alternative"
+      },
+      "last_cache_execution": {
+        "request_id": "chatcmpl-e3aab4fc",
+        "cache_detail": "block-disk+tq-native",
+        "cached_tokens": 2880,
+        "blocks": 45,
+        "selection": {
+          "paged_cached_tokens": 2880,
+          "paged_cold_tokens": 0,
+          "warm_cached_tokens": 0,
+          "hot_advantage_tokens": 2880,
+          "hot_advantage_threshold_tokens": 64,
+          "selected": "paged",
+          "rejected": null,
+          "reason": "no_warm_prefix_alternative"
+        },
+        "reconstructed": true,
+        "dequantized": false,
+        "reconstruction_seconds": 0.659687,
+        "dequantization_seconds": 0.0,
+        "total_worker_cache_seconds": 0.660133,
+        "reconstruction_ok": true,
+        "tq_native_blocks": 540,
+        "tq_rewrapped": true,
+        "tq_rewrap_seconds": 0.000116
+      }
+    },
+    "scheduler_cache": {
+      "hits": 3,
+      "misses": 4,
+      "hit_rate": 0.42857142857142855,
+      "tokens_saved": 8640,
+      "active_requests": 1,
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 0,
+        "system": 6
+      },
+      "backend_mode": "block_disk_only",
+      "paged_ram_enabled": false,
+      "disk_only": true,
+      "paged_frugal": true,
+      "ram_mirror_policy": "disk_only",
+      "block_size": 64,
+      "max_blocks": 1000,
+      "usable_blocks": 999,
+      "capacity_tokens": 63936,
+      "allocated_blocks": 46,
+      "free_blocks": 954,
+      "shared_blocks": 0,
+      "total_tokens_cached": 12504,
+      "utilization": 0.04504504504504504,
+      "cache_hit_rate": 0.5672268907563025,
+      "cache_hits": 270,
+      "cache_misses": 206,
+      "disk_hits": 0,
+      "disk_misses": 52,
+      "cow_copies": 0,
+      "evictions": 0,
+      "disk_promotion_hits": 0,
+      "disk_lookup_misses": 8,
+      "disk_counter_source": "block_disk_store",
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1,
+        "prompt_snapshot_max_bytes": null,
+        "prompt_snapshot_last_estimated_bytes": 0,
+        "prompt_snapshot_oversize_skips": 0,
+        "prompt_snapshot_headroom_skips": 0,
+        "prompt_snapshot_last_headroom_bytes": 0
+      }
+    },
+    "block_disk_cache": {
+      "blocks_on_disk": 0,
+      "disk_size_bytes": 0,
+      "disk_size_gb": 0.0,
+      "total_accesses": 0,
+      "total_tokens_on_disk": 0,
+      "total_cached_tokens": 0,
+      "disk_hits": 0,
+      "disk_misses": 52,
+      "disk_writes": 198,
+      "disk_evictions": 198,
+      "tq_native_writes": 198,
+      "tq_native_hits": 0,
+      "tq_native_enabled": true
+    },
+    "totals": {
+      "ram_tokens_cached": 12504,
+      "l1_indexed_tokens": 12504,
+      "l1_resident_bytes": 1221661152,
+      "l1_resident_bytes_mb": 1165.07,
+      "l1_max_resident_bytes": 0,
+      "l1_max_resident_bytes_mb": 0.0,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 0,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 0,
+      "l2_tokens_on_disk_store_sum": 0,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    },
+    "native_cache": {
+      "family": "laguna",
+      "schema": "mixed_swa_kv_v1",
+      "cache_type": "mixed_swa_kv",
+      "cache_subtype": "kv",
+      "components": [
+        "full_attention_kv",
+        "sliding_window_kv",
+        "rotating_window_metadata"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "storage_only"
+      },
+      "storage_quantization": {
+        "enabled": true,
+        "mode": "storage_boundary",
+        "bits": 4,
+        "group_size": 64,
+        "applies_to": "full_attention_kv_only",
+        "metadata_policy": "preserve_rotating_window_metadata",
+        "sliding_window_policy": "native_rotating_kv_state",
+        "restore_policy": "decode_full_attention_tq_and_restore_rotating_state"
+      },
+      "prefix": true,
+      "paged": false,
+      "block_disk_only": true,
+      "block_disk_l2": true
+    }
+  },
+  "checks": {
+    "disk_only": true,
+    "empty_custom_store_before": true,
+    "all_status_200": true,
+    "all_exact": false,
+    "all_done": true,
+    "no_marker_leak": true,
+    "disk_writes_positive": true,
+    "disk_hits_positive": false,
+    "disk_evictions_positive": true,
+    "surviving_prefix_refault_hit": false,
+    "older_prefix_safe_after_eviction_exact": true
+  }
+}
