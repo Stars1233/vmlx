@@ -1671,10 +1671,15 @@
 - Real Electron current-source Laguna JANG_4M was exercised with Paged-Off
   Block Disk L2 and proved a post-restart never-stored changed suffix restoring
   6,400 SSD tokens with mixed-SWA native state preserved.
+- Real Electron current-source Gemma 4 E2B JANG_4M was created with app-derived
+  parser/defaults and exercised both cache modes. Paged-On clean-restart
+  suffix D restored 4,672 SSD tokens as `paged+mixed_swa+disk`; Paged-Off
+  disk-only restart suffix C restored 4,672 SSD tokens as
+  `block-disk+mixed_swa` with `ram_tokens_cached=0`.
 - Added the focused cache-control policy regression that Block Disk SSD/L2
   stays available whether Paged RAM is on or off, and that legacy disk is only
   available after both Paged RAM and Block Disk L2 are off. After syncing the
   patch to the live remote checkout, the focused policy test passed `18/18`.
-- Updated the campaign README and ranked open issues. Gemma 4 cache proof,
-  bounded eviction/refault, corrupt/missing companion fallback, and remaining
-  cache archetypes are still open.
+- Updated the campaign README and ranked open issues. Bounded eviction/refault,
+  corrupt/missing companion fallback, and remaining cache archetypes are still
+  open.

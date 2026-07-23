@@ -7761,6 +7761,12 @@ Status: `VERIFIED-LIVE_SCOPED / CACHE MATRIX PARTIAL`.
   restart with a never-stored suffix: 6,400 restored tokens,
   `block-disk+tq-native`, `backend_mode=block_disk_only`,
   `paged_ram_enabled=false`, and `ram_tokens_cached=0`.
+- Gemma 4 E2B JANG_4M was created through Electron with app-derived defaults:
+  parser family `gemma4`, temperature `1.0`, top-p `0.95`, top-k `64`,
+  Paged RAM On, and Block Disk L2 On. It proves native mixed-SWA SSD partial
+  reuse both with Paged RAM On (`4672` tokens,
+  `paged+mixed_swa+disk`, `disk_hit=true`) and with Paged RAM Off (`4672`
+  tokens, `block-disk+mixed_swa`, `disk_hit=true`, `ram_tokens_cached=0`).
 - Current source policy leaves **Block Disk Cache (SSD / L2)** available with
   Paged RAM both On and Off. The older legacy disk cache is only relevant when
   both Paged RAM and Block Disk L2 are off; do not promote that legacy tier in
@@ -7769,8 +7775,8 @@ Status: `VERIFIED-LIVE_SCOPED / CACHE MATRIX PARTIAL`.
   `tests/cache-control-policy.test.ts` passed `18/18`.
 - Evidence is retained under
   `docs/internal/release-gates/20260722_cache_partial_bonsai_gemma_laguna/`.
-- Still open before cache release closure: Gemma 4 live cache proof, low-limit
-  `Max Cache Blocks` eviction/refault, low-limit `Block Cache Max (GB)`
-  eviction/refault, safe corrupt/missing companion fallback, and remaining
-  architecture archetypes including M3 sparse, DSV4 composite, OpenPangu native
-  prompt disk, standard KV, CCA, and media-salted cache.
+- Still open before cache release closure: low-limit `Max Cache Blocks`
+  eviction/refault, low-limit `Block Cache Max (GB)` eviction/refault, safe
+  corrupt/missing companion fallback, and remaining architecture archetypes
+  including M3 sparse, DSV4 composite, OpenPangu native prompt disk, standard
+  KV, CCA, and media-salted cache.

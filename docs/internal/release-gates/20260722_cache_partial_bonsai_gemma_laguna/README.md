@@ -20,8 +20,6 @@ SSD across changed suffixes and process restarts?
 
 It does **not** close global cache hierarchy:
 
-- Gemma 4 was not run in this pass because the current Electron userData has no
-  existing Gemma session.
 - Low-capacity `Max Cache Blocks` / `Block Cache Max (GB)` eviction and refault
   were not live-run here.
 - DSV4 composite, MiniMax M3 sparse/MSA, openPangu prompt disk, CCA/ZAYA, and
@@ -125,6 +123,79 @@ KV. The retained `last_cache_execution` reports `disk_blocks` and
 `cache_detail=block-disk+tq-native`; this family does not currently expose a
 separate boolean `disk_hit` in the same shape as Bonsai.
 
+## Gemma 4 E2B JANG_4M
+
+Model:
+`/Volumes/EricsLLMDrive/jangq-ai/gemma-4-E2B-it-qat-JANG_4M`.
+
+The session was created through Electron `sessions.create` with an empty config
+so the app applied bundle-derived startup defaults. App detection and the
+created config agree with the bundle:
+
+- `family=gemma4`
+- `toolParser=gemma4`
+- `reasoningParser=gemma4`
+- `supportsThinking=true`
+- `isMultimodal=true`
+- `cacheType=rotating_kv`
+- generation defaults from `generation_config.json`: temperature `1.0`,
+  top-p `0.95`, top-k `64`
+- created session defaults: `usePagedCache=true`,
+  `enableBlockDiskCache=true`, `kvCacheQuantization=auto`
+
+Real Electron Start loaded PID `55786` first, and later restart rows loaded
+PIDs `55971`, `56074`, `56157`, `56259`, and restored default Paged-On PID
+`56353`. The engine argv contained `--tool-call-parser gemma4`,
+`--reasoning-parser gemma4`, `--use-paged-cache` or `--no-paged-cache` per
+row, and `--enable-block-disk-cache`.
+
+Health grounded the native cache as:
+
+- `schema=mixed_swa_kv_v1`
+- components: `full_attention_kv`, `sliding_window_kv`,
+  `rotating_window_metadata`
+- `storage_quantization.bits=4`
+- `applies_to=full_and_sliding_attention_kv`
+- `metadata_policy=preserve_rotating_window_metadata`
+
+### Gemma Paged-On + SSD/L2
+
+| Artifact | Request | Result |
+|---|---|---|
+| `gemma_e2b_paged_on_store/summary.json` | same-process warm A | `4710` cached tokens, `paged+mixed_swa`, exact marker |
+| `gemma_e2b_paged_on_store/summary.json` | changed-tail partial B | `4672` cached tokens, `paged+mixed_swa`, exact marker |
+| `gemma_e2b_paged_on_probe_after_restart/summary.json` | restart A | `4710` cached tokens, `paged+mixed_swa+disk`, `disk_hit=true`, exact marker |
+| `gemma_e2b_paged_on_suffix_d_partial_after_clean_restart/summary.json` | never-stored suffix D after clean restart | `4672` cached tokens, `paged+mixed_swa+disk`, `disk_hit=true`, exact marker |
+
+Interpretation: with Paged Cache on, Gemma 4 E2B can restore a partial changed
+suffix from SSD after process restart and promote it into the paged tier while
+preserving mixed-SWA metadata.
+
+### Gemma Paged-Off + SSD/L2 disk-only
+
+The session was updated through Electron `sessions.update`, stopped, and
+restarted to `usePagedCache=false`, `enableBlockDiskCache=true`. Health before
+the disk-only proof reported:
+
+- `backend_mode=block_disk_only`
+- `paged_ram_enabled=false`
+- `disk_only=true`
+- `ram_tokens_cached=0`
+- native cache `mixed_swa_kv_v1`
+
+| Artifact | Request | Result |
+|---|---|---|
+| `gemma_e2b_paged_off_disk_only_store/summary.json` | same-process warm A | `4710` cached tokens, `block-disk+mixed_swa`, `disk_hit=true`, exact marker |
+| `gemma_e2b_paged_off_disk_only_store/summary.json` | changed-tail partial B | `4672` cached tokens, `block-disk+mixed_swa`, `disk_hit=true`, exact marker |
+| `gemma_e2b_paged_off_suffix_c_partial_after_restart/summary.json` | never-stored suffix C after restart | `4672` cached tokens, `block-disk+mixed_swa`, `disk_hit=true`, `ram_tokens_cached=0`, exact marker |
+
+Interpretation: with Paged Cache off, Gemma 4 E2B still finds partial common
+prefix blocks from SSD, reconstructs them through the Block Disk L2 path, and
+keeps zero paged-RAM residency.
+
+After this proof, the session was restored to `usePagedCache=true`,
+`enableBlockDiskCache=true`.
+
 ## UI control policy
 
 The intended user-facing behavior is:
@@ -161,7 +232,6 @@ tests/cache-control-policy.test.ts (18 tests) passed
 
 ## Still open before release
 
-- Gemma 4 current-source Electron/API/cache run.
 - Low-limit `Max Cache Blocks` eviction/refault live proof.
 - Low-limit `Block Cache Max (GB)` disk eviction/refault live proof.
 - Cross-family cache archetypes: standard KV, M3 sparse/MSA, DSV4 composite,
