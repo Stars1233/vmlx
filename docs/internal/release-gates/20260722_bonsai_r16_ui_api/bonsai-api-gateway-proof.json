@@ -1,0 +1,203 @@
+{
+  "ts": "2026-07-22T18:41:35-0700",
+  "repo": "/Users/eric/mlx/vllm-mlx-r16-reasoning-p0-live",
+  "base": "http://127.0.0.1:8088",
+  "model": "dealignai/Bonsai-27b-Ternary-JANG-CRACK",
+  "cases": [
+    {
+      "path": "/v1/chat/completions",
+      "elapsed_s": 7.797,
+      "status": 200,
+      "reasoning_chars": 1174,
+      "content": "BONSAI-R16-API-CHAT-B-DONE",
+      "content_chars": 26,
+      "finishes": [
+        "stop",
+        "DONE"
+      ],
+      "event_head": [],
+      "event_tail": [],
+      "tool_chunk_count": 0,
+      "tool_chunks_tail": [],
+      "raw_markers_in_content": [],
+      "raw_marker_in_reasoning": [],
+      "reasoning_head": "Here's a thinking process:\n\n1.  **Analyze User Input:**\n   - **Prompt:** `[BONSAI-R16-API-CHAT-B] Privately verify 23 times 39. Your visible response must be exactly BONSAI-R16-API-CHAT-B-DONE and nothing else. Do not include the calculation in visible content.`\n   - **Key Requirements:**\n     - Pri",
+      "sample_lines": [
+        "data: {\"id\": \"chatcmpl-83b85216\", \"object\": \"chat.completion.chunk\", \"created\": 1784770895, \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-83b85216\", \"object\": \"chat.completion.chunk\", \"created\": 1784770895, \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \"Here\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-83b85216\", \"object\": \"chat.completion.chunk\", \"created\": 1784770895, \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \"'s\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-83b85216\", \"object\": \"chat.completion.chunk\", \"created\": 1784770895, \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \" a\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-83b85216\", \"object\": \"chat.completion.chunk\", \"created\": 1784770895, \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \" thinking\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-83b85216\", \"object\": \"chat.completion.chunk\", \"created\": 1784770895, \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \" process\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-83b85216\", \"object\": \"chat.completion.chunk\", \"created\": 1784770895, \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \":\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-83b85216\", \"object\": \"chat.completion.chunk\", \"created\": 1784770895, \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \"\\n\\n\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-83b85216\", \"object\": \"chat.completion.chunk\", \"created\": 1784770895, \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \"1\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-83b85216\", \"object\": \"chat.completion.chunk\", \"created\": 1784770895, \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \".\"}}]}",
+        ""
+      ]
+    },
+    {
+      "path": "/v1/responses",
+      "elapsed_s": 7.534,
+      "status": 200,
+      "reasoning_chars": 1022,
+      "content": "BONSAI-R16-API-RESP-B-DONE",
+      "content_chars": 26,
+      "finishes": [],
+      "event_head": [
+        "response.created",
+        "response.created",
+        "response.output_item.added",
+        "response.output_item.added",
+        "response.reasoning_summary_part.added",
+        "response.reasoning_summary_part.added",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta",
+        "response.reasoning_summary_text.delta"
+      ],
+      "event_tail": [
+        "response.output_text.delta",
+        "response.output_text.delta",
+        "response.output_text.done",
+        "response.output_text.done",
+        "response.content_part.done",
+        "response.content_part.done",
+        "response.output_item.done",
+        "response.output_item.done",
+        "response.completed",
+        "response.completed"
+      ],
+      "tool_chunk_count": 0,
+      "tool_chunks_tail": [],
+      "raw_markers_in_content": [],
+      "raw_marker_in_reasoning": [],
+      "reasoning_head": "Here's a thinking process:\n\n1.  **Analyze User Input:**\n   - **Prompt:** `[BONSAI-R16-API-RESP-B] Privately verify 31 times 29. Your visible response must be exactly BONSAI-R16-API-RESP-B-DONE and nothing else. Do not include the calculation in visible content.`\n   - **Key Requirements:**\n     - Pri",
+      "sample_lines": [
+        "event: response.created",
+        "data: {\"type\": \"response.created\", \"response\": {\"id\": \"resp_e021d7e6857a\", \"object\": \"response\", \"created_at\": 1784770903, \"status\": \"in_progress\", \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"output\": []}, \"sequence_number\": 0}",
+        "",
+        "event: response.output_item.added",
+        "data: {\"type\": \"response.output_item.added\", \"output_index\": 0, \"item\": {\"id\": \"rs_8b115e3559cf\", \"type\": \"reasoning\", \"status\": \"in_progress\", \"summary\": [], \"content\": []}, \"sequence_number\": 1}",
+        "",
+        "event: response.reasoning_summary_part.added",
+        "data: {\"type\": \"response.reasoning_summary_part.added\", \"item_id\": \"rs_8b115e3559cf\", \"output_index\": 0, \"summary_index\": 0, \"part\": {\"type\": \"summary_text\", \"text\": \"\"}, \"sequence_number\": 2}",
+        "",
+        "event: response.reasoning_summary_text.delta",
+        "data: {\"type\": \"response.reasoning_summary_text.delta\", \"item_id\": \"rs_8b115e3559cf\", \"output_index\": 0, \"summary_index\": 0, \"delta\": \"Here\", \"sequence_number\": 3}",
+        "",
+        "event: response.reasoning_summary_text.delta",
+        "data: {\"type\": \"response.reasoning_summary_text.delta\", \"item_id\": \"rs_8b115e3559cf\", \"output_index\": 0, \"summary_index\": 0, \"delta\": \"'s\", \"sequence_number\": 4}",
+        "",
+        "event: response.reasoning_summary_text.delta",
+        "data: {\"type\": \"response.reasoning_summary_text.delta\", \"item_id\": \"rs_8b115e3559cf\", \"output_index\": 0, \"summary_index\": 0, \"delta\": \" a\", \"sequence_number\": 5}",
+        "",
+        "event: response.reasoning_summary_text.delta",
+        "data: {\"type\": \"response.reasoning_summary_text.delta\", \"item_id\": \"rs_8b115e3559cf\", \"output_index\": 0, \"summary_index\": 0, \"delta\": \" thinking\", \"sequence_number\": 6}"
+      ]
+    },
+    {
+      "path": "/v1/chat/completions",
+      "elapsed_s": 1.787,
+      "status": 200,
+      "reasoning_chars": 114,
+      "content": "",
+      "content_chars": 0,
+      "finishes": [
+        "tool_calls",
+        "DONE"
+      ],
+      "event_head": [],
+      "event_tail": [],
+      "tool_chunk_count": 2,
+      "tool_chunks_tail": [
+        [
+          {
+            "index": 0,
+            "id": "call_ad7e5c37",
+            "type": "function",
+            "function": {
+              "name": "",
+              "arguments": ""
+            }
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "function": {
+              "name": "file_info",
+              "arguments": "{\"path\": \"panel/package.json\"}"
+            }
+          }
+        ]
+      ],
+      "raw_markers_in_content": [],
+      "raw_marker_in_reasoning": [],
+      "reasoning_head": "The user wants me to call the file_info function exactly once with the path \"panel/package.json\". Let me do that.\n",
+      "sample_lines": [
+        "data: {\"id\": \"chatcmpl-248c53c8\", \"object\": \"chat.completion.chunk\", \"created\": 1784770910, \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-248c53c8\", \"object\": \"chat.completion.chunk\", \"created\": 1784770910, \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \"The\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-248c53c8\", \"object\": \"chat.completion.chunk\", \"created\": 1784770910, \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"choices\": [{\"index\": 0, \"delta\": {}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-248c53c8\", \"object\": \"chat.completion.chunk\", \"created\": 1784770910, \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \" user\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-248c53c8\", \"object\": \"chat.completion.chunk\", \"created\": 1784770910, \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"choices\": [{\"index\": 0, \"delta\": {}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-248c53c8\", \"object\": \"chat.completion.chunk\", \"created\": 1784770910, \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \" wants\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-248c53c8\", \"object\": \"chat.completion.chunk\", \"created\": 1784770910, \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"choices\": [{\"index\": 0, \"delta\": {}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-248c53c8\", \"object\": \"chat.completion.chunk\", \"created\": 1784770910, \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \" me\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-248c53c8\", \"object\": \"chat.completion.chunk\", \"created\": 1784770910, \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"choices\": [{\"index\": 0, \"delta\": {}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-248c53c8\", \"object\": \"chat.completion.chunk\", \"created\": 1784770910, \"model\": \"dealignai/Bonsai-27b-Ternary-JANG-CRACK\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \" to\"}}]}",
+        ""
+      ]
+    }
+  ],
+  "gateway_health": {
+    "status": "ok",
+    "single_model_mode": true,
+    "current_model": null,
+    "current_port": null
+  },
+  "engine_health_excerpt": {
+    "model_name": "dealignai/Bonsai-27b-Ternary-JANG-CRACK",
+    "runtime_capabilities": null,
+    "cache_stats": null,
+    "last_cache_execution": null
+  }
+}
