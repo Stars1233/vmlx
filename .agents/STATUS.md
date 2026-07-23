@@ -8417,6 +8417,31 @@ Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/qwen35-gateway-running-session-latency-live.json`.
 - The full release remains `PARTIAL / NOT RELEASE-READY`.
 
+## 2026-07-23 - OpenPangu typed prompt-L2 and generation discriminator
+
+Status: `FIXED+VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
+
+- Source `568c1e105d3b` replaces the global `_cache_extra_keys` cache bypass
+  with discriminator-aware memory, trie, and disk identities.
+- Current-head regression: 152 cache discriminator/generation-key/bypass/
+  memory/disk/prefix tests passed.
+- Exact affine JANG_3M OpenPangu artifact ran through the real source Electron
+  app on port 8007. Deliberate UI restart PIDs were 96166, 96760, and 97021.
+- Three inspected UI turns retained separate reasoning, real tool execution,
+  history, and correctly rendered math.
+- Direct and gateway Chat/Responses/Anthropic/Ollama artifacts retain exact
+  agentic continuations and truthful stream terminals.
+- Paged-Off exact SSD restart: 1,946 cached tokens from `disk`.
+- Paged-Off changed-tail SSD restart: 3,543/3,565 cached tokens from `disk`;
+  only the 22-token suffix was prefetched.
+- The cache is the native `openpangu_v2_composite_v2` prompt snapshot, not
+  generic block/TQ storage. Generic blocks and TQ remain N/A.
+- MTP remains unavailable for this exact artifact/runtime despite config
+  claims.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/openpangu-live/README.md`.
+- Release remains partial; no package/sign/notarize/publish action is implied.
+
 ## 2026-07-23 - R17 Ollama reasoning-history and real tool continuation
 
 Status: `VERIFIED-LIVE-SCOPED / EXACT MARKER PARTIAL / OVERALL PARTIAL`.

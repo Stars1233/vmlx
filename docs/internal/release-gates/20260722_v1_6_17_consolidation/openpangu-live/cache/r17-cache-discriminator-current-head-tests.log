@@ -1,0 +1,17 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.5, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/eric/mlx/vllm-mlx-r17-consolidation
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+plugins: anyio-4.14.2
+collected 152 items
+
+tests/test_cache_extra_key_backends.py ...                               [  1%]
+tests/test_cache_bypass.py ............................................. [ 31%]
+..................                                                       [ 43%]
+tests/test_generation_prompt_cache_key.py .......                        [ 48%]
+tests/test_disk_cache_unit.py .........                                  [ 53%]
+tests/test_memory_cache.py ............................................. [ 83%]
+....                                                                     [ 86%]
+tests/test_prefix_cache.py .....................                         [100%]
+
+============================= 152 passed in 13.94s =============================

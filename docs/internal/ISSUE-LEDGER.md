@@ -5468,3 +5468,38 @@ Status: `PARTIAL / CORRECTNESS FALLBACK LIVE / RELEASE BLOCKING`.
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/qwen35-ollama-reasoning-history-tool-live-1024.json`.
 - This is one Qwen-family streaming proof, not global Ollama, signed-app, or
   release closure.
+
+## 2026-07-23 - R17 cache discriminator and OpenPangu native prompt-L2
+
+- `R17-CACHE-GENERATION-DISCRIMINATOR`: `FIXED+VERIFIED-LIVE_SCOPED`.
+  `_cache_extra_keys` previously disabled memory-aware prefix, legacy prefix,
+  and prompt-disk L2 lookup for ordinary generation requests. Commit
+  `568c1e105d3b` preserves that discriminator in all three cache identities.
+  The current-head source regression passed 152 tests.
+- `R17-OPENPANGU-UI-PROTOCOL`: `VERIFIED-LIVE_SCOPED`.
+  Three inspected Electron turns showed separate reasoning, rendered math, a
+  real `file_info` call/result continuation, and history recall. Direct and
+  gateway Chat/Responses/Anthropic/Ollama artifacts retained progressive
+  reasoning/content separation, exact real tool loops, and truthful terminals.
+- `R17-OPENPANGU-PROMPT-L2-EXACT`: `VERIFIED-LIVE_SCOPED`.
+  With Paged RAM off, exact reuse saved 1,946 tokens in L1. After real UI
+  Stop/Start from zero RAM entries, the identical request restored 1,946
+  tokens from SSD and did not write a replacement.
+- `R17-OPENPANGU-PROMPT-L2-PARTIAL`: `VERIFIED-LIVE_SCOPED`.
+  After another real Electron restart, a 3,565-token changed-tail request
+  restored 3,543 shared-prefix tokens from SSD and prefetched the 22-token
+  suffix.
+- `R17-OPENPANGU-BLOCK-L2-TQ`: `N/A-ARCHITECTURE`.
+  The native `openpangu_v2_composite_v2` cache owns MLA, DSA indexer, rotating
+  SWA, and path-dependent convolution state. Generic paged blocks, block L2,
+  and TurboQuant KV remain disabled; the live typed-prompt hit reports zero
+  blocks and is not generic block proof.
+- `R17-OPENPANGU-MTP`: `OPEN-ARTIFACT/RUNTIME`.
+  Config and sidecar declare three layers, but the bundle index contains zero
+  MTP tensors and the runtime reports MTP unavailable.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/openpangu-live/README.md`.
+- Remaining: abort/network/fault recovery, corrupt typed-companion fallback,
+  disk-cap eviction/refault, 512K context, signed app, full suites, packaging,
+  notarization, and publication. Overall release remains
+  `PARTIAL / NOT RELEASE-READY`.

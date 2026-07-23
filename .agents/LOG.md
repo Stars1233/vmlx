@@ -2250,3 +2250,27 @@
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/qwen35-ollama-reasoning-history-tool-live.json`
   and
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/qwen35-ollama-reasoning-history-tool-live-1024.json`.
+
+## 2026-07-23 - OpenPangu generation-key cache recovery
+
+- Traced ordinary Chat/Responses cache misses to a global scheduler exclusion:
+  `_cache_extra_keys` was treated as a reason to bypass all prefix/prompt-disk
+  backends.
+- Commit `568c1e105d3b` made the generation discriminator part of memory,
+  prefix-trie, and disk keys. Current-head focused verification passed 152
+  tests.
+- Used the real isolated Electron Start/Stop controls for the exact affine
+  `openPangu-2.0-Flash-JANG_3M` bundle.
+- Proved exact L1 reuse, exact SSD reuse after restart, and changed-tail
+  partial SSD reuse after another restart:
+  - 1,946/1,947 exact prompt tokens from disk;
+  - 3,543/3,565 shared-prefix tokens from disk plus 22-token new suffix.
+- The same session already retained three visual turns and direct/gateway
+  Chat, Responses, Anthropic, and Ollama agentic flows. Visual math rendered
+  while raw API LaTeX/currency bytes remained unchanged.
+- Kept architecture truth explicit: this is native typed prompt L2 with MLA,
+  DSA indexer, rotating SWA, and convolution state. It is not generic paged,
+  block-disk, or TurboQuant proof.
+- Retained all current requests, SSE, health, argv, screenshots, source test
+  log, and hashes under
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/openpangu-live/`.

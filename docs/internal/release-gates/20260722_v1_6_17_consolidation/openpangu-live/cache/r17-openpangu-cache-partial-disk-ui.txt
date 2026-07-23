@@ -1,0 +1,156 @@
+Code
+Chat
+Server
+Tools
+Image
+API
+🇺🇸
+Sessions
+JANGQ-AI/openPangu-2.0-Flash-JANG_3M
+JANG_3M (3.83b)
+127.0.0.1:8007
+PID 97021
++ Chat
+Chat
+Server
+Cache
+Bench
+Embed
+Perf
+Logs
+Stop
+[R17-OP-UI-1] Privately compare 47 times 19 with 46 times 20. Do not call tools. In the visible answer, write exactly two lines: R17-OP-UI-1-DONE and \(47 \times 19 = 893 < 920 = 46 \times 20\).
+9:52 AM
+9:52 AM
+speak
+Reasoning
+847 chars
+R17-OP-UI-1-DONE
+47×19=893<920=46×20
+367 tokens
+30.5 t/s
+58.9 pp/s
+98 prompt
+1.67s TTFT
+13.8s total
+[R17-OP-UI-2] Call the built-in file_info tool exactly once with path panel/package.json. You must use the tool and must not answer from memory. After the real tool result, reply exactly R17-OP-UI-2-DONE SIZE=<the size_human field> and nothing else.
+9:52 AM
+9:52 AM
+speak
+Reasoning
+218 chars
+Reasoning
+4347 chars
+Info
+panel/package.json
+R17-OP-UI-2-DONE SIZE=5.2 KB
+1042 tokens
+23.0 t/s
+617.3 pp/s
+1149 prompt
+0.57s TTFT
+49.1s total
+[R17-OP-UI-3] Do not call tools. Recall the real size_human value from the previous tool result, and privately compare 72 times 13 with 71 times 14. Your only visible answer must be R17-OP-UI-3-DONE PRIOR_SIZE=5.2 KB.
+9:54 AM
+9:54 AM
+speak
+Reasoning
+1542 chars
+R17-OP-UI-3-DONE PRIOR_SIZE=5.2 KB
+476 tokens
+25.5 t/s
+368.1 pp/s
+399 prompt
+1.08s TTFT
+20.1s total
+Cache Management
+CACHE TOTALS
+RAM Resident Tokens
+0
+L1 Indexed Tokens
+0
+L1 Resident Memory
+0.0 / 0.0 MB
+L1 Evictions
+0
+L2 Tokens on Disk
+5,512
+Prompt L2 Tokens
+5,512
+Block L2 Tokens
+0
+PREFIX CACHE
+Hit Rate
+0.0%
+Entries
+1
+Memory
+4306.9 MB
+Hits / Misses
+0 / 1
+Cached Tokens
+0
+Evictions
+0
+Cache Bytes
+4306.9 / 10430 MB
+ASSISTANT
+1 entries
+4306.9 MB
+SCHEDULER
+Requests
+1
+Running
+0
+Waiting
+0
+TTFT EWMA
+0.127 s
+Prompt Tokens
+3,565
+Completion Tokens
+23
+Cache Hit Tokens
+3,543
+Cache Hit Requests
+1
+Hybrid KV-Only Misses
+0
+Cache Reuse Skips
+0
+Partial Reuse
+0
+HIT TOKENS BY DETAIL
+disk
+3,543
+CACHE CONTRACT
+Native Cache
+native_path_dependent_composite
+Schema
+openpangu_v2_composite_v2
+TurboQuant KV
+disabled
+Generic TQ-KV
+off (mla_and_path_dependent_conv_state)
+Stored KV Quant
+disabled
+Components
+mla_latent_kv, dsa_indexer_state, swa_rotating_window, path_dependent_conv_state
+DISK CACHE (L2)
+Entries
+2
+Size
+6938.5 MB
+Tokens on Disk
+5,512
+Hit Rate
+100.0%
+Hits / Misses
+1 / 0
+Stores
+1
+Show Entries
+Warm Cache
+Clear RAM
+Clear Prefix + L2
+Clear All

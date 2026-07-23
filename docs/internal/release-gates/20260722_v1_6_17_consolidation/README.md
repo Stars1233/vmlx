@@ -1366,3 +1366,65 @@ Remaining boundary:
   row. Broader long gateway soak, model swaps, remaining family/media/settings
   rows, full suites, packaging, signing, notarization, and publication remain
   open. Overall status remains `PARTIAL / NOT RELEASE-READY`.
+
+### R17-019 Generation-prompt cache discriminator and OpenPangu native L2
+
+Status: `FIXED+VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
+
+Global root cause and correction:
+
+- Normal Chat/Responses requests carry a generation-prompt discriminator in
+  `_cache_extra_keys`. The scheduler previously excluded every such request
+  from memory-aware prefix, legacy prefix, and prompt-disk L2 lookup.
+- Commit `568c1e105d3b` makes the discriminator part of the memory, trie, and
+  SQLite disk identity instead of using it as a global bypass.
+- The corrected current-head cache suites passed `152/152` tests across the
+  new discriminator backends plus generation-key, bypass, memory, disk, and
+  prefix-trie coverage.
+
+Current OpenPangu live proof:
+
+- Exact artifact:
+  `/Volumes/EricsLLMDrive/JANGQ-AI/openPangu-2.0-Flash-JANG_3M`.
+  This is affine JANG_3M, not JANGTQ/MXTQ or base MLX MXFP.
+- The real Electron Start button loaded the source engine on direct port
+  `8007`; deliberate UI Stop/Start checks produced PIDs `96166`, `96760`, and
+  `97021`.
+- Three inspected Electron turns kept reasoning separate, executed a real
+  `file_info` tool loop, preserved history, and rendered math without raw
+  dollar/backslash artifacts.
+- Direct and gateway Chat/Responses/Anthropic/Ollama harness artifacts retain
+  separate reasoning/content, exact real tool calls/results, progressive
+  visible output, and truthful terminal events.
+- With Paged RAM off, an exact Chat replay first hit L1 for `1,946` tokens.
+  After a real Electron restart from zero RAM entries, it restored the same
+  `1,946` tokens from SSD with `cache_detail=disk`.
+- A second restart proved changed-tail partial SSD reuse: the `3,565`-token
+  request restored a `3,543`-token shared prefix and prefetched only the
+  `22`-token suffix.
+
+Architecture boundary:
+
+- OpenPangu health identifies
+  `openpangu_v2_composite_v2`: MLA latent KV, DSA indexer, rotating SWA, and
+  path-dependent convolution state.
+- This path uses full-precision typed prompt L2. Generic paged blocks, block
+  L2, and TurboQuant KV are unsupported and remain off. The live partial hit
+  reports `blocks=0`; it is not mislabeled as generic partial-block reuse.
+- Config/sidecar claim three MTP layers, but the artifact index has zero MTP
+  tensors and runtime MTP is unavailable. MTP remains open.
+
+Evidence:
+
+- `openpangu-live/README.md`
+- `openpangu-live/openpangu-*-agentic-live.json`
+- `openpangu-live/cache/r17-openpangu-cache-health-after-restart-disk.json`
+- `openpangu-live/cache/r17-openpangu-cache-health-after-raw-extended-disk-partial.json`
+- `openpangu-live/cache/r17-openpangu-cache-partial-disk-ui.png`
+
+Remaining boundary:
+
+- Abort/network/fault recovery, corrupt typed-companion fallback, capacity
+  eviction/refault, 512K context, signed-app repetition, full suites,
+  packaging, notarization, and publication remain open. Overall v1.6.17
+  remains `PARTIAL / NOT RELEASE-READY`.
