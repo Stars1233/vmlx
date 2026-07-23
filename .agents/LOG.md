@@ -1985,3 +1985,19 @@
   finals, and zero marker leaks.
 - Retained:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/gemma-settings-health-gateway-live.json`.
+
+## 2026-07-23 - DSV4 bundle pool codec and math/API proof
+
+- Traced the live DSV4 pool-codec mismatch to hard-coded panel and engine
+  defaults that ignored `jang_config.cache.pool_quant_default=false`.
+- Added one model-detection field and one engine bundle resolver; preserved
+  explicit saved UI/env overrides and unstamped legacy fallback.
+- Real Electron reset/save/start loaded PID `3423`. Health reports
+  `pool_quant.enabled=false`, env `0`, native composite prefix/paged/block-L2
+  active, generic TQ KV disabled.
+- Tightened inline KaTeX parsing to one line and changed parse errors to escaped
+  fallback. Live completed UI surface rerendered with zero `.katex-error`.
+- Direct raw Chat SSE preserved LaTeX bytes. Direct reasoning Chat SSE kept
+  reasoning/content deltas separate and terminalized once.
+- Focused verification: panel `441`, math `13`, Python DSV4 `80`, typecheck
+  pass, bundled-Python and Electron production build pass.

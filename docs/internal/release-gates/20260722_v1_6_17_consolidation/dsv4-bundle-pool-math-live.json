@@ -1,0 +1,89 @@
+{
+  "status": "VERIFIED_LIVE_SCOPED",
+  "host": "erics-m5-max.local",
+  "checkout": "/Users/eric/mlx/vllm-mlx-r17-consolidation",
+  "electron": {
+    "cdp_port": 9335,
+    "gateway_port": 8085,
+    "user_data_dir": "/Users/eric/.vmlx-r17-consolidation-dev",
+    "model_started_with_ui": true,
+    "model_path": "/Volumes/EricsLLMDrive/dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+    "pid": 3423,
+    "model_port": 8002
+  },
+  "bundle_truth": {
+    "weight_format": "affine",
+    "cache_pool_quant_default": false,
+    "cache_schema": "deepseek_v4_v7",
+    "generic_turboquant_kv": false,
+    "sampling_defaults": {
+      "temperature": 0.6,
+      "top_p": 0.95,
+      "max_new_tokens": 4096,
+      "repetition_penalty": 1.0
+    }
+  },
+  "saved_ui_config": {
+    "dsv4PrefixCache": true,
+    "dsv4PoolQuant": false,
+    "usePagedCache": true,
+    "enableBlockDiskCache": true
+  },
+  "health": {
+    "status": "healthy",
+    "backend_mode": "paged",
+    "block_size": 256,
+    "max_blocks": 1000,
+    "block_disk_l2": true,
+    "native_cache_family": "deepseek_v4",
+    "native_cache_type": "native_composite",
+    "native_pool_quant_enabled": false,
+    "native_pool_quant_env": "0",
+    "generic_turboquant_kv_enabled": false,
+    "effective_defaults": {
+      "temperature": 0.6,
+      "top_p": 0.95,
+      "top_k": 0,
+      "min_p": 0.0,
+      "max_output_tokens": 4096,
+      "repetition_penalty": 1.0
+    }
+  },
+  "electron_math": {
+    "completed_reasoning_separate": true,
+    "valid_math_created_katex_dom": true,
+    "katex_error_after_fix": 0,
+    "unmatched_inline_delimiter_no_longer_spans_later_paragraphs": true
+  },
+  "direct_chat_math_sse": {
+    "enable_thinking": false,
+    "assembled_content": "\\(\\frac{43}{17}\\)",
+    "finish_reason": "stop",
+    "done_events": 1,
+    "byte_faithful_latex": true
+  },
+  "direct_chat_reasoning_sse": {
+    "enable_thinking": true,
+    "reasoning_effort": "low",
+    "events": 243,
+    "reasoning_deltas": 180,
+    "reasoning_chars": 388,
+    "content_deltas": 61,
+    "finish_reason": "stop",
+    "done_events": 1,
+    "visible_marker_leaks": []
+  },
+  "verification": {
+    "panel_focused_tests": "441 passed",
+    "math_renderer_tests": "13 passed",
+    "python_dsv4_tests": "80 passed",
+    "typescript_typecheck": "passed",
+    "bundled_python_verification": "passed",
+    "electron_main_preload_renderer_build": "passed"
+  },
+  "boundary": [
+    "This closes only bundle-owned DSV4 pool-codec startup parity and scoped math/reasoning streaming.",
+    "It does not close DSV4 cache-hit/restart/eviction, DSML tool loops, long-output quality, or the cross-family release matrix.",
+    "The UI renders valid delimited math; raw APIs intentionally preserve LaTeX bytes."
+  ]
+}

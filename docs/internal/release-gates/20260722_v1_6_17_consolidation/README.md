@@ -651,3 +651,57 @@ Boundary:
 - q4 storage-boundary TQ, MXFP8, advertised media, and current-source
   Anthropic/Ollama rows remain open. This is not a Gemma family release pass
   and does not unlock v1.6.17 packaging.
+
+### R17-006 DSV4 bundle-owned pool codec and math transport/rendering
+
+Status: `VERIFIED-LIVE_SCOPED / DSV4 FAMILY MATRIX OPEN`.
+
+Root causes and changes:
+
+- The inspected DSV4 bundle declares
+  `jang_config.cache.pool_quant_default=false`, but Electron creation/reset
+  paths and direct CLI startup hard-coded the native CSA/HCA pool codec On.
+- Model detection now exposes the stamped boolean. Create/reset/adopt/session
+  hydration use the stamp when no saved explicit value exists; saved user
+  values remain authoritative.
+- Direct CLI/model loading now resolves explicit env first, bundle stamp
+  second, and the historical enabled fallback only for unstamped legacy
+  bundles.
+- Completed inline math now cannot consume later reasoning paragraphs after an
+  unmatched `\(`. KaTeX parse failures use escaped readable fallback instead
+  of a visible `.katex-error` node.
+
+Current-source live evidence:
+
+- Real Electron Reset displayed native composite prefix On and DSV4 pool codec
+  Off. SQLite stored prefix/paged/block-L2 On and pool codec Off.
+- Real Electron Start loaded the 104.6 GB affine DSV4 bundle as PID `3423`
+  from this checkout. Health reported native composite cache, 256-token pages,
+  block SSD L2 On, generic TQ KV Off, and
+  `native_cache.pool_quant={enabled:false,env:"0"}`.
+- Live UI Auto produced a separate 2,364-character reasoning rail and a
+  completed visible answer. Valid delimited math created KaTeX DOM; after the
+  renderer fix the completed surface had zero `.katex-error` nodes.
+- Raw Chat SSE with thinking Off reconstructed byte-exact
+  `\(\frac{43}{17}\)`, then `stop` and one `[DONE]`.
+- Raw Chat SSE with thinking On emitted 180 `reasoning_content` deltas and 61
+  content deltas, then `stop` and one `[DONE]`, with no native marker leak.
+
+Verification:
+
+- Panel settings/model/cache/math selection: `441 passed`.
+- Updated math renderer selection: `13 passed`.
+- DSV4 Python cache/loader selection: `80 passed`.
+- TypeScript typecheck: pass.
+- Full bundled-Python verification and Electron main/preload/renderer build:
+  pass; production renderer output includes KaTeX fonts/assets.
+
+Evidence:
+
+- `dsv4-bundle-pool-math-live.json`
+
+Boundary:
+
+- This does not close DSV4 prefix hit/restart/eviction, DSML agentic loops,
+  long-output quality, or other families. Overall campaign status remains
+  `PARTIAL / NOT RELEASE-READY`.

@@ -8140,3 +8140,25 @@ Status: `SOURCE+FOCUSED TEST PASS / LIVE GEMMA PARITY OPEN`.
   TypeScript typecheck passed.
 - Next gate is live Gemma 4 UI-to-engine/request parity plus Chat, Responses,
   Anthropic, and Ollama; no release-ready claim.
+
+## 2026-07-23 - DSV4 pool default and LaTeX surface checkpoint
+
+Status: `VERIFIED-LIVE_SCOPED / OVERALL PARTIAL`.
+
+- Fixed one bundle/UI/CLI ownership mismatch:
+  DSV4 `cache.pool_quant_default=false` now reaches initial/reset Electron
+  settings and direct engine startup instead of being hard-coded On.
+- Real Electron Reset -> SQLite -> Start -> health proved pool codec Off while
+  native composite prefix, paged RAM, and block SSD L2 stayed On.
+- Valid UI math rendered through KaTeX. Unmatched inline math can no longer
+  consume later reasoning paragraphs; parse failures no longer expose
+  `.katex-error`.
+- Direct Chat SSE preserved `\(\frac{43}{17}\)` byte-for-byte. A separate
+  reasoning run produced 180 private-reasoning and 61 visible-content deltas
+  with truthful terminal events and no marker leak.
+- Tests/build: panel `441`, math `13`, Python DSV4 `80`, typecheck and full
+  bundled-Python/Electron build passed.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/dsv4-bundle-pool-math-live.json`.
+- Still open: DSV4 cache hit/restart/eviction and DSML tool loops; other model
+  families/protocols/media; release packaging/signing/notarization.

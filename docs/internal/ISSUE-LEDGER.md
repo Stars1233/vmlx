@@ -5152,3 +5152,22 @@ fidelity is still partial due intermittent `TERTERMINAL` duplication.
   retry or fabricated argument was added.
 - Evidence:
   `docs/internal/release-gates/20260722_qwen35_release_checkpoint/`.
+
+## 2026-07-23 - DSV4 bundle-default and UI/API math checkpoint
+
+Status: `FIXED+VERIFIED-LIVE_SCOPED / RELEASE STILL PARTIAL`.
+
+- Closed `DSV4-POOL-DEFAULT-PARITY`: Electron and direct CLI now honor the
+  exact bundle `cache.pool_quant_default` unless the user/env explicitly
+  overrides it. Live Reset -> SQLite -> Start -> health proved `false/0` with
+  native prefix/paged/block-L2 still active.
+- Closed scoped `ELECTRON-MATH-LONG-INLINE-CONSUME`: unmatched inline
+  delimiters no longer absorb later reasoning paragraphs, and KaTeX parse
+  failures use readable escaped fallback instead of `.katex-error`.
+- Current UI valid math renders as KaTeX. Raw API math remains byte-faithful by
+  design. Current direct Chat reasoning stays in `reasoning_content`, visible
+  answer stays in `content`, and terminal events remain truthful.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/dsv4-bundle-pool-math-live.json`.
+- Open: DSV4 native cache reuse/restart/eviction, DSML tool loop, long quality,
+  and the broader representative family/release matrix.
