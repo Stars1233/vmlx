@@ -404,6 +404,77 @@ Evidence: `docs/internal/release-gates/20260722_qwen35_release_checkpoint/`.
 
 ## Release stop conditions
 
+### 2026-07-22 current-head Laguna JANG_4M correction (`8cb972a57`)
+
+The current live checkout was synchronized from the pushed
+`codex/r16-reasoning-history-p0` branch. The real Electron **Start** control
+loaded `/Volumes/EricsLLMDrive/jangq-ai/Laguna-S-2.1-JANG_4M` with bundled
+engine discovery logged as
+`/Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine`, version 1.6.16, PID 47967,
+port 8001. The effective argv used `--reasoning-parser deepseek_r1`,
+`--tool-call-parser glm47`, `--no-paged-cache`, Block Disk L2, and JIT.
+
+Bundle and effective runtime truth:
+
+- the artifact is affine JANG/JANG_4M, not JANGTQ/MXTQ;
+- its stamped reasoning parser is `deepseek_r1`; vendor `poolside_v1` is an
+  exact backend alias of that parser, while `think_xml` is not equivalent for
+  Laguna's prompt-open reasoning rail;
+- commit `704f6e1d1` canonicalizes the vendor alias to the backend CLI name and
+  `8cb972a57` corrects the associated preview test. On the synchronized remote
+  checkout, `settings-flow.test.ts` passed 295/295, TypeScript typecheck
+  passed, and the focused Poolside/Laguna Python set passed 3/3;
+- Chat Settings visibly matched the bundle's temperature 1.0, top-p 1.0,
+  top-k 20, neutral absent repetition penalty 1.0, and Auto reasoning;
+- health reported `mixed_swa_kv`: 12 full-attention q4 TurboQuant storage
+  layers plus 36 native rotating-window layers. Paged RAM was Off and Block
+  Disk L2 was On. No generic codec was applied to rotating state.
+
+The fresh three-turn Electron chat passed the scoped UI rail:
+
+1. T1 emitted a separate 1,204-character reasoning rail and exact visible
+   `R16-LAGUNA-UI-AUTO-T1-DONE`;
+2. T2 emitted a distinct 2,918-character reasoning rail, recalled T1, exact
+   finaled, and reported 104 `block-disk+tq-native` cached prompt tokens;
+3. T3 issued exactly one real `file_info(panel/package.json)`, rendered the
+   5.2 KB result, exact finaled, and reported 218 cached prompt tokens.
+
+Raw gateway captures are retained under `/private/tmp` for this run. Chat and
+Anthropic carried private reasoning separately from visible content and ended
+truthfully. Responses selected a direct visible rail for the easy follow-up.
+Ollama Auto and explicit On also selected a direct rail for their easy probes.
+No raw `<think>`/parser/tool marker leaked into visible content. These rows
+prove transport separation; they do **not** mean Auto or On must contain a
+non-empty reasoning rail on every prompt. Current bundle/source tests and live
+hard/easy controls show that both modes open the native reasoning-capable
+route, after which Laguna may immediately emit the close sentinel.
+
+Two release-critical failures remain open:
+
+1. **Paged-Off SSD changed-tail partial reuse:** the block lookup found 15
+   matching blocks / 960 tokens. The 12 full-attention q4-TQ layers
+   reconstructed, but the 36 sliding layers at that earlier boundary were
+   `rotating_kv_pending`; reconstruction therefore reported 12/48 and safely
+   downgraded the request to a full-prefill miss. The cache did not corrupt
+   output, but high-partial SSD reuse is not implemented correctly yet. The
+   earlier immediate-boundary Paged-Off proof must not be promoted to arbitrary
+   partial-prefix support.
+2. **Unbounded hard-prompt reasoning:** a current Electron Auto turn kept a
+   correctly separated reasoning rail active for 151.8 seconds / 6,561 tokens
+   without reaching visible content. It was manually canceled and persisted as
+   `[Generation interrupted]`; this was ongoing model reasoning, not a silent
+   reasoning-to-answer pause. The bounded answer pass begins only after the
+   first pass terminalizes, so a 32,768-token bundle cap can defer recovery far
+   too long. Do not add a hidden Laguna clamp until bundle/reference policy and
+   controlled quality A/B justify a native budget or an explicit user-facing
+   limit.
+
+The ordinary direct-answer UI control completed in 5.8 seconds at 50.4 t/s
+with no reasoning rail, so it did not reproduce the reported post-reasoning
+pause. The pause/TPS row remains open until one request produces reasoning,
+then a visible answer, while DOM mutation time and raw SSE time are captured
+for the same prompt. Current verdict remains `PARTIAL / NOT RELEASE-READY`.
+
 Do not package, tag, publish, or describe v1.6.16 as ready while any selected
 P0 row is `OPEN`, `FAIL`, or `PARTIAL`, or while the release-cutoff full suites
 and signed-app install smoke are missing. A user-approved checkpoint may retain

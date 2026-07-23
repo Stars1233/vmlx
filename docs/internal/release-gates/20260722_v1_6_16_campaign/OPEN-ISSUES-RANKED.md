@@ -58,10 +58,13 @@ Historical matrices were also inspected but are not silently authoritative:
 - [x] Normal Save/Save & Restart sequencing, update broadcast, and live PID
   truth for one Laguna session (`951eab25d`). Cross-family/default/failure
   persistence remains open.
-- [x] Current Laguna JANG_2L Electron reasoning, one-tool continuation, four
-  streamed protocols, q4 full-attention storage, Paged-On RAM reuse, and a
-  same-process Paged-Off SSD partial-prefix row. Disk-only process restart and
-  long eviction remain open.
+- [ ] Current Laguna JANG_2L/JANG_4M has scoped Electron reasoning, one-tool
+  continuation, four streamed protocols, q4 full-attention storage, and
+  Paged-On reuse. A Paged-Off immediate-boundary row exists, but the current
+  changed-tail test matched 960 SSD tokens and reconstructed only 12/48 layers:
+  36 rotating layers were `rotating_kv_pending`, so the engine safely fell back
+  to full prefill. Arbitrary partial-prefix reuse, process restart, and long
+  eviction remain open.
 - [x] Current MiniMax-M3 real Start-before-prompt load, native MSA health,
   Electron reasoning/content IPC separation, one real file tool, raw Responses,
   and direct/gateway Ollama Auto/On/Off (`6de9ce8ef`). Current VL availability
@@ -112,6 +115,11 @@ Historical matrices were also inspected but are not silently authoritative:
 - [ ] A reasoning-only first pass never finalizes as an empty successful
   assistant message. Any bounded answer pass must itself stream progressively
   and expose truthful per-pass timing/usage.
+- [ ] Laguna hard-prompt Auto must not spend an effectively unbounded 32,768
+  token bundle cap in private reasoning before the bounded answer pass can
+  start. The current live Electron negative control was canceled after 151.8s /
+  6,561 reasoning tokens with no visible answer. Determine the source-owned or
+  explicit user-visible thinking-budget policy; do not hide a sampler clamp.
 - [ ] Different prompts do not reuse byte-identical stale reasoning. No
   looping, repeated preamble, replacement characters, broken Markdown/math,
   EOS drift, random suffix, or terminal-batched visible answer is accepted.
@@ -277,7 +285,7 @@ with an easier unrelated model.
 
 | Family/artifact | Required remaining proof | Status |
 |---|---|---|
-| Laguna S-2.1 JANG_2L/JANG_4M | >512-token SWA coherence, disk-only process restart, bounded eviction, long agent loop, sampler/TPS parity, saved settings restart, truthful ~40+ tok/s on the named JANG_4M where expected | `PARTIAL` |
+| Laguna S-2.1 JANG_2L/JANG_4M | Fix Paged-Off changed-tail rotating-state reconstruction (current 960-token match falls back at 12/48 layers), >512-token SWA coherence, disk-only process restart, bounded eviction, bounded hard-prompt reasoning/answer pass, long agent loop, sampler/TPS parity, saved settings restart, truthful ~40+ tok/s on the named JANG_4M where expected | `FAIL-LIVE PARTIAL SSD / PARTIAL` |
 | Qwen3.6 35B/27B named MTP artifacts | Distinguish JANGTQ/MXTQ Hadamard-codebook from affine JANG and base MLX/MXFP; multi-tool, cancellation, non-stream, MTP depth/accept accounting, q4 attention plus native hybrid state, image/video and salt | `PARTIAL` |
 | HY3 JANG with MTP | Exact configured MTP depth, proposal/accept/compression accounting, cache safety, stochastic/long quality, shared protocol rails | `PARTIAL` |
 | Bonsai 27B 1-bit and variants | q8 attention-only TQ exception, SSM/GDN companion rederive, partial prefix/eviction/restart, long pre-tool reasoning, no looping or reasoning-only final | `PARTIAL` |
