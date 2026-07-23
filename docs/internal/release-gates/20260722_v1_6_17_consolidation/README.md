@@ -1644,10 +1644,11 @@ Remaining boundary:
 
 ### R17-025 Release-head suite triage and focused fixes
 
-Status: `FOCUSED FIXES PASS / FULL PYTHON+BUNDLE RERUN PENDING`.
+Status:
+`SOURCE SUITE + FINAL PANEL PASS / BUNDLE REBUILD + SIGNED APP OPEN`.
 
-- Current-head panel verification passed `2490` tests with `3` skipped,
-  TypeScript, and the Electron production renderer build.
+- Current-head panel verification at `8eb8468bd` passed `2491` tests with
+  `3` skipped, TypeScript, and the Electron production renderer build.
 - The valid Python failed-set reduced to six product/test-contract rows plus
   one intentional bundled-engine drift gate.
 - Fixed MiniCPM-V-4.6 runtime/message-format alias parity, Responses
@@ -1656,12 +1657,53 @@ Status: `FOCUSED FIXES PASS / FULL PYTHON+BUNDLE RERUN PENDING`.
 - Updated stale source-shape assertions for the shared tool-parser resolver,
   owned-port cleanup, and shared rotating-cache bounds helper.
 - The combined focused run passed `6/6` on the M5 Max.
+- The complete Python source suite at corrected engine head `107be113b`
+  passed `6407`, skipped `96`, and deselected `93` in 247.70 seconds. The
+  only manually deselected row is the intentional bundled-engine integrity
+  gate. Subsequent changes through `8eb8468bd` are documentation and
+  panel-only.
 - Bundled-engine drift remains intentionally open until final source freeze
   and `bundle-python.sh`.
 - Evidence: `release-head-suite-audit/README.md`.
 
 Remaining boundary:
 
-- Full Python rerun, rebuilt-bundle verification, all-protocol raw live smoke,
-  version bump, signed/notarized installed-app smoke, tagging, and publication
-  remain open. Overall v1.6.17 remains `PARTIAL / NOT RELEASE-READY`.
+- Rebuilt-bundle verification, the final Python rerun including that integrity
+  row, version bump, signed/notarized installed-app smoke, tagging, and
+  publication remain open. Overall v1.6.17 remains
+  `PARTIAL / NOT RELEASE-READY`.
+
+### R17-026 Release-candidate UI/API smoke and rejected-tool-markup correction
+
+Status:
+`DEV UI+API+PANEL PASS / BUNDLE+SIGNED APP OPEN / OVERALL PARTIAL`.
+
+- Raw direct and gateway Chat/Responses/Anthropic/Ollama streaming at
+  `aa49b699d` returned HTTP 200 on all eight rows, kept private reasoning
+  separate from progressive visible content, preserved `$43` and `9×6=54`,
+  and emitted truthful protocol-native terminals.
+- Direct and gateway Chat/Responses/Anthropic/Ollama also completed eight
+  three-round streaming agentic flows: real `file_info`, real `run_command`,
+  then an exact result-grounded final answer.
+- A real Electron turn exposed a separate panel defect: when a model emitted
+  parser-rejected incomplete tool markup, end-of-stream reconciliation fenced
+  and displayed the control syntax as visible prose. Commit `8eb8468bd`
+  suppresses only parser-rejected control markup, records a truthful tool
+  error, and retains ordinary final prose. It does not repair or rewrite a
+  model-generated wrong tool argument.
+- Post-fix current-head Electron proof used a fresh chat on real
+  Start-button PID `47532`. Three turns showed separate reasoning rails,
+  rendered KaTeX, literal `$43`, exactly one successful real
+  `file_info(panel/package.json)` tool/result continuation, and exact history
+  recall, with zero visible control markers.
+- The current-head panel suite passed `2491` with `3` skipped; TypeScript and
+  the production Electron build passed.
+- Evidence: `release-candidate-smoke/README.md`.
+
+Remaining boundary:
+
+- The versioned 1.6.17 preflight, rebuilt bundled Python, full suite including
+  bundle integrity, signed/notarized Sequoia and Tahoe artifacts, installed-app
+  smoke, tagging, feeds, and publication remain open. Broader retained
+  family/media/cache/stress rows remain follow-up work. Overall v1.6.17 remains
+  `PARTIAL / NOT RELEASE-READY`.

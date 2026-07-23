@@ -1,0 +1,291 @@
+{
+  "model": "JANGQ-AI/Hy3-JANG_2K-MTP",
+  "pass": false,
+  "rows": [
+    {
+      "base": "direct",
+      "checks": {
+        "content_exact": false,
+        "content_has_no_control_markers": true,
+        "content_progressive": true,
+        "currency_preserved": true,
+        "http_200": true,
+        "math_preserved": true,
+        "reasoning_present": true,
+        "stream_parsed": true,
+        "terminal_present": true
+      },
+      "content": "R17-WIRE-CHAT-DONE CURRENCY=$43 MATH=9\u00d76=54",
+      "content_chars": 43,
+      "content_delta_count": 21,
+      "content_event_kinds": [
+        "message.content"
+      ],
+      "elapsed_ms": 20706.284,
+      "parse_errors": [],
+      "protocol": "chat",
+      "raw_path": "/private/tmp/r17-raw-wire-aa49b699d/direct-chat.stream",
+      "raw_sha256": "40441826d06e9bdf656c35fe5a879548fa2b29ae8cb79c4362b1b041a2df9d12",
+      "reasoning_chars": 1644,
+      "reasoning_delta_count": 512,
+      "reasoning_event_kinds": [
+        "message.thinking"
+      ],
+      "reasoning_sha256": "06c07ff4a2d7f70b1af22783c2fa24b1e7a9ce86b3ce12f686a7327b1470f8d1",
+      "status_code": 200,
+      "terminals": [
+        "stop",
+        "DONE"
+      ]
+    },
+    {
+      "base": "direct",
+      "checks": {
+        "content_exact": true,
+        "content_has_no_control_markers": true,
+        "content_progressive": true,
+        "currency_preserved": true,
+        "http_200": true,
+        "math_preserved": true,
+        "reasoning_present": true,
+        "stream_parsed": true,
+        "terminal_present": true
+      },
+      "content": "R17-WIRE-RESPONSES-DONE CURRENCY=$43 MATH=9\u00d76=54.",
+      "content_chars": 49,
+      "content_delta_count": 25,
+      "content_event_kinds": [
+        "response.output_text.delta"
+      ],
+      "elapsed_ms": 22383.387,
+      "parse_errors": [],
+      "protocol": "responses",
+      "raw_path": "/private/tmp/r17-raw-wire-aa49b699d/direct-responses.stream",
+      "raw_sha256": "2949b9032c680266d8ade0ed6151add5588285c72c25884b5367c2c4ab1100b4",
+      "reasoning_chars": 1714,
+      "reasoning_delta_count": 512,
+      "reasoning_event_kinds": [
+        "response.reasoning_summary_text.delta"
+      ],
+      "reasoning_sha256": "0f91da5ead944a41f674b9b52c7abd934d7e97b9513f3783546fb1b9bc88d166",
+      "status_code": 200,
+      "terminals": [
+        "response.completed"
+      ]
+    },
+    {
+      "base": "direct",
+      "checks": {
+        "content_exact": true,
+        "content_has_no_control_markers": true,
+        "content_progressive": true,
+        "currency_preserved": true,
+        "http_200": true,
+        "math_preserved": true,
+        "reasoning_present": true,
+        "stream_parsed": true,
+        "terminal_present": true
+      },
+      "content": "R17-WIRE-ANTHROPIC-DONE CURRENCY=$43 MATH=9\u00d76=54.",
+      "content_chars": 49,
+      "content_delta_count": 25,
+      "content_event_kinds": [
+        "content_block_delta"
+      ],
+      "elapsed_ms": 22454.904,
+      "parse_errors": [],
+      "protocol": "anthropic",
+      "raw_path": "/private/tmp/r17-raw-wire-aa49b699d/direct-anthropic.stream",
+      "raw_sha256": "4dc52afead2982bd11ff785216eef64336c9cfbac03886690e1dfed8d52c6d79",
+      "reasoning_chars": 1472,
+      "reasoning_delta_count": 466,
+      "reasoning_event_kinds": [
+        "content_block_delta"
+      ],
+      "reasoning_sha256": "4c3b3524101076c9eedf1eb6c368a0f36b6c0657d132a7af91ff8becefb5ac5b",
+      "status_code": 200,
+      "terminals": [
+        "end_turn",
+        "message_stop"
+      ]
+    },
+    {
+      "base": "direct",
+      "checks": {
+        "content_exact": true,
+        "content_has_no_control_markers": true,
+        "content_progressive": true,
+        "currency_preserved": true,
+        "http_200": true,
+        "math_preserved": true,
+        "reasoning_present": true,
+        "stream_parsed": true,
+        "terminal_present": true
+      },
+      "content": "R17-WIRE-OLLAMA-DONE CURRENCY=$43 MATH=9\u00d76=54.",
+      "content_chars": 46,
+      "content_delta_count": 23,
+      "content_event_kinds": [
+        "message.content"
+      ],
+      "elapsed_ms": 23090.998,
+      "parse_errors": [],
+      "protocol": "ollama",
+      "raw_path": "/private/tmp/r17-raw-wire-aa49b699d/direct-ollama.stream",
+      "raw_sha256": "f71535e8cdecbb08ea4b6c209b8d305913b7b8783b460c167a9e825e24fa1877",
+      "reasoning_chars": 1499,
+      "reasoning_delta_count": 512,
+      "reasoning_event_kinds": [
+        "message.thinking"
+      ],
+      "reasoning_sha256": "aaa2bf8895bdb16cf9738d9341b07ae910a277fd7db58be53b08505eb3000926",
+      "status_code": 200,
+      "terminals": [
+        "stop"
+      ]
+    },
+    {
+      "base": "gateway",
+      "checks": {
+        "content_exact": true,
+        "content_has_no_control_markers": true,
+        "content_progressive": true,
+        "currency_preserved": true,
+        "http_200": true,
+        "math_preserved": true,
+        "reasoning_present": true,
+        "stream_parsed": true,
+        "terminal_present": true
+      },
+      "content": "R17-WIRE-CHAT-DONE CURRENCY=$43 MATH=9\u00d76=54.",
+      "content_chars": 44,
+      "content_delta_count": 22,
+      "content_event_kinds": [
+        "message.content"
+      ],
+      "elapsed_ms": 22726.452,
+      "parse_errors": [],
+      "protocol": "chat",
+      "raw_path": "/private/tmp/r17-raw-wire-aa49b699d/gateway-chat.stream",
+      "raw_sha256": "531f5d9b5b3ac67ca64203673ba8879f0af795abd1a492a8e42960818cd2c62c",
+      "reasoning_chars": 1740,
+      "reasoning_delta_count": 512,
+      "reasoning_event_kinds": [
+        "message.thinking"
+      ],
+      "reasoning_sha256": "991fa2cdc2da3fb7d78a91cc35cfb0755e2decde9e3fd6095052fd0aab1bbba5",
+      "status_code": 200,
+      "terminals": [
+        "stop",
+        "DONE"
+      ]
+    },
+    {
+      "base": "gateway",
+      "checks": {
+        "content_exact": true,
+        "content_has_no_control_markers": true,
+        "content_progressive": true,
+        "currency_preserved": true,
+        "http_200": true,
+        "math_preserved": true,
+        "reasoning_present": true,
+        "stream_parsed": true,
+        "terminal_present": true
+      },
+      "content": "R17-WIRE-RESPONSES-DONE CURRENCY=$43 MATH=9\u00d76=54.",
+      "content_chars": 49,
+      "content_delta_count": 25,
+      "content_event_kinds": [
+        "response.output_text.delta"
+      ],
+      "elapsed_ms": 23305.714,
+      "parse_errors": [],
+      "protocol": "responses",
+      "raw_path": "/private/tmp/r17-raw-wire-aa49b699d/gateway-responses.stream",
+      "raw_sha256": "b20a2f239d9d649c88ba64616297695de60bcf21605101b3dfbe4e01998402b6",
+      "reasoning_chars": 1729,
+      "reasoning_delta_count": 512,
+      "reasoning_event_kinds": [
+        "response.reasoning_summary_text.delta"
+      ],
+      "reasoning_sha256": "80d8df97e5ef5d6515a3295bd51b085755d2c2c427db271acbc7b15d834b2dad",
+      "status_code": 200,
+      "terminals": [
+        "response.completed"
+      ]
+    },
+    {
+      "base": "gateway",
+      "checks": {
+        "content_exact": true,
+        "content_has_no_control_markers": true,
+        "content_progressive": true,
+        "currency_preserved": true,
+        "http_200": true,
+        "math_preserved": true,
+        "reasoning_present": true,
+        "stream_parsed": true,
+        "terminal_present": true
+      },
+      "content": "R17-WIRE-ANTHROPIC-DONE CURRENCY=$43 MATH=9\u00d76=54.",
+      "content_chars": 49,
+      "content_delta_count": 25,
+      "content_event_kinds": [
+        "content_block_delta"
+      ],
+      "elapsed_ms": 19103.982,
+      "parse_errors": [],
+      "protocol": "anthropic",
+      "raw_path": "/private/tmp/r17-raw-wire-aa49b699d/gateway-anthropic.stream",
+      "raw_sha256": "0b912194065aa40843acab2020078a5e09ba764b04c2ad866776f85af7a30866",
+      "reasoning_chars": 1430,
+      "reasoning_delta_count": 461,
+      "reasoning_event_kinds": [
+        "content_block_delta"
+      ],
+      "reasoning_sha256": "9692424bd02a0d7c9f01dbb652819ef07dccb4343d447c055d1978987b71fa5e",
+      "status_code": 200,
+      "terminals": [
+        "end_turn",
+        "message_stop"
+      ]
+    },
+    {
+      "base": "gateway",
+      "checks": {
+        "content_exact": true,
+        "content_has_no_control_markers": true,
+        "content_progressive": true,
+        "currency_preserved": true,
+        "http_200": true,
+        "math_preserved": true,
+        "reasoning_present": true,
+        "stream_parsed": true,
+        "terminal_present": true
+      },
+      "content": "R17-WIRE-OLLAMA-DONE CURRENCY=$43 MATH=9\u00d76=54.",
+      "content_chars": 46,
+      "content_delta_count": 23,
+      "content_event_kinds": [
+        "message.content"
+      ],
+      "elapsed_ms": 22500.358,
+      "parse_errors": [],
+      "protocol": "ollama",
+      "raw_path": "/private/tmp/r17-raw-wire-aa49b699d/gateway-ollama.stream",
+      "raw_sha256": "5b59516aedbbe66eca39fdf634d8a34021a5acda23d19789a3d3841fde6594b1",
+      "reasoning_chars": 1659,
+      "reasoning_delta_count": 512,
+      "reasoning_event_kinds": [
+        "message.thinking"
+      ],
+      "reasoning_sha256": "6e48dbfe229f9130697b6e3bc3c3e2b0b9d51971d6678858c2cbd6c96ed07c28",
+      "status_code": 200,
+      "terminals": [
+        "stop"
+      ]
+    }
+  ],
+  "schema_version": 1
+}
