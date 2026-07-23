@@ -1564,5 +1564,40 @@ Status: `FIXED + VERIFIED-LIVE-SCOPED / Q27 FAMILY PARTIAL`.
 - Focused panel verification passed `411/411`; TypeScript and diff checks
   passed.
 - Evidence: `q27-settings-live/README.md`.
-- Q27 reasoning/tools/protocol breadth, media, cache hierarchy, full suites,
+- Q27 media, capacity eviction/refault, corrupt/missing typed-companion
+  fallback, signed-app repetition, full suites, and
   package/sign/notarize/publish remain open.
+
+### R17-023 Qwen 3.6 27B reasoning/tools and hybrid SSD hierarchy
+
+Status:
+`UI+DIRECT+GATEWAY+PAGED-ON+PAGED-OFF+RESTART LIVE PASS / MEDIA+EVICTION OPEN`.
+
+- Three inspected Electron turns kept reasoning separate, executed exactly one
+  real `file_info` tool/result continuation, retained history, exact-finaled,
+  and rendered currency plus TeX through KaTeX with no fallback or raw
+  delimiter leak. The three reasoning payload hashes were distinct.
+- Direct and gateway Chat/Responses/Anthropic/Ollama each completed a
+  three-round streaming flow with two exact real tools, separate reasoning and
+  content, progressive final output, and truthful terminal events.
+- The live cache schema is `hybrid_ssm_v1`: 16 attention-KV layers use q4
+  TurboQuant block storage while 48 SSM/GDN companion layers retain typed
+  native full-precision state.
+- Changed-tail requests reused `9,408` tokens while prefilling only the final
+  `101-105` tokens. An interior/suffix-only negative did not receive unsafe
+  cache credit.
+- Real Electron restart with Paged RAM On restored 147 q4-TQ SSD blocks plus
+  typed SSM state as `paged+ssm+disk+tq-native`.
+- The real UI turned Paged RAM Off while Block SSD remained checked and
+  enabled. Two separate Paged-Off PIDs started with zero RAM cache and restored
+  the same 147 SSD blocks plus SSM state as `block-disk+ssm+tq-native`.
+- The real UI restored Paged RAM On and a new zero-RAM process again promoted
+  the same partial prefix from SSD.
+- Evidence: `q27-settings-live/README.md`.
+
+Remaining boundary:
+
+- Q27 media, capacity eviction/refault, corrupt/missing companion fallback,
+  signed-app repetition, full suites, packaging, notarization, tagging, and
+  publication remain open. Overall v1.6.17 remains
+  `PARTIAL / NOT RELEASE-READY`.

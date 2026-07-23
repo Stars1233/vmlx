@@ -1,5 +1,27 @@
 # Current Status
 
+## 2026-07-23 - Q27 UI/protocol and hybrid SSD hierarchy
+
+Status:
+`VERIFIED_LIVE_SCOPED_UI+API+CACHE / Q27 MEDIA+EVICTION OPEN / RELEASE PARTIAL`.
+
+- Three inspected Electron turns passed separate, distinct reasoning; exact
+  visible output; one real exactly-once file tool/result continuation; history
+  recall; and KaTeX rendering.
+- Direct and gateway streaming Chat, Responses, Anthropic, and Ollama each
+  completed two real tool rounds and an exact final round with separate
+  reasoning/content and truthful terminals.
+- Q27 resolved `hybrid_ssm_v1`: 16 q4-TQ attention-KV layers plus 48 typed
+  native full-precision SSM/GDN companion layers.
+- Paged-On restart, Paged-Off, a second Paged-Off UI Stop/Start, and restored
+  Paged-On each reused a `9,408`-token partial prefix from 147 SSD blocks plus
+  typed companion state. Paged-Off runs had zero RAM/L1 cache.
+- The suffix-only negative received no unsafe interior-token cache credit.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/q27-settings-live/`.
+- Q27 media, eviction/refault, corrupt/missing companion fallback, signed app,
+  suites, packaging, notarization, and publication remain open.
+
 ## 2026-07-23 - Q27 first-session bundle sampling parity
 
 Status:
@@ -18,8 +40,8 @@ Status:
 - Focused tests: `411/411`; TypeScript passed.
 - Evidence:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/q27-settings-live/`.
-- Next: continue the same Q27 PID with three Electron turns, four-protocol
-  reasoning/tools, and Paged-On/Off hybrid SSD partial-prefix proof.
+- The next Q27 checkpoint supersedes the formerly open Electron,
+  four-protocol, and Paged-On/Off hybrid SSD rows.
 
 ## 2026-07-23 - MiniMax M3 native MSA/indexer SSD hierarchy
 

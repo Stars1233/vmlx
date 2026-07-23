@@ -17,10 +17,10 @@ MODEL = "JANGQ-AI/MiniMax-M3-Coder-Small"
 PROBE_ID = "R17-M3-NATIVE-L2-20260723"
 
 
-def shared_prefix() -> str:
+def shared_prefix(probe_id: str) -> str:
     rows = [
         (
-            f"{PROBE_ID} record {index:03d}: "
+            f"{probe_id} record {index:03d}: "
             "amber birch cobalt delta ember fjord granite harbor iris juniper "
             "keystone lantern maple northstar."
         )
@@ -29,13 +29,21 @@ def shared_prefix() -> str:
     return "\n".join(rows)
 
 
-def build_prompt(layout: str, tail: str, expected: str) -> str:
-    prefix = shared_prefix()
+def build_prompt(
+    layout: str,
+    tail: str,
+    expected: str,
+    probe_id: str,
+    stable_pad: str = "",
+) -> str:
+    prefix = shared_prefix(probe_id)
+    pad = f"{stable_pad}\n" if stable_pad else ""
     if layout == "prefix":
         body = (
-            f"{PROBE_ID} continuous shared-prefix cache corpus begins.\n"
+            f"{probe_id} continuous shared-prefix cache corpus begins.\n"
             f"{prefix}\n"
-            f"{PROBE_ID} CHANGED TAIL={tail}.\n"
+            f"{pad}"
+            f"{probe_id} CHANGED TAIL={tail}.\n"
         )
     else:
         different_lead = "\n".join(
@@ -47,9 +55,10 @@ def build_prompt(layout: str, tail: str, expected: str) -> str:
         )
         body = (
             f"{different_lead}\n"
-            f"{PROBE_ID} shared corpus appears only after a different lead.\n"
+            f"{probe_id} shared corpus appears only after a different lead.\n"
             f"{prefix}\n"
-            f"{PROBE_ID} SUFFIX-ONLY TAIL={tail}.\n"
+            f"{pad}"
+            f"{probe_id} SUFFIX-ONLY TAIL={tail}.\n"
         )
     return (
         f"{body}"
@@ -75,6 +84,7 @@ def health_summary(payload: dict[str, Any]) -> dict[str, Any]:
         "kv_cache_quantization": payload.get("kv_cache_quantization"),
         "scheduler_cache": cache.get("scheduler_cache"),
         "block_disk_cache": cache.get("block_disk_cache"),
+        "ssm_companion": cache.get("ssm_companion"),
         "totals": cache.get("totals"),
     }
 
@@ -90,7 +100,9 @@ def delta(before: dict[str, Any], after: dict[str, Any], section: str, name: str
     return counter(after, section, name) - counter(before, section, name)
 
 
-def stream_chat(base: str, prompt: str, expected: str) -> dict[str, Any]:
+def stream_chat(
+    base: str, prompt: str, expected: str, model: str
+) -> dict[str, Any]:
     started = time.monotonic()
     content: list[str] = []
     reasoning: list[str] = []
@@ -102,7 +114,7 @@ def stream_chat(base: str, prompt: str, expected: str) -> dict[str, Any]:
     with requests.post(
         base + "/v1/chat/completions",
         json={
-            "model": MODEL,
+            "model": model,
             "messages": [{"role": "user", "content": prompt}],
             "stream": True,
             "stream_options": {"include_usage": True},
@@ -173,6 +185,7 @@ def settled_health(base: str) -> dict[str, Any]:
         watched = {
             "scheduler_cache": latest.get("scheduler_cache"),
             "block_disk_cache": latest.get("block_disk_cache"),
+            "ssm_companion": latest.get("ssm_companion"),
             "totals": latest.get("totals"),
         }
         serialized = json.dumps(watched, sort_keys=True)
@@ -195,12 +208,21 @@ def main() -> int:
     parser.add_argument("--tail", required=True)
     parser.add_argument("--expected", required=True)
     parser.add_argument("--output", required=True)
+    parser.add_argument("--model", default=MODEL)
+    parser.add_argument("--probe-id", default=PROBE_ID)
+    parser.add_argument("--stable-pad", default="")
     args = parser.parse_args()
     base = args.base.rstrip("/")
-    prompt = build_prompt(args.layout, args.tail, args.expected)
+    prompt = build_prompt(
+        args.layout,
+        args.tail,
+        args.expected,
+        args.probe_id,
+        args.stable_pad,
+    )
 
     before = health_summary(health(base))
-    result = stream_chat(base, prompt, args.expected)
+    result = stream_chat(base, prompt, args.expected, args.model)
     after = settled_health(base)
     usage_details = (result.get("usage") or {}).get("prompt_tokens_details") or {}
     cache_deltas = {
@@ -221,8 +243,9 @@ def main() -> int:
         ),
     }
     output = {
-        "model": MODEL,
-        "probe_id": PROBE_ID,
+        "model": args.model,
+        "probe_id": args.probe_id,
+        "stable_pad": args.stable_pad,
         "base": base,
         "layout": args.layout,
         "tail": args.tail,

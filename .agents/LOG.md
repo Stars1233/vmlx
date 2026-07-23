@@ -1,5 +1,26 @@
 # Agent proof log
 
+## 2026-07-23 - Q27 Electron, four protocols, and hybrid SSD partial reuse
+
+- Preserved three real Electron turns with separate reasoning, one exact real
+  `file_info` execution/result, history recall, exact final answers, distinct
+  reasoning hashes, and KaTeX DOM proof.
+- Preserved direct and gateway streaming Chat/Responses/Anthropic/Ollama
+  three-round tool flows. Every route executed `file_info` then `pwd`, consumed
+  the real results, and exact-finaled with truthful terminals.
+- Proved a `9,408`-token changed-tail prefix for the live `hybrid_ssm_v1`
+  bundle across Paged On, Paged-On process restart, Paged Off, a second
+  Paged-Off real Stop/Start, and restored Paged On.
+- Paged-Off PIDs `23122` and `23461` launched with `--no-paged-cache`,
+  `block_disk_only`, and zero RAM/L1 cache while retaining and restoring 147
+  q4-TQ SSD blocks plus typed SSM/GDN companion state.
+- Retained the safe miss where KV had no matching companion checkpoint and the
+  suffix-only negative where an interior match was correctly not reused.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/q27-settings-live/`.
+- Overall v1.6.17 remains partial; no packaging/signing/notarization or
+  publication occurred.
+
 ## 2026-07-23 - Q27 generation-default policy correction
 
 - Reread R17 P0.1 before changing the shared path.
@@ -18,8 +39,8 @@
 - Direct/gateway omitted-sampling streams exact-finaled progressively.
 - Evidence:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/q27-settings-live/`.
-- Q27 reasoning/tool/history, remaining protocols, hybrid SSD hierarchy, media,
-  and release gates remain open.
+- Q27 media, eviction/refault, typed-companion fault fallback, and release
+  gates remain open.
 
 ## 2026-07-23 - MiniMax M3 paged-on/off SSD partial and restart proof
 

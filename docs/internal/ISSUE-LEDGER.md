@@ -5580,6 +5580,30 @@ Status: `PARTIAL / CORRECTNESS FALLBACK LIVE / RELEASE BLOCKING`.
   Adoption now reads `mtp.request_policy` from health, with argv fallback.
 - Evidence:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/q27-settings-live/README.md`.
-- Overall release remains `PARTIAL / NOT RELEASE-READY`; Q27 reasoning/tools,
-  protocols, hybrid SSD hierarchy, media, suites, and signed release gates are
-  still open.
+- Overall release remains `PARTIAL / NOT RELEASE-READY`; Q27 media,
+  eviction/refault, corrupt/missing typed-companion fallback, suites, and
+  signed release gates are still open.
+
+## 2026-07-23 - Q27 Electron/protocol and hybrid SSD hierarchy
+
+- `R17-Q27-UI-REASONING-TOOLS`: `VERIFIED-LIVE_SCOPED`.
+  Three current-source Electron turns retained separate, non-empty, distinct
+  reasoning; exact visible output; one real `file_info` tool/result
+  continuation; history recall; and KaTeX rendering without fallback/control
+  leakage.
+- `R17-Q27-AGENTIC-PROTOCOLS`: `VERIFIED-LIVE_SCOPED`.
+  Direct and gateway streaming Chat, Responses, Anthropic, and Ollama each
+  completed two exact real tool rounds followed by an exact final round with
+  separate reasoning/content and truthful terminals.
+- `R17-Q27-HYBRID-SSD-PARTIAL`: `VERIFIED-LIVE_SCOPED`.
+  The `hybrid_ssm_v1` runtime restored a `9,408`-token changed-tail prefix from
+  147 q4-TQ SSD blocks plus typed SSM/GDN companion state with Paged RAM On and
+  Off, across multiple real Electron process restarts. Paged-Off health showed
+  `block_disk_only` and zero RAM/L1 cache. An interior/suffix-only negative did
+  not receive unsafe cache credit.
+- Retained evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/q27-settings-live/`.
+- Q27 media, eviction/refault, corrupt/missing typed-companion fallback,
+  signed-app repetition, full suites, packaging, notarization, tagging, and
+  publication remain open. Overall v1.6.17 remains
+  `PARTIAL / NOT RELEASE-READY`.

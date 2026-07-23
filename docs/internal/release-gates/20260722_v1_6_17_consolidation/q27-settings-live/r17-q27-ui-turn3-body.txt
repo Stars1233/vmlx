@@ -1,0 +1,79 @@
+Code
+Chat
+Server
+Tools
+Image
+API
+🇺🇸
+Sessions
+dealignai/Qwen3.6-27B-MXFP8-CRACK-MTP
+127.0.0.1:8009
+PID 19209
++ Chat
+Chat
+Server
+Cache
+Bench
+Embed
+Perf
+Logs
+Stop
+
+[R17-Q27-UI-1] Privately compare 47 times 19 with 46 times 20. Do not call tools. After reasoning, your visible answer must be exactly two lines:
+R17-Q27-UI-1-DONE
+The literal currency string is $43 and the comparison is 47×19=893<920=46×20.
+
+12:51 PM
+12:51 PM
+speak
+Reasoning
+2989 chars
+
+R17-Q27-UI-1-DONE
+The literal currency string is $43 and the comparison is 47×19=893<920=46×20.
+
+1079 tokens
+15.8 t/s
+138.1 pp/s
+107 prompt
+0.78s TTFT
+70.0s total
+
+[R17-Q27-UI-2] Call the built-in file_info tool exactly once with path panel/package.json. You must use the real tool and must not answer from memory. After the tool result, reply exactly Q27-UI-TOOL-DONE SIZE=.
+
+12:53 PM
+12:53 PM
+speak
+Reasoning
+349 chars
+Reasoning
+328 chars
+Info
+panel/package.json
+
+Q27-UI-TOOL-DONE SIZE=5.2 KB
+
+255 tokens
+17.7 t/s
+255.3 pp/s
+961 prompt (106 paged+ssm+tq-native cached)
+1.71s TTFT
+19.8s total
+
+[R17-Q27-UI-3] Do not call any tool. Recall the exact path and human-readable size returned by the real tool in the previous turn. Privately compute 7 times 8. Reply exactly two lines: Q27-UI-HISTORY-DONE and PATH= SIZE= PRODUCT=56.
+
+Just now
+Just now
+speak
+Reasoning
+1565 chars
+
+Q27-UI-HISTORY-DONE
+PATH=panel/package.json SIZE=5.2 KB PRODUCT=56
+
+551 tokens
+15.8 t/s
+401.3 pp/s
+429 prompt (106 paged+ssm+tq-native cached)
+1.07s TTFT
+36.0s total
