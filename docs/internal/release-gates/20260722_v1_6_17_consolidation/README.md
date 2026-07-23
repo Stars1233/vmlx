@@ -1601,3 +1601,43 @@ Remaining boundary:
   signed-app repetition, full suites, packaging, notarization, tagging, and
   publication remain open. Overall v1.6.17 remains
   `PARTIAL / NOT RELEASE-READY`.
+
+### R17-024 HY3 affine native-MTP identity gate and safe AR proof
+
+Status:
+`SAFE AR PASS / MTP ACCELERATION VALIDATION-BLOCKED / OVERALL PARTIAL`.
+
+- A controlled live exact-output A/B isolated one wrong token to HY3 native
+  MTP: MTP On emitted `AGENT斯...`; MTP Off emitted exact `AGENTIC...`.
+  Identical preceding reasoning excluded parser and renderer rewriting.
+- Source trace found that the two-token verifier performs a multi-row affine
+  backbone call and can emit its second-row bonus without a model-local
+  one-row-versus-two-row output-identity attestation.
+- Real-bundle affine matmul comparisons were not numerically identical across
+  those shapes for bf16, fp16, or fp32.
+- Commit `adf92b5d4` keeps the MTP tensors detected but blocks HY3 acceleration
+  unless `vmlx_mtp_tuning.json::native_mtp.output_equivalent` is explicitly
+  true. The Electron UI shows the block reason and hides unsupported controls;
+  AR remains active.
+- Focused current-head verification passed 97 Python tests, 94 panel registry
+  tests, typecheck, and diff checks.
+- The real Electron Start button loaded PID `33746`. Live health showed a
+  healthy model, preserved MTP artifact, validation-blocked acceleration,
+  `hunyuan`/`qwen3` parsers, model-derived `0.9/0.9/-1/0.05` sampling, q4
+  TurboQuant block storage, Paged RAM, and block-disk L2.
+- Current-head UI proof retained separate reasoning, visible currency/math,
+  exactly one real tool execution, and a non-empty continuation. The model's
+  trailing-period exact-copy miss remains `PARTIAL`.
+- Direct and Electron-gateway Anthropic and Ollama streaming each completed
+  two exact real tool rounds plus an exact progressive final with separate
+  reasoning and truthful terminals.
+- Paged-On, Paged-Off, and two restart rows restored a 7,104-token changed-tail
+  prefix from q4-TQ SSD blocks while prefilling only the uncached suffix.
+- Evidence: `hy3-native-mtp-identity/README.md`.
+
+Remaining boundary:
+
+- HY3 MTP acceleration, disk-cap eviction/refault, other families, media,
+  full suites, signed installed-app repetition, package/sign/notarize, tagging,
+  and publication remain open. Overall v1.6.17 remains
+  `PARTIAL / NOT RELEASE-READY`.

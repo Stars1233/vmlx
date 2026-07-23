@@ -5607,3 +5607,36 @@ Status: `PARTIAL / CORRECTNESS FALLBACK LIVE / RELEASE BLOCKING`.
   signed-app repetition, full suites, packaging, notarization, tagging, and
   publication remain open. Overall v1.6.17 remains
   `PARTIAL / NOT RELEASE-READY`.
+
+## 2026-07-23 - HY3 native-MTP token identity and safe AR behavior
+
+- `R17-HY3-NATIVE-MTP-IDENTITY`: `FAIL-LIVE_GATED`.
+  With native MTP active, the exact Ollama two-tool flow substituted `斯` for
+  `IC`. MTP Off produced the exact final with identical preceding reasoning.
+  The shipped tuning sidecar lacked an explicit output-equivalence
+  attestation.
+- `R17-HY3-AFFINE-SHAPE-IDENTITY`: `FAIL-LIVE_GATED`.
+  Real-bundle `q_proj` affine output differed when computed as one two-row
+  matmul versus two one-row matmuls for bf16, fp16, and fp32. The accelerated
+  verifier may not be assumed token-identical to ordinary AR.
+- `R17-HY3-SAFE-AR-GATE`: `FIXED+VERIFIED-LIVE_SCOPED`.
+  Commit `adf92b5d4` preserves detected MTP weights but requires
+  `native_mtp.output_equivalent:true` before acceleration. The current bundle
+  is visibly validation-blocked; healthy AR stays active.
+- `R17-HY3-ELECTRON-UI`: `VERIFIED-LIVE_SCOPED / EXACT-COPY PARTIAL`.
+  Real Start loaded PID `33746`; current-head UI turns had separate reasoning,
+  non-empty visible output, markup rendering, and one real tool continuation.
+  One requested exact final gained a model-owned trailing period.
+- `R17-HY3-ANTHROPIC-OLLAMA-DIRECT-GATEWAY`:
+  `VERIFIED-LIVE_SCOPED`.
+  All four current-head streaming lanes completed two exact tools plus an
+  exact progressive final with separate reasoning and truthful terminals.
+- `R17-HY3-Q4-TQ-SSD-PARTIAL`:
+  `VERIFIED-LIVE_SCOPED`.
+  Paged-On, Paged-Off, and restart rows restored 7,104 changed-tail prefix
+  tokens from SSD while prefilling only the new suffix.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/hy3-native-mtp-identity/`.
+- MTP acceleration, capacity eviction/refault, media, other families, full
+  suites, signed-app repetition, packaging, notarization, and publication
+  remain open. Overall release status is `PARTIAL / NOT RELEASE-READY`.

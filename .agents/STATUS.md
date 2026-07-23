@@ -8566,3 +8566,23 @@ Status: `FIXED+VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/m3-tool-math-live/README.md`.
 - M3 restart/eviction native sparse cache, media, signed app, full suites, and
   release actions remain open.
+
+## 2026-07-23 - HY3 safe-AR checkpoint at `adf92b5d4`
+
+- Current branch: `codex/v1.6.17-consolidation-20260723`.
+- Current code head: `adf92b5d431b41cb88b3f82cf891c5e0e36a71e7`.
+- HY3 is `SAFE AR PASS / MTP ACCELERATION VALIDATION-BLOCKED`.
+- Current real Electron PID `33746` was started by the visible Start button
+  from the M5 Max checkout. Health is good; MTP tensors are present but the
+  current sidecar lacks `output_equivalent:true`, so AR is active.
+- Current-head UI and direct/gateway Anthropic/Ollama proof is retained under
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/hy3-native-mtp-identity/`.
+- Paged-On and Paged-Off q4-TQ SSD partial-prefix restore is proven for this
+  exact HY3 bundle across process restarts.
+- UI exact-copy remains partial because the tool final gained a trailing
+  period. The tool executed once and consumed the real result.
+- The exact hook-requested `Found in PATH: .../vmlx-engine` dev-log line is
+  absent; the current log instead proves the project-venv Python and imported
+  engine version. Do not upgrade that sub-row to pass.
+- Full release status remains `PARTIAL / NOT RELEASE-READY`. Do not package,
+  notarize, tag, or publish from this checkpoint.

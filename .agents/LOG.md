@@ -2364,3 +2364,24 @@
   model-owned `\×` on every route. Added `f34deae28` so the UI renders that
   invalid TeX spelling without fallback while preserving API bytes. Live DOM
   showed KaTeX in answer and reasoning with zero raw marker.
+
+## 2026-07-23 - HY3 native-MTP identity gate
+
+- Reproduced a token-level identity failure only with HY3 native MTP active:
+  `AGENT斯...` versus exact AR `AGENTIC...`.
+- Traced the multi-row verifier and compared a real 8-bit affine `q_proj`
+  tensor as one two-row call versus two one-row calls. All tested dtypes
+  differed numerically.
+- Added model-local output-equivalence gating in `adf92b5d4`; no prompt,
+  sampler, parser, or output-repair fallback was introduced.
+- Passed current-head focused verification: Python 97, panel registry 94,
+  typecheck, and diff check.
+- Through the real Electron Start button loaded HY3 PID `33746`, inspected the
+  visible validation warning and settings, and retained markup/tool screenshots.
+- Ran direct and Electron-gateway streaming Anthropic and Ollama. All four
+  lanes passed separate reasoning, two exact real tools, progressive exact
+  final output, and truthful terminals.
+- Preserved the earlier Paged-On/Paged-Off/restart q4-TQ SSD changed-tail
+  partial-prefix proof under the same release-gate directory.
+- Overall v1.6.17 remains `PARTIAL / NOT RELEASE-READY`; release actions were
+  not run.

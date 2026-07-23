@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "source_head": "adf92b5d431b41cb88b3f82cf891c5e0e36a71e7",
+  "host": "erics-m5-max.local",
+  "bundle": "/Volumes/EricsLLMDrive/JANGQ-AI/Hy3-JANG_2K-MTP",
+  "quantization": {
+    "profile": "JANG_2K",
+    "kind": "affine",
+    "bits": 8,
+    "group_size": 128
+  },
+  "tensor": {
+    "name": "model.layers.1.self_attn.q_proj",
+    "weight_shape": [8192, 1024],
+    "scales_shape": [8192, 32],
+    "biases_shape": [8192, 32],
+    "hidden_shape": [2, 4096]
+  },
+  "probe": {
+    "seed": 17023,
+    "operation": "mx.quantized_matmul",
+    "comparison": "one 2x4096 call versus concatenating two independent 1x4096 calls",
+    "results": {
+      "bfloat16": {
+        "unequal_outputs": 13604,
+        "max_abs_difference": 9.5367431640625e-07
+      },
+      "float16": {
+        "unequal_outputs": 33,
+        "max_abs_difference": 0.0009765625
+      },
+      "float32": {
+        "unequal_outputs": 14822,
+        "max_abs_difference": 2.384185791015625e-06
+      }
+    }
+  },
+  "interpretation": "The multi-row affine verifier cannot be assumed token-identical to ordinary one-row greedy autoregressive decode. This numeric probe is supporting evidence; the live token A/B is the release-facing failure proof."
+}
