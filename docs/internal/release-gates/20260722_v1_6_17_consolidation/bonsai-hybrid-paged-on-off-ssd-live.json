@@ -1,0 +1,190 @@
+{
+  "date": "2026-07-23",
+  "host": "erics-m5-max.local",
+  "source": {
+    "repo": "/Users/eric/mlx/vllm-mlx-r17-consolidation",
+    "branch": "codex/v1.6.17-consolidation-20260723",
+    "head": "31233ee7b7b4da4a6fd19c57d030a49013c9074d"
+  },
+  "electron": {
+    "cdp": "http://127.0.0.1:9335",
+    "gateway": "http://127.0.0.1:8088",
+    "profile": "/Users/eric/.vmlx-r17-consolidation-dev",
+    "fresh_session_port": 8005,
+    "real_launch_pid": 89103,
+    "paged_off_restart_pid": 89356,
+    "paged_on_exit_pid": 89553,
+    "error_toasts": 0,
+    "single_model_swap": true
+  },
+  "bundle": {
+    "served_id": "dealignai/Bonsai-27b-1bit-JANG-CRACK",
+    "path": "/Volumes/EricsLLMDrive/dealignai/Bonsai-27b-1bit-JANG-CRACK",
+    "config_sha256": "bcdf2ca81f8f3c6f7044f426bf7e537acda7addf1c95a0ea38d0f448177bf376",
+    "generation_config_sha256": "8a3faff220cccbfb37d820e4e28a9f02d7f9ce834b5b37c04aa75dcc2ce7fa40",
+    "tokenizer_config_sha256": "f71c60519aeb40cd61800c0a830cf0e61e450c4743fbc35e708448ea68e34c51",
+    "jang_config_sha256": "f81fb1753fb13e10191478d27dff750d367e4493eaf8bb2be404d7dd21ccfd30",
+    "weight_index_sha256": "db7c8e45a35c17a7531b34feb806e7db765febc7582643b608de588d9605b394",
+    "quantization": "JANG_AFFINE_1BIT",
+    "native_cache": {
+      "family": "qwen3_5",
+      "schema": "hybrid_ssm_v1",
+      "components": [
+        "attention_kv",
+        "ssm_companion_state",
+        "async_rederive"
+      ],
+      "attention_layers": 16,
+      "companion_layers": 48,
+      "attention_kv_ssd_quantization": "turboquant-q8",
+      "companion_ssd_quantization": "native_full_precision",
+      "block_disk_l2": true
+    },
+    "fresh_session_defaults": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "paged_ram": true,
+      "ssd_l2": true,
+      "kv_cache_quantization": "auto"
+    }
+  },
+  "paged_on_initial": {
+    "argv": [
+      "--use-paged-cache",
+      "--enable-block-disk-cache"
+    ],
+    "cold": {
+      "prompt_tokens": 2042,
+      "cached_tokens": 0,
+      "visible_content": "R17-BONSAI-SSD-A-DONE",
+      "elapsed_seconds": 4.971
+    },
+    "changed_tail": {
+      "prompt_tokens": 2049,
+      "cached_tokens": 1984,
+      "prefill_tokens": 65,
+      "cache_detail": "paged+ssm+tq-native",
+      "blocks": 31,
+      "tq_native_layer_blocks": 496,
+      "hybrid_kv_without_ssm_hits": 0,
+      "reconstruction_ok": true,
+      "visible_content": "R17-BONSAI-SSD-B-DONE",
+      "elapsed_seconds": 2.849
+    },
+    "persisted_state": {
+      "block_disk_blocks": 32,
+      "block_disk_tokens": 2041,
+      "tq_native_writes": 32,
+      "ssm_companion_disk_entries": 3,
+      "ssm_companion_disk_tokens": 6073
+    },
+    "verdict": "PASS"
+  },
+  "paged_off_ssd_on": {
+    "ui": {
+      "paged_ram_checked": false,
+      "ssd_l2_checked": true,
+      "screenshot": "bonsai-paged-off-ssd-on.png"
+    },
+    "argv": [
+      "--no-paged-cache",
+      "--enable-block-disk-cache"
+    ],
+    "health_before": {
+      "backend_mode": "block_disk_only",
+      "paged_ram_enabled": false,
+      "disk_only": true,
+      "ram_tokens_cached": 0,
+      "l1_resident_bytes": 0,
+      "block_tokens_on_disk": 2041,
+      "ssm_tokens_on_disk": 6073
+    },
+    "changed_tail": {
+      "prompt_tokens": 2053,
+      "cached_tokens": 1984,
+      "prefill_tokens": 69,
+      "cache_detail": "block-disk+ssm+tq-native",
+      "disk_blocks_restored": 31,
+      "tq_native_layer_blocks": 496,
+      "ssm_companion_disk_hits": 1,
+      "hybrid_kv_without_ssm_hits": 0,
+      "reconstruction_ok": true,
+      "visible_content": "R17-BONSAI-SSD-C-DONE",
+      "elapsed_seconds": 3.011
+    },
+    "health_after": {
+      "ram_tokens_cached": 0,
+      "l1_resident_bytes": 0,
+      "block_disk_hits": 31,
+      "tq_native_hits": 31
+    },
+    "verdict": "PASS"
+  },
+  "paged_on_exit_state": {
+    "ui": {
+      "paged_ram_checked": true,
+      "ssd_l2_checked": true,
+      "screenshot": "bonsai-paged-on-ssd-on.png"
+    },
+    "argv": [
+      "--use-paged-cache",
+      "--enable-block-disk-cache"
+    ],
+    "first_changed_tail_after_restart": {
+      "prompt_tokens": 2051,
+      "cached_tokens": 1984,
+      "prefill_tokens": 67,
+      "cache_detail": "paged+ssm+disk+tq-native",
+      "disk_blocks_restored": 31,
+      "ssm_companion_disk_hits": 1,
+      "ram_tokens_after": 1984,
+      "visible_content": "R17-BONSAI-SSD-D-DONE",
+      "elapsed_seconds": 3.025
+    },
+    "second_changed_tail_same_process": {
+      "prompt_tokens": 2050,
+      "cached_tokens": 1984,
+      "prefill_tokens": 66,
+      "cache_detail": "paged+ssm+tq-native",
+      "disk_hit": false,
+      "ram_tokens_after": 1984,
+      "visible_content": "R17-BONSAI-SSD-E-DONE",
+      "elapsed_seconds": 2.856
+    },
+    "verdict": "PASS"
+  },
+  "verification": {
+    "remote_tests": {
+      "files": [
+        "tests/test_ssm_companion_cache.py",
+        "tests/test_hybrid_live_tq_kv.py",
+        "tests/test_generation_prompt_cache_key.py",
+        "tests/test_paged_cache.py",
+        "tests/test_cache_bypass.py"
+      ],
+      "passed": 209,
+      "failed": 0,
+      "elapsed_seconds": 12.43
+    },
+    "prior_current_protocol_evidence": [
+      "../20260716_release_closeout/CURRENT-MATRIX.md::Bonsai current-HEAD regression",
+      "../20260716_release_closeout/CURRENT-MATRIX.md::Bonsai media-keyed hybrid cache"
+    ],
+    "git_diff_check": "PASS"
+  },
+  "verdict": {
+    "bonsai_hybrid_changed_tail_ram": "VERIFIED_LIVE_SCOPED",
+    "bonsai_hybrid_paged_off_partial_ssd": "VERIFIED_LIVE_SCOPED",
+    "bonsai_hybrid_paged_on_ssd_promotion": "VERIFIED_LIVE_SCOPED",
+    "bonsai_hybrid_same_process_ram_reuse": "VERIFIED_LIVE_SCOPED",
+    "release": "PARTIAL_NOT_RELEASE_READY",
+    "notes": [
+      "This closes the previously open Bonsai changed-tail partial-prefix row for the tested 1-bit artifact.",
+      "Every accepted hybrid hit included both attention KV and a matching native SSM companion; no unsafe KV-only hit was credited.",
+      "Paged-Off restored TQ8 attention blocks and full-precision companion state while keeping resident RAM payload at zero.",
+      "The real UI restored Paged RAM On plus SSD L2 before leaving the gate."
+    ]
+  }
+}

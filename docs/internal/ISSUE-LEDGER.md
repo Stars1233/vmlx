@@ -5376,3 +5376,25 @@ Status: `PARTIAL / CORRECTNESS FALLBACK LIVE / RELEASE BLOCKING`.
 - Cross-architecture status remains `PARTIAL`: hybrid SSM/GDN, M3
   sparse/lightning, OpenPangu native prompt disk, and DSV4 composite remain
   separate rows.
+
+## 2026-07-23 - Bonsai hybrid changed-tail partial SSD hierarchy
+
+- `R17-BONSAI-HYBRID-PARTIAL-RAM`: `VERIFIED-LIVE_SCOPED`.
+  A changed tail restored 1,984/2,049 tokens as
+  `paged+ssm+tq-native`; matching native companion state was present.
+- `R17-BONSAI-PAGED-OFF-SSD-PARTIAL`: `VERIFIED-LIVE_SCOPED`.
+  Real Electron PID `89356` restored 1,984/2,053 tokens / 31 TQ8 attention
+  blocks plus one SSM companion as `block-disk+ssm+tq-native`; RAM payload
+  stayed zero.
+- `R17-BONSAI-PAGED-ON-SSD-PROMOTION`: `VERIFIED-LIVE_SCOPED`.
+  Real UI restart PID `89553` restored 1,984 tokens from
+  `paged+ssm+disk+tq-native`, then the next changed tail restored the same
+  block boundary from `paged+ssm+tq-native`.
+- `R17-BONSAI-HYBRID-COMPANION-TRUTH`: `PASS-LIVE`.
+  No accepted hit used attention KV without the matching SSM/GDN companion;
+  `hybrid_kv_without_ssm_hits=0`.
+- Verification: 209 focused remote tests passed.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/bonsai-hybrid-paged-on-off-ssd-live.json`.
+- This closes the previous changed-tail partial-prefix row for the tested
+  1-bit Bonsai artifact. Other hybrid families/variants remain separate.

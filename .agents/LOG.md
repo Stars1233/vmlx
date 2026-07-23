@@ -2168,3 +2168,20 @@
 - Remote selected tests: 139 passed.
 - Retained:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/gemma-mixed-swa-paged-on-off-ssd-live.json`.
+
+## 2026-07-23 - R17 Bonsai hybrid partial SSD closure
+
+- Created and launched a fresh Bonsai 1-bit Electron session with current
+  model-derived defaults.
+- Confirmed 16 attention-KV lanes use TQ8 SSD storage while 48 SSM/GDN lanes
+  keep native companion state.
+- Proved changed-tail partial reuse in three hierarchy states:
+  - resident Paged-On: `paged+ssm+tq-native`;
+  - process-restarted Paged-Off: `block-disk+ssm+tq-native`, zero RAM;
+  - process-restarted Paged-On: `paged+ssm+disk+tq-native`, then RAM reuse.
+- Every accepted hit carried a matching companion checkpoint; there was no
+  KV-only credit or silent downgrade.
+- Restored the Paged-On + SSD-On default before leaving the gate.
+- Remote selected tests: 209 passed.
+- Retained:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/bonsai-hybrid-paged-on-off-ssd-live.json`.

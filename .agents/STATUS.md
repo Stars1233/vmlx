@@ -8346,3 +8346,22 @@ Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/gemma-mixed-swa-paged-on-off-ssd-live.json`.
 - Hybrid SSM/GDN, M3 sparse, OpenPangu native prompt disk, and DSV4 composite
   remain architecture-specific open rows.
+
+## 2026-07-23 - Bonsai hybrid changed-tail partial SSD hierarchy
+
+Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
+
+- Fresh Electron session PID `89103` resolved the 1-bit Bonsai graph to 16
+  TQ8 attention-KV layers plus 48 native SSM/GDN companion layers.
+- Paged-On changed-tail reuse restored 1,984/2,049 tokens as
+  `paged+ssm+tq-native`.
+- Real UI Paged-Off + SSD-On restart PID `89356` restored 1,984/2,053 tokens
+  as `block-disk+ssm+tq-native`, including one disk companion hit, while RAM
+  resident tokens/bytes stayed zero.
+- Real UI restored Paged-On PID `89553`; its first tail promoted the SSD state
+  and its next tail reused the same 1,984 tokens from RAM.
+- Zero accepted hits lacked companion state; every probe exact-finaled.
+- `209` focused remote tests passed.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/bonsai-hybrid-paged-on-off-ssd-live.json`.
+- Broader hybrid variants remain partial; release remains not ready.

@@ -1163,3 +1163,40 @@ Remaining boundary:
   composite caches retain their own live-proof boundaries. DSV4 partial
   composite reuse remains fail-closed.
 - Overall status remains `PARTIAL / NOT RELEASE-READY`.
+
+### R17-016 Bonsai hybrid SSM/GDN partial SSD reuse
+
+Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
+
+- Created a fresh real Electron session for
+  `Bonsai-27b-1bit-JANG-CRACK`. Its initial UI defaults were Paged RAM On, SSD
+  L2 On, and KV cache quantization Auto. Start eagerly loaded PID `89103` and
+  stopped Gemma through one-model mode.
+- Health grounded the actual cache graph: 16 attention-KV layers use TQ8 at
+  the SSD boundary; 48 SSM/GDN companion layers remain native full precision.
+- A Paged-On changed tail restored 1,984/2,049 tokens as
+  `paged+ssm+tq-native`. It had a matching companion checkpoint and zero
+  `hybrid_kv_without_ssm` downgrades.
+- The real UI turned Paged RAM Off while leaving SSD L2 On; Save & Restart
+  launched PID `89356`. A new 2,053-token tail restored 1,984 tokens / 31
+  blocks plus one SSM companion from SSD as
+  `block-disk+ssm+tq-native`, prefilling only 69. RAM payload stayed at zero.
+- The UI restored Paged RAM On and restarted PID `89553`. The first new tail
+  restored 1,984 tokens from `paged+ssm+disk+tq-native`; the next tail restored
+  1,984 from `paged+ssm+tq-native` without another disk read.
+- All five generation probes exact-finaled. No accepted hit lacked companion
+  state.
+- Focused remote verification: `209` SSM/TQ/key/paged/bypass tests passed.
+
+Evidence:
+
+- `bonsai-hybrid-paged-on-off-ssd-live.json`
+- `bonsai-paged-off-ssd-on.png`
+- `bonsai-paged-on-ssd-on.png`
+
+Remaining boundary:
+
+- This closes changed-tail partial reuse for the tested Bonsai 1-bit artifact,
+  not every hybrid family or quant variant. Ternary Bonsai, Qwen 35B variants,
+  and other SSM/GLA graphs keep their own reliability/breadth boundaries.
+- Overall status remains `PARTIAL / NOT RELEASE-READY`.
