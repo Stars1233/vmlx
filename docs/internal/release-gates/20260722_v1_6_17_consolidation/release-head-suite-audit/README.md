@@ -1,6 +1,6 @@
 # v1.6.17 release-head suite audit
 
-Status: `FOCUSED FIXES PASS / FULL PYTHON RERUN PENDING / BUNDLE DRIFT OPEN`.
+Status: `SOURCE SUITE PASS / BUNDLE DRIFT OPEN`.
 
 Source sweep at `493f418d3` established:
 
@@ -23,8 +23,11 @@ Six rows were corrected and passed together on the M5 Max (`6 passed in
    preserves that request-level cache accounting.
 3. A real ZAYA1-8B-MXFP4 bundle uses legacy `rope_scaling:false`, which
    Transformers 5 rejects for tokenizer config even though it means no
-   scaling. ZAYA now normalizes only `false` to `None` in memory and passes the
-   typed config to AutoTokenizer; the official bundle is not changed.
+   scaling. ZAYA now normalizes only `false` to `None` in memory and passes a
+   version-stable generic `PreTrainedConfig` to AutoTokenizer; the official
+   bundle is not changed. The generic path is required because the source
+   development environment has Transformers 5.7 without a model-specific ZAYA
+   config module, while the M5 Max test environment has Transformers 5.14.
 4. Command-preview parser coverage was stale after canonicalization moved into
    the shared resolver.
 5. The low-memory preflight test still required arbitrary `killByPort`; the
@@ -39,6 +42,13 @@ remain open until the final versioned source is frozen and
 `bundle-python.sh` rebuilds the bundled runtime. No stale bundle was accepted
 to make the suite green.
 
-This checkpoint is not yet release-ready. Required next evidence is a complete
-Python rerun, rebuilt-bundle verification, raw live API protocol smoke, and
-signed/notarized installed-app smoke.
+The complete source suite at `b05dc6840`, with only the intentional
+bundled-Python integrity row deselected, passed on the M5 Max:
+`6406 passed, 96 skipped, 93 deselected` in 255.41 seconds. The ZAYA
+version-neutral follow-up passed its normalization and real-bundle focused
+tests (`2 passed`); the complete suite must now be rerun at that follow-up
+head.
+
+This checkpoint is not yet release-ready. Required next evidence is the final
+head Python rerun, rebuilt-bundle verification, raw live API protocol smoke,
+and signed/notarized installed-app smoke.
