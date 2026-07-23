@@ -449,7 +449,7 @@ Boundary:
 
 ### R17-005 canonical bundle generation-default resolver
 
-Status: `SOURCE+FOCUSED TEST PASS / GEMMA LIVE PARITY PENDING`
+Status: `SOURCE+FOCUSED TEST+GEMMA ELECTRON/DIRECT/GATEWAY LIVE PASS / CROSS-FAMILY OPEN`
 
 Root cause and ownership:
 
@@ -481,6 +481,14 @@ Source correction:
   output default. This does not copy the model default into the server's
   `--max-tokens`; explicit chat/API output limits remain request-owned, while
   context remains `--max-prompt-tokens`.
+- Added one engine-owned
+  `server.py::_model_effective_defaults_status()` status contract. It keeps
+  artifact-owned `sampling_defaults` separate from the effective defaults an
+  omitted request receives after explicit server/session overrides and bounded
+  fallback. `/health` and `/v1/capabilities` now call the same helper.
+- Integer sampler fields are normalized on the status surface. The change is
+  diagnostic only: it does not inject bundle defaults into argv or mutate
+  explicit request values.
 
 Remote focused verification:
 
@@ -488,14 +496,48 @@ Remote focused verification:
 - Settings/reset/override flow tests: `318 passed`.
 - Panel TypeScript `tsc --noEmit`: pass.
 - `git diff --check`: pass.
+- New engine helper/endpoint and adjacent DSV4/greedy tests: `4 passed`.
+- Broader runnable settings/health/capabilities selection: `57 passed`.
+  Three pre-existing async tests could not execute because the project venv
+  lacks `pytest-asyncio`; this is recorded as an environment limitation, not
+  counted as a product pass or failure.
+
+Gemma live parity:
+
+- The real Electron Chat Settings surface initially displayed Auto,
+  temperature `1.00`, top-p `0.95`, top-k `64`, min-p `0`, repetition penalty
+  `1.00`, and blank model-owned output/thinking limits. SQLite session defaults
+  contained corresponding metadata while the new chat sampler overrides were
+  NULL.
+- Saving `0.75/0.90/17/0.02/1.05/333` with Thinking On produced exactly those
+  values in SQLite, the Electron request diagnostic, and final engine kwargs.
+  New Chat returned to bundle defaults; Reset cleared sampler overrides.
+- A saved `0.60/top-k 7/max 111/Off` survived Save & Restart, reached the
+  engine exactly, produced no reasoning box, and reset cleanly afterward.
+- After the source change, the real Server Settings Save & Restart button
+  replaced PID `97058` with PID `97849`. Command, cwd, venv shebang, and
+  Electron log all point at this consolidation checkout.
+- Live `/health` and `/v1/capabilities` both report bundle defaults
+  `1.0/0.95/64` and effective defaults
+  `1.0/0.95/64/min-p 0/max-output 16384`. The blank UI max-output field is
+  truthful: this Gemma bundle declares no `max_new_tokens`; `16384` is the
+  engine's omitted-request reasoning fallback, not a hidden UI value.
+- A fresh Electron Auto turn showed a separate 383-character reasoning box,
+  exact non-empty final, and a 3,584-token `paged+mixed_swa+disk` hit. Raw
+  direct Chat emitted 99 reasoning deltas, 14 content deltas, `stop`, and one
+  `[DONE]`. Electron-gateway Responses emitted 187 reasoning-summary deltas,
+  15 output-text deltas, and exactly one `response.completed`. Neither stream
+  leaked control markers.
+- Retained evidence:
+  `gemma-settings-health-gateway-live.json`.
 
 Boundary:
 
-- This is source/focused-test proof only. The next gate must use a different
-  real bundle (Gemma 4) and verify initial Electron sliders, saved overrides,
-  reset-to-bundle behavior, SQLite/session persistence, preview, engine argv,
-  health, and direct/gateway request values. No cross-family settings claim is
-  closed from these tests alone.
+- This closes the current Gemma representative row through UI, SQLite,
+  restart/argv, health/capabilities, direct Chat, and Electron-gateway
+  Responses. It does not inherit closure for cross-family unusual top-k,
+  mode-specific repetition penalties, bundle-owned max output, explicit
+  context caps, model swaps, app restart, sleep/wake, or signed-app repetition.
 
 ### R17-006 Gemma 4 vendored mixed-SWA prefix reconstruction
 

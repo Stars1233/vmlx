@@ -1,5 +1,28 @@
 # Current Status
 
+## 2026-07-23 - Gemma canonical settings and live health/capabilities parity
+
+Status: `VERIFIED_LIVE_SCOPED_GEMMA_SETTINGS_R17_PARTIAL`.
+
+- Added one engine-owned omitted-request default status helper and made
+  `/health` plus `/v1/capabilities` use it. Bundle sampling metadata remains
+  separate from effective runtime defaults; no display value became a hidden
+  CLI override.
+- Electron UI -> SQLite -> request diagnostic -> engine resolver parity passed
+  for bundle defaults, explicit overrides, New Chat, Reset, saved Off, and
+  Save & Restart.
+- Real Electron Save & Restart loaded PID `97849` from the consolidation venv.
+  Health/capabilities agree on bundle `1.0/0.95/64` and effective
+  `1.0/0.95/64/min-p 0/max-output 16384`.
+- A fresh Auto UI turn showed separate reasoning, exact visible content, and
+  a 3,584-token disk-assisted paged hit. Raw direct Chat and Electron-gateway
+  Responses streamed separate reasoning/content, exact finals, clean terminal
+  events, and zero control-marker leaks.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/gemma-settings-health-gateway-live.json`.
+- Cross-family settings, model swap/app restart/sleep-wake, signed app, other
+  cache archetypes, media, protocols, suites, and release gates remain open.
+
 ## 2026-07-23 - Gemma mixed-SWA SSD-only partial/restart and promotion
 
 Status: `VERIFIED_LIVE_SCOPED_GEMMA_SSD_HIERARCHY_R17_PARTIAL`.

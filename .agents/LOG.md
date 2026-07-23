@@ -1958,3 +1958,30 @@
   `git diff --check` passed.
 - Live Gemma 4 settings/request parity remains next; this entry is not runtime
   proof.
+
+## 2026-07-23 - close scoped Gemma settings/health/default parity
+
+- Reproduced the live status mismatch on current PID `97058`:
+  `/v1/capabilities` exposed bundle sampling defaults while `/health` omitted
+  them, and neither exposed one shared effective omitted-request view.
+- Added `server.py::_model_effective_defaults_status()` and routed both
+  endpoints through it. Bundle defaults and runtime-effective defaults remain
+  separate; integer sampler fields are normalized without injecting argv
+  overrides.
+- Focused new/adjacent checks passed `4/4`; the broader runnable
+  settings/health/capabilities selection passed `57`. Three existing async
+  tests were not runnable because `pytest-asyncio` is absent from the project
+  venv.
+- Used the real Electron Server Settings Save & Restart control. PID `97849`
+  loaded from this checkout's venv with the expected Gemma parsers, Paged RAM,
+  Block Disk L2, and explicit TQ-none diagnostic configuration.
+- Verified initial bundle defaults, exact SQLite/request/engine override
+  propagation, New Chat, Reset, explicit Off across restart, and the distinction
+  between blank bundle max-output and the engine's reported 16,384-token
+  reasoning fallback.
+- Fresh UI Auto output retained a separate reasoning rail, exact final, and
+  disk-assisted paged cache hit. Raw direct Chat and dev-gateway Responses both
+  emitted separate progressive reasoning/content, truthful terminals, exact
+  finals, and zero marker leaks.
+- Retained:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/gemma-settings-health-gateway-live.json`.

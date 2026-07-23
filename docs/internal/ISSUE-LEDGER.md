@@ -15,6 +15,13 @@ Severity: C / H / M / L(nit) / P(otential, unproven).
 Evidence: LIVE / code-only.
 Status: OPEN / FIXED / VERIFIED-LIVE / WONTFIX / NOT-A-DEFECT / BUNDLE / BASELINE.
 
+## 2026-07-23 v1.6.17 canonical settings status checkpoint
+
+| ID | Sev | Issue | Status | Evidence | Notes |
+|----|-----|-------|--------|----------|-------|
+| R17-SETTINGS-STATUS-PARITY | M | Capabilities exposed artifact sampling defaults while health omitted them; neither shared one effective omitted-request status contract | VERIFIED-LIVE-SCOPED-GEMMA | Source `_model_effective_defaults_status`; 4 focused + 57 broader runnable tests; Electron PID 97849; direct Chat + dev-gateway Responses | Bundle defaults and runtime-effective values now remain explicitly separate and health/capabilities match. Cross-family values, model swap/app restart/sleep-wake, and signed-app repetition remain open. |
+| R17-SETTINGS-PERSISTENCE | H | Bundle defaults, chat overrides, New Chat/Reset, and Save & Restart could drift across UI, SQLite, request, and engine | VERIFIED-LIVE-SCOPED-GEMMA | Real Electron Chat Settings, SQLite, request diagnostics, resolved engine kwargs, PID restart | Gemma passed default, override, reset, and explicit-Off restart rows. Other families and lifecycle transitions remain open. |
+
 ## 2026-07-23 v1.6.17 mixed-SWA reconstruction checkpoint
 
 | ID | Sev | Issue | Status | Evidence | Notes |

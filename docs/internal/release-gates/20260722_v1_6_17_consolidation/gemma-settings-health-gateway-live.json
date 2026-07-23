@@ -1,0 +1,210 @@
+{
+  "gate": "R17-005 canonical bundle and effective generation settings",
+  "date": "2026-07-23",
+  "head_before_checkpoint_commit": "019e4fa82e67b5be27227cab895efc96fa109a5b",
+  "host": "erics-m5-max.local",
+  "checkout": "/Users/eric/mlx/vllm-mlx-r17-consolidation",
+  "bundle": "/Users/eric/.mlxstudio/models/JANGQ-AI/gemma-4-12B-it-qat-JANG_4M",
+  "source": {
+    "panel_bundle_owner": "panel/src/shared/sessionGenerationDefaults.ts::resolveBundleGenerationDefaults",
+    "engine_runtime_owner": "vmlx_engine/server.py::_model_effective_defaults_status",
+    "health_and_capabilities_share_runtime_owner": true,
+    "bundle_defaults_remain_separate_from_effective_server_defaults": true,
+    "bundle_defaults_do_not_become_hidden_cli_overrides": true
+  },
+  "focused_tests": {
+    "exact_new_and_adjacent": {
+      "passed": 4,
+      "failed": 0
+    },
+    "broader_selected": {
+      "passed": 57,
+      "failed_product": 0,
+      "environment_only_failures": 3,
+      "environment_note": "The project venv lacks pytest-asyncio; three pre-existing async tests were rejected before executing."
+    },
+    "python_compile": "pass",
+    "git_diff_check": "pass"
+  },
+  "electron_restart": {
+    "cdp": "http://127.0.0.1:9335",
+    "old_pid": 97058,
+    "new_pid": 97849,
+    "action": "real Server Settings Save & Restart button",
+    "ui_confirmation": "Restarted with new settings.",
+    "process_cwd": "/Users/eric/mlx/vllm-mlx-r17-consolidation/.venv/bin",
+    "launcher": "/Users/eric/mlx/vllm-mlx-r17-consolidation/.venv/bin/python3 -B -s -m vmlx_engine.cli serve",
+    "venv_wrapper_shebang": "#!/Users/eric/mlx/vllm-mlx-r17-consolidation/.venv/bin/python3",
+    "error_toast": false
+  },
+  "bundle_first_use_ui": {
+    "thinking": "Auto",
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "min_p": 0.0,
+    "repetition_penalty": 1.0,
+    "max_tokens": null,
+    "max_thinking_tokens": null,
+    "wire_api": "responses",
+    "sqlite_session_defaults": {
+      "defaultTemperature": 100,
+      "defaultTopP": 95,
+      "defaultTopK": 64,
+      "defaultMinP": 0,
+      "defaultRepetitionPenalty": 0,
+      "defaultMaxNewTokens": 0,
+      "defaultDoSample": true,
+      "defaultSamplingDefaultsDeclared": true,
+      "maxTokens": 0,
+      "maxContextLength": 0
+    },
+    "sqlite_new_chat_sampler_override_columns": "NULL"
+  },
+  "saved_override_round_trip": {
+    "ui_saved": {
+      "thinking": "On",
+      "temperature": 0.75,
+      "top_p": 0.9,
+      "top_k": 17,
+      "min_p": 0.02,
+      "repetition_penalty": 1.05,
+      "max_tokens": 333
+    },
+    "sqlite_exact": true,
+    "electron_request_diag_exact": true,
+    "engine_resolved_kwargs": {
+      "temperature": 0.75,
+      "top_p": 0.9,
+      "top_k": 17,
+      "min_p": 0.02,
+      "repetition_penalty": 1.05,
+      "max_tokens": 333,
+      "enable_thinking": true
+    },
+    "new_chat_reverted_to_bundle_defaults": true,
+    "reset_cleared_sampler_columns_to_null": true
+  },
+  "save_restart_round_trip": {
+    "saved_before_restart": {
+      "thinking": "Off",
+      "temperature": 0.6,
+      "top_k": 7,
+      "max_tokens": 111
+    },
+    "ui_after_restart": {
+      "thinking": "Off",
+      "temperature": 0.6,
+      "top_p": 0.95,
+      "top_k": 7,
+      "min_p": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": 111
+    },
+    "engine_resolved_kwargs": {
+      "temperature": 0.6,
+      "top_p": 0.95,
+      "top_k": 7,
+      "max_tokens": 111,
+      "enable_thinking": false
+    },
+    "reasoning_box_present": false,
+    "visible_answer": "R17-G4-SET-OFF-RESTART-DONE",
+    "reset_after_restart_restored_bundle_defaults": true
+  },
+  "live_endpoint_parity_pid_97849": {
+    "health": {
+      "status": "healthy",
+      "sampling_defaults": {
+        "temperature": 1.0,
+        "top_k": 64,
+        "top_p": 0.95
+      },
+      "effective_defaults": {
+        "max_output_tokens": 16384,
+        "min_p": 0.0,
+        "temperature": 1.0,
+        "top_k": 64,
+        "top_p": 0.95
+      },
+      "max_prompt_tokens": null
+    },
+    "capabilities": {
+      "reasoning_parser": "gemma4",
+      "tool_parser": "gemma4",
+      "sampling_defaults": {
+        "temperature": 1.0,
+        "top_k": 64,
+        "top_p": 0.95
+      },
+      "effective_defaults": {
+        "max_output_tokens": 16384,
+        "min_p": 0.0,
+        "temperature": 1.0,
+        "top_k": 64,
+        "top_p": 0.95
+      },
+      "max_prompt_tokens": null
+    },
+    "sampling_defaults_equal": true,
+    "effective_defaults_equal": true,
+    "max_prompt_tokens_equal": true,
+    "max_output_note": "The bundle declares no max_new_tokens. The blank UI field remains model-owned while health reports the reasoning-capable engine fallback."
+  },
+  "electron_auto_turn_pid_97849": {
+    "prompt_id": "R17-G4-HEALTH-PARITY-LIVE",
+    "reasoning_chars": 383,
+    "reasoning_box_present": true,
+    "visible_answer": "R17-G4-HEALTH-PARITY-LIVE-DONE",
+    "completion_tokens": 148,
+    "tokens_per_second": 44.4,
+    "prefill_tokens_per_second": 7920.4,
+    "prompt_tokens": 3683,
+    "cached_tokens": 3584,
+    "cache_detail": "paged+mixed_swa+disk",
+    "ttft_seconds": 0.47,
+    "total_seconds": 3.8,
+    "tool_calls": 0,
+    "control_marker_leaks": 0
+  },
+  "raw_streaming_pid_97849": {
+    "direct_chat": {
+      "reasoning_delta_count": 99,
+      "reasoning_chars": 284,
+      "content_delta_count": 14,
+      "content": "R17-G4-DIRECT-DEFAULTS-DONE",
+      "finish_reasons": [
+        "stop"
+      ],
+      "done_events": 1,
+      "control_marker_leaks": 0,
+      "seconds": 3.079
+    },
+    "electron_gateway": {
+      "port": 8085,
+      "route": "/v1/responses",
+      "reasoning_summary_delta_count": 187,
+      "reasoning_chars": 543,
+      "output_text_delta_count": 15,
+      "content": "R17-G4-GATEWAY-DEFAULTS-DONE",
+      "terminal_events": [
+        "response.completed"
+      ],
+      "control_marker_leaks": 0,
+      "seconds": 7.461
+    },
+    "engine_resolved_omitted_request_kwargs": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 64,
+      "max_tokens": 16384,
+      "enable_thinking": true
+    }
+  },
+  "verdict": "VERIFIED_LIVE_SCOPED_GEMMA_SETTINGS_PARITY",
+  "boundary": [
+    "This proves the canonical settings chain for the current Gemma bundle and current dev Electron process only.",
+    "Cross-family unusual top-k, mode-specific repetition penalties, bundle max_new_tokens, explicit context caps, model swaps, app restart, sleep/wake, and signed-app repetition remain open.",
+    "The broader v1.6.17 model, media, protocol, cache-archetype, suite, packaging, signing, notarization, and publication gates remain PARTIAL."
+  ]
+}
