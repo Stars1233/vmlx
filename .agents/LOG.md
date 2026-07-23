@@ -1837,3 +1837,38 @@
   `disk_hits=48`, `tq_native_hits=48`.
 - Retained artifacts:
   `docs/internal/release-gates/20260722_v1_6_16_campaign/current-reruns/`.
+
+## 2026-07-22 - start v1.6.17 consolidation and align Ollama private history
+
+- Started from clean baseline `e0b49ec29` in isolated worktree
+  `/Users/eric/mlx/vllm-mlx-r17-consolidation`.
+- Reconciled the user-supplied `.17` requirements with the retained `.16`
+  open matrix and wrote
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/README.md`.
+- Audited direct Python and Electron-gateway Ollama request translation.
+- Found direct route normalized assistant `message.thinking` before text/media
+  conversion while gateway returned text messages unchanged and retained the
+  alias on media messages.
+- Updated:
+  - `vmlx_engine/api/ollama_adapter.py`
+  - `panel/src/main/api-gateway.ts`
+  - `tests/test_ollama_adapter.py`
+  - `panel/tests/api-gateway-ollama-behavior.test.ts`
+- Canonical rule: non-empty existing `reasoning_content` wins; otherwise a
+  non-empty assistant `thinking` becomes `reasoning_content`; the alias is
+  removed even when empty.
+- Verification:
+  - `PYTHONPATH=$PWD /Users/eric/mlx/vllm-mlx/.venv/bin/python -m pytest -q
+    tests/test_ollama_adapter.py tests/test_ollama_reasoning_parity.py
+    -p no:cacheprovider` -> `36 passed`.
+  - Full focused reasoning/parser/adapter/agentic protocol set after the
+    change -> `472 passed`.
+  - `npm test -- --run tests/api-gateway-ollama.test.ts
+    tests/api-gateway-ollama-behavior.test.ts` -> `59 passed`.
+  - `npm run typecheck` -> pass.
+  - Selected paged/block-disk/TQ/hybrid-SSM cache regression set ->
+    `111 passed`.
+- Installed this worktree's locked panel dependencies with `npm ci`; did not
+  reuse another checkout's `node_modules`.
+- Live Electron/direct/gateway model proof remains open. No release readiness
+  claim was made.

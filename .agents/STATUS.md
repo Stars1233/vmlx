@@ -7973,6 +7973,40 @@ Status: `CURRENT_UI_API_TOOL_PASS / STRICT_FORMAT_PARTIAL / SIGNED_APP_PENDING`.
   current rerun artifacts in addition to the older scoped cache/protocol gates.
 - Retained evidence:
   `docs/internal/release-gates/20260722_v1_6_16_campaign/current-reruns/`.
+
+## 2026-07-22 - v1.6.17 consolidation campaign started
+
+Status: `ACTIVE / PARTIAL / NOT RELEASE-READY`.
+
+- Created clean worktree
+  `/Users/eric/mlx/vllm-mlx-r17-consolidation` from public follow-up head
+  `e0b49ec2910649b554af14508eb42e6d4eec6f31` on branch
+  `codex/v1.6.17-consolidation-20260723`.
+- The dirty legacy `/Users/eric/mlx/vllm-mlx` checkout and dirty old campaign
+  checkout were not modified or reused for proof.
+- Added the authoritative campaign tracker:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/README.md`.
+- First source defect classified: direct Python Ollama normalized prior
+  assistant `thinking` into `reasoning_content`, but the Electron gateway did
+  not. Text-only and media follow-ups could therefore render different
+  histories across direct versus gateway routes.
+- Patched both routes to use one canonical history shape: remove the Ollama
+  alias, preserve an existing canonical field, and otherwise move non-empty
+  assistant `thinking` into `reasoning_content` before media translation.
+- Focused evidence:
+  - Python Ollama adapter/reasoning parity: `36 passed`.
+  - Full focused reasoning/parser/adapter/agentic protocol set: `472 passed`.
+  - Panel Ollama gateway source/behavior: `59 passed`.
+  - Panel TypeScript check: pass.
+- Cache read-only audit retained:
+  `101` standard/paged/block-disk tests and `28` hybrid/SSM tests passed.
+  A current-branch combined selected cache regression rerun passed `111`.
+  Paged-Off disk-only and Paged-On L1/L2 mechanics are source-covered; live
+  cross-family restart/partial/eviction proof remains open. MLLM early
+  `expected_num_layers` validation is a source-risk follow-up.
+- No live model generation or Electron visual proof has run on this branch yet.
+  The Ollama fix and every broad reasoning/cache/settings claim remain
+  `PARTIAL` until current-source Electron and raw direct/gateway proof exist.
 - Still pending before release claim: rerun scoped checks after this doc/source
   update, push both boxes, build/sign/notarize/install-smoke the actual bundled
   app, and verify public artifact/update-manifest truth if publishing.
