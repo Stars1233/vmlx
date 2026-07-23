@@ -811,3 +811,55 @@ Evidence:
 - `dsv4-l2-owner-and-equivalence-live.json`
 
 Overall status remains `PARTIAL / NOT RELEASE-READY`.
+
+### R17-010 Preserve reasoning mode across ordinary post-tool continuation
+
+Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
+
+Root cause and repair:
+
+- The Electron Responses request builder used the same recovery helper for an
+  ordinary exact-final pass after a successful tool and for the bounded
+  recovery after an actually empty or incomplete post-tool answer.
+- Both paths removed the completed tool, but both also forced
+  `enable_thinking=false`, `thinking_mode=instruct`, and
+  `chat_template_kwargs.enable_thinking=false`. A real tool continuation could
+  therefore silently turn explicit Reasoning On or model-owned Auto into Off.
+- `applyPostToolAnswerPolicy` now retires the completed tool for both paths,
+  then preserves the requested reasoning mode for the ordinary follow-up.
+  Only a true bounded empty-answer recovery may request instruct mode.
+
+Current verification:
+
+- Focused panel verification passes `22/22`; TypeScript typecheck passes.
+- The real Electron Start button loaded
+  `/Volumes/EricsLLMDrive/JANGQ-AI/Laguna-S-2.1-JANG_4M` from the consolidation
+  checkout venv as PID `14831`, port `8003`, with no error toast.
+- Before the fix, the initial tool pass resolved thinking On and the ordinary
+  post-tool pass resolved Off.
+- After the fix, both phases resolved thinking On. The UI executed exactly one
+  real `file_info({"path":"panel/package.json"})`, retained its real `5.2 KB`
+  result, and continued to
+  `LAGUNA-UI-ON-TOOL-POSTFIX-DONE SIZE=5.2 KB`.
+- That specific tool sample chose a direct visible path, so it is not counted
+  as a non-empty reasoning-rail row merely because the route was enabled.
+- A separate deterministic explicit-On Electron row persisted 325 reasoning
+  characters in `reasoning_content`, displayed the distinct Reasoning rail,
+  and produced non-empty visible content with zero raw markers, replacement
+  characters, or KaTeX errors. It included extra visible calculation before
+  the requested final, so exact instruction following remains partial.
+- New Chat returned to Auto and the bundle-derived Laguna generation defaults
+  instead of inheriting the saved explicit-On chat override.
+
+Evidence:
+
+- `laguna-post-tool-thinking-live.json`
+- `laguna-ui-on-rail.png`
+
+Remaining boundary:
+
+- This closes the hidden post-tool Off override and a scoped Laguna UI rail/tool
+  row. It does not close the required raw Chat/Responses/Anthropic/Ollama
+  sequences, mixed-SWA Paged-On/Paged-Off SSD hierarchy, eviction/refault,
+  broader parser families, full suites, installed app, or release gates.
+- Overall status remains `PARTIAL / NOT RELEASE-READY`.

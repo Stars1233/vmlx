@@ -1,5 +1,25 @@
 # Current Status
 
+## 2026-07-23 - Laguna post-tool reasoning-mode preservation
+
+Status: `VERIFIED_LIVE_SCOPED / RELEASE_PARTIAL`.
+
+- The normal exact-final continuation after a completed tool shared the
+  empty-answer recovery policy and silently forced thinking Off.
+- Current source now retires the completed tool without changing Auto/On/Off;
+  only a bounded recovery after an actually empty/incomplete answer may request
+  instruct mode.
+- Focused panel tests pass `22/22`; TypeScript typecheck passes.
+- Real Electron PID `14831` executed `file_info(panel/package.json)` exactly
+  once. Before the fix, thinking resolved True then False; after the fix both
+  passes resolved True and the exact final retained the real `5.2 KB` result.
+- A separate explicit-On row displayed a real 325-character Reasoning rail and
+  non-empty visible output with zero marker, replacement-character, or KaTeX
+  errors. Its exact visible-only instruction remained imperfect.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/laguna-post-tool-thinking-live.json`.
+- Raw four-protocol sequences and Laguna mixed-SWA/SSD hierarchy remain open.
+
 ## 2026-07-23 - DSV4 L2 owner-thread fix and composite-cache fail-closed gate
 
 Status: `OWNER_THREAD_PASS / CACHE_EQUIVALENCE_FAIL / RELEASE_PARTIAL`.

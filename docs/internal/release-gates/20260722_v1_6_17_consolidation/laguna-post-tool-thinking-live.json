@@ -1,0 +1,174 @@
+{
+  "schema": "vmlx.release_gate.live.v1",
+  "captured_at": "2026-07-23T02:40:00-07:00",
+  "status": "VERIFIED_LIVE_SCOPED_POST_TOOL_MODE_PRESERVATION_OVERALL_PARTIAL",
+  "source": {
+    "checkout": "/Users/eric/mlx/vllm-mlx-r17-consolidation",
+    "branch": "codex/v1.6.17-consolidation-20260723",
+    "base_head": "9b1f6281829966b27ab3e773c81a014c1d682531",
+    "files": [
+      "panel/src/main/ipc/chat.ts",
+      "panel/tests/tool-auto-continue.test.ts"
+    ],
+    "root_cause": "The ordinary planned exact-final pass after a completed tool shared applyFinalAnswerRecovery with the bounded recovery for an actually empty or incomplete answer. Both paths deleted the completed tool, but both also forced enable_thinking=false, thinking_mode=instruct, and chat_template_kwargs.enable_thinking=false. A normal post-tool continuation could therefore silently override chat Reasoning On or model-owned Auto.",
+    "fix": "applyPostToolAnswerPolicy always retires the completed tool, then returns for an ordinary planned direct-answer pass. Only the bounded recovery after an actually empty or incomplete post-tool answer may request instruct mode."
+  },
+  "electron": {
+    "source_checkout": "/Users/eric/mlx/vllm-mlx-r17-consolidation",
+    "profile": "/Users/eric/.vmlx-r17-consolidation-dev",
+    "cdp": "http://127.0.0.1:9335",
+    "gateway": "http://127.0.0.1:8088",
+    "electron_pid": 14421,
+    "engine_provenance_quote": "[Engine Manager] Found development project venv: /Users/eric/mlx/vllm-mlx-r17-consolidation/.venv/bin/python3 (vmlx_engine 1.6.16)",
+    "start_button": {
+      "used": true,
+      "session_id": "2316afd1-3efa-49d0-8056-4809740d93f7",
+      "model": "/Volumes/EricsLLMDrive/JANGQ-AI/Laguna-S-2.1-JANG_4M",
+      "model_pid": 14831,
+      "model_port": 8003,
+      "load_seconds": 12.5,
+      "error_toast": false
+    }
+  },
+  "bundle_and_launch": {
+    "architecture": "LagunaForCausalLM",
+    "layers": 48,
+    "hidden_size": 3072,
+    "sliding_window": 512,
+    "context_length": 1048576,
+    "weight_format": "JANG affine JANG_4M",
+    "generation_defaults": {
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_new_tokens": 32768
+    },
+    "reasoning_parser": "deepseek_r1",
+    "tool_parser": "glm47",
+    "cache_argv": [
+      "--use-paged-cache",
+      "--paged-cache-block-size 64",
+      "--max-cache-blocks 1000",
+      "--enable-block-disk-cache",
+      "--block-disk-cache-max-gb 10"
+    ],
+    "cache_boundary": "This artifact does not close Laguna mixed-SWA partial/restart/SSD-only equivalence. A reconstruction attempt reported only 12 layers for a 48-layer checkpoint and failed safely to a miss."
+  },
+  "live_rows": [
+    {
+      "id": "R17-LAGUNA-UI-AUTO-1",
+      "chat_id": "4024e8c5-adb1-41b8-b548-20b98b33c7fd",
+      "reasoning_mode": "Auto",
+      "engine_resolved_enable_thinking": true,
+      "reasoning_rail": false,
+      "visible_content_non_empty": true,
+      "visible_summary": "Coherent 17 times 29 calculation and result 493.",
+      "tokens": 324,
+      "prompt_tokens": 110,
+      "tokens_per_second": 48.0,
+      "prefill_tokens_per_second": 151.3,
+      "ttft_seconds": 0.73,
+      "total_seconds": 7.5,
+      "verdict": "PASS_VARIABLE_DIRECT_PATH"
+    },
+    {
+      "id": "R17-LAGUNA-UI-ON-TOOL-PREFIX",
+      "chat_id": "4024e8c5-adb1-41b8-b548-20b98b33c7fd",
+      "reasoning_mode": "On",
+      "engine_initial_enable_thinking": true,
+      "engine_post_tool_enable_thinking": false,
+      "tool": "file_info",
+      "tool_arguments": {
+        "path": "panel/package.json"
+      },
+      "tool_count": 1,
+      "real_result": "Size: 5.2 KB",
+      "visible_content_non_empty": true,
+      "reasoning_rail": false,
+      "verdict": "FAIL_LIVE_HIDDEN_POST_TOOL_OFF_OVERRIDE"
+    },
+    {
+      "id": "R17-LAGUNA-UI-ON-TOOL-POSTFIX",
+      "chat_id": "4024e8c5-adb1-41b8-b548-20b98b33c7fd",
+      "reasoning_mode": "On",
+      "engine_initial_enable_thinking": true,
+      "engine_post_tool_enable_thinking": true,
+      "tool": "file_info",
+      "tool_arguments": {
+        "path": "panel/package.json"
+      },
+      "tool_count": 1,
+      "real_result": "Size: 5.2 KB",
+      "visible_final": "LAGUNA-UI-ON-TOOL-POSTFIX-DONE SIZE=5.2 KB",
+      "visible_content_non_empty": true,
+      "reasoning_rail": false,
+      "reasoning_rail_note": "The enabled route was preserved, but this sample emitted a model-owned direct visible path. No synthetic rail was added.",
+      "tokens": 160,
+      "prompt_tokens": 9146,
+      "cached_tokens": 4527,
+      "cache_detail": "paged+disk+tq-native",
+      "tokens_per_second": 49.5,
+      "prefill_tokens_per_second": 818.5,
+      "ttft_seconds": 5.64,
+      "total_seconds": 13.0,
+      "verdict": "PASS_LIVE_POST_TOOL_MODE_PRESERVED_AND_TOOL_EXACT_ONCE"
+    },
+    {
+      "id": "R17-LAGUNA-UI-ON-RAIL",
+      "chat_id": "09a9e070-c256-41f4-a095-b946062223be",
+      "reasoning_mode": "On",
+      "temperature": 0,
+      "tool_policy": "none",
+      "reasoning_rail": true,
+      "reasoning_chars": 325,
+      "visible_content_non_empty": true,
+      "raw_control_marker_leaks": 0,
+      "replacement_characters": 0,
+      "katex_errors": 0,
+      "tokens": 257,
+      "prompt_tokens": 107,
+      "tokens_per_second": 52.3,
+      "prefill_tokens_per_second": 135.3,
+      "ttft_seconds": 0.79,
+      "total_seconds": 6.7,
+      "screenshot": "laguna-ui-on-rail.png",
+      "verdict": "PASS_SEPARATE_RAIL_PARTIAL_EXACT_VISIBLE_INSTRUCTION",
+      "caveat": "The visible answer included an extra formatted calculation before the requested two-line final. Streaming separation passed; exact visible-only instruction following did not."
+    }
+  ],
+  "settings_persistence": {
+    "sqlite": "/Users/eric/.vmlx-r17-consolidation-dev/chats.db",
+    "saved_chat_enable_thinking": 1,
+    "new_chat_reset_to_auto": true,
+    "new_chat_bundle_defaults_observed": {
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "top_k": 20,
+      "min_p": 0.0,
+      "repetition_penalty": 1.0,
+      "max_output_placeholder": 32768
+    }
+  },
+  "verification": {
+    "panel_test_command": "npm test -- --run tests/tool-auto-continue.test.ts",
+    "panel_tests": "22 passed",
+    "typecheck_command": "npm run typecheck",
+    "typecheck": "passed",
+    "model_loading": "PASS",
+    "bundle_grounded_settings": "PASS_SCOPED",
+    "visible_output": "PASS_FOR_ALL_RETAINED_ROWS",
+    "reasoning_content_separation": "PASS_ON_DETERMINISTIC_ON_RAIL_ROW",
+    "tool_execution_and_continuation": "PASS_EXACTLY_ONCE",
+    "cross_turn_reasoning_replay": "NO_BYTE_IDENTICAL_REPLAY_OBSERVED",
+    "cache": "PARTIAL",
+    "release": "NOT_READY"
+  },
+  "remaining": [
+    "Run three retained raw API multi-turn sequences across Chat, Responses, Anthropic, and Ollama on this exact model PID.",
+    "Close Laguna Paged-On resident partial reuse, SSD promotion, Paged-Off SSD-only changed-tail reuse, restart restore, eviction/refault, and cold-vs-warm output equivalence.",
+    "Standardize effective reasoning parser resolution so stale saved Laguna qwen3 cannot override detected deepseek_r1 and literal none is a hard opt-out.",
+    "Repeat the shared post-tool reasoning-mode regression on other parser families before global closure.",
+    "Run full suites, package verification, signed installed-app repetition, and the remaining family matrix before release."
+  ]
+}

@@ -1,5 +1,22 @@
 # Agent proof log
 
+## 2026-07-23 - Laguna ordinary post-tool continuation keeps requested reasoning mode
+
+- Root-caused the missing post-tool reasoning mode to the panel request builder:
+  an ordinary exact-final follow-up and a true empty-answer recovery shared the
+  same helper, which deleted completed tools and forced thinking Off.
+- Split the policy boundary in the owning helper. Ordinary continuation only
+  removes completed tools; the bounded true recovery retains its instruct-mode
+  behavior.
+- Current verification: 22 focused panel tests, typecheck, real Electron
+  Start-button load, exact-one `file_info` execution, real result continuation,
+  and True-to-True engine thinking resolution after the fix.
+- A separate deterministic explicit-On row persisted a real reasoning rail.
+  The model's extra visible calculation is retained as an exactness caveat.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/laguna-post-tool-thinking-live.json`.
+- Overall v1.6.17 remains partial.
+
 ## 2026-07-23 - Gemma mixed-SWA SSD hierarchy live closure
 
 - Through the real Server Settings UI, Paged RAM Off left Block Disk L2
