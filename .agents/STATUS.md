@@ -8162,3 +8162,24 @@ Status: `VERIFIED-LIVE_SCOPED / OVERALL PARTIAL`.
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/dsv4-bundle-pool-math-live.json`.
 - Still open: DSV4 cache hit/restart/eviction and DSML tool loops; other model
   families/protocols/media; release packaging/signing/notarization.
+
+## 2026-07-23 - DSV4 exact cache and DSML continuation checkpoint
+
+Status: `VERIFIED-LIVE_SCOPED_PARTIAL / RELEASE NOT READY`.
+
+- Confirmed the earlier zero DSV4 cache counters came from the explicit
+  256-token snapshot threshold. A 2,187-token cold request stored 2,186 typed
+  composite tokens; its exact repeat restored all of them as `paged+dsv4` and
+  fell from 5.867s to 0.685s. Nine SSD blocks were written.
+- A changed-tail probe did not accept the matching non-terminal blocks because
+  they have only local/SWA fragments and no terminal CSA/HCA composite state.
+  The safe full-prefill fallback exact-completed. Safe typed partial reuse is
+  therefore still open rather than falsely counted as a hit.
+- Direct Chat and Electron-gateway Responses each completed a real DSML
+  `file_info` call/result continuation with separated reasoning, truthful
+  terminals, and no native marker leakage.
+- Electron Chat executed one real `Info` tool card and continued visibly.
+  The model shortened the requested marker and interpreted human-readable
+  `5.2 KB` as `5200`, so exact instruction-following remains partial.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/dsv4-cache-dsml-live.json`.

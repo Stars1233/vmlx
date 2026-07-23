@@ -5171,3 +5171,28 @@ Status: `FIXED+VERIFIED-LIVE_SCOPED / RELEASE STILL PARTIAL`.
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/dsv4-bundle-pool-math-live.json`.
 - Open: DSV4 native cache reuse/restart/eviction, DSML tool loop, long quality,
   and the broader representative family/release matrix.
+
+## 2026-07-23 - DSV4 cache-threshold, exact reuse, and DSML checkpoint
+
+Status: `SCOPED LIVE PASS / DSV4 PARTIAL CACHE OPEN`.
+
+- `DSV4-SHORT-ZERO-STORE`: `NOT A DEFECT`. Source and live telemetry agree
+  that DSV4 skips expensive prompt-boundary snapshots below 256 tokens.
+- `DSV4-EXACT-NATIVE-REUSE`: `VERIFIED-LIVE_SCOPED`. A 2,187-token cold prompt
+  stored 2,186 native composite tokens; the exact repeat restored all of them
+  as `paged+dsv4` and SSD write-through retained nine blocks.
+- `DSV4-CHANGED-TAIL-PARTIAL`: `OPEN / SAFE FALLBACK VERIFIED`. Earlier
+  matching blocks contain `deepseek_v4_pending` local/SWA fragments but not the
+  terminal CSA/HCA state. Current source correctly refuses incomplete restore
+  and full-prefills. A structural typed checkpoint/rederive design is still
+  required for safe partial reuse.
+- `DSV4-DSML-CHAT-RESPONSES`: `VERIFIED-LIVE_SCOPED`. Direct Chat and
+  Electron-gateway Responses emitted separate reasoning, one exact
+  schema-valid `file_info` call, accepted the real tool result, and continued
+  to one truthful final without native-marker leakage.
+- `DSV4-ELECTRON-TOOL`: `TRANSPORT PASS / MODEL EXACTNESS PARTIAL`. The UI
+  visibly executed one `Info` tool and continued, but the model shortened the
+  requested marker and converted the tool's human-readable `5.2 KB` to
+  `5200`.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/dsv4-cache-dsml-live.json`.

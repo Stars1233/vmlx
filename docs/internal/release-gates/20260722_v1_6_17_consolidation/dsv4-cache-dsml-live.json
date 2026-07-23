@@ -1,0 +1,175 @@
+{
+  "created_at": "2026-07-23T08:33:00-07:00",
+  "status": "VERIFIED_LIVE_SCOPED_PARTIAL",
+  "source": {
+    "head": "2db6c71a96e38ab1d9c33be489b0db8d28b04ac6",
+    "checkout": "/Users/eric/mlx/vllm-mlx-r17-consolidation",
+    "host": "erics-m5-max.local",
+    "electron_profile": "/Users/eric/.vmlx-r17-consolidation-dev",
+    "electron_cdp_port": 9335,
+    "gateway_port": 8085
+  },
+  "model": {
+    "bundle": "/Volumes/EricsLLMDrive/dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+    "display_name": "dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+    "pid": 3423,
+    "port": 8002,
+    "loaded_by": "Electron Start button",
+    "tool_parser": "dsml",
+    "reasoning_parser": "deepseek_r1",
+    "native_cache": {
+      "cache_type": "native_composite",
+      "components": [
+        "swa_local",
+        "csa_compressed_pool",
+        "hca_compressed_pool",
+        "incomplete_tail_state"
+      ],
+      "paged": true,
+      "block_disk_l2": true,
+      "generic_turboquant_kv": false,
+      "pool_quant": false,
+      "block_size": 256,
+      "max_blocks": 1000
+    }
+  },
+  "cache_probe": {
+    "fixture_prompt_tokens": 2187,
+    "snapshot_threshold_tokens": 256,
+    "short_request_zero_store_explanation": "The earlier requests were below the explicit DSV4 prompt snapshot threshold, so zero snapshot bytes and zero stores were expected.",
+    "cold_exact": {
+      "seconds": 5.867,
+      "visible_content": "DSV4-CACHE-A",
+      "reasoning_chars": 0,
+      "finish_reason": "stop",
+      "done_events": 1,
+      "prompt_tokens": 2187,
+      "completion_tokens": 7,
+      "stored_cache_key_tokens": 2186,
+      "snapshot_estimated_bytes": 45015552,
+      "l1_resident_bytes": 44532224
+    },
+    "warm_exact": {
+      "seconds": 0.685,
+      "visible_content": "DSV4-CACHE-A",
+      "reasoning_chars": 0,
+      "finish_reason": "stop",
+      "done_events": 1,
+      "cached_tokens": 2186,
+      "cache_detail": "paged+dsv4",
+      "disk_blocks": 9,
+      "disk_tokens": 2186,
+      "disk_writes": 9
+    },
+    "changed_tail": {
+      "seconds": 4.396,
+      "visible_content": "DSV4-CACHE-B",
+      "reasoning_chars": 0,
+      "finish_reason": "stop",
+      "done_events": 1,
+      "accepted_cached_tokens": 0,
+      "status": "SAFE_MISS_PARTIAL_REUSE_OPEN",
+      "root_cause_log": "Ignoring DSV4 paged prefix hit: restored blocks contain DeepseekV4Cache pending markers but no terminal deepseek_v4 composite state.",
+      "classification": "The matching non-terminal blocks contain only local/SWA fragments. CSA/HCA pool state lives in the terminal typed checkpoint, and the changed tail invalidated that checkpoint. The current guard correctly prevents incomplete-state decoding; safe partial checkpointing or typed rederive remains unimplemented."
+    }
+  },
+  "direct_chat_dsml": {
+    "stream": true,
+    "thinking": true,
+    "pass_1": {
+      "events": 73,
+      "reasoning_chars": 65,
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "call_feaaf6a0",
+          "name": "file_info",
+          "arguments": {
+            "path": "panel/package.json"
+          }
+        }
+      ],
+      "finish_reason": "tool_calls",
+      "done_events": 1,
+      "visible_marker_leaks": []
+    },
+    "real_tool_result": {
+      "path": "panel/package.json",
+      "size_bytes": 5336,
+      "is_file": true
+    },
+    "pass_2": {
+      "events": 66,
+      "reasoning_chars": 147,
+      "content": "DSV4-DSML-DONE SIZE=5336",
+      "tool_calls": [],
+      "finish_reason": "stop",
+      "done_events": 1,
+      "visible_marker_leaks": []
+    }
+  },
+  "gateway_responses_dsml": {
+    "stream": true,
+    "thinking": true,
+    "pass_1": {
+      "events": 185,
+      "reasoning_chars": 258,
+      "output_text": "",
+      "function_call": {
+        "id": "fc_68067860a842",
+        "call_id": "call_c38f93d7",
+        "name": "file_info",
+        "arguments": {
+          "path": "panel/package.json"
+        }
+      },
+      "response_completed_events": 1,
+      "response_incomplete_events": 0,
+      "response_failed_events": 0,
+      "visible_marker_leaks": []
+    },
+    "real_tool_result": {
+      "path": "panel/package.json",
+      "size_bytes": 5336,
+      "is_file": true
+    },
+    "pass_2": {
+      "events": 108,
+      "reasoning_chars": 352,
+      "output_text": "DSV4-RESP-DONE SIZE=5336",
+      "function_calls": [],
+      "response_completed_events": 1,
+      "response_incomplete_events": 0,
+      "response_failed_events": 0,
+      "visible_marker_leaks": []
+    }
+  },
+  "electron_tool_turn": {
+    "prompt": "[R17-DSV4-UI-TOOL]",
+    "reasoning_rail_chars": 271,
+    "tool_cards": [
+      {
+        "label": "Info",
+        "context": "panel/package.json"
+      }
+    ],
+    "final_visible_content": "DSV4-UI-TOOL-D SIZE=5200",
+    "model_final_exactness": "PARTIAL",
+    "note": "The real Electron tool formats 5336 bytes as 5.2 KB. The model interpreted that display as 5200 bytes and also shortened the requested marker. Tool execution, separated reasoning, continuation, and non-empty final passed; exact model instruction following did not.",
+    "raw_control_marker_leak_visible": false
+  },
+  "verdict": {
+    "short_snapshot_threshold": "PASS_EXPLAINED",
+    "cold_store": "PASS",
+    "warm_exact_resident_hit": "PASS",
+    "ssd_write_through": "PASS",
+    "changed_tail_partial_reuse": "OPEN_SAFE_MISS",
+    "direct_chat_dsml_real_tool_loop": "PASS",
+    "gateway_responses_dsml_real_tool_loop": "PASS",
+    "electron_real_tool_loop": "PASS_WITH_MODEL_EXACTNESS_PARTIAL",
+    "restart_ssd_restore": "NOT_RUN",
+    "paged_off_ssd_only": "NOT_RUN",
+    "eviction_refault": "NOT_RUN",
+    "dsv4_long_quality": "OPEN"
+  }
+}

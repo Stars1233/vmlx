@@ -2001,3 +2001,20 @@
   reasoning/content deltas separate and terminalized once.
 - Focused verification: panel `441`, math `13`, Python DSV4 `80`, typecheck
   pass, bundled-Python and Electron production build pass.
+
+## 2026-07-23 - DSV4 exact native-cache and DSML live proof
+
+- Ran one combined cache/protocol gate against real Electron-started PID 3423.
+- Traced the prior zero cache state to the 256-token DSV4 snapshot threshold.
+  A 2,187-token cold prompt stored 2,186 native composite tokens; the exact
+  repeat restored all tokens as `paged+dsv4` and wrote nine L2 blocks.
+- The changed-tail prompt exposed an explicit architecture boundary: matching
+  non-terminal blocks have `deepseek_v4_pending` local state but no terminal
+  CSA/HCA composite. The guard safely forced full prefill; safe partial typed
+  checkpointing/rederive remains an implementation task.
+- Direct streamed Chat and gateway streamed Responses each emitted one real
+  `file_info` function call, consumed the actual 5,336-byte result, separated
+  reasoning from visible content, and terminalized exactly once without DSML
+  residue.
+- Real Electron Chat showed a separate reasoning rail, one `Info` tool card,
+  and a non-empty final. Exact final-marker compliance was partial.

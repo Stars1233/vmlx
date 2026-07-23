@@ -652,7 +652,7 @@ Boundary:
   Anthropic/Ollama rows remain open. This is not a Gemma family release pass
   and does not unlock v1.6.17 packaging.
 
-### R17-006 DSV4 bundle-owned pool codec and math transport/rendering
+### R17-007 DSV4 bundle-owned pool codec and math transport/rendering
 
 Status: `VERIFIED-LIVE_SCOPED / DSV4 FAMILY MATRIX OPEN`.
 
@@ -705,3 +705,56 @@ Boundary:
 - This does not close DSV4 prefix hit/restart/eviction, DSML agentic loops,
   long-output quality, or other families. Overall campaign status remains
   `PARTIAL / NOT RELEASE-READY`.
+
+### R17-008 DSV4 exact composite reuse and DSML tool continuations
+
+Status: `VERIFIED-LIVE_SCOPED_PARTIAL / CHANGED-TAIL TYPED REUSE OPEN`.
+
+Snapshot/store finding:
+
+- The earlier short DSV4 requests did not store cache because the source-owned
+  prompt-boundary snapshot threshold is 256 tokens. This was expected policy,
+  not evidence of a broken store.
+- A deterministic 2,187-token direct Chat prompt cold-completed exactly in
+  5.867 seconds and stored a clean 2,186-token, 43-layer native composite
+  checkpoint. The estimated snapshot was 45,015,552 bytes.
+- Its exact repeat restored all 2,186 tokens as `paged+dsv4`, exact-completed
+  in 0.685 seconds, and retained nine SSD blocks / 2,186 SSD tokens.
+- A same-length changed-tail request found matching earlier blocks but rejected
+  them as a request-level hit. The live log explains the safety boundary:
+  non-terminal DSV4 blocks carry `deepseek_v4_pending` local/SWA fragments;
+  the terminal block alone owns the complete CSA/HCA composite state. Because
+  the changed tail invalidated that terminal checkpoint, decoding from the
+  partial chain would flatten/omit native state. The full prefill and exact
+  final were correct, but safe DSV4 changed-tail reuse remains open.
+
+Agentic protocol evidence on the same Electron-started PID:
+
+- Direct streamed Chat emitted 65 separate reasoning characters, one
+  schema-valid `file_info(panel/package.json)` call, `finish_reason=tool_calls`,
+  and one `[DONE]`. After executing the real tool against the checkout, the
+  continuation emitted 147 separate reasoning characters and exact visible
+  `DSV4-DSML-DONE SIZE=5336`, then `stop` and one `[DONE]`.
+- Electron-gateway streamed Responses emitted 258 reasoning-summary
+  characters, one incremental function call, and exactly one
+  `response.completed`. Its real 5,336-byte tool result continued with 352
+  reasoning characters, exact visible `DSV4-RESP-DONE SIZE=5336`, and exactly
+  one second `response.completed`. Neither pass leaked DSML or think markers.
+- The real Electron Chat executed one visible `Info` tool card for
+  `panel/package.json`, kept 271 reasoning characters in the rail, and
+  continued to a non-empty final. The tool reports a human-readable `5.2 KB`;
+  the model rendered that as `5200` and shortened the requested marker, so
+  exact model instruction-following is retained as partial even though the
+  UI/tool-loop transport completed.
+
+Evidence:
+
+- `dsv4-cache-dsml-live.json`
+
+Boundary:
+
+- Current DSV4 exact resident reuse and SSD write-through pass. Safe
+  changed-tail partial reuse, Paged-Off SSD-only restoration, process-restart
+  restoration, eviction/refault, long-output quality, and the remaining
+  direct/gateway protocol combinations are still open. No release-ready claim
+  is made.
