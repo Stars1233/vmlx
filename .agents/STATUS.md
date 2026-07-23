@@ -7946,3 +7946,33 @@ Status: `SOURCE_BUILD_PASS / LIVE_SIGNED_APP_PENDING`.
   live Electron visual math rendering, current-head reasoning_content/tool
   streaming proof, signed/notarized DMG build, install smoke, and public
   re-download/hash verification.
+
+## 2026-07-22 - current Laguna UI/API rerun after invalid tool-row classification
+
+Status: `CURRENT_UI_API_TOOL_PASS / STRICT_FORMAT_PARTIAL / SIGNED_APP_PENDING`.
+
+- Previous current Laguna UI tool failure is classified as invalid proof: the
+  chat had no override row, so `builtinToolsEnabled` was false/absent and no
+  tool schema was sent.
+- Current Electron UI rerun with persisted Chat Settings overrides proves both
+  local UI wires:
+  - Responses wire: one real `file_info(panel/package.json)` result and exact
+    `R16-LAGUNA-UI-TOOL-RESPONSES-DONE`;
+  - Chat Completions wire: one real `file_info(panel/package.json)` result and
+    exact `R16-LAGUNA-UI-TOOL-COMPLETIONS-DONE`.
+- Raw Chat Completions coding-harness rerun proves streamed tool call plus
+  real-result continuation:
+  `R16-LAGUNA-API-CHAT-TOOL-CONT-DONE`, with final health
+  `disk_hits=48` and `tq_native_hits=48`.
+- Raw Responses rerun proves separate reasoning-summary streaming, visible
+  output-text streaming, `response.output_text.done`, and
+  `response.completed`. The model did not obey the exact answer wording, so
+  strict-format model compliance remains partial rather than being mislabeled
+  as a transport/parser defect.
+- `panel/scripts/scoped-release-preflight-16.py` now fails closed on these
+  current rerun artifacts in addition to the older scoped cache/protocol gates.
+- Retained evidence:
+  `docs/internal/release-gates/20260722_v1_6_16_campaign/current-reruns/`.
+- Still pending before release claim: rerun scoped checks after this doc/source
+  update, push both boxes, build/sign/notarize/install-smoke the actual bundled
+  app, and verify public artifact/update-manifest truth if publishing.

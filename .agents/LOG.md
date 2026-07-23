@@ -1808,3 +1808,32 @@
 - Renderer focused tests for math markdown, reasoning display, and interleaved
   reasoning rendering passed `124/124`. Live API/Electron math proof remains
   pending; this row is source/build precheck only.
+
+## 2026-07-22 - current Laguna UI/API tool and Responses rerun
+
+- Classified the earlier current Laguna UI `file_info` miss as invalid proof:
+  the proof chat had no `chat_overrides` row, so Electron sent no built-in
+  tool schemas to the model.
+- Reran the same current Electron app/session with Chat Settings overrides
+  persisted through `chat:setOverrides`: `builtinToolsEnabled=true`,
+  `workingDirectory=/Users/eric/mlx/vllm-mlx-r16-reasoning-p0-live`,
+  explicit Thinking On, `maxTokens=512`, and `maxThinkingTokens=256`.
+- Electron UI Responses wire exact-finaled
+  `R16-LAGUNA-UI-TOOL-RESPONSES-DONE` after one real
+  `file_info(panel/package.json)` result (`Size: 5.2 KB`).
+- Electron UI Chat Completions wire exact-finaled
+  `R16-LAGUNA-UI-TOOL-COMPLETIONS-DONE` after one real
+  `file_info(panel/package.json)` result.
+- Raw Chat Completions coding-harness rerun emitted first-stream
+  `finish_reason=tool_calls`, parsed `file_info({"path":"panel/package.json"})`,
+  accepted the real filesystem result, and second-stream exact-finaled
+  `R16-LAGUNA-API-CHAT-TOOL-CONT-DONE`.
+- Raw Responses rerun emitted separate reasoning-summary deltas, visible
+  output-text deltas, `response.output_text.done`, and `response.completed`.
+  It overexplained instead of obeying the exact visible-answer instruction, so
+  strict-format model compliance remains `PARTIAL`; the transport terminal row
+  is current-source proven.
+- Final raw Chat tool health retained Paged-Off SSD/TQ reuse:
+  `disk_hits=48`, `tq_native_hits=48`.
+- Retained artifacts:
+  `docs/internal/release-gates/20260722_v1_6_16_campaign/current-reruns/`.

@@ -1,0 +1,274 @@
+{
+  "generatedAt": "2026-07-23T03:16:17.413Z",
+  "firstBody": {
+    "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+    "messages": [
+      {
+        "role": "user",
+        "content": "[R16-LAGUNA-API-CHAT-TOOL-CONT] Call file_info exactly once with path panel/package.json. After the tool result, reply exactly R16-LAGUNA-API-CHAT-TOOL-CONT-DONE."
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "file_info",
+          "description": "Get metadata about a file or directory: size, type, modified time, permissions.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "path"
+            ]
+          }
+        }
+      }
+    ],
+    "tool_choice": {
+      "type": "function",
+      "function": {
+        "name": "file_info"
+      }
+    },
+    "stream": true,
+    "enable_thinking": true,
+    "chat_template_kwargs": {
+      "enable_thinking": true
+    },
+    "max_tokens": 512,
+    "max_thinking_tokens": 256,
+    "temperature": 0,
+    "top_p": 1,
+    "top_k": 1
+  },
+  "first": {
+    "status": 200,
+    "reasoning": "",
+    "content": "",
+    "toolCalls": [
+      {
+        "index": 0,
+        "id": "call_4916dab8",
+        "type": "function",
+        "function": {
+          "name": "",
+          "arguments": ""
+        }
+      },
+      {
+        "index": 0,
+        "function": {
+          "name": "file_info",
+          "arguments": "{\"path\": \"panel/package.json\"}"
+        }
+      }
+    ],
+    "finish": [
+      "tool_calls"
+    ],
+    "rawHead": "data: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: ",
+    "rawTail": "es\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\", \"tool_calls\": [{\"index\": 0, \"id\": \"call_4916dab8\", \"type\": \"function\", \"function\": {\"name\": \"\", \"arguments\": \"\"}}]}, \"finish_reason\": null}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"tool_calls\": [{\"index\": 0, \"function\": {\"name\": \"file_info\", \"arguments\": \"{\\\"path\\\": \\\"panel/package.json\\\"}\"}}]}, \"finish_reason\": null}]}\n\ndata: {\"id\": \"chatcmpl-89fb3fce\", \"object\": \"chat.completion.chunk\", \"created\": 1784776574, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}, \"finish_reason\": \"tool_calls\"}]}\n\ndata: [DONE]\n\n"
+  },
+  "assembledToolCall": {
+    "id": "call_4916dab8",
+    "type": "function",
+    "function": {
+      "name": "file_info",
+      "arguments": "{\"path\": \"panel/package.json\"}"
+    }
+  },
+  "parsedArgs": {
+    "path": "panel/package.json"
+  },
+  "resultText": "Path: panel/package.json\nType: file\nSize: 5.2 KB\nModified: 2026-07-22T23:24:56.449Z\nPermissions: 0644",
+  "secondBody": {
+    "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+    "messages": "redacted-in-proof-see-first/result",
+    "stream": true,
+    "enable_thinking": true,
+    "chat_template_kwargs": {
+      "enable_thinking": true
+    },
+    "max_tokens": 512,
+    "max_thinking_tokens": 256,
+    "temperature": 0,
+    "top_p": 1,
+    "top_k": 1
+  },
+  "second": {
+    "status": 200,
+    "reasoning": "",
+    "content": "R16-LAGUNA-API-CHAT-TOOL-CONT-DONE",
+    "toolCalls": [],
+    "finish": [
+      "stop"
+    ],
+    "rawHead": "data: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"R\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"1\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"6\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"-L\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"AG\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"UN\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"A\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"-API\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"-CH\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"AT\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"-\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"TOOL\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"-C\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"ONT\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": ",
+    "rawTail": ", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"1\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"6\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"-L\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"AG\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"UN\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"A\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"-API\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"-CH\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"AT\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"-\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"TOOL\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"-C\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"ONT\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"-D\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"ONE\"}}]}\n\ndata: {\"id\": \"chatcmpl-a1199b63\", \"object\": \"chat.completion.chunk\", \"created\": 1784776575, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}, \"finish_reason\": \"stop\"}]}\n\ndata: [DONE]\n\n"
+  },
+  "healthAfter": {
+    "cache": {
+      "scheduler_cache": {
+        "hits": 6,
+        "misses": 13,
+        "hit_rate": 0.3157894736842105,
+        "tokens_saved": 910,
+        "active_requests": 0,
+        "entries_by_type": {
+          "assistant": 0,
+          "user": 18,
+          "system": 0
+        },
+        "backend_mode": "block_disk_only",
+        "paged_ram_enabled": false,
+        "disk_only": true,
+        "paged_frugal": true,
+        "ram_mirror_policy": "disk_only",
+        "block_size": 64,
+        "max_blocks": 1000,
+        "usable_blocks": 999,
+        "capacity_tokens": 63936,
+        "allocated_blocks": 1,
+        "free_blocks": 999,
+        "shared_blocks": 0,
+        "total_tokens_cached": 2380,
+        "utilization": 0,
+        "cache_hit_rate": 0.2882882882882883,
+        "cache_hits": 32,
+        "cache_misses": 79,
+        "disk_hits": 48,
+        "disk_misses": 294,
+        "cow_copies": 0,
+        "evictions": 0,
+        "disk_promotion_hits": 0,
+        "disk_lookup_misses": 32,
+        "disk_counter_source": "block_disk_store",
+        "engine_path": "single_active",
+        "batch_generator": {
+          "class": "SingleBatchGenerator",
+          "path": "single_active",
+          "single_active_decode": true,
+          "max_num_seqs": 1,
+          "prompt_snapshot_max_bytes": null,
+          "prompt_snapshot_last_estimated_bytes": 0,
+          "prompt_snapshot_oversize_skips": 0,
+          "prompt_snapshot_headroom_skips": 0,
+          "prompt_snapshot_last_headroom_bytes": 0
+        }
+      },
+      "block_disk_cache": {
+        "blocks_on_disk": 47,
+        "disk_size_bytes": 1027892585,
+        "disk_size_gb": 0.957,
+        "total_accesses": 48,
+        "total_tokens_on_disk": 2380,
+        "total_cached_tokens": 2380,
+        "disk_hits": 48,
+        "disk_misses": 294,
+        "disk_writes": 47,
+        "disk_evictions": 0,
+        "tq_native_writes": 47,
+        "tq_native_hits": 48,
+        "tq_native_enabled": true
+      },
+      "totals": {
+        "ram_tokens_cached": 0,
+        "l1_indexed_tokens": 2380,
+        "l1_resident_bytes": 0,
+        "l1_resident_bytes_mb": 0,
+        "l1_max_resident_bytes": 0,
+        "l1_max_resident_bytes_mb": 0,
+        "l1_evictions": 0,
+        "l2_prompt_tokens_on_disk": 0,
+        "l2_block_tokens_on_disk": 2380,
+        "l2_ssm_tokens_on_disk": 0,
+        "ssm_tokens_on_disk": 0,
+        "l2_tokens_on_disk": 2380,
+        "l2_tokens_on_disk_store_sum": 2380,
+        "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+      }
+    },
+    "scheduler": {
+      "num_waiting": 0,
+      "num_running": 1,
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1,
+        "prompt_snapshot_max_bytes": null,
+        "prompt_snapshot_last_estimated_bytes": 0,
+        "prompt_snapshot_oversize_skips": 0,
+        "prompt_snapshot_headroom_skips": 0,
+        "prompt_snapshot_last_headroom_bytes": 0
+      },
+      "single_active_decode": true,
+      "ewma_ttft_seconds": 0.54,
+      "cache_hit_requests": 6,
+      "cache_hit_tokens": 910,
+      "cache_hit_tokens_by_detail": {
+        "block-disk+tq-native": 910
+      },
+      "hybrid_kv_without_ssm_hits": 0,
+      "hybrid_kv_without_ssm_tokens": 0,
+      "last_hybrid_kv_without_ssm": null,
+      "cache_reuse_skips": 0,
+      "cache_reuse_skip_tokens": 0,
+      "last_cache_reuse_skip": null,
+      "cache_reuse_partial_downgrades": 0,
+      "cache_reuse_partial_tokens": 0,
+      "last_cache_reuse_partial": null,
+      "last_cache_selection": {
+        "paged_cached_tokens": 64,
+        "paged_cold_tokens": 0,
+        "warm_cached_tokens": 0,
+        "hot_advantage_tokens": 64,
+        "hot_advantage_threshold_tokens": 64,
+        "selected": "paged",
+        "rejected": null,
+        "reason": "no_warm_prefix_alternative"
+      },
+      "last_cache_execution": {
+        "request_id": "chatcmpl-89fb3fce",
+        "cache_detail": "block-disk+tq-native",
+        "cached_tokens": 64,
+        "blocks": 1,
+        "selection": {
+          "paged_cached_tokens": 64,
+          "paged_cold_tokens": 0,
+          "warm_cached_tokens": 0,
+          "hot_advantage_tokens": 64,
+          "hot_advantage_threshold_tokens": 64,
+          "selected": "paged",
+          "rejected": null,
+          "reason": "no_warm_prefix_alternative"
+        },
+        "reconstructed": true,
+        "dequantized": false,
+        "reconstruction_seconds": 0.501323,
+        "dequantization_seconds": 0,
+        "total_worker_cache_seconds": 0.501935,
+        "reconstruction_ok": true,
+        "disk_blocks": 1,
+        "tq_native_blocks": 12,
+        "tq_rewrapped": true,
+        "tq_rewrap_seconds": 0.000091
+      }
+    },
+    "kv_cache_quantization": {
+      "enabled": true,
+      "mode": "turboquant-storage",
+      "bits": 4,
+      "stored_prefix_quantization": "turboquant-q4",
+      "key_bits": 4,
+      "value_bits": 4,
+      "auto_policy": "mixed_swa_full_attention_kv_storage_tq4",
+      "live_encode_enabled": false
+    }
+  }
+}

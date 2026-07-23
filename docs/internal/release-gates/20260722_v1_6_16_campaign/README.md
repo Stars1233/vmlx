@@ -20,10 +20,11 @@ The current clean source checkout is
 checkout on `erics-m5-max.local` is
 `/Users/eric/mlx/vllm-mlx-r16-reasoning-p0-live`. Older retained proofs below
 name their exact historical checkouts and cutoffs rather than being silently
-promoted. The dev launcher executable is
-`/Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine`, with `PYTHONPATH` selecting
-the synchronized release proof checkout rather than the launcher's source
-tree.
+promoted. The current dev Electron proof host uses the release checkout venv:
+`/Users/eric/mlx/vllm-mlx-r16-reasoning-p0-live/.venv/bin/python3`, importing
+`vmlx_engine 1.6.16` from the synchronized release proof checkout. Packaging
+must use the signed bundled Python/engine files, not any stale system or older
+project venv.
 
 The campaign must not be called complete from focused tests, source inspection,
 or one successful model turn. A row closes only when its current source trace,
@@ -172,6 +173,49 @@ The regular broad `release:prepackage` manifest remains red because old
 full-matrix June artifacts and unselected family/media/stress rows are still
 missing or partial. A release using `r16_parser_cache` is therefore an explicit
 1.6.16 emergency checkpoint, not a claim that the full matrix is closed.
+
+Current rerun artifacts are now part of the scoped preflight:
+
+```text
+docs/internal/release-gates/20260722_v1_6_16_campaign/current-reruns/ui-tool-rerun.json
+docs/internal/release-gates/20260722_v1_6_16_campaign/current-reruns/responses-terminal-rerun.json
+docs/internal/release-gates/20260722_v1_6_16_campaign/current-reruns/chat-tool-continuation-rerun.json
+```
+
+The previous current Laguna UI proof row that failed to execute `file_info`
+was invalid evidence: its chat had no `chat_overrides` row, so the UI request
+never sent built-in tool schemas. The retained rerun sets the same Chat
+Settings IPC path explicitly:
+
+- `wireApi=responses`, `builtinToolsEnabled=true`,
+  `workingDirectory=/Users/eric/mlx/vllm-mlx-r16-reasoning-p0-live`,
+  `enableThinking=true`, `maxTokens=512`, `maxThinkingTokens=256`;
+- `wireApi=completions` with the same tool/reasoning/working-directory
+  overrides.
+
+Both local Electron UI wires executed exactly one real
+`file_info(panel/package.json)`, persisted the real `Path/Type/Size/Modified/
+Permissions` result, and exact-finaled:
+
+```text
+R16-LAGUNA-UI-TOOL-RESPONSES-DONE
+R16-LAGUNA-UI-TOOL-COMPLETIONS-DONE
+```
+
+The matching raw Chat Completions coding-harness rerun emitted a first-stream
+`tool_calls` finish for `file_info({"path":"panel/package.json"})`, then the
+tool-result continuation exact-finaled
+`R16-LAGUNA-API-CHAT-TOOL-CONT-DONE`. Final cache health in that artifact
+records `disk_hits=48` and `tq_native_hits=48`, preserving the Paged-Off
+SSD/TQ path during the tool loop.
+
+The current Responses rerun proves transport terminal correctness rather than
+strict-format obedience: it emitted 717 reasoning characters through Responses
+reasoning-summary deltas, visible output-text deltas, `response.output_text.done`,
+and `response.completed`. It did not obey the exact visible-answer wording and
+instead included explanatory text, so strict-format model compliance remains a
+retained `PARTIAL` boundary rather than being mislabeled as a streaming/parser
+failure.
 
 ### JANG package provenance for this checkpoint
 
