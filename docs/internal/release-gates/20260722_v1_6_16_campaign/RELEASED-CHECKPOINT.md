@@ -12,7 +12,7 @@ jjang-ai/vmlx tag: v1.6.16
 source commit: f3426fb412588856a47f53b8549700267605c00f
 source release: https://github.com/jjang-ai/vmlx/releases/tag/v1.6.16
 distribution release: https://github.com/jjang-ai/mlxstudio/releases/tag/v1.6.16
-distribution manifest commit: e60316b
+distribution manifest commit: 3f2f0a4
 ```
 
 The source `main` branch may contain documentation-only commits after the tag.
@@ -59,7 +59,7 @@ Bundled JANG source:
 ```text
 jang source: /Users/eric/jang/jang-tools-r16-2534/jang-tools
 jang branch: codex/r16-vmlx-1.6.16-jang-tools
-jang commit: 6e28ff20f6f2df60145a4c05fcbd77423b0745c2
+jang commit: 2e85095f55b1b64cbb6e8264c82a074a3cc28250
 jang package version: 2.5.34
 ```
 
@@ -67,30 +67,38 @@ The release build installed both packages from local source into the bundled
 Python runtime. Build log evidence:
 
 ```text
-build/vmlx-1.6.16-build-release-dmgs.log:473
+build/vmlx-1.6.16-rebuild-jang-version-build.log:473
 ==> Installing vmlx-engine + jang_tools (local source)...
 
-build/vmlx-1.6.16-build-release-dmgs.log:474
+build/vmlx-1.6.16-rebuild-jang-version-build.log:474
 using local vmlx at /Users/eric/mlx/vllm-mlx-r16-reasoning-p0
 
-build/vmlx-1.6.16-build-release-dmgs.log:490
+build/vmlx-1.6.16-rebuild-jang-version-build.log:490
 using local jang-tools at /Users/eric/jang/jang-tools-r16-2534/jang-tools
 
-build/vmlx-1.6.16-build-release-dmgs.log:543
+build/vmlx-1.6.16-rebuild-jang-version-build.log:543
 ok bundled vmlx_engine version matches package.json (1.6.16)
 
-build/vmlx-1.6.16-build-release-dmgs.log:546
+build/vmlx-1.6.16-rebuild-jang-version-build.log:546
 ok bundled critical vmlx_engine files match source content
 
-build/vmlx-1.6.16-build-release-dmgs.log:547
+build/vmlx-1.6.16-rebuild-jang-version-build.log:547
 ok bundled critical jang_tools files match source content
 
-build/vmlx-1.6.16-build-release-dmgs.log:599
+build/vmlx-1.6.16-rebuild-jang-version-build.log:599
 bundled-python: all critical imports ok
 ```
 
 The same verifier rows passed again for the Tahoe app bundle in the same build
 log.
+
+Mounted-DMG import smoke:
+
+```text
+build/vmlx-1.6.16-rebuild-jang-version-bundled-import-smoke.log
+sequoia: bundled vmlx_engine=1.6.16, bundled jang_tools=2.5.34
+tahoe: bundled vmlx_engine=1.6.16, bundled jang_tools=2.5.34
+```
 
 ## Built artifacts
 
@@ -115,20 +123,20 @@ https://github.com/jjang-ai/mlxstudio/releases/download/v1.6.16/vMLX-1.6.16-taho
 SHA256:
 
 ```text
-986ce9a44f7cff90d34a5d79cbb72a6eb7dc63b87c1dc0ef37c0605a33564b8a  vMLX-1.6.16-sequoia-arm64.dmg
-6a31f573e37cf8089abe26b70dfcd9403167348a30ab07d7bfe4843b714b1621  vMLX-1.6.16-tahoe-arm64.dmg
-e16ee322c653092f30bf6f9aecaf2c88d8224e032e5c98077294bf8dc63447f4  vMLX-1.6.16-sequoia-arm64.dmg.blockmap
-cc4e7e1d3363e771555071143faaca18d0e3da7c53005f7a057a2239b5e30120  vMLX-1.6.16-tahoe-arm64.dmg.blockmap
+dc2580136d253c293ce8b8d1e9983a82179902a055605999408482f07760c2c2  vMLX-1.6.16-sequoia-arm64.dmg
+e421b4e75fbd2bf9a499b9f9471bd501d3d475a31fa4ead4cc10cf3dad5f6f3f  vMLX-1.6.16-tahoe-arm64.dmg
+835813bd49b803478a0b187cc97881a83e6553cf794af6778097a1bb1ecfcd09  vMLX-1.6.16-sequoia-arm64.dmg.blockmap
+8405a2c87ce041f00073dae1f990533d100d6ca688097cbf849440119ff32e41  vMLX-1.6.16-tahoe-arm64.dmg.blockmap
 ```
 
 SHA512 for updater manifest:
 
 ```text
 Sequoia DMG:
-JdlAb7DVYyLMpPdDT0B202svKtIT4gttu5z24ea4la2Nwsu9a8XQuMJ1aifp7c/iqFK2L+o8YQwfDiXyUCmIGQ==
+fkAX2RO6WzdwhbUrjj+KSgm1JucujY1iNMWe4VDp7aFyB3s23F7uSS5JdkNsQTsEDFxfoE2/CVAiK/B5mrwi/w==
 
 Tahoe DMG:
-goTAcQeF4e6uVQlQHOXckFXXYKCSWlBjvEF4C/Z7PYRh6BiFKQjxmjEj5zHYZ2TQl7Sgx8wIobzAx+rYkWcxrw==
+CuxPhx7L0AKly6IvEkTITZ+0C4ONqLF0BDCpVmUdClSyv86rDlOkV3fG3PPSIk2XaC02FCmxFVaKupS/pdSKZQ==
 ```
 
 ## Signing, notarization, stapling, and Gatekeeper
@@ -142,15 +150,16 @@ Developer ID Application: ShieldStack LLC (55KGF2S5AY)
 Notarization results:
 
 ```text
-Sequoia notarization id: 3b95132a-be73-41c4-8ac6-e428a8d5a748
-Tahoe notarization id: de595b3d-7cea-4644-919c-389dd37894ed
+Sequoia notarization id: 4065f621-193e-4fdf-a420-0b9f73016a1c
+Tahoe notarization id: c73d1038-58b2-4d0f-b38d-c50269a88670
 ```
 
 Verification evidence:
 
 ```text
-build/vmlx-1.6.16-notarize-release-dmgs.log
-build/vmlx-1.6.16-verify-release-dmgs.log
+build/vmlx-1.6.16-rebuild-jang-version-notarize.log
+build/vmlx-1.6.16-rebuild-jang-version-verify.log
+build/vmlx-1.6.16-rebuild-jang-version-bundled-import-smoke.log
 ```
 
 Both DMGs passed:
@@ -175,7 +184,7 @@ https://raw.githubusercontent.com/jjang-ai/mlxstudio/main/latest.json
 Distribution repo state:
 
 ```text
-jjang-ai/mlxstudio main: e60316b
+jjang-ai/mlxstudio main: 3f2f0a4
 jjang-ai/mlxstudio tag: v1.6.16
 ```
 
