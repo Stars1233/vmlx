@@ -1,0 +1,102 @@
+{
+  "gate": "R17-009 DSV4 L2 owner-thread restore and composite equivalence",
+  "captured_at": "2026-07-23T02:14:00-07:00",
+  "status": "PARTIAL / SAFE FALLBACK LIVE / DSV4 CACHE REUSE DISABLED",
+  "source": {
+    "branch": "codex/v1.6.17-consolidation-20260723",
+    "owner_thread_commit": "e9eadc6cc38244cd0ba55d10408f7dec0df9f0b6",
+    "equivalence_guard_commit": "e9149f566657d11cbafe339fecdb9bdc6036d905",
+    "files": [
+      "vmlx_engine/block_disk_store.py",
+      "vmlx_engine/prefix_cache.py",
+      "vmlx_engine/scheduler.py",
+      "tests/test_paged_cache.py",
+      "tests/test_dsv4_paged_cache.py"
+    ],
+    "owner_thread_root_cause": "BlockDiskStore.read_block created MLX arrays on the API/add_request thread, then scheduler reconstruction consumed them on the model worker and raised 'There is no Stream(cpu, 3) in current thread'.",
+    "equivalence_root_cause_boundary": "Successful reconstruction is not semantic equivalence for DSV4 native CSA/HCA/SWA state. Both a shorter partial checkpoint and a later exact N-1 multi-turn checkpoint produced output that differed materially from full prefill."
+  },
+  "focused_verification": {
+    "command": ".venv/bin/python -m pytest -q tests/test_dsv4_paged_cache.py tests/test_paged_cache.py -k 'dsv4 or block_l2_reads_run_on_model_owner_executor'",
+    "result": "70 passed, 61 deselected",
+    "python_compile": "pass",
+    "git_diff_check": "pass"
+  },
+  "live_host": {
+    "hostname": "erics-m5-max.local",
+    "checkout": "/Users/eric/mlx/vllm-mlx-r17-consolidation",
+    "electron_cdp": "http://127.0.0.1:9335",
+    "model": "/Volumes/EricsLLMDrive/dealignai/DeepSeek-V4-Flash-JANG-CRACK",
+    "model_port": 8002,
+    "electron_restart_pids": [
+      7478,
+      8741,
+      10367,
+      11278
+    ]
+  },
+  "owner_thread_exact_restart": {
+    "prompt_tokens": 1292,
+    "cold_visible": "DSV4-R17-L2-OWNER",
+    "warm": {
+      "cached_tokens": 1291,
+      "cache_detail": "paged+dsv4",
+      "reconstruction_ok": true
+    },
+    "after_electron_restart": {
+      "cached_tokens": 1291,
+      "cache_detail": "paged+dsv4+disk",
+      "reconstruction_ok": true,
+      "visible": "DSV4-R17-L2-OWNER",
+      "wrong_thread_exception": false
+    },
+    "verdict": "PASS for MLX owner-thread disk loading and this simple exact prompt only"
+  },
+  "multi_turn_equivalence_failure": {
+    "electron_chat_id": "9895c811-6a97-459f-8c10-c20dbed3774d",
+    "three_turn_ui": {
+      "turn_1": "separate 2364-character reasoning rail and KaTeX math surface",
+      "turn_2": "separate 271-character rail, one real file_info tool card, non-empty final",
+      "turn_3_cached": {
+        "prompt_tokens": 337,
+        "cached_tokens": 269,
+        "cache_detail": "paged+dsv4+disk",
+        "failure": "visible answer replayed turn-one math instead of DSV4-UI-POST-L2-OK"
+      }
+    },
+    "identical_history_cache_bypass": {
+      "prompt_tokens": 337,
+      "cache_bypass": true,
+      "visible": "DSV4-UI-POST-L2-OK",
+      "terminal": "response.completed",
+      "failure": false
+    },
+    "exact_n_minus_1_restore": {
+      "prompt_tokens": 337,
+      "cached_tokens": 336,
+      "cache_detail": "paged+dsv4+disk",
+      "failure": "reasoning looped for 2647 tokens and produced no visible answer before interruption"
+    },
+    "safe_fallback_after_e9149f566": {
+      "log": "rejecting unsafe DSV4 paged/L2 extension (336 cached of 337 cache-key tokens); exact N-1 and partial restore both require full prefill until CSA/HCA/SWA equivalence is proven.",
+      "accepted_cache_credit": 0,
+      "prefill_tokens": 337,
+      "ui_cache_credit_shown": 0,
+      "stale_math_replay": false,
+      "remaining_failure": "full-prefill generation independently looped in the reasoning rail for 2616 tokens and produced no visible answer before interruption"
+    }
+  },
+  "renderer_boundary": {
+    "electron": "Valid delimited LaTeX is expected to render as KaTeX; the retained UI math turn created KaTeX DOM and no katex-error node.",
+    "api": "Raw Chat/Responses bytes preserve LaTeX delimiters and commands; API clients own rendering."
+  },
+  "verdicts": {
+    "block_l2_owner_thread_restore": "PASS",
+    "dsv4_exact_cache_semantic_equivalence": "FAIL",
+    "dsv4_partial_cache_semantic_equivalence": "FAIL",
+    "dsv4_safe_full_prefill_fallback": "PASS",
+    "dsv4_long_or_multiturn_reasoning_quality": "FAIL",
+    "dsv4_family_release_gate": "OPEN",
+    "overall_release": "NOT RELEASE-READY"
+  }
+}

@@ -2018,3 +2018,27 @@
   residue.
 - Real Electron Chat showed a separate reasoning rail, one `Info` tool card,
   and a non-empty final. Exact final-marker compliance was partial.
+
+## 2026-07-23 - fail closed on non-equivalent DSV4 composite cache restores
+
+- Fixed block-L2 thread ownership at `e9eadc6cc`: block deserialization now
+  runs on the scheduler model worker. A real Electron restart restored a
+  simple 1,291-token DSV4 SSD prefix and exact-finaled without the prior MLX
+  stream-owner exception.
+- Three-turn Electron inspection then exposed stale visible replay from a
+  269/337 partial DSV4 cache hit. The identical raw Responses history with
+  prefix cache bypass exact-finaled.
+- Replaying after a real Electron restart found a newly stored exact 336/337
+  SSD checkpoint, but that path looped for 2,647 private-reasoning tokens with
+  no visible answer. Exact N-1 shape is therefore not sufficient DSV4
+  composite equivalence proof.
+- Added the correctness gate in `e9149f566`: all DSV4 paged/L2 hits are
+  released and hit credit is rolled back before full prefill.
+- Current Electron PID `11278` logged the 336/337 rejection and all-337-token
+  prefill. The old math replay disappeared. The full-prefill run independently
+  looped for 2,616 private-reasoning tokens and was interrupted, so quality
+  remains a separate release blocker.
+- Verification: 70 selected DSV4/cache tests pass; Python compile and
+  `git diff --check` pass.
+- Retained:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/dsv4-l2-owner-and-equivalence-live.json`.

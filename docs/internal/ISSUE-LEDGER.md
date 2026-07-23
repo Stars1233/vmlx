@@ -5196,3 +5196,32 @@ Status: `SCOPED LIVE PASS / DSV4 PARTIAL CACHE OPEN`.
   `5200`.
 - Evidence:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/dsv4-cache-dsml-live.json`.
+
+## 2026-07-23 - DSV4 L2 owner-thread restore and semantic-equivalence failure
+
+Status: `PARTIAL / CORRECTNESS FALLBACK LIVE / RELEASE BLOCKING`.
+
+- `DSV4-BLOCK-L2-OWNER-THREAD`: `FIXED+VERIFIED-LIVE_SCOPED`.
+  `BlockDiskStore.read_block()` now runs through the scheduler model-worker
+  executor. Electron restart restored 1,291/1,292 tokens as
+  `paged+dsv4+disk`, reconstructed successfully, and exact-finaled without
+  `There is no Stream(cpu, 3) in current thread`.
+- `DSV4-PARTIAL-COMPOSITE-EQUIVALENCE`: `FAIL`. A 269/337 multi-turn L2 hit
+  replayed earlier visible math. The identical full Responses history with
+  cache bypass exact-finaled, proving a cache-path divergence.
+- `DSV4-EXACT-NMINUS1-EQUIVALENCE`: `FAIL`. A later 336/337 exact L2
+  checkpoint looped for 2,647 reasoning tokens and emitted no visible answer
+  before interruption. Simple exact-prompt success does not generalize to
+  multi-turn composite state.
+- `DSV4-CACHE-FAIL-CLOSED`: `FIXED+VERIFIED-LIVE_SCOPED` at `e9149f566`.
+  Current source rejects every DSV4 paged/L2 hit, rolls accepted hit credit
+  back to zero, releases refs, and full-prefills. Electron PID `11278` logged
+  the rejection and processed all 337 prompt tokens with zero cached credit.
+- `DSV4-MULTITURN-REASONING-QUALITY`: `FAIL`. The cache-safe full-prefill
+  replay still looped for 2,616 private-reasoning tokens without a visible
+  answer before interruption. No forced marker, sampler clamp, or synthetic
+  answer was added.
+- Verification: `70` selected DSV4/cache tests pass; compile and diff checks
+  pass. DSV4 cache reuse, reasoning quality, and release readiness remain open.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/dsv4-l2-owner-and-equivalence-live.json`.

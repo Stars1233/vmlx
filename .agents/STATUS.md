@@ -1,5 +1,27 @@
 # Current Status
 
+## 2026-07-23 - DSV4 L2 owner-thread fix and composite-cache fail-closed gate
+
+Status: `OWNER_THREAD_PASS / CACHE_EQUIVALENCE_FAIL / RELEASE_PARTIAL`.
+
+- Commit `e9eadc6cc` moved block-L2 MLX array deserialization onto the model
+  worker. Real Electron restart restored 1,291/1,292 DSV4 tokens from SSD and
+  exact-finaled without the prior wrong-thread exception.
+- A live three-turn Electron history then exposed stale output on a 269/337
+  partial restore. Identical Responses history with cache bypass exact-finaled,
+  localizing the replay to DSV4 cache reuse.
+- A later exact 336/337 restore also looped in private reasoning. Exact N-1
+  checkpoint shape is not semantic equivalence for this multi-turn composite
+  state.
+- Commit `e9149f566` now rejects every DSV4 paged/L2 hit and full-prefills.
+  PID `11278` logged rollback to zero accepted tokens and processed all 337
+  tokens. Stale visible replay disappeared.
+- Full prefill still looped for 2,616 private-reasoning tokens with no visible
+  answer before interruption, so DSV4 multi-turn quality remains `FAIL`.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/dsv4-l2-owner-and-equivalence-live.json`.
+- DSV4 partial/exact cache reuse and overall release readiness remain open.
+
 ## 2026-07-23 - Gemma canonical settings and live health/capabilities parity
 
 Status: `VERIFIED_LIVE_SCOPED_GEMMA_SETTINGS_R17_PARTIAL`.

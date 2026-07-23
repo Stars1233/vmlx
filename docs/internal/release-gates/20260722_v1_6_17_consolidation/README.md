@@ -758,3 +758,56 @@ Boundary:
   restoration, eviction/refault, long-output quality, and the remaining
   direct/gateway protocol combinations are still open. No release-ready claim
   is made.
+
+### R17-009 DSV4 L2 owner thread and cache-equivalence fail-closed gate
+
+Status: `OWNER-THREAD FIX VERIFIED / CACHE EQUIVALENCE FAIL / SAFE FALLBACK LIVE`.
+
+Owner-thread root cause and repair:
+
+- Block-disk promotion used to deserialize MLX arrays on the API
+  `add_request` thread and later consume them on the scheduler's model worker.
+  Restart restore therefore raised
+  `There is no Stream(cpu, 3) in current thread`.
+- `BlockDiskStore` now accepts the scheduler's model-worker executor and
+  performs block reads there. Reconstruction failures retain a full traceback.
+- Focused DSV4/cache verification passes `70 passed, 61 deselected`.
+- A real Electron Save & Restart then restored 1,291 of 1,292 tokens from
+  block L2 as `paged+dsv4+disk`, reconstructed successfully, emitted exact
+  `DSV4-R17-L2-OWNER`, and showed no wrong-thread exception.
+
+Semantic-equivalence failure:
+
+- A three-turn Electron chat had a separate reasoning rail on every generated
+  turn and one real tool/result continuation. Its third request found 269 of
+  337 tokens from DSV4 block L2 but replayed the first turn's visible math
+  answer instead of the requested marker.
+- The identical 337-token Responses history with cache bypass returned exact
+  `DSV4-UI-POST-L2-OK`, isolating the stale replay to cache reuse rather than
+  renderer/history serialization alone.
+- A later exact 336/337 SSD checkpoint was also unsafe: it looped for 2,647
+  reasoning tokens with no visible answer before interruption. Exact N-1 shape
+  is therefore not sufficient evidence of DSV4 CSA/HCA/SWA equivalence.
+
+Correctness boundary:
+
+- Commit `e9149f566` now rolls accepted DSV4 cache-hit credit back to zero,
+  releases block refs, and full-prefills instead of consuming any DSV4
+  paged/L2 checkpoint.
+- Real Electron PID `11278` proved the gate: the log rejected the 336/337 hit,
+  reported a paged miss, processed all 337 tokens, and the UI showed no cached
+  token credit. The stale math replay disappeared.
+- The full-prefill replay still entered a separate long reasoning loop and was
+  interrupted after 2,616 tokens without visible content. That is retained as
+  `FAIL`, not attributed to cache and not hidden by a forced closer or sampler
+  override.
+- DSV4 cache storage remains observable for investigation, but DSV4 cache
+  reuse is disabled until exact and partial cold-vs-warm equivalence passes.
+  This is a correctness checkpoint, not completion of the required partial
+  SSD-reuse feature.
+
+Evidence:
+
+- `dsv4-l2-owner-and-equivalence-live.json`
+
+Overall status remains `PARTIAL / NOT RELEASE-READY`.
