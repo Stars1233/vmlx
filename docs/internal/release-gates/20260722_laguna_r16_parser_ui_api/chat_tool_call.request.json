@@ -1,0 +1,36 @@
+{
+  "enable_thinking": true,
+  "max_tokens": 768,
+  "messages": [
+    {
+      "content": "Call file_info exactly once with path panel/package.json. Do not answer from memory.",
+      "role": "user"
+    }
+  ],
+  "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+  "stream": true,
+  "temperature": 0,
+  "tool_choice": "required",
+  "tools": [
+    {
+      "function": {
+        "description": "Return file metadata for a workspace path.",
+        "name": "file_info",
+        "parameters": {
+          "properties": {
+            "path": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "path"
+          ],
+          "type": "object"
+        }
+      },
+      "type": "function"
+    }
+  ],
+  "top_k": 20,
+  "top_p": 1
+}

@@ -7781,6 +7781,15 @@ Status: `VERIFIED-LIVE_SCOPED / CACHE MATRIX PARTIAL`.
   `Info panel/package.json` tool card, and no marker/math garbage; gateway Chat
   and Responses streamed separate reasoning and content, and gateway Chat
   completed a required-tool plus tool-result continuation.
+- Laguna parser proof is retained under
+  `docs/internal/release-gates/20260722_laguna_r16_parser_ui_api/`: current
+  argv uses `glm47`/`deepseek_r1` while bundle vendor names `poolside_v1`, but
+  the engine aliases those parser classes. Fresh UI proof passed separate
+  reasoning, visible answer, one real `Info panel/package.json` tool card, and
+  `4861 block-disk+tq-native cached`. Gateway Chat Auto terminal and Chat
+  tool/continuation passed. Gateway Responses remains `PARTIAL`: hard prompt
+  emitted reasoning but ended `response.incomplete`; short prompt completed
+  with no reasoning.
 - Still open before cache release closure: low-limit `Max Cache Blocks`
   eviction/refault, low-limit `Block Cache Max (GB)` eviction/refault, safe
   corrupt/missing companion fallback, and remaining architecture archetypes

@@ -1,0 +1,38 @@
+{
+  "enable_thinking": true,
+  "max_tokens": 768,
+  "messages": [
+    {
+      "content": "Call file_info exactly once with path panel/package.json. Do not answer from memory.",
+      "role": "user"
+    },
+    {
+      "content": null,
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "function": {
+            "arguments": "{\"path\": \"panel/package.json\"}",
+            "name": "file_info"
+          },
+          "id": "call_ab225a3d",
+          "type": "function"
+        }
+      ]
+    },
+    {
+      "content": "{\"path\":\"panel/package.json\",\"size\":\"5.2 KB\"}",
+      "role": "tool",
+      "tool_call_id": "call_ab225a3d"
+    },
+    {
+      "content": "After the tool result, write exactly: The package file is 5.2 KB.",
+      "role": "user"
+    }
+  ],
+  "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+  "stream": true,
+  "temperature": 0,
+  "top_k": 20,
+  "top_p": 1
+}

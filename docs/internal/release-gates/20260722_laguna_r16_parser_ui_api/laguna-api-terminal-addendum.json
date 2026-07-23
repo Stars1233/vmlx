@@ -1,0 +1,65 @@
+{
+  "base": "http://127.0.0.1:8088",
+  "cases": [
+    {
+      "content": "30 times 25 is larger.",
+      "content_chars": 22,
+      "elapsed_s": 15.553,
+      "finishes": [
+        "stop",
+        "DONE"
+      ],
+      "path": "/v1/chat/completions",
+      "raw_markers_in_content": [],
+      "reasoning_chars": 1665,
+      "reasoning_head": "Okay, so I need to figure out which is larger between 31 times 24 and 30 times 25. Hmm, let me think. I remember that when you have two numbers multiplied together, sometimes it's easier to compare them by adjusting the numbers to make the multiplication simpler. Like, maybe I can use some algebraic",
+      "sample_lines": [
+        "data: {\"id\": \"chatcmpl-4ecbe1c6\", \"object\": \"chat.completion.chunk\", \"created\": 1784772962, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-4ecbe1c6\", \"object\": \"chat.completion.chunk\", \"created\": 1784772962, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \"Okay\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-4ecbe1c6\", \"object\": \"chat.completion.chunk\", \"created\": 1784772962, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \",\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-4ecbe1c6\", \"object\": \"chat.completion.chunk\", \"created\": 1784772962, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \" so\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-4ecbe1c6\", \"object\": \"chat.completion.chunk\", \"created\": 1784772962, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \" I\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-4ecbe1c6\", \"object\": \"chat.completion.chunk\", \"created\": 1784772962, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \" need\"}}]}",
+        ""
+      ],
+      "status": 200,
+      "tag": "chat_auto_terminal",
+      "terminals": []
+    },
+    {
+      "content": "43\u202f\u00d7\u202f18 is larger.",
+      "content_chars": 18,
+      "elapsed_s": 1.483,
+      "finishes": [],
+      "path": "/v1/responses",
+      "raw_markers_in_content": [],
+      "reasoning_chars": 0,
+      "reasoning_head": "",
+      "sample_lines": [
+        "event: response.created",
+        "data: {\"type\": \"response.created\", \"response\": {\"id\": \"resp_5d88e385971b\", \"object\": \"response\", \"created_at\": 1784772978, \"status\": \"in_progress\", \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"output\": []}, \"sequence_number\": 0}",
+        "",
+        "event: response.output_item.added",
+        "data: {\"type\": \"response.output_item.added\", \"output_index\": 0, \"item\": {\"id\": \"item_fa747b34eb73\", \"type\": \"message\", \"status\": \"in_progress\", \"role\": \"assistant\", \"content\": []}, \"sequence_number\": 1}",
+        "",
+        "event: response.content_part.added",
+        "data: {\"type\": \"response.content_part.added\", \"item_id\": \"item_fa747b34eb73\", \"output_index\": 0, \"content_index\": 0, \"part\": {\"type\": \"output_text\", \"text\": \"\", \"annotations\": []}, \"sequence_number\": 2}",
+        "",
+        "event: response.output_text.delta",
+        "data: {\"type\": \"response.output_text.delta\", \"item_id\": \"item_fa747b34eb73\", \"output_index\": 0, \"content_index\": 0, \"delta\": \"4\", \"sequence_number\": 3}",
+        ""
+      ],
+      "status": 200,
+      "tag": "responses_on_terminal",
+      "terminals": [
+        "response.completed"
+      ]
+    }
+  ],
+  "model": "jangq-ai/Laguna-S-2.1-JANG_4M"
+}

@@ -1,0 +1,323 @@
+{
+  "base": "http://127.0.0.1:8088",
+  "cases": [
+    {
+      "content": "The larger product is 30 times 25. \n\n**Step-by-Step Explanation:**\n1. **Calculate 31 \u00d7 24:**\n   - Break into (30 + 1) \u00d7 24 = (30 \u00d7 24) + (1 \u00d7 24) =",
+      "content_chars": 147,
+      "elapsed_s": 21.775,
+      "finishes": [
+        "length",
+        "DONE"
+      ],
+      "path": "/v1/chat/completions",
+      "raw_markers_in_content": [],
+      "reasoning_chars": 2118,
+      "reasoning_head": "Okay, let's see. I need to compare 31 times 24 with 30 times 25. Hmm, which one is bigger? Alright, let me think.\n\nFirst, maybe I can calculate both products directly. Let me try that. \n\nStarting with 31 multiplied by 24. Let's break it down. 30 times 24 is 720, right? Because 3 times 24 is 72, so a",
+      "response_tool_tail": [],
+      "sample_lines": [
+        "data: {\"id\": \"chatcmpl-ab1a0d52\", \"object\": \"chat.completion.chunk\", \"created\": 1784772878, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-ab1a0d52\", \"object\": \"chat.completion.chunk\", \"created\": 1784772878, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \"Okay\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-ab1a0d52\", \"object\": \"chat.completion.chunk\", \"created\": 1784772878, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \",\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-ab1a0d52\", \"object\": \"chat.completion.chunk\", \"created\": 1784772878, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \" let\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-ab1a0d52\", \"object\": \"chat.completion.chunk\", \"created\": 1784772878, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \"'s\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-ab1a0d52\", \"object\": \"chat.completion.chunk\", \"created\": 1784772878, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \" see\"}}]}",
+        ""
+      ],
+      "status": 200,
+      "tag": "chat_auto_reasoning",
+      "terminals": [],
+      "tool_chunk_count": 0,
+      "tool_chunks_tail": []
+    },
+    {
+      "content": "The larger product is 43 times 18.\n\n**Step-by-Step Explanation:**\n1. Calculate 44 \u00d7 17:  \n   \\( 44 \\times 17 = 748",
+      "content_chars": 114,
+      "elapsed_s": 22.845,
+      "finishes": [],
+      "path": "/v1/responses",
+      "raw_markers_in_content": [],
+      "reasoning_chars": 2214,
+      "reasoning_head": "Okay, let's see. I need to compare 44 times 17 with 43 times 18. Hmm, which one is bigger? Alright, let me think.\n\nFirst, maybe I can calculate both products directly. Let me try that. \n\nStarting with 44 multiplied by 17. Let's break it down. 44 times 10 is 440, and 44 times 7 is 308. Adding those t",
+      "response_tool_tail": [
+        {
+          "item": {
+            "content": [],
+            "id": "rs_8833c818453b",
+            "status": "in_progress",
+            "summary": [],
+            "type": "reasoning"
+          },
+          "output_index": 0,
+          "sequence_number": 1,
+          "type": "response.output_item.added"
+        },
+        {
+          "item": {
+            "content": [],
+            "id": "rs_8833c818453b",
+            "status": "completed",
+            "summary": [
+              {
+                "text": "Okay, let's see. I need to compare 44 times 17 with 43 times 18. Hmm, which one is bigger? Alright, let me think.\n\nFirst, maybe I can calculate both products directly. Let me try that. \n\nStarting with 44 multiplied by 17. Let's break it down. 44 times 10 is 440, and 44 times 7 is 308. Adding those together: 440 + 308. Let me add 440 + 300 first, which is 740, then add the remaining 8, so 748. So 44*17 is 748.\n\nNow, 43 times 18. Let's do the same. 43 times 10 is 430, and 43 times 8 is 344. Adding those: 430 + 344. Let's see, 430 + 300 is 730, then add 44 more: 730 + 44 = 774. So 43*18 is 774.\n\nComparing 748 and 774, clearly 774 is larger. So the larger product is 43 times 18. Wait, but maybe there's a smarter way to do this without multiplying everything out? Let me check if there's a pattern or a trick here.\n\nI remember that sometimes when you have two numbers multiplied, if you adjust the numbers in a way that keeps their sum the same, the product can be maximized when the numbers are closer together. Let me see. For example, if you have two numbers a and b, and you adjust them to a+1 and b-1, keeping the sum the same, the product (a+1)(b-1) compared to ab. Let's see:\n\nOriginal product: ab\nNew product: (a+1)(b-1) = ab -a + b -1\nDifference: (ab -a + b -1) - ab = -a + b -1\nSo if b - a -1 is positive, then the new product is larger. So if b - a -1 > 0, which means b > a +1. \n\nIn our case, the first product is 44*17. The second is 43*18. Let's see if this applies. Let me think of 44 and 17 as a and b. Then the second product is (a-1)*(b+1). So according to the formula above, the difference would be -a + b -1. Wait, but in this case, a is 44, b is 17. So the difference would be -44 +17 -1 = -28. Which is negative, meaning the new product is smaller. But in reality, the second product is larger. Hmm, maybe I mixed up the order.\n\nWait, maybe I should think of it as moving from 44*17 to 43*18. So decreasing the first number by 1 and increasing the second by 1. Let me recalculate the difference. Let me take the original product as 44*17. The new product is 43*18. Let me compute the difference between the new and original:\n\n43*18 - 44*17. Let's compute this. \n\nAlternatively, using the",
+                "type": "summary_text"
+              }
+            ],
+            "type": "reasoning"
+          },
+          "output_index": 0,
+          "sequence_number": 773,
+          "type": "response.output_item.done"
+        },
+        {
+          "item": {
+            "content": [],
+            "id": "item_df73f04b571e",
+            "role": "assistant",
+            "status": "in_progress",
+            "type": "message"
+          },
+          "output_index": 1,
+          "sequence_number": 774,
+          "type": "response.output_item.added"
+        },
+        {
+          "item": {
+            "content": [
+              {
+                "annotations": [],
+                "text": "The larger product is 43 times 18.\n\n**Step-by-Step Explanation:**\n1. Calculate 44 \u00d7 17:  \n   \\( 44 \\times 17 = 748",
+                "type": "output_text"
+              }
+            ],
+            "id": "item_df73f04b571e",
+            "role": "assistant",
+            "status": "completed",
+            "type": "message"
+          },
+          "output_index": 1,
+          "sequence_number": 814,
+          "type": "response.output_item.done"
+        }
+      ],
+      "sample_lines": [
+        "event: response.created",
+        "data: {\"type\": \"response.created\", \"response\": {\"id\": \"resp_3b574053040e\", \"object\": \"response\", \"created_at\": 1784772900, \"status\": \"in_progress\", \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"output\": []}, \"sequence_number\": 0}",
+        "",
+        "event: response.output_item.added",
+        "data: {\"type\": \"response.output_item.added\", \"output_index\": 0, \"item\": {\"id\": \"rs_8833c818453b\", \"type\": \"reasoning\", \"status\": \"in_progress\", \"summary\": [], \"content\": []}, \"sequence_number\": 1}",
+        "",
+        "event: response.reasoning_summary_part.added",
+        "data: {\"type\": \"response.reasoning_summary_part.added\", \"item_id\": \"rs_8833c818453b\", \"output_index\": 0, \"summary_index\": 0, \"part\": {\"type\": \"summary_text\", \"text\": \"\"}, \"sequence_number\": 2}",
+        "",
+        "event: response.reasoning_summary_text.delta",
+        "data: {\"type\": \"response.reasoning_summary_text.delta\", \"item_id\": \"rs_8833c818453b\", \"output_index\": 0, \"summary_index\": 0, \"delta\": \"Okay\", \"sequence_number\": 3}",
+        ""
+      ],
+      "status": 200,
+      "tag": "responses_on_reasoning",
+      "terminals": [
+        "response.incomplete"
+      ],
+      "tool_chunk_count": 0,
+      "tool_chunks_tail": []
+    },
+    {
+      "content": "",
+      "content_chars": 0,
+      "elapsed_s": 2.05,
+      "finishes": [
+        "tool_calls",
+        "DONE"
+      ],
+      "path": "/v1/chat/completions",
+      "raw_markers_in_content": [],
+      "reasoning_chars": 0,
+      "reasoning_head": "",
+      "response_tool_tail": [],
+      "sample_lines": [
+        "data: {\"id\": \"chatcmpl-104a67a8\", \"object\": \"chat.completion.chunk\", \"created\": 1784772922, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-104a67a8\", \"object\": \"chat.completion.chunk\", \"created\": 1784772922, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-104a67a8\", \"object\": \"chat.completion.chunk\", \"created\": 1784772922, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-104a67a8\", \"object\": \"chat.completion.chunk\", \"created\": 1784772922, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-104a67a8\", \"object\": \"chat.completion.chunk\", \"created\": 1784772922, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-104a67a8\", \"object\": \"chat.completion.chunk\", \"created\": 1784772922, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}",
+        ""
+      ],
+      "status": 200,
+      "tag": "chat_tool_call",
+      "terminals": [],
+      "tool_chunk_count": 2,
+      "tool_chunks_tail": [
+        [
+          {
+            "function": {
+              "arguments": "",
+              "name": ""
+            },
+            "id": "call_ab225a3d",
+            "index": 0,
+            "type": "function"
+          }
+        ],
+        [
+          {
+            "function": {
+              "arguments": "{\"path\": \"panel/package.json\"}",
+              "name": "file_info"
+            },
+            "index": 0
+          }
+        ]
+      ]
+    },
+    {
+      "content": "The package file is 5.2 KB.",
+      "content_chars": 27,
+      "elapsed_s": 2.047,
+      "finishes": [
+        "stop",
+        "DONE"
+      ],
+      "path": "/v1/chat/completions",
+      "raw_markers_in_content": [],
+      "reasoning_chars": 0,
+      "reasoning_head": "",
+      "response_tool_tail": [],
+      "sample_lines": [
+        "data: {\"id\": \"chatcmpl-24364b14\", \"object\": \"chat.completion.chunk\", \"created\": 1784772925, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-24364b14\", \"object\": \"chat.completion.chunk\", \"created\": 1784772925, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \"The\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-24364b14\", \"object\": \"chat.completion.chunk\", \"created\": 1784772925, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \" package\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-24364b14\", \"object\": \"chat.completion.chunk\", \"created\": 1784772925, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \" file\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-24364b14\", \"object\": \"chat.completion.chunk\", \"created\": 1784772925, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \" is\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-24364b14\", \"object\": \"chat.completion.chunk\", \"created\": 1784772925, \"model\": \"jangq-ai/Laguna-S-2.1-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"content\": \" \"}}]}",
+        ""
+      ],
+      "status": 200,
+      "tag": "chat_tool_continuation",
+      "terminals": [],
+      "tool_call_args": {
+        "path": "panel/package.json"
+      },
+      "tool_call_name": "file_info",
+      "tool_chunk_count": 0,
+      "tool_chunks_tail": []
+    }
+  ],
+  "engine_health_excerpt": {
+    "kv_cache_quantization": {
+      "auto_policy": "mixed_swa_full_attention_kv_storage_tq4",
+      "bits": 4,
+      "enabled": true,
+      "key_bits": 4,
+      "live_encode_enabled": false,
+      "mode": "turboquant-storage",
+      "stored_prefix_quantization": "turboquant-q4",
+      "value_bits": 4
+    },
+    "last_cache_execution": {
+      "blocks": 76,
+      "cache_detail": "block-disk+tq-native",
+      "cached_tokens": 4861,
+      "dequantization_seconds": 0.0,
+      "dequantized": false,
+      "disk_blocks": 76,
+      "reconstructed": true,
+      "reconstruction_ok": true,
+      "reconstruction_seconds": 0.365226,
+      "request_id": "resp_18f54706e5f6",
+      "selection": {
+        "hot_advantage_threshold_tokens": 64,
+        "hot_advantage_tokens": 4861,
+        "paged_cached_tokens": 4861,
+        "paged_cold_tokens": 0,
+        "reason": "no_warm_prefix_alternative",
+        "rejected": null,
+        "selected": "paged",
+        "warm_cached_tokens": 0
+      },
+      "total_worker_cache_seconds": 0.36578,
+      "tq_native_blocks": 912,
+      "tq_rewrap_seconds": 0.000105,
+      "tq_rewrapped": true
+    },
+    "model_name": "jangq-ai/Laguna-S-2.1-JANG_4M",
+    "native_cache": {
+      "block_disk_l2": true,
+      "block_disk_only": true,
+      "cache_subtype": "kv",
+      "cache_type": "mixed_swa_kv",
+      "components": [
+        "full_attention_kv",
+        "sliding_window_kv",
+        "rotating_window_metadata"
+      ],
+      "family": "laguna",
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "storage_only"
+      },
+      "paged": false,
+      "prefix": true,
+      "schema": "mixed_swa_kv_v1",
+      "storage_quantization": {
+        "applies_to": "full_attention_kv_only",
+        "bits": 4,
+        "enabled": true,
+        "group_size": 64,
+        "metadata_policy": "preserve_rotating_window_metadata",
+        "mode": "storage_boundary",
+        "restore_policy": "decode_full_attention_tq_and_restore_rotating_state",
+        "sliding_window_policy": "native_rotating_kv_state"
+      }
+    }
+  },
+  "gateway_health": {
+    "active_requests": 0,
+    "backends": [
+      {
+        "id": "a4a71d2e-9263-4362-99c8-59d798e671d1",
+        "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+        "port": 8001,
+        "status": "running"
+      },
+      {
+        "id": "f83edd34-f38b-484f-aa68-142a4188e3ac",
+        "model": "jangq-ai/gemma-4-E2B-it-qat-JANG_4M",
+        "port": 8002,
+        "status": "stopped"
+      },
+      {
+        "id": "0108a1a0-0064-4944-bb46-e6638737668f",
+        "model": "dealignai/Bonsai-27b-Ternary-JANG-CRACK",
+        "port": 8000,
+        "status": "stopped"
+      },
+      {
+        "id": "6bfcafa6-a3aa-447a-bf6a-a31349931f18",
+        "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+        "port": 8005,
+        "status": "stopped"
+      }
+    ],
+    "gateway_port": 8088,
+    "single_model_mode": true,
+    "status": "ok"
+  },
+  "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+  "ts": "2026-07-22T19:15:27-0700"
+}

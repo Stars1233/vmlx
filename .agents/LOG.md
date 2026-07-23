@@ -1682,6 +1682,13 @@
   with exact final. Gateway Chat and Responses streamed separate reasoning and
   content; gateway Chat emitted a required `file_info` call and completed the
   tool-result continuation exactly.
+- Swapped to Laguna JANG_4M and traced parser provenance before prompting:
+  bundle vendor parser is `poolside_v1`, current argv is `glm47`/`deepseek_r1`,
+  and source registers `poolside_v1` as aliases to those parser classes. Fresh
+  UI proof passed reasoning/answer/tool with one real file-info card and
+  `4861 block-disk+tq-native cached`. Gateway Chat Auto terminal and Chat tool
+  rows passed; Gateway Responses remains partial because reasoning+hard prompt
+  ended incomplete while short prompt completed without reasoning.
 - Added the focused cache-control policy regression that Block Disk SSD/L2
   stays available whether Paged RAM is on or off, and that legacy disk is only
   available after both Paged RAM and Block Disk L2 are off. After syncing the
