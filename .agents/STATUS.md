@@ -8225,3 +8225,25 @@ Status: `VERIFIED-LIVE_SCOPED_PARTIAL / RELEASE NOT READY`.
   `5.2 KB` as `5200`, so exact instruction-following remains partial.
 - Evidence:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/dsv4-cache-dsml-live.json`.
+
+## 2026-07-23 - canonical reasoning parser and LaTeX UI/API checkpoint
+
+Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
+
+- Added one shared effective reasoning-parser resolver across launch, preview,
+  chat IPC, renderer controls, and Ollama capabilities.
+- Real Laguna Electron UI proved Auto -> `deepseek_r1` and explicit None ->
+  literal `none` through SQLite, argv, Chat controls, and `/api/show`; Auto was
+  restored before leaving the gate.
+- Fresh New Chat sampling controls matched current engine health. An older
+  `0.00` temperature was an explicit persisted chat override, not default
+  drift.
+- Electron rendered two valid KaTeX nodes with zero errors. Raw gateway Chat
+  SSE preserved the literal LaTeX commands progressively.
+- Fixed `uidrv.cjs` leaving stale SSH/CDP clients alive.
+- Remote verification: `494` focused panel tests, typecheck, Node syntax, and
+  diff check pass.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/laguna-parser-settings-math-live.json`.
+- Cache hierarchy, broader parser/model/protocol rows, full suites, packaging,
+  signing, notarization, and publication remain open.

@@ -2059,3 +2059,29 @@
   `git diff --check` pass.
 - Retained:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/dsv4-l2-owner-and-equivalence-live.json`.
+
+## 2026-07-23 - normalize effective reasoning parser and retain math proof
+
+- Replaced duplicated parser enablement logic with
+  `resolveEffectiveReasoningParser()` and
+  `reasoningParserIsEnabled()`.
+- Added a detection-gated Laguna v2 parser migration and hard opt-out semantics
+  for both empty and literal `none`.
+- Wired session launch/preview, Chat Settings, session shell/toolbar, chat IPC,
+  Harmony selection, and Ollama capabilities to the shared resolution.
+- Added behavior coverage for Ollama Auto/None/no-thinking capability and form
+  display coverage for persisted literal None.
+- Restarted the isolated dev Electron and used the real Start/Stop/Save &
+  Restart controls. Auto PID `20507` launched `deepseek_r1`; explicit-None PID
+  `20077` launched `none`; Auto was restored.
+- Verified a fresh New Chat showed bundle/health sampling defaults.
+- Ran a literal LaTeX Electron turn: two KaTeX nodes, zero errors, visibly
+  formatted multiplication and fractions. Raw gateway Chat SSE reconstructed
+  the exact literal commands with progressive content and one terminal.
+- Diagnosed and fixed the proof driver retaining its CDP socket and leaving
+  stale SSH clients. Removed only stale local SSH clients; Electron and model
+  processes on the proof host were not killed by that cleanup.
+- Remote result: `494` focused tests, typecheck, `node --check`, and diff check
+  pass.
+- Retained:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/laguna-parser-settings-math-live.json`.

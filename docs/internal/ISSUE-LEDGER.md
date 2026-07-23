@@ -5226,3 +5226,32 @@ Status: `PARTIAL / CORRECTNESS FALLBACK LIVE / RELEASE BLOCKING`.
   pass. DSV4 cache reuse, reasoning quality, and release readiness remain open.
 - Evidence:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/dsv4-l2-owner-and-equivalence-live.json`.
+
+## 2026-07-23 - R17 effective reasoning parser and LaTeX rendering split
+
+- `R17-EFFECTIVE-REASONING-PARSER`: `FIXED+VERIFIED-LIVE_SCOPED`.
+  One shared resolver now drives launch, preview, renderer controls, chat IPC,
+  and Ollama capability reporting. Real Laguna UI transitions proved Auto
+  launches `deepseek_r1`; explicit None launches literal `none`, disables Chat
+  Thinking controls, and removes Ollama `thinking`; Auto was restored.
+- `R17-PARSER-MIGRATION`: `FIXED+FOCUSED_TEST`.
+  Stale Laguna `qwen3` migrates once only when current bundle detection proves
+  `deepseek_r1`; a later explicit choice survives.
+- `R17-NEW-CHAT-GENERATION-DEFAULTS`: `VERIFIED-LIVE_SCOPED`.
+  Fresh New Chat values matched engine `/health`: temperature/top-p `1.0`,
+  top-k `20`, min-p `0`, max output `32768`. The observed older-chat
+  temperature `0.00` was an explicit persisted override.
+- `R17-LATEX-UI-API-SPLIT`: `VERIFIED-LIVE_SCOPED`.
+  Electron rendered valid multiplication/fractions as two KaTeX nodes with
+  zero errors. Gateway Chat SSE preserved literal LaTeX progressively and
+  terminalized once.
+- `R17-UIDRV-SSH-ZOMBIES`: `FIXED+LIVE_SCOPED`.
+  The CDP driver now flushes and exits without closing Electron. Stale SSH
+  clients were removed and new driver calls return immediately.
+- Verification: `494` focused panel tests, typecheck, Node syntax, and diff
+  check pass.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/laguna-parser-settings-math-live.json`.
+- Overall v1.6.17 status remains `PARTIAL / NOT RELEASE-READY`; SSD hierarchy,
+  remaining protocol/family/media rows, full suites, and release gates remain
+  open.

@@ -1,0 +1,117 @@
+{
+  "gate": "R17-011",
+  "recorded_at": "2026-07-23T03:12:36-07:00",
+  "status": "VERIFIED-LIVE-SCOPED / OVERALL PARTIAL",
+  "source": {
+    "head_before_commit": "2b93038adf8e27334505156e384d1021ae28e024",
+    "branch": "codex/v1.6.17-consolidation-20260723",
+    "checkout": "/Users/eric/mlx/vllm-mlx-r17-consolidation",
+    "host": "Erics-M5-Max.lan",
+    "profile": "/Users/eric/.vmlx-r17-consolidation-dev",
+    "engine_python": "/Users/eric/mlx/vllm-mlx-r17-consolidation/.venv/bin/python3",
+    "engine_version": "1.6.16"
+  },
+  "bundle": {
+    "path": "/Volumes/EricsLLMDrive/JANGQ-AI/Laguna-S-2.1-JANG_4M",
+    "session_id": "2316afd1-3efa-49d0-8056-4809740d93f7",
+    "port": 8003,
+    "detected_family": "laguna",
+    "detected_tool_parser": "glm47",
+    "detected_reasoning_parser": "deepseek_r1"
+  },
+  "electron_start": {
+    "source": "/Users/eric/mlx/vllm-mlx-r17-consolidation",
+    "cdp": "http://127.0.0.1:9335",
+    "gateway": "http://127.0.0.1:8088",
+    "electron_pid": 17630,
+    "first_start_pid": 17719,
+    "no_error_toast": true,
+    "engine_log_quote": "[Engine Manager] Found development project venv: /Users/eric/mlx/vllm-mlx-r17-consolidation/.venv/bin/python3 (vmlx_engine 1.6.16)"
+  },
+  "effective_parser_resolution": {
+    "auto": {
+      "sqlite_reasoning_parser": "auto",
+      "model_parser_defaults_version": 2,
+      "ui_text": "Auto (detected: deepseek_r1)",
+      "pid": 20507,
+      "argv_fragment": "--tool-call-parser glm47 --enable-auto-tool-choice --reasoning-parser deepseek_r1",
+      "ollama_capabilities": [
+        "completion",
+        "tools",
+        "thinking",
+        "insert"
+      ],
+      "chat_thinking_controls_enabled": true
+    },
+    "explicit_none": {
+      "sqlite_reasoning_parser": "",
+      "model_parser_defaults_version": 2,
+      "ui_text": "None (disable reasoning extraction)",
+      "pid": 20077,
+      "argv_fragment": "--tool-call-parser glm47 --enable-auto-tool-choice --reasoning-parser none",
+      "ollama_capabilities": [
+        "completion",
+        "tools",
+        "insert"
+      ],
+      "chat_thinking_controls_enabled": false
+    }
+  },
+  "generation_default_parity": {
+    "new_chat_ui": {
+      "enable_thinking": "Auto",
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "top_k": 20,
+      "min_p": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens_placeholder": "32768 (model default)"
+    },
+    "health_effective_defaults": {
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_output_tokens": 32768
+    },
+    "old_chat_temperature_zero_classification": "explicit persisted chat_overrides.temperature=0.0, not a first-use default mismatch"
+  },
+  "latex": {
+    "electron_prompt": "[R17-MATH-UI] Answer with exactly: \\\\(47 \\\\times 2 = 94\\\\) and \\\\(\\\\frac{94}{90} = \\\\frac{47}{45}\\\\). Do not call tools.",
+    "stored_assistant_content": "\\\\(47 \\\\times 2 = 94\\\\) and \\\\(\\\\frac{94}{90} = \\\\frac{47}{45}\\\\).",
+    "electron_katex_nodes": 2,
+    "electron_katex_errors": 0,
+    "electron_visible_math": "47 × 2 = 94 and 94/90 = 47/45 with stacked fractions",
+    "electron_screenshot": "laguna-parser-math-ui.png",
+    "gateway_chat_sse": {
+      "id": "chatcmpl-a8a13236",
+      "progressive_content_deltas": true,
+      "reconstructed_content": "\\\\(19 \\\\times 5 = 95\\\\) and \\\\(\\\\frac{95}{5}=19\\\\).",
+      "finish_reason": "stop",
+      "done_events": 1,
+      "reasoning_deltas": 0,
+      "tool_calls": 0
+    }
+  },
+  "verification": {
+    "panel_focused_test_files": 6,
+    "panel_focused_tests": 494,
+    "panel_focused_result": "pass",
+    "typecheck": "pass",
+    "uidrv_node_check": "pass",
+    "git_diff_check": "pass"
+  },
+  "additional_fix": {
+    "issue": "CDP proof driver retained its Playwright connection and accumulated stale parent SSH clients",
+    "change": "flush stdout and explicitly exit without browser.close(), preserving the Electron process",
+    "observed_result": "driver returned immediately and no stale ssh erics-m5-max.local client remained"
+  },
+  "open": [
+    "Laguna mixed-SWA Paged-On and Paged-Off changed-tail SSD partial reuse",
+    "Laguna cache eviction/refault and restart equivalence",
+    "three multi-turn UI and three multi-turn API sequences for the full family row",
+    "Responses, Anthropic, and Ollama current-PID raw sequence matrix",
+    "broader parser families and representative model matrix",
+    "full suites, packaged installed-app proof, signing, notarization, and release publication"
+  ]
+}

@@ -863,3 +863,71 @@ Remaining boundary:
   sequences, mixed-SWA Paged-On/Paged-Off SSD hierarchy, eviction/refault,
   broader parser families, full suites, installed app, or release gates.
 - Overall status remains `PARTIAL / NOT RELEASE-READY`.
+
+### R17-011 Canonical effective reasoning parser and UI/API LaTeX split
+
+Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
+
+Owning-layer repair:
+
+- One shared resolver now owns effective reasoning-parser selection for session
+  launch, command preview, Chat Settings, session shell/toolbar, chat IPC,
+  Harmony routing, and Ollama capability reporting.
+- Explicit `None` remains a literal engine opt-out even when bundle detection
+  finds a parser. Auto uses the canonicalized detected parser. A model that
+  explicitly declares thinking unsupported also launches with literal `none`.
+- Laguna's stale saved `qwen3` parser migrates once to `deepseek_r1` only when
+  current bundle detection independently proves that parser. Later explicit
+  user choices survive the versioned migration.
+- A persisted literal `reasoningParser: "none"` now renders as the visible
+  None option rather than an unknown select value.
+
+Current live Electron proof:
+
+- The real Start button loaded the Laguna JANG_4M bundle from the consolidation
+  venv with no error toast.
+- Auto displayed `Auto (detected: deepseek_r1)`, persisted `auto`, launched PID
+  `20507` with `--reasoning-parser deepseek_r1`, kept Chat Thinking controls
+  enabled, and advertised Ollama `thinking`.
+- Explicit None displayed the correct option, persisted the empty hard opt-out,
+  launched PID `20077` with `--reasoning-parser none`, disabled all Chat
+  Thinking controls, and removed Ollama `thinking`.
+- Auto was restored through the real UI and Save & Restart before leaving the
+  gate.
+- A fresh New Chat matched current `/health` effective defaults:
+  temperature `1.0`, top-p `1.0`, top-k `20`, min-p `0`, and max output
+  `32768`. The older chat's `0.00` temperature was traced to its explicit
+  persisted override rather than model-default drift.
+
+LaTeX/UI versus API contract:
+
+- The Electron answer stored literal `\(47 \times 2 = 94\)` and fraction
+  commands, but the visible answer rendered two KaTeX nodes with zero errors.
+- Raw gateway Chat SSE emitted progressive content deltas that reconstructed
+  literal `\(19 \times 5 = 95\)` and `\(\frac{95}{5}=19\)` with one stop and
+  one `[DONE]`. The gateway did not render or rewrite model bytes.
+
+Proof-driver lifecycle:
+
+- `uidrv.cjs` previously left its Playwright CDP connection alive despite the
+  comment claiming process exit would disconnect it. This accumulated stale
+  parent SSH clients and exhausted the remote SSH daemon.
+- The driver now flushes stdout and exits explicitly without calling
+  `browser.close()`, so it disconnects without terminating Electron.
+
+Verification:
+
+- Remote focused panel result: `6` files, `494` tests passed.
+- TypeScript typecheck, `node --check scripts/uidrv.cjs`, and
+  `git diff --check` passed.
+- Evidence:
+  - `laguna-parser-settings-math-live.json`
+  - `laguna-parser-math-ui.png`
+
+Remaining boundary:
+
+- This closes one canonical parser-settings path and the scoped UI/API LaTeX
+  split. It does not close Laguna's three-turn full protocol matrix,
+  mixed-SWA Paged-On/Paged-Off SSD partial reuse, eviction/refault, other
+  parser families, full suites, installed app, or release gates.
+- Overall status remains `PARTIAL / NOT RELEASE-READY`.
