@@ -5424,3 +5424,26 @@ Status: `PARTIAL / CORRECTNESS FALLBACK LIVE / RELEASE BLOCKING`.
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/qwen35-jangtq-paged-off-c.json`.
 - This closes only the missing cache-hierarchy row for this exact JANGTQ
   artifact. Media/lifecycle breadth and release gates remain open.
+
+## 2026-07-23 - already-running gateway preflight latency
+
+- `R17-GATEWAY-RUNNING-PREFLIGHT`: `FIXED+VERIFIED-LIVE_SCOPED`.
+  The gateway previously ran model-launch preflight before checking whether
+  the resolved target was already running. In the source app that path started
+  Python and imported `vmlx_engine` on every request.
+- The exact import measured `2.15/2.17/2.16s`, matching the observed
+  `2.30-2.34s` gateway TTFT versus `0.13-0.16s` direct.
+- Running targets now bypass launch-only preflight but still execute
+  single-model enforcement. Non-running targets retain preflight-before-unload,
+  failed-unload refusal, and rollback.
+- After a full isolated Electron restart and real Start-button load of Qwen 35
+  JANGTQ PID `92163`, three direct requests had `0.0013-0.0147s` TTFB and three
+  gateway requests had `0.0040-0.0051s` TTFB with overlapping total time.
+- Raw gateway Responses emitted 256 output deltas and one truthful incomplete
+  terminal. The inspected Electron follow-up showed exact matching visible
+  output, `98.1 t/s`, and 41 `paged+ssm+disk+tq-native` cached tokens.
+- Verification: 133 focused gateway/protocol tests passed, three skipped;
+  typecheck, production Electron build, and diff check passed.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/qwen35-gateway-running-session-latency-live.json`.
+- Overall v1.6.17 remains `PARTIAL / NOT RELEASE-READY`.

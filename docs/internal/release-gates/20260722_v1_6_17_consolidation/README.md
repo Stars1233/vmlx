@@ -1276,3 +1276,59 @@ Remaining boundary:
   partial reuse remains deliberately fail-closed.
 - Media salt/restart breadth and the full release test/package/notarization
   gates remain open. Overall status remains `PARTIAL / NOT RELEASE-READY`.
+
+### R17-018 Already-running gateway preflight latency and TPS truth
+
+Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
+
+Root cause and correction:
+
+- A matched direct/gateway Responses comparison on the already-running Qwen
+  PID showed a fixed `2.30-2.34s` gateway TTFT versus `0.13-0.16s` direct.
+- `prepareSessionForRouting` ran launch preflight before checking the target's
+  current running state. In the source Electron app that preflight resolved
+  the project venv by starting Python and importing `vmlx_engine`.
+- Three direct measurements of that exact import took `2.15s`, `2.17s`, and
+  `2.16s`, accounting for the gateway-only delay.
+- Launch preflight is now skipped only for an already-running resolved target.
+  Single-model enforcement still executes. Non-running targets retain
+  preflight-before-unload and the existing rollback transaction.
+
+Current live proof:
+
+- Fully restarted the isolated source Electron app, then loaded the exact
+  Qwen 35 JANGTQ bundle with the real Start button as PID `92163`.
+- Three direct Responses requests reported TTFB `0.0013-0.0147s` and total
+  `2.53-2.67s`. Three gateway requests reported TTFB
+  `0.0040-0.0051s` and total `2.54-2.58s`; the former fixed delay was absent.
+- Raw gateway SSE contained 256 progressive output-text deltas, zero reasoning
+  deltas because thinking was explicitly Off, and one truthful
+  `response.incomplete` at the 256-token limit.
+- The visual Electron follow-up produced the same integer sequence and warning
+  with `98.1 t/s` (`97.3` live), 349 prompt tokens, 41
+  `paged+ssm+disk+tq-native` cached tokens, `0.50s` TTFT, and `3.1s` total.
+  The prior matched direct median was about `100.5 t/s`, so the UI counter is
+  conservative rather than inflated.
+- After restart and all current live requests, the dev log contained only two
+  project-venv probes: startup installation discovery and the real model
+  launch. There was no per-request probe.
+
+Regression coverage:
+
+- `133` focused gateway/Responses/Ollama/MCP tests passed; three intentional
+  skips remained.
+- TypeScript typecheck, production `electron-vite build`, and diff check
+  passed.
+
+Evidence:
+
+- `qwen35-gateway-running-session-latency-live.json`
+- `qwen35-gateway-running-session-tps-after-fix.png`
+- `qwen35-gateway-running-session-health-after-fix.json`
+
+Remaining boundary:
+
+- This closes only the already-running gateway preflight and TPS-comparison
+  row. Broader long gateway soak, model swaps, remaining family/media/settings
+  rows, full suites, packaging, signing, notarization, and publication remain
+  open. Overall status remains `PARTIAL / NOT RELEASE-READY`.

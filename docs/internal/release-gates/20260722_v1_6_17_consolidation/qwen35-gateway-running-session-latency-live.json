@@ -1,0 +1,152 @@
+{
+  "gate": "R17-018",
+  "date": "2026-07-23",
+  "status": "VERIFIED-LIVE-SCOPED",
+  "scope": "already-running Electron gateway preflight latency and UI TPS truth",
+  "source": {
+    "baseline_head": "b2d5baa90d6e868b120a593f380b4f42821f1240",
+    "branch": "codex/v1.6.17-consolidation-20260723",
+    "worktree": "/Users/eric/mlx/vllm-mlx-r17-consolidation",
+    "root_cause": [
+      "panel/src/main/api-gateway.ts::prepareSessionForRouting called preflightSessionStart before checking whether the target session was already running",
+      "panel/src/main/sessions.ts::preflightSessionStart calls findEnginePath",
+      "panel/src/main/engine-manager.ts::getDevelopmentProjectVenv launches a fresh Python process and imports vmlx_engine"
+    ],
+    "measured_project_venv_import_seconds": [
+      2.15,
+      2.17,
+      2.16
+    ],
+    "change": "Skip launch preflight only when the resolved target is already running. Preserve single-model enforcement for every route and preserve preflight-before-unload for stopped, standby, loading, and error targets."
+  },
+  "live_environment": {
+    "host": "erics-m5-max.local",
+    "app": "isolated source Electron development app",
+    "user_data": "/Users/eric/.vmlx-r17-consolidation-dev",
+    "cdp": "http://127.0.0.1:9335",
+    "gateway": "http://127.0.0.1:8088",
+    "model_port": "http://127.0.0.1:8006",
+    "model": "dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK",
+    "pid_after_real_start": 92163,
+    "engine": "/Users/eric/mlx/vllm-mlx-r17-consolidation/.venv/bin/python3 -B -s -m vmlx_engine.cli",
+    "model_loaded": true,
+    "error_toast_seen": false
+  },
+  "before_fix": {
+    "gateway_responses_runs": [
+      {
+        "ttft_seconds": 2.318121,
+        "total_seconds": 4.746082,
+        "decode_tps": 105.049
+      },
+      {
+        "ttft_seconds": 2.300583,
+        "total_seconds": 4.737193,
+        "decode_tps": 104.674
+      },
+      {
+        "ttft_seconds": 2.337833,
+        "total_seconds": 4.772764,
+        "decode_tps": 104.746
+      }
+    ],
+    "direct_responses_ttft_seconds": [
+      0.164481,
+      0.130052,
+      0.131922
+    ],
+    "finding": "The gateway added approximately 2.17 seconds before the already-running backend request. This matched the independently timed vmlx_engine import probe."
+  },
+  "after_fix": {
+    "direct_responses": [
+      {
+        "run": 1,
+        "http": 200,
+        "ttfb_seconds": 0.014653,
+        "total_seconds": 2.628334
+      },
+      {
+        "run": 2,
+        "http": 200,
+        "ttfb_seconds": 0.00131,
+        "total_seconds": 2.666258
+      },
+      {
+        "run": 3,
+        "http": 200,
+        "ttfb_seconds": 0.001689,
+        "total_seconds": 2.532345
+      }
+    ],
+    "gateway_responses": [
+      {
+        "run": 1,
+        "http": 200,
+        "ttfb_seconds": 0.005053,
+        "total_seconds": 2.556085
+      },
+      {
+        "run": 2,
+        "http": 200,
+        "ttfb_seconds": 0.004155,
+        "total_seconds": 2.543064
+      },
+      {
+        "run": 3,
+        "http": 200,
+        "ttfb_seconds": 0.003952,
+        "total_seconds": 2.580194
+      }
+    ],
+    "gateway_stream_shape": {
+      "output_text_delta_events": 256,
+      "reasoning_delta_events": 0,
+      "response_incomplete_events": 1,
+      "response_completed_events": 0,
+      "response_failed_events": 0,
+      "reasoning_disabled": true,
+      "terminal_truth": "max_output_tokens=256 produced response.incomplete"
+    },
+    "dev_log_project_venv_probes": {
+      "count_after_full_restart_and_live_requests": 2,
+      "interpretation": "one startup installation probe and one real Start-button launch probe; no per-request probe remained"
+    }
+  },
+  "electron_visual": {
+    "prompt": "[R17-TPS-UI-AFTER-FIX] With reasoning and tools disabled, output exactly the integers 1 through 120 separated by single spaces. No prose, no punctuation.",
+    "visible_output_nonempty": true,
+    "visible_output_shape": "progressive integer sequence, truncated at the configured 256-token limit",
+    "warning": "Output truncated because the maximum output-token limit was reached.",
+    "output_tokens": 256,
+    "tokens_per_second": 98.1,
+    "live_tokens_per_second": 97.3,
+    "prompt_tokens": 349,
+    "cached_tokens": 41,
+    "cache_detail": "paged+ssm+disk+tq-native",
+    "ttft_seconds": 0.5,
+    "total_seconds": 3.1,
+    "screenshot": "qwen35-gateway-running-session-tps-after-fix.png"
+  },
+  "tests": {
+    "panel_files": [
+      "tests/api-gateway-single-model.behavior.test.ts",
+      "tests/api-gateway-ollama-behavior.test.ts",
+      "tests/api-gateway-ollama.test.ts",
+      "tests/api-gateway-body.test.ts",
+      "tests/mcp-gateway-routing.test.ts",
+      "tests/responses-stream-recovery.test.ts",
+      "tests/responses-warnings.test.ts"
+    ],
+    "passed": 133,
+    "skipped": 3,
+    "failed": 0,
+    "typecheck": "PASS",
+    "electron_vite_production_build": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "remaining_boundary": [
+    "This closes the already-running gateway preflight and TPS comparison row only.",
+    "Stopped-target preflight, failed-unload refusal, rollback, serialized model swaps, protocol forwarding, disconnects, and recovery remain covered by focused tests; broader long live soak remains open.",
+    "Other family, media, settings, cache-companion failure, full-suite, packaging, signing, notarization, and publication gates remain open."
+  ]
+}

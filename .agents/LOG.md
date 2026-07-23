@@ -2204,3 +2204,28 @@
 - Remote selected tests: 209 passed.
 - Retained raw requests, health snapshots, and UI screenshots under:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/qwen35-jangtq-*`.
+
+## 2026-07-23 - remove per-request gateway launch preflight
+
+- Matched direct and gateway Responses on the current Qwen 35 JANGTQ PID.
+  Gateway TTFT was `2.30-2.34s` versus direct `0.13-0.16s`.
+- Traced the delay through
+  `prepareSessionForRouting -> preflightSessionStart -> findEnginePath ->
+  getDevelopmentProjectVenv`, whose fresh Python import measured
+  `2.15/2.17/2.16s`.
+- Changed the gateway to run launch preflight only when the resolved target is
+  not already running. Kept one-model cleanup for running targets and kept
+  preflight-before-unload/rollback for actual load transitions.
+- Added a behavior test pinning both halves: no repeated preflight for the
+  running target, but the competing running session is still stopped.
+- Restarted only the isolated R17 Electron app, clicked real Start, and loaded
+  Qwen 35 JANGTQ PID `92163`.
+- Post-fix direct/gateway TTFB and total times overlapped. Raw gateway
+  Responses retained 256 progressive deltas and one truthful incomplete
+  terminal.
+- The real UI follow-up displayed the exact same output and warning at
+  `98.1 t/s`, with current typed cache telemetry.
+- Remote selected tests: 133 passed, three skipped. Typecheck, production
+  Electron build, and diff check passed.
+- Retained:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/qwen35-gateway-running-session-latency-live.json`.

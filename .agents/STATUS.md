@@ -8391,3 +8391,28 @@ Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/qwen35-jangtq-paged-off-c.json`.
 - DSV4 composite partial reuse, remaining media/lifecycle breadth, full
   suites, and release packaging remain open.
+
+## 2026-07-23 - R17 gateway running-session latency and TPS truth
+
+Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
+
+- Traced a fixed `~2.17s` gateway delay to launch preflight running on every
+  request for an already-loaded source Electron session. The preflight started
+  Python and imported `vmlx_engine`; the exact import measured
+  `2.15/2.17/2.16s`.
+- The gateway now skips launch preflight only for a resolved `running` target.
+  It still enforces one-model mode, and all non-running targets preserve
+  preflight-before-unload plus rollback.
+- After a full isolated Electron restart and real Start-button load of Qwen 35
+  JANGTQ PID `92163`, direct TTFB was `0.0013-0.0147s` and gateway TTFB was
+  `0.0040-0.0051s`; total generation windows overlapped.
+- Raw gateway Responses produced 256 output deltas, zero reasoning deltas with
+  reasoning explicitly Off, and one truthful `response.incomplete`.
+- The visible Electron follow-up showed exact matching output, the truncation
+  warning, `98.1 t/s`, 41 `paged+ssm+disk+tq-native` cached tokens, and
+  `0.50s` TTFT.
+- Remote verification: 133 focused tests passed, three skipped; typecheck,
+  production Electron build, and diff check passed.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/qwen35-gateway-running-session-latency-live.json`.
+- The full release remains `PARTIAL / NOT RELEASE-READY`.
