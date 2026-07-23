@@ -1,0 +1,145 @@
+{
+  "status": "VERIFIED_LIVE_SCOPED_PAGED_ON_MIXED_SWA",
+  "source_commit": "9f5b1bde20089dc3b998a5522c43ef9e35805395",
+  "host": "erics-m5-max.local",
+  "electron": {
+    "version": "1.6.16",
+    "cdp_port": 9335,
+    "start_button_used": true,
+    "pid": 95416,
+    "model_port": 8001,
+    "error_alerts": [],
+    "checkout": "/Users/eric/mlx/vllm-mlx-r17-consolidation",
+    "python": "/Users/eric/mlx/vllm-mlx-r17-consolidation/.venv/bin/python3",
+    "screenshot": "gemma-mixed-swa-ui-3turn.png"
+  },
+  "bundle": {
+    "path": "/Users/eric/.mlxstudio/models/JANGQ-AI/gemma-4-12B-it-qat-JANG_4M",
+    "config_sha256": "1fe9c1e2abe70e916825cddbc6418a13218e5f831499249e5519a9d3591a76d4",
+    "generation_config_sha256": "a8349d9bd64cc5841297fcb5002f0fdc4749c473c8f1b10ea337f9ce4ee7014e",
+    "tokenizer_config_sha256": "1b1149b63cd08a36d6e88b58ec6fae260799248b7d4803c0241ca6d757bd8507",
+    "chat_template_sha256": "d5ce49ce670058e90cc623c0284c21c8fcd778c30f5be1891b00f022bedee2fe",
+    "jang_config_sha256": "06d641eaa0c86744c89f9224b3b1ba4fa4a4d0110baf6d73f062715dd191d3f5",
+    "model_type": "gemma4_unified_text",
+    "layers": 48,
+    "sliding_attention_layers": 40,
+    "full_attention_layers": 8,
+    "sliding_window": 1024,
+    "max_position_embeddings": 262144,
+    "weight_format": "jang_affine",
+    "profile": "JANG_4M",
+    "generation_defaults": {
+      "do_sample": true,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 64
+    }
+  },
+  "launch": {
+    "reasoning_parser": "gemma4",
+    "tool_parser": "gemma4",
+    "paged_cache": true,
+    "paged_block_size": 64,
+    "max_cache_blocks": 1000,
+    "block_disk_l2": true,
+    "block_disk_max_gb": 10,
+    "kv_cache_quantization": "none",
+    "native_cache_schema": "mixed_swa_kv_v1"
+  },
+  "electron_turns": [
+    {
+      "id": "R17-G4-FIX-UI-T1",
+      "reasoning_chars": 156,
+      "visible": "47 x 2 = 94 rendered as math, followed by R17-G4-FIX-UI-T1-DONE",
+      "tokens": 93,
+      "decode_tps": 46.0,
+      "prompt_tps": 1679.6,
+      "prompt_tokens": 3690,
+      "ttft_seconds": 2.2,
+      "total_seconds": 4.3
+    },
+    {
+      "id": "R17-G4-FIX-UI-T2",
+      "reasoning_chars": 363,
+      "tool": "file_info(panel/package.json)",
+      "real_tool_result": "5.2 KB",
+      "visible": "R17-G4-FIX-UI-T2-DONE SIZE=5.2 KB",
+      "tokens": 179,
+      "decode_tps": 56.7,
+      "prompt_tps": 885.4,
+      "prompt_tokens": 562,
+      "ttft_seconds": 0.32,
+      "total_seconds": 4.5
+    },
+    {
+      "id": "R17-G4-FIX-UI-T3",
+      "reasoning_chars": 484,
+      "tool_calls": 0,
+      "visible": "R17-G4-FIX-UI-T1-DONE | 81 | R17-G4-FIX-UI-T3-DONE",
+      "tokens": 247,
+      "decode_tps": 44.9,
+      "prompt_tps": 997.5,
+      "prompt_tokens": 406,
+      "ttft_seconds": 0.41,
+      "total_seconds": 5.9
+    }
+  ],
+  "raw_streams": {
+    "responses": {
+      "reasoning_delta_events": 164,
+      "reasoning_chars": 532,
+      "output_text_delta_events": 22,
+      "content": "\\(47 \\times 2 = 94\\)\nR17-G4-RAW-RESP-DONE",
+      "terminal": "response.completed",
+      "native_marker_leaks": 0
+    },
+    "chat_completions": {
+      "chunks": 109,
+      "reasoning_chars": 321,
+      "content_chars": 23,
+      "content": "R17-G4-RAW-CHAT-DONE 56",
+      "finish_reason": "stop",
+      "done": true,
+      "native_marker_leaks": 0
+    }
+  },
+  "cache": {
+    "short_exact_warm": {
+      "cold": "R17-G4-BLOCKS-95416-DONE",
+      "warm": "R17-G4-BLOCKS-95416-DONE",
+      "cached_tokens": 42,
+      "cache_detail": "paged+mixed_swa",
+      "blocks": 1,
+      "reconstructed": true
+    },
+    "long_decode_cold_warm": {
+      "task": "integers 1 through 120",
+      "cold_output_tokens": 495,
+      "warm_output_tokens": 495,
+      "warm_cached_tokens": 52,
+      "cache_detail": "paged+mixed_swa",
+      "cold_equals_expected": true,
+      "warm_equals_expected": true,
+      "cold_warm_byte_equal": true
+    },
+    "disk_eviction_observed": {
+      "removed_blocks": 98,
+      "post_eviction_gb": 7.79,
+      "configured_max_gb": 10
+    }
+  },
+  "focused_tests": {
+    "selected": 8,
+    "passed": 8,
+    "python_compile": "pass",
+    "git_diff_check": "pass"
+  },
+  "open_boundary": [
+    "Paged-Off SSD-only mixed-SWA exact and changed-tail reuse on current source",
+    "fresh-process block-disk restore and safe refault",
+    "forced L1 eviction followed by SSD promotion",
+    "q4 storage-boundary TurboQuant on eligible full-attention KV",
+    "Gemma MXFP8 and media-capable artifact rows",
+    "Anthropic and Ollama live protocol rows on this exact source"
+  ]
+}

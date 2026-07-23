@@ -1,5 +1,22 @@
 # Agent proof log
 
+## 2026-07-23 - Gemma 4 mixed-SWA prefix reconstruction and live proof
+
+- Pushed `9f5b1bde2`: structural cache-layout detection now recognizes
+  vendored `mlx_vlm` KV/Rotating classes, mixed-SWA avoids the SSM companion
+  path, empty reconstructed hits fall back safely, and block telemetry reports
+  `block_ids`.
+- Electron PID `95416` passed three closely inspected turns with separate
+  reasoning rails, rendered math, one real `file_info` result, exact finals,
+  and cross-turn recall. Raw Chat and Responses separated reasoning/content
+  deltas and leaked no control markers.
+- Exact warm restored 42 tokens as `paged+mixed_swa` and reported one block.
+  A deterministic 495-token cold/warm decode was byte-identical and exact.
+- Tests: 8 selected passed; compile and diff checks passed. Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/`.
+- Overall `.17` remains partial; SSD-only/restart/refault/q4 and broader
+  family/protocol/media/settings gates remain open.
+
 ## 2026-07-19 - minimum-width five-locale expansion and full-suite gate
 
 - Expanded the live-found locale repair through Code/chat-empty screens,

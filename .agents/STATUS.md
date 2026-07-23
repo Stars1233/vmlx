@@ -1,5 +1,28 @@
 # Current Status
 
+## 2026-07-23 - Gemma 4 vendored mixed-SWA warm corruption repair
+
+Status: `VERIFIED_LIVE_SCOPED_PAGED_ON_OVERALL_R17_PARTIAL`.
+
+- Commit `9f5b1bde2` fixes a concrete namespace mismatch: Gemma's vendored
+  `mlx_vlm` KV/Rotating cache slots were not recognized as attention slots, so
+  a valid 48-layer paged prefix was replaced by an all-empty cache after
+  reconstruction.
+- Real Electron Stop/Start loaded PID `95416` from the v1.6.17 consolidation
+  checkout. Three inspected turns retained distinct reasoning rails, rendered
+  math, one exact real tool/result, non-empty finals, and exact cross-turn
+  recall.
+- Raw Responses and Chat each streamed reasoning separately from visible
+  content, emitted truthful terminals, and leaked no native control markers.
+- Exact warm restored 42 tokens as `paged+mixed_swa` with one real block.
+  A 495-output-token cold/warm A/B was byte-identical and exactly completed
+  1 through 120, falsifying a proposed per-token synchronous-cache-eval patch.
+- Focused verification: 8/8 tests, Python compile, diff check. Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/`.
+- Still open: Gemma Paged-Off SSD-only exact/partial, fresh-process restore,
+  L1 eviction/refault, q4 eligible-KV storage, MXFP8/media, broader protocols,
+  and all other family/release rows.
+
 ## 2026-07-19 - MiniMax M2.7 JANGTQ hierarchy/protocol gate
 
 Status: `VERIFIED_LIVE_SCOPED_OVERALL_MATRIX_PARTIAL`.

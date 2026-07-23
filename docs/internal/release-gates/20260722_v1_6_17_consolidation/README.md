@@ -496,3 +496,87 @@ Boundary:
   reset-to-bundle behavior, SQLite/session persistence, preview, engine argv,
   health, and direct/gateway request values. No cross-family settings claim is
   closed from these tests alone.
+
+### R17-006 Gemma 4 vendored mixed-SWA prefix reconstruction
+
+Status: `SOURCE+FOCUSED TEST+PAGED-ON LIVE PASS / SSD-ONLY+Q4+RESTART OPEN`
+
+Root cause:
+
+- The real Gemma 4 cache is created by vendored
+  `mlx_vlm.models.cache.KVCache` and `RotatingKVCache` classes.
+- `_hybrid_cache_layout()` and `_fix_hybrid_cache()` recognized only
+  `mlx_lm` class identities. All 48 real slots were therefore classified as
+  non-attention slots even though the bundle declares 40 sliding-attention and
+  eight full-attention layers.
+- After a valid paged prefix was reconstructed, `_fix_hybrid_cache()` compared
+  48 restored entries with zero expected attention positions and replaced the
+  whole prefix with `language_model.make_cache()`: a correctly shaped but
+  entirely empty cache. The request retained cache-hit credit and decoded from
+  empty state, producing the repeated-`1` warm corruption.
+
+Source correction:
+
+- Commit `9f5b1bde20089dc3b998a5522c43ef9e35805395` adds one structural
+  attention-cache classifier for layout decisions across the `mlx_lm` and
+  `mlx_vlm` namespaces.
+- Mixed-SWA layouts no longer enter the unrelated SSM-companion path.
+- A non-zero claimed hit that becomes an all-empty cache after reconstruction
+  is rejected and safely re-prefilled instead of decoding corrupt state.
+- `last_cache_execution.blocks` now reads the production
+  `BlockTable.block_ids`; the old nonexistent `.blocks` read always displayed
+  zero.
+- Eight focused mixed-SWA/cache tests, Python compile, and `git diff --check`
+  pass on the M5 Max.
+
+Bundle and live provenance:
+
+- Exact bundle:
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/gemma-4-12B-it-qat-JANG_4M`.
+- Retained SHA-256 values and model-derived fields are in
+  `gemma-mixed-swa-paged-live.json`.
+- Real Electron Stop -> Start loaded PID `95416` from the consolidation
+  checkout and its project venv; no UI error alert appeared.
+- Launch argv selected `gemma4` reasoning/tool parsers, Paged RAM with
+  64-token blocks and 1,000 configured blocks, Block Disk L2 at 10 GB, and
+  explicit KV cache quantization `none`.
+
+Electron and protocol evidence:
+
+- Three same-chat Electron turns visibly passed:
+  1. separate 156-character reasoning rail, rendered math, exact visible final;
+  2. separate 363-character rail, exactly one real
+     `file_info(panel/package.json)` call/result, exact `5.2 KB` final;
+  3. separate 484-character rail, no tool call, exact turn-one recall and
+     arithmetic final.
+- The different reasoning content/lengths and tasks rule out byte-identical
+  stale replay. The retained screenshot is
+  `gemma-mixed-swa-ui-3turn.png`.
+- Raw Responses emitted 164 reasoning-summary deltas and 22 output-text
+  deltas, preserved `\(47 \times 2 = 94\)` byte-for-byte, emitted one
+  `response.completed`, and leaked no native markers.
+- Raw Chat emitted reasoning only in `delta.reasoning_content`, visible text
+  only in `delta.content`, then `stop`, usage, and `[DONE]`, with no native
+  marker leakage.
+
+Cache evidence:
+
+- Final-source exact warm row restored 42 tokens as `paged+mixed_swa`,
+  reconstructed successfully, reported one real block, and returned the same
+  exact marker as cold.
+- A deterministic 495-output-token cold/warm A/B both produced the exact
+  integers 1 through 120 and were byte-identical; warm restored 52 tokens as
+  `paged+mixed_swa`. This falsifies the proposed need to synchronously evaluate
+  rotating cache state on every decode token, so no speculative performance
+  change was added.
+- The live disk cap also evicted 98 older blocks and returned to 7.79 GB below
+  the configured 10 GB ceiling.
+
+Boundary:
+
+- This closes the current-source Paged-On, explicit-TQ-None Gemma JANG_4M
+  corruption and telemetry row only.
+- Paged-Off SSD-only exact/partial reuse, fresh-process restore, forced L1
+  eviction/refault, q4 storage-boundary TQ, MXFP8, advertised media, and
+  current-source Anthropic/Ollama rows remain open. This is not a Gemma family
+  release pass and does not unlock v1.6.17 packaging.

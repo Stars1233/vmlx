@@ -15,6 +15,14 @@ Severity: C / H / M / L(nit) / P(otential, unproven).
 Evidence: LIVE / code-only.
 Status: OPEN / FIXED / VERIFIED-LIVE / WONTFIX / NOT-A-DEFECT / BUNDLE / BASELINE.
 
+## 2026-07-23 v1.6.17 mixed-SWA reconstruction checkpoint
+
+| ID | Sev | Issue | Status | Evidence | Notes |
+|----|-----|-------|--------|----------|-------|
+| R17-G4-VLM-CACHE-CLASS | H | Gemma 4 vendored `mlx_vlm` KV/Rotating cache slots were classified as non-attention slots, so a valid 48-layer paged prefix was replaced by an empty template before decode | VERIFIED-LIVE-SCOPED | Source `9f5b1bde2`; 8 focused tests; real Electron PID 95416; raw Chat/Responses; exact 495-token cold/warm A/B | Paged-On explicit-TQ-None exact warm now restores `paged+mixed_swa`, reports one block, and stays byte-identical/coherent. Paged-Off SSD-only, restart/refault, q4 eligible KV, MXFP8/media, and other families remain open. |
+| R17-MLLM-BLOCK-TELEMETRY | M | `last_cache_execution.blocks` read nonexistent `BlockTable.blocks` and displayed zero for real hits | VERIFIED-LIVE | Source `9f5b1bde2`; health after UI restart | Final-source warm health reports `cached_tokens=42`, `cache_detail=paged+mixed_swa`, `blocks=1`, reconstruction success. |
+| R17-ROTATING-DECODE-SYNC-LEAD | P | Suspected async decode evaluation might fail to materialize rotating-cache side effects | NOT-A-DEFECT-CURRENT-GEMMA | LIVE deterministic 495-output-token cold/warm A/B | Cold and warm were byte-identical, exactly emitted integers 1-120, and warm restored 52 mixed-SWA tokens. No synchronous per-token cache-eval change was added. |
+
 ## 2026-07-18 public checkpoint override
 
 - Public release checkpoint: `v1.6.11` is released. Packaged engine/source
