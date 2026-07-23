@@ -1,5 +1,23 @@
 # Agent proof log
 
+## 2026-07-23 - MiniMax M3 paged-on/off SSD partial and restart proof
+
+- Real UI Stop/Start removed PID `11370`, closed port 8008, and loaded PID
+  `15531` with zero scheduler/L1 tokens plus 807 retained SSD blocks.
+- Paged-On restart request restored 6,912/6,948 tokens as `paged+disk`, hit 108
+  SSD blocks, exact-finaled, and reached first output in 2.05 seconds.
+- The real UI kept Block Disk L2 checked and enabled while Paged RAM was
+  switched Off. PID `16285` launched as `block_disk_only` with zero RAM tokens
+  and restored 6,912/6,947 tokens from SSD.
+- A second Paged-Off real UI Stop/Start loaded PID `16816` from zero RAM state
+  and restored 6,912/6,950 tokens from the same SSD lineage.
+- A suffix-only negative reused only 128/8,030 tokens, confirming safe
+  longest-prefix reuse rather than arbitrary later-substring matching.
+- Restored Paged-On + Block Disk L2 through the UI on PID `17435`.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/m3-tool-math-live/`.
+- Disk-cap eviction, media, signed app, and release-wide gates remain open.
+
 ## 2026-07-23 - Laguna ordinary post-tool continuation keeps requested reasoning mode
 
 - Root-caused the missing post-tool reasoning mode to the panel request builder:

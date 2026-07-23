@@ -1500,3 +1500,45 @@ Remaining boundary:
 - M3 restart/eviction native sparse-cache proof, media, signed-app repetition,
   full suites, packaging, notarization, and publication remain open. Overall
   v1.6.17 remains `PARTIAL / NOT RELEASE-READY`.
+
+### R17-021 MiniMax M3 native MSA/indexer partial SSD reuse
+
+Status:
+`PAGED-ON+PAGED-OFF+PROCESS-RESTART LIVE PASS / EVICTION+MEDIA OPEN`.
+
+- The live cache schema is `minimax_m3_msa_v1` /
+  `native_msa_sparse_kv`, preserving dense attention KV, sparse MSA
+  `idx_keys`, and absolute block indices. Generic TQ/storage quantization
+  remains off for this typed state.
+- Cold A reused only 128/6,944 tokens. Changed-tail B reused 6,912/6,944 and
+  prefetched 32 tokens. A suffix-only negative reused only 128/8,030,
+  confirming longest-contiguous-prefix behavior rather than unsafe arbitrary
+  substring reuse.
+- Real UI Stop/Start loaded PID `15531` from zero scheduler/L1 state while
+  retaining 807 SSD blocks. Changed-tail D restored 6,912/6,948 tokens as
+  `paged+disk`, recorded 108 disk hits, exact-finaled, and reduced first-delta
+  latency from the cold row's 11.6 seconds to 2.05 seconds.
+- The real Server Settings UI turned Paged RAM Off while leaving Block Disk
+  L2 checked and enabled. Save & Restart loaded PID `16285` in
+  `block_disk_only` mode with zero RAM tokens. Changed-tail E restored
+  6,912/6,947 tokens from SSD and exact-finaled.
+- A second real UI Stop/Start loaded PID `16816` from zero RAM state.
+  Changed-tail F again restored 6,912/6,950 tokens from 108 SSD blocks and
+  exact-finaled.
+- The real UI restored Paged RAM On with block L2 still On and restarted PID
+  `17435`; final health returned `backend_mode=paged` with zero pre-request
+  RAM tokens and 810 retained SSD blocks.
+
+Evidence:
+
+- `m3-tool-math-live/README.md`
+- `m3-tool-math-live/m3_native_l2_probe.py`
+- `m3-tool-math-live/r17-m3-l2-*.json`
+- `m3-tool-math-live/r17-m3-health-*.json`
+- `m3-tool-math-live/r17-m3-ui-*.png`
+
+Remaining boundary:
+
+- M3 disk-cap eviction/refault, media, signed-app repetition, full suites,
+  packaging, notarization, and publication remain open. Overall v1.6.17
+  remains `PARTIAL / NOT RELEASE-READY`.

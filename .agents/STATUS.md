@@ -1,5 +1,28 @@
 # Current Status
 
+## 2026-07-23 - MiniMax M3 native MSA/indexer SSD hierarchy
+
+Status:
+`VERIFIED_LIVE_SCOPED_PAGED_ON_OFF_RESTART / RELEASE_PARTIAL`.
+
+- The exact M3 bundle exposed typed `minimax_m3_msa_v1` state with dense KV,
+  sparse MSA `idx_keys`, and absolute block indices; generic KV TQ correctly
+  stayed off.
+- Paged-On changed-tail reuse restored 6,912 tokens and skipped all but a
+  32-token suffix. After real UI Stop/Start from zero RAM state, it restored
+  the same boundary from 108 SSD blocks as `paged+disk`.
+- The real UI turned Paged RAM Off while leaving block L2 enabled. PID `16285`
+  restored 6,912 tokens strictly as `block-disk`.
+- A second real UI Stop/Start loaded PID `16816` with zero RAM tokens and again
+  restored 6,912 tokens from 108 SSD blocks.
+- A suffix-only negative reused only the generic 128-token prefix, proving the
+  cache does not splice unsafe later substrings.
+- Desired Paged-On + block-L2 state was restored through the UI on PID `17435`.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/m3-tool-math-live/`.
+- M3 disk-cap eviction, media, signed app, suites, and release gates remain
+  open.
+
 ## 2026-07-23 - Gemma reasoning/tools/KaTeX and audio boundary
 
 Status:

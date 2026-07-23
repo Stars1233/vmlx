@@ -6,8 +6,8 @@ Status: `FIXED+VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
 
 Source head and runtime provenance:
 
-- Source head for the retained renderer/API proof:
-  `f34deae28b84e9e1cf0f1f1f7055127a72d16581`.
+- Source head for the retained renderer/API/cache proof:
+  `511fa5e0b14373584dfb978d5cd23222ca7c4b29`.
 - Exact bundle:
   `/Volumes/EricsLLMDrive/JANGQ-AI/MiniMax-M3-Coder-Small`.
 - Real isolated Electron profile:
@@ -155,6 +155,58 @@ Retained screenshots:
   exact eight-line answer in stream and non-stream modes. No reasoning delta
   appeared while explicitly Off.
 
+## Native MSA/indexer block-L2 hierarchy
+
+The live health schema identifies the exact cache as
+`minimax_m3_msa_v1` / `native_msa_sparse_kv`. It retains dense attention KV
+for layers 0-2, sparse MSA/indexer state for layers 3-59, and the
+`attention_kv`, `msa_idx_keys`, and `absolute_block_index` components.
+Generic TurboQuant/storage quantization is correctly disabled for this typed
+state; this row does not claim q4 generic-KV storage for M3.
+
+Paged-RAM-on proof:
+
+- Cold request A had 6,944 prompt tokens, reused only the 128-token generic
+  template prefix, and reached its first output delta in `11,635 ms`.
+- Same-process changed-tail request B reused 6,912/6,944 tokens, prefetched
+  only 32 new tokens, and reached its first delta in `1,601 ms`.
+- A suffix-only negative placed the same corpus after an unrelated leading
+  sequence. It reused only 128/8,030 tokens, proving the implementation did not
+  incorrectly splice an arbitrary later suffix into the cache lineage.
+- The real Electron Stop button shut PID `11370` down, gateway health reported
+  the backend stopped, and port 8008 closed. The real Start button then loaded
+  PID `15531` with zero scheduler/L1 tokens and 807 retained SSD blocks.
+- Restart changed-tail request D restored 6,912/6,948 tokens as
+  `paged+disk`, recorded 108 SSD block hits, prefetched one new block, emitted
+  exact `M3-L2-D`, and reached its first delta in `2,053 ms`.
+
+Paged-RAM-off proof:
+
+- In the real Server Settings UI, both `In-Memory Paged Cache (RAM)` and
+  `Block Disk Cache (SSD / L2)` were independently enabled. Turning paged RAM
+  Off left block L2 checked, enabled, and selectable.
+- Save & Restart launched PID `16285` with `--no-paged-cache`,
+  `--enable-block-disk-cache`, and health
+  `backend_mode=block_disk_only`, `paged_ram_enabled=false`,
+  `disk_only=true`, zero scheduler/L1 tokens, and 808 retained SSD blocks.
+- Changed-tail request E restored 6,912/6,947 tokens strictly as
+  `block-disk`, recorded 108 SSD block hits, prefetched one block, and emitted
+  exact `M3-L2-E`.
+- A second real UI Stop/Start launched PID `16816` with zero scheduler/L1
+  tokens and 809 retained SSD blocks. Changed-tail request F again restored
+  6,912/6,950 tokens as `block-disk`, recorded 108 SSD hits, and emitted exact
+  `M3-L2-F`.
+- The real UI finally restored both paged RAM and block L2. Save & Restart
+  loaded PID `17435`; final health is `backend_mode=paged`,
+  `paged_ram_enabled=true`, `disk_only=false`, with 810 retained SSD blocks
+  and zero pre-request RAM tokens.
+
+This proves safe longest-contiguous-prefix matching, partial suffix prefill,
+same-process SSD-only reuse, paged-on SSD promotion, and fresh-process SSD
+refault for the exact M3 typed cache. It does not claim arbitrary substring
+matching; the suffix-only negative deliberately proves that unsafe behavior is
+rejected.
+
 Retained raw artifacts:
 
 - `r17-m3-{direct,gateway}-openai-tools-current.json`
@@ -162,6 +214,12 @@ Retained raw artifacts:
 - `r17-m3-{direct,gateway}-protocol-parity-current.json`
 - `r17-m3-{direct,gateway}-raw-math-current.json`
 - `m3_raw_math_protocol_probe.py`
+- `m3_native_l2_probe.py`
+- `r17-m3-l2-paged-on-{a-cold,b-partial,d-restart-disk}.json`
+- `r17-m3-l2-paged-off-{e-disk-only,f-restart-disk}.json`
+- `r17-m3-l2-suffix-only-negative.json`
+- `r17-m3-health-*.json`
+- `r17-m3-ui-{cache-controls-expanded-paged-on-disk-on,paged-off-block-disk-still-on,paged-on-after-real-start,paged-off-healthy-before-request,restored-paged-on-block-disk-on}.png`
 
 ## Boundary
 
@@ -170,9 +228,12 @@ Retained raw artifacts:
 - Current direct and gateway Chat/Responses/Anthropic/Ollama streaming,
   reasoning separation, tool continuation, raw-byte, and stream/non-stream
   parity are `VERIFIED-LIVE-SCOPED`.
+- Current M3 native sparse/indexer Paged-On partial reuse, restart SSD refault,
+  Paged-Off SSD-only partial reuse, and Paged-Off process-restart refault are
+  `VERIFIED-LIVE-SCOPED`.
 - M3 exact copying of the requested command spelling remains a model-output
   diagnostic: it produced `\×` consistently instead of `\times`. The product
   does not rewrite those raw API bytes.
-- M3 restart/eviction native sparse-cache proof, media, signed-app repetition,
-  full suites, packaging, notarization, and publication remain open.
+- M3 disk-cap eviction/refault, media, signed-app repetition, full suites,
+  packaging, notarization, and publication remain open.
 - Overall v1.6.17 remains `PARTIAL / NOT RELEASE-READY`.

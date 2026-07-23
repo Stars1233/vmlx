@@ -5531,3 +5531,33 @@ Status: `PARTIAL / CORRECTNESS FALLBACK LIVE / RELEASE BLOCKING`.
 - Evidence:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/m3-tool-math-live/README.md`.
 - Overall v1.6.17 remains `PARTIAL / NOT RELEASE-READY`.
+
+## 2026-07-23 - MiniMax M3 native MSA/indexer SSD partial reuse
+
+- `R17-M3-PAGED-ON-PARTIAL`: `VERIFIED-LIVE_SCOPED`.
+  A 6,944-token changed-tail prompt restored 6,912 tokens and prefetched only
+  32 tokens.
+- `R17-M3-PAGED-ON-RESTART-SSD`: `VERIFIED-LIVE_SCOPED`.
+  Real UI Stop/Start loaded PID `15531` with zero scheduler/L1 tokens and 807
+  retained SSD blocks. The next changed-tail request restored 6,912/6,948
+  tokens as `paged+disk`, recorded 108 disk hits, and exact-finaled.
+- `R17-M3-PAGED-OFF-SSD`: `VERIFIED-LIVE_SCOPED`.
+  The real UI left Block Disk L2 checked and enabled while disabling Paged
+  RAM. PID `16285` launched in `block_disk_only` mode and restored
+  6,912/6,947 tokens from SSD with zero RAM cache.
+- `R17-M3-PAGED-OFF-RESTART-SSD`: `VERIFIED-LIVE_SCOPED`.
+  A second real UI Stop/Start loaded PID `16816` with zero RAM tokens and
+  restored 6,912/6,950 tokens from 108 SSD blocks.
+- `R17-M3-SUFFIX-ONLY-NEGATIVE`: `PASS-LIVE`.
+  Moving the shared corpus behind an unrelated leading sequence reduced reuse
+  to the generic 128/8,030-token prefix. No unsafe later-substring splice was
+  accepted.
+- `R17-M3-CACHE-DEFAULT-RESTORE`: `PASS-LIVE`.
+  The real UI restored Paged RAM and Block Disk L2 On; PID `17435` returned
+  healthy in `backend_mode=paged` with zero pre-request RAM tokens and 810
+  retained SSD blocks.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/m3-tool-math-live/`.
+- Disk-cap eviction/refault, M3 media, signed-app repetition, suites,
+  packaging, notarization, and publication remain open. Overall v1.6.17 stays
+  `PARTIAL / NOT RELEASE-READY`.
