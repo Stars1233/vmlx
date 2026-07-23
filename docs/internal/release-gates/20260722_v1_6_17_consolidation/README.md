@@ -931,3 +931,65 @@ Remaining boundary:
   mixed-SWA Paged-On/Paged-Off SSD partial reuse, eviction/refault, other
   parser families, full suites, installed app, or release gates.
 - Overall status remains `PARTIAL / NOT RELEASE-READY`.
+
+### R17-012 Laguna Paged-On and Paged-Off partial SSD reuse
+
+Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
+
+Paged-On hierarchy:
+
+- Real Electron PID `20507` launched with Paged RAM, 64-token blocks, 1,000
+  blocks, Block Disk L2, and q4 native SSD storage for eligible full-attention
+  KV while Laguna rotating-window state stayed native.
+- A 2,983-token cold request wrote the shared prefix. `DELETE
+  /v1/cache?type=ram` then reduced resident prompt tokens to zero while keeping
+  150 SSD blocks / 9,320 tokens.
+- The changed-tail request restored 2,944 tokens as
+  `paged+disk+tq-native`, promoted 46 SSD blocks, and returned exact
+  `R17-LAGUNA-SSD-B`. A second changed tail restored the same 2,944 tokens from
+  resident `paged+tq-native`.
+
+Paged-Off hierarchy:
+
+- The real Electron settings UI disabled `In-Memory Paged Cache (RAM)` while
+  leaving `Block Disk Cache (SSD / L2)` enabled. Save & Restart launched PID
+  `22169` with `--no-paged-cache --enable-block-disk-cache`.
+- Health reported `backend_mode=block_disk_only`,
+  `paged_ram_enabled=false`, `disk_only=true`, and
+  `ram_mirror_policy=disk_only`.
+- The first post-restart gateway request reused 2,944 of 2,984 tokens written
+  by the earlier Paged-On process as `block-disk+tq-native`. Direct and gateway
+  changed-tail requests repeated the same partial reuse with exact outputs,
+  one stop, and one `[DONE]`.
+- Three distinct Electron chats were sent while Paged Off. The exact
+  cross-chat replay restored 6,528 of 6,580 tokens from
+  `block-disk+tq-native`, reduced TTFT from `4.55s` cold to `1.63s`, and
+  visibly returned exact `R17-LAGUNA-UI-DISK-C`.
+
+Counter truth:
+
+- `scheduler_cache.total_tokens_cached` is the block index and reached 3,061
+  in disk-only mode. It is not resident RAM.
+- The owning aggregate simultaneously reported `ram_tokens_cached=0`,
+  `l1_resident_bytes=0`, `l1_indexed_tokens=3061`, and 9,513 block-L2 tokens.
+  Disk-only mode therefore did not retain a RAM payload mirror.
+
+Exit state:
+
+- The real UI restored the supported default before leaving the gate. PID
+  `22853` launched with Paged RAM and Block Disk L2 enabled; health returned
+  `backend_mode=paged`, `ram_mirror_policy=resident`, and retained 19,302 L2
+  tokens.
+
+Evidence:
+
+- `laguna-paged-on-off-ssd-partial-live.json`
+- `laguna-ui-paged-off-ssd-partial.png`
+
+Remaining boundary:
+
+- Current-source bounded SSD GB eviction/refault and missing/corrupt rotating
+  companion fallback remain open.
+- Gemma 4 and the other typed cache archetypes still require equivalent live
+  Paged-On/Paged-Off proof.
+- Overall status remains `PARTIAL / NOT RELEASE-READY`.

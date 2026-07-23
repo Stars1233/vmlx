@@ -1,0 +1,231 @@
+{
+  "gate": "R17-012 Laguna Paged-On and Paged-Off partial SSD reuse",
+  "date": "2026-07-23",
+  "status": "VERIFIED-LIVE-SCOPED",
+  "overall_release_status": "PARTIAL_NOT_RELEASE_READY",
+  "source": {
+    "checkout": "/Users/eric/mlx/vllm-mlx-r17-consolidation",
+    "branch": "codex/v1.6.17-consolidation-20260723",
+    "head": "63a55f67e93cd000cc567f3740cfd85bbc5e4175",
+    "host": "erics-m5-max.local",
+    "electron_profile": "/Users/eric/.vmlx-r17-consolidation-dev",
+    "electron_pid": 17630,
+    "cdp": "http://127.0.0.1:9335",
+    "gateway": "http://127.0.0.1:8088",
+    "model": "/Volumes/EricsLLMDrive/JANGQ-AI/Laguna-S-2.1-JANG_4M",
+    "session_id": "2316afd1-3efa-49d0-8056-4809740d93f7",
+    "engine_provenance_log": "[Engine Manager] Found development project venv: /Users/eric/mlx/vllm-mlx-r17-consolidation/.venv/bin/python3 (vmlx_engine 1.6.16)"
+  },
+  "native_cache_contract": {
+    "family": "laguna",
+    "schema": "mixed_swa_kv_v1",
+    "components": [
+      "full_attention_kv",
+      "sliding_window_kv",
+      "rotating_window_metadata"
+    ],
+    "storage_quantization": {
+      "mode": "storage_boundary",
+      "bits": 4,
+      "group_size": 64,
+      "applies_to": "full_attention_kv_only",
+      "sliding_window_policy": "native_rotating_kv_state",
+      "restore_policy": "decode_full_attention_tq_and_restore_rotating_state"
+    }
+  },
+  "paged_on": {
+    "pid": 20507,
+    "argv_contract": [
+      "--use-paged-cache",
+      "--paged-cache-block-size",
+      "64",
+      "--max-cache-blocks",
+      "1000",
+      "--enable-block-disk-cache",
+      "--block-disk-cache-max-gb",
+      "10"
+    ],
+    "cold_changed_tail_a": {
+      "prompt_tokens": 2983,
+      "cached_tokens": 0,
+      "content": "R17-LAGUNA-SSD-A",
+      "reasoning": "",
+      "ttft_ms": 4482.1,
+      "total_ms": 4678.6,
+      "finish_reason": "stop",
+      "done_events": 1
+    },
+    "ram_only_clear": {
+      "request": "DELETE /v1/cache?type=ram",
+      "caches": [
+        "paged_prefix",
+        "mlx_cache"
+      ],
+      "ram_tokens_after_clear": 0,
+      "ssd_blocks_retained": 150,
+      "ssd_tokens_retained": 9320
+    },
+    "ssd_partial_changed_tail_b": {
+      "prompt_tokens": 2983,
+      "cached_tokens": 2944,
+      "cache_detail": "paged+disk+tq-native",
+      "content": "R17-LAGUNA-SSD-B",
+      "reasoning": "",
+      "ttft_ms": 3127.3,
+      "total_ms": 3322.0,
+      "disk_blocks_promoted": 46,
+      "tq_native_hits": 46,
+      "finish_reason": "stop",
+      "done_events": 1
+    },
+    "resident_partial_changed_tail_c": {
+      "prompt_tokens": 2983,
+      "cached_tokens": 2944,
+      "cache_detail": "paged+tq-native",
+      "content": "R17-LAGUNA-SSD-C",
+      "reasoning": "",
+      "ttft_ms": 3058.1,
+      "total_ms": 3253.9,
+      "finish_reason": "stop",
+      "done_events": 1
+    }
+  },
+  "paged_off": {
+    "pid": 22169,
+    "changed_through_real_ui": true,
+    "sqlite_use_paged_cache": false,
+    "sqlite_enable_block_disk_cache": true,
+    "argv_contract": [
+      "--no-paged-cache",
+      "--paged-cache-block-size",
+      "64",
+      "--max-cache-blocks",
+      "1000",
+      "--enable-block-disk-cache",
+      "--block-disk-cache-max-gb",
+      "10"
+    ],
+    "health_contract": {
+      "backend_mode": "block_disk_only",
+      "paged_ram_enabled": false,
+      "disk_only": true,
+      "ram_mirror_policy": "disk_only",
+      "native_cache_paged": false,
+      "native_cache_block_disk_only": true,
+      "native_cache_block_disk_l2": true
+    },
+    "cross_process_gateway_changed_tail_d": {
+      "route": "gateway",
+      "prompt_tokens": 2984,
+      "cached_tokens": 2944,
+      "cache_detail": "block-disk+tq-native",
+      "content": "R17-LAGUNA-DISKONLY-D",
+      "reasoning": "",
+      "ttft_ms": 3545.2,
+      "total_ms": 3760.5,
+      "tq_native_hits": 46,
+      "finish_reason": "stop",
+      "done_events": 1
+    },
+    "direct_changed_tail_e": {
+      "route": "direct",
+      "prompt_tokens": 2984,
+      "cached_tokens": 2944,
+      "cache_detail": "block-disk+tq-native",
+      "content": "R17-LAGUNA-DISKONLY-E",
+      "reasoning": "",
+      "ttft_ms": 2642.1,
+      "total_ms": 2856.2,
+      "finish_reason": "stop",
+      "done_events": 1
+    },
+    "gateway_changed_tail_f": {
+      "route": "gateway",
+      "prompt_tokens": 2984,
+      "cached_tokens": 2944,
+      "cache_detail": "block-disk+tq-native",
+      "content": "R17-LAGUNA-DISKONLY-F",
+      "reasoning": "",
+      "ttft_ms": 3014.9,
+      "total_ms": 3229.9,
+      "finish_reason": "stop",
+      "done_events": 1
+    },
+    "resident_counter_truth": {
+      "scheduler_total_tokens_cached_is_indexed_tokens": 3061,
+      "cache_totals_ram_tokens_cached": 0,
+      "cache_totals_l1_indexed_tokens": 3061,
+      "cache_totals_l1_resident_bytes": 0,
+      "cache_totals_l2_block_tokens_on_disk": 9513
+    }
+  },
+  "electron_new_chat_rows": [
+    {
+      "chat_id": "1e1343a8-ffe9-475c-8968-5cf541a8f6be",
+      "content": "R17-LAGUNA-UI-DISK-A",
+      "prompt_tokens": 6580,
+      "cached_tokens": 0,
+      "ttft_s": 4.55,
+      "prompt_tps": 1445.2,
+      "decode_tps": 63.7
+    },
+    {
+      "chat_id": "2e4c9c0f-6923-43ce-a04e-8d1eab5fecb8",
+      "content": "R17-LAGUNA-UI-DISK-B",
+      "prompt_tokens": 7192,
+      "cache_detail": "block-disk",
+      "ttft_s": 5.4,
+      "prompt_tps": 1331.4,
+      "decode_tps": 62.8
+    },
+    {
+      "chat_id": "2b84cb9a-6fa2-4556-9d30-4d5c8e7b8a80",
+      "content": "R17-LAGUNA-UI-DISK-C",
+      "prompt_tokens": 6580,
+      "cached_tokens": 6528,
+      "cache_detail": "block-disk+tq-native",
+      "ttft_s": 1.63,
+      "prompt_tps": 4041.8,
+      "decode_tps": 63.1,
+      "visible_output_non_empty": true,
+      "reasoning_expected": false,
+      "raw_marker_leak": false,
+      "replacement_character": false
+    }
+  ],
+  "electron_visual_evidence": {
+    "screenshot": "laguna-ui-paged-off-ssd-partial.png",
+    "visible_pid": 22169,
+    "visible_output": "R17-LAGUNA-UI-DISK-C",
+    "visible_metrics": "6580 prompt (6528 block-disk+tq-native cached), 1.63s TTFT, 1.9s total"
+  },
+  "restored_default": {
+    "pid": 22853,
+    "sqlite_use_paged_cache": true,
+    "sqlite_enable_block_disk_cache": true,
+    "argv_has_use_paged_cache": true,
+    "argv_has_block_disk_cache": true,
+    "backend_mode": "paged",
+    "paged_ram_enabled": true,
+    "disk_only": false,
+    "ram_mirror_policy": "resident",
+    "l2_block_tokens_retained": 19302
+  },
+  "scope_boundary": {
+    "passed": [
+      "Laguna mixed-SWA Paged-On RAM-first and SSD-promotion changed-tail reuse",
+      "RAM-only clear preserves SSD blocks",
+      "Laguna Paged-Off cross-process and cross-route partial SSD reuse",
+      "Laguna Paged-Off three distinct Electron chats including exact cross-chat prefix reuse",
+      "q4 TurboQuant SSD storage remains scoped to eligible full-attention KV",
+      "default Paged-On plus SSD L2 restored before leaving the gate"
+    ],
+    "still_open": [
+      "bounded Block Disk GB eviction and oldest-prefix refault on current source",
+      "corrupt or missing rotating-state companion fail-safe",
+      "same Paged-On and Paged-Off live proof for Gemma 4 and remaining cache archetypes",
+      "full protocol and media matrix",
+      "full suites and release packaging"
+    ]
+  }
+}

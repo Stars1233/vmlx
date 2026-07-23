@@ -8247,3 +8247,25 @@ Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/laguna-parser-settings-math-live.json`.
 - Cache hierarchy, broader parser/model/protocol rows, full suites, packaging,
   signing, notarization, and publication remain open.
+
+## 2026-07-23 - Laguna Paged-On/Paged-Off SSD partial reuse
+
+Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
+
+- Paged-On PID `20507`: after a RAM-only clear, a changed-tail request restored
+  2,944/2,983 tokens from `paged+disk+tq-native` and promoted 46 SSD blocks.
+- Real Electron Save & Restart launched PID `22169` with
+  `--no-paged-cache --enable-block-disk-cache`.
+- Paged-Off gateway/direct changed-tail requests restored 2,944/2,984 tokens
+  from `block-disk+tq-native` across the process restart.
+- Three distinct Electron chats ran in disk-only mode. Exact cross-chat replay
+  restored 6,528/6,580 tokens, visibly exact-finaled, and reduced TTFT from
+  4.55s to 1.63s.
+- Disk-only resident truth: `ram_tokens_cached=0`, `l1_resident_bytes=0`;
+  3,061 tokens were index entries, not RAM payload.
+- Restored Paged-On plus SSD L2 through the real UI; current PID `22853`.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/laguna-paged-on-off-ssd-partial-live.json`.
+- Still open: bounded SSD GB eviction/refault, corrupt/missing rotating-state
+  fallback, Gemma/other typed cache families, full protocols/media/suites, and
+  release gates.

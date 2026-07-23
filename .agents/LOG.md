@@ -2085,3 +2085,23 @@
   pass.
 - Retained:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/laguna-parser-settings-math-live.json`.
+
+## 2026-07-23 - prove Laguna partial SSD reuse with Paged RAM on and off
+
+- Kept the exact Laguna S2.1 JANG_4M bundle and real Electron-started session.
+- Paged On: wrote a 2,983-token prefix, cleared RAM only, then restored 2,944
+  changed-tail tokens from `paged+disk+tq-native`; the next changed tail used
+  resident `paged+tq-native`.
+- Used the real Server Settings UI to turn off only In-Memory Paged Cache
+  (RAM). Save & Restart produced PID `22169` with `--no-paged-cache` while SSD
+  L2 and q4 native storage remained enabled.
+- The first Paged-Off gateway request reused blocks written by the prior
+  Paged-On process. Two gateway and one direct changed-tail requests all
+  restored 2,944 tokens and exact-finaled.
+- Ran three distinct Electron chats. The exact cross-chat replay restored
+  6,528/6,580 tokens from SSD and visibly reported the cache detail and timing.
+- Confirmed `scheduler_cache.total_tokens_cached` is indexed tokens; the
+  authoritative disk-only aggregate stayed at zero resident tokens and bytes.
+- Restored Paged-On plus SSD L2 through the UI; current PID `22853`.
+- Retained:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/laguna-paged-on-off-ssd-partial-live.json`.

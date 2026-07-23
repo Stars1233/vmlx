@@ -5255,3 +5255,31 @@ Status: `PARTIAL / CORRECTNESS FALLBACK LIVE / RELEASE BLOCKING`.
 - Overall v1.6.17 status remains `PARTIAL / NOT RELEASE-READY`; SSD hierarchy,
   remaining protocol/family/media rows, full suites, and release gates remain
   open.
+
+## 2026-07-23 - Laguna Paged-On/Paged-Off partial SSD hierarchy
+
+- `R17-LAGUNA-PAGED-ON-SSD-PARTIAL`: `VERIFIED-LIVE_SCOPED`.
+  After an explicit RAM-only clear, the 2,983-token changed-tail request
+  restored 2,944 tokens from `paged+disk+tq-native` and promoted 46 q4 native
+  SSD blocks. A subsequent tail used resident `paged+tq-native`.
+- `R17-LAGUNA-PAGED-OFF-SSD-PARTIAL`: `VERIFIED-LIVE_SCOPED`.
+  Real Electron Save & Restart launched PID `22169` with
+  `--no-paged-cache --enable-block-disk-cache`. Gateway and direct routes
+  repeatedly restored 2,944/2,984 tokens from `block-disk+tq-native`, including
+  blocks written by the preceding Paged-On process.
+- `R17-LAGUNA-CROSS-CHAT-SSD`: `VERIFIED-LIVE_SCOPED`.
+  Three separate Electron chats ran in disk-only mode. The exact replay
+  restored 6,528/6,580 tokens, visibly exact-finaled, and reduced TTFT from
+  4.55s to 1.63s.
+- `R17-DISK-ONLY-RESIDENT-COUNTER`: `NOT A DEFECT`.
+  The observed 3,061 `scheduler_cache.total_tokens_cached` value is the hash
+  index. The owning aggregate reported `ram_tokens_cached=0`,
+  `l1_resident_bytes=0`, and 9,513 tokens on block L2.
+- `R17-LAGUNA-CACHE-EXIT-STATE`: `PASS-LIVE`.
+  Paged-On plus SSD L2 was restored through the UI; current PID `22853` reports
+  `backend_mode=paged`.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/laguna-paged-on-off-ssd-partial-live.json`.
+- Open: current-source Block Disk GB eviction/refault, corrupt/missing rotating
+  companion fallback, remaining typed cache families, full protocols/media,
+  full suites, and release gates.
