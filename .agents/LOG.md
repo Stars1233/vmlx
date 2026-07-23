@@ -1658,3 +1658,23 @@
   segment, retained as a strict-synthesis partial.
 - Thinking-On required-tool A/B remains a real artifact/runtime limitation.
   Evidence is under `20260722_qwen35_release_checkpoint/` at `74dadd30c`.
+
+## 2026-07-22 - Bonsai/Laguna partial SSD cache proof
+
+- Treated old legacy disk cache as out-of-scope for the .16 emergency gate
+  unless it is the explicit active tier. The release-critical tier is Block
+  Disk Cache / SSD L2.
+- Real Electron current-source Bonsai was exercised through UI multi-turn,
+  exact tool use, Chat/Responses API reasoning separation, Paged-On partial SSD
+  restore after restart, and Paged-Off disk-only partial SSD restore with zero
+  resident paged RAM.
+- Real Electron current-source Laguna JANG_4M was exercised with Paged-Off
+  Block Disk L2 and proved a post-restart never-stored changed suffix restoring
+  6,400 SSD tokens with mixed-SWA native state preserved.
+- Added the focused cache-control policy regression that Block Disk SSD/L2
+  stays available whether Paged RAM is on or off, and that legacy disk is only
+  available after both Paged RAM and Block Disk L2 are off. After syncing the
+  patch to the live remote checkout, the focused policy test passed `18/18`.
+- Updated the campaign README and ranked open issues. Gemma 4 cache proof,
+  bounded eviction/refault, corrupt/missing companion fallback, and remaining
+  cache archetypes are still open.

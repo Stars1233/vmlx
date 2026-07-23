@@ -58,13 +58,16 @@ Historical matrices were also inspected but are not silently authoritative:
 - [x] Normal Save/Save & Restart sequencing, update broadcast, and live PID
   truth for one Laguna session (`951eab25d`). Cross-family/default/failure
   persistence remains open.
-- [ ] Current Laguna JANG_2L/JANG_4M has scoped Electron reasoning, one-tool
+- [x] Current Laguna JANG_2L/JANG_4M has scoped Electron reasoning, one-tool
   continuation, four streamed protocols, q4 full-attention storage, and
   Paged-On reuse. Commit `f70048a9d` now live-proves a Paged-Off changed-tail
   restore at the last-two-block boundary: two requests each restored 960 SSD
   tokens with all 48 layers, coherent distinct suffixes, zero paged-RAM
-  residency, and q4 native hits. Arbitrary older partial-prefix boundaries,
-  process restart, corrupt companion fallback, and long eviction remain open.
+  residency, and q4 native hits. The current
+  `20260722_cache_partial_bonsai_gemma_laguna` pass adds JANG_4M post-restart
+  never-stored suffix-C partial reuse: 6,400 SSD tokens as
+  `block-disk+tq-native`, `ram_tokens_cached=0`. Corrupt companion fallback,
+  low-limit eviction/refault, and unbounded hard-prompt reasoning remain open.
 - [x] Current MiniMax-M3 real Start-before-prompt load, native MSA health,
   Electron reasoning/content IPC separation, one real file tool, raw Responses,
   and direct/gateway Ollama Auto/On/Off (`6de9ce8ef`). Current VL availability
@@ -292,10 +295,10 @@ with an easier unrelated model.
 
 | Family/artifact | Required remaining proof | Status |
 |---|---|---|
-| Laguna S-2.1 JANG_2L/JANG_4M | Fix Paged-Off changed-tail rotating-state reconstruction (current 960-token match falls back at 12/48 layers), >512-token SWA coherence, disk-only process restart, bounded eviction, bounded hard-prompt reasoning/answer pass, long agent loop, sampler/TPS parity, saved settings restart, truthful ~40+ tok/s on the named JANG_4M where expected | `FAIL-LIVE PARTIAL SSD / PARTIAL` |
+| Laguna S-2.1 JANG_2L/JANG_4M | Current JANG_4M Paged-Off SSD-only partial prefix and post-restart never-stored suffix-C restore are scoped passes. Still prove >512-token SWA coherence, low-limit `Max Cache Blocks`/`Block Cache Max (GB)` eviction and refault, bounded hard-prompt reasoning/answer pass, long agent loop, sampler/TPS parity, saved settings restart, corrupt/missing companion fallback, and truthful ~40+ tok/s on the named JANG_4M where expected | `PARTIAL` |
 | Qwen3.6 35B/27B named MTP artifacts | Distinguish JANGTQ/MXTQ Hadamard-codebook from affine JANG and base MLX/MXFP; multi-tool, cancellation, non-stream, MTP depth/accept accounting, q4 attention plus native hybrid state, image/video and salt | `PARTIAL` |
 | HY3 JANG with MTP | Exact configured MTP depth, proposal/accept/compression accounting, cache safety, stochastic/long quality, shared protocol rails | `PARTIAL` |
-| Bonsai 27B 1-bit and variants | q8 attention-only TQ exception, SSM/GDN companion rederive, partial prefix/eviction/restart, long pre-tool reasoning, no looping or reasoning-only final | `PARTIAL` |
+| Bonsai 27B 1-bit and variants | Current ternary Bonsai proves q8 attention-only TQ exception, SSM/GDN companion policy, UI Auto/multi-turn/tool, Chat/Responses reasoning split, Paged-On SSD partial, and Paged-Off disk-only SSD partial. Still prove low-limit eviction/refault, broader Bonsai variants, cross-protocol tool-result continuation, long pre-tool reasoning, media if advertised, no looping or reasoning-only final | `PARTIAL` |
 | Ornith and other Qwen variants | Exact config-derived parser, modality, MTP, quant, sampler, hybrid topology, three turns, tool loop, cache, media | `OPEN` |
 | MiniMax M2.7 affine JANG | Text-only, full-KV q4 TQ, no VL claim, Auto/On/Off, all protocols, tool, settings, partial/eviction/restart | `OPEN / ARTIFACT MUST BE LOCATED` |
 | MiniMax M3 affine JANG_2L / variants | Current text/reasoning/tool/Ollama scoped pass; still VL runtime availability, image/video salt A/B/A, post-media tool, sparse partial/eviction/restart, non-stream/post-tool Ollama, REAP variants | `PARTIAL` |

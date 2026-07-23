@@ -109,7 +109,7 @@ For every live model generation retained as evidence:
 | `R16-REASONING-RAILS` | `PARTIAL / RELEASE-CRITICAL` | Current Laguna Electron plus Chat/Responses/Anthropic/Ollama proof, current M3 Electron/Responses/Ollama proof, and the three scoped source/test repairs are retained below. Auto remains model-owned variable reasoning where the bundle supports it; it must resolve to an enabled reasoning-capable request, not force the model to expose reasoning on every easy prompt. Explicit On and Off must be honored. Still close non-stream behavior, remaining parser families, a live late-reasoning family, and live openPangu/Mistral4 Ollama normalization. Separate reasoning/content, progressive paint/wire events, one truthful terminal, and no inline native tags are mandatory. |
 | `R16-AGENTIC-HARNESS` | `OPEN / RELEASE-CRITICAL` | Use a coding-harness-shaped client for no-tool, auto, required, explicit function choice, real result continuation, two-tool interleaving, final synthesis, cancellation, disconnect, injected backend failure, and immediate recovery. Exercise direct and Electron gateway paths. A reasoning-only final, dropped required argument, repeated tool, hallucinated tool result, or false terminal fails the row. |
 | `R16-STREAM-METRICS` | `OPEN` | Compare Electron `metrics_json` against raw timed SSE for the same prompt. Report TTFT, prompt processing speed, decode tokens/s after first output token, reasoning tokens, visible tokens, tool/fallback pauses, and wall time separately. Reject terminal-batch answer painting and misleading blended two-pass TPS. |
-| `R16-CACHE-HIERARCHY` | `OPEN / RELEASE-CRITICAL` | Prove cold store, resident RAM hit, partial-block reuse, L1 eviction, L2 SSD refault, process restart restore, and safe full-prefill fallback for standard KV, hybrid SSM/GDN, mixed SWA, CCA, M3 sparse, DSV4 composite, and openPangu native prompt disk. With Paged Off and L2 On, partial prefix reuse must come from SSD with zero resident paged bytes. With Paged On, lookup order must use matching RAM blocks first and SSD when absent. Cross-chat and cross-session reuse must not leak unrelated suffixes or media. |
+| `R16-CACHE-HIERARCHY` | `PARTIAL / RELEASE-CRITICAL` | Current-source Bonsai and Laguna JANG_4M now have scoped live partial-SSD proof with real Electron start/restart. Bonsai proves Paged-On RAM hit, Paged-On post-restart SSD partial hit, and Paged-Off disk-only partial hit with `ram_tokens_cached=0`; Laguna proves Paged-Off mixed-SWA SSD partial hit with native rotating metadata preserved. Still prove Gemma 4, low-limit `Max Cache Blocks` eviction/refault, low-limit `Block Cache Max (GB)` disk eviction/refault, safe full-prefill fallback, and remaining archetypes: standard KV, CCA, M3 sparse, DSV4 composite, openPangu native prompt disk, and media-salted cache. |
 | `R16-SETTINGS-PARITY` | `PARTIAL / RELEASE-CRITICAL` | Compare bundle defaults to visible Chat Settings, SQLite, IPC/request payload, preview/argv, and engine-resolved kwargs/health. Cover temperature, top-p, top-k including Off/-1/large values, min-p zero, repetition penalty, max output, max context, reasoning Auto/On/Off, tool/reasoning parsers, MTP, modalities, cache toggles, block size/count, RAM percentage, L2 size/path, LAN/port, and Single Model. First use must inherit the bundle; saved per-chat/per-session values must survive restart; reset/Auto must remove the override. Commit `951eab25d` plus the retained live gate close the plain-Save wording, restart delay, update broadcast, and live PID subdefects. The broader cross-model/default/reset/failure matrix remains open. |
 | `R16-CACHE-LABEL` | `VERIFIED-LIVE_SCOPED` | Source `4558dac06` introduced **In-Memory Paged Cache (RAM)**; the current checkpoint consistently names the persistent tier **Block Disk Cache (SSD / L2)** across Settings, Cache, Perf, capacity text, locales, and CLI help. Live verification found the earlier glyph-only tooltip suppression did not cover wrapper padding; the wrapper now owns the click boundary and both toggles rechecked `true -> true`. Backend flags/defaults/eligibility are unchanged; explicit Off plus disk-only L2 remains a separate cache-behavior regression row. |
 | `R16-LAGUNA-MIXED-BIT-PROVENANCE` | `VERIFIED-LIVE_SCOPED` | The reported `(…,576)` weight / `(…,48)` scales / `bits=8` failure is a 6-bit 3072-input affine module being treated as 8-bit, not an attention `g_proj` slice. The exact signed v1.6.15 bundled engine completed cache-disabled S-2.1 JANG_2L and JANG_4M streams; the real signed Electron app completed an S-2.1 UI turn. The stale signed `/Applications/vMLX.app` version 1.6.9 reproduced the error byte-for-byte on the same JANG_4M artifact. Require exact executable and imported-module provenance for every release proof. |
@@ -119,10 +119,10 @@ For every live model generation retained as evidence:
 
 | Family / artifact class | Current truthful boundary | Required 1.6.16 work |
 |---|---|---|
-| Laguna S-2.1 JANG_2L and JANG_4M | Strong scoped live cache/reasoning/protocol evidence exists; long SWA quality and reasoning reliability remain partial. JANG_4M live speed was about 49–52 tok/s after the dtype repair. | Rerun only shared changed rails. Add >512-token SWA-boundary coherence, disk-only process restart, long agentic tool continuation, saved settings restart, sampler/TPS parity, and bounded eviction. Keep q4 only on full-attention KV; native rotating SWA state is not flattened. |
+| Laguna S-2.1 JANG_2L and JANG_4M | Strong scoped live cache/reasoning/protocol evidence exists; JANG_4M now also has current-source Paged-Off disk-only partial SSD reuse after Electron restart. Long SWA quality and reasoning reliability remain partial. JANG_4M live speed was about 49–52 tok/s after the dtype repair. | Rerun only shared changed rails. Add >512-token SWA-boundary coherence, long agentic tool continuation, saved settings restart, sampler/TPS parity, bounded `Max Cache Blocks`/`Block Cache Max (GB)` eviction and refault, and corrupt/missing companion fallback. Keep q4 only on full-attention KV; native rotating SWA state is not flattened. |
 | Qwen3.6 35B/27B JANGTQ/MXTQ, MTP-named variants | 35B single-tool four-protocol and sampler rows are scoped passes. | Preserve JANGTQ/MXTQ Hadamard-codebook identity, not affine JANG or base MXFP. Run multi-tool/cancellation/non-stream, MTP depth from named/configured artifacts only, cache/media deltas, and one 27B representative. |
 | HY3 JANG with named MTP | Native MTP depth-1 scoped API/Electron/cache proof exists. | Prove actual configured depth for each MTP-named artifact, accepted/compressed proposal-token accounting, reuse safety, long/stochastic quality, and current shared rails without hidden MTP enablement for non-MTP artifacts. |
-| Bonsai 27B 1-bit and other real Bonsai variants | q8 TQ hybrid storage is the explicit Bonsai exception; exact tool/restart/media scoped rows exist. Long pre-tool reasoning and partial-prefix breadth remain partial. | Re-run shared rails and partial-prefix repair/eviction. Confirm q8 only for Bonsai attention KV, native SSM/GDN rederive/companion state, L2 cross-chat/restart, and no incoherent loops or reasoning-only finalization. Ground each variant in its real Qwen-family config. |
+| Bonsai 27B 1-bit and other real Bonsai variants | q8 TQ hybrid storage is the explicit Bonsai exception. Current-source Bonsai now has live UI Auto/multi-turn/tool rows, gateway Chat/Responses reasoning/content separation, Paged-On SSD partial restore, and Paged-Off disk-only SSD partial restore with native SSM companion state. Long pre-tool reasoning and broad variant coverage remain partial. | Re-run only remaining shared rails and eviction/refault. Confirm bounded `Max Cache Blocks` and `Block Cache Max (GB)` behavior, broader Bonsai variants, cross-protocol tool-result continuation, media if advertised, and no incoherent loops or reasoning-only finalization. Ground each variant in its real Qwen-family config. |
 | Ornith / other Qwen-family variants | Not globally promoted by the Qwen3.6/Bonsai rows. | Bundle-ground parser, modalities, MTP, quant format, sampler defaults, hybrid-state topology, Auto reasoning, one multi-turn tool loop, cache hierarchy, and media if advertised. |
 | MiniMax M2.7 | Existing scoped proof is M2.7 JANGTQ/MXTQ full-KV text-only, not affine JANG. | Add the requested affine-JANG M2.7 artifact if locally present. M2.7 remains text-only. Prove full-KV q4 TQ, cache hierarchy, Auto/On/Off, all four protocols, tools, settings, and no false VL claim. |
 | MiniMax M3 | Current-source real Electron Start/eager load, Auto reasoning/content IPC separation, exact one-tool continuation, raw Responses, and direct/gateway Ollama On/Off/Auto are scoped passes. Native MSA health is explicit; generic TQ remains Off. Live health reports `vl_runtime_available=false`, so prior media transport does not promote this current runtime to a VL pass. | Preserve native dense KV plus sparse/MSA lightning-indexer state; do not apply generic TQ to indexer state. Still regress image/video availability and salt A/B/A after the VL runtime is available, partial/restart/eviction cache, Ollama non-stream/post-tool continuation, long video terminal delay, and REAP variants. |
@@ -291,14 +291,15 @@ sampling defaults are temperature/top-p/top-k/min-p `1/1/20/0`, and q4
 TurboQuant storage applies only to eligible full-attention KV while 36
 rotating-window layers remain native.
 
-The former Paged-Off changed-tail failure is now closed only at the repaired
-boundary. A 1,039-token request stored cold; two different suffixes then each
-restored the same 960-token SSD prefix with coherent exact finals. The retained
-health artifact reports `backend_mode=block_disk_only`, `paged_ram_enabled=false`,
-`disk_only=true`, two hits, 1,920 tokens saved, and 90 `tq_native_hits`. The fix
-permits exact checkpoints at the last two tail block boundaries; arbitrary
-older partial boundaries, forced eviction, corrupt/missing companion fallback,
-and process-restart restore remain open.
+The former Paged-Off changed-tail failure is now closed for the current
+high-partial release gate, not globally for every possible boundary. Earlier
+S-2.1 evidence proved two suffixes restoring a 960-token SSD prefix with all 48
+layers. The current `20260722_cache_partial_bonsai_gemma_laguna` pass raises
+that to JANG_4M mixed-SWA: after Electron start/restart, a never-stored suffix C
+restored a 6,400-token common prefix from Block Disk L2 as
+`block-disk+tq-native` with `backend_mode=block_disk_only`,
+`paged_ram_enabled=false`, `disk_only=true`, and `ram_tokens_cached=0`. Forced
+eviction/refault and corrupt/missing companion fallback remain open.
 
 The explicit-budget reasoning reproof distinguishes two valid native outcomes:
 
@@ -506,17 +507,9 @@ non-empty reasoning rail on every prompt. Current bundle/source tests and live
 hard/easy controls show that both modes open the native reasoning-capable
 route, after which Laguna may immediately emit the close sentinel.
 
-Two release-critical failures remain open:
+One release-critical Laguna runtime failure remains open:
 
-1. **Paged-Off SSD changed-tail partial reuse:** the block lookup found 15
-   matching blocks / 960 tokens. The 12 full-attention q4-TQ layers
-   reconstructed, but the 36 sliding layers at that earlier boundary were
-   `rotating_kv_pending`; reconstruction therefore reported 12/48 and safely
-   downgraded the request to a full-prefill miss. The cache did not corrupt
-   output, but high-partial SSD reuse is not implemented correctly yet. The
-   earlier immediate-boundary Paged-Off proof must not be promoted to arbitrary
-   partial-prefix support.
-2. **Unbounded hard-prompt reasoning:** a current Electron Auto turn kept a
+1. **Unbounded hard-prompt reasoning:** a current Electron Auto turn kept a
    correctly separated reasoning rail active for 151.8 seconds / 6,561 tokens
    without reaching visible content. It was manually canceled and persisted as
    `[Generation interrupted]`; this was ongoing model reasoning, not a silent

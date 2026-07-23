@@ -7746,3 +7746,31 @@ Status: `VERIFIED-LIVE_SCOPED / AUTO-TOOL PARTIAL` at `74dadd30c`.
 - Matched required-tool Anthropic Thinking On failed while Off emitted the
   exact call. No hidden reasoning-mode retry was introduced.
 - Evidence: `docs/internal/release-gates/20260722_qwen35_release_checkpoint/`.
+
+## 2026-07-22 - Bonsai/Laguna partial SSD cache proof for v1.6.16
+
+Status: `VERIFIED-LIVE_SCOPED / CACHE MATRIX PARTIAL`.
+
+- Current-source real Electron on `erics-m5-max.local` was used for Bonsai and
+  Laguna JANG_4M. This is scoped cache proof, not a global release pass.
+- Bonsai proves Paged-On RAM reuse, Paged-On post-restart SSD partial reuse,
+  and Paged-Off disk-only SSD partial reuse. The corrected never-stored suffix
+  rows show 9,728 restored tokens, native SSM companion state, and
+  `ram_tokens_cached=0` in disk-only mode.
+- Laguna JANG_4M proves Paged-Off mixed-SWA SSD partial reuse after Electron
+  restart with a never-stored suffix: 6,400 restored tokens,
+  `block-disk+tq-native`, `backend_mode=block_disk_only`,
+  `paged_ram_enabled=false`, and `ram_tokens_cached=0`.
+- Current source policy leaves **Block Disk Cache (SSD / L2)** available with
+  Paged RAM both On and Off. The older legacy disk cache is only relevant when
+  both Paged RAM and Block Disk L2 are off; do not promote that legacy tier in
+  the v1.6.16 cache release gate.
+- Focused remote panel policy proof after syncing this patch:
+  `tests/cache-control-policy.test.ts` passed `18/18`.
+- Evidence is retained under
+  `docs/internal/release-gates/20260722_cache_partial_bonsai_gemma_laguna/`.
+- Still open before cache release closure: Gemma 4 live cache proof, low-limit
+  `Max Cache Blocks` eviction/refault, low-limit `Block Cache Max (GB)`
+  eviction/refault, safe corrupt/missing companion fallback, and remaining
+  architecture archetypes including M3 sparse, DSV4 composite, OpenPangu native
+  prompt disk, standard KV, CCA, and media-salted cache.
