@@ -14,12 +14,12 @@ enough.
 
 Reconciled evidence cutoff:
 
-- behavior-bearing runtime source: `f9a4b6838b398312a951e78299e5457ce35d68b7`;
+- behavior-bearing runtime source: `b8783ac760b0ab58f692228b0bc5de6d63363d48`;
 - first M3 evidence checkpoint: `6de9ce8eff206e8a77f65f2ab191c2b3aa971390`;
-- current branch: `codex/v1.6.16-release-campaign-20260722`;
-- clean source checkout: `/Users/eric/mlx/vllm-mlx-release-1.6.15`;
-- live proof checkout: `erics-m5-max.local:/Users/eric/mlx/vllm-mlx-release-1.6.13`;
-- current branch is ten commits ahead of `origin/main` and not yet release-integrated;
+- current branch: `codex/r16-reasoning-history-p0`;
+- clean source checkout: `/Users/eric/mlx/vllm-mlx-r16-reasoning-p0`;
+- live proof checkout: `erics-m5-max.local:/Users/eric/mlx/vllm-mlx-r16-reasoning-p0-live`;
+- the branch is pushed but not yet release-integrated into `origin/main`;
 - version surfaces remain 1.6.15. Do not bump until the selected runtime cutoff
   stops changing.
 
@@ -60,11 +60,11 @@ Historical matrices were also inspected but are not silently authoritative:
   persistence remains open.
 - [ ] Current Laguna JANG_2L/JANG_4M has scoped Electron reasoning, one-tool
   continuation, four streamed protocols, q4 full-attention storage, and
-  Paged-On reuse. A Paged-Off immediate-boundary row exists, but the current
-  changed-tail test matched 960 SSD tokens and reconstructed only 12/48 layers:
-  36 rotating layers were `rotating_kv_pending`, so the engine safely fell back
-  to full prefill. Arbitrary partial-prefix reuse, process restart, and long
-  eviction remain open.
+  Paged-On reuse. Commit `f70048a9d` now live-proves a Paged-Off changed-tail
+  restore at the last-two-block boundary: two requests each restored 960 SSD
+  tokens with all 48 layers, coherent distinct suffixes, zero paged-RAM
+  residency, and q4 native hits. Arbitrary older partial-prefix boundaries,
+  process restart, corrupt companion fallback, and long eviction remain open.
 - [x] Current MiniMax-M3 real Start-before-prompt load, native MSA health,
   Electron reasoning/content IPC separation, one real file tool, raw Responses,
   and direct/gateway Ollama Auto/On/Off (`6de9ce8ef`). Current VL availability
@@ -117,12 +117,19 @@ Historical matrices were also inspected but are not silently authoritative:
   and expose truthful per-pass timing/usage.
 - [ ] Laguna hard-prompt Auto must not spend an effectively unbounded 32,768
   token bundle cap in private reasoning before the bounded answer pass can
-  start. The current live Electron negative control was canceled after 151.8s /
-  6,561 reasoning tokens with no visible answer. Determine the source-owned or
-  explicit user-visible thinking-budget policy; do not hide a sampler clamp.
-- [ ] Different prompts do not reuse byte-identical stale reasoning. No
-  looping, repeated preamble, replacement characters, broken Markdown/math,
-  EOS drift, random suffix, or terminal-batched visible answer is accepted.
+  start. Commit `b8783ac76` now honors an explicit user/API thinking cap and is
+  live-proven through Electron plus Chat/Responses with separate reasoning,
+  progressive answer pass, and truthful terminals. Omitted-budget Auto remains
+  unchanged: the current negative control was canceled after 151.8s / 6,561
+  reasoning tokens. Determine a source-owned or explicit user-visible default
+  policy; do not add a hidden sampler clamp.
+- [ ] Different prompts do not reuse byte-identical stale reasoning. The shared
+  KaTeX renderer plus `af1ead27b` now has live Laguna Reasoning and Qwen
+  MessageBubble proof for LaTeX, currency delimiters, and repeated bare `*`
+  arithmetic; raw Qwen SSE retained byte-faithful operators. Broader model/UI
+  surfaces remain to sample. No looping, repeated preamble, replacement
+  characters, broken Markdown/math, EOS drift, random suffix, or
+  terminal-batched visible answer is accepted.
 
 Named live deltas still required after current scoped proofs:
 

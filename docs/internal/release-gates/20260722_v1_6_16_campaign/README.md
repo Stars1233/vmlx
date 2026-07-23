@@ -11,14 +11,16 @@ It starts from public v1.6.15 follow-up source commit
 signed evidence remain unchanged.
 
 Latest behavior-bearing tested cutoff:
-`e4c6762ce982c1878a82feec142fda929ebc3311`. The first immutable evidence
+`b8783ac760b0ab58f692228b0bc5de6d63363d48`. The first immutable evidence
 checkpoint containing the retained MiniMax-M3 artifacts is
 `6de9ce8eff206e8a77f65f2ab191c2b3aa971390`; later documentation-only commits
 do not silently promote the runtime cutoff.
-The clean source checkout is
-`/Users/eric/mlx/vllm-mlx-release-1.6.15`; the live Electron proof checkout on
-`erics-m5-max.local` is `/Users/eric/mlx/vllm-mlx-release-1.6.13`. Both were at
-the same commit for the retained Laguna, settings, and MiniMax-M3 proofs. The dev launcher executable was
+The current clean source checkout is
+`/Users/eric/mlx/vllm-mlx-r16-reasoning-p0`; the current live Electron proof
+checkout on `erics-m5-max.local` is
+`/Users/eric/mlx/vllm-mlx-r16-reasoning-p0-live`. Older retained proofs below
+name their exact historical checkouts and cutoffs rather than being silently
+promoted. The dev launcher executable is
 `/Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine`, with `PYTHONPATH` selecting
 the synchronized release proof checkout rather than the launcher's source
 tree.
@@ -180,6 +182,9 @@ For every live model generation retained as evidence:
 | 2026-07-22 | current cache-name checkpoint after `4ee7befad` | Unified RAM/SSD cache terminology across settings/status/CLI and moved tooltip suppression to the outer wrapper | 293 focused panel tests + typecheck and 94 CLI/cache tests passed on both source boxes | Server Settings, Cache, and Perf inspected through CDP 9335; RAM and SSD wrapper clicks stayed `true -> true`; status surfaces showed `RAM paged + SSD L2` and `Block Disk L2 (SSD)` | Live CLI help distinguishes Apple unified memory and supported SSD-only mode; no new cache-reuse claim | `VERIFIED-LIVE_SCOPED` |
 | 2026-07-22 | signed v1.6.15 versus stale signed v1.6.9 provenance control | Classified the Laguna `576/48 bits=8` crash as stale uniform-bit runtime behavior, not S-2.1 `g_proj` slicing | Signed 1.6.15 runtime lines 261-306 derive 6-bit module width; stale 1.6.9 lines 185-199 apply top-level 8-bit uniformly | Real signed 1.6.15 Tahoe Electron Start loaded S-2.1 and exact-finaled `REL1615-LAGUNA-UI-DONE` without warnings | Signed 1.6.15 bundled engine exact-finaled cache-disabled JANG_2L and JANG_4M; signed 1.6.9 negative control reproduced the exact dequant error | `VERIFIED-LIVE_SCOPED / GLOBAL RELEASE ROW PARTIAL` |
 | 2026-07-22 | `b6d38eac7`, `e4c6762ce`, JANG `b788273e` / 2.5.33 | Repaired the Python/CLI mixed-affine distribution contract: vMLX now requires JANG 2.5.33, rejects stale runtimes, and logs runtime provenance | JANG full suite 574 passed/37 skipped on both boxes; vMLX focused set 370 passed on both boxes; panel engine-path set 7 passed | Real Start loaded S-2.1 under the synchronized release checkout and public 2.5.33 wheel; separate reasoning/content and exact one-tool continuation persisted without warnings | Current Responses Auto/Off and Chat streams separated reasoning/content, terminalized truthfully, had no inline marker leak, and warm-hit q4 native cache | `VERIFIED-LIVE_SCOPED / GLOBAL RELEASE ROW PARTIAL` |
+| 2026-07-22 | `af1ead27b` | Preserved bare multiplication operators through the shared Markdown renderer after KaTeX processing | Panel math/settings suites 306/306 plus typecheck passed on the proof host | Laguna Reasoning rendered `37*28=1036` rather than collapsed `3728=1036`; Qwen MessageBubble rendered three bare-star equations and its exact final | Raw Qwen Chat SSE retained the exact `*` bytes and terminal `[DONE]`; API payloads are not rewritten by the renderer | `VERIFIED-LIVE_SCOPED / FAMILY BREADTH PARTIAL` |
+| 2026-07-22 | `f70048a9d` | Retained exact rotating-cache checkpoints at the final two changed-tail block boundaries instead of discarding every Laguna SWA layer | Rotating continuation equality plus bounded-fanout tests; paged/disk focused suite 74/74 | Real Start loaded JANG_4M PID 51349 with Paged Off and Block Disk On | Three coherent changed-tail calls: cold A then B/C each restored 960 SSD tokens; health recorded two hits, 1,920 saved tokens, zero paged-RAM residency, and 90 native q4-TQ hits | `VERIFIED-LIVE_SCOPED / RESTART-EVICTION-OLDER-BOUNDARIES OPEN` |
+| 2026-07-22 | `b8783ac76` | Made explicit Laguna thinking caps authoritative in streaming Chat/Responses without adding a hidden Auto cap | Laguna explicit-budget tests plus focused reasoning/server suites passed; omitted-budget Auto allowlist remains unchanged | Real Start loaded PID 51705 from the exact cutoff; saved On/160/8 settings produced a separate 36-character rail, exact visible final, 2,315-token disk/TQ hit, 1.15 s TTFT, and 4.3 s total | Chat and Responses each emitted separate reasoning, `vmlx-answer-pass-start`, progressive content, and a truthful terminal; a 64-token Responses control was truthfully incomplete and 160 completed | `VERIFIED-LIVE_SCOPED / DEFAULT AUTO POLICY STILL OPEN` |
 
 ## Cache terminology and tooltip proof
 
@@ -268,8 +273,60 @@ Durable evidence:
 - `laguna-ui-reasoning.png`: collapsed private rail plus exact visible final;
 - `laguna-ui-tool-visible.png`: both real tool cards, exact finals, and metrics.
 
-The raw SSE/NDJSON captures and full private reasoning text are deliberately
-not committed.
+The earlier raw SSE/NDJSON captures and full private reasoning text for cutoff
+`230c822f2` were deliberately not committed; only their sanitized summary is
+retained. The bounded current-cutoff streams below are committed because they
+contain short acceptance probes rather than an unbounded private rail.
+
+### Current JANG_4M follow-up at `b8783ac76`
+
+The current live checkout and PID 51705 were independently provenance-checked:
+the process had `PYTHONPATH=/Users/eric/mlx/vllm-mlx-r16-reasoning-p0-live`,
+the checkout resolved to `b8783ac76`, and the UI launch log named
+`/Users/eric/mlx/vllm-mlx/.venv/bin/vmlx-engine`. Its argv retained
+`--reasoning-parser deepseek_r1`, `--tool-call-parser glm47`,
+`--no-paged-cache`, Block Disk 10 GB, block size 64, JIT, and continuous
+batching. Bundle truth remains affine mixed `JANG_4M`, not JANGTQ/MXTQ; its
+sampling defaults are temperature/top-p/top-k/min-p `1/1/20/0`, and q4
+TurboQuant storage applies only to eligible full-attention KV while 36
+rotating-window layers remain native.
+
+The former Paged-Off changed-tail failure is now closed only at the repaired
+boundary. A 1,039-token request stored cold; two different suffixes then each
+restored the same 960-token SSD prefix with coherent exact finals. The retained
+health artifact reports `backend_mode=block_disk_only`, `paged_ram_enabled=false`,
+`disk_only=true`, two hits, 1,920 tokens saved, and 90 `tq_native_hits`. The fix
+permits exact checkpoints at the last two tail block boundaries; arbitrary
+older partial boundaries, forced eviction, corrupt/missing companion fallback,
+and process-restart restore remain open.
+
+The explicit-budget reasoning reproof distinguishes two valid native outcomes:
+
+- one explicit-On Chat control immediately closed the native reasoning rail and
+  emitted a direct exact visible answer; it is retained as the model-variable
+  empty-rail control, not mislabeled as parser failure;
+- subsequent explicit-On Chat and Responses requests each emitted separate
+  reasoning (`Okay, let's see. I need`), then the SSE comment
+  `vmlx-answer-pass-start`, progressive visible output, and a truthful terminal;
+- Responses with a 64-token total cap truthfully ended `response.incomplete`;
+  the 160-token row completed with the exact requested marker;
+- Electron Chat Settings saved **On**, max output 160, and max thinking 8. The
+  real UI then showed a separate 36-character reasoning box, exact
+  `R16-LAGUNA-UI-BUDGET-DONE`, 22 generated tokens, 59.8 t/s, 1.15 s TTFT,
+  4.3 s wall time, and 2,315 `block-disk+tq-native` cached prompt tokens.
+
+This proves the parser can classify the native prompt-owned rail and that an
+explicit budget reaches both stream surfaces. It does not add a hidden Auto
+budget: the 32,768-token bundle default can still produce a long model-owned
+reasoning run when the field is omitted, so release policy/UX for that default
+remains open. Cancellation TPS also remains partial because the current UI
+calculation can omit the silent interval after the last delta.
+
+Durable evidence: `laguna-health-paged-off-partial-ssd.json`,
+`laguna-budget-chat-variable-direct.sse.gz`,
+`laguna-budget-chat-answer-pass.sse.gz`,
+`laguna-budget-responses-answer-pass.sse.gz`, and
+`laguna-ui-explicit-budget.png`.
 
 ## Settings restart fix and live proof at this cutoff
 
