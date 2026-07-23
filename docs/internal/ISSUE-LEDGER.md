@@ -5283,3 +5283,21 @@ Status: `PARTIAL / CORRECTNESS FALLBACK LIVE / RELEASE BLOCKING`.
 - Open: current-source Block Disk GB eviction/refault, corrupt/missing rotating
   companion fallback, remaining typed cache families, full protocols/media,
   full suites, and release gates.
+
+## 2026-07-23 - Laguna Block Disk capacity enforcement
+
+- `R17-BLOCK-DISK-GB-SLIDER`: `VERIFIED-LIVE_SCOPED`.
+  Real Electron Save & Restart persisted 1 GB and launched PID `23420` with
+  `--block-disk-cache-max-gb 1`.
+- `R17-BLOCK-DISK-LRU-DELETE`: `VERIFIED-LIVE_SCOPED`.
+  One write reduced the model namespace from 2.252 GB to 0.790 GB through 156
+  LRU block deletions.
+- `R17-EVICTED-PREFIX-SAFE-MISS`: `VERIFIED-LIVE_SCOPED`.
+  The older prefix received no cached credit, recorded 52 SSD misses,
+  full-prefilled, exact-finaled, and repopulated without exceeding the cap.
+- `R17-BLOCK-DISK-EXIT-STATE`: `PASS-LIVE`.
+  The 10 GB default was restored through the UI; PID `23830` is healthy.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/laguna-ssd-capacity-eviction-live.json`.
+- Other typed cache families and corrupt/missing rotating-state fallback remain
+  open.

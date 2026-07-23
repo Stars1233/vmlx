@@ -2105,3 +2105,15 @@
 - Restored Paged-On plus SSD L2 through the UI; current PID `22853`.
 - Retained:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/laguna-paged-on-off-ssd-partial-live.json`.
+
+## 2026-07-23 - prove Block Cache Max SSD eviction
+
+- Used the real Server Settings UI to set Laguna Block Cache Max to 1 GB and
+  restart.
+- PID `23420` started with `--block-disk-cache-max-gb 1`.
+- The next write evicted 156 blocks and reduced 2.252 GB to 0.790 GB.
+- Replayed an older prefix: zero cached-token credit, 52 SSD misses, safe full
+  prefill, exact output, and bounded refill. Cumulative evictions reached 206.
+- Restored the 10 GB default through the real UI; PID `23830` is healthy.
+- Retained:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/laguna-ssd-capacity-eviction-live.json`.

@@ -993,3 +993,32 @@ Remaining boundary:
 - Gemma 4 and the other typed cache archetypes still require equivalent live
   Paged-On/Paged-Off proof.
 - Overall status remains `PARTIAL / NOT RELEASE-READY`.
+
+### R17-013 Laguna Block Disk GB capacity and eviction
+
+Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
+
+- The real Electron Block Cache Max slider changed from 10 GB to 1 GB. Save &
+  Restart persisted `blockDiskCacheMaxGb=1` and launched PID `23420` with
+  `--block-disk-cache-max-gb 1`.
+- The existing Laguna namespace was 2.252 GB / 309 blocks at startup. One new
+  q4 native block write triggered 156 LRU deletions and reduced the namespace
+  to 0.790 GB / 198 blocks, below the configured cap.
+- Replaying an older 2,987-token prefix then received zero cached-token credit,
+  recorded 52 SSD misses, full-prefilled, and exact-finaled
+  `R17-LAGUNA-EVICTED-REFILL`. Refill writes retained the 0.788 GB bounded
+  size while cumulative SSD evictions reached 206.
+- The test did not synthesize a hit after deletion. An evicted prefix safely
+  became a miss and repopulated the cache.
+- The real UI restored the 10 GB default. Current PID `23830` is healthy with
+  the restored value.
+
+Evidence:
+
+- `laguna-ssd-capacity-eviction-live.json`
+
+Remaining boundary:
+
+- Equivalent capacity enforcement is still required for other typed cache
+  archetypes. Corrupt/missing rotating-state companion fallback remains open.
+- Overall status remains `PARTIAL / NOT RELEASE-READY`.

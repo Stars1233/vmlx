@@ -1,0 +1,82 @@
+{
+  "gate": "R17-013 Laguna Block Disk GB capacity and eviction",
+  "date": "2026-07-23",
+  "status": "VERIFIED-LIVE-SCOPED",
+  "overall_release_status": "PARTIAL_NOT_RELEASE_READY",
+  "source_head": "daf7c9ab435818df6ebbe443f11b2c54120d51a4",
+  "host": "erics-m5-max.local",
+  "model": "/Volumes/EricsLLMDrive/JANGQ-AI/Laguna-S-2.1-JANG_4M",
+  "session_id": "2316afd1-3efa-49d0-8056-4809740d93f7",
+  "limit_change": {
+    "changed_through_real_electron_ui": true,
+    "configured_gb": 1,
+    "sqlite_block_disk_cache_max_gb": 1,
+    "pid": 23420,
+    "argv": "--enable-block-disk-cache --block-disk-cache-max-gb 1"
+  },
+  "before_write": {
+    "blocks_on_disk": 309,
+    "disk_size_bytes": 2417610279,
+    "disk_size_gb": 2.252,
+    "total_tokens_on_disk": 19302,
+    "disk_evictions": 0
+  },
+  "trigger_write": {
+    "content": "R17-EVICT-WRITE",
+    "prompt_tokens": 2826,
+    "completion_tokens": 9,
+    "finish_reason": "stop"
+  },
+  "after_first_write": {
+    "blocks_on_disk": 198,
+    "disk_size_bytes": 848261676,
+    "disk_size_gb": 0.79,
+    "total_tokens_on_disk": 12563,
+    "disk_writes": 45,
+    "disk_evictions": 156,
+    "tq_native_writes": 45,
+    "under_configured_limit": true
+  },
+  "evicted_old_prefix_refill": {
+    "content": "R17-LAGUNA-EVICTED-REFILL",
+    "reasoning": "",
+    "prompt_tokens": 2987,
+    "completion_tokens": 15,
+    "cached_tokens": 0,
+    "disk_hits": 0,
+    "disk_misses": 52,
+    "disk_writes": 92,
+    "disk_evictions": 206,
+    "finish_reason": "stop",
+    "done_events": 1,
+    "interpretation": "The older shared prefix had been removed by the one-gigabyte LRU cap. The request safely full-prefilled and repopulated SSD rather than claiming a stale hit."
+  },
+  "after_refill": {
+    "blocks_on_disk": 195,
+    "disk_size_bytes": 845934843,
+    "disk_size_gb": 0.788,
+    "total_tokens_on_disk": 12390,
+    "under_configured_limit": true
+  },
+  "restored_default": {
+    "changed_through_real_electron_ui": true,
+    "configured_gb": 10,
+    "sqlite_block_disk_cache_max_gb": 10,
+    "pid": 23830,
+    "healthy": true
+  },
+  "scope_boundary": {
+    "passed": [
+      "real UI Block Cache Max setting reaches SQLite and engine argv",
+      "a write enforces the configured SSD cap through LRU deletion",
+      "an evicted prefix receives no false hit credit and safely full-prefills",
+      "q4 native SSD writes remain active under eviction",
+      "the 10 GB default is restored before leaving the gate"
+    ],
+    "still_open": [
+      "Block Cache Max behavior for Gemma 4 and remaining typed cache archetypes",
+      "corrupt or missing rotating-state companion fallback",
+      "full release matrix"
+    ]
+  }
+}

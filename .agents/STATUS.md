@@ -8269,3 +8269,18 @@ Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
 - Still open: bounded SSD GB eviction/refault, corrupt/missing rotating-state
   fallback, Gemma/other typed cache families, full protocols/media/suites, and
   release gates.
+
+## 2026-07-23 - Laguna SSD capacity slider and eviction
+
+Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
+
+- Real UI changed Block Cache Max to 1 GB; PID `23420` launched with the exact
+  argv value.
+- First write reduced an existing 2.252 GB namespace to 0.790 GB by evicting
+  156 LRU blocks.
+- An older prefix then got zero hit credit, recorded 52 SSD misses,
+  full-prefilled, exact-finaled, and repopulated under the cap.
+- Cumulative SSD eviction reached 206 while the namespace stayed 0.788 GB.
+- Restored the 10 GB default through the UI; current PID `23830` is healthy.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/laguna-ssd-capacity-eviction-live.json`.
