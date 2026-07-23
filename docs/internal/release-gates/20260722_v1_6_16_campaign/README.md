@@ -2,7 +2,13 @@
 
 Date: 2026-07-22 (America/Los_Angeles)
 
-Status: `ACTIVE / NOT RELEASE-READY`.
+Status: `RELEASED_SCOPED / FOLLOW-UP OPEN`.
+
+Public v1.6.16 was released from the scoped `r16_parser_cache` gate on
+2026-07-22. See `RELEASED-CHECKPOINT.md` for the exact built source commit,
+public release URLs, DMG hashes, notarization IDs, updater manifest commit, and
+bundled-file provenance. This release does not close the broad retained
+family/media/gateway matrix.
 
 This is the canonical control board for the next Python/Electron vMLX release.
 It starts from public v1.6.15 follow-up source commit
