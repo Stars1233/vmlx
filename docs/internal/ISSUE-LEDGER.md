@@ -5561,3 +5561,25 @@ Status: `PARTIAL / CORRECTNESS FALLBACK LIVE / RELEASE BLOCKING`.
 - Disk-cap eviction/refault, M3 media, signed-app repetition, suites,
   packaging, notarization, and publication remain open. Overall v1.6.17 stays
   `PARTIAL / NOT RELEASE-READY`.
+
+## 2026-07-23 - Fresh-session bundle sampling versus native-MTP policy
+
+- `R17-FIRST-SESSION-GENERATION-DEFAULTS`: `FIXED+VERIFIED-LIVE_SCOPED`.
+  Fresh native-MTP sessions incorrectly defaulted Deterministic, causing the
+  server and Chat Settings to use `0/1/0/0` instead of Q27's bundle
+  `1.0/0.95/20`. Fresh/missing mode now defaults Auto and launches
+  `compatible-only`.
+- `R17-SAVED-SAMPLING-PRECEDENCE`: `PASS-LIVE_SCOPED`.
+  Real Electron PID `19209` displayed `1.00/0.95/20`; SQLite retained NULL
+  sampler overrides; the session retained model-derived values and Auto.
+  User-saved Deterministic remains an explicit session policy.
+- `R17-DIRECT-GATEWAY-OMITTED-SAMPLING`: `PASS-LIVE_SCOPED`.
+  Direct and gateway capabilities agreed on effective `1.0/0.95/20`.
+  Omitted-sampling Chat streams exact-finaled progressively on both paths.
+- `R17-ADOPTED-MTP-POLICY-TRUTH`: `FIXED-SOURCE+FOCUSED-TEST`.
+  Adoption now reads `mtp.request_policy` from health, with argv fallback.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/q27-settings-live/README.md`.
+- Overall release remains `PARTIAL / NOT RELEASE-READY`; Q27 reasoning/tools,
+  protocols, hybrid SSD hierarchy, media, suites, and signed release gates are
+  still open.

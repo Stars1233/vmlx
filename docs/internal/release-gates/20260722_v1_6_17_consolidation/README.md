@@ -1542,3 +1542,27 @@ Remaining boundary:
 - M3 disk-cap eviction/refault, media, signed-app repetition, full suites,
   packaging, notarization, and publication remain open. Overall v1.6.17
   remains `PARTIAL / NOT RELEASE-READY`.
+
+### R17-022 Canonical first-session sampling defaults with native MTP
+
+Status: `FIXED + VERIFIED-LIVE-SCOPED / Q27 FAMILY PARTIAL`.
+
+- Root cause: fresh native-MTP sessions defaulted to Deterministic and the
+  server replaced omitted bundle sampling with `0/1/0/0`. The renderer showed
+  that effective server policy, so Q27 appeared to ignore its bundle
+  `1.0/0.95/20`.
+- Fresh/missing mode now defaults to Auto and `compatible-only`, preserving
+  generation-config/JANG sampling for Electron, direct API, and gateway.
+- Explicit saved Deterministic remains a truthful session-specific override.
+  Process adoption now retains the live health/argv policy instead of stamping
+  every adopted process Auto.
+- Real Electron Save & Restart loaded Q27 PID `19209`. Chat Settings visibly
+  showed `1.00/0.95/20`; SQLite sampler fields remained `NULL`; direct and
+  gateway capabilities reported effective `1.0/0.95/20`.
+- Omitted-sampling direct and gateway Chat streams exact-finaled with 13 and 14
+  progressive content deltas.
+- Focused panel verification passed `411/411`; TypeScript and diff checks
+  passed.
+- Evidence: `q27-settings-live/README.md`.
+- Q27 reasoning/tools/protocol breadth, media, cache hierarchy, full suites,
+  package/sign/notarize/publish remain open.

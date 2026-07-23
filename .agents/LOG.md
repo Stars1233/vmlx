@@ -1,5 +1,26 @@
 # Agent proof log
 
+## 2026-07-23 - Q27 generation-default policy correction
+
+- Reread R17 P0.1 before changing the shared path.
+- Traced bundle `1.0/0.95/20` through resolver, session config, Chat Settings,
+  SQLite, launcher, engine defaults, health, and requests.
+- Found the wrong owner: fresh native-MTP sessions were stamped
+  Deterministic, installing greedy omitted-request defaults.
+- Changed fresh/missing mode to Auto; preserved explicit Deterministic as a
+  truthful user-owned override.
+- Added health/argv MTP-policy retention for process adoption.
+- Remote and local focused tests passed `411/411`; TypeScript and diff checks
+  passed.
+- Real Electron Save & Restart loaded PID `19209` with `compatible-only`.
+  Visible Chat Settings, SQLite, direct capabilities, and gateway capabilities
+  agreed on bundle `1.0/0.95/20`.
+- Direct/gateway omitted-sampling streams exact-finaled progressively.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/q27-settings-live/`.
+- Q27 reasoning/tool/history, remaining protocols, hybrid SSD hierarchy, media,
+  and release gates remain open.
+
 ## 2026-07-23 - MiniMax M3 paged-on/off SSD partial and restart proof
 
 - Real UI Stop/Start removed PID `11370`, closed port 8008, and loaded PID

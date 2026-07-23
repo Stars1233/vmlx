@@ -1,5 +1,26 @@
 # Current Status
 
+## 2026-07-23 - Q27 first-session bundle sampling parity
+
+Status:
+`FIXED+VERIFIED_LIVE_SCOPED / Q27 FAMILY PARTIAL / RELEASE PARTIAL`.
+
+- Shared root cause fixed: fresh native-MTP sessions now default Auto instead
+  of silently applying deterministic omitted-request sampling.
+- Real Electron Save & Restart loaded Q27 PID `19209` with
+  `--native-mtp-sampling-policy compatible-only`.
+- Chat Settings visibly matched the exact bundle: `1.00/0.95/20`.
+- SQLite sampler overrides remained NULL; direct and gateway capabilities
+  reported the same effective defaults.
+- Both omitted-sampling Chat streams exact-finaled progressively.
+- Adopted-process MTP policy now comes from health/argv so display and process
+  behavior cannot silently disagree.
+- Focused tests: `411/411`; TypeScript passed.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/q27-settings-live/`.
+- Next: continue the same Q27 PID with three Electron turns, four-protocol
+  reasoning/tools, and Paged-On/Off hybrid SSD partial-prefix proof.
+
 ## 2026-07-23 - MiniMax M3 native MSA/indexer SSD hierarchy
 
 Status:
