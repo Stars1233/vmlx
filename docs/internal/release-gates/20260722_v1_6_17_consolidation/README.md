@@ -78,6 +78,12 @@ evidence below:
 - [ ] Save, Save & Restart, app restart, session restart, model swap, sleep,
   and wake must preserve every user-owned server control and recompute every
   model-owned control from the current bundle.
+- [ ] Derive prefix-cache RAM warnings from physical installed memory, not
+  momentary free memory. Before save/start, show the requested percentage and
+  GB plus remaining capacity for model weights, active-generation KV,
+  prompt-cache rederive, and Metal working buffers. Keep this advisory unless
+  the configuration is structurally impossible; never silently clamp a user
+  value.
 - [ ] Max output and max context remain separate end-to-end. The UI must not
   use `max_new_tokens` as a hidden prompt-context or server-startup override.
 - [ ] Remove dead readers, stale migration branches, duplicate parser/default
@@ -111,6 +117,16 @@ evidence below:
   `ram_tokens_cached=0`, including after restart and across new chats/sessions.
 - [ ] Paged On + Block Disk L2 On uses matching RAM blocks first, promotes
   missing safe blocks from SSD, and prefills only absent/unsafe tail tokens.
+- [ ] Measure cache usefulness rather than crediting any nonzero hit: longest
+  continuous-prefix accuracy, exact restored and remaining token counts, SSD
+  lookup/read/reconstruction time, cold-versus-hit TTFT and prefill reduction,
+  write amplification, promotion cost, eviction/refault latency, and
+  cross-chat/session reuse. Optimize the L2 path only after warm output is
+  byte/coherence-equivalent to cold output.
+- [ ] Keep the current prefix-chain boundary explicit. Shared tokens that occur
+  only as a non-prefix suffix must not be reported as reusable KV. Arbitrary
+  interior/suffix reuse or a radix-tree redesign is a separate future feature,
+  not a fabricated cache hit.
 - [ ] The Paged RAM block limit and Block Disk GB slider cause observable,
   bounded eviction/refault without deleting unrelated cache roots.
 - [ ] Standard KV defaults to q4 TurboQuant storage unless explicitly disabled.
