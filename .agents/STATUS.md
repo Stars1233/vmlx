@@ -8010,3 +8010,50 @@ Status: `ACTIVE / PARTIAL / NOT RELEASE-READY`.
 - Still pending before release claim: rerun scoped checks after this doc/source
   update, push both boxes, build/sign/notarize/install-smoke the actual bundled
   app, and verify public artifact/update-manifest truth if publishing.
+
+## 2026-07-22 - v1.6.17 remote current-source Electron checkpoint
+
+Status: `ORNITH STREAM/PARSER PASS / HYBRID PARTIAL SSD REUSE FAIL / NOT RELEASE-READY`.
+
+- Correct proof host is `Erics-M5-Max.lan`; local `/Applications/vMLX.app`
+  remains stale `1.6.9` and was not used.
+- Remote current-source Electron head `ef0d3a8cd` used
+  `/Users/eric/mlx/vllm-mlx-r17-consolidation/.venv/bin/python3` and imported
+  the same checkout's `vmlx_engine`.
+- Electron Start loaded
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/Ornith-1.0-9B-JANG_4M`
+  at PID `72441`; Save & Restart produced PID `72753`.
+- Three Electron turns proved a separate Auto reasoning rail, visual KaTeX,
+  truthful failure with no configured tool workspace, then one successful
+  `file_info` tool/result continuation after the workspace was configured.
+- A three-generation streamed Chat API sequence proved separate reasoning,
+  required tool call, real-result continuation, and one accepted 2572-token
+  resident `paged+ssm+tq-native` hit.
+- Live Responses, Anthropic, and Ollama streams each emitted separate
+  reasoning/thinking and visible content with one native terminal and no
+  parser-marker leak.
+- After process restart, 39 TQ-native SSD blocks / 2496 tokens were found, but
+  typed SSM companion lookup missed and the request fell back to full prefill.
+  Partial hybrid SSD reuse remains failed/open even though lookup and safe
+  fallback are live-proven.
+- Full details and exact measurements are in
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/README.md`.
+
+
+## 2026-07-22 - v1.6.17 hybrid partial SSD restart fix
+
+Status: `ORNITH PAGED-ON+SSD-ONLY VERIFIED-LIVE / CROSS-ARCH MATRIX OPEN`.
+
+- Pushed `be6cc8497` on `codex/v1.6.17-consolidation-20260723`.
+- Added restart-safe shorter SSM checkpoint discovery from validated L2
+  sidecars without weakening typed-state acceptance.
+- Remote tests: `54 passed`; broad scheduler/cache-bypass: `167 passed,
+  4 skipped`.
+- Remote real Electron/API proof restored `9,216` typed SSM tokens plus `145`
+  q4-TQ attention blocks after restart, prefilling only `109`/`115` tail
+  tokens with Paged RAM on/off respectively.
+- SSD-only health stayed `ram_tokens_cached=0`, `l1_resident_bytes=0`, and
+  visible output exact-finaled with truthful terminals.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/ornith-partial-ssd-restart.json`.
+- Other native cache archetypes remain open; no release-ready claim.

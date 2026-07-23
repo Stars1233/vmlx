@@ -1872,3 +1872,40 @@
   reuse another checkout's `node_modules`.
 - Live Electron/direct/gateway model proof remains open. No release readiness
   claim was made.
+
+## 2026-07-22 - remote Ornith current-source live proof
+
+- Removed only orphaned `.16`/`.17` dev Electron trees on the authorized M5
+  Max; left the local stale installed `1.6.9` app untouched.
+- Created a checkout-local `.17` project venv from the functioning `.16`
+  environment, replaced its editable install with the `.17` checkout, and
+  verified exact Python/module provenance.
+- Clean dependency resolution itself failed on Python 3.13 because the current
+  dependency graph selected unsupported `llvmlite 0.36.0`; release bundling
+  must be reverified independently.
+- Started the real Electron UI on CDP 9335 with a fresh isolated profile.
+- Loaded Ornith/Qwen3.5 via the UI Start button and retained bundle/argv/health
+  truth for parsers, q4 attention-only TQ storage, hybrid typed state, paged
+  RAM, and block-disk L2.
+- Completed three UI turns including visual math, separate reasoning, one
+  truthful tool failure due to unset workspace, and a successful interleaved
+  reasoning/tool/result continuation after configuring the workspace.
+- Completed raw streamed Chat, Responses, Anthropic, and Ollama probes through
+  the Electron gateway. Chat included a three-generation required-tool loop.
+- Restart test found persisted TQ attention blocks but could not use the
+  changed-tail partial prefix because no matching SSM companion boundary was
+  restored. Logged this as an open hybrid partial-SSD defect, not a cache pass.
+
+
+## 2026-07-22 - close Ornith hybrid partial SSD restart discovery
+
+- Root cause: after restart, exact SSM boundary lookup could reach L2, but a
+  shorter persisted companion boundary was invisible because the process-local
+  length index started empty.
+- Added validated sidecar boundary discovery and retained normal typed fetch as
+  the sole acceptance path.
+- Pushed source as `be6cc8497` after `54` focused and `167` broader cache tests.
+- Live remote Electron/gateway proof accepted `9,216` of `9,279` SSD tokens
+  with q4-TQ attention blocks and typed SSM state in both Paged-On and SSD-only
+  modes. SSD-only kept RAM resident bytes/tokens at zero.
+- Restored the Electron session to Paged RAM on + Block Disk on.

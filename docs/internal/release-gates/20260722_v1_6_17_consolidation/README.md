@@ -240,3 +240,209 @@ Status: `SOURCE+FOCUSED_TEST PASS / LIVE FAMILY MATRIX OPEN`
   `expected_num_layers`, weakening early header-level layer-count rejection.
 - No new live model proof was run for this audit, so no cache family row is
   newly closed here.
+
+### R17-002 isolated Electron profile and current-source engine provenance
+
+Status: `SOURCE+FOCUSED TEST PASS / DEV LIVE PASS / SIGNED BUNDLE OPEN`
+
+Source head and host:
+
+- Git head: `ef0d3a8cd`.
+- Electron checkout:
+  `/Users/eric/mlx/vllm-mlx-r17-consolidation`.
+- Live host: `Erics-M5-Max.lan` (`erics-m5-max.local`), macOS `26.3.2`.
+- The local `/Applications/vMLX.app` is the stale `1.6.9` install and was not
+  used or modified.
+
+Finding and change:
+
+- A fresh `VMLX_USER_DATA_DIR` failed before the database could open because
+  the override directory did not exist.
+- `panel/src/main/user-data-dir.ts` now creates the override directory before
+  calling `app.setPath`.
+- `panel/tests/app-user-data-isolation.test.ts` pins the startup ordering.
+
+Focused evidence:
+
+- `app-user-data-isolation.test.ts` -> `5 passed`.
+- Panel typecheck -> pass.
+- A fresh remote profile at
+  `/Users/eric/.vmlx-r17-consolidation-dev` opened without the prior SQLite
+  startup failure.
+
+Exact dev-engine provenance:
+
+- The remote current-source project venv resolved to
+  `/Users/eric/mlx/vllm-mlx-r17-consolidation/.venv/bin/python3`.
+- Python reported `vmlx_engine.__version__ == 1.6.16`.
+- Python imported
+  `/Users/eric/mlx/vllm-mlx-r17-consolidation/vmlx_engine/__init__.py`.
+- Electron logged:
+  `Found development project venv:
+  /Users/eric/mlx/vllm-mlx-r17-consolidation/.venv/bin/python3`.
+
+Open packaging findings:
+
+- The first clean `uv pip install -e .` on Python `3.13.11` failed while
+  resolving `librosa -> numba 0.53.1 -> llvmlite 0.36.0`; that llvmlite
+  release rejects Python 3.13. The live dev venv was instead cloned from the
+  functioning v1.6.16 project venv and its editable `vmlx` install was replaced
+  with this checkout, then provenance was re-read as above.
+- This is valid current-source dev proof, not release-bundle proof.
+- `bundle-python.sh`, bundled critical-import verification, signed app
+  provenance, Sequoia/Tahoe packaging, installation, signing, notarization,
+  stapling, and installed-app smoke remain open.
+
+### R17-003 Ornith/Qwen3.5 Electron, gateway, and cache boundary
+
+Status: `LIVE PARTIAL / PARSERS+STREAMING PASS / PARTIAL SSD REUSE FAIL`
+
+Bundle and launch:
+
+- Bundle:
+  `/Users/eric/.mlxstudio/models/JANGQ-AI/Ornith-1.0-9B-JANG_4M`.
+- `config.json`: `model_type=qwen3_5`,
+  `Qwen3_5ForConditionalGeneration`, hybrid 24 linear-attention plus 8
+  full-attention layers, 262144 text context, vision config present.
+- Weight quantization: affine JANG_4M, group size 64, 4-bit default with
+  explicit 8-bit tensors; `jang_config.json` reports target 4.0 and actual
+  4.66 bits. This is affine JANG, not JANGTQ/MXTQ.
+- `generation_config.json` supplies no sampling defaults beyond EOS/cache.
+- `chat_template.jinja` is 7594 bytes and contains native Qwen tools,
+  reasoning-history rendering, and `enable_thinking`.
+- Electron Start-button PID: initial `72441`, restarted `72753`.
+- Exact argv used current project Python with:
+  `--is-mllm --tool-call-parser qwen --reasoning-parser qwen3
+  --use-paged-cache --paged-cache-block-size 64 --max-cache-blocks 1000
+  --enable-block-disk-cache --block-disk-cache-max-gb 10`.
+- No load-error toast occurred. `/health` reported `model_loaded=true`.
+
+Electron turns:
+
+1. `R17-ORN-UI-T1`: Auto produced a separate 617-character Reasoning rail,
+   rendered `\(47 \times 2 = 94\)` visually as math, and emitted the exact
+   non-empty terminal answer. UI metrics: 221 tokens, 83.7 t/s, 57.5 pp/s,
+   73 prompt tokens, 1.27 s TTFT, 4.0 s total.
+2. `R17-ORN-UI-T2`: the model emitted `file_info(panel/package.json)`, but the
+   tool failed truthfully because Built-in Coding Tools had no Working
+   Directory. The UI did not hallucinate a tool result.
+3. After setting the UI Working Directory to the current checkout,
+   `R17-ORN-UI-T3` emitted one successful `file_info` call, two separate
+   reasoning phases (141 and 223 characters), and the exact continuation
+   `R17-ORN-UI-T3-DONE SIZE=5.2 KB`. UI metrics: 93 tokens, 62.8 t/s,
+   2164.9 pp/s, 5326 prompt tokens, 0.37 s TTFT, 3.8 s total.
+
+Gateway streaming:
+
+- Three-generation Chat Completions sequence:
+  - T1: 190 reasoning characters, exact visible answer, `finish=stop`.
+  - T2: 130 reasoning characters, schema-valid required
+    `lookup_value({"key":"panel-package"})`, `finish=tool_calls`, no premature
+    visible answer.
+  - T3: 139 reasoning characters, tool-result continuation, exact visible
+    `R17-ORN-API-T3-DONE SIZE=5.2 KB`, `finish=stop`.
+  - No `<think>`, `[THINK]`, or tool-control marker leaked to visible content.
+  - T3 restored 2572 tokens from resident
+    `paged+ssm+tq-native` state.
+- Responses: 268 reasoning characters through
+  `response.reasoning_summary_text.delta`, progressive output text, one
+  `response.completed`, no marker leak.
+- Anthropic: 530 reasoning characters through `thinking_delta`, progressive
+  text, balanced blocks, one `message_stop`, no marker leak.
+- Ollama: 231 thinking characters, progressive content, one terminal
+  `done_reason=stop`, no marker leak.
+
+Cache state and failing boundary:
+
+- Before restart, health showed 19 TQ-native block-disk writes, 1109 attention
+  KV tokens on disk, and 12437 typed SSM companion tokens on disk.
+- The in-process three-generation Chat sequence recorded one accepted resident
+  hit for 2572 tokens.
+- After Electron `Save & Restart`, a changed-tail request found 39 persisted
+  TQ-native attention blocks / 2496 tokens. Counters increased by
+  `disk_hits=39` and `tq_native_hits=39`.
+- The request did **not** receive cache-hit credit. Logs then reported:
+  `SSM fetch MISS ... store_size=0` and
+  `2496 KV blocks found but no SSM companion state — full prefill required`.
+- Therefore Paged-On partial SSD lookup is proven, but safe usable hybrid
+  partial restore is not. The current result is a correctness-safe full
+  prefill fallback, not the requested partial SSD reuse.
+- Paged-Off SSD-only changed-tail reuse, exact restart restore, new-chat reuse,
+  new-session reuse, eviction/refault, corrupt/missing companion fallback, and
+  media-salt behavior remain open.
+
+Other live observations:
+
+- Health selected q4 TurboQuant at the attention-KV storage boundary while
+  preserving typed full-precision hybrid state.
+- The bundle declares one MTP layer but `jang_config.drop_mtp=true` and has no
+  MTP tensors. Health truthfully reported `metadata_inconsistent` and did not
+  activate MTP.
+- The M5 Max health record reported the affine MLX quantized-matmul path, but
+  native-accelerator activation remained false with
+  `host_not_known_na_capable`; no native-accelerator speed claim is closed.
+
+
+### R17-004 restart-safe hybrid partial SSD checkpoint discovery
+
+Status: `SOURCE+FOCUSED TEST PASS / ORNITH PAGED-ON+SSD-ONLY LIVE PASS / OTHER ARCHETYPES OPEN`
+
+Source change and ownership:
+
+- Pushed source head: `be6cc84979e57f910dc9d952c9222317ae721b7c`.
+- `SSMCompanionDiskStore.candidate_lengths()` lazily indexes valid sidecar
+  `num_tokens` boundaries after process restart.
+- `SSMCompanionCache.fetch_longest_prefix()` merges those shorter L2
+  boundaries with its L1 index only after an exact-boundary miss.
+- Candidate discovery is not acceptance. The normal typed `fetch()` still
+  recomputes the model/prefix key and validates record version, runtime cache
+  fingerprint, safetensors header, tensor reconstruction, and completeness.
+  Attention-KV-only hybrid hits still fall back safely.
+
+Remote focused verification on `Erics-M5-Max.lan`:
+
+- `tests/test_ssm_companion_cache.py` -> `54 passed`.
+- `tests/test_mllm_scheduler_cache.py tests/test_cache_bypass.py` ->
+  `167 passed, 4 skipped`.
+- Python compile and `git diff --check` -> pass.
+
+Live current-source Electron/API proof:
+
+- Real Electron Save & Restart loaded pushed source into PIDs `74037` and
+  `74256`; the local stale installed `1.6.9` app was not used.
+- A unique 37,863-character system prefix established a real multi-turn cache
+  lineage through the Electron gateway. The resident setup hit saved `9,279`
+  tokens and exact-finaled the requested markers.
+- To prove the shorter-checkpoint branch rather than another exact restore,
+  the test-specific exact `9,279`-token SSM sidecar for that unique prefix was
+  removed after restart while the `9,216`-token typed checkpoint and attention
+  block L2 records remained. No unrelated cache root or entry was removed.
+- Paged RAM on:
+  - block L2 found `145` q4-TQ attention blocks / `9,279` tokens;
+  - SSM L2 restored the shorter `9,216`-token checkpoint (`24` typed states);
+  - hit credit was reduced from `9,279` to `9,216`;
+  - only `109` tail tokens were prefetched;
+  - visible SSE exact-finaled `R17-SSD-PARTIAL-C`, one `stop`, one `[DONE]`.
+- Paged RAM off + Block Disk on:
+  - health before and after showed `backend_mode=block_disk_only`,
+    `paged_ram_enabled=false`, `disk_only=true`, `ram_tokens_cached=0`, and
+    `l1_resident_bytes=0`;
+  - block L2 again found `145` q4-TQ blocks / `9,279` tokens;
+  - SSM L2 restored `9,216` tokens and prefetched only the `115`-token tail;
+  - visible SSE exact-finaled `R17-SSD-ONLY-PARTIAL-D`, one `stop`, one
+    `[DONE]`;
+  - `candidate_length_scans=1`, one typed disk hit, and no unsafe full-credit
+    KV-only acceptance.
+- Electron settings were restored to supported Paged RAM on + Block Disk on;
+  final engine PID is `74400`.
+
+Retained evidence:
+
+- `ornith-partial-ssd-restart.json` in this directory.
+
+Boundary:
+
+- This closes the hybrid Qwen/Ornith archetype for restart partial SSD
+  discovery with Paged RAM both on and off. It does not inherit closure for
+  Laguna/Gemma rotating state, MiniMax-M3 sparse/indexer state, DSV4 composite
+  state, ZAYA CCA, or openPangu native prompt state.
