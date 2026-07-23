@@ -20,8 +20,10 @@ Reconciled evidence cutoff:
 - clean source checkout: `/Users/eric/mlx/vllm-mlx-r16-reasoning-p0`;
 - live proof checkout: `erics-m5-max.local:/Users/eric/mlx/vllm-mlx-r16-reasoning-p0-live`;
 - the branch is pushed but not yet release-integrated into `origin/main`;
-- version surfaces remain 1.6.15. Do not bump until the selected runtime cutoff
-  stops changing.
+- source/package version surfaces are already `1.6.16`
+  (`pyproject.toml`, `panel/package.json`, and `panel/package-lock.json`);
+  public updater `latest.json` remains `1.6.15` until signed/notarized 1.6.16
+  artifacts are published.
 
 Historical matrices were also inspected but are not silently authoritative:
 
@@ -329,6 +331,13 @@ with an easier unrelated model.
 - [ ] Audit `/Users/eric/jang` missing/untracked production files. Move only
   reviewed production changes into a clean branch, run its full relevant suite,
   push the exact JANG source, and version it only if package behavior changes.
+- [x] Clean JANG source prepared for this checkpoint:
+  `/Users/eric/jang/jang-tools-r16-2534`, branch
+  `codex/r16-vmlx-1.6.16-jang-tools`, head `6e28ff2`, version `2.5.34`.
+  Pushed to `jjang-ai/jangq` and `jangq-ai/jangq`. Focused DSV4 pool/pack/
+  format/writer tests passed `53/53`; sdist/wheel passed `twine check`.
+  PyPI upload remains blocked by missing API-token credentials, so release
+  packaging must use `VMLINUX_JANG_TOOLS_SOURCE` pointing at that clean source.
 - [ ] Finish minimum-width and translated UI states, secondary modals,
   keyboard/screen-reader semantics, stale missing-model-path repoint/remove,
   wait/empty/image states, and dead/zombie owner cleanup.
@@ -353,7 +362,15 @@ Checkpoint update at `74dadd30c`:
 - [ ] Run the full Python suite, full panel Vitest, typecheck, production build,
   bundled-Python/source parity, release regression manifest, and clean-diff
   checks on the final cutoff. Focused suites do not count.
-- [ ] Bump all version surfaces to 1.6.16 only after the cutoff is frozen.
+- [x] Source/package version surfaces are bumped to 1.6.16. Public updater
+  `latest.json` must stay at 1.6.15 until the Sequoia/Tahoe artifacts are
+  signed, notarized, uploaded, re-downloaded, and hashed.
+- [x] Scoped emergency preflight exists and passed:
+  `panel/scripts/scoped-release-preflight-16.py --out
+  build/current-scoped-release-preflight-16-parser-cache.json`, with
+  `VMLINUX_RELEASE_SCOPE=r16_parser_cache`. This clears only the parser/cache
+  checkpoint package boundary; the broad historical release manifest remains
+  red and the full matrix remains open.
 - [ ] Build separate Sequoia and Tahoe apps/DMGs from the same provenance
   manifest; Developer ID sign, notarize, staple, deep codesign verify,
   Gatekeeper verify, and hash.

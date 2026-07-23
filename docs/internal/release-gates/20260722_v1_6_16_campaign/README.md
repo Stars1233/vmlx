@@ -56,9 +56,11 @@ is shown unchanged or the proof is rerun.
 
 GitHub currently exposes public `v1.6.15` as the latest release, published
 2026-07-22 at 09:05:45 UTC. The annotated tag resolves to
-`2dc90921ea8604f4ec4c62e196621007fbb1cbbf`; the source checkout's version
-surfaces (`pyproject.toml`, `panel/package.json`, and `latest.json`) remain
-1.6.15. The `jjang-ai/vmlx` **source** release has zero attached assets by
+`2dc90921ea8604f4ec4c62e196621007fbb1cbbf`. Current source/package version
+surfaces (`pyproject.toml`, `panel/package.json`, and `panel/package-lock.json`)
+are already bumped to `1.6.16`; the public updater manifest `latest.json`
+correctly remains `1.6.15` until a signed/notarized 1.6.16 distribution is
+published. The `jjang-ai/vmlx` **source** release has zero attached assets by
 design. The separate `jjang-ai/mlxstudio` **distribution** release currently
 has four public assets: Sequoia and Tahoe DMGs plus both blockmaps. Its DMG
 digests match the retained checkpoint evidence:
@@ -145,6 +147,115 @@ For every live model generation retained as evidence:
 | `R16-RESPONSIVE-UX` | `PARTIAL` | Preserve current min-width toolbar/drawer fixes. Exercise remaining wait/empty/image states, secondary modals, translated labels, keyboard/screen-reader semantics, stale missing-path repoint/remove UX, and the new cache labels at minimum width. Remove dead/zombie source when an owning path is replaced, with focused tests. |
 | `R16-FULL-SUITES` | `STALE-MUST-RERUN-AFTER-CUTOFF` | Run full Python pytest, full panel Vitest, TypeScript typecheck, production Electron build, bundled-Python verification, clean-JANG parity, and release regression manifest after the final source cutoff. Focused suites do not close this row. |
 | `R16-RELEASE` | `BLOCKED` | Only after selected P0s and declared P1 cutoff are `VERIFIED-LIVE`: bump every version surface to 1.6.16, build from a clean pinned JANG tree, create separate Sequoia/Tahoe DMGs, Developer ID sign, notarize, staple, deep verify, Gatekeeper verify, install-smoke both, run signed-app Electron/API/cache proofs, tag exact built source, publish GitHub source/MLXStudio/PyPI/Homebrew/updater manifests, re-download public artifacts, verify hashes/version truth, and update this board plus the ledger. |
+
+### Scoped emergency packaging gate
+
+Commit-local script `panel/scripts/scoped-release-preflight-16.py` defines the
+only currently passing package-clearance scope:
+`VMLINUX_RELEASE_SCOPE=r16_parser_cache`. It validates current source/package
+version truth, cache-label/UI artifacts, Bonsai/Laguna/Gemma partial SSD cache
+artifacts with Paged RAM on/off, Laguna four-block RAM pressure/refault,
+Laguna `Block Cache Max (GB)=0.25` SSD-budget refault, Gemma/Laguna/Bonsai/Qwen
+reasoning/tool protocol artifacts, and the exact retained release-gate docs.
+
+The scoped preflight passed from the current checkout:
+
+```text
+python3 panel/scripts/scoped-release-preflight-16.py \
+  --out build/current-scoped-release-preflight-16-parser-cache.json
+scope=r16_parser_cache
+version=1.6.16
+status=pass
+```
+
+The regular broad `release:prepackage` manifest remains red because old
+full-matrix June artifacts and unselected family/media/stress rows are still
+missing or partial. A release using `r16_parser_cache` is therefore an explicit
+1.6.16 emergency checkpoint, not a claim that the full matrix is closed.
+
+### JANG package provenance for this checkpoint
+
+Packaging must not use the dirty older `/Users/eric/jang/jang-tools` checkout.
+The clean JANG source for this checkpoint is:
+
+```text
+/Users/eric/jang/jang-tools-r16-2534
+branch: codex/r16-vmlx-1.6.16-jang-tools
+head: 6e28ff20f6f2df60145a4c05fcbd77423b0745c2
+version: jang 2.5.34
+```
+
+Pushed remotes:
+
+```text
+jjang-ai/jangq: codex/r16-vmlx-1.6.16-jang-tools
+jangq-ai/jangq: codex/r16-vmlx-1.6.16-jang-tools
+```
+
+Focused JANG proof in that clean worktree:
+
+```text
+pytest tests/dsv4_pool_quant_cache_residency_test.py \
+  tests/test_pack.py tests/test_format.py tests/test_writer.py
+53 passed
+```
+
+Built package artifacts passed `twine check`:
+
+```text
+dist-r16-2534-20260722195406/jang-2.5.34-py3-none-any.whl
+dist-r16-2534-20260722195406/jang-2.5.34.tar.gz
+```
+
+PyPI publish is still blocked by credentials: `twine upload --non-interactive`
+returned `Credential not found for API token`, and this environment has no
+`TWINE_*`, `PYPI_TOKEN`, or `~/.pypirc`. Until that is resolved, vMLX builds
+must set:
+
+```text
+VMLINUX_JANG_TOOLS_SOURCE=/Users/eric/jang/jang-tools-r16-2534/jang-tools
+```
+
+### Current source build precheck
+
+After the JANG source was pinned, the current vMLX checkout passed the scoped
+source/build precheck:
+
+```text
+panel/scripts/scoped-release-preflight-16.py
+status=pass
+
+pytest tests/test_scoped_release_preflight_16.py
+2 passed
+
+npm --prefix panel test -- --run tests/cache-control-policy.test.ts
+18 passed
+
+npm --prefix panel run typecheck
+pass
+
+VMLINUX_JANG_TOOLS_SOURCE=/Users/eric/jang/jang-tools-r16-2534/jang-tools \
+  npm --prefix panel run build
+pass
+```
+
+Bundled Python verification imported `vmlx_engine 1.6.16`, installed local
+`jang-2.5.34`, verified no editable installs, relocatable shebangs, and source
+parity for critical `vmlx_engine` and `jang_tools` files. The renderer
+production build emitted KaTeX assets. Focused renderer tests for the LaTeX and
+reasoning display regression also passed:
+
+```text
+npm --prefix panel test -- --run \
+  tests/math-markdown.test.ts \
+  tests/interleaved-reasoning-render.test.ts \
+  tests/reasoning-display.test.ts
+124 passed
+```
+
+This is still not a release claim. Live raw API LaTeX byte-fidelity, live
+Electron math rendering, current-head reasoning/tool stream proof, signed-app
+smoke, notarization, and public re-download/hash verification remain pending.
 
 ## Non-repetitive execution order
 

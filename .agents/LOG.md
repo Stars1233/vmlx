@@ -1755,3 +1755,56 @@
   `docs/internal/release-gates/20260722_laguna_r16_parser_ui_api/laguna-block-disk-gb-cap-eviction-025gb.json`.
   Cache matrix remains partial for corrupt/missing companion fallback and
   untested architecture archetypes.
+
+## 2026-07-22 - 1.6.16 scoped parser/cache preflight
+
+- Added fail-closed `panel/scripts/scoped-release-preflight-16.py` and wired
+  `panel/scripts/build-release-dmgs.sh` to accept
+  `VMLINUX_RELEASE_SCOPE=r16_parser_cache`.
+- The scoped gate validates only the emergency 1.6.16 parser/cache release
+  checkpoint: source/package version stamps, updater hold at 1.6.15, cache
+  terminology artifacts, Bonsai/Laguna/Gemma partial SSD cache with Paged RAM
+  on/off, Laguna four-block RAM refault, Laguna 0.25 GB Block Disk cap refault,
+  and current Gemma/Laguna/Bonsai/Qwen API reasoning/tool artifacts.
+- Ran:
+  `python3 panel/scripts/scoped-release-preflight-16.py --out build/current-scoped-release-preflight-16-parser-cache.json`
+  and it reported `scope=r16_parser_cache`, `version=1.6.16`, `status=pass`.
+- Also exercised the same preflight invocation shape used by the build script
+  with `VERSION` read from `panel/package.json`; it reported `status=pass`.
+- This does not close the broad old release regression manifest or full
+  cross-family matrix. It only provides an auditable package-clearance path for
+  a user-approved 1.6.16 emergency parser/cache checkpoint.
+
+## 2026-07-22 - JANG 2.5.34 release provenance
+
+- The default `/Users/eric/jang/jang-tools` checkout was dirty and on older
+  `2.5.30`; production build correctly refused to bundle it.
+- Created clean worktree
+  `/Users/eric/jang/jang-tools-r16-2534` from current JANG `origin/main`
+  (`2.5.33`), branch `codex/r16-vmlx-1.6.16-jang-tools`.
+- Cherry-picked `8ae60a7` as `e3c4c24` to preserve DSV4 adaptive pool-cache
+  residency, bumped package metadata to `2.5.34` in `6e28ff2`, and pushed the
+  branch to both `jjang-ai/jangq` and `jangq-ai/jangq`.
+- Ran focused JANG verification in the clean worktree:
+  `53 passed` for DSV4 pool residency, pack, format, and writer tests, plus
+  `py_compile` for the touched modules.
+- Built `jang-2.5.34` sdist/wheel and `twine check` passed. PyPI upload is
+  blocked by missing API-token credentials, not by package validation.
+
+## 2026-07-22 - 1.6.16 source build and math renderer precheck
+
+- Reran scoped vMLX preflight, scoped Python regression, cache-control policy,
+  TypeScript, and diff-check; all passed.
+- Ran `npm --prefix panel run build` with
+  `VMLINUX_JANG_TOOLS_SOURCE=/Users/eric/jang/jang-tools-r16-2534/jang-tools`.
+  The previous dirty-JANG guard no longer fired; bundled Python installed local
+  `vmlx-1.6.16` and local clean `jang-2.5.34`.
+- Bundled verification reported critical `vmlx_engine` and `jang_tools` files
+  match source content, no editable installs, relocatable scripts, and critical
+  import coverage including Gemma4, Qwen3-VL, JANGTQ, MiniMax, Step3.7, and
+  audio/vision dependencies.
+- Production renderer build completed and emitted KaTeX assets, which is the
+  expected shipped path for the LaTeX display regression.
+- Renderer focused tests for math markdown, reasoning display, and interleaved
+  reasoning rendering passed `124/124`. Live API/Electron math proof remains
+  pending; this row is source/build precheck only.

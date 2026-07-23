@@ -7872,3 +7872,77 @@ Status: `VERIFIED-LIVE_SCOPED / CACHE MATRIX PARTIAL`.
   `docs/internal/release-gates/20260722_laguna_r16_parser_ui_api/laguna-block-disk-gb-cap-eviction.json`
   and
   `docs/internal/release-gates/20260722_laguna_r16_parser_ui_api/laguna-block-disk-gb-cap-eviction-025gb.json`.
+
+## 2026-07-22 - 1.6.16 scoped emergency preflight
+
+Status: `SCOPED_PREPACKAGE_PASS / BROAD_MATRIX_STILL_OPEN`.
+
+- Added `panel/scripts/scoped-release-preflight-16.py`.
+- Added `VMLINUX_RELEASE_SCOPE=r16_parser_cache` support to
+  `panel/scripts/build-release-dmgs.sh`.
+- The new scope is fail-closed and validates current retained artifacts for:
+  source/package `1.6.16`, `latest.json` still `1.6.15` before publish,
+  cache terminology UI proof, Bonsai/Laguna/Gemma partial SSD cache with
+  Paged RAM on/off, Laguna four-block RAM eviction/refault, Laguna 0.25 GB
+  Block Disk cap eviction/refault, and current Gemma/Laguna/Bonsai/Qwen
+  reasoning/tool protocol evidence.
+- Direct run passed:
+  `python3 panel/scripts/scoped-release-preflight-16.py --out build/current-scoped-release-preflight-16-parser-cache.json`
+  -> `scope=r16_parser_cache`, `version=1.6.16`, `status=pass`.
+- Build-script invocation shape also passed with `VERSION` read from
+  `panel/package.json`.
+- This is not a full release-matrix pass. The regular broad
+  `release:prepackage` manifest remains red against old full-matrix artifacts
+  and unselected family/media/stress rows. A `.16` release using this scope must
+  be described as an emergency parser/cache checkpoint, not as complete
+  campaign closure.
+
+## 2026-07-22 - JANG 2.5.34 provenance for 1.6.16 release build
+
+Status: `GITHUB_PUSHED / PYPI_CREDENTIAL_BLOCKED`.
+
+- Created clean JANG worktree from `jjang-ai/jangq` `origin/main` at
+  `b788273` and branch `codex/r16-vmlx-1.6.16-jang-tools`.
+- Ported the DSV4 adaptive pool-cache residency fix as `e3c4c24` and bumped
+  `jang-tools/pyproject.toml` to `2.5.34` in `6e28ff2`.
+- Pushed branch `codex/r16-vmlx-1.6.16-jang-tools` to both remotes:
+  `jjang-ai/jangq` and `jangq-ai/jangq`.
+- Focused JANG checks passed in the clean worktree:
+  `python -m py_compile jang_tools/dsv4/pool_quant_cache.py jang_tools/pack.py jang_tools/format/spec.py jang_tools/format/writer.py`
+  and
+  `pytest tests/dsv4_pool_quant_cache_residency_test.py tests/test_pack.py tests/test_format.py tests/test_writer.py`
+  -> `53 passed`.
+- Built and checked PyPI artifacts:
+  `dist-r16-2534-20260722195406/jang-2.5.34-py3-none-any.whl` and
+  `dist-r16-2534-20260722195406/jang-2.5.34.tar.gz`; `twine check` passed.
+- PyPI upload did not complete: `twine upload --non-interactive ...` returned
+  `Credential not found for API token`; environment has no `TWINE_*`,
+  `PYPI_TOKEN`, or `~/.pypirc`.
+- vMLX release packaging must use
+  `VMLINUX_JANG_TOOLS_SOURCE=/Users/eric/jang/jang-tools-r16-2534/jang-tools`
+  until PyPI credentials are supplied and `jang==2.5.34` is public.
+
+## 2026-07-22 - 1.6.16 build and renderer math precheck
+
+Status: `SOURCE_BUILD_PASS / LIVE_SIGNED_APP_PENDING`.
+
+- Reran scoped vMLX checks after JANG provenance docs:
+  `panel/scripts/scoped-release-preflight-16.py` -> `status=pass`;
+  `tests/test_scoped_release_preflight_16.py` -> `2 passed`;
+  `panel/tests/cache-control-policy.test.ts` -> `18 passed`;
+  `npm --prefix panel run typecheck` -> pass;
+  `git diff --check` -> pass.
+- Ran production build with:
+  `VMLINUX_JANG_TOOLS_SOURCE=/Users/eric/jang/jang-tools-r16-2534/jang-tools npm --prefix panel run build`.
+- Build passed. Bundled Python verification imported `vmlx_engine 1.6.16`,
+  installed local `jang-2.5.34`, verified no editable installs, relocatable
+  shebangs, vMLX source parity, and `jang_tools` source parity.
+- Renderer production build emitted KaTeX assets and completed Electron main,
+  preload, and renderer bundles.
+- Renderer math/reasoning tests passed:
+  `npm --prefix panel test -- --run tests/math-markdown.test.ts tests/interleaved-reasoning-render.test.ts tests/reasoning-display.test.ts`
+  -> `124 passed`.
+- Still pending before release claim: live raw API byte-fidelity for LaTeX,
+  live Electron visual math rendering, current-head reasoning_content/tool
+  streaming proof, signed/notarized DMG build, install smoke, and public
+  re-download/hash verification.
