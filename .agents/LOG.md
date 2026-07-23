@@ -1676,6 +1676,12 @@
   suffix D restored 4,672 SSD tokens as `paged+mixed_swa+disk`; Paged-Off
   disk-only restart suffix C restored 4,672 SSD tokens as
   `block-disk+mixed_swa` with `ram_tokens_cached=0`.
+- While the same Gemma session was loaded, captured three visible UI turns:
+  separate reasoning rail plus exact answer, multi-turn recall with
+  `68 paged+mixed_swa cached`, and one real `Info panel/package.json` tool card
+  with exact final. Gateway Chat and Responses streamed separate reasoning and
+  content; gateway Chat emitted a required `file_info` call and completed the
+  tool-result continuation exactly.
 - Added the focused cache-control policy regression that Block Disk SSD/L2
   stays available whether Paged RAM is on or off, and that legacy disk is only
   available after both Paged RAM and Block Disk L2 are off. After syncing the

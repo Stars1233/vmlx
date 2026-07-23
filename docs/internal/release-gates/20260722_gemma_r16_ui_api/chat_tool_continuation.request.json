@@ -1,0 +1,39 @@
+{
+  "enable_thinking": true,
+  "max_thinking_tokens": 512,
+  "max_tokens": 768,
+  "messages": [
+    {
+      "content": "[GEMMA-R16-API-TOOL] Call file_info exactly once with path panel/package.json. Do not answer from memory.",
+      "role": "user"
+    },
+    {
+      "content": null,
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "function": {
+            "arguments": "{\"path\": \"panel/package.json\"}",
+            "name": "file_info"
+          },
+          "id": "call_841f7975",
+          "type": "function"
+        }
+      ]
+    },
+    {
+      "content": "{\"path\":\"panel/package.json\",\"size\":\"5.2 KB\"}",
+      "role": "tool",
+      "tool_call_id": "call_841f7975"
+    },
+    {
+      "content": "After the tool result, reply exactly GEMMA-R16-API-TOOL-DONE SIZE=5.2 KB and nothing else.",
+      "role": "user"
+    }
+  ],
+  "model": "jangq-ai/gemma-4-E2B-it-qat-JANG_4M",
+  "stream": true,
+  "temperature": 0,
+  "top_k": 64,
+  "top_p": 1
+}

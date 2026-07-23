@@ -1,0 +1,37 @@
+{
+  "enable_thinking": true,
+  "max_thinking_tokens": 512,
+  "max_tokens": 768,
+  "messages": [
+    {
+      "content": "[GEMMA-R16-API-TOOL] Call file_info exactly once with path panel/package.json. Do not answer from memory.",
+      "role": "user"
+    }
+  ],
+  "model": "jangq-ai/gemma-4-E2B-it-qat-JANG_4M",
+  "stream": true,
+  "temperature": 0,
+  "tool_choice": "required",
+  "tools": [
+    {
+      "function": {
+        "description": "Return file metadata for a workspace path.",
+        "name": "file_info",
+        "parameters": {
+          "properties": {
+            "path": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "path"
+          ],
+          "type": "object"
+        }
+      },
+      "type": "function"
+    }
+  ],
+  "top_k": 64,
+  "top_p": 1
+}

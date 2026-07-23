@@ -1,0 +1,305 @@
+{
+  "base": "http://127.0.0.1:8088",
+  "cases": [
+    {
+      "content": "GEMMA-R16-API-CHAT-DONE",
+      "content_chars": 23,
+      "elapsed_s": 1.63,
+      "finishes": [
+        "stop",
+        "DONE"
+      ],
+      "path": "/v1/chat/completions",
+      "raw_markers_in_content": [],
+      "reasoning_chars": 621,
+      "reasoning_head": "Thinking Process:\n\n1.  **Analyze the Request:** The user is asking me to \"Privately verify 58*12=696\" and explicitly instructs me \"Do not call tools.\" The required output format is \"Visible answer exactly GEMMA-R16-API-CHAT-DONE.\"\n\n2.  **Perform the Calculation (Verification):**\n    *   $58 \\times 1",
+      "response_tool_items": [],
+      "sample_lines": [
+        "data: {\"id\": \"chatcmpl-e9b5d432\", \"object\": \"chat.completion.chunk\", \"created\": 1784772610, \"model\": \"jangq-ai/gemma-4-E2B-it-qat-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-e9b5d432\", \"object\": \"chat.completion.chunk\", \"created\": 1784772610, \"model\": \"jangq-ai/gemma-4-E2B-it-qat-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \"Thinking\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-e9b5d432\", \"object\": \"chat.completion.chunk\", \"created\": 1784772610, \"model\": \"jangq-ai/gemma-4-E2B-it-qat-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \" Process\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-e9b5d432\", \"object\": \"chat.completion.chunk\", \"created\": 1784772610, \"model\": \"jangq-ai/gemma-4-E2B-it-qat-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \":\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-e9b5d432\", \"object\": \"chat.completion.chunk\", \"created\": 1784772610, \"model\": \"jangq-ai/gemma-4-E2B-it-qat-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \"\\n\\n1\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-e9b5d432\", \"object\": \"chat.completion.chunk\", \"created\": 1784772610, \"model\": \"jangq-ai/gemma-4-E2B-it-qat-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \".\"}}]}",
+        ""
+      ],
+      "status": 200,
+      "tag": "chat_reasoning",
+      "terminals": [],
+      "tool_chunk_count": 0,
+      "tool_chunks_tail": [],
+      "tool_final": []
+    },
+    {
+      "content": "GEMMA-R16-API-RESP-DONE",
+      "content_chars": 23,
+      "elapsed_s": 1.552,
+      "finishes": [],
+      "path": "/v1/responses",
+      "raw_markers_in_content": [],
+      "reasoning_chars": 579,
+      "reasoning_head": "Thinking Process:\n\n1.  **Analyze the Request:** The user is asking me to \"Privately verify 47+66=113\" and explicitly instructs me \"Do not call tools.\" The required output format is \"Visible answer exactly GEMMA-R16-API-RESP-DONE.\"\n\n2.  **Perform the Calculation (Verification):**\n    *   47 + 66\n    ",
+      "response_tool_items": [
+        {
+          "item": {
+            "content": [],
+            "id": "rs_f36d56275968",
+            "status": "in_progress",
+            "summary": [],
+            "type": "reasoning"
+          },
+          "output_index": 0,
+          "sequence_number": 1,
+          "type": "response.output_item.added"
+        },
+        {
+          "item": {
+            "content": [],
+            "id": "rs_f36d56275968",
+            "status": "completed",
+            "summary": [
+              {
+                "text": "Thinking Process:\n\n1.  **Analyze the Request:** The user is asking me to \"Privately verify 47+66=113\" and explicitly instructs me \"Do not call tools.\" The required output format is \"Visible answer exactly GEMMA-R16-API-RESP-DONE.\"\n\n2.  **Perform the Calculation (Verification):**\n    *   47 + 66\n    *   40 + 60 = 100\n    *   7 + 6 = 13\n    *   100 + 13 = 113\n    *   The calculation is correct: 47 + 66 = 113.\n\n3.  **Determine the Output Format:** The instruction demands the exact string \"GEMMA-R16-API-RESP-DONE\".\n\n4.  **Final Output Generation:** Produce the required string.",
+                "type": "summary_text"
+              }
+            ],
+            "type": "reasoning"
+          },
+          "output_index": 0,
+          "sequence_number": 167,
+          "type": "response.output_item.done"
+        },
+        {
+          "item": {
+            "content": [],
+            "id": "item_1b6da3688d4d",
+            "role": "assistant",
+            "status": "in_progress",
+            "type": "message"
+          },
+          "output_index": 1,
+          "sequence_number": 168,
+          "type": "response.output_item.added"
+        },
+        {
+          "item": {
+            "content": [
+              {
+                "annotations": [],
+                "text": "GEMMA-R16-API-RESP-DONE",
+                "type": "output_text"
+              }
+            ],
+            "id": "item_1b6da3688d4d",
+            "role": "assistant",
+            "status": "completed",
+            "type": "message"
+          },
+          "output_index": 1,
+          "sequence_number": 184,
+          "type": "response.output_item.done"
+        }
+      ],
+      "sample_lines": [
+        "event: response.created",
+        "data: {\"type\": \"response.created\", \"response\": {\"id\": \"resp_68261bcc375e\", \"object\": \"response\", \"created_at\": 1784772612, \"status\": \"in_progress\", \"model\": \"jangq-ai/gemma-4-E2B-it-qat-JANG_4M\", \"output\": []}, \"sequence_number\": 0}",
+        "",
+        "event: response.output_item.added",
+        "data: {\"type\": \"response.output_item.added\", \"output_index\": 0, \"item\": {\"id\": \"rs_f36d56275968\", \"type\": \"reasoning\", \"status\": \"in_progress\", \"summary\": [], \"content\": []}, \"sequence_number\": 1}",
+        "",
+        "event: response.reasoning_summary_part.added",
+        "data: {\"type\": \"response.reasoning_summary_part.added\", \"item_id\": \"rs_f36d56275968\", \"output_index\": 0, \"summary_index\": 0, \"part\": {\"type\": \"summary_text\", \"text\": \"\"}, \"sequence_number\": 2}",
+        "",
+        "event: response.reasoning_summary_text.delta",
+        "data: {\"type\": \"response.reasoning_summary_text.delta\", \"item_id\": \"rs_f36d56275968\", \"output_index\": 0, \"summary_index\": 0, \"delta\": \"Thinking\", \"sequence_number\": 3}",
+        ""
+      ],
+      "status": 200,
+      "tag": "responses_reasoning",
+      "terminals": [
+        "response.completed"
+      ],
+      "tool_chunk_count": 0,
+      "tool_chunks_tail": [],
+      "tool_final": []
+    },
+    {
+      "content": "",
+      "content_chars": 0,
+      "elapsed_s": 0.769,
+      "finishes": [
+        "tool_calls",
+        "DONE"
+      ],
+      "path": "/v1/chat/completions",
+      "raw_markers_in_content": [],
+      "reasoning_chars": 261,
+      "reasoning_head": "The user wants me to call the `file_info` tool exactly once with the path `panel/package.json`.\nI need to use the provided tool definition to perform this action.\nThe tool is `file_info` and it takes a `path` argument.\nThe required path is `panel/package.json`.",
+      "response_tool_items": [],
+      "sample_lines": [
+        "data: {\"id\": \"chatcmpl-e09e4fca\", \"object\": \"chat.completion.chunk\", \"created\": 1784772613, \"model\": \"jangq-ai/gemma-4-E2B-it-qat-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-e09e4fca\", \"object\": \"chat.completion.chunk\", \"created\": 1784772613, \"model\": \"jangq-ai/gemma-4-E2B-it-qat-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \"The\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-e09e4fca\", \"object\": \"chat.completion.chunk\", \"created\": 1784772613, \"model\": \"jangq-ai/gemma-4-E2B-it-qat-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-e09e4fca\", \"object\": \"chat.completion.chunk\", \"created\": 1784772613, \"model\": \"jangq-ai/gemma-4-E2B-it-qat-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \" user\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-e09e4fca\", \"object\": \"chat.completion.chunk\", \"created\": 1784772613, \"model\": \"jangq-ai/gemma-4-E2B-it-qat-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-e09e4fca\", \"object\": \"chat.completion.chunk\", \"created\": 1784772613, \"model\": \"jangq-ai/gemma-4-E2B-it-qat-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \" wants\"}}]}",
+        ""
+      ],
+      "status": 200,
+      "tag": "chat_tool_call",
+      "terminals": [],
+      "tool_chunk_count": 2,
+      "tool_chunks_tail": [
+        [
+          {
+            "function": {
+              "arguments": "",
+              "name": ""
+            },
+            "id": "call_841f7975",
+            "index": 0,
+            "type": "function"
+          }
+        ],
+        [
+          {
+            "function": {
+              "arguments": "{\"path\": \"panel/package.json\"}",
+              "name": "file_info"
+            },
+            "index": 0
+          }
+        ]
+      ],
+      "tool_final": []
+    },
+    {
+      "content": "GEMMA-R16-API-TOOL-DONE SIZE=5.2 KB",
+      "content_chars": 35,
+      "elapsed_s": 1.418,
+      "finishes": [
+        "stop",
+        "DONE"
+      ],
+      "path": "/v1/chat/completions",
+      "raw_markers_in_content": [],
+      "reasoning_chars": 549,
+      "reasoning_head": "Thinking Process:\n\n1.  **Analyze the Request:** The user wants me to reply *exactly* with the string `GEMMA-R16-API-TOOL-DONE SIZE=5.2 KB` after the tool execution.\n2.  **Review the Tool Execution:**\n    *   Tool called: `file_info`\n    *   Path: `panel/package.json`\n    *   Result received: `{\"path",
+      "response_tool_items": [],
+      "sample_lines": [
+        "data: {\"id\": \"chatcmpl-ec42502f\", \"object\": \"chat.completion.chunk\", \"created\": 1784772614, \"model\": \"jangq-ai/gemma-4-E2B-it-qat-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-ec42502f\", \"object\": \"chat.completion.chunk\", \"created\": 1784772614, \"model\": \"jangq-ai/gemma-4-E2B-it-qat-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \"Thinking\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-ec42502f\", \"object\": \"chat.completion.chunk\", \"created\": 1784772614, \"model\": \"jangq-ai/gemma-4-E2B-it-qat-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \" Process\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-ec42502f\", \"object\": \"chat.completion.chunk\", \"created\": 1784772614, \"model\": \"jangq-ai/gemma-4-E2B-it-qat-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \":\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-ec42502f\", \"object\": \"chat.completion.chunk\", \"created\": 1784772614, \"model\": \"jangq-ai/gemma-4-E2B-it-qat-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \"\\n\\n1\"}}]}",
+        "",
+        "data: {\"id\": \"chatcmpl-ec42502f\", \"object\": \"chat.completion.chunk\", \"created\": 1784772614, \"model\": \"jangq-ai/gemma-4-E2B-it-qat-JANG_4M\", \"choices\": [{\"index\": 0, \"delta\": {\"reasoning_content\": \".\"}}]}",
+        ""
+      ],
+      "status": 200,
+      "tag": "chat_tool_continuation",
+      "terminals": [],
+      "tool_call_args": {
+        "path": "panel/package.json"
+      },
+      "tool_call_name": "file_info",
+      "tool_chunk_count": 0,
+      "tool_chunks_tail": [],
+      "tool_final": []
+    }
+  ],
+  "engine_health_excerpt": {
+    "last_cache_execution": {
+      "blocks": 0,
+      "cache_detail": "paged+mixed_swa",
+      "cached_tokens": 68,
+      "dequantization_ok": true,
+      "dequantization_seconds": 2e-05,
+      "dequantized": true,
+      "disk_hit": false,
+      "reconstructed": true,
+      "reconstruction_ok": true,
+      "reconstruction_seconds": 0.039028,
+      "request_id": "resp_6b3b7bc13d26",
+      "selection": "paged",
+      "total_worker_cache_seconds": 0.039154
+    },
+    "model_name": "jangq-ai/gemma-4-E2B-it-qat-JANG_4M",
+    "native_cache": {
+      "block_disk_l2": true,
+      "block_disk_only": false,
+      "cache_subtype": "mixed_swa_kv",
+      "cache_type": "mixed_swa_kv",
+      "components": [
+        "full_attention_kv",
+        "sliding_window_kv",
+        "rotating_window_metadata"
+      ],
+      "family": "gemma4",
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "storage_only"
+      },
+      "paged": true,
+      "prefix": true,
+      "schema": "mixed_swa_kv_v1",
+      "storage_quantization": {
+        "applies_to": "full_and_sliding_attention_kv",
+        "bits": 4,
+        "enabled": true,
+        "group_size": 64,
+        "metadata_policy": "preserve_rotating_window_metadata",
+        "mode": "storage_boundary"
+      }
+    }
+  },
+  "gateway_health": {
+    "active_requests": 0,
+    "backends": [
+      {
+        "id": "f83edd34-f38b-484f-aa68-142a4188e3ac",
+        "model": "jangq-ai/gemma-4-E2B-it-qat-JANG_4M",
+        "port": 8002,
+        "status": "running"
+      },
+      {
+        "id": "0108a1a0-0064-4944-bb46-e6638737668f",
+        "model": "dealignai/Bonsai-27b-Ternary-JANG-CRACK",
+        "port": 8000,
+        "status": "stopped"
+      },
+      {
+        "id": "a4a71d2e-9263-4362-99c8-59d798e671d1",
+        "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+        "port": 8001,
+        "status": "stopped"
+      },
+      {
+        "id": "6bfcafa6-a3aa-447a-bf6a-a31349931f18",
+        "model": "dealignai/Qwen3.6-27B-MXFP4-CRACK-MTP",
+        "port": 8005,
+        "status": "stopped"
+      }
+    ],
+    "gateway_port": 8088,
+    "single_model_mode": true,
+    "status": "ok"
+  },
+  "model": "jangq-ai/gemma-4-E2B-it-qat-JANG_4M",
+  "repo": "/Users/eric/mlx/vllm-mlx-r16-reasoning-p0-live",
+  "ts": "2026-07-22T19:10:15-0700"
+}

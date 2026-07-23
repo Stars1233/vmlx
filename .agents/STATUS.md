@@ -7775,6 +7775,12 @@ Status: `VERIFIED-LIVE_SCOPED / CACHE MATRIX PARTIAL`.
   `tests/cache-control-policy.test.ts` passed `18/18`.
 - Evidence is retained under
   `docs/internal/release-gates/20260722_cache_partial_bonsai_gemma_laguna/`.
+- Gemma UI/API reasoning and tool proof is retained under
+  `docs/internal/release-gates/20260722_gemma_r16_ui_api/`: three visible
+  Electron turns had separate reasoning rails, exact answers, one real
+  `Info panel/package.json` tool card, and no marker/math garbage; gateway Chat
+  and Responses streamed separate reasoning and content, and gateway Chat
+  completed a required-tool plus tool-result continuation.
 - Still open before cache release closure: low-limit `Max Cache Blocks`
   eviction/refault, low-limit `Block Cache Max (GB)` eviction/refault, safe
   corrupt/missing companion fallback, and remaining architecture archetypes
