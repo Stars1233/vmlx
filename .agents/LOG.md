@@ -1696,3 +1696,22 @@
 - Updated the campaign README and ranked open issues. Bounded eviction/refault,
   corrupt/missing companion fallback, and remaining cache archetypes are still
   open.
+
+## 2026-07-22 - Laguna Anthropic/Ollama parser and tool addendum
+
+- While the Electron-started Laguna JANG_4M PID remained loaded, captured raw
+  gateway Anthropic `/v1/messages` and Ollama `/api/chat` event streams.
+- Anthropic hard prompt produced separate protocol-native reasoning deltas and
+  text deltas with `message_stop`, no native marker leakage, but visible prose
+  over-generation. Anthropic required-tool and tool-result continuation passed
+  exact `file_info(panel/package.json)` and exact final
+  `The package file is 5.2 KB.`.
+- Ollama hard prompt produced separate `thinking` and content deltas with
+  terminal `stop`, no native marker leakage, but visible prose over-generation.
+  Ollama required-tool and tool-result continuation passed exact
+  `file_info(panel/package.json)` and exact final
+  `The package file is 5.2 KB.`.
+- Retained artifact:
+  `docs/internal/release-gates/20260722_laguna_r16_parser_ui_api/laguna-anthropic-ollama-gateway-proof.json`.
+  Strict-format hard-prompt rows remain partial; parser/tool transport rows
+  are scoped live passes.

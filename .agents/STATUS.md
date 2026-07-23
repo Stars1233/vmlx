@@ -7795,3 +7795,29 @@ Status: `VERIFIED-LIVE_SCOPED / CACHE MATRIX PARTIAL`.
   corrupt/missing companion fallback, and remaining architecture archetypes
   including M3 sparse, DSV4 composite, OpenPangu native prompt disk, standard
   KV, CCA, and media-salted cache.
+
+## 2026-07-22 - Laguna Anthropic/Ollama gateway parser/tool addendum
+
+Status: `VERIFIED-LIVE_SCOPED / STRICT-FORMAT PARTIAL`.
+
+- Current-source remote gateway on the live Laguna JANG_4M PID was exercised
+  through Anthropic `/v1/messages` and Ollama `/api/chat` while the same
+  Electron-started session was loaded.
+- Anthropic hard prompt streamed protocol-native reasoning deltas
+  (`2799` chars) plus text deltas (`150` chars), reached `message_stop`, and
+  leaked no native markers. The visible answer over-generated prose, so this is
+  parser/transport proof, not strict-format proof.
+- Anthropic required-tool row emitted exact
+  `file_info({"path":"panel/package.json"})`; the tool-result continuation
+  emitted exact visible `The package file is 5.2 KB.` with progressive deltas
+  and `message_stop`.
+- Ollama hard prompt streamed separate `thinking` deltas (`2581` chars) plus
+  content deltas (`1123` chars), reached `stop`, and leaked no native markers.
+  The visible answer over-generated prose, so strict hard-prompt exactness
+  remains partial.
+- Ollama required-tool row emitted exact
+  `file_info({"path":"panel/package.json"})`; the tool-result continuation
+  emitted exact visible `The package file is 5.2 KB.` with progressive deltas
+  and `stop`.
+- Evidence:
+  `docs/internal/release-gates/20260722_laguna_r16_parser_ui_api/laguna-anthropic-ollama-gateway-proof.json`.

@@ -61,6 +61,7 @@ Artifacts:
 
 - `laguna-api-gateway-proof.json`
 - `laguna-api-terminal-addendum.json`
+- `laguna-anthropic-ollama-gateway-proof.json`
 
 Rows:
 
@@ -72,18 +73,26 @@ Rows:
 | Chat tool-result continuation | exact visible `The package file is 5.2 KB.`, `stop + DONE`; no reasoning on this short tool prompt |
 | Chat Auto/default terminal addendum | `reasoning_content` `1665 chars`, visible `30 times 25 is larger.`, `stop + DONE`, no marker leak |
 | Responses explicit On terminal addendum | visible `43 × 18 is larger.`, `response.completed`, no marker leak, but `0` reasoning chars |
+| Anthropic hard prompt | protocol-native thinking deltas `2799 chars`, text deltas `150 chars`, `message_stop`, no marker leak; visible answer over-generated instead of exact |
+| Anthropic required tool | exact `file_info({"path":"panel/package.json"})`, `message_stop`, no visible content before tool |
+| Anthropic tool continuation | exact visible `The package file is 5.2 KB.`, progressive text deltas, `message_stop`, no marker leak |
+| Ollama hard prompt | `thinking` deltas `2581 chars`, content deltas `1123 chars`, terminal `stop`, no marker leak; visible answer over-generated instead of exact |
+| Ollama required tool | exact `file_info({"path":"panel/package.json"})`, terminal `tool_calls`, no visible content before tool |
+| Ollama tool continuation | exact visible `The package file is 5.2 KB.`, progressive content deltas, terminal `stop`, no marker leak |
 
 API verdict: parser separation and tool parser are live, but the Laguna
-Responses reasoning row is not fully closed. Current evidence shows
-model-owned variable/no-reasoning on short prompt plus a hard-prompt
-reasoning row that overran its visible answer budget. Do not claim the full
-Laguna API reasoning gate green from this proof alone.
+strict-format reasoning rows are not fully closed. Current evidence shows
+model-owned variable/no-reasoning on short prompts plus hard-prompt reasoning
+rows that sometimes overrun the requested concise visible answer. Do not claim
+the full Laguna strict-format API reasoning gate green from this proof alone.
 
 ## Remaining Laguna work
 
 - Bounded Responses explicit-On row that both emits reasoning and reaches
   `response.completed` with a concise visible answer.
-- Anthropic and Ollama protocol rows.
+- Bounded Anthropic/Ollama strict-format hard rows that both reason and obey
+  the requested concise answer. Transport/parser/tool loop is live, but strict
+  visible formatting is still partial.
 - Longer agentic tool loop and cancellation/recovery.
 - Low-limit cache eviction/refault and corrupt/missing companion fallback.
 - Signed-app repeat after packaging.
