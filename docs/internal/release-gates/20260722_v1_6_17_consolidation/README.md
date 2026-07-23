@@ -15,8 +15,9 @@ Status: `ACTIVE / PARTIAL / NOT RELEASE-READY`
   rows below are complete.
 - This campaign does not inherit a live pass from an old PID, installed app,
   transcript, `/tmp` capture, or another checkout.
-- No v1.6.17 version bump, tag, package, signing, notarization, updater change,
-  or publication is authorized until the live rows below are current.
+- The v1.6.17 source/version and prepackage bundle gates are now frozen and
+  current. No tag, public package, updater change, or publication occurs until
+  signed/notarized installed-app proof completes.
 
 ## Required per-family proof shape
 
@@ -1702,8 +1703,38 @@ Status:
 
 Remaining boundary:
 
-- The versioned 1.6.17 preflight, rebuilt bundled Python, full suite including
-  bundle integrity, signed/notarized Sequoia and Tahoe artifacts, installed-app
-  smoke, tagging, feeds, and publication remain open. Broader retained
-  family/media/cache/stress rows remain follow-up work. Overall v1.6.17 remains
+- Signed/notarized Sequoia and Tahoe artifacts, installed-app smoke, tagging,
+  feeds, and publication remain open. Broader retained family/media/cache/stress
+  rows remain follow-up work. Overall v1.6.17 remains
+  `PARTIAL / NOT RELEASE-READY`.
+
+### R17-027 Packaging provenance, bundle rebuild, and exact-head suites
+
+Status:
+`PREPACKAGE BUNDLE + FULL SUITES PASS / SIGNED DMGS OPEN / OVERALL PARTIAL`.
+
+- Version surfaces were frozen at `1.6.17`; the scoped preflight passed with
+  no failures.
+- Packaging now rejects tracked and untracked JANG package contamination,
+  unversioned release sources, source/install version drift, and JANG below
+  `2.5.33`.
+- The real default JANG 2.5.31 tree was confirmed dirty and rejected before
+  the existing bundle was deleted.
+- The accepted bundle used clean JANG 2.5.34 commit `2e85095f…` and records
+  that commit/version plus vMLX provenance and MLX wheel platform in the
+  shipped resources.
+- The Sequoia-compatible `macosx_14_0_arm64` bundled Python passed all
+  critical source-hash, import, registration, relocatability, and isolation
+  checks.
+- The complete Python suite, including bundle integrity and with no manual
+  deselection, passed `6410`, skipped `97`, and suite-deselected `92`.
+- Exact-head panel verification passed `2491` with `3` skipped, TypeScript,
+  and the production Electron build.
+- Evidence: `packaging-bundle/README.md`.
+
+Remaining boundary:
+
+- Build/sign/notarize/staple/verify both public DMG flavors, install-smoke the
+  signed apps, reconcile JANG main/PyPI, and only then publish vMLX source,
+  PyPI, updater, website, and Homebrew surfaces. Overall v1.6.17 remains
   `PARTIAL / NOT RELEASE-READY`.

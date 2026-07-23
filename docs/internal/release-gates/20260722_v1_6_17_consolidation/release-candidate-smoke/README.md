@@ -2,7 +2,7 @@
 
 Date: 2026-07-23 (America/Los_Angeles)
 
-Status: `DEV UI+API+PANEL PASS / BUNDLE+SIGNED APP OPEN`.
+Status: `DEV UI+API PASS / PREPACKAGE BUNDLE+SUITES PASS / SIGNED APP OPEN`.
 
 ## Source boundary
 
@@ -20,8 +20,13 @@ Status: `DEV UI+API+PANEL PASS / BUNDLE+SIGNED APP OPEN`.
   between those heads.
 - The post-fix Electron evidence was captured from the exact main bundle built
   at `8eb8468bd`.
-- This is development-app evidence. It does not replace bundled-Python,
-  signed-DMG, installed-app, Gatekeeper, or notarization proof.
+- The source/version/provenance gate was subsequently frozen at
+  `ee366371a`. A real Sequoia-compatible bundled Python was rebuilt from exact
+  JANG 2.5.34 commit `2e85095f…`, verified, and exercised by the complete
+  Python suite. See `../packaging-bundle/README.md`.
+- The Electron/API section remains development-app evidence. The subsequent
+  bundled-Python gate does not replace signed-DMG, installed-app, Gatekeeper,
+  or notarization proof.
 
 ## Live Electron proof
 
@@ -154,28 +159,24 @@ Evidence:
 - `r17-panel-typecheck-8eb8468bd.log`
 - `r17-panel-build-8eb8468bd.log`
 
-The complete Python source suite was already rerun at engine-corrected head
-`107be113b`: `6407 passed, 96 skipped, 93 deselected`. The only manually
-deselected row is the intentional bundled-Python SHA integrity gate. The
-subsequent changes through `8eb8468bd` are documentation and panel-only.
+After the 1.6.17 version/provenance freeze and real bundle rebuild, the
+complete Python suite was rerun without a manual bundle-integrity deselection:
+`6410 passed, 97 skipped, 92 deselected`. The exact-head panel suite retained
+`2491 passed`, `3 skipped`, with TypeScript and production build passing.
+Evidence is retained under `../packaging-bundle/`.
 
 ## Remaining release gates
 
-The checkpoint is still not release-ready until all of these complete on the
-versioned source head:
+The version bump, scoped preflight, rebuilt-bundle verifier, and full
+bundle-inclusive suites are complete. The checkpoint is still not
+release-ready until these downstream gates complete:
 
-1. bump all source/package versions to `1.6.17`;
-2. add and pass a 1.6.17 scoped preflight without pretending the retained
-   campaign PARTIAL rows are closed;
-3. rebuild bundled Python from the frozen source and pass
-   `verify-bundled-python.sh`;
-4. rerun the complete Python suite including the bundled-Python integrity row;
-5. build Developer-ID-signed Sequoia and Tahoe DMGs;
-6. submit both to Apple, wait for acceptance, staple, validate, run codesign
+1. build Developer-ID-signed Sequoia and Tahoe DMGs;
+2. submit both to Apple, wait for acceptance, staple, validate, run codesign
    and Gatekeeper checks, and record SHA-256;
-7. install-smoke each signed artifact, including real Electron Start/Stop,
+3. install-smoke each signed artifact, including real Electron Start/Stop,
    visible chat, and raw API streaming;
-8. only then tag, publish the GitHub release/PyPI artifact, and update
+4. only then tag, publish the GitHub release/PyPI artifact, and update
    `latest.json` plus public feeds.
 
 Retained broader family/media/cache/stress rows remain follow-up work after

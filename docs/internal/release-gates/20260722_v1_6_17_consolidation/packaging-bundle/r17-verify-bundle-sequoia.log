@@ -1,0 +1,58 @@
+  ok   bundled vmlx_engine version matches package.json (1.6.17)
+  ok   bundled vmlx_engine has no removed DSV4 env-var force-flips
+  ok   bundled-python console-script shebangs are relocatable
+  ok   bundled critical vmlx_engine files match source content
+  ok   bundled JANG provenance matches source (2.5.34 @ 2e85095f55b1b64cbb6e8264c82a074a3cc28250)
+  ok   bundled critical jang_tools files match source content
+  ok   mlx core                                  (mlx)
+  ok   mlx.nn                                    (mlx.nn)
+  ok   mlx-lm                                    (mlx_lm)
+  ok   mlx-vlm                                   (mlx_vlm)
+  ok   mlx-vlm gemma4                            (mlx_vlm.models.gemma4)
+  ok   mlx-vlm gemma3                            (mlx_vlm.models.gemma3)
+  ok   mlx-vlm qwen3_vl                          (mlx_vlm.models.qwen3_vl)
+  ok   mflux image runtime                       (mflux)
+  ok   mflux ModelConfig                         (mflux.models.common.config.model_config)
+  ok   timm vision backbone                      (timm)
+  ok   einops tensor rearrange                   (einops)
+  ok   librosa audio features                    (librosa)
+  ok   jang-tools                                (jang_tools)
+  ok   jang_tools.capabilities                   (jang_tools.capabilities)
+  ok   jang_tools.hy3                            (jang_tools.hy3)
+  ok   mlx_lm.models.hy_v3                       (mlx_lm.models.hy_v3)
+  ok   mlx_lm.models.bailing_hybrid              (mlx_lm.models.bailing_hybrid)
+  ok   jang_tools.hy3.runtime                    (jang_tools.hy3.runtime)
+  ok   jang_tools.mimo_v2.mlx_register           (jang_tools.mimo_v2.mlx_register)
+  ok   mlx_lm.models.mimo_v2                     (mlx_lm.models.mimo_v2)
+  ok   jang_tools.step37.step3p7_mlx             (jang_tools.step37.step3p7_mlx)
+  ok   jang_tools.load_jangtq                    (jang_tools.load_jangtq)
+  ok   jang_tools.topk_override                  (jang_tools.topk_override)
+  ok   jang_tools.turboquant.tq_kernel           (jang_tools.turboquant.tq_kernel)
+  ok   hadamard_kernel                           (jang_tools.turboquant.hadamard_kernel)
+  ok   fused_gate_up_kernel                      (jang_tools.turboquant.fused_gate_up_kernel)
+  ok   gather_tq_kernel                          (jang_tools.turboquant.gather_tq_kernel)
+  ok   mpp_nax_kernel                            (jang_tools.turboquant.mpp_nax_kernel)
+  ok   jang_tools.load_jangtq_kimi_vlm           (jang_tools.load_jangtq_kimi_vlm)
+  ok   jang_tools.kimi_prune.generate_vl         (jang_tools.kimi_prune.generate_vl)
+  ok   vmlx_engine                               (vmlx_engine)
+  ok   vmlx_engine Step3p7 VLM runtime           (vmlx_engine.models.step3p7_mlx_vlm)
+  ok   vmlx_engine Gemma 4 Unified VLM/audio runtime register  (vmlx_engine.models.gemma4_unified_register)
+  ok   vmlx_engine jang_loader                   (vmlx_engine.utils.jang_loader)
+  ok   vmlx_engine ollama_adapter                (vmlx_engine.api.ollama_adapter)
+  ok   vmlx_engine.loaders.load_jangtq           (vmlx_engine.loaders.load_jangtq)
+  ok   vmlx_engine.loaders.load_jangtq_vlm       (vmlx_engine.loaders.load_jangtq_vlm)
+  ok   vmlx_engine.loaders.load_jangtq_kimi_vlm  (vmlx_engine.loaders.load_jangtq_kimi_vlm)
+  ok   vmlx_engine.vlm.generate_vl               (vmlx_engine.vlm.generate_vl)
+  ok   vmlx_engine.runtime_patches.kimi_k25_mla  (vmlx_engine.runtime_patches.kimi_k25_mla)
+  ok   Step3p7 mlx-vlm registration
+  ok   Gemma 4 Unified mlx-vlm registration
+  ok   gemma4 Model/LanguageModel/VisionModel classes
+  ok   Gemma 4 assistant mlx_vlm.models alias
+  ok   Gemma 4 vision pixel_values list coercion in bundled mlx_vlm
+  ok   Kimi K2.6 fp32 MLA L==1 SDPA patch in bundled mlx_lm
+  ok   DeepSeek V3.2 / GLM-5.1 fp32 MLA L==1 SDPA patch in bundled mlx_lm
+  ok   Mistral 4 fp32 MLA L==1 SDPA patch in bundled mlx_lm
+  ok   Kimi K2.6 mlx_vlm remap + prompt_utils config
+  ok   MiniCPM-V-4.6 mlx_vlm remap + prompt_utils config
+
+bundled-python: all critical imports ok

@@ -1,0 +1,571 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.5, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/eric/mlx/vllm-mlx-r17-consolidation
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+testpaths: tests
+plugins: asyncio-1.4.0, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 6599 items / 92 deselected / 6507 selected
+
+tests/integration/test_server_endpoints.py sssssssssssssssss             [  0%]
+tests/test_affine_jit_default_gate.py .                                  [  0%]
+tests/test_agentic_protocol_matrix.py .................................. [  0%]
+.........                                                                [  0%]
+tests/test_agents_release_control_plane.py ...                           [  0%]
+tests/test_all_local_model_smoke.py .................................... [  1%]
+......................................                                   [  2%]
+tests/test_answer_pass_families_dsv4_step37.py .........                 [  2%]
+tests/test_answer_pass_streaming.py .......................              [  2%]
+tests/test_anthropic_adapter.py ........................................ [  3%]
+..........................                                               [  3%]
+tests/test_anthropic_stream_fixes.py ........                            [  3%]
+tests/test_api_models.py ............................................... [  4%]
+........................................................................ [  5%]
+                                                                         [  5%]
+tests/test_api_surface_contract.py ..........                            [  5%]
+tests/test_api_surface_parity.py ..........                              [  5%]
+tests/test_api_utils.py ................................................ [  6%]
+.............                                                            [  6%]
+tests/test_audio.py ...................sss...........                    [  7%]
+tests/test_audit_fixes.py .............................................. [  8%]
+........................................                                 [  8%]
+tests/test_batching.py ................................................. [  9%]
+............................                                             [  9%]
+tests/test_block_disk_bfloat16.py .............                          [ 10%]
+tests/test_block_disk_default.py ......                                  [ 10%]
+tests/test_cache_architecture_contract.py .......                        [ 10%]
+tests/test_cache_bypass.py ............................................. [ 10%]
+..................                                                       [ 11%]
+tests/test_cache_extra_key_backends.py ...                               [ 11%]
+tests/test_cache_fixes.py ......                                         [ 11%]
+tests/test_cache_hit_worker_dequant.py ..                                [ 11%]
+tests/test_cache_isolation.py .........                                  [ 11%]
+tests/test_cache_record_validator.py .................................   [ 12%]
+tests/test_cache_segment_boundaries.py ...                               [ 12%]
+tests/test_cache_types.py ...............................                [ 12%]
+tests/test_cancellation.py ......                                        [ 12%]
+tests/test_chat_template_kwargs.py ...                                   [ 12%]
+tests/test_cli_commands.py ...........................                   [ 13%]
+tests/test_config_sources.py .....                                       [ 13%]
+tests/test_continuous_batching_extend.py ..............                  [ 13%]
+tests/test_cross_matrix_audit_runner.py .........s...................... [ 13%]
+............................................                             [ 14%]
+tests/test_cross_matrix_output_counts.py ...                             [ 14%]
+tests/test_current_regression_suite.py ................................. [ 15%]
+.........................................................                [ 15%]
+tests/test_deepseek_r1_reasoning_no_leak.py .........                    [ 16%]
+tests/test_disk_cache_unit.py .........                                  [ 16%]
+tests/test_disk_prefix_n_minus_1.py .....                                [ 16%]
+tests/test_dsml_tool_parser.py ...........................               [ 16%]
+tests/test_dsv4_batch_generator_speed.py .......                         [ 16%]
+tests/test_dsv4_bundle_integrity.py ............                         [ 17%]
+tests/test_dsv4_contract_hardening.py ..................                 [ 17%]
+tests/test_dsv4_default_cache_tool_loop_gate.py ...........              [ 17%]
+tests/test_dsv4_paged_cache.py ......................................... [ 18%]
+............................                                             [ 18%]
+tests/test_dsv4_real_activation_expert_probe.py ....                     [ 18%]
+tests/test_dsv4_responses_restart_l2_gate.py ..                          [ 18%]
+tests/test_dsv4_route_mode_code_exactness.py ........................... [ 19%]
+                                                                         [ 19%]
+tests/test_dsv4_thinking_finalizer.py ........                           [ 19%]
+tests/test_dsv4_vector_probe.py s.......                                 [ 19%]
+tests/test_embeddings.py .........                                       [ 19%]
+tests/test_engine_audit.py ............................................. [ 20%]
+........................................................................ [ 21%]
+........................................................................ [ 22%]
+........................................................................ [ 23%]
+........................................................................ [ 24%]
+........................................................................ [ 25%]
+........................................................................ [ 26%]
+........................................................................ [ 27%]
+................................................                         [ 28%]
+tests/test_fail_closed_detection.py ......                               [ 28%]
+tests/test_flash_moe_loader.py ......................                    [ 29%]
+tests/test_full_release_objective_checklist.py .....                     [ 29%]
+tests/test_gemma3_tool_parser.py .........                               [ 29%]
+tests/test_gemma4_12b_artifact_contract.py ......                        [ 29%]
+tests/test_gemma4_12b_live_runtime_audit.py .                            [ 29%]
+tests/test_gemma4_12b_speed_gate.py ...                                  [ 29%]
+tests/test_gemma4_image_budget.py ...                                    [ 29%]
+tests/test_gemma4_reasoning_no_leak.py ..........                        [ 29%]
+tests/test_gemma4_tool_parser.py .............                           [ 29%]
+tests/test_gemma_leak.py .....                                           [ 29%]
+tests/test_gemma_qat_native_mxfp4_inventory_gate.py ..                   [ 29%]
+tests/test_generation_defaults_contract.py ...                           [ 29%]
+tests/test_generation_prompt_cache_key.py .......                        [ 30%]
+tests/test_glm47_tool_parser.py ..........                               [ 30%]
+tests/test_granite_tool_parser.py ...........                            [ 30%]
+tests/test_health_endpoint.py .......                                    [ 30%]
+tests/test_hunyuan_tool_parser.py ............                           [ 30%]
+tests/test_hy3_native_mtp.py ............                                [ 30%]
+tests/test_hybrid_batching.py .......................................... [ 31%]
+..........................                                               [ 31%]
+tests/test_hybrid_live_tq_kv.py .......................                  [ 32%]
+tests/test_hybrid_prefix_cache.py .......................                [ 32%]
+tests/test_hybrid_prefix_cache_clone.py ......                           [ 32%]
+tests/test_hybrid_ssm_companion_regressions.py ..........                [ 32%]
+tests/test_image_api.py ................................................ [ 33%]
+..................                                                       [ 33%]
+tests/test_image_gen.py ................................................ [ 34%]
+.........................                                                [ 35%]
+tests/test_image_gen_engine.py .............                             [ 35%]
+tests/test_impl_campaign_20260710.py .............                       [ 35%]
+tests/test_installed_app_runtime_parity_audit.py FF......F.........      [ 35%]
+tests/test_issue175_177_installed_runtime_audit.py ..                    [ 35%]
+tests/test_issue175_177_live_runtime_audit.py ..                         [ 35%]
+tests/test_issue175_179_release_boundary_audit.py ....                   [ 35%]
+tests/test_issue175_admin_sleep_probe.py ..                              [ 35%]
+tests/test_issue179_minimax_k_model_manifest.py ...                      [ 35%]
+tests/test_issue179_minimax_k_root_cause_audit.py s...s.............     [ 36%]
+tests/test_issue179_reporter_parity_metadata.py ....                     [ 36%]
+tests/test_issue179_responses_cancel_probe.py ...........                [ 36%]
+tests/test_issue181_183_runtime_audit.py ...                             [ 36%]
+tests/test_jang_affine_storage.py ...                                    [ 36%]
+tests/test_jang_loader.py .............................................. [ 37%]
+.......................................                                  [ 37%]
+tests/test_jang_model_compat_pr155.py ...                                [ 37%]
+tests/test_jang_vlm_jangtq_envelope.py ..                                [ 37%]
+tests/test_jit_toggle.py ............                                    [ 38%]
+tests/test_kimi_k25_mla_patch.py .....                                   [ 38%]
+tests/test_kv_quant.py ....                                              [ 38%]
+tests/test_kv_quant_status_truthfulness.py .....                         [ 38%]
+tests/test_laguna_explicit_thinking_budget.py ...                        [ 38%]
+tests/test_laguna_loader.py ....                                         [ 38%]
+tests/test_llm.py ....                                                   [ 38%]
+tests/test_local_generation_metadata_audit.py .s.....                    [ 38%]
+tests/test_max_output_context_contract.py ..                             [ 38%]
+tests/test_mcp_policy.py ................                                [ 38%]
+tests/test_mcp_policy_contract.py ...                                    [ 38%]
+tests/test_mcp_security.py ...........................F................. [ 39%]
+...............                                                          [ 39%]
+tests/test_memory_cache.py ............................................. [ 40%]
+....                                                                     [ 40%]
+tests/test_memory_cache_lock_inversion.py ...                            [ 40%]
+tests/test_memory_limits.py ..........                                   [ 40%]
+tests/test_metal_headroom_output_guard.py .........                      [ 40%]
+tests/test_mimo_completion_chat_rail.py ..                               [ 40%]
+tests/test_mimo_v2_audio_template.py ...                                 [ 40%]
+tests/test_mimo_v2_cache_vs_nocache_next_token.py ...                    [ 41%]
+tests/test_mimo_v2_current_audit.py .....................                [ 41%]
+tests/test_mimo_v2_exactness_variant_probe.py ...                        [ 41%]
+tests/test_mimo_v2_local_bundle_metadata_contract.py ....                [ 41%]
+tests/test_mimo_v2_media_capability_gate.py .........                    [ 41%]
+tests/test_mimo_v2_media_runtime.py ................                     [ 41%]
+tests/test_mimo_v2_mllm_runtime_registration.py .                        [ 41%]
+tests/test_mimo_v2_no_source_exactness_classifier.py ..............      [ 42%]
+tests/test_mimo_v2_rotating_cache_patch.py .                             [ 42%]
+tests/test_mimo_v2_source_vs_quant_probe.py .........                    [ 42%]
+tests/test_minimax_m3_cache_paths.py ................................... [ 42%]
+.......                                                                  [ 42%]
+tests/test_minimax_m3_jang_loader_quant.py .                             [ 42%]
+tests/test_minimax_m3_tool_parser.py ..                                  [ 42%]
+tests/test_mistral3_loader.py .                                          [ 42%]
+tests/test_mllm.py ............................................          [ 43%]
+tests/test_mllm_cache.py ............................................... [ 44%]
+....                                                                     [ 44%]
+tests/test_mllm_continuous_batching.py ................................. [ 44%]
+......                                                                   [ 44%]
+tests/test_mllm_message_serialization.py ............................... [ 45%]
+.........................................                                [ 46%]
+tests/test_mllm_processor_stream_contracts.py ...............            [ 46%]
+tests/test_mllm_sampling_contract.py ......                              [ 46%]
+tests/test_mllm_scheduler_cache.py ..................................... [ 46%]
+.......................................................................  [ 48%]
+tests/test_mllm_scheduler_stability.py ......                            [ 48%]
+tests/test_mllm_stream_lifecycle.py .......                              [ 48%]
+tests/test_mllm_tool_replay.py ...                                       [ 48%]
+tests/test_mlx_memory_cleanup.py .......                                 [ 48%]
+tests/test_model_artifact_format_contract.py ..                          [ 48%]
+tests/test_model_config_registry.py .................................... [ 48%]
+........................................................................ [ 50%]
+.......................................                                  [ 50%]
+tests/test_model_family_detection_contract.py .......................... [ 51%]
+s........                                                                [ 51%]
+tests/test_model_inspector.py ........................................   [ 51%]
+tests/test_model_name.py .............................................   [ 52%]
+tests/test_mtp_depth_verify_cycle.py ............                        [ 52%]
+tests/test_mtp_telemetry_edge_cases.py ...........                       [ 52%]
+tests/test_multi_eos.py .....                                            [ 52%]
+tests/test_multimodal_routing.py ........                                [ 53%]
+tests/test_n2_chat_cache_gate.py ........                                [ 53%]
+tests/test_native_mtp_autodetect.py .................................... [ 53%]
+.................................................                        [ 54%]
+tests/test_native_mtp_bench_harness.py ..............................    [ 54%]
+tests/test_native_mtp_contract.py ..                                     [ 55%]
+tests/test_native_mtp_examples.py ..........                             [ 55%]
+tests/test_native_mtp_policy_suite.py .....                              [ 55%]
+tests/test_native_mtp_research_sampling.py ............                  [ 55%]
+tests/test_native_tool_format.py .............                           [ 55%]
+tests/test_objective_proof_digest.py ................................... [ 56%]
+........................................................................ [ 57%]
+...                                                                      [ 57%]
+tests/test_ollama_adapter.py .............................               [ 57%]
+tests/test_ollama_reasoning_parity.py .........                          [ 57%]
+tests/test_omni_multimodal.py ...................                        [ 58%]
+tests/test_openpangu_tool_parser.py ..................................   [ 58%]
+tests/test_openpangu_v2.py ........................                      [ 59%]
+tests/test_optimizations.py ...                                          [ 59%]
+tests/test_output_budget_cap.py ...                                      [ 59%]
+tests/test_output_budget_enforcement.py ....                             [ 59%]
+tests/test_packaged_integrity_contract.py .............................. [ 59%]
+....................                                                     [ 60%]
+tests/test_paged_byte_budget.py ................                         [ 60%]
+tests/test_paged_cache.py .............................................. [ 60%]
+................                                                         [ 61%]
+tests/test_paged_cache_benefits.py ....                                  [ 61%]
+tests/test_paged_cache_hash_collisions.py .......                        [ 61%]
+tests/test_paged_cache_unit.py .........                                 [ 61%]
+tests/test_panel_cli_flag_contract.py ......................             [ 61%]
+tests/test_parser_registry_contract.py ...                               [ 61%]
+tests/test_perf_prefill_loop.py ........                                 [ 62%]
+tests/test_perf_safe_wins.py .......                                     [ 62%]
+tests/test_perf_sampler_async.py .........                               [ 62%]
+tests/test_platform.py .......                                           [ 62%]
+tests/test_prefix_cache.py .....................                         [ 62%]
+tests/test_public_app_issue_audit.py F.FFFF                              [ 62%]
+tests/test_qwen36_tp4_gateway_probe.py ........                          [ 62%]
+tests/test_qwen3_answer_pass_policy.py ................                  [ 63%]
+tests/test_qwen_forward_path_ab.py ...                                   [ 63%]
+tests/test_qwen_gated_delta_subprofile.py ...                            [ 63%]
+tests/test_qwen_layer_profile.py ...                                     [ 63%]
+tests/test_real_ui_dsv4_memory_preflight.py ..........                   [ 63%]
+tests/test_reasoning_marker_chunk_boundaries.py .......                  [ 63%]
+tests/test_reasoning_modes.py .......................................... [ 64%]
+...........................                                              [ 64%]
+tests/test_reasoning_parser.py ......................................... [ 65%]
+........................................................................ [ 66%]
+.....                                                                    [ 66%]
+tests/test_reasoning_template_contract.py ...                            [ 66%]
+tests/test_reasoning_tool_interaction.py ............................... [ 66%]
+..............................                                           [ 67%]
+tests/test_release_gate_python_app.py .................................. [ 67%]
+............FF                                                           [ 68%]
+tests/test_release_regression_manifest.py .............................. [ 68%]
+........................................................................ [ 69%]
+........................................................................ [ 70%]
+........................................................................ [ 71%]
+........................................................................ [ 73%]
+..                                                                       [ 73%]
+tests/test_release_surface_contract.py ...............                   [ 73%]
+tests/test_remote_max2_dsv4_exactness_guard.py ...                       [ 73%]
+tests/test_remote_max2_dsv4_readiness.py ....                            [ 73%]
+tests/test_remote_max2_dsv4_real_ui_guard.py ...                         [ 73%]
+tests/test_remote_max2_dsv4_release_proof_guard.py ...                   [ 73%]
+tests/test_request.py .................................................. [ 74%]
+..                                                                       [ 74%]
+tests/test_request_cancellation.py ..                                    [ 74%]
+tests/test_reranker_endpoint.py .....                                    [ 74%]
+tests/test_responses_history.py ..................................       [ 74%]
+tests/test_responses_multimodal_history.py .....                         [ 75%]
+tests/test_runtime_memory_stress_probe.py .........................      [ 75%]
+tests/test_sampling.py ...                                               [ 75%]
+tests/test_scheduler_repetition_context.py ..                            [ 75%]
+tests/test_scoped_release_preflight_16.py s.                             [ 75%]
+tests/test_scoped_release_preflight_17.py ..                             [ 75%]
+tests/test_scoped_release_preflight_66.py ....                           [ 75%]
+tests/test_server.py ................................................... [ 76%]
+........................................................................ [ 77%]
+..........                                                               [ 77%]
+tests/test_simple_engine.py .........                                    [ 77%]
+tests/test_single_active_batch_generator.py ..............               [ 77%]
+tests/test_single_sequence_cache_merge.py ....                           [ 78%]
+tests/test_smelt_loader.py .                                             [ 78%]
+tests/test_special_tag_dialect.py ............                           [ 78%]
+tests/test_speculative.py .............................................. [ 78%]
+........                                                                 [ 79%]
+tests/test_ssm_companion_cache.py ...................................... [ 79%]
+................                                                         [ 79%]
+tests/test_step37_crash_falsification_contract.py .....                  [ 79%]
+tests/test_step37_mlx_vlm_runtime.py ..................................  [ 80%]
+tests/test_step37_vlm_runtime_audit.py .......                           [ 80%]
+tests/test_step3p5_tool_parser.py ..........                             [ 80%]
+tests/test_step3p7_mllm_detection_guard.py ....                          [ 80%]
+tests/test_stream_terminal_finish_guard.py .........                     [ 80%]
+tests/test_streaming_adapter_failures.py .                               [ 80%]
+tests/test_streaming_json_encoder.py ...............                     [ 81%]
+tests/test_streaming_latency.py .                                        [ 81%]
+tests/test_streaming_reasoning.py ...................................... [ 81%]
+........................................................................ [ 82%]
+.............................                                            [ 83%]
+tests/test_structured_output.py ........................................ [ 83%]
+..........ss                                                             [ 84%]
+tests/test_structured_output_repair_report.py ......                     [ 84%]
+tests/test_terminal_dispatch_before_cache_cleanup.py ............        [ 84%]
+tests/test_think_xml_parser.py ....                                      [ 84%]
+tests/test_thinking_template_render.py ssssssssssssssss......            [ 84%]
+tests/test_tokenizer_chat_template_include.py ..                         [ 84%]
+tests/test_tool_call_contract.py ......                                  [ 84%]
+tests/test_tool_fallback_injection.py ............                       [ 85%]
+tests/test_tool_format.py .............................................. [ 85%]
+........................................................................ [ 86%]
+..                                                                       [ 86%]
+tests/test_tool_parsers.py ............................................. [ 87%]
+....................................................................     [ 88%]
+tests/test_tool_prompt_fallback.py ...........................           [ 89%]
+tests/test_tq_disk_cache.py .............................                [ 89%]
+tests/test_tq_paged_block_cache.py ......................                [ 89%]
+tests/test_turboquant_cache_contract.py .........                        [ 90%]
+tests/test_turboquant_prefix_cache_clone.py ....                         [ 90%]
+tests/test_vl_media_cache_contract.py ....                               [ 90%]
+tests/test_vl_video_regression.py ..........s...s.....sss............... [ 90%]
+...........................ss.....ss.................................... [ 91%]
+..........................s............................................. [ 92%]
+...........................sssss........................................ [ 94%]
+...........................................s............................ [ 95%]
+...........................sssss....s......s.sss.....................sss [ 96%]
+ssssssssss.......................F.....ssssss........s.................. [ 97%]
+........................................................................ [ 98%]
+.........                                                                [ 98%]
+tests/test_xml_function_tool_parser.py .............                     [ 98%]
+tests/test_zaya_conversion_routing.py ....                               [ 98%]
+tests/test_zaya_runtime.py .................ssss....s....s.............. [ 99%]
+.........................                                                [100%]
+
+=================================== FAILURES ===================================
+________ test_installed_app_runtime_parity_records_known_stale_surface _________
+tests/test_installed_app_runtime_parity_audit.py:10: in test_installed_app_runtime_parity_records_known_stale_surface
+    audit = gate.build_audit(Path("."))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_installed_app_runtime_parity_audit.py:641: in build_audit
+    panel_result = _read_installed_panel_main(root, app_asar=app_asar)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_installed_app_runtime_parity_audit.py:276: in _read_installed_panel_main
+    return _read_installed_asar_file(root, "dist/main/index.mjs", app_asar=app_asar)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_installed_app_runtime_parity_audit.py:383: in _read_installed_asar_file
+    proc = subprocess.run(
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:555: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1039: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1990: in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+E   FileNotFoundError: [Errno 2] No such file or directory: 'node'
+____ test_installed_app_runtime_parity_requires_versioned_python_entrypoint ____
+tests/test_installed_app_runtime_parity_audit.py:53: in test_installed_app_runtime_parity_requires_versioned_python_entrypoint
+    audit = gate.build_audit(Path("."))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_installed_app_runtime_parity_audit.py:641: in build_audit
+    panel_result = _read_installed_panel_main(root, app_asar=app_asar)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_installed_app_runtime_parity_audit.py:276: in _read_installed_panel_main
+    return _read_installed_asar_file(root, "dist/main/index.mjs", app_asar=app_asar)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_installed_app_runtime_parity_audit.py:383: in _read_installed_asar_file
+    proc = subprocess.run(
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:555: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1039: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1990: in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+E   FileNotFoundError: [Errno 2] No such file or directory: 'node'
+____________ test_installed_app_runtime_parity_writes_json_artifact ____________
+tests/test_installed_app_runtime_parity_audit.py:270: in test_installed_app_runtime_parity_writes_json_artifact
+    audit = gate.write_audit(Path("."), out)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_installed_app_runtime_parity_audit.py:1163: in write_audit
+    audit = build_audit(
+tests/cross_matrix/run_installed_app_runtime_parity_audit.py:641: in build_audit
+    panel_result = _read_installed_panel_main(root, app_asar=app_asar)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_installed_app_runtime_parity_audit.py:276: in _read_installed_panel_main
+    return _read_installed_asar_file(root, "dist/main/index.mjs", app_asar=app_asar)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_installed_app_runtime_parity_audit.py:383: in _read_installed_asar_file
+    proc = subprocess.run(
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:555: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1039: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1990: in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+E   FileNotFoundError: [Errno 2] No such file or directory: 'node'
+_____________ TestMCPServerConfigSecurity.test_valid_stdio_config ______________
+vmlx_engine/mcp/types.py:86: in _validate_security
+    validate_mcp_server_config(
+vmlx_engine/mcp/security.py:349: in validate_mcp_server_config
+    validator.validate_command(command, server_name)
+vmlx_engine/mcp/security.py:188: in validate_command
+    raise MCPSecurityError(
+E   vmlx_engine.mcp.security.MCPSecurityError: MCP server 'test-server': Command 'npx' not found in PATH. Ensure the command is installed and accessible.
+
+The above exception was the direct cause of the following exception:
+tests/test_mcp_security.py:350: in test_valid_stdio_config
+    config = MCPServerConfig(
+<string>:13: in __init__
+    ???
+vmlx_engine/mcp/types.py:70: in __post_init__
+    self._validate_security()
+vmlx_engine/mcp/types.py:94: in _validate_security
+    raise ValueError(str(e)) from e
+E   ValueError: MCP server 'test-server': Command 'npx' not found in PATH. Ensure the command is installed and accessible.
+_______ test_public_app_issue_audit_tracks_open_app_runtime_issue_slices _______
+tests/test_public_app_issue_audit.py:10: in test_public_app_issue_audit_tracks_open_app_runtime_issue_slices
+    audit = gate.build_audit(Path("."))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_public_app_issue_audit.py:896: in build_audit
+    "checks": _issue118_checks(root),
+              ^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_public_app_issue_audit.py:680: in _issue118_checks
+    installed_panel_main = _read_installed_asar_file(root, "dist/main/index.mjs")
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_public_app_issue_audit.py:154: in _read_installed_asar_file
+    proc = subprocess.run(
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:555: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1039: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1990: in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+E   FileNotFoundError: [Errno 2] No such file or directory: 'node'
+_______ test_public_app_issue119_uses_current_gemma4_mixed_swa_live_gate _______
+tests/test_public_app_issue_audit.py:210: in test_public_app_issue119_uses_current_gemma4_mixed_swa_live_gate
+    issue119 = gate.build_audit(Path("."))["issues"]["119"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_public_app_issue_audit.py:896: in build_audit
+    "checks": _issue118_checks(root),
+              ^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_public_app_issue_audit.py:680: in _issue118_checks
+    installed_panel_main = _read_installed_asar_file(root, "dist/main/index.mjs")
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_public_app_issue_audit.py:154: in _read_installed_asar_file
+    proc = subprocess.run(
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:555: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1039: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1990: in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+E   FileNotFoundError: [Errno 2] No such file or directory: 'node'
+_ test_public_app_issue117_open_boundary_uses_preflight_without_live_cancel_probe _
+tests/test_public_app_issue_audit.py:257: in test_public_app_issue117_open_boundary_uses_preflight_without_live_cancel_probe
+    audit = gate.build_audit(root)
+            ^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_public_app_issue_audit.py:896: in build_audit
+    "checks": _issue118_checks(root),
+              ^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_public_app_issue_audit.py:680: in _issue118_checks
+    installed_panel_main = _read_installed_asar_file(root, "dist/main/index.mjs")
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_public_app_issue_audit.py:154: in _read_installed_asar_file
+    proc = subprocess.run(
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:555: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1039: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1990: in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+E   FileNotFoundError: [Errno 2] No such file or directory: 'node'
+_______________ test_public_app_issue_audit_writes_json_artifact _______________
+tests/test_public_app_issue_audit.py:279: in test_public_app_issue_audit_writes_json_artifact
+    audit = gate.write_audit(Path("."), out)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_public_app_issue_audit.py:1085: in write_audit
+    audit = build_audit(root)
+            ^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_public_app_issue_audit.py:896: in build_audit
+    "checks": _issue118_checks(root),
+              ^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_public_app_issue_audit.py:680: in _issue118_checks
+    installed_panel_main = _read_installed_asar_file(root, "dist/main/index.mjs")
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_public_app_issue_audit.py:154: in _read_installed_asar_file
+    proc = subprocess.run(
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:555: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1039: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1990: in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+E   FileNotFoundError: [Errno 2] No such file or directory: 'node'
+______ test_public_app_issue_audit_cli_accepts_cleared_issue179_boundary _______
+tests/test_public_app_issue_audit.py:302: in test_public_app_issue_audit_cli_accepts_cleared_issue179_boundary
+    assert gate.main() == 0
+           ^^^^^^^^^^^
+tests/cross_matrix/run_public_app_issue_audit.py:1098: in main
+    audit = write_audit(args.root, args.out)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_public_app_issue_audit.py:1085: in write_audit
+    audit = build_audit(root)
+            ^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_public_app_issue_audit.py:896: in build_audit
+    "checks": _issue118_checks(root),
+              ^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_public_app_issue_audit.py:680: in _issue118_checks
+    installed_panel_main = _read_installed_asar_file(root, "dist/main/index.mjs")
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/cross_matrix/run_public_app_issue_audit.py:154: in _read_installed_asar_file
+    proc = subprocess.run(
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:555: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1039: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1990: in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+E   FileNotFoundError: [Errno 2] No such file or directory: 'node'
+_____ test_electron_builder_before_pack_hook_runs_verifier_in_direct_smoke _____
+tests/test_release_gate_python_app.py:852: in test_electron_builder_before_pack_hook_runs_verifier_in_direct_smoke
+    proc = subprocess.run(
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:555: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1039: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1990: in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+E   FileNotFoundError: [Errno 2] No such file or directory: 'node'
+___ test_electron_builder_before_pack_hook_rejects_skip_vite_in_pack_context ___
+tests/test_release_gate_python_app.py:881: in test_electron_builder_before_pack_hook_rejects_skip_vite_in_pack_context
+    proc = subprocess.run(
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:555: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1039: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1990: in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+E   FileNotFoundError: [Errno 2] No such file or directory: 'node'
+_ TestBundledPythonVerifyScript.test_verify_script_passes_against_current_bundle _
+tests/test_vl_video_regression.py:8945: in test_verify_script_passes_against_current_bundle
+    assert result.returncode == 0, (
+E   AssertionError: verify-bundled-python.sh FAILED with exit 127
+E     stdout: 
+E     stderr: /Users/eric/mlx/vllm-mlx-r17-consolidation/panel/scripts/verify-bundled-python.sh: line 31: node: command not found
+E     
+E   assert 127 == 0
+E    +  where 127 = CompletedProcess(args=['/bin/bash', '/Users/eric/mlx/vllm-mlx-r17-consolidation/panel/scripts/verify-bundled-python.sh.../Users/eric/mlx/vllm-mlx-r17-consolidation/panel/scripts/verify-bundled-python.sh: line 31: node: command not found\n').returncode
+=============================== warnings summary ===============================
+tests/test_mllm_scheduler_cache.py::test_mllm_raw_audio_without_processor_payload_fails_loudly
+tests/test_mllm_scheduler_cache.py::test_mllm_mimo_raw_audio_bridge_populates_audio_codes
+  /Users/eric/mlx/vllm-mlx-r17-consolidation/.venv/lib/python3.14/site-packages/librosa/core/audio.py:184: FutureWarning: librosa.core.audio.__audioread_load
+  	Deprecated as of librosa version 0.10.0.
+  	It will be removed in librosa version 1.0.
+    y, sr_native = __audioread_load(path, offset, duration, dtype)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_installed_app_runtime_parity_audit.py::test_installed_app_runtime_parity_records_known_stale_surface
+FAILED tests/test_installed_app_runtime_parity_audit.py::test_installed_app_runtime_parity_requires_versioned_python_entrypoint
+FAILED tests/test_installed_app_runtime_parity_audit.py::test_installed_app_runtime_parity_writes_json_artifact
+FAILED tests/test_mcp_security.py::TestMCPServerConfigSecurity::test_valid_stdio_config
+FAILED tests/test_public_app_issue_audit.py::test_public_app_issue_audit_tracks_open_app_runtime_issue_slices
+FAILED tests/test_public_app_issue_audit.py::test_public_app_issue119_uses_current_gemma4_mixed_swa_live_gate
+FAILED tests/test_public_app_issue_audit.py::test_public_app_issue117_open_boundary_uses_preflight_without_live_cancel_probe
+FAILED tests/test_public_app_issue_audit.py::test_public_app_issue_audit_writes_json_artifact
+FAILED tests/test_public_app_issue_audit.py::test_public_app_issue_audit_cli_accepts_cleared_issue179_boundary
+FAILED tests/test_release_gate_python_app.py::test_electron_builder_before_pack_hook_runs_verifier_in_direct_smoke
+FAILED tests/test_release_gate_python_app.py::test_electron_builder_before_pack_hook_rejects_skip_vite_in_pack_context
+FAILED tests/test_vl_video_regression.py::TestBundledPythonVerifyScript::test_verify_script_passes_against_current_bundle
+= 12 failed, 6398 passed, 97 skipped, 92 deselected, 2 warnings in 233.04s (0:03:53) =
+real 234.10
+user 140.64
+sys 27.87

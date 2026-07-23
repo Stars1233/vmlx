@@ -1,0 +1,19 @@
+==> Bundling Python 3.12.12 for standalone vMLX distribution
+ERROR: RELEASE BLOCKED — local jang-tools package source is dirty: /Users/eric/jang/jang-tools
+       Release bundles must not silently package tracked or untracked JANG runtime changes.
+       Package-scope status:
+?? jang-tools/jang_tools/__main__.py.pre-n2-20260611
+?? jang-tools/jang_tools/affine.py
+?? jang-tools/jang_tools/allocate.py.pre-n2-20260611
+?? jang-tools/jang_tools/capabilities.py.pre-n2-20260611
+?? jang-tools/jang_tools/convert.py.pre-n2-20260611
+?? jang-tools/jang_tools/convert_bonsai_jang_affine.py
+?? jang-tools/jang_tools/convert_qwen35_jangtq.py.pre-n2-20260611
+?? jang-tools/jang_tools/minimax_m3/awq_capture.py.bak-domains
+?? jang-tools/jang_tools/minimax_m3/convert_jang.py.bak-gs128
+?? jang-tools/jang_tools/minimax_m3/convert_jang.py.bak-pre-d3
+?? jang-tools/jang_tools/minimax_m3/convert_jang.py.bak-pre-downbits-flag
+?? jang-tools/jang_tools/minimax_m3/reap_profile.py.bak-domains
+
+       Commit/stash/drop those changes, point VMLX_JANG_TOOLS_SOURCE at a clean
+       checkout, or set VMLX_ALLOW_DIRTY_JANG_SOURCE=1 only for local smoke builds.

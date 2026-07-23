@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "scope": "r17_consolidation",
+  "version": "1.6.17",
+  "status": "pass",
+  "failures": [],
+  "versions": {
+    "pyproject": "1.6.17",
+    "panel_package": "1.6.17",
+    "panel_package_lock": "1.6.17",
+    "panel_package_lock_root": "1.6.17",
+    "engine_init": "1.6.17",
+    "source_latest_json": "1.6.15"
+  },
+  "source_trace": {
+    "panel_chat": "panel/src/main/ipc/chat.ts",
+    "stream_recovery": "panel/src/shared/responsesStreamRecovery.ts",
+    "stream_recovery_tests": "panel/tests/responses-stream-recovery.test.ts"
+  },
+  "source_suite": {
+    "readme": "/Users/eric/mlx/vllm-mlx-r17-consolidation/docs/internal/release-gates/20260722_v1_6_17_consolidation/release-head-suite-audit/README.md",
+    "full_source_suite": "/Users/eric/mlx/vllm-mlx-r17-consolidation/docs/internal/release-gates/20260722_v1_6_17_consolidation/release-head-suite-audit/final-head-source-suite.txt"
+  },
+  "panel_suite": {
+    "panel": "/Users/eric/mlx/vllm-mlx-r17-consolidation/docs/internal/release-gates/20260722_v1_6_17_consolidation/release-candidate-smoke/r17-panel-full-8eb8468bd.log",
+    "typecheck": "/Users/eric/mlx/vllm-mlx-r17-consolidation/docs/internal/release-gates/20260722_v1_6_17_consolidation/release-candidate-smoke/r17-panel-typecheck-8eb8468bd.log",
+    "production_build": "/Users/eric/mlx/vllm-mlx-r17-consolidation/docs/internal/release-gates/20260722_v1_6_17_consolidation/release-candidate-smoke/r17-panel-build-8eb8468bd.log"
+  },
+  "electron": {
+    "artifact": "/Users/eric/mlx/vllm-mlx-r17-consolidation/docs/internal/release-gates/20260722_v1_6_17_consolidation/release-candidate-smoke/r17-electron-postfix-8eb8468bd.json",
+    "screenshots": [
+      "/Users/eric/mlx/vllm-mlx-r17-consolidation/docs/internal/release-gates/20260722_v1_6_17_consolidation/release-candidate-smoke/r17-electron-postfix-turn-1.png",
+      "/Users/eric/mlx/vllm-mlx-r17-consolidation/docs/internal/release-gates/20260722_v1_6_17_consolidation/release-candidate-smoke/r17-electron-postfix-turn-2.png",
+      "/Users/eric/mlx/vllm-mlx-r17-consolidation/docs/internal/release-gates/20260722_v1_6_17_consolidation/release-candidate-smoke/r17-electron-postfix-turn-3.png"
+    ]
+  },
+  "raw_protocol_streams": {
+    "artifact": "/Users/eric/mlx/vllm-mlx-r17-consolidation/docs/internal/release-gates/20260722_v1_6_17_consolidation/release-candidate-smoke/r17-raw-wire-aa49b699d.json",
+    "rows": 8,
+    "strict_exact_misses": [
+      "direct:chat"
+    ],
+    "structural_stream_rows_passed": 8
+  },
+  "agentic_protocol_streams": {
+    "artifact": "/Users/eric/mlx/vllm-mlx-r17-consolidation/docs/internal/release-gates/20260722_v1_6_17_consolidation/release-candidate-smoke/r17-agentic-stream-aa49b699d.json",
+    "flows": 8
+  },
+  "campaign_boundary": {
+    "campaign": "/Users/eric/mlx/vllm-mlx-r17-consolidation/docs/internal/release-gates/20260722_v1_6_17_consolidation/README.md",
+    "smoke": "/Users/eric/mlx/vllm-mlx-r17-consolidation/docs/internal/release-gates/20260722_v1_6_17_consolidation/release-candidate-smoke/README.md"
+  },
+  "downstream_release_gates": [
+    "rebuild bundled Python from frozen versioned source",
+    "verify bundled Python provenance and rerun the full suite",
+    "build Developer-ID-signed Sequoia and Tahoe DMGs",
+    "Apple notarization, stapling, Gatekeeper, and codesign validation",
+    "signed installed-app Electron and raw API smoke",
+    "tag, GitHub release, PyPI, mlxstudio latest.json, and feed publication"
+  ],
+  "deferred_full_matrix_boundaries": [
+    "broader cross-family and media repetition",
+    "retained capacity eviction and corrupt-companion rows",
+    "long gateway/network/model-swap soak",
+    "remaining JANG conversion and distribution certification"
+  ],
+  "scope_note": "Clears only the v1.6.17 usable consolidation checkpoint for packaging. It does not mark the retained full campaign matrix complete."
+}
