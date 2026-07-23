@@ -1,0 +1,85 @@
+{
+  "date": "2026-07-23",
+  "status": "FIXED+VERIFIED-LIVE-SCOPED / API PARTIAL / OVERALL PARTIAL",
+  "source_head": "0592404d85613704bcc93d740f4c948682acee13",
+  "commits": {
+    "exactly_once_tools": "b482bec60",
+    "repeated_tex_delimiters": "0592404d8"
+  },
+  "runtime": {
+    "host": "erics-m5-max.local",
+    "electron_profile": "/Users/eric/.vmlx-r17-consolidation-dev",
+    "cdp_port": 9335,
+    "gateway_port": 8090,
+    "direct_port": 8008,
+    "engine_pid": 11370,
+    "bundle": "/Volumes/EricsLLMDrive/JANGQ-AI/MiniMax-M3-Coder-Small",
+    "engine_python": "/Users/eric/mlx/vllm-mlx-r17-consolidation/.venv/bin/python3",
+    "reasoning_parser": "minimax_m3",
+    "tool_parser": "minimax_m3"
+  },
+  "turns": [
+    {
+      "index": 1,
+      "kind": "no-tool-math-currency",
+      "reasoning_chars": 903,
+      "content_chars": 138,
+      "tool_calls": 0,
+      "output_tokens": 378,
+      "tokens_per_second": 19.5,
+      "prompt_tokens": 243,
+      "cached_tokens": 128,
+      "ttft_seconds": 14.54,
+      "total_seconds": 34.0
+    },
+    {
+      "index": 2,
+      "kind": "exactly-once-file-info",
+      "tool_calls": 1,
+      "tool_executions": 1,
+      "tool_iterations": 1,
+      "reasoning_chars": 186,
+      "output_tokens": 89,
+      "tokens_per_second": 17.4,
+      "prompt_tokens_cumulative": 9418,
+      "cached_tokens_cumulative": 5440,
+      "ttft_seconds": 27.07,
+      "total_seconds": 36.8,
+      "visible_result": "5.2 KB"
+    },
+    {
+      "index": 3,
+      "kind": "no-tool-history-recall-math",
+      "reasoning_chars": 607,
+      "content_chars": 105,
+      "tool_calls": 0,
+      "output_tokens": 231,
+      "tokens_per_second": 18.4,
+      "prompt_tokens": 887,
+      "cached_tokens": 239,
+      "ttft_seconds": 3.74,
+      "total_seconds": 16.4,
+      "stored_content": "Path: panel/package.json — Size: 5.2 KB\n$43 and inline TeX: \\(\\(47 \\times 19 = 893 < 920 = 46 \\times 20\\)",
+      "renderer_dom": {
+        "katex_text": "47×19=893<920=46×20",
+        "math_fallback_count": 0,
+        "raw_times_present": false,
+        "raw_delimiter_present": false
+      }
+    }
+  ],
+  "focused_tests": {
+    "math_markdown": "15/15 passed",
+    "tool_auto_continue": "23/23 passed",
+    "combined_tool_metrics": "26/26 passed",
+    "typecheck": "passed"
+  },
+  "remaining": [
+    "direct and gateway API matrix on this exact M3 checkpoint",
+    "restart and eviction native sparse-cache proof",
+    "media",
+    "signed app",
+    "full suites",
+    "packaging, notarization, and publication"
+  ]
+}

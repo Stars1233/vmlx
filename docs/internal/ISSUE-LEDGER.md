@@ -5503,3 +5503,26 @@ Status: `PARTIAL / CORRECTNESS FALLBACK LIVE / RELEASE BLOCKING`.
   disk-cap eviction/refault, 512K context, signed app, full suites, packaging,
   notarization, and publication. Overall release remains
   `PARTIAL / NOT RELEASE-READY`.
+
+## 2026-07-23 - MiniMax M3 exactly-once tool and TeX renderer resilience
+
+- `R17-M3-EXACTLY-ONCE-TOOL`: `FIXED+VERIFIED-LIVE_SCOPED`.
+  `b482bec60` decouples explicitly named exactly-once execution from exact
+  final-answer wording. The real Electron M3 turn now has one `file_info`
+  execution, one result continuation, and one final answer.
+- `R17-M3-REPEATED-TEX-DELIMITER`: `FIXED+VERIFIED-LIVE_SCOPED`.
+  The raw stored model output contained `\(\(` with one closer; `$43` was
+  prompt-required currency. `0592404d8` normalizes only adjacent repeated math
+  delimiters in completed and streaming-reasoning render paths. Live DOM
+  contains valid KaTeX with no fallback or raw marker.
+- `R17-M3-THREE-TURN-UI`: `VERIFIED-LIVE_SCOPED`.
+  The real Start-loaded PID `11370` completed no-tool math, exactly-once tool,
+  and no-tool history recall with separate non-empty reasoning and visible
+  output at `19.5`, `17.4`, and `18.4 tok/s`.
+- `R17-M3-CURRENT-API-PARITY`: `PARTIAL`.
+  Direct/gateway Chat, Responses, Anthropic, and Ollama were not repeated for
+  this exact M3 checkpoint. Raw API byte fidelity and agentic continuation
+  remain required.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/m3-tool-math-live/README.md`.
+- Overall v1.6.17 remains `PARTIAL / NOT RELEASE-READY`.

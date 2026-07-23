@@ -1444,3 +1444,51 @@ Remaining boundary:
   eviction/refault, 512K context, signed-app repetition, full suites,
   packaging, notarization, and publication remain open. Overall v1.6.17
   remains `PARTIAL / NOT RELEASE-READY`.
+
+### R17-020 MiniMax M3 exactly-once tools and repeated TeX delimiters
+
+Status: `FIXED+VERIFIED-LIVE-SCOPED / API PARTIAL / OVERALL PARTIAL`.
+
+Root causes and corrections:
+
+- The panel retired an explicitly named exactly-once tool only when the prompt
+  also used the separate phrase `reply exactly`. A live M3 turn therefore
+  executed `file_info` three times. Commit `b482bec60` separates the execution
+  invariant from final-answer wording, retires each named tool after its first
+  execution, and rejects a duplicate emitted in the same model pass.
+- The next M3 turn stored malformed TeX with an adjacent duplicate opener:
+  `\(\(47 \times 19 ...\)`. The literal `$43` in that message was required
+  currency, not random injection. Commit `0592404d8` collapses only repeated
+  adjacent TeX delimiters in completed answers and live reasoning text while
+  leaving currency, code, and raw API bytes unchanged.
+
+Current live proof:
+
+- The real isolated Electron app loaded the exact
+  `MiniMax-M3-Coder-Small` bundle with its Start button as PID `11370`.
+  The resolved project engine and argv selected both `minimax_m3` parsers,
+  Paged RAM, and SSD/L2.
+- Three inspected turns retained separate non-empty reasoning and visible
+  output:
+  - no-tool math/currency at `19.5 tok/s`;
+  - one real `file_info` execution/result continuation at `17.4 tok/s`;
+  - no-tool history recall and corrected KaTeX at `18.4 tok/s`.
+- Current renderer DOM contained `.math-inline .katex` text
+  `47×19=893<920=46×20`, with no math fallback, raw `\times`, or raw
+  delimiter. The expanded reasoning rail showed the same corrected rendering.
+- Focused remote tests: math `15/15`, tool-auto-continue `23/23`, combined
+  tool/metrics `26/26`; panel typecheck passed.
+
+Evidence:
+
+- `m3-tool-math-live/README.md`
+- `m3-tool-math-live/m3-tool-math-live.json`
+- `m3-tool-math-live/m3-ui-turn*.png`
+
+Remaining boundary:
+
+- Direct and gateway API parity was not repeated for this exact M3 checkpoint;
+  raw API byte fidelity and agentic continuation therefore remain `PARTIAL`.
+- M3 restart/eviction native sparse-cache proof, media, signed-app repetition,
+  full suites, packaging, notarization, and publication remain open. Overall
+  v1.6.17 remains `PARTIAL / NOT RELEASE-READY`.

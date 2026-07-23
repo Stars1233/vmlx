@@ -2274,3 +2274,24 @@
 - Retained all current requests, SSE, health, argv, screenshots, source test
   log, and hashes under
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/openpangu-live/`.
+
+## 2026-07-23 - M3 exact-once tool and malformed TeX checkpoint
+
+- Reused the one current isolated Electron instance on CDP `9335` and loaded
+  the exact MiniMax M3 bundle with the real Start button as PID `11370`.
+- Reproduced the tool-loop defect: one requested `file_info` call executed
+  three times because exactly-once retirement was tied to `reply exactly`.
+- Added an independent named exactly-once contract and same-batch duplicate
+  guard in `b482bec60`. The current live turn executed exactly once and
+  continued to the truthful `5.2 KB` final.
+- Inspected raw SQLite bytes for the following history turn. `$43` was
+  prompt-required currency; the model emitted invalid `\(\(` nesting.
+- Added shared completed/reasoning adjacent-delimiter normalization in
+  `0592404d8`. Current DOM and screenshots show valid KaTeX, no fallback, and
+  no raw TeX marker in the answer or expanded reasoning rail.
+- Preserved four screenshots plus structured evidence under
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/m3-tool-math-live/`.
+- Remote tests passed: math 15, tool-auto-continue 23, combined tool/metrics
+  26, and typecheck.
+- Left direct/gateway API parity and the remaining M3 cache/media/release gates
+  explicitly open.

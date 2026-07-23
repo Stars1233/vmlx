@@ -8466,3 +8466,30 @@ Status: `VERIFIED-LIVE-SCOPED / EXACT MARKER PARTIAL / OVERALL PARTIAL`.
 - Evidence:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/qwen35-ollama-reasoning-history-tool-live-1024.json`.
 - Other families/routes and the release gates remain open.
+
+## 2026-07-23 - MiniMax M3 exactly-once tools and repeated TeX delimiter repair
+
+Status: `FIXED+VERIFIED-LIVE-SCOPED / API PARTIAL / OVERALL PARTIAL`.
+
+- Current source head: `0592404d85613704bcc93d740f4c948682acee13`.
+- The real isolated Electron Start button loaded
+  `/Volumes/EricsLLMDrive/JANGQ-AI/MiniMax-M3-Coder-Small` as PID `11370`
+  using the project venv and both `minimax_m3` parsers.
+- Commit `b482bec60` fixed a live three-execution `file_info` regression by
+  making an explicitly named `exactly once` tool an independent execution
+  invariant. Retained proof has one tool card, one execution, one continuation,
+  and one final answer.
+- Commit `0592404d8` repairs only adjacent duplicate TeX delimiters such as
+  `\(\(` in both completed answers and live reasoning. The raw M3 turn
+  contained that malformed opener; `$43` was prompt-required literal currency.
+- Current renderer DOM contains valid KaTeX text
+  `47×19=893<920=46×20`, zero fallback nodes, and no raw delimiter or
+  `\times`. The expanded reasoning rail is also corrected.
+- Three inspected Electron turns retained separate reasoning, no-tool/tool/
+  history behavior, and `19.5`, `17.4`, and `18.4 tok/s`.
+- Focused verification: math `15/15`, tool-auto-continue `23/23`, combined
+  tool/metrics `26/26`, and panel typecheck passed.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/m3-tool-math-live/README.md`.
+- Direct/gateway API parity, M3 restart/eviction native sparse cache, media,
+  signed app, full suites, and release actions remain open.
