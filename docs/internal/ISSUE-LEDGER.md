@@ -5640,3 +5640,26 @@ Status: `PARTIAL / CORRECTNESS FALLBACK LIVE / RELEASE BLOCKING`.
 - MTP acceleration, capacity eviction/refault, media, other families, full
   suites, signed-app repetition, packaging, notarization, and publication
   remain open. Overall release status is `PARTIAL / NOT RELEASE-READY`.
+
+## 2026-07-23 - R17 release-head suite audit
+
+- `R17-MINICPM-V46-REGISTRY-PARITY`: `FIXED+FOCUSED-TEST`.
+  The mlx-vlm runtime remap and prompt message-format alias now update
+  atomically instead of retaining an incompatible upstream entry.
+- `R17-RESPONSES-ANSWER-PASS-CACHE-USAGE`: `FIXED+FOCUSED-TEST`.
+  Incremental Responses usage retains the first pass's cache tokens/detail
+  while a bounded visible-answer continuation streams.
+- `R17-ZAYA-LEGACY-ROPE-TOKENIZER`: `FIXED+REAL-BUNDLE-LOAD-TEST`.
+  The exact local ZAYA1-8B-MXFP4 bundle now loads strictly; legacy
+  `rope_scaling:false` is normalized only in memory for Transformers 5.
+- `R17-SHARED-PARSER-OWNED-PORT-ROTATING-TESTS`: `PASS`.
+  Tests now cover the shared parser resolver, exact owned-port cleanup, and
+  shared rotating-cache bounds helper rather than deleted/duplicated code.
+- `R17-BUNDLED-PYTHON-DRIFT`: `OPEN-EXPECTED`.
+  The verifier correctly rejects the stale v1.6.16 bundled engine. It closes
+  only after final source freeze and rebundling.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/release-head-suite-audit/`.
+- Full Python, API smoke, packaging, signing, notarization, installed-app
+  smoke, tag, and publication remain open. Overall status:
+  `PARTIAL / NOT RELEASE-READY`.

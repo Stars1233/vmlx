@@ -8586,3 +8586,21 @@ Status: `FIXED+VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
   engine version. Do not upgrade that sub-row to pass.
 - Full release status remains `PARTIAL / NOT RELEASE-READY`. Do not package,
   notarize, tag, or publish from this checkpoint.
+
+## 2026-07-23 - Release-head suite triage
+
+- Panel current-head gates pass: `2490 passed, 3 skipped`, TypeScript, and
+  Electron production renderer build.
+- Corrected six release-head Python rows and passed the combined focused run
+  `6/6` on the M5 Max:
+  - MiniCPM-V-4.6 runtime/prompt alias parity;
+  - Responses answer-pass cache usage details;
+  - strict real-bundle ZAYA legacy RoPE tokenizer compatibility;
+  - shared preview parser, owned-port, and rotating-cache test contracts.
+- `verify-bundled-python.sh` remains intentionally red because current source
+  differs from the v1.6.16 bundled engine. Rebuild only after source freeze.
+- Full Python, raw all-protocol API smoke, versioning, package/sign/notarize,
+  installed-app smoke, tag, and publish remain open.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/release-head-suite-audit/`.
+- Overall status remains `PARTIAL / NOT RELEASE-READY`.

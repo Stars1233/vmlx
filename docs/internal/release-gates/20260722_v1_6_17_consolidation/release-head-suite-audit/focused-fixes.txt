@@ -1,0 +1,21 @@
+Release-head focused regression verification
+Date: 2026-07-23
+Source before fixes: 493f418d3b5402e4e1e6c4b2f66b77add45ef81f
+Runtime host: erics-m5-max.local
+Python: 3.14.5
+
+collected 6 items
+tests/test_engine_audit.py ...                                           [ 50%]
+tests/test_hybrid_batching.py .                                          [ 66%]
+tests/test_panel_cli_flag_contract.py .                                  [ 83%]
+tests/test_zaya_runtime.py .                                             [100%]
+============================== 6 passed in 3.65s ===============================
+
+Verified rows:
+- MiniCPM-V-4.6 runtime remap and prompt message-format alias stay atomic.
+- Electron command preview uses the shared tool-parser resolver.
+- Responses visible-answer pass preserves first-pass cache usage details.
+- Rotating-KV block extraction uses the shared metadata-aware bounds helper.
+- Large-model preflight precedes owned-port cleanup and both spawn paths.
+- The real local ZAYA1-8B-MXFP4 bundle loads strictly and its tokenizer accepts
+  legacy rope_scaling=false through an in-memory false-to-None normalization.

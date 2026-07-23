@@ -1641,3 +1641,27 @@ Remaining boundary:
   full suites, signed installed-app repetition, package/sign/notarize, tagging,
   and publication remain open. Overall v1.6.17 remains
   `PARTIAL / NOT RELEASE-READY`.
+
+### R17-025 Release-head suite triage and focused fixes
+
+Status: `FOCUSED FIXES PASS / FULL PYTHON+BUNDLE RERUN PENDING`.
+
+- Current-head panel verification passed `2490` tests with `3` skipped,
+  TypeScript, and the Electron production renderer build.
+- The valid Python failed-set reduced to six product/test-contract rows plus
+  one intentional bundled-engine drift gate.
+- Fixed MiniCPM-V-4.6 runtime/message-format alias parity, Responses
+  answer-pass cache-usage preservation, and strict ZAYA tokenizer loading for
+  the real legacy `rope_scaling:false` bundle without modifying the artifact.
+- Updated stale source-shape assertions for the shared tool-parser resolver,
+  owned-port cleanup, and shared rotating-cache bounds helper.
+- The combined focused run passed `6/6` on the M5 Max.
+- Bundled-engine drift remains intentionally open until final source freeze
+  and `bundle-python.sh`.
+- Evidence: `release-head-suite-audit/README.md`.
+
+Remaining boundary:
+
+- Full Python rerun, rebuilt-bundle verification, all-protocol raw live smoke,
+  version bump, signed/notarized installed-app smoke, tagging, and publication
+  remain open. Overall v1.6.17 remains `PARTIAL / NOT RELEASE-READY`.

@@ -2385,3 +2385,16 @@
   partial-prefix proof under the same release-gate directory.
 - Overall v1.6.17 remains `PARTIAL / NOT RELEASE-READY`; release actions were
   not run.
+
+## 2026-07-23 - Release-head suite failures reduced and fixed
+
+- Validated remote development-test dependency parity before interpreting the
+  Python suite; the first async failure wave was an environment defect, not
+  product evidence.
+- Traced seven remaining failures individually. Fixed three product defects
+  and updated three stale safety/source contracts.
+- Combined focused run passed `6/6` on the exact M5 Max checkout.
+- Kept bundled-engine SHA drift open for the required release bundling stage
+  instead of weakening the verifier.
+- Stored durable evidence under
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/release-head-suite-audit/`.
