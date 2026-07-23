@@ -8365,3 +8365,29 @@ Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
 - Evidence:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/bonsai-hybrid-paged-on-off-ssd-live.json`.
 - Broader hybrid variants remain partial; release remains not ready.
+
+## 2026-07-23 - Qwen 3.6 35B JANGTQ hybrid partial SSD hierarchy
+
+Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
+
+- Fresh real Electron session selected the exact
+  `Qwen3.6-35B-A3B-JANGTQ-CRACK` artifact and displayed its model-derived
+  cache contract before launch: q4 TQ for eligible attention KV plus native
+  hybrid companion state.
+- Live health kept the formats distinct: JANGTQ2/MXTQ 2-bit codebook weights,
+  q4 TurboQuant SSD storage for ten attention-KV layers, and native
+  full-precision state for thirty SSM/GLA layers.
+- Paged-On changed-tail reuse restored 4,160/4,188 tokens as
+  `paged+ssm+tq-native`.
+- Real UI Paged-Off + SSD-On restart PID `90379` restored 4,160/4,189 tokens
+  as `block-disk+ssm+tq-native`, including 65 SSD/TQ blocks and one SSM
+  companion hit. L1 resident tokens/bytes stayed zero.
+- Real UI restored Paged-On PID `90589`; the first changed tail promoted the
+  SSD state as `paged+ssm+disk+tq-native`, and the next tail reused the same
+  4,160-token boundary from RAM.
+- All five outputs exact-finaled and no accepted KV hit lacked SSM state.
+- `209` focused hybrid/cache tests passed.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/qwen35-jangtq-paged-off-c.json`.
+- DSV4 composite partial reuse, remaining media/lifecycle breadth, full
+  suites, and release packaging remain open.

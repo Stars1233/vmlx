@@ -2185,3 +2185,22 @@
 - Remote selected tests: 209 passed.
 - Retained:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/bonsai-hybrid-paged-on-off-ssd-live.json`.
+
+## 2026-07-23 - R17 Qwen 35 JANGTQ hybrid partial SSD closure
+
+- Created a fresh Electron session for the exact Qwen 35 JANGTQ artifact and
+  retained the pre-launch model-derived cache UI.
+- Confirmed live JANGTQ/MXTQ codebook weight truth separately from cache
+  storage: 2-bit routed experts, q4 attention-KV SSD storage, native SSM/GLA
+  companion state.
+- Proved the same 4,160-token shared boundary in three hierarchy states:
+  - resident Paged-On: `paged+ssm+tq-native`;
+  - process-restarted Paged-Off: `block-disk+ssm+tq-native`, zero L1 payload;
+  - process-restarted Paged-On: `paged+ssm+disk+tq-native`, then resident RAM.
+- Every changed-tail probe exact-finaled. The accepted disk hit included 65
+  TQ-native attention blocks plus a matching SSM companion; no unsafe KV-only
+  hit was credited.
+- Restored the model-derived Paged-On + SSD-On state before leaving the row.
+- Remote selected tests: 209 passed.
+- Retained raw requests, health snapshots, and UI screenshots under:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/qwen35-jangtq-*`.

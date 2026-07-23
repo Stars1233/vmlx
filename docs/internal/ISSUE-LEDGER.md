@@ -5398,3 +5398,29 @@ Status: `PARTIAL / CORRECTNESS FALLBACK LIVE / RELEASE BLOCKING`.
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/bonsai-hybrid-paged-on-off-ssd-live.json`.
 - This closes the previous changed-tail partial-prefix row for the tested
   1-bit Bonsai artifact. Other hybrid families/variants remain separate.
+
+## 2026-07-23 - Qwen 3.6 35B JANGTQ hybrid partial SSD hierarchy
+
+- `R17-Q35-JANGTQ-FORMAT-TRUTH`: `PASS-LIVE`.
+  Health distinguishes JANGTQ2/MXTQ Hadamard-codebook weights from affine JANG
+  and base MLX MXFP. The weight path uses 2-bit routed experts; cache storage
+  independently uses q4 native TurboQuant for eligible attention KV.
+- `R17-Q35-HYBRID-PAGED-RAM-PARTIAL`: `VERIFIED-LIVE_SCOPED`.
+  A changed tail restored 4,160/4,188 tokens / 65 blocks as
+  `paged+ssm+tq-native` with matching native companion state.
+- `R17-Q35-HYBRID-PAGED-OFF-SSD-PARTIAL`: `VERIFIED-LIVE_SCOPED`.
+  Real Electron PID `90379` restored 4,160/4,189 tokens from
+  `block-disk+ssm+tq-native`, including 65 disk/TQ-native blocks and one SSM
+  companion hit. Resident L1 tokens and bytes remained zero.
+- `R17-Q35-HYBRID-PAGED-ON-SSD-PROMOTION`: `VERIFIED-LIVE_SCOPED`.
+  Real UI restart PID `90589` restored 4,160 tokens from
+  `paged+ssm+disk+tq-native`, promoted the state, then reused the same boundary
+  from `paged+ssm+tq-native`.
+- `R17-Q35-HYBRID-COMPANION-TRUTH`: `PASS-LIVE`.
+  All five outputs exact-finaled and
+  `hybrid_kv_without_ssm_hits=0`.
+- Verification: 209 focused hybrid/cache tests passed.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/qwen35-jangtq-paged-off-c.json`.
+- This closes only the missing cache-hierarchy row for this exact JANGTQ
+  artifact. Media/lifecycle breadth and release gates remain open.

@@ -1200,3 +1200,79 @@ Remaining boundary:
   not every hybrid family or quant variant. Ternary Bonsai, Qwen 35B variants,
   and other SSM/GLA graphs keep their own reliability/breadth boundaries.
 - Overall status remains `PARTIAL / NOT RELEASE-READY`.
+
+### R17-017 Qwen 3.6 35B JANGTQ hybrid partial SSD reuse
+
+Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
+
+Artifact and default truth:
+
+- Created a fresh real Electron session for
+  `dealignai/Qwen3.6-35B-A3B-JANGTQ-CRACK` on port `8006`. This is the
+  Hadamard/codebook JANGTQ path, not affine JANG and not base MLX MXFP:
+  live health reported `weight_format=mxtq`, profile `JANGTQ2`,
+  `mxtq_bits=2`, and `turboquant_codebook` weight dispatch.
+- Before launch, the Electron form identified the Qwen hybrid cache graph and
+  displayed `TQ4 attention KV + native hybrid state`. Paged RAM, SSD/L2, the
+  10 GB block-cache limit, and stored-cache quantization Auto were enabled.
+- Start eagerly loaded PID `90042`. Its argv contained the qwen tool parser,
+  qwen3 reasoning parser, 64-token paged blocks, 1,000 block limit, and 10 GB
+  SSD/L2 limit. Health resolved ten attention-KV layers to q4 TurboQuant
+  storage and thirty SSM/GLA companion layers to native state.
+
+Paged-On resident reuse:
+
+- A 4,188-token cold request wrote 66 native-TQ SSD blocks and matching SSM
+  companion checkpoints.
+- A changed-tail request restored 4,160/4,188 tokens / 65 blocks as
+  `paged+ssm+tq-native`, prefilling only 28 tokens and exact-finaling
+  `Q35JT-PAGED-RAM-B`.
+
+Paged-Off SSD-only reuse:
+
+- The real Electron settings UI turned `In-Memory Paged Cache (RAM)` Off while
+  leaving `Block Disk Cache (SSD / L2)` On. The SSD checkbox remained enabled
+  and independently selectable. Save & Restart launched PID `90379`.
+- Startup health reported `backend_mode=block_disk_only`,
+  `paged_ram_enabled=false`, `disk_only=true`,
+  `ram_mirror_policy=disk_only`, and zero resident L1 tokens/bytes while the
+  earlier 4,187 attention-KV tokens and 12,534 companion tokens remained on
+  SSD.
+- A new changed tail restored 4,160/4,189 tokens from
+  `block-disk+ssm+tq-native`: 65 disk hits, 65 TQ-native hits, one SSM
+  companion hit, and only 29 tail tokens prefetched. The output exact-finaled
+  `Q35JT-SSD-ONLY-C`. Resident RAM remained exactly zero.
+
+Paged-On SSD promotion and RAM reuse:
+
+- The real UI restored Paged RAM On with SSD/L2 still On and restarted PID
+  `90589`.
+- The first changed tail restored 4,160/4,188 tokens from
+  `paged+ssm+disk+tq-native`, promoted the safe typed state to RAM, and
+  exact-finaled `Q35JT-PAGED-DISK-D`.
+- The next tail restored 4,160/4,188 tokens from
+  `paged+ssm+tq-native` without another disk read and exact-finaled
+  `Q35JT-PAGED-RAM-E`.
+- Every accepted KV hit had matching companion state;
+  `hybrid_kv_without_ssm_hits=0`.
+- Focused remote verification on the same source head: `209` SSM/TQ,
+  generation-key, paged-cache, and bypass tests passed.
+
+Evidence:
+
+- `qwen35-jangtq-paged-on-ab.json`
+- `qwen35-jangtq-paged-off-c.json`
+- `qwen35-jangtq-paged-restored-de.json`
+- `qwen35-jangtq-create-defaults.png`
+- `qwen35-jangtq-paged-off-ssd-on.png`
+- `qwen35-jangtq-paged-on-ssd-on.png`
+
+Remaining boundary:
+
+- The existing Qwen 35 protocol row was not repeated; this gate closes only
+  the missing cache-hierarchy row for this exact JANGTQ artifact.
+- Qwen 27 MXFP/MTP, Ornith, Bonsai, Laguna, Gemma mixed-SWA, MiniMax M3, and
+  OpenPangu retain their separate recorded rows. DSV4 non-terminal composite
+  partial reuse remains deliberately fail-closed.
+- Media salt/restart breadth and the full release test/package/notarization
+  gates remain open. Overall status remains `PARTIAL / NOT RELEASE-READY`.
