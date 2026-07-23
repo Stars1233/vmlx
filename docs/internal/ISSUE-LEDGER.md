@@ -5353,3 +5353,26 @@ Status: `PARTIAL / CORRECTNESS FALLBACK LIVE / RELEASE BLOCKING`.
 - Cross-architecture status remains `PARTIAL`: Gemma mixed-SWA, hybrid SSM/GDN,
   M3 sparse/lightning, OpenPangu native prompt disk, and DSV4 composite partial
   reuse still require architecture-specific live proof.
+
+## 2026-07-23 - Gemma mixed-SWA partial SSD hierarchy
+
+- `R17-GEMMA-PAGED-OFF-SSD-PARTIAL`: `VERIFIED-LIVE_SCOPED`.
+  Real Electron PID `30932` launched with Paged RAM Off and SSD L2 On.
+  A changed-tail request restored 2,624/2,709 tokens from
+  `block-disk+mixed_swa`; resident RAM stayed zero.
+- `R17-GEMMA-PAGED-ON-SSD-PROMOTION`: `VERIFIED-LIVE_SCOPED`.
+  Real UI restart PID `31187` restored 2,624/2,710 tokens from
+  `paged+mixed_swa+disk` and promoted the typed state to RAM.
+- `R17-GEMMA-PAGED-ON-RAM-REUSE`: `VERIFIED-LIVE_SCOPED`.
+  The next distinct tail restored 2,624/2,711 from `paged+mixed_swa`; SSD hit
+  count stayed unchanged.
+- `R17-GEMMA-TQ-TRUTH`: `NOT A DEFECT`.
+  Health correctly keeps generic q4 TurboQuant Off for typed mixed-SWA state;
+  full-attention KV, rotating-window metadata, and offsets are restored as one
+  native contract.
+- Verification: 139 focused remote tests passed.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/gemma-mixed-swa-paged-on-off-ssd-live.json`.
+- Cross-architecture status remains `PARTIAL`: hybrid SSM/GDN, M3
+  sparse/lightning, OpenPangu native prompt disk, and DSV4 composite remain
+  separate rows.

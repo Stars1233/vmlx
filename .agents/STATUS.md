@@ -8327,3 +8327,22 @@ Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/minimax-m27-ui-api-cache-live.json`.
 - Other typed cache schemas remain open; release status remains
   `PARTIAL / NOT RELEASE-READY`.
+
+## 2026-07-23 - Gemma mixed-SWA partial SSD hierarchy
+
+Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
+
+- Real Electron Save & Restart proved both supported combinations:
+  - PID `30932`: Paged RAM Off + SSD L2 On.
+  - PID `31187`: Paged RAM On + SSD L2 On.
+- Disk-only changed-tail reuse restored 2,624/2,709 tokens as
+  `block-disk+mixed_swa` while resident RAM stayed at zero.
+- After the process restart, Paged-On restored 2,624/2,710 from
+  `paged+mixed_swa+disk`, promoted the typed state to RAM, then restored
+  2,624/2,711 from `paged+mixed_swa` without another disk hit.
+- Exact outputs completed for all four cache probes.
+- `139` focused remote cache tests passed.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/gemma-mixed-swa-paged-on-off-ssd-live.json`.
+- Hybrid SSM/GDN, M3 sparse, OpenPangu native prompt disk, and DSV4 composite
+  remain architecture-specific open rows.

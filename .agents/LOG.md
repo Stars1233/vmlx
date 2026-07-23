@@ -2154,3 +2154,17 @@
 - Remote selected tests: 132 passed.
 - Retained:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/minimax-m27-ui-api-cache-live.json`.
+
+## 2026-07-23 - R17 Gemma typed mixed-SWA SSD partial reuse
+
+- Avoided rerunning the already-current Gemma reasoning/tool/KaTeX/API row.
+- Used the real Electron settings and Save & Restart controls to prove:
+  - Paged Off + SSD On restored 2,624/2,709 changed-tail tokens from
+    `block-disk+mixed_swa` with zero resident RAM.
+  - Paged On + SSD On restored 2,624/2,710 from SSD after restart, promoted
+    state to RAM, then reused 2,624/2,711 from RAM for the next tail.
+- Retained exact argv, health, cache execution, output, and UI checkbox
+  evidence.
+- Remote selected tests: 139 passed.
+- Retained:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/gemma-mixed-swa-paged-on-off-ssd-live.json`.

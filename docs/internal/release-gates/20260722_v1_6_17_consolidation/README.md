@@ -1125,3 +1125,41 @@ Remaining boundary:
 - DSV4 partial composite reuse remains deliberately fail-closed rather than
   reporting unsafe hit credit.
 - Overall status remains `PARTIAL / NOT RELEASE-READY`.
+
+### R17-015 Gemma mixed-SWA Paged-On and Paged-Off partial SSD reuse
+
+Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
+
+- Reused the already-current Gemma three-turn/four-protocol row rather than
+  repeating it. This gate exercised only the missing typed mixed-SWA cache
+  hierarchy on source `00d2eb8ee`.
+- The real Electron Start button loaded Gemma PID `30624`. The real settings
+  UI then left Block Disk Cache (SSD / L2) On while turning In-Memory Paged
+  Cache (RAM) Off; Save & Restart launched PID `30932` with
+  `--no-paged-cache --enable-block-disk-cache`.
+- A 2,700-token cold request stored the typed full-attention, sliding-window,
+  and rotating-metadata state. A changed-tail 2,709-token request restored
+  2,624 tokens / 41 blocks as `block-disk+mixed_swa`, prefilling only 85 and
+  exact-finaling. Health remained at zero resident RAM tokens/bytes.
+- The real UI restored Paged RAM On with SSD L2 still On; Save & Restart
+  launched PID `31187`. Its first changed tail restored 2,624/2,710 tokens from
+  `paged+mixed_swa+disk` and promoted them to RAM. A second changed tail
+  restored 2,624/2,711 from `paged+mixed_swa` without increasing SSD hits.
+- Gemma's typed mixed-SWA state intentionally does not claim generic q4
+  TurboQuant: full KV, rotating metadata, and offsets must remain one
+  architecture-owned restore contract.
+- Focused remote verification: `139` cache architecture/key/paged/bypass tests
+  passed.
+
+Evidence:
+
+- `gemma-mixed-swa-paged-on-off-ssd-live.json`
+- `gemma-paged-off-ssd-on.png`
+- `gemma-paged-on-ssd-on.png`
+
+Remaining boundary:
+
+- Hybrid SSM/GDN, M3 sparse/lightning, OpenPangu native prompt disk, and DSV4
+  composite caches retain their own live-proof boundaries. DSV4 partial
+  composite reuse remains fail-closed.
+- Overall status remains `PARTIAL / NOT RELEASE-READY`.

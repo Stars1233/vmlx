@@ -1,0 +1,155 @@
+{
+  "date": "2026-07-23",
+  "host": "erics-m5-max.local",
+  "source": {
+    "repo": "/Users/eric/mlx/vllm-mlx-r17-consolidation",
+    "branch": "codex/v1.6.17-consolidation-20260723",
+    "head": "00d2eb8ee8d833b4597ebd467c5606ef5e3b0ab4"
+  },
+  "electron": {
+    "cdp": "http://127.0.0.1:9335",
+    "gateway": "http://127.0.0.1:8088",
+    "profile": "/Users/eric/.vmlx-r17-consolidation-dev",
+    "real_start_pid": 30624,
+    "paged_off_restart_pid": 30932,
+    "paged_on_restart_pid": 31187,
+    "error_toasts": 0
+  },
+  "bundle": {
+    "served_id": "JANGQ-AI/gemma-4-12B-it-qat-JANG_4M",
+    "path": "/Users/eric/.mlxstudio/models/JANGQ-AI/gemma-4-12B-it-qat-JANG_4M",
+    "config_sha256": "1fe9d66f2f400ad389c702b70e35a01f27d2ea4c947ae983b4b810178876d83f",
+    "generation_config_sha256": "a83490e5661735294dc2ed4a1ae0bb480ea1cf5d9a3a1e2994d2208d476388d7",
+    "tokenizer_config_sha256": "1b11a14c8d05377e10084056c4aa88fcf0a607e2be82212146420634ce414739",
+    "jang_config_sha256": "06d60a49543256d37300ef72f069e34e79472223c90c3fcb1357b28c709b89b8",
+    "weight_index_sha256": "f5037341616be2a7d6a6cbdd6b964e35e82a8634a91f645e3a5d3038fc62820c",
+    "native_cache": {
+      "family": "gemma4",
+      "schema": "mixed_swa_kv_v1",
+      "components": [
+        "full_attention_kv",
+        "sliding_window_kv",
+        "rotating_window_metadata"
+      ],
+      "generic_turboquant_kv": false,
+      "generic_turboquant_reason": "typed mixed-SWA state is not plain KV",
+      "block_disk_l2": true
+    }
+  },
+  "paged_off_ssd_on": {
+    "ui": {
+      "paged_ram_checked": false,
+      "ssd_l2_checked": true,
+      "screenshot": "gemma-paged-off-ssd-on.png"
+    },
+    "argv": [
+      "--no-paged-cache",
+      "--enable-block-disk-cache",
+      "--block-disk-cache-max-gb",
+      "10"
+    ],
+    "health_before": {
+      "backend_mode": "block_disk_only",
+      "paged_ram_enabled": false,
+      "disk_only": true,
+      "ram_mirror_policy": "disk_only",
+      "ram_tokens_cached": 0,
+      "l1_resident_bytes": 0
+    },
+    "cold": {
+      "prompt_tokens": 2700,
+      "cached_tokens": 0,
+      "visible_content": "R17-GEMMA-SSD-A-DONE",
+      "elapsed_seconds": 3.976
+    },
+    "changed_tail": {
+      "prompt_tokens": 2709,
+      "cached_tokens": 2624,
+      "prefill_tokens": 85,
+      "cache_detail": "block-disk+mixed_swa",
+      "disk_blocks_restored": 41,
+      "reconstruction_ok": true,
+      "visible_content": "R17-GEMMA-SSD-B-DONE",
+      "elapsed_seconds": 2.959
+    },
+    "health_after": {
+      "ram_tokens_cached": 0,
+      "l1_resident_bytes": 0,
+      "tokens_saved": 2624,
+      "disk_hits": 123
+    },
+    "verdict": "PASS"
+  },
+  "paged_on_ssd_on": {
+    "ui": {
+      "paged_ram_checked": true,
+      "ssd_l2_checked": true,
+      "screenshot": "gemma-paged-on-ssd-on.png"
+    },
+    "argv": [
+      "--use-paged-cache",
+      "--enable-block-disk-cache",
+      "--block-disk-cache-max-gb",
+      "10"
+    ],
+    "health_before": {
+      "backend_mode": "paged",
+      "paged_ram_enabled": true,
+      "disk_only": false,
+      "ram_mirror_policy": "resident",
+      "ram_tokens_cached": 0,
+      "disk_hits": 0
+    },
+    "first_changed_tail_after_restart": {
+      "prompt_tokens": 2710,
+      "cached_tokens": 2624,
+      "prefill_tokens": 86,
+      "cache_detail": "paged+mixed_swa+disk",
+      "disk_blocks_restored": 41,
+      "reconstruction_ok": true,
+      "ram_tokens_after": 2709,
+      "visible_content": "R17-GEMMA-SSD-C-DONE",
+      "elapsed_seconds": 2.82
+    },
+    "second_changed_tail_same_process": {
+      "prompt_tokens": 2711,
+      "cached_tokens": 2624,
+      "prefill_tokens": 87,
+      "cache_detail": "paged+mixed_swa",
+      "disk_hit": false,
+      "disk_hits_after": 41,
+      "ram_tokens_after": 2795,
+      "visible_content": "R17-GEMMA-SSD-D-DONE",
+      "elapsed_seconds": 2.799
+    },
+    "tokens_saved_total": 5248,
+    "verdict": "PASS"
+  },
+  "verification": {
+    "remote_tests": {
+      "files": [
+        "tests/test_cache_architecture_contract.py",
+        "tests/test_generation_prompt_cache_key.py",
+        "tests/test_paged_cache.py",
+        "tests/test_cache_bypass.py"
+      ],
+      "passed": 139,
+      "failed": 0,
+      "elapsed_seconds": 12.45
+    },
+    "prior_combined_ui_api_evidence": "gemma-reasoning-tools-math-audio-live.json",
+    "git_diff_check": "PASS"
+  },
+  "verdict": {
+    "gemma_mixed_swa_paged_off_partial_ssd": "VERIFIED_LIVE_SCOPED",
+    "gemma_mixed_swa_paged_on_ssd_promotion": "VERIFIED_LIVE_SCOPED",
+    "gemma_mixed_swa_same_process_ram_reuse": "VERIFIED_LIVE_SCOPED",
+    "release": "PARTIAL_NOT_RELEASE_READY",
+    "notes": [
+      "The changed-tail requests reused complete 64-token SSD blocks and prefetched only the unaligned tail.",
+      "Paged-Off health retained zero resident RAM payload while restoring typed KV plus rotating-window metadata from SSD.",
+      "Gemma mixed-SWA intentionally does not claim generic q4 TurboQuant storage because its typed state is not plain KV.",
+      "The earlier Gemma Electron/API reasoning, tools, KaTeX, and audio-quality evidence remains the owning protocol row."
+    ]
+  }
+}
