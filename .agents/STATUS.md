@@ -1,5 +1,26 @@
 # Current Status
 
+## 2026-07-23 - Gemma mixed-SWA SSD-only partial/restart and promotion
+
+Status: `VERIFIED_LIVE_SCOPED_GEMMA_SSD_HIERARCHY_R17_PARTIAL`.
+
+- UI Save & Restart loaded Paged-Off/Block-Disk-On PID `95934`; health showed
+  block-disk-only mode with zero RAM tokens and zero resident bytes.
+- Same-process exact restored 11,058 tokens/173 SSD blocks. Changed-tail
+  restored 11,008 tokens/172 SSD blocks. Both exact-finaled.
+- Visible Stop/Start loaded PID `96185` with zero hits and retained SSD state.
+  Exact restart restored 11,064 tokens; changed-tail restored 11,008. Both
+  exact-finaled with zero RAM residency.
+- The 10 GB policy evicted 106 blocks after a 10.191 GB write and returned the
+  store to 7.900 GB.
+- Restored Paged-On/Block-Disk-On PID `96442` first promoted 173 SSD blocks as
+  `paged+mixed_swa+disk`, then used resident `paged+mixed_swa` on the next
+  request with no additional disk promotion.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/gemma-mixed-swa-ssd-restart-live.json`.
+- q4 eligible-KV storage, MXFP8/media, broader protocol, other architecture,
+  and release gates remain open.
+
 ## 2026-07-23 - Gemma 4 vendored mixed-SWA warm corruption repair
 
 Status: `VERIFIED_LIVE_SCOPED_PAGED_ON_OVERALL_R17_PARTIAL`.

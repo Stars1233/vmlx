@@ -499,7 +499,7 @@ Boundary:
 
 ### R17-006 Gemma 4 vendored mixed-SWA prefix reconstruction
 
-Status: `SOURCE+FOCUSED TEST+PAGED-ON LIVE PASS / SSD-ONLY+Q4+RESTART OPEN`
+Status: `SOURCE+FOCUSED TEST+PAGED-ON/OFF+SSD-RESTART LIVE PASS / Q4+MEDIA OPEN`
 
 Root cause:
 
@@ -572,11 +572,40 @@ Cache evidence:
 - The live disk cap also evicted 98 older blocks and returned to 7.79 GB below
   the configured 10 GB ceiling.
 
+SSD-only, restart, eviction, and tier-promotion evidence:
+
+- The real Server Settings drawer allowed `In-Memory Paged Cache (RAM)` Off
+  while `Block Disk Cache (SSD / L2)` remained enabled and selectable.
+- `Save & Restart` loaded PID `95934` with `--no-paged-cache`,
+  `--enable-block-disk-cache`, and the 10 GB disk limit. Health reported
+  `backend_mode=block_disk_only`, zero RAM-cached tokens, and zero L1 resident
+  bytes.
+- Same-process exact replay restored 11,058 of 11,059 input tokens from 173
+  SSD blocks. A changed-tail request restored 11,008 of 11,065 tokens from 172
+  SSD blocks. Both exact-finaled as `block-disk+mixed_swa`.
+- Visible Stop -> Start loaded new PID `96185` with zero request hits and zero
+  RAM residency while 492 SSD blocks remained. Exact restart replay restored
+  11,064 of 11,065 tokens; changed-tail restart replay restored 11,008 of
+  11,064. Both exact-finaled from SSD.
+- The changed-tail write temporarily reached 10.191 GB. The configured 10 GB
+  policy then evicted 106 blocks and returned the store to 387 blocks / 7.900
+  GB. This is observed enforcement, not slider-presence inference.
+- The UI was restored to Paged RAM On + Block Disk On and restarted as PID
+  `96442`. Its first request promoted 173 persisted SSD blocks and reported
+  `paged+mixed_swa+disk` plus 173 promotion hits; the second request used the
+  resident tier as `paged+mixed_swa` with no additional disk hit.
+- Full structured evidence is retained in
+  `gemma-mixed-swa-ssd-restart-live.json`.
+
 Boundary:
 
-- This closes the current-source Paged-On, explicit-TQ-None Gemma JANG_4M
-  corruption and telemetry row only.
-- Paged-Off SSD-only exact/partial reuse, fresh-process restore, forced L1
-  eviction/refault, q4 storage-boundary TQ, MXFP8, advertised media, and
-  current-source Anthropic/Ollama rows remain open. This is not a Gemma family
-  release pass and does not unlock v1.6.17 packaging.
+- This closes current-source Paged-On resident reuse, Paged-On SSD promotion,
+  Paged-Off SSD-only exact/partial reuse, fresh-process restore, disk-cap
+  eviction, and explicit-TQ-None Gemma JANG_4M corruption/telemetry.
+- It also falsifies the broad claim that the production Gemma block-disk path
+  currently uses an unusable MLLM key/offset contract. A separate legacy
+  prompt-disk source discrepancy remains an unproven lead and was not
+  rewritten without live failure evidence.
+- q4 storage-boundary TQ, MXFP8, advertised media, and current-source
+  Anthropic/Ollama rows remain open. This is not a Gemma family release pass
+  and does not unlock v1.6.17 packaging.

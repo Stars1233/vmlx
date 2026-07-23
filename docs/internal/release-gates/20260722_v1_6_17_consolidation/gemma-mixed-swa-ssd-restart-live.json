@@ -1,0 +1,152 @@
+{
+  "status": "VERIFIED_LIVE_SCOPED_GEMMA_MIXED_SWA_SSD_HIERARCHY",
+  "source_commit": "9f5b1bde20089dc3b998a5522c43ef9e35805395",
+  "host": "erics-m5-max.local",
+  "model": "JANGQ-AI/gemma-4-12B-it-qat-JANG_4M",
+  "cache_schema": "mixed_swa_kv_v1",
+  "kv_cache_quantization": "none",
+  "ui_transitions": [
+    {
+      "action": "Save & Restart",
+      "pid": 95934,
+      "paged_ram": false,
+      "block_disk_l2": true,
+      "argv_contains": [
+        "--no-paged-cache",
+        "--enable-block-disk-cache",
+        "--block-disk-cache-max-gb 10"
+      ]
+    },
+    {
+      "action": "Stop then Start",
+      "pid": 96185,
+      "paged_ram": false,
+      "block_disk_l2": true
+    },
+    {
+      "action": "Save & Restart",
+      "pid": 96442,
+      "paged_ram": true,
+      "block_disk_l2": true,
+      "argv_contains": [
+        "--use-paged-cache",
+        "--enable-block-disk-cache",
+        "--block-disk-cache-max-gb 10"
+      ]
+    }
+  ],
+  "ssd_only_same_process": {
+    "precondition": {
+      "backend_mode": "block_disk_only",
+      "paged_ram_enabled": false,
+      "disk_only": true,
+      "ram_tokens_cached": 0,
+      "l1_resident_bytes": 0
+    },
+    "exact": {
+      "visible": "R17-G4-SSD-95934-A-DONE",
+      "input_tokens": 11059,
+      "cached_tokens": 11058,
+      "prefill_tail_tokens": 1,
+      "cache_detail": "block-disk+mixed_swa",
+      "blocks": 173,
+      "disk_blocks": 173,
+      "disk_hit": true,
+      "elapsed_seconds": 1.393
+    },
+    "changed_tail": {
+      "visible": "R17-G4-SSD-95934-B-DONE",
+      "input_tokens": 11065,
+      "cached_tokens": 11008,
+      "prefill_tail_tokens": 57,
+      "cache_detail": "block-disk+mixed_swa",
+      "blocks": 172,
+      "disk_blocks": 172,
+      "disk_hit": true,
+      "elapsed_seconds": 1.592
+    }
+  },
+  "ssd_only_fresh_process": {
+    "pid": 96185,
+    "pre_request": {
+      "hits": 0,
+      "ram_tokens_cached": 0,
+      "l1_resident_bytes": 0,
+      "blocks_on_disk": 492,
+      "disk_size_gb": 9.878
+    },
+    "exact": {
+      "visible": "R17-G4-SSD-95934-B-DONE",
+      "input_tokens": 11065,
+      "cached_tokens": 11064,
+      "prefill_tail_tokens": 1,
+      "cache_detail": "block-disk+mixed_swa",
+      "blocks": 173,
+      "disk_blocks": 173,
+      "disk_hit": true,
+      "elapsed_seconds": 0.992
+    },
+    "changed_tail": {
+      "visible": "R17-G4-SSD-96185-C-DONE",
+      "input_tokens": 11064,
+      "cached_tokens": 11008,
+      "prefill_tail_tokens": 56,
+      "cache_detail": "block-disk+mixed_swa",
+      "blocks": 172,
+      "disk_blocks": 172,
+      "disk_hit": true,
+      "elapsed_seconds": 19.208
+    }
+  },
+  "disk_limit": {
+    "configured_gb": 10,
+    "temporary_size_gb": 10.191,
+    "post_eviction_size_gb": 7.9,
+    "blocks_before": 493,
+    "blocks_after": 387,
+    "evicted_blocks": 106
+  },
+  "paged_plus_ssd_fresh_process": {
+    "pid": 96442,
+    "pre_request": {
+      "backend_mode": "paged",
+      "paged_ram_enabled": true,
+      "ram_tokens_cached": 0,
+      "blocks_on_disk": 387,
+      "disk_size_gb": 7.9
+    },
+    "first_ssd_promotion": {
+      "visible": "R17-G4-SSD-96185-C-DONE",
+      "input_tokens": 11064,
+      "cached_tokens": 11063,
+      "prefill_tail_tokens": 1,
+      "cache_detail": "paged+mixed_swa+disk",
+      "blocks": 173,
+      "disk_blocks": 173,
+      "disk_promotion_hits": 173,
+      "ram_tokens_cached_after": 11063,
+      "elapsed_seconds": 0.979
+    },
+    "second_resident_hit": {
+      "visible": "R17-G4-SSD-96185-C-DONE",
+      "cached_tokens": 11063,
+      "cache_detail": "paged+mixed_swa",
+      "blocks": 173,
+      "disk_hit": false,
+      "disk_promotion_hits_total": 173,
+      "elapsed_seconds": 0.84
+    }
+  },
+  "classification": {
+    "gemma_block_disk_partial_key_contract": "PASS",
+    "legacy_mllm_prompt_disk_key_offset_source_lead": "UNPROVEN_OUTSIDE_THIS_PATH",
+    "generic_cross_family_claim": "NOT_MADE"
+  },
+  "remaining_boundary": [
+    "q4 storage-boundary TurboQuant on eligible full-attention KV",
+    "Gemma MXFP8",
+    "advertised image/audio/video on a bundle containing those weights",
+    "Anthropic and Ollama current-source protocol rows",
+    "other cache archetypes remain separate family gates"
+  ]
+}

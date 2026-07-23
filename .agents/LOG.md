@@ -1,5 +1,21 @@
 # Agent proof log
 
+## 2026-07-23 - Gemma mixed-SWA SSD hierarchy live closure
+
+- Through the real Server Settings UI, Paged RAM Off left Block Disk L2
+  enabled. PID `95934` exact/partial requests restored 11,058/11,008 tokens
+  from SSD with zero RAM residency.
+- UI Stop/Start PID `96185` restored exact and changed-tail prefixes from the
+  same persisted SSD lineage. The 10 GB cap evicted 106 blocks and returned to
+  7.900 GB.
+- After restoring Paged RAM On, PID `96442` promoted 173 SSD blocks on the
+  first request and used resident RAM on the second; every answer was exact.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/gemma-mixed-swa-ssd-restart-live.json`.
+- No source change was made from the separate legacy MLLM prompt-disk
+  key/offset lead because this production block-disk path did not reproduce a
+  failure. Broader architecture and release gates remain partial.
+
 ## 2026-07-23 - Gemma 4 mixed-SWA prefix reconstruction and live proof
 
 - Pushed `9f5b1bde2`: structural cache-layout detection now recognizes
