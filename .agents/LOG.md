@@ -1909,3 +1909,19 @@
   with q4-TQ attention blocks and typed SSM state in both Paged-On and SSD-only
   modes. SSD-only kept RAM resident bytes/tokens at zero.
 - Restored the Electron session to Paged RAM on + Block Disk on.
+
+## 2026-07-22 - consolidate bundle generation-default selection
+
+- Confirmed two main-process readers independently selected
+  `generation_config.json`/JANG sampling defaults and disagreed on invalid
+  `max_new_tokens`.
+- Added `resolveBundleGenerationDefaults()` as the single pure owner and wired
+  both Chat Settings and startup/session hydration through it.
+- Kept thinking-budget/template capability detection in the existing
+  main-process reader rather than broadening the shared module.
+- Added cases for JANG field precedence, negative output limits, disabled
+  top-k, and DSV4 repetition selection.
+- Remote checks: `35 passed`, `318 passed`, `tsc --noEmit` passed, and
+  `git diff --check` passed.
+- Live Gemma 4 settings/request parity remains next; this entry is not runtime
+  proof.

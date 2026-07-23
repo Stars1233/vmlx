@@ -8057,3 +8057,19 @@ Status: `ORNITH PAGED-ON+SSD-ONLY VERIFIED-LIVE / CROSS-ARCH MATRIX OPEN`.
 - Evidence:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/ornith-partial-ssd-restart.json`.
 - Other native cache archetypes remain open; no release-ready claim.
+
+## 2026-07-22 - canonical generation-default ownership
+
+Status: `SOURCE+FOCUSED TEST PASS / LIVE GEMMA PARITY OPEN`.
+
+- Replaced the duplicated sampler/default-selection logic in
+  `ipc/models.ts` and `sessions.ts` with one pure shared resolver.
+- Preserved JANG-over-generation precedence, greedy sampling semantics,
+  disabled top-k, DSV4 repetition behavior, and capability-only provenance.
+- Standardized `max_new_tokens` validation so only positive finite values
+  become bundle-owned output defaults; server context and output budgets remain
+  separate controls.
+- Remote proof: `35` generation-default tests, `318` settings-flow tests, and
+  TypeScript typecheck passed.
+- Next gate is live Gemma 4 UI-to-engine/request parity plus Chat, Responses,
+  Anthropic, and Ollama; no release-ready claim.

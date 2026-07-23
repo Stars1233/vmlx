@@ -446,3 +446,53 @@ Boundary:
   discovery with Paged RAM both on and off. It does not inherit closure for
   Laguna/Gemma rotating state, MiniMax-M3 sparse/indexer state, DSV4 composite
   state, ZAYA CCA, or openPangu native prompt state.
+
+### R17-005 canonical bundle generation-default resolver
+
+Status: `SOURCE+FOCUSED TEST PASS / GEMMA LIVE PARITY PENDING`
+
+Root cause and ownership:
+
+- The Electron main process had two independent implementations of bundle
+  sampling-default selection:
+  `ipc/models.ts::readGenerationDefaults()` for Chat Settings and
+  `sessions.ts::readBundleStartupDefaults()` for session startup/settings.
+- Both intended the same precedence—JANG `chat.sampling_defaults` over
+  `generation_config.json`—but already disagreed at one boundary:
+  `readGenerationDefaults()` accepted any numeric `max_new_tokens`, while the
+  startup path accepted only positive values.
+- The duplicate logic also repeated disabled-`top_k`, `do_sample=false`, and
+  mode-specific repetition-penalty selection, including DSV4's scalar-first
+  direct-chat exception. Future edits could therefore make first-session UI,
+  saved session state, and request defaults disagree.
+
+Source correction:
+
+- Added one pure
+  `resolveBundleGenerationDefaults(generationConfig, jangConfig, modelConfig)`
+  owner in `panel/src/shared/sessionGenerationDefaults.ts`.
+- Both main-process readers now use that resolver. File I/O and
+  thinking-budget capability detection remain in their owning main-process
+  surfaces; only sampler/default selection was consolidated.
+- Preserved field-by-field JANG precedence, explicit greedy
+  `do_sample=false`, disabled negative `top_k -> 0`, DSV4 repetition
+  precedence, and capability-only provenance.
+- Invalid/non-positive `max_new_tokens` is no longer surfaced as a model-owned
+  output default. This does not copy the model default into the server's
+  `--max-tokens`; explicit chat/API output limits remain request-owned, while
+  context remains `--max-prompt-tokens`.
+
+Remote focused verification:
+
+- Generation/session/effective-default tests: `35 passed`.
+- Settings/reset/override flow tests: `318 passed`.
+- Panel TypeScript `tsc --noEmit`: pass.
+- `git diff --check`: pass.
+
+Boundary:
+
+- This is source/focused-test proof only. The next gate must use a different
+  real bundle (Gemma 4) and verify initial Electron sliders, saved overrides,
+  reset-to-bundle behavior, SQLite/session persistence, preview, engine argv,
+  health, and direct/gateway request values. No cross-family settings claim is
+  closed from these tests alone.
