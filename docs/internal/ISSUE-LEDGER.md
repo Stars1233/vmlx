@@ -5324,3 +5324,32 @@ Status: `PARTIAL / CORRECTNESS FALLBACK LIVE / RELEASE BLOCKING`.
 - Evidence:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/gemma-reasoning-tools-math-audio-live.json`.
 - Overall v1.6.17 remains `PARTIAL / NOT RELEASE-READY`.
+
+## 2026-07-23 - MiniMax M2.7 and replacement-template partial cache reuse
+
+- `R17-M27-UI-REASON-TOOL-MATH`: `VERIFIED-LIVE_SCOPED`.
+  Three real Electron turns produced separate reasoning, one exact real tool
+  call/result, history recall, non-empty visible answers, and valid KaTeX.
+- `R17-M27-FOUR-PROTOCOL-STREAM`: `VERIFIED-LIVE_SCOPED`.
+  Direct and gateway Chat/Responses/Anthropic/Ollama kept reasoning separate
+  from progressive content and terminalized truthfully.
+- `R17-M27-RESPONSES-TOOL-LOOP`: `VERIFIED-LIVE_SCOPED`.
+  Both direct and gateway paths completed reasoning -> file_info -> result ->
+  reasoning -> exact answer.
+- `R17-REPLACEMENT-TEMPLATE-CACHE-KEY`: `FIXED+FOCUSED_TEST+VERIFIED-LIVE`.
+  The old last-512-character fallback incorporated changed user-tail text into
+  every block hash. The new divergence-based key preserves generation-marker
+  identity without salting shared prefix blocks with conversation text.
+- `R17-M27-PAGED-OFF-SSD-PARTIAL`: `VERIFIED-LIVE_SCOPED`.
+  Restored 1,600/1,631 tokens from `block-disk+tq-native`, prefilling 31 while
+  resident RAM remained zero.
+- `R17-M27-PAGED-ON-SSD-PROMOTION`: `VERIFIED-LIVE_SCOPED`.
+  After UI restart, restored 1,600/1,634 from
+  `paged+disk+tq-native`; the next tail reused 1,600 from RAM without another
+  SSD hit.
+- Verification: 132 focused remote tests and diff check passed.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/minimax-m27-ui-api-cache-live.json`.
+- Cross-architecture status remains `PARTIAL`: Gemma mixed-SWA, hybrid SSM/GDN,
+  M3 sparse/lightning, OpenPangu native prompt disk, and DSV4 composite partial
+  reuse still require architecture-specific live proof.

@@ -8305,3 +8305,25 @@ Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
 - Restored the 10 GB default through the UI; current PID `23830` is healthy.
 - Evidence:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/laguna-ssd-capacity-eviction-live.json`.
+
+## 2026-07-23 - MiniMax M2.7 combined protocol and partial SSD checkpoint
+
+Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
+
+- Real Electron PID `25639` completed three inspected turns with separate
+  reasoning, one exact built-in `file_info` call/result, retained history,
+  valid KaTeX, and non-empty visible answers.
+- Direct and gateway Chat/Responses/Anthropic/Ollama streams kept reasoning and
+  content separate; direct and gateway Responses tool continuations completed.
+- Found a global replacement-template cache-key defect: a changed user tail was
+  mixed into every block hash. Corrected the side-key derivation and added a
+  regression test.
+- Paged Off + SSD On restored 1,600/1,631 changed-tail tokens from
+  `block-disk+tq-native` with zero resident RAM.
+- After real UI restart, Paged On + SSD On restored 1,600/1,634 from SSD and
+  promoted it; the next tail reused the same 1,600 from RAM.
+- `132` focused remote tests and diff check passed.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/minimax-m27-ui-api-cache-live.json`.
+- Other typed cache schemas remain open; release status remains
+  `PARTIAL / NOT RELEASE-READY`.

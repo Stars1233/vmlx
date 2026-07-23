@@ -1063,3 +1063,65 @@ Remaining boundary:
 - Equivalent capacity enforcement is still required for other typed cache
   archetypes. Corrupt/missing rotating-state companion fallback remains open.
 - Overall status remains `PARTIAL / NOT RELEASE-READY`.
+
+### R17-014 MiniMax M2.7 reasoning/tools and partial SSD cache-key repair
+
+Status: `VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
+
+Combined Electron and protocol proof:
+
+- The real Electron Start button eagerly loaded
+  `dealignai/MiniMax-M2.7-JANG_K-CRACK` without requiring a first message.
+  Bundle truth resolved MiniMax reasoning/tool parsers, JANG_K affine weights,
+  plain KV state, q4 TurboQuant prefix storage, and temperature/top-p/top-k
+  defaults `1.0/0.95/40`.
+- Three closely inspected UI turns produced non-empty visible answers, separate
+  reasoning rails, one exact real `file_info(panel/package.json)` call/result,
+  cross-turn `5.2 KB` recall, zero native-marker/replacement-character leaks,
+  and a valid KaTeX-rendered `84/12` fraction.
+- Direct and gateway Chat, Responses, Anthropic, and Ollama streams emitted
+  reasoning separately from progressive content and truthful terminals.
+  Gateway and direct Responses each completed a real reasoning -> tool ->
+  result -> reasoning -> answer loop.
+
+Global partial-prefix defect and repair:
+
+- Pre-fix live Paged-Off changed-tail requests shared roughly 1,162 prompt
+  tokens yet received zero cache credit. The replacement-style template path
+  in `_generation_prompt_cache_extra_key` hashed the last 512 characters of
+  the entire rendered prompt, including the changed user tail, into every block
+  key.
+- The repair now derives the textual discriminator only from content introduced
+  after the with/without-generation renders diverge. Token suffixes remain the
+  authoritative family-marker discriminator. A regression test pins equal keys
+  across different user tails with the same generation suffix.
+
+Live hierarchy after repair:
+
+- Paged RAM Off + SSD L2 On: a 1,631-token changed-tail request restored 1,600
+  tokens from `block-disk+tq-native`, prefilling only 31. Resident RAM stayed
+  exactly zero tokens/bytes.
+- After a real UI restart with Paged RAM and SSD both On, the first changed-tail
+  request restored 1,600/1,634 tokens from `paged+disk+tq-native` and promoted
+  them to RAM. The next changed tail restored the same 1,600 tokens from
+  `paged+tq-native`; SSD hits did not increase.
+- Focused remote verification: `132` generation-key/paged/cache-bypass tests
+  passed; `git diff --check` passed.
+
+Evidence:
+
+- `minimax-m27-ui-api-cache-live.json`
+- `minimax-m27-ui-cache.png`
+- `minimax-m27-paged-off-ssd-on.png`
+- `minimax-m27-paged-on-ssd-on.png`
+
+Remaining boundary:
+
+- The source correction applies globally, but this row is live proof for
+  MiniMax M2.7 plain KV. Laguna mixed rotating/full-attention has a separate
+  live row. Gemma mixed-SWA, hybrid SSM/GDN, M3 sparse/lightning, OpenPangu
+  native prompt disk, and DSV4 composite caches still need architecture-specific
+  changed-tail proof.
+- DSV4 partial composite reuse remains deliberately fail-closed rather than
+  reporting unsafe hit credit.
+- Overall status remains `PARTIAL / NOT RELEASE-READY`.

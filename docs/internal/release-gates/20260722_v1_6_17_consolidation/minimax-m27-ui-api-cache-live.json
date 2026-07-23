@@ -1,0 +1,265 @@
+{
+  "date": "2026-07-23",
+  "host": "erics-m5-max.local",
+  "source": {
+    "repo": "/Users/eric/mlx/vllm-mlx-r17-consolidation",
+    "branch": "codex/v1.6.17-consolidation-20260723",
+    "head_before_evidence_commit": "d2380646a62ffed2e9907734c0675a92ef2b0764",
+    "fix": {
+      "file": "vmlx_engine/engine/batched.py",
+      "function": "_generation_prompt_cache_extra_key",
+      "defect": "replacement-style templates salted every block hash with changed user-tail text",
+      "correction": "hash only text introduced after the with/without-generation renders diverge",
+      "regression_test": "tests/test_generation_prompt_cache_key.py::test_generation_prompt_cache_key_ignores_user_tail_for_replacing_templates"
+    }
+  },
+  "electron": {
+    "cdp": "http://127.0.0.1:9335",
+    "gateway": "http://127.0.0.1:8088",
+    "profile": "/Users/eric/.vmlx-r17-consolidation-dev",
+    "start_button_load": {
+      "pid_initial": 25639,
+      "port": 8004,
+      "prompt_required_to_load": false,
+      "error_toast": false,
+      "single_model_swap": true
+    },
+    "restart_pids": {
+      "paged_off_ssd_on": 28650,
+      "paged_on_ssd_on": 29396
+    }
+  },
+  "bundle": {
+    "served_id": "dealignai/MiniMax-M2.7-JANG_K-CRACK",
+    "path": "/Volumes/EricsLLMDrive/dealignai/MiniMax-M2.7-JANG_K-CRACK",
+    "quantization": {
+      "format": "JANG_K affine",
+      "group_size": 128,
+      "jangtq_runtime": false
+    },
+    "config_sha256": "ce32c2f306fae0e6bb5e8a7dc31b7a12c7b9e2c851f358835de2ec0baf63a34e",
+    "generation_config_sha256": "2c24fe5507e260bb081727e2a14693d9a982942e721b28720c184d201bffb9dd",
+    "tokenizer_config_sha256": "200f376c5eac775e6c5a567c556041fdd76ee359b9946a5f6941a53010735a67",
+    "jang_config_sha256": "406ca6263881a040de7b186d6a218b4a5e5f9e9ec71dfc8a365c32e3fe419069",
+    "weight_index_sha256": "fef63739749ef198d27691d749fc4d24f8ec98f08a61d23eb32268735955a158",
+    "runtime_capabilities": {
+      "modalities": [
+        "text"
+      ],
+      "reasoning_parser": "minimax_m2",
+      "tool_parser": "minimax",
+      "native_cache_schema": "plain_kv_v1",
+      "ssd_storage_quantization": "turboquant-q4",
+      "sampling_defaults": {
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 40,
+        "min_p": 0.0
+      }
+    }
+  },
+  "electron_three_turn": {
+    "turn_a": {
+      "visible_content": "R17-M27-UI-A-DONE",
+      "reasoning_chars": 1689,
+      "visible_nonempty": true,
+      "verdict": "PASS"
+    },
+    "turn_b": {
+      "tool": "file_info",
+      "arguments": {
+        "path": "panel/package.json"
+      },
+      "call_count": 1,
+      "real_result_size": "5.2 KB",
+      "visible_content": "R17-M27-UI-B-DONE SIZE=5.2 KB",
+      "separate_reasoning_rails": 2,
+      "verdict": "PASS"
+    },
+    "turn_c": {
+      "visible_content": "R17-M27-UI-C-DONE SIZE=5.2 KB\n\\(\\frac{84}{12}=7\\)",
+      "reasoning_chars": 467,
+      "tool_calls": 0,
+      "katex_nodes": 1,
+      "katex_errors": 0,
+      "raw_thinking_markers": 0,
+      "replacement_characters": 0,
+      "tokens": 149,
+      "decode_tps": 48.9,
+      "prefill_tps": 243.6,
+      "prompt_tokens": 312,
+      "cached_tokens": 128,
+      "cache_detail": "paged+tq-native",
+      "ttft_seconds": 1.28,
+      "total_seconds": 4.4,
+      "verdict": "PASS"
+    },
+    "screenshot": "minimax-m27-ui-cache.png"
+  },
+  "raw_protocols": {
+    "gateway_reasoning": {
+      "chat": {
+        "reasoning_deltas": 379,
+        "reasoning_chars": 1487,
+        "content_deltas": 8,
+        "terminal": [
+          "stop",
+          "DONE"
+        ]
+      },
+      "responses": {
+        "reasoning_deltas": 286,
+        "reasoning_chars": 1249,
+        "content_deltas": 8,
+        "terminal": [
+          "response.completed"
+        ]
+      },
+      "anthropic": {
+        "reasoning_deltas": 286,
+        "reasoning_chars": 1249,
+        "content_deltas": 8,
+        "terminal": [
+          "message_stop"
+        ]
+      },
+      "ollama": {
+        "reasoning_deltas": 286,
+        "reasoning_chars": 1249,
+        "content_deltas": 8,
+        "terminal": [
+          "stop"
+        ]
+      },
+      "visible_content_each": "M27-REASON-STREAM-DONE",
+      "separate_reasoning_and_content": true,
+      "verdict": "PASS"
+    },
+    "direct_reasoning": {
+      "protocols": [
+        "chat_completions",
+        "responses",
+        "anthropic_messages",
+        "ollama_chat"
+      ],
+      "reasoning_deltas_each": 286,
+      "reasoning_chars_each": 1249,
+      "content_deltas_each": 8,
+      "visible_content_each": "M27-REASON-STREAM-DONE",
+      "truthful_terminal_each": true,
+      "verdict": "PASS"
+    },
+    "gateway_responses_tool_loop": {
+      "round_1_reasoning_chars": 174,
+      "round_1_visible_content_deltas": 0,
+      "tool": "file_info",
+      "arguments": {
+        "path": "panel/package.json"
+      },
+      "call_count": 1,
+      "round_2_reasoning_chars": 91,
+      "round_2_content_deltas": 14,
+      "visible_content": "M27-RESP-TOOL-DONE SIZE=5.2 KB",
+      "terminal_each": "response.completed",
+      "verdict": "PASS"
+    },
+    "direct_responses_tool_loop": {
+      "round_1_reasoning_chars": 193,
+      "round_1_visible_content_deltas": 0,
+      "tool": "file_info",
+      "call_count": 1,
+      "round_2_reasoning_chars": 91,
+      "round_2_content_deltas": 14,
+      "visible_content": "M27-RESP-TOOL-DONE SIZE=5.2 KB",
+      "terminal_each": "response.completed",
+      "verdict": "PASS"
+    }
+  },
+  "partial_ssd_cache": {
+    "pre_fix_reproducer": {
+      "paged_ram": false,
+      "ssd_l2": true,
+      "shared_prompt_tokens_approximately": 1162,
+      "changed_tail_cached_tokens": 0,
+      "root_cause_confirmed": true,
+      "verdict": "FAIL_REPRODUCED"
+    },
+    "paged_off_ssd_on_after_fix": {
+      "argv_contract": [
+        "--no-paged-cache",
+        "--enable-block-disk-cache"
+      ],
+      "backend_mode": "block_disk_only",
+      "paged_ram_enabled": false,
+      "disk_only": true,
+      "ram_tokens_before_and_after": 0,
+      "ram_resident_bytes_before_and_after": 0,
+      "base_prompt_tokens": 1630,
+      "changed_tail_prompt_tokens": 1631,
+      "changed_tail_cached_tokens": 1600,
+      "changed_tail_prefill_tokens": 31,
+      "cache_detail": "block-disk+tq-native",
+      "ssd_hits": 75,
+      "tq_native_hits": 75,
+      "visible_content": "R17-M27-SSD-E-DONE",
+      "verdict": "PASS"
+    },
+    "paged_on_ssd_on_after_ui_restart": {
+      "argv_contract": [
+        "--use-paged-cache",
+        "--enable-block-disk-cache"
+      ],
+      "backend_mode": "paged",
+      "paged_ram_enabled": true,
+      "first_changed_tail": {
+        "prompt_tokens": 1634,
+        "cached_tokens": 1600,
+        "prefill_tokens": 34,
+        "cache_detail": "paged+disk+tq-native",
+        "ssd_hits": 25,
+        "ram_tokens_after": 1600,
+        "visible_content": "R17-M27-SSD-F-DONE"
+      },
+      "second_changed_tail_same_process": {
+        "prompt_tokens": 1634,
+        "cached_tokens": 1600,
+        "prefill_tokens": 34,
+        "cache_detail": "paged+tq-native",
+        "ssd_hits_after": 25,
+        "ram_tokens_after": 1630,
+        "visible_content": "R17-M27-SSD-G-DONE"
+      },
+      "verdict": "PASS"
+    },
+    "settings_screenshots": [
+      "minimax-m27-paged-off-ssd-on.png",
+      "minimax-m27-paged-on-ssd-on.png"
+    ]
+  },
+  "verification": {
+    "remote_tests": {
+      "files": [
+        "tests/test_generation_prompt_cache_key.py",
+        "tests/test_paged_cache.py",
+        "tests/test_cache_bypass.py"
+      ],
+      "passed": 132,
+      "failed": 0,
+      "elapsed_seconds": 12.74
+    },
+    "git_diff_check": "PASS"
+  },
+  "verdict": {
+    "minimax_m27_ui_api_reasoning_tools_math": "VERIFIED_LIVE_SCOPED",
+    "plain_kv_paged_off_partial_ssd": "VERIFIED_LIVE_SCOPED",
+    "plain_kv_paged_on_ssd_promotion_and_ram_reuse": "VERIFIED_LIVE_SCOPED",
+    "cross_architecture_partial_ssd": "PARTIAL",
+    "release": "PARTIAL_NOT_RELEASE_READY",
+    "notes": [
+      "This fix is global to replacement-style generation templates, but live evidence here proves MiniMax M2.7 plain KV only.",
+      "Laguna mixed rotating/full-attention cache already has separate Paged-On/Paged-Off live proof.",
+      "DSV4 composite partial reuse remains intentionally fail-closed pending terminal CSA/HCA equivalence proof.",
+      "Electron renders valid LaTeX through KaTeX; raw APIs preserve literal LaTeX bytes."
+    ]
+  }
+}

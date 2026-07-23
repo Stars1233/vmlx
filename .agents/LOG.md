@@ -2134,3 +2134,23 @@
   `input_audio` part and Auto reasoning stayed in its rail, but transcript
   quality failed in both an existing chat and a fresh chat.
 - Retained the failure rather than forcing reasoning Off or rewriting output.
+
+## 2026-07-23 - R17 MiniMax M2.7 and global replacement-template cache keys
+
+- Loaded MiniMax M2.7 through the real Electron Start button and combined the
+  required three UI turns with reasoning, tool, history, KaTeX, timing, and
+  cache inspection.
+- Ran raw direct and gateway Chat, Responses, Anthropic, and Ollama reasoning
+  streams plus direct/gateway Responses tool loops.
+- Reproduced changed-tail partial SSD misses with Paged RAM Off, then traced
+  them to `_generation_prompt_cache_extra_key`: replacement-style templates
+  hashed user-tail text into every block key.
+- Changed the fallback to hash only text after the with/without-generation
+  render divergence and added a MiniMax-shaped regression test.
+- Live after repair:
+  - Paged Off: 1,600/1,631 tokens from `block-disk+tq-native`, RAM 0.
+  - Paged On after UI restart: 1,600/1,634 from
+    `paged+disk+tq-native`, then 1,600 from `paged+tq-native`.
+- Remote selected tests: 132 passed.
+- Retained:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/minimax-m27-ui-api-cache-live.json`.
