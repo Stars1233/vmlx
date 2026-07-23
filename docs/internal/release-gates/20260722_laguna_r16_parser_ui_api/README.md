@@ -55,6 +55,32 @@ Rows:
 UI verdict: `PASS_SCOPED` for reasoning separation, answer emission, tool
 parser, and disk-only cache reuse in this fresh chat.
 
+## Four-block Paged RAM eviction/refault addendum
+
+The same Laguna JANG_4M session was restarted through Electron IPC with
+Paged RAM on, `maxCacheBlocks=4`, and Block Disk L2 on. Pre-run health reported
+`backend_mode=paged`, `paged_ram_enabled=true`, `max_blocks=4`, and
+`capacity_tokens=192`; native cache remained `mixed_swa_kv_v1` with q4 storage
+only on full-attention KV and native rotating metadata preserved.
+
+The bounded direct-engine sequence stored one shared-prefix prompt, ran a
+changed-suffix partial prompt, applied three pressure prompts, and then ran a
+never-stored changed suffix against the original shared prefix. Every row
+returned HTTP 200, terminal `[DONE]`, no native marker leak, and exact visible
+markers (`LAG-FOUR-A`, `LAG-FOUR-B`, pressure markers, and `LAG-FOUR-C`).
+
+Health counters show low-limit L1 pressure took effect: `l1_evictions`
+increased `0 -> 6`. Block Disk L2 hits increased during pressure/refault, and
+the final refault row increased disk hits `9 -> 12` while exact-finaling
+`LAG-FOUR-C`. The direct-engine health surface did not populate
+`last_cache_execution` for these rows, so the retained pass is based on the
+disk-hit counter delta plus exact output, not a `last_cache_execution` field.
+
+After this proof the session was restored to Paged RAM off,
+`maxCacheBlocks=1000`, and Block Disk L2 on. Post-restore health reported
+`backend_mode=block_disk_only`, `paged_ram_enabled=false`, `max_blocks=1000`,
+and `block_disk_l2=true`.
+
 ## Gateway API proof
 
 Artifacts:
@@ -62,6 +88,7 @@ Artifacts:
 - `laguna-api-gateway-proof.json`
 - `laguna-api-terminal-addendum.json`
 - `laguna-anthropic-ollama-gateway-proof.json`
+- `laguna-four-block-eviction-refault.json`
 
 Rows:
 
@@ -94,5 +121,6 @@ the full Laguna strict-format API reasoning gate green from this proof alone.
   the requested concise answer. Transport/parser/tool loop is live, but strict
   visible formatting is still partial.
 - Longer agentic tool loop and cancellation/recovery.
-- Low-limit cache eviction/refault and corrupt/missing companion fallback.
+- Low-limit `Block Cache Max (GB)` disk eviction/refault and corrupt/missing
+  companion fallback.
 - Signed-app repeat after packaging.

@@ -1715,3 +1715,21 @@
   `docs/internal/release-gates/20260722_laguna_r16_parser_ui_api/laguna-anthropic-ollama-gateway-proof.json`.
   Strict-format hard-prompt rows remain partial; parser/tool transport rows
   are scoped live passes.
+
+## 2026-07-22 - Laguna four-block Paged-RAM eviction/refault
+
+- Restarted the same Electron-started Laguna JANG_4M session with Paged RAM on,
+  `maxCacheBlocks=4`, and Block Disk L2 on. Health confirmed
+  `backend_mode=paged`, `capacity_tokens=192`, and native mixed-SWA q4 storage
+  policy.
+- Ran a bounded direct-engine store/changed-suffix/pressure/refault sequence.
+  All rows exact-finaled, reached `[DONE]`, and leaked no native markers.
+- L1 pressure took effect: `l1_evictions` rose `0 -> 6`; final refault disk
+  hits rose `9 -> 12` while exact-finaling `LAG-FOUR-C`. The direct-engine
+  health path did not populate `last_cache_execution`, so the proof relies on
+  counter deltas plus output correctness.
+- Restored the session to Paged RAM off, `maxCacheBlocks=1000`, Block Disk L2
+  on; post-restore health confirmed those effective values.
+- Retained artifact:
+  `docs/internal/release-gates/20260722_laguna_r16_parser_ui_api/laguna-four-block-eviction-refault.json`.
+  Low-limit `Block Cache Max (GB)` disk eviction/refault remains open.

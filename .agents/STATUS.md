@@ -7821,3 +7821,28 @@ Status: `VERIFIED-LIVE_SCOPED / STRICT-FORMAT PARTIAL`.
   and `stop`.
 - Evidence:
   `docs/internal/release-gates/20260722_laguna_r16_parser_ui_api/laguna-anthropic-ollama-gateway-proof.json`.
+
+## 2026-07-22 - Laguna four-block Paged-RAM eviction/refault addendum
+
+Status: `VERIFIED-LIVE_SCOPED / CACHE MATRIX PARTIAL`.
+
+- The same Electron-started Laguna JANG_4M session was restarted with
+  Paged RAM on, `maxCacheBlocks=4`, and Block Disk L2 on. Health before the
+  run reported `backend_mode=paged`, `paged_ram_enabled=true`,
+  `max_blocks=4`, `capacity_tokens=192`, and native `mixed_swa_kv_v1` with q4
+  storage only on full-attention KV.
+- Store, changed-suffix partial, three pressure prompts, and final
+  never-stored changed-suffix refault all returned HTTP 200, `[DONE]`, no
+  native marker leak, and exact visible markers.
+- Health counters proved the pressure/refault path: `l1_evictions` increased
+  `0 -> 6`; Block Disk L2 hits increased during the pressure/refault rows; the
+  final refault row increased disk hits `9 -> 12` while exact-finaling
+  `LAG-FOUR-C`.
+- The direct-engine health surface did not populate `last_cache_execution` for
+  these rows, so the retained pass is based on disk-hit counter delta plus exact
+  output.
+- The session was restored to Paged RAM off, `maxCacheBlocks=1000`, and Block
+  Disk L2 on. Post-restore health reported `backend_mode=block_disk_only`,
+  `paged_ram_enabled=false`, `max_blocks=1000`, and `block_disk_l2=true`.
+- Evidence:
+  `docs/internal/release-gates/20260722_laguna_r16_parser_ui_api/laguna-four-block-eviction-refault.json`.

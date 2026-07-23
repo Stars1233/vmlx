@@ -1,0 +1,1252 @@
+{
+  "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+  "base": "http://127.0.0.1:8001",
+  "started_at": "2026-07-23T02:28:56Z",
+  "health_before": {
+    "label": "before",
+    "status": "healthy",
+    "model_loaded": true,
+    "scheduler": {
+      "num_waiting": 0,
+      "num_running": 0,
+      "engine_path": "none",
+      "batch_generator": {
+        "class": null,
+        "path": "none",
+        "single_active_decode": false,
+        "max_num_seqs": 1
+      },
+      "single_active_decode": false,
+      "ewma_ttft_seconds": 0.0,
+      "cache_hit_requests": 0,
+      "cache_hit_tokens": 0,
+      "cache_hit_tokens_by_detail": {},
+      "hybrid_kv_without_ssm_hits": 0,
+      "hybrid_kv_without_ssm_tokens": 0,
+      "last_hybrid_kv_without_ssm": null,
+      "cache_reuse_skips": 0,
+      "cache_reuse_skip_tokens": 0,
+      "last_cache_reuse_skip": null,
+      "cache_reuse_partial_downgrades": 0,
+      "cache_reuse_partial_tokens": 0,
+      "last_cache_reuse_partial": null,
+      "last_cache_selection": null,
+      "last_cache_execution": null
+    },
+    "scheduler_cache": {
+      "hits": 0,
+      "misses": 0,
+      "hit_rate": 0,
+      "tokens_saved": 0,
+      "active_requests": 0,
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 0,
+        "system": 0
+      },
+      "backend_mode": "paged",
+      "paged_ram_enabled": true,
+      "disk_only": false,
+      "paged_frugal": false,
+      "ram_mirror_policy": "resident",
+      "block_size": 64,
+      "max_blocks": 4,
+      "usable_blocks": 3,
+      "capacity_tokens": 192,
+      "allocated_blocks": 1,
+      "free_blocks": 3,
+      "shared_blocks": 0,
+      "total_tokens_cached": 0,
+      "utilization": 0.0,
+      "cache_hit_rate": 0,
+      "cache_hits": 0,
+      "cache_misses": 0,
+      "disk_hits": 0,
+      "disk_misses": 0,
+      "cow_copies": 0,
+      "evictions": 0,
+      "disk_promotion_hits": 0,
+      "disk_lookup_misses": 0,
+      "disk_counter_source": "block_disk_store",
+      "engine_path": "none",
+      "batch_generator": {
+        "class": null,
+        "path": "none",
+        "single_active_decode": false,
+        "max_num_seqs": 1
+      }
+    },
+    "block_disk_cache": {
+      "blocks_on_disk": 1277,
+      "disk_size_bytes": 6936086261,
+      "disk_size_gb": 6.46,
+      "total_accesses": 8336,
+      "total_tokens_on_disk": 78815,
+      "total_cached_tokens": 78815,
+      "disk_hits": 0,
+      "disk_misses": 0,
+      "disk_writes": 0,
+      "disk_evictions": 0,
+      "tq_native_writes": 0,
+      "tq_native_hits": 0,
+      "tq_native_enabled": true
+    },
+    "totals": {
+      "ram_tokens_cached": 0,
+      "l1_indexed_tokens": 0,
+      "l1_resident_bytes": 0,
+      "l1_resident_bytes_mb": 0.0,
+      "l1_max_resident_bytes": 7681850572,
+      "l1_max_resident_bytes_mb": 7325.98,
+      "l1_evictions": 0,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 78815,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 78815,
+      "l2_tokens_on_disk_store_sum": 78815,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    },
+    "native_cache": {
+      "family": "laguna",
+      "schema": "mixed_swa_kv_v1",
+      "cache_type": "mixed_swa_kv",
+      "cache_subtype": "kv",
+      "components": [
+        "full_attention_kv",
+        "sliding_window_kv",
+        "rotating_window_metadata"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "storage_only"
+      },
+      "storage_quantization": {
+        "enabled": true,
+        "mode": "storage_boundary",
+        "bits": 4,
+        "group_size": 64,
+        "applies_to": "full_attention_kv_only",
+        "metadata_policy": "preserve_rotating_window_metadata",
+        "sliding_window_policy": "native_rotating_kv_state",
+        "restore_policy": "decode_full_attention_tq_and_restore_rotating_state"
+      },
+      "prefix": true,
+      "paged": true,
+      "block_disk_only": false,
+      "block_disk_l2": true
+    }
+  },
+  "rows": [
+    {
+      "label": "store_a",
+      "expected": "LAG-FOUR-A",
+      "before_summary": {
+        "evictions": 0,
+        "ram_tokens": 0,
+        "disk_hits": 0,
+        "disk_writes": 0,
+        "disk_blocks": 1277
+      },
+      "result": {
+        "label": "store_a",
+        "status": 200,
+        "elapsed": 2.017874,
+        "prompt_hash": "955244ecc2633b96a0e93049bd36a42d9b72d8aefa390802ecec9beb905e150c",
+        "content": "LAG-FOUR-A",
+        "reasoning": "",
+        "content_deltas": 4,
+        "reasoning_deltas": 0,
+        "finish": [
+          "stop"
+        ],
+        "terminals": [
+          "[DONE]"
+        ],
+        "marker_leak": false,
+        "events": [
+          {
+            "at": 0.019381,
+            "data": {
+              "id": "chatcmpl-83233804",
+              "object": "chat.completion.chunk",
+              "created": 1784773736,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 1.939102,
+            "data": {
+              "id": "chatcmpl-83233804",
+              "object": "chat.completion.chunk",
+              "created": 1784773736,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "LAG"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 1.958316,
+            "data": {
+              "id": "chatcmpl-83233804",
+              "object": "chat.completion.chunk",
+              "created": 1784773736,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-F"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 1.977961,
+            "data": {
+              "id": "chatcmpl-83233804",
+              "object": "chat.completion.chunk",
+              "created": 1784773736,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "OUR"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 1.997638,
+            "data": {
+              "id": "chatcmpl-83233804",
+              "object": "chat.completion.chunk",
+              "created": 1784773736,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-A"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 2.017777,
+            "data": {
+              "id": "chatcmpl-83233804",
+              "object": "chat.completion.chunk",
+              "created": 1784773736,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {},
+                  "finish_reason": "stop"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "after_summary": {
+        "evictions": 0,
+        "ram_tokens": 0,
+        "disk_hits": 0,
+        "disk_writes": 0,
+        "disk_blocks": 1277,
+        "last_cache_execution": null,
+        "disk_hit_delta": 0
+      }
+    },
+    {
+      "label": "partial_b",
+      "expected": "LAG-FOUR-B",
+      "before_summary": {
+        "evictions": 0,
+        "ram_tokens": 0,
+        "disk_hits": 0,
+        "disk_writes": 0,
+        "disk_blocks": 1277
+      },
+      "result": {
+        "label": "partial_b",
+        "status": 200,
+        "elapsed": 3.3544,
+        "prompt_hash": "eec7df64b0d12c99c9a4329cf6b0cfb7cb50ec83e4c2a4b8c36da0a20ca568e9",
+        "content": "LAG-FOUR-B",
+        "reasoning": "",
+        "content_deltas": 4,
+        "reasoning_deltas": 0,
+        "finish": [
+          "stop"
+        ],
+        "terminals": [
+          "[DONE]"
+        ],
+        "marker_leak": false,
+        "events": [
+          {
+            "at": 0.003137,
+            "data": {
+              "id": "chatcmpl-dbd8ce70",
+              "object": "chat.completion.chunk",
+              "created": 1784773738,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.275658,
+            "data": {
+              "id": "chatcmpl-dbd8ce70",
+              "object": "chat.completion.chunk",
+              "created": 1784773738,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "LAG"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.295058,
+            "data": {
+              "id": "chatcmpl-dbd8ce70",
+              "object": "chat.completion.chunk",
+              "created": 1784773738,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-F"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.314656,
+            "data": {
+              "id": "chatcmpl-dbd8ce70",
+              "object": "chat.completion.chunk",
+              "created": 1784773738,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "OUR"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.334288,
+            "data": {
+              "id": "chatcmpl-dbd8ce70",
+              "object": "chat.completion.chunk",
+              "created": 1784773738,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-B"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.354318,
+            "data": {
+              "id": "chatcmpl-dbd8ce70",
+              "object": "chat.completion.chunk",
+              "created": 1784773738,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {},
+                  "finish_reason": "stop"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "after_summary": {
+        "evictions": 0,
+        "ram_tokens": 0,
+        "disk_hits": 0,
+        "disk_writes": 3,
+        "disk_blocks": 1280,
+        "last_cache_execution": null,
+        "disk_hit_delta": 0
+      }
+    },
+    {
+      "label": "pressure_1",
+      "expected": "LAG-PRESSURE-1",
+      "before_summary": {
+        "evictions": 0,
+        "ram_tokens": 0,
+        "disk_hits": 0,
+        "disk_writes": 3,
+        "disk_blocks": 1280
+      },
+      "result": {
+        "label": "pressure_1",
+        "status": 200,
+        "elapsed": 3.325033,
+        "prompt_hash": "aa005e8430d258c0d64defedcc4fde8587ee4f228630f9b9cc08df8855308a54",
+        "content": "LAG-PRESSURE-1",
+        "reasoning": "",
+        "content_deltas": 6,
+        "reasoning_deltas": 0,
+        "finish": [
+          "stop"
+        ],
+        "terminals": [
+          "[DONE]"
+        ],
+        "marker_leak": false,
+        "events": [
+          {
+            "at": 0.004085,
+            "data": {
+              "id": "chatcmpl-f51df8a5",
+              "object": "chat.completion.chunk",
+              "created": 1784773741,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.204029,
+            "data": {
+              "id": "chatcmpl-f51df8a5",
+              "object": "chat.completion.chunk",
+              "created": 1784773741,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "LAG"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.224227,
+            "data": {
+              "id": "chatcmpl-f51df8a5",
+              "object": "chat.completion.chunk",
+              "created": 1784773741,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-P"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.244369,
+            "data": {
+              "id": "chatcmpl-f51df8a5",
+              "object": "chat.completion.chunk",
+              "created": 1784773741,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "RESS"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.264638,
+            "data": {
+              "id": "chatcmpl-f51df8a5",
+              "object": "chat.completion.chunk",
+              "created": 1784773741,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "URE"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.284712,
+            "data": {
+              "id": "chatcmpl-f51df8a5",
+              "object": "chat.completion.chunk",
+              "created": 1784773741,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.304625,
+            "data": {
+              "id": "chatcmpl-f51df8a5",
+              "object": "chat.completion.chunk",
+              "created": 1784773741,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "1"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.324939,
+            "data": {
+              "id": "chatcmpl-f51df8a5",
+              "object": "chat.completion.chunk",
+              "created": 1784773741,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {},
+                  "finish_reason": "stop"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "after_summary": {
+        "evictions": 0,
+        "ram_tokens": 0,
+        "disk_hits": 0,
+        "disk_writes": 3,
+        "disk_blocks": 1280,
+        "last_cache_execution": null,
+        "disk_hit_delta": 0
+      }
+    },
+    {
+      "label": "pressure_2",
+      "expected": "LAG-PRESSURE-2",
+      "before_summary": {
+        "evictions": 0,
+        "ram_tokens": 0,
+        "disk_hits": 0,
+        "disk_writes": 3,
+        "disk_blocks": 1280
+      },
+      "result": {
+        "label": "pressure_2",
+        "status": 200,
+        "elapsed": 3.247441,
+        "prompt_hash": "a88ae2c3e41ffe7b3fa8ada5d1dc4e383e40115d34d30fcfa05bbaa8efc3c269",
+        "content": "LAG-PRESSURE-2",
+        "reasoning": "",
+        "content_deltas": 6,
+        "reasoning_deltas": 0,
+        "finish": [
+          "stop"
+        ],
+        "terminals": [
+          "[DONE]"
+        ],
+        "marker_leak": false,
+        "events": [
+          {
+            "at": 0.003564,
+            "data": {
+              "id": "chatcmpl-13a5757c",
+              "object": "chat.completion.chunk",
+              "created": 1784773745,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.125807,
+            "data": {
+              "id": "chatcmpl-13a5757c",
+              "object": "chat.completion.chunk",
+              "created": 1784773745,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "LAG"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.147203,
+            "data": {
+              "id": "chatcmpl-13a5757c",
+              "object": "chat.completion.chunk",
+              "created": 1784773745,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-P"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.167544,
+            "data": {
+              "id": "chatcmpl-13a5757c",
+              "object": "chat.completion.chunk",
+              "created": 1784773745,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "RESS"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.187468,
+            "data": {
+              "id": "chatcmpl-13a5757c",
+              "object": "chat.completion.chunk",
+              "created": 1784773745,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "URE"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.207279,
+            "data": {
+              "id": "chatcmpl-13a5757c",
+              "object": "chat.completion.chunk",
+              "created": 1784773745,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.22716,
+            "data": {
+              "id": "chatcmpl-13a5757c",
+              "object": "chat.completion.chunk",
+              "created": 1784773745,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "2"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.247344,
+            "data": {
+              "id": "chatcmpl-13a5757c",
+              "object": "chat.completion.chunk",
+              "created": 1784773745,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {},
+                  "finish_reason": "stop"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "after_summary": {
+        "evictions": 3,
+        "ram_tokens": 0,
+        "disk_hits": 0,
+        "disk_writes": 6,
+        "disk_blocks": 1283,
+        "last_cache_execution": null,
+        "disk_hit_delta": 0
+      }
+    },
+    {
+      "label": "pressure_3",
+      "expected": "LAG-PRESSURE-3",
+      "before_summary": {
+        "evictions": 3,
+        "ram_tokens": 0,
+        "disk_hits": 0,
+        "disk_writes": 6,
+        "disk_blocks": 1283
+      },
+      "result": {
+        "label": "pressure_3",
+        "status": 200,
+        "elapsed": 3.202968,
+        "prompt_hash": "797f32a544ad74b86da0e044e6199700f75cb7e736521901eab056da783371a5",
+        "content": "LAG-PRESSURE-3",
+        "reasoning": "",
+        "content_deltas": 6,
+        "reasoning_deltas": 0,
+        "finish": [
+          "stop"
+        ],
+        "terminals": [
+          "[DONE]"
+        ],
+        "marker_leak": false,
+        "events": [
+          {
+            "at": 0.004082,
+            "data": {
+              "id": "chatcmpl-0f6e6a34",
+              "object": "chat.completion.chunk",
+              "created": 1784773748,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.080738,
+            "data": {
+              "id": "chatcmpl-0f6e6a34",
+              "object": "chat.completion.chunk",
+              "created": 1784773748,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "LAG"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.102377,
+            "data": {
+              "id": "chatcmpl-0f6e6a34",
+              "object": "chat.completion.chunk",
+              "created": 1784773748,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-P"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.122073,
+            "data": {
+              "id": "chatcmpl-0f6e6a34",
+              "object": "chat.completion.chunk",
+              "created": 1784773748,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "RESS"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.142637,
+            "data": {
+              "id": "chatcmpl-0f6e6a34",
+              "object": "chat.completion.chunk",
+              "created": 1784773748,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "URE"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.162341,
+            "data": {
+              "id": "chatcmpl-0f6e6a34",
+              "object": "chat.completion.chunk",
+              "created": 1784773748,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.18275,
+            "data": {
+              "id": "chatcmpl-0f6e6a34",
+              "object": "chat.completion.chunk",
+              "created": 1784773748,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "3"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.202875,
+            "data": {
+              "id": "chatcmpl-0f6e6a34",
+              "object": "chat.completion.chunk",
+              "created": 1784773748,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {},
+                  "finish_reason": "stop"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "after_summary": {
+        "evictions": 3,
+        "ram_tokens": 0,
+        "disk_hits": 9,
+        "disk_writes": 6,
+        "disk_blocks": 1283,
+        "last_cache_execution": null,
+        "disk_hit_delta": 9
+      }
+    },
+    {
+      "label": "refault_c",
+      "expected": "LAG-FOUR-C",
+      "before_summary": {
+        "evictions": 3,
+        "ram_tokens": 0,
+        "disk_hits": 9,
+        "disk_writes": 6,
+        "disk_blocks": 1283
+      },
+      "result": {
+        "label": "refault_c",
+        "status": 200,
+        "elapsed": 3.529669,
+        "prompt_hash": "33f0013d5cc9d2f7b57aad201cd3c21f185d2b77b083b2b8d194db1de422c516",
+        "content": "LAG-FOUR-C",
+        "reasoning": "",
+        "content_deltas": 4,
+        "reasoning_deltas": 0,
+        "finish": [
+          "stop"
+        ],
+        "terminals": [
+          "[DONE]"
+        ],
+        "marker_leak": false,
+        "events": [
+          {
+            "at": 0.00439,
+            "data": {
+              "id": "chatcmpl-d254649f",
+              "object": "chat.completion.chunk",
+              "created": 1784773751,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "role": "assistant"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.449714,
+            "data": {
+              "id": "chatcmpl-d254649f",
+              "object": "chat.completion.chunk",
+              "created": 1784773751,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "LAG"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.469393,
+            "data": {
+              "id": "chatcmpl-d254649f",
+              "object": "chat.completion.chunk",
+              "created": 1784773751,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-F"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.489256,
+            "data": {
+              "id": "chatcmpl-d254649f",
+              "object": "chat.completion.chunk",
+              "created": 1784773751,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "OUR"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.509158,
+            "data": {
+              "id": "chatcmpl-d254649f",
+              "object": "chat.completion.chunk",
+              "created": 1784773751,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {
+                    "content": "-C"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "at": 3.529551,
+            "data": {
+              "id": "chatcmpl-d254649f",
+              "object": "chat.completion.chunk",
+              "created": 1784773751,
+              "model": "jangq-ai/Laguna-S-2.1-JANG_4M",
+              "choices": [
+                {
+                  "index": 0,
+                  "delta": {},
+                  "finish_reason": "stop"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "after_summary": {
+        "evictions": 6,
+        "ram_tokens": 0,
+        "disk_hits": 12,
+        "disk_writes": 6,
+        "disk_blocks": 1283,
+        "last_cache_execution": null,
+        "disk_hit_delta": 3
+      }
+    }
+  ],
+  "health_after": {
+    "label": "after",
+    "status": "healthy",
+    "model_loaded": true,
+    "scheduler": {
+      "num_waiting": 0,
+      "num_running": 1,
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1,
+        "prompt_snapshot_max_bytes": null,
+        "prompt_snapshot_last_estimated_bytes": 0,
+        "prompt_snapshot_oversize_skips": 0,
+        "prompt_snapshot_headroom_skips": 0,
+        "prompt_snapshot_last_headroom_bytes": 0
+      },
+      "single_active_decode": true,
+      "ewma_ttft_seconds": 0.753,
+      "cache_hit_requests": 0,
+      "cache_hit_tokens": 0,
+      "cache_hit_tokens_by_detail": {},
+      "hybrid_kv_without_ssm_hits": 0,
+      "hybrid_kv_without_ssm_tokens": 0,
+      "last_hybrid_kv_without_ssm": null,
+      "cache_reuse_skips": 0,
+      "cache_reuse_skip_tokens": 0,
+      "last_cache_reuse_skip": null,
+      "cache_reuse_partial_downgrades": 0,
+      "cache_reuse_partial_tokens": 0,
+      "last_cache_reuse_partial": null,
+      "last_cache_selection": {
+        "paged_cached_tokens": 192,
+        "paged_cold_tokens": 192,
+        "warm_cached_tokens": 0,
+        "hot_advantage_tokens": 0,
+        "hot_advantage_threshold_tokens": 64,
+        "selected": "paged",
+        "rejected": null,
+        "reason": "no_warm_prefix_alternative"
+      },
+      "last_cache_execution": null
+    },
+    "scheduler_cache": {
+      "hits": 0,
+      "misses": 6,
+      "hit_rate": 0.0,
+      "tokens_saved": 0,
+      "active_requests": 0,
+      "entries_by_type": {
+        "assistant": 0,
+        "user": 0,
+        "system": 1
+      },
+      "backend_mode": "paged",
+      "paged_ram_enabled": true,
+      "disk_only": false,
+      "paged_frugal": false,
+      "ram_mirror_policy": "resident",
+      "block_size": 64,
+      "max_blocks": 4,
+      "usable_blocks": 3,
+      "capacity_tokens": 192,
+      "allocated_blocks": 1,
+      "free_blocks": 3,
+      "shared_blocks": 0,
+      "total_tokens_cached": 192,
+      "utilization": 0.0,
+      "cache_hit_rate": 0.5106382978723404,
+      "cache_hits": 24,
+      "cache_misses": 23,
+      "disk_hits": 12,
+      "disk_misses": 432,
+      "cow_copies": 0,
+      "evictions": 6,
+      "disk_promotion_hits": 3,
+      "disk_lookup_misses": 12,
+      "disk_counter_source": "block_disk_store",
+      "engine_path": "single_active",
+      "batch_generator": {
+        "class": "SingleBatchGenerator",
+        "path": "single_active",
+        "single_active_decode": true,
+        "max_num_seqs": 1,
+        "prompt_snapshot_max_bytes": null,
+        "prompt_snapshot_last_estimated_bytes": 0,
+        "prompt_snapshot_oversize_skips": 0,
+        "prompt_snapshot_headroom_skips": 0,
+        "prompt_snapshot_last_headroom_bytes": 0
+      }
+    },
+    "block_disk_cache": {
+      "blocks_on_disk": 1283,
+      "disk_size_bytes": 6941240399,
+      "disk_size_gb": 6.465,
+      "total_accesses": 8348,
+      "total_tokens_on_disk": 79199,
+      "total_cached_tokens": 79199,
+      "disk_hits": 12,
+      "disk_misses": 432,
+      "disk_writes": 6,
+      "disk_evictions": 0,
+      "tq_native_writes": 6,
+      "tq_native_hits": 12,
+      "tq_native_enabled": true
+    },
+    "totals": {
+      "ram_tokens_cached": 0,
+      "l1_indexed_tokens": 192,
+      "l1_resident_bytes": 0,
+      "l1_resident_bytes_mb": 0.0,
+      "l1_max_resident_bytes": 7681850572,
+      "l1_max_resident_bytes_mb": 7325.98,
+      "l1_evictions": 6,
+      "l2_prompt_tokens_on_disk": 0,
+      "l2_block_tokens_on_disk": 79199,
+      "l2_ssm_tokens_on_disk": 0,
+      "ssm_tokens_on_disk": 0,
+      "l2_tokens_on_disk": 79199,
+      "l2_tokens_on_disk_store_sum": 79199,
+      "l2_tokens_on_disk_note": "store_sum_across_prompt_block_ssm_l2; tiers_may_overlap"
+    },
+    "native_cache": {
+      "family": "laguna",
+      "schema": "mixed_swa_kv_v1",
+      "cache_type": "mixed_swa_kv",
+      "cache_subtype": "kv",
+      "components": [
+        "full_attention_kv",
+        "sliding_window_kv",
+        "rotating_window_metadata"
+      ],
+      "generic_turboquant_kv": {
+        "enabled": false,
+        "reason": "storage_only"
+      },
+      "storage_quantization": {
+        "enabled": true,
+        "mode": "storage_boundary",
+        "bits": 4,
+        "group_size": 64,
+        "applies_to": "full_attention_kv_only",
+        "metadata_policy": "preserve_rotating_window_metadata",
+        "sliding_window_policy": "native_rotating_kv_state",
+        "restore_policy": "decode_full_attention_tq_and_restore_rotating_state"
+      },
+      "prefix": true,
+      "paged": true,
+      "block_disk_only": false,
+      "block_disk_l2": true
+    }
+  },
+  "checks": {
+    "max_blocks_four": true,
+    "paged_on": true,
+    "block_l2_on": true,
+    "all_status_200": true,
+    "all_no_marker_leak": true,
+    "all_done_terminal": true,
+    "evictions_increased": true,
+    "refault_last_cache_execution_field_absent": true,
+    "refault_proven_by_disk_hit_counter_delta": true,
+    "refault_disk_hits_increased": true,
+    "refault_exact_output": true,
+    "strict_last_cache_execution_field_absent": true
+  }
+}
