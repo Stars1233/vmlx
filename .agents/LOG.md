@@ -2117,3 +2117,20 @@
 - Restored the 10 GB default through the real UI; PID `23830` is healthy.
 - Retained:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/laguna-ssd-capacity-eviction-live.json`.
+## 2026-07-23 - R17 Gemma combined UI/API/media proof
+
+- Started `JANGQ-AI/gemma-4-12B-it-qat-JANG_4M` with the real Electron Start
+  button at PID `24290`.
+- Inspected three UI turns closely: separate reasoning, exact
+  `file_info(panel/package.json)` call/result, no second tool, history recall,
+  progressive output, and one valid KaTeX fraction.
+- Ran Chat, Responses, Anthropic, and Ollama raw streaming on the same process.
+  All kept reasoning/content separate and used truthful terminal events;
+  required tool continuations completed with the real `5.2 KB` result.
+- Verified gateway raw LaTeX byte fidelity and Electron KaTeX display.
+- Sent `/private/tmp/gemma-audio-marker.wav` through gateway and direct
+  Responses with thinking Off; both exact-transcribed in 20 deltas.
+- Attached the same WAV through Electron. SQLite retained a canonical
+  `input_audio` part and Auto reasoning stayed in its rail, but transcript
+  quality failed in both an existing chat and a fresh chat.
+- Retained the failure rather than forcing reasoning Off or rewriting output.

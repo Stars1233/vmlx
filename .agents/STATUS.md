@@ -1,5 +1,26 @@
 # Current Status
 
+## 2026-07-23 - Gemma reasoning/tools/KaTeX and audio boundary
+
+Status:
+`VERIFIED_LIVE_SCOPED_TEXT / AUDIO_AUTO_QUALITY_FAIL / RELEASE_PARTIAL`.
+
+- Real Electron Start loaded affine Gemma 4 12B JANG_4M PID `24290`.
+- Three UI turns passed separate reasoning, one exact real file tool loop,
+  history recall, mixed-SWA cache detail, and visible KaTeX rendering.
+- Raw Chat/Responses/Anthropic/Ollama passed separate reasoning/content,
+  truthful terminals, and exact tool continuations. Raw gateway LaTeX was
+  byte-equal to the requested literal commands.
+- The retained spoken-marker WAV exact-transcribed through direct and gateway
+  Responses with thinking Off.
+- Electron Auto persisted the same WAV as `input_audio` and kept reasoning
+  separate, but two turns failed transcript quality: one appended spurious
+  text and a fresh chat misheard `Cobalt` as `code volt`.
+- No hidden forced-Off retry or output rewrite was added. Gemma Auto audio
+  quality remains open.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/gemma-reasoning-tools-math-audio-live.json`.
+
 ## 2026-07-23 - Laguna post-tool reasoning-mode preservation
 
 Status: `VERIFIED_LIVE_SCOPED / RELEASE_PARTIAL`.

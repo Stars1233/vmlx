@@ -5301,3 +5301,26 @@ Status: `PARTIAL / CORRECTNESS FALLBACK LIVE / RELEASE BLOCKING`.
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/laguna-ssd-capacity-eviction-live.json`.
 - Other typed cache families and corrupt/missing rotating-state fallback remain
   open.
+## 2026-07-23 - Gemma 4 combined R17 reasoning/tools/math/audio checkpoint
+
+- `R17-GEMMA-UI-REASON-TOOL-MATH`: `VERIFIED-LIVE_SCOPED`.
+  Real Electron PID `24290` completed three inspected turns with separate
+  reasoning, one exact real `file_info` call/result continuation, cache-aware
+  history recall, and valid KaTeX rendering. The visible math was a real
+  stacked fraction, while raw gateway bytes retained the literal LaTeX.
+- `R17-GEMMA-FOUR-PROTOCOL-STREAM`: `VERIFIED-LIVE_SCOPED`.
+  Chat, Responses, Anthropic, and Ollama emitted separate reasoning/content
+  deltas and truthful terminals. Responses, Anthropic, and Ollama completed
+  exact real tool loops.
+- `R17-GEMMA-AUDIO-TRANSPORT`: `VERIFIED-LIVE_SCOPED`.
+  The retained WAV exact-transcribed through both direct and gateway Responses
+  with thinking Off. Electron persisted the same attachment as `input_audio`
+  and streamed it through the live multimodal process.
+- `R17-GEMMA-AUDIO-AUTO-QUALITY`: `FAIL`.
+  Electron Auto overthought and added spurious text in one chat, then a fresh
+  chat misheard `Cobalt` as `code volt`. Reasoning separation, attachment
+  persistence, and terminal output all worked, so this is retained as a
+  current Auto audio-quality failure rather than transport corruption.
+- Evidence:
+  `docs/internal/release-gates/20260722_v1_6_17_consolidation/gemma-reasoning-tools-math-audio-live.json`.
+- Overall v1.6.17 remains `PARTIAL / NOT RELEASE-READY`.

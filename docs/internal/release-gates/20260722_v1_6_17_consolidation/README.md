@@ -187,6 +187,47 @@ Every row below requires the shared proof shape, not load-only proof.
 
 ## Current checkpoint
 
+### R17-011 Gemma reasoning/tools/KaTeX and direct-audio boundary
+
+Status:
+`TEXT+PROTOCOL PASS / AUDIO TRANSPORT PASS / AUTO AUDIO QUALITY FAIL`.
+
+Exact live bundle and process:
+
+- `JANGQ-AI/gemma-4-12B-it-qat-JANG_4M`, affine JANG_4M group size 32.
+- Real Electron Start-button PID `24290`, port `8001`, gateway `8088`.
+- Bundle sampling defaults and the first-use Chat drawer agreed on
+  temperature `1.0`, top-p `.95`, and top-k `64`.
+
+Scoped live passes:
+
+- Three Electron turns showed separate reasoning, one exact real
+  `file_info(panel/package.json)` tool/result continuation, cache-aware
+  follow-up, and a visibly rendered KaTeX fraction with zero KaTeX errors.
+- Chat, Responses, Anthropic, and Ollama each streamed private reasoning and
+  visible content separately and terminalized truthfully. Responses,
+  Anthropic, and Ollama completed exact real tool loops.
+- Gateway Chat preserved literal LaTeX bytes exactly. The renderer displayed
+  `94/90 = 47/45` as stacked fractions.
+- The retained WAV reached both direct and gateway Responses as
+  `input_audio`. With thinking explicitly Off, both paths emitted 20
+  progressive content deltas and the exact transcript.
+
+Open failure:
+
+- Default Auto did not preserve transcription quality in Electron. The
+  existing chat overthought for 761 tokens and added spurious text; a fresh
+  chat kept its 790 reasoning characters separate but misheard `Cobalt` as
+  `code volt`. The attachment was present in SQLite and live model telemetry,
+  so this is not classified as attachment loss or stream corruption.
+- No forced-Off fallback, output rewrite, prompt coercion, or sampler clamp
+  was added. Gemma Auto audio quality remains release-blocking.
+
+Evidence:
+
+- `gemma-reasoning-tools-math-audio-live.json`
+- `gemma-ui-audio-auto-fresh.png`
+
 ### R17-001 Electron gateway Ollama history normalization
 
 Status: `SOURCE+FOCUSED_TEST PASS / LIVE MODEL PROOF OPEN`

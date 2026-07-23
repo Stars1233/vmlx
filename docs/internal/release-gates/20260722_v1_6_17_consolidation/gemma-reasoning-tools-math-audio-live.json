@@ -1,0 +1,217 @@
+{
+  "date": "2026-07-23",
+  "host": "erics-m5-max.local",
+  "source": {
+    "repo": "/Users/eric/mlx/vllm-mlx-r17-consolidation",
+    "branch": "codex/v1.6.17-consolidation-20260723",
+    "head_before_evidence_commit": "80eaf2fc7af74bfa7a10865d432ad5c6ff2dd6dc"
+  },
+  "electron": {
+    "cdp": "http://127.0.0.1:9335",
+    "gateway": "http://127.0.0.1:8088",
+    "profile": "/Users/eric/.vmlx-r17-consolidation-dev"
+  },
+  "bundle": {
+    "served_id": "JANGQ-AI/gemma-4-12B-it-qat-JANG_4M",
+    "path": "/Users/eric/.mlxstudio/models/JANGQ-AI/gemma-4-12B-it-qat-JANG_4M",
+    "pid": 24290,
+    "port": 8001,
+    "config_sha256": "1fe9d66f2f400ad389c702b70e35a01f27d2ea4c947ae983b4b810178876d83f",
+    "generation_config_sha256": "a83490e5661735294dc2ed4a1ae0bb480ea1cf5d9a3a1e2994d2208d476388d7",
+    "tokenizer_config_sha256": "1b11a14c8d05377e10084056c4aa88fcf0a607e2be82212146420634ce414739",
+    "jang_config_sha256": "06d60a49543256d37300ef72f069e34e79472223c90c3fcb1357b28c709b89b8",
+    "weight_index_sha256": "f5037341616be2a7d6a6cbdd6b964e35e82a8634a91f645e3a5d3038fc62820c",
+    "runtime_capabilities": {
+      "modalities": [
+        "text",
+        "vision",
+        "audio",
+        "video"
+      ],
+      "reasoning_parser": "gemma4",
+      "tool_parser": "gemma4",
+      "native_cache_schema": "mixed_swa_kv_v1",
+      "sampling_defaults": {
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 64
+      }
+    }
+  },
+  "electron_text_turns": [
+    {
+      "id": "R17-GEMMA-UI-A",
+      "visible_content": "R17-GEMMA-UI-A-DONE",
+      "reasoning_chars": 614,
+      "tokens": 293,
+      "decode_tps": 45.8,
+      "prefill_tps": 249.2,
+      "prompt_tokens": 75,
+      "ttft_seconds": 0.3,
+      "total_seconds": 6.7,
+      "verdict": "PASS"
+    },
+    {
+      "id": "R17-GEMMA-UI-B",
+      "tool": {
+        "name": "file_info",
+        "arguments": {
+          "path": "panel/package.json"
+        },
+        "call_count": 1,
+        "real_result_size": "5.2 KB"
+      },
+      "visible_content": "R17-GEMMA-UI-B-DONE SIZE=5.2 KB",
+      "tokens": 53,
+      "decode_tps": 43.8,
+      "prefill_tps": 847.5,
+      "prompt_tokens": 483,
+      "ttft_seconds": 0.29,
+      "total_seconds": 1.6,
+      "verdict": "PASS"
+    },
+    {
+      "id": "R17-GEMMA-UI-C",
+      "visible_content": "R17-GEMMA-UI-C-DONE SIZE=5.2 KB\n\\(\\frac{94}{90}=\\frac{47}{45}\\)",
+      "reasoning_chars": 502,
+      "katex_nodes": 1,
+      "katex_errors": 0,
+      "raw_reasoning_markers": 0,
+      "replacement_characters": 0,
+      "cached_tokens": 74,
+      "cache_detail": "paged+mixed_swa",
+      "tokens": 228,
+      "decode_tps": 45.6,
+      "prefill_tps": 997.1,
+      "prompt_tokens": 347,
+      "ttft_seconds": 0.35,
+      "total_seconds": 5.4,
+      "verdict": "PASS"
+    }
+  ],
+  "raw_protocols": {
+    "reasoning_no_tool": {
+      "protocols": [
+        "chat_completions",
+        "responses",
+        "anthropic_messages",
+        "ollama_chat"
+      ],
+      "http_status_each": 200,
+      "reasoning_deltas_each": 225,
+      "content_deltas_each": 13,
+      "reasoning_chars_each": 484,
+      "visible_content_each": "R17-GEMMA-API-REASON-DONE",
+      "separate_reasoning_and_content": true,
+      "truthful_terminal_each": true,
+      "inline_thinking_markers": 0,
+      "verdict": "PASS"
+    },
+    "responses_tool_loop": {
+      "tool": "file_info",
+      "arguments": {
+        "path": "panel/package.json"
+      },
+      "call_count": 1,
+      "continuation_content_deltas": 18,
+      "visible_content": "R17-GEMMA-RESP-TOOL-DONE SIZE=5.2 KB",
+      "terminal": "response.completed",
+      "verdict": "PASS"
+    },
+    "anthropic_tool_loop": {
+      "tool": "file_info",
+      "call_count": 1,
+      "continuation_reasoning_deltas": 116,
+      "continuation_content_deltas": 19,
+      "visible_content": "R17-GEMMA-GATEWAY-TOOL-DONE SIZE=5.2 KB",
+      "terminal": "message_stop",
+      "verdict": "PASS"
+    },
+    "ollama_tool_loop": {
+      "tool": "file_info",
+      "call_count": 1,
+      "initial_reasoning_deltas": 33,
+      "continuation_reasoning_deltas": 117,
+      "continuation_content_deltas": 19,
+      "visible_content": "R17-GEMMA-GATEWAY-TOOL-DONE SIZE=5.2 KB",
+      "terminal": "stop",
+      "verdict": "PASS"
+    },
+    "latex_byte_fidelity": {
+      "route": "gateway_chat_sse",
+      "expected": "\\(\\frac{81}{9}=9\\)",
+      "actual": "\\(\\frac{81}{9}=9\\)",
+      "byte_equal": true,
+      "content_deltas": 11,
+      "done_events": 1,
+      "verdict": "PASS"
+    }
+  },
+  "audio": {
+    "fixture": {
+      "path": "/private/tmp/gemma-audio-marker.wav",
+      "sha256": "d0ba41f069c96d18d23be08b22c9ae2c358b4320280a25e2c855d0a8a0d3183a",
+      "format": "PCM 16-bit mono 16000 Hz",
+      "expected_transcript": "The secret audio marker is Cobalt 7429. Repeat exactly Cobalt-7429."
+    },
+    "gateway_responses_thinking_off": {
+      "http_status": 200,
+      "elapsed_ms": 4890,
+      "content_deltas": 20,
+      "reasoning_deltas": 0,
+      "terminal": "response.completed",
+      "actual_transcript": "The secret audio marker is Cobalt 7429. Repeat exactly Cobalt-7429.",
+      "errors": [],
+      "verdict": "PASS"
+    },
+    "direct_responses_thinking_off": {
+      "http_status": 200,
+      "elapsed_ms": 1018,
+      "content_deltas": 20,
+      "reasoning_deltas": 0,
+      "terminal": "response.completed",
+      "actual_transcript": "The secret audio marker is Cobalt 7429. Repeat exactly Cobalt-7429.",
+      "errors": [],
+      "verdict": "PASS"
+    },
+    "electron_auto_existing_chat": {
+      "attachment_persisted_as": "input_audio",
+      "reasoning_chars": 2867,
+      "visible_content": "The secret audio marker is Cobalt 7429. Repeat exactly Cobalt-7429. script - transcribe ... ... The audio marker is Cobalt 7429. Repeat exactly Cobalt-7429.",
+      "tokens": 761,
+      "prompt_tokens": 4105,
+      "decode_tps": 42.6,
+      "prefill_tps": 603.2,
+      "ttft_seconds": 6.8,
+      "total_seconds": 24.7,
+      "transport_verdict": "PASS",
+      "quality_verdict": "FAIL"
+    },
+    "electron_auto_fresh_chat": {
+      "attachment_persisted_as": "input_audio",
+      "reasoning_chars": 790,
+      "visible_content": "Victoria marker is code volt 7429. Repeat exactly code volt-7429.",
+      "tokens": 207,
+      "prompt_tokens": 3708,
+      "decode_tps": 44.3,
+      "prefill_tps": 607.6,
+      "ttft_seconds": 6.1,
+      "total_seconds": 10.8,
+      "transport_verdict": "PASS",
+      "reasoning_separation_verdict": "PASS",
+      "transcription_quality_verdict": "FAIL"
+    }
+  },
+  "verdict": {
+    "text_reasoning_tools_math": "VERIFIED_LIVE_SCOPED",
+    "audio_transport_and_thinking_off": "VERIFIED_LIVE_SCOPED",
+    "audio_auto_quality": "FAIL",
+    "release": "PARTIAL_NOT_RELEASE_READY",
+    "notes": [
+      "Electron renders completed valid LaTeX as KaTeX; raw APIs preserve literal LaTeX bytes.",
+      "The UI persisted the WAV as input_audio and streamed private reasoning separately from visible output.",
+      "Default Auto produced a non-empty terminal but overthought and mis-transcribed the retained WAV in both an existing and a fresh chat.",
+      "No prompt coercion, forced thinking mode, sampler clamp, or output rewrite was added."
+    ]
+  }
+}
