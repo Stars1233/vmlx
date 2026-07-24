@@ -64,6 +64,19 @@ model/prompt loops.
 | P2 | JANG/JANGTQ conversion pipeline | Developer Tools lifecycle is closed scoped; generic JANGTQ/MXTQ conversion remains open | Real Electron conversion lifecycle plus generated artifact reload/coherent output, metadata correctness, overwrite/low-disk/calibration/MoE/resume rows, and no affine/JANGTQ confusion. |
 | P2 | Version/release truth and checkpoint packaging | Public v1.6.14 exists while broader matrix is partial; next release needs clean selected cutoff | Only after critical runtime rows selected for checkpoint are current-source proven: run full Python/panel suites, bundle Python from clean JANG, build Sequoia/Tahoe DMGs, sign, notarize, staple, verify, install-smoke, update manifests/releases. |
 
+## Mandatory SSD refault proof
+
+All future claims that L2/block-disk cache can replace evicted in-memory prefix
+blocks must follow
+`../20260722_v1_6_17_consolidation/CACHE-EVICTION-REFAULT-PROOF.md`.
+In particular, the test must cache prefix `A`, drive `A` out of RAM with
+distinct later prompts, prove its blocks remain on SSD, then replay
+`A + never-cached suffix` and show longest-prefix disk restoration with
+suffix-only prefill. It must be repeated after a model/session restart and with
+in-memory paged cache both On and Off. A warm same-process hit, a disk-store
+message, or a hit log without residency/counter/timing evidence remains
+`PARTIAL`.
+
 ## Immediate next non-duplicate work selection
 
 The next target should not rerun the already-closed Qwen/Bonsai/M2.7 single-tool

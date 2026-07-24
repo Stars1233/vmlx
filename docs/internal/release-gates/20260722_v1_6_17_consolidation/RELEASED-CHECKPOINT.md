@@ -196,6 +196,9 @@ Retained screenshots:
 ## Required cache proof procedure retained for follow-up
 
 The following is a mandatory proof row, not a design note:
+The canonical reusable protocol, required retained artifacts, architecture
+variants, and invalid-proof examples are in
+`CACHE-EVICTION-REFAULT-PROOF.md`.
 
 1. Start from a clean cache and submit prompt/prefix `A`.
 2. Submit enough distinct `B`, `C`, `D`, and later prompts to exceed the
