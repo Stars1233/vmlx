@@ -2,7 +2,10 @@
 
 Started: 2026-07-22 (America/Los_Angeles)
 
-Status: `ACTIVE / PARTIAL / NOT RELEASE-READY`
+Status: `PUBLIC v1.6.17 CHECKPOINT RELEASED / BROADER MATRIX PARTIAL`
+
+Release freeze and retained-work record:
+[`RELEASED-CHECKPOINT.md`](RELEASED-CHECKPOINT.md).
 
 ## Source and proof boundary
 
@@ -11,13 +14,13 @@ Status: `ACTIVE / PARTIAL / NOT RELEASE-READY`
 - Worktree:
   `/Users/eric/mlx/vllm-mlx-r17-consolidation`.
 - Branch: `codex/v1.6.17-consolidation-20260723`.
-- v1.6.16 remains the released scoped checkpoint. It is not evidence that the
-  rows below are complete.
+- v1.6.17 is the released scoped checkpoint. It is not evidence that the rows
+  below are complete.
 - This campaign does not inherit a live pass from an old PID, installed app,
   transcript, `/tmp` capture, or another checkout.
-- The v1.6.17 source/version and prepackage bundle gates are now frozen and
-  current. No tag, public package, updater change, or publication occurs until
-  signed/notarized installed-app proof completes.
+- The v1.6.17 source/tag is frozen at
+  `d03ec297ef269bceb8a805726f6733a8c497f130`; signed/notarized installed-app
+  proof and publication are recorded in `RELEASED-CHECKPOINT.md`.
 
 ## Required per-family proof shape
 
@@ -1738,3 +1741,31 @@ Remaining boundary:
   signed apps, reconcile JANG main/PyPI, and only then publish vMLX source,
   PyPI, updater, website, and Homebrew surfaces. Overall v1.6.17 remains
   `PARTIAL / NOT RELEASE-READY`.
+
+### R17-028 Public signed checkpoint
+
+Status:
+`PUBLIC CHECKPOINT RELEASED / RETAINED MATRIX PARTIAL`.
+
+- Exact release source/tag:
+  `d03ec297ef269bceb8a805726f6733a8c497f130` / `v1.6.17`.
+- Sequoia and Tahoe DMGs passed recursive Mach-O signing audit, Apple
+  notarization, stapling, Gatekeeper, mounted imports, and installed-app
+  launch.
+- Signed Sequoia direct/gateway Chat streaming separated reasoning and visible
+  content and emitted truthful terminals.
+- A signed M3 UI Stop/Start restored `600` prompt tokens from `10` SSD blocks
+  as `paged+disk`, with the native MSA/indexer tuple intact.
+- The signed Tahoe artifact restored saved sessions and produced healthy fresh
+  UI/direct/gateway answers.
+- One adversarial persisted-history M3 UI turn finalized reasoning-only; it is
+  retained as a P0 failure. Signed Qwen 0.6B and M3 exact-tool prompts also did
+  not emit the requested tool, so signed-artifact tool repetition remains
+  `FAIL` even though exact-source HY3/M3 agent loops passed earlier.
+- Public vMLX source/tag/release, DMG/tag/updater feed, PyPI `vmlx==1.6.17`,
+  and Homebrew cask `1.6.17` are published. The separately hosted
+  `mlx.studio` mirror remains blocked on server authentication.
+- The exact required RAM-eviction to longest-prefix SSD-refault procedure,
+  Paged-Off repetition, L2/RAM capacity eviction, OOM warning, typed
+  TurboQuant/native-cache restore, media breadth, and longer gateway soak are
+  retained in `RELEASED-CHECKPOINT.md`.
