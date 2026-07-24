@@ -1,6 +1,6 @@
 # 2026-07-22 Active Worklist and Proof Tracker
 
-Status: `PARTIAL_NO_RELEASE`.
+Status: `PUBLIC_CHECKPOINT_RELEASED / ACTIVE FOLLOW-UP PARTIAL`.
 
 Host/repo for this checkpoint:
 

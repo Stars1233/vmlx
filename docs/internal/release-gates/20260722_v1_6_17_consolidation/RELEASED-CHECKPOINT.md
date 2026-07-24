@@ -33,9 +33,11 @@ source was then built locally, passed `twine check`, and uploaded using the
 existing protected `.pypirc` credential. No credential value was printed,
 copied into source, or committed.
 
-The canonical GitHub updater feed is current at:
+The canonical GitHub updater feed and source-repository mirror are current at:
 
 <https://raw.githubusercontent.com/jjang-ai/mlxstudio/main/latest.json>
+
+<https://raw.githubusercontent.com/jjang-ai/vmlx/main/latest.json>
 
 The separately hosted mirror
 `https://mlx.studio/update/latest.json` remained at `1.6.15` at release time.

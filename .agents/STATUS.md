@@ -8604,3 +8604,23 @@ Status: `FIXED+VERIFIED-LIVE-SCOPED / OVERALL PARTIAL`.
 - Evidence:
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/release-head-suite-audit/`.
 - Overall status remains `PARTIAL / NOT RELEASE-READY`.
+
+## 2026-07-23 - Public v1.6.17 checkpoint distribution reconciled
+
+Status: `PUBLIC CHECKPOINT RELEASED / ACTIVE FOLLOW-UP PARTIAL`.
+
+- Exact released engine source/tag:
+  `d03ec297ef269bceb8a805726f6733a8c497f130` / `v1.6.17`.
+- Public MLXStudio release carries the notarized Sequoia and Tahoe DMGs with
+  the retained release hashes.
+- Public PyPI serves `vmlx==1.6.17`; public JANG GitHub/PyPI serves `2.5.34`;
+  Homebrew serves cask `1.6.17`.
+- The canonical MLXStudio updater and the source-repository `latest.json`
+  mirror now carry the same 1.6.17 manifest.
+- `https://mlx.studio/update/latest.json` remains at 1.6.15 because the
+  configured release host rejects the available SSH key. Current app source
+  queries both updater sources and selects the highest version, so the stale
+  secondary mirror cannot suppress the canonical 1.6.17 feed.
+- This release checkpoint does not close retained P0/P1 reasoning, tool,
+  cache, media, or gateway rows. Continue those rows on the next development
+  checkpoint without relabeling them green.

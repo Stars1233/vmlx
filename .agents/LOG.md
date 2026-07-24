@@ -2398,3 +2398,18 @@
   instead of weakening the verifier.
 - Stored durable evidence under
   `docs/internal/release-gates/20260722_v1_6_17_consolidation/release-head-suite-audit/`.
+
+## 2026-07-23 - Reconciled public v1.6.17 distribution metadata
+
+- Re-read the live GitHub releases/tags, uploaded DMG digests, PyPI vMLX and
+  JANG version-specific JSON, Homebrew cask, canonical updater feed, and hosted
+  updater mirror.
+- Confirmed the release itself was already public and did not cut a redundant
+  v1.6.18 without new runtime changes.
+- Updated the source-repository `latest.json` from 1.6.15 to the exact
+  byte-identical 1.6.17 MLXStudio manifest.
+- Updated the active tracker to distinguish a released checkpoint from the
+  still-partial follow-up matrix.
+- Retained the hosted `mlx.studio` mirror as `BLOCKED`: the known origin
+  rejected public-key authentication, and a second configured host presented a
+  changed SSH host key. No host-key bypass or unsafe deployment was attempted.
